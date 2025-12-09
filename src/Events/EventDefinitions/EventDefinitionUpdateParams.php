@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Events\EventDefinitions;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -27,13 +27,13 @@ final class EventDefinitionUpdateParams implements BaseModel
     /**
      * A description of the event that will be shown as help text in HubSpot.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $description;
 
     /**
      * Human readable label for the event. Used in HubSpot UI.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $label;
 
     public function __construct()

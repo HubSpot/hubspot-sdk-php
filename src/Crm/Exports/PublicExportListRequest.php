@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Exports;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Exports\PublicExportListRequest\ExportInternalValuesOption;
@@ -34,45 +34,45 @@ final class PublicExportListRequest implements BaseModel
     use SdkModel;
 
     /** @var list<string> $associatedObjectType */
-    #[Api(list: 'string')]
+    #[Required(list: 'string')]
     public array $associatedObjectType;
 
     /** @var list<value-of<ExportInternalValuesOption>> $exportInternalValuesOptions */
-    #[Api(list: ExportInternalValuesOption::class)]
+    #[Required(list: ExportInternalValuesOption::class)]
     public array $exportInternalValuesOptions;
 
-    #[Api]
+    #[Required]
     public string $exportName;
 
     /** @var value-of<ExportType> $exportType */
-    #[Api(enum: ExportType::class)]
+    #[Required(enum: ExportType::class)]
     public string $exportType;
 
     /** @var value-of<Format> $format */
-    #[Api(enum: Format::class)]
+    #[Required(enum: Format::class)]
     public string $format;
 
-    #[Api]
+    #[Required]
     public bool $includeLabeledAssociations;
 
-    #[Api]
+    #[Required]
     public bool $includePrimaryDisplayPropertyForAssociatedObjects;
 
     /** @var value-of<Language> $language */
-    #[Api(enum: Language::class)]
+    #[Required(enum: Language::class)]
     public string $language;
 
-    #[Api]
+    #[Required]
     public string $listId;
 
     /** @var list<string> $objectProperties */
-    #[Api(list: 'string')]
+    #[Required(list: 'string')]
     public array $objectProperties;
 
-    #[Api]
+    #[Required]
     public string $objectType;
 
-    #[Api]
+    #[Required]
     public bool $overrideAssociatedObjectsPerDefinitionPerRowLimit;
 
     /**

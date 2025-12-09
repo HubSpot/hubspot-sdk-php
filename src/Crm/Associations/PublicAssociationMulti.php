@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Associations;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\AssociatedID;
@@ -23,7 +24,7 @@ final class PublicAssociationMulti implements BaseModel
     /** @use SdkModel<PublicAssociationMultiShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public PublicObjectID $from;
 
     /**
@@ -31,10 +32,10 @@ final class PublicAssociationMulti implements BaseModel
      *
      * @var list<AssociatedID> $to
      */
-    #[Api(list: AssociatedID::class)]
+    #[Required(list: AssociatedID::class)]
     public array $to;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?Paging $paging;
 
     /**

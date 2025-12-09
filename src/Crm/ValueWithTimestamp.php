@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -28,37 +29,37 @@ final class ValueWithTimestamp implements BaseModel
     /**
      * The property type.
      */
-    #[Api]
+    #[Required]
     public string $sourceType;
 
     /**
      * The timestamp when the property was updated, in ISO 8601 format.
      */
-    #[Api]
+    #[Required]
     public \DateTimeInterface $timestamp;
 
     /**
      * The property value.
      */
-    #[Api]
+    #[Required]
     public string $value;
 
     /**
      * The unique ID of the property.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $sourceId;
 
     /**
      * A human-readable label.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $sourceLabel;
 
     /**
      * The ID of the user who last updated the property.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $updatedByUserId;
 
     /**

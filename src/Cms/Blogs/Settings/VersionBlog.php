@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Cms\Blogs\Settings;
 
 use HubspotSDK\Cms\Blogs\Settings\Blog\Language;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\VersionUser;
@@ -25,19 +25,19 @@ final class VersionBlog implements BaseModel
     /**
      * The id of the version.
      */
-    #[Api]
+    #[Required]
     public string $id;
 
-    #[Api]
+    #[Required]
     public Blog $object;
 
-    #[Api]
+    #[Required]
     public \DateTimeInterface $updatedAt;
 
     /**
      * Model definition for a version user. Contains addition information about the user who created a version.
      */
-    #[Api]
+    #[Required]
     public VersionUser $user;
 
     /**

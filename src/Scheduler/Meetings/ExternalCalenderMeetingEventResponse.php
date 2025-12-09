@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Scheduler\Meetings;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Scheduler\Meetings\ExternalCalendarMeetingEventResponseProperties\HsEngagementSource;
@@ -23,16 +23,16 @@ final class ExternalCalenderMeetingEventResponse implements BaseModel
     /** @use SdkModel<ExternalCalenderMeetingEventResponseShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public string $id;
 
-    #[Api]
+    #[Required]
     public \DateTimeInterface $createdAt;
 
-    #[Api]
+    #[Required]
     public \DateTimeInterface $lastUpdatedAt;
 
-    #[Api]
+    #[Required]
     public ExternalCalendarMeetingEventResponseProperties $properties;
 
     /**

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -29,40 +29,40 @@ final class AutomationActionsOption implements BaseModel
     /**
      * A description of the option.
      */
-    #[Api]
+    #[Required]
     public string $description;
 
     /**
      * The position of the item relative to others in the list.
      */
-    #[Api]
+    #[Required]
     public int $displayOrder;
 
-    #[Api]
+    #[Required]
     public float $doubleData;
 
     /**
      * Whether the option is displayed in HubSpot's UI.
      */
-    #[Api]
+    #[Required]
     public bool $hidden;
 
     /**
      * A user-friendly label that identifies the option.
      */
-    #[Api]
+    #[Required]
     public string $label;
 
     /**
      * Whether the option is read-only.
      */
-    #[Api]
+    #[Required]
     public bool $readOnly;
 
     /**
      * The actual value of the option.
      */
-    #[Api]
+    #[Required]
     public string $value;
 
     /**

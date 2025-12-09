@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicSetOccurrencesRefineBy\Type;
@@ -19,11 +19,11 @@ final class PublicSetOccurrencesRefineBy implements BaseModel
     /** @use SdkModel<PublicSetOccurrencesRefineByShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public string $setType;
 
     /** @var value-of<Type> $type */
-    #[Api(enum: Type::class)]
+    #[Required(enum: Type::class)]
     public string $type;
 
     /**

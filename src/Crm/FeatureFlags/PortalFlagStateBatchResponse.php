@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\FeatureFlags;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\FeatureFlags\PortalFlagStateResponse\FlagState;
@@ -20,7 +20,7 @@ final class PortalFlagStateBatchResponse implements BaseModel
     use SdkModel;
 
     /** @var list<PortalFlagStateResponse> $portalFlagStates */
-    #[Api(list: PortalFlagStateResponse::class)]
+    #[Required(list: PortalFlagStateResponse::class)]
     public array $portalFlagStates;
 
     /**

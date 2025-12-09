@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\Hubdb;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -28,40 +28,40 @@ final class HubDBTableRowV3 implements BaseModel
     /**
      * The id of the table row.
      */
-    #[Api]
+    #[Required]
     public string $id;
 
     /**
      * Specifies the value for the column child table id.
      */
-    #[Api]
+    #[Required]
     public string $childTableId;
 
     /**
      * Timestamp at which the row is created.
      */
-    #[Api]
+    #[Required]
     public \DateTimeInterface $createdAt;
 
     /**
      * Specifies the value for `hs_name` column, which will be used as title in the dynamic pages.
      */
-    #[Api]
+    #[Required]
     public string $name;
 
     /**
      * Specifies the value for `hs_path` column, which will be used as slug in the dynamic pages.
      */
-    #[Api]
+    #[Required]
     public string $path;
 
-    #[Api]
+    #[Required]
     public \DateTimeInterface $publishedAt;
 
     /**
      * Timestamp at which the row is updated last time.
      */
-    #[Api]
+    #[Required]
     public \DateTimeInterface $updatedAt;
 
     /**
@@ -69,7 +69,7 @@ final class HubDBTableRowV3 implements BaseModel
      *
      * @var array<string,mixed> $values
      */
-    #[Api(map: 'mixed')]
+    #[Required(map: 'mixed')]
     public array $values;
 
     /**

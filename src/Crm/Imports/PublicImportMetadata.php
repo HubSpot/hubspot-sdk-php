@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Imports;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -25,7 +25,7 @@ final class PublicImportMetadata implements BaseModel
      *
      * @var array<string,int> $counters
      */
-    #[Api(map: 'int')]
+    #[Required(map: 'int')]
     public array $counters;
 
     /**
@@ -33,7 +33,7 @@ final class PublicImportMetadata implements BaseModel
      *
      * @var list<string> $fileIds
      */
-    #[Api(list: 'string')]
+    #[Required(list: 'string')]
     public array $fileIds;
 
     /**
@@ -41,7 +41,7 @@ final class PublicImportMetadata implements BaseModel
      *
      * @var list<PublicObjectListRecord> $objectLists
      */
-    #[Api(list: PublicObjectListRecord::class)]
+    #[Required(list: PublicObjectListRecord::class)]
     public array $objectLists;
 
     /**

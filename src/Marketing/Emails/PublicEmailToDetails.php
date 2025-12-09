@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Emails;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -27,28 +27,28 @@ final class PublicEmailToDetails implements BaseModel
     /**
      * Data structure representing lists of IDs that should be included and excluded.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?PublicEmailRecipients $contactIds;
 
     /**
      * Data structure representing lists of IDs that should be included and excluded.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?PublicEmailRecipients $contactIlsLists;
 
     /**
      * Data structure representing lists of IDs that should be included and excluded.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?PublicEmailRecipients $contactLists;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $limitSendFrequency;
 
     /**
      * Whether to send to unengaged contacts (false) or not (true).
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $suppressGraymail;
 
     public function __construct()

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\Hubdb\Tables;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -27,19 +27,19 @@ final class TableGetDraftParams implements BaseModel
     /**
      * Set this to `true` to return an archived table. Defaults to `false`.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $archived;
 
     /**
      * Set this to `true` to populate foreign ID values in the result.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $includeForeignIds;
 
     /**
      * Indicates whether to retrieve the localized schema for the table.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $isGetLocalizedSchema;
 
     public function __construct()

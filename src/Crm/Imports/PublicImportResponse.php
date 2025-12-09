@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Imports;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Imports\ImportTemplate\TemplateType;
@@ -31,23 +32,23 @@ final class PublicImportResponse implements BaseModel
     /** @use SdkModel<PublicImportResponseShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public string $id;
 
-    #[Api]
+    #[Required]
     public \DateTimeInterface $createdAt;
 
     /** @var list<string> $mappedObjectTypeIds */
-    #[Api(list: 'string')]
+    #[Required(list: 'string')]
     public array $mappedObjectTypeIds;
 
-    #[Api]
+    #[Required]
     public PublicImportMetadata $metadata;
 
     /**
      * Whether or not the import is a list of people disqualified from receiving emails.
      */
-    #[Api]
+    #[Required]
     public bool $optOutImport;
 
     /**
@@ -55,23 +56,23 @@ final class PublicImportResponse implements BaseModel
      *
      * @var value-of<State> $state
      */
-    #[Api(enum: State::class)]
+    #[Required(enum: State::class)]
     public string $state;
 
-    #[Api]
+    #[Required]
     public \DateTimeInterface $updatedAt;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $importName;
 
-    #[Api(optional: true)]
+    #[Optional]
     public mixed $importRequestJson;
 
     /** @var value-of<ImportSource>|null $importSource */
-    #[Api(enum: ImportSource::class, optional: true)]
+    #[Optional(enum: ImportSource::class)]
     public ?string $importSource;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?ImportTemplate $importTemplate;
 
     /**

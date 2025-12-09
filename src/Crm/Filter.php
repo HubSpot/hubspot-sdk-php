@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Filter\Operator;
@@ -30,25 +31,25 @@ final class Filter implements BaseModel
      *
      * @var value-of<Operator> $operator
      */
-    #[Api(enum: Operator::class)]
+    #[Required(enum: Operator::class)]
     public string $operator;
 
     /**
      * The name of the property to apply the filter to.
      */
-    #[Api]
+    #[Required]
     public string $propertyName;
 
     /**
      * The upper boundary value when using ranged-based filters.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $highValue;
 
     /**
      * The value to match against the property.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $value;
 
     /**
@@ -56,7 +57,7 @@ final class Filter implements BaseModel
      *
      * @var list<string>|null $values
      */
-    #[Api(list: 'string', optional: true)]
+    #[Optional(list: 'string')]
     public ?array $values;
 
     /**

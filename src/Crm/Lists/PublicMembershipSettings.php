@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Lists;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -18,10 +18,10 @@ final class PublicMembershipSettings implements BaseModel
     /** @use SdkModel<PublicMembershipSettingsShape> */
     use SdkModel;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $includeUnassigned;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $membershipTeamId;
 
     public function __construct()

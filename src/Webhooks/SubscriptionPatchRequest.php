@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Webhooks;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -21,7 +21,7 @@ final class SubscriptionPatchRequest implements BaseModel
     /**
      * Determines if the subscription is active or paused.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $active;
 
     public function __construct()

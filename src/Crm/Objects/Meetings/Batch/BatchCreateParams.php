@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Objects\Meetings\Batch;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -31,7 +31,7 @@ final class BatchCreateParams implements BaseModel
     use SdkParams;
 
     /** @var list<SimplePublicObjectBatchInputForCreate> $inputs */
-    #[Api(list: SimplePublicObjectBatchInputForCreate::class)]
+    #[Required(list: SimplePublicObjectBatchInputForCreate::class)]
     public array $inputs;
 
     /**

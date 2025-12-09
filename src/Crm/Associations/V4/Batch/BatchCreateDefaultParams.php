@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Associations\V4\Batch;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -29,11 +29,11 @@ final class BatchCreateDefaultParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    #[Api]
+    #[Required]
     public string $fromObjectType;
 
     /** @var list<PublicDefaultAssociationMultiPost> $inputs */
-    #[Api(list: PublicDefaultAssociationMultiPost::class)]
+    #[Required(list: PublicDefaultAssociationMultiPost::class)]
     public array $inputs;
 
     /**

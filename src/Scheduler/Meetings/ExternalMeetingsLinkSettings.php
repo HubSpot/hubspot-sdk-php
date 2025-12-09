@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Scheduler\Meetings;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Scheduler\Meetings\ExternalLegalConsentOptions\LegitimateInterestLegalBasis;
@@ -37,60 +38,60 @@ final class ExternalMeetingsLinkSettings implements BaseModel
     use SdkModel;
 
     /** @var array<string,ExternalClosedRange> $availability */
-    #[Api(map: ExternalClosedRange::class)]
+    #[Required(map: ExternalClosedRange::class)]
     public array $availability;
 
     /** @var list<int> $durations */
-    #[Api(list: 'int')]
+    #[Required(list: 'int')]
     public array $durations;
 
     /** @var list<ExternalLinkFormField> $formFields */
-    #[Api(list: ExternalLinkFormField::class)]
+    #[Required(list: ExternalLinkFormField::class)]
     public array $formFields;
 
-    #[Api]
+    #[Required]
     public bool $legalConsentEnabled;
 
-    #[Api]
+    #[Required]
     public int $meetingBufferTime;
 
-    #[Api]
+    #[Required]
     public bool $ownerPrioritized;
 
-    #[Api]
+    #[Required]
     public string $startTimeIncrementMinutes;
 
-    #[Api]
+    #[Required]
     public int $weeksToAdvertise;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $customAvailabilityEndDate;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $customAvailabilityStartDate;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?ExternalLinkDisplayInfo $displayInfo;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?ExternalGuestSettings $guestSettings;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $language;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?ExternalLegalConsentOptions $legalConsentOptions;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $locale;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $location;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $redirectUrl;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?ExternalMeetingsWelcomeScreenInfo $welcomeScreenInfo;
 
     /**

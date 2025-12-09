@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Conversations\CustomChannels;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -30,22 +30,22 @@ final class CustomChannelUpdateParams implements BaseModel
     use SdkParams;
 
     /** @var array<string,mixed> $capabilities */
-    #[Api(map: 'mixed')]
+    #[Required(map: 'mixed')]
     public array $capabilities;
 
-    #[Api]
+    #[Required]
     public mixed $channelAccountConnectionRedirectUrl;
 
-    #[Api]
+    #[Required]
     public mixed $channelDescription;
 
-    #[Api]
+    #[Required]
     public mixed $channelLogoUrl;
 
-    #[Api]
+    #[Required]
     public mixed $name;
 
-    #[Api]
+    #[Required]
     public mixed $webhookUrl;
 
     /**

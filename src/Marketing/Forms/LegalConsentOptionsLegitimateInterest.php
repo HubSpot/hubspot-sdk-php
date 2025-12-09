@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Forms;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Marketing\Forms\LegalConsentOptionsLegitimateInterest\LawfulBasis;
@@ -24,18 +24,18 @@ final class LegalConsentOptionsLegitimateInterest implements BaseModel
     use SdkModel;
 
     /** @var value-of<LawfulBasis> $lawfulBasis */
-    #[Api(enum: LawfulBasis::class)]
+    #[Required(enum: LawfulBasis::class)]
     public string $lawfulBasis;
 
-    #[Api]
+    #[Required]
     public string $privacyText;
 
     /** @var list<int> $subscriptionTypeIds */
-    #[Api(list: 'int')]
+    #[Required(list: 'int')]
     public array $subscriptionTypeIds;
 
     /** @var value-of<Type> $type */
-    #[Api(enum: Type::class)]
+    #[Required(enum: Type::class)]
     public string $type;
 
     /**

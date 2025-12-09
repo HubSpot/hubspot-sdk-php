@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\Blogs\Authors;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -29,13 +30,13 @@ final class AuthorUpdateBatchParams implements BaseModel
      *
      * @var list<mixed> $inputs
      */
-    #[Api(list: 'mixed')]
+    #[Required(list: 'mixed')]
     public array $inputs;
 
     /**
      * Specifies whether to update deleted Blog Authors. Defaults to `false`.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $archived;
 
     /**

@@ -6,7 +6,7 @@ namespace HubspotSDK\Scheduler\Meetings;
 
 use HubspotSDK\AssociationSpec;
 use HubspotSDK\AssociationSpec\AssociationCategory;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicObjectID;
@@ -21,11 +21,11 @@ final class ExternalAssociationCreateRequest implements BaseModel
     /** @use SdkModel<ExternalAssociationCreateRequestShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public PublicObjectID $to;
 
     /** @var list<AssociationSpec> $types */
-    #[Api(list: AssociationSpec::class)]
+    #[Required(list: AssociationSpec::class)]
     public array $types;
 
     /**

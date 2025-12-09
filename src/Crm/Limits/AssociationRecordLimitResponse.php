@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Limits;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -23,29 +23,29 @@ final class AssociationRecordLimitResponse implements BaseModel
     use SdkModel;
 
     /** @var list<AtLimitRecordSample> $atLimitFromRecordSamples */
-    #[Api(list: AtLimitRecordSample::class)]
+    #[Required(list: AtLimitRecordSample::class)]
     public array $atLimitFromRecordSamples;
 
     /**
      * The maximum number of associations allowed for records.
      */
-    #[Api]
+    #[Required]
     public int $limit;
 
     /** @var list<NearLimitRecordSample> $nearLimitFromRecordSamples */
-    #[Api(list: NearLimitRecordSample::class)]
+    #[Required(list: NearLimitRecordSample::class)]
     public array $nearLimitFromRecordSamples;
 
     /**
      * The total number of records that have reached their association limit.
      */
-    #[Api]
+    #[Required]
     public int $totalRecordsAtLimit;
 
     /**
      * The total number of records that are approaching their association limit.
      */
-    #[Api]
+    #[Required]
     public int $totalRecordsNearLimit;
 
     /**

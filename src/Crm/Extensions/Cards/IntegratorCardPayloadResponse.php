@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Extensions\Cards;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Extensions\Cards\IntegratorCardPayloadResponse\ResponseVersion;
@@ -29,23 +30,23 @@ final class IntegratorCardPayloadResponse implements BaseModel
     /**
      * The total number of card properties that will be sent in this response.
      */
-    #[Api]
+    #[Required]
     public int $totalCount;
 
     /**
      * URL to a page the integrator has built that displays all details for this card. This URL will be displayed to users under a `See more [x]` link if there are more than five items in your response, where `[x]` is the value of `itemLabel`.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $allItemsLinkUrl;
 
     /**
      * The label to be used for the `allItemsLinkUrl` link (e.g. 'See more tickets'). If not provided, this falls back to the card's title.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $cardLabel;
 
     /** @var value-of<ResponseVersion>|null $responseVersion */
-    #[Api(enum: ResponseVersion::class, optional: true)]
+    #[Optional(enum: ResponseVersion::class)]
     public ?string $responseVersion;
 
     /**
@@ -53,10 +54,10 @@ final class IntegratorCardPayloadResponse implements BaseModel
      *
      * @var list<IntegratorObjectResult>|null $sections
      */
-    #[Api(list: IntegratorObjectResult::class, optional: true)]
+    #[Optional(list: IntegratorObjectResult::class)]
     public ?array $sections;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?TopLevelActions $topLevelActions;
 
     /**

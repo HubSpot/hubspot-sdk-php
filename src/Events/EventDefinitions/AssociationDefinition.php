@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Events\EventDefinitions;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Events\EventDefinitions\AssociationDefinition\Cardinality;
@@ -53,13 +54,13 @@ final class AssociationDefinition implements BaseModel
     /**
      * The unique ID of the associated object (e.g., a contact ID).
      */
-    #[Api]
+    #[Required]
     public int $id;
 
     /**
      * Whether custom labels can be used in the association.
      */
-    #[Api]
+    #[Required]
     public bool $allowsCustomLabels;
 
     /**
@@ -67,7 +68,7 @@ final class AssociationDefinition implements BaseModel
      *
      * @var value-of<Cardinality> $cardinality
      */
-    #[Api(enum: Cardinality::class)]
+    #[Required(enum: Cardinality::class)]
     public string $cardinality;
 
     /**
@@ -75,49 +76,49 @@ final class AssociationDefinition implements BaseModel
      *
      * @var value-of<Category> $category
      */
-    #[Api(enum: Category::class)]
+    #[Required(enum: Category::class)]
     public string $category;
 
     /**
      * The ID of the source object type (e.g., 0-1 for contacts).
      */
-    #[Api]
+    #[Required]
     public string $fromObjectTypeId;
 
     /**
      * Whether all potential linked objects are included in the association.
      */
-    #[Api]
+    #[Required]
     public bool $hasAllAssociatedObjects;
 
     /**
      * Whether deletions in the association should cause cascading deletes to linked objects.
      */
-    #[Api]
+    #[Required]
     public bool $hasCascadingDeletes;
 
     /**
      * Whether a user has set a limit for the number of source objects.
      */
-    #[Api]
+    #[Required]
     public bool $hasUserEnforcedMaxFromObjectIds;
 
     /**
      * Whether a user has set a limit for the number of destination objects.
      */
-    #[Api]
+    #[Required]
     public bool $hasUserEnforcedMaxToObjectIds;
 
     /**
      * Whether the association is hidden or not.
      */
-    #[Api]
+    #[Required]
     public bool $hidden;
 
     /**
      * Whether the reverse association can also support custom labels.
      */
-    #[Api]
+    #[Required]
     public bool $inverseAllowsCustomLabels;
 
     /**
@@ -125,67 +126,67 @@ final class AssociationDefinition implements BaseModel
      *
      * @var value-of<InverseCardinality> $inverseCardinality
      */
-    #[Api(enum: InverseCardinality::class)]
+    #[Required(enum: InverseCardinality::class)]
     public string $inverseCardinality;
 
     /**
      * Whether all potential reverse linked objects are included in the association.
      */
-    #[Api]
+    #[Required]
     public bool $inverseHasAllAssociatedObjects;
 
     /**
      * The unique ID for the inverse side of the association.
      */
-    #[Api]
+    #[Required]
     public int $inverseId;
 
     /**
      * The name used to describe the inverse relationship in this association.
      */
-    #[Api]
+    #[Required]
     public string $inverseName;
 
     /**
      * Whether the inverse association is considered primary.
      */
-    #[Api]
+    #[Required]
     public bool $isInversePrimary;
 
     /**
      * Whether the association is the primary link between the entities involved.
      */
-    #[Api]
+    #[Required]
     public bool $isPrimary;
 
     /**
      * The maximum number of source object IDs allowed in the association.
      */
-    #[Api]
+    #[Required]
     public int $maxFromObjectIds;
 
     /**
      * The maximum number of destination object IDs allowed in the association.
      */
-    #[Api]
+    #[Required]
     public int $maxToObjectIds;
 
     /**
      * For labeled association types, the internal name of the association.
      */
-    #[Api]
+    #[Required]
     public string $name;
 
     /**
      * A unique across-portal ID applied to the association.
      */
-    #[Api]
+    #[Required]
     public string $portalUniqueIdentifier;
 
     /**
      * The ID of the destination object type (e.g., 0-3 for deals).
      */
-    #[Api]
+    #[Required]
     public string $toObjectTypeId;
 
     /**
@@ -193,19 +194,19 @@ final class AssociationDefinition implements BaseModel
      *
      * @var value-of<FromObjectType>|null $fromObjectType
      */
-    #[Api(enum: FromObjectType::class, optional: true)]
+    #[Optional(enum: FromObjectType::class)]
     public ?string $fromObjectType;
 
     /**
      * The label used to describe the reverse relationship in an association.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $inverseLabel;
 
     /**
      * The label given to an association.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $label;
 
     /**
@@ -213,7 +214,7 @@ final class AssociationDefinition implements BaseModel
      *
      * @var value-of<ToObjectType>|null $toObjectType
      */
-    #[Api(enum: ToObjectType::class, optional: true)]
+    #[Optional(enum: ToObjectType::class)]
     public ?string $toObjectType;
 
     /**

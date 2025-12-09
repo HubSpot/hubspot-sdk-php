@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Conversations\Threads;
 
 use HubspotSDK\Conversations\Threads\ThreadGetParams\Association;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -25,14 +25,14 @@ final class ThreadGetParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $archived;
 
     /** @var list<value-of<Association>>|null $association */
-    #[Api(list: Association::class, optional: true)]
+    #[Optional(list: Association::class)]
     public ?array $association;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $property;
 
     public function __construct()

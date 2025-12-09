@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Lists;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Lists\PublicListConversionDate\ConversionType;
@@ -22,13 +23,13 @@ final class PublicListConversionResponse implements BaseModel
     /** @use SdkModel<PublicListConversionResponseShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public string $listId;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $convertedAt;
 
-    #[Api(optional: true)]
+    #[Optional]
     public PublicListConversionDate|PublicListConversionInactivity|null $requestedConversionTime;
 
     /**

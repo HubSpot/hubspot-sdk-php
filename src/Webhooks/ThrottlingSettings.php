@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Webhooks;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -21,7 +21,7 @@ final class ThrottlingSettings implements BaseModel
     /**
      * The maximum number of concurrent HTTP requests HubSpot will attempt to make to your app.
      */
-    #[Api]
+    #[Required]
     public int $maxConcurrentRequests;
 
     /**

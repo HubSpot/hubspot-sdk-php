@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Crm;
 
 use HubspotSDK\AssociationSpec;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicObjectID;
@@ -24,7 +24,7 @@ final class SimplePublicObjectInputForCreate implements BaseModel
     use SdkModel;
 
     /** @var list<PublicAssociationsForObject> $associations */
-    #[Api(list: PublicAssociationsForObject::class)]
+    #[Required(list: PublicAssociationsForObject::class)]
     public array $associations;
 
     /**
@@ -32,7 +32,7 @@ final class SimplePublicObjectInputForCreate implements BaseModel
      *
      * @var array<string,string> $properties
      */
-    #[Api(map: 'string')]
+    #[Required(map: 'string')]
     public array $properties;
 
     /**

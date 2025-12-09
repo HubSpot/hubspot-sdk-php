@@ -5,7 +5,8 @@ declare(strict_types=1);
 namespace HubspotSDK\Cms\MediaBridge;
 
 use HubspotSDK\Cms\MediaBridge\MediaPlayedPercentageEvent\MediaType;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -37,65 +38,65 @@ final class MediaPlayedPercentageEvent implements BaseModel
     /**
      * The ID of the contact in HubSpot’s system that consumed the media. This can be fetched using HubSpot's Get contact by usertoken (utk) API. The API also supports supplying a usertoken, and will handle converting this into a contact ID automatically.
      */
-    #[Api]
+    #[Required]
     public int $contactId;
 
-    #[Api]
+    #[Required]
     public int $mediaBridgeId;
 
-    #[Api]
+    #[Required]
     public string $mediaBridgeObjectCoordinates;
 
-    #[Api]
+    #[Required]
     public string $mediaBridgeObjectTypeId;
 
-    #[Api]
+    #[Required]
     public string $mediaName;
 
     /** @var value-of<MediaType> $mediaType */
-    #[Api(enum: MediaType::class)]
+    #[Required(enum: MediaType::class)]
     public string $mediaType;
 
-    #[Api]
+    #[Required]
     public int $occurredTimestamp;
 
-    #[Api]
+    #[Required]
     public int $playedPercent;
 
     /**
      * The ID of the HubSpot account.
      */
-    #[Api]
+    #[Required]
     public int $portalId;
 
-    #[Api]
+    #[Required]
     public int $providerId;
 
-    #[Api]
+    #[Required]
     public string $sessionId;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $mediaUrl;
 
     /**
      * The content ID of the page that an event happened on, for HubSpot pages. Required if the page is a HubSpot page.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $pageId;
 
     /**
      * The name or title of the page that an event happened on. Required for non-HubSpot pages.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $pageName;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $pageObjectCoordinates;
 
     /**
      * The URL of the page that an event happened on. Required for non-HubSpot pages.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $pageUrl;
 
     /**

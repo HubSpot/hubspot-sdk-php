@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Automation\Sequences;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -25,28 +25,28 @@ final class PublicSequenceEnrollmentResponse implements BaseModel
     /** @use SdkModel<PublicSequenceEnrollmentResponseShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public string $id;
 
-    #[Api]
+    #[Required]
     public \DateTimeInterface $enrolledAt;
 
-    #[Api]
+    #[Required]
     public string $enrolledBy;
 
-    #[Api]
+    #[Required]
     public string $enrolledByEmail;
 
-    #[Api]
+    #[Required]
     public string $sequenceId;
 
-    #[Api]
+    #[Required]
     public string $sequenceName;
 
-    #[Api]
+    #[Required]
     public string $toEmail;
 
-    #[Api]
+    #[Required]
     public \DateTimeInterface $updatedAt;
 
     /**

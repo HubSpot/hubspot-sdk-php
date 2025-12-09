@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Objects\CommercePayments;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -31,7 +31,7 @@ final class CommercePaymentGetParams implements BaseModel
     /**
      * Whether to return only results that have been archived.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $archived;
 
     /**
@@ -39,13 +39,13 @@ final class CommercePaymentGetParams implements BaseModel
      *
      * @var list<string>|null $associations
      */
-    #[Api(list: 'string', optional: true)]
+    #[Optional(list: 'string')]
     public ?array $associations;
 
     /**
      * The name of a property whose values are unique for this object.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $idProperty;
 
     /**
@@ -53,7 +53,7 @@ final class CommercePaymentGetParams implements BaseModel
      *
      * @var list<string>|null $properties
      */
-    #[Api(list: 'string', optional: true)]
+    #[Optional(list: 'string')]
     public ?array $properties;
 
     /**
@@ -61,7 +61,7 @@ final class CommercePaymentGetParams implements BaseModel
      *
      * @var list<string>|null $propertiesWithHistory
      */
-    #[Api(list: 'string', optional: true)]
+    #[Optional(list: 'string')]
     public ?array $propertiesWithHistory;
 
     public function __construct()

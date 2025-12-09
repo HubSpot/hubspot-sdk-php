@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Events\EventDefinitions;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Events\EventDefinitions\DateTimePropertyOperation\Operator;
@@ -27,30 +28,30 @@ final class DateTimePropertyOperation implements BaseModel
     /** @use SdkModel<DateTimePropertyOperationShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public bool $includeObjectsWithNoValueSet;
 
-    #[Api]
+    #[Required]
     public string $operationType;
 
     /** @var value-of<Operator> $operator */
-    #[Api(enum: Operator::class)]
+    #[Required(enum: Operator::class)]
     public string $operator;
 
-    #[Api]
+    #[Required]
     public string $operatorName;
 
     /** @var value-of<PropertyType> $propertyType */
-    #[Api(enum: PropertyType::class)]
+    #[Required(enum: PropertyType::class)]
     public string $propertyType;
 
-    #[Api]
+    #[Required]
     public bool $requiresTimeZoneConversion;
 
-    #[Api]
+    #[Required]
     public int $timestamp;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $defaultValue;
 
     /**

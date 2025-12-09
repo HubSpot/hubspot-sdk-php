@@ -7,7 +7,8 @@ namespace HubspotSDK\Cms\MediaBridge;
 use HubspotSDK\AssociationSpec;
 use HubspotSDK\Cms\MediaBridge\DefaultRequirements\Operator;
 use HubspotSDK\Cms\MediaBridge\PropertyDefinitionSource\Type;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Option;
@@ -38,50 +39,50 @@ final class PropertyDefinition implements BaseModel
     /** @use SdkModel<PropertyDefinitionShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public string $objectTypeId;
 
     /**
      * Defines a property.
      */
-    #[Api]
+    #[Required]
     public Property $property;
 
     /** @var array<string,mixed>|null $calculationExpression */
-    #[Api(map: 'mixed', optional: true)]
+    #[Optional(map: 'mixed')]
     public ?array $calculationExpression;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $calculationFormula;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?PropertyDefinitionSource $definitionSource;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?ExtensionData $extensionData;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?ExternalOptionsMetaData $externalOptionsMetaData;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $fulcrumPortalId;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $fulcrumTimestamp;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $janusGroup;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?FieldLevelPermission $permission;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?DefinitionSource $propertyDefinitionSource;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?DefaultRequirements $propertyRequirements;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?RollupExpression $rollupExpression;
 
     /**

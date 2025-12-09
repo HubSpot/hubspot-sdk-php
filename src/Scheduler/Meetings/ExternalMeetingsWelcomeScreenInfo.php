@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Scheduler\Meetings;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -22,19 +22,19 @@ final class ExternalMeetingsWelcomeScreenInfo implements BaseModel
     /** @use SdkModel<ExternalMeetingsWelcomeScreenInfoShape> */
     use SdkModel;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $description;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $logoUrl;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $showWelcomeScreen;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $title;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $useCompanyLogo;
 
     public function __construct()

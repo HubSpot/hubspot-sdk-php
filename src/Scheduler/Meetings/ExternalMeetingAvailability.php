@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Scheduler\Meetings;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -18,10 +18,10 @@ final class ExternalMeetingAvailability implements BaseModel
     /** @use SdkModel<ExternalMeetingAvailabilityShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public int $endMillisUtc;
 
-    #[Api]
+    #[Required]
     public int $startMillisUtc;
 
     /**

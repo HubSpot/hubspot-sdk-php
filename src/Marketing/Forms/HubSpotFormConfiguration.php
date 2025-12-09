@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Forms;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Marketing\Forms\FormPostSubmitAction\Type;
@@ -34,31 +35,31 @@ final class HubSpotFormConfiguration implements BaseModel
     /**
      * Whether to add a reset link to the form. This removes any pre-populated content on the form and creates a new contact on submission.
      */
-    #[Api]
+    #[Required]
     public bool $allowLinkToResetKnownValues;
 
     /**
      * Whether the form can be archived.
      */
-    #[Api]
+    #[Required]
     public bool $archivable;
 
     /**
      * Whether the form can be cloned.
      */
-    #[Api]
+    #[Required]
     public bool $cloneable;
 
     /**
      * Whether to create a new contact when a form is submitted with an email address that doesn’t match any in your existing contacts records.
      */
-    #[Api]
+    #[Required]
     public bool $createNewContactForNewEmail;
 
     /**
      * Whether the form can be edited.
      */
-    #[Api]
+    #[Required]
     public bool $editable;
 
     /**
@@ -66,13 +67,13 @@ final class HubSpotFormConfiguration implements BaseModel
      *
      * @var value-of<Language> $language
      */
-    #[Api(enum: Language::class)]
+    #[Required(enum: Language::class)]
     public string $language;
 
     /**
      * Whether to send a notification email to the contact owner when a submission is received.
      */
-    #[Api]
+    #[Required]
     public bool $notifyContactOwner;
 
     /**
@@ -80,29 +81,29 @@ final class HubSpotFormConfiguration implements BaseModel
      *
      * @var list<string> $notifyRecipients
      */
-    #[Api(list: 'string')]
+    #[Required(list: 'string')]
     public array $notifyRecipients;
 
     /**
      * What should happen after the customer submits the form.
      */
-    #[Api]
+    #[Required]
     public FormPostSubmitAction $postSubmitAction;
 
     /**
      * Whether contact fields should pre-populate with known information when a contact returns to your site.
      */
-    #[Api]
+    #[Required]
     public bool $prePopulateKnownValues;
 
     /**
      * Whether CAPTCHA (spam prevention) is enabled.
      */
-    #[Api]
+    #[Required]
     public bool $recaptchaEnabled;
 
     /** @var list<LifecycleStage>|null $lifecycleStages */
-    #[Api(list: LifecycleStage::class, optional: true)]
+    #[Optional(list: LifecycleStage::class)]
     public ?array $lifecycleStages;
 
     /**

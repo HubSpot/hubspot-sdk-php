@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Lists;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -32,23 +32,23 @@ final class ListScheduleConversionParams implements BaseModel
     use SdkParams;
 
     /** @var value-of<ConversionType> $conversionType */
-    #[Api(enum: ConversionType::class)]
+    #[Required(enum: ConversionType::class)]
     public string $conversionType;
 
-    #[Api]
+    #[Required]
     public int $day;
 
-    #[Api]
+    #[Required]
     public int $month;
 
-    #[Api]
+    #[Required]
     public int $year;
 
-    #[Api]
+    #[Required]
     public int $offset;
 
     /** @var value-of<TimeUnit> $timeUnit */
-    #[Api(enum: TimeUnit::class)]
+    #[Required(enum: TimeUnit::class)]
     public string $timeUnit;
 
     /**

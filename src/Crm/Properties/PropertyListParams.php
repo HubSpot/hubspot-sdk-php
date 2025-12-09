@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Properties;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -31,17 +31,17 @@ final class PropertyListParams implements BaseModel
     /**
      * Whether to return only results that have been archived.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $archived;
 
     /** @var value-of<DataSensitivity>|null $dataSensitivity */
-    #[Api(enum: DataSensitivity::class, optional: true)]
+    #[Optional(enum: DataSensitivity::class)]
     public ?string $dataSensitivity;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $locale;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $properties;
 
     public function __construct()

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Associations\Schema;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -19,7 +19,7 @@ final class CollectionResponsePublicAssociationDefinitionNoPaging implements Bas
     use SdkModel;
 
     /** @var list<PublicAssociationDefinition> $results */
-    #[Api(list: PublicAssociationDefinition::class)]
+    #[Required(list: PublicAssociationDefinition::class)]
     public array $results;
 
     /**

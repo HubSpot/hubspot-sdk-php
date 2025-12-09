@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Scheduler\Meetings;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -28,40 +29,40 @@ final class ExternalMeetingBooking implements BaseModel
     /** @use SdkModel<ExternalMeetingBookingShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public int $duration;
 
-    #[Api]
+    #[Required]
     public string $email;
 
-    #[Api]
+    #[Required]
     public string $firstName;
 
     /** @var list<ExternalBookingFormField> $formFields */
-    #[Api(list: ExternalBookingFormField::class)]
+    #[Required(list: ExternalBookingFormField::class)]
     public array $formFields;
 
-    #[Api]
+    #[Required]
     public string $lastName;
 
     /** @var list<ExternalLegalConsentResponse> $legalConsentResponses */
-    #[Api(list: ExternalLegalConsentResponse::class)]
+    #[Required(list: ExternalLegalConsentResponse::class)]
     public array $legalConsentResponses;
 
     /** @var list<string> $likelyAvailableUserIds */
-    #[Api(list: 'string')]
+    #[Required(list: 'string')]
     public array $likelyAvailableUserIds;
 
-    #[Api]
+    #[Required]
     public string $slug;
 
-    #[Api]
+    #[Required]
     public \DateTimeInterface $startTime;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $locale;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $timezone;
 
     /**

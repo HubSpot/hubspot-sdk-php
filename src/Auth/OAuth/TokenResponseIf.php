@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Auth\OAuth;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -24,26 +24,26 @@ final class TokenResponseIf implements BaseModel
     /** @use SdkModel<TokenResponseIfShape> */
     use SdkModel;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $accessToken;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $expiresIn;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $hubId;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $idToken;
 
     /** @var list<string>|null $scopes */
-    #[Api(list: 'string', optional: true)]
+    #[Optional(list: 'string')]
     public ?array $scopes;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $tokenType;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $userId;
 
     public function __construct()

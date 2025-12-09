@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Events;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -22,19 +23,19 @@ final class MarketingEventIdentifiersResponse implements BaseModel
     /** @use SdkModel<MarketingEventIdentifiersResponseShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public string $externalEventId;
 
-    #[Api]
+    #[Required]
     public string $marketingEventName;
 
-    #[Api]
+    #[Required]
     public string $objectId;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?AppInfo $appInfo;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $externalAccountId;
 
     /**

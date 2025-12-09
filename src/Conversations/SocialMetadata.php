@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Conversations;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -24,25 +25,25 @@ final class SocialMetadata implements BaseModel
     /** @use SdkModel<SocialMetadataShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public string $mediaType;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $id;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $description;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $mediaTitle;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $mediaUrl;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $mediaUrlString;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $thumbnailUrl;
 
     /**

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Emails;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -23,22 +23,22 @@ final class PublicFontStyle implements BaseModel
     /** @use SdkModel<PublicFontStyleShape> */
     use SdkModel;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $bold;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $color;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $font;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $italic;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $size;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $underline;
 
     public function __construct()

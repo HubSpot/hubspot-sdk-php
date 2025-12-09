@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Files;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -30,49 +31,49 @@ final class SignedURL implements BaseModel
     /**
      * Timestamp of when the URL will no longer grant access to the file.
      */
-    #[Api]
+    #[Required]
     public \DateTimeInterface $expiresAt;
 
     /**
      * Extension of the requested file.
      */
-    #[Api]
+    #[Required]
     public string $extension;
 
     /**
      * Name of the requested file.
      */
-    #[Api]
+    #[Required]
     public string $name;
 
     /**
      * Size in bytes of the requested file.
      */
-    #[Api]
+    #[Required]
     public int $size;
 
     /**
      * Type of the file. Can be IMG, DOCUMENT, AUDIO, MOVIE, or OTHER.
      */
-    #[Api]
+    #[Required]
     public string $type;
 
     /**
      * Signed URL with access to the specified file. Anyone with this URL will be able to access the file until it expires.
      */
-    #[Api]
+    #[Required]
     public string $url;
 
     /**
      * For image and video files. The height of the file.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $height;
 
     /**
      * For image and video files. The width of the file.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $width;
 
     /**

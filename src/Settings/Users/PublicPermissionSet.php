@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Settings\Users;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -23,19 +23,19 @@ final class PublicPermissionSet implements BaseModel
     /**
      * The role's unique ID.
      */
-    #[Api]
+    #[Required]
     public string $id;
 
     /**
      * The role's name.
      */
-    #[Api]
+    #[Required]
     public string $name;
 
     /**
      * Whether this role has a paid seat and requires the billing-write scope to assign/unassign to users.
      */
-    #[Api]
+    #[Required]
     public bool $requiresBillingWrite;
 
     /**

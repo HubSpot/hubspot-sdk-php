@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Associations\V4;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -21,19 +21,19 @@ final class DateTime implements BaseModel
     /**
      * Indicates whether the DateTime value represents only a date without a time component.
      */
-    #[Api]
+    #[Required]
     public bool $dateOnly;
 
     /**
      * The integer value representing the shift in minutes from UTC for the DateTime value.
      */
-    #[Api]
+    #[Required]
     public int $timeZoneShift;
 
     /**
      * The integer value representing a specific point in time.
      */
-    #[Api]
+    #[Required]
     public int $value;
 
     /**

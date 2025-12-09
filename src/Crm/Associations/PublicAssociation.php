@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Associations;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicObjectID;
@@ -19,16 +19,16 @@ final class PublicAssociation implements BaseModel
     /** @use SdkModel<PublicAssociationShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public PublicObjectID $from;
 
-    #[Api]
+    #[Required]
     public PublicObjectID $to;
 
     /**
      * The type of association between the 'from' and 'to' objects.
      */
-    #[Api]
+    #[Required]
     public string $type;
 
     /**

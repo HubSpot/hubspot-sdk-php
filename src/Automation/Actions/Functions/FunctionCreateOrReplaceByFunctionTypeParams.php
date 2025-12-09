@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Automation\Actions\Functions;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -24,13 +24,13 @@ final class FunctionCreateOrReplaceByFunctionTypeParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    #[Api]
+    #[Required]
     public int $appId;
 
-    #[Api]
+    #[Required]
     public string $definitionId;
 
-    #[Api]
+    #[Required]
     public string $body;
 
     /**

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Scheduler\Meetings;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -24,26 +24,26 @@ final class ExternalLinkFormField implements BaseModel
     /** @use SdkModel<ExternalLinkFormFieldShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public string $fieldType;
 
-    #[Api]
+    #[Required]
     public bool $isCustom;
 
-    #[Api]
+    #[Required]
     public bool $isRequired;
 
-    #[Api]
+    #[Required]
     public string $label;
 
-    #[Api]
+    #[Required]
     public string $name;
 
     /** @var list<ExternalOption> $options */
-    #[Api(list: ExternalOption::class)]
+    #[Required(list: ExternalOption::class)]
     public array $options;
 
-    #[Api]
+    #[Required]
     public string $type;
 
     /**

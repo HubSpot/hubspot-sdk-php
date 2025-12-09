@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Campaigns\Reports;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -28,35 +29,35 @@ final class ReportListContactIDsByTypeParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    #[Api]
+    #[Required]
     public string $campaignGuid;
 
     /**
      * A cursor for pagination. If provided, the results will start after the given cursor.
      * Example: NTI1Cg%3D%3D.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $after;
 
     /**
      * End date for the report data, formatted as YYYY-MM-DD.
      * Default value: Current date.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $endDate;
 
     /**
      * Limit for the number of contacts to fetch
      * Default: 100.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $limit;
 
     /**
      * The start date for the report data, formatted as YYYY-MM-DD.
      * Default value: 2006-01-01.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $startDate;
 
     /**

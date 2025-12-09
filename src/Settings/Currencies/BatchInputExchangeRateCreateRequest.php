@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Settings\Currencies;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Settings\Currencies\ExchangeRateCreateRequest\FromCurrencyCode;
@@ -20,7 +20,7 @@ final class BatchInputExchangeRateCreateRequest implements BaseModel
     use SdkModel;
 
     /** @var list<ExchangeRateCreateRequest> $inputs */
-    #[Api(list: ExchangeRateCreateRequest::class)]
+    #[Required(list: ExchangeRateCreateRequest::class)]
     public array $inputs;
 
     /**

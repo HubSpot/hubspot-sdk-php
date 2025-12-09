@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\Pages;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -23,13 +23,13 @@ final class AbTestRerunRequestVNext implements BaseModel
     /**
      * ID of the test to rerun.
      */
-    #[Api]
+    #[Required]
     public string $abTestId;
 
     /**
      * ID of the object to reactivate as a test variation.
      */
-    #[Api]
+    #[Required]
     public string $variationId;
 
     /**

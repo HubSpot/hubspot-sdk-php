@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Campaigns;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Marketing\Campaigns\PublicBudgetTotals\CurrencyCode;
@@ -25,24 +26,24 @@ final class PublicBudgetTotals implements BaseModel
     use SdkModel;
 
     /** @var list<PublicBudgetItem> $budgetItems */
-    #[Api(list: PublicBudgetItem::class)]
+    #[Required(list: PublicBudgetItem::class)]
     public array $budgetItems;
 
     /** @var value-of<CurrencyCode> $currencyCode */
-    #[Api(enum: CurrencyCode::class)]
+    #[Required(enum: CurrencyCode::class)]
     public string $currencyCode;
 
     /** @var list<PublicSpendItem> $spendItems */
-    #[Api(list: PublicSpendItem::class)]
+    #[Required(list: PublicSpendItem::class)]
     public array $spendItems;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?float $budgetTotal;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?float $remainingBudget;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?float $spendTotal;
 
     /**

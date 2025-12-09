@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Scheduler\Meetings;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -32,52 +33,52 @@ final class ExternalMeetingBookingResponse implements BaseModel
     /** @use SdkModel<ExternalMeetingBookingResponseShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public string $bookingTimezone;
 
-    #[Api]
+    #[Required]
     public string $calendarEventId;
 
-    #[Api]
+    #[Required]
     public string $contactId;
 
-    #[Api]
+    #[Required]
     public int $duration;
 
-    #[Api]
+    #[Required]
     public \DateTimeInterface $end;
 
     /** @var list<ExternalValidatedFormField> $formFields */
-    #[Api(list: ExternalValidatedFormField::class)]
+    #[Required(list: ExternalValidatedFormField::class)]
     public array $formFields;
 
     /** @var list<string> $guestEmails */
-    #[Api(list: 'string')]
+    #[Required(list: 'string')]
     public array $guestEmails;
 
-    #[Api]
+    #[Required]
     public bool $isOffline;
 
     /** @var list<ExternalLegalConsentResponse> $legalConsentResponses */
-    #[Api(list: ExternalLegalConsentResponse::class)]
+    #[Required(list: ExternalLegalConsentResponse::class)]
     public array $legalConsentResponses;
 
-    #[Api]
+    #[Required]
     public \DateTimeInterface $start;
 
-    #[Api]
+    #[Required]
     public string $subject;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $locale;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $location;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $webConferenceMeetingId;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $webConferenceUrl;
 
     /**

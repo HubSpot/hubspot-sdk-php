@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Subscriptions\V4;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Marketing\Subscriptions\V4\PublicWideStatus\Channel;
@@ -31,7 +32,7 @@ final class PublicWideStatus implements BaseModel
      *
      * @var value-of<Channel> $channel
      */
-    #[Api(enum: Channel::class)]
+    #[Required(enum: Channel::class)]
     public string $channel;
 
     /**
@@ -39,19 +40,19 @@ final class PublicWideStatus implements BaseModel
      *
      * @var value-of<Status> $status
      */
-    #[Api(enum: Status::class)]
+    #[Required(enum: Status::class)]
     public string $status;
 
     /**
      * The email address of the contact.
      */
-    #[Api]
+    #[Required]
     public string $subscriberIdString;
 
     /**
      * The date and time when the status was recorded.
      */
-    #[Api]
+    #[Required]
     public \DateTimeInterface $timestamp;
 
     /**
@@ -59,13 +60,13 @@ final class PublicWideStatus implements BaseModel
      *
      * @var value-of<WideStatusType> $wideStatusType
      */
-    #[Api(enum: WideStatusType::class)]
+    #[Required(enum: WideStatusType::class)]
     public string $wideStatusType;
 
     /**
      * The ID of the business unit associated with the status.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $businessUnitId;
 
     /**

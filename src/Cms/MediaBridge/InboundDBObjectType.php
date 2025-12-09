@@ -5,7 +5,8 @@ declare(strict_types=1);
 namespace HubspotSDK\Cms\MediaBridge;
 
 use HubspotSDK\Cms\MediaBridge\InboundDBObjectType\MetaType;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -57,126 +58,126 @@ final class InboundDBObjectType implements BaseModel
     /** @use SdkModel<InboundDBObjectTypeShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public int $id;
 
-    #[Api]
+    #[Required]
     public bool $allowsSensitiveProperties;
 
-    #[Api]
+    #[Required]
     public string $createDatePropertyName;
 
     /** @var list<string> $defaultSearchPropertyNames */
-    #[Api(list: 'string')]
+    #[Required(list: 'string')]
     public array $defaultSearchPropertyNames;
 
-    #[Api]
+    #[Required]
     public bool $deleted;
 
-    #[Api]
+    #[Required]
     public string $fullyQualifiedName;
 
-    #[Api]
+    #[Required]
     public bool $hasCustomProperties;
 
-    #[Api]
+    #[Required]
     public bool $hasDefaultProperties;
 
-    #[Api]
+    #[Required]
     public bool $hasExternalObjectIds;
 
-    #[Api]
+    #[Required]
     public bool $hasOwners;
 
-    #[Api]
+    #[Required]
     public bool $hasPipelines;
 
-    #[Api]
+    #[Required]
     public bool $indexedForFiltersAndReports;
 
-    #[Api]
+    #[Required]
     public string $lastModifiedPropertyName;
 
     /** @var value-of<MetaType> $metaType */
-    #[Api(enum: MetaType::class)]
+    #[Required(enum: MetaType::class)]
     public string $metaType;
 
-    #[Api]
+    #[Required]
     public int $metaTypeId;
 
-    #[Api]
+    #[Required]
     public string $name;
 
-    #[Api]
+    #[Required]
     public string $objectTypeId;
 
-    #[Api]
+    #[Required]
     public string $permissioningType;
 
-    #[Api]
+    #[Required]
     public string $pipelinePropertyName;
 
-    #[Api]
+    #[Required]
     public string $pipelineStagePropertyName;
 
     /** @var list<string> $requiredProperties */
-    #[Api(list: 'string')]
+    #[Required(list: 'string')]
     public array $requiredProperties;
 
-    #[Api]
+    #[Required]
     public bool $restorable;
 
     /** @var list<ScopeMapping> $scopeMappings */
-    #[Api(list: ScopeMapping::class)]
+    #[Required(list: ScopeMapping::class)]
     public array $scopeMappings;
 
     /** @var list<string> $secondaryDisplayLabelPropertyNames */
-    #[Api(list: 'string')]
+    #[Required(list: 'string')]
     public array $secondaryDisplayLabelPropertyNames;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $accessScopeName;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $createdAt;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $description;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $integrationAppId;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $janusGroup;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $ownerPortalId;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $pipelineCloseDatePropertyName;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $pipelineTimeToClosePropertyName;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $pluralForm;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $primaryDisplayLabelPropertyName;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $readScopeName;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $singularForm;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $status;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $visibility;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $writeScopeName;
 
     /**

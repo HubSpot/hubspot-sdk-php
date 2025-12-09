@@ -7,7 +7,7 @@ namespace HubspotSDK\Automation\Actions;
 use HubspotSDK\Automation\Actions\FieldTypeDefinition\FieldType;
 use HubspotSDK\Automation\Actions\FieldTypeDefinition\ReferencedObjectType;
 use HubspotSDK\Automation\Actions\FieldTypeDefinition\Type;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Option;
@@ -22,7 +22,7 @@ final class OutputFieldDefinition implements BaseModel
     /** @use SdkModel<OutputFieldDefinitionShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public FieldTypeDefinition $typeDefinition;
 
     /**

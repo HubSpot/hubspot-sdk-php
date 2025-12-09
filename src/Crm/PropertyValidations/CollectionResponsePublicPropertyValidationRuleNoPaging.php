@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\PropertyValidations;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\PropertyValidations\PublicPropertyValidationRule\RuleType;
@@ -24,7 +24,7 @@ final class CollectionResponsePublicPropertyValidationRuleNoPaging implements Ba
      *
      * @var list<PublicPropertyValidationRule> $results
      */
-    #[Api(list: PublicPropertyValidationRule::class)]
+    #[Required(list: PublicPropertyValidationRule::class)]
     public array $results;
 
     /**

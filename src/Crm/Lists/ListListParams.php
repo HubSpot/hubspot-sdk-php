@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Lists;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -27,7 +27,7 @@ final class ListListParams implements BaseModel
     /**
      * A flag indicating whether or not the response object list definitions should include a filter branch definition. By default, object list definitions will not have their filter branch definitions included in the response.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $includeFilters;
 
     /**
@@ -35,7 +35,7 @@ final class ListListParams implements BaseModel
      *
      * @var list<string>|null $listIds
      */
-    #[Api(list: 'string', optional: true)]
+    #[Optional(list: 'string')]
     public ?array $listIds;
 
     public function __construct()

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicRelativeComparativeTimestampRefineBy\Type;
@@ -19,14 +19,14 @@ final class PublicRelativeComparativeTimestampRefineBy implements BaseModel
     /** @use SdkModel<PublicRelativeComparativeTimestampRefineByShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public string $comparison;
 
-    #[Api]
+    #[Required]
     public PublicTimeOffset $timeOffset;
 
     /** @var value-of<Type> $type */
-    #[Api(enum: Type::class)]
+    #[Required(enum: Type::class)]
     public string $type;
 
     /**

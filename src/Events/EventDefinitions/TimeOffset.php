@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Events\EventDefinitions;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Events\EventDefinitions\TimeOffset\OffsetDirection;
@@ -22,15 +22,15 @@ final class TimeOffset implements BaseModel
     /** @use SdkModel<TimeOffsetShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public int $amount;
 
     /** @var value-of<OffsetDirection> $offsetDirection */
-    #[Api(enum: OffsetDirection::class)]
+    #[Required(enum: OffsetDirection::class)]
     public string $offsetDirection;
 
     /** @var value-of<TimeUnit> $timeUnit */
-    #[Api(enum: TimeUnit::class)]
+    #[Required(enum: TimeUnit::class)]
     public string $timeUnit;
 
     /**

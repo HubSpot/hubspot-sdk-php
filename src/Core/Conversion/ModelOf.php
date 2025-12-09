@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Core\Conversion;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion;
 use HubspotSDK\Core\Conversion\Contracts\Converter;
@@ -27,7 +28,9 @@ final class ModelOf implements Converter
         $properties = [];
 
         foreach ($this->class->getProperties() as $property) {
-            if (!empty($property->getAttributes(Api::class))) {
+            $attributes = [...$property->getAttributes(Required::class), ...$property->getAttributes(Optional::class)];
+
+            if (!empty($attributes)) {
                 $name = $property->getName();
                 $properties[$name] = new PropertyInfo($property);
             }
@@ -97,7 +100,8 @@ final class ModelOf implements Converter
     public function from(array $data): BaseModel
     {
         $instance = $this->class->newInstanceWithoutConstructor();
-        $instance->__unserialize($data); // @phpstan-ignore-line
+        // @phpstan-ignore-next-line
+        $instance->__unserialize($data);
 
         return $instance;
     }

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Settings\Currencies;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Settings\Currencies\ExchangeRate\FromCurrencyCode;
@@ -30,25 +30,25 @@ final class ExchangeRate implements BaseModel
     /**
      * A unique identifier for the exchange rate.
      */
-    #[Api]
+    #[Required]
     public string $id;
 
     /**
      * The conversion rate between the to and from currency code of this exchange rate.
      */
-    #[Api]
+    #[Required]
     public float $conversionRate;
 
     /**
      * The date the exchange rate was created.
      */
-    #[Api]
+    #[Required]
     public \DateTimeInterface $createdAt;
 
     /**
      * The date the exchange rate is in effect.
      */
-    #[Api]
+    #[Required]
     public \DateTimeInterface $effectiveAt;
 
     /**
@@ -56,7 +56,7 @@ final class ExchangeRate implements BaseModel
      *
      * @var value-of<FromCurrencyCode> $fromCurrencyCode
      */
-    #[Api(enum: FromCurrencyCode::class)]
+    #[Required(enum: FromCurrencyCode::class)]
     public string $fromCurrencyCode;
 
     /**
@@ -64,19 +64,19 @@ final class ExchangeRate implements BaseModel
      *
      * @var value-of<ToCurrencyCode> $toCurrencyCode
      */
-    #[Api(enum: ToCurrencyCode::class)]
+    #[Required(enum: ToCurrencyCode::class)]
     public string $toCurrencyCode;
 
     /**
      * The date the exchange rate was last updated.
      */
-    #[Api]
+    #[Required]
     public \DateTimeInterface $updatedAt;
 
     /**
      * This indicates if the exchange rate is shown in the MultiCurrency settings page.
      */
-    #[Api]
+    #[Required]
     public bool $visibleInUI;
 
     /**

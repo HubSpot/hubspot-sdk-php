@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Limits;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -19,13 +19,13 @@ final class AtLimitRecordSample implements BaseModel
     /**
      * The label associated with a record that is at its limit.
      */
-    #[Api]
+    #[Required]
     public string $label;
 
     /**
      * The objectId of the object that is at its limit.
      */
-    #[Api]
+    #[Required]
     public int $objectId;
 
     /**

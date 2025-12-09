@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Events;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Marketing\Events\PropertyValue\DataSensitivity;
@@ -36,61 +37,61 @@ final class MarketingEventDefaultResponse implements BaseModel
      *
      * @var list<PropertyValue> $customProperties
      */
-    #[Api(list: PropertyValue::class)]
+    #[Required(list: PropertyValue::class)]
     public array $customProperties;
 
     /**
      * The name of the marketing event.
      */
-    #[Api]
+    #[Required]
     public string $eventName;
 
     /**
      * The name of the organizer of the marketing event.
      */
-    #[Api]
+    #[Required]
     public string $eventOrganizer;
 
     /**
      * The end date and time of the marketing event.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $endDateTime;
 
     /**
      * Indicates if the marketing event has been cancelled.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $eventCancelled;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $eventCompleted;
 
     /**
      * The description of the marketing event.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $eventDescription;
 
     /**
      * The type of the marketing event.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $eventType;
 
     /**
      * The URL in the external event application where the marketing event can be managed.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $eventUrl;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $objectId;
 
     /**
      * The start date and time of the marketing event.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $startDateTime;
 
     /**

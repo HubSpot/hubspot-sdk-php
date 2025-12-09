@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Cms\Blogs\Authors;
 
 use HubspotSDK\Cms\Blogs\Authors\BlogAuthor\Language;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -40,49 +40,49 @@ final class BlogAuthor implements BaseModel
     /**
      * The unique ID of the Blog Author.
      */
-    #[Api]
+    #[Required]
     public string $id;
 
     /**
      * URL to the blog author's avatar, if supplying a custom one.
      */
-    #[Api]
+    #[Required]
     public string $avatar;
 
     /**
      * A short biography of the blog author.
      */
-    #[Api]
+    #[Required]
     public string $bio;
 
-    #[Api]
+    #[Required]
     public \DateTimeInterface $created;
 
     /**
      * The timestamp (ISO8601 format) when this Blog Author was deleted.
      */
-    #[Api]
+    #[Required]
     public \DateTimeInterface $deletedAt;
 
     /**
      * The full name of the Blog Author to be displayed.
      */
-    #[Api]
+    #[Required]
     public string $displayName;
 
     /**
      * Email address of the Blog Author.
      */
-    #[Api]
+    #[Required]
     public string $email;
 
     /**
      * URL to the Blog Author's Facebook page.
      */
-    #[Api]
+    #[Required]
     public string $facebook;
 
-    #[Api]
+    #[Required]
     public string $fullName;
 
     /**
@@ -90,40 +90,40 @@ final class BlogAuthor implements BaseModel
      *
      * @var value-of<Language> $language
      */
-    #[Api(enum: Language::class)]
+    #[Required(enum: Language::class)]
     public string $language;
 
     /**
      * URL to the blog author's LinkedIn page.
      */
-    #[Api]
+    #[Required]
     public string $linkedin;
 
-    #[Api]
+    #[Required]
     public string $name;
 
-    #[Api]
+    #[Required]
     public string $slug;
 
     /**
      * ID of the primary blog author this object was translated from.
      */
-    #[Api]
+    #[Required]
     public int $translatedFromId;
 
     /**
      * URL or username of the Twitter account associated with the Blog Author. This will be normalized into the Twitter url for said user.
      */
-    #[Api]
+    #[Required]
     public string $twitter;
 
-    #[Api]
+    #[Required]
     public \DateTimeInterface $updated;
 
     /**
      * URL to the website of the Blog Author.
      */
-    #[Api]
+    #[Required]
     public string $website;
 
     /**

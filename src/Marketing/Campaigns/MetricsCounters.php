@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Campaigns;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -21,16 +21,16 @@ final class MetricsCounters implements BaseModel
     /** @use SdkModel<MetricsCountersShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public int $influencedContacts;
 
-    #[Api]
+    #[Required]
     public int $newContactsFirstTouch;
 
-    #[Api]
+    #[Required]
     public int $newContactsLastTouch;
 
-    #[Api]
+    #[Required]
     public int $sessions;
 
     /**

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Files;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Files\File\Access;
@@ -20,10 +20,10 @@ final class FileStat implements BaseModel
     /**
      * File.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?File $file;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?Folder $folder;
 
     public function __construct()

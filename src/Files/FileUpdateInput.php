@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Files;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Files\FileUpdateInput\Access;
@@ -32,37 +32,37 @@ final class FileUpdateInput implements BaseModel
      *
      * @var value-of<Access>|null $access
      */
-    #[Api(enum: Access::class, optional: true)]
+    #[Optional(enum: Access::class)]
     public ?string $access;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $clearExpires;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $expiresAt;
 
     /**
      * Mark whether the file should be used in new content or not.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $isUsableInContent;
 
     /**
      * New name for the file.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $name;
 
     /**
      * FolderId where the file should be moved to. folderId and folderPath parameters cannot be set at the same time.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $parentFolderId;
 
     /**
      * Folder path where the file should be moved to. folderId and folderPath parameters cannot be set at the same time.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $parentFolderPath;
 
     public function __construct()

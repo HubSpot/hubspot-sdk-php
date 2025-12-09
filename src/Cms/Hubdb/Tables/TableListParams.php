@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\Hubdb\Tables;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -38,49 +38,49 @@ final class TableListParams implements BaseModel
     /**
      * The cursor token value to get the next set of results. You can get this from the `paging.next.after` JSON property of a paged response containing more results.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $after;
 
     /**
      * Specifies whether to return archived tables. Defaults to `false`.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $archived;
 
     /**
      * Specifies the content type for the response.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $contentType;
 
     /**
      * Only return tables created after the specified time.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $createdAfter;
 
     /**
      * Only return tables created at exactly the specified time.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $createdAt;
 
     /**
      * Only return tables created before the specified time.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $createdBefore;
 
     /**
      * Indicates whether to retrieve the localized schema for the tables.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $isGetLocalizedSchema;
 
     /**
      * The maximum number of results to return. Default is 1000.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $limit;
 
     /**
@@ -88,25 +88,25 @@ final class TableListParams implements BaseModel
      *
      * @var list<string>|null $sort
      */
-    #[Api(list: 'string', optional: true)]
+    #[Optional(list: 'string')]
     public ?array $sort;
 
     /**
      * Only return tables last updated after the specified time.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $updatedAfter;
 
     /**
      * Only return tables last updated at exactly the specified time.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $updatedAt;
 
     /**
      * Only return tables last updated before the specified time.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $updatedBefore;
 
     public function __construct()

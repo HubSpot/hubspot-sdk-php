@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicEmailSubscriptionFilter\FilterType;
@@ -23,18 +24,18 @@ final class PublicEmailSubscriptionFilter implements BaseModel
     use SdkModel;
 
     /** @var list<string> $acceptedStatuses */
-    #[Api(list: 'string')]
+    #[Required(list: 'string')]
     public array $acceptedStatuses;
 
     /** @var value-of<FilterType> $filterType */
-    #[Api(enum: FilterType::class)]
+    #[Required(enum: FilterType::class)]
     public string $filterType;
 
     /** @var list<string> $subscriptionIds */
-    #[Api(list: 'string')]
+    #[Required(list: 'string')]
     public array $subscriptionIds;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $subscriptionType;
 
     /**

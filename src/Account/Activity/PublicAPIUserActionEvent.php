@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Account\Activity;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -27,40 +28,40 @@ final class PublicAPIUserActionEvent implements BaseModel
     /**
      * The unique ID of the activity.
      */
-    #[Api]
+    #[Required]
     public string $id;
 
-    #[Api]
+    #[Required]
     public ActingUser $actingUser;
 
     /**
      * The type of action taken.
      */
-    #[Api]
+    #[Required]
     public string $action;
 
     /**
      * The category of the activity.
      */
-    #[Api]
+    #[Required]
     public string $category;
 
     /**
      * The time that the action occurred at.
      */
-    #[Api]
+    #[Required]
     public \DateTimeInterface $occurredAt;
 
     /**
      * The subcategory of the activity.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $subCategory;
 
     /**
      * The ID of the impacted object.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $targetObjectId;
 
     /**

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Events;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -29,7 +29,7 @@ final class EventDeleteBatchByExternalEventIDParams implements BaseModel
     use SdkParams;
 
     /** @var list<MarketingEventExternalUniqueIdentifier> $inputs */
-    #[Api(list: MarketingEventExternalUniqueIdentifier::class)]
+    #[Required(list: MarketingEventExternalUniqueIdentifier::class)]
     public array $inputs;
 
     /**

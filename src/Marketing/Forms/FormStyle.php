@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Forms;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Marketing\Forms\FormStyle\SubmitAlignment;
@@ -32,41 +32,41 @@ final class FormStyle implements BaseModel
     /** @use SdkModel<FormStyleShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public string $backgroundWidth;
 
-    #[Api]
+    #[Required]
     public string $fontFamily;
 
-    #[Api]
+    #[Required]
     public string $helpTextColor;
 
-    #[Api]
+    #[Required]
     public string $helpTextSize;
 
-    #[Api]
+    #[Required]
     public string $labelTextColor;
 
-    #[Api]
+    #[Required]
     public string $labelTextSize;
 
-    #[Api]
+    #[Required]
     public string $legalConsentTextColor;
 
-    #[Api]
+    #[Required]
     public string $legalConsentTextSize;
 
     /** @var value-of<SubmitAlignment> $submitAlignment */
-    #[Api(enum: SubmitAlignment::class)]
+    #[Required(enum: SubmitAlignment::class)]
     public string $submitAlignment;
 
-    #[Api]
+    #[Required]
     public string $submitColor;
 
-    #[Api]
+    #[Required]
     public string $submitFontColor;
 
-    #[Api]
+    #[Required]
     public string $submitSize;
 
     /**

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Pipelines;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -31,13 +31,13 @@ final class PipelineCreateParams implements BaseModel
     /**
      * The order for displaying this pipeline. If two pipelines have a matching `displayOrder`, they will be sorted alphabetically by label.
      */
-    #[Api]
+    #[Required]
     public int $displayOrder;
 
     /**
      * A unique label used to organize pipelines in HubSpot's UI.
      */
-    #[Api]
+    #[Required]
     public string $label;
 
     /**
@@ -45,7 +45,7 @@ final class PipelineCreateParams implements BaseModel
      *
      * @var list<PipelineStageInput> $stages
      */
-    #[Api(list: PipelineStageInput::class)]
+    #[Required(list: PipelineStageInput::class)]
     public array $stages;
 
     /**

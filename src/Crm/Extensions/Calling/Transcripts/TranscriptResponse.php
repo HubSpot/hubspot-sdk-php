@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Extensions\Calling\Transcripts;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Extensions\Calling\Transcripts\TranscriptResponse\TranscriptSource;
@@ -24,24 +24,24 @@ final class TranscriptResponse implements BaseModel
     /** @use SdkModel<TranscriptResponseShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public string $id;
 
-    #[Api]
+    #[Required]
     public \DateTimeInterface $createdAt;
 
-    #[Api]
+    #[Required]
     public int $engagementId;
 
     /** @var value-of<TranscriptSource> $transcriptSource */
-    #[Api(enum: TranscriptSource::class)]
+    #[Required(enum: TranscriptSource::class)]
     public string $transcriptSource;
 
     /** @var list<TranscriptUtterance> $transcriptUtterances */
-    #[Api(list: TranscriptUtterance::class)]
+    #[Required(list: TranscriptUtterance::class)]
     public array $transcriptUtterances;
 
-    #[Api]
+    #[Required]
     public \DateTimeInterface $updatedAt;
 
     /**

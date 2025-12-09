@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Transactional\SmtpTokens;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -27,25 +27,25 @@ final class SmtpTokenListParams implements BaseModel
     /**
      * Starting point to get the next set of results.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $after;
 
     /**
      * A name for the campaign tied to the SMTP API token.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $campaignName;
 
     /**
      * Identifier assigned to the campaign provided during the token creation.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $emailCampaignId;
 
     /**
      * Maximum number of tokens to return.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $limit;
 
     public function __construct()

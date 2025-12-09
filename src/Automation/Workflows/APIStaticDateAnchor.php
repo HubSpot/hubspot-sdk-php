@@ -6,7 +6,8 @@ namespace HubspotSDK\Automation\Workflows;
 
 use HubspotSDK\Automation\Workflows\APIStaticDateAnchor\Month;
 use HubspotSDK\Automation\Workflows\APIStaticDateAnchor\Type;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -20,18 +21,18 @@ final class APIStaticDateAnchor implements BaseModel
     /** @use SdkModel<APIStaticDateAnchorShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public int $dayOfMonth;
 
     /** @var value-of<Month> $month */
-    #[Api(enum: Month::class)]
+    #[Required(enum: Month::class)]
     public string $month;
 
     /** @var value-of<Type> $type */
-    #[Api(enum: Type::class)]
+    #[Required(enum: Type::class)]
     public string $type;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $year;
 
     /**

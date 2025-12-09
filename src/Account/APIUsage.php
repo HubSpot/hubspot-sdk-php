@@ -5,7 +5,8 @@ declare(strict_types=1);
 namespace HubspotSDK\Account;
 
 use HubspotSDK\Account\APIUsage\FetchStatus;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -29,13 +30,13 @@ final class APIUsage implements BaseModel
     /**
      * Indicates when the cache was last updated.
      */
-    #[Api]
+    #[Required]
     public \DateTimeInterface $collectedAt;
 
     /**
      * How many API calls an account has made for the current day.
      */
-    #[Api]
+    #[Required]
     public int $currentUsage;
 
     /**
@@ -43,25 +44,25 @@ final class APIUsage implements BaseModel
      *
      * @var value-of<FetchStatus> $fetchStatus
      */
-    #[Api(enum: FetchStatus::class)]
+    #[Required(enum: FetchStatus::class)]
     public string $fetchStatus;
 
     /**
      * Name of the limit type.
      */
-    #[Api]
+    #[Required]
     public string $name;
 
     /**
      * Limits by which a single integration can consume the HubSpot public APIs.
      */
-    #[Api]
+    #[Required]
     public int $usageLimit;
 
     /**
      * Time that the limit will reset.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $resetsAt;
 
     /**

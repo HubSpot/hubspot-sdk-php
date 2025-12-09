@@ -7,7 +7,8 @@ namespace HubspotSDK\Automation\Workflows;
 use HubspotSDK\Automation\Workflows\APIAuthKeyWebhookAuthSettings\Location;
 use HubspotSDK\Automation\Workflows\APIWebhookAction\Method;
 use HubspotSDK\Automation\Workflows\APIWebhookAction\Type;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -27,28 +28,28 @@ final class APIWebhookAction implements BaseModel
     /** @use SdkModel<APIWebhookActionShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public string $actionId;
 
     /** @var value-of<Method> $method */
-    #[Api(enum: Method::class)]
+    #[Required(enum: Method::class)]
     public string $method;
 
     /** @var list<APIInputVariable> $queryParams */
-    #[Api(list: APIInputVariable::class)]
+    #[Required(list: APIInputVariable::class)]
     public array $queryParams;
 
     /** @var value-of<Type> $type */
-    #[Api(enum: Type::class)]
+    #[Required(enum: Type::class)]
     public string $type;
 
-    #[Api]
+    #[Required]
     public string $webhookUrl;
 
-    #[Api(optional: true)]
+    #[Optional]
     public APIAuthKeyWebhookAuthSettings|APISignatureWebhookAuthSettings|null $authSettings;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?APIConnection $connection;
 
     /**

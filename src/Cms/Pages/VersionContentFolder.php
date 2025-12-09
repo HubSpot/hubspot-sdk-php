@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\Pages;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\VersionUser;
@@ -27,22 +27,22 @@ final class VersionContentFolder implements BaseModel
     /**
      * ID of this folder version.
      */
-    #[Api]
+    #[Required]
     public string $id;
 
     /**
      * Model definition for a content folder.
      */
-    #[Api]
+    #[Required]
     public ContentFolder $object;
 
-    #[Api]
+    #[Required]
     public \DateTimeInterface $updatedAt;
 
     /**
      * Model definition for a version user. Contains addition information about the user who created a version.
      */
-    #[Api]
+    #[Required]
     public VersionUser $user;
 
     /**

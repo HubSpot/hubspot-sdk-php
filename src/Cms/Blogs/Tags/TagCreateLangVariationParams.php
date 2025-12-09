@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\Blogs\Tags;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -27,25 +28,25 @@ final class TagCreateLangVariationParams implements BaseModel
     /**
      * ID of the object to be cloned.
      */
-    #[Api]
+    #[Required]
     public string $id;
 
     /**
      * Name of newly cloned blog tag.
      */
-    #[Api]
+    #[Required]
     public string $name;
 
     /**
      * Target language of new variant.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $language;
 
     /**
      * Language of primary blog tag to clone.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $primaryLanguage;
 
     /**

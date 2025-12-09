@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Emails;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Marketing\Emails\PublicEmail\EmailTemplateMode;
@@ -31,22 +31,22 @@ final class VersionPublicEmail implements BaseModel
     /**
      * ID of this marketing email version.
      */
-    #[Api]
+    #[Required]
     public string $id;
 
     /**
      * A marketing email.
      */
-    #[Api]
+    #[Required]
     public PublicEmail $object;
 
-    #[Api]
+    #[Required]
     public \DateTimeInterface $updatedAt;
 
     /**
      * Model definition for a version user. Contains addition information about the user who created a version.
      */
-    #[Api]
+    #[Required]
     public VersionUser $user;
 
     /**

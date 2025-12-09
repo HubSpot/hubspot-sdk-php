@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Extensions\Cards;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Extensions\Cards\CardAuditResponse\ActionType;
@@ -26,23 +26,23 @@ final class CardAuditResponse implements BaseModel
     use SdkModel;
 
     /** @var value-of<ActionType> $actionType */
-    #[Api(enum: ActionType::class)]
+    #[Required(enum: ActionType::class)]
     public string $actionType;
 
-    #[Api]
+    #[Required]
     public int $applicationId;
 
     /** @var value-of<AuthSource> $authSource */
-    #[Api(enum: AuthSource::class)]
+    #[Required(enum: AuthSource::class)]
     public string $authSource;
 
-    #[Api]
+    #[Required]
     public int $changedAt;
 
-    #[Api]
+    #[Required]
     public int $initiatingUserId;
 
-    #[Api]
+    #[Required]
     public int $objectTypeId;
 
     /**

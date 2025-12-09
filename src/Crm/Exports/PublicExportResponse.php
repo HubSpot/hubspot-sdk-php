@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Exports;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Exports\PublicExportResponse\ExportState;
@@ -31,13 +32,13 @@ final class PublicExportResponse implements BaseModel
     /**
      * The unique ID of the export.
      */
-    #[Api]
+    #[Required]
     public string $id;
 
     /**
      * The timestamp when the export was created, in ISO 8601 format.
      */
-    #[Api]
+    #[Required]
     public \DateTimeInterface $createdAt;
 
     /**
@@ -45,7 +46,7 @@ final class PublicExportResponse implements BaseModel
      *
      * @var value-of<ExportState> $exportState
      */
-    #[Api(enum: ExportState::class)]
+    #[Required(enum: ExportState::class)]
     public string $exportState;
 
     /**
@@ -53,7 +54,7 @@ final class PublicExportResponse implements BaseModel
      *
      * @var value-of<ExportType> $exportType
      */
-    #[Api(enum: ExportType::class)]
+    #[Required(enum: ExportType::class)]
     public string $exportType;
 
     /**
@@ -61,31 +62,31 @@ final class PublicExportResponse implements BaseModel
      *
      * @var list<string> $objectProperties
      */
-    #[Api(list: 'string')]
+    #[Required(list: 'string')]
     public array $objectProperties;
 
     /**
      * The associated CRM object being exported.
      */
-    #[Api]
+    #[Required]
     public string $objectType;
 
     /**
      * The timestamp when the export was last updated, in ISO 8601 format.
      */
-    #[Api]
+    #[Required]
     public \DateTimeInterface $updatedAt;
 
     /**
      * The name assigned to the export.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $exportName;
 
     /**
      * The total number of records included in the export.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $recordCount;
 
     /**

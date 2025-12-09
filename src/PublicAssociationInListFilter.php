@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicAssociationInListFilter\FilterType;
@@ -28,29 +29,29 @@ final class PublicAssociationInListFilter implements BaseModel
     /** @use SdkModel<PublicAssociationInListFilterShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public string $associationCategory;
 
-    #[Api]
+    #[Required]
     public int $associationTypeId;
 
-    #[Api]
+    #[Required]
     public PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation $coalescingRefineBy;
 
     /** @var value-of<FilterType> $filterType */
-    #[Api(enum: FilterType::class)]
+    #[Required(enum: FilterType::class)]
     public string $filterType;
 
-    #[Api]
+    #[Required]
     public string $listId;
 
-    #[Api]
+    #[Required]
     public string $operator;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $toObjectType;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $toObjectTypeId;
 
     /**

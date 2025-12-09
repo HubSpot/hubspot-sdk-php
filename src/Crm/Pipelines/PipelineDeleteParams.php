@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Pipelines;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -26,19 +27,19 @@ final class PipelineDeleteParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    #[Api]
+    #[Required]
     public string $objectType;
 
     /**
      * Indicates whether to validate deal stage usages before deleting the pipeline.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $validateDealStageUsagesBeforeDelete;
 
     /**
      * Indicates whether to validate references before deleting the pipeline.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $validateReferencesBeforeDelete;
 
     /**

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\Pages\SitePages;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -25,7 +25,7 @@ final class SitePageSetNewLangPrimaryParams implements BaseModel
     /**
      * ID of object to set as primary in multi-language group.
      */
-    #[Api]
+    #[Required]
     public string $id;
 
     /**

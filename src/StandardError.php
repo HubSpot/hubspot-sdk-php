@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\ListOf;
@@ -31,7 +32,7 @@ final class StandardError implements BaseModel
     /**
      * The main category of the error.
      */
-    #[Api]
+    #[Required]
     public string $category;
 
     /**
@@ -39,7 +40,7 @@ final class StandardError implements BaseModel
      *
      * @var array<string,list<string>> $context
      */
-    #[Api(map: new ListOf('string'))]
+    #[Required(map: new ListOf('string'))]
     public array $context;
 
     /**
@@ -47,7 +48,7 @@ final class StandardError implements BaseModel
      *
      * @var list<ErrorDetail> $errors
      */
-    #[Api(list: ErrorDetail::class)]
+    #[Required(list: ErrorDetail::class)]
     public array $errors;
 
     /**
@@ -55,31 +56,31 @@ final class StandardError implements BaseModel
      *
      * @var array<string,string> $links
      */
-    #[Api(map: 'string')]
+    #[Required(map: 'string')]
     public array $links;
 
     /**
      * A human-readable string describing the error and possible remediation steps.
      */
-    #[Api]
+    #[Required]
     public string $message;
 
     /**
      * The HTTP status code associated with the error.
      */
-    #[Api]
+    #[Required]
     public string $status;
 
     /**
      * A unique ID for the error instance.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $id;
 
     /**
      * A more specific error category within each main category.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public mixed $subCategory;
 
     /**

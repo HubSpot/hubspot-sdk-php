@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Forms;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Marketing\Forms\FormDisplayOptions\Theme;
@@ -33,42 +34,42 @@ final class HubSpotFormDefinition implements BaseModel
     /** @use SdkModel<HubSpotFormDefinitionShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public string $id;
 
-    #[Api]
+    #[Required]
     public bool $archived;
 
-    #[Api]
+    #[Required]
     public HubSpotFormConfiguration $configuration;
 
-    #[Api]
+    #[Required]
     public \DateTimeInterface $createdAt;
 
     /**
      * Options for styling the form.
      */
-    #[Api]
+    #[Required]
     public FormDisplayOptions $displayOptions;
 
     /** @var list<mixed> $fieldGroups */
-    #[Api(list: FieldGroup::class)]
+    #[Required(list: FieldGroup::class)]
     public array $fieldGroups;
 
     /** @var value-of<FormType> $formType */
-    #[Api(enum: FormType::class)]
+    #[Required(enum: FormType::class)]
     public string $formType;
 
-    #[Api]
+    #[Required]
     public LegalConsentOptionsNone|LegalConsentOptionsLegitimateInterest|LegalConsentOptionsExplicitConsentToProcess|LegalConsentOptionsImplicitConsentToProcess $legalConsentOptions;
 
-    #[Api]
+    #[Required]
     public string $name;
 
-    #[Api]
+    #[Required]
     public \DateTimeInterface $updatedAt;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $archivedAt;
 
     /**

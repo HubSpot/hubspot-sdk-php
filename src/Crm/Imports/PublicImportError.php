@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Imports;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Imports\PublicImportError\ErrorType;
@@ -34,45 +35,45 @@ final class PublicImportError implements BaseModel
     /** @use SdkModel<PublicImportErrorShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public string $id;
 
-    #[Api]
+    #[Required]
     public int $createdAt;
 
     /** @var value-of<ErrorType> $errorType */
-    #[Api(enum: ErrorType::class)]
+    #[Required(enum: ErrorType::class)]
     public string $errorType;
 
-    #[Api]
+    #[Required]
     public ImportRowCore $sourceData;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $errorMessage;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $extraContext;
 
     /**
      * Represents a single custom property of a marketing event, storing its name, value, metadata (like source, timestamp, and sensitivity), and related audit information for tracking changes.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?PropertyValue $invalidPropertyValue;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $invalidValue;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $invalidValueToDisplay;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $knownColumnNumber;
 
     /** @var value-of<ObjectType>|null $objectType */
-    #[Api(enum: ObjectType::class, optional: true)]
+    #[Optional(enum: ObjectType::class)]
     public ?string $objectType;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $objectTypeId;
 
     /**

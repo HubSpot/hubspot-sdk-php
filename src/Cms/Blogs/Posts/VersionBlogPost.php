@@ -9,7 +9,7 @@ use HubspotSDK\Cms\Blogs\Posts\BlogPost\ContentTypeCategory;
 use HubspotSDK\Cms\Blogs\Posts\BlogPost\CurrentState;
 use HubspotSDK\Cms\Blogs\Posts\BlogPost\Language;
 use HubspotSDK\Cms\Pages\PagesContentLanguageVariation;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\VersionUser;
@@ -29,22 +29,22 @@ final class VersionBlogPost implements BaseModel
     /**
      * The id of the version.
      */
-    #[Api]
+    #[Required]
     public string $id;
 
     /**
      * Model definition for a Blog Post.
      */
-    #[Api]
+    #[Required]
     public BlogPost $object;
 
-    #[Api]
+    #[Required]
     public \DateTimeInterface $updatedAt;
 
     /**
      * Model definition for a version user. Contains addition information about the user who created a version.
      */
-    #[Api]
+    #[Required]
     public VersionUser $user;
 
     /**

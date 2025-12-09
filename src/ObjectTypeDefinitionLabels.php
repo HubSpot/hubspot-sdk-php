@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -18,10 +18,10 @@ final class ObjectTypeDefinitionLabels implements BaseModel
     /** @use SdkModel<ObjectTypeDefinitionLabelsShape> */
     use SdkModel;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $plural;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $singular;
 
     public function __construct()

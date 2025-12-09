@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Subscriptions;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -31,67 +32,67 @@ final class SubscriptionDefinition implements BaseModel
     /**
      * The ID of the definition.
      */
-    #[Api]
+    #[Required]
     public string $id;
 
     /**
      * Time at which the definition was created.
      */
-    #[Api]
+    #[Required]
     public \DateTimeInterface $createdAt;
 
     /**
      * A description of the subscription.
      */
-    #[Api]
+    #[Required]
     public string $description;
 
     /**
      * Whether the definition is active or archived.
      */
-    #[Api]
+    #[Required]
     public bool $isActive;
 
     /**
      * A subscription definition created by HubSpot.
      */
-    #[Api]
+    #[Required]
     public bool $isDefault;
 
     /**
      * A default description that is used by some HubSpot tools and cannot be edited.
      */
-    #[Api]
+    #[Required]
     public bool $isInternal;
 
     /**
      * The name of the subscription.
      */
-    #[Api]
+    #[Required]
     public string $name;
 
     /**
      * Time at which the definition was last updated.
      */
-    #[Api]
+    #[Required]
     public \DateTimeInterface $updatedAt;
 
     /**
      * The ID of the business unit associated with the subscription definition.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $businessUnitId;
 
     /**
      * The method or technology used to contact.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $communicationMethod;
 
     /**
      * The purpose of this subscription or the department in your organization that uses it.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $purpose;
 
     /**

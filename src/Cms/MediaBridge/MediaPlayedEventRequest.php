@@ -6,7 +6,8 @@ namespace HubspotSDK\Cms\MediaBridge;
 
 use HubspotSDK\Cms\MediaBridge\MediaPlayedEventRequest\MediaType;
 use HubspotSDK\Cms\MediaBridge\MediaPlayedEventRequest\State;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -35,50 +36,50 @@ final class MediaPlayedEventRequest implements BaseModel
     use SdkModel;
 
     /** @var value-of<MediaType> $mediaType */
-    #[Api(enum: MediaType::class)]
+    #[Required(enum: MediaType::class)]
     public string $mediaType;
 
-    #[Api]
+    #[Required]
     public int $occurredTimestamp;
 
-    #[Api]
+    #[Required]
     public string $sessionId;
 
     /** @var value-of<State> $state */
-    #[Api(enum: State::class)]
+    #[Required(enum: State::class)]
     public string $state;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $_hsenc;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $contactId;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $contactUtk;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $externalId;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $iframeUrl;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $mediaBridgeId;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $mediaName;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $mediaUrl;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $pageId;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $pageName;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $pageUrl;
 
     /**

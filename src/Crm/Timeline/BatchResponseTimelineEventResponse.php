@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Timeline;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Timeline\BatchResponseTimelineEventResponse\Status;
@@ -29,7 +30,7 @@ final class BatchResponseTimelineEventResponse implements BaseModel
     /**
      * The time the request was completed.
      */
-    #[Api]
+    #[Required]
     public \DateTimeInterface $completedAt;
 
     /**
@@ -37,13 +38,13 @@ final class BatchResponseTimelineEventResponse implements BaseModel
      *
      * @var list<TimelineEventResponse> $results
      */
-    #[Api(list: TimelineEventResponse::class)]
+    #[Required(list: TimelineEventResponse::class)]
     public array $results;
 
     /**
      * The time the request began processing.
      */
-    #[Api]
+    #[Required]
     public \DateTimeInterface $startedAt;
 
     /**
@@ -51,17 +52,17 @@ final class BatchResponseTimelineEventResponse implements BaseModel
      *
      * @var value-of<Status> $status
      */
-    #[Api(enum: Status::class)]
+    #[Required(enum: Status::class)]
     public string $status;
 
     /** @var array<string,string>|null $links */
-    #[Api(map: 'string', optional: true)]
+    #[Optional(map: 'string')]
     public ?array $links;
 
     /**
      * The time the request occurred.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $requestedAt;
 
     /**

@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Conversations;
 
 use HubspotSDK\Conversations\PublicWhatsAppTemplateMetadata\Type;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -23,18 +23,18 @@ final class PublicWhatsAppTemplateMetadata implements BaseModel
     use SdkModel;
 
     /** @var array<string,int> $crmObjectIds */
-    #[Api(map: 'int')]
+    #[Required(map: 'int')]
     public array $crmObjectIds;
 
-    #[Api]
+    #[Required]
     public string $mappedTemplateId;
 
     /** @var array<string,string> $parameters */
-    #[Api(map: 'string')]
+    #[Required(map: 'string')]
     public array $parameters;
 
     /** @var value-of<Type> $type */
-    #[Api(enum: Type::class)]
+    #[Required(enum: Type::class)]
     public string $type;
 
     /**

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Lists\Folders;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -27,13 +27,13 @@ final class FolderMoveListParams implements BaseModel
     /**
      * The Id of the list to move.
      */
-    #[Api]
+    #[Required]
     public string $listId;
 
     /**
      * The Id of folder to move the list to, the root folder is Id 0.
      */
-    #[Api]
+    #[Required]
     public string $newFolderId;
 
     /**

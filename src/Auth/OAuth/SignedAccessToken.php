@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Auth\OAuth;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -32,49 +32,49 @@ final class SignedAccessToken implements BaseModel
     /** @use SdkModel<SignedAccessTokenShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public int $appId;
 
-    #[Api]
+    #[Required]
     public int $expiresAt;
 
-    #[Api]
+    #[Required]
     public int $hubId;
 
-    #[Api]
+    #[Required]
     public string $hublet;
 
-    #[Api]
+    #[Required]
     public int $installingUserId;
 
-    #[Api]
+    #[Required]
     public bool $isPrivateDistribution;
 
-    #[Api]
+    #[Required]
     public bool $isServiceAccount;
 
-    #[Api]
+    #[Required]
     public bool $isUserLevel;
 
-    #[Api]
+    #[Required]
     public string $newSignature;
 
-    #[Api]
+    #[Required]
     public string $scopes;
 
-    #[Api]
+    #[Required]
     public string $scopeToScopeGroupPks;
 
-    #[Api]
+    #[Required]
     public string $signature;
 
-    #[Api]
+    #[Required]
     public string $trialScopes;
 
-    #[Api]
+    #[Required]
     public string $trialScopeToScopeGroupPks;
 
-    #[Api]
+    #[Required]
     public int $userId;
 
     /**

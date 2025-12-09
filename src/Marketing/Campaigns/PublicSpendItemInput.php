@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Campaigns;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -18,16 +19,16 @@ final class PublicSpendItemInput implements BaseModel
     /** @use SdkModel<PublicSpendItemInputShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public float $amount;
 
-    #[Api]
+    #[Required]
     public string $name;
 
-    #[Api]
+    #[Required]
     public int $order;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $description;
 
     /**

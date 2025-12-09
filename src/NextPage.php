@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -21,13 +22,13 @@ final class NextPage implements BaseModel
     /**
      * A paging cursor token for retrieving subsequent pages.
      */
-    #[Api]
+    #[Required]
     public string $after;
 
     /**
      * A URL that can be used to retrieve the next page results.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $link;
 
     /**

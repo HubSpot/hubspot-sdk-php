@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -26,7 +27,7 @@ final class SimplePublicObjectBatchInput implements BaseModel
     /**
      * The unique ID of the object.
      */
-    #[Api]
+    #[Required]
     public string $id;
 
     /**
@@ -34,19 +35,19 @@ final class SimplePublicObjectBatchInput implements BaseModel
      *
      * @var array<string,string> $properties
      */
-    #[Api(map: 'string')]
+    #[Required(map: 'string')]
     public array $properties;
 
     /**
      * The name of a unique identifier property, which can be used for identifying objects instead of the object ID.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $idProperty;
 
     /**
      * A unique identifier for tracing the request.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $objectWriteTraceId;
 
     /**

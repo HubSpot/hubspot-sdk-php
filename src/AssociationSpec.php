@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK;
 
 use HubspotSDK\AssociationSpec\AssociationCategory;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -26,13 +26,13 @@ final class AssociationSpec implements BaseModel
      *
      * @var value-of<AssociationCategory> $associationCategory
      */
-    #[Api(enum: AssociationCategory::class)]
+    #[Required(enum: AssociationCategory::class)]
     public string $associationCategory;
 
     /**
      * The ID representing the specific type of association.
      */
-    #[Api]
+    #[Required]
     public int $associationTypeId;
 
     /**

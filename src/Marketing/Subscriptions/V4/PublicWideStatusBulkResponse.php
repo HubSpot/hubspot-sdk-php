@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Subscriptions\V4;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Marketing\Subscriptions\V4\PublicWideStatus\Channel;
@@ -24,7 +24,7 @@ final class PublicWideStatusBulkResponse implements BaseModel
     /**
      * The contact's email address.
      */
-    #[Api]
+    #[Required]
     public string $subscriberIdString;
 
     /**
@@ -32,7 +32,7 @@ final class PublicWideStatusBulkResponse implements BaseModel
      *
      * @var list<PublicWideStatus> $wideStatuses
      */
-    #[Api(list: PublicWideStatus::class)]
+    #[Required(list: PublicWideStatus::class)]
     public array $wideStatuses;
 
     /**

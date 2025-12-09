@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Events\EventDefinitions;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\OptionInput;
@@ -26,7 +27,7 @@ final class ExternalBehavioralEventTypeDefinitionEgg implements BaseModel
     /**
      * Human readable label for the event. Used in HubSpot UI.
      */
-    #[Api]
+    #[Required]
     public string $label;
 
     /**
@@ -34,25 +35,25 @@ final class ExternalBehavioralEventTypeDefinitionEgg implements BaseModel
      *
      * @var list<ExternalBehavioralEventPropertyCreate> $propertyDefinitions
      */
-    #[Api(list: ExternalBehavioralEventPropertyCreate::class)]
+    #[Required(list: ExternalBehavioralEventPropertyCreate::class)]
     public array $propertyDefinitions;
 
     /**
      * A description of the event that will be shown as help text in HubSpot.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $description;
 
     /**
      * Internal event name, which must be used when referencing the event from this event definitions API. If a name is not supplied, one will be generated based on the label. The `name` value will also be used to automatically generate a `fullyQualifiedName` for the event definition, which you'll use when sending event completions to this event.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $name;
 
     /**
      * The object type to associate this event to. Can be one of CONTACT, COMPANY, DEAL, TICKET. If no primaryObject is supplied, we will default to associating the event to CONTACT objects.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $primaryObject;
 
     /**

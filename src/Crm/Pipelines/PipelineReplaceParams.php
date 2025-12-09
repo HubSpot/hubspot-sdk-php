@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Pipelines;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -31,19 +32,19 @@ final class PipelineReplaceParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    #[Api]
+    #[Required]
     public string $objectType;
 
     /**
      * The order for displaying this pipeline. If two pipelines have a matching `displayOrder`, they will be sorted alphabetically by label.
      */
-    #[Api]
+    #[Required]
     public int $displayOrder;
 
     /**
      * A unique label used to organize pipelines in HubSpot's UI.
      */
-    #[Api]
+    #[Required]
     public string $label;
 
     /**
@@ -51,19 +52,19 @@ final class PipelineReplaceParams implements BaseModel
      *
      * @var list<PipelineStageInput> $stages
      */
-    #[Api(list: PipelineStageInput::class)]
+    #[Required(list: PipelineStageInput::class)]
     public array $stages;
 
     /**
      * Indicates whether to validate deal stage usages before deleting the pipeline.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $validateDealStageUsagesBeforeDelete;
 
     /**
      * Indicates whether to validate references before deleting the pipeline.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $validateReferencesBeforeDelete;
 
     /**

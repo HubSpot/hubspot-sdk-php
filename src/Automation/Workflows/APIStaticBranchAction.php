@@ -6,7 +6,8 @@ namespace HubspotSDK\Automation\Workflows;
 
 use HubspotSDK\Automation\Workflows\APIStaticBranchAction\Type;
 use HubspotSDK\Automation\Workflows\APITimestampValue\TimestampType;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -25,24 +26,24 @@ final class APIStaticBranchAction implements BaseModel
     /** @use SdkModel<APIStaticBranchActionShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public string $actionId;
 
-    #[Api]
+    #[Required]
     public APIActionDataValue|APIObjectPropertyValue|APIStaticValue|APIRelativeDateTimeValue|APITimestampValue|APIIncrementValue|APIFetchedObjectPropertyValue|APIAppendObjectPropertyValue|APIStaticAppendValue|APIEnrollmentEventPropertyValue $inputValue;
 
     /** @var list<APIStaticBranch> $staticBranches */
-    #[Api(list: APIStaticBranch::class)]
+    #[Required(list: APIStaticBranch::class)]
     public array $staticBranches;
 
     /** @var value-of<Type> $type */
-    #[Api(enum: Type::class)]
+    #[Required(enum: Type::class)]
     public string $type;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?APIConnection $defaultBranch;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $defaultBranchName;
 
     /**

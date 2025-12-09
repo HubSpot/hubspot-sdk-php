@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Associations\Schema\V4\Configurations;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -24,11 +24,11 @@ final class ConfigurationBatchDeleteParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    #[Api]
+    #[Required]
     public string $fromObjectType;
 
     /** @var list<PublicAssociationSpec> $inputs */
-    #[Api(list: PublicAssociationSpec::class)]
+    #[Required(list: PublicAssociationSpec::class)]
     public array $inputs;
 
     /**

@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Webhooks;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -26,25 +27,25 @@ final class SettingsResponse implements BaseModel
     /**
      * When this subscription was created. Formatted as milliseconds from the [Unix epoch](#).
      */
-    #[Api]
+    #[Required]
     public \DateTimeInterface $createdAt;
 
     /**
      * A publicly available URL for HubSpot to call where event payloads will be delivered. See [link-so-some-doc](#) for details about the format of these event payloads.
      */
-    #[Api]
+    #[Required]
     public string $targetUrl;
 
     /**
      * Configuration details for webhook throttling.
      */
-    #[Api]
+    #[Required]
     public ThrottlingSettings $throttling;
 
     /**
      * When this subscription was last updated. Formatted as milliseconds from the [Unix epoch](#).
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $updatedAt;
 
     /**

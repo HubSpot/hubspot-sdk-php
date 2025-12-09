@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Emails;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -31,7 +31,7 @@ final class EmailGetParams implements BaseModel
     /**
      * Whether to return only results that have been archived.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $archived;
 
     /**
@@ -39,25 +39,25 @@ final class EmailGetParams implements BaseModel
      *
      * @var list<string>|null $includedProperties
      */
-    #[Api(list: 'string', optional: true)]
+    #[Optional(list: 'string')]
     public ?array $includedProperties;
 
     /**
      * Include statistics with email.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $includeStats;
 
     /**
      * If set to true, loads `campaignName` and `campaignUtm`.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $marketingCampaignNames;
 
     /**
      * If set to true, loads workflows in which the email is used within a "send email" action.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $workflowNames;
 
     public function __construct()

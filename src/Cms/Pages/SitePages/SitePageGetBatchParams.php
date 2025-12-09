@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\Pages\SitePages;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -29,13 +30,13 @@ final class SitePageGetBatchParams implements BaseModel
      *
      * @var list<string> $inputs
      */
-    #[Api(list: 'string')]
+    #[Required(list: 'string')]
     public array $inputs;
 
     /**
      * Specifies whether to return deleted Site Pages. Defaults to `false`.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $archived;
 
     /**

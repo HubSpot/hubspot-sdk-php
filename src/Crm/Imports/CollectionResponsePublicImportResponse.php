@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Imports;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Imports\PublicImportResponse\ImportSource;
@@ -24,10 +25,10 @@ final class CollectionResponsePublicImportResponse implements BaseModel
     use SdkModel;
 
     /** @var list<PublicImportResponse> $results */
-    #[Api(list: PublicImportResponse::class)]
+    #[Required(list: PublicImportResponse::class)]
     public array $results;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?Paging $paging;
 
     /**

@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Transactional;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\ForwardPaging;
@@ -21,10 +22,10 @@ final class CollectionResponseSmtpAPITokenViewForwardPaging implements BaseModel
     use SdkModel;
 
     /** @var list<SmtpAPITokenView> $results */
-    #[Api(list: SmtpAPITokenView::class)]
+    #[Required(list: SmtpAPITokenView::class)]
     public array $results;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?ForwardPaging $paging;
 
     /**

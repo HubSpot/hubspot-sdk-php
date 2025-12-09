@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Conversations\VisitorIdentification;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -23,19 +24,19 @@ final class IdentificationTokenGenerationRequest implements BaseModel
     /**
      * The email of the visitor that you wish to identify.
      */
-    #[Api]
+    #[Required]
     public string $email;
 
     /**
      * The first name of the visitor that you wish to identify. This value will only be set in HubSpot for new contacts and existing contacts where first name is unknown. Optional.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $firstName;
 
     /**
      * The last name of the visitor that you wish to identify. This value will only be set in HubSpot for new contacts and existing contacts where last name is unknown. Optional.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $lastName;
 
     /**

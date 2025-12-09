@@ -6,7 +6,8 @@ namespace HubspotSDK\Automation\Workflows;
 
 use HubspotSDK\Automation\Workflows\APIEventBasedEnrollmentCriteria\ListMembershipFilterBranch;
 use HubspotSDK\Automation\Workflows\APIEventBasedEnrollmentCriteria\Type;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicAbsoluteComparativeTimestampRefineBy;
@@ -67,21 +68,21 @@ final class APIEventBasedEnrollmentCriteria implements BaseModel
     use SdkModel;
 
     /** @var list<mixed> $eventFilterBranches */
-    #[Api(list: PublicUnifiedEventsFilterBranch::class)]
+    #[Required(list: PublicUnifiedEventsFilterBranch::class)]
     public array $eventFilterBranches;
 
     /** @var list<mixed> $listMembershipFilterBranches */
-    #[Api(list: ListMembershipFilterBranch::class)]
+    #[Required(list: ListMembershipFilterBranch::class)]
     public array $listMembershipFilterBranches;
 
-    #[Api]
+    #[Required]
     public bool $shouldReEnroll;
 
     /** @var value-of<Type> $type */
-    #[Api(enum: Type::class)]
+    #[Required(enum: Type::class)]
     public string $type;
 
-    #[Api(optional: true)]
+    #[Optional]
     public PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch|null $refinementCriteria;
 
     /**

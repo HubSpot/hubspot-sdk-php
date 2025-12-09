@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Properties;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -43,25 +44,25 @@ final class PropertyUpdateParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    #[Api]
+    #[Required]
     public string $objectType;
 
     /**
      * Represents a formula that is used to compute a calculated property.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $calculationFormula;
 
     /**
      * A description of the property that will be shown as help text in HubSpot.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $description;
 
     /**
      * Properties are displayed in order starting with the lowest positive integer value. Values of -1 will cause the Property to be displayed after any positive values.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $displayOrder;
 
     /**
@@ -69,31 +70,31 @@ final class PropertyUpdateParams implements BaseModel
      *
      * @var value-of<FieldType>|null $fieldType
      */
-    #[Api(enum: FieldType::class, optional: true)]
+    #[Optional(enum: FieldType::class)]
     public ?string $fieldType;
 
     /**
      * Whether or not the property can be used in a HubSpot form.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $formField;
 
     /**
      * The name of the property group the property belongs to.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $groupName;
 
     /**
      * If true, the property won't be visible and can't be used in HubSpot.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $hidden;
 
     /**
      * A human-readable property label that will be shown in HubSpot.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $label;
 
     /**
@@ -101,7 +102,7 @@ final class PropertyUpdateParams implements BaseModel
      *
      * @var list<OptionInput>|null $options
      */
-    #[Api(list: OptionInput::class, optional: true)]
+    #[Optional(list: OptionInput::class)]
     public ?array $options;
 
     /**
@@ -109,7 +110,7 @@ final class PropertyUpdateParams implements BaseModel
      *
      * @var value-of<Type>|null $type
      */
-    #[Api(enum: Type::class, optional: true)]
+    #[Optional(enum: Type::class)]
     public ?string $type;
 
     /**

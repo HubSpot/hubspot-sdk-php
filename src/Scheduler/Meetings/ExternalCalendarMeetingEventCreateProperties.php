@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Scheduler\Meetings;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -30,45 +31,45 @@ final class ExternalCalendarMeetingEventCreateProperties implements BaseModel
     /** @use SdkModel<ExternalCalendarMeetingEventCreatePropertiesShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public \DateTimeInterface $hs_meeting_end_time;
 
-    #[Api]
+    #[Required]
     public string $hs_meeting_outcome;
 
-    #[Api]
+    #[Required]
     public \DateTimeInterface $hs_meeting_start_time;
 
-    #[Api]
+    #[Required]
     public string $hs_meeting_title;
 
-    #[Api]
+    #[Required]
     public \DateTimeInterface $hs_timestamp;
 
-    #[Api]
+    #[Required]
     public string $hubspot_owner_id;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $hs_activity_type;
 
     /** @var list<string>|null $hs_attachment_ids */
-    #[Api(list: 'string', optional: true)]
+    #[Optional(list: 'string')]
     public ?array $hs_attachment_ids;
 
     /** @var list<string>|null $hs_attendee_owner_ids */
-    #[Api(list: 'string', optional: true)]
+    #[Optional(list: 'string')]
     public ?array $hs_attendee_owner_ids;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $hs_internal_meeting_notes;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $hs_meeting_body;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $hs_meeting_location;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $hs_meeting_location_type;
 
     /**

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\SiteSearch;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -18,17 +18,17 @@ final class IndexedField implements BaseModel
     /** @use SdkModel<IndexedFieldShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public bool $metadataField;
 
-    #[Api]
+    #[Required]
     public string $name;
 
-    #[Api]
+    #[Required]
     public mixed $value;
 
     /** @var list<mixed> $values */
-    #[Api(list: 'mixed')]
+    #[Required(list: 'mixed')]
     public array $values;
 
     /**

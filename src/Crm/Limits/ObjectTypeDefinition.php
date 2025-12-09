@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Limits;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -21,19 +21,19 @@ final class ObjectTypeDefinition implements BaseModel
     /**
      * The unique identifier for the object type.
      */
-    #[Api]
+    #[Required]
     public string $objectTypeId;
 
     /**
      * The plural form label for the object type.
      */
-    #[Api]
+    #[Required]
     public string $pluralLabel;
 
     /**
      * The singular form label for the object type.
      */
-    #[Api]
+    #[Required]
     public string $singularLabel;
 
     /**

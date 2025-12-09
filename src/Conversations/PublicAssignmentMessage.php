@@ -6,7 +6,8 @@ namespace HubspotSDK\Conversations;
 
 use HubspotSDK\Conversations\PublicAssignmentMessage\Type;
 use HubspotSDK\Conversations\PublicClient\ClientType;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -31,43 +32,43 @@ final class PublicAssignmentMessage implements BaseModel
     /** @use SdkModel<PublicAssignmentMessageShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public string $id;
 
-    #[Api]
+    #[Required]
     public bool $archived;
 
-    #[Api]
+    #[Required]
     public PublicClient $client;
 
-    #[Api]
+    #[Required]
     public string $conversationsThreadId;
 
-    #[Api]
+    #[Required]
     public \DateTimeInterface $createdAt;
 
-    #[Api]
+    #[Required]
     public string $createdBy;
 
     /** @var list<PublicRecipient> $recipients */
-    #[Api(list: PublicRecipient::class)]
+    #[Required(list: PublicRecipient::class)]
     public array $recipients;
 
     /** @var list<PublicSender> $senders */
-    #[Api(list: PublicSender::class)]
+    #[Required(list: PublicSender::class)]
     public array $senders;
 
     /** @var value-of<Type> $type */
-    #[Api(enum: Type::class)]
+    #[Required(enum: Type::class)]
     public string $type;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $assignedFrom;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $assignedTo;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $updatedAt;
 
     /**

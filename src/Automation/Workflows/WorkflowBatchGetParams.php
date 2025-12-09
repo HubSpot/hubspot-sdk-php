@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Automation\Workflows;
 
 use HubspotSDK\Automation\Workflows\APIFlowBatchFetchFlowIDCoordinate\Type;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -26,7 +26,7 @@ final class WorkflowBatchGetParams implements BaseModel
     use SdkParams;
 
     /** @var list<APIFlowBatchFetchFlowIDCoordinate> $inputs */
-    #[Api(list: APIFlowBatchFetchFlowIDCoordinate::class)]
+    #[Required(list: APIFlowBatchFetchFlowIDCoordinate::class)]
     public array $inputs;
 
     /**

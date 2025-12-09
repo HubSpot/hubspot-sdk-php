@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Lists;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -19,11 +19,11 @@ final class PublicListPermissions implements BaseModel
     use SdkModel;
 
     /** @var list<int> $teamsWithEditAccess */
-    #[Api(list: 'int')]
+    #[Required(list: 'int')]
     public array $teamsWithEditAccess;
 
     /** @var list<int> $usersWithEditAccess */
-    #[Api(list: 'int')]
+    #[Required(list: 'int')]
     public array $usersWithEditAccess;
 
     /**

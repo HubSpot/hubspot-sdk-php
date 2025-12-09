@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Imports;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -21,13 +21,13 @@ final class PublicObjectListRecord implements BaseModel
     /**
      * The ID of the list containing the imported objects.
      */
-    #[Api]
+    #[Required]
     public string $listId;
 
     /**
      * The type of object contained in the list.
      */
-    #[Api]
+    #[Required]
     public string $objectType;
 
     /**

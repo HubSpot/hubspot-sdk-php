@@ -5,7 +5,8 @@ declare(strict_types=1);
 namespace HubspotSDK\Cms\Hubdb\Rows;
 
 use HubspotSDK\Cms\Hubdb\Variant;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -32,16 +33,16 @@ final class RowUpdateDraftParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    #[Api]
+    #[Required]
     public string $tableIdOrName;
 
     /**
      * Specifies the value for the column child table id.
      */
-    #[Api]
+    #[Required]
     public int $childTableId;
 
-    #[Api]
+    #[Required]
     public int $displayIndex;
 
     /**
@@ -49,19 +50,19 @@ final class RowUpdateDraftParams implements BaseModel
      *
      * @var array<string,Variant> $values
      */
-    #[Api(map: Variant::class)]
+    #[Required(map: Variant::class)]
     public array $values;
 
     /**
      * Specifies the value for `hs_name` column, which will be used as title in the dynamic pages.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $name;
 
     /**
      * Specifies the value for `hs_path` column, which will be used as slug in the dynamic pages.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $path;
 
     /**

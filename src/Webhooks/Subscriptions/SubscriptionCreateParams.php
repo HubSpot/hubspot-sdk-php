@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Webhooks\Subscriptions;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -33,22 +34,22 @@ final class SubscriptionCreateParams implements BaseModel
      *
      * @var value-of<EventType> $eventType
      */
-    #[Api(enum: EventType::class)]
+    #[Required(enum: EventType::class)]
     public string $eventType;
 
     /**
      * Determines if the subscription is active or paused. Defaults to false.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $active;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $objectTypeId;
 
     /**
      * The internal name of the property to monitor for changes. Only applies when `eventType` is `propertyChange`.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $propertyName;
 
     /**

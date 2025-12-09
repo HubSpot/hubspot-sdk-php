@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Limits;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -19,11 +19,11 @@ final class RecordLimitResponse implements BaseModel
     /** @use SdkModel<RecordLimitResponseShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public CustomObjectRecordLimitResponse $customObjectTypes;
 
     /** @var list<LimitAndUsageForObjectType> $hubspotDefinedObjectTypes */
-    #[Api(list: LimitAndUsageForObjectType::class)]
+    #[Required(list: LimitAndUsageForObjectType::class)]
     public array $hubspotDefinedObjectTypes;
 
     /**

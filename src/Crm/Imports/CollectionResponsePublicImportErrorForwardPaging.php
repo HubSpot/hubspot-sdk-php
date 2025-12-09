@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Imports;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Imports\PublicImportError\ErrorType;
@@ -24,10 +25,10 @@ final class CollectionResponsePublicImportErrorForwardPaging implements BaseMode
     use SdkModel;
 
     /** @var list<PublicImportError> $results */
-    #[Api(list: PublicImportError::class)]
+    #[Required(list: PublicImportError::class)]
     public array $results;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?ForwardPaging $paging;
 
     /**

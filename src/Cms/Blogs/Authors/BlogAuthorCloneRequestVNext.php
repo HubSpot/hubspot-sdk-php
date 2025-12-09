@@ -5,7 +5,8 @@ declare(strict_types=1);
 namespace HubspotSDK\Cms\Blogs\Authors;
 
 use HubspotSDK\Cms\Blogs\Authors\BlogAuthor\Language;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -27,25 +28,25 @@ final class BlogAuthorCloneRequestVNext implements BaseModel
     /**
      * ID of the object to be cloned.
      */
-    #[Api]
+    #[Required]
     public string $id;
 
     /**
      * Model definition for a Blog Author.
      */
-    #[Api]
+    #[Required]
     public BlogAuthor $blogAuthor;
 
     /**
      * Language of newly cloned object.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $language;
 
     /**
      * Primary language in multi-language group.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $primaryLanguage;
 
     /**

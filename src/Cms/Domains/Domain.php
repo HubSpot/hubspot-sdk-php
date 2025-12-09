@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\Domains;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -40,85 +41,85 @@ final class Domain implements BaseModel
     /**
      * The unique ID of this domain.
      */
-    #[Api]
+    #[Required]
     public string $id;
 
     /**
      * The actual domain or sub-domain. e.g. www.hubspot.com.
      */
-    #[Api]
+    #[Required]
     public string $domain;
 
     /**
      * Whether the DNS for this domain is optimally configured for use with HubSpot.
      */
-    #[Api]
+    #[Required]
     public bool $isResolving;
 
     /**
      * Whether the domain is used for CMS blog posts.
      */
-    #[Api]
+    #[Required]
     public bool $isUsedForBlogPost;
 
     /**
      * Whether the domain is used for CMS email web pages.
      */
-    #[Api]
+    #[Required]
     public bool $isUsedForEmail;
 
     /**
      * Whether the domain is used for CMS knowledge pages.
      */
-    #[Api]
+    #[Required]
     public bool $isUsedForKnowledge;
 
     /**
      * Whether the domain is used for CMS landing pages.
      */
-    #[Api]
+    #[Required]
     public bool $isUsedForLandingPage;
 
     /**
      * Whether the domain is used for CMS site pages.
      */
-    #[Api]
+    #[Required]
     public bool $isUsedForSitePage;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $correctCname;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $created;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $isSslEnabled;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $isSslOnly;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $manuallyMarkedAsResolving;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $primaryBlogPost;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $primaryEmail;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $primaryKnowledge;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $primaryLandingPage;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $primarySitePage;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $secondaryToDomain;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $updated;
 
     /**

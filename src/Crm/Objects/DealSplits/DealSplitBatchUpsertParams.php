@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Objects\DealSplits;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -27,7 +27,7 @@ final class DealSplitBatchUpsertParams implements BaseModel
     use SdkParams;
 
     /** @var list<PublicDealSplitsCreateRequest> $inputs */
-    #[Api(list: PublicDealSplitsCreateRequest::class)]
+    #[Required(list: PublicDealSplitsCreateRequest::class)]
     public array $inputs;
 
     /**

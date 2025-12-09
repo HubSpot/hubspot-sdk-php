@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Events\EventDefinitions;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Events\EventDefinitions\MonthReference\ReferenceType;
@@ -24,23 +25,23 @@ final class MonthReference implements BaseModel
     /** @use SdkModel<MonthReferenceShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public int $day;
 
     /** @var value-of<ReferenceType> $referenceType */
-    #[Api(enum: ReferenceType::class)]
+    #[Required(enum: ReferenceType::class)]
     public string $referenceType;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $hour;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $millisecond;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $minute;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $second;
 
     /**

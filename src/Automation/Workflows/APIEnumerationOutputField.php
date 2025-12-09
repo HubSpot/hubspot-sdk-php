@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Automation\Workflows;
 
 use HubspotSDK\Automation\Workflows\APIEnumerationOutputField\Type;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -19,15 +19,15 @@ final class APIEnumerationOutputField implements BaseModel
     /** @use SdkModel<APIEnumerationOutputFieldShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public string $name;
 
     /** @var list<string> $options */
-    #[Api(list: 'string')]
+    #[Required(list: 'string')]
     public array $options;
 
     /** @var value-of<Type> $type */
-    #[Api(enum: Type::class)]
+    #[Required(enum: Type::class)]
     public string $type;
 
     /**

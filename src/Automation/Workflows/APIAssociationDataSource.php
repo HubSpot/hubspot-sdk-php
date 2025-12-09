@@ -7,7 +7,8 @@ namespace HubspotSDK\Automation\Workflows;
 use HubspotSDK\Automation\Workflows\APIAssociationDataSource\AssociationCategory;
 use HubspotSDK\Automation\Workflows\APIAssociationDataSource\Type;
 use HubspotSDK\Automation\Workflows\APISort\Order;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -27,23 +28,23 @@ final class APIAssociationDataSource implements BaseModel
     use SdkModel;
 
     /** @var value-of<AssociationCategory> $associationCategory */
-    #[Api(enum: AssociationCategory::class)]
+    #[Required(enum: AssociationCategory::class)]
     public string $associationCategory;
 
-    #[Api]
+    #[Required]
     public int $associationTypeId;
 
-    #[Api]
+    #[Required]
     public string $name;
 
-    #[Api]
+    #[Required]
     public string $objectTypeId;
 
     /** @var value-of<Type> $type */
-    #[Api(enum: Type::class)]
+    #[Required(enum: Type::class)]
     public string $type;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?APISort $sortBy;
 
     /**

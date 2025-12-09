@@ -6,7 +6,7 @@ namespace HubspotSDK\Automation\Workflows;
 
 use HubspotSDK\Automation\Workflows\APIListBasedEnrollmentCriteria\ReEnrollmentTriggersFilterBranch;
 use HubspotSDK\Automation\Workflows\APIListBasedEnrollmentCriteria\Type;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicAbsoluteComparativeTimestampRefineBy;
@@ -66,21 +66,21 @@ final class APIListBasedEnrollmentCriteria implements BaseModel
     /** @use SdkModel<APIListBasedEnrollmentCriteriaShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch $listFilterBranch;
 
     /** @var list<mixed> $reEnrollmentTriggersFilterBranches */
-    #[Api(list: ReEnrollmentTriggersFilterBranch::class)]
+    #[Required(list: ReEnrollmentTriggersFilterBranch::class)]
     public array $reEnrollmentTriggersFilterBranches;
 
-    #[Api]
+    #[Required]
     public bool $shouldReEnroll;
 
     /** @var value-of<Type> $type */
-    #[Api(enum: Type::class)]
+    #[Required(enum: Type::class)]
     public string $type;
 
-    #[Api]
+    #[Required]
     public bool $unEnrollObjectsNotMeetingCriteria;
 
     /**

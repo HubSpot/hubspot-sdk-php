@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Settings\Currencies;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -32,7 +32,7 @@ final class CurrencyListExchangeRatesParams implements BaseModel
     /**
      * The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $after;
 
     /**
@@ -40,13 +40,13 @@ final class CurrencyListExchangeRatesParams implements BaseModel
      *
      * @var value-of<FromCurrencyCode>|null $fromCurrencyCode
      */
-    #[Api(enum: FromCurrencyCode::class, optional: true)]
+    #[Optional(enum: FromCurrencyCode::class)]
     public ?string $fromCurrencyCode;
 
     /**
      * The maximum number of results to display per page.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $limit;
 
     /**
@@ -54,7 +54,7 @@ final class CurrencyListExchangeRatesParams implements BaseModel
      *
      * @var value-of<ToCurrencyCode>|null $toCurrencyCode
      */
-    #[Api(enum: ToCurrencyCode::class, optional: true)]
+    #[Optional(enum: ToCurrencyCode::class)]
     public ?string $toCurrencyCode;
 
     public function __construct()

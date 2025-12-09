@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Account\Activity;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -33,64 +34,64 @@ final class HydratedCriticalAction implements BaseModel
     /**
      * The unique ID of the activity.
      */
-    #[Api]
+    #[Required]
     public string $id;
 
     /**
      * The time the activity took place.
      */
-    #[Api]
+    #[Required]
     public \DateTimeInterface $createdAt;
 
     /**
      * The type of activity.
      */
-    #[Api]
+    #[Required]
     public string $type;
 
     /**
      * The user's unique ID.
      */
-    #[Api]
+    #[Required]
     public int $userId;
 
     /**
      * Email address of the user associated with the activity.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $actingUser;
 
     /**
      * The approximate country code.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $countryCode;
 
     /**
      * A link to the URL where the action was taken in the account.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $infoUrl;
 
     /**
      * IP address where the activity originated.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $ipAddress;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $location;
 
     /**
      * The ID of the affected object.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $objectId;
 
     /**
      * The approximate region code.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $regionCode;
 
     /**

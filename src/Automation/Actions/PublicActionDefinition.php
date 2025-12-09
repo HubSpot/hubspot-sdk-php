@@ -8,7 +8,8 @@ use HubspotSDK\Automation\Actions\InputFieldDefinition\SupportedValueType;
 use HubspotSDK\Automation\Actions\PublicActionDefinition\InputFieldDependency;
 use HubspotSDK\Automation\Actions\PublicActionFunctionIdentifier\FunctionType;
 use HubspotSDK\Automation\Actions\PublicSingleFieldDependency\DependencyType;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -34,52 +35,52 @@ final class PublicActionDefinition implements BaseModel
     /** @use SdkModel<PublicActionDefinitionShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public string $id;
 
-    #[Api]
+    #[Required]
     public string $actionUrl;
 
     /** @var list<PublicActionFunctionIdentifier> $functions */
-    #[Api(list: PublicActionFunctionIdentifier::class)]
+    #[Required(list: PublicActionFunctionIdentifier::class)]
     public array $functions;
 
     /** @var list<InputFieldDefinition> $inputFields */
-    #[Api(list: InputFieldDefinition::class)]
+    #[Required(list: InputFieldDefinition::class)]
     public array $inputFields;
 
     /** @var array<string,PublicActionLabels> $labels */
-    #[Api(map: PublicActionLabels::class)]
+    #[Required(map: PublicActionLabels::class)]
     public array $labels;
 
     /** @var list<string> $objectTypes */
-    #[Api(list: 'string')]
+    #[Required(list: 'string')]
     public array $objectTypes;
 
-    #[Api]
+    #[Required]
     public bool $published;
 
-    #[Api]
+    #[Required]
     public string $revisionId;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $archivedAt;
 
     /** @var list<PublicExecutionTranslationRule>|null $executionRules */
-    #[Api(list: PublicExecutionTranslationRule::class, optional: true)]
+    #[Optional(list: PublicExecutionTranslationRule::class)]
     public ?array $executionRules;
 
     /**
      * @var list<PublicSingleFieldDependency|PublicConditionalSingleFieldDependency>|null $inputFieldDependencies
      */
-    #[Api(list: InputFieldDependency::class, optional: true)]
+    #[Optional(list: InputFieldDependency::class)]
     public ?array $inputFieldDependencies;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?PublicObjectRequestOptions $objectRequestOptions;
 
     /** @var list<OutputFieldDefinition>|null $outputFields */
-    #[Api(list: OutputFieldDefinition::class, optional: true)]
+    #[Optional(list: OutputFieldDefinition::class)]
     public ?array $outputFields;
 
     /**

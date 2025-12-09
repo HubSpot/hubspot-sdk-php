@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Automation\Sequences;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -21,16 +22,16 @@ final class PublicSequenceEnrollmentRequest implements BaseModel
     /** @use SdkModel<PublicSequenceEnrollmentRequestShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public string $contactId;
 
-    #[Api]
+    #[Required]
     public string $senderEmail;
 
-    #[Api]
+    #[Required]
     public string $sequenceId;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $senderAliasAddress;
 
     /**

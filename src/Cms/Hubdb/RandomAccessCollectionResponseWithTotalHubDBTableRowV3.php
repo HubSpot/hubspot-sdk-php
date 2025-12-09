@@ -5,7 +5,8 @@ declare(strict_types=1);
 namespace HubspotSDK\Cms\Hubdb;
 
 use HubspotSDK\Cms\Hubdb\RandomAccessCollectionResponseWithTotalHubDBTableRowV3\Type;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -23,17 +24,17 @@ final class RandomAccessCollectionResponseWithTotalHubDBTableRowV3 implements Ba
     use SdkModel;
 
     /** @var list<mixed> $results */
-    #[Api(list: 'mixed')]
+    #[Required(list: 'mixed')]
     public array $results;
 
-    #[Api]
+    #[Required]
     public int $total;
 
     /** @var value-of<Type> $type */
-    #[Api(enum: Type::class)]
+    #[Required(enum: Type::class)]
     public string $type;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?BoundedPaging $paging;
 
     /**

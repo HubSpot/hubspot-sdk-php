@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Emails;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -28,37 +28,37 @@ final class PublicWebversionDetails implements BaseModel
     /** @use SdkModel<PublicWebversionDetailsShape> */
     use SdkModel;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $domain;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $enabled;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $expiresAt;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $isPageRedirected;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $metaDescription;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $pageExpiryEnabled;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $redirectToPageId;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $redirectToUrl;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $slug;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $title;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $url;
 
     public function __construct()

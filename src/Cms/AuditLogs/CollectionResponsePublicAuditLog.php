@@ -6,7 +6,8 @@ namespace HubspotSDK\Cms\AuditLogs;
 
 use HubspotSDK\Cms\AuditLogs\PublicAuditLog\Event;
 use HubspotSDK\Cms\AuditLogs\PublicAuditLog\ObjectType;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\NextPage;
@@ -26,10 +27,10 @@ final class CollectionResponsePublicAuditLog implements BaseModel
     use SdkModel;
 
     /** @var list<PublicAuditLog> $results */
-    #[Api(list: PublicAuditLog::class)]
+    #[Required(list: PublicAuditLog::class)]
     public array $results;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?Paging $paging;
 
     /**

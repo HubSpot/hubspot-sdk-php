@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Settings\Currencies;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -21,13 +21,13 @@ final class CurrencyCodeInfo implements BaseModel
     /**
      * The three-letter code representing a specific currency (ex. USD).
      */
-    #[Api]
+    #[Required]
     public string $currencyCode;
 
     /**
      * The full name of the currency (ex. US Dollar).
      */
-    #[Api]
+    #[Required]
     public string $currencyName;
 
     /**

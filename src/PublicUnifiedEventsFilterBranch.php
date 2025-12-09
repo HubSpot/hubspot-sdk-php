@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicNumOccurrencesRefineBy\Type;
@@ -31,31 +32,31 @@ final class PublicUnifiedEventsFilterBranch implements BaseModel
     /** @use SdkModel<PublicUnifiedEventsFilterBranchShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public string $eventTypeId;
 
     /** @var list<mixed> $filterBranches */
-    #[Api(list: FilterBranch::class)]
+    #[Required(list: FilterBranch::class)]
     public array $filterBranches;
 
-    #[Api]
+    #[Required]
     public string $filterBranchOperator;
 
     /** @var value-of<FilterBranchType> $filterBranchType */
-    #[Api(enum: FilterBranchType::class)]
+    #[Required(enum: FilterBranchType::class)]
     public string $filterBranchType;
 
     /**
      * @var list<PublicPropertyFilter|PublicAssociationInListFilter|PublicPageViewAnalyticsFilter|PublicCtaAnalyticsFilter|PublicEventAnalyticsFilter|PublicFormSubmissionFilter|PublicFormSubmissionOnPageFilter|PublicIntegrationEventFilter|PublicEmailSubscriptionFilter|PublicCommunicationSubscriptionFilter|PublicCampaignInfluencedFilter|PublicSurveyMonkeyFilter|PublicSurveyMonkeyValueFilter|PublicWebinarFilter|PublicEmailEventFilter|PublicPrivacyAnalyticsFilter|PublicAdsSearchFilter|PublicAdsTimeFilter|PublicInListFilter|PublicNumAssociationsFilter|PublicUnifiedEventsFilter|PublicPropertyAssociationInListFilter|PublicConstantFilter> $filters
      */
-    #[Api(list: Filter::class)]
+    #[Required(list: Filter::class)]
     public array $filters;
 
     /** @var value-of<Operator> $operator */
-    #[Api(enum: Operator::class)]
+    #[Required(enum: Operator::class)]
     public string $operator;
 
-    #[Api(optional: true)]
+    #[Optional]
     public PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation|null $coalescingRefineBy;
 
     /**

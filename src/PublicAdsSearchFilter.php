@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicAdsSearchFilter\FilterType;
@@ -24,24 +24,24 @@ final class PublicAdsSearchFilter implements BaseModel
     /** @use SdkModel<PublicAdsSearchFilterShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public string $adNetwork;
 
-    #[Api]
+    #[Required]
     public string $entityType;
 
     /** @var value-of<FilterType> $filterType */
-    #[Api(enum: FilterType::class)]
+    #[Required(enum: FilterType::class)]
     public string $filterType;
 
-    #[Api]
+    #[Required]
     public string $operator;
 
     /** @var list<string> $searchTerms */
-    #[Api(list: 'string')]
+    #[Required(list: 'string')]
     public array $searchTerms;
 
-    #[Api]
+    #[Required]
     public string $searchTermType;
 
     /**

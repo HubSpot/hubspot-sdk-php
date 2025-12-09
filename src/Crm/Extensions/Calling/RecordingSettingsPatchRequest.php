@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Extensions\Calling;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -18,7 +18,7 @@ final class RecordingSettingsPatchRequest implements BaseModel
     /** @use SdkModel<RecordingSettingsPatchRequestShape> */
     use SdkModel;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $urlToRetrieveAuthedRecording;
 
     public function __construct()

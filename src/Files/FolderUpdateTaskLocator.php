@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Files;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -23,7 +23,7 @@ final class FolderUpdateTaskLocator implements BaseModel
     /**
      * ID of the task.
      */
-    #[Api]
+    #[Required]
     public string $id;
 
     /**
@@ -31,7 +31,7 @@ final class FolderUpdateTaskLocator implements BaseModel
      *
      * @var array<string,string> $links
      */
-    #[Api(map: 'string')]
+    #[Required(map: 'string')]
     public array $links;
 
     /**

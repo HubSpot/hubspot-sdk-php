@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Events;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -21,19 +21,19 @@ final class MarketingEventExternalUniqueIdentifier implements BaseModel
     /**
      * The id of the application that created the marketing event in HubSpot.
      */
-    #[Api]
+    #[Required]
     public int $appId;
 
     /**
      * The accountId that is associated with this marketing event in the external event application.
      */
-    #[Api]
+    #[Required]
     public string $externalAccountId;
 
     /**
      * The id of the marketing event in the external event application.
      */
-    #[Api]
+    #[Required]
     public string $externalEventId;
 
     /**

@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Webhooks;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Webhooks\SubscriptionResponse\EventType;
@@ -30,19 +31,19 @@ final class SubscriptionResponse implements BaseModel
     /**
      * The unique ID of the subscription.
      */
-    #[Api]
+    #[Required]
     public string $id;
 
     /**
      * Determines if the subscription is active or paused.
      */
-    #[Api]
+    #[Required]
     public bool $active;
 
     /**
      * When this subscription was created. Formatted as milliseconds from the [Unix epoch](#).
      */
-    #[Api]
+    #[Required]
     public \DateTimeInterface $createdAt;
 
     /**
@@ -50,25 +51,25 @@ final class SubscriptionResponse implements BaseModel
      *
      * @var value-of<EventType> $eventType
      */
-    #[Api(enum: EventType::class)]
+    #[Required(enum: EventType::class)]
     public string $eventType;
 
     /**
      * The identifier of the object type associated with the subscription.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $objectTypeId;
 
     /**
      * The internal name of the property being monitored for changes. Only applies when `eventType` is `propertyChange`.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $propertyName;
 
     /**
      * When this subscription was last updated. Formatted as milliseconds from the [Unix epoch](#).
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $updatedAt;
 
     /**

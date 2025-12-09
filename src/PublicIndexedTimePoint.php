@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicIndexedTimePoint\TimeType;
@@ -25,20 +26,20 @@ final class PublicIndexedTimePoint implements BaseModel
     /** @use SdkModel<PublicIndexedTimePointShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public PublicNowReference|PublicTodayReference|PublicWeekReference|PublicFiscalQuarterReference|PublicFiscalYearReference|PublicYearReference|PublicQuarterReference|PublicMonthReference $indexReference;
 
     /** @var value-of<TimeType> $timeType */
-    #[Api(enum: TimeType::class)]
+    #[Required(enum: TimeType::class)]
     public string $timeType;
 
-    #[Api]
+    #[Required]
     public string $zoneId;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?PublicIndexOffset $offset;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $timezoneSource;
 
     /**

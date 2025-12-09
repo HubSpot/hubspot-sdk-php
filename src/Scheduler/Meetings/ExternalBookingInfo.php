@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Scheduler\Meetings;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Scheduler\Meetings\ExternalBookingInfo\LinkType;
@@ -26,26 +27,26 @@ final class ExternalBookingInfo implements BaseModel
     use SdkModel;
 
     /** @var list<ExternalUserBusyTimes> $allUsersBusyTimes */
-    #[Api(list: ExternalUserBusyTimes::class)]
+    #[Required(list: ExternalUserBusyTimes::class)]
     public array $allUsersBusyTimes;
 
-    #[Api]
+    #[Required]
     public ExternalMeetingsLinkSettings $customParams;
 
-    #[Api]
+    #[Required]
     public bool $isOffline;
 
-    #[Api]
+    #[Required]
     public string $linkId;
 
     /** @var value-of<LinkType> $linkType */
-    #[Api(enum: LinkType::class)]
+    #[Required(enum: LinkType::class)]
     public string $linkType;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?ExternalBrandingMetadata $brandingMetadata;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?ExternalLinkAvailability $linkAvailability;
 
     /**

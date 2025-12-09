@@ -6,7 +6,8 @@ namespace HubspotSDK\Cms\Blogs\Tags;
 
 use HubspotSDK\Cms\Blogs\Tags\BatchResponseTag\Status;
 use HubspotSDK\Cms\Blogs\Tags\Tag\Language;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -30,7 +31,7 @@ final class BatchResponseTag implements BaseModel
     /**
      * Time of batch operation completion.
      */
-    #[Api]
+    #[Required]
     public \DateTimeInterface $completedAt;
 
     /**
@@ -38,13 +39,13 @@ final class BatchResponseTag implements BaseModel
      *
      * @var list<Tag> $results
      */
-    #[Api(list: Tag::class)]
+    #[Required(list: Tag::class)]
     public array $results;
 
     /**
      * Time of batch operation start.
      */
-    #[Api]
+    #[Required]
     public \DateTimeInterface $startedAt;
 
     /**
@@ -52,7 +53,7 @@ final class BatchResponseTag implements BaseModel
      *
      * @var value-of<Status> $status
      */
-    #[Api(enum: Status::class)]
+    #[Required(enum: Status::class)]
     public string $status;
 
     /**
@@ -60,13 +61,13 @@ final class BatchResponseTag implements BaseModel
      *
      * @var array<string,string>|null $links
      */
-    #[Api(map: 'string', optional: true)]
+    #[Optional(map: 'string')]
     public ?array $links;
 
     /**
      * Time of batch operation request.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $requestedAt;
 
     /**

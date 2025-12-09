@@ -6,7 +6,8 @@ namespace HubspotSDK\Cms\Hubdb\Tables;
 
 use HubspotSDK\Cms\Hubdb\ColumnRequest;
 use HubspotSDK\Cms\Hubdb\ColumnRequest\Type;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -51,13 +52,13 @@ final class TableUpdateDraftParams implements BaseModel
     /**
      * Specifies whether child tables can be created.
      */
-    #[Api]
+    #[Required]
     public bool $allowChildTables;
 
     /**
      * Specifies whether the table can be read by public without authorization.
      */
-    #[Api]
+    #[Required]
     public bool $allowPublicApiAccess;
 
     /**
@@ -65,7 +66,7 @@ final class TableUpdateDraftParams implements BaseModel
      *
      * @var list<ColumnRequest> $columns
      */
-    #[Api(list: ColumnRequest::class)]
+    #[Required(list: ColumnRequest::class)]
     public array $columns;
 
     /**
@@ -73,49 +74,49 @@ final class TableUpdateDraftParams implements BaseModel
      *
      * @var array<string,int> $dynamicMetaTags
      */
-    #[Api(map: 'int')]
+    #[Required(map: 'int')]
     public array $dynamicMetaTags;
 
     /**
      * Specifies creation of multi-level dynamic pages using child tables.
      */
-    #[Api]
+    #[Required]
     public bool $enableChildTablePages;
 
     /**
      * Label of the table.
      */
-    #[Api]
+    #[Required]
     public string $label;
 
     /**
      * Name of the table.
      */
-    #[Api]
+    #[Required]
     public string $name;
 
     /**
      * Specifies whether the table can be used for creation of dynamic pages.
      */
-    #[Api]
+    #[Required]
     public bool $useForPages;
 
     /**
      * Specifies whether to return archived tables. Defaults to `false`.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $archived;
 
     /**
      * Set this to `true` to populate foreign ID values in the result.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $includeForeignIds;
 
     /**
      * Indicates whether to retrieve the localized schema for the table.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $isGetLocalizedSchema;
 
     /**

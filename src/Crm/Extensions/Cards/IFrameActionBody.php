@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Extensions\Cards;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Extensions\Cards\IFrameActionBody\Type;
@@ -24,24 +25,24 @@ final class IFrameActionBody implements BaseModel
     /** @use SdkModel<IFrameActionBodyShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public int $height;
 
     /** @var list<string> $propertyNamesIncluded */
-    #[Api(list: 'string')]
+    #[Required(list: 'string')]
     public array $propertyNamesIncluded;
 
     /** @var value-of<Type> $type */
-    #[Api(enum: Type::class)]
+    #[Required(enum: Type::class)]
     public string $type;
 
-    #[Api]
+    #[Required]
     public string $url;
 
-    #[Api]
+    #[Required]
     public int $width;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $label;
 
     /**

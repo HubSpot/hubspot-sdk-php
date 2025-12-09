@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Files\FileOperations;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -32,37 +32,37 @@ final class FileOperationUploadParams implements BaseModel
     /**
      * Character set of the uploaded file.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $charsetHunch;
 
     /**
      * File to be uploaded.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $file;
 
     /**
      * Desired name for the uploaded file.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $fileName;
 
     /**
      * Either 'folderId' or 'folderPath' is required. folderId is the ID of the folder the file will be uploaded to.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $folderId;
 
     /**
      * Either 'folderPath' or 'folderId' is required. This field represents the destination folder path for the uploaded file. If a path doesn't exist, the system will try to create one.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $folderPath;
 
     /**
      * JSON string representing FileUploadOptions.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $options;
 
     public function __construct()

@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Cms\MediaBridge;
 
 use HubspotSDK\Cms\MediaBridge\IntegratorObjectCreationRequest\MediaType;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -20,7 +20,7 @@ final class IntegratorObjectCreationRequest implements BaseModel
     use SdkModel;
 
     /** @var list<value-of<MediaType>> $mediaTypes */
-    #[Api(list: MediaType::class)]
+    #[Required(list: MediaType::class)]
     public array $mediaTypes;
 
     /**

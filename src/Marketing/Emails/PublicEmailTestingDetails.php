@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Emails;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Marketing\Emails\PublicEmailTestingDetails\AbSampleSizeDefault;
@@ -36,7 +36,7 @@ final class PublicEmailTestingDetails implements BaseModel
      *
      * @var value-of<AbSampleSizeDefault>|null $abSampleSizeDefault
      */
-    #[Api(enum: AbSampleSizeDefault::class, optional: true)]
+    #[Optional(enum: AbSampleSizeDefault::class)]
     public ?string $abSampleSizeDefault;
 
     /**
@@ -44,7 +44,7 @@ final class PublicEmailTestingDetails implements BaseModel
      *
      * @var value-of<AbSamplingDefault>|null $abSamplingDefault
      */
-    #[Api(enum: AbSamplingDefault::class, optional: true)]
+    #[Optional(enum: AbSamplingDefault::class)]
     public ?string $abSamplingDefault;
 
     /**
@@ -52,7 +52,7 @@ final class PublicEmailTestingDetails implements BaseModel
      *
      * @var value-of<AbStatus>|null $abStatus
      */
-    #[Api(enum: AbStatus::class, optional: true)]
+    #[Optional(enum: AbStatus::class)]
     public ?string $abStatus;
 
     /**
@@ -60,28 +60,28 @@ final class PublicEmailTestingDetails implements BaseModel
      *
      * @var value-of<AbSuccessMetric>|null $abSuccessMetric
      */
-    #[Api(enum: AbSuccessMetric::class, optional: true)]
+    #[Optional(enum: AbSuccessMetric::class)]
     public ?string $abSuccessMetric;
 
     /**
      * The size of your test group.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $abTestPercentage;
 
     /**
      * Time limit on gathering test results. After this time is up, the winning version will be sent to the remaining contacts.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $hoursToWait;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $isAbVariation;
 
     /**
      * The ID of the AB test.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $testId;
 
     public function __construct()

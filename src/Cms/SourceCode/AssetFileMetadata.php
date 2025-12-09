@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\SourceCode;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -28,37 +29,37 @@ final class AssetFileMetadata implements BaseModel
     /**
      * The path of the file in the CMS Developer File System.
      */
-    #[Api]
+    #[Required]
     public string $id;
 
     /**
      * Timestamp of when the object was first created.
      */
-    #[Api]
+    #[Required]
     public int $createdAt;
 
     /**
      * Determines whether or not this path points to a folder.
      */
-    #[Api]
+    #[Required]
     public bool $folder;
 
     /**
      * The name of the file.
      */
-    #[Api]
+    #[Required]
     public string $name;
 
     /**
      * Timestamp of when the object was last updated.
      */
-    #[Api]
+    #[Required]
     public int $updatedAt;
 
     /**
      * Timestamp of when the object was archived (deleted).
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $archivedAt;
 
     /**
@@ -66,10 +67,10 @@ final class AssetFileMetadata implements BaseModel
      *
      * @var list<string>|null $children
      */
-    #[Api(list: 'string', optional: true)]
+    #[Optional(list: 'string')]
     public ?array $children;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $hash;
 
     /**

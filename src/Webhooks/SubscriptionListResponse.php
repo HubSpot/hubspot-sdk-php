@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Webhooks;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Webhooks\SubscriptionResponse\EventType;
@@ -26,7 +26,7 @@ final class SubscriptionListResponse implements BaseModel
      *
      * @var list<SubscriptionResponse> $results
      */
-    #[Api(list: SubscriptionResponse::class)]
+    #[Required(list: SubscriptionResponse::class)]
     public array $results;
 
     /**

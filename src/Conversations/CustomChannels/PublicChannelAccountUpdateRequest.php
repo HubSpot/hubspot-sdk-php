@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Conversations\CustomChannels;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -18,10 +18,10 @@ final class PublicChannelAccountUpdateRequest implements BaseModel
     /** @use SdkModel<PublicChannelAccountUpdateRequestShape> */
     use SdkModel;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $authorized;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $name;
 
     public function __construct()

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Events;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -21,13 +21,13 @@ final class EventDetailSettings implements BaseModel
     /**
      * The id of the application the settings are for.
      */
-    #[Api]
+    #[Required]
     public int $appId;
 
     /**
      * The url that will be used to fetch marketing event details by id.
      */
-    #[Api]
+    #[Required]
     public string $eventDetailsUrl;
 
     /**

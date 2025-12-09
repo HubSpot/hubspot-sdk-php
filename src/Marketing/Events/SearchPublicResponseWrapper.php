@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Events;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -21,16 +21,16 @@ final class SearchPublicResponseWrapper implements BaseModel
     /** @use SdkModel<SearchPublicResponseWrapperShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public int $appId;
 
-    #[Api]
+    #[Required]
     public string $externalAccountId;
 
-    #[Api]
+    #[Required]
     public string $externalEventId;
 
-    #[Api]
+    #[Required]
     public string $objectId;
 
     /**

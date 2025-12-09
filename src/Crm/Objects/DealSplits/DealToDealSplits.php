@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Objects\DealSplits;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\SimplePublicObject;
@@ -20,11 +20,11 @@ final class DealToDealSplits implements BaseModel
     /** @use SdkModel<DealToDealSplitsShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public string $id;
 
     /** @var list<SimplePublicObject> $splits */
-    #[Api(list: SimplePublicObject::class)]
+    #[Required(list: SimplePublicObject::class)]
     public array $splits;
 
     /**

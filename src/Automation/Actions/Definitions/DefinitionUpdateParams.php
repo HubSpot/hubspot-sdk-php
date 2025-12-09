@@ -15,7 +15,8 @@ use HubspotSDK\Automation\Actions\PublicExecutionTranslationRule;
 use HubspotSDK\Automation\Actions\PublicObjectRequestOptions;
 use HubspotSDK\Automation\Actions\PublicSingleFieldDependency;
 use HubspotSDK\Automation\Actions\PublicSingleFieldDependency\DependencyType;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -74,42 +75,42 @@ final class DefinitionUpdateParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    #[Api]
+    #[Required]
     public int $appId;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $actionUrl;
 
     /** @var list<PublicExecutionTranslationRule>|null $executionRules */
-    #[Api(list: PublicExecutionTranslationRule::class, optional: true)]
+    #[Optional(list: PublicExecutionTranslationRule::class)]
     public ?array $executionRules;
 
     /**
      * @var list<PublicSingleFieldDependency|PublicConditionalSingleFieldDependency>|null $inputFieldDependencies
      */
-    #[Api(list: InputFieldDependency::class, optional: true)]
+    #[Optional(list: InputFieldDependency::class)]
     public ?array $inputFieldDependencies;
 
     /** @var list<InputFieldDefinition>|null $inputFields */
-    #[Api(list: InputFieldDefinition::class, optional: true)]
+    #[Optional(list: InputFieldDefinition::class)]
     public ?array $inputFields;
 
     /** @var array<string,PublicActionLabels>|null $labels */
-    #[Api(map: PublicActionLabels::class, optional: true)]
+    #[Optional(map: PublicActionLabels::class)]
     public ?array $labels;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?PublicObjectRequestOptions $objectRequestOptions;
 
     /** @var list<string>|null $objectTypes */
-    #[Api(list: 'string', optional: true)]
+    #[Optional(list: 'string')]
     public ?array $objectTypes;
 
     /** @var list<OutputFieldDefinition>|null $outputFields */
-    #[Api(list: OutputFieldDefinition::class, optional: true)]
+    #[Optional(list: OutputFieldDefinition::class)]
     public ?array $outputFields;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $published;
 
     /**

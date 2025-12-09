@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Emails;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -28,32 +28,32 @@ final class PublicRssEmailDetails implements BaseModel
     /** @use SdkModel<PublicRssEmailDetailsShape> */
     use SdkModel;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $blogEmailType;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $blogImageMaxWidth;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $blogLayout;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $hubspotBlogId;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $maxEntries;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $rssEntryTemplate;
 
     /** @var array<string,mixed>|null $timing */
-    #[Api(map: 'mixed', optional: true)]
+    #[Optional(map: 'mixed')]
     public ?array $timing;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $url;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $useHeadlineAsSubject;
 
     public function __construct()

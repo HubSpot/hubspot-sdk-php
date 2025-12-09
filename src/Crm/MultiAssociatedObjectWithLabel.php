@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\AssociationSpecWithLabel\Category;
@@ -20,13 +20,13 @@ final class MultiAssociatedObjectWithLabel implements BaseModel
     use SdkModel;
 
     /** @var list<AssociationSpecWithLabel> $associationTypes */
-    #[Api(list: AssociationSpecWithLabel::class)]
+    #[Required(list: AssociationSpecWithLabel::class)]
     public array $associationTypes;
 
     /**
      * The unique identifier for the target object in the association.
      */
-    #[Api]
+    #[Required]
     public string $toObjectId;
 
     /**

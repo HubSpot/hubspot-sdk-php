@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Timeline\Events;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -42,7 +42,7 @@ final class EventBatchCreateParams implements BaseModel
      *
      * @var list<TimelineEvent> $inputs
      */
-    #[Api(list: TimelineEvent::class)]
+    #[Required(list: TimelineEvent::class)]
     public array $inputs;
 
     /**

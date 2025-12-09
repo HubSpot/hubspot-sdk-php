@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Scheduler\Meetings;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -20,10 +21,10 @@ final class ExternalLinkAvailabilityAndBusyTimes implements BaseModel
     use SdkModel;
 
     /** @var list<ExternalUserBusyTimes> $allUsersBusyTimes */
-    #[Api(list: ExternalUserBusyTimes::class)]
+    #[Required(list: ExternalUserBusyTimes::class)]
     public array $allUsersBusyTimes;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?ExternalLinkAvailability $linkAvailability;
 
     /**

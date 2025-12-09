@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Associations\V4;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -19,7 +19,7 @@ final class BatchInputPublicFetchAssociationsBatchRequest implements BaseModel
     use SdkModel;
 
     /** @var list<PublicFetchAssociationsBatchRequest> $inputs */
-    #[Api(list: PublicFetchAssociationsBatchRequest::class)]
+    #[Required(list: PublicFetchAssociationsBatchRequest::class)]
     public array $inputs;
 
     /**

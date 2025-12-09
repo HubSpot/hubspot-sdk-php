@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -21,13 +22,13 @@ final class PublicGdprDeleteInput implements BaseModel
     /**
      * ID of the object.
      */
-    #[Api]
+    #[Required]
     public string $objectId;
 
     /**
      * ID property.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $idProperty;
 
     /**

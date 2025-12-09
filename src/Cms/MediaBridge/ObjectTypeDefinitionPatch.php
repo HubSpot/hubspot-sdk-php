@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\MediaBridge;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\ObjectTypeDefinitionLabels;
@@ -27,34 +28,34 @@ final class ObjectTypeDefinitionPatch implements BaseModel
     /** @use SdkModel<ObjectTypeDefinitionPatchShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public bool $clearDescription;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $allowsSensitiveProperties;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $description;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?ObjectTypeDefinitionLabels $labels;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $primaryDisplayProperty;
 
     /** @var list<string>|null $requiredProperties */
-    #[Api(list: 'string', optional: true)]
+    #[Optional(list: 'string')]
     public ?array $requiredProperties;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $restorable;
 
     /** @var list<string>|null $searchableProperties */
-    #[Api(list: 'string', optional: true)]
+    #[Optional(list: 'string')]
     public ?array $searchableProperties;
 
     /** @var list<string>|null $secondaryDisplayProperties */
-    #[Api(list: 'string', optional: true)]
+    #[Optional(list: 'string')]
     public ?array $secondaryDisplayProperties;
 
     /**

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Subscriptions;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Marketing\Subscriptions\PublicSubscriptionStatus\LegalBasis;
@@ -24,7 +24,7 @@ final class PublicSubscriptionStatusesResponse implements BaseModel
     /**
      * Email address of the contact.
      */
-    #[Api]
+    #[Required]
     public string $recipient;
 
     /**
@@ -32,7 +32,7 @@ final class PublicSubscriptionStatusesResponse implements BaseModel
      *
      * @var list<PublicSubscriptionStatus> $subscriptionStatuses
      */
-    #[Api(list: PublicSubscriptionStatus::class)]
+    #[Required(list: PublicSubscriptionStatus::class)]
     public array $subscriptionStatuses;
 
     /**

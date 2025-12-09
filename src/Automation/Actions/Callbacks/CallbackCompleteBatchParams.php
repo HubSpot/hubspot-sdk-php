@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Automation\Actions\Callbacks;
 
 use HubspotSDK\Automation\Actions\CallbackCompletionBatchRequest;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -28,7 +28,7 @@ final class CallbackCompleteBatchParams implements BaseModel
     use SdkParams;
 
     /** @var list<CallbackCompletionBatchRequest> $inputs */
-    #[Api(list: CallbackCompletionBatchRequest::class)]
+    #[Required(list: CallbackCompletionBatchRequest::class)]
     public array $inputs;
 
     /**

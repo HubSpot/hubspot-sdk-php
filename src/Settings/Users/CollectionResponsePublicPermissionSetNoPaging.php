@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Settings\Users;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -19,7 +19,7 @@ final class CollectionResponsePublicPermissionSetNoPaging implements BaseModel
     use SdkModel;
 
     /** @var list<PublicPermissionSet> $results */
-    #[Api(list: PublicPermissionSet::class)]
+    #[Required(list: PublicPermissionSet::class)]
     public array $results;
 
     /**

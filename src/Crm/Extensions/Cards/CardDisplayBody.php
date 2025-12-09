@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Extensions\Cards;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Extensions\Cards\CardDisplayProperty\DataType;
@@ -26,7 +26,7 @@ final class CardDisplayBody implements BaseModel
      *
      * @var list<CardDisplayProperty> $properties
      */
-    #[Api(list: CardDisplayProperty::class)]
+    #[Required(list: CardDisplayProperty::class)]
     public array $properties;
 
     /**

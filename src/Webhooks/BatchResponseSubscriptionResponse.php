@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Webhooks;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Webhooks\BatchResponseSubscriptionResponse\Status;
@@ -28,7 +29,7 @@ final class BatchResponseSubscriptionResponse implements BaseModel
     /**
      * The date and time when the batch operation was completed.
      */
-    #[Api]
+    #[Required]
     public \DateTimeInterface $completedAt;
 
     /**
@@ -36,13 +37,13 @@ final class BatchResponseSubscriptionResponse implements BaseModel
      *
      * @var list<SubscriptionResponse> $results
      */
-    #[Api(list: SubscriptionResponse::class)]
+    #[Required(list: SubscriptionResponse::class)]
     public array $results;
 
     /**
      * The date and time when the batch operation started.
      */
-    #[Api]
+    #[Required]
     public \DateTimeInterface $startedAt;
 
     /**
@@ -50,7 +51,7 @@ final class BatchResponseSubscriptionResponse implements BaseModel
      *
      * @var value-of<Status> $status
      */
-    #[Api(enum: Status::class)]
+    #[Required(enum: Status::class)]
     public string $status;
 
     /**
@@ -58,13 +59,13 @@ final class BatchResponseSubscriptionResponse implements BaseModel
      *
      * @var array<string,string>|null $links
      */
-    #[Api(map: 'string', optional: true)]
+    #[Optional(map: 'string')]
     public ?array $links;
 
     /**
      * The date and time when the batch operation was requested.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $requestedAt;
 
     /**

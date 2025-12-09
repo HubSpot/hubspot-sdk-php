@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Subscriptions;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -31,13 +32,13 @@ final class SubscriptionSubscribeParams implements BaseModel
     /**
      * Contact's email address.
      */
-    #[Api]
+    #[Required]
     public string $emailAddress;
 
     /**
      * ID of the subscription being updated for the contact.
      */
-    #[Api]
+    #[Required]
     public string $subscriptionId;
 
     /**
@@ -45,13 +46,13 @@ final class SubscriptionSubscribeParams implements BaseModel
      *
      * @var value-of<LegalBasis>|null $legalBasis
      */
-    #[Api(enum: LegalBasis::class, optional: true)]
+    #[Optional(enum: LegalBasis::class)]
     public ?string $legalBasis;
 
     /**
      * A more detailed explanation to go with the legal basis (required for GDPR enabled portals).
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $legalBasisExplanation;
 
     /**

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Conversations\CustomChannels;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -19,10 +19,10 @@ final class PreResolvedContact implements BaseModel
     use SdkModel;
 
     /** @var list<string> $contactPropertiesLeadingToMatch */
-    #[Api(list: 'string')]
+    #[Required(list: 'string')]
     public array $contactPropertiesLeadingToMatch;
 
-    #[Api]
+    #[Required]
     public int $contactVid;
 
     /**

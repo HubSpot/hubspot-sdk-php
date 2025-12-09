@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Scheduler\Meetings;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -24,25 +24,25 @@ final class ExternalOption implements BaseModel
     /** @use SdkModel<ExternalOptionShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public string $description;
 
-    #[Api]
+    #[Required]
     public int $displayOrder;
 
-    #[Api]
+    #[Required]
     public float $doubleData;
 
-    #[Api]
+    #[Required]
     public bool $hidden;
 
-    #[Api]
+    #[Required]
     public string $label;
 
-    #[Api]
+    #[Required]
     public bool $readOnly;
 
-    #[Api]
+    #[Required]
     public string $value;
 
     /**

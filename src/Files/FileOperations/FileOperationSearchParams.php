@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Files\FileOperations;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -62,94 +62,94 @@ final class FileOperationSearchParams implements BaseModel
     /**
      * Offset search results by this value. The default offset is 0 and the maximum offset of items for a given search is 10,000. Narrow your search down if you are reaching this limit.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $after;
 
     /**
      * Search files by access. If `true`, will show only public files. If `false`, will show only private files.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $allowsAnonymousAccess;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $before;
 
     /**
      * Search files by time of creation.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $createdAt;
 
     /**
      * Search files by greater than or equal to time of creation. Can be used with `createdAtLte` to create a range.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $createdAtGte;
 
     /**
      * Search files by less than or equal to time of creation. Can be used with `createdAtGte` to create a range.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $createdAtLte;
 
     /**
      * Search files by specified encoding.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $encoding;
 
     /**
      * Search files by exact expires time. Time must be epoch time in milliseconds.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $expiresAt;
 
     /**
      * Search files by greater than or equal to expires time. Can be used with `expiresAtLte` to create a range.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $expiresAtGte;
 
     /**
      * Search files by less than or equal to expires time. Can be used with `expiresAtGte` to create a range.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $expiresAtLte;
 
     /**
      * Search files by given extension.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $extension;
 
     /**
      * Search files by a specific md5 hash.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $fileMd5;
 
     /**
      * Search files by height of image or video.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $height;
 
     /**
      * Search files by greater than or equal to height of image or video. Can be used with `heightLte` to create a range.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $heightGte;
 
     /**
      * Search files by less than or equal to height of image or video. Can be used with `heightGte` to create a range.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $heightLte;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $idGte;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $idLte;
 
     /**
@@ -157,25 +157,25 @@ final class FileOperationSearchParams implements BaseModel
      *
      * @var list<int>|null $ids
      */
-    #[Api(list: 'int', optional: true)]
+    #[Optional(list: 'int')]
     public ?array $ids;
 
     /**
      * If `true`, shows files that have been marked to be used in new content. If `false`, shows files that should not be used in new content.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $isUsableInContent;
 
     /**
      * Number of items to return. Default limit is 10, maximum limit is 100.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $limit;
 
     /**
      * Search for files containing the given name.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $name;
 
     /**
@@ -183,13 +183,13 @@ final class FileOperationSearchParams implements BaseModel
      *
      * @var list<int>|null $parentFolderIds
      */
-    #[Api(list: 'int', optional: true)]
+    #[Optional(list: 'int')]
     public ?array $parentFolderIds;
 
     /**
      * Search files by path.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $path;
 
     /**
@@ -197,25 +197,25 @@ final class FileOperationSearchParams implements BaseModel
      *
      * @var list<string>|null $properties
      */
-    #[Api(list: 'string', optional: true)]
+    #[Optional(list: 'string')]
     public ?array $properties;
 
     /**
      * Search files by exact file size in bytes.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $size;
 
     /**
      * Search files by greater than or equal to file size. Can be used with `sizeLte` to create a range.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $sizeGte;
 
     /**
      * Search files by less than or equal to file size. Can be used with `sizeGte` to create a range.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $sizeLte;
 
     /**
@@ -223,55 +223,55 @@ final class FileOperationSearchParams implements BaseModel
      *
      * @var list<string>|null $sort
      */
-    #[Api(list: 'string', optional: true)]
+    #[Optional(list: 'string')]
     public ?array $sort;
 
     /**
      * Filter by provided file type.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $type;
 
     /**
      * Search files by time of latest updated.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $updatedAt;
 
     /**
      * Search files by greater than or equal to time of latest update. Can be used with `updatedAtLte` to create a range.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $updatedAtGte;
 
     /**
      * Search files by less than or equal to time of latest update. Can be used with `updatedAtGte` to create a range.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $updatedAtLte;
 
     /**
      * Search by file URL.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $url;
 
     /**
      * Search files by width of image or video.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $width;
 
     /**
      * Search files by greater than or equal to width of image or video. Can be used with `widthLte` to create a range.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $widthGte;
 
     /**
      * Search files by less than or equal to width of image or video. Can be used with `widthGte` to create a range.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $widthLte;
 
     public function __construct()

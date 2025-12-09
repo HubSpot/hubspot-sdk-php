@@ -6,7 +6,7 @@ namespace HubspotSDK\Cms\Hubdb\Rows\Batch;
 
 use HubspotSDK\Cms\Hubdb\HubDBTableRowV3Request;
 use HubspotSDK\Cms\Hubdb\Variant;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -33,7 +33,7 @@ final class BatchCreateBatchParams implements BaseModel
     use SdkParams;
 
     /** @var list<HubDBTableRowV3Request> $inputs */
-    #[Api(list: HubDBTableRowV3Request::class)]
+    #[Required(list: HubDBTableRowV3Request::class)]
     public array $inputs;
 
     /**

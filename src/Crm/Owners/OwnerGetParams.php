@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Owners;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -25,11 +25,11 @@ final class OwnerGetParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $archived;
 
     /** @var value-of<IDProperty>|null $idProperty */
-    #[Api(enum: IDProperty::class, optional: true)]
+    #[Optional(enum: IDProperty::class)]
     public ?string $idProperty;
 
     public function __construct()

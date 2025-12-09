@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Files;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -23,19 +24,19 @@ final class FolderInput implements BaseModel
     /**
      * Desired name for the folder.
      */
-    #[Api]
+    #[Required]
     public string $name;
 
     /**
      * FolderId of the parent of the created folder. If not specified, the folder will be created at the root level. parentFolderId and parentFolderPath cannot be set at the same time.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $parentFolderId;
 
     /**
      * Path of the parent of the created folder. If not specified the folder will be created at the root level. parentFolderPath and parentFolderId cannot be set at the same time.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $parentPath;
 
     /**

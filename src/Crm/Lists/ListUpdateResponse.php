@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Lists;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicAndFilterBranch;
@@ -31,7 +31,7 @@ final class ListUpdateResponse implements BaseModel
     /**
      * An object list definition.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?PublicObjectList $updatedList;
 
     public function __construct()

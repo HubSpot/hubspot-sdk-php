@@ -5,7 +5,8 @@ declare(strict_types=1);
 namespace HubspotSDK\Cms\Blogs\Settings;
 
 use HubspotSDK\Cms\Blogs\Settings\Blog\Language;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\ForwardPaging;
@@ -28,16 +29,16 @@ final class CollectionResponseWithTotalBlogForwardPaging implements BaseModel
      *
      * @var list<Blog> $results
      */
-    #[Api(list: Blog::class)]
+    #[Required(list: Blog::class)]
     public array $results;
 
     /**
      * Total number of blogs.
      */
-    #[Api]
+    #[Required]
     public int $total;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?ForwardPaging $paging;
 
     /**

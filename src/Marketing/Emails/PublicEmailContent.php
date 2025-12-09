@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Emails;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -28,32 +28,32 @@ final class PublicEmailContent implements BaseModel
     use SdkModel;
 
     /** @var array<string,mixed>|null $flexAreas */
-    #[Api(map: 'mixed', optional: true)]
+    #[Optional(map: 'mixed')]
     public ?array $flexAreas;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $plainTextVersion;
 
     /** @var array<string,mixed>|null $smartFields */
-    #[Api(map: 'mixed', optional: true)]
+    #[Optional(map: 'mixed')]
     public ?array $smartFields;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?PublicEmailStyleSettings $styleSettings;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $templatePath;
 
     /** @var array<string,mixed>|null $themeSettingsValues */
-    #[Api(map: 'mixed', optional: true)]
+    #[Optional(map: 'mixed')]
     public ?array $themeSettingsValues;
 
     /** @var array<string,mixed>|null $widgetContainers */
-    #[Api(map: 'mixed', optional: true)]
+    #[Optional(map: 'mixed')]
     public ?array $widgetContainers;
 
     /** @var array<string,mixed>|null $widgets */
-    #[Api(map: 'mixed', optional: true)]
+    #[Optional(map: 'mixed')]
     public ?array $widgets;
 
     public function __construct()

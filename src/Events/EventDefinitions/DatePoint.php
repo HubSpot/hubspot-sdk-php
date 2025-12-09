@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Events\EventDefinitions;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Events\EventDefinitions\DatePoint\TimeType;
@@ -29,36 +30,36 @@ final class DatePoint implements BaseModel
     /** @use SdkModel<DatePointShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public int $day;
 
-    #[Api]
+    #[Required]
     public int $month;
 
     /** @var value-of<TimeType> $timeType */
-    #[Api(enum: TimeType::class)]
+    #[Required(enum: TimeType::class)]
     public string $timeType;
 
     /** @var value-of<TimezoneSource> $timezoneSource */
-    #[Api(enum: TimezoneSource::class)]
+    #[Required(enum: TimezoneSource::class)]
     public string $timezoneSource;
 
-    #[Api]
+    #[Required]
     public int $year;
 
-    #[Api]
+    #[Required]
     public string $zoneId;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $hour;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $millisecond;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $minute;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $second;
 
     /**

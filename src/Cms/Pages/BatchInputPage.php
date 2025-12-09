@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\Pages;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -23,7 +23,7 @@ final class BatchInputPage implements BaseModel
      *
      * @var list<mixed> $inputs
      */
-    #[Api(list: Page::class)]
+    #[Required(list: Page::class)]
     public array $inputs;
 
     /**

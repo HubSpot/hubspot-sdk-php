@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Settings\Users;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -30,7 +30,7 @@ final class UserGetParams implements BaseModel
      *
      * @var value-of<IDProperty>|null $idProperty
      */
-    #[Api(enum: IDProperty::class, optional: true)]
+    #[Optional(enum: IDProperty::class)]
     public ?string $idProperty;
 
     public function __construct()

@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\MediaBridge\IntegratorSettings;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -24,13 +25,13 @@ final class IntegratorSettingGetObjectDefinitionsByMediaTypeParams implements Ba
     use SdkModel;
     use SdkParams;
 
-    #[Api]
+    #[Required]
     public int $appId;
 
     /**
      * Include the full definition in the response.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $includeFullDefinition;
 
     /**

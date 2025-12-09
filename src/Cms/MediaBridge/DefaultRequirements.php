@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Cms\MediaBridge;
 
 use HubspotSDK\Cms\MediaBridge\DefaultRequirements\Operator;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -23,19 +23,19 @@ final class DefaultRequirements implements BaseModel
     use SdkModel;
 
     /** @var list<string> $gates */
-    #[Api(list: 'string')]
+    #[Required(list: 'string')]
     public array $gates;
 
     /** @var value-of<Operator> $operator */
-    #[Api(enum: Operator::class)]
+    #[Required(enum: Operator::class)]
     public string $operator;
 
     /** @var list<string> $scopeNames */
-    #[Api(list: 'string')]
+    #[Required(list: 'string')]
     public array $scopeNames;
 
     /** @var list<string> $settings */
-    #[Api(list: 'string')]
+    #[Required(list: 'string')]
     public array $settings;
 
     /**

@@ -5,7 +5,8 @@ declare(strict_types=1);
 namespace HubspotSDK\Automation\Workflows;
 
 use HubspotSDK\Automation\Workflows\APIBlockedDate\Month;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -19,14 +20,14 @@ final class APIBlockedDate implements BaseModel
     /** @use SdkModel<APIBlockedDateShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public int $dayOfMonth;
 
     /** @var value-of<Month> $month */
-    #[Api(enum: Month::class)]
+    #[Required(enum: Month::class)]
     public string $month;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $year;
 
     /**

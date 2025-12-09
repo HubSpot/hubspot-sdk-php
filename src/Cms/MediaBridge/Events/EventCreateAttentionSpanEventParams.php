@@ -6,7 +6,8 @@ namespace HubspotSDK\Cms\MediaBridge\Events;
 
 use HubspotSDK\Cms\MediaBridge\AttentionSpanCalculatedValues;
 use HubspotSDK\Cms\MediaBridge\Events\EventCreateAttentionSpanEventParams\MediaType;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -44,53 +45,53 @@ final class EventCreateAttentionSpanEventParams implements BaseModel
     use SdkParams;
 
     /** @var value-of<MediaType> $mediaType */
-    #[Api(enum: MediaType::class)]
+    #[Required(enum: MediaType::class)]
     public string $mediaType;
 
-    #[Api]
+    #[Required]
     public int $occurredTimestamp;
 
     /** @var array<string,int> $rawDataMap */
-    #[Api(map: 'int')]
+    #[Required(map: 'int')]
     public array $rawDataMap;
 
-    #[Api]
+    #[Required]
     public string $sessionId;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $_hsenc;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $contactId;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $contactUtk;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?AttentionSpanCalculatedValues $derivedValues;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $externalId;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $mediaBridgeId;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $mediaName;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $mediaUrl;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $pageId;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $pageName;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $pageUrl;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $rawDataString;
 
     /**

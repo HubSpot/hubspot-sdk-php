@@ -6,7 +6,7 @@ namespace HubspotSDK\Automation\Workflows;
 
 use HubspotSDK\Automation\Workflows\APIAuthKeyWebhookAuthSettings\Location;
 use HubspotSDK\Automation\Workflows\APIAuthKeyWebhookAuthSettings\Type;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -24,17 +24,17 @@ final class APIAuthKeyWebhookAuthSettings implements BaseModel
     use SdkModel;
 
     /** @var value-of<Location> $location */
-    #[Api(enum: Location::class)]
+    #[Required(enum: Location::class)]
     public string $location;
 
-    #[Api]
+    #[Required]
     public string $name;
 
-    #[Api]
+    #[Required]
     public string $secretName;
 
     /** @var value-of<Type> $type */
-    #[Api(enum: Type::class)]
+    #[Required(enum: Type::class)]
     public string $type;
 
     /**

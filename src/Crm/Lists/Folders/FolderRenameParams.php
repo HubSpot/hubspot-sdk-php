@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Lists\Folders;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -25,7 +25,7 @@ final class FolderRenameParams implements BaseModel
     /**
      * The new name of the folder.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $newFolderName;
 
     public function __construct()

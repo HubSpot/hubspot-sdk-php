@@ -5,7 +5,8 @@ declare(strict_types=1);
 namespace HubspotSDK\Conversations\CustomChannels\Messages;
 
 use HubspotSDK\Conversations\CustomChannels\Messages\MessageUpdateParams\StatusType;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -27,7 +28,7 @@ final class MessageUpdateParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    #[Api]
+    #[Required]
     public int $channelId;
 
     /**
@@ -35,10 +36,10 @@ final class MessageUpdateParams implements BaseModel
      *
      * @var value-of<StatusType> $statusType
      */
-    #[Api(enum: StatusType::class)]
+    #[Required(enum: StatusType::class)]
     public string $statusType;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $errorMessage;
 
     /**

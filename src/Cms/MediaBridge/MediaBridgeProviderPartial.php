@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\MediaBridge;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -18,10 +19,10 @@ final class MediaBridgeProviderPartial implements BaseModel
     /** @use SdkModel<MediaBridgeProviderPartialShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public int $updatedAt;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $name;
 
     /**

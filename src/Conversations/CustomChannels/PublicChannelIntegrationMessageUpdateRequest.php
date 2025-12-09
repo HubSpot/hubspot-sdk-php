@@ -5,7 +5,8 @@ declare(strict_types=1);
 namespace HubspotSDK\Conversations\CustomChannels;
 
 use HubspotSDK\Conversations\CustomChannels\PublicChannelIntegrationMessageUpdateRequest\StatusType;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -24,10 +25,10 @@ final class PublicChannelIntegrationMessageUpdateRequest implements BaseModel
      *
      * @var value-of<StatusType> $statusType
      */
-    #[Api(enum: StatusType::class)]
+    #[Required(enum: StatusType::class)]
     public string $statusType;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $errorMessage;
 
     /**

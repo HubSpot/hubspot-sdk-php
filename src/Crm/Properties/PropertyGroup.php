@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Properties;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -20,25 +20,25 @@ final class PropertyGroup implements BaseModel
     /** @use SdkModel<PropertyGroupShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public bool $archived;
 
     /**
      * Property groups are displayed in order starting with the lowest positive integer value. Values of -1 will cause the property group to be displayed after any positive values.
      */
-    #[Api]
+    #[Required]
     public int $displayOrder;
 
     /**
      * A human-readable label that will be shown in HubSpot.
      */
-    #[Api]
+    #[Required]
     public string $label;
 
     /**
      * The internal property group name, which must be used when referencing the property group via the API.
      */
-    #[Api]
+    #[Required]
     public string $name;
 
     /**

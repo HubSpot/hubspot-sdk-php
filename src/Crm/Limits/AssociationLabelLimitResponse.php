@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Limits;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Objects\Schemas\ObjectsSchemasObjectTypeDefinition;
@@ -30,37 +30,37 @@ final class AssociationLabelLimitResponse implements BaseModel
      *
      * @var list<string> $allLabels
      */
-    #[Api(list: 'string')]
+    #[Required(list: 'string')]
     public array $allLabels;
 
     /**
      * Defines an object type.
      */
-    #[Api]
+    #[Required]
     public ObjectsSchemasObjectTypeDefinition $fromObjectType;
 
     /**
      * The maximum number of association labels allowed.
      */
-    #[Api]
+    #[Required]
     public int $limit;
 
     /**
      * The percentage of the association label limit that has been used.
      */
-    #[Api]
+    #[Required]
     public float $percentage;
 
     /**
      * Defines an object type.
      */
-    #[Api]
+    #[Required]
     public ObjectsSchemasObjectTypeDefinition $toObjectType;
 
     /**
      * The current number of association labels used.
      */
-    #[Api]
+    #[Required]
     public int $usage;
 
     /**

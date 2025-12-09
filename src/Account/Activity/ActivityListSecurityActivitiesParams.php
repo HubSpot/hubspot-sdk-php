@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Account\Activity;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -31,31 +31,31 @@ final class ActivityListSecurityActivitiesParams implements BaseModel
     /**
      * The cursor token value to get the next set of results. You can get this from the `paging.next.after` JSON property of a paged response containing more results.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $after;
 
     /**
      * The start time, for retrieving logs within a specific timeframe.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $fromTimestamp;
 
     /**
      * The maximum number of results to display per page. Max value of limit is 200.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $limit;
 
     /**
      * The end time, for retrieving logs within a specific timeframe.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $toTimestamp;
 
     /**
      * The ID of a user, for retrieving user-specific logs.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $userId;
 
     public function __construct()

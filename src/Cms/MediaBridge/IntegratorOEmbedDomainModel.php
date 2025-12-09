@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\MediaBridge;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -24,25 +24,25 @@ final class IntegratorOEmbedDomainModel implements BaseModel
     /** @use SdkModel<IntegratorOEmbedDomainModelShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public int $id;
 
-    #[Api]
+    #[Required]
     public int $appId;
 
-    #[Api]
+    #[Required]
     public int $createdAt;
 
-    #[Api]
+    #[Required]
     public int $deletedAt;
 
-    #[Api]
+    #[Required]
     public Endpoints $endpoints;
 
-    #[Api]
+    #[Required]
     public int $portalId;
 
-    #[Api]
+    #[Required]
     public int $updatedAt;
 
     /**

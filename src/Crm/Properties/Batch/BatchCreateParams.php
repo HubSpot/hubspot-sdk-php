@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Properties\Batch;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -46,7 +46,7 @@ final class BatchCreateParams implements BaseModel
     use SdkParams;
 
     /** @var list<PropertyCreate> $inputs */
-    #[Api(list: PropertyCreate::class)]
+    #[Required(list: PropertyCreate::class)]
     public array $inputs;
 
     /**

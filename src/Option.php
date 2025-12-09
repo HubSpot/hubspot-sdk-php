@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -27,31 +28,31 @@ final class Option implements BaseModel
     /**
      * Hidden options will not be displayed in HubSpot.
      */
-    #[Api]
+    #[Required]
     public bool $hidden;
 
     /**
      * A human-readable option label that will be shown in HubSpot.
      */
-    #[Api]
+    #[Required]
     public string $label;
 
     /**
      * The internal value of the option, which must be used when setting the property value through the API.
      */
-    #[Api]
+    #[Required]
     public string $value;
 
     /**
      * A description of the option.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $description;
 
     /**
      * Options are displayed in order starting with the lowest positive integer value. Values of -1 will cause the option to be displayed after any positive values.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $displayOrder;
 
     /**

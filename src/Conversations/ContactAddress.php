@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Conversations;
 
 use HubspotSDK\Conversations\ContactAddress\Type;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -25,26 +25,26 @@ final class ContactAddress implements BaseModel
     /** @use SdkModel<ContactAddressShape> */
     use SdkModel;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $city;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $country;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $countryCode;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $state;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $street;
 
     /** @var value-of<Type>|null $type */
-    #[Api(enum: Type::class, optional: true)]
+    #[Optional(enum: Type::class)]
     public ?string $type;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $zip;
 
     public function __construct()

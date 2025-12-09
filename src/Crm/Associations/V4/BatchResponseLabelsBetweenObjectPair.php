@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Associations\V4;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Associations\V4\BatchResponseLabelsBetweenObjectPair\Status;
@@ -32,17 +33,17 @@ final class BatchResponseLabelsBetweenObjectPair implements BaseModel
     /**
      * The timestamp when the batch processing was completed, in ISO 8601 format.
      */
-    #[Api]
+    #[Required]
     public \DateTimeInterface $completedAt;
 
     /** @var list<LabelsBetweenObjectPair> $results */
-    #[Api(list: LabelsBetweenObjectPair::class)]
+    #[Required(list: LabelsBetweenObjectPair::class)]
     public array $results;
 
     /**
      * The timestamp when the batch processing began, in ISO 8601 format.
      */
-    #[Api]
+    #[Required]
     public \DateTimeInterface $startedAt;
 
     /**
@@ -50,11 +51,11 @@ final class BatchResponseLabelsBetweenObjectPair implements BaseModel
      *
      * @var value-of<Status> $status
      */
-    #[Api(enum: Status::class)]
+    #[Required(enum: Status::class)]
     public string $status;
 
     /** @var list<StandardError>|null $errors */
-    #[Api(list: StandardError::class, optional: true)]
+    #[Optional(list: StandardError::class)]
     public ?array $errors;
 
     /**
@@ -62,19 +63,19 @@ final class BatchResponseLabelsBetweenObjectPair implements BaseModel
      *
      * @var array<string,string>|null $links
      */
-    #[Api(map: 'string', optional: true)]
+    #[Optional(map: 'string')]
     public ?array $links;
 
     /**
      * The number of errors encountered during the batch processing.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $numErrors;
 
     /**
      * The timestamp when the batch request was initially made, in ISO 8601 format.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $requestedAt;
 
     /**

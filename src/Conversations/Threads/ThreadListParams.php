@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Conversations\Threads;
 
 use HubspotSDK\Conversations\Threads\ThreadListParams\Association;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -32,37 +32,37 @@ final class ThreadListParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $after;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $archived;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $associatedContactId;
 
     /** @var list<value-of<Association>>|null $association */
-    #[Api(list: Association::class, optional: true)]
+    #[Optional(list: Association::class)]
     public ?array $association;
 
     /** @var list<int>|null $inboxId */
-    #[Api(list: 'int', optional: true)]
+    #[Optional(list: 'int')]
     public ?array $inboxId;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $latestMessageTimestampAfter;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $limit;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $property;
 
     /** @var list<string>|null $sort */
-    #[Api(list: 'string', optional: true)]
+    #[Optional(list: 'string')]
     public ?array $sort;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $threadStatus;
 
     public function __construct()

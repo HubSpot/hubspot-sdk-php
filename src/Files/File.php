@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Files;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Files\File\Access;
@@ -44,7 +45,7 @@ final class File implements BaseModel
     /**
      * File ID.
      */
-    #[Api]
+    #[Required]
     public string $id;
 
     /**
@@ -52,115 +53,115 @@ final class File implements BaseModel
      *
      * @var value-of<Access> $access
      */
-    #[Api(enum: Access::class)]
+    #[Required(enum: Access::class)]
     public string $access;
 
     /**
      * If the file is deleted.
      */
-    #[Api]
+    #[Required]
     public bool $archived;
 
     /**
      * Creation time of the file object.
      */
-    #[Api]
+    #[Required]
     public \DateTimeInterface $createdAt;
 
     /**
      * Timestamp of the latest update to the file.
      */
-    #[Api]
+    #[Required]
     public \DateTimeInterface $updatedAt;
 
     /**
      * Deletion time of the file object.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $archivedAt;
 
     /**
      * Default hosting URL of the file. This will use one of HubSpot's provided URLs to serve the file.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $defaultHostingUrl;
 
     /**
      * Encoding of the file.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $encoding;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $expiresAt;
 
     /**
      * Extension of the file. ex: .jpg, .png, .gif, .pdf, etc.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $extension;
 
     /**
      * The MD5 hash of the file.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $fileMd5;
 
     /**
      * For image and video files, the height of the content.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $height;
 
     /**
      * Previously "archied". Indicates if the file should be used when creating new content like web pages.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $isUsableInContent;
 
     /**
      * Name of the file.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $name;
 
     /**
      * ID of the folder the file is in.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $parentFolderId;
 
     /**
      * Path of the file in the file manager.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $path;
 
     /**
      * Size of the file in bytes.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $size;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $sourceGroup;
 
     /**
      * Type of the file. Can be IMG, DOCUMENT, AUDIO, MOVIE, or OTHER.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $type;
 
     /**
      * URL of the given file. This URL can change depending on the domain settings of the account. Will use the select file hosting domain.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $url;
 
     /**
      * For image and video files, the width of the content.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $width;
 
     /**

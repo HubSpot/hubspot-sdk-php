@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Events\EventDefinitions;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Events\EventDefinitions\RelativeRangedTimestampRefineBy\RangeType;
@@ -25,18 +25,18 @@ final class RelativeRangedTimestampRefineBy implements BaseModel
     /** @use SdkModel<RelativeRangedTimestampRefineByShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public TimeOffset $lowerBoundOffset;
 
     /** @var value-of<RangeType> $rangeType */
-    #[Api(enum: RangeType::class)]
+    #[Required(enum: RangeType::class)]
     public string $rangeType;
 
     /** @var value-of<Type> $type */
-    #[Api(enum: Type::class)]
+    #[Required(enum: Type::class)]
     public string $type;
 
-    #[Api]
+    #[Required]
     public TimeOffset $upperBoundOffset;
 
     /**

@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\Hubdb;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\ForwardPaging;
@@ -21,13 +22,13 @@ final class CollectionResponseWithTotalHubDBTableV3ForwardPaging implements Base
     use SdkModel;
 
     /** @var list<HubDBTableV3> $results */
-    #[Api(list: HubDBTableV3::class)]
+    #[Required(list: HubDBTableV3::class)]
     public array $results;
 
-    #[Api]
+    #[Required]
     public int $total;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?ForwardPaging $paging;
 
     /**

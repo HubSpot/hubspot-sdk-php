@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Lists;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\NextPage;
@@ -22,13 +23,13 @@ final class APICollectionResponseJoinTimeAndRecordID implements BaseModel
     use SdkModel;
 
     /** @var list<JoinTimeAndRecordID> $results */
-    #[Api(list: JoinTimeAndRecordID::class)]
+    #[Required(list: JoinTimeAndRecordID::class)]
     public array $results;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?Paging $paging;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $total;
 
     /**

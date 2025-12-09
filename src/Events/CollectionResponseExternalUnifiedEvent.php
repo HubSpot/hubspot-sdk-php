@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Events;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\NextPage;
@@ -22,10 +23,10 @@ final class CollectionResponseExternalUnifiedEvent implements BaseModel
     use SdkModel;
 
     /** @var list<ExternalUnifiedEvent> $results */
-    #[Api(list: ExternalUnifiedEvent::class)]
+    #[Required(list: ExternalUnifiedEvent::class)]
     public array $results;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?Paging $paging;
 
     /**

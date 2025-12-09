@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Lists;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -20,7 +20,7 @@ final class PublicBatchMigrationMapping implements BaseModel
     use SdkModel;
 
     /** @var list<PublicMigrationMapping> $legacyListIdsToIdsMapping */
-    #[Api(list: PublicMigrationMapping::class)]
+    #[Required(list: PublicMigrationMapping::class)]
     public array $legacyListIdsToIdsMapping;
 
     /**
@@ -28,7 +28,7 @@ final class PublicBatchMigrationMapping implements BaseModel
      *
      * @var list<string> $missingLegacyListIds
      */
-    #[Api(list: 'string')]
+    #[Required(list: 'string')]
     public array $missingLegacyListIds;
 
     /**

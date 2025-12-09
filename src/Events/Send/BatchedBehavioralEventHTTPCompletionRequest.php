@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Events\Send;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -19,7 +19,7 @@ final class BatchedBehavioralEventHTTPCompletionRequest implements BaseModel
     use SdkModel;
 
     /** @var list<BehavioralEventHTTPCompletionRequest> $inputs */
-    #[Api(list: BehavioralEventHTTPCompletionRequest::class)]
+    #[Required(list: BehavioralEventHTTPCompletionRequest::class)]
     public array $inputs;
 
     /**

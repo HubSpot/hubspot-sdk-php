@@ -27,7 +27,8 @@ use HubspotSDK\Conversations\PublicUnsupportedContent;
 use HubspotSDK\Conversations\PublicWhatsAppTemplateMetadata;
 use HubspotSDK\Conversations\QuickReply;
 use HubspotSDK\Conversations\SocialMetadata;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -60,72 +61,72 @@ final class PublicConversationsMessage implements BaseModel
     /** @use SdkModel<PublicConversationsMessageShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public string $id;
 
-    #[Api]
+    #[Required]
     public bool $archived;
 
     /**
      * @var list<PublicFile|PublicLocation|PublicContact|PublicUnsupportedContent|PublicMessageHeader|PublicQuickReplies|PublicWhatsAppTemplateMetadata|PublicSocialMetadataAttachment> $attachments
      */
-    #[Api(list: Attachment::class)]
+    #[Required(list: Attachment::class)]
     public array $attachments;
 
-    #[Api]
+    #[Required]
     public string $channelAccountId;
 
-    #[Api]
+    #[Required]
     public string $channelId;
 
-    #[Api]
+    #[Required]
     public PublicClient $client;
 
-    #[Api]
+    #[Required]
     public string $conversationsThreadId;
 
-    #[Api]
+    #[Required]
     public \DateTimeInterface $createdAt;
 
-    #[Api]
+    #[Required]
     public string $createdBy;
 
     /** @var value-of<Direction> $direction */
-    #[Api(enum: Direction::class)]
+    #[Required(enum: Direction::class)]
     public string $direction;
 
     /** @var list<PublicRecipient> $recipients */
-    #[Api(list: PublicRecipient::class)]
+    #[Required(list: PublicRecipient::class)]
     public array $recipients;
 
     /** @var list<PublicSender> $senders */
-    #[Api(list: PublicSender::class)]
+    #[Required(list: PublicSender::class)]
     public array $senders;
 
-    #[Api]
+    #[Required]
     public string $text;
 
     /** @var value-of<TruncationStatus> $truncationStatus */
-    #[Api(enum: TruncationStatus::class)]
+    #[Required(enum: TruncationStatus::class)]
     public string $truncationStatus;
 
     /** @var value-of<Type> $type */
-    #[Api(enum: Type::class)]
+    #[Required(enum: Type::class)]
     public string $type;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $inReplyToId;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $richText;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?PublicMessageStatus $status;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $subject;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $updatedAt;
 
     /**

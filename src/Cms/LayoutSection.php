@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\MapOf;
@@ -32,22 +32,22 @@ final class LayoutSection implements BaseModel
     use SdkModel;
 
     /** @var list<mixed> $cells */
-    #[Api(list: LayoutSection::class)]
+    #[Required(list: LayoutSection::class)]
     public array $cells;
 
-    #[Api]
+    #[Required]
     public string $cssClass;
 
-    #[Api]
+    #[Required]
     public string $cssId;
 
-    #[Api]
+    #[Required]
     public string $cssStyle;
 
-    #[Api]
+    #[Required]
     public string $label;
 
-    #[Api]
+    #[Required]
     public string $name;
 
     /**
@@ -55,27 +55,27 @@ final class LayoutSection implements BaseModel
      *
      * @var array<string,mixed> $params
      */
-    #[Api(map: 'mixed')]
+    #[Required(map: 'mixed')]
     public array $params;
 
     /** @var list<RowMetaData> $rowMetaData */
-    #[Api(list: RowMetaData::class)]
+    #[Required(list: RowMetaData::class)]
     public array $rowMetaData;
 
     /** @var list<mixed> $rows */
-    #[Api(list: new MapOf(LayoutSection::class))]
+    #[Required(list: new MapOf(LayoutSection::class))]
     public array $rows;
 
-    #[Api]
+    #[Required]
     public Styles $styles;
 
-    #[Api]
+    #[Required]
     public string $type;
 
-    #[Api]
+    #[Required]
     public int $w;
 
-    #[Api]
+    #[Required]
     public int $x;
 
     /**

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Settings\Currencies;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -33,7 +33,7 @@ final class CurrencyUpdateVisibilityParams implements BaseModel
      *
      * @var value-of<FromCurrencyCode> $fromCurrencyCode
      */
-    #[Api(enum: FromCurrencyCode::class)]
+    #[Required(enum: FromCurrencyCode::class)]
     public string $fromCurrencyCode;
 
     /**
@@ -41,13 +41,13 @@ final class CurrencyUpdateVisibilityParams implements BaseModel
      *
      * @var value-of<ToCurrencyCode> $toCurrencyCode
      */
-    #[Api(enum: ToCurrencyCode::class)]
+    #[Required(enum: ToCurrencyCode::class)]
     public string $toCurrencyCode;
 
     /**
      * This indicates if the currency pair is shown in the MultiCurrency settings page. Setting this to false will remove the currency pair from the settings page.
      */
-    #[Api]
+    #[Required]
     public bool $visibleInUI;
 
     /**

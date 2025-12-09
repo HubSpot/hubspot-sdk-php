@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Extensions\Cards;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Extensions\Cards\DisplayOption\Type;
@@ -24,13 +24,13 @@ final class DisplayOption implements BaseModel
     /**
      * The text that will be displayed to users for this option.
      */
-    #[Api]
+    #[Required]
     public string $label;
 
     /**
      * JSON-friendly unique name for option.
      */
-    #[Api]
+    #[Required]
     public string $name;
 
     /**
@@ -38,7 +38,7 @@ final class DisplayOption implements BaseModel
      *
      * @var value-of<Type> $type
      */
-    #[Api(enum: Type::class)]
+    #[Required(enum: Type::class)]
     public string $type;
 
     /**

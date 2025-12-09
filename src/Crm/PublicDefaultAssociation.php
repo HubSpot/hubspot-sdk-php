@@ -6,7 +6,7 @@ namespace HubspotSDK\Crm;
 
 use HubspotSDK\AssociationSpec;
 use HubspotSDK\AssociationSpec\AssociationCategory;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicObjectID;
@@ -24,13 +24,13 @@ final class PublicDefaultAssociation implements BaseModel
     /**
      * Defines the type, direction, and details of the relationship between two CRM objects.
      */
-    #[Api]
+    #[Required]
     public AssociationSpec $associationSpec;
 
-    #[Api]
+    #[Required]
     public PublicObjectID $from;
 
-    #[Api]
+    #[Required]
     public PublicObjectID $to;
 
     /**

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Lists;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -21,13 +21,13 @@ final class PublicMigrationMapping implements BaseModel
     /**
      * The legacy list id for the list.
      */
-    #[Api]
+    #[Required]
     public string $legacyListId;
 
     /**
      * The V3 list id for the list.
      */
-    #[Api]
+    #[Required]
     public string $listId;
 
     /**

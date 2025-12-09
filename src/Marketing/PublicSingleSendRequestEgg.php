@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -26,13 +27,13 @@ final class PublicSingleSendRequestEgg implements BaseModel
     /**
      * The content ID for the email, which can be found in email tool UI.
      */
-    #[Api]
+    #[Required]
     public int $emailId;
 
     /**
      * A JSON object containing anything you want to override.
      */
-    #[Api]
+    #[Required]
     public PublicSingleSendEmail $message;
 
     /**
@@ -40,7 +41,7 @@ final class PublicSingleSendRequestEgg implements BaseModel
      *
      * @var array<string,string>|null $contactProperties
      */
-    #[Api(map: 'string', optional: true)]
+    #[Optional(map: 'string')]
     public ?array $contactProperties;
 
     /**
@@ -49,7 +50,7 @@ final class PublicSingleSendRequestEgg implements BaseModel
      *
      * @var array<string,mixed>|null $customProperties
      */
-    #[Api(map: 'mixed', optional: true)]
+    #[Optional(map: 'mixed')]
     public ?array $customProperties;
 
     /**

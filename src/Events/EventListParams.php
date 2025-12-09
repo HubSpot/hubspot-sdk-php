@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Events;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -42,58 +42,58 @@ final class EventListParams implements BaseModel
      *
      * @var list<string>|null $id
      */
-    #[Api(list: 'string', optional: true)]
+    #[Optional(list: 'string')]
     public ?array $id;
 
     /**
      * The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $after;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $before;
 
     /**
      * The event type name. You can retrieve available event types using the [event types endpoint](#get-%2Fevents%2Fv3%2Fevents%2Fevent-types).
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $eventType;
 
     /**
      * The maximum number of results to display per page.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $limit;
 
     /**
      * The ID of the CRM Object to filter event instances on. When including this parameter, you must also include the `objectType` parameter.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $objectId;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?ObjectProperty $objectProperty;
 
     /**
      * The type of CRM object to filter event instances on (e.g., `contact`). To retrieve event data for a specific CRM record, include the additional `objectId` query parameter (below).
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $objectType;
 
     /**
      * Filter for event data that occurred after a specific datetime.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $occurredAfter;
 
     /**
      * Filter for event data that occurred before a specific datetime.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $occurredBefore;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?Property $property;
 
     /**
@@ -101,7 +101,7 @@ final class EventListParams implements BaseModel
      *
      * @var list<string>|null $sort
      */
-    #[Api(list: 'string', optional: true)]
+    #[Optional(list: 'string')]
     public ?array $sort;
 
     public function __construct()

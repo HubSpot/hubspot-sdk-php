@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicNumOccurrencesRefineBy\Type;
@@ -20,13 +21,13 @@ final class PublicNumOccurrencesRefineBy implements BaseModel
     use SdkModel;
 
     /** @var value-of<Type> $type */
-    #[Api(enum: Type::class)]
+    #[Required(enum: Type::class)]
     public string $type;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $maxOccurrences;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $minOccurrences;
 
     /**

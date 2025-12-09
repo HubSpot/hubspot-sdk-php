@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Events;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -21,16 +22,16 @@ final class MarketingEventAssociation implements BaseModel
     /** @use SdkModel<MarketingEventAssociationShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public string $marketingEventId;
 
-    #[Api]
+    #[Required]
     public string $name;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $externalAccountId;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $externalEventId;
 
     /**

@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\Hubdb\Tables;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -27,22 +28,22 @@ final class TableCloneDraftParams implements BaseModel
     /**
      * Specifies whether to copy the rows during clone.
      */
-    #[Api]
+    #[Required]
     public bool $copyRows;
 
-    #[Api]
+    #[Required]
     public bool $isHubspotDefined;
 
     /**
      * The new label for the cloned table.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $newLabel;
 
     /**
      * The new name for the cloned table.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $newName;
 
     /**

@@ -6,7 +6,7 @@ namespace HubspotSDK\Automation\Workflows;
 
 use HubspotSDK\Automation\Workflows\APIAssociationTimestampDataSource\AssociationCategory;
 use HubspotSDK\Automation\Workflows\APIAssociationTimestampDataSource\Type;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -25,23 +25,23 @@ final class APIAssociationTimestampDataSource implements BaseModel
     use SdkModel;
 
     /** @var value-of<AssociationCategory> $associationCategory */
-    #[Api(enum: AssociationCategory::class)]
+    #[Required(enum: AssociationCategory::class)]
     public string $associationCategory;
 
     /**
      * The ID representing the type of association.
      */
-    #[Api]
+    #[Required]
     public int $associationTypeId;
 
-    #[Api]
+    #[Required]
     public string $name;
 
-    #[Api]
+    #[Required]
     public string $objectTypeId;
 
     /** @var value-of<Type> $type */
-    #[Api(enum: Type::class)]
+    #[Required(enum: Type::class)]
     public string $type;
 
     /**

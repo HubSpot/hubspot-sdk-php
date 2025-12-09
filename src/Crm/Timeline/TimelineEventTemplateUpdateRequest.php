@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Timeline;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Timeline\TimelineEventTemplateToken\Type;
@@ -28,13 +29,13 @@ final class TimelineEventTemplateUpdateRequest implements BaseModel
     /**
      * The template ID.
      */
-    #[Api]
+    #[Required]
     public string $id;
 
     /**
      * The template name.
      */
-    #[Api]
+    #[Required]
     public string $name;
 
     /**
@@ -42,19 +43,19 @@ final class TimelineEventTemplateUpdateRequest implements BaseModel
      *
      * @var list<TimelineEventTemplateToken> $tokens
      */
-    #[Api(list: TimelineEventTemplateToken::class)]
+    #[Required(list: TimelineEventTemplateToken::class)]
     public array $tokens;
 
     /**
      * This uses Markdown syntax with Handlebars and event-specific data to render HTML on a timeline when you expand the details.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $detailTemplate;
 
     /**
      * This uses Markdown syntax with Handlebars and event-specific data to render HTML on a timeline as a header.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $headerTemplate;
 
     /**

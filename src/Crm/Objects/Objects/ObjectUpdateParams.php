@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Objects\Objects;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -24,7 +25,7 @@ final class ObjectUpdateParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    #[Api]
+    #[Required]
     public string $objectType;
 
     /**
@@ -32,13 +33,13 @@ final class ObjectUpdateParams implements BaseModel
      *
      * @var array<string,string> $properties
      */
-    #[Api(map: 'string')]
+    #[Required(map: 'string')]
     public array $properties;
 
     /**
      * The name of a property whose values are unique for this object.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $idProperty;
 
     /**

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Associations\Schema\V4\Configurations;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -27,11 +27,13 @@ final class ConfigurationBatchUpdateParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    #[Api]
+    #[Required]
     public string $fromObjectType;
 
     /** @var list<PublicAssociationDefinitionConfigurationUpdateRequest> $inputs */
-    #[Api(list: PublicAssociationDefinitionConfigurationUpdateRequest::class)]
+    #[Required(
+        list: PublicAssociationDefinitionConfigurationUpdateRequest::class
+    )]
     public array $inputs;
 
     /**

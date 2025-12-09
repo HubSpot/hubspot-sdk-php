@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Subscriptions;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Marketing\Subscriptions\PublicSubscriptionStatus\LegalBasis;
@@ -32,19 +33,19 @@ final class PublicSubscriptionStatus implements BaseModel
     /**
      * The ID for the subscription.
      */
-    #[Api]
+    #[Required]
     public string $id;
 
     /**
      * A description of the subscription.
      */
-    #[Api]
+    #[Required]
     public string $description;
 
     /**
      * The name of the subscription.
      */
-    #[Api]
+    #[Required]
     public string $name;
 
     /**
@@ -52,7 +53,7 @@ final class PublicSubscriptionStatus implements BaseModel
      *
      * @var value-of<SourceOfStatus> $sourceOfStatus
      */
-    #[Api(enum: SourceOfStatus::class)]
+    #[Required(enum: SourceOfStatus::class)]
     public string $sourceOfStatus;
 
     /**
@@ -60,13 +61,13 @@ final class PublicSubscriptionStatus implements BaseModel
      *
      * @var value-of<Status> $status
      */
-    #[Api(enum: Status::class)]
+    #[Required(enum: Status::class)]
     public string $status;
 
     /**
      * The ID of the brand that the subscription is associated with, if there is one.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $brandId;
 
     /**
@@ -74,19 +75,19 @@ final class PublicSubscriptionStatus implements BaseModel
      *
      * @var value-of<LegalBasis>|null $legalBasis
      */
-    #[Api(enum: LegalBasis::class, optional: true)]
+    #[Optional(enum: LegalBasis::class)]
     public ?string $legalBasis;
 
     /**
      * A more detailed explanation to go with the legal basis.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $legalBasisExplanation;
 
     /**
      * The name of the preferences group that the subscription is associated with.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $preferenceGroupName;
 
     /**

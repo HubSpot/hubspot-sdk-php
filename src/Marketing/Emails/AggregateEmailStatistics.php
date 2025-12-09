@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Emails;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -22,7 +22,7 @@ final class AggregateEmailStatistics implements BaseModel
     /** @use SdkModel<AggregateEmailStatisticsShape> */
     use SdkModel;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?EmailStatisticsData $aggregate;
 
     /**
@@ -30,7 +30,7 @@ final class AggregateEmailStatistics implements BaseModel
      *
      * @var array<string,EmailStatisticsData>|null $campaignAggregations
      */
-    #[Api(map: EmailStatisticsData::class, optional: true)]
+    #[Optional(map: EmailStatisticsData::class)]
     public ?array $campaignAggregations;
 
     /**
@@ -38,7 +38,7 @@ final class AggregateEmailStatistics implements BaseModel
      *
      * @var list<int>|null $emails
      */
-    #[Api(list: 'int', optional: true)]
+    #[Optional(list: 'int')]
     public ?array $emails;
 
     public function __construct()

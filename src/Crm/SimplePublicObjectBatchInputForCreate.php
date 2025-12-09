@@ -5,7 +5,8 @@ declare(strict_types=1);
 namespace HubspotSDK\Crm;
 
 use HubspotSDK\AssociationSpec;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicObjectID;
@@ -23,7 +24,7 @@ final class SimplePublicObjectBatchInputForCreate implements BaseModel
     use SdkModel;
 
     /** @var list<PublicAssociationsForObject> $associations */
-    #[Api(list: PublicAssociationsForObject::class)]
+    #[Required(list: PublicAssociationsForObject::class)]
     public array $associations;
 
     /**
@@ -31,13 +32,13 @@ final class SimplePublicObjectBatchInputForCreate implements BaseModel
      *
      * @var array<string,string> $properties
      */
-    #[Api(map: 'string')]
+    #[Required(map: 'string')]
     public array $properties;
 
     /**
      * A unique identifier for tracing the creation request.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $objectWriteTraceId;
 
     /**

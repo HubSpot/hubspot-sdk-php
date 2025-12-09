@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Cms\MediaBridge;
 
 use HubspotSDK\Cms\MediaBridge\InboundDBObjectType\MetaType;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Property;
@@ -22,15 +22,15 @@ final class IntegratorObjectCreationResponse implements BaseModel
     /** @use SdkModel<IntegratorObjectCreationResponseShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public InboundDBObjectType $objectType;
 
     /** @var list<PropertyDefinition> $properties */
-    #[Api(list: PropertyDefinition::class)]
+    #[Required(list: PropertyDefinition::class)]
     public array $properties;
 
     /** @var list<Group> $propertyGroups */
-    #[Api(list: Group::class)]
+    #[Required(list: Group::class)]
     public array $propertyGroups;
 
     /**

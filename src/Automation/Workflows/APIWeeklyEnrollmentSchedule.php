@@ -6,7 +6,7 @@ namespace HubspotSDK\Automation\Workflows;
 
 use HubspotSDK\Automation\Workflows\APIWeeklyEnrollmentSchedule\DaysOfWeek;
 use HubspotSDK\Automation\Workflows\APIWeeklyEnrollmentSchedule\Type;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -23,14 +23,14 @@ final class APIWeeklyEnrollmentSchedule implements BaseModel
     use SdkModel;
 
     /** @var list<value-of<DaysOfWeek>> $daysOfWeek */
-    #[Api(list: DaysOfWeek::class)]
+    #[Required(list: DaysOfWeek::class)]
     public array $daysOfWeek;
 
-    #[Api]
+    #[Required]
     public APITimeOfDay $timeOfDay;
 
     /** @var value-of<Type> $type */
-    #[Api(enum: Type::class)]
+    #[Required(enum: Type::class)]
     public string $type;
 
     /**

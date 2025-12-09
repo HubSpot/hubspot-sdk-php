@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\MediaBridge\Schemas;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -35,22 +36,22 @@ final class SchemaUpdateParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    #[Api]
+    #[Required]
     public int $appId;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $clearDescription;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $description;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?ObjectTypeDefinitionLabels $labels;
 
     /**
      * The name of the primary property for this object. This will be displayed as primary on the HubSpot record page for this object type.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $primaryDisplayProperty;
 
     /**
@@ -58,10 +59,10 @@ final class SchemaUpdateParams implements BaseModel
      *
      * @var list<string>|null $requiredProperties
      */
-    #[Api(list: 'string', optional: true)]
+    #[Optional(list: 'string')]
     public ?array $requiredProperties;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $restorable;
 
     /**
@@ -69,7 +70,7 @@ final class SchemaUpdateParams implements BaseModel
      *
      * @var list<string>|null $searchableProperties
      */
-    #[Api(list: 'string', optional: true)]
+    #[Optional(list: 'string')]
     public ?array $searchableProperties;
 
     /**
@@ -77,7 +78,7 @@ final class SchemaUpdateParams implements BaseModel
      *
      * @var list<string>|null $secondaryDisplayProperties
      */
-    #[Api(list: 'string', optional: true)]
+    #[Optional(list: 'string')]
     public ?array $secondaryDisplayProperties;
 
     /**

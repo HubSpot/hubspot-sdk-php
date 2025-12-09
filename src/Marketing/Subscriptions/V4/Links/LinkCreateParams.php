@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Subscriptions\V4\Links;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -28,19 +29,19 @@ final class LinkCreateParams implements BaseModel
     use SdkParams;
 
     /** @var value-of<Channel> $channel */
-    #[Api(enum: Channel::class)]
+    #[Required(enum: Channel::class)]
     public string $channel;
 
-    #[Api]
+    #[Required]
     public string $subscriberIdString;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $businessUnitId;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $language;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $subscriptionId;
 
     /**

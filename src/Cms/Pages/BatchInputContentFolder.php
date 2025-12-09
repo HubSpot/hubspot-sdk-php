@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\Pages;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -23,7 +23,7 @@ final class BatchInputContentFolder implements BaseModel
      *
      * @var list<ContentFolder> $inputs
      */
-    #[Api(list: ContentFolder::class)]
+    #[Required(list: ContentFolder::class)]
     public array $inputs;
 
     /**

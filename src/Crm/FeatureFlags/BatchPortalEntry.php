@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\FeatureFlags;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\FeatureFlags\BatchPortalEntry\FlagState;
@@ -20,10 +20,10 @@ final class BatchPortalEntry implements BaseModel
     use SdkModel;
 
     /** @var value-of<FlagState> $flagState */
-    #[Api(enum: FlagState::class)]
+    #[Required(enum: FlagState::class)]
     public string $flagState;
 
-    #[Api]
+    #[Required]
     public int $portalId;
 
     /**

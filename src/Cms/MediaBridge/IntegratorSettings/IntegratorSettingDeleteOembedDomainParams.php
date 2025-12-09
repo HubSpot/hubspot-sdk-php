@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\MediaBridge\IntegratorSettings;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -27,13 +27,13 @@ final class IntegratorSettingDeleteOembedDomainParams implements BaseModel
     /**
      * The ID of the oEmbed to delete.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $id;
 
     /**
      * Filter response by Hub ID.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $domainPortalId;
 
     public function __construct()

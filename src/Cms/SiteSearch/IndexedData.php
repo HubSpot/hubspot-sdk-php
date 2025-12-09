@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Cms\SiteSearch;
 
 use HubspotSDK\Cms\SiteSearch\IndexedData\Type;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -24,7 +24,7 @@ final class IndexedData implements BaseModel
     /**
      * The ID of the document in HubSpot.
      */
-    #[Api]
+    #[Required]
     public string $id;
 
     /**
@@ -32,7 +32,7 @@ final class IndexedData implements BaseModel
      *
      * @var array<string,IndexedField> $fields
      */
-    #[Api(map: IndexedField::class)]
+    #[Required(map: IndexedField::class)]
     public array $fields;
 
     /**
@@ -40,7 +40,7 @@ final class IndexedData implements BaseModel
      *
      * @var value-of<Type> $type
      */
-    #[Api(enum: Type::class)]
+    #[Required(enum: Type::class)]
     public string $type;
 
     /**

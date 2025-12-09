@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Subscriptions\V4\Definitions;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -27,13 +27,13 @@ final class DefinitionListParams implements BaseModel
     /**
      * If you have the [business unit add-on](https://developers.hubspot.com/beta-docs/guides/api/settings/business-units-api), include this parameter to filter results by business unit ID. The default Account business unit will always use `0`.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $businessUnitId;
 
     /**
      * Set to `true` to return subscription translations associated with each definition.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $includeTranslations;
 
     public function __construct()

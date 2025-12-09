@@ -10,7 +10,8 @@ use HubspotSDK\Automation\Workflows\APIContactFlowPutRequest\Type;
 use HubspotSDK\Automation\Workflows\APIMonthlyRelativeDaysEnrollmentSchedule\MonthlyRelativeDays;
 use HubspotSDK\Automation\Workflows\APITimeWindow\Day;
 use HubspotSDK\Automation\Workflows\APIWeeklyEnrollmentSchedule\DaysOfWeek;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicAbsoluteComparativeTimestampRefineBy;
@@ -84,63 +85,63 @@ final class APIContactFlowPutRequest implements BaseModel
     use SdkModel;
 
     /** @var list<mixed> $actions */
-    #[Api(list: Action::class)]
+    #[Required(list: Action::class)]
     public array $actions;
 
     /** @var list<APIBlockedDate> $blockedDates */
-    #[Api(list: APIBlockedDate::class)]
+    #[Required(list: APIBlockedDate::class)]
     public array $blockedDates;
 
-    #[Api]
+    #[Required]
     public bool $canEnrollFromSalesforce;
 
     /** @var array<string,string> $customProperties */
-    #[Api(map: 'string')]
+    #[Required(map: 'string')]
     public array $customProperties;
 
-    #[Api]
+    #[Required]
     public bool $isEnabled;
 
-    #[Api]
+    #[Required]
     public string $revisionId;
 
     /** @var list<int> $suppressionListIds */
-    #[Api(list: 'int')]
+    #[Required(list: 'int')]
     public array $suppressionListIds;
 
     /** @var list<APITimeWindow> $timeWindows */
-    #[Api(list: APITimeWindow::class)]
+    #[Required(list: APITimeWindow::class)]
     public array $timeWindows;
 
     /** @var value-of<Type> $type */
-    #[Api(enum: Type::class)]
+    #[Required(enum: Type::class)]
     public string $type;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $description;
 
-    #[Api(optional: true)]
+    #[Optional]
     public APIListBasedEnrollmentCriteria|APIEventBasedEnrollmentCriteria|APIManualEnrollmentCriteria|null $enrollmentCriteria;
 
-    #[Api(optional: true)]
+    #[Optional]
     public APIDailyEnrollmentSchedule|APIWeeklyEnrollmentSchedule|APIMonthlySpecificDaysEnrollmentSchedule|APIMonthlyRelativeDaysEnrollmentSchedule|APIYearlyEnrollmentSchedule|APIPropertyBasedEnrollmentSchedule|null $enrollmentSchedule;
 
-    #[Api(optional: true)]
+    #[Optional]
     public APIContactPropertyAnchor|APIStaticDateAnchor|null $eventAnchor;
 
-    #[Api(optional: true)]
+    #[Optional]
     public PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch|null $goalFilterBranch;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $name;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $startActionId;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?APIUnEnrollmentSetting $unEnrollmentSetting;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $uuid;
 
     /**

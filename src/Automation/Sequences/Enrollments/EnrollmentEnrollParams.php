@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Automation\Sequences\Enrollments;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -28,19 +29,19 @@ final class EnrollmentEnrollParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    #[Api]
+    #[Required]
     public string $userId;
 
-    #[Api]
+    #[Required]
     public string $contactId;
 
-    #[Api]
+    #[Required]
     public string $senderEmail;
 
-    #[Api]
+    #[Required]
     public string $sequenceId;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $senderAliasAddress;
 
     /**

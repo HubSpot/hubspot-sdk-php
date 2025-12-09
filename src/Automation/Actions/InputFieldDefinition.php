@@ -8,7 +8,8 @@ use HubspotSDK\Automation\Actions\FieldTypeDefinition\FieldType;
 use HubspotSDK\Automation\Actions\FieldTypeDefinition\ReferencedObjectType;
 use HubspotSDK\Automation\Actions\FieldTypeDefinition\Type;
 use HubspotSDK\Automation\Actions\InputFieldDefinition\SupportedValueType;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Option;
@@ -26,17 +27,17 @@ final class InputFieldDefinition implements BaseModel
     /** @use SdkModel<InputFieldDefinitionShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public bool $isRequired;
 
-    #[Api]
+    #[Required]
     public FieldTypeDefinition $typeDefinition;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $automationFieldType;
 
     /** @var list<value-of<SupportedValueType>>|null $supportedValueTypes */
-    #[Api(list: SupportedValueType::class, optional: true)]
+    #[Optional(list: SupportedValueType::class)]
     public ?array $supportedValueTypes;
 
     /**

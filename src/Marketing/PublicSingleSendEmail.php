@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -28,7 +29,7 @@ final class PublicSingleSendEmail implements BaseModel
     /**
      * The recipient of the email.
      */
-    #[Api]
+    #[Required]
     public string $to;
 
     /**
@@ -36,7 +37,7 @@ final class PublicSingleSendEmail implements BaseModel
      *
      * @var list<string>|null $bcc
      */
-    #[Api(list: 'string', optional: true)]
+    #[Optional(list: 'string')]
     public ?array $bcc;
 
     /**
@@ -44,13 +45,13 @@ final class PublicSingleSendEmail implements BaseModel
      *
      * @var list<string>|null $cc
      */
-    #[Api(list: 'string', optional: true)]
+    #[Optional(list: 'string')]
     public ?array $cc;
 
     /**
      * The From header for the email.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $from;
 
     /**
@@ -58,13 +59,13 @@ final class PublicSingleSendEmail implements BaseModel
      *
      * @var list<string>|null $replyTo
      */
-    #[Api(list: 'string', optional: true)]
+    #[Optional(list: 'string')]
     public ?array $replyTo;
 
     /**
      * ID for a particular send. No more than one email will be sent per sendId.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $sendId;
 
     /**

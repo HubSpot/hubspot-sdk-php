@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\ListOf;
@@ -33,19 +34,19 @@ final class SimplePublicObject implements BaseModel
     /**
      * The unique ID of the object.
      */
-    #[Api]
+    #[Required]
     public string $id;
 
     /**
      * Whether the object is archived.
      */
-    #[Api]
+    #[Required]
     public bool $archived;
 
     /**
      * The timestamp when the object was created, in ISO 8601 format.
      */
-    #[Api]
+    #[Required]
     public \DateTimeInterface $createdAt;
 
     /**
@@ -53,25 +54,25 @@ final class SimplePublicObject implements BaseModel
      *
      * @var array<string,string|null> $properties
      */
-    #[Api(type: new MapOf('string', nullable: true))]
+    #[Required(type: new MapOf('string', nullable: true))]
     public array $properties;
 
     /**
      * The timestamp when the object was last updated, in ISO 8601 format.
      */
-    #[Api]
+    #[Required]
     public \DateTimeInterface $updatedAt;
 
     /**
      * The timestamp when the object was archived, in ISO 8601 format.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $archivedAt;
 
     /**
      * A unique identifier for tracing the creation request.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $objectWriteTraceId;
 
     /**
@@ -79,10 +80,10 @@ final class SimplePublicObject implements BaseModel
      *
      * @var array<string,list<ValueWithTimestamp>>|null $propertiesWithHistory
      */
-    #[Api(map: new ListOf(ValueWithTimestamp::class), optional: true)]
+    #[Optional(map: new ListOf(ValueWithTimestamp::class))]
     public ?array $propertiesWithHistory;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $url;
 
     /**

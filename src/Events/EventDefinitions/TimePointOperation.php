@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Events\EventDefinitions;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Events\EventDefinitions\DatePoint\TimeType;
@@ -35,37 +36,37 @@ final class TimePointOperation implements BaseModel
     use SdkModel;
 
     /** @var value-of<EndpointBehavior> $endpointBehavior */
-    #[Api(enum: EndpointBehavior::class)]
+    #[Required(enum: EndpointBehavior::class)]
     public string $endpointBehavior;
 
-    #[Api]
+    #[Required]
     public bool $includeObjectsWithNoValueSet;
 
-    #[Api]
+    #[Required]
     public string $operationType;
 
     /** @var value-of<Operator> $operator */
-    #[Api(enum: Operator::class)]
+    #[Required(enum: Operator::class)]
     public string $operator;
 
-    #[Api]
+    #[Required]
     public string $operatorName;
 
     /** @var value-of<PropertyParser> $propertyParser */
-    #[Api(enum: PropertyParser::class)]
+    #[Required(enum: PropertyParser::class)]
     public string $propertyParser;
 
     /** @var value-of<PropertyType> $propertyType */
-    #[Api(enum: PropertyType::class)]
+    #[Required(enum: PropertyType::class)]
     public string $propertyType;
 
-    #[Api]
+    #[Required]
     public DatePoint|IndexedTimePoint|PropertyReferencedTime $timePoint;
 
-    #[Api]
+    #[Required]
     public string $type;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $defaultValue;
 
     /**

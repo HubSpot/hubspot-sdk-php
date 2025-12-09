@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicDatePoint\TimeType;
@@ -28,32 +29,32 @@ final class PublicRangedTimeOperation implements BaseModel
     /** @use SdkModel<PublicRangedTimeOperationShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public bool $includeObjectsWithNoValueSet;
 
-    #[Api]
+    #[Required]
     public PublicDatePoint|PublicIndexedTimePoint|PublicPropertyReferencedTime $lowerBoundTimePoint;
 
-    #[Api]
+    #[Required]
     public string $operationType;
 
-    #[Api]
+    #[Required]
     public string $operator;
 
     /** @var value-of<Type> $type */
-    #[Api(enum: Type::class)]
+    #[Required(enum: Type::class)]
     public string $type;
 
-    #[Api]
+    #[Required]
     public PublicDatePoint|PublicIndexedTimePoint|PublicPropertyReferencedTime $upperBoundTimePoint;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $lowerBoundEndpointBehavior;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $propertyParser;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $upperBoundEndpointBehavior;
 
     /**

@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Files;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -28,49 +29,49 @@ final class Folder implements BaseModel
     /**
      * ID of the folder.
      */
-    #[Api]
+    #[Required]
     public string $id;
 
     /**
      * Marks whether the folder is deleted or not.
      */
-    #[Api]
+    #[Required]
     public bool $archived;
 
     /**
      * Timestamp of folder creation.
      */
-    #[Api]
+    #[Required]
     public \DateTimeInterface $createdAt;
 
     /**
      * Timestamp of the latest update to the folder.
      */
-    #[Api]
+    #[Required]
     public \DateTimeInterface $updatedAt;
 
     /**
      * Timestamp of folder deletion.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $archivedAt;
 
     /**
      * Name of the folder.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $name;
 
     /**
      * ID of the parent folder.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $parentFolderId;
 
     /**
      * Path of the folder in the file manager.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $path;
 
     /**

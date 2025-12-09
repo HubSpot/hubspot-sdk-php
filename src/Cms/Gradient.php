@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -18,14 +18,14 @@ final class Gradient implements BaseModel
     /** @use SdkModel<GradientShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public Angle $angle;
 
     /** @var list<ColorStop> $colors */
-    #[Api(list: ColorStop::class)]
+    #[Required(list: ColorStop::class)]
     public array $colors;
 
-    #[Api]
+    #[Required]
     public SideOrCorner $sideOrCorner;
 
     /**

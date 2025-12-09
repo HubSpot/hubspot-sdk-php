@@ -5,7 +5,8 @@ declare(strict_types=1);
 namespace HubspotSDK\Cms\Hubdb;
 
 use HubspotSDK\Cms\Hubdb\Column\Type;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Option;
@@ -42,25 +43,25 @@ final class Column implements BaseModel
     /**
      * Column Id.
      */
-    #[Api]
+    #[Required]
     public string $id;
 
-    #[Api]
+    #[Required]
     public bool $deleted;
 
-    #[Api]
+    #[Required]
     public string $description;
 
     /**
      * Label of the column.
      */
-    #[Api]
+    #[Required]
     public string $label;
 
     /**
      * Name of the column.
      */
-    #[Api]
+    #[Required]
     public string $name;
 
     /**
@@ -68,22 +69,22 @@ final class Column implements BaseModel
      *
      * @var value-of<Type> $type
      */
-    #[Api(enum: Type::class)]
+    #[Required(enum: Type::class)]
     public string $type;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $createdAt;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?SimpleUser $createdBy;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $createdByUserId;
 
     /**
      * Foreign Column id.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $foreignColumnId;
 
     /**
@@ -91,7 +92,7 @@ final class Column implements BaseModel
      *
      * @var list<ForeignID>|null $foreignIds
      */
-    #[Api(list: ForeignID::class, optional: true)]
+    #[Optional(list: ForeignID::class)]
     public ?array $foreignIds;
 
     /**
@@ -99,7 +100,7 @@ final class Column implements BaseModel
      *
      * @var array<string,ForeignID>|null $foreignIdsById
      */
-    #[Api(map: ForeignID::class, optional: true)]
+    #[Optional(map: ForeignID::class)]
     public ?array $foreignIdsById;
 
     /**
@@ -107,19 +108,19 @@ final class Column implements BaseModel
      *
      * @var array<string,ForeignID>|null $foreignIdsByName
      */
-    #[Api(map: ForeignID::class, optional: true)]
+    #[Optional(map: ForeignID::class)]
     public ?array $foreignIdsByName;
 
     /**
      * Foreign table id referenced.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $foreignTableId;
 
     /**
      * Number of options available.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $optionCount;
 
     /**
@@ -127,22 +128,22 @@ final class Column implements BaseModel
      *
      * @var list<Option>|null $options
      */
-    #[Api(list: Option::class, optional: true)]
+    #[Optional(list: Option::class)]
     public ?array $options;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $updatedAt;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?SimpleUser $updatedBy;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $updatedByUserId;
 
     /**
      * Column width for HubDB UI.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $width;
 
     /**

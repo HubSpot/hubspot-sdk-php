@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\AssociationSpecWithLabel\Category;
@@ -20,13 +21,13 @@ final class AssociationSpecWithLabel implements BaseModel
     use SdkModel;
 
     /** @var value-of<Category> $category */
-    #[Api(enum: Category::class)]
+    #[Required(enum: Category::class)]
     public string $category;
 
-    #[Api]
+    #[Required]
     public int $typeId;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $label;
 
     /**

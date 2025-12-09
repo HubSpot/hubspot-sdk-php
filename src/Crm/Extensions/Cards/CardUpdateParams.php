@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Extensions\Cards;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -34,31 +35,31 @@ final class CardUpdateParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    #[Api]
+    #[Required]
     public int $appId;
 
     /**
      * Configuration for custom user actions on cards.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?CardActions $actions;
 
     /**
      * Configuration for displayed info on a card.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?CardDisplayBody $display;
 
     /**
      * Variant of CardFetchBody with fields as optional for patches.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?CardFetchBodyPatch $fetch;
 
     /**
      * The top-level title for this card. Displayed to users in the CRM UI.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $title;
 
     /**

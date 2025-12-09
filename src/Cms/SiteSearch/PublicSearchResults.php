@@ -6,7 +6,8 @@ namespace HubspotSDK\Cms\SiteSearch;
 
 use HubspotSDK\Cms\SiteSearch\ContentSearchResult\Language;
 use HubspotSDK\Cms\SiteSearch\ContentSearchResult\Type;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -25,23 +26,23 @@ final class PublicSearchResults implements BaseModel
     /** @use SdkModel<PublicSearchResultsShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public int $limit;
 
-    #[Api]
+    #[Required]
     public int $offset;
 
-    #[Api]
+    #[Required]
     public int $page;
 
     /** @var list<ContentSearchResult> $results */
-    #[Api(list: ContentSearchResult::class)]
+    #[Required(list: ContentSearchResult::class)]
     public array $results;
 
-    #[Api]
+    #[Required]
     public int $total;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $searchTerm;
 
     /**

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\PropertyValidations;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\PropertyValidations\PublicPropertyValidationRule\RuleType;
@@ -24,7 +24,7 @@ final class PublicPropertyValidationRule implements BaseModel
      *
      * @var list<string> $ruleArguments
      */
-    #[Api(list: 'string')]
+    #[Required(list: 'string')]
     public array $ruleArguments;
 
     /**
@@ -32,7 +32,7 @@ final class PublicPropertyValidationRule implements BaseModel
      *
      * @var value-of<RuleType> $ruleType
      */
-    #[Api(enum: RuleType::class)]
+    #[Required(enum: RuleType::class)]
     public string $ruleType;
 
     /**

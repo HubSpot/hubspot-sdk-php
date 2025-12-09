@@ -11,7 +11,8 @@ use HubspotSDK\Conversations\CustomChannels\FileAttachment\Type;
 use HubspotSDK\Conversations\PublicDeliveryIdentifier;
 use HubspotSDK\Conversations\QuickReply;
 use HubspotSDK\Conversations\SocialMetadata;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -39,43 +40,43 @@ final class ChannelIntegrationMessageEgg implements BaseModel
     /**
      * @var list<FileAttachment|LocationAttachment|ContactAttachment|UnsupportedContentAttachment|MessageHeaderAttachment|QuickRepliesAttachment|SocialMetadataIntegrationAttachment> $attachments
      */
-    #[Api(list: Attachment::class)]
+    #[Required(list: Attachment::class)]
     public array $attachments;
 
-    #[Api]
+    #[Required]
     public string $channelAccountId;
 
     /** @var value-of<MessageDirection> $messageDirection */
-    #[Api(enum: MessageDirection::class)]
+    #[Required(enum: MessageDirection::class)]
     public string $messageDirection;
 
     /** @var list<ChannelIntegrationParticipant> $recipients */
-    #[Api(list: ChannelIntegrationParticipant::class)]
+    #[Required(list: ChannelIntegrationParticipant::class)]
     public array $recipients;
 
     /** @var list<ChannelIntegrationParticipant> $senders */
-    #[Api(list: ChannelIntegrationParticipant::class)]
+    #[Required(list: ChannelIntegrationParticipant::class)]
     public array $senders;
 
-    #[Api]
+    #[Required]
     public string $text;
 
-    #[Api]
+    #[Required]
     public \DateTimeInterface $timestamp;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $inReplyToId;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $integrationIdempotencyId;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $integrationThreadId;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?PreResolvedContacts $preResolvedContacts;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $richText;
 
     /**

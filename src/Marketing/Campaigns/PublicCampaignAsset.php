@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Campaigns;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -18,14 +19,14 @@ final class PublicCampaignAsset implements BaseModel
     /** @use SdkModel<PublicCampaignAssetShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public string $id;
 
     /** @var array<string,float>|null $metrics */
-    #[Api(map: 'float', optional: true)]
+    #[Optional(map: 'float')]
     public ?array $metrics;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $name;
 
     /**

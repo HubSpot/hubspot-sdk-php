@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Lists;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -37,19 +38,19 @@ final class ListSearchParams implements BaseModel
      *
      * @var list<string> $additionalProperties
      */
-    #[Api(list: 'string')]
+    #[Required(list: 'string')]
     public array $additionalProperties;
 
     /**
      * Value used to paginate through lists. The `offset` provided in the response can be used in the next request to fetch the next page of results. Defaults to `0` if no offset is provided.
      */
-    #[Api]
+    #[Required]
     public int $offset;
 
     /**
      * The number of lists to include in the response. Defaults to `20` if no value is provided. The max `count` is `500`.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $count;
 
     /**
@@ -59,7 +60,7 @@ final class ListSearchParams implements BaseModel
      *
      * @var list<string>|null $listIds
      */
-    #[Api(list: 'string', optional: true)]
+    #[Optional(list: 'string')]
     public ?array $listIds;
 
     /**
@@ -71,16 +72,16 @@ final class ListSearchParams implements BaseModel
      *
      * @var list<string>|null $processingTypes
      */
-    #[Api(list: 'string', optional: true)]
+    #[Optional(list: 'string')]
     public ?array $processingTypes;
 
     /**
      * The `query` that will be used to search for lists by list name. If no `query` is provided, then the results will include all lists.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $query;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $sort;
 
     /**

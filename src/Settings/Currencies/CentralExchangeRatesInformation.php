@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Settings\Currencies;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -21,7 +21,7 @@ final class CentralExchangeRatesInformation implements BaseModel
     /**
      * Indicates if central exchange rates is enabled for the portal or not.
      */
-    #[Api]
+    #[Required]
     public bool $centralExchangeRatesEnabled;
 
     /**

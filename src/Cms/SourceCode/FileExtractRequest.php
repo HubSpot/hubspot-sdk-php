@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\SourceCode;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -16,7 +16,7 @@ final class FileExtractRequest implements BaseModel
     /** @use SdkModel<FileExtractRequestShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public string $path;
 
     /**

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Subscriptions\V4;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -26,37 +26,37 @@ final class PublicSubscriptionTranslation implements BaseModel
     /**
      * The timestamp indicating when the subscription translation was created.
      */
-    #[Api]
+    #[Required]
     public int $createdAt;
 
     /**
      * A text description of the subscription translation.
      */
-    #[Api]
+    #[Required]
     public string $description;
 
     /**
      * The code representing the language of the subscription translation.
      */
-    #[Api]
+    #[Required]
     public string $languageCode;
 
     /**
      * The name of the subscription translation.
      */
-    #[Api]
+    #[Required]
     public string $name;
 
     /**
      * The unique identifier for the subscription associated with the translation.
      */
-    #[Api]
+    #[Required]
     public int $subscriptionId;
 
     /**
      * The timestamp indicating when the subscription translation was last updated.
      */
-    #[Api]
+    #[Required]
     public int $updatedAt;
 
     /**

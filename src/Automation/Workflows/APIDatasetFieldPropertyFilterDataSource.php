@@ -6,7 +6,8 @@ namespace HubspotSDK\Automation\Workflows;
 
 use HubspotSDK\Automation\Workflows\APIDatasetFieldPropertyFilterDataSource\Type;
 use HubspotSDK\Automation\Workflows\APISort\Order;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -24,20 +25,20 @@ final class APIDatasetFieldPropertyFilterDataSource implements BaseModel
     /** @use SdkModel<APIDatasetFieldPropertyFilterDataSourceShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public string $datasetFieldName;
 
-    #[Api]
+    #[Required]
     public string $name;
 
-    #[Api]
+    #[Required]
     public string $propertyName;
 
     /** @var value-of<Type> $type */
-    #[Api(enum: Type::class)]
+    #[Required(enum: Type::class)]
     public string $type;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?APISort $sortBy;
 
     /**

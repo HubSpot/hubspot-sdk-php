@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Events\EventDefinitions;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Events\EventDefinitions\CalendarDatePropertyOperation\FiscalYearStart;
@@ -31,38 +32,38 @@ final class CalendarDatePropertyOperation implements BaseModel
     /** @use SdkModel<CalendarDatePropertyOperationShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public bool $includeObjectsWithNoValueSet;
 
-    #[Api]
+    #[Required]
     public string $operationType;
 
     /** @var value-of<Operator> $operator */
-    #[Api(enum: Operator::class)]
+    #[Required(enum: Operator::class)]
     public string $operator;
 
-    #[Api]
+    #[Required]
     public string $operatorName;
 
     /** @var value-of<PropertyType> $propertyType */
-    #[Api(enum: PropertyType::class)]
+    #[Required(enum: PropertyType::class)]
     public string $propertyType;
 
     /** @var value-of<TimeUnit> $timeUnit */
-    #[Api(enum: TimeUnit::class)]
+    #[Required(enum: TimeUnit::class)]
     public string $timeUnit;
 
-    #[Api]
+    #[Required]
     public int $timeUnitCount;
 
-    #[Api]
+    #[Required]
     public bool $useFiscalYear;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $defaultValue;
 
     /** @var value-of<FiscalYearStart>|null $fiscalYearStart */
-    #[Api(enum: FiscalYearStart::class, optional: true)]
+    #[Optional(enum: FiscalYearStart::class)]
     public ?string $fiscalYearStart;
 
     /**

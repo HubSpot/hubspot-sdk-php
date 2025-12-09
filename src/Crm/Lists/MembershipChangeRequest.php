@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Lists;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -21,11 +21,11 @@ final class MembershipChangeRequest implements BaseModel
     use SdkModel;
 
     /** @var list<string> $recordIdsToAdd */
-    #[Api(list: 'string')]
+    #[Required(list: 'string')]
     public array $recordIdsToAdd;
 
     /** @var list<string> $recordIdsToRemove */
-    #[Api(list: 'string')]
+    #[Required(list: 'string')]
     public array $recordIdsToRemove;
 
     /**

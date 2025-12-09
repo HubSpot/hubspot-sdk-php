@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Associations\V4;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -18,19 +18,19 @@ final class ReportCreationResponse implements BaseModel
     /** @use SdkModel<ReportCreationResponseShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public DateTime $enqueueTime;
 
     /**
      * Email of the user.
      */
-    #[Api]
+    #[Required]
     public string $userEmail;
 
     /**
      * ID of the user.
      */
-    #[Api]
+    #[Required]
     public int $userId;
 
     /**

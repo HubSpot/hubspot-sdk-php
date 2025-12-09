@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Settings\Currencies;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -19,7 +19,7 @@ final class BatchInputExchangeRateUpdateRequest implements BaseModel
     use SdkModel;
 
     /** @var list<ExchangeRateUpdateRequest> $inputs */
-    #[Api(list: ExchangeRateUpdateRequest::class)]
+    #[Required(list: ExchangeRateUpdateRequest::class)]
     public array $inputs;
 
     /**

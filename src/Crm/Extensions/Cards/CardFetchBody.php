@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Extensions\Cards;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Extensions\Cards\CardFetchBody\CardType;
@@ -30,20 +31,20 @@ final class CardFetchBody implements BaseModel
      *
      * @var list<CardObjectTypeBody> $objectTypes
      */
-    #[Api(list: CardObjectTypeBody::class)]
+    #[Required(list: CardObjectTypeBody::class)]
     public array $objectTypes;
 
     /**
      * URL to a service endpoints that will respond with card details. HubSpot will call this endpoint each time a user visits a CRM record page where this card should be displayed.
      */
-    #[Api]
+    #[Required]
     public string $targetUrl;
 
     /** @var value-of<CardType>|null $cardType */
-    #[Api(enum: CardType::class, optional: true)]
+    #[Optional(enum: CardType::class)]
     public ?string $cardType;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $serverlessFunction;
 
     /**

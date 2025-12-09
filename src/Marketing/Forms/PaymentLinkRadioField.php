@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Forms;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Marketing\Forms\PaymentLinkRadioField\FieldType;
@@ -29,37 +30,37 @@ final class PaymentLinkRadioField implements BaseModel
     use SdkModel;
 
     /** @var list<string> $defaultValues */
-    #[Api(list: 'string')]
+    #[Required(list: 'string')]
     public array $defaultValues;
 
     /** @var list<mixed> $dependentFields */
-    #[Api(list: DependentField::class)]
+    #[Required(list: DependentField::class)]
     public array $dependentFields;
 
     /** @var value-of<FieldType> $fieldType */
-    #[Api(enum: FieldType::class)]
+    #[Required(enum: FieldType::class)]
     public string $fieldType;
 
-    #[Api]
+    #[Required]
     public bool $hidden;
 
-    #[Api]
+    #[Required]
     public string $label;
 
-    #[Api]
+    #[Required]
     public string $name;
 
-    #[Api]
+    #[Required]
     public string $objectTypeId;
 
     /** @var list<EnumeratedFieldOption> $options */
-    #[Api(list: EnumeratedFieldOption::class)]
+    #[Required(list: EnumeratedFieldOption::class)]
     public array $options;
 
-    #[Api]
+    #[Required]
     public bool $required;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $description;
 
     /**

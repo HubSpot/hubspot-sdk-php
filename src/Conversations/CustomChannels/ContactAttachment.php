@@ -12,7 +12,7 @@ use HubspotSDK\Conversations\ContactPhone;
 use HubspotSDK\Conversations\ContactProfile;
 use HubspotSDK\Conversations\ContactURL;
 use HubspotSDK\Conversations\CustomChannels\ContactAttachment\Type;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -26,11 +26,11 @@ final class ContactAttachment implements BaseModel
     /** @use SdkModel<ContactAttachmentShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public ContactProfile $contactProfile;
 
     /** @var value-of<Type> $type */
-    #[Api(enum: Type::class)]
+    #[Required(enum: Type::class)]
     public string $type;
 
     /**

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Emails;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -18,10 +18,10 @@ final class Interval implements BaseModel
     /** @use SdkModel<IntervalShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public \DateTimeInterface $end;
 
-    #[Api]
+    #[Required]
     public \DateTimeInterface $start;
 
     /**

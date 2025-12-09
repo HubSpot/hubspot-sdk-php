@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Emails;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Marketing\Emails\PublicEmail\EmailTemplateMode;
@@ -76,19 +77,19 @@ final class PublicEmail implements BaseModel
     /** @use SdkModel<PublicEmailShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public bool $isAb;
 
     /**
      * The email ID.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $id;
 
     /**
      * The active domain of the email.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $activeDomain;
 
     /**
@@ -96,159 +97,159 @@ final class PublicEmail implements BaseModel
      *
      * @var list<string>|null $allEmailCampaignIds
      */
-    #[Api(list: 'string', optional: true)]
+    #[Optional(list: 'string')]
     public ?array $allEmailCampaignIds;
 
     /**
      * Determines if the email is archived or not.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $archived;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $businessUnitId;
 
     /**
      * The campaign GUID on the email.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $campaign;
 
     /**
      * The name of the campaign.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $campaignName;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $campaignUtm;
 
     /**
      * The ID of the email this email was cloned from.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $clonedFrom;
 
     /**
      * Data structure representing the content of the email.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?PublicEmailContent $content;
 
     /**
      * The date and time of the email's creation, in ISO8601 representation.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $createdAt;
 
     /**
      * The id of the user who created the email.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $createdById;
 
     /**
      * The date and time the email was deleted at, in ISO8601 representation.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $deletedAt;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $emailCampaignGroupId;
 
     /** @var value-of<EmailTemplateMode>|null $emailTemplateMode */
-    #[Api(enum: EmailTemplateMode::class, optional: true)]
+    #[Optional(enum: EmailTemplateMode::class)]
     public ?string $emailTemplateMode;
 
     /**
      * The ID of the feedback survey linked to the email.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $feedbackSurveyId;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $folderId;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $folderIdV2;
 
     /**
      * Data structure representing the from fields on the email.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?PublicEmailFromDetails $from;
 
     /**
      * Returns the published status of the email. This is read only.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $isPublished;
 
     /**
      * Returns whether the email is a transactional email or not. This is read only.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $isTransactional;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $jitterSendTime;
 
     /** @var value-of<Language>|null $language */
-    #[Api(enum: Language::class, optional: true)]
+    #[Optional(enum: Language::class)]
     public ?string $language;
 
     /**
      * The name of the email, as displayed on the email dashboard.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $name;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $previewKey;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $primaryEmailCampaignId;
 
     /**
      * The date and time the email is scheduled for, in ISO8601 representation. This is only used in local time or scheduled emails.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $publishDate;
 
     /**
      * The date and time the email was published at, in ISO8601 representation.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $publishedAt;
 
     /**
      * Email of the user who published/sent the email.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $publishedByEmail;
 
     /**
      * The ID of the user who published the email.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $publishedById;
 
     /**
      * Name of the user who published the email.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $publishedByName;
 
     /**
      * RSS related data if it is a blog or rss email.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?PublicRssEmailDetails $rssData;
 
     /**
      * Determines whether the email will be sent immediately on publish.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $sendOnPublish;
 
     /**
@@ -256,44 +257,44 @@ final class PublicEmail implements BaseModel
      *
      * @var value-of<State>|null $state
      */
-    #[Api(enum: State::class, optional: true)]
+    #[Optional(enum: State::class)]
     public ?string $state;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?EmailStatisticsData $stats;
 
     /**
      * The email subcategory.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $subcategory;
 
     /**
      * The subject of the email.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $subject;
 
     /**
      * Data structure representing the subscription fields of the email.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?PublicEmailSubscriptionDetails $subscriptionDetails;
 
     /** @var list<string>|null $teamsWithAccess */
-    #[Api(list: 'string', optional: true)]
+    #[Optional(list: 'string')]
     public ?array $teamsWithAccess;
 
     /**
      * AB testing related data. This property is only returned for AB type emails.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?PublicEmailTestingDetails $testing;
 
     /**
      * Data structure representing the to fields of the email.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?PublicEmailToDetails $to;
 
     /**
@@ -301,29 +302,29 @@ final class PublicEmail implements BaseModel
      *
      * @var value-of<Type>|null $type
      */
-    #[Api(enum: Type::class, optional: true)]
+    #[Optional(enum: Type::class)]
     public ?string $type;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $unpublishedAt;
 
     /**
      * The date and time of the last update to the email, in ISO8601 representation.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $updatedAt;
 
     /**
      * The ID of the user who last updated the email.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $updatedById;
 
     /** @var list<string>|null $usersWithAccess */
-    #[Api(list: 'string', optional: true)]
+    #[Optional(list: 'string')]
     public ?array $usersWithAccess;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?PublicWebversionDetails $webversion;
 
     /**
@@ -331,7 +332,7 @@ final class PublicEmail implements BaseModel
      *
      * @var list<string>|null $workflowNames
      */
-    #[Api(list: 'string', optional: true)]
+    #[Optional(list: 'string')]
     public ?array $workflowNames;
 
     /**

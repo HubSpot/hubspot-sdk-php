@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\Blogs\Posts;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\ForwardPaging;
@@ -27,16 +28,16 @@ final class CollectionResponseWithTotalBlogPostForwardPaging implements BaseMode
      *
      * @var list<mixed> $results
      */
-    #[Api(list: BlogPost::class)]
+    #[Required(list: BlogPost::class)]
     public array $results;
 
     /**
      * Total number of blog posts.
      */
-    #[Api]
+    #[Required]
     public int $total;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?ForwardPaging $paging;
 
     /**

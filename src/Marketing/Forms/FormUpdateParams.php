@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Forms;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -76,16 +76,16 @@ final class FormUpdateParams implements BaseModel
     /**
      * Whether this form is archived.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $archived;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?HubSpotFormConfiguration $configuration;
 
     /**
      * Options for styling the form.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?FormDisplayOptions $displayOptions;
 
     /**
@@ -93,16 +93,16 @@ final class FormUpdateParams implements BaseModel
      *
      * @var list<mixed>|null $fieldGroups
      */
-    #[Api(list: FieldGroup::class, optional: true)]
+    #[Optional(list: FieldGroup::class)]
     public ?array $fieldGroups;
 
-    #[Api(optional: true)]
+    #[Optional]
     public LegalConsentOptionsNone|LegalConsentOptionsLegitimateInterest|LegalConsentOptionsExplicitConsentToProcess|LegalConsentOptionsImplicitConsentToProcess|null $legalConsentOptions;
 
     /**
      * The name of the form. Expected to be unique for a hub.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $name;
 
     public function __construct()

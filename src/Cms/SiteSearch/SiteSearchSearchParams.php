@@ -7,7 +7,7 @@ namespace HubspotSDK\Cms\SiteSearch;
 use HubspotSDK\Cms\SiteSearch\SiteSearchSearchParams\Language;
 use HubspotSDK\Cms\SiteSearch\SiteSearchSearchParams\Length;
 use HubspotSDK\Cms\SiteSearch\SiteSearchSearchParams\Type;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -46,19 +46,19 @@ final class SiteSearchSearchParams implements BaseModel
     /**
      * Specifies whether or not you are showing autocomplete results. Defaults to false.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $autocomplete;
 
     /**
      * Specifies the maximum amount a result will be boosted based on its view count. Defaults to 5.0. Read more about elasticsearch boosting [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-boost.html).
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?float $boostLimit;
 
     /**
      * Specifies a relative time window where scores of documents published outside this time window decay. This can only be used for blog posts. For example, boostRecent=10d will boost documents published within the last 10 days. Supported timeunits are ms (milliseconds), s (seconds), m (minutes), h (hours), d (days).
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $boostRecent;
 
     /**
@@ -66,7 +66,7 @@ final class SiteSearchSearchParams implements BaseModel
      *
      * @var list<string>|null $domain
      */
-    #[Api(list: 'string', optional: true)]
+    #[Optional(list: 'string')]
     public ?array $domain;
 
     /**
@@ -74,13 +74,13 @@ final class SiteSearchSearchParams implements BaseModel
      *
      * @var list<int>|null $groupId
      */
-    #[Api(list: 'int', optional: true)]
+    #[Optional(list: 'int')]
     public ?array $groupId;
 
     /**
      * Specify a HubDB query to further filter the search results.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $hubdbQuery;
 
     /**
@@ -88,7 +88,7 @@ final class SiteSearchSearchParams implements BaseModel
      *
      * @var value-of<Language>|null $language
      */
-    #[Api(enum: Language::class, optional: true)]
+    #[Optional(enum: Language::class)]
     public ?string $language;
 
     /**
@@ -96,25 +96,25 @@ final class SiteSearchSearchParams implements BaseModel
      *
      * @var value-of<Length>|null $length
      */
-    #[Api(enum: Length::class, optional: true)]
+    #[Optional(enum: Length::class)]
     public ?string $length;
 
     /**
      * Specifies the number of results to be returned in a single response. Defaults to `10`. Maximum value is `100`.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $limit;
 
     /**
      * Inverts the behavior of the pathPrefix filter when set to `false`. Defaults to `true`.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $matchPrefix;
 
     /**
      * Used to page through the results. If there are more results than specified by the `limit` parameter, you will need to use the value of offset returned in the previous request to get the next set of results.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $offset;
 
     /**
@@ -122,13 +122,13 @@ final class SiteSearchSearchParams implements BaseModel
      *
      * @var list<string>|null $pathPrefix
      */
-    #[Api(list: 'string', optional: true)]
+    #[Optional(list: 'string')]
     public ?array $pathPrefix;
 
     /**
      * Specifies how strongly a result is boosted based on its view count. Defaults to 1.0.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?float $popularityBoost;
 
     /**
@@ -136,19 +136,19 @@ final class SiteSearchSearchParams implements BaseModel
      *
      * @var list<string>|null $property
      */
-    #[Api(list: 'string', optional: true)]
+    #[Optional(list: 'string')]
     public ?array $property;
 
     /**
      * The term to search for.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $q;
 
     /**
      * Specifies a specific HubDB table to search. Only returns results from the specified table. Can be used in tandem with the `hubdbQuery` parameter to further filter results.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $tableId;
 
     /**
@@ -156,7 +156,7 @@ final class SiteSearchSearchParams implements BaseModel
      *
      * @var list<value-of<Type>>|null $type
      */
-    #[Api(list: Type::class, optional: true)]
+    #[Optional(list: Type::class)]
     public ?array $type;
 
     public function __construct()

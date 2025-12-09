@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Campaigns;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Marketing\Campaigns\RevenueAttributionAggregate\CurrencyCode;
@@ -23,20 +23,20 @@ final class RevenueAttributionAggregate implements BaseModel
     /** @use SdkModel<RevenueAttributionAggregateShape> */
     use SdkModel;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $contactsNumber;
 
     /** @var value-of<CurrencyCode>|null $currencyCode */
-    #[Api(enum: CurrencyCode::class, optional: true)]
+    #[Optional(enum: CurrencyCode::class)]
     public ?string $currencyCode;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?float $dealAmount;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $dealsNumber;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?float $revenueAmount;
 
     public function __construct()

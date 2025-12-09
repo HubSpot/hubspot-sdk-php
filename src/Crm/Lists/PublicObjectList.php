@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Lists;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicAbsoluteComparativeTimestampRefineBy;
@@ -80,88 +81,88 @@ final class PublicObjectList implements BaseModel
     /**
      * The **ILS ID** of the list.
      */
-    #[Api]
+    #[Required]
     public string $listId;
 
     /**
      * The version of the list.
      */
-    #[Api]
+    #[Required]
     public int $listVersion;
 
     /**
      * The name of the list.
      */
-    #[Api]
+    #[Required]
     public string $name;
 
     /**
      * The object type of the list.
      */
-    #[Api]
+    #[Required]
     public string $objectTypeId;
 
     /**
      * The processing status of the list.
      */
-    #[Api]
+    #[Required]
     public string $processingStatus;
 
     /**
      * The processing type of the list.
      */
-    #[Api]
+    #[Required]
     public string $processingType;
 
     /**
      * The time when the list was created.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $createdAt;
 
     /**
      * The ID of the user that created the list.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $createdById;
 
     /**
      * The time when the list was deleted.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $deletedAt;
 
-    #[Api(optional: true)]
+    #[Optional]
     public PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch|null $filterBranch;
 
     /**
      * The time when the filters for this list were last updated.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $filtersUpdatedAt;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?PublicListPermissions $listPermissions;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?PublicMembershipSettings $membershipSettings;
 
     /**
      * Size of the list.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $size;
 
     /**
      * The time the list was last updated.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $updatedAt;
 
     /**
      * The ID of the user that last updated the list.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $updatedById;
 
     /**

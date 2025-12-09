@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Subscriptions\V4;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Marketing\Subscriptions\V4\PublicStatus\Channel;
@@ -27,13 +27,13 @@ final class PublicStatusBulkResponse implements BaseModel
      *
      * @var list<PublicStatus> $statuses
      */
-    #[Api(list: PublicStatus::class)]
+    #[Required(list: PublicStatus::class)]
     public array $statuses;
 
     /**
      * The email address of the contact.
      */
-    #[Api]
+    #[Required]
     public string $subscriberIdString;
 
     /**

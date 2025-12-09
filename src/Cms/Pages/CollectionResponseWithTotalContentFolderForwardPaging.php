@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\Pages;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\ForwardPaging;
@@ -27,16 +28,16 @@ final class CollectionResponseWithTotalContentFolderForwardPaging implements Bas
      *
      * @var list<ContentFolder> $results
      */
-    #[Api(list: ContentFolder::class)]
+    #[Required(list: ContentFolder::class)]
     public array $results;
 
     /**
      * Total number of content folders.
      */
-    #[Api]
+    #[Required]
     public int $total;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?ForwardPaging $paging;
 
     /**

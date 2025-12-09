@@ -5,7 +5,8 @@ declare(strict_types=1);
 namespace HubspotSDK\Automation\Workflows;
 
 use HubspotSDK\Automation\Workflows\APITimeWindow\Day;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -20,13 +21,13 @@ final class APITimeWindow implements BaseModel
     use SdkModel;
 
     /** @var value-of<Day> $day */
-    #[Api(enum: Day::class)]
+    #[Required(enum: Day::class)]
     public string $day;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?APITimeOfDay $endTime;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?APITimeOfDay $startTime;
 
     /**

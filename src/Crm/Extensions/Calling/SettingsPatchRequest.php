@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Extensions\Calling;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -26,31 +26,31 @@ final class SettingsPatchRequest implements BaseModel
     /** @use SdkModel<SettingsPatchRequestShape> */
     use SdkModel;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $height;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $isReady;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $name;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $supportsCustomObjects;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $supportsInboundCalling;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $url;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $usesCallingWindow;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $usesRemote;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $width;
 
     public function __construct()

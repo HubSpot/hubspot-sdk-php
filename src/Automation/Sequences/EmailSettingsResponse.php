@@ -6,7 +6,7 @@ namespace HubspotSDK\Automation\Sequences;
 
 use HubspotSDK\Automation\Sequences\EmailSettingsResponse\Criteria;
 use HubspotSDK\Automation\Sequences\EmailSettingsResponse\SellingStrategy;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -21,11 +21,11 @@ final class EmailSettingsResponse implements BaseModel
     use SdkModel;
 
     /** @var value-of<Criteria> $criteria */
-    #[Api(enum: Criteria::class)]
+    #[Required(enum: Criteria::class)]
     public string $criteria;
 
     /** @var value-of<SellingStrategy> $sellingStrategy */
-    #[Api(enum: SellingStrategy::class)]
+    #[Required(enum: SellingStrategy::class)]
     public string $sellingStrategy;
 
     /**

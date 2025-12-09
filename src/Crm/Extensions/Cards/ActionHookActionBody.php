@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Extensions\Cards;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Extensions\Cards\ActionHookActionBody\HTTPMethod;
@@ -26,24 +27,24 @@ final class ActionHookActionBody implements BaseModel
     use SdkModel;
 
     /** @var value-of<HTTPMethod> $httpMethod */
-    #[Api(enum: HTTPMethod::class)]
+    #[Required(enum: HTTPMethod::class)]
     public string $httpMethod;
 
     /** @var list<string> $propertyNamesIncluded */
-    #[Api(list: 'string')]
+    #[Required(list: 'string')]
     public array $propertyNamesIncluded;
 
     /** @var value-of<Type> $type */
-    #[Api(enum: Type::class)]
+    #[Required(enum: Type::class)]
     public string $type;
 
-    #[Api]
+    #[Required]
     public string $url;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?ActionConfirmationBody $confirmation;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $label;
 
     /**

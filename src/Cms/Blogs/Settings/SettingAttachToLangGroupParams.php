@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\Blogs\Settings;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -25,25 +26,25 @@ final class SettingAttachToLangGroupParams implements BaseModel
     /**
      * ID of the object to add to a multi-language group.
      */
-    #[Api]
+    #[Required]
     public string $id;
 
     /**
      * Designated language of the object to add to a multi-language group.
      */
-    #[Api]
+    #[Required]
     public string $language;
 
     /**
      * ID of primary language object in multi-language group.
      */
-    #[Api]
+    #[Required]
     public string $primaryId;
 
     /**
      * Primary language of the multi-language group.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $primaryLanguage;
 
     /**

@@ -9,7 +9,7 @@ use HubspotSDK\Cms\Pages\Page\AbStatus;
 use HubspotSDK\Cms\Pages\Page\ContentTypeCategory;
 use HubspotSDK\Cms\Pages\Page\CurrentState;
 use HubspotSDK\Cms\Pages\Page\Language;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\MapOf;
@@ -85,7 +85,7 @@ final class Page implements BaseModel
     /**
      * The unique ID of the page.
      */
-    #[Api]
+    #[Required]
     public string $id;
 
     /**
@@ -93,25 +93,25 @@ final class Page implements BaseModel
      *
      * @var value-of<AbStatus> $abStatus
      */
-    #[Api(enum: AbStatus::class)]
+    #[Required(enum: AbStatus::class)]
     public string $abStatus;
 
     /**
      * The ID of the AB test associated with this page, if applicable.
      */
-    #[Api]
+    #[Required]
     public string $abTestId;
 
     /**
      * The timestamp (ISO8601 format) when this page was deleted.
      */
-    #[Api]
+    #[Required]
     public \DateTimeInterface $archivedAt;
 
     /**
      * If True, the page will not show up in your dashboard, although the page could still be live.
      */
-    #[Api]
+    #[Required]
     public bool $archivedInDashboard;
 
     /**
@@ -119,28 +119,28 @@ final class Page implements BaseModel
      *
      * @var list<array<string,mixed>> $attachedStylesheets
      */
-    #[Api(list: new MapOf('mixed'))]
+    #[Required(list: new MapOf('mixed'))]
     public array $attachedStylesheets;
 
     /**
      * The name of the user that updated this page.
      */
-    #[Api]
+    #[Required]
     public string $authorName;
 
     /**
      * The GUID of the marketing campaign this page is a part of.
      */
-    #[Api]
+    #[Required]
     public string $campaign;
 
     /**
      * ID of the type of object this is. Should always .
      */
-    #[Api]
+    #[Required]
     public int $categoryId;
 
-    #[Api]
+    #[Required]
     public string $contentGroupId;
 
     /**
@@ -148,19 +148,19 @@ final class Page implements BaseModel
      *
      * @var value-of<ContentTypeCategory> $contentTypeCategory
      */
-    #[Api(enum: ContentTypeCategory::class)]
+    #[Required(enum: ContentTypeCategory::class)]
     public string $contentTypeCategory;
 
-    #[Api]
+    #[Required]
     public \DateTimeInterface $created;
 
     /**
      * The ID of the user that created this page.
      */
-    #[Api]
+    #[Required]
     public string $createdById;
 
-    #[Api]
+    #[Required]
     public bool $currentlyPublished;
 
     /**
@@ -168,79 +168,79 @@ final class Page implements BaseModel
      *
      * @var value-of<CurrentState> $currentState
      */
-    #[Api(enum: CurrentState::class)]
+    #[Required(enum: CurrentState::class)]
     public string $currentState;
 
     /**
      * The domain this page will resolve to. If null, the page will default to the primary domain for this content type.
      */
-    #[Api]
+    #[Required]
     public string $domain;
 
-    #[Api]
+    #[Required]
     public string $dynamicPageDataSourceId;
 
-    #[Api]
+    #[Required]
     public int $dynamicPageDataSourceType;
 
     /**
      * The ID of the HubDB table this page references, if applicable.
      */
-    #[Api]
+    #[Required]
     public string $dynamicPageHubDbTableId;
 
     /**
      * Boolean to determine whether or not the styles from the template should be applied.
      */
-    #[Api]
+    #[Required]
     public bool $enableDomainStylesheets;
 
     /**
      * Boolean to determine whether or not the styles from the template should be applied.
      */
-    #[Api]
+    #[Required]
     public bool $enableLayoutStylesheets;
 
     /**
      * The featuredImage of this page.
      */
-    #[Api]
+    #[Required]
     public string $featuredImage;
 
     /**
      * Alt Text of the featuredImage.
      */
-    #[Api]
+    #[Required]
     public string $featuredImageAltText;
 
     /**
      * The ID of the associated folder this landing page is organized under in the app dashboard.
      */
-    #[Api]
+    #[Required]
     public string $folderId;
 
     /**
      * Custom HTML for embed codes, javascript that should be placed before the </body> tag of the page.
      */
-    #[Api]
+    #[Required]
     public string $footerHtml;
 
     /**
      * Custom HTML for embed codes, javascript, etc. that goes in the <head> tag of the page.
      */
-    #[Api]
+    #[Required]
     public string $headHtml;
 
     /**
      * The html title of this page.
      */
-    #[Api]
+    #[Required]
     public string $htmlTitle;
 
     /**
      * Boolean to determine whether or not the Primary CSS Files should be applied.
      */
-    #[Api]
+    #[Required]
     public bool $includeDefaultCustomCss;
 
     /**
@@ -248,71 +248,71 @@ final class Page implements BaseModel
      *
      * @var value-of<Language> $language
      */
-    #[Api(enum: Language::class)]
+    #[Required(enum: Language::class)]
     public string $language;
 
     /** @var array<string,mixed> $layoutSections */
-    #[Api(map: LayoutSection::class)]
+    #[Required(map: LayoutSection::class)]
     public array $layoutSections;
 
     /**
      * Optional override to set the URL to be used in the rel=canonical link tag on the page.
      */
-    #[Api]
+    #[Required]
     public string $linkRelCanonicalUrl;
 
     /**
      * The ID of the MAB test (or dynamic test) associated with this page, if applicable.
      */
-    #[Api]
+    #[Required]
     public string $mabExperimentId;
 
     /**
      * A description that goes in <meta> tag on the page.
      */
-    #[Api]
+    #[Required]
     public string $metaDescription;
 
     /**
      * The internal name of the page.
      */
-    #[Api]
+    #[Required]
     public string $name;
 
     /**
      * The date at which this page should expire and begin redirecting to another url or page.
      */
-    #[Api]
+    #[Required]
     public int $pageExpiryDate;
 
     /**
      * Boolean describing if the page expiration feature is enabled for this page.
      */
-    #[Api]
+    #[Required]
     public bool $pageExpiryEnabled;
 
     /**
      * The ID of another page this page's url should redirect to once this page expires. Should only set this or pageExpiryRedirectUrl.
      */
-    #[Api]
+    #[Required]
     public int $pageExpiryRedirectId;
 
     /**
      * The URL this page's url should redirect to once this page expires. Should only set this or pageExpiryRedirectId.
      */
-    #[Api]
+    #[Required]
     public string $pageExpiryRedirectUrl;
 
     /**
      * A generated Boolean describing whether or not this page is currently expired and being redirected.
      */
-    #[Api]
+    #[Required]
     public bool $pageRedirected;
 
     /**
      * Set this to create a password protected page. Entering the password will be required to view the page.
      */
-    #[Api]
+    #[Required]
     public string $password;
 
     /**
@@ -320,84 +320,84 @@ final class Page implements BaseModel
      *
      * @var list<mixed> $publicAccessRules
      */
-    #[Api(list: 'mixed')]
+    #[Required(list: 'mixed')]
     public array $publicAccessRules;
 
     /**
      * Boolean to determine whether or not to respect publicAccessRules.
      */
-    #[Api]
+    #[Required]
     public bool $publicAccessRulesEnabled;
 
     /**
      * The date (ISO8601 format) the page is to be published at.
      */
-    #[Api]
+    #[Required]
     public \DateTimeInterface $publishDate;
 
     /**
      * Set this to true if you want to be published immediately when the schedule publish endpoint is called, and to ignore the publish_date setting.
      */
-    #[Api]
+    #[Required]
     public bool $publishImmediately;
 
     /**
      * The path of the this page. This field is appended to the domain to construct the url of this page.
      */
-    #[Api]
+    #[Required]
     public string $slug;
 
     /**
      * An ENUM descibing the current state of this page.
      */
-    #[Api]
+    #[Required]
     public string $state;
 
     /**
      * Details the type of page this is. Should always be landing_page or site_page.
      */
-    #[Api]
+    #[Required]
     public string $subcategory;
 
     /**
      * String detailing the path of the template used for this page.
      */
-    #[Api]
+    #[Required]
     public string $templatePath;
 
     /** @var array<string,mixed> $themeSettingsValues */
-    #[Api(map: 'mixed')]
+    #[Required(map: 'mixed')]
     public array $themeSettingsValues;
 
     /**
      * ID of the primary page this object was translated from.
      */
-    #[Api]
+    #[Required]
     public string $translatedFromId;
 
     /** @var array<string,PagesContentLanguageVariation> $translations */
-    #[Api(map: PagesContentLanguageVariation::class)]
+    #[Required(map: PagesContentLanguageVariation::class)]
     public array $translations;
 
-    #[Api]
+    #[Required]
     public \DateTimeInterface $updated;
 
     /**
      * The ID of the user that updated this page.
      */
-    #[Api]
+    #[Required]
     public string $updatedById;
 
     /**
      * A generated field representing the URL of this page.
      */
-    #[Api]
+    #[Required]
     public string $url;
 
     /**
      * Boolean to determine if this page should use a featuredImage.
      */
-    #[Api]
+    #[Required]
     public bool $useFeaturedImage;
 
     /**
@@ -405,7 +405,7 @@ final class Page implements BaseModel
      *
      * @var array<string,mixed> $widgetContainers
      */
-    #[Api(map: 'mixed')]
+    #[Required(map: 'mixed')]
     public array $widgetContainers;
 
     /**
@@ -413,7 +413,7 @@ final class Page implements BaseModel
      *
      * @var array<string,mixed> $widgets
      */
-    #[Api(map: 'mixed')]
+    #[Required(map: 'mixed')]
     public array $widgets;
 
     /**

@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Events;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\ForwardPaging;
@@ -23,13 +24,13 @@ final class CollectionResponseWithTotalParticipationBreakdownForwardPaging imple
     use SdkModel;
 
     /** @var list<ParticipationBreakdown> $results */
-    #[Api(list: ParticipationBreakdown::class)]
+    #[Required(list: ParticipationBreakdown::class)]
     public array $results;
 
-    #[Api]
+    #[Required]
     public int $total;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?ForwardPaging $paging;
 
     /**

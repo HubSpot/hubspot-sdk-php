@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -28,37 +29,37 @@ final class AssociationDefinition implements BaseModel
     /**
      * The unique ID of the associated object (e.g., a contact ID).
      */
-    #[Api]
+    #[Required]
     public string $id;
 
     /**
      * The ID of the source object type (e.g., 0-1 for contacts).
      */
-    #[Api]
+    #[Required]
     public string $fromObjectTypeId;
 
     /**
      * The ID of the destination object type (e.g., 0-3 for deals).
      */
-    #[Api]
+    #[Required]
     public string $toObjectTypeId;
 
     /**
      * The timestamp when the association was created, in ISO 8601 format.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $createdAt;
 
     /**
      * For labeled association types, the internal name of the association.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $name;
 
     /**
      * The timestamp when the last update was made to an association, in ISO 8601 format.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $updatedAt;
 
     /**

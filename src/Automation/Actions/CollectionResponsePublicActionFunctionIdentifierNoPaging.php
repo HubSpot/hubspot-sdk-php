@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Automation\Actions;
 
 use HubspotSDK\Automation\Actions\PublicActionFunctionIdentifier\FunctionType;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -20,7 +20,7 @@ final class CollectionResponsePublicActionFunctionIdentifierNoPaging implements 
     use SdkModel;
 
     /** @var list<PublicActionFunctionIdentifier> $results */
-    #[Api(list: PublicActionFunctionIdentifier::class)]
+    #[Required(list: PublicActionFunctionIdentifier::class)]
     public array $results;
 
     /**

@@ -6,7 +6,8 @@ namespace HubspotSDK\Cms\AuditLogs;
 
 use HubspotSDK\Cms\AuditLogs\PublicAuditLog\Event;
 use HubspotSDK\Cms\AuditLogs\PublicAuditLog\ObjectType;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -32,25 +33,25 @@ final class PublicAuditLog implements BaseModel
      *
      * @var value-of<Event> $event
      */
-    #[Api(enum: Event::class)]
+    #[Required(enum: Event::class)]
     public string $event;
 
     /**
      * The name of the user who caused the event.
      */
-    #[Api]
+    #[Required]
     public string $fullName;
 
     /**
      * The ID of the object.
      */
-    #[Api]
+    #[Required]
     public string $objectId;
 
     /**
      * The internal name of the object in HubSpot.
      */
-    #[Api]
+    #[Required]
     public string $objectName;
 
     /**
@@ -58,25 +59,25 @@ final class PublicAuditLog implements BaseModel
      *
      * @var value-of<ObjectType> $objectType
      */
-    #[Api(enum: ObjectType::class)]
+    #[Required(enum: ObjectType::class)]
     public string $objectType;
 
     /**
      * The timestamp at which the event occurred.
      */
-    #[Api]
+    #[Required]
     public \DateTimeInterface $timestamp;
 
     /**
      * The ID of the user who caused the event.
      */
-    #[Api]
+    #[Required]
     public string $userId;
 
     /**
      * Supplementary metadata associated with the audit log entry. It provides additional context about the audited event (ex: rows deleted/updated for a HubDB event, the specific fields that were changed for a Content Settings event).
      */
-    #[Api(optional: true)]
+    #[Optional]
     public mixed $meta;
 
     /**

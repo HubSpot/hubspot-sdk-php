@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Timeline;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -19,7 +19,7 @@ final class CollectionResponseTimelineEventTemplateNoPaging implements BaseModel
     use SdkModel;
 
     /** @var list<TimelineEventTemplate> $results */
-    #[Api(list: TimelineEventTemplate::class)]
+    #[Required(list: TimelineEventTemplate::class)]
     public array $results;
 
     /**

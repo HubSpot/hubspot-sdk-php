@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Account\Activity;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -19,13 +20,13 @@ final class ActingUser implements BaseModel
     /**
      * The ID of the user who performed the action.
      */
-    #[Api]
+    #[Required]
     public int $userId;
 
     /**
      * The email address of the user who performed the action.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $userEmail;
 
     /**

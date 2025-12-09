@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Properties\Batch;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -29,18 +30,18 @@ final class BatchGetParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    #[Api]
+    #[Required]
     public bool $archived;
 
     /** @var value-of<DataSensitivity> $dataSensitivity */
-    #[Api(enum: DataSensitivity::class)]
+    #[Required(enum: DataSensitivity::class)]
     public string $dataSensitivity;
 
     /** @var list<PropertyName> $inputs */
-    #[Api(list: PropertyName::class)]
+    #[Required(list: PropertyName::class)]
     public array $inputs;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $locale;
 
     /**

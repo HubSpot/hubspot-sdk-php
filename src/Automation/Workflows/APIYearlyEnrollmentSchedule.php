@@ -6,7 +6,7 @@ namespace HubspotSDK\Automation\Workflows;
 
 use HubspotSDK\Automation\Workflows\APIYearlyEnrollmentSchedule\Month;
 use HubspotSDK\Automation\Workflows\APIYearlyEnrollmentSchedule\Type;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -23,18 +23,18 @@ final class APIYearlyEnrollmentSchedule implements BaseModel
     /** @use SdkModel<APIYearlyEnrollmentScheduleShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public int $dayOfMonth;
 
     /** @var value-of<Month> $month */
-    #[Api(enum: Month::class)]
+    #[Required(enum: Month::class)]
     public string $month;
 
-    #[Api]
+    #[Required]
     public APITimeOfDay $timeOfDay;
 
     /** @var value-of<Type> $type */
-    #[Api(enum: Type::class)]
+    #[Required(enum: Type::class)]
     public string $type;
 
     /**

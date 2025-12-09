@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Conversations\CustomChannels\ChannelAccounts;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -30,28 +30,28 @@ final class ChannelAccountListParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $after;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $archived;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $defaultPageLength;
 
     /** @var list<string>|null $deliveryIdentifierType */
-    #[Api(list: 'string', optional: true)]
+    #[Optional(list: 'string')]
     public ?array $deliveryIdentifierType;
 
     /** @var list<string>|null $deliveryIdentifierValue */
-    #[Api(list: 'string', optional: true)]
+    #[Optional(list: 'string')]
     public ?array $deliveryIdentifierValue;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $limit;
 
     /** @var list<string>|null $sort */
-    #[Api(list: 'string', optional: true)]
+    #[Optional(list: 'string')]
     public ?array $sort;
 
     public function __construct()

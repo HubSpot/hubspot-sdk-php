@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -28,29 +29,29 @@ final class Styles implements BaseModel
     /**
      * A color defined by RGB values.
      */
-    #[Api]
+    #[Required]
     public RgbaColor $backgroundColor;
 
-    #[Api]
+    #[Required]
     public Gradient $backgroundGradient;
 
-    #[Api]
+    #[Required]
     public BackgroundImage $backgroundImage;
 
-    #[Api]
+    #[Required]
     public string $flexboxPositioning;
 
-    #[Api]
+    #[Required]
     public bool $forceFullWidthSection;
 
-    #[Api]
+    #[Required]
     public int $maxWidthSectionCentering;
 
-    #[Api]
+    #[Required]
     public string $verticalAlignment;
 
     /** @var array<string,BreakpointStyles>|null $breakpointStyles */
-    #[Api(map: BreakpointStyles::class, optional: true)]
+    #[Optional(map: BreakpointStyles::class)]
     public ?array $breakpointStyles;
 
     /**

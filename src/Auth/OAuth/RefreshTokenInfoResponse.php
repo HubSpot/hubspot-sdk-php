@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Auth\OAuth;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -25,29 +26,29 @@ final class RefreshTokenInfoResponse implements BaseModel
     /** @use SdkModel<RefreshTokenInfoResponseShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public string $token;
 
-    #[Api]
+    #[Required]
     public string $client_id;
 
-    #[Api]
+    #[Required]
     public int $hub_id;
 
     /** @var list<string> $scopes */
-    #[Api(list: 'string')]
+    #[Required(list: 'string')]
     public array $scopes;
 
-    #[Api]
+    #[Required]
     public string $token_type;
 
-    #[Api]
+    #[Required]
     public int $user_id;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $hub_domain;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $user;
 
     /**

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Limits;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -21,25 +21,25 @@ final class NearLimitRecordSample implements BaseModel
     /**
      * The primary identifier of the record.
      */
-    #[Api]
+    #[Required]
     public string $label;
 
     /**
      * The unique identifier for the object.
      */
-    #[Api]
+    #[Required]
     public int $objectId;
 
     /**
      * The percentage of the limit that has been used.
      */
-    #[Api]
+    #[Required]
     public float $percentage;
 
     /**
      * The number of records currently in use.
      */
-    #[Api]
+    #[Required]
     public int $usage;
 
     /**

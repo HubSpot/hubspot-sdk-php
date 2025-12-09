@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicComparativeDatePropertyOperation\OperationType;
@@ -23,20 +24,20 @@ final class PublicComparativeDatePropertyOperation implements BaseModel
     /** @use SdkModel<PublicComparativeDatePropertyOperationShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public string $comparisonPropertyName;
 
-    #[Api]
+    #[Required]
     public bool $includeObjectsWithNoValueSet;
 
     /** @var value-of<OperationType> $operationType */
-    #[Api(enum: OperationType::class)]
+    #[Required(enum: OperationType::class)]
     public string $operationType;
 
-    #[Api]
+    #[Required]
     public string $operator;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $defaultComparisonValue;
 
     /**

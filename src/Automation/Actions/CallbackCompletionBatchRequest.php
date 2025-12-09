@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Automation\Actions;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -18,11 +18,11 @@ final class CallbackCompletionBatchRequest implements BaseModel
     /** @use SdkModel<CallbackCompletionBatchRequestShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public string $callbackId;
 
     /** @var array<string,string> $outputFields */
-    #[Api(map: 'string')]
+    #[Required(map: 'string')]
     public array $outputFields;
 
     /**

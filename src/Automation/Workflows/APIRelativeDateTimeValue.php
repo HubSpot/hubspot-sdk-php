@@ -7,7 +7,7 @@ namespace HubspotSDK\Automation\Workflows;
 use HubspotSDK\Automation\Workflows\APIRelativeDateTimeValue\Type;
 use HubspotSDK\Automation\Workflows\APITimeDelay\DaysOfWeek;
 use HubspotSDK\Automation\Workflows\APITimeDelay\TimeUnit;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -21,11 +21,11 @@ final class APIRelativeDateTimeValue implements BaseModel
     /** @use SdkModel<APIRelativeDateTimeValueShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public APITimeDelay $timeDelay;
 
     /** @var value-of<Type> $type */
-    #[Api(enum: Type::class)]
+    #[Required(enum: Type::class)]
     public string $type;
 
     /**

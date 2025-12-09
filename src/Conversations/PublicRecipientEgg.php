@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Conversations;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -23,19 +24,19 @@ final class PublicRecipientEgg implements BaseModel
     use SdkModel;
 
     /** @var list<PublicDeliveryIdentifier> $deliveryIdentifiers */
-    #[Api(list: PublicDeliveryIdentifier::class)]
+    #[Required(list: PublicDeliveryIdentifier::class)]
     public array $deliveryIdentifiers;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $actorId;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?PublicDeliveryIdentifier $deliveryIdentifier;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $name;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $recipientField;
 
     /**

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -19,7 +19,7 @@ final class ForwardPaging implements BaseModel
     /**
      * Specifies the paging information needed to retrieve the next set of results in a paginated API response.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?NextPage $next;
 
     public function __construct()

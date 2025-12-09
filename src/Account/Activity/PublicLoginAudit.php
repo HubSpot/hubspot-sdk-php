@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Account\Activity;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -32,58 +33,58 @@ final class PublicLoginAudit implements BaseModel
     /**
      * The login activity's unique ID.
      */
-    #[Api]
+    #[Required]
     public string $id;
 
     /**
      * The time the login took place.
      */
-    #[Api]
+    #[Required]
     public \DateTimeInterface $loginAt;
 
     /**
      * Whether the login was successful or not.
      */
-    #[Api]
+    #[Required]
     public bool $loginSucceeded;
 
     /**
      * The approximate country code of the login.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $countryCode;
 
     /**
      * Email address of the user associated with the login.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $email;
 
     /**
      * IP address where the activity originated.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $ipAddress;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $location;
 
     /**
      * The approximate region code of the login.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $regionCode;
 
     /**
      * Information about the device used for logging in.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $userAgent;
 
     /**
      * The user's unique ID.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $userId;
 
     /**
