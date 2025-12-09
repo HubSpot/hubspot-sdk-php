@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Lists\Mapping;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -25,7 +25,7 @@ final class MappingGetIDMappingParams implements BaseModel
     /**
      * The legacy list id from lists v1 API.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $legacyListId;
 
     public function __construct()

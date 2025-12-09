@@ -5,7 +5,8 @@ declare(strict_types=1);
 namespace HubspotSDK\Automation\Actions;
 
 use HubspotSDK\Automation\Actions\PublicActionFunction\FunctionType;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -19,14 +20,14 @@ final class PublicActionFunction implements BaseModel
     /** @use SdkModel<PublicActionFunctionShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public string $functionSource;
 
     /** @var value-of<FunctionType> $functionType */
-    #[Api(enum: FunctionType::class)]
+    #[Required(enum: FunctionType::class)]
     public string $functionType;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $id;
 
     /**

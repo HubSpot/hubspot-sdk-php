@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Events;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -55,31 +56,31 @@ final class EventUpdateParams implements BaseModel
     use SdkParams;
 
     /** @var list<PropertyValue> $customProperties */
-    #[Api(list: PropertyValue::class)]
+    #[Required(list: PropertyValue::class)]
     public array $customProperties;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $endDateTime;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $eventCancelled;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $eventDescription;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $eventName;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $eventOrganizer;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $eventType;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $eventUrl;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $startDateTime;
 
     /**

@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Account;
 
 use HubspotSDK\Account\PortalInformationResponse\AccountType;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -28,32 +28,32 @@ final class PortalInformationResponse implements BaseModel
     use SdkModel;
 
     /** @var value-of<AccountType> $accountType */
-    #[Api(enum: AccountType::class)]
+    #[Required(enum: AccountType::class)]
     public string $accountType;
 
     /** @var list<string> $additionalCurrencies */
-    #[Api(list: 'string')]
+    #[Required(list: 'string')]
     public array $additionalCurrencies;
 
-    #[Api]
+    #[Required]
     public string $companyCurrency;
 
-    #[Api]
+    #[Required]
     public string $dataHostingLocation;
 
-    #[Api]
+    #[Required]
     public int $portalId;
 
-    #[Api]
+    #[Required]
     public string $timeZone;
 
-    #[Api]
+    #[Required]
     public string $uiDomain;
 
-    #[Api]
+    #[Required]
     public string $utcOffset;
 
-    #[Api]
+    #[Required]
     public int $utcOffsetMilliseconds;
 
     /**

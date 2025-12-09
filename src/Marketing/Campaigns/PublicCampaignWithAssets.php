@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Campaigns;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Paging;
@@ -24,25 +24,25 @@ final class PublicCampaignWithAssets implements BaseModel
     /** @use SdkModel<PublicCampaignWithAssetsShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public string $id;
 
     /** @var array<string,CollectionResponsePublicCampaignAsset> $assets */
-    #[Api(map: CollectionResponsePublicCampaignAsset::class)]
+    #[Required(map: CollectionResponsePublicCampaignAsset::class)]
     public array $assets;
 
     /** @var list<PublicBusinessUnit> $businessUnits */
-    #[Api(list: PublicBusinessUnit::class)]
+    #[Required(list: PublicBusinessUnit::class)]
     public array $businessUnits;
 
-    #[Api]
+    #[Required]
     public \DateTimeInterface $createdAt;
 
     /** @var array<string,string> $properties */
-    #[Api(map: 'string')]
+    #[Required(map: 'string')]
     public array $properties;
 
-    #[Api]
+    #[Required]
     public \DateTimeInterface $updatedAt;
 
     /**

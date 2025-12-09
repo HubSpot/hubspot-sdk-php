@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Subscriptions\V4;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Marketing\Subscriptions\V4\PublicStatus\Channel;
@@ -25,7 +26,7 @@ final class PublicBulkOptOutFromAllResponse implements BaseModel
     /**
      * The email address of the contact.
      */
-    #[Api]
+    #[Required]
     public string $subscriberIdString;
 
     /**
@@ -33,7 +34,7 @@ final class PublicBulkOptOutFromAllResponse implements BaseModel
      *
      * @var list<PublicStatus>|null $statuses
      */
-    #[Api(list: PublicStatus::class, optional: true)]
+    #[Optional(list: PublicStatus::class)]
     public ?array $statuses;
 
     /**

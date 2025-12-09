@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Events\EventDefinitions;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Events\EventDefinitions\ComboEventRuleBranch\OperationType;
@@ -22,15 +22,15 @@ final class ComboEventRuleBranch implements BaseModel
     use SdkModel;
 
     /** @var list<ComboEventRule> $composingRules */
-    #[Api(list: ComboEventRule::class)]
+    #[Required(list: ComboEventRule::class)]
     public array $composingRules;
 
     /** @var value-of<OperationType> $operationType */
-    #[Api(enum: OperationType::class)]
+    #[Required(enum: OperationType::class)]
     public string $operationType;
 
     /** @var list<mixed> $ruleBranches */
-    #[Api(list: ComboEventRuleBranch::class)]
+    #[Required(list: ComboEventRuleBranch::class)]
     public array $ruleBranches;
 
     /**

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicBoolPropertyOperation\OperationType;
@@ -25,13 +25,13 @@ final class PublicPropertyFilter implements BaseModel
     use SdkModel;
 
     /** @var value-of<FilterType> $filterType */
-    #[Api(enum: FilterType::class)]
+    #[Required(enum: FilterType::class)]
     public string $filterType;
 
-    #[Api]
+    #[Required]
     public PublicBoolPropertyOperation|PublicNumberPropertyOperation|PublicStringPropertyOperation|PublicDateTimePropertyOperation|PublicRangedDatePropertyOperation|PublicComparativePropertyUpdatedOperation|PublicComparativeDatePropertyOperation|PublicRollingDateRangePropertyOperation|PublicRollingPropertyUpdatedOperation|PublicEnumerationPropertyOperation|PublicAllPropertyTypesOperation|PublicRangedNumberPropertyOperation|PublicMultiStringPropertyOperation|PublicDatePropertyOperation|PublicCalendarDatePropertyOperation|PublicTimePointOperation|PublicRangedTimeOperation $operation;
 
-    #[Api]
+    #[Required]
     public string $property;
 
     /**

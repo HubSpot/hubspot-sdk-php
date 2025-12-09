@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Objects\Schemas;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Objects\Schemas\ObjectTypePropertyCreate\NumberDisplayHint;
@@ -44,19 +45,19 @@ final class ObjectTypePropertyCreate implements BaseModel
     /**
      * Controls how the property appears in HubSpot.
      */
-    #[Api]
+    #[Required]
     public string $fieldType;
 
     /**
      * A human-readable property label that will be shown in HubSpot.
      */
-    #[Api]
+    #[Required]
     public string $label;
 
     /**
      * The internal property name, which must be used when referencing the property from the API.
      */
-    #[Api]
+    #[Required]
     public string $name;
 
     /**
@@ -64,40 +65,40 @@ final class ObjectTypePropertyCreate implements BaseModel
      *
      * @var value-of<Type> $type
      */
-    #[Api(enum: Type::class)]
+    #[Required(enum: Type::class)]
     public string $type;
 
     /**
      * A description of the property that will be shown as help text in HubSpot.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $description;
 
     /**
      * The order that this property should be displayed in the HubSpot UI relative to other properties for this object type. Properties are displayed in order starting with the lowest positive integer value. A value of -1 will cause the property to be displayed **after** any positive values.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $displayOrder;
 
     /**
      * Whether the property can be used in a HubSpot form.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $formField;
 
     /**
      * The name of the group this property belongs to.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $groupName;
 
     /**
      * Whether or not the property's value must be unique. Once set, this can't be changed.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $hasUniqueValue;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $hidden;
 
     /**
@@ -105,7 +106,7 @@ final class ObjectTypePropertyCreate implements BaseModel
      *
      * @var value-of<NumberDisplayHint>|null $numberDisplayHint
      */
-    #[Api(enum: NumberDisplayHint::class, optional: true)]
+    #[Optional(enum: NumberDisplayHint::class)]
     public ?string $numberDisplayHint;
 
     /**
@@ -113,7 +114,7 @@ final class ObjectTypePropertyCreate implements BaseModel
      *
      * @var list<OptionInput>|null $options
      */
-    #[Api(list: OptionInput::class, optional: true)]
+    #[Optional(list: OptionInput::class)]
     public ?array $options;
 
     /**
@@ -121,25 +122,25 @@ final class ObjectTypePropertyCreate implements BaseModel
      *
      * @var value-of<OptionSortStrategy>|null $optionSortStrategy
      */
-    #[Api(enum: OptionSortStrategy::class, optional: true)]
+    #[Optional(enum: OptionSortStrategy::class)]
     public ?string $optionSortStrategy;
 
     /**
      * Defines the options this property will return, e.g. OWNER would return name of users on the portal.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $referencedObjectType;
 
     /**
      * Allow users to search for information entered to this field (limited to 3 properties).
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $searchableInGlobalSearch;
 
     /**
      * Whether the property will display the currency symbol in the HubSpot UI.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $showCurrencySymbol;
 
     /**
@@ -147,7 +148,7 @@ final class ObjectTypePropertyCreate implements BaseModel
      *
      * @var value-of<TextDisplayHint>|null $textDisplayHint
      */
-    #[Api(enum: TextDisplayHint::class, optional: true)]
+    #[Optional(enum: TextDisplayHint::class)]
     public ?string $textDisplayHint;
 
     /**

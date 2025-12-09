@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -22,19 +23,19 @@ final class OptionInput implements BaseModel
     /** @use SdkModel<OptionInputShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public int $displayOrder;
 
-    #[Api]
+    #[Required]
     public bool $hidden;
 
-    #[Api]
+    #[Required]
     public string $label;
 
-    #[Api]
+    #[Required]
     public string $value;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $description;
 
     /**

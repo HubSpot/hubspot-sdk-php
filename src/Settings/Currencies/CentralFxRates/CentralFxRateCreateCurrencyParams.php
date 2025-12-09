@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Settings\Currencies\CentralFxRates;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -30,7 +30,7 @@ final class CentralFxRateCreateCurrencyParams implements BaseModel
      *
      * @var value-of<CurrencyCode> $currencyCode
      */
-    #[Api(enum: CurrencyCode::class)]
+    #[Required(enum: CurrencyCode::class)]
     public string $currencyCode;
 
     /**

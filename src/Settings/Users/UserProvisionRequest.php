@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Settings\Users;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -29,31 +30,31 @@ final class UserProvisionRequest implements BaseModel
     /**
      * The user's email.
      */
-    #[Api]
+    #[Required]
     public string $email;
 
     /**
      * The user's first name.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $firstName;
 
     /**
      * The user's last name.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $lastName;
 
     /**
      * The user's primary team.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $primaryTeamId;
 
     /**
      * The user's role.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $roleId;
 
     /**
@@ -61,13 +62,13 @@ final class UserProvisionRequest implements BaseModel
      *
      * @var list<string>|null $secondaryTeamIds
      */
-    #[Api(list: 'string', optional: true)]
+    #[Optional(list: 'string')]
     public ?array $secondaryTeamIds;
 
     /**
      * Whether to send a welcome email.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $sendWelcomeEmail;
 
     /**

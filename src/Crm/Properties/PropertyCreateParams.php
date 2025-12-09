@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Properties;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -49,52 +50,52 @@ final class PropertyCreateParams implements BaseModel
     use SdkParams;
 
     /** @var value-of<FieldType> $fieldType */
-    #[Api(enum: FieldType::class)]
+    #[Required(enum: FieldType::class)]
     public string $fieldType;
 
-    #[Api]
+    #[Required]
     public string $groupName;
 
-    #[Api]
+    #[Required]
     public string $label;
 
-    #[Api]
+    #[Required]
     public string $name;
 
     /** @var value-of<Type> $type */
-    #[Api(enum: Type::class)]
+    #[Required(enum: Type::class)]
     public string $type;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $calculationFormula;
 
     /** @var value-of<DataSensitivity>|null $dataSensitivity */
-    #[Api(enum: DataSensitivity::class, optional: true)]
+    #[Optional(enum: DataSensitivity::class)]
     public ?string $dataSensitivity;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $description;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $displayOrder;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $externalOptions;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $formField;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $hasUniqueValue;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $hidden;
 
     /** @var list<OptionInput>|null $options */
-    #[Api(list: OptionInput::class, optional: true)]
+    #[Optional(list: OptionInput::class)]
     public ?array $options;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $referencedObjectType;
 
     /**

@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\ListOf;
@@ -28,19 +29,19 @@ final class APIError implements BaseModel
     /**
      * The error category.
      */
-    #[Api]
+    #[Required]
     public string $category;
 
     /**
      * A unique identifier for the request. Include this value with any error reports or support tickets.
      */
-    #[Api]
+    #[Required]
     public string $correlationId;
 
     /**
      * A human readable message describing the error along with remediation steps where appropriate.
      */
-    #[Api]
+    #[Required]
     public string $message;
 
     /**
@@ -48,7 +49,7 @@ final class APIError implements BaseModel
      *
      * @var array<string,list<string>>|null $context
      */
-    #[Api(map: new ListOf('string'), optional: true)]
+    #[Optional(map: new ListOf('string'))]
     public ?array $context;
 
     /**
@@ -56,7 +57,7 @@ final class APIError implements BaseModel
      *
      * @var list<ErrorDetail>|null $errors
      */
-    #[Api(list: ErrorDetail::class, optional: true)]
+    #[Optional(list: ErrorDetail::class)]
     public ?array $errors;
 
     /**
@@ -64,13 +65,13 @@ final class APIError implements BaseModel
      *
      * @var array<string,string>|null $links
      */
-    #[Api(map: 'string', optional: true)]
+    #[Optional(map: 'string')]
     public ?array $links;
 
     /**
      * A specific category that contains more specific detail about the error.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $subCategory;
 
     /**

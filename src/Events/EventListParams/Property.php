@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Events\EventListParams;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -19,7 +19,7 @@ final class Property implements BaseModel
     /**
      * Filter for event completions that contain a specific value for an event property (e.g., `property.hs_city=portland`). For properties values with spaces, replaces spaces with `%20` or `+` (e.g., `property.hs_city=new+york`).
      */
-    #[Api('{propname}', optional: true)]
+    #[Optional('{propname}')]
     public mixed $_propname_;
 
     public function __construct()

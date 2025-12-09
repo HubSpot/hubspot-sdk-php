@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Extensions\Cards;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -18,13 +18,13 @@ final class ActionConfirmationBody implements BaseModel
     /** @use SdkModel<ActionConfirmationBodyShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public string $cancelButtonLabel;
 
-    #[Api]
+    #[Required]
     public string $confirmButtonLabel;
 
-    #[Api]
+    #[Required]
     public string $prompt;
 
     /**

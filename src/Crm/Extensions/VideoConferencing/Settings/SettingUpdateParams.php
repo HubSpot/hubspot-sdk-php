@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Extensions\VideoConferencing\Settings;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -29,28 +30,28 @@ final class SettingUpdateParams implements BaseModel
     /**
      * The URL that HubSpot will send requests to create a new video conference.
      */
-    #[Api]
+    #[Required]
     public string $createMeetingUrl;
 
     /**
      * The URL that HubSpot will send notifications of meetings that have been deleted in HubSpot.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $deleteMeetingUrl;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $fetchAccountsUri;
 
     /**
      * The URL that HubSpot will send updates to existing meetings. Typically called when the user changes the topic or times of a meeting.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $updateMeetingUrl;
 
     /**
      * The URL that HubSpot will use to verify that a user exists in the video conference application.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $userVerifyUrl;
 
     /**

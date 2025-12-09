@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Scheduler\Meetings;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Scheduler\Meetings\ExternalCalendarMeetingEventResponseProperties\HsEngagementSource;
@@ -38,61 +39,61 @@ final class ExternalCalendarMeetingEventResponseProperties implements BaseModel
     use SdkModel;
 
     /** @var value-of<HsEngagementSource> $hs_engagement_source */
-    #[Api(enum: HsEngagementSource::class)]
+    #[Required(enum: HsEngagementSource::class)]
     public string $hs_engagement_source;
 
-    #[Api]
+    #[Required]
     public string $hs_engagement_source_id;
 
-    #[Api]
+    #[Required]
     public \DateTimeInterface $hs_meeting_end_time;
 
-    #[Api]
+    #[Required]
     public string $hs_meeting_outcome;
 
-    #[Api]
+    #[Required]
     public \DateTimeInterface $hs_meeting_start_time;
 
-    #[Api]
+    #[Required]
     public string $hs_meeting_title;
 
-    #[Api]
+    #[Required]
     public \DateTimeInterface $hs_timestamp;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $hs_activity_type;
 
     /** @var list<string>|null $hs_attachment_ids */
-    #[Api(list: 'string', optional: true)]
+    #[Optional(list: 'string')]
     public ?array $hs_attachment_ids;
 
     /** @var list<string>|null $hs_attendee_owner_ids */
-    #[Api(list: 'string', optional: true)]
+    #[Optional(list: 'string')]
     public ?array $hs_attendee_owner_ids;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $hs_include_description_in_reminder;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $hs_internal_meeting_notes;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $hs_meeting_body;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $hs_meeting_external_url;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $hs_meeting_location;
 
     /** @var value-of<HsMeetingLocationType>|null $hs_meeting_location_type */
-    #[Api(enum: HsMeetingLocationType::class, optional: true)]
+    #[Optional(enum: HsMeetingLocationType::class)]
     public ?string $hs_meeting_location_type;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $hs_unique_id;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $hubspot_owner_id;
 
     /**

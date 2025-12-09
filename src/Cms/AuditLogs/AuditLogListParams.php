@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\AuditLogs;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -34,13 +34,13 @@ final class AuditLogListParams implements BaseModel
     /**
      * Timestamp after which audit logs will be returned.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $after;
 
     /**
      * Timestamp before which audit logs will be returned.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $before;
 
     /**
@@ -48,13 +48,13 @@ final class AuditLogListParams implements BaseModel
      *
      * @var list<string>|null $eventType
      */
-    #[Api(list: 'string', optional: true)]
+    #[Optional(list: 'string')]
     public ?array $eventType;
 
     /**
      * The number of logs to return.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $limit;
 
     /**
@@ -62,7 +62,7 @@ final class AuditLogListParams implements BaseModel
      *
      * @var list<string>|null $objectId
      */
-    #[Api(list: 'string', optional: true)]
+    #[Optional(list: 'string')]
     public ?array $objectId;
 
     /**
@@ -70,7 +70,7 @@ final class AuditLogListParams implements BaseModel
      *
      * @var list<string>|null $objectType
      */
-    #[Api(list: 'string', optional: true)]
+    #[Optional(list: 'string')]
     public ?array $objectType;
 
     /**
@@ -78,7 +78,7 @@ final class AuditLogListParams implements BaseModel
      *
      * @var list<string>|null $sort
      */
-    #[Api(list: 'string', optional: true)]
+    #[Optional(list: 'string')]
     public ?array $sort;
 
     /**
@@ -86,7 +86,7 @@ final class AuditLogListParams implements BaseModel
      *
      * @var list<string>|null $userId
      */
-    #[Api(list: 'string', optional: true)]
+    #[Optional(list: 'string')]
     public ?array $userId;
 
     public function __construct()

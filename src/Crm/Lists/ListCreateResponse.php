@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Lists;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicAndFilterBranch;
@@ -29,7 +29,7 @@ final class ListCreateResponse implements BaseModel
     /**
      * An object list definition.
      */
-    #[Api]
+    #[Required]
     public PublicObjectList $list;
 
     /**

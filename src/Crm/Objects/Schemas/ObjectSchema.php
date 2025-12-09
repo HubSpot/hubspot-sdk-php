@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Objects\Schemas;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Events\EventDefinitions\AssociationDefinition;
@@ -50,7 +51,7 @@ final class ObjectSchema implements BaseModel
     /**
      * A unique ID for this schema's object type. Will be defined as {meta-type}-{unique ID}.
      */
-    #[Api]
+    #[Required]
     public string $id;
 
     /**
@@ -58,16 +59,16 @@ final class ObjectSchema implements BaseModel
      *
      * @var list<AssociationDefinition> $associations
      */
-    #[Api(list: AssociationDefinition::class)]
+    #[Required(list: AssociationDefinition::class)]
     public array $associations;
 
-    #[Api]
+    #[Required]
     public ObjectTypeDefinitionLabels $labels;
 
     /**
      * A unique name for the schema's object type.
      */
-    #[Api]
+    #[Required]
     public string $name;
 
     /**
@@ -75,7 +76,7 @@ final class ObjectSchema implements BaseModel
      *
      * @var list<Property> $properties
      */
-    #[Api(list: Property::class)]
+    #[Required(list: Property::class)]
     public array $properties;
 
     /**
@@ -83,37 +84,37 @@ final class ObjectSchema implements BaseModel
      *
      * @var list<string> $requiredProperties
      */
-    #[Api(list: 'string')]
+    #[Required(list: 'string')]
     public array $requiredProperties;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $archived;
 
     /**
      * When the object schema was created.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $createdAt;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $createdByUserId;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $description;
 
     /**
      * An assigned unique ID for the object, including portal ID and object name.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $fullyQualifiedName;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $objectTypeId;
 
     /**
      * The name of the primary property for this object. This will be displayed as primary on the HubSpot record page for this object type.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $primaryDisplayProperty;
 
     /**
@@ -121,7 +122,7 @@ final class ObjectSchema implements BaseModel
      *
      * @var list<string>|null $searchableProperties
      */
-    #[Api(list: 'string', optional: true)]
+    #[Optional(list: 'string')]
     public ?array $searchableProperties;
 
     /**
@@ -129,16 +130,16 @@ final class ObjectSchema implements BaseModel
      *
      * @var list<string>|null $secondaryDisplayProperties
      */
-    #[Api(list: 'string', optional: true)]
+    #[Optional(list: 'string')]
     public ?array $secondaryDisplayProperties;
 
     /**
      * When the object schema was last updated.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $updatedAt;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $updatedByUserId;
 
     /**

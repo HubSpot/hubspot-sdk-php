@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\Blogs\Settings;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\NextPage;
@@ -29,16 +30,16 @@ final class CollectionResponseWithTotalVersionBlog implements BaseModel
      *
      * @var list<VersionBlog> $results
      */
-    #[Api(list: VersionBlog::class)]
+    #[Required(list: VersionBlog::class)]
     public array $results;
 
     /**
      * Total number of blog versions.
      */
-    #[Api]
+    #[Required]
     public int $total;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?Paging $paging;
 
     /**

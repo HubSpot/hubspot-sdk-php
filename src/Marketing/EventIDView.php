@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -21,13 +21,13 @@ final class EventIDView implements BaseModel
     /**
      * Identifier of event.
      */
-    #[Api]
+    #[Required]
     public string $id;
 
     /**
      * Time of event creation.
      */
-    #[Api]
+    #[Required]
     public \DateTimeInterface $created;
 
     /**

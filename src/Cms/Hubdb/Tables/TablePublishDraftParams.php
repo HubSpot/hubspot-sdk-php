@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\Hubdb\Tables;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -25,7 +25,7 @@ final class TablePublishDraftParams implements BaseModel
     /**
      * Set this to `true` to populate foreign ID values in the response.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $includeForeignIds;
 
     public function __construct()

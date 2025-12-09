@@ -6,7 +6,7 @@ namespace HubspotSDK\Automation\Workflows;
 
 use HubspotSDK\Automation\Workflows\APIMonthlyRelativeDaysEnrollmentSchedule\MonthlyRelativeDays;
 use HubspotSDK\Automation\Workflows\APIMonthlyRelativeDaysEnrollmentSchedule\Type;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -23,14 +23,14 @@ final class APIMonthlyRelativeDaysEnrollmentSchedule implements BaseModel
     use SdkModel;
 
     /** @var value-of<MonthlyRelativeDays> $monthlyRelativeDays */
-    #[Api(enum: MonthlyRelativeDays::class)]
+    #[Required(enum: MonthlyRelativeDays::class)]
     public string $monthlyRelativeDays;
 
-    #[Api]
+    #[Required]
     public APITimeOfDay $timeOfDay;
 
     /** @var value-of<Type> $type */
-    #[Api(enum: Type::class)]
+    #[Required(enum: Type::class)]
     public string $type;
 
     /**

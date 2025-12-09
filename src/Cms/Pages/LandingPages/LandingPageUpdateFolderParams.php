@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\Pages\LandingPages;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -35,43 +36,43 @@ final class LandingPageUpdateFolderParams implements BaseModel
     /**
      * The unique ID of the content folder.
      */
-    #[Api]
+    #[Required]
     public string $id;
 
     /**
      * The type of object this folder applies to. Should always be LANDING_PAGE.
      */
-    #[Api]
+    #[Required]
     public int $category;
 
-    #[Api]
+    #[Required]
     public \DateTimeInterface $created;
 
     /**
      * The timestamp (ISO8601 format) when this content folder was deleted.
      */
-    #[Api]
+    #[Required]
     public \DateTimeInterface $deletedAt;
 
     /**
      * The name of the folder which will show up in the app dashboard.
      */
-    #[Api]
+    #[Required]
     public string $name;
 
     /**
      * The ID of the content folder this folder is nested under.
      */
-    #[Api]
+    #[Required]
     public int $parentFolderId;
 
-    #[Api]
+    #[Required]
     public \DateTimeInterface $updated;
 
     /**
      * Specifies whether to update deleted Folders. Defaults to `false`.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $archived;
 
     /**

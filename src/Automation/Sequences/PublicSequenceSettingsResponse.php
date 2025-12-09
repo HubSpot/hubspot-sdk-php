@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Automation\Sequences;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -27,34 +28,34 @@ final class PublicSequenceSettingsResponse implements BaseModel
     /** @use SdkModel<PublicSequenceSettingsResponseShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public string $id;
 
-    #[Api]
+    #[Required]
     public \DateTimeInterface $createdAt;
 
-    #[Api]
+    #[Required]
     public string $eligibleFollowUpDays;
 
-    #[Api]
+    #[Required]
     public bool $individualTaskRemindersEnabled;
 
-    #[Api]
+    #[Required]
     public string $sellingStrategy;
 
-    #[Api]
+    #[Required]
     public int $sendWindowEndMinute;
 
-    #[Api]
+    #[Required]
     public int $sendWindowStartMinute;
 
-    #[Api]
+    #[Required]
     public int $taskReminderMinute;
 
-    #[Api]
+    #[Required]
     public \DateTimeInterface $updatedAt;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?UnenrollmentSettingsResponse $unenrollmentSettings;
 
     /**

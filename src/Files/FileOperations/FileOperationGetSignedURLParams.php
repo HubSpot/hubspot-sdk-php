@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Files\FileOperations;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -28,7 +28,7 @@ final class FileOperationGetSignedURLParams implements BaseModel
     /**
      * How long in seconds the link will provide access to the file.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $expirationSeconds;
 
     /**
@@ -36,13 +36,13 @@ final class FileOperationGetSignedURLParams implements BaseModel
      *
      * @var value-of<Size>|null $size
      */
-    #[Api(enum: Size::class, optional: true)]
+    #[Optional(enum: Size::class)]
     public ?string $size;
 
     /**
      * If size is provided, this will upscale the image to fit the size dimensions.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $upscale;
 
     public function __construct()

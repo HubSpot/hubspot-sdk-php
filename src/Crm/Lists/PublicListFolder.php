@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Lists;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -29,7 +30,7 @@ final class PublicListFolder implements BaseModel
     /**
      * The Id of the folder.
      */
-    #[Api]
+    #[Required]
     public string $id;
 
     /**
@@ -37,47 +38,47 @@ final class PublicListFolder implements BaseModel
      *
      * @var list<int> $childLists
      */
-    #[Api(list: 'int')]
+    #[Required(list: 'int')]
     public array $childLists;
 
     /** @var list<mixed> $childNodes */
-    #[Api(list: PublicListFolder::class)]
+    #[Required(list: PublicListFolder::class)]
     public array $childNodes;
 
     /**
      * The Id of the folder this folder is in, the root folder is represented as 0.
      */
-    #[Api]
+    #[Required]
     public string $parentFolderId;
 
     /**
      * The time the folder was created at.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $createdAt;
 
     /**
      * The name of the folder.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $name;
 
     /**
      * The time the folder was last updated at.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $updatedAt;
 
     /**
      * The time that the contents of the folder was last updated at.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $updatedContentsAt;
 
     /**
      * The user Id of the owner of the folder.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $userId;
 
     /**

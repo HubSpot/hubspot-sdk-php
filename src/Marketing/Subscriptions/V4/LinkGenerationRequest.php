@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Subscriptions\V4;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -18,13 +19,13 @@ final class LinkGenerationRequest implements BaseModel
     /** @use SdkModel<LinkGenerationRequestShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public string $subscriberIdString;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $language;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $subscriptionId;
 
     /**

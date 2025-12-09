@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\Pages\SitePages;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -27,13 +27,13 @@ final class SitePageCreateAbTestVariationParams implements BaseModel
     /**
      * ID of the object to test.
      */
-    #[Api]
+    #[Required]
     public string $contentId;
 
     /**
      * Name of A/B test variation.
      */
-    #[Api]
+    #[Required]
     public string $variationName;
 
     /**

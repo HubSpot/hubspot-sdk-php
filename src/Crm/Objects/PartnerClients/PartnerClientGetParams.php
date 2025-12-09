@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Objects\PartnerClients;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -26,22 +26,22 @@ final class PartnerClientGetParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $archived;
 
     /** @var list<string>|null $associations */
-    #[Api(list: 'string', optional: true)]
+    #[Optional(list: 'string')]
     public ?array $associations;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $idProperty;
 
     /** @var list<string>|null $properties */
-    #[Api(list: 'string', optional: true)]
+    #[Optional(list: 'string')]
     public ?array $properties;
 
     /** @var list<string>|null $propertiesWithHistory */
-    #[Api(list: 'string', optional: true)]
+    #[Optional(list: 'string')]
     public ?array $propertiesWithHistory;
 
     public function __construct()

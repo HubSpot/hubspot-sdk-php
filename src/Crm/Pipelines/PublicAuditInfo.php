@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Pipelines;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -27,43 +28,43 @@ final class PublicAuditInfo implements BaseModel
     /**
      * The action performed that triggered the audit event.
      */
-    #[Api]
+    #[Required]
     public string $action;
 
     /**
      * A unique string identifier for the audit event.
      */
-    #[Api]
+    #[Required]
     public string $identifier;
 
     /**
      * The unique identifier for the HubSpot portal where the audit event occurred.
      */
-    #[Api]
+    #[Required]
     public int $portalId;
 
     /**
      * The ID of the user who initiated the audit event.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $fromUserId;
 
     /**
      * A descriptive message related to the audit event.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $message;
 
     /**
      * An object containing the raw data associated with the audit event.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public mixed $rawObject;
 
     /**
      * The date and time when the audit event took place.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $timestamp;
 
     /**

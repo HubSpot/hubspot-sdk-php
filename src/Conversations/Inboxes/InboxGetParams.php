@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Conversations\Inboxes;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -20,7 +20,7 @@ final class InboxGetParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $archived;
 
     public function __construct()

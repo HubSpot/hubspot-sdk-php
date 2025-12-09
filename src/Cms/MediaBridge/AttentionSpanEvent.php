@@ -5,7 +5,8 @@ declare(strict_types=1);
 namespace HubspotSDK\Cms\MediaBridge;
 
 use HubspotSDK\Cms\MediaBridge\AttentionSpanEvent\MediaType;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -40,86 +41,86 @@ final class AttentionSpanEvent implements BaseModel
     /**
      * The ID of the contact in HubSpot’s system that consumed the media. This can be fetched using HubSpot's Get contact by usertoken (utk) API. The API also supports supplying a usertoken, and will handle converting this into a contact ID automatically.
      */
-    #[Api]
+    #[Required]
     public int $contactId;
 
-    #[Api]
+    #[Required]
     public int $mediaBridgeId;
 
-    #[Api]
+    #[Required]
     public string $mediaBridgeObjectCoordinates;
 
-    #[Api]
+    #[Required]
     public string $mediaBridgeObjectTypeId;
 
-    #[Api]
+    #[Required]
     public string $mediaName;
 
     /** @var value-of<MediaType> $mediaType */
-    #[Api(enum: MediaType::class)]
+    #[Required(enum: MediaType::class)]
     public string $mediaType;
 
     /**
      * The timestamp at which this event occurred, in milliseconds since the epoch.
      */
-    #[Api]
+    #[Required]
     public int $occurredTimestamp;
 
-    #[Api]
+    #[Required]
     public string $percentRange;
 
     /**
      * The ID of the HubSpot account.
      */
-    #[Api]
+    #[Required]
     public int $portalId;
 
-    #[Api]
+    #[Required]
     public int $providerId;
 
-    #[Api]
+    #[Required]
     public string $sessionId;
 
     /**
      * The percent of the media that the user consumed. Providers may calculate this differently depending on how they consider repeated views of the same portion of media. For this reason, the API will not attempt to validate totalPercentWatched against the attention span information for the event. If it is missing, HubSpot will calculate this from the attention span map as follows: (number of spans with a value of 1 or more)/(Total number of spans).
      */
-    #[Api]
+    #[Required]
     public float $totalPercentPlayed;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $mediaUrl;
 
     /**
      * The ID of the page, if hosted on HubSpot. Required for HubSpot pages.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $pageId;
 
     /**
      * The name of the page. Required if the page is not hosted on HubSpot.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $pageName;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $pageObjectCoordinates;
 
     /**
      * The URL of the page that an event happened on. Required if the page is not hosted on HubSpot.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $pageUrl;
 
     /**
      * This is the raw data which provides the most granular data about spans of the media, and how many times each span was consumed by the user. For example, for a 10 second video where each second is a span, if a visitor watches the first 5 seconds of the video, then restarts the video and watches the first 2 seconds again, the resulting `rawDataString` would be `“0=2;1=2;2=1;3=1;4=1;5=0;6=0;7=0;8=0;9=0;”`.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $rawData;
 
     /**
      * The seconds that a user spent consuming the media. The media bridge calculates this as `totalPercentPlayed`*`mediaDuration`. If a provider would like this to be calculated differently, they can provide the pre-calculated value when they create the event.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $totalSecondsPlayed;
 
     /**

@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Associations\V4;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\AssociationSpecWithLabel;
@@ -26,14 +27,14 @@ final class PublicAssociationMultiWithLabel implements BaseModel
     /** @use SdkModel<PublicAssociationMultiWithLabelShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public PublicObjectID $from;
 
     /** @var list<MultiAssociatedObjectWithLabel> $to */
-    #[Api(list: MultiAssociatedObjectWithLabel::class)]
+    #[Required(list: MultiAssociatedObjectWithLabel::class)]
     public array $to;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?Paging $paging;
 
     /**

@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Lists;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicAbsoluteComparativeTimestampRefineBy;
@@ -72,19 +73,19 @@ final class ListCreateRequest implements BaseModel
     /**
      * The name of the list, which must be globally unique across all public lists in the portal.
      */
-    #[Api]
+    #[Required]
     public string $name;
 
     /**
      * The object type ID of the type of objects that the list will store.
      */
-    #[Api]
+    #[Required]
     public string $objectTypeId;
 
     /**
      * The processing type of the list. One of: `SNAPSHOT`, `MANUAL`, or `DYNAMIC`.
      */
-    #[Api]
+    #[Required]
     public string $processingType;
 
     /**
@@ -92,22 +93,22 @@ final class ListCreateRequest implements BaseModel
      *
      * @var array<string,string>|null $customProperties
      */
-    #[Api(map: 'string', optional: true)]
+    #[Optional(map: 'string')]
     public ?array $customProperties;
 
-    #[Api(optional: true)]
+    #[Optional]
     public PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch|null $filterBranch;
 
     /**
      * The ID of the folder that the list should be created in. If left blank, then the list will be created in the root of the list folder structure.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $listFolderId;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?PublicListPermissions $listPermissions;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?PublicMembershipSettings $membershipSettings;
 
     /**

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\Pages\SitePages;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -27,13 +27,13 @@ final class SitePageRerunAbTestParams implements BaseModel
     /**
      * ID of the test to rerun.
      */
-    #[Api]
+    #[Required]
     public string $abTestId;
 
     /**
      * ID of the object to reactivate as a test variation.
      */
-    #[Api]
+    #[Required]
     public string $variationId;
 
     /**

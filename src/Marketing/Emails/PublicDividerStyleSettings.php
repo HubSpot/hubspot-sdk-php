@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Emails;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -18,13 +18,13 @@ final class PublicDividerStyleSettings implements BaseModel
     /** @use SdkModel<PublicDividerStyleSettingsShape> */
     use SdkModel;
 
-    #[Api(optional: true)]
+    #[Optional]
     public mixed $color;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $height;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $lineType;
 
     public function __construct()

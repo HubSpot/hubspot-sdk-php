@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Events\Participations;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -28,31 +29,31 @@ final class ParticipationListBreakdownByExternalAccountAndEventIDParams implemen
     use SdkModel;
     use SdkParams;
 
-    #[Api]
+    #[Required]
     public string $externalAccountId;
 
     /**
      * The cursor indicating the position of the last retrieved item.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $after;
 
     /**
      * The identifier of the Contact. It may be email or internal id.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $contactIdentifier;
 
     /**
      * The limit for response size. The default value is 10, the max number is 100.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $limit;
 
     /**
      * The participation state value. It may be REGISTERED, CANCELLED, ATTENDED, NO_SHOW.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $state;
 
     /**

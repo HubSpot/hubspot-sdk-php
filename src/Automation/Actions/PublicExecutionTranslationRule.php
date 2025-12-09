@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Automation\Actions;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -19,10 +19,10 @@ final class PublicExecutionTranslationRule implements BaseModel
     use SdkModel;
 
     /** @var array<string,mixed> $conditions */
-    #[Api(map: 'mixed')]
+    #[Required(map: 'mixed')]
     public array $conditions;
 
-    #[Api]
+    #[Required]
     public string $labelName;
 
     /**

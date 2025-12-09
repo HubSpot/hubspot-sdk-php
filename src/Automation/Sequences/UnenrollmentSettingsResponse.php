@@ -6,7 +6,7 @@ namespace HubspotSDK\Automation\Sequences;
 
 use HubspotSDK\Automation\Sequences\EmailSettingsResponse\Criteria;
 use HubspotSDK\Automation\Sequences\EmailSettingsResponse\SellingStrategy;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -20,10 +20,10 @@ final class UnenrollmentSettingsResponse implements BaseModel
     /** @use SdkModel<UnenrollmentSettingsResponseShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public EmailSettingsResponse $emailSettings;
 
-    #[Api]
+    #[Required]
     public MeetingSettingsResponse $meetingSettings;
 
     /**

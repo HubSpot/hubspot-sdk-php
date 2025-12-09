@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Extensions\Cards;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Extensions\Cards\CardObjectTypeBody\Name;
@@ -24,7 +24,7 @@ final class CardObjectTypeBody implements BaseModel
      *
      * @var value-of<Name> $name
      */
-    #[Api(enum: Name::class)]
+    #[Required(enum: Name::class)]
     public string $name;
 
     /**
@@ -32,7 +32,7 @@ final class CardObjectTypeBody implements BaseModel
      *
      * @var list<string> $propertiesToSend
      */
-    #[Api(list: 'string')]
+    #[Required(list: 'string')]
     public array $propertiesToSend;
 
     /**

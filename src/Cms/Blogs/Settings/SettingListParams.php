@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\Blogs\Settings;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -31,35 +31,35 @@ final class SettingListParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $after;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $archived;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $createdAfter;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $createdAt;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $createdBefore;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $limit;
 
     /** @var list<string>|null $sort */
-    #[Api(list: 'string', optional: true)]
+    #[Optional(list: 'string')]
     public ?array $sort;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $updatedAfter;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $updatedAt;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $updatedBefore;
 
     public function __construct()

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Objects\Custom;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -27,13 +27,13 @@ final class CustomMergeParams implements BaseModel
     /**
      * The unique identifier of the CRM object that will be merged into the primary object.
      */
-    #[Api]
+    #[Required]
     public string $objectIdToMerge;
 
     /**
      * The unique identifier of the CRM object that will remain after the merge.
      */
-    #[Api]
+    #[Required]
     public string $primaryObjectId;
 
     /**

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Limits;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -27,13 +27,13 @@ final class LimitGetAssociationLabelLimitsParams implements BaseModel
     /**
      * objectTypeId of the object type on the "from" side of the association.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $fromObjectTypeId;
 
     /**
      * objectTypeId of the object type on the "to" side of the association.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $toObjectTypeId;
 
     public function __construct()

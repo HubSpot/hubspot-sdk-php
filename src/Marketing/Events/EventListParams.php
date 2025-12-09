@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Events;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -27,13 +27,13 @@ final class EventListParams implements BaseModel
     /**
      * The cursor indicating the position of the last retrieved item.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $after;
 
     /**
      * The limit for response size. The default value is 10, the max number is 100.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $limit;
 
     public function __construct()

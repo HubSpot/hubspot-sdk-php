@@ -5,7 +5,8 @@ declare(strict_types=1);
 namespace HubspotSDK\Conversations;
 
 use HubspotSDK\Conversations\PublicThread\Status;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\ForwardPaging;
@@ -22,10 +23,10 @@ final class CollectionResponsePublicThreadForwardPaging implements BaseModel
     use SdkModel;
 
     /** @var list<PublicThread> $results */
-    #[Api(list: PublicThread::class)]
+    #[Required(list: PublicThread::class)]
     public array $results;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?ForwardPaging $paging;
 
     /**

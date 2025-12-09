@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Cms\Hubdb;
 
 use HubspotSDK\APIError;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\ErrorDetail;
@@ -26,7 +26,7 @@ final class ImportResult implements BaseModel
     /**
      * Specifies number of duplicate rows.
      */
-    #[Api]
+    #[Required]
     public int $duplicateRows;
 
     /**
@@ -34,19 +34,19 @@ final class ImportResult implements BaseModel
      *
      * @var list<APIError> $errors
      */
-    #[Api(list: APIError::class)]
+    #[Required(list: APIError::class)]
     public array $errors;
 
     /**
      * Specifies whether row limit exceeded during import.
      */
-    #[Api]
+    #[Required]
     public bool $rowLimitExceeded;
 
     /**
      * Specifies number of rows imported.
      */
-    #[Api]
+    #[Required]
     public int $rowsImported;
 
     /**

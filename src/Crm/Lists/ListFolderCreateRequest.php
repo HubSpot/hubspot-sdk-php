@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Lists;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -21,13 +22,13 @@ final class ListFolderCreateRequest implements BaseModel
     /**
      * The name of the folder to be created.
      */
-    #[Api]
+    #[Required]
     public string $name;
 
     /**
      * The folder this should be created in, if not specified will be created in the root folder 0.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $parentFolderId;
 
     /**

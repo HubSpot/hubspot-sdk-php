@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Objects\Orders\Batch;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -30,7 +31,7 @@ final class BatchGetParams implements BaseModel
     use SdkParams;
 
     /** @var list<SimplePublicObjectID> $inputs */
-    #[Api(list: SimplePublicObjectID::class)]
+    #[Required(list: SimplePublicObjectID::class)]
     public array $inputs;
 
     /**
@@ -38,7 +39,7 @@ final class BatchGetParams implements BaseModel
      *
      * @var list<string> $properties
      */
-    #[Api(list: 'string')]
+    #[Required(list: 'string')]
     public array $properties;
 
     /**
@@ -46,19 +47,19 @@ final class BatchGetParams implements BaseModel
      *
      * @var list<string> $propertiesWithHistory
      */
-    #[Api(list: 'string')]
+    #[Required(list: 'string')]
     public array $propertiesWithHistory;
 
     /**
      * Whether to return only results that have been archived.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $archived;
 
     /**
      * A unique property used to identify objects instead of the default ID.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $idProperty;
 
     /**

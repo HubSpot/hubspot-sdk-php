@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Transactional;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -29,43 +30,43 @@ final class SmtpAPITokenView implements BaseModel
     /**
      * User name to log into the HubSpot SMTP server.
      */
-    #[Api]
+    #[Required]
     public string $id;
 
     /**
      * A name for the campaign tied to the token.
      */
-    #[Api]
+    #[Required]
     public string $campaignName;
 
     /**
      * Indicates whether a contact should be created for email recipients.
      */
-    #[Api]
+    #[Required]
     public bool $createContact;
 
     /**
      * Timestamp generated when a token is created.
      */
-    #[Api]
+    #[Required]
     public \DateTimeInterface $createdAt;
 
     /**
      * Email address of the user that sent the token creation request.
      */
-    #[Api]
+    #[Required]
     public string $createdBy;
 
     /**
      * Identifier assigned to the campaign provided in the token creation request.
      */
-    #[Api]
+    #[Required]
     public string $emailCampaignId;
 
     /**
      * Password used to log into the HubSpot SMTP server.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $password;
 
     /**

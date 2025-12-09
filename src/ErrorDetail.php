@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\ListOf;
@@ -26,13 +27,13 @@ final class ErrorDetail implements BaseModel
     /**
      * A human readable message describing the error along with remediation steps where appropriate.
      */
-    #[Api]
+    #[Required]
     public string $message;
 
     /**
      * The status code associated with the error detail.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $code;
 
     /**
@@ -40,19 +41,19 @@ final class ErrorDetail implements BaseModel
      *
      * @var array<string,list<string>>|null $context
      */
-    #[Api(map: new ListOf('string'), optional: true)]
+    #[Optional(map: new ListOf('string'))]
     public ?array $context;
 
     /**
      * The name of the field or parameter in which the error was found.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $in;
 
     /**
      * A specific category that contains more specific detail about the error.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $subCategory;
 
     /**

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Campaigns;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -22,21 +22,21 @@ final class PublicCampaign implements BaseModel
     /** @use SdkModel<PublicCampaignShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public string $id;
 
     /** @var list<PublicBusinessUnit> $businessUnits */
-    #[Api(list: PublicBusinessUnit::class)]
+    #[Required(list: PublicBusinessUnit::class)]
     public array $businessUnits;
 
-    #[Api]
+    #[Required]
     public \DateTimeInterface $createdAt;
 
     /** @var array<string,string> $properties */
-    #[Api(map: 'string')]
+    #[Required(map: 'string')]
     public array $properties;
 
-    #[Api]
+    #[Required]
     public \DateTimeInterface $updatedAt;
 
     /**

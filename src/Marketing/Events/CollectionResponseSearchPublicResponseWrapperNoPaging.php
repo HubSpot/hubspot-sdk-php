@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Events;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -19,7 +19,7 @@ final class CollectionResponseSearchPublicResponseWrapperNoPaging implements Bas
     use SdkModel;
 
     /** @var list<SearchPublicResponseWrapper> $results */
-    #[Api(list: SearchPublicResponseWrapper::class)]
+    #[Required(list: SearchPublicResponseWrapper::class)]
     public array $results;
 
     /**

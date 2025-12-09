@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Webhooks;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -23,13 +23,13 @@ final class SettingsChangeRequest implements BaseModel
     /**
      * A publicly available URL for HubSpot to call where event payloads will be delivered.
      */
-    #[Api]
+    #[Required]
     public string $targetUrl;
 
     /**
      * Configuration details for webhook throttling.
      */
-    #[Api]
+    #[Required]
     public ThrottlingSettings $throttling;
 
     /**

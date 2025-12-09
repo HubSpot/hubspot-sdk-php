@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -28,7 +29,7 @@ final class PublicObjectSearchRequest implements BaseModel
     /**
      * A paging cursor token for retrieving subsequent pages.
      */
-    #[Api]
+    #[Required]
     public string $after;
 
     /**
@@ -36,13 +37,13 @@ final class PublicObjectSearchRequest implements BaseModel
      *
      * @var list<FilterGroup> $filterGroups
      */
-    #[Api(list: FilterGroup::class)]
+    #[Required(list: FilterGroup::class)]
     public array $filterGroups;
 
     /**
      * The maximum results to return, up to 200 objects.
      */
-    #[Api]
+    #[Required]
     public int $limit;
 
     /**
@@ -50,7 +51,7 @@ final class PublicObjectSearchRequest implements BaseModel
      *
      * @var list<string> $properties
      */
-    #[Api(list: 'string')]
+    #[Required(list: 'string')]
     public array $properties;
 
     /**
@@ -58,13 +59,13 @@ final class PublicObjectSearchRequest implements BaseModel
      *
      * @var list<string> $sorts
      */
-    #[Api(list: 'string')]
+    #[Required(list: 'string')]
     public array $sorts;
 
     /**
      * The search query string, up to 3000 characters.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $query;
 
     /**

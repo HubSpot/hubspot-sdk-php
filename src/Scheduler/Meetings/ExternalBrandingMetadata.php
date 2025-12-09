@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Scheduler\Meetings;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -36,61 +37,61 @@ final class ExternalBrandingMetadata implements BaseModel
     /** @use SdkModel<ExternalBrandingMetadataShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public string $logoAltText;
 
-    #[Api]
+    #[Required]
     public bool $showMarketingAd;
 
-    #[Api]
+    #[Required]
     public bool $showSalesAd;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $accent2Color;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $accentColor;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $companyAddressLine1;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $companyAddressLine2;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $companyAvatar;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $companyCity;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $companyCountry;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $companyDomain;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $companyName;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $companyState;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $companyZip;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $logoHeight;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $logoUrl;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $logoWidth;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $primaryColor;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $secondaryColor;
 
     /**

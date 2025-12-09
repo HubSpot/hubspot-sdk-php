@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Emails;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -47,94 +47,94 @@ final class PublicEmailStyleSettings implements BaseModel
     /** @use SdkModel<PublicEmailStyleSettingsShape> */
     use SdkModel;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $backgroundColor;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $backgroundImage;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $backgroundImageType;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $bodyBorderColor;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $bodyBorderColorChoice;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?float $bodyBorderWidth;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $bodyColor;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?PublicButtonStyleSettings $buttonStyleSettings;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $colorPickerFavorite1;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $colorPickerFavorite2;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $colorPickerFavorite3;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $colorPickerFavorite4;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $colorPickerFavorite5;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $colorPickerFavorite6;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?PublicDividerStyleSettings $dividerStyleSettings;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $emailBodyPadding;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $emailBodyWidth;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?PublicFontStyle $headingOneFont;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?PublicFontStyle $headingTwoFont;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?PublicFontStyle $linksFont;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $primaryAccentColor;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $primaryFont;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $primaryFontColor;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $primaryFontLineHeight;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?float $primaryFontSize;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $secondaryAccentColor;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $secondaryFont;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $secondaryFontColor;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $secondaryFontLineHeight;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?float $secondaryFontSize;
 
     public function __construct()

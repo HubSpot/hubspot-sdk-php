@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\Hubdb;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -19,7 +19,7 @@ final class BatchInputHubDBTableRowV3Request implements BaseModel
     use SdkModel;
 
     /** @var list<HubDBTableRowV3Request> $inputs */
-    #[Api(list: HubDBTableRowV3Request::class)]
+    #[Required(list: HubDBTableRowV3Request::class)]
     public array $inputs;
 
     /**

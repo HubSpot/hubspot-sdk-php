@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Conversations\Inboxes;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -26,20 +26,20 @@ final class InboxListParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $after;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $archived;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $defaultPageLength;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $limit;
 
     /** @var list<string>|null $sort */
-    #[Api(list: 'string', optional: true)]
+    #[Optional(list: 'string')]
     public ?array $sort;
 
     public function __construct()

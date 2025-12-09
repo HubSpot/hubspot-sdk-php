@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\Pages\LandingPages;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -27,16 +27,16 @@ final class LandingPageListFolderRevisionsParams implements BaseModel
     /**
      * The cursor token value to get the next set of results. You can get this from the `paging.next.after` JSON property of a paged response containing more results.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $after;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $before;
 
     /**
      * The maximum number of results to return. Default is 100.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $limit;
 
     public function __construct()

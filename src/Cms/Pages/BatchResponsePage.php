@@ -5,7 +5,8 @@ declare(strict_types=1);
 namespace HubspotSDK\Cms\Pages;
 
 use HubspotSDK\Cms\Pages\BatchResponsePage\Status;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -26,25 +27,25 @@ final class BatchResponsePage implements BaseModel
     /** @use SdkModel<BatchResponsePageShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public \DateTimeInterface $completedAt;
 
     /** @var list<mixed> $results */
-    #[Api(list: Page::class)]
+    #[Required(list: Page::class)]
     public array $results;
 
-    #[Api]
+    #[Required]
     public \DateTimeInterface $startedAt;
 
     /** @var value-of<Status> $status */
-    #[Api(enum: Status::class)]
+    #[Required(enum: Status::class)]
     public string $status;
 
     /** @var array<string,string>|null $links */
-    #[Api(map: 'string', optional: true)]
+    #[Optional(map: 'string')]
     public ?array $links;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $requestedAt;
 
     /**

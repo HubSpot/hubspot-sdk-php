@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\URLRedirects;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -27,34 +28,34 @@ final class URLMappingCreateRequestBody implements BaseModel
     /** @use SdkModel<URLMappingCreateRequestBodyShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public string $destination;
 
-    #[Api]
+    #[Required]
     public int $redirectStyle;
 
-    #[Api]
+    #[Required]
     public string $routePrefix;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $isMatchFullUrl;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $isMatchQueryString;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $isOnlyAfterNotFound;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $isPattern;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $isProtocolAgnostic;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $isTrailingSlashOptional;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $precedence;
 
     /**

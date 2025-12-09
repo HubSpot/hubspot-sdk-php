@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Scheduler\Meetings;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -18,13 +18,13 @@ final class ExternalCommunicationConsentCheckbox implements BaseModel
     /** @use SdkModel<ExternalCommunicationConsentCheckboxShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public string $communicationTypeId;
 
-    #[Api]
+    #[Required]
     public string $label;
 
-    #[Api]
+    #[Required]
     public bool $required;
 
     /**

@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Events;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Marketing\Events\ParticipationProperties\AttendanceState;
@@ -23,16 +24,16 @@ final class ParticipationProperties implements BaseModel
     use SdkModel;
 
     /** @var value-of<AttendanceState> $attendanceState */
-    #[Api(enum: AttendanceState::class)]
+    #[Required(enum: AttendanceState::class)]
     public string $attendanceState;
 
-    #[Api]
+    #[Required]
     public int $occurredAt;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $attendanceDurationSeconds;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $attendancePercentage;
 
     /**

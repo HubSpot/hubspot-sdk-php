@@ -6,7 +6,8 @@ namespace HubspotSDK\Cms\SiteSearch;
 
 use HubspotSDK\Cms\SiteSearch\ContentSearchResult\Language;
 use HubspotSDK\Cms\SiteSearch\ContentSearchResult\Type;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -41,19 +42,19 @@ final class ContentSearchResult implements BaseModel
     /**
      * The ID of the content.
      */
-    #[Api]
+    #[Required]
     public int $id;
 
     /**
      * The domain the document is hosted on.
      */
-    #[Api]
+    #[Required]
     public string $domain;
 
     /**
      * The matching score of the document.
      */
-    #[Api]
+    #[Required]
     public float $score;
 
     /**
@@ -61,43 +62,43 @@ final class ContentSearchResult implements BaseModel
      *
      * @var value-of<Type> $type
      */
-    #[Api(enum: Type::class)]
+    #[Required(enum: Type::class)]
     public string $type;
 
     /**
      * The url of the document.
      */
-    #[Api]
+    #[Required]
     public string $url;
 
     /**
      * Name of the author.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $authorFullName;
 
     /**
      * For knowledge articles, the category of the article.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $category;
 
     /**
      * The ID of the document in HubSpot.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $combinedId;
 
     /**
      * The result's description. The content will be determined by the value of `length` in the request.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $description;
 
     /**
      * URL of the featured image.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $featuredImageUrl;
 
     /**
@@ -105,31 +106,31 @@ final class ContentSearchResult implements BaseModel
      *
      * @var value-of<Language>|null $language
      */
-    #[Api(enum: Language::class, optional: true)]
+    #[Optional(enum: Language::class)]
     public ?string $language;
 
     /**
      * The date the content was published.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $publishedDate;
 
     /**
      * If a dynamic page, the row ID in the HubDB table.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $rowId;
 
     /**
      * For knowledge articles, the subcategory of the article.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $subcategory;
 
     /**
      * If a dynamic page, the ID of the HubDB table.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $tableId;
 
     /**
@@ -137,13 +138,13 @@ final class ContentSearchResult implements BaseModel
      *
      * @var list<string>|null $tags
      */
-    #[Api(list: 'string', optional: true)]
+    #[Optional(list: 'string')]
     public ?array $tags;
 
     /**
      * The title of the returned document.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $title;
 
     /**

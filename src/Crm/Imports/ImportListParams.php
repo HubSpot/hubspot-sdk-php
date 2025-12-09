@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Imports;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -27,16 +27,16 @@ final class ImportListParams implements BaseModel
     /**
      * The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $after;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $before;
 
     /**
      * The maximum number of results to display per page.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $limit;
 
     public function __construct()

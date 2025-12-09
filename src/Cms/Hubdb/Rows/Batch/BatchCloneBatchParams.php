@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Cms\Hubdb\Rows\Batch;
 
 use HubspotSDK\Cms\Hubdb\HubDBTableRowBatchCloneRequest;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -28,7 +28,7 @@ final class BatchCloneBatchParams implements BaseModel
     use SdkParams;
 
     /** @var list<HubDBTableRowBatchCloneRequest> $inputs */
-    #[Api(list: HubDBTableRowBatchCloneRequest::class)]
+    #[Required(list: HubDBTableRowBatchCloneRequest::class)]
     public array $inputs;
 
     /**

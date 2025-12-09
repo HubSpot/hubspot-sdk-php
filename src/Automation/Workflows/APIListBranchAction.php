@@ -5,7 +5,8 @@ declare(strict_types=1);
 namespace HubspotSDK\Automation\Workflows;
 
 use HubspotSDK\Automation\Workflows\APIListBranchAction\Type;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -23,21 +24,21 @@ final class APIListBranchAction implements BaseModel
     /** @use SdkModel<APIListBranchActionShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public string $actionId;
 
     /** @var list<mixed> $listBranches */
-    #[Api(list: APIListBranch::class)]
+    #[Required(list: APIListBranch::class)]
     public array $listBranches;
 
     /** @var value-of<Type> $type */
-    #[Api(enum: Type::class)]
+    #[Required(enum: Type::class)]
     public string $type;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?APIConnection $defaultBranch;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $defaultBranchName;
 
     /**

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Events;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Marketing\Events\ParticipationProperties\AttendanceState;
@@ -22,16 +22,16 @@ final class ParticipationBreakdown implements BaseModel
     /** @use SdkModel<ParticipationBreakdownShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public string $id;
 
-    #[Api]
+    #[Required]
     public ParticipationAssociations $associations;
 
-    #[Api]
+    #[Required]
     public \DateTimeInterface $createdAt;
 
-    #[Api]
+    #[Required]
     public ParticipationProperties $properties;
 
     /**

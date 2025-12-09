@@ -6,7 +6,8 @@ namespace HubspotSDK\Cms\MediaBridge;
 
 use HubspotSDK\Cms\MediaBridge\Property1\DataSensitivity;
 use HubspotSDK\Cms\MediaBridge\Property1\DateDisplayHint;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PropertyModificationMetadata;
@@ -47,89 +48,89 @@ final class Property1 implements BaseModel
     /** @use SdkModel<Property1Shape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public string $description;
 
-    #[Api]
+    #[Required]
     public string $fieldType;
 
-    #[Api]
+    #[Required]
     public string $groupName;
 
-    #[Api]
+    #[Required]
     public string $label;
 
-    #[Api]
+    #[Required]
     public string $name;
 
     /** @var list<Option1> $options */
-    #[Api(list: Option1::class)]
+    #[Required(list: Option1::class)]
     public array $options;
 
-    #[Api]
+    #[Required]
     public string $type;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $archived;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $archivedAt;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $calculated;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $calculationFormula;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $createdAt;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $createdUserId;
 
     /** @var value-of<DataSensitivity>|null $dataSensitivity */
-    #[Api(enum: DataSensitivity::class, optional: true)]
+    #[Optional(enum: DataSensitivity::class)]
     public ?string $dataSensitivity;
 
     /** @var value-of<DateDisplayHint>|null $dateDisplayHint */
-    #[Api(enum: DateDisplayHint::class, optional: true)]
+    #[Optional(enum: DateDisplayHint::class)]
     public ?string $dateDisplayHint;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $displayOrder;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $externalOptions;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $formField;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $hasUniqueValue;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $hidden;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $hubspotDefined;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?PropertyModificationMetadata $modificationMetadata;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $referencedObjectType;
 
     /** @var list<string>|null $sensitiveDataCategories */
-    #[Api(list: 'string', optional: true)]
+    #[Optional(list: 'string')]
     public ?array $sensitiveDataCategories;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $showCurrencySymbol;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $updatedAt;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $updatedUserId;
 
     /**

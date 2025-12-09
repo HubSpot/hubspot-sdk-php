@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Marketing\EmailSendStatusView\SendResult;
@@ -34,34 +35,34 @@ final class EmailSendStatusView implements BaseModel
      *
      * @var value-of<Status> $status
      */
-    #[Api(enum: Status::class)]
+    #[Required(enum: Status::class)]
     public string $status;
 
     /**
      * Identifier used to query the status of the send.
      */
-    #[Api]
+    #[Required]
     public string $statusId;
 
     /**
      * Time when the send was completed.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $completedAt;
 
     /**
      * The ID of a send event.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?EventIDView $eventId;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $message;
 
     /**
      * Time when the send was requested.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $requestedAt;
 
     /**
@@ -69,13 +70,13 @@ final class EmailSendStatusView implements BaseModel
      *
      * @var value-of<SendResult>|null $sendResult
      */
-    #[Api(enum: SendResult::class, optional: true)]
+    #[Optional(enum: SendResult::class)]
     public ?string $sendResult;
 
     /**
      * Time when the send began processing.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $startedAt;
 
     /**

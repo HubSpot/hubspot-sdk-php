@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\MediaBridge;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -18,10 +18,10 @@ final class ExternalOptionsMetaData implements BaseModel
     /** @use SdkModel<ExternalOptionsMetaDataShape> */
     use SdkModel;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?FilteringMetaData $filter;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $relatedObjectTypeId;
 
     public function __construct()

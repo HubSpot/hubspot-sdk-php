@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Settings\Currencies;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -21,19 +22,19 @@ final class ExchangeRateUpdateRequest implements BaseModel
     /**
      * A unique identifier for the exchange rate being updated.
      */
-    #[Api]
+    #[Required]
     public string $id;
 
     /**
      * The updated conversion rate between the to and from currency code of this exchange rate.
      */
-    #[Api]
+    #[Required]
     public float $conversionRate;
 
     /**
      * The date the exchange rate will be in effect.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $effectiveAt;
 
     /**

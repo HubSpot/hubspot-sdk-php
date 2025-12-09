@@ -5,7 +5,8 @@ declare(strict_types=1);
 namespace HubspotSDK\Cms\MediaBridge;
 
 use HubspotSDK\Cms\MediaBridge\Or1\Operator;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\MapOf;
@@ -24,21 +25,21 @@ final class Or1 implements BaseModel
     /** @use SdkModel<Or1Shape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public bool $enclosedInParentheses;
 
     /** @var value-of<Operator> $operator */
-    #[Api(enum: Operator::class)]
+    #[Required(enum: Operator::class)]
     public string $operator;
 
     /** @var list<array<string,mixed>>|null $inputs */
-    #[Api(list: new MapOf('mixed'), optional: true)]
+    #[Optional(list: new MapOf('mixed'))]
     public ?array $inputs;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $propertyName;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $value;
 
     /**

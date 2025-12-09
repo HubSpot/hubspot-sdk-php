@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Automation\Sequences;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -23,22 +24,22 @@ final class PublicSequenceLiteResponse implements BaseModel
     /** @use SdkModel<PublicSequenceLiteResponseShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public string $id;
 
-    #[Api]
+    #[Required]
     public \DateTimeInterface $createdAt;
 
-    #[Api]
+    #[Required]
     public string $name;
 
-    #[Api]
+    #[Required]
     public \DateTimeInterface $updatedAt;
 
-    #[Api]
+    #[Required]
     public string $userId;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $folderId;
 
     /**

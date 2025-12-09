@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Extensions\Cards;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Extensions\Cards\ActionHookActionBody\HTTPMethod;
@@ -24,13 +25,13 @@ final class TopLevelActions implements BaseModel
     use SdkModel;
 
     /** @var list<ActionHookActionBody|IFrameActionBody> $secondary */
-    #[Api(list: Secondary::class)]
+    #[Required(list: Secondary::class)]
     public array $secondary;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ActionHookActionBody|IFrameActionBody|null $primary;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?IFrameActionBody $settings;
 
     /**

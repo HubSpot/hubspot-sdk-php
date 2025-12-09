@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Events;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Marketing\Events\PropertyValue\DataSensitivity;
@@ -38,22 +39,22 @@ final class MarketingEventPublicReadResponse implements BaseModel
     /** @use SdkModel<MarketingEventPublicReadResponseShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public string $id;
 
     /**
      * The number of HubSpot contacts that attended this marketing event.
      */
-    #[Api]
+    #[Required]
     public int $attendees;
 
     /**
      * The number of HubSpot contacts that registered for this marketing event, but later cancelled their registration.
      */
-    #[Api]
+    #[Required]
     public int $cancellations;
 
-    #[Api]
+    #[Required]
     public \DateTimeInterface $createdAt;
 
     /**
@@ -62,82 +63,82 @@ final class MarketingEventPublicReadResponse implements BaseModel
      *
      * @var list<PropertyValue> $customProperties
      */
-    #[Api(list: PropertyValue::class)]
+    #[Required(list: PropertyValue::class)]
     public array $customProperties;
 
     /**
      * The name of the marketing event.
      */
-    #[Api]
+    #[Required]
     public string $eventName;
 
     /**
      * The name of the organizer of the marketing event.
      */
-    #[Api]
+    #[Required]
     public string $eventOrganizer;
 
     /**
      * The id of the marketing event in the external event application.
      */
-    #[Api]
+    #[Required]
     public string $externalEventId;
 
     /**
      * The number of HubSpot contacts that registered for this marketing event, but did not attend. This field only had a value when the event is over.
      */
-    #[Api]
+    #[Required]
     public int $noShows;
 
     /**
      * The number of HubSpot contacts that registered for this marketing event.
      */
-    #[Api]
+    #[Required]
     public int $registrants;
 
-    #[Api]
+    #[Required]
     public \DateTimeInterface $updatedAt;
 
     /**
      * The end date and time of the marketing event.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $endDateTime;
 
     /**
      * Indicates if the marketing event has been cancelled.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $eventCancelled;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $eventCompleted;
 
     /**
      * The description of the marketing event.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $eventDescription;
 
     /**
      * The type of the marketing event.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $eventType;
 
     /**
      * A URL in the external event application where the marketing event can be managed.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $eventUrl;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $objectId;
 
     /**
      * The start date and time of the marketing event.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $startDateTime;
 
     /**

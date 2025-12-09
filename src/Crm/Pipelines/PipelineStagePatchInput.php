@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Pipelines;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -32,25 +33,25 @@ final class PipelineStagePatchInput implements BaseModel
      *
      * @var array<string,string> $metadata
      */
-    #[Api(map: 'string')]
+    #[Required(map: 'string')]
     public array $metadata;
 
     /**
      * Whether the pipeline is archived.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $archived;
 
     /**
      * The order for displaying this pipeline stage. If two pipeline stages have a matching `displayOrder`, they will be sorted alphabetically by label.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $displayOrder;
 
     /**
      * A label used to organize pipeline stages in HubSpot's UI. Each pipeline stage's label must be unique within that pipeline.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $label;
 
     /**

@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Automation\Sequences;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -26,33 +27,33 @@ final class PublicSequenceResponse implements BaseModel
     /** @use SdkModel<PublicSequenceResponseShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public string $id;
 
-    #[Api]
+    #[Required]
     public \DateTimeInterface $createdAt;
 
     /** @var list<PublicSequenceStepDependencyResponse> $dependencies */
-    #[Api(list: PublicSequenceStepDependencyResponse::class)]
+    #[Required(list: PublicSequenceStepDependencyResponse::class)]
     public array $dependencies;
 
-    #[Api]
+    #[Required]
     public string $name;
 
     /** @var list<PublicSequenceStepResponse> $steps */
-    #[Api(list: PublicSequenceStepResponse::class)]
+    #[Required(list: PublicSequenceStepResponse::class)]
     public array $steps;
 
-    #[Api]
+    #[Required]
     public \DateTimeInterface $updatedAt;
 
-    #[Api]
+    #[Required]
     public string $userId;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $folderId;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?PublicSequenceSettingsResponse $settings;
 
     /**

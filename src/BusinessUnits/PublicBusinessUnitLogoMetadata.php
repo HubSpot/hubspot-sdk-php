@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\BusinessUnits;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -23,19 +23,19 @@ final class PublicBusinessUnitLogoMetadata implements BaseModel
     /**
      * The logo's alt text.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $logoAltText;
 
     /**
      * The logo's url.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $logoUrl;
 
     /**
      * The logo's resized url.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $resizedUrl;
 
     public function __construct()

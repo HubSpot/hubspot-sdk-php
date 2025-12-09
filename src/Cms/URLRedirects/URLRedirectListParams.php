@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\URLRedirects;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -36,37 +36,37 @@ final class URLRedirectListParams implements BaseModel
     /**
      * The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $after;
 
     /**
      * Whether to return only results that have been archived.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $archived;
 
     /**
      * Only return redirects created after this date.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $createdAfter;
 
     /**
      * Only return redirects created on exactly this date.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $createdAt;
 
     /**
      * Only return redirects created before this date.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $createdBefore;
 
     /**
      * Maximum number of result per page.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $limit;
 
     /**
@@ -74,25 +74,25 @@ final class URLRedirectListParams implements BaseModel
      *
      * @var list<string>|null $sort
      */
-    #[Api(list: 'string', optional: true)]
+    #[Optional(list: 'string')]
     public ?array $sort;
 
     /**
      * Only return redirects last updated after this date.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $updatedAfter;
 
     /**
      * Only return redirects last updated on exactly this date.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $updatedAt;
 
     /**
      * Only return redirects last updated before this date.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $updatedBefore;
 
     public function __construct()

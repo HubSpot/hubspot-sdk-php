@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Campaigns;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -17,7 +17,7 @@ final class PublicCampaignInput implements BaseModel
     use SdkModel;
 
     /** @var array<string,string> $properties */
-    #[Api(map: 'string')]
+    #[Required(map: 'string')]
     public array $properties;
 
     /**

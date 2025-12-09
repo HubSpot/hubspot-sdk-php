@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Campaigns;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -28,7 +28,7 @@ final class CampaignGetParams implements BaseModel
      *  End date to fetch asset metrics, formatted as YYYY-MM-DD. This date is used to fetch the metrics associated with the assets for a specified period.
      * If not provided, no asset metrics will be fetched.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $endDate;
 
     /**
@@ -36,14 +36,14 @@ final class CampaignGetParams implements BaseModel
      *
      * @var list<string>|null $properties
      */
-    #[Api(list: 'string', optional: true)]
+    #[Optional(list: 'string')]
     public ?array $properties;
 
     /**
      * Start date to fetch asset metrics, formatted as YYYY-MM-DD. This date is used to fetch the metrics associated with the assets for a specified period.
      * If not provided, no asset metrics will be fetched.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $startDate;
 
     public function __construct()

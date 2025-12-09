@@ -5,7 +5,8 @@ declare(strict_types=1);
 namespace HubspotSDK\Conversations;
 
 use HubspotSDK\Conversations\PublicThread\Status;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -33,50 +34,50 @@ final class PublicThread implements BaseModel
     /** @use SdkModel<PublicThreadShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public string $id;
 
-    #[Api]
+    #[Required]
     public bool $archived;
 
-    #[Api]
+    #[Required]
     public string $associatedContactId;
 
-    #[Api]
+    #[Required]
     public \DateTimeInterface $createdAt;
 
-    #[Api]
+    #[Required]
     public string $inboxId;
 
-    #[Api]
+    #[Required]
     public string $originalChannelAccountId;
 
-    #[Api]
+    #[Required]
     public string $originalChannelId;
 
-    #[Api]
+    #[Required]
     public bool $spam;
 
     /** @var value-of<Status> $status */
-    #[Api(enum: Status::class)]
+    #[Required(enum: Status::class)]
     public string $status;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $assignedTo;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $closedAt;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $latestMessageReceivedTimestamp;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $latestMessageSentTimestamp;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $latestMessageTimestamp;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?PublicThreadAssociations $threadAssociations;
 
     /**

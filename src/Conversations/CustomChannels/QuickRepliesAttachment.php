@@ -6,7 +6,7 @@ namespace HubspotSDK\Conversations\CustomChannels;
 
 use HubspotSDK\Conversations\CustomChannels\QuickRepliesAttachment\Type;
 use HubspotSDK\Conversations\QuickReply;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -21,11 +21,11 @@ final class QuickRepliesAttachment implements BaseModel
     use SdkModel;
 
     /** @var list<QuickReply> $quickReplies */
-    #[Api(list: QuickReply::class)]
+    #[Required(list: QuickReply::class)]
     public array $quickReplies;
 
     /** @var value-of<Type> $type */
-    #[Api(enum: Type::class)]
+    #[Required(enum: Type::class)]
     public string $type;
 
     /**

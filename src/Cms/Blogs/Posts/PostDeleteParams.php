@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\Blogs\Posts;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -25,7 +25,7 @@ final class PostDeleteParams implements BaseModel
     /**
      * Whether to return only results that have been deleted.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $archived;
 
     public function __construct()

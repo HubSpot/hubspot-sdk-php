@@ -6,7 +6,7 @@ namespace HubspotSDK\Cms\MediaBridge;
 
 use HubspotSDK\Cms\MediaBridge\Property1\DataSensitivity;
 use HubspotSDK\Cms\MediaBridge\Property1\DateDisplayHint;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PropertyModificationMetadata;
@@ -22,7 +22,7 @@ final class CollectionResponsePropertyNoPaging implements BaseModel
     use SdkModel;
 
     /** @var list<Property1> $results */
-    #[Api(list: Property1::class)]
+    #[Required(list: Property1::class)]
     public array $results;
 
     /**

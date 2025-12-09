@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Files;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\ErrorDetail;
@@ -33,13 +34,13 @@ final class FileActionResponse implements BaseModel
     /**
      * Time of completion of task.
      */
-    #[Api]
+    #[Required]
     public \DateTimeInterface $completedAt;
 
     /**
      * Timestamp of when the task was started.
      */
-    #[Api]
+    #[Required]
     public \DateTimeInterface $startedAt;
 
     /**
@@ -47,13 +48,13 @@ final class FileActionResponse implements BaseModel
      *
      * @var value-of<Status> $status
      */
-    #[Api(enum: Status::class)]
+    #[Required(enum: Status::class)]
     public string $status;
 
     /**
      * ID of the requested task.
      */
-    #[Api]
+    #[Required]
     public string $taskId;
 
     /**
@@ -61,7 +62,7 @@ final class FileActionResponse implements BaseModel
      *
      * @var list<StandardError>|null $errors
      */
-    #[Api(list: StandardError::class, optional: true)]
+    #[Optional(list: StandardError::class)]
     public ?array $errors;
 
     /**
@@ -69,25 +70,25 @@ final class FileActionResponse implements BaseModel
      *
      * @var array<string,string>|null $links
      */
-    #[Api(map: 'string', optional: true)]
+    #[Optional(map: 'string')]
     public ?array $links;
 
     /**
      * Number of errors resulting from the task.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $numErrors;
 
     /**
      * Timestamp of when the task was requested.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $requestedAt;
 
     /**
      * File.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?File $result;
 
     /**

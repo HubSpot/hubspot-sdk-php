@@ -5,7 +5,8 @@ declare(strict_types=1);
 namespace HubspotSDK\Cms\Pages;
 
 use HubspotSDK\Cms\Pages\BatchResponsePageWithErrors\Status;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\ErrorDetail;
@@ -33,7 +34,7 @@ final class BatchResponsePageWithErrors implements BaseModel
     /**
      * Time of batch operation completion.
      */
-    #[Api]
+    #[Required]
     public \DateTimeInterface $completedAt;
 
     /**
@@ -41,13 +42,13 @@ final class BatchResponsePageWithErrors implements BaseModel
      *
      * @var list<mixed> $results
      */
-    #[Api(list: Page::class)]
+    #[Required(list: Page::class)]
     public array $results;
 
     /**
      * Time of batch operation start.
      */
-    #[Api]
+    #[Required]
     public \DateTimeInterface $startedAt;
 
     /**
@@ -55,7 +56,7 @@ final class BatchResponsePageWithErrors implements BaseModel
      *
      * @var value-of<Status> $status
      */
-    #[Api(enum: Status::class)]
+    #[Required(enum: Status::class)]
     public string $status;
 
     /**
@@ -63,7 +64,7 @@ final class BatchResponsePageWithErrors implements BaseModel
      *
      * @var list<StandardError>|null $errors
      */
-    #[Api(list: StandardError::class, optional: true)]
+    #[Optional(list: StandardError::class)]
     public ?array $errors;
 
     /**
@@ -71,19 +72,19 @@ final class BatchResponsePageWithErrors implements BaseModel
      *
      * @var array<string,string>|null $links
      */
-    #[Api(map: 'string', optional: true)]
+    #[Optional(map: 'string')]
     public ?array $links;
 
     /**
      * Number of errors.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $numErrors;
 
     /**
      * Time of batch operation request.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $requestedAt;
 
     /**

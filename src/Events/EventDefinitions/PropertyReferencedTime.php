@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Events\EventDefinitions;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Events\EventDefinitions\PropertyReferencedTime\ReferenceType;
@@ -25,22 +25,22 @@ final class PropertyReferencedTime implements BaseModel
     /** @use SdkModel<PropertyReferencedTimeShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public string $property;
 
     /** @var value-of<ReferenceType> $referenceType */
-    #[Api(enum: ReferenceType::class)]
+    #[Required(enum: ReferenceType::class)]
     public string $referenceType;
 
     /** @var value-of<TimeType> $timeType */
-    #[Api(enum: TimeType::class)]
+    #[Required(enum: TimeType::class)]
     public string $timeType;
 
     /** @var value-of<TimezoneSource> $timezoneSource */
-    #[Api(enum: TimezoneSource::class)]
+    #[Required(enum: TimezoneSource::class)]
     public string $timezoneSource;
 
-    #[Api]
+    #[Required]
     public string $zoneId;
 
     /**

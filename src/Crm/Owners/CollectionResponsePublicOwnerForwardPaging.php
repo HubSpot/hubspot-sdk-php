@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Owners;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Owners\PublicOwner\Type;
@@ -23,10 +24,10 @@ final class CollectionResponsePublicOwnerForwardPaging implements BaseModel
     use SdkModel;
 
     /** @var list<PublicOwner> $results */
-    #[Api(list: PublicOwner::class)]
+    #[Required(list: PublicOwner::class)]
     public array $results;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?ForwardPaging $paging;
 
     /**

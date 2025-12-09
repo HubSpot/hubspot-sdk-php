@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Emails;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -21,19 +22,19 @@ final class EmailCloneRequestVNext implements BaseModel
     /**
      * The unique identifier of the email to be cloned.
      */
-    #[Api]
+    #[Required]
     public string $id;
 
     /**
      * The name to assign to the cloned email.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $cloneName;
 
     /**
      * The language code for the cloned email, such as 'en' for English.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $language;
 
     /**

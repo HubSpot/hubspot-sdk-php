@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Limits;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Objects\Schemas\ObjectsSchemasObjectTypeDefinition;
@@ -20,7 +20,7 @@ final class CollectionResponseAssociationLabelLimitResponseNoPaging implements B
     use SdkModel;
 
     /** @var list<AssociationLabelLimitResponse> $results */
-    #[Api(list: AssociationLabelLimitResponse::class)]
+    #[Required(list: AssociationLabelLimitResponse::class)]
     public array $results;
 
     /**

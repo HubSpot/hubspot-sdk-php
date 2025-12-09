@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Events\EventDefinitions;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Events\EventDefinitions\AssociationDefinition\Cardinality;
@@ -43,52 +44,52 @@ final class ExternalBehavioralEventTypeDefinition implements BaseModel
     /** @use SdkModel<ExternalBehavioralEventTypeDefinitionShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public string $id;
 
-    #[Api]
+    #[Required]
     public bool $archived;
 
     /** @var list<AssociationDefinition> $associations */
-    #[Api(list: AssociationDefinition::class)]
+    #[Required(list: AssociationDefinition::class)]
     public array $associations;
 
-    #[Api]
+    #[Required]
     public string $fullyQualifiedName;
 
-    #[Api]
+    #[Required]
     public BehavioralEventTypeDefinitionLabels $labels;
 
-    #[Api]
+    #[Required]
     public string $name;
 
-    #[Api]
+    #[Required]
     public string $objectTypeId;
 
     /** @var list<Property> $properties */
-    #[Api(list: Property::class)]
+    #[Required(list: Property::class)]
     public array $properties;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?ComboEventRuleBranch $comboEventRules;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $createdAt;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $createdUserId;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $description;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $primaryObject;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $primaryObjectId;
 
     /** @var value-of<TrackingType>|null $trackingType */
-    #[Api(enum: TrackingType::class, optional: true)]
+    #[Optional(enum: TrackingType::class)]
     public ?string $trackingType;
 
     /**

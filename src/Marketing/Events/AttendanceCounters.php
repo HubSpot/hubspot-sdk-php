@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Events;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -18,16 +18,16 @@ final class AttendanceCounters implements BaseModel
     /** @use SdkModel<AttendanceCountersShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public int $attended;
 
-    #[Api]
+    #[Required]
     public int $cancelled;
 
-    #[Api]
+    #[Required]
     public int $noShows;
 
-    #[Api]
+    #[Required]
     public int $registered;
 
     /**

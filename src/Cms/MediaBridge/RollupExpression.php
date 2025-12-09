@@ -6,7 +6,8 @@ namespace HubspotSDK\Cms\MediaBridge;
 
 use HubspotSDK\AssociationSpec;
 use HubspotSDK\AssociationSpec\AssociationCategory;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -28,29 +29,29 @@ final class RollupExpression implements BaseModel
     use SdkModel;
 
     /** @var list<AssociationSpec> $associationTypes */
-    #[Api(list: AssociationSpec::class)]
+    #[Required(list: AssociationSpec::class)]
     public array $associationTypes;
 
-    #[Api]
+    #[Required]
     public string $rollupOperator;
 
-    #[Api]
+    #[Required]
     public string $sourceObjectTypeId;
 
-    #[Api]
+    #[Required]
     public string $sourcePropertyName;
 
     /** @var array<string,mixed>|null $conditionalExpression */
-    #[Api(map: 'mixed', optional: true)]
+    #[Optional(map: 'mixed')]
     public ?array $conditionalExpression;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $conditionalFormula;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $emptyRollupValue;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $sourceCompareByPropertyName;
 
     /**

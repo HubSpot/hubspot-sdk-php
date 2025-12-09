@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Associations\Batch;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -25,11 +25,11 @@ final class BatchGetParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    #[Api]
+    #[Required]
     public string $fromObjectType;
 
     /** @var list<PublicObjectID> $inputs */
-    #[Api(list: PublicObjectID::class)]
+    #[Required(list: PublicObjectID::class)]
     public array $inputs;
 
     /**

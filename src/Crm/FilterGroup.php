@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Filter\Operator;
@@ -18,7 +18,7 @@ final class FilterGroup implements BaseModel
     use SdkModel;
 
     /** @var list<Filter> $filters */
-    #[Api(list: Filter::class)]
+    #[Required(list: Filter::class)]
     public array $filters;
 
     /**

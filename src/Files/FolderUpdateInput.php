@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Files;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -23,13 +23,13 @@ final class FolderUpdateInput implements BaseModel
     /**
      * New name. If specified the folder's name and fullPath will change. All children of the folder will be updated accordingly.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $name;
 
     /**
      * New parent folderId. If changed, the folder and all it's children will be moved into the specified folder. parentFolderId and parentFolderPath cannot be specified at the same time.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $parentFolderId;
 
     public function __construct()

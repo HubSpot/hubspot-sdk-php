@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\BatchResponseSimplePublicObject\Status;
@@ -33,17 +34,17 @@ final class BatchResponseSimplePublicObject implements BaseModel
     /**
      * The timestamp when the batch processing was completed, in ISO 8601 format.
      */
-    #[Api]
+    #[Required]
     public \DateTimeInterface $completedAt;
 
     /** @var list<SimplePublicObject> $results */
-    #[Api(list: SimplePublicObject::class)]
+    #[Required(list: SimplePublicObject::class)]
     public array $results;
 
     /**
      * The timestamp when the batch processing began, in ISO 8601 format.
      */
-    #[Api]
+    #[Required]
     public \DateTimeInterface $startedAt;
 
     /**
@@ -51,11 +52,11 @@ final class BatchResponseSimplePublicObject implements BaseModel
      *
      * @var value-of<Status> $status
      */
-    #[Api(enum: Status::class)]
+    #[Required(enum: Status::class)]
     public string $status;
 
     /** @var list<StandardError>|null $errors */
-    #[Api(list: StandardError::class, optional: true)]
+    #[Optional(list: StandardError::class)]
     public ?array $errors;
 
     /**
@@ -63,19 +64,19 @@ final class BatchResponseSimplePublicObject implements BaseModel
      *
      * @var array<string,string>|null $links
      */
-    #[Api(map: 'string', optional: true)]
+    #[Optional(map: 'string')]
     public ?array $links;
 
     /**
      * The number of errors encountered during the batch processing.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $numErrors;
 
     /**
      * The timestamp when the batch request was initially made, in ISO 8601 format.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $requestedAt;
 
     /**

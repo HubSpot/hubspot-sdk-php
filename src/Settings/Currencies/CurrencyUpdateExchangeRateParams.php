@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Settings\Currencies;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -27,13 +28,13 @@ final class CurrencyUpdateExchangeRateParams implements BaseModel
     /**
      * The updated conversion rate between the to and from currency code of this exchange rate.
      */
-    #[Api]
+    #[Required]
     public float $conversionRate;
 
     /**
      * The date the exchange rate is in effect.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $effectiveAt;
 
     /**

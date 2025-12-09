@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Emails;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -25,13 +25,13 @@ final class CollectionResponseWithTotalEmailStatisticIntervalNoPaging implements
      *
      * @var list<EmailStatisticInterval> $results
      */
-    #[Api(list: EmailStatisticInterval::class)]
+    #[Required(list: EmailStatisticInterval::class)]
     public array $results;
 
     /**
      * Total number of objects.
      */
-    #[Api]
+    #[Required]
     public int $total;
 
     /**

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Events;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -23,7 +23,7 @@ final class VisibleExternalEventTypeNames implements BaseModel
      *
      * @var list<string> $eventTypes
      */
-    #[Api(list: 'string')]
+    #[Required(list: 'string')]
     public array $eventTypes;
 
     /**

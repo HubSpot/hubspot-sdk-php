@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Limits;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -22,25 +22,25 @@ final class CustomPropertyLimitResponse implements BaseModel
     use SdkModel;
 
     /** @var list<LimitAndUsageForObjectType> $byObjectType */
-    #[Api(list: LimitAndUsageForObjectType::class)]
+    #[Required(list: LimitAndUsageForObjectType::class)]
     public array $byObjectType;
 
     /**
      * The total limit for custom properties across all objects.
      */
-    #[Api]
+    #[Required]
     public int $overallLimit;
 
     /**
      * The percentage of the overall custom property limit that has been used.
      */
-    #[Api]
+    #[Required]
     public float $overallPercentage;
 
     /**
      * The total number of custom properties currently in use across all objects.
      */
-    #[Api]
+    #[Required]
     public int $overallUsage;
 
     /**

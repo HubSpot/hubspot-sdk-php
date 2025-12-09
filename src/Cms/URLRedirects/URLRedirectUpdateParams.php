@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\URLRedirects;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -39,73 +40,73 @@ final class URLRedirectUpdateParams implements BaseModel
     /**
      * The unique ID of this URL redirect.
      */
-    #[Api]
+    #[Required]
     public string $id;
 
     /**
      * The destination URL, where the target URL should be redirected if it matches the `routePrefix`.
      */
-    #[Api]
+    #[Required]
     public string $destination;
 
     /**
      * Whether the `routePrefix` should match on the entire URL, including the domain.
      */
-    #[Api]
+    #[Required]
     public bool $isMatchFullUrl;
 
     /**
      * Whether the `routePrefix` should match on the entire URL path, including the query string.
      */
-    #[Api]
+    #[Required]
     public bool $isMatchQueryString;
 
     /**
      * Whether the URL redirect mapping should apply only if a live page on the URL isn't found. If False, the URL redirect mapping will take precedence over any existing page.
      */
-    #[Api]
+    #[Required]
     public bool $isOnlyAfterNotFound;
 
     /**
      * Whether the `routePrefix` should match based on pattern.
      */
-    #[Api]
+    #[Required]
     public bool $isPattern;
 
     /**
      * Whether the `routePrefix` should match both HTTP and HTTPS protocols.
      */
-    #[Api]
+    #[Required]
     public bool $isProtocolAgnostic;
 
     /**
      * Whether a trailing slash will be ignored.
      */
-    #[Api]
+    #[Required]
     public bool $isTrailingSlashOptional;
 
     /**
      * Used to prioritize URL redirection. If a given URL matches more than one redirect, the one with the **lower** precedence will be used.
      */
-    #[Api]
+    #[Required]
     public int $precedence;
 
     /**
      * The type of redirect to create. Options include: 301 (permanent), 302 (temporary), or 305 (proxy). Find more details [here](https://knowledge.hubspot.com/cos-general/how-to-redirect-a-hubspot-page).
      */
-    #[Api]
+    #[Required]
     public int $redirectStyle;
 
     /**
      * The target incoming URL, path, or pattern to match for redirection.
      */
-    #[Api]
+    #[Required]
     public string $routePrefix;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $created;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $updated;
 
     /**

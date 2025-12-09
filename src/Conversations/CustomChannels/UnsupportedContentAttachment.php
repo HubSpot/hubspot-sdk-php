@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Conversations\CustomChannels;
 
 use HubspotSDK\Conversations\CustomChannels\UnsupportedContentAttachment\Type;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -18,7 +18,7 @@ final class UnsupportedContentAttachment implements BaseModel
     use SdkModel;
 
     /** @var value-of<Type> $type */
-    #[Api(enum: Type::class)]
+    #[Required(enum: Type::class)]
     public string $type;
 
     /**

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\MediaBridge;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -20,10 +20,10 @@ final class OptionDecoratorsExtensionData implements BaseModel
     use SdkModel;
 
     /** @var array<string,OptionDecorations> $optionDecorators */
-    #[Api(map: OptionDecorations::class)]
+    #[Required(map: OptionDecorations::class)]
     public array $optionDecorators;
 
-    #[Api]
+    #[Required]
     public string $optionDecoratorStyle;
 
     /**

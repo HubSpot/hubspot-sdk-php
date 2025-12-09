@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Extensions\Cards;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Extensions\Cards\ActionHookActionBody\HTTPMethod;
@@ -26,21 +27,21 @@ final class IntegratorObjectResult implements BaseModel
     /** @use SdkModel<IntegratorObjectResultShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public string $id;
 
     /** @var list<ActionHookActionBody|IFrameActionBody> $actions */
-    #[Api(list: Action::class)]
+    #[Required(list: Action::class)]
     public array $actions;
 
-    #[Api]
+    #[Required]
     public string $title;
 
     /** @var list<ObjectToken> $tokens */
-    #[Api(list: ObjectToken::class)]
+    #[Required(list: ObjectToken::class)]
     public array $tokens;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $linkUrl;
 
     /**

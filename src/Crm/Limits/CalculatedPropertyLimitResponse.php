@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Limits;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -22,25 +22,25 @@ final class CalculatedPropertyLimitResponse implements BaseModel
     use SdkModel;
 
     /** @var list<UsageForObjectType> $byObjectType */
-    #[Api(list: UsageForObjectType::class)]
+    #[Required(list: UsageForObjectType::class)]
     public array $byObjectType;
 
     /**
      * The maximum number of calculated properties allowed.
      */
-    #[Api]
+    #[Required]
     public int $overallLimit;
 
     /**
      * The percentage of the overall limit that is currently being used for calculated properties.
      */
-    #[Api]
+    #[Required]
     public float $overallPercentage;
 
     /**
      * The total number of calculated properties currently in use.
      */
-    #[Api]
+    #[Required]
     public int $overallUsage;
 
     /**

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Webhooks;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -16,10 +16,10 @@ final class SubscriptionBatchUpdateRequest implements BaseModel
     /** @use SdkModel<SubscriptionBatchUpdateRequestShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public int $id;
 
-    #[Api]
+    #[Required]
     public bool $active;
 
     /**

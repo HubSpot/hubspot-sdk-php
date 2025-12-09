@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Events;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -26,31 +26,31 @@ final class ExternalUnifiedEvent implements BaseModel
     /**
      * A unique identifier for the event.
      */
-    #[Api]
+    #[Required]
     public string $id;
 
     /**
      * The format of the `eventType` string is `ae{appId}_{eventTypeLabel}`, `pe{portalId}_{eventTypeLabel}`, or just `e_{eventTypeLabel}` for HubSpot events.
      */
-    #[Api]
+    #[Required]
     public string $eventType;
 
     /**
      * The objectId of the object which did the event.
      */
-    #[Api]
+    #[Required]
     public string $objectId;
 
     /**
      * The objectType for the object which did the event.
      */
-    #[Api]
+    #[Required]
     public string $objectType;
 
     /**
      * An ISO 8601 timestamp when the event occurred.
      */
-    #[Api]
+    #[Required]
     public \DateTimeInterface $occurredAt;
 
     /**
@@ -58,7 +58,7 @@ final class ExternalUnifiedEvent implements BaseModel
      *
      * @var array<string,string> $properties
      */
-    #[Api(map: 'string')]
+    #[Required(map: 'string')]
     public array $properties;
 
     /**

@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Timeline\Tokens;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -31,22 +32,22 @@ final class TokenUpdateParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    #[Api]
+    #[Required]
     public int $appId;
 
-    #[Api]
+    #[Required]
     public string $eventTemplateId;
 
     /**
      * Used for list segmentation and reporting.
      */
-    #[Api]
+    #[Required]
     public string $label;
 
     /**
      * The name of the CRM object property. This will populate the CRM object property associated with the event. With enough of these, you can fully build CRM objects via the Timeline API.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $objectPropertyName;
 
     /**
@@ -54,7 +55,7 @@ final class TokenUpdateParams implements BaseModel
      *
      * @var list<TimelineEventTemplateTokenOption>|null $options
      */
-    #[Api(list: TimelineEventTemplateTokenOption::class, optional: true)]
+    #[Optional(list: TimelineEventTemplateTokenOption::class)]
     public ?array $options;
 
     /**

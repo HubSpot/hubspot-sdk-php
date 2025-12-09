@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Exports;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Filter;
@@ -25,11 +26,11 @@ final class PublicCrmSearchRequest implements BaseModel
     use SdkModel;
 
     /** @var list<FilterGroup> $filterGroups */
-    #[Api(list: FilterGroup::class)]
+    #[Required(list: FilterGroup::class)]
     public array $filterGroups;
 
     /** @var list<Filter> $filters */
-    #[Api(list: Filter::class)]
+    #[Required(list: Filter::class)]
     public array $filters;
 
     /**
@@ -37,13 +38,13 @@ final class PublicCrmSearchRequest implements BaseModel
      *
      * @var list<string> $sorts
      */
-    #[Api(list: 'string')]
+    #[Required(list: 'string')]
     public array $sorts;
 
     /**
      * The search query string, to filter CRM records.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $query;
 
     /**

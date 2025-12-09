@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Cms\MediaBridge\Properties;
 
 use HubspotSDK\Cms\MediaBridge\Properties\PropertyGetBatchParams\DataSensitivity;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -29,18 +29,18 @@ final class PropertyGetBatchParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    #[Api]
+    #[Required]
     public int $appId;
 
-    #[Api]
+    #[Required]
     public bool $archived;
 
     /** @var value-of<DataSensitivity> $dataSensitivity */
-    #[Api(enum: DataSensitivity::class)]
+    #[Required(enum: DataSensitivity::class)]
     public string $dataSensitivity;
 
     /** @var list<PropertyName> $inputs */
-    #[Api(list: PropertyName::class)]
+    #[Required(list: PropertyName::class)]
     public array $inputs;
 
     /**

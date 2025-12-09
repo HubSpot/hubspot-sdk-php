@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Conversations;
 
 use HubspotSDK\Conversations\EmailActor\Type;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -19,14 +19,14 @@ final class EmailActor implements BaseModel
     /** @use SdkModel<EmailActorShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public string $id;
 
-    #[Api]
+    #[Required]
     public string $email;
 
     /** @var value-of<Type> $type */
-    #[Api(enum: Type::class)]
+    #[Required(enum: Type::class)]
     public string $type;
 
     /**

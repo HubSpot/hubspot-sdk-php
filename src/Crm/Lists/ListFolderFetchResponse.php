@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Lists;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -16,7 +16,7 @@ final class ListFolderFetchResponse implements BaseModel
     /** @use SdkModel<ListFolderFetchResponseShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public PublicListFolder $folder;
 
     /**

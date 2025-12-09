@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Lists;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -19,10 +20,10 @@ final class APICollectionResponseRecordListMembershipNoPaging implements BaseMod
     use SdkModel;
 
     /** @var list<RecordListMembership> $results */
-    #[Api(list: RecordListMembership::class)]
+    #[Required(list: RecordListMembership::class)]
     public array $results;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $total;
 
     /**

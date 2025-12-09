@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Extensions\Cards;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -36,25 +36,25 @@ final class CardCreateParams implements BaseModel
     /**
      * Configuration for custom user actions on cards.
      */
-    #[Api]
+    #[Required]
     public CardActions $actions;
 
     /**
      * Configuration for displayed info on a card.
      */
-    #[Api]
+    #[Required]
     public CardDisplayBody $display;
 
     /**
      * Configuration for this card's data fetch request.
      */
-    #[Api]
+    #[Required]
     public CardFetchBody $fetch;
 
     /**
      * The top-level title for this card. Displayed to users in the CRM UI.
      */
-    #[Api]
+    #[Required]
     public string $title;
 
     /**

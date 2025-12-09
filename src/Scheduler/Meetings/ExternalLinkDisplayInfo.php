@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Scheduler\Meetings;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -21,16 +21,16 @@ final class ExternalLinkDisplayInfo implements BaseModel
     /** @use SdkModel<ExternalLinkDisplayInfoShape> */
     use SdkModel;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $avatar;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $companyAvatar;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $headline;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $publicDisplayAvatarOption;
 
     public function __construct()

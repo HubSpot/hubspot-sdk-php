@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Forms;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Marketing\Forms\LegalConsentOptionsImplicitConsentToProcess\Type;
@@ -24,20 +25,20 @@ final class LegalConsentOptionsImplicitConsentToProcess implements BaseModel
     use SdkModel;
 
     /** @var list<LegalConsentCheckbox> $communicationsCheckboxes */
-    #[Api(list: LegalConsentCheckbox::class)]
+    #[Required(list: LegalConsentCheckbox::class)]
     public array $communicationsCheckboxes;
 
-    #[Api]
+    #[Required]
     public string $privacyText;
 
     /** @var value-of<Type> $type */
-    #[Api(enum: Type::class)]
+    #[Required(enum: Type::class)]
     public string $type;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $communicationConsentText;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $consentToProcessText;
 
     /**

@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Campaigns\Assets;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -29,35 +30,35 @@ final class AssetListParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    #[Api]
+    #[Required]
     public string $campaignGuid;
 
     /**
      * A cursor for pagination. If provided, the results will start after the given cursor.
      * Example: NTI1Cg%3D%3D.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $after;
 
     /**
      * End date to fetch asset metrics, formatted as YYYY-MM-DD. This date is used to fetch the metrics associated with the assets for a specified period.
      * If not provided, no asset metrics will be fetched.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $endDate;
 
     /**
      * The maximum number of results to return.
      * Default: 10.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $limit;
 
     /**
      * Start date to fetch asset metrics, formatted as YYYY-MM-DD. This date is used to fetch the metrics associated with the assets for a specified period.
      * If not provided, no asset metrics will be fetched.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $startDate;
 
     /**

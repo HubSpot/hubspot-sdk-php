@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Forms;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -25,13 +25,13 @@ final class EmailFieldValidation implements BaseModel
      *
      * @var list<string> $blockedEmailDomains
      */
-    #[Api(list: 'string')]
+    #[Required(list: 'string')]
     public array $blockedEmailDomains;
 
     /**
      * Whether to block the free email providers.
      */
-    #[Api]
+    #[Required]
     public bool $useDefaultBlockList;
 
     /**

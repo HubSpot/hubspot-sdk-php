@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Limits;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -21,19 +21,19 @@ final class CustomObjectLimitResponse implements BaseModel
     /**
      * The maximum number of custom objects allowed.
      */
-    #[Api]
+    #[Required]
     public int $limit;
 
     /**
      * The percentage of the custom object limit that is currently used.
      */
-    #[Api]
+    #[Required]
     public float $percentage;
 
     /**
      * The current number of custom objects used.
      */
-    #[Api]
+    #[Required]
     public int $usage;
 
     /**

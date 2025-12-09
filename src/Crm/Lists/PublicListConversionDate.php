@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Lists;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Lists\PublicListConversionDate\ConversionType;
@@ -20,16 +20,16 @@ final class PublicListConversionDate implements BaseModel
     use SdkModel;
 
     /** @var value-of<ConversionType> $conversionType */
-    #[Api(enum: ConversionType::class)]
+    #[Required(enum: ConversionType::class)]
     public string $conversionType;
 
-    #[Api]
+    #[Required]
     public int $day;
 
-    #[Api]
+    #[Required]
     public int $month;
 
-    #[Api]
+    #[Required]
     public int $year;
 
     /**

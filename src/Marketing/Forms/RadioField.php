@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Forms;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Marketing\Forms\RadioField\FieldType;
@@ -36,7 +37,7 @@ final class RadioField implements BaseModel
      *
      * @var list<string> $defaultValues
      */
-    #[Api(list: 'string')]
+    #[Required(list: 'string')]
     public array $defaultValues;
 
     /**
@@ -44,7 +45,7 @@ final class RadioField implements BaseModel
      *
      * @var list<mixed> $dependentFields
      */
-    #[Api(list: DependentField::class)]
+    #[Required(list: DependentField::class)]
     public array $dependentFields;
 
     /**
@@ -52,31 +53,31 @@ final class RadioField implements BaseModel
      *
      * @var value-of<FieldType> $fieldType
      */
-    #[Api(enum: FieldType::class)]
+    #[Required(enum: FieldType::class)]
     public string $fieldType;
 
     /**
      * Whether a field should be hidden or not. Hidden fields won't appear on the form, but can be used to pass a value to a property without requiring the customer to fill it in.
      */
-    #[Api]
+    #[Required]
     public bool $hidden;
 
     /**
      * The main label for the form field.
      */
-    #[Api]
+    #[Required]
     public string $label;
 
     /**
      * The identifier of the field. In combination with the object type ID, it must be unique.
      */
-    #[Api]
+    #[Required]
     public string $name;
 
     /**
      * A unique ID for this field's CRM object type. For example a CONTACT field will have the object type ID 0-1.
      */
-    #[Api]
+    #[Required]
     public string $objectTypeId;
 
     /**
@@ -84,25 +85,25 @@ final class RadioField implements BaseModel
      *
      * @var list<EnumeratedFieldOption> $options
      */
-    #[Api(list: EnumeratedFieldOption::class)]
+    #[Required(list: EnumeratedFieldOption::class)]
     public array $options;
 
     /**
      * Whether a value for this field is required when submitting the form.
      */
-    #[Api]
+    #[Required]
     public bool $required;
 
     /**
      * Additional text helping the customer to complete the field.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $description;
 
     /**
      * The prompt text showing when the field isn't filled in.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $placeholder;
 
     /**

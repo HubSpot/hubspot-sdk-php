@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Scheduler\Meetings;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Scheduler\Meetings\ExternalLegalConsentOptions\LegitimateInterestLegalBasis;
@@ -29,36 +30,36 @@ final class ExternalLegalConsentOptions implements BaseModel
     use SdkModel;
 
     /** @var list<ExternalCommunicationConsentCheckbox> $communicationConsentCheckboxes */
-    #[Api(list: ExternalCommunicationConsentCheckbox::class)]
+    #[Required(list: ExternalCommunicationConsentCheckbox::class)]
     public array $communicationConsentCheckboxes;
 
-    #[Api]
+    #[Required]
     public string $communicationConsentText;
 
-    #[Api]
+    #[Required]
     public bool $isLegitimateInterest;
 
     /** @var list<int> $legitimateInterestSubscriptionTypes */
-    #[Api(list: 'int')]
+    #[Required(list: 'int')]
     public array $legitimateInterestSubscriptionTypes;
 
-    #[Api]
+    #[Required]
     public string $privacyPolicyText;
 
-    #[Api]
+    #[Required]
     public string $processingConsentCheckboxLabel;
 
-    #[Api]
+    #[Required]
     public string $processingConsentFooterText;
 
-    #[Api]
+    #[Required]
     public string $processingConsentText;
 
-    #[Api]
+    #[Required]
     public string $processingConsentType;
 
     /** @var value-of<LegitimateInterestLegalBasis>|null $legitimateInterestLegalBasis */
-    #[Api(enum: LegitimateInterestLegalBasis::class, optional: true)]
+    #[Optional(enum: LegitimateInterestLegalBasis::class)]
     public ?string $legitimateInterestLegalBasis;
 
     /**

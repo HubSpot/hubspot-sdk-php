@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Campaigns\Reports;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -28,14 +28,14 @@ final class ReportGetAttributionMetricsParams implements BaseModel
      * End date for the report data, formatted as YYYY-MM-DD.
      * Default value: Current date.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $endDate;
 
     /**
      * The start date for the report data, formatted as YYYY-MM-DD.
      * Default value: 2006-01-01.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $startDate;
 
     public function __construct()

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -18,13 +18,13 @@ final class BackgroundImage implements BaseModel
     /** @use SdkModel<BackgroundImageShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public string $backgroundPosition;
 
-    #[Api]
+    #[Required]
     public string $backgroundSize;
 
-    #[Api]
+    #[Required]
     public string $imageUrl;
 
     /**

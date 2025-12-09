@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Pipelines;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -23,19 +23,19 @@ final class PipelinePatchInput implements BaseModel
     /**
      * Whether the pipeline is archived. This property should only be provided when restoring an archived pipeline. If it's provided in any other call, the request will fail and a `400 Bad Request` will be returned.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $archived;
 
     /**
      * The order for displaying this pipeline. If two pipelines have a matching `displayOrder`, they will be sorted alphabetically by label.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $displayOrder;
 
     /**
      * A unique label used to organize pipelines in HubSpot's UI.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $label;
 
     public function __construct()

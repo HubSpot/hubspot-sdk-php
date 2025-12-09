@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Emails\Statistics;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -33,13 +33,13 @@ final class StatisticGetHistogramParams implements BaseModel
      *
      * @var list<int>|null $emailIds
      */
-    #[Api(list: 'int', optional: true)]
+    #[Optional(list: 'int')]
     public ?array $emailIds;
 
     /**
      * The end timestamp of the time span, in ISO8601 representation.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $endTimestamp;
 
     /**
@@ -47,13 +47,13 @@ final class StatisticGetHistogramParams implements BaseModel
      *
      * @var value-of<Interval>|null $interval
      */
-    #[Api(enum: Interval::class, optional: true)]
+    #[Optional(enum: Interval::class)]
     public ?string $interval;
 
     /**
      * The start timestamp of the time span, in ISO8601 representation.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $startTimestamp;
 
     public function __construct()

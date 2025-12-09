@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Events\EventDefinitions;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\OptionInput;
@@ -24,13 +24,13 @@ final class ExternalBehavioralEventPropertyDefinitionPatch implements BaseModel
     /**
      * A description of the property that will be shown as help text in HubSpot.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $description;
 
     /**
      * Human readable label for the property. Used in HubSpot UI.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $label;
 
     /**
@@ -38,7 +38,7 @@ final class ExternalBehavioralEventPropertyDefinitionPatch implements BaseModel
      *
      * @var list<OptionInput>|null $options
      */
-    #[Api(list: OptionInput::class, optional: true)]
+    #[Optional(list: OptionInput::class)]
     public ?array $options;
 
     public function __construct()

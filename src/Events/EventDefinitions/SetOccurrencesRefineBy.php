@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Events\EventDefinitions;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Events\EventDefinitions\SetOccurrencesRefineBy\SetType;
@@ -21,11 +21,11 @@ final class SetOccurrencesRefineBy implements BaseModel
     use SdkModel;
 
     /** @var value-of<SetType> $setType */
-    #[Api(enum: SetType::class)]
+    #[Required(enum: SetType::class)]
     public string $setType;
 
     /** @var value-of<Type> $type */
-    #[Api(enum: Type::class)]
+    #[Required(enum: Type::class)]
     public string $type;
 
     /**

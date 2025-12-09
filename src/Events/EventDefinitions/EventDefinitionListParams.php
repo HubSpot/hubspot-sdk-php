@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Events\EventDefinitions;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -31,25 +31,25 @@ final class EventDefinitionListParams implements BaseModel
     /**
      * The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $after;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $includeProperties;
 
     /**
      * The maximum number of results to display per page.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $limit;
 
     /**
      * Characters in the event name that the user is searching for. This search is a naive “contains” search, no fuzzy matching is done.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $searchString;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $sortOrder;
 
     public function __construct()

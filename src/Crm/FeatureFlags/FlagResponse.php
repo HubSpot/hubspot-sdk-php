@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\FeatureFlags;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\FeatureFlags\FlagResponse\DefaultState;
@@ -23,18 +24,18 @@ final class FlagResponse implements BaseModel
     /** @use SdkModel<FlagResponseShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public int $appId;
 
     /** @var value-of<DefaultState> $defaultState */
-    #[Api(enum: DefaultState::class)]
+    #[Required(enum: DefaultState::class)]
     public string $defaultState;
 
-    #[Api]
+    #[Required]
     public string $flagName;
 
     /** @var value-of<OverrideState>|null $overrideState */
-    #[Api(enum: OverrideState::class, optional: true)]
+    #[Optional(enum: OverrideState::class)]
     public ?string $overrideState;
 
     /**

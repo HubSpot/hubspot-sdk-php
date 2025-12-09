@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\Pages\LandingPages;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -25,7 +25,7 @@ final class LandingPageDetachFromLangGroupParams implements BaseModel
     /**
      * ID of the object to remove from a multi-language group.
      */
-    #[Api]
+    #[Required]
     public string $id;
 
     /**

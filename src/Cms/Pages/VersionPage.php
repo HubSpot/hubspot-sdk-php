@@ -8,7 +8,7 @@ use HubspotSDK\Cms\Pages\Page\AbStatus;
 use HubspotSDK\Cms\Pages\Page\ContentTypeCategory;
 use HubspotSDK\Cms\Pages\Page\CurrentState;
 use HubspotSDK\Cms\Pages\Page\Language;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\VersionUser;
@@ -28,22 +28,22 @@ final class VersionPage implements BaseModel
     /**
      * ID of this page version.
      */
-    #[Api]
+    #[Required]
     public string $id;
 
     /**
      * Model definition for a landing page or site page.
      */
-    #[Api]
+    #[Required]
     public Page $object;
 
-    #[Api]
+    #[Required]
     public \DateTimeInterface $updatedAt;
 
     /**
      * Model definition for a version user. Contains addition information about the user who created a version.
      */
-    #[Api]
+    #[Required]
     public VersionUser $user;
 
     /**

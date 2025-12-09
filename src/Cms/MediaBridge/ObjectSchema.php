@@ -6,7 +6,8 @@ namespace HubspotSDK\Cms\MediaBridge;
 
 use HubspotSDK\Cms\MediaBridge\Property1\DataSensitivity;
 use HubspotSDK\Cms\MediaBridge\Property1\DateDisplayHint;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Events\EventDefinitions\AssociationDefinition;
@@ -45,63 +46,63 @@ final class ObjectSchema implements BaseModel
     /** @use SdkModel<ObjectSchemaShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public string $id;
 
-    #[Api]
+    #[Required]
     public bool $allowsSensitiveProperties;
 
-    #[Api]
+    #[Required]
     public bool $archived;
 
     /** @var list<AssociationDefinition> $associations */
-    #[Api(list: AssociationDefinition::class)]
+    #[Required(list: AssociationDefinition::class)]
     public array $associations;
 
-    #[Api]
+    #[Required]
     public string $fullyQualifiedName;
 
-    #[Api]
+    #[Required]
     public ObjectTypeDefinitionLabels $labels;
 
-    #[Api]
+    #[Required]
     public string $name;
 
-    #[Api]
+    #[Required]
     public string $objectTypeId;
 
     /** @var list<Property1> $properties */
-    #[Api(list: Property1::class)]
+    #[Required(list: Property1::class)]
     public array $properties;
 
     /** @var list<string> $requiredProperties */
-    #[Api(list: 'string')]
+    #[Required(list: 'string')]
     public array $requiredProperties;
 
     /** @var list<string> $searchableProperties */
-    #[Api(list: 'string')]
+    #[Required(list: 'string')]
     public array $searchableProperties;
 
     /** @var list<string> $secondaryDisplayProperties */
-    #[Api(list: 'string')]
+    #[Required(list: 'string')]
     public array $secondaryDisplayProperties;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $createdAt;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $createdByUserId;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $description;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $primaryDisplayProperty;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $updatedAt;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $updatedByUserId;
 
     /**

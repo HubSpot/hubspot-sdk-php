@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Emails;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\MapOf;
@@ -27,7 +27,7 @@ final class EmailStatisticsData implements BaseModel
      *
      * @var array<string,int> $counters
      */
-    #[Api(map: 'int')]
+    #[Required(map: 'int')]
     public array $counters;
 
     /**
@@ -35,7 +35,7 @@ final class EmailStatisticsData implements BaseModel
      *
      * @var array<string,array<string,int>> $deviceBreakdown
      */
-    #[Api(map: new MapOf('int'))]
+    #[Required(map: new MapOf('int'))]
     public array $deviceBreakdown;
 
     /**
@@ -43,7 +43,7 @@ final class EmailStatisticsData implements BaseModel
      *
      * @var array<string,array<string,int>> $qualifierStats
      */
-    #[Api(map: new MapOf('int'))]
+    #[Required(map: new MapOf('int'))]
     public array $qualifierStats;
 
     /**
@@ -51,7 +51,7 @@ final class EmailStatisticsData implements BaseModel
      *
      * @var array<string,float> $ratios
      */
-    #[Api(map: 'float')]
+    #[Required(map: 'float')]
     public array $ratios;
 
     /**

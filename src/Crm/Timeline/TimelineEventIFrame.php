@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Timeline;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -21,31 +21,31 @@ final class TimelineEventIFrame implements BaseModel
     /**
      * The label of the modal window that displays the iframe contents.
      */
-    #[Api]
+    #[Required]
     public string $headerLabel;
 
     /**
      * The height of the modal window in pixels.
      */
-    #[Api]
+    #[Required]
     public int $height;
 
     /**
      * The text displaying the link that will display the iframe.
      */
-    #[Api]
+    #[Required]
     public string $linkLabel;
 
     /**
      * The URI of the iframe contents.
      */
-    #[Api]
+    #[Required]
     public string $url;
 
     /**
      * The width of the modal window in pixels.
      */
-    #[Api]
+    #[Required]
     public int $width;
 
     /**

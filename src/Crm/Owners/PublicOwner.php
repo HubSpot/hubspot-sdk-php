@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Owners;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Owners\PublicOwner\Type;
@@ -33,19 +34,19 @@ final class PublicOwner implements BaseModel
     /**
      * The unique identifier of the owner.
      */
-    #[Api]
+    #[Required]
     public string $id;
 
     /**
      * Indicates whether the owner is archived.
      */
-    #[Api]
+    #[Required]
     public bool $archived;
 
     /**
      * The date and time when the owner was created.
      */
-    #[Api]
+    #[Required]
     public \DateTimeInterface $createdAt;
 
     /**
@@ -53,47 +54,47 @@ final class PublicOwner implements BaseModel
      *
      * @var value-of<Type> $type
      */
-    #[Api(enum: Type::class)]
+    #[Required(enum: Type::class)]
     public string $type;
 
     /**
      * The date and time when the owner was last updated.
      */
-    #[Api]
+    #[Required]
     public \DateTimeInterface $updatedAt;
 
     /**
      * The email address of the owner.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $email;
 
     /**
      * The first name of the owner.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $firstName;
 
     /**
      * The last name of the owner.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $lastName;
 
     /** @var list<PublicTeam>|null $teams */
-    #[Api(list: PublicTeam::class, optional: true)]
+    #[Optional(list: PublicTeam::class)]
     public ?array $teams;
 
     /**
      * The user ID of the owner.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $userId;
 
     /**
      * The user ID of the owner, including inactive users.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $userIdIncludingInactive;
 
     /**

@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Forms;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Marketing\Forms\FieldGroup\Field;
@@ -31,11 +32,11 @@ final class FieldGroup implements BaseModel
      *
      * @var list<mixed> $fields
      */
-    #[Api(list: Field::class)]
+    #[Required(list: Field::class)]
     public array $fields;
 
     /** @var value-of<GroupType> $groupType */
-    #[Api(enum: GroupType::class)]
+    #[Required(enum: GroupType::class)]
     public string $groupType;
 
     /**
@@ -43,13 +44,13 @@ final class FieldGroup implements BaseModel
      *
      * @var value-of<RichTextType> $richTextType
      */
-    #[Api(enum: RichTextType::class)]
+    #[Required(enum: RichTextType::class)]
     public string $richTextType;
 
     /**
      * A block of rich text or an image. Those can be used to add extra information for the customers filling in the form. If the field group includes fields, the rich text will be displayed before the fields.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $richText;
 
     /**

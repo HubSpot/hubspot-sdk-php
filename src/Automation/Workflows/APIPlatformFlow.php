@@ -14,7 +14,8 @@ use HubspotSDK\Automation\Workflows\APIPlatformFlow\FlowType;
 use HubspotSDK\Automation\Workflows\APIPlatformFlow\Type;
 use HubspotSDK\Automation\Workflows\APITimeWindow\Day;
 use HubspotSDK\Automation\Workflows\APIWeeklyEnrollmentSchedule\DaysOfWeek;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicAbsoluteComparativeTimestampRefineBy;
@@ -91,80 +92,80 @@ final class APIPlatformFlow implements BaseModel
     /** @use SdkModel<APIPlatformFlowShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public string $id;
 
     /** @var list<mixed> $actions */
-    #[Api(list: Action::class)]
+    #[Required(list: Action::class)]
     public array $actions;
 
     /** @var list<APIBlockedDate> $blockedDates */
-    #[Api(list: APIBlockedDate::class)]
+    #[Required(list: APIBlockedDate::class)]
     public array $blockedDates;
 
-    #[Api]
+    #[Required]
     public \DateTimeInterface $createdAt;
 
     /** @var value-of<CrmObjectCreationStatus> $crmObjectCreationStatus */
-    #[Api(enum: CrmObjectCreationStatus::class)]
+    #[Required(enum: CrmObjectCreationStatus::class)]
     public string $crmObjectCreationStatus;
 
     /** @var array<string,string> $customProperties */
-    #[Api(map: 'string')]
+    #[Required(map: 'string')]
     public array $customProperties;
 
     /**
      * @var list<APIAssociationDataSource|APIAssociationTimestampDataSource|APIStaticPropertyFilterDataSource|APIEnrolledRecordPropertyFilterDataSource|APIDatasetFieldPropertyFilterDataSource|APIEnrolledArgumentPropertyFilterDataSource> $dataSources
      */
-    #[Api(list: DataSource::class)]
+    #[Required(list: DataSource::class)]
     public array $dataSources;
 
     /** @var value-of<FlowType> $flowType */
-    #[Api(enum: FlowType::class)]
+    #[Required(enum: FlowType::class)]
     public string $flowType;
 
-    #[Api]
+    #[Required]
     public bool $isEnabled;
 
-    #[Api]
+    #[Required]
     public string $nextAvailableActionId;
 
-    #[Api]
+    #[Required]
     public string $objectTypeId;
 
-    #[Api]
+    #[Required]
     public string $revisionId;
 
     /** @var list<APITimeWindow> $timeWindows */
-    #[Api(list: APITimeWindow::class)]
+    #[Required(list: APITimeWindow::class)]
     public array $timeWindows;
 
     /** @var value-of<Type> $type */
-    #[Api(enum: Type::class)]
+    #[Required(enum: Type::class)]
     public string $type;
 
-    #[Api]
+    #[Required]
     public \DateTimeInterface $updatedAt;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $description;
 
-    #[Api(optional: true)]
+    #[Optional]
     public APIListBasedEnrollmentCriteria|APIEventBasedEnrollmentCriteria|APIManualEnrollmentCriteria|null $enrollmentCriteria;
 
-    #[Api(optional: true)]
+    #[Optional]
     public APIDailyEnrollmentSchedule|APIWeeklyEnrollmentSchedule|APIMonthlySpecificDaysEnrollmentSchedule|APIMonthlyRelativeDaysEnrollmentSchedule|APIYearlyEnrollmentSchedule|APIPropertyBasedEnrollmentSchedule|null $enrollmentSchedule;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $name;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $startActionId;
 
-    #[Api(optional: true)]
+    #[Optional]
     public PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch|null $suppressionFilterBranch;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $uuid;
 
     /**

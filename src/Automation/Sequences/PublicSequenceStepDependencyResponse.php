@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Automation\Sequences;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -25,28 +25,28 @@ final class PublicSequenceStepDependencyResponse implements BaseModel
     /** @use SdkModel<PublicSequenceStepDependencyResponseShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public string $id;
 
-    #[Api]
+    #[Required]
     public \DateTimeInterface $createdAt;
 
-    #[Api]
+    #[Required]
     public string $dependencyType;
 
-    #[Api]
+    #[Required]
     public string $reliesOnSequenceStepId;
 
-    #[Api]
+    #[Required]
     public int $reliesOnStepOrder;
 
-    #[Api]
+    #[Required]
     public string $requiredBySequenceStepId;
 
-    #[Api]
+    #[Required]
     public int $requiredByStepOrder;
 
-    #[Api]
+    #[Required]
     public \DateTimeInterface $updatedAt;
 
     /**

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Lists;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -26,7 +26,7 @@ final class ListSearchResponse implements BaseModel
     /**
      * Whether or not there are more results to page through.
      */
-    #[Api]
+    #[Required]
     public bool $hasMore;
 
     /**
@@ -34,19 +34,19 @@ final class ListSearchResponse implements BaseModel
      *
      * @var list<PublicObjectListSearchResult> $lists
      */
-    #[Api(list: PublicObjectListSearchResult::class)]
+    #[Required(list: PublicObjectListSearchResult::class)]
     public array $lists;
 
     /**
      * Value to be passed in a future request to paginate through list search results.
      */
-    #[Api]
+    #[Required]
     public int $offset;
 
     /**
      * The total number of lists that match the search criteria.
      */
-    #[Api]
+    #[Required]
     public int $total;
 
     /**

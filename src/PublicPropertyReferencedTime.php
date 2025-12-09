@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicPropertyReferencedTime\TimeType;
@@ -23,20 +24,20 @@ final class PublicPropertyReferencedTime implements BaseModel
     /** @use SdkModel<PublicPropertyReferencedTimeShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public string $property;
 
-    #[Api]
+    #[Required]
     public string $referenceType;
 
     /** @var value-of<TimeType> $timeType */
-    #[Api(enum: TimeType::class)]
+    #[Required(enum: TimeType::class)]
     public string $timeType;
 
-    #[Api]
+    #[Required]
     public string $zoneId;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $timezoneSource;
 
     /**

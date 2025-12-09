@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -25,13 +25,13 @@ final class LabelsBetweenObjectPair implements BaseModel
     /**
      * The ID of the source object in the association.
      */
-    #[Api]
+    #[Required]
     public string $fromObjectId;
 
     /**
      * The type ID of the source object in the association.
      */
-    #[Api]
+    #[Required]
     public string $fromObjectTypeId;
 
     /**
@@ -39,19 +39,19 @@ final class LabelsBetweenObjectPair implements BaseModel
      *
      * @var list<string> $labels
      */
-    #[Api(list: 'string')]
+    #[Required(list: 'string')]
     public array $labels;
 
     /**
      * The ID of the target object in the association.
      */
-    #[Api]
+    #[Required]
     public string $toObjectId;
 
     /**
      * The type ID of the target object in the association.
      */
-    #[Api]
+    #[Required]
     public string $toObjectTypeId;
 
     /**

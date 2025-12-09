@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\Pages\SitePages;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -27,13 +27,13 @@ final class SitePageEndAbTestParams implements BaseModel
     /**
      * ID of the test to end.
      */
-    #[Api]
+    #[Required]
     public string $abTestId;
 
     /**
      * ID of the object to designate as the test winner.
      */
-    #[Api]
+    #[Required]
     public string $winnerId;
 
     /**

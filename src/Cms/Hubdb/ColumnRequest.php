@@ -5,7 +5,8 @@ declare(strict_types=1);
 namespace HubspotSDK\Cms\Hubdb;
 
 use HubspotSDK\Cms\Hubdb\ColumnRequest\Type;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Option;
@@ -31,19 +32,19 @@ final class ColumnRequest implements BaseModel
     /**
      * Column Id.
      */
-    #[Api]
+    #[Required]
     public int $id;
 
     /**
      * Label of the column.
      */
-    #[Api]
+    #[Required]
     public string $label;
 
     /**
      * Name of the column.
      */
-    #[Api]
+    #[Required]
     public string $name;
 
     /**
@@ -51,7 +52,7 @@ final class ColumnRequest implements BaseModel
      *
      * @var list<Option> $options
      */
-    #[Api(list: Option::class)]
+    #[Required(list: Option::class)]
     public array $options;
 
     /**
@@ -59,25 +60,25 @@ final class ColumnRequest implements BaseModel
      *
      * @var value-of<Type> $type
      */
-    #[Api(enum: Type::class)]
+    #[Required(enum: Type::class)]
     public string $type;
 
     /**
      * The id of the column from another table to which the column refers/points to.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $foreignColumnId;
 
     /**
      * The id of another table to which the column refers/points to.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $foreignTableId;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $maxNumberOfCharacters;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $maxNumberOfOptions;
 
     /**

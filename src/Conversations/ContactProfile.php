@@ -5,7 +5,8 @@ declare(strict_types=1);
 namespace HubspotSDK\Conversations;
 
 use HubspotSDK\Conversations\ContactAddress\Type;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -25,25 +26,25 @@ final class ContactProfile implements BaseModel
     use SdkModel;
 
     /** @var list<ContactAddress> $addresses */
-    #[Api(list: ContactAddress::class)]
+    #[Required(list: ContactAddress::class)]
     public array $addresses;
 
     /** @var list<ContactEmail> $emails */
-    #[Api(list: ContactEmail::class)]
+    #[Required(list: ContactEmail::class)]
     public array $emails;
 
     /** @var list<ContactPhone> $phones */
-    #[Api(list: ContactPhone::class)]
+    #[Required(list: ContactPhone::class)]
     public array $phones;
 
     /** @var list<ContactURL> $urls */
-    #[Api(list: ContactURL::class)]
+    #[Required(list: ContactURL::class)]
     public array $urls;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?ContactName $name;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?ContactOrg $org;
 
     /**

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Forms;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Marketing\Forms\DependentFieldFilter\Operator;
@@ -26,20 +26,20 @@ final class DependentFieldFilter implements BaseModel
     use SdkModel;
 
     /** @var value-of<Operator> $operator */
-    #[Api(enum: Operator::class)]
+    #[Required(enum: Operator::class)]
     public string $operator;
 
-    #[Api]
+    #[Required]
     public string $rangeEnd;
 
-    #[Api]
+    #[Required]
     public string $rangeStart;
 
-    #[Api]
+    #[Required]
     public string $value;
 
     /** @var list<string> $values */
-    #[Api(list: 'string')]
+    #[Required(list: 'string')]
     public array $values;
 
     /**

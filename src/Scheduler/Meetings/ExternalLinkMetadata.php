@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Scheduler\Meetings;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -27,35 +28,35 @@ final class ExternalLinkMetadata implements BaseModel
     /** @use SdkModel<ExternalLinkMetadataShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public string $id;
 
-    #[Api]
+    #[Required]
     public \DateTimeInterface $createdAt;
 
-    #[Api]
+    #[Required]
     public bool $defaultLink;
 
-    #[Api]
+    #[Required]
     public string $link;
 
-    #[Api]
+    #[Required]
     public string $organizerUserId;
 
-    #[Api]
+    #[Required]
     public string $slug;
 
-    #[Api]
+    #[Required]
     public string $type;
 
     /** @var list<string> $userIdsOfLinkMembers */
-    #[Api(list: 'string')]
+    #[Required(list: 'string')]
     public array $userIdsOfLinkMembers;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $name;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $updatedAt;
 
     /**

@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Timeline;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -32,7 +33,7 @@ final class TimelineEvent implements BaseModel
     /**
      * The event template ID.
      */
-    #[Api]
+    #[Required]
     public string $eventTemplateId;
 
     /**
@@ -40,52 +41,52 @@ final class TimelineEvent implements BaseModel
      *
      * @var array<string,string> $tokens
      */
-    #[Api(map: 'string')]
+    #[Required(map: 'string')]
     public array $tokens;
 
     /**
      * Identifier for the event. This is optional, and we recommend you do not pass this in. We will create one for you if you omit this. You can also use `{{uuid}}` anywhere in the ID to generate a unique string, guaranteeing uniqueness.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $id;
 
     /**
      * The event domain (often paired with utk).
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $domain;
 
     /**
      * The email address used for contact-specific events. This can be used to identify existing contacts, create new ones, or change the email for an existing contact (if paired with the `objectId`).
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $email;
 
     /**
      * Additional event-specific data that can be interpreted by the template's markdown.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public mixed $extraData;
 
     /**
      * The CRM object identifier. This is required for every event other than contacts (where utk or email can be used).
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $objectId;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?TimelineEventIFrame $timelineIFrame;
 
     /**
      * The time the event occurred. If not passed in, the curren time will be assumed. This is used to determine where an event is shown on a CRM object's timeline.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $timestamp;
 
     /**
      * Use the `utk` parameter to associate an event with a contact by `usertoken`. This is recommended if you don't know a user's email, but have an identifying user token in your cookie.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $utk;
 
     /**

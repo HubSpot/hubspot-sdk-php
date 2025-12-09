@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Events;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -30,43 +31,43 @@ final class PublicList implements BaseModel
     /** @use SdkModel<PublicListShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public string $listId;
 
-    #[Api]
+    #[Required]
     public int $listVersion;
 
-    #[Api]
+    #[Required]
     public string $name;
 
-    #[Api]
+    #[Required]
     public string $objectTypeId;
 
-    #[Api]
+    #[Required]
     public string $processingStatus;
 
-    #[Api]
+    #[Required]
     public string $processingType;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $createdAt;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $createdById;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $deletedAt;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $filtersUpdatedAt;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $size;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $updatedAt;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $updatedById;
 
     /**

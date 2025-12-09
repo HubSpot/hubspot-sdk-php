@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Forms;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -21,22 +22,22 @@ final class EnumeratedFieldOption implements BaseModel
     /**
      * The order the choices will be displayed in.
      */
-    #[Api]
+    #[Required]
     public int $displayOrder;
 
     /**
      * The visible label for this choice.
      */
-    #[Api]
+    #[Required]
     public string $label;
 
     /**
      * The value which will be submitted if this choice is selected.
      */
-    #[Api]
+    #[Required]
     public string $value;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $description;
 
     /**

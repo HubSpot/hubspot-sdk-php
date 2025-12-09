@@ -5,7 +5,8 @@ declare(strict_types=1);
 namespace HubspotSDK\Cms\Hubdb;
 
 use HubspotSDK\Cms\Hubdb\BatchResponseHubDBTableRowV3\Status;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -27,17 +28,17 @@ final class BatchResponseHubDBTableRowV3 implements BaseModel
     /**
      * The timestamp indicating when the batch processing was completed.
      */
-    #[Api]
+    #[Required]
     public \DateTimeInterface $completedAt;
 
     /** @var list<HubDBTableRowV3> $results */
-    #[Api(list: HubDBTableRowV3::class)]
+    #[Required(list: HubDBTableRowV3::class)]
     public array $results;
 
     /**
      * The timestamp indicating when the batch processing began.
      */
-    #[Api]
+    #[Required]
     public \DateTimeInterface $startedAt;
 
     /**
@@ -45,7 +46,7 @@ final class BatchResponseHubDBTableRowV3 implements BaseModel
      *
      * @var value-of<Status> $status
      */
-    #[Api(enum: Status::class)]
+    #[Required(enum: Status::class)]
     public string $status;
 
     /**
@@ -53,13 +54,13 @@ final class BatchResponseHubDBTableRowV3 implements BaseModel
      *
      * @var array<string,string>|null $links
      */
-    #[Api(map: 'string', optional: true)]
+    #[Optional(map: 'string')]
     public ?array $links;
 
     /**
      * The timestamp indicating when the batch request was made.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $requestedAt;
 
     /**

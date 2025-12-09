@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Automation\Workflows;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -18,13 +18,13 @@ final class APIFlowEmailCampaign implements BaseModel
     /** @use SdkModel<APIFlowEmailCampaignShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public string $emailCampaignId;
 
-    #[Api]
+    #[Required]
     public string $emailContentId;
 
-    #[Api]
+    #[Required]
     public string $flowId;
 
     /**

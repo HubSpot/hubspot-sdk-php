@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Conversations;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -27,34 +28,34 @@ final class PublicChannelAccount implements BaseModel
     /** @use SdkModel<PublicChannelAccountShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public string $id;
 
-    #[Api]
+    #[Required]
     public bool $active;
 
-    #[Api]
+    #[Required]
     public bool $archived;
 
-    #[Api]
+    #[Required]
     public bool $authorized;
 
-    #[Api]
+    #[Required]
     public string $channelId;
 
-    #[Api]
+    #[Required]
     public \DateTimeInterface $createdAt;
 
-    #[Api]
+    #[Required]
     public string $inboxId;
 
-    #[Api]
+    #[Required]
     public string $name;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $archivedAt;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?PublicDeliveryIdentifier $deliveryIdentifier;
 
     /**

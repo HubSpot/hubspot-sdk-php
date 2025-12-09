@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Automation\Sequences;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -27,34 +28,34 @@ final class PublicTaskPatternResponse implements BaseModel
     /** @use SdkModel<PublicTaskPatternResponseShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public string $id;
 
-    #[Api]
+    #[Required]
     public \DateTimeInterface $createdAt;
 
-    #[Api]
+    #[Required]
     public string $taskPriority;
 
-    #[Api]
+    #[Required]
     public string $taskType;
 
-    #[Api]
+    #[Required]
     public \DateTimeInterface $updatedAt;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $notes;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $queueId;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $subject;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $templateId;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $threadEmailToStepOrder;
 
     /**

@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Account\Activity;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\ForwardPaging;
@@ -21,10 +22,10 @@ final class CollectionResponseHydratedCriticalActionForwardPaging implements Bas
     use SdkModel;
 
     /** @var list<HydratedCriticalAction> $results */
-    #[Api(list: HydratedCriticalAction::class)]
+    #[Required(list: HydratedCriticalAction::class)]
     public array $results;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?ForwardPaging $paging;
 
     /**

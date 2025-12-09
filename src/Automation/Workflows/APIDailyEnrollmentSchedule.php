@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Automation\Workflows;
 
 use HubspotSDK\Automation\Workflows\APIDailyEnrollmentSchedule\Type;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -19,11 +19,11 @@ final class APIDailyEnrollmentSchedule implements BaseModel
     /** @use SdkModel<APIDailyEnrollmentScheduleShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public APITimeOfDay $timeOfDay;
 
     /** @var value-of<Type> $type */
-    #[Api(enum: Type::class)]
+    #[Required(enum: Type::class)]
     public string $type;
 
     /**

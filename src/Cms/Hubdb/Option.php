@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\Hubdb;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -33,58 +34,58 @@ final class Option implements BaseModel
     /**
      * The unique ID of the option.
      */
-    #[Api]
+    #[Required]
     public string $id;
 
     /**
      * The timestamp when the option was created, in ISO 8601 format.
      */
-    #[Api]
+    #[Required]
     public \DateTimeInterface $createdAt;
 
     /**
      * A user-friendly label that identifies the option.
      */
-    #[Api]
+    #[Required]
     public string $label;
 
     /**
      * An internal name assigned to the option, distinct from the label.
      */
-    #[Api]
+    #[Required]
     public string $name;
 
-    #[Api]
+    #[Required]
     public int $order;
 
     /**
      * Indicates the category or data type of the option (e.g., string, number).
      */
-    #[Api]
+    #[Required]
     public string $type;
 
     /**
      * The timestamp when the option was last updated, in ISO 8601 format.
      */
-    #[Api]
+    #[Required]
     public \DateTimeInterface $updatedAt;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?SimpleUser $createdBy;
 
     /**
      * The ID of the user who created the option.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $createdByUserId;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?SimpleUser $updatedBy;
 
     /**
      * The ID of the user who last updated the option.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $updatedByUserId;
 
     /**

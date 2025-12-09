@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Auth\OAuth;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -28,38 +29,38 @@ final class AccessTokenInfoResponse implements BaseModel
     /** @use SdkModel<AccessTokenInfoResponseShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public string $token;
 
-    #[Api]
+    #[Required]
     public int $app_id;
 
-    #[Api]
+    #[Required]
     public int $expires_in;
 
-    #[Api]
+    #[Required]
     public int $hub_id;
 
     /** @var list<string> $scopes */
-    #[Api(list: 'string')]
+    #[Required(list: 'string')]
     public array $scopes;
 
-    #[Api]
+    #[Required]
     public string $token_type;
 
-    #[Api]
+    #[Required]
     public int $user_id;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $hub_domain;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $is_private_distribution;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?SignedAccessToken $signed_access_token;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $user;
 
     /**

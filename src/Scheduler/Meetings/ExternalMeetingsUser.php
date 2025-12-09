@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Scheduler\Meetings;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -22,19 +22,19 @@ final class ExternalMeetingsUser implements BaseModel
     /** @use SdkModel<ExternalMeetingsUserShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public string $id;
 
-    #[Api]
+    #[Required]
     public string $calendarProvider;
 
-    #[Api]
+    #[Required]
     public bool $isSalesStarter;
 
-    #[Api]
+    #[Required]
     public string $userId;
 
-    #[Api]
+    #[Required]
     public ExternalUserProfile $userProfile;
 
     /**

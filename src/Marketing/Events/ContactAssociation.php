@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Events;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -21,16 +22,16 @@ final class ContactAssociation implements BaseModel
     /** @use SdkModel<ContactAssociationShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public string $contactId;
 
-    #[Api]
+    #[Required]
     public string $email;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $firstname;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $lastname;
 
     /**

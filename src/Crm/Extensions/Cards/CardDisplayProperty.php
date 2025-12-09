@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Extensions\Cards;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Extensions\Cards\CardDisplayProperty\DataType;
@@ -30,19 +30,19 @@ final class CardDisplayProperty implements BaseModel
      *
      * @var value-of<DataType> $dataType
      */
-    #[Api(enum: DataType::class)]
+    #[Required(enum: DataType::class)]
     public string $dataType;
 
     /**
      * The label for this property as you'd like it displayed to users.
      */
-    #[Api]
+    #[Required]
     public string $label;
 
     /**
      * An internal identifier for this property. This value must be unique TODO.
      */
-    #[Api]
+    #[Required]
     public string $name;
 
     /**
@@ -50,7 +50,7 @@ final class CardDisplayProperty implements BaseModel
      *
      * @var list<DisplayOption> $options
      */
-    #[Api(list: DisplayOption::class)]
+    #[Required(list: DisplayOption::class)]
     public array $options;
 
     /**

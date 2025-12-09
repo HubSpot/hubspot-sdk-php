@@ -7,7 +7,8 @@ namespace HubspotSDK\Automation\Workflows;
 use HubspotSDK\Automation\Workflows\APIStaticTimeZoneStrategy\Type;
 use HubspotSDK\Automation\Workflows\APITimeDelay\DaysOfWeek;
 use HubspotSDK\Automation\Workflows\APITimeDelay\TimeUnit;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -26,20 +27,20 @@ final class APITimeDelay implements BaseModel
     use SdkModel;
 
     /** @var list<value-of<DaysOfWeek>> $daysOfWeek */
-    #[Api(list: DaysOfWeek::class)]
+    #[Required(list: DaysOfWeek::class)]
     public array $daysOfWeek;
 
-    #[Api]
+    #[Required]
     public int $delta;
 
     /** @var value-of<TimeUnit> $timeUnit */
-    #[Api(enum: TimeUnit::class)]
+    #[Required(enum: TimeUnit::class)]
     public string $timeUnit;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?APITimeOfDay $timeOfDay;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?APIStaticTimeZoneStrategy $timeZoneStrategy;
 
     /**

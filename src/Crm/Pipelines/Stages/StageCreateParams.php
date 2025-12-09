@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Pipelines\Stages;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -27,19 +27,19 @@ final class StageCreateParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    #[Api]
+    #[Required]
     public string $objectType;
 
     /**
      * The order for displaying this pipeline stage. If two pipeline stages have a matching `displayOrder`, they will be sorted alphabetically by label.
      */
-    #[Api]
+    #[Required]
     public int $displayOrder;
 
     /**
      * A label used to organize pipeline stages in HubSpot's UI. Each pipeline stage's label must be unique within that pipeline.
      */
-    #[Api]
+    #[Required]
     public string $label;
 
     /**
@@ -51,7 +51,7 @@ final class StageCreateParams implements BaseModel
      *
      * @var array<string,string> $metadata
      */
-    #[Api(map: 'string')]
+    #[Required(map: 'string')]
     public array $metadata;
 
     /**

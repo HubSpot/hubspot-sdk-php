@@ -5,7 +5,8 @@ declare(strict_types=1);
 namespace HubspotSDK\Cms\Hubdb;
 
 use HubspotSDK\Cms\Hubdb\Column\Type;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Option;
@@ -42,25 +43,25 @@ final class HubDBTableV3 implements BaseModel
     /**
      * Id of the table.
      */
-    #[Api]
+    #[Required]
     public string $id;
 
     /**
      * Specifies whether child tables can be created.
      */
-    #[Api]
+    #[Required]
     public bool $allowChildTables;
 
     /**
      * Specifies whether the table can be read by public without authorization.
      */
-    #[Api]
+    #[Required]
     public bool $allowPublicApiAccess;
 
     /**
      * Number of columns including deleted.
      */
-    #[Api]
+    #[Required]
     public int $columnCount;
 
     /**
@@ -68,19 +69,19 @@ final class HubDBTableV3 implements BaseModel
      *
      * @var list<Column> $columns
      */
-    #[Api(list: Column::class)]
+    #[Required(list: Column::class)]
     public array $columns;
 
     /**
      * Timestamp at which the table is created.
      */
-    #[Api]
+    #[Required]
     public \DateTimeInterface $createdAt;
 
-    #[Api]
+    #[Required]
     public bool $deleted;
 
-    #[Api]
+    #[Required]
     public \DateTimeInterface $deletedAt;
 
     /**
@@ -88,61 +89,61 @@ final class HubDBTableV3 implements BaseModel
      *
      * @var array<string,int> $dynamicMetaTags
      */
-    #[Api(map: 'int')]
+    #[Required(map: 'int')]
     public array $dynamicMetaTags;
 
     /**
      * Specifies creation of multi-level dynamic pages using child tables.
      */
-    #[Api]
+    #[Required]
     public bool $enableChildTablePages;
 
     /**
      * Label of the table.
      */
-    #[Api]
+    #[Required]
     public string $label;
 
     /**
      * Name of the table.
      */
-    #[Api]
+    #[Required]
     public string $name;
 
-    #[Api]
+    #[Required]
     public bool $published;
 
     /**
      * Timestamp at which the table is published recently.
      */
-    #[Api]
+    #[Required]
     public \DateTimeInterface $publishedAt;
 
     /**
      * Number of rows in the table.
      */
-    #[Api]
+    #[Required]
     public int $rowCount;
 
     /**
      * Timestamp at which the table is updated recently.
      */
-    #[Api]
+    #[Required]
     public \DateTimeInterface $updatedAt;
 
     /**
      * Specifies whether the table can be used for creation of dynamic pages.
      */
-    #[Api]
+    #[Required]
     public bool $useForPages;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?SimpleUser $createdBy;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $isOrderedManually;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?SimpleUser $updatedBy;
 
     /**

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Emails;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -20,13 +20,13 @@ final class PublicButtonStyleSettings implements BaseModel
     /** @use SdkModel<PublicButtonStyleSettingsShape> */
     use SdkModel;
 
-    #[Api(optional: true)]
+    #[Optional]
     public mixed $backgroundColor;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $cornerRadius;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?PublicFontStyle $fontStyle;
 
     public function __construct()

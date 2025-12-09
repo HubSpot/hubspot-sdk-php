@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicDatePropertyOperation\OperationType;
@@ -24,23 +24,23 @@ final class PublicDatePropertyOperation implements BaseModel
     /** @use SdkModel<PublicDatePropertyOperationShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public int $day;
 
-    #[Api]
+    #[Required]
     public bool $includeObjectsWithNoValueSet;
 
-    #[Api]
+    #[Required]
     public string $month;
 
     /** @var value-of<OperationType> $operationType */
-    #[Api(enum: OperationType::class)]
+    #[Required(enum: OperationType::class)]
     public string $operationType;
 
-    #[Api]
+    #[Required]
     public string $operator;
 
-    #[Api]
+    #[Required]
     public int $year;
 
     /**

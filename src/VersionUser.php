@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -23,19 +23,19 @@ final class VersionUser implements BaseModel
     /**
      * The unique ID of the User.
      */
-    #[Api]
+    #[Required]
     public string $id;
 
     /**
      * The email address of the user.
      */
-    #[Api]
+    #[Required]
     public string $email;
 
     /**
      * The first and last name of the User.
      */
-    #[Api]
+    #[Required]
     public string $fullName;
 
     /**

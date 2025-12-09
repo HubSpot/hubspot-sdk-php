@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Properties;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Option;
@@ -22,16 +23,16 @@ final class CreatedResponseProperty implements BaseModel
     /** @use SdkModel<CreatedResponsePropertyShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public string $createdResourceId;
 
     /**
      * Defines a property.
      */
-    #[Api]
+    #[Required]
     public Property $entity;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $location;
 
     /**

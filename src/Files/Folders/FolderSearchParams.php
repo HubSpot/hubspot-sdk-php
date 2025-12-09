@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Files\Folders;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -43,50 +43,50 @@ final class FolderSearchParams implements BaseModel
     /**
      * Offset search results by this value. The default offset is 0 and the maximum offset of items for a given search is 10,000. Narrow your search down if you are reaching this limit.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $after;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $before;
 
     /**
      * Search folders by exact time of creation. Time must be epoch time in milliseconds.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $createdAt;
 
     /**
      * Search folders by greater than or equal to time of creation. Can be used with createdAtLte to create a range.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $createdAtGte;
 
     /**
      * Search folders by less than or equal to time of creation. Can be used with createdAtGte to create a range.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $createdAtLte;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $idGte;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $idLte;
 
     /** @var list<int>|null $ids */
-    #[Api(list: 'int', optional: true)]
+    #[Optional(list: 'int')]
     public ?array $ids;
 
     /**
      * Number of items to return. Default limit is 10, maximum limit is 100.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $limit;
 
     /**
      * Search for folders containing the specified name.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $name;
 
     /**
@@ -94,13 +94,13 @@ final class FolderSearchParams implements BaseModel
      *
      * @var list<int>|null $parentFolderIds
      */
-    #[Api(list: 'int', optional: true)]
+    #[Optional(list: 'int')]
     public ?array $parentFolderIds;
 
     /**
      * Search folders by path.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $path;
 
     /**
@@ -108,7 +108,7 @@ final class FolderSearchParams implements BaseModel
      *
      * @var list<string>|null $properties
      */
-    #[Api(list: 'string', optional: true)]
+    #[Optional(list: 'string')]
     public ?array $properties;
 
     /**
@@ -116,25 +116,25 @@ final class FolderSearchParams implements BaseModel
      *
      * @var list<string>|null $sort
      */
-    #[Api(list: 'string', optional: true)]
+    #[Optional(list: 'string')]
     public ?array $sort;
 
     /**
      * Search folders by exact time of latest updated. Time must be epoch time in milliseconds.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $updatedAt;
 
     /**
      * Search folders by greater than or equal to time of latest update. Can be used with updatedAtLte to create a range.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $updatedAtGte;
 
     /**
      * Search folders by less than or equal to time of latest update. Can be used with updatedAtGte to create a range.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $updatedAtLte;
 
     public function __construct()

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Conversations;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -22,19 +22,19 @@ final class ContactName implements BaseModel
     /** @use SdkModel<ContactNameShape> */
     use SdkModel;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $firstName;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $lastName;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $middleName;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $prefix;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $suffix;
 
     public function __construct()

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Forms;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -21,16 +21,16 @@ final class LegalConsentCheckbox implements BaseModel
     /**
      * The main label for the form field.
      */
-    #[Api]
+    #[Required]
     public string $label;
 
     /**
      * Whether this checkbox is required when submitting the form.
      */
-    #[Api]
+    #[Required]
     public bool $required;
 
-    #[Api]
+    #[Required]
     public int $subscriptionTypeId;
 
     /**

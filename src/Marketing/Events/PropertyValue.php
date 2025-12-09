@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Events;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Marketing\Events\PropertyValue\DataSensitivity;
@@ -45,43 +45,43 @@ final class PropertyValue implements BaseModel
      *
      * @var value-of<DataSensitivity> $dataSensitivity
      */
-    #[Api(enum: DataSensitivity::class)]
+    #[Required(enum: DataSensitivity::class)]
     public string $dataSensitivity;
 
     /**
      * Whether the property value is encrypted.
      */
-    #[Api]
+    #[Required]
     public bool $isEncrypted;
 
-    #[Api]
+    #[Required]
     public bool $isLargeValue;
 
     /**
      * Name of custom property.
      */
-    #[Api]
+    #[Required]
     public string $name;
 
-    #[Api]
+    #[Required]
     public int $persistenceTimestamp;
 
     /**
      * A unique ID associated with this request.
      */
-    #[Api]
+    #[Required]
     public string $requestId;
 
     /**
      * Whether the value was selected by a user.
      */
-    #[Api]
+    #[Required]
     public bool $selectedByUser;
 
     /**
      * The timestamp when the value was selected by a user, if applicable.
      */
-    #[Api]
+    #[Required]
     public int $selectedByUserTimestamp;
 
     /**
@@ -89,28 +89,28 @@ final class PropertyValue implements BaseModel
      *
      * @var value-of<Source> $source
      */
-    #[Api(enum: Source::class)]
+    #[Required(enum: Source::class)]
     public string $source;
 
     /**
      * The ID of the property source indicating where it was created.
      */
-    #[Api]
+    #[Required]
     public string $sourceId;
 
     /**
      * A human-readable label.
      */
-    #[Api]
+    #[Required]
     public string $sourceLabel;
 
     /**
      * Source metadata encoded as a base64 string. For example: `ZXhhbXBsZSBzdHJpbmc=`.
      */
-    #[Api]
+    #[Required]
     public string $sourceMetadata;
 
-    #[Api]
+    #[Required]
     public string $sourceUpstreamDeployable;
 
     /**
@@ -118,34 +118,34 @@ final class PropertyValue implements BaseModel
      *
      * @var list<int> $sourceVid
      */
-    #[Api(list: 'int')]
+    #[Required(list: 'int')]
     public array $sourceVid;
 
     /**
      * When the value was set, as a 64-bit integer.
      */
-    #[Api]
+    #[Required]
     public int $timestamp;
 
     /**
      * The unit of measurement or context for the value.
      */
-    #[Api]
+    #[Required]
     public string $unit;
 
     /**
      * The ID of the user who updated the property.
      */
-    #[Api]
+    #[Required]
     public int $updatedByUserId;
 
-    #[Api]
+    #[Required]
     public bool $useTimestampAsPersistenceTimestamp;
 
     /**
      * Custom property value.
      */
-    #[Api]
+    #[Required]
     public string $value;
 
     /**

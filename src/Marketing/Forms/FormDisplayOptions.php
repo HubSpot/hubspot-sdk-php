@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Forms;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Marketing\Forms\FormDisplayOptions\Theme;
@@ -29,19 +30,19 @@ final class FormDisplayOptions implements BaseModel
     /**
      * Whether the form will render as raw HTML as opposed to inside an iFrame.
      */
-    #[Api]
+    #[Required]
     public bool $renderRawHtml;
 
     /**
      * Styling options for the form.
      */
-    #[Api]
+    #[Required]
     public FormStyle $style;
 
     /**
      * The text displayed on the form submit button.
      */
-    #[Api]
+    #[Required]
     public string $submitButtonText;
 
     /**
@@ -49,10 +50,10 @@ final class FormDisplayOptions implements BaseModel
      *
      * @var value-of<Theme> $theme
      */
-    #[Api(enum: Theme::class)]
+    #[Required(enum: Theme::class)]
     public string $theme;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $cssClass;
 
     /**

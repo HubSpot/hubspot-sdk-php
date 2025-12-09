@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Files\FileOperations;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -29,7 +29,7 @@ final class FileOperationGetByPathParams implements BaseModel
      *
      * @var list<string>|null $properties
      */
-    #[Api(list: 'string', optional: true)]
+    #[Optional(list: 'string')]
     public ?array $properties;
 
     public function __construct()

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Files\FileOperations;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -27,19 +27,19 @@ final class FileOperationReplaceParams implements BaseModel
     /**
      * Character set of given file data.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $charsetHunch;
 
     /**
      * File data that will replace existing file in the file manager.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $file;
 
     /**
      * JSON string representing FileReplaceOptions. Includes options to set the access and expiresAt properties, which will automatically update when the file is replaced.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $options;
 
     public function __construct()

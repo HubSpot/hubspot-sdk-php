@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Events;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -18,10 +18,10 @@ final class MarketingEventCompleteRequestParams implements BaseModel
     /** @use SdkModel<MarketingEventCompleteRequestParamsShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public \DateTimeInterface $endDateTime;
 
-    #[Api]
+    #[Required]
     public \DateTimeInterface $startDateTime;
 
     /**

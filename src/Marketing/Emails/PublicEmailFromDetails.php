@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Emails;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -23,19 +23,19 @@ final class PublicEmailFromDetails implements BaseModel
     /**
      * The reply to recipients will see.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $customReplyTo;
 
     /**
      * The name recipients will see.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $fromName;
 
     /**
      * The from address and reply to email address (if no customReplyTo defined) recipients will see.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $replyTo;
 
     public function __construct()

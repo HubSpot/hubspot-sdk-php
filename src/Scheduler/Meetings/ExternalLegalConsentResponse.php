@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Scheduler\Meetings;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -18,10 +18,10 @@ final class ExternalLegalConsentResponse implements BaseModel
     /** @use SdkModel<ExternalLegalConsentResponseShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public string $communicationTypeId;
 
-    #[Api]
+    #[Required]
     public bool $consented;
 
     /**

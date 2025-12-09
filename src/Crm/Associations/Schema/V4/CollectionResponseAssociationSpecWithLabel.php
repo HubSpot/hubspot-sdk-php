@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Associations\Schema\V4;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\AssociationSpecWithLabel;
@@ -24,10 +25,10 @@ final class CollectionResponseAssociationSpecWithLabel implements BaseModel
     use SdkModel;
 
     /** @var list<AssociationSpecWithLabel> $results */
-    #[Api(list: AssociationSpecWithLabel::class)]
+    #[Required(list: AssociationSpecWithLabel::class)]
     public array $results;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?Paging $paging;
 
     /**

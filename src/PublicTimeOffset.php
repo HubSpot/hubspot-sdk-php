@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -18,13 +18,13 @@ final class PublicTimeOffset implements BaseModel
     /** @use SdkModel<PublicTimeOffsetShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public int $amount;
 
-    #[Api]
+    #[Required]
     public string $offsetDirection;
 
-    #[Api]
+    #[Required]
     public string $timeUnit;
 
     /**

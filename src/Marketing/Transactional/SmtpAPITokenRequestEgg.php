@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Transactional;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -23,13 +23,13 @@ final class SmtpAPITokenRequestEgg implements BaseModel
     /**
      * A name for the campaign tied to the SMTP API token.
      */
-    #[Api]
+    #[Required]
     public string $campaignName;
 
     /**
      * Indicates whether a contact should be created for email recipients.
      */
-    #[Api]
+    #[Required]
     public bool $createContact;
 
     /**

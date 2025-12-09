@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\Blogs\Tags;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -29,13 +29,13 @@ final class TagUpdateLangsParams implements BaseModel
      *
      * @var array<string,string> $languages
      */
-    #[Api(map: 'string')]
+    #[Required(map: 'string')]
     public array $languages;
 
     /**
      * ID of the primary object in the multi-language group.
      */
-    #[Api]
+    #[Required]
     public string $primaryId;
 
     /**

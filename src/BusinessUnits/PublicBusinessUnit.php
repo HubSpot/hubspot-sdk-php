@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\BusinessUnits;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -23,19 +24,19 @@ final class PublicBusinessUnit implements BaseModel
     /**
      * The Business Unit's unique ID.
      */
-    #[Api]
+    #[Required]
     public string $id;
 
     /**
      * The Business Unit's name.
      */
-    #[Api]
+    #[Required]
     public string $name;
 
     /**
      * A Business Unit's logo metadata.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?PublicBusinessUnitLogoMetadata $logoMetadata;
 
     /**

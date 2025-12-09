@@ -10,7 +10,7 @@ use HubspotSDK\Cms\Blogs\Posts\PostCreateParams\CurrentState;
 use HubspotSDK\Cms\Blogs\Posts\PostCreateParams\Language;
 use HubspotSDK\Cms\LayoutSection;
 use HubspotSDK\Cms\Pages\PagesContentLanguageVariation;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -109,26 +109,26 @@ final class PostCreateParams implements BaseModel
     /**
      * The unique ID of the blog post.
      */
-    #[Api]
+    #[Required]
     public string $id;
 
     /** @var value-of<AbStatus> $abStatus */
-    #[Api(enum: AbStatus::class)]
+    #[Required(enum: AbStatus::class)]
     public string $abStatus;
 
-    #[Api]
+    #[Required]
     public string $abTestId;
 
     /**
      * The timestamp (ISO8601 format) when this Blog Post was deleted.
      */
-    #[Api]
+    #[Required]
     public int $archivedAt;
 
     /**
      * If True, the post will not show up in your dashboard, although the post could still be live.
      */
-    #[Api]
+    #[Required]
     public bool $archivedInDashboard;
 
     /**
@@ -136,37 +136,37 @@ final class PostCreateParams implements BaseModel
      *
      * @var list<array<string,mixed>> $attachedStylesheets
      */
-    #[Api(list: new MapOf('mixed'))]
+    #[Required(list: new MapOf('mixed'))]
     public array $attachedStylesheets;
 
     /**
      * The name of the blog author associated with the post.
      */
-    #[Api]
+    #[Required]
     public string $authorName;
 
     /**
      * The ID of the blog author associated with this post.
      */
-    #[Api]
+    #[Required]
     public string $blogAuthorId;
 
     /**
      * The GUID of the marketing campaign the post is associated with.
      */
-    #[Api]
+    #[Required]
     public string $campaign;
 
     /**
      * ID of the object type.
      */
-    #[Api]
+    #[Required]
     public int $categoryId;
 
     /**
      * The ID of the post's parent blog.
      */
-    #[Api]
+    #[Required]
     public string $contentGroupId;
 
     /**
@@ -174,19 +174,19 @@ final class PostCreateParams implements BaseModel
      *
      * @var value-of<ContentTypeCategory> $contentTypeCategory
      */
-    #[Api(enum: ContentTypeCategory::class)]
+    #[Required(enum: ContentTypeCategory::class)]
     public string $contentTypeCategory;
 
-    #[Api]
+    #[Required]
     public \DateTimeInterface $created;
 
     /**
      * The ID of the user that created the post.
      */
-    #[Api]
+    #[Required]
     public string $createdById;
 
-    #[Api]
+    #[Required]
     public bool $currentlyPublished;
 
     /**
@@ -194,83 +194,83 @@ final class PostCreateParams implements BaseModel
      *
      * @var value-of<CurrentState> $currentState
      */
-    #[Api(enum: CurrentState::class)]
+    #[Required(enum: CurrentState::class)]
     public string $currentState;
 
     /**
      * The domain that the post lives on. If null, the post will default to the domain of the parent blog.
      */
-    #[Api]
+    #[Required]
     public string $domain;
 
-    #[Api]
+    #[Required]
     public string $dynamicPageDataSourceId;
 
-    #[Api]
+    #[Required]
     public int $dynamicPageDataSourceType;
 
     /**
      * For dynamic HubDB pages,
      * the ID of the HubDB table this post references.
      */
-    #[Api]
+    #[Required]
     public string $dynamicPageHubDbTableId;
 
     /**
      * Boolean to determine whether or not the styles from the template should be applied.
      */
-    #[Api]
+    #[Required]
     public bool $enableDomainStylesheets;
 
     /**
      * Boolean to allow overriding the AMP settings for the blog.
      */
-    #[Api]
+    #[Required]
     public bool $enableGoogleAmpOutputOverride;
 
     /**
      * Boolean to determine whether or not the styles from the template should be applied.
      */
-    #[Api]
+    #[Required]
     public bool $enableLayoutStylesheets;
 
     /**
      * The featuredImage of this Blog Post.
      */
-    #[Api]
+    #[Required]
     public string $featuredImage;
 
     /**
      * Alt Text of the featuredImage.
      */
-    #[Api]
+    #[Required]
     public string $featuredImageAltText;
 
-    #[Api]
+    #[Required]
     public string $folderId;
 
     /**
      * Custom HTML for embed codes, javascript that should be placed before the </body> tag of the page.
      */
-    #[Api]
+    #[Required]
     public string $footerHtml;
 
     /**
      * Custom HTML for embed codes, javascript, etc. that goes in the <head> tag of the page.
      */
-    #[Api]
+    #[Required]
     public string $headHtml;
 
     /**
      * The HTML title of the post.
      */
-    #[Api]
+    #[Required]
     public string $htmlTitle;
 
     /**
      * Boolean to determine whether or not the Primary CSS Files should be applied.
      */
-    #[Api]
+    #[Required]
     public bool $includeDefaultCustomCss;
 
     /**
@@ -278,62 +278,62 @@ final class PostCreateParams implements BaseModel
      *
      * @var value-of<Language> $language
      */
-    #[Api(enum: Language::class)]
+    #[Required(enum: Language::class)]
     public string $language;
 
     /** @var array<string,mixed> $layoutSections */
-    #[Api(map: LayoutSection::class)]
+    #[Required(map: LayoutSection::class)]
     public array $layoutSections;
 
     /**
      * Optional override to set the URL to be used in the rel=canonical link tag on the page.
      */
-    #[Api]
+    #[Required]
     public string $linkRelCanonicalUrl;
 
-    #[Api]
+    #[Required]
     public string $mabExperimentId;
 
     /**
      * A description that goes in <meta> tag on the page.
      */
-    #[Api]
+    #[Required]
     public string $metaDescription;
 
     /**
      * The internal name of the post.
      */
-    #[Api]
+    #[Required]
     public string $name;
 
-    #[Api]
+    #[Required]
     public int $pageExpiryDate;
 
-    #[Api]
+    #[Required]
     public bool $pageExpiryEnabled;
 
-    #[Api]
+    #[Required]
     public int $pageExpiryRedirectId;
 
-    #[Api]
+    #[Required]
     public string $pageExpiryRedirectUrl;
 
     /**
      * Set this to create a password protected page. Entering the password will be required to view the page.
      */
-    #[Api]
+    #[Required]
     public string $password;
 
     /**
      * The HTML of the main post body.
      */
-    #[Api]
+    #[Required]
     public string $postBody;
 
     /**
      * The summary of the blog post that will appear on the main listing page.
      */
-    #[Api]
+    #[Required]
     public string $postSummary;
 
     /**
@@ -341,49 +341,49 @@ final class PostCreateParams implements BaseModel
      *
      * @var list<mixed> $publicAccessRules
      */
-    #[Api(list: 'mixed')]
+    #[Required(list: 'mixed')]
     public array $publicAccessRules;
 
     /**
      * Boolean to determine whether or not to respect publicAccessRules.
      */
-    #[Api]
+    #[Required]
     public bool $publicAccessRulesEnabled;
 
     /**
      * The date (ISO8601 format) the blog post is to be published at.
      */
-    #[Api]
+    #[Required]
     public \DateTimeInterface $publishDate;
 
     /**
      * Set this to true if you want to be published immediately when the schedule publish endpoint is called, and to ignore the publish_date setting.
      */
-    #[Api]
+    #[Required]
     public bool $publishImmediately;
 
     /**
      * The contents of the RSS body for this Blog Post.
      */
-    #[Api]
+    #[Required]
     public string $rssBody;
 
     /**
      * The contents of the RSS summary for this Blog Post.
      */
-    #[Api]
+    #[Required]
     public string $rssSummary;
 
     /**
      * The URL slug of the blog post. This field is appended to the domain to construct the url of this post.
      */
-    #[Api]
+    #[Required]
     public string $slug;
 
     /**
      * An enumeration describing the current publish state of the post.
      */
-    #[Api]
+    #[Required]
     public string $state;
 
     /**
@@ -391,42 +391,42 @@ final class PostCreateParams implements BaseModel
      *
      * @var list<int> $tagIds
      */
-    #[Api(list: 'int')]
+    #[Required(list: 'int')]
     public array $tagIds;
 
     /** @var array<string,mixed> $themeSettingsValues */
-    #[Api(map: 'mixed')]
+    #[Required(map: 'mixed')]
     public array $themeSettingsValues;
 
     /**
      * ID of the primary blog post that this post was translated from.
      */
-    #[Api]
+    #[Required]
     public string $translatedFromId;
 
     /** @var array<string,PagesContentLanguageVariation> $translations */
-    #[Api(map: PagesContentLanguageVariation::class)]
+    #[Required(map: PagesContentLanguageVariation::class)]
     public array $translations;
 
-    #[Api]
+    #[Required]
     public \DateTimeInterface $updated;
 
     /**
      * The ID of the user that updated the post.
      */
-    #[Api]
+    #[Required]
     public string $updatedById;
 
     /**
      * A generated field representing the URL of this blog post.
      */
-    #[Api]
+    #[Required]
     public string $url;
 
     /**
      * Boolean to determine if this post should use a featured image.
      */
-    #[Api]
+    #[Required]
     public bool $useFeaturedImage;
 
     /**
@@ -434,7 +434,7 @@ final class PostCreateParams implements BaseModel
      *
      * @var array<string,mixed> $widgetContainers
      */
-    #[Api(map: 'mixed')]
+    #[Required(map: 'mixed')]
     public array $widgetContainers;
 
     /**
@@ -442,7 +442,7 @@ final class PostCreateParams implements BaseModel
      *
      * @var array<string,mixed> $widgets
      */
-    #[Api(map: 'mixed')]
+    #[Required(map: 'mixed')]
     public array $widgets;
 
     /**

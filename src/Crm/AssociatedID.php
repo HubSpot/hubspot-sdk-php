@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -21,13 +21,13 @@ final class AssociatedID implements BaseModel
     /**
      * The ID for the association type.
      */
-    #[Api]
+    #[Required]
     public string $id;
 
     /**
      * The type of association.
      */
-    #[Api]
+    #[Required]
     public string $type;
 
     /**

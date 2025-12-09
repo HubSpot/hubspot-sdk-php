@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Scheduler\Meetings;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -18,10 +18,10 @@ final class ExternalReminder implements BaseModel
     /** @use SdkModel<ExternalReminderShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public int $numberOfTimeUnits;
 
-    #[Api]
+    #[Required]
     public string $timeUnit;
 
     /**

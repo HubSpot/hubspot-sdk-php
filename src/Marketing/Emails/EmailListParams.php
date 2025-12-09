@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Emails;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -47,37 +47,37 @@ final class EmailListParams implements BaseModel
     /**
      * The cursor token value to get the next set of results. You can get this from the `paging.next.after` JSON property of a paged response containing more results.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $after;
 
     /**
      * Specifies whether to return archived emails. Defaults to `false`.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $archived;
 
     /**
      * Filter by campaign GUID. All emails will be returned if not present.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $campaign;
 
     /**
      * Only return emails created after the specified time.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $createdAfter;
 
     /**
      * Only return emails created at exactly the specified time.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $createdAt;
 
     /**
      * Only return emails created before the specified time.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $createdBefore;
 
     /**
@@ -85,40 +85,40 @@ final class EmailListParams implements BaseModel
      *
      * @var list<string>|null $includedProperties
      */
-    #[Api(list: 'string', optional: true)]
+    #[Optional(list: 'string')]
     public ?array $includedProperties;
 
     /**
      * Include statistics with emails.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $includeStats;
 
     /**
      * Filter by published/draft emails. All emails will be returned if not present.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $isPublished;
 
     /**
      * The maximum number of results to return. Default is 10.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $limit;
 
     /**
      * Include the names for any associated marketing campaigns.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $marketingCampaignNames;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $publishedAfter;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $publishedAt;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $publishedBefore;
 
     /**
@@ -126,7 +126,7 @@ final class EmailListParams implements BaseModel
      *
      * @var list<string>|null $sort
      */
-    #[Api(list: 'string', optional: true)]
+    #[Optional(list: 'string')]
     public ?array $sort;
 
     /**
@@ -134,31 +134,31 @@ final class EmailListParams implements BaseModel
      *
      * @var value-of<Type>|null $type
      */
-    #[Api(enum: Type::class, optional: true)]
+    #[Optional(enum: Type::class)]
     public ?string $type;
 
     /**
      * Only return emails last updated after the specified time.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $updatedAfter;
 
     /**
      * Only return emails last updated at exactly the specified time.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $updatedAt;
 
     /**
      * Only return emails last updated before the specified time.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $updatedBefore;
 
     /**
      * Include the names of any workflows associated with the returned emails.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $workflowNames;
 
     public function __construct()

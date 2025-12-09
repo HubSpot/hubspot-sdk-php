@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Automation\Workflows;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -18,10 +18,10 @@ final class FlowIDWorkflowIDMappingResponse implements BaseModel
     /** @use SdkModel<FlowIDWorkflowIDMappingResponseShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public int $flowId;
 
-    #[Api]
+    #[Required]
     public int $workflowId;
 
     /**

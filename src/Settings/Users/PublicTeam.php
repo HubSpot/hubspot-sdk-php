@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Settings\Users;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -26,13 +26,13 @@ final class PublicTeam implements BaseModel
     /**
      * The team's unique ID.
      */
-    #[Api]
+    #[Required]
     public string $id;
 
     /**
      * The team's name.
      */
-    #[Api]
+    #[Required]
     public string $name;
 
     /**
@@ -40,7 +40,7 @@ final class PublicTeam implements BaseModel
      *
      * @var list<string> $secondaryUserIds
      */
-    #[Api(list: 'string')]
+    #[Required(list: 'string')]
     public array $secondaryUserIds;
 
     /**
@@ -48,7 +48,7 @@ final class PublicTeam implements BaseModel
      *
      * @var list<string> $userIds
      */
-    #[Api(list: 'string')]
+    #[Required(list: 'string')]
     public array $userIds;
 
     /**

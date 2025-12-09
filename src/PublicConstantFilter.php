@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicConstantFilter\FilterType;
@@ -20,13 +21,13 @@ final class PublicConstantFilter implements BaseModel
     use SdkModel;
 
     /** @var value-of<FilterType> $filterType */
-    #[Api(enum: FilterType::class)]
+    #[Required(enum: FilterType::class)]
     public string $filterType;
 
-    #[Api]
+    #[Required]
     public bool $shouldAccept;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $source;
 
     /**

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Associations\V4;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicObjectID;
@@ -19,11 +19,11 @@ final class PublicAssociationMultiArchive implements BaseModel
     /** @use SdkModel<PublicAssociationMultiArchiveShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public PublicObjectID $from;
 
     /** @var list<PublicObjectID> $to */
-    #[Api(list: PublicObjectID::class)]
+    #[Required(list: PublicObjectID::class)]
     public array $to;
 
     /**

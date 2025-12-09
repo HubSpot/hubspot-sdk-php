@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\MediaBridge;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Properties\PropertyGroup;
@@ -20,7 +20,7 @@ final class CollectionResponsePropertyGroupNoPaging implements BaseModel
     use SdkModel;
 
     /** @var list<PropertyGroup> $results */
-    #[Api(list: PropertyGroup::class)]
+    #[Required(list: PropertyGroup::class)]
     public array $results;
 
     /**

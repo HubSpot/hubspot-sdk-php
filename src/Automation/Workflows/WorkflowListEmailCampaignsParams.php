@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Automation\Workflows;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -22,17 +22,17 @@ final class WorkflowListEmailCampaignsParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $after;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $before;
 
     /** @var list<string>|null $flowId */
-    #[Api(list: 'string', optional: true)]
+    #[Optional(list: 'string')]
     public ?array $flowId;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $limit;
 
     public function __construct()

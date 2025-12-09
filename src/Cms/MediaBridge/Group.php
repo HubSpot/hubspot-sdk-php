@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\MediaBridge;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -25,28 +25,28 @@ final class Group implements BaseModel
     /** @use SdkModel<GroupShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public bool $deleted;
 
-    #[Api]
+    #[Required]
     public string $displayName;
 
-    #[Api]
+    #[Required]
     public int $displayOrder;
 
-    #[Api]
+    #[Required]
     public int $fulcrumPortalId;
 
-    #[Api]
+    #[Required]
     public int $fulcrumTimestamp;
 
-    #[Api]
+    #[Required]
     public bool $hubspotDefined;
 
-    #[Api]
+    #[Required]
     public string $name;
 
-    #[Api]
+    #[Required]
     public int $portalId;
 
     /**

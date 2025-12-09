@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Forms;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Marketing\Forms\DependentFieldFilter\Operator;
@@ -25,13 +25,13 @@ final class DependentField implements BaseModel
     /**
      * A condition based on customer input.
      */
-    #[Api]
+    #[Required]
     public DependentFieldFilter $dependentCondition;
 
     /**
      * A form field used for collecting an email address.
      */
-    #[Api]
+    #[Required]
     public EmailField|PhoneField|MobilePhoneField|SingleLineTextField|MultiLineTextField|NumberField|SingleCheckboxField|MultipleCheckboxesField|DropdownField|RadioField|DatepickerField|FileField|PaymentLinkRadioField $dependentField;
 
     /**

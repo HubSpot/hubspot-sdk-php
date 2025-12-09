@@ -2,7 +2,8 @@
 
 namespace Tests\Core;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use PHPUnit\Framework\Attributes\CoversNothing;
@@ -14,17 +15,17 @@ class TestModel implements BaseModel
     /** @use SdkModel<array<string, mixed>> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public string $name;
 
-    #[Api('age_years')]
+    #[Required('age_years')]
     public int $ageYears;
 
     /** @var list<string>|null */
-    #[Api(optional: true)]
+    #[Optional]
     public ?array $friends;
 
-    #[Api]
+    #[Required]
     public ?string $owner;
 
     /**

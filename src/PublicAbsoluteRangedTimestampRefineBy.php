@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicAbsoluteRangedTimestampRefineBy\Type;
@@ -22,17 +22,17 @@ final class PublicAbsoluteRangedTimestampRefineBy implements BaseModel
     /** @use SdkModel<PublicAbsoluteRangedTimestampRefineByShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public int $lowerTimestamp;
 
-    #[Api]
+    #[Required]
     public string $rangeType;
 
     /** @var value-of<Type> $type */
-    #[Api(enum: Type::class)]
+    #[Required(enum: Type::class)]
     public string $type;
 
-    #[Api]
+    #[Required]
     public int $upperTimestamp;
 
     /**

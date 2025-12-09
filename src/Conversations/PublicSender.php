@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Conversations;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -21,16 +21,16 @@ final class PublicSender implements BaseModel
     /** @use SdkModel<PublicSenderShape> */
     use SdkModel;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $actorId;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?PublicDeliveryIdentifier $deliveryIdentifier;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $name;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $senderField;
 
     public function __construct()

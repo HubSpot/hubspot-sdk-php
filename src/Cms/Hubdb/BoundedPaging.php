@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\Hubdb;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -16,7 +16,7 @@ final class BoundedPaging implements BaseModel
     /** @use SdkModel<BoundedPagingShape> */
     use SdkModel;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?BoundedNextPage $next;
 
     public function __construct()

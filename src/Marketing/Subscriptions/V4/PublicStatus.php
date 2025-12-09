@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Subscriptions\V4;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Marketing\Subscriptions\V4\PublicStatus\Channel;
@@ -37,13 +38,13 @@ final class PublicStatus implements BaseModel
      *
      * @var value-of<Channel> $channel
      */
-    #[Api(enum: Channel::class)]
+    #[Required(enum: Channel::class)]
     public string $channel;
 
     /**
      * The origin or method through which the subscription status was set.
      */
-    #[Api]
+    #[Required]
     public string $source;
 
     /**
@@ -51,31 +52,31 @@ final class PublicStatus implements BaseModel
      *
      * @var value-of<Status> $status
      */
-    #[Api(enum: Status::class)]
+    #[Required(enum: Status::class)]
     public string $status;
 
     /**
      * The contact's email address.
      */
-    #[Api]
+    #[Required]
     public string $subscriberIdString;
 
     /**
      * The unique identifier of the subscription.
      */
-    #[Api]
+    #[Required]
     public int $subscriptionId;
 
     /**
      * The date and time when the subscription status was last updated.
      */
-    #[Api]
+    #[Required]
     public \DateTimeInterface $timestamp;
 
     /**
      * The ID of the business unit associated with the subscription.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $businessUnitId;
 
     /**
@@ -83,13 +84,13 @@ final class PublicStatus implements BaseModel
      *
      * @var value-of<LegalBasis>|null $legalBasis
      */
-    #[Api(enum: LegalBasis::class, optional: true)]
+    #[Optional(enum: LegalBasis::class)]
     public ?string $legalBasis;
 
     /**
      * An explanation for the legal basis used for communication.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $legalBasisExplanation;
 
     /**
@@ -97,13 +98,13 @@ final class PublicStatus implements BaseModel
      *
      * @var value-of<SetStatusSuccessReason>|null $setStatusSuccessReason
      */
-    #[Api(enum: SetStatusSuccessReason::class, optional: true)]
+    #[Optional(enum: SetStatusSuccessReason::class)]
     public ?string $setStatusSuccessReason;
 
     /**
      * The name of the subscription.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $subscriptionName;
 
     /**

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Emails;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -26,19 +26,19 @@ final class PublicEmailSubscriptionDetails implements BaseModel
     /**
      * ID of the selected office location.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $officeLocationId;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $preferencesGroupId;
 
     /**
      * ID of the subscription.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $subscriptionId;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $subscriptionName;
 
     public function __construct()

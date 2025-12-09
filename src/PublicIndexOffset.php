@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -26,31 +26,31 @@ final class PublicIndexOffset implements BaseModel
     /** @use SdkModel<PublicIndexOffsetShape> */
     use SdkModel;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $days;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $hours;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $milliseconds;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $minutes;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $months;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $quarters;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $seconds;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $weeks;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $years;
 
     public function __construct()

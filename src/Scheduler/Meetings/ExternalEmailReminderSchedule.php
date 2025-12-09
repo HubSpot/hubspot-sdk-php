@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Scheduler\Meetings;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -19,10 +19,10 @@ final class ExternalEmailReminderSchedule implements BaseModel
     use SdkModel;
 
     /** @var list<ExternalReminder> $reminders */
-    #[Api(list: ExternalReminder::class)]
+    #[Required(list: ExternalReminder::class)]
     public array $reminders;
 
-    #[Api]
+    #[Required]
     public bool $shouldIncludeInviteDescription;
 
     /**

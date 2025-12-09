@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\MediaBridge;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -24,23 +25,23 @@ final class ExtensionData implements BaseModel
     use SdkModel;
 
     /** @var array<string,string> $extensionStatusMap */
-    #[Api(map: 'string')]
+    #[Required(map: 'string')]
     public array $extensionStatusMap;
 
     /** @var list<string> $tags */
-    #[Api(list: 'string')]
+    #[Required(list: 'string')]
     public array $tags;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?CaseChangeTestExtensionData $caseChangeTestExtensionData;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?OptionDecoratorsExtensionData $optionDecoratorsExtensionData;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?RequiredPropertiesExtensionData $requiredPropertiesExtensionData;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?SoftRequiredPropertiesExtensionData $softRequiredPropertiesExtensionData;
 
     /**

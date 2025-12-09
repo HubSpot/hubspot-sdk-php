@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\Pages;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -31,48 +32,48 @@ final class PagesContentLanguageVariation implements BaseModel
     /** @use SdkModel<PagesContentLanguageVariationShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public int $id;
 
-    #[Api]
+    #[Required]
     public bool $archivedInDashboard;
 
-    #[Api]
+    #[Required]
     public string $authorName;
 
-    #[Api]
+    #[Required]
     public string $campaign;
 
-    #[Api]
+    #[Required]
     public \DateTimeInterface $created;
 
-    #[Api]
+    #[Required]
     public string $name;
 
-    #[Api]
+    #[Required]
     public string $password;
 
     /** @var list<mixed> $publicAccessRules */
-    #[Api(list: 'mixed')]
+    #[Required(list: 'mixed')]
     public array $publicAccessRules;
 
-    #[Api]
+    #[Required]
     public bool $publicAccessRulesEnabled;
 
-    #[Api]
+    #[Required]
     public \DateTimeInterface $publishDate;
 
-    #[Api]
+    #[Required]
     public string $slug;
 
-    #[Api]
+    #[Required]
     public string $state;
 
-    #[Api]
+    #[Required]
     public \DateTimeInterface $updated;
 
     /** @var list<int>|null $tagIds */
-    #[Api(list: 'int', optional: true)]
+    #[Optional(list: 'int')]
     public ?array $tagIds;
 
     /**

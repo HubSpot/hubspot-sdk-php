@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\MediaBridge;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -18,11 +18,11 @@ final class FilteringMetaData implements BaseModel
     /** @use SdkModel<FilteringMetaDataShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public bool $includeUnconfirmedUsers;
 
     /** @var list<string> $pipelineIds */
-    #[Api(list: 'string')]
+    #[Required(list: 'string')]
     public array $pipelineIds;
 
     /**

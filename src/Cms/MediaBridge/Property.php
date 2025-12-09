@@ -13,7 +13,7 @@ use HubspotSDK\Cms\MediaBridge\Property\ReferencedObjectType;
 use HubspotSDK\Cms\MediaBridge\Property\SearchTextAnalysisMode;
 use HubspotSDK\Cms\MediaBridge\Property\TextDisplayHint;
 use HubspotSDK\Cms\MediaBridge\Property\Type;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Option;
@@ -81,37 +81,37 @@ final class Property implements BaseModel
      *
      * @var list<ObjectTypeIDProto> $allowedObjectTypes
      */
-    #[Api(list: ObjectTypeIDProto::class)]
+    #[Required(list: ObjectTypeIDProto::class)]
     public array $allowedObjectTypes;
 
     /**
      * Whether the property is a calculated field.
      */
-    #[Api]
+    #[Required]
     public bool $calculated;
 
-    #[Api]
+    #[Required]
     public bool $canArchive;
 
-    #[Api]
+    #[Required]
     public bool $canRestore;
 
     /**
      * The timestamp when the property was created, in ISO 8601 format.
      */
-    #[Api]
+    #[Required]
     public int $createdAt;
 
     /**
      * The ID of the user who created the property.
      */
-    #[Api]
+    #[Required]
     public int $createdUserId;
 
     /**
      * The name of the related currency property.
      */
-    #[Api]
+    #[Required]
     public string $currencyPropertyName;
 
     /**
@@ -119,23 +119,23 @@ final class Property implements BaseModel
      *
      * @var value-of<DataSensitivity> $dataSensitivity
      */
-    #[Api(enum: DataSensitivity::class)]
+    #[Required(enum: DataSensitivity::class)]
     public string $dataSensitivity;
 
     /** @var value-of<DateDisplayHint> $dateDisplayHint */
-    #[Api(enum: DateDisplayHint::class)]
+    #[Required(enum: DateDisplayHint::class)]
     public string $dateDisplayHint;
 
     /**
      * Whether the property has been deleted.
      */
-    #[Api]
+    #[Required]
     public bool $deleted;
 
     /**
      * A summary of the property's purpose.
      */
-    #[Api]
+    #[Required]
     public string $description;
 
     /**
@@ -143,118 +143,118 @@ final class Property implements BaseModel
      *
      * @var value-of<DisplayMode> $displayMode
      */
-    #[Api(enum: DisplayMode::class)]
+    #[Required(enum: DisplayMode::class)]
     public string $displayMode;
 
     /**
      * The position of the item relative to others in the list.
      */
-    #[Api]
+    #[Required]
     public int $displayOrder;
 
-    #[Api]
+    #[Required]
     public bool $enforceMultivalueUniqueness;
 
     /**
      * Applicable only for enumeration type properties. Should be set to true with a 'referencedObjectType' of 'OWNER'. Otherwise false.
      */
-    #[Api]
+    #[Required]
     public bool $externalOptions;
 
     /**
      * When externalOptions is true, indicates the property's option values will be populated from other systems (e.g., "OWNER" for the hubspot_owner_id property).
      */
-    #[Api]
+    #[Required]
     public string $externalOptionsReferenceType;
 
     /**
      * Deprecated. Whether the property is marked as a favorite.
      */
-    #[Api]
+    #[Required]
     public bool $favorited;
 
     /**
      * Deprecated. The order position when marked as favorited.
      */
-    #[Api]
+    #[Required]
     public int $favoritedOrder;
 
     /**
      * Determines how the property will appear in HubSpot's UI or on a form. Learn more in the properties API guide.
      */
-    #[Api]
+    #[Required]
     public string $fieldType;
 
     /**
      * Whether the property can appear on forms.
      */
-    #[Api]
+    #[Required]
     public bool $formField;
 
     /**
      * The ID of the user who last updated the property.
      */
-    #[Api]
+    #[Required]
     public int $fromUserId;
 
     /**
      * The name of the group to which the property is assigned.
      */
-    #[Api]
+    #[Required]
     public string $groupName;
 
     /**
      * Whether the property is a unique identifier property.
      */
-    #[Api]
+    #[Required]
     public bool $hasUniqueValue;
 
     /**
      * Whether or not the property will be hidden from the HubSpot UI. It's recommended that this be set to false for custom properties.
      */
-    #[Api]
+    #[Required]
     public bool $hidden;
 
     /**
      * A boolean value set to true for HubSpot default properties.
      */
-    #[Api]
+    #[Required]
     public bool $hubspotDefined;
 
     /**
      * For default properties, whether the property has been customized. Equivalent to the 'isCustomizedDefault' field.
      */
-    #[Api]
+    #[Required]
     public bool $isCustomizedDefault;
 
     /**
      * Whether the property can contain multiple values.
      */
-    #[Api]
+    #[Required]
     public bool $isMultiValued;
 
     /**
      * For default properties, whether the property has been customized. Equivalent to the 'isCustomizedDefault' field.
      */
-    #[Api]
+    #[Required]
     public bool $isPartial;
 
     /**
      * The display label for the property.
      */
-    #[Api]
+    #[Required]
     public string $label;
 
     /**
      * Whether the property definition can be customized but not deleted.
      */
-    #[Api]
+    #[Required]
     public bool $mutableDefinitionNotDeletable;
 
     /**
      * The internal name for the property.
      */
-    #[Api]
+    #[Required]
     public string $name;
 
     /**
@@ -262,7 +262,7 @@ final class Property implements BaseModel
      *
      * @var value-of<NumberDisplayHint> $numberDisplayHint
      */
-    #[Api(enum: NumberDisplayHint::class)]
+    #[Required(enum: NumberDisplayHint::class)]
     public string $numberDisplayHint;
 
     /**
@@ -270,13 +270,13 @@ final class Property implements BaseModel
      *
      * @var list<Option> $options
      */
-    #[Api(list: Option::class)]
+    #[Required(list: Option::class)]
     public array $options;
 
     /**
      * Whether options can be modified after creation.
      */
-    #[Api]
+    #[Required]
     public bool $optionsAreMutable;
 
     /**
@@ -284,28 +284,28 @@ final class Property implements BaseModel
      *
      * @var value-of<OptionSortStrategy> $optionSortStrategy
      */
-    #[Api(enum: OptionSortStrategy::class)]
+    #[Required(enum: OptionSortStrategy::class)]
     public string $optionSortStrategy;
 
-    #[Api]
+    #[Required]
     public int $owningAppId;
 
     /**
      * The ID of the HubSpot account where the property is defined.
      */
-    #[Api]
+    #[Required]
     public int $portalId;
 
     /**
      * Whether the property's description is read-only.
      */
-    #[Api]
+    #[Required]
     public bool $readOnlyDefinition;
 
     /**
      * Indicates if the property's value is read-only.
      */
-    #[Api]
+    #[Required]
     public bool $readOnlyValue;
 
     /**
@@ -313,17 +313,17 @@ final class Property implements BaseModel
      *
      * @var value-of<ReferencedObjectType> $referencedObjectType
      */
-    #[Api(enum: ReferencedObjectType::class)]
+    #[Required(enum: ReferencedObjectType::class)]
     public string $referencedObjectType;
 
     /**
      * Whether the property is searchable globaly.
      */
-    #[Api]
+    #[Required]
     public bool $searchableInGlobalSearch;
 
     /** @var value-of<SearchTextAnalysisMode> $searchTextAnalysisMode */
-    #[Api(enum: SearchTextAnalysisMode::class)]
+    #[Required(enum: SearchTextAnalysisMode::class)]
     public string $searchTextAnalysisMode;
 
     /**
@@ -331,13 +331,13 @@ final class Property implements BaseModel
      *
      * @var list<string> $sensitiveDataCategories
      */
-    #[Api(list: 'string')]
+    #[Required(list: 'string')]
     public array $sensitiveDataCategories;
 
     /**
      * Whether to show the currency symbol in HubSpot's UI.
      */
-    #[Api]
+    #[Required]
     public bool $showCurrencySymbol;
 
     /**
@@ -345,7 +345,7 @@ final class Property implements BaseModel
      *
      * @var value-of<TextDisplayHint> $textDisplayHint
      */
-    #[Api(enum: TextDisplayHint::class)]
+    #[Required(enum: TextDisplayHint::class)]
     public string $textDisplayHint;
 
     /**
@@ -353,13 +353,13 @@ final class Property implements BaseModel
      *
      * @var value-of<Type> $type
      */
-    #[Api(enum: Type::class)]
+    #[Required(enum: Type::class)]
     public string $type;
 
     /**
      * The timestamp when the property was last updated, in ISO 8601 format.
      */
-    #[Api]
+    #[Required]
     public int $updatedAt;
 
     /**

@@ -5,7 +5,8 @@ declare(strict_types=1);
 namespace HubspotSDK\Cms\Blogs\Tags;
 
 use HubspotSDK\Cms\Blogs\Tags\TagUpdateParams\Language;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -36,16 +37,16 @@ final class TagUpdateParams implements BaseModel
     /**
      * The unique ID of the Blog Tag.
      */
-    #[Api]
+    #[Required]
     public string $id;
 
-    #[Api]
+    #[Required]
     public \DateTimeInterface $created;
 
     /**
      * The timestamp (ISO8601 format) when this Blog Tag was deleted.
      */
-    #[Api]
+    #[Required]
     public \DateTimeInterface $deletedAt;
 
     /**
@@ -53,28 +54,28 @@ final class TagUpdateParams implements BaseModel
      *
      * @var value-of<Language> $language
      */
-    #[Api(enum: Language::class)]
+    #[Required(enum: Language::class)]
     public string $language;
 
     /**
      * The name of the tag.
      */
-    #[Api]
+    #[Required]
     public string $name;
 
     /**
      * ID of the primary tag this object was translated from.
      */
-    #[Api]
+    #[Required]
     public int $translatedFromId;
 
-    #[Api]
+    #[Required]
     public \DateTimeInterface $updated;
 
     /**
      * Specifies whether to update deleted Blog Tags. Defaults to `false`.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $archived;
 
     /**

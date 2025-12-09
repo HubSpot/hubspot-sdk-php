@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Timeline;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Timeline\TimelineEventTemplateToken\Type;
@@ -31,19 +32,19 @@ final class TimelineEventTemplate implements BaseModel
     /**
      * The template ID.
      */
-    #[Api]
+    #[Required]
     public string $id;
 
     /**
      * The template name.
      */
-    #[Api]
+    #[Required]
     public string $name;
 
     /**
      * The type of CRM object this template is for. [Contacts, companies, tickets, and deals] are supported.
      */
-    #[Api]
+    #[Required]
     public string $objectType;
 
     /**
@@ -51,31 +52,31 @@ final class TimelineEventTemplate implements BaseModel
      *
      * @var list<TimelineEventTemplateToken> $tokens
      */
-    #[Api(list: TimelineEventTemplateToken::class)]
+    #[Required(list: TimelineEventTemplateToken::class)]
     public array $tokens;
 
     /**
      * The date and time that the Event Template was created, as an ISO 8601 timestamp. Will be null if the template was created before Feb 18th, 2020.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $createdAt;
 
     /**
      * This uses Markdown syntax with Handlebars and event-specific data to render HTML on a timeline when you expand the details.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $detailTemplate;
 
     /**
      * This uses Markdown syntax with Handlebars and event-specific data to render HTML on a timeline as a header.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $headerTemplate;
 
     /**
      * The date and time that the Event Template was last updated, as an ISO 8601 timestamp. Will be null if the template was created before Feb 18th, 2020.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $updatedAt;
 
     /**

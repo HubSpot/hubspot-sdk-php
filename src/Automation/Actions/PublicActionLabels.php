@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Automation\Actions;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\MapOf;
@@ -27,36 +28,36 @@ final class PublicActionLabels implements BaseModel
     /** @use SdkModel<PublicActionLabelsShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public string $actionName;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $actionCardContent;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $actionDescription;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $appDisplayName;
 
     /** @var array<string,string>|null $executionRules */
-    #[Api(map: 'string', optional: true)]
+    #[Optional(map: 'string')]
     public ?array $executionRules;
 
     /** @var array<string,string>|null $inputFieldDescriptions */
-    #[Api(map: 'string', optional: true)]
+    #[Optional(map: 'string')]
     public ?array $inputFieldDescriptions;
 
     /** @var array<string,string>|null $inputFieldLabels */
-    #[Api(map: 'string', optional: true)]
+    #[Optional(map: 'string')]
     public ?array $inputFieldLabels;
 
     /** @var array<string,array<string,string>>|null $inputFieldOptionLabels */
-    #[Api(map: new MapOf('string'), optional: true)]
+    #[Optional(map: new MapOf('string'))]
     public ?array $inputFieldOptionLabels;
 
     /** @var array<string,string>|null $outputFieldLabels */
-    #[Api(map: 'string', optional: true)]
+    #[Optional(map: 'string')]
     public ?array $outputFieldLabels;
 
     /**

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\Pages\LandingPages;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -37,40 +37,40 @@ final class LandingPageListParams implements BaseModel
     /**
      * The cursor token value to get the next set of results. You can get this from the `paging.next.after` JSON property of a paged response containing more results.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $after;
 
     /**
      * Specifies whether to return deleted Landing Pages. Defaults to `false`.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $archived;
 
     /**
      * Only return Landing Pages created after the specified time.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $createdAfter;
 
     /**
      * Only return Landing Pages created at exactly the specified time.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $createdAt;
 
     /**
      * Only return Landing Pages created before the specified time.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $createdBefore;
 
     /**
      * The maximum number of results to return. Default is 100.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $limit;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $property;
 
     /**
@@ -78,25 +78,25 @@ final class LandingPageListParams implements BaseModel
      *
      * @var list<string>|null $sort
      */
-    #[Api(list: 'string', optional: true)]
+    #[Optional(list: 'string')]
     public ?array $sort;
 
     /**
      * Only return Landing Pages last updated after the specified time.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $updatedAfter;
 
     /**
      * Only return Landing Pages last updated at exactly the specified time.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $updatedAt;
 
     /**
      * Only return Landing Pages last updated before the specified time.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $updatedBefore;
 
     public function __construct()

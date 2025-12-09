@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\NextPage;
@@ -22,16 +23,16 @@ final class CollectionResponseWithTotalSimplePublicObject implements BaseModel
     use SdkModel;
 
     /** @var list<SimplePublicObject> $results */
-    #[Api(list: SimplePublicObject::class)]
+    #[Required(list: SimplePublicObject::class)]
     public array $results;
 
     /**
      * The total number of objects in the collection.
      */
-    #[Api]
+    #[Required]
     public int $total;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?Paging $paging;
 
     /**

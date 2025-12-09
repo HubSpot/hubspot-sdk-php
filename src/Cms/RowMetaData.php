@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -16,10 +16,10 @@ final class RowMetaData implements BaseModel
     /** @use SdkModel<RowMetaDataShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public string $cssClass;
 
-    #[Api]
+    #[Required]
     public Styles $styles;
 
     /**

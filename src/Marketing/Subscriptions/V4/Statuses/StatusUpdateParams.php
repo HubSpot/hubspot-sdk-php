@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Subscriptions\V4\Statuses;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -36,7 +37,7 @@ final class StatusUpdateParams implements BaseModel
      *
      * @var value-of<Channel> $channel
      */
-    #[Api(enum: Channel::class)]
+    #[Required(enum: Channel::class)]
     public string $channel;
 
     /**
@@ -44,13 +45,13 @@ final class StatusUpdateParams implements BaseModel
      *
      * @var value-of<StatusState> $statusState
      */
-    #[Api(enum: StatusState::class)]
+    #[Required(enum: StatusState::class)]
     public string $statusState;
 
     /**
      * The unique identifier of the subscription to be updated.
      */
-    #[Api]
+    #[Required]
     public int $subscriptionId;
 
     /**
@@ -58,13 +59,13 @@ final class StatusUpdateParams implements BaseModel
      *
      * @var value-of<LegalBasis>|null $legalBasis
      */
-    #[Api(enum: LegalBasis::class, optional: true)]
+    #[Optional(enum: LegalBasis::class)]
     public ?string $legalBasis;
 
     /**
      * An explanation for the legal basis used for communication.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $legalBasisExplanation;
 
     /**

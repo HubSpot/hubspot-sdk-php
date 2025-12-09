@@ -7,7 +7,8 @@ namespace HubspotSDK\Automation\Actions;
 use HubspotSDK\Automation\Actions\FieldTypeDefinition\FieldType;
 use HubspotSDK\Automation\Actions\FieldTypeDefinition\ReferencedObjectType;
 use HubspotSDK\Automation\Actions\FieldTypeDefinition\Type;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Option;
@@ -32,41 +33,41 @@ final class FieldTypeDefinition implements BaseModel
     /** @use SdkModel<FieldTypeDefinitionShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public bool $externalOptions;
 
-    #[Api]
+    #[Required]
     public string $name;
 
     /** @var list<Option> $options */
-    #[Api(list: Option::class)]
+    #[Required(list: Option::class)]
     public array $options;
 
     /** @var value-of<Type> $type */
-    #[Api(enum: Type::class)]
+    #[Required(enum: Type::class)]
     public string $type;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $description;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $externalOptionsReferenceType;
 
     /** @var value-of<FieldType>|null $fieldType */
-    #[Api(enum: FieldType::class, optional: true)]
+    #[Optional(enum: FieldType::class)]
     public ?string $fieldType;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $helpText;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $label;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $optionsUrl;
 
     /** @var value-of<ReferencedObjectType>|null $referencedObjectType */
-    #[Api(enum: ReferencedObjectType::class, optional: true)]
+    #[Optional(enum: ReferencedObjectType::class)]
     public ?string $referencedObjectType;
 
     /**

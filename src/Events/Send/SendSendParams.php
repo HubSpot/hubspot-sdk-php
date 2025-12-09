@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Events\Send;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -33,7 +34,7 @@ final class SendSendParams implements BaseModel
     /**
      * The internal name of the event (`pe<portalID>_eventName`). Can be retrieved through the [event definitions API](https://developers.hubspot.com/docs/reference/api/analytics-and-events/custom-events/custom-event-definitions#get-%2Fevents%2Fv3%2Fevent-definitions) or in [HubSpot's UI](https://knowledge.hubspot.com/reports/create-custom-behavioral-events-with-the-code-wizard#find-internal-name).
      */
-    #[Api]
+    #[Required]
     public string $eventName;
 
     /**
@@ -41,37 +42,37 @@ final class SendSendParams implements BaseModel
      *
      * @var array<string,string> $properties
      */
-    #[Api(map: 'string')]
+    #[Required(map: 'string')]
     public array $properties;
 
     /**
      * The visitor's email address. Used for associating the event data with a CRM record.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $email;
 
     /**
      * The ID of the object that completed the event (e.g., contact ID or visitor ID).
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $objectId;
 
     /**
      * The time when this event occurred. If this isn't set, the current time will be used.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $occurredAt;
 
     /**
      * The visitor's usertoken. Used for associating the event data with a CRM record.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $utk;
 
     /**
      * Include a universally unique identifier to assign a unique ID to the event completion. Can be useful for matching data between HubSpot and other external systems.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $uuid;
 
     /**

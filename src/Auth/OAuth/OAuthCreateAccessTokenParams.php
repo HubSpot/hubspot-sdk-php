@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Auth\OAuth;
 
 use HubspotSDK\Auth\OAuth\OAuthCreateAccessTokenParams\GrantType;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -36,29 +36,29 @@ final class OAuthCreateAccessTokenParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $client_secret;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $refresh_token;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $client_id;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $code;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $code_verifier;
 
     /** @var value-of<GrantType>|null $grant_type */
-    #[Api(enum: GrantType::class, optional: true)]
+    #[Optional(enum: GrantType::class)]
     public ?string $grant_type;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $redirect_uri;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $scope;
 
     public function __construct()

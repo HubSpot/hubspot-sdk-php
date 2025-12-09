@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Page\Paging;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -16,7 +16,7 @@ final class Next implements BaseModel
     /** @use SdkModel<NextShape> */
     use SdkModel;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $after;
 
     public function __construct()

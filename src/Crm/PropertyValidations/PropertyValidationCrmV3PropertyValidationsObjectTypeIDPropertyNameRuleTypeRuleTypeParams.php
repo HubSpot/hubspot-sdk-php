@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\PropertyValidations;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -26,10 +26,10 @@ final class PropertyValidationCrmV3PropertyValidationsObjectTypeIDPropertyNameRu
     use SdkModel;
     use SdkParams;
 
-    #[Api]
+    #[Required]
     public string $objectTypeId;
 
-    #[Api]
+    #[Required]
     public string $propertyName;
 
     /**
@@ -37,7 +37,7 @@ final class PropertyValidationCrmV3PropertyValidationsObjectTypeIDPropertyNameRu
      *
      * @var list<string> $ruleArguments
      */
-    #[Api(list: 'string')]
+    #[Required(list: 'string')]
     public array $ruleArguments;
 
     /**

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Limits;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -26,37 +26,37 @@ final class LimitAndUsageForObjectType implements BaseModel
     /**
      * The maximum allowed count for the object type.
      */
-    #[Api]
+    #[Required]
     public int $limit;
 
     /**
      * The unique identifier for the object type.
      */
-    #[Api]
+    #[Required]
     public string $objectTypeId;
 
     /**
      * The percentage of the limit that has been used.
      */
-    #[Api]
+    #[Required]
     public float $percentage;
 
     /**
      * The plural label for the object type.
      */
-    #[Api]
+    #[Required]
     public string $pluralLabel;
 
     /**
      * The singular label for the object type.
      */
-    #[Api]
+    #[Required]
     public string $singularLabel;
 
     /**
      * The current usage count for the object type.
      */
-    #[Api]
+    #[Required]
     public int $usage;
 
     /**

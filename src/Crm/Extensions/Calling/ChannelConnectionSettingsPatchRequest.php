@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Extensions\Calling;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -18,10 +18,10 @@ final class ChannelConnectionSettingsPatchRequest implements BaseModel
     /** @use SdkModel<ChannelConnectionSettingsPatchRequestShape> */
     use SdkModel;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $isReady;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $url;
 
     public function __construct()

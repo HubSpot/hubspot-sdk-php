@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Associations\V4;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicObjectID;
@@ -19,10 +19,10 @@ final class PublicDefaultAssociationMultiPost implements BaseModel
     /** @use SdkModel<PublicDefaultAssociationMultiPostShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public PublicObjectID $from;
 
-    #[Api]
+    #[Required]
     public PublicObjectID $to;
 
     /**

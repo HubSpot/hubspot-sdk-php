@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Events;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -36,7 +36,7 @@ final class EventUpdateBatchParams implements BaseModel
     use SdkParams;
 
     /** @var list<MarketingEventPublicUpdateRequestFullV2> $inputs */
-    #[Api(list: MarketingEventPublicUpdateRequestFullV2::class)]
+    #[Required(list: MarketingEventPublicUpdateRequestFullV2::class)]
     public array $inputs;
 
     /**

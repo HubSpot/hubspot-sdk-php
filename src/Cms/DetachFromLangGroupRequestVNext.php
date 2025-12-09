@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -21,7 +21,7 @@ final class DetachFromLangGroupRequestVNext implements BaseModel
     /**
      * ID of the object to remove from a multi-language group.
      */
-    #[Api]
+    #[Required]
     public string $id;
 
     /**

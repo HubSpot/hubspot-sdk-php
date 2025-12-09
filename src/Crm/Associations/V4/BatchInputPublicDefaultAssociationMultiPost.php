@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Associations\V4;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicObjectID;
@@ -20,7 +20,7 @@ final class BatchInputPublicDefaultAssociationMultiPost implements BaseModel
     use SdkModel;
 
     /** @var list<PublicDefaultAssociationMultiPost> $inputs */
-    #[Api(list: PublicDefaultAssociationMultiPost::class)]
+    #[Required(list: PublicDefaultAssociationMultiPost::class)]
     public array $inputs;
 
     /**

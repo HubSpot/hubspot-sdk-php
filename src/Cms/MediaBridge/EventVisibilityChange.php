@@ -5,7 +5,8 @@ declare(strict_types=1);
 namespace HubspotSDK\Cms\MediaBridge;
 
 use HubspotSDK\Cms\MediaBridge\EventVisibilityChange\EventType;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -24,19 +25,19 @@ final class EventVisibilityChange implements BaseModel
     use SdkModel;
 
     /** @var value-of<EventType> $eventType */
-    #[Api(enum: EventType::class)]
+    #[Required(enum: EventType::class)]
     public string $eventType;
 
-    #[Api]
+    #[Required]
     public int $updatedAt;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $showInReporting;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $showInTimeline;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $showInWorkflows;
 
     /**

@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Objects\Schemas;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Objects\Schemas\ObjectTypePropertyCreate\NumberDisplayHint;
@@ -39,16 +40,16 @@ final class ObjectSchemaEgg implements BaseModel
      *
      * @var list<string> $associatedObjects
      */
-    #[Api(list: 'string')]
+    #[Required(list: 'string')]
     public array $associatedObjects;
 
-    #[Api]
+    #[Required]
     public ObjectTypeDefinitionLabels $labels;
 
     /**
      * A unique name for this object. For internal use only.
      */
-    #[Api]
+    #[Required]
     public string $name;
 
     /**
@@ -56,7 +57,7 @@ final class ObjectSchemaEgg implements BaseModel
      *
      * @var list<ObjectTypePropertyCreate> $properties
      */
-    #[Api(list: ObjectTypePropertyCreate::class)]
+    #[Required(list: ObjectTypePropertyCreate::class)]
     public array $properties;
 
     /**
@@ -64,16 +65,16 @@ final class ObjectSchemaEgg implements BaseModel
      *
      * @var list<string> $requiredProperties
      */
-    #[Api(list: 'string')]
+    #[Required(list: 'string')]
     public array $requiredProperties;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $description;
 
     /**
      * The name of the primary property for this object. This will be displayed as primary on the HubSpot record page for this object type.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $primaryDisplayProperty;
 
     /**
@@ -81,7 +82,7 @@ final class ObjectSchemaEgg implements BaseModel
      *
      * @var list<string>|null $searchableProperties
      */
-    #[Api(list: 'string', optional: true)]
+    #[Optional(list: 'string')]
     public ?array $searchableProperties;
 
     /**
@@ -89,7 +90,7 @@ final class ObjectSchemaEgg implements BaseModel
      *
      * @var list<string>|null $secondaryDisplayProperties
      */
-    #[Api(list: 'string', optional: true)]
+    #[Optional(list: 'string')]
     public ?array $secondaryDisplayProperties;
 
     /**

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Pipelines;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -19,7 +19,7 @@ final class CollectionResponsePublicAuditInfoNoPaging implements BaseModel
     use SdkModel;
 
     /** @var list<PublicAuditInfo> $results */
-    #[Api(list: PublicAuditInfo::class)]
+    #[Required(list: PublicAuditInfo::class)]
     public array $results;
 
     /**

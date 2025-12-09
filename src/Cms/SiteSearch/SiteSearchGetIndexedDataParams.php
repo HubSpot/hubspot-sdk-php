@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Cms\SiteSearch;
 
 use HubspotSDK\Cms\SiteSearch\SiteSearchGetIndexedDataParams\Type;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -30,7 +30,7 @@ final class SiteSearchGetIndexedDataParams implements BaseModel
      *
      * @var value-of<Type>|null $type
      */
-    #[Api(enum: Type::class, optional: true)]
+    #[Optional(enum: Type::class)]
     public ?string $type;
 
     public function __construct()

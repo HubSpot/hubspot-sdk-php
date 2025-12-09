@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Events\EventDefinitions;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -38,25 +39,25 @@ final class EventDefinitionCreatePropertyParams implements BaseModel
     /**
      * Human readable label for the property. Used in HubSpot UI.
      */
-    #[Api]
+    #[Required]
     public string $label;
 
     /**
      * The data type of the property. Can be one of the following: [string, number, enumeration, datetime].
      */
-    #[Api]
+    #[Required]
     public string $type;
 
     /**
      * A description of the property that will be shown as help text in HubSpot.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $description;
 
     /**
      * Internal property name, which must be used when referencing the property from the API.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $name;
 
     /**
@@ -64,7 +65,7 @@ final class EventDefinitionCreatePropertyParams implements BaseModel
      *
      * @var list<OptionInput>|null $options
      */
-    #[Api(list: OptionInput::class, optional: true)]
+    #[Optional(list: OptionInput::class)]
     public ?array $options;
 
     /**

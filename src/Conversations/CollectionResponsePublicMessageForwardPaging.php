@@ -8,7 +8,8 @@ use HubspotSDK\Conversations\ConversationsPublicConversationsMessage\Direction;
 use HubspotSDK\Conversations\ConversationsPublicConversationsMessage\TruncationStatus;
 use HubspotSDK\Conversations\ConversationsPublicConversationsMessage\Type;
 use HubspotSDK\Conversations\PublicThreadStatusChange\NewStatus;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\ForwardPaging;
@@ -28,10 +29,10 @@ final class CollectionResponsePublicMessageForwardPaging implements BaseModel
     /**
      * @var list<ConversationsPublicConversationsMessage|PublicComment|PublicWelcomeMessage|PublicAssignmentMessage|PublicThreadStatusChange|PublicThreadInboxChange> $results
      */
-    #[Api(list: PublicMessage::class)]
+    #[Required(list: PublicMessage::class)]
     public array $results;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?ForwardPaging $paging;
 
     /**

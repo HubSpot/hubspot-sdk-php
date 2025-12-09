@@ -5,7 +5,8 @@ declare(strict_types=1);
 namespace HubspotSDK\Automation\Workflows;
 
 use HubspotSDK\Automation\Workflows\APICustomCodeAction\Type;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -26,32 +27,32 @@ final class APICustomCodeAction implements BaseModel
     /** @use SdkModel<APICustomCodeActionShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public string $actionId;
 
     /** @var list<APIInputVariable> $inputFields */
-    #[Api(list: APIInputVariable::class)]
+    #[Required(list: APIInputVariable::class)]
     public array $inputFields;
 
     /** @var list<APIEnumerationOutputField> $outputFields */
-    #[Api(list: APIEnumerationOutputField::class)]
+    #[Required(list: APIEnumerationOutputField::class)]
     public array $outputFields;
 
-    #[Api]
+    #[Required]
     public string $runtime;
 
     /** @var list<string> $secretNames */
-    #[Api(list: 'string')]
+    #[Required(list: 'string')]
     public array $secretNames;
 
-    #[Api]
+    #[Required]
     public string $sourceCode;
 
     /** @var value-of<Type> $type */
-    #[Api(enum: Type::class)]
+    #[Required(enum: Type::class)]
     public string $type;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?APIConnection $connection;
 
     /**

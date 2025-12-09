@@ -2,7 +2,7 @@
 
 namespace HubspotSDK;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkPage;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -32,10 +32,10 @@ final class Page implements BaseModel, BasePage
     use SdkPage;
 
     /** @var list<TItem>|null $results */
-    #[Api(list: 'mixed', optional: true)]
+    #[Optional(list: 'mixed')]
     public ?array $results;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?Paging $paging;
 
     /**

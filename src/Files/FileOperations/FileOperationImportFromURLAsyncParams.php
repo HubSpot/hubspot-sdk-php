@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Files\FileOperations;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -41,13 +42,13 @@ final class FileOperationImportFromURLAsyncParams implements BaseModel
      *
      * @var value-of<Access> $access
      */
-    #[Api(enum: Access::class)]
+    #[Required(enum: Access::class)]
     public string $access;
 
     /**
      * URL to download the new file from.
      */
-    #[Api]
+    #[Required]
     public string $url;
 
     /**
@@ -55,7 +56,7 @@ final class FileOperationImportFromURLAsyncParams implements BaseModel
      *
      * @var value-of<DuplicateValidationScope>|null $duplicateValidationScope
      */
-    #[Api(enum: DuplicateValidationScope::class, optional: true)]
+    #[Optional(enum: DuplicateValidationScope::class)]
     public ?string $duplicateValidationScope;
 
     /**
@@ -63,43 +64,43 @@ final class FileOperationImportFromURLAsyncParams implements BaseModel
      *
      * @var value-of<DuplicateValidationStrategy>|null $duplicateValidationStrategy
      */
-    #[Api(enum: DuplicateValidationStrategy::class, optional: true)]
+    #[Optional(enum: DuplicateValidationStrategy::class)]
     public ?string $duplicateValidationStrategy;
 
     /**
      * Specifies the date and time when the file will expire.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $expiresAt;
 
     /**
      * One of folderId or folderPath is required. Destination folderId for the uploaded file.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $folderId;
 
     /**
      * One of folderPath or folderId is required. Destination folder path for the uploaded file. If the folder path does not exist, there will be an attempt to create the folder path.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $folderPath;
 
     /**
      * Name to give the resulting file in the file manager.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $name;
 
     /**
      * If true, will overwrite existing file if one with the same name and extension exists in the given folder. The overwritten file will be deleted and the uploaded file will take its place with a new ID. If unset or set as false, the new file's name will be updated to prevent colliding with existing file if one exists with the same path, name, and extension.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $overwrite;
 
     /**
      * Time to live. If specified the file will be deleted after the given time frame. If left unset, the file will exist indefinitely.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $ttl;
 
     /**

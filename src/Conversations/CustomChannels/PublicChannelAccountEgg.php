@@ -5,7 +5,8 @@ declare(strict_types=1);
 namespace HubspotSDK\Conversations\CustomChannels;
 
 use HubspotSDK\Conversations\PublicDeliveryIdentifier;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -22,16 +23,16 @@ final class PublicChannelAccountEgg implements BaseModel
     /** @use SdkModel<PublicChannelAccountEggShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public bool $authorized;
 
-    #[Api]
+    #[Required]
     public string $inboxId;
 
-    #[Api]
+    #[Required]
     public string $name;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?PublicDeliveryIdentifier $deliveryIdentifier;
 
     /**

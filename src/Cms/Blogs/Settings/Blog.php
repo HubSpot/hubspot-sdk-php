@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Cms\Blogs\Settings;
 
 use HubspotSDK\Cms\Blogs\Settings\Blog\Language;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -36,37 +36,37 @@ final class Blog implements BaseModel
     /**
      * The unique ID of the Blog.
      */
-    #[Api]
+    #[Required]
     public string $id;
 
-    #[Api]
+    #[Required]
     public string $absoluteUrl;
 
     /**
      * Boolean determining whether or not this blog allows public comments.
      */
-    #[Api]
+    #[Required]
     public bool $allowComments;
 
-    #[Api]
+    #[Required]
     public \DateTimeInterface $created;
 
     /**
      * The timestamp (ISO8601 format) when this Blog was deleted.
      */
-    #[Api]
+    #[Required]
     public \DateTimeInterface $deletedAt;
 
     /**
      * The Description of this Blog.
      */
-    #[Api]
+    #[Required]
     public string $description;
 
     /**
      * The html title of this Blog.
      */
-    #[Api]
+    #[Required]
     public string $htmlTitle;
 
     /**
@@ -74,13 +74,13 @@ final class Blog implements BaseModel
      *
      * @var value-of<Language> $language
      */
-    #[Api(enum: Language::class)]
+    #[Required(enum: Language::class)]
     public string $language;
 
     /**
      * The internal name of the blog.
      */
-    #[Api]
+    #[Required]
     public string $name;
 
     /**
@@ -88,34 +88,34 @@ final class Blog implements BaseModel
      *
      * @var list<mixed> $publicAccessRules
      */
-    #[Api(list: 'mixed')]
+    #[Required(list: 'mixed')]
     public array $publicAccessRules;
 
     /**
      * Boolean to determine whether or not to respect publicAccessRules.
      */
-    #[Api]
+    #[Required]
     public bool $publicAccessRulesEnabled;
 
     /**
      * The public title of this Blog.
      */
-    #[Api]
+    #[Required]
     public string $publicTitle;
 
     /**
      * The path of the this blog. This field is appended to the domain to construct the url of this blog.
      */
-    #[Api]
+    #[Required]
     public string $slug;
 
     /**
      * ID of the primary Blog this object was translated from.
      */
-    #[Api]
+    #[Required]
     public string $translatedFromId;
 
-    #[Api]
+    #[Required]
     public \DateTimeInterface $updated;
 
     /**

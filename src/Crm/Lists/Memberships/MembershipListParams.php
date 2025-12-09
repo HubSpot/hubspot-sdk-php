@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Lists\Memberships;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -33,7 +33,7 @@ final class MembershipListParams implements BaseModel
      *
      * If provided, then the records in the response will be the records following the offset, sorted in *ascending* order. Takes precedence over the `before` offset.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $after;
 
     /**
@@ -41,13 +41,13 @@ final class MembershipListParams implements BaseModel
      *
      * If provided, then the records in the response will be the records preceding the offset, sorted in *descending* order.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $before;
 
     /**
      * The number of records to return in the response. The maximum `limit` is 250.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $limit;
 
     public function __construct()

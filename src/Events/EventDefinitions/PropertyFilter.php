@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Events\EventDefinitions;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Events\EventDefinitions\BoolPropertyOperation\Operator;
@@ -32,16 +33,16 @@ final class PropertyFilter implements BaseModel
     use SdkModel;
 
     /** @var value-of<FilterType> $filterType */
-    #[Api(enum: FilterType::class)]
+    #[Required(enum: FilterType::class)]
     public string $filterType;
 
-    #[Api]
+    #[Required]
     public BoolPropertyOperation|NumberPropertyOperation|StringPropertyOperation|DateTimePropertyOperation|RangedDatePropertyOperation|ComparativeDatePropertyOperation|ComparativePropertyUpdatedOperation|RollingDateRangePropertyOperation|RollingPropertyUpdatedOperation|EnumerationPropertyOperation|AllPropertyTypesOperation|RangedNumberPropertyOperation|MultiStringPropertyOperation|DatePropertyOperation|CalendarDatePropertyOperation|TimePointOperation|RangedTimeOperation $operation;
 
-    #[Api]
+    #[Required]
     public string $property;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $frameworkFilterId;
 
     /**

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Emails;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -31,7 +31,7 @@ final class EmailGetAbTestVariationParams implements BaseModel
     /**
      * Boolean variable to request archived email.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $archived;
 
     /**
@@ -39,25 +39,25 @@ final class EmailGetAbTestVariationParams implements BaseModel
      *
      * @var list<string>|null $includedProperties
      */
-    #[Api(list: 'string', optional: true)]
+    #[Optional(list: 'string')]
     public ?array $includedProperties;
 
     /**
      * Boolean variable to request stats to be returned in response.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $includeStats;
 
     /**
      * Boolean variable to request name of the campaign in response.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $marketingCampaignNames;
 
     /**
      * Boolean variable to request name of the associated workflows in response.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $workflowNames;
 
     public function __construct()

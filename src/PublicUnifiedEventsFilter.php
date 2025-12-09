@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicNumOccurrencesRefineBy\Type;
@@ -26,20 +27,20 @@ final class PublicUnifiedEventsFilter implements BaseModel
     use SdkModel;
 
     /** @var list<PublicEventFilterMetadata> $filterLines */
-    #[Api(list: PublicEventFilterMetadata::class)]
+    #[Required(list: PublicEventFilterMetadata::class)]
     public array $filterLines;
 
     /** @var value-of<FilterType> $filterType */
-    #[Api(enum: FilterType::class)]
+    #[Required(enum: FilterType::class)]
     public string $filterType;
 
-    #[Api(optional: true)]
+    #[Optional]
     public PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation|null $coalescingRefineBy;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $eventTypeId;
 
-    #[Api(optional: true)]
+    #[Optional]
     public PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation|null $pruningRefineBy;
 
     /**

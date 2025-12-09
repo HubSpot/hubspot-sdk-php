@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Events\EventDefinitions;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Events\EventDefinitions\PropertyFilter\FilterType;
@@ -22,17 +23,17 @@ final class ComboEventRule implements BaseModel
     /** @use SdkModel<ComboEventRuleShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public int $count;
 
-    #[Api]
+    #[Required]
     public string $eventTypeId;
 
     /** @var list<PropertyFilter> $propertyFilters */
-    #[Api(list: PropertyFilter::class)]
+    #[Required(list: PropertyFilter::class)]
     public array $propertyFilters;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $lookbackWindowDays;
 
     /**

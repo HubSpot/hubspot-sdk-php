@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Emails;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\NextPage;
@@ -29,16 +30,16 @@ final class CollectionResponseWithTotalVersionPublicEmail implements BaseModel
      *
      * @var list<VersionPublicEmail> $results
      */
-    #[Api(list: VersionPublicEmail::class)]
+    #[Required(list: VersionPublicEmail::class)]
     public array $results;
 
     /**
      * Total number of emails.
      */
-    #[Api]
+    #[Required]
     public int $total;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?Paging $paging;
 
     /**

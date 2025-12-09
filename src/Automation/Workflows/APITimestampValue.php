@@ -6,7 +6,7 @@ namespace HubspotSDK\Automation\Workflows;
 
 use HubspotSDK\Automation\Workflows\APITimestampValue\TimestampType;
 use HubspotSDK\Automation\Workflows\APITimestampValue\Type;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -21,11 +21,11 @@ final class APITimestampValue implements BaseModel
     use SdkModel;
 
     /** @var value-of<TimestampType> $timestampType */
-    #[Api(enum: TimestampType::class)]
+    #[Required(enum: TimestampType::class)]
     public string $timestampType;
 
     /** @var value-of<Type> $type */
-    #[Api(enum: Type::class)]
+    #[Required(enum: Type::class)]
     public string $type;
 
     /**

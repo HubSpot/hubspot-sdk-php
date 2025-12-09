@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Objects\DealSplits;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -16,10 +16,10 @@ final class PublicDealSplitInput implements BaseModel
     /** @use SdkModel<PublicDealSplitInputShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public int $ownerId;
 
-    #[Api]
+    #[Required]
     public float $percentage;
 
     /**

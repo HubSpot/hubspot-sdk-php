@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -21,25 +21,25 @@ final class RgbaColor implements BaseModel
     /**
      * Alpha.
      */
-    #[Api]
+    #[Required]
     public float $a;
 
     /**
      * Blue.
      */
-    #[Api]
+    #[Required]
     public int $b;
 
     /**
      * Green.
      */
-    #[Api]
+    #[Required]
     public int $g;
 
     /**
      * Red.
      */
-    #[Api]
+    #[Required]
     public int $r;
 
     /**

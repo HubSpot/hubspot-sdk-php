@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Events;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -37,65 +38,65 @@ final class MarketingEventPublicReadResponseV2 implements BaseModel
     /** @use SdkModel<MarketingEventPublicReadResponseV2Shape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public \DateTimeInterface $createdAt;
 
     /** @var list<CrmPropertyWrapper> $customProperties */
-    #[Api(list: CrmPropertyWrapper::class)]
+    #[Required(list: CrmPropertyWrapper::class)]
     public array $customProperties;
 
-    #[Api]
+    #[Required]
     public string $eventName;
 
-    #[Api]
+    #[Required]
     public string $objectId;
 
-    #[Api]
+    #[Required]
     public \DateTimeInterface $updatedAt;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?AppInfo $appInfo;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $attendees;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $cancellations;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $endDateTime;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $eventCancelled;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $eventCompleted;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $eventDescription;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $eventOrganizer;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $eventStatus;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $eventType;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $eventUrl;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $externalEventId;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $noShows;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $registrants;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $startDateTime;
 
     /**

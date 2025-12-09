@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Lists;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -23,7 +23,7 @@ final class ListsByIDResponse implements BaseModel
      *
      * @var list<mixed> $lists
      */
-    #[Api(list: PublicObjectList::class)]
+    #[Required(list: PublicObjectList::class)]
     public array $lists;
 
     /**

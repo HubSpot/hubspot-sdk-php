@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Subscriptions\V4;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\ErrorDetail;
@@ -34,7 +35,7 @@ final class BatchResponsePublicStatus implements BaseModel
     /**
      * The date and time when the batch operation was completed.
      */
-    #[Api]
+    #[Required]
     public \DateTimeInterface $completedAt;
 
     /**
@@ -42,13 +43,13 @@ final class BatchResponsePublicStatus implements BaseModel
      *
      * @var list<PublicStatus> $results
      */
-    #[Api(list: PublicStatus::class)]
+    #[Required(list: PublicStatus::class)]
     public array $results;
 
     /**
      * The date and time when the batch operation started.
      */
-    #[Api]
+    #[Required]
     public \DateTimeInterface $startedAt;
 
     /**
@@ -56,7 +57,7 @@ final class BatchResponsePublicStatus implements BaseModel
      *
      * @var value-of<Status> $status
      */
-    #[Api(enum: Status::class)]
+    #[Required(enum: Status::class)]
     public string $status;
 
     /**
@@ -64,7 +65,7 @@ final class BatchResponsePublicStatus implements BaseModel
      *
      * @var list<StandardError>|null $errors
      */
-    #[Api(list: StandardError::class, optional: true)]
+    #[Optional(list: StandardError::class)]
     public ?array $errors;
 
     /**
@@ -72,19 +73,19 @@ final class BatchResponsePublicStatus implements BaseModel
      *
      * @var array<string,string>|null $links
      */
-    #[Api(map: 'string', optional: true)]
+    #[Optional(map: 'string')]
     public ?array $links;
 
     /**
      * The number of errors encountered during the batch operation.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $numErrors;
 
     /**
      * The date and time when the request was made.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $requestedAt;
 
     /**

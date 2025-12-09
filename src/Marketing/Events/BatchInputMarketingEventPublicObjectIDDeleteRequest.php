@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Events;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -19,7 +19,7 @@ final class BatchInputMarketingEventPublicObjectIDDeleteRequest implements BaseM
     use SdkModel;
 
     /** @var list<MarketingEventPublicObjectIDDeleteRequest> $inputs */
-    #[Api(list: MarketingEventPublicObjectIDDeleteRequest::class)]
+    #[Required(list: MarketingEventPublicObjectIDDeleteRequest::class)]
     public array $inputs;
 
     /**

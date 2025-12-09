@@ -6,7 +6,7 @@ namespace HubspotSDK\Cms\MediaBridge;
 
 use HubspotSDK\Cms\MediaBridge\MediaBridgePropertyUpdate\FieldType;
 use HubspotSDK\Cms\MediaBridge\MediaBridgePropertyUpdate\Type;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\OptionInput;
@@ -31,40 +31,40 @@ final class MediaBridgePropertyUpdate implements BaseModel
     /** @use SdkModel<MediaBridgePropertyUpdateShape> */
     use SdkModel;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $calculationFormula;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $description;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $displayOrder;
 
     /** @var value-of<FieldType>|null $fieldType */
-    #[Api(enum: FieldType::class, optional: true)]
+    #[Optional(enum: FieldType::class)]
     public ?string $fieldType;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $formField;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $groupName;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $hasUniqueValue;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $hidden;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $label;
 
     /** @var list<OptionInput>|null $options */
-    #[Api(list: OptionInput::class, optional: true)]
+    #[Optional(list: OptionInput::class)]
     public ?array $options;
 
     /** @var value-of<Type>|null $type */
-    #[Api(enum: Type::class, optional: true)]
+    #[Optional(enum: Type::class)]
     public ?string $type;
 
     public function __construct()

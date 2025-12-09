@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Imports;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -22,20 +23,20 @@ final class ImportRowCore implements BaseModel
     /** @use SdkModel<ImportRowCoreShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public bool $containsEncryptedProperties;
 
-    #[Api]
+    #[Required]
     public int $fileId;
 
-    #[Api]
+    #[Required]
     public int $lineNumber;
 
     /** @var list<string> $rowData */
-    #[Api(list: 'string')]
+    #[Required(list: 'string')]
     public array $rowData;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $pageName;
 
     /**

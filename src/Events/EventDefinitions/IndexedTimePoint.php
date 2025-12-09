@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Events\EventDefinitions;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Events\EventDefinitions\IndexedTimePoint\TimeType;
@@ -26,21 +27,21 @@ final class IndexedTimePoint implements BaseModel
     /** @use SdkModel<IndexedTimePointShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public NowReference|TodayReference|WeekReference|MonthReference|QuarterReference|FiscalQuarter|YearReference|FiscalYear $indexReference;
 
     /** @var value-of<TimeType> $timeType */
-    #[Api(enum: TimeType::class)]
+    #[Required(enum: TimeType::class)]
     public string $timeType;
 
     /** @var value-of<TimezoneSource> $timezoneSource */
-    #[Api(enum: TimezoneSource::class)]
+    #[Required(enum: TimezoneSource::class)]
     public string $timezoneSource;
 
-    #[Api]
+    #[Required]
     public string $zoneId;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?IndexOffset $offset;
 
     /**

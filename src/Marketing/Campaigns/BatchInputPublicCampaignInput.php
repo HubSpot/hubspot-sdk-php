@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Campaigns;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -19,7 +19,7 @@ final class BatchInputPublicCampaignInput implements BaseModel
     use SdkModel;
 
     /** @var list<PublicCampaignInput> $inputs */
-    #[Api(list: PublicCampaignInput::class)]
+    #[Required(list: PublicCampaignInput::class)]
     public array $inputs;
 
     /**

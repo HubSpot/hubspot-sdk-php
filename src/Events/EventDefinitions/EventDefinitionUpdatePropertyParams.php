@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Events\EventDefinitions;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -34,19 +35,19 @@ final class EventDefinitionUpdatePropertyParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    #[Api]
+    #[Required]
     public string $eventName;
 
     /**
      * A description of the property that will be shown as help text in HubSpot.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $description;
 
     /**
      * Human readable label for the property. Used in HubSpot UI.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $label;
 
     /**
@@ -54,7 +55,7 @@ final class EventDefinitionUpdatePropertyParams implements BaseModel
      *
      * @var list<OptionInput>|null $options
      */
-    #[Api(list: OptionInput::class, optional: true)]
+    #[Optional(list: OptionInput::class)]
     public ?array $options;
 
     /**

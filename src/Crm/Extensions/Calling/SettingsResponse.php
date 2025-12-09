@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Extensions\Calling;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -28,37 +28,37 @@ final class SettingsResponse implements BaseModel
     /** @use SdkModel<SettingsResponseShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public \DateTimeInterface $createdAt;
 
-    #[Api]
+    #[Required]
     public int $height;
 
-    #[Api]
+    #[Required]
     public bool $isReady;
 
-    #[Api]
+    #[Required]
     public string $name;
 
-    #[Api]
+    #[Required]
     public bool $supportsCustomObjects;
 
-    #[Api]
+    #[Required]
     public bool $supportsInboundCalling;
 
-    #[Api]
+    #[Required]
     public \DateTimeInterface $updatedAt;
 
-    #[Api]
+    #[Required]
     public string $url;
 
-    #[Api]
+    #[Required]
     public bool $usesCallingWindow;
 
-    #[Api]
+    #[Required]
     public bool $usesRemote;
 
-    #[Api]
+    #[Required]
     public int $width;
 
     /**

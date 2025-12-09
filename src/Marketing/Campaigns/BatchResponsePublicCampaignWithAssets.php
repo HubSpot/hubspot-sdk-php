@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Campaigns;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Marketing\Campaigns\BatchResponsePublicCampaignWithAssets\Status;
@@ -24,25 +25,25 @@ final class BatchResponsePublicCampaignWithAssets implements BaseModel
     /** @use SdkModel<BatchResponsePublicCampaignWithAssetsShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public \DateTimeInterface $completedAt;
 
     /** @var list<PublicCampaignWithAssets> $results */
-    #[Api(list: PublicCampaignWithAssets::class)]
+    #[Required(list: PublicCampaignWithAssets::class)]
     public array $results;
 
-    #[Api]
+    #[Required]
     public \DateTimeInterface $startedAt;
 
     /** @var value-of<Status> $status */
-    #[Api(enum: Status::class)]
+    #[Required(enum: Status::class)]
     public string $status;
 
     /** @var array<string,string>|null $links */
-    #[Api(map: 'string', optional: true)]
+    #[Optional(map: 'string')]
     public ?array $links;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $requestedAt;
 
     /**

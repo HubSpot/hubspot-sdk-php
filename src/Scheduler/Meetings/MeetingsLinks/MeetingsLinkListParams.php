@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Scheduler\Meetings\MeetingsLinks;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -31,31 +31,31 @@ final class MeetingsLinkListParams implements BaseModel
     /**
      * The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $after;
 
     /**
      * The maximum number of results to display per page.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $limit;
 
     /**
      * Retrieve scheduling pages with a specified name.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $name;
 
     /**
      * Filter the response to scheduling pages created by the specified user.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $organizerUserId;
 
     /**
      * Filter the response to the specific type of meeting.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $type;
 
     public function __construct()

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Emails;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -25,7 +25,7 @@ final class PublicEmailRecipients implements BaseModel
      *
      * @var list<string>|null $exclude
      */
-    #[Api(list: 'string', optional: true)]
+    #[Optional(list: 'string')]
     public ?array $exclude;
 
     /**
@@ -33,7 +33,7 @@ final class PublicEmailRecipients implements BaseModel
      *
      * @var list<string>|null $include
      */
-    #[Api(list: 'string', optional: true)]
+    #[Optional(list: 'string')]
     public ?array $include;
 
     public function __construct()

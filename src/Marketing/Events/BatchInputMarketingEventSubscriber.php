@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Events;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -23,7 +23,7 @@ final class BatchInputMarketingEventSubscriber implements BaseModel
      *
      * @var list<MarketingEventSubscriber> $inputs
      */
-    #[Api(list: MarketingEventSubscriber::class)]
+    #[Required(list: MarketingEventSubscriber::class)]
     public array $inputs;
 
     /**

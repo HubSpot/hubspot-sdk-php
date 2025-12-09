@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Cms\MediaBridge;
 
 use HubspotSDK\Cms\MediaBridge\EventVisibilityChange\EventType;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -19,11 +19,11 @@ final class EventVisibilityResponse implements BaseModel
     /** @use SdkModel<EventVisibilityResponseShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public \DateTimeInterface $createdAt;
 
     /** @var list<EventVisibilityChange> $visibilitySettings */
-    #[Api(list: EventVisibilityChange::class)]
+    #[Required(list: EventVisibilityChange::class)]
     public array $visibilitySettings;
 
     /**

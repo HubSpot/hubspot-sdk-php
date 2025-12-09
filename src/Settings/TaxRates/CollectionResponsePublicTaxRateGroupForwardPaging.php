@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Settings\TaxRates;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\ForwardPaging;
@@ -21,10 +22,10 @@ final class CollectionResponsePublicTaxRateGroupForwardPaging implements BaseMod
     use SdkModel;
 
     /** @var list<PublicTaxRateGroup> $results */
-    #[Api(list: PublicTaxRateGroup::class)]
+    #[Required(list: PublicTaxRateGroup::class)]
     public array $results;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?ForwardPaging $paging;
 
     /**

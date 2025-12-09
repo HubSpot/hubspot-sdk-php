@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Subscriptions\V4\Statuses;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -30,7 +31,7 @@ final class StatusBatchGetUnsubscribeAllStatusParams implements BaseModel
      *
      * @var value-of<Channel> $channel
      */
-    #[Api(enum: Channel::class)]
+    #[Required(enum: Channel::class)]
     public string $channel;
 
     /**
@@ -38,13 +39,13 @@ final class StatusBatchGetUnsubscribeAllStatusParams implements BaseModel
      *
      * @var list<string> $inputs
      */
-    #[Api(list: 'string')]
+    #[Required(list: 'string')]
     public array $inputs;
 
     /**
      * If you have the [business unit add-on](https://developers.hubspot.com/beta-docs/guides/api/settings/business-units-api), include this parameter to filter results by business unit ID. The default Account business unit will always use `0`.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $businessUnitId;
 
     /**

@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Timeline\Tokens;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -35,19 +36,19 @@ final class TokenCreateParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    #[Api]
+    #[Required]
     public int $appId;
 
     /**
      * Used for list segmentation and reporting.
      */
-    #[Api]
+    #[Required]
     public string $label;
 
     /**
      * The name of the token referenced in the templates. This must be unique for the specific template. It may only contain alphanumeric characters, periods, dashes, or underscores (. - _).
      */
-    #[Api]
+    #[Required]
     public string $name;
 
     /**
@@ -55,19 +56,19 @@ final class TokenCreateParams implements BaseModel
      *
      * @var value-of<Type> $type
      */
-    #[Api(enum: Type::class)]
+    #[Required(enum: Type::class)]
     public string $type;
 
     /**
      * The date and time that the Event Template Token was created, as an ISO 8601 timestamp. Will be null if the template was created before Feb 18th, 2020.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $createdAt;
 
     /**
      * The name of the CRM object property. This will populate the CRM object property associated with the event. With enough of these, you can fully build CRM objects via the Timeline API.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $objectPropertyName;
 
     /**
@@ -75,13 +76,13 @@ final class TokenCreateParams implements BaseModel
      *
      * @var list<TimelineEventTemplateTokenOption>|null $options
      */
-    #[Api(list: TimelineEventTemplateTokenOption::class, optional: true)]
+    #[Optional(list: TimelineEventTemplateTokenOption::class)]
     public ?array $options;
 
     /**
      * The date and time that the Event Template Token was last updated, as an ISO 8601 timestamp. Will be null if the template was created before Feb 18th, 2020.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $updatedAt;
 
     /**

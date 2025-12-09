@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicDatePoint\TimeType;
@@ -26,26 +27,26 @@ final class PublicTimePointOperation implements BaseModel
     /** @use SdkModel<PublicTimePointOperationShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public bool $includeObjectsWithNoValueSet;
 
     /** @var value-of<OperationType> $operationType */
-    #[Api(enum: OperationType::class)]
+    #[Required(enum: OperationType::class)]
     public string $operationType;
 
-    #[Api]
+    #[Required]
     public string $operator;
 
-    #[Api]
+    #[Required]
     public PublicDatePoint|PublicIndexedTimePoint|PublicPropertyReferencedTime $timePoint;
 
-    #[Api]
+    #[Required]
     public string $type;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $endpointBehavior;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $propertyParser;
 
     /**

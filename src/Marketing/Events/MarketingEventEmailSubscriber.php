@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Events;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -22,23 +22,23 @@ final class MarketingEventEmailSubscriber implements BaseModel
     use SdkModel;
 
     /** @var array<string,string> $contactProperties */
-    #[Api(map: 'string')]
+    #[Required(map: 'string')]
     public array $contactProperties;
 
     /**
      * The email address of the contact in HubSpot to associate with the event.
      */
-    #[Api]
+    #[Required]
     public string $email;
 
     /**
      * Timestamp in milliseconds at which the contact subscribed to the event.
      */
-    #[Api]
+    #[Required]
     public int $interactionDateTime;
 
     /** @var array<string,string> $properties */
-    #[Api(map: 'string')]
+    #[Required(map: 'string')]
     public array $properties;
 
     /**

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Webhooks;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -19,7 +19,7 @@ final class BatchInputSubscriptionBatchUpdateRequest implements BaseModel
     use SdkModel;
 
     /** @var list<SubscriptionBatchUpdateRequest> $inputs */
-    #[Api(list: SubscriptionBatchUpdateRequest::class)]
+    #[Required(list: SubscriptionBatchUpdateRequest::class)]
     public array $inputs;
 
     /**

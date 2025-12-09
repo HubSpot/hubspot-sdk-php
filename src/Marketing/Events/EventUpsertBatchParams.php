@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Events;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -40,7 +40,7 @@ final class EventUpsertBatchParams implements BaseModel
     use SdkParams;
 
     /** @var list<MarketingEventCreateRequestParams> $inputs */
-    #[Api(list: MarketingEventCreateRequestParams::class)]
+    #[Required(list: MarketingEventCreateRequestParams::class)]
     public array $inputs;
 
     /**

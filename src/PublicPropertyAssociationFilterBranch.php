@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicFormSubmissionFilter\Operator;
@@ -30,29 +30,29 @@ final class PublicPropertyAssociationFilterBranch implements BaseModel
     use SdkModel;
 
     /** @var list<mixed> $filterBranches */
-    #[Api(list: FilterBranch::class)]
+    #[Required(list: FilterBranch::class)]
     public array $filterBranches;
 
-    #[Api]
+    #[Required]
     public string $filterBranchOperator;
 
     /** @var value-of<FilterBranchType> $filterBranchType */
-    #[Api(enum: FilterBranchType::class)]
+    #[Required(enum: FilterBranchType::class)]
     public string $filterBranchType;
 
     /**
      * @var list<PublicPropertyFilter|PublicAssociationInListFilter|PublicPageViewAnalyticsFilter|PublicCtaAnalyticsFilter|PublicEventAnalyticsFilter|PublicFormSubmissionFilter|PublicFormSubmissionOnPageFilter|PublicIntegrationEventFilter|PublicEmailSubscriptionFilter|PublicCommunicationSubscriptionFilter|PublicCampaignInfluencedFilter|PublicSurveyMonkeyFilter|PublicSurveyMonkeyValueFilter|PublicWebinarFilter|PublicEmailEventFilter|PublicPrivacyAnalyticsFilter|PublicAdsSearchFilter|PublicAdsTimeFilter|PublicInListFilter|PublicNumAssociationsFilter|PublicUnifiedEventsFilter|PublicPropertyAssociationInListFilter|PublicConstantFilter> $filters
      */
-    #[Api(list: Filter::class)]
+    #[Required(list: Filter::class)]
     public array $filters;
 
-    #[Api]
+    #[Required]
     public string $objectTypeId;
 
-    #[Api]
+    #[Required]
     public string $operator;
 
-    #[Api]
+    #[Required]
     public string $propertyWithObjectId;
 
     /**

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\Hubdb\Rows;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -32,25 +32,25 @@ final class RowListDraftParams implements BaseModel
     /**
      * The cursor token value to get the next set of results. You can get this from the `paging.next.after` JSON property of a paged response containing more results.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $after;
 
     /**
      * Specifies whether to return archived rows. Defaults to `false`.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $archived;
 
     /**
      * The maximum number of results to return. Default is `1000`.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $limit;
 
     /**
      * The number of rows to skip before starting to return results.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $offset;
 
     /**
@@ -58,7 +58,7 @@ final class RowListDraftParams implements BaseModel
      *
      * @var list<string>|null $properties
      */
-    #[Api(list: 'string', optional: true)]
+    #[Optional(list: 'string')]
     public ?array $properties;
 
     /**
@@ -66,7 +66,7 @@ final class RowListDraftParams implements BaseModel
      *
      * @var list<string>|null $sort
      */
-    #[Api(list: 'string', optional: true)]
+    #[Optional(list: 'string')]
     public ?array $sort;
 
     public function __construct()

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Emails;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -106,68 +106,68 @@ final class EmailUpdateParams implements BaseModel
     /**
      * Determines if the email is archived or not.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $archived;
 
     /**
      * The active domain of the email.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $activeDomain;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $businessUnitId;
 
     /**
      * The ID of the campaign this email is associated to.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $campaign;
 
     /**
      * Data structure representing the content of the email.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?PublicEmailContent $content;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $folderIdV2;
 
     /**
      * Data structure representing the from fields on the email.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?PublicEmailFromDetails $from;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $jitterSendTime;
 
     /** @var value-of<Language>|null $language */
-    #[Api(enum: Language::class, optional: true)]
+    #[Optional(enum: Language::class)]
     public ?string $language;
 
     /**
      * The name of the email, as displayed on the email dashboard.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $name;
 
     /**
      * The date and time the email is scheduled for, in ISO8601 representation. This is only used in local time or scheduled emails.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?\DateTimeInterface $publishDate;
 
     /**
      * RSS related data if it is a blog or rss email.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?PublicRssEmailDetails $rssData;
 
     /**
      * Determines whether the email will be sent immediately on publish.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?bool $sendOnPublish;
 
     /**
@@ -175,7 +175,7 @@ final class EmailUpdateParams implements BaseModel
      *
      * @var value-of<State>|null $state
      */
-    #[Api(enum: State::class, optional: true)]
+    #[Optional(enum: State::class)]
     public ?string $state;
 
     /**
@@ -183,34 +183,34 @@ final class EmailUpdateParams implements BaseModel
      *
      * @var value-of<Subcategory>|null $subcategory
      */
-    #[Api(enum: Subcategory::class, optional: true)]
+    #[Optional(enum: Subcategory::class)]
     public ?string $subcategory;
 
     /**
      * The subject of the email.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $subject;
 
     /**
      * Data structure representing the subscription fields of the email.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?PublicEmailSubscriptionDetails $subscriptionDetails;
 
     /**
      * AB testing related data. This property is only returned for AB type emails.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?PublicEmailTestingDetails $testing;
 
     /**
      * Data structure representing the to fields of the email.
      */
-    #[Api(optional: true)]
+    #[Optional]
     public ?PublicEmailToDetails $to;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?PublicWebversionDetails $webversion;
 
     public function __construct()

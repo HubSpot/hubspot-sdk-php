@@ -6,7 +6,7 @@ namespace HubspotSDK\Conversations\CustomChannels;
 
 use HubspotSDK\Conversations\CustomChannels\SocialMetadataIntegrationAttachment\Type;
 use HubspotSDK\Conversations\SocialMetadata;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -20,11 +20,11 @@ final class SocialMetadataIntegrationAttachment implements BaseModel
     /** @use SdkModel<SocialMetadataIntegrationAttachmentShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public SocialMetadata $socialMetadata;
 
     /** @var value-of<Type> $type */
-    #[Api(enum: Type::class)]
+    #[Required(enum: Type::class)]
     public string $type;
 
     /**

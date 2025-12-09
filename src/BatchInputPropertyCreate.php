@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PropertyCreate\DataSensitivity;
@@ -22,7 +22,7 @@ final class BatchInputPropertyCreate implements BaseModel
     use SdkModel;
 
     /** @var list<PropertyCreate> $inputs */
-    #[Api(list: PropertyCreate::class)]
+    #[Required(list: PropertyCreate::class)]
     public array $inputs;
 
     /**

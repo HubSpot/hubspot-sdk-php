@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Associations\Schema\V4;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Associations\Schema\V4\PublicAssociationDefinitionConfigurationCreateRequest\Category;
@@ -20,13 +20,13 @@ final class PublicAssociationDefinitionConfigurationCreateRequest implements Bas
     use SdkModel;
 
     /** @var value-of<Category> $category */
-    #[Api(enum: Category::class)]
+    #[Required(enum: Category::class)]
     public string $category;
 
-    #[Api]
+    #[Required]
     public int $maxToObjectIds;
 
-    #[Api]
+    #[Required]
     public int $typeId;
 
     /**

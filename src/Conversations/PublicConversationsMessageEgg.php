@@ -6,7 +6,8 @@ namespace HubspotSDK\Conversations;
 
 use HubspotSDK\Conversations\PublicConversationsMessageEgg\Attachment;
 use HubspotSDK\Conversations\PublicConversationsMessageEgg\Type;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -31,33 +32,33 @@ final class PublicConversationsMessageEgg implements BaseModel
     /**
      * @var list<PublicFileEgg|PublicQuickRepliesEgg|PublicSocialMediaEgg> $attachments
      */
-    #[Api(list: Attachment::class)]
+    #[Required(list: Attachment::class)]
     public array $attachments;
 
-    #[Api]
+    #[Required]
     public string $channelAccountId;
 
-    #[Api]
+    #[Required]
     public string $channelId;
 
     /** @var list<PublicRecipientEgg> $recipients */
-    #[Api(list: PublicRecipientEgg::class)]
+    #[Required(list: PublicRecipientEgg::class)]
     public array $recipients;
 
-    #[Api]
+    #[Required]
     public string $senderActorId;
 
-    #[Api]
+    #[Required]
     public string $text;
 
     /** @var value-of<Type> $type */
-    #[Api(enum: Type::class)]
+    #[Required(enum: Type::class)]
     public string $type;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $richText;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $subject;
 
     /**

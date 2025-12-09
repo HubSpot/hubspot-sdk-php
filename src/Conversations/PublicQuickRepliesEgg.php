@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Conversations;
 
 use HubspotSDK\Conversations\PublicQuickRepliesEgg\Type;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -20,11 +20,11 @@ final class PublicQuickRepliesEgg implements BaseModel
     use SdkModel;
 
     /** @var list<QuickReply> $quickReplies */
-    #[Api(list: QuickReply::class)]
+    #[Required(list: QuickReply::class)]
     public array $quickReplies;
 
     /** @var value-of<Type> $type */
-    #[Api(enum: Type::class)]
+    #[Required(enum: Type::class)]
     public string $type;
 
     /**

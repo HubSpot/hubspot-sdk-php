@@ -5,7 +5,8 @@ declare(strict_types=1);
 namespace HubspotSDK\Conversations\CustomChannels;
 
 use HubspotSDK\Conversations\PublicDeliveryIdentifier;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -25,25 +26,25 @@ final class PublicChannelAccountStagingToken implements BaseModel
     /** @use SdkModel<PublicChannelAccountStagingTokenShape> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public string $accountToken;
 
-    #[Api]
+    #[Required]
     public \DateTimeInterface $createdAt;
 
-    #[Api]
+    #[Required]
     public int $genericChannelId;
 
-    #[Api]
+    #[Required]
     public int $inboxId;
 
-    #[Api]
+    #[Required]
     public int $userId;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $accountName;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?PublicDeliveryIdentifier $deliveryIdentifier;
 
     /**

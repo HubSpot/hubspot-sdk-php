@@ -5,7 +5,8 @@ declare(strict_types=1);
 namespace HubspotSDK\Cms\MediaBridge;
 
 use HubspotSDK\Cms\MediaBridge\MediaPlayedPercentageEventRequest\MediaType;
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -33,46 +34,46 @@ final class MediaPlayedPercentageEventRequest implements BaseModel
     use SdkModel;
 
     /** @var value-of<MediaType> $mediaType */
-    #[Api(enum: MediaType::class)]
+    #[Required(enum: MediaType::class)]
     public string $mediaType;
 
-    #[Api]
+    #[Required]
     public int $occurredTimestamp;
 
-    #[Api]
+    #[Required]
     public int $playedPercent;
 
-    #[Api]
+    #[Required]
     public string $sessionId;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $_hsenc;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $contactId;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $contactUtk;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $externalId;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $mediaBridgeId;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $mediaName;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $mediaUrl;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?int $pageId;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $pageName;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?string $pageUrl;
 
     /**

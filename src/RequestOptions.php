@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Implementation\Omit;
@@ -36,39 +37,39 @@ final class RequestOptions implements BaseModel
     /** @use SdkModel<request_options> */
     use SdkModel;
 
-    #[Api]
+    #[Required]
     public float $timeout = 60;
 
-    #[Api]
+    #[Required]
     public int $maxRetries = 2;
 
-    #[Api]
+    #[Required]
     public float $initialRetryDelay = 0.5;
 
-    #[Api]
+    #[Required]
     public float $maxRetryDelay = 8.0;
 
     /** @var array<string,string|int|list<string|int>|null>|null $extraHeaders */
-    #[Api(optional: true)]
+    #[Optional]
     public ?array $extraHeaders;
 
     /** @var array<string,mixed>|null $extraQueryParams */
-    #[Api(optional: true)]
+    #[Optional]
     public ?array $extraQueryParams;
 
-    #[Api(optional: true)]
+    #[Optional]
     public mixed $extraBodyParams;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?ClientInterface $transporter;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?UriFactoryInterface $uriFactory;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?StreamFactoryInterface $streamFactory;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?RequestFactoryInterface $requestFactory;
 
     public function __construct()

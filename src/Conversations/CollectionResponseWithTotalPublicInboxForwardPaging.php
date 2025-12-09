@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Conversations;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\ForwardPaging;
@@ -21,13 +22,13 @@ final class CollectionResponseWithTotalPublicInboxForwardPaging implements BaseM
     use SdkModel;
 
     /** @var list<PublicInbox> $results */
-    #[Api(list: PublicInbox::class)]
+    #[Required(list: PublicInbox::class)]
     public array $results;
 
-    #[Api]
+    #[Required]
     public int $total;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?ForwardPaging $paging;
 
     /**

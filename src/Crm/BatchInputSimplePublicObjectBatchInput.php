@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -19,7 +19,7 @@ final class BatchInputSimplePublicObjectBatchInput implements BaseModel
     use SdkModel;
 
     /** @var list<SimplePublicObjectBatchInput> $inputs */
-    #[Api(list: SimplePublicObjectBatchInput::class)]
+    #[Required(list: SimplePublicObjectBatchInput::class)]
     public array $inputs;
 
     /**

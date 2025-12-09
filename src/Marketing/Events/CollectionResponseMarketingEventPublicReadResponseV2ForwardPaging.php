@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Events;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\ForwardPaging;
@@ -23,10 +24,10 @@ final class CollectionResponseMarketingEventPublicReadResponseV2ForwardPaging im
     use SdkModel;
 
     /** @var list<MarketingEventPublicReadResponseV2> $results */
-    #[Api(list: MarketingEventPublicReadResponseV2::class)]
+    #[Required(list: MarketingEventPublicReadResponseV2::class)]
     public array $results;
 
-    #[Api(optional: true)]
+    #[Optional]
     public ?ForwardPaging $paging;
 
     /**

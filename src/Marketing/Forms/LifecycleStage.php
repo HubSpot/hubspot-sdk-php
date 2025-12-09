@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Marketing\Forms;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -19,13 +19,13 @@ final class LifecycleStage implements BaseModel
     /**
      * The objectTypeId for both contact and company.
      */
-    #[Api]
+    #[Required]
     public string $objectTypeId;
 
     /**
      * The internal name of the contact's lifecycle stage set when submitting a form.
      */
-    #[Api]
+    #[Required]
     public string $value;
 
     /**

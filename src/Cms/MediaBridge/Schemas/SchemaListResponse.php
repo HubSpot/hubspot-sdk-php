@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\MediaBridge\Schemas;
 
-use HubspotSDK\Core\Attributes\Api;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Objects\Schemas\ObjectSchema;
@@ -21,7 +21,7 @@ final class SchemaListResponse implements BaseModel
     use SdkModel;
 
     /** @var list<ObjectSchema> $results */
-    #[Api(list: ObjectSchema::class)]
+    #[Required(list: ObjectSchema::class)]
     public array $results;
 
     /**
