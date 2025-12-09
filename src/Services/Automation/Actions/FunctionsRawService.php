@@ -141,6 +141,9 @@ final class FunctionsRawService implements FunctionsRawContract
         $functionType = $parsed['functionType'];
         unset($parsed['functionType']);
 
+        /** @var array<string,mixed> */
+        $body = $parsed['body'];
+
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'put',
@@ -153,7 +156,7 @@ final class FunctionsRawService implements FunctionsRawContract
             ],
             headers: ['Content-Type' => 'text/plain'],
             body: array_diff_key(
-                $parsed['body'],
+                $body,
                 array_flip(['appID', 'definitionID', 'functionType'])
             ),
             options: $options,
@@ -189,6 +192,9 @@ final class FunctionsRawService implements FunctionsRawContract
         $definitionID = $parsed['definitionID'];
         unset($parsed['definitionID']);
 
+        /** @var array<string,mixed> */
+        $body = $parsed['body'];
+
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'put',
@@ -199,10 +205,7 @@ final class FunctionsRawService implements FunctionsRawContract
                 $functionType,
             ],
             headers: ['Content-Type' => 'text/plain'],
-            body: array_diff_key(
-                $parsed['body'],
-                array_flip(['appID', 'definitionID'])
-            ),
+            body: array_diff_key($body, array_flip(['appID', 'definitionID'])),
             options: $options,
             convert: PublicActionFunctionIdentifier::class,
         );
