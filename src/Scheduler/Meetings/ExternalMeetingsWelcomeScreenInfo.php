@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * @phpstan-type ExternalMeetingsWelcomeScreenInfoShape = array{
  *   description?: string|null,
- *   logoUrl?: string|null,
+ *   logoURL?: string|null,
  *   showWelcomeScreen?: bool|null,
  *   title?: string|null,
  *   useCompanyLogo?: bool|null,
@@ -25,8 +25,8 @@ final class ExternalMeetingsWelcomeScreenInfo implements BaseModel
     #[Optional]
     public ?string $description;
 
-    #[Optional]
-    public ?string $logoUrl;
+    #[Optional('logoUrl')]
+    public ?string $logoURL;
 
     #[Optional]
     public ?bool $showWelcomeScreen;
@@ -49,7 +49,7 @@ final class ExternalMeetingsWelcomeScreenInfo implements BaseModel
      */
     public static function with(
         ?string $description = null,
-        ?string $logoUrl = null,
+        ?string $logoURL = null,
         ?bool $showWelcomeScreen = null,
         ?string $title = null,
         ?bool $useCompanyLogo = null,
@@ -57,7 +57,7 @@ final class ExternalMeetingsWelcomeScreenInfo implements BaseModel
         $obj = new self;
 
         null !== $description && $obj['description'] = $description;
-        null !== $logoUrl && $obj['logoUrl'] = $logoUrl;
+        null !== $logoURL && $obj['logoURL'] = $logoURL;
         null !== $showWelcomeScreen && $obj['showWelcomeScreen'] = $showWelcomeScreen;
         null !== $title && $obj['title'] = $title;
         null !== $useCompanyLogo && $obj['useCompanyLogo'] = $useCompanyLogo;
@@ -76,7 +76,7 @@ final class ExternalMeetingsWelcomeScreenInfo implements BaseModel
     public function withLogoURL(string $logoURL): self
     {
         $obj = clone $this;
-        $obj['logoUrl'] = $logoURL;
+        $obj['logoURL'] = $logoURL;
 
         return $obj;
     }

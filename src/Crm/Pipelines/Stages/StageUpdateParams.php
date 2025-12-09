@@ -17,7 +17,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @phpstan-type StageUpdateParamsShape = array{
  *   objectType: string,
- *   pipelineId: string,
+ *   pipelineID: string,
  *   metadata: array<string,string>,
  *   archived?: bool,
  *   displayOrder?: int,
@@ -34,7 +34,7 @@ final class StageUpdateParams implements BaseModel
     public string $objectType;
 
     #[Required]
-    public string $pipelineId;
+    public string $pipelineID;
 
     /**
      * A JSON object containing properties that are not present on all object pipelines.
@@ -71,7 +71,7 @@ final class StageUpdateParams implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * StageUpdateParams::with(objectType: ..., pipelineId: ..., metadata: ...)
+     * StageUpdateParams::with(objectType: ..., pipelineID: ..., metadata: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -97,7 +97,7 @@ final class StageUpdateParams implements BaseModel
      */
     public static function with(
         string $objectType,
-        string $pipelineId,
+        string $pipelineID,
         array $metadata,
         ?bool $archived = null,
         ?int $displayOrder = null,
@@ -106,7 +106,7 @@ final class StageUpdateParams implements BaseModel
         $obj = new self;
 
         $obj['objectType'] = $objectType;
-        $obj['pipelineId'] = $pipelineId;
+        $obj['pipelineID'] = $pipelineID;
         $obj['metadata'] = $metadata;
 
         null !== $archived && $obj['archived'] = $archived;
@@ -127,7 +127,7 @@ final class StageUpdateParams implements BaseModel
     public function withPipelineID(string $pipelineID): self
     {
         $obj = clone $this;
-        $obj['pipelineId'] = $pipelineID;
+        $obj['pipelineID'] = $pipelineID;
 
         return $obj;
     }

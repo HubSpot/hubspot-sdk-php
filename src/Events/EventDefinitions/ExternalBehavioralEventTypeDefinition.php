@@ -28,14 +28,14 @@ use HubspotSDK\PropertyModificationMetadata;
  *   fullyQualifiedName: string,
  *   labels: BehavioralEventTypeDefinitionLabels,
  *   name: string,
- *   objectTypeId: string,
+ *   objectTypeID: string,
  *   properties: list<Property>,
  *   comboEventRules?: ComboEventRuleBranch|null,
  *   createdAt?: \DateTimeInterface|null,
- *   createdUserId?: int|null,
+ *   createdUserID?: int|null,
  *   description?: string|null,
  *   primaryObject?: string|null,
- *   primaryObjectId?: string|null,
+ *   primaryObjectID?: string|null,
  *   trackingType?: value-of<TrackingType>|null,
  * }
  */
@@ -63,8 +63,8 @@ final class ExternalBehavioralEventTypeDefinition implements BaseModel
     #[Required]
     public string $name;
 
-    #[Required]
-    public string $objectTypeId;
+    #[Required('objectTypeId')]
+    public string $objectTypeID;
 
     /** @var list<Property> $properties */
     #[Required(list: Property::class)]
@@ -76,8 +76,8 @@ final class ExternalBehavioralEventTypeDefinition implements BaseModel
     #[Optional]
     public ?\DateTimeInterface $createdAt;
 
-    #[Optional]
-    public ?int $createdUserId;
+    #[Optional('createdUserId')]
+    public ?int $createdUserID;
 
     #[Optional]
     public ?string $description;
@@ -85,8 +85,8 @@ final class ExternalBehavioralEventTypeDefinition implements BaseModel
     #[Optional]
     public ?string $primaryObject;
 
-    #[Optional]
-    public ?string $primaryObjectId;
+    #[Optional('primaryObjectId')]
+    public ?string $primaryObjectID;
 
     /** @var value-of<TrackingType>|null $trackingType */
     #[Optional(enum: TrackingType::class)]
@@ -104,7 +104,7 @@ final class ExternalBehavioralEventTypeDefinition implements BaseModel
      *   fullyQualifiedName: ...,
      *   labels: ...,
      *   name: ...,
-     *   objectTypeId: ...,
+     *   objectTypeID: ...,
      *   properties: ...,
      * )
      * ```
@@ -138,24 +138,24 @@ final class ExternalBehavioralEventTypeDefinition implements BaseModel
      *   allowsCustomLabels: bool,
      *   cardinality: value-of<Cardinality>,
      *   category: value-of<Category>,
-     *   fromObjectTypeId: string,
+     *   fromObjectTypeID: string,
      *   hasAllAssociatedObjects: bool,
      *   hasCascadingDeletes: bool,
-     *   hasUserEnforcedMaxFromObjectIds: bool,
-     *   hasUserEnforcedMaxToObjectIds: bool,
+     *   hasUserEnforcedMaxFromObjectIDs: bool,
+     *   hasUserEnforcedMaxToObjectIDs: bool,
      *   hidden: bool,
      *   inverseAllowsCustomLabels: bool,
      *   inverseCardinality: value-of<InverseCardinality>,
      *   inverseHasAllAssociatedObjects: bool,
-     *   inverseId: int,
+     *   inverseID: int,
      *   inverseName: string,
      *   isInversePrimary: bool,
      *   isPrimary: bool,
-     *   maxFromObjectIds: int,
-     *   maxToObjectIds: int,
+     *   maxFromObjectIDs: int,
+     *   maxToObjectIDs: int,
      *   name: string,
      *   portalUniqueIdentifier: string,
-     *   toObjectTypeId: string,
+     *   toObjectTypeID: string,
      *   fromObjectType?: value-of<FromObjectType>|null,
      *   inverseLabel?: string|null,
      *   label?: string|null,
@@ -177,7 +177,7 @@ final class ExternalBehavioralEventTypeDefinition implements BaseModel
      *   calculated?: bool|null,
      *   calculationFormula?: string|null,
      *   createdAt?: \DateTimeInterface|null,
-     *   createdUserId?: string|null,
+     *   createdUserID?: string|null,
      *   dataSensitivity?: value-of<DataSensitivity>|null,
      *   displayOrder?: int|null,
      *   externalOptions?: bool|null,
@@ -190,7 +190,7 @@ final class ExternalBehavioralEventTypeDefinition implements BaseModel
      *   sensitiveDataCategories?: list<string>|null,
      *   showCurrencySymbol?: bool|null,
      *   updatedAt?: \DateTimeInterface|null,
-     *   updatedUserId?: string|null,
+     *   updatedUserID?: string|null,
      * }> $properties
      * @param ComboEventRuleBranch|array{
      *   composingRules: list<ComboEventRule>,
@@ -206,14 +206,14 @@ final class ExternalBehavioralEventTypeDefinition implements BaseModel
         string $fullyQualifiedName,
         BehavioralEventTypeDefinitionLabels|array $labels,
         string $name,
-        string $objectTypeId,
+        string $objectTypeID,
         array $properties,
         ComboEventRuleBranch|array|null $comboEventRules = null,
         ?\DateTimeInterface $createdAt = null,
-        ?int $createdUserId = null,
+        ?int $createdUserID = null,
         ?string $description = null,
         ?string $primaryObject = null,
-        ?string $primaryObjectId = null,
+        ?string $primaryObjectID = null,
         TrackingType|string|null $trackingType = null,
     ): self {
         $obj = new self;
@@ -224,15 +224,15 @@ final class ExternalBehavioralEventTypeDefinition implements BaseModel
         $obj['fullyQualifiedName'] = $fullyQualifiedName;
         $obj['labels'] = $labels;
         $obj['name'] = $name;
-        $obj['objectTypeId'] = $objectTypeId;
+        $obj['objectTypeID'] = $objectTypeID;
         $obj['properties'] = $properties;
 
         null !== $comboEventRules && $obj['comboEventRules'] = $comboEventRules;
         null !== $createdAt && $obj['createdAt'] = $createdAt;
-        null !== $createdUserId && $obj['createdUserId'] = $createdUserId;
+        null !== $createdUserID && $obj['createdUserID'] = $createdUserID;
         null !== $description && $obj['description'] = $description;
         null !== $primaryObject && $obj['primaryObject'] = $primaryObject;
-        null !== $primaryObjectId && $obj['primaryObjectId'] = $primaryObjectId;
+        null !== $primaryObjectID && $obj['primaryObjectID'] = $primaryObjectID;
         null !== $trackingType && $obj['trackingType'] = $trackingType;
 
         return $obj;
@@ -260,24 +260,24 @@ final class ExternalBehavioralEventTypeDefinition implements BaseModel
      *   allowsCustomLabels: bool,
      *   cardinality: value-of<Cardinality>,
      *   category: value-of<Category>,
-     *   fromObjectTypeId: string,
+     *   fromObjectTypeID: string,
      *   hasAllAssociatedObjects: bool,
      *   hasCascadingDeletes: bool,
-     *   hasUserEnforcedMaxFromObjectIds: bool,
-     *   hasUserEnforcedMaxToObjectIds: bool,
+     *   hasUserEnforcedMaxFromObjectIDs: bool,
+     *   hasUserEnforcedMaxToObjectIDs: bool,
      *   hidden: bool,
      *   inverseAllowsCustomLabels: bool,
      *   inverseCardinality: value-of<InverseCardinality>,
      *   inverseHasAllAssociatedObjects: bool,
-     *   inverseId: int,
+     *   inverseID: int,
      *   inverseName: string,
      *   isInversePrimary: bool,
      *   isPrimary: bool,
-     *   maxFromObjectIds: int,
-     *   maxToObjectIds: int,
+     *   maxFromObjectIDs: int,
+     *   maxToObjectIDs: int,
      *   name: string,
      *   portalUniqueIdentifier: string,
-     *   toObjectTypeId: string,
+     *   toObjectTypeID: string,
      *   fromObjectType?: value-of<FromObjectType>|null,
      *   inverseLabel?: string|null,
      *   label?: string|null,
@@ -325,7 +325,7 @@ final class ExternalBehavioralEventTypeDefinition implements BaseModel
     public function withObjectTypeID(string $objectTypeID): self
     {
         $obj = clone $this;
-        $obj['objectTypeId'] = $objectTypeID;
+        $obj['objectTypeID'] = $objectTypeID;
 
         return $obj;
     }
@@ -344,7 +344,7 @@ final class ExternalBehavioralEventTypeDefinition implements BaseModel
      *   calculated?: bool|null,
      *   calculationFormula?: string|null,
      *   createdAt?: \DateTimeInterface|null,
-     *   createdUserId?: string|null,
+     *   createdUserID?: string|null,
      *   dataSensitivity?: value-of<DataSensitivity>|null,
      *   displayOrder?: int|null,
      *   externalOptions?: bool|null,
@@ -357,7 +357,7 @@ final class ExternalBehavioralEventTypeDefinition implements BaseModel
      *   sensitiveDataCategories?: list<string>|null,
      *   showCurrencySymbol?: bool|null,
      *   updatedAt?: \DateTimeInterface|null,
-     *   updatedUserId?: string|null,
+     *   updatedUserID?: string|null,
      * }> $properties
      */
     public function withProperties(array $properties): self
@@ -395,7 +395,7 @@ final class ExternalBehavioralEventTypeDefinition implements BaseModel
     public function withCreatedUserID(int $createdUserID): self
     {
         $obj = clone $this;
-        $obj['createdUserId'] = $createdUserID;
+        $obj['createdUserID'] = $createdUserID;
 
         return $obj;
     }
@@ -419,7 +419,7 @@ final class ExternalBehavioralEventTypeDefinition implements BaseModel
     public function withPrimaryObjectID(string $primaryObjectID): self
     {
         $obj = clone $this;
-        $obj['primaryObjectId'] = $primaryObjectID;
+        $obj['primaryObjectID'] = $primaryObjectID;
 
         return $obj;
     }

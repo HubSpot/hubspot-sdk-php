@@ -123,7 +123,7 @@ final class BatchResponseContentFolderWithErrors implements BaseModel
      *   created: \DateTimeInterface,
      *   deletedAt: \DateTimeInterface,
      *   name: string,
-     *   parentFolderId: int,
+     *   parentFolderID: int,
      *   updated: \DateTimeInterface,
      * }> $results
      * @param Status|value-of<Status> $status
@@ -184,7 +184,7 @@ final class BatchResponseContentFolderWithErrors implements BaseModel
      *   created: \DateTimeInterface,
      *   deletedAt: \DateTimeInterface,
      *   name: string,
-     *   parentFolderId: int,
+     *   parentFolderID: int,
      *   updated: \DateTimeInterface,
      * }> $results
      */

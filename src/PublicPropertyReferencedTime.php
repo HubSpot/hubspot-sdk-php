@@ -15,7 +15,7 @@ use HubspotSDK\PublicPropertyReferencedTime\TimeType;
  *   property: string,
  *   referenceType: string,
  *   timeType: value-of<TimeType>,
- *   zoneId: string,
+ *   zoneID: string,
  *   timezoneSource?: string|null,
  * }
  */
@@ -34,8 +34,8 @@ final class PublicPropertyReferencedTime implements BaseModel
     #[Required(enum: TimeType::class)]
     public string $timeType;
 
-    #[Required]
-    public string $zoneId;
+    #[Required('zoneId')]
+    public string $zoneID;
 
     #[Optional]
     public ?string $timezoneSource;
@@ -46,7 +46,7 @@ final class PublicPropertyReferencedTime implements BaseModel
      * To enforce required parameters use
      * ```
      * PublicPropertyReferencedTime::with(
-     *   property: ..., referenceType: ..., timeType: ..., zoneId: ...
+     *   property: ..., referenceType: ..., timeType: ..., zoneID: ...
      * )
      * ```
      *
@@ -75,7 +75,7 @@ final class PublicPropertyReferencedTime implements BaseModel
     public static function with(
         string $property,
         string $referenceType,
-        string $zoneId,
+        string $zoneID,
         TimeType|string $timeType = 'PROPERTY_REFERENCED',
         ?string $timezoneSource = null,
     ): self {
@@ -84,7 +84,7 @@ final class PublicPropertyReferencedTime implements BaseModel
         $obj['property'] = $property;
         $obj['referenceType'] = $referenceType;
         $obj['timeType'] = $timeType;
-        $obj['zoneId'] = $zoneId;
+        $obj['zoneID'] = $zoneID;
 
         null !== $timezoneSource && $obj['timezoneSource'] = $timezoneSource;
 
@@ -121,7 +121,7 @@ final class PublicPropertyReferencedTime implements BaseModel
     public function withZoneID(string $zoneID): self
     {
         $obj = clone $this;
-        $obj['zoneId'] = $zoneID;
+        $obj['zoneID'] = $zoneID;
 
         return $obj;
     }

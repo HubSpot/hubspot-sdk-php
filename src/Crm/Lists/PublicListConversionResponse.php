@@ -13,7 +13,7 @@ use HubspotSDK\Crm\Lists\PublicListConversionInactivity\TimeUnit;
 
 /**
  * @phpstan-type PublicListConversionResponseShape = array{
- *   listId: string,
+ *   listID: string,
  *   convertedAt?: \DateTimeInterface|null,
  *   requestedConversionTime?: null|PublicListConversionDate|PublicListConversionInactivity,
  * }
@@ -23,8 +23,8 @@ final class PublicListConversionResponse implements BaseModel
     /** @use SdkModel<PublicListConversionResponseShape> */
     use SdkModel;
 
-    #[Required]
-    public string $listId;
+    #[Required('listId')]
+    public string $listID;
 
     #[Optional]
     public ?\DateTimeInterface $convertedAt;
@@ -37,7 +37,7 @@ final class PublicListConversionResponse implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * PublicListConversionResponse::with(listId: ...)
+     * PublicListConversionResponse::with(listID: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -65,13 +65,13 @@ final class PublicListConversionResponse implements BaseModel
      * } $requestedConversionTime
      */
     public static function with(
-        string $listId,
+        string $listID,
         ?\DateTimeInterface $convertedAt = null,
         PublicListConversionDate|array|PublicListConversionInactivity|null $requestedConversionTime = null,
     ): self {
         $obj = new self;
 
-        $obj['listId'] = $listId;
+        $obj['listID'] = $listID;
 
         null !== $convertedAt && $obj['convertedAt'] = $convertedAt;
         null !== $requestedConversionTime && $obj['requestedConversionTime'] = $requestedConversionTime;
@@ -82,7 +82,7 @@ final class PublicListConversionResponse implements BaseModel
     public function withListID(string $listID): self
     {
         $obj = clone $this;
-        $obj['listId'] = $listID;
+        $obj['listID'] = $listID;
 
         return $obj;
     }

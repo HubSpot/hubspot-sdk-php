@@ -26,42 +26,42 @@ use HubspotSDK\Core\Conversion\MapOf;
  * @phpstan-type LandingPageUpdateParamsShape = array{
  *   id: string,
  *   abStatus: AbStatus|value-of<AbStatus>,
- *   abTestId: string,
+ *   abTestID: string,
  *   archivedAt: \DateTimeInterface,
  *   archivedInDashboard: bool,
  *   attachedStylesheets: list<array<string,mixed>>,
  *   authorName: string,
  *   campaign: string,
- *   categoryId: int,
- *   contentGroupId: string,
+ *   categoryID: int,
+ *   contentGroupID: string,
  *   contentTypeCategory: ContentTypeCategory|value-of<ContentTypeCategory>,
  *   created: \DateTimeInterface,
- *   createdById: string,
+ *   createdByID: string,
  *   currentlyPublished: bool,
  *   currentState: CurrentState|value-of<CurrentState>,
  *   domain: string,
- *   dynamicPageDataSourceId: string,
+ *   dynamicPageDataSourceID: string,
  *   dynamicPageDataSourceType: int,
- *   dynamicPageHubDbTableId: string,
+ *   dynamicPageHubDBTableID: string,
  *   enableDomainStylesheets: bool,
  *   enableLayoutStylesheets: bool,
  *   featuredImage: string,
  *   featuredImageAltText: string,
- *   folderId: string,
- *   footerHtml: string,
- *   headHtml: string,
+ *   folderID: string,
+ *   footerHTML: string,
+ *   headHTML: string,
  *   htmlTitle: string,
  *   includeDefaultCustomCss: bool,
  *   language: Language|value-of<Language>,
  *   layoutSections: array<string,mixed>,
- *   linkRelCanonicalUrl: string,
- *   mabExperimentId: string,
+ *   linkRelCanonicalURL: string,
+ *   mabExperimentID: string,
  *   metaDescription: string,
  *   name: string,
  *   pageExpiryDate: int,
  *   pageExpiryEnabled: bool,
- *   pageExpiryRedirectId: int,
- *   pageExpiryRedirectUrl: string,
+ *   pageExpiryRedirectID: int,
+ *   pageExpiryRedirectURL: string,
  *   pageRedirected: bool,
  *   password: string,
  *   publicAccessRules: list<mixed>,
@@ -73,7 +73,7 @@ use HubspotSDK\Core\Conversion\MapOf;
  *   subcategory: string,
  *   templatePath: string,
  *   themeSettingsValues: array<string,mixed>,
- *   translatedFromId: string,
+ *   translatedFromID: string,
  *   translations: array<string,PagesContentLanguageVariation|array{
  *     id: int,
  *     archivedInDashboard: bool,
@@ -88,10 +88,10 @@ use HubspotSDK\Core\Conversion\MapOf;
  *     slug: string,
  *     state: string,
  *     updated: \DateTimeInterface,
- *     tagIds?: list<int>|null,
+ *     tagIDs?: list<int>|null,
  *   }>,
  *   updated: \DateTimeInterface,
- *   updatedById: string,
+ *   updatedByID: string,
  *   url: string,
  *   useFeaturedImage: bool,
  *   widgetContainers: array<string,mixed>,
@@ -122,8 +122,8 @@ final class LandingPageUpdateParams implements BaseModel
     /**
      * The ID of the AB test associated with this page, if applicable.
      */
-    #[Required]
-    public string $abTestId;
+    #[Required('abTestId')]
+    public string $abTestID;
 
     /**
      * The timestamp (ISO8601 format) when this page was deleted.
@@ -160,11 +160,11 @@ final class LandingPageUpdateParams implements BaseModel
     /**
      * ID of the type of object this is. Should always .
      */
-    #[Required]
-    public int $categoryId;
+    #[Required('categoryId')]
+    public int $categoryID;
 
-    #[Required]
-    public string $contentGroupId;
+    #[Required('contentGroupId')]
+    public string $contentGroupID;
 
     /**
      * An ENUM descibing the type of this object. Should be either LANDING_PAGE or SITE_PAGE.
@@ -180,8 +180,8 @@ final class LandingPageUpdateParams implements BaseModel
     /**
      * The ID of the user that created this page.
      */
-    #[Required]
-    public string $createdById;
+    #[Required('createdById')]
+    public string $createdByID;
 
     #[Required]
     public bool $currentlyPublished;
@@ -200,8 +200,8 @@ final class LandingPageUpdateParams implements BaseModel
     #[Required]
     public string $domain;
 
-    #[Required]
-    public string $dynamicPageDataSourceId;
+    #[Required('dynamicPageDataSourceId')]
+    public string $dynamicPageDataSourceID;
 
     #[Required]
     public int $dynamicPageDataSourceType;
@@ -209,8 +209,8 @@ final class LandingPageUpdateParams implements BaseModel
     /**
      * The ID of the HubDB table this page references, if applicable.
      */
-    #[Required]
-    public string $dynamicPageHubDbTableId;
+    #[Required('dynamicPageHubDbTableId')]
+    public string $dynamicPageHubDBTableID;
 
     /**
      * Boolean to determine whether or not the styles from the template should be applied.
@@ -239,20 +239,20 @@ final class LandingPageUpdateParams implements BaseModel
     /**
      * The ID of the associated folder this landing page is organized under in the app dashboard.
      */
-    #[Required]
-    public string $folderId;
+    #[Required('folderId')]
+    public string $folderID;
 
     /**
      * Custom HTML for embed codes, javascript that should be placed before the </body> tag of the page.
      */
-    #[Required]
-    public string $footerHtml;
+    #[Required('footerHtml')]
+    public string $footerHTML;
 
     /**
      * Custom HTML for embed codes, javascript, etc. that goes in the <head> tag of the page.
      */
-    #[Required]
-    public string $headHtml;
+    #[Required('headHtml')]
+    public string $headHTML;
 
     /**
      * The html title of this page.
@@ -281,14 +281,14 @@ final class LandingPageUpdateParams implements BaseModel
     /**
      * Optional override to set the URL to be used in the rel=canonical link tag on the page.
      */
-    #[Required]
-    public string $linkRelCanonicalUrl;
+    #[Required('linkRelCanonicalUrl')]
+    public string $linkRelCanonicalURL;
 
     /**
      * The ID of the MAB test (or dynamic test) associated with this page, if applicable.
      */
-    #[Required]
-    public string $mabExperimentId;
+    #[Required('mabExperimentId')]
+    public string $mabExperimentID;
 
     /**
      * A description that goes in <meta> tag on the page.
@@ -317,14 +317,14 @@ final class LandingPageUpdateParams implements BaseModel
     /**
      * The ID of another page this page's url should redirect to once this page expires. Should only set this or pageExpiryRedirectUrl.
      */
-    #[Required]
-    public int $pageExpiryRedirectId;
+    #[Required('pageExpiryRedirectId')]
+    public int $pageExpiryRedirectID;
 
     /**
      * The URL this page's url should redirect to once this page expires. Should only set this or pageExpiryRedirectId.
      */
-    #[Required]
-    public string $pageExpiryRedirectUrl;
+    #[Required('pageExpiryRedirectUrl')]
+    public string $pageExpiryRedirectURL;
 
     /**
      * A generated Boolean describing whether or not this page is currently expired and being redirected.
@@ -395,8 +395,8 @@ final class LandingPageUpdateParams implements BaseModel
     /**
      * ID of the primary page this object was translated from.
      */
-    #[Required]
-    public string $translatedFromId;
+    #[Required('translatedFromId')]
+    public string $translatedFromID;
 
     /** @var array<string,PagesContentLanguageVariation> $translations */
     #[Required(map: PagesContentLanguageVariation::class)]
@@ -408,8 +408,8 @@ final class LandingPageUpdateParams implements BaseModel
     /**
      * The ID of the user that updated this page.
      */
-    #[Required]
-    public string $updatedById;
+    #[Required('updatedById')]
+    public string $updatedByID;
 
     /**
      * A generated field representing the URL of this page.
@@ -453,42 +453,42 @@ final class LandingPageUpdateParams implements BaseModel
      * LandingPageUpdateParams::with(
      *   id: ...,
      *   abStatus: ...,
-     *   abTestId: ...,
+     *   abTestID: ...,
      *   archivedAt: ...,
      *   archivedInDashboard: ...,
      *   attachedStylesheets: ...,
      *   authorName: ...,
      *   campaign: ...,
-     *   categoryId: ...,
-     *   contentGroupId: ...,
+     *   categoryID: ...,
+     *   contentGroupID: ...,
      *   contentTypeCategory: ...,
      *   created: ...,
-     *   createdById: ...,
+     *   createdByID: ...,
      *   currentlyPublished: ...,
      *   currentState: ...,
      *   domain: ...,
-     *   dynamicPageDataSourceId: ...,
+     *   dynamicPageDataSourceID: ...,
      *   dynamicPageDataSourceType: ...,
-     *   dynamicPageHubDbTableId: ...,
+     *   dynamicPageHubDBTableID: ...,
      *   enableDomainStylesheets: ...,
      *   enableLayoutStylesheets: ...,
      *   featuredImage: ...,
      *   featuredImageAltText: ...,
-     *   folderId: ...,
-     *   footerHtml: ...,
-     *   headHtml: ...,
+     *   folderID: ...,
+     *   footerHTML: ...,
+     *   headHTML: ...,
      *   htmlTitle: ...,
      *   includeDefaultCustomCss: ...,
      *   language: ...,
      *   layoutSections: ...,
-     *   linkRelCanonicalUrl: ...,
-     *   mabExperimentId: ...,
+     *   linkRelCanonicalURL: ...,
+     *   mabExperimentID: ...,
      *   metaDescription: ...,
      *   name: ...,
      *   pageExpiryDate: ...,
      *   pageExpiryEnabled: ...,
-     *   pageExpiryRedirectId: ...,
-     *   pageExpiryRedirectUrl: ...,
+     *   pageExpiryRedirectID: ...,
+     *   pageExpiryRedirectURL: ...,
      *   pageRedirected: ...,
      *   password: ...,
      *   publicAccessRules: ...,
@@ -500,10 +500,10 @@ final class LandingPageUpdateParams implements BaseModel
      *   subcategory: ...,
      *   templatePath: ...,
      *   themeSettingsValues: ...,
-     *   translatedFromId: ...,
+     *   translatedFromID: ...,
      *   translations: ...,
      *   updated: ...,
-     *   updatedById: ...,
+     *   updatedByID: ...,
      *   url: ...,
      *   useFeaturedImage: ...,
      *   widgetContainers: ...,
@@ -606,7 +606,7 @@ final class LandingPageUpdateParams implements BaseModel
      *   slug: string,
      *   state: string,
      *   updated: \DateTimeInterface,
-     *   tagIds?: list<int>|null,
+     *   tagIDs?: list<int>|null,
      * }> $translations
      * @param array<string,mixed> $widgetContainers
      * @param array<string,mixed> $widgets
@@ -614,42 +614,42 @@ final class LandingPageUpdateParams implements BaseModel
     public static function with(
         string $id,
         AbStatus|string $abStatus,
-        string $abTestId,
+        string $abTestID,
         \DateTimeInterface $archivedAt,
         bool $archivedInDashboard,
         array $attachedStylesheets,
         string $authorName,
         string $campaign,
-        int $categoryId,
-        string $contentGroupId,
+        int $categoryID,
+        string $contentGroupID,
         ContentTypeCategory|string $contentTypeCategory,
         \DateTimeInterface $created,
-        string $createdById,
+        string $createdByID,
         bool $currentlyPublished,
         CurrentState|string $currentState,
         string $domain,
-        string $dynamicPageDataSourceId,
+        string $dynamicPageDataSourceID,
         int $dynamicPageDataSourceType,
-        string $dynamicPageHubDbTableId,
+        string $dynamicPageHubDBTableID,
         bool $enableDomainStylesheets,
         bool $enableLayoutStylesheets,
         string $featuredImage,
         string $featuredImageAltText,
-        string $folderId,
-        string $footerHtml,
-        string $headHtml,
+        string $folderID,
+        string $footerHTML,
+        string $headHTML,
         string $htmlTitle,
         bool $includeDefaultCustomCss,
         Language|string $language,
         array $layoutSections,
-        string $linkRelCanonicalUrl,
-        string $mabExperimentId,
+        string $linkRelCanonicalURL,
+        string $mabExperimentID,
         string $metaDescription,
         string $name,
         int $pageExpiryDate,
         bool $pageExpiryEnabled,
-        int $pageExpiryRedirectId,
-        string $pageExpiryRedirectUrl,
+        int $pageExpiryRedirectID,
+        string $pageExpiryRedirectURL,
         bool $pageRedirected,
         string $password,
         array $publicAccessRules,
@@ -661,10 +661,10 @@ final class LandingPageUpdateParams implements BaseModel
         string $subcategory,
         string $templatePath,
         array $themeSettingsValues,
-        string $translatedFromId,
+        string $translatedFromID,
         array $translations,
         \DateTimeInterface $updated,
-        string $updatedById,
+        string $updatedByID,
         string $url,
         bool $useFeaturedImage,
         array $widgetContainers,
@@ -675,42 +675,42 @@ final class LandingPageUpdateParams implements BaseModel
 
         $obj['id'] = $id;
         $obj['abStatus'] = $abStatus;
-        $obj['abTestId'] = $abTestId;
+        $obj['abTestID'] = $abTestID;
         $obj['archivedAt'] = $archivedAt;
         $obj['archivedInDashboard'] = $archivedInDashboard;
         $obj['attachedStylesheets'] = $attachedStylesheets;
         $obj['authorName'] = $authorName;
         $obj['campaign'] = $campaign;
-        $obj['categoryId'] = $categoryId;
-        $obj['contentGroupId'] = $contentGroupId;
+        $obj['categoryID'] = $categoryID;
+        $obj['contentGroupID'] = $contentGroupID;
         $obj['contentTypeCategory'] = $contentTypeCategory;
         $obj['created'] = $created;
-        $obj['createdById'] = $createdById;
+        $obj['createdByID'] = $createdByID;
         $obj['currentlyPublished'] = $currentlyPublished;
         $obj['currentState'] = $currentState;
         $obj['domain'] = $domain;
-        $obj['dynamicPageDataSourceId'] = $dynamicPageDataSourceId;
+        $obj['dynamicPageDataSourceID'] = $dynamicPageDataSourceID;
         $obj['dynamicPageDataSourceType'] = $dynamicPageDataSourceType;
-        $obj['dynamicPageHubDbTableId'] = $dynamicPageHubDbTableId;
+        $obj['dynamicPageHubDBTableID'] = $dynamicPageHubDBTableID;
         $obj['enableDomainStylesheets'] = $enableDomainStylesheets;
         $obj['enableLayoutStylesheets'] = $enableLayoutStylesheets;
         $obj['featuredImage'] = $featuredImage;
         $obj['featuredImageAltText'] = $featuredImageAltText;
-        $obj['folderId'] = $folderId;
-        $obj['footerHtml'] = $footerHtml;
-        $obj['headHtml'] = $headHtml;
+        $obj['folderID'] = $folderID;
+        $obj['footerHTML'] = $footerHTML;
+        $obj['headHTML'] = $headHTML;
         $obj['htmlTitle'] = $htmlTitle;
         $obj['includeDefaultCustomCss'] = $includeDefaultCustomCss;
         $obj['language'] = $language;
         $obj['layoutSections'] = $layoutSections;
-        $obj['linkRelCanonicalUrl'] = $linkRelCanonicalUrl;
-        $obj['mabExperimentId'] = $mabExperimentId;
+        $obj['linkRelCanonicalURL'] = $linkRelCanonicalURL;
+        $obj['mabExperimentID'] = $mabExperimentID;
         $obj['metaDescription'] = $metaDescription;
         $obj['name'] = $name;
         $obj['pageExpiryDate'] = $pageExpiryDate;
         $obj['pageExpiryEnabled'] = $pageExpiryEnabled;
-        $obj['pageExpiryRedirectId'] = $pageExpiryRedirectId;
-        $obj['pageExpiryRedirectUrl'] = $pageExpiryRedirectUrl;
+        $obj['pageExpiryRedirectID'] = $pageExpiryRedirectID;
+        $obj['pageExpiryRedirectURL'] = $pageExpiryRedirectURL;
         $obj['pageRedirected'] = $pageRedirected;
         $obj['password'] = $password;
         $obj['publicAccessRules'] = $publicAccessRules;
@@ -722,10 +722,10 @@ final class LandingPageUpdateParams implements BaseModel
         $obj['subcategory'] = $subcategory;
         $obj['templatePath'] = $templatePath;
         $obj['themeSettingsValues'] = $themeSettingsValues;
-        $obj['translatedFromId'] = $translatedFromId;
+        $obj['translatedFromID'] = $translatedFromID;
         $obj['translations'] = $translations;
         $obj['updated'] = $updated;
-        $obj['updatedById'] = $updatedById;
+        $obj['updatedByID'] = $updatedByID;
         $obj['url'] = $url;
         $obj['useFeaturedImage'] = $useFeaturedImage;
         $obj['widgetContainers'] = $widgetContainers;
@@ -766,7 +766,7 @@ final class LandingPageUpdateParams implements BaseModel
     public function withAbTestID(string $abTestID): self
     {
         $obj = clone $this;
-        $obj['abTestId'] = $abTestID;
+        $obj['abTestID'] = $abTestID;
 
         return $obj;
     }
@@ -834,7 +834,7 @@ final class LandingPageUpdateParams implements BaseModel
     public function withCategoryID(int $categoryID): self
     {
         $obj = clone $this;
-        $obj['categoryId'] = $categoryID;
+        $obj['categoryID'] = $categoryID;
 
         return $obj;
     }
@@ -842,7 +842,7 @@ final class LandingPageUpdateParams implements BaseModel
     public function withContentGroupID(string $contentGroupID): self
     {
         $obj = clone $this;
-        $obj['contentGroupId'] = $contentGroupID;
+        $obj['contentGroupID'] = $contentGroupID;
 
         return $obj;
     }
@@ -875,7 +875,7 @@ final class LandingPageUpdateParams implements BaseModel
     public function withCreatedByID(string $createdByID): self
     {
         $obj = clone $this;
-        $obj['createdById'] = $createdByID;
+        $obj['createdByID'] = $createdByID;
 
         return $obj;
     }
@@ -916,7 +916,7 @@ final class LandingPageUpdateParams implements BaseModel
         string $dynamicPageDataSourceID
     ): self {
         $obj = clone $this;
-        $obj['dynamicPageDataSourceId'] = $dynamicPageDataSourceID;
+        $obj['dynamicPageDataSourceID'] = $dynamicPageDataSourceID;
 
         return $obj;
     }
@@ -937,7 +937,7 @@ final class LandingPageUpdateParams implements BaseModel
         string $dynamicPageHubDBTableID
     ): self {
         $obj = clone $this;
-        $obj['dynamicPageHubDbTableId'] = $dynamicPageHubDBTableID;
+        $obj['dynamicPageHubDBTableID'] = $dynamicPageHubDBTableID;
 
         return $obj;
     }
@@ -994,7 +994,7 @@ final class LandingPageUpdateParams implements BaseModel
     public function withFolderID(string $folderID): self
     {
         $obj = clone $this;
-        $obj['folderId'] = $folderID;
+        $obj['folderID'] = $folderID;
 
         return $obj;
     }
@@ -1005,7 +1005,7 @@ final class LandingPageUpdateParams implements BaseModel
     public function withFooterHTML(string $footerHTML): self
     {
         $obj = clone $this;
-        $obj['footerHtml'] = $footerHTML;
+        $obj['footerHTML'] = $footerHTML;
 
         return $obj;
     }
@@ -1016,7 +1016,7 @@ final class LandingPageUpdateParams implements BaseModel
     public function withHeadHTML(string $headHTML): self
     {
         $obj = clone $this;
-        $obj['headHtml'] = $headHTML;
+        $obj['headHTML'] = $headHTML;
 
         return $obj;
     }
@@ -1074,7 +1074,7 @@ final class LandingPageUpdateParams implements BaseModel
     public function withLinkRelCanonicalURL(string $linkRelCanonicalURL): self
     {
         $obj = clone $this;
-        $obj['linkRelCanonicalUrl'] = $linkRelCanonicalURL;
+        $obj['linkRelCanonicalURL'] = $linkRelCanonicalURL;
 
         return $obj;
     }
@@ -1085,7 +1085,7 @@ final class LandingPageUpdateParams implements BaseModel
     public function withMabExperimentID(string $mabExperimentID): self
     {
         $obj = clone $this;
-        $obj['mabExperimentId'] = $mabExperimentID;
+        $obj['mabExperimentID'] = $mabExperimentID;
 
         return $obj;
     }
@@ -1140,7 +1140,7 @@ final class LandingPageUpdateParams implements BaseModel
     public function withPageExpiryRedirectID(int $pageExpiryRedirectID): self
     {
         $obj = clone $this;
-        $obj['pageExpiryRedirectId'] = $pageExpiryRedirectID;
+        $obj['pageExpiryRedirectID'] = $pageExpiryRedirectID;
 
         return $obj;
     }
@@ -1152,7 +1152,7 @@ final class LandingPageUpdateParams implements BaseModel
         string $pageExpiryRedirectURL
     ): self {
         $obj = clone $this;
-        $obj['pageExpiryRedirectUrl'] = $pageExpiryRedirectURL;
+        $obj['pageExpiryRedirectURL'] = $pageExpiryRedirectURL;
 
         return $obj;
     }
@@ -1287,7 +1287,7 @@ final class LandingPageUpdateParams implements BaseModel
     public function withTranslatedFromID(string $translatedFromID): self
     {
         $obj = clone $this;
-        $obj['translatedFromId'] = $translatedFromID;
+        $obj['translatedFromID'] = $translatedFromID;
 
         return $obj;
     }
@@ -1307,7 +1307,7 @@ final class LandingPageUpdateParams implements BaseModel
      *   slug: string,
      *   state: string,
      *   updated: \DateTimeInterface,
-     *   tagIds?: list<int>|null,
+     *   tagIDs?: list<int>|null,
      * }> $translations
      */
     public function withTranslations(array $translations): self
@@ -1332,7 +1332,7 @@ final class LandingPageUpdateParams implements BaseModel
     public function withUpdatedByID(string $updatedByID): self
     {
         $obj = clone $this;
-        $obj['updatedById'] = $updatedByID;
+        $obj['updatedByID'] = $updatedByID;
 
         return $obj;
     }

@@ -59,9 +59,9 @@ final class UsersTest extends TestCase
             'email' => 'newUser@email.com',
             'firstName' => 'firstName',
             'lastName' => 'lastName',
-            'primaryTeamId' => '101',
-            'roleId' => '100',
-            'secondaryTeamIds' => ['102'],
+            'primaryTeamID' => '101',
+            'roleID' => '100',
+            'secondaryTeamIDs' => ['102'],
             'sendWelcomeEmail' => true,
         ]);
 

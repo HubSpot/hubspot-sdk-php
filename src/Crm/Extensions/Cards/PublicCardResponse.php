@@ -91,18 +91,18 @@ final class PublicCardResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param CardActions|array{baseUrls: list<string>} $actions
+     * @param CardActions|array{baseURLs: list<string>} $actions
      * @param list<CardAuditResponse|array{
      *   actionType: value-of<ActionType>,
-     *   applicationId: int,
+     *   applicationID: int,
      *   authSource: value-of<AuthSource>,
      *   changedAt: int,
-     *   initiatingUserId: int,
-     *   objectTypeId: int,
+     *   initiatingUserID: int,
+     *   objectTypeID: int,
      * }> $auditHistory
      * @param CardDisplayBody|array{properties: list<CardDisplayProperty>} $display
      * @param PublicCardFetchBody|array{
-     *   objectTypes: list<CardObjectTypeBody>, targetUrl: string
+     *   objectTypes: list<CardObjectTypeBody>, targetURL: string
      * } $fetch
      */
     public static function with(
@@ -141,7 +141,7 @@ final class PublicCardResponse implements BaseModel
     /**
      * Configuration for custom user actions on cards.
      *
-     * @param CardActions|array{baseUrls: list<string>} $actions
+     * @param CardActions|array{baseURLs: list<string>} $actions
      */
     public function withActions(CardActions|array $actions): self
     {
@@ -154,11 +154,11 @@ final class PublicCardResponse implements BaseModel
     /**
      * @param list<CardAuditResponse|array{
      *   actionType: value-of<ActionType>,
-     *   applicationId: int,
+     *   applicationID: int,
      *   authSource: value-of<AuthSource>,
      *   changedAt: int,
-     *   initiatingUserId: int,
-     *   objectTypeId: int,
+     *   initiatingUserID: int,
+     *   objectTypeID: int,
      * }> $auditHistory
      */
     public function withAuditHistory(array $auditHistory): self
@@ -184,7 +184,7 @@ final class PublicCardResponse implements BaseModel
 
     /**
      * @param PublicCardFetchBody|array{
-     *   objectTypes: list<CardObjectTypeBody>, targetUrl: string
+     *   objectTypes: list<CardObjectTypeBody>, targetURL: string
      * } $fetch
      */
     public function withFetch(PublicCardFetchBody|array $fetch): self

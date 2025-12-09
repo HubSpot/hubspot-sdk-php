@@ -24,7 +24,7 @@ final class SettingsService implements SettingsContract
      *
      * Create or update the current settings for the application.
      *
-     * @param array{eventDetailsUrl: string}|SettingCreateOrUpdateParams $params
+     * @param array{eventDetailsURL: string}|SettingCreateOrUpdateParams $params
      *
      * @throws APIException
      */

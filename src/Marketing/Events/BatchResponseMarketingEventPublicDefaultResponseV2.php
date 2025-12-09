@@ -80,7 +80,7 @@ final class BatchResponseMarketingEventPublicDefaultResponseV2 implements BaseMo
      *   createdAt: \DateTimeInterface,
      *   customProperties: list<CrmPropertyWrapper>,
      *   eventName: string,
-     *   objectId: string,
+     *   objectID: string,
      *   updatedAt: \DateTimeInterface,
      *   appInfo?: AppInfo|null,
      *   endDateTime?: \DateTimeInterface|null,
@@ -89,7 +89,7 @@ final class BatchResponseMarketingEventPublicDefaultResponseV2 implements BaseMo
      *   eventDescription?: string|null,
      *   eventOrganizer?: string|null,
      *   eventType?: string|null,
-     *   eventUrl?: string|null,
+     *   eventURL?: string|null,
      *   startDateTime?: \DateTimeInterface|null,
      * }> $results
      * @param Status|value-of<Status> $status
@@ -129,7 +129,7 @@ final class BatchResponseMarketingEventPublicDefaultResponseV2 implements BaseMo
      *   createdAt: \DateTimeInterface,
      *   customProperties: list<CrmPropertyWrapper>,
      *   eventName: string,
-     *   objectId: string,
+     *   objectID: string,
      *   updatedAt: \DateTimeInterface,
      *   appInfo?: AppInfo|null,
      *   endDateTime?: \DateTimeInterface|null,
@@ -138,7 +138,7 @@ final class BatchResponseMarketingEventPublicDefaultResponseV2 implements BaseMo
      *   eventDescription?: string|null,
      *   eventOrganizer?: string|null,
      *   eventType?: string|null,
-     *   eventUrl?: string|null,
+     *   eventURL?: string|null,
      *   startDateTime?: \DateTimeInterface|null,
      * }> $results
      */

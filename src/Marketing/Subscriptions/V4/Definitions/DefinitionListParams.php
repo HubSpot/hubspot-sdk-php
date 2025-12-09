@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Marketing\Subscriptions\V4\DefinitionsService::list()
  *
  * @phpstan-type DefinitionListParamsShape = array{
- *   businessUnitId?: int, includeTranslations?: bool
+ *   businessUnitID?: int, includeTranslations?: bool
  * }
  */
 final class DefinitionListParams implements BaseModel
@@ -28,7 +28,7 @@ final class DefinitionListParams implements BaseModel
      * If you have the [business unit add-on](https://developers.hubspot.com/beta-docs/guides/api/settings/business-units-api), include this parameter to filter results by business unit ID. The default Account business unit will always use `0`.
      */
     #[Optional]
-    public ?int $businessUnitId;
+    public ?int $businessUnitID;
 
     /**
      * Set to `true` to return subscription translations associated with each definition.
@@ -47,12 +47,12 @@ final class DefinitionListParams implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      */
     public static function with(
-        ?int $businessUnitId = null,
+        ?int $businessUnitID = null,
         ?bool $includeTranslations = null
     ): self {
         $obj = new self;
 
-        null !== $businessUnitId && $obj['businessUnitId'] = $businessUnitId;
+        null !== $businessUnitID && $obj['businessUnitID'] = $businessUnitID;
         null !== $includeTranslations && $obj['includeTranslations'] = $includeTranslations;
 
         return $obj;
@@ -64,7 +64,7 @@ final class DefinitionListParams implements BaseModel
     public function withBusinessUnitID(int $businessUnitID): self
     {
         $obj = clone $this;
-        $obj['businessUnitId'] = $businessUnitID;
+        $obj['businessUnitID'] = $businessUnitID;
 
         return $obj;
     }

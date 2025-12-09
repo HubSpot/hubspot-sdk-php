@@ -15,7 +15,7 @@ use HubspotSDK\Marketing\Forms\FormStyle\SubmitAlignment;
  * Options for styling the form.
  *
  * @phpstan-type FormDisplayOptionsShape = array{
- *   renderRawHtml: bool,
+ *   renderRawHTML: bool,
  *   style: FormStyle,
  *   submitButtonText: string,
  *   theme: value-of<Theme>,
@@ -30,8 +30,8 @@ final class FormDisplayOptions implements BaseModel
     /**
      * Whether the form will render as raw HTML as opposed to inside an iFrame.
      */
-    #[Required]
-    public bool $renderRawHtml;
+    #[Required('renderRawHtml')]
+    public bool $renderRawHTML;
 
     /**
      * Styling options for the form.
@@ -62,7 +62,7 @@ final class FormDisplayOptions implements BaseModel
      * To enforce required parameters use
      * ```
      * FormDisplayOptions::with(
-     *   renderRawHtml: ..., style: ..., submitButtonText: ..., theme: ...
+     *   renderRawHTML: ..., style: ..., submitButtonText: ..., theme: ...
      * )
      * ```
      *
@@ -103,7 +103,7 @@ final class FormDisplayOptions implements BaseModel
      * @param Theme|value-of<Theme> $theme
      */
     public static function with(
-        bool $renderRawHtml,
+        bool $renderRawHTML,
         FormStyle|array $style,
         string $submitButtonText,
         Theme|string $theme,
@@ -111,7 +111,7 @@ final class FormDisplayOptions implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj['renderRawHtml'] = $renderRawHtml;
+        $obj['renderRawHTML'] = $renderRawHTML;
         $obj['style'] = $style;
         $obj['submitButtonText'] = $submitButtonText;
         $obj['theme'] = $theme;
@@ -127,7 +127,7 @@ final class FormDisplayOptions implements BaseModel
     public function withRenderRawHTML(bool $renderRawHTML): self
     {
         $obj = clone $this;
-        $obj['renderRawHtml'] = $renderRawHTML;
+        $obj['renderRawHTML'] = $renderRawHTML;
 
         return $obj;
     }

@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Marketing\Events\AssociationsService::deleteByExternalAccount()
  *
  * @phpstan-type AssociationDeleteByExternalAccountParamsShape = array{
- *   externalAccountId: string, externalEventId: string
+ *   externalAccountID: string, externalEventID: string
  * }
  */
 final class AssociationDeleteByExternalAccountParams implements BaseModel
@@ -25,10 +25,10 @@ final class AssociationDeleteByExternalAccountParams implements BaseModel
     use SdkParams;
 
     #[Required]
-    public string $externalAccountId;
+    public string $externalAccountID;
 
     #[Required]
-    public string $externalEventId;
+    public string $externalEventID;
 
     /**
      * `new AssociationDeleteByExternalAccountParams()` is missing required properties by the API.
@@ -36,7 +36,7 @@ final class AssociationDeleteByExternalAccountParams implements BaseModel
      * To enforce required parameters use
      * ```
      * AssociationDeleteByExternalAccountParams::with(
-     *   externalAccountId: ..., externalEventId: ...
+     *   externalAccountID: ..., externalEventID: ...
      * )
      * ```
      *
@@ -59,13 +59,13 @@ final class AssociationDeleteByExternalAccountParams implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      */
     public static function with(
-        string $externalAccountId,
-        string $externalEventId
+        string $externalAccountID,
+        string $externalEventID
     ): self {
         $obj = new self;
 
-        $obj['externalAccountId'] = $externalAccountId;
-        $obj['externalEventId'] = $externalEventId;
+        $obj['externalAccountID'] = $externalAccountID;
+        $obj['externalEventID'] = $externalEventID;
 
         return $obj;
     }
@@ -73,7 +73,7 @@ final class AssociationDeleteByExternalAccountParams implements BaseModel
     public function withExternalAccountID(string $externalAccountID): self
     {
         $obj = clone $this;
-        $obj['externalAccountId'] = $externalAccountID;
+        $obj['externalAccountID'] = $externalAccountID;
 
         return $obj;
     }
@@ -81,7 +81,7 @@ final class AssociationDeleteByExternalAccountParams implements BaseModel
     public function withExternalEventID(string $externalEventID): self
     {
         $obj = clone $this;
-        $obj['externalEventId'] = $externalEventID;
+        $obj['externalEventID'] = $externalEventID;
 
         return $obj;
     }

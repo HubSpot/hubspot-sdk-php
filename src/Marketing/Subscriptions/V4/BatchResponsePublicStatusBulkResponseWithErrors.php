@@ -116,7 +116,7 @@ final class BatchResponsePublicStatusBulkResponseWithErrors implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<PublicStatusBulkResponse|array{
-     *   statuses: list<PublicStatus>, subscriberIdString: string
+     *   statuses: list<PublicStatus>, subscriberIDString: string
      * }> $results
      * @param Status|value-of<Status> $status
      * @param list<StandardError|array{
@@ -171,7 +171,7 @@ final class BatchResponsePublicStatusBulkResponseWithErrors implements BaseModel
      * An array containing the results of the operation.
      *
      * @param list<PublicStatusBulkResponse|array{
-     *   statuses: list<PublicStatus>, subscriberIdString: string
+     *   statuses: list<PublicStatus>, subscriberIDString: string
      * }> $results
      */
     public function withResults(array $results): self

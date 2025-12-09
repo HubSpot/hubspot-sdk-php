@@ -38,7 +38,7 @@ final class SingleEmailTest extends TestCase
         }
 
         $result = $this->client->marketing->transactional->singleEmail->send([
-            'emailId' => 0, 'message' => ['to' => 'to'],
+            'emailID' => 0, 'message' => ['to' => 'to'],
         ]);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -53,14 +53,14 @@ final class SingleEmailTest extends TestCase
         }
 
         $result = $this->client->marketing->transactional->singleEmail->send([
-            'emailId' => 0,
+            'emailID' => 0,
             'message' => [
                 'to' => 'to',
                 'bcc' => ['string'],
                 'cc' => ['string'],
                 'from' => 'from',
                 'replyTo' => ['string'],
-                'sendId' => 'sendId',
+                'sendID' => 'sendId',
             ],
             'contactProperties' => ['foo' => 'string'],
             'customProperties' => ['foo' => []],

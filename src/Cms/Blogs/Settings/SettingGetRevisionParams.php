@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * @see HubspotSDK\Services\Cms\Blogs\SettingsService::getRevision()
  *
- * @phpstan-type SettingGetRevisionParamsShape = array{blogId: string}
+ * @phpstan-type SettingGetRevisionParamsShape = array{blogID: string}
  */
 final class SettingGetRevisionParams implements BaseModel
 {
@@ -21,14 +21,14 @@ final class SettingGetRevisionParams implements BaseModel
     use SdkParams;
 
     #[Required]
-    public string $blogId;
+    public string $blogID;
 
     /**
      * `new SettingGetRevisionParams()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * SettingGetRevisionParams::with(blogId: ...)
+     * SettingGetRevisionParams::with(blogID: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -47,11 +47,11 @@ final class SettingGetRevisionParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(string $blogId): self
+    public static function with(string $blogID): self
     {
         $obj = new self;
 
-        $obj['blogId'] = $blogId;
+        $obj['blogID'] = $blogID;
 
         return $obj;
     }
@@ -59,7 +59,7 @@ final class SettingGetRevisionParams implements BaseModel
     public function withBlogID(string $blogID): self
     {
         $obj = clone $this;
-        $obj['blogId'] = $blogID;
+        $obj['blogID'] = $blogID;
 
         return $obj;
     }

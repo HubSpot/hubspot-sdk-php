@@ -56,10 +56,10 @@ final class CustomChannelsTest extends TestCase
         $result = $this->client->conversations->customChannels->create([
             'capabilities' => ['foo' => []],
             'name' => 'name',
-            'channelAccountConnectionRedirectUrl' => 'channelAccountConnectionRedirectUrl',
+            'channelAccountConnectionRedirectURL' => 'channelAccountConnectionRedirectUrl',
             'channelDescription' => 'channelDescription',
-            'channelLogoUrl' => 'channelLogoUrl',
-            'webhookUrl' => 'webhookUrl',
+            'channelLogoURL' => 'channelLogoUrl',
+            'webhookURL' => 'webhookUrl',
         ]);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -77,11 +77,11 @@ final class CustomChannelsTest extends TestCase
             0,
             [
                 'capabilities' => ['foo' => []],
-                'channelAccountConnectionRedirectUrl' => [],
+                'channelAccountConnectionRedirectURL' => [],
                 'channelDescription' => [],
-                'channelLogoUrl' => [],
+                'channelLogoURL' => [],
                 'name' => [],
-                'webhookUrl' => [],
+                'webhookURL' => [],
             ],
         );
 
@@ -100,11 +100,11 @@ final class CustomChannelsTest extends TestCase
             0,
             [
                 'capabilities' => ['foo' => []],
-                'channelAccountConnectionRedirectUrl' => [],
+                'channelAccountConnectionRedirectURL' => [],
                 'channelDescription' => [],
-                'channelLogoUrl' => [],
+                'channelLogoURL' => [],
                 'name' => [],
-                'webhookUrl' => [],
+                'webhookURL' => [],
             ],
         );
 

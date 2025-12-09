@@ -48,7 +48,7 @@ final class ContactsTest extends TestCase
                     'types' => [
                         [
                             'associationCategory' => 'HUBSPOT_DEFINED',
-                            'associationTypeId' => 0,
+                            'associationTypeID' => 0,
                         ],
                     ],
                 ],
@@ -74,7 +74,7 @@ final class ContactsTest extends TestCase
                     'types' => [
                         [
                             'associationCategory' => 'HUBSPOT_DEFINED',
-                            'associationTypeId' => 0,
+                            'associationTypeID' => 0,
                         ],
                     ],
                 ],
@@ -152,7 +152,7 @@ final class ContactsTest extends TestCase
         }
 
         $result = $this->client->crm->objects->contacts->gdprDelete([
-            'objectId' => 'objectId',
+            'objectID' => 'objectId',
         ]);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -167,7 +167,7 @@ final class ContactsTest extends TestCase
         }
 
         $result = $this->client->crm->objects->contacts->gdprDelete([
-            'objectId' => 'objectId', 'idProperty' => 'idProperty',
+            'objectID' => 'objectId', 'idProperty' => 'idProperty',
         ]);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -195,8 +195,8 @@ final class ContactsTest extends TestCase
         }
 
         $result = $this->client->crm->objects->contacts->merge([
-            'objectIdToMerge' => 'objectIdToMerge',
-            'primaryObjectId' => 'primaryObjectId',
+            'objectIDToMerge' => 'objectIdToMerge',
+            'primaryObjectID' => 'primaryObjectId',
         ]);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -211,8 +211,8 @@ final class ContactsTest extends TestCase
         }
 
         $result = $this->client->crm->objects->contacts->merge([
-            'objectIdToMerge' => 'objectIdToMerge',
-            'primaryObjectId' => 'primaryObjectId',
+            'objectIDToMerge' => 'objectIdToMerge',
+            'primaryObjectID' => 'primaryObjectId',
         ]);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

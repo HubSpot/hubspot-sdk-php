@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Marketing\Events\ParticipationsService::listBreakdownByExternalAccountAndEventID()
  *
  * @phpstan-type ParticipationListBreakdownByExternalAccountAndEventIDParamsShape = array{
- *   externalAccountId: string,
+ *   externalAccountID: string,
  *   after?: string,
  *   contactIdentifier?: string,
  *   limit?: int,
@@ -30,7 +30,7 @@ final class ParticipationListBreakdownByExternalAccountAndEventIDParams implemen
     use SdkParams;
 
     #[Required]
-    public string $externalAccountId;
+    public string $externalAccountID;
 
     /**
      * The cursor indicating the position of the last retrieved item.
@@ -62,7 +62,7 @@ final class ParticipationListBreakdownByExternalAccountAndEventIDParams implemen
      * To enforce required parameters use
      * ```
      * ParticipationListBreakdownByExternalAccountAndEventIDParams::with(
-     *   externalAccountId: ...
+     *   externalAccountID: ...
      * )
      * ```
      *
@@ -84,7 +84,7 @@ final class ParticipationListBreakdownByExternalAccountAndEventIDParams implemen
      * You must use named parameters to construct any parameters with a default value.
      */
     public static function with(
-        string $externalAccountId,
+        string $externalAccountID,
         ?string $after = null,
         ?string $contactIdentifier = null,
         ?int $limit = null,
@@ -92,7 +92,7 @@ final class ParticipationListBreakdownByExternalAccountAndEventIDParams implemen
     ): self {
         $obj = new self;
 
-        $obj['externalAccountId'] = $externalAccountId;
+        $obj['externalAccountID'] = $externalAccountID;
 
         null !== $after && $obj['after'] = $after;
         null !== $contactIdentifier && $obj['contactIdentifier'] = $contactIdentifier;
@@ -105,7 +105,7 @@ final class ParticipationListBreakdownByExternalAccountAndEventIDParams implemen
     public function withExternalAccountID(string $externalAccountID): self
     {
         $obj = clone $this;
-        $obj['externalAccountId'] = $externalAccountID;
+        $obj['externalAccountID'] = $externalAccountID;
 
         return $obj;
     }

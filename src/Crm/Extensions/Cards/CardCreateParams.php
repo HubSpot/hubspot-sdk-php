@@ -16,11 +16,11 @@ use HubspotSDK\Crm\Extensions\Cards\CardFetchBody\CardType;
  * @see HubspotSDK\Services\Crm\Extensions\CardsService::create()
  *
  * @phpstan-type CardCreateParamsShape = array{
- *   actions: CardActions|array{baseUrls: list<string>},
+ *   actions: CardActions|array{baseURLs: list<string>},
  *   display: CardDisplayBody|array{properties: list<CardDisplayProperty>},
  *   fetch: CardFetchBody|array{
  *     objectTypes: list<CardObjectTypeBody>,
- *     targetUrl: string,
+ *     targetURL: string,
  *     cardType?: value-of<CardType>|null,
  *     serverlessFunction?: string|null,
  *   },
@@ -85,11 +85,11 @@ final class CardCreateParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param CardActions|array{baseUrls: list<string>} $actions
+     * @param CardActions|array{baseURLs: list<string>} $actions
      * @param CardDisplayBody|array{properties: list<CardDisplayProperty>} $display
      * @param CardFetchBody|array{
      *   objectTypes: list<CardObjectTypeBody>,
-     *   targetUrl: string,
+     *   targetURL: string,
      *   cardType?: value-of<CardType>|null,
      *   serverlessFunction?: string|null,
      * } $fetch
@@ -113,7 +113,7 @@ final class CardCreateParams implements BaseModel
     /**
      * Configuration for custom user actions on cards.
      *
-     * @param CardActions|array{baseUrls: list<string>} $actions
+     * @param CardActions|array{baseURLs: list<string>} $actions
      */
     public function withActions(CardActions|array $actions): self
     {
@@ -141,7 +141,7 @@ final class CardCreateParams implements BaseModel
      *
      * @param CardFetchBody|array{
      *   objectTypes: list<CardObjectTypeBody>,
-     *   targetUrl: string,
+     *   targetURL: string,
      *   cardType?: value-of<CardType>|null,
      *   serverlessFunction?: string|null,
      * } $fetch

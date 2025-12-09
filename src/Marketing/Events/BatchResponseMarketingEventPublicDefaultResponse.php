@@ -99,8 +99,8 @@ final class BatchResponseMarketingEventPublicDefaultResponse implements BaseMode
      *   eventCompleted?: bool|null,
      *   eventDescription?: string|null,
      *   eventType?: string|null,
-     *   eventUrl?: string|null,
-     *   objectId?: string|null,
+     *   eventURL?: string|null,
+     *   objectID?: string|null,
      *   startDateTime?: \DateTimeInterface|null,
      * }> $results
      * @param Status|value-of<Status> $status
@@ -162,8 +162,8 @@ final class BatchResponseMarketingEventPublicDefaultResponse implements BaseMode
      *   eventCompleted?: bool|null,
      *   eventDescription?: string|null,
      *   eventType?: string|null,
-     *   eventUrl?: string|null,
-     *   objectId?: string|null,
+     *   eventURL?: string|null,
+     *   objectID?: string|null,
      *   startDateTime?: \DateTimeInterface|null,
      * }> $results
      */

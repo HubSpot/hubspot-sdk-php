@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   destination: string,
  *   redirectStyle: int,
  *   routePrefix: string,
- *   isMatchFullUrl?: bool|null,
+ *   isMatchFullURL?: bool|null,
  *   isMatchQueryString?: bool|null,
  *   isOnlyAfterNotFound?: bool|null,
  *   isPattern?: bool|null,
@@ -37,8 +37,8 @@ final class URLMappingCreateRequestBody implements BaseModel
     #[Required]
     public string $routePrefix;
 
-    #[Optional]
-    public ?bool $isMatchFullUrl;
+    #[Optional('isMatchFullUrl')]
+    public ?bool $isMatchFullURL;
 
     #[Optional]
     public ?bool $isMatchQueryString;
@@ -91,7 +91,7 @@ final class URLMappingCreateRequestBody implements BaseModel
         string $destination,
         int $redirectStyle,
         string $routePrefix,
-        ?bool $isMatchFullUrl = null,
+        ?bool $isMatchFullURL = null,
         ?bool $isMatchQueryString = null,
         ?bool $isOnlyAfterNotFound = null,
         ?bool $isPattern = null,
@@ -105,7 +105,7 @@ final class URLMappingCreateRequestBody implements BaseModel
         $obj['redirectStyle'] = $redirectStyle;
         $obj['routePrefix'] = $routePrefix;
 
-        null !== $isMatchFullUrl && $obj['isMatchFullUrl'] = $isMatchFullUrl;
+        null !== $isMatchFullURL && $obj['isMatchFullURL'] = $isMatchFullURL;
         null !== $isMatchQueryString && $obj['isMatchQueryString'] = $isMatchQueryString;
         null !== $isOnlyAfterNotFound && $obj['isOnlyAfterNotFound'] = $isOnlyAfterNotFound;
         null !== $isPattern && $obj['isPattern'] = $isPattern;
@@ -143,7 +143,7 @@ final class URLMappingCreateRequestBody implements BaseModel
     public function withIsMatchFullURL(bool $isMatchFullURL): self
     {
         $obj = clone $this;
-        $obj['isMatchFullUrl'] = $isMatchFullURL;
+        $obj['isMatchFullURL'] = $isMatchFullURL;
 
         return $obj;
     }

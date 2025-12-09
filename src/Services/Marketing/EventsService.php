@@ -7,6 +7,7 @@ namespace HubspotSDK\Services\Marketing;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Marketing\Events\BatchResponseMarketingEventPublicDefaultResponse;
 use HubspotSDK\Marketing\Events\BatchResponseMarketingEventPublicDefaultResponseV2;
 use HubspotSDK\Marketing\Events\CollectionResponseSearchPublicResponseWrapperNoPaging;
@@ -88,31 +89,31 @@ final class EventsService implements EventsContract
      *     isLargeValue: bool,
      *     name: string,
      *     persistenceTimestamp: int,
-     *     requestId: string,
+     *     requestID: string,
      *     selectedByUser: bool,
      *     selectedByUserTimestamp: int,
      *     source: 'ACADEMY'|'ACCEPTANCE_TEST'|'ADS'|'AI_GROUP'|'ANALYTICS'|'API'|'APPROVALS'|'ASSISTS'|'ASSOCIATIONS'|'AUTOMATION_JOURNEY'|'AUTOMATION_PLATFORM'|'AVATARS_SERVICE'|'BATCH_UPDATE'|'BCC_TO_CRM'|'BEHAVIORAL_EVENTS'|'BET_ASSIGNMENT'|'BET_CRM_CONNECTOR'|'BIDEN'|'BILLING'|'BOT'|'CALCULATED'|'CENTRAL_EXCHANGE_RATES'|'CHATSPOT'|'CLONE_OBJECTS'|'COMMUNICATOR'|'COMPANIES'|'COMPANY_FAMILIES'|'COMPANY_INSIGHTS'|'CONTACTS'|'CONTACTS_WEB'|'CONTENT_MEMBERSHIP'|'CONVERSATIONAL_ENRICHMENT'|'CONVERSATIONS'|'CRM_PROCESSES_PLATFORM'|'CRM_UI'|'CRM_UI_BULK_ACTION'|'DATA_ENRICHMENT'|'DATASET'|'DEALS'|'DEFAULT'|'EMAIL'|'EMAIL_INTEGRATION'|'ENGAGEMENTS'|'EXTENSION'|'FILE_MANAGER'|'FLYWHEEL_PRODUCT_DATA_SYNC'|'FORECASTING'|'FORM'|'FORWARD_TO_CRM'|'GMAIL_INTEGRATION'|'GOALS'|'HEISENBERG'|'HELP_DESK'|'HELP_DESK_AI'|'IMPORT'|'INTEGRATION'|'INTEGRATIONS_PLATFORM'|'INTEGRATIONS_SYNC'|'INTENT'|'INTERNAL_PROCESSING'|'LEADIN'|'MARKET_SOURCING'|'MARKETPLACE'|'MEETINGS'|'MERGE_COMPANIES'|'MERGE_CONTACTS'|'MERGE_OBJECTS'|'MICROAPPS'|'MIGRATION'|'MOBILE_ANDROID'|'MOBILE_IOS'|'PAYMENTS'|'PIPELINE_SETTINGS'|'PLAYBOOKS'|'PORTAL_OBJECT_SYNC'|'PORTAL_USER_ASSOCIATOR'|'PRESENTATIONS'|'PROPERTY_RESTORE'|'PROPERTY_SETTINGS'|'PROSPECTING_AGENT'|'QUOTAS'|'QUOTES'|'RECYCLING_BIN'|'SALES'|'SALES_MESSAGES'|'SALESFORCE'|'SEQUENCES'|'SETTINGS'|'SIDEKICK'|'SIGNALS'|'SLACK_INTEGRATION'|'SOCIAL'|'SUCCESS'|'TALLY'|'TASK'|'UNKNOWN'|'WAL_INCREMENTAL'|'WORKFLOW_CONTACT_DELETE_ACTION'|'WORKFLOWS'|Source,
-     *     sourceId: string,
+     *     sourceID: string,
      *     sourceLabel: string,
      *     sourceMetadata: string,
      *     sourceUpstreamDeployable: string,
      *     sourceVid: list<int>,
      *     timestamp: int,
      *     unit: string,
-     *     updatedByUserId: int,
+     *     updatedByUserID: int,
      *     useTimestampAsPersistenceTimestamp: bool,
      *     value: string,
      *   }|PropertyValue>,
      *   eventName: string,
      *   eventOrganizer: string,
-     *   externalAccountId: string,
-     *   externalEventId: string,
+     *   externalAccountID: string,
+     *   externalEventID: string,
      *   endDateTime?: string|\DateTimeInterface,
      *   eventCancelled?: bool,
      *   eventCompleted?: bool,
      *   eventDescription?: string,
      *   eventType?: string,
-     *   eventUrl?: string,
+     *   eventURL?: string,
      *   startDateTime?: string|\DateTimeInterface,
      * }|EventCreateParams $params
      *
@@ -151,18 +152,18 @@ final class EventsService implements EventsContract
      *     isLargeValue: bool,
      *     name: string,
      *     persistenceTimestamp: int,
-     *     requestId: string,
+     *     requestID: string,
      *     selectedByUser: bool,
      *     selectedByUserTimestamp: int,
      *     source: 'ACADEMY'|'ACCEPTANCE_TEST'|'ADS'|'AI_GROUP'|'ANALYTICS'|'API'|'APPROVALS'|'ASSISTS'|'ASSOCIATIONS'|'AUTOMATION_JOURNEY'|'AUTOMATION_PLATFORM'|'AVATARS_SERVICE'|'BATCH_UPDATE'|'BCC_TO_CRM'|'BEHAVIORAL_EVENTS'|'BET_ASSIGNMENT'|'BET_CRM_CONNECTOR'|'BIDEN'|'BILLING'|'BOT'|'CALCULATED'|'CENTRAL_EXCHANGE_RATES'|'CHATSPOT'|'CLONE_OBJECTS'|'COMMUNICATOR'|'COMPANIES'|'COMPANY_FAMILIES'|'COMPANY_INSIGHTS'|'CONTACTS'|'CONTACTS_WEB'|'CONTENT_MEMBERSHIP'|'CONVERSATIONAL_ENRICHMENT'|'CONVERSATIONS'|'CRM_PROCESSES_PLATFORM'|'CRM_UI'|'CRM_UI_BULK_ACTION'|'DATA_ENRICHMENT'|'DATASET'|'DEALS'|'DEFAULT'|'EMAIL'|'EMAIL_INTEGRATION'|'ENGAGEMENTS'|'EXTENSION'|'FILE_MANAGER'|'FLYWHEEL_PRODUCT_DATA_SYNC'|'FORECASTING'|'FORM'|'FORWARD_TO_CRM'|'GMAIL_INTEGRATION'|'GOALS'|'HEISENBERG'|'HELP_DESK'|'HELP_DESK_AI'|'IMPORT'|'INTEGRATION'|'INTEGRATIONS_PLATFORM'|'INTEGRATIONS_SYNC'|'INTENT'|'INTERNAL_PROCESSING'|'LEADIN'|'MARKET_SOURCING'|'MARKETPLACE'|'MEETINGS'|'MERGE_COMPANIES'|'MERGE_CONTACTS'|'MERGE_OBJECTS'|'MICROAPPS'|'MIGRATION'|'MOBILE_ANDROID'|'MOBILE_IOS'|'PAYMENTS'|'PIPELINE_SETTINGS'|'PLAYBOOKS'|'PORTAL_OBJECT_SYNC'|'PORTAL_USER_ASSOCIATOR'|'PRESENTATIONS'|'PROPERTY_RESTORE'|'PROPERTY_SETTINGS'|'PROSPECTING_AGENT'|'QUOTAS'|'QUOTES'|'RECYCLING_BIN'|'SALES'|'SALES_MESSAGES'|'SALESFORCE'|'SEQUENCES'|'SETTINGS'|'SIDEKICK'|'SIGNALS'|'SLACK_INTEGRATION'|'SOCIAL'|'SUCCESS'|'TALLY'|'TASK'|'UNKNOWN'|'WAL_INCREMENTAL'|'WORKFLOW_CONTACT_DELETE_ACTION'|'WORKFLOWS'|Source,
-     *     sourceId: string,
+     *     sourceID: string,
      *     sourceLabel: string,
      *     sourceMetadata: string,
      *     sourceUpstreamDeployable: string,
      *     sourceVid: list<int>,
      *     timestamp: int,
      *     unit: string,
-     *     updatedByUserId: int,
+     *     updatedByUserID: int,
      *     useTimestampAsPersistenceTimestamp: bool,
      *     value: string,
      *   }|PropertyValue>,
@@ -172,7 +173,7 @@ final class EventsService implements EventsContract
      *   eventName?: string,
      *   eventOrganizer?: string,
      *   eventType?: string,
-     *   eventUrl?: string,
+     *   eventURL?: string,
      *   startDateTime?: string|\DateTimeInterface,
      * }|EventUpdateParams $params
      *
@@ -263,7 +264,7 @@ final class EventsService implements EventsContract
      * Mark a marketing event as cancelled.
      *
      * @param array{
-     *   externalAccountId: string
+     *   externalAccountID: string
      * }|EventCancelByExternalEventIDParams $params
      *
      * @throws APIException
@@ -284,7 +285,10 @@ final class EventsService implements EventsContract
             path: [
                 'marketing/v3/marketing-events/events/%1$s/cancel', $externalEventID,
             ],
-            query: $parsed,
+            query: Util::array_transform_keys(
+                $parsed,
+                ['externalAccountID' => 'externalAccountId']
+            ),
             options: $options,
             convert: MarketingEventDefaultResponse::class,
         );
@@ -298,7 +302,7 @@ final class EventsService implements EventsContract
      * Mark a marketing event as completed
      *
      * @param array{
-     *   externalAccountId: string,
+     *   externalAccountID: string,
      *   endDateTime: string|\DateTimeInterface,
      *   startDateTime: string|\DateTimeInterface,
      * }|EventCompleteByExternalEventIDParams $params
@@ -322,7 +326,10 @@ final class EventsService implements EventsContract
             path: [
                 'marketing/v3/marketing-events/events/%1$s/complete', $externalEventID,
             ],
-            query: array_diff_key($parsed, $query_params),
+            query: Util::array_transform_keys(
+                array_diff_key($parsed, $query_params),
+                ['externalAccountID' => 'externalAccountId'],
+            ),
             body: (object) array_diff_key($parsed, $query_params),
             options: $options,
             convert: MarketingEventDefaultResponse::class,
@@ -341,7 +348,7 @@ final class EventsService implements EventsContract
      * 207: Returned if some objectIds did not correspond to any existing Marketing Events.
      *
      * @param array{
-     *   inputs: list<array{objectId: string}>
+     *   inputs: list<array{objectID: string}>
      * }|EventDeleteBatchParams $params
      *
      * @throws APIException
@@ -376,7 +383,7 @@ final class EventsService implements EventsContract
      *
      * @param array{
      *   inputs: list<array{
-     *     appId: int, externalAccountId: string, externalEventId: string
+     *     appID: int, externalAccountID: string, externalEventID: string
      *   }>,
      * }|EventDeleteBatchByExternalEventIDParams $params
      *
@@ -412,7 +419,7 @@ final class EventsService implements EventsContract
      * Only Marketing Events created by the same app can be deleted.
      *
      * @param array{
-     *   externalAccountId: string
+     *   externalAccountID: string
      * }|EventDeleteByExternalEventIDParams $params
      *
      * @throws APIException
@@ -431,7 +438,10 @@ final class EventsService implements EventsContract
         $response = $this->client->request(
             method: 'delete',
             path: ['marketing/v3/marketing-events/events/%1$s', $externalEventID],
-            query: $parsed,
+            query: Util::array_transform_keys(
+                $parsed,
+                ['externalAccountID' => 'externalAccountId']
+            ),
             options: $options,
             convert: null,
         );
@@ -468,7 +478,7 @@ final class EventsService implements EventsContract
      *
      * Only Marketing Events created by the same app making the request can be retrieved.
      *
-     * @param array{externalAccountId: string}|EventGetByExternalEventIDParams $params
+     * @param array{externalAccountID: string}|EventGetByExternalEventIDParams $params
      *
      * @throws APIException
      */
@@ -486,7 +496,10 @@ final class EventsService implements EventsContract
         $response = $this->client->request(
             method: 'get',
             path: ['marketing/v3/marketing-events/events/%1$s', $externalEventID],
-            query: $parsed,
+            query: Util::array_transform_keys(
+                $parsed,
+                ['externalAccountID' => 'externalAccountId']
+            ),
             options: $options,
             convert: MarketingEventPublicReadResponse::class,
         );
@@ -564,14 +577,14 @@ final class EventsService implements EventsContract
      * @param array{
      *   inputs: list<array{
      *     customProperties: list<array<mixed>|PropertyValue>,
-     *     objectId: string,
+     *     objectID: string,
      *     endDateTime?: string|\DateTimeInterface,
      *     eventCancelled?: bool,
      *     eventDescription?: string,
      *     eventName?: string,
      *     eventOrganizer?: string,
      *     eventType?: string,
-     *     eventUrl?: string,
+     *     eventURL?: string,
      *     startDateTime?: string|\DateTimeInterface,
      *   }>,
      * }|EventUpdateBatchParams $params
@@ -607,25 +620,25 @@ final class EventsService implements EventsContract
      * Only Marketing Events created by the same app can be updated.
      *
      * @param array{
-     *   externalAccountId: string,
+     *   externalAccountID: string,
      *   customProperties: list<array{
      *     dataSensitivity: 'high'|'none'|'standard'|DataSensitivity,
      *     isEncrypted: bool,
      *     isLargeValue: bool,
      *     name: string,
      *     persistenceTimestamp: int,
-     *     requestId: string,
+     *     requestID: string,
      *     selectedByUser: bool,
      *     selectedByUserTimestamp: int,
      *     source: 'ACADEMY'|'ACCEPTANCE_TEST'|'ADS'|'AI_GROUP'|'ANALYTICS'|'API'|'APPROVALS'|'ASSISTS'|'ASSOCIATIONS'|'AUTOMATION_JOURNEY'|'AUTOMATION_PLATFORM'|'AVATARS_SERVICE'|'BATCH_UPDATE'|'BCC_TO_CRM'|'BEHAVIORAL_EVENTS'|'BET_ASSIGNMENT'|'BET_CRM_CONNECTOR'|'BIDEN'|'BILLING'|'BOT'|'CALCULATED'|'CENTRAL_EXCHANGE_RATES'|'CHATSPOT'|'CLONE_OBJECTS'|'COMMUNICATOR'|'COMPANIES'|'COMPANY_FAMILIES'|'COMPANY_INSIGHTS'|'CONTACTS'|'CONTACTS_WEB'|'CONTENT_MEMBERSHIP'|'CONVERSATIONAL_ENRICHMENT'|'CONVERSATIONS'|'CRM_PROCESSES_PLATFORM'|'CRM_UI'|'CRM_UI_BULK_ACTION'|'DATA_ENRICHMENT'|'DATASET'|'DEALS'|'DEFAULT'|'EMAIL'|'EMAIL_INTEGRATION'|'ENGAGEMENTS'|'EXTENSION'|'FILE_MANAGER'|'FLYWHEEL_PRODUCT_DATA_SYNC'|'FORECASTING'|'FORM'|'FORWARD_TO_CRM'|'GMAIL_INTEGRATION'|'GOALS'|'HEISENBERG'|'HELP_DESK'|'HELP_DESK_AI'|'IMPORT'|'INTEGRATION'|'INTEGRATIONS_PLATFORM'|'INTEGRATIONS_SYNC'|'INTENT'|'INTERNAL_PROCESSING'|'LEADIN'|'MARKET_SOURCING'|'MARKETPLACE'|'MEETINGS'|'MERGE_COMPANIES'|'MERGE_CONTACTS'|'MERGE_OBJECTS'|'MICROAPPS'|'MIGRATION'|'MOBILE_ANDROID'|'MOBILE_IOS'|'PAYMENTS'|'PIPELINE_SETTINGS'|'PLAYBOOKS'|'PORTAL_OBJECT_SYNC'|'PORTAL_USER_ASSOCIATOR'|'PRESENTATIONS'|'PROPERTY_RESTORE'|'PROPERTY_SETTINGS'|'PROSPECTING_AGENT'|'QUOTAS'|'QUOTES'|'RECYCLING_BIN'|'SALES'|'SALES_MESSAGES'|'SALESFORCE'|'SEQUENCES'|'SETTINGS'|'SIDEKICK'|'SIGNALS'|'SLACK_INTEGRATION'|'SOCIAL'|'SUCCESS'|'TALLY'|'TASK'|'UNKNOWN'|'WAL_INCREMENTAL'|'WORKFLOW_CONTACT_DELETE_ACTION'|'WORKFLOWS'|Source,
-     *     sourceId: string,
+     *     sourceID: string,
      *     sourceLabel: string,
      *     sourceMetadata: string,
      *     sourceUpstreamDeployable: string,
      *     sourceVid: list<int>,
      *     timestamp: int,
      *     unit: string,
-     *     updatedByUserId: int,
+     *     updatedByUserID: int,
      *     useTimestampAsPersistenceTimestamp: bool,
      *     value: string,
      *   }|PropertyValue>,
@@ -636,7 +649,7 @@ final class EventsService implements EventsContract
      *   eventName?: string,
      *   eventOrganizer?: string,
      *   eventType?: string,
-     *   eventUrl?: string,
+     *   eventURL?: string,
      *   startDateTime?: string|\DateTimeInterface,
      * }|EventUpdateByExternalEventIDParams $params
      *
@@ -657,7 +670,10 @@ final class EventsService implements EventsContract
         $response = $this->client->request(
             method: 'patch',
             path: ['marketing/v3/marketing-events/events/%1$s', $externalEventID],
-            query: array_diff_key($parsed, $query_params),
+            query: Util::array_transform_keys(
+                array_diff_key($parsed, $query_params),
+                ['externalAccountID' => 'externalAccountId'],
+            ),
             body: (object) array_diff_key($parsed, $query_params),
             options: $options,
             convert: MarketingEventPublicDefaultResponse::class,
@@ -678,14 +694,14 @@ final class EventsService implements EventsContract
      *     customProperties: list<array<mixed>|PropertyValue>,
      *     eventName: string,
      *     eventOrganizer: string,
-     *     externalAccountId: string,
-     *     externalEventId: string,
+     *     externalAccountID: string,
+     *     externalEventID: string,
      *     endDateTime?: string|\DateTimeInterface,
      *     eventCancelled?: bool,
      *     eventCompleted?: bool,
      *     eventDescription?: string,
      *     eventType?: string,
-     *     eventUrl?: string,
+     *     eventURL?: string,
      *     startDateTime?: string|\DateTimeInterface,
      *   }>,
      * }|EventUpsertBatchParams $params
@@ -725,31 +741,31 @@ final class EventsService implements EventsContract
      *     isLargeValue: bool,
      *     name: string,
      *     persistenceTimestamp: int,
-     *     requestId: string,
+     *     requestID: string,
      *     selectedByUser: bool,
      *     selectedByUserTimestamp: int,
      *     source: 'ACADEMY'|'ACCEPTANCE_TEST'|'ADS'|'AI_GROUP'|'ANALYTICS'|'API'|'APPROVALS'|'ASSISTS'|'ASSOCIATIONS'|'AUTOMATION_JOURNEY'|'AUTOMATION_PLATFORM'|'AVATARS_SERVICE'|'BATCH_UPDATE'|'BCC_TO_CRM'|'BEHAVIORAL_EVENTS'|'BET_ASSIGNMENT'|'BET_CRM_CONNECTOR'|'BIDEN'|'BILLING'|'BOT'|'CALCULATED'|'CENTRAL_EXCHANGE_RATES'|'CHATSPOT'|'CLONE_OBJECTS'|'COMMUNICATOR'|'COMPANIES'|'COMPANY_FAMILIES'|'COMPANY_INSIGHTS'|'CONTACTS'|'CONTACTS_WEB'|'CONTENT_MEMBERSHIP'|'CONVERSATIONAL_ENRICHMENT'|'CONVERSATIONS'|'CRM_PROCESSES_PLATFORM'|'CRM_UI'|'CRM_UI_BULK_ACTION'|'DATA_ENRICHMENT'|'DATASET'|'DEALS'|'DEFAULT'|'EMAIL'|'EMAIL_INTEGRATION'|'ENGAGEMENTS'|'EXTENSION'|'FILE_MANAGER'|'FLYWHEEL_PRODUCT_DATA_SYNC'|'FORECASTING'|'FORM'|'FORWARD_TO_CRM'|'GMAIL_INTEGRATION'|'GOALS'|'HEISENBERG'|'HELP_DESK'|'HELP_DESK_AI'|'IMPORT'|'INTEGRATION'|'INTEGRATIONS_PLATFORM'|'INTEGRATIONS_SYNC'|'INTENT'|'INTERNAL_PROCESSING'|'LEADIN'|'MARKET_SOURCING'|'MARKETPLACE'|'MEETINGS'|'MERGE_COMPANIES'|'MERGE_CONTACTS'|'MERGE_OBJECTS'|'MICROAPPS'|'MIGRATION'|'MOBILE_ANDROID'|'MOBILE_IOS'|'PAYMENTS'|'PIPELINE_SETTINGS'|'PLAYBOOKS'|'PORTAL_OBJECT_SYNC'|'PORTAL_USER_ASSOCIATOR'|'PRESENTATIONS'|'PROPERTY_RESTORE'|'PROPERTY_SETTINGS'|'PROSPECTING_AGENT'|'QUOTAS'|'QUOTES'|'RECYCLING_BIN'|'SALES'|'SALES_MESSAGES'|'SALESFORCE'|'SEQUENCES'|'SETTINGS'|'SIDEKICK'|'SIGNALS'|'SLACK_INTEGRATION'|'SOCIAL'|'SUCCESS'|'TALLY'|'TASK'|'UNKNOWN'|'WAL_INCREMENTAL'|'WORKFLOW_CONTACT_DELETE_ACTION'|'WORKFLOWS'|Source,
-     *     sourceId: string,
+     *     sourceID: string,
      *     sourceLabel: string,
      *     sourceMetadata: string,
      *     sourceUpstreamDeployable: string,
      *     sourceVid: list<int>,
      *     timestamp: int,
      *     unit: string,
-     *     updatedByUserId: int,
+     *     updatedByUserID: int,
      *     useTimestampAsPersistenceTimestamp: bool,
      *     value: string,
      *   }|PropertyValue>,
      *   eventName: string,
      *   eventOrganizer: string,
-     *   externalAccountId: string,
-     *   externalEventId: string,
+     *   externalAccountID: string,
+     *   externalEventID: string,
      *   endDateTime?: string|\DateTimeInterface,
      *   eventCancelled?: bool,
      *   eventCompleted?: bool,
      *   eventDescription?: string,
      *   eventType?: string,
-     *   eventUrl?: string,
+     *   eventURL?: string,
      *   startDateTime?: string|\DateTimeInterface,
      * }|EventUpsertByExternalEventIDParams $params
      *
@@ -783,8 +799,8 @@ final class EventsService implements EventsContract
      * Record a subscriber state between multiple HubSpot contacts and a marketing event, using contact email addresses. Note that the contact must already exist in HubSpot; a contact will not be created. The contactProperties field is used only when creating a new contact. These properties will not update existing contacts.
      *
      * @param array{
-     *   externalEventId: string,
-     *   externalAccountId: string,
+     *   externalEventID: string,
+     *   externalAccountID: string,
      *   inputs: list<array{
      *     contactProperties: array<string,string>,
      *     email: string,
@@ -804,8 +820,8 @@ final class EventsService implements EventsContract
             $params,
             $requestOptions,
         );
-        $externalEventID = $parsed['externalEventId'];
-        unset($parsed['externalEventId']);
+        $externalEventID = $parsed['externalEventID'];
+        unset($parsed['externalEventID']);
         $query_params = ['externalAccountId'];
 
         /** @var BaseResponse<string> */
@@ -816,11 +832,14 @@ final class EventsService implements EventsContract
                 $externalEventID,
                 $subscriberState,
             ],
-            query: array_diff_key($parsed, $query_params),
+            query: Util::array_transform_keys(
+                array_diff_key($parsed, $query_params),
+                ['externalAccountID' => 'externalAccountId'],
+            ),
             headers: ['Accept' => '*/*'],
             body: (object) array_diff_key(
                 array_diff_key($parsed, $query_params),
-                ['externalEventId']
+                ['externalEventID']
             ),
             options: $options,
             convert: 'string',
@@ -835,8 +854,8 @@ final class EventsService implements EventsContract
      * Record a subscriber state between multiple HubSpot contacts and a marketing event, using HubSpot contact IDs. Note that the contact must already exist in HubSpot; a contact will not be created.
      *
      * @param array{
-     *   externalEventId: string,
-     *   externalAccountId: string,
+     *   externalEventID: string,
+     *   externalAccountID: string,
      *   inputs: list<array{
      *     interactionDateTime: int, properties: array<string,string>, vid: int
      *   }>,
@@ -853,8 +872,8 @@ final class EventsService implements EventsContract
             $params,
             $requestOptions,
         );
-        $externalEventID = $parsed['externalEventId'];
-        unset($parsed['externalEventId']);
+        $externalEventID = $parsed['externalEventID'];
+        unset($parsed['externalEventID']);
         $query_params = ['externalAccountId'];
 
         /** @var BaseResponse<string> */
@@ -865,11 +884,14 @@ final class EventsService implements EventsContract
                 $externalEventID,
                 $subscriberState,
             ],
-            query: array_diff_key($parsed, $query_params),
+            query: Util::array_transform_keys(
+                array_diff_key($parsed, $query_params),
+                ['externalAccountID' => 'externalAccountId'],
+            ),
             headers: ['Accept' => '*/*'],
             body: (object) array_diff_key(
                 array_diff_key($parsed, $query_params),
-                ['externalEventId']
+                ['externalEventID']
             ),
             options: $options,
             convert: 'string',

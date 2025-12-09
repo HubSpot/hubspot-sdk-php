@@ -12,9 +12,9 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * Data structure representing the subscription fields of the email.
  *
  * @phpstan-type PublicEmailSubscriptionDetailsShape = array{
- *   officeLocationId?: string|null,
- *   preferencesGroupId?: string|null,
- *   subscriptionId?: string|null,
+ *   officeLocationID?: string|null,
+ *   preferencesGroupID?: string|null,
+ *   subscriptionID?: string|null,
  *   subscriptionName?: string|null,
  * }
  */
@@ -26,17 +26,17 @@ final class PublicEmailSubscriptionDetails implements BaseModel
     /**
      * ID of the selected office location.
      */
-    #[Optional]
-    public ?string $officeLocationId;
+    #[Optional('officeLocationId')]
+    public ?string $officeLocationID;
 
-    #[Optional]
-    public ?string $preferencesGroupId;
+    #[Optional('preferencesGroupId')]
+    public ?string $preferencesGroupID;
 
     /**
      * ID of the subscription.
      */
-    #[Optional]
-    public ?string $subscriptionId;
+    #[Optional('subscriptionId')]
+    public ?string $subscriptionID;
 
     #[Optional]
     public ?string $subscriptionName;
@@ -52,16 +52,16 @@ final class PublicEmailSubscriptionDetails implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      */
     public static function with(
-        ?string $officeLocationId = null,
-        ?string $preferencesGroupId = null,
-        ?string $subscriptionId = null,
+        ?string $officeLocationID = null,
+        ?string $preferencesGroupID = null,
+        ?string $subscriptionID = null,
         ?string $subscriptionName = null,
     ): self {
         $obj = new self;
 
-        null !== $officeLocationId && $obj['officeLocationId'] = $officeLocationId;
-        null !== $preferencesGroupId && $obj['preferencesGroupId'] = $preferencesGroupId;
-        null !== $subscriptionId && $obj['subscriptionId'] = $subscriptionId;
+        null !== $officeLocationID && $obj['officeLocationID'] = $officeLocationID;
+        null !== $preferencesGroupID && $obj['preferencesGroupID'] = $preferencesGroupID;
+        null !== $subscriptionID && $obj['subscriptionID'] = $subscriptionID;
         null !== $subscriptionName && $obj['subscriptionName'] = $subscriptionName;
 
         return $obj;
@@ -73,7 +73,7 @@ final class PublicEmailSubscriptionDetails implements BaseModel
     public function withOfficeLocationID(string $officeLocationID): self
     {
         $obj = clone $this;
-        $obj['officeLocationId'] = $officeLocationID;
+        $obj['officeLocationID'] = $officeLocationID;
 
         return $obj;
     }
@@ -81,7 +81,7 @@ final class PublicEmailSubscriptionDetails implements BaseModel
     public function withPreferencesGroupID(string $preferencesGroupID): self
     {
         $obj = clone $this;
-        $obj['preferencesGroupId'] = $preferencesGroupID;
+        $obj['preferencesGroupID'] = $preferencesGroupID;
 
         return $obj;
     }
@@ -92,7 +92,7 @@ final class PublicEmailSubscriptionDetails implements BaseModel
     public function withSubscriptionID(string $subscriptionID): self
     {
         $obj = clone $this;
-        $obj['subscriptionId'] = $subscriptionID;
+        $obj['subscriptionID'] = $subscriptionID;
 
         return $obj;
     }

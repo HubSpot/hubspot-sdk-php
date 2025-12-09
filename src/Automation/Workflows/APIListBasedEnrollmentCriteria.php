@@ -144,7 +144,7 @@ final class APIListBasedEnrollmentCriteria implements BaseModel
      *   filterBranchType: value-of<PublicRestrictedFilterBranch\FilterBranchType>,
      *   filters: list<PublicPropertyFilter|PublicAssociationInListFilter|PublicPageViewAnalyticsFilter|PublicCtaAnalyticsFilter|PublicEventAnalyticsFilter|PublicFormSubmissionFilter|PublicFormSubmissionOnPageFilter|PublicIntegrationEventFilter|PublicEmailSubscriptionFilter|PublicCommunicationSubscriptionFilter|PublicCampaignInfluencedFilter|PublicSurveyMonkeyFilter|PublicSurveyMonkeyValueFilter|PublicWebinarFilter|PublicEmailEventFilter|PublicPrivacyAnalyticsFilter|PublicAdsSearchFilter|PublicAdsTimeFilter|PublicInListFilter|PublicNumAssociationsFilter|PublicUnifiedEventsFilter|PublicPropertyAssociationInListFilter|PublicConstantFilter>,
      * }|PublicUnifiedEventsFilterBranch|array{
-     *   eventTypeId: string,
+     *   eventTypeID: string,
      *   filterBranches: list<mixed>,
      *   filterBranchOperator: string,
      *   filterBranchType: value-of<PublicUnifiedEventsFilterBranch\FilterBranchType>,
@@ -156,17 +156,17 @@ final class APIListBasedEnrollmentCriteria implements BaseModel
      *   filterBranchOperator: string,
      *   filterBranchType: value-of<PublicPropertyAssociationFilterBranch\FilterBranchType>,
      *   filters: list<PublicPropertyFilter|PublicAssociationInListFilter|PublicPageViewAnalyticsFilter|PublicCtaAnalyticsFilter|PublicEventAnalyticsFilter|PublicFormSubmissionFilter|PublicFormSubmissionOnPageFilter|PublicIntegrationEventFilter|PublicEmailSubscriptionFilter|PublicCommunicationSubscriptionFilter|PublicCampaignInfluencedFilter|PublicSurveyMonkeyFilter|PublicSurveyMonkeyValueFilter|PublicWebinarFilter|PublicEmailEventFilter|PublicPrivacyAnalyticsFilter|PublicAdsSearchFilter|PublicAdsTimeFilter|PublicInListFilter|PublicNumAssociationsFilter|PublicUnifiedEventsFilter|PublicPropertyAssociationInListFilter|PublicConstantFilter>,
-     *   objectTypeId: string,
+     *   objectTypeID: string,
      *   operator: string,
-     *   propertyWithObjectId: string,
+     *   propertyWithObjectID: string,
      * }|PublicAssociationFilterBranch|array{
      *   associationCategory: string,
-     *   associationTypeId: int,
+     *   associationTypeID: int,
      *   filterBranches: list<mixed>,
      *   filterBranchOperator: string,
      *   filterBranchType: value-of<PublicAssociationFilterBranch\FilterBranchType>,
      *   filters: list<PublicPropertyFilter|PublicAssociationInListFilter|PublicPageViewAnalyticsFilter|PublicCtaAnalyticsFilter|PublicEventAnalyticsFilter|PublicFormSubmissionFilter|PublicFormSubmissionOnPageFilter|PublicIntegrationEventFilter|PublicEmailSubscriptionFilter|PublicCommunicationSubscriptionFilter|PublicCampaignInfluencedFilter|PublicSurveyMonkeyFilter|PublicSurveyMonkeyValueFilter|PublicWebinarFilter|PublicEmailEventFilter|PublicPrivacyAnalyticsFilter|PublicAdsSearchFilter|PublicAdsTimeFilter|PublicInListFilter|PublicNumAssociationsFilter|PublicUnifiedEventsFilter|PublicPropertyAssociationInListFilter|PublicConstantFilter>,
-     *   objectTypeId: string,
+     *   objectTypeID: string,
      *   operator: string,
      * } $listFilterBranch
      * @param list<mixed> $reEnrollmentTriggersFilterBranches
@@ -217,7 +217,7 @@ final class APIListBasedEnrollmentCriteria implements BaseModel
      *   filterBranchType: value-of<PublicRestrictedFilterBranch\FilterBranchType>,
      *   filters: list<PublicPropertyFilter|PublicAssociationInListFilter|PublicPageViewAnalyticsFilter|PublicCtaAnalyticsFilter|PublicEventAnalyticsFilter|PublicFormSubmissionFilter|PublicFormSubmissionOnPageFilter|PublicIntegrationEventFilter|PublicEmailSubscriptionFilter|PublicCommunicationSubscriptionFilter|PublicCampaignInfluencedFilter|PublicSurveyMonkeyFilter|PublicSurveyMonkeyValueFilter|PublicWebinarFilter|PublicEmailEventFilter|PublicPrivacyAnalyticsFilter|PublicAdsSearchFilter|PublicAdsTimeFilter|PublicInListFilter|PublicNumAssociationsFilter|PublicUnifiedEventsFilter|PublicPropertyAssociationInListFilter|PublicConstantFilter>,
      * }|PublicUnifiedEventsFilterBranch|array{
-     *   eventTypeId: string,
+     *   eventTypeID: string,
      *   filterBranches: list<mixed>,
      *   filterBranchOperator: string,
      *   filterBranchType: value-of<PublicUnifiedEventsFilterBranch\FilterBranchType>,
@@ -229,17 +229,17 @@ final class APIListBasedEnrollmentCriteria implements BaseModel
      *   filterBranchOperator: string,
      *   filterBranchType: value-of<PublicPropertyAssociationFilterBranch\FilterBranchType>,
      *   filters: list<PublicPropertyFilter|PublicAssociationInListFilter|PublicPageViewAnalyticsFilter|PublicCtaAnalyticsFilter|PublicEventAnalyticsFilter|PublicFormSubmissionFilter|PublicFormSubmissionOnPageFilter|PublicIntegrationEventFilter|PublicEmailSubscriptionFilter|PublicCommunicationSubscriptionFilter|PublicCampaignInfluencedFilter|PublicSurveyMonkeyFilter|PublicSurveyMonkeyValueFilter|PublicWebinarFilter|PublicEmailEventFilter|PublicPrivacyAnalyticsFilter|PublicAdsSearchFilter|PublicAdsTimeFilter|PublicInListFilter|PublicNumAssociationsFilter|PublicUnifiedEventsFilter|PublicPropertyAssociationInListFilter|PublicConstantFilter>,
-     *   objectTypeId: string,
+     *   objectTypeID: string,
      *   operator: string,
-     *   propertyWithObjectId: string,
+     *   propertyWithObjectID: string,
      * }|PublicAssociationFilterBranch|array{
      *   associationCategory: string,
-     *   associationTypeId: int,
+     *   associationTypeID: int,
      *   filterBranches: list<mixed>,
      *   filterBranchOperator: string,
      *   filterBranchType: value-of<PublicAssociationFilterBranch\FilterBranchType>,
      *   filters: list<PublicPropertyFilter|PublicAssociationInListFilter|PublicPageViewAnalyticsFilter|PublicCtaAnalyticsFilter|PublicEventAnalyticsFilter|PublicFormSubmissionFilter|PublicFormSubmissionOnPageFilter|PublicIntegrationEventFilter|PublicEmailSubscriptionFilter|PublicCommunicationSubscriptionFilter|PublicCampaignInfluencedFilter|PublicSurveyMonkeyFilter|PublicSurveyMonkeyValueFilter|PublicWebinarFilter|PublicEmailEventFilter|PublicPrivacyAnalyticsFilter|PublicAdsSearchFilter|PublicAdsTimeFilter|PublicInListFilter|PublicNumAssociationsFilter|PublicUnifiedEventsFilter|PublicPropertyAssociationInListFilter|PublicConstantFilter>,
-     *   objectTypeId: string,
+     *   objectTypeID: string,
      *   operator: string,
      * } $listFilterBranch
      */

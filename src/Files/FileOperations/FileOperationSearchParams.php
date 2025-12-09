@@ -36,7 +36,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   isUsableInContent?: bool,
  *   limit?: int,
  *   name?: string,
- *   parentFolderIds?: list<int>,
+ *   parentFolderIDs?: list<int>,
  *   path?: string,
  *   properties?: list<string>,
  *   size?: int,
@@ -181,10 +181,10 @@ final class FileOperationSearchParams implements BaseModel
     /**
      * Search files within given `folderId`.
      *
-     * @var list<int>|null $parentFolderIds
+     * @var list<int>|null $parentFolderIDs
      */
     #[Optional(list: 'int')]
-    public ?array $parentFolderIds;
+    public ?array $parentFolderIDs;
 
     /**
      * Search files by path.
@@ -285,7 +285,7 @@ final class FileOperationSearchParams implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<int> $ids
-     * @param list<int> $parentFolderIds
+     * @param list<int> $parentFolderIDs
      * @param list<string> $properties
      * @param list<string> $sort
      */
@@ -311,7 +311,7 @@ final class FileOperationSearchParams implements BaseModel
         ?bool $isUsableInContent = null,
         ?int $limit = null,
         ?string $name = null,
-        ?array $parentFolderIds = null,
+        ?array $parentFolderIDs = null,
         ?string $path = null,
         ?array $properties = null,
         ?int $size = null,
@@ -350,7 +350,7 @@ final class FileOperationSearchParams implements BaseModel
         null !== $isUsableInContent && $obj['isUsableInContent'] = $isUsableInContent;
         null !== $limit && $obj['limit'] = $limit;
         null !== $name && $obj['name'] = $name;
-        null !== $parentFolderIds && $obj['parentFolderIds'] = $parentFolderIds;
+        null !== $parentFolderIDs && $obj['parentFolderIDs'] = $parentFolderIDs;
         null !== $path && $obj['path'] = $path;
         null !== $properties && $obj['properties'] = $properties;
         null !== $size && $obj['size'] = $size;
@@ -601,7 +601,7 @@ final class FileOperationSearchParams implements BaseModel
     public function withParentFolderIDs(array $parentFolderIDs): self
     {
         $obj = clone $this;
-        $obj['parentFolderIds'] = $parentFolderIDs;
+        $obj['parentFolderIDs'] = $parentFolderIDs;
 
         return $obj;
     }

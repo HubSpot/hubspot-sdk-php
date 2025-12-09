@@ -38,14 +38,14 @@ final class CalendarTest extends TestCase
         }
 
         $result = $this->client->scheduler->meetings->calendar->create([
-            'organizerUserId' => 'organizerUserId',
+            'organizerUserID' => 'organizerUserId',
             'associations' => [
                 [
                     'to' => ['id' => '37295'],
                     'types' => [
                         [
                             'associationCategory' => 'HUBSPOT_DEFINED',
-                            'associationTypeId' => 0,
+                            'associationTypeID' => 0,
                         ],
                     ],
                 ],
@@ -55,16 +55,16 @@ final class CalendarTest extends TestCase
                 'shouldIncludeInviteDescription' => true,
             ],
             'properties' => [
-                'hs_meeting_end_time' => new \DateTimeImmutable(
+                'hsMeetingEndTime' => new \DateTimeImmutable(
                     '2019-12-27T18:11:19.117Z'
                 ),
-                'hs_meeting_outcome' => 'hs_meeting_outcome',
-                'hs_meeting_start_time' => new \DateTimeImmutable(
+                'hsMeetingOutcome' => 'hs_meeting_outcome',
+                'hsMeetingStartTime' => new \DateTimeImmutable(
                     '2019-12-27T18:11:19.117Z'
                 ),
-                'hs_meeting_title' => 'hs_meeting_title',
-                'hs_timestamp' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-                'hubspot_owner_id' => 'hubspot_owner_id',
+                'hsMeetingTitle' => 'hs_meeting_title',
+                'hsTimestamp' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
+                'hubspotOwnerID' => 'hubspot_owner_id',
             ],
             'timezone' => 'timezone',
         ]);
@@ -84,14 +84,14 @@ final class CalendarTest extends TestCase
         }
 
         $result = $this->client->scheduler->meetings->calendar->create([
-            'organizerUserId' => 'organizerUserId',
+            'organizerUserID' => 'organizerUserId',
             'associations' => [
                 [
                     'to' => ['id' => '37295'],
                     'types' => [
                         [
                             'associationCategory' => 'HUBSPOT_DEFINED',
-                            'associationTypeId' => 0,
+                            'associationTypeID' => 0,
                         ],
                     ],
                 ],
@@ -101,23 +101,23 @@ final class CalendarTest extends TestCase
                 'shouldIncludeInviteDescription' => true,
             ],
             'properties' => [
-                'hs_meeting_end_time' => new \DateTimeImmutable(
+                'hsMeetingEndTime' => new \DateTimeImmutable(
                     '2019-12-27T18:11:19.117Z'
                 ),
-                'hs_meeting_outcome' => 'hs_meeting_outcome',
-                'hs_meeting_start_time' => new \DateTimeImmutable(
+                'hsMeetingOutcome' => 'hs_meeting_outcome',
+                'hsMeetingStartTime' => new \DateTimeImmutable(
                     '2019-12-27T18:11:19.117Z'
                 ),
-                'hs_meeting_title' => 'hs_meeting_title',
-                'hs_timestamp' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-                'hubspot_owner_id' => 'hubspot_owner_id',
-                'hs_activity_type' => 'hs_activity_type',
-                'hs_attachment_ids' => ['string'],
-                'hs_attendee_owner_ids' => ['string'],
-                'hs_internal_meeting_notes' => 'hs_internal_meeting_notes',
-                'hs_meeting_body' => 'hs_meeting_body',
-                'hs_meeting_location' => 'hs_meeting_location',
-                'hs_meeting_location_type' => 'hs_meeting_location_type',
+                'hsMeetingTitle' => 'hs_meeting_title',
+                'hsTimestamp' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
+                'hubspotOwnerID' => 'hubspot_owner_id',
+                'hsActivityType' => 'hs_activity_type',
+                'hsAttachmentIDs' => ['string'],
+                'hsAttendeeOwnerIDs' => ['string'],
+                'hsInternalMeetingNotes' => 'hs_internal_meeting_notes',
+                'hsMeetingBody' => 'hs_meeting_body',
+                'hsMeetingLocation' => 'hs_meeting_location',
+                'hsMeetingLocationType' => 'hs_meeting_location_type',
             ],
             'timezone' => 'timezone',
         ]);

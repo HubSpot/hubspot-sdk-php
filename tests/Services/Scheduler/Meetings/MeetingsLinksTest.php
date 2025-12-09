@@ -60,9 +60,9 @@ final class MeetingsLinksTest extends TestCase
             'formFields' => [['name' => 'name', 'value' => 'value']],
             'lastName' => 'lastName',
             'legalConsentResponses' => [
-                ['communicationTypeId' => 'communicationTypeId', 'consented' => true],
+                ['communicationTypeID' => 'communicationTypeId', 'consented' => true],
             ],
-            'likelyAvailableUserIds' => ['string'],
+            'likelyAvailableUserIDs' => ['string'],
             'slug' => 'slug',
             'startTime' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
         ]);
@@ -85,9 +85,9 @@ final class MeetingsLinksTest extends TestCase
             'formFields' => [['name' => 'name', 'value' => 'value']],
             'lastName' => 'lastName',
             'legalConsentResponses' => [
-                ['communicationTypeId' => 'communicationTypeId', 'consented' => true],
+                ['communicationTypeID' => 'communicationTypeId', 'consented' => true],
             ],
-            'likelyAvailableUserIds' => ['string'],
+            'likelyAvailableUserIDs' => ['string'],
             'slug' => 'slug',
             'startTime' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
             'locale' => 'locale',

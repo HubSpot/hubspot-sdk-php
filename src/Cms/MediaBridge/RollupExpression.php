@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-type RollupExpressionShape = array{
  *   associationTypes: list<AssociationSpec>,
  *   rollupOperator: string,
- *   sourceObjectTypeId: string,
+ *   sourceObjectTypeID: string,
  *   sourcePropertyName: string,
  *   conditionalExpression?: array<string,mixed>|null,
  *   conditionalFormula?: string|null,
@@ -35,8 +35,8 @@ final class RollupExpression implements BaseModel
     #[Required]
     public string $rollupOperator;
 
-    #[Required]
-    public string $sourceObjectTypeId;
+    #[Required('sourceObjectTypeId')]
+    public string $sourceObjectTypeID;
 
     #[Required]
     public string $sourcePropertyName;
@@ -62,7 +62,7 @@ final class RollupExpression implements BaseModel
      * RollupExpression::with(
      *   associationTypes: ...,
      *   rollupOperator: ...,
-     *   sourceObjectTypeId: ...,
+     *   sourceObjectTypeID: ...,
      *   sourcePropertyName: ...,
      * )
      * ```
@@ -88,14 +88,14 @@ final class RollupExpression implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<AssociationSpec|array{
-     *   associationCategory: value-of<AssociationCategory>, associationTypeId: int
+     *   associationCategory: value-of<AssociationCategory>, associationTypeID: int
      * }> $associationTypes
      * @param array<string,mixed> $conditionalExpression
      */
     public static function with(
         array $associationTypes,
         string $rollupOperator,
-        string $sourceObjectTypeId,
+        string $sourceObjectTypeID,
         string $sourcePropertyName,
         ?array $conditionalExpression = null,
         ?string $conditionalFormula = null,
@@ -106,7 +106,7 @@ final class RollupExpression implements BaseModel
 
         $obj['associationTypes'] = $associationTypes;
         $obj['rollupOperator'] = $rollupOperator;
-        $obj['sourceObjectTypeId'] = $sourceObjectTypeId;
+        $obj['sourceObjectTypeID'] = $sourceObjectTypeID;
         $obj['sourcePropertyName'] = $sourcePropertyName;
 
         null !== $conditionalExpression && $obj['conditionalExpression'] = $conditionalExpression;
@@ -119,7 +119,7 @@ final class RollupExpression implements BaseModel
 
     /**
      * @param list<AssociationSpec|array{
-     *   associationCategory: value-of<AssociationCategory>, associationTypeId: int
+     *   associationCategory: value-of<AssociationCategory>, associationTypeID: int
      * }> $associationTypes
      */
     public function withAssociationTypes(array $associationTypes): self
@@ -141,7 +141,7 @@ final class RollupExpression implements BaseModel
     public function withSourceObjectTypeID(string $sourceObjectTypeID): self
     {
         $obj = clone $this;
-        $obj['sourceObjectTypeId'] = $sourceObjectTypeID;
+        $obj['sourceObjectTypeID'] = $sourceObjectTypeID;
 
         return $obj;
     }

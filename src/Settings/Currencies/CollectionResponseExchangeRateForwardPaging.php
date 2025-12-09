@@ -62,7 +62,7 @@ final class CollectionResponseExchangeRateForwardPaging implements BaseModel
      *   fromCurrencyCode: value-of<FromCurrencyCode>,
      *   toCurrencyCode: value-of<ToCurrencyCode>,
      *   updatedAt: \DateTimeInterface,
-     *   visibleInUI: bool,
+     *   visibleInUi: bool,
      * }> $results
      * @param ForwardPaging|array{next?: NextPage|null} $paging
      */
@@ -88,7 +88,7 @@ final class CollectionResponseExchangeRateForwardPaging implements BaseModel
      *   fromCurrencyCode: value-of<FromCurrencyCode>,
      *   toCurrencyCode: value-of<ToCurrencyCode>,
      *   updatedAt: \DateTimeInterface,
-     *   visibleInUI: bool,
+     *   visibleInUi: bool,
      * }> $results
      */
     public function withResults(array $results): self

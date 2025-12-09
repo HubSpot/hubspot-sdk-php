@@ -55,14 +55,14 @@ use HubspotSDK\PublicWebinarFilter;
  * An object list definition.
  *
  * @phpstan-type PublicObjectListShape = array{
- *   listId: string,
+ *   listID: string,
  *   listVersion: int,
  *   name: string,
- *   objectTypeId: string,
+ *   objectTypeID: string,
  *   processingStatus: string,
  *   processingType: string,
  *   createdAt?: \DateTimeInterface|null,
- *   createdById?: string|null,
+ *   createdByID?: string|null,
  *   deletedAt?: \DateTimeInterface|null,
  *   filterBranch?: null|PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch,
  *   filtersUpdatedAt?: \DateTimeInterface|null,
@@ -70,7 +70,7 @@ use HubspotSDK\PublicWebinarFilter;
  *   membershipSettings?: PublicMembershipSettings|null,
  *   size?: int|null,
  *   updatedAt?: \DateTimeInterface|null,
- *   updatedById?: string|null,
+ *   updatedByID?: string|null,
  * }
  */
 final class PublicObjectList implements BaseModel
@@ -81,8 +81,8 @@ final class PublicObjectList implements BaseModel
     /**
      * The **ILS ID** of the list.
      */
-    #[Required]
-    public string $listId;
+    #[Required('listId')]
+    public string $listID;
 
     /**
      * The version of the list.
@@ -99,8 +99,8 @@ final class PublicObjectList implements BaseModel
     /**
      * The object type of the list.
      */
-    #[Required]
-    public string $objectTypeId;
+    #[Required('objectTypeId')]
+    public string $objectTypeID;
 
     /**
      * The processing status of the list.
@@ -123,8 +123,8 @@ final class PublicObjectList implements BaseModel
     /**
      * The ID of the user that created the list.
      */
-    #[Optional]
-    public ?string $createdById;
+    #[Optional('createdById')]
+    public ?string $createdByID;
 
     /**
      * The time when the list was deleted.
@@ -162,8 +162,8 @@ final class PublicObjectList implements BaseModel
     /**
      * The ID of the user that last updated the list.
      */
-    #[Optional]
-    public ?string $updatedById;
+    #[Optional('updatedById')]
+    public ?string $updatedByID;
 
     /**
      * `new PublicObjectList()` is missing required properties by the API.
@@ -171,10 +171,10 @@ final class PublicObjectList implements BaseModel
      * To enforce required parameters use
      * ```
      * PublicObjectList::with(
-     *   listId: ...,
+     *   listID: ...,
      *   listVersion: ...,
      *   name: ...,
-     *   objectTypeId: ...,
+     *   objectTypeID: ...,
      *   processingStatus: ...,
      *   processingType: ...,
      * )
@@ -228,7 +228,7 @@ final class PublicObjectList implements BaseModel
      *   filterBranchType: value-of<PublicRestrictedFilterBranch\FilterBranchType>,
      *   filters: list<PublicPropertyFilter|PublicAssociationInListFilter|PublicPageViewAnalyticsFilter|PublicCtaAnalyticsFilter|PublicEventAnalyticsFilter|PublicFormSubmissionFilter|PublicFormSubmissionOnPageFilter|PublicIntegrationEventFilter|PublicEmailSubscriptionFilter|PublicCommunicationSubscriptionFilter|PublicCampaignInfluencedFilter|PublicSurveyMonkeyFilter|PublicSurveyMonkeyValueFilter|PublicWebinarFilter|PublicEmailEventFilter|PublicPrivacyAnalyticsFilter|PublicAdsSearchFilter|PublicAdsTimeFilter|PublicInListFilter|PublicNumAssociationsFilter|PublicUnifiedEventsFilter|PublicPropertyAssociationInListFilter|PublicConstantFilter>,
      * }|PublicUnifiedEventsFilterBranch|array{
-     *   eventTypeId: string,
+     *   eventTypeID: string,
      *   filterBranches: list<mixed>,
      *   filterBranchOperator: string,
      *   filterBranchType: value-of<PublicUnifiedEventsFilterBranch\FilterBranchType>,
@@ -240,35 +240,35 @@ final class PublicObjectList implements BaseModel
      *   filterBranchOperator: string,
      *   filterBranchType: value-of<PublicPropertyAssociationFilterBranch\FilterBranchType>,
      *   filters: list<PublicPropertyFilter|PublicAssociationInListFilter|PublicPageViewAnalyticsFilter|PublicCtaAnalyticsFilter|PublicEventAnalyticsFilter|PublicFormSubmissionFilter|PublicFormSubmissionOnPageFilter|PublicIntegrationEventFilter|PublicEmailSubscriptionFilter|PublicCommunicationSubscriptionFilter|PublicCampaignInfluencedFilter|PublicSurveyMonkeyFilter|PublicSurveyMonkeyValueFilter|PublicWebinarFilter|PublicEmailEventFilter|PublicPrivacyAnalyticsFilter|PublicAdsSearchFilter|PublicAdsTimeFilter|PublicInListFilter|PublicNumAssociationsFilter|PublicUnifiedEventsFilter|PublicPropertyAssociationInListFilter|PublicConstantFilter>,
-     *   objectTypeId: string,
+     *   objectTypeID: string,
      *   operator: string,
-     *   propertyWithObjectId: string,
+     *   propertyWithObjectID: string,
      * }|PublicAssociationFilterBranch|array{
      *   associationCategory: string,
-     *   associationTypeId: int,
+     *   associationTypeID: int,
      *   filterBranches: list<mixed>,
      *   filterBranchOperator: string,
      *   filterBranchType: value-of<PublicAssociationFilterBranch\FilterBranchType>,
      *   filters: list<PublicPropertyFilter|PublicAssociationInListFilter|PublicPageViewAnalyticsFilter|PublicCtaAnalyticsFilter|PublicEventAnalyticsFilter|PublicFormSubmissionFilter|PublicFormSubmissionOnPageFilter|PublicIntegrationEventFilter|PublicEmailSubscriptionFilter|PublicCommunicationSubscriptionFilter|PublicCampaignInfluencedFilter|PublicSurveyMonkeyFilter|PublicSurveyMonkeyValueFilter|PublicWebinarFilter|PublicEmailEventFilter|PublicPrivacyAnalyticsFilter|PublicAdsSearchFilter|PublicAdsTimeFilter|PublicInListFilter|PublicNumAssociationsFilter|PublicUnifiedEventsFilter|PublicPropertyAssociationInListFilter|PublicConstantFilter>,
-     *   objectTypeId: string,
+     *   objectTypeID: string,
      *   operator: string,
      * } $filterBranch
      * @param PublicListPermissions|array{
      *   teamsWithEditAccess: list<int>, usersWithEditAccess: list<int>
      * } $listPermissions
      * @param PublicMembershipSettings|array{
-     *   includeUnassigned?: bool|null, membershipTeamId?: int|null
+     *   includeUnassigned?: bool|null, membershipTeamID?: int|null
      * } $membershipSettings
      */
     public static function with(
-        string $listId,
+        string $listID,
         int $listVersion,
         string $name,
-        string $objectTypeId,
+        string $objectTypeID,
         string $processingStatus,
         string $processingType,
         ?\DateTimeInterface $createdAt = null,
-        ?string $createdById = null,
+        ?string $createdByID = null,
         ?\DateTimeInterface $deletedAt = null,
         PublicOrFilterBranch|array|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch|null $filterBranch = null,
         ?\DateTimeInterface $filtersUpdatedAt = null,
@@ -276,19 +276,19 @@ final class PublicObjectList implements BaseModel
         PublicMembershipSettings|array|null $membershipSettings = null,
         ?int $size = null,
         ?\DateTimeInterface $updatedAt = null,
-        ?string $updatedById = null,
+        ?string $updatedByID = null,
     ): self {
         $obj = new self;
 
-        $obj['listId'] = $listId;
+        $obj['listID'] = $listID;
         $obj['listVersion'] = $listVersion;
         $obj['name'] = $name;
-        $obj['objectTypeId'] = $objectTypeId;
+        $obj['objectTypeID'] = $objectTypeID;
         $obj['processingStatus'] = $processingStatus;
         $obj['processingType'] = $processingType;
 
         null !== $createdAt && $obj['createdAt'] = $createdAt;
-        null !== $createdById && $obj['createdById'] = $createdById;
+        null !== $createdByID && $obj['createdByID'] = $createdByID;
         null !== $deletedAt && $obj['deletedAt'] = $deletedAt;
         null !== $filterBranch && $obj['filterBranch'] = $filterBranch;
         null !== $filtersUpdatedAt && $obj['filtersUpdatedAt'] = $filtersUpdatedAt;
@@ -296,7 +296,7 @@ final class PublicObjectList implements BaseModel
         null !== $membershipSettings && $obj['membershipSettings'] = $membershipSettings;
         null !== $size && $obj['size'] = $size;
         null !== $updatedAt && $obj['updatedAt'] = $updatedAt;
-        null !== $updatedById && $obj['updatedById'] = $updatedById;
+        null !== $updatedByID && $obj['updatedByID'] = $updatedByID;
 
         return $obj;
     }
@@ -307,7 +307,7 @@ final class PublicObjectList implements BaseModel
     public function withListID(string $listID): self
     {
         $obj = clone $this;
-        $obj['listId'] = $listID;
+        $obj['listID'] = $listID;
 
         return $obj;
     }
@@ -340,7 +340,7 @@ final class PublicObjectList implements BaseModel
     public function withObjectTypeID(string $objectTypeID): self
     {
         $obj = clone $this;
-        $obj['objectTypeId'] = $objectTypeID;
+        $obj['objectTypeID'] = $objectTypeID;
 
         return $obj;
     }
@@ -384,7 +384,7 @@ final class PublicObjectList implements BaseModel
     public function withCreatedByID(string $createdByID): self
     {
         $obj = clone $this;
-        $obj['createdById'] = $createdByID;
+        $obj['createdByID'] = $createdByID;
 
         return $obj;
     }
@@ -427,7 +427,7 @@ final class PublicObjectList implements BaseModel
      *   filterBranchType: value-of<PublicRestrictedFilterBranch\FilterBranchType>,
      *   filters: list<PublicPropertyFilter|PublicAssociationInListFilter|PublicPageViewAnalyticsFilter|PublicCtaAnalyticsFilter|PublicEventAnalyticsFilter|PublicFormSubmissionFilter|PublicFormSubmissionOnPageFilter|PublicIntegrationEventFilter|PublicEmailSubscriptionFilter|PublicCommunicationSubscriptionFilter|PublicCampaignInfluencedFilter|PublicSurveyMonkeyFilter|PublicSurveyMonkeyValueFilter|PublicWebinarFilter|PublicEmailEventFilter|PublicPrivacyAnalyticsFilter|PublicAdsSearchFilter|PublicAdsTimeFilter|PublicInListFilter|PublicNumAssociationsFilter|PublicUnifiedEventsFilter|PublicPropertyAssociationInListFilter|PublicConstantFilter>,
      * }|PublicUnifiedEventsFilterBranch|array{
-     *   eventTypeId: string,
+     *   eventTypeID: string,
      *   filterBranches: list<mixed>,
      *   filterBranchOperator: string,
      *   filterBranchType: value-of<PublicUnifiedEventsFilterBranch\FilterBranchType>,
@@ -439,17 +439,17 @@ final class PublicObjectList implements BaseModel
      *   filterBranchOperator: string,
      *   filterBranchType: value-of<PublicPropertyAssociationFilterBranch\FilterBranchType>,
      *   filters: list<PublicPropertyFilter|PublicAssociationInListFilter|PublicPageViewAnalyticsFilter|PublicCtaAnalyticsFilter|PublicEventAnalyticsFilter|PublicFormSubmissionFilter|PublicFormSubmissionOnPageFilter|PublicIntegrationEventFilter|PublicEmailSubscriptionFilter|PublicCommunicationSubscriptionFilter|PublicCampaignInfluencedFilter|PublicSurveyMonkeyFilter|PublicSurveyMonkeyValueFilter|PublicWebinarFilter|PublicEmailEventFilter|PublicPrivacyAnalyticsFilter|PublicAdsSearchFilter|PublicAdsTimeFilter|PublicInListFilter|PublicNumAssociationsFilter|PublicUnifiedEventsFilter|PublicPropertyAssociationInListFilter|PublicConstantFilter>,
-     *   objectTypeId: string,
+     *   objectTypeID: string,
      *   operator: string,
-     *   propertyWithObjectId: string,
+     *   propertyWithObjectID: string,
      * }|PublicAssociationFilterBranch|array{
      *   associationCategory: string,
-     *   associationTypeId: int,
+     *   associationTypeID: int,
      *   filterBranches: list<mixed>,
      *   filterBranchOperator: string,
      *   filterBranchType: value-of<PublicAssociationFilterBranch\FilterBranchType>,
      *   filters: list<PublicPropertyFilter|PublicAssociationInListFilter|PublicPageViewAnalyticsFilter|PublicCtaAnalyticsFilter|PublicEventAnalyticsFilter|PublicFormSubmissionFilter|PublicFormSubmissionOnPageFilter|PublicIntegrationEventFilter|PublicEmailSubscriptionFilter|PublicCommunicationSubscriptionFilter|PublicCampaignInfluencedFilter|PublicSurveyMonkeyFilter|PublicSurveyMonkeyValueFilter|PublicWebinarFilter|PublicEmailEventFilter|PublicPrivacyAnalyticsFilter|PublicAdsSearchFilter|PublicAdsTimeFilter|PublicInListFilter|PublicNumAssociationsFilter|PublicUnifiedEventsFilter|PublicPropertyAssociationInListFilter|PublicConstantFilter>,
-     *   objectTypeId: string,
+     *   objectTypeID: string,
      *   operator: string,
      * } $filterBranch
      */
@@ -490,7 +490,7 @@ final class PublicObjectList implements BaseModel
 
     /**
      * @param PublicMembershipSettings|array{
-     *   includeUnassigned?: bool|null, membershipTeamId?: int|null
+     *   includeUnassigned?: bool|null, membershipTeamID?: int|null
      * } $membershipSettings
      */
     public function withMembershipSettings(
@@ -530,7 +530,7 @@ final class PublicObjectList implements BaseModel
     public function withUpdatedByID(string $updatedByID): self
     {
         $obj = clone $this;
-        $obj['updatedById'] = $updatedByID;
+        $obj['updatedByID'] = $updatedByID;
 
         return $obj;
     }

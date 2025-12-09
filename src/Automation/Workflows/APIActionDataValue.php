@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type APIActionDataValueShape = array{
- *   actionId: string, dataKey: string, type: value-of<Type>
+ *   actionID: string, dataKey: string, type: value-of<Type>
  * }
  */
 final class APIActionDataValue implements BaseModel
@@ -19,8 +19,8 @@ final class APIActionDataValue implements BaseModel
     /** @use SdkModel<APIActionDataValueShape> */
     use SdkModel;
 
-    #[Required]
-    public string $actionId;
+    #[Required('actionId')]
+    public string $actionID;
 
     #[Required]
     public string $dataKey;
@@ -34,7 +34,7 @@ final class APIActionDataValue implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * APIActionDataValue::with(actionId: ..., dataKey: ..., type: ...)
+     * APIActionDataValue::with(actionID: ..., dataKey: ..., type: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -56,13 +56,13 @@ final class APIActionDataValue implements BaseModel
      * @param Type|value-of<Type> $type
      */
     public static function with(
-        string $actionId,
+        string $actionID,
         string $dataKey,
         Type|string $type = 'FIELD_DATA'
     ): self {
         $obj = new self;
 
-        $obj['actionId'] = $actionId;
+        $obj['actionID'] = $actionID;
         $obj['dataKey'] = $dataKey;
         $obj['type'] = $type;
 
@@ -72,7 +72,7 @@ final class APIActionDataValue implements BaseModel
     public function withActionID(string $actionID): self
     {
         $obj = clone $this;
-        $obj['actionId'] = $actionID;
+        $obj['actionID'] = $actionID;
 
         return $obj;
     }

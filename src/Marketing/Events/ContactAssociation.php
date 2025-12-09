@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type ContactAssociationShape = array{
- *   contactId: string,
+ *   contactID: string,
  *   email: string,
  *   firstname?: string|null,
  *   lastname?: string|null,
@@ -22,8 +22,8 @@ final class ContactAssociation implements BaseModel
     /** @use SdkModel<ContactAssociationShape> */
     use SdkModel;
 
-    #[Required]
-    public string $contactId;
+    #[Required('contactId')]
+    public string $contactID;
 
     #[Required]
     public string $email;
@@ -39,7 +39,7 @@ final class ContactAssociation implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * ContactAssociation::with(contactId: ..., email: ...)
+     * ContactAssociation::with(contactID: ..., email: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -59,14 +59,14 @@ final class ContactAssociation implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      */
     public static function with(
-        string $contactId,
+        string $contactID,
         string $email,
         ?string $firstname = null,
         ?string $lastname = null,
     ): self {
         $obj = new self;
 
-        $obj['contactId'] = $contactId;
+        $obj['contactID'] = $contactID;
         $obj['email'] = $email;
 
         null !== $firstname && $obj['firstname'] = $firstname;
@@ -78,7 +78,7 @@ final class ContactAssociation implements BaseModel
     public function withContactID(string $contactID): self
     {
         $obj = clone $this;
-        $obj['contactId'] = $contactID;
+        $obj['contactID'] = $contactID;
 
         return $obj;
     }

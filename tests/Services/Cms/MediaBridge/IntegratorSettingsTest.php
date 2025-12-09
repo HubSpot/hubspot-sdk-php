@@ -124,7 +124,7 @@ final class IntegratorSettingsTest extends TestCase
                     'endpoints' => [
                         'discovery' => true, 'schemes' => ['string'], 'url' => 'url',
                     ],
-                    'portalId' => 0,
+                    'portalID' => 0,
                 ],
             )
         ;
@@ -183,7 +183,7 @@ final class IntegratorSettingsTest extends TestCase
             ->cms
             ->mediaBridge
             ->integratorSettings
-            ->getObjectDefinitionsByMediaType('AUDIO', ['appId' => 0])
+            ->getObjectDefinitionsByMediaType('AUDIO', ['appID' => 0])
         ;
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -204,7 +204,7 @@ final class IntegratorSettingsTest extends TestCase
             ->integratorSettings
             ->getObjectDefinitionsByMediaType(
                 'AUDIO',
-                ['appId' => 0, 'includeFullDefinition' => true]
+                ['appID' => 0, 'includeFullDefinition' => true]
             )
         ;
 
@@ -224,7 +224,7 @@ final class IntegratorSettingsTest extends TestCase
             ->cms
             ->mediaBridge
             ->integratorSettings
-            ->getOembedDomain('oEmbedDomainId', ['appId' => 0])
+            ->getOembedDomain('oEmbedDomainId', ['appID' => 0])
         ;
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -243,7 +243,7 @@ final class IntegratorSettingsTest extends TestCase
             ->cms
             ->mediaBridge
             ->integratorSettings
-            ->getOembedDomain('oEmbedDomainId', ['appId' => 0])
+            ->getOembedDomain('oEmbedDomainId', ['appID' => 0])
         ;
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -422,7 +422,7 @@ final class IntegratorSettingsTest extends TestCase
             ->updateOembedDomain(
                 'oEmbedDomainId',
                 [
-                    'appId' => 0,
+                    'appID' => 0,
                     'endpoints' => [
                         'discovery' => true, 'schemes' => ['string'], 'url' => 'url',
                     ],
@@ -449,11 +449,11 @@ final class IntegratorSettingsTest extends TestCase
             ->updateOembedDomain(
                 'oEmbedDomainId',
                 [
-                    'appId' => 0,
+                    'appID' => 0,
                     'endpoints' => [
                         'discovery' => true, 'schemes' => ['string'], 'url' => 'url',
                     ],
-                    'portalId' => 0,
+                    'portalID' => 0,
                 ],
             );
 

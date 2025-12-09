@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * Request body object for ending A/B tests.
  *
  * @phpstan-type AbTestEndRequestVNextShape = array{
- *   abTestId: string, winnerId: string
+ *   abTestID: string, winnerID: string
  * }
  */
 final class AbTestEndRequestVNext implements BaseModel
@@ -23,21 +23,21 @@ final class AbTestEndRequestVNext implements BaseModel
     /**
      * ID of the test to end.
      */
-    #[Required]
-    public string $abTestId;
+    #[Required('abTestId')]
+    public string $abTestID;
 
     /**
      * ID of the object to designate as the test winner.
      */
-    #[Required]
-    public string $winnerId;
+    #[Required('winnerId')]
+    public string $winnerID;
 
     /**
      * `new AbTestEndRequestVNext()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * AbTestEndRequestVNext::with(abTestId: ..., winnerId: ...)
+     * AbTestEndRequestVNext::with(abTestID: ..., winnerID: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -56,12 +56,12 @@ final class AbTestEndRequestVNext implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(string $abTestId, string $winnerId): self
+    public static function with(string $abTestID, string $winnerID): self
     {
         $obj = new self;
 
-        $obj['abTestId'] = $abTestId;
-        $obj['winnerId'] = $winnerId;
+        $obj['abTestID'] = $abTestID;
+        $obj['winnerID'] = $winnerID;
 
         return $obj;
     }
@@ -72,7 +72,7 @@ final class AbTestEndRequestVNext implements BaseModel
     public function withAbTestID(string $abTestID): self
     {
         $obj = clone $this;
-        $obj['abTestId'] = $abTestID;
+        $obj['abTestID'] = $abTestID;
 
         return $obj;
     }
@@ -83,7 +83,7 @@ final class AbTestEndRequestVNext implements BaseModel
     public function withWinnerID(string $winnerID): self
     {
         $obj = clone $this;
-        $obj['winnerId'] = $winnerID;
+        $obj['winnerID'] = $winnerID;
 
         return $obj;
     }

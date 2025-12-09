@@ -74,7 +74,7 @@ final class InputFieldDefinition implements BaseModel
      *   fieldType?: value-of<FieldType>|null,
      *   helpText?: string|null,
      *   label?: string|null,
-     *   optionsUrl?: string|null,
+     *   optionsURL?: string|null,
      *   referencedObjectType?: value-of<ReferencedObjectType>|null,
      * } $typeDefinition
      * @param list<SupportedValueType|value-of<SupportedValueType>> $supportedValueTypes
@@ -115,7 +115,7 @@ final class InputFieldDefinition implements BaseModel
      *   fieldType?: value-of<FieldType>|null,
      *   helpText?: string|null,
      *   label?: string|null,
-     *   optionsUrl?: string|null,
+     *   optionsURL?: string|null,
      *   referencedObjectType?: value-of<ReferencedObjectType>|null,
      * } $typeDefinition
      */

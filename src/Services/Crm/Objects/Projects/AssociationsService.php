@@ -7,6 +7,7 @@ namespace HubspotSDK\Services\Crm\Objects\Projects;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Crm\AssociatedID;
 use HubspotSDK\Crm\Objects\Projects\Associations\AssociationDeleteParams;
 use HubspotSDK\Crm\Objects\Projects\Associations\AssociationListParams;
@@ -27,7 +28,7 @@ final class AssociationsService implements AssociationsContract
      * @api
      *
      * @param array{
-     *   projectId: string, toObjectType: string, toObjectId: string
+     *   projectID: string, toObjectType: string, toObjectID: string
      * }|AssociationUpdateParams $params
      *
      * @throws APIException
@@ -41,12 +42,12 @@ final class AssociationsService implements AssociationsContract
             $params,
             $requestOptions,
         );
-        $projectID = $parsed['projectId'];
-        unset($parsed['projectId']);
+        $projectID = $parsed['projectID'];
+        unset($parsed['projectID']);
         $toObjectType = $parsed['toObjectType'];
         unset($parsed['toObjectType']);
-        $toObjectID = $parsed['toObjectId'];
-        unset($parsed['toObjectId']);
+        $toObjectID = $parsed['toObjectID'];
+        unset($parsed['toObjectID']);
 
         /** @var BaseResponse<SimplePublicObjectWithAssociations> */
         $response = $this->client->request(
@@ -69,7 +70,7 @@ final class AssociationsService implements AssociationsContract
      * @api
      *
      * @param array{
-     *   projectId: string, after?: string, includeFA?: bool, limit?: int
+     *   projectID: string, after?: string, includeFa?: bool, limit?: int
      * }|AssociationListParams $params
      *
      * @return Page<AssociatedID>
@@ -85,8 +86,8 @@ final class AssociationsService implements AssociationsContract
             $params,
             $requestOptions,
         );
-        $projectID = $parsed['projectId'];
-        unset($parsed['projectId']);
+        $projectID = $parsed['projectID'];
+        unset($parsed['projectID']);
 
         /** @var BaseResponse<Page<AssociatedID>> */
         $response = $this->client->request(
@@ -96,7 +97,7 @@ final class AssociationsService implements AssociationsContract
                 $projectID,
                 $toObjectType,
             ],
-            query: $parsed,
+            query: Util::array_transform_keys($parsed, ['includeFa' => 'includeFA']),
             options: $options,
             convert: AssociatedID::class,
             page: Page::class,
@@ -109,7 +110,7 @@ final class AssociationsService implements AssociationsContract
      * @api
      *
      * @param array{
-     *   projectId: string, toObjectType: string, toObjectId: string
+     *   projectID: string, toObjectType: string, toObjectID: string
      * }|AssociationDeleteParams $params
      *
      * @throws APIException
@@ -123,12 +124,12 @@ final class AssociationsService implements AssociationsContract
             $params,
             $requestOptions,
         );
-        $projectID = $parsed['projectId'];
-        unset($parsed['projectId']);
+        $projectID = $parsed['projectID'];
+        unset($parsed['projectID']);
         $toObjectType = $parsed['toObjectType'];
         unset($parsed['toObjectType']);
-        $toObjectID = $parsed['toObjectId'];
-        unset($parsed['toObjectId']);
+        $toObjectID = $parsed['toObjectID'];
+        unset($parsed['toObjectID']);
 
         /** @var BaseResponse<mixed> */
         $response = $this->client->request(

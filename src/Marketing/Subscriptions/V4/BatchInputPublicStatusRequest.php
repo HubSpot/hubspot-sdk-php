@@ -52,8 +52,8 @@ final class BatchInputPublicStatusRequest implements BaseModel
      * @param list<PublicStatusRequest|array{
      *   channel: value-of<Channel>,
      *   statusState: value-of<StatusState>,
-     *   subscriberIdString: string,
-     *   subscriptionId: int,
+     *   subscriberIDString: string,
+     *   subscriptionID: int,
      *   legalBasis?: value-of<LegalBasis>|null,
      *   legalBasisExplanation?: string|null,
      * }> $inputs
@@ -71,8 +71,8 @@ final class BatchInputPublicStatusRequest implements BaseModel
      * @param list<PublicStatusRequest|array{
      *   channel: value-of<Channel>,
      *   statusState: value-of<StatusState>,
-     *   subscriberIdString: string,
-     *   subscriptionId: int,
+     *   subscriberIDString: string,
+     *   subscriptionID: int,
      *   legalBasis?: value-of<LegalBasis>|null,
      *   legalBasisExplanation?: string|null,
      * }> $inputs

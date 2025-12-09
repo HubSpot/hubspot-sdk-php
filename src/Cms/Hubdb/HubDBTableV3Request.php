@@ -13,7 +13,7 @@ use HubspotSDK\Option;
 /**
  * @phpstan-type HubDBTableV3RequestShape = array{
  *   allowChildTables: bool,
- *   allowPublicApiAccess: bool,
+ *   allowPublicAPIAccess: bool,
  *   columns: list<ColumnRequest>,
  *   dynamicMetaTags: array<string,int>,
  *   enableChildTablePages: bool,
@@ -36,8 +36,8 @@ final class HubDBTableV3Request implements BaseModel
     /**
      * Specifies whether the table can be read by public without authorization.
      */
-    #[Required]
-    public bool $allowPublicApiAccess;
+    #[Required('allowPublicApiAccess')]
+    public bool $allowPublicAPIAccess;
 
     /**
      * List of columns in the table.
@@ -86,7 +86,7 @@ final class HubDBTableV3Request implements BaseModel
      * ```
      * HubDBTableV3Request::with(
      *   allowChildTables: ...,
-     *   allowPublicApiAccess: ...,
+     *   allowPublicAPIAccess: ...,
      *   columns: ...,
      *   dynamicMetaTags: ...,
      *   enableChildTablePages: ...,
@@ -126,8 +126,8 @@ final class HubDBTableV3Request implements BaseModel
      *   name: string,
      *   options: list<Option>,
      *   type: value-of<Type>,
-     *   foreignColumnId?: int|null,
-     *   foreignTableId?: int|null,
+     *   foreignColumnID?: int|null,
+     *   foreignTableID?: int|null,
      *   maxNumberOfCharacters?: int|null,
      *   maxNumberOfOptions?: int|null,
      * }> $columns
@@ -135,7 +135,7 @@ final class HubDBTableV3Request implements BaseModel
      */
     public static function with(
         bool $allowChildTables,
-        bool $allowPublicApiAccess,
+        bool $allowPublicAPIAccess,
         array $columns,
         array $dynamicMetaTags,
         bool $enableChildTablePages,
@@ -146,7 +146,7 @@ final class HubDBTableV3Request implements BaseModel
         $obj = new self;
 
         $obj['allowChildTables'] = $allowChildTables;
-        $obj['allowPublicApiAccess'] = $allowPublicApiAccess;
+        $obj['allowPublicAPIAccess'] = $allowPublicAPIAccess;
         $obj['columns'] = $columns;
         $obj['dynamicMetaTags'] = $dynamicMetaTags;
         $obj['enableChildTablePages'] = $enableChildTablePages;
@@ -174,7 +174,7 @@ final class HubDBTableV3Request implements BaseModel
     public function withAllowPublicAPIAccess(bool $allowPublicAPIAccess): self
     {
         $obj = clone $this;
-        $obj['allowPublicApiAccess'] = $allowPublicAPIAccess;
+        $obj['allowPublicAPIAccess'] = $allowPublicAPIAccess;
 
         return $obj;
     }
@@ -188,8 +188,8 @@ final class HubDBTableV3Request implements BaseModel
      *   name: string,
      *   options: list<Option>,
      *   type: value-of<Type>,
-     *   foreignColumnId?: int|null,
-     *   foreignTableId?: int|null,
+     *   foreignColumnID?: int|null,
+     *   foreignTableID?: int|null,
      *   maxNumberOfCharacters?: int|null,
      *   maxNumberOfOptions?: int|null,
      * }> $columns

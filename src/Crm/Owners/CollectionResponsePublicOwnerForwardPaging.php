@@ -64,8 +64,8 @@ final class CollectionResponsePublicOwnerForwardPaging implements BaseModel
      *   firstName?: string|null,
      *   lastName?: string|null,
      *   teams?: list<PublicTeam>|null,
-     *   userId?: int|null,
-     *   userIdIncludingInactive?: int|null,
+     *   userID?: int|null,
+     *   userIDIncludingInactive?: int|null,
      * }> $results
      * @param ForwardPaging|array{next?: NextPage|null} $paging
      */
@@ -93,8 +93,8 @@ final class CollectionResponsePublicOwnerForwardPaging implements BaseModel
      *   firstName?: string|null,
      *   lastName?: string|null,
      *   teams?: list<PublicTeam>|null,
-     *   userId?: int|null,
-     *   userIdIncludingInactive?: int|null,
+     *   userID?: int|null,
+     *   userIDIncludingInactive?: int|null,
      * }> $results
      */
     public function withResults(array $results): self

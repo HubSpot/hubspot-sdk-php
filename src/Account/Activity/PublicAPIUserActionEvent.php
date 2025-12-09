@@ -17,7 +17,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   category: string,
  *   occurredAt: \DateTimeInterface,
  *   subCategory?: string|null,
- *   targetObjectId?: string|null,
+ *   targetObjectID?: string|null,
  * }
  */
 final class PublicAPIUserActionEvent implements BaseModel
@@ -61,8 +61,8 @@ final class PublicAPIUserActionEvent implements BaseModel
     /**
      * The ID of the impacted object.
      */
-    #[Optional]
-    public ?string $targetObjectId;
+    #[Optional('targetObjectId')]
+    public ?string $targetObjectID;
 
     /**
      * `new PublicAPIUserActionEvent()` is missing required properties by the API.
@@ -95,7 +95,7 @@ final class PublicAPIUserActionEvent implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param ActingUser|array{userId: int, userEmail?: string|null} $actingUser
+     * @param ActingUser|array{userID: int, userEmail?: string|null} $actingUser
      */
     public static function with(
         string $id,
@@ -104,7 +104,7 @@ final class PublicAPIUserActionEvent implements BaseModel
         string $category,
         \DateTimeInterface $occurredAt,
         ?string $subCategory = null,
-        ?string $targetObjectId = null,
+        ?string $targetObjectID = null,
     ): self {
         $obj = new self;
 
@@ -115,7 +115,7 @@ final class PublicAPIUserActionEvent implements BaseModel
         $obj['occurredAt'] = $occurredAt;
 
         null !== $subCategory && $obj['subCategory'] = $subCategory;
-        null !== $targetObjectId && $obj['targetObjectId'] = $targetObjectId;
+        null !== $targetObjectID && $obj['targetObjectID'] = $targetObjectID;
 
         return $obj;
     }
@@ -132,7 +132,7 @@ final class PublicAPIUserActionEvent implements BaseModel
     }
 
     /**
-     * @param ActingUser|array{userId: int, userEmail?: string|null} $actingUser
+     * @param ActingUser|array{userID: int, userEmail?: string|null} $actingUser
      */
     public function withActingUser(ActingUser|array $actingUser): self
     {
@@ -192,7 +192,7 @@ final class PublicAPIUserActionEvent implements BaseModel
     public function withTargetObjectID(string $targetObjectID): self
     {
         $obj = clone $this;
-        $obj['targetObjectId'] = $targetObjectID;
+        $obj['targetObjectID'] = $targetObjectID;
 
         return $obj;
     }

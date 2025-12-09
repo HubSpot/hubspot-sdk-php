@@ -15,12 +15,12 @@ use HubspotSDK\PublicTimePointOperation\OperationType;
 
 /**
  * @phpstan-type PublicEmailEventFilterShape = array{
- *   appId: string,
- *   emailId: string,
+ *   appID: string,
+ *   emailID: string,
  *   filterType: value-of<FilterType>,
  *   level: string,
  *   operator: value-of<Operator>,
- *   clickUrl?: string|null,
+ *   clickURL?: string|null,
  *   pruningRefineBy?: null|PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation,
  * }
  */
@@ -29,11 +29,11 @@ final class PublicEmailEventFilter implements BaseModel
     /** @use SdkModel<PublicEmailEventFilterShape> */
     use SdkModel;
 
-    #[Required]
-    public string $appId;
+    #[Required('appId')]
+    public string $appID;
 
-    #[Required]
-    public string $emailId;
+    #[Required('emailId')]
+    public string $emailID;
 
     /** @var value-of<FilterType> $filterType */
     #[Required(enum: FilterType::class)]
@@ -46,8 +46,8 @@ final class PublicEmailEventFilter implements BaseModel
     #[Required(enum: Operator::class)]
     public string $operator;
 
-    #[Optional]
-    public ?string $clickUrl;
+    #[Optional('clickUrl')]
+    public ?string $clickURL;
 
     #[Optional]
     public PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation|null $pruningRefineBy;
@@ -58,7 +58,7 @@ final class PublicEmailEventFilter implements BaseModel
      * To enforce required parameters use
      * ```
      * PublicEmailEventFilter::with(
-     *   appId: ..., emailId: ..., filterType: ..., level: ..., operator: ...
+     *   appID: ..., emailID: ..., filterType: ..., level: ..., operator: ...
      * )
      * ```
      *
@@ -130,23 +130,23 @@ final class PublicEmailEventFilter implements BaseModel
      * } $pruningRefineBy
      */
     public static function with(
-        string $appId,
-        string $emailId,
+        string $appID,
+        string $emailID,
         string $level,
         Operator|string $operator,
         FilterType|string $filterType = 'EMAIL_EVENT',
-        ?string $clickUrl = null,
+        ?string $clickURL = null,
         PublicNumOccurrencesRefineBy|array|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation|null $pruningRefineBy = null,
     ): self {
         $obj = new self;
 
-        $obj['appId'] = $appId;
-        $obj['emailId'] = $emailId;
+        $obj['appID'] = $appID;
+        $obj['emailID'] = $emailID;
         $obj['filterType'] = $filterType;
         $obj['level'] = $level;
         $obj['operator'] = $operator;
 
-        null !== $clickUrl && $obj['clickUrl'] = $clickUrl;
+        null !== $clickURL && $obj['clickURL'] = $clickURL;
         null !== $pruningRefineBy && $obj['pruningRefineBy'] = $pruningRefineBy;
 
         return $obj;
@@ -155,7 +155,7 @@ final class PublicEmailEventFilter implements BaseModel
     public function withAppID(string $appID): self
     {
         $obj = clone $this;
-        $obj['appId'] = $appID;
+        $obj['appID'] = $appID;
 
         return $obj;
     }
@@ -163,7 +163,7 @@ final class PublicEmailEventFilter implements BaseModel
     public function withEmailID(string $emailID): self
     {
         $obj = clone $this;
-        $obj['emailId'] = $emailID;
+        $obj['emailID'] = $emailID;
 
         return $obj;
     }
@@ -201,7 +201,7 @@ final class PublicEmailEventFilter implements BaseModel
     public function withClickURL(string $clickURL): self
     {
         $obj = clone $this;
-        $obj['clickUrl'] = $clickURL;
+        $obj['clickURL'] = $clickURL;
 
         return $obj;
     }

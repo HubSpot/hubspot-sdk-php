@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * Data structure representing the to fields of the email.
  *
  * @phpstan-type PublicEmailToDetailsShape = array{
- *   contactIds?: PublicEmailRecipients|null,
+ *   contactIDs?: PublicEmailRecipients|null,
  *   contactIlsLists?: PublicEmailRecipients|null,
  *   contactLists?: PublicEmailRecipients|null,
  *   limitSendFrequency?: bool|null,
@@ -27,8 +27,8 @@ final class PublicEmailToDetails implements BaseModel
     /**
      * Data structure representing lists of IDs that should be included and excluded.
      */
-    #[Optional]
-    public ?PublicEmailRecipients $contactIds;
+    #[Optional('contactIds')]
+    public ?PublicEmailRecipients $contactIDs;
 
     /**
      * Data structure representing lists of IDs that should be included and excluded.
@@ -63,7 +63,7 @@ final class PublicEmailToDetails implements BaseModel
      *
      * @param PublicEmailRecipients|array{
      *   exclude?: list<string>|null, include?: list<string>|null
-     * } $contactIds
+     * } $contactIDs
      * @param PublicEmailRecipients|array{
      *   exclude?: list<string>|null, include?: list<string>|null
      * } $contactIlsLists
@@ -72,7 +72,7 @@ final class PublicEmailToDetails implements BaseModel
      * } $contactLists
      */
     public static function with(
-        PublicEmailRecipients|array|null $contactIds = null,
+        PublicEmailRecipients|array|null $contactIDs = null,
         PublicEmailRecipients|array|null $contactIlsLists = null,
         PublicEmailRecipients|array|null $contactLists = null,
         ?bool $limitSendFrequency = null,
@@ -80,7 +80,7 @@ final class PublicEmailToDetails implements BaseModel
     ): self {
         $obj = new self;
 
-        null !== $contactIds && $obj['contactIds'] = $contactIds;
+        null !== $contactIDs && $obj['contactIDs'] = $contactIDs;
         null !== $contactIlsLists && $obj['contactIlsLists'] = $contactIlsLists;
         null !== $contactLists && $obj['contactLists'] = $contactLists;
         null !== $limitSendFrequency && $obj['limitSendFrequency'] = $limitSendFrequency;
@@ -100,7 +100,7 @@ final class PublicEmailToDetails implements BaseModel
         PublicEmailRecipients|array $contactIDs
     ): self {
         $obj = clone $this;
-        $obj['contactIds'] = $contactIDs;
+        $obj['contactIDs'] = $contactIDs;
 
         return $obj;
     }

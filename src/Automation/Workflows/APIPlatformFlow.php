@@ -72,9 +72,9 @@ use HubspotSDK\PublicWebinarFilter;
  *   dataSources: list<APIAssociationDataSource|APIAssociationTimestampDataSource|APIStaticPropertyFilterDataSource|APIEnrolledRecordPropertyFilterDataSource|APIDatasetFieldPropertyFilterDataSource|APIEnrolledArgumentPropertyFilterDataSource>,
  *   flowType: value-of<FlowType>,
  *   isEnabled: bool,
- *   nextAvailableActionId: string,
- *   objectTypeId: string,
- *   revisionId: string,
+ *   nextAvailableActionID: string,
+ *   objectTypeID: string,
+ *   revisionID: string,
  *   timeWindows: list<APITimeWindow>,
  *   type: value-of<Type>,
  *   updatedAt: \DateTimeInterface,
@@ -82,7 +82,7 @@ use HubspotSDK\PublicWebinarFilter;
  *   enrollmentCriteria?: null|APIListBasedEnrollmentCriteria|APIEventBasedEnrollmentCriteria|APIManualEnrollmentCriteria,
  *   enrollmentSchedule?: null|APIDailyEnrollmentSchedule|APIWeeklyEnrollmentSchedule|APIMonthlySpecificDaysEnrollmentSchedule|APIMonthlyRelativeDaysEnrollmentSchedule|APIYearlyEnrollmentSchedule|APIPropertyBasedEnrollmentSchedule,
  *   name?: string|null,
- *   startActionId?: string|null,
+ *   startActionID?: string|null,
  *   suppressionFilterBranch?: null|PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch,
  *   uuid?: string|null,
  * }
@@ -127,14 +127,14 @@ final class APIPlatformFlow implements BaseModel
     #[Required]
     public bool $isEnabled;
 
-    #[Required]
-    public string $nextAvailableActionId;
+    #[Required('nextAvailableActionId')]
+    public string $nextAvailableActionID;
 
-    #[Required]
-    public string $objectTypeId;
+    #[Required('objectTypeId')]
+    public string $objectTypeID;
 
-    #[Required]
-    public string $revisionId;
+    #[Required('revisionId')]
+    public string $revisionID;
 
     /** @var list<APITimeWindow> $timeWindows */
     #[Required(list: APITimeWindow::class)]
@@ -159,8 +159,8 @@ final class APIPlatformFlow implements BaseModel
     #[Optional]
     public ?string $name;
 
-    #[Optional]
-    public ?string $startActionId;
+    #[Optional('startActionId')]
+    public ?string $startActionID;
 
     #[Optional]
     public PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch|null $suppressionFilterBranch;
@@ -183,9 +183,9 @@ final class APIPlatformFlow implements BaseModel
      *   dataSources: ...,
      *   flowType: ...,
      *   isEnabled: ...,
-     *   nextAvailableActionId: ...,
-     *   objectTypeId: ...,
-     *   revisionId: ...,
+     *   nextAvailableActionID: ...,
+     *   objectTypeID: ...,
+     *   revisionID: ...,
      *   timeWindows: ...,
      *   type: ...,
      *   updatedAt: ...,
@@ -231,16 +231,16 @@ final class APIPlatformFlow implements BaseModel
      * @param array<string,string> $customProperties
      * @param list<APIAssociationDataSource|array{
      *   associationCategory: value-of<AssociationCategory>,
-     *   associationTypeId: int,
+     *   associationTypeID: int,
      *   name: string,
-     *   objectTypeId: string,
+     *   objectTypeID: string,
      *   type: value-of<APIAssociationDataSource\Type>,
      *   sortBy?: APISort|null,
      * }|APIAssociationTimestampDataSource|array{
      *   associationCategory: value-of<APIAssociationTimestampDataSource\AssociationCategory>,
-     *   associationTypeId: int,
+     *   associationTypeID: int,
      *   name: string,
-     *   objectTypeId: string,
+     *   objectTypeID: string,
      *   type: value-of<APIAssociationTimestampDataSource\Type>,
      * }|APIStaticPropertyFilterDataSource|array{
      *   name: string,
@@ -341,7 +341,7 @@ final class APIPlatformFlow implements BaseModel
      *   filterBranchType: value-of<PublicRestrictedFilterBranch\FilterBranchType>,
      *   filters: list<PublicPropertyFilter|PublicAssociationInListFilter|PublicPageViewAnalyticsFilter|PublicCtaAnalyticsFilter|PublicEventAnalyticsFilter|PublicFormSubmissionFilter|PublicFormSubmissionOnPageFilter|PublicIntegrationEventFilter|PublicEmailSubscriptionFilter|PublicCommunicationSubscriptionFilter|PublicCampaignInfluencedFilter|PublicSurveyMonkeyFilter|PublicSurveyMonkeyValueFilter|PublicWebinarFilter|PublicEmailEventFilter|PublicPrivacyAnalyticsFilter|PublicAdsSearchFilter|PublicAdsTimeFilter|PublicInListFilter|PublicNumAssociationsFilter|PublicUnifiedEventsFilter|PublicPropertyAssociationInListFilter|PublicConstantFilter>,
      * }|PublicUnifiedEventsFilterBranch|array{
-     *   eventTypeId: string,
+     *   eventTypeID: string,
      *   filterBranches: list<mixed>,
      *   filterBranchOperator: string,
      *   filterBranchType: value-of<PublicUnifiedEventsFilterBranch\FilterBranchType>,
@@ -353,17 +353,17 @@ final class APIPlatformFlow implements BaseModel
      *   filterBranchOperator: string,
      *   filterBranchType: value-of<PublicPropertyAssociationFilterBranch\FilterBranchType>,
      *   filters: list<PublicPropertyFilter|PublicAssociationInListFilter|PublicPageViewAnalyticsFilter|PublicCtaAnalyticsFilter|PublicEventAnalyticsFilter|PublicFormSubmissionFilter|PublicFormSubmissionOnPageFilter|PublicIntegrationEventFilter|PublicEmailSubscriptionFilter|PublicCommunicationSubscriptionFilter|PublicCampaignInfluencedFilter|PublicSurveyMonkeyFilter|PublicSurveyMonkeyValueFilter|PublicWebinarFilter|PublicEmailEventFilter|PublicPrivacyAnalyticsFilter|PublicAdsSearchFilter|PublicAdsTimeFilter|PublicInListFilter|PublicNumAssociationsFilter|PublicUnifiedEventsFilter|PublicPropertyAssociationInListFilter|PublicConstantFilter>,
-     *   objectTypeId: string,
+     *   objectTypeID: string,
      *   operator: string,
-     *   propertyWithObjectId: string,
+     *   propertyWithObjectID: string,
      * }|PublicAssociationFilterBranch|array{
      *   associationCategory: string,
-     *   associationTypeId: int,
+     *   associationTypeID: int,
      *   filterBranches: list<mixed>,
      *   filterBranchOperator: string,
      *   filterBranchType: value-of<PublicAssociationFilterBranch\FilterBranchType>,
      *   filters: list<PublicPropertyFilter|PublicAssociationInListFilter|PublicPageViewAnalyticsFilter|PublicCtaAnalyticsFilter|PublicEventAnalyticsFilter|PublicFormSubmissionFilter|PublicFormSubmissionOnPageFilter|PublicIntegrationEventFilter|PublicEmailSubscriptionFilter|PublicCommunicationSubscriptionFilter|PublicCampaignInfluencedFilter|PublicSurveyMonkeyFilter|PublicSurveyMonkeyValueFilter|PublicWebinarFilter|PublicEmailEventFilter|PublicPrivacyAnalyticsFilter|PublicAdsSearchFilter|PublicAdsTimeFilter|PublicInListFilter|PublicNumAssociationsFilter|PublicUnifiedEventsFilter|PublicPropertyAssociationInListFilter|PublicConstantFilter>,
-     *   objectTypeId: string,
+     *   objectTypeID: string,
      *   operator: string,
      * } $suppressionFilterBranch
      */
@@ -377,9 +377,9 @@ final class APIPlatformFlow implements BaseModel
         array $dataSources,
         FlowType|string $flowType,
         bool $isEnabled,
-        string $nextAvailableActionId,
-        string $objectTypeId,
-        string $revisionId,
+        string $nextAvailableActionID,
+        string $objectTypeID,
+        string $revisionID,
         array $timeWindows,
         \DateTimeInterface $updatedAt,
         Type|string $type = 'PLATFORM_FLOW',
@@ -387,7 +387,7 @@ final class APIPlatformFlow implements BaseModel
         APIListBasedEnrollmentCriteria|array|APIEventBasedEnrollmentCriteria|APIManualEnrollmentCriteria|null $enrollmentCriteria = null,
         APIDailyEnrollmentSchedule|array|APIWeeklyEnrollmentSchedule|APIMonthlySpecificDaysEnrollmentSchedule|APIMonthlyRelativeDaysEnrollmentSchedule|APIYearlyEnrollmentSchedule|APIPropertyBasedEnrollmentSchedule|null $enrollmentSchedule = null,
         ?string $name = null,
-        ?string $startActionId = null,
+        ?string $startActionID = null,
         PublicOrFilterBranch|array|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch|null $suppressionFilterBranch = null,
         ?string $uuid = null,
     ): self {
@@ -402,9 +402,9 @@ final class APIPlatformFlow implements BaseModel
         $obj['dataSources'] = $dataSources;
         $obj['flowType'] = $flowType;
         $obj['isEnabled'] = $isEnabled;
-        $obj['nextAvailableActionId'] = $nextAvailableActionId;
-        $obj['objectTypeId'] = $objectTypeId;
-        $obj['revisionId'] = $revisionId;
+        $obj['nextAvailableActionID'] = $nextAvailableActionID;
+        $obj['objectTypeID'] = $objectTypeID;
+        $obj['revisionID'] = $revisionID;
         $obj['timeWindows'] = $timeWindows;
         $obj['type'] = $type;
         $obj['updatedAt'] = $updatedAt;
@@ -413,7 +413,7 @@ final class APIPlatformFlow implements BaseModel
         null !== $enrollmentCriteria && $obj['enrollmentCriteria'] = $enrollmentCriteria;
         null !== $enrollmentSchedule && $obj['enrollmentSchedule'] = $enrollmentSchedule;
         null !== $name && $obj['name'] = $name;
-        null !== $startActionId && $obj['startActionId'] = $startActionId;
+        null !== $startActionID && $obj['startActionID'] = $startActionID;
         null !== $suppressionFilterBranch && $obj['suppressionFilterBranch'] = $suppressionFilterBranch;
         null !== $uuid && $obj['uuid'] = $uuid;
 
@@ -486,16 +486,16 @@ final class APIPlatformFlow implements BaseModel
     /**
      * @param list<APIAssociationDataSource|array{
      *   associationCategory: value-of<AssociationCategory>,
-     *   associationTypeId: int,
+     *   associationTypeID: int,
      *   name: string,
-     *   objectTypeId: string,
+     *   objectTypeID: string,
      *   type: value-of<APIAssociationDataSource\Type>,
      *   sortBy?: APISort|null,
      * }|APIAssociationTimestampDataSource|array{
      *   associationCategory: value-of<APIAssociationTimestampDataSource\AssociationCategory>,
-     *   associationTypeId: int,
+     *   associationTypeID: int,
      *   name: string,
-     *   objectTypeId: string,
+     *   objectTypeID: string,
      *   type: value-of<APIAssociationTimestampDataSource\Type>,
      * }|APIStaticPropertyFilterDataSource|array{
      *   name: string,
@@ -554,7 +554,7 @@ final class APIPlatformFlow implements BaseModel
         string $nextAvailableActionID
     ): self {
         $obj = clone $this;
-        $obj['nextAvailableActionId'] = $nextAvailableActionID;
+        $obj['nextAvailableActionID'] = $nextAvailableActionID;
 
         return $obj;
     }
@@ -562,7 +562,7 @@ final class APIPlatformFlow implements BaseModel
     public function withObjectTypeID(string $objectTypeID): self
     {
         $obj = clone $this;
-        $obj['objectTypeId'] = $objectTypeID;
+        $obj['objectTypeID'] = $objectTypeID;
 
         return $obj;
     }
@@ -570,7 +570,7 @@ final class APIPlatformFlow implements BaseModel
     public function withRevisionID(string $revisionID): self
     {
         $obj = clone $this;
-        $obj['revisionId'] = $revisionID;
+        $obj['revisionID'] = $revisionID;
 
         return $obj;
     }
@@ -691,7 +691,7 @@ final class APIPlatformFlow implements BaseModel
     public function withStartActionID(string $startActionID): self
     {
         $obj = clone $this;
-        $obj['startActionId'] = $startActionID;
+        $obj['startActionID'] = $startActionID;
 
         return $obj;
     }
@@ -723,7 +723,7 @@ final class APIPlatformFlow implements BaseModel
      *   filterBranchType: value-of<PublicRestrictedFilterBranch\FilterBranchType>,
      *   filters: list<PublicPropertyFilter|PublicAssociationInListFilter|PublicPageViewAnalyticsFilter|PublicCtaAnalyticsFilter|PublicEventAnalyticsFilter|PublicFormSubmissionFilter|PublicFormSubmissionOnPageFilter|PublicIntegrationEventFilter|PublicEmailSubscriptionFilter|PublicCommunicationSubscriptionFilter|PublicCampaignInfluencedFilter|PublicSurveyMonkeyFilter|PublicSurveyMonkeyValueFilter|PublicWebinarFilter|PublicEmailEventFilter|PublicPrivacyAnalyticsFilter|PublicAdsSearchFilter|PublicAdsTimeFilter|PublicInListFilter|PublicNumAssociationsFilter|PublicUnifiedEventsFilter|PublicPropertyAssociationInListFilter|PublicConstantFilter>,
      * }|PublicUnifiedEventsFilterBranch|array{
-     *   eventTypeId: string,
+     *   eventTypeID: string,
      *   filterBranches: list<mixed>,
      *   filterBranchOperator: string,
      *   filterBranchType: value-of<PublicUnifiedEventsFilterBranch\FilterBranchType>,
@@ -735,17 +735,17 @@ final class APIPlatformFlow implements BaseModel
      *   filterBranchOperator: string,
      *   filterBranchType: value-of<PublicPropertyAssociationFilterBranch\FilterBranchType>,
      *   filters: list<PublicPropertyFilter|PublicAssociationInListFilter|PublicPageViewAnalyticsFilter|PublicCtaAnalyticsFilter|PublicEventAnalyticsFilter|PublicFormSubmissionFilter|PublicFormSubmissionOnPageFilter|PublicIntegrationEventFilter|PublicEmailSubscriptionFilter|PublicCommunicationSubscriptionFilter|PublicCampaignInfluencedFilter|PublicSurveyMonkeyFilter|PublicSurveyMonkeyValueFilter|PublicWebinarFilter|PublicEmailEventFilter|PublicPrivacyAnalyticsFilter|PublicAdsSearchFilter|PublicAdsTimeFilter|PublicInListFilter|PublicNumAssociationsFilter|PublicUnifiedEventsFilter|PublicPropertyAssociationInListFilter|PublicConstantFilter>,
-     *   objectTypeId: string,
+     *   objectTypeID: string,
      *   operator: string,
-     *   propertyWithObjectId: string,
+     *   propertyWithObjectID: string,
      * }|PublicAssociationFilterBranch|array{
      *   associationCategory: string,
-     *   associationTypeId: int,
+     *   associationTypeID: int,
      *   filterBranches: list<mixed>,
      *   filterBranchOperator: string,
      *   filterBranchType: value-of<PublicAssociationFilterBranch\FilterBranchType>,
      *   filters: list<PublicPropertyFilter|PublicAssociationInListFilter|PublicPageViewAnalyticsFilter|PublicCtaAnalyticsFilter|PublicEventAnalyticsFilter|PublicFormSubmissionFilter|PublicFormSubmissionOnPageFilter|PublicIntegrationEventFilter|PublicEmailSubscriptionFilter|PublicCommunicationSubscriptionFilter|PublicCampaignInfluencedFilter|PublicSurveyMonkeyFilter|PublicSurveyMonkeyValueFilter|PublicWebinarFilter|PublicEmailEventFilter|PublicPrivacyAnalyticsFilter|PublicAdsSearchFilter|PublicAdsTimeFilter|PublicInListFilter|PublicNumAssociationsFilter|PublicUnifiedEventsFilter|PublicPropertyAssociationInListFilter|PublicConstantFilter>,
-     *   objectTypeId: string,
+     *   objectTypeID: string,
      *   operator: string,
      * } $suppressionFilterBranch
      */

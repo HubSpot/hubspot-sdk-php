@@ -13,9 +13,9 @@ use HubspotSDK\Crm\Associations\Schema\V4\PublicAssociationDefinitionUserConfigu
 /**
  * @phpstan-type PublicAssociationDefinitionUserConfigurationShape = array{
  *   category: value-of<Category>,
- *   typeId: int,
+ *   typeID: int,
  *   label?: string|null,
- *   userEnforcedMaxToObjectIds?: int|null,
+ *   userEnforcedMaxToObjectIDs?: int|null,
  * }
  */
 final class PublicAssociationDefinitionUserConfiguration implements BaseModel
@@ -27,21 +27,21 @@ final class PublicAssociationDefinitionUserConfiguration implements BaseModel
     #[Required(enum: Category::class)]
     public string $category;
 
-    #[Required]
-    public int $typeId;
+    #[Required('typeId')]
+    public int $typeID;
 
     #[Optional]
     public ?string $label;
 
-    #[Optional]
-    public ?int $userEnforcedMaxToObjectIds;
+    #[Optional('userEnforcedMaxToObjectIds')]
+    public ?int $userEnforcedMaxToObjectIDs;
 
     /**
      * `new PublicAssociationDefinitionUserConfiguration()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * PublicAssociationDefinitionUserConfiguration::with(category: ..., typeId: ...)
+     * PublicAssociationDefinitionUserConfiguration::with(category: ..., typeID: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -66,17 +66,17 @@ final class PublicAssociationDefinitionUserConfiguration implements BaseModel
      */
     public static function with(
         Category|string $category,
-        int $typeId,
+        int $typeID,
         ?string $label = null,
-        ?int $userEnforcedMaxToObjectIds = null,
+        ?int $userEnforcedMaxToObjectIDs = null,
     ): self {
         $obj = new self;
 
         $obj['category'] = $category;
-        $obj['typeId'] = $typeId;
+        $obj['typeID'] = $typeID;
 
         null !== $label && $obj['label'] = $label;
-        null !== $userEnforcedMaxToObjectIds && $obj['userEnforcedMaxToObjectIds'] = $userEnforcedMaxToObjectIds;
+        null !== $userEnforcedMaxToObjectIDs && $obj['userEnforcedMaxToObjectIDs'] = $userEnforcedMaxToObjectIDs;
 
         return $obj;
     }
@@ -95,7 +95,7 @@ final class PublicAssociationDefinitionUserConfiguration implements BaseModel
     public function withTypeID(int $typeID): self
     {
         $obj = clone $this;
-        $obj['typeId'] = $typeID;
+        $obj['typeID'] = $typeID;
 
         return $obj;
     }
@@ -112,7 +112,7 @@ final class PublicAssociationDefinitionUserConfiguration implements BaseModel
         int $userEnforcedMaxToObjectIDs
     ): self {
         $obj = clone $this;
-        $obj['userEnforcedMaxToObjectIds'] = $userEnforcedMaxToObjectIDs;
+        $obj['userEnforcedMaxToObjectIDs'] = $userEnforcedMaxToObjectIDs;
 
         return $obj;
     }

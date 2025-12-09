@@ -61,7 +61,7 @@ final class PublicDefaultAssociation implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param AssociationSpec|array{
-     *   associationCategory: value-of<AssociationCategory>, associationTypeId: int
+     *   associationCategory: value-of<AssociationCategory>, associationTypeID: int
      * } $associationSpec
      * @param PublicObjectID|array{id: string} $from
      * @param PublicObjectID|array{id: string} $to
@@ -84,7 +84,7 @@ final class PublicDefaultAssociation implements BaseModel
      * Defines the type, direction, and details of the relationship between two CRM objects.
      *
      * @param AssociationSpec|array{
-     *   associationCategory: value-of<AssociationCategory>, associationTypeId: int
+     *   associationCategory: value-of<AssociationCategory>, associationTypeID: int
      * } $associationSpec
      */
     public function withAssociationSpec(

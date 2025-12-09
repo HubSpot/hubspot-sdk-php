@@ -42,7 +42,7 @@ final class PropertiesTest extends TestCase
         $result = $this->client->cms->mediaBridge->properties->create(
             'objectType',
             [
-                'appId' => 0,
+                'appID' => 0,
                 'fieldType' => 'booleancheckbox',
                 'groupName' => 'groupName',
                 'label' => 'label',
@@ -65,7 +65,7 @@ final class PropertiesTest extends TestCase
         $result = $this->client->cms->mediaBridge->properties->create(
             'objectType',
             [
-                'appId' => 0,
+                'appID' => 0,
                 'fieldType' => 'booleancheckbox',
                 'groupName' => 'groupName',
                 'label' => 'label',
@@ -105,7 +105,7 @@ final class PropertiesTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->properties->update(
             'propertyName',
-            ['appId' => 0, 'objectType' => 'objectType']
+            ['appID' => 0, 'objectType' => 'objectType']
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -122,7 +122,7 @@ final class PropertiesTest extends TestCase
         $result = $this->client->cms->mediaBridge->properties->update(
             'propertyName',
             [
-                'appId' => 0,
+                'appID' => 0,
                 'objectType' => 'objectType',
                 'calculationFormula' => 'calculationFormula',
                 'description' => 'description',
@@ -159,7 +159,7 @@ final class PropertiesTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->properties->list(
             'objectType',
-            ['appId' => 0]
+            ['appID' => 0]
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -175,7 +175,7 @@ final class PropertiesTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->properties->list(
             'objectType',
-            ['appId' => 0, 'archived' => true, 'properties' => 'properties'],
+            ['appID' => 0, 'archived' => true, 'properties' => 'properties'],
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -191,7 +191,7 @@ final class PropertiesTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->properties->delete(
             'propertyName',
-            ['appId' => 0, 'objectType' => 'objectType']
+            ['appID' => 0, 'objectType' => 'objectType']
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -207,7 +207,7 @@ final class PropertiesTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->properties->delete(
             'propertyName',
-            ['appId' => 0, 'objectType' => 'objectType']
+            ['appID' => 0, 'objectType' => 'objectType']
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -224,7 +224,7 @@ final class PropertiesTest extends TestCase
         $result = $this->client->cms->mediaBridge->properties->createBatch(
             'objectType',
             [
-                'appId' => 0,
+                'appID' => 0,
                 'inputs' => [
                     [
                         'fieldType' => 'booleancheckbox',
@@ -251,7 +251,7 @@ final class PropertiesTest extends TestCase
         $result = $this->client->cms->mediaBridge->properties->createBatch(
             'objectType',
             [
-                'appId' => 0,
+                'appID' => 0,
                 'inputs' => [
                     [
                         'fieldType' => 'booleancheckbox',
@@ -295,7 +295,7 @@ final class PropertiesTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->properties->deleteBatch(
             'objectType',
-            ['appId' => 0, 'inputs' => [['name' => 'name']]]
+            ['appID' => 0, 'inputs' => [['name' => 'name']]]
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -311,7 +311,7 @@ final class PropertiesTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->properties->deleteBatch(
             'objectType',
-            ['appId' => 0, 'inputs' => [['name' => 'name']]]
+            ['appID' => 0, 'inputs' => [['name' => 'name']]]
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -327,7 +327,7 @@ final class PropertiesTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->properties->get(
             'propertyName',
-            ['appId' => 0, 'objectType' => 'objectType']
+            ['appID' => 0, 'objectType' => 'objectType']
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -344,7 +344,7 @@ final class PropertiesTest extends TestCase
         $result = $this->client->cms->mediaBridge->properties->get(
             'propertyName',
             [
-                'appId' => 0,
+                'appID' => 0,
                 'objectType' => 'objectType',
                 'archived' => true,
                 'properties' => 'properties',
@@ -365,7 +365,7 @@ final class PropertiesTest extends TestCase
         $result = $this->client->cms->mediaBridge->properties->getBatch(
             'objectType',
             [
-                'appId' => 0,
+                'appID' => 0,
                 'archived' => true,
                 'dataSensitivity' => 'highly_sensitive',
                 'inputs' => [['name' => 'name']],
@@ -386,7 +386,7 @@ final class PropertiesTest extends TestCase
         $result = $this->client->cms->mediaBridge->properties->getBatch(
             'objectType',
             [
-                'appId' => 0,
+                'appID' => 0,
                 'archived' => true,
                 'dataSensitivity' => 'highly_sensitive',
                 'inputs' => [['name' => 'name']],

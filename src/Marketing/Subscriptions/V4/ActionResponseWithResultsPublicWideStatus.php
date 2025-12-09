@@ -120,10 +120,10 @@ final class ActionResponseWithResultsPublicWideStatus implements BaseModel
      * @param list<PublicWideStatus|array{
      *   channel: value-of<Channel>,
      *   status: value-of<PublicWideStatus\Status>,
-     *   subscriberIdString: string,
+     *   subscriberIDString: string,
      *   timestamp: \DateTimeInterface,
      *   wideStatusType: value-of<WideStatusType>,
-     *   businessUnitId?: int|null,
+     *   businessUnitID?: int|null,
      * }> $results
      * @param Status|value-of<Status> $status
      * @param list<StandardError|array{
@@ -180,10 +180,10 @@ final class ActionResponseWithResultsPublicWideStatus implements BaseModel
      * @param list<PublicWideStatus|array{
      *   channel: value-of<Channel>,
      *   status: value-of<PublicWideStatus\Status>,
-     *   subscriberIdString: string,
+     *   subscriberIDString: string,
      *   timestamp: \DateTimeInterface,
      *   wideStatusType: value-of<WideStatusType>,
-     *   businessUnitId?: int|null,
+     *   businessUnitID?: int|null,
      * }> $results
      */
     public function withResults(array $results): self

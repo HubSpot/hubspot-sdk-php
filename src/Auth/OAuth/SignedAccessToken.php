@@ -10,11 +10,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type SignedAccessTokenShape = array{
- *   appId: int,
+ *   appID: int,
  *   expiresAt: int,
- *   hubId: int,
+ *   hubID: int,
  *   hublet: string,
- *   installingUserId: int,
+ *   installingUserID: int,
  *   isPrivateDistribution: bool,
  *   isServiceAccount: bool,
  *   isUserLevel: bool,
@@ -24,7 +24,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   signature: string,
  *   trialScopes: string,
  *   trialScopeToScopeGroupPks: string,
- *   userId: int,
+ *   userID: int,
  * }
  */
 final class SignedAccessToken implements BaseModel
@@ -32,20 +32,20 @@ final class SignedAccessToken implements BaseModel
     /** @use SdkModel<SignedAccessTokenShape> */
     use SdkModel;
 
-    #[Required]
-    public int $appId;
+    #[Required('appId')]
+    public int $appID;
 
     #[Required]
     public int $expiresAt;
 
-    #[Required]
-    public int $hubId;
+    #[Required('hubId')]
+    public int $hubID;
 
     #[Required]
     public string $hublet;
 
-    #[Required]
-    public int $installingUserId;
+    #[Required('installingUserId')]
+    public int $installingUserID;
 
     #[Required]
     public bool $isPrivateDistribution;
@@ -74,8 +74,8 @@ final class SignedAccessToken implements BaseModel
     #[Required]
     public string $trialScopeToScopeGroupPks;
 
-    #[Required]
-    public int $userId;
+    #[Required('userId')]
+    public int $userID;
 
     /**
      * `new SignedAccessToken()` is missing required properties by the API.
@@ -83,11 +83,11 @@ final class SignedAccessToken implements BaseModel
      * To enforce required parameters use
      * ```
      * SignedAccessToken::with(
-     *   appId: ...,
+     *   appID: ...,
      *   expiresAt: ...,
-     *   hubId: ...,
+     *   hubID: ...,
      *   hublet: ...,
-     *   installingUserId: ...,
+     *   installingUserID: ...,
      *   isPrivateDistribution: ...,
      *   isServiceAccount: ...,
      *   isUserLevel: ...,
@@ -97,7 +97,7 @@ final class SignedAccessToken implements BaseModel
      *   signature: ...,
      *   trialScopes: ...,
      *   trialScopeToScopeGroupPks: ...,
-     *   userId: ...,
+     *   userID: ...,
      * )
      * ```
      *
@@ -133,11 +133,11 @@ final class SignedAccessToken implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      */
     public static function with(
-        int $appId,
+        int $appID,
         int $expiresAt,
-        int $hubId,
+        int $hubID,
         string $hublet,
-        int $installingUserId,
+        int $installingUserID,
         bool $isPrivateDistribution,
         bool $isServiceAccount,
         bool $isUserLevel,
@@ -147,15 +147,15 @@ final class SignedAccessToken implements BaseModel
         string $signature,
         string $trialScopes,
         string $trialScopeToScopeGroupPks,
-        int $userId,
+        int $userID,
     ): self {
         $obj = new self;
 
-        $obj['appId'] = $appId;
+        $obj['appID'] = $appID;
         $obj['expiresAt'] = $expiresAt;
-        $obj['hubId'] = $hubId;
+        $obj['hubID'] = $hubID;
         $obj['hublet'] = $hublet;
-        $obj['installingUserId'] = $installingUserId;
+        $obj['installingUserID'] = $installingUserID;
         $obj['isPrivateDistribution'] = $isPrivateDistribution;
         $obj['isServiceAccount'] = $isServiceAccount;
         $obj['isUserLevel'] = $isUserLevel;
@@ -165,7 +165,7 @@ final class SignedAccessToken implements BaseModel
         $obj['signature'] = $signature;
         $obj['trialScopes'] = $trialScopes;
         $obj['trialScopeToScopeGroupPks'] = $trialScopeToScopeGroupPks;
-        $obj['userId'] = $userId;
+        $obj['userID'] = $userID;
 
         return $obj;
     }
@@ -173,7 +173,7 @@ final class SignedAccessToken implements BaseModel
     public function withAppID(int $appID): self
     {
         $obj = clone $this;
-        $obj['appId'] = $appID;
+        $obj['appID'] = $appID;
 
         return $obj;
     }
@@ -189,7 +189,7 @@ final class SignedAccessToken implements BaseModel
     public function withHubID(int $hubID): self
     {
         $obj = clone $this;
-        $obj['hubId'] = $hubID;
+        $obj['hubID'] = $hubID;
 
         return $obj;
     }
@@ -205,7 +205,7 @@ final class SignedAccessToken implements BaseModel
     public function withInstallingUserID(int $installingUserID): self
     {
         $obj = clone $this;
-        $obj['installingUserId'] = $installingUserID;
+        $obj['installingUserID'] = $installingUserID;
 
         return $obj;
     }
@@ -286,7 +286,7 @@ final class SignedAccessToken implements BaseModel
     public function withUserID(int $userID): self
     {
         $obj = clone $this;
-        $obj['userId'] = $userID;
+        $obj['userID'] = $userID;
 
         return $obj;
     }

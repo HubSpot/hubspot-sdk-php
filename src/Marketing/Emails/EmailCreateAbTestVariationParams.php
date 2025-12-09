@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Marketing\EmailsService::createAbTestVariation()
  *
  * @phpstan-type EmailCreateAbTestVariationParamsShape = array{
- *   contentId: string, variationName: string
+ *   contentID: string, variationName: string
  * }
  */
 final class EmailCreateAbTestVariationParams implements BaseModel
@@ -27,8 +27,8 @@ final class EmailCreateAbTestVariationParams implements BaseModel
     /**
      * ID of the object to test.
      */
-    #[Required]
-    public string $contentId;
+    #[Required('contentId')]
+    public string $contentID;
 
     /**
      * Name of A/B test variation.
@@ -41,7 +41,7 @@ final class EmailCreateAbTestVariationParams implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * EmailCreateAbTestVariationParams::with(contentId: ..., variationName: ...)
+     * EmailCreateAbTestVariationParams::with(contentID: ..., variationName: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -62,11 +62,11 @@ final class EmailCreateAbTestVariationParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(string $contentId, string $variationName): self
+    public static function with(string $contentID, string $variationName): self
     {
         $obj = new self;
 
-        $obj['contentId'] = $contentId;
+        $obj['contentID'] = $contentID;
         $obj['variationName'] = $variationName;
 
         return $obj;
@@ -78,7 +78,7 @@ final class EmailCreateAbTestVariationParams implements BaseModel
     public function withContentID(string $contentID): self
     {
         $obj = clone $this;
-        $obj['contentId'] = $contentID;
+        $obj['contentID'] = $contentID;
 
         return $obj;
     }

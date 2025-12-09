@@ -64,7 +64,7 @@ final class BatchService implements BatchContract
      *     id: string,
      *     properties: array<string,string>,
      *     idProperty?: string,
-     *     objectWriteTraceId?: string,
+     *     objectWriteTraceID?: string,
      *   }>,
      * }|BatchBatchUpdateParams $params
      *

@@ -133,7 +133,7 @@ final class DefinitionsService implements DefinitionsContract
      *
      * @param array{
      *   fromObjectType: string,
-     *   associationTypeId: int,
+     *   associationTypeID: int,
      *   label: string,
      *   inverseLabel?: string,
      * }|DefinitionUpdateLabelParams $params

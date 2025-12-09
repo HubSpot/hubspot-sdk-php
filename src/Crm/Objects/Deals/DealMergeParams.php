@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Crm\Objects\DealsService::merge()
  *
  * @phpstan-type DealMergeParamsShape = array{
- *   objectIdToMerge: string, primaryObjectId: string
+ *   objectIDToMerge: string, primaryObjectID: string
  * }
  */
 final class DealMergeParams implements BaseModel
@@ -27,21 +27,21 @@ final class DealMergeParams implements BaseModel
     /**
      * The unique identifier of the CRM object that will be merged into the primary object.
      */
-    #[Required]
-    public string $objectIdToMerge;
+    #[Required('objectIdToMerge')]
+    public string $objectIDToMerge;
 
     /**
      * The unique identifier of the CRM object that will remain after the merge.
      */
-    #[Required]
-    public string $primaryObjectId;
+    #[Required('primaryObjectId')]
+    public string $primaryObjectID;
 
     /**
      * `new DealMergeParams()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * DealMergeParams::with(objectIdToMerge: ..., primaryObjectId: ...)
+     * DealMergeParams::with(objectIDToMerge: ..., primaryObjectID: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -61,13 +61,13 @@ final class DealMergeParams implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      */
     public static function with(
-        string $objectIdToMerge,
-        string $primaryObjectId
+        string $objectIDToMerge,
+        string $primaryObjectID
     ): self {
         $obj = new self;
 
-        $obj['objectIdToMerge'] = $objectIdToMerge;
-        $obj['primaryObjectId'] = $primaryObjectId;
+        $obj['objectIDToMerge'] = $objectIDToMerge;
+        $obj['primaryObjectID'] = $primaryObjectID;
 
         return $obj;
     }
@@ -78,7 +78,7 @@ final class DealMergeParams implements BaseModel
     public function withObjectIDToMerge(string $objectIDToMerge): self
     {
         $obj = clone $this;
-        $obj['objectIdToMerge'] = $objectIDToMerge;
+        $obj['objectIDToMerge'] = $objectIDToMerge;
 
         return $obj;
     }
@@ -89,7 +89,7 @@ final class DealMergeParams implements BaseModel
     public function withPrimaryObjectID(string $primaryObjectID): self
     {
         $obj = clone $this;
-        $obj['primaryObjectId'] = $primaryObjectID;
+        $obj['primaryObjectID'] = $primaryObjectID;
 
         return $obj;
     }

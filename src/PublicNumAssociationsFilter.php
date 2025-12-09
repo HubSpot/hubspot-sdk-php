@@ -14,7 +14,7 @@ use HubspotSDK\PublicTimePointOperation\OperationType;
 /**
  * @phpstan-type PublicNumAssociationsFilterShape = array{
  *   associationCategory: string,
- *   associationTypeId: int,
+ *   associationTypeID: int,
  *   coalescingRefineBy: PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation,
  *   filterType: value-of<FilterType>,
  * }
@@ -27,8 +27,8 @@ final class PublicNumAssociationsFilter implements BaseModel
     #[Required]
     public string $associationCategory;
 
-    #[Required]
-    public int $associationTypeId;
+    #[Required('associationTypeId')]
+    public int $associationTypeID;
 
     #[Required]
     public PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation $coalescingRefineBy;
@@ -44,7 +44,7 @@ final class PublicNumAssociationsFilter implements BaseModel
      * ```
      * PublicNumAssociationsFilter::with(
      *   associationCategory: ...,
-     *   associationTypeId: ...,
+     *   associationTypeID: ...,
      *   coalescingRefineBy: ...,
      *   filterType: ...,
      * )
@@ -117,14 +117,14 @@ final class PublicNumAssociationsFilter implements BaseModel
      */
     public static function with(
         string $associationCategory,
-        int $associationTypeId,
+        int $associationTypeID,
         PublicNumOccurrencesRefineBy|array|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation $coalescingRefineBy,
         FilterType|string $filterType = 'NUM_ASSOCIATIONS',
     ): self {
         $obj = new self;
 
         $obj['associationCategory'] = $associationCategory;
-        $obj['associationTypeId'] = $associationTypeId;
+        $obj['associationTypeID'] = $associationTypeID;
         $obj['coalescingRefineBy'] = $coalescingRefineBy;
         $obj['filterType'] = $filterType;
 
@@ -142,7 +142,7 @@ final class PublicNumAssociationsFilter implements BaseModel
     public function withAssociationTypeID(int $associationTypeID): self
     {
         $obj = clone $this;
-        $obj['associationTypeId'] = $associationTypeID;
+        $obj['associationTypeID'] = $associationTypeID;
 
         return $obj;
     }

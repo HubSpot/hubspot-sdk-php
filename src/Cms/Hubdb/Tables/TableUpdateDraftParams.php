@@ -21,15 +21,15 @@ use HubspotSDK\Option;
  *
  * @phpstan-type TableUpdateDraftParamsShape = array{
  *   allowChildTables: bool,
- *   allowPublicApiAccess: bool,
+ *   allowPublicAPIAccess: bool,
  *   columns: list<ColumnRequest|array{
  *     id: int,
  *     label: string,
  *     name: string,
  *     options: list<Option>,
  *     type: value-of<Type>,
- *     foreignColumnId?: int|null,
- *     foreignTableId?: int|null,
+ *     foreignColumnID?: int|null,
+ *     foreignTableID?: int|null,
  *     maxNumberOfCharacters?: int|null,
  *     maxNumberOfOptions?: int|null,
  *   }>,
@@ -39,7 +39,7 @@ use HubspotSDK\Option;
  *   name: string,
  *   useForPages: bool,
  *   archived?: bool,
- *   includeForeignIds?: bool,
+ *   includeForeignIDs?: bool,
  *   isGetLocalizedSchema?: bool,
  * }
  */
@@ -58,8 +58,8 @@ final class TableUpdateDraftParams implements BaseModel
     /**
      * Specifies whether the table can be read by public without authorization.
      */
-    #[Required]
-    public bool $allowPublicApiAccess;
+    #[Required('allowPublicApiAccess')]
+    public bool $allowPublicAPIAccess;
 
     /**
      * List of columns in the table.
@@ -111,7 +111,7 @@ final class TableUpdateDraftParams implements BaseModel
      * Set this to `true` to populate foreign ID values in the result.
      */
     #[Optional]
-    public ?bool $includeForeignIds;
+    public ?bool $includeForeignIDs;
 
     /**
      * Indicates whether to retrieve the localized schema for the table.
@@ -126,7 +126,7 @@ final class TableUpdateDraftParams implements BaseModel
      * ```
      * TableUpdateDraftParams::with(
      *   allowChildTables: ...,
-     *   allowPublicApiAccess: ...,
+     *   allowPublicAPIAccess: ...,
      *   columns: ...,
      *   dynamicMetaTags: ...,
      *   enableChildTablePages: ...,
@@ -166,8 +166,8 @@ final class TableUpdateDraftParams implements BaseModel
      *   name: string,
      *   options: list<Option>,
      *   type: value-of<Type>,
-     *   foreignColumnId?: int|null,
-     *   foreignTableId?: int|null,
+     *   foreignColumnID?: int|null,
+     *   foreignTableID?: int|null,
      *   maxNumberOfCharacters?: int|null,
      *   maxNumberOfOptions?: int|null,
      * }> $columns
@@ -175,7 +175,7 @@ final class TableUpdateDraftParams implements BaseModel
      */
     public static function with(
         bool $allowChildTables,
-        bool $allowPublicApiAccess,
+        bool $allowPublicAPIAccess,
         array $columns,
         array $dynamicMetaTags,
         bool $enableChildTablePages,
@@ -183,13 +183,13 @@ final class TableUpdateDraftParams implements BaseModel
         string $name,
         bool $useForPages,
         ?bool $archived = null,
-        ?bool $includeForeignIds = null,
+        ?bool $includeForeignIDs = null,
         ?bool $isGetLocalizedSchema = null,
     ): self {
         $obj = new self;
 
         $obj['allowChildTables'] = $allowChildTables;
-        $obj['allowPublicApiAccess'] = $allowPublicApiAccess;
+        $obj['allowPublicAPIAccess'] = $allowPublicAPIAccess;
         $obj['columns'] = $columns;
         $obj['dynamicMetaTags'] = $dynamicMetaTags;
         $obj['enableChildTablePages'] = $enableChildTablePages;
@@ -198,7 +198,7 @@ final class TableUpdateDraftParams implements BaseModel
         $obj['useForPages'] = $useForPages;
 
         null !== $archived && $obj['archived'] = $archived;
-        null !== $includeForeignIds && $obj['includeForeignIds'] = $includeForeignIds;
+        null !== $includeForeignIDs && $obj['includeForeignIDs'] = $includeForeignIDs;
         null !== $isGetLocalizedSchema && $obj['isGetLocalizedSchema'] = $isGetLocalizedSchema;
 
         return $obj;
@@ -221,7 +221,7 @@ final class TableUpdateDraftParams implements BaseModel
     public function withAllowPublicAPIAccess(bool $allowPublicAPIAccess): self
     {
         $obj = clone $this;
-        $obj['allowPublicApiAccess'] = $allowPublicAPIAccess;
+        $obj['allowPublicAPIAccess'] = $allowPublicAPIAccess;
 
         return $obj;
     }
@@ -235,8 +235,8 @@ final class TableUpdateDraftParams implements BaseModel
      *   name: string,
      *   options: list<Option>,
      *   type: value-of<Type>,
-     *   foreignColumnId?: int|null,
-     *   foreignTableId?: int|null,
+     *   foreignColumnID?: int|null,
+     *   foreignTableID?: int|null,
      *   maxNumberOfCharacters?: int|null,
      *   maxNumberOfOptions?: int|null,
      * }> $columns
@@ -323,7 +323,7 @@ final class TableUpdateDraftParams implements BaseModel
     public function withIncludeForeignIDs(bool $includeForeignIDs): self
     {
         $obj = clone $this;
-        $obj['includeForeignIds'] = $includeForeignIDs;
+        $obj['includeForeignIDs'] = $includeForeignIDs;
 
         return $obj;
     }

@@ -7,6 +7,7 @@ namespace HubspotSDK\Services\Crm\Objects\PartnerServices;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Crm\AssociatedID;
 use HubspotSDK\Crm\Objects\PartnerServices\Associations\AssociationDeleteParams;
 use HubspotSDK\Crm\Objects\PartnerServices\Associations\AssociationListParams;
@@ -29,7 +30,7 @@ final class AssociationsService implements AssociationsContract
      * Associate a partner service with another object
      *
      * @param array{
-     *   partnerServiceId: string, toObjectType: string, toObjectId: string
+     *   partnerServiceID: string, toObjectType: string, toObjectID: string
      * }|AssociationUpdateParams $params
      *
      * @throws APIException
@@ -43,12 +44,12 @@ final class AssociationsService implements AssociationsContract
             $params,
             $requestOptions,
         );
-        $partnerServiceID = $parsed['partnerServiceId'];
-        unset($parsed['partnerServiceId']);
+        $partnerServiceID = $parsed['partnerServiceID'];
+        unset($parsed['partnerServiceID']);
         $toObjectType = $parsed['toObjectType'];
         unset($parsed['toObjectType']);
-        $toObjectID = $parsed['toObjectId'];
-        unset($parsed['toObjectId']);
+        $toObjectID = $parsed['toObjectID'];
+        unset($parsed['toObjectID']);
 
         /** @var BaseResponse<SimplePublicObjectWithAssociations> */
         $response = $this->client->request(
@@ -73,7 +74,7 @@ final class AssociationsService implements AssociationsContract
      * List associations of a partner service by type
      *
      * @param array{
-     *   partnerServiceId: string, after?: string, includeFA?: bool, limit?: int
+     *   partnerServiceID: string, after?: string, includeFa?: bool, limit?: int
      * }|AssociationListParams $params
      *
      * @return Page<AssociatedID>
@@ -89,8 +90,8 @@ final class AssociationsService implements AssociationsContract
             $params,
             $requestOptions,
         );
-        $partnerServiceID = $parsed['partnerServiceId'];
-        unset($parsed['partnerServiceId']);
+        $partnerServiceID = $parsed['partnerServiceID'];
+        unset($parsed['partnerServiceID']);
 
         /** @var BaseResponse<Page<AssociatedID>> */
         $response = $this->client->request(
@@ -100,7 +101,7 @@ final class AssociationsService implements AssociationsContract
                 $partnerServiceID,
                 $toObjectType,
             ],
-            query: $parsed,
+            query: Util::array_transform_keys($parsed, ['includeFa' => 'includeFA']),
             options: $options,
             convert: AssociatedID::class,
             page: Page::class,
@@ -115,7 +116,7 @@ final class AssociationsService implements AssociationsContract
      * Remove an association between two partner services
      *
      * @param array{
-     *   partnerServiceId: string, toObjectType: string, toObjectId: string
+     *   partnerServiceID: string, toObjectType: string, toObjectID: string
      * }|AssociationDeleteParams $params
      *
      * @throws APIException
@@ -129,12 +130,12 @@ final class AssociationsService implements AssociationsContract
             $params,
             $requestOptions,
         );
-        $partnerServiceID = $parsed['partnerServiceId'];
-        unset($parsed['partnerServiceId']);
+        $partnerServiceID = $parsed['partnerServiceID'];
+        unset($parsed['partnerServiceID']);
         $toObjectType = $parsed['toObjectType'];
         unset($parsed['toObjectType']);
-        $toObjectID = $parsed['toObjectId'];
-        unset($parsed['toObjectId']);
+        $toObjectID = $parsed['toObjectID'];
+        unset($parsed['toObjectID']);
 
         /** @var BaseResponse<mixed> */
         $response = $this->client->request(

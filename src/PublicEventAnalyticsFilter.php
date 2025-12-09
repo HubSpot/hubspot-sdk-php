@@ -14,7 +14,7 @@ use HubspotSDK\PublicTimePointOperation\OperationType;
 
 /**
  * @phpstan-type PublicEventAnalyticsFilterShape = array{
- *   eventId: string,
+ *   eventID: string,
  *   filterType: value-of<FilterType>,
  *   operator: string,
  *   coalescingRefineBy?: null|PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation,
@@ -26,8 +26,8 @@ final class PublicEventAnalyticsFilter implements BaseModel
     /** @use SdkModel<PublicEventAnalyticsFilterShape> */
     use SdkModel;
 
-    #[Required]
-    public string $eventId;
+    #[Required('eventId')]
+    public string $eventID;
 
     /** @var value-of<FilterType> $filterType */
     #[Required(enum: FilterType::class)]
@@ -47,7 +47,7 @@ final class PublicEventAnalyticsFilter implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * PublicEventAnalyticsFilter::with(eventId: ..., filterType: ..., operator: ...)
+     * PublicEventAnalyticsFilter::with(eventID: ..., filterType: ..., operator: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -158,7 +158,7 @@ final class PublicEventAnalyticsFilter implements BaseModel
      * } $pruningRefineBy
      */
     public static function with(
-        string $eventId,
+        string $eventID,
         string $operator,
         FilterType|string $filterType = 'EVENT',
         PublicNumOccurrencesRefineBy|array|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation|null $coalescingRefineBy = null,
@@ -166,7 +166,7 @@ final class PublicEventAnalyticsFilter implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj['eventId'] = $eventId;
+        $obj['eventID'] = $eventID;
         $obj['filterType'] = $filterType;
         $obj['operator'] = $operator;
 
@@ -179,7 +179,7 @@ final class PublicEventAnalyticsFilter implements BaseModel
     public function withEventID(string $eventID): self
     {
         $obj = clone $this;
-        $obj['eventId'] = $eventID;
+        $obj['eventID'] = $eventID;
 
         return $obj;
     }

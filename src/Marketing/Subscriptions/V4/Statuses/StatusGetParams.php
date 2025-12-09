@@ -17,7 +17,7 @@ use HubspotSDK\Marketing\Subscriptions\V4\Statuses\StatusGetParams\Channel;
  * @see HubspotSDK\Services\Marketing\Subscriptions\V4\StatusesService::get()
  *
  * @phpstan-type StatusGetParamsShape = array{
- *   channel: Channel|value-of<Channel>, businessUnitId?: int
+ *   channel: Channel|value-of<Channel>, businessUnitID?: int
  * }
  */
 final class StatusGetParams implements BaseModel
@@ -38,7 +38,7 @@ final class StatusGetParams implements BaseModel
      * If you have the [business unit add-on](https://developers.hubspot.com/beta-docs/guides/api/settings/business-units-api), include this parameter to filter results by business unit ID. The default Account business unit will always use `0`.
      */
     #[Optional]
-    public ?int $businessUnitId;
+    public ?int $businessUnitID;
 
     /**
      * `new StatusGetParams()` is missing required properties by the API.
@@ -68,13 +68,13 @@ final class StatusGetParams implements BaseModel
      */
     public static function with(
         Channel|string $channel,
-        ?int $businessUnitId = null
+        ?int $businessUnitID = null
     ): self {
         $obj = new self;
 
         $obj['channel'] = $channel;
 
-        null !== $businessUnitId && $obj['businessUnitId'] = $businessUnitId;
+        null !== $businessUnitID && $obj['businessUnitID'] = $businessUnitID;
 
         return $obj;
     }
@@ -98,7 +98,7 @@ final class StatusGetParams implements BaseModel
     public function withBusinessUnitID(int $businessUnitID): self
     {
         $obj = clone $this;
-        $obj['businessUnitId'] = $businessUnitID;
+        $obj['businessUnitID'] = $businessUnitID;
 
         return $obj;
     }

@@ -187,7 +187,7 @@ final class SchemasService implements SchemasContract
      * @api
      *
      * @param array{
-     *   fromObjectTypeId: string, toObjectTypeId: string, name?: string
+     *   fromObjectTypeID: string, toObjectTypeID: string, name?: string
      * }|SchemaCreateAssociationParams $params
      *
      * @throws APIException

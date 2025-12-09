@@ -18,7 +18,7 @@ use HubspotSDK\Events\EventDefinitions\WeekReference\DayOfWeek;
  *   indexReference: NowReference|TodayReference|WeekReference|MonthReference|QuarterReference|FiscalQuarter|YearReference|FiscalYear,
  *   timeType: value-of<TimeType>,
  *   timezoneSource: value-of<TimezoneSource>,
- *   zoneId: string,
+ *   zoneID: string,
  *   offset?: IndexOffset|null,
  * }
  */
@@ -38,8 +38,8 @@ final class IndexedTimePoint implements BaseModel
     #[Required(enum: TimezoneSource::class)]
     public string $timezoneSource;
 
-    #[Required]
-    public string $zoneId;
+    #[Required('zoneId')]
+    public string $zoneID;
 
     #[Optional]
     public ?IndexOffset $offset;
@@ -50,7 +50,7 @@ final class IndexedTimePoint implements BaseModel
      * To enforce required parameters use
      * ```
      * IndexedTimePoint::with(
-     *   indexReference: ..., timeType: ..., timezoneSource: ..., zoneId: ...
+     *   indexReference: ..., timeType: ..., timezoneSource: ..., zoneID: ...
      * )
      * ```
      *
@@ -150,7 +150,7 @@ final class IndexedTimePoint implements BaseModel
     public static function with(
         NowReference|array|TodayReference|WeekReference|MonthReference|QuarterReference|FiscalQuarter|YearReference|FiscalYear $indexReference,
         TimezoneSource|string $timezoneSource,
-        string $zoneId,
+        string $zoneID,
         TimeType|string $timeType = 'INDEXED',
         IndexOffset|array|null $offset = null,
     ): self {
@@ -159,7 +159,7 @@ final class IndexedTimePoint implements BaseModel
         $obj['indexReference'] = $indexReference;
         $obj['timeType'] = $timeType;
         $obj['timezoneSource'] = $timezoneSource;
-        $obj['zoneId'] = $zoneId;
+        $obj['zoneID'] = $zoneID;
 
         null !== $offset && $obj['offset'] = $offset;
 
@@ -262,7 +262,7 @@ final class IndexedTimePoint implements BaseModel
     public function withZoneID(string $zoneID): self
     {
         $obj = clone $this;
-        $obj['zoneId'] = $zoneID;
+        $obj['zoneID'] = $zoneID;
 
         return $obj;
     }

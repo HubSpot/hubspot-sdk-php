@@ -27,7 +27,7 @@ use HubspotSDK\Option;
  *   canArchive: bool,
  *   canRestore: bool,
  *   createdAt: int,
- *   createdUserId: int,
+ *   createdUserID: int,
  *   currencyPropertyName: string,
  *   dataSensitivity: value-of<DataSensitivity>,
  *   dateDisplayHint: value-of<DateDisplayHint>,
@@ -42,7 +42,7 @@ use HubspotSDK\Option;
  *   favoritedOrder: int,
  *   fieldType: string,
  *   formField: bool,
- *   fromUserId: int,
+ *   fromUserID: int,
  *   groupName: string,
  *   hasUniqueValue: bool,
  *   hidden: bool,
@@ -57,8 +57,8 @@ use HubspotSDK\Option;
  *   options: list<Option>,
  *   optionsAreMutable: bool,
  *   optionSortStrategy: value-of<OptionSortStrategy>,
- *   owningAppId: int,
- *   portalId: int,
+ *   owningAppID: int,
+ *   portalID: int,
  *   readOnlyDefinition: bool,
  *   readOnlyValue: bool,
  *   referencedObjectType: value-of<ReferencedObjectType>,
@@ -105,8 +105,8 @@ final class Property implements BaseModel
     /**
      * The ID of the user who created the property.
      */
-    #[Required]
-    public int $createdUserId;
+    #[Required('createdUserId')]
+    public int $createdUserID;
 
     /**
      * The name of the related currency property.
@@ -194,8 +194,8 @@ final class Property implements BaseModel
     /**
      * The ID of the user who last updated the property.
      */
-    #[Required]
-    public int $fromUserId;
+    #[Required('fromUserId')]
+    public int $fromUserID;
 
     /**
      * The name of the group to which the property is assigned.
@@ -287,14 +287,14 @@ final class Property implements BaseModel
     #[Required(enum: OptionSortStrategy::class)]
     public string $optionSortStrategy;
 
-    #[Required]
-    public int $owningAppId;
+    #[Required('owningAppId')]
+    public int $owningAppID;
 
     /**
      * The ID of the HubSpot account where the property is defined.
      */
-    #[Required]
-    public int $portalId;
+    #[Required('portalId')]
+    public int $portalID;
 
     /**
      * Whether the property's description is read-only.
@@ -373,7 +373,7 @@ final class Property implements BaseModel
      *   canArchive: ...,
      *   canRestore: ...,
      *   createdAt: ...,
-     *   createdUserId: ...,
+     *   createdUserID: ...,
      *   currencyPropertyName: ...,
      *   dataSensitivity: ...,
      *   dateDisplayHint: ...,
@@ -388,7 +388,7 @@ final class Property implements BaseModel
      *   favoritedOrder: ...,
      *   fieldType: ...,
      *   formField: ...,
-     *   fromUserId: ...,
+     *   fromUserID: ...,
      *   groupName: ...,
      *   hasUniqueValue: ...,
      *   hidden: ...,
@@ -403,8 +403,8 @@ final class Property implements BaseModel
      *   options: ...,
      *   optionsAreMutable: ...,
      *   optionSortStrategy: ...,
-     *   owningAppId: ...,
-     *   portalId: ...,
+     *   owningAppID: ...,
+     *   portalID: ...,
      *   readOnlyDefinition: ...,
      *   readOnlyValue: ...,
      *   referencedObjectType: ...,
@@ -482,7 +482,7 @@ final class Property implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<ObjectTypeIDProto|array{
-     *   innerId: int, metaTypeId: int
+     *   innerID: int, metaTypeID: int
      * }> $allowedObjectTypes
      * @param DataSensitivity|value-of<DataSensitivity> $dataSensitivity
      * @param DateDisplayHint|value-of<DateDisplayHint> $dateDisplayHint
@@ -508,7 +508,7 @@ final class Property implements BaseModel
         bool $canArchive,
         bool $canRestore,
         int $createdAt,
-        int $createdUserId,
+        int $createdUserID,
         string $currencyPropertyName,
         DataSensitivity|string $dataSensitivity,
         DateDisplayHint|string $dateDisplayHint,
@@ -523,7 +523,7 @@ final class Property implements BaseModel
         int $favoritedOrder,
         string $fieldType,
         bool $formField,
-        int $fromUserId,
+        int $fromUserID,
         string $groupName,
         bool $hasUniqueValue,
         bool $hidden,
@@ -538,8 +538,8 @@ final class Property implements BaseModel
         array $options,
         bool $optionsAreMutable,
         OptionSortStrategy|string $optionSortStrategy,
-        int $owningAppId,
-        int $portalId,
+        int $owningAppID,
+        int $portalID,
         bool $readOnlyDefinition,
         bool $readOnlyValue,
         ReferencedObjectType|string $referencedObjectType,
@@ -558,7 +558,7 @@ final class Property implements BaseModel
         $obj['canArchive'] = $canArchive;
         $obj['canRestore'] = $canRestore;
         $obj['createdAt'] = $createdAt;
-        $obj['createdUserId'] = $createdUserId;
+        $obj['createdUserID'] = $createdUserID;
         $obj['currencyPropertyName'] = $currencyPropertyName;
         $obj['dataSensitivity'] = $dataSensitivity;
         $obj['dateDisplayHint'] = $dateDisplayHint;
@@ -573,7 +573,7 @@ final class Property implements BaseModel
         $obj['favoritedOrder'] = $favoritedOrder;
         $obj['fieldType'] = $fieldType;
         $obj['formField'] = $formField;
-        $obj['fromUserId'] = $fromUserId;
+        $obj['fromUserID'] = $fromUserID;
         $obj['groupName'] = $groupName;
         $obj['hasUniqueValue'] = $hasUniqueValue;
         $obj['hidden'] = $hidden;
@@ -588,8 +588,8 @@ final class Property implements BaseModel
         $obj['options'] = $options;
         $obj['optionsAreMutable'] = $optionsAreMutable;
         $obj['optionSortStrategy'] = $optionSortStrategy;
-        $obj['owningAppId'] = $owningAppId;
-        $obj['portalId'] = $portalId;
+        $obj['owningAppID'] = $owningAppID;
+        $obj['portalID'] = $portalID;
         $obj['readOnlyDefinition'] = $readOnlyDefinition;
         $obj['readOnlyValue'] = $readOnlyValue;
         $obj['referencedObjectType'] = $referencedObjectType;
@@ -608,7 +608,7 @@ final class Property implements BaseModel
      * Object types permitted to use this property.
      *
      * @param list<ObjectTypeIDProto|array{
-     *   innerId: int, metaTypeId: int
+     *   innerID: int, metaTypeID: int
      * }> $allowedObjectTypes
      */
     public function withAllowedObjectTypes(array $allowedObjectTypes): self
@@ -663,7 +663,7 @@ final class Property implements BaseModel
     public function withCreatedUserID(int $createdUserID): self
     {
         $obj = clone $this;
-        $obj['createdUserId'] = $createdUserID;
+        $obj['createdUserID'] = $createdUserID;
 
         return $obj;
     }
@@ -833,7 +833,7 @@ final class Property implements BaseModel
     public function withFromUserID(int $fromUserID): self
     {
         $obj = clone $this;
-        $obj['fromUserId'] = $fromUserID;
+        $obj['fromUserID'] = $fromUserID;
 
         return $obj;
     }
@@ -1010,7 +1010,7 @@ final class Property implements BaseModel
     public function withOwningAppID(int $owningAppID): self
     {
         $obj = clone $this;
-        $obj['owningAppId'] = $owningAppID;
+        $obj['owningAppID'] = $owningAppID;
 
         return $obj;
     }
@@ -1021,7 +1021,7 @@ final class Property implements BaseModel
     public function withPortalID(int $portalID): self
     {
         $obj = clone $this;
-        $obj['portalId'] = $portalID;
+        $obj['portalID'] = $portalID;
 
         return $obj;
     }

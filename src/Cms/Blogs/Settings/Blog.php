@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * @phpstan-type BlogShape = array{
  *   id: string,
- *   absoluteUrl: string,
+ *   absoluteURL: string,
  *   allowComments: bool,
  *   created: \DateTimeInterface,
  *   deletedAt: \DateTimeInterface,
@@ -24,7 +24,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   publicAccessRulesEnabled: bool,
  *   publicTitle: string,
  *   slug: string,
- *   translatedFromId: string,
+ *   translatedFromID: string,
  *   updated: \DateTimeInterface,
  * }
  */
@@ -39,8 +39,8 @@ final class Blog implements BaseModel
     #[Required]
     public string $id;
 
-    #[Required]
-    public string $absoluteUrl;
+    #[Required('absoluteUrl')]
+    public string $absoluteURL;
 
     /**
      * Boolean determining whether or not this blog allows public comments.
@@ -112,8 +112,8 @@ final class Blog implements BaseModel
     /**
      * ID of the primary Blog this object was translated from.
      */
-    #[Required]
-    public string $translatedFromId;
+    #[Required('translatedFromId')]
+    public string $translatedFromID;
 
     #[Required]
     public \DateTimeInterface $updated;
@@ -125,7 +125,7 @@ final class Blog implements BaseModel
      * ```
      * Blog::with(
      *   id: ...,
-     *   absoluteUrl: ...,
+     *   absoluteURL: ...,
      *   allowComments: ...,
      *   created: ...,
      *   deletedAt: ...,
@@ -137,7 +137,7 @@ final class Blog implements BaseModel
      *   publicAccessRulesEnabled: ...,
      *   publicTitle: ...,
      *   slug: ...,
-     *   translatedFromId: ...,
+     *   translatedFromID: ...,
      *   updated: ...,
      * )
      * ```
@@ -178,7 +178,7 @@ final class Blog implements BaseModel
      */
     public static function with(
         string $id,
-        string $absoluteUrl,
+        string $absoluteURL,
         bool $allowComments,
         \DateTimeInterface $created,
         \DateTimeInterface $deletedAt,
@@ -190,13 +190,13 @@ final class Blog implements BaseModel
         bool $publicAccessRulesEnabled,
         string $publicTitle,
         string $slug,
-        string $translatedFromId,
+        string $translatedFromID,
         \DateTimeInterface $updated,
     ): self {
         $obj = new self;
 
         $obj['id'] = $id;
-        $obj['absoluteUrl'] = $absoluteUrl;
+        $obj['absoluteURL'] = $absoluteURL;
         $obj['allowComments'] = $allowComments;
         $obj['created'] = $created;
         $obj['deletedAt'] = $deletedAt;
@@ -208,7 +208,7 @@ final class Blog implements BaseModel
         $obj['publicAccessRulesEnabled'] = $publicAccessRulesEnabled;
         $obj['publicTitle'] = $publicTitle;
         $obj['slug'] = $slug;
-        $obj['translatedFromId'] = $translatedFromId;
+        $obj['translatedFromID'] = $translatedFromID;
         $obj['updated'] = $updated;
 
         return $obj;
@@ -228,7 +228,7 @@ final class Blog implements BaseModel
     public function withAbsoluteURL(string $absoluteURL): self
     {
         $obj = clone $this;
-        $obj['absoluteUrl'] = $absoluteURL;
+        $obj['absoluteURL'] = $absoluteURL;
 
         return $obj;
     }
@@ -362,7 +362,7 @@ final class Blog implements BaseModel
     public function withTranslatedFromID(string $translatedFromID): self
     {
         $obj = clone $this;
-        $obj['translatedFromId'] = $translatedFromID;
+        $obj['translatedFromID'] = $translatedFromID;
 
         return $obj;
     }

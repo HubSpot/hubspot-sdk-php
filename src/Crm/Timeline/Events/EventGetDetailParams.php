@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Services\Crm\Timeline\EventsService::getDetail()
  *
- * @phpstan-type EventGetDetailParamsShape = array{eventTemplateId: string}
+ * @phpstan-type EventGetDetailParamsShape = array{eventTemplateID: string}
  */
 final class EventGetDetailParams implements BaseModel
 {
@@ -23,14 +23,14 @@ final class EventGetDetailParams implements BaseModel
     use SdkParams;
 
     #[Required]
-    public string $eventTemplateId;
+    public string $eventTemplateID;
 
     /**
      * `new EventGetDetailParams()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * EventGetDetailParams::with(eventTemplateId: ...)
+     * EventGetDetailParams::with(eventTemplateID: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -49,11 +49,11 @@ final class EventGetDetailParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(string $eventTemplateId): self
+    public static function with(string $eventTemplateID): self
     {
         $obj = new self;
 
-        $obj['eventTemplateId'] = $eventTemplateId;
+        $obj['eventTemplateID'] = $eventTemplateID;
 
         return $obj;
     }
@@ -61,7 +61,7 @@ final class EventGetDetailParams implements BaseModel
     public function withEventTemplateID(string $eventTemplateID): self
     {
         $obj = clone $this;
-        $obj['eventTemplateId'] = $eventTemplateID;
+        $obj['eventTemplateID'] = $eventTemplateID;
 
         return $obj;
     }

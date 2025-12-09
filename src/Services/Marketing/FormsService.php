@@ -77,7 +77,7 @@ final class FormsService implements FormsContract
      *     lifecycleStages?: list<array<mixed>|LifecycleStage>,
      *   }|HubSpotFormConfiguration,
      *   displayOptions?: array{
-     *     renderRawHtml: bool,
+     *     renderRawHTML: bool,
      *     style: array<mixed>|FormStyle,
      *     submitButtonText: string,
      *     theme: 'canvas'|'default_style'|'legacy'|'linear'|'round'|'sharp'|Theme,

@@ -19,17 +19,17 @@ use HubspotSDK\Crm\Imports\PropertyValue\Source;
  *   isLargeValue: bool,
  *   name: string,
  *   persistenceTimestamp: int,
- *   requestId: string,
+ *   requestID: string,
  *   selectedByUser: bool,
  *   selectedByUserTimestamp: int,
  *   source: value-of<Source>,
- *   sourceId: string,
+ *   sourceID: string,
  *   sourceLabel: string,
  *   sourceMetadata: string,
  *   sourceVid: list<int>,
  *   timestamp: int,
  *   unit: string,
- *   updatedByUserId: int,
+ *   updatedByUserID: int,
  *   useTimestampAsPersistenceTimestamp: bool,
  *   value: string,
  * }
@@ -68,8 +68,8 @@ final class PropertyValue implements BaseModel
     /**
      * A unique ID associated with this request.
      */
-    #[Required]
-    public string $requestId;
+    #[Required('requestId')]
+    public string $requestID;
 
     /**
      * Whether the value was selected by a user.
@@ -94,8 +94,8 @@ final class PropertyValue implements BaseModel
     /**
      * The ID of the property source indicating where it was created.
      */
-    #[Required]
-    public string $sourceId;
+    #[Required('sourceId')]
+    public string $sourceID;
 
     /**
      * A human-readable label.
@@ -132,8 +132,8 @@ final class PropertyValue implements BaseModel
     /**
      * The ID of the user who updated the property.
      */
-    #[Required]
-    public int $updatedByUserId;
+    #[Required('updatedByUserId')]
+    public int $updatedByUserID;
 
     #[Required]
     public bool $useTimestampAsPersistenceTimestamp;
@@ -155,17 +155,17 @@ final class PropertyValue implements BaseModel
      *   isLargeValue: ...,
      *   name: ...,
      *   persistenceTimestamp: ...,
-     *   requestId: ...,
+     *   requestID: ...,
      *   selectedByUser: ...,
      *   selectedByUserTimestamp: ...,
      *   source: ...,
-     *   sourceId: ...,
+     *   sourceID: ...,
      *   sourceLabel: ...,
      *   sourceMetadata: ...,
      *   sourceVid: ...,
      *   timestamp: ...,
      *   unit: ...,
-     *   updatedByUserId: ...,
+     *   updatedByUserID: ...,
      *   useTimestampAsPersistenceTimestamp: ...,
      *   value: ...,
      * )
@@ -215,17 +215,17 @@ final class PropertyValue implements BaseModel
         bool $isLargeValue,
         string $name,
         int $persistenceTimestamp,
-        string $requestId,
+        string $requestID,
         bool $selectedByUser,
         int $selectedByUserTimestamp,
         Source|string $source,
-        string $sourceId,
+        string $sourceID,
         string $sourceLabel,
         string $sourceMetadata,
         array $sourceVid,
         int $timestamp,
         string $unit,
-        int $updatedByUserId,
+        int $updatedByUserID,
         bool $useTimestampAsPersistenceTimestamp,
         string $value,
     ): self {
@@ -236,17 +236,17 @@ final class PropertyValue implements BaseModel
         $obj['isLargeValue'] = $isLargeValue;
         $obj['name'] = $name;
         $obj['persistenceTimestamp'] = $persistenceTimestamp;
-        $obj['requestId'] = $requestId;
+        $obj['requestID'] = $requestID;
         $obj['selectedByUser'] = $selectedByUser;
         $obj['selectedByUserTimestamp'] = $selectedByUserTimestamp;
         $obj['source'] = $source;
-        $obj['sourceId'] = $sourceId;
+        $obj['sourceID'] = $sourceID;
         $obj['sourceLabel'] = $sourceLabel;
         $obj['sourceMetadata'] = $sourceMetadata;
         $obj['sourceVid'] = $sourceVid;
         $obj['timestamp'] = $timestamp;
         $obj['unit'] = $unit;
-        $obj['updatedByUserId'] = $updatedByUserId;
+        $obj['updatedByUserID'] = $updatedByUserID;
         $obj['useTimestampAsPersistenceTimestamp'] = $useTimestampAsPersistenceTimestamp;
         $obj['value'] = $value;
 
@@ -311,7 +311,7 @@ final class PropertyValue implements BaseModel
     public function withRequestID(string $requestID): self
     {
         $obj = clone $this;
-        $obj['requestId'] = $requestID;
+        $obj['requestID'] = $requestID;
 
         return $obj;
     }
@@ -358,7 +358,7 @@ final class PropertyValue implements BaseModel
     public function withSourceID(string $sourceID): self
     {
         $obj = clone $this;
-        $obj['sourceId'] = $sourceID;
+        $obj['sourceID'] = $sourceID;
 
         return $obj;
     }
@@ -426,7 +426,7 @@ final class PropertyValue implements BaseModel
     public function withUpdatedByUserID(int $updatedByUserID): self
     {
         $obj = clone $this;
-        $obj['updatedByUserId'] = $updatedByUserID;
+        $obj['updatedByUserID'] = $updatedByUserID;
 
         return $obj;
     }

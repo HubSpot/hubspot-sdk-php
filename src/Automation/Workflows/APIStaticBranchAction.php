@@ -13,7 +13,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type APIStaticBranchActionShape = array{
- *   actionId: string,
+ *   actionID: string,
  *   inputValue: APIActionDataValue|APIObjectPropertyValue|APIStaticValue|APIRelativeDateTimeValue|APITimestampValue|APIIncrementValue|APIFetchedObjectPropertyValue|APIAppendObjectPropertyValue|APIStaticAppendValue|APIEnrollmentEventPropertyValue,
  *   staticBranches: list<APIStaticBranch>,
  *   type: value-of<Type>,
@@ -26,8 +26,8 @@ final class APIStaticBranchAction implements BaseModel
     /** @use SdkModel<APIStaticBranchActionShape> */
     use SdkModel;
 
-    #[Required]
-    public string $actionId;
+    #[Required('actionId')]
+    public string $actionID;
 
     #[Required]
     public APIActionDataValue|APIObjectPropertyValue|APIStaticValue|APIRelativeDateTimeValue|APITimestampValue|APIIncrementValue|APIFetchedObjectPropertyValue|APIAppendObjectPropertyValue|APIStaticAppendValue|APIEnrollmentEventPropertyValue $inputValue;
@@ -52,7 +52,7 @@ final class APIStaticBranchAction implements BaseModel
      * To enforce required parameters use
      * ```
      * APIStaticBranchAction::with(
-     *   actionId: ..., inputValue: ..., staticBranches: ..., type: ...
+     *   actionID: ..., inputValue: ..., staticBranches: ..., type: ...
      * )
      * ```
      *
@@ -77,7 +77,7 @@ final class APIStaticBranchAction implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param APIActionDataValue|array{
-     *   actionId: string,
+     *   actionID: string,
      *   dataKey: string,
      *   type: value-of<APIActionDataValue\Type>,
      * }|APIObjectPropertyValue|array{
@@ -113,11 +113,11 @@ final class APIStaticBranchAction implements BaseModel
      * }> $staticBranches
      * @param Type|value-of<Type> $type
      * @param APIConnection|array{
-     *   edgeType: string, nextActionId: string
+     *   edgeType: string, nextActionID: string
      * } $defaultBranch
      */
     public static function with(
-        string $actionId,
+        string $actionID,
         APIActionDataValue|array|APIObjectPropertyValue|APIStaticValue|APIRelativeDateTimeValue|APITimestampValue|APIIncrementValue|APIFetchedObjectPropertyValue|APIAppendObjectPropertyValue|APIStaticAppendValue|APIEnrollmentEventPropertyValue $inputValue,
         array $staticBranches,
         Type|string $type = 'STATIC_BRANCH',
@@ -126,7 +126,7 @@ final class APIStaticBranchAction implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj['actionId'] = $actionId;
+        $obj['actionID'] = $actionID;
         $obj['inputValue'] = $inputValue;
         $obj['staticBranches'] = $staticBranches;
         $obj['type'] = $type;
@@ -140,14 +140,14 @@ final class APIStaticBranchAction implements BaseModel
     public function withActionID(string $actionID): self
     {
         $obj = clone $this;
-        $obj['actionId'] = $actionID;
+        $obj['actionID'] = $actionID;
 
         return $obj;
     }
 
     /**
      * @param APIActionDataValue|array{
-     *   actionId: string,
+     *   actionID: string,
      *   dataKey: string,
      *   type: value-of<APIActionDataValue\Type>,
      * }|APIObjectPropertyValue|array{
@@ -214,7 +214,7 @@ final class APIStaticBranchAction implements BaseModel
 
     /**
      * @param APIConnection|array{
-     *   edgeType: string, nextActionId: string
+     *   edgeType: string, nextActionID: string
      * } $defaultBranch
      */
     public function withDefaultBranch(APIConnection|array $defaultBranch): self

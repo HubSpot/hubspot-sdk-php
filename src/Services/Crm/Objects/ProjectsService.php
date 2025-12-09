@@ -221,7 +221,7 @@ final class ProjectsService implements ProjectsContract
      * Merge two project records. Learn more about [merging records](https://knowledge.hubspot.com/records/merge-records).
      *
      * @param array{
-     *   objectIdToMerge: string, primaryObjectId: string
+     *   objectIDToMerge: string, primaryObjectID: string
      * }|ProjectMergeParams $params
      *
      * @throws APIException

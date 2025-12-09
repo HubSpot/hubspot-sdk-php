@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type APIFlowBatchFetchFlowIDCoordinateShape = array{
- *   flowId: string, type: value-of<Type>
+ *   flowID: string, type: value-of<Type>
  * }
  */
 final class APIFlowBatchFetchFlowIDCoordinate implements BaseModel
@@ -19,8 +19,8 @@ final class APIFlowBatchFetchFlowIDCoordinate implements BaseModel
     /** @use SdkModel<APIFlowBatchFetchFlowIDCoordinateShape> */
     use SdkModel;
 
-    #[Required]
-    public string $flowId;
+    #[Required('flowId')]
+    public string $flowID;
 
     /** @var value-of<Type> $type */
     #[Required(enum: Type::class)]
@@ -31,7 +31,7 @@ final class APIFlowBatchFetchFlowIDCoordinate implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * APIFlowBatchFetchFlowIDCoordinate::with(flowId: ..., type: ...)
+     * APIFlowBatchFetchFlowIDCoordinate::with(flowID: ..., type: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -53,12 +53,12 @@ final class APIFlowBatchFetchFlowIDCoordinate implements BaseModel
      * @param Type|value-of<Type> $type
      */
     public static function with(
-        string $flowId,
+        string $flowID,
         Type|string $type = 'FLOW_ID'
     ): self {
         $obj = new self;
 
-        $obj['flowId'] = $flowId;
+        $obj['flowID'] = $flowID;
         $obj['type'] = $type;
 
         return $obj;
@@ -67,7 +67,7 @@ final class APIFlowBatchFetchFlowIDCoordinate implements BaseModel
     public function withFlowID(string $flowID): self
     {
         $obj = clone $this;
-        $obj['flowId'] = $flowID;
+        $obj['flowID'] = $flowID;
 
         return $obj;
     }

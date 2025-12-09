@@ -54,13 +54,13 @@ final class CollectionResponsePublicActionDefinitionForwardPaging implements Bas
      *
      * @param list<PublicActionDefinition|array{
      *   id: string,
-     *   actionUrl: string,
+     *   actionURL: string,
      *   functions: list<PublicActionFunctionIdentifier>,
      *   inputFields: list<InputFieldDefinition>,
      *   labels: array<string,PublicActionLabels>,
      *   objectTypes: list<string>,
      *   published: bool,
-     *   revisionId: string,
+     *   revisionID: string,
      *   archivedAt?: int|null,
      *   executionRules?: list<PublicExecutionTranslationRule>|null,
      *   inputFieldDependencies?: list<PublicSingleFieldDependency|PublicConditionalSingleFieldDependency>|null,
@@ -85,13 +85,13 @@ final class CollectionResponsePublicActionDefinitionForwardPaging implements Bas
     /**
      * @param list<PublicActionDefinition|array{
      *   id: string,
-     *   actionUrl: string,
+     *   actionURL: string,
      *   functions: list<PublicActionFunctionIdentifier>,
      *   inputFields: list<InputFieldDefinition>,
      *   labels: array<string,PublicActionLabels>,
      *   objectTypes: list<string>,
      *   published: bool,
-     *   revisionId: string,
+     *   revisionID: string,
      *   archivedAt?: int|null,
      *   executionRules?: list<PublicExecutionTranslationRule>|null,
      *   inputFieldDependencies?: list<PublicSingleFieldDependency|PublicConditionalSingleFieldDependency>|null,

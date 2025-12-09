@@ -78,7 +78,7 @@ final class CustomPropertyLimitResponse implements BaseModel
      *
      * @param list<LimitAndUsageForObjectType|array{
      *   limit: int,
-     *   objectTypeId: string,
+     *   objectTypeID: string,
      *   percentage: float,
      *   pluralLabel: string,
      *   singularLabel: string,
@@ -104,7 +104,7 @@ final class CustomPropertyLimitResponse implements BaseModel
     /**
      * @param list<LimitAndUsageForObjectType|array{
      *   limit: int,
-     *   objectTypeId: string,
+     *   objectTypeID: string,
      *   percentage: float,
      *   pluralLabel: string,
      *   singularLabel: string,

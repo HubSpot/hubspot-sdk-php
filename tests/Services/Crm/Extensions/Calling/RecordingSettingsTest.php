@@ -124,7 +124,7 @@ final class RecordingSettingsTest extends TestCase
             ->extensions
             ->calling
             ->recordingSettings
-            ->markReady(['engagementId' => 0])
+            ->markReady(['engagementID' => 0])
         ;
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -144,7 +144,7 @@ final class RecordingSettingsTest extends TestCase
             ->extensions
             ->calling
             ->recordingSettings
-            ->markReady(['engagementId' => 0])
+            ->markReady(['engagementID' => 0])
         ;
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

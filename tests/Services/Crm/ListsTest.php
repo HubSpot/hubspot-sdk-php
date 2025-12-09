@@ -44,7 +44,7 @@ final class ListsTest extends TestCase
 
         $result = $this->client->crm->lists->create([
             'name' => 'Dynamic Association List Example',
-            'objectTypeId' => '0-1',
+            'objectTypeID' => '0-1',
             'processingType' => 'DYNAMIC',
         ]);
 
@@ -61,7 +61,7 @@ final class ListsTest extends TestCase
 
         $result = $this->client->crm->lists->create([
             'name' => 'Dynamic Association List Example',
-            'objectTypeId' => '0-1',
+            'objectTypeID' => '0-1',
             'processingType' => 'DYNAMIC',
             'customProperties' => ['foo' => 'string'],
             'filterBranch' => [
@@ -75,13 +75,13 @@ final class ListsTest extends TestCase
                                             [
                                                 'filterBranches' => [
                                                     [
-                                                        'eventTypeId' => 'eventTypeId',
+                                                        'eventTypeID' => 'eventTypeId',
                                                         'filterBranches' => [
                                                             [
                                                                 'filterBranches' => [
                                                                     [
                                                                         'associationCategory' => 'associationCategory',
-                                                                        'associationTypeId' => 0,
+                                                                        'associationTypeID' => 0,
                                                                         'filterBranches' => [
                                                                             [
                                                                                 'filterBranches' => [],
@@ -115,7 +115,7 @@ final class ListsTest extends TestCase
                                                                                 'property' => 'property',
                                                                             ],
                                                                         ],
-                                                                        'objectTypeId' => 'objectTypeId',
+                                                                        'objectTypeID' => 'objectTypeId',
                                                                         'operator' => 'operator',
                                                                     ],
                                                                 ],
@@ -133,9 +133,9 @@ final class ListsTest extends TestCase
                                                                         'property' => 'property',
                                                                     ],
                                                                 ],
-                                                                'objectTypeId' => 'objectTypeId',
+                                                                'objectTypeID' => 'objectTypeId',
                                                                 'operator' => 'operator',
-                                                                'propertyWithObjectId' => 'propertyWithObjectId',
+                                                                'propertyWithObjectID' => 'propertyWithObjectId',
                                                             ],
                                                         ],
                                                         'filterBranchOperator' => 'filterBranchOperator',
@@ -239,12 +239,12 @@ final class ListsTest extends TestCase
                     ],
                 ],
             ],
-            'listFolderId' => 0,
+            'listFolderID' => 0,
             'listPermissions' => [
                 'teamsWithEditAccess' => [0], 'usersWithEditAccess' => [0],
             ],
             'membershipSettings' => [
-                'includeUnassigned' => true, 'membershipTeamId' => 0,
+                'includeUnassigned' => true, 'membershipTeamID' => 0,
             ],
         ]);
 
@@ -313,7 +313,7 @@ final class ListsTest extends TestCase
 
         $result = $this->client->crm->lists->getByObjectTypeIDAndName(
             'listName',
-            ['objectTypeId' => 'objectTypeId']
+            ['objectTypeID' => 'objectTypeId']
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -329,7 +329,7 @@ final class ListsTest extends TestCase
 
         $result = $this->client->crm->lists->getByObjectTypeIDAndName(
             'listName',
-            ['objectTypeId' => 'objectTypeId', 'includeFilters' => true]
+            ['objectTypeID' => 'objectTypeId', 'includeFilters' => true]
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -372,10 +372,12 @@ final class ListsTest extends TestCase
         $result = $this->client->crm->lists->scheduleConversion(
             'listId',
             [
-                'conversionType' => 'CONVERSION_DATE',
+                'conversionType' => 'INACTIVITY',
                 'day' => 0,
                 'month' => 0,
                 'year' => 0,
+                'offset' => 0,
+                'timeUnit' => 'DAY',
             ],
         );
 
@@ -393,10 +395,12 @@ final class ListsTest extends TestCase
         $result = $this->client->crm->lists->scheduleConversion(
             'listId',
             [
-                'conversionType' => 'CONVERSION_DATE',
+                'conversionType' => 'INACTIVITY',
                 'day' => 0,
                 'month' => 0,
                 'year' => 0,
+                'offset' => 0,
+                'timeUnit' => 'DAY',
             ],
         );
 
@@ -430,7 +434,7 @@ final class ListsTest extends TestCase
             'additionalProperties' => ['hs_list_size_week_delta'],
             'offset' => 0,
             'count' => 100,
-            'listIds' => ['string'],
+            'listIDs' => ['string'],
             'processingTypes' => ['string'],
             'query' => 'Test',
             'sort' => 'sort',
@@ -461,13 +465,13 @@ final class ListsTest extends TestCase
                                                 [
                                                     'filterBranches' => [
                                                         [
-                                                            'eventTypeId' => 'eventTypeId',
+                                                            'eventTypeID' => 'eventTypeId',
                                                             'filterBranches' => [
                                                                 [
                                                                     'filterBranches' => [
                                                                         [
                                                                             'associationCategory' => 'associationCategory',
-                                                                            'associationTypeId' => 0,
+                                                                            'associationTypeID' => 0,
                                                                             'filterBranches' => [
                                                                                 [
                                                                                     'filterBranches' => [],
@@ -501,7 +505,7 @@ final class ListsTest extends TestCase
                                                                                     'property' => 'property',
                                                                                 ],
                                                                             ],
-                                                                            'objectTypeId' => 'objectTypeId',
+                                                                            'objectTypeID' => 'objectTypeId',
                                                                             'operator' => 'operator',
                                                                         ],
                                                                     ],
@@ -519,9 +523,9 @@ final class ListsTest extends TestCase
                                                                             'property' => 'property',
                                                                         ],
                                                                     ],
-                                                                    'objectTypeId' => 'objectTypeId',
+                                                                    'objectTypeID' => 'objectTypeId',
                                                                     'operator' => 'operator',
-                                                                    'propertyWithObjectId' => 'propertyWithObjectId',
+                                                                    'propertyWithObjectID' => 'propertyWithObjectId',
                                                                 ],
                                                             ],
                                                             'filterBranchOperator' => 'filterBranchOperator',
@@ -615,7 +619,7 @@ final class ListsTest extends TestCase
                                 [
                                     'acceptedStatuses' => ['OPT_IN'],
                                     'filterType' => 'EMAIL_SUBSCRIPTION',
-                                    'subscriptionIds' => ['81537745', '321981152'],
+                                    'subscriptionIDs' => ['81537745', '321981152'],
                                 ],
                             ],
                         ],
@@ -663,13 +667,13 @@ final class ListsTest extends TestCase
                                                 [
                                                     'filterBranches' => [
                                                         [
-                                                            'eventTypeId' => 'eventTypeId',
+                                                            'eventTypeID' => 'eventTypeId',
                                                             'filterBranches' => [
                                                                 [
                                                                     'filterBranches' => [
                                                                         [
                                                                             'associationCategory' => 'associationCategory',
-                                                                            'associationTypeId' => 0,
+                                                                            'associationTypeID' => 0,
                                                                             'filterBranches' => [
                                                                                 [
                                                                                     'filterBranches' => [],
@@ -703,7 +707,7 @@ final class ListsTest extends TestCase
                                                                                     'property' => 'property',
                                                                                 ],
                                                                             ],
-                                                                            'objectTypeId' => 'objectTypeId',
+                                                                            'objectTypeID' => 'objectTypeId',
                                                                             'operator' => 'operator',
                                                                         ],
                                                                     ],
@@ -721,9 +725,9 @@ final class ListsTest extends TestCase
                                                                             'property' => 'property',
                                                                         ],
                                                                     ],
-                                                                    'objectTypeId' => 'objectTypeId',
+                                                                    'objectTypeID' => 'objectTypeId',
                                                                     'operator' => 'operator',
-                                                                    'propertyWithObjectId' => 'propertyWithObjectId',
+                                                                    'propertyWithObjectID' => 'propertyWithObjectId',
                                                                 ],
                                                             ],
                                                             'filterBranchOperator' => 'filterBranchOperator',
@@ -822,7 +826,7 @@ final class ListsTest extends TestCase
                                 [
                                     'acceptedStatuses' => ['OPT_IN'],
                                     'filterType' => 'EMAIL_SUBSCRIPTION',
-                                    'subscriptionIds' => ['81537745', '321981152'],
+                                    'subscriptionIDs' => ['81537745', '321981152'],
                                     'subscriptionType' => 'subscriptionType',
                                 ],
                             ],

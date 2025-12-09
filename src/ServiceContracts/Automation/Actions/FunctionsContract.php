@@ -5,7 +5,9 @@ declare(strict_types=1);
 namespace HubspotSDK\ServiceContracts\Automation\Actions;
 
 use HubspotSDK\Automation\Actions\CollectionResponsePublicActionFunctionIdentifierNoPaging;
+use HubspotSDK\Automation\Actions\Functions\FunctionCreateOrReplaceByFunctionTypeParams;
 use HubspotSDK\Automation\Actions\Functions\FunctionCreateOrReplaceByFunctionTypeParams\FunctionType;
+use HubspotSDK\Automation\Actions\Functions\FunctionCreateOrReplaceParams;
 use HubspotSDK\Automation\Actions\Functions\FunctionDeleteByFunctionTypeParams;
 use HubspotSDK\Automation\Actions\Functions\FunctionDeleteParams;
 use HubspotSDK\Automation\Actions\Functions\FunctionGetByFunctionTypeParams;
@@ -47,24 +49,27 @@ interface FunctionsContract
     /**
      * @api
      *
+     * @param array<mixed>|FunctionCreateOrReplaceParams $params
+     *
      * @throws APIException
      */
     public function createOrReplace(
         string $functionID,
-        string $params,
-        ?RequestOptions $requestOptions = null
+        array|FunctionCreateOrReplaceParams $params,
+        ?RequestOptions $requestOptions = null,
     ): PublicActionFunctionIdentifier;
 
     /**
      * @api
      *
      * @param FunctionType|value-of<FunctionType> $functionType
+     * @param array<mixed>|FunctionCreateOrReplaceByFunctionTypeParams $params
      *
      * @throws APIException
      */
     public function createOrReplaceByFunctionType(
         FunctionType|string $functionType,
-        string $params,
+        array|FunctionCreateOrReplaceByFunctionTypeParams $params,
         ?RequestOptions $requestOptions = null,
     ): PublicActionFunctionIdentifier;
 

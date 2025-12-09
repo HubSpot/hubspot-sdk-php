@@ -53,7 +53,7 @@ final class AuthorsTest extends TestCase
             'linkedin' => 'linkedin',
             'name' => 'name',
             'slug' => 'slug',
-            'translatedFromId' => 0,
+            'translatedFromID' => 0,
             'twitter' => 'twitter',
             'updated' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
             'website' => 'website',
@@ -84,7 +84,7 @@ final class AuthorsTest extends TestCase
             'linkedin' => 'linkedin',
             'name' => 'name',
             'slug' => 'slug',
-            'translatedFromId' => 0,
+            'translatedFromID' => 0,
             'twitter' => 'twitter',
             'updated' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
             'website' => 'website',
@@ -117,7 +117,7 @@ final class AuthorsTest extends TestCase
                 'linkedin' => 'linkedin',
                 'name' => 'name',
                 'slug' => 'slug',
-                'translatedFromId' => 0,
+                'translatedFromID' => 0,
                 'twitter' => 'twitter',
                 'updated' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
                 'website' => 'website',
@@ -151,7 +151,7 @@ final class AuthorsTest extends TestCase
                 'linkedin' => 'linkedin',
                 'name' => 'name',
                 'slug' => 'slug',
-                'translatedFromId' => 0,
+                'translatedFromID' => 0,
                 'twitter' => 'twitter',
                 'updated' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
                 'website' => 'website',
@@ -197,7 +197,7 @@ final class AuthorsTest extends TestCase
         }
 
         $result = $this->client->cms->blogs->authors->attachToLangGroup([
-            'id' => 'id', 'language' => 'language', 'primaryId' => 'primaryId',
+            'id' => 'id', 'language' => 'language', 'primaryID' => 'primaryId',
         ]);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -214,7 +214,7 @@ final class AuthorsTest extends TestCase
         $result = $this->client->cms->blogs->authors->attachToLangGroup([
             'id' => 'id',
             'language' => 'language',
-            'primaryId' => 'primaryId',
+            'primaryID' => 'primaryId',
             'primaryLanguage' => 'primaryLanguage',
         ]);
 
@@ -245,7 +245,7 @@ final class AuthorsTest extends TestCase
                     'linkedin' => 'linkedin',
                     'name' => 'name',
                     'slug' => 'slug',
-                    'translatedFromId' => 0,
+                    'translatedFromID' => 0,
                     'twitter' => 'twitter',
                     'updated' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
                     'website' => 'website',
@@ -280,7 +280,7 @@ final class AuthorsTest extends TestCase
                     'linkedin' => 'linkedin',
                     'name' => 'name',
                     'slug' => 'slug',
-                    'translatedFromId' => 0,
+                    'translatedFromID' => 0,
                     'twitter' => 'twitter',
                     'updated' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
                     'website' => 'website',
@@ -315,7 +315,7 @@ final class AuthorsTest extends TestCase
                 'linkedin' => 'linkedin',
                 'name' => 'name',
                 'slug' => 'slug',
-                'translatedFromId' => 0,
+                'translatedFromID' => 0,
                 'twitter' => 'twitter',
                 'updated' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
                 'website' => 'website',
@@ -349,7 +349,7 @@ final class AuthorsTest extends TestCase
                 'linkedin' => 'linkedin',
                 'name' => 'name',
                 'slug' => 'slug',
-                'translatedFromId' => 0,
+                'translatedFromID' => 0,
                 'twitter' => 'twitter',
                 'updated' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
                 'website' => 'website',
@@ -533,7 +533,7 @@ final class AuthorsTest extends TestCase
         }
 
         $result = $this->client->cms->blogs->authors->updateLanguages([
-            'languages' => ['foo' => 'string'], 'primaryId' => 'primaryId',
+            'languages' => ['foo' => 'string'], 'primaryID' => 'primaryId',
         ]);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -548,7 +548,7 @@ final class AuthorsTest extends TestCase
         }
 
         $result = $this->client->cms->blogs->authors->updateLanguages([
-            'languages' => ['foo' => 'string'], 'primaryId' => 'primaryId',
+            'languages' => ['foo' => 'string'], 'primaryID' => 'primaryId',
         ]);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

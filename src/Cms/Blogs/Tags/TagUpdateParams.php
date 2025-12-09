@@ -23,7 +23,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   deletedAt: \DateTimeInterface,
  *   language: Language|value-of<Language>,
  *   name: string,
- *   translatedFromId: int,
+ *   translatedFromID: int,
  *   updated: \DateTimeInterface,
  *   archived?: bool,
  * }
@@ -66,8 +66,8 @@ final class TagUpdateParams implements BaseModel
     /**
      * ID of the primary tag this object was translated from.
      */
-    #[Required]
-    public int $translatedFromId;
+    #[Required('translatedFromId')]
+    public int $translatedFromID;
 
     #[Required]
     public \DateTimeInterface $updated;
@@ -89,7 +89,7 @@ final class TagUpdateParams implements BaseModel
      *   deletedAt: ...,
      *   language: ...,
      *   name: ...,
-     *   translatedFromId: ...,
+     *   translatedFromID: ...,
      *   updated: ...,
      * )
      * ```
@@ -125,7 +125,7 @@ final class TagUpdateParams implements BaseModel
         \DateTimeInterface $deletedAt,
         Language|string $language,
         string $name,
-        int $translatedFromId,
+        int $translatedFromID,
         \DateTimeInterface $updated,
         ?bool $archived = null,
     ): self {
@@ -136,7 +136,7 @@ final class TagUpdateParams implements BaseModel
         $obj['deletedAt'] = $deletedAt;
         $obj['language'] = $language;
         $obj['name'] = $name;
-        $obj['translatedFromId'] = $translatedFromId;
+        $obj['translatedFromID'] = $translatedFromID;
         $obj['updated'] = $updated;
 
         null !== $archived && $obj['archived'] = $archived;
@@ -204,7 +204,7 @@ final class TagUpdateParams implements BaseModel
     public function withTranslatedFromID(int $translatedFromID): self
     {
         $obj = clone $this;
-        $obj['translatedFromId'] = $translatedFromID;
+        $obj['translatedFromID'] = $translatedFromID;
 
         return $obj;
     }

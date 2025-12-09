@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   id: string,
  *   properties: array<string,string>,
  *   idProperty?: string|null,
- *   objectWriteTraceId?: string|null,
+ *   objectWriteTraceID?: string|null,
  * }
  */
 final class SimplePublicObjectBatchInputUpsert implements BaseModel
@@ -47,8 +47,8 @@ final class SimplePublicObjectBatchInputUpsert implements BaseModel
     /**
      * An identifier for tracing the creation request.
      */
-    #[Optional]
-    public ?string $objectWriteTraceId;
+    #[Optional('objectWriteTraceId')]
+    public ?string $objectWriteTraceID;
 
     /**
      * `new SimplePublicObjectBatchInputUpsert()` is missing required properties by the API.
@@ -80,7 +80,7 @@ final class SimplePublicObjectBatchInputUpsert implements BaseModel
         string $id,
         array $properties,
         ?string $idProperty = null,
-        ?string $objectWriteTraceId = null,
+        ?string $objectWriteTraceID = null,
     ): self {
         $obj = new self;
 
@@ -88,7 +88,7 @@ final class SimplePublicObjectBatchInputUpsert implements BaseModel
         $obj['properties'] = $properties;
 
         null !== $idProperty && $obj['idProperty'] = $idProperty;
-        null !== $objectWriteTraceId && $obj['objectWriteTraceId'] = $objectWriteTraceId;
+        null !== $objectWriteTraceID && $obj['objectWriteTraceID'] = $objectWriteTraceID;
 
         return $obj;
     }
@@ -134,7 +134,7 @@ final class SimplePublicObjectBatchInputUpsert implements BaseModel
     public function withObjectWriteTraceID(string $objectWriteTraceID): self
     {
         $obj = clone $this;
-        $obj['objectWriteTraceId'] = $objectWriteTraceID;
+        $obj['objectWriteTraceID'] = $objectWriteTraceID;
 
         return $obj;
     }

@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Services\Automation\SequencesService::get()
  *
- * @phpstan-type SequenceGetParamsShape = array{userId: string}
+ * @phpstan-type SequenceGetParamsShape = array{userID: string}
  */
 final class SequenceGetParams implements BaseModel
 {
@@ -23,14 +23,14 @@ final class SequenceGetParams implements BaseModel
     use SdkParams;
 
     #[Required]
-    public string $userId;
+    public string $userID;
 
     /**
      * `new SequenceGetParams()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * SequenceGetParams::with(userId: ...)
+     * SequenceGetParams::with(userID: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -49,11 +49,11 @@ final class SequenceGetParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(string $userId): self
+    public static function with(string $userID): self
     {
         $obj = new self;
 
-        $obj['userId'] = $userId;
+        $obj['userID'] = $userID;
 
         return $obj;
     }
@@ -61,7 +61,7 @@ final class SequenceGetParams implements BaseModel
     public function withUserID(string $userID): self
     {
         $obj = clone $this;
-        $obj['userId'] = $userID;
+        $obj['userID'] = $userID;
 
         return $obj;
     }

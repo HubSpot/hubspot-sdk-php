@@ -22,8 +22,8 @@ use HubspotSDK\ObjectTypeDefinitionLabels;
  *   createdAt?: \DateTimeInterface|null,
  *   description?: string|null,
  *   fullyQualifiedName?: string|null,
- *   objectTypeId?: string|null,
- *   portalId?: int|null,
+ *   objectTypeID?: string|null,
+ *   portalID?: int|null,
  *   primaryDisplayProperty?: string|null,
  *   searchableProperties?: list<string>|null,
  *   secondaryDisplayProperties?: list<string>|null,
@@ -73,14 +73,14 @@ final class ObjectsSchemasObjectTypeDefinition implements BaseModel
     #[Optional]
     public ?string $fullyQualifiedName;
 
-    #[Optional]
-    public ?string $objectTypeId;
+    #[Optional('objectTypeId')]
+    public ?string $objectTypeID;
 
     /**
      * The ID of the account that this object type is specific to.
      */
-    #[Optional]
-    public ?int $portalId;
+    #[Optional('portalId')]
+    public ?int $portalID;
 
     /**
      * The name of the primary property for this object. This will be displayed as primary on the HubSpot record page for this object type.
@@ -156,8 +156,8 @@ final class ObjectsSchemasObjectTypeDefinition implements BaseModel
         ?\DateTimeInterface $createdAt = null,
         ?string $description = null,
         ?string $fullyQualifiedName = null,
-        ?string $objectTypeId = null,
-        ?int $portalId = null,
+        ?string $objectTypeID = null,
+        ?int $portalID = null,
         ?string $primaryDisplayProperty = null,
         ?array $searchableProperties = null,
         ?array $secondaryDisplayProperties = null,
@@ -174,8 +174,8 @@ final class ObjectsSchemasObjectTypeDefinition implements BaseModel
         null !== $createdAt && $obj['createdAt'] = $createdAt;
         null !== $description && $obj['description'] = $description;
         null !== $fullyQualifiedName && $obj['fullyQualifiedName'] = $fullyQualifiedName;
-        null !== $objectTypeId && $obj['objectTypeId'] = $objectTypeId;
-        null !== $portalId && $obj['portalId'] = $portalId;
+        null !== $objectTypeID && $obj['objectTypeID'] = $objectTypeID;
+        null !== $portalID && $obj['portalID'] = $portalID;
         null !== $primaryDisplayProperty && $obj['primaryDisplayProperty'] = $primaryDisplayProperty;
         null !== $searchableProperties && $obj['searchableProperties'] = $searchableProperties;
         null !== $secondaryDisplayProperties && $obj['secondaryDisplayProperties'] = $secondaryDisplayProperties;
@@ -270,7 +270,7 @@ final class ObjectsSchemasObjectTypeDefinition implements BaseModel
     public function withObjectTypeID(string $objectTypeID): self
     {
         $obj = clone $this;
-        $obj['objectTypeId'] = $objectTypeID;
+        $obj['objectTypeID'] = $objectTypeID;
 
         return $obj;
     }
@@ -281,7 +281,7 @@ final class ObjectsSchemasObjectTypeDefinition implements BaseModel
     public function withPortalID(int $portalID): self
     {
         $obj = clone $this;
-        $obj['portalId'] = $portalID;
+        $obj['portalID'] = $portalID;
 
         return $obj;
     }

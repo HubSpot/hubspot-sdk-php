@@ -13,9 +13,9 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * @phpstan-type APIAssociationTimestampDataSourceShape = array{
  *   associationCategory: value-of<AssociationCategory>,
- *   associationTypeId: int,
+ *   associationTypeID: int,
  *   name: string,
- *   objectTypeId: string,
+ *   objectTypeID: string,
  *   type: value-of<Type>,
  * }
  */
@@ -31,14 +31,14 @@ final class APIAssociationTimestampDataSource implements BaseModel
     /**
      * The ID representing the type of association.
      */
-    #[Required]
-    public int $associationTypeId;
+    #[Required('associationTypeId')]
+    public int $associationTypeID;
 
     #[Required]
     public string $name;
 
-    #[Required]
-    public string $objectTypeId;
+    #[Required('objectTypeId')]
+    public string $objectTypeID;
 
     /** @var value-of<Type> $type */
     #[Required(enum: Type::class)]
@@ -51,9 +51,9 @@ final class APIAssociationTimestampDataSource implements BaseModel
      * ```
      * APIAssociationTimestampDataSource::with(
      *   associationCategory: ...,
-     *   associationTypeId: ...,
+     *   associationTypeID: ...,
      *   name: ...,
-     *   objectTypeId: ...,
+     *   objectTypeID: ...,
      *   type: ...,
      * )
      * ```
@@ -84,17 +84,17 @@ final class APIAssociationTimestampDataSource implements BaseModel
      */
     public static function with(
         AssociationCategory|string $associationCategory,
-        int $associationTypeId,
+        int $associationTypeID,
         string $name,
-        string $objectTypeId,
+        string $objectTypeID,
         Type|string $type = 'ASSOCIATION_TIMESTAMP',
     ): self {
         $obj = new self;
 
         $obj['associationCategory'] = $associationCategory;
-        $obj['associationTypeId'] = $associationTypeId;
+        $obj['associationTypeID'] = $associationTypeID;
         $obj['name'] = $name;
-        $obj['objectTypeId'] = $objectTypeId;
+        $obj['objectTypeID'] = $objectTypeID;
         $obj['type'] = $type;
 
         return $obj;
@@ -118,7 +118,7 @@ final class APIAssociationTimestampDataSource implements BaseModel
     public function withAssociationTypeID(int $associationTypeID): self
     {
         $obj = clone $this;
-        $obj['associationTypeId'] = $associationTypeID;
+        $obj['associationTypeID'] = $associationTypeID;
 
         return $obj;
     }
@@ -134,7 +134,7 @@ final class APIAssociationTimestampDataSource implements BaseModel
     public function withObjectTypeID(string $objectTypeID): self
     {
         $obj = clone $this;
-        $obj['objectTypeId'] = $objectTypeID;
+        $obj['objectTypeID'] = $objectTypeID;
 
         return $obj;
     }

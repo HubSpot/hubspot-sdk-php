@@ -68,7 +68,7 @@ final class EmailsService implements EmailsContract
      *   name: string,
      *   activeDomain?: string,
      *   archived?: bool,
-     *   businessUnitId?: int,
+     *   businessUnitID?: int,
      *   campaign?: string,
      *   content?: array{
      *     flexAreas?: array<string,mixed>,
@@ -80,8 +80,8 @@ final class EmailsService implements EmailsContract
      *     widgetContainers?: array<string,mixed>,
      *     widgets?: array<string,mixed>,
      *   }|PublicEmailContent,
-     *   feedbackSurveyId?: string,
-     *   folderIdV2?: int,
+     *   feedbackSurveyID?: string,
+     *   folderIDV2?: int,
      *   from?: array{
      *     customReplyTo?: string, fromName?: string, replyTo?: string
      *   }|PublicEmailFromDetails,
@@ -92,7 +92,7 @@ final class EmailsService implements EmailsContract
      *     blogEmailType?: string,
      *     blogImageMaxWidth?: int,
      *     blogLayout?: string,
-     *     hubspotBlogId?: string,
+     *     hubspotBlogID?: string,
      *     maxEntries?: int,
      *     rssEntryTemplate?: string,
      *     timing?: array<string,mixed>,
@@ -104,9 +104,9 @@ final class EmailsService implements EmailsContract
      *   subcategory?: value-of<Subcategory>,
      *   subject?: string,
      *   subscriptionDetails?: array{
-     *     officeLocationId?: string,
-     *     preferencesGroupId?: string,
-     *     subscriptionId?: string,
+     *     officeLocationID?: string,
+     *     preferencesGroupID?: string,
+     *     subscriptionID?: string,
      *     subscriptionName?: string,
      *   }|PublicEmailSubscriptionDetails,
      *   testing?: array{
@@ -117,10 +117,10 @@ final class EmailsService implements EmailsContract
      *     abTestPercentage?: int,
      *     hoursToWait?: int,
      *     isAbVariation?: bool,
-     *     testId?: string,
+     *     testID?: string,
      *   }|PublicEmailTestingDetails,
      *   to?: array{
-     *     contactIds?: array<mixed>|PublicEmailRecipients,
+     *     contactIDs?: array<mixed>|PublicEmailRecipients,
      *     contactIlsLists?: array<mixed>|PublicEmailRecipients,
      *     contactLists?: array<mixed>|PublicEmailRecipients,
      *     limitSendFrequency?: bool,
@@ -133,8 +133,8 @@ final class EmailsService implements EmailsContract
      *     isPageRedirected?: bool,
      *     metaDescription?: string,
      *     pageExpiryEnabled?: bool,
-     *     redirectToPageId?: string,
-     *     redirectToUrl?: string,
+     *     redirectToPageID?: string,
+     *     redirectToURL?: string,
      *     slug?: string,
      *     title?: string,
      *     url?: string,
@@ -172,7 +172,7 @@ final class EmailsService implements EmailsContract
      * @param array{
      *   archived?: bool,
      *   activeDomain?: string,
-     *   businessUnitId?: int,
+     *   businessUnitID?: int,
      *   campaign?: string,
      *   content?: array{
      *     flexAreas?: array<string,mixed>,
@@ -184,7 +184,7 @@ final class EmailsService implements EmailsContract
      *     widgetContainers?: array<string,mixed>,
      *     widgets?: array<string,mixed>,
      *   }|PublicEmailContent,
-     *   folderIdV2?: int,
+     *   folderIDV2?: int,
      *   from?: array{
      *     customReplyTo?: string, fromName?: string, replyTo?: string
      *   }|PublicEmailFromDetails,
@@ -196,7 +196,7 @@ final class EmailsService implements EmailsContract
      *     blogEmailType?: string,
      *     blogImageMaxWidth?: int,
      *     blogLayout?: string,
-     *     hubspotBlogId?: string,
+     *     hubspotBlogID?: string,
      *     maxEntries?: int,
      *     rssEntryTemplate?: string,
      *     timing?: array<string,mixed>,
@@ -208,9 +208,9 @@ final class EmailsService implements EmailsContract
      *   subcategory?: value-of<EmailUpdateParams\Subcategory>,
      *   subject?: string,
      *   subscriptionDetails?: array{
-     *     officeLocationId?: string,
-     *     preferencesGroupId?: string,
-     *     subscriptionId?: string,
+     *     officeLocationID?: string,
+     *     preferencesGroupID?: string,
+     *     subscriptionID?: string,
      *     subscriptionName?: string,
      *   }|PublicEmailSubscriptionDetails,
      *   testing?: array{
@@ -221,10 +221,10 @@ final class EmailsService implements EmailsContract
      *     abTestPercentage?: int,
      *     hoursToWait?: int,
      *     isAbVariation?: bool,
-     *     testId?: string,
+     *     testID?: string,
      *   }|PublicEmailTestingDetails,
      *   to?: array{
-     *     contactIds?: array<mixed>|PublicEmailRecipients,
+     *     contactIDs?: array<mixed>|PublicEmailRecipients,
      *     contactIlsLists?: array<mixed>|PublicEmailRecipients,
      *     contactLists?: array<mixed>|PublicEmailRecipients,
      *     limitSendFrequency?: bool,
@@ -237,8 +237,8 @@ final class EmailsService implements EmailsContract
      *     isPageRedirected?: bool,
      *     metaDescription?: string,
      *     pageExpiryEnabled?: bool,
-     *     redirectToPageId?: string,
-     *     redirectToUrl?: string,
+     *     redirectToPageID?: string,
+     *     redirectToURL?: string,
      *     slug?: string,
      *     title?: string,
      *     url?: string,
@@ -394,7 +394,7 @@ final class EmailsService implements EmailsContract
      * Create a variation of a marketing email for an A/B test. The new variation will be created as a draft. If an active variation already exists, a new one won't be created.
      *
      * @param array{
-     *   contentId: string, variationName: string
+     *   contentID: string, variationName: string
      * }|EmailCreateAbTestVariationParams $params
      *
      * @throws APIException
@@ -521,7 +521,7 @@ final class EmailsService implements EmailsContract
      *
      * Get a specific revision of a marketing email.
      *
-     * @param array{emailId: string}|EmailGetRevisionParams $params
+     * @param array{emailID: string}|EmailGetRevisionParams $params
      *
      * @throws APIException
      */
@@ -534,8 +534,8 @@ final class EmailsService implements EmailsContract
             $params,
             $requestOptions,
         );
-        $emailID = $parsed['emailId'];
-        unset($parsed['emailId']);
+        $emailID = $parsed['emailID'];
+        unset($parsed['emailID']);
 
         /** @var BaseResponse<VersionPublicEmail> */
         $response = $this->client->request(
@@ -633,7 +633,7 @@ final class EmailsService implements EmailsContract
      *
      * Restores a previous revision of a marketing email. The current revision becomes old, and the restored revision is given a new version number.
      *
-     * @param array{emailId: string}|EmailRestoreRevisionParams $params
+     * @param array{emailID: string}|EmailRestoreRevisionParams $params
      *
      * @throws APIException
      */
@@ -646,8 +646,8 @@ final class EmailsService implements EmailsContract
             $params,
             $requestOptions,
         );
-        $emailID = $parsed['emailId'];
-        unset($parsed['emailId']);
+        $emailID = $parsed['emailID'];
+        unset($parsed['emailID']);
 
         /** @var BaseResponse<mixed> */
         $response = $this->client->request(
@@ -667,7 +667,7 @@ final class EmailsService implements EmailsContract
      *
      * Restores a previous revision of a marketing email to DRAFT state. If there is currently something in the draft for that object, it is overwritten.
      *
-     * @param array{emailId: string}|EmailRestoreRevisionToDraftParams $params
+     * @param array{emailID: string}|EmailRestoreRevisionToDraftParams $params
      *
      * @throws APIException
      */
@@ -680,8 +680,8 @@ final class EmailsService implements EmailsContract
             $params,
             $requestOptions,
         );
-        $emailID = $parsed['emailId'];
-        unset($parsed['emailId']);
+        $emailID = $parsed['emailID'];
+        unset($parsed['emailID']);
 
         /** @var BaseResponse<PublicEmail> */
         $response = $this->client->request(
@@ -728,7 +728,7 @@ final class EmailsService implements EmailsContract
      * @param array{
      *   activeDomain?: string,
      *   archived?: bool,
-     *   businessUnitId?: int,
+     *   businessUnitID?: int,
      *   campaign?: string,
      *   content?: array{
      *     flexAreas?: array<string,mixed>,
@@ -740,7 +740,7 @@ final class EmailsService implements EmailsContract
      *     widgetContainers?: array<string,mixed>,
      *     widgets?: array<string,mixed>,
      *   }|PublicEmailContent,
-     *   folderIdV2?: int,
+     *   folderIDV2?: int,
      *   from?: array{
      *     customReplyTo?: string, fromName?: string, replyTo?: string
      *   }|PublicEmailFromDetails,
@@ -752,7 +752,7 @@ final class EmailsService implements EmailsContract
      *     blogEmailType?: string,
      *     blogImageMaxWidth?: int,
      *     blogLayout?: string,
-     *     hubspotBlogId?: string,
+     *     hubspotBlogID?: string,
      *     maxEntries?: int,
      *     rssEntryTemplate?: string,
      *     timing?: array<string,mixed>,
@@ -764,9 +764,9 @@ final class EmailsService implements EmailsContract
      *   subcategory?: value-of<EmailUpdateDraftParams\Subcategory>,
      *   subject?: string,
      *   subscriptionDetails?: array{
-     *     officeLocationId?: string,
-     *     preferencesGroupId?: string,
-     *     subscriptionId?: string,
+     *     officeLocationID?: string,
+     *     preferencesGroupID?: string,
+     *     subscriptionID?: string,
      *     subscriptionName?: string,
      *   }|PublicEmailSubscriptionDetails,
      *   testing?: array{
@@ -777,10 +777,10 @@ final class EmailsService implements EmailsContract
      *     abTestPercentage?: int,
      *     hoursToWait?: int,
      *     isAbVariation?: bool,
-     *     testId?: string,
+     *     testID?: string,
      *   }|PublicEmailTestingDetails,
      *   to?: array{
-     *     contactIds?: array<mixed>|PublicEmailRecipients,
+     *     contactIDs?: array<mixed>|PublicEmailRecipients,
      *     contactIlsLists?: array<mixed>|PublicEmailRecipients,
      *     contactLists?: array<mixed>|PublicEmailRecipients,
      *     limitSendFrequency?: bool,
@@ -793,8 +793,8 @@ final class EmailsService implements EmailsContract
      *     isPageRedirected?: bool,
      *     metaDescription?: string,
      *     pageExpiryEnabled?: bool,
-     *     redirectToPageId?: string,
-     *     redirectToUrl?: string,
+     *     redirectToPageID?: string,
+     *     redirectToURL?: string,
      *     slug?: string,
      *     title?: string,
      *     url?: string,

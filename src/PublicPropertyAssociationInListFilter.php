@@ -16,10 +16,10 @@ use HubspotSDK\PublicTimePointOperation\OperationType;
  * @phpstan-type PublicPropertyAssociationInListFilterShape = array{
  *   coalescingRefineBy: PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation,
  *   filterType: value-of<FilterType>,
- *   listId: string,
+ *   listID: string,
  *   operator: string,
- *   propertyWithObjectId: string,
- *   toObjectTypeId?: string|null,
+ *   propertyWithObjectID: string,
+ *   toObjectTypeID?: string|null,
  * }
  */
 final class PublicPropertyAssociationInListFilter implements BaseModel
@@ -34,17 +34,17 @@ final class PublicPropertyAssociationInListFilter implements BaseModel
     #[Required(enum: FilterType::class)]
     public string $filterType;
 
-    #[Required]
-    public string $listId;
+    #[Required('listId')]
+    public string $listID;
 
     #[Required]
     public string $operator;
 
-    #[Required]
-    public string $propertyWithObjectId;
+    #[Required('propertyWithObjectId')]
+    public string $propertyWithObjectID;
 
-    #[Optional]
-    public ?string $toObjectTypeId;
+    #[Optional('toObjectTypeId')]
+    public ?string $toObjectTypeID;
 
     /**
      * `new PublicPropertyAssociationInListFilter()` is missing required properties by the API.
@@ -54,9 +54,9 @@ final class PublicPropertyAssociationInListFilter implements BaseModel
      * PublicPropertyAssociationInListFilter::with(
      *   coalescingRefineBy: ...,
      *   filterType: ...,
-     *   listId: ...,
+     *   listID: ...,
      *   operator: ...,
-     *   propertyWithObjectId: ...,
+     *   propertyWithObjectID: ...,
      * )
      * ```
      *
@@ -128,21 +128,21 @@ final class PublicPropertyAssociationInListFilter implements BaseModel
      */
     public static function with(
         PublicNumOccurrencesRefineBy|array|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation $coalescingRefineBy,
-        string $listId,
+        string $listID,
         string $operator,
-        string $propertyWithObjectId,
+        string $propertyWithObjectID,
         FilterType|string $filterType = 'PROPERTY_ASSOCIATION',
-        ?string $toObjectTypeId = null,
+        ?string $toObjectTypeID = null,
     ): self {
         $obj = new self;
 
         $obj['coalescingRefineBy'] = $coalescingRefineBy;
         $obj['filterType'] = $filterType;
-        $obj['listId'] = $listId;
+        $obj['listID'] = $listID;
         $obj['operator'] = $operator;
-        $obj['propertyWithObjectId'] = $propertyWithObjectId;
+        $obj['propertyWithObjectID'] = $propertyWithObjectID;
 
-        null !== $toObjectTypeId && $obj['toObjectTypeId'] = $toObjectTypeId;
+        null !== $toObjectTypeID && $obj['toObjectTypeID'] = $toObjectTypeID;
 
         return $obj;
     }
@@ -215,7 +215,7 @@ final class PublicPropertyAssociationInListFilter implements BaseModel
     public function withListID(string $listID): self
     {
         $obj = clone $this;
-        $obj['listId'] = $listID;
+        $obj['listID'] = $listID;
 
         return $obj;
     }
@@ -231,7 +231,7 @@ final class PublicPropertyAssociationInListFilter implements BaseModel
     public function withPropertyWithObjectID(string $propertyWithObjectID): self
     {
         $obj = clone $this;
-        $obj['propertyWithObjectId'] = $propertyWithObjectID;
+        $obj['propertyWithObjectID'] = $propertyWithObjectID;
 
         return $obj;
     }
@@ -239,7 +239,7 @@ final class PublicPropertyAssociationInListFilter implements BaseModel
     public function withToObjectTypeID(string $toObjectTypeID): self
     {
         $obj = clone $this;
-        $obj['toObjectTypeId'] = $toObjectTypeID;
+        $obj['toObjectTypeID'] = $toObjectTypeID;
 
         return $obj;
     }

@@ -50,7 +50,7 @@ final class CustomTest extends TestCase
                         'types' => [
                             [
                                 'associationCategory' => 'HUBSPOT_DEFINED',
-                                'associationTypeId' => 0,
+                                'associationTypeID' => 0,
                             ],
                         ],
                     ],
@@ -79,7 +79,7 @@ final class CustomTest extends TestCase
                         'types' => [
                             [
                                 'associationCategory' => 'HUBSPOT_DEFINED',
-                                'associationTypeId' => 0,
+                                'associationTypeID' => 0,
                             ],
                         ],
                     ],
@@ -222,8 +222,8 @@ final class CustomTest extends TestCase
         $result = $this->client->crm->objects->custom->merge(
             'objectType',
             [
-                'objectIdToMerge' => 'objectIdToMerge',
-                'primaryObjectId' => 'primaryObjectId',
+                'objectIDToMerge' => 'objectIdToMerge',
+                'primaryObjectID' => 'primaryObjectId',
             ],
         );
 
@@ -241,8 +241,8 @@ final class CustomTest extends TestCase
         $result = $this->client->crm->objects->custom->merge(
             'objectType',
             [
-                'objectIdToMerge' => 'objectIdToMerge',
-                'primaryObjectId' => 'primaryObjectId',
+                'objectIDToMerge' => 'objectIdToMerge',
+                'primaryObjectID' => 'primaryObjectId',
             ],
         );
 

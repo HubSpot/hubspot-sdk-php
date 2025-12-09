@@ -106,7 +106,7 @@ final class RecordingSettingsService implements RecordingSettingsContract
     /**
      * @api
      *
-     * @param array{engagementId: int}|RecordingSettingMarkReadyParams $params
+     * @param array{engagementID: int}|RecordingSettingMarkReadyParams $params
      *
      * @throws APIException
      */

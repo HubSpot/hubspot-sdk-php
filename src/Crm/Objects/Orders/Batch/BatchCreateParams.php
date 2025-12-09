@@ -20,7 +20,7 @@ use HubspotSDK\Crm\SimplePublicObjectBatchInputForCreate;
  *   inputs: list<SimplePublicObjectBatchInputForCreate|array{
  *     associations: list<PublicAssociationsForObject>,
  *     properties: array<string,string>,
- *     objectWriteTraceId?: string|null,
+ *     objectWriteTraceID?: string|null,
  *   }>,
  * }
  */
@@ -61,7 +61,7 @@ final class BatchCreateParams implements BaseModel
      * @param list<SimplePublicObjectBatchInputForCreate|array{
      *   associations: list<PublicAssociationsForObject>,
      *   properties: array<string,string>,
-     *   objectWriteTraceId?: string|null,
+     *   objectWriteTraceID?: string|null,
      * }> $inputs
      */
     public static function with(array $inputs): self
@@ -77,7 +77,7 @@ final class BatchCreateParams implements BaseModel
      * @param list<SimplePublicObjectBatchInputForCreate|array{
      *   associations: list<PublicAssociationsForObject>,
      *   properties: array<string,string>,
-     *   objectWriteTraceId?: string|null,
+     *   objectWriteTraceID?: string|null,
      * }> $inputs
      */
     public function withInputs(array $inputs): self

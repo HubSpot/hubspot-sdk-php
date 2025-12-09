@@ -22,7 +22,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *     deletedAt: \DateTimeInterface,
  *     language: value-of<Language>,
  *     name: string,
- *     translatedFromId: int,
+ *     translatedFromID: int,
  *     updated: \DateTimeInterface,
  *   }>,
  * }
@@ -71,7 +71,7 @@ final class TagCreateBatchParams implements BaseModel
      *   deletedAt: \DateTimeInterface,
      *   language: value-of<Language>,
      *   name: string,
-     *   translatedFromId: int,
+     *   translatedFromID: int,
      *   updated: \DateTimeInterface,
      * }> $inputs
      */
@@ -93,7 +93,7 @@ final class TagCreateBatchParams implements BaseModel
      *   deletedAt: \DateTimeInterface,
      *   language: value-of<Language>,
      *   name: string,
-     *   translatedFromId: int,
+     *   translatedFromID: int,
      *   updated: \DateTimeInterface,
      * }> $inputs
      */

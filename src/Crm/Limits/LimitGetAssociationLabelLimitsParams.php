@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Crm\LimitsService::getAssociationLabelLimits()
  *
  * @phpstan-type LimitGetAssociationLabelLimitsParamsShape = array{
- *   fromObjectTypeId?: string, toObjectTypeId?: string
+ *   fromObjectTypeID?: string, toObjectTypeID?: string
  * }
  */
 final class LimitGetAssociationLabelLimitsParams implements BaseModel
@@ -28,13 +28,13 @@ final class LimitGetAssociationLabelLimitsParams implements BaseModel
      * objectTypeId of the object type on the "from" side of the association.
      */
     #[Optional]
-    public ?string $fromObjectTypeId;
+    public ?string $fromObjectTypeID;
 
     /**
      * objectTypeId of the object type on the "to" side of the association.
      */
     #[Optional]
-    public ?string $toObjectTypeId;
+    public ?string $toObjectTypeID;
 
     public function __construct()
     {
@@ -47,13 +47,13 @@ final class LimitGetAssociationLabelLimitsParams implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      */
     public static function with(
-        ?string $fromObjectTypeId = null,
-        ?string $toObjectTypeId = null
+        ?string $fromObjectTypeID = null,
+        ?string $toObjectTypeID = null
     ): self {
         $obj = new self;
 
-        null !== $fromObjectTypeId && $obj['fromObjectTypeId'] = $fromObjectTypeId;
-        null !== $toObjectTypeId && $obj['toObjectTypeId'] = $toObjectTypeId;
+        null !== $fromObjectTypeID && $obj['fromObjectTypeID'] = $fromObjectTypeID;
+        null !== $toObjectTypeID && $obj['toObjectTypeID'] = $toObjectTypeID;
 
         return $obj;
     }
@@ -64,7 +64,7 @@ final class LimitGetAssociationLabelLimitsParams implements BaseModel
     public function withFromObjectTypeID(string $fromObjectTypeID): self
     {
         $obj = clone $this;
-        $obj['fromObjectTypeId'] = $fromObjectTypeID;
+        $obj['fromObjectTypeID'] = $fromObjectTypeID;
 
         return $obj;
     }
@@ -75,7 +75,7 @@ final class LimitGetAssociationLabelLimitsParams implements BaseModel
     public function withToObjectTypeID(string $toObjectTypeID): self
     {
         $obj = clone $this;
-        $obj['toObjectTypeId'] = $toObjectTypeID;
+        $obj['toObjectTypeID'] = $toObjectTypeID;
 
         return $obj;
     }

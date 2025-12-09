@@ -16,13 +16,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * @phpstan-type PublicActionDefinitionShape = array{
  *   id: string,
- *   actionUrl: string,
+ *   actionURL: string,
  *   functions: list<PublicActionFunctionIdentifier>,
  *   inputFields: list<InputFieldDefinition>,
  *   labels: array<string,PublicActionLabels>,
  *   objectTypes: list<string>,
  *   published: bool,
- *   revisionId: string,
+ *   revisionID: string,
  *   archivedAt?: int|null,
  *   executionRules?: list<PublicExecutionTranslationRule>|null,
  *   inputFieldDependencies?: list<PublicSingleFieldDependency|PublicConditionalSingleFieldDependency>|null,
@@ -38,8 +38,8 @@ final class PublicActionDefinition implements BaseModel
     #[Required]
     public string $id;
 
-    #[Required]
-    public string $actionUrl;
+    #[Required('actionUrl')]
+    public string $actionURL;
 
     /** @var list<PublicActionFunctionIdentifier> $functions */
     #[Required(list: PublicActionFunctionIdentifier::class)]
@@ -60,8 +60,8 @@ final class PublicActionDefinition implements BaseModel
     #[Required]
     public bool $published;
 
-    #[Required]
-    public string $revisionId;
+    #[Required('revisionId')]
+    public string $revisionID;
 
     #[Optional]
     public ?int $archivedAt;
@@ -90,13 +90,13 @@ final class PublicActionDefinition implements BaseModel
      * ```
      * PublicActionDefinition::with(
      *   id: ...,
-     *   actionUrl: ...,
+     *   actionURL: ...,
      *   functions: ...,
      *   inputFields: ...,
      *   labels: ...,
      *   objectTypes: ...,
      *   published: ...,
-     *   revisionId: ...,
+     *   revisionID: ...,
      * )
      * ```
      *
@@ -167,13 +167,13 @@ final class PublicActionDefinition implements BaseModel
      */
     public static function with(
         string $id,
-        string $actionUrl,
+        string $actionURL,
         array $functions,
         array $inputFields,
         array $labels,
         array $objectTypes,
         bool $published,
-        string $revisionId,
+        string $revisionID,
         ?int $archivedAt = null,
         ?array $executionRules = null,
         ?array $inputFieldDependencies = null,
@@ -183,13 +183,13 @@ final class PublicActionDefinition implements BaseModel
         $obj = new self;
 
         $obj['id'] = $id;
-        $obj['actionUrl'] = $actionUrl;
+        $obj['actionURL'] = $actionURL;
         $obj['functions'] = $functions;
         $obj['inputFields'] = $inputFields;
         $obj['labels'] = $labels;
         $obj['objectTypes'] = $objectTypes;
         $obj['published'] = $published;
-        $obj['revisionId'] = $revisionId;
+        $obj['revisionID'] = $revisionID;
 
         null !== $archivedAt && $obj['archivedAt'] = $archivedAt;
         null !== $executionRules && $obj['executionRules'] = $executionRules;
@@ -211,7 +211,7 @@ final class PublicActionDefinition implements BaseModel
     public function withActionURL(string $actionURL): self
     {
         $obj = clone $this;
-        $obj['actionUrl'] = $actionURL;
+        $obj['actionURL'] = $actionURL;
 
         return $obj;
     }
@@ -288,7 +288,7 @@ final class PublicActionDefinition implements BaseModel
     public function withRevisionID(string $revisionID): self
     {
         $obj = clone $this;
-        $obj['revisionId'] = $revisionID;
+        $obj['revisionID'] = $revisionID;
 
         return $obj;
     }

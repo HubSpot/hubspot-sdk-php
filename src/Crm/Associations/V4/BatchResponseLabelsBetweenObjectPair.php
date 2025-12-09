@@ -109,11 +109,11 @@ final class BatchResponseLabelsBetweenObjectPair implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<LabelsBetweenObjectPair|array{
-     *   fromObjectId: string,
-     *   fromObjectTypeId: string,
+     *   fromObjectID: string,
+     *   fromObjectTypeID: string,
      *   labels: list<string>,
-     *   toObjectId: string,
-     *   toObjectTypeId: string,
+     *   toObjectID: string,
+     *   toObjectTypeID: string,
      * }> $results
      * @param Status|value-of<Status> $status
      * @param list<StandardError|array{
@@ -166,11 +166,11 @@ final class BatchResponseLabelsBetweenObjectPair implements BaseModel
 
     /**
      * @param list<LabelsBetweenObjectPair|array{
-     *   fromObjectId: string,
-     *   fromObjectTypeId: string,
+     *   fromObjectID: string,
+     *   fromObjectTypeID: string,
      *   labels: list<string>,
-     *   toObjectId: string,
-     *   toObjectTypeId: string,
+     *   toObjectID: string,
+     *   toObjectTypeID: string,
      * }> $results
      */
     public function withResults(array $results): self

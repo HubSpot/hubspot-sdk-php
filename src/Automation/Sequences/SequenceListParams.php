@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Automation\SequencesService::list()
  *
  * @phpstan-type SequenceListParamsShape = array{
- *   userId: string, after?: string, limit?: int, name?: string
+ *   userID: string, after?: string, limit?: int, name?: string
  * }
  */
 final class SequenceListParams implements BaseModel
@@ -26,7 +26,7 @@ final class SequenceListParams implements BaseModel
     use SdkParams;
 
     #[Required]
-    public string $userId;
+    public string $userID;
 
     #[Optional]
     public ?string $after;
@@ -42,7 +42,7 @@ final class SequenceListParams implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * SequenceListParams::with(userId: ...)
+     * SequenceListParams::with(userID: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -62,14 +62,14 @@ final class SequenceListParams implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      */
     public static function with(
-        string $userId,
+        string $userID,
         ?string $after = null,
         ?int $limit = null,
         ?string $name = null
     ): self {
         $obj = new self;
 
-        $obj['userId'] = $userId;
+        $obj['userID'] = $userID;
 
         null !== $after && $obj['after'] = $after;
         null !== $limit && $obj['limit'] = $limit;
@@ -81,7 +81,7 @@ final class SequenceListParams implements BaseModel
     public function withUserID(string $userID): self
     {
         $obj = clone $this;
-        $obj['userId'] = $userID;
+        $obj['userID'] = $userID;
 
         return $obj;
     }

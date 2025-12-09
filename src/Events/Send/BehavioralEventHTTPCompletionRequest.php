@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   eventName: string,
  *   properties: array<string,string>,
  *   email?: string|null,
- *   objectId?: string|null,
+ *   objectID?: string|null,
  *   occurredAt?: \DateTimeInterface|null,
  *   utk?: string|null,
  *   uuid?: string|null,
@@ -48,8 +48,8 @@ final class BehavioralEventHTTPCompletionRequest implements BaseModel
     /**
      * The ID of the object that completed the event (e.g., contact ID or visitor ID).
      */
-    #[Optional]
-    public ?string $objectId;
+    #[Optional('objectId')]
+    public ?string $objectID;
 
     /**
      * The time when this event occurred. If this isn't set, the current time will be used.
@@ -101,7 +101,7 @@ final class BehavioralEventHTTPCompletionRequest implements BaseModel
         string $eventName,
         array $properties,
         ?string $email = null,
-        ?string $objectId = null,
+        ?string $objectID = null,
         ?\DateTimeInterface $occurredAt = null,
         ?string $utk = null,
         ?string $uuid = null,
@@ -112,7 +112,7 @@ final class BehavioralEventHTTPCompletionRequest implements BaseModel
         $obj['properties'] = $properties;
 
         null !== $email && $obj['email'] = $email;
-        null !== $objectId && $obj['objectId'] = $objectId;
+        null !== $objectID && $obj['objectID'] = $objectID;
         null !== $occurredAt && $obj['occurredAt'] = $occurredAt;
         null !== $utk && $obj['utk'] = $utk;
         null !== $uuid && $obj['uuid'] = $uuid;
@@ -161,7 +161,7 @@ final class BehavioralEventHTTPCompletionRequest implements BaseModel
     public function withObjectID(string $objectID): self
     {
         $obj = clone $this;
-        $obj['objectId'] = $objectID;
+        $obj['objectID'] = $objectID;
 
         return $obj;
     }

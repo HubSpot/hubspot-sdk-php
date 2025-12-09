@@ -214,7 +214,7 @@ final class DealsService implements DealsContract
      * Combine two deals of the same type into a single deal.
      *
      * @param array{
-     *   objectIdToMerge: string, primaryObjectId: string
+     *   objectIDToMerge: string, primaryObjectID: string
      * }|DealMergeParams $params
      *
      * @throws APIException

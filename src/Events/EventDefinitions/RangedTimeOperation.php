@@ -133,7 +133,7 @@ final class RangedTimeOperation implements BaseModel
      *   timeType: value-of<TimeType>,
      *   timezoneSource: value-of<TimezoneSource>,
      *   year: int,
-     *   zoneId: string,
+     *   zoneID: string,
      *   hour?: int|null,
      *   millisecond?: int|null,
      *   minute?: int|null,
@@ -142,14 +142,14 @@ final class RangedTimeOperation implements BaseModel
      *   indexReference: NowReference|TodayReference|WeekReference|MonthReference|QuarterReference|FiscalQuarter|YearReference|FiscalYear,
      *   timeType: value-of<IndexedTimePoint\TimeType>,
      *   timezoneSource: value-of<IndexedTimePoint\TimezoneSource>,
-     *   zoneId: string,
+     *   zoneID: string,
      *   offset?: IndexOffset|null,
      * }|PropertyReferencedTime|array{
      *   property: string,
      *   referenceType: value-of<ReferenceType>,
      *   timeType: value-of<PropertyReferencedTime\TimeType>,
      *   timezoneSource: value-of<PropertyReferencedTime\TimezoneSource>,
-     *   zoneId: string,
+     *   zoneID: string,
      * } $lowerBoundTimePoint
      * @param Operator|value-of<Operator> $operator
      * @param PropertyParser|value-of<PropertyParser> $propertyParser
@@ -160,7 +160,7 @@ final class RangedTimeOperation implements BaseModel
      *   timeType: value-of<TimeType>,
      *   timezoneSource: value-of<TimezoneSource>,
      *   year: int,
-     *   zoneId: string,
+     *   zoneID: string,
      *   hour?: int|null,
      *   millisecond?: int|null,
      *   minute?: int|null,
@@ -169,14 +169,14 @@ final class RangedTimeOperation implements BaseModel
      *   indexReference: NowReference|TodayReference|WeekReference|MonthReference|QuarterReference|FiscalQuarter|YearReference|FiscalYear,
      *   timeType: value-of<IndexedTimePoint\TimeType>,
      *   timezoneSource: value-of<IndexedTimePoint\TimezoneSource>,
-     *   zoneId: string,
+     *   zoneID: string,
      *   offset?: IndexOffset|null,
      * }|PropertyReferencedTime|array{
      *   property: string,
      *   referenceType: value-of<ReferenceType>,
      *   timeType: value-of<PropertyReferencedTime\TimeType>,
      *   timezoneSource: value-of<PropertyReferencedTime\TimezoneSource>,
-     *   zoneId: string,
+     *   zoneID: string,
      * } $upperBoundTimePoint
      * @param PropertyType|value-of<PropertyType> $propertyType
      */
@@ -241,7 +241,7 @@ final class RangedTimeOperation implements BaseModel
      *   timeType: value-of<TimeType>,
      *   timezoneSource: value-of<TimezoneSource>,
      *   year: int,
-     *   zoneId: string,
+     *   zoneID: string,
      *   hour?: int|null,
      *   millisecond?: int|null,
      *   minute?: int|null,
@@ -250,14 +250,14 @@ final class RangedTimeOperation implements BaseModel
      *   indexReference: NowReference|TodayReference|WeekReference|MonthReference|QuarterReference|FiscalQuarter|YearReference|FiscalYear,
      *   timeType: value-of<IndexedTimePoint\TimeType>,
      *   timezoneSource: value-of<IndexedTimePoint\TimezoneSource>,
-     *   zoneId: string,
+     *   zoneID: string,
      *   offset?: IndexOffset|null,
      * }|PropertyReferencedTime|array{
      *   property: string,
      *   referenceType: value-of<ReferenceType>,
      *   timeType: value-of<PropertyReferencedTime\TimeType>,
      *   timezoneSource: value-of<PropertyReferencedTime\TimezoneSource>,
-     *   zoneId: string,
+     *   zoneID: string,
      * } $lowerBoundTimePoint
      */
     public function withLowerBoundTimePoint(
@@ -346,7 +346,7 @@ final class RangedTimeOperation implements BaseModel
      *   timeType: value-of<TimeType>,
      *   timezoneSource: value-of<TimezoneSource>,
      *   year: int,
-     *   zoneId: string,
+     *   zoneID: string,
      *   hour?: int|null,
      *   millisecond?: int|null,
      *   minute?: int|null,
@@ -355,14 +355,14 @@ final class RangedTimeOperation implements BaseModel
      *   indexReference: NowReference|TodayReference|WeekReference|MonthReference|QuarterReference|FiscalQuarter|YearReference|FiscalYear,
      *   timeType: value-of<IndexedTimePoint\TimeType>,
      *   timezoneSource: value-of<IndexedTimePoint\TimezoneSource>,
-     *   zoneId: string,
+     *   zoneID: string,
      *   offset?: IndexOffset|null,
      * }|PropertyReferencedTime|array{
      *   property: string,
      *   referenceType: value-of<ReferenceType>,
      *   timeType: value-of<PropertyReferencedTime\TimeType>,
      *   timezoneSource: value-of<PropertyReferencedTime\TimezoneSource>,
-     *   zoneId: string,
+     *   zoneID: string,
      * } $upperBoundTimePoint
      */
     public function withUpperBoundTimePoint(

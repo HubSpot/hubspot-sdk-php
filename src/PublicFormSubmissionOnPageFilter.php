@@ -17,9 +17,9 @@ use HubspotSDK\PublicTimePointOperation\OperationType;
  * @phpstan-type PublicFormSubmissionOnPageFilterShape = array{
  *   filterType: value-of<FilterType>,
  *   operator: value-of<Operator>,
- *   pageId: string,
+ *   pageID: string,
  *   coalescingRefineBy?: null|PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation,
- *   formId?: string|null,
+ *   formID?: string|null,
  *   pruningRefineBy?: null|PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation,
  * }
  */
@@ -36,14 +36,14 @@ final class PublicFormSubmissionOnPageFilter implements BaseModel
     #[Required(enum: Operator::class)]
     public string $operator;
 
-    #[Required]
-    public string $pageId;
+    #[Required('pageId')]
+    public string $pageID;
 
     #[Optional]
     public PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation|null $coalescingRefineBy;
 
-    #[Optional]
-    public ?string $formId;
+    #[Optional('formId')]
+    public ?string $formID;
 
     #[Optional]
     public PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation|null $pruningRefineBy;
@@ -54,7 +54,7 @@ final class PublicFormSubmissionOnPageFilter implements BaseModel
      * To enforce required parameters use
      * ```
      * PublicFormSubmissionOnPageFilter::with(
-     *   filterType: ..., operator: ..., pageId: ...
+     *   filterType: ..., operator: ..., pageID: ...
      * )
      * ```
      *
@@ -168,20 +168,20 @@ final class PublicFormSubmissionOnPageFilter implements BaseModel
      */
     public static function with(
         Operator|string $operator,
-        string $pageId,
+        string $pageID,
         FilterType|string $filterType = 'FORM_SUBMISSION_ON_PAGE',
         PublicNumOccurrencesRefineBy|array|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation|null $coalescingRefineBy = null,
-        ?string $formId = null,
+        ?string $formID = null,
         PublicNumOccurrencesRefineBy|array|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation|null $pruningRefineBy = null,
     ): self {
         $obj = new self;
 
         $obj['filterType'] = $filterType;
         $obj['operator'] = $operator;
-        $obj['pageId'] = $pageId;
+        $obj['pageID'] = $pageID;
 
         null !== $coalescingRefineBy && $obj['coalescingRefineBy'] = $coalescingRefineBy;
-        null !== $formId && $obj['formId'] = $formId;
+        null !== $formID && $obj['formID'] = $formID;
         null !== $pruningRefineBy && $obj['pruningRefineBy'] = $pruningRefineBy;
 
         return $obj;
@@ -212,7 +212,7 @@ final class PublicFormSubmissionOnPageFilter implements BaseModel
     public function withPageID(string $pageID): self
     {
         $obj = clone $this;
-        $obj['pageId'] = $pageID;
+        $obj['pageID'] = $pageID;
 
         return $obj;
     }
@@ -274,7 +274,7 @@ final class PublicFormSubmissionOnPageFilter implements BaseModel
     public function withFormID(string $formID): self
     {
         $obj = clone $this;
-        $obj['formId'] = $formID;
+        $obj['formID'] = $formID;
 
         return $obj;
     }

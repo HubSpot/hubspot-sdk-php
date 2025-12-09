@@ -77,7 +77,7 @@ final class BatchResponseFlowIDWorkflowIDMappingResponse implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<FlowIDWorkflowIDMappingResponse|array{
-     *   flowId: int, workflowId: int
+     *   flowID: int, workflowID: int
      * }> $results
      * @param Status|value-of<Status> $status
      * @param array<string,string> $links
@@ -113,7 +113,7 @@ final class BatchResponseFlowIDWorkflowIDMappingResponse implements BaseModel
 
     /**
      * @param list<FlowIDWorkflowIDMappingResponse|array{
-     *   flowId: int, workflowId: int
+     *   flowID: int, workflowID: int
      * }> $results
      */
     public function withResults(array $results): self

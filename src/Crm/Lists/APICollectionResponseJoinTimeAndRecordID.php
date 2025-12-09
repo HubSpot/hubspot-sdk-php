@@ -57,7 +57,7 @@ final class APICollectionResponseJoinTimeAndRecordID implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<JoinTimeAndRecordID|array{
-     *   membershipTimestamp: \DateTimeInterface, recordId: string
+     *   membershipTimestamp: \DateTimeInterface, recordID: string
      * }> $results
      * @param Paging|array{next?: NextPage|null, prev?: PreviousPage|null} $paging
      */
@@ -78,7 +78,7 @@ final class APICollectionResponseJoinTimeAndRecordID implements BaseModel
 
     /**
      * @param list<JoinTimeAndRecordID|array{
-     *   membershipTimestamp: \DateTimeInterface, recordId: string
+     *   membershipTimestamp: \DateTimeInterface, recordID: string
      * }> $results
      */
     public function withResults(array $results): self

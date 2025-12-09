@@ -19,15 +19,15 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * @phpstan-type ChannelIntegrationMessageEggShape = array{
  *   attachments: list<FileAttachment|LocationAttachment|ContactAttachment|UnsupportedContentAttachment|MessageHeaderAttachment|QuickRepliesAttachment|SocialMetadataIntegrationAttachment>,
- *   channelAccountId: string,
+ *   channelAccountID: string,
  *   messageDirection: value-of<MessageDirection>,
  *   recipients: list<ChannelIntegrationParticipant>,
  *   senders: list<ChannelIntegrationParticipant>,
  *   text: string,
  *   timestamp: \DateTimeInterface,
- *   inReplyToId?: string|null,
- *   integrationIdempotencyId?: string|null,
- *   integrationThreadId?: string|null,
+ *   inReplyToID?: string|null,
+ *   integrationIdempotencyID?: string|null,
+ *   integrationThreadID?: string|null,
  *   preResolvedContacts?: PreResolvedContacts|null,
  *   richText?: string|null,
  * }
@@ -43,8 +43,8 @@ final class ChannelIntegrationMessageEgg implements BaseModel
     #[Required(list: Attachment::class)]
     public array $attachments;
 
-    #[Required]
-    public string $channelAccountId;
+    #[Required('channelAccountId')]
+    public string $channelAccountID;
 
     /** @var value-of<MessageDirection> $messageDirection */
     #[Required(enum: MessageDirection::class)]
@@ -64,14 +64,14 @@ final class ChannelIntegrationMessageEgg implements BaseModel
     #[Required]
     public \DateTimeInterface $timestamp;
 
-    #[Optional]
-    public ?string $inReplyToId;
+    #[Optional('inReplyToId')]
+    public ?string $inReplyToID;
 
-    #[Optional]
-    public ?string $integrationIdempotencyId;
+    #[Optional('integrationIdempotencyId')]
+    public ?string $integrationIdempotencyID;
 
-    #[Optional]
-    public ?string $integrationThreadId;
+    #[Optional('integrationThreadId')]
+    public ?string $integrationThreadID;
 
     #[Optional]
     public ?PreResolvedContacts $preResolvedContacts;
@@ -86,7 +86,7 @@ final class ChannelIntegrationMessageEgg implements BaseModel
      * ```
      * ChannelIntegrationMessageEgg::with(
      *   attachments: ...,
-     *   channelAccountId: ...,
+     *   channelAccountID: ...,
      *   messageDirection: ...,
      *   recipients: ...,
      *   senders: ...,
@@ -119,7 +119,7 @@ final class ChannelIntegrationMessageEgg implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<FileAttachment|array{
-     *   fileId: string, type: value-of<Type>, fileUsageType?: string|null
+     *   fileID: string, type: value-of<Type>, fileUsageType?: string|null
      * }|LocationAttachment|array{
      *   latitude: float,
      *   longitude: float,
@@ -134,7 +134,7 @@ final class ChannelIntegrationMessageEgg implements BaseModel
      *   type: value-of<UnsupportedContentAttachment\Type>,
      * }|MessageHeaderAttachment|array{
      *   type: value-of<MessageHeaderAttachment\Type>,
-     *   fileId?: int|null,
+     *   fileID?: int|null,
      *   text?: string|null,
      * }|QuickRepliesAttachment|array{
      *   quickReplies: list<QuickReply>,
@@ -156,31 +156,31 @@ final class ChannelIntegrationMessageEgg implements BaseModel
      */
     public static function with(
         array $attachments,
-        string $channelAccountId,
+        string $channelAccountID,
         MessageDirection|string $messageDirection,
         array $recipients,
         array $senders,
         string $text,
         \DateTimeInterface $timestamp,
-        ?string $inReplyToId = null,
-        ?string $integrationIdempotencyId = null,
-        ?string $integrationThreadId = null,
+        ?string $inReplyToID = null,
+        ?string $integrationIdempotencyID = null,
+        ?string $integrationThreadID = null,
         PreResolvedContacts|array|null $preResolvedContacts = null,
         ?string $richText = null,
     ): self {
         $obj = new self;
 
         $obj['attachments'] = $attachments;
-        $obj['channelAccountId'] = $channelAccountId;
+        $obj['channelAccountID'] = $channelAccountID;
         $obj['messageDirection'] = $messageDirection;
         $obj['recipients'] = $recipients;
         $obj['senders'] = $senders;
         $obj['text'] = $text;
         $obj['timestamp'] = $timestamp;
 
-        null !== $inReplyToId && $obj['inReplyToId'] = $inReplyToId;
-        null !== $integrationIdempotencyId && $obj['integrationIdempotencyId'] = $integrationIdempotencyId;
-        null !== $integrationThreadId && $obj['integrationThreadId'] = $integrationThreadId;
+        null !== $inReplyToID && $obj['inReplyToID'] = $inReplyToID;
+        null !== $integrationIdempotencyID && $obj['integrationIdempotencyID'] = $integrationIdempotencyID;
+        null !== $integrationThreadID && $obj['integrationThreadID'] = $integrationThreadID;
         null !== $preResolvedContacts && $obj['preResolvedContacts'] = $preResolvedContacts;
         null !== $richText && $obj['richText'] = $richText;
 
@@ -189,7 +189,7 @@ final class ChannelIntegrationMessageEgg implements BaseModel
 
     /**
      * @param list<FileAttachment|array{
-     *   fileId: string, type: value-of<Type>, fileUsageType?: string|null
+     *   fileID: string, type: value-of<Type>, fileUsageType?: string|null
      * }|LocationAttachment|array{
      *   latitude: float,
      *   longitude: float,
@@ -204,7 +204,7 @@ final class ChannelIntegrationMessageEgg implements BaseModel
      *   type: value-of<UnsupportedContentAttachment\Type>,
      * }|MessageHeaderAttachment|array{
      *   type: value-of<MessageHeaderAttachment\Type>,
-     *   fileId?: int|null,
+     *   fileID?: int|null,
      *   text?: string|null,
      * }|QuickRepliesAttachment|array{
      *   quickReplies: list<QuickReply>,
@@ -225,7 +225,7 @@ final class ChannelIntegrationMessageEgg implements BaseModel
     public function withChannelAccountID(string $channelAccountID): self
     {
         $obj = clone $this;
-        $obj['channelAccountId'] = $channelAccountID;
+        $obj['channelAccountID'] = $channelAccountID;
 
         return $obj;
     }
@@ -287,7 +287,7 @@ final class ChannelIntegrationMessageEgg implements BaseModel
     public function withInReplyToID(string $inReplyToID): self
     {
         $obj = clone $this;
-        $obj['inReplyToId'] = $inReplyToID;
+        $obj['inReplyToID'] = $inReplyToID;
 
         return $obj;
     }
@@ -296,7 +296,7 @@ final class ChannelIntegrationMessageEgg implements BaseModel
         string $integrationIdempotencyID
     ): self {
         $obj = clone $this;
-        $obj['integrationIdempotencyId'] = $integrationIdempotencyID;
+        $obj['integrationIdempotencyID'] = $integrationIdempotencyID;
 
         return $obj;
     }
@@ -304,7 +304,7 @@ final class ChannelIntegrationMessageEgg implements BaseModel
     public function withIntegrationThreadID(string $integrationThreadID): self
     {
         $obj = clone $this;
-        $obj['integrationThreadId'] = $integrationThreadID;
+        $obj['integrationThreadID'] = $integrationThreadID;
 
         return $obj;
     }

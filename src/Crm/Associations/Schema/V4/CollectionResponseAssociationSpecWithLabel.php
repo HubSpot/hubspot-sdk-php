@@ -56,7 +56,7 @@ final class CollectionResponseAssociationSpecWithLabel implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<AssociationSpecWithLabel|array{
-     *   category: value-of<Category>, typeId: int, label?: string|null
+     *   category: value-of<Category>, typeID: int, label?: string|null
      * }> $results
      * @param Paging|array{next?: NextPage|null, prev?: PreviousPage|null} $paging
      */
@@ -75,7 +75,7 @@ final class CollectionResponseAssociationSpecWithLabel implements BaseModel
 
     /**
      * @param list<AssociationSpecWithLabel|array{
-     *   category: value-of<Category>, typeId: int, label?: string|null
+     *   category: value-of<Category>, typeID: int, label?: string|null
      * }> $results
      */
     public function withResults(array $results): self

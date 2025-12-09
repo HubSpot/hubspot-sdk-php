@@ -49,7 +49,7 @@ final class APIStaticBranch implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param APIConnection|array{edgeType: string, nextActionId: string} $connection
+     * @param APIConnection|array{edgeType: string, nextActionID: string} $connection
      */
     public static function with(
         string $branchValue,
@@ -73,7 +73,7 @@ final class APIStaticBranch implements BaseModel
     }
 
     /**
-     * @param APIConnection|array{edgeType: string, nextActionId: string} $connection
+     * @param APIConnection|array{edgeType: string, nextActionID: string} $connection
      */
     public function withConnection(APIConnection|array $connection): self
     {

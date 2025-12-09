@@ -9,9 +9,11 @@ use HubspotSDK\Crm\Lists\APICollectionResponseRecordListMembershipNoPaging;
 use HubspotSDK\Crm\Lists\JoinTimeAndRecordID;
 use HubspotSDK\Crm\Lists\Memberships\MembershipAddAllFromListParams;
 use HubspotSDK\Crm\Lists\Memberships\MembershipAddAndRemoveParams;
+use HubspotSDK\Crm\Lists\Memberships\MembershipAddParams;
 use HubspotSDK\Crm\Lists\Memberships\MembershipGetListsParams;
 use HubspotSDK\Crm\Lists\Memberships\MembershipGetPageOrderedByAddedToListDateParams;
 use HubspotSDK\Crm\Lists\Memberships\MembershipListParams;
+use HubspotSDK\Crm\Lists\Memberships\MembershipRemoveParams;
 use HubspotSDK\Crm\Lists\MembershipsUpdateResponse;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
@@ -36,14 +38,14 @@ interface MembershipsContract
     /**
      * @api
      *
-     * @param list<string> $params
+     * @param array<mixed>|MembershipAddParams $params
      *
      * @throws APIException
      */
     public function add(
         string $listID,
-        array $params,
-        ?RequestOptions $requestOptions = null
+        array|MembershipAddParams $params,
+        ?RequestOptions $requestOptions = null,
     ): MembershipsUpdateResponse;
 
     /**
@@ -103,14 +105,14 @@ interface MembershipsContract
     /**
      * @api
      *
-     * @param list<string> $params
+     * @param array<mixed>|MembershipRemoveParams $params
      *
      * @throws APIException
      */
     public function remove(
         string $listID,
-        array $params,
-        ?RequestOptions $requestOptions = null
+        array|MembershipRemoveParams $params,
+        ?RequestOptions $requestOptions = null,
     ): MembershipsUpdateResponse;
 
     /**

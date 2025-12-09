@@ -60,7 +60,7 @@ final class CollectionResponseFolder implements BaseModel
      *   updatedAt: \DateTimeInterface,
      *   archivedAt?: \DateTimeInterface|null,
      *   name?: string|null,
-     *   parentFolderId?: string|null,
+     *   parentFolderID?: string|null,
      *   path?: string|null,
      * }> $results
      * @param Paging|array{next?: NextPage|null, prev?: PreviousPage|null} $paging
@@ -86,7 +86,7 @@ final class CollectionResponseFolder implements BaseModel
      *   updatedAt: \DateTimeInterface,
      *   archivedAt?: \DateTimeInterface|null,
      *   name?: string|null,
-     *   parentFolderId?: string|null,
+     *   parentFolderID?: string|null,
      *   path?: string|null,
      * }> $results
      */

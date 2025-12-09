@@ -16,10 +16,10 @@ use HubspotSDK\Marketing\Subscriptions\V4\Links\LinkCreateParams\Channel;
  *
  * @phpstan-type LinkCreateParamsShape = array{
  *   channel: Channel|value-of<Channel>,
- *   subscriberIdString: string,
- *   businessUnitId?: int,
+ *   subscriberIDString: string,
+ *   businessUnitID?: int,
  *   language?: string,
- *   subscriptionId?: int,
+ *   subscriptionID?: int,
  * }
  */
 final class LinkCreateParams implements BaseModel
@@ -32,24 +32,24 @@ final class LinkCreateParams implements BaseModel
     #[Required(enum: Channel::class)]
     public string $channel;
 
-    #[Required]
-    public string $subscriberIdString;
+    #[Required('subscriberIdString')]
+    public string $subscriberIDString;
 
     #[Optional]
-    public ?int $businessUnitId;
+    public ?int $businessUnitID;
 
     #[Optional]
     public ?string $language;
 
-    #[Optional]
-    public ?int $subscriptionId;
+    #[Optional('subscriptionId')]
+    public ?int $subscriptionID;
 
     /**
      * `new LinkCreateParams()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * LinkCreateParams::with(channel: ..., subscriberIdString: ...)
+     * LinkCreateParams::with(channel: ..., subscriberIDString: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -72,19 +72,19 @@ final class LinkCreateParams implements BaseModel
      */
     public static function with(
         Channel|string $channel,
-        string $subscriberIdString,
-        ?int $businessUnitId = null,
+        string $subscriberIDString,
+        ?int $businessUnitID = null,
         ?string $language = null,
-        ?int $subscriptionId = null,
+        ?int $subscriptionID = null,
     ): self {
         $obj = new self;
 
         $obj['channel'] = $channel;
-        $obj['subscriberIdString'] = $subscriberIdString;
+        $obj['subscriberIDString'] = $subscriberIDString;
 
-        null !== $businessUnitId && $obj['businessUnitId'] = $businessUnitId;
+        null !== $businessUnitID && $obj['businessUnitID'] = $businessUnitID;
         null !== $language && $obj['language'] = $language;
-        null !== $subscriptionId && $obj['subscriptionId'] = $subscriptionId;
+        null !== $subscriptionID && $obj['subscriptionID'] = $subscriptionID;
 
         return $obj;
     }
@@ -103,7 +103,7 @@ final class LinkCreateParams implements BaseModel
     public function withSubscriberIDString(string $subscriberIDString): self
     {
         $obj = clone $this;
-        $obj['subscriberIdString'] = $subscriberIDString;
+        $obj['subscriberIDString'] = $subscriberIDString;
 
         return $obj;
     }
@@ -111,7 +111,7 @@ final class LinkCreateParams implements BaseModel
     public function withBusinessUnitID(int $businessUnitID): self
     {
         $obj = clone $this;
-        $obj['businessUnitId'] = $businessUnitID;
+        $obj['businessUnitID'] = $businessUnitID;
 
         return $obj;
     }
@@ -127,7 +127,7 @@ final class LinkCreateParams implements BaseModel
     public function withSubscriptionID(int $subscriptionID): self
     {
         $obj = clone $this;
-        $obj['subscriptionId'] = $subscriptionID;
+        $obj['subscriptionID'] = $subscriptionID;
 
         return $obj;
     }

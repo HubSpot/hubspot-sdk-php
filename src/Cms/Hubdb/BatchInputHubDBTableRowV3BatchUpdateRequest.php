@@ -47,7 +47,7 @@ final class BatchInputHubDBTableRowV3BatchUpdateRequest implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<HubDBTableRowV3BatchUpdateRequest|array{
-     *   childTableId: int,
+     *   childTableID: int,
      *   displayIndex: int,
      *   values: array<string,Variant>,
      *   id?: string|null,
@@ -66,7 +66,7 @@ final class BatchInputHubDBTableRowV3BatchUpdateRequest implements BaseModel
 
     /**
      * @param list<HubDBTableRowV3BatchUpdateRequest|array{
-     *   childTableId: int,
+     *   childTableID: int,
      *   displayIndex: int,
      *   values: array<string,Variant>,
      *   id?: string|null,

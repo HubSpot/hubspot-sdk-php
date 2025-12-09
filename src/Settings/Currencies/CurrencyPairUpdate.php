@@ -14,7 +14,7 @@ use HubspotSDK\Settings\Currencies\CurrencyPairUpdate\ToCurrencyCode;
  * @phpstan-type CurrencyPairUpdateShape = array{
  *   fromCurrencyCode: value-of<FromCurrencyCode>,
  *   toCurrencyCode: value-of<ToCurrencyCode>,
- *   visibleInUI: bool,
+ *   visibleInUi: bool,
  * }
  */
 final class CurrencyPairUpdate implements BaseModel
@@ -41,8 +41,8 @@ final class CurrencyPairUpdate implements BaseModel
     /**
      * This indicates if the currency pair is shown in the MultiCurrency settings page. Setting this to false will remove the currency pair from the settings page.
      */
-    #[Required]
-    public bool $visibleInUI;
+    #[Required('visibleInUI')]
+    public bool $visibleInUi;
 
     /**
      * `new CurrencyPairUpdate()` is missing required properties by the API.
@@ -50,7 +50,7 @@ final class CurrencyPairUpdate implements BaseModel
      * To enforce required parameters use
      * ```
      * CurrencyPairUpdate::with(
-     *   fromCurrencyCode: ..., toCurrencyCode: ..., visibleInUI: ...
+     *   fromCurrencyCode: ..., toCurrencyCode: ..., visibleInUi: ...
      * )
      * ```
      *
@@ -79,13 +79,13 @@ final class CurrencyPairUpdate implements BaseModel
     public static function with(
         FromCurrencyCode|string $fromCurrencyCode,
         ToCurrencyCode|string $toCurrencyCode,
-        bool $visibleInUI,
+        bool $visibleInUi,
     ): self {
         $obj = new self;
 
         $obj['fromCurrencyCode'] = $fromCurrencyCode;
         $obj['toCurrencyCode'] = $toCurrencyCode;
-        $obj['visibleInUI'] = $visibleInUI;
+        $obj['visibleInUi'] = $visibleInUi;
 
         return $obj;
     }
@@ -124,7 +124,7 @@ final class CurrencyPairUpdate implements BaseModel
     public function withVisibleInUi(bool $visibleInUi): self
     {
         $obj = clone $this;
-        $obj['visibleInUI'] = $visibleInUi;
+        $obj['visibleInUi'] = $visibleInUi;
 
         return $obj;
     }

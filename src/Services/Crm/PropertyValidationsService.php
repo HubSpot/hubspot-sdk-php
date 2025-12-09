@@ -51,7 +51,7 @@ final class PropertyValidationsService implements PropertyValidationsContract
      *
      * @param RuleType|value-of<RuleType> $ruleType
      * @param array{
-     *   objectTypeId: string, propertyName: string, ruleArguments: list<string>
+     *   objectTypeID: string, propertyName: string, ruleArguments: list<string>
      * }|PropertyValidationCrmV3PropertyValidationsObjectTypeIDPropertyNameRuleTypeRuleTypeParams $params
      *
      * @throws APIException
@@ -65,8 +65,8 @@ final class PropertyValidationsService implements PropertyValidationsContract
             $params,
             $requestOptions,
         );
-        $objectTypeID = $parsed['objectTypeId'];
-        unset($parsed['objectTypeId']);
+        $objectTypeID = $parsed['objectTypeID'];
+        unset($parsed['objectTypeID']);
         $propertyName = $parsed['propertyName'];
         unset($parsed['propertyName']);
 
@@ -81,7 +81,7 @@ final class PropertyValidationsService implements PropertyValidationsContract
             ],
             body: (object) array_diff_key(
                 $parsed,
-                array_flip(['objectTypeId', 'propertyName'])
+                array_flip(['objectTypeID', 'propertyName'])
             ),
             options: $options,
             convert: null,
@@ -95,7 +95,7 @@ final class PropertyValidationsService implements PropertyValidationsContract
      *
      * Read a property's validation rules identified by {propertyName}.
      *
-     * @param array{objectTypeId: string}|PropertyValidationGetParams $params
+     * @param array{objectTypeID: string}|PropertyValidationGetParams $params
      *
      * @throws APIException
      */
@@ -108,8 +108,8 @@ final class PropertyValidationsService implements PropertyValidationsContract
             $params,
             $requestOptions,
         );
-        $objectTypeID = $parsed['objectTypeId'];
-        unset($parsed['objectTypeId']);
+        $objectTypeID = $parsed['objectTypeID'];
+        unset($parsed['objectTypeID']);
 
         /** @var BaseResponse<CollectionResponsePublicPropertyValidationRuleNoPaging,> */
         $response = $this->client->request(

@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type PublicAssociationDefinitionUpdateRequestShape = array{
- *   associationTypeId: int, label: string, inverseLabel?: string|null
+ *   associationTypeID: int, label: string, inverseLabel?: string|null
  * }
  */
 final class PublicAssociationDefinitionUpdateRequest implements BaseModel
@@ -19,8 +19,8 @@ final class PublicAssociationDefinitionUpdateRequest implements BaseModel
     /** @use SdkModel<PublicAssociationDefinitionUpdateRequestShape> */
     use SdkModel;
 
-    #[Required]
-    public int $associationTypeId;
+    #[Required('associationTypeId')]
+    public int $associationTypeID;
 
     #[Required]
     public string $label;
@@ -34,7 +34,7 @@ final class PublicAssociationDefinitionUpdateRequest implements BaseModel
      * To enforce required parameters use
      * ```
      * PublicAssociationDefinitionUpdateRequest::with(
-     *   associationTypeId: ..., label: ...
+     *   associationTypeID: ..., label: ...
      * )
      * ```
      *
@@ -57,13 +57,13 @@ final class PublicAssociationDefinitionUpdateRequest implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      */
     public static function with(
-        int $associationTypeId,
+        int $associationTypeID,
         string $label,
         ?string $inverseLabel = null
     ): self {
         $obj = new self;
 
-        $obj['associationTypeId'] = $associationTypeId;
+        $obj['associationTypeID'] = $associationTypeID;
         $obj['label'] = $label;
 
         null !== $inverseLabel && $obj['inverseLabel'] = $inverseLabel;
@@ -74,7 +74,7 @@ final class PublicAssociationDefinitionUpdateRequest implements BaseModel
     public function withAssociationTypeID(int $associationTypeID): self
     {
         $obj = clone $this;
-        $obj['associationTypeId'] = $associationTypeID;
+        $obj['associationTypeID'] = $associationTypeID;
 
         return $obj;
     }

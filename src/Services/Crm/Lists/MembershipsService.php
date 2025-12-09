@@ -75,14 +75,14 @@ final class MembershipsService implements MembershipsContract
      *
      * This endpoint only works for lists that have a `processingType` of `MANUAL` or `SNAPSHOT`.
      *
-     * @param list<string> $params
+     * @param array{body: list<string>}|MembershipAddParams $params
      *
      * @throws APIException
      */
     public function add(
         string $listID,
-        array $params,
-        ?RequestOptions $requestOptions = null
+        array|MembershipAddParams $params,
+        ?RequestOptions $requestOptions = null,
     ): MembershipsUpdateResponse {
         [$parsed, $options] = MembershipAddParams::parseRequest(
             $params,
@@ -110,7 +110,7 @@ final class MembershipsService implements MembershipsContract
      *
      * This endpoint only supports a `sourceListId` for lists with less than 100,000 memberships.
      *
-     * @param array{listId: string}|MembershipAddAllFromListParams $params
+     * @param array{listID: string}|MembershipAddAllFromListParams $params
      *
      * @throws APIException
      */
@@ -123,8 +123,8 @@ final class MembershipsService implements MembershipsContract
             $params,
             $requestOptions,
         );
-        $listID = $parsed['listId'];
-        unset($parsed['listId']);
+        $listID = $parsed['listID'];
+        unset($parsed['listID']);
 
         /** @var BaseResponse<mixed> */
         $response = $this->client->request(
@@ -147,7 +147,7 @@ final class MembershipsService implements MembershipsContract
      * This endpoint only works for lists that have a `processingType` of `MANUAL` or `SNAPSHOT`.
      *
      * @param array{
-     *   recordIdsToAdd: list<string>, recordIdsToRemove: list<string>
+     *   recordIDsToAdd: list<string>, recordIDsToRemove: list<string>
      * }|MembershipAddAndRemoveParams $params
      *
      * @throws APIException
@@ -179,7 +179,7 @@ final class MembershipsService implements MembershipsContract
      *
      * For given record provide lists this record is member of.
      *
-     * @param array{objectTypeId: string}|MembershipGetListsParams $params
+     * @param array{objectTypeID: string}|MembershipGetListsParams $params
      *
      * @throws APIException
      */
@@ -192,8 +192,8 @@ final class MembershipsService implements MembershipsContract
             $params,
             $requestOptions,
         );
-        $objectTypeID = $parsed['objectTypeId'];
-        unset($parsed['objectTypeId']);
+        $objectTypeID = $parsed['objectTypeID'];
+        unset($parsed['objectTypeID']);
 
         /** @var BaseResponse<APICollectionResponseRecordListMembershipNoPaging> */
         $response = $this->client->request(
@@ -255,14 +255,14 @@ final class MembershipsService implements MembershipsContract
      *
      * This endpoint only works for lists that have a `processingType` of `MANUAL` or `SNAPSHOT`.
      *
-     * @param list<string> $params
+     * @param array{body: list<string>}|MembershipRemoveParams $params
      *
      * @throws APIException
      */
     public function remove(
         string $listID,
-        array $params,
-        ?RequestOptions $requestOptions = null
+        array|MembershipRemoveParams $params,
+        ?RequestOptions $requestOptions = null,
     ): MembershipsUpdateResponse {
         [$parsed, $options] = MembershipRemoveParams::parseRequest(
             $params,

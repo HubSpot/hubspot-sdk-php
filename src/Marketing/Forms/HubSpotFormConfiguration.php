@@ -159,7 +159,7 @@ final class HubSpotFormConfiguration implements BaseModel
      *   type: value-of<Type>, value: string
      * } $postSubmitAction
      * @param list<LifecycleStage|array{
-     *   objectTypeId: string, value: string
+     *   objectTypeID: string, value: string
      * }> $lifecycleStages
      */
     public static function with(
@@ -330,7 +330,7 @@ final class HubSpotFormConfiguration implements BaseModel
 
     /**
      * @param list<LifecycleStage|array{
-     *   objectTypeId: string, value: string
+     *   objectTypeID: string, value: string
      * }> $lifecycleStages
      */
     public function withLifecycleStages(array $lifecycleStages): self

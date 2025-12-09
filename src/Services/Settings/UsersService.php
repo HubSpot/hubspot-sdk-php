@@ -36,9 +36,9 @@ final class UsersService implements UsersContract
      *   email: string,
      *   firstName?: string,
      *   lastName?: string,
-     *   primaryTeamId?: string,
-     *   roleId?: string,
-     *   secondaryTeamIds?: list<string>,
+     *   primaryTeamID?: string,
+     *   roleID?: string,
+     *   secondaryTeamIDs?: list<string>,
      *   sendWelcomeEmail?: bool,
      * }|UserCreateParams $params
      *
@@ -74,9 +74,9 @@ final class UsersService implements UsersContract
      *   idProperty?: 'EMAIL'|'USER_ID'|IDProperty,
      *   firstName?: string,
      *   lastName?: string,
-     *   primaryTeamId?: string,
-     *   roleId?: string,
-     *   secondaryTeamIds?: list<string>,
+     *   primaryTeamID?: string,
+     *   roleID?: string,
+     *   secondaryTeamIDs?: list<string>,
      * }|UserUpdateParams $params
      *
      * @throws APIException

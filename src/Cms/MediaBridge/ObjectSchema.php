@@ -28,17 +28,17 @@ use HubspotSDK\PropertyModificationMetadata;
  *   fullyQualifiedName: string,
  *   labels: ObjectTypeDefinitionLabels,
  *   name: string,
- *   objectTypeId: string,
+ *   objectTypeID: string,
  *   properties: list<Property1>,
  *   requiredProperties: list<string>,
  *   searchableProperties: list<string>,
  *   secondaryDisplayProperties: list<string>,
  *   createdAt?: \DateTimeInterface|null,
- *   createdByUserId?: int|null,
+ *   createdByUserID?: int|null,
  *   description?: string|null,
  *   primaryDisplayProperty?: string|null,
  *   updatedAt?: \DateTimeInterface|null,
- *   updatedByUserId?: int|null,
+ *   updatedByUserID?: int|null,
  * }
  */
 final class ObjectSchema implements BaseModel
@@ -68,8 +68,8 @@ final class ObjectSchema implements BaseModel
     #[Required]
     public string $name;
 
-    #[Required]
-    public string $objectTypeId;
+    #[Required('objectTypeId')]
+    public string $objectTypeID;
 
     /** @var list<Property1> $properties */
     #[Required(list: Property1::class)]
@@ -90,8 +90,8 @@ final class ObjectSchema implements BaseModel
     #[Optional]
     public ?\DateTimeInterface $createdAt;
 
-    #[Optional]
-    public ?int $createdByUserId;
+    #[Optional('createdByUserId')]
+    public ?int $createdByUserID;
 
     #[Optional]
     public ?string $description;
@@ -102,8 +102,8 @@ final class ObjectSchema implements BaseModel
     #[Optional]
     public ?\DateTimeInterface $updatedAt;
 
-    #[Optional]
-    public ?int $updatedByUserId;
+    #[Optional('updatedByUserId')]
+    public ?int $updatedByUserID;
 
     /**
      * `new ObjectSchema()` is missing required properties by the API.
@@ -118,7 +118,7 @@ final class ObjectSchema implements BaseModel
      *   fullyQualifiedName: ...,
      *   labels: ...,
      *   name: ...,
-     *   objectTypeId: ...,
+     *   objectTypeID: ...,
      *   properties: ...,
      *   requiredProperties: ...,
      *   searchableProperties: ...,
@@ -159,24 +159,24 @@ final class ObjectSchema implements BaseModel
      *   allowsCustomLabels: bool,
      *   cardinality: value-of<Cardinality>,
      *   category: value-of<Category>,
-     *   fromObjectTypeId: string,
+     *   fromObjectTypeID: string,
      *   hasAllAssociatedObjects: bool,
      *   hasCascadingDeletes: bool,
-     *   hasUserEnforcedMaxFromObjectIds: bool,
-     *   hasUserEnforcedMaxToObjectIds: bool,
+     *   hasUserEnforcedMaxFromObjectIDs: bool,
+     *   hasUserEnforcedMaxToObjectIDs: bool,
      *   hidden: bool,
      *   inverseAllowsCustomLabels: bool,
      *   inverseCardinality: value-of<InverseCardinality>,
      *   inverseHasAllAssociatedObjects: bool,
-     *   inverseId: int,
+     *   inverseID: int,
      *   inverseName: string,
      *   isInversePrimary: bool,
      *   isPrimary: bool,
-     *   maxFromObjectIds: int,
-     *   maxToObjectIds: int,
+     *   maxFromObjectIDs: int,
+     *   maxToObjectIDs: int,
      *   name: string,
      *   portalUniqueIdentifier: string,
-     *   toObjectTypeId: string,
+     *   toObjectTypeID: string,
      *   fromObjectType?: value-of<FromObjectType>|null,
      *   inverseLabel?: string|null,
      *   label?: string|null,
@@ -198,7 +198,7 @@ final class ObjectSchema implements BaseModel
      *   calculated?: bool|null,
      *   calculationFormula?: string|null,
      *   createdAt?: \DateTimeInterface|null,
-     *   createdUserId?: string|null,
+     *   createdUserID?: string|null,
      *   dataSensitivity?: value-of<DataSensitivity>|null,
      *   dateDisplayHint?: value-of<DateDisplayHint>|null,
      *   displayOrder?: int|null,
@@ -212,7 +212,7 @@ final class ObjectSchema implements BaseModel
      *   sensitiveDataCategories?: list<string>|null,
      *   showCurrencySymbol?: bool|null,
      *   updatedAt?: \DateTimeInterface|null,
-     *   updatedUserId?: string|null,
+     *   updatedUserID?: string|null,
      * }> $properties
      * @param list<string> $requiredProperties
      * @param list<string> $searchableProperties
@@ -226,17 +226,17 @@ final class ObjectSchema implements BaseModel
         string $fullyQualifiedName,
         ObjectTypeDefinitionLabels|array $labels,
         string $name,
-        string $objectTypeId,
+        string $objectTypeID,
         array $properties,
         array $requiredProperties,
         array $searchableProperties,
         array $secondaryDisplayProperties,
         ?\DateTimeInterface $createdAt = null,
-        ?int $createdByUserId = null,
+        ?int $createdByUserID = null,
         ?string $description = null,
         ?string $primaryDisplayProperty = null,
         ?\DateTimeInterface $updatedAt = null,
-        ?int $updatedByUserId = null,
+        ?int $updatedByUserID = null,
     ): self {
         $obj = new self;
 
@@ -247,18 +247,18 @@ final class ObjectSchema implements BaseModel
         $obj['fullyQualifiedName'] = $fullyQualifiedName;
         $obj['labels'] = $labels;
         $obj['name'] = $name;
-        $obj['objectTypeId'] = $objectTypeId;
+        $obj['objectTypeID'] = $objectTypeID;
         $obj['properties'] = $properties;
         $obj['requiredProperties'] = $requiredProperties;
         $obj['searchableProperties'] = $searchableProperties;
         $obj['secondaryDisplayProperties'] = $secondaryDisplayProperties;
 
         null !== $createdAt && $obj['createdAt'] = $createdAt;
-        null !== $createdByUserId && $obj['createdByUserId'] = $createdByUserId;
+        null !== $createdByUserID && $obj['createdByUserID'] = $createdByUserID;
         null !== $description && $obj['description'] = $description;
         null !== $primaryDisplayProperty && $obj['primaryDisplayProperty'] = $primaryDisplayProperty;
         null !== $updatedAt && $obj['updatedAt'] = $updatedAt;
-        null !== $updatedByUserId && $obj['updatedByUserId'] = $updatedByUserId;
+        null !== $updatedByUserID && $obj['updatedByUserID'] = $updatedByUserID;
 
         return $obj;
     }
@@ -294,24 +294,24 @@ final class ObjectSchema implements BaseModel
      *   allowsCustomLabels: bool,
      *   cardinality: value-of<Cardinality>,
      *   category: value-of<Category>,
-     *   fromObjectTypeId: string,
+     *   fromObjectTypeID: string,
      *   hasAllAssociatedObjects: bool,
      *   hasCascadingDeletes: bool,
-     *   hasUserEnforcedMaxFromObjectIds: bool,
-     *   hasUserEnforcedMaxToObjectIds: bool,
+     *   hasUserEnforcedMaxFromObjectIDs: bool,
+     *   hasUserEnforcedMaxToObjectIDs: bool,
      *   hidden: bool,
      *   inverseAllowsCustomLabels: bool,
      *   inverseCardinality: value-of<InverseCardinality>,
      *   inverseHasAllAssociatedObjects: bool,
-     *   inverseId: int,
+     *   inverseID: int,
      *   inverseName: string,
      *   isInversePrimary: bool,
      *   isPrimary: bool,
-     *   maxFromObjectIds: int,
-     *   maxToObjectIds: int,
+     *   maxFromObjectIDs: int,
+     *   maxToObjectIDs: int,
      *   name: string,
      *   portalUniqueIdentifier: string,
-     *   toObjectTypeId: string,
+     *   toObjectTypeID: string,
      *   fromObjectType?: value-of<FromObjectType>|null,
      *   inverseLabel?: string|null,
      *   label?: string|null,
@@ -358,7 +358,7 @@ final class ObjectSchema implements BaseModel
     public function withObjectTypeID(string $objectTypeID): self
     {
         $obj = clone $this;
-        $obj['objectTypeId'] = $objectTypeID;
+        $obj['objectTypeID'] = $objectTypeID;
 
         return $obj;
     }
@@ -377,7 +377,7 @@ final class ObjectSchema implements BaseModel
      *   calculated?: bool|null,
      *   calculationFormula?: string|null,
      *   createdAt?: \DateTimeInterface|null,
-     *   createdUserId?: string|null,
+     *   createdUserID?: string|null,
      *   dataSensitivity?: value-of<DataSensitivity>|null,
      *   dateDisplayHint?: value-of<DateDisplayHint>|null,
      *   displayOrder?: int|null,
@@ -391,7 +391,7 @@ final class ObjectSchema implements BaseModel
      *   sensitiveDataCategories?: list<string>|null,
      *   showCurrencySymbol?: bool|null,
      *   updatedAt?: \DateTimeInterface|null,
-     *   updatedUserId?: string|null,
+     *   updatedUserID?: string|null,
      * }> $properties
      */
     public function withProperties(array $properties): self
@@ -447,7 +447,7 @@ final class ObjectSchema implements BaseModel
     public function withCreatedByUserID(int $createdByUserID): self
     {
         $obj = clone $this;
-        $obj['createdByUserId'] = $createdByUserID;
+        $obj['createdByUserID'] = $createdByUserID;
 
         return $obj;
     }
@@ -480,7 +480,7 @@ final class ObjectSchema implements BaseModel
     public function withUpdatedByUserID(int $updatedByUserID): self
     {
         $obj = clone $this;
-        $obj['updatedByUserId'] = $updatedByUserID;
+        $obj['updatedByUserID'] = $updatedByUserID;
 
         return $obj;
     }

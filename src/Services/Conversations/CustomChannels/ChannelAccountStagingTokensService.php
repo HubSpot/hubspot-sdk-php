@@ -26,7 +26,7 @@ final class ChannelAccountStagingTokensService implements ChannelAccountStagingT
      * Update a channel account staging token's account name and delivery identifier. This information will be applied to the channel account created from this staging token. This is used for public apps.
      *
      * @param array{
-     *   channelId: int,
+     *   channelID: int,
      *   accountName: string,
      *   deliveryIdentifier: array{
      *     type: string, value: string
@@ -44,8 +44,8 @@ final class ChannelAccountStagingTokensService implements ChannelAccountStagingT
             $params,
             $requestOptions,
         );
-        $channelID = $parsed['channelId'];
-        unset($parsed['channelId']);
+        $channelID = $parsed['channelID'];
+        unset($parsed['channelID']);
 
         /** @var BaseResponse<PublicChannelAccountStagingToken> */
         $response = $this->client->request(
@@ -55,7 +55,7 @@ final class ChannelAccountStagingTokensService implements ChannelAccountStagingT
                 $channelID,
                 $accountToken,
             ],
-            body: (object) array_diff_key($parsed, ['channelId']),
+            body: (object) array_diff_key($parsed, ['channelID']),
             options: $options,
             convert: PublicChannelAccountStagingToken::class,
         );

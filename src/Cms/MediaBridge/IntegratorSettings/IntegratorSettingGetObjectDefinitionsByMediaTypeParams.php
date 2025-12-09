@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Cms\MediaBridge\IntegratorSettingsService::getObjectDefinitionsByMediaType()
  *
  * @phpstan-type IntegratorSettingGetObjectDefinitionsByMediaTypeParamsShape = array{
- *   appId: int, includeFullDefinition?: bool
+ *   appID: int, includeFullDefinition?: bool
  * }
  */
 final class IntegratorSettingGetObjectDefinitionsByMediaTypeParams implements BaseModel
@@ -26,7 +26,7 @@ final class IntegratorSettingGetObjectDefinitionsByMediaTypeParams implements Ba
     use SdkParams;
 
     #[Required]
-    public int $appId;
+    public int $appID;
 
     /**
      * Include the full definition in the response.
@@ -39,7 +39,7 @@ final class IntegratorSettingGetObjectDefinitionsByMediaTypeParams implements Ba
      *
      * To enforce required parameters use
      * ```
-     * IntegratorSettingGetObjectDefinitionsByMediaTypeParams::with(appId: ...)
+     * IntegratorSettingGetObjectDefinitionsByMediaTypeParams::with(appID: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -59,12 +59,12 @@ final class IntegratorSettingGetObjectDefinitionsByMediaTypeParams implements Ba
      * You must use named parameters to construct any parameters with a default value.
      */
     public static function with(
-        int $appId,
+        int $appID,
         ?bool $includeFullDefinition = null
     ): self {
         $obj = new self;
 
-        $obj['appId'] = $appId;
+        $obj['appID'] = $appID;
 
         null !== $includeFullDefinition && $obj['includeFullDefinition'] = $includeFullDefinition;
 
@@ -74,7 +74,7 @@ final class IntegratorSettingGetObjectDefinitionsByMediaTypeParams implements Ba
     public function withAppID(int $appID): self
     {
         $obj = clone $this;
-        $obj['appId'] = $appID;
+        $obj['appID'] = $appID;
 
         return $obj;
     }

@@ -11,7 +11,7 @@ use HubspotSDK\Crm\Extensions\Cards\CardObjectTypeBody\Name;
 
 /**
  * @phpstan-type PublicCardFetchBodyShape = array{
- *   objectTypes: list<CardObjectTypeBody>, targetUrl: string
+ *   objectTypes: list<CardObjectTypeBody>, targetURL: string
  * }
  */
 final class PublicCardFetchBody implements BaseModel
@@ -23,15 +23,15 @@ final class PublicCardFetchBody implements BaseModel
     #[Required(list: CardObjectTypeBody::class)]
     public array $objectTypes;
 
-    #[Required]
-    public string $targetUrl;
+    #[Required('targetUrl')]
+    public string $targetURL;
 
     /**
      * `new PublicCardFetchBody()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * PublicCardFetchBody::with(objectTypes: ..., targetUrl: ...)
+     * PublicCardFetchBody::with(objectTypes: ..., targetURL: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -54,12 +54,12 @@ final class PublicCardFetchBody implements BaseModel
      *   name: value-of<Name>, propertiesToSend: list<string>
      * }> $objectTypes
      */
-    public static function with(array $objectTypes, string $targetUrl): self
+    public static function with(array $objectTypes, string $targetURL): self
     {
         $obj = new self;
 
         $obj['objectTypes'] = $objectTypes;
-        $obj['targetUrl'] = $targetUrl;
+        $obj['targetURL'] = $targetURL;
 
         return $obj;
     }
@@ -80,7 +80,7 @@ final class PublicCardFetchBody implements BaseModel
     public function withTargetURL(string $targetURL): self
     {
         $obj = clone $this;
-        $obj['targetUrl'] = $targetURL;
+        $obj['targetURL'] = $targetURL;
 
         return $obj;
     }

@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type APIUnEnrollmentSettingShape = array{
- *   flowIds: list<string>, type: value-of<Type>
+ *   flowIDs: list<string>, type: value-of<Type>
  * }
  */
 final class APIUnEnrollmentSetting implements BaseModel
@@ -19,9 +19,9 @@ final class APIUnEnrollmentSetting implements BaseModel
     /** @use SdkModel<APIUnEnrollmentSettingShape> */
     use SdkModel;
 
-    /** @var list<string> $flowIds */
-    #[Required(list: 'string')]
-    public array $flowIds;
+    /** @var list<string> $flowIDs */
+    #[Required('flowIds', list: 'string')]
+    public array $flowIDs;
 
     /** @var value-of<Type> $type */
     #[Required(enum: Type::class)]
@@ -32,7 +32,7 @@ final class APIUnEnrollmentSetting implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * APIUnEnrollmentSetting::with(flowIds: ..., type: ...)
+     * APIUnEnrollmentSetting::with(flowIDs: ..., type: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -51,14 +51,14 @@ final class APIUnEnrollmentSetting implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<string> $flowIds
+     * @param list<string> $flowIDs
      * @param Type|value-of<Type> $type
      */
-    public static function with(array $flowIds, Type|string $type): self
+    public static function with(array $flowIDs, Type|string $type): self
     {
         $obj = new self;
 
-        $obj['flowIds'] = $flowIds;
+        $obj['flowIDs'] = $flowIDs;
         $obj['type'] = $type;
 
         return $obj;
@@ -70,7 +70,7 @@ final class APIUnEnrollmentSetting implements BaseModel
     public function withFlowIDs(array $flowIDs): self
     {
         $obj = clone $this;
-        $obj['flowIds'] = $flowIDs;
+        $obj['flowIDs'] = $flowIDs;
 
         return $obj;
     }

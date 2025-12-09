@@ -40,7 +40,7 @@ final class SettingsTest extends TestCase
         $result = $this->client->webhooks->settings->update(
             0,
             [
-                'targetUrl' => 'https://www.example.com/hubspot/target',
+                'targetURL' => 'https://www.example.com/hubspot/target',
                 'throttling' => ['maxConcurrentRequests' => 10],
             ],
         );
@@ -59,7 +59,7 @@ final class SettingsTest extends TestCase
         $result = $this->client->webhooks->settings->update(
             0,
             [
-                'targetUrl' => 'https://www.example.com/hubspot/target',
+                'targetURL' => 'https://www.example.com/hubspot/target',
                 'throttling' => ['maxConcurrentRequests' => 10],
             ],
         );

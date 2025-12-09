@@ -54,7 +54,7 @@ final class CollectionResponseMultiAssociatedObjectWithLabel implements BaseMode
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<MultiAssociatedObjectWithLabel|array{
-     *   associationTypes: list<AssociationSpecWithLabel>, toObjectId: string
+     *   associationTypes: list<AssociationSpecWithLabel>, toObjectID: string
      * }> $results
      * @param Paging|array{next?: NextPage|null, prev?: PreviousPage|null} $paging
      */
@@ -73,7 +73,7 @@ final class CollectionResponseMultiAssociatedObjectWithLabel implements BaseMode
 
     /**
      * @param list<MultiAssociatedObjectWithLabel|array{
-     *   associationTypes: list<AssociationSpecWithLabel>, toObjectId: string
+     *   associationTypes: list<AssociationSpecWithLabel>, toObjectID: string
      * }> $results
      */
     public function withResults(array $results): self

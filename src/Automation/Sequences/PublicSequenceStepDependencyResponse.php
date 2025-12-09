@@ -13,9 +13,9 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   id: string,
  *   createdAt: \DateTimeInterface,
  *   dependencyType: string,
- *   reliesOnSequenceStepId: string,
+ *   reliesOnSequenceStepID: string,
  *   reliesOnStepOrder: int,
- *   requiredBySequenceStepId: string,
+ *   requiredBySequenceStepID: string,
  *   requiredByStepOrder: int,
  *   updatedAt: \DateTimeInterface,
  * }
@@ -34,14 +34,14 @@ final class PublicSequenceStepDependencyResponse implements BaseModel
     #[Required]
     public string $dependencyType;
 
-    #[Required]
-    public string $reliesOnSequenceStepId;
+    #[Required('reliesOnSequenceStepId')]
+    public string $reliesOnSequenceStepID;
 
     #[Required]
     public int $reliesOnStepOrder;
 
-    #[Required]
-    public string $requiredBySequenceStepId;
+    #[Required('requiredBySequenceStepId')]
+    public string $requiredBySequenceStepID;
 
     #[Required]
     public int $requiredByStepOrder;
@@ -58,9 +58,9 @@ final class PublicSequenceStepDependencyResponse implements BaseModel
      *   id: ...,
      *   createdAt: ...,
      *   dependencyType: ...,
-     *   reliesOnSequenceStepId: ...,
+     *   reliesOnSequenceStepID: ...,
      *   reliesOnStepOrder: ...,
-     *   requiredBySequenceStepId: ...,
+     *   requiredBySequenceStepID: ...,
      *   requiredByStepOrder: ...,
      *   updatedAt: ...,
      * )
@@ -94,9 +94,9 @@ final class PublicSequenceStepDependencyResponse implements BaseModel
         string $id,
         \DateTimeInterface $createdAt,
         string $dependencyType,
-        string $reliesOnSequenceStepId,
+        string $reliesOnSequenceStepID,
         int $reliesOnStepOrder,
-        string $requiredBySequenceStepId,
+        string $requiredBySequenceStepID,
         int $requiredByStepOrder,
         \DateTimeInterface $updatedAt,
     ): self {
@@ -105,9 +105,9 @@ final class PublicSequenceStepDependencyResponse implements BaseModel
         $obj['id'] = $id;
         $obj['createdAt'] = $createdAt;
         $obj['dependencyType'] = $dependencyType;
-        $obj['reliesOnSequenceStepId'] = $reliesOnSequenceStepId;
+        $obj['reliesOnSequenceStepID'] = $reliesOnSequenceStepID;
         $obj['reliesOnStepOrder'] = $reliesOnStepOrder;
-        $obj['requiredBySequenceStepId'] = $requiredBySequenceStepId;
+        $obj['requiredBySequenceStepID'] = $requiredBySequenceStepID;
         $obj['requiredByStepOrder'] = $requiredByStepOrder;
         $obj['updatedAt'] = $updatedAt;
 
@@ -142,7 +142,7 @@ final class PublicSequenceStepDependencyResponse implements BaseModel
         string $reliesOnSequenceStepID
     ): self {
         $obj = clone $this;
-        $obj['reliesOnSequenceStepId'] = $reliesOnSequenceStepID;
+        $obj['reliesOnSequenceStepID'] = $reliesOnSequenceStepID;
 
         return $obj;
     }
@@ -159,7 +159,7 @@ final class PublicSequenceStepDependencyResponse implements BaseModel
         string $requiredBySequenceStepID
     ): self {
         $obj = clone $this;
-        $obj['requiredBySequenceStepId'] = $requiredBySequenceStepID;
+        $obj['requiredBySequenceStepID'] = $requiredBySequenceStepID;
 
         return $obj;
     }

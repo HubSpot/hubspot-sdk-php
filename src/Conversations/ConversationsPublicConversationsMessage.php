@@ -20,10 +20,10 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   id: string,
  *   archived: bool,
  *   attachments: list<PublicFile|PublicLocation|PublicContact|PublicUnsupportedContent|PublicMessageHeader|PublicQuickReplies|PublicWhatsAppTemplateMetadata|PublicSocialMetadataAttachment>,
- *   channelAccountId: string,
- *   channelId: string,
+ *   channelAccountID: string,
+ *   channelID: string,
  *   client: PublicClient,
- *   conversationsThreadId: string,
+ *   conversationsThreadID: string,
  *   createdAt: \DateTimeInterface,
  *   createdBy: string,
  *   direction: value-of<Direction>,
@@ -32,7 +32,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   text: string,
  *   truncationStatus: value-of<TruncationStatus>,
  *   type: value-of<Type>,
- *   inReplyToId?: string|null,
+ *   inReplyToID?: string|null,
  *   richText?: string|null,
  *   status?: PublicMessageStatus|null,
  *   subject?: string|null,
@@ -56,17 +56,17 @@ final class ConversationsPublicConversationsMessage implements BaseModel
     #[Required(list: Attachment::class)]
     public array $attachments;
 
-    #[Required]
-    public string $channelAccountId;
+    #[Required('channelAccountId')]
+    public string $channelAccountID;
 
-    #[Required]
-    public string $channelId;
+    #[Required('channelId')]
+    public string $channelID;
 
     #[Required]
     public PublicClient $client;
 
-    #[Required]
-    public string $conversationsThreadId;
+    #[Required('conversationsThreadId')]
+    public string $conversationsThreadID;
 
     #[Required]
     public \DateTimeInterface $createdAt;
@@ -97,8 +97,8 @@ final class ConversationsPublicConversationsMessage implements BaseModel
     #[Required(enum: Type::class)]
     public string $type;
 
-    #[Optional]
-    public ?string $inReplyToId;
+    #[Optional('inReplyToId')]
+    public ?string $inReplyToID;
 
     #[Optional]
     public ?string $richText;
@@ -121,10 +121,10 @@ final class ConversationsPublicConversationsMessage implements BaseModel
      *   id: ...,
      *   archived: ...,
      *   attachments: ...,
-     *   channelAccountId: ...,
-     *   channelId: ...,
+     *   channelAccountID: ...,
+     *   channelID: ...,
      *   client: ...,
-     *   conversationsThreadId: ...,
+     *   conversationsThreadID: ...,
      *   createdAt: ...,
      *   createdBy: ...,
      *   direction: ...,
@@ -168,7 +168,7 @@ final class ConversationsPublicConversationsMessage implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<PublicFile|array{
-     *   fileId: string,
+     *   fileID: string,
      *   fileUsageType: string,
      *   type: value-of<PublicFile\Type>,
      *   name?: string|null,
@@ -187,7 +187,7 @@ final class ConversationsPublicConversationsMessage implements BaseModel
      *   type: value-of<PublicUnsupportedContent\Type>
      * }|PublicMessageHeader|array{
      *   type: value-of<PublicMessageHeader\Type>,
-     *   fileId?: int|null,
+     *   fileID?: int|null,
      *   text?: string|null,
      * }|PublicQuickReplies|array{
      *   allowMultiSelect: bool,
@@ -195,8 +195,8 @@ final class ConversationsPublicConversationsMessage implements BaseModel
      *   quickReplies: list<QuickReply>,
      *   type: value-of<PublicQuickReplies\Type>,
      * }|PublicWhatsAppTemplateMetadata|array{
-     *   crmObjectIds: array<string,int>,
-     *   mappedTemplateId: string,
+     *   crmObjectIDs: array<string,int>,
+     *   mappedTemplateID: string,
      *   parameters: array<string,string>,
      *   type: value-of<PublicWhatsAppTemplateMetadata\Type>,
      * }|PublicSocialMetadataAttachment|array{
@@ -204,17 +204,17 @@ final class ConversationsPublicConversationsMessage implements BaseModel
      *   type: value-of<PublicSocialMetadataAttachment\Type>,
      * }> $attachments
      * @param PublicClient|array{
-     *   clientType: value-of<ClientType>, integrationAppId?: int|null
+     *   clientType: value-of<ClientType>, integrationAppID?: int|null
      * } $client
      * @param Direction|value-of<Direction> $direction
      * @param list<PublicRecipient|array{
      *   deliveryIdentifier: PublicDeliveryIdentifier,
-     *   actorId?: string|null,
+     *   actorID?: string|null,
      *   name?: string|null,
      *   recipientField?: string|null,
      * }> $recipients
      * @param list<PublicSender|array{
-     *   actorId?: string|null,
+     *   actorID?: string|null,
      *   deliveryIdentifier?: PublicDeliveryIdentifier|null,
      *   name?: string|null,
      *   senderField?: string|null,
@@ -230,10 +230,10 @@ final class ConversationsPublicConversationsMessage implements BaseModel
         string $id,
         bool $archived,
         array $attachments,
-        string $channelAccountId,
-        string $channelId,
+        string $channelAccountID,
+        string $channelID,
         PublicClient|array $client,
-        string $conversationsThreadId,
+        string $conversationsThreadID,
         \DateTimeInterface $createdAt,
         string $createdBy,
         Direction|string $direction,
@@ -242,7 +242,7 @@ final class ConversationsPublicConversationsMessage implements BaseModel
         string $text,
         TruncationStatus|string $truncationStatus,
         Type|string $type = 'MESSAGE',
-        ?string $inReplyToId = null,
+        ?string $inReplyToID = null,
         ?string $richText = null,
         PublicMessageStatus|array|null $status = null,
         ?string $subject = null,
@@ -253,10 +253,10 @@ final class ConversationsPublicConversationsMessage implements BaseModel
         $obj['id'] = $id;
         $obj['archived'] = $archived;
         $obj['attachments'] = $attachments;
-        $obj['channelAccountId'] = $channelAccountId;
-        $obj['channelId'] = $channelId;
+        $obj['channelAccountID'] = $channelAccountID;
+        $obj['channelID'] = $channelID;
         $obj['client'] = $client;
-        $obj['conversationsThreadId'] = $conversationsThreadId;
+        $obj['conversationsThreadID'] = $conversationsThreadID;
         $obj['createdAt'] = $createdAt;
         $obj['createdBy'] = $createdBy;
         $obj['direction'] = $direction;
@@ -266,7 +266,7 @@ final class ConversationsPublicConversationsMessage implements BaseModel
         $obj['truncationStatus'] = $truncationStatus;
         $obj['type'] = $type;
 
-        null !== $inReplyToId && $obj['inReplyToId'] = $inReplyToId;
+        null !== $inReplyToID && $obj['inReplyToID'] = $inReplyToID;
         null !== $richText && $obj['richText'] = $richText;
         null !== $status && $obj['status'] = $status;
         null !== $subject && $obj['subject'] = $subject;
@@ -293,7 +293,7 @@ final class ConversationsPublicConversationsMessage implements BaseModel
 
     /**
      * @param list<PublicFile|array{
-     *   fileId: string,
+     *   fileID: string,
      *   fileUsageType: string,
      *   type: value-of<PublicFile\Type>,
      *   name?: string|null,
@@ -312,7 +312,7 @@ final class ConversationsPublicConversationsMessage implements BaseModel
      *   type: value-of<PublicUnsupportedContent\Type>
      * }|PublicMessageHeader|array{
      *   type: value-of<PublicMessageHeader\Type>,
-     *   fileId?: int|null,
+     *   fileID?: int|null,
      *   text?: string|null,
      * }|PublicQuickReplies|array{
      *   allowMultiSelect: bool,
@@ -320,8 +320,8 @@ final class ConversationsPublicConversationsMessage implements BaseModel
      *   quickReplies: list<QuickReply>,
      *   type: value-of<PublicQuickReplies\Type>,
      * }|PublicWhatsAppTemplateMetadata|array{
-     *   crmObjectIds: array<string,int>,
-     *   mappedTemplateId: string,
+     *   crmObjectIDs: array<string,int>,
+     *   mappedTemplateID: string,
      *   parameters: array<string,string>,
      *   type: value-of<PublicWhatsAppTemplateMetadata\Type>,
      * }|PublicSocialMetadataAttachment|array{
@@ -340,7 +340,7 @@ final class ConversationsPublicConversationsMessage implements BaseModel
     public function withChannelAccountID(string $channelAccountID): self
     {
         $obj = clone $this;
-        $obj['channelAccountId'] = $channelAccountID;
+        $obj['channelAccountID'] = $channelAccountID;
 
         return $obj;
     }
@@ -348,14 +348,14 @@ final class ConversationsPublicConversationsMessage implements BaseModel
     public function withChannelID(string $channelID): self
     {
         $obj = clone $this;
-        $obj['channelId'] = $channelID;
+        $obj['channelID'] = $channelID;
 
         return $obj;
     }
 
     /**
      * @param PublicClient|array{
-     *   clientType: value-of<ClientType>, integrationAppId?: int|null
+     *   clientType: value-of<ClientType>, integrationAppID?: int|null
      * } $client
      */
     public function withClient(PublicClient|array $client): self
@@ -370,7 +370,7 @@ final class ConversationsPublicConversationsMessage implements BaseModel
         string $conversationsThreadID
     ): self {
         $obj = clone $this;
-        $obj['conversationsThreadId'] = $conversationsThreadID;
+        $obj['conversationsThreadID'] = $conversationsThreadID;
 
         return $obj;
     }
@@ -405,7 +405,7 @@ final class ConversationsPublicConversationsMessage implements BaseModel
     /**
      * @param list<PublicRecipient|array{
      *   deliveryIdentifier: PublicDeliveryIdentifier,
-     *   actorId?: string|null,
+     *   actorID?: string|null,
      *   name?: string|null,
      *   recipientField?: string|null,
      * }> $recipients
@@ -420,7 +420,7 @@ final class ConversationsPublicConversationsMessage implements BaseModel
 
     /**
      * @param list<PublicSender|array{
-     *   actorId?: string|null,
+     *   actorID?: string|null,
      *   deliveryIdentifier?: PublicDeliveryIdentifier|null,
      *   name?: string|null,
      *   senderField?: string|null,
@@ -468,7 +468,7 @@ final class ConversationsPublicConversationsMessage implements BaseModel
     public function withInReplyToID(string $inReplyToID): self
     {
         $obj = clone $this;
-        $obj['inReplyToId'] = $inReplyToID;
+        $obj['inReplyToID'] = $inReplyToID;
 
         return $obj;
     }

@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Services\Cms\Hubdb\TablesService::publishDraft()
  *
- * @phpstan-type TablePublishDraftParamsShape = array{includeForeignIds?: bool}
+ * @phpstan-type TablePublishDraftParamsShape = array{includeForeignIDs?: bool}
  */
 final class TablePublishDraftParams implements BaseModel
 {
@@ -26,7 +26,7 @@ final class TablePublishDraftParams implements BaseModel
      * Set this to `true` to populate foreign ID values in the response.
      */
     #[Optional]
-    public ?bool $includeForeignIds;
+    public ?bool $includeForeignIDs;
 
     public function __construct()
     {
@@ -38,11 +38,11 @@ final class TablePublishDraftParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(?bool $includeForeignIds = null): self
+    public static function with(?bool $includeForeignIDs = null): self
     {
         $obj = new self;
 
-        null !== $includeForeignIds && $obj['includeForeignIds'] = $includeForeignIds;
+        null !== $includeForeignIDs && $obj['includeForeignIDs'] = $includeForeignIDs;
 
         return $obj;
     }
@@ -53,7 +53,7 @@ final class TablePublishDraftParams implements BaseModel
     public function withIncludeForeignIDs(bool $includeForeignIDs): self
     {
         $obj = clone $this;
-        $obj['includeForeignIds'] = $includeForeignIDs;
+        $obj['includeForeignIDs'] = $includeForeignIDs;
 
         return $obj;
     }

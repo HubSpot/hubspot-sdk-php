@@ -85,7 +85,7 @@ final class StagesTest extends TestCase
             'stageId',
             [
                 'objectType' => 'objectType',
-                'pipelineId' => 'pipelineId',
+                'pipelineID' => 'pipelineId',
                 'metadata' => ['ticketState' => 'CLOSED'],
             ],
         );
@@ -105,7 +105,7 @@ final class StagesTest extends TestCase
             'stageId',
             [
                 'objectType' => 'objectType',
-                'pipelineId' => 'pipelineId',
+                'pipelineID' => 'pipelineId',
                 'metadata' => ['ticketState' => 'CLOSED'],
                 'archived' => true,
                 'displayOrder' => 1,
@@ -164,7 +164,7 @@ final class StagesTest extends TestCase
 
         $result = $this->client->crm->pipelines->stages->delete(
             'stageId',
-            ['objectType' => 'objectType', 'pipelineId' => 'pipelineId']
+            ['objectType' => 'objectType', 'pipelineID' => 'pipelineId']
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -180,7 +180,7 @@ final class StagesTest extends TestCase
 
         $result = $this->client->crm->pipelines->stages->delete(
             'stageId',
-            ['objectType' => 'objectType', 'pipelineId' => 'pipelineId']
+            ['objectType' => 'objectType', 'pipelineID' => 'pipelineId']
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -196,7 +196,7 @@ final class StagesTest extends TestCase
 
         $result = $this->client->crm->pipelines->stages->get(
             'stageId',
-            ['objectType' => 'objectType', 'pipelineId' => 'pipelineId']
+            ['objectType' => 'objectType', 'pipelineID' => 'pipelineId']
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -212,7 +212,7 @@ final class StagesTest extends TestCase
 
         $result = $this->client->crm->pipelines->stages->get(
             'stageId',
-            ['objectType' => 'objectType', 'pipelineId' => 'pipelineId']
+            ['objectType' => 'objectType', 'pipelineID' => 'pipelineId']
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -228,7 +228,7 @@ final class StagesTest extends TestCase
 
         $result = $this->client->crm->pipelines->stages->getAudit(
             'stageId',
-            ['objectType' => 'objectType', 'pipelineId' => 'pipelineId']
+            ['objectType' => 'objectType', 'pipelineID' => 'pipelineId']
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -247,7 +247,7 @@ final class StagesTest extends TestCase
 
         $result = $this->client->crm->pipelines->stages->getAudit(
             'stageId',
-            ['objectType' => 'objectType', 'pipelineId' => 'pipelineId']
+            ['objectType' => 'objectType', 'pipelineID' => 'pipelineId']
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -268,7 +268,7 @@ final class StagesTest extends TestCase
             'stageId',
             [
                 'objectType' => 'objectType',
-                'pipelineId' => 'pipelineId',
+                'pipelineID' => 'pipelineId',
                 'displayOrder' => 1,
                 'label' => 'Done',
                 'metadata' => ['ticketState' => 'CLOSED'],
@@ -290,7 +290,7 @@ final class StagesTest extends TestCase
             'stageId',
             [
                 'objectType' => 'objectType',
-                'pipelineId' => 'pipelineId',
+                'pipelineID' => 'pipelineId',
                 'displayOrder' => 1,
                 'label' => 'Done',
                 'metadata' => ['ticketState' => 'CLOSED'],

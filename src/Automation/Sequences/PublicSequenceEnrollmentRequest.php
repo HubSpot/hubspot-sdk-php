@@ -11,9 +11,9 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type PublicSequenceEnrollmentRequestShape = array{
- *   contactId: string,
+ *   contactID: string,
  *   senderEmail: string,
- *   sequenceId: string,
+ *   sequenceID: string,
  *   senderAliasAddress?: string|null,
  * }
  */
@@ -22,14 +22,14 @@ final class PublicSequenceEnrollmentRequest implements BaseModel
     /** @use SdkModel<PublicSequenceEnrollmentRequestShape> */
     use SdkModel;
 
-    #[Required]
-    public string $contactId;
+    #[Required('contactId')]
+    public string $contactID;
 
     #[Required]
     public string $senderEmail;
 
-    #[Required]
-    public string $sequenceId;
+    #[Required('sequenceId')]
+    public string $sequenceID;
 
     #[Optional]
     public ?string $senderAliasAddress;
@@ -40,7 +40,7 @@ final class PublicSequenceEnrollmentRequest implements BaseModel
      * To enforce required parameters use
      * ```
      * PublicSequenceEnrollmentRequest::with(
-     *   contactId: ..., senderEmail: ..., sequenceId: ...
+     *   contactID: ..., senderEmail: ..., sequenceID: ...
      * )
      * ```
      *
@@ -64,16 +64,16 @@ final class PublicSequenceEnrollmentRequest implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      */
     public static function with(
-        string $contactId,
+        string $contactID,
         string $senderEmail,
-        string $sequenceId,
+        string $sequenceID,
         ?string $senderAliasAddress = null,
     ): self {
         $obj = new self;
 
-        $obj['contactId'] = $contactId;
+        $obj['contactID'] = $contactID;
         $obj['senderEmail'] = $senderEmail;
-        $obj['sequenceId'] = $sequenceId;
+        $obj['sequenceID'] = $sequenceID;
 
         null !== $senderAliasAddress && $obj['senderAliasAddress'] = $senderAliasAddress;
 
@@ -83,7 +83,7 @@ final class PublicSequenceEnrollmentRequest implements BaseModel
     public function withContactID(string $contactID): self
     {
         $obj = clone $this;
-        $obj['contactId'] = $contactID;
+        $obj['contactID'] = $contactID;
 
         return $obj;
     }
@@ -99,7 +99,7 @@ final class PublicSequenceEnrollmentRequest implements BaseModel
     public function withSequenceID(string $sequenceID): self
     {
         $obj = clone $this;
-        $obj['sequenceId'] = $sequenceID;
+        $obj['sequenceID'] = $sequenceID;
 
         return $obj;
     }

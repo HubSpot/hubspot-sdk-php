@@ -62,7 +62,7 @@ final class CollectionResponsePropertyNoPaging implements BaseModel
      *   calculated?: bool|null,
      *   calculationFormula?: string|null,
      *   createdAt?: \DateTimeInterface|null,
-     *   createdUserId?: string|null,
+     *   createdUserID?: string|null,
      *   dataSensitivity?: value-of<DataSensitivity>|null,
      *   dateDisplayHint?: value-of<DateDisplayHint>|null,
      *   displayOrder?: int|null,
@@ -76,7 +76,7 @@ final class CollectionResponsePropertyNoPaging implements BaseModel
      *   sensitiveDataCategories?: list<string>|null,
      *   showCurrencySymbol?: bool|null,
      *   updatedAt?: \DateTimeInterface|null,
-     *   updatedUserId?: string|null,
+     *   updatedUserID?: string|null,
      * }> $results
      */
     public static function with(array $results): self
@@ -102,7 +102,7 @@ final class CollectionResponsePropertyNoPaging implements BaseModel
      *   calculated?: bool|null,
      *   calculationFormula?: string|null,
      *   createdAt?: \DateTimeInterface|null,
-     *   createdUserId?: string|null,
+     *   createdUserID?: string|null,
      *   dataSensitivity?: value-of<DataSensitivity>|null,
      *   dateDisplayHint?: value-of<DateDisplayHint>|null,
      *   displayOrder?: int|null,
@@ -116,7 +116,7 @@ final class CollectionResponsePropertyNoPaging implements BaseModel
      *   sensitiveDataCategories?: list<string>|null,
      *   showCurrencySymbol?: bool|null,
      *   updatedAt?: \DateTimeInterface|null,
-     *   updatedUserId?: string|null,
+     *   updatedUserID?: string|null,
      * }> $results
      */
     public function withResults(array $results): self

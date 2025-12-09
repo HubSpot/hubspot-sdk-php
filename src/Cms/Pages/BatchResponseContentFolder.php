@@ -84,7 +84,7 @@ final class BatchResponseContentFolder implements BaseModel
      *   created: \DateTimeInterface,
      *   deletedAt: \DateTimeInterface,
      *   name: string,
-     *   parentFolderId: int,
+     *   parentFolderID: int,
      *   updated: \DateTimeInterface,
      * }> $results
      * @param Status|value-of<Status> $status
@@ -126,7 +126,7 @@ final class BatchResponseContentFolder implements BaseModel
      *   created: \DateTimeInterface,
      *   deletedAt: \DateTimeInterface,
      *   name: string,
-     *   parentFolderId: int,
+     *   parentFolderID: int,
      *   updated: \DateTimeInterface,
      * }> $results
      */

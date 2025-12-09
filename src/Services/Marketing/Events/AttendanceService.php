@@ -7,6 +7,7 @@ namespace HubspotSDK\Services\Marketing\Events;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Marketing\Events\Attendance\AttendanceCreateByEventIDAndContactIDParams;
 use HubspotSDK\Marketing\Events\Attendance\AttendanceCreateByEventIDAndEmailParams;
 use HubspotSDK\Marketing\Events\Attendance\AttendanceCreateByExternalEventIDAndContactIDParams;
@@ -37,7 +38,7 @@ final class AttendanceService implements AttendanceContract
      * - leftAt
      *
      * @param array{
-     *   objectId: string,
+     *   objectID: string,
      *   inputs: list<array{
      *     interactionDateTime: int, properties: array<string,string>, vid: int
      *   }>,
@@ -54,8 +55,8 @@ final class AttendanceService implements AttendanceContract
             $params,
             $requestOptions,
         );
-        $objectID = $parsed['objectId'];
-        unset($parsed['objectId']);
+        $objectID = $parsed['objectID'];
+        unset($parsed['objectID']);
 
         /** @var BaseResponse<BatchResponseSubscriberVidResponse> */
         $response = $this->client->request(
@@ -65,7 +66,7 @@ final class AttendanceService implements AttendanceContract
                 $objectID,
                 $subscriberState,
             ],
-            body: (object) array_diff_key($parsed, ['objectId']),
+            body: (object) array_diff_key($parsed, ['objectID']),
             options: $options,
             convert: BatchResponseSubscriberVidResponse::class,
         );
@@ -89,7 +90,7 @@ final class AttendanceService implements AttendanceContract
      * - leftAt
      *
      * @param array{
-     *   objectId: string,
+     *   objectID: string,
      *   inputs: list<array{
      *     contactProperties: array<string,string>,
      *     email: string,
@@ -109,8 +110,8 @@ final class AttendanceService implements AttendanceContract
             $params,
             $requestOptions,
         );
-        $objectID = $parsed['objectId'];
-        unset($parsed['objectId']);
+        $objectID = $parsed['objectID'];
+        unset($parsed['objectID']);
 
         /** @var BaseResponse<BatchResponseSubscriberEmailResponse> */
         $response = $this->client->request(
@@ -120,7 +121,7 @@ final class AttendanceService implements AttendanceContract
                 $objectID,
                 $subscriberState,
             ],
-            body: (object) array_diff_key($parsed, ['objectId']),
+            body: (object) array_diff_key($parsed, ['objectID']),
             options: $options,
             convert: BatchResponseSubscriberEmailResponse::class,
         );
@@ -142,11 +143,11 @@ final class AttendanceService implements AttendanceContract
      * - leftAt
      *
      * @param array{
-     *   externalEventId: string,
+     *   externalEventID: string,
      *   inputs: list<array{
      *     interactionDateTime: int, properties: array<string,string>, vid: int
      *   }>,
-     *   externalAccountId?: string,
+     *   externalAccountID?: string,
      * }|AttendanceCreateByExternalEventIDAndContactIDParams $params
      *
      * @throws APIException
@@ -160,8 +161,8 @@ final class AttendanceService implements AttendanceContract
             $params,
             $requestOptions,
         );
-        $externalEventID = $parsed['externalEventId'];
-        unset($parsed['externalEventId']);
+        $externalEventID = $parsed['externalEventID'];
+        unset($parsed['externalEventID']);
         $query_params = ['externalAccountId'];
 
         /** @var BaseResponse<BatchResponseSubscriberVidResponse> */
@@ -172,10 +173,13 @@ final class AttendanceService implements AttendanceContract
                 $externalEventID,
                 $subscriberState,
             ],
-            query: array_diff_key($parsed, $query_params),
+            query: Util::array_transform_keys(
+                array_diff_key($parsed, $query_params),
+                ['externalAccountID' => 'externalAccountId'],
+            ),
             body: (object) array_diff_key(
                 array_diff_key($parsed, $query_params),
-                ['externalEventId']
+                ['externalEventID']
             ),
             options: $options,
             convert: BatchResponseSubscriberVidResponse::class,
@@ -200,14 +204,14 @@ final class AttendanceService implements AttendanceContract
      * - leftAt
      *
      * @param array{
-     *   externalEventId: string,
+     *   externalEventID: string,
      *   inputs: list<array{
      *     contactProperties: array<string,string>,
      *     email: string,
      *     interactionDateTime: int,
      *     properties: array<string,string>,
      *   }>,
-     *   externalAccountId?: string,
+     *   externalAccountID?: string,
      * }|AttendanceCreateByExternalEventIDAndEmailParams $params
      *
      * @throws APIException
@@ -221,8 +225,8 @@ final class AttendanceService implements AttendanceContract
             $params,
             $requestOptions,
         );
-        $externalEventID = $parsed['externalEventId'];
-        unset($parsed['externalEventId']);
+        $externalEventID = $parsed['externalEventID'];
+        unset($parsed['externalEventID']);
         $query_params = ['externalAccountId'];
 
         /** @var BaseResponse<BatchResponseSubscriberEmailResponse> */
@@ -233,10 +237,13 @@ final class AttendanceService implements AttendanceContract
                 $externalEventID,
                 $subscriberState,
             ],
-            query: array_diff_key($parsed, $query_params),
+            query: Util::array_transform_keys(
+                array_diff_key($parsed, $query_params),
+                ['externalAccountID' => 'externalAccountId'],
+            ),
             body: (object) array_diff_key(
                 array_diff_key($parsed, $query_params),
-                ['externalEventId']
+                ['externalEventID']
             ),
             options: $options,
             convert: BatchResponseSubscriberEmailResponse::class,

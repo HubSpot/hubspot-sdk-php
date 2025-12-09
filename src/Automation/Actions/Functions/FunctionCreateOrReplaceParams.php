@@ -16,8 +16,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Automation\Actions\FunctionsService::createOrReplace()
  *
  * @phpstan-type FunctionCreateOrReplaceParamsShape = array{
- *   appId: int,
- *   definitionId: string,
+ *   appID: int,
+ *   definitionID: string,
  *   functionType: FunctionType|value-of<FunctionType>,
  *   body: string,
  * }
@@ -29,10 +29,10 @@ final class FunctionCreateOrReplaceParams implements BaseModel
     use SdkParams;
 
     #[Required]
-    public int $appId;
+    public int $appID;
 
     #[Required]
-    public string $definitionId;
+    public string $definitionID;
 
     /** @var value-of<FunctionType> $functionType */
     #[Required(enum: FunctionType::class)]
@@ -47,7 +47,7 @@ final class FunctionCreateOrReplaceParams implements BaseModel
      * To enforce required parameters use
      * ```
      * FunctionCreateOrReplaceParams::with(
-     *   appId: ..., definitionId: ..., functionType: ..., body: ...
+     *   appID: ..., definitionID: ..., functionType: ..., body: ...
      * )
      * ```
      *
@@ -74,15 +74,15 @@ final class FunctionCreateOrReplaceParams implements BaseModel
      * @param FunctionType|value-of<FunctionType> $functionType
      */
     public static function with(
-        int $appId,
-        string $definitionId,
+        int $appID,
+        string $definitionID,
         FunctionType|string $functionType,
         string $body,
     ): self {
         $obj = new self;
 
-        $obj['appId'] = $appId;
-        $obj['definitionId'] = $definitionId;
+        $obj['appID'] = $appID;
+        $obj['definitionID'] = $definitionID;
         $obj['functionType'] = $functionType;
         $obj['body'] = $body;
 
@@ -92,7 +92,7 @@ final class FunctionCreateOrReplaceParams implements BaseModel
     public function withAppID(int $appID): self
     {
         $obj = clone $this;
-        $obj['appId'] = $appID;
+        $obj['appID'] = $appID;
 
         return $obj;
     }
@@ -100,7 +100,7 @@ final class FunctionCreateOrReplaceParams implements BaseModel
     public function withDefinitionID(string $definitionID): self
     {
         $obj = clone $this;
-        $obj['definitionId'] = $definitionID;
+        $obj['definitionID'] = $definitionID;
 
         return $obj;
     }

@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type PublicFileShape = array{
- *   fileId: string,
+ *   fileID: string,
  *   fileUsageType: string,
  *   type: value-of<Type>,
  *   name?: string|null,
@@ -24,8 +24,8 @@ final class PublicFile implements BaseModel
     /** @use SdkModel<PublicFileShape> */
     use SdkModel;
 
-    #[Required]
-    public string $fileId;
+    #[Required('fileId')]
+    public string $fileID;
 
     #[Required]
     public string $fileUsageType;
@@ -45,7 +45,7 @@ final class PublicFile implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * PublicFile::with(fileId: ..., fileUsageType: ..., type: ...)
+     * PublicFile::with(fileID: ..., fileUsageType: ..., type: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -67,7 +67,7 @@ final class PublicFile implements BaseModel
      * @param Type|value-of<Type> $type
      */
     public static function with(
-        string $fileId,
+        string $fileID,
         string $fileUsageType,
         Type|string $type = 'FILE',
         ?string $name = null,
@@ -75,7 +75,7 @@ final class PublicFile implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj['fileId'] = $fileId;
+        $obj['fileID'] = $fileID;
         $obj['fileUsageType'] = $fileUsageType;
         $obj['type'] = $type;
 
@@ -88,7 +88,7 @@ final class PublicFile implements BaseModel
     public function withFileID(string $fileID): self
     {
         $obj = clone $this;
-        $obj['fileId'] = $fileID;
+        $obj['fileID'] = $fileID;
 
         return $obj;
     }

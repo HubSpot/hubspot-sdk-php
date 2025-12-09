@@ -43,7 +43,7 @@ final class FileStat implements BaseModel
      *   createdAt: \DateTimeInterface,
      *   updatedAt: \DateTimeInterface,
      *   archivedAt?: \DateTimeInterface|null,
-     *   defaultHostingUrl?: string|null,
+     *   defaultHostingURL?: string|null,
      *   encoding?: string|null,
      *   expiresAt?: int|null,
      *   extension?: string|null,
@@ -51,7 +51,7 @@ final class FileStat implements BaseModel
      *   height?: int|null,
      *   isUsableInContent?: bool|null,
      *   name?: string|null,
-     *   parentFolderId?: string|null,
+     *   parentFolderID?: string|null,
      *   path?: string|null,
      *   size?: int|null,
      *   sourceGroup?: string|null,
@@ -66,7 +66,7 @@ final class FileStat implements BaseModel
      *   updatedAt: \DateTimeInterface,
      *   archivedAt?: \DateTimeInterface|null,
      *   name?: string|null,
-     *   parentFolderId?: string|null,
+     *   parentFolderID?: string|null,
      *   path?: string|null,
      * } $folder
      */
@@ -92,7 +92,7 @@ final class FileStat implements BaseModel
      *   createdAt: \DateTimeInterface,
      *   updatedAt: \DateTimeInterface,
      *   archivedAt?: \DateTimeInterface|null,
-     *   defaultHostingUrl?: string|null,
+     *   defaultHostingURL?: string|null,
      *   encoding?: string|null,
      *   expiresAt?: int|null,
      *   extension?: string|null,
@@ -100,7 +100,7 @@ final class FileStat implements BaseModel
      *   height?: int|null,
      *   isUsableInContent?: bool|null,
      *   name?: string|null,
-     *   parentFolderId?: string|null,
+     *   parentFolderID?: string|null,
      *   path?: string|null,
      *   size?: int|null,
      *   sourceGroup?: string|null,
@@ -125,7 +125,7 @@ final class FileStat implements BaseModel
      *   updatedAt: \DateTimeInterface,
      *   archivedAt?: \DateTimeInterface|null,
      *   name?: string|null,
-     *   parentFolderId?: string|null,
+     *   parentFolderID?: string|null,
      *   path?: string|null,
      * } $folder
      */

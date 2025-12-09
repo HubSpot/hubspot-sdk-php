@@ -106,7 +106,7 @@ final class BatchResponseTag implements BaseModel
      *   deletedAt: \DateTimeInterface,
      *   language: value-of<Language>,
      *   name: string,
-     *   translatedFromId: int,
+     *   translatedFromID: int,
      *   updated: \DateTimeInterface,
      * }> $results
      * @param Status|value-of<Status> $status
@@ -153,7 +153,7 @@ final class BatchResponseTag implements BaseModel
      *   deletedAt: \DateTimeInterface,
      *   language: value-of<Language>,
      *   name: string,
-     *   translatedFromId: int,
+     *   translatedFromID: int,
      *   updated: \DateTimeInterface,
      * }> $results
      */

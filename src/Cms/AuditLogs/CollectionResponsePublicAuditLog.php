@@ -60,11 +60,11 @@ final class CollectionResponsePublicAuditLog implements BaseModel
      * @param list<PublicAuditLog|array{
      *   event: value-of<Event>,
      *   fullName: string,
-     *   objectId: string,
+     *   objectID: string,
      *   objectName: string,
      *   objectType: value-of<ObjectType>,
      *   timestamp: \DateTimeInterface,
-     *   userId: string,
+     *   userID: string,
      *   meta?: mixed,
      * }> $results
      * @param Paging|array{next?: NextPage|null, prev?: PreviousPage|null} $paging
@@ -86,11 +86,11 @@ final class CollectionResponsePublicAuditLog implements BaseModel
      * @param list<PublicAuditLog|array{
      *   event: value-of<Event>,
      *   fullName: string,
-     *   objectId: string,
+     *   objectID: string,
      *   objectName: string,
      *   objectType: value-of<ObjectType>,
      *   timestamp: \DateTimeInterface,
-     *   userId: string,
+     *   userID: string,
      *   meta?: mixed,
      * }> $results
      */

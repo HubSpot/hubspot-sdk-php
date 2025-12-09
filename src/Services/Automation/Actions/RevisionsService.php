@@ -26,7 +26,7 @@ final class RevisionsService implements RevisionsContract
      *
      * Retrieve the versions of a definition by ID.
      *
-     * @param array{appId: int, after?: string, limit?: int}|RevisionListParams $params
+     * @param array{appID: int, after?: string, limit?: int}|RevisionListParams $params
      *
      * @return Page<PublicActionRevision>
      *
@@ -41,8 +41,8 @@ final class RevisionsService implements RevisionsContract
             $params,
             $requestOptions,
         );
-        $appID = $parsed['appId'];
-        unset($parsed['appId']);
+        $appID = $parsed['appID'];
+        unset($parsed['appID']);
 
         /** @var BaseResponse<Page<PublicActionRevision>> */
         $response = $this->client->request(
@@ -64,7 +64,7 @@ final class RevisionsService implements RevisionsContract
      *
      * Retrieve a specific revision of a definition by revision ID.
      *
-     * @param array{appId: int, definitionId: string}|RevisionGetParams $params
+     * @param array{appID: int, definitionID: string}|RevisionGetParams $params
      *
      * @throws APIException
      */
@@ -77,10 +77,10 @@ final class RevisionsService implements RevisionsContract
             $params,
             $requestOptions,
         );
-        $appID = $parsed['appId'];
-        unset($parsed['appId']);
-        $definitionID = $parsed['definitionId'];
-        unset($parsed['definitionId']);
+        $appID = $parsed['appID'];
+        unset($parsed['appID']);
+        $definitionID = $parsed['definitionID'];
+        unset($parsed['definitionID']);
 
         /** @var BaseResponse<PublicActionRevision> */
         $response = $this->client->request(

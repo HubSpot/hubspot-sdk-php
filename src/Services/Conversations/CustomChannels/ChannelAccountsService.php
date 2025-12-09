@@ -31,7 +31,7 @@ final class ChannelAccountsService implements ChannelAccountsContract
      *
      * @param array{
      *   authorized: bool,
-     *   inboxId: string,
+     *   inboxID: string,
      *   name: string,
      *   deliveryIdentifier?: array{
      *     type: string, value: string
@@ -70,7 +70,7 @@ final class ChannelAccountsService implements ChannelAccountsContract
      * This API is used to update the name of the channel account and it's isAuthorized status. Setting to isAuthorized flag to False disables the channel account.
      *
      * @param array{
-     *   channelId: int, authorized?: bool, name?: string
+     *   channelID: int, authorized?: bool, name?: string
      * }|ChannelAccountUpdateParams $params
      *
      * @throws APIException
@@ -84,8 +84,8 @@ final class ChannelAccountsService implements ChannelAccountsContract
             $params,
             $requestOptions,
         );
-        $channelID = $parsed['channelId'];
-        unset($parsed['channelId']);
+        $channelID = $parsed['channelID'];
+        unset($parsed['channelID']);
 
         /** @var BaseResponse<PublicChannelAccount> */
         $response = $this->client->request(
@@ -95,7 +95,7 @@ final class ChannelAccountsService implements ChannelAccountsContract
                 $channelID,
                 $channelAccountID,
             ],
-            body: (object) array_diff_key($parsed, ['channelId']),
+            body: (object) array_diff_key($parsed, ['channelID']),
             options: $options,
             convert: PublicChannelAccount::class,
         );
@@ -152,7 +152,7 @@ final class ChannelAccountsService implements ChannelAccountsContract
      *
      * Retrieve the details for a specific channel account. This contains all the metadata about your channel account, including its channel, associated inbox id, and delivery identifier information.
      *
-     * @param array{channelId: int, archived?: bool}|ChannelAccountGetParams $params
+     * @param array{channelID: int, archived?: bool}|ChannelAccountGetParams $params
      *
      * @throws APIException
      */
@@ -165,8 +165,8 @@ final class ChannelAccountsService implements ChannelAccountsContract
             $params,
             $requestOptions,
         );
-        $channelID = $parsed['channelId'];
-        unset($parsed['channelId']);
+        $channelID = $parsed['channelID'];
+        unset($parsed['channelID']);
 
         /** @var BaseResponse<PublicChannelAccount> */
         $response = $this->client->request(

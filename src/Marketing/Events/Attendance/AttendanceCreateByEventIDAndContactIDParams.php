@@ -24,7 +24,7 @@ use HubspotSDK\Marketing\Events\MarketingEventSubscriber;
  * @see HubspotSDK\Services\Marketing\Events\AttendanceService::createByEventIDAndContactID()
  *
  * @phpstan-type AttendanceCreateByEventIDAndContactIDParamsShape = array{
- *   objectId: string,
+ *   objectID: string,
  *   inputs: list<MarketingEventSubscriber|array{
  *     interactionDateTime: int, properties: array<string,string>, vid: int
  *   }>,
@@ -37,7 +37,7 @@ final class AttendanceCreateByEventIDAndContactIDParams implements BaseModel
     use SdkParams;
 
     #[Required]
-    public string $objectId;
+    public string $objectID;
 
     /**
      * List of HubSpot contacts to subscribe to the marketing event.
@@ -52,7 +52,7 @@ final class AttendanceCreateByEventIDAndContactIDParams implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * AttendanceCreateByEventIDAndContactIDParams::with(objectId: ..., inputs: ...)
+     * AttendanceCreateByEventIDAndContactIDParams::with(objectID: ..., inputs: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -77,11 +77,11 @@ final class AttendanceCreateByEventIDAndContactIDParams implements BaseModel
      *   interactionDateTime: int, properties: array<string,string>, vid: int
      * }> $inputs
      */
-    public static function with(string $objectId, array $inputs): self
+    public static function with(string $objectID, array $inputs): self
     {
         $obj = new self;
 
-        $obj['objectId'] = $objectId;
+        $obj['objectID'] = $objectID;
         $obj['inputs'] = $inputs;
 
         return $obj;
@@ -90,7 +90,7 @@ final class AttendanceCreateByEventIDAndContactIDParams implements BaseModel
     public function withObjectID(string $objectID): self
     {
         $obj = clone $this;
-        $obj['objectId'] = $objectID;
+        $obj['objectID'] = $objectID;
 
         return $obj;
     }

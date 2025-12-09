@@ -13,7 +13,7 @@ use HubspotSDK\Property;
 
 /**
  * @phpstan-type ObjectDefinitionResponseShape = array{
- *   objectTypeId: string,
+ *   objectTypeID: string,
  *   objectTypeName: string,
  *   properties: list<PropertyDefinition>,
  *   propertyGroups: list<GroupView>,
@@ -25,8 +25,8 @@ final class ObjectDefinitionResponse implements BaseModel
     /** @use SdkModel<ObjectDefinitionResponseShape> */
     use SdkModel;
 
-    #[Required]
-    public string $objectTypeId;
+    #[Required('objectTypeId')]
+    public string $objectTypeID;
 
     #[Required]
     public string $objectTypeName;
@@ -48,7 +48,7 @@ final class ObjectDefinitionResponse implements BaseModel
      * To enforce required parameters use
      * ```
      * ObjectDefinitionResponse::with(
-     *   objectTypeId: ..., objectTypeName: ..., properties: ..., propertyGroups: ...
+     *   objectTypeID: ..., objectTypeName: ..., properties: ..., propertyGroups: ...
      * )
      * ```
      *
@@ -73,14 +73,14 @@ final class ObjectDefinitionResponse implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<PropertyDefinition|array{
-     *   objectTypeId: string,
+     *   objectTypeID: string,
      *   property: Property,
      *   calculationExpression?: array<string,mixed>|null,
      *   calculationFormula?: string|null,
      *   definitionSource?: PropertyDefinitionSource|null,
      *   extensionData?: ExtensionData|null,
      *   externalOptionsMetaData?: ExternalOptionsMetaData|null,
-     *   fulcrumPortalId?: int|null,
+     *   fulcrumPortalID?: int|null,
      *   fulcrumTimestamp?: int|null,
      *   janusGroup?: string|null,
      *   permission?: FieldLevelPermission|null,
@@ -91,7 +91,7 @@ final class ObjectDefinitionResponse implements BaseModel
      * @param list<GroupView|array{
      *   displayName: string,
      *   displayOrder: int,
-     *   fulcrumPortalId: int,
+     *   fulcrumPortalID: int,
      *   fulcrumTimestamp: int,
      *   hubspotDefined: bool,
      *   name: string,
@@ -105,15 +105,15 @@ final class ObjectDefinitionResponse implements BaseModel
      *   fullyQualifiedName: string,
      *   hasCustomProperties: bool,
      *   hasDefaultProperties: bool,
-     *   hasExternalObjectIds: bool,
+     *   hasExternalObjectIDs: bool,
      *   hasOwners: bool,
      *   hasPipelines: bool,
      *   indexedForFiltersAndReports: bool,
      *   lastModifiedPropertyName: string,
      *   metaType: value-of<MetaType>,
-     *   metaTypeId: int,
+     *   metaTypeID: int,
      *   name: string,
-     *   objectTypeId: string,
+     *   objectTypeID: string,
      *   permissioningType: string,
      *   pipelinePropertyName: string,
      *   pipelineStagePropertyName: string,
@@ -124,9 +124,9 @@ final class ObjectDefinitionResponse implements BaseModel
      *   accessScopeName?: string|null,
      *   createdAt?: int|null,
      *   description?: string|null,
-     *   integrationAppId?: int|null,
+     *   integrationAppID?: int|null,
      *   janusGroup?: string|null,
-     *   ownerPortalId?: int|null,
+     *   ownerPortalID?: int|null,
      *   pipelineCloseDatePropertyName?: string|null,
      *   pipelineTimeToClosePropertyName?: string|null,
      *   pluralForm?: string|null,
@@ -139,7 +139,7 @@ final class ObjectDefinitionResponse implements BaseModel
      * } $schema
      */
     public static function with(
-        string $objectTypeId,
+        string $objectTypeID,
         string $objectTypeName,
         array $properties,
         array $propertyGroups,
@@ -147,7 +147,7 @@ final class ObjectDefinitionResponse implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj['objectTypeId'] = $objectTypeId;
+        $obj['objectTypeID'] = $objectTypeID;
         $obj['objectTypeName'] = $objectTypeName;
         $obj['properties'] = $properties;
         $obj['propertyGroups'] = $propertyGroups;
@@ -160,7 +160,7 @@ final class ObjectDefinitionResponse implements BaseModel
     public function withObjectTypeID(string $objectTypeID): self
     {
         $obj = clone $this;
-        $obj['objectTypeId'] = $objectTypeID;
+        $obj['objectTypeID'] = $objectTypeID;
 
         return $obj;
     }
@@ -175,14 +175,14 @@ final class ObjectDefinitionResponse implements BaseModel
 
     /**
      * @param list<PropertyDefinition|array{
-     *   objectTypeId: string,
+     *   objectTypeID: string,
      *   property: Property,
      *   calculationExpression?: array<string,mixed>|null,
      *   calculationFormula?: string|null,
      *   definitionSource?: PropertyDefinitionSource|null,
      *   extensionData?: ExtensionData|null,
      *   externalOptionsMetaData?: ExternalOptionsMetaData|null,
-     *   fulcrumPortalId?: int|null,
+     *   fulcrumPortalID?: int|null,
      *   fulcrumTimestamp?: int|null,
      *   janusGroup?: string|null,
      *   permission?: FieldLevelPermission|null,
@@ -203,7 +203,7 @@ final class ObjectDefinitionResponse implements BaseModel
      * @param list<GroupView|array{
      *   displayName: string,
      *   displayOrder: int,
-     *   fulcrumPortalId: int,
+     *   fulcrumPortalID: int,
      *   fulcrumTimestamp: int,
      *   hubspotDefined: bool,
      *   name: string,
@@ -227,15 +227,15 @@ final class ObjectDefinitionResponse implements BaseModel
      *   fullyQualifiedName: string,
      *   hasCustomProperties: bool,
      *   hasDefaultProperties: bool,
-     *   hasExternalObjectIds: bool,
+     *   hasExternalObjectIDs: bool,
      *   hasOwners: bool,
      *   hasPipelines: bool,
      *   indexedForFiltersAndReports: bool,
      *   lastModifiedPropertyName: string,
      *   metaType: value-of<MetaType>,
-     *   metaTypeId: int,
+     *   metaTypeID: int,
      *   name: string,
-     *   objectTypeId: string,
+     *   objectTypeID: string,
      *   permissioningType: string,
      *   pipelinePropertyName: string,
      *   pipelineStagePropertyName: string,
@@ -246,9 +246,9 @@ final class ObjectDefinitionResponse implements BaseModel
      *   accessScopeName?: string|null,
      *   createdAt?: int|null,
      *   description?: string|null,
-     *   integrationAppId?: int|null,
+     *   integrationAppID?: int|null,
      *   janusGroup?: string|null,
-     *   ownerPortalId?: int|null,
+     *   ownerPortalID?: int|null,
      *   pipelineCloseDatePropertyName?: string|null,
      *   pipelineTimeToClosePropertyName?: string|null,
      *   pluralForm?: string|null,

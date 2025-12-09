@@ -48,7 +48,7 @@ final class ProductsTest extends TestCase
                     'types' => [
                         [
                             'associationCategory' => 'HUBSPOT_DEFINED',
-                            'associationTypeId' => 0,
+                            'associationTypeID' => 0,
                         ],
                     ],
                 ],
@@ -74,7 +74,7 @@ final class ProductsTest extends TestCase
                     'types' => [
                         [
                             'associationCategory' => 'HUBSPOT_DEFINED',
-                            'associationTypeId' => 0,
+                            'associationTypeID' => 0,
                         ],
                     ],
                 ],

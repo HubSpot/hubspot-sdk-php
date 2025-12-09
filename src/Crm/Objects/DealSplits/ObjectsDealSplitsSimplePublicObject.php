@@ -111,9 +111,9 @@ final class ObjectsDealSplitsSimplePublicObject implements BaseModel
      *   sourceType: string,
      *   timestamp: \DateTimeInterface,
      *   value: string,
-     *   sourceId?: string|null,
+     *   sourceID?: string|null,
      *   sourceLabel?: string|null,
-     *   updatedByUserId?: int|null,
+     *   updatedByUserID?: int|null,
      * }>> $propertiesWithHistory
      */
     public static function with(
@@ -214,9 +214,9 @@ final class ObjectsDealSplitsSimplePublicObject implements BaseModel
      *   sourceType: string,
      *   timestamp: \DateTimeInterface,
      *   value: string,
-     *   sourceId?: string|null,
+     *   sourceID?: string|null,
      *   sourceLabel?: string|null,
-     *   updatedByUserId?: int|null,
+     *   updatedByUserID?: int|null,
      * }>> $propertiesWithHistory
      */
     public function withPropertiesWithHistory(

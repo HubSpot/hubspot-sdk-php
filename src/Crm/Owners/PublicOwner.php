@@ -22,8 +22,8 @@ use HubspotSDK\Settings\Users\PublicTeam;
  *   firstName?: string|null,
  *   lastName?: string|null,
  *   teams?: list<\HubspotSDK\Settings\Users\PublicTeam>|null,
- *   userId?: int|null,
- *   userIdIncludingInactive?: int|null,
+ *   userID?: int|null,
+ *   userIDIncludingInactive?: int|null,
  * }
  */
 final class PublicOwner implements BaseModel
@@ -88,14 +88,14 @@ final class PublicOwner implements BaseModel
     /**
      * The user ID of the owner.
      */
-    #[Optional]
-    public ?int $userId;
+    #[Optional('userId')]
+    public ?int $userID;
 
     /**
      * The user ID of the owner, including inactive users.
      */
-    #[Optional]
-    public ?int $userIdIncludingInactive;
+    #[Optional('userIdIncludingInactive')]
+    public ?int $userIDIncludingInactive;
 
     /**
      * `new PublicOwner()` is missing required properties by the API.
@@ -132,8 +132,8 @@ final class PublicOwner implements BaseModel
      * @param list<PublicTeam|array{
      *   id: string,
      *   name: string,
-     *   secondaryUserIds: list<string>,
-     *   userIds: list<string>,
+     *   secondaryUserIDs: list<string>,
+     *   userIDs: list<string>,
      * }> $teams
      */
     public static function with(
@@ -146,8 +146,8 @@ final class PublicOwner implements BaseModel
         ?string $firstName = null,
         ?string $lastName = null,
         ?array $teams = null,
-        ?int $userId = null,
-        ?int $userIdIncludingInactive = null,
+        ?int $userID = null,
+        ?int $userIDIncludingInactive = null,
     ): self {
         $obj = new self;
 
@@ -161,8 +161,8 @@ final class PublicOwner implements BaseModel
         null !== $firstName && $obj['firstName'] = $firstName;
         null !== $lastName && $obj['lastName'] = $lastName;
         null !== $teams && $obj['teams'] = $teams;
-        null !== $userId && $obj['userId'] = $userId;
-        null !== $userIdIncludingInactive && $obj['userIdIncludingInactive'] = $userIdIncludingInactive;
+        null !== $userID && $obj['userID'] = $userID;
+        null !== $userIDIncludingInactive && $obj['userIDIncludingInactive'] = $userIDIncludingInactive;
 
         return $obj;
     }
@@ -261,8 +261,8 @@ final class PublicOwner implements BaseModel
      * @param list<PublicTeam|array{
      *   id: string,
      *   name: string,
-     *   secondaryUserIds: list<string>,
-     *   userIds: list<string>,
+     *   secondaryUserIDs: list<string>,
+     *   userIDs: list<string>,
      * }> $teams
      */
     public function withTeams(array $teams): self
@@ -279,7 +279,7 @@ final class PublicOwner implements BaseModel
     public function withUserID(int $userID): self
     {
         $obj = clone $this;
-        $obj['userId'] = $userID;
+        $obj['userID'] = $userID;
 
         return $obj;
     }
@@ -291,7 +291,7 @@ final class PublicOwner implements BaseModel
         int $userIDIncludingInactive
     ): self {
         $obj = clone $this;
-        $obj['userIdIncludingInactive'] = $userIDIncludingInactive;
+        $obj['userIDIncludingInactive'] = $userIDIncludingInactive;
 
         return $obj;
     }

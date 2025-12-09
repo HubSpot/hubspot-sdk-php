@@ -39,7 +39,7 @@ final class EventsTest extends TestCase
         }
 
         $result = $this->client->crm->timeline->events->create([
-            'eventTemplateId' => '1001298',
+            'eventTemplateID' => '1001298',
             'tokens' => [
                 'petAge' => 'string', 'petColor' => 'black', 'petName' => 'Art3mis',
             ],
@@ -57,7 +57,7 @@ final class EventsTest extends TestCase
         }
 
         $result = $this->client->crm->timeline->events->create([
-            'eventTemplateId' => '1001298',
+            'eventTemplateID' => '1001298',
             'tokens' => [
                 'petAge' => 'string', 'petColor' => 'black', 'petName' => 'Art3mis',
             ],
@@ -70,7 +70,7 @@ final class EventsTest extends TestCase
                     ['answer' => 'Woof!', 'question' => 'Do you wanna go on a walk?'],
                 ],
             ],
-            'objectId' => 'objectId',
+            'objectID' => 'objectId',
             'timelineIFrame' => [
                 'headerLabel' => 'Art3mis dog',
                 'height' => 400,
@@ -96,13 +96,13 @@ final class EventsTest extends TestCase
         $result = $this->client->crm->timeline->events->batchCreate([
             'inputs' => [
                 [
-                    'eventTemplateId' => '1001298',
+                    'eventTemplateID' => '1001298',
                     'tokens' => [
                         'petAge' => 'string', 'petColor' => 'black', 'petName' => 'Art3mis',
                     ],
                 ],
                 [
-                    'eventTemplateId' => '1001298',
+                    'eventTemplateID' => '1001298',
                     'tokens' => [
                         'petAge' => 'string', 'petColor' => 'yellow', 'petName' => 'Pocket',
                     ],
@@ -124,7 +124,7 @@ final class EventsTest extends TestCase
         $result = $this->client->crm->timeline->events->batchCreate([
             'inputs' => [
                 [
-                    'eventTemplateId' => '1001298',
+                    'eventTemplateID' => '1001298',
                     'tokens' => [
                         'petAge' => 'string', 'petColor' => 'black', 'petName' => 'Art3mis',
                     ],
@@ -137,7 +137,7 @@ final class EventsTest extends TestCase
                             ['answer' => 'Woof!', 'question' => 'Do you wanna go on a walk?'],
                         ],
                     ],
-                    'objectId' => 'objectId',
+                    'objectID' => 'objectId',
                     'timelineIFrame' => [
                         'headerLabel' => 'Art3mis dog',
                         'height' => 400,
@@ -149,7 +149,7 @@ final class EventsTest extends TestCase
                     'utk' => 'utk',
                 ],
                 [
-                    'eventTemplateId' => '1001298',
+                    'eventTemplateID' => '1001298',
                     'tokens' => [
                         'petAge' => 'string', 'petColor' => 'yellow', 'petName' => 'Pocket',
                     ],
@@ -165,7 +165,7 @@ final class EventsTest extends TestCase
                             ],
                         ],
                     ],
-                    'objectId' => 'objectId',
+                    'objectID' => 'objectId',
                     'timelineIFrame' => [
                         'headerLabel' => 'Pocket Tiger',
                         'height' => 400,
@@ -192,7 +192,7 @@ final class EventsTest extends TestCase
 
         $result = $this->client->crm->timeline->events->get(
             'eventId',
-            ['eventTemplateId' => 'eventTemplateId']
+            ['eventTemplateID' => 'eventTemplateId']
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -208,7 +208,7 @@ final class EventsTest extends TestCase
 
         $result = $this->client->crm->timeline->events->get(
             'eventId',
-            ['eventTemplateId' => 'eventTemplateId']
+            ['eventTemplateID' => 'eventTemplateId']
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -224,7 +224,7 @@ final class EventsTest extends TestCase
 
         $result = $this->client->crm->timeline->events->getDetail(
             'eventId',
-            ['eventTemplateId' => 'eventTemplateId']
+            ['eventTemplateID' => 'eventTemplateId']
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -240,7 +240,7 @@ final class EventsTest extends TestCase
 
         $result = $this->client->crm->timeline->events->getDetail(
             'eventId',
-            ['eventTemplateId' => 'eventTemplateId']
+            ['eventTemplateID' => 'eventTemplateId']
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

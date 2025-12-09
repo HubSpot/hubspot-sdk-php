@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Crm\Objects\PartnerServices\AssociationsService::update()
  *
  * @phpstan-type AssociationUpdateParamsShape = array{
- *   partnerServiceId: string, toObjectType: string, toObjectId: string
+ *   partnerServiceID: string, toObjectType: string, toObjectID: string
  * }
  */
 final class AssociationUpdateParams implements BaseModel
@@ -25,13 +25,13 @@ final class AssociationUpdateParams implements BaseModel
     use SdkParams;
 
     #[Required]
-    public string $partnerServiceId;
+    public string $partnerServiceID;
 
     #[Required]
     public string $toObjectType;
 
     #[Required]
-    public string $toObjectId;
+    public string $toObjectID;
 
     /**
      * `new AssociationUpdateParams()` is missing required properties by the API.
@@ -39,7 +39,7 @@ final class AssociationUpdateParams implements BaseModel
      * To enforce required parameters use
      * ```
      * AssociationUpdateParams::with(
-     *   partnerServiceId: ..., toObjectType: ..., toObjectId: ...
+     *   partnerServiceID: ..., toObjectType: ..., toObjectID: ...
      * )
      * ```
      *
@@ -63,15 +63,15 @@ final class AssociationUpdateParams implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      */
     public static function with(
-        string $partnerServiceId,
+        string $partnerServiceID,
         string $toObjectType,
-        string $toObjectId
+        string $toObjectID
     ): self {
         $obj = new self;
 
-        $obj['partnerServiceId'] = $partnerServiceId;
+        $obj['partnerServiceID'] = $partnerServiceID;
         $obj['toObjectType'] = $toObjectType;
-        $obj['toObjectId'] = $toObjectId;
+        $obj['toObjectID'] = $toObjectID;
 
         return $obj;
     }
@@ -79,7 +79,7 @@ final class AssociationUpdateParams implements BaseModel
     public function withPartnerServiceID(string $partnerServiceID): self
     {
         $obj = clone $this;
-        $obj['partnerServiceId'] = $partnerServiceID;
+        $obj['partnerServiceID'] = $partnerServiceID;
 
         return $obj;
     }
@@ -95,7 +95,7 @@ final class AssociationUpdateParams implements BaseModel
     public function withToObjectID(string $toObjectID): self
     {
         $obj = clone $this;
-        $obj['toObjectId'] = $toObjectID;
+        $obj['toObjectID'] = $toObjectID;
 
         return $obj;
     }

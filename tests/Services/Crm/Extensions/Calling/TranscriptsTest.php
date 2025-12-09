@@ -39,7 +39,7 @@ final class TranscriptsTest extends TestCase
         }
 
         $result = $this->client->crm->extensions->calling->transcripts->create([
-            'engagementId' => 0,
+            'engagementID' => 0,
             'transcriptCreateUtterances' => [
                 [
                     'endTimeMillis' => 0,
@@ -62,7 +62,7 @@ final class TranscriptsTest extends TestCase
         }
 
         $result = $this->client->crm->extensions->calling->transcripts->create([
-            'engagementId' => 0,
+            'engagementID' => 0,
             'transcriptCreateUtterances' => [
                 [
                     'endTimeMillis' => 0,

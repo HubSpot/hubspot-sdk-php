@@ -15,8 +15,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   createdAt: \DateTimeInterface,
  *   flowType: string,
  *   isEnabled: bool,
- *   objectTypeId: string,
- *   revisionId: string,
+ *   objectTypeID: string,
+ *   revisionID: string,
  *   updatedAt: \DateTimeInterface,
  *   name?: string|null,
  *   uuid?: string|null,
@@ -39,11 +39,11 @@ final class APIFlowListing implements BaseModel
     #[Required]
     public bool $isEnabled;
 
-    #[Required]
-    public string $objectTypeId;
+    #[Required('objectTypeId')]
+    public string $objectTypeID;
 
-    #[Required]
-    public string $revisionId;
+    #[Required('revisionId')]
+    public string $revisionID;
 
     #[Required]
     public \DateTimeInterface $updatedAt;
@@ -64,8 +64,8 @@ final class APIFlowListing implements BaseModel
      *   createdAt: ...,
      *   flowType: ...,
      *   isEnabled: ...,
-     *   objectTypeId: ...,
-     *   revisionId: ...,
+     *   objectTypeID: ...,
+     *   revisionID: ...,
      *   updatedAt: ...,
      * )
      * ```
@@ -98,8 +98,8 @@ final class APIFlowListing implements BaseModel
         \DateTimeInterface $createdAt,
         string $flowType,
         bool $isEnabled,
-        string $objectTypeId,
-        string $revisionId,
+        string $objectTypeID,
+        string $revisionID,
         \DateTimeInterface $updatedAt,
         ?string $name = null,
         ?string $uuid = null,
@@ -110,8 +110,8 @@ final class APIFlowListing implements BaseModel
         $obj['createdAt'] = $createdAt;
         $obj['flowType'] = $flowType;
         $obj['isEnabled'] = $isEnabled;
-        $obj['objectTypeId'] = $objectTypeId;
-        $obj['revisionId'] = $revisionId;
+        $obj['objectTypeID'] = $objectTypeID;
+        $obj['revisionID'] = $revisionID;
         $obj['updatedAt'] = $updatedAt;
 
         null !== $name && $obj['name'] = $name;
@@ -155,7 +155,7 @@ final class APIFlowListing implements BaseModel
     public function withObjectTypeID(string $objectTypeID): self
     {
         $obj = clone $this;
-        $obj['objectTypeId'] = $objectTypeID;
+        $obj['objectTypeID'] = $objectTypeID;
 
         return $obj;
     }
@@ -163,7 +163,7 @@ final class APIFlowListing implements BaseModel
     public function withRevisionID(string $revisionID): self
     {
         $obj = clone $this;
-        $obj['revisionId'] = $revisionID;
+        $obj['revisionID'] = $revisionID;
 
         return $obj;
     }

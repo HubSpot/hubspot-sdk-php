@@ -39,10 +39,10 @@ final class EnrollmentsTest extends TestCase
         }
 
         $result = $this->client->automation->sequences->enrollments->enroll([
-            'userId' => 'userId',
-            'contactId' => 'contactId',
+            'userID' => 'userId',
+            'contactID' => 'contactId',
             'senderEmail' => 'senderEmail',
-            'sequenceId' => 'sequenceId',
+            'sequenceID' => 'sequenceId',
         ]);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -60,10 +60,10 @@ final class EnrollmentsTest extends TestCase
         }
 
         $result = $this->client->automation->sequences->enrollments->enroll([
-            'userId' => 'userId',
-            'contactId' => 'contactId',
+            'userID' => 'userId',
+            'contactID' => 'contactId',
             'senderEmail' => 'senderEmail',
-            'sequenceId' => 'sequenceId',
+            'sequenceID' => 'sequenceId',
             'senderAliasAddress' => 'senderAliasAddress',
         ]);
 

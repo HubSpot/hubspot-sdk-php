@@ -15,9 +15,9 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-type ChannelAccountListParamsShape = array{
  *   after?: string,
  *   archived?: bool,
- *   channelId?: list<int>,
+ *   channelID?: list<int>,
  *   defaultPageLength?: int,
- *   inboxId?: list<int>,
+ *   inboxID?: list<int>,
  *   limit?: int,
  *   sort?: list<string>,
  * }
@@ -34,16 +34,16 @@ final class ChannelAccountListParams implements BaseModel
     #[Optional]
     public ?bool $archived;
 
-    /** @var list<int>|null $channelId */
+    /** @var list<int>|null $channelID */
     #[Optional(list: 'int')]
-    public ?array $channelId;
+    public ?array $channelID;
 
     #[Optional]
     public ?int $defaultPageLength;
 
-    /** @var list<int>|null $inboxId */
+    /** @var list<int>|null $inboxID */
     #[Optional(list: 'int')]
-    public ?array $inboxId;
+    public ?array $inboxID;
 
     #[Optional]
     public ?int $limit;
@@ -62,16 +62,16 @@ final class ChannelAccountListParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<int> $channelId
-     * @param list<int> $inboxId
+     * @param list<int> $channelID
+     * @param list<int> $inboxID
      * @param list<string> $sort
      */
     public static function with(
         ?string $after = null,
         ?bool $archived = null,
-        ?array $channelId = null,
+        ?array $channelID = null,
         ?int $defaultPageLength = null,
-        ?array $inboxId = null,
+        ?array $inboxID = null,
         ?int $limit = null,
         ?array $sort = null,
     ): self {
@@ -79,9 +79,9 @@ final class ChannelAccountListParams implements BaseModel
 
         null !== $after && $obj['after'] = $after;
         null !== $archived && $obj['archived'] = $archived;
-        null !== $channelId && $obj['channelId'] = $channelId;
+        null !== $channelID && $obj['channelID'] = $channelID;
         null !== $defaultPageLength && $obj['defaultPageLength'] = $defaultPageLength;
-        null !== $inboxId && $obj['inboxId'] = $inboxId;
+        null !== $inboxID && $obj['inboxID'] = $inboxID;
         null !== $limit && $obj['limit'] = $limit;
         null !== $sort && $obj['sort'] = $sort;
 
@@ -110,7 +110,7 @@ final class ChannelAccountListParams implements BaseModel
     public function withChannelID(array $channelID): self
     {
         $obj = clone $this;
-        $obj['channelId'] = $channelID;
+        $obj['channelID'] = $channelID;
 
         return $obj;
     }
@@ -129,7 +129,7 @@ final class ChannelAccountListParams implements BaseModel
     public function withInboxID(array $inboxID): self
     {
         $obj = clone $this;
-        $obj['inboxId'] = $inboxID;
+        $obj['inboxID'] = $inboxID;
 
         return $obj;
     }

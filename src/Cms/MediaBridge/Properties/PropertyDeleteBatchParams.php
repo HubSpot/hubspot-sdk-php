@@ -16,7 +16,7 @@ use HubspotSDK\PropertyName;
  * @see HubspotSDK\Services\Cms\MediaBridge\PropertiesService::deleteBatch()
  *
  * @phpstan-type PropertyDeleteBatchParamsShape = array{
- *   appId: int, inputs: list<PropertyName|array{name: string}>
+ *   appID: int, inputs: list<PropertyName|array{name: string}>
  * }
  */
 final class PropertyDeleteBatchParams implements BaseModel
@@ -26,7 +26,7 @@ final class PropertyDeleteBatchParams implements BaseModel
     use SdkParams;
 
     #[Required]
-    public int $appId;
+    public int $appID;
 
     /** @var list<PropertyName> $inputs */
     #[Required(list: PropertyName::class)]
@@ -37,7 +37,7 @@ final class PropertyDeleteBatchParams implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * PropertyDeleteBatchParams::with(appId: ..., inputs: ...)
+     * PropertyDeleteBatchParams::with(appID: ..., inputs: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -58,11 +58,11 @@ final class PropertyDeleteBatchParams implements BaseModel
      *
      * @param list<PropertyName|array{name: string}> $inputs
      */
-    public static function with(int $appId, array $inputs): self
+    public static function with(int $appID, array $inputs): self
     {
         $obj = new self;
 
-        $obj['appId'] = $appId;
+        $obj['appID'] = $appID;
         $obj['inputs'] = $inputs;
 
         return $obj;
@@ -71,7 +71,7 @@ final class PropertyDeleteBatchParams implements BaseModel
     public function withAppID(int $appID): self
     {
         $obj = clone $this;
-        $obj['appId'] = $appID;
+        $obj['appID'] = $appID;
 
         return $obj;
     }

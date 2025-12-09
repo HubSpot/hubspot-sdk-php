@@ -24,7 +24,7 @@ use HubspotSDK\Option;
  *   fieldType?: value-of<FieldType>|null,
  *   helpText?: string|null,
  *   label?: string|null,
- *   optionsUrl?: string|null,
+ *   optionsURL?: string|null,
  *   referencedObjectType?: value-of<ReferencedObjectType>|null,
  * }
  */
@@ -63,8 +63,8 @@ final class FieldTypeDefinition implements BaseModel
     #[Optional]
     public ?string $label;
 
-    #[Optional]
-    public ?string $optionsUrl;
+    #[Optional('optionsUrl')]
+    public ?string $optionsURL;
 
     /** @var value-of<ReferencedObjectType>|null $referencedObjectType */
     #[Optional(enum: ReferencedObjectType::class)]
@@ -121,7 +121,7 @@ final class FieldTypeDefinition implements BaseModel
         FieldType|string|null $fieldType = null,
         ?string $helpText = null,
         ?string $label = null,
-        ?string $optionsUrl = null,
+        ?string $optionsURL = null,
         ReferencedObjectType|string|null $referencedObjectType = null,
     ): self {
         $obj = new self;
@@ -136,7 +136,7 @@ final class FieldTypeDefinition implements BaseModel
         null !== $fieldType && $obj['fieldType'] = $fieldType;
         null !== $helpText && $obj['helpText'] = $helpText;
         null !== $label && $obj['label'] = $label;
-        null !== $optionsUrl && $obj['optionsUrl'] = $optionsUrl;
+        null !== $optionsURL && $obj['optionsURL'] = $optionsURL;
         null !== $referencedObjectType && $obj['referencedObjectType'] = $referencedObjectType;
 
         return $obj;
@@ -233,7 +233,7 @@ final class FieldTypeDefinition implements BaseModel
     public function withOptionsURL(string $optionsURL): self
     {
         $obj = clone $this;
-        $obj['optionsUrl'] = $optionsURL;
+        $obj['optionsURL'] = $optionsURL;
 
         return $obj;
     }

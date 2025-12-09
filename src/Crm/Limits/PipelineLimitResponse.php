@@ -62,7 +62,7 @@ final class PipelineLimitResponse implements BaseModel
      * } $customObjectTypes
      * @param list<LimitAndUsageForObjectType|array{
      *   limit: int,
-     *   objectTypeId: string,
+     *   objectTypeID: string,
      *   percentage: float,
      *   pluralLabel: string,
      *   singularLabel: string,
@@ -101,7 +101,7 @@ final class PipelineLimitResponse implements BaseModel
     /**
      * @param list<LimitAndUsageForObjectType|array{
      *   limit: int,
-     *   objectTypeId: string,
+     *   objectTypeID: string,
      *   percentage: float,
      *   pluralLabel: string,
      *   singularLabel: string,

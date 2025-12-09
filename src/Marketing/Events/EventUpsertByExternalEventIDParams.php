@@ -24,31 +24,31 @@ use HubspotSDK\Marketing\Events\PropertyValue\Source;
  *     isLargeValue: bool,
  *     name: string,
  *     persistenceTimestamp: int,
- *     requestId: string,
+ *     requestID: string,
  *     selectedByUser: bool,
  *     selectedByUserTimestamp: int,
  *     source: value-of<Source>,
- *     sourceId: string,
+ *     sourceID: string,
  *     sourceLabel: string,
  *     sourceMetadata: string,
  *     sourceUpstreamDeployable: string,
  *     sourceVid: list<int>,
  *     timestamp: int,
  *     unit: string,
- *     updatedByUserId: int,
+ *     updatedByUserID: int,
  *     useTimestampAsPersistenceTimestamp: bool,
  *     value: string,
  *   }>,
  *   eventName: string,
  *   eventOrganizer: string,
- *   externalAccountId: string,
- *   externalEventId: string,
+ *   externalAccountID: string,
+ *   externalEventID: string,
  *   endDateTime?: \DateTimeInterface,
  *   eventCancelled?: bool,
  *   eventCompleted?: bool,
  *   eventDescription?: string,
  *   eventType?: string,
- *   eventUrl?: string,
+ *   eventURL?: string,
  *   startDateTime?: \DateTimeInterface,
  * }
  */
@@ -82,14 +82,14 @@ final class EventUpsertByExternalEventIDParams implements BaseModel
     /**
      * The accountId that is associated with this marketing event in the external event application.
      */
-    #[Required]
-    public string $externalAccountId;
+    #[Required('externalAccountId')]
+    public string $externalAccountID;
 
     /**
      * The id of the marketing event in the external event application.
      */
-    #[Required]
-    public string $externalEventId;
+    #[Required('externalEventId')]
+    public string $externalEventID;
 
     /**
      * The end date and time of the marketing event.
@@ -121,8 +121,8 @@ final class EventUpsertByExternalEventIDParams implements BaseModel
     /**
      * A URL in the external event application where the marketing event can be managed.
      */
-    #[Optional]
-    public ?string $eventUrl;
+    #[Optional('eventUrl')]
+    public ?string $eventURL;
 
     /**
      * The start date and time of the marketing event.
@@ -139,8 +139,8 @@ final class EventUpsertByExternalEventIDParams implements BaseModel
      *   customProperties: ...,
      *   eventName: ...,
      *   eventOrganizer: ...,
-     *   externalAccountId: ...,
-     *   externalEventId: ...,
+     *   externalAccountID: ...,
+     *   externalEventID: ...,
      * )
      * ```
      *
@@ -171,18 +171,18 @@ final class EventUpsertByExternalEventIDParams implements BaseModel
      *   isLargeValue: bool,
      *   name: string,
      *   persistenceTimestamp: int,
-     *   requestId: string,
+     *   requestID: string,
      *   selectedByUser: bool,
      *   selectedByUserTimestamp: int,
      *   source: value-of<Source>,
-     *   sourceId: string,
+     *   sourceID: string,
      *   sourceLabel: string,
      *   sourceMetadata: string,
      *   sourceUpstreamDeployable: string,
      *   sourceVid: list<int>,
      *   timestamp: int,
      *   unit: string,
-     *   updatedByUserId: int,
+     *   updatedByUserID: int,
      *   useTimestampAsPersistenceTimestamp: bool,
      *   value: string,
      * }> $customProperties
@@ -191,14 +191,14 @@ final class EventUpsertByExternalEventIDParams implements BaseModel
         array $customProperties,
         string $eventName,
         string $eventOrganizer,
-        string $externalAccountId,
-        string $externalEventId,
+        string $externalAccountID,
+        string $externalEventID,
         ?\DateTimeInterface $endDateTime = null,
         ?bool $eventCancelled = null,
         ?bool $eventCompleted = null,
         ?string $eventDescription = null,
         ?string $eventType = null,
-        ?string $eventUrl = null,
+        ?string $eventURL = null,
         ?\DateTimeInterface $startDateTime = null,
     ): self {
         $obj = new self;
@@ -206,15 +206,15 @@ final class EventUpsertByExternalEventIDParams implements BaseModel
         $obj['customProperties'] = $customProperties;
         $obj['eventName'] = $eventName;
         $obj['eventOrganizer'] = $eventOrganizer;
-        $obj['externalAccountId'] = $externalAccountId;
-        $obj['externalEventId'] = $externalEventId;
+        $obj['externalAccountID'] = $externalAccountID;
+        $obj['externalEventID'] = $externalEventID;
 
         null !== $endDateTime && $obj['endDateTime'] = $endDateTime;
         null !== $eventCancelled && $obj['eventCancelled'] = $eventCancelled;
         null !== $eventCompleted && $obj['eventCompleted'] = $eventCompleted;
         null !== $eventDescription && $obj['eventDescription'] = $eventDescription;
         null !== $eventType && $obj['eventType'] = $eventType;
-        null !== $eventUrl && $obj['eventUrl'] = $eventUrl;
+        null !== $eventURL && $obj['eventURL'] = $eventURL;
         null !== $startDateTime && $obj['startDateTime'] = $startDateTime;
 
         return $obj;
@@ -230,18 +230,18 @@ final class EventUpsertByExternalEventIDParams implements BaseModel
      *   isLargeValue: bool,
      *   name: string,
      *   persistenceTimestamp: int,
-     *   requestId: string,
+     *   requestID: string,
      *   selectedByUser: bool,
      *   selectedByUserTimestamp: int,
      *   source: value-of<Source>,
-     *   sourceId: string,
+     *   sourceID: string,
      *   sourceLabel: string,
      *   sourceMetadata: string,
      *   sourceUpstreamDeployable: string,
      *   sourceVid: list<int>,
      *   timestamp: int,
      *   unit: string,
-     *   updatedByUserId: int,
+     *   updatedByUserID: int,
      *   useTimestampAsPersistenceTimestamp: bool,
      *   value: string,
      * }> $customProperties
@@ -282,7 +282,7 @@ final class EventUpsertByExternalEventIDParams implements BaseModel
     public function withExternalAccountID(string $externalAccountID): self
     {
         $obj = clone $this;
-        $obj['externalAccountId'] = $externalAccountID;
+        $obj['externalAccountID'] = $externalAccountID;
 
         return $obj;
     }
@@ -293,7 +293,7 @@ final class EventUpsertByExternalEventIDParams implements BaseModel
     public function withExternalEventID(string $externalEventID): self
     {
         $obj = clone $this;
-        $obj['externalEventId'] = $externalEventID;
+        $obj['externalEventID'] = $externalEventID;
 
         return $obj;
     }
@@ -356,7 +356,7 @@ final class EventUpsertByExternalEventIDParams implements BaseModel
     public function withEventURL(string $eventURL): self
     {
         $obj = clone $this;
-        $obj['eventUrl'] = $eventURL;
+        $obj['eventURL'] = $eventURL;
 
         return $obj;
     }

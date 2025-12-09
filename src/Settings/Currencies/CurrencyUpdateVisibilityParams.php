@@ -19,7 +19,7 @@ use HubspotSDK\Settings\Currencies\CurrencyUpdateVisibilityParams\ToCurrencyCode
  * @phpstan-type CurrencyUpdateVisibilityParamsShape = array{
  *   fromCurrencyCode: FromCurrencyCode|value-of<FromCurrencyCode>,
  *   toCurrencyCode: ToCurrencyCode|value-of<ToCurrencyCode>,
- *   visibleInUI: bool,
+ *   visibleInUi: bool,
  * }
  */
 final class CurrencyUpdateVisibilityParams implements BaseModel
@@ -47,8 +47,8 @@ final class CurrencyUpdateVisibilityParams implements BaseModel
     /**
      * This indicates if the currency pair is shown in the MultiCurrency settings page. Setting this to false will remove the currency pair from the settings page.
      */
-    #[Required]
-    public bool $visibleInUI;
+    #[Required('visibleInUI')]
+    public bool $visibleInUi;
 
     /**
      * `new CurrencyUpdateVisibilityParams()` is missing required properties by the API.
@@ -56,7 +56,7 @@ final class CurrencyUpdateVisibilityParams implements BaseModel
      * To enforce required parameters use
      * ```
      * CurrencyUpdateVisibilityParams::with(
-     *   fromCurrencyCode: ..., toCurrencyCode: ..., visibleInUI: ...
+     *   fromCurrencyCode: ..., toCurrencyCode: ..., visibleInUi: ...
      * )
      * ```
      *
@@ -85,13 +85,13 @@ final class CurrencyUpdateVisibilityParams implements BaseModel
     public static function with(
         FromCurrencyCode|string $fromCurrencyCode,
         ToCurrencyCode|string $toCurrencyCode,
-        bool $visibleInUI,
+        bool $visibleInUi,
     ): self {
         $obj = new self;
 
         $obj['fromCurrencyCode'] = $fromCurrencyCode;
         $obj['toCurrencyCode'] = $toCurrencyCode;
-        $obj['visibleInUI'] = $visibleInUI;
+        $obj['visibleInUi'] = $visibleInUi;
 
         return $obj;
     }
@@ -130,7 +130,7 @@ final class CurrencyUpdateVisibilityParams implements BaseModel
     public function withVisibleInUi(bool $visibleInUi): self
     {
         $obj = clone $this;
-        $obj['visibleInUI'] = $visibleInUi;
+        $obj['visibleInUi'] = $visibleInUi;
 
         return $obj;
     }

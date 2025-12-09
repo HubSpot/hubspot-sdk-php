@@ -18,14 +18,14 @@ use HubspotSDK\PropertyModificationMetadata;
 
 /**
  * @phpstan-type PropertyDefinitionShape = array{
- *   objectTypeId: string,
+ *   objectTypeID: string,
  *   property: \HubspotSDK\Property,
  *   calculationExpression?: array<string,mixed>|null,
  *   calculationFormula?: string|null,
  *   definitionSource?: PropertyDefinitionSource|null,
  *   extensionData?: ExtensionData|null,
  *   externalOptionsMetaData?: ExternalOptionsMetaData|null,
- *   fulcrumPortalId?: int|null,
+ *   fulcrumPortalID?: int|null,
  *   fulcrumTimestamp?: int|null,
  *   janusGroup?: string|null,
  *   permission?: FieldLevelPermission|null,
@@ -39,8 +39,8 @@ final class PropertyDefinition implements BaseModel
     /** @use SdkModel<PropertyDefinitionShape> */
     use SdkModel;
 
-    #[Required]
-    public string $objectTypeId;
+    #[Required('objectTypeId')]
+    public string $objectTypeID;
 
     /**
      * Defines a property.
@@ -64,8 +64,8 @@ final class PropertyDefinition implements BaseModel
     #[Optional]
     public ?ExternalOptionsMetaData $externalOptionsMetaData;
 
-    #[Optional]
-    public ?int $fulcrumPortalId;
+    #[Optional('fulcrumPortalId')]
+    public ?int $fulcrumPortalID;
 
     #[Optional]
     public ?int $fulcrumTimestamp;
@@ -90,7 +90,7 @@ final class PropertyDefinition implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * PropertyDefinition::with(objectTypeId: ..., property: ...)
+     * PropertyDefinition::with(objectTypeID: ..., property: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -122,7 +122,7 @@ final class PropertyDefinition implements BaseModel
      *   calculated?: bool|null,
      *   calculationFormula?: string|null,
      *   createdAt?: \DateTimeInterface|null,
-     *   createdUserId?: string|null,
+     *   createdUserID?: string|null,
      *   dataSensitivity?: value-of<DataSensitivity>|null,
      *   displayOrder?: int|null,
      *   externalOptions?: bool|null,
@@ -135,7 +135,7 @@ final class PropertyDefinition implements BaseModel
      *   sensitiveDataCategories?: list<string>|null,
      *   showCurrencySymbol?: bool|null,
      *   updatedAt?: \DateTimeInterface|null,
-     *   updatedUserId?: string|null,
+     *   updatedUserID?: string|null,
      * } $property
      * @param array<string,mixed> $calculationExpression
      * @param PropertyDefinitionSource|array{
@@ -150,7 +150,7 @@ final class PropertyDefinition implements BaseModel
      *   softRequiredPropertiesExtensionData?: SoftRequiredPropertiesExtensionData|null,
      * } $extensionData
      * @param ExternalOptionsMetaData|array{
-     *   filter?: FilteringMetaData|null, relatedObjectTypeId?: string|null
+     *   filter?: FilteringMetaData|null, relatedObjectTypeID?: string|null
      * } $externalOptionsMetaData
      * @param FieldLevelPermission|array{accessLevel: string} $permission
      * @param DefinitionSource|array{
@@ -165,7 +165,7 @@ final class PropertyDefinition implements BaseModel
      * @param RollupExpression|array{
      *   associationTypes: list<AssociationSpec>,
      *   rollupOperator: string,
-     *   sourceObjectTypeId: string,
+     *   sourceObjectTypeID: string,
      *   sourcePropertyName: string,
      *   conditionalExpression?: array<string,mixed>|null,
      *   conditionalFormula?: string|null,
@@ -174,14 +174,14 @@ final class PropertyDefinition implements BaseModel
      * } $rollupExpression
      */
     public static function with(
-        string $objectTypeId,
+        string $objectTypeID,
         Property|array $property,
         ?array $calculationExpression = null,
         ?string $calculationFormula = null,
         PropertyDefinitionSource|array|null $definitionSource = null,
         ExtensionData|array|null $extensionData = null,
         ExternalOptionsMetaData|array|null $externalOptionsMetaData = null,
-        ?int $fulcrumPortalId = null,
+        ?int $fulcrumPortalID = null,
         ?int $fulcrumTimestamp = null,
         ?string $janusGroup = null,
         FieldLevelPermission|array|null $permission = null,
@@ -191,7 +191,7 @@ final class PropertyDefinition implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj['objectTypeId'] = $objectTypeId;
+        $obj['objectTypeID'] = $objectTypeID;
         $obj['property'] = $property;
 
         null !== $calculationExpression && $obj['calculationExpression'] = $calculationExpression;
@@ -199,7 +199,7 @@ final class PropertyDefinition implements BaseModel
         null !== $definitionSource && $obj['definitionSource'] = $definitionSource;
         null !== $extensionData && $obj['extensionData'] = $extensionData;
         null !== $externalOptionsMetaData && $obj['externalOptionsMetaData'] = $externalOptionsMetaData;
-        null !== $fulcrumPortalId && $obj['fulcrumPortalId'] = $fulcrumPortalId;
+        null !== $fulcrumPortalID && $obj['fulcrumPortalID'] = $fulcrumPortalID;
         null !== $fulcrumTimestamp && $obj['fulcrumTimestamp'] = $fulcrumTimestamp;
         null !== $janusGroup && $obj['janusGroup'] = $janusGroup;
         null !== $permission && $obj['permission'] = $permission;
@@ -213,7 +213,7 @@ final class PropertyDefinition implements BaseModel
     public function withObjectTypeID(string $objectTypeID): self
     {
         $obj = clone $this;
-        $obj['objectTypeId'] = $objectTypeID;
+        $obj['objectTypeID'] = $objectTypeID;
 
         return $obj;
     }
@@ -234,7 +234,7 @@ final class PropertyDefinition implements BaseModel
      *   calculated?: bool|null,
      *   calculationFormula?: string|null,
      *   createdAt?: \DateTimeInterface|null,
-     *   createdUserId?: string|null,
+     *   createdUserID?: string|null,
      *   dataSensitivity?: value-of<DataSensitivity>|null,
      *   displayOrder?: int|null,
      *   externalOptions?: bool|null,
@@ -247,7 +247,7 @@ final class PropertyDefinition implements BaseModel
      *   sensitiveDataCategories?: list<string>|null,
      *   showCurrencySymbol?: bool|null,
      *   updatedAt?: \DateTimeInterface|null,
-     *   updatedUserId?: string|null,
+     *   updatedUserID?: string|null,
      * } $property
      */
     public function withProperty(Property|array $property): self
@@ -312,7 +312,7 @@ final class PropertyDefinition implements BaseModel
 
     /**
      * @param ExternalOptionsMetaData|array{
-     *   filter?: FilteringMetaData|null, relatedObjectTypeId?: string|null
+     *   filter?: FilteringMetaData|null, relatedObjectTypeID?: string|null
      * } $externalOptionsMetaData
      */
     public function withExternalOptionsMetaData(
@@ -327,7 +327,7 @@ final class PropertyDefinition implements BaseModel
     public function withFulcrumPortalID(int $fulcrumPortalID): self
     {
         $obj = clone $this;
-        $obj['fulcrumPortalId'] = $fulcrumPortalID;
+        $obj['fulcrumPortalID'] = $fulcrumPortalID;
 
         return $obj;
     }
@@ -394,7 +394,7 @@ final class PropertyDefinition implements BaseModel
      * @param RollupExpression|array{
      *   associationTypes: list<AssociationSpec>,
      *   rollupOperator: string,
-     *   sourceObjectTypeId: string,
+     *   sourceObjectTypeID: string,
      *   sourcePropertyName: string,
      *   conditionalExpression?: array<string,mixed>|null,
      *   conditionalFormula?: string|null,

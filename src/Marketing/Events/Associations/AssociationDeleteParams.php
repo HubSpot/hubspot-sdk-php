@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Services\Marketing\Events\AssociationsService::delete()
  *
- * @phpstan-type AssociationDeleteParamsShape = array{marketingEventId: string}
+ * @phpstan-type AssociationDeleteParamsShape = array{marketingEventID: string}
  */
 final class AssociationDeleteParams implements BaseModel
 {
@@ -23,14 +23,14 @@ final class AssociationDeleteParams implements BaseModel
     use SdkParams;
 
     #[Required]
-    public string $marketingEventId;
+    public string $marketingEventID;
 
     /**
      * `new AssociationDeleteParams()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * AssociationDeleteParams::with(marketingEventId: ...)
+     * AssociationDeleteParams::with(marketingEventID: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -49,11 +49,11 @@ final class AssociationDeleteParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(string $marketingEventId): self
+    public static function with(string $marketingEventID): self
     {
         $obj = new self;
 
-        $obj['marketingEventId'] = $marketingEventId;
+        $obj['marketingEventID'] = $marketingEventID;
 
         return $obj;
     }
@@ -61,7 +61,7 @@ final class AssociationDeleteParams implements BaseModel
     public function withMarketingEventID(string $marketingEventID): self
     {
         $obj = clone $this;
-        $obj['marketingEventId'] = $marketingEventID;
+        $obj['marketingEventID'] = $marketingEventID;
 
         return $obj;
     }

@@ -15,7 +15,7 @@ use HubspotSDK\Crm\Extensions\Cards\IntegratorCardPayloadResponse\ResponseVersio
  *
  * @phpstan-type IntegratorCardPayloadResponseShape = array{
  *   totalCount: int,
- *   allItemsLinkUrl?: string|null,
+ *   allItemsLinkURL?: string|null,
  *   cardLabel?: string|null,
  *   responseVersion?: value-of<ResponseVersion>|null,
  *   sections?: list<IntegratorObjectResult>|null,
@@ -36,8 +36,8 @@ final class IntegratorCardPayloadResponse implements BaseModel
     /**
      * URL to a page the integrator has built that displays all details for this card. This URL will be displayed to users under a `See more [x]` link if there are more than five items in your response, where `[x]` is the value of `itemLabel`.
      */
-    #[Optional]
-    public ?string $allItemsLinkUrl;
+    #[Optional('allItemsLinkUrl')]
+    public ?string $allItemsLinkURL;
 
     /**
      * The label to be used for the `allItemsLinkUrl` link (e.g. 'See more tickets'). If not provided, this falls back to the card's title.
@@ -90,7 +90,7 @@ final class IntegratorCardPayloadResponse implements BaseModel
      *   actions: list<ActionHookActionBody|IFrameActionBody>,
      *   title: string,
      *   tokens: list<ObjectToken>,
-     *   linkUrl?: string|null,
+     *   linkURL?: string|null,
      * }> $sections
      * @param TopLevelActions|array{
      *   secondary: list<ActionHookActionBody|IFrameActionBody>,
@@ -100,7 +100,7 @@ final class IntegratorCardPayloadResponse implements BaseModel
      */
     public static function with(
         int $totalCount,
-        ?string $allItemsLinkUrl = null,
+        ?string $allItemsLinkURL = null,
         ?string $cardLabel = null,
         ResponseVersion|string|null $responseVersion = null,
         ?array $sections = null,
@@ -110,7 +110,7 @@ final class IntegratorCardPayloadResponse implements BaseModel
 
         $obj['totalCount'] = $totalCount;
 
-        null !== $allItemsLinkUrl && $obj['allItemsLinkUrl'] = $allItemsLinkUrl;
+        null !== $allItemsLinkURL && $obj['allItemsLinkURL'] = $allItemsLinkURL;
         null !== $cardLabel && $obj['cardLabel'] = $cardLabel;
         null !== $responseVersion && $obj['responseVersion'] = $responseVersion;
         null !== $sections && $obj['sections'] = $sections;
@@ -136,7 +136,7 @@ final class IntegratorCardPayloadResponse implements BaseModel
     public function withAllItemsLinkURL(string $allItemsLinkURL): self
     {
         $obj = clone $this;
-        $obj['allItemsLinkUrl'] = $allItemsLinkURL;
+        $obj['allItemsLinkURL'] = $allItemsLinkURL;
 
         return $obj;
     }
@@ -172,7 +172,7 @@ final class IntegratorCardPayloadResponse implements BaseModel
      *   actions: list<ActionHookActionBody|IFrameActionBody>,
      *   title: string,
      *   tokens: list<ObjectToken>,
-     *   linkUrl?: string|null,
+     *   linkURL?: string|null,
      * }> $sections
      */
     public function withSections(array $sections): self

@@ -15,7 +15,7 @@ use HubspotSDK\PropertyModificationMetadata;
 
 /**
  * @phpstan-type CreatedResponsePropertyShape = array{
- *   createdResourceId: string, entity: Property, location?: string|null
+ *   createdResourceID: string, entity: Property, location?: string|null
  * }
  */
 final class CreatedResponseProperty implements BaseModel
@@ -23,8 +23,8 @@ final class CreatedResponseProperty implements BaseModel
     /** @use SdkModel<CreatedResponsePropertyShape> */
     use SdkModel;
 
-    #[Required]
-    public string $createdResourceId;
+    #[Required('createdResourceId')]
+    public string $createdResourceID;
 
     /**
      * Defines a property.
@@ -40,7 +40,7 @@ final class CreatedResponseProperty implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * CreatedResponseProperty::with(createdResourceId: ..., entity: ...)
+     * CreatedResponseProperty::with(createdResourceID: ..., entity: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -72,7 +72,7 @@ final class CreatedResponseProperty implements BaseModel
      *   calculated?: bool|null,
      *   calculationFormula?: string|null,
      *   createdAt?: \DateTimeInterface|null,
-     *   createdUserId?: string|null,
+     *   createdUserID?: string|null,
      *   dataSensitivity?: value-of<DataSensitivity>|null,
      *   displayOrder?: int|null,
      *   externalOptions?: bool|null,
@@ -85,17 +85,17 @@ final class CreatedResponseProperty implements BaseModel
      *   sensitiveDataCategories?: list<string>|null,
      *   showCurrencySymbol?: bool|null,
      *   updatedAt?: \DateTimeInterface|null,
-     *   updatedUserId?: string|null,
+     *   updatedUserID?: string|null,
      * } $entity
      */
     public static function with(
-        string $createdResourceId,
+        string $createdResourceID,
         Property|array $entity,
         ?string $location = null
     ): self {
         $obj = new self;
 
-        $obj['createdResourceId'] = $createdResourceId;
+        $obj['createdResourceID'] = $createdResourceID;
         $obj['entity'] = $entity;
 
         null !== $location && $obj['location'] = $location;
@@ -106,7 +106,7 @@ final class CreatedResponseProperty implements BaseModel
     public function withCreatedResourceID(string $createdResourceID): self
     {
         $obj = clone $this;
-        $obj['createdResourceId'] = $createdResourceID;
+        $obj['createdResourceID'] = $createdResourceID;
 
         return $obj;
     }
@@ -127,7 +127,7 @@ final class CreatedResponseProperty implements BaseModel
      *   calculated?: bool|null,
      *   calculationFormula?: string|null,
      *   createdAt?: \DateTimeInterface|null,
-     *   createdUserId?: string|null,
+     *   createdUserID?: string|null,
      *   dataSensitivity?: value-of<DataSensitivity>|null,
      *   displayOrder?: int|null,
      *   externalOptions?: bool|null,
@@ -140,7 +140,7 @@ final class CreatedResponseProperty implements BaseModel
      *   sensitiveDataCategories?: list<string>|null,
      *   showCurrencySymbol?: bool|null,
      *   updatedAt?: \DateTimeInterface|null,
-     *   updatedUserId?: string|null,
+     *   updatedUserID?: string|null,
      * } $entity
      */
     public function withEntity(Property|array $entity): self

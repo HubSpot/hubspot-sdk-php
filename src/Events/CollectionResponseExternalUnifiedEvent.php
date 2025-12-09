@@ -56,7 +56,7 @@ final class CollectionResponseExternalUnifiedEvent implements BaseModel
      * @param list<ExternalUnifiedEvent|array{
      *   id: string,
      *   eventType: string,
-     *   objectId: string,
+     *   objectID: string,
      *   objectType: string,
      *   occurredAt: \DateTimeInterface,
      *   properties: array<string,string>,
@@ -80,7 +80,7 @@ final class CollectionResponseExternalUnifiedEvent implements BaseModel
      * @param list<ExternalUnifiedEvent|array{
      *   id: string,
      *   eventType: string,
-     *   objectId: string,
+     *   objectID: string,
      *   objectType: string,
      *   occurredAt: \DateTimeInterface,
      *   properties: array<string,string>,

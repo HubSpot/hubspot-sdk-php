@@ -15,10 +15,10 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-type PublicWelcomeMessageShape = array{
  *   id: string,
  *   archived: bool,
- *   channelAccountId: string,
- *   channelId: string,
+ *   channelAccountID: string,
+ *   channelID: string,
  *   client: PublicClient,
- *   conversationsThreadId: string,
+ *   conversationsThreadID: string,
  *   createdAt: \DateTimeInterface,
  *   createdBy: string,
  *   recipients: list<PublicRecipient>,
@@ -40,17 +40,17 @@ final class PublicWelcomeMessage implements BaseModel
     #[Required]
     public bool $archived;
 
-    #[Required]
-    public string $channelAccountId;
+    #[Required('channelAccountId')]
+    public string $channelAccountID;
 
-    #[Required]
-    public string $channelId;
+    #[Required('channelId')]
+    public string $channelID;
 
     #[Required]
     public PublicClient $client;
 
-    #[Required]
-    public string $conversationsThreadId;
+    #[Required('conversationsThreadId')]
+    public string $conversationsThreadID;
 
     #[Required]
     public \DateTimeInterface $createdAt;
@@ -87,10 +87,10 @@ final class PublicWelcomeMessage implements BaseModel
      * PublicWelcomeMessage::with(
      *   id: ...,
      *   archived: ...,
-     *   channelAccountId: ...,
-     *   channelId: ...,
+     *   channelAccountID: ...,
+     *   channelID: ...,
      *   client: ...,
-     *   conversationsThreadId: ...,
+     *   conversationsThreadID: ...,
      *   createdAt: ...,
      *   createdBy: ...,
      *   recipients: ...,
@@ -129,16 +129,16 @@ final class PublicWelcomeMessage implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param PublicClient|array{
-     *   clientType: value-of<ClientType>, integrationAppId?: int|null
+     *   clientType: value-of<ClientType>, integrationAppID?: int|null
      * } $client
      * @param list<PublicRecipient|array{
      *   deliveryIdentifier: PublicDeliveryIdentifier,
-     *   actorId?: string|null,
+     *   actorID?: string|null,
      *   name?: string|null,
      *   recipientField?: string|null,
      * }> $recipients
      * @param list<PublicSender|array{
-     *   actorId?: string|null,
+     *   actorID?: string|null,
      *   deliveryIdentifier?: PublicDeliveryIdentifier|null,
      *   name?: string|null,
      *   senderField?: string|null,
@@ -148,10 +148,10 @@ final class PublicWelcomeMessage implements BaseModel
     public static function with(
         string $id,
         bool $archived,
-        string $channelAccountId,
-        string $channelId,
+        string $channelAccountID,
+        string $channelID,
         PublicClient|array $client,
-        string $conversationsThreadId,
+        string $conversationsThreadID,
         \DateTimeInterface $createdAt,
         string $createdBy,
         array $recipients,
@@ -165,10 +165,10 @@ final class PublicWelcomeMessage implements BaseModel
 
         $obj['id'] = $id;
         $obj['archived'] = $archived;
-        $obj['channelAccountId'] = $channelAccountId;
-        $obj['channelId'] = $channelId;
+        $obj['channelAccountID'] = $channelAccountID;
+        $obj['channelID'] = $channelID;
         $obj['client'] = $client;
-        $obj['conversationsThreadId'] = $conversationsThreadId;
+        $obj['conversationsThreadID'] = $conversationsThreadID;
         $obj['createdAt'] = $createdAt;
         $obj['createdBy'] = $createdBy;
         $obj['recipients'] = $recipients;
@@ -201,7 +201,7 @@ final class PublicWelcomeMessage implements BaseModel
     public function withChannelAccountID(string $channelAccountID): self
     {
         $obj = clone $this;
-        $obj['channelAccountId'] = $channelAccountID;
+        $obj['channelAccountID'] = $channelAccountID;
 
         return $obj;
     }
@@ -209,14 +209,14 @@ final class PublicWelcomeMessage implements BaseModel
     public function withChannelID(string $channelID): self
     {
         $obj = clone $this;
-        $obj['channelId'] = $channelID;
+        $obj['channelID'] = $channelID;
 
         return $obj;
     }
 
     /**
      * @param PublicClient|array{
-     *   clientType: value-of<ClientType>, integrationAppId?: int|null
+     *   clientType: value-of<ClientType>, integrationAppID?: int|null
      * } $client
      */
     public function withClient(PublicClient|array $client): self
@@ -231,7 +231,7 @@ final class PublicWelcomeMessage implements BaseModel
         string $conversationsThreadID
     ): self {
         $obj = clone $this;
-        $obj['conversationsThreadId'] = $conversationsThreadID;
+        $obj['conversationsThreadID'] = $conversationsThreadID;
 
         return $obj;
     }
@@ -255,7 +255,7 @@ final class PublicWelcomeMessage implements BaseModel
     /**
      * @param list<PublicRecipient|array{
      *   deliveryIdentifier: PublicDeliveryIdentifier,
-     *   actorId?: string|null,
+     *   actorID?: string|null,
      *   name?: string|null,
      *   recipientField?: string|null,
      * }> $recipients
@@ -270,7 +270,7 @@ final class PublicWelcomeMessage implements BaseModel
 
     /**
      * @param list<PublicSender|array{
-     *   actorId?: string|null,
+     *   actorID?: string|null,
      *   deliveryIdentifier?: PublicDeliveryIdentifier|null,
      *   name?: string|null,
      *   senderField?: string|null,

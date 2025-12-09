@@ -23,11 +23,11 @@ final class SettingsService implements SettingsContract
      * @api
      *
      * @param array{
-     *   createMeetingUrl: string,
-     *   deleteMeetingUrl?: string,
+     *   createMeetingURL: string,
+     *   deleteMeetingURL?: string,
      *   fetchAccountsUri?: string,
-     *   updateMeetingUrl?: string,
-     *   userVerifyUrl?: string,
+     *   updateMeetingURL?: string,
+     *   userVerifyURL?: string,
      * }|SettingUpdateParams $params
      *
      * @throws APIException

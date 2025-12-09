@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type FlowIDWorkflowIDMappingResponseShape = array{
- *   flowId: int, workflowId: int
+ *   flowID: int, workflowID: int
  * }
  */
 final class FlowIDWorkflowIDMappingResponse implements BaseModel
@@ -18,18 +18,18 @@ final class FlowIDWorkflowIDMappingResponse implements BaseModel
     /** @use SdkModel<FlowIDWorkflowIDMappingResponseShape> */
     use SdkModel;
 
-    #[Required]
-    public int $flowId;
+    #[Required('flowId')]
+    public int $flowID;
 
-    #[Required]
-    public int $workflowId;
+    #[Required('workflowId')]
+    public int $workflowID;
 
     /**
      * `new FlowIDWorkflowIDMappingResponse()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * FlowIDWorkflowIDMappingResponse::with(flowId: ..., workflowId: ...)
+     * FlowIDWorkflowIDMappingResponse::with(flowID: ..., workflowID: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -48,12 +48,12 @@ final class FlowIDWorkflowIDMappingResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(int $flowId, int $workflowId): self
+    public static function with(int $flowID, int $workflowID): self
     {
         $obj = new self;
 
-        $obj['flowId'] = $flowId;
-        $obj['workflowId'] = $workflowId;
+        $obj['flowID'] = $flowID;
+        $obj['workflowID'] = $workflowID;
 
         return $obj;
     }
@@ -61,7 +61,7 @@ final class FlowIDWorkflowIDMappingResponse implements BaseModel
     public function withFlowID(int $flowID): self
     {
         $obj = clone $this;
-        $obj['flowId'] = $flowID;
+        $obj['flowID'] = $flowID;
 
         return $obj;
     }
@@ -69,7 +69,7 @@ final class FlowIDWorkflowIDMappingResponse implements BaseModel
     public function withWorkflowID(int $workflowID): self
     {
         $obj = clone $this;
-        $obj['workflowId'] = $workflowID;
+        $obj['workflowID'] = $workflowID;
 
         return $obj;
     }

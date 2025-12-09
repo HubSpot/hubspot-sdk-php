@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type PublicAssociationSpecShape = array{category: string, typeId: int}
+ * @phpstan-type PublicAssociationSpecShape = array{category: string, typeID: int}
  */
 final class PublicAssociationSpec implements BaseModel
 {
@@ -19,15 +19,15 @@ final class PublicAssociationSpec implements BaseModel
     #[Required]
     public string $category;
 
-    #[Required]
-    public int $typeId;
+    #[Required('typeId')]
+    public int $typeID;
 
     /**
      * `new PublicAssociationSpec()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * PublicAssociationSpec::with(category: ..., typeId: ...)
+     * PublicAssociationSpec::with(category: ..., typeID: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -46,12 +46,12 @@ final class PublicAssociationSpec implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(string $category, int $typeId): self
+    public static function with(string $category, int $typeID): self
     {
         $obj = new self;
 
         $obj['category'] = $category;
-        $obj['typeId'] = $typeId;
+        $obj['typeID'] = $typeID;
 
         return $obj;
     }
@@ -67,7 +67,7 @@ final class PublicAssociationSpec implements BaseModel
     public function withTypeID(int $typeID): self
     {
         $obj = clone $this;
-        $obj['typeId'] = $typeID;
+        $obj['typeID'] = $typeID;
 
         return $obj;
     }

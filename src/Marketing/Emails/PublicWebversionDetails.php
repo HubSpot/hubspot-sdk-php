@@ -16,8 +16,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   isPageRedirected?: bool|null,
  *   metaDescription?: string|null,
  *   pageExpiryEnabled?: bool|null,
- *   redirectToPageId?: string|null,
- *   redirectToUrl?: string|null,
+ *   redirectToPageID?: string|null,
+ *   redirectToURL?: string|null,
  *   slug?: string|null,
  *   title?: string|null,
  *   url?: string|null,
@@ -46,11 +46,11 @@ final class PublicWebversionDetails implements BaseModel
     #[Optional]
     public ?bool $pageExpiryEnabled;
 
-    #[Optional]
-    public ?string $redirectToPageId;
+    #[Optional('redirectToPageId')]
+    public ?string $redirectToPageID;
 
-    #[Optional]
-    public ?string $redirectToUrl;
+    #[Optional('redirectToUrl')]
+    public ?string $redirectToURL;
 
     #[Optional]
     public ?string $slug;
@@ -78,8 +78,8 @@ final class PublicWebversionDetails implements BaseModel
         ?bool $isPageRedirected = null,
         ?string $metaDescription = null,
         ?bool $pageExpiryEnabled = null,
-        ?string $redirectToPageId = null,
-        ?string $redirectToUrl = null,
+        ?string $redirectToPageID = null,
+        ?string $redirectToURL = null,
         ?string $slug = null,
         ?string $title = null,
         ?string $url = null,
@@ -92,8 +92,8 @@ final class PublicWebversionDetails implements BaseModel
         null !== $isPageRedirected && $obj['isPageRedirected'] = $isPageRedirected;
         null !== $metaDescription && $obj['metaDescription'] = $metaDescription;
         null !== $pageExpiryEnabled && $obj['pageExpiryEnabled'] = $pageExpiryEnabled;
-        null !== $redirectToPageId && $obj['redirectToPageId'] = $redirectToPageId;
-        null !== $redirectToUrl && $obj['redirectToUrl'] = $redirectToUrl;
+        null !== $redirectToPageID && $obj['redirectToPageID'] = $redirectToPageID;
+        null !== $redirectToURL && $obj['redirectToURL'] = $redirectToURL;
         null !== $slug && $obj['slug'] = $slug;
         null !== $title && $obj['title'] = $title;
         null !== $url && $obj['url'] = $url;
@@ -152,7 +152,7 @@ final class PublicWebversionDetails implements BaseModel
     public function withRedirectToPageID(string $redirectToPageID): self
     {
         $obj = clone $this;
-        $obj['redirectToPageId'] = $redirectToPageID;
+        $obj['redirectToPageID'] = $redirectToPageID;
 
         return $obj;
     }
@@ -160,7 +160,7 @@ final class PublicWebversionDetails implements BaseModel
     public function withRedirectToURL(string $redirectToURL): self
     {
         $obj = clone $this;
-        $obj['redirectToUrl'] = $redirectToURL;
+        $obj['redirectToURL'] = $redirectToURL;
 
         return $obj;
     }

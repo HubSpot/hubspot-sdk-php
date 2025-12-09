@@ -79,7 +79,7 @@ final class VersionContentFolder implements BaseModel
      *   created: \DateTimeInterface,
      *   deletedAt: \DateTimeInterface,
      *   name: string,
-     *   parentFolderId: int,
+     *   parentFolderID: int,
      *   updated: \DateTimeInterface,
      * } $object
      * @param VersionUser|array{id: string, email: string, fullName: string} $user
@@ -120,7 +120,7 @@ final class VersionContentFolder implements BaseModel
      *   created: \DateTimeInterface,
      *   deletedAt: \DateTimeInterface,
      *   name: string,
-     *   parentFolderId: int,
+     *   parentFolderID: int,
      *   updated: \DateTimeInterface,
      * } $object
      */

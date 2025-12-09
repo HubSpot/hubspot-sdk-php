@@ -12,8 +12,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type APISingleConnectionActionShape = array{
- *   actionId: string,
- *   actionTypeId: string,
+ *   actionID: string,
+ *   actionTypeID: string,
  *   actionTypeVersion: int,
  *   fields: array<string,mixed>,
  *   type: value-of<Type>,
@@ -25,11 +25,11 @@ final class APISingleConnectionAction implements BaseModel
     /** @use SdkModel<APISingleConnectionActionShape> */
     use SdkModel;
 
-    #[Required]
-    public string $actionId;
+    #[Required('actionId')]
+    public string $actionID;
 
-    #[Required]
-    public string $actionTypeId;
+    #[Required('actionTypeId')]
+    public string $actionTypeID;
 
     #[Required]
     public int $actionTypeVersion;
@@ -51,8 +51,8 @@ final class APISingleConnectionAction implements BaseModel
      * To enforce required parameters use
      * ```
      * APISingleConnectionAction::with(
-     *   actionId: ...,
-     *   actionTypeId: ...,
+     *   actionID: ...,
+     *   actionTypeID: ...,
      *   actionTypeVersion: ...,
      *   fields: ...,
      *   type: ...,
@@ -82,11 +82,11 @@ final class APISingleConnectionAction implements BaseModel
      *
      * @param array<string,mixed> $fields
      * @param Type|value-of<Type> $type
-     * @param APIConnection|array{edgeType: string, nextActionId: string} $connection
+     * @param APIConnection|array{edgeType: string, nextActionID: string} $connection
      */
     public static function with(
-        string $actionId,
-        string $actionTypeId,
+        string $actionID,
+        string $actionTypeID,
         int $actionTypeVersion,
         array $fields,
         Type|string $type = 'SINGLE_CONNECTION',
@@ -94,8 +94,8 @@ final class APISingleConnectionAction implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj['actionId'] = $actionId;
-        $obj['actionTypeId'] = $actionTypeId;
+        $obj['actionID'] = $actionID;
+        $obj['actionTypeID'] = $actionTypeID;
         $obj['actionTypeVersion'] = $actionTypeVersion;
         $obj['fields'] = $fields;
         $obj['type'] = $type;
@@ -108,7 +108,7 @@ final class APISingleConnectionAction implements BaseModel
     public function withActionID(string $actionID): self
     {
         $obj = clone $this;
-        $obj['actionId'] = $actionID;
+        $obj['actionID'] = $actionID;
 
         return $obj;
     }
@@ -116,7 +116,7 @@ final class APISingleConnectionAction implements BaseModel
     public function withActionTypeID(string $actionTypeID): self
     {
         $obj = clone $this;
-        $obj['actionTypeId'] = $actionTypeID;
+        $obj['actionTypeID'] = $actionTypeID;
 
         return $obj;
     }
@@ -152,7 +152,7 @@ final class APISingleConnectionAction implements BaseModel
     }
 
     /**
-     * @param APIConnection|array{edgeType: string, nextActionId: string} $connection
+     * @param APIConnection|array{edgeType: string, nextActionID: string} $connection
      */
     public function withConnection(APIConnection|array $connection): self
     {

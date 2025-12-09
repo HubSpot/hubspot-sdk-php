@@ -317,7 +317,7 @@ final class CurrenciesTest extends TestCase
         $result = $this->client->settings->currencies->updateVisibility([
             'fromCurrencyCode' => 'AED',
             'toCurrencyCode' => 'AED',
-            'visibleInUI' => true,
+            'visibleInUi' => true,
         ]);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -334,7 +334,7 @@ final class CurrenciesTest extends TestCase
         $result = $this->client->settings->currencies->updateVisibility([
             'fromCurrencyCode' => 'AED',
             'toCurrencyCode' => 'AED',
-            'visibleInUI' => true,
+            'visibleInUi' => true,
         ]);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

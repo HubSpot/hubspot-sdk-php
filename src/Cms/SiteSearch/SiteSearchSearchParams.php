@@ -22,7 +22,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   boostLimit?: float,
  *   boostRecent?: string,
  *   domain?: list<string>,
- *   groupId?: list<int>,
+ *   groupID?: list<int>,
  *   hubdbQuery?: string,
  *   language?: Language|value-of<Language>,
  *   length?: Length|value-of<Length>,
@@ -33,7 +33,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   popularityBoost?: float,
  *   property?: list<string>,
  *   q?: string,
- *   tableId?: int,
+ *   tableID?: int,
  *   type?: list<Type|value-of<Type>>,
  * }
  */
@@ -72,10 +72,10 @@ final class SiteSearchSearchParams implements BaseModel
     /**
      * Specifies which blog(s) to be searched by blog ID. Can be used multiple times to search more than one blog.
      *
-     * @var list<int>|null $groupId
+     * @var list<int>|null $groupID
      */
     #[Optional(list: 'int')]
-    public ?array $groupId;
+    public ?array $groupID;
 
     /**
      * Specify a HubDB query to further filter the search results.
@@ -149,7 +149,7 @@ final class SiteSearchSearchParams implements BaseModel
      * Specifies a specific HubDB table to search. Only returns results from the specified table. Can be used in tandem with the `hubdbQuery` parameter to further filter results.
      */
     #[Optional]
-    public ?int $tableId;
+    public ?int $tableID;
 
     /**
      * Specifies the type of content to search. Can be one or more of SITE_PAGE, LANDING_PAGE, BLOG_POST, LISTING_PAGE, and KNOWLEDGE_ARTICLE. Defaults to all content types except LANDING_PAGE and KNOWLEDGE_ARTICLE.
@@ -170,7 +170,7 @@ final class SiteSearchSearchParams implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<string> $domain
-     * @param list<int> $groupId
+     * @param list<int> $groupID
      * @param Language|value-of<Language> $language
      * @param Length|value-of<Length> $length
      * @param list<string> $pathPrefix
@@ -182,7 +182,7 @@ final class SiteSearchSearchParams implements BaseModel
         ?float $boostLimit = null,
         ?string $boostRecent = null,
         ?array $domain = null,
-        ?array $groupId = null,
+        ?array $groupID = null,
         ?string $hubdbQuery = null,
         Language|string|null $language = null,
         Length|string|null $length = null,
@@ -193,7 +193,7 @@ final class SiteSearchSearchParams implements BaseModel
         ?float $popularityBoost = null,
         ?array $property = null,
         ?string $q = null,
-        ?int $tableId = null,
+        ?int $tableID = null,
         ?array $type = null,
     ): self {
         $obj = new self;
@@ -202,7 +202,7 @@ final class SiteSearchSearchParams implements BaseModel
         null !== $boostLimit && $obj['boostLimit'] = $boostLimit;
         null !== $boostRecent && $obj['boostRecent'] = $boostRecent;
         null !== $domain && $obj['domain'] = $domain;
-        null !== $groupId && $obj['groupId'] = $groupId;
+        null !== $groupID && $obj['groupID'] = $groupID;
         null !== $hubdbQuery && $obj['hubdbQuery'] = $hubdbQuery;
         null !== $language && $obj['language'] = $language;
         null !== $length && $obj['length'] = $length;
@@ -213,7 +213,7 @@ final class SiteSearchSearchParams implements BaseModel
         null !== $popularityBoost && $obj['popularityBoost'] = $popularityBoost;
         null !== $property && $obj['property'] = $property;
         null !== $q && $obj['q'] = $q;
-        null !== $tableId && $obj['tableId'] = $tableId;
+        null !== $tableID && $obj['tableID'] = $tableID;
         null !== $type && $obj['type'] = $type;
 
         return $obj;
@@ -273,7 +273,7 @@ final class SiteSearchSearchParams implements BaseModel
     public function withGroupID(array $groupID): self
     {
         $obj = clone $this;
-        $obj['groupId'] = $groupID;
+        $obj['groupID'] = $groupID;
 
         return $obj;
     }
@@ -402,7 +402,7 @@ final class SiteSearchSearchParams implements BaseModel
     public function withTableID(int $tableID): self
     {
         $obj = clone $this;
-        $obj['tableId'] = $tableID;
+        $obj['tableID'] = $tableID;
 
         return $obj;
     }

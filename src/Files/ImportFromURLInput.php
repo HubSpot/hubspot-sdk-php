@@ -19,7 +19,7 @@ use HubspotSDK\Files\ImportFromURLInput\DuplicateValidationStrategy;
  *   duplicateValidationScope?: value-of<DuplicateValidationScope>|null,
  *   duplicateValidationStrategy?: value-of<DuplicateValidationStrategy>|null,
  *   expiresAt?: \DateTimeInterface|null,
- *   folderId?: string|null,
+ *   folderID?: string|null,
  *   folderPath?: string|null,
  *   name?: string|null,
  *   overwrite?: bool|null,
@@ -70,8 +70,8 @@ final class ImportFromURLInput implements BaseModel
     /**
      * One of folderId or folderPath is required. Destination folderId for the uploaded file.
      */
-    #[Optional]
-    public ?string $folderId;
+    #[Optional('folderId')]
+    public ?string $folderID;
 
     /**
      * One of folderPath or folderId is required. Destination folder path for the uploaded file. If the folder path does not exist, there will be an attempt to create the folder path.
@@ -131,7 +131,7 @@ final class ImportFromURLInput implements BaseModel
         DuplicateValidationScope|string|null $duplicateValidationScope = null,
         DuplicateValidationStrategy|string|null $duplicateValidationStrategy = null,
         ?\DateTimeInterface $expiresAt = null,
-        ?string $folderId = null,
+        ?string $folderID = null,
         ?string $folderPath = null,
         ?string $name = null,
         ?bool $overwrite = null,
@@ -145,7 +145,7 @@ final class ImportFromURLInput implements BaseModel
         null !== $duplicateValidationScope && $obj['duplicateValidationScope'] = $duplicateValidationScope;
         null !== $duplicateValidationStrategy && $obj['duplicateValidationStrategy'] = $duplicateValidationStrategy;
         null !== $expiresAt && $obj['expiresAt'] = $expiresAt;
-        null !== $folderId && $obj['folderId'] = $folderId;
+        null !== $folderID && $obj['folderID'] = $folderID;
         null !== $folderPath && $obj['folderPath'] = $folderPath;
         null !== $name && $obj['name'] = $name;
         null !== $overwrite && $obj['overwrite'] = $overwrite;
@@ -223,7 +223,7 @@ final class ImportFromURLInput implements BaseModel
     public function withFolderID(string $folderID): self
     {
         $obj = clone $this;
-        $obj['folderId'] = $folderID;
+        $obj['folderID'] = $folderID;
 
         return $obj;
     }

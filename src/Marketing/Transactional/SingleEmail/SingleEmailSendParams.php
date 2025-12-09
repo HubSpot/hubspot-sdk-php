@@ -17,14 +17,14 @@ use HubspotSDK\Marketing\PublicSingleSendEmail;
  * @see HubspotSDK\Services\Marketing\Transactional\SingleEmailService::send()
  *
  * @phpstan-type SingleEmailSendParamsShape = array{
- *   emailId: int,
+ *   emailID: int,
  *   message: PublicSingleSendEmail|array{
  *     to: string,
  *     bcc?: list<string>|null,
  *     cc?: list<string>|null,
  *     from?: string|null,
  *     replyTo?: list<string>|null,
- *     sendId?: string|null,
+ *     sendID?: string|null,
  *   },
  *   contactProperties?: array<string,string>,
  *   customProperties?: array<string,mixed>,
@@ -39,8 +39,8 @@ final class SingleEmailSendParams implements BaseModel
     /**
      * The content ID for the email, which can be found in email tool UI.
      */
-    #[Required]
-    public int $emailId;
+    #[Required('emailId')]
+    public int $emailID;
 
     /**
      * A JSON object containing anything you want to override.
@@ -70,7 +70,7 @@ final class SingleEmailSendParams implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * SingleEmailSendParams::with(emailId: ..., message: ...)
+     * SingleEmailSendParams::with(emailID: ..., message: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -95,20 +95,20 @@ final class SingleEmailSendParams implements BaseModel
      *   cc?: list<string>|null,
      *   from?: string|null,
      *   replyTo?: list<string>|null,
-     *   sendId?: string|null,
+     *   sendID?: string|null,
      * } $message
      * @param array<string,string> $contactProperties
      * @param array<string,mixed> $customProperties
      */
     public static function with(
-        int $emailId,
+        int $emailID,
         PublicSingleSendEmail|array $message,
         ?array $contactProperties = null,
         ?array $customProperties = null,
     ): self {
         $obj = new self;
 
-        $obj['emailId'] = $emailId;
+        $obj['emailID'] = $emailID;
         $obj['message'] = $message;
 
         null !== $contactProperties && $obj['contactProperties'] = $contactProperties;
@@ -123,7 +123,7 @@ final class SingleEmailSendParams implements BaseModel
     public function withEmailID(int $emailID): self
     {
         $obj = clone $this;
-        $obj['emailId'] = $emailID;
+        $obj['emailID'] = $emailID;
 
         return $obj;
     }
@@ -137,7 +137,7 @@ final class SingleEmailSendParams implements BaseModel
      *   cc?: list<string>|null,
      *   from?: string|null,
      *   replyTo?: list<string>|null,
-     *   sendId?: string|null,
+     *   sendID?: string|null,
      * } $message
      */
     public function withMessage(PublicSingleSendEmail|array $message): self

@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type CreatedResponseSimplePublicObjectShape = array{
- *   createdResourceId: string, entity: SimplePublicObject, location?: string|null
+ *   createdResourceID: string, entity: SimplePublicObject, location?: string|null
  * }
  */
 final class CreatedResponseSimplePublicObject implements BaseModel
@@ -22,8 +22,8 @@ final class CreatedResponseSimplePublicObject implements BaseModel
     /**
      * The unique identifier of the newly created resource.
      */
-    #[Required]
-    public string $createdResourceId;
+    #[Required('createdResourceId')]
+    public string $createdResourceID;
 
     /**
      * A simple public object.
@@ -42,7 +42,7 @@ final class CreatedResponseSimplePublicObject implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * CreatedResponseSimplePublicObject::with(createdResourceId: ..., entity: ...)
+     * CreatedResponseSimplePublicObject::with(createdResourceID: ..., entity: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -70,19 +70,19 @@ final class CreatedResponseSimplePublicObject implements BaseModel
      *   properties: array<string,string|null>,
      *   updatedAt: \DateTimeInterface,
      *   archivedAt?: \DateTimeInterface|null,
-     *   objectWriteTraceId?: string|null,
+     *   objectWriteTraceID?: string|null,
      *   propertiesWithHistory?: array<string,list<ValueWithTimestamp>>|null,
      *   url?: string|null,
      * } $entity
      */
     public static function with(
-        string $createdResourceId,
+        string $createdResourceID,
         SimplePublicObject|array $entity,
         ?string $location = null,
     ): self {
         $obj = new self;
 
-        $obj['createdResourceId'] = $createdResourceId;
+        $obj['createdResourceID'] = $createdResourceID;
         $obj['entity'] = $entity;
 
         null !== $location && $obj['location'] = $location;
@@ -96,7 +96,7 @@ final class CreatedResponseSimplePublicObject implements BaseModel
     public function withCreatedResourceID(string $createdResourceID): self
     {
         $obj = clone $this;
-        $obj['createdResourceId'] = $createdResourceID;
+        $obj['createdResourceID'] = $createdResourceID;
 
         return $obj;
     }
@@ -111,7 +111,7 @@ final class CreatedResponseSimplePublicObject implements BaseModel
      *   properties: array<string,string|null>,
      *   updatedAt: \DateTimeInterface,
      *   archivedAt?: \DateTimeInterface|null,
-     *   objectWriteTraceId?: string|null,
+     *   objectWriteTraceID?: string|null,
      *   propertiesWithHistory?: array<string,list<ValueWithTimestamp>>|null,
      *   url?: string|null,
      * } $entity

@@ -20,7 +20,7 @@ use HubspotSDK\Marketing\Events\PropertyValue\Source;
  *   customProperties: list<PropertyValue>,
  *   eventName: string,
  *   eventOrganizer: string,
- *   externalEventId: string,
+ *   externalEventID: string,
  *   noShows: int,
  *   registrants: int,
  *   updatedAt: \DateTimeInterface,
@@ -29,8 +29,8 @@ use HubspotSDK\Marketing\Events\PropertyValue\Source;
  *   eventCompleted?: bool|null,
  *   eventDescription?: string|null,
  *   eventType?: string|null,
- *   eventUrl?: string|null,
- *   objectId?: string|null,
+ *   eventURL?: string|null,
+ *   objectID?: string|null,
  *   startDateTime?: \DateTimeInterface|null,
  * }
  */
@@ -81,8 +81,8 @@ final class MarketingEventPublicReadResponse implements BaseModel
     /**
      * The id of the marketing event in the external event application.
      */
-    #[Required]
-    public string $externalEventId;
+    #[Required('externalEventId')]
+    public string $externalEventID;
 
     /**
      * The number of HubSpot contacts that registered for this marketing event, but did not attend. This field only had a value when the event is over.
@@ -129,11 +129,11 @@ final class MarketingEventPublicReadResponse implements BaseModel
     /**
      * A URL in the external event application where the marketing event can be managed.
      */
-    #[Optional]
-    public ?string $eventUrl;
+    #[Optional('eventUrl')]
+    public ?string $eventURL;
 
-    #[Optional]
-    public ?string $objectId;
+    #[Optional('objectId')]
+    public ?string $objectID;
 
     /**
      * The start date and time of the marketing event.
@@ -154,7 +154,7 @@ final class MarketingEventPublicReadResponse implements BaseModel
      *   customProperties: ...,
      *   eventName: ...,
      *   eventOrganizer: ...,
-     *   externalEventId: ...,
+     *   externalEventID: ...,
      *   noShows: ...,
      *   registrants: ...,
      *   updatedAt: ...,
@@ -194,18 +194,18 @@ final class MarketingEventPublicReadResponse implements BaseModel
      *   isLargeValue: bool,
      *   name: string,
      *   persistenceTimestamp: int,
-     *   requestId: string,
+     *   requestID: string,
      *   selectedByUser: bool,
      *   selectedByUserTimestamp: int,
      *   source: value-of<Source>,
-     *   sourceId: string,
+     *   sourceID: string,
      *   sourceLabel: string,
      *   sourceMetadata: string,
      *   sourceUpstreamDeployable: string,
      *   sourceVid: list<int>,
      *   timestamp: int,
      *   unit: string,
-     *   updatedByUserId: int,
+     *   updatedByUserID: int,
      *   useTimestampAsPersistenceTimestamp: bool,
      *   value: string,
      * }> $customProperties
@@ -218,7 +218,7 @@ final class MarketingEventPublicReadResponse implements BaseModel
         array $customProperties,
         string $eventName,
         string $eventOrganizer,
-        string $externalEventId,
+        string $externalEventID,
         int $noShows,
         int $registrants,
         \DateTimeInterface $updatedAt,
@@ -227,8 +227,8 @@ final class MarketingEventPublicReadResponse implements BaseModel
         ?bool $eventCompleted = null,
         ?string $eventDescription = null,
         ?string $eventType = null,
-        ?string $eventUrl = null,
-        ?string $objectId = null,
+        ?string $eventURL = null,
+        ?string $objectID = null,
         ?\DateTimeInterface $startDateTime = null,
     ): self {
         $obj = new self;
@@ -240,7 +240,7 @@ final class MarketingEventPublicReadResponse implements BaseModel
         $obj['customProperties'] = $customProperties;
         $obj['eventName'] = $eventName;
         $obj['eventOrganizer'] = $eventOrganizer;
-        $obj['externalEventId'] = $externalEventId;
+        $obj['externalEventID'] = $externalEventID;
         $obj['noShows'] = $noShows;
         $obj['registrants'] = $registrants;
         $obj['updatedAt'] = $updatedAt;
@@ -250,8 +250,8 @@ final class MarketingEventPublicReadResponse implements BaseModel
         null !== $eventCompleted && $obj['eventCompleted'] = $eventCompleted;
         null !== $eventDescription && $obj['eventDescription'] = $eventDescription;
         null !== $eventType && $obj['eventType'] = $eventType;
-        null !== $eventUrl && $obj['eventUrl'] = $eventUrl;
-        null !== $objectId && $obj['objectId'] = $objectId;
+        null !== $eventURL && $obj['eventURL'] = $eventURL;
+        null !== $objectID && $obj['objectID'] = $objectID;
         null !== $startDateTime && $obj['startDateTime'] = $startDateTime;
 
         return $obj;
@@ -305,18 +305,18 @@ final class MarketingEventPublicReadResponse implements BaseModel
      *   isLargeValue: bool,
      *   name: string,
      *   persistenceTimestamp: int,
-     *   requestId: string,
+     *   requestID: string,
      *   selectedByUser: bool,
      *   selectedByUserTimestamp: int,
      *   source: value-of<Source>,
-     *   sourceId: string,
+     *   sourceID: string,
      *   sourceLabel: string,
      *   sourceMetadata: string,
      *   sourceUpstreamDeployable: string,
      *   sourceVid: list<int>,
      *   timestamp: int,
      *   unit: string,
-     *   updatedByUserId: int,
+     *   updatedByUserID: int,
      *   useTimestampAsPersistenceTimestamp: bool,
      *   value: string,
      * }> $customProperties
@@ -357,7 +357,7 @@ final class MarketingEventPublicReadResponse implements BaseModel
     public function withExternalEventID(string $externalEventID): self
     {
         $obj = clone $this;
-        $obj['externalEventId'] = $externalEventID;
+        $obj['externalEventID'] = $externalEventID;
 
         return $obj;
     }
@@ -450,7 +450,7 @@ final class MarketingEventPublicReadResponse implements BaseModel
     public function withEventURL(string $eventURL): self
     {
         $obj = clone $this;
-        $obj['eventUrl'] = $eventURL;
+        $obj['eventURL'] = $eventURL;
 
         return $obj;
     }
@@ -458,7 +458,7 @@ final class MarketingEventPublicReadResponse implements BaseModel
     public function withObjectID(string $objectID): self
     {
         $obj = clone $this;
-        $obj['objectId'] = $objectID;
+        $obj['objectID'] = $objectID;
 
         return $obj;
     }

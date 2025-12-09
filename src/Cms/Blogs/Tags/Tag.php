@@ -18,7 +18,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   deletedAt: \DateTimeInterface,
  *   language: value-of<Language>,
  *   name: string,
- *   translatedFromId: int,
+ *   translatedFromID: int,
  *   updated: \DateTimeInterface,
  * }
  */
@@ -59,8 +59,8 @@ final class Tag implements BaseModel
     /**
      * ID of the primary tag this object was translated from.
      */
-    #[Required]
-    public int $translatedFromId;
+    #[Required('translatedFromId')]
+    public int $translatedFromID;
 
     #[Required]
     public \DateTimeInterface $updated;
@@ -76,7 +76,7 @@ final class Tag implements BaseModel
      *   deletedAt: ...,
      *   language: ...,
      *   name: ...,
-     *   translatedFromId: ...,
+     *   translatedFromID: ...,
      *   updated: ...,
      * )
      * ```
@@ -112,7 +112,7 @@ final class Tag implements BaseModel
         \DateTimeInterface $deletedAt,
         Language|string $language,
         string $name,
-        int $translatedFromId,
+        int $translatedFromID,
         \DateTimeInterface $updated,
     ): self {
         $obj = new self;
@@ -122,7 +122,7 @@ final class Tag implements BaseModel
         $obj['deletedAt'] = $deletedAt;
         $obj['language'] = $language;
         $obj['name'] = $name;
-        $obj['translatedFromId'] = $translatedFromId;
+        $obj['translatedFromID'] = $translatedFromID;
         $obj['updated'] = $updated;
 
         return $obj;
@@ -188,7 +188,7 @@ final class Tag implements BaseModel
     public function withTranslatedFromID(int $translatedFromID): self
     {
         $obj = clone $this;
-        $obj['translatedFromId'] = $translatedFromID;
+        $obj['translatedFromID'] = $translatedFromID;
 
         return $obj;
     }

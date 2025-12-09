@@ -74,7 +74,7 @@ final class CollectionResponseWithTotalContentFolderForwardPaging implements Bas
      *   created: \DateTimeInterface,
      *   deletedAt: \DateTimeInterface,
      *   name: string,
-     *   parentFolderId: int,
+     *   parentFolderID: int,
      *   updated: \DateTimeInterface,
      * }> $results
      * @param ForwardPaging|array{next?: NextPage|null} $paging
@@ -103,7 +103,7 @@ final class CollectionResponseWithTotalContentFolderForwardPaging implements Bas
      *   created: \DateTimeInterface,
      *   deletedAt: \DateTimeInterface,
      *   name: string,
-     *   parentFolderId: int,
+     *   parentFolderID: int,
      *   updated: \DateTimeInterface,
      * }> $results
      */

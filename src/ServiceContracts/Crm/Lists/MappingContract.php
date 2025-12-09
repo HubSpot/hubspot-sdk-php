@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\ServiceContracts\Crm\Lists;
 
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Crm\Lists\Mapping\MappingBatchCreateIDMappingParams;
 use HubspotSDK\Crm\Lists\Mapping\MappingGetIDMappingParams;
 use HubspotSDK\Crm\Lists\PublicBatchMigrationMapping;
 use HubspotSDK\Crm\Lists\PublicMigrationMapping;
@@ -15,13 +16,13 @@ interface MappingContract
     /**
      * @api
      *
-     * @param list<string> $params
+     * @param array<mixed>|MappingBatchCreateIDMappingParams $params
      *
      * @throws APIException
      */
     public function batchCreateIDMapping(
-        array $params,
-        ?RequestOptions $requestOptions = null
+        array|MappingBatchCreateIDMappingParams $params,
+        ?RequestOptions $requestOptions = null,
     ): PublicBatchMigrationMapping;
 
     /**

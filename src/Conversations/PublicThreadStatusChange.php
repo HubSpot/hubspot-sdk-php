@@ -17,7 +17,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   id: string,
  *   archived: bool,
  *   client: PublicClient,
- *   conversationsThreadId: string,
+ *   conversationsThreadID: string,
  *   createdAt: \DateTimeInterface,
  *   createdBy: string,
  *   newStatus: value-of<NewStatus>,
@@ -41,8 +41,8 @@ final class PublicThreadStatusChange implements BaseModel
     #[Required]
     public PublicClient $client;
 
-    #[Required]
-    public string $conversationsThreadId;
+    #[Required('conversationsThreadId')]
+    public string $conversationsThreadID;
 
     #[Required]
     public \DateTimeInterface $createdAt;
@@ -78,7 +78,7 @@ final class PublicThreadStatusChange implements BaseModel
      *   id: ...,
      *   archived: ...,
      *   client: ...,
-     *   conversationsThreadId: ...,
+     *   conversationsThreadID: ...,
      *   createdAt: ...,
      *   createdBy: ...,
      *   newStatus: ...,
@@ -115,17 +115,17 @@ final class PublicThreadStatusChange implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param PublicClient|array{
-     *   clientType: value-of<ClientType>, integrationAppId?: int|null
+     *   clientType: value-of<ClientType>, integrationAppID?: int|null
      * } $client
      * @param NewStatus|value-of<NewStatus> $newStatus
      * @param list<PublicRecipient|array{
      *   deliveryIdentifier: PublicDeliveryIdentifier,
-     *   actorId?: string|null,
+     *   actorID?: string|null,
      *   name?: string|null,
      *   recipientField?: string|null,
      * }> $recipients
      * @param list<PublicSender|array{
-     *   actorId?: string|null,
+     *   actorID?: string|null,
      *   deliveryIdentifier?: PublicDeliveryIdentifier|null,
      *   name?: string|null,
      *   senderField?: string|null,
@@ -136,7 +136,7 @@ final class PublicThreadStatusChange implements BaseModel
         string $id,
         bool $archived,
         PublicClient|array $client,
-        string $conversationsThreadId,
+        string $conversationsThreadID,
         \DateTimeInterface $createdAt,
         string $createdBy,
         NewStatus|string $newStatus,
@@ -150,7 +150,7 @@ final class PublicThreadStatusChange implements BaseModel
         $obj['id'] = $id;
         $obj['archived'] = $archived;
         $obj['client'] = $client;
-        $obj['conversationsThreadId'] = $conversationsThreadId;
+        $obj['conversationsThreadID'] = $conversationsThreadID;
         $obj['createdAt'] = $createdAt;
         $obj['createdBy'] = $createdBy;
         $obj['newStatus'] = $newStatus;
@@ -181,7 +181,7 @@ final class PublicThreadStatusChange implements BaseModel
 
     /**
      * @param PublicClient|array{
-     *   clientType: value-of<ClientType>, integrationAppId?: int|null
+     *   clientType: value-of<ClientType>, integrationAppID?: int|null
      * } $client
      */
     public function withClient(PublicClient|array $client): self
@@ -196,7 +196,7 @@ final class PublicThreadStatusChange implements BaseModel
         string $conversationsThreadID
     ): self {
         $obj = clone $this;
-        $obj['conversationsThreadId'] = $conversationsThreadID;
+        $obj['conversationsThreadID'] = $conversationsThreadID;
 
         return $obj;
     }
@@ -231,7 +231,7 @@ final class PublicThreadStatusChange implements BaseModel
     /**
      * @param list<PublicRecipient|array{
      *   deliveryIdentifier: PublicDeliveryIdentifier,
-     *   actorId?: string|null,
+     *   actorID?: string|null,
      *   name?: string|null,
      *   recipientField?: string|null,
      * }> $recipients
@@ -246,7 +246,7 @@ final class PublicThreadStatusChange implements BaseModel
 
     /**
      * @param list<PublicSender|array{
-     *   actorId?: string|null,
+     *   actorID?: string|null,
      *   deliveryIdentifier?: PublicDeliveryIdentifier|null,
      *   name?: string|null,
      *   senderField?: string|null,

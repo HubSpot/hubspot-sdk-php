@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type HubDBTableRowV3RequestShape = array{
- *   childTableId: int,
+ *   childTableID: int,
  *   displayIndex: int,
  *   values: array<string,Variant>,
  *   name?: string|null,
@@ -26,8 +26,8 @@ final class HubDBTableRowV3Request implements BaseModel
     /**
      * Specifies the value for the column child table id.
      */
-    #[Required]
-    public int $childTableId;
+    #[Required('childTableId')]
+    public int $childTableID;
 
     #[Required]
     public int $displayIndex;
@@ -57,7 +57,7 @@ final class HubDBTableRowV3Request implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * HubDBTableRowV3Request::with(childTableId: ..., displayIndex: ..., values: ...)
+     * HubDBTableRowV3Request::with(childTableID: ..., displayIndex: ..., values: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -82,7 +82,7 @@ final class HubDBTableRowV3Request implements BaseModel
      * @param array<string,Variant|array<string,mixed>> $values
      */
     public static function with(
-        int $childTableId,
+        int $childTableID,
         int $displayIndex,
         array $values,
         ?string $name = null,
@@ -90,7 +90,7 @@ final class HubDBTableRowV3Request implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj['childTableId'] = $childTableId;
+        $obj['childTableID'] = $childTableID;
         $obj['displayIndex'] = $displayIndex;
         $obj['values'] = $values;
 
@@ -106,7 +106,7 @@ final class HubDBTableRowV3Request implements BaseModel
     public function withChildTableID(int $childTableID): self
     {
         $obj = clone $this;
-        $obj['childTableId'] = $childTableID;
+        $obj['childTableID'] = $childTableID;
 
         return $obj;
     }

@@ -13,7 +13,7 @@ use HubspotSDK\Marketing\Subscriptions\V4\PublicWideStatus\WideStatusType;
 
 /**
  * @phpstan-type PublicWideStatusBulkResponseShape = array{
- *   subscriberIdString: string, wideStatuses: list<PublicWideStatus>
+ *   subscriberIDString: string, wideStatuses: list<PublicWideStatus>
  * }
  */
 final class PublicWideStatusBulkResponse implements BaseModel
@@ -24,8 +24,8 @@ final class PublicWideStatusBulkResponse implements BaseModel
     /**
      * The contact's email address.
      */
-    #[Required]
-    public string $subscriberIdString;
+    #[Required('subscriberIdString')]
+    public string $subscriberIDString;
 
     /**
      * An array containing the wide status results for the operation.
@@ -40,7 +40,7 @@ final class PublicWideStatusBulkResponse implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * PublicWideStatusBulkResponse::with(subscriberIdString: ..., wideStatuses: ...)
+     * PublicWideStatusBulkResponse::with(subscriberIDString: ..., wideStatuses: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -64,19 +64,19 @@ final class PublicWideStatusBulkResponse implements BaseModel
      * @param list<PublicWideStatus|array{
      *   channel: value-of<Channel>,
      *   status: value-of<Status>,
-     *   subscriberIdString: string,
+     *   subscriberIDString: string,
      *   timestamp: \DateTimeInterface,
      *   wideStatusType: value-of<WideStatusType>,
-     *   businessUnitId?: int|null,
+     *   businessUnitID?: int|null,
      * }> $wideStatuses
      */
     public static function with(
-        string $subscriberIdString,
+        string $subscriberIDString,
         array $wideStatuses
     ): self {
         $obj = new self;
 
-        $obj['subscriberIdString'] = $subscriberIdString;
+        $obj['subscriberIDString'] = $subscriberIDString;
         $obj['wideStatuses'] = $wideStatuses;
 
         return $obj;
@@ -88,7 +88,7 @@ final class PublicWideStatusBulkResponse implements BaseModel
     public function withSubscriberIDString(string $subscriberIDString): self
     {
         $obj = clone $this;
-        $obj['subscriberIdString'] = $subscriberIDString;
+        $obj['subscriberIDString'] = $subscriberIDString;
 
         return $obj;
     }
@@ -99,10 +99,10 @@ final class PublicWideStatusBulkResponse implements BaseModel
      * @param list<PublicWideStatus|array{
      *   channel: value-of<Channel>,
      *   status: value-of<Status>,
-     *   subscriberIdString: string,
+     *   subscriberIDString: string,
      *   timestamp: \DateTimeInterface,
      *   wideStatusType: value-of<WideStatusType>,
-     *   businessUnitId?: int|null,
+     *   businessUnitID?: int|null,
      * }> $wideStatuses
      */
     public function withWideStatuses(array $wideStatuses): self

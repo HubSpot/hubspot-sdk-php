@@ -19,8 +19,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Cms\Hubdb\RowsService::updateDraft()
  *
  * @phpstan-type RowUpdateDraftParamsShape = array{
- *   tableIdOrName: string,
- *   childTableId: int,
+ *   tableIDOrName: string,
+ *   childTableID: int,
  *   displayIndex: int,
  *   values: array<string,Variant|array<string,mixed>>,
  *   name?: string,
@@ -34,13 +34,13 @@ final class RowUpdateDraftParams implements BaseModel
     use SdkParams;
 
     #[Required]
-    public string $tableIdOrName;
+    public string $tableIDOrName;
 
     /**
      * Specifies the value for the column child table id.
      */
-    #[Required]
-    public int $childTableId;
+    #[Required('childTableId')]
+    public int $childTableID;
 
     #[Required]
     public int $displayIndex;
@@ -71,7 +71,7 @@ final class RowUpdateDraftParams implements BaseModel
      * To enforce required parameters use
      * ```
      * RowUpdateDraftParams::with(
-     *   tableIdOrName: ..., childTableId: ..., displayIndex: ..., values: ...
+     *   tableIDOrName: ..., childTableID: ..., displayIndex: ..., values: ...
      * )
      * ```
      *
@@ -98,8 +98,8 @@ final class RowUpdateDraftParams implements BaseModel
      * @param array<string,Variant|array<string,mixed>> $values
      */
     public static function with(
-        string $tableIdOrName,
-        int $childTableId,
+        string $tableIDOrName,
+        int $childTableID,
         int $displayIndex,
         array $values,
         ?string $name = null,
@@ -107,8 +107,8 @@ final class RowUpdateDraftParams implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj['tableIdOrName'] = $tableIdOrName;
-        $obj['childTableId'] = $childTableId;
+        $obj['tableIDOrName'] = $tableIDOrName;
+        $obj['childTableID'] = $childTableID;
         $obj['displayIndex'] = $displayIndex;
         $obj['values'] = $values;
 
@@ -121,7 +121,7 @@ final class RowUpdateDraftParams implements BaseModel
     public function withTableIDOrName(string $tableIDOrName): self
     {
         $obj = clone $this;
-        $obj['tableIdOrName'] = $tableIDOrName;
+        $obj['tableIDOrName'] = $tableIDOrName;
 
         return $obj;
     }
@@ -132,7 +132,7 @@ final class RowUpdateDraftParams implements BaseModel
     public function withChildTableID(int $childTableID): self
     {
         $obj = clone $this;
-        $obj['childTableId'] = $childTableID;
+        $obj['childTableID'] = $childTableID;
 
         return $obj;
     }

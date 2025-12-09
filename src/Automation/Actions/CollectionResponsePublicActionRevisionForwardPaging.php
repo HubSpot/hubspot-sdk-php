@@ -56,7 +56,7 @@ final class CollectionResponsePublicActionRevisionForwardPaging implements BaseM
      *   id: string,
      *   createdAt: \DateTimeInterface,
      *   definition: PublicActionDefinition,
-     *   revisionId: string,
+     *   revisionID: string,
      * }> $results
      * @param ForwardPaging|array{next?: NextPage|null} $paging
      */
@@ -78,7 +78,7 @@ final class CollectionResponsePublicActionRevisionForwardPaging implements BaseM
      *   id: string,
      *   createdAt: \DateTimeInterface,
      *   definition: PublicActionDefinition,
-     *   revisionId: string,
+     *   revisionID: string,
      * }> $results
      */
     public function withResults(array $results): self

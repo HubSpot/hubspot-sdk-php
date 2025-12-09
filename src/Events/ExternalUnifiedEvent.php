@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-type ExternalUnifiedEventShape = array{
  *   id: string,
  *   eventType: string,
- *   objectId: string,
+ *   objectID: string,
  *   objectType: string,
  *   occurredAt: \DateTimeInterface,
  *   properties: array<string,string>,
@@ -38,8 +38,8 @@ final class ExternalUnifiedEvent implements BaseModel
     /**
      * The objectId of the object which did the event.
      */
-    #[Required]
-    public string $objectId;
+    #[Required('objectId')]
+    public string $objectID;
 
     /**
      * The objectType for the object which did the event.
@@ -69,7 +69,7 @@ final class ExternalUnifiedEvent implements BaseModel
      * ExternalUnifiedEvent::with(
      *   id: ...,
      *   eventType: ...,
-     *   objectId: ...,
+     *   objectID: ...,
      *   objectType: ...,
      *   occurredAt: ...,
      *   properties: ...,
@@ -103,7 +103,7 @@ final class ExternalUnifiedEvent implements BaseModel
     public static function with(
         string $id,
         string $eventType,
-        string $objectId,
+        string $objectID,
         string $objectType,
         \DateTimeInterface $occurredAt,
         array $properties,
@@ -112,7 +112,7 @@ final class ExternalUnifiedEvent implements BaseModel
 
         $obj['id'] = $id;
         $obj['eventType'] = $eventType;
-        $obj['objectId'] = $objectId;
+        $obj['objectID'] = $objectID;
         $obj['objectType'] = $objectType;
         $obj['occurredAt'] = $occurredAt;
         $obj['properties'] = $properties;
@@ -148,7 +148,7 @@ final class ExternalUnifiedEvent implements BaseModel
     public function withObjectID(string $objectID): self
     {
         $obj = clone $this;
-        $obj['objectId'] = $objectID;
+        $obj['objectID'] = $objectID;
 
         return $obj;
     }

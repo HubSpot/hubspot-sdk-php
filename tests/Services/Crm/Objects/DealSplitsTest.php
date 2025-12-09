@@ -69,7 +69,7 @@ final class DealSplitsTest extends TestCase
 
         $result = $this->client->crm->objects->dealSplits->batchUpsert([
             'inputs' => [
-                ['id' => 0, 'splits' => [['ownerId' => 0, 'percentage' => 0]]],
+                ['id' => 0, 'splits' => [['ownerID' => 0, 'percentage' => 0]]],
             ],
         ]);
 
@@ -86,7 +86,7 @@ final class DealSplitsTest extends TestCase
 
         $result = $this->client->crm->objects->dealSplits->batchUpsert([
             'inputs' => [
-                ['id' => 0, 'splits' => [['ownerId' => 0, 'percentage' => 0]]],
+                ['id' => 0, 'splits' => [['ownerID' => 0, 'percentage' => 0]]],
             ],
         ]);
 

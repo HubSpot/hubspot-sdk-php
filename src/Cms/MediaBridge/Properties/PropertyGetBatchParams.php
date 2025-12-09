@@ -17,7 +17,7 @@ use HubspotSDK\PropertyName;
  * @see HubspotSDK\Services\Cms\MediaBridge\PropertiesService::getBatch()
  *
  * @phpstan-type PropertyGetBatchParamsShape = array{
- *   appId: int,
+ *   appID: int,
  *   archived: bool,
  *   dataSensitivity: DataSensitivity|value-of<DataSensitivity>,
  *   inputs: list<PropertyName|array{name: string}>,
@@ -30,7 +30,7 @@ final class PropertyGetBatchParams implements BaseModel
     use SdkParams;
 
     #[Required]
-    public int $appId;
+    public int $appID;
 
     #[Required]
     public bool $archived;
@@ -49,7 +49,7 @@ final class PropertyGetBatchParams implements BaseModel
      * To enforce required parameters use
      * ```
      * PropertyGetBatchParams::with(
-     *   appId: ..., archived: ..., dataSensitivity: ..., inputs: ...
+     *   appID: ..., archived: ..., dataSensitivity: ..., inputs: ...
      * )
      * ```
      *
@@ -77,14 +77,14 @@ final class PropertyGetBatchParams implements BaseModel
      * @param list<PropertyName|array{name: string}> $inputs
      */
     public static function with(
-        int $appId,
+        int $appID,
         bool $archived,
         DataSensitivity|string $dataSensitivity,
         array $inputs,
     ): self {
         $obj = new self;
 
-        $obj['appId'] = $appId;
+        $obj['appID'] = $appID;
         $obj['archived'] = $archived;
         $obj['dataSensitivity'] = $dataSensitivity;
         $obj['inputs'] = $inputs;
@@ -95,7 +95,7 @@ final class PropertyGetBatchParams implements BaseModel
     public function withAppID(int $appID): self
     {
         $obj = clone $this;
-        $obj['appId'] = $appID;
+        $obj['appID'] = $appID;
 
         return $obj;
     }

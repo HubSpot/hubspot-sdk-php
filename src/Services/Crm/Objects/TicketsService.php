@@ -214,7 +214,7 @@ final class TicketsService implements TicketsContract
      * Merge two tickets, combining them into one ticket record.
      *
      * @param array{
-     *   objectIdToMerge: string, primaryObjectId: string
+     *   objectIDToMerge: string, primaryObjectID: string
      * }|TicketMergeParams $params
      *
      * @throws APIException

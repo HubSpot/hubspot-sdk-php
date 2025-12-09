@@ -62,7 +62,7 @@ final class CollectionResponseWithTotalHubDBTableV3ForwardPaging implements Base
      * @param list<HubDBTableV3|array{
      *   id: string,
      *   allowChildTables: bool,
-     *   allowPublicApiAccess: bool,
+     *   allowPublicAPIAccess: bool,
      *   columnCount: int,
      *   columns: list<Column>,
      *   createdAt: \DateTimeInterface,
@@ -102,7 +102,7 @@ final class CollectionResponseWithTotalHubDBTableV3ForwardPaging implements Base
      * @param list<HubDBTableV3|array{
      *   id: string,
      *   allowChildTables: bool,
-     *   allowPublicApiAccess: bool,
+     *   allowPublicAPIAccess: bool,
      *   columnCount: int,
      *   columns: list<Column>,
      *   createdAt: \DateTimeInterface,

@@ -66,7 +66,7 @@ final class LimitsTest extends TestCase
             ->limits
             ->getAssociationRecordsLimitsByObjectType(
                 'toObjectTypeId',
-                ['fromObjectTypeId' => 'fromObjectTypeId']
+                ['fromObjectTypeID' => 'fromObjectTypeId']
             )
         ;
 
@@ -87,7 +87,7 @@ final class LimitsTest extends TestCase
             ->limits
             ->getAssociationRecordsLimitsByObjectType(
                 'toObjectTypeId',
-                ['fromObjectTypeId' => 'fromObjectTypeId']
+                ['fromObjectTypeID' => 'fromObjectTypeId']
             )
         ;
 

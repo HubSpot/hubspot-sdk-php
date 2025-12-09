@@ -43,7 +43,7 @@ final class SettingsTest extends TestCase
             ->extensions
             ->videoConferencing
             ->settings
-            ->update(0, ['createMeetingUrl' => 'https://example.com/create-meeting'])
+            ->update(0, ['createMeetingURL' => 'https://example.com/create-meeting'])
         ;
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -66,11 +66,11 @@ final class SettingsTest extends TestCase
             ->update(
                 0,
                 [
-                    'createMeetingUrl' => 'https://example.com/create-meeting',
-                    'deleteMeetingUrl' => 'https://example.com/delete-meeting',
+                    'createMeetingURL' => 'https://example.com/create-meeting',
+                    'deleteMeetingURL' => 'https://example.com/delete-meeting',
                     'fetchAccountsUri' => 'fetchAccountsUri',
-                    'updateMeetingUrl' => 'https://example.com/update-meeting',
-                    'userVerifyUrl' => 'https://example.com/user-verify',
+                    'updateMeetingURL' => 'https://example.com/update-meeting',
+                    'userVerifyURL' => 'https://example.com/user-verify',
                 ],
             )
         ;

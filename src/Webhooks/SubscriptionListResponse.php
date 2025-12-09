@@ -58,7 +58,7 @@ final class SubscriptionListResponse implements BaseModel
      *   active: bool,
      *   createdAt: \DateTimeInterface,
      *   eventType: value-of<EventType>,
-     *   objectTypeId?: string|null,
+     *   objectTypeID?: string|null,
      *   propertyName?: string|null,
      *   updatedAt?: \DateTimeInterface|null,
      * }> $results
@@ -80,7 +80,7 @@ final class SubscriptionListResponse implements BaseModel
      *   active: bool,
      *   createdAt: \DateTimeInterface,
      *   eventType: value-of<EventType>,
-     *   objectTypeId?: string|null,
+     *   objectTypeID?: string|null,
      *   propertyName?: string|null,
      *   updatedAt?: \DateTimeInterface|null,
      * }> $results

@@ -38,7 +38,7 @@ final class DefinitionsService implements DefinitionsContract
      * Create a new custom workflow action.
      *
      * @param array{
-     *   actionUrl: string,
+     *   actionURL: string,
      *   functions: list<array{
      *     functionSource: string,
      *     functionType: 'POST_ACTION_EXECUTION'|'POST_FETCH_OPTIONS'|'PRE_ACTION_EXECUTION'|'PRE_FETCH_OPTIONS'|FunctionType,
@@ -106,8 +106,8 @@ final class DefinitionsService implements DefinitionsContract
      * Update an existing action definition by ID.
      *
      * @param array{
-     *   appId: int,
-     *   actionUrl?: string,
+     *   appID: int,
+     *   actionURL?: string,
      *   executionRules?: list<array{
      *     conditions: array<string,mixed>, labelName: string
      *   }|PublicExecutionTranslationRule>,
@@ -150,14 +150,14 @@ final class DefinitionsService implements DefinitionsContract
             $params,
             $requestOptions,
         );
-        $appID = $parsed['appId'];
-        unset($parsed['appId']);
+        $appID = $parsed['appID'];
+        unset($parsed['appID']);
 
         /** @var BaseResponse<PublicActionDefinition> */
         $response = $this->client->request(
             method: 'patch',
             path: ['automation/v4/actions/%1$s/%2$s', $appID, $definitionID],
-            body: (object) array_diff_key($parsed, ['appId']),
+            body: (object) array_diff_key($parsed, ['appID']),
             options: $options,
             convert: PublicActionDefinition::class,
         );
@@ -206,7 +206,7 @@ final class DefinitionsService implements DefinitionsContract
      *
      * Delete an action definition by ID.
      *
-     * @param array{appId: int}|DefinitionDeleteParams $params
+     * @param array{appID: int}|DefinitionDeleteParams $params
      *
      * @throws APIException
      */
@@ -219,8 +219,8 @@ final class DefinitionsService implements DefinitionsContract
             $params,
             $requestOptions,
         );
-        $appID = $parsed['appId'];
-        unset($parsed['appId']);
+        $appID = $parsed['appID'];
+        unset($parsed['appID']);
 
         /** @var BaseResponse<mixed> */
         $response = $this->client->request(
@@ -238,7 +238,7 @@ final class DefinitionsService implements DefinitionsContract
      *
      * Retrieve a custom workflow action definition by ID.
      *
-     * @param array{appId: int, archived?: bool}|DefinitionGetParams $params
+     * @param array{appID: int, archived?: bool}|DefinitionGetParams $params
      *
      * @throws APIException
      */
@@ -251,8 +251,8 @@ final class DefinitionsService implements DefinitionsContract
             $params,
             $requestOptions,
         );
-        $appID = $parsed['appId'];
-        unset($parsed['appId']);
+        $appID = $parsed['appID'];
+        unset($parsed['appID']);
 
         /** @var BaseResponse<PublicActionDefinition> */
         $response = $this->client->request(

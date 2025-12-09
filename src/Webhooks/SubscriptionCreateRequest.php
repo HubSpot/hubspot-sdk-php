@@ -16,7 +16,7 @@ use HubspotSDK\Webhooks\SubscriptionCreateRequest\EventType;
  * @phpstan-type SubscriptionCreateRequestShape = array{
  *   eventType: value-of<EventType>,
  *   active?: bool|null,
- *   objectTypeId?: string|null,
+ *   objectTypeID?: string|null,
  *   propertyName?: string|null,
  * }
  */
@@ -39,8 +39,8 @@ final class SubscriptionCreateRequest implements BaseModel
     #[Optional]
     public ?bool $active;
 
-    #[Optional]
-    public ?string $objectTypeId;
+    #[Optional('objectTypeId')]
+    public ?string $objectTypeID;
 
     /**
      * The internal name of the property to monitor for changes. Only applies when `eventType` is `propertyChange`.
@@ -77,7 +77,7 @@ final class SubscriptionCreateRequest implements BaseModel
     public static function with(
         EventType|string $eventType,
         ?bool $active = null,
-        ?string $objectTypeId = null,
+        ?string $objectTypeID = null,
         ?string $propertyName = null,
     ): self {
         $obj = new self;
@@ -85,7 +85,7 @@ final class SubscriptionCreateRequest implements BaseModel
         $obj['eventType'] = $eventType;
 
         null !== $active && $obj['active'] = $active;
-        null !== $objectTypeId && $obj['objectTypeId'] = $objectTypeId;
+        null !== $objectTypeID && $obj['objectTypeID'] = $objectTypeID;
         null !== $propertyName && $obj['propertyName'] = $propertyName;
 
         return $obj;
@@ -118,7 +118,7 @@ final class SubscriptionCreateRequest implements BaseModel
     public function withObjectTypeID(string $objectTypeID): self
     {
         $obj = clone $this;
-        $obj['objectTypeId'] = $objectTypeID;
+        $obj['objectTypeID'] = $objectTypeID;
 
         return $obj;
     }

@@ -121,7 +121,7 @@ final class TimePointOperation implements BaseModel
      *   timeType: value-of<TimeType>,
      *   timezoneSource: value-of<TimezoneSource>,
      *   year: int,
-     *   zoneId: string,
+     *   zoneID: string,
      *   hour?: int|null,
      *   millisecond?: int|null,
      *   minute?: int|null,
@@ -130,14 +130,14 @@ final class TimePointOperation implements BaseModel
      *   indexReference: NowReference|TodayReference|WeekReference|MonthReference|QuarterReference|FiscalQuarter|YearReference|FiscalYear,
      *   timeType: value-of<IndexedTimePoint\TimeType>,
      *   timezoneSource: value-of<IndexedTimePoint\TimezoneSource>,
-     *   zoneId: string,
+     *   zoneID: string,
      *   offset?: IndexOffset|null,
      * }|PropertyReferencedTime|array{
      *   property: string,
      *   referenceType: value-of<ReferenceType>,
      *   timeType: value-of<PropertyReferencedTime\TimeType>,
      *   timezoneSource: value-of<PropertyReferencedTime\TimezoneSource>,
-     *   zoneId: string,
+     *   zoneID: string,
      * } $timePoint
      * @param PropertyType|value-of<PropertyType> $propertyType
      */
@@ -248,7 +248,7 @@ final class TimePointOperation implements BaseModel
      *   timeType: value-of<TimeType>,
      *   timezoneSource: value-of<TimezoneSource>,
      *   year: int,
-     *   zoneId: string,
+     *   zoneID: string,
      *   hour?: int|null,
      *   millisecond?: int|null,
      *   minute?: int|null,
@@ -257,14 +257,14 @@ final class TimePointOperation implements BaseModel
      *   indexReference: NowReference|TodayReference|WeekReference|MonthReference|QuarterReference|FiscalQuarter|YearReference|FiscalYear,
      *   timeType: value-of<IndexedTimePoint\TimeType>,
      *   timezoneSource: value-of<IndexedTimePoint\TimezoneSource>,
-     *   zoneId: string,
+     *   zoneID: string,
      *   offset?: IndexOffset|null,
      * }|PropertyReferencedTime|array{
      *   property: string,
      *   referenceType: value-of<ReferenceType>,
      *   timeType: value-of<PropertyReferencedTime\TimeType>,
      *   timezoneSource: value-of<PropertyReferencedTime\TimezoneSource>,
-     *   zoneId: string,
+     *   zoneID: string,
      * } $timePoint
      */
     public function withTimePoint(

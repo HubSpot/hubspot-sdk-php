@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * New or updated webhook settings for an app.
  *
  * @phpstan-type SettingsChangeRequestShape = array{
- *   targetUrl: string, throttling: ThrottlingSettings
+ *   targetURL: string, throttling: ThrottlingSettings
  * }
  */
 final class SettingsChangeRequest implements BaseModel
@@ -23,8 +23,8 @@ final class SettingsChangeRequest implements BaseModel
     /**
      * A publicly available URL for HubSpot to call where event payloads will be delivered.
      */
-    #[Required]
-    public string $targetUrl;
+    #[Required('targetUrl')]
+    public string $targetURL;
 
     /**
      * Configuration details for webhook throttling.
@@ -37,7 +37,7 @@ final class SettingsChangeRequest implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * SettingsChangeRequest::with(targetUrl: ..., throttling: ...)
+     * SettingsChangeRequest::with(targetURL: ..., throttling: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -59,12 +59,12 @@ final class SettingsChangeRequest implements BaseModel
      * @param ThrottlingSettings|array{maxConcurrentRequests: int} $throttling
      */
     public static function with(
-        string $targetUrl,
+        string $targetURL,
         ThrottlingSettings|array $throttling
     ): self {
         $obj = new self;
 
-        $obj['targetUrl'] = $targetUrl;
+        $obj['targetURL'] = $targetURL;
         $obj['throttling'] = $throttling;
 
         return $obj;
@@ -76,7 +76,7 @@ final class SettingsChangeRequest implements BaseModel
     public function withTargetURL(string $targetURL): self
     {
         $obj = clone $this;
-        $obj['targetUrl'] = $targetURL;
+        $obj['targetURL'] = $targetURL;
 
         return $obj;
     }

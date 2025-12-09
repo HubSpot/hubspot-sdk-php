@@ -13,7 +13,7 @@ use HubspotSDK\Events\EventDefinitions\PropertyFilter\FilterType;
 /**
  * @phpstan-type ComboEventRuleShape = array{
  *   count: int,
- *   eventTypeId: string,
+ *   eventTypeID: string,
  *   propertyFilters: list<PropertyFilter>,
  *   lookbackWindowDays?: int|null,
  * }
@@ -26,8 +26,8 @@ final class ComboEventRule implements BaseModel
     #[Required]
     public int $count;
 
-    #[Required]
-    public string $eventTypeId;
+    #[Required('eventTypeId')]
+    public string $eventTypeID;
 
     /** @var list<PropertyFilter> $propertyFilters */
     #[Required(list: PropertyFilter::class)]
@@ -41,7 +41,7 @@ final class ComboEventRule implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * ComboEventRule::with(count: ..., eventTypeId: ..., propertyFilters: ...)
+     * ComboEventRule::with(count: ..., eventTypeID: ..., propertyFilters: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -67,19 +67,19 @@ final class ComboEventRule implements BaseModel
      *   filterType: value-of<FilterType>,
      *   operation: BoolPropertyOperation|NumberPropertyOperation|StringPropertyOperation|DateTimePropertyOperation|RangedDatePropertyOperation|ComparativeDatePropertyOperation|ComparativePropertyUpdatedOperation|RollingDateRangePropertyOperation|RollingPropertyUpdatedOperation|EnumerationPropertyOperation|AllPropertyTypesOperation|RangedNumberPropertyOperation|MultiStringPropertyOperation|DatePropertyOperation|CalendarDatePropertyOperation|TimePointOperation|RangedTimeOperation,
      *   property: string,
-     *   frameworkFilterId?: int|null,
+     *   frameworkFilterID?: int|null,
      * }> $propertyFilters
      */
     public static function with(
         int $count,
-        string $eventTypeId,
+        string $eventTypeID,
         array $propertyFilters,
         ?int $lookbackWindowDays = null,
     ): self {
         $obj = new self;
 
         $obj['count'] = $count;
-        $obj['eventTypeId'] = $eventTypeId;
+        $obj['eventTypeID'] = $eventTypeID;
         $obj['propertyFilters'] = $propertyFilters;
 
         null !== $lookbackWindowDays && $obj['lookbackWindowDays'] = $lookbackWindowDays;
@@ -98,7 +98,7 @@ final class ComboEventRule implements BaseModel
     public function withEventTypeID(string $eventTypeID): self
     {
         $obj = clone $this;
-        $obj['eventTypeId'] = $eventTypeID;
+        $obj['eventTypeID'] = $eventTypeID;
 
         return $obj;
     }
@@ -108,7 +108,7 @@ final class ComboEventRule implements BaseModel
      *   filterType: value-of<FilterType>,
      *   operation: BoolPropertyOperation|NumberPropertyOperation|StringPropertyOperation|DateTimePropertyOperation|RangedDatePropertyOperation|ComparativeDatePropertyOperation|ComparativePropertyUpdatedOperation|RollingDateRangePropertyOperation|RollingPropertyUpdatedOperation|EnumerationPropertyOperation|AllPropertyTypesOperation|RangedNumberPropertyOperation|MultiStringPropertyOperation|DatePropertyOperation|CalendarDatePropertyOperation|TimePointOperation|RangedTimeOperation,
      *   property: string,
-     *   frameworkFilterId?: int|null,
+     *   frameworkFilterID?: int|null,
      * }> $propertyFilters
      */
     public function withPropertyFilters(array $propertyFilters): self

@@ -45,7 +45,7 @@ final class TagsTest extends TestCase
             'deletedAt' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
             'language' => 'af',
             'name' => 'name',
-            'translatedFromId' => 0,
+            'translatedFromID' => 0,
             'updated' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
         ]);
 
@@ -66,7 +66,7 @@ final class TagsTest extends TestCase
             'deletedAt' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
             'language' => 'af',
             'name' => 'name',
-            'translatedFromId' => 0,
+            'translatedFromID' => 0,
             'updated' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
         ]);
 
@@ -89,7 +89,7 @@ final class TagsTest extends TestCase
                 'deletedAt' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
                 'language' => 'af',
                 'name' => 'name',
-                'translatedFromId' => 0,
+                'translatedFromID' => 0,
                 'updated' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
             ],
         );
@@ -113,7 +113,7 @@ final class TagsTest extends TestCase
                 'deletedAt' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
                 'language' => 'af',
                 'name' => 'name',
-                'translatedFromId' => 0,
+                'translatedFromID' => 0,
                 'updated' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
                 'archived' => true,
             ],
@@ -157,7 +157,7 @@ final class TagsTest extends TestCase
         }
 
         $result = $this->client->cms->blogs->tags->attachToLangGroup([
-            'id' => 'id', 'language' => 'language', 'primaryId' => 'primaryId',
+            'id' => 'id', 'language' => 'language', 'primaryID' => 'primaryId',
         ]);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -174,7 +174,7 @@ final class TagsTest extends TestCase
         $result = $this->client->cms->blogs->tags->attachToLangGroup([
             'id' => 'id',
             'language' => 'language',
-            'primaryId' => 'primaryId',
+            'primaryID' => 'primaryId',
             'primaryLanguage' => 'primaryLanguage',
         ]);
 
@@ -197,7 +197,7 @@ final class TagsTest extends TestCase
                     'deletedAt' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
                     'language' => 'af',
                     'name' => 'name',
-                    'translatedFromId' => 0,
+                    'translatedFromID' => 0,
                     'updated' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
                 ],
             ],
@@ -222,7 +222,7 @@ final class TagsTest extends TestCase
                     'deletedAt' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
                     'language' => 'af',
                     'name' => 'name',
-                    'translatedFromId' => 0,
+                    'translatedFromID' => 0,
                     'updated' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
                 ],
             ],
@@ -430,7 +430,7 @@ final class TagsTest extends TestCase
         }
 
         $result = $this->client->cms->blogs->tags->updateLangs([
-            'languages' => ['foo' => 'string'], 'primaryId' => 'primaryId',
+            'languages' => ['foo' => 'string'], 'primaryID' => 'primaryId',
         ]);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -445,7 +445,7 @@ final class TagsTest extends TestCase
         }
 
         $result = $this->client->cms->blogs->tags->updateLangs([
-            'languages' => ['foo' => 'string'], 'primaryId' => 'primaryId',
+            'languages' => ['foo' => 'string'], 'primaryID' => 'primaryId',
         ]);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

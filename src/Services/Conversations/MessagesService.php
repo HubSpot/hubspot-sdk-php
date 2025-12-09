@@ -90,7 +90,7 @@ final class MessagesService implements MessagesContract
     /**
      * @api
      *
-     * @param array{threadId: int, property?: string}|MessageGetParams $params
+     * @param array{threadID: int, property?: string}|MessageGetParams $params
      *
      * @throws APIException
      */
@@ -103,8 +103,8 @@ final class MessagesService implements MessagesContract
             $params,
             $requestOptions,
         );
-        $threadID = $parsed['threadId'];
-        unset($parsed['threadId']);
+        $threadID = $parsed['threadID'];
+        unset($parsed['threadID']);
 
         /** @var BaseResponse<ConversationsPublicConversationsMessage|PublicComment|PublicWelcomeMessage|PublicAssignmentMessage|PublicThreadStatusChange|PublicThreadInboxChange,> */
         $response = $this->client->request(
@@ -126,7 +126,7 @@ final class MessagesService implements MessagesContract
      * @api
      *
      * @param array{
-     *   threadId: int, property?: string
+     *   threadID: int, property?: string
      * }|MessageGetOriginalContentParams $params
      *
      * @throws APIException
@@ -140,8 +140,8 @@ final class MessagesService implements MessagesContract
             $params,
             $requestOptions,
         );
-        $threadID = $parsed['threadId'];
-        unset($parsed['threadId']);
+        $threadID = $parsed['threadID'];
+        unset($parsed['threadID']);
 
         /** @var BaseResponse<PublicMessageContent> */
         $response = $this->client->request(

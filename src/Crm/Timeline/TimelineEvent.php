@@ -13,13 +13,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * The state of the timeline event.
  *
  * @phpstan-type TimelineEventShape = array{
- *   eventTemplateId: string,
+ *   eventTemplateID: string,
  *   tokens: array<string,string>,
  *   id?: string|null,
  *   domain?: string|null,
  *   email?: string|null,
  *   extraData?: mixed,
- *   objectId?: string|null,
+ *   objectID?: string|null,
  *   timelineIFrame?: TimelineEventIFrame|null,
  *   timestamp?: \DateTimeInterface|null,
  *   utk?: string|null,
@@ -33,8 +33,8 @@ final class TimelineEvent implements BaseModel
     /**
      * The event template ID.
      */
-    #[Required]
-    public string $eventTemplateId;
+    #[Required('eventTemplateId')]
+    public string $eventTemplateID;
 
     /**
      * A collection of token keys and values associated with the template tokens.
@@ -71,8 +71,8 @@ final class TimelineEvent implements BaseModel
     /**
      * The CRM object identifier. This is required for every event other than contacts (where utk or email can be used).
      */
-    #[Optional]
-    public ?string $objectId;
+    #[Optional('objectId')]
+    public ?string $objectID;
 
     #[Optional]
     public ?TimelineEventIFrame $timelineIFrame;
@@ -94,7 +94,7 @@ final class TimelineEvent implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * TimelineEvent::with(eventTemplateId: ..., tokens: ...)
+     * TimelineEvent::with(eventTemplateID: ..., tokens: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -119,27 +119,27 @@ final class TimelineEvent implements BaseModel
      * } $timelineIFrame
      */
     public static function with(
-        string $eventTemplateId,
+        string $eventTemplateID,
         array $tokens,
         ?string $id = null,
         ?string $domain = null,
         ?string $email = null,
         mixed $extraData = null,
-        ?string $objectId = null,
+        ?string $objectID = null,
         TimelineEventIFrame|array|null $timelineIFrame = null,
         ?\DateTimeInterface $timestamp = null,
         ?string $utk = null,
     ): self {
         $obj = new self;
 
-        $obj['eventTemplateId'] = $eventTemplateId;
+        $obj['eventTemplateID'] = $eventTemplateID;
         $obj['tokens'] = $tokens;
 
         null !== $id && $obj['id'] = $id;
         null !== $domain && $obj['domain'] = $domain;
         null !== $email && $obj['email'] = $email;
         null !== $extraData && $obj['extraData'] = $extraData;
-        null !== $objectId && $obj['objectId'] = $objectId;
+        null !== $objectID && $obj['objectID'] = $objectID;
         null !== $timelineIFrame && $obj['timelineIFrame'] = $timelineIFrame;
         null !== $timestamp && $obj['timestamp'] = $timestamp;
         null !== $utk && $obj['utk'] = $utk;
@@ -153,7 +153,7 @@ final class TimelineEvent implements BaseModel
     public function withEventTemplateID(string $eventTemplateID): self
     {
         $obj = clone $this;
-        $obj['eventTemplateId'] = $eventTemplateID;
+        $obj['eventTemplateID'] = $eventTemplateID;
 
         return $obj;
     }
@@ -221,7 +221,7 @@ final class TimelineEvent implements BaseModel
     public function withObjectID(string $objectID): self
     {
         $obj = clone $this;
-        $obj['objectId'] = $objectID;
+        $obj['objectID'] = $objectID;
 
         return $obj;
     }

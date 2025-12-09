@@ -17,11 +17,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Cms\MediaBridge\IntegratorSettingsService::updateOembedDomain()
  *
  * @phpstan-type IntegratorSettingUpdateOembedDomainParamsShape = array{
- *   appId: int,
+ *   appID: int,
  *   endpoints: Endpoints|array{
  *     discovery: bool, schemes: list<string>, url: string
  *   },
- *   portalId?: int,
+ *   portalID?: int,
  * }
  */
 final class IntegratorSettingUpdateOembedDomainParams implements BaseModel
@@ -31,20 +31,20 @@ final class IntegratorSettingUpdateOembedDomainParams implements BaseModel
     use SdkParams;
 
     #[Required]
-    public int $appId;
+    public int $appID;
 
     #[Required]
     public Endpoints $endpoints;
 
-    #[Optional]
-    public ?int $portalId;
+    #[Optional('portalId')]
+    public ?int $portalID;
 
     /**
      * `new IntegratorSettingUpdateOembedDomainParams()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * IntegratorSettingUpdateOembedDomainParams::with(appId: ..., endpoints: ...)
+     * IntegratorSettingUpdateOembedDomainParams::with(appID: ..., endpoints: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -70,16 +70,16 @@ final class IntegratorSettingUpdateOembedDomainParams implements BaseModel
      * } $endpoints
      */
     public static function with(
-        int $appId,
+        int $appID,
         Endpoints|array $endpoints,
-        ?int $portalId = null
+        ?int $portalID = null
     ): self {
         $obj = new self;
 
-        $obj['appId'] = $appId;
+        $obj['appID'] = $appID;
         $obj['endpoints'] = $endpoints;
 
-        null !== $portalId && $obj['portalId'] = $portalId;
+        null !== $portalID && $obj['portalID'] = $portalID;
 
         return $obj;
     }
@@ -87,7 +87,7 @@ final class IntegratorSettingUpdateOembedDomainParams implements BaseModel
     public function withAppID(int $appID): self
     {
         $obj = clone $this;
-        $obj['appId'] = $appID;
+        $obj['appID'] = $appID;
 
         return $obj;
     }
@@ -108,7 +108,7 @@ final class IntegratorSettingUpdateOembedDomainParams implements BaseModel
     public function withPortalID(int $portalID): self
     {
         $obj = clone $this;
-        $obj['portalId'] = $portalID;
+        $obj['portalID'] = $portalID;
 
         return $obj;
     }

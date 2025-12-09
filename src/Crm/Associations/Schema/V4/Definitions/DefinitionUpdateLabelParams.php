@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @phpstan-type DefinitionUpdateLabelParamsShape = array{
  *   fromObjectType: string,
- *   associationTypeId: int,
+ *   associationTypeID: int,
  *   label: string,
  *   inverseLabel?: string,
  * }
@@ -29,8 +29,8 @@ final class DefinitionUpdateLabelParams implements BaseModel
     #[Required]
     public string $fromObjectType;
 
-    #[Required]
-    public int $associationTypeId;
+    #[Required('associationTypeId')]
+    public int $associationTypeID;
 
     #[Required]
     public string $label;
@@ -44,7 +44,7 @@ final class DefinitionUpdateLabelParams implements BaseModel
      * To enforce required parameters use
      * ```
      * DefinitionUpdateLabelParams::with(
-     *   fromObjectType: ..., associationTypeId: ..., label: ...
+     *   fromObjectType: ..., associationTypeID: ..., label: ...
      * )
      * ```
      *
@@ -69,14 +69,14 @@ final class DefinitionUpdateLabelParams implements BaseModel
      */
     public static function with(
         string $fromObjectType,
-        int $associationTypeId,
+        int $associationTypeID,
         string $label,
         ?string $inverseLabel = null,
     ): self {
         $obj = new self;
 
         $obj['fromObjectType'] = $fromObjectType;
-        $obj['associationTypeId'] = $associationTypeId;
+        $obj['associationTypeID'] = $associationTypeID;
         $obj['label'] = $label;
 
         null !== $inverseLabel && $obj['inverseLabel'] = $inverseLabel;
@@ -95,7 +95,7 @@ final class DefinitionUpdateLabelParams implements BaseModel
     public function withAssociationTypeID(int $associationTypeID): self
     {
         $obj = clone $this;
-        $obj['associationTypeId'] = $associationTypeID;
+        $obj['associationTypeID'] = $associationTypeID;
 
         return $obj;
     }

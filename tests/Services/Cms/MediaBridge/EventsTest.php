@@ -48,7 +48,7 @@ final class EventsTest extends TestCase
                 'mediaType' => 'AUDIO',
                 'occurredTimestamp' => 0,
                 'rawDataMap' => ['foo' => 0],
-                'sessionId' => 'sessionId',
+                'sessionID' => 'sessionId',
             ])
         ;
 
@@ -72,18 +72,18 @@ final class EventsTest extends TestCase
                 'mediaType' => 'AUDIO',
                 'occurredTimestamp' => 0,
                 'rawDataMap' => ['foo' => 0],
-                'sessionId' => 'sessionId',
+                'sessionID' => 'sessionId',
                 '_hsenc' => '_hsenc',
-                'contactId' => 0,
+                'contactID' => 0,
                 'contactUtk' => 'contactUtk',
                 'derivedValues' => ['totalPercentPlayed' => 0, 'totalSecondsPlayed' => 0],
-                'externalId' => 'externalId',
-                'mediaBridgeId' => 0,
+                'externalID' => 'externalId',
+                'mediaBridgeID' => 0,
                 'mediaName' => 'mediaName',
-                'mediaUrl' => 'mediaUrl',
-                'pageId' => 0,
+                'mediaURL' => 'mediaUrl',
+                'pageID' => 0,
                 'pageName' => 'pageName',
-                'pageUrl' => 'pageUrl',
+                'pageURL' => 'pageUrl',
                 'rawDataString' => 'rawDataString',
             ])
         ;
@@ -102,7 +102,7 @@ final class EventsTest extends TestCase
         $result = $this->client->cms->mediaBridge->events->createMediaPlayedEvent([
             'mediaType' => 'AUDIO',
             'occurredTimestamp' => 0,
-            'sessionId' => 'sessionId',
+            'sessionID' => 'sessionId',
             'state' => 'STARTED',
         ]);
 
@@ -120,19 +120,19 @@ final class EventsTest extends TestCase
         $result = $this->client->cms->mediaBridge->events->createMediaPlayedEvent([
             'mediaType' => 'AUDIO',
             'occurredTimestamp' => 0,
-            'sessionId' => 'sessionId',
+            'sessionID' => 'sessionId',
             'state' => 'STARTED',
             '_hsenc' => '_hsenc',
-            'contactId' => 0,
+            'contactID' => 0,
             'contactUtk' => 'contactUtk',
-            'externalId' => 'externalId',
-            'iframeUrl' => 'iframeUrl',
-            'mediaBridgeId' => 0,
+            'externalID' => 'externalId',
+            'iframeURL' => 'iframeUrl',
+            'mediaBridgeID' => 0,
             'mediaName' => 'mediaName',
-            'mediaUrl' => 'mediaUrl',
-            'pageId' => 0,
+            'mediaURL' => 'mediaUrl',
+            'pageID' => 0,
             'pageName' => 'pageName',
-            'pageUrl' => 'pageUrl',
+            'pageURL' => 'pageUrl',
         ]);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -155,7 +155,7 @@ final class EventsTest extends TestCase
                 'mediaType' => 'AUDIO',
                 'occurredTimestamp' => 0,
                 'playedPercent' => 0,
-                'sessionId' => 'sessionId',
+                'sessionID' => 'sessionId',
             ])
         ;
 
@@ -179,17 +179,17 @@ final class EventsTest extends TestCase
                 'mediaType' => 'AUDIO',
                 'occurredTimestamp' => 0,
                 'playedPercent' => 0,
-                'sessionId' => 'sessionId',
+                'sessionID' => 'sessionId',
                 '_hsenc' => '_hsenc',
-                'contactId' => 0,
+                'contactID' => 0,
                 'contactUtk' => 'contactUtk',
-                'externalId' => 'externalId',
-                'mediaBridgeId' => 0,
+                'externalID' => 'externalId',
+                'mediaBridgeID' => 0,
                 'mediaName' => 'mediaName',
-                'mediaUrl' => 'mediaUrl',
-                'pageId' => 0,
+                'mediaURL' => 'mediaUrl',
+                'pageID' => 0,
                 'pageName' => 'pageName',
-                'pageUrl' => 'pageUrl',
+                'pageURL' => 'pageUrl',
             ])
         ;
 

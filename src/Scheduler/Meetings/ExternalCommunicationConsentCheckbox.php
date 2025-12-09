@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type ExternalCommunicationConsentCheckboxShape = array{
- *   communicationTypeId: string, label: string, required: bool
+ *   communicationTypeID: string, label: string, required: bool
  * }
  */
 final class ExternalCommunicationConsentCheckbox implements BaseModel
@@ -18,8 +18,8 @@ final class ExternalCommunicationConsentCheckbox implements BaseModel
     /** @use SdkModel<ExternalCommunicationConsentCheckboxShape> */
     use SdkModel;
 
-    #[Required]
-    public string $communicationTypeId;
+    #[Required('communicationTypeId')]
+    public string $communicationTypeID;
 
     #[Required]
     public string $label;
@@ -33,7 +33,7 @@ final class ExternalCommunicationConsentCheckbox implements BaseModel
      * To enforce required parameters use
      * ```
      * ExternalCommunicationConsentCheckbox::with(
-     *   communicationTypeId: ..., label: ..., required: ...
+     *   communicationTypeID: ..., label: ..., required: ...
      * )
      * ```
      *
@@ -57,13 +57,13 @@ final class ExternalCommunicationConsentCheckbox implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      */
     public static function with(
-        string $communicationTypeId,
+        string $communicationTypeID,
         string $label,
         bool $required
     ): self {
         $obj = new self;
 
-        $obj['communicationTypeId'] = $communicationTypeId;
+        $obj['communicationTypeID'] = $communicationTypeID;
         $obj['label'] = $label;
         $obj['required'] = $required;
 
@@ -73,7 +73,7 @@ final class ExternalCommunicationConsentCheckbox implements BaseModel
     public function withCommunicationTypeID(string $communicationTypeID): self
     {
         $obj = clone $this;
-        $obj['communicationTypeId'] = $communicationTypeID;
+        $obj['communicationTypeID'] = $communicationTypeID;
 
         return $obj;
     }

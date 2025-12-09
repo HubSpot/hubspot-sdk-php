@@ -50,7 +50,7 @@ $createdResponseSimplePublicObject = $client->crm->objects->contacts->create([
     [
       'to' => ['id' => '37295'],
       'types' => [
-        ['associationCategory' => 'HUBSPOT_DEFINED', 'associationTypeId' => 0]
+        ['associationCategory' => 'HUBSPOT_DEFINED', 'associationTypeID' => 0]
       ],
     ],
   ],
@@ -109,7 +109,7 @@ try {
       [
         'to' => ['id' => '37295'],
         'types' => [
-          ['associationCategory' => 'HUBSPOT_DEFINED', 'associationTypeId' => 0]
+          ['associationCategory' => 'HUBSPOT_DEFINED', 'associationTypeID' => 0]
         ],
       ],
     ],
@@ -166,7 +166,7 @@ $result = $client->crm->objects->contacts->create(
       [
         'to' => ['id' => '37295'],
         'types' => [
-          ['associationCategory' => 'HUBSPOT_DEFINED', 'associationTypeId' => 0]
+          ['associationCategory' => 'HUBSPOT_DEFINED', 'associationTypeID' => 0]
         ],
       ],
     ],
@@ -197,7 +197,7 @@ $createdResponseSimplePublicObject = $client->crm->objects->contacts->create(
       [
         'to' => ['id' => '37295'],
         'types' => [
-          ['associationCategory' => 'HUBSPOT_DEFINED', 'associationTypeId' => 0]
+          ['associationCategory' => 'HUBSPOT_DEFINED', 'associationTypeID' => 0]
         ],
       ],
     ],

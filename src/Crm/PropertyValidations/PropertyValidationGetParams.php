@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Services\Crm\PropertyValidationsService::get()
  *
- * @phpstan-type PropertyValidationGetParamsShape = array{objectTypeId: string}
+ * @phpstan-type PropertyValidationGetParamsShape = array{objectTypeID: string}
  */
 final class PropertyValidationGetParams implements BaseModel
 {
@@ -23,14 +23,14 @@ final class PropertyValidationGetParams implements BaseModel
     use SdkParams;
 
     #[Required]
-    public string $objectTypeId;
+    public string $objectTypeID;
 
     /**
      * `new PropertyValidationGetParams()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * PropertyValidationGetParams::with(objectTypeId: ...)
+     * PropertyValidationGetParams::with(objectTypeID: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -49,11 +49,11 @@ final class PropertyValidationGetParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(string $objectTypeId): self
+    public static function with(string $objectTypeID): self
     {
         $obj = new self;
 
-        $obj['objectTypeId'] = $objectTypeId;
+        $obj['objectTypeID'] = $objectTypeID;
 
         return $obj;
     }
@@ -61,7 +61,7 @@ final class PropertyValidationGetParams implements BaseModel
     public function withObjectTypeID(string $objectTypeID): self
     {
         $obj = clone $this;
-        $obj['objectTypeId'] = $objectTypeID;
+        $obj['objectTypeID'] = $objectTypeID;
 
         return $obj;
     }

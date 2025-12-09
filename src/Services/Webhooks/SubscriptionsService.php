@@ -34,7 +34,7 @@ final class SubscriptionsService implements SubscriptionsContract
      * @param array{
      *   eventType: value-of<EventType>,
      *   active?: bool,
-     *   objectTypeId?: string,
+     *   objectTypeID?: string,
      *   propertyName?: string,
      * }|SubscriptionCreateParams $params
      *
@@ -67,7 +67,7 @@ final class SubscriptionsService implements SubscriptionsContract
      *
      * Update an existing event subscription by ID.
      *
-     * @param array{appId: int, active?: bool}|SubscriptionUpdateParams $params
+     * @param array{appID: int, active?: bool}|SubscriptionUpdateParams $params
      *
      * @throws APIException
      */
@@ -80,14 +80,14 @@ final class SubscriptionsService implements SubscriptionsContract
             $params,
             $requestOptions,
         );
-        $appID = $parsed['appId'];
-        unset($parsed['appId']);
+        $appID = $parsed['appID'];
+        unset($parsed['appID']);
 
         /** @var BaseResponse<SubscriptionResponse> */
         $response = $this->client->request(
             method: 'patch',
             path: ['webhooks/v3/%1$s/subscriptions/%2$s', $appID, $subscriptionID],
-            body: (object) array_diff_key($parsed, ['appId']),
+            body: (object) array_diff_key($parsed, ['appID']),
             options: $options,
             convert: SubscriptionResponse::class,
         );
@@ -122,7 +122,7 @@ final class SubscriptionsService implements SubscriptionsContract
      *
      * Delete an existing event subscription by ID.
      *
-     * @param array{appId: int}|SubscriptionDeleteParams $params
+     * @param array{appID: int}|SubscriptionDeleteParams $params
      *
      * @throws APIException
      */
@@ -135,8 +135,8 @@ final class SubscriptionsService implements SubscriptionsContract
             $params,
             $requestOptions,
         );
-        $appID = $parsed['appId'];
-        unset($parsed['appId']);
+        $appID = $parsed['appID'];
+        unset($parsed['appID']);
 
         /** @var BaseResponse<mixed> */
         $response = $this->client->request(
@@ -154,7 +154,7 @@ final class SubscriptionsService implements SubscriptionsContract
      *
      * Retrieve a specific event subscription by ID.
      *
-     * @param array{appId: int}|SubscriptionGetParams $params
+     * @param array{appID: int}|SubscriptionGetParams $params
      *
      * @throws APIException
      */
@@ -167,8 +167,8 @@ final class SubscriptionsService implements SubscriptionsContract
             $params,
             $requestOptions,
         );
-        $appID = $parsed['appId'];
-        unset($parsed['appId']);
+        $appID = $parsed['appID'];
+        unset($parsed['appID']);
 
         /** @var BaseResponse<SubscriptionResponse> */
         $response = $this->client->request(

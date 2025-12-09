@@ -19,7 +19,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   fromTimestamp?: int,
  *   limit?: int,
  *   toTimestamp?: int,
- *   userId?: int,
+ *   userID?: int,
  * }
  */
 final class ActivityListSecurityActivitiesParams implements BaseModel
@@ -56,7 +56,7 @@ final class ActivityListSecurityActivitiesParams implements BaseModel
      * The ID of a user, for retrieving user-specific logs.
      */
     #[Optional]
-    public ?int $userId;
+    public ?int $userID;
 
     public function __construct()
     {
@@ -73,7 +73,7 @@ final class ActivityListSecurityActivitiesParams implements BaseModel
         ?int $fromTimestamp = null,
         ?int $limit = null,
         ?int $toTimestamp = null,
-        ?int $userId = null,
+        ?int $userID = null,
     ): self {
         $obj = new self;
 
@@ -81,7 +81,7 @@ final class ActivityListSecurityActivitiesParams implements BaseModel
         null !== $fromTimestamp && $obj['fromTimestamp'] = $fromTimestamp;
         null !== $limit && $obj['limit'] = $limit;
         null !== $toTimestamp && $obj['toTimestamp'] = $toTimestamp;
-        null !== $userId && $obj['userId'] = $userId;
+        null !== $userID && $obj['userID'] = $userID;
 
         return $obj;
     }
@@ -136,7 +136,7 @@ final class ActivityListSecurityActivitiesParams implements BaseModel
     public function withUserID(int $userID): self
     {
         $obj = clone $this;
-        $obj['userId'] = $userID;
+        $obj['userID'] = $userID;
 
         return $obj;
     }

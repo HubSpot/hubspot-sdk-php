@@ -24,9 +24,9 @@ use HubspotSDK\Scheduler\Meetings\ExternalLegalConsentResponse;
  *   formFields: list<ExternalBookingFormField|array{name: string, value: string}>,
  *   lastName: string,
  *   legalConsentResponses: list<ExternalLegalConsentResponse|array{
- *     communicationTypeId: string, consented: bool
+ *     communicationTypeID: string, consented: bool
  *   }>,
- *   likelyAvailableUserIds: list<string>,
+ *   likelyAvailableUserIDs: list<string>,
  *   slug: string,
  *   startTime: \DateTimeInterface,
  *   locale?: string,
@@ -59,9 +59,9 @@ final class MeetingsLinkBookParams implements BaseModel
     #[Required(list: ExternalLegalConsentResponse::class)]
     public array $legalConsentResponses;
 
-    /** @var list<string> $likelyAvailableUserIds */
-    #[Required(list: 'string')]
-    public array $likelyAvailableUserIds;
+    /** @var list<string> $likelyAvailableUserIDs */
+    #[Required('likelyAvailableUserIds', list: 'string')]
+    public array $likelyAvailableUserIDs;
 
     #[Required]
     public string $slug;
@@ -87,7 +87,7 @@ final class MeetingsLinkBookParams implements BaseModel
      *   formFields: ...,
      *   lastName: ...,
      *   legalConsentResponses: ...,
-     *   likelyAvailableUserIds: ...,
+     *   likelyAvailableUserIDs: ...,
      *   slug: ...,
      *   startTime: ...,
      * )
@@ -122,9 +122,9 @@ final class MeetingsLinkBookParams implements BaseModel
      *   name: string, value: string
      * }> $formFields
      * @param list<ExternalLegalConsentResponse|array{
-     *   communicationTypeId: string, consented: bool
+     *   communicationTypeID: string, consented: bool
      * }> $legalConsentResponses
-     * @param list<string> $likelyAvailableUserIds
+     * @param list<string> $likelyAvailableUserIDs
      */
     public static function with(
         int $duration,
@@ -133,7 +133,7 @@ final class MeetingsLinkBookParams implements BaseModel
         array $formFields,
         string $lastName,
         array $legalConsentResponses,
-        array $likelyAvailableUserIds,
+        array $likelyAvailableUserIDs,
         string $slug,
         \DateTimeInterface $startTime,
         ?string $locale = null,
@@ -147,7 +147,7 @@ final class MeetingsLinkBookParams implements BaseModel
         $obj['formFields'] = $formFields;
         $obj['lastName'] = $lastName;
         $obj['legalConsentResponses'] = $legalConsentResponses;
-        $obj['likelyAvailableUserIds'] = $likelyAvailableUserIds;
+        $obj['likelyAvailableUserIDs'] = $likelyAvailableUserIDs;
         $obj['slug'] = $slug;
         $obj['startTime'] = $startTime;
 
@@ -204,7 +204,7 @@ final class MeetingsLinkBookParams implements BaseModel
 
     /**
      * @param list<ExternalLegalConsentResponse|array{
-     *   communicationTypeId: string, consented: bool
+     *   communicationTypeID: string, consented: bool
      * }> $legalConsentResponses
      */
     public function withLegalConsentResponses(
@@ -223,7 +223,7 @@ final class MeetingsLinkBookParams implements BaseModel
         array $likelyAvailableUserIDs
     ): self {
         $obj = clone $this;
-        $obj['likelyAvailableUserIds'] = $likelyAvailableUserIDs;
+        $obj['likelyAvailableUserIDs'] = $likelyAvailableUserIDs;
 
         return $obj;
     }

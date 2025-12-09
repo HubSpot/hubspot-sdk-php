@@ -40,7 +40,7 @@ final class GroupsTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->groups->create(
             'objectType',
-            ['appId' => 0, 'label' => 'label', 'name' => 'name']
+            ['appID' => 0, 'label' => 'label', 'name' => 'name']
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -56,7 +56,7 @@ final class GroupsTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->groups->create(
             'objectType',
-            ['appId' => 0, 'label' => 'label', 'name' => 'name', 'displayOrder' => 0],
+            ['appID' => 0, 'label' => 'label', 'name' => 'name', 'displayOrder' => 0],
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -72,7 +72,7 @@ final class GroupsTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->groups->list(
             'objectType',
-            ['appId' => 0]
+            ['appID' => 0]
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -91,7 +91,7 @@ final class GroupsTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->groups->list(
             'objectType',
-            ['appId' => 0]
+            ['appID' => 0]
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -110,7 +110,7 @@ final class GroupsTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->groups->deleteByName(
             'groupName',
-            ['appId' => 0, 'objectType' => 'objectType']
+            ['appID' => 0, 'objectType' => 'objectType']
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -126,7 +126,7 @@ final class GroupsTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->groups->deleteByName(
             'groupName',
-            ['appId' => 0, 'objectType' => 'objectType']
+            ['appID' => 0, 'objectType' => 'objectType']
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -142,7 +142,7 @@ final class GroupsTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->groups->getByName(
             'groupName',
-            ['appId' => 0, 'objectType' => 'objectType']
+            ['appID' => 0, 'objectType' => 'objectType']
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -158,7 +158,7 @@ final class GroupsTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->groups->getByName(
             'groupName',
-            ['appId' => 0, 'objectType' => 'objectType']
+            ['appID' => 0, 'objectType' => 'objectType']
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -174,7 +174,7 @@ final class GroupsTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->groups->updateByName(
             'groupName',
-            ['appId' => 0, 'objectType' => 'objectType']
+            ['appID' => 0, 'objectType' => 'objectType']
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -191,7 +191,7 @@ final class GroupsTest extends TestCase
         $result = $this->client->cms->mediaBridge->groups->updateByName(
             'groupName',
             [
-                'appId' => 0,
+                'appID' => 0,
                 'objectType' => 'objectType',
                 'displayOrder' => 0,
                 'label' => 'label',

@@ -15,7 +15,7 @@ use HubspotSDK\Scheduler\Meetings\ExternalBookingInfo\LinkType;
  *   allUsersBusyTimes: list<ExternalUserBusyTimes>,
  *   customParams: ExternalMeetingsLinkSettings,
  *   isOffline: bool,
- *   linkId: string,
+ *   linkID: string,
  *   linkType: value-of<LinkType>,
  *   brandingMetadata?: ExternalBrandingMetadata|null,
  *   linkAvailability?: ExternalLinkAvailability|null,
@@ -36,8 +36,8 @@ final class ExternalBookingInfo implements BaseModel
     #[Required]
     public bool $isOffline;
 
-    #[Required]
-    public string $linkId;
+    #[Required('linkId')]
+    public string $linkID;
 
     /** @var value-of<LinkType> $linkType */
     #[Required(enum: LinkType::class)]
@@ -58,7 +58,7 @@ final class ExternalBookingInfo implements BaseModel
      *   allUsersBusyTimes: ...,
      *   customParams: ...,
      *   isOffline: ...,
-     *   linkId: ...,
+     *   linkID: ...,
      *   linkType: ...,
      * )
      * ```
@@ -106,7 +106,7 @@ final class ExternalBookingInfo implements BaseModel
      *   legalConsentOptions?: ExternalLegalConsentOptions|null,
      *   locale?: string|null,
      *   location?: string|null,
-     *   redirectUrl?: string|null,
+     *   redirectURL?: string|null,
      *   welcomeScreenInfo?: ExternalMeetingsWelcomeScreenInfo|null,
      * } $customParams
      * @param LinkType|value-of<LinkType> $linkType
@@ -126,7 +126,7 @@ final class ExternalBookingInfo implements BaseModel
      *   companyState?: string|null,
      *   companyZip?: string|null,
      *   logoHeight?: int|null,
-     *   logoUrl?: string|null,
+     *   logoURL?: string|null,
      *   logoWidth?: int|null,
      *   primaryColor?: string|null,
      *   secondaryColor?: string|null,
@@ -140,7 +140,7 @@ final class ExternalBookingInfo implements BaseModel
         array $allUsersBusyTimes,
         ExternalMeetingsLinkSettings|array $customParams,
         bool $isOffline,
-        string $linkId,
+        string $linkID,
         LinkType|string $linkType,
         ExternalBrandingMetadata|array|null $brandingMetadata = null,
         ExternalLinkAvailability|array|null $linkAvailability = null,
@@ -150,7 +150,7 @@ final class ExternalBookingInfo implements BaseModel
         $obj['allUsersBusyTimes'] = $allUsersBusyTimes;
         $obj['customParams'] = $customParams;
         $obj['isOffline'] = $isOffline;
-        $obj['linkId'] = $linkId;
+        $obj['linkID'] = $linkID;
         $obj['linkType'] = $linkType;
 
         null !== $brandingMetadata && $obj['brandingMetadata'] = $brandingMetadata;
@@ -192,7 +192,7 @@ final class ExternalBookingInfo implements BaseModel
      *   legalConsentOptions?: ExternalLegalConsentOptions|null,
      *   locale?: string|null,
      *   location?: string|null,
-     *   redirectUrl?: string|null,
+     *   redirectURL?: string|null,
      *   welcomeScreenInfo?: ExternalMeetingsWelcomeScreenInfo|null,
      * } $customParams
      */
@@ -216,7 +216,7 @@ final class ExternalBookingInfo implements BaseModel
     public function withLinkID(string $linkID): self
     {
         $obj = clone $this;
-        $obj['linkId'] = $linkID;
+        $obj['linkID'] = $linkID;
 
         return $obj;
     }
@@ -249,7 +249,7 @@ final class ExternalBookingInfo implements BaseModel
      *   companyState?: string|null,
      *   companyZip?: string|null,
      *   logoHeight?: int|null,
-     *   logoUrl?: string|null,
+     *   logoURL?: string|null,
      *   logoWidth?: int|null,
      *   primaryColor?: string|null,
      *   secondaryColor?: string|null,

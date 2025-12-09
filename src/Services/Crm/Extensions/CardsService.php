@@ -35,13 +35,13 @@ final class CardsService implements CardsContract
      * Defines a new card that will become active on an account when this app is installed.
      *
      * @param array{
-     *   actions: array{baseUrls: list<string>}|CardActions,
+     *   actions: array{baseURLs: list<string>}|CardActions,
      *   display: array{
      *     properties: list<array<mixed>|CardDisplayProperty>
      *   }|CardDisplayBody,
      *   fetch: array{
      *     objectTypes: list<array<mixed>|CardObjectTypeBody>,
-     *     targetUrl: string,
+     *     targetURL: string,
      *     cardType?: 'EXTERNAL'|'SERVERLESS'|CardType,
      *     serverlessFunction?: string,
      *   },
@@ -78,8 +78,8 @@ final class CardsService implements CardsContract
      * Update a card definition with new details.
      *
      * @param array{
-     *   appId: int,
-     *   actions?: array{baseUrls: list<string>}|CardActions,
+     *   appID: int,
+     *   actions?: array{baseURLs: list<string>}|CardActions,
      *   display?: array{
      *     properties: list<array<mixed>|CardDisplayProperty>
      *   }|CardDisplayBody,
@@ -87,7 +87,7 @@ final class CardsService implements CardsContract
      *     objectTypes: list<array<mixed>|CardObjectTypeBody>,
      *     cardType?: 'EXTERNAL'|'SERVERLESS'|\HubspotSDK\Crm\Extensions\Cards\CardFetchBodyPatch\CardType,
      *     serverlessFunction?: string,
-     *     targetUrl?: string,
+     *     targetURL?: string,
      *   },
      *   title?: string,
      * }|CardUpdateParams $params
@@ -103,14 +103,14 @@ final class CardsService implements CardsContract
             $params,
             $requestOptions,
         );
-        $appID = $parsed['appId'];
-        unset($parsed['appId']);
+        $appID = $parsed['appID'];
+        unset($parsed['appID']);
 
         /** @var BaseResponse<PublicCardResponse> */
         $response = $this->client->request(
             method: 'patch',
             path: ['crm/v3/extensions/cards-dev/%1$s/%2$s', $appID, $cardID],
-            body: (object) array_diff_key($parsed, ['appId']),
+            body: (object) array_diff_key($parsed, ['appID']),
             options: $options,
             convert: PublicCardResponse::class,
         );
@@ -145,7 +145,7 @@ final class CardsService implements CardsContract
      *
      * Permanently deletes a card definition with the given ID. Once deleted, data fetch requests for this card will no longer be sent to your service. This can't be undone.
      *
-     * @param array{appId: int}|CardDeleteParams $params
+     * @param array{appID: int}|CardDeleteParams $params
      *
      * @throws APIException
      */
@@ -158,8 +158,8 @@ final class CardsService implements CardsContract
             $params,
             $requestOptions,
         );
-        $appID = $parsed['appId'];
-        unset($parsed['appId']);
+        $appID = $parsed['appID'];
+        unset($parsed['appID']);
 
         /** @var BaseResponse<mixed> */
         $response = $this->client->request(
@@ -177,7 +177,7 @@ final class CardsService implements CardsContract
      *
      * Returns the definition for a card with the given ID.
      *
-     * @param array{appId: int}|CardGetParams $params
+     * @param array{appID: int}|CardGetParams $params
      *
      * @throws APIException
      */
@@ -190,8 +190,8 @@ final class CardsService implements CardsContract
             $params,
             $requestOptions,
         );
-        $appID = $parsed['appId'];
-        unset($parsed['appId']);
+        $appID = $parsed['appID'];
+        unset($parsed['appID']);
 
         /** @var BaseResponse<PublicCardResponse> */
         $response = $this->client->request(

@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Crm\Timeline\TokensService::delete()
  *
  * @phpstan-type TokenDeleteParamsShape = array{
- *   appId: int, eventTemplateId: string
+ *   appID: int, eventTemplateID: string
  * }
  */
 final class TokenDeleteParams implements BaseModel
@@ -25,17 +25,17 @@ final class TokenDeleteParams implements BaseModel
     use SdkParams;
 
     #[Required]
-    public int $appId;
+    public int $appID;
 
     #[Required]
-    public string $eventTemplateId;
+    public string $eventTemplateID;
 
     /**
      * `new TokenDeleteParams()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * TokenDeleteParams::with(appId: ..., eventTemplateId: ...)
+     * TokenDeleteParams::with(appID: ..., eventTemplateID: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -54,12 +54,12 @@ final class TokenDeleteParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(int $appId, string $eventTemplateId): self
+    public static function with(int $appID, string $eventTemplateID): self
     {
         $obj = new self;
 
-        $obj['appId'] = $appId;
-        $obj['eventTemplateId'] = $eventTemplateId;
+        $obj['appID'] = $appID;
+        $obj['eventTemplateID'] = $eventTemplateID;
 
         return $obj;
     }
@@ -67,7 +67,7 @@ final class TokenDeleteParams implements BaseModel
     public function withAppID(int $appID): self
     {
         $obj = clone $this;
-        $obj['appId'] = $appID;
+        $obj['appID'] = $appID;
 
         return $obj;
     }
@@ -75,7 +75,7 @@ final class TokenDeleteParams implements BaseModel
     public function withEventTemplateID(string $eventTemplateID): self
     {
         $obj = clone $this;
-        $obj['eventTemplateId'] = $eventTemplateID;
+        $obj['eventTemplateID'] = $eventTemplateID;
 
         return $obj;
     }

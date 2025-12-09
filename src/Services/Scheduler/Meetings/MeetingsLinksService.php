@@ -7,6 +7,7 @@ namespace HubspotSDK\Services\Scheduler\Meetings;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\Scheduler\Meetings\ExternalBookingInfo;
@@ -36,7 +37,7 @@ final class MeetingsLinksService implements MeetingsLinksContract
      *   after?: string,
      *   limit?: int,
      *   name?: string,
-     *   organizerUserId?: string,
+     *   organizerUserID?: string,
      *   type?: string,
      * }|MeetingsLinkListParams $params
      *
@@ -57,7 +58,10 @@ final class MeetingsLinksService implements MeetingsLinksContract
         $response = $this->client->request(
             method: 'get',
             path: 'scheduler/v3/meetings/meeting-links',
-            query: $parsed,
+            query: Util::array_transform_keys(
+                $parsed,
+                ['organizerUserID' => 'organizerUserId']
+            ),
             options: $options,
             convert: ExternalLinkMetadata::class,
             page: Page::class,
@@ -78,9 +82,9 @@ final class MeetingsLinksService implements MeetingsLinksContract
      *   formFields: list<array{name: string, value: string}>,
      *   lastName: string,
      *   legalConsentResponses: list<array{
-     *     communicationTypeId: string, consented: bool
+     *     communicationTypeID: string, consented: bool
      *   }|ExternalLegalConsentResponse>,
-     *   likelyAvailableUserIds: list<string>,
+     *   likelyAvailableUserIDs: list<string>,
      *   slug: string,
      *   startTime: string|\DateTimeInterface,
      *   locale?: string,

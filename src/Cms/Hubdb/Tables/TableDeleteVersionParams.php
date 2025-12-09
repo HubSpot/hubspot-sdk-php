@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Services\Cms\Hubdb\TablesService::deleteVersion()
  *
- * @phpstan-type TableDeleteVersionParamsShape = array{tableIdOrName: string}
+ * @phpstan-type TableDeleteVersionParamsShape = array{tableIDOrName: string}
  */
 final class TableDeleteVersionParams implements BaseModel
 {
@@ -23,14 +23,14 @@ final class TableDeleteVersionParams implements BaseModel
     use SdkParams;
 
     #[Required]
-    public string $tableIdOrName;
+    public string $tableIDOrName;
 
     /**
      * `new TableDeleteVersionParams()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * TableDeleteVersionParams::with(tableIdOrName: ...)
+     * TableDeleteVersionParams::with(tableIDOrName: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -49,11 +49,11 @@ final class TableDeleteVersionParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(string $tableIdOrName): self
+    public static function with(string $tableIDOrName): self
     {
         $obj = new self;
 
-        $obj['tableIdOrName'] = $tableIdOrName;
+        $obj['tableIDOrName'] = $tableIDOrName;
 
         return $obj;
     }
@@ -61,7 +61,7 @@ final class TableDeleteVersionParams implements BaseModel
     public function withTableIDOrName(string $tableIDOrName): self
     {
         $obj = clone $this;
-        $obj['tableIdOrName'] = $tableIDOrName;
+        $obj['tableIDOrName'] = $tableIDOrName;
 
         return $obj;
     }

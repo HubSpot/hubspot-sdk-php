@@ -68,7 +68,7 @@ final class CollectionResponseWithTotalSimplePublicObject implements BaseModel
      *   properties: array<string,string|null>,
      *   updatedAt: \DateTimeInterface,
      *   archivedAt?: \DateTimeInterface|null,
-     *   objectWriteTraceId?: string|null,
+     *   objectWriteTraceID?: string|null,
      *   propertiesWithHistory?: array<string,list<ValueWithTimestamp>>|null,
      *   url?: string|null,
      * }> $results
@@ -97,7 +97,7 @@ final class CollectionResponseWithTotalSimplePublicObject implements BaseModel
      *   properties: array<string,string|null>,
      *   updatedAt: \DateTimeInterface,
      *   archivedAt?: \DateTimeInterface|null,
-     *   objectWriteTraceId?: string|null,
+     *   objectWriteTraceID?: string|null,
      *   propertiesWithHistory?: array<string,list<ValueWithTimestamp>>|null,
      *   url?: string|null,
      * }> $results

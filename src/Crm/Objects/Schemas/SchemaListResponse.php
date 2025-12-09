@@ -56,15 +56,15 @@ final class SchemaListResponse implements BaseModel
      *   requiredProperties: list<string>,
      *   archived?: bool|null,
      *   createdAt?: \DateTimeInterface|null,
-     *   createdByUserId?: int|null,
+     *   createdByUserID?: int|null,
      *   description?: string|null,
      *   fullyQualifiedName?: string|null,
-     *   objectTypeId?: string|null,
+     *   objectTypeID?: string|null,
      *   primaryDisplayProperty?: string|null,
      *   searchableProperties?: list<string>|null,
      *   secondaryDisplayProperties?: list<string>|null,
      *   updatedAt?: \DateTimeInterface|null,
-     *   updatedByUserId?: int|null,
+     *   updatedByUserID?: int|null,
      * }> $results
      */
     public static function with(array $results): self
@@ -86,15 +86,15 @@ final class SchemaListResponse implements BaseModel
      *   requiredProperties: list<string>,
      *   archived?: bool|null,
      *   createdAt?: \DateTimeInterface|null,
-     *   createdByUserId?: int|null,
+     *   createdByUserID?: int|null,
      *   description?: string|null,
      *   fullyQualifiedName?: string|null,
-     *   objectTypeId?: string|null,
+     *   objectTypeID?: string|null,
      *   primaryDisplayProperty?: string|null,
      *   searchableProperties?: list<string>|null,
      *   secondaryDisplayProperties?: list<string>|null,
      *   updatedAt?: \DateTimeInterface|null,
-     *   updatedByUserId?: int|null,
+     *   updatedByUserID?: int|null,
      * }> $results
      */
     public function withResults(array $results): self

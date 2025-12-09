@@ -40,8 +40,8 @@ final class MessagesTest extends TestCase
         $result = $this->client->conversations->customChannels->messages->create(
             0,
             [
-                'attachments' => [['fileId' => 'fileId', 'type' => 'FILE']],
-                'channelAccountId' => 'channelAccountId',
+                'attachments' => [['fileID' => 'fileId', 'type' => 'FILE']],
+                'channelAccountID' => 'channelAccountId',
                 'messageDirection' => 'INCOMING',
                 'recipients' => [
                     ['deliveryIdentifier' => ['type' => 'type', 'value' => 'value']],
@@ -73,12 +73,12 @@ final class MessagesTest extends TestCase
             [
                 'attachments' => [
                     [
-                        'fileId' => 'fileId',
+                        'fileID' => 'fileId',
                         'type' => 'FILE',
                         'fileUsageType' => 'fileUsageType',
                     ],
                 ],
-                'channelAccountId' => 'channelAccountId',
+                'channelAccountID' => 'channelAccountId',
                 'messageDirection' => 'INCOMING',
                 'recipients' => [
                     [
@@ -94,9 +94,9 @@ final class MessagesTest extends TestCase
                 ],
                 'text' => 'text',
                 'timestamp' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-                'inReplyToId' => 'inReplyToId',
-                'integrationIdempotencyId' => 'integrationIdempotencyId',
-                'integrationThreadId' => 'integrationThreadId',
+                'inReplyToID' => 'inReplyToId',
+                'integrationIdempotencyID' => 'integrationIdempotencyId',
+                'integrationThreadID' => 'integrationThreadId',
                 'preResolvedContacts' => [
                     'contacts' => [
                         ['contactPropertiesLeadingToMatch' => ['string'], 'contactVid' => 0],
@@ -122,7 +122,7 @@ final class MessagesTest extends TestCase
 
         $result = $this->client->conversations->customChannels->messages->update(
             'messageId',
-            ['channelId' => 0, 'statusType' => 'FAILED']
+            ['channelID' => 0, 'statusType' => 'FAILED']
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -142,7 +142,7 @@ final class MessagesTest extends TestCase
         $result = $this->client->conversations->customChannels->messages->update(
             'messageId',
             [
-                'channelId' => 0,
+                'channelID' => 0,
                 'statusType' => 'FAILED',
                 'errorMessage' => 'errorMessage',
             ],
@@ -164,7 +164,7 @@ final class MessagesTest extends TestCase
 
         $result = $this->client->conversations->customChannels->messages->get(
             'messageId',
-            ['channelId' => 0]
+            ['channelID' => 0]
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -183,7 +183,7 @@ final class MessagesTest extends TestCase
 
         $result = $this->client->conversations->customChannels->messages->get(
             'messageId',
-            ['channelId' => 0]
+            ['channelID' => 0]
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

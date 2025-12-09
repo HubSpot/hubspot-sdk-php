@@ -77,7 +77,7 @@ final class CalculatedPropertyLimitResponse implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<UsageForObjectType|array{
-     *   objectTypeId: string, pluralLabel: string, singularLabel: string, usage: int
+     *   objectTypeID: string, pluralLabel: string, singularLabel: string, usage: int
      * }> $byObjectType
      */
     public static function with(
@@ -98,7 +98,7 @@ final class CalculatedPropertyLimitResponse implements BaseModel
 
     /**
      * @param list<UsageForObjectType|array{
-     *   objectTypeId: string, pluralLabel: string, singularLabel: string, usage: int
+     *   objectTypeID: string, pluralLabel: string, singularLabel: string, usage: int
      * }> $byObjectType
      */
     public function withByObjectType(array $byObjectType): self

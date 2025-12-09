@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type BackgroundImageShape = array{
- *   backgroundPosition: string, backgroundSize: string, imageUrl: string
+ *   backgroundPosition: string, backgroundSize: string, imageURL: string
  * }
  */
 final class BackgroundImage implements BaseModel
@@ -24,8 +24,8 @@ final class BackgroundImage implements BaseModel
     #[Required]
     public string $backgroundSize;
 
-    #[Required]
-    public string $imageUrl;
+    #[Required('imageUrl')]
+    public string $imageURL;
 
     /**
      * `new BackgroundImage()` is missing required properties by the API.
@@ -33,7 +33,7 @@ final class BackgroundImage implements BaseModel
      * To enforce required parameters use
      * ```
      * BackgroundImage::with(
-     *   backgroundPosition: ..., backgroundSize: ..., imageUrl: ...
+     *   backgroundPosition: ..., backgroundSize: ..., imageURL: ...
      * )
      * ```
      *
@@ -59,13 +59,13 @@ final class BackgroundImage implements BaseModel
     public static function with(
         string $backgroundPosition,
         string $backgroundSize,
-        string $imageUrl
+        string $imageURL
     ): self {
         $obj = new self;
 
         $obj['backgroundPosition'] = $backgroundPosition;
         $obj['backgroundSize'] = $backgroundSize;
-        $obj['imageUrl'] = $imageUrl;
+        $obj['imageURL'] = $imageURL;
 
         return $obj;
     }
@@ -89,7 +89,7 @@ final class BackgroundImage implements BaseModel
     public function withImageURL(string $imageURL): self
     {
         $obj = clone $this;
-        $obj['imageUrl'] = $imageURL;
+        $obj['imageURL'] = $imageURL;
 
         return $obj;
     }

@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type PublicMigrationMappingShape = array{
- *   legacyListId: string, listId: string
+ *   legacyListID: string, listID: string
  * }
  */
 final class PublicMigrationMapping implements BaseModel
@@ -21,21 +21,21 @@ final class PublicMigrationMapping implements BaseModel
     /**
      * The legacy list id for the list.
      */
-    #[Required]
-    public string $legacyListId;
+    #[Required('legacyListId')]
+    public string $legacyListID;
 
     /**
      * The V3 list id for the list.
      */
-    #[Required]
-    public string $listId;
+    #[Required('listId')]
+    public string $listID;
 
     /**
      * `new PublicMigrationMapping()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * PublicMigrationMapping::with(legacyListId: ..., listId: ...)
+     * PublicMigrationMapping::with(legacyListID: ..., listID: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -54,12 +54,12 @@ final class PublicMigrationMapping implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(string $legacyListId, string $listId): self
+    public static function with(string $legacyListID, string $listID): self
     {
         $obj = new self;
 
-        $obj['legacyListId'] = $legacyListId;
-        $obj['listId'] = $listId;
+        $obj['legacyListID'] = $legacyListID;
+        $obj['listID'] = $listID;
 
         return $obj;
     }
@@ -70,7 +70,7 @@ final class PublicMigrationMapping implements BaseModel
     public function withLegacyListID(string $legacyListID): self
     {
         $obj = clone $this;
-        $obj['legacyListId'] = $legacyListID;
+        $obj['legacyListID'] = $legacyListID;
 
         return $obj;
     }
@@ -81,7 +81,7 @@ final class PublicMigrationMapping implements BaseModel
     public function withListID(string $listID): self
     {
         $obj = clone $this;
-        $obj['listId'] = $listID;
+        $obj['listID'] = $listID;
 
         return $obj;
     }

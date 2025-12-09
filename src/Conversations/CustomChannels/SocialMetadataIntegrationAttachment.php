@@ -58,9 +58,9 @@ final class SocialMetadataIntegrationAttachment implements BaseModel
      *   id?: string|null,
      *   description?: string|null,
      *   mediaTitle?: string|null,
-     *   mediaUrl?: string|null,
-     *   mediaUrlString?: string|null,
-     *   thumbnailUrl?: string|null,
+     *   mediaURL?: string|null,
+     *   mediaURLString?: string|null,
+     *   thumbnailURL?: string|null,
      * } $socialMetadata
      * @param Type|value-of<Type> $type
      */
@@ -82,9 +82,9 @@ final class SocialMetadataIntegrationAttachment implements BaseModel
      *   id?: string|null,
      *   description?: string|null,
      *   mediaTitle?: string|null,
-     *   mediaUrl?: string|null,
-     *   mediaUrlString?: string|null,
-     *   thumbnailUrl?: string|null,
+     *   mediaURL?: string|null,
+     *   mediaURLString?: string|null,
+     *   thumbnailURL?: string|null,
      * } $socialMetadata
      */
     public function withSocialMetadata(

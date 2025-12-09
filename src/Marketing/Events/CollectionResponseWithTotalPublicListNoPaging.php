@@ -52,19 +52,19 @@ final class CollectionResponseWithTotalPublicListNoPaging implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<PublicList|array{
-     *   listId: string,
+     *   listID: string,
      *   listVersion: int,
      *   name: string,
-     *   objectTypeId: string,
+     *   objectTypeID: string,
      *   processingStatus: string,
      *   processingType: string,
      *   createdAt?: \DateTimeInterface|null,
-     *   createdById?: string|null,
+     *   createdByID?: string|null,
      *   deletedAt?: \DateTimeInterface|null,
      *   filtersUpdatedAt?: \DateTimeInterface|null,
      *   size?: int|null,
      *   updatedAt?: \DateTimeInterface|null,
-     *   updatedById?: string|null,
+     *   updatedByID?: string|null,
      * }> $results
      */
     public static function with(array $results, int $total): self
@@ -79,19 +79,19 @@ final class CollectionResponseWithTotalPublicListNoPaging implements BaseModel
 
     /**
      * @param list<PublicList|array{
-     *   listId: string,
+     *   listID: string,
      *   listVersion: int,
      *   name: string,
-     *   objectTypeId: string,
+     *   objectTypeID: string,
      *   processingStatus: string,
      *   processingType: string,
      *   createdAt?: \DateTimeInterface|null,
-     *   createdById?: string|null,
+     *   createdByID?: string|null,
      *   deletedAt?: \DateTimeInterface|null,
      *   filtersUpdatedAt?: \DateTimeInterface|null,
      *   size?: int|null,
      *   updatedAt?: \DateTimeInterface|null,
-     *   updatedById?: string|null,
+     *   updatedByID?: string|null,
      * }> $results
      */
     public function withResults(array $results): self

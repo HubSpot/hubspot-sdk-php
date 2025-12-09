@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Marketing\EventsService::completeByExternalEventID()
  *
  * @phpstan-type EventCompleteByExternalEventIDParamsShape = array{
- *   externalAccountId: string,
+ *   externalAccountID: string,
  *   endDateTime: \DateTimeInterface,
  *   startDateTime: \DateTimeInterface,
  * }
@@ -30,7 +30,7 @@ final class EventCompleteByExternalEventIDParams implements BaseModel
      * The accountId that is associated with this marketing event in the external event application.
      */
     #[Required]
-    public string $externalAccountId;
+    public string $externalAccountID;
 
     #[Required]
     public \DateTimeInterface $endDateTime;
@@ -44,7 +44,7 @@ final class EventCompleteByExternalEventIDParams implements BaseModel
      * To enforce required parameters use
      * ```
      * EventCompleteByExternalEventIDParams::with(
-     *   externalAccountId: ..., endDateTime: ..., startDateTime: ...
+     *   externalAccountID: ..., endDateTime: ..., startDateTime: ...
      * )
      * ```
      *
@@ -68,13 +68,13 @@ final class EventCompleteByExternalEventIDParams implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      */
     public static function with(
-        string $externalAccountId,
+        string $externalAccountID,
         \DateTimeInterface $endDateTime,
         \DateTimeInterface $startDateTime,
     ): self {
         $obj = new self;
 
-        $obj['externalAccountId'] = $externalAccountId;
+        $obj['externalAccountID'] = $externalAccountID;
         $obj['endDateTime'] = $endDateTime;
         $obj['startDateTime'] = $startDateTime;
 
@@ -87,7 +87,7 @@ final class EventCompleteByExternalEventIDParams implements BaseModel
     public function withExternalAccountID(string $externalAccountID): self
     {
         $obj = clone $this;
-        $obj['externalAccountId'] = $externalAccountID;
+        $obj['externalAccountID'] = $externalAccountID;
 
         return $obj;
     }

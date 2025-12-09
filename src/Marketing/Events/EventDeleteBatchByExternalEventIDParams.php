@@ -18,7 +18,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @phpstan-type EventDeleteBatchByExternalEventIDParamsShape = array{
  *   inputs: list<MarketingEventExternalUniqueIdentifier|array{
- *     appId: int, externalAccountId: string, externalEventId: string
+ *     appID: int, externalAccountID: string, externalEventID: string
  *   }>,
  * }
  */
@@ -57,7 +57,7 @@ final class EventDeleteBatchByExternalEventIDParams implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<MarketingEventExternalUniqueIdentifier|array{
-     *   appId: int, externalAccountId: string, externalEventId: string
+     *   appID: int, externalAccountID: string, externalEventID: string
      * }> $inputs
      */
     public static function with(array $inputs): self
@@ -71,7 +71,7 @@ final class EventDeleteBatchByExternalEventIDParams implements BaseModel
 
     /**
      * @param list<MarketingEventExternalUniqueIdentifier|array{
-     *   appId: int, externalAccountId: string, externalEventId: string
+     *   appID: int, externalAccountID: string, externalEventID: string
      * }> $inputs
      */
     public function withInputs(array $inputs): self

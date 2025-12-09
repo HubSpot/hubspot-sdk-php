@@ -15,7 +15,7 @@ use HubspotSDK\Marketing\Subscriptions\V4\PublicStatus\Status;
 
 /**
  * @phpstan-type PublicBulkOptOutFromAllResponseShape = array{
- *   subscriberIdString: string, statuses?: list<PublicStatus>|null
+ *   subscriberIDString: string, statuses?: list<PublicStatus>|null
  * }
  */
 final class PublicBulkOptOutFromAllResponse implements BaseModel
@@ -26,8 +26,8 @@ final class PublicBulkOptOutFromAllResponse implements BaseModel
     /**
      * The email address of the contact.
      */
-    #[Required]
-    public string $subscriberIdString;
+    #[Required('subscriberIdString')]
+    public string $subscriberIDString;
 
     /**
      * An array of subscription status objects for the contact.
@@ -42,7 +42,7 @@ final class PublicBulkOptOutFromAllResponse implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * PublicBulkOptOutFromAllResponse::with(subscriberIdString: ...)
+     * PublicBulkOptOutFromAllResponse::with(subscriberIDString: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -65,10 +65,10 @@ final class PublicBulkOptOutFromAllResponse implements BaseModel
      *   channel: value-of<Channel>,
      *   source: string,
      *   status: value-of<Status>,
-     *   subscriberIdString: string,
-     *   subscriptionId: int,
+     *   subscriberIDString: string,
+     *   subscriptionID: int,
      *   timestamp: \DateTimeInterface,
-     *   businessUnitId?: int|null,
+     *   businessUnitID?: int|null,
      *   legalBasis?: value-of<LegalBasis>|null,
      *   legalBasisExplanation?: string|null,
      *   setStatusSuccessReason?: value-of<SetStatusSuccessReason>|null,
@@ -76,12 +76,12 @@ final class PublicBulkOptOutFromAllResponse implements BaseModel
      * }> $statuses
      */
     public static function with(
-        string $subscriberIdString,
+        string $subscriberIDString,
         ?array $statuses = null
     ): self {
         $obj = new self;
 
-        $obj['subscriberIdString'] = $subscriberIdString;
+        $obj['subscriberIDString'] = $subscriberIDString;
 
         null !== $statuses && $obj['statuses'] = $statuses;
 
@@ -94,7 +94,7 @@ final class PublicBulkOptOutFromAllResponse implements BaseModel
     public function withSubscriberIDString(string $subscriberIDString): self
     {
         $obj = clone $this;
-        $obj['subscriberIdString'] = $subscriberIDString;
+        $obj['subscriberIDString'] = $subscriberIDString;
 
         return $obj;
     }
@@ -106,10 +106,10 @@ final class PublicBulkOptOutFromAllResponse implements BaseModel
      *   channel: value-of<Channel>,
      *   source: string,
      *   status: value-of<Status>,
-     *   subscriberIdString: string,
-     *   subscriptionId: int,
+     *   subscriberIDString: string,
+     *   subscriptionID: int,
      *   timestamp: \DateTimeInterface,
-     *   businessUnitId?: int|null,
+     *   businessUnitID?: int|null,
      *   legalBasis?: value-of<LegalBasis>|null,
      *   legalBasisExplanation?: string|null,
      *   setStatusSuccessReason?: value-of<SetStatusSuccessReason>|null,

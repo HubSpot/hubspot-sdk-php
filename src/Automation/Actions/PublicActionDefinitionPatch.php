@@ -13,7 +13,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type PublicActionDefinitionPatchShape = array{
- *   actionUrl?: string|null,
+ *   actionURL?: string|null,
  *   executionRules?: list<PublicExecutionTranslationRule>|null,
  *   inputFieldDependencies?: list<PublicSingleFieldDependency|PublicConditionalSingleFieldDependency>|null,
  *   inputFields?: list<InputFieldDefinition>|null,
@@ -29,8 +29,8 @@ final class PublicActionDefinitionPatch implements BaseModel
     /** @use SdkModel<PublicActionDefinitionPatchShape> */
     use SdkModel;
 
-    #[Optional]
-    public ?string $actionUrl;
+    #[Optional('actionUrl')]
+    public ?string $actionURL;
 
     /** @var list<PublicExecutionTranslationRule>|null $executionRules */
     #[Optional(list: PublicExecutionTranslationRule::class)]
@@ -113,7 +113,7 @@ final class PublicActionDefinitionPatch implements BaseModel
      * }> $outputFields
      */
     public static function with(
-        ?string $actionUrl = null,
+        ?string $actionURL = null,
         ?array $executionRules = null,
         ?array $inputFieldDependencies = null,
         ?array $inputFields = null,
@@ -125,7 +125,7 @@ final class PublicActionDefinitionPatch implements BaseModel
     ): self {
         $obj = new self;
 
-        null !== $actionUrl && $obj['actionUrl'] = $actionUrl;
+        null !== $actionURL && $obj['actionURL'] = $actionURL;
         null !== $executionRules && $obj['executionRules'] = $executionRules;
         null !== $inputFieldDependencies && $obj['inputFieldDependencies'] = $inputFieldDependencies;
         null !== $inputFields && $obj['inputFields'] = $inputFields;
@@ -141,7 +141,7 @@ final class PublicActionDefinitionPatch implements BaseModel
     public function withActionURL(string $actionURL): self
     {
         $obj = clone $this;
-        $obj['actionUrl'] = $actionURL;
+        $obj['actionURL'] = $actionURL;
 
         return $obj;
     }

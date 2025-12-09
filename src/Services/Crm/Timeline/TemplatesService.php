@@ -76,7 +76,7 @@ final class TemplatesService implements TemplatesContract
      * Update an existing event template, specified by ID.
      *
      * @param array{
-     *   appId: int,
+     *   appID: int,
      *   id: string,
      *   name: string,
      *   tokens: list<array{
@@ -103,8 +103,8 @@ final class TemplatesService implements TemplatesContract
             $params,
             $requestOptions,
         );
-        $appID = $parsed['appId'];
-        unset($parsed['appId']);
+        $appID = $parsed['appID'];
+        unset($parsed['appID']);
 
         /** @var BaseResponse<TimelineEventTemplate> */
         $response = $this->client->request(
@@ -114,7 +114,7 @@ final class TemplatesService implements TemplatesContract
                 $appID,
                 $eventTemplateID,
             ],
-            body: (object) array_diff_key($parsed, ['appId']),
+            body: (object) array_diff_key($parsed, ['appID']),
             options: $options,
             convert: TimelineEventTemplate::class,
         );
@@ -149,7 +149,7 @@ final class TemplatesService implements TemplatesContract
      *
      * Delete an event type template by ID.
      *
-     * @param array{appId: int}|TemplateDeleteParams $params
+     * @param array{appID: int}|TemplateDeleteParams $params
      *
      * @throws APIException
      */
@@ -162,8 +162,8 @@ final class TemplatesService implements TemplatesContract
             $params,
             $requestOptions,
         );
-        $appID = $parsed['appId'];
-        unset($parsed['appId']);
+        $appID = $parsed['appID'];
+        unset($parsed['appID']);
 
         /** @var BaseResponse<mixed> */
         $response = $this->client->request(
@@ -185,7 +185,7 @@ final class TemplatesService implements TemplatesContract
      *
      * Retrieve an event type template by ID.
      *
-     * @param array{appId: int}|TemplateGetParams $params
+     * @param array{appID: int}|TemplateGetParams $params
      *
      * @throws APIException
      */
@@ -198,8 +198,8 @@ final class TemplatesService implements TemplatesContract
             $params,
             $requestOptions,
         );
-        $appID = $parsed['appId'];
-        unset($parsed['appId']);
+        $appID = $parsed['appID'];
+        unset($parsed['appID']);
 
         /** @var BaseResponse<TimelineEventTemplate> */
         $response = $this->client->request(

@@ -51,7 +51,7 @@ final class APICollectionResponseRecordListMembershipNoPaging implements BaseMod
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<RecordListMembership|array{
-     *   listId: string,
+     *   listID: string,
      *   listVersion: int,
      *   firstAddedTimestamp?: \DateTimeInterface|null,
      *   isPublicList?: bool|null,
@@ -71,7 +71,7 @@ final class APICollectionResponseRecordListMembershipNoPaging implements BaseMod
 
     /**
      * @param list<RecordListMembership|array{
-     *   listId: string,
+     *   listID: string,
      *   listVersion: int,
      *   firstAddedTimestamp?: \DateTimeInterface|null,
      *   isPublicList?: bool|null,

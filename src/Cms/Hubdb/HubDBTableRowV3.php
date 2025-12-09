@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * @phpstan-type HubDBTableRowV3Shape = array{
  *   id: string,
- *   childTableId: string,
+ *   childTableID: string,
  *   createdAt: \DateTimeInterface,
  *   name: string,
  *   path: string,
@@ -34,8 +34,8 @@ final class HubDBTableRowV3 implements BaseModel
     /**
      * Specifies the value for the column child table id.
      */
-    #[Required]
-    public string $childTableId;
+    #[Required('childTableId')]
+    public string $childTableID;
 
     /**
      * Timestamp at which the row is created.
@@ -79,7 +79,7 @@ final class HubDBTableRowV3 implements BaseModel
      * ```
      * HubDBTableRowV3::with(
      *   id: ...,
-     *   childTableId: ...,
+     *   childTableID: ...,
      *   createdAt: ...,
      *   name: ...,
      *   path: ...,
@@ -117,7 +117,7 @@ final class HubDBTableRowV3 implements BaseModel
      */
     public static function with(
         string $id,
-        string $childTableId,
+        string $childTableID,
         \DateTimeInterface $createdAt,
         string $name,
         string $path,
@@ -128,7 +128,7 @@ final class HubDBTableRowV3 implements BaseModel
         $obj = new self;
 
         $obj['id'] = $id;
-        $obj['childTableId'] = $childTableId;
+        $obj['childTableID'] = $childTableID;
         $obj['createdAt'] = $createdAt;
         $obj['name'] = $name;
         $obj['path'] = $path;
@@ -156,7 +156,7 @@ final class HubDBTableRowV3 implements BaseModel
     public function withChildTableID(string $childTableID): self
     {
         $obj = clone $this;
-        $obj['childTableId'] = $childTableID;
+        $obj['childTableID'] = $childTableID;
 
         return $obj;
     }

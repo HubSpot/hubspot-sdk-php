@@ -132,7 +132,7 @@ final class HubSpotFormDefinition implements BaseModel
      *   lifecycleStages?: list<LifecycleStage>|null,
      * } $configuration
      * @param FormDisplayOptions|array{
-     *   renderRawHtml: bool,
+     *   renderRawHTML: bool,
      *   style: FormStyle,
      *   submitButtonText: string,
      *   theme: value-of<Theme>,
@@ -144,7 +144,7 @@ final class HubSpotFormDefinition implements BaseModel
      * }|LegalConsentOptionsLegitimateInterest|array{
      *   lawfulBasis: value-of<LawfulBasis>,
      *   privacyText: string,
-     *   subscriptionTypeIds: list<int>,
+     *   subscriptionTypeIDs: list<int>,
      *   type: value-of<LegalConsentOptionsLegitimateInterest\Type>,
      * }|LegalConsentOptionsExplicitConsentToProcess|array{
      *   communicationsCheckboxes: list<LegalConsentCheckbox>,
@@ -247,7 +247,7 @@ final class HubSpotFormDefinition implements BaseModel
      * Options for styling the form.
      *
      * @param FormDisplayOptions|array{
-     *   renderRawHtml: bool,
+     *   renderRawHTML: bool,
      *   style: FormStyle,
      *   submitButtonText: string,
      *   theme: value-of<Theme>,
@@ -291,7 +291,7 @@ final class HubSpotFormDefinition implements BaseModel
      * }|LegalConsentOptionsLegitimateInterest|array{
      *   lawfulBasis: value-of<LawfulBasis>,
      *   privacyText: string,
-     *   subscriptionTypeIds: list<int>,
+     *   subscriptionTypeIDs: list<int>,
      *   type: value-of<LegalConsentOptionsLegitimateInterest\Type>,
      * }|LegalConsentOptionsExplicitConsentToProcess|array{
      *   communicationsCheckboxes: list<LegalConsentCheckbox>,

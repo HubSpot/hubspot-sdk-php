@@ -18,8 +18,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Cms\Hubdb\RowsService::replaceDraft()
  *
  * @phpstan-type RowReplaceDraftParamsShape = array{
- *   tableIdOrName: string,
- *   childTableId: int,
+ *   tableIDOrName: string,
+ *   childTableID: int,
  *   displayIndex: int,
  *   values: array<string,Variant|array<string,mixed>>,
  *   name?: string,
@@ -33,13 +33,13 @@ final class RowReplaceDraftParams implements BaseModel
     use SdkParams;
 
     #[Required]
-    public string $tableIdOrName;
+    public string $tableIDOrName;
 
     /**
      * Specifies the value for the column child table id.
      */
-    #[Required]
-    public int $childTableId;
+    #[Required('childTableId')]
+    public int $childTableID;
 
     #[Required]
     public int $displayIndex;
@@ -70,7 +70,7 @@ final class RowReplaceDraftParams implements BaseModel
      * To enforce required parameters use
      * ```
      * RowReplaceDraftParams::with(
-     *   tableIdOrName: ..., childTableId: ..., displayIndex: ..., values: ...
+     *   tableIDOrName: ..., childTableID: ..., displayIndex: ..., values: ...
      * )
      * ```
      *
@@ -97,8 +97,8 @@ final class RowReplaceDraftParams implements BaseModel
      * @param array<string,Variant|array<string,mixed>> $values
      */
     public static function with(
-        string $tableIdOrName,
-        int $childTableId,
+        string $tableIDOrName,
+        int $childTableID,
         int $displayIndex,
         array $values,
         ?string $name = null,
@@ -106,8 +106,8 @@ final class RowReplaceDraftParams implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj['tableIdOrName'] = $tableIdOrName;
-        $obj['childTableId'] = $childTableId;
+        $obj['tableIDOrName'] = $tableIDOrName;
+        $obj['childTableID'] = $childTableID;
         $obj['displayIndex'] = $displayIndex;
         $obj['values'] = $values;
 
@@ -120,7 +120,7 @@ final class RowReplaceDraftParams implements BaseModel
     public function withTableIDOrName(string $tableIDOrName): self
     {
         $obj = clone $this;
-        $obj['tableIdOrName'] = $tableIDOrName;
+        $obj['tableIDOrName'] = $tableIDOrName;
 
         return $obj;
     }
@@ -131,7 +131,7 @@ final class RowReplaceDraftParams implements BaseModel
     public function withChildTableID(int $childTableID): self
     {
         $obj = clone $this;
-        $obj['childTableId'] = $childTableID;
+        $obj['childTableID'] = $childTableID;
 
         return $obj;
     }

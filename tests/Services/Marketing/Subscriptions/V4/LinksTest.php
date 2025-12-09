@@ -38,7 +38,7 @@ final class LinksTest extends TestCase
         }
 
         $result = $this->client->marketing->subscriptions->v4->links->create([
-            'channel' => 'EMAIL', 'subscriberIdString' => 'subscriberIdString',
+            'channel' => 'EMAIL', 'subscriberIDString' => 'subscriberIdString',
         ]);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -54,10 +54,10 @@ final class LinksTest extends TestCase
 
         $result = $this->client->marketing->subscriptions->v4->links->create([
             'channel' => 'EMAIL',
-            'subscriberIdString' => 'subscriberIdString',
-            'businessUnitId' => 0,
+            'subscriberIDString' => 'subscriberIdString',
+            'businessUnitID' => 0,
             'language' => 'language',
-            'subscriptionId' => 0,
+            'subscriptionID' => 0,
         ]);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

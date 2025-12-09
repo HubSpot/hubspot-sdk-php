@@ -73,7 +73,7 @@ final class CollectionResponseWithTotalTagForwardPaging implements BaseModel
      *   deletedAt: \DateTimeInterface,
      *   language: value-of<Language>,
      *   name: string,
-     *   translatedFromId: int,
+     *   translatedFromID: int,
      *   updated: \DateTimeInterface,
      * }> $results
      * @param ForwardPaging|array{next?: NextPage|null} $paging
@@ -102,7 +102,7 @@ final class CollectionResponseWithTotalTagForwardPaging implements BaseModel
      *   deletedAt: \DateTimeInterface,
      *   language: value-of<Language>,
      *   name: string,
-     *   translatedFromId: int,
+     *   translatedFromID: int,
      *   updated: \DateTimeInterface,
      * }> $results
      */

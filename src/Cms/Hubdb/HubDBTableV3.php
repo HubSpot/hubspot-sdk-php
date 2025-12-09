@@ -15,7 +15,7 @@ use HubspotSDK\Option;
  * @phpstan-type HubDBTableV3Shape = array{
  *   id: string,
  *   allowChildTables: bool,
- *   allowPublicApiAccess: bool,
+ *   allowPublicAPIAccess: bool,
  *   columnCount: int,
  *   columns: list<Column>,
  *   createdAt: \DateTimeInterface,
@@ -55,8 +55,8 @@ final class HubDBTableV3 implements BaseModel
     /**
      * Specifies whether the table can be read by public without authorization.
      */
-    #[Required]
-    public bool $allowPublicApiAccess;
+    #[Required('allowPublicApiAccess')]
+    public bool $allowPublicAPIAccess;
 
     /**
      * Number of columns including deleted.
@@ -154,7 +154,7 @@ final class HubDBTableV3 implements BaseModel
      * HubDBTableV3::with(
      *   id: ...,
      *   allowChildTables: ...,
-     *   allowPublicApiAccess: ...,
+     *   allowPublicAPIAccess: ...,
      *   columnCount: ...,
      *   columns: ...,
      *   createdAt: ...,
@@ -214,17 +214,17 @@ final class HubDBTableV3 implements BaseModel
      *   type: value-of<Type>,
      *   createdAt?: \DateTimeInterface|null,
      *   createdBy?: SimpleUser|null,
-     *   createdByUserId?: int|null,
-     *   foreignColumnId?: int|null,
-     *   foreignIds?: list<ForeignID>|null,
-     *   foreignIdsById?: array<string,ForeignID>|null,
-     *   foreignIdsByName?: array<string,ForeignID>|null,
-     *   foreignTableId?: int|null,
+     *   createdByUserID?: int|null,
+     *   foreignColumnID?: int|null,
+     *   foreignIDs?: list<ForeignID>|null,
+     *   foreignIDsByID?: array<string,ForeignID>|null,
+     *   foreignIDsByName?: array<string,ForeignID>|null,
+     *   foreignTableID?: int|null,
      *   optionCount?: int|null,
      *   options?: list<Option>|null,
      *   updatedAt?: \DateTimeInterface|null,
      *   updatedBy?: SimpleUser|null,
-     *   updatedByUserId?: int|null,
+     *   updatedByUserID?: int|null,
      *   width?: int|null,
      * }> $columns
      * @param array<string,int> $dynamicMetaTags
@@ -238,7 +238,7 @@ final class HubDBTableV3 implements BaseModel
     public static function with(
         string $id,
         bool $allowChildTables,
-        bool $allowPublicApiAccess,
+        bool $allowPublicAPIAccess,
         int $columnCount,
         array $columns,
         \DateTimeInterface $createdAt,
@@ -261,7 +261,7 @@ final class HubDBTableV3 implements BaseModel
 
         $obj['id'] = $id;
         $obj['allowChildTables'] = $allowChildTables;
-        $obj['allowPublicApiAccess'] = $allowPublicApiAccess;
+        $obj['allowPublicAPIAccess'] = $allowPublicAPIAccess;
         $obj['columnCount'] = $columnCount;
         $obj['columns'] = $columns;
         $obj['createdAt'] = $createdAt;
@@ -312,7 +312,7 @@ final class HubDBTableV3 implements BaseModel
     public function withAllowPublicAPIAccess(bool $allowPublicAPIAccess): self
     {
         $obj = clone $this;
-        $obj['allowPublicApiAccess'] = $allowPublicAPIAccess;
+        $obj['allowPublicAPIAccess'] = $allowPublicAPIAccess;
 
         return $obj;
     }
@@ -340,17 +340,17 @@ final class HubDBTableV3 implements BaseModel
      *   type: value-of<Type>,
      *   createdAt?: \DateTimeInterface|null,
      *   createdBy?: SimpleUser|null,
-     *   createdByUserId?: int|null,
-     *   foreignColumnId?: int|null,
-     *   foreignIds?: list<ForeignID>|null,
-     *   foreignIdsById?: array<string,ForeignID>|null,
-     *   foreignIdsByName?: array<string,ForeignID>|null,
-     *   foreignTableId?: int|null,
+     *   createdByUserID?: int|null,
+     *   foreignColumnID?: int|null,
+     *   foreignIDs?: list<ForeignID>|null,
+     *   foreignIDsByID?: array<string,ForeignID>|null,
+     *   foreignIDsByName?: array<string,ForeignID>|null,
+     *   foreignTableID?: int|null,
      *   optionCount?: int|null,
      *   options?: list<Option>|null,
      *   updatedAt?: \DateTimeInterface|null,
      *   updatedBy?: SimpleUser|null,
-     *   updatedByUserId?: int|null,
+     *   updatedByUserID?: int|null,
      *   width?: int|null,
      * }> $columns
      */

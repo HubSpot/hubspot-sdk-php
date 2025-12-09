@@ -63,7 +63,7 @@ final class PublicAssociationMultiWithLabel implements BaseModel
      *
      * @param PublicObjectID|array{id: string} $from
      * @param list<MultiAssociatedObjectWithLabel|array{
-     *   associationTypes: list<AssociationSpecWithLabel>, toObjectId: string
+     *   associationTypes: list<AssociationSpecWithLabel>, toObjectID: string
      * }> $to
      * @param Paging|array{next?: NextPage|null, prev?: PreviousPage|null} $paging
      */
@@ -95,7 +95,7 @@ final class PublicAssociationMultiWithLabel implements BaseModel
 
     /**
      * @param list<MultiAssociatedObjectWithLabel|array{
-     *   associationTypes: list<AssociationSpecWithLabel>, toObjectId: string
+     *   associationTypes: list<AssociationSpecWithLabel>, toObjectID: string
      * }> $to
      */
     public function withTo(array $to): self

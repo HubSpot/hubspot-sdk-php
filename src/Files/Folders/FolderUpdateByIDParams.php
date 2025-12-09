@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Files\FoldersService::updateByID()
  *
  * @phpstan-type FolderUpdateByIDParamsShape = array{
- *   name?: string, parentFolderId?: int
+ *   name?: string, parentFolderID?: int
  * }
  */
 final class FolderUpdateByIDParams implements BaseModel
@@ -33,8 +33,8 @@ final class FolderUpdateByIDParams implements BaseModel
     /**
      * New parent folderId. If changed, the folder and all it's children will be moved into the specified folder. parentFolderId and parentFolderPath cannot be specified at the same time.
      */
-    #[Optional]
-    public ?int $parentFolderId;
+    #[Optional('parentFolderId')]
+    public ?int $parentFolderID;
 
     public function __construct()
     {
@@ -48,12 +48,12 @@ final class FolderUpdateByIDParams implements BaseModel
      */
     public static function with(
         ?string $name = null,
-        ?int $parentFolderId = null
+        ?int $parentFolderID = null
     ): self {
         $obj = new self;
 
         null !== $name && $obj['name'] = $name;
-        null !== $parentFolderId && $obj['parentFolderId'] = $parentFolderId;
+        null !== $parentFolderID && $obj['parentFolderID'] = $parentFolderID;
 
         return $obj;
     }
@@ -75,7 +75,7 @@ final class FolderUpdateByIDParams implements BaseModel
     public function withParentFolderID(int $parentFolderID): self
     {
         $obj = clone $this;
-        $obj['parentFolderId'] = $parentFolderID;
+        $obj['parentFolderID'] = $parentFolderID;
 
         return $obj;
     }

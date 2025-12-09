@@ -57,7 +57,7 @@ final class BatchInputTag implements BaseModel
      *   deletedAt: \DateTimeInterface,
      *   language: value-of<Language>,
      *   name: string,
-     *   translatedFromId: int,
+     *   translatedFromID: int,
      *   updated: \DateTimeInterface,
      * }> $inputs
      */
@@ -79,7 +79,7 @@ final class BatchInputTag implements BaseModel
      *   deletedAt: \DateTimeInterface,
      *   language: value-of<Language>,
      *   name: string,
-     *   translatedFromId: int,
+     *   translatedFromID: int,
      *   updated: \DateTimeInterface,
      * }> $inputs
      */

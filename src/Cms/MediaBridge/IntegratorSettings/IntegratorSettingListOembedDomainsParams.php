@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Cms\MediaBridge\IntegratorSettingsService::listOembedDomains()
  *
  * @phpstan-type IntegratorSettingListOembedDomainsParamsShape = array{
- *   domainPortalId?: int
+ *   domainPortalID?: int
  * }
  */
 final class IntegratorSettingListOembedDomainsParams implements BaseModel
@@ -28,7 +28,7 @@ final class IntegratorSettingListOembedDomainsParams implements BaseModel
      * Filter response by Hub ID.
      */
     #[Optional]
-    public ?int $domainPortalId;
+    public ?int $domainPortalID;
 
     public function __construct()
     {
@@ -40,11 +40,11 @@ final class IntegratorSettingListOembedDomainsParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(?int $domainPortalId = null): self
+    public static function with(?int $domainPortalID = null): self
     {
         $obj = new self;
 
-        null !== $domainPortalId && $obj['domainPortalId'] = $domainPortalId;
+        null !== $domainPortalID && $obj['domainPortalID'] = $domainPortalID;
 
         return $obj;
     }
@@ -55,7 +55,7 @@ final class IntegratorSettingListOembedDomainsParams implements BaseModel
     public function withDomainPortalID(int $domainPortalID): self
     {
         $obj = clone $this;
-        $obj['domainPortalId'] = $domainPortalID;
+        $obj['domainPortalID'] = $domainPortalID;
 
         return $obj;
     }

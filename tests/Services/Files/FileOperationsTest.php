@@ -159,7 +159,7 @@ final class FileOperationsTest extends TestCase
             'duplicateValidationScope' => 'ENTIRE_PORTAL',
             'duplicateValidationStrategy' => 'NONE',
             'expiresAt' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-            'folderId' => 'folderId',
+            'folderID' => 'folderId',
             'folderPath' => 'folderPath',
             'name' => 'name',
             'overwrite' => true,

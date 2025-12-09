@@ -38,20 +38,7 @@ final class MessagesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->conversations->messages->create(
-            0,
-            [
-                'attachments' => [['fileId' => 'fileId', 'type' => 'FILE']],
-                'channelAccountId' => 'channelAccountId',
-                'channelId' => 'channelId',
-                'recipients' => [
-                    ['deliveryIdentifiers' => [['type' => 'type', 'value' => 'value']]],
-                ],
-                'senderActorId' => 'senderActorId',
-                'text' => 'text',
-                'type' => 'MESSAGE',
-            ],
-        );
+        $result = $this->client->conversations->messages->create(0);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNotNull($result);
@@ -79,7 +66,7 @@ final class MessagesTest extends TestCase
 
         $result = $this->client->conversations->messages->get(
             'messageId',
-            ['threadId' => 0]
+            ['threadID' => 0]
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -95,7 +82,7 @@ final class MessagesTest extends TestCase
 
         $result = $this->client->conversations->messages->get(
             'messageId',
-            ['threadId' => 0, 'property' => 'property']
+            ['threadID' => 0, 'property' => 'property']
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -111,7 +98,7 @@ final class MessagesTest extends TestCase
 
         $result = $this->client->conversations->messages->getOriginalContent(
             'messageId',
-            ['threadId' => 0]
+            ['threadID' => 0]
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -127,7 +114,7 @@ final class MessagesTest extends TestCase
 
         $result = $this->client->conversations->messages->getOriginalContent(
             'messageId',
-            ['threadId' => 0, 'property' => 'property']
+            ['threadID' => 0, 'property' => 'property']
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

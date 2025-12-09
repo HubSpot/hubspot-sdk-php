@@ -26,7 +26,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   companyState?: string|null,
  *   companyZip?: string|null,
  *   logoHeight?: int|null,
- *   logoUrl?: string|null,
+ *   logoURL?: string|null,
  *   logoWidth?: int|null,
  *   primaryColor?: string|null,
  *   secondaryColor?: string|null,
@@ -82,8 +82,8 @@ final class ExternalBrandingMetadata implements BaseModel
     #[Optional]
     public ?int $logoHeight;
 
-    #[Optional]
-    public ?string $logoUrl;
+    #[Optional('logoUrl')]
+    public ?string $logoURL;
 
     #[Optional]
     public ?int $logoWidth;
@@ -139,7 +139,7 @@ final class ExternalBrandingMetadata implements BaseModel
         ?string $companyState = null,
         ?string $companyZip = null,
         ?int $logoHeight = null,
-        ?string $logoUrl = null,
+        ?string $logoURL = null,
         ?int $logoWidth = null,
         ?string $primaryColor = null,
         ?string $secondaryColor = null,
@@ -162,7 +162,7 @@ final class ExternalBrandingMetadata implements BaseModel
         null !== $companyState && $obj['companyState'] = $companyState;
         null !== $companyZip && $obj['companyZip'] = $companyZip;
         null !== $logoHeight && $obj['logoHeight'] = $logoHeight;
-        null !== $logoUrl && $obj['logoUrl'] = $logoUrl;
+        null !== $logoURL && $obj['logoURL'] = $logoURL;
         null !== $logoWidth && $obj['logoWidth'] = $logoWidth;
         null !== $primaryColor && $obj['primaryColor'] = $primaryColor;
         null !== $secondaryColor && $obj['secondaryColor'] = $secondaryColor;
@@ -293,7 +293,7 @@ final class ExternalBrandingMetadata implements BaseModel
     public function withLogoURL(string $logoURL): self
     {
         $obj = clone $this;
-        $obj['logoUrl'] = $logoURL;
+        $obj['logoURL'] = $logoURL;
 
         return $obj;
     }

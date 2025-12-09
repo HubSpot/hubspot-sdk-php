@@ -17,8 +17,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   name: string,
  *   steps: list<PublicSequenceStepResponse>,
  *   updatedAt: \DateTimeInterface,
- *   userId: string,
- *   folderId?: string|null,
+ *   userID: string,
+ *   folderID?: string|null,
  *   settings?: PublicSequenceSettingsResponse|null,
  * }
  */
@@ -47,11 +47,11 @@ final class PublicSequenceResponse implements BaseModel
     #[Required]
     public \DateTimeInterface $updatedAt;
 
-    #[Required]
-    public string $userId;
+    #[Required('userId')]
+    public string $userID;
 
-    #[Optional]
-    public ?string $folderId;
+    #[Optional('folderId')]
+    public ?string $folderID;
 
     #[Optional]
     public ?PublicSequenceSettingsResponse $settings;
@@ -68,7 +68,7 @@ final class PublicSequenceResponse implements BaseModel
      *   name: ...,
      *   steps: ...,
      *   updatedAt: ...,
-     *   userId: ...,
+     *   userID: ...,
      * )
      * ```
      *
@@ -99,9 +99,9 @@ final class PublicSequenceResponse implements BaseModel
      *   id: string,
      *   createdAt: \DateTimeInterface,
      *   dependencyType: string,
-     *   reliesOnSequenceStepId: string,
+     *   reliesOnSequenceStepID: string,
      *   reliesOnStepOrder: int,
-     *   requiredBySequenceStepId: string,
+     *   requiredBySequenceStepID: string,
      *   requiredByStepOrder: int,
      *   updatedAt: \DateTimeInterface,
      * }> $dependencies
@@ -135,8 +135,8 @@ final class PublicSequenceResponse implements BaseModel
         string $name,
         array $steps,
         \DateTimeInterface $updatedAt,
-        string $userId,
-        ?string $folderId = null,
+        string $userID,
+        ?string $folderID = null,
         PublicSequenceSettingsResponse|array|null $settings = null,
     ): self {
         $obj = new self;
@@ -147,9 +147,9 @@ final class PublicSequenceResponse implements BaseModel
         $obj['name'] = $name;
         $obj['steps'] = $steps;
         $obj['updatedAt'] = $updatedAt;
-        $obj['userId'] = $userId;
+        $obj['userID'] = $userID;
 
-        null !== $folderId && $obj['folderId'] = $folderId;
+        null !== $folderID && $obj['folderID'] = $folderID;
         null !== $settings && $obj['settings'] = $settings;
 
         return $obj;
@@ -176,9 +176,9 @@ final class PublicSequenceResponse implements BaseModel
      *   id: string,
      *   createdAt: \DateTimeInterface,
      *   dependencyType: string,
-     *   reliesOnSequenceStepId: string,
+     *   reliesOnSequenceStepID: string,
      *   reliesOnStepOrder: int,
-     *   requiredBySequenceStepId: string,
+     *   requiredBySequenceStepID: string,
      *   requiredByStepOrder: int,
      *   updatedAt: \DateTimeInterface,
      * }> $dependencies
@@ -230,7 +230,7 @@ final class PublicSequenceResponse implements BaseModel
     public function withUserID(string $userID): self
     {
         $obj = clone $this;
-        $obj['userId'] = $userID;
+        $obj['userID'] = $userID;
 
         return $obj;
     }
@@ -238,7 +238,7 @@ final class PublicSequenceResponse implements BaseModel
     public function withFolderID(string $folderID): self
     {
         $obj = clone $this;
-        $obj['folderId'] = $folderID;
+        $obj['folderID'] = $folderID;
 
         return $obj;
     }

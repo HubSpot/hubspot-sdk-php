@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Services\Marketing\EmailsService::getRevision()
  *
- * @phpstan-type EmailGetRevisionParamsShape = array{emailId: string}
+ * @phpstan-type EmailGetRevisionParamsShape = array{emailID: string}
  */
 final class EmailGetRevisionParams implements BaseModel
 {
@@ -23,14 +23,14 @@ final class EmailGetRevisionParams implements BaseModel
     use SdkParams;
 
     #[Required]
-    public string $emailId;
+    public string $emailID;
 
     /**
      * `new EmailGetRevisionParams()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * EmailGetRevisionParams::with(emailId: ...)
+     * EmailGetRevisionParams::with(emailID: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -49,11 +49,11 @@ final class EmailGetRevisionParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(string $emailId): self
+    public static function with(string $emailID): self
     {
         $obj = new self;
 
-        $obj['emailId'] = $emailId;
+        $obj['emailID'] = $emailID;
 
         return $obj;
     }
@@ -61,7 +61,7 @@ final class EmailGetRevisionParams implements BaseModel
     public function withEmailID(string $emailID): self
     {
         $obj = clone $this;
-        $obj['emailId'] = $emailID;
+        $obj['emailID'] = $emailID;
 
         return $obj;
     }

@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Services\Automation\Actions\RevisionsService::get()
  *
- * @phpstan-type RevisionGetParamsShape = array{appId: int, definitionId: string}
+ * @phpstan-type RevisionGetParamsShape = array{appID: int, definitionID: string}
  */
 final class RevisionGetParams implements BaseModel
 {
@@ -23,17 +23,17 @@ final class RevisionGetParams implements BaseModel
     use SdkParams;
 
     #[Required]
-    public int $appId;
+    public int $appID;
 
     #[Required]
-    public string $definitionId;
+    public string $definitionID;
 
     /**
      * `new RevisionGetParams()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * RevisionGetParams::with(appId: ..., definitionId: ...)
+     * RevisionGetParams::with(appID: ..., definitionID: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -52,12 +52,12 @@ final class RevisionGetParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(int $appId, string $definitionId): self
+    public static function with(int $appID, string $definitionID): self
     {
         $obj = new self;
 
-        $obj['appId'] = $appId;
-        $obj['definitionId'] = $definitionId;
+        $obj['appID'] = $appID;
+        $obj['definitionID'] = $definitionID;
 
         return $obj;
     }
@@ -65,7 +65,7 @@ final class RevisionGetParams implements BaseModel
     public function withAppID(int $appID): self
     {
         $obj = clone $this;
-        $obj['appId'] = $appID;
+        $obj['appID'] = $appID;
 
         return $obj;
     }
@@ -73,7 +73,7 @@ final class RevisionGetParams implements BaseModel
     public function withDefinitionID(string $definitionID): self
     {
         $obj = clone $this;
-        $obj['definitionId'] = $definitionID;
+        $obj['definitionID'] = $definitionID;
 
         return $obj;
     }

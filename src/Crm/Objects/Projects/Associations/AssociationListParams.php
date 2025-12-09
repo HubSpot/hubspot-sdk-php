@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Crm\Objects\Projects\AssociationsService::list()
  *
  * @phpstan-type AssociationListParamsShape = array{
- *   projectId: string, after?: string, includeFA?: bool, limit?: int
+ *   projectID: string, after?: string, includeFa?: bool, limit?: int
  * }
  */
 final class AssociationListParams implements BaseModel
@@ -24,13 +24,13 @@ final class AssociationListParams implements BaseModel
     use SdkParams;
 
     #[Required]
-    public string $projectId;
+    public string $projectID;
 
     #[Optional]
     public ?string $after;
 
     #[Optional]
-    public ?bool $includeFA;
+    public ?bool $includeFa;
 
     #[Optional]
     public ?int $limit;
@@ -40,7 +40,7 @@ final class AssociationListParams implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * AssociationListParams::with(projectId: ...)
+     * AssociationListParams::with(projectID: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -60,17 +60,17 @@ final class AssociationListParams implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      */
     public static function with(
-        string $projectId,
+        string $projectID,
         ?string $after = null,
-        ?bool $includeFA = null,
+        ?bool $includeFa = null,
         ?int $limit = null,
     ): self {
         $obj = new self;
 
-        $obj['projectId'] = $projectId;
+        $obj['projectID'] = $projectID;
 
         null !== $after && $obj['after'] = $after;
-        null !== $includeFA && $obj['includeFA'] = $includeFA;
+        null !== $includeFa && $obj['includeFa'] = $includeFa;
         null !== $limit && $obj['limit'] = $limit;
 
         return $obj;
@@ -79,7 +79,7 @@ final class AssociationListParams implements BaseModel
     public function withProjectID(string $projectID): self
     {
         $obj = clone $this;
-        $obj['projectId'] = $projectID;
+        $obj['projectID'] = $projectID;
 
         return $obj;
     }
@@ -95,7 +95,7 @@ final class AssociationListParams implements BaseModel
     public function withIncludeFa(bool $includeFa): self
     {
         $obj = clone $this;
-        $obj['includeFA'] = $includeFa;
+        $obj['includeFa'] = $includeFa;
 
         return $obj;
     }

@@ -31,7 +31,7 @@ final class MessagesService implements MessagesContract
      *
      * @param array{
      *   attachments: list<array<string,mixed>>,
-     *   channelAccountId: string,
+     *   channelAccountID: string,
      *   messageDirection: 'INCOMING'|'OUTGOING'|MessageDirection,
      *   recipients: list<array{
      *     deliveryIdentifier: array<mixed>|PublicDeliveryIdentifier, name?: string
@@ -41,9 +41,9 @@ final class MessagesService implements MessagesContract
      *   }>,
      *   text: string,
      *   timestamp: string|\DateTimeInterface,
-     *   inReplyToId?: string,
-     *   integrationIdempotencyId?: string,
-     *   integrationThreadId?: string,
+     *   inReplyToID?: string,
+     *   integrationIdempotencyID?: string,
+     *   integrationThreadID?: string,
      *   preResolvedContacts?: array{
      *     contacts: list<array{
      *       contactPropertiesLeadingToMatch: list<string>, contactVid: int
@@ -82,7 +82,7 @@ final class MessagesService implements MessagesContract
      * Update a message's status to indicate if it was successfully sent, failed to send, or was read. For failed messages, this can also include the error message for the failure.
      *
      * @param array{
-     *   channelId: int,
+     *   channelID: int,
      *   statusType: 'FAILED'|'READ'|'SENT'|StatusType,
      *   errorMessage?: string,
      * }|MessageUpdateParams $params
@@ -98,8 +98,8 @@ final class MessagesService implements MessagesContract
             $params,
             $requestOptions,
         );
-        $channelID = $parsed['channelId'];
-        unset($parsed['channelId']);
+        $channelID = $parsed['channelID'];
+        unset($parsed['channelID']);
 
         /** @var BaseResponse<ConversationsPublicConversationsMessage> */
         $response = $this->client->request(
@@ -109,7 +109,7 @@ final class MessagesService implements MessagesContract
                 $channelID,
                 $messageID,
             ],
-            body: (object) array_diff_key($parsed, ['channelId']),
+            body: (object) array_diff_key($parsed, ['channelID']),
             options: $options,
             convert: ConversationsPublicConversationsMessage::class,
         );
@@ -122,7 +122,7 @@ final class MessagesService implements MessagesContract
      *
      * Get the details for a specific message sent over a custom channel
      *
-     * @param array{channelId: int}|MessageGetParams $params
+     * @param array{channelID: int}|MessageGetParams $params
      *
      * @throws APIException
      */
@@ -135,8 +135,8 @@ final class MessagesService implements MessagesContract
             $params,
             $requestOptions,
         );
-        $channelID = $parsed['channelId'];
-        unset($parsed['channelId']);
+        $channelID = $parsed['channelID'];
+        unset($parsed['channelID']);
 
         /** @var BaseResponse<ConversationsPublicConversationsMessage> */
         $response = $this->client->request(

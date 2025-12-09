@@ -94,7 +94,7 @@ final class BatchTest extends TestCase
                     'id' => 'id',
                     'properties' => ['foo' => 'string'],
                     'idProperty' => 'my_unique_property_name',
-                    'objectWriteTraceId' => 'objectWriteTraceId',
+                    'objectWriteTraceID' => 'objectWriteTraceId',
                 ],
             ],
         ]);

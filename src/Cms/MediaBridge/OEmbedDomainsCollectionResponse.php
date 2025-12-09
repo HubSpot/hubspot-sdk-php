@@ -52,11 +52,11 @@ final class OEmbedDomainsCollectionResponse implements BaseModel
      *
      * @param list<IntegratorOEmbedDomainModel|array{
      *   id: int,
-     *   appId: int,
+     *   appID: int,
      *   createdAt: int,
      *   deletedAt: int,
      *   endpoints: Endpoints,
-     *   portalId: int,
+     *   portalID: int,
      *   updatedAt: int,
      * }> $results
      */
@@ -74,11 +74,11 @@ final class OEmbedDomainsCollectionResponse implements BaseModel
     /**
      * @param list<IntegratorOEmbedDomainModel|array{
      *   id: int,
-     *   appId: int,
+     *   appID: int,
      *   createdAt: int,
      *   deletedAt: int,
      *   endpoints: Endpoints,
-     *   portalId: int,
+     *   portalID: int,
      *   updatedAt: int,
      * }> $results
      */

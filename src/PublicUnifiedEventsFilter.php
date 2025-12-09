@@ -17,7 +17,7 @@ use HubspotSDK\PublicUnifiedEventsFilter\FilterType;
  *   filterLines: list<PublicEventFilterMetadata>,
  *   filterType: value-of<FilterType>,
  *   coalescingRefineBy?: null|PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation,
- *   eventTypeId?: string|null,
+ *   eventTypeID?: string|null,
  *   pruningRefineBy?: null|PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation,
  * }
  */
@@ -37,8 +37,8 @@ final class PublicUnifiedEventsFilter implements BaseModel
     #[Optional]
     public PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation|null $coalescingRefineBy;
 
-    #[Optional]
-    public ?string $eventTypeId;
+    #[Optional('eventTypeId')]
+    public ?string $eventTypeID;
 
     #[Optional]
     public PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation|null $pruningRefineBy;
@@ -163,7 +163,7 @@ final class PublicUnifiedEventsFilter implements BaseModel
         array $filterLines,
         FilterType|string $filterType = 'UNIFIED_EVENTS',
         PublicNumOccurrencesRefineBy|array|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation|null $coalescingRefineBy = null,
-        ?string $eventTypeId = null,
+        ?string $eventTypeID = null,
         PublicNumOccurrencesRefineBy|array|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation|null $pruningRefineBy = null,
     ): self {
         $obj = new self;
@@ -172,7 +172,7 @@ final class PublicUnifiedEventsFilter implements BaseModel
         $obj['filterType'] = $filterType;
 
         null !== $coalescingRefineBy && $obj['coalescingRefineBy'] = $coalescingRefineBy;
-        null !== $eventTypeId && $obj['eventTypeId'] = $eventTypeId;
+        null !== $eventTypeID && $obj['eventTypeID'] = $eventTypeID;
         null !== $pruningRefineBy && $obj['pruningRefineBy'] = $pruningRefineBy;
 
         return $obj;
@@ -260,7 +260,7 @@ final class PublicUnifiedEventsFilter implements BaseModel
     public function withEventTypeID(string $eventTypeID): self
     {
         $obj = clone $this;
-        $obj['eventTypeId'] = $eventTypeID;
+        $obj['eventTypeID'] = $eventTypeID;
 
         return $obj;
     }

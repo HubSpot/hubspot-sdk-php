@@ -59,7 +59,7 @@ final class OutputFieldDefinition implements BaseModel
      *   fieldType?: value-of<FieldType>|null,
      *   helpText?: string|null,
      *   label?: string|null,
-     *   optionsUrl?: string|null,
+     *   optionsURL?: string|null,
      *   referencedObjectType?: value-of<ReferencedObjectType>|null,
      * } $typeDefinition
      */
@@ -83,7 +83,7 @@ final class OutputFieldDefinition implements BaseModel
      *   fieldType?: value-of<FieldType>|null,
      *   helpText?: string|null,
      *   label?: string|null,
-     *   optionsUrl?: string|null,
+     *   optionsURL?: string|null,
      *   referencedObjectType?: value-of<ReferencedObjectType>|null,
      * } $typeDefinition
      */

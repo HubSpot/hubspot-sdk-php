@@ -61,39 +61,39 @@ final class PostsService implements PostsContract
      * @param array{
      *   id: string,
      *   abStatus: value-of<AbStatus>,
-     *   abTestId: string,
+     *   abTestID: string,
      *   archivedAt: int,
      *   archivedInDashboard: bool,
      *   attachedStylesheets: list<array<string,mixed>>,
      *   authorName: string,
-     *   blogAuthorId: string,
+     *   blogAuthorID: string,
      *   campaign: string,
-     *   categoryId: int,
-     *   contentGroupId: string,
+     *   categoryID: int,
+     *   contentGroupID: string,
      *   contentTypeCategory: '0'|'1'|'10'|'11'|'12'|'13'|'14'|'15'|'2'|'3'|'4'|'5'|'6'|'7'|'8'|'9'|ContentTypeCategory,
      *   created: string|\DateTimeInterface,
-     *   createdById: string,
+     *   createdByID: string,
      *   currentlyPublished: bool,
      *   currentState: value-of<CurrentState>,
      *   domain: string,
-     *   dynamicPageDataSourceId: string,
+     *   dynamicPageDataSourceID: string,
      *   dynamicPageDataSourceType: int,
-     *   dynamicPageHubDbTableId: string,
+     *   dynamicPageHubDBTableID: string,
      *   enableDomainStylesheets: bool,
      *   enableGoogleAmpOutputOverride: bool,
      *   enableLayoutStylesheets: bool,
      *   featuredImage: string,
      *   featuredImageAltText: string,
-     *   folderId: string,
-     *   footerHtml: string,
-     *   headHtml: string,
+     *   folderID: string,
+     *   footerHTML: string,
+     *   headHTML: string,
      *   htmlTitle: string,
      *   includeDefaultCustomCss: bool,
      *   language: value-of<Language>,
      *   layoutSections: array<string,array{
      *     cells: list<mixed>,
      *     cssClass: string,
-     *     cssId: string,
+     *     cssID: string,
      *     cssStyle: string,
      *     label: string,
      *     name: string,
@@ -105,14 +105,14 @@ final class PostsService implements PostsContract
      *     w: int,
      *     x: int,
      *   }|LayoutSection>,
-     *   linkRelCanonicalUrl: string,
-     *   mabExperimentId: string,
+     *   linkRelCanonicalURL: string,
+     *   mabExperimentID: string,
      *   metaDescription: string,
      *   name: string,
      *   pageExpiryDate: int,
      *   pageExpiryEnabled: bool,
-     *   pageExpiryRedirectId: int,
-     *   pageExpiryRedirectUrl: string,
+     *   pageExpiryRedirectID: int,
+     *   pageExpiryRedirectURL: string,
      *   password: string,
      *   postBody: string,
      *   postSummary: string,
@@ -124,9 +124,9 @@ final class PostsService implements PostsContract
      *   rssSummary: string,
      *   slug: string,
      *   state: string,
-     *   tagIds: list<int>,
+     *   tagIDs: list<int>,
      *   themeSettingsValues: array<string,mixed>,
-     *   translatedFromId: string,
+     *   translatedFromID: string,
      *   translations: array<string,array{
      *     id: int,
      *     archivedInDashboard: bool,
@@ -141,10 +141,10 @@ final class PostsService implements PostsContract
      *     slug: string,
      *     state: string,
      *     updated: string|\DateTimeInterface,
-     *     tagIds?: list<int>,
+     *     tagIDs?: list<int>,
      *   }|PagesContentLanguageVariation>,
      *   updated: string|\DateTimeInterface,
-     *   updatedById: string,
+     *   updatedByID: string,
      *   url: string,
      *   useFeaturedImage: bool,
      *   widgetContainers: array<string,mixed>,
@@ -182,39 +182,39 @@ final class PostsService implements PostsContract
      * @param array{
      *   id: string,
      *   abStatus: value-of<PostUpdateParams\AbStatus>,
-     *   abTestId: string,
+     *   abTestID: string,
      *   archivedAt: int,
      *   archivedInDashboard: bool,
      *   attachedStylesheets: list<array<string,mixed>>,
      *   authorName: string,
-     *   blogAuthorId: string,
+     *   blogAuthorID: string,
      *   campaign: string,
-     *   categoryId: int,
-     *   contentGroupId: string,
+     *   categoryID: int,
+     *   contentGroupID: string,
      *   contentTypeCategory: '0'|'1'|'10'|'11'|'12'|'13'|'14'|'15'|'2'|'3'|'4'|'5'|'6'|'7'|'8'|'9'|PostUpdateParams\ContentTypeCategory,
      *   created: string|\DateTimeInterface,
-     *   createdById: string,
+     *   createdByID: string,
      *   currentlyPublished: bool,
      *   currentState: value-of<PostUpdateParams\CurrentState>,
      *   domain: string,
-     *   dynamicPageDataSourceId: string,
+     *   dynamicPageDataSourceID: string,
      *   dynamicPageDataSourceType: int,
-     *   dynamicPageHubDbTableId: string,
+     *   dynamicPageHubDBTableID: string,
      *   enableDomainStylesheets: bool,
      *   enableGoogleAmpOutputOverride: bool,
      *   enableLayoutStylesheets: bool,
      *   featuredImage: string,
      *   featuredImageAltText: string,
-     *   folderId: string,
-     *   footerHtml: string,
-     *   headHtml: string,
+     *   folderID: string,
+     *   footerHTML: string,
+     *   headHTML: string,
      *   htmlTitle: string,
      *   includeDefaultCustomCss: bool,
      *   language: value-of<PostUpdateParams\Language>,
      *   layoutSections: array<string,array{
      *     cells: list<mixed>,
      *     cssClass: string,
-     *     cssId: string,
+     *     cssID: string,
      *     cssStyle: string,
      *     label: string,
      *     name: string,
@@ -226,14 +226,14 @@ final class PostsService implements PostsContract
      *     w: int,
      *     x: int,
      *   }|LayoutSection>,
-     *   linkRelCanonicalUrl: string,
-     *   mabExperimentId: string,
+     *   linkRelCanonicalURL: string,
+     *   mabExperimentID: string,
      *   metaDescription: string,
      *   name: string,
      *   pageExpiryDate: int,
      *   pageExpiryEnabled: bool,
-     *   pageExpiryRedirectId: int,
-     *   pageExpiryRedirectUrl: string,
+     *   pageExpiryRedirectID: int,
+     *   pageExpiryRedirectURL: string,
      *   password: string,
      *   postBody: string,
      *   postSummary: string,
@@ -245,9 +245,9 @@ final class PostsService implements PostsContract
      *   rssSummary: string,
      *   slug: string,
      *   state: string,
-     *   tagIds: list<int>,
+     *   tagIDs: list<int>,
      *   themeSettingsValues: array<string,mixed>,
-     *   translatedFromId: string,
+     *   translatedFromID: string,
      *   translations: array<string,array{
      *     id: int,
      *     archivedInDashboard: bool,
@@ -262,10 +262,10 @@ final class PostsService implements PostsContract
      *     slug: string,
      *     state: string,
      *     updated: string|\DateTimeInterface,
-     *     tagIds?: list<int>,
+     *     tagIDs?: list<int>,
      *   }|PagesContentLanguageVariation>,
      *   updated: string|\DateTimeInterface,
-     *   updatedById: string,
+     *   updatedByID: string,
      *   url: string,
      *   useFeaturedImage: bool,
      *   widgetContainers: array<string,mixed>,
@@ -381,7 +381,7 @@ final class PostsService implements PostsContract
      * Attach a blog post to a [multi-language group](https://developers.hubspot.com/docs/guides/cms/content/multi-language-content).
      *
      * @param array{
-     *   id: string, language: string, primaryId: string, primaryLanguage?: string
+     *   id: string, language: string, primaryID: string, primaryLanguage?: string
      * }|PostAttachToLangGroupParams $params
      *
      * @throws APIException
@@ -557,7 +557,7 @@ final class PostsService implements PostsContract
      *
      * Retrieve a previous version of a blog post.
      *
-     * @param array{objectId: string}|PostGetPreviousVersionParams $params
+     * @param array{objectID: string}|PostGetPreviousVersionParams $params
      *
      * @throws APIException
      */
@@ -570,8 +570,8 @@ final class PostsService implements PostsContract
             $params,
             $requestOptions,
         );
-        $objectID = $parsed['objectId'];
-        unset($parsed['objectId']);
+        $objectID = $parsed['objectID'];
+        unset($parsed['objectID']);
 
         /** @var BaseResponse<VersionBlogPost> */
         $response = $this->client->request(
@@ -669,7 +669,7 @@ final class PostsService implements PostsContract
      *
      * Restores a blog post to one of its previous versions.
      *
-     * @param array{objectId: string}|PostRestorePreviousVersionParams $params
+     * @param array{objectID: string}|PostRestorePreviousVersionParams $params
      *
      * @throws APIException
      */
@@ -682,8 +682,8 @@ final class PostsService implements PostsContract
             $params,
             $requestOptions,
         );
-        $objectID = $parsed['objectId'];
-        unset($parsed['objectId']);
+        $objectID = $parsed['objectID'];
+        unset($parsed['objectID']);
 
         /** @var BaseResponse<BlogPost> */
         $response = $this->client->request(
@@ -703,7 +703,7 @@ final class PostsService implements PostsContract
      *
      * Takes a specified version of a blog post, sets it as the new draft version of the blog post.
      *
-     * @param array{objectId: string}|PostRestorePreviousVersionToDraftParams $params
+     * @param array{objectID: string}|PostRestorePreviousVersionToDraftParams $params
      *
      * @throws APIException
      */
@@ -716,8 +716,8 @@ final class PostsService implements PostsContract
             $params,
             $requestOptions,
         );
-        $objectID = $parsed['objectId'];
-        unset($parsed['objectId']);
+        $objectID = $parsed['objectID'];
+        unset($parsed['objectID']);
 
         /** @var BaseResponse<BlogPost> */
         $response = $this->client->request(
@@ -804,39 +804,39 @@ final class PostsService implements PostsContract
      * @param array{
      *   id: string,
      *   abStatus: value-of<PostUpdateDraftParams\AbStatus>,
-     *   abTestId: string,
+     *   abTestID: string,
      *   archivedAt: int,
      *   archivedInDashboard: bool,
      *   attachedStylesheets: list<array<string,mixed>>,
      *   authorName: string,
-     *   blogAuthorId: string,
+     *   blogAuthorID: string,
      *   campaign: string,
-     *   categoryId: int,
-     *   contentGroupId: string,
+     *   categoryID: int,
+     *   contentGroupID: string,
      *   contentTypeCategory: '0'|'1'|'10'|'11'|'12'|'13'|'14'|'15'|'2'|'3'|'4'|'5'|'6'|'7'|'8'|'9'|PostUpdateDraftParams\ContentTypeCategory,
      *   created: string|\DateTimeInterface,
-     *   createdById: string,
+     *   createdByID: string,
      *   currentlyPublished: bool,
      *   currentState: value-of<PostUpdateDraftParams\CurrentState>,
      *   domain: string,
-     *   dynamicPageDataSourceId: string,
+     *   dynamicPageDataSourceID: string,
      *   dynamicPageDataSourceType: int,
-     *   dynamicPageHubDbTableId: string,
+     *   dynamicPageHubDBTableID: string,
      *   enableDomainStylesheets: bool,
      *   enableGoogleAmpOutputOverride: bool,
      *   enableLayoutStylesheets: bool,
      *   featuredImage: string,
      *   featuredImageAltText: string,
-     *   folderId: string,
-     *   footerHtml: string,
-     *   headHtml: string,
+     *   folderID: string,
+     *   footerHTML: string,
+     *   headHTML: string,
      *   htmlTitle: string,
      *   includeDefaultCustomCss: bool,
      *   language: value-of<PostUpdateDraftParams\Language>,
      *   layoutSections: array<string,array{
      *     cells: list<mixed>,
      *     cssClass: string,
-     *     cssId: string,
+     *     cssID: string,
      *     cssStyle: string,
      *     label: string,
      *     name: string,
@@ -848,14 +848,14 @@ final class PostsService implements PostsContract
      *     w: int,
      *     x: int,
      *   }|LayoutSection>,
-     *   linkRelCanonicalUrl: string,
-     *   mabExperimentId: string,
+     *   linkRelCanonicalURL: string,
+     *   mabExperimentID: string,
      *   metaDescription: string,
      *   name: string,
      *   pageExpiryDate: int,
      *   pageExpiryEnabled: bool,
-     *   pageExpiryRedirectId: int,
-     *   pageExpiryRedirectUrl: string,
+     *   pageExpiryRedirectID: int,
+     *   pageExpiryRedirectURL: string,
      *   password: string,
      *   postBody: string,
      *   postSummary: string,
@@ -867,9 +867,9 @@ final class PostsService implements PostsContract
      *   rssSummary: string,
      *   slug: string,
      *   state: string,
-     *   tagIds: list<int>,
+     *   tagIDs: list<int>,
      *   themeSettingsValues: array<string,mixed>,
-     *   translatedFromId: string,
+     *   translatedFromID: string,
      *   translations: array<string,array{
      *     id: int,
      *     archivedInDashboard: bool,
@@ -884,10 +884,10 @@ final class PostsService implements PostsContract
      *     slug: string,
      *     state: string,
      *     updated: string|\DateTimeInterface,
-     *     tagIds?: list<int>,
+     *     tagIDs?: list<int>,
      *   }|PagesContentLanguageVariation>,
      *   updated: string|\DateTimeInterface,
-     *   updatedById: string,
+     *   updatedByID: string,
      *   url: string,
      *   useFeaturedImage: bool,
      *   widgetContainers: array<string,mixed>,
@@ -924,7 +924,7 @@ final class PostsService implements PostsContract
      * Explicitly set new languages for each post in a [multi-language group](https://developers.hubspot.com/docs/guides/cms/content/multi-language-content).
      *
      * @param array{
-     *   languages: array<string,string>, primaryId: string
+     *   languages: array<string,string>, primaryID: string
      * }|PostUpdateLangsParams $params
      *
      * @throws APIException

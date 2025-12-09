@@ -84,10 +84,10 @@ final class AssociationRecordLimitResponse implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<AtLimitRecordSample|array{
-     *   label: string, objectId: int
+     *   label: string, objectID: int
      * }> $atLimitFromRecordSamples
      * @param list<NearLimitRecordSample|array{
-     *   label: string, objectId: int, percentage: float, usage: int
+     *   label: string, objectID: int, percentage: float, usage: int
      * }> $nearLimitFromRecordSamples
      */
     public static function with(
@@ -110,7 +110,7 @@ final class AssociationRecordLimitResponse implements BaseModel
 
     /**
      * @param list<AtLimitRecordSample|array{
-     *   label: string, objectId: int
+     *   label: string, objectID: int
      * }> $atLimitFromRecordSamples
      */
     public function withAtLimitFromRecordSamples(
@@ -135,7 +135,7 @@ final class AssociationRecordLimitResponse implements BaseModel
 
     /**
      * @param list<NearLimitRecordSample|array{
-     *   label: string, objectId: int, percentage: float, usage: int
+     *   label: string, objectID: int, percentage: float, usage: int
      * }> $nearLimitFromRecordSamples
      */
     public function withNearLimitFromRecordSamples(

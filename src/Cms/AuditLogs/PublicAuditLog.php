@@ -15,11 +15,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-type PublicAuditLogShape = array{
  *   event: value-of<Event>,
  *   fullName: string,
- *   objectId: string,
+ *   objectID: string,
  *   objectName: string,
  *   objectType: value-of<ObjectType>,
  *   timestamp: \DateTimeInterface,
- *   userId: string,
+ *   userID: string,
  *   meta?: mixed,
  * }
  */
@@ -45,8 +45,8 @@ final class PublicAuditLog implements BaseModel
     /**
      * The ID of the object.
      */
-    #[Required]
-    public string $objectId;
+    #[Required('objectId')]
+    public string $objectID;
 
     /**
      * The internal name of the object in HubSpot.
@@ -71,8 +71,8 @@ final class PublicAuditLog implements BaseModel
     /**
      * The ID of the user who caused the event.
      */
-    #[Required]
-    public string $userId;
+    #[Required('userId')]
+    public string $userID;
 
     /**
      * Supplementary metadata associated with the audit log entry. It provides additional context about the audited event (ex: rows deleted/updated for a HubDB event, the specific fields that were changed for a Content Settings event).
@@ -88,11 +88,11 @@ final class PublicAuditLog implements BaseModel
      * PublicAuditLog::with(
      *   event: ...,
      *   fullName: ...,
-     *   objectId: ...,
+     *   objectID: ...,
      *   objectName: ...,
      *   objectType: ...,
      *   timestamp: ...,
-     *   userId: ...,
+     *   userID: ...,
      * )
      * ```
      *
@@ -125,22 +125,22 @@ final class PublicAuditLog implements BaseModel
     public static function with(
         Event|string $event,
         string $fullName,
-        string $objectId,
+        string $objectID,
         string $objectName,
         ObjectType|string $objectType,
         \DateTimeInterface $timestamp,
-        string $userId,
+        string $userID,
         mixed $meta = null,
     ): self {
         $obj = new self;
 
         $obj['event'] = $event;
         $obj['fullName'] = $fullName;
-        $obj['objectId'] = $objectId;
+        $obj['objectID'] = $objectID;
         $obj['objectName'] = $objectName;
         $obj['objectType'] = $objectType;
         $obj['timestamp'] = $timestamp;
-        $obj['userId'] = $userId;
+        $obj['userID'] = $userID;
 
         null !== $meta && $obj['meta'] = $meta;
 
@@ -177,7 +177,7 @@ final class PublicAuditLog implements BaseModel
     public function withObjectID(string $objectID): self
     {
         $obj = clone $this;
-        $obj['objectId'] = $objectID;
+        $obj['objectID'] = $objectID;
 
         return $obj;
     }
@@ -223,7 +223,7 @@ final class PublicAuditLog implements BaseModel
     public function withUserID(string $userID): self
     {
         $obj = clone $this;
-        $obj['userId'] = $userID;
+        $obj['userID'] = $userID;
 
         return $obj;
     }

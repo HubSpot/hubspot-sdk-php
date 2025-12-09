@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type FileAttachmentShape = array{
- *   fileId: string, type: value-of<Type>, fileUsageType?: string|null
+ *   fileID: string, type: value-of<Type>, fileUsageType?: string|null
  * }
  */
 final class FileAttachment implements BaseModel
@@ -20,8 +20,8 @@ final class FileAttachment implements BaseModel
     /** @use SdkModel<FileAttachmentShape> */
     use SdkModel;
 
-    #[Required]
-    public string $fileId;
+    #[Required('fileId')]
+    public string $fileID;
 
     /** @var value-of<Type> $type */
     #[Required(enum: Type::class)]
@@ -35,7 +35,7 @@ final class FileAttachment implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * FileAttachment::with(fileId: ..., type: ...)
+     * FileAttachment::with(fileID: ..., type: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -57,13 +57,13 @@ final class FileAttachment implements BaseModel
      * @param Type|value-of<Type> $type
      */
     public static function with(
-        string $fileId,
+        string $fileID,
         Type|string $type = 'FILE',
         ?string $fileUsageType = null
     ): self {
         $obj = new self;
 
-        $obj['fileId'] = $fileId;
+        $obj['fileID'] = $fileID;
         $obj['type'] = $type;
 
         null !== $fileUsageType && $obj['fileUsageType'] = $fileUsageType;
@@ -74,7 +74,7 @@ final class FileAttachment implements BaseModel
     public function withFileID(string $fileID): self
     {
         $obj = clone $this;
-        $obj['fileId'] = $fileID;
+        $obj['fileID'] = $fileID;
 
         return $obj;
     }

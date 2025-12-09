@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type ObjectTypeDefinitionShape = array{
- *   objectTypeId: string, pluralLabel: string, singularLabel: string
+ *   objectTypeID: string, pluralLabel: string, singularLabel: string
  * }
  */
 final class ObjectTypeDefinition implements BaseModel
@@ -21,8 +21,8 @@ final class ObjectTypeDefinition implements BaseModel
     /**
      * The unique identifier for the object type.
      */
-    #[Required]
-    public string $objectTypeId;
+    #[Required('objectTypeId')]
+    public string $objectTypeID;
 
     /**
      * The plural form label for the object type.
@@ -42,7 +42,7 @@ final class ObjectTypeDefinition implements BaseModel
      * To enforce required parameters use
      * ```
      * ObjectTypeDefinition::with(
-     *   objectTypeId: ..., pluralLabel: ..., singularLabel: ...
+     *   objectTypeID: ..., pluralLabel: ..., singularLabel: ...
      * )
      * ```
      *
@@ -66,13 +66,13 @@ final class ObjectTypeDefinition implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      */
     public static function with(
-        string $objectTypeId,
+        string $objectTypeID,
         string $pluralLabel,
         string $singularLabel
     ): self {
         $obj = new self;
 
-        $obj['objectTypeId'] = $objectTypeId;
+        $obj['objectTypeID'] = $objectTypeID;
         $obj['pluralLabel'] = $pluralLabel;
         $obj['singularLabel'] = $singularLabel;
 
@@ -85,7 +85,7 @@ final class ObjectTypeDefinition implements BaseModel
     public function withObjectTypeID(string $objectTypeID): self
     {
         $obj = clone $this;
-        $obj['objectTypeId'] = $objectTypeID;
+        $obj['objectTypeID'] = $objectTypeID;
 
         return $obj;
     }

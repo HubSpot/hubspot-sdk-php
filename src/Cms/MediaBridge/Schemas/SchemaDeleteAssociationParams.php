@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Cms\MediaBridge\SchemasService::deleteAssociation()
  *
  * @phpstan-type SchemaDeleteAssociationParamsShape = array{
- *   appId: int, objectType: string
+ *   appID: int, objectType: string
  * }
  */
 final class SchemaDeleteAssociationParams implements BaseModel
@@ -25,7 +25,7 @@ final class SchemaDeleteAssociationParams implements BaseModel
     use SdkParams;
 
     #[Required]
-    public int $appId;
+    public int $appID;
 
     #[Required]
     public string $objectType;
@@ -35,7 +35,7 @@ final class SchemaDeleteAssociationParams implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * SchemaDeleteAssociationParams::with(appId: ..., objectType: ...)
+     * SchemaDeleteAssociationParams::with(appID: ..., objectType: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -54,11 +54,11 @@ final class SchemaDeleteAssociationParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(int $appId, string $objectType): self
+    public static function with(int $appID, string $objectType): self
     {
         $obj = new self;
 
-        $obj['appId'] = $appId;
+        $obj['appID'] = $appID;
         $obj['objectType'] = $objectType;
 
         return $obj;
@@ -67,7 +67,7 @@ final class SchemaDeleteAssociationParams implements BaseModel
     public function withAppID(int $appID): self
     {
         $obj = clone $this;
-        $obj['appId'] = $appID;
+        $obj['appID'] = $appID;
 
         return $obj;
     }

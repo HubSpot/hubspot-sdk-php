@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * @phpstan-type PublicRecipientShape = array{
  *   deliveryIdentifier: PublicDeliveryIdentifier,
- *   actorId?: string|null,
+ *   actorID?: string|null,
  *   name?: string|null,
  *   recipientField?: string|null,
  * }
@@ -25,8 +25,8 @@ final class PublicRecipient implements BaseModel
     #[Required]
     public PublicDeliveryIdentifier $deliveryIdentifier;
 
-    #[Optional]
-    public ?string $actorId;
+    #[Optional('actorId')]
+    public ?string $actorID;
 
     #[Optional]
     public ?string $name;
@@ -64,7 +64,7 @@ final class PublicRecipient implements BaseModel
      */
     public static function with(
         PublicDeliveryIdentifier|array $deliveryIdentifier,
-        ?string $actorId = null,
+        ?string $actorID = null,
         ?string $name = null,
         ?string $recipientField = null,
     ): self {
@@ -72,7 +72,7 @@ final class PublicRecipient implements BaseModel
 
         $obj['deliveryIdentifier'] = $deliveryIdentifier;
 
-        null !== $actorId && $obj['actorId'] = $actorId;
+        null !== $actorID && $obj['actorID'] = $actorID;
         null !== $name && $obj['name'] = $name;
         null !== $recipientField && $obj['recipientField'] = $recipientField;
 
@@ -96,7 +96,7 @@ final class PublicRecipient implements BaseModel
     public function withActorID(string $actorID): self
     {
         $obj = clone $this;
-        $obj['actorId'] = $actorID;
+        $obj['actorID'] = $actorID;
 
         return $obj;
     }

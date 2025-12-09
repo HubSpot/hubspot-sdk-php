@@ -33,7 +33,7 @@ final class SchemasService implements SchemasContract
      * Update the schema for an existing object type
      *
      * @param array{
-     *   appId: int,
+     *   appID: int,
      *   clearDescription?: bool,
      *   description?: string,
      *   labels?: array{plural?: string, singular?: string}|ObjectTypeDefinitionLabels,
@@ -55,14 +55,14 @@ final class SchemasService implements SchemasContract
             $params,
             $requestOptions,
         );
-        $appID = $parsed['appId'];
-        unset($parsed['appId']);
+        $appID = $parsed['appID'];
+        unset($parsed['appID']);
 
         /** @var BaseResponse<ObjectsSchemasObjectTypeDefinition> */
         $response = $this->client->request(
             method: 'patch',
             path: ['media-bridge/v1/%1$s/schemas/%2$s', $appID, $objectType],
-            body: (object) array_diff_key($parsed, ['appId']),
+            body: (object) array_diff_key($parsed, ['appID']),
             options: $options,
             convert: ObjectsSchemasObjectTypeDefinition::class,
         );
@@ -107,7 +107,7 @@ final class SchemasService implements SchemasContract
      * Create a new association definition for the specified object type.
      *
      * @param array{
-     *   appId: int, fromObjectTypeId: string, toObjectTypeId: string, name?: string
+     *   appID: int, fromObjectTypeID: string, toObjectTypeID: string, name?: string
      * }|SchemaCreateAssociationParams $params
      *
      * @throws APIException
@@ -121,8 +121,8 @@ final class SchemasService implements SchemasContract
             $params,
             $requestOptions,
         );
-        $appID = $parsed['appId'];
-        unset($parsed['appId']);
+        $appID = $parsed['appID'];
+        unset($parsed['appID']);
 
         /** @var BaseResponse<AssociationDefinition> */
         $response = $this->client->request(
@@ -130,7 +130,7 @@ final class SchemasService implements SchemasContract
             path: [
                 'media-bridge/v1/%1$s/schemas/%2$s/associations', $appID, $objectType,
             ],
-            body: (object) array_diff_key($parsed, ['appId']),
+            body: (object) array_diff_key($parsed, ['appID']),
             options: $options,
             convert: AssociationDefinition::class,
         );
@@ -144,7 +144,7 @@ final class SchemasService implements SchemasContract
      * Delete an existing association definition for an object type.
      *
      * @param array{
-     *   appId: int, objectType: string
+     *   appID: int, objectType: string
      * }|SchemaDeleteAssociationParams $params
      *
      * @throws APIException
@@ -158,8 +158,8 @@ final class SchemasService implements SchemasContract
             $params,
             $requestOptions,
         );
-        $appID = $parsed['appId'];
-        unset($parsed['appId']);
+        $appID = $parsed['appID'];
+        unset($parsed['appID']);
         $objectType = $parsed['objectType'];
         unset($parsed['objectType']);
 
@@ -184,7 +184,7 @@ final class SchemasService implements SchemasContract
      *
      * Get the schema for a specified object type.
      *
-     * @param array{appId: int}|SchemaGetParams $params
+     * @param array{appID: int}|SchemaGetParams $params
      *
      * @throws APIException
      */
@@ -197,8 +197,8 @@ final class SchemasService implements SchemasContract
             $params,
             $requestOptions,
         );
-        $appID = $parsed['appId'];
-        unset($parsed['appId']);
+        $appID = $parsed['appID'];
+        unset($parsed['appID']);
 
         /** @var BaseResponse<ObjectSchema> */
         $response = $this->client->request(

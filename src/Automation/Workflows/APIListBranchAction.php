@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type APIListBranchActionShape = array{
- *   actionId: string,
+ *   actionID: string,
  *   listBranches: list<mixed>,
  *   type: value-of<Type>,
  *   defaultBranch?: APIConnection|null,
@@ -24,8 +24,8 @@ final class APIListBranchAction implements BaseModel
     /** @use SdkModel<APIListBranchActionShape> */
     use SdkModel;
 
-    #[Required]
-    public string $actionId;
+    #[Required('actionId')]
+    public string $actionID;
 
     /** @var list<mixed> $listBranches */
     #[Required(list: APIListBranch::class)]
@@ -46,7 +46,7 @@ final class APIListBranchAction implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * APIListBranchAction::with(actionId: ..., listBranches: ..., type: ...)
+     * APIListBranchAction::with(actionID: ..., listBranches: ..., type: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -71,11 +71,11 @@ final class APIListBranchAction implements BaseModel
      * @param list<mixed> $listBranches
      * @param Type|value-of<Type> $type
      * @param APIConnection|array{
-     *   edgeType: string, nextActionId: string
+     *   edgeType: string, nextActionID: string
      * } $defaultBranch
      */
     public static function with(
-        string $actionId,
+        string $actionID,
         array $listBranches,
         Type|string $type = 'LIST_BRANCH',
         APIConnection|array|null $defaultBranch = null,
@@ -83,7 +83,7 @@ final class APIListBranchAction implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj['actionId'] = $actionId;
+        $obj['actionID'] = $actionID;
         $obj['listBranches'] = $listBranches;
         $obj['type'] = $type;
 
@@ -96,7 +96,7 @@ final class APIListBranchAction implements BaseModel
     public function withActionID(string $actionID): self
     {
         $obj = clone $this;
-        $obj['actionId'] = $actionID;
+        $obj['actionID'] = $actionID;
 
         return $obj;
     }
@@ -125,7 +125,7 @@ final class APIListBranchAction implements BaseModel
 
     /**
      * @param APIConnection|array{
-     *   edgeType: string, nextActionId: string
+     *   edgeType: string, nextActionID: string
      * } $defaultBranch
      */
     public function withDefaultBranch(APIConnection|array $defaultBranch): self

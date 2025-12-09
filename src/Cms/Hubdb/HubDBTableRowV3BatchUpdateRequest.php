@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type HubDBTableRowV3BatchUpdateRequestShape = array{
- *   childTableId: int,
+ *   childTableID: int,
  *   displayIndex: int,
  *   values: array<string,Variant>,
  *   id?: string|null,
@@ -27,8 +27,8 @@ final class HubDBTableRowV3BatchUpdateRequest implements BaseModel
     /**
      * Specifies the value for the column child table id.
      */
-    #[Required]
-    public int $childTableId;
+    #[Required('childTableId')]
+    public int $childTableID;
 
     #[Required]
     public int $displayIndex;
@@ -65,7 +65,7 @@ final class HubDBTableRowV3BatchUpdateRequest implements BaseModel
      * To enforce required parameters use
      * ```
      * HubDBTableRowV3BatchUpdateRequest::with(
-     *   childTableId: ..., displayIndex: ..., values: ...
+     *   childTableID: ..., displayIndex: ..., values: ...
      * )
      * ```
      *
@@ -91,7 +91,7 @@ final class HubDBTableRowV3BatchUpdateRequest implements BaseModel
      * @param array<string,Variant|array<string,mixed>> $values
      */
     public static function with(
-        int $childTableId,
+        int $childTableID,
         int $displayIndex,
         array $values,
         ?string $id = null,
@@ -100,7 +100,7 @@ final class HubDBTableRowV3BatchUpdateRequest implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj['childTableId'] = $childTableId;
+        $obj['childTableID'] = $childTableID;
         $obj['displayIndex'] = $displayIndex;
         $obj['values'] = $values;
 
@@ -117,7 +117,7 @@ final class HubDBTableRowV3BatchUpdateRequest implements BaseModel
     public function withChildTableID(int $childTableID): self
     {
         $obj = clone $this;
-        $obj['childTableId'] = $childTableID;
+        $obj['childTableID'] = $childTableID;
 
         return $obj;
     }

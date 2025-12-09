@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Conversations\CustomChannels\ChannelAccountsService::get()
  *
  * @phpstan-type ChannelAccountGetParamsShape = array{
- *   channelId: int, archived?: bool
+ *   channelID: int, archived?: bool
  * }
  */
 final class ChannelAccountGetParams implements BaseModel
@@ -26,7 +26,7 @@ final class ChannelAccountGetParams implements BaseModel
     use SdkParams;
 
     #[Required]
-    public int $channelId;
+    public int $channelID;
 
     /**
      * Filter results to include only archived or non-archived channel accounts.
@@ -39,7 +39,7 @@ final class ChannelAccountGetParams implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * ChannelAccountGetParams::with(channelId: ...)
+     * ChannelAccountGetParams::with(channelID: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -58,11 +58,11 @@ final class ChannelAccountGetParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(int $channelId, ?bool $archived = null): self
+    public static function with(int $channelID, ?bool $archived = null): self
     {
         $obj = new self;
 
-        $obj['channelId'] = $channelId;
+        $obj['channelID'] = $channelID;
 
         null !== $archived && $obj['archived'] = $archived;
 
@@ -72,7 +72,7 @@ final class ChannelAccountGetParams implements BaseModel
     public function withChannelID(int $channelID): self
     {
         $obj = clone $this;
-        $obj['channelId'] = $channelID;
+        $obj['channelID'] = $channelID;
 
         return $obj;
     }

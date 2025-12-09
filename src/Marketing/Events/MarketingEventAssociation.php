@@ -11,10 +11,10 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type MarketingEventAssociationShape = array{
- *   marketingEventId: string,
+ *   marketingEventID: string,
  *   name: string,
- *   externalAccountId?: string|null,
- *   externalEventId?: string|null,
+ *   externalAccountID?: string|null,
+ *   externalEventID?: string|null,
  * }
  */
 final class MarketingEventAssociation implements BaseModel
@@ -22,24 +22,24 @@ final class MarketingEventAssociation implements BaseModel
     /** @use SdkModel<MarketingEventAssociationShape> */
     use SdkModel;
 
-    #[Required]
-    public string $marketingEventId;
+    #[Required('marketingEventId')]
+    public string $marketingEventID;
 
     #[Required]
     public string $name;
 
-    #[Optional]
-    public ?string $externalAccountId;
+    #[Optional('externalAccountId')]
+    public ?string $externalAccountID;
 
-    #[Optional]
-    public ?string $externalEventId;
+    #[Optional('externalEventId')]
+    public ?string $externalEventID;
 
     /**
      * `new MarketingEventAssociation()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * MarketingEventAssociation::with(marketingEventId: ..., name: ...)
+     * MarketingEventAssociation::with(marketingEventID: ..., name: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -59,18 +59,18 @@ final class MarketingEventAssociation implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      */
     public static function with(
-        string $marketingEventId,
+        string $marketingEventID,
         string $name,
-        ?string $externalAccountId = null,
-        ?string $externalEventId = null,
+        ?string $externalAccountID = null,
+        ?string $externalEventID = null,
     ): self {
         $obj = new self;
 
-        $obj['marketingEventId'] = $marketingEventId;
+        $obj['marketingEventID'] = $marketingEventID;
         $obj['name'] = $name;
 
-        null !== $externalAccountId && $obj['externalAccountId'] = $externalAccountId;
-        null !== $externalEventId && $obj['externalEventId'] = $externalEventId;
+        null !== $externalAccountID && $obj['externalAccountID'] = $externalAccountID;
+        null !== $externalEventID && $obj['externalEventID'] = $externalEventID;
 
         return $obj;
     }
@@ -78,7 +78,7 @@ final class MarketingEventAssociation implements BaseModel
     public function withMarketingEventID(string $marketingEventID): self
     {
         $obj = clone $this;
-        $obj['marketingEventId'] = $marketingEventID;
+        $obj['marketingEventID'] = $marketingEventID;
 
         return $obj;
     }
@@ -94,7 +94,7 @@ final class MarketingEventAssociation implements BaseModel
     public function withExternalAccountID(string $externalAccountID): self
     {
         $obj = clone $this;
-        $obj['externalAccountId'] = $externalAccountID;
+        $obj['externalAccountID'] = $externalAccountID;
 
         return $obj;
     }
@@ -102,7 +102,7 @@ final class MarketingEventAssociation implements BaseModel
     public function withExternalEventID(string $externalEventID): self
     {
         $obj = clone $this;
-        $obj['externalEventId'] = $externalEventID;
+        $obj['externalEventID'] = $externalEventID;
 
         return $obj;
     }

@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Services\Cms\Blogs\PostsService::getPreviousVersion()
  *
- * @phpstan-type PostGetPreviousVersionParamsShape = array{objectId: string}
+ * @phpstan-type PostGetPreviousVersionParamsShape = array{objectID: string}
  */
 final class PostGetPreviousVersionParams implements BaseModel
 {
@@ -23,14 +23,14 @@ final class PostGetPreviousVersionParams implements BaseModel
     use SdkParams;
 
     #[Required]
-    public string $objectId;
+    public string $objectID;
 
     /**
      * `new PostGetPreviousVersionParams()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * PostGetPreviousVersionParams::with(objectId: ...)
+     * PostGetPreviousVersionParams::with(objectID: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -49,11 +49,11 @@ final class PostGetPreviousVersionParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(string $objectId): self
+    public static function with(string $objectID): self
     {
         $obj = new self;
 
-        $obj['objectId'] = $objectId;
+        $obj['objectID'] = $objectID;
 
         return $obj;
     }
@@ -61,7 +61,7 @@ final class PostGetPreviousVersionParams implements BaseModel
     public function withObjectID(string $objectID): self
     {
         $obj = clone $this;
-        $obj['objectId'] = $objectID;
+        $obj['objectID'] = $objectID;
 
         return $obj;
     }

@@ -13,7 +13,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * Lists record is member of.
  *
  * @phpstan-type RecordListMembershipShape = array{
- *   listId: string,
+ *   listID: string,
  *   listVersion: int,
  *   firstAddedTimestamp?: \DateTimeInterface|null,
  *   isPublicList?: bool|null,
@@ -25,8 +25,8 @@ final class RecordListMembership implements BaseModel
     /** @use SdkModel<RecordListMembershipShape> */
     use SdkModel;
 
-    #[Required]
-    public string $listId;
+    #[Required('listId')]
+    public string $listID;
 
     #[Required]
     public int $listVersion;
@@ -45,7 +45,7 @@ final class RecordListMembership implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * RecordListMembership::with(listId: ..., listVersion: ...)
+     * RecordListMembership::with(listID: ..., listVersion: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -65,7 +65,7 @@ final class RecordListMembership implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      */
     public static function with(
-        string $listId,
+        string $listID,
         int $listVersion,
         ?\DateTimeInterface $firstAddedTimestamp = null,
         ?bool $isPublicList = null,
@@ -73,7 +73,7 @@ final class RecordListMembership implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj['listId'] = $listId;
+        $obj['listID'] = $listID;
         $obj['listVersion'] = $listVersion;
 
         null !== $firstAddedTimestamp && $obj['firstAddedTimestamp'] = $firstAddedTimestamp;
@@ -86,7 +86,7 @@ final class RecordListMembership implements BaseModel
     public function withListID(string $listID): self
     {
         $obj = clone $this;
-        $obj['listId'] = $listID;
+        $obj['listID'] = $listID;
 
         return $obj;
     }

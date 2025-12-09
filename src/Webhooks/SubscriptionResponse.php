@@ -18,7 +18,7 @@ use HubspotSDK\Webhooks\SubscriptionResponse\EventType;
  *   active: bool,
  *   createdAt: \DateTimeInterface,
  *   eventType: value-of<EventType>,
- *   objectTypeId?: string|null,
+ *   objectTypeID?: string|null,
  *   propertyName?: string|null,
  *   updatedAt?: \DateTimeInterface|null,
  * }
@@ -57,8 +57,8 @@ final class SubscriptionResponse implements BaseModel
     /**
      * The identifier of the object type associated with the subscription.
      */
-    #[Optional]
-    public ?string $objectTypeId;
+    #[Optional('objectTypeId')]
+    public ?string $objectTypeID;
 
     /**
      * The internal name of the property being monitored for changes. Only applies when `eventType` is `propertyChange`.
@@ -107,7 +107,7 @@ final class SubscriptionResponse implements BaseModel
         bool $active,
         \DateTimeInterface $createdAt,
         EventType|string $eventType,
-        ?string $objectTypeId = null,
+        ?string $objectTypeID = null,
         ?string $propertyName = null,
         ?\DateTimeInterface $updatedAt = null,
     ): self {
@@ -118,7 +118,7 @@ final class SubscriptionResponse implements BaseModel
         $obj['createdAt'] = $createdAt;
         $obj['eventType'] = $eventType;
 
-        null !== $objectTypeId && $obj['objectTypeId'] = $objectTypeId;
+        null !== $objectTypeID && $obj['objectTypeID'] = $objectTypeID;
         null !== $propertyName && $obj['propertyName'] = $propertyName;
         null !== $updatedAt && $obj['updatedAt'] = $updatedAt;
 
@@ -177,7 +177,7 @@ final class SubscriptionResponse implements BaseModel
     public function withObjectTypeID(string $objectTypeID): self
     {
         $obj = clone $this;
-        $obj['objectTypeId'] = $objectTypeID;
+        $obj['objectTypeID'] = $objectTypeID;
 
         return $obj;
     }

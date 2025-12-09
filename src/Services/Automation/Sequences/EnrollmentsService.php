@@ -10,6 +10,7 @@ use HubspotSDK\Automation\Sequences\PublicSequenceEnrollmentResponse;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Automation\Sequences\EnrollmentsContract;
 
@@ -26,10 +27,10 @@ final class EnrollmentsService implements EnrollmentsContract
      * Enroll a contact into a sequence using the specified user ID and sequence details.
      *
      * @param array{
-     *   userId: string,
-     *   contactId: string,
+     *   userID: string,
+     *   contactID: string,
      *   senderEmail: string,
-     *   sequenceId: string,
+     *   sequenceID: string,
      *   senderAliasAddress?: string,
      * }|EnrollmentEnrollParams $params
      *
@@ -49,7 +50,10 @@ final class EnrollmentsService implements EnrollmentsContract
         $response = $this->client->request(
             method: 'post',
             path: 'automation/v4/sequences/enrollments',
-            query: array_diff_key($parsed, $query_params),
+            query: Util::array_transform_keys(
+                array_diff_key($parsed, $query_params),
+                ['userID' => 'userId']
+            ),
             body: (object) array_diff_key($parsed, $query_params),
             options: $options,
             convert: PublicSequenceEnrollmentLiteResponse::class,

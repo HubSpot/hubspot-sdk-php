@@ -47,12 +47,12 @@ final class ListFolderFetchResponse implements BaseModel
      *   id: string,
      *   childLists: list<int>,
      *   childNodes: list<mixed>,
-     *   parentFolderId: string,
+     *   parentFolderID: string,
      *   createdAt?: \DateTimeInterface|null,
      *   name?: string|null,
      *   updatedAt?: \DateTimeInterface|null,
      *   updatedContentsAt?: \DateTimeInterface|null,
-     *   userId?: int|null,
+     *   userID?: int|null,
      * } $folder
      */
     public static function with(PublicListFolder|array $folder): self
@@ -69,12 +69,12 @@ final class ListFolderFetchResponse implements BaseModel
      *   id: string,
      *   childLists: list<int>,
      *   childNodes: list<mixed>,
-     *   parentFolderId: string,
+     *   parentFolderID: string,
      *   createdAt?: \DateTimeInterface|null,
      *   name?: string|null,
      *   updatedAt?: \DateTimeInterface|null,
      *   updatedContentsAt?: \DateTimeInterface|null,
-     *   userId?: int|null,
+     *   userID?: int|null,
      * } $folder
      */
     public function withFolder(PublicListFolder|array $folder): self

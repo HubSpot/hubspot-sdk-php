@@ -18,7 +18,7 @@ use HubspotSDK\Crm\Timeline\Tokens\TokenCreateParams\Type;
  * @see HubspotSDK\Services\Crm\Timeline\TokensService::create()
  *
  * @phpstan-type TokenCreateParamsShape = array{
- *   appId: int,
+ *   appID: int,
  *   label: string,
  *   name: string,
  *   type: Type|value-of<Type>,
@@ -37,7 +37,7 @@ final class TokenCreateParams implements BaseModel
     use SdkParams;
 
     #[Required]
-    public int $appId;
+    public int $appID;
 
     /**
      * Used for list segmentation and reporting.
@@ -90,7 +90,7 @@ final class TokenCreateParams implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * TokenCreateParams::with(appId: ..., label: ..., name: ..., type: ...)
+     * TokenCreateParams::with(appID: ..., label: ..., name: ..., type: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -119,7 +119,7 @@ final class TokenCreateParams implements BaseModel
      * }> $options
      */
     public static function with(
-        int $appId,
+        int $appID,
         string $label,
         string $name,
         Type|string $type,
@@ -130,7 +130,7 @@ final class TokenCreateParams implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj['appId'] = $appId;
+        $obj['appID'] = $appID;
         $obj['label'] = $label;
         $obj['name'] = $name;
         $obj['type'] = $type;
@@ -146,7 +146,7 @@ final class TokenCreateParams implements BaseModel
     public function withAppID(int $appID): self
     {
         $obj = clone $this;
-        $obj['appId'] = $appID;
+        $obj['appID'] = $appID;
 
         return $obj;
     }

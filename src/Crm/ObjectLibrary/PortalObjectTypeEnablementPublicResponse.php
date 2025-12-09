@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type PortalObjectTypeEnablementPublicResponseShape = array{
- *   enablementByObjectTypeId: array<string,bool>
+ *   enablementByObjectTypeID: array<string,bool>
  * }
  */
 final class PortalObjectTypeEnablementPublicResponse implements BaseModel
@@ -21,17 +21,17 @@ final class PortalObjectTypeEnablementPublicResponse implements BaseModel
     /**
      * A map of objectTypeId to whether that object type is enabled or not.
      *
-     * @var array<string,bool> $enablementByObjectTypeId
+     * @var array<string,bool> $enablementByObjectTypeID
      */
-    #[Required(map: 'bool')]
-    public array $enablementByObjectTypeId;
+    #[Required('enablementByObjectTypeId', map: 'bool')]
+    public array $enablementByObjectTypeID;
 
     /**
      * `new PortalObjectTypeEnablementPublicResponse()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * PortalObjectTypeEnablementPublicResponse::with(enablementByObjectTypeId: ...)
+     * PortalObjectTypeEnablementPublicResponse::with(enablementByObjectTypeID: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -51,13 +51,13 @@ final class PortalObjectTypeEnablementPublicResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string,bool> $enablementByObjectTypeId
+     * @param array<string,bool> $enablementByObjectTypeID
      */
-    public static function with(array $enablementByObjectTypeId): self
+    public static function with(array $enablementByObjectTypeID): self
     {
         $obj = new self;
 
-        $obj['enablementByObjectTypeId'] = $enablementByObjectTypeId;
+        $obj['enablementByObjectTypeID'] = $enablementByObjectTypeID;
 
         return $obj;
     }
@@ -71,7 +71,7 @@ final class PortalObjectTypeEnablementPublicResponse implements BaseModel
         array $enablementByObjectTypeID
     ): self {
         $obj = clone $this;
-        $obj['enablementByObjectTypeId'] = $enablementByObjectTypeID;
+        $obj['enablementByObjectTypeID'] = $enablementByObjectTypeID;
 
         return $obj;
     }

@@ -71,7 +71,7 @@ final class APITimeDelay implements BaseModel
      * @param TimeUnit|value-of<TimeUnit> $timeUnit
      * @param APITimeOfDay|array{hour: int, minute: int} $timeOfDay
      * @param APIStaticTimeZoneStrategy|array{
-     *   timeZoneId: string, type: value-of<Type>
+     *   timeZoneID: string, type: value-of<Type>
      * } $timeZoneStrategy
      */
     public static function with(
@@ -136,7 +136,7 @@ final class APITimeDelay implements BaseModel
 
     /**
      * @param APIStaticTimeZoneStrategy|array{
-     *   timeZoneId: string, type: value-of<Type>
+     *   timeZoneID: string, type: value-of<Type>
      * } $timeZoneStrategy
      */
     public function withTimeZoneStrategy(

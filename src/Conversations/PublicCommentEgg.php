@@ -65,7 +65,7 @@ final class PublicCommentEgg implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<PublicFileEgg|array{
-     *   fileId: string, type: value-of<PublicFileEgg\Type>
+     *   fileID: string, type: value-of<PublicFileEgg\Type>
      * }|PublicQuickRepliesEgg|array{
      *   quickReplies: list<QuickReply>,
      *   type: value-of<PublicQuickRepliesEgg\Type>,
@@ -94,7 +94,7 @@ final class PublicCommentEgg implements BaseModel
 
     /**
      * @param list<PublicFileEgg|array{
-     *   fileId: string, type: value-of<PublicFileEgg\Type>
+     *   fileID: string, type: value-of<PublicFileEgg\Type>
      * }|PublicQuickRepliesEgg|array{
      *   quickReplies: list<QuickReply>,
      *   type: value-of<PublicQuickRepliesEgg\Type>,

@@ -14,8 +14,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-type PublicTeamShape = array{
  *   id: string,
  *   name: string,
- *   secondaryUserIds: list<string>,
- *   userIds: list<string>,
+ *   secondaryUserIDs: list<string>,
+ *   userIDs: list<string>,
  * }
  */
 final class PublicTeam implements BaseModel
@@ -38,25 +38,25 @@ final class PublicTeam implements BaseModel
     /**
      * Secondary or additional members of this team.
      *
-     * @var list<string> $secondaryUserIds
+     * @var list<string> $secondaryUserIDs
      */
-    #[Required(list: 'string')]
-    public array $secondaryUserIds;
+    #[Required('secondaryUserIds', list: 'string')]
+    public array $secondaryUserIDs;
 
     /**
      * Primary members of this team.
      *
-     * @var list<string> $userIds
+     * @var list<string> $userIDs
      */
-    #[Required(list: 'string')]
-    public array $userIds;
+    #[Required('userIds', list: 'string')]
+    public array $userIDs;
 
     /**
      * `new PublicTeam()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * PublicTeam::with(id: ..., name: ..., secondaryUserIds: ..., userIds: ...)
+     * PublicTeam::with(id: ..., name: ..., secondaryUserIDs: ..., userIDs: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -79,21 +79,21 @@ final class PublicTeam implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<string> $secondaryUserIds
-     * @param list<string> $userIds
+     * @param list<string> $secondaryUserIDs
+     * @param list<string> $userIDs
      */
     public static function with(
         string $id,
         string $name,
-        array $secondaryUserIds,
-        array $userIds
+        array $secondaryUserIDs,
+        array $userIDs
     ): self {
         $obj = new self;
 
         $obj['id'] = $id;
         $obj['name'] = $name;
-        $obj['secondaryUserIds'] = $secondaryUserIds;
-        $obj['userIds'] = $userIds;
+        $obj['secondaryUserIDs'] = $secondaryUserIDs;
+        $obj['userIDs'] = $userIDs;
 
         return $obj;
     }
@@ -128,7 +128,7 @@ final class PublicTeam implements BaseModel
     public function withSecondaryUserIDs(array $secondaryUserIDs): self
     {
         $obj = clone $this;
-        $obj['secondaryUserIds'] = $secondaryUserIDs;
+        $obj['secondaryUserIDs'] = $secondaryUserIDs;
 
         return $obj;
     }
@@ -141,7 +141,7 @@ final class PublicTeam implements BaseModel
     public function withUserIDs(array $userIDs): self
     {
         $obj = clone $this;
-        $obj['userIds'] = $userIDs;
+        $obj['userIDs'] = $userIDs;
 
         return $obj;
     }

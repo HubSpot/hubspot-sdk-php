@@ -42,30 +42,30 @@ final class SitePagesTest extends TestCase
         $result = $this->client->cms->pages->sitePages->create([
             'id' => 'id',
             'abStatus' => 'automated_loser_variant',
-            'abTestId' => 'abTestId',
+            'abTestID' => 'abTestId',
             'archivedAt' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
             'archivedInDashboard' => true,
             'attachedStylesheets' => [['foo' => []]],
             'authorName' => 'authorName',
             'campaign' => 'campaign',
-            'categoryId' => 0,
-            'contentGroupId' => 'contentGroupId',
+            'categoryID' => 0,
+            'contentGroupID' => 'contentGroupId',
             'contentTypeCategory' => '0',
             'created' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-            'createdById' => 'createdById',
+            'createdByID' => 'createdById',
             'currentlyPublished' => true,
             'currentState' => 'AUTOMATED',
             'domain' => 'domain',
-            'dynamicPageDataSourceId' => 'dynamicPageDataSourceId',
+            'dynamicPageDataSourceID' => 'dynamicPageDataSourceId',
             'dynamicPageDataSourceType' => 0,
-            'dynamicPageHubDbTableId' => 'dynamicPageHubDbTableId',
+            'dynamicPageHubDBTableID' => 'dynamicPageHubDbTableId',
             'enableDomainStylesheets' => true,
             'enableLayoutStylesheets' => true,
             'featuredImage' => 'featuredImage',
             'featuredImageAltText' => 'featuredImageAltText',
-            'folderId' => 'folderId',
-            'footerHtml' => 'footerHtml',
-            'headHtml' => 'headHtml',
+            'folderID' => 'folderId',
+            'footerHTML' => 'footerHtml',
+            'headHTML' => 'headHtml',
             'htmlTitle' => 'htmlTitle',
             'includeDefaultCustomCss' => true,
             'language' => 'af',
@@ -73,7 +73,7 @@ final class SitePagesTest extends TestCase
                 'foo' => [
                     'cells' => [],
                     'cssClass' => 'cssClass',
-                    'cssId' => 'cssId',
+                    'cssID' => 'cssId',
                     'cssStyle' => 'cssStyle',
                     'label' => 'label',
                     'name' => 'name',
@@ -96,7 +96,7 @@ final class SitePagesTest extends TestCase
                                 'backgroundImage' => [
                                     'backgroundPosition' => 'backgroundPosition',
                                     'backgroundSize' => 'backgroundSize',
-                                    'imageUrl' => 'imageUrl',
+                                    'imageURL' => 'imageUrl',
                                 ],
                                 'flexboxPositioning' => 'flexboxPositioning',
                                 'forceFullWidthSection' => true,
@@ -121,7 +121,7 @@ final class SitePagesTest extends TestCase
                         'backgroundImage' => [
                             'backgroundPosition' => 'backgroundPosition',
                             'backgroundSize' => 'backgroundSize',
-                            'imageUrl' => 'imageUrl',
+                            'imageURL' => 'imageUrl',
                         ],
                         'flexboxPositioning' => 'flexboxPositioning',
                         'forceFullWidthSection' => true,
@@ -133,14 +133,14 @@ final class SitePagesTest extends TestCase
                     'x' => 0,
                 ],
             ],
-            'linkRelCanonicalUrl' => 'linkRelCanonicalUrl',
-            'mabExperimentId' => 'mabExperimentId',
+            'linkRelCanonicalURL' => 'linkRelCanonicalUrl',
+            'mabExperimentID' => 'mabExperimentId',
             'metaDescription' => 'metaDescription',
             'name' => 'name',
             'pageExpiryDate' => 0,
             'pageExpiryEnabled' => true,
-            'pageExpiryRedirectId' => 0,
-            'pageExpiryRedirectUrl' => 'pageExpiryRedirectUrl',
+            'pageExpiryRedirectID' => 0,
+            'pageExpiryRedirectURL' => 'pageExpiryRedirectUrl',
             'pageRedirected' => true,
             'password' => 'password',
             'publicAccessRules' => [[]],
@@ -152,7 +152,7 @@ final class SitePagesTest extends TestCase
             'subcategory' => 'subcategory',
             'templatePath' => 'templatePath',
             'themeSettingsValues' => ['foo' => []],
-            'translatedFromId' => 'translatedFromId',
+            'translatedFromID' => 'translatedFromId',
             'translations' => [
                 'foo' => [
                     'id' => 0,
@@ -171,7 +171,7 @@ final class SitePagesTest extends TestCase
                 ],
             ],
             'updated' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-            'updatedById' => 'updatedById',
+            'updatedByID' => 'updatedById',
             'url' => 'url',
             'useFeaturedImage' => true,
             'widgetContainers' => ['foo' => []],
@@ -192,30 +192,30 @@ final class SitePagesTest extends TestCase
         $result = $this->client->cms->pages->sitePages->create([
             'id' => 'id',
             'abStatus' => 'automated_loser_variant',
-            'abTestId' => 'abTestId',
+            'abTestID' => 'abTestId',
             'archivedAt' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
             'archivedInDashboard' => true,
             'attachedStylesheets' => [['foo' => []]],
             'authorName' => 'authorName',
             'campaign' => 'campaign',
-            'categoryId' => 0,
-            'contentGroupId' => 'contentGroupId',
+            'categoryID' => 0,
+            'contentGroupID' => 'contentGroupId',
             'contentTypeCategory' => '0',
             'created' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-            'createdById' => 'createdById',
+            'createdByID' => 'createdById',
             'currentlyPublished' => true,
             'currentState' => 'AUTOMATED',
             'domain' => 'domain',
-            'dynamicPageDataSourceId' => 'dynamicPageDataSourceId',
+            'dynamicPageDataSourceID' => 'dynamicPageDataSourceId',
             'dynamicPageDataSourceType' => 0,
-            'dynamicPageHubDbTableId' => 'dynamicPageHubDbTableId',
+            'dynamicPageHubDBTableID' => 'dynamicPageHubDbTableId',
             'enableDomainStylesheets' => true,
             'enableLayoutStylesheets' => true,
             'featuredImage' => 'featuredImage',
             'featuredImageAltText' => 'featuredImageAltText',
-            'folderId' => 'folderId',
-            'footerHtml' => 'footerHtml',
-            'headHtml' => 'headHtml',
+            'folderID' => 'folderId',
+            'footerHTML' => 'footerHtml',
+            'headHTML' => 'headHtml',
             'htmlTitle' => 'htmlTitle',
             'includeDefaultCustomCss' => true,
             'language' => 'af',
@@ -223,7 +223,7 @@ final class SitePagesTest extends TestCase
                 'foo' => [
                     'cells' => [],
                     'cssClass' => 'cssClass',
-                    'cssId' => 'cssId',
+                    'cssID' => 'cssId',
                     'cssStyle' => 'cssStyle',
                     'label' => 'label',
                     'name' => 'name',
@@ -246,7 +246,7 @@ final class SitePagesTest extends TestCase
                                 'backgroundImage' => [
                                     'backgroundPosition' => 'backgroundPosition',
                                     'backgroundSize' => 'backgroundSize',
-                                    'imageUrl' => 'imageUrl',
+                                    'imageURL' => 'imageUrl',
                                 ],
                                 'flexboxPositioning' => 'flexboxPositioning',
                                 'forceFullWidthSection' => true,
@@ -274,7 +274,7 @@ final class SitePagesTest extends TestCase
                         'backgroundImage' => [
                             'backgroundPosition' => 'backgroundPosition',
                             'backgroundSize' => 'backgroundSize',
-                            'imageUrl' => 'imageUrl',
+                            'imageURL' => 'imageUrl',
                         ],
                         'flexboxPositioning' => 'flexboxPositioning',
                         'forceFullWidthSection' => true,
@@ -289,14 +289,14 @@ final class SitePagesTest extends TestCase
                     'x' => 0,
                 ],
             ],
-            'linkRelCanonicalUrl' => 'linkRelCanonicalUrl',
-            'mabExperimentId' => 'mabExperimentId',
+            'linkRelCanonicalURL' => 'linkRelCanonicalUrl',
+            'mabExperimentID' => 'mabExperimentId',
             'metaDescription' => 'metaDescription',
             'name' => 'name',
             'pageExpiryDate' => 0,
             'pageExpiryEnabled' => true,
-            'pageExpiryRedirectId' => 0,
-            'pageExpiryRedirectUrl' => 'pageExpiryRedirectUrl',
+            'pageExpiryRedirectID' => 0,
+            'pageExpiryRedirectURL' => 'pageExpiryRedirectUrl',
             'pageRedirected' => true,
             'password' => 'password',
             'publicAccessRules' => [[]],
@@ -308,7 +308,7 @@ final class SitePagesTest extends TestCase
             'subcategory' => 'subcategory',
             'templatePath' => 'templatePath',
             'themeSettingsValues' => ['foo' => []],
-            'translatedFromId' => 'translatedFromId',
+            'translatedFromID' => 'translatedFromId',
             'translations' => [
                 'foo' => [
                     'id' => 0,
@@ -324,11 +324,11 @@ final class SitePagesTest extends TestCase
                     'slug' => 'slug',
                     'state' => 'state',
                     'updated' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-                    'tagIds' => [0],
+                    'tagIDs' => [0],
                 ],
             ],
             'updated' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-            'updatedById' => 'updatedById',
+            'updatedByID' => 'updatedById',
             'url' => 'url',
             'useFeaturedImage' => true,
             'widgetContainers' => ['foo' => []],
@@ -351,30 +351,30 @@ final class SitePagesTest extends TestCase
             [
                 'id' => 'id',
                 'abStatus' => 'automated_loser_variant',
-                'abTestId' => 'abTestId',
+                'abTestID' => 'abTestId',
                 'archivedAt' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
                 'archivedInDashboard' => true,
                 'attachedStylesheets' => [['foo' => []]],
                 'authorName' => 'authorName',
                 'campaign' => 'campaign',
-                'categoryId' => 0,
-                'contentGroupId' => 'contentGroupId',
+                'categoryID' => 0,
+                'contentGroupID' => 'contentGroupId',
                 'contentTypeCategory' => '0',
                 'created' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-                'createdById' => 'createdById',
+                'createdByID' => 'createdById',
                 'currentlyPublished' => true,
                 'currentState' => 'AUTOMATED',
                 'domain' => 'domain',
-                'dynamicPageDataSourceId' => 'dynamicPageDataSourceId',
+                'dynamicPageDataSourceID' => 'dynamicPageDataSourceId',
                 'dynamicPageDataSourceType' => 0,
-                'dynamicPageHubDbTableId' => 'dynamicPageHubDbTableId',
+                'dynamicPageHubDBTableID' => 'dynamicPageHubDbTableId',
                 'enableDomainStylesheets' => true,
                 'enableLayoutStylesheets' => true,
                 'featuredImage' => 'featuredImage',
                 'featuredImageAltText' => 'featuredImageAltText',
-                'folderId' => 'folderId',
-                'footerHtml' => 'footerHtml',
-                'headHtml' => 'headHtml',
+                'folderID' => 'folderId',
+                'footerHTML' => 'footerHtml',
+                'headHTML' => 'headHtml',
                 'htmlTitle' => 'htmlTitle',
                 'includeDefaultCustomCss' => true,
                 'language' => 'af',
@@ -382,7 +382,7 @@ final class SitePagesTest extends TestCase
                     'foo' => [
                         'cells' => [],
                         'cssClass' => 'cssClass',
-                        'cssId' => 'cssId',
+                        'cssID' => 'cssId',
                         'cssStyle' => 'cssStyle',
                         'label' => 'label',
                         'name' => 'name',
@@ -405,7 +405,7 @@ final class SitePagesTest extends TestCase
                                     'backgroundImage' => [
                                         'backgroundPosition' => 'backgroundPosition',
                                         'backgroundSize' => 'backgroundSize',
-                                        'imageUrl' => 'imageUrl',
+                                        'imageURL' => 'imageUrl',
                                     ],
                                     'flexboxPositioning' => 'flexboxPositioning',
                                     'forceFullWidthSection' => true,
@@ -430,7 +430,7 @@ final class SitePagesTest extends TestCase
                             'backgroundImage' => [
                                 'backgroundPosition' => 'backgroundPosition',
                                 'backgroundSize' => 'backgroundSize',
-                                'imageUrl' => 'imageUrl',
+                                'imageURL' => 'imageUrl',
                             ],
                             'flexboxPositioning' => 'flexboxPositioning',
                             'forceFullWidthSection' => true,
@@ -442,14 +442,14 @@ final class SitePagesTest extends TestCase
                         'x' => 0,
                     ],
                 ],
-                'linkRelCanonicalUrl' => 'linkRelCanonicalUrl',
-                'mabExperimentId' => 'mabExperimentId',
+                'linkRelCanonicalURL' => 'linkRelCanonicalUrl',
+                'mabExperimentID' => 'mabExperimentId',
                 'metaDescription' => 'metaDescription',
                 'name' => 'name',
                 'pageExpiryDate' => 0,
                 'pageExpiryEnabled' => true,
-                'pageExpiryRedirectId' => 0,
-                'pageExpiryRedirectUrl' => 'pageExpiryRedirectUrl',
+                'pageExpiryRedirectID' => 0,
+                'pageExpiryRedirectURL' => 'pageExpiryRedirectUrl',
                 'pageRedirected' => true,
                 'password' => 'password',
                 'publicAccessRules' => [[]],
@@ -461,7 +461,7 @@ final class SitePagesTest extends TestCase
                 'subcategory' => 'subcategory',
                 'templatePath' => 'templatePath',
                 'themeSettingsValues' => ['foo' => []],
-                'translatedFromId' => 'translatedFromId',
+                'translatedFromID' => 'translatedFromId',
                 'translations' => [
                     'foo' => [
                         'id' => 0,
@@ -480,7 +480,7 @@ final class SitePagesTest extends TestCase
                     ],
                 ],
                 'updated' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-                'updatedById' => 'updatedById',
+                'updatedByID' => 'updatedById',
                 'url' => 'url',
                 'useFeaturedImage' => true,
                 'widgetContainers' => ['foo' => []],
@@ -504,30 +504,30 @@ final class SitePagesTest extends TestCase
             [
                 'id' => 'id',
                 'abStatus' => 'automated_loser_variant',
-                'abTestId' => 'abTestId',
+                'abTestID' => 'abTestId',
                 'archivedAt' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
                 'archivedInDashboard' => true,
                 'attachedStylesheets' => [['foo' => []]],
                 'authorName' => 'authorName',
                 'campaign' => 'campaign',
-                'categoryId' => 0,
-                'contentGroupId' => 'contentGroupId',
+                'categoryID' => 0,
+                'contentGroupID' => 'contentGroupId',
                 'contentTypeCategory' => '0',
                 'created' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-                'createdById' => 'createdById',
+                'createdByID' => 'createdById',
                 'currentlyPublished' => true,
                 'currentState' => 'AUTOMATED',
                 'domain' => 'domain',
-                'dynamicPageDataSourceId' => 'dynamicPageDataSourceId',
+                'dynamicPageDataSourceID' => 'dynamicPageDataSourceId',
                 'dynamicPageDataSourceType' => 0,
-                'dynamicPageHubDbTableId' => 'dynamicPageHubDbTableId',
+                'dynamicPageHubDBTableID' => 'dynamicPageHubDbTableId',
                 'enableDomainStylesheets' => true,
                 'enableLayoutStylesheets' => true,
                 'featuredImage' => 'featuredImage',
                 'featuredImageAltText' => 'featuredImageAltText',
-                'folderId' => 'folderId',
-                'footerHtml' => 'footerHtml',
-                'headHtml' => 'headHtml',
+                'folderID' => 'folderId',
+                'footerHTML' => 'footerHtml',
+                'headHTML' => 'headHtml',
                 'htmlTitle' => 'htmlTitle',
                 'includeDefaultCustomCss' => true,
                 'language' => 'af',
@@ -535,7 +535,7 @@ final class SitePagesTest extends TestCase
                     'foo' => [
                         'cells' => [],
                         'cssClass' => 'cssClass',
-                        'cssId' => 'cssId',
+                        'cssID' => 'cssId',
                         'cssStyle' => 'cssStyle',
                         'label' => 'label',
                         'name' => 'name',
@@ -558,7 +558,7 @@ final class SitePagesTest extends TestCase
                                     'backgroundImage' => [
                                         'backgroundPosition' => 'backgroundPosition',
                                         'backgroundSize' => 'backgroundSize',
-                                        'imageUrl' => 'imageUrl',
+                                        'imageURL' => 'imageUrl',
                                     ],
                                     'flexboxPositioning' => 'flexboxPositioning',
                                     'forceFullWidthSection' => true,
@@ -586,7 +586,7 @@ final class SitePagesTest extends TestCase
                             'backgroundImage' => [
                                 'backgroundPosition' => 'backgroundPosition',
                                 'backgroundSize' => 'backgroundSize',
-                                'imageUrl' => 'imageUrl',
+                                'imageURL' => 'imageUrl',
                             ],
                             'flexboxPositioning' => 'flexboxPositioning',
                             'forceFullWidthSection' => true,
@@ -601,14 +601,14 @@ final class SitePagesTest extends TestCase
                         'x' => 0,
                     ],
                 ],
-                'linkRelCanonicalUrl' => 'linkRelCanonicalUrl',
-                'mabExperimentId' => 'mabExperimentId',
+                'linkRelCanonicalURL' => 'linkRelCanonicalUrl',
+                'mabExperimentID' => 'mabExperimentId',
                 'metaDescription' => 'metaDescription',
                 'name' => 'name',
                 'pageExpiryDate' => 0,
                 'pageExpiryEnabled' => true,
-                'pageExpiryRedirectId' => 0,
-                'pageExpiryRedirectUrl' => 'pageExpiryRedirectUrl',
+                'pageExpiryRedirectID' => 0,
+                'pageExpiryRedirectURL' => 'pageExpiryRedirectUrl',
                 'pageRedirected' => true,
                 'password' => 'password',
                 'publicAccessRules' => [[]],
@@ -620,7 +620,7 @@ final class SitePagesTest extends TestCase
                 'subcategory' => 'subcategory',
                 'templatePath' => 'templatePath',
                 'themeSettingsValues' => ['foo' => []],
-                'translatedFromId' => 'translatedFromId',
+                'translatedFromID' => 'translatedFromId',
                 'translations' => [
                     'foo' => [
                         'id' => 0,
@@ -636,11 +636,11 @@ final class SitePagesTest extends TestCase
                         'slug' => 'slug',
                         'state' => 'state',
                         'updated' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-                        'tagIds' => [0],
+                        'tagIDs' => [0],
                     ],
                 ],
                 'updated' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-                'updatedById' => 'updatedById',
+                'updatedByID' => 'updatedById',
                 'url' => 'url',
                 'useFeaturedImage' => true,
                 'widgetContainers' => ['foo' => []],
@@ -687,7 +687,7 @@ final class SitePagesTest extends TestCase
         }
 
         $result = $this->client->cms->pages->sitePages->attachToLangGroup([
-            'id' => 'id', 'language' => 'language', 'primaryId' => 'primaryId',
+            'id' => 'id', 'language' => 'language', 'primaryID' => 'primaryId',
         ]);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -704,7 +704,7 @@ final class SitePagesTest extends TestCase
         $result = $this->client->cms->pages->sitePages->attachToLangGroup([
             'id' => 'id',
             'language' => 'language',
-            'primaryId' => 'primaryId',
+            'primaryID' => 'primaryId',
             'primaryLanguage' => 'primaryLanguage',
         ]);
 
@@ -748,7 +748,7 @@ final class SitePagesTest extends TestCase
         }
 
         $result = $this->client->cms->pages->sitePages->createAbTestVariation([
-            'contentId' => 'contentId', 'variationName' => 'variationName',
+            'contentID' => 'contentId', 'variationName' => 'variationName',
         ]);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -763,7 +763,7 @@ final class SitePagesTest extends TestCase
         }
 
         $result = $this->client->cms->pages->sitePages->createAbTestVariation([
-            'contentId' => 'contentId', 'variationName' => 'variationName',
+            'contentID' => 'contentId', 'variationName' => 'variationName',
         ]);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -782,30 +782,30 @@ final class SitePagesTest extends TestCase
                 [
                     'id' => 'id',
                     'abStatus' => 'automated_loser_variant',
-                    'abTestId' => 'abTestId',
+                    'abTestID' => 'abTestId',
                     'archivedAt' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
                     'archivedInDashboard' => true,
                     'attachedStylesheets' => [['foo' => []]],
                     'authorName' => 'authorName',
                     'campaign' => 'campaign',
-                    'categoryId' => 0,
-                    'contentGroupId' => 'contentGroupId',
+                    'categoryID' => 0,
+                    'contentGroupID' => 'contentGroupId',
                     'contentTypeCategory' => '0',
                     'created' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-                    'createdById' => 'createdById',
+                    'createdByID' => 'createdById',
                     'currentlyPublished' => true,
                     'currentState' => 'AUTOMATED',
                     'domain' => 'domain',
-                    'dynamicPageDataSourceId' => 'dynamicPageDataSourceId',
+                    'dynamicPageDataSourceID' => 'dynamicPageDataSourceId',
                     'dynamicPageDataSourceType' => 0,
-                    'dynamicPageHubDbTableId' => 'dynamicPageHubDbTableId',
+                    'dynamicPageHubDBTableID' => 'dynamicPageHubDbTableId',
                     'enableDomainStylesheets' => true,
                     'enableLayoutStylesheets' => true,
                     'featuredImage' => 'featuredImage',
                     'featuredImageAltText' => 'featuredImageAltText',
-                    'folderId' => 'folderId',
-                    'footerHtml' => 'footerHtml',
-                    'headHtml' => 'headHtml',
+                    'folderID' => 'folderId',
+                    'footerHTML' => 'footerHtml',
+                    'headHTML' => 'headHtml',
                     'htmlTitle' => 'htmlTitle',
                     'includeDefaultCustomCss' => true,
                     'language' => 'af',
@@ -813,7 +813,7 @@ final class SitePagesTest extends TestCase
                         'foo' => [
                             'cells' => [],
                             'cssClass' => 'cssClass',
-                            'cssId' => 'cssId',
+                            'cssID' => 'cssId',
                             'cssStyle' => 'cssStyle',
                             'label' => 'label',
                             'name' => 'name',
@@ -838,7 +838,7 @@ final class SitePagesTest extends TestCase
                                         'backgroundImage' => [
                                             'backgroundPosition' => 'backgroundPosition',
                                             'backgroundSize' => 'backgroundSize',
-                                            'imageUrl' => 'imageUrl',
+                                            'imageURL' => 'imageUrl',
                                         ],
                                         'flexboxPositioning' => 'flexboxPositioning',
                                         'forceFullWidthSection' => true,
@@ -863,7 +863,7 @@ final class SitePagesTest extends TestCase
                                 'backgroundImage' => [
                                     'backgroundPosition' => 'backgroundPosition',
                                     'backgroundSize' => 'backgroundSize',
-                                    'imageUrl' => 'imageUrl',
+                                    'imageURL' => 'imageUrl',
                                 ],
                                 'flexboxPositioning' => 'flexboxPositioning',
                                 'forceFullWidthSection' => true,
@@ -875,14 +875,14 @@ final class SitePagesTest extends TestCase
                             'x' => 0,
                         ],
                     ],
-                    'linkRelCanonicalUrl' => 'linkRelCanonicalUrl',
-                    'mabExperimentId' => 'mabExperimentId',
+                    'linkRelCanonicalURL' => 'linkRelCanonicalUrl',
+                    'mabExperimentID' => 'mabExperimentId',
                     'metaDescription' => 'metaDescription',
                     'name' => 'name',
                     'pageExpiryDate' => 0,
                     'pageExpiryEnabled' => true,
-                    'pageExpiryRedirectId' => 0,
-                    'pageExpiryRedirectUrl' => 'pageExpiryRedirectUrl',
+                    'pageExpiryRedirectID' => 0,
+                    'pageExpiryRedirectURL' => 'pageExpiryRedirectUrl',
                     'pageRedirected' => true,
                     'password' => 'password',
                     'publicAccessRules' => [[]],
@@ -894,7 +894,7 @@ final class SitePagesTest extends TestCase
                     'subcategory' => 'subcategory',
                     'templatePath' => 'templatePath',
                     'themeSettingsValues' => ['foo' => []],
-                    'translatedFromId' => 'translatedFromId',
+                    'translatedFromID' => 'translatedFromId',
                     'translations' => [
                         'foo' => [
                             'id' => 0,
@@ -915,7 +915,7 @@ final class SitePagesTest extends TestCase
                         ],
                     ],
                     'updated' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-                    'updatedById' => 'updatedById',
+                    'updatedByID' => 'updatedById',
                     'url' => 'url',
                     'useFeaturedImage' => true,
                     'widgetContainers' => ['foo' => []],
@@ -940,30 +940,30 @@ final class SitePagesTest extends TestCase
                 [
                     'id' => 'id',
                     'abStatus' => 'automated_loser_variant',
-                    'abTestId' => 'abTestId',
+                    'abTestID' => 'abTestId',
                     'archivedAt' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
                     'archivedInDashboard' => true,
                     'attachedStylesheets' => [['foo' => []]],
                     'authorName' => 'authorName',
                     'campaign' => 'campaign',
-                    'categoryId' => 0,
-                    'contentGroupId' => 'contentGroupId',
+                    'categoryID' => 0,
+                    'contentGroupID' => 'contentGroupId',
                     'contentTypeCategory' => '0',
                     'created' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-                    'createdById' => 'createdById',
+                    'createdByID' => 'createdById',
                     'currentlyPublished' => true,
                     'currentState' => 'AUTOMATED',
                     'domain' => 'domain',
-                    'dynamicPageDataSourceId' => 'dynamicPageDataSourceId',
+                    'dynamicPageDataSourceID' => 'dynamicPageDataSourceId',
                     'dynamicPageDataSourceType' => 0,
-                    'dynamicPageHubDbTableId' => 'dynamicPageHubDbTableId',
+                    'dynamicPageHubDBTableID' => 'dynamicPageHubDbTableId',
                     'enableDomainStylesheets' => true,
                     'enableLayoutStylesheets' => true,
                     'featuredImage' => 'featuredImage',
                     'featuredImageAltText' => 'featuredImageAltText',
-                    'folderId' => 'folderId',
-                    'footerHtml' => 'footerHtml',
-                    'headHtml' => 'headHtml',
+                    'folderID' => 'folderId',
+                    'footerHTML' => 'footerHtml',
+                    'headHTML' => 'headHtml',
                     'htmlTitle' => 'htmlTitle',
                     'includeDefaultCustomCss' => true,
                     'language' => 'af',
@@ -971,7 +971,7 @@ final class SitePagesTest extends TestCase
                         'foo' => [
                             'cells' => [],
                             'cssClass' => 'cssClass',
-                            'cssId' => 'cssId',
+                            'cssID' => 'cssId',
                             'cssStyle' => 'cssStyle',
                             'label' => 'label',
                             'name' => 'name',
@@ -996,7 +996,7 @@ final class SitePagesTest extends TestCase
                                         'backgroundImage' => [
                                             'backgroundPosition' => 'backgroundPosition',
                                             'backgroundSize' => 'backgroundSize',
-                                            'imageUrl' => 'imageUrl',
+                                            'imageURL' => 'imageUrl',
                                         ],
                                         'flexboxPositioning' => 'flexboxPositioning',
                                         'forceFullWidthSection' => true,
@@ -1026,7 +1026,7 @@ final class SitePagesTest extends TestCase
                                 'backgroundImage' => [
                                     'backgroundPosition' => 'backgroundPosition',
                                     'backgroundSize' => 'backgroundSize',
-                                    'imageUrl' => 'imageUrl',
+                                    'imageURL' => 'imageUrl',
                                 ],
                                 'flexboxPositioning' => 'flexboxPositioning',
                                 'forceFullWidthSection' => true,
@@ -1041,14 +1041,14 @@ final class SitePagesTest extends TestCase
                             'x' => 0,
                         ],
                     ],
-                    'linkRelCanonicalUrl' => 'linkRelCanonicalUrl',
-                    'mabExperimentId' => 'mabExperimentId',
+                    'linkRelCanonicalURL' => 'linkRelCanonicalUrl',
+                    'mabExperimentID' => 'mabExperimentId',
                     'metaDescription' => 'metaDescription',
                     'name' => 'name',
                     'pageExpiryDate' => 0,
                     'pageExpiryEnabled' => true,
-                    'pageExpiryRedirectId' => 0,
-                    'pageExpiryRedirectUrl' => 'pageExpiryRedirectUrl',
+                    'pageExpiryRedirectID' => 0,
+                    'pageExpiryRedirectURL' => 'pageExpiryRedirectUrl',
                     'pageRedirected' => true,
                     'password' => 'password',
                     'publicAccessRules' => [[]],
@@ -1060,7 +1060,7 @@ final class SitePagesTest extends TestCase
                     'subcategory' => 'subcategory',
                     'templatePath' => 'templatePath',
                     'themeSettingsValues' => ['foo' => []],
-                    'translatedFromId' => 'translatedFromId',
+                    'translatedFromID' => 'translatedFromId',
                     'translations' => [
                         'foo' => [
                             'id' => 0,
@@ -1078,11 +1078,11 @@ final class SitePagesTest extends TestCase
                             'slug' => 'slug',
                             'state' => 'state',
                             'updated' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-                            'tagIds' => [0],
+                            'tagIDs' => [0],
                         ],
                     ],
                     'updated' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-                    'updatedById' => 'updatedById',
+                    'updatedByID' => 'updatedById',
                     'url' => 'url',
                     'useFeaturedImage' => true,
                     'widgetContainers' => ['foo' => []],
@@ -1195,7 +1195,7 @@ final class SitePagesTest extends TestCase
         }
 
         $result = $this->client->cms->pages->sitePages->endAbTest([
-            'abTestId' => 'abTestId', 'winnerId' => 'winnerId',
+            'abTestID' => 'abTestId', 'winnerID' => 'winnerId',
         ]);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -1210,7 +1210,7 @@ final class SitePagesTest extends TestCase
         }
 
         $result = $this->client->cms->pages->sitePages->endAbTest([
-            'abTestId' => 'abTestId', 'winnerId' => 'winnerId',
+            'abTestID' => 'abTestId', 'winnerID' => 'winnerId',
         ]);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -1282,7 +1282,7 @@ final class SitePagesTest extends TestCase
 
         $result = $this->client->cms->pages->sitePages->getRevision(
             'revisionId',
-            ['objectId' => 'objectId']
+            ['objectID' => 'objectId']
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -1298,7 +1298,7 @@ final class SitePagesTest extends TestCase
 
         $result = $this->client->cms->pages->sitePages->getRevision(
             'revisionId',
-            ['objectId' => 'objectId']
+            ['objectID' => 'objectId']
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -1342,7 +1342,7 @@ final class SitePagesTest extends TestCase
         }
 
         $result = $this->client->cms->pages->sitePages->rerunAbTest([
-            'abTestId' => 'abTestId', 'variationId' => 'variationId',
+            'abTestID' => 'abTestId', 'variationID' => 'variationId',
         ]);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -1357,7 +1357,7 @@ final class SitePagesTest extends TestCase
         }
 
         $result = $this->client->cms->pages->sitePages->rerunAbTest([
-            'abTestId' => 'abTestId', 'variationId' => 'variationId',
+            'abTestID' => 'abTestId', 'variationID' => 'variationId',
         ]);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -1386,7 +1386,7 @@ final class SitePagesTest extends TestCase
 
         $result = $this->client->cms->pages->sitePages->restoreRevision(
             'revisionId',
-            ['objectId' => 'objectId']
+            ['objectID' => 'objectId']
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -1402,7 +1402,7 @@ final class SitePagesTest extends TestCase
 
         $result = $this->client->cms->pages->sitePages->restoreRevision(
             'revisionId',
-            ['objectId' => 'objectId']
+            ['objectID' => 'objectId']
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -1418,7 +1418,7 @@ final class SitePagesTest extends TestCase
 
         $result = $this->client->cms->pages->sitePages->restoreRevisionToDraft(
             0,
-            ['objectId' => 'objectId']
+            ['objectID' => 'objectId']
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -1434,7 +1434,7 @@ final class SitePagesTest extends TestCase
 
         $result = $this->client->cms->pages->sitePages->restoreRevisionToDraft(
             0,
-            ['objectId' => 'objectId']
+            ['objectID' => 'objectId']
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -1545,30 +1545,30 @@ final class SitePagesTest extends TestCase
             [
                 'id' => 'id',
                 'abStatus' => 'automated_loser_variant',
-                'abTestId' => 'abTestId',
+                'abTestID' => 'abTestId',
                 'archivedAt' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
                 'archivedInDashboard' => true,
                 'attachedStylesheets' => [['foo' => []]],
                 'authorName' => 'authorName',
                 'campaign' => 'campaign',
-                'categoryId' => 0,
-                'contentGroupId' => 'contentGroupId',
+                'categoryID' => 0,
+                'contentGroupID' => 'contentGroupId',
                 'contentTypeCategory' => '0',
                 'created' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-                'createdById' => 'createdById',
+                'createdByID' => 'createdById',
                 'currentlyPublished' => true,
                 'currentState' => 'AUTOMATED',
                 'domain' => 'domain',
-                'dynamicPageDataSourceId' => 'dynamicPageDataSourceId',
+                'dynamicPageDataSourceID' => 'dynamicPageDataSourceId',
                 'dynamicPageDataSourceType' => 0,
-                'dynamicPageHubDbTableId' => 'dynamicPageHubDbTableId',
+                'dynamicPageHubDBTableID' => 'dynamicPageHubDbTableId',
                 'enableDomainStylesheets' => true,
                 'enableLayoutStylesheets' => true,
                 'featuredImage' => 'featuredImage',
                 'featuredImageAltText' => 'featuredImageAltText',
-                'folderId' => 'folderId',
-                'footerHtml' => 'footerHtml',
-                'headHtml' => 'headHtml',
+                'folderID' => 'folderId',
+                'footerHTML' => 'footerHtml',
+                'headHTML' => 'headHtml',
                 'htmlTitle' => 'htmlTitle',
                 'includeDefaultCustomCss' => true,
                 'language' => 'af',
@@ -1576,7 +1576,7 @@ final class SitePagesTest extends TestCase
                     'foo' => [
                         'cells' => [],
                         'cssClass' => 'cssClass',
-                        'cssId' => 'cssId',
+                        'cssID' => 'cssId',
                         'cssStyle' => 'cssStyle',
                         'label' => 'label',
                         'name' => 'name',
@@ -1599,7 +1599,7 @@ final class SitePagesTest extends TestCase
                                     'backgroundImage' => [
                                         'backgroundPosition' => 'backgroundPosition',
                                         'backgroundSize' => 'backgroundSize',
-                                        'imageUrl' => 'imageUrl',
+                                        'imageURL' => 'imageUrl',
                                     ],
                                     'flexboxPositioning' => 'flexboxPositioning',
                                     'forceFullWidthSection' => true,
@@ -1624,7 +1624,7 @@ final class SitePagesTest extends TestCase
                             'backgroundImage' => [
                                 'backgroundPosition' => 'backgroundPosition',
                                 'backgroundSize' => 'backgroundSize',
-                                'imageUrl' => 'imageUrl',
+                                'imageURL' => 'imageUrl',
                             ],
                             'flexboxPositioning' => 'flexboxPositioning',
                             'forceFullWidthSection' => true,
@@ -1636,14 +1636,14 @@ final class SitePagesTest extends TestCase
                         'x' => 0,
                     ],
                 ],
-                'linkRelCanonicalUrl' => 'linkRelCanonicalUrl',
-                'mabExperimentId' => 'mabExperimentId',
+                'linkRelCanonicalURL' => 'linkRelCanonicalUrl',
+                'mabExperimentID' => 'mabExperimentId',
                 'metaDescription' => 'metaDescription',
                 'name' => 'name',
                 'pageExpiryDate' => 0,
                 'pageExpiryEnabled' => true,
-                'pageExpiryRedirectId' => 0,
-                'pageExpiryRedirectUrl' => 'pageExpiryRedirectUrl',
+                'pageExpiryRedirectID' => 0,
+                'pageExpiryRedirectURL' => 'pageExpiryRedirectUrl',
                 'pageRedirected' => true,
                 'password' => 'password',
                 'publicAccessRules' => [[]],
@@ -1655,7 +1655,7 @@ final class SitePagesTest extends TestCase
                 'subcategory' => 'subcategory',
                 'templatePath' => 'templatePath',
                 'themeSettingsValues' => ['foo' => []],
-                'translatedFromId' => 'translatedFromId',
+                'translatedFromID' => 'translatedFromId',
                 'translations' => [
                     'foo' => [
                         'id' => 0,
@@ -1674,7 +1674,7 @@ final class SitePagesTest extends TestCase
                     ],
                 ],
                 'updated' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-                'updatedById' => 'updatedById',
+                'updatedByID' => 'updatedById',
                 'url' => 'url',
                 'useFeaturedImage' => true,
                 'widgetContainers' => ['foo' => []],
@@ -1698,30 +1698,30 @@ final class SitePagesTest extends TestCase
             [
                 'id' => 'id',
                 'abStatus' => 'automated_loser_variant',
-                'abTestId' => 'abTestId',
+                'abTestID' => 'abTestId',
                 'archivedAt' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
                 'archivedInDashboard' => true,
                 'attachedStylesheets' => [['foo' => []]],
                 'authorName' => 'authorName',
                 'campaign' => 'campaign',
-                'categoryId' => 0,
-                'contentGroupId' => 'contentGroupId',
+                'categoryID' => 0,
+                'contentGroupID' => 'contentGroupId',
                 'contentTypeCategory' => '0',
                 'created' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-                'createdById' => 'createdById',
+                'createdByID' => 'createdById',
                 'currentlyPublished' => true,
                 'currentState' => 'AUTOMATED',
                 'domain' => 'domain',
-                'dynamicPageDataSourceId' => 'dynamicPageDataSourceId',
+                'dynamicPageDataSourceID' => 'dynamicPageDataSourceId',
                 'dynamicPageDataSourceType' => 0,
-                'dynamicPageHubDbTableId' => 'dynamicPageHubDbTableId',
+                'dynamicPageHubDBTableID' => 'dynamicPageHubDbTableId',
                 'enableDomainStylesheets' => true,
                 'enableLayoutStylesheets' => true,
                 'featuredImage' => 'featuredImage',
                 'featuredImageAltText' => 'featuredImageAltText',
-                'folderId' => 'folderId',
-                'footerHtml' => 'footerHtml',
-                'headHtml' => 'headHtml',
+                'folderID' => 'folderId',
+                'footerHTML' => 'footerHtml',
+                'headHTML' => 'headHtml',
                 'htmlTitle' => 'htmlTitle',
                 'includeDefaultCustomCss' => true,
                 'language' => 'af',
@@ -1729,7 +1729,7 @@ final class SitePagesTest extends TestCase
                     'foo' => [
                         'cells' => [],
                         'cssClass' => 'cssClass',
-                        'cssId' => 'cssId',
+                        'cssID' => 'cssId',
                         'cssStyle' => 'cssStyle',
                         'label' => 'label',
                         'name' => 'name',
@@ -1752,7 +1752,7 @@ final class SitePagesTest extends TestCase
                                     'backgroundImage' => [
                                         'backgroundPosition' => 'backgroundPosition',
                                         'backgroundSize' => 'backgroundSize',
-                                        'imageUrl' => 'imageUrl',
+                                        'imageURL' => 'imageUrl',
                                     ],
                                     'flexboxPositioning' => 'flexboxPositioning',
                                     'forceFullWidthSection' => true,
@@ -1780,7 +1780,7 @@ final class SitePagesTest extends TestCase
                             'backgroundImage' => [
                                 'backgroundPosition' => 'backgroundPosition',
                                 'backgroundSize' => 'backgroundSize',
-                                'imageUrl' => 'imageUrl',
+                                'imageURL' => 'imageUrl',
                             ],
                             'flexboxPositioning' => 'flexboxPositioning',
                             'forceFullWidthSection' => true,
@@ -1795,14 +1795,14 @@ final class SitePagesTest extends TestCase
                         'x' => 0,
                     ],
                 ],
-                'linkRelCanonicalUrl' => 'linkRelCanonicalUrl',
-                'mabExperimentId' => 'mabExperimentId',
+                'linkRelCanonicalURL' => 'linkRelCanonicalUrl',
+                'mabExperimentID' => 'mabExperimentId',
                 'metaDescription' => 'metaDescription',
                 'name' => 'name',
                 'pageExpiryDate' => 0,
                 'pageExpiryEnabled' => true,
-                'pageExpiryRedirectId' => 0,
-                'pageExpiryRedirectUrl' => 'pageExpiryRedirectUrl',
+                'pageExpiryRedirectID' => 0,
+                'pageExpiryRedirectURL' => 'pageExpiryRedirectUrl',
                 'pageRedirected' => true,
                 'password' => 'password',
                 'publicAccessRules' => [[]],
@@ -1814,7 +1814,7 @@ final class SitePagesTest extends TestCase
                 'subcategory' => 'subcategory',
                 'templatePath' => 'templatePath',
                 'themeSettingsValues' => ['foo' => []],
-                'translatedFromId' => 'translatedFromId',
+                'translatedFromID' => 'translatedFromId',
                 'translations' => [
                     'foo' => [
                         'id' => 0,
@@ -1830,11 +1830,11 @@ final class SitePagesTest extends TestCase
                         'slug' => 'slug',
                         'state' => 'state',
                         'updated' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-                        'tagIds' => [0],
+                        'tagIDs' => [0],
                     ],
                 ],
                 'updated' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-                'updatedById' => 'updatedById',
+                'updatedByID' => 'updatedById',
                 'url' => 'url',
                 'useFeaturedImage' => true,
                 'widgetContainers' => ['foo' => []],
@@ -1854,7 +1854,7 @@ final class SitePagesTest extends TestCase
         }
 
         $result = $this->client->cms->pages->sitePages->updateLanguages([
-            'languages' => ['foo' => 'string'], 'primaryId' => 'primaryId',
+            'languages' => ['foo' => 'string'], 'primaryID' => 'primaryId',
         ]);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -1869,7 +1869,7 @@ final class SitePagesTest extends TestCase
         }
 
         $result = $this->client->cms->pages->sitePages->updateLanguages([
-            'languages' => ['foo' => 'string'], 'primaryId' => 'primaryId',
+            'languages' => ['foo' => 'string'], 'primaryID' => 'primaryId',
         ]);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

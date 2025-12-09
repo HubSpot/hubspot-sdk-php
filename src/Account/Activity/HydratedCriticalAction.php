@@ -16,13 +16,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   id: string,
  *   createdAt: \DateTimeInterface,
  *   type: string,
- *   userId: int,
+ *   userID: int,
  *   actingUser?: string|null,
  *   countryCode?: string|null,
- *   infoUrl?: string|null,
+ *   infoURL?: string|null,
  *   ipAddress?: string|null,
  *   location?: string|null,
- *   objectId?: string|null,
+ *   objectID?: string|null,
  *   regionCode?: string|null,
  * }
  */
@@ -52,8 +52,8 @@ final class HydratedCriticalAction implements BaseModel
     /**
      * The user's unique ID.
      */
-    #[Required]
-    public int $userId;
+    #[Required('userId')]
+    public int $userID;
 
     /**
      * Email address of the user associated with the activity.
@@ -70,8 +70,8 @@ final class HydratedCriticalAction implements BaseModel
     /**
      * A link to the URL where the action was taken in the account.
      */
-    #[Optional]
-    public ?string $infoUrl;
+    #[Optional('infoUrl')]
+    public ?string $infoURL;
 
     /**
      * IP address where the activity originated.
@@ -85,8 +85,8 @@ final class HydratedCriticalAction implements BaseModel
     /**
      * The ID of the affected object.
      */
-    #[Optional]
-    public ?string $objectId;
+    #[Optional('objectId')]
+    public ?string $objectID;
 
     /**
      * The approximate region code.
@@ -99,7 +99,7 @@ final class HydratedCriticalAction implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * HydratedCriticalAction::with(id: ..., createdAt: ..., type: ..., userId: ...)
+     * HydratedCriticalAction::with(id: ..., createdAt: ..., type: ..., userID: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -126,13 +126,13 @@ final class HydratedCriticalAction implements BaseModel
         string $id,
         \DateTimeInterface $createdAt,
         string $type,
-        int $userId,
+        int $userID,
         ?string $actingUser = null,
         ?string $countryCode = null,
-        ?string $infoUrl = null,
+        ?string $infoURL = null,
         ?string $ipAddress = null,
         ?string $location = null,
-        ?string $objectId = null,
+        ?string $objectID = null,
         ?string $regionCode = null,
     ): self {
         $obj = new self;
@@ -140,14 +140,14 @@ final class HydratedCriticalAction implements BaseModel
         $obj['id'] = $id;
         $obj['createdAt'] = $createdAt;
         $obj['type'] = $type;
-        $obj['userId'] = $userId;
+        $obj['userID'] = $userID;
 
         null !== $actingUser && $obj['actingUser'] = $actingUser;
         null !== $countryCode && $obj['countryCode'] = $countryCode;
-        null !== $infoUrl && $obj['infoUrl'] = $infoUrl;
+        null !== $infoURL && $obj['infoURL'] = $infoURL;
         null !== $ipAddress && $obj['ipAddress'] = $ipAddress;
         null !== $location && $obj['location'] = $location;
-        null !== $objectId && $obj['objectId'] = $objectId;
+        null !== $objectID && $obj['objectID'] = $objectID;
         null !== $regionCode && $obj['regionCode'] = $regionCode;
 
         return $obj;
@@ -192,7 +192,7 @@ final class HydratedCriticalAction implements BaseModel
     public function withUserID(int $userID): self
     {
         $obj = clone $this;
-        $obj['userId'] = $userID;
+        $obj['userID'] = $userID;
 
         return $obj;
     }
@@ -225,7 +225,7 @@ final class HydratedCriticalAction implements BaseModel
     public function withInfoURL(string $infoURL): self
     {
         $obj = clone $this;
-        $obj['infoUrl'] = $infoURL;
+        $obj['infoURL'] = $infoURL;
 
         return $obj;
     }
@@ -255,7 +255,7 @@ final class HydratedCriticalAction implements BaseModel
     public function withObjectID(string $objectID): self
     {
         $obj = clone $this;
-        $obj['objectId'] = $objectID;
+        $obj['objectID'] = $objectID;
 
         return $obj;
     }

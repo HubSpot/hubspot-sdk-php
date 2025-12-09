@@ -30,7 +30,7 @@ final class ParticipationsService implements ParticipationsContract
      * Read Marketing event's participations counters by externalAccountId and externalEventId pair.
      *
      * @param array{
-     *   externalAccountId: string
+     *   externalAccountID: string
      * }|ParticipationGetByExternalAccountAndEventIDParams $params
      *
      * @throws APIException
@@ -44,8 +44,8 @@ final class ParticipationsService implements ParticipationsContract
             $params,
             $requestOptions,
         );
-        $externalAccountID = $parsed['externalAccountId'];
-        unset($parsed['externalAccountId']);
+        $externalAccountID = $parsed['externalAccountID'];
+        unset($parsed['externalAccountID']);
 
         /** @var BaseResponse<AttendanceCounters> */
         $response = $this->client->request(
@@ -131,7 +131,7 @@ final class ParticipationsService implements ParticipationsContract
      * Read Marketing event's participations breakdown with optional filters by externalAccountId and externalEventId pair.
      *
      * @param array{
-     *   externalAccountId: string,
+     *   externalAccountID: string,
      *   after?: string,
      *   contactIdentifier?: string,
      *   limit?: int,
@@ -151,8 +151,8 @@ final class ParticipationsService implements ParticipationsContract
             $params,
             $requestOptions,
         );
-        $externalAccountID = $parsed['externalAccountId'];
-        unset($parsed['externalAccountId']);
+        $externalAccountID = $parsed['externalAccountID'];
+        unset($parsed['externalAccountID']);
 
         /** @var BaseResponse<Page<ParticipationBreakdown>> */
         $response = $this->client->request(

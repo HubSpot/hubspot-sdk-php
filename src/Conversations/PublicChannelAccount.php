@@ -15,9 +15,9 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   active: bool,
  *   archived: bool,
  *   authorized: bool,
- *   channelId: string,
+ *   channelID: string,
  *   createdAt: \DateTimeInterface,
- *   inboxId: string,
+ *   inboxID: string,
  *   name: string,
  *   archivedAt?: \DateTimeInterface|null,
  *   deliveryIdentifier?: PublicDeliveryIdentifier|null,
@@ -40,14 +40,14 @@ final class PublicChannelAccount implements BaseModel
     #[Required]
     public bool $authorized;
 
-    #[Required]
-    public string $channelId;
+    #[Required('channelId')]
+    public string $channelID;
 
     #[Required]
     public \DateTimeInterface $createdAt;
 
-    #[Required]
-    public string $inboxId;
+    #[Required('inboxId')]
+    public string $inboxID;
 
     #[Required]
     public string $name;
@@ -68,9 +68,9 @@ final class PublicChannelAccount implements BaseModel
      *   active: ...,
      *   archived: ...,
      *   authorized: ...,
-     *   channelId: ...,
+     *   channelID: ...,
      *   createdAt: ...,
-     *   inboxId: ...,
+     *   inboxID: ...,
      *   name: ...,
      * )
      * ```
@@ -108,9 +108,9 @@ final class PublicChannelAccount implements BaseModel
         bool $active,
         bool $archived,
         bool $authorized,
-        string $channelId,
+        string $channelID,
         \DateTimeInterface $createdAt,
-        string $inboxId,
+        string $inboxID,
         string $name,
         ?\DateTimeInterface $archivedAt = null,
         PublicDeliveryIdentifier|array|null $deliveryIdentifier = null,
@@ -121,9 +121,9 @@ final class PublicChannelAccount implements BaseModel
         $obj['active'] = $active;
         $obj['archived'] = $archived;
         $obj['authorized'] = $authorized;
-        $obj['channelId'] = $channelId;
+        $obj['channelID'] = $channelID;
         $obj['createdAt'] = $createdAt;
-        $obj['inboxId'] = $inboxId;
+        $obj['inboxID'] = $inboxID;
         $obj['name'] = $name;
 
         null !== $archivedAt && $obj['archivedAt'] = $archivedAt;
@@ -167,7 +167,7 @@ final class PublicChannelAccount implements BaseModel
     public function withChannelID(string $channelID): self
     {
         $obj = clone $this;
-        $obj['channelId'] = $channelID;
+        $obj['channelID'] = $channelID;
 
         return $obj;
     }
@@ -183,7 +183,7 @@ final class PublicChannelAccount implements BaseModel
     public function withInboxID(string $inboxID): self
     {
         $obj = clone $this;
-        $obj['inboxId'] = $inboxID;
+        $obj['inboxID'] = $inboxID;
 
         return $obj;
     }

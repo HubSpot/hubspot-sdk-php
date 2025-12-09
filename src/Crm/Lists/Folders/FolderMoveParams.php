@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Services\Crm\Lists\FoldersService::move()
  *
- * @phpstan-type FolderMoveParamsShape = array{folderId: string}
+ * @phpstan-type FolderMoveParamsShape = array{folderID: string}
  */
 final class FolderMoveParams implements BaseModel
 {
@@ -23,14 +23,14 @@ final class FolderMoveParams implements BaseModel
     use SdkParams;
 
     #[Required]
-    public string $folderId;
+    public string $folderID;
 
     /**
      * `new FolderMoveParams()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * FolderMoveParams::with(folderId: ...)
+     * FolderMoveParams::with(folderID: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -49,11 +49,11 @@ final class FolderMoveParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(string $folderId): self
+    public static function with(string $folderID): self
     {
         $obj = new self;
 
-        $obj['folderId'] = $folderId;
+        $obj['folderID'] = $folderID;
 
         return $obj;
     }
@@ -61,7 +61,7 @@ final class FolderMoveParams implements BaseModel
     public function withFolderID(string $folderID): self
     {
         $obj = clone $this;
-        $obj['folderId'] = $folderID;
+        $obj['folderID'] = $folderID;
 
         return $obj;
     }

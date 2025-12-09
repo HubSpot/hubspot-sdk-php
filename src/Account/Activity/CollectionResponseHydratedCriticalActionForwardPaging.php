@@ -56,13 +56,13 @@ final class CollectionResponseHydratedCriticalActionForwardPaging implements Bas
      *   id: string,
      *   createdAt: \DateTimeInterface,
      *   type: string,
-     *   userId: int,
+     *   userID: int,
      *   actingUser?: string|null,
      *   countryCode?: string|null,
-     *   infoUrl?: string|null,
+     *   infoURL?: string|null,
      *   ipAddress?: string|null,
      *   location?: string|null,
-     *   objectId?: string|null,
+     *   objectID?: string|null,
      *   regionCode?: string|null,
      * }> $results
      * @param ForwardPaging|array{next?: NextPage|null} $paging
@@ -85,13 +85,13 @@ final class CollectionResponseHydratedCriticalActionForwardPaging implements Bas
      *   id: string,
      *   createdAt: \DateTimeInterface,
      *   type: string,
-     *   userId: int,
+     *   userID: int,
      *   actingUser?: string|null,
      *   countryCode?: string|null,
-     *   infoUrl?: string|null,
+     *   infoURL?: string|null,
      *   ipAddress?: string|null,
      *   location?: string|null,
-     *   objectId?: string|null,
+     *   objectID?: string|null,
      *   regionCode?: string|null,
      * }> $results
      */

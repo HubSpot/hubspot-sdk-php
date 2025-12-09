@@ -40,7 +40,7 @@ final class RowsTest extends TestCase
 
         $result = $this->client->cms->hubdb->rows->create(
             'tableIdOrName',
-            ['childTableId' => 0, 'displayIndex' => 0, 'values' => ['foo' => []]],
+            ['childTableID' => 0, 'displayIndex' => 0, 'values' => ['foo' => []]],
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -57,7 +57,7 @@ final class RowsTest extends TestCase
         $result = $this->client->cms->hubdb->rows->create(
             'tableIdOrName',
             [
-                'childTableId' => 0,
+                'childTableID' => 0,
                 'displayIndex' => 0,
                 'values' => ['foo' => []],
                 'name' => 'name',
@@ -91,7 +91,7 @@ final class RowsTest extends TestCase
 
         $result = $this->client->cms->hubdb->rows->cloneDraft(
             '321669910225',
-            ['tableIdOrName' => 'tableIdOrName']
+            ['tableIDOrName' => 'tableIdOrName']
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -107,7 +107,7 @@ final class RowsTest extends TestCase
 
         $result = $this->client->cms->hubdb->rows->cloneDraft(
             '321669910225',
-            ['tableIdOrName' => 'tableIdOrName', 'name' => 'name']
+            ['tableIDOrName' => 'tableIdOrName', 'name' => 'name']
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -123,7 +123,7 @@ final class RowsTest extends TestCase
 
         $result = $this->client->cms->hubdb->rows->deleteDraft(
             '321669910225',
-            ['tableIdOrName' => 'tableIdOrName']
+            ['tableIDOrName' => 'tableIdOrName']
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -139,7 +139,7 @@ final class RowsTest extends TestCase
 
         $result = $this->client->cms->hubdb->rows->deleteDraft(
             '321669910225',
-            ['tableIdOrName' => 'tableIdOrName']
+            ['tableIDOrName' => 'tableIdOrName']
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -155,7 +155,7 @@ final class RowsTest extends TestCase
 
         $result = $this->client->cms->hubdb->rows->get(
             '321669910225',
-            ['tableIdOrName' => 'tableIdOrName']
+            ['tableIDOrName' => 'tableIdOrName']
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -171,7 +171,7 @@ final class RowsTest extends TestCase
 
         $result = $this->client->cms->hubdb->rows->get(
             '321669910225',
-            ['tableIdOrName' => 'tableIdOrName', 'archived' => true]
+            ['tableIDOrName' => 'tableIdOrName', 'archived' => true]
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -187,7 +187,7 @@ final class RowsTest extends TestCase
 
         $result = $this->client->cms->hubdb->rows->getDraft(
             '321669910225',
-            ['tableIdOrName' => 'tableIdOrName']
+            ['tableIDOrName' => 'tableIdOrName']
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -203,7 +203,7 @@ final class RowsTest extends TestCase
 
         $result = $this->client->cms->hubdb->rows->getDraft(
             '321669910225',
-            ['tableIdOrName' => 'tableIdOrName', 'archived' => true]
+            ['tableIDOrName' => 'tableIdOrName', 'archived' => true]
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -233,8 +233,8 @@ final class RowsTest extends TestCase
         $result = $this->client->cms->hubdb->rows->replaceDraft(
             '321669910225',
             [
-                'tableIdOrName' => 'tableIdOrName',
-                'childTableId' => 0,
+                'tableIDOrName' => 'tableIdOrName',
+                'childTableID' => 0,
                 'displayIndex' => 0,
                 'values' => ['foo' => []],
             ],
@@ -254,8 +254,8 @@ final class RowsTest extends TestCase
         $result = $this->client->cms->hubdb->rows->replaceDraft(
             '321669910225',
             [
-                'tableIdOrName' => 'tableIdOrName',
-                'childTableId' => 0,
+                'tableIDOrName' => 'tableIdOrName',
+                'childTableID' => 0,
                 'displayIndex' => 0,
                 'values' => ['foo' => []],
                 'name' => 'name',
@@ -277,8 +277,8 @@ final class RowsTest extends TestCase
         $result = $this->client->cms->hubdb->rows->updateDraft(
             '321669910225',
             [
-                'tableIdOrName' => 'tableIdOrName',
-                'childTableId' => 0,
+                'tableIDOrName' => 'tableIdOrName',
+                'childTableID' => 0,
                 'displayIndex' => 0,
                 'values' => ['foo' => []],
             ],
@@ -298,8 +298,8 @@ final class RowsTest extends TestCase
         $result = $this->client->cms->hubdb->rows->updateDraft(
             '321669910225',
             [
-                'tableIdOrName' => 'tableIdOrName',
-                'childTableId' => 0,
+                'tableIDOrName' => 'tableIdOrName',
+                'childTableID' => 0,
                 'displayIndex' => 0,
                 'values' => ['foo' => []],
                 'name' => 'name',

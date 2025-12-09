@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Conversations\MessagesService::getOriginalContent()
  *
  * @phpstan-type MessageGetOriginalContentParamsShape = array{
- *   threadId: int, property?: string
+ *   threadID: int, property?: string
  * }
  */
 final class MessageGetOriginalContentParams implements BaseModel
@@ -24,7 +24,7 @@ final class MessageGetOriginalContentParams implements BaseModel
     use SdkParams;
 
     #[Required]
-    public int $threadId;
+    public int $threadID;
 
     #[Optional]
     public ?string $property;
@@ -34,7 +34,7 @@ final class MessageGetOriginalContentParams implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * MessageGetOriginalContentParams::with(threadId: ...)
+     * MessageGetOriginalContentParams::with(threadID: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -53,11 +53,11 @@ final class MessageGetOriginalContentParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(int $threadId, ?string $property = null): self
+    public static function with(int $threadID, ?string $property = null): self
     {
         $obj = new self;
 
-        $obj['threadId'] = $threadId;
+        $obj['threadID'] = $threadID;
 
         null !== $property && $obj['property'] = $property;
 
@@ -67,7 +67,7 @@ final class MessageGetOriginalContentParams implements BaseModel
     public function withThreadID(int $threadID): self
     {
         $obj = clone $this;
-        $obj['threadId'] = $threadID;
+        $obj['threadID'] = $threadID;
 
         return $obj;
     }

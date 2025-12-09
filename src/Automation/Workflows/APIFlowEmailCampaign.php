@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type APIFlowEmailCampaignShape = array{
- *   emailCampaignId: string, emailContentId: string, flowId: string
+ *   emailCampaignID: string, emailContentID: string, flowID: string
  * }
  */
 final class APIFlowEmailCampaign implements BaseModel
@@ -18,14 +18,14 @@ final class APIFlowEmailCampaign implements BaseModel
     /** @use SdkModel<APIFlowEmailCampaignShape> */
     use SdkModel;
 
-    #[Required]
-    public string $emailCampaignId;
+    #[Required('emailCampaignId')]
+    public string $emailCampaignID;
 
-    #[Required]
-    public string $emailContentId;
+    #[Required('emailContentId')]
+    public string $emailContentID;
 
-    #[Required]
-    public string $flowId;
+    #[Required('flowId')]
+    public string $flowID;
 
     /**
      * `new APIFlowEmailCampaign()` is missing required properties by the API.
@@ -33,7 +33,7 @@ final class APIFlowEmailCampaign implements BaseModel
      * To enforce required parameters use
      * ```
      * APIFlowEmailCampaign::with(
-     *   emailCampaignId: ..., emailContentId: ..., flowId: ...
+     *   emailCampaignID: ..., emailContentID: ..., flowID: ...
      * )
      * ```
      *
@@ -57,15 +57,15 @@ final class APIFlowEmailCampaign implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      */
     public static function with(
-        string $emailCampaignId,
-        string $emailContentId,
-        string $flowId
+        string $emailCampaignID,
+        string $emailContentID,
+        string $flowID
     ): self {
         $obj = new self;
 
-        $obj['emailCampaignId'] = $emailCampaignId;
-        $obj['emailContentId'] = $emailContentId;
-        $obj['flowId'] = $flowId;
+        $obj['emailCampaignID'] = $emailCampaignID;
+        $obj['emailContentID'] = $emailContentID;
+        $obj['flowID'] = $flowID;
 
         return $obj;
     }
@@ -73,7 +73,7 @@ final class APIFlowEmailCampaign implements BaseModel
     public function withEmailCampaignID(string $emailCampaignID): self
     {
         $obj = clone $this;
-        $obj['emailCampaignId'] = $emailCampaignID;
+        $obj['emailCampaignID'] = $emailCampaignID;
 
         return $obj;
     }
@@ -81,7 +81,7 @@ final class APIFlowEmailCampaign implements BaseModel
     public function withEmailContentID(string $emailContentID): self
     {
         $obj = clone $this;
-        $obj['emailContentId'] = $emailContentID;
+        $obj['emailContentID'] = $emailContentID;
 
         return $obj;
     }
@@ -89,7 +89,7 @@ final class APIFlowEmailCampaign implements BaseModel
     public function withFlowID(string $flowID): self
     {
         $obj = clone $this;
-        $obj['flowId'] = $flowID;
+        $obj['flowID'] = $flowID;
 
         return $obj;
     }

@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * @phpstan-type LimitAndUsageForObjectTypeShape = array{
  *   limit: int,
- *   objectTypeId: string,
+ *   objectTypeID: string,
  *   percentage: float,
  *   pluralLabel: string,
  *   singularLabel: string,
@@ -32,8 +32,8 @@ final class LimitAndUsageForObjectType implements BaseModel
     /**
      * The unique identifier for the object type.
      */
-    #[Required]
-    public string $objectTypeId;
+    #[Required('objectTypeId')]
+    public string $objectTypeID;
 
     /**
      * The percentage of the limit that has been used.
@@ -66,7 +66,7 @@ final class LimitAndUsageForObjectType implements BaseModel
      * ```
      * LimitAndUsageForObjectType::with(
      *   limit: ...,
-     *   objectTypeId: ...,
+     *   objectTypeID: ...,
      *   percentage: ...,
      *   pluralLabel: ...,
      *   singularLabel: ...,
@@ -98,7 +98,7 @@ final class LimitAndUsageForObjectType implements BaseModel
      */
     public static function with(
         int $limit,
-        string $objectTypeId,
+        string $objectTypeID,
         float $percentage,
         string $pluralLabel,
         string $singularLabel,
@@ -107,7 +107,7 @@ final class LimitAndUsageForObjectType implements BaseModel
         $obj = new self;
 
         $obj['limit'] = $limit;
-        $obj['objectTypeId'] = $objectTypeId;
+        $obj['objectTypeID'] = $objectTypeID;
         $obj['percentage'] = $percentage;
         $obj['pluralLabel'] = $pluralLabel;
         $obj['singularLabel'] = $singularLabel;
@@ -133,7 +133,7 @@ final class LimitAndUsageForObjectType implements BaseModel
     public function withObjectTypeID(string $objectTypeID): self
     {
         $obj = clone $this;
-        $obj['objectTypeId'] = $objectTypeID;
+        $obj['objectTypeID'] = $objectTypeID;
 
         return $obj;
     }

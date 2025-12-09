@@ -17,7 +17,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Crm\Lists\MembershipsService::addAndRemove()
  *
  * @phpstan-type MembershipAddAndRemoveParamsShape = array{
- *   recordIdsToAdd: list<string>, recordIdsToRemove: list<string>
+ *   recordIDsToAdd: list<string>, recordIDsToRemove: list<string>
  * }
  */
 final class MembershipAddAndRemoveParams implements BaseModel
@@ -26,20 +26,20 @@ final class MembershipAddAndRemoveParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    /** @var list<string> $recordIdsToAdd */
-    #[Required(list: 'string')]
-    public array $recordIdsToAdd;
+    /** @var list<string> $recordIDsToAdd */
+    #[Required('recordIdsToAdd', list: 'string')]
+    public array $recordIDsToAdd;
 
-    /** @var list<string> $recordIdsToRemove */
-    #[Required(list: 'string')]
-    public array $recordIdsToRemove;
+    /** @var list<string> $recordIDsToRemove */
+    #[Required('recordIdsToRemove', list: 'string')]
+    public array $recordIDsToRemove;
 
     /**
      * `new MembershipAddAndRemoveParams()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * MembershipAddAndRemoveParams::with(recordIdsToAdd: ..., recordIdsToRemove: ...)
+     * MembershipAddAndRemoveParams::with(recordIDsToAdd: ..., recordIDsToRemove: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -60,17 +60,17 @@ final class MembershipAddAndRemoveParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<string> $recordIdsToAdd
-     * @param list<string> $recordIdsToRemove
+     * @param list<string> $recordIDsToAdd
+     * @param list<string> $recordIDsToRemove
      */
     public static function with(
-        array $recordIdsToAdd,
-        array $recordIdsToRemove
+        array $recordIDsToAdd,
+        array $recordIDsToRemove
     ): self {
         $obj = new self;
 
-        $obj['recordIdsToAdd'] = $recordIdsToAdd;
-        $obj['recordIdsToRemove'] = $recordIdsToRemove;
+        $obj['recordIDsToAdd'] = $recordIDsToAdd;
+        $obj['recordIDsToRemove'] = $recordIDsToRemove;
 
         return $obj;
     }
@@ -81,7 +81,7 @@ final class MembershipAddAndRemoveParams implements BaseModel
     public function withRecordIDsToAdd(array $recordIDsToAdd): self
     {
         $obj = clone $this;
-        $obj['recordIdsToAdd'] = $recordIDsToAdd;
+        $obj['recordIDsToAdd'] = $recordIDsToAdd;
 
         return $obj;
     }
@@ -92,7 +92,7 @@ final class MembershipAddAndRemoveParams implements BaseModel
     public function withRecordIDsToRemove(array $recordIDsToRemove): self
     {
         $obj = clone $this;
-        $obj['recordIdsToRemove'] = $recordIDsToRemove;
+        $obj['recordIDsToRemove'] = $recordIDsToRemove;
 
         return $obj;
     }

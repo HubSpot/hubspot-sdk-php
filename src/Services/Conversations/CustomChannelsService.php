@@ -53,10 +53,10 @@ final class CustomChannelsService implements CustomChannelsContract
      * @param array{
      *   capabilities: array<string,mixed>,
      *   name: string,
-     *   channelAccountConnectionRedirectUrl?: string,
+     *   channelAccountConnectionRedirectURL?: string,
      *   channelDescription?: string,
-     *   channelLogoUrl?: string,
-     *   webhookUrl?: string,
+     *   channelLogoURL?: string,
+     *   webhookURL?: string,
      * }|CustomChannelCreateParams $params
      *
      * @throws APIException
@@ -89,11 +89,11 @@ final class CustomChannelsService implements CustomChannelsContract
      *
      * @param array{
      *   capabilities: array<string,mixed>,
-     *   channelAccountConnectionRedirectUrl: mixed,
+     *   channelAccountConnectionRedirectURL: mixed,
      *   channelDescription: mixed,
-     *   channelLogoUrl: mixed,
+     *   channelLogoURL: mixed,
      *   name: mixed,
-     *   webhookUrl: mixed,
+     *   webhookURL: mixed,
      * }|CustomChannelUpdateParams $params
      *
      * @throws APIException

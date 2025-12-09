@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Services\Marketing\Events\SettingsService::createOrUpdate()
  *
- * @phpstan-type SettingCreateOrUpdateParamsShape = array{eventDetailsUrl: string}
+ * @phpstan-type SettingCreateOrUpdateParamsShape = array{eventDetailsURL: string}
  */
 final class SettingCreateOrUpdateParams implements BaseModel
 {
@@ -25,15 +25,15 @@ final class SettingCreateOrUpdateParams implements BaseModel
     /**
      * The url that will be used to fetch marketing event details by id. Must contain a `%s` character sequence that will be substituted with the event id. For example: `https://my.event.app/events/%s`.
      */
-    #[Required]
-    public string $eventDetailsUrl;
+    #[Required('eventDetailsUrl')]
+    public string $eventDetailsURL;
 
     /**
      * `new SettingCreateOrUpdateParams()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * SettingCreateOrUpdateParams::with(eventDetailsUrl: ...)
+     * SettingCreateOrUpdateParams::with(eventDetailsURL: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -52,11 +52,11 @@ final class SettingCreateOrUpdateParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(string $eventDetailsUrl): self
+    public static function with(string $eventDetailsURL): self
     {
         $obj = new self;
 
-        $obj['eventDetailsUrl'] = $eventDetailsUrl;
+        $obj['eventDetailsURL'] = $eventDetailsURL;
 
         return $obj;
     }
@@ -67,7 +67,7 @@ final class SettingCreateOrUpdateParams implements BaseModel
     public function withEventDetailsURL(string $eventDetailsURL): self
     {
         $obj = clone $this;
-        $obj['eventDetailsUrl'] = $eventDetailsURL;
+        $obj['eventDetailsURL'] = $eventDetailsURL;
 
         return $obj;
     }

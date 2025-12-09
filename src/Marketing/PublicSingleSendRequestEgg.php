@@ -13,7 +13,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * A request to send a single email asynchronously.
  *
  * @phpstan-type PublicSingleSendRequestEggShape = array{
- *   emailId: int,
+ *   emailID: int,
  *   message: PublicSingleSendEmail,
  *   contactProperties?: array<string,string>|null,
  *   customProperties?: array<string,mixed>|null,
@@ -27,8 +27,8 @@ final class PublicSingleSendRequestEgg implements BaseModel
     /**
      * The content ID for the email, which can be found in email tool UI.
      */
-    #[Required]
-    public int $emailId;
+    #[Required('emailId')]
+    public int $emailID;
 
     /**
      * A JSON object containing anything you want to override.
@@ -58,7 +58,7 @@ final class PublicSingleSendRequestEgg implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * PublicSingleSendRequestEgg::with(emailId: ..., message: ...)
+     * PublicSingleSendRequestEgg::with(emailID: ..., message: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -83,20 +83,20 @@ final class PublicSingleSendRequestEgg implements BaseModel
      *   cc?: list<string>|null,
      *   from?: string|null,
      *   replyTo?: list<string>|null,
-     *   sendId?: string|null,
+     *   sendID?: string|null,
      * } $message
      * @param array<string,string> $contactProperties
      * @param array<string,mixed> $customProperties
      */
     public static function with(
-        int $emailId,
+        int $emailID,
         PublicSingleSendEmail|array $message,
         ?array $contactProperties = null,
         ?array $customProperties = null,
     ): self {
         $obj = new self;
 
-        $obj['emailId'] = $emailId;
+        $obj['emailID'] = $emailID;
         $obj['message'] = $message;
 
         null !== $contactProperties && $obj['contactProperties'] = $contactProperties;
@@ -111,7 +111,7 @@ final class PublicSingleSendRequestEgg implements BaseModel
     public function withEmailID(int $emailID): self
     {
         $obj = clone $this;
-        $obj['emailId'] = $emailID;
+        $obj['emailID'] = $emailID;
 
         return $obj;
     }
@@ -125,7 +125,7 @@ final class PublicSingleSendRequestEgg implements BaseModel
      *   cc?: list<string>|null,
      *   from?: string|null,
      *   replyTo?: list<string>|null,
-     *   sendId?: string|null,
+     *   sendID?: string|null,
      * } $message
      */
     public function withMessage(PublicSingleSendEmail|array $message): self

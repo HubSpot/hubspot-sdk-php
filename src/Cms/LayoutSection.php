@@ -13,7 +13,7 @@ use HubspotSDK\Core\Conversion\MapOf;
  * @phpstan-type LayoutSectionShape = array{
  *   cells: list<mixed>,
  *   cssClass: string,
- *   cssId: string,
+ *   cssID: string,
  *   cssStyle: string,
  *   label: string,
  *   name: string,
@@ -38,8 +38,8 @@ final class LayoutSection implements BaseModel
     #[Required]
     public string $cssClass;
 
-    #[Required]
-    public string $cssId;
+    #[Required('cssId')]
+    public string $cssID;
 
     #[Required]
     public string $cssStyle;
@@ -86,7 +86,7 @@ final class LayoutSection implements BaseModel
      * LayoutSection::with(
      *   cells: ...,
      *   cssClass: ...,
-     *   cssId: ...,
+     *   cssID: ...,
      *   cssStyle: ...,
      *   label: ...,
      *   name: ...,
@@ -147,7 +147,7 @@ final class LayoutSection implements BaseModel
     public static function with(
         array $cells,
         string $cssClass,
-        string $cssId,
+        string $cssID,
         string $cssStyle,
         string $label,
         string $name,
@@ -163,7 +163,7 @@ final class LayoutSection implements BaseModel
 
         $obj['cells'] = $cells;
         $obj['cssClass'] = $cssClass;
-        $obj['cssId'] = $cssId;
+        $obj['cssID'] = $cssID;
         $obj['cssStyle'] = $cssStyle;
         $obj['label'] = $label;
         $obj['name'] = $name;
@@ -200,7 +200,7 @@ final class LayoutSection implements BaseModel
     public function withCssID(string $cssID): self
     {
         $obj = clone $this;
-        $obj['cssId'] = $cssID;
+        $obj['cssID'] = $cssID;
 
         return $obj;
     }

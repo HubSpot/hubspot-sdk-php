@@ -18,7 +18,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @phpstan-type ChannelAccountCreateParamsShape = array{
  *   authorized: bool,
- *   inboxId: string,
+ *   inboxID: string,
  *   name: string,
  *   deliveryIdentifier?: PublicDeliveryIdentifier|array{
  *     type: string, value: string
@@ -34,8 +34,8 @@ final class ChannelAccountCreateParams implements BaseModel
     #[Required]
     public bool $authorized;
 
-    #[Required]
-    public string $inboxId;
+    #[Required('inboxId')]
+    public string $inboxID;
 
     #[Required]
     public string $name;
@@ -48,7 +48,7 @@ final class ChannelAccountCreateParams implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * ChannelAccountCreateParams::with(authorized: ..., inboxId: ..., name: ...)
+     * ChannelAccountCreateParams::with(authorized: ..., inboxID: ..., name: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -76,14 +76,14 @@ final class ChannelAccountCreateParams implements BaseModel
      */
     public static function with(
         bool $authorized,
-        string $inboxId,
+        string $inboxID,
         string $name,
         PublicDeliveryIdentifier|array|null $deliveryIdentifier = null,
     ): self {
         $obj = new self;
 
         $obj['authorized'] = $authorized;
-        $obj['inboxId'] = $inboxId;
+        $obj['inboxID'] = $inboxID;
         $obj['name'] = $name;
 
         null !== $deliveryIdentifier && $obj['deliveryIdentifier'] = $deliveryIdentifier;
@@ -102,7 +102,7 @@ final class ChannelAccountCreateParams implements BaseModel
     public function withInboxID(string $inboxID): self
     {
         $obj = clone $this;
-        $obj['inboxId'] = $inboxID;
+        $obj['inboxID'] = $inboxID;
 
         return $obj;
     }

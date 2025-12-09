@@ -11,8 +11,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type PublicWhatsAppTemplateMetadataShape = array{
- *   crmObjectIds: array<string,int>,
- *   mappedTemplateId: string,
+ *   crmObjectIDs: array<string,int>,
+ *   mappedTemplateID: string,
  *   parameters: array<string,string>,
  *   type: value-of<Type>,
  * }
@@ -22,12 +22,12 @@ final class PublicWhatsAppTemplateMetadata implements BaseModel
     /** @use SdkModel<PublicWhatsAppTemplateMetadataShape> */
     use SdkModel;
 
-    /** @var array<string,int> $crmObjectIds */
-    #[Required(map: 'int')]
-    public array $crmObjectIds;
+    /** @var array<string,int> $crmObjectIDs */
+    #[Required('crmObjectIds', map: 'int')]
+    public array $crmObjectIDs;
 
-    #[Required]
-    public string $mappedTemplateId;
+    #[Required('mappedTemplateId')]
+    public string $mappedTemplateID;
 
     /** @var array<string,string> $parameters */
     #[Required(map: 'string')]
@@ -43,7 +43,7 @@ final class PublicWhatsAppTemplateMetadata implements BaseModel
      * To enforce required parameters use
      * ```
      * PublicWhatsAppTemplateMetadata::with(
-     *   crmObjectIds: ..., mappedTemplateId: ..., parameters: ..., type: ...
+     *   crmObjectIDs: ..., mappedTemplateID: ..., parameters: ..., type: ...
      * )
      * ```
      *
@@ -67,20 +67,20 @@ final class PublicWhatsAppTemplateMetadata implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string,int> $crmObjectIds
+     * @param array<string,int> $crmObjectIDs
      * @param array<string,string> $parameters
      * @param Type|value-of<Type> $type
      */
     public static function with(
-        array $crmObjectIds,
-        string $mappedTemplateId,
+        array $crmObjectIDs,
+        string $mappedTemplateID,
         array $parameters,
         Type|string $type = 'WHATSAPP_TEMPLATE_METADATA',
     ): self {
         $obj = new self;
 
-        $obj['crmObjectIds'] = $crmObjectIds;
-        $obj['mappedTemplateId'] = $mappedTemplateId;
+        $obj['crmObjectIDs'] = $crmObjectIDs;
+        $obj['mappedTemplateID'] = $mappedTemplateID;
         $obj['parameters'] = $parameters;
         $obj['type'] = $type;
 
@@ -93,7 +93,7 @@ final class PublicWhatsAppTemplateMetadata implements BaseModel
     public function withCrmObjectIDs(array $crmObjectIDs): self
     {
         $obj = clone $this;
-        $obj['crmObjectIds'] = $crmObjectIDs;
+        $obj['crmObjectIDs'] = $crmObjectIDs;
 
         return $obj;
     }
@@ -101,7 +101,7 @@ final class PublicWhatsAppTemplateMetadata implements BaseModel
     public function withMappedTemplateID(string $mappedTemplateID): self
     {
         $obj = clone $this;
-        $obj['mappedTemplateId'] = $mappedTemplateID;
+        $obj['mappedTemplateID'] = $mappedTemplateID;
 
         return $obj;
     }

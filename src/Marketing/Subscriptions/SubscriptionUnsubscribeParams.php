@@ -18,7 +18,7 @@ use HubspotSDK\Marketing\Subscriptions\SubscriptionUnsubscribeParams\LegalBasis;
  *
  * @phpstan-type SubscriptionUnsubscribeParamsShape = array{
  *   emailAddress: string,
- *   subscriptionId: string,
+ *   subscriptionID: string,
  *   legalBasis?: LegalBasis|value-of<LegalBasis>,
  *   legalBasisExplanation?: string,
  * }
@@ -38,8 +38,8 @@ final class SubscriptionUnsubscribeParams implements BaseModel
     /**
      * ID of the subscription being updated for the contact.
      */
-    #[Required]
-    public string $subscriptionId;
+    #[Required('subscriptionId')]
+    public string $subscriptionID;
 
     /**
      * Legal basis for updating the contact's status (required for GDPR enabled portals).
@@ -60,7 +60,7 @@ final class SubscriptionUnsubscribeParams implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * SubscriptionUnsubscribeParams::with(emailAddress: ..., subscriptionId: ...)
+     * SubscriptionUnsubscribeParams::with(emailAddress: ..., subscriptionID: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -85,14 +85,14 @@ final class SubscriptionUnsubscribeParams implements BaseModel
      */
     public static function with(
         string $emailAddress,
-        string $subscriptionId,
+        string $subscriptionID,
         LegalBasis|string|null $legalBasis = null,
         ?string $legalBasisExplanation = null,
     ): self {
         $obj = new self;
 
         $obj['emailAddress'] = $emailAddress;
-        $obj['subscriptionId'] = $subscriptionId;
+        $obj['subscriptionID'] = $subscriptionID;
 
         null !== $legalBasis && $obj['legalBasis'] = $legalBasis;
         null !== $legalBasisExplanation && $obj['legalBasisExplanation'] = $legalBasisExplanation;
@@ -117,7 +117,7 @@ final class SubscriptionUnsubscribeParams implements BaseModel
     public function withSubscriptionID(string $subscriptionID): self
     {
         $obj = clone $this;
-        $obj['subscriptionId'] = $subscriptionID;
+        $obj['subscriptionID'] = $subscriptionID;
 
         return $obj;
     }

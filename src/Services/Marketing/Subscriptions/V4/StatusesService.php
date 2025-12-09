@@ -7,6 +7,7 @@ namespace HubspotSDK\Services\Marketing\Subscriptions\V4;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Marketing\Subscriptions\V4\ActionResponseWithResultsPublicStatus;
 use HubspotSDK\Marketing\Subscriptions\V4\ActionResponseWithResultsPublicWideStatus;
 use HubspotSDK\Marketing\Subscriptions\V4\BatchResponsePublicBulkOptOutFromAllResponse;
@@ -42,7 +43,7 @@ final class StatusesService implements StatusesContract
      * @param array{
      *   channel: 'EMAIL'|Channel,
      *   statusState: 'NOT_SPECIFIED'|'SUBSCRIBED'|'UNSUBSCRIBED'|StatusState,
-     *   subscriptionId: int,
+     *   subscriptionID: int,
      *   legalBasis?: value-of<LegalBasis>,
      *   legalBasisExplanation?: string,
      * }|StatusUpdateParams $params
@@ -79,7 +80,7 @@ final class StatusesService implements StatusesContract
      * @param array{
      *   channel: 'EMAIL'|StatusBatchGetParams\Channel,
      *   inputs: list<string>,
-     *   businessUnitId?: int,
+     *   businessUnitID?: int,
      * }|StatusBatchGetParams $params
      *
      * @throws APIException
@@ -98,7 +99,10 @@ final class StatusesService implements StatusesContract
         $response = $this->client->request(
             method: 'post',
             path: 'communication-preferences/v4/statuses/batch/read',
-            query: array_diff_key($parsed, $query_params),
+            query: Util::array_transform_keys(
+                array_diff_key($parsed, $query_params),
+                ['businessUnitID' => 'businessUnitId'],
+            ),
             body: (object) array_diff_key($parsed, $query_params),
             options: $options,
             convert: BatchResponsePublicStatusBulkResponse::class,
@@ -115,7 +119,7 @@ final class StatusesService implements StatusesContract
      * @param array{
      *   channel: 'EMAIL'|StatusBatchGetUnsubscribeAllStatusParams\Channel,
      *   inputs: list<string>,
-     *   businessUnitId?: int,
+     *   businessUnitID?: int,
      * }|StatusBatchGetUnsubscribeAllStatusParams $params
      *
      * @throws APIException
@@ -134,7 +138,10 @@ final class StatusesService implements StatusesContract
         $response = $this->client->request(
             method: 'post',
             path: 'communication-preferences/v4/statuses/batch/unsubscribe-all/read',
-            query: array_diff_key($parsed, $query_params),
+            query: Util::array_transform_keys(
+                array_diff_key($parsed, $query_params),
+                ['businessUnitID' => 'businessUnitId'],
+            ),
             body: (object) array_diff_key($parsed, $query_params),
             options: $options,
             convert: BatchResponsePublicWideStatusBulkResponse::class,
@@ -151,7 +158,7 @@ final class StatusesService implements StatusesContract
      * @param array{
      *   channel: 'EMAIL'|StatusBatchUnsubscribeAllParams\Channel,
      *   inputs: list<string>,
-     *   businessUnitId?: int,
+     *   businessUnitID?: int,
      *   verbose?: bool,
      * }|StatusBatchUnsubscribeAllParams $params
      *
@@ -171,7 +178,10 @@ final class StatusesService implements StatusesContract
         $response = $this->client->request(
             method: 'post',
             path: 'communication-preferences/v4/statuses/batch/unsubscribe-all',
-            query: array_diff_key($parsed, $query_params),
+            query: Util::array_transform_keys(
+                array_diff_key($parsed, $query_params),
+                ['businessUnitID' => 'businessUnitId'],
+            ),
             body: (object) array_diff_key($parsed, $query_params),
             options: $options,
             convert: BatchResponsePublicBulkOptOutFromAllResponse::class,
@@ -189,8 +199,8 @@ final class StatusesService implements StatusesContract
      *   inputs: list<array{
      *     channel: 'EMAIL'|\HubspotSDK\Marketing\Subscriptions\V4\PublicStatusRequest\Channel,
      *     statusState: 'NOT_SPECIFIED'|'SUBSCRIBED'|'UNSUBSCRIBED'|\HubspotSDK\Marketing\Subscriptions\V4\PublicStatusRequest\StatusState,
-     *     subscriberIdString: string,
-     *     subscriptionId: int,
+     *     subscriberIDString: string,
+     *     subscriptionID: int,
      *     legalBasis?: 'CONSENT_WITH_NOTICE'|'LEGITIMATE_INTEREST_CLIENT'|'LEGITIMATE_INTEREST_OTHER'|'LEGITIMATE_INTEREST_PQL'|'NON_GDPR'|'PERFORMANCE_OF_CONTRACT'|'PROCESS_AND_STORE'|\HubspotSDK\Marketing\Subscriptions\V4\PublicStatusRequest\LegalBasis,
      *     legalBasisExplanation?: string,
      *   }>,
@@ -226,7 +236,7 @@ final class StatusesService implements StatusesContract
      *
      * @param array{
      *   channel: 'EMAIL'|StatusGetParams\Channel,
-     *   businessUnitId?: int,
+     *   businessUnitID?: int,
      * }|StatusGetParams $params
      *
      * @throws APIException
@@ -245,7 +255,10 @@ final class StatusesService implements StatusesContract
         $response = $this->client->request(
             method: 'get',
             path: ['communication-preferences/v4/statuses/%1$s', $subscriberIDString],
-            query: $parsed,
+            query: Util::array_transform_keys(
+                $parsed,
+                ['businessUnitID' => 'businessUnitId']
+            ),
             options: $options,
             convert: ActionResponseWithResultsPublicStatus::class,
         );
@@ -260,7 +273,7 @@ final class StatusesService implements StatusesContract
      *
      * @param array{
      *   channel: 'EMAIL'|StatusGetUnsubscribeAllStatusParams\Channel,
-     *   businessUnitId?: int,
+     *   businessUnitID?: int,
      *   verbose?: bool,
      * }|StatusGetUnsubscribeAllStatusParams $params
      *
@@ -283,7 +296,10 @@ final class StatusesService implements StatusesContract
                 'communication-preferences/v4/statuses/%1$s/unsubscribe-all',
                 $subscriberIDString,
             ],
-            query: $parsed,
+            query: Util::array_transform_keys(
+                $parsed,
+                ['businessUnitID' => 'businessUnitId']
+            ),
             options: $options,
             convert: ActionResponseWithResultsPublicWideStatus::class,
         );
@@ -298,7 +314,7 @@ final class StatusesService implements StatusesContract
      *
      * @param array{
      *   channel: 'EMAIL'|StatusUnsubscribeAllParams\Channel,
-     *   businessUnitId?: int,
+     *   businessUnitID?: int,
      *   verbose?: bool,
      * }|StatusUnsubscribeAllParams $params
      *
@@ -321,7 +337,10 @@ final class StatusesService implements StatusesContract
                 'communication-preferences/v4/statuses/%1$s/unsubscribe-all',
                 $subscriberIDString,
             ],
-            query: $parsed,
+            query: Util::array_transform_keys(
+                $parsed,
+                ['businessUnitID' => 'businessUnitId']
+            ),
             options: $options,
             convert: ActionResponseWithResultsPublicStatus::class,
         );

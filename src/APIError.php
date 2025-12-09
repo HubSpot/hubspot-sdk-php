@@ -13,7 +13,7 @@ use HubspotSDK\Core\Conversion\ListOf;
 /**
  * @phpstan-type APIErrorShape = array{
  *   category: string,
- *   correlationId: string,
+ *   correlationID: string,
  *   message: string,
  *   context?: array<string,list<string>>|null,
  *   errors?: list<ErrorDetail>|null,
@@ -35,8 +35,8 @@ final class APIError implements BaseModel
     /**
      * A unique identifier for the request. Include this value with any error reports or support tickets.
      */
-    #[Required]
-    public string $correlationId;
+    #[Required('correlationId')]
+    public string $correlationID;
 
     /**
      * A human readable message describing the error along with remediation steps where appropriate.
@@ -79,7 +79,7 @@ final class APIError implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * APIError::with(category: ..., correlationId: ..., message: ...)
+     * APIError::with(category: ..., correlationID: ..., message: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -110,7 +110,7 @@ final class APIError implements BaseModel
      */
     public static function with(
         string $category,
-        string $correlationId,
+        string $correlationID,
         string $message,
         ?array $context = null,
         ?array $errors = null,
@@ -120,7 +120,7 @@ final class APIError implements BaseModel
         $obj = new self;
 
         $obj['category'] = $category;
-        $obj['correlationId'] = $correlationId;
+        $obj['correlationID'] = $correlationID;
         $obj['message'] = $message;
 
         null !== $context && $obj['context'] = $context;
@@ -148,7 +148,7 @@ final class APIError implements BaseModel
     public function withCorrelationID(string $correlationID): self
     {
         $obj = clone $this;
-        $obj['correlationId'] = $correlationID;
+        $obj['correlationID'] = $correlationID;
 
         return $obj;
     }

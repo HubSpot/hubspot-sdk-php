@@ -22,7 +22,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *     created: \DateTimeInterface,
  *     deletedAt: \DateTimeInterface,
  *     name: string,
- *     parentFolderId: int,
+ *     parentFolderID: int,
  *     updated: \DateTimeInterface,
  *   }>,
  * }
@@ -71,7 +71,7 @@ final class LandingPageCreateFoldersBatchParams implements BaseModel
      *   created: \DateTimeInterface,
      *   deletedAt: \DateTimeInterface,
      *   name: string,
-     *   parentFolderId: int,
+     *   parentFolderID: int,
      *   updated: \DateTimeInterface,
      * }> $inputs
      */
@@ -93,7 +93,7 @@ final class LandingPageCreateFoldersBatchParams implements BaseModel
      *   created: \DateTimeInterface,
      *   deletedAt: \DateTimeInterface,
      *   name: string,
-     *   parentFolderId: int,
+     *   parentFolderID: int,
      *   updated: \DateTimeInterface,
      * }> $inputs
      */

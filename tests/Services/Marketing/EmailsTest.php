@@ -58,7 +58,7 @@ final class EmailsTest extends TestCase
             'name' => 'My subject',
             'activeDomain' => 'test.hs-sites.com',
             'archived' => false,
-            'businessUnitId' => 0,
+            'businessUnitID' => 0,
             'campaign' => '1b7f51a6-33c1-44d6-ba28-fe81f655dced',
             'content' => [
                 'flexAreas' => ['main' => []],
@@ -140,8 +140,8 @@ final class EmailsTest extends TestCase
                     'preview_text' => [],
                 ],
             ],
-            'feedbackSurveyId' => 'feedbackSurveyId',
-            'folderIdV2' => 0,
+            'feedbackSurveyID' => 'feedbackSurveyId',
+            'folderIDV2' => 0,
             'from' => [
                 'customReplyTo' => 'customReplyTo',
                 'fromName' => 'Bruce Wayne',
@@ -154,7 +154,7 @@ final class EmailsTest extends TestCase
                 'blogEmailType' => 'blogEmailType',
                 'blogImageMaxWidth' => 0,
                 'blogLayout' => 'blogLayout',
-                'hubspotBlogId' => 'hubspotBlogId',
+                'hubspotBlogID' => 'hubspotBlogId',
                 'maxEntries' => 0,
                 'rssEntryTemplate' => 'rssEntryTemplate',
                 'timing' => ['foo' => []],
@@ -166,9 +166,9 @@ final class EmailsTest extends TestCase
             'subcategory' => 'batch',
             'subject' => 'My subject',
             'subscriptionDetails' => [
-                'officeLocationId' => '5449392956',
-                'preferencesGroupId' => 'preferencesGroupId',
-                'subscriptionId' => 'subscriptionId',
+                'officeLocationID' => '5449392956',
+                'preferencesGroupID' => 'preferencesGroupId',
+                'subscriptionID' => 'subscriptionId',
                 'subscriptionName' => 'subscriptionName',
             ],
             'testing' => [
@@ -179,10 +179,10 @@ final class EmailsTest extends TestCase
                 'abTestPercentage' => 0,
                 'hoursToWait' => 0,
                 'isAbVariation' => true,
-                'testId' => 'testId',
+                'testID' => 'testId',
             ],
             'to' => [
-                'contactIds' => ['exclude' => ['string'], 'include' => ['string']],
+                'contactIDs' => ['exclude' => ['string'], 'include' => ['string']],
                 'contactIlsLists' => ['exclude' => ['string'], 'include' => ['string']],
                 'contactLists' => ['exclude' => ['string'], 'include' => ['string']],
                 'limitSendFrequency' => true,
@@ -195,8 +195,8 @@ final class EmailsTest extends TestCase
                 'isPageRedirected' => true,
                 'metaDescription' => '',
                 'pageExpiryEnabled' => true,
-                'redirectToPageId' => 'redirectToPageId',
-                'redirectToUrl' => 'http://www.example.org',
+                'redirectToPageID' => 'redirectToPageId',
+                'redirectToURL' => 'http://www.example.org',
                 'slug' => 'slug',
                 'title' => 'title',
                 'url' => 'url',
@@ -282,7 +282,7 @@ final class EmailsTest extends TestCase
         }
 
         $result = $this->client->marketing->emails->createAbTestVariation([
-            'contentId' => 'contentId', 'variationName' => 'variationName',
+            'contentID' => 'contentId', 'variationName' => 'variationName',
         ]);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -297,7 +297,7 @@ final class EmailsTest extends TestCase
         }
 
         $result = $this->client->marketing->emails->createAbTestVariation([
-            'contentId' => 'contentId', 'variationName' => 'variationName',
+            'contentID' => 'contentId', 'variationName' => 'variationName',
         ]);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -355,7 +355,7 @@ final class EmailsTest extends TestCase
 
         $result = $this->client->marketing->emails->getRevision(
             'revisionId',
-            ['emailId' => 'emailId']
+            ['emailID' => 'emailId']
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -371,7 +371,7 @@ final class EmailsTest extends TestCase
 
         $result = $this->client->marketing->emails->getRevision(
             'revisionId',
-            ['emailId' => 'emailId']
+            ['emailID' => 'emailId']
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -426,7 +426,7 @@ final class EmailsTest extends TestCase
 
         $result = $this->client->marketing->emails->restoreRevision(
             'revisionId',
-            ['emailId' => 'emailId']
+            ['emailID' => 'emailId']
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -442,7 +442,7 @@ final class EmailsTest extends TestCase
 
         $result = $this->client->marketing->emails->restoreRevision(
             'revisionId',
-            ['emailId' => 'emailId']
+            ['emailID' => 'emailId']
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -458,7 +458,7 @@ final class EmailsTest extends TestCase
 
         $result = $this->client->marketing->emails->restoreRevisionToDraft(
             0,
-            ['emailId' => 'emailId']
+            ['emailID' => 'emailId']
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -474,7 +474,7 @@ final class EmailsTest extends TestCase
 
         $result = $this->client->marketing->emails->restoreRevisionToDraft(
             0,
-            ['emailId' => 'emailId']
+            ['emailID' => 'emailId']
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

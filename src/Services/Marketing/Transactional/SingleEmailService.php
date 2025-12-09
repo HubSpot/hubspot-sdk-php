@@ -25,14 +25,14 @@ final class SingleEmailService implements SingleEmailContract
      * Asynchronously send a transactional email. Returns the status of the email send with a statusId that can be used to continuously query for the status using the Email Send Status API.
      *
      * @param array{
-     *   emailId: int,
+     *   emailID: int,
      *   message: array{
      *     to: string,
      *     bcc?: list<string>,
      *     cc?: list<string>,
      *     from?: string,
      *     replyTo?: list<string>,
-     *     sendId?: string,
+     *     sendID?: string,
      *   },
      *   contactProperties?: array<string,string>,
      *   customProperties?: array<string,mixed>,
