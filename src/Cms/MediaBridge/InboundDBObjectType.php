@@ -302,76 +302,76 @@ final class InboundDBObjectType implements BaseModel
         ?string $visibility = null,
         ?string $writeScopeName = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['id'] = $id;
-        $obj['allowsSensitiveProperties'] = $allowsSensitiveProperties;
-        $obj['createDatePropertyName'] = $createDatePropertyName;
-        $obj['defaultSearchPropertyNames'] = $defaultSearchPropertyNames;
-        $obj['deleted'] = $deleted;
-        $obj['fullyQualifiedName'] = $fullyQualifiedName;
-        $obj['hasCustomProperties'] = $hasCustomProperties;
-        $obj['hasDefaultProperties'] = $hasDefaultProperties;
-        $obj['hasExternalObjectIDs'] = $hasExternalObjectIDs;
-        $obj['hasOwners'] = $hasOwners;
-        $obj['hasPipelines'] = $hasPipelines;
-        $obj['indexedForFiltersAndReports'] = $indexedForFiltersAndReports;
-        $obj['lastModifiedPropertyName'] = $lastModifiedPropertyName;
-        $obj['metaType'] = $metaType;
-        $obj['metaTypeID'] = $metaTypeID;
-        $obj['name'] = $name;
-        $obj['objectTypeID'] = $objectTypeID;
-        $obj['permissioningType'] = $permissioningType;
-        $obj['pipelinePropertyName'] = $pipelinePropertyName;
-        $obj['pipelineStagePropertyName'] = $pipelineStagePropertyName;
-        $obj['requiredProperties'] = $requiredProperties;
-        $obj['restorable'] = $restorable;
-        $obj['scopeMappings'] = $scopeMappings;
-        $obj['secondaryDisplayLabelPropertyNames'] = $secondaryDisplayLabelPropertyNames;
+        $self['id'] = $id;
+        $self['allowsSensitiveProperties'] = $allowsSensitiveProperties;
+        $self['createDatePropertyName'] = $createDatePropertyName;
+        $self['defaultSearchPropertyNames'] = $defaultSearchPropertyNames;
+        $self['deleted'] = $deleted;
+        $self['fullyQualifiedName'] = $fullyQualifiedName;
+        $self['hasCustomProperties'] = $hasCustomProperties;
+        $self['hasDefaultProperties'] = $hasDefaultProperties;
+        $self['hasExternalObjectIDs'] = $hasExternalObjectIDs;
+        $self['hasOwners'] = $hasOwners;
+        $self['hasPipelines'] = $hasPipelines;
+        $self['indexedForFiltersAndReports'] = $indexedForFiltersAndReports;
+        $self['lastModifiedPropertyName'] = $lastModifiedPropertyName;
+        $self['metaType'] = $metaType;
+        $self['metaTypeID'] = $metaTypeID;
+        $self['name'] = $name;
+        $self['objectTypeID'] = $objectTypeID;
+        $self['permissioningType'] = $permissioningType;
+        $self['pipelinePropertyName'] = $pipelinePropertyName;
+        $self['pipelineStagePropertyName'] = $pipelineStagePropertyName;
+        $self['requiredProperties'] = $requiredProperties;
+        $self['restorable'] = $restorable;
+        $self['scopeMappings'] = $scopeMappings;
+        $self['secondaryDisplayLabelPropertyNames'] = $secondaryDisplayLabelPropertyNames;
 
-        null !== $accessScopeName && $obj['accessScopeName'] = $accessScopeName;
-        null !== $createdAt && $obj['createdAt'] = $createdAt;
-        null !== $description && $obj['description'] = $description;
-        null !== $integrationAppID && $obj['integrationAppID'] = $integrationAppID;
-        null !== $janusGroup && $obj['janusGroup'] = $janusGroup;
-        null !== $ownerPortalID && $obj['ownerPortalID'] = $ownerPortalID;
-        null !== $pipelineCloseDatePropertyName && $obj['pipelineCloseDatePropertyName'] = $pipelineCloseDatePropertyName;
-        null !== $pipelineTimeToClosePropertyName && $obj['pipelineTimeToClosePropertyName'] = $pipelineTimeToClosePropertyName;
-        null !== $pluralForm && $obj['pluralForm'] = $pluralForm;
-        null !== $primaryDisplayLabelPropertyName && $obj['primaryDisplayLabelPropertyName'] = $primaryDisplayLabelPropertyName;
-        null !== $readScopeName && $obj['readScopeName'] = $readScopeName;
-        null !== $singularForm && $obj['singularForm'] = $singularForm;
-        null !== $status && $obj['status'] = $status;
-        null !== $visibility && $obj['visibility'] = $visibility;
-        null !== $writeScopeName && $obj['writeScopeName'] = $writeScopeName;
+        null !== $accessScopeName && $self['accessScopeName'] = $accessScopeName;
+        null !== $createdAt && $self['createdAt'] = $createdAt;
+        null !== $description && $self['description'] = $description;
+        null !== $integrationAppID && $self['integrationAppID'] = $integrationAppID;
+        null !== $janusGroup && $self['janusGroup'] = $janusGroup;
+        null !== $ownerPortalID && $self['ownerPortalID'] = $ownerPortalID;
+        null !== $pipelineCloseDatePropertyName && $self['pipelineCloseDatePropertyName'] = $pipelineCloseDatePropertyName;
+        null !== $pipelineTimeToClosePropertyName && $self['pipelineTimeToClosePropertyName'] = $pipelineTimeToClosePropertyName;
+        null !== $pluralForm && $self['pluralForm'] = $pluralForm;
+        null !== $primaryDisplayLabelPropertyName && $self['primaryDisplayLabelPropertyName'] = $primaryDisplayLabelPropertyName;
+        null !== $readScopeName && $self['readScopeName'] = $readScopeName;
+        null !== $singularForm && $self['singularForm'] = $singularForm;
+        null !== $status && $self['status'] = $status;
+        null !== $visibility && $self['visibility'] = $visibility;
+        null !== $writeScopeName && $self['writeScopeName'] = $writeScopeName;
 
-        return $obj;
+        return $self;
     }
 
     public function withID(int $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     public function withAllowsSensitiveProperties(
         bool $allowsSensitiveProperties
     ): self {
-        $obj = clone $this;
-        $obj['allowsSensitiveProperties'] = $allowsSensitiveProperties;
+        $self = clone $this;
+        $self['allowsSensitiveProperties'] = $allowsSensitiveProperties;
 
-        return $obj;
+        return $self;
     }
 
     public function withCreateDatePropertyName(
         string $createDatePropertyName
     ): self {
-        $obj = clone $this;
-        $obj['createDatePropertyName'] = $createDatePropertyName;
+        $self = clone $this;
+        $self['createDatePropertyName'] = $createDatePropertyName;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -380,84 +380,84 @@ final class InboundDBObjectType implements BaseModel
     public function withDefaultSearchPropertyNames(
         array $defaultSearchPropertyNames
     ): self {
-        $obj = clone $this;
-        $obj['defaultSearchPropertyNames'] = $defaultSearchPropertyNames;
+        $self = clone $this;
+        $self['defaultSearchPropertyNames'] = $defaultSearchPropertyNames;
 
-        return $obj;
+        return $self;
     }
 
     public function withDeleted(bool $deleted): self
     {
-        $obj = clone $this;
-        $obj['deleted'] = $deleted;
+        $self = clone $this;
+        $self['deleted'] = $deleted;
 
-        return $obj;
+        return $self;
     }
 
     public function withFullyQualifiedName(string $fullyQualifiedName): self
     {
-        $obj = clone $this;
-        $obj['fullyQualifiedName'] = $fullyQualifiedName;
+        $self = clone $this;
+        $self['fullyQualifiedName'] = $fullyQualifiedName;
 
-        return $obj;
+        return $self;
     }
 
     public function withHasCustomProperties(bool $hasCustomProperties): self
     {
-        $obj = clone $this;
-        $obj['hasCustomProperties'] = $hasCustomProperties;
+        $self = clone $this;
+        $self['hasCustomProperties'] = $hasCustomProperties;
 
-        return $obj;
+        return $self;
     }
 
     public function withHasDefaultProperties(bool $hasDefaultProperties): self
     {
-        $obj = clone $this;
-        $obj['hasDefaultProperties'] = $hasDefaultProperties;
+        $self = clone $this;
+        $self['hasDefaultProperties'] = $hasDefaultProperties;
 
-        return $obj;
+        return $self;
     }
 
     public function withHasExternalObjectIDs(bool $hasExternalObjectIDs): self
     {
-        $obj = clone $this;
-        $obj['hasExternalObjectIDs'] = $hasExternalObjectIDs;
+        $self = clone $this;
+        $self['hasExternalObjectIDs'] = $hasExternalObjectIDs;
 
-        return $obj;
+        return $self;
     }
 
     public function withHasOwners(bool $hasOwners): self
     {
-        $obj = clone $this;
-        $obj['hasOwners'] = $hasOwners;
+        $self = clone $this;
+        $self['hasOwners'] = $hasOwners;
 
-        return $obj;
+        return $self;
     }
 
     public function withHasPipelines(bool $hasPipelines): self
     {
-        $obj = clone $this;
-        $obj['hasPipelines'] = $hasPipelines;
+        $self = clone $this;
+        $self['hasPipelines'] = $hasPipelines;
 
-        return $obj;
+        return $self;
     }
 
     public function withIndexedForFiltersAndReports(
         bool $indexedForFiltersAndReports
     ): self {
-        $obj = clone $this;
-        $obj['indexedForFiltersAndReports'] = $indexedForFiltersAndReports;
+        $self = clone $this;
+        $self['indexedForFiltersAndReports'] = $indexedForFiltersAndReports;
 
-        return $obj;
+        return $self;
     }
 
     public function withLastModifiedPropertyName(
         string $lastModifiedPropertyName
     ): self {
-        $obj = clone $this;
-        $obj['lastModifiedPropertyName'] = $lastModifiedPropertyName;
+        $self = clone $this;
+        $self['lastModifiedPropertyName'] = $lastModifiedPropertyName;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -465,59 +465,59 @@ final class InboundDBObjectType implements BaseModel
      */
     public function withMetaType(MetaType|string $metaType): self
     {
-        $obj = clone $this;
-        $obj['metaType'] = $metaType;
+        $self = clone $this;
+        $self['metaType'] = $metaType;
 
-        return $obj;
+        return $self;
     }
 
     public function withMetaTypeID(int $metaTypeID): self
     {
-        $obj = clone $this;
-        $obj['metaTypeID'] = $metaTypeID;
+        $self = clone $this;
+        $self['metaTypeID'] = $metaTypeID;
 
-        return $obj;
+        return $self;
     }
 
     public function withName(string $name): self
     {
-        $obj = clone $this;
-        $obj['name'] = $name;
+        $self = clone $this;
+        $self['name'] = $name;
 
-        return $obj;
+        return $self;
     }
 
     public function withObjectTypeID(string $objectTypeID): self
     {
-        $obj = clone $this;
-        $obj['objectTypeID'] = $objectTypeID;
+        $self = clone $this;
+        $self['objectTypeID'] = $objectTypeID;
 
-        return $obj;
+        return $self;
     }
 
     public function withPermissioningType(string $permissioningType): self
     {
-        $obj = clone $this;
-        $obj['permissioningType'] = $permissioningType;
+        $self = clone $this;
+        $self['permissioningType'] = $permissioningType;
 
-        return $obj;
+        return $self;
     }
 
     public function withPipelinePropertyName(string $pipelinePropertyName): self
     {
-        $obj = clone $this;
-        $obj['pipelinePropertyName'] = $pipelinePropertyName;
+        $self = clone $this;
+        $self['pipelinePropertyName'] = $pipelinePropertyName;
 
-        return $obj;
+        return $self;
     }
 
     public function withPipelineStagePropertyName(
         string $pipelineStagePropertyName
     ): self {
-        $obj = clone $this;
-        $obj['pipelineStagePropertyName'] = $pipelineStagePropertyName;
+        $self = clone $this;
+        $self['pipelineStagePropertyName'] = $pipelineStagePropertyName;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -525,18 +525,18 @@ final class InboundDBObjectType implements BaseModel
      */
     public function withRequiredProperties(array $requiredProperties): self
     {
-        $obj = clone $this;
-        $obj['requiredProperties'] = $requiredProperties;
+        $self = clone $this;
+        $self['requiredProperties'] = $requiredProperties;
 
-        return $obj;
+        return $self;
     }
 
     public function withRestorable(bool $restorable): self
     {
-        $obj = clone $this;
-        $obj['restorable'] = $restorable;
+        $self = clone $this;
+        $self['restorable'] = $restorable;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -546,10 +546,10 @@ final class InboundDBObjectType implements BaseModel
      */
     public function withScopeMappings(array $scopeMappings): self
     {
-        $obj = clone $this;
-        $obj['scopeMappings'] = $scopeMappings;
+        $self = clone $this;
+        $self['scopeMappings'] = $scopeMappings;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -558,132 +558,132 @@ final class InboundDBObjectType implements BaseModel
     public function withSecondaryDisplayLabelPropertyNames(
         array $secondaryDisplayLabelPropertyNames
     ): self {
-        $obj = clone $this;
-        $obj['secondaryDisplayLabelPropertyNames'] = $secondaryDisplayLabelPropertyNames;
+        $self = clone $this;
+        $self['secondaryDisplayLabelPropertyNames'] = $secondaryDisplayLabelPropertyNames;
 
-        return $obj;
+        return $self;
     }
 
     public function withAccessScopeName(string $accessScopeName): self
     {
-        $obj = clone $this;
-        $obj['accessScopeName'] = $accessScopeName;
+        $self = clone $this;
+        $self['accessScopeName'] = $accessScopeName;
 
-        return $obj;
+        return $self;
     }
 
     public function withCreatedAt(int $createdAt): self
     {
-        $obj = clone $this;
-        $obj['createdAt'] = $createdAt;
+        $self = clone $this;
+        $self['createdAt'] = $createdAt;
 
-        return $obj;
+        return $self;
     }
 
     public function withDescription(string $description): self
     {
-        $obj = clone $this;
-        $obj['description'] = $description;
+        $self = clone $this;
+        $self['description'] = $description;
 
-        return $obj;
+        return $self;
     }
 
     public function withIntegrationAppID(int $integrationAppID): self
     {
-        $obj = clone $this;
-        $obj['integrationAppID'] = $integrationAppID;
+        $self = clone $this;
+        $self['integrationAppID'] = $integrationAppID;
 
-        return $obj;
+        return $self;
     }
 
     public function withJanusGroup(string $janusGroup): self
     {
-        $obj = clone $this;
-        $obj['janusGroup'] = $janusGroup;
+        $self = clone $this;
+        $self['janusGroup'] = $janusGroup;
 
-        return $obj;
+        return $self;
     }
 
     public function withOwnerPortalID(int $ownerPortalID): self
     {
-        $obj = clone $this;
-        $obj['ownerPortalID'] = $ownerPortalID;
+        $self = clone $this;
+        $self['ownerPortalID'] = $ownerPortalID;
 
-        return $obj;
+        return $self;
     }
 
     public function withPipelineCloseDatePropertyName(
         string $pipelineCloseDatePropertyName
     ): self {
-        $obj = clone $this;
-        $obj['pipelineCloseDatePropertyName'] = $pipelineCloseDatePropertyName;
+        $self = clone $this;
+        $self['pipelineCloseDatePropertyName'] = $pipelineCloseDatePropertyName;
 
-        return $obj;
+        return $self;
     }
 
     public function withPipelineTimeToClosePropertyName(
         string $pipelineTimeToClosePropertyName
     ): self {
-        $obj = clone $this;
-        $obj['pipelineTimeToClosePropertyName'] = $pipelineTimeToClosePropertyName;
+        $self = clone $this;
+        $self['pipelineTimeToClosePropertyName'] = $pipelineTimeToClosePropertyName;
 
-        return $obj;
+        return $self;
     }
 
     public function withPluralForm(string $pluralForm): self
     {
-        $obj = clone $this;
-        $obj['pluralForm'] = $pluralForm;
+        $self = clone $this;
+        $self['pluralForm'] = $pluralForm;
 
-        return $obj;
+        return $self;
     }
 
     public function withPrimaryDisplayLabelPropertyName(
         string $primaryDisplayLabelPropertyName
     ): self {
-        $obj = clone $this;
-        $obj['primaryDisplayLabelPropertyName'] = $primaryDisplayLabelPropertyName;
+        $self = clone $this;
+        $self['primaryDisplayLabelPropertyName'] = $primaryDisplayLabelPropertyName;
 
-        return $obj;
+        return $self;
     }
 
     public function withReadScopeName(string $readScopeName): self
     {
-        $obj = clone $this;
-        $obj['readScopeName'] = $readScopeName;
+        $self = clone $this;
+        $self['readScopeName'] = $readScopeName;
 
-        return $obj;
+        return $self;
     }
 
     public function withSingularForm(string $singularForm): self
     {
-        $obj = clone $this;
-        $obj['singularForm'] = $singularForm;
+        $self = clone $this;
+        $self['singularForm'] = $singularForm;
 
-        return $obj;
+        return $self;
     }
 
     public function withStatus(string $status): self
     {
-        $obj = clone $this;
-        $obj['status'] = $status;
+        $self = clone $this;
+        $self['status'] = $status;
 
-        return $obj;
+        return $self;
     }
 
     public function withVisibility(string $visibility): self
     {
-        $obj = clone $this;
-        $obj['visibility'] = $visibility;
+        $self = clone $this;
+        $self['visibility'] = $visibility;
 
-        return $obj;
+        return $self;
     }
 
     public function withWriteScopeName(string $writeScopeName): self
     {
-        $obj = clone $this;
-        $obj['writeScopeName'] = $writeScopeName;
+        $self = clone $this;
+        $self['writeScopeName'] = $writeScopeName;
 
-        return $obj;
+        return $self;
     }
 }

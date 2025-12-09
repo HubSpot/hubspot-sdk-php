@@ -76,14 +76,14 @@ final class APIAuthKeyWebhookAuthSettings implements BaseModel
         string $secretName,
         Type|string $type = 'AUTH_KEY',
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['location'] = $location;
-        $obj['name'] = $name;
-        $obj['secretName'] = $secretName;
-        $obj['type'] = $type;
+        $self['location'] = $location;
+        $self['name'] = $name;
+        $self['secretName'] = $secretName;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -91,26 +91,26 @@ final class APIAuthKeyWebhookAuthSettings implements BaseModel
      */
     public function withLocation(Location|string $location): self
     {
-        $obj = clone $this;
-        $obj['location'] = $location;
+        $self = clone $this;
+        $self['location'] = $location;
 
-        return $obj;
+        return $self;
     }
 
     public function withName(string $name): self
     {
-        $obj = clone $this;
-        $obj['name'] = $name;
+        $self = clone $this;
+        $self['name'] = $name;
 
-        return $obj;
+        return $self;
     }
 
     public function withSecretName(string $secretName): self
     {
-        $obj = clone $this;
-        $obj['secretName'] = $secretName;
+        $self = clone $this;
+        $self['secretName'] = $secretName;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -118,9 +118,9 @@ final class APIAuthKeyWebhookAuthSettings implements BaseModel
      */
     public function withType(Type|string $type): self
     {
-        $obj = clone $this;
-        $obj['type'] = $type;
+        $self = clone $this;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 }

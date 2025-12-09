@@ -71,22 +71,22 @@ final class PipelineDeleteParams implements BaseModel
         ?bool $validateDealStageUsagesBeforeDelete = null,
         ?bool $validateReferencesBeforeDelete = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['objectType'] = $objectType;
+        $self['objectType'] = $objectType;
 
-        null !== $validateDealStageUsagesBeforeDelete && $obj['validateDealStageUsagesBeforeDelete'] = $validateDealStageUsagesBeforeDelete;
-        null !== $validateReferencesBeforeDelete && $obj['validateReferencesBeforeDelete'] = $validateReferencesBeforeDelete;
+        null !== $validateDealStageUsagesBeforeDelete && $self['validateDealStageUsagesBeforeDelete'] = $validateDealStageUsagesBeforeDelete;
+        null !== $validateReferencesBeforeDelete && $self['validateReferencesBeforeDelete'] = $validateReferencesBeforeDelete;
 
-        return $obj;
+        return $self;
     }
 
     public function withObjectType(string $objectType): self
     {
-        $obj = clone $this;
-        $obj['objectType'] = $objectType;
+        $self = clone $this;
+        $self['objectType'] = $objectType;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -95,10 +95,10 @@ final class PipelineDeleteParams implements BaseModel
     public function withValidateDealStageUsagesBeforeDelete(
         bool $validateDealStageUsagesBeforeDelete
     ): self {
-        $obj = clone $this;
-        $obj['validateDealStageUsagesBeforeDelete'] = $validateDealStageUsagesBeforeDelete;
+        $self = clone $this;
+        $self['validateDealStageUsagesBeforeDelete'] = $validateDealStageUsagesBeforeDelete;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -107,9 +107,9 @@ final class PipelineDeleteParams implements BaseModel
     public function withValidateReferencesBeforeDelete(
         bool $validateReferencesBeforeDelete
     ): self {
-        $obj = clone $this;
-        $obj['validateReferencesBeforeDelete'] = $validateReferencesBeforeDelete;
+        $self = clone $this;
+        $self['validateReferencesBeforeDelete'] = $validateReferencesBeforeDelete;
 
-        return $obj;
+        return $self;
     }
 }

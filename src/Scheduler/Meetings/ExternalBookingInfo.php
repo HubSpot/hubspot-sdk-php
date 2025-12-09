@@ -145,18 +145,18 @@ final class ExternalBookingInfo implements BaseModel
         ExternalBrandingMetadata|array|null $brandingMetadata = null,
         ExternalLinkAvailability|array|null $linkAvailability = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['allUsersBusyTimes'] = $allUsersBusyTimes;
-        $obj['customParams'] = $customParams;
-        $obj['isOffline'] = $isOffline;
-        $obj['linkID'] = $linkID;
-        $obj['linkType'] = $linkType;
+        $self['allUsersBusyTimes'] = $allUsersBusyTimes;
+        $self['customParams'] = $customParams;
+        $self['isOffline'] = $isOffline;
+        $self['linkID'] = $linkID;
+        $self['linkType'] = $linkType;
 
-        null !== $brandingMetadata && $obj['brandingMetadata'] = $brandingMetadata;
-        null !== $linkAvailability && $obj['linkAvailability'] = $linkAvailability;
+        null !== $brandingMetadata && $self['brandingMetadata'] = $brandingMetadata;
+        null !== $linkAvailability && $self['linkAvailability'] = $linkAvailability;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -168,10 +168,10 @@ final class ExternalBookingInfo implements BaseModel
      */
     public function withAllUsersBusyTimes(array $allUsersBusyTimes): self
     {
-        $obj = clone $this;
-        $obj['allUsersBusyTimes'] = $allUsersBusyTimes;
+        $self = clone $this;
+        $self['allUsersBusyTimes'] = $allUsersBusyTimes;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -199,26 +199,26 @@ final class ExternalBookingInfo implements BaseModel
     public function withCustomParams(
         ExternalMeetingsLinkSettings|array $customParams
     ): self {
-        $obj = clone $this;
-        $obj['customParams'] = $customParams;
+        $self = clone $this;
+        $self['customParams'] = $customParams;
 
-        return $obj;
+        return $self;
     }
 
     public function withIsOffline(bool $isOffline): self
     {
-        $obj = clone $this;
-        $obj['isOffline'] = $isOffline;
+        $self = clone $this;
+        $self['isOffline'] = $isOffline;
 
-        return $obj;
+        return $self;
     }
 
     public function withLinkID(string $linkID): self
     {
-        $obj = clone $this;
-        $obj['linkID'] = $linkID;
+        $self = clone $this;
+        $self['linkID'] = $linkID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -226,10 +226,10 @@ final class ExternalBookingInfo implements BaseModel
      */
     public function withLinkType(LinkType|string $linkType): self
     {
-        $obj = clone $this;
-        $obj['linkType'] = $linkType;
+        $self = clone $this;
+        $self['linkType'] = $linkType;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -258,10 +258,10 @@ final class ExternalBookingInfo implements BaseModel
     public function withBrandingMetadata(
         ExternalBrandingMetadata|array $brandingMetadata
     ): self {
-        $obj = clone $this;
-        $obj['brandingMetadata'] = $brandingMetadata;
+        $self = clone $this;
+        $self['brandingMetadata'] = $brandingMetadata;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -273,9 +273,9 @@ final class ExternalBookingInfo implements BaseModel
     public function withLinkAvailability(
         ExternalLinkAvailability|array $linkAvailability
     ): self {
-        $obj = clone $this;
-        $obj['linkAvailability'] = $linkAvailability;
+        $self = clone $this;
+        $self['linkAvailability'] = $linkAvailability;
 
-        return $obj;
+        return $self;
     }
 }

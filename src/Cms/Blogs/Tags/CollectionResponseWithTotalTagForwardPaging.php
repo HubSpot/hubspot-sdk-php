@@ -83,14 +83,14 @@ final class CollectionResponseWithTotalTagForwardPaging implements BaseModel
         int $total,
         ForwardPaging|array|null $paging = null
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['results'] = $results;
-        $obj['total'] = $total;
+        $self['results'] = $results;
+        $self['total'] = $total;
 
-        null !== $paging && $obj['paging'] = $paging;
+        null !== $paging && $self['paging'] = $paging;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -108,10 +108,10 @@ final class CollectionResponseWithTotalTagForwardPaging implements BaseModel
      */
     public function withResults(array $results): self
     {
-        $obj = clone $this;
-        $obj['results'] = $results;
+        $self = clone $this;
+        $self['results'] = $results;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -119,10 +119,10 @@ final class CollectionResponseWithTotalTagForwardPaging implements BaseModel
      */
     public function withTotal(int $total): self
     {
-        $obj = clone $this;
-        $obj['total'] = $total;
+        $self = clone $this;
+        $self['total'] = $total;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -130,9 +130,9 @@ final class CollectionResponseWithTotalTagForwardPaging implements BaseModel
      */
     public function withPaging(ForwardPaging|array $paging): self
     {
-        $obj = clone $this;
-        $obj['paging'] = $paging;
+        $self = clone $this;
+        $self['paging'] = $paging;
 
-        return $obj;
+        return $self;
     }
 }

@@ -69,46 +69,46 @@ final class PropertyModificationMetadata implements BaseModel
         bool $readOnlyValue,
         ?bool $readOnlyOptions = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['archivable'] = $archivable;
-        $obj['readOnlyDefinition'] = $readOnlyDefinition;
-        $obj['readOnlyValue'] = $readOnlyValue;
+        $self['archivable'] = $archivable;
+        $self['readOnlyDefinition'] = $readOnlyDefinition;
+        $self['readOnlyValue'] = $readOnlyValue;
 
-        null !== $readOnlyOptions && $obj['readOnlyOptions'] = $readOnlyOptions;
+        null !== $readOnlyOptions && $self['readOnlyOptions'] = $readOnlyOptions;
 
-        return $obj;
+        return $self;
     }
 
     public function withArchivable(bool $archivable): self
     {
-        $obj = clone $this;
-        $obj['archivable'] = $archivable;
+        $self = clone $this;
+        $self['archivable'] = $archivable;
 
-        return $obj;
+        return $self;
     }
 
     public function withReadOnlyDefinition(bool $readOnlyDefinition): self
     {
-        $obj = clone $this;
-        $obj['readOnlyDefinition'] = $readOnlyDefinition;
+        $self = clone $this;
+        $self['readOnlyDefinition'] = $readOnlyDefinition;
 
-        return $obj;
+        return $self;
     }
 
     public function withReadOnlyValue(bool $readOnlyValue): self
     {
-        $obj = clone $this;
-        $obj['readOnlyValue'] = $readOnlyValue;
+        $self = clone $this;
+        $self['readOnlyValue'] = $readOnlyValue;
 
-        return $obj;
+        return $self;
     }
 
     public function withReadOnlyOptions(bool $readOnlyOptions): self
     {
-        $obj = clone $this;
-        $obj['readOnlyOptions'] = $readOnlyOptions;
+        $self = clone $this;
+        $self['readOnlyOptions'] = $readOnlyOptions;
 
-        return $obj;
+        return $self;
     }
 }

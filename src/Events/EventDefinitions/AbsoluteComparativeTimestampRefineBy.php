@@ -68,13 +68,13 @@ final class AbsoluteComparativeTimestampRefineBy implements BaseModel
         int $timestamp,
         Type|string $type = 'AbsoluteComparativeTimestampRefineBy',
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['comparison'] = $comparison;
-        $obj['timestamp'] = $timestamp;
-        $obj['type'] = $type;
+        $self['comparison'] = $comparison;
+        $self['timestamp'] = $timestamp;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -82,18 +82,18 @@ final class AbsoluteComparativeTimestampRefineBy implements BaseModel
      */
     public function withComparison(Comparison|string $comparison): self
     {
-        $obj = clone $this;
-        $obj['comparison'] = $comparison;
+        $self = clone $this;
+        $self['comparison'] = $comparison;
 
-        return $obj;
+        return $self;
     }
 
     public function withTimestamp(int $timestamp): self
     {
-        $obj = clone $this;
-        $obj['timestamp'] = $timestamp;
+        $self = clone $this;
+        $self['timestamp'] = $timestamp;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -101,9 +101,9 @@ final class AbsoluteComparativeTimestampRefineBy implements BaseModel
      */
     public function withType(Type|string $type): self
     {
-        $obj = clone $this;
-        $obj['type'] = $type;
+        $self = clone $this;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 }

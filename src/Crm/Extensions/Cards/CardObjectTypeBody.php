@@ -66,12 +66,12 @@ final class CardObjectTypeBody implements BaseModel
         Name|string $name,
         array $propertiesToSend
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['name'] = $name;
-        $obj['propertiesToSend'] = $propertiesToSend;
+        $self['name'] = $name;
+        $self['propertiesToSend'] = $propertiesToSend;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -81,10 +81,10 @@ final class CardObjectTypeBody implements BaseModel
      */
     public function withName(Name|string $name): self
     {
-        $obj = clone $this;
-        $obj['name'] = $name;
+        $self = clone $this;
+        $self['name'] = $name;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -94,9 +94,9 @@ final class CardObjectTypeBody implements BaseModel
      */
     public function withPropertiesToSend(array $propertiesToSend): self
     {
-        $obj = clone $this;
-        $obj['propertiesToSend'] = $propertiesToSend;
+        $self = clone $this;
+        $self['propertiesToSend'] = $propertiesToSend;
 
-        return $obj;
+        return $self;
     }
 }

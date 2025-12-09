@@ -85,23 +85,23 @@ final class InputFieldDefinition implements BaseModel
         ?string $automationFieldType = null,
         ?array $supportedValueTypes = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['isRequired'] = $isRequired;
-        $obj['typeDefinition'] = $typeDefinition;
+        $self['isRequired'] = $isRequired;
+        $self['typeDefinition'] = $typeDefinition;
 
-        null !== $automationFieldType && $obj['automationFieldType'] = $automationFieldType;
-        null !== $supportedValueTypes && $obj['supportedValueTypes'] = $supportedValueTypes;
+        null !== $automationFieldType && $self['automationFieldType'] = $automationFieldType;
+        null !== $supportedValueTypes && $self['supportedValueTypes'] = $supportedValueTypes;
 
-        return $obj;
+        return $self;
     }
 
     public function withIsRequired(bool $isRequired): self
     {
-        $obj = clone $this;
-        $obj['isRequired'] = $isRequired;
+        $self = clone $this;
+        $self['isRequired'] = $isRequired;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -122,18 +122,18 @@ final class InputFieldDefinition implements BaseModel
     public function withTypeDefinition(
         FieldTypeDefinition|array $typeDefinition
     ): self {
-        $obj = clone $this;
-        $obj['typeDefinition'] = $typeDefinition;
+        $self = clone $this;
+        $self['typeDefinition'] = $typeDefinition;
 
-        return $obj;
+        return $self;
     }
 
     public function withAutomationFieldType(string $automationFieldType): self
     {
-        $obj = clone $this;
-        $obj['automationFieldType'] = $automationFieldType;
+        $self = clone $this;
+        $self['automationFieldType'] = $automationFieldType;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -141,9 +141,9 @@ final class InputFieldDefinition implements BaseModel
      */
     public function withSupportedValueTypes(array $supportedValueTypes): self
     {
-        $obj = clone $this;
-        $obj['supportedValueTypes'] = $supportedValueTypes;
+        $self = clone $this;
+        $self['supportedValueTypes'] = $supportedValueTypes;
 
-        return $obj;
+        return $self;
     }
 }

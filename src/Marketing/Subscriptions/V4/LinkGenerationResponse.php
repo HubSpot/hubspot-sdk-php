@@ -69,46 +69,46 @@ final class LinkGenerationResponse implements BaseModel
         string $unsubscribeAllURL,
         ?string $unsubscribeSingleURL = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['managePreferencesURL'] = $managePreferencesURL;
-        $obj['subscriberIDString'] = $subscriberIDString;
-        $obj['unsubscribeAllURL'] = $unsubscribeAllURL;
+        $self['managePreferencesURL'] = $managePreferencesURL;
+        $self['subscriberIDString'] = $subscriberIDString;
+        $self['unsubscribeAllURL'] = $unsubscribeAllURL;
 
-        null !== $unsubscribeSingleURL && $obj['unsubscribeSingleURL'] = $unsubscribeSingleURL;
+        null !== $unsubscribeSingleURL && $self['unsubscribeSingleURL'] = $unsubscribeSingleURL;
 
-        return $obj;
+        return $self;
     }
 
     public function withManagePreferencesURL(string $managePreferencesURL): self
     {
-        $obj = clone $this;
-        $obj['managePreferencesURL'] = $managePreferencesURL;
+        $self = clone $this;
+        $self['managePreferencesURL'] = $managePreferencesURL;
 
-        return $obj;
+        return $self;
     }
 
     public function withSubscriberIDString(string $subscriberIDString): self
     {
-        $obj = clone $this;
-        $obj['subscriberIDString'] = $subscriberIDString;
+        $self = clone $this;
+        $self['subscriberIDString'] = $subscriberIDString;
 
-        return $obj;
+        return $self;
     }
 
     public function withUnsubscribeAllURL(string $unsubscribeAllURL): self
     {
-        $obj = clone $this;
-        $obj['unsubscribeAllURL'] = $unsubscribeAllURL;
+        $self = clone $this;
+        $self['unsubscribeAllURL'] = $unsubscribeAllURL;
 
-        return $obj;
+        return $self;
     }
 
     public function withUnsubscribeSingleURL(string $unsubscribeSingleURL): self
     {
-        $obj = clone $this;
-        $obj['unsubscribeSingleURL'] = $unsubscribeSingleURL;
+        $self = clone $this;
+        $self['unsubscribeSingleURL'] = $unsubscribeSingleURL;
 
-        return $obj;
+        return $self;
     }
 }

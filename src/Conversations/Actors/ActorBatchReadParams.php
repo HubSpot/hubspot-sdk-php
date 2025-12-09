@@ -62,13 +62,13 @@ final class ActorBatchReadParams implements BaseModel
      */
     public static function with(array $inputs, ?string $property = null): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['inputs'] = $inputs;
+        $self['inputs'] = $inputs;
 
-        null !== $property && $obj['property'] = $property;
+        null !== $property && $self['property'] = $property;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -78,17 +78,17 @@ final class ActorBatchReadParams implements BaseModel
      */
     public function withInputs(array $inputs): self
     {
-        $obj = clone $this;
-        $obj['inputs'] = $inputs;
+        $self = clone $this;
+        $self['inputs'] = $inputs;
 
-        return $obj;
+        return $self;
     }
 
     public function withProperty(string $property): self
     {
-        $obj = clone $this;
-        $obj['property'] = $property;
+        $self = clone $this;
+        $self['property'] = $property;
 
-        return $obj;
+        return $self;
     }
 }

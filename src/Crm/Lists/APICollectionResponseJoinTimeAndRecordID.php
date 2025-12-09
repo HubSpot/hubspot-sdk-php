@@ -66,14 +66,14 @@ final class APICollectionResponseJoinTimeAndRecordID implements BaseModel
         Paging|array|null $paging = null,
         ?int $total = null
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['results'] = $results;
+        $self['results'] = $results;
 
-        null !== $paging && $obj['paging'] = $paging;
-        null !== $total && $obj['total'] = $total;
+        null !== $paging && $self['paging'] = $paging;
+        null !== $total && $self['total'] = $total;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -83,10 +83,10 @@ final class APICollectionResponseJoinTimeAndRecordID implements BaseModel
      */
     public function withResults(array $results): self
     {
-        $obj = clone $this;
-        $obj['results'] = $results;
+        $self = clone $this;
+        $self['results'] = $results;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -94,17 +94,17 @@ final class APICollectionResponseJoinTimeAndRecordID implements BaseModel
      */
     public function withPaging(Paging|array $paging): self
     {
-        $obj = clone $this;
-        $obj['paging'] = $paging;
+        $self = clone $this;
+        $self['paging'] = $paging;
 
-        return $obj;
+        return $self;
     }
 
     public function withTotal(int $total): self
     {
-        $obj = clone $this;
-        $obj['total'] = $total;
+        $self = clone $this;
+        $self['total'] = $total;
 
-        return $obj;
+        return $self;
     }
 }

@@ -97,15 +97,15 @@ final class AssociationRecordLimitResponse implements BaseModel
         int $totalRecordsAtLimit,
         int $totalRecordsNearLimit,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['atLimitFromRecordSamples'] = $atLimitFromRecordSamples;
-        $obj['limit'] = $limit;
-        $obj['nearLimitFromRecordSamples'] = $nearLimitFromRecordSamples;
-        $obj['totalRecordsAtLimit'] = $totalRecordsAtLimit;
-        $obj['totalRecordsNearLimit'] = $totalRecordsNearLimit;
+        $self['atLimitFromRecordSamples'] = $atLimitFromRecordSamples;
+        $self['limit'] = $limit;
+        $self['nearLimitFromRecordSamples'] = $nearLimitFromRecordSamples;
+        $self['totalRecordsAtLimit'] = $totalRecordsAtLimit;
+        $self['totalRecordsNearLimit'] = $totalRecordsNearLimit;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -116,10 +116,10 @@ final class AssociationRecordLimitResponse implements BaseModel
     public function withAtLimitFromRecordSamples(
         array $atLimitFromRecordSamples
     ): self {
-        $obj = clone $this;
-        $obj['atLimitFromRecordSamples'] = $atLimitFromRecordSamples;
+        $self = clone $this;
+        $self['atLimitFromRecordSamples'] = $atLimitFromRecordSamples;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -127,10 +127,10 @@ final class AssociationRecordLimitResponse implements BaseModel
      */
     public function withLimit(int $limit): self
     {
-        $obj = clone $this;
-        $obj['limit'] = $limit;
+        $self = clone $this;
+        $self['limit'] = $limit;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -141,10 +141,10 @@ final class AssociationRecordLimitResponse implements BaseModel
     public function withNearLimitFromRecordSamples(
         array $nearLimitFromRecordSamples
     ): self {
-        $obj = clone $this;
-        $obj['nearLimitFromRecordSamples'] = $nearLimitFromRecordSamples;
+        $self = clone $this;
+        $self['nearLimitFromRecordSamples'] = $nearLimitFromRecordSamples;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -152,10 +152,10 @@ final class AssociationRecordLimitResponse implements BaseModel
      */
     public function withTotalRecordsAtLimit(int $totalRecordsAtLimit): self
     {
-        $obj = clone $this;
-        $obj['totalRecordsAtLimit'] = $totalRecordsAtLimit;
+        $self = clone $this;
+        $self['totalRecordsAtLimit'] = $totalRecordsAtLimit;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -163,9 +163,9 @@ final class AssociationRecordLimitResponse implements BaseModel
      */
     public function withTotalRecordsNearLimit(int $totalRecordsNearLimit): self
     {
-        $obj = clone $this;
-        $obj['totalRecordsNearLimit'] = $totalRecordsNearLimit;
+        $self = clone $this;
+        $self['totalRecordsNearLimit'] = $totalRecordsNearLimit;
 
-        return $obj;
+        return $self;
     }
 }

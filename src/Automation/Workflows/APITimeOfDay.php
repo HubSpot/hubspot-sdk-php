@@ -48,27 +48,27 @@ final class APITimeOfDay implements BaseModel
      */
     public static function with(int $hour, int $minute): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['hour'] = $hour;
-        $obj['minute'] = $minute;
+        $self['hour'] = $hour;
+        $self['minute'] = $minute;
 
-        return $obj;
+        return $self;
     }
 
     public function withHour(int $hour): self
     {
-        $obj = clone $this;
-        $obj['hour'] = $hour;
+        $self = clone $this;
+        $self['hour'] = $hour;
 
-        return $obj;
+        return $self;
     }
 
     public function withMinute(int $minute): self
     {
-        $obj = clone $this;
-        $obj['minute'] = $minute;
+        $self = clone $this;
+        $self['minute'] = $minute;
 
-        return $obj;
+        return $self;
     }
 }

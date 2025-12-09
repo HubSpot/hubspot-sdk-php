@@ -92,14 +92,14 @@ final class CardDisplayProperty implements BaseModel
         string $name,
         array $options
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['dataType'] = $dataType;
-        $obj['label'] = $label;
-        $obj['name'] = $name;
-        $obj['options'] = $options;
+        $self['dataType'] = $dataType;
+        $self['label'] = $label;
+        $self['name'] = $name;
+        $self['options'] = $options;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -109,10 +109,10 @@ final class CardDisplayProperty implements BaseModel
      */
     public function withDataType(DataType|string $dataType): self
     {
-        $obj = clone $this;
-        $obj['dataType'] = $dataType;
+        $self = clone $this;
+        $self['dataType'] = $dataType;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -120,10 +120,10 @@ final class CardDisplayProperty implements BaseModel
      */
     public function withLabel(string $label): self
     {
-        $obj = clone $this;
-        $obj['label'] = $label;
+        $self = clone $this;
+        $self['label'] = $label;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -131,10 +131,10 @@ final class CardDisplayProperty implements BaseModel
      */
     public function withName(string $name): self
     {
-        $obj = clone $this;
-        $obj['name'] = $name;
+        $self = clone $this;
+        $self['name'] = $name;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -146,9 +146,9 @@ final class CardDisplayProperty implements BaseModel
      */
     public function withOptions(array $options): self
     {
-        $obj = clone $this;
-        $obj['options'] = $options;
+        $self = clone $this;
+        $self['options'] = $options;
 
-        return $obj;
+        return $self;
     }
 }

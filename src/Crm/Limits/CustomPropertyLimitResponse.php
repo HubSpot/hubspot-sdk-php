@@ -91,14 +91,14 @@ final class CustomPropertyLimitResponse implements BaseModel
         float $overallPercentage,
         int $overallUsage,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['byObjectType'] = $byObjectType;
-        $obj['overallLimit'] = $overallLimit;
-        $obj['overallPercentage'] = $overallPercentage;
-        $obj['overallUsage'] = $overallUsage;
+        $self['byObjectType'] = $byObjectType;
+        $self['overallLimit'] = $overallLimit;
+        $self['overallPercentage'] = $overallPercentage;
+        $self['overallUsage'] = $overallUsage;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -113,10 +113,10 @@ final class CustomPropertyLimitResponse implements BaseModel
      */
     public function withByObjectType(array $byObjectType): self
     {
-        $obj = clone $this;
-        $obj['byObjectType'] = $byObjectType;
+        $self = clone $this;
+        $self['byObjectType'] = $byObjectType;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -124,10 +124,10 @@ final class CustomPropertyLimitResponse implements BaseModel
      */
     public function withOverallLimit(int $overallLimit): self
     {
-        $obj = clone $this;
-        $obj['overallLimit'] = $overallLimit;
+        $self = clone $this;
+        $self['overallLimit'] = $overallLimit;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -135,10 +135,10 @@ final class CustomPropertyLimitResponse implements BaseModel
      */
     public function withOverallPercentage(float $overallPercentage): self
     {
-        $obj = clone $this;
-        $obj['overallPercentage'] = $overallPercentage;
+        $self = clone $this;
+        $self['overallPercentage'] = $overallPercentage;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -146,9 +146,9 @@ final class CustomPropertyLimitResponse implements BaseModel
      */
     public function withOverallUsage(int $overallUsage): self
     {
-        $obj = clone $this;
-        $obj['overallUsage'] = $overallUsage;
+        $self = clone $this;
+        $self['overallUsage'] = $overallUsage;
 
-        return $obj;
+        return $self;
     }
 }

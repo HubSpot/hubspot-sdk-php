@@ -108,16 +108,16 @@ final class ExternalUnifiedEvent implements BaseModel
         \DateTimeInterface $occurredAt,
         array $properties,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['id'] = $id;
-        $obj['eventType'] = $eventType;
-        $obj['objectID'] = $objectID;
-        $obj['objectType'] = $objectType;
-        $obj['occurredAt'] = $occurredAt;
-        $obj['properties'] = $properties;
+        $self['id'] = $id;
+        $self['eventType'] = $eventType;
+        $self['objectID'] = $objectID;
+        $self['objectType'] = $objectType;
+        $self['occurredAt'] = $occurredAt;
+        $self['properties'] = $properties;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -125,10 +125,10 @@ final class ExternalUnifiedEvent implements BaseModel
      */
     public function withID(string $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -136,10 +136,10 @@ final class ExternalUnifiedEvent implements BaseModel
      */
     public function withEventType(string $eventType): self
     {
-        $obj = clone $this;
-        $obj['eventType'] = $eventType;
+        $self = clone $this;
+        $self['eventType'] = $eventType;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -147,10 +147,10 @@ final class ExternalUnifiedEvent implements BaseModel
      */
     public function withObjectID(string $objectID): self
     {
-        $obj = clone $this;
-        $obj['objectID'] = $objectID;
+        $self = clone $this;
+        $self['objectID'] = $objectID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -158,10 +158,10 @@ final class ExternalUnifiedEvent implements BaseModel
      */
     public function withObjectType(string $objectType): self
     {
-        $obj = clone $this;
-        $obj['objectType'] = $objectType;
+        $self = clone $this;
+        $self['objectType'] = $objectType;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -169,10 +169,10 @@ final class ExternalUnifiedEvent implements BaseModel
      */
     public function withOccurredAt(\DateTimeInterface $occurredAt): self
     {
-        $obj = clone $this;
-        $obj['occurredAt'] = $occurredAt;
+        $self = clone $this;
+        $self['occurredAt'] = $occurredAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -182,9 +182,9 @@ final class ExternalUnifiedEvent implements BaseModel
      */
     public function withProperties(array $properties): self
     {
-        $obj = clone $this;
-        $obj['properties'] = $properties;
+        $self = clone $this;
+        $self['properties'] = $properties;
 
-        return $obj;
+        return $self;
     }
 }

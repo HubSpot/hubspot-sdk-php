@@ -89,21 +89,21 @@ final class EventUpsertSubscriberStateByEmailParams implements BaseModel
         string $externalAccountID,
         array $inputs
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['externalEventID'] = $externalEventID;
-        $obj['externalAccountID'] = $externalAccountID;
-        $obj['inputs'] = $inputs;
+        $self['externalEventID'] = $externalEventID;
+        $self['externalAccountID'] = $externalAccountID;
+        $self['inputs'] = $inputs;
 
-        return $obj;
+        return $self;
     }
 
     public function withExternalEventID(string $externalEventID): self
     {
-        $obj = clone $this;
-        $obj['externalEventID'] = $externalEventID;
+        $self = clone $this;
+        $self['externalEventID'] = $externalEventID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -111,10 +111,10 @@ final class EventUpsertSubscriberStateByEmailParams implements BaseModel
      */
     public function withExternalAccountID(string $externalAccountID): self
     {
-        $obj = clone $this;
-        $obj['externalAccountID'] = $externalAccountID;
+        $self = clone $this;
+        $self['externalAccountID'] = $externalAccountID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -129,9 +129,9 @@ final class EventUpsertSubscriberStateByEmailParams implements BaseModel
      */
     public function withInputs(array $inputs): self
     {
-        $obj = clone $this;
-        $obj['inputs'] = $inputs;
+        $self = clone $this;
+        $self['inputs'] = $inputs;
 
-        return $obj;
+        return $self;
     }
 }

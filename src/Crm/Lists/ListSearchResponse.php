@@ -99,14 +99,14 @@ final class ListSearchResponse implements BaseModel
         int $offset,
         int $total
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['hasMore'] = $hasMore;
-        $obj['lists'] = $lists;
-        $obj['offset'] = $offset;
-        $obj['total'] = $total;
+        $self['hasMore'] = $hasMore;
+        $self['lists'] = $lists;
+        $self['offset'] = $offset;
+        $self['total'] = $total;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -114,10 +114,10 @@ final class ListSearchResponse implements BaseModel
      */
     public function withHasMore(bool $hasMore): self
     {
-        $obj = clone $this;
-        $obj['hasMore'] = $hasMore;
+        $self = clone $this;
+        $self['hasMore'] = $hasMore;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -141,10 +141,10 @@ final class ListSearchResponse implements BaseModel
      */
     public function withLists(array $lists): self
     {
-        $obj = clone $this;
-        $obj['lists'] = $lists;
+        $self = clone $this;
+        $self['lists'] = $lists;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -152,10 +152,10 @@ final class ListSearchResponse implements BaseModel
      */
     public function withOffset(int $offset): self
     {
-        $obj = clone $this;
-        $obj['offset'] = $offset;
+        $self = clone $this;
+        $self['offset'] = $offset;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -163,9 +163,9 @@ final class ListSearchResponse implements BaseModel
      */
     public function withTotal(int $total): self
     {
-        $obj = clone $this;
-        $obj['total'] = $total;
+        $self = clone $this;
+        $self['total'] = $total;
 
-        return $obj;
+        return $self;
     }
 }

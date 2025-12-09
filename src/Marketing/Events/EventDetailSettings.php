@@ -56,12 +56,12 @@ final class EventDetailSettings implements BaseModel
      */
     public static function with(int $appID, string $eventDetailsURL): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['appID'] = $appID;
-        $obj['eventDetailsURL'] = $eventDetailsURL;
+        $self['appID'] = $appID;
+        $self['eventDetailsURL'] = $eventDetailsURL;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -69,10 +69,10 @@ final class EventDetailSettings implements BaseModel
      */
     public function withAppID(int $appID): self
     {
-        $obj = clone $this;
-        $obj['appID'] = $appID;
+        $self = clone $this;
+        $self['appID'] = $appID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -80,9 +80,9 @@ final class EventDetailSettings implements BaseModel
      */
     public function withEventDetailsURL(string $eventDetailsURL): self
     {
-        $obj = clone $this;
-        $obj['eventDetailsURL'] = $eventDetailsURL;
+        $self = clone $this;
+        $self['eventDetailsURL'] = $eventDetailsURL;
 
-        return $obj;
+        return $self;
     }
 }

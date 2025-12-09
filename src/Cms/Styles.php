@@ -114,19 +114,19 @@ final class Styles implements BaseModel
         string $verticalAlignment,
         ?array $breakpointStyles = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['backgroundColor'] = $backgroundColor;
-        $obj['backgroundGradient'] = $backgroundGradient;
-        $obj['backgroundImage'] = $backgroundImage;
-        $obj['flexboxPositioning'] = $flexboxPositioning;
-        $obj['forceFullWidthSection'] = $forceFullWidthSection;
-        $obj['maxWidthSectionCentering'] = $maxWidthSectionCentering;
-        $obj['verticalAlignment'] = $verticalAlignment;
+        $self['backgroundColor'] = $backgroundColor;
+        $self['backgroundGradient'] = $backgroundGradient;
+        $self['backgroundImage'] = $backgroundImage;
+        $self['flexboxPositioning'] = $flexboxPositioning;
+        $self['forceFullWidthSection'] = $forceFullWidthSection;
+        $self['maxWidthSectionCentering'] = $maxWidthSectionCentering;
+        $self['verticalAlignment'] = $verticalAlignment;
 
-        null !== $breakpointStyles && $obj['breakpointStyles'] = $breakpointStyles;
+        null !== $breakpointStyles && $self['breakpointStyles'] = $breakpointStyles;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -136,10 +136,10 @@ final class Styles implements BaseModel
      */
     public function withBackgroundColor(RgbaColor|array $backgroundColor): self
     {
-        $obj = clone $this;
-        $obj['backgroundColor'] = $backgroundColor;
+        $self = clone $this;
+        $self['backgroundColor'] = $backgroundColor;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -150,10 +150,10 @@ final class Styles implements BaseModel
     public function withBackgroundGradient(
         Gradient|array $backgroundGradient
     ): self {
-        $obj = clone $this;
-        $obj['backgroundGradient'] = $backgroundGradient;
+        $self = clone $this;
+        $self['backgroundGradient'] = $backgroundGradient;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -164,43 +164,43 @@ final class Styles implements BaseModel
     public function withBackgroundImage(
         BackgroundImage|array $backgroundImage
     ): self {
-        $obj = clone $this;
-        $obj['backgroundImage'] = $backgroundImage;
+        $self = clone $this;
+        $self['backgroundImage'] = $backgroundImage;
 
-        return $obj;
+        return $self;
     }
 
     public function withFlexboxPositioning(string $flexboxPositioning): self
     {
-        $obj = clone $this;
-        $obj['flexboxPositioning'] = $flexboxPositioning;
+        $self = clone $this;
+        $self['flexboxPositioning'] = $flexboxPositioning;
 
-        return $obj;
+        return $self;
     }
 
     public function withForceFullWidthSection(bool $forceFullWidthSection): self
     {
-        $obj = clone $this;
-        $obj['forceFullWidthSection'] = $forceFullWidthSection;
+        $self = clone $this;
+        $self['forceFullWidthSection'] = $forceFullWidthSection;
 
-        return $obj;
+        return $self;
     }
 
     public function withMaxWidthSectionCentering(
         int $maxWidthSectionCentering
     ): self {
-        $obj = clone $this;
-        $obj['maxWidthSectionCentering'] = $maxWidthSectionCentering;
+        $self = clone $this;
+        $self['maxWidthSectionCentering'] = $maxWidthSectionCentering;
 
-        return $obj;
+        return $self;
     }
 
     public function withVerticalAlignment(string $verticalAlignment): self
     {
-        $obj = clone $this;
-        $obj['verticalAlignment'] = $verticalAlignment;
+        $self = clone $this;
+        $self['verticalAlignment'] = $verticalAlignment;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -210,9 +210,9 @@ final class Styles implements BaseModel
      */
     public function withBreakpointStyles(array $breakpointStyles): self
     {
-        $obj = clone $this;
-        $obj['breakpointStyles'] = $breakpointStyles;
+        $self = clone $this;
+        $self['breakpointStyles'] = $breakpointStyles;
 
-        return $obj;
+        return $self;
     }
 }

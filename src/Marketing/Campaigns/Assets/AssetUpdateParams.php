@@ -58,27 +58,27 @@ final class AssetUpdateParams implements BaseModel
      */
     public static function with(string $campaignGuid, string $assetType): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['campaignGuid'] = $campaignGuid;
-        $obj['assetType'] = $assetType;
+        $self['campaignGuid'] = $campaignGuid;
+        $self['assetType'] = $assetType;
 
-        return $obj;
+        return $self;
     }
 
     public function withCampaignGuid(string $campaignGuid): self
     {
-        $obj = clone $this;
-        $obj['campaignGuid'] = $campaignGuid;
+        $self = clone $this;
+        $self['campaignGuid'] = $campaignGuid;
 
-        return $obj;
+        return $self;
     }
 
     public function withAssetType(string $assetType): self
     {
-        $obj = clone $this;
-        $obj['assetType'] = $assetType;
+        $self = clone $this;
+        $self['assetType'] = $assetType;
 
-        return $obj;
+        return $self;
     }
 }

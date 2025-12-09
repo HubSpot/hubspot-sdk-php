@@ -151,21 +151,21 @@ final class SimplePublicUpsertObject implements BaseModel
         ?array $propertiesWithHistory = null,
         ?string $url = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['id'] = $id;
-        $obj['archived'] = $archived;
-        $obj['createdAt'] = $createdAt;
-        $obj['new'] = $new;
-        $obj['properties'] = $properties;
-        $obj['updatedAt'] = $updatedAt;
+        $self['id'] = $id;
+        $self['archived'] = $archived;
+        $self['createdAt'] = $createdAt;
+        $self['new'] = $new;
+        $self['properties'] = $properties;
+        $self['updatedAt'] = $updatedAt;
 
-        null !== $archivedAt && $obj['archivedAt'] = $archivedAt;
-        null !== $objectWriteTraceID && $obj['objectWriteTraceID'] = $objectWriteTraceID;
-        null !== $propertiesWithHistory && $obj['propertiesWithHistory'] = $propertiesWithHistory;
-        null !== $url && $obj['url'] = $url;
+        null !== $archivedAt && $self['archivedAt'] = $archivedAt;
+        null !== $objectWriteTraceID && $self['objectWriteTraceID'] = $objectWriteTraceID;
+        null !== $propertiesWithHistory && $self['propertiesWithHistory'] = $propertiesWithHistory;
+        null !== $url && $self['url'] = $url;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -173,10 +173,10 @@ final class SimplePublicUpsertObject implements BaseModel
      */
     public function withID(string $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -184,10 +184,10 @@ final class SimplePublicUpsertObject implements BaseModel
      */
     public function withArchived(bool $archived): self
     {
-        $obj = clone $this;
-        $obj['archived'] = $archived;
+        $self = clone $this;
+        $self['archived'] = $archived;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -195,10 +195,10 @@ final class SimplePublicUpsertObject implements BaseModel
      */
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
-        $obj = clone $this;
-        $obj['createdAt'] = $createdAt;
+        $self = clone $this;
+        $self['createdAt'] = $createdAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -206,10 +206,10 @@ final class SimplePublicUpsertObject implements BaseModel
      */
     public function withNew(bool $new): self
     {
-        $obj = clone $this;
-        $obj['new'] = $new;
+        $self = clone $this;
+        $self['new'] = $new;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -219,10 +219,10 @@ final class SimplePublicUpsertObject implements BaseModel
      */
     public function withProperties(array $properties): self
     {
-        $obj = clone $this;
-        $obj['properties'] = $properties;
+        $self = clone $this;
+        $self['properties'] = $properties;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -230,10 +230,10 @@ final class SimplePublicUpsertObject implements BaseModel
      */
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
-        $obj = clone $this;
-        $obj['updatedAt'] = $updatedAt;
+        $self = clone $this;
+        $self['updatedAt'] = $updatedAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -241,10 +241,10 @@ final class SimplePublicUpsertObject implements BaseModel
      */
     public function withArchivedAt(\DateTimeInterface $archivedAt): self
     {
-        $obj = clone $this;
-        $obj['archivedAt'] = $archivedAt;
+        $self = clone $this;
+        $self['archivedAt'] = $archivedAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -252,10 +252,10 @@ final class SimplePublicUpsertObject implements BaseModel
      */
     public function withObjectWriteTraceID(string $objectWriteTraceID): self
     {
-        $obj = clone $this;
-        $obj['objectWriteTraceID'] = $objectWriteTraceID;
+        $self = clone $this;
+        $self['objectWriteTraceID'] = $objectWriteTraceID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -273,17 +273,17 @@ final class SimplePublicUpsertObject implements BaseModel
     public function withPropertiesWithHistory(
         array $propertiesWithHistory
     ): self {
-        $obj = clone $this;
-        $obj['propertiesWithHistory'] = $propertiesWithHistory;
+        $self = clone $this;
+        $self['propertiesWithHistory'] = $propertiesWithHistory;
 
-        return $obj;
+        return $self;
     }
 
     public function withURL(string $url): self
     {
-        $obj = clone $this;
-        $obj['url'] = $url;
+        $self = clone $this;
+        $self['url'] = $url;
 
-        return $obj;
+        return $self;
     }
 }

@@ -58,21 +58,21 @@ final class SubscriptionUpdateParams implements BaseModel
      */
     public static function with(int $appID, ?bool $active = null): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['appID'] = $appID;
+        $self['appID'] = $appID;
 
-        null !== $active && $obj['active'] = $active;
+        null !== $active && $self['active'] = $active;
 
-        return $obj;
+        return $self;
     }
 
     public function withAppID(int $appID): self
     {
-        $obj = clone $this;
-        $obj['appID'] = $appID;
+        $self = clone $this;
+        $self['appID'] = $appID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -80,9 +80,9 @@ final class SubscriptionUpdateParams implements BaseModel
      */
     public function withActive(bool $active): self
     {
-        $obj = clone $this;
-        $obj['active'] = $active;
+        $self = clone $this;
+        $self['active'] = $active;
 
-        return $obj;
+        return $self;
     }
 }

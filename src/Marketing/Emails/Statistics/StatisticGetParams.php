@@ -71,14 +71,14 @@ final class StatisticGetParams implements BaseModel
         ?string $property = null,
         ?string $startTimestamp = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $emailIDs && $obj['emailIDs'] = $emailIDs;
-        null !== $endTimestamp && $obj['endTimestamp'] = $endTimestamp;
-        null !== $property && $obj['property'] = $property;
-        null !== $startTimestamp && $obj['startTimestamp'] = $startTimestamp;
+        null !== $emailIDs && $self['emailIDs'] = $emailIDs;
+        null !== $endTimestamp && $self['endTimestamp'] = $endTimestamp;
+        null !== $property && $self['property'] = $property;
+        null !== $startTimestamp && $self['startTimestamp'] = $startTimestamp;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -88,10 +88,10 @@ final class StatisticGetParams implements BaseModel
      */
     public function withEmailIDs(array $emailIDs): self
     {
-        $obj = clone $this;
-        $obj['emailIDs'] = $emailIDs;
+        $self = clone $this;
+        $self['emailIDs'] = $emailIDs;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -99,10 +99,10 @@ final class StatisticGetParams implements BaseModel
      */
     public function withEndTimestamp(string $endTimestamp): self
     {
-        $obj = clone $this;
-        $obj['endTimestamp'] = $endTimestamp;
+        $self = clone $this;
+        $self['endTimestamp'] = $endTimestamp;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -110,10 +110,10 @@ final class StatisticGetParams implements BaseModel
      */
     public function withProperty(string $property): self
     {
-        $obj = clone $this;
-        $obj['property'] = $property;
+        $self = clone $this;
+        $self['property'] = $property;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -121,9 +121,9 @@ final class StatisticGetParams implements BaseModel
      */
     public function withStartTimestamp(string $startTimestamp): self
     {
-        $obj = clone $this;
-        $obj['startTimestamp'] = $startTimestamp;
+        $self = clone $this;
+        $self['startTimestamp'] = $startTimestamp;
 
-        return $obj;
+        return $self;
     }
 }

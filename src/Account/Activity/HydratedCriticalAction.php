@@ -135,22 +135,22 @@ final class HydratedCriticalAction implements BaseModel
         ?string $objectID = null,
         ?string $regionCode = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['id'] = $id;
-        $obj['createdAt'] = $createdAt;
-        $obj['type'] = $type;
-        $obj['userID'] = $userID;
+        $self['id'] = $id;
+        $self['createdAt'] = $createdAt;
+        $self['type'] = $type;
+        $self['userID'] = $userID;
 
-        null !== $actingUser && $obj['actingUser'] = $actingUser;
-        null !== $countryCode && $obj['countryCode'] = $countryCode;
-        null !== $infoURL && $obj['infoURL'] = $infoURL;
-        null !== $ipAddress && $obj['ipAddress'] = $ipAddress;
-        null !== $location && $obj['location'] = $location;
-        null !== $objectID && $obj['objectID'] = $objectID;
-        null !== $regionCode && $obj['regionCode'] = $regionCode;
+        null !== $actingUser && $self['actingUser'] = $actingUser;
+        null !== $countryCode && $self['countryCode'] = $countryCode;
+        null !== $infoURL && $self['infoURL'] = $infoURL;
+        null !== $ipAddress && $self['ipAddress'] = $ipAddress;
+        null !== $location && $self['location'] = $location;
+        null !== $objectID && $self['objectID'] = $objectID;
+        null !== $regionCode && $self['regionCode'] = $regionCode;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -158,10 +158,10 @@ final class HydratedCriticalAction implements BaseModel
      */
     public function withID(string $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -169,10 +169,10 @@ final class HydratedCriticalAction implements BaseModel
      */
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
-        $obj = clone $this;
-        $obj['createdAt'] = $createdAt;
+        $self = clone $this;
+        $self['createdAt'] = $createdAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -180,10 +180,10 @@ final class HydratedCriticalAction implements BaseModel
      */
     public function withType(string $type): self
     {
-        $obj = clone $this;
-        $obj['type'] = $type;
+        $self = clone $this;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -191,10 +191,10 @@ final class HydratedCriticalAction implements BaseModel
      */
     public function withUserID(int $userID): self
     {
-        $obj = clone $this;
-        $obj['userID'] = $userID;
+        $self = clone $this;
+        $self['userID'] = $userID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -202,10 +202,10 @@ final class HydratedCriticalAction implements BaseModel
      */
     public function withActingUser(string $actingUser): self
     {
-        $obj = clone $this;
-        $obj['actingUser'] = $actingUser;
+        $self = clone $this;
+        $self['actingUser'] = $actingUser;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -213,10 +213,10 @@ final class HydratedCriticalAction implements BaseModel
      */
     public function withCountryCode(string $countryCode): self
     {
-        $obj = clone $this;
-        $obj['countryCode'] = $countryCode;
+        $self = clone $this;
+        $self['countryCode'] = $countryCode;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -224,10 +224,10 @@ final class HydratedCriticalAction implements BaseModel
      */
     public function withInfoURL(string $infoURL): self
     {
-        $obj = clone $this;
-        $obj['infoURL'] = $infoURL;
+        $self = clone $this;
+        $self['infoURL'] = $infoURL;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -235,18 +235,18 @@ final class HydratedCriticalAction implements BaseModel
      */
     public function withIPAddress(string $ipAddress): self
     {
-        $obj = clone $this;
-        $obj['ipAddress'] = $ipAddress;
+        $self = clone $this;
+        $self['ipAddress'] = $ipAddress;
 
-        return $obj;
+        return $self;
     }
 
     public function withLocation(string $location): self
     {
-        $obj = clone $this;
-        $obj['location'] = $location;
+        $self = clone $this;
+        $self['location'] = $location;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -254,10 +254,10 @@ final class HydratedCriticalAction implements BaseModel
      */
     public function withObjectID(string $objectID): self
     {
-        $obj = clone $this;
-        $obj['objectID'] = $objectID;
+        $self = clone $this;
+        $self['objectID'] = $objectID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -265,9 +265,9 @@ final class HydratedCriticalAction implements BaseModel
      */
     public function withRegionCode(string $regionCode): self
     {
-        $obj = clone $this;
-        $obj['regionCode'] = $regionCode;
+        $self = clone $this;
+        $self['regionCode'] = $regionCode;
 
-        return $obj;
+        return $self;
     }
 }

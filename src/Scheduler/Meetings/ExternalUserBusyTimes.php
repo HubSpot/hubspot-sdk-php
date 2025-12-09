@@ -71,13 +71,13 @@ final class ExternalUserBusyTimes implements BaseModel
         bool $isOffline,
         ExternalMeetingsUser|array $meetingsUser
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['busyTimes'] = $busyTimes;
-        $obj['isOffline'] = $isOffline;
-        $obj['meetingsUser'] = $meetingsUser;
+        $self['busyTimes'] = $busyTimes;
+        $self['isOffline'] = $isOffline;
+        $self['meetingsUser'] = $meetingsUser;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -85,18 +85,18 @@ final class ExternalUserBusyTimes implements BaseModel
      */
     public function withBusyTimes(array $busyTimes): self
     {
-        $obj = clone $this;
-        $obj['busyTimes'] = $busyTimes;
+        $self = clone $this;
+        $self['busyTimes'] = $busyTimes;
 
-        return $obj;
+        return $self;
     }
 
     public function withIsOffline(bool $isOffline): self
     {
-        $obj = clone $this;
-        $obj['isOffline'] = $isOffline;
+        $self = clone $this;
+        $self['isOffline'] = $isOffline;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -111,9 +111,9 @@ final class ExternalUserBusyTimes implements BaseModel
     public function withMeetingsUser(
         ExternalMeetingsUser|array $meetingsUser
     ): self {
-        $obj = clone $this;
-        $obj['meetingsUser'] = $meetingsUser;
+        $self = clone $this;
+        $self['meetingsUser'] = $meetingsUser;
 
-        return $obj;
+        return $self;
     }
 }

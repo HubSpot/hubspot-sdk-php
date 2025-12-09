@@ -95,14 +95,14 @@ final class ImportResult implements BaseModel
         bool $rowLimitExceeded,
         int $rowsImported
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['duplicateRows'] = $duplicateRows;
-        $obj['errors'] = $errors;
-        $obj['rowLimitExceeded'] = $rowLimitExceeded;
-        $obj['rowsImported'] = $rowsImported;
+        $self['duplicateRows'] = $duplicateRows;
+        $self['errors'] = $errors;
+        $self['rowLimitExceeded'] = $rowLimitExceeded;
+        $self['rowsImported'] = $rowsImported;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -110,10 +110,10 @@ final class ImportResult implements BaseModel
      */
     public function withDuplicateRows(int $duplicateRows): self
     {
-        $obj = clone $this;
-        $obj['duplicateRows'] = $duplicateRows;
+        $self = clone $this;
+        $self['duplicateRows'] = $duplicateRows;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -131,10 +131,10 @@ final class ImportResult implements BaseModel
      */
     public function withErrors(array $errors): self
     {
-        $obj = clone $this;
-        $obj['errors'] = $errors;
+        $self = clone $this;
+        $self['errors'] = $errors;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -142,10 +142,10 @@ final class ImportResult implements BaseModel
      */
     public function withRowLimitExceeded(bool $rowLimitExceeded): self
     {
-        $obj = clone $this;
-        $obj['rowLimitExceeded'] = $rowLimitExceeded;
+        $self = clone $this;
+        $self['rowLimitExceeded'] = $rowLimitExceeded;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -153,9 +153,9 @@ final class ImportResult implements BaseModel
      */
     public function withRowsImported(int $rowsImported): self
     {
-        $obj = clone $this;
-        $obj['rowsImported'] = $rowsImported;
+        $self = clone $this;
+        $self['rowsImported'] = $rowsImported;
 
-        return $obj;
+        return $self;
     }
 }

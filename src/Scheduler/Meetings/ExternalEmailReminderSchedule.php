@@ -61,12 +61,12 @@ final class ExternalEmailReminderSchedule implements BaseModel
         array $reminders,
         bool $shouldIncludeInviteDescription
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['reminders'] = $reminders;
-        $obj['shouldIncludeInviteDescription'] = $shouldIncludeInviteDescription;
+        $self['reminders'] = $reminders;
+        $self['shouldIncludeInviteDescription'] = $shouldIncludeInviteDescription;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -76,18 +76,18 @@ final class ExternalEmailReminderSchedule implements BaseModel
      */
     public function withReminders(array $reminders): self
     {
-        $obj = clone $this;
-        $obj['reminders'] = $reminders;
+        $self = clone $this;
+        $self['reminders'] = $reminders;
 
-        return $obj;
+        return $self;
     }
 
     public function withShouldIncludeInviteDescription(
         bool $shouldIncludeInviteDescription
     ): self {
-        $obj = clone $this;
-        $obj['shouldIncludeInviteDescription'] = $shouldIncludeInviteDescription;
+        $self = clone $this;
+        $self['shouldIncludeInviteDescription'] = $shouldIncludeInviteDescription;
 
-        return $obj;
+        return $self;
     }
 }

@@ -48,12 +48,12 @@ final class PostGetParams implements BaseModel
         ?bool $archived = null,
         ?string $property = null
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $archived && $obj['archived'] = $archived;
-        null !== $property && $obj['property'] = $property;
+        null !== $archived && $self['archived'] = $archived;
+        null !== $property && $self['property'] = $property;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -61,10 +61,10 @@ final class PostGetParams implements BaseModel
      */
     public function withArchived(bool $archived): self
     {
-        $obj = clone $this;
-        $obj['archived'] = $archived;
+        $self = clone $this;
+        $self['archived'] = $archived;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -72,9 +72,9 @@ final class PostGetParams implements BaseModel
      */
     public function withProperty(string $property): self
     {
-        $obj = clone $this;
-        $obj['property'] = $property;
+        $self = clone $this;
+        $self['property'] = $property;
 
-        return $obj;
+        return $self;
     }
 }

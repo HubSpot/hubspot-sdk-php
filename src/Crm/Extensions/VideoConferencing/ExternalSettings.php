@@ -83,16 +83,16 @@ final class ExternalSettings implements BaseModel
         ?string $updateMeetingURL = null,
         ?string $userVerifyURL = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['createMeetingURL'] = $createMeetingURL;
+        $self['createMeetingURL'] = $createMeetingURL;
 
-        null !== $deleteMeetingURL && $obj['deleteMeetingURL'] = $deleteMeetingURL;
-        null !== $fetchAccountsUri && $obj['fetchAccountsUri'] = $fetchAccountsUri;
-        null !== $updateMeetingURL && $obj['updateMeetingURL'] = $updateMeetingURL;
-        null !== $userVerifyURL && $obj['userVerifyURL'] = $userVerifyURL;
+        null !== $deleteMeetingURL && $self['deleteMeetingURL'] = $deleteMeetingURL;
+        null !== $fetchAccountsUri && $self['fetchAccountsUri'] = $fetchAccountsUri;
+        null !== $updateMeetingURL && $self['updateMeetingURL'] = $updateMeetingURL;
+        null !== $userVerifyURL && $self['userVerifyURL'] = $userVerifyURL;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -100,10 +100,10 @@ final class ExternalSettings implements BaseModel
      */
     public function withCreateMeetingURL(string $createMeetingURL): self
     {
-        $obj = clone $this;
-        $obj['createMeetingURL'] = $createMeetingURL;
+        $self = clone $this;
+        $self['createMeetingURL'] = $createMeetingURL;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -111,18 +111,18 @@ final class ExternalSettings implements BaseModel
      */
     public function withDeleteMeetingURL(string $deleteMeetingURL): self
     {
-        $obj = clone $this;
-        $obj['deleteMeetingURL'] = $deleteMeetingURL;
+        $self = clone $this;
+        $self['deleteMeetingURL'] = $deleteMeetingURL;
 
-        return $obj;
+        return $self;
     }
 
     public function withFetchAccountsUri(string $fetchAccountsUri): self
     {
-        $obj = clone $this;
-        $obj['fetchAccountsUri'] = $fetchAccountsUri;
+        $self = clone $this;
+        $self['fetchAccountsUri'] = $fetchAccountsUri;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -130,10 +130,10 @@ final class ExternalSettings implements BaseModel
      */
     public function withUpdateMeetingURL(string $updateMeetingURL): self
     {
-        $obj = clone $this;
-        $obj['updateMeetingURL'] = $updateMeetingURL;
+        $self = clone $this;
+        $self['updateMeetingURL'] = $updateMeetingURL;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -141,9 +141,9 @@ final class ExternalSettings implements BaseModel
      */
     public function withUserVerifyURL(string $userVerifyURL): self
     {
-        $obj = clone $this;
-        $obj['userVerifyURL'] = $userVerifyURL;
+        $self = clone $this;
+        $self['userVerifyURL'] = $userVerifyURL;
 
-        return $obj;
+        return $self;
     }
 }

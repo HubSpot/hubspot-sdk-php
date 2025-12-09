@@ -98,31 +98,31 @@ final class StageReplaceParams implements BaseModel
         string $label,
         array $metadata,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['objectType'] = $objectType;
-        $obj['pipelineID'] = $pipelineID;
-        $obj['displayOrder'] = $displayOrder;
-        $obj['label'] = $label;
-        $obj['metadata'] = $metadata;
+        $self['objectType'] = $objectType;
+        $self['pipelineID'] = $pipelineID;
+        $self['displayOrder'] = $displayOrder;
+        $self['label'] = $label;
+        $self['metadata'] = $metadata;
 
-        return $obj;
+        return $self;
     }
 
     public function withObjectType(string $objectType): self
     {
-        $obj = clone $this;
-        $obj['objectType'] = $objectType;
+        $self = clone $this;
+        $self['objectType'] = $objectType;
 
-        return $obj;
+        return $self;
     }
 
     public function withPipelineID(string $pipelineID): self
     {
-        $obj = clone $this;
-        $obj['pipelineID'] = $pipelineID;
+        $self = clone $this;
+        $self['pipelineID'] = $pipelineID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -130,10 +130,10 @@ final class StageReplaceParams implements BaseModel
      */
     public function withDisplayOrder(int $displayOrder): self
     {
-        $obj = clone $this;
-        $obj['displayOrder'] = $displayOrder;
+        $self = clone $this;
+        $self['displayOrder'] = $displayOrder;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -141,10 +141,10 @@ final class StageReplaceParams implements BaseModel
      */
     public function withLabel(string $label): self
     {
-        $obj = clone $this;
-        $obj['label'] = $label;
+        $self = clone $this;
+        $self['label'] = $label;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -158,9 +158,9 @@ final class StageReplaceParams implements BaseModel
      */
     public function withMetadata(array $metadata): self
     {
-        $obj = clone $this;
-        $obj['metadata'] = $metadata;
+        $self = clone $this;
+        $self['metadata'] = $metadata;
 
-        return $obj;
+        return $self;
     }
 }

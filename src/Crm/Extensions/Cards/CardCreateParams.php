@@ -100,14 +100,14 @@ final class CardCreateParams implements BaseModel
         CardFetchBody|array $fetch,
         string $title,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['actions'] = $actions;
-        $obj['display'] = $display;
-        $obj['fetch'] = $fetch;
-        $obj['title'] = $title;
+        $self['actions'] = $actions;
+        $self['display'] = $display;
+        $self['fetch'] = $fetch;
+        $self['title'] = $title;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -117,10 +117,10 @@ final class CardCreateParams implements BaseModel
      */
     public function withActions(CardActions|array $actions): self
     {
-        $obj = clone $this;
-        $obj['actions'] = $actions;
+        $self = clone $this;
+        $self['actions'] = $actions;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -130,10 +130,10 @@ final class CardCreateParams implements BaseModel
      */
     public function withDisplay(CardDisplayBody|array $display): self
     {
-        $obj = clone $this;
-        $obj['display'] = $display;
+        $self = clone $this;
+        $self['display'] = $display;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -148,10 +148,10 @@ final class CardCreateParams implements BaseModel
      */
     public function withFetch(CardFetchBody|array $fetch): self
     {
-        $obj = clone $this;
-        $obj['fetch'] = $fetch;
+        $self = clone $this;
+        $self['fetch'] = $fetch;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -159,9 +159,9 @@ final class CardCreateParams implements BaseModel
      */
     public function withTitle(string $title): self
     {
-        $obj = clone $this;
-        $obj['title'] = $title;
+        $self = clone $this;
+        $self['title'] = $title;
 
-        return $obj;
+        return $self;
     }
 }

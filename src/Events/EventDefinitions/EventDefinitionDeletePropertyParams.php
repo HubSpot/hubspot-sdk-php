@@ -53,18 +53,18 @@ final class EventDefinitionDeletePropertyParams implements BaseModel
      */
     public static function with(string $eventName): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['eventName'] = $eventName;
+        $self['eventName'] = $eventName;
 
-        return $obj;
+        return $self;
     }
 
     public function withEventName(string $eventName): self
     {
-        $obj = clone $this;
-        $obj['eventName'] = $eventName;
+        $self = clone $this;
+        $self['eventName'] = $eventName;
 
-        return $obj;
+        return $self;
     }
 }

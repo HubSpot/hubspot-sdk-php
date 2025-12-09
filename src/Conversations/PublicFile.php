@@ -73,32 +73,32 @@ final class PublicFile implements BaseModel
         ?string $name = null,
         ?string $url = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['fileID'] = $fileID;
-        $obj['fileUsageType'] = $fileUsageType;
-        $obj['type'] = $type;
+        $self['fileID'] = $fileID;
+        $self['fileUsageType'] = $fileUsageType;
+        $self['type'] = $type;
 
-        null !== $name && $obj['name'] = $name;
-        null !== $url && $obj['url'] = $url;
+        null !== $name && $self['name'] = $name;
+        null !== $url && $self['url'] = $url;
 
-        return $obj;
+        return $self;
     }
 
     public function withFileID(string $fileID): self
     {
-        $obj = clone $this;
-        $obj['fileID'] = $fileID;
+        $self = clone $this;
+        $self['fileID'] = $fileID;
 
-        return $obj;
+        return $self;
     }
 
     public function withFileUsageType(string $fileUsageType): self
     {
-        $obj = clone $this;
-        $obj['fileUsageType'] = $fileUsageType;
+        $self = clone $this;
+        $self['fileUsageType'] = $fileUsageType;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -106,25 +106,25 @@ final class PublicFile implements BaseModel
      */
     public function withType(Type|string $type): self
     {
-        $obj = clone $this;
-        $obj['type'] = $type;
+        $self = clone $this;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 
     public function withName(string $name): self
     {
-        $obj = clone $this;
-        $obj['name'] = $name;
+        $self = clone $this;
+        $self['name'] = $name;
 
-        return $obj;
+        return $self;
     }
 
     public function withURL(string $url): self
     {
-        $obj = clone $this;
-        $obj['url'] = $url;
+        $self = clone $this;
+        $self['url'] = $url;
 
-        return $obj;
+        return $self;
     }
 }

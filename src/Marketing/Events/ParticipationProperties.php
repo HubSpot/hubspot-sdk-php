@@ -68,15 +68,15 @@ final class ParticipationProperties implements BaseModel
         ?int $attendanceDurationSeconds = null,
         ?string $attendancePercentage = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['attendanceState'] = $attendanceState;
-        $obj['occurredAt'] = $occurredAt;
+        $self['attendanceState'] = $attendanceState;
+        $self['occurredAt'] = $occurredAt;
 
-        null !== $attendanceDurationSeconds && $obj['attendanceDurationSeconds'] = $attendanceDurationSeconds;
-        null !== $attendancePercentage && $obj['attendancePercentage'] = $attendancePercentage;
+        null !== $attendanceDurationSeconds && $self['attendanceDurationSeconds'] = $attendanceDurationSeconds;
+        null !== $attendancePercentage && $self['attendancePercentage'] = $attendancePercentage;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -85,34 +85,34 @@ final class ParticipationProperties implements BaseModel
     public function withAttendanceState(
         AttendanceState|string $attendanceState
     ): self {
-        $obj = clone $this;
-        $obj['attendanceState'] = $attendanceState;
+        $self = clone $this;
+        $self['attendanceState'] = $attendanceState;
 
-        return $obj;
+        return $self;
     }
 
     public function withOccurredAt(int $occurredAt): self
     {
-        $obj = clone $this;
-        $obj['occurredAt'] = $occurredAt;
+        $self = clone $this;
+        $self['occurredAt'] = $occurredAt;
 
-        return $obj;
+        return $self;
     }
 
     public function withAttendanceDurationSeconds(
         int $attendanceDurationSeconds
     ): self {
-        $obj = clone $this;
-        $obj['attendanceDurationSeconds'] = $attendanceDurationSeconds;
+        $self = clone $this;
+        $self['attendanceDurationSeconds'] = $attendanceDurationSeconds;
 
-        return $obj;
+        return $self;
     }
 
     public function withAttendancePercentage(string $attendancePercentage): self
     {
-        $obj = clone $this;
-        $obj['attendancePercentage'] = $attendancePercentage;
+        $self = clone $this;
+        $self['attendancePercentage'] = $attendancePercentage;
 
-        return $obj;
+        return $self;
     }
 }

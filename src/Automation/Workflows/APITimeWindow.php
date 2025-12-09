@@ -63,14 +63,14 @@ final class APITimeWindow implements BaseModel
         APITimeOfDay|array|null $endTime = null,
         APITimeOfDay|array|null $startTime = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['day'] = $day;
+        $self['day'] = $day;
 
-        null !== $endTime && $obj['endTime'] = $endTime;
-        null !== $startTime && $obj['startTime'] = $startTime;
+        null !== $endTime && $self['endTime'] = $endTime;
+        null !== $startTime && $self['startTime'] = $startTime;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -78,10 +78,10 @@ final class APITimeWindow implements BaseModel
      */
     public function withDay(Day|string $day): self
     {
-        $obj = clone $this;
-        $obj['day'] = $day;
+        $self = clone $this;
+        $self['day'] = $day;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -89,10 +89,10 @@ final class APITimeWindow implements BaseModel
      */
     public function withEndTime(APITimeOfDay|array $endTime): self
     {
-        $obj = clone $this;
-        $obj['endTime'] = $endTime;
+        $self = clone $this;
+        $self['endTime'] = $endTime;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -100,9 +100,9 @@ final class APITimeWindow implements BaseModel
      */
     public function withStartTime(APITimeOfDay|array $startTime): self
     {
-        $obj = clone $this;
-        $obj['startTime'] = $startTime;
+        $self = clone $this;
+        $self['startTime'] = $startTime;
 
-        return $obj;
+        return $self;
     }
 }

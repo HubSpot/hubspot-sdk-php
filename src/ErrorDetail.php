@@ -89,16 +89,16 @@ final class ErrorDetail implements BaseModel
         ?string $in = null,
         ?string $subCategory = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['message'] = $message;
+        $self['message'] = $message;
 
-        null !== $code && $obj['code'] = $code;
-        null !== $context && $obj['context'] = $context;
-        null !== $in && $obj['in'] = $in;
-        null !== $subCategory && $obj['subCategory'] = $subCategory;
+        null !== $code && $self['code'] = $code;
+        null !== $context && $self['context'] = $context;
+        null !== $in && $self['in'] = $in;
+        null !== $subCategory && $self['subCategory'] = $subCategory;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -106,10 +106,10 @@ final class ErrorDetail implements BaseModel
      */
     public function withMessage(string $message): self
     {
-        $obj = clone $this;
-        $obj['message'] = $message;
+        $self = clone $this;
+        $self['message'] = $message;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -117,10 +117,10 @@ final class ErrorDetail implements BaseModel
      */
     public function withCode(string $code): self
     {
-        $obj = clone $this;
-        $obj['code'] = $code;
+        $self = clone $this;
+        $self['code'] = $code;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -130,10 +130,10 @@ final class ErrorDetail implements BaseModel
      */
     public function withContext(array $context): self
     {
-        $obj = clone $this;
-        $obj['context'] = $context;
+        $self = clone $this;
+        $self['context'] = $context;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -141,10 +141,10 @@ final class ErrorDetail implements BaseModel
      */
     public function withIn(string $in): self
     {
-        $obj = clone $this;
-        $obj['in'] = $in;
+        $self = clone $this;
+        $self['in'] = $in;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -152,9 +152,9 @@ final class ErrorDetail implements BaseModel
      */
     public function withSubCategory(string $subCategory): self
     {
-        $obj = clone $this;
-        $obj['subCategory'] = $subCategory;
+        $self = clone $this;
+        $self['subCategory'] = $subCategory;
 
-        return $obj;
+        return $self;
     }
 }

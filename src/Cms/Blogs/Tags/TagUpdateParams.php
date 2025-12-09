@@ -129,19 +129,19 @@ final class TagUpdateParams implements BaseModel
         \DateTimeInterface $updated,
         ?bool $archived = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['id'] = $id;
-        $obj['created'] = $created;
-        $obj['deletedAt'] = $deletedAt;
-        $obj['language'] = $language;
-        $obj['name'] = $name;
-        $obj['translatedFromID'] = $translatedFromID;
-        $obj['updated'] = $updated;
+        $self['id'] = $id;
+        $self['created'] = $created;
+        $self['deletedAt'] = $deletedAt;
+        $self['language'] = $language;
+        $self['name'] = $name;
+        $self['translatedFromID'] = $translatedFromID;
+        $self['updated'] = $updated;
 
-        null !== $archived && $obj['archived'] = $archived;
+        null !== $archived && $self['archived'] = $archived;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -149,18 +149,18 @@ final class TagUpdateParams implements BaseModel
      */
     public function withID(string $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     public function withCreated(\DateTimeInterface $created): self
     {
-        $obj = clone $this;
-        $obj['created'] = $created;
+        $self = clone $this;
+        $self['created'] = $created;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -168,10 +168,10 @@ final class TagUpdateParams implements BaseModel
      */
     public function withDeletedAt(\DateTimeInterface $deletedAt): self
     {
-        $obj = clone $this;
-        $obj['deletedAt'] = $deletedAt;
+        $self = clone $this;
+        $self['deletedAt'] = $deletedAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -181,10 +181,10 @@ final class TagUpdateParams implements BaseModel
      */
     public function withLanguage(Language|string $language): self
     {
-        $obj = clone $this;
-        $obj['language'] = $language;
+        $self = clone $this;
+        $self['language'] = $language;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -192,10 +192,10 @@ final class TagUpdateParams implements BaseModel
      */
     public function withName(string $name): self
     {
-        $obj = clone $this;
-        $obj['name'] = $name;
+        $self = clone $this;
+        $self['name'] = $name;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -203,18 +203,18 @@ final class TagUpdateParams implements BaseModel
      */
     public function withTranslatedFromID(int $translatedFromID): self
     {
-        $obj = clone $this;
-        $obj['translatedFromID'] = $translatedFromID;
+        $self = clone $this;
+        $self['translatedFromID'] = $translatedFromID;
 
-        return $obj;
+        return $self;
     }
 
     public function withUpdated(\DateTimeInterface $updated): self
     {
-        $obj = clone $this;
-        $obj['updated'] = $updated;
+        $self = clone $this;
+        $self['updated'] = $updated;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -222,9 +222,9 @@ final class TagUpdateParams implements BaseModel
      */
     public function withArchived(bool $archived): self
     {
-        $obj = clone $this;
-        $obj['archived'] = $archived;
+        $self = clone $this;
+        $self['archived'] = $archived;
 
-        return $obj;
+        return $self;
     }
 }

@@ -140,19 +140,19 @@ final class Pipeline implements BaseModel
         \DateTimeInterface $updatedAt,
         ?\DateTimeInterface $archivedAt = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['id'] = $id;
-        $obj['archived'] = $archived;
-        $obj['createdAt'] = $createdAt;
-        $obj['displayOrder'] = $displayOrder;
-        $obj['label'] = $label;
-        $obj['stages'] = $stages;
-        $obj['updatedAt'] = $updatedAt;
+        $self['id'] = $id;
+        $self['archived'] = $archived;
+        $self['createdAt'] = $createdAt;
+        $self['displayOrder'] = $displayOrder;
+        $self['label'] = $label;
+        $self['stages'] = $stages;
+        $self['updatedAt'] = $updatedAt;
 
-        null !== $archivedAt && $obj['archivedAt'] = $archivedAt;
+        null !== $archivedAt && $self['archivedAt'] = $archivedAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -160,10 +160,10 @@ final class Pipeline implements BaseModel
      */
     public function withID(string $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -171,10 +171,10 @@ final class Pipeline implements BaseModel
      */
     public function withArchived(bool $archived): self
     {
-        $obj = clone $this;
-        $obj['archived'] = $archived;
+        $self = clone $this;
+        $self['archived'] = $archived;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -182,10 +182,10 @@ final class Pipeline implements BaseModel
      */
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
-        $obj = clone $this;
-        $obj['createdAt'] = $createdAt;
+        $self = clone $this;
+        $self['createdAt'] = $createdAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -193,10 +193,10 @@ final class Pipeline implements BaseModel
      */
     public function withDisplayOrder(int $displayOrder): self
     {
-        $obj = clone $this;
-        $obj['displayOrder'] = $displayOrder;
+        $self = clone $this;
+        $self['displayOrder'] = $displayOrder;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -204,10 +204,10 @@ final class Pipeline implements BaseModel
      */
     public function withLabel(string $label): self
     {
-        $obj = clone $this;
-        $obj['label'] = $label;
+        $self = clone $this;
+        $self['label'] = $label;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -227,10 +227,10 @@ final class Pipeline implements BaseModel
      */
     public function withStages(array $stages): self
     {
-        $obj = clone $this;
-        $obj['stages'] = $stages;
+        $self = clone $this;
+        $self['stages'] = $stages;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -238,10 +238,10 @@ final class Pipeline implements BaseModel
      */
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
-        $obj = clone $this;
-        $obj['updatedAt'] = $updatedAt;
+        $self = clone $this;
+        $self['updatedAt'] = $updatedAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -249,9 +249,9 @@ final class Pipeline implements BaseModel
      */
     public function withArchivedAt(\DateTimeInterface $archivedAt): self
     {
-        $obj = clone $this;
-        $obj['archivedAt'] = $archivedAt;
+        $self = clone $this;
+        $self['archivedAt'] = $archivedAt;
 
-        return $obj;
+        return $self;
     }
 }

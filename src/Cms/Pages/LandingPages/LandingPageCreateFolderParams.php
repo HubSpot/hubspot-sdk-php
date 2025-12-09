@@ -114,17 +114,17 @@ final class LandingPageCreateFolderParams implements BaseModel
         int $parentFolderID,
         \DateTimeInterface $updated,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['id'] = $id;
-        $obj['category'] = $category;
-        $obj['created'] = $created;
-        $obj['deletedAt'] = $deletedAt;
-        $obj['name'] = $name;
-        $obj['parentFolderID'] = $parentFolderID;
-        $obj['updated'] = $updated;
+        $self['id'] = $id;
+        $self['category'] = $category;
+        $self['created'] = $created;
+        $self['deletedAt'] = $deletedAt;
+        $self['name'] = $name;
+        $self['parentFolderID'] = $parentFolderID;
+        $self['updated'] = $updated;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -132,10 +132,10 @@ final class LandingPageCreateFolderParams implements BaseModel
      */
     public function withID(string $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -143,18 +143,18 @@ final class LandingPageCreateFolderParams implements BaseModel
      */
     public function withCategory(int $category): self
     {
-        $obj = clone $this;
-        $obj['category'] = $category;
+        $self = clone $this;
+        $self['category'] = $category;
 
-        return $obj;
+        return $self;
     }
 
     public function withCreated(\DateTimeInterface $created): self
     {
-        $obj = clone $this;
-        $obj['created'] = $created;
+        $self = clone $this;
+        $self['created'] = $created;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -162,10 +162,10 @@ final class LandingPageCreateFolderParams implements BaseModel
      */
     public function withDeletedAt(\DateTimeInterface $deletedAt): self
     {
-        $obj = clone $this;
-        $obj['deletedAt'] = $deletedAt;
+        $self = clone $this;
+        $self['deletedAt'] = $deletedAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -173,10 +173,10 @@ final class LandingPageCreateFolderParams implements BaseModel
      */
     public function withName(string $name): self
     {
-        $obj = clone $this;
-        $obj['name'] = $name;
+        $self = clone $this;
+        $self['name'] = $name;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -184,17 +184,17 @@ final class LandingPageCreateFolderParams implements BaseModel
      */
     public function withParentFolderID(int $parentFolderID): self
     {
-        $obj = clone $this;
-        $obj['parentFolderID'] = $parentFolderID;
+        $self = clone $this;
+        $self['parentFolderID'] = $parentFolderID;
 
-        return $obj;
+        return $self;
     }
 
     public function withUpdated(\DateTimeInterface $updated): self
     {
-        $obj = clone $this;
-        $obj['updated'] = $updated;
+        $self = clone $this;
+        $self['updated'] = $updated;
 
-        return $obj;
+        return $self;
     }
 }

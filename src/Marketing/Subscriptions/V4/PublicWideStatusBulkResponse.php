@@ -74,12 +74,12 @@ final class PublicWideStatusBulkResponse implements BaseModel
         string $subscriberIDString,
         array $wideStatuses
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['subscriberIDString'] = $subscriberIDString;
-        $obj['wideStatuses'] = $wideStatuses;
+        $self['subscriberIDString'] = $subscriberIDString;
+        $self['wideStatuses'] = $wideStatuses;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -87,10 +87,10 @@ final class PublicWideStatusBulkResponse implements BaseModel
      */
     public function withSubscriberIDString(string $subscriberIDString): self
     {
-        $obj = clone $this;
-        $obj['subscriberIDString'] = $subscriberIDString;
+        $self = clone $this;
+        $self['subscriberIDString'] = $subscriberIDString;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -107,9 +107,9 @@ final class PublicWideStatusBulkResponse implements BaseModel
      */
     public function withWideStatuses(array $wideStatuses): self
     {
-        $obj = clone $this;
-        $obj['wideStatuses'] = $wideStatuses;
+        $self = clone $this;
+        $self['wideStatuses'] = $wideStatuses;
 
-        return $obj;
+        return $self;
     }
 }

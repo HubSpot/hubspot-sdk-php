@@ -54,54 +54,54 @@ final class ExternalMeetingsWelcomeScreenInfo implements BaseModel
         ?string $title = null,
         ?bool $useCompanyLogo = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $description && $obj['description'] = $description;
-        null !== $logoURL && $obj['logoURL'] = $logoURL;
-        null !== $showWelcomeScreen && $obj['showWelcomeScreen'] = $showWelcomeScreen;
-        null !== $title && $obj['title'] = $title;
-        null !== $useCompanyLogo && $obj['useCompanyLogo'] = $useCompanyLogo;
+        null !== $description && $self['description'] = $description;
+        null !== $logoURL && $self['logoURL'] = $logoURL;
+        null !== $showWelcomeScreen && $self['showWelcomeScreen'] = $showWelcomeScreen;
+        null !== $title && $self['title'] = $title;
+        null !== $useCompanyLogo && $self['useCompanyLogo'] = $useCompanyLogo;
 
-        return $obj;
+        return $self;
     }
 
     public function withDescription(string $description): self
     {
-        $obj = clone $this;
-        $obj['description'] = $description;
+        $self = clone $this;
+        $self['description'] = $description;
 
-        return $obj;
+        return $self;
     }
 
     public function withLogoURL(string $logoURL): self
     {
-        $obj = clone $this;
-        $obj['logoURL'] = $logoURL;
+        $self = clone $this;
+        $self['logoURL'] = $logoURL;
 
-        return $obj;
+        return $self;
     }
 
     public function withShowWelcomeScreen(bool $showWelcomeScreen): self
     {
-        $obj = clone $this;
-        $obj['showWelcomeScreen'] = $showWelcomeScreen;
+        $self = clone $this;
+        $self['showWelcomeScreen'] = $showWelcomeScreen;
 
-        return $obj;
+        return $self;
     }
 
     public function withTitle(string $title): self
     {
-        $obj = clone $this;
-        $obj['title'] = $title;
+        $self = clone $this;
+        $self['title'] = $title;
 
-        return $obj;
+        return $self;
     }
 
     public function withUseCompanyLogo(bool $useCompanyLogo): self
     {
-        $obj = clone $this;
-        $obj['useCompanyLogo'] = $useCompanyLogo;
+        $self = clone $this;
+        $self['useCompanyLogo'] = $useCompanyLogo;
 
-        return $obj;
+        return $self;
     }
 }

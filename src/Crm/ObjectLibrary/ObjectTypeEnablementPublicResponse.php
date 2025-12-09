@@ -48,11 +48,11 @@ final class ObjectTypeEnablementPublicResponse implements BaseModel
      */
     public static function with(bool $enablement): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['enablement'] = $enablement;
+        $self['enablement'] = $enablement;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -60,9 +60,9 @@ final class ObjectTypeEnablementPublicResponse implements BaseModel
      */
     public function withEnablement(bool $enablement): self
     {
-        $obj = clone $this;
-        $obj['enablement'] = $enablement;
+        $self = clone $this;
+        $self['enablement'] = $enablement;
 
-        return $obj;
+        return $self;
     }
 }

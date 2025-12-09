@@ -62,13 +62,13 @@ final class OEmbedDomainsCollectionResponse implements BaseModel
      */
     public static function with(array $results, ?int $totalCount = null): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['results'] = $results;
+        $self['results'] = $results;
 
-        null !== $totalCount && $obj['totalCount'] = $totalCount;
+        null !== $totalCount && $self['totalCount'] = $totalCount;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -84,17 +84,17 @@ final class OEmbedDomainsCollectionResponse implements BaseModel
      */
     public function withResults(array $results): self
     {
-        $obj = clone $this;
-        $obj['results'] = $results;
+        $self = clone $this;
+        $self['results'] = $results;
 
-        return $obj;
+        return $self;
     }
 
     public function withTotalCount(int $totalCount): self
     {
-        $obj = clone $this;
-        $obj['totalCount'] = $totalCount;
+        $self = clone $this;
+        $self['totalCount'] = $totalCount;
 
-        return $obj;
+        return $self;
     }
 }

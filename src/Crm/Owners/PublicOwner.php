@@ -149,22 +149,22 @@ final class PublicOwner implements BaseModel
         ?int $userID = null,
         ?int $userIDIncludingInactive = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['id'] = $id;
-        $obj['archived'] = $archived;
-        $obj['createdAt'] = $createdAt;
-        $obj['type'] = $type;
-        $obj['updatedAt'] = $updatedAt;
+        $self['id'] = $id;
+        $self['archived'] = $archived;
+        $self['createdAt'] = $createdAt;
+        $self['type'] = $type;
+        $self['updatedAt'] = $updatedAt;
 
-        null !== $email && $obj['email'] = $email;
-        null !== $firstName && $obj['firstName'] = $firstName;
-        null !== $lastName && $obj['lastName'] = $lastName;
-        null !== $teams && $obj['teams'] = $teams;
-        null !== $userID && $obj['userID'] = $userID;
-        null !== $userIDIncludingInactive && $obj['userIDIncludingInactive'] = $userIDIncludingInactive;
+        null !== $email && $self['email'] = $email;
+        null !== $firstName && $self['firstName'] = $firstName;
+        null !== $lastName && $self['lastName'] = $lastName;
+        null !== $teams && $self['teams'] = $teams;
+        null !== $userID && $self['userID'] = $userID;
+        null !== $userIDIncludingInactive && $self['userIDIncludingInactive'] = $userIDIncludingInactive;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -172,10 +172,10 @@ final class PublicOwner implements BaseModel
      */
     public function withID(string $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -183,10 +183,10 @@ final class PublicOwner implements BaseModel
      */
     public function withArchived(bool $archived): self
     {
-        $obj = clone $this;
-        $obj['archived'] = $archived;
+        $self = clone $this;
+        $self['archived'] = $archived;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -194,10 +194,10 @@ final class PublicOwner implements BaseModel
      */
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
-        $obj = clone $this;
-        $obj['createdAt'] = $createdAt;
+        $self = clone $this;
+        $self['createdAt'] = $createdAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -207,10 +207,10 @@ final class PublicOwner implements BaseModel
      */
     public function withType(Type|string $type): self
     {
-        $obj = clone $this;
-        $obj['type'] = $type;
+        $self = clone $this;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -218,10 +218,10 @@ final class PublicOwner implements BaseModel
      */
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
-        $obj = clone $this;
-        $obj['updatedAt'] = $updatedAt;
+        $self = clone $this;
+        $self['updatedAt'] = $updatedAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -229,10 +229,10 @@ final class PublicOwner implements BaseModel
      */
     public function withEmail(string $email): self
     {
-        $obj = clone $this;
-        $obj['email'] = $email;
+        $self = clone $this;
+        $self['email'] = $email;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -240,10 +240,10 @@ final class PublicOwner implements BaseModel
      */
     public function withFirstName(string $firstName): self
     {
-        $obj = clone $this;
-        $obj['firstName'] = $firstName;
+        $self = clone $this;
+        $self['firstName'] = $firstName;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -251,10 +251,10 @@ final class PublicOwner implements BaseModel
      */
     public function withLastName(string $lastName): self
     {
-        $obj = clone $this;
-        $obj['lastName'] = $lastName;
+        $self = clone $this;
+        $self['lastName'] = $lastName;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -267,10 +267,10 @@ final class PublicOwner implements BaseModel
      */
     public function withTeams(array $teams): self
     {
-        $obj = clone $this;
-        $obj['teams'] = $teams;
+        $self = clone $this;
+        $self['teams'] = $teams;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -278,10 +278,10 @@ final class PublicOwner implements BaseModel
      */
     public function withUserID(int $userID): self
     {
-        $obj = clone $this;
-        $obj['userID'] = $userID;
+        $self = clone $this;
+        $self['userID'] = $userID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -290,9 +290,9 @@ final class PublicOwner implements BaseModel
     public function withUserIDIncludingInactive(
         int $userIDIncludingInactive
     ): self {
-        $obj = clone $this;
-        $obj['userIDIncludingInactive'] = $userIDIncludingInactive;
+        $self = clone $this;
+        $self['userIDIncludingInactive'] = $userIDIncludingInactive;
 
-        return $obj;
+        return $self;
     }
 }

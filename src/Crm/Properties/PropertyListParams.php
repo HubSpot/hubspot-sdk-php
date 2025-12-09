@@ -62,14 +62,14 @@ final class PropertyListParams implements BaseModel
         ?string $locale = null,
         ?string $properties = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $archived && $obj['archived'] = $archived;
-        null !== $dataSensitivity && $obj['dataSensitivity'] = $dataSensitivity;
-        null !== $locale && $obj['locale'] = $locale;
-        null !== $properties && $obj['properties'] = $properties;
+        null !== $archived && $self['archived'] = $archived;
+        null !== $dataSensitivity && $self['dataSensitivity'] = $dataSensitivity;
+        null !== $locale && $self['locale'] = $locale;
+        null !== $properties && $self['properties'] = $properties;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -77,10 +77,10 @@ final class PropertyListParams implements BaseModel
      */
     public function withArchived(bool $archived): self
     {
-        $obj = clone $this;
-        $obj['archived'] = $archived;
+        $self = clone $this;
+        $self['archived'] = $archived;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -89,25 +89,25 @@ final class PropertyListParams implements BaseModel
     public function withDataSensitivity(
         DataSensitivity|string $dataSensitivity
     ): self {
-        $obj = clone $this;
-        $obj['dataSensitivity'] = $dataSensitivity;
+        $self = clone $this;
+        $self['dataSensitivity'] = $dataSensitivity;
 
-        return $obj;
+        return $self;
     }
 
     public function withLocale(string $locale): self
     {
-        $obj = clone $this;
-        $obj['locale'] = $locale;
+        $self = clone $this;
+        $self['locale'] = $locale;
 
-        return $obj;
+        return $self;
     }
 
     public function withProperties(string $properties): self
     {
-        $obj = clone $this;
-        $obj['properties'] = $properties;
+        $self = clone $this;
+        $self['properties'] = $properties;
 
-        return $obj;
+        return $self;
     }
 }

@@ -50,27 +50,27 @@ final class FlowIDWorkflowIDMappingResponse implements BaseModel
      */
     public static function with(int $flowID, int $workflowID): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['flowID'] = $flowID;
-        $obj['workflowID'] = $workflowID;
+        $self['flowID'] = $flowID;
+        $self['workflowID'] = $workflowID;
 
-        return $obj;
+        return $self;
     }
 
     public function withFlowID(int $flowID): self
     {
-        $obj = clone $this;
-        $obj['flowID'] = $flowID;
+        $self = clone $this;
+        $self['flowID'] = $flowID;
 
-        return $obj;
+        return $self;
     }
 
     public function withWorkflowID(int $workflowID): self
     {
-        $obj = clone $this;
-        $obj['workflowID'] = $workflowID;
+        $self = clone $this;
+        $self['workflowID'] = $workflowID;
 
-        return $obj;
+        return $self;
     }
 }

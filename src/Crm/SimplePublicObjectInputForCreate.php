@@ -68,12 +68,12 @@ final class SimplePublicObjectInputForCreate implements BaseModel
      */
     public static function with(array $associations, array $properties): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['associations'] = $associations;
-        $obj['properties'] = $properties;
+        $self['associations'] = $associations;
+        $self['properties'] = $properties;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -83,10 +83,10 @@ final class SimplePublicObjectInputForCreate implements BaseModel
      */
     public function withAssociations(array $associations): self
     {
-        $obj = clone $this;
-        $obj['associations'] = $associations;
+        $self = clone $this;
+        $self['associations'] = $associations;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -96,9 +96,9 @@ final class SimplePublicObjectInputForCreate implements BaseModel
      */
     public function withProperties(array $properties): self
     {
-        $obj = clone $this;
-        $obj['properties'] = $properties;
+        $self = clone $this;
+        $self['properties'] = $properties;
 
-        return $obj;
+        return $self;
     }
 }

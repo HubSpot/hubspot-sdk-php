@@ -57,14 +57,14 @@ final class PublicEmailSubscriptionDetails implements BaseModel
         ?string $subscriptionID = null,
         ?string $subscriptionName = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $officeLocationID && $obj['officeLocationID'] = $officeLocationID;
-        null !== $preferencesGroupID && $obj['preferencesGroupID'] = $preferencesGroupID;
-        null !== $subscriptionID && $obj['subscriptionID'] = $subscriptionID;
-        null !== $subscriptionName && $obj['subscriptionName'] = $subscriptionName;
+        null !== $officeLocationID && $self['officeLocationID'] = $officeLocationID;
+        null !== $preferencesGroupID && $self['preferencesGroupID'] = $preferencesGroupID;
+        null !== $subscriptionID && $self['subscriptionID'] = $subscriptionID;
+        null !== $subscriptionName && $self['subscriptionName'] = $subscriptionName;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -72,18 +72,18 @@ final class PublicEmailSubscriptionDetails implements BaseModel
      */
     public function withOfficeLocationID(string $officeLocationID): self
     {
-        $obj = clone $this;
-        $obj['officeLocationID'] = $officeLocationID;
+        $self = clone $this;
+        $self['officeLocationID'] = $officeLocationID;
 
-        return $obj;
+        return $self;
     }
 
     public function withPreferencesGroupID(string $preferencesGroupID): self
     {
-        $obj = clone $this;
-        $obj['preferencesGroupID'] = $preferencesGroupID;
+        $self = clone $this;
+        $self['preferencesGroupID'] = $preferencesGroupID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -91,17 +91,17 @@ final class PublicEmailSubscriptionDetails implements BaseModel
      */
     public function withSubscriptionID(string $subscriptionID): self
     {
-        $obj = clone $this;
-        $obj['subscriptionID'] = $subscriptionID;
+        $self = clone $this;
+        $self['subscriptionID'] = $subscriptionID;
 
-        return $obj;
+        return $self;
     }
 
     public function withSubscriptionName(string $subscriptionName): self
     {
-        $obj = clone $this;
-        $obj['subscriptionName'] = $subscriptionName;
+        $self = clone $this;
+        $self['subscriptionName'] = $subscriptionName;
 
-        return $obj;
+        return $self;
     }
 }

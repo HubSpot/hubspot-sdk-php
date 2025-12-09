@@ -257,31 +257,31 @@ final class HubDBTableV3 implements BaseModel
         ?bool $isOrderedManually = null,
         SimpleUser|array|null $updatedBy = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['id'] = $id;
-        $obj['allowChildTables'] = $allowChildTables;
-        $obj['allowPublicAPIAccess'] = $allowPublicAPIAccess;
-        $obj['columnCount'] = $columnCount;
-        $obj['columns'] = $columns;
-        $obj['createdAt'] = $createdAt;
-        $obj['deleted'] = $deleted;
-        $obj['deletedAt'] = $deletedAt;
-        $obj['dynamicMetaTags'] = $dynamicMetaTags;
-        $obj['enableChildTablePages'] = $enableChildTablePages;
-        $obj['label'] = $label;
-        $obj['name'] = $name;
-        $obj['published'] = $published;
-        $obj['publishedAt'] = $publishedAt;
-        $obj['rowCount'] = $rowCount;
-        $obj['updatedAt'] = $updatedAt;
-        $obj['useForPages'] = $useForPages;
+        $self['id'] = $id;
+        $self['allowChildTables'] = $allowChildTables;
+        $self['allowPublicAPIAccess'] = $allowPublicAPIAccess;
+        $self['columnCount'] = $columnCount;
+        $self['columns'] = $columns;
+        $self['createdAt'] = $createdAt;
+        $self['deleted'] = $deleted;
+        $self['deletedAt'] = $deletedAt;
+        $self['dynamicMetaTags'] = $dynamicMetaTags;
+        $self['enableChildTablePages'] = $enableChildTablePages;
+        $self['label'] = $label;
+        $self['name'] = $name;
+        $self['published'] = $published;
+        $self['publishedAt'] = $publishedAt;
+        $self['rowCount'] = $rowCount;
+        $self['updatedAt'] = $updatedAt;
+        $self['useForPages'] = $useForPages;
 
-        null !== $createdBy && $obj['createdBy'] = $createdBy;
-        null !== $isOrderedManually && $obj['isOrderedManually'] = $isOrderedManually;
-        null !== $updatedBy && $obj['updatedBy'] = $updatedBy;
+        null !== $createdBy && $self['createdBy'] = $createdBy;
+        null !== $isOrderedManually && $self['isOrderedManually'] = $isOrderedManually;
+        null !== $updatedBy && $self['updatedBy'] = $updatedBy;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -289,10 +289,10 @@ final class HubDBTableV3 implements BaseModel
      */
     public function withID(string $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -300,10 +300,10 @@ final class HubDBTableV3 implements BaseModel
      */
     public function withAllowChildTables(bool $allowChildTables): self
     {
-        $obj = clone $this;
-        $obj['allowChildTables'] = $allowChildTables;
+        $self = clone $this;
+        $self['allowChildTables'] = $allowChildTables;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -311,10 +311,10 @@ final class HubDBTableV3 implements BaseModel
      */
     public function withAllowPublicAPIAccess(bool $allowPublicAPIAccess): self
     {
-        $obj = clone $this;
-        $obj['allowPublicAPIAccess'] = $allowPublicAPIAccess;
+        $self = clone $this;
+        $self['allowPublicAPIAccess'] = $allowPublicAPIAccess;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -322,10 +322,10 @@ final class HubDBTableV3 implements BaseModel
      */
     public function withColumnCount(int $columnCount): self
     {
-        $obj = clone $this;
-        $obj['columnCount'] = $columnCount;
+        $self = clone $this;
+        $self['columnCount'] = $columnCount;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -356,10 +356,10 @@ final class HubDBTableV3 implements BaseModel
      */
     public function withColumns(array $columns): self
     {
-        $obj = clone $this;
-        $obj['columns'] = $columns;
+        $self = clone $this;
+        $self['columns'] = $columns;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -367,26 +367,26 @@ final class HubDBTableV3 implements BaseModel
      */
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
-        $obj = clone $this;
-        $obj['createdAt'] = $createdAt;
+        $self = clone $this;
+        $self['createdAt'] = $createdAt;
 
-        return $obj;
+        return $self;
     }
 
     public function withDeleted(bool $deleted): self
     {
-        $obj = clone $this;
-        $obj['deleted'] = $deleted;
+        $self = clone $this;
+        $self['deleted'] = $deleted;
 
-        return $obj;
+        return $self;
     }
 
     public function withDeletedAt(\DateTimeInterface $deletedAt): self
     {
-        $obj = clone $this;
-        $obj['deletedAt'] = $deletedAt;
+        $self = clone $this;
+        $self['deletedAt'] = $deletedAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -396,10 +396,10 @@ final class HubDBTableV3 implements BaseModel
      */
     public function withDynamicMetaTags(array $dynamicMetaTags): self
     {
-        $obj = clone $this;
-        $obj['dynamicMetaTags'] = $dynamicMetaTags;
+        $self = clone $this;
+        $self['dynamicMetaTags'] = $dynamicMetaTags;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -407,10 +407,10 @@ final class HubDBTableV3 implements BaseModel
      */
     public function withEnableChildTablePages(bool $enableChildTablePages): self
     {
-        $obj = clone $this;
-        $obj['enableChildTablePages'] = $enableChildTablePages;
+        $self = clone $this;
+        $self['enableChildTablePages'] = $enableChildTablePages;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -418,10 +418,10 @@ final class HubDBTableV3 implements BaseModel
      */
     public function withLabel(string $label): self
     {
-        $obj = clone $this;
-        $obj['label'] = $label;
+        $self = clone $this;
+        $self['label'] = $label;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -429,18 +429,18 @@ final class HubDBTableV3 implements BaseModel
      */
     public function withName(string $name): self
     {
-        $obj = clone $this;
-        $obj['name'] = $name;
+        $self = clone $this;
+        $self['name'] = $name;
 
-        return $obj;
+        return $self;
     }
 
     public function withPublished(bool $published): self
     {
-        $obj = clone $this;
-        $obj['published'] = $published;
+        $self = clone $this;
+        $self['published'] = $published;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -448,10 +448,10 @@ final class HubDBTableV3 implements BaseModel
      */
     public function withPublishedAt(\DateTimeInterface $publishedAt): self
     {
-        $obj = clone $this;
-        $obj['publishedAt'] = $publishedAt;
+        $self = clone $this;
+        $self['publishedAt'] = $publishedAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -459,10 +459,10 @@ final class HubDBTableV3 implements BaseModel
      */
     public function withRowCount(int $rowCount): self
     {
-        $obj = clone $this;
-        $obj['rowCount'] = $rowCount;
+        $self = clone $this;
+        $self['rowCount'] = $rowCount;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -470,10 +470,10 @@ final class HubDBTableV3 implements BaseModel
      */
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
-        $obj = clone $this;
-        $obj['updatedAt'] = $updatedAt;
+        $self = clone $this;
+        $self['updatedAt'] = $updatedAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -481,10 +481,10 @@ final class HubDBTableV3 implements BaseModel
      */
     public function withUseForPages(bool $useForPages): self
     {
-        $obj = clone $this;
-        $obj['useForPages'] = $useForPages;
+        $self = clone $this;
+        $self['useForPages'] = $useForPages;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -494,18 +494,18 @@ final class HubDBTableV3 implements BaseModel
      */
     public function withCreatedBy(SimpleUser|array $createdBy): self
     {
-        $obj = clone $this;
-        $obj['createdBy'] = $createdBy;
+        $self = clone $this;
+        $self['createdBy'] = $createdBy;
 
-        return $obj;
+        return $self;
     }
 
     public function withIsOrderedManually(bool $isOrderedManually): self
     {
-        $obj = clone $this;
-        $obj['isOrderedManually'] = $isOrderedManually;
+        $self = clone $this;
+        $self['isOrderedManually'] = $isOrderedManually;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -515,9 +515,9 @@ final class HubDBTableV3 implements BaseModel
      */
     public function withUpdatedBy(SimpleUser|array $updatedBy): self
     {
-        $obj = clone $this;
-        $obj['updatedBy'] = $updatedBy;
+        $self = clone $this;
+        $self['updatedBy'] = $updatedBy;
 
-        return $obj;
+        return $self;
     }
 }

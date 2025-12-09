@@ -48,27 +48,27 @@ final class SubscriberEmailResponse implements BaseModel
      */
     public static function with(string $email, int $vid): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['email'] = $email;
-        $obj['vid'] = $vid;
+        $self['email'] = $email;
+        $self['vid'] = $vid;
 
-        return $obj;
+        return $self;
     }
 
     public function withEmail(string $email): self
     {
-        $obj = clone $this;
-        $obj['email'] = $email;
+        $self = clone $this;
+        $self['email'] = $email;
 
-        return $obj;
+        return $self;
     }
 
     public function withVid(int $vid): self
     {
-        $obj = clone $this;
-        $obj['vid'] = $vid;
+        $self = clone $this;
+        $self['vid'] = $vid;
 
-        return $obj;
+        return $self;
     }
 }

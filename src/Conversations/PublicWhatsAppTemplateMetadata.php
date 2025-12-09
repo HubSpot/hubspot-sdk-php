@@ -77,14 +77,14 @@ final class PublicWhatsAppTemplateMetadata implements BaseModel
         array $parameters,
         Type|string $type = 'WHATSAPP_TEMPLATE_METADATA',
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['crmObjectIDs'] = $crmObjectIDs;
-        $obj['mappedTemplateID'] = $mappedTemplateID;
-        $obj['parameters'] = $parameters;
-        $obj['type'] = $type;
+        $self['crmObjectIDs'] = $crmObjectIDs;
+        $self['mappedTemplateID'] = $mappedTemplateID;
+        $self['parameters'] = $parameters;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -92,18 +92,18 @@ final class PublicWhatsAppTemplateMetadata implements BaseModel
      */
     public function withCrmObjectIDs(array $crmObjectIDs): self
     {
-        $obj = clone $this;
-        $obj['crmObjectIDs'] = $crmObjectIDs;
+        $self = clone $this;
+        $self['crmObjectIDs'] = $crmObjectIDs;
 
-        return $obj;
+        return $self;
     }
 
     public function withMappedTemplateID(string $mappedTemplateID): self
     {
-        $obj = clone $this;
-        $obj['mappedTemplateID'] = $mappedTemplateID;
+        $self = clone $this;
+        $self['mappedTemplateID'] = $mappedTemplateID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -111,10 +111,10 @@ final class PublicWhatsAppTemplateMetadata implements BaseModel
      */
     public function withParameters(array $parameters): self
     {
-        $obj = clone $this;
-        $obj['parameters'] = $parameters;
+        $self = clone $this;
+        $self['parameters'] = $parameters;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -122,9 +122,9 @@ final class PublicWhatsAppTemplateMetadata implements BaseModel
      */
     public function withType(Type|string $type): self
     {
-        $obj = clone $this;
-        $obj['type'] = $type;
+        $self = clone $this;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 }

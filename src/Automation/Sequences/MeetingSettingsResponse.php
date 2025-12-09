@@ -59,12 +59,12 @@ final class MeetingSettingsResponse implements BaseModel
         Criteria|string $criteria,
         SellingStrategy|string $sellingStrategy
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['criteria'] = $criteria;
-        $obj['sellingStrategy'] = $sellingStrategy;
+        $self['criteria'] = $criteria;
+        $self['sellingStrategy'] = $sellingStrategy;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -72,10 +72,10 @@ final class MeetingSettingsResponse implements BaseModel
      */
     public function withCriteria(Criteria|string $criteria): self
     {
-        $obj = clone $this;
-        $obj['criteria'] = $criteria;
+        $self = clone $this;
+        $self['criteria'] = $criteria;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -84,9 +84,9 @@ final class MeetingSettingsResponse implements BaseModel
     public function withSellingStrategy(
         SellingStrategy|string $sellingStrategy
     ): self {
-        $obj = clone $this;
-        $obj['sellingStrategy'] = $sellingStrategy;
+        $self = clone $this;
+        $self['sellingStrategy'] = $sellingStrategy;
 
-        return $obj;
+        return $self;
     }
 }

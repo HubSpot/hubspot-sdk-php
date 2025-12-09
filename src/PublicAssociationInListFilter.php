@@ -146,35 +146,35 @@ final class PublicAssociationInListFilter implements BaseModel
         ?string $toObjectType = null,
         ?string $toObjectTypeID = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['associationCategory'] = $associationCategory;
-        $obj['associationTypeID'] = $associationTypeID;
-        $obj['coalescingRefineBy'] = $coalescingRefineBy;
-        $obj['filterType'] = $filterType;
-        $obj['listID'] = $listID;
-        $obj['operator'] = $operator;
+        $self['associationCategory'] = $associationCategory;
+        $self['associationTypeID'] = $associationTypeID;
+        $self['coalescingRefineBy'] = $coalescingRefineBy;
+        $self['filterType'] = $filterType;
+        $self['listID'] = $listID;
+        $self['operator'] = $operator;
 
-        null !== $toObjectType && $obj['toObjectType'] = $toObjectType;
-        null !== $toObjectTypeID && $obj['toObjectTypeID'] = $toObjectTypeID;
+        null !== $toObjectType && $self['toObjectType'] = $toObjectType;
+        null !== $toObjectTypeID && $self['toObjectTypeID'] = $toObjectTypeID;
 
-        return $obj;
+        return $self;
     }
 
     public function withAssociationCategory(string $associationCategory): self
     {
-        $obj = clone $this;
-        $obj['associationCategory'] = $associationCategory;
+        $self = clone $this;
+        $self['associationCategory'] = $associationCategory;
 
-        return $obj;
+        return $self;
     }
 
     public function withAssociationTypeID(int $associationTypeID): self
     {
-        $obj = clone $this;
-        $obj['associationTypeID'] = $associationTypeID;
+        $self = clone $this;
+        $self['associationTypeID'] = $associationTypeID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -225,10 +225,10 @@ final class PublicAssociationInListFilter implements BaseModel
     public function withCoalescingRefineBy(
         PublicNumOccurrencesRefineBy|array|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation $coalescingRefineBy,
     ): self {
-        $obj = clone $this;
-        $obj['coalescingRefineBy'] = $coalescingRefineBy;
+        $self = clone $this;
+        $self['coalescingRefineBy'] = $coalescingRefineBy;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -236,41 +236,41 @@ final class PublicAssociationInListFilter implements BaseModel
      */
     public function withFilterType(FilterType|string $filterType): self
     {
-        $obj = clone $this;
-        $obj['filterType'] = $filterType;
+        $self = clone $this;
+        $self['filterType'] = $filterType;
 
-        return $obj;
+        return $self;
     }
 
     public function withListID(string $listID): self
     {
-        $obj = clone $this;
-        $obj['listID'] = $listID;
+        $self = clone $this;
+        $self['listID'] = $listID;
 
-        return $obj;
+        return $self;
     }
 
     public function withOperator(string $operator): self
     {
-        $obj = clone $this;
-        $obj['operator'] = $operator;
+        $self = clone $this;
+        $self['operator'] = $operator;
 
-        return $obj;
+        return $self;
     }
 
     public function withToObjectType(string $toObjectType): self
     {
-        $obj = clone $this;
-        $obj['toObjectType'] = $toObjectType;
+        $self = clone $this;
+        $self['toObjectType'] = $toObjectType;
 
-        return $obj;
+        return $self;
     }
 
     public function withToObjectTypeID(string $toObjectTypeID): self
     {
-        $obj = clone $this;
-        $obj['toObjectTypeID'] = $toObjectTypeID;
+        $self = clone $this;
+        $self['toObjectTypeID'] = $toObjectTypeID;
 
-        return $obj;
+        return $self;
     }
 }

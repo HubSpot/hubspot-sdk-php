@@ -188,22 +188,22 @@ final class EventUpdateByExternalEventIDParams implements BaseModel
         ?string $eventURL = null,
         ?\DateTimeInterface $startDateTime = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['externalAccountID'] = $externalAccountID;
-        $obj['customProperties'] = $customProperties;
+        $self['externalAccountID'] = $externalAccountID;
+        $self['customProperties'] = $customProperties;
 
-        null !== $endDateTime && $obj['endDateTime'] = $endDateTime;
-        null !== $eventCancelled && $obj['eventCancelled'] = $eventCancelled;
-        null !== $eventCompleted && $obj['eventCompleted'] = $eventCompleted;
-        null !== $eventDescription && $obj['eventDescription'] = $eventDescription;
-        null !== $eventName && $obj['eventName'] = $eventName;
-        null !== $eventOrganizer && $obj['eventOrganizer'] = $eventOrganizer;
-        null !== $eventType && $obj['eventType'] = $eventType;
-        null !== $eventURL && $obj['eventURL'] = $eventURL;
-        null !== $startDateTime && $obj['startDateTime'] = $startDateTime;
+        null !== $endDateTime && $self['endDateTime'] = $endDateTime;
+        null !== $eventCancelled && $self['eventCancelled'] = $eventCancelled;
+        null !== $eventCompleted && $self['eventCompleted'] = $eventCompleted;
+        null !== $eventDescription && $self['eventDescription'] = $eventDescription;
+        null !== $eventName && $self['eventName'] = $eventName;
+        null !== $eventOrganizer && $self['eventOrganizer'] = $eventOrganizer;
+        null !== $eventType && $self['eventType'] = $eventType;
+        null !== $eventURL && $self['eventURL'] = $eventURL;
+        null !== $startDateTime && $self['startDateTime'] = $startDateTime;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -211,10 +211,10 @@ final class EventUpdateByExternalEventIDParams implements BaseModel
      */
     public function withExternalAccountID(string $externalAccountID): self
     {
-        $obj = clone $this;
-        $obj['externalAccountID'] = $externalAccountID;
+        $self = clone $this;
+        $self['externalAccountID'] = $externalAccountID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -245,10 +245,10 @@ final class EventUpdateByExternalEventIDParams implements BaseModel
      */
     public function withCustomProperties(array $customProperties): self
     {
-        $obj = clone $this;
-        $obj['customProperties'] = $customProperties;
+        $self = clone $this;
+        $self['customProperties'] = $customProperties;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -256,10 +256,10 @@ final class EventUpdateByExternalEventIDParams implements BaseModel
      */
     public function withEndDateTime(\DateTimeInterface $endDateTime): self
     {
-        $obj = clone $this;
-        $obj['endDateTime'] = $endDateTime;
+        $self = clone $this;
+        $self['endDateTime'] = $endDateTime;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -267,18 +267,18 @@ final class EventUpdateByExternalEventIDParams implements BaseModel
      */
     public function withEventCancelled(bool $eventCancelled): self
     {
-        $obj = clone $this;
-        $obj['eventCancelled'] = $eventCancelled;
+        $self = clone $this;
+        $self['eventCancelled'] = $eventCancelled;
 
-        return $obj;
+        return $self;
     }
 
     public function withEventCompleted(bool $eventCompleted): self
     {
-        $obj = clone $this;
-        $obj['eventCompleted'] = $eventCompleted;
+        $self = clone $this;
+        $self['eventCompleted'] = $eventCompleted;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -286,10 +286,10 @@ final class EventUpdateByExternalEventIDParams implements BaseModel
      */
     public function withEventDescription(string $eventDescription): self
     {
-        $obj = clone $this;
-        $obj['eventDescription'] = $eventDescription;
+        $self = clone $this;
+        $self['eventDescription'] = $eventDescription;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -297,10 +297,10 @@ final class EventUpdateByExternalEventIDParams implements BaseModel
      */
     public function withEventName(string $eventName): self
     {
-        $obj = clone $this;
-        $obj['eventName'] = $eventName;
+        $self = clone $this;
+        $self['eventName'] = $eventName;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -308,10 +308,10 @@ final class EventUpdateByExternalEventIDParams implements BaseModel
      */
     public function withEventOrganizer(string $eventOrganizer): self
     {
-        $obj = clone $this;
-        $obj['eventOrganizer'] = $eventOrganizer;
+        $self = clone $this;
+        $self['eventOrganizer'] = $eventOrganizer;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -319,10 +319,10 @@ final class EventUpdateByExternalEventIDParams implements BaseModel
      */
     public function withEventType(string $eventType): self
     {
-        $obj = clone $this;
-        $obj['eventType'] = $eventType;
+        $self = clone $this;
+        $self['eventType'] = $eventType;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -330,10 +330,10 @@ final class EventUpdateByExternalEventIDParams implements BaseModel
      */
     public function withEventURL(string $eventURL): self
     {
-        $obj = clone $this;
-        $obj['eventURL'] = $eventURL;
+        $self = clone $this;
+        $self['eventURL'] = $eventURL;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -341,9 +341,9 @@ final class EventUpdateByExternalEventIDParams implements BaseModel
      */
     public function withStartDateTime(\DateTimeInterface $startDateTime): self
     {
-        $obj = clone $this;
-        $obj['startDateTime'] = $startDateTime;
+        $self = clone $this;
+        $self['startDateTime'] = $startDateTime;
 
-        return $obj;
+        return $self;
     }
 }

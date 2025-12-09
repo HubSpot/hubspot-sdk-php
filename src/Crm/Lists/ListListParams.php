@@ -54,12 +54,12 @@ final class ListListParams implements BaseModel
         ?bool $includeFilters = null,
         ?array $listIDs = null
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $includeFilters && $obj['includeFilters'] = $includeFilters;
-        null !== $listIDs && $obj['listIDs'] = $listIDs;
+        null !== $includeFilters && $self['includeFilters'] = $includeFilters;
+        null !== $listIDs && $self['listIDs'] = $listIDs;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -67,10 +67,10 @@ final class ListListParams implements BaseModel
      */
     public function withIncludeFilters(bool $includeFilters): self
     {
-        $obj = clone $this;
-        $obj['includeFilters'] = $includeFilters;
+        $self = clone $this;
+        $self['includeFilters'] = $includeFilters;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -80,9 +80,9 @@ final class ListListParams implements BaseModel
      */
     public function withListIDs(array $listIDs): self
     {
-        $obj = clone $this;
-        $obj['listIDs'] = $listIDs;
+        $self = clone $this;
+        $self['listIDs'] = $listIDs;
 
-        return $obj;
+        return $self;
     }
 }

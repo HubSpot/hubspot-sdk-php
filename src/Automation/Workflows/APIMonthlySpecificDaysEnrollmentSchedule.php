@@ -68,13 +68,13 @@ final class APIMonthlySpecificDaysEnrollmentSchedule implements BaseModel
         APITimeOfDay|array $timeOfDay,
         Type|string $type = 'MONTHLY_SPECIFIC_DAYS',
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['daysOfMonth'] = $daysOfMonth;
-        $obj['timeOfDay'] = $timeOfDay;
-        $obj['type'] = $type;
+        $self['daysOfMonth'] = $daysOfMonth;
+        $self['timeOfDay'] = $timeOfDay;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -82,10 +82,10 @@ final class APIMonthlySpecificDaysEnrollmentSchedule implements BaseModel
      */
     public function withDaysOfMonth(array $daysOfMonth): self
     {
-        $obj = clone $this;
-        $obj['daysOfMonth'] = $daysOfMonth;
+        $self = clone $this;
+        $self['daysOfMonth'] = $daysOfMonth;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -93,10 +93,10 @@ final class APIMonthlySpecificDaysEnrollmentSchedule implements BaseModel
      */
     public function withTimeOfDay(APITimeOfDay|array $timeOfDay): self
     {
-        $obj = clone $this;
-        $obj['timeOfDay'] = $timeOfDay;
+        $self = clone $this;
+        $self['timeOfDay'] = $timeOfDay;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -104,9 +104,9 @@ final class APIMonthlySpecificDaysEnrollmentSchedule implements BaseModel
      */
     public function withType(Type|string $type): self
     {
-        $obj = clone $this;
-        $obj['type'] = $type;
+        $self = clone $this;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 }

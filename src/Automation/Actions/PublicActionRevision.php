@@ -85,30 +85,30 @@ final class PublicActionRevision implements BaseModel
         PublicActionDefinition|array $definition,
         string $revisionID,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['id'] = $id;
-        $obj['createdAt'] = $createdAt;
-        $obj['definition'] = $definition;
-        $obj['revisionID'] = $revisionID;
+        $self['id'] = $id;
+        $self['createdAt'] = $createdAt;
+        $self['definition'] = $definition;
+        $self['revisionID'] = $revisionID;
 
-        return $obj;
+        return $self;
     }
 
     public function withID(string $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
-        $obj = clone $this;
-        $obj['createdAt'] = $createdAt;
+        $self = clone $this;
+        $self['createdAt'] = $createdAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -131,17 +131,17 @@ final class PublicActionRevision implements BaseModel
     public function withDefinition(
         PublicActionDefinition|array $definition
     ): self {
-        $obj = clone $this;
-        $obj['definition'] = $definition;
+        $self = clone $this;
+        $self['definition'] = $definition;
 
-        return $obj;
+        return $self;
     }
 
     public function withRevisionID(string $revisionID): self
     {
-        $obj = clone $this;
-        $obj['revisionID'] = $revisionID;
+        $self = clone $this;
+        $self['revisionID'] = $revisionID;
 
-        return $obj;
+        return $self;
     }
 }

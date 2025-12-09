@@ -58,28 +58,28 @@ final class IntegratorSettingRegisterAppNameParams implements BaseModel
      */
     public static function with(int $updatedAt, ?string $name = null): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['updatedAt'] = $updatedAt;
+        $self['updatedAt'] = $updatedAt;
 
-        null !== $name && $obj['name'] = $name;
+        null !== $name && $self['name'] = $name;
 
-        return $obj;
+        return $self;
     }
 
     public function withUpdatedAt(int $updatedAt): self
     {
-        $obj = clone $this;
-        $obj['updatedAt'] = $updatedAt;
+        $self = clone $this;
+        $self['updatedAt'] = $updatedAt;
 
-        return $obj;
+        return $self;
     }
 
     public function withName(string $name): self
     {
-        $obj = clone $this;
-        $obj['name'] = $name;
+        $self = clone $this;
+        $self['name'] = $name;
 
-        return $obj;
+        return $self;
     }
 }

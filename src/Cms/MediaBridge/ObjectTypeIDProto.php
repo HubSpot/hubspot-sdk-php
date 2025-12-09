@@ -48,27 +48,27 @@ final class ObjectTypeIDProto implements BaseModel
      */
     public static function with(int $innerID, int $metaTypeID): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['innerID'] = $innerID;
-        $obj['metaTypeID'] = $metaTypeID;
+        $self['innerID'] = $innerID;
+        $self['metaTypeID'] = $metaTypeID;
 
-        return $obj;
+        return $self;
     }
 
     public function withInnerID(int $innerID): self
     {
-        $obj = clone $this;
-        $obj['innerID'] = $innerID;
+        $self = clone $this;
+        $self['innerID'] = $innerID;
 
-        return $obj;
+        return $self;
     }
 
     public function withMetaTypeID(int $metaTypeID): self
     {
-        $obj = clone $this;
-        $obj['metaTypeID'] = $metaTypeID;
+        $self = clone $this;
+        $self['metaTypeID'] = $metaTypeID;
 
-        return $obj;
+        return $self;
     }
 }

@@ -58,12 +58,12 @@ final class SmtpAPITokenRequestEgg implements BaseModel
      */
     public static function with(string $campaignName, bool $createContact): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['campaignName'] = $campaignName;
-        $obj['createContact'] = $createContact;
+        $self['campaignName'] = $campaignName;
+        $self['createContact'] = $createContact;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -71,10 +71,10 @@ final class SmtpAPITokenRequestEgg implements BaseModel
      */
     public function withCampaignName(string $campaignName): self
     {
-        $obj = clone $this;
-        $obj['campaignName'] = $campaignName;
+        $self = clone $this;
+        $self['campaignName'] = $campaignName;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -82,9 +82,9 @@ final class SmtpAPITokenRequestEgg implements BaseModel
      */
     public function withCreateContact(bool $createContact): self
     {
-        $obj = clone $this;
-        $obj['createContact'] = $createContact;
+        $self = clone $this;
+        $self['createContact'] = $createContact;
 
-        return $obj;
+        return $self;
     }
 }

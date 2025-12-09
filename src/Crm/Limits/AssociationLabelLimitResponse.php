@@ -142,16 +142,16 @@ final class AssociationLabelLimitResponse implements BaseModel
         ObjectsSchemasObjectTypeDefinition|array $toObjectType,
         int $usage,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['allLabels'] = $allLabels;
-        $obj['fromObjectType'] = $fromObjectType;
-        $obj['limit'] = $limit;
-        $obj['percentage'] = $percentage;
-        $obj['toObjectType'] = $toObjectType;
-        $obj['usage'] = $usage;
+        $self['allLabels'] = $allLabels;
+        $self['fromObjectType'] = $fromObjectType;
+        $self['limit'] = $limit;
+        $self['percentage'] = $percentage;
+        $self['toObjectType'] = $toObjectType;
+        $self['usage'] = $usage;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -161,10 +161,10 @@ final class AssociationLabelLimitResponse implements BaseModel
      */
     public function withAllLabels(array $allLabels): self
     {
-        $obj = clone $this;
-        $obj['allLabels'] = $allLabels;
+        $self = clone $this;
+        $self['allLabels'] = $allLabels;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -190,10 +190,10 @@ final class AssociationLabelLimitResponse implements BaseModel
     public function withFromObjectType(
         ObjectsSchemasObjectTypeDefinition|array $fromObjectType
     ): self {
-        $obj = clone $this;
-        $obj['fromObjectType'] = $fromObjectType;
+        $self = clone $this;
+        $self['fromObjectType'] = $fromObjectType;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -201,10 +201,10 @@ final class AssociationLabelLimitResponse implements BaseModel
      */
     public function withLimit(int $limit): self
     {
-        $obj = clone $this;
-        $obj['limit'] = $limit;
+        $self = clone $this;
+        $self['limit'] = $limit;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -212,10 +212,10 @@ final class AssociationLabelLimitResponse implements BaseModel
      */
     public function withPercentage(float $percentage): self
     {
-        $obj = clone $this;
-        $obj['percentage'] = $percentage;
+        $self = clone $this;
+        $self['percentage'] = $percentage;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -241,10 +241,10 @@ final class AssociationLabelLimitResponse implements BaseModel
     public function withToObjectType(
         ObjectsSchemasObjectTypeDefinition|array $toObjectType
     ): self {
-        $obj = clone $this;
-        $obj['toObjectType'] = $toObjectType;
+        $self = clone $this;
+        $self['toObjectType'] = $toObjectType;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -252,9 +252,9 @@ final class AssociationLabelLimitResponse implements BaseModel
      */
     public function withUsage(int $usage): self
     {
-        $obj = clone $this;
-        $obj['usage'] = $usage;
+        $self = clone $this;
+        $self['usage'] = $usage;
 
-        return $obj;
+        return $self;
     }
 }

@@ -72,14 +72,14 @@ final class EmailCloneParams implements BaseModel
         ?string $cloneName = null,
         ?string $language = null
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['id'] = $id;
+        $self['id'] = $id;
 
-        null !== $cloneName && $obj['cloneName'] = $cloneName;
-        null !== $language && $obj['language'] = $language;
+        null !== $cloneName && $self['cloneName'] = $cloneName;
+        null !== $language && $self['language'] = $language;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -87,10 +87,10 @@ final class EmailCloneParams implements BaseModel
      */
     public function withID(string $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -98,10 +98,10 @@ final class EmailCloneParams implements BaseModel
      */
     public function withCloneName(string $cloneName): self
     {
-        $obj = clone $this;
-        $obj['cloneName'] = $cloneName;
+        $self = clone $this;
+        $self['cloneName'] = $cloneName;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -109,9 +109,9 @@ final class EmailCloneParams implements BaseModel
      */
     public function withLanguage(string $language): self
     {
-        $obj = clone $this;
-        $obj['language'] = $language;
+        $self = clone $this;
+        $self['language'] = $language;
 
-        return $obj;
+        return $self;
     }
 }

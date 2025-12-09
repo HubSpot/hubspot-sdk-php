@@ -36,11 +36,11 @@ final class ForwardPaging implements BaseModel
      */
     public static function with(NextPage|array|null $next = null): self
     {
-        $obj = new self;
+        $self = new self;
 
-        null !== $next && $obj['next'] = $next;
+        null !== $next && $self['next'] = $next;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -50,9 +50,9 @@ final class ForwardPaging implements BaseModel
      */
     public function withNext(NextPage|array $next): self
     {
-        $obj = clone $this;
-        $obj['next'] = $next;
+        $self = clone $this;
+        $self['next'] = $next;
 
-        return $obj;
+        return $self;
     }
 }

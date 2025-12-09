@@ -87,25 +87,25 @@ final class IFrameActionBody implements BaseModel
         Type|string $type = 'IFRAME',
         ?string $label = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['height'] = $height;
-        $obj['propertyNamesIncluded'] = $propertyNamesIncluded;
-        $obj['type'] = $type;
-        $obj['url'] = $url;
-        $obj['width'] = $width;
+        $self['height'] = $height;
+        $self['propertyNamesIncluded'] = $propertyNamesIncluded;
+        $self['type'] = $type;
+        $self['url'] = $url;
+        $self['width'] = $width;
 
-        null !== $label && $obj['label'] = $label;
+        null !== $label && $self['label'] = $label;
 
-        return $obj;
+        return $self;
     }
 
     public function withHeight(int $height): self
     {
-        $obj = clone $this;
-        $obj['height'] = $height;
+        $self = clone $this;
+        $self['height'] = $height;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -114,10 +114,10 @@ final class IFrameActionBody implements BaseModel
     public function withPropertyNamesIncluded(
         array $propertyNamesIncluded
     ): self {
-        $obj = clone $this;
-        $obj['propertyNamesIncluded'] = $propertyNamesIncluded;
+        $self = clone $this;
+        $self['propertyNamesIncluded'] = $propertyNamesIncluded;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -125,33 +125,33 @@ final class IFrameActionBody implements BaseModel
      */
     public function withType(Type|string $type): self
     {
-        $obj = clone $this;
-        $obj['type'] = $type;
+        $self = clone $this;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 
     public function withURL(string $url): self
     {
-        $obj = clone $this;
-        $obj['url'] = $url;
+        $self = clone $this;
+        $self['url'] = $url;
 
-        return $obj;
+        return $self;
     }
 
     public function withWidth(int $width): self
     {
-        $obj = clone $this;
-        $obj['width'] = $width;
+        $self = clone $this;
+        $self['width'] = $width;
 
-        return $obj;
+        return $self;
     }
 
     public function withLabel(string $label): self
     {
-        $obj = clone $this;
-        $obj['label'] = $label;
+        $self = clone $this;
+        $self['label'] = $label;
 
-        return $obj;
+        return $self;
     }
 }

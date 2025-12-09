@@ -36,11 +36,11 @@ final class SubscriptionPatchRequest implements BaseModel
      */
     public static function with(?bool $active = null): self
     {
-        $obj = new self;
+        $self = new self;
 
-        null !== $active && $obj['active'] = $active;
+        null !== $active && $self['active'] = $active;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -48,9 +48,9 @@ final class SubscriptionPatchRequest implements BaseModel
      */
     public function withActive(bool $active): self
     {
-        $obj = clone $this;
-        $obj['active'] = $active;
+        $self = clone $this;
+        $self['active'] = $active;
 
-        return $obj;
+        return $self;
     }
 }

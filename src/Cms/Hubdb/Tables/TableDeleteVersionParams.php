@@ -51,18 +51,18 @@ final class TableDeleteVersionParams implements BaseModel
      */
     public static function with(string $tableIDOrName): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['tableIDOrName'] = $tableIDOrName;
+        $self['tableIDOrName'] = $tableIDOrName;
 
-        return $obj;
+        return $self;
     }
 
     public function withTableIDOrName(string $tableIDOrName): self
     {
-        $obj = clone $this;
-        $obj['tableIDOrName'] = $tableIDOrName;
+        $self = clone $this;
+        $self['tableIDOrName'] = $tableIDOrName;
 
-        return $obj;
+        return $self;
     }
 }

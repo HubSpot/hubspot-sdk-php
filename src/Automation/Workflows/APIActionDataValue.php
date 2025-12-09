@@ -60,29 +60,29 @@ final class APIActionDataValue implements BaseModel
         string $dataKey,
         Type|string $type = 'FIELD_DATA'
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['actionID'] = $actionID;
-        $obj['dataKey'] = $dataKey;
-        $obj['type'] = $type;
+        $self['actionID'] = $actionID;
+        $self['dataKey'] = $dataKey;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 
     public function withActionID(string $actionID): self
     {
-        $obj = clone $this;
-        $obj['actionID'] = $actionID;
+        $self = clone $this;
+        $self['actionID'] = $actionID;
 
-        return $obj;
+        return $self;
     }
 
     public function withDataKey(string $dataKey): self
     {
-        $obj = clone $this;
-        $obj['dataKey'] = $dataKey;
+        $self = clone $this;
+        $self['dataKey'] = $dataKey;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -90,9 +90,9 @@ final class APIActionDataValue implements BaseModel
      */
     public function withType(Type|string $type): self
     {
-        $obj = clone $this;
-        $obj['type'] = $type;
+        $self = clone $this;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 }

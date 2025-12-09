@@ -78,41 +78,41 @@ final class ImportRowCore implements BaseModel
         array $rowData,
         ?string $pageName = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['containsEncryptedProperties'] = $containsEncryptedProperties;
-        $obj['fileID'] = $fileID;
-        $obj['lineNumber'] = $lineNumber;
-        $obj['rowData'] = $rowData;
+        $self['containsEncryptedProperties'] = $containsEncryptedProperties;
+        $self['fileID'] = $fileID;
+        $self['lineNumber'] = $lineNumber;
+        $self['rowData'] = $rowData;
 
-        null !== $pageName && $obj['pageName'] = $pageName;
+        null !== $pageName && $self['pageName'] = $pageName;
 
-        return $obj;
+        return $self;
     }
 
     public function withContainsEncryptedProperties(
         bool $containsEncryptedProperties
     ): self {
-        $obj = clone $this;
-        $obj['containsEncryptedProperties'] = $containsEncryptedProperties;
+        $self = clone $this;
+        $self['containsEncryptedProperties'] = $containsEncryptedProperties;
 
-        return $obj;
+        return $self;
     }
 
     public function withFileID(int $fileID): self
     {
-        $obj = clone $this;
-        $obj['fileID'] = $fileID;
+        $self = clone $this;
+        $self['fileID'] = $fileID;
 
-        return $obj;
+        return $self;
     }
 
     public function withLineNumber(int $lineNumber): self
     {
-        $obj = clone $this;
-        $obj['lineNumber'] = $lineNumber;
+        $self = clone $this;
+        $self['lineNumber'] = $lineNumber;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -120,17 +120,17 @@ final class ImportRowCore implements BaseModel
      */
     public function withRowData(array $rowData): self
     {
-        $obj = clone $this;
-        $obj['rowData'] = $rowData;
+        $self = clone $this;
+        $self['rowData'] = $rowData;
 
-        return $obj;
+        return $self;
     }
 
     public function withPageName(string $pageName): self
     {
-        $obj = clone $this;
-        $obj['pageName'] = $pageName;
+        $self = clone $this;
+        $self['pageName'] = $pageName;
 
-        return $obj;
+        return $self;
     }
 }

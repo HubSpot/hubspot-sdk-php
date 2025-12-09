@@ -103,33 +103,33 @@ final class StageUpdateParams implements BaseModel
         ?int $displayOrder = null,
         ?string $label = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['objectType'] = $objectType;
-        $obj['pipelineID'] = $pipelineID;
-        $obj['metadata'] = $metadata;
+        $self['objectType'] = $objectType;
+        $self['pipelineID'] = $pipelineID;
+        $self['metadata'] = $metadata;
 
-        null !== $archived && $obj['archived'] = $archived;
-        null !== $displayOrder && $obj['displayOrder'] = $displayOrder;
-        null !== $label && $obj['label'] = $label;
+        null !== $archived && $self['archived'] = $archived;
+        null !== $displayOrder && $self['displayOrder'] = $displayOrder;
+        null !== $label && $self['label'] = $label;
 
-        return $obj;
+        return $self;
     }
 
     public function withObjectType(string $objectType): self
     {
-        $obj = clone $this;
-        $obj['objectType'] = $objectType;
+        $self = clone $this;
+        $self['objectType'] = $objectType;
 
-        return $obj;
+        return $self;
     }
 
     public function withPipelineID(string $pipelineID): self
     {
-        $obj = clone $this;
-        $obj['pipelineID'] = $pipelineID;
+        $self = clone $this;
+        $self['pipelineID'] = $pipelineID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -143,10 +143,10 @@ final class StageUpdateParams implements BaseModel
      */
     public function withMetadata(array $metadata): self
     {
-        $obj = clone $this;
-        $obj['metadata'] = $metadata;
+        $self = clone $this;
+        $self['metadata'] = $metadata;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -154,10 +154,10 @@ final class StageUpdateParams implements BaseModel
      */
     public function withArchived(bool $archived): self
     {
-        $obj = clone $this;
-        $obj['archived'] = $archived;
+        $self = clone $this;
+        $self['archived'] = $archived;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -165,10 +165,10 @@ final class StageUpdateParams implements BaseModel
      */
     public function withDisplayOrder(int $displayOrder): self
     {
-        $obj = clone $this;
-        $obj['displayOrder'] = $displayOrder;
+        $self = clone $this;
+        $self['displayOrder'] = $displayOrder;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -176,9 +176,9 @@ final class StageUpdateParams implements BaseModel
      */
     public function withLabel(string $label): self
     {
-        $obj = clone $this;
-        $obj['label'] = $label;
+        $self = clone $this;
+        $self['label'] = $label;
 
-        return $obj;
+        return $self;
     }
 }

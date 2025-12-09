@@ -86,47 +86,47 @@ final class ExternalMeetingsUser implements BaseModel
         string $userID,
         ExternalUserProfile|array $userProfile,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['id'] = $id;
-        $obj['calendarProvider'] = $calendarProvider;
-        $obj['isSalesStarter'] = $isSalesStarter;
-        $obj['userID'] = $userID;
-        $obj['userProfile'] = $userProfile;
+        $self['id'] = $id;
+        $self['calendarProvider'] = $calendarProvider;
+        $self['isSalesStarter'] = $isSalesStarter;
+        $self['userID'] = $userID;
+        $self['userProfile'] = $userProfile;
 
-        return $obj;
+        return $self;
     }
 
     public function withID(string $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     public function withCalendarProvider(string $calendarProvider): self
     {
-        $obj = clone $this;
-        $obj['calendarProvider'] = $calendarProvider;
+        $self = clone $this;
+        $self['calendarProvider'] = $calendarProvider;
 
-        return $obj;
+        return $self;
     }
 
     public function withIsSalesStarter(bool $isSalesStarter): self
     {
-        $obj = clone $this;
-        $obj['isSalesStarter'] = $isSalesStarter;
+        $self = clone $this;
+        $self['isSalesStarter'] = $isSalesStarter;
 
-        return $obj;
+        return $self;
     }
 
     public function withUserID(string $userID): self
     {
-        $obj = clone $this;
-        $obj['userID'] = $userID;
+        $self = clone $this;
+        $self['userID'] = $userID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -140,9 +140,9 @@ final class ExternalMeetingsUser implements BaseModel
     public function withUserProfile(
         ExternalUserProfile|array $userProfile
     ): self {
-        $obj = clone $this;
-        $obj['userProfile'] = $userProfile;
+        $self = clone $this;
+        $self['userProfile'] = $userProfile;
 
-        return $obj;
+        return $self;
     }
 }

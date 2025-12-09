@@ -104,57 +104,57 @@ final class ExternalLinkFormField implements BaseModel
         array $options,
         string $type,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['fieldType'] = $fieldType;
-        $obj['isCustom'] = $isCustom;
-        $obj['isRequired'] = $isRequired;
-        $obj['label'] = $label;
-        $obj['name'] = $name;
-        $obj['options'] = $options;
-        $obj['type'] = $type;
+        $self['fieldType'] = $fieldType;
+        $self['isCustom'] = $isCustom;
+        $self['isRequired'] = $isRequired;
+        $self['label'] = $label;
+        $self['name'] = $name;
+        $self['options'] = $options;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 
     public function withFieldType(string $fieldType): self
     {
-        $obj = clone $this;
-        $obj['fieldType'] = $fieldType;
+        $self = clone $this;
+        $self['fieldType'] = $fieldType;
 
-        return $obj;
+        return $self;
     }
 
     public function withIsCustom(bool $isCustom): self
     {
-        $obj = clone $this;
-        $obj['isCustom'] = $isCustom;
+        $self = clone $this;
+        $self['isCustom'] = $isCustom;
 
-        return $obj;
+        return $self;
     }
 
     public function withIsRequired(bool $isRequired): self
     {
-        $obj = clone $this;
-        $obj['isRequired'] = $isRequired;
+        $self = clone $this;
+        $self['isRequired'] = $isRequired;
 
-        return $obj;
+        return $self;
     }
 
     public function withLabel(string $label): self
     {
-        $obj = clone $this;
-        $obj['label'] = $label;
+        $self = clone $this;
+        $self['label'] = $label;
 
-        return $obj;
+        return $self;
     }
 
     public function withName(string $name): self
     {
-        $obj = clone $this;
-        $obj['name'] = $name;
+        $self = clone $this;
+        $self['name'] = $name;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -170,17 +170,17 @@ final class ExternalLinkFormField implements BaseModel
      */
     public function withOptions(array $options): self
     {
-        $obj = clone $this;
-        $obj['options'] = $options;
+        $self = clone $this;
+        $self['options'] = $options;
 
-        return $obj;
+        return $self;
     }
 
     public function withType(string $type): self
     {
-        $obj = clone $this;
-        $obj['type'] = $type;
+        $self = clone $this;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 }

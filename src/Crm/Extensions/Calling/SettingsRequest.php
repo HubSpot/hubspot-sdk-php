@@ -107,91 +107,91 @@ final class SettingsRequest implements BaseModel
         bool $usesRemote,
         int $width,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['height'] = $height;
-        $obj['isReady'] = $isReady;
-        $obj['name'] = $name;
-        $obj['supportsCustomObjects'] = $supportsCustomObjects;
-        $obj['supportsInboundCalling'] = $supportsInboundCalling;
-        $obj['url'] = $url;
-        $obj['usesCallingWindow'] = $usesCallingWindow;
-        $obj['usesRemote'] = $usesRemote;
-        $obj['width'] = $width;
+        $self['height'] = $height;
+        $self['isReady'] = $isReady;
+        $self['name'] = $name;
+        $self['supportsCustomObjects'] = $supportsCustomObjects;
+        $self['supportsInboundCalling'] = $supportsInboundCalling;
+        $self['url'] = $url;
+        $self['usesCallingWindow'] = $usesCallingWindow;
+        $self['usesRemote'] = $usesRemote;
+        $self['width'] = $width;
 
-        return $obj;
+        return $self;
     }
 
     public function withHeight(int $height): self
     {
-        $obj = clone $this;
-        $obj['height'] = $height;
+        $self = clone $this;
+        $self['height'] = $height;
 
-        return $obj;
+        return $self;
     }
 
     public function withIsReady(bool $isReady): self
     {
-        $obj = clone $this;
-        $obj['isReady'] = $isReady;
+        $self = clone $this;
+        $self['isReady'] = $isReady;
 
-        return $obj;
+        return $self;
     }
 
     public function withName(string $name): self
     {
-        $obj = clone $this;
-        $obj['name'] = $name;
+        $self = clone $this;
+        $self['name'] = $name;
 
-        return $obj;
+        return $self;
     }
 
     public function withSupportsCustomObjects(bool $supportsCustomObjects): self
     {
-        $obj = clone $this;
-        $obj['supportsCustomObjects'] = $supportsCustomObjects;
+        $self = clone $this;
+        $self['supportsCustomObjects'] = $supportsCustomObjects;
 
-        return $obj;
+        return $self;
     }
 
     public function withSupportsInboundCalling(
         bool $supportsInboundCalling
     ): self {
-        $obj = clone $this;
-        $obj['supportsInboundCalling'] = $supportsInboundCalling;
+        $self = clone $this;
+        $self['supportsInboundCalling'] = $supportsInboundCalling;
 
-        return $obj;
+        return $self;
     }
 
     public function withURL(string $url): self
     {
-        $obj = clone $this;
-        $obj['url'] = $url;
+        $self = clone $this;
+        $self['url'] = $url;
 
-        return $obj;
+        return $self;
     }
 
     public function withUsesCallingWindow(bool $usesCallingWindow): self
     {
-        $obj = clone $this;
-        $obj['usesCallingWindow'] = $usesCallingWindow;
+        $self = clone $this;
+        $self['usesCallingWindow'] = $usesCallingWindow;
 
-        return $obj;
+        return $self;
     }
 
     public function withUsesRemote(bool $usesRemote): self
     {
-        $obj = clone $this;
-        $obj['usesRemote'] = $usesRemote;
+        $self = clone $this;
+        $self['usesRemote'] = $usesRemote;
 
-        return $obj;
+        return $self;
     }
 
     public function withWidth(int $width): self
     {
-        $obj = clone $this;
-        $obj['width'] = $width;
+        $self = clone $this;
+        $self['width'] = $width;
 
-        return $obj;
+        return $self;
     }
 }

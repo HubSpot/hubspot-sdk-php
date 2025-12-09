@@ -116,37 +116,37 @@ final class DatePropertyOperation implements BaseModel
         PropertyType|string $propertyType = 'date',
         ?string $defaultValue = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['day'] = $day;
-        $obj['includeObjectsWithNoValueSet'] = $includeObjectsWithNoValueSet;
-        $obj['month'] = $month;
-        $obj['operationType'] = $operationType;
-        $obj['operator'] = $operator;
-        $obj['operatorName'] = $operatorName;
-        $obj['propertyType'] = $propertyType;
-        $obj['year'] = $year;
+        $self['day'] = $day;
+        $self['includeObjectsWithNoValueSet'] = $includeObjectsWithNoValueSet;
+        $self['month'] = $month;
+        $self['operationType'] = $operationType;
+        $self['operator'] = $operator;
+        $self['operatorName'] = $operatorName;
+        $self['propertyType'] = $propertyType;
+        $self['year'] = $year;
 
-        null !== $defaultValue && $obj['defaultValue'] = $defaultValue;
+        null !== $defaultValue && $self['defaultValue'] = $defaultValue;
 
-        return $obj;
+        return $self;
     }
 
     public function withDay(int $day): self
     {
-        $obj = clone $this;
-        $obj['day'] = $day;
+        $self = clone $this;
+        $self['day'] = $day;
 
-        return $obj;
+        return $self;
     }
 
     public function withIncludeObjectsWithNoValueSet(
         bool $includeObjectsWithNoValueSet
     ): self {
-        $obj = clone $this;
-        $obj['includeObjectsWithNoValueSet'] = $includeObjectsWithNoValueSet;
+        $self = clone $this;
+        $self['includeObjectsWithNoValueSet'] = $includeObjectsWithNoValueSet;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -154,18 +154,18 @@ final class DatePropertyOperation implements BaseModel
      */
     public function withMonth(Month|string $month): self
     {
-        $obj = clone $this;
-        $obj['month'] = $month;
+        $self = clone $this;
+        $self['month'] = $month;
 
-        return $obj;
+        return $self;
     }
 
     public function withOperationType(string $operationType): self
     {
-        $obj = clone $this;
-        $obj['operationType'] = $operationType;
+        $self = clone $this;
+        $self['operationType'] = $operationType;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -173,18 +173,18 @@ final class DatePropertyOperation implements BaseModel
      */
     public function withOperator(Operator|string $operator): self
     {
-        $obj = clone $this;
-        $obj['operator'] = $operator;
+        $self = clone $this;
+        $self['operator'] = $operator;
 
-        return $obj;
+        return $self;
     }
 
     public function withOperatorName(string $operatorName): self
     {
-        $obj = clone $this;
-        $obj['operatorName'] = $operatorName;
+        $self = clone $this;
+        $self['operatorName'] = $operatorName;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -192,25 +192,25 @@ final class DatePropertyOperation implements BaseModel
      */
     public function withPropertyType(PropertyType|string $propertyType): self
     {
-        $obj = clone $this;
-        $obj['propertyType'] = $propertyType;
+        $self = clone $this;
+        $self['propertyType'] = $propertyType;
 
-        return $obj;
+        return $self;
     }
 
     public function withYear(int $year): self
     {
-        $obj = clone $this;
-        $obj['year'] = $year;
+        $self = clone $this;
+        $self['year'] = $year;
 
-        return $obj;
+        return $self;
     }
 
     public function withDefaultValue(string $defaultValue): self
     {
-        $obj = clone $this;
-        $obj['defaultValue'] = $defaultValue;
+        $self = clone $this;
+        $self['defaultValue'] = $defaultValue;
 
-        return $obj;
+        return $self;
     }
 }

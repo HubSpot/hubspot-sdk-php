@@ -125,18 +125,18 @@ final class ObjectsDealSplitsSimplePublicObject implements BaseModel
         ?\DateTimeInterface $archivedAt = null,
         ?array $propertiesWithHistory = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['id'] = $id;
-        $obj['createdAt'] = $createdAt;
-        $obj['properties'] = $properties;
-        $obj['updatedAt'] = $updatedAt;
+        $self['id'] = $id;
+        $self['createdAt'] = $createdAt;
+        $self['properties'] = $properties;
+        $self['updatedAt'] = $updatedAt;
 
-        null !== $archived && $obj['archived'] = $archived;
-        null !== $archivedAt && $obj['archivedAt'] = $archivedAt;
-        null !== $propertiesWithHistory && $obj['propertiesWithHistory'] = $propertiesWithHistory;
+        null !== $archived && $self['archived'] = $archived;
+        null !== $archivedAt && $self['archivedAt'] = $archivedAt;
+        null !== $propertiesWithHistory && $self['propertiesWithHistory'] = $propertiesWithHistory;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -144,10 +144,10 @@ final class ObjectsDealSplitsSimplePublicObject implements BaseModel
      */
     public function withID(string $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -155,10 +155,10 @@ final class ObjectsDealSplitsSimplePublicObject implements BaseModel
      */
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
-        $obj = clone $this;
-        $obj['createdAt'] = $createdAt;
+        $self = clone $this;
+        $self['createdAt'] = $createdAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -168,10 +168,10 @@ final class ObjectsDealSplitsSimplePublicObject implements BaseModel
      */
     public function withProperties(array $properties): self
     {
-        $obj = clone $this;
-        $obj['properties'] = $properties;
+        $self = clone $this;
+        $self['properties'] = $properties;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -179,10 +179,10 @@ final class ObjectsDealSplitsSimplePublicObject implements BaseModel
      */
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
-        $obj = clone $this;
-        $obj['updatedAt'] = $updatedAt;
+        $self = clone $this;
+        $self['updatedAt'] = $updatedAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -190,10 +190,10 @@ final class ObjectsDealSplitsSimplePublicObject implements BaseModel
      */
     public function withArchived(bool $archived): self
     {
-        $obj = clone $this;
-        $obj['archived'] = $archived;
+        $self = clone $this;
+        $self['archived'] = $archived;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -201,10 +201,10 @@ final class ObjectsDealSplitsSimplePublicObject implements BaseModel
      */
     public function withArchivedAt(\DateTimeInterface $archivedAt): self
     {
-        $obj = clone $this;
-        $obj['archivedAt'] = $archivedAt;
+        $self = clone $this;
+        $self['archivedAt'] = $archivedAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -222,9 +222,9 @@ final class ObjectsDealSplitsSimplePublicObject implements BaseModel
     public function withPropertiesWithHistory(
         array $propertiesWithHistory
     ): self {
-        $obj = clone $this;
-        $obj['propertiesWithHistory'] = $propertiesWithHistory;
+        $self = clone $this;
+        $self['propertiesWithHistory'] = $propertiesWithHistory;
 
-        return $obj;
+        return $self;
     }
 }

@@ -185,31 +185,31 @@ final class Domain implements BaseModel
         ?string $secondaryToDomain = null,
         ?\DateTimeInterface $updated = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['id'] = $id;
-        $obj['domain'] = $domain;
-        $obj['isResolving'] = $isResolving;
-        $obj['isUsedForBlogPost'] = $isUsedForBlogPost;
-        $obj['isUsedForEmail'] = $isUsedForEmail;
-        $obj['isUsedForKnowledge'] = $isUsedForKnowledge;
-        $obj['isUsedForLandingPage'] = $isUsedForLandingPage;
-        $obj['isUsedForSitePage'] = $isUsedForSitePage;
+        $self['id'] = $id;
+        $self['domain'] = $domain;
+        $self['isResolving'] = $isResolving;
+        $self['isUsedForBlogPost'] = $isUsedForBlogPost;
+        $self['isUsedForEmail'] = $isUsedForEmail;
+        $self['isUsedForKnowledge'] = $isUsedForKnowledge;
+        $self['isUsedForLandingPage'] = $isUsedForLandingPage;
+        $self['isUsedForSitePage'] = $isUsedForSitePage;
 
-        null !== $correctCname && $obj['correctCname'] = $correctCname;
-        null !== $created && $obj['created'] = $created;
-        null !== $isSslEnabled && $obj['isSslEnabled'] = $isSslEnabled;
-        null !== $isSslOnly && $obj['isSslOnly'] = $isSslOnly;
-        null !== $manuallyMarkedAsResolving && $obj['manuallyMarkedAsResolving'] = $manuallyMarkedAsResolving;
-        null !== $primaryBlogPost && $obj['primaryBlogPost'] = $primaryBlogPost;
-        null !== $primaryEmail && $obj['primaryEmail'] = $primaryEmail;
-        null !== $primaryKnowledge && $obj['primaryKnowledge'] = $primaryKnowledge;
-        null !== $primaryLandingPage && $obj['primaryLandingPage'] = $primaryLandingPage;
-        null !== $primarySitePage && $obj['primarySitePage'] = $primarySitePage;
-        null !== $secondaryToDomain && $obj['secondaryToDomain'] = $secondaryToDomain;
-        null !== $updated && $obj['updated'] = $updated;
+        null !== $correctCname && $self['correctCname'] = $correctCname;
+        null !== $created && $self['created'] = $created;
+        null !== $isSslEnabled && $self['isSslEnabled'] = $isSslEnabled;
+        null !== $isSslOnly && $self['isSslOnly'] = $isSslOnly;
+        null !== $manuallyMarkedAsResolving && $self['manuallyMarkedAsResolving'] = $manuallyMarkedAsResolving;
+        null !== $primaryBlogPost && $self['primaryBlogPost'] = $primaryBlogPost;
+        null !== $primaryEmail && $self['primaryEmail'] = $primaryEmail;
+        null !== $primaryKnowledge && $self['primaryKnowledge'] = $primaryKnowledge;
+        null !== $primaryLandingPage && $self['primaryLandingPage'] = $primaryLandingPage;
+        null !== $primarySitePage && $self['primarySitePage'] = $primarySitePage;
+        null !== $secondaryToDomain && $self['secondaryToDomain'] = $secondaryToDomain;
+        null !== $updated && $self['updated'] = $updated;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -217,10 +217,10 @@ final class Domain implements BaseModel
      */
     public function withID(string $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -228,10 +228,10 @@ final class Domain implements BaseModel
      */
     public function withDomain(string $domain): self
     {
-        $obj = clone $this;
-        $obj['domain'] = $domain;
+        $self = clone $this;
+        $self['domain'] = $domain;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -239,10 +239,10 @@ final class Domain implements BaseModel
      */
     public function withIsResolving(bool $isResolving): self
     {
-        $obj = clone $this;
-        $obj['isResolving'] = $isResolving;
+        $self = clone $this;
+        $self['isResolving'] = $isResolving;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -250,10 +250,10 @@ final class Domain implements BaseModel
      */
     public function withIsUsedForBlogPost(bool $isUsedForBlogPost): self
     {
-        $obj = clone $this;
-        $obj['isUsedForBlogPost'] = $isUsedForBlogPost;
+        $self = clone $this;
+        $self['isUsedForBlogPost'] = $isUsedForBlogPost;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -261,10 +261,10 @@ final class Domain implements BaseModel
      */
     public function withIsUsedForEmail(bool $isUsedForEmail): self
     {
-        $obj = clone $this;
-        $obj['isUsedForEmail'] = $isUsedForEmail;
+        $self = clone $this;
+        $self['isUsedForEmail'] = $isUsedForEmail;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -272,10 +272,10 @@ final class Domain implements BaseModel
      */
     public function withIsUsedForKnowledge(bool $isUsedForKnowledge): self
     {
-        $obj = clone $this;
-        $obj['isUsedForKnowledge'] = $isUsedForKnowledge;
+        $self = clone $this;
+        $self['isUsedForKnowledge'] = $isUsedForKnowledge;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -283,10 +283,10 @@ final class Domain implements BaseModel
      */
     public function withIsUsedForLandingPage(bool $isUsedForLandingPage): self
     {
-        $obj = clone $this;
-        $obj['isUsedForLandingPage'] = $isUsedForLandingPage;
+        $self = clone $this;
+        $self['isUsedForLandingPage'] = $isUsedForLandingPage;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -294,106 +294,106 @@ final class Domain implements BaseModel
      */
     public function withIsUsedForSitePage(bool $isUsedForSitePage): self
     {
-        $obj = clone $this;
-        $obj['isUsedForSitePage'] = $isUsedForSitePage;
+        $self = clone $this;
+        $self['isUsedForSitePage'] = $isUsedForSitePage;
 
-        return $obj;
+        return $self;
     }
 
     public function withCorrectCname(string $correctCname): self
     {
-        $obj = clone $this;
-        $obj['correctCname'] = $correctCname;
+        $self = clone $this;
+        $self['correctCname'] = $correctCname;
 
-        return $obj;
+        return $self;
     }
 
     public function withCreated(\DateTimeInterface $created): self
     {
-        $obj = clone $this;
-        $obj['created'] = $created;
+        $self = clone $this;
+        $self['created'] = $created;
 
-        return $obj;
+        return $self;
     }
 
     public function withIsSslEnabled(bool $isSslEnabled): self
     {
-        $obj = clone $this;
-        $obj['isSslEnabled'] = $isSslEnabled;
+        $self = clone $this;
+        $self['isSslEnabled'] = $isSslEnabled;
 
-        return $obj;
+        return $self;
     }
 
     public function withIsSslOnly(bool $isSslOnly): self
     {
-        $obj = clone $this;
-        $obj['isSslOnly'] = $isSslOnly;
+        $self = clone $this;
+        $self['isSslOnly'] = $isSslOnly;
 
-        return $obj;
+        return $self;
     }
 
     public function withManuallyMarkedAsResolving(
         bool $manuallyMarkedAsResolving
     ): self {
-        $obj = clone $this;
-        $obj['manuallyMarkedAsResolving'] = $manuallyMarkedAsResolving;
+        $self = clone $this;
+        $self['manuallyMarkedAsResolving'] = $manuallyMarkedAsResolving;
 
-        return $obj;
+        return $self;
     }
 
     public function withPrimaryBlogPost(bool $primaryBlogPost): self
     {
-        $obj = clone $this;
-        $obj['primaryBlogPost'] = $primaryBlogPost;
+        $self = clone $this;
+        $self['primaryBlogPost'] = $primaryBlogPost;
 
-        return $obj;
+        return $self;
     }
 
     public function withPrimaryEmail(bool $primaryEmail): self
     {
-        $obj = clone $this;
-        $obj['primaryEmail'] = $primaryEmail;
+        $self = clone $this;
+        $self['primaryEmail'] = $primaryEmail;
 
-        return $obj;
+        return $self;
     }
 
     public function withPrimaryKnowledge(bool $primaryKnowledge): self
     {
-        $obj = clone $this;
-        $obj['primaryKnowledge'] = $primaryKnowledge;
+        $self = clone $this;
+        $self['primaryKnowledge'] = $primaryKnowledge;
 
-        return $obj;
+        return $self;
     }
 
     public function withPrimaryLandingPage(bool $primaryLandingPage): self
     {
-        $obj = clone $this;
-        $obj['primaryLandingPage'] = $primaryLandingPage;
+        $self = clone $this;
+        $self['primaryLandingPage'] = $primaryLandingPage;
 
-        return $obj;
+        return $self;
     }
 
     public function withPrimarySitePage(bool $primarySitePage): self
     {
-        $obj = clone $this;
-        $obj['primarySitePage'] = $primarySitePage;
+        $self = clone $this;
+        $self['primarySitePage'] = $primarySitePage;
 
-        return $obj;
+        return $self;
     }
 
     public function withSecondaryToDomain(string $secondaryToDomain): self
     {
-        $obj = clone $this;
-        $obj['secondaryToDomain'] = $secondaryToDomain;
+        $self = clone $this;
+        $self['secondaryToDomain'] = $secondaryToDomain;
 
-        return $obj;
+        return $self;
     }
 
     public function withUpdated(\DateTimeInterface $updated): self
     {
-        $obj = clone $this;
-        $obj['updated'] = $updated;
+        $self = clone $this;
+        $self['updated'] = $updated;
 
-        return $obj;
+        return $self;
     }
 }

@@ -54,20 +54,20 @@ final class PublicFileEgg implements BaseModel
         string $fileID,
         Type|string $type = 'FILE'
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['fileID'] = $fileID;
-        $obj['type'] = $type;
+        $self['fileID'] = $fileID;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 
     public function withFileID(string $fileID): self
     {
-        $obj = clone $this;
-        $obj['fileID'] = $fileID;
+        $self = clone $this;
+        $self['fileID'] = $fileID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -75,9 +75,9 @@ final class PublicFileEgg implements BaseModel
      */
     public function withType(Type|string $type): self
     {
-        $obj = clone $this;
-        $obj['type'] = $type;
+        $self = clone $this;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 }

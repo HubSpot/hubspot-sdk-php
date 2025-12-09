@@ -58,12 +58,12 @@ final class AbTestEndRequestVNext implements BaseModel
      */
     public static function with(string $abTestID, string $winnerID): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['abTestID'] = $abTestID;
-        $obj['winnerID'] = $winnerID;
+        $self['abTestID'] = $abTestID;
+        $self['winnerID'] = $winnerID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -71,10 +71,10 @@ final class AbTestEndRequestVNext implements BaseModel
      */
     public function withAbTestID(string $abTestID): self
     {
-        $obj = clone $this;
-        $obj['abTestID'] = $abTestID;
+        $self = clone $this;
+        $self['abTestID'] = $abTestID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -82,9 +82,9 @@ final class AbTestEndRequestVNext implements BaseModel
      */
     public function withWinnerID(string $winnerID): self
     {
-        $obj = clone $this;
-        $obj['winnerID'] = $winnerID;
+        $self = clone $this;
+        $self['winnerID'] = $winnerID;
 
-        return $obj;
+        return $self;
     }
 }

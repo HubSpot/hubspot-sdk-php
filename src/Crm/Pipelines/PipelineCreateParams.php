@@ -84,13 +84,13 @@ final class PipelineCreateParams implements BaseModel
         string $label,
         array $stages
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['displayOrder'] = $displayOrder;
-        $obj['label'] = $label;
-        $obj['stages'] = $stages;
+        $self['displayOrder'] = $displayOrder;
+        $self['label'] = $label;
+        $self['stages'] = $stages;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -98,10 +98,10 @@ final class PipelineCreateParams implements BaseModel
      */
     public function withDisplayOrder(int $displayOrder): self
     {
-        $obj = clone $this;
-        $obj['displayOrder'] = $displayOrder;
+        $self = clone $this;
+        $self['displayOrder'] = $displayOrder;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -109,10 +109,10 @@ final class PipelineCreateParams implements BaseModel
      */
     public function withLabel(string $label): self
     {
-        $obj = clone $this;
-        $obj['label'] = $label;
+        $self = clone $this;
+        $self['label'] = $label;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -124,9 +124,9 @@ final class PipelineCreateParams implements BaseModel
      */
     public function withStages(array $stages): self
     {
-        $obj = clone $this;
-        $obj['stages'] = $stages;
+        $self = clone $this;
+        $self['stages'] = $stages;
 
-        return $obj;
+        return $self;
     }
 }

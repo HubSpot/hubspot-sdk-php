@@ -76,13 +76,13 @@ final class ComboEventRuleBranch implements BaseModel
         OperationType|string $operationType,
         array $ruleBranches,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['composingRules'] = $composingRules;
-        $obj['operationType'] = $operationType;
-        $obj['ruleBranches'] = $ruleBranches;
+        $self['composingRules'] = $composingRules;
+        $self['operationType'] = $operationType;
+        $self['ruleBranches'] = $ruleBranches;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -95,10 +95,10 @@ final class ComboEventRuleBranch implements BaseModel
      */
     public function withComposingRules(array $composingRules): self
     {
-        $obj = clone $this;
-        $obj['composingRules'] = $composingRules;
+        $self = clone $this;
+        $self['composingRules'] = $composingRules;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -106,10 +106,10 @@ final class ComboEventRuleBranch implements BaseModel
      */
     public function withOperationType(OperationType|string $operationType): self
     {
-        $obj = clone $this;
-        $obj['operationType'] = $operationType;
+        $self = clone $this;
+        $self['operationType'] = $operationType;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -117,9 +117,9 @@ final class ComboEventRuleBranch implements BaseModel
      */
     public function withRuleBranches(array $ruleBranches): self
     {
-        $obj = clone $this;
-        $obj['ruleBranches'] = $ruleBranches;
+        $self = clone $this;
+        $self['ruleBranches'] = $ruleBranches;
 
-        return $obj;
+        return $self;
     }
 }

@@ -54,18 +54,18 @@ final class ParticipationGetByExternalAccountAndEventIDParams implements BaseMod
      */
     public static function with(string $externalAccountID): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['externalAccountID'] = $externalAccountID;
+        $self['externalAccountID'] = $externalAccountID;
 
-        return $obj;
+        return $self;
     }
 
     public function withExternalAccountID(string $externalAccountID): self
     {
-        $obj = clone $this;
-        $obj['externalAccountID'] = $externalAccountID;
+        $self = clone $this;
+        $self['externalAccountID'] = $externalAccountID;
 
-        return $obj;
+        return $self;
     }
 }

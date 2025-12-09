@@ -161,21 +161,21 @@ final class MultipleCheckboxesField implements BaseModel
         FieldType|string $fieldType = 'multiple_checkboxes',
         ?string $description = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['defaultValues'] = $defaultValues;
-        $obj['dependentFields'] = $dependentFields;
-        $obj['fieldType'] = $fieldType;
-        $obj['hidden'] = $hidden;
-        $obj['label'] = $label;
-        $obj['name'] = $name;
-        $obj['objectTypeID'] = $objectTypeID;
-        $obj['options'] = $options;
-        $obj['required'] = $required;
+        $self['defaultValues'] = $defaultValues;
+        $self['dependentFields'] = $dependentFields;
+        $self['fieldType'] = $fieldType;
+        $self['hidden'] = $hidden;
+        $self['label'] = $label;
+        $self['name'] = $name;
+        $self['objectTypeID'] = $objectTypeID;
+        $self['options'] = $options;
+        $self['required'] = $required;
 
-        null !== $description && $obj['description'] = $description;
+        null !== $description && $self['description'] = $description;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -185,10 +185,10 @@ final class MultipleCheckboxesField implements BaseModel
      */
     public function withDefaultValues(array $defaultValues): self
     {
-        $obj = clone $this;
-        $obj['defaultValues'] = $defaultValues;
+        $self = clone $this;
+        $self['defaultValues'] = $defaultValues;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -198,10 +198,10 @@ final class MultipleCheckboxesField implements BaseModel
      */
     public function withDependentFields(array $dependentFields): self
     {
-        $obj = clone $this;
-        $obj['dependentFields'] = $dependentFields;
+        $self = clone $this;
+        $self['dependentFields'] = $dependentFields;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -211,10 +211,10 @@ final class MultipleCheckboxesField implements BaseModel
      */
     public function withFieldType(FieldType|string $fieldType): self
     {
-        $obj = clone $this;
-        $obj['fieldType'] = $fieldType;
+        $self = clone $this;
+        $self['fieldType'] = $fieldType;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -222,10 +222,10 @@ final class MultipleCheckboxesField implements BaseModel
      */
     public function withHidden(bool $hidden): self
     {
-        $obj = clone $this;
-        $obj['hidden'] = $hidden;
+        $self = clone $this;
+        $self['hidden'] = $hidden;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -233,10 +233,10 @@ final class MultipleCheckboxesField implements BaseModel
      */
     public function withLabel(string $label): self
     {
-        $obj = clone $this;
-        $obj['label'] = $label;
+        $self = clone $this;
+        $self['label'] = $label;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -244,10 +244,10 @@ final class MultipleCheckboxesField implements BaseModel
      */
     public function withName(string $name): self
     {
-        $obj = clone $this;
-        $obj['name'] = $name;
+        $self = clone $this;
+        $self['name'] = $name;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -255,10 +255,10 @@ final class MultipleCheckboxesField implements BaseModel
      */
     public function withObjectTypeID(string $objectTypeID): self
     {
-        $obj = clone $this;
-        $obj['objectTypeID'] = $objectTypeID;
+        $self = clone $this;
+        $self['objectTypeID'] = $objectTypeID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -270,10 +270,10 @@ final class MultipleCheckboxesField implements BaseModel
      */
     public function withOptions(array $options): self
     {
-        $obj = clone $this;
-        $obj['options'] = $options;
+        $self = clone $this;
+        $self['options'] = $options;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -281,10 +281,10 @@ final class MultipleCheckboxesField implements BaseModel
      */
     public function withRequired(bool $required): self
     {
-        $obj = clone $this;
-        $obj['required'] = $required;
+        $self = clone $this;
+        $self['required'] = $required;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -292,9 +292,9 @@ final class MultipleCheckboxesField implements BaseModel
      */
     public function withDescription(string $description): self
     {
-        $obj = clone $this;
-        $obj['description'] = $description;
+        $self = clone $this;
+        $self['description'] = $description;
 
-        return $obj;
+        return $self;
     }
 }

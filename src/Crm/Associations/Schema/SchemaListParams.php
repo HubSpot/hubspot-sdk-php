@@ -49,18 +49,18 @@ final class SchemaListParams implements BaseModel
      */
     public static function with(string $fromObjectType): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['fromObjectType'] = $fromObjectType;
+        $self['fromObjectType'] = $fromObjectType;
 
-        return $obj;
+        return $self;
     }
 
     public function withFromObjectType(string $fromObjectType): self
     {
-        $obj = clone $this;
-        $obj['fromObjectType'] = $fromObjectType;
+        $self = clone $this;
+        $self['fromObjectType'] = $fromObjectType;
 
-        return $obj;
+        return $self;
     }
 }

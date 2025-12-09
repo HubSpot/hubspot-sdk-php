@@ -73,12 +73,12 @@ final class RecordLimitResponse implements BaseModel
         CustomObjectRecordLimitResponse|array $customObjectTypes,
         array $hubspotDefinedObjectTypes,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['customObjectTypes'] = $customObjectTypes;
-        $obj['hubspotDefinedObjectTypes'] = $hubspotDefinedObjectTypes;
+        $self['customObjectTypes'] = $customObjectTypes;
+        $self['hubspotDefinedObjectTypes'] = $hubspotDefinedObjectTypes;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -92,10 +92,10 @@ final class RecordLimitResponse implements BaseModel
     public function withCustomObjectTypes(
         CustomObjectRecordLimitResponse|array $customObjectTypes
     ): self {
-        $obj = clone $this;
-        $obj['customObjectTypes'] = $customObjectTypes;
+        $self = clone $this;
+        $self['customObjectTypes'] = $customObjectTypes;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -111,9 +111,9 @@ final class RecordLimitResponse implements BaseModel
     public function withHubspotDefinedObjectTypes(
         array $hubspotDefinedObjectTypes
     ): self {
-        $obj = clone $this;
-        $obj['hubspotDefinedObjectTypes'] = $hubspotDefinedObjectTypes;
+        $self = clone $this;
+        $self['hubspotDefinedObjectTypes'] = $hubspotDefinedObjectTypes;
 
-        return $obj;
+        return $self;
     }
 }

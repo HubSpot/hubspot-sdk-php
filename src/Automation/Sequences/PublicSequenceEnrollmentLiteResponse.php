@@ -69,45 +69,45 @@ final class PublicSequenceEnrollmentLiteResponse implements BaseModel
         string $toEmail,
         \DateTimeInterface $updatedAt,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['id'] = $id;
-        $obj['enrolledAt'] = $enrolledAt;
-        $obj['toEmail'] = $toEmail;
-        $obj['updatedAt'] = $updatedAt;
+        $self['id'] = $id;
+        $self['enrolledAt'] = $enrolledAt;
+        $self['toEmail'] = $toEmail;
+        $self['updatedAt'] = $updatedAt;
 
-        return $obj;
+        return $self;
     }
 
     public function withID(string $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     public function withEnrolledAt(\DateTimeInterface $enrolledAt): self
     {
-        $obj = clone $this;
-        $obj['enrolledAt'] = $enrolledAt;
+        $self = clone $this;
+        $self['enrolledAt'] = $enrolledAt;
 
-        return $obj;
+        return $self;
     }
 
     public function withToEmail(string $toEmail): self
     {
-        $obj = clone $this;
-        $obj['toEmail'] = $toEmail;
+        $self = clone $this;
+        $self['toEmail'] = $toEmail;
 
-        return $obj;
+        return $self;
     }
 
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
-        $obj = clone $this;
-        $obj['updatedAt'] = $updatedAt;
+        $self = clone $this;
+        $self['updatedAt'] = $updatedAt;
 
-        return $obj;
+        return $self;
     }
 }

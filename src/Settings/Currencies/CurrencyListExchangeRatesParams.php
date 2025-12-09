@@ -76,14 +76,14 @@ final class CurrencyListExchangeRatesParams implements BaseModel
         ?int $limit = null,
         ToCurrencyCode|string|null $toCurrencyCode = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $after && $obj['after'] = $after;
-        null !== $fromCurrencyCode && $obj['fromCurrencyCode'] = $fromCurrencyCode;
-        null !== $limit && $obj['limit'] = $limit;
-        null !== $toCurrencyCode && $obj['toCurrencyCode'] = $toCurrencyCode;
+        null !== $after && $self['after'] = $after;
+        null !== $fromCurrencyCode && $self['fromCurrencyCode'] = $fromCurrencyCode;
+        null !== $limit && $self['limit'] = $limit;
+        null !== $toCurrencyCode && $self['toCurrencyCode'] = $toCurrencyCode;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -91,10 +91,10 @@ final class CurrencyListExchangeRatesParams implements BaseModel
      */
     public function withAfter(string $after): self
     {
-        $obj = clone $this;
-        $obj['after'] = $after;
+        $self = clone $this;
+        $self['after'] = $after;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -105,10 +105,10 @@ final class CurrencyListExchangeRatesParams implements BaseModel
     public function withFromCurrencyCode(
         FromCurrencyCode|string $fromCurrencyCode
     ): self {
-        $obj = clone $this;
-        $obj['fromCurrencyCode'] = $fromCurrencyCode;
+        $self = clone $this;
+        $self['fromCurrencyCode'] = $fromCurrencyCode;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -116,10 +116,10 @@ final class CurrencyListExchangeRatesParams implements BaseModel
      */
     public function withLimit(int $limit): self
     {
-        $obj = clone $this;
-        $obj['limit'] = $limit;
+        $self = clone $this;
+        $self['limit'] = $limit;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -130,9 +130,9 @@ final class CurrencyListExchangeRatesParams implements BaseModel
     public function withToCurrencyCode(
         ToCurrencyCode|string $toCurrencyCode
     ): self {
-        $obj = clone $this;
-        $obj['toCurrencyCode'] = $toCurrencyCode;
+        $self = clone $this;
+        $self['toCurrencyCode'] = $toCurrencyCode;
 
-        return $obj;
+        return $self;
     }
 }

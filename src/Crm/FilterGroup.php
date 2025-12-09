@@ -55,11 +55,11 @@ final class FilterGroup implements BaseModel
      */
     public static function with(array $filters): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['filters'] = $filters;
+        $self['filters'] = $filters;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -73,9 +73,9 @@ final class FilterGroup implements BaseModel
      */
     public function withFilters(array $filters): self
     {
-        $obj = clone $this;
-        $obj['filters'] = $filters;
+        $self = clone $this;
+        $self['filters'] = $filters;
 
-        return $obj;
+        return $self;
     }
 }

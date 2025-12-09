@@ -173,13 +173,13 @@ final class PublicPropertyFilter implements BaseModel
         string $property,
         FilterType|string $filterType = 'PROPERTY',
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['filterType'] = $filterType;
-        $obj['operation'] = $operation;
-        $obj['property'] = $property;
+        $self['filterType'] = $filterType;
+        $self['operation'] = $operation;
+        $self['property'] = $property;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -187,10 +187,10 @@ final class PublicPropertyFilter implements BaseModel
      */
     public function withFilterType(FilterType|string $filterType): self
     {
-        $obj = clone $this;
-        $obj['filterType'] = $filterType;
+        $self = clone $this;
+        $self['filterType'] = $filterType;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -303,17 +303,17 @@ final class PublicPropertyFilter implements BaseModel
     public function withOperation(
         PublicBoolPropertyOperation|array|PublicNumberPropertyOperation|PublicStringPropertyOperation|PublicDateTimePropertyOperation|PublicRangedDatePropertyOperation|PublicComparativePropertyUpdatedOperation|PublicComparativeDatePropertyOperation|PublicRollingDateRangePropertyOperation|PublicRollingPropertyUpdatedOperation|PublicEnumerationPropertyOperation|PublicAllPropertyTypesOperation|PublicRangedNumberPropertyOperation|PublicMultiStringPropertyOperation|PublicDatePropertyOperation|PublicCalendarDatePropertyOperation|PublicTimePointOperation|PublicRangedTimeOperation $operation,
     ): self {
-        $obj = clone $this;
-        $obj['operation'] = $operation;
+        $self = clone $this;
+        $self['operation'] = $operation;
 
-        return $obj;
+        return $self;
     }
 
     public function withProperty(string $property): self
     {
-        $obj = clone $this;
-        $obj['property'] = $property;
+        $self = clone $this;
+        $self['property'] = $property;
 
-        return $obj;
+        return $self;
     }
 }

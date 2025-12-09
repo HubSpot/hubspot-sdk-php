@@ -60,21 +60,21 @@ final class APIEnrollmentEventPropertyValue implements BaseModel
         string $enrollmentEventPropertyToken,
         Type|string $type = 'ENROLLMENT_EVENT_PROPERTY',
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['enrollmentEventPropertyToken'] = $enrollmentEventPropertyToken;
-        $obj['type'] = $type;
+        $self['enrollmentEventPropertyToken'] = $enrollmentEventPropertyToken;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 
     public function withEnrollmentEventPropertyToken(
         string $enrollmentEventPropertyToken
     ): self {
-        $obj = clone $this;
-        $obj['enrollmentEventPropertyToken'] = $enrollmentEventPropertyToken;
+        $self = clone $this;
+        $self['enrollmentEventPropertyToken'] = $enrollmentEventPropertyToken;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -82,9 +82,9 @@ final class APIEnrollmentEventPropertyValue implements BaseModel
      */
     public function withType(Type|string $type): self
     {
-        $obj = clone $this;
-        $obj['type'] = $type;
+        $self = clone $this;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 }

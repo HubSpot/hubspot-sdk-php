@@ -38,27 +38,27 @@ final class PublicMessageContent implements BaseModel
         ?string $richText = null,
         ?string $text = null
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $richText && $obj['richText'] = $richText;
-        null !== $text && $obj['text'] = $text;
+        null !== $richText && $self['richText'] = $richText;
+        null !== $text && $self['text'] = $text;
 
-        return $obj;
+        return $self;
     }
 
     public function withRichText(string $richText): self
     {
-        $obj = clone $this;
-        $obj['richText'] = $richText;
+        $self = clone $this;
+        $self['richText'] = $richText;
 
-        return $obj;
+        return $self;
     }
 
     public function withText(string $text): self
     {
-        $obj = clone $this;
-        $obj['text'] = $text;
+        $self = clone $this;
+        $self['text'] = $text;
 
-        return $obj;
+        return $self;
     }
 }

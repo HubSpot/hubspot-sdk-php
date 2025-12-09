@@ -57,13 +57,13 @@ final class FileOperationReplaceParams implements BaseModel
         ?string $file = null,
         ?string $options = null
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $charsetHunch && $obj['charsetHunch'] = $charsetHunch;
-        null !== $file && $obj['file'] = $file;
-        null !== $options && $obj['options'] = $options;
+        null !== $charsetHunch && $self['charsetHunch'] = $charsetHunch;
+        null !== $file && $self['file'] = $file;
+        null !== $options && $self['options'] = $options;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -71,10 +71,10 @@ final class FileOperationReplaceParams implements BaseModel
      */
     public function withCharsetHunch(string $charsetHunch): self
     {
-        $obj = clone $this;
-        $obj['charsetHunch'] = $charsetHunch;
+        $self = clone $this;
+        $self['charsetHunch'] = $charsetHunch;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -82,10 +82,10 @@ final class FileOperationReplaceParams implements BaseModel
      */
     public function withFile(string $file): self
     {
-        $obj = clone $this;
-        $obj['file'] = $file;
+        $self = clone $this;
+        $self['file'] = $file;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -93,9 +93,9 @@ final class FileOperationReplaceParams implements BaseModel
      */
     public function withOptions(string $options): self
     {
-        $obj = clone $this;
-        $obj['options'] = $options;
+        $self = clone $this;
+        $self['options'] = $options;
 
-        return $obj;
+        return $self;
     }
 }

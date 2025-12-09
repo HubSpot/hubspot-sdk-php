@@ -76,40 +76,40 @@ final class MarketingEventIdentifiersResponse implements BaseModel
         AppInfo|array|null $appInfo = null,
         ?string $externalAccountID = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['externalEventID'] = $externalEventID;
-        $obj['marketingEventName'] = $marketingEventName;
-        $obj['objectID'] = $objectID;
+        $self['externalEventID'] = $externalEventID;
+        $self['marketingEventName'] = $marketingEventName;
+        $self['objectID'] = $objectID;
 
-        null !== $appInfo && $obj['appInfo'] = $appInfo;
-        null !== $externalAccountID && $obj['externalAccountID'] = $externalAccountID;
+        null !== $appInfo && $self['appInfo'] = $appInfo;
+        null !== $externalAccountID && $self['externalAccountID'] = $externalAccountID;
 
-        return $obj;
+        return $self;
     }
 
     public function withExternalEventID(string $externalEventID): self
     {
-        $obj = clone $this;
-        $obj['externalEventID'] = $externalEventID;
+        $self = clone $this;
+        $self['externalEventID'] = $externalEventID;
 
-        return $obj;
+        return $self;
     }
 
     public function withMarketingEventName(string $marketingEventName): self
     {
-        $obj = clone $this;
-        $obj['marketingEventName'] = $marketingEventName;
+        $self = clone $this;
+        $self['marketingEventName'] = $marketingEventName;
 
-        return $obj;
+        return $self;
     }
 
     public function withObjectID(string $objectID): self
     {
-        $obj = clone $this;
-        $obj['objectID'] = $objectID;
+        $self = clone $this;
+        $self['objectID'] = $objectID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -117,17 +117,17 @@ final class MarketingEventIdentifiersResponse implements BaseModel
      */
     public function withAppInfo(AppInfo|array $appInfo): self
     {
-        $obj = clone $this;
-        $obj['appInfo'] = $appInfo;
+        $self = clone $this;
+        $self['appInfo'] = $appInfo;
 
-        return $obj;
+        return $self;
     }
 
     public function withExternalAccountID(string $externalAccountID): self
     {
-        $obj = clone $this;
-        $obj['externalAccountID'] = $externalAccountID;
+        $self = clone $this;
+        $self['externalAccountID'] = $externalAccountID;
 
-        return $obj;
+        return $self;
     }
 }

@@ -77,16 +77,16 @@ final class LinkCreateParams implements BaseModel
         ?string $language = null,
         ?int $subscriptionID = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['channel'] = $channel;
-        $obj['subscriberIDString'] = $subscriberIDString;
+        $self['channel'] = $channel;
+        $self['subscriberIDString'] = $subscriberIDString;
 
-        null !== $businessUnitID && $obj['businessUnitID'] = $businessUnitID;
-        null !== $language && $obj['language'] = $language;
-        null !== $subscriptionID && $obj['subscriptionID'] = $subscriptionID;
+        null !== $businessUnitID && $self['businessUnitID'] = $businessUnitID;
+        null !== $language && $self['language'] = $language;
+        null !== $subscriptionID && $self['subscriptionID'] = $subscriptionID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -94,41 +94,41 @@ final class LinkCreateParams implements BaseModel
      */
     public function withChannel(Channel|string $channel): self
     {
-        $obj = clone $this;
-        $obj['channel'] = $channel;
+        $self = clone $this;
+        $self['channel'] = $channel;
 
-        return $obj;
+        return $self;
     }
 
     public function withSubscriberIDString(string $subscriberIDString): self
     {
-        $obj = clone $this;
-        $obj['subscriberIDString'] = $subscriberIDString;
+        $self = clone $this;
+        $self['subscriberIDString'] = $subscriberIDString;
 
-        return $obj;
+        return $self;
     }
 
     public function withBusinessUnitID(int $businessUnitID): self
     {
-        $obj = clone $this;
-        $obj['businessUnitID'] = $businessUnitID;
+        $self = clone $this;
+        $self['businessUnitID'] = $businessUnitID;
 
-        return $obj;
+        return $self;
     }
 
     public function withLanguage(string $language): self
     {
-        $obj = clone $this;
-        $obj['language'] = $language;
+        $self = clone $this;
+        $self['language'] = $language;
 
-        return $obj;
+        return $self;
     }
 
     public function withSubscriptionID(int $subscriptionID): self
     {
-        $obj = clone $this;
-        $obj['subscriptionID'] = $subscriptionID;
+        $self = clone $this;
+        $self['subscriptionID'] = $subscriptionID;
 
-        return $obj;
+        return $self;
     }
 }

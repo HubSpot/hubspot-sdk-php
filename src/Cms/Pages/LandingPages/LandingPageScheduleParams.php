@@ -64,12 +64,12 @@ final class LandingPageScheduleParams implements BaseModel
         string $id,
         \DateTimeInterface $publishDate
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['id'] = $id;
-        $obj['publishDate'] = $publishDate;
+        $self['id'] = $id;
+        $self['publishDate'] = $publishDate;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -77,10 +77,10 @@ final class LandingPageScheduleParams implements BaseModel
      */
     public function withID(string $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -88,9 +88,9 @@ final class LandingPageScheduleParams implements BaseModel
      */
     public function withPublishDate(\DateTimeInterface $publishDate): self
     {
-        $obj = clone $this;
-        $obj['publishDate'] = $publishDate;
+        $self = clone $this;
+        $self['publishDate'] = $publishDate;
 
-        return $obj;
+        return $self;
     }
 }

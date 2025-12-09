@@ -68,12 +68,12 @@ final class SocialMetadataIntegrationAttachment implements BaseModel
         SocialMetadata|array $socialMetadata,
         Type|string $type = 'SOCIAL_MEDIA_METADATA',
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['socialMetadata'] = $socialMetadata;
-        $obj['type'] = $type;
+        $self['socialMetadata'] = $socialMetadata;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -90,10 +90,10 @@ final class SocialMetadataIntegrationAttachment implements BaseModel
     public function withSocialMetadata(
         SocialMetadata|array $socialMetadata
     ): self {
-        $obj = clone $this;
-        $obj['socialMetadata'] = $socialMetadata;
+        $self = clone $this;
+        $self['socialMetadata'] = $socialMetadata;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -101,9 +101,9 @@ final class SocialMetadataIntegrationAttachment implements BaseModel
      */
     public function withType(Type|string $type): self
     {
-        $obj = clone $this;
-        $obj['type'] = $type;
+        $self = clone $this;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 }

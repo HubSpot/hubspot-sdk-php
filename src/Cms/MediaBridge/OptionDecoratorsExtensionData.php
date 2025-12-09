@@ -60,12 +60,12 @@ final class OptionDecoratorsExtensionData implements BaseModel
         array $optionDecorators,
         string $optionDecoratorStyle
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['optionDecorators'] = $optionDecorators;
-        $obj['optionDecoratorStyle'] = $optionDecoratorStyle;
+        $self['optionDecorators'] = $optionDecorators;
+        $self['optionDecoratorStyle'] = $optionDecoratorStyle;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -73,17 +73,17 @@ final class OptionDecoratorsExtensionData implements BaseModel
      */
     public function withOptionDecorators(array $optionDecorators): self
     {
-        $obj = clone $this;
-        $obj['optionDecorators'] = $optionDecorators;
+        $self = clone $this;
+        $self['optionDecorators'] = $optionDecorators;
 
-        return $obj;
+        return $self;
     }
 
     public function withOptionDecoratorStyle(string $optionDecoratorStyle): self
     {
-        $obj = clone $this;
-        $obj['optionDecoratorStyle'] = $optionDecoratorStyle;
+        $self = clone $this;
+        $self['optionDecoratorStyle'] = $optionDecoratorStyle;
 
-        return $obj;
+        return $self;
     }
 }

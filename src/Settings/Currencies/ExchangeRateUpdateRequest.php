@@ -66,14 +66,14 @@ final class ExchangeRateUpdateRequest implements BaseModel
         float $conversionRate,
         ?\DateTimeInterface $effectiveAt = null
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['id'] = $id;
-        $obj['conversionRate'] = $conversionRate;
+        $self['id'] = $id;
+        $self['conversionRate'] = $conversionRate;
 
-        null !== $effectiveAt && $obj['effectiveAt'] = $effectiveAt;
+        null !== $effectiveAt && $self['effectiveAt'] = $effectiveAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -81,10 +81,10 @@ final class ExchangeRateUpdateRequest implements BaseModel
      */
     public function withID(string $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -92,10 +92,10 @@ final class ExchangeRateUpdateRequest implements BaseModel
      */
     public function withConversionRate(float $conversionRate): self
     {
-        $obj = clone $this;
-        $obj['conversionRate'] = $conversionRate;
+        $self = clone $this;
+        $self['conversionRate'] = $conversionRate;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -103,9 +103,9 @@ final class ExchangeRateUpdateRequest implements BaseModel
      */
     public function withEffectiveAt(\DateTimeInterface $effectiveAt): self
     {
-        $obj = clone $this;
-        $obj['effectiveAt'] = $effectiveAt;
+        $self = clone $this;
+        $self['effectiveAt'] = $effectiveAt;
 
-        return $obj;
+        return $self;
     }
 }

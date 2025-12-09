@@ -67,49 +67,49 @@ final class TokenResponseIf implements BaseModel
         ?string $tokenType = null,
         ?int $userID = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $accessToken && $obj['accessToken'] = $accessToken;
-        null !== $expiresIn && $obj['expiresIn'] = $expiresIn;
-        null !== $hubID && $obj['hubID'] = $hubID;
-        null !== $idToken && $obj['idToken'] = $idToken;
-        null !== $scopes && $obj['scopes'] = $scopes;
-        null !== $tokenType && $obj['tokenType'] = $tokenType;
-        null !== $userID && $obj['userID'] = $userID;
+        null !== $accessToken && $self['accessToken'] = $accessToken;
+        null !== $expiresIn && $self['expiresIn'] = $expiresIn;
+        null !== $hubID && $self['hubID'] = $hubID;
+        null !== $idToken && $self['idToken'] = $idToken;
+        null !== $scopes && $self['scopes'] = $scopes;
+        null !== $tokenType && $self['tokenType'] = $tokenType;
+        null !== $userID && $self['userID'] = $userID;
 
-        return $obj;
+        return $self;
     }
 
     public function withAccessToken(string $accessToken): self
     {
-        $obj = clone $this;
-        $obj['accessToken'] = $accessToken;
+        $self = clone $this;
+        $self['accessToken'] = $accessToken;
 
-        return $obj;
+        return $self;
     }
 
     public function withExpiresIn(int $expiresIn): self
     {
-        $obj = clone $this;
-        $obj['expiresIn'] = $expiresIn;
+        $self = clone $this;
+        $self['expiresIn'] = $expiresIn;
 
-        return $obj;
+        return $self;
     }
 
     public function withHubID(int $hubID): self
     {
-        $obj = clone $this;
-        $obj['hubID'] = $hubID;
+        $self = clone $this;
+        $self['hubID'] = $hubID;
 
-        return $obj;
+        return $self;
     }
 
     public function withIDToken(string $idToken): self
     {
-        $obj = clone $this;
-        $obj['idToken'] = $idToken;
+        $self = clone $this;
+        $self['idToken'] = $idToken;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -117,25 +117,25 @@ final class TokenResponseIf implements BaseModel
      */
     public function withScopes(array $scopes): self
     {
-        $obj = clone $this;
-        $obj['scopes'] = $scopes;
+        $self = clone $this;
+        $self['scopes'] = $scopes;
 
-        return $obj;
+        return $self;
     }
 
     public function withTokenType(string $tokenType): self
     {
-        $obj = clone $this;
-        $obj['tokenType'] = $tokenType;
+        $self = clone $this;
+        $self['tokenType'] = $tokenType;
 
-        return $obj;
+        return $self;
     }
 
     public function withUserID(int $userID): self
     {
-        $obj = clone $this;
-        $obj['userID'] = $userID;
+        $self = clone $this;
+        $self['userID'] = $userID;
 
-        return $obj;
+        return $self;
     }
 }

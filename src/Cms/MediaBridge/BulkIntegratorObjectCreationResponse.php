@@ -54,11 +54,11 @@ final class BulkIntegratorObjectCreationResponse implements BaseModel
      */
     public static function with(array $createdObjects): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['createdObjects'] = $createdObjects;
+        $self['createdObjects'] = $createdObjects;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -70,9 +70,9 @@ final class BulkIntegratorObjectCreationResponse implements BaseModel
      */
     public function withCreatedObjects(array $createdObjects): self
     {
-        $obj = clone $this;
-        $obj['createdObjects'] = $createdObjects;
+        $self = clone $this;
+        $self['createdObjects'] = $createdObjects;
 
-        return $obj;
+        return $self;
     }
 }

@@ -75,33 +75,33 @@ final class ChannelAccountListParams implements BaseModel
         ?int $limit = null,
         ?array $sort = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $after && $obj['after'] = $after;
-        null !== $archived && $obj['archived'] = $archived;
-        null !== $channelID && $obj['channelID'] = $channelID;
-        null !== $defaultPageLength && $obj['defaultPageLength'] = $defaultPageLength;
-        null !== $inboxID && $obj['inboxID'] = $inboxID;
-        null !== $limit && $obj['limit'] = $limit;
-        null !== $sort && $obj['sort'] = $sort;
+        null !== $after && $self['after'] = $after;
+        null !== $archived && $self['archived'] = $archived;
+        null !== $channelID && $self['channelID'] = $channelID;
+        null !== $defaultPageLength && $self['defaultPageLength'] = $defaultPageLength;
+        null !== $inboxID && $self['inboxID'] = $inboxID;
+        null !== $limit && $self['limit'] = $limit;
+        null !== $sort && $self['sort'] = $sort;
 
-        return $obj;
+        return $self;
     }
 
     public function withAfter(string $after): self
     {
-        $obj = clone $this;
-        $obj['after'] = $after;
+        $self = clone $this;
+        $self['after'] = $after;
 
-        return $obj;
+        return $self;
     }
 
     public function withArchived(bool $archived): self
     {
-        $obj = clone $this;
-        $obj['archived'] = $archived;
+        $self = clone $this;
+        $self['archived'] = $archived;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -109,18 +109,18 @@ final class ChannelAccountListParams implements BaseModel
      */
     public function withChannelID(array $channelID): self
     {
-        $obj = clone $this;
-        $obj['channelID'] = $channelID;
+        $self = clone $this;
+        $self['channelID'] = $channelID;
 
-        return $obj;
+        return $self;
     }
 
     public function withDefaultPageLength(int $defaultPageLength): self
     {
-        $obj = clone $this;
-        $obj['defaultPageLength'] = $defaultPageLength;
+        $self = clone $this;
+        $self['defaultPageLength'] = $defaultPageLength;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -128,18 +128,18 @@ final class ChannelAccountListParams implements BaseModel
      */
     public function withInboxID(array $inboxID): self
     {
-        $obj = clone $this;
-        $obj['inboxID'] = $inboxID;
+        $self = clone $this;
+        $self['inboxID'] = $inboxID;
 
-        return $obj;
+        return $self;
     }
 
     public function withLimit(int $limit): self
     {
-        $obj = clone $this;
-        $obj['limit'] = $limit;
+        $self = clone $this;
+        $self['limit'] = $limit;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -147,9 +147,9 @@ final class ChannelAccountListParams implements BaseModel
      */
     public function withSort(array $sort): self
     {
-        $obj = clone $this;
-        $obj['sort'] = $sort;
+        $self = clone $this;
+        $self['sort'] = $sort;
 
-        return $obj;
+        return $self;
     }
 }

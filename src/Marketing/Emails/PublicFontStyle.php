@@ -59,63 +59,63 @@ final class PublicFontStyle implements BaseModel
         ?int $size = null,
         ?bool $underline = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $bold && $obj['bold'] = $bold;
-        null !== $color && $obj['color'] = $color;
-        null !== $font && $obj['font'] = $font;
-        null !== $italic && $obj['italic'] = $italic;
-        null !== $size && $obj['size'] = $size;
-        null !== $underline && $obj['underline'] = $underline;
+        null !== $bold && $self['bold'] = $bold;
+        null !== $color && $self['color'] = $color;
+        null !== $font && $self['font'] = $font;
+        null !== $italic && $self['italic'] = $italic;
+        null !== $size && $self['size'] = $size;
+        null !== $underline && $self['underline'] = $underline;
 
-        return $obj;
+        return $self;
     }
 
     public function withBold(bool $bold): self
     {
-        $obj = clone $this;
-        $obj['bold'] = $bold;
+        $self = clone $this;
+        $self['bold'] = $bold;
 
-        return $obj;
+        return $self;
     }
 
     public function withColor(string $color): self
     {
-        $obj = clone $this;
-        $obj['color'] = $color;
+        $self = clone $this;
+        $self['color'] = $color;
 
-        return $obj;
+        return $self;
     }
 
     public function withFont(string $font): self
     {
-        $obj = clone $this;
-        $obj['font'] = $font;
+        $self = clone $this;
+        $self['font'] = $font;
 
-        return $obj;
+        return $self;
     }
 
     public function withItalic(bool $italic): self
     {
-        $obj = clone $this;
-        $obj['italic'] = $italic;
+        $self = clone $this;
+        $self['italic'] = $italic;
 
-        return $obj;
+        return $self;
     }
 
     public function withSize(int $size): self
     {
-        $obj = clone $this;
-        $obj['size'] = $size;
+        $self = clone $this;
+        $self['size'] = $size;
 
-        return $obj;
+        return $self;
     }
 
     public function withUnderline(bool $underline): self
     {
-        $obj = clone $this;
-        $obj['underline'] = $underline;
+        $self = clone $this;
+        $self['underline'] = $underline;
 
-        return $obj;
+        return $self;
     }
 }

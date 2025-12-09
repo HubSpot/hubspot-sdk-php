@@ -132,19 +132,19 @@ final class PublicAuditLog implements BaseModel
         string $userID,
         mixed $meta = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['event'] = $event;
-        $obj['fullName'] = $fullName;
-        $obj['objectID'] = $objectID;
-        $obj['objectName'] = $objectName;
-        $obj['objectType'] = $objectType;
-        $obj['timestamp'] = $timestamp;
-        $obj['userID'] = $userID;
+        $self['event'] = $event;
+        $self['fullName'] = $fullName;
+        $self['objectID'] = $objectID;
+        $self['objectName'] = $objectName;
+        $self['objectType'] = $objectType;
+        $self['timestamp'] = $timestamp;
+        $self['userID'] = $userID;
 
-        null !== $meta && $obj['meta'] = $meta;
+        null !== $meta && $self['meta'] = $meta;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -154,10 +154,10 @@ final class PublicAuditLog implements BaseModel
      */
     public function withEvent(Event|string $event): self
     {
-        $obj = clone $this;
-        $obj['event'] = $event;
+        $self = clone $this;
+        $self['event'] = $event;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -165,10 +165,10 @@ final class PublicAuditLog implements BaseModel
      */
     public function withFullName(string $fullName): self
     {
-        $obj = clone $this;
-        $obj['fullName'] = $fullName;
+        $self = clone $this;
+        $self['fullName'] = $fullName;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -176,10 +176,10 @@ final class PublicAuditLog implements BaseModel
      */
     public function withObjectID(string $objectID): self
     {
-        $obj = clone $this;
-        $obj['objectID'] = $objectID;
+        $self = clone $this;
+        $self['objectID'] = $objectID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -187,10 +187,10 @@ final class PublicAuditLog implements BaseModel
      */
     public function withObjectName(string $objectName): self
     {
-        $obj = clone $this;
-        $obj['objectName'] = $objectName;
+        $self = clone $this;
+        $self['objectName'] = $objectName;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -200,10 +200,10 @@ final class PublicAuditLog implements BaseModel
      */
     public function withObjectType(ObjectType|string $objectType): self
     {
-        $obj = clone $this;
-        $obj['objectType'] = $objectType;
+        $self = clone $this;
+        $self['objectType'] = $objectType;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -211,10 +211,10 @@ final class PublicAuditLog implements BaseModel
      */
     public function withTimestamp(\DateTimeInterface $timestamp): self
     {
-        $obj = clone $this;
-        $obj['timestamp'] = $timestamp;
+        $self = clone $this;
+        $self['timestamp'] = $timestamp;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -222,10 +222,10 @@ final class PublicAuditLog implements BaseModel
      */
     public function withUserID(string $userID): self
     {
-        $obj = clone $this;
-        $obj['userID'] = $userID;
+        $self = clone $this;
+        $self['userID'] = $userID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -233,9 +233,9 @@ final class PublicAuditLog implements BaseModel
      */
     public function withMeta(mixed $meta): self
     {
-        $obj = clone $this;
-        $obj['meta'] = $meta;
+        $self = clone $this;
+        $self['meta'] = $meta;
 
-        return $obj;
+        return $self;
     }
 }

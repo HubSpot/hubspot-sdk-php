@@ -96,24 +96,24 @@ final class PublicCampaignWithAssets implements BaseModel
         array $properties,
         \DateTimeInterface $updatedAt,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['id'] = $id;
-        $obj['assets'] = $assets;
-        $obj['businessUnits'] = $businessUnits;
-        $obj['createdAt'] = $createdAt;
-        $obj['properties'] = $properties;
-        $obj['updatedAt'] = $updatedAt;
+        $self['id'] = $id;
+        $self['assets'] = $assets;
+        $self['businessUnits'] = $businessUnits;
+        $self['createdAt'] = $createdAt;
+        $self['properties'] = $properties;
+        $self['updatedAt'] = $updatedAt;
 
-        return $obj;
+        return $self;
     }
 
     public function withID(string $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -123,10 +123,10 @@ final class PublicCampaignWithAssets implements BaseModel
      */
     public function withAssets(array $assets): self
     {
-        $obj = clone $this;
-        $obj['assets'] = $assets;
+        $self = clone $this;
+        $self['assets'] = $assets;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -134,18 +134,18 @@ final class PublicCampaignWithAssets implements BaseModel
      */
     public function withBusinessUnits(array $businessUnits): self
     {
-        $obj = clone $this;
-        $obj['businessUnits'] = $businessUnits;
+        $self = clone $this;
+        $self['businessUnits'] = $businessUnits;
 
-        return $obj;
+        return $self;
     }
 
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
-        $obj = clone $this;
-        $obj['createdAt'] = $createdAt;
+        $self = clone $this;
+        $self['createdAt'] = $createdAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -153,17 +153,17 @@ final class PublicCampaignWithAssets implements BaseModel
      */
     public function withProperties(array $properties): self
     {
-        $obj = clone $this;
-        $obj['properties'] = $properties;
+        $self = clone $this;
+        $self['properties'] = $properties;
 
-        return $obj;
+        return $self;
     }
 
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
-        $obj = clone $this;
-        $obj['updatedAt'] = $updatedAt;
+        $self = clone $this;
+        $self['updatedAt'] = $updatedAt;
 
-        return $obj;
+        return $self;
     }
 }

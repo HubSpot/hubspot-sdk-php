@@ -165,24 +165,24 @@ final class URLMapping implements BaseModel
         ?\DateTimeInterface $created = null,
         ?\DateTimeInterface $updated = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['id'] = $id;
-        $obj['destination'] = $destination;
-        $obj['isMatchFullURL'] = $isMatchFullURL;
-        $obj['isMatchQueryString'] = $isMatchQueryString;
-        $obj['isOnlyAfterNotFound'] = $isOnlyAfterNotFound;
-        $obj['isPattern'] = $isPattern;
-        $obj['isProtocolAgnostic'] = $isProtocolAgnostic;
-        $obj['isTrailingSlashOptional'] = $isTrailingSlashOptional;
-        $obj['precedence'] = $precedence;
-        $obj['redirectStyle'] = $redirectStyle;
-        $obj['routePrefix'] = $routePrefix;
+        $self['id'] = $id;
+        $self['destination'] = $destination;
+        $self['isMatchFullURL'] = $isMatchFullURL;
+        $self['isMatchQueryString'] = $isMatchQueryString;
+        $self['isOnlyAfterNotFound'] = $isOnlyAfterNotFound;
+        $self['isPattern'] = $isPattern;
+        $self['isProtocolAgnostic'] = $isProtocolAgnostic;
+        $self['isTrailingSlashOptional'] = $isTrailingSlashOptional;
+        $self['precedence'] = $precedence;
+        $self['redirectStyle'] = $redirectStyle;
+        $self['routePrefix'] = $routePrefix;
 
-        null !== $created && $obj['created'] = $created;
-        null !== $updated && $obj['updated'] = $updated;
+        null !== $created && $self['created'] = $created;
+        null !== $updated && $self['updated'] = $updated;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -190,10 +190,10 @@ final class URLMapping implements BaseModel
      */
     public function withID(string $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -201,10 +201,10 @@ final class URLMapping implements BaseModel
      */
     public function withDestination(string $destination): self
     {
-        $obj = clone $this;
-        $obj['destination'] = $destination;
+        $self = clone $this;
+        $self['destination'] = $destination;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -212,10 +212,10 @@ final class URLMapping implements BaseModel
      */
     public function withIsMatchFullURL(bool $isMatchFullURL): self
     {
-        $obj = clone $this;
-        $obj['isMatchFullURL'] = $isMatchFullURL;
+        $self = clone $this;
+        $self['isMatchFullURL'] = $isMatchFullURL;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -223,10 +223,10 @@ final class URLMapping implements BaseModel
      */
     public function withIsMatchQueryString(bool $isMatchQueryString): self
     {
-        $obj = clone $this;
-        $obj['isMatchQueryString'] = $isMatchQueryString;
+        $self = clone $this;
+        $self['isMatchQueryString'] = $isMatchQueryString;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -234,10 +234,10 @@ final class URLMapping implements BaseModel
      */
     public function withIsOnlyAfterNotFound(bool $isOnlyAfterNotFound): self
     {
-        $obj = clone $this;
-        $obj['isOnlyAfterNotFound'] = $isOnlyAfterNotFound;
+        $self = clone $this;
+        $self['isOnlyAfterNotFound'] = $isOnlyAfterNotFound;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -245,10 +245,10 @@ final class URLMapping implements BaseModel
      */
     public function withIsPattern(bool $isPattern): self
     {
-        $obj = clone $this;
-        $obj['isPattern'] = $isPattern;
+        $self = clone $this;
+        $self['isPattern'] = $isPattern;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -256,10 +256,10 @@ final class URLMapping implements BaseModel
      */
     public function withIsProtocolAgnostic(bool $isProtocolAgnostic): self
     {
-        $obj = clone $this;
-        $obj['isProtocolAgnostic'] = $isProtocolAgnostic;
+        $self = clone $this;
+        $self['isProtocolAgnostic'] = $isProtocolAgnostic;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -268,10 +268,10 @@ final class URLMapping implements BaseModel
     public function withIsTrailingSlashOptional(
         bool $isTrailingSlashOptional
     ): self {
-        $obj = clone $this;
-        $obj['isTrailingSlashOptional'] = $isTrailingSlashOptional;
+        $self = clone $this;
+        $self['isTrailingSlashOptional'] = $isTrailingSlashOptional;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -279,10 +279,10 @@ final class URLMapping implements BaseModel
      */
     public function withPrecedence(int $precedence): self
     {
-        $obj = clone $this;
-        $obj['precedence'] = $precedence;
+        $self = clone $this;
+        $self['precedence'] = $precedence;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -290,10 +290,10 @@ final class URLMapping implements BaseModel
      */
     public function withRedirectStyle(int $redirectStyle): self
     {
-        $obj = clone $this;
-        $obj['redirectStyle'] = $redirectStyle;
+        $self = clone $this;
+        $self['redirectStyle'] = $redirectStyle;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -301,25 +301,25 @@ final class URLMapping implements BaseModel
      */
     public function withRoutePrefix(string $routePrefix): self
     {
-        $obj = clone $this;
-        $obj['routePrefix'] = $routePrefix;
+        $self = clone $this;
+        $self['routePrefix'] = $routePrefix;
 
-        return $obj;
+        return $self;
     }
 
     public function withCreated(\DateTimeInterface $created): self
     {
-        $obj = clone $this;
-        $obj['created'] = $created;
+        $self = clone $this;
+        $self['created'] = $created;
 
-        return $obj;
+        return $self;
     }
 
     public function withUpdated(\DateTimeInterface $updated): self
     {
-        $obj = clone $this;
-        $obj['updated'] = $updated;
+        $self = clone $this;
+        $self['updated'] = $updated;
 
-        return $obj;
+        return $self;
     }
 }

@@ -35,18 +35,18 @@ final class ActorGetParams implements BaseModel
      */
     public static function with(?string $property = null): self
     {
-        $obj = new self;
+        $self = new self;
 
-        null !== $property && $obj['property'] = $property;
+        null !== $property && $self['property'] = $property;
 
-        return $obj;
+        return $self;
     }
 
     public function withProperty(string $property): self
     {
-        $obj = clone $this;
-        $obj['property'] = $property;
+        $self = clone $this;
+        $self['property'] = $property;
 
-        return $obj;
+        return $self;
     }
 }

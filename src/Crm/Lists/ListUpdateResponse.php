@@ -66,11 +66,11 @@ final class ListUpdateResponse implements BaseModel
     public static function with(
         PublicObjectList|array|null $updatedList = null
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $updatedList && $obj['updatedList'] = $updatedList;
+        null !== $updatedList && $self['updatedList'] = $updatedList;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -97,9 +97,9 @@ final class ListUpdateResponse implements BaseModel
      */
     public function withUpdatedList(PublicObjectList|array $updatedList): self
     {
-        $obj = clone $this;
-        $obj['updatedList'] = $updatedList;
+        $self = clone $this;
+        $self['updatedList'] = $updatedList;
 
-        return $obj;
+        return $self;
     }
 }

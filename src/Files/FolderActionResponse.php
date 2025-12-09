@@ -151,20 +151,20 @@ final class FolderActionResponse implements BaseModel
         ?\DateTimeInterface $requestedAt = null,
         Folder|array|null $result = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['completedAt'] = $completedAt;
-        $obj['startedAt'] = $startedAt;
-        $obj['status'] = $status;
-        $obj['taskID'] = $taskID;
+        $self['completedAt'] = $completedAt;
+        $self['startedAt'] = $startedAt;
+        $self['status'] = $status;
+        $self['taskID'] = $taskID;
 
-        null !== $errors && $obj['errors'] = $errors;
-        null !== $links && $obj['links'] = $links;
-        null !== $numErrors && $obj['numErrors'] = $numErrors;
-        null !== $requestedAt && $obj['requestedAt'] = $requestedAt;
-        null !== $result && $obj['result'] = $result;
+        null !== $errors && $self['errors'] = $errors;
+        null !== $links && $self['links'] = $links;
+        null !== $numErrors && $self['numErrors'] = $numErrors;
+        null !== $requestedAt && $self['requestedAt'] = $requestedAt;
+        null !== $result && $self['result'] = $result;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -172,10 +172,10 @@ final class FolderActionResponse implements BaseModel
      */
     public function withCompletedAt(\DateTimeInterface $completedAt): self
     {
-        $obj = clone $this;
-        $obj['completedAt'] = $completedAt;
+        $self = clone $this;
+        $self['completedAt'] = $completedAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -183,10 +183,10 @@ final class FolderActionResponse implements BaseModel
      */
     public function withStartedAt(\DateTimeInterface $startedAt): self
     {
-        $obj = clone $this;
-        $obj['startedAt'] = $startedAt;
+        $self = clone $this;
+        $self['startedAt'] = $startedAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -196,10 +196,10 @@ final class FolderActionResponse implements BaseModel
      */
     public function withStatus(Status|string $status): self
     {
-        $obj = clone $this;
-        $obj['status'] = $status;
+        $self = clone $this;
+        $self['status'] = $status;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -207,10 +207,10 @@ final class FolderActionResponse implements BaseModel
      */
     public function withTaskID(string $taskID): self
     {
-        $obj = clone $this;
-        $obj['taskID'] = $taskID;
+        $self = clone $this;
+        $self['taskID'] = $taskID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -229,10 +229,10 @@ final class FolderActionResponse implements BaseModel
      */
     public function withErrors(array $errors): self
     {
-        $obj = clone $this;
-        $obj['errors'] = $errors;
+        $self = clone $this;
+        $self['errors'] = $errors;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -242,10 +242,10 @@ final class FolderActionResponse implements BaseModel
      */
     public function withLinks(array $links): self
     {
-        $obj = clone $this;
-        $obj['links'] = $links;
+        $self = clone $this;
+        $self['links'] = $links;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -253,10 +253,10 @@ final class FolderActionResponse implements BaseModel
      */
     public function withNumErrors(int $numErrors): self
     {
-        $obj = clone $this;
-        $obj['numErrors'] = $numErrors;
+        $self = clone $this;
+        $self['numErrors'] = $numErrors;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -264,10 +264,10 @@ final class FolderActionResponse implements BaseModel
      */
     public function withRequestedAt(\DateTimeInterface $requestedAt): self
     {
-        $obj = clone $this;
-        $obj['requestedAt'] = $requestedAt;
+        $self = clone $this;
+        $self['requestedAt'] = $requestedAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -284,9 +284,9 @@ final class FolderActionResponse implements BaseModel
      */
     public function withResult(Folder|array $result): self
     {
-        $obj = clone $this;
-        $obj['result'] = $result;
+        $self = clone $this;
+        $self['result'] = $result;
 
-        return $obj;
+        return $self;
     }
 }

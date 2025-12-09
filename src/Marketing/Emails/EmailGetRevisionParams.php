@@ -51,18 +51,18 @@ final class EmailGetRevisionParams implements BaseModel
      */
     public static function with(string $emailID): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['emailID'] = $emailID;
+        $self['emailID'] = $emailID;
 
-        return $obj;
+        return $self;
     }
 
     public function withEmailID(string $emailID): self
     {
-        $obj = clone $this;
-        $obj['emailID'] = $emailID;
+        $self = clone $this;
+        $self['emailID'] = $emailID;
 
-        return $obj;
+        return $self;
     }
 }

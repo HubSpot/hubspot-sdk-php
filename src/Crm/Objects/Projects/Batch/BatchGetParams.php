@@ -97,16 +97,16 @@ final class BatchGetParams implements BaseModel
         ?bool $archived = null,
         ?string $idProperty = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['inputs'] = $inputs;
-        $obj['properties'] = $properties;
-        $obj['propertiesWithHistory'] = $propertiesWithHistory;
+        $self['inputs'] = $inputs;
+        $self['properties'] = $properties;
+        $self['propertiesWithHistory'] = $propertiesWithHistory;
 
-        null !== $archived && $obj['archived'] = $archived;
-        null !== $idProperty && $obj['idProperty'] = $idProperty;
+        null !== $archived && $self['archived'] = $archived;
+        null !== $idProperty && $self['idProperty'] = $idProperty;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -114,10 +114,10 @@ final class BatchGetParams implements BaseModel
      */
     public function withInputs(array $inputs): self
     {
-        $obj = clone $this;
-        $obj['inputs'] = $inputs;
+        $self = clone $this;
+        $self['inputs'] = $inputs;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -127,10 +127,10 @@ final class BatchGetParams implements BaseModel
      */
     public function withProperties(array $properties): self
     {
-        $obj = clone $this;
-        $obj['properties'] = $properties;
+        $self = clone $this;
+        $self['properties'] = $properties;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -141,18 +141,18 @@ final class BatchGetParams implements BaseModel
     public function withPropertiesWithHistory(
         array $propertiesWithHistory
     ): self {
-        $obj = clone $this;
-        $obj['propertiesWithHistory'] = $propertiesWithHistory;
+        $self = clone $this;
+        $self['propertiesWithHistory'] = $propertiesWithHistory;
 
-        return $obj;
+        return $self;
     }
 
     public function withArchived(bool $archived): self
     {
-        $obj = clone $this;
-        $obj['archived'] = $archived;
+        $self = clone $this;
+        $self['archived'] = $archived;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -160,9 +160,9 @@ final class BatchGetParams implements BaseModel
      */
     public function withIDProperty(string $idProperty): self
     {
-        $obj = clone $this;
-        $obj['idProperty'] = $idProperty;
+        $self = clone $this;
+        $self['idProperty'] = $idProperty;
 
-        return $obj;
+        return $self;
     }
 }

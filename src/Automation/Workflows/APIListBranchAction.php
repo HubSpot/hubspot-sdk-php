@@ -81,24 +81,24 @@ final class APIListBranchAction implements BaseModel
         APIConnection|array|null $defaultBranch = null,
         ?string $defaultBranchName = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['actionID'] = $actionID;
-        $obj['listBranches'] = $listBranches;
-        $obj['type'] = $type;
+        $self['actionID'] = $actionID;
+        $self['listBranches'] = $listBranches;
+        $self['type'] = $type;
 
-        null !== $defaultBranch && $obj['defaultBranch'] = $defaultBranch;
-        null !== $defaultBranchName && $obj['defaultBranchName'] = $defaultBranchName;
+        null !== $defaultBranch && $self['defaultBranch'] = $defaultBranch;
+        null !== $defaultBranchName && $self['defaultBranchName'] = $defaultBranchName;
 
-        return $obj;
+        return $self;
     }
 
     public function withActionID(string $actionID): self
     {
-        $obj = clone $this;
-        $obj['actionID'] = $actionID;
+        $self = clone $this;
+        $self['actionID'] = $actionID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -106,10 +106,10 @@ final class APIListBranchAction implements BaseModel
      */
     public function withListBranches(array $listBranches): self
     {
-        $obj = clone $this;
-        $obj['listBranches'] = $listBranches;
+        $self = clone $this;
+        $self['listBranches'] = $listBranches;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -117,10 +117,10 @@ final class APIListBranchAction implements BaseModel
      */
     public function withType(Type|string $type): self
     {
-        $obj = clone $this;
-        $obj['type'] = $type;
+        $self = clone $this;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -130,17 +130,17 @@ final class APIListBranchAction implements BaseModel
      */
     public function withDefaultBranch(APIConnection|array $defaultBranch): self
     {
-        $obj = clone $this;
-        $obj['defaultBranch'] = $defaultBranch;
+        $self = clone $this;
+        $self['defaultBranch'] = $defaultBranch;
 
-        return $obj;
+        return $self;
     }
 
     public function withDefaultBranchName(string $defaultBranchName): self
     {
-        $obj = clone $this;
-        $obj['defaultBranchName'] = $defaultBranchName;
+        $self = clone $this;
+        $self['defaultBranchName'] = $defaultBranchName;
 
-        return $obj;
+        return $self;
     }
 }

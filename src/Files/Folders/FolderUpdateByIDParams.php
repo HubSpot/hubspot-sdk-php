@@ -50,12 +50,12 @@ final class FolderUpdateByIDParams implements BaseModel
         ?string $name = null,
         ?int $parentFolderID = null
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $name && $obj['name'] = $name;
-        null !== $parentFolderID && $obj['parentFolderID'] = $parentFolderID;
+        null !== $name && $self['name'] = $name;
+        null !== $parentFolderID && $self['parentFolderID'] = $parentFolderID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -63,10 +63,10 @@ final class FolderUpdateByIDParams implements BaseModel
      */
     public function withName(string $name): self
     {
-        $obj = clone $this;
-        $obj['name'] = $name;
+        $self = clone $this;
+        $self['name'] = $name;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -74,9 +74,9 @@ final class FolderUpdateByIDParams implements BaseModel
      */
     public function withParentFolderID(int $parentFolderID): self
     {
-        $obj = clone $this;
-        $obj['parentFolderID'] = $parentFolderID;
+        $self = clone $this;
+        $self['parentFolderID'] = $parentFolderID;
 
-        return $obj;
+        return $self;
     }
 }

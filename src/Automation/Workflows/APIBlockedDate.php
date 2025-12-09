@@ -61,22 +61,22 @@ final class APIBlockedDate implements BaseModel
         Month|string $month,
         ?int $year = null
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['dayOfMonth'] = $dayOfMonth;
-        $obj['month'] = $month;
+        $self['dayOfMonth'] = $dayOfMonth;
+        $self['month'] = $month;
 
-        null !== $year && $obj['year'] = $year;
+        null !== $year && $self['year'] = $year;
 
-        return $obj;
+        return $self;
     }
 
     public function withDayOfMonth(int $dayOfMonth): self
     {
-        $obj = clone $this;
-        $obj['dayOfMonth'] = $dayOfMonth;
+        $self = clone $this;
+        $self['dayOfMonth'] = $dayOfMonth;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -84,17 +84,17 @@ final class APIBlockedDate implements BaseModel
      */
     public function withMonth(Month|string $month): self
     {
-        $obj = clone $this;
-        $obj['month'] = $month;
+        $self = clone $this;
+        $self['month'] = $month;
 
-        return $obj;
+        return $self;
     }
 
     public function withYear(int $year): self
     {
-        $obj = clone $this;
-        $obj['year'] = $year;
+        $self = clone $this;
+        $self['year'] = $year;
 
-        return $obj;
+        return $self;
     }
 }

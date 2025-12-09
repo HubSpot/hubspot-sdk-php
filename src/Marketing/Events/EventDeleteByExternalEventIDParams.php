@@ -58,11 +58,11 @@ final class EventDeleteByExternalEventIDParams implements BaseModel
      */
     public static function with(string $externalAccountID): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['externalAccountID'] = $externalAccountID;
+        $self['externalAccountID'] = $externalAccountID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -70,9 +70,9 @@ final class EventDeleteByExternalEventIDParams implements BaseModel
      */
     public function withExternalAccountID(string $externalAccountID): self
     {
-        $obj = clone $this;
-        $obj['externalAccountID'] = $externalAccountID;
+        $self = clone $this;
+        $self['externalAccountID'] = $externalAccountID;
 
-        return $obj;
+        return $self;
     }
 }

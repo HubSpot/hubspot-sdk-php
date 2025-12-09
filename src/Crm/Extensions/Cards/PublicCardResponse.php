@@ -115,27 +115,27 @@ final class PublicCardResponse implements BaseModel
         ?\DateTimeInterface $createdAt = null,
         ?\DateTimeInterface $updatedAt = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['id'] = $id;
-        $obj['actions'] = $actions;
-        $obj['auditHistory'] = $auditHistory;
-        $obj['display'] = $display;
-        $obj['fetch'] = $fetch;
-        $obj['title'] = $title;
+        $self['id'] = $id;
+        $self['actions'] = $actions;
+        $self['auditHistory'] = $auditHistory;
+        $self['display'] = $display;
+        $self['fetch'] = $fetch;
+        $self['title'] = $title;
 
-        null !== $createdAt && $obj['createdAt'] = $createdAt;
-        null !== $updatedAt && $obj['updatedAt'] = $updatedAt;
+        null !== $createdAt && $self['createdAt'] = $createdAt;
+        null !== $updatedAt && $self['updatedAt'] = $updatedAt;
 
-        return $obj;
+        return $self;
     }
 
     public function withID(string $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -145,10 +145,10 @@ final class PublicCardResponse implements BaseModel
      */
     public function withActions(CardActions|array $actions): self
     {
-        $obj = clone $this;
-        $obj['actions'] = $actions;
+        $self = clone $this;
+        $self['actions'] = $actions;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -163,10 +163,10 @@ final class PublicCardResponse implements BaseModel
      */
     public function withAuditHistory(array $auditHistory): self
     {
-        $obj = clone $this;
-        $obj['auditHistory'] = $auditHistory;
+        $self = clone $this;
+        $self['auditHistory'] = $auditHistory;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -176,10 +176,10 @@ final class PublicCardResponse implements BaseModel
      */
     public function withDisplay(CardDisplayBody|array $display): self
     {
-        $obj = clone $this;
-        $obj['display'] = $display;
+        $self = clone $this;
+        $self['display'] = $display;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -189,33 +189,33 @@ final class PublicCardResponse implements BaseModel
      */
     public function withFetch(PublicCardFetchBody|array $fetch): self
     {
-        $obj = clone $this;
-        $obj['fetch'] = $fetch;
+        $self = clone $this;
+        $self['fetch'] = $fetch;
 
-        return $obj;
+        return $self;
     }
 
     public function withTitle(string $title): self
     {
-        $obj = clone $this;
-        $obj['title'] = $title;
+        $self = clone $this;
+        $self['title'] = $title;
 
-        return $obj;
+        return $self;
     }
 
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
-        $obj = clone $this;
-        $obj['createdAt'] = $createdAt;
+        $self = clone $this;
+        $self['createdAt'] = $createdAt;
 
-        return $obj;
+        return $self;
     }
 
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
-        $obj = clone $this;
-        $obj['updatedAt'] = $updatedAt;
+        $self = clone $this;
+        $self['updatedAt'] = $updatedAt;
 
-        return $obj;
+        return $self;
     }
 }

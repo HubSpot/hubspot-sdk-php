@@ -391,41 +391,41 @@ final class APIPlatformFlow implements BaseModel
         PublicOrFilterBranch|array|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch|null $suppressionFilterBranch = null,
         ?string $uuid = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['id'] = $id;
-        $obj['actions'] = $actions;
-        $obj['blockedDates'] = $blockedDates;
-        $obj['createdAt'] = $createdAt;
-        $obj['crmObjectCreationStatus'] = $crmObjectCreationStatus;
-        $obj['customProperties'] = $customProperties;
-        $obj['dataSources'] = $dataSources;
-        $obj['flowType'] = $flowType;
-        $obj['isEnabled'] = $isEnabled;
-        $obj['nextAvailableActionID'] = $nextAvailableActionID;
-        $obj['objectTypeID'] = $objectTypeID;
-        $obj['revisionID'] = $revisionID;
-        $obj['timeWindows'] = $timeWindows;
-        $obj['type'] = $type;
-        $obj['updatedAt'] = $updatedAt;
+        $self['id'] = $id;
+        $self['actions'] = $actions;
+        $self['blockedDates'] = $blockedDates;
+        $self['createdAt'] = $createdAt;
+        $self['crmObjectCreationStatus'] = $crmObjectCreationStatus;
+        $self['customProperties'] = $customProperties;
+        $self['dataSources'] = $dataSources;
+        $self['flowType'] = $flowType;
+        $self['isEnabled'] = $isEnabled;
+        $self['nextAvailableActionID'] = $nextAvailableActionID;
+        $self['objectTypeID'] = $objectTypeID;
+        $self['revisionID'] = $revisionID;
+        $self['timeWindows'] = $timeWindows;
+        $self['type'] = $type;
+        $self['updatedAt'] = $updatedAt;
 
-        null !== $description && $obj['description'] = $description;
-        null !== $enrollmentCriteria && $obj['enrollmentCriteria'] = $enrollmentCriteria;
-        null !== $enrollmentSchedule && $obj['enrollmentSchedule'] = $enrollmentSchedule;
-        null !== $name && $obj['name'] = $name;
-        null !== $startActionID && $obj['startActionID'] = $startActionID;
-        null !== $suppressionFilterBranch && $obj['suppressionFilterBranch'] = $suppressionFilterBranch;
-        null !== $uuid && $obj['uuid'] = $uuid;
+        null !== $description && $self['description'] = $description;
+        null !== $enrollmentCriteria && $self['enrollmentCriteria'] = $enrollmentCriteria;
+        null !== $enrollmentSchedule && $self['enrollmentSchedule'] = $enrollmentSchedule;
+        null !== $name && $self['name'] = $name;
+        null !== $startActionID && $self['startActionID'] = $startActionID;
+        null !== $suppressionFilterBranch && $self['suppressionFilterBranch'] = $suppressionFilterBranch;
+        null !== $uuid && $self['uuid'] = $uuid;
 
-        return $obj;
+        return $self;
     }
 
     public function withID(string $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -433,10 +433,10 @@ final class APIPlatformFlow implements BaseModel
      */
     public function withActions(array $actions): self
     {
-        $obj = clone $this;
-        $obj['actions'] = $actions;
+        $self = clone $this;
+        $self['actions'] = $actions;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -446,18 +446,18 @@ final class APIPlatformFlow implements BaseModel
      */
     public function withBlockedDates(array $blockedDates): self
     {
-        $obj = clone $this;
-        $obj['blockedDates'] = $blockedDates;
+        $self = clone $this;
+        $self['blockedDates'] = $blockedDates;
 
-        return $obj;
+        return $self;
     }
 
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
-        $obj = clone $this;
-        $obj['createdAt'] = $createdAt;
+        $self = clone $this;
+        $self['createdAt'] = $createdAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -466,10 +466,10 @@ final class APIPlatformFlow implements BaseModel
     public function withCrmObjectCreationStatus(
         CrmObjectCreationStatus|string $crmObjectCreationStatus
     ): self {
-        $obj = clone $this;
-        $obj['crmObjectCreationStatus'] = $crmObjectCreationStatus;
+        $self = clone $this;
+        $self['crmObjectCreationStatus'] = $crmObjectCreationStatus;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -477,10 +477,10 @@ final class APIPlatformFlow implements BaseModel
      */
     public function withCustomProperties(array $customProperties): self
     {
-        $obj = clone $this;
-        $obj['customProperties'] = $customProperties;
+        $self = clone $this;
+        $self['customProperties'] = $customProperties;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -525,10 +525,10 @@ final class APIPlatformFlow implements BaseModel
      */
     public function withDataSources(array $dataSources): self
     {
-        $obj = clone $this;
-        $obj['dataSources'] = $dataSources;
+        $self = clone $this;
+        $self['dataSources'] = $dataSources;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -536,43 +536,43 @@ final class APIPlatformFlow implements BaseModel
      */
     public function withFlowType(FlowType|string $flowType): self
     {
-        $obj = clone $this;
-        $obj['flowType'] = $flowType;
+        $self = clone $this;
+        $self['flowType'] = $flowType;
 
-        return $obj;
+        return $self;
     }
 
     public function withIsEnabled(bool $isEnabled): self
     {
-        $obj = clone $this;
-        $obj['isEnabled'] = $isEnabled;
+        $self = clone $this;
+        $self['isEnabled'] = $isEnabled;
 
-        return $obj;
+        return $self;
     }
 
     public function withNextAvailableActionID(
         string $nextAvailableActionID
     ): self {
-        $obj = clone $this;
-        $obj['nextAvailableActionID'] = $nextAvailableActionID;
+        $self = clone $this;
+        $self['nextAvailableActionID'] = $nextAvailableActionID;
 
-        return $obj;
+        return $self;
     }
 
     public function withObjectTypeID(string $objectTypeID): self
     {
-        $obj = clone $this;
-        $obj['objectTypeID'] = $objectTypeID;
+        $self = clone $this;
+        $self['objectTypeID'] = $objectTypeID;
 
-        return $obj;
+        return $self;
     }
 
     public function withRevisionID(string $revisionID): self
     {
-        $obj = clone $this;
-        $obj['revisionID'] = $revisionID;
+        $self = clone $this;
+        $self['revisionID'] = $revisionID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -582,10 +582,10 @@ final class APIPlatformFlow implements BaseModel
      */
     public function withTimeWindows(array $timeWindows): self
     {
-        $obj = clone $this;
-        $obj['timeWindows'] = $timeWindows;
+        $self = clone $this;
+        $self['timeWindows'] = $timeWindows;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -593,26 +593,26 @@ final class APIPlatformFlow implements BaseModel
      */
     public function withType(Type|string $type): self
     {
-        $obj = clone $this;
-        $obj['type'] = $type;
+        $self = clone $this;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
-        $obj = clone $this;
-        $obj['updatedAt'] = $updatedAt;
+        $self = clone $this;
+        $self['updatedAt'] = $updatedAt;
 
-        return $obj;
+        return $self;
     }
 
     public function withDescription(string $description): self
     {
-        $obj = clone $this;
-        $obj['description'] = $description;
+        $self = clone $this;
+        $self['description'] = $description;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -636,10 +636,10 @@ final class APIPlatformFlow implements BaseModel
     public function withEnrollmentCriteria(
         APIListBasedEnrollmentCriteria|array|APIEventBasedEnrollmentCriteria|APIManualEnrollmentCriteria $enrollmentCriteria,
     ): self {
-        $obj = clone $this;
-        $obj['enrollmentCriteria'] = $enrollmentCriteria;
+        $self = clone $this;
+        $self['enrollmentCriteria'] = $enrollmentCriteria;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -674,26 +674,26 @@ final class APIPlatformFlow implements BaseModel
     public function withEnrollmentSchedule(
         APIDailyEnrollmentSchedule|array|APIWeeklyEnrollmentSchedule|APIMonthlySpecificDaysEnrollmentSchedule|APIMonthlyRelativeDaysEnrollmentSchedule|APIYearlyEnrollmentSchedule|APIPropertyBasedEnrollmentSchedule $enrollmentSchedule,
     ): self {
-        $obj = clone $this;
-        $obj['enrollmentSchedule'] = $enrollmentSchedule;
+        $self = clone $this;
+        $self['enrollmentSchedule'] = $enrollmentSchedule;
 
-        return $obj;
+        return $self;
     }
 
     public function withName(string $name): self
     {
-        $obj = clone $this;
-        $obj['name'] = $name;
+        $self = clone $this;
+        $self['name'] = $name;
 
-        return $obj;
+        return $self;
     }
 
     public function withStartActionID(string $startActionID): self
     {
-        $obj = clone $this;
-        $obj['startActionID'] = $startActionID;
+        $self = clone $this;
+        $self['startActionID'] = $startActionID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -752,17 +752,17 @@ final class APIPlatformFlow implements BaseModel
     public function withSuppressionFilterBranch(
         PublicOrFilterBranch|array|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch $suppressionFilterBranch,
     ): self {
-        $obj = clone $this;
-        $obj['suppressionFilterBranch'] = $suppressionFilterBranch;
+        $self = clone $this;
+        $self['suppressionFilterBranch'] = $suppressionFilterBranch;
 
-        return $obj;
+        return $self;
     }
 
     public function withUuid(string $uuid): self
     {
-        $obj = clone $this;
-        $obj['uuid'] = $uuid;
+        $self = clone $this;
+        $self['uuid'] = $uuid;
 
-        return $obj;
+        return $self;
     }
 }

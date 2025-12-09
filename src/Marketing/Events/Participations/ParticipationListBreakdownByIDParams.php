@@ -64,14 +64,14 @@ final class ParticipationListBreakdownByIDParams implements BaseModel
         ?int $limit = null,
         ?string $state = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $after && $obj['after'] = $after;
-        null !== $contactIdentifier && $obj['contactIdentifier'] = $contactIdentifier;
-        null !== $limit && $obj['limit'] = $limit;
-        null !== $state && $obj['state'] = $state;
+        null !== $after && $self['after'] = $after;
+        null !== $contactIdentifier && $self['contactIdentifier'] = $contactIdentifier;
+        null !== $limit && $self['limit'] = $limit;
+        null !== $state && $self['state'] = $state;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -79,10 +79,10 @@ final class ParticipationListBreakdownByIDParams implements BaseModel
      */
     public function withAfter(string $after): self
     {
-        $obj = clone $this;
-        $obj['after'] = $after;
+        $self = clone $this;
+        $self['after'] = $after;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -90,10 +90,10 @@ final class ParticipationListBreakdownByIDParams implements BaseModel
      */
     public function withContactIdentifier(string $contactIdentifier): self
     {
-        $obj = clone $this;
-        $obj['contactIdentifier'] = $contactIdentifier;
+        $self = clone $this;
+        $self['contactIdentifier'] = $contactIdentifier;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -101,10 +101,10 @@ final class ParticipationListBreakdownByIDParams implements BaseModel
      */
     public function withLimit(int $limit): self
     {
-        $obj = clone $this;
-        $obj['limit'] = $limit;
+        $self = clone $this;
+        $self['limit'] = $limit;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -112,9 +112,9 @@ final class ParticipationListBreakdownByIDParams implements BaseModel
      */
     public function withState(string $state): self
     {
-        $obj = clone $this;
-        $obj['state'] = $state;
+        $self = clone $this;
+        $self['state'] = $state;
 
-        return $obj;
+        return $self;
     }
 }

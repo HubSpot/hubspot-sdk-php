@@ -139,46 +139,46 @@ final class MeetingsLinkBookParams implements BaseModel
         ?string $locale = null,
         ?string $timezone = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['duration'] = $duration;
-        $obj['email'] = $email;
-        $obj['firstName'] = $firstName;
-        $obj['formFields'] = $formFields;
-        $obj['lastName'] = $lastName;
-        $obj['legalConsentResponses'] = $legalConsentResponses;
-        $obj['likelyAvailableUserIDs'] = $likelyAvailableUserIDs;
-        $obj['slug'] = $slug;
-        $obj['startTime'] = $startTime;
+        $self['duration'] = $duration;
+        $self['email'] = $email;
+        $self['firstName'] = $firstName;
+        $self['formFields'] = $formFields;
+        $self['lastName'] = $lastName;
+        $self['legalConsentResponses'] = $legalConsentResponses;
+        $self['likelyAvailableUserIDs'] = $likelyAvailableUserIDs;
+        $self['slug'] = $slug;
+        $self['startTime'] = $startTime;
 
-        null !== $locale && $obj['locale'] = $locale;
-        null !== $timezone && $obj['timezone'] = $timezone;
+        null !== $locale && $self['locale'] = $locale;
+        null !== $timezone && $self['timezone'] = $timezone;
 
-        return $obj;
+        return $self;
     }
 
     public function withDuration(int $duration): self
     {
-        $obj = clone $this;
-        $obj['duration'] = $duration;
+        $self = clone $this;
+        $self['duration'] = $duration;
 
-        return $obj;
+        return $self;
     }
 
     public function withEmail(string $email): self
     {
-        $obj = clone $this;
-        $obj['email'] = $email;
+        $self = clone $this;
+        $self['email'] = $email;
 
-        return $obj;
+        return $self;
     }
 
     public function withFirstName(string $firstName): self
     {
-        $obj = clone $this;
-        $obj['firstName'] = $firstName;
+        $self = clone $this;
+        $self['firstName'] = $firstName;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -188,18 +188,18 @@ final class MeetingsLinkBookParams implements BaseModel
      */
     public function withFormFields(array $formFields): self
     {
-        $obj = clone $this;
-        $obj['formFields'] = $formFields;
+        $self = clone $this;
+        $self['formFields'] = $formFields;
 
-        return $obj;
+        return $self;
     }
 
     public function withLastName(string $lastName): self
     {
-        $obj = clone $this;
-        $obj['lastName'] = $lastName;
+        $self = clone $this;
+        $self['lastName'] = $lastName;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -210,10 +210,10 @@ final class MeetingsLinkBookParams implements BaseModel
     public function withLegalConsentResponses(
         array $legalConsentResponses
     ): self {
-        $obj = clone $this;
-        $obj['legalConsentResponses'] = $legalConsentResponses;
+        $self = clone $this;
+        $self['legalConsentResponses'] = $legalConsentResponses;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -222,41 +222,41 @@ final class MeetingsLinkBookParams implements BaseModel
     public function withLikelyAvailableUserIDs(
         array $likelyAvailableUserIDs
     ): self {
-        $obj = clone $this;
-        $obj['likelyAvailableUserIDs'] = $likelyAvailableUserIDs;
+        $self = clone $this;
+        $self['likelyAvailableUserIDs'] = $likelyAvailableUserIDs;
 
-        return $obj;
+        return $self;
     }
 
     public function withSlug(string $slug): self
     {
-        $obj = clone $this;
-        $obj['slug'] = $slug;
+        $self = clone $this;
+        $self['slug'] = $slug;
 
-        return $obj;
+        return $self;
     }
 
     public function withStartTime(\DateTimeInterface $startTime): self
     {
-        $obj = clone $this;
-        $obj['startTime'] = $startTime;
+        $self = clone $this;
+        $self['startTime'] = $startTime;
 
-        return $obj;
+        return $self;
     }
 
     public function withLocale(string $locale): self
     {
-        $obj = clone $this;
-        $obj['locale'] = $locale;
+        $self = clone $this;
+        $self['locale'] = $locale;
 
-        return $obj;
+        return $self;
     }
 
     public function withTimezone(string $timezone): self
     {
-        $obj = clone $this;
-        $obj['timezone'] = $timezone;
+        $self = clone $this;
+        $self['timezone'] = $timezone;
 
-        return $obj;
+        return $self;
     }
 }

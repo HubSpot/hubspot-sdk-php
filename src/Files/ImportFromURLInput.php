@@ -137,21 +137,21 @@ final class ImportFromURLInput implements BaseModel
         ?bool $overwrite = null,
         ?string $ttl = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['access'] = $access;
-        $obj['url'] = $url;
+        $self['access'] = $access;
+        $self['url'] = $url;
 
-        null !== $duplicateValidationScope && $obj['duplicateValidationScope'] = $duplicateValidationScope;
-        null !== $duplicateValidationStrategy && $obj['duplicateValidationStrategy'] = $duplicateValidationStrategy;
-        null !== $expiresAt && $obj['expiresAt'] = $expiresAt;
-        null !== $folderID && $obj['folderID'] = $folderID;
-        null !== $folderPath && $obj['folderPath'] = $folderPath;
-        null !== $name && $obj['name'] = $name;
-        null !== $overwrite && $obj['overwrite'] = $overwrite;
-        null !== $ttl && $obj['ttl'] = $ttl;
+        null !== $duplicateValidationScope && $self['duplicateValidationScope'] = $duplicateValidationScope;
+        null !== $duplicateValidationStrategy && $self['duplicateValidationStrategy'] = $duplicateValidationStrategy;
+        null !== $expiresAt && $self['expiresAt'] = $expiresAt;
+        null !== $folderID && $self['folderID'] = $folderID;
+        null !== $folderPath && $self['folderPath'] = $folderPath;
+        null !== $name && $self['name'] = $name;
+        null !== $overwrite && $self['overwrite'] = $overwrite;
+        null !== $ttl && $self['ttl'] = $ttl;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -161,10 +161,10 @@ final class ImportFromURLInput implements BaseModel
      */
     public function withAccess(Access|string $access): self
     {
-        $obj = clone $this;
-        $obj['access'] = $access;
+        $self = clone $this;
+        $self['access'] = $access;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -172,10 +172,10 @@ final class ImportFromURLInput implements BaseModel
      */
     public function withURL(string $url): self
     {
-        $obj = clone $this;
-        $obj['url'] = $url;
+        $self = clone $this;
+        $self['url'] = $url;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -186,10 +186,10 @@ final class ImportFromURLInput implements BaseModel
     public function withDuplicateValidationScope(
         DuplicateValidationScope|string $duplicateValidationScope
     ): self {
-        $obj = clone $this;
-        $obj['duplicateValidationScope'] = $duplicateValidationScope;
+        $self = clone $this;
+        $self['duplicateValidationScope'] = $duplicateValidationScope;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -200,10 +200,10 @@ final class ImportFromURLInput implements BaseModel
     public function withDuplicateValidationStrategy(
         DuplicateValidationStrategy|string $duplicateValidationStrategy
     ): self {
-        $obj = clone $this;
-        $obj['duplicateValidationStrategy'] = $duplicateValidationStrategy;
+        $self = clone $this;
+        $self['duplicateValidationStrategy'] = $duplicateValidationStrategy;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -211,10 +211,10 @@ final class ImportFromURLInput implements BaseModel
      */
     public function withExpiresAt(\DateTimeInterface $expiresAt): self
     {
-        $obj = clone $this;
-        $obj['expiresAt'] = $expiresAt;
+        $self = clone $this;
+        $self['expiresAt'] = $expiresAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -222,10 +222,10 @@ final class ImportFromURLInput implements BaseModel
      */
     public function withFolderID(string $folderID): self
     {
-        $obj = clone $this;
-        $obj['folderID'] = $folderID;
+        $self = clone $this;
+        $self['folderID'] = $folderID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -233,10 +233,10 @@ final class ImportFromURLInput implements BaseModel
      */
     public function withFolderPath(string $folderPath): self
     {
-        $obj = clone $this;
-        $obj['folderPath'] = $folderPath;
+        $self = clone $this;
+        $self['folderPath'] = $folderPath;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -244,10 +244,10 @@ final class ImportFromURLInput implements BaseModel
      */
     public function withName(string $name): self
     {
-        $obj = clone $this;
-        $obj['name'] = $name;
+        $self = clone $this;
+        $self['name'] = $name;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -255,10 +255,10 @@ final class ImportFromURLInput implements BaseModel
      */
     public function withOverwrite(bool $overwrite): self
     {
-        $obj = clone $this;
-        $obj['overwrite'] = $overwrite;
+        $self = clone $this;
+        $self['overwrite'] = $overwrite;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -266,9 +266,9 @@ final class ImportFromURLInput implements BaseModel
      */
     public function withTtl(string $ttl): self
     {
-        $obj = clone $this;
-        $obj['ttl'] = $ttl;
+        $self = clone $this;
+        $self['ttl'] = $ttl;
 
-        return $obj;
+        return $self;
     }
 }

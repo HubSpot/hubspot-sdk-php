@@ -109,18 +109,18 @@ final class PublicEmailTestingDetails implements BaseModel
         ?bool $isAbVariation = null,
         ?string $testID = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $abSampleSizeDefault && $obj['abSampleSizeDefault'] = $abSampleSizeDefault;
-        null !== $abSamplingDefault && $obj['abSamplingDefault'] = $abSamplingDefault;
-        null !== $abStatus && $obj['abStatus'] = $abStatus;
-        null !== $abSuccessMetric && $obj['abSuccessMetric'] = $abSuccessMetric;
-        null !== $abTestPercentage && $obj['abTestPercentage'] = $abTestPercentage;
-        null !== $hoursToWait && $obj['hoursToWait'] = $hoursToWait;
-        null !== $isAbVariation && $obj['isAbVariation'] = $isAbVariation;
-        null !== $testID && $obj['testID'] = $testID;
+        null !== $abSampleSizeDefault && $self['abSampleSizeDefault'] = $abSampleSizeDefault;
+        null !== $abSamplingDefault && $self['abSamplingDefault'] = $abSamplingDefault;
+        null !== $abStatus && $self['abStatus'] = $abStatus;
+        null !== $abSuccessMetric && $self['abSuccessMetric'] = $abSuccessMetric;
+        null !== $abTestPercentage && $self['abTestPercentage'] = $abTestPercentage;
+        null !== $hoursToWait && $self['hoursToWait'] = $hoursToWait;
+        null !== $isAbVariation && $self['isAbVariation'] = $isAbVariation;
+        null !== $testID && $self['testID'] = $testID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -131,10 +131,10 @@ final class PublicEmailTestingDetails implements BaseModel
     public function withAbSampleSizeDefault(
         AbSampleSizeDefault|string $abSampleSizeDefault
     ): self {
-        $obj = clone $this;
-        $obj['abSampleSizeDefault'] = $abSampleSizeDefault;
+        $self = clone $this;
+        $self['abSampleSizeDefault'] = $abSampleSizeDefault;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -145,10 +145,10 @@ final class PublicEmailTestingDetails implements BaseModel
     public function withAbSamplingDefault(
         AbSamplingDefault|string $abSamplingDefault
     ): self {
-        $obj = clone $this;
-        $obj['abSamplingDefault'] = $abSamplingDefault;
+        $self = clone $this;
+        $self['abSamplingDefault'] = $abSamplingDefault;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -158,10 +158,10 @@ final class PublicEmailTestingDetails implements BaseModel
      */
     public function withAbStatus(AbStatus|string $abStatus): self
     {
-        $obj = clone $this;
-        $obj['abStatus'] = $abStatus;
+        $self = clone $this;
+        $self['abStatus'] = $abStatus;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -172,10 +172,10 @@ final class PublicEmailTestingDetails implements BaseModel
     public function withAbSuccessMetric(
         AbSuccessMetric|string $abSuccessMetric
     ): self {
-        $obj = clone $this;
-        $obj['abSuccessMetric'] = $abSuccessMetric;
+        $self = clone $this;
+        $self['abSuccessMetric'] = $abSuccessMetric;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -183,10 +183,10 @@ final class PublicEmailTestingDetails implements BaseModel
      */
     public function withAbTestPercentage(int $abTestPercentage): self
     {
-        $obj = clone $this;
-        $obj['abTestPercentage'] = $abTestPercentage;
+        $self = clone $this;
+        $self['abTestPercentage'] = $abTestPercentage;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -194,18 +194,18 @@ final class PublicEmailTestingDetails implements BaseModel
      */
     public function withHoursToWait(int $hoursToWait): self
     {
-        $obj = clone $this;
-        $obj['hoursToWait'] = $hoursToWait;
+        $self = clone $this;
+        $self['hoursToWait'] = $hoursToWait;
 
-        return $obj;
+        return $self;
     }
 
     public function withIsAbVariation(bool $isAbVariation): self
     {
-        $obj = clone $this;
-        $obj['isAbVariation'] = $isAbVariation;
+        $self = clone $this;
+        $self['isAbVariation'] = $isAbVariation;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -213,9 +213,9 @@ final class PublicEmailTestingDetails implements BaseModel
      */
     public function withTestID(string $testID): self
     {
-        $obj = clone $this;
-        $obj['testID'] = $testID;
+        $self = clone $this;
+        $self['testID'] = $testID;
 
-        return $obj;
+        return $self;
     }
 }

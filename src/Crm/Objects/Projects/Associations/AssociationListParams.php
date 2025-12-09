@@ -65,46 +65,46 @@ final class AssociationListParams implements BaseModel
         ?bool $includeFa = null,
         ?int $limit = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['projectID'] = $projectID;
+        $self['projectID'] = $projectID;
 
-        null !== $after && $obj['after'] = $after;
-        null !== $includeFa && $obj['includeFa'] = $includeFa;
-        null !== $limit && $obj['limit'] = $limit;
+        null !== $after && $self['after'] = $after;
+        null !== $includeFa && $self['includeFa'] = $includeFa;
+        null !== $limit && $self['limit'] = $limit;
 
-        return $obj;
+        return $self;
     }
 
     public function withProjectID(string $projectID): self
     {
-        $obj = clone $this;
-        $obj['projectID'] = $projectID;
+        $self = clone $this;
+        $self['projectID'] = $projectID;
 
-        return $obj;
+        return $self;
     }
 
     public function withAfter(string $after): self
     {
-        $obj = clone $this;
-        $obj['after'] = $after;
+        $self = clone $this;
+        $self['after'] = $after;
 
-        return $obj;
+        return $self;
     }
 
     public function withIncludeFa(bool $includeFa): self
     {
-        $obj = clone $this;
-        $obj['includeFa'] = $includeFa;
+        $self = clone $this;
+        $self['includeFa'] = $includeFa;
 
-        return $obj;
+        return $self;
     }
 
     public function withLimit(int $limit): self
     {
-        $obj = clone $this;
-        $obj['limit'] = $limit;
+        $self = clone $this;
+        $self['limit'] = $limit;
 
-        return $obj;
+        return $self;
     }
 }

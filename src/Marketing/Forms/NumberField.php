@@ -160,22 +160,22 @@ final class NumberField implements BaseModel
         ?string $placeholder = null,
         NumberFieldValidation|array|null $validation = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['dependentFields'] = $dependentFields;
-        $obj['fieldType'] = $fieldType;
-        $obj['hidden'] = $hidden;
-        $obj['label'] = $label;
-        $obj['name'] = $name;
-        $obj['objectTypeID'] = $objectTypeID;
-        $obj['required'] = $required;
+        $self['dependentFields'] = $dependentFields;
+        $self['fieldType'] = $fieldType;
+        $self['hidden'] = $hidden;
+        $self['label'] = $label;
+        $self['name'] = $name;
+        $self['objectTypeID'] = $objectTypeID;
+        $self['required'] = $required;
 
-        null !== $defaultValue && $obj['defaultValue'] = $defaultValue;
-        null !== $description && $obj['description'] = $description;
-        null !== $placeholder && $obj['placeholder'] = $placeholder;
-        null !== $validation && $obj['validation'] = $validation;
+        null !== $defaultValue && $self['defaultValue'] = $defaultValue;
+        null !== $description && $self['description'] = $description;
+        null !== $placeholder && $self['placeholder'] = $placeholder;
+        null !== $validation && $self['validation'] = $validation;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -185,10 +185,10 @@ final class NumberField implements BaseModel
      */
     public function withDependentFields(array $dependentFields): self
     {
-        $obj = clone $this;
-        $obj['dependentFields'] = $dependentFields;
+        $self = clone $this;
+        $self['dependentFields'] = $dependentFields;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -198,10 +198,10 @@ final class NumberField implements BaseModel
      */
     public function withFieldType(FieldType|string $fieldType): self
     {
-        $obj = clone $this;
-        $obj['fieldType'] = $fieldType;
+        $self = clone $this;
+        $self['fieldType'] = $fieldType;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -209,10 +209,10 @@ final class NumberField implements BaseModel
      */
     public function withHidden(bool $hidden): self
     {
-        $obj = clone $this;
-        $obj['hidden'] = $hidden;
+        $self = clone $this;
+        $self['hidden'] = $hidden;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -220,10 +220,10 @@ final class NumberField implements BaseModel
      */
     public function withLabel(string $label): self
     {
-        $obj = clone $this;
-        $obj['label'] = $label;
+        $self = clone $this;
+        $self['label'] = $label;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -231,10 +231,10 @@ final class NumberField implements BaseModel
      */
     public function withName(string $name): self
     {
-        $obj = clone $this;
-        $obj['name'] = $name;
+        $self = clone $this;
+        $self['name'] = $name;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -242,10 +242,10 @@ final class NumberField implements BaseModel
      */
     public function withObjectTypeID(string $objectTypeID): self
     {
-        $obj = clone $this;
-        $obj['objectTypeID'] = $objectTypeID;
+        $self = clone $this;
+        $self['objectTypeID'] = $objectTypeID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -253,10 +253,10 @@ final class NumberField implements BaseModel
      */
     public function withRequired(bool $required): self
     {
-        $obj = clone $this;
-        $obj['required'] = $required;
+        $self = clone $this;
+        $self['required'] = $required;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -264,10 +264,10 @@ final class NumberField implements BaseModel
      */
     public function withDefaultValue(string $defaultValue): self
     {
-        $obj = clone $this;
-        $obj['defaultValue'] = $defaultValue;
+        $self = clone $this;
+        $self['defaultValue'] = $defaultValue;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -275,10 +275,10 @@ final class NumberField implements BaseModel
      */
     public function withDescription(string $description): self
     {
-        $obj = clone $this;
-        $obj['description'] = $description;
+        $self = clone $this;
+        $self['description'] = $description;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -286,10 +286,10 @@ final class NumberField implements BaseModel
      */
     public function withPlaceholder(string $placeholder): self
     {
-        $obj = clone $this;
-        $obj['placeholder'] = $placeholder;
+        $self = clone $this;
+        $self['placeholder'] = $placeholder;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -302,9 +302,9 @@ final class NumberField implements BaseModel
     public function withValidation(
         NumberFieldValidation|array $validation
     ): self {
-        $obj = clone $this;
-        $obj['validation'] = $validation;
+        $self = clone $this;
+        $self['validation'] = $validation;
 
-        return $obj;
+        return $self;
     }
 }

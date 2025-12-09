@@ -82,34 +82,34 @@ final class PublicComparativePropertyUpdatedOperation implements BaseModel
         OperationType|string $operationType = 'COMPARATIVE_PROPERTY_UPDATED',
         ?string $defaultComparisonValue = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['comparisonPropertyName'] = $comparisonPropertyName;
-        $obj['includeObjectsWithNoValueSet'] = $includeObjectsWithNoValueSet;
-        $obj['operationType'] = $operationType;
-        $obj['operator'] = $operator;
+        $self['comparisonPropertyName'] = $comparisonPropertyName;
+        $self['includeObjectsWithNoValueSet'] = $includeObjectsWithNoValueSet;
+        $self['operationType'] = $operationType;
+        $self['operator'] = $operator;
 
-        null !== $defaultComparisonValue && $obj['defaultComparisonValue'] = $defaultComparisonValue;
+        null !== $defaultComparisonValue && $self['defaultComparisonValue'] = $defaultComparisonValue;
 
-        return $obj;
+        return $self;
     }
 
     public function withComparisonPropertyName(
         string $comparisonPropertyName
     ): self {
-        $obj = clone $this;
-        $obj['comparisonPropertyName'] = $comparisonPropertyName;
+        $self = clone $this;
+        $self['comparisonPropertyName'] = $comparisonPropertyName;
 
-        return $obj;
+        return $self;
     }
 
     public function withIncludeObjectsWithNoValueSet(
         bool $includeObjectsWithNoValueSet
     ): self {
-        $obj = clone $this;
-        $obj['includeObjectsWithNoValueSet'] = $includeObjectsWithNoValueSet;
+        $self = clone $this;
+        $self['includeObjectsWithNoValueSet'] = $includeObjectsWithNoValueSet;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -117,26 +117,26 @@ final class PublicComparativePropertyUpdatedOperation implements BaseModel
      */
     public function withOperationType(OperationType|string $operationType): self
     {
-        $obj = clone $this;
-        $obj['operationType'] = $operationType;
+        $self = clone $this;
+        $self['operationType'] = $operationType;
 
-        return $obj;
+        return $self;
     }
 
     public function withOperator(string $operator): self
     {
-        $obj = clone $this;
-        $obj['operator'] = $operator;
+        $self = clone $this;
+        $self['operator'] = $operator;
 
-        return $obj;
+        return $self;
     }
 
     public function withDefaultComparisonValue(
         string $defaultComparisonValue
     ): self {
-        $obj = clone $this;
-        $obj['defaultComparisonValue'] = $defaultComparisonValue;
+        $self = clone $this;
+        $self['defaultComparisonValue'] = $defaultComparisonValue;
 
-        return $obj;
+        return $self;
     }
 }

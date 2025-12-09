@@ -42,11 +42,11 @@ final class IntegratorSettingListOembedDomainsParams implements BaseModel
      */
     public static function with(?int $domainPortalID = null): self
     {
-        $obj = new self;
+        $self = new self;
 
-        null !== $domainPortalID && $obj['domainPortalID'] = $domainPortalID;
+        null !== $domainPortalID && $self['domainPortalID'] = $domainPortalID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -54,9 +54,9 @@ final class IntegratorSettingListOembedDomainsParams implements BaseModel
      */
     public function withDomainPortalID(int $domainPortalID): self
     {
-        $obj = clone $this;
-        $obj['domainPortalID'] = $domainPortalID;
+        $self = clone $this;
+        $self['domainPortalID'] = $domainPortalID;
 
-        return $obj;
+        return $self;
     }
 }

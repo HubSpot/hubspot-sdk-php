@@ -109,16 +109,16 @@ final class FormDisplayOptions implements BaseModel
         Theme|string $theme,
         ?string $cssClass = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['renderRawHTML'] = $renderRawHTML;
-        $obj['style'] = $style;
-        $obj['submitButtonText'] = $submitButtonText;
-        $obj['theme'] = $theme;
+        $self['renderRawHTML'] = $renderRawHTML;
+        $self['style'] = $style;
+        $self['submitButtonText'] = $submitButtonText;
+        $self['theme'] = $theme;
 
-        null !== $cssClass && $obj['cssClass'] = $cssClass;
+        null !== $cssClass && $self['cssClass'] = $cssClass;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -126,10 +126,10 @@ final class FormDisplayOptions implements BaseModel
      */
     public function withRenderRawHTML(bool $renderRawHTML): self
     {
-        $obj = clone $this;
-        $obj['renderRawHTML'] = $renderRawHTML;
+        $self = clone $this;
+        $self['renderRawHTML'] = $renderRawHTML;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -152,10 +152,10 @@ final class FormDisplayOptions implements BaseModel
      */
     public function withStyle(FormStyle|array $style): self
     {
-        $obj = clone $this;
-        $obj['style'] = $style;
+        $self = clone $this;
+        $self['style'] = $style;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -163,10 +163,10 @@ final class FormDisplayOptions implements BaseModel
      */
     public function withSubmitButtonText(string $submitButtonText): self
     {
-        $obj = clone $this;
-        $obj['submitButtonText'] = $submitButtonText;
+        $self = clone $this;
+        $self['submitButtonText'] = $submitButtonText;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -176,17 +176,17 @@ final class FormDisplayOptions implements BaseModel
      */
     public function withTheme(Theme|string $theme): self
     {
-        $obj = clone $this;
-        $obj['theme'] = $theme;
+        $self = clone $this;
+        $self['theme'] = $theme;
 
-        return $obj;
+        return $self;
     }
 
     public function withCssClass(string $cssClass): self
     {
-        $obj = clone $this;
-        $obj['cssClass'] = $cssClass;
+        $self = clone $this;
+        $self['cssClass'] = $cssClass;
 
-        return $obj;
+        return $self;
     }
 }

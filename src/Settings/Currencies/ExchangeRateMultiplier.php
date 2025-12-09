@@ -59,13 +59,13 @@ final class ExchangeRateMultiplier implements BaseModel
         float $conversionRate,
         ?\DateTimeInterface $effectiveAt = null
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['conversionRate'] = $conversionRate;
+        $self['conversionRate'] = $conversionRate;
 
-        null !== $effectiveAt && $obj['effectiveAt'] = $effectiveAt;
+        null !== $effectiveAt && $self['effectiveAt'] = $effectiveAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -73,10 +73,10 @@ final class ExchangeRateMultiplier implements BaseModel
      */
     public function withConversionRate(float $conversionRate): self
     {
-        $obj = clone $this;
-        $obj['conversionRate'] = $conversionRate;
+        $self = clone $this;
+        $self['conversionRate'] = $conversionRate;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -84,9 +84,9 @@ final class ExchangeRateMultiplier implements BaseModel
      */
     public function withEffectiveAt(\DateTimeInterface $effectiveAt): self
     {
-        $obj = clone $this;
-        $obj['effectiveAt'] = $effectiveAt;
+        $self = clone $this;
+        $self['effectiveAt'] = $effectiveAt;
 
-        return $obj;
+        return $self;
     }
 }

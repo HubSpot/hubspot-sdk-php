@@ -42,12 +42,12 @@ final class ExternalOptionsMetaData implements BaseModel
         FilteringMetaData|array|null $filter = null,
         ?string $relatedObjectTypeID = null
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $filter && $obj['filter'] = $filter;
-        null !== $relatedObjectTypeID && $obj['relatedObjectTypeID'] = $relatedObjectTypeID;
+        null !== $filter && $self['filter'] = $filter;
+        null !== $relatedObjectTypeID && $self['relatedObjectTypeID'] = $relatedObjectTypeID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -57,17 +57,17 @@ final class ExternalOptionsMetaData implements BaseModel
      */
     public function withFilter(FilteringMetaData|array $filter): self
     {
-        $obj = clone $this;
-        $obj['filter'] = $filter;
+        $self = clone $this;
+        $self['filter'] = $filter;
 
-        return $obj;
+        return $self;
     }
 
     public function withRelatedObjectTypeID(string $relatedObjectTypeID): self
     {
-        $obj = clone $this;
-        $obj['relatedObjectTypeID'] = $relatedObjectTypeID;
+        $self = clone $this;
+        $self['relatedObjectTypeID'] = $relatedObjectTypeID;
 
-        return $obj;
+        return $self;
     }
 }

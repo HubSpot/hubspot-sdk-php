@@ -75,14 +75,14 @@ final class StatisticGetHistogramParams implements BaseModel
         Interval|string|null $interval = null,
         ?string $startTimestamp = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $emailIDs && $obj['emailIDs'] = $emailIDs;
-        null !== $endTimestamp && $obj['endTimestamp'] = $endTimestamp;
-        null !== $interval && $obj['interval'] = $interval;
-        null !== $startTimestamp && $obj['startTimestamp'] = $startTimestamp;
+        null !== $emailIDs && $self['emailIDs'] = $emailIDs;
+        null !== $endTimestamp && $self['endTimestamp'] = $endTimestamp;
+        null !== $interval && $self['interval'] = $interval;
+        null !== $startTimestamp && $self['startTimestamp'] = $startTimestamp;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -92,10 +92,10 @@ final class StatisticGetHistogramParams implements BaseModel
      */
     public function withEmailIDs(array $emailIDs): self
     {
-        $obj = clone $this;
-        $obj['emailIDs'] = $emailIDs;
+        $self = clone $this;
+        $self['emailIDs'] = $emailIDs;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -103,10 +103,10 @@ final class StatisticGetHistogramParams implements BaseModel
      */
     public function withEndTimestamp(string $endTimestamp): self
     {
-        $obj = clone $this;
-        $obj['endTimestamp'] = $endTimestamp;
+        $self = clone $this;
+        $self['endTimestamp'] = $endTimestamp;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -116,10 +116,10 @@ final class StatisticGetHistogramParams implements BaseModel
      */
     public function withInterval(Interval|string $interval): self
     {
-        $obj = clone $this;
-        $obj['interval'] = $interval;
+        $self = clone $this;
+        $self['interval'] = $interval;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -127,9 +127,9 @@ final class StatisticGetHistogramParams implements BaseModel
      */
     public function withStartTimestamp(string $startTimestamp): self
     {
-        $obj = clone $this;
-        $obj['startTimestamp'] = $startTimestamp;
+        $self = clone $this;
+        $self['startTimestamp'] = $startTimestamp;
 
-        return $obj;
+        return $self;
     }
 }

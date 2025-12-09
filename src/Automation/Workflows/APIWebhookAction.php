@@ -109,26 +109,26 @@ final class APIWebhookAction implements BaseModel
         APIAuthKeyWebhookAuthSettings|array|APISignatureWebhookAuthSettings|null $authSettings = null,
         APIConnection|array|null $connection = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['actionID'] = $actionID;
-        $obj['method'] = $method;
-        $obj['queryParams'] = $queryParams;
-        $obj['type'] = $type;
-        $obj['webhookURL'] = $webhookURL;
+        $self['actionID'] = $actionID;
+        $self['method'] = $method;
+        $self['queryParams'] = $queryParams;
+        $self['type'] = $type;
+        $self['webhookURL'] = $webhookURL;
 
-        null !== $authSettings && $obj['authSettings'] = $authSettings;
-        null !== $connection && $obj['connection'] = $connection;
+        null !== $authSettings && $self['authSettings'] = $authSettings;
+        null !== $connection && $self['connection'] = $connection;
 
-        return $obj;
+        return $self;
     }
 
     public function withActionID(string $actionID): self
     {
-        $obj = clone $this;
-        $obj['actionID'] = $actionID;
+        $self = clone $this;
+        $self['actionID'] = $actionID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -136,10 +136,10 @@ final class APIWebhookAction implements BaseModel
      */
     public function withMethod(Method|string $method): self
     {
-        $obj = clone $this;
-        $obj['method'] = $method;
+        $self = clone $this;
+        $self['method'] = $method;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -150,10 +150,10 @@ final class APIWebhookAction implements BaseModel
      */
     public function withQueryParams(array $queryParams): self
     {
-        $obj = clone $this;
-        $obj['queryParams'] = $queryParams;
+        $self = clone $this;
+        $self['queryParams'] = $queryParams;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -161,18 +161,18 @@ final class APIWebhookAction implements BaseModel
      */
     public function withType(Type|string $type): self
     {
-        $obj = clone $this;
-        $obj['type'] = $type;
+        $self = clone $this;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 
     public function withWebhookURL(string $webhookURL): self
     {
-        $obj = clone $this;
-        $obj['webhookURL'] = $webhookURL;
+        $self = clone $this;
+        $self['webhookURL'] = $webhookURL;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -189,10 +189,10 @@ final class APIWebhookAction implements BaseModel
     public function withAuthSettings(
         APIAuthKeyWebhookAuthSettings|array|APISignatureWebhookAuthSettings $authSettings,
     ): self {
-        $obj = clone $this;
-        $obj['authSettings'] = $authSettings;
+        $self = clone $this;
+        $self['authSettings'] = $authSettings;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -200,9 +200,9 @@ final class APIWebhookAction implements BaseModel
      */
     public function withConnection(APIConnection|array $connection): self
     {
-        $obj = clone $this;
-        $obj['connection'] = $connection;
+        $self = clone $this;
+        $self['connection'] = $connection;
 
-        return $obj;
+        return $self;
     }
 }

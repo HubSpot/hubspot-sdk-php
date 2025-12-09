@@ -57,11 +57,11 @@ final class IntegratorSettingCreateObjectDefinitionParams implements BaseModel
      */
     public static function with(array $mediaTypes): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['mediaTypes'] = $mediaTypes;
+        $self['mediaTypes'] = $mediaTypes;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -69,9 +69,9 @@ final class IntegratorSettingCreateObjectDefinitionParams implements BaseModel
      */
     public function withMediaTypes(array $mediaTypes): self
     {
-        $obj = clone $this;
-        $obj['mediaTypes'] = $mediaTypes;
+        $self = clone $this;
+        $self['mediaTypes'] = $mediaTypes;
 
-        return $obj;
+        return $self;
     }
 }

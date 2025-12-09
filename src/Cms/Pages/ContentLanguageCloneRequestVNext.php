@@ -68,14 +68,14 @@ final class ContentLanguageCloneRequestVNext implements BaseModel
         ?string $language = null,
         ?string $primaryLanguage = null
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['id'] = $id;
+        $self['id'] = $id;
 
-        null !== $language && $obj['language'] = $language;
-        null !== $primaryLanguage && $obj['primaryLanguage'] = $primaryLanguage;
+        null !== $language && $self['language'] = $language;
+        null !== $primaryLanguage && $self['primaryLanguage'] = $primaryLanguage;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -83,10 +83,10 @@ final class ContentLanguageCloneRequestVNext implements BaseModel
      */
     public function withID(string $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -94,10 +94,10 @@ final class ContentLanguageCloneRequestVNext implements BaseModel
      */
     public function withLanguage(string $language): self
     {
-        $obj = clone $this;
-        $obj['language'] = $language;
+        $self = clone $this;
+        $self['language'] = $language;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -105,9 +105,9 @@ final class ContentLanguageCloneRequestVNext implements BaseModel
      */
     public function withPrimaryLanguage(string $primaryLanguage): self
     {
-        $obj = clone $this;
-        $obj['primaryLanguage'] = $primaryLanguage;
+        $self = clone $this;
+        $self['primaryLanguage'] = $primaryLanguage;
 
-        return $obj;
+        return $self;
     }
 }

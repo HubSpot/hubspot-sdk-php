@@ -151,39 +151,39 @@ final class PublicImportError implements BaseModel
         ObjectType|string|null $objectType = null,
         ?string $objectTypeID = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['id'] = $id;
-        $obj['createdAt'] = $createdAt;
-        $obj['errorType'] = $errorType;
-        $obj['sourceData'] = $sourceData;
+        $self['id'] = $id;
+        $self['createdAt'] = $createdAt;
+        $self['errorType'] = $errorType;
+        $self['sourceData'] = $sourceData;
 
-        null !== $errorMessage && $obj['errorMessage'] = $errorMessage;
-        null !== $extraContext && $obj['extraContext'] = $extraContext;
-        null !== $invalidPropertyValue && $obj['invalidPropertyValue'] = $invalidPropertyValue;
-        null !== $invalidValue && $obj['invalidValue'] = $invalidValue;
-        null !== $invalidValueToDisplay && $obj['invalidValueToDisplay'] = $invalidValueToDisplay;
-        null !== $knownColumnNumber && $obj['knownColumnNumber'] = $knownColumnNumber;
-        null !== $objectType && $obj['objectType'] = $objectType;
-        null !== $objectTypeID && $obj['objectTypeID'] = $objectTypeID;
+        null !== $errorMessage && $self['errorMessage'] = $errorMessage;
+        null !== $extraContext && $self['extraContext'] = $extraContext;
+        null !== $invalidPropertyValue && $self['invalidPropertyValue'] = $invalidPropertyValue;
+        null !== $invalidValue && $self['invalidValue'] = $invalidValue;
+        null !== $invalidValueToDisplay && $self['invalidValueToDisplay'] = $invalidValueToDisplay;
+        null !== $knownColumnNumber && $self['knownColumnNumber'] = $knownColumnNumber;
+        null !== $objectType && $self['objectType'] = $objectType;
+        null !== $objectTypeID && $self['objectTypeID'] = $objectTypeID;
 
-        return $obj;
+        return $self;
     }
 
     public function withID(string $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     public function withCreatedAt(int $createdAt): self
     {
-        $obj = clone $this;
-        $obj['createdAt'] = $createdAt;
+        $self = clone $this;
+        $self['createdAt'] = $createdAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -191,10 +191,10 @@ final class PublicImportError implements BaseModel
      */
     public function withErrorType(ErrorType|string $errorType): self
     {
-        $obj = clone $this;
-        $obj['errorType'] = $errorType;
+        $self = clone $this;
+        $self['errorType'] = $errorType;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -208,26 +208,26 @@ final class PublicImportError implements BaseModel
      */
     public function withSourceData(ImportRowCore|array $sourceData): self
     {
-        $obj = clone $this;
-        $obj['sourceData'] = $sourceData;
+        $self = clone $this;
+        $self['sourceData'] = $sourceData;
 
-        return $obj;
+        return $self;
     }
 
     public function withErrorMessage(string $errorMessage): self
     {
-        $obj = clone $this;
-        $obj['errorMessage'] = $errorMessage;
+        $self = clone $this;
+        $self['errorMessage'] = $errorMessage;
 
-        return $obj;
+        return $self;
     }
 
     public function withExtraContext(string $extraContext): self
     {
-        $obj = clone $this;
-        $obj['extraContext'] = $extraContext;
+        $self = clone $this;
+        $self['extraContext'] = $extraContext;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -258,35 +258,35 @@ final class PublicImportError implements BaseModel
     public function withInvalidPropertyValue(
         PropertyValue|array $invalidPropertyValue
     ): self {
-        $obj = clone $this;
-        $obj['invalidPropertyValue'] = $invalidPropertyValue;
+        $self = clone $this;
+        $self['invalidPropertyValue'] = $invalidPropertyValue;
 
-        return $obj;
+        return $self;
     }
 
     public function withInvalidValue(string $invalidValue): self
     {
-        $obj = clone $this;
-        $obj['invalidValue'] = $invalidValue;
+        $self = clone $this;
+        $self['invalidValue'] = $invalidValue;
 
-        return $obj;
+        return $self;
     }
 
     public function withInvalidValueToDisplay(
         string $invalidValueToDisplay
     ): self {
-        $obj = clone $this;
-        $obj['invalidValueToDisplay'] = $invalidValueToDisplay;
+        $self = clone $this;
+        $self['invalidValueToDisplay'] = $invalidValueToDisplay;
 
-        return $obj;
+        return $self;
     }
 
     public function withKnownColumnNumber(int $knownColumnNumber): self
     {
-        $obj = clone $this;
-        $obj['knownColumnNumber'] = $knownColumnNumber;
+        $self = clone $this;
+        $self['knownColumnNumber'] = $knownColumnNumber;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -294,17 +294,17 @@ final class PublicImportError implements BaseModel
      */
     public function withObjectType(ObjectType|string $objectType): self
     {
-        $obj = clone $this;
-        $obj['objectType'] = $objectType;
+        $self = clone $this;
+        $self['objectType'] = $objectType;
 
-        return $obj;
+        return $self;
     }
 
     public function withObjectTypeID(string $objectTypeID): self
     {
-        $obj = clone $this;
-        $obj['objectTypeID'] = $objectTypeID;
+        $self = clone $this;
+        $self['objectTypeID'] = $objectTypeID;
 
-        return $obj;
+        return $self;
     }
 }

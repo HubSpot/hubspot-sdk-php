@@ -155,29 +155,29 @@ final class PublicRangedTimeOperation implements BaseModel
         ?string $propertyParser = null,
         ?string $upperBoundEndpointBehavior = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['includeObjectsWithNoValueSet'] = $includeObjectsWithNoValueSet;
-        $obj['lowerBoundTimePoint'] = $lowerBoundTimePoint;
-        $obj['operationType'] = $operationType;
-        $obj['operator'] = $operator;
-        $obj['type'] = $type;
-        $obj['upperBoundTimePoint'] = $upperBoundTimePoint;
+        $self['includeObjectsWithNoValueSet'] = $includeObjectsWithNoValueSet;
+        $self['lowerBoundTimePoint'] = $lowerBoundTimePoint;
+        $self['operationType'] = $operationType;
+        $self['operator'] = $operator;
+        $self['type'] = $type;
+        $self['upperBoundTimePoint'] = $upperBoundTimePoint;
 
-        null !== $lowerBoundEndpointBehavior && $obj['lowerBoundEndpointBehavior'] = $lowerBoundEndpointBehavior;
-        null !== $propertyParser && $obj['propertyParser'] = $propertyParser;
-        null !== $upperBoundEndpointBehavior && $obj['upperBoundEndpointBehavior'] = $upperBoundEndpointBehavior;
+        null !== $lowerBoundEndpointBehavior && $self['lowerBoundEndpointBehavior'] = $lowerBoundEndpointBehavior;
+        null !== $propertyParser && $self['propertyParser'] = $propertyParser;
+        null !== $upperBoundEndpointBehavior && $self['upperBoundEndpointBehavior'] = $upperBoundEndpointBehavior;
 
-        return $obj;
+        return $self;
     }
 
     public function withIncludeObjectsWithNoValueSet(
         bool $includeObjectsWithNoValueSet
     ): self {
-        $obj = clone $this;
-        $obj['includeObjectsWithNoValueSet'] = $includeObjectsWithNoValueSet;
+        $self = clone $this;
+        $self['includeObjectsWithNoValueSet'] = $includeObjectsWithNoValueSet;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -209,26 +209,26 @@ final class PublicRangedTimeOperation implements BaseModel
     public function withLowerBoundTimePoint(
         PublicDatePoint|array|PublicIndexedTimePoint|PublicPropertyReferencedTime $lowerBoundTimePoint,
     ): self {
-        $obj = clone $this;
-        $obj['lowerBoundTimePoint'] = $lowerBoundTimePoint;
+        $self = clone $this;
+        $self['lowerBoundTimePoint'] = $lowerBoundTimePoint;
 
-        return $obj;
+        return $self;
     }
 
     public function withOperationType(string $operationType): self
     {
-        $obj = clone $this;
-        $obj['operationType'] = $operationType;
+        $self = clone $this;
+        $self['operationType'] = $operationType;
 
-        return $obj;
+        return $self;
     }
 
     public function withOperator(string $operator): self
     {
-        $obj = clone $this;
-        $obj['operator'] = $operator;
+        $self = clone $this;
+        $self['operator'] = $operator;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -236,10 +236,10 @@ final class PublicRangedTimeOperation implements BaseModel
      */
     public function withType(Type|string $type): self
     {
-        $obj = clone $this;
-        $obj['type'] = $type;
+        $self = clone $this;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -271,35 +271,35 @@ final class PublicRangedTimeOperation implements BaseModel
     public function withUpperBoundTimePoint(
         PublicDatePoint|array|PublicIndexedTimePoint|PublicPropertyReferencedTime $upperBoundTimePoint,
     ): self {
-        $obj = clone $this;
-        $obj['upperBoundTimePoint'] = $upperBoundTimePoint;
+        $self = clone $this;
+        $self['upperBoundTimePoint'] = $upperBoundTimePoint;
 
-        return $obj;
+        return $self;
     }
 
     public function withLowerBoundEndpointBehavior(
         string $lowerBoundEndpointBehavior
     ): self {
-        $obj = clone $this;
-        $obj['lowerBoundEndpointBehavior'] = $lowerBoundEndpointBehavior;
+        $self = clone $this;
+        $self['lowerBoundEndpointBehavior'] = $lowerBoundEndpointBehavior;
 
-        return $obj;
+        return $self;
     }
 
     public function withPropertyParser(string $propertyParser): self
     {
-        $obj = clone $this;
-        $obj['propertyParser'] = $propertyParser;
+        $self = clone $this;
+        $self['propertyParser'] = $propertyParser;
 
-        return $obj;
+        return $self;
     }
 
     public function withUpperBoundEndpointBehavior(
         string $upperBoundEndpointBehavior
     ): self {
-        $obj = clone $this;
-        $obj['upperBoundEndpointBehavior'] = $upperBoundEndpointBehavior;
+        $self = clone $this;
+        $self['upperBoundEndpointBehavior'] = $upperBoundEndpointBehavior;
 
-        return $obj;
+        return $self;
     }
 }

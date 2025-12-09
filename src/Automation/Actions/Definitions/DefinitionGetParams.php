@@ -58,21 +58,21 @@ final class DefinitionGetParams implements BaseModel
      */
     public static function with(int $appID, ?bool $archived = null): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['appID'] = $appID;
+        $self['appID'] = $appID;
 
-        null !== $archived && $obj['archived'] = $archived;
+        null !== $archived && $self['archived'] = $archived;
 
-        return $obj;
+        return $self;
     }
 
     public function withAppID(int $appID): self
     {
-        $obj = clone $this;
-        $obj['appID'] = $appID;
+        $self = clone $this;
+        $self['appID'] = $appID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -80,9 +80,9 @@ final class DefinitionGetParams implements BaseModel
      */
     public function withArchived(bool $archived): self
     {
-        $obj = clone $this;
-        $obj['archived'] = $archived;
+        $self = clone $this;
+        $self['archived'] = $archived;
 
-        return $obj;
+        return $self;
     }
 }

@@ -119,27 +119,27 @@ final class PublicTimePointOperation implements BaseModel
         ?string $endpointBehavior = null,
         ?string $propertyParser = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['includeObjectsWithNoValueSet'] = $includeObjectsWithNoValueSet;
-        $obj['operationType'] = $operationType;
-        $obj['operator'] = $operator;
-        $obj['timePoint'] = $timePoint;
-        $obj['type'] = $type;
+        $self['includeObjectsWithNoValueSet'] = $includeObjectsWithNoValueSet;
+        $self['operationType'] = $operationType;
+        $self['operator'] = $operator;
+        $self['timePoint'] = $timePoint;
+        $self['type'] = $type;
 
-        null !== $endpointBehavior && $obj['endpointBehavior'] = $endpointBehavior;
-        null !== $propertyParser && $obj['propertyParser'] = $propertyParser;
+        null !== $endpointBehavior && $self['endpointBehavior'] = $endpointBehavior;
+        null !== $propertyParser && $self['propertyParser'] = $propertyParser;
 
-        return $obj;
+        return $self;
     }
 
     public function withIncludeObjectsWithNoValueSet(
         bool $includeObjectsWithNoValueSet
     ): self {
-        $obj = clone $this;
-        $obj['includeObjectsWithNoValueSet'] = $includeObjectsWithNoValueSet;
+        $self = clone $this;
+        $self['includeObjectsWithNoValueSet'] = $includeObjectsWithNoValueSet;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -147,18 +147,18 @@ final class PublicTimePointOperation implements BaseModel
      */
     public function withOperationType(OperationType|string $operationType): self
     {
-        $obj = clone $this;
-        $obj['operationType'] = $operationType;
+        $self = clone $this;
+        $self['operationType'] = $operationType;
 
-        return $obj;
+        return $self;
     }
 
     public function withOperator(string $operator): self
     {
-        $obj = clone $this;
-        $obj['operator'] = $operator;
+        $self = clone $this;
+        $self['operator'] = $operator;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -190,33 +190,33 @@ final class PublicTimePointOperation implements BaseModel
     public function withTimePoint(
         PublicDatePoint|array|PublicIndexedTimePoint|PublicPropertyReferencedTime $timePoint,
     ): self {
-        $obj = clone $this;
-        $obj['timePoint'] = $timePoint;
+        $self = clone $this;
+        $self['timePoint'] = $timePoint;
 
-        return $obj;
+        return $self;
     }
 
     public function withType(string $type): self
     {
-        $obj = clone $this;
-        $obj['type'] = $type;
+        $self = clone $this;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 
     public function withEndpointBehavior(string $endpointBehavior): self
     {
-        $obj = clone $this;
-        $obj['endpointBehavior'] = $endpointBehavior;
+        $self = clone $this;
+        $self['endpointBehavior'] = $endpointBehavior;
 
-        return $obj;
+        return $self;
     }
 
     public function withPropertyParser(string $propertyParser): self
     {
-        $obj = clone $this;
-        $obj['propertyParser'] = $propertyParser;
+        $self = clone $this;
+        $self['propertyParser'] = $propertyParser;
 
-        return $obj;
+        return $self;
     }
 }

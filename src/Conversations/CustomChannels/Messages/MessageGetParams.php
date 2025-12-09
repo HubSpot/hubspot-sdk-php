@@ -51,18 +51,18 @@ final class MessageGetParams implements BaseModel
      */
     public static function with(int $channelID): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['channelID'] = $channelID;
+        $self['channelID'] = $channelID;
 
-        return $obj;
+        return $self;
     }
 
     public function withChannelID(int $channelID): self
     {
-        $obj = clone $this;
-        $obj['channelID'] = $channelID;
+        $self = clone $this;
+        $self['channelID'] = $channelID;
 
-        return $obj;
+        return $self;
     }
 }

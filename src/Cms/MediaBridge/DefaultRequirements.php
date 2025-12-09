@@ -79,14 +79,14 @@ final class DefaultRequirements implements BaseModel
         array $scopeNames,
         array $settings
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['gates'] = $gates;
-        $obj['operator'] = $operator;
-        $obj['scopeNames'] = $scopeNames;
-        $obj['settings'] = $settings;
+        $self['gates'] = $gates;
+        $self['operator'] = $operator;
+        $self['scopeNames'] = $scopeNames;
+        $self['settings'] = $settings;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -94,10 +94,10 @@ final class DefaultRequirements implements BaseModel
      */
     public function withGates(array $gates): self
     {
-        $obj = clone $this;
-        $obj['gates'] = $gates;
+        $self = clone $this;
+        $self['gates'] = $gates;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -105,10 +105,10 @@ final class DefaultRequirements implements BaseModel
      */
     public function withOperator(Operator|string $operator): self
     {
-        $obj = clone $this;
-        $obj['operator'] = $operator;
+        $self = clone $this;
+        $self['operator'] = $operator;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -116,10 +116,10 @@ final class DefaultRequirements implements BaseModel
      */
     public function withScopeNames(array $scopeNames): self
     {
-        $obj = clone $this;
-        $obj['scopeNames'] = $scopeNames;
+        $self = clone $this;
+        $self['scopeNames'] = $scopeNames;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -127,9 +127,9 @@ final class DefaultRequirements implements BaseModel
      */
     public function withSettings(array $settings): self
     {
-        $obj = clone $this;
-        $obj['settings'] = $settings;
+        $self = clone $this;
+        $self['settings'] = $settings;
 
-        return $obj;
+        return $self;
     }
 }

@@ -83,58 +83,58 @@ final class OAuthCreateAccessTokenParams implements BaseModel
         ?string $redirectUri = null,
         ?string $scope = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $clientSecret && $obj['clientSecret'] = $clientSecret;
-        null !== $refreshToken && $obj['refreshToken'] = $refreshToken;
-        null !== $clientID && $obj['clientID'] = $clientID;
-        null !== $code && $obj['code'] = $code;
-        null !== $codeVerifier && $obj['codeVerifier'] = $codeVerifier;
-        null !== $grantType && $obj['grantType'] = $grantType;
-        null !== $redirectUri && $obj['redirectUri'] = $redirectUri;
-        null !== $scope && $obj['scope'] = $scope;
+        null !== $clientSecret && $self['clientSecret'] = $clientSecret;
+        null !== $refreshToken && $self['refreshToken'] = $refreshToken;
+        null !== $clientID && $self['clientID'] = $clientID;
+        null !== $code && $self['code'] = $code;
+        null !== $codeVerifier && $self['codeVerifier'] = $codeVerifier;
+        null !== $grantType && $self['grantType'] = $grantType;
+        null !== $redirectUri && $self['redirectUri'] = $redirectUri;
+        null !== $scope && $self['scope'] = $scope;
 
-        return $obj;
+        return $self;
     }
 
     public function withClientSecret(string $clientSecret): self
     {
-        $obj = clone $this;
-        $obj['clientSecret'] = $clientSecret;
+        $self = clone $this;
+        $self['clientSecret'] = $clientSecret;
 
-        return $obj;
+        return $self;
     }
 
     public function withRefreshToken(string $refreshToken): self
     {
-        $obj = clone $this;
-        $obj['refreshToken'] = $refreshToken;
+        $self = clone $this;
+        $self['refreshToken'] = $refreshToken;
 
-        return $obj;
+        return $self;
     }
 
     public function withClientID(string $clientID): self
     {
-        $obj = clone $this;
-        $obj['clientID'] = $clientID;
+        $self = clone $this;
+        $self['clientID'] = $clientID;
 
-        return $obj;
+        return $self;
     }
 
     public function withCode(string $code): self
     {
-        $obj = clone $this;
-        $obj['code'] = $code;
+        $self = clone $this;
+        $self['code'] = $code;
 
-        return $obj;
+        return $self;
     }
 
     public function withCodeVerifier(string $codeVerifier): self
     {
-        $obj = clone $this;
-        $obj['codeVerifier'] = $codeVerifier;
+        $self = clone $this;
+        $self['codeVerifier'] = $codeVerifier;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -142,25 +142,25 @@ final class OAuthCreateAccessTokenParams implements BaseModel
      */
     public function withGrantType(GrantType|string $grantType): self
     {
-        $obj = clone $this;
-        $obj['grantType'] = $grantType;
+        $self = clone $this;
+        $self['grantType'] = $grantType;
 
-        return $obj;
+        return $self;
     }
 
     public function withRedirectUri(string $redirectUri): self
     {
-        $obj = clone $this;
-        $obj['redirectUri'] = $redirectUri;
+        $self = clone $this;
+        $self['redirectUri'] = $redirectUri;
 
-        return $obj;
+        return $self;
     }
 
     public function withScope(string $scope): self
     {
-        $obj = clone $this;
-        $obj['scope'] = $scope;
+        $self = clone $this;
+        $self['scope'] = $scope;
 
-        return $obj;
+        return $self;
     }
 }

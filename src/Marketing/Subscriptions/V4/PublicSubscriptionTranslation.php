@@ -104,16 +104,16 @@ final class PublicSubscriptionTranslation implements BaseModel
         int $subscriptionID,
         int $updatedAt,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['createdAt'] = $createdAt;
-        $obj['description'] = $description;
-        $obj['languageCode'] = $languageCode;
-        $obj['name'] = $name;
-        $obj['subscriptionID'] = $subscriptionID;
-        $obj['updatedAt'] = $updatedAt;
+        $self['createdAt'] = $createdAt;
+        $self['description'] = $description;
+        $self['languageCode'] = $languageCode;
+        $self['name'] = $name;
+        $self['subscriptionID'] = $subscriptionID;
+        $self['updatedAt'] = $updatedAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -121,10 +121,10 @@ final class PublicSubscriptionTranslation implements BaseModel
      */
     public function withCreatedAt(int $createdAt): self
     {
-        $obj = clone $this;
-        $obj['createdAt'] = $createdAt;
+        $self = clone $this;
+        $self['createdAt'] = $createdAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -132,10 +132,10 @@ final class PublicSubscriptionTranslation implements BaseModel
      */
     public function withDescription(string $description): self
     {
-        $obj = clone $this;
-        $obj['description'] = $description;
+        $self = clone $this;
+        $self['description'] = $description;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -143,10 +143,10 @@ final class PublicSubscriptionTranslation implements BaseModel
      */
     public function withLanguageCode(string $languageCode): self
     {
-        $obj = clone $this;
-        $obj['languageCode'] = $languageCode;
+        $self = clone $this;
+        $self['languageCode'] = $languageCode;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -154,10 +154,10 @@ final class PublicSubscriptionTranslation implements BaseModel
      */
     public function withName(string $name): self
     {
-        $obj = clone $this;
-        $obj['name'] = $name;
+        $self = clone $this;
+        $self['name'] = $name;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -165,10 +165,10 @@ final class PublicSubscriptionTranslation implements BaseModel
      */
     public function withSubscriptionID(int $subscriptionID): self
     {
-        $obj = clone $this;
-        $obj['subscriptionID'] = $subscriptionID;
+        $self = clone $this;
+        $self['subscriptionID'] = $subscriptionID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -176,9 +176,9 @@ final class PublicSubscriptionTranslation implements BaseModel
      */
     public function withUpdatedAt(int $updatedAt): self
     {
-        $obj = clone $this;
-        $obj['updatedAt'] = $updatedAt;
+        $self = clone $this;
+        $self['updatedAt'] = $updatedAt;
 
-        return $obj;
+        return $self;
     }
 }

@@ -87,15 +87,15 @@ final class FieldGroup implements BaseModel
         RichTextType|string $richTextType,
         ?string $richText = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['fields'] = $fields;
-        $obj['groupType'] = $groupType;
-        $obj['richTextType'] = $richTextType;
+        $self['fields'] = $fields;
+        $self['groupType'] = $groupType;
+        $self['richTextType'] = $richTextType;
 
-        null !== $richText && $obj['richText'] = $richText;
+        null !== $richText && $self['richText'] = $richText;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -105,10 +105,10 @@ final class FieldGroup implements BaseModel
      */
     public function withFields(array $fields): self
     {
-        $obj = clone $this;
-        $obj['fields'] = $fields;
+        $self = clone $this;
+        $self['fields'] = $fields;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -116,10 +116,10 @@ final class FieldGroup implements BaseModel
      */
     public function withGroupType(GroupType|string $groupType): self
     {
-        $obj = clone $this;
-        $obj['groupType'] = $groupType;
+        $self = clone $this;
+        $self['groupType'] = $groupType;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -129,10 +129,10 @@ final class FieldGroup implements BaseModel
      */
     public function withRichTextType(RichTextType|string $richTextType): self
     {
-        $obj = clone $this;
-        $obj['richTextType'] = $richTextType;
+        $self = clone $this;
+        $self['richTextType'] = $richTextType;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -140,9 +140,9 @@ final class FieldGroup implements BaseModel
      */
     public function withRichText(string $richText): self
     {
-        $obj = clone $this;
-        $obj['richText'] = $richText;
+        $self = clone $this;
+        $self['richText'] = $richText;
 
-        return $obj;
+        return $self;
     }
 }

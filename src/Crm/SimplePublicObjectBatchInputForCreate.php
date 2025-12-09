@@ -77,14 +77,14 @@ final class SimplePublicObjectBatchInputForCreate implements BaseModel
         array $properties,
         ?string $objectWriteTraceID = null
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['associations'] = $associations;
-        $obj['properties'] = $properties;
+        $self['associations'] = $associations;
+        $self['properties'] = $properties;
 
-        null !== $objectWriteTraceID && $obj['objectWriteTraceID'] = $objectWriteTraceID;
+        null !== $objectWriteTraceID && $self['objectWriteTraceID'] = $objectWriteTraceID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -94,10 +94,10 @@ final class SimplePublicObjectBatchInputForCreate implements BaseModel
      */
     public function withAssociations(array $associations): self
     {
-        $obj = clone $this;
-        $obj['associations'] = $associations;
+        $self = clone $this;
+        $self['associations'] = $associations;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -107,10 +107,10 @@ final class SimplePublicObjectBatchInputForCreate implements BaseModel
      */
     public function withProperties(array $properties): self
     {
-        $obj = clone $this;
-        $obj['properties'] = $properties;
+        $self = clone $this;
+        $self['properties'] = $properties;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -118,9 +118,9 @@ final class SimplePublicObjectBatchInputForCreate implements BaseModel
      */
     public function withObjectWriteTraceID(string $objectWriteTraceID): self
     {
-        $obj = clone $this;
-        $obj['objectWriteTraceID'] = $objectWriteTraceID;
+        $self = clone $this;
+        $self['objectWriteTraceID'] = $objectWriteTraceID;
 
-        return $obj;
+        return $self;
     }
 }

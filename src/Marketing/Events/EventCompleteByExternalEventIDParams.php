@@ -72,13 +72,13 @@ final class EventCompleteByExternalEventIDParams implements BaseModel
         \DateTimeInterface $endDateTime,
         \DateTimeInterface $startDateTime,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['externalAccountID'] = $externalAccountID;
-        $obj['endDateTime'] = $endDateTime;
-        $obj['startDateTime'] = $startDateTime;
+        $self['externalAccountID'] = $externalAccountID;
+        $self['endDateTime'] = $endDateTime;
+        $self['startDateTime'] = $startDateTime;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -86,25 +86,25 @@ final class EventCompleteByExternalEventIDParams implements BaseModel
      */
     public function withExternalAccountID(string $externalAccountID): self
     {
-        $obj = clone $this;
-        $obj['externalAccountID'] = $externalAccountID;
+        $self = clone $this;
+        $self['externalAccountID'] = $externalAccountID;
 
-        return $obj;
+        return $self;
     }
 
     public function withEndDateTime(\DateTimeInterface $endDateTime): self
     {
-        $obj = clone $this;
-        $obj['endDateTime'] = $endDateTime;
+        $self = clone $this;
+        $self['endDateTime'] = $endDateTime;
 
-        return $obj;
+        return $self;
     }
 
     public function withStartDateTime(\DateTimeInterface $startDateTime): self
     {
-        $obj = clone $this;
-        $obj['startDateTime'] = $startDateTime;
+        $self = clone $this;
+        $self['startDateTime'] = $startDateTime;
 
-        return $obj;
+        return $self;
     }
 }

@@ -94,14 +94,14 @@ final class ExternalCalendarMeetingEventCreateRequest implements BaseModel
         ExternalCalendarMeetingEventCreateProperties|array $properties,
         string $timezone,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['associations'] = $associations;
-        $obj['emailReminderSchedule'] = $emailReminderSchedule;
-        $obj['properties'] = $properties;
-        $obj['timezone'] = $timezone;
+        $self['associations'] = $associations;
+        $self['emailReminderSchedule'] = $emailReminderSchedule;
+        $self['properties'] = $properties;
+        $self['timezone'] = $timezone;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -111,10 +111,10 @@ final class ExternalCalendarMeetingEventCreateRequest implements BaseModel
      */
     public function withAssociations(array $associations): self
     {
-        $obj = clone $this;
-        $obj['associations'] = $associations;
+        $self = clone $this;
+        $self['associations'] = $associations;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -125,10 +125,10 @@ final class ExternalCalendarMeetingEventCreateRequest implements BaseModel
     public function withEmailReminderSchedule(
         ExternalEmailReminderSchedule|array $emailReminderSchedule
     ): self {
-        $obj = clone $this;
-        $obj['emailReminderSchedule'] = $emailReminderSchedule;
+        $self = clone $this;
+        $self['emailReminderSchedule'] = $emailReminderSchedule;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -151,17 +151,17 @@ final class ExternalCalendarMeetingEventCreateRequest implements BaseModel
     public function withProperties(
         ExternalCalendarMeetingEventCreateProperties|array $properties
     ): self {
-        $obj = clone $this;
-        $obj['properties'] = $properties;
+        $self = clone $this;
+        $self['properties'] = $properties;
 
-        return $obj;
+        return $self;
     }
 
     public function withTimezone(string $timezone): self
     {
-        $obj = clone $this;
-        $obj['timezone'] = $timezone;
+        $self = clone $this;
+        $self['timezone'] = $timezone;
 
-        return $obj;
+        return $self;
     }
 }

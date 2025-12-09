@@ -385,31 +385,31 @@ final class APIContactFlowCreateRequest implements BaseModel
         APIUnEnrollmentSetting|array|null $unEnrollmentSetting = null,
         ?string $uuid = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['actions'] = $actions;
-        $obj['blockedDates'] = $blockedDates;
-        $obj['canEnrollFromSalesforce'] = $canEnrollFromSalesforce;
-        $obj['customProperties'] = $customProperties;
-        $obj['dataSources'] = $dataSources;
-        $obj['flowType'] = $flowType;
-        $obj['isEnabled'] = $isEnabled;
-        $obj['objectTypeID'] = $objectTypeID;
-        $obj['suppressionListIDs'] = $suppressionListIDs;
-        $obj['timeWindows'] = $timeWindows;
-        $obj['type'] = $type;
+        $self['actions'] = $actions;
+        $self['blockedDates'] = $blockedDates;
+        $self['canEnrollFromSalesforce'] = $canEnrollFromSalesforce;
+        $self['customProperties'] = $customProperties;
+        $self['dataSources'] = $dataSources;
+        $self['flowType'] = $flowType;
+        $self['isEnabled'] = $isEnabled;
+        $self['objectTypeID'] = $objectTypeID;
+        $self['suppressionListIDs'] = $suppressionListIDs;
+        $self['timeWindows'] = $timeWindows;
+        $self['type'] = $type;
 
-        null !== $description && $obj['description'] = $description;
-        null !== $enrollmentCriteria && $obj['enrollmentCriteria'] = $enrollmentCriteria;
-        null !== $enrollmentSchedule && $obj['enrollmentSchedule'] = $enrollmentSchedule;
-        null !== $eventAnchor && $obj['eventAnchor'] = $eventAnchor;
-        null !== $goalFilterBranch && $obj['goalFilterBranch'] = $goalFilterBranch;
-        null !== $name && $obj['name'] = $name;
-        null !== $startActionID && $obj['startActionID'] = $startActionID;
-        null !== $unEnrollmentSetting && $obj['unEnrollmentSetting'] = $unEnrollmentSetting;
-        null !== $uuid && $obj['uuid'] = $uuid;
+        null !== $description && $self['description'] = $description;
+        null !== $enrollmentCriteria && $self['enrollmentCriteria'] = $enrollmentCriteria;
+        null !== $enrollmentSchedule && $self['enrollmentSchedule'] = $enrollmentSchedule;
+        null !== $eventAnchor && $self['eventAnchor'] = $eventAnchor;
+        null !== $goalFilterBranch && $self['goalFilterBranch'] = $goalFilterBranch;
+        null !== $name && $self['name'] = $name;
+        null !== $startActionID && $self['startActionID'] = $startActionID;
+        null !== $unEnrollmentSetting && $self['unEnrollmentSetting'] = $unEnrollmentSetting;
+        null !== $uuid && $self['uuid'] = $uuid;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -417,10 +417,10 @@ final class APIContactFlowCreateRequest implements BaseModel
      */
     public function withActions(array $actions): self
     {
-        $obj = clone $this;
-        $obj['actions'] = $actions;
+        $self = clone $this;
+        $self['actions'] = $actions;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -430,19 +430,19 @@ final class APIContactFlowCreateRequest implements BaseModel
      */
     public function withBlockedDates(array $blockedDates): self
     {
-        $obj = clone $this;
-        $obj['blockedDates'] = $blockedDates;
+        $self = clone $this;
+        $self['blockedDates'] = $blockedDates;
 
-        return $obj;
+        return $self;
     }
 
     public function withCanEnrollFromSalesforce(
         bool $canEnrollFromSalesforce
     ): self {
-        $obj = clone $this;
-        $obj['canEnrollFromSalesforce'] = $canEnrollFromSalesforce;
+        $self = clone $this;
+        $self['canEnrollFromSalesforce'] = $canEnrollFromSalesforce;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -450,10 +450,10 @@ final class APIContactFlowCreateRequest implements BaseModel
      */
     public function withCustomProperties(array $customProperties): self
     {
-        $obj = clone $this;
-        $obj['customProperties'] = $customProperties;
+        $self = clone $this;
+        $self['customProperties'] = $customProperties;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -498,10 +498,10 @@ final class APIContactFlowCreateRequest implements BaseModel
      */
     public function withDataSources(array $dataSources): self
     {
-        $obj = clone $this;
-        $obj['dataSources'] = $dataSources;
+        $self = clone $this;
+        $self['dataSources'] = $dataSources;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -509,26 +509,26 @@ final class APIContactFlowCreateRequest implements BaseModel
      */
     public function withFlowType(FlowType|string $flowType): self
     {
-        $obj = clone $this;
-        $obj['flowType'] = $flowType;
+        $self = clone $this;
+        $self['flowType'] = $flowType;
 
-        return $obj;
+        return $self;
     }
 
     public function withIsEnabled(bool $isEnabled): self
     {
-        $obj = clone $this;
-        $obj['isEnabled'] = $isEnabled;
+        $self = clone $this;
+        $self['isEnabled'] = $isEnabled;
 
-        return $obj;
+        return $self;
     }
 
     public function withObjectTypeID(string $objectTypeID): self
     {
-        $obj = clone $this;
-        $obj['objectTypeID'] = $objectTypeID;
+        $self = clone $this;
+        $self['objectTypeID'] = $objectTypeID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -536,10 +536,10 @@ final class APIContactFlowCreateRequest implements BaseModel
      */
     public function withSuppressionListIDs(array $suppressionListIDs): self
     {
-        $obj = clone $this;
-        $obj['suppressionListIDs'] = $suppressionListIDs;
+        $self = clone $this;
+        $self['suppressionListIDs'] = $suppressionListIDs;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -549,10 +549,10 @@ final class APIContactFlowCreateRequest implements BaseModel
      */
     public function withTimeWindows(array $timeWindows): self
     {
-        $obj = clone $this;
-        $obj['timeWindows'] = $timeWindows;
+        $self = clone $this;
+        $self['timeWindows'] = $timeWindows;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -560,18 +560,18 @@ final class APIContactFlowCreateRequest implements BaseModel
      */
     public function withType(Type|string $type): self
     {
-        $obj = clone $this;
-        $obj['type'] = $type;
+        $self = clone $this;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 
     public function withDescription(string $description): self
     {
-        $obj = clone $this;
-        $obj['description'] = $description;
+        $self = clone $this;
+        $self['description'] = $description;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -595,10 +595,10 @@ final class APIContactFlowCreateRequest implements BaseModel
     public function withEnrollmentCriteria(
         APIListBasedEnrollmentCriteria|array|APIEventBasedEnrollmentCriteria|APIManualEnrollmentCriteria $enrollmentCriteria,
     ): self {
-        $obj = clone $this;
-        $obj['enrollmentCriteria'] = $enrollmentCriteria;
+        $self = clone $this;
+        $self['enrollmentCriteria'] = $enrollmentCriteria;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -633,10 +633,10 @@ final class APIContactFlowCreateRequest implements BaseModel
     public function withEnrollmentSchedule(
         APIDailyEnrollmentSchedule|array|APIWeeklyEnrollmentSchedule|APIMonthlySpecificDaysEnrollmentSchedule|APIMonthlyRelativeDaysEnrollmentSchedule|APIYearlyEnrollmentSchedule|APIPropertyBasedEnrollmentSchedule $enrollmentSchedule,
     ): self {
-        $obj = clone $this;
-        $obj['enrollmentSchedule'] = $enrollmentSchedule;
+        $self = clone $this;
+        $self['enrollmentSchedule'] = $enrollmentSchedule;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -653,10 +653,10 @@ final class APIContactFlowCreateRequest implements BaseModel
     public function withEventAnchor(
         APIContactPropertyAnchor|array|APIStaticDateAnchor $eventAnchor
     ): self {
-        $obj = clone $this;
-        $obj['eventAnchor'] = $eventAnchor;
+        $self = clone $this;
+        $self['eventAnchor'] = $eventAnchor;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -715,26 +715,26 @@ final class APIContactFlowCreateRequest implements BaseModel
     public function withGoalFilterBranch(
         PublicOrFilterBranch|array|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch $goalFilterBranch,
     ): self {
-        $obj = clone $this;
-        $obj['goalFilterBranch'] = $goalFilterBranch;
+        $self = clone $this;
+        $self['goalFilterBranch'] = $goalFilterBranch;
 
-        return $obj;
+        return $self;
     }
 
     public function withName(string $name): self
     {
-        $obj = clone $this;
-        $obj['name'] = $name;
+        $self = clone $this;
+        $self['name'] = $name;
 
-        return $obj;
+        return $self;
     }
 
     public function withStartActionID(string $startActionID): self
     {
-        $obj = clone $this;
-        $obj['startActionID'] = $startActionID;
+        $self = clone $this;
+        $self['startActionID'] = $startActionID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -746,17 +746,17 @@ final class APIContactFlowCreateRequest implements BaseModel
     public function withUnEnrollmentSetting(
         APIUnEnrollmentSetting|array $unEnrollmentSetting
     ): self {
-        $obj = clone $this;
-        $obj['unEnrollmentSetting'] = $unEnrollmentSetting;
+        $self = clone $this;
+        $self['unEnrollmentSetting'] = $unEnrollmentSetting;
 
-        return $obj;
+        return $self;
     }
 
     public function withUuid(string $uuid): self
     {
-        $obj = clone $this;
-        $obj['uuid'] = $uuid;
+        $self = clone $this;
+        $self['uuid'] = $uuid;
 
-        return $obj;
+        return $self;
     }
 }

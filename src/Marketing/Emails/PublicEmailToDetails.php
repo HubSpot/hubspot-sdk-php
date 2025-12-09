@@ -78,15 +78,15 @@ final class PublicEmailToDetails implements BaseModel
         ?bool $limitSendFrequency = null,
         ?bool $suppressGraymail = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $contactIDs && $obj['contactIDs'] = $contactIDs;
-        null !== $contactIlsLists && $obj['contactIlsLists'] = $contactIlsLists;
-        null !== $contactLists && $obj['contactLists'] = $contactLists;
-        null !== $limitSendFrequency && $obj['limitSendFrequency'] = $limitSendFrequency;
-        null !== $suppressGraymail && $obj['suppressGraymail'] = $suppressGraymail;
+        null !== $contactIDs && $self['contactIDs'] = $contactIDs;
+        null !== $contactIlsLists && $self['contactIlsLists'] = $contactIlsLists;
+        null !== $contactLists && $self['contactLists'] = $contactLists;
+        null !== $limitSendFrequency && $self['limitSendFrequency'] = $limitSendFrequency;
+        null !== $suppressGraymail && $self['suppressGraymail'] = $suppressGraymail;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -99,10 +99,10 @@ final class PublicEmailToDetails implements BaseModel
     public function withContactIDs(
         PublicEmailRecipients|array $contactIDs
     ): self {
-        $obj = clone $this;
-        $obj['contactIDs'] = $contactIDs;
+        $self = clone $this;
+        $self['contactIDs'] = $contactIDs;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -115,10 +115,10 @@ final class PublicEmailToDetails implements BaseModel
     public function withContactIlsLists(
         PublicEmailRecipients|array $contactIlsLists
     ): self {
-        $obj = clone $this;
-        $obj['contactIlsLists'] = $contactIlsLists;
+        $self = clone $this;
+        $self['contactIlsLists'] = $contactIlsLists;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -131,18 +131,18 @@ final class PublicEmailToDetails implements BaseModel
     public function withContactLists(
         PublicEmailRecipients|array $contactLists
     ): self {
-        $obj = clone $this;
-        $obj['contactLists'] = $contactLists;
+        $self = clone $this;
+        $self['contactLists'] = $contactLists;
 
-        return $obj;
+        return $self;
     }
 
     public function withLimitSendFrequency(bool $limitSendFrequency): self
     {
-        $obj = clone $this;
-        $obj['limitSendFrequency'] = $limitSendFrequency;
+        $self = clone $this;
+        $self['limitSendFrequency'] = $limitSendFrequency;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -150,9 +150,9 @@ final class PublicEmailToDetails implements BaseModel
      */
     public function withSuppressGraymail(bool $suppressGraymail): self
     {
-        $obj = clone $this;
-        $obj['suppressGraymail'] = $suppressGraymail;
+        $self = clone $this;
+        $self['suppressGraymail'] = $suppressGraymail;
 
-        return $obj;
+        return $self;
     }
 }

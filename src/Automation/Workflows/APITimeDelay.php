@@ -81,16 +81,16 @@ final class APITimeDelay implements BaseModel
         APITimeOfDay|array|null $timeOfDay = null,
         APIStaticTimeZoneStrategy|array|null $timeZoneStrategy = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['daysOfWeek'] = $daysOfWeek;
-        $obj['delta'] = $delta;
-        $obj['timeUnit'] = $timeUnit;
+        $self['daysOfWeek'] = $daysOfWeek;
+        $self['delta'] = $delta;
+        $self['timeUnit'] = $timeUnit;
 
-        null !== $timeOfDay && $obj['timeOfDay'] = $timeOfDay;
-        null !== $timeZoneStrategy && $obj['timeZoneStrategy'] = $timeZoneStrategy;
+        null !== $timeOfDay && $self['timeOfDay'] = $timeOfDay;
+        null !== $timeZoneStrategy && $self['timeZoneStrategy'] = $timeZoneStrategy;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -98,18 +98,18 @@ final class APITimeDelay implements BaseModel
      */
     public function withDaysOfWeek(array $daysOfWeek): self
     {
-        $obj = clone $this;
-        $obj['daysOfWeek'] = $daysOfWeek;
+        $self = clone $this;
+        $self['daysOfWeek'] = $daysOfWeek;
 
-        return $obj;
+        return $self;
     }
 
     public function withDelta(int $delta): self
     {
-        $obj = clone $this;
-        $obj['delta'] = $delta;
+        $self = clone $this;
+        $self['delta'] = $delta;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -117,10 +117,10 @@ final class APITimeDelay implements BaseModel
      */
     public function withTimeUnit(TimeUnit|string $timeUnit): self
     {
-        $obj = clone $this;
-        $obj['timeUnit'] = $timeUnit;
+        $self = clone $this;
+        $self['timeUnit'] = $timeUnit;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -128,10 +128,10 @@ final class APITimeDelay implements BaseModel
      */
     public function withTimeOfDay(APITimeOfDay|array $timeOfDay): self
     {
-        $obj = clone $this;
-        $obj['timeOfDay'] = $timeOfDay;
+        $self = clone $this;
+        $self['timeOfDay'] = $timeOfDay;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -142,9 +142,9 @@ final class APITimeDelay implements BaseModel
     public function withTimeZoneStrategy(
         APIStaticTimeZoneStrategy|array $timeZoneStrategy
     ): self {
-        $obj = clone $this;
-        $obj['timeZoneStrategy'] = $timeZoneStrategy;
+        $self = clone $this;
+        $self['timeZoneStrategy'] = $timeZoneStrategy;
 
-        return $obj;
+        return $self;
     }
 }

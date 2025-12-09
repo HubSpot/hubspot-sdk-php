@@ -84,16 +84,16 @@ final class PropertiesOptionInput implements BaseModel
         ?string $description = null,
         ?int $displayOrder = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['hidden'] = $hidden;
-        $obj['label'] = $label;
-        $obj['value'] = $value;
+        $self['hidden'] = $hidden;
+        $self['label'] = $label;
+        $self['value'] = $value;
 
-        null !== $description && $obj['description'] = $description;
-        null !== $displayOrder && $obj['displayOrder'] = $displayOrder;
+        null !== $description && $self['description'] = $description;
+        null !== $displayOrder && $self['displayOrder'] = $displayOrder;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -101,10 +101,10 @@ final class PropertiesOptionInput implements BaseModel
      */
     public function withHidden(bool $hidden): self
     {
-        $obj = clone $this;
-        $obj['hidden'] = $hidden;
+        $self = clone $this;
+        $self['hidden'] = $hidden;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -112,10 +112,10 @@ final class PropertiesOptionInput implements BaseModel
      */
     public function withLabel(string $label): self
     {
-        $obj = clone $this;
-        $obj['label'] = $label;
+        $self = clone $this;
+        $self['label'] = $label;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -123,10 +123,10 @@ final class PropertiesOptionInput implements BaseModel
      */
     public function withValue(string $value): self
     {
-        $obj = clone $this;
-        $obj['value'] = $value;
+        $self = clone $this;
+        $self['value'] = $value;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -134,10 +134,10 @@ final class PropertiesOptionInput implements BaseModel
      */
     public function withDescription(string $description): self
     {
-        $obj = clone $this;
-        $obj['description'] = $description;
+        $self = clone $this;
+        $self['description'] = $description;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -145,9 +145,9 @@ final class PropertiesOptionInput implements BaseModel
      */
     public function withDisplayOrder(int $displayOrder): self
     {
-        $obj = clone $this;
-        $obj['displayOrder'] = $displayOrder;
+        $self = clone $this;
+        $self['displayOrder'] = $displayOrder;
 
-        return $obj;
+        return $self;
     }
 }

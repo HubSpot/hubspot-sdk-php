@@ -139,36 +139,36 @@ final class PublicSequenceResponse implements BaseModel
         ?string $folderID = null,
         PublicSequenceSettingsResponse|array|null $settings = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['id'] = $id;
-        $obj['createdAt'] = $createdAt;
-        $obj['dependencies'] = $dependencies;
-        $obj['name'] = $name;
-        $obj['steps'] = $steps;
-        $obj['updatedAt'] = $updatedAt;
-        $obj['userID'] = $userID;
+        $self['id'] = $id;
+        $self['createdAt'] = $createdAt;
+        $self['dependencies'] = $dependencies;
+        $self['name'] = $name;
+        $self['steps'] = $steps;
+        $self['updatedAt'] = $updatedAt;
+        $self['userID'] = $userID;
 
-        null !== $folderID && $obj['folderID'] = $folderID;
-        null !== $settings && $obj['settings'] = $settings;
+        null !== $folderID && $self['folderID'] = $folderID;
+        null !== $settings && $self['settings'] = $settings;
 
-        return $obj;
+        return $self;
     }
 
     public function withID(string $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
-        $obj = clone $this;
-        $obj['createdAt'] = $createdAt;
+        $self = clone $this;
+        $self['createdAt'] = $createdAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -185,18 +185,18 @@ final class PublicSequenceResponse implements BaseModel
      */
     public function withDependencies(array $dependencies): self
     {
-        $obj = clone $this;
-        $obj['dependencies'] = $dependencies;
+        $self = clone $this;
+        $self['dependencies'] = $dependencies;
 
-        return $obj;
+        return $self;
     }
 
     public function withName(string $name): self
     {
-        $obj = clone $this;
-        $obj['name'] = $name;
+        $self = clone $this;
+        $self['name'] = $name;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -213,34 +213,34 @@ final class PublicSequenceResponse implements BaseModel
      */
     public function withSteps(array $steps): self
     {
-        $obj = clone $this;
-        $obj['steps'] = $steps;
+        $self = clone $this;
+        $self['steps'] = $steps;
 
-        return $obj;
+        return $self;
     }
 
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
-        $obj = clone $this;
-        $obj['updatedAt'] = $updatedAt;
+        $self = clone $this;
+        $self['updatedAt'] = $updatedAt;
 
-        return $obj;
+        return $self;
     }
 
     public function withUserID(string $userID): self
     {
-        $obj = clone $this;
-        $obj['userID'] = $userID;
+        $self = clone $this;
+        $self['userID'] = $userID;
 
-        return $obj;
+        return $self;
     }
 
     public function withFolderID(string $folderID): self
     {
-        $obj = clone $this;
-        $obj['folderID'] = $folderID;
+        $self = clone $this;
+        $self['folderID'] = $folderID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -260,9 +260,9 @@ final class PublicSequenceResponse implements BaseModel
     public function withSettings(
         PublicSequenceSettingsResponse|array $settings
     ): self {
-        $obj = clone $this;
-        $obj['settings'] = $settings;
+        $self = clone $this;
+        $self['settings'] = $settings;
 
-        return $obj;
+        return $self;
     }
 }

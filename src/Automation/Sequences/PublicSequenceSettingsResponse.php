@@ -117,94 +117,94 @@ final class PublicSequenceSettingsResponse implements BaseModel
         \DateTimeInterface $updatedAt,
         UnenrollmentSettingsResponse|array|null $unenrollmentSettings = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['id'] = $id;
-        $obj['createdAt'] = $createdAt;
-        $obj['eligibleFollowUpDays'] = $eligibleFollowUpDays;
-        $obj['individualTaskRemindersEnabled'] = $individualTaskRemindersEnabled;
-        $obj['sellingStrategy'] = $sellingStrategy;
-        $obj['sendWindowEndMinute'] = $sendWindowEndMinute;
-        $obj['sendWindowStartMinute'] = $sendWindowStartMinute;
-        $obj['taskReminderMinute'] = $taskReminderMinute;
-        $obj['updatedAt'] = $updatedAt;
+        $self['id'] = $id;
+        $self['createdAt'] = $createdAt;
+        $self['eligibleFollowUpDays'] = $eligibleFollowUpDays;
+        $self['individualTaskRemindersEnabled'] = $individualTaskRemindersEnabled;
+        $self['sellingStrategy'] = $sellingStrategy;
+        $self['sendWindowEndMinute'] = $sendWindowEndMinute;
+        $self['sendWindowStartMinute'] = $sendWindowStartMinute;
+        $self['taskReminderMinute'] = $taskReminderMinute;
+        $self['updatedAt'] = $updatedAt;
 
-        null !== $unenrollmentSettings && $obj['unenrollmentSettings'] = $unenrollmentSettings;
+        null !== $unenrollmentSettings && $self['unenrollmentSettings'] = $unenrollmentSettings;
 
-        return $obj;
+        return $self;
     }
 
     public function withID(string $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
-        $obj = clone $this;
-        $obj['createdAt'] = $createdAt;
+        $self = clone $this;
+        $self['createdAt'] = $createdAt;
 
-        return $obj;
+        return $self;
     }
 
     public function withEligibleFollowUpDays(string $eligibleFollowUpDays): self
     {
-        $obj = clone $this;
-        $obj['eligibleFollowUpDays'] = $eligibleFollowUpDays;
+        $self = clone $this;
+        $self['eligibleFollowUpDays'] = $eligibleFollowUpDays;
 
-        return $obj;
+        return $self;
     }
 
     public function withIndividualTaskRemindersEnabled(
         bool $individualTaskRemindersEnabled
     ): self {
-        $obj = clone $this;
-        $obj['individualTaskRemindersEnabled'] = $individualTaskRemindersEnabled;
+        $self = clone $this;
+        $self['individualTaskRemindersEnabled'] = $individualTaskRemindersEnabled;
 
-        return $obj;
+        return $self;
     }
 
     public function withSellingStrategy(string $sellingStrategy): self
     {
-        $obj = clone $this;
-        $obj['sellingStrategy'] = $sellingStrategy;
+        $self = clone $this;
+        $self['sellingStrategy'] = $sellingStrategy;
 
-        return $obj;
+        return $self;
     }
 
     public function withSendWindowEndMinute(int $sendWindowEndMinute): self
     {
-        $obj = clone $this;
-        $obj['sendWindowEndMinute'] = $sendWindowEndMinute;
+        $self = clone $this;
+        $self['sendWindowEndMinute'] = $sendWindowEndMinute;
 
-        return $obj;
+        return $self;
     }
 
     public function withSendWindowStartMinute(int $sendWindowStartMinute): self
     {
-        $obj = clone $this;
-        $obj['sendWindowStartMinute'] = $sendWindowStartMinute;
+        $self = clone $this;
+        $self['sendWindowStartMinute'] = $sendWindowStartMinute;
 
-        return $obj;
+        return $self;
     }
 
     public function withTaskReminderMinute(int $taskReminderMinute): self
     {
-        $obj = clone $this;
-        $obj['taskReminderMinute'] = $taskReminderMinute;
+        $self = clone $this;
+        $self['taskReminderMinute'] = $taskReminderMinute;
 
-        return $obj;
+        return $self;
     }
 
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
-        $obj = clone $this;
-        $obj['updatedAt'] = $updatedAt;
+        $self = clone $this;
+        $self['updatedAt'] = $updatedAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -215,9 +215,9 @@ final class PublicSequenceSettingsResponse implements BaseModel
     public function withUnenrollmentSettings(
         UnenrollmentSettingsResponse|array $unenrollmentSettings
     ): self {
-        $obj = clone $this;
-        $obj['unenrollmentSettings'] = $unenrollmentSettings;
+        $self = clone $this;
+        $self['unenrollmentSettings'] = $unenrollmentSettings;
 
-        return $obj;
+        return $self;
     }
 }

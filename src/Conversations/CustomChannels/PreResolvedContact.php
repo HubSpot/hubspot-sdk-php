@@ -57,12 +57,12 @@ final class PreResolvedContact implements BaseModel
         array $contactPropertiesLeadingToMatch,
         int $contactVid
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['contactPropertiesLeadingToMatch'] = $contactPropertiesLeadingToMatch;
-        $obj['contactVid'] = $contactVid;
+        $self['contactPropertiesLeadingToMatch'] = $contactPropertiesLeadingToMatch;
+        $self['contactVid'] = $contactVid;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -71,17 +71,17 @@ final class PreResolvedContact implements BaseModel
     public function withContactPropertiesLeadingToMatch(
         array $contactPropertiesLeadingToMatch
     ): self {
-        $obj = clone $this;
-        $obj['contactPropertiesLeadingToMatch'] = $contactPropertiesLeadingToMatch;
+        $self = clone $this;
+        $self['contactPropertiesLeadingToMatch'] = $contactPropertiesLeadingToMatch;
 
-        return $obj;
+        return $self;
     }
 
     public function withContactVid(int $contactVid): self
     {
-        $obj = clone $this;
-        $obj['contactVid'] = $contactVid;
+        $self = clone $this;
+        $self['contactVid'] = $contactVid;
 
-        return $obj;
+        return $self;
     }
 }

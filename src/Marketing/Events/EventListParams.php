@@ -48,12 +48,12 @@ final class EventListParams implements BaseModel
      */
     public static function with(?string $after = null, ?int $limit = null): self
     {
-        $obj = new self;
+        $self = new self;
 
-        null !== $after && $obj['after'] = $after;
-        null !== $limit && $obj['limit'] = $limit;
+        null !== $after && $self['after'] = $after;
+        null !== $limit && $self['limit'] = $limit;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -61,10 +61,10 @@ final class EventListParams implements BaseModel
      */
     public function withAfter(string $after): self
     {
-        $obj = clone $this;
-        $obj['after'] = $after;
+        $self = clone $this;
+        $self['after'] = $after;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -72,9 +72,9 @@ final class EventListParams implements BaseModel
      */
     public function withLimit(int $limit): self
     {
-        $obj = clone $this;
-        $obj['limit'] = $limit;
+        $self = clone $this;
+        $self['limit'] = $limit;
 
-        return $obj;
+        return $self;
     }
 }

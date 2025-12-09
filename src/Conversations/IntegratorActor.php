@@ -65,31 +65,31 @@ final class IntegratorActor implements BaseModel
         Type|string $type = 'INTEGRATOR',
         ?string $avatar = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['id'] = $id;
-        $obj['name'] = $name;
-        $obj['type'] = $type;
+        $self['id'] = $id;
+        $self['name'] = $name;
+        $self['type'] = $type;
 
-        null !== $avatar && $obj['avatar'] = $avatar;
+        null !== $avatar && $self['avatar'] = $avatar;
 
-        return $obj;
+        return $self;
     }
 
     public function withID(string $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     public function withName(string $name): self
     {
-        $obj = clone $this;
-        $obj['name'] = $name;
+        $self = clone $this;
+        $self['name'] = $name;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -97,17 +97,17 @@ final class IntegratorActor implements BaseModel
      */
     public function withType(Type|string $type): self
     {
-        $obj = clone $this;
-        $obj['type'] = $type;
+        $self = clone $this;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 
     public function withAvatar(string $avatar): self
     {
-        $obj = clone $this;
-        $obj['avatar'] = $avatar;
+        $self = clone $this;
+        $self['avatar'] = $avatar;
 
-        return $obj;
+        return $self;
     }
 }

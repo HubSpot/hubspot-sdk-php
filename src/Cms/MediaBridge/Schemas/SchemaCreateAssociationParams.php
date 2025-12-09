@@ -72,46 +72,46 @@ final class SchemaCreateAssociationParams implements BaseModel
         string $toObjectTypeID,
         ?string $name = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['appID'] = $appID;
-        $obj['fromObjectTypeID'] = $fromObjectTypeID;
-        $obj['toObjectTypeID'] = $toObjectTypeID;
+        $self['appID'] = $appID;
+        $self['fromObjectTypeID'] = $fromObjectTypeID;
+        $self['toObjectTypeID'] = $toObjectTypeID;
 
-        null !== $name && $obj['name'] = $name;
+        null !== $name && $self['name'] = $name;
 
-        return $obj;
+        return $self;
     }
 
     public function withAppID(int $appID): self
     {
-        $obj = clone $this;
-        $obj['appID'] = $appID;
+        $self = clone $this;
+        $self['appID'] = $appID;
 
-        return $obj;
+        return $self;
     }
 
     public function withFromObjectTypeID(string $fromObjectTypeID): self
     {
-        $obj = clone $this;
-        $obj['fromObjectTypeID'] = $fromObjectTypeID;
+        $self = clone $this;
+        $self['fromObjectTypeID'] = $fromObjectTypeID;
 
-        return $obj;
+        return $self;
     }
 
     public function withToObjectTypeID(string $toObjectTypeID): self
     {
-        $obj = clone $this;
-        $obj['toObjectTypeID'] = $toObjectTypeID;
+        $self = clone $this;
+        $self['toObjectTypeID'] = $toObjectTypeID;
 
-        return $obj;
+        return $self;
     }
 
     public function withName(string $name): self
     {
-        $obj = clone $this;
-        $obj['name'] = $name;
+        $self = clone $this;
+        $self['name'] = $name;
 
-        return $obj;
+        return $self;
     }
 }

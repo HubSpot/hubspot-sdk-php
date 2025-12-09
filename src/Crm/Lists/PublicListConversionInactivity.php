@@ -70,13 +70,13 @@ final class PublicListConversionInactivity implements BaseModel
         TimeUnit|string $timeUnit,
         ConversionType|string $conversionType = 'INACTIVITY',
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['conversionType'] = $conversionType;
-        $obj['offset'] = $offset;
-        $obj['timeUnit'] = $timeUnit;
+        $self['conversionType'] = $conversionType;
+        $self['offset'] = $offset;
+        $self['timeUnit'] = $timeUnit;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -85,18 +85,18 @@ final class PublicListConversionInactivity implements BaseModel
     public function withConversionType(
         ConversionType|string $conversionType
     ): self {
-        $obj = clone $this;
-        $obj['conversionType'] = $conversionType;
+        $self = clone $this;
+        $self['conversionType'] = $conversionType;
 
-        return $obj;
+        return $self;
     }
 
     public function withOffset(int $offset): self
     {
-        $obj = clone $this;
-        $obj['offset'] = $offset;
+        $self = clone $this;
+        $self['offset'] = $offset;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -104,9 +104,9 @@ final class PublicListConversionInactivity implements BaseModel
      */
     public function withTimeUnit(TimeUnit|string $timeUnit): self
     {
-        $obj = clone $this;
-        $obj['timeUnit'] = $timeUnit;
+        $self = clone $this;
+        $self['timeUnit'] = $timeUnit;
 
-        return $obj;
+        return $self;
     }
 }

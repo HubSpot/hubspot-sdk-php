@@ -50,27 +50,27 @@ final class PublicInListFilterMetadata implements BaseModel
      */
     public static function with(string $id, string $inListType): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['id'] = $id;
-        $obj['inListType'] = $inListType;
+        $self['id'] = $id;
+        $self['inListType'] = $inListType;
 
-        return $obj;
+        return $self;
     }
 
     public function withID(string $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     public function withInListType(string $inListType): self
     {
-        $obj = clone $this;
-        $obj['inListType'] = $inListType;
+        $self = clone $this;
+        $self['inListType'] = $inListType;
 
-        return $obj;
+        return $self;
     }
 }

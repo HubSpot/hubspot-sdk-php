@@ -65,20 +65,20 @@ final class DealToDealSplits implements BaseModel
      */
     public static function with(string $id, array $splits): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['id'] = $id;
-        $obj['splits'] = $splits;
+        $self['id'] = $id;
+        $self['splits'] = $splits;
 
-        return $obj;
+        return $self;
     }
 
     public function withID(string $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -96,9 +96,9 @@ final class DealToDealSplits implements BaseModel
      */
     public function withSplits(array $splits): self
     {
-        $obj = clone $this;
-        $obj['splits'] = $splits;
+        $self = clone $this;
+        $self['splits'] = $splits;
 
-        return $obj;
+        return $self;
     }
 }

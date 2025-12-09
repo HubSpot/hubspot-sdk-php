@@ -68,15 +68,15 @@ final class PublicRecipient implements BaseModel
         ?string $name = null,
         ?string $recipientField = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['deliveryIdentifier'] = $deliveryIdentifier;
+        $self['deliveryIdentifier'] = $deliveryIdentifier;
 
-        null !== $actorID && $obj['actorID'] = $actorID;
-        null !== $name && $obj['name'] = $name;
-        null !== $recipientField && $obj['recipientField'] = $recipientField;
+        null !== $actorID && $self['actorID'] = $actorID;
+        null !== $name && $self['name'] = $name;
+        null !== $recipientField && $self['recipientField'] = $recipientField;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -87,33 +87,33 @@ final class PublicRecipient implements BaseModel
     public function withDeliveryIdentifier(
         PublicDeliveryIdentifier|array $deliveryIdentifier
     ): self {
-        $obj = clone $this;
-        $obj['deliveryIdentifier'] = $deliveryIdentifier;
+        $self = clone $this;
+        $self['deliveryIdentifier'] = $deliveryIdentifier;
 
-        return $obj;
+        return $self;
     }
 
     public function withActorID(string $actorID): self
     {
-        $obj = clone $this;
-        $obj['actorID'] = $actorID;
+        $self = clone $this;
+        $self['actorID'] = $actorID;
 
-        return $obj;
+        return $self;
     }
 
     public function withName(string $name): self
     {
-        $obj = clone $this;
-        $obj['name'] = $name;
+        $self = clone $this;
+        $self['name'] = $name;
 
-        return $obj;
+        return $self;
     }
 
     public function withRecipientField(string $recipientField): self
     {
-        $obj = clone $this;
-        $obj['recipientField'] = $recipientField;
+        $self = clone $this;
+        $self['recipientField'] = $recipientField;
 
-        return $obj;
+        return $self;
     }
 }

@@ -61,21 +61,21 @@ final class RowGetParams implements BaseModel
         string $tableIDOrName,
         ?bool $archived = null
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['tableIDOrName'] = $tableIDOrName;
+        $self['tableIDOrName'] = $tableIDOrName;
 
-        null !== $archived && $obj['archived'] = $archived;
+        null !== $archived && $self['archived'] = $archived;
 
-        return $obj;
+        return $self;
     }
 
     public function withTableIDOrName(string $tableIDOrName): self
     {
-        $obj = clone $this;
-        $obj['tableIDOrName'] = $tableIDOrName;
+        $self = clone $this;
+        $self['tableIDOrName'] = $tableIDOrName;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -83,9 +83,9 @@ final class RowGetParams implements BaseModel
      */
     public function withArchived(bool $archived): self
     {
-        $obj = clone $this;
-        $obj['archived'] = $archived;
+        $self = clone $this;
+        $self['archived'] = $archived;
 
-        return $obj;
+        return $self;
     }
 }

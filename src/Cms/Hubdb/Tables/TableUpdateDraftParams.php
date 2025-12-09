@@ -186,22 +186,22 @@ final class TableUpdateDraftParams implements BaseModel
         ?bool $includeForeignIDs = null,
         ?bool $isGetLocalizedSchema = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['allowChildTables'] = $allowChildTables;
-        $obj['allowPublicAPIAccess'] = $allowPublicAPIAccess;
-        $obj['columns'] = $columns;
-        $obj['dynamicMetaTags'] = $dynamicMetaTags;
-        $obj['enableChildTablePages'] = $enableChildTablePages;
-        $obj['label'] = $label;
-        $obj['name'] = $name;
-        $obj['useForPages'] = $useForPages;
+        $self['allowChildTables'] = $allowChildTables;
+        $self['allowPublicAPIAccess'] = $allowPublicAPIAccess;
+        $self['columns'] = $columns;
+        $self['dynamicMetaTags'] = $dynamicMetaTags;
+        $self['enableChildTablePages'] = $enableChildTablePages;
+        $self['label'] = $label;
+        $self['name'] = $name;
+        $self['useForPages'] = $useForPages;
 
-        null !== $archived && $obj['archived'] = $archived;
-        null !== $includeForeignIDs && $obj['includeForeignIDs'] = $includeForeignIDs;
-        null !== $isGetLocalizedSchema && $obj['isGetLocalizedSchema'] = $isGetLocalizedSchema;
+        null !== $archived && $self['archived'] = $archived;
+        null !== $includeForeignIDs && $self['includeForeignIDs'] = $includeForeignIDs;
+        null !== $isGetLocalizedSchema && $self['isGetLocalizedSchema'] = $isGetLocalizedSchema;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -209,10 +209,10 @@ final class TableUpdateDraftParams implements BaseModel
      */
     public function withAllowChildTables(bool $allowChildTables): self
     {
-        $obj = clone $this;
-        $obj['allowChildTables'] = $allowChildTables;
+        $self = clone $this;
+        $self['allowChildTables'] = $allowChildTables;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -220,10 +220,10 @@ final class TableUpdateDraftParams implements BaseModel
      */
     public function withAllowPublicAPIAccess(bool $allowPublicAPIAccess): self
     {
-        $obj = clone $this;
-        $obj['allowPublicAPIAccess'] = $allowPublicAPIAccess;
+        $self = clone $this;
+        $self['allowPublicAPIAccess'] = $allowPublicAPIAccess;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -243,10 +243,10 @@ final class TableUpdateDraftParams implements BaseModel
      */
     public function withColumns(array $columns): self
     {
-        $obj = clone $this;
-        $obj['columns'] = $columns;
+        $self = clone $this;
+        $self['columns'] = $columns;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -256,10 +256,10 @@ final class TableUpdateDraftParams implements BaseModel
      */
     public function withDynamicMetaTags(array $dynamicMetaTags): self
     {
-        $obj = clone $this;
-        $obj['dynamicMetaTags'] = $dynamicMetaTags;
+        $self = clone $this;
+        $self['dynamicMetaTags'] = $dynamicMetaTags;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -267,10 +267,10 @@ final class TableUpdateDraftParams implements BaseModel
      */
     public function withEnableChildTablePages(bool $enableChildTablePages): self
     {
-        $obj = clone $this;
-        $obj['enableChildTablePages'] = $enableChildTablePages;
+        $self = clone $this;
+        $self['enableChildTablePages'] = $enableChildTablePages;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -278,10 +278,10 @@ final class TableUpdateDraftParams implements BaseModel
      */
     public function withLabel(string $label): self
     {
-        $obj = clone $this;
-        $obj['label'] = $label;
+        $self = clone $this;
+        $self['label'] = $label;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -289,10 +289,10 @@ final class TableUpdateDraftParams implements BaseModel
      */
     public function withName(string $name): self
     {
-        $obj = clone $this;
-        $obj['name'] = $name;
+        $self = clone $this;
+        $self['name'] = $name;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -300,10 +300,10 @@ final class TableUpdateDraftParams implements BaseModel
      */
     public function withUseForPages(bool $useForPages): self
     {
-        $obj = clone $this;
-        $obj['useForPages'] = $useForPages;
+        $self = clone $this;
+        $self['useForPages'] = $useForPages;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -311,10 +311,10 @@ final class TableUpdateDraftParams implements BaseModel
      */
     public function withArchived(bool $archived): self
     {
-        $obj = clone $this;
-        $obj['archived'] = $archived;
+        $self = clone $this;
+        $self['archived'] = $archived;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -322,10 +322,10 @@ final class TableUpdateDraftParams implements BaseModel
      */
     public function withIncludeForeignIDs(bool $includeForeignIDs): self
     {
-        $obj = clone $this;
-        $obj['includeForeignIDs'] = $includeForeignIDs;
+        $self = clone $this;
+        $self['includeForeignIDs'] = $includeForeignIDs;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -333,9 +333,9 @@ final class TableUpdateDraftParams implements BaseModel
      */
     public function withIsGetLocalizedSchema(bool $isGetLocalizedSchema): self
     {
-        $obj = clone $this;
-        $obj['isGetLocalizedSchema'] = $isGetLocalizedSchema;
+        $self = clone $this;
+        $self['isGetLocalizedSchema'] = $isGetLocalizedSchema;
 
-        return $obj;
+        return $self;
     }
 }

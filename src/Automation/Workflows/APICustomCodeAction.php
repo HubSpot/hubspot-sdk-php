@@ -117,27 +117,27 @@ final class APICustomCodeAction implements BaseModel
         Type|string $type = 'CUSTOM_CODE',
         APIConnection|array|null $connection = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['actionID'] = $actionID;
-        $obj['inputFields'] = $inputFields;
-        $obj['outputFields'] = $outputFields;
-        $obj['runtime'] = $runtime;
-        $obj['secretNames'] = $secretNames;
-        $obj['sourceCode'] = $sourceCode;
-        $obj['type'] = $type;
+        $self['actionID'] = $actionID;
+        $self['inputFields'] = $inputFields;
+        $self['outputFields'] = $outputFields;
+        $self['runtime'] = $runtime;
+        $self['secretNames'] = $secretNames;
+        $self['sourceCode'] = $sourceCode;
+        $self['type'] = $type;
 
-        null !== $connection && $obj['connection'] = $connection;
+        null !== $connection && $self['connection'] = $connection;
 
-        return $obj;
+        return $self;
     }
 
     public function withActionID(string $actionID): self
     {
-        $obj = clone $this;
-        $obj['actionID'] = $actionID;
+        $self = clone $this;
+        $self['actionID'] = $actionID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -148,10 +148,10 @@ final class APICustomCodeAction implements BaseModel
      */
     public function withInputFields(array $inputFields): self
     {
-        $obj = clone $this;
-        $obj['inputFields'] = $inputFields;
+        $self = clone $this;
+        $self['inputFields'] = $inputFields;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -163,18 +163,18 @@ final class APICustomCodeAction implements BaseModel
      */
     public function withOutputFields(array $outputFields): self
     {
-        $obj = clone $this;
-        $obj['outputFields'] = $outputFields;
+        $self = clone $this;
+        $self['outputFields'] = $outputFields;
 
-        return $obj;
+        return $self;
     }
 
     public function withRuntime(string $runtime): self
     {
-        $obj = clone $this;
-        $obj['runtime'] = $runtime;
+        $self = clone $this;
+        $self['runtime'] = $runtime;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -182,18 +182,18 @@ final class APICustomCodeAction implements BaseModel
      */
     public function withSecretNames(array $secretNames): self
     {
-        $obj = clone $this;
-        $obj['secretNames'] = $secretNames;
+        $self = clone $this;
+        $self['secretNames'] = $secretNames;
 
-        return $obj;
+        return $self;
     }
 
     public function withSourceCode(string $sourceCode): self
     {
-        $obj = clone $this;
-        $obj['sourceCode'] = $sourceCode;
+        $self = clone $this;
+        $self['sourceCode'] = $sourceCode;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -201,10 +201,10 @@ final class APICustomCodeAction implements BaseModel
      */
     public function withType(Type|string $type): self
     {
-        $obj = clone $this;
-        $obj['type'] = $type;
+        $self = clone $this;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -212,9 +212,9 @@ final class APICustomCodeAction implements BaseModel
      */
     public function withConnection(APIConnection|array $connection): self
     {
-        $obj = clone $this;
-        $obj['connection'] = $connection;
+        $self = clone $this;
+        $self['connection'] = $connection;
 
-        return $obj;
+        return $self;
     }
 }

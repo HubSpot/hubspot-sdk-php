@@ -57,12 +57,12 @@ final class APIDailyEnrollmentSchedule implements BaseModel
         APITimeOfDay|array $timeOfDay,
         Type|string $type = 'DAILY'
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['timeOfDay'] = $timeOfDay;
-        $obj['type'] = $type;
+        $self['timeOfDay'] = $timeOfDay;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -70,10 +70,10 @@ final class APIDailyEnrollmentSchedule implements BaseModel
      */
     public function withTimeOfDay(APITimeOfDay|array $timeOfDay): self
     {
-        $obj = clone $this;
-        $obj['timeOfDay'] = $timeOfDay;
+        $self = clone $this;
+        $self['timeOfDay'] = $timeOfDay;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -81,9 +81,9 @@ final class APIDailyEnrollmentSchedule implements BaseModel
      */
     public function withType(Type|string $type): self
     {
-        $obj = clone $this;
-        $obj['type'] = $type;
+        $self = clone $this;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 }

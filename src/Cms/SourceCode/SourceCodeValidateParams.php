@@ -57,28 +57,28 @@ final class SourceCodeValidateParams implements BaseModel
      */
     public static function with(string $environment, ?string $file = null): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['environment'] = $environment;
+        $self['environment'] = $environment;
 
-        null !== $file && $obj['file'] = $file;
+        null !== $file && $self['file'] = $file;
 
-        return $obj;
+        return $self;
     }
 
     public function withEnvironment(string $environment): self
     {
-        $obj = clone $this;
-        $obj['environment'] = $environment;
+        $self = clone $this;
+        $self['environment'] = $environment;
 
-        return $obj;
+        return $self;
     }
 
     public function withFile(string $file): self
     {
-        $obj = clone $this;
-        $obj['file'] = $file;
+        $self = clone $this;
+        $self['file'] = $file;
 
-        return $obj;
+        return $self;
     }
 }

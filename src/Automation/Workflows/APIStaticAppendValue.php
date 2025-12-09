@@ -56,20 +56,20 @@ final class APIStaticAppendValue implements BaseModel
         string $staticAppendValue,
         Type|string $type = 'STATIC_APPEND_VALUE'
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['staticAppendValue'] = $staticAppendValue;
-        $obj['type'] = $type;
+        $self['staticAppendValue'] = $staticAppendValue;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 
     public function withStaticAppendValue(string $staticAppendValue): self
     {
-        $obj = clone $this;
-        $obj['staticAppendValue'] = $staticAppendValue;
+        $self = clone $this;
+        $self['staticAppendValue'] = $staticAppendValue;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -77,9 +77,9 @@ final class APIStaticAppendValue implements BaseModel
      */
     public function withType(Type|string $type): self
     {
-        $obj = clone $this;
-        $obj['type'] = $type;
+        $self = clone $this;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 }

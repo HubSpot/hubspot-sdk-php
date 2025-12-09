@@ -133,22 +133,22 @@ final class EventListParams implements BaseModel
         Property|array|null $property = null,
         ?array $sort = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $id && $obj['id'] = $id;
-        null !== $after && $obj['after'] = $after;
-        null !== $before && $obj['before'] = $before;
-        null !== $eventType && $obj['eventType'] = $eventType;
-        null !== $limit && $obj['limit'] = $limit;
-        null !== $objectID && $obj['objectID'] = $objectID;
-        null !== $objectProperty && $obj['objectProperty'] = $objectProperty;
-        null !== $objectType && $obj['objectType'] = $objectType;
-        null !== $occurredAfter && $obj['occurredAfter'] = $occurredAfter;
-        null !== $occurredBefore && $obj['occurredBefore'] = $occurredBefore;
-        null !== $property && $obj['property'] = $property;
-        null !== $sort && $obj['sort'] = $sort;
+        null !== $id && $self['id'] = $id;
+        null !== $after && $self['after'] = $after;
+        null !== $before && $self['before'] = $before;
+        null !== $eventType && $self['eventType'] = $eventType;
+        null !== $limit && $self['limit'] = $limit;
+        null !== $objectID && $self['objectID'] = $objectID;
+        null !== $objectProperty && $self['objectProperty'] = $objectProperty;
+        null !== $objectType && $self['objectType'] = $objectType;
+        null !== $occurredAfter && $self['occurredAfter'] = $occurredAfter;
+        null !== $occurredBefore && $self['occurredBefore'] = $occurredBefore;
+        null !== $property && $self['property'] = $property;
+        null !== $sort && $self['sort'] = $sort;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -158,10 +158,10 @@ final class EventListParams implements BaseModel
      */
     public function withID(array $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -169,18 +169,18 @@ final class EventListParams implements BaseModel
      */
     public function withAfter(string $after): self
     {
-        $obj = clone $this;
-        $obj['after'] = $after;
+        $self = clone $this;
+        $self['after'] = $after;
 
-        return $obj;
+        return $self;
     }
 
     public function withBefore(string $before): self
     {
-        $obj = clone $this;
-        $obj['before'] = $before;
+        $self = clone $this;
+        $self['before'] = $before;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -188,10 +188,10 @@ final class EventListParams implements BaseModel
      */
     public function withEventType(string $eventType): self
     {
-        $obj = clone $this;
-        $obj['eventType'] = $eventType;
+        $self = clone $this;
+        $self['eventType'] = $eventType;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -199,10 +199,10 @@ final class EventListParams implements BaseModel
      */
     public function withLimit(int $limit): self
     {
-        $obj = clone $this;
-        $obj['limit'] = $limit;
+        $self = clone $this;
+        $self['limit'] = $limit;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -210,10 +210,10 @@ final class EventListParams implements BaseModel
      */
     public function withObjectID(int $objectID): self
     {
-        $obj = clone $this;
-        $obj['objectID'] = $objectID;
+        $self = clone $this;
+        $self['objectID'] = $objectID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -222,10 +222,10 @@ final class EventListParams implements BaseModel
     public function withObjectProperty(
         ObjectProperty|array $objectProperty
     ): self {
-        $obj = clone $this;
-        $obj['objectProperty'] = $objectProperty;
+        $self = clone $this;
+        $self['objectProperty'] = $objectProperty;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -233,10 +233,10 @@ final class EventListParams implements BaseModel
      */
     public function withObjectType(string $objectType): self
     {
-        $obj = clone $this;
-        $obj['objectType'] = $objectType;
+        $self = clone $this;
+        $self['objectType'] = $objectType;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -244,10 +244,10 @@ final class EventListParams implements BaseModel
      */
     public function withOccurredAfter(\DateTimeInterface $occurredAfter): self
     {
-        $obj = clone $this;
-        $obj['occurredAfter'] = $occurredAfter;
+        $self = clone $this;
+        $self['occurredAfter'] = $occurredAfter;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -255,10 +255,10 @@ final class EventListParams implements BaseModel
      */
     public function withOccurredBefore(\DateTimeInterface $occurredBefore): self
     {
-        $obj = clone $this;
-        $obj['occurredBefore'] = $occurredBefore;
+        $self = clone $this;
+        $self['occurredBefore'] = $occurredBefore;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -266,10 +266,10 @@ final class EventListParams implements BaseModel
      */
     public function withProperty(Property|array $property): self
     {
-        $obj = clone $this;
-        $obj['property'] = $property;
+        $self = clone $this;
+        $self['property'] = $property;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -279,9 +279,9 @@ final class EventListParams implements BaseModel
      */
     public function withSort(array $sort): self
     {
-        $obj = clone $this;
-        $obj['sort'] = $sort;
+        $self = clone $this;
+        $self['sort'] = $sort;
 
-        return $obj;
+        return $self;
     }
 }

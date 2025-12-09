@@ -78,14 +78,14 @@ final class LegalConsentOptionsLegitimateInterest implements BaseModel
         array $subscriptionTypeIDs,
         Type|string $type = 'legitimate_interest',
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['lawfulBasis'] = $lawfulBasis;
-        $obj['privacyText'] = $privacyText;
-        $obj['subscriptionTypeIDs'] = $subscriptionTypeIDs;
-        $obj['type'] = $type;
+        $self['lawfulBasis'] = $lawfulBasis;
+        $self['privacyText'] = $privacyText;
+        $self['subscriptionTypeIDs'] = $subscriptionTypeIDs;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -93,18 +93,18 @@ final class LegalConsentOptionsLegitimateInterest implements BaseModel
      */
     public function withLawfulBasis(LawfulBasis|string $lawfulBasis): self
     {
-        $obj = clone $this;
-        $obj['lawfulBasis'] = $lawfulBasis;
+        $self = clone $this;
+        $self['lawfulBasis'] = $lawfulBasis;
 
-        return $obj;
+        return $self;
     }
 
     public function withPrivacyText(string $privacyText): self
     {
-        $obj = clone $this;
-        $obj['privacyText'] = $privacyText;
+        $self = clone $this;
+        $self['privacyText'] = $privacyText;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -112,10 +112,10 @@ final class LegalConsentOptionsLegitimateInterest implements BaseModel
      */
     public function withSubscriptionTypeIDs(array $subscriptionTypeIDs): self
     {
-        $obj = clone $this;
-        $obj['subscriptionTypeIDs'] = $subscriptionTypeIDs;
+        $self = clone $this;
+        $self['subscriptionTypeIDs'] = $subscriptionTypeIDs;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -123,9 +123,9 @@ final class LegalConsentOptionsLegitimateInterest implements BaseModel
      */
     public function withType(Type|string $type): self
     {
-        $obj = clone $this;
-        $obj['type'] = $type;
+        $self = clone $this;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 }

@@ -87,13 +87,13 @@ final class CurrencyUpdateVisibilityParams implements BaseModel
         ToCurrencyCode|string $toCurrencyCode,
         bool $visibleInUi,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['fromCurrencyCode'] = $fromCurrencyCode;
-        $obj['toCurrencyCode'] = $toCurrencyCode;
-        $obj['visibleInUi'] = $visibleInUi;
+        $self['fromCurrencyCode'] = $fromCurrencyCode;
+        $self['toCurrencyCode'] = $toCurrencyCode;
+        $self['visibleInUi'] = $visibleInUi;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -104,10 +104,10 @@ final class CurrencyUpdateVisibilityParams implements BaseModel
     public function withFromCurrencyCode(
         FromCurrencyCode|string $fromCurrencyCode
     ): self {
-        $obj = clone $this;
-        $obj['fromCurrencyCode'] = $fromCurrencyCode;
+        $self = clone $this;
+        $self['fromCurrencyCode'] = $fromCurrencyCode;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -118,10 +118,10 @@ final class CurrencyUpdateVisibilityParams implements BaseModel
     public function withToCurrencyCode(
         ToCurrencyCode|string $toCurrencyCode
     ): self {
-        $obj = clone $this;
-        $obj['toCurrencyCode'] = $toCurrencyCode;
+        $self = clone $this;
+        $self['toCurrencyCode'] = $toCurrencyCode;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -129,9 +129,9 @@ final class CurrencyUpdateVisibilityParams implements BaseModel
      */
     public function withVisibleInUi(bool $visibleInUi): self
     {
-        $obj = clone $this;
-        $obj['visibleInUi'] = $visibleInUi;
+        $self = clone $this;
+        $self['visibleInUi'] = $visibleInUi;
 
-        return $obj;
+        return $self;
     }
 }

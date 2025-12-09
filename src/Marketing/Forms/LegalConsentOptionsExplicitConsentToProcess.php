@@ -92,18 +92,18 @@ final class LegalConsentOptionsExplicitConsentToProcess implements BaseModel
         ?string $consentToProcessFooterText = null,
         ?string $consentToProcessText = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['communicationsCheckboxes'] = $communicationsCheckboxes;
-        $obj['privacyText'] = $privacyText;
-        $obj['type'] = $type;
+        $self['communicationsCheckboxes'] = $communicationsCheckboxes;
+        $self['privacyText'] = $privacyText;
+        $self['type'] = $type;
 
-        null !== $communicationConsentText && $obj['communicationConsentText'] = $communicationConsentText;
-        null !== $consentToProcessCheckboxLabel && $obj['consentToProcessCheckboxLabel'] = $consentToProcessCheckboxLabel;
-        null !== $consentToProcessFooterText && $obj['consentToProcessFooterText'] = $consentToProcessFooterText;
-        null !== $consentToProcessText && $obj['consentToProcessText'] = $consentToProcessText;
+        null !== $communicationConsentText && $self['communicationConsentText'] = $communicationConsentText;
+        null !== $consentToProcessCheckboxLabel && $self['consentToProcessCheckboxLabel'] = $consentToProcessCheckboxLabel;
+        null !== $consentToProcessFooterText && $self['consentToProcessFooterText'] = $consentToProcessFooterText;
+        null !== $consentToProcessText && $self['consentToProcessText'] = $consentToProcessText;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -114,18 +114,18 @@ final class LegalConsentOptionsExplicitConsentToProcess implements BaseModel
     public function withCommunicationsCheckboxes(
         array $communicationsCheckboxes
     ): self {
-        $obj = clone $this;
-        $obj['communicationsCheckboxes'] = $communicationsCheckboxes;
+        $self = clone $this;
+        $self['communicationsCheckboxes'] = $communicationsCheckboxes;
 
-        return $obj;
+        return $self;
     }
 
     public function withPrivacyText(string $privacyText): self
     {
-        $obj = clone $this;
-        $obj['privacyText'] = $privacyText;
+        $self = clone $this;
+        $self['privacyText'] = $privacyText;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -133,44 +133,44 @@ final class LegalConsentOptionsExplicitConsentToProcess implements BaseModel
      */
     public function withType(Type|string $type): self
     {
-        $obj = clone $this;
-        $obj['type'] = $type;
+        $self = clone $this;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 
     public function withCommunicationConsentText(
         string $communicationConsentText
     ): self {
-        $obj = clone $this;
-        $obj['communicationConsentText'] = $communicationConsentText;
+        $self = clone $this;
+        $self['communicationConsentText'] = $communicationConsentText;
 
-        return $obj;
+        return $self;
     }
 
     public function withConsentToProcessCheckboxLabel(
         string $consentToProcessCheckboxLabel
     ): self {
-        $obj = clone $this;
-        $obj['consentToProcessCheckboxLabel'] = $consentToProcessCheckboxLabel;
+        $self = clone $this;
+        $self['consentToProcessCheckboxLabel'] = $consentToProcessCheckboxLabel;
 
-        return $obj;
+        return $self;
     }
 
     public function withConsentToProcessFooterText(
         string $consentToProcessFooterText
     ): self {
-        $obj = clone $this;
-        $obj['consentToProcessFooterText'] = $consentToProcessFooterText;
+        $self = clone $this;
+        $self['consentToProcessFooterText'] = $consentToProcessFooterText;
 
-        return $obj;
+        return $self;
     }
 
     public function withConsentToProcessText(string $consentToProcessText): self
     {
-        $obj = clone $this;
-        $obj['consentToProcessText'] = $consentToProcessText;
+        $self = clone $this;
+        $self['consentToProcessText'] = $consentToProcessText;
 
-        return $obj;
+        return $self;
     }
 }

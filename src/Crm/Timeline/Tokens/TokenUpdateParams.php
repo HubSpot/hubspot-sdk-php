@@ -96,32 +96,32 @@ final class TokenUpdateParams implements BaseModel
         ?string $objectPropertyName = null,
         ?array $options = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['appID'] = $appID;
-        $obj['eventTemplateID'] = $eventTemplateID;
-        $obj['label'] = $label;
+        $self['appID'] = $appID;
+        $self['eventTemplateID'] = $eventTemplateID;
+        $self['label'] = $label;
 
-        null !== $objectPropertyName && $obj['objectPropertyName'] = $objectPropertyName;
-        null !== $options && $obj['options'] = $options;
+        null !== $objectPropertyName && $self['objectPropertyName'] = $objectPropertyName;
+        null !== $options && $self['options'] = $options;
 
-        return $obj;
+        return $self;
     }
 
     public function withAppID(int $appID): self
     {
-        $obj = clone $this;
-        $obj['appID'] = $appID;
+        $self = clone $this;
+        $self['appID'] = $appID;
 
-        return $obj;
+        return $self;
     }
 
     public function withEventTemplateID(string $eventTemplateID): self
     {
-        $obj = clone $this;
-        $obj['eventTemplateID'] = $eventTemplateID;
+        $self = clone $this;
+        $self['eventTemplateID'] = $eventTemplateID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -129,10 +129,10 @@ final class TokenUpdateParams implements BaseModel
      */
     public function withLabel(string $label): self
     {
-        $obj = clone $this;
-        $obj['label'] = $label;
+        $self = clone $this;
+        $self['label'] = $label;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -140,10 +140,10 @@ final class TokenUpdateParams implements BaseModel
      */
     public function withObjectPropertyName(string $objectPropertyName): self
     {
-        $obj = clone $this;
-        $obj['objectPropertyName'] = $objectPropertyName;
+        $self = clone $this;
+        $self['objectPropertyName'] = $objectPropertyName;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -155,9 +155,9 @@ final class TokenUpdateParams implements BaseModel
      */
     public function withOptions(array $options): self
     {
-        $obj = clone $this;
-        $obj['options'] = $options;
+        $self = clone $this;
+        $self['options'] = $options;
 
-        return $obj;
+        return $self;
     }
 }

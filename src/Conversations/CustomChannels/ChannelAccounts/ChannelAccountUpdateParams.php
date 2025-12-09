@@ -63,37 +63,37 @@ final class ChannelAccountUpdateParams implements BaseModel
         ?bool $authorized = null,
         ?string $name = null
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['channelID'] = $channelID;
+        $self['channelID'] = $channelID;
 
-        null !== $authorized && $obj['authorized'] = $authorized;
-        null !== $name && $obj['name'] = $name;
+        null !== $authorized && $self['authorized'] = $authorized;
+        null !== $name && $self['name'] = $name;
 
-        return $obj;
+        return $self;
     }
 
     public function withChannelID(int $channelID): self
     {
-        $obj = clone $this;
-        $obj['channelID'] = $channelID;
+        $self = clone $this;
+        $self['channelID'] = $channelID;
 
-        return $obj;
+        return $self;
     }
 
     public function withAuthorized(bool $authorized): self
     {
-        $obj = clone $this;
-        $obj['authorized'] = $authorized;
+        $self = clone $this;
+        $self['authorized'] = $authorized;
 
-        return $obj;
+        return $self;
     }
 
     public function withName(string $name): self
     {
-        $obj = clone $this;
-        $obj['name'] = $name;
+        $self = clone $this;
+        $self['name'] = $name;
 
-        return $obj;
+        return $self;
     }
 }

@@ -40,11 +40,11 @@ final class TablePublishDraftParams implements BaseModel
      */
     public static function with(?bool $includeForeignIDs = null): self
     {
-        $obj = new self;
+        $self = new self;
 
-        null !== $includeForeignIDs && $obj['includeForeignIDs'] = $includeForeignIDs;
+        null !== $includeForeignIDs && $self['includeForeignIDs'] = $includeForeignIDs;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -52,9 +52,9 @@ final class TablePublishDraftParams implements BaseModel
      */
     public function withIncludeForeignIDs(bool $includeForeignIDs): self
     {
-        $obj = clone $this;
-        $obj['includeForeignIDs'] = $includeForeignIDs;
+        $self = clone $this;
+        $self['includeForeignIDs'] = $includeForeignIDs;
 
-        return $obj;
+        return $self;
     }
 }

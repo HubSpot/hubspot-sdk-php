@@ -53,28 +53,28 @@ final class MessageGetParams implements BaseModel
      */
     public static function with(int $threadID, ?string $property = null): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['threadID'] = $threadID;
+        $self['threadID'] = $threadID;
 
-        null !== $property && $obj['property'] = $property;
+        null !== $property && $self['property'] = $property;
 
-        return $obj;
+        return $self;
     }
 
     public function withThreadID(int $threadID): self
     {
-        $obj = clone $this;
-        $obj['threadID'] = $threadID;
+        $self = clone $this;
+        $self['threadID'] = $threadID;
 
-        return $obj;
+        return $self;
     }
 
     public function withProperty(string $property): self
     {
-        $obj = clone $this;
-        $obj['property'] = $property;
+        $self = clone $this;
+        $self['property'] = $property;
 
-        return $obj;
+        return $self;
     }
 }

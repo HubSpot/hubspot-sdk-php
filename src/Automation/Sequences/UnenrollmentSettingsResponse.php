@@ -64,12 +64,12 @@ final class UnenrollmentSettingsResponse implements BaseModel
         EmailSettingsResponse|array $emailSettings,
         MeetingSettingsResponse|array $meetingSettings,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['emailSettings'] = $emailSettings;
-        $obj['meetingSettings'] = $meetingSettings;
+        $self['emailSettings'] = $emailSettings;
+        $self['meetingSettings'] = $meetingSettings;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -80,10 +80,10 @@ final class UnenrollmentSettingsResponse implements BaseModel
     public function withEmailSettings(
         EmailSettingsResponse|array $emailSettings
     ): self {
-        $obj = clone $this;
-        $obj['emailSettings'] = $emailSettings;
+        $self = clone $this;
+        $self['emailSettings'] = $emailSettings;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -95,9 +95,9 @@ final class UnenrollmentSettingsResponse implements BaseModel
     public function withMeetingSettings(
         MeetingSettingsResponse|array $meetingSettings
     ): self {
-        $obj = clone $this;
-        $obj['meetingSettings'] = $meetingSettings;
+        $self = clone $this;
+        $self['meetingSettings'] = $meetingSettings;
 
-        return $obj;
+        return $self;
     }
 }

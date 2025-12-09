@@ -65,13 +65,13 @@ final class PublicPrivacyAnalyticsFilter implements BaseModel
         string $privacyName,
         FilterType|string $filterType = 'PRIVACY',
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['filterType'] = $filterType;
-        $obj['operator'] = $operator;
-        $obj['privacyName'] = $privacyName;
+        $self['filterType'] = $filterType;
+        $self['operator'] = $operator;
+        $self['privacyName'] = $privacyName;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -79,25 +79,25 @@ final class PublicPrivacyAnalyticsFilter implements BaseModel
      */
     public function withFilterType(FilterType|string $filterType): self
     {
-        $obj = clone $this;
-        $obj['filterType'] = $filterType;
+        $self = clone $this;
+        $self['filterType'] = $filterType;
 
-        return $obj;
+        return $self;
     }
 
     public function withOperator(string $operator): self
     {
-        $obj = clone $this;
-        $obj['operator'] = $operator;
+        $self = clone $this;
+        $self['operator'] = $operator;
 
-        return $obj;
+        return $self;
     }
 
     public function withPrivacyName(string $privacyName): self
     {
-        $obj = clone $this;
-        $obj['privacyName'] = $privacyName;
+        $self = clone $this;
+        $self['privacyName'] = $privacyName;
 
-        return $obj;
+        return $self;
     }
 }

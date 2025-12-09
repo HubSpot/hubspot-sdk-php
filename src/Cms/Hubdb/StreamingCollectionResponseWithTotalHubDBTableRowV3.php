@@ -83,15 +83,15 @@ final class StreamingCollectionResponseWithTotalHubDBTableRowV3 implements BaseM
         Type|string $type = 'STREAMING',
         Paging|array|null $paging = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['results'] = $results;
-        $obj['total'] = $total;
-        $obj['type'] = $type;
+        $self['results'] = $results;
+        $self['total'] = $total;
+        $self['type'] = $type;
 
-        null !== $paging && $obj['paging'] = $paging;
+        null !== $paging && $self['paging'] = $paging;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -99,10 +99,10 @@ final class StreamingCollectionResponseWithTotalHubDBTableRowV3 implements BaseM
      */
     public function withResults(array $results): self
     {
-        $obj = clone $this;
-        $obj['results'] = $results;
+        $self = clone $this;
+        $self['results'] = $results;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -110,10 +110,10 @@ final class StreamingCollectionResponseWithTotalHubDBTableRowV3 implements BaseM
      */
     public function withTotal(int $total): self
     {
-        $obj = clone $this;
-        $obj['total'] = $total;
+        $self = clone $this;
+        $self['total'] = $total;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -123,10 +123,10 @@ final class StreamingCollectionResponseWithTotalHubDBTableRowV3 implements BaseM
      */
     public function withType(Type|string $type): self
     {
-        $obj = clone $this;
-        $obj['type'] = $type;
+        $self = clone $this;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -134,9 +134,9 @@ final class StreamingCollectionResponseWithTotalHubDBTableRowV3 implements BaseM
      */
     public function withPaging(Paging|array $paging): self
     {
-        $obj = clone $this;
-        $obj['paging'] = $paging;
+        $self = clone $this;
+        $self['paging'] = $paging;
 
-        return $obj;
+        return $self;
     }
 }

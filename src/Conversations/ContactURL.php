@@ -53,21 +53,21 @@ final class ContactURL implements BaseModel
      */
     public static function with(string $url, Type|string|null $type = null): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['url'] = $url;
+        $self['url'] = $url;
 
-        null !== $type && $obj['type'] = $type;
+        null !== $type && $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 
     public function withURL(string $url): self
     {
-        $obj = clone $this;
-        $obj['url'] = $url;
+        $self = clone $this;
+        $self['url'] = $url;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -75,9 +75,9 @@ final class ContactURL implements BaseModel
      */
     public function withType(Type|string $type): self
     {
-        $obj = clone $this;
-        $obj['type'] = $type;
+        $self = clone $this;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 }

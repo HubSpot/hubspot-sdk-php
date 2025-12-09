@@ -95,16 +95,16 @@ final class ExternalBehavioralEventPropertyCreate implements BaseModel
         ?string $name = null,
         ?array $options = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['label'] = $label;
-        $obj['type'] = $type;
+        $self['label'] = $label;
+        $self['type'] = $type;
 
-        null !== $description && $obj['description'] = $description;
-        null !== $name && $obj['name'] = $name;
-        null !== $options && $obj['options'] = $options;
+        null !== $description && $self['description'] = $description;
+        null !== $name && $self['name'] = $name;
+        null !== $options && $self['options'] = $options;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -112,10 +112,10 @@ final class ExternalBehavioralEventPropertyCreate implements BaseModel
      */
     public function withLabel(string $label): self
     {
-        $obj = clone $this;
-        $obj['label'] = $label;
+        $self = clone $this;
+        $self['label'] = $label;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -123,10 +123,10 @@ final class ExternalBehavioralEventPropertyCreate implements BaseModel
      */
     public function withType(string $type): self
     {
-        $obj = clone $this;
-        $obj['type'] = $type;
+        $self = clone $this;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -134,10 +134,10 @@ final class ExternalBehavioralEventPropertyCreate implements BaseModel
      */
     public function withDescription(string $description): self
     {
-        $obj = clone $this;
-        $obj['description'] = $description;
+        $self = clone $this;
+        $self['description'] = $description;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -145,10 +145,10 @@ final class ExternalBehavioralEventPropertyCreate implements BaseModel
      */
     public function withName(string $name): self
     {
-        $obj = clone $this;
-        $obj['name'] = $name;
+        $self = clone $this;
+        $self['name'] = $name;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -164,9 +164,9 @@ final class ExternalBehavioralEventPropertyCreate implements BaseModel
      */
     public function withOptions(array $options): self
     {
-        $obj = clone $this;
-        $obj['options'] = $options;
+        $self = clone $this;
+        $self['options'] = $options;
 
-        return $obj;
+        return $self;
     }
 }

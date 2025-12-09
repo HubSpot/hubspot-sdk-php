@@ -66,14 +66,14 @@ final class FolderUpdateInputWithID implements BaseModel
         ?string $name = null,
         ?int $parentFolderID = null
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['id'] = $id;
+        $self['id'] = $id;
 
-        null !== $name && $obj['name'] = $name;
-        null !== $parentFolderID && $obj['parentFolderID'] = $parentFolderID;
+        null !== $name && $self['name'] = $name;
+        null !== $parentFolderID && $self['parentFolderID'] = $parentFolderID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -81,10 +81,10 @@ final class FolderUpdateInputWithID implements BaseModel
      */
     public function withID(string $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -92,10 +92,10 @@ final class FolderUpdateInputWithID implements BaseModel
      */
     public function withName(string $name): self
     {
-        $obj = clone $this;
-        $obj['name'] = $name;
+        $self = clone $this;
+        $self['name'] = $name;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -103,9 +103,9 @@ final class FolderUpdateInputWithID implements BaseModel
      */
     public function withParentFolderID(int $parentFolderID): self
     {
-        $obj = clone $this;
-        $obj['parentFolderID'] = $parentFolderID;
+        $self = clone $this;
+        $self['parentFolderID'] = $parentFolderID;
 
-        return $obj;
+        return $self;
     }
 }

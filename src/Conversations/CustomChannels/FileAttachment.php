@@ -61,22 +61,22 @@ final class FileAttachment implements BaseModel
         Type|string $type = 'FILE',
         ?string $fileUsageType = null
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['fileID'] = $fileID;
-        $obj['type'] = $type;
+        $self['fileID'] = $fileID;
+        $self['type'] = $type;
 
-        null !== $fileUsageType && $obj['fileUsageType'] = $fileUsageType;
+        null !== $fileUsageType && $self['fileUsageType'] = $fileUsageType;
 
-        return $obj;
+        return $self;
     }
 
     public function withFileID(string $fileID): self
     {
-        $obj = clone $this;
-        $obj['fileID'] = $fileID;
+        $self = clone $this;
+        $self['fileID'] = $fileID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -84,17 +84,17 @@ final class FileAttachment implements BaseModel
      */
     public function withType(Type|string $type): self
     {
-        $obj = clone $this;
-        $obj['type'] = $type;
+        $self = clone $this;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 
     public function withFileUsageType(string $fileUsageType): self
     {
-        $obj = clone $this;
-        $obj['fileUsageType'] = $fileUsageType;
+        $self = clone $this;
+        $self['fileUsageType'] = $fileUsageType;
 
-        return $obj;
+        return $self;
     }
 }

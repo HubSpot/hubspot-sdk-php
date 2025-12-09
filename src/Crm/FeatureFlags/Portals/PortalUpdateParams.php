@@ -66,29 +66,29 @@ final class PortalUpdateParams implements BaseModel
         string $flagName,
         FlagState|string $flagState
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['appID'] = $appID;
-        $obj['flagName'] = $flagName;
-        $obj['flagState'] = $flagState;
+        $self['appID'] = $appID;
+        $self['flagName'] = $flagName;
+        $self['flagState'] = $flagState;
 
-        return $obj;
+        return $self;
     }
 
     public function withAppID(int $appID): self
     {
-        $obj = clone $this;
-        $obj['appID'] = $appID;
+        $self = clone $this;
+        $self['appID'] = $appID;
 
-        return $obj;
+        return $self;
     }
 
     public function withFlagName(string $flagName): self
     {
-        $obj = clone $this;
-        $obj['flagName'] = $flagName;
+        $self = clone $this;
+        $self['flagName'] = $flagName;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -96,9 +96,9 @@ final class PortalUpdateParams implements BaseModel
      */
     public function withFlagState(FlagState|string $flagState): self
     {
-        $obj = clone $this;
-        $obj['flagState'] = $flagState;
+        $self = clone $this;
+        $self['flagState'] = $flagState;
 
-        return $obj;
+        return $self;
     }
 }

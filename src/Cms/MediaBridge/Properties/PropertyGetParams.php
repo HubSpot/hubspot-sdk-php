@@ -73,31 +73,31 @@ final class PropertyGetParams implements BaseModel
         ?bool $archived = null,
         ?string $properties = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['appID'] = $appID;
-        $obj['objectType'] = $objectType;
+        $self['appID'] = $appID;
+        $self['objectType'] = $objectType;
 
-        null !== $archived && $obj['archived'] = $archived;
-        null !== $properties && $obj['properties'] = $properties;
+        null !== $archived && $self['archived'] = $archived;
+        null !== $properties && $self['properties'] = $properties;
 
-        return $obj;
+        return $self;
     }
 
     public function withAppID(int $appID): self
     {
-        $obj = clone $this;
-        $obj['appID'] = $appID;
+        $self = clone $this;
+        $self['appID'] = $appID;
 
-        return $obj;
+        return $self;
     }
 
     public function withObjectType(string $objectType): self
     {
-        $obj = clone $this;
-        $obj['objectType'] = $objectType;
+        $self = clone $this;
+        $self['objectType'] = $objectType;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -105,10 +105,10 @@ final class PropertyGetParams implements BaseModel
      */
     public function withArchived(bool $archived): self
     {
-        $obj = clone $this;
-        $obj['archived'] = $archived;
+        $self = clone $this;
+        $self['archived'] = $archived;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -116,9 +116,9 @@ final class PropertyGetParams implements BaseModel
      */
     public function withProperties(string $properties): self
     {
-        $obj = clone $this;
-        $obj['properties'] = $properties;
+        $self = clone $this;
+        $self['properties'] = $properties;
 
-        return $obj;
+        return $self;
     }
 }

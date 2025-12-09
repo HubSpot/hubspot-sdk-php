@@ -76,29 +76,29 @@ final class ChannelAccountStagingTokenUpdateParams implements BaseModel
         string $accountName,
         PublicDeliveryIdentifier|array $deliveryIdentifier,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['channelID'] = $channelID;
-        $obj['accountName'] = $accountName;
-        $obj['deliveryIdentifier'] = $deliveryIdentifier;
+        $self['channelID'] = $channelID;
+        $self['accountName'] = $accountName;
+        $self['deliveryIdentifier'] = $deliveryIdentifier;
 
-        return $obj;
+        return $self;
     }
 
     public function withChannelID(int $channelID): self
     {
-        $obj = clone $this;
-        $obj['channelID'] = $channelID;
+        $self = clone $this;
+        $self['channelID'] = $channelID;
 
-        return $obj;
+        return $self;
     }
 
     public function withAccountName(string $accountName): self
     {
-        $obj = clone $this;
-        $obj['accountName'] = $accountName;
+        $self = clone $this;
+        $self['accountName'] = $accountName;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -109,9 +109,9 @@ final class ChannelAccountStagingTokenUpdateParams implements BaseModel
     public function withDeliveryIdentifier(
         PublicDeliveryIdentifier|array $deliveryIdentifier
     ): self {
-        $obj = clone $this;
-        $obj['deliveryIdentifier'] = $deliveryIdentifier;
+        $self = clone $this;
+        $self['deliveryIdentifier'] = $deliveryIdentifier;
 
-        return $obj;
+        return $self;
     }
 }

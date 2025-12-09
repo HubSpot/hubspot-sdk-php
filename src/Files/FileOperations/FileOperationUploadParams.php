@@ -83,16 +83,16 @@ final class FileOperationUploadParams implements BaseModel
         ?string $folderPath = null,
         ?string $options = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $charsetHunch && $obj['charsetHunch'] = $charsetHunch;
-        null !== $file && $obj['file'] = $file;
-        null !== $fileName && $obj['fileName'] = $fileName;
-        null !== $folderID && $obj['folderID'] = $folderID;
-        null !== $folderPath && $obj['folderPath'] = $folderPath;
-        null !== $options && $obj['options'] = $options;
+        null !== $charsetHunch && $self['charsetHunch'] = $charsetHunch;
+        null !== $file && $self['file'] = $file;
+        null !== $fileName && $self['fileName'] = $fileName;
+        null !== $folderID && $self['folderID'] = $folderID;
+        null !== $folderPath && $self['folderPath'] = $folderPath;
+        null !== $options && $self['options'] = $options;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -100,10 +100,10 @@ final class FileOperationUploadParams implements BaseModel
      */
     public function withCharsetHunch(string $charsetHunch): self
     {
-        $obj = clone $this;
-        $obj['charsetHunch'] = $charsetHunch;
+        $self = clone $this;
+        $self['charsetHunch'] = $charsetHunch;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -111,10 +111,10 @@ final class FileOperationUploadParams implements BaseModel
      */
     public function withFile(string $file): self
     {
-        $obj = clone $this;
-        $obj['file'] = $file;
+        $self = clone $this;
+        $self['file'] = $file;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -122,10 +122,10 @@ final class FileOperationUploadParams implements BaseModel
      */
     public function withFileName(string $fileName): self
     {
-        $obj = clone $this;
-        $obj['fileName'] = $fileName;
+        $self = clone $this;
+        $self['fileName'] = $fileName;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -133,10 +133,10 @@ final class FileOperationUploadParams implements BaseModel
      */
     public function withFolderID(string $folderID): self
     {
-        $obj = clone $this;
-        $obj['folderID'] = $folderID;
+        $self = clone $this;
+        $self['folderID'] = $folderID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -144,10 +144,10 @@ final class FileOperationUploadParams implements BaseModel
      */
     public function withFolderPath(string $folderPath): self
     {
-        $obj = clone $this;
-        $obj['folderPath'] = $folderPath;
+        $self = clone $this;
+        $self['folderPath'] = $folderPath;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -155,9 +155,9 @@ final class FileOperationUploadParams implements BaseModel
      */
     public function withOptions(string $options): self
     {
-        $obj = clone $this;
-        $obj['options'] = $options;
+        $self = clone $this;
+        $self['options'] = $options;
 
-        return $obj;
+        return $self;
     }
 }

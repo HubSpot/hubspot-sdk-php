@@ -82,13 +82,13 @@ final class PublicImportMetadata implements BaseModel
         array $fileIDs,
         array $objectLists
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['counters'] = $counters;
-        $obj['fileIDs'] = $fileIDs;
-        $obj['objectLists'] = $objectLists;
+        $self['counters'] = $counters;
+        $self['fileIDs'] = $fileIDs;
+        $self['objectLists'] = $objectLists;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -98,10 +98,10 @@ final class PublicImportMetadata implements BaseModel
      */
     public function withCounters(array $counters): self
     {
-        $obj = clone $this;
-        $obj['counters'] = $counters;
+        $self = clone $this;
+        $self['counters'] = $counters;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -111,10 +111,10 @@ final class PublicImportMetadata implements BaseModel
      */
     public function withFileIDs(array $fileIDs): self
     {
-        $obj = clone $this;
-        $obj['fileIDs'] = $fileIDs;
+        $self = clone $this;
+        $self['fileIDs'] = $fileIDs;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -126,9 +126,9 @@ final class PublicImportMetadata implements BaseModel
      */
     public function withObjectLists(array $objectLists): self
     {
-        $obj = clone $this;
-        $obj['objectLists'] = $objectLists;
+        $self = clone $this;
+        $self['objectLists'] = $objectLists;
 
-        return $obj;
+        return $self;
     }
 }

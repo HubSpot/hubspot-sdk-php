@@ -64,13 +64,13 @@ final class ExternalBehavioralEventPropertyDefinitionPatch implements BaseModel
         ?string $label = null,
         ?array $options = null
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $description && $obj['description'] = $description;
-        null !== $label && $obj['label'] = $label;
-        null !== $options && $obj['options'] = $options;
+        null !== $description && $self['description'] = $description;
+        null !== $label && $self['label'] = $label;
+        null !== $options && $self['options'] = $options;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -78,10 +78,10 @@ final class ExternalBehavioralEventPropertyDefinitionPatch implements BaseModel
      */
     public function withDescription(string $description): self
     {
-        $obj = clone $this;
-        $obj['description'] = $description;
+        $self = clone $this;
+        $self['description'] = $description;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -89,10 +89,10 @@ final class ExternalBehavioralEventPropertyDefinitionPatch implements BaseModel
      */
     public function withLabel(string $label): self
     {
-        $obj = clone $this;
-        $obj['label'] = $label;
+        $self = clone $this;
+        $self['label'] = $label;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -108,9 +108,9 @@ final class ExternalBehavioralEventPropertyDefinitionPatch implements BaseModel
      */
     public function withOptions(array $options): self
     {
-        $obj = clone $this;
-        $obj['options'] = $options;
+        $self = clone $this;
+        $self['options'] = $options;
 
-        return $obj;
+        return $self;
     }
 }

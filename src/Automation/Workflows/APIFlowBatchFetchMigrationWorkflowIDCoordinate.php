@@ -60,21 +60,21 @@ final class APIFlowBatchFetchMigrationWorkflowIDCoordinate implements BaseModel
         string $flowMigrationStatusForClassicWorkflows,
         Type|string $type = 'WORKFLOW_ID',
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['flowMigrationStatusForClassicWorkflows'] = $flowMigrationStatusForClassicWorkflows;
-        $obj['type'] = $type;
+        $self['flowMigrationStatusForClassicWorkflows'] = $flowMigrationStatusForClassicWorkflows;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 
     public function withFlowMigrationStatusForClassicWorkflows(
         string $flowMigrationStatusForClassicWorkflows
     ): self {
-        $obj = clone $this;
-        $obj['flowMigrationStatusForClassicWorkflows'] = $flowMigrationStatusForClassicWorkflows;
+        $self = clone $this;
+        $self['flowMigrationStatusForClassicWorkflows'] = $flowMigrationStatusForClassicWorkflows;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -82,9 +82,9 @@ final class APIFlowBatchFetchMigrationWorkflowIDCoordinate implements BaseModel
      */
     public function withType(Type|string $type): self
     {
-        $obj = clone $this;
-        $obj['type'] = $type;
+        $self = clone $this;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 }

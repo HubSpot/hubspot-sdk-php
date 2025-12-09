@@ -78,25 +78,25 @@ final class PublicMonthReference implements BaseModel
         ?int $minute = null,
         ?int $second = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['day'] = $day;
-        $obj['referenceType'] = $referenceType;
+        $self['day'] = $day;
+        $self['referenceType'] = $referenceType;
 
-        null !== $hour && $obj['hour'] = $hour;
-        null !== $millisecond && $obj['millisecond'] = $millisecond;
-        null !== $minute && $obj['minute'] = $minute;
-        null !== $second && $obj['second'] = $second;
+        null !== $hour && $self['hour'] = $hour;
+        null !== $millisecond && $self['millisecond'] = $millisecond;
+        null !== $minute && $self['minute'] = $minute;
+        null !== $second && $self['second'] = $second;
 
-        return $obj;
+        return $self;
     }
 
     public function withDay(int $day): self
     {
-        $obj = clone $this;
-        $obj['day'] = $day;
+        $self = clone $this;
+        $self['day'] = $day;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -104,41 +104,41 @@ final class PublicMonthReference implements BaseModel
      */
     public function withReferenceType(ReferenceType|string $referenceType): self
     {
-        $obj = clone $this;
-        $obj['referenceType'] = $referenceType;
+        $self = clone $this;
+        $self['referenceType'] = $referenceType;
 
-        return $obj;
+        return $self;
     }
 
     public function withHour(int $hour): self
     {
-        $obj = clone $this;
-        $obj['hour'] = $hour;
+        $self = clone $this;
+        $self['hour'] = $hour;
 
-        return $obj;
+        return $self;
     }
 
     public function withMillisecond(int $millisecond): self
     {
-        $obj = clone $this;
-        $obj['millisecond'] = $millisecond;
+        $self = clone $this;
+        $self['millisecond'] = $millisecond;
 
-        return $obj;
+        return $self;
     }
 
     public function withMinute(int $minute): self
     {
-        $obj = clone $this;
-        $obj['minute'] = $minute;
+        $self = clone $this;
+        $self['minute'] = $minute;
 
-        return $obj;
+        return $self;
     }
 
     public function withSecond(int $second): self
     {
-        $obj = clone $this;
-        $obj['second'] = $second;
+        $self = clone $this;
+        $self['second'] = $second;
 
-        return $obj;
+        return $self;
     }
 }

@@ -56,12 +56,12 @@ final class BatchPortalEntry implements BaseModel
         FlagState|string $flagState,
         int $portalID
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['flagState'] = $flagState;
-        $obj['portalID'] = $portalID;
+        $self['flagState'] = $flagState;
+        $self['portalID'] = $portalID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -69,17 +69,17 @@ final class BatchPortalEntry implements BaseModel
      */
     public function withFlagState(FlagState|string $flagState): self
     {
-        $obj = clone $this;
-        $obj['flagState'] = $flagState;
+        $self = clone $this;
+        $self['flagState'] = $flagState;
 
-        return $obj;
+        return $self;
     }
 
     public function withPortalID(int $portalID): self
     {
-        $obj = clone $this;
-        $obj['portalID'] = $portalID;
+        $self = clone $this;
+        $self['portalID'] = $portalID;
 
-        return $obj;
+        return $self;
     }
 }

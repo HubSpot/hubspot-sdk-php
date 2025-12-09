@@ -59,11 +59,11 @@ final class CollectionResponsePublicBusinessUnitNoPaging implements BaseModel
      */
     public static function with(array $results): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['results'] = $results;
+        $self['results'] = $results;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -75,9 +75,9 @@ final class CollectionResponsePublicBusinessUnitNoPaging implements BaseModel
      */
     public function withResults(array $results): self
     {
-        $obj = clone $this;
-        $obj['results'] = $results;
+        $self = clone $this;
+        $self['results'] = $results;
 
-        return $obj;
+        return $self;
     }
 }

@@ -76,14 +76,14 @@ final class TimelineEventTemplateTokenUpdateRequest implements BaseModel
         ?string $objectPropertyName = null,
         ?array $options = null
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['label'] = $label;
+        $self['label'] = $label;
 
-        null !== $objectPropertyName && $obj['objectPropertyName'] = $objectPropertyName;
-        null !== $options && $obj['options'] = $options;
+        null !== $objectPropertyName && $self['objectPropertyName'] = $objectPropertyName;
+        null !== $options && $self['options'] = $options;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -91,10 +91,10 @@ final class TimelineEventTemplateTokenUpdateRequest implements BaseModel
      */
     public function withLabel(string $label): self
     {
-        $obj = clone $this;
-        $obj['label'] = $label;
+        $self = clone $this;
+        $self['label'] = $label;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -102,10 +102,10 @@ final class TimelineEventTemplateTokenUpdateRequest implements BaseModel
      */
     public function withObjectPropertyName(string $objectPropertyName): self
     {
-        $obj = clone $this;
-        $obj['objectPropertyName'] = $objectPropertyName;
+        $self = clone $this;
+        $self['objectPropertyName'] = $objectPropertyName;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -117,9 +117,9 @@ final class TimelineEventTemplateTokenUpdateRequest implements BaseModel
      */
     public function withOptions(array $options): self
     {
-        $obj = clone $this;
-        $obj['options'] = $options;
+        $self = clone $this;
+        $self['options'] = $options;
 
-        return $obj;
+        return $self;
     }
 }

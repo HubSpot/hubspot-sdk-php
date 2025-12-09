@@ -44,27 +44,27 @@ final class ImportCreateParams implements BaseModel
         ?string $files = null,
         ?string $importRequest = null
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $files && $obj['files'] = $files;
-        null !== $importRequest && $obj['importRequest'] = $importRequest;
+        null !== $files && $self['files'] = $files;
+        null !== $importRequest && $self['importRequest'] = $importRequest;
 
-        return $obj;
+        return $self;
     }
 
     public function withFiles(string $files): self
     {
-        $obj = clone $this;
-        $obj['files'] = $files;
+        $self = clone $this;
+        $self['files'] = $files;
 
-        return $obj;
+        return $self;
     }
 
     public function withImportRequest(string $importRequest): self
     {
-        $obj = clone $this;
-        $obj['importRequest'] = $importRequest;
+        $self = clone $this;
+        $self['importRequest'] = $importRequest;
 
-        return $obj;
+        return $self;
     }
 }

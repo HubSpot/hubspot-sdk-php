@@ -76,31 +76,31 @@ final class ComboEventRule implements BaseModel
         array $propertyFilters,
         ?int $lookbackWindowDays = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['count'] = $count;
-        $obj['eventTypeID'] = $eventTypeID;
-        $obj['propertyFilters'] = $propertyFilters;
+        $self['count'] = $count;
+        $self['eventTypeID'] = $eventTypeID;
+        $self['propertyFilters'] = $propertyFilters;
 
-        null !== $lookbackWindowDays && $obj['lookbackWindowDays'] = $lookbackWindowDays;
+        null !== $lookbackWindowDays && $self['lookbackWindowDays'] = $lookbackWindowDays;
 
-        return $obj;
+        return $self;
     }
 
     public function withCount(int $count): self
     {
-        $obj = clone $this;
-        $obj['count'] = $count;
+        $self = clone $this;
+        $self['count'] = $count;
 
-        return $obj;
+        return $self;
     }
 
     public function withEventTypeID(string $eventTypeID): self
     {
-        $obj = clone $this;
-        $obj['eventTypeID'] = $eventTypeID;
+        $self = clone $this;
+        $self['eventTypeID'] = $eventTypeID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -113,17 +113,17 @@ final class ComboEventRule implements BaseModel
      */
     public function withPropertyFilters(array $propertyFilters): self
     {
-        $obj = clone $this;
-        $obj['propertyFilters'] = $propertyFilters;
+        $self = clone $this;
+        $self['propertyFilters'] = $propertyFilters;
 
-        return $obj;
+        return $self;
     }
 
     public function withLookbackWindowDays(int $lookbackWindowDays): self
     {
-        $obj = clone $this;
-        $obj['lookbackWindowDays'] = $lookbackWindowDays;
+        $self = clone $this;
+        $self['lookbackWindowDays'] = $lookbackWindowDays;
 
-        return $obj;
+        return $self;
     }
 }

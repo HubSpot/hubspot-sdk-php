@@ -139,21 +139,21 @@ final class APIListBranch implements BaseModel
         APIConnection|array|null $connection = null,
         PublicOrFilterBranch|array|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch|null $filterBranch = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $branchName && $obj['branchName'] = $branchName;
-        null !== $connection && $obj['connection'] = $connection;
-        null !== $filterBranch && $obj['filterBranch'] = $filterBranch;
+        null !== $branchName && $self['branchName'] = $branchName;
+        null !== $connection && $self['connection'] = $connection;
+        null !== $filterBranch && $self['filterBranch'] = $filterBranch;
 
-        return $obj;
+        return $self;
     }
 
     public function withBranchName(string $branchName): self
     {
-        $obj = clone $this;
-        $obj['branchName'] = $branchName;
+        $self = clone $this;
+        $self['branchName'] = $branchName;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -161,10 +161,10 @@ final class APIListBranch implements BaseModel
      */
     public function withConnection(APIConnection|array $connection): self
     {
-        $obj = clone $this;
-        $obj['connection'] = $connection;
+        $self = clone $this;
+        $self['connection'] = $connection;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -223,9 +223,9 @@ final class APIListBranch implements BaseModel
     public function withFilterBranch(
         PublicOrFilterBranch|array|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch $filterBranch,
     ): self {
-        $obj = clone $this;
-        $obj['filterBranch'] = $filterBranch;
+        $self = clone $this;
+        $self['filterBranch'] = $filterBranch;
 
-        return $obj;
+        return $self;
     }
 }

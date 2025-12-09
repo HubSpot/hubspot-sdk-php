@@ -196,40 +196,40 @@ final class PublicComment implements BaseModel
         Type|string $type = 'COMMENT',
         ?\DateTimeInterface $updatedAt = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['id'] = $id;
-        $obj['archived'] = $archived;
-        $obj['attachments'] = $attachments;
-        $obj['client'] = $client;
-        $obj['conversationsThreadID'] = $conversationsThreadID;
-        $obj['createdAt'] = $createdAt;
-        $obj['createdBy'] = $createdBy;
-        $obj['recipients'] = $recipients;
-        $obj['richText'] = $richText;
-        $obj['senders'] = $senders;
-        $obj['text'] = $text;
-        $obj['type'] = $type;
+        $self['id'] = $id;
+        $self['archived'] = $archived;
+        $self['attachments'] = $attachments;
+        $self['client'] = $client;
+        $self['conversationsThreadID'] = $conversationsThreadID;
+        $self['createdAt'] = $createdAt;
+        $self['createdBy'] = $createdBy;
+        $self['recipients'] = $recipients;
+        $self['richText'] = $richText;
+        $self['senders'] = $senders;
+        $self['text'] = $text;
+        $self['type'] = $type;
 
-        null !== $updatedAt && $obj['updatedAt'] = $updatedAt;
+        null !== $updatedAt && $self['updatedAt'] = $updatedAt;
 
-        return $obj;
+        return $self;
     }
 
     public function withID(string $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     public function withArchived(bool $archived): self
     {
-        $obj = clone $this;
-        $obj['archived'] = $archived;
+        $self = clone $this;
+        $self['archived'] = $archived;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -272,10 +272,10 @@ final class PublicComment implements BaseModel
      */
     public function withAttachments(array $attachments): self
     {
-        $obj = clone $this;
-        $obj['attachments'] = $attachments;
+        $self = clone $this;
+        $self['attachments'] = $attachments;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -285,35 +285,35 @@ final class PublicComment implements BaseModel
      */
     public function withClient(PublicClient|array $client): self
     {
-        $obj = clone $this;
-        $obj['client'] = $client;
+        $self = clone $this;
+        $self['client'] = $client;
 
-        return $obj;
+        return $self;
     }
 
     public function withConversationsThreadID(
         string $conversationsThreadID
     ): self {
-        $obj = clone $this;
-        $obj['conversationsThreadID'] = $conversationsThreadID;
+        $self = clone $this;
+        $self['conversationsThreadID'] = $conversationsThreadID;
 
-        return $obj;
+        return $self;
     }
 
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
-        $obj = clone $this;
-        $obj['createdAt'] = $createdAt;
+        $self = clone $this;
+        $self['createdAt'] = $createdAt;
 
-        return $obj;
+        return $self;
     }
 
     public function withCreatedBy(string $createdBy): self
     {
-        $obj = clone $this;
-        $obj['createdBy'] = $createdBy;
+        $self = clone $this;
+        $self['createdBy'] = $createdBy;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -326,18 +326,18 @@ final class PublicComment implements BaseModel
      */
     public function withRecipients(array $recipients): self
     {
-        $obj = clone $this;
-        $obj['recipients'] = $recipients;
+        $self = clone $this;
+        $self['recipients'] = $recipients;
 
-        return $obj;
+        return $self;
     }
 
     public function withRichText(string $richText): self
     {
-        $obj = clone $this;
-        $obj['richText'] = $richText;
+        $self = clone $this;
+        $self['richText'] = $richText;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -350,18 +350,18 @@ final class PublicComment implements BaseModel
      */
     public function withSenders(array $senders): self
     {
-        $obj = clone $this;
-        $obj['senders'] = $senders;
+        $self = clone $this;
+        $self['senders'] = $senders;
 
-        return $obj;
+        return $self;
     }
 
     public function withText(string $text): self
     {
-        $obj = clone $this;
-        $obj['text'] = $text;
+        $self = clone $this;
+        $self['text'] = $text;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -369,17 +369,17 @@ final class PublicComment implements BaseModel
      */
     public function withType(Type|string $type): self
     {
-        $obj = clone $this;
-        $obj['type'] = $type;
+        $self = clone $this;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
-        $obj = clone $this;
-        $obj['updatedAt'] = $updatedAt;
+        $self = clone $this;
+        $self['updatedAt'] = $updatedAt;
 
-        return $obj;
+        return $self;
     }
 }

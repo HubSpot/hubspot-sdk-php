@@ -101,101 +101,101 @@ final class PublicTaskPatternResponse implements BaseModel
         ?int $templateID = null,
         ?int $threadEmailToStepOrder = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['id'] = $id;
-        $obj['createdAt'] = $createdAt;
-        $obj['taskPriority'] = $taskPriority;
-        $obj['taskType'] = $taskType;
-        $obj['updatedAt'] = $updatedAt;
+        $self['id'] = $id;
+        $self['createdAt'] = $createdAt;
+        $self['taskPriority'] = $taskPriority;
+        $self['taskType'] = $taskType;
+        $self['updatedAt'] = $updatedAt;
 
-        null !== $notes && $obj['notes'] = $notes;
-        null !== $queueID && $obj['queueID'] = $queueID;
-        null !== $subject && $obj['subject'] = $subject;
-        null !== $templateID && $obj['templateID'] = $templateID;
-        null !== $threadEmailToStepOrder && $obj['threadEmailToStepOrder'] = $threadEmailToStepOrder;
+        null !== $notes && $self['notes'] = $notes;
+        null !== $queueID && $self['queueID'] = $queueID;
+        null !== $subject && $self['subject'] = $subject;
+        null !== $templateID && $self['templateID'] = $templateID;
+        null !== $threadEmailToStepOrder && $self['threadEmailToStepOrder'] = $threadEmailToStepOrder;
 
-        return $obj;
+        return $self;
     }
 
     public function withID(string $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
-        $obj = clone $this;
-        $obj['createdAt'] = $createdAt;
+        $self = clone $this;
+        $self['createdAt'] = $createdAt;
 
-        return $obj;
+        return $self;
     }
 
     public function withTaskPriority(string $taskPriority): self
     {
-        $obj = clone $this;
-        $obj['taskPriority'] = $taskPriority;
+        $self = clone $this;
+        $self['taskPriority'] = $taskPriority;
 
-        return $obj;
+        return $self;
     }
 
     public function withTaskType(string $taskType): self
     {
-        $obj = clone $this;
-        $obj['taskType'] = $taskType;
+        $self = clone $this;
+        $self['taskType'] = $taskType;
 
-        return $obj;
+        return $self;
     }
 
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
-        $obj = clone $this;
-        $obj['updatedAt'] = $updatedAt;
+        $self = clone $this;
+        $self['updatedAt'] = $updatedAt;
 
-        return $obj;
+        return $self;
     }
 
     public function withNotes(string $notes): self
     {
-        $obj = clone $this;
-        $obj['notes'] = $notes;
+        $self = clone $this;
+        $self['notes'] = $notes;
 
-        return $obj;
+        return $self;
     }
 
     public function withQueueID(int $queueID): self
     {
-        $obj = clone $this;
-        $obj['queueID'] = $queueID;
+        $self = clone $this;
+        $self['queueID'] = $queueID;
 
-        return $obj;
+        return $self;
     }
 
     public function withSubject(string $subject): self
     {
-        $obj = clone $this;
-        $obj['subject'] = $subject;
+        $self = clone $this;
+        $self['subject'] = $subject;
 
-        return $obj;
+        return $self;
     }
 
     public function withTemplateID(int $templateID): self
     {
-        $obj = clone $this;
-        $obj['templateID'] = $templateID;
+        $self = clone $this;
+        $self['templateID'] = $templateID;
 
-        return $obj;
+        return $self;
     }
 
     public function withThreadEmailToStepOrder(
         int $threadEmailToStepOrder
     ): self {
-        $obj = clone $this;
-        $obj['threadEmailToStepOrder'] = $threadEmailToStepOrder;
+        $self = clone $this;
+        $self['threadEmailToStepOrder'] = $threadEmailToStepOrder;
 
-        return $obj;
+        return $self;
     }
 }

@@ -38,27 +38,27 @@ final class PropertyGroupUpdate implements BaseModel
         ?int $displayOrder = null,
         ?string $label = null
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $displayOrder && $obj['displayOrder'] = $displayOrder;
-        null !== $label && $obj['label'] = $label;
+        null !== $displayOrder && $self['displayOrder'] = $displayOrder;
+        null !== $label && $self['label'] = $label;
 
-        return $obj;
+        return $self;
     }
 
     public function withDisplayOrder(int $displayOrder): self
     {
-        $obj = clone $this;
-        $obj['displayOrder'] = $displayOrder;
+        $self = clone $this;
+        $self['displayOrder'] = $displayOrder;
 
-        return $obj;
+        return $self;
     }
 
     public function withLabel(string $label): self
     {
-        $obj = clone $this;
-        $obj['label'] = $label;
+        $self = clone $this;
+        $self['label'] = $label;
 
-        return $obj;
+        return $self;
     }
 }

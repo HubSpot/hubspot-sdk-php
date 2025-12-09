@@ -65,36 +65,36 @@ final class AssociationDeleteParams implements BaseModel
         string $toObjectType,
         string $toObjectID
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['projectID'] = $projectID;
-        $obj['toObjectType'] = $toObjectType;
-        $obj['toObjectID'] = $toObjectID;
+        $self['projectID'] = $projectID;
+        $self['toObjectType'] = $toObjectType;
+        $self['toObjectID'] = $toObjectID;
 
-        return $obj;
+        return $self;
     }
 
     public function withProjectID(string $projectID): self
     {
-        $obj = clone $this;
-        $obj['projectID'] = $projectID;
+        $self = clone $this;
+        $self['projectID'] = $projectID;
 
-        return $obj;
+        return $self;
     }
 
     public function withToObjectType(string $toObjectType): self
     {
-        $obj = clone $this;
-        $obj['toObjectType'] = $toObjectType;
+        $self = clone $this;
+        $self['toObjectType'] = $toObjectType;
 
-        return $obj;
+        return $self;
     }
 
     public function withToObjectID(string $toObjectID): self
     {
-        $obj = clone $this;
-        $obj['toObjectID'] = $toObjectID;
+        $self = clone $this;
+        $self['toObjectID'] = $toObjectID;
 
-        return $obj;
+        return $self;
     }
 }

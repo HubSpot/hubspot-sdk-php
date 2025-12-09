@@ -99,16 +99,16 @@ final class ListScheduleConversionParams implements BaseModel
         TimeUnit|string $timeUnit,
         ConversionType|string $conversionType = 'INACTIVITY',
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['conversionType'] = $conversionType;
-        $obj['day'] = $day;
-        $obj['month'] = $month;
-        $obj['year'] = $year;
-        $obj['offset'] = $offset;
-        $obj['timeUnit'] = $timeUnit;
+        $self['conversionType'] = $conversionType;
+        $self['day'] = $day;
+        $self['month'] = $month;
+        $self['year'] = $year;
+        $self['offset'] = $offset;
+        $self['timeUnit'] = $timeUnit;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -117,42 +117,42 @@ final class ListScheduleConversionParams implements BaseModel
     public function withConversionType(
         ConversionType|string $conversionType
     ): self {
-        $obj = clone $this;
-        $obj['conversionType'] = $conversionType;
+        $self = clone $this;
+        $self['conversionType'] = $conversionType;
 
-        return $obj;
+        return $self;
     }
 
     public function withDay(int $day): self
     {
-        $obj = clone $this;
-        $obj['day'] = $day;
+        $self = clone $this;
+        $self['day'] = $day;
 
-        return $obj;
+        return $self;
     }
 
     public function withMonth(int $month): self
     {
-        $obj = clone $this;
-        $obj['month'] = $month;
+        $self = clone $this;
+        $self['month'] = $month;
 
-        return $obj;
+        return $self;
     }
 
     public function withYear(int $year): self
     {
-        $obj = clone $this;
-        $obj['year'] = $year;
+        $self = clone $this;
+        $self['year'] = $year;
 
-        return $obj;
+        return $self;
     }
 
     public function withOffset(int $offset): self
     {
-        $obj = clone $this;
-        $obj['offset'] = $offset;
+        $self = clone $this;
+        $self['offset'] = $offset;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -160,9 +160,9 @@ final class ListScheduleConversionParams implements BaseModel
      */
     public function withTimeUnit(TimeUnit|string $timeUnit): self
     {
-        $obj = clone $this;
-        $obj['timeUnit'] = $timeUnit;
+        $self = clone $this;
+        $self['timeUnit'] = $timeUnit;
 
-        return $obj;
+        return $self;
     }
 }

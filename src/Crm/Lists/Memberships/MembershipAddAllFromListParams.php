@@ -55,18 +55,18 @@ final class MembershipAddAllFromListParams implements BaseModel
      */
     public static function with(string $listID): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['listID'] = $listID;
+        $self['listID'] = $listID;
 
-        return $obj;
+        return $self;
     }
 
     public function withListID(string $listID): self
     {
-        $obj = clone $this;
-        $obj['listID'] = $listID;
+        $self = clone $this;
+        $self['listID'] = $listID;
 
-        return $obj;
+        return $self;
     }
 }

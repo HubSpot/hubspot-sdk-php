@@ -76,29 +76,29 @@ final class PropertyValidationCrmV3PropertyValidationsObjectTypeIDPropertyNameRu
         string $propertyName,
         array $ruleArguments
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['objectTypeID'] = $objectTypeID;
-        $obj['propertyName'] = $propertyName;
-        $obj['ruleArguments'] = $ruleArguments;
+        $self['objectTypeID'] = $objectTypeID;
+        $self['propertyName'] = $propertyName;
+        $self['ruleArguments'] = $ruleArguments;
 
-        return $obj;
+        return $self;
     }
 
     public function withObjectTypeID(string $objectTypeID): self
     {
-        $obj = clone $this;
-        $obj['objectTypeID'] = $objectTypeID;
+        $self = clone $this;
+        $self['objectTypeID'] = $objectTypeID;
 
-        return $obj;
+        return $self;
     }
 
     public function withPropertyName(string $propertyName): self
     {
-        $obj = clone $this;
-        $obj['propertyName'] = $propertyName;
+        $self = clone $this;
+        $self['propertyName'] = $propertyName;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -108,9 +108,9 @@ final class PropertyValidationCrmV3PropertyValidationsObjectTypeIDPropertyNameRu
      */
     public function withRuleArguments(array $ruleArguments): self
     {
-        $obj = clone $this;
-        $obj['ruleArguments'] = $ruleArguments;
+        $self = clone $this;
+        $self['ruleArguments'] = $ruleArguments;
 
-        return $obj;
+        return $self;
     }
 }

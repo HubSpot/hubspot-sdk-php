@@ -54,11 +54,11 @@ final class ListsByIDResponse implements BaseModel
      */
     public static function with(array $lists): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['lists'] = $lists;
+        $self['lists'] = $lists;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -68,9 +68,9 @@ final class ListsByIDResponse implements BaseModel
      */
     public function withLists(array $lists): self
     {
-        $obj = clone $this;
-        $obj['lists'] = $lists;
+        $self = clone $this;
+        $self['lists'] = $lists;
 
-        return $obj;
+        return $self;
     }
 }

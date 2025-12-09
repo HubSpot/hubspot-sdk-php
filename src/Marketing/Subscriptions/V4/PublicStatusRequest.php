@@ -111,17 +111,17 @@ final class PublicStatusRequest implements BaseModel
         LegalBasis|string|null $legalBasis = null,
         ?string $legalBasisExplanation = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['channel'] = $channel;
-        $obj['statusState'] = $statusState;
-        $obj['subscriberIDString'] = $subscriberIDString;
-        $obj['subscriptionID'] = $subscriptionID;
+        $self['channel'] = $channel;
+        $self['statusState'] = $statusState;
+        $self['subscriberIDString'] = $subscriberIDString;
+        $self['subscriptionID'] = $subscriptionID;
 
-        null !== $legalBasis && $obj['legalBasis'] = $legalBasis;
-        null !== $legalBasisExplanation && $obj['legalBasisExplanation'] = $legalBasisExplanation;
+        null !== $legalBasis && $self['legalBasis'] = $legalBasis;
+        null !== $legalBasisExplanation && $self['legalBasisExplanation'] = $legalBasisExplanation;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -131,10 +131,10 @@ final class PublicStatusRequest implements BaseModel
      */
     public function withChannel(Channel|string $channel): self
     {
-        $obj = clone $this;
-        $obj['channel'] = $channel;
+        $self = clone $this;
+        $self['channel'] = $channel;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -144,10 +144,10 @@ final class PublicStatusRequest implements BaseModel
      */
     public function withStatusState(StatusState|string $statusState): self
     {
-        $obj = clone $this;
-        $obj['statusState'] = $statusState;
+        $self = clone $this;
+        $self['statusState'] = $statusState;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -155,10 +155,10 @@ final class PublicStatusRequest implements BaseModel
      */
     public function withSubscriberIDString(string $subscriberIDString): self
     {
-        $obj = clone $this;
-        $obj['subscriberIDString'] = $subscriberIDString;
+        $self = clone $this;
+        $self['subscriberIDString'] = $subscriberIDString;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -166,10 +166,10 @@ final class PublicStatusRequest implements BaseModel
      */
     public function withSubscriptionID(int $subscriptionID): self
     {
-        $obj = clone $this;
-        $obj['subscriptionID'] = $subscriptionID;
+        $self = clone $this;
+        $self['subscriptionID'] = $subscriptionID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -179,10 +179,10 @@ final class PublicStatusRequest implements BaseModel
      */
     public function withLegalBasis(LegalBasis|string $legalBasis): self
     {
-        $obj = clone $this;
-        $obj['legalBasis'] = $legalBasis;
+        $self = clone $this;
+        $self['legalBasis'] = $legalBasis;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -191,9 +191,9 @@ final class PublicStatusRequest implements BaseModel
     public function withLegalBasisExplanation(
         string $legalBasisExplanation
     ): self {
-        $obj = clone $this;
-        $obj['legalBasisExplanation'] = $legalBasisExplanation;
+        $self = clone $this;
+        $self['legalBasisExplanation'] = $legalBasisExplanation;
 
-        return $obj;
+        return $self;
     }
 }

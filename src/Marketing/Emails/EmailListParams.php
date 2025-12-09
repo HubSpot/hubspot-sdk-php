@@ -197,30 +197,30 @@ final class EmailListParams implements BaseModel
         ?\DateTimeInterface $updatedBefore = null,
         ?bool $workflowNames = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $after && $obj['after'] = $after;
-        null !== $archived && $obj['archived'] = $archived;
-        null !== $campaign && $obj['campaign'] = $campaign;
-        null !== $createdAfter && $obj['createdAfter'] = $createdAfter;
-        null !== $createdAt && $obj['createdAt'] = $createdAt;
-        null !== $createdBefore && $obj['createdBefore'] = $createdBefore;
-        null !== $includedProperties && $obj['includedProperties'] = $includedProperties;
-        null !== $includeStats && $obj['includeStats'] = $includeStats;
-        null !== $isPublished && $obj['isPublished'] = $isPublished;
-        null !== $limit && $obj['limit'] = $limit;
-        null !== $marketingCampaignNames && $obj['marketingCampaignNames'] = $marketingCampaignNames;
-        null !== $publishedAfter && $obj['publishedAfter'] = $publishedAfter;
-        null !== $publishedAt && $obj['publishedAt'] = $publishedAt;
-        null !== $publishedBefore && $obj['publishedBefore'] = $publishedBefore;
-        null !== $sort && $obj['sort'] = $sort;
-        null !== $type && $obj['type'] = $type;
-        null !== $updatedAfter && $obj['updatedAfter'] = $updatedAfter;
-        null !== $updatedAt && $obj['updatedAt'] = $updatedAt;
-        null !== $updatedBefore && $obj['updatedBefore'] = $updatedBefore;
-        null !== $workflowNames && $obj['workflowNames'] = $workflowNames;
+        null !== $after && $self['after'] = $after;
+        null !== $archived && $self['archived'] = $archived;
+        null !== $campaign && $self['campaign'] = $campaign;
+        null !== $createdAfter && $self['createdAfter'] = $createdAfter;
+        null !== $createdAt && $self['createdAt'] = $createdAt;
+        null !== $createdBefore && $self['createdBefore'] = $createdBefore;
+        null !== $includedProperties && $self['includedProperties'] = $includedProperties;
+        null !== $includeStats && $self['includeStats'] = $includeStats;
+        null !== $isPublished && $self['isPublished'] = $isPublished;
+        null !== $limit && $self['limit'] = $limit;
+        null !== $marketingCampaignNames && $self['marketingCampaignNames'] = $marketingCampaignNames;
+        null !== $publishedAfter && $self['publishedAfter'] = $publishedAfter;
+        null !== $publishedAt && $self['publishedAt'] = $publishedAt;
+        null !== $publishedBefore && $self['publishedBefore'] = $publishedBefore;
+        null !== $sort && $self['sort'] = $sort;
+        null !== $type && $self['type'] = $type;
+        null !== $updatedAfter && $self['updatedAfter'] = $updatedAfter;
+        null !== $updatedAt && $self['updatedAt'] = $updatedAt;
+        null !== $updatedBefore && $self['updatedBefore'] = $updatedBefore;
+        null !== $workflowNames && $self['workflowNames'] = $workflowNames;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -228,10 +228,10 @@ final class EmailListParams implements BaseModel
      */
     public function withAfter(string $after): self
     {
-        $obj = clone $this;
-        $obj['after'] = $after;
+        $self = clone $this;
+        $self['after'] = $after;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -239,10 +239,10 @@ final class EmailListParams implements BaseModel
      */
     public function withArchived(bool $archived): self
     {
-        $obj = clone $this;
-        $obj['archived'] = $archived;
+        $self = clone $this;
+        $self['archived'] = $archived;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -250,10 +250,10 @@ final class EmailListParams implements BaseModel
      */
     public function withCampaign(string $campaign): self
     {
-        $obj = clone $this;
-        $obj['campaign'] = $campaign;
+        $self = clone $this;
+        $self['campaign'] = $campaign;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -261,10 +261,10 @@ final class EmailListParams implements BaseModel
      */
     public function withCreatedAfter(\DateTimeInterface $createdAfter): self
     {
-        $obj = clone $this;
-        $obj['createdAfter'] = $createdAfter;
+        $self = clone $this;
+        $self['createdAfter'] = $createdAfter;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -272,10 +272,10 @@ final class EmailListParams implements BaseModel
      */
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
-        $obj = clone $this;
-        $obj['createdAt'] = $createdAt;
+        $self = clone $this;
+        $self['createdAt'] = $createdAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -283,10 +283,10 @@ final class EmailListParams implements BaseModel
      */
     public function withCreatedBefore(\DateTimeInterface $createdBefore): self
     {
-        $obj = clone $this;
-        $obj['createdBefore'] = $createdBefore;
+        $self = clone $this;
+        $self['createdBefore'] = $createdBefore;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -296,10 +296,10 @@ final class EmailListParams implements BaseModel
      */
     public function withIncludedProperties(array $includedProperties): self
     {
-        $obj = clone $this;
-        $obj['includedProperties'] = $includedProperties;
+        $self = clone $this;
+        $self['includedProperties'] = $includedProperties;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -307,10 +307,10 @@ final class EmailListParams implements BaseModel
      */
     public function withIncludeStats(bool $includeStats): self
     {
-        $obj = clone $this;
-        $obj['includeStats'] = $includeStats;
+        $self = clone $this;
+        $self['includeStats'] = $includeStats;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -318,10 +318,10 @@ final class EmailListParams implements BaseModel
      */
     public function withIsPublished(bool $isPublished): self
     {
-        $obj = clone $this;
-        $obj['isPublished'] = $isPublished;
+        $self = clone $this;
+        $self['isPublished'] = $isPublished;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -329,10 +329,10 @@ final class EmailListParams implements BaseModel
      */
     public function withLimit(int $limit): self
     {
-        $obj = clone $this;
-        $obj['limit'] = $limit;
+        $self = clone $this;
+        $self['limit'] = $limit;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -341,35 +341,35 @@ final class EmailListParams implements BaseModel
     public function withMarketingCampaignNames(
         bool $marketingCampaignNames
     ): self {
-        $obj = clone $this;
-        $obj['marketingCampaignNames'] = $marketingCampaignNames;
+        $self = clone $this;
+        $self['marketingCampaignNames'] = $marketingCampaignNames;
 
-        return $obj;
+        return $self;
     }
 
     public function withPublishedAfter(\DateTimeInterface $publishedAfter): self
     {
-        $obj = clone $this;
-        $obj['publishedAfter'] = $publishedAfter;
+        $self = clone $this;
+        $self['publishedAfter'] = $publishedAfter;
 
-        return $obj;
+        return $self;
     }
 
     public function withPublishedAt(\DateTimeInterface $publishedAt): self
     {
-        $obj = clone $this;
-        $obj['publishedAt'] = $publishedAt;
+        $self = clone $this;
+        $self['publishedAt'] = $publishedAt;
 
-        return $obj;
+        return $self;
     }
 
     public function withPublishedBefore(
         \DateTimeInterface $publishedBefore
     ): self {
-        $obj = clone $this;
-        $obj['publishedBefore'] = $publishedBefore;
+        $self = clone $this;
+        $self['publishedBefore'] = $publishedBefore;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -379,10 +379,10 @@ final class EmailListParams implements BaseModel
      */
     public function withSort(array $sort): self
     {
-        $obj = clone $this;
-        $obj['sort'] = $sort;
+        $self = clone $this;
+        $self['sort'] = $sort;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -392,10 +392,10 @@ final class EmailListParams implements BaseModel
      */
     public function withType(Type|string $type): self
     {
-        $obj = clone $this;
-        $obj['type'] = $type;
+        $self = clone $this;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -403,10 +403,10 @@ final class EmailListParams implements BaseModel
      */
     public function withUpdatedAfter(\DateTimeInterface $updatedAfter): self
     {
-        $obj = clone $this;
-        $obj['updatedAfter'] = $updatedAfter;
+        $self = clone $this;
+        $self['updatedAfter'] = $updatedAfter;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -414,10 +414,10 @@ final class EmailListParams implements BaseModel
      */
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
-        $obj = clone $this;
-        $obj['updatedAt'] = $updatedAt;
+        $self = clone $this;
+        $self['updatedAt'] = $updatedAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -425,10 +425,10 @@ final class EmailListParams implements BaseModel
      */
     public function withUpdatedBefore(\DateTimeInterface $updatedBefore): self
     {
-        $obj = clone $this;
-        $obj['updatedBefore'] = $updatedBefore;
+        $self = clone $this;
+        $self['updatedBefore'] = $updatedBefore;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -436,9 +436,9 @@ final class EmailListParams implements BaseModel
      */
     public function withWorkflowNames(bool $workflowNames): self
     {
-        $obj = clone $this;
-        $obj['workflowNames'] = $workflowNames;
+        $self = clone $this;
+        $self['workflowNames'] = $workflowNames;
 
-        return $obj;
+        return $self;
     }
 }

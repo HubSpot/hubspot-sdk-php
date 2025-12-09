@@ -124,25 +124,25 @@ final class APIStaticBranchAction implements BaseModel
         APIConnection|array|null $defaultBranch = null,
         ?string $defaultBranchName = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['actionID'] = $actionID;
-        $obj['inputValue'] = $inputValue;
-        $obj['staticBranches'] = $staticBranches;
-        $obj['type'] = $type;
+        $self['actionID'] = $actionID;
+        $self['inputValue'] = $inputValue;
+        $self['staticBranches'] = $staticBranches;
+        $self['type'] = $type;
 
-        null !== $defaultBranch && $obj['defaultBranch'] = $defaultBranch;
-        null !== $defaultBranchName && $obj['defaultBranchName'] = $defaultBranchName;
+        null !== $defaultBranch && $self['defaultBranch'] = $defaultBranch;
+        null !== $defaultBranchName && $self['defaultBranchName'] = $defaultBranchName;
 
-        return $obj;
+        return $self;
     }
 
     public function withActionID(string $actionID): self
     {
-        $obj = clone $this;
-        $obj['actionID'] = $actionID;
+        $self = clone $this;
+        $self['actionID'] = $actionID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -182,10 +182,10 @@ final class APIStaticBranchAction implements BaseModel
     public function withInputValue(
         APIActionDataValue|array|APIObjectPropertyValue|APIStaticValue|APIRelativeDateTimeValue|APITimestampValue|APIIncrementValue|APIFetchedObjectPropertyValue|APIAppendObjectPropertyValue|APIStaticAppendValue|APIEnrollmentEventPropertyValue $inputValue,
     ): self {
-        $obj = clone $this;
-        $obj['inputValue'] = $inputValue;
+        $self = clone $this;
+        $self['inputValue'] = $inputValue;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -195,10 +195,10 @@ final class APIStaticBranchAction implements BaseModel
      */
     public function withStaticBranches(array $staticBranches): self
     {
-        $obj = clone $this;
-        $obj['staticBranches'] = $staticBranches;
+        $self = clone $this;
+        $self['staticBranches'] = $staticBranches;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -206,10 +206,10 @@ final class APIStaticBranchAction implements BaseModel
      */
     public function withType(Type|string $type): self
     {
-        $obj = clone $this;
-        $obj['type'] = $type;
+        $self = clone $this;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -219,17 +219,17 @@ final class APIStaticBranchAction implements BaseModel
      */
     public function withDefaultBranch(APIConnection|array $defaultBranch): self
     {
-        $obj = clone $this;
-        $obj['defaultBranch'] = $defaultBranch;
+        $self = clone $this;
+        $self['defaultBranch'] = $defaultBranch;
 
-        return $obj;
+        return $self;
     }
 
     public function withDefaultBranchName(string $defaultBranchName): self
     {
-        $obj = clone $this;
-        $obj['defaultBranchName'] = $defaultBranchName;
+        $self = clone $this;
+        $self['defaultBranchName'] = $defaultBranchName;
 
-        return $obj;
+        return $self;
     }
 }

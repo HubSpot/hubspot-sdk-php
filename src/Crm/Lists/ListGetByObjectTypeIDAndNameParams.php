@@ -62,21 +62,21 @@ final class ListGetByObjectTypeIDAndNameParams implements BaseModel
         string $objectTypeID,
         ?bool $includeFilters = null
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['objectTypeID'] = $objectTypeID;
+        $self['objectTypeID'] = $objectTypeID;
 
-        null !== $includeFilters && $obj['includeFilters'] = $includeFilters;
+        null !== $includeFilters && $self['includeFilters'] = $includeFilters;
 
-        return $obj;
+        return $self;
     }
 
     public function withObjectTypeID(string $objectTypeID): self
     {
-        $obj = clone $this;
-        $obj['objectTypeID'] = $objectTypeID;
+        $self = clone $this;
+        $self['objectTypeID'] = $objectTypeID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -84,9 +84,9 @@ final class ListGetByObjectTypeIDAndNameParams implements BaseModel
      */
     public function withIncludeFilters(bool $includeFilters): self
     {
-        $obj = clone $this;
-        $obj['includeFilters'] = $includeFilters;
+        $self = clone $this;
+        $self['includeFilters'] = $includeFilters;
 
-        return $obj;
+        return $self;
     }
 }

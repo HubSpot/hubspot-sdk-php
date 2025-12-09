@@ -93,22 +93,22 @@ final class CreatedResponseProperty implements BaseModel
         Property|array $entity,
         ?string $location = null
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['createdResourceID'] = $createdResourceID;
-        $obj['entity'] = $entity;
+        $self['createdResourceID'] = $createdResourceID;
+        $self['entity'] = $entity;
 
-        null !== $location && $obj['location'] = $location;
+        null !== $location && $self['location'] = $location;
 
-        return $obj;
+        return $self;
     }
 
     public function withCreatedResourceID(string $createdResourceID): self
     {
-        $obj = clone $this;
-        $obj['createdResourceID'] = $createdResourceID;
+        $self = clone $this;
+        $self['createdResourceID'] = $createdResourceID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -145,17 +145,17 @@ final class CreatedResponseProperty implements BaseModel
      */
     public function withEntity(Property|array $entity): self
     {
-        $obj = clone $this;
-        $obj['entity'] = $entity;
+        $self = clone $this;
+        $self['entity'] = $entity;
 
-        return $obj;
+        return $self;
     }
 
     public function withLocation(string $location): self
     {
-        $obj = clone $this;
-        $obj['location'] = $location;
+        $self = clone $this;
+        $self['location'] = $location;
 
-        return $obj;
+        return $self;
     }
 }

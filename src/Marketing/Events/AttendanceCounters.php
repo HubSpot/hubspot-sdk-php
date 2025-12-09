@@ -66,45 +66,45 @@ final class AttendanceCounters implements BaseModel
         int $noShows,
         int $registered
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['attended'] = $attended;
-        $obj['cancelled'] = $cancelled;
-        $obj['noShows'] = $noShows;
-        $obj['registered'] = $registered;
+        $self['attended'] = $attended;
+        $self['cancelled'] = $cancelled;
+        $self['noShows'] = $noShows;
+        $self['registered'] = $registered;
 
-        return $obj;
+        return $self;
     }
 
     public function withAttended(int $attended): self
     {
-        $obj = clone $this;
-        $obj['attended'] = $attended;
+        $self = clone $this;
+        $self['attended'] = $attended;
 
-        return $obj;
+        return $self;
     }
 
     public function withCancelled(int $cancelled): self
     {
-        $obj = clone $this;
-        $obj['cancelled'] = $cancelled;
+        $self = clone $this;
+        $self['cancelled'] = $cancelled;
 
-        return $obj;
+        return $self;
     }
 
     public function withNoShows(int $noShows): self
     {
-        $obj = clone $this;
-        $obj['noShows'] = $noShows;
+        $self = clone $this;
+        $self['noShows'] = $noShows;
 
-        return $obj;
+        return $self;
     }
 
     public function withRegistered(int $registered): self
     {
-        $obj = clone $this;
-        $obj['registered'] = $registered;
+        $self = clone $this;
+        $self['registered'] = $registered;
 
-        return $obj;
+        return $self;
     }
 }

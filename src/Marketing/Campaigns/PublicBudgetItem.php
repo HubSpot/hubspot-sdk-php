@@ -87,73 +87,73 @@ final class PublicBudgetItem implements BaseModel
         int $updatedAt,
         ?string $description = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['id'] = $id;
-        $obj['amount'] = $amount;
-        $obj['createdAt'] = $createdAt;
-        $obj['name'] = $name;
-        $obj['order'] = $order;
-        $obj['updatedAt'] = $updatedAt;
+        $self['id'] = $id;
+        $self['amount'] = $amount;
+        $self['createdAt'] = $createdAt;
+        $self['name'] = $name;
+        $self['order'] = $order;
+        $self['updatedAt'] = $updatedAt;
 
-        null !== $description && $obj['description'] = $description;
+        null !== $description && $self['description'] = $description;
 
-        return $obj;
+        return $self;
     }
 
     public function withID(string $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     public function withAmount(float $amount): self
     {
-        $obj = clone $this;
-        $obj['amount'] = $amount;
+        $self = clone $this;
+        $self['amount'] = $amount;
 
-        return $obj;
+        return $self;
     }
 
     public function withCreatedAt(int $createdAt): self
     {
-        $obj = clone $this;
-        $obj['createdAt'] = $createdAt;
+        $self = clone $this;
+        $self['createdAt'] = $createdAt;
 
-        return $obj;
+        return $self;
     }
 
     public function withName(string $name): self
     {
-        $obj = clone $this;
-        $obj['name'] = $name;
+        $self = clone $this;
+        $self['name'] = $name;
 
-        return $obj;
+        return $self;
     }
 
     public function withOrder(int $order): self
     {
-        $obj = clone $this;
-        $obj['order'] = $order;
+        $self = clone $this;
+        $self['order'] = $order;
 
-        return $obj;
+        return $self;
     }
 
     public function withUpdatedAt(int $updatedAt): self
     {
-        $obj = clone $this;
-        $obj['updatedAt'] = $updatedAt;
+        $self = clone $this;
+        $self['updatedAt'] = $updatedAt;
 
-        return $obj;
+        return $self;
     }
 
     public function withDescription(string $description): self
     {
-        $obj = clone $this;
-        $obj['description'] = $description;
+        $self = clone $this;
+        $self['description'] = $description;
 
-        return $obj;
+        return $self;
     }
 }

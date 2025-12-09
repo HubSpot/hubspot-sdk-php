@@ -49,46 +49,46 @@ final class ExternalLinkDisplayInfo implements BaseModel
         ?string $headline = null,
         ?string $publicDisplayAvatarOption = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $avatar && $obj['avatar'] = $avatar;
-        null !== $companyAvatar && $obj['companyAvatar'] = $companyAvatar;
-        null !== $headline && $obj['headline'] = $headline;
-        null !== $publicDisplayAvatarOption && $obj['publicDisplayAvatarOption'] = $publicDisplayAvatarOption;
+        null !== $avatar && $self['avatar'] = $avatar;
+        null !== $companyAvatar && $self['companyAvatar'] = $companyAvatar;
+        null !== $headline && $self['headline'] = $headline;
+        null !== $publicDisplayAvatarOption && $self['publicDisplayAvatarOption'] = $publicDisplayAvatarOption;
 
-        return $obj;
+        return $self;
     }
 
     public function withAvatar(string $avatar): self
     {
-        $obj = clone $this;
-        $obj['avatar'] = $avatar;
+        $self = clone $this;
+        $self['avatar'] = $avatar;
 
-        return $obj;
+        return $self;
     }
 
     public function withCompanyAvatar(string $companyAvatar): self
     {
-        $obj = clone $this;
-        $obj['companyAvatar'] = $companyAvatar;
+        $self = clone $this;
+        $self['companyAvatar'] = $companyAvatar;
 
-        return $obj;
+        return $self;
     }
 
     public function withHeadline(string $headline): self
     {
-        $obj = clone $this;
-        $obj['headline'] = $headline;
+        $self = clone $this;
+        $self['headline'] = $headline;
 
-        return $obj;
+        return $self;
     }
 
     public function withPublicDisplayAvatarOption(
         string $publicDisplayAvatarOption
     ): self {
-        $obj = clone $this;
-        $obj['publicDisplayAvatarOption'] = $publicDisplayAvatarOption;
+        $self = clone $this;
+        $self['publicDisplayAvatarOption'] = $publicDisplayAvatarOption;
 
-        return $obj;
+        return $self;
     }
 }

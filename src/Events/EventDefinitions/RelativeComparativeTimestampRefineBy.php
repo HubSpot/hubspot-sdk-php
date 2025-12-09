@@ -75,13 +75,13 @@ final class RelativeComparativeTimestampRefineBy implements BaseModel
         TimeOffset|array $timeOffset,
         Type|string $type = 'RelativeComparativeTimestampRefineBy',
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['comparison'] = $comparison;
-        $obj['timeOffset'] = $timeOffset;
-        $obj['type'] = $type;
+        $self['comparison'] = $comparison;
+        $self['timeOffset'] = $timeOffset;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -89,10 +89,10 @@ final class RelativeComparativeTimestampRefineBy implements BaseModel
      */
     public function withComparison(Comparison|string $comparison): self
     {
-        $obj = clone $this;
-        $obj['comparison'] = $comparison;
+        $self = clone $this;
+        $self['comparison'] = $comparison;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -104,10 +104,10 @@ final class RelativeComparativeTimestampRefineBy implements BaseModel
      */
     public function withTimeOffset(TimeOffset|array $timeOffset): self
     {
-        $obj = clone $this;
-        $obj['timeOffset'] = $timeOffset;
+        $self = clone $this;
+        $self['timeOffset'] = $timeOffset;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -115,9 +115,9 @@ final class RelativeComparativeTimestampRefineBy implements BaseModel
      */
     public function withType(Type|string $type): self
     {
-        $obj = clone $this;
-        $obj['type'] = $type;
+        $self = clone $this;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 }

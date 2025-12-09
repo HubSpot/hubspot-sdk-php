@@ -61,13 +61,13 @@ final class PostCloneParams implements BaseModel
      */
     public static function with(string $id, ?string $cloneName = null): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['id'] = $id;
+        $self['id'] = $id;
 
-        null !== $cloneName && $obj['cloneName'] = $cloneName;
+        null !== $cloneName && $self['cloneName'] = $cloneName;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -75,10 +75,10 @@ final class PostCloneParams implements BaseModel
      */
     public function withID(string $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -86,9 +86,9 @@ final class PostCloneParams implements BaseModel
      */
     public function withCloneName(string $cloneName): self
     {
-        $obj = clone $this;
-        $obj['cloneName'] = $cloneName;
+        $self = clone $this;
+        $self['cloneName'] = $cloneName;
 
-        return $obj;
+        return $self;
     }
 }

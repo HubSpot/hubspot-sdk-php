@@ -50,11 +50,11 @@ final class PortalFlagStateBatchDeleteRequest implements BaseModel
      */
     public static function with(array $portalIDs): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['portalIDs'] = $portalIDs;
+        $self['portalIDs'] = $portalIDs;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -62,9 +62,9 @@ final class PortalFlagStateBatchDeleteRequest implements BaseModel
      */
     public function withPortalIDs(array $portalIDs): self
     {
-        $obj = clone $this;
-        $obj['portalIDs'] = $portalIDs;
+        $self = clone $this;
+        $self['portalIDs'] = $portalIDs;
 
-        return $obj;
+        return $self;
     }
 }

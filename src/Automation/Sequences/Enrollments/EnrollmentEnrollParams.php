@@ -81,55 +81,55 @@ final class EnrollmentEnrollParams implements BaseModel
         string $sequenceID,
         ?string $senderAliasAddress = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['userID'] = $userID;
-        $obj['contactID'] = $contactID;
-        $obj['senderEmail'] = $senderEmail;
-        $obj['sequenceID'] = $sequenceID;
+        $self['userID'] = $userID;
+        $self['contactID'] = $contactID;
+        $self['senderEmail'] = $senderEmail;
+        $self['sequenceID'] = $sequenceID;
 
-        null !== $senderAliasAddress && $obj['senderAliasAddress'] = $senderAliasAddress;
+        null !== $senderAliasAddress && $self['senderAliasAddress'] = $senderAliasAddress;
 
-        return $obj;
+        return $self;
     }
 
     public function withUserID(string $userID): self
     {
-        $obj = clone $this;
-        $obj['userID'] = $userID;
+        $self = clone $this;
+        $self['userID'] = $userID;
 
-        return $obj;
+        return $self;
     }
 
     public function withContactID(string $contactID): self
     {
-        $obj = clone $this;
-        $obj['contactID'] = $contactID;
+        $self = clone $this;
+        $self['contactID'] = $contactID;
 
-        return $obj;
+        return $self;
     }
 
     public function withSenderEmail(string $senderEmail): self
     {
-        $obj = clone $this;
-        $obj['senderEmail'] = $senderEmail;
+        $self = clone $this;
+        $self['senderEmail'] = $senderEmail;
 
-        return $obj;
+        return $self;
     }
 
     public function withSequenceID(string $sequenceID): self
     {
-        $obj = clone $this;
-        $obj['sequenceID'] = $sequenceID;
+        $self = clone $this;
+        $self['sequenceID'] = $sequenceID;
 
-        return $obj;
+        return $self;
     }
 
     public function withSenderAliasAddress(string $senderAliasAddress): self
     {
-        $obj = clone $this;
-        $obj['senderAliasAddress'] = $senderAliasAddress;
+        $self = clone $this;
+        $self['senderAliasAddress'] = $senderAliasAddress;
 
-        return $obj;
+        return $self;
     }
 }

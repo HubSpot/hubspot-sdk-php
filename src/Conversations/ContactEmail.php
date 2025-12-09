@@ -55,21 +55,21 @@ final class ContactEmail implements BaseModel
      */
     public static function with(string $email, Type|string|null $type = null): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['email'] = $email;
+        $self['email'] = $email;
 
-        null !== $type && $obj['type'] = $type;
+        null !== $type && $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 
     public function withEmail(string $email): self
     {
-        $obj = clone $this;
-        $obj['email'] = $email;
+        $self = clone $this;
+        $self['email'] = $email;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -77,9 +77,9 @@ final class ContactEmail implements BaseModel
      */
     public function withType(Type|string $type): self
     {
-        $obj = clone $this;
-        $obj['type'] = $type;
+        $self = clone $this;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 }

@@ -60,22 +60,22 @@ final class PublicCampaignAsset implements BaseModel
         ?array $metrics = null,
         ?string $name = null
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['id'] = $id;
+        $self['id'] = $id;
 
-        null !== $metrics && $obj['metrics'] = $metrics;
-        null !== $name && $obj['name'] = $name;
+        null !== $metrics && $self['metrics'] = $metrics;
+        null !== $name && $self['name'] = $name;
 
-        return $obj;
+        return $self;
     }
 
     public function withID(string $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -83,17 +83,17 @@ final class PublicCampaignAsset implements BaseModel
      */
     public function withMetrics(array $metrics): self
     {
-        $obj = clone $this;
-        $obj['metrics'] = $metrics;
+        $self = clone $this;
+        $self['metrics'] = $metrics;
 
-        return $obj;
+        return $self;
     }
 
     public function withName(string $name): self
     {
-        $obj = clone $this;
-        $obj['name'] = $name;
+        $self = clone $this;
+        $self['name'] = $name;
 
-        return $obj;
+        return $self;
     }
 }

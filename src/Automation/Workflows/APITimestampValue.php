@@ -59,12 +59,12 @@ final class APITimestampValue implements BaseModel
         TimestampType|string $timestampType,
         Type|string $type = 'TIMESTAMP'
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['timestampType'] = $timestampType;
-        $obj['type'] = $type;
+        $self['timestampType'] = $timestampType;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -72,10 +72,10 @@ final class APITimestampValue implements BaseModel
      */
     public function withTimestampType(TimestampType|string $timestampType): self
     {
-        $obj = clone $this;
-        $obj['timestampType'] = $timestampType;
+        $self = clone $this;
+        $self['timestampType'] = $timestampType;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -83,9 +83,9 @@ final class APITimestampValue implements BaseModel
      */
     public function withType(Type|string $type): self
     {
-        $obj = clone $this;
-        $obj['type'] = $type;
+        $self = clone $this;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 }

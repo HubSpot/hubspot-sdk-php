@@ -52,27 +52,27 @@ final class Interval implements BaseModel
         \DateTimeInterface $end,
         \DateTimeInterface $start
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['end'] = $end;
-        $obj['start'] = $start;
+        $self['end'] = $end;
+        $self['start'] = $start;
 
-        return $obj;
+        return $self;
     }
 
     public function withEnd(\DateTimeInterface $end): self
     {
-        $obj = clone $this;
-        $obj['end'] = $end;
+        $self = clone $this;
+        $self['end'] = $end;
 
-        return $obj;
+        return $self;
     }
 
     public function withStart(\DateTimeInterface $start): self
     {
-        $obj = clone $this;
-        $obj['start'] = $start;
+        $self = clone $this;
+        $self['start'] = $start;
 
-        return $obj;
+        return $self;
     }
 }

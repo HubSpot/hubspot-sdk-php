@@ -123,21 +123,21 @@ final class PublicLoginAudit implements BaseModel
         ?string $userAgent = null,
         ?int $userID = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['id'] = $id;
-        $obj['loginAt'] = $loginAt;
-        $obj['loginSucceeded'] = $loginSucceeded;
+        $self['id'] = $id;
+        $self['loginAt'] = $loginAt;
+        $self['loginSucceeded'] = $loginSucceeded;
 
-        null !== $countryCode && $obj['countryCode'] = $countryCode;
-        null !== $email && $obj['email'] = $email;
-        null !== $ipAddress && $obj['ipAddress'] = $ipAddress;
-        null !== $location && $obj['location'] = $location;
-        null !== $regionCode && $obj['regionCode'] = $regionCode;
-        null !== $userAgent && $obj['userAgent'] = $userAgent;
-        null !== $userID && $obj['userID'] = $userID;
+        null !== $countryCode && $self['countryCode'] = $countryCode;
+        null !== $email && $self['email'] = $email;
+        null !== $ipAddress && $self['ipAddress'] = $ipAddress;
+        null !== $location && $self['location'] = $location;
+        null !== $regionCode && $self['regionCode'] = $regionCode;
+        null !== $userAgent && $self['userAgent'] = $userAgent;
+        null !== $userID && $self['userID'] = $userID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -145,10 +145,10 @@ final class PublicLoginAudit implements BaseModel
      */
     public function withID(string $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -156,10 +156,10 @@ final class PublicLoginAudit implements BaseModel
      */
     public function withLoginAt(\DateTimeInterface $loginAt): self
     {
-        $obj = clone $this;
-        $obj['loginAt'] = $loginAt;
+        $self = clone $this;
+        $self['loginAt'] = $loginAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -167,10 +167,10 @@ final class PublicLoginAudit implements BaseModel
      */
     public function withLoginSucceeded(bool $loginSucceeded): self
     {
-        $obj = clone $this;
-        $obj['loginSucceeded'] = $loginSucceeded;
+        $self = clone $this;
+        $self['loginSucceeded'] = $loginSucceeded;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -178,10 +178,10 @@ final class PublicLoginAudit implements BaseModel
      */
     public function withCountryCode(string $countryCode): self
     {
-        $obj = clone $this;
-        $obj['countryCode'] = $countryCode;
+        $self = clone $this;
+        $self['countryCode'] = $countryCode;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -189,10 +189,10 @@ final class PublicLoginAudit implements BaseModel
      */
     public function withEmail(string $email): self
     {
-        $obj = clone $this;
-        $obj['email'] = $email;
+        $self = clone $this;
+        $self['email'] = $email;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -200,18 +200,18 @@ final class PublicLoginAudit implements BaseModel
      */
     public function withIPAddress(string $ipAddress): self
     {
-        $obj = clone $this;
-        $obj['ipAddress'] = $ipAddress;
+        $self = clone $this;
+        $self['ipAddress'] = $ipAddress;
 
-        return $obj;
+        return $self;
     }
 
     public function withLocation(string $location): self
     {
-        $obj = clone $this;
-        $obj['location'] = $location;
+        $self = clone $this;
+        $self['location'] = $location;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -219,10 +219,10 @@ final class PublicLoginAudit implements BaseModel
      */
     public function withRegionCode(string $regionCode): self
     {
-        $obj = clone $this;
-        $obj['regionCode'] = $regionCode;
+        $self = clone $this;
+        $self['regionCode'] = $regionCode;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -230,10 +230,10 @@ final class PublicLoginAudit implements BaseModel
      */
     public function withUserAgent(string $userAgent): self
     {
-        $obj = clone $this;
-        $obj['userAgent'] = $userAgent;
+        $self = clone $this;
+        $self['userAgent'] = $userAgent;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -241,9 +241,9 @@ final class PublicLoginAudit implements BaseModel
      */
     public function withUserID(int $userID): self
     {
-        $obj = clone $this;
-        $obj['userID'] = $userID;
+        $self = clone $this;
+        $self['userID'] = $userID;
 
-        return $obj;
+        return $self;
     }
 }

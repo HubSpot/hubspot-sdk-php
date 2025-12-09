@@ -37,18 +37,18 @@ final class SubscriptionPauseParams implements BaseModel
      */
     public static function with(?string $pauseReason = null): self
     {
-        $obj = new self;
+        $self = new self;
 
-        null !== $pauseReason && $obj['pauseReason'] = $pauseReason;
+        null !== $pauseReason && $self['pauseReason'] = $pauseReason;
 
-        return $obj;
+        return $self;
     }
 
     public function withPauseReason(string $pauseReason): self
     {
-        $obj = clone $this;
-        $obj['pauseReason'] = $pauseReason;
+        $self = clone $this;
+        $self['pauseReason'] = $pauseReason;
 
-        return $obj;
+        return $self;
     }
 }

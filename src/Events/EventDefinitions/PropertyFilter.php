@@ -237,15 +237,15 @@ final class PropertyFilter implements BaseModel
         FilterType|string $filterType = 'PROPERTY',
         ?int $frameworkFilterID = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['filterType'] = $filterType;
-        $obj['operation'] = $operation;
-        $obj['property'] = $property;
+        $self['filterType'] = $filterType;
+        $self['operation'] = $operation;
+        $self['property'] = $property;
 
-        null !== $frameworkFilterID && $obj['frameworkFilterID'] = $frameworkFilterID;
+        null !== $frameworkFilterID && $self['frameworkFilterID'] = $frameworkFilterID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -253,10 +253,10 @@ final class PropertyFilter implements BaseModel
      */
     public function withFilterType(FilterType|string $filterType): self
     {
-        $obj = clone $this;
-        $obj['filterType'] = $filterType;
+        $self = clone $this;
+        $self['filterType'] = $filterType;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -424,25 +424,25 @@ final class PropertyFilter implements BaseModel
     public function withOperation(
         BoolPropertyOperation|array|NumberPropertyOperation|StringPropertyOperation|DateTimePropertyOperation|RangedDatePropertyOperation|ComparativeDatePropertyOperation|ComparativePropertyUpdatedOperation|RollingDateRangePropertyOperation|RollingPropertyUpdatedOperation|EnumerationPropertyOperation|AllPropertyTypesOperation|RangedNumberPropertyOperation|MultiStringPropertyOperation|DatePropertyOperation|CalendarDatePropertyOperation|TimePointOperation|RangedTimeOperation $operation,
     ): self {
-        $obj = clone $this;
-        $obj['operation'] = $operation;
+        $self = clone $this;
+        $self['operation'] = $operation;
 
-        return $obj;
+        return $self;
     }
 
     public function withProperty(string $property): self
     {
-        $obj = clone $this;
-        $obj['property'] = $property;
+        $self = clone $this;
+        $self['property'] = $property;
 
-        return $obj;
+        return $self;
     }
 
     public function withFrameworkFilterID(int $frameworkFilterID): self
     {
-        $obj = clone $this;
-        $obj['frameworkFilterID'] = $frameworkFilterID;
+        $self = clone $this;
+        $self['frameworkFilterID'] = $frameworkFilterID;
 
-        return $obj;
+        return $self;
     }
 }

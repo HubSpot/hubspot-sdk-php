@@ -59,13 +59,13 @@ final class PublicGdprDeleteInput implements BaseModel
         string $objectID,
         ?string $idProperty = null
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['objectID'] = $objectID;
+        $self['objectID'] = $objectID;
 
-        null !== $idProperty && $obj['idProperty'] = $idProperty;
+        null !== $idProperty && $self['idProperty'] = $idProperty;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -73,10 +73,10 @@ final class PublicGdprDeleteInput implements BaseModel
      */
     public function withObjectID(string $objectID): self
     {
-        $obj = clone $this;
-        $obj['objectID'] = $objectID;
+        $self = clone $this;
+        $self['objectID'] = $objectID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -84,9 +84,9 @@ final class PublicGdprDeleteInput implements BaseModel
      */
     public function withIDProperty(string $idProperty): self
     {
-        $obj = clone $this;
-        $obj['idProperty'] = $idProperty;
+        $self = clone $this;
+        $self['idProperty'] = $idProperty;
 
-        return $obj;
+        return $self;
     }
 }

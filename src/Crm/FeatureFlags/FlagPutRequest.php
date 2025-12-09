@@ -61,13 +61,13 @@ final class FlagPutRequest implements BaseModel
         DefaultState|string $defaultState,
         OverrideState|string|null $overrideState = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['defaultState'] = $defaultState;
+        $self['defaultState'] = $defaultState;
 
-        null !== $overrideState && $obj['overrideState'] = $overrideState;
+        null !== $overrideState && $self['overrideState'] = $overrideState;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -75,10 +75,10 @@ final class FlagPutRequest implements BaseModel
      */
     public function withDefaultState(DefaultState|string $defaultState): self
     {
-        $obj = clone $this;
-        $obj['defaultState'] = $defaultState;
+        $self = clone $this;
+        $self['defaultState'] = $defaultState;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -86,9 +86,9 @@ final class FlagPutRequest implements BaseModel
      */
     public function withOverrideState(OverrideState|string $overrideState): self
     {
-        $obj = clone $this;
-        $obj['overrideState'] = $overrideState;
+        $self = clone $this;
+        $self['overrideState'] = $overrideState;
 
-        return $obj;
+        return $self;
     }
 }

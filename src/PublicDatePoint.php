@@ -105,37 +105,37 @@ final class PublicDatePoint implements BaseModel
         ?int $second = null,
         ?string $timezoneSource = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['day'] = $day;
-        $obj['month'] = $month;
-        $obj['timeType'] = $timeType;
-        $obj['year'] = $year;
-        $obj['zoneID'] = $zoneID;
+        $self['day'] = $day;
+        $self['month'] = $month;
+        $self['timeType'] = $timeType;
+        $self['year'] = $year;
+        $self['zoneID'] = $zoneID;
 
-        null !== $hour && $obj['hour'] = $hour;
-        null !== $millisecond && $obj['millisecond'] = $millisecond;
-        null !== $minute && $obj['minute'] = $minute;
-        null !== $second && $obj['second'] = $second;
-        null !== $timezoneSource && $obj['timezoneSource'] = $timezoneSource;
+        null !== $hour && $self['hour'] = $hour;
+        null !== $millisecond && $self['millisecond'] = $millisecond;
+        null !== $minute && $self['minute'] = $minute;
+        null !== $second && $self['second'] = $second;
+        null !== $timezoneSource && $self['timezoneSource'] = $timezoneSource;
 
-        return $obj;
+        return $self;
     }
 
     public function withDay(int $day): self
     {
-        $obj = clone $this;
-        $obj['day'] = $day;
+        $self = clone $this;
+        $self['day'] = $day;
 
-        return $obj;
+        return $self;
     }
 
     public function withMonth(int $month): self
     {
-        $obj = clone $this;
-        $obj['month'] = $month;
+        $self = clone $this;
+        $self['month'] = $month;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -143,65 +143,65 @@ final class PublicDatePoint implements BaseModel
      */
     public function withTimeType(TimeType|string $timeType): self
     {
-        $obj = clone $this;
-        $obj['timeType'] = $timeType;
+        $self = clone $this;
+        $self['timeType'] = $timeType;
 
-        return $obj;
+        return $self;
     }
 
     public function withYear(int $year): self
     {
-        $obj = clone $this;
-        $obj['year'] = $year;
+        $self = clone $this;
+        $self['year'] = $year;
 
-        return $obj;
+        return $self;
     }
 
     public function withZoneID(string $zoneID): self
     {
-        $obj = clone $this;
-        $obj['zoneID'] = $zoneID;
+        $self = clone $this;
+        $self['zoneID'] = $zoneID;
 
-        return $obj;
+        return $self;
     }
 
     public function withHour(int $hour): self
     {
-        $obj = clone $this;
-        $obj['hour'] = $hour;
+        $self = clone $this;
+        $self['hour'] = $hour;
 
-        return $obj;
+        return $self;
     }
 
     public function withMillisecond(int $millisecond): self
     {
-        $obj = clone $this;
-        $obj['millisecond'] = $millisecond;
+        $self = clone $this;
+        $self['millisecond'] = $millisecond;
 
-        return $obj;
+        return $self;
     }
 
     public function withMinute(int $minute): self
     {
-        $obj = clone $this;
-        $obj['minute'] = $minute;
+        $self = clone $this;
+        $self['minute'] = $minute;
 
-        return $obj;
+        return $self;
     }
 
     public function withSecond(int $second): self
     {
-        $obj = clone $this;
-        $obj['second'] = $second;
+        $self = clone $this;
+        $self['second'] = $second;
 
-        return $obj;
+        return $self;
     }
 
     public function withTimezoneSource(string $timezoneSource): self
     {
-        $obj = clone $this;
-        $obj['timezoneSource'] = $timezoneSource;
+        $self = clone $this;
+        $self['timezoneSource'] = $timezoneSource;
 
-        return $obj;
+        return $self;
     }
 }

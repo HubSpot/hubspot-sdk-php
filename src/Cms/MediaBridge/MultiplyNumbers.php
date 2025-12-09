@@ -76,24 +76,24 @@ final class MultiplyNumbers implements BaseModel
         ?string $propertyName = null,
         ?float $value = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['enclosedInParentheses'] = $enclosedInParentheses;
-        $obj['operator'] = $operator;
+        $self['enclosedInParentheses'] = $enclosedInParentheses;
+        $self['operator'] = $operator;
 
-        null !== $inputs && $obj['inputs'] = $inputs;
-        null !== $propertyName && $obj['propertyName'] = $propertyName;
-        null !== $value && $obj['value'] = $value;
+        null !== $inputs && $self['inputs'] = $inputs;
+        null !== $propertyName && $self['propertyName'] = $propertyName;
+        null !== $value && $self['value'] = $value;
 
-        return $obj;
+        return $self;
     }
 
     public function withEnclosedInParentheses(bool $enclosedInParentheses): self
     {
-        $obj = clone $this;
-        $obj['enclosedInParentheses'] = $enclosedInParentheses;
+        $self = clone $this;
+        $self['enclosedInParentheses'] = $enclosedInParentheses;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -101,10 +101,10 @@ final class MultiplyNumbers implements BaseModel
      */
     public function withOperator(Operator|string $operator): self
     {
-        $obj = clone $this;
-        $obj['operator'] = $operator;
+        $self = clone $this;
+        $self['operator'] = $operator;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -112,25 +112,25 @@ final class MultiplyNumbers implements BaseModel
      */
     public function withInputs(array $inputs): self
     {
-        $obj = clone $this;
-        $obj['inputs'] = $inputs;
+        $self = clone $this;
+        $self['inputs'] = $inputs;
 
-        return $obj;
+        return $self;
     }
 
     public function withPropertyName(string $propertyName): self
     {
-        $obj = clone $this;
-        $obj['propertyName'] = $propertyName;
+        $self = clone $this;
+        $self['propertyName'] = $propertyName;
 
-        return $obj;
+        return $self;
     }
 
     public function withValue(float $value): self
     {
-        $obj = clone $this;
-        $obj['value'] = $value;
+        $self = clone $this;
+        $self['value'] = $value;
 
-        return $obj;
+        return $self;
     }
 }

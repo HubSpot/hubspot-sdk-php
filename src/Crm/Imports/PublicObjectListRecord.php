@@ -56,12 +56,12 @@ final class PublicObjectListRecord implements BaseModel
      */
     public static function with(string $listID, string $objectType): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['listID'] = $listID;
-        $obj['objectType'] = $objectType;
+        $self['listID'] = $listID;
+        $self['objectType'] = $objectType;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -69,10 +69,10 @@ final class PublicObjectListRecord implements BaseModel
      */
     public function withListID(string $listID): self
     {
-        $obj = clone $this;
-        $obj['listID'] = $listID;
+        $self = clone $this;
+        $self['listID'] = $listID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -80,9 +80,9 @@ final class PublicObjectListRecord implements BaseModel
      */
     public function withObjectType(string $objectType): self
     {
-        $obj = clone $this;
-        $obj['objectType'] = $objectType;
+        $self = clone $this;
+        $self['objectType'] = $objectType;
 
-        return $obj;
+        return $self;
     }
 }

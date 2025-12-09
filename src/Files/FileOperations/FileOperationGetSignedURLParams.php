@@ -62,13 +62,13 @@ final class FileOperationGetSignedURLParams implements BaseModel
         Size|string|null $size = null,
         ?bool $upscale = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $expirationSeconds && $obj['expirationSeconds'] = $expirationSeconds;
-        null !== $size && $obj['size'] = $size;
-        null !== $upscale && $obj['upscale'] = $upscale;
+        null !== $expirationSeconds && $self['expirationSeconds'] = $expirationSeconds;
+        null !== $size && $self['size'] = $size;
+        null !== $upscale && $self['upscale'] = $upscale;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -76,10 +76,10 @@ final class FileOperationGetSignedURLParams implements BaseModel
      */
     public function withExpirationSeconds(int $expirationSeconds): self
     {
-        $obj = clone $this;
-        $obj['expirationSeconds'] = $expirationSeconds;
+        $self = clone $this;
+        $self['expirationSeconds'] = $expirationSeconds;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -89,10 +89,10 @@ final class FileOperationGetSignedURLParams implements BaseModel
      */
     public function withSize(Size|string $size): self
     {
-        $obj = clone $this;
-        $obj['size'] = $size;
+        $self = clone $this;
+        $self['size'] = $size;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -100,9 +100,9 @@ final class FileOperationGetSignedURLParams implements BaseModel
      */
     public function withUpscale(bool $upscale): self
     {
-        $obj = clone $this;
-        $obj['upscale'] = $upscale;
+        $self = clone $this;
+        $self['upscale'] = $upscale;
 
-        return $obj;
+        return $self;
     }
 }

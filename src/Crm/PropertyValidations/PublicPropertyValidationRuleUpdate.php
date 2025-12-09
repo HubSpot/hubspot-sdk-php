@@ -54,11 +54,11 @@ final class PublicPropertyValidationRuleUpdate implements BaseModel
      */
     public static function with(array $ruleArguments): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['ruleArguments'] = $ruleArguments;
+        $self['ruleArguments'] = $ruleArguments;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -68,9 +68,9 @@ final class PublicPropertyValidationRuleUpdate implements BaseModel
      */
     public function withRuleArguments(array $ruleArguments): self
     {
-        $obj = clone $this;
-        $obj['ruleArguments'] = $ruleArguments;
+        $self = clone $this;
+        $self['ruleArguments'] = $ruleArguments;
 
-        return $obj;
+        return $self;
     }
 }

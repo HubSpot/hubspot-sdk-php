@@ -102,24 +102,24 @@ final class CardUpdateParams implements BaseModel
         CardFetchBodyPatch|array|null $fetch = null,
         ?string $title = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['appID'] = $appID;
+        $self['appID'] = $appID;
 
-        null !== $actions && $obj['actions'] = $actions;
-        null !== $display && $obj['display'] = $display;
-        null !== $fetch && $obj['fetch'] = $fetch;
-        null !== $title && $obj['title'] = $title;
+        null !== $actions && $self['actions'] = $actions;
+        null !== $display && $self['display'] = $display;
+        null !== $fetch && $self['fetch'] = $fetch;
+        null !== $title && $self['title'] = $title;
 
-        return $obj;
+        return $self;
     }
 
     public function withAppID(int $appID): self
     {
-        $obj = clone $this;
-        $obj['appID'] = $appID;
+        $self = clone $this;
+        $self['appID'] = $appID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -129,10 +129,10 @@ final class CardUpdateParams implements BaseModel
      */
     public function withActions(CardActions|array $actions): self
     {
-        $obj = clone $this;
-        $obj['actions'] = $actions;
+        $self = clone $this;
+        $self['actions'] = $actions;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -142,10 +142,10 @@ final class CardUpdateParams implements BaseModel
      */
     public function withDisplay(CardDisplayBody|array $display): self
     {
-        $obj = clone $this;
-        $obj['display'] = $display;
+        $self = clone $this;
+        $self['display'] = $display;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -160,10 +160,10 @@ final class CardUpdateParams implements BaseModel
      */
     public function withFetch(CardFetchBodyPatch|array $fetch): self
     {
-        $obj = clone $this;
-        $obj['fetch'] = $fetch;
+        $self = clone $this;
+        $self['fetch'] = $fetch;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -171,9 +171,9 @@ final class CardUpdateParams implements BaseModel
      */
     public function withTitle(string $title): self
     {
-        $obj = clone $this;
-        $obj['title'] = $title;
+        $self = clone $this;
+        $self['title'] = $title;
 
-        return $obj;
+        return $self;
     }
 }

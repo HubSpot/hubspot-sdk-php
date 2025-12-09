@@ -51,18 +51,18 @@ final class AssociationDeleteParams implements BaseModel
      */
     public static function with(string $marketingEventID): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['marketingEventID'] = $marketingEventID;
+        $self['marketingEventID'] = $marketingEventID;
 
-        return $obj;
+        return $self;
     }
 
     public function withMarketingEventID(string $marketingEventID): self
     {
-        $obj = clone $this;
-        $obj['marketingEventID'] = $marketingEventID;
+        $self = clone $this;
+        $self['marketingEventID'] = $marketingEventID;
 
-        return $obj;
+        return $self;
     }
 }

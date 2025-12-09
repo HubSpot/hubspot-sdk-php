@@ -64,14 +64,14 @@ final class SmtpTokenListParams implements BaseModel
         ?string $emailCampaignID = null,
         ?int $limit = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $after && $obj['after'] = $after;
-        null !== $campaignName && $obj['campaignName'] = $campaignName;
-        null !== $emailCampaignID && $obj['emailCampaignID'] = $emailCampaignID;
-        null !== $limit && $obj['limit'] = $limit;
+        null !== $after && $self['after'] = $after;
+        null !== $campaignName && $self['campaignName'] = $campaignName;
+        null !== $emailCampaignID && $self['emailCampaignID'] = $emailCampaignID;
+        null !== $limit && $self['limit'] = $limit;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -79,10 +79,10 @@ final class SmtpTokenListParams implements BaseModel
      */
     public function withAfter(string $after): self
     {
-        $obj = clone $this;
-        $obj['after'] = $after;
+        $self = clone $this;
+        $self['after'] = $after;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -90,10 +90,10 @@ final class SmtpTokenListParams implements BaseModel
      */
     public function withCampaignName(string $campaignName): self
     {
-        $obj = clone $this;
-        $obj['campaignName'] = $campaignName;
+        $self = clone $this;
+        $self['campaignName'] = $campaignName;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -101,10 +101,10 @@ final class SmtpTokenListParams implements BaseModel
      */
     public function withEmailCampaignID(string $emailCampaignID): self
     {
-        $obj = clone $this;
-        $obj['emailCampaignID'] = $emailCampaignID;
+        $self = clone $this;
+        $self['emailCampaignID'] = $emailCampaignID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -112,9 +112,9 @@ final class SmtpTokenListParams implements BaseModel
      */
     public function withLimit(int $limit): self
     {
-        $obj = clone $this;
-        $obj['limit'] = $limit;
+        $self = clone $this;
+        $self['limit'] = $limit;
 
-        return $obj;
+        return $self;
     }
 }

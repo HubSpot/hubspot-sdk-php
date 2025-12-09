@@ -77,11 +77,11 @@ final class ListCreateResponse implements BaseModel
      */
     public static function with(PublicObjectList|array $list): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['list'] = $list;
+        $self['list'] = $list;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -108,9 +108,9 @@ final class ListCreateResponse implements BaseModel
      */
     public function withList(PublicObjectList|array $list): self
     {
-        $obj = clone $this;
-        $obj['list'] = $list;
+        $self = clone $this;
+        $self['list'] = $list;
 
-        return $obj;
+        return $self;
     }
 }

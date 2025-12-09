@@ -144,181 +144,181 @@ final class ExternalBrandingMetadata implements BaseModel
         ?string $primaryColor = null,
         ?string $secondaryColor = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['logoAltText'] = $logoAltText;
-        $obj['showMarketingAd'] = $showMarketingAd;
-        $obj['showSalesAd'] = $showSalesAd;
+        $self['logoAltText'] = $logoAltText;
+        $self['showMarketingAd'] = $showMarketingAd;
+        $self['showSalesAd'] = $showSalesAd;
 
-        null !== $accent2Color && $obj['accent2Color'] = $accent2Color;
-        null !== $accentColor && $obj['accentColor'] = $accentColor;
-        null !== $companyAddressLine1 && $obj['companyAddressLine1'] = $companyAddressLine1;
-        null !== $companyAddressLine2 && $obj['companyAddressLine2'] = $companyAddressLine2;
-        null !== $companyAvatar && $obj['companyAvatar'] = $companyAvatar;
-        null !== $companyCity && $obj['companyCity'] = $companyCity;
-        null !== $companyCountry && $obj['companyCountry'] = $companyCountry;
-        null !== $companyDomain && $obj['companyDomain'] = $companyDomain;
-        null !== $companyName && $obj['companyName'] = $companyName;
-        null !== $companyState && $obj['companyState'] = $companyState;
-        null !== $companyZip && $obj['companyZip'] = $companyZip;
-        null !== $logoHeight && $obj['logoHeight'] = $logoHeight;
-        null !== $logoURL && $obj['logoURL'] = $logoURL;
-        null !== $logoWidth && $obj['logoWidth'] = $logoWidth;
-        null !== $primaryColor && $obj['primaryColor'] = $primaryColor;
-        null !== $secondaryColor && $obj['secondaryColor'] = $secondaryColor;
+        null !== $accent2Color && $self['accent2Color'] = $accent2Color;
+        null !== $accentColor && $self['accentColor'] = $accentColor;
+        null !== $companyAddressLine1 && $self['companyAddressLine1'] = $companyAddressLine1;
+        null !== $companyAddressLine2 && $self['companyAddressLine2'] = $companyAddressLine2;
+        null !== $companyAvatar && $self['companyAvatar'] = $companyAvatar;
+        null !== $companyCity && $self['companyCity'] = $companyCity;
+        null !== $companyCountry && $self['companyCountry'] = $companyCountry;
+        null !== $companyDomain && $self['companyDomain'] = $companyDomain;
+        null !== $companyName && $self['companyName'] = $companyName;
+        null !== $companyState && $self['companyState'] = $companyState;
+        null !== $companyZip && $self['companyZip'] = $companyZip;
+        null !== $logoHeight && $self['logoHeight'] = $logoHeight;
+        null !== $logoURL && $self['logoURL'] = $logoURL;
+        null !== $logoWidth && $self['logoWidth'] = $logoWidth;
+        null !== $primaryColor && $self['primaryColor'] = $primaryColor;
+        null !== $secondaryColor && $self['secondaryColor'] = $secondaryColor;
 
-        return $obj;
+        return $self;
     }
 
     public function withLogoAltText(string $logoAltText): self
     {
-        $obj = clone $this;
-        $obj['logoAltText'] = $logoAltText;
+        $self = clone $this;
+        $self['logoAltText'] = $logoAltText;
 
-        return $obj;
+        return $self;
     }
 
     public function withShowMarketingAd(bool $showMarketingAd): self
     {
-        $obj = clone $this;
-        $obj['showMarketingAd'] = $showMarketingAd;
+        $self = clone $this;
+        $self['showMarketingAd'] = $showMarketingAd;
 
-        return $obj;
+        return $self;
     }
 
     public function withShowSalesAd(bool $showSalesAd): self
     {
-        $obj = clone $this;
-        $obj['showSalesAd'] = $showSalesAd;
+        $self = clone $this;
+        $self['showSalesAd'] = $showSalesAd;
 
-        return $obj;
+        return $self;
     }
 
     public function withAccent2Color(string $accent2Color): self
     {
-        $obj = clone $this;
-        $obj['accent2Color'] = $accent2Color;
+        $self = clone $this;
+        $self['accent2Color'] = $accent2Color;
 
-        return $obj;
+        return $self;
     }
 
     public function withAccentColor(string $accentColor): self
     {
-        $obj = clone $this;
-        $obj['accentColor'] = $accentColor;
+        $self = clone $this;
+        $self['accentColor'] = $accentColor;
 
-        return $obj;
+        return $self;
     }
 
     public function withCompanyAddressLine1(string $companyAddressLine1): self
     {
-        $obj = clone $this;
-        $obj['companyAddressLine1'] = $companyAddressLine1;
+        $self = clone $this;
+        $self['companyAddressLine1'] = $companyAddressLine1;
 
-        return $obj;
+        return $self;
     }
 
     public function withCompanyAddressLine2(string $companyAddressLine2): self
     {
-        $obj = clone $this;
-        $obj['companyAddressLine2'] = $companyAddressLine2;
+        $self = clone $this;
+        $self['companyAddressLine2'] = $companyAddressLine2;
 
-        return $obj;
+        return $self;
     }
 
     public function withCompanyAvatar(string $companyAvatar): self
     {
-        $obj = clone $this;
-        $obj['companyAvatar'] = $companyAvatar;
+        $self = clone $this;
+        $self['companyAvatar'] = $companyAvatar;
 
-        return $obj;
+        return $self;
     }
 
     public function withCompanyCity(string $companyCity): self
     {
-        $obj = clone $this;
-        $obj['companyCity'] = $companyCity;
+        $self = clone $this;
+        $self['companyCity'] = $companyCity;
 
-        return $obj;
+        return $self;
     }
 
     public function withCompanyCountry(string $companyCountry): self
     {
-        $obj = clone $this;
-        $obj['companyCountry'] = $companyCountry;
+        $self = clone $this;
+        $self['companyCountry'] = $companyCountry;
 
-        return $obj;
+        return $self;
     }
 
     public function withCompanyDomain(string $companyDomain): self
     {
-        $obj = clone $this;
-        $obj['companyDomain'] = $companyDomain;
+        $self = clone $this;
+        $self['companyDomain'] = $companyDomain;
 
-        return $obj;
+        return $self;
     }
 
     public function withCompanyName(string $companyName): self
     {
-        $obj = clone $this;
-        $obj['companyName'] = $companyName;
+        $self = clone $this;
+        $self['companyName'] = $companyName;
 
-        return $obj;
+        return $self;
     }
 
     public function withCompanyState(string $companyState): self
     {
-        $obj = clone $this;
-        $obj['companyState'] = $companyState;
+        $self = clone $this;
+        $self['companyState'] = $companyState;
 
-        return $obj;
+        return $self;
     }
 
     public function withCompanyZip(string $companyZip): self
     {
-        $obj = clone $this;
-        $obj['companyZip'] = $companyZip;
+        $self = clone $this;
+        $self['companyZip'] = $companyZip;
 
-        return $obj;
+        return $self;
     }
 
     public function withLogoHeight(int $logoHeight): self
     {
-        $obj = clone $this;
-        $obj['logoHeight'] = $logoHeight;
+        $self = clone $this;
+        $self['logoHeight'] = $logoHeight;
 
-        return $obj;
+        return $self;
     }
 
     public function withLogoURL(string $logoURL): self
     {
-        $obj = clone $this;
-        $obj['logoURL'] = $logoURL;
+        $self = clone $this;
+        $self['logoURL'] = $logoURL;
 
-        return $obj;
+        return $self;
     }
 
     public function withLogoWidth(int $logoWidth): self
     {
-        $obj = clone $this;
-        $obj['logoWidth'] = $logoWidth;
+        $self = clone $this;
+        $self['logoWidth'] = $logoWidth;
 
-        return $obj;
+        return $self;
     }
 
     public function withPrimaryColor(string $primaryColor): self
     {
-        $obj = clone $this;
-        $obj['primaryColor'] = $primaryColor;
+        $self = clone $this;
+        $self['primaryColor'] = $primaryColor;
 
-        return $obj;
+        return $self;
     }
 
     public function withSecondaryColor(string $secondaryColor): self
     {
-        $obj = clone $this;
-        $obj['secondaryColor'] = $secondaryColor;
+        $self = clone $this;
+        $self['secondaryColor'] = $secondaryColor;
 
-        return $obj;
+        return $self;
     }
 }

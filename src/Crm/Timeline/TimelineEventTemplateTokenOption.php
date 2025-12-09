@@ -50,27 +50,27 @@ final class TimelineEventTemplateTokenOption implements BaseModel
      */
     public static function with(string $label, string $value): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['label'] = $label;
-        $obj['value'] = $value;
+        $self['label'] = $label;
+        $self['value'] = $value;
 
-        return $obj;
+        return $self;
     }
 
     public function withLabel(string $label): self
     {
-        $obj = clone $this;
-        $obj['label'] = $label;
+        $self = clone $this;
+        $self['label'] = $label;
 
-        return $obj;
+        return $self;
     }
 
     public function withValue(string $value): self
     {
-        $obj = clone $this;
-        $obj['value'] = $value;
+        $self = clone $this;
+        $self['value'] = $value;
 
-        return $obj;
+        return $self;
     }
 }

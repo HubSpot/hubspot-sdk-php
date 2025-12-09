@@ -67,14 +67,14 @@ final class PublicAssociationDefinitionConfigurationUpdateResult implements Base
         int $typeID,
         ?int $userEnforcedMaxToObjectIDs = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['category'] = $category;
-        $obj['typeID'] = $typeID;
+        $self['category'] = $category;
+        $self['typeID'] = $typeID;
 
-        null !== $userEnforcedMaxToObjectIDs && $obj['userEnforcedMaxToObjectIDs'] = $userEnforcedMaxToObjectIDs;
+        null !== $userEnforcedMaxToObjectIDs && $self['userEnforcedMaxToObjectIDs'] = $userEnforcedMaxToObjectIDs;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -82,26 +82,26 @@ final class PublicAssociationDefinitionConfigurationUpdateResult implements Base
      */
     public function withCategory(Category|string $category): self
     {
-        $obj = clone $this;
-        $obj['category'] = $category;
+        $self = clone $this;
+        $self['category'] = $category;
 
-        return $obj;
+        return $self;
     }
 
     public function withTypeID(int $typeID): self
     {
-        $obj = clone $this;
-        $obj['typeID'] = $typeID;
+        $self = clone $this;
+        $self['typeID'] = $typeID;
 
-        return $obj;
+        return $self;
     }
 
     public function withUserEnforcedMaxToObjectIDs(
         int $userEnforcedMaxToObjectIDs
     ): self {
-        $obj = clone $this;
-        $obj['userEnforcedMaxToObjectIDs'] = $userEnforcedMaxToObjectIDs;
+        $self = clone $this;
+        $self['userEnforcedMaxToObjectIDs'] = $userEnforcedMaxToObjectIDs;
 
-        return $obj;
+        return $self;
     }
 }

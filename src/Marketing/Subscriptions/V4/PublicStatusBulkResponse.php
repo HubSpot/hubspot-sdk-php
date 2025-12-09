@@ -78,12 +78,12 @@ final class PublicStatusBulkResponse implements BaseModel
         array $statuses,
         string $subscriberIDString
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['statuses'] = $statuses;
-        $obj['subscriberIDString'] = $subscriberIDString;
+        $self['statuses'] = $statuses;
+        $self['subscriberIDString'] = $subscriberIDString;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -105,10 +105,10 @@ final class PublicStatusBulkResponse implements BaseModel
      */
     public function withStatuses(array $statuses): self
     {
-        $obj = clone $this;
-        $obj['statuses'] = $statuses;
+        $self = clone $this;
+        $self['statuses'] = $statuses;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -116,9 +116,9 @@ final class PublicStatusBulkResponse implements BaseModel
      */
     public function withSubscriberIDString(string $subscriberIDString): self
     {
-        $obj = clone $this;
-        $obj['subscriberIDString'] = $subscriberIDString;
+        $self = clone $this;
+        $self['subscriberIDString'] = $subscriberIDString;
 
-        return $obj;
+        return $self;
     }
 }

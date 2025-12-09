@@ -100,81 +100,81 @@ final class PublicSequenceEnrollmentResponse implements BaseModel
         string $toEmail,
         \DateTimeInterface $updatedAt,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['id'] = $id;
-        $obj['enrolledAt'] = $enrolledAt;
-        $obj['enrolledBy'] = $enrolledBy;
-        $obj['enrolledByEmail'] = $enrolledByEmail;
-        $obj['sequenceID'] = $sequenceID;
-        $obj['sequenceName'] = $sequenceName;
-        $obj['toEmail'] = $toEmail;
-        $obj['updatedAt'] = $updatedAt;
+        $self['id'] = $id;
+        $self['enrolledAt'] = $enrolledAt;
+        $self['enrolledBy'] = $enrolledBy;
+        $self['enrolledByEmail'] = $enrolledByEmail;
+        $self['sequenceID'] = $sequenceID;
+        $self['sequenceName'] = $sequenceName;
+        $self['toEmail'] = $toEmail;
+        $self['updatedAt'] = $updatedAt;
 
-        return $obj;
+        return $self;
     }
 
     public function withID(string $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     public function withEnrolledAt(\DateTimeInterface $enrolledAt): self
     {
-        $obj = clone $this;
-        $obj['enrolledAt'] = $enrolledAt;
+        $self = clone $this;
+        $self['enrolledAt'] = $enrolledAt;
 
-        return $obj;
+        return $self;
     }
 
     public function withEnrolledBy(string $enrolledBy): self
     {
-        $obj = clone $this;
-        $obj['enrolledBy'] = $enrolledBy;
+        $self = clone $this;
+        $self['enrolledBy'] = $enrolledBy;
 
-        return $obj;
+        return $self;
     }
 
     public function withEnrolledByEmail(string $enrolledByEmail): self
     {
-        $obj = clone $this;
-        $obj['enrolledByEmail'] = $enrolledByEmail;
+        $self = clone $this;
+        $self['enrolledByEmail'] = $enrolledByEmail;
 
-        return $obj;
+        return $self;
     }
 
     public function withSequenceID(string $sequenceID): self
     {
-        $obj = clone $this;
-        $obj['sequenceID'] = $sequenceID;
+        $self = clone $this;
+        $self['sequenceID'] = $sequenceID;
 
-        return $obj;
+        return $self;
     }
 
     public function withSequenceName(string $sequenceName): self
     {
-        $obj = clone $this;
-        $obj['sequenceName'] = $sequenceName;
+        $self = clone $this;
+        $self['sequenceName'] = $sequenceName;
 
-        return $obj;
+        return $self;
     }
 
     public function withToEmail(string $toEmail): self
     {
-        $obj = clone $this;
-        $obj['toEmail'] = $toEmail;
+        $self = clone $this;
+        $self['toEmail'] = $toEmail;
 
-        return $obj;
+        return $self;
     }
 
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
-        $obj = clone $this;
-        $obj['updatedAt'] = $updatedAt;
+        $self = clone $this;
+        $self['updatedAt'] = $updatedAt;
 
-        return $obj;
+        return $self;
     }
 }

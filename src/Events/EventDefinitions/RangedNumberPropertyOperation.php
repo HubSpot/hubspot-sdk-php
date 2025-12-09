@@ -106,44 +106,44 @@ final class RangedNumberPropertyOperation implements BaseModel
         PropertyType|string $propertyType = 'number-ranged',
         ?string $defaultValue = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['includeObjectsWithNoValueSet'] = $includeObjectsWithNoValueSet;
-        $obj['lowerBound'] = $lowerBound;
-        $obj['operationType'] = $operationType;
-        $obj['operator'] = $operator;
-        $obj['operatorName'] = $operatorName;
-        $obj['propertyType'] = $propertyType;
-        $obj['upperBound'] = $upperBound;
+        $self['includeObjectsWithNoValueSet'] = $includeObjectsWithNoValueSet;
+        $self['lowerBound'] = $lowerBound;
+        $self['operationType'] = $operationType;
+        $self['operator'] = $operator;
+        $self['operatorName'] = $operatorName;
+        $self['propertyType'] = $propertyType;
+        $self['upperBound'] = $upperBound;
 
-        null !== $defaultValue && $obj['defaultValue'] = $defaultValue;
+        null !== $defaultValue && $self['defaultValue'] = $defaultValue;
 
-        return $obj;
+        return $self;
     }
 
     public function withIncludeObjectsWithNoValueSet(
         bool $includeObjectsWithNoValueSet
     ): self {
-        $obj = clone $this;
-        $obj['includeObjectsWithNoValueSet'] = $includeObjectsWithNoValueSet;
+        $self = clone $this;
+        $self['includeObjectsWithNoValueSet'] = $includeObjectsWithNoValueSet;
 
-        return $obj;
+        return $self;
     }
 
     public function withLowerBound(int $lowerBound): self
     {
-        $obj = clone $this;
-        $obj['lowerBound'] = $lowerBound;
+        $self = clone $this;
+        $self['lowerBound'] = $lowerBound;
 
-        return $obj;
+        return $self;
     }
 
     public function withOperationType(string $operationType): self
     {
-        $obj = clone $this;
-        $obj['operationType'] = $operationType;
+        $self = clone $this;
+        $self['operationType'] = $operationType;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -151,18 +151,18 @@ final class RangedNumberPropertyOperation implements BaseModel
      */
     public function withOperator(Operator|string $operator): self
     {
-        $obj = clone $this;
-        $obj['operator'] = $operator;
+        $self = clone $this;
+        $self['operator'] = $operator;
 
-        return $obj;
+        return $self;
     }
 
     public function withOperatorName(string $operatorName): self
     {
-        $obj = clone $this;
-        $obj['operatorName'] = $operatorName;
+        $self = clone $this;
+        $self['operatorName'] = $operatorName;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -170,25 +170,25 @@ final class RangedNumberPropertyOperation implements BaseModel
      */
     public function withPropertyType(PropertyType|string $propertyType): self
     {
-        $obj = clone $this;
-        $obj['propertyType'] = $propertyType;
+        $self = clone $this;
+        $self['propertyType'] = $propertyType;
 
-        return $obj;
+        return $self;
     }
 
     public function withUpperBound(int $upperBound): self
     {
-        $obj = clone $this;
-        $obj['upperBound'] = $upperBound;
+        $self = clone $this;
+        $self['upperBound'] = $upperBound;
 
-        return $obj;
+        return $self;
     }
 
     public function withDefaultValue(string $defaultValue): self
     {
-        $obj = clone $this;
-        $obj['defaultValue'] = $defaultValue;
+        $self = clone $this;
+        $self['defaultValue'] = $defaultValue;
 
-        return $obj;
+        return $self;
     }
 }

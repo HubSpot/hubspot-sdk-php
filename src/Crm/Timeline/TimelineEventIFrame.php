@@ -86,15 +86,15 @@ final class TimelineEventIFrame implements BaseModel
         string $url,
         int $width
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['headerLabel'] = $headerLabel;
-        $obj['height'] = $height;
-        $obj['linkLabel'] = $linkLabel;
-        $obj['url'] = $url;
-        $obj['width'] = $width;
+        $self['headerLabel'] = $headerLabel;
+        $self['height'] = $height;
+        $self['linkLabel'] = $linkLabel;
+        $self['url'] = $url;
+        $self['width'] = $width;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -102,10 +102,10 @@ final class TimelineEventIFrame implements BaseModel
      */
     public function withHeaderLabel(string $headerLabel): self
     {
-        $obj = clone $this;
-        $obj['headerLabel'] = $headerLabel;
+        $self = clone $this;
+        $self['headerLabel'] = $headerLabel;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -113,10 +113,10 @@ final class TimelineEventIFrame implements BaseModel
      */
     public function withHeight(int $height): self
     {
-        $obj = clone $this;
-        $obj['height'] = $height;
+        $self = clone $this;
+        $self['height'] = $height;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -124,10 +124,10 @@ final class TimelineEventIFrame implements BaseModel
      */
     public function withLinkLabel(string $linkLabel): self
     {
-        $obj = clone $this;
-        $obj['linkLabel'] = $linkLabel;
+        $self = clone $this;
+        $self['linkLabel'] = $linkLabel;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -135,10 +135,10 @@ final class TimelineEventIFrame implements BaseModel
      */
     public function withURL(string $url): self
     {
-        $obj = clone $this;
-        $obj['url'] = $url;
+        $self = clone $this;
+        $self['url'] = $url;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -146,9 +146,9 @@ final class TimelineEventIFrame implements BaseModel
      */
     public function withWidth(int $width): self
     {
-        $obj = clone $this;
-        $obj['width'] = $width;
+        $self = clone $this;
+        $self['width'] = $width;
 
-        return $obj;
+        return $self;
     }
 }

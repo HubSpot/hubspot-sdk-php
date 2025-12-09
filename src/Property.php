@@ -289,37 +289,37 @@ final class Property implements BaseModel
         ?\DateTimeInterface $updatedAt = null,
         ?string $updatedUserID = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['description'] = $description;
-        $obj['fieldType'] = $fieldType;
-        $obj['groupName'] = $groupName;
-        $obj['label'] = $label;
-        $obj['name'] = $name;
-        $obj['options'] = $options;
-        $obj['type'] = $type;
+        $self['description'] = $description;
+        $self['fieldType'] = $fieldType;
+        $self['groupName'] = $groupName;
+        $self['label'] = $label;
+        $self['name'] = $name;
+        $self['options'] = $options;
+        $self['type'] = $type;
 
-        null !== $archived && $obj['archived'] = $archived;
-        null !== $archivedAt && $obj['archivedAt'] = $archivedAt;
-        null !== $calculated && $obj['calculated'] = $calculated;
-        null !== $calculationFormula && $obj['calculationFormula'] = $calculationFormula;
-        null !== $createdAt && $obj['createdAt'] = $createdAt;
-        null !== $createdUserID && $obj['createdUserID'] = $createdUserID;
-        null !== $dataSensitivity && $obj['dataSensitivity'] = $dataSensitivity;
-        null !== $displayOrder && $obj['displayOrder'] = $displayOrder;
-        null !== $externalOptions && $obj['externalOptions'] = $externalOptions;
-        null !== $formField && $obj['formField'] = $formField;
-        null !== $hasUniqueValue && $obj['hasUniqueValue'] = $hasUniqueValue;
-        null !== $hidden && $obj['hidden'] = $hidden;
-        null !== $hubspotDefined && $obj['hubspotDefined'] = $hubspotDefined;
-        null !== $modificationMetadata && $obj['modificationMetadata'] = $modificationMetadata;
-        null !== $referencedObjectType && $obj['referencedObjectType'] = $referencedObjectType;
-        null !== $sensitiveDataCategories && $obj['sensitiveDataCategories'] = $sensitiveDataCategories;
-        null !== $showCurrencySymbol && $obj['showCurrencySymbol'] = $showCurrencySymbol;
-        null !== $updatedAt && $obj['updatedAt'] = $updatedAt;
-        null !== $updatedUserID && $obj['updatedUserID'] = $updatedUserID;
+        null !== $archived && $self['archived'] = $archived;
+        null !== $archivedAt && $self['archivedAt'] = $archivedAt;
+        null !== $calculated && $self['calculated'] = $calculated;
+        null !== $calculationFormula && $self['calculationFormula'] = $calculationFormula;
+        null !== $createdAt && $self['createdAt'] = $createdAt;
+        null !== $createdUserID && $self['createdUserID'] = $createdUserID;
+        null !== $dataSensitivity && $self['dataSensitivity'] = $dataSensitivity;
+        null !== $displayOrder && $self['displayOrder'] = $displayOrder;
+        null !== $externalOptions && $self['externalOptions'] = $externalOptions;
+        null !== $formField && $self['formField'] = $formField;
+        null !== $hasUniqueValue && $self['hasUniqueValue'] = $hasUniqueValue;
+        null !== $hidden && $self['hidden'] = $hidden;
+        null !== $hubspotDefined && $self['hubspotDefined'] = $hubspotDefined;
+        null !== $modificationMetadata && $self['modificationMetadata'] = $modificationMetadata;
+        null !== $referencedObjectType && $self['referencedObjectType'] = $referencedObjectType;
+        null !== $sensitiveDataCategories && $self['sensitiveDataCategories'] = $sensitiveDataCategories;
+        null !== $showCurrencySymbol && $self['showCurrencySymbol'] = $showCurrencySymbol;
+        null !== $updatedAt && $self['updatedAt'] = $updatedAt;
+        null !== $updatedUserID && $self['updatedUserID'] = $updatedUserID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -327,10 +327,10 @@ final class Property implements BaseModel
      */
     public function withDescription(string $description): self
     {
-        $obj = clone $this;
-        $obj['description'] = $description;
+        $self = clone $this;
+        $self['description'] = $description;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -338,10 +338,10 @@ final class Property implements BaseModel
      */
     public function withFieldType(string $fieldType): self
     {
-        $obj = clone $this;
-        $obj['fieldType'] = $fieldType;
+        $self = clone $this;
+        $self['fieldType'] = $fieldType;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -349,10 +349,10 @@ final class Property implements BaseModel
      */
     public function withGroupName(string $groupName): self
     {
-        $obj = clone $this;
-        $obj['groupName'] = $groupName;
+        $self = clone $this;
+        $self['groupName'] = $groupName;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -360,10 +360,10 @@ final class Property implements BaseModel
      */
     public function withLabel(string $label): self
     {
-        $obj = clone $this;
-        $obj['label'] = $label;
+        $self = clone $this;
+        $self['label'] = $label;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -371,10 +371,10 @@ final class Property implements BaseModel
      */
     public function withName(string $name): self
     {
-        $obj = clone $this;
-        $obj['name'] = $name;
+        $self = clone $this;
+        $self['name'] = $name;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -390,10 +390,10 @@ final class Property implements BaseModel
      */
     public function withOptions(array $options): self
     {
-        $obj = clone $this;
-        $obj['options'] = $options;
+        $self = clone $this;
+        $self['options'] = $options;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -401,10 +401,10 @@ final class Property implements BaseModel
      */
     public function withType(string $type): self
     {
-        $obj = clone $this;
-        $obj['type'] = $type;
+        $self = clone $this;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -412,10 +412,10 @@ final class Property implements BaseModel
      */
     public function withArchived(bool $archived): self
     {
-        $obj = clone $this;
-        $obj['archived'] = $archived;
+        $self = clone $this;
+        $self['archived'] = $archived;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -423,10 +423,10 @@ final class Property implements BaseModel
      */
     public function withArchivedAt(\DateTimeInterface $archivedAt): self
     {
-        $obj = clone $this;
-        $obj['archivedAt'] = $archivedAt;
+        $self = clone $this;
+        $self['archivedAt'] = $archivedAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -434,10 +434,10 @@ final class Property implements BaseModel
      */
     public function withCalculated(bool $calculated): self
     {
-        $obj = clone $this;
-        $obj['calculated'] = $calculated;
+        $self = clone $this;
+        $self['calculated'] = $calculated;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -445,10 +445,10 @@ final class Property implements BaseModel
      */
     public function withCalculationFormula(string $calculationFormula): self
     {
-        $obj = clone $this;
-        $obj['calculationFormula'] = $calculationFormula;
+        $self = clone $this;
+        $self['calculationFormula'] = $calculationFormula;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -456,10 +456,10 @@ final class Property implements BaseModel
      */
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
-        $obj = clone $this;
-        $obj['createdAt'] = $createdAt;
+        $self = clone $this;
+        $self['createdAt'] = $createdAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -467,10 +467,10 @@ final class Property implements BaseModel
      */
     public function withCreatedUserID(string $createdUserID): self
     {
-        $obj = clone $this;
-        $obj['createdUserID'] = $createdUserID;
+        $self = clone $this;
+        $self['createdUserID'] = $createdUserID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -481,10 +481,10 @@ final class Property implements BaseModel
     public function withDataSensitivity(
         DataSensitivity|string $dataSensitivity
     ): self {
-        $obj = clone $this;
-        $obj['dataSensitivity'] = $dataSensitivity;
+        $self = clone $this;
+        $self['dataSensitivity'] = $dataSensitivity;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -492,10 +492,10 @@ final class Property implements BaseModel
      */
     public function withDisplayOrder(int $displayOrder): self
     {
-        $obj = clone $this;
-        $obj['displayOrder'] = $displayOrder;
+        $self = clone $this;
+        $self['displayOrder'] = $displayOrder;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -503,10 +503,10 @@ final class Property implements BaseModel
      */
     public function withExternalOptions(bool $externalOptions): self
     {
-        $obj = clone $this;
-        $obj['externalOptions'] = $externalOptions;
+        $self = clone $this;
+        $self['externalOptions'] = $externalOptions;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -514,10 +514,10 @@ final class Property implements BaseModel
      */
     public function withFormField(bool $formField): self
     {
-        $obj = clone $this;
-        $obj['formField'] = $formField;
+        $self = clone $this;
+        $self['formField'] = $formField;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -525,10 +525,10 @@ final class Property implements BaseModel
      */
     public function withHasUniqueValue(bool $hasUniqueValue): self
     {
-        $obj = clone $this;
-        $obj['hasUniqueValue'] = $hasUniqueValue;
+        $self = clone $this;
+        $self['hasUniqueValue'] = $hasUniqueValue;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -536,10 +536,10 @@ final class Property implements BaseModel
      */
     public function withHidden(bool $hidden): self
     {
-        $obj = clone $this;
-        $obj['hidden'] = $hidden;
+        $self = clone $this;
+        $self['hidden'] = $hidden;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -547,10 +547,10 @@ final class Property implements BaseModel
      */
     public function withHubspotDefined(bool $hubspotDefined): self
     {
-        $obj = clone $this;
-        $obj['hubspotDefined'] = $hubspotDefined;
+        $self = clone $this;
+        $self['hubspotDefined'] = $hubspotDefined;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -564,10 +564,10 @@ final class Property implements BaseModel
     public function withModificationMetadata(
         PropertyModificationMetadata|array $modificationMetadata
     ): self {
-        $obj = clone $this;
-        $obj['modificationMetadata'] = $modificationMetadata;
+        $self = clone $this;
+        $self['modificationMetadata'] = $modificationMetadata;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -575,10 +575,10 @@ final class Property implements BaseModel
      */
     public function withReferencedObjectType(string $referencedObjectType): self
     {
-        $obj = clone $this;
-        $obj['referencedObjectType'] = $referencedObjectType;
+        $self = clone $this;
+        $self['referencedObjectType'] = $referencedObjectType;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -589,10 +589,10 @@ final class Property implements BaseModel
     public function withSensitiveDataCategories(
         array $sensitiveDataCategories
     ): self {
-        $obj = clone $this;
-        $obj['sensitiveDataCategories'] = $sensitiveDataCategories;
+        $self = clone $this;
+        $self['sensitiveDataCategories'] = $sensitiveDataCategories;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -600,10 +600,10 @@ final class Property implements BaseModel
      */
     public function withShowCurrencySymbol(bool $showCurrencySymbol): self
     {
-        $obj = clone $this;
-        $obj['showCurrencySymbol'] = $showCurrencySymbol;
+        $self = clone $this;
+        $self['showCurrencySymbol'] = $showCurrencySymbol;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -611,10 +611,10 @@ final class Property implements BaseModel
      */
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
-        $obj = clone $this;
-        $obj['updatedAt'] = $updatedAt;
+        $self = clone $this;
+        $self['updatedAt'] = $updatedAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -622,9 +622,9 @@ final class Property implements BaseModel
      */
     public function withUpdatedUserID(string $updatedUserID): self
     {
-        $obj = clone $this;
-        $obj['updatedUserID'] = $updatedUserID;
+        $self = clone $this;
+        $self['updatedUserID'] = $updatedUserID;
 
-        return $obj;
+        return $self;
     }
 }

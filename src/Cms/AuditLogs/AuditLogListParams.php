@@ -115,18 +115,18 @@ final class AuditLogListParams implements BaseModel
         ?array $sort = null,
         ?array $userID = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $after && $obj['after'] = $after;
-        null !== $before && $obj['before'] = $before;
-        null !== $eventType && $obj['eventType'] = $eventType;
-        null !== $limit && $obj['limit'] = $limit;
-        null !== $objectID && $obj['objectID'] = $objectID;
-        null !== $objectType && $obj['objectType'] = $objectType;
-        null !== $sort && $obj['sort'] = $sort;
-        null !== $userID && $obj['userID'] = $userID;
+        null !== $after && $self['after'] = $after;
+        null !== $before && $self['before'] = $before;
+        null !== $eventType && $self['eventType'] = $eventType;
+        null !== $limit && $self['limit'] = $limit;
+        null !== $objectID && $self['objectID'] = $objectID;
+        null !== $objectType && $self['objectType'] = $objectType;
+        null !== $sort && $self['sort'] = $sort;
+        null !== $userID && $self['userID'] = $userID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -134,10 +134,10 @@ final class AuditLogListParams implements BaseModel
      */
     public function withAfter(string $after): self
     {
-        $obj = clone $this;
-        $obj['after'] = $after;
+        $self = clone $this;
+        $self['after'] = $after;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -145,10 +145,10 @@ final class AuditLogListParams implements BaseModel
      */
     public function withBefore(string $before): self
     {
-        $obj = clone $this;
-        $obj['before'] = $before;
+        $self = clone $this;
+        $self['before'] = $before;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -158,10 +158,10 @@ final class AuditLogListParams implements BaseModel
      */
     public function withEventType(array $eventType): self
     {
-        $obj = clone $this;
-        $obj['eventType'] = $eventType;
+        $self = clone $this;
+        $self['eventType'] = $eventType;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -169,10 +169,10 @@ final class AuditLogListParams implements BaseModel
      */
     public function withLimit(int $limit): self
     {
-        $obj = clone $this;
-        $obj['limit'] = $limit;
+        $self = clone $this;
+        $self['limit'] = $limit;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -182,10 +182,10 @@ final class AuditLogListParams implements BaseModel
      */
     public function withObjectID(array $objectID): self
     {
-        $obj = clone $this;
-        $obj['objectID'] = $objectID;
+        $self = clone $this;
+        $self['objectID'] = $objectID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -195,10 +195,10 @@ final class AuditLogListParams implements BaseModel
      */
     public function withObjectType(array $objectType): self
     {
-        $obj = clone $this;
-        $obj['objectType'] = $objectType;
+        $self = clone $this;
+        $self['objectType'] = $objectType;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -208,10 +208,10 @@ final class AuditLogListParams implements BaseModel
      */
     public function withSort(array $sort): self
     {
-        $obj = clone $this;
-        $obj['sort'] = $sort;
+        $self = clone $this;
+        $self['sort'] = $sort;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -221,9 +221,9 @@ final class AuditLogListParams implements BaseModel
      */
     public function withUserID(array $userID): self
     {
-        $obj = clone $this;
-        $obj['userID'] = $userID;
+        $self = clone $this;
+        $self['userID'] = $userID;
 
-        return $obj;
+        return $self;
     }
 }

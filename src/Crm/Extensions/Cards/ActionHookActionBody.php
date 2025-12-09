@@ -92,17 +92,17 @@ final class ActionHookActionBody implements BaseModel
         ActionConfirmationBody|array|null $confirmation = null,
         ?string $label = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['httpMethod'] = $httpMethod;
-        $obj['propertyNamesIncluded'] = $propertyNamesIncluded;
-        $obj['type'] = $type;
-        $obj['url'] = $url;
+        $self['httpMethod'] = $httpMethod;
+        $self['propertyNamesIncluded'] = $propertyNamesIncluded;
+        $self['type'] = $type;
+        $self['url'] = $url;
 
-        null !== $confirmation && $obj['confirmation'] = $confirmation;
-        null !== $label && $obj['label'] = $label;
+        null !== $confirmation && $self['confirmation'] = $confirmation;
+        null !== $label && $self['label'] = $label;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -110,10 +110,10 @@ final class ActionHookActionBody implements BaseModel
      */
     public function withHTTPMethod(HTTPMethod|string $httpMethod): self
     {
-        $obj = clone $this;
-        $obj['httpMethod'] = $httpMethod;
+        $self = clone $this;
+        $self['httpMethod'] = $httpMethod;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -122,10 +122,10 @@ final class ActionHookActionBody implements BaseModel
     public function withPropertyNamesIncluded(
         array $propertyNamesIncluded
     ): self {
-        $obj = clone $this;
-        $obj['propertyNamesIncluded'] = $propertyNamesIncluded;
+        $self = clone $this;
+        $self['propertyNamesIncluded'] = $propertyNamesIncluded;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -133,18 +133,18 @@ final class ActionHookActionBody implements BaseModel
      */
     public function withType(Type|string $type): self
     {
-        $obj = clone $this;
-        $obj['type'] = $type;
+        $self = clone $this;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 
     public function withURL(string $url): self
     {
-        $obj = clone $this;
-        $obj['url'] = $url;
+        $self = clone $this;
+        $self['url'] = $url;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -155,17 +155,17 @@ final class ActionHookActionBody implements BaseModel
     public function withConfirmation(
         ActionConfirmationBody|array $confirmation
     ): self {
-        $obj = clone $this;
-        $obj['confirmation'] = $confirmation;
+        $self = clone $this;
+        $self['confirmation'] = $confirmation;
 
-        return $obj;
+        return $self;
     }
 
     public function withLabel(string $label): self
     {
-        $obj = clone $this;
-        $obj['label'] = $label;
+        $self = clone $this;
+        $self['label'] = $label;
 
-        return $obj;
+        return $self;
     }
 }

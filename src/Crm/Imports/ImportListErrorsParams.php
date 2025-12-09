@@ -62,14 +62,14 @@ final class ImportListErrorsParams implements BaseModel
         ?bool $includeRowData = null,
         ?int $limit = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $after && $obj['after'] = $after;
-        null !== $includeErrorMessage && $obj['includeErrorMessage'] = $includeErrorMessage;
-        null !== $includeRowData && $obj['includeRowData'] = $includeRowData;
-        null !== $limit && $obj['limit'] = $limit;
+        null !== $after && $self['after'] = $after;
+        null !== $includeErrorMessage && $self['includeErrorMessage'] = $includeErrorMessage;
+        null !== $includeRowData && $self['includeRowData'] = $includeRowData;
+        null !== $limit && $self['limit'] = $limit;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -77,10 +77,10 @@ final class ImportListErrorsParams implements BaseModel
      */
     public function withAfter(string $after): self
     {
-        $obj = clone $this;
-        $obj['after'] = $after;
+        $self = clone $this;
+        $self['after'] = $after;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -88,10 +88,10 @@ final class ImportListErrorsParams implements BaseModel
      */
     public function withIncludeErrorMessage(bool $includeErrorMessage): self
     {
-        $obj = clone $this;
-        $obj['includeErrorMessage'] = $includeErrorMessage;
+        $self = clone $this;
+        $self['includeErrorMessage'] = $includeErrorMessage;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -99,10 +99,10 @@ final class ImportListErrorsParams implements BaseModel
      */
     public function withIncludeRowData(bool $includeRowData): self
     {
-        $obj = clone $this;
-        $obj['includeRowData'] = $includeRowData;
+        $self = clone $this;
+        $self['includeRowData'] = $includeRowData;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -110,9 +110,9 @@ final class ImportListErrorsParams implements BaseModel
      */
     public function withLimit(int $limit): self
     {
-        $obj = clone $this;
-        $obj['limit'] = $limit;
+        $self = clone $this;
+        $self['limit'] = $limit;
 
-        return $obj;
+        return $self;
     }
 }

@@ -56,20 +56,20 @@ final class PublicCampaignInfluencedFilter implements BaseModel
         string $campaignID,
         FilterType|string $filterType = 'CAMPAIGN_INFLUENCED'
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['campaignID'] = $campaignID;
-        $obj['filterType'] = $filterType;
+        $self['campaignID'] = $campaignID;
+        $self['filterType'] = $filterType;
 
-        return $obj;
+        return $self;
     }
 
     public function withCampaignID(string $campaignID): self
     {
-        $obj = clone $this;
-        $obj['campaignID'] = $campaignID;
+        $self = clone $this;
+        $self['campaignID'] = $campaignID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -77,9 +77,9 @@ final class PublicCampaignInfluencedFilter implements BaseModel
      */
     public function withFilterType(FilterType|string $filterType): self
     {
-        $obj = clone $this;
-        $obj['filterType'] = $filterType;
+        $self = clone $this;
+        $self['filterType'] = $filterType;
 
-        return $obj;
+        return $self;
     }
 }

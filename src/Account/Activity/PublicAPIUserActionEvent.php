@@ -106,18 +106,18 @@ final class PublicAPIUserActionEvent implements BaseModel
         ?string $subCategory = null,
         ?string $targetObjectID = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['id'] = $id;
-        $obj['actingUser'] = $actingUser;
-        $obj['action'] = $action;
-        $obj['category'] = $category;
-        $obj['occurredAt'] = $occurredAt;
+        $self['id'] = $id;
+        $self['actingUser'] = $actingUser;
+        $self['action'] = $action;
+        $self['category'] = $category;
+        $self['occurredAt'] = $occurredAt;
 
-        null !== $subCategory && $obj['subCategory'] = $subCategory;
-        null !== $targetObjectID && $obj['targetObjectID'] = $targetObjectID;
+        null !== $subCategory && $self['subCategory'] = $subCategory;
+        null !== $targetObjectID && $self['targetObjectID'] = $targetObjectID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -125,10 +125,10 @@ final class PublicAPIUserActionEvent implements BaseModel
      */
     public function withID(string $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -136,10 +136,10 @@ final class PublicAPIUserActionEvent implements BaseModel
      */
     public function withActingUser(ActingUser|array $actingUser): self
     {
-        $obj = clone $this;
-        $obj['actingUser'] = $actingUser;
+        $self = clone $this;
+        $self['actingUser'] = $actingUser;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -147,10 +147,10 @@ final class PublicAPIUserActionEvent implements BaseModel
      */
     public function withAction(string $action): self
     {
-        $obj = clone $this;
-        $obj['action'] = $action;
+        $self = clone $this;
+        $self['action'] = $action;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -158,10 +158,10 @@ final class PublicAPIUserActionEvent implements BaseModel
      */
     public function withCategory(string $category): self
     {
-        $obj = clone $this;
-        $obj['category'] = $category;
+        $self = clone $this;
+        $self['category'] = $category;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -169,10 +169,10 @@ final class PublicAPIUserActionEvent implements BaseModel
      */
     public function withOccurredAt(\DateTimeInterface $occurredAt): self
     {
-        $obj = clone $this;
-        $obj['occurredAt'] = $occurredAt;
+        $self = clone $this;
+        $self['occurredAt'] = $occurredAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -180,10 +180,10 @@ final class PublicAPIUserActionEvent implements BaseModel
      */
     public function withSubCategory(string $subCategory): self
     {
-        $obj = clone $this;
-        $obj['subCategory'] = $subCategory;
+        $self = clone $this;
+        $self['subCategory'] = $subCategory;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -191,9 +191,9 @@ final class PublicAPIUserActionEvent implements BaseModel
      */
     public function withTargetObjectID(string $targetObjectID): self
     {
-        $obj = clone $this;
-        $obj['targetObjectID'] = $targetObjectID;
+        $self = clone $this;
+        $self['targetObjectID'] = $targetObjectID;
 
-        return $obj;
+        return $self;
     }
 }

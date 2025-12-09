@@ -91,24 +91,24 @@ final class ReportListContactIDsByTypeParams implements BaseModel
         ?int $limit = null,
         ?string $startDate = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['campaignGuid'] = $campaignGuid;
+        $self['campaignGuid'] = $campaignGuid;
 
-        null !== $after && $obj['after'] = $after;
-        null !== $endDate && $obj['endDate'] = $endDate;
-        null !== $limit && $obj['limit'] = $limit;
-        null !== $startDate && $obj['startDate'] = $startDate;
+        null !== $after && $self['after'] = $after;
+        null !== $endDate && $self['endDate'] = $endDate;
+        null !== $limit && $self['limit'] = $limit;
+        null !== $startDate && $self['startDate'] = $startDate;
 
-        return $obj;
+        return $self;
     }
 
     public function withCampaignGuid(string $campaignGuid): self
     {
-        $obj = clone $this;
-        $obj['campaignGuid'] = $campaignGuid;
+        $self = clone $this;
+        $self['campaignGuid'] = $campaignGuid;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -117,10 +117,10 @@ final class ReportListContactIDsByTypeParams implements BaseModel
      */
     public function withAfter(string $after): self
     {
-        $obj = clone $this;
-        $obj['after'] = $after;
+        $self = clone $this;
+        $self['after'] = $after;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -129,10 +129,10 @@ final class ReportListContactIDsByTypeParams implements BaseModel
      */
     public function withEndDate(string $endDate): self
     {
-        $obj = clone $this;
-        $obj['endDate'] = $endDate;
+        $self = clone $this;
+        $self['endDate'] = $endDate;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -141,10 +141,10 @@ final class ReportListContactIDsByTypeParams implements BaseModel
      */
     public function withLimit(int $limit): self
     {
-        $obj = clone $this;
-        $obj['limit'] = $limit;
+        $self = clone $this;
+        $self['limit'] = $limit;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -153,9 +153,9 @@ final class ReportListContactIDsByTypeParams implements BaseModel
      */
     public function withStartDate(string $startDate): self
     {
-        $obj = clone $this;
-        $obj['startDate'] = $startDate;
+        $self = clone $this;
+        $self['startDate'] = $startDate;
 
-        return $obj;
+        return $self;
     }
 }

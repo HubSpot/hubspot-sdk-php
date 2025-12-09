@@ -57,13 +57,13 @@ final class PreviousPage implements BaseModel
      */
     public static function with(string $before, ?string $link = null): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['before'] = $before;
+        $self['before'] = $before;
 
-        null !== $link && $obj['link'] = $link;
+        null !== $link && $self['link'] = $link;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -71,10 +71,10 @@ final class PreviousPage implements BaseModel
      */
     public function withBefore(string $before): self
     {
-        $obj = clone $this;
-        $obj['before'] = $before;
+        $self = clone $this;
+        $self['before'] = $before;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -82,9 +82,9 @@ final class PreviousPage implements BaseModel
      */
     public function withLink(string $link): self
     {
-        $obj = clone $this;
-        $obj['link'] = $link;
+        $self = clone $this;
+        $self['link'] = $link;
 
-        return $obj;
+        return $self;
     }
 }

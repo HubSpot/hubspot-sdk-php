@@ -83,40 +83,40 @@ final class APIStaticPropertyFilterDataSource implements BaseModel
         Type|string $type = 'STATIC_PROPERTY_FILTER',
         APISort|array|null $sortBy = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['name'] = $name;
-        $obj['propertyName'] = $propertyName;
-        $obj['staticValue'] = $staticValue;
-        $obj['type'] = $type;
+        $self['name'] = $name;
+        $self['propertyName'] = $propertyName;
+        $self['staticValue'] = $staticValue;
+        $self['type'] = $type;
 
-        null !== $sortBy && $obj['sortBy'] = $sortBy;
+        null !== $sortBy && $self['sortBy'] = $sortBy;
 
-        return $obj;
+        return $self;
     }
 
     public function withName(string $name): self
     {
-        $obj = clone $this;
-        $obj['name'] = $name;
+        $self = clone $this;
+        $self['name'] = $name;
 
-        return $obj;
+        return $self;
     }
 
     public function withPropertyName(string $propertyName): self
     {
-        $obj = clone $this;
-        $obj['propertyName'] = $propertyName;
+        $self = clone $this;
+        $self['propertyName'] = $propertyName;
 
-        return $obj;
+        return $self;
     }
 
     public function withStaticValue(string $staticValue): self
     {
-        $obj = clone $this;
-        $obj['staticValue'] = $staticValue;
+        $self = clone $this;
+        $self['staticValue'] = $staticValue;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -124,10 +124,10 @@ final class APIStaticPropertyFilterDataSource implements BaseModel
      */
     public function withType(Type|string $type): self
     {
-        $obj = clone $this;
-        $obj['type'] = $type;
+        $self = clone $this;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -137,9 +137,9 @@ final class APIStaticPropertyFilterDataSource implements BaseModel
      */
     public function withSortBy(APISort|array $sortBy): self
     {
-        $obj = clone $this;
-        $obj['sortBy'] = $sortBy;
+        $self = clone $this;
+        $self['sortBy'] = $sortBy;
 
-        return $obj;
+        return $self;
     }
 }

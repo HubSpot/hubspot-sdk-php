@@ -104,16 +104,16 @@ final class LimitAndUsageForObjectType implements BaseModel
         string $singularLabel,
         int $usage,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['limit'] = $limit;
-        $obj['objectTypeID'] = $objectTypeID;
-        $obj['percentage'] = $percentage;
-        $obj['pluralLabel'] = $pluralLabel;
-        $obj['singularLabel'] = $singularLabel;
-        $obj['usage'] = $usage;
+        $self['limit'] = $limit;
+        $self['objectTypeID'] = $objectTypeID;
+        $self['percentage'] = $percentage;
+        $self['pluralLabel'] = $pluralLabel;
+        $self['singularLabel'] = $singularLabel;
+        $self['usage'] = $usage;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -121,10 +121,10 @@ final class LimitAndUsageForObjectType implements BaseModel
      */
     public function withLimit(int $limit): self
     {
-        $obj = clone $this;
-        $obj['limit'] = $limit;
+        $self = clone $this;
+        $self['limit'] = $limit;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -132,10 +132,10 @@ final class LimitAndUsageForObjectType implements BaseModel
      */
     public function withObjectTypeID(string $objectTypeID): self
     {
-        $obj = clone $this;
-        $obj['objectTypeID'] = $objectTypeID;
+        $self = clone $this;
+        $self['objectTypeID'] = $objectTypeID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -143,10 +143,10 @@ final class LimitAndUsageForObjectType implements BaseModel
      */
     public function withPercentage(float $percentage): self
     {
-        $obj = clone $this;
-        $obj['percentage'] = $percentage;
+        $self = clone $this;
+        $self['percentage'] = $percentage;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -154,10 +154,10 @@ final class LimitAndUsageForObjectType implements BaseModel
      */
     public function withPluralLabel(string $pluralLabel): self
     {
-        $obj = clone $this;
-        $obj['pluralLabel'] = $pluralLabel;
+        $self = clone $this;
+        $self['pluralLabel'] = $pluralLabel;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -165,10 +165,10 @@ final class LimitAndUsageForObjectType implements BaseModel
      */
     public function withSingularLabel(string $singularLabel): self
     {
-        $obj = clone $this;
-        $obj['singularLabel'] = $singularLabel;
+        $self = clone $this;
+        $self['singularLabel'] = $singularLabel;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -176,9 +176,9 @@ final class LimitAndUsageForObjectType implements BaseModel
      */
     public function withUsage(int $usage): self
     {
-        $obj = clone $this;
-        $obj['usage'] = $usage;
+        $self = clone $this;
+        $self['usage'] = $usage;
 
-        return $obj;
+        return $self;
     }
 }

@@ -47,12 +47,12 @@ final class Paging implements BaseModel
         NextPage|array|null $next = null,
         PreviousPage|array|null $prev = null
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $next && $obj['next'] = $next;
-        null !== $prev && $obj['prev'] = $prev;
+        null !== $next && $self['next'] = $next;
+        null !== $prev && $self['prev'] = $prev;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -62,10 +62,10 @@ final class Paging implements BaseModel
      */
     public function withNext(NextPage|array $next): self
     {
-        $obj = clone $this;
-        $obj['next'] = $next;
+        $self = clone $this;
+        $self['next'] = $next;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -75,9 +75,9 @@ final class Paging implements BaseModel
      */
     public function withPrev(PreviousPage|array $prev): self
     {
-        $obj = clone $this;
-        $obj['prev'] = $prev;
+        $self = clone $this;
+        $self['prev'] = $prev;
 
-        return $obj;
+        return $self;
     }
 }

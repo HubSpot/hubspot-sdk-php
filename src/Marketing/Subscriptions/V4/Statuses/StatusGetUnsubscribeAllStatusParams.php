@@ -77,14 +77,14 @@ final class StatusGetUnsubscribeAllStatusParams implements BaseModel
         ?int $businessUnitID = null,
         ?bool $verbose = null
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['channel'] = $channel;
+        $self['channel'] = $channel;
 
-        null !== $businessUnitID && $obj['businessUnitID'] = $businessUnitID;
-        null !== $verbose && $obj['verbose'] = $verbose;
+        null !== $businessUnitID && $self['businessUnitID'] = $businessUnitID;
+        null !== $verbose && $self['verbose'] = $verbose;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -94,10 +94,10 @@ final class StatusGetUnsubscribeAllStatusParams implements BaseModel
      */
     public function withChannel(Channel|string $channel): self
     {
-        $obj = clone $this;
-        $obj['channel'] = $channel;
+        $self = clone $this;
+        $self['channel'] = $channel;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -105,10 +105,10 @@ final class StatusGetUnsubscribeAllStatusParams implements BaseModel
      */
     public function withBusinessUnitID(int $businessUnitID): self
     {
-        $obj = clone $this;
-        $obj['businessUnitID'] = $businessUnitID;
+        $self = clone $this;
+        $self['businessUnitID'] = $businessUnitID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -116,9 +116,9 @@ final class StatusGetUnsubscribeAllStatusParams implements BaseModel
      */
     public function withVerbose(bool $verbose): self
     {
-        $obj = clone $this;
-        $obj['verbose'] = $verbose;
+        $self = clone $this;
+        $self['verbose'] = $verbose;
 
-        return $obj;
+        return $self;
     }
 }

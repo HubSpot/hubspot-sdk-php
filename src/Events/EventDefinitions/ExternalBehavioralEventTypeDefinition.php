@@ -216,42 +216,42 @@ final class ExternalBehavioralEventTypeDefinition implements BaseModel
         ?string $primaryObjectID = null,
         TrackingType|string|null $trackingType = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['id'] = $id;
-        $obj['archived'] = $archived;
-        $obj['associations'] = $associations;
-        $obj['fullyQualifiedName'] = $fullyQualifiedName;
-        $obj['labels'] = $labels;
-        $obj['name'] = $name;
-        $obj['objectTypeID'] = $objectTypeID;
-        $obj['properties'] = $properties;
+        $self['id'] = $id;
+        $self['archived'] = $archived;
+        $self['associations'] = $associations;
+        $self['fullyQualifiedName'] = $fullyQualifiedName;
+        $self['labels'] = $labels;
+        $self['name'] = $name;
+        $self['objectTypeID'] = $objectTypeID;
+        $self['properties'] = $properties;
 
-        null !== $comboEventRules && $obj['comboEventRules'] = $comboEventRules;
-        null !== $createdAt && $obj['createdAt'] = $createdAt;
-        null !== $createdUserID && $obj['createdUserID'] = $createdUserID;
-        null !== $description && $obj['description'] = $description;
-        null !== $primaryObject && $obj['primaryObject'] = $primaryObject;
-        null !== $primaryObjectID && $obj['primaryObjectID'] = $primaryObjectID;
-        null !== $trackingType && $obj['trackingType'] = $trackingType;
+        null !== $comboEventRules && $self['comboEventRules'] = $comboEventRules;
+        null !== $createdAt && $self['createdAt'] = $createdAt;
+        null !== $createdUserID && $self['createdUserID'] = $createdUserID;
+        null !== $description && $self['description'] = $description;
+        null !== $primaryObject && $self['primaryObject'] = $primaryObject;
+        null !== $primaryObjectID && $self['primaryObjectID'] = $primaryObjectID;
+        null !== $trackingType && $self['trackingType'] = $trackingType;
 
-        return $obj;
+        return $self;
     }
 
     public function withID(string $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     public function withArchived(bool $archived): self
     {
-        $obj = clone $this;
-        $obj['archived'] = $archived;
+        $self = clone $this;
+        $self['archived'] = $archived;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -286,18 +286,18 @@ final class ExternalBehavioralEventTypeDefinition implements BaseModel
      */
     public function withAssociations(array $associations): self
     {
-        $obj = clone $this;
-        $obj['associations'] = $associations;
+        $self = clone $this;
+        $self['associations'] = $associations;
 
-        return $obj;
+        return $self;
     }
 
     public function withFullyQualifiedName(string $fullyQualifiedName): self
     {
-        $obj = clone $this;
-        $obj['fullyQualifiedName'] = $fullyQualifiedName;
+        $self = clone $this;
+        $self['fullyQualifiedName'] = $fullyQualifiedName;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -308,26 +308,26 @@ final class ExternalBehavioralEventTypeDefinition implements BaseModel
     public function withLabels(
         BehavioralEventTypeDefinitionLabels|array $labels
     ): self {
-        $obj = clone $this;
-        $obj['labels'] = $labels;
+        $self = clone $this;
+        $self['labels'] = $labels;
 
-        return $obj;
+        return $self;
     }
 
     public function withName(string $name): self
     {
-        $obj = clone $this;
-        $obj['name'] = $name;
+        $self = clone $this;
+        $self['name'] = $name;
 
-        return $obj;
+        return $self;
     }
 
     public function withObjectTypeID(string $objectTypeID): self
     {
-        $obj = clone $this;
-        $obj['objectTypeID'] = $objectTypeID;
+        $self = clone $this;
+        $self['objectTypeID'] = $objectTypeID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -362,10 +362,10 @@ final class ExternalBehavioralEventTypeDefinition implements BaseModel
      */
     public function withProperties(array $properties): self
     {
-        $obj = clone $this;
-        $obj['properties'] = $properties;
+        $self = clone $this;
+        $self['properties'] = $properties;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -378,50 +378,50 @@ final class ExternalBehavioralEventTypeDefinition implements BaseModel
     public function withComboEventRules(
         ComboEventRuleBranch|array $comboEventRules
     ): self {
-        $obj = clone $this;
-        $obj['comboEventRules'] = $comboEventRules;
+        $self = clone $this;
+        $self['comboEventRules'] = $comboEventRules;
 
-        return $obj;
+        return $self;
     }
 
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
-        $obj = clone $this;
-        $obj['createdAt'] = $createdAt;
+        $self = clone $this;
+        $self['createdAt'] = $createdAt;
 
-        return $obj;
+        return $self;
     }
 
     public function withCreatedUserID(int $createdUserID): self
     {
-        $obj = clone $this;
-        $obj['createdUserID'] = $createdUserID;
+        $self = clone $this;
+        $self['createdUserID'] = $createdUserID;
 
-        return $obj;
+        return $self;
     }
 
     public function withDescription(string $description): self
     {
-        $obj = clone $this;
-        $obj['description'] = $description;
+        $self = clone $this;
+        $self['description'] = $description;
 
-        return $obj;
+        return $self;
     }
 
     public function withPrimaryObject(string $primaryObject): self
     {
-        $obj = clone $this;
-        $obj['primaryObject'] = $primaryObject;
+        $self = clone $this;
+        $self['primaryObject'] = $primaryObject;
 
-        return $obj;
+        return $self;
     }
 
     public function withPrimaryObjectID(string $primaryObjectID): self
     {
-        $obj = clone $this;
-        $obj['primaryObjectID'] = $primaryObjectID;
+        $self = clone $this;
+        $self['primaryObjectID'] = $primaryObjectID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -429,9 +429,9 @@ final class ExternalBehavioralEventTypeDefinition implements BaseModel
      */
     public function withTrackingType(TrackingType|string $trackingType): self
     {
-        $obj = clone $this;
-        $obj['trackingType'] = $trackingType;
+        $self = clone $this;
+        $self['trackingType'] = $trackingType;
 
-        return $obj;
+        return $self;
     }
 }

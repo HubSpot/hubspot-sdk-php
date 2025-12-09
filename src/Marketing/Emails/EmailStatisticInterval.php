@@ -62,12 +62,12 @@ final class EmailStatisticInterval implements BaseModel
         EmailStatisticsData|array $aggregations,
         Interval|array $interval
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['aggregations'] = $aggregations;
-        $obj['interval'] = $interval;
+        $self['aggregations'] = $aggregations;
+        $self['interval'] = $interval;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -81,10 +81,10 @@ final class EmailStatisticInterval implements BaseModel
     public function withAggregations(
         EmailStatisticsData|array $aggregations
     ): self {
-        $obj = clone $this;
-        $obj['aggregations'] = $aggregations;
+        $self = clone $this;
+        $self['aggregations'] = $aggregations;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -94,9 +94,9 @@ final class EmailStatisticInterval implements BaseModel
      */
     public function withInterval(Interval|array $interval): self
     {
-        $obj = clone $this;
-        $obj['interval'] = $interval;
+        $self = clone $this;
+        $self['interval'] = $interval;
 
-        return $obj;
+        return $self;
     }
 }

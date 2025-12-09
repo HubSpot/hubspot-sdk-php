@@ -169,29 +169,29 @@ final class FormDefinitionCreateRequestBase implements BaseModel
         FormType|string $formType = 'hubspot',
         ?\DateTimeInterface $archivedAt = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['archived'] = $archived;
-        $obj['configuration'] = $configuration;
-        $obj['createdAt'] = $createdAt;
-        $obj['displayOptions'] = $displayOptions;
-        $obj['fieldGroups'] = $fieldGroups;
-        $obj['formType'] = $formType;
-        $obj['legalConsentOptions'] = $legalConsentOptions;
-        $obj['name'] = $name;
-        $obj['updatedAt'] = $updatedAt;
+        $self['archived'] = $archived;
+        $self['configuration'] = $configuration;
+        $self['createdAt'] = $createdAt;
+        $self['displayOptions'] = $displayOptions;
+        $self['fieldGroups'] = $fieldGroups;
+        $self['formType'] = $formType;
+        $self['legalConsentOptions'] = $legalConsentOptions;
+        $self['name'] = $name;
+        $self['updatedAt'] = $updatedAt;
 
-        null !== $archivedAt && $obj['archivedAt'] = $archivedAt;
+        null !== $archivedAt && $self['archivedAt'] = $archivedAt;
 
-        return $obj;
+        return $self;
     }
 
     public function withArchived(bool $archived): self
     {
-        $obj = clone $this;
-        $obj['archived'] = $archived;
+        $self = clone $this;
+        $self['archived'] = $archived;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -213,18 +213,18 @@ final class FormDefinitionCreateRequestBase implements BaseModel
     public function withConfiguration(
         HubSpotFormConfiguration|array $configuration
     ): self {
-        $obj = clone $this;
-        $obj['configuration'] = $configuration;
+        $self = clone $this;
+        $self['configuration'] = $configuration;
 
-        return $obj;
+        return $self;
     }
 
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
-        $obj = clone $this;
-        $obj['createdAt'] = $createdAt;
+        $self = clone $this;
+        $self['createdAt'] = $createdAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -241,10 +241,10 @@ final class FormDefinitionCreateRequestBase implements BaseModel
     public function withDisplayOptions(
         FormDisplayOptions|array $displayOptions
     ): self {
-        $obj = clone $this;
-        $obj['displayOptions'] = $displayOptions;
+        $self = clone $this;
+        $self['displayOptions'] = $displayOptions;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -252,10 +252,10 @@ final class FormDefinitionCreateRequestBase implements BaseModel
      */
     public function withFieldGroups(array $fieldGroups): self
     {
-        $obj = clone $this;
-        $obj['fieldGroups'] = $fieldGroups;
+        $self = clone $this;
+        $self['fieldGroups'] = $fieldGroups;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -263,10 +263,10 @@ final class FormDefinitionCreateRequestBase implements BaseModel
      */
     public function withFormType(FormType|string $formType): self
     {
-        $obj = clone $this;
-        $obj['formType'] = $formType;
+        $self = clone $this;
+        $self['formType'] = $formType;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -296,33 +296,33 @@ final class FormDefinitionCreateRequestBase implements BaseModel
     public function withLegalConsentOptions(
         LegalConsentOptionsNone|array|LegalConsentOptionsLegitimateInterest|LegalConsentOptionsExplicitConsentToProcess|LegalConsentOptionsImplicitConsentToProcess $legalConsentOptions,
     ): self {
-        $obj = clone $this;
-        $obj['legalConsentOptions'] = $legalConsentOptions;
+        $self = clone $this;
+        $self['legalConsentOptions'] = $legalConsentOptions;
 
-        return $obj;
+        return $self;
     }
 
     public function withName(string $name): self
     {
-        $obj = clone $this;
-        $obj['name'] = $name;
+        $self = clone $this;
+        $self['name'] = $name;
 
-        return $obj;
+        return $self;
     }
 
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
-        $obj = clone $this;
-        $obj['updatedAt'] = $updatedAt;
+        $self = clone $this;
+        $self['updatedAt'] = $updatedAt;
 
-        return $obj;
+        return $self;
     }
 
     public function withArchivedAt(\DateTimeInterface $archivedAt): self
     {
-        $obj = clone $this;
-        $obj['archivedAt'] = $archivedAt;
+        $self = clone $this;
+        $self['archivedAt'] = $archivedAt;
 
-        return $obj;
+        return $self;
     }
 }

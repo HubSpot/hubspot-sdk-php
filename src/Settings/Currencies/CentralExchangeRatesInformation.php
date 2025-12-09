@@ -50,11 +50,11 @@ final class CentralExchangeRatesInformation implements BaseModel
      */
     public static function with(bool $centralExchangeRatesEnabled): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['centralExchangeRatesEnabled'] = $centralExchangeRatesEnabled;
+        $self['centralExchangeRatesEnabled'] = $centralExchangeRatesEnabled;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -63,9 +63,9 @@ final class CentralExchangeRatesInformation implements BaseModel
     public function withCentralExchangeRatesEnabled(
         bool $centralExchangeRatesEnabled
     ): self {
-        $obj = clone $this;
-        $obj['centralExchangeRatesEnabled'] = $centralExchangeRatesEnabled;
+        $self = clone $this;
+        $self['centralExchangeRatesEnabled'] = $centralExchangeRatesEnabled;
 
-        return $obj;
+        return $self;
     }
 }

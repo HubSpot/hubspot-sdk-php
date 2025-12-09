@@ -51,18 +51,18 @@ final class SpendDeleteParams implements BaseModel
      */
     public static function with(string $campaignGuid): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['campaignGuid'] = $campaignGuid;
+        $self['campaignGuid'] = $campaignGuid;
 
-        return $obj;
+        return $self;
     }
 
     public function withCampaignGuid(string $campaignGuid): self
     {
-        $obj = clone $this;
-        $obj['campaignGuid'] = $campaignGuid;
+        $self = clone $this;
+        $self['campaignGuid'] = $campaignGuid;
 
-        return $obj;
+        return $self;
     }
 }

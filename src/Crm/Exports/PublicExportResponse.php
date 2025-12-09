@@ -143,20 +143,20 @@ final class PublicExportResponse implements BaseModel
         ?string $exportName = null,
         ?int $recordCount = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['id'] = $id;
-        $obj['createdAt'] = $createdAt;
-        $obj['exportState'] = $exportState;
-        $obj['exportType'] = $exportType;
-        $obj['objectProperties'] = $objectProperties;
-        $obj['objectType'] = $objectType;
-        $obj['updatedAt'] = $updatedAt;
+        $self['id'] = $id;
+        $self['createdAt'] = $createdAt;
+        $self['exportState'] = $exportState;
+        $self['exportType'] = $exportType;
+        $self['objectProperties'] = $objectProperties;
+        $self['objectType'] = $objectType;
+        $self['updatedAt'] = $updatedAt;
 
-        null !== $exportName && $obj['exportName'] = $exportName;
-        null !== $recordCount && $obj['recordCount'] = $recordCount;
+        null !== $exportName && $self['exportName'] = $exportName;
+        null !== $recordCount && $self['recordCount'] = $recordCount;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -164,10 +164,10 @@ final class PublicExportResponse implements BaseModel
      */
     public function withID(string $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -175,10 +175,10 @@ final class PublicExportResponse implements BaseModel
      */
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
-        $obj = clone $this;
-        $obj['createdAt'] = $createdAt;
+        $self = clone $this;
+        $self['createdAt'] = $createdAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -188,10 +188,10 @@ final class PublicExportResponse implements BaseModel
      */
     public function withExportState(ExportState|string $exportState): self
     {
-        $obj = clone $this;
-        $obj['exportState'] = $exportState;
+        $self = clone $this;
+        $self['exportState'] = $exportState;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -201,10 +201,10 @@ final class PublicExportResponse implements BaseModel
      */
     public function withExportType(ExportType|string $exportType): self
     {
-        $obj = clone $this;
-        $obj['exportType'] = $exportType;
+        $self = clone $this;
+        $self['exportType'] = $exportType;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -214,10 +214,10 @@ final class PublicExportResponse implements BaseModel
      */
     public function withObjectProperties(array $objectProperties): self
     {
-        $obj = clone $this;
-        $obj['objectProperties'] = $objectProperties;
+        $self = clone $this;
+        $self['objectProperties'] = $objectProperties;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -225,10 +225,10 @@ final class PublicExportResponse implements BaseModel
      */
     public function withObjectType(string $objectType): self
     {
-        $obj = clone $this;
-        $obj['objectType'] = $objectType;
+        $self = clone $this;
+        $self['objectType'] = $objectType;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -236,10 +236,10 @@ final class PublicExportResponse implements BaseModel
      */
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
-        $obj = clone $this;
-        $obj['updatedAt'] = $updatedAt;
+        $self = clone $this;
+        $self['updatedAt'] = $updatedAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -247,10 +247,10 @@ final class PublicExportResponse implements BaseModel
      */
     public function withExportName(string $exportName): self
     {
-        $obj = clone $this;
-        $obj['exportName'] = $exportName;
+        $self = clone $this;
+        $self['exportName'] = $exportName;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -258,9 +258,9 @@ final class PublicExportResponse implements BaseModel
      */
     public function withRecordCount(int $recordCount): self
     {
-        $obj = clone $this;
-        $obj['recordCount'] = $recordCount;
+        $self = clone $this;
+        $self['recordCount'] = $recordCount;
 
-        return $obj;
+        return $self;
     }
 }

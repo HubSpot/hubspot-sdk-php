@@ -117,67 +117,67 @@ final class PublicSequenceStepResponse implements BaseModel
         PublicEmailPatternResponse|array|null $emailPattern = null,
         PublicTaskPatternResponse|array|null $taskPattern = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['id'] = $id;
-        $obj['actionType'] = $actionType;
-        $obj['createdAt'] = $createdAt;
-        $obj['delayMillis'] = $delayMillis;
-        $obj['stepOrder'] = $stepOrder;
-        $obj['updatedAt'] = $updatedAt;
+        $self['id'] = $id;
+        $self['actionType'] = $actionType;
+        $self['createdAt'] = $createdAt;
+        $self['delayMillis'] = $delayMillis;
+        $self['stepOrder'] = $stepOrder;
+        $self['updatedAt'] = $updatedAt;
 
-        null !== $emailPattern && $obj['emailPattern'] = $emailPattern;
-        null !== $taskPattern && $obj['taskPattern'] = $taskPattern;
+        null !== $emailPattern && $self['emailPattern'] = $emailPattern;
+        null !== $taskPattern && $self['taskPattern'] = $taskPattern;
 
-        return $obj;
+        return $self;
     }
 
     public function withID(string $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     public function withActionType(string $actionType): self
     {
-        $obj = clone $this;
-        $obj['actionType'] = $actionType;
+        $self = clone $this;
+        $self['actionType'] = $actionType;
 
-        return $obj;
+        return $self;
     }
 
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
-        $obj = clone $this;
-        $obj['createdAt'] = $createdAt;
+        $self = clone $this;
+        $self['createdAt'] = $createdAt;
 
-        return $obj;
+        return $self;
     }
 
     public function withDelayMillis(int $delayMillis): self
     {
-        $obj = clone $this;
-        $obj['delayMillis'] = $delayMillis;
+        $self = clone $this;
+        $self['delayMillis'] = $delayMillis;
 
-        return $obj;
+        return $self;
     }
 
     public function withStepOrder(int $stepOrder): self
     {
-        $obj = clone $this;
-        $obj['stepOrder'] = $stepOrder;
+        $self = clone $this;
+        $self['stepOrder'] = $stepOrder;
 
-        return $obj;
+        return $self;
     }
 
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
-        $obj = clone $this;
-        $obj['updatedAt'] = $updatedAt;
+        $self = clone $this;
+        $self['updatedAt'] = $updatedAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -192,10 +192,10 @@ final class PublicSequenceStepResponse implements BaseModel
     public function withEmailPattern(
         PublicEmailPatternResponse|array $emailPattern
     ): self {
-        $obj = clone $this;
-        $obj['emailPattern'] = $emailPattern;
+        $self = clone $this;
+        $self['emailPattern'] = $emailPattern;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -215,9 +215,9 @@ final class PublicSequenceStepResponse implements BaseModel
     public function withTaskPattern(
         PublicTaskPatternResponse|array $taskPattern
     ): self {
-        $obj = clone $this;
-        $obj['taskPattern'] = $taskPattern;
+        $self = clone $this;
+        $self['taskPattern'] = $taskPattern;
 
-        return $obj;
+        return $self;
     }
 }

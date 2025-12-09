@@ -49,18 +49,18 @@ final class SettingGetRevisionParams implements BaseModel
      */
     public static function with(string $blogID): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['blogID'] = $blogID;
+        $self['blogID'] = $blogID;
 
-        return $obj;
+        return $self;
     }
 
     public function withBlogID(string $blogID): self
     {
-        $obj = clone $this;
-        $obj['blogID'] = $blogID;
+        $self = clone $this;
+        $self['blogID'] = $blogID;
 
-        return $obj;
+        return $self;
     }
 }

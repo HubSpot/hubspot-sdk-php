@@ -54,54 +54,54 @@ final class ContactName implements BaseModel
         ?string $prefix = null,
         ?string $suffix = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $firstName && $obj['firstName'] = $firstName;
-        null !== $lastName && $obj['lastName'] = $lastName;
-        null !== $middleName && $obj['middleName'] = $middleName;
-        null !== $prefix && $obj['prefix'] = $prefix;
-        null !== $suffix && $obj['suffix'] = $suffix;
+        null !== $firstName && $self['firstName'] = $firstName;
+        null !== $lastName && $self['lastName'] = $lastName;
+        null !== $middleName && $self['middleName'] = $middleName;
+        null !== $prefix && $self['prefix'] = $prefix;
+        null !== $suffix && $self['suffix'] = $suffix;
 
-        return $obj;
+        return $self;
     }
 
     public function withFirstName(string $firstName): self
     {
-        $obj = clone $this;
-        $obj['firstName'] = $firstName;
+        $self = clone $this;
+        $self['firstName'] = $firstName;
 
-        return $obj;
+        return $self;
     }
 
     public function withLastName(string $lastName): self
     {
-        $obj = clone $this;
-        $obj['lastName'] = $lastName;
+        $self = clone $this;
+        $self['lastName'] = $lastName;
 
-        return $obj;
+        return $self;
     }
 
     public function withMiddleName(string $middleName): self
     {
-        $obj = clone $this;
-        $obj['middleName'] = $middleName;
+        $self = clone $this;
+        $self['middleName'] = $middleName;
 
-        return $obj;
+        return $self;
     }
 
     public function withPrefix(string $prefix): self
     {
-        $obj = clone $this;
-        $obj['prefix'] = $prefix;
+        $self = clone $this;
+        $self['prefix'] = $prefix;
 
-        return $obj;
+        return $self;
     }
 
     public function withSuffix(string $suffix): self
     {
-        $obj = clone $this;
-        $obj['suffix'] = $suffix;
+        $self = clone $this;
+        $self['suffix'] = $suffix;
 
-        return $obj;
+        return $self;
     }
 }

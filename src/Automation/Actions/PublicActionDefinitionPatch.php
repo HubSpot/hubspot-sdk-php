@@ -123,27 +123,27 @@ final class PublicActionDefinitionPatch implements BaseModel
         ?array $outputFields = null,
         ?bool $published = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $actionURL && $obj['actionURL'] = $actionURL;
-        null !== $executionRules && $obj['executionRules'] = $executionRules;
-        null !== $inputFieldDependencies && $obj['inputFieldDependencies'] = $inputFieldDependencies;
-        null !== $inputFields && $obj['inputFields'] = $inputFields;
-        null !== $labels && $obj['labels'] = $labels;
-        null !== $objectRequestOptions && $obj['objectRequestOptions'] = $objectRequestOptions;
-        null !== $objectTypes && $obj['objectTypes'] = $objectTypes;
-        null !== $outputFields && $obj['outputFields'] = $outputFields;
-        null !== $published && $obj['published'] = $published;
+        null !== $actionURL && $self['actionURL'] = $actionURL;
+        null !== $executionRules && $self['executionRules'] = $executionRules;
+        null !== $inputFieldDependencies && $self['inputFieldDependencies'] = $inputFieldDependencies;
+        null !== $inputFields && $self['inputFields'] = $inputFields;
+        null !== $labels && $self['labels'] = $labels;
+        null !== $objectRequestOptions && $self['objectRequestOptions'] = $objectRequestOptions;
+        null !== $objectTypes && $self['objectTypes'] = $objectTypes;
+        null !== $outputFields && $self['outputFields'] = $outputFields;
+        null !== $published && $self['published'] = $published;
 
-        return $obj;
+        return $self;
     }
 
     public function withActionURL(string $actionURL): self
     {
-        $obj = clone $this;
-        $obj['actionURL'] = $actionURL;
+        $self = clone $this;
+        $self['actionURL'] = $actionURL;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -153,10 +153,10 @@ final class PublicActionDefinitionPatch implements BaseModel
      */
     public function withExecutionRules(array $executionRules): self
     {
-        $obj = clone $this;
-        $obj['executionRules'] = $executionRules;
+        $self = clone $this;
+        $self['executionRules'] = $executionRules;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -174,10 +174,10 @@ final class PublicActionDefinitionPatch implements BaseModel
     public function withInputFieldDependencies(
         array $inputFieldDependencies
     ): self {
-        $obj = clone $this;
-        $obj['inputFieldDependencies'] = $inputFieldDependencies;
+        $self = clone $this;
+        $self['inputFieldDependencies'] = $inputFieldDependencies;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -190,10 +190,10 @@ final class PublicActionDefinitionPatch implements BaseModel
      */
     public function withInputFields(array $inputFields): self
     {
-        $obj = clone $this;
-        $obj['inputFields'] = $inputFields;
+        $self = clone $this;
+        $self['inputFields'] = $inputFields;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -211,10 +211,10 @@ final class PublicActionDefinitionPatch implements BaseModel
      */
     public function withLabels(array $labels): self
     {
-        $obj = clone $this;
-        $obj['labels'] = $labels;
+        $self = clone $this;
+        $self['labels'] = $labels;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -225,10 +225,10 @@ final class PublicActionDefinitionPatch implements BaseModel
     public function withObjectRequestOptions(
         PublicObjectRequestOptions|array $objectRequestOptions
     ): self {
-        $obj = clone $this;
-        $obj['objectRequestOptions'] = $objectRequestOptions;
+        $self = clone $this;
+        $self['objectRequestOptions'] = $objectRequestOptions;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -236,10 +236,10 @@ final class PublicActionDefinitionPatch implements BaseModel
      */
     public function withObjectTypes(array $objectTypes): self
     {
-        $obj = clone $this;
-        $obj['objectTypes'] = $objectTypes;
+        $self = clone $this;
+        $self['objectTypes'] = $objectTypes;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -249,17 +249,17 @@ final class PublicActionDefinitionPatch implements BaseModel
      */
     public function withOutputFields(array $outputFields): self
     {
-        $obj = clone $this;
-        $obj['outputFields'] = $outputFields;
+        $self = clone $this;
+        $self['outputFields'] = $outputFields;
 
-        return $obj;
+        return $self;
     }
 
     public function withPublished(bool $published): self
     {
-        $obj = clone $this;
-        $obj['published'] = $published;
+        $self = clone $this;
+        $self['published'] = $published;
 
-        return $obj;
+        return $self;
     }
 }

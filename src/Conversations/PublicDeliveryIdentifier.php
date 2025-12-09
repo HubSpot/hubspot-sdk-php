@@ -48,27 +48,27 @@ final class PublicDeliveryIdentifier implements BaseModel
      */
     public static function with(string $type, string $value): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['type'] = $type;
-        $obj['value'] = $value;
+        $self['type'] = $type;
+        $self['value'] = $value;
 
-        return $obj;
+        return $self;
     }
 
     public function withType(string $type): self
     {
-        $obj = clone $this;
-        $obj['type'] = $type;
+        $self = clone $this;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 
     public function withValue(string $value): self
     {
-        $obj = clone $this;
-        $obj['value'] = $value;
+        $self = clone $this;
+        $self['value'] = $value;
 
-        return $obj;
+        return $self;
     }
 }

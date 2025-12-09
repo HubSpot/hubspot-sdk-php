@@ -104,41 +104,41 @@ final class PublicSearchResults implements BaseModel
         int $total,
         ?string $searchTerm = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['limit'] = $limit;
-        $obj['offset'] = $offset;
-        $obj['page'] = $page;
-        $obj['results'] = $results;
-        $obj['total'] = $total;
+        $self['limit'] = $limit;
+        $self['offset'] = $offset;
+        $self['page'] = $page;
+        $self['results'] = $results;
+        $self['total'] = $total;
 
-        null !== $searchTerm && $obj['searchTerm'] = $searchTerm;
+        null !== $searchTerm && $self['searchTerm'] = $searchTerm;
 
-        return $obj;
+        return $self;
     }
 
     public function withLimit(int $limit): self
     {
-        $obj = clone $this;
-        $obj['limit'] = $limit;
+        $self = clone $this;
+        $self['limit'] = $limit;
 
-        return $obj;
+        return $self;
     }
 
     public function withOffset(int $offset): self
     {
-        $obj = clone $this;
-        $obj['offset'] = $offset;
+        $self = clone $this;
+        $self['offset'] = $offset;
 
-        return $obj;
+        return $self;
     }
 
     public function withPage(int $page): self
     {
-        $obj = clone $this;
-        $obj['page'] = $page;
+        $self = clone $this;
+        $self['page'] = $page;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -164,25 +164,25 @@ final class PublicSearchResults implements BaseModel
      */
     public function withResults(array $results): self
     {
-        $obj = clone $this;
-        $obj['results'] = $results;
+        $self = clone $this;
+        $self['results'] = $results;
 
-        return $obj;
+        return $self;
     }
 
     public function withTotal(int $total): self
     {
-        $obj = clone $this;
-        $obj['total'] = $total;
+        $self = clone $this;
+        $self['total'] = $total;
 
-        return $obj;
+        return $self;
     }
 
     public function withSearchTerm(string $searchTerm): self
     {
-        $obj = clone $this;
-        $obj['searchTerm'] = $searchTerm;
+        $self = clone $this;
+        $self['searchTerm'] = $searchTerm;
 
-        return $obj;
+        return $self;
     }
 }

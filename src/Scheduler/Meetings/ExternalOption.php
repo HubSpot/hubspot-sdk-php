@@ -93,72 +93,72 @@ final class ExternalOption implements BaseModel
         bool $readOnly,
         string $value,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['description'] = $description;
-        $obj['displayOrder'] = $displayOrder;
-        $obj['doubleData'] = $doubleData;
-        $obj['hidden'] = $hidden;
-        $obj['label'] = $label;
-        $obj['readOnly'] = $readOnly;
-        $obj['value'] = $value;
+        $self['description'] = $description;
+        $self['displayOrder'] = $displayOrder;
+        $self['doubleData'] = $doubleData;
+        $self['hidden'] = $hidden;
+        $self['label'] = $label;
+        $self['readOnly'] = $readOnly;
+        $self['value'] = $value;
 
-        return $obj;
+        return $self;
     }
 
     public function withDescription(string $description): self
     {
-        $obj = clone $this;
-        $obj['description'] = $description;
+        $self = clone $this;
+        $self['description'] = $description;
 
-        return $obj;
+        return $self;
     }
 
     public function withDisplayOrder(int $displayOrder): self
     {
-        $obj = clone $this;
-        $obj['displayOrder'] = $displayOrder;
+        $self = clone $this;
+        $self['displayOrder'] = $displayOrder;
 
-        return $obj;
+        return $self;
     }
 
     public function withDoubleData(float $doubleData): self
     {
-        $obj = clone $this;
-        $obj['doubleData'] = $doubleData;
+        $self = clone $this;
+        $self['doubleData'] = $doubleData;
 
-        return $obj;
+        return $self;
     }
 
     public function withHidden(bool $hidden): self
     {
-        $obj = clone $this;
-        $obj['hidden'] = $hidden;
+        $self = clone $this;
+        $self['hidden'] = $hidden;
 
-        return $obj;
+        return $self;
     }
 
     public function withLabel(string $label): self
     {
-        $obj = clone $this;
-        $obj['label'] = $label;
+        $self = clone $this;
+        $self['label'] = $label;
 
-        return $obj;
+        return $self;
     }
 
     public function withReadOnly(bool $readOnly): self
     {
-        $obj = clone $this;
-        $obj['readOnly'] = $readOnly;
+        $self = clone $this;
+        $self['readOnly'] = $readOnly;
 
-        return $obj;
+        return $self;
     }
 
     public function withValue(string $value): self
     {
-        $obj = clone $this;
-        $obj['value'] = $value;
+        $self = clone $this;
+        $self['value'] = $value;
 
-        return $obj;
+        return $self;
     }
 }

@@ -51,18 +51,18 @@ final class FolderMoveParams implements BaseModel
      */
     public static function with(string $folderID): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['folderID'] = $folderID;
+        $self['folderID'] = $folderID;
 
-        return $obj;
+        return $self;
     }
 
     public function withFolderID(string $folderID): self
     {
-        $obj = clone $this;
-        $obj['folderID'] = $folderID;
+        $self = clone $this;
+        $self['folderID'] = $folderID;
 
-        return $obj;
+        return $self;
     }
 }

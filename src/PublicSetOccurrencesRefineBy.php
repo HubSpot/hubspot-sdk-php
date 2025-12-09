@@ -56,20 +56,20 @@ final class PublicSetOccurrencesRefineBy implements BaseModel
         string $setType,
         Type|string $type = 'SET_OCCURRENCES'
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['setType'] = $setType;
-        $obj['type'] = $type;
+        $self['setType'] = $setType;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 
     public function withSetType(string $setType): self
     {
-        $obj = clone $this;
-        $obj['setType'] = $setType;
+        $self = clone $this;
+        $self['setType'] = $setType;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -77,9 +77,9 @@ final class PublicSetOccurrencesRefineBy implements BaseModel
      */
     public function withType(Type|string $type): self
     {
-        $obj = clone $this;
-        $obj['type'] = $type;
+        $self = clone $this;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 }

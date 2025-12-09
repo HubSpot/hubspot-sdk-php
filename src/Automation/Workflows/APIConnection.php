@@ -48,27 +48,27 @@ final class APIConnection implements BaseModel
      */
     public static function with(string $edgeType, string $nextActionID): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['edgeType'] = $edgeType;
-        $obj['nextActionID'] = $nextActionID;
+        $self['edgeType'] = $edgeType;
+        $self['nextActionID'] = $nextActionID;
 
-        return $obj;
+        return $self;
     }
 
     public function withEdgeType(string $edgeType): self
     {
-        $obj = clone $this;
-        $obj['edgeType'] = $edgeType;
+        $self = clone $this;
+        $self['edgeType'] = $edgeType;
 
-        return $obj;
+        return $self;
     }
 
     public function withNextActionID(string $nextActionID): self
     {
-        $obj = clone $this;
-        $obj['nextActionID'] = $nextActionID;
+        $self = clone $this;
+        $self['nextActionID'] = $nextActionID;
 
-        return $obj;
+        return $self;
     }
 }

@@ -282,26 +282,26 @@ final class PublicUnifiedEventsFilterBranch implements BaseModel
         FilterBranchType|string $filterBranchType = 'UNIFIED_EVENTS',
         PublicNumOccurrencesRefineBy|array|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation|null $coalescingRefineBy = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['eventTypeID'] = $eventTypeID;
-        $obj['filterBranches'] = $filterBranches;
-        $obj['filterBranchOperator'] = $filterBranchOperator;
-        $obj['filterBranchType'] = $filterBranchType;
-        $obj['filters'] = $filters;
-        $obj['operator'] = $operator;
+        $self['eventTypeID'] = $eventTypeID;
+        $self['filterBranches'] = $filterBranches;
+        $self['filterBranchOperator'] = $filterBranchOperator;
+        $self['filterBranchType'] = $filterBranchType;
+        $self['filters'] = $filters;
+        $self['operator'] = $operator;
 
-        null !== $coalescingRefineBy && $obj['coalescingRefineBy'] = $coalescingRefineBy;
+        null !== $coalescingRefineBy && $self['coalescingRefineBy'] = $coalescingRefineBy;
 
-        return $obj;
+        return $self;
     }
 
     public function withEventTypeID(string $eventTypeID): self
     {
-        $obj = clone $this;
-        $obj['eventTypeID'] = $eventTypeID;
+        $self = clone $this;
+        $self['eventTypeID'] = $eventTypeID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -309,18 +309,18 @@ final class PublicUnifiedEventsFilterBranch implements BaseModel
      */
     public function withFilterBranches(array $filterBranches): self
     {
-        $obj = clone $this;
-        $obj['filterBranches'] = $filterBranches;
+        $self = clone $this;
+        $self['filterBranches'] = $filterBranches;
 
-        return $obj;
+        return $self;
     }
 
     public function withFilterBranchOperator(string $filterBranchOperator): self
     {
-        $obj = clone $this;
-        $obj['filterBranchOperator'] = $filterBranchOperator;
+        $self = clone $this;
+        $self['filterBranchOperator'] = $filterBranchOperator;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -329,10 +329,10 @@ final class PublicUnifiedEventsFilterBranch implements BaseModel
     public function withFilterBranchType(
         FilterBranchType|string $filterBranchType
     ): self {
-        $obj = clone $this;
-        $obj['filterBranchType'] = $filterBranchType;
+        $self = clone $this;
+        $self['filterBranchType'] = $filterBranchType;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -469,10 +469,10 @@ final class PublicUnifiedEventsFilterBranch implements BaseModel
      */
     public function withFilters(array $filters): self
     {
-        $obj = clone $this;
-        $obj['filters'] = $filters;
+        $self = clone $this;
+        $self['filters'] = $filters;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -480,10 +480,10 @@ final class PublicUnifiedEventsFilterBranch implements BaseModel
      */
     public function withOperator(Operator|string $operator): self
     {
-        $obj = clone $this;
-        $obj['operator'] = $operator;
+        $self = clone $this;
+        $self['operator'] = $operator;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -534,9 +534,9 @@ final class PublicUnifiedEventsFilterBranch implements BaseModel
     public function withCoalescingRefineBy(
         PublicNumOccurrencesRefineBy|array|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation $coalescingRefineBy,
     ): self {
-        $obj = clone $this;
-        $obj['coalescingRefineBy'] = $coalescingRefineBy;
+        $self = clone $this;
+        $self['coalescingRefineBy'] = $coalescingRefineBy;
 
-        return $obj;
+        return $self;
     }
 }

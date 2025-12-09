@@ -320,37 +320,37 @@ final class AssociationDefinition implements BaseModel
         ?string $label = null,
         ToObjectType|string|null $toObjectType = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['id'] = $id;
-        $obj['allowsCustomLabels'] = $allowsCustomLabels;
-        $obj['cardinality'] = $cardinality;
-        $obj['category'] = $category;
-        $obj['fromObjectTypeID'] = $fromObjectTypeID;
-        $obj['hasAllAssociatedObjects'] = $hasAllAssociatedObjects;
-        $obj['hasCascadingDeletes'] = $hasCascadingDeletes;
-        $obj['hasUserEnforcedMaxFromObjectIDs'] = $hasUserEnforcedMaxFromObjectIDs;
-        $obj['hasUserEnforcedMaxToObjectIDs'] = $hasUserEnforcedMaxToObjectIDs;
-        $obj['hidden'] = $hidden;
-        $obj['inverseAllowsCustomLabels'] = $inverseAllowsCustomLabels;
-        $obj['inverseCardinality'] = $inverseCardinality;
-        $obj['inverseHasAllAssociatedObjects'] = $inverseHasAllAssociatedObjects;
-        $obj['inverseID'] = $inverseID;
-        $obj['inverseName'] = $inverseName;
-        $obj['isInversePrimary'] = $isInversePrimary;
-        $obj['isPrimary'] = $isPrimary;
-        $obj['maxFromObjectIDs'] = $maxFromObjectIDs;
-        $obj['maxToObjectIDs'] = $maxToObjectIDs;
-        $obj['name'] = $name;
-        $obj['portalUniqueIdentifier'] = $portalUniqueIdentifier;
-        $obj['toObjectTypeID'] = $toObjectTypeID;
+        $self['id'] = $id;
+        $self['allowsCustomLabels'] = $allowsCustomLabels;
+        $self['cardinality'] = $cardinality;
+        $self['category'] = $category;
+        $self['fromObjectTypeID'] = $fromObjectTypeID;
+        $self['hasAllAssociatedObjects'] = $hasAllAssociatedObjects;
+        $self['hasCascadingDeletes'] = $hasCascadingDeletes;
+        $self['hasUserEnforcedMaxFromObjectIDs'] = $hasUserEnforcedMaxFromObjectIDs;
+        $self['hasUserEnforcedMaxToObjectIDs'] = $hasUserEnforcedMaxToObjectIDs;
+        $self['hidden'] = $hidden;
+        $self['inverseAllowsCustomLabels'] = $inverseAllowsCustomLabels;
+        $self['inverseCardinality'] = $inverseCardinality;
+        $self['inverseHasAllAssociatedObjects'] = $inverseHasAllAssociatedObjects;
+        $self['inverseID'] = $inverseID;
+        $self['inverseName'] = $inverseName;
+        $self['isInversePrimary'] = $isInversePrimary;
+        $self['isPrimary'] = $isPrimary;
+        $self['maxFromObjectIDs'] = $maxFromObjectIDs;
+        $self['maxToObjectIDs'] = $maxToObjectIDs;
+        $self['name'] = $name;
+        $self['portalUniqueIdentifier'] = $portalUniqueIdentifier;
+        $self['toObjectTypeID'] = $toObjectTypeID;
 
-        null !== $fromObjectType && $obj['fromObjectType'] = $fromObjectType;
-        null !== $inverseLabel && $obj['inverseLabel'] = $inverseLabel;
-        null !== $label && $obj['label'] = $label;
-        null !== $toObjectType && $obj['toObjectType'] = $toObjectType;
+        null !== $fromObjectType && $self['fromObjectType'] = $fromObjectType;
+        null !== $inverseLabel && $self['inverseLabel'] = $inverseLabel;
+        null !== $label && $self['label'] = $label;
+        null !== $toObjectType && $self['toObjectType'] = $toObjectType;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -358,10 +358,10 @@ final class AssociationDefinition implements BaseModel
      */
     public function withID(int $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -369,10 +369,10 @@ final class AssociationDefinition implements BaseModel
      */
     public function withAllowsCustomLabels(bool $allowsCustomLabels): self
     {
-        $obj = clone $this;
-        $obj['allowsCustomLabels'] = $allowsCustomLabels;
+        $self = clone $this;
+        $self['allowsCustomLabels'] = $allowsCustomLabels;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -382,10 +382,10 @@ final class AssociationDefinition implements BaseModel
      */
     public function withCardinality(Cardinality|string $cardinality): self
     {
-        $obj = clone $this;
-        $obj['cardinality'] = $cardinality;
+        $self = clone $this;
+        $self['cardinality'] = $cardinality;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -395,10 +395,10 @@ final class AssociationDefinition implements BaseModel
      */
     public function withCategory(Category|string $category): self
     {
-        $obj = clone $this;
-        $obj['category'] = $category;
+        $self = clone $this;
+        $self['category'] = $category;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -406,10 +406,10 @@ final class AssociationDefinition implements BaseModel
      */
     public function withFromObjectTypeID(string $fromObjectTypeID): self
     {
-        $obj = clone $this;
-        $obj['fromObjectTypeID'] = $fromObjectTypeID;
+        $self = clone $this;
+        $self['fromObjectTypeID'] = $fromObjectTypeID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -418,10 +418,10 @@ final class AssociationDefinition implements BaseModel
     public function withHasAllAssociatedObjects(
         bool $hasAllAssociatedObjects
     ): self {
-        $obj = clone $this;
-        $obj['hasAllAssociatedObjects'] = $hasAllAssociatedObjects;
+        $self = clone $this;
+        $self['hasAllAssociatedObjects'] = $hasAllAssociatedObjects;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -429,10 +429,10 @@ final class AssociationDefinition implements BaseModel
      */
     public function withHasCascadingDeletes(bool $hasCascadingDeletes): self
     {
-        $obj = clone $this;
-        $obj['hasCascadingDeletes'] = $hasCascadingDeletes;
+        $self = clone $this;
+        $self['hasCascadingDeletes'] = $hasCascadingDeletes;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -441,10 +441,10 @@ final class AssociationDefinition implements BaseModel
     public function withHasUserEnforcedMaxFromObjectIDs(
         bool $hasUserEnforcedMaxFromObjectIDs
     ): self {
-        $obj = clone $this;
-        $obj['hasUserEnforcedMaxFromObjectIDs'] = $hasUserEnforcedMaxFromObjectIDs;
+        $self = clone $this;
+        $self['hasUserEnforcedMaxFromObjectIDs'] = $hasUserEnforcedMaxFromObjectIDs;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -453,10 +453,10 @@ final class AssociationDefinition implements BaseModel
     public function withHasUserEnforcedMaxToObjectIDs(
         bool $hasUserEnforcedMaxToObjectIDs
     ): self {
-        $obj = clone $this;
-        $obj['hasUserEnforcedMaxToObjectIDs'] = $hasUserEnforcedMaxToObjectIDs;
+        $self = clone $this;
+        $self['hasUserEnforcedMaxToObjectIDs'] = $hasUserEnforcedMaxToObjectIDs;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -464,10 +464,10 @@ final class AssociationDefinition implements BaseModel
      */
     public function withHidden(bool $hidden): self
     {
-        $obj = clone $this;
-        $obj['hidden'] = $hidden;
+        $self = clone $this;
+        $self['hidden'] = $hidden;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -476,10 +476,10 @@ final class AssociationDefinition implements BaseModel
     public function withInverseAllowsCustomLabels(
         bool $inverseAllowsCustomLabels
     ): self {
-        $obj = clone $this;
-        $obj['inverseAllowsCustomLabels'] = $inverseAllowsCustomLabels;
+        $self = clone $this;
+        $self['inverseAllowsCustomLabels'] = $inverseAllowsCustomLabels;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -490,10 +490,10 @@ final class AssociationDefinition implements BaseModel
     public function withInverseCardinality(
         InverseCardinality|string $inverseCardinality
     ): self {
-        $obj = clone $this;
-        $obj['inverseCardinality'] = $inverseCardinality;
+        $self = clone $this;
+        $self['inverseCardinality'] = $inverseCardinality;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -502,10 +502,10 @@ final class AssociationDefinition implements BaseModel
     public function withInverseHasAllAssociatedObjects(
         bool $inverseHasAllAssociatedObjects
     ): self {
-        $obj = clone $this;
-        $obj['inverseHasAllAssociatedObjects'] = $inverseHasAllAssociatedObjects;
+        $self = clone $this;
+        $self['inverseHasAllAssociatedObjects'] = $inverseHasAllAssociatedObjects;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -513,10 +513,10 @@ final class AssociationDefinition implements BaseModel
      */
     public function withInverseID(int $inverseID): self
     {
-        $obj = clone $this;
-        $obj['inverseID'] = $inverseID;
+        $self = clone $this;
+        $self['inverseID'] = $inverseID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -524,10 +524,10 @@ final class AssociationDefinition implements BaseModel
      */
     public function withInverseName(string $inverseName): self
     {
-        $obj = clone $this;
-        $obj['inverseName'] = $inverseName;
+        $self = clone $this;
+        $self['inverseName'] = $inverseName;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -535,10 +535,10 @@ final class AssociationDefinition implements BaseModel
      */
     public function withIsInversePrimary(bool $isInversePrimary): self
     {
-        $obj = clone $this;
-        $obj['isInversePrimary'] = $isInversePrimary;
+        $self = clone $this;
+        $self['isInversePrimary'] = $isInversePrimary;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -546,10 +546,10 @@ final class AssociationDefinition implements BaseModel
      */
     public function withIsPrimary(bool $isPrimary): self
     {
-        $obj = clone $this;
-        $obj['isPrimary'] = $isPrimary;
+        $self = clone $this;
+        $self['isPrimary'] = $isPrimary;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -557,10 +557,10 @@ final class AssociationDefinition implements BaseModel
      */
     public function withMaxFromObjectIDs(int $maxFromObjectIDs): self
     {
-        $obj = clone $this;
-        $obj['maxFromObjectIDs'] = $maxFromObjectIDs;
+        $self = clone $this;
+        $self['maxFromObjectIDs'] = $maxFromObjectIDs;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -568,10 +568,10 @@ final class AssociationDefinition implements BaseModel
      */
     public function withMaxToObjectIDs(int $maxToObjectIDs): self
     {
-        $obj = clone $this;
-        $obj['maxToObjectIDs'] = $maxToObjectIDs;
+        $self = clone $this;
+        $self['maxToObjectIDs'] = $maxToObjectIDs;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -579,10 +579,10 @@ final class AssociationDefinition implements BaseModel
      */
     public function withName(string $name): self
     {
-        $obj = clone $this;
-        $obj['name'] = $name;
+        $self = clone $this;
+        $self['name'] = $name;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -591,10 +591,10 @@ final class AssociationDefinition implements BaseModel
     public function withPortalUniqueIdentifier(
         string $portalUniqueIdentifier
     ): self {
-        $obj = clone $this;
-        $obj['portalUniqueIdentifier'] = $portalUniqueIdentifier;
+        $self = clone $this;
+        $self['portalUniqueIdentifier'] = $portalUniqueIdentifier;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -602,10 +602,10 @@ final class AssociationDefinition implements BaseModel
      */
     public function withToObjectTypeID(string $toObjectTypeID): self
     {
-        $obj = clone $this;
-        $obj['toObjectTypeID'] = $toObjectTypeID;
+        $self = clone $this;
+        $self['toObjectTypeID'] = $toObjectTypeID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -616,10 +616,10 @@ final class AssociationDefinition implements BaseModel
     public function withFromObjectType(
         FromObjectType|string $fromObjectType
     ): self {
-        $obj = clone $this;
-        $obj['fromObjectType'] = $fromObjectType;
+        $self = clone $this;
+        $self['fromObjectType'] = $fromObjectType;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -627,10 +627,10 @@ final class AssociationDefinition implements BaseModel
      */
     public function withInverseLabel(string $inverseLabel): self
     {
-        $obj = clone $this;
-        $obj['inverseLabel'] = $inverseLabel;
+        $self = clone $this;
+        $self['inverseLabel'] = $inverseLabel;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -638,10 +638,10 @@ final class AssociationDefinition implements BaseModel
      */
     public function withLabel(string $label): self
     {
-        $obj = clone $this;
-        $obj['label'] = $label;
+        $self = clone $this;
+        $self['label'] = $label;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -651,9 +651,9 @@ final class AssociationDefinition implements BaseModel
      */
     public function withToObjectType(ToObjectType|string $toObjectType): self
     {
-        $obj = clone $this;
-        $obj['toObjectType'] = $toObjectType;
+        $self = clone $this;
+        $self['toObjectType'] = $toObjectType;
 
-        return $obj;
+        return $self;
     }
 }

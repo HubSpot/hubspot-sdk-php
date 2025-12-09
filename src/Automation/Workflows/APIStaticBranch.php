@@ -55,21 +55,21 @@ final class APIStaticBranch implements BaseModel
         string $branchValue,
         APIConnection|array|null $connection = null
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['branchValue'] = $branchValue;
+        $self['branchValue'] = $branchValue;
 
-        null !== $connection && $obj['connection'] = $connection;
+        null !== $connection && $self['connection'] = $connection;
 
-        return $obj;
+        return $self;
     }
 
     public function withBranchValue(string $branchValue): self
     {
-        $obj = clone $this;
-        $obj['branchValue'] = $branchValue;
+        $self = clone $this;
+        $self['branchValue'] = $branchValue;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -77,9 +77,9 @@ final class APIStaticBranch implements BaseModel
      */
     public function withConnection(APIConnection|array $connection): self
     {
-        $obj = clone $this;
-        $obj['connection'] = $connection;
+        $self = clone $this;
+        $self['connection'] = $connection;
 
-        return $obj;
+        return $self;
     }
 }

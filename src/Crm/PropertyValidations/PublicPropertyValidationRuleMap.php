@@ -70,12 +70,12 @@ final class PublicPropertyValidationRuleMap implements BaseModel
         string $propertyName,
         array $propertyValidationRules
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['propertyName'] = $propertyName;
-        $obj['propertyValidationRules'] = $propertyValidationRules;
+        $self['propertyName'] = $propertyName;
+        $self['propertyValidationRules'] = $propertyValidationRules;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -83,10 +83,10 @@ final class PublicPropertyValidationRuleMap implements BaseModel
      */
     public function withPropertyName(string $propertyName): self
     {
-        $obj = clone $this;
-        $obj['propertyName'] = $propertyName;
+        $self = clone $this;
+        $self['propertyName'] = $propertyName;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -99,9 +99,9 @@ final class PublicPropertyValidationRuleMap implements BaseModel
     public function withPropertyValidationRules(
         array $propertyValidationRules
     ): self {
-        $obj = clone $this;
-        $obj['propertyValidationRules'] = $propertyValidationRules;
+        $self = clone $this;
+        $self['propertyValidationRules'] = $propertyValidationRules;
 
-        return $obj;
+        return $self;
     }
 }

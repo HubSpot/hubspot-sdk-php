@@ -55,21 +55,21 @@ final class ContactPhone implements BaseModel
      */
     public static function with(string $phone, Type|string|null $type = null): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['phone'] = $phone;
+        $self['phone'] = $phone;
 
-        null !== $type && $obj['type'] = $type;
+        null !== $type && $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 
     public function withPhone(string $phone): self
     {
-        $obj = clone $this;
-        $obj['phone'] = $phone;
+        $self = clone $this;
+        $self['phone'] = $phone;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -77,9 +77,9 @@ final class ContactPhone implements BaseModel
      */
     public function withType(Type|string $type): self
     {
-        $obj = clone $this;
-        $obj['type'] = $type;
+        $self = clone $this;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 }

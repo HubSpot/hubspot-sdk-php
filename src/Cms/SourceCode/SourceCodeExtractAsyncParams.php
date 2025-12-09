@@ -51,18 +51,18 @@ final class SourceCodeExtractAsyncParams implements BaseModel
      */
     public static function with(string $path): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['path'] = $path;
+        $self['path'] = $path;
 
-        return $obj;
+        return $self;
     }
 
     public function withPath(string $path): self
     {
-        $obj = clone $this;
-        $obj['path'] = $path;
+        $self = clone $this;
+        $self['path'] = $path;
 
-        return $obj;
+        return $self;
     }
 }

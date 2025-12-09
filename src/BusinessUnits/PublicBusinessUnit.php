@@ -72,14 +72,14 @@ final class PublicBusinessUnit implements BaseModel
         string $name,
         PublicBusinessUnitLogoMetadata|array|null $logoMetadata = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['id'] = $id;
-        $obj['name'] = $name;
+        $self['id'] = $id;
+        $self['name'] = $name;
 
-        null !== $logoMetadata && $obj['logoMetadata'] = $logoMetadata;
+        null !== $logoMetadata && $self['logoMetadata'] = $logoMetadata;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -87,10 +87,10 @@ final class PublicBusinessUnit implements BaseModel
      */
     public function withID(string $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -98,10 +98,10 @@ final class PublicBusinessUnit implements BaseModel
      */
     public function withName(string $name): self
     {
-        $obj = clone $this;
-        $obj['name'] = $name;
+        $self = clone $this;
+        $self['name'] = $name;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -114,9 +114,9 @@ final class PublicBusinessUnit implements BaseModel
     public function withLogoMetadata(
         PublicBusinessUnitLogoMetadata|array $logoMetadata
     ): self {
-        $obj = clone $this;
-        $obj['logoMetadata'] = $logoMetadata;
+        $self = clone $this;
+        $self['logoMetadata'] = $logoMetadata;
 
-        return $obj;
+        return $self;
     }
 }

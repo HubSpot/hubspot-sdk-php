@@ -79,13 +79,13 @@ final class PublicBulkOptOutFromAllResponse implements BaseModel
         string $subscriberIDString,
         ?array $statuses = null
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['subscriberIDString'] = $subscriberIDString;
+        $self['subscriberIDString'] = $subscriberIDString;
 
-        null !== $statuses && $obj['statuses'] = $statuses;
+        null !== $statuses && $self['statuses'] = $statuses;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -93,10 +93,10 @@ final class PublicBulkOptOutFromAllResponse implements BaseModel
      */
     public function withSubscriberIDString(string $subscriberIDString): self
     {
-        $obj = clone $this;
-        $obj['subscriberIDString'] = $subscriberIDString;
+        $self = clone $this;
+        $self['subscriberIDString'] = $subscriberIDString;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -118,9 +118,9 @@ final class PublicBulkOptOutFromAllResponse implements BaseModel
      */
     public function withStatuses(array $statuses): self
     {
-        $obj = clone $this;
-        $obj['statuses'] = $statuses;
+        $self = clone $this;
+        $self['statuses'] = $statuses;
 
-        return $obj;
+        return $self;
     }
 }

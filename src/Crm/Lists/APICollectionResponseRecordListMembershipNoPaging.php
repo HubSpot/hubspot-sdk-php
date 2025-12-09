@@ -60,13 +60,13 @@ final class APICollectionResponseRecordListMembershipNoPaging implements BaseMod
      */
     public static function with(array $results, ?int $total = null): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['results'] = $results;
+        $self['results'] = $results;
 
-        null !== $total && $obj['total'] = $total;
+        null !== $total && $self['total'] = $total;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -80,17 +80,17 @@ final class APICollectionResponseRecordListMembershipNoPaging implements BaseMod
      */
     public function withResults(array $results): self
     {
-        $obj = clone $this;
-        $obj['results'] = $results;
+        $self = clone $this;
+        $self['results'] = $results;
 
-        return $obj;
+        return $self;
     }
 
     public function withTotal(int $total): self
     {
-        $obj = clone $this;
-        $obj['total'] = $total;
+        $self = clone $this;
+        $self['total'] = $total;
 
-        return $obj;
+        return $self;
     }
 }

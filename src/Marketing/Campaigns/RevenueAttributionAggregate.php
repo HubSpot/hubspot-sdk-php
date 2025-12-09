@@ -58,23 +58,23 @@ final class RevenueAttributionAggregate implements BaseModel
         ?int $dealsNumber = null,
         ?float $revenueAmount = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $contactsNumber && $obj['contactsNumber'] = $contactsNumber;
-        null !== $currencyCode && $obj['currencyCode'] = $currencyCode;
-        null !== $dealAmount && $obj['dealAmount'] = $dealAmount;
-        null !== $dealsNumber && $obj['dealsNumber'] = $dealsNumber;
-        null !== $revenueAmount && $obj['revenueAmount'] = $revenueAmount;
+        null !== $contactsNumber && $self['contactsNumber'] = $contactsNumber;
+        null !== $currencyCode && $self['currencyCode'] = $currencyCode;
+        null !== $dealAmount && $self['dealAmount'] = $dealAmount;
+        null !== $dealsNumber && $self['dealsNumber'] = $dealsNumber;
+        null !== $revenueAmount && $self['revenueAmount'] = $revenueAmount;
 
-        return $obj;
+        return $self;
     }
 
     public function withContactsNumber(int $contactsNumber): self
     {
-        $obj = clone $this;
-        $obj['contactsNumber'] = $contactsNumber;
+        $self = clone $this;
+        $self['contactsNumber'] = $contactsNumber;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -82,33 +82,33 @@ final class RevenueAttributionAggregate implements BaseModel
      */
     public function withCurrencyCode(CurrencyCode|string $currencyCode): self
     {
-        $obj = clone $this;
-        $obj['currencyCode'] = $currencyCode;
+        $self = clone $this;
+        $self['currencyCode'] = $currencyCode;
 
-        return $obj;
+        return $self;
     }
 
     public function withDealAmount(float $dealAmount): self
     {
-        $obj = clone $this;
-        $obj['dealAmount'] = $dealAmount;
+        $self = clone $this;
+        $self['dealAmount'] = $dealAmount;
 
-        return $obj;
+        return $self;
     }
 
     public function withDealsNumber(int $dealsNumber): self
     {
-        $obj = clone $this;
-        $obj['dealsNumber'] = $dealsNumber;
+        $self = clone $this;
+        $self['dealsNumber'] = $dealsNumber;
 
-        return $obj;
+        return $self;
     }
 
     public function withRevenueAmount(float $revenueAmount): self
     {
-        $obj = clone $this;
-        $obj['revenueAmount'] = $revenueAmount;
+        $self = clone $this;
+        $self['revenueAmount'] = $revenueAmount;
 
-        return $obj;
+        return $self;
     }
 }

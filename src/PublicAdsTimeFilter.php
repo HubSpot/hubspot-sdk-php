@@ -102,12 +102,12 @@ final class PublicAdsTimeFilter implements BaseModel
         PublicNumOccurrencesRefineBy|array|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation $pruningRefineBy,
         FilterType|string $filterType = 'ADS_TIME',
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['filterType'] = $filterType;
-        $obj['pruningRefineBy'] = $pruningRefineBy;
+        $self['filterType'] = $filterType;
+        $self['pruningRefineBy'] = $pruningRefineBy;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -115,10 +115,10 @@ final class PublicAdsTimeFilter implements BaseModel
      */
     public function withFilterType(FilterType|string $filterType): self
     {
-        $obj = clone $this;
-        $obj['filterType'] = $filterType;
+        $self = clone $this;
+        $self['filterType'] = $filterType;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -169,9 +169,9 @@ final class PublicAdsTimeFilter implements BaseModel
     public function withPruningRefineBy(
         PublicNumOccurrencesRefineBy|array|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation $pruningRefineBy,
     ): self {
-        $obj = clone $this;
-        $obj['pruningRefineBy'] = $pruningRefineBy;
+        $self = clone $this;
+        $self['pruningRefineBy'] = $pruningRefineBy;
 
-        return $obj;
+        return $self;
     }
 }

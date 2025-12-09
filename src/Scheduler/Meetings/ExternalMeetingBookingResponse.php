@@ -159,66 +159,66 @@ final class ExternalMeetingBookingResponse implements BaseModel
         ?string $webConferenceMeetingID = null,
         ?string $webConferenceURL = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['bookingTimezone'] = $bookingTimezone;
-        $obj['calendarEventID'] = $calendarEventID;
-        $obj['contactID'] = $contactID;
-        $obj['duration'] = $duration;
-        $obj['end'] = $end;
-        $obj['formFields'] = $formFields;
-        $obj['guestEmails'] = $guestEmails;
-        $obj['isOffline'] = $isOffline;
-        $obj['legalConsentResponses'] = $legalConsentResponses;
-        $obj['start'] = $start;
-        $obj['subject'] = $subject;
+        $self['bookingTimezone'] = $bookingTimezone;
+        $self['calendarEventID'] = $calendarEventID;
+        $self['contactID'] = $contactID;
+        $self['duration'] = $duration;
+        $self['end'] = $end;
+        $self['formFields'] = $formFields;
+        $self['guestEmails'] = $guestEmails;
+        $self['isOffline'] = $isOffline;
+        $self['legalConsentResponses'] = $legalConsentResponses;
+        $self['start'] = $start;
+        $self['subject'] = $subject;
 
-        null !== $locale && $obj['locale'] = $locale;
-        null !== $location && $obj['location'] = $location;
-        null !== $webConferenceMeetingID && $obj['webConferenceMeetingID'] = $webConferenceMeetingID;
-        null !== $webConferenceURL && $obj['webConferenceURL'] = $webConferenceURL;
+        null !== $locale && $self['locale'] = $locale;
+        null !== $location && $self['location'] = $location;
+        null !== $webConferenceMeetingID && $self['webConferenceMeetingID'] = $webConferenceMeetingID;
+        null !== $webConferenceURL && $self['webConferenceURL'] = $webConferenceURL;
 
-        return $obj;
+        return $self;
     }
 
     public function withBookingTimezone(string $bookingTimezone): self
     {
-        $obj = clone $this;
-        $obj['bookingTimezone'] = $bookingTimezone;
+        $self = clone $this;
+        $self['bookingTimezone'] = $bookingTimezone;
 
-        return $obj;
+        return $self;
     }
 
     public function withCalendarEventID(string $calendarEventID): self
     {
-        $obj = clone $this;
-        $obj['calendarEventID'] = $calendarEventID;
+        $self = clone $this;
+        $self['calendarEventID'] = $calendarEventID;
 
-        return $obj;
+        return $self;
     }
 
     public function withContactID(string $contactID): self
     {
-        $obj = clone $this;
-        $obj['contactID'] = $contactID;
+        $self = clone $this;
+        $self['contactID'] = $contactID;
 
-        return $obj;
+        return $self;
     }
 
     public function withDuration(int $duration): self
     {
-        $obj = clone $this;
-        $obj['duration'] = $duration;
+        $self = clone $this;
+        $self['duration'] = $duration;
 
-        return $obj;
+        return $self;
     }
 
     public function withEnd(\DateTimeInterface $end): self
     {
-        $obj = clone $this;
-        $obj['end'] = $end;
+        $self = clone $this;
+        $self['end'] = $end;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -234,10 +234,10 @@ final class ExternalMeetingBookingResponse implements BaseModel
      */
     public function withFormFields(array $formFields): self
     {
-        $obj = clone $this;
-        $obj['formFields'] = $formFields;
+        $self = clone $this;
+        $self['formFields'] = $formFields;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -245,18 +245,18 @@ final class ExternalMeetingBookingResponse implements BaseModel
      */
     public function withGuestEmails(array $guestEmails): self
     {
-        $obj = clone $this;
-        $obj['guestEmails'] = $guestEmails;
+        $self = clone $this;
+        $self['guestEmails'] = $guestEmails;
 
-        return $obj;
+        return $self;
     }
 
     public function withIsOffline(bool $isOffline): self
     {
-        $obj = clone $this;
-        $obj['isOffline'] = $isOffline;
+        $self = clone $this;
+        $self['isOffline'] = $isOffline;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -267,58 +267,58 @@ final class ExternalMeetingBookingResponse implements BaseModel
     public function withLegalConsentResponses(
         array $legalConsentResponses
     ): self {
-        $obj = clone $this;
-        $obj['legalConsentResponses'] = $legalConsentResponses;
+        $self = clone $this;
+        $self['legalConsentResponses'] = $legalConsentResponses;
 
-        return $obj;
+        return $self;
     }
 
     public function withStart(\DateTimeInterface $start): self
     {
-        $obj = clone $this;
-        $obj['start'] = $start;
+        $self = clone $this;
+        $self['start'] = $start;
 
-        return $obj;
+        return $self;
     }
 
     public function withSubject(string $subject): self
     {
-        $obj = clone $this;
-        $obj['subject'] = $subject;
+        $self = clone $this;
+        $self['subject'] = $subject;
 
-        return $obj;
+        return $self;
     }
 
     public function withLocale(string $locale): self
     {
-        $obj = clone $this;
-        $obj['locale'] = $locale;
+        $self = clone $this;
+        $self['locale'] = $locale;
 
-        return $obj;
+        return $self;
     }
 
     public function withLocation(string $location): self
     {
-        $obj = clone $this;
-        $obj['location'] = $location;
+        $self = clone $this;
+        $self['location'] = $location;
 
-        return $obj;
+        return $self;
     }
 
     public function withWebConferenceMeetingID(
         string $webConferenceMeetingID
     ): self {
-        $obj = clone $this;
-        $obj['webConferenceMeetingID'] = $webConferenceMeetingID;
+        $self = clone $this;
+        $self['webConferenceMeetingID'] = $webConferenceMeetingID;
 
-        return $obj;
+        return $self;
     }
 
     public function withWebConferenceURL(string $webConferenceURL): self
     {
-        $obj = clone $this;
-        $obj['webConferenceURL'] = $webConferenceURL;
+        $self = clone $this;
+        $self['webConferenceURL'] = $webConferenceURL;
 
-        return $obj;
+        return $self;
     }
 }

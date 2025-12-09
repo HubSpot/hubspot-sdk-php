@@ -51,18 +51,18 @@ final class CardGetParams implements BaseModel
      */
     public static function with(int $appID): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['appID'] = $appID;
+        $self['appID'] = $appID;
 
-        return $obj;
+        return $self;
     }
 
     public function withAppID(int $appID): self
     {
-        $obj = clone $this;
-        $obj['appID'] = $appID;
+        $self = clone $this;
+        $self['appID'] = $appID;
 
-        return $obj;
+        return $self;
     }
 }

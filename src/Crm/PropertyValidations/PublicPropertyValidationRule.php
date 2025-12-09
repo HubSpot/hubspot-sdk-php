@@ -66,12 +66,12 @@ final class PublicPropertyValidationRule implements BaseModel
         array $ruleArguments,
         RuleType|string $ruleType
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['ruleArguments'] = $ruleArguments;
-        $obj['ruleType'] = $ruleType;
+        $self['ruleArguments'] = $ruleArguments;
+        $self['ruleType'] = $ruleType;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -81,10 +81,10 @@ final class PublicPropertyValidationRule implements BaseModel
      */
     public function withRuleArguments(array $ruleArguments): self
     {
-        $obj = clone $this;
-        $obj['ruleArguments'] = $ruleArguments;
+        $self = clone $this;
+        $self['ruleArguments'] = $ruleArguments;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -94,9 +94,9 @@ final class PublicPropertyValidationRule implements BaseModel
      */
     public function withRuleType(RuleType|string $ruleType): self
     {
-        $obj = clone $this;
-        $obj['ruleType'] = $ruleType;
+        $self = clone $this;
+        $self['ruleType'] = $ruleType;
 
-        return $obj;
+        return $self;
     }
 }

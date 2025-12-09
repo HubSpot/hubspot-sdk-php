@@ -65,13 +65,13 @@ final class CustomObjectLimitResponse implements BaseModel
      */
     public static function with(int $limit, float $percentage, int $usage): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['limit'] = $limit;
-        $obj['percentage'] = $percentage;
-        $obj['usage'] = $usage;
+        $self['limit'] = $limit;
+        $self['percentage'] = $percentage;
+        $self['usage'] = $usage;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -79,10 +79,10 @@ final class CustomObjectLimitResponse implements BaseModel
      */
     public function withLimit(int $limit): self
     {
-        $obj = clone $this;
-        $obj['limit'] = $limit;
+        $self = clone $this;
+        $self['limit'] = $limit;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -90,10 +90,10 @@ final class CustomObjectLimitResponse implements BaseModel
      */
     public function withPercentage(float $percentage): self
     {
-        $obj = clone $this;
-        $obj['percentage'] = $percentage;
+        $self = clone $this;
+        $self['percentage'] = $percentage;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -101,9 +101,9 @@ final class CustomObjectLimitResponse implements BaseModel
      */
     public function withUsage(int $usage): self
     {
-        $obj = clone $this;
-        $obj['usage'] = $usage;
+        $self = clone $this;
+        $self['usage'] = $usage;
 
-        return $obj;
+        return $self;
     }
 }

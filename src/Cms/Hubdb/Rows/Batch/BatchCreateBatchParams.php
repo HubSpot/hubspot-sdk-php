@@ -70,11 +70,11 @@ final class BatchCreateBatchParams implements BaseModel
      */
     public static function with(array $inputs): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['inputs'] = $inputs;
+        $self['inputs'] = $inputs;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -88,9 +88,9 @@ final class BatchCreateBatchParams implements BaseModel
      */
     public function withInputs(array $inputs): self
     {
-        $obj = clone $this;
-        $obj['inputs'] = $inputs;
+        $self = clone $this;
+        $self['inputs'] = $inputs;
 
-        return $obj;
+        return $self;
     }
 }

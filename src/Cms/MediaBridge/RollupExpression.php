@@ -102,19 +102,19 @@ final class RollupExpression implements BaseModel
         ?string $emptyRollupValue = null,
         ?string $sourceCompareByPropertyName = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['associationTypes'] = $associationTypes;
-        $obj['rollupOperator'] = $rollupOperator;
-        $obj['sourceObjectTypeID'] = $sourceObjectTypeID;
-        $obj['sourcePropertyName'] = $sourcePropertyName;
+        $self['associationTypes'] = $associationTypes;
+        $self['rollupOperator'] = $rollupOperator;
+        $self['sourceObjectTypeID'] = $sourceObjectTypeID;
+        $self['sourcePropertyName'] = $sourcePropertyName;
 
-        null !== $conditionalExpression && $obj['conditionalExpression'] = $conditionalExpression;
-        null !== $conditionalFormula && $obj['conditionalFormula'] = $conditionalFormula;
-        null !== $emptyRollupValue && $obj['emptyRollupValue'] = $emptyRollupValue;
-        null !== $sourceCompareByPropertyName && $obj['sourceCompareByPropertyName'] = $sourceCompareByPropertyName;
+        null !== $conditionalExpression && $self['conditionalExpression'] = $conditionalExpression;
+        null !== $conditionalFormula && $self['conditionalFormula'] = $conditionalFormula;
+        null !== $emptyRollupValue && $self['emptyRollupValue'] = $emptyRollupValue;
+        null !== $sourceCompareByPropertyName && $self['sourceCompareByPropertyName'] = $sourceCompareByPropertyName;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -124,34 +124,34 @@ final class RollupExpression implements BaseModel
      */
     public function withAssociationTypes(array $associationTypes): self
     {
-        $obj = clone $this;
-        $obj['associationTypes'] = $associationTypes;
+        $self = clone $this;
+        $self['associationTypes'] = $associationTypes;
 
-        return $obj;
+        return $self;
     }
 
     public function withRollupOperator(string $rollupOperator): self
     {
-        $obj = clone $this;
-        $obj['rollupOperator'] = $rollupOperator;
+        $self = clone $this;
+        $self['rollupOperator'] = $rollupOperator;
 
-        return $obj;
+        return $self;
     }
 
     public function withSourceObjectTypeID(string $sourceObjectTypeID): self
     {
-        $obj = clone $this;
-        $obj['sourceObjectTypeID'] = $sourceObjectTypeID;
+        $self = clone $this;
+        $self['sourceObjectTypeID'] = $sourceObjectTypeID;
 
-        return $obj;
+        return $self;
     }
 
     public function withSourcePropertyName(string $sourcePropertyName): self
     {
-        $obj = clone $this;
-        $obj['sourcePropertyName'] = $sourcePropertyName;
+        $self = clone $this;
+        $self['sourcePropertyName'] = $sourcePropertyName;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -160,34 +160,34 @@ final class RollupExpression implements BaseModel
     public function withConditionalExpression(
         array $conditionalExpression
     ): self {
-        $obj = clone $this;
-        $obj['conditionalExpression'] = $conditionalExpression;
+        $self = clone $this;
+        $self['conditionalExpression'] = $conditionalExpression;
 
-        return $obj;
+        return $self;
     }
 
     public function withConditionalFormula(string $conditionalFormula): self
     {
-        $obj = clone $this;
-        $obj['conditionalFormula'] = $conditionalFormula;
+        $self = clone $this;
+        $self['conditionalFormula'] = $conditionalFormula;
 
-        return $obj;
+        return $self;
     }
 
     public function withEmptyRollupValue(string $emptyRollupValue): self
     {
-        $obj = clone $this;
-        $obj['emptyRollupValue'] = $emptyRollupValue;
+        $self = clone $this;
+        $self['emptyRollupValue'] = $emptyRollupValue;
 
-        return $obj;
+        return $self;
     }
 
     public function withSourceCompareByPropertyName(
         string $sourceCompareByPropertyName
     ): self {
-        $obj = clone $this;
-        $obj['sourceCompareByPropertyName'] = $sourceCompareByPropertyName;
+        $self = clone $this;
+        $self['sourceCompareByPropertyName'] = $sourceCompareByPropertyName;
 
-        return $obj;
+        return $self;
     }
 }

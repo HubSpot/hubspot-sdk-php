@@ -34,11 +34,11 @@ final class Property implements BaseModel
      */
     public static function with(mixed $propname = null): self
     {
-        $obj = new self;
+        $self = new self;
 
-        null !== $propname && $obj['propname'] = $propname;
+        null !== $propname && $self['propname'] = $propname;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -46,9 +46,9 @@ final class Property implements BaseModel
      */
     public function withPropname(mixed $propname): self
     {
-        $obj = clone $this;
-        $obj['propname'] = $propname;
+        $self = clone $this;
+        $self['propname'] = $propname;
 
-        return $obj;
+        return $self;
     }
 }

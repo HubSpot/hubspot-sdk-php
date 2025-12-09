@@ -65,20 +65,20 @@ final class BatchGetParams implements BaseModel
      */
     public static function with(string $fromObjectType, array $inputs): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['fromObjectType'] = $fromObjectType;
-        $obj['inputs'] = $inputs;
+        $self['fromObjectType'] = $fromObjectType;
+        $self['inputs'] = $inputs;
 
-        return $obj;
+        return $self;
     }
 
     public function withFromObjectType(string $fromObjectType): self
     {
-        $obj = clone $this;
-        $obj['fromObjectType'] = $fromObjectType;
+        $self = clone $this;
+        $self['fromObjectType'] = $fromObjectType;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -88,9 +88,9 @@ final class BatchGetParams implements BaseModel
      */
     public function withInputs(array $inputs): self
     {
-        $obj = clone $this;
-        $obj['inputs'] = $inputs;
+        $self = clone $this;
+        $self['inputs'] = $inputs;
 
-        return $obj;
+        return $self;
     }
 }

@@ -145,32 +145,32 @@ final class ObjectDefinitionResponse implements BaseModel
         array $propertyGroups,
         InboundDBObjectType|array|null $schema = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['objectTypeID'] = $objectTypeID;
-        $obj['objectTypeName'] = $objectTypeName;
-        $obj['properties'] = $properties;
-        $obj['propertyGroups'] = $propertyGroups;
+        $self['objectTypeID'] = $objectTypeID;
+        $self['objectTypeName'] = $objectTypeName;
+        $self['properties'] = $properties;
+        $self['propertyGroups'] = $propertyGroups;
 
-        null !== $schema && $obj['schema'] = $schema;
+        null !== $schema && $self['schema'] = $schema;
 
-        return $obj;
+        return $self;
     }
 
     public function withObjectTypeID(string $objectTypeID): self
     {
-        $obj = clone $this;
-        $obj['objectTypeID'] = $objectTypeID;
+        $self = clone $this;
+        $self['objectTypeID'] = $objectTypeID;
 
-        return $obj;
+        return $self;
     }
 
     public function withObjectTypeName(string $objectTypeName): self
     {
-        $obj = clone $this;
-        $obj['objectTypeName'] = $objectTypeName;
+        $self = clone $this;
+        $self['objectTypeName'] = $objectTypeName;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -193,10 +193,10 @@ final class ObjectDefinitionResponse implements BaseModel
      */
     public function withProperties(array $properties): self
     {
-        $obj = clone $this;
-        $obj['properties'] = $properties;
+        $self = clone $this;
+        $self['properties'] = $properties;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -211,10 +211,10 @@ final class ObjectDefinitionResponse implements BaseModel
      */
     public function withPropertyGroups(array $propertyGroups): self
     {
-        $obj = clone $this;
-        $obj['propertyGroups'] = $propertyGroups;
+        $self = clone $this;
+        $self['propertyGroups'] = $propertyGroups;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -262,9 +262,9 @@ final class ObjectDefinitionResponse implements BaseModel
      */
     public function withSchema(InboundDBObjectType|array $schema): self
     {
-        $obj = clone $this;
-        $obj['schema'] = $schema;
+        $self = clone $this;
+        $self['schema'] = $schema;
 
-        return $obj;
+        return $self;
     }
 }

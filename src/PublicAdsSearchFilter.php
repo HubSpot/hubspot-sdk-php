@@ -92,32 +92,32 @@ final class PublicAdsSearchFilter implements BaseModel
         string $searchTermType,
         FilterType|string $filterType = 'ADS_SEARCH',
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['adNetwork'] = $adNetwork;
-        $obj['entityType'] = $entityType;
-        $obj['filterType'] = $filterType;
-        $obj['operator'] = $operator;
-        $obj['searchTerms'] = $searchTerms;
-        $obj['searchTermType'] = $searchTermType;
+        $self['adNetwork'] = $adNetwork;
+        $self['entityType'] = $entityType;
+        $self['filterType'] = $filterType;
+        $self['operator'] = $operator;
+        $self['searchTerms'] = $searchTerms;
+        $self['searchTermType'] = $searchTermType;
 
-        return $obj;
+        return $self;
     }
 
     public function withAdNetwork(string $adNetwork): self
     {
-        $obj = clone $this;
-        $obj['adNetwork'] = $adNetwork;
+        $self = clone $this;
+        $self['adNetwork'] = $adNetwork;
 
-        return $obj;
+        return $self;
     }
 
     public function withEntityType(string $entityType): self
     {
-        $obj = clone $this;
-        $obj['entityType'] = $entityType;
+        $self = clone $this;
+        $self['entityType'] = $entityType;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -125,18 +125,18 @@ final class PublicAdsSearchFilter implements BaseModel
      */
     public function withFilterType(FilterType|string $filterType): self
     {
-        $obj = clone $this;
-        $obj['filterType'] = $filterType;
+        $self = clone $this;
+        $self['filterType'] = $filterType;
 
-        return $obj;
+        return $self;
     }
 
     public function withOperator(string $operator): self
     {
-        $obj = clone $this;
-        $obj['operator'] = $operator;
+        $self = clone $this;
+        $self['operator'] = $operator;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -144,17 +144,17 @@ final class PublicAdsSearchFilter implements BaseModel
      */
     public function withSearchTerms(array $searchTerms): self
     {
-        $obj = clone $this;
-        $obj['searchTerms'] = $searchTerms;
+        $self = clone $this;
+        $self['searchTerms'] = $searchTerms;
 
-        return $obj;
+        return $self;
     }
 
     public function withSearchTermType(string $searchTermType): self
     {
-        $obj = clone $this;
-        $obj['searchTermType'] = $searchTermType;
+        $self = clone $this;
+        $self['searchTermType'] = $searchTermType;
 
-        return $obj;
+        return $self;
     }
 }

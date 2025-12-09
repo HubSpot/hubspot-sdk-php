@@ -59,20 +59,20 @@ final class RowMetaData implements BaseModel
      */
     public static function with(string $cssClass, Styles|array $styles): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['cssClass'] = $cssClass;
-        $obj['styles'] = $styles;
+        $self['cssClass'] = $cssClass;
+        $self['styles'] = $styles;
 
-        return $obj;
+        return $self;
     }
 
     public function withCssClass(string $cssClass): self
     {
-        $obj = clone $this;
-        $obj['cssClass'] = $cssClass;
+        $self = clone $this;
+        $self['cssClass'] = $cssClass;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -89,9 +89,9 @@ final class RowMetaData implements BaseModel
      */
     public function withStyles(Styles|array $styles): self
     {
-        $obj = clone $this;
-        $obj['styles'] = $styles;
+        $self = clone $this;
+        $self['styles'] = $styles;
 
-        return $obj;
+        return $self;
     }
 }

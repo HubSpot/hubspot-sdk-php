@@ -123,44 +123,44 @@ final class SchemaUpdateParams implements BaseModel
         ?array $searchableProperties = null,
         ?array $secondaryDisplayProperties = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['appID'] = $appID;
+        $self['appID'] = $appID;
 
-        null !== $clearDescription && $obj['clearDescription'] = $clearDescription;
-        null !== $description && $obj['description'] = $description;
-        null !== $labels && $obj['labels'] = $labels;
-        null !== $primaryDisplayProperty && $obj['primaryDisplayProperty'] = $primaryDisplayProperty;
-        null !== $requiredProperties && $obj['requiredProperties'] = $requiredProperties;
-        null !== $restorable && $obj['restorable'] = $restorable;
-        null !== $searchableProperties && $obj['searchableProperties'] = $searchableProperties;
-        null !== $secondaryDisplayProperties && $obj['secondaryDisplayProperties'] = $secondaryDisplayProperties;
+        null !== $clearDescription && $self['clearDescription'] = $clearDescription;
+        null !== $description && $self['description'] = $description;
+        null !== $labels && $self['labels'] = $labels;
+        null !== $primaryDisplayProperty && $self['primaryDisplayProperty'] = $primaryDisplayProperty;
+        null !== $requiredProperties && $self['requiredProperties'] = $requiredProperties;
+        null !== $restorable && $self['restorable'] = $restorable;
+        null !== $searchableProperties && $self['searchableProperties'] = $searchableProperties;
+        null !== $secondaryDisplayProperties && $self['secondaryDisplayProperties'] = $secondaryDisplayProperties;
 
-        return $obj;
+        return $self;
     }
 
     public function withAppID(int $appID): self
     {
-        $obj = clone $this;
-        $obj['appID'] = $appID;
+        $self = clone $this;
+        $self['appID'] = $appID;
 
-        return $obj;
+        return $self;
     }
 
     public function withClearDescription(bool $clearDescription): self
     {
-        $obj = clone $this;
-        $obj['clearDescription'] = $clearDescription;
+        $self = clone $this;
+        $self['clearDescription'] = $clearDescription;
 
-        return $obj;
+        return $self;
     }
 
     public function withDescription(string $description): self
     {
-        $obj = clone $this;
-        $obj['description'] = $description;
+        $self = clone $this;
+        $self['description'] = $description;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -170,10 +170,10 @@ final class SchemaUpdateParams implements BaseModel
      */
     public function withLabels(ObjectTypeDefinitionLabels|array $labels): self
     {
-        $obj = clone $this;
-        $obj['labels'] = $labels;
+        $self = clone $this;
+        $self['labels'] = $labels;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -182,10 +182,10 @@ final class SchemaUpdateParams implements BaseModel
     public function withPrimaryDisplayProperty(
         string $primaryDisplayProperty
     ): self {
-        $obj = clone $this;
-        $obj['primaryDisplayProperty'] = $primaryDisplayProperty;
+        $self = clone $this;
+        $self['primaryDisplayProperty'] = $primaryDisplayProperty;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -195,18 +195,18 @@ final class SchemaUpdateParams implements BaseModel
      */
     public function withRequiredProperties(array $requiredProperties): self
     {
-        $obj = clone $this;
-        $obj['requiredProperties'] = $requiredProperties;
+        $self = clone $this;
+        $self['requiredProperties'] = $requiredProperties;
 
-        return $obj;
+        return $self;
     }
 
     public function withRestorable(bool $restorable): self
     {
-        $obj = clone $this;
-        $obj['restorable'] = $restorable;
+        $self = clone $this;
+        $self['restorable'] = $restorable;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -216,10 +216,10 @@ final class SchemaUpdateParams implements BaseModel
      */
     public function withSearchableProperties(array $searchableProperties): self
     {
-        $obj = clone $this;
-        $obj['searchableProperties'] = $searchableProperties;
+        $self = clone $this;
+        $self['searchableProperties'] = $searchableProperties;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -230,9 +230,9 @@ final class SchemaUpdateParams implements BaseModel
     public function withSecondaryDisplayProperties(
         array $secondaryDisplayProperties
     ): self {
-        $obj = clone $this;
-        $obj['secondaryDisplayProperties'] = $secondaryDisplayProperties;
+        $self = clone $this;
+        $self['secondaryDisplayProperties'] = $secondaryDisplayProperties;
 
-        return $obj;
+        return $self;
     }
 }

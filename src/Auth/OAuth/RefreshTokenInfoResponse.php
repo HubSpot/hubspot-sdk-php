@@ -100,43 +100,43 @@ final class RefreshTokenInfoResponse implements BaseModel
         ?string $hubDomain = null,
         ?string $user = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['token'] = $token;
-        $obj['clientID'] = $clientID;
-        $obj['hubID'] = $hubID;
-        $obj['scopes'] = $scopes;
-        $obj['tokenType'] = $tokenType;
-        $obj['userID'] = $userID;
+        $self['token'] = $token;
+        $self['clientID'] = $clientID;
+        $self['hubID'] = $hubID;
+        $self['scopes'] = $scopes;
+        $self['tokenType'] = $tokenType;
+        $self['userID'] = $userID;
 
-        null !== $hubDomain && $obj['hubDomain'] = $hubDomain;
-        null !== $user && $obj['user'] = $user;
+        null !== $hubDomain && $self['hubDomain'] = $hubDomain;
+        null !== $user && $self['user'] = $user;
 
-        return $obj;
+        return $self;
     }
 
     public function withToken(string $token): self
     {
-        $obj = clone $this;
-        $obj['token'] = $token;
+        $self = clone $this;
+        $self['token'] = $token;
 
-        return $obj;
+        return $self;
     }
 
     public function withClientID(string $clientID): self
     {
-        $obj = clone $this;
-        $obj['clientID'] = $clientID;
+        $self = clone $this;
+        $self['clientID'] = $clientID;
 
-        return $obj;
+        return $self;
     }
 
     public function withHubID(int $hubID): self
     {
-        $obj = clone $this;
-        $obj['hubID'] = $hubID;
+        $self = clone $this;
+        $self['hubID'] = $hubID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -144,41 +144,41 @@ final class RefreshTokenInfoResponse implements BaseModel
      */
     public function withScopes(array $scopes): self
     {
-        $obj = clone $this;
-        $obj['scopes'] = $scopes;
+        $self = clone $this;
+        $self['scopes'] = $scopes;
 
-        return $obj;
+        return $self;
     }
 
     public function withTokenType(string $tokenType): self
     {
-        $obj = clone $this;
-        $obj['tokenType'] = $tokenType;
+        $self = clone $this;
+        $self['tokenType'] = $tokenType;
 
-        return $obj;
+        return $self;
     }
 
     public function withUserID(int $userID): self
     {
-        $obj = clone $this;
-        $obj['userID'] = $userID;
+        $self = clone $this;
+        $self['userID'] = $userID;
 
-        return $obj;
+        return $self;
     }
 
     public function withHubDomain(string $hubDomain): self
     {
-        $obj = clone $this;
-        $obj['hubDomain'] = $hubDomain;
+        $self = clone $this;
+        $self['hubDomain'] = $hubDomain;
 
-        return $obj;
+        return $self;
     }
 
     public function withUser(string $user): self
     {
-        $obj = clone $this;
-        $obj['user'] = $user;
+        $self = clone $this;
+        $self['user'] = $user;
 
-        return $obj;
+        return $self;
     }
 }

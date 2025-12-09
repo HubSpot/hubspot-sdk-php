@@ -56,20 +56,20 @@ final class APIAppendObjectPropertyValue implements BaseModel
         string $appendPropertyName,
         Type|string $type = 'APPEND_OBJECT_PROPERTY'
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['appendPropertyName'] = $appendPropertyName;
-        $obj['type'] = $type;
+        $self['appendPropertyName'] = $appendPropertyName;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 
     public function withAppendPropertyName(string $appendPropertyName): self
     {
-        $obj = clone $this;
-        $obj['appendPropertyName'] = $appendPropertyName;
+        $self = clone $this;
+        $self['appendPropertyName'] = $appendPropertyName;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -77,9 +77,9 @@ final class APIAppendObjectPropertyValue implements BaseModel
      */
     public function withType(Type|string $type): self
     {
-        $obj = clone $this;
-        $obj['type'] = $type;
+        $self = clone $this;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 }

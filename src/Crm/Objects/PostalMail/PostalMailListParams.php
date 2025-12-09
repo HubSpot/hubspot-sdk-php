@@ -70,32 +70,32 @@ final class PostalMailListParams implements BaseModel
         ?array $properties = null,
         ?array $propertiesWithHistory = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $after && $obj['after'] = $after;
-        null !== $archived && $obj['archived'] = $archived;
-        null !== $associations && $obj['associations'] = $associations;
-        null !== $limit && $obj['limit'] = $limit;
-        null !== $properties && $obj['properties'] = $properties;
-        null !== $propertiesWithHistory && $obj['propertiesWithHistory'] = $propertiesWithHistory;
+        null !== $after && $self['after'] = $after;
+        null !== $archived && $self['archived'] = $archived;
+        null !== $associations && $self['associations'] = $associations;
+        null !== $limit && $self['limit'] = $limit;
+        null !== $properties && $self['properties'] = $properties;
+        null !== $propertiesWithHistory && $self['propertiesWithHistory'] = $propertiesWithHistory;
 
-        return $obj;
+        return $self;
     }
 
     public function withAfter(string $after): self
     {
-        $obj = clone $this;
-        $obj['after'] = $after;
+        $self = clone $this;
+        $self['after'] = $after;
 
-        return $obj;
+        return $self;
     }
 
     public function withArchived(bool $archived): self
     {
-        $obj = clone $this;
-        $obj['archived'] = $archived;
+        $self = clone $this;
+        $self['archived'] = $archived;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -103,18 +103,18 @@ final class PostalMailListParams implements BaseModel
      */
     public function withAssociations(array $associations): self
     {
-        $obj = clone $this;
-        $obj['associations'] = $associations;
+        $self = clone $this;
+        $self['associations'] = $associations;
 
-        return $obj;
+        return $self;
     }
 
     public function withLimit(int $limit): self
     {
-        $obj = clone $this;
-        $obj['limit'] = $limit;
+        $self = clone $this;
+        $self['limit'] = $limit;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -122,10 +122,10 @@ final class PostalMailListParams implements BaseModel
      */
     public function withProperties(array $properties): self
     {
-        $obj = clone $this;
-        $obj['properties'] = $properties;
+        $self = clone $this;
+        $self['properties'] = $properties;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -134,9 +134,9 @@ final class PostalMailListParams implements BaseModel
     public function withPropertiesWithHistory(
         array $propertiesWithHistory
     ): self {
-        $obj = clone $this;
-        $obj['propertiesWithHistory'] = $propertiesWithHistory;
+        $self = clone $this;
+        $self['propertiesWithHistory'] = $propertiesWithHistory;
 
-        return $obj;
+        return $self;
     }
 }

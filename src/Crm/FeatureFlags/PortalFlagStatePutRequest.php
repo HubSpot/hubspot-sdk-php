@@ -51,11 +51,11 @@ final class PortalFlagStatePutRequest implements BaseModel
      */
     public static function with(FlagState|string $flagState): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['flagState'] = $flagState;
+        $self['flagState'] = $flagState;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -63,9 +63,9 @@ final class PortalFlagStatePutRequest implements BaseModel
      */
     public function withFlagState(FlagState|string $flagState): self
     {
-        $obj = clone $this;
-        $obj['flagState'] = $flagState;
+        $self = clone $this;
+        $self['flagState'] = $flagState;
 
-        return $obj;
+        return $self;
     }
 }

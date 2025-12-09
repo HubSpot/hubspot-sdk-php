@@ -84,108 +84,108 @@ final class PublicWebversionDetails implements BaseModel
         ?string $title = null,
         ?string $url = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $domain && $obj['domain'] = $domain;
-        null !== $enabled && $obj['enabled'] = $enabled;
-        null !== $expiresAt && $obj['expiresAt'] = $expiresAt;
-        null !== $isPageRedirected && $obj['isPageRedirected'] = $isPageRedirected;
-        null !== $metaDescription && $obj['metaDescription'] = $metaDescription;
-        null !== $pageExpiryEnabled && $obj['pageExpiryEnabled'] = $pageExpiryEnabled;
-        null !== $redirectToPageID && $obj['redirectToPageID'] = $redirectToPageID;
-        null !== $redirectToURL && $obj['redirectToURL'] = $redirectToURL;
-        null !== $slug && $obj['slug'] = $slug;
-        null !== $title && $obj['title'] = $title;
-        null !== $url && $obj['url'] = $url;
+        null !== $domain && $self['domain'] = $domain;
+        null !== $enabled && $self['enabled'] = $enabled;
+        null !== $expiresAt && $self['expiresAt'] = $expiresAt;
+        null !== $isPageRedirected && $self['isPageRedirected'] = $isPageRedirected;
+        null !== $metaDescription && $self['metaDescription'] = $metaDescription;
+        null !== $pageExpiryEnabled && $self['pageExpiryEnabled'] = $pageExpiryEnabled;
+        null !== $redirectToPageID && $self['redirectToPageID'] = $redirectToPageID;
+        null !== $redirectToURL && $self['redirectToURL'] = $redirectToURL;
+        null !== $slug && $self['slug'] = $slug;
+        null !== $title && $self['title'] = $title;
+        null !== $url && $self['url'] = $url;
 
-        return $obj;
+        return $self;
     }
 
     public function withDomain(string $domain): self
     {
-        $obj = clone $this;
-        $obj['domain'] = $domain;
+        $self = clone $this;
+        $self['domain'] = $domain;
 
-        return $obj;
+        return $self;
     }
 
     public function withEnabled(bool $enabled): self
     {
-        $obj = clone $this;
-        $obj['enabled'] = $enabled;
+        $self = clone $this;
+        $self['enabled'] = $enabled;
 
-        return $obj;
+        return $self;
     }
 
     public function withExpiresAt(\DateTimeInterface $expiresAt): self
     {
-        $obj = clone $this;
-        $obj['expiresAt'] = $expiresAt;
+        $self = clone $this;
+        $self['expiresAt'] = $expiresAt;
 
-        return $obj;
+        return $self;
     }
 
     public function withIsPageRedirected(bool $isPageRedirected): self
     {
-        $obj = clone $this;
-        $obj['isPageRedirected'] = $isPageRedirected;
+        $self = clone $this;
+        $self['isPageRedirected'] = $isPageRedirected;
 
-        return $obj;
+        return $self;
     }
 
     public function withMetaDescription(string $metaDescription): self
     {
-        $obj = clone $this;
-        $obj['metaDescription'] = $metaDescription;
+        $self = clone $this;
+        $self['metaDescription'] = $metaDescription;
 
-        return $obj;
+        return $self;
     }
 
     public function withPageExpiryEnabled(bool $pageExpiryEnabled): self
     {
-        $obj = clone $this;
-        $obj['pageExpiryEnabled'] = $pageExpiryEnabled;
+        $self = clone $this;
+        $self['pageExpiryEnabled'] = $pageExpiryEnabled;
 
-        return $obj;
+        return $self;
     }
 
     public function withRedirectToPageID(string $redirectToPageID): self
     {
-        $obj = clone $this;
-        $obj['redirectToPageID'] = $redirectToPageID;
+        $self = clone $this;
+        $self['redirectToPageID'] = $redirectToPageID;
 
-        return $obj;
+        return $self;
     }
 
     public function withRedirectToURL(string $redirectToURL): self
     {
-        $obj = clone $this;
-        $obj['redirectToURL'] = $redirectToURL;
+        $self = clone $this;
+        $self['redirectToURL'] = $redirectToURL;
 
-        return $obj;
+        return $self;
     }
 
     public function withSlug(string $slug): self
     {
-        $obj = clone $this;
-        $obj['slug'] = $slug;
+        $self = clone $this;
+        $self['slug'] = $slug;
 
-        return $obj;
+        return $self;
     }
 
     public function withTitle(string $title): self
     {
-        $obj = clone $this;
-        $obj['title'] = $title;
+        $self = clone $this;
+        $self['title'] = $title;
 
-        return $obj;
+        return $self;
     }
 
     public function withURL(string $url): self
     {
-        $obj = clone $this;
-        $obj['url'] = $url;
+        $self = clone $this;
+        $self['url'] = $url;
 
-        return $obj;
+        return $self;
     }
 }

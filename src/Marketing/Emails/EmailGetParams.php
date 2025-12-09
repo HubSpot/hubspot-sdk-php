@@ -79,15 +79,15 @@ final class EmailGetParams implements BaseModel
         ?bool $marketingCampaignNames = null,
         ?bool $workflowNames = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $archived && $obj['archived'] = $archived;
-        null !== $includedProperties && $obj['includedProperties'] = $includedProperties;
-        null !== $includeStats && $obj['includeStats'] = $includeStats;
-        null !== $marketingCampaignNames && $obj['marketingCampaignNames'] = $marketingCampaignNames;
-        null !== $workflowNames && $obj['workflowNames'] = $workflowNames;
+        null !== $archived && $self['archived'] = $archived;
+        null !== $includedProperties && $self['includedProperties'] = $includedProperties;
+        null !== $includeStats && $self['includeStats'] = $includeStats;
+        null !== $marketingCampaignNames && $self['marketingCampaignNames'] = $marketingCampaignNames;
+        null !== $workflowNames && $self['workflowNames'] = $workflowNames;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -95,10 +95,10 @@ final class EmailGetParams implements BaseModel
      */
     public function withArchived(bool $archived): self
     {
-        $obj = clone $this;
-        $obj['archived'] = $archived;
+        $self = clone $this;
+        $self['archived'] = $archived;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -108,10 +108,10 @@ final class EmailGetParams implements BaseModel
      */
     public function withIncludedProperties(array $includedProperties): self
     {
-        $obj = clone $this;
-        $obj['includedProperties'] = $includedProperties;
+        $self = clone $this;
+        $self['includedProperties'] = $includedProperties;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -119,10 +119,10 @@ final class EmailGetParams implements BaseModel
      */
     public function withIncludeStats(bool $includeStats): self
     {
-        $obj = clone $this;
-        $obj['includeStats'] = $includeStats;
+        $self = clone $this;
+        $self['includeStats'] = $includeStats;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -131,10 +131,10 @@ final class EmailGetParams implements BaseModel
     public function withMarketingCampaignNames(
         bool $marketingCampaignNames
     ): self {
-        $obj = clone $this;
-        $obj['marketingCampaignNames'] = $marketingCampaignNames;
+        $self = clone $this;
+        $self['marketingCampaignNames'] = $marketingCampaignNames;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -142,9 +142,9 @@ final class EmailGetParams implements BaseModel
      */
     public function withWorkflowNames(bool $workflowNames): self
     {
-        $obj = clone $this;
-        $obj['workflowNames'] = $workflowNames;
+        $self = clone $this;
+        $self['workflowNames'] = $workflowNames;
 
-        return $obj;
+        return $self;
     }
 }

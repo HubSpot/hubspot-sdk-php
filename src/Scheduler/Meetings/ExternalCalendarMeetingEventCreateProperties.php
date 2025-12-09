@@ -127,82 +127,82 @@ final class ExternalCalendarMeetingEventCreateProperties implements BaseModel
         ?string $hsMeetingLocation = null,
         ?string $hsMeetingLocationType = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['hsMeetingEndTime'] = $hsMeetingEndTime;
-        $obj['hsMeetingOutcome'] = $hsMeetingOutcome;
-        $obj['hsMeetingStartTime'] = $hsMeetingStartTime;
-        $obj['hsMeetingTitle'] = $hsMeetingTitle;
-        $obj['hsTimestamp'] = $hsTimestamp;
-        $obj['hubspotOwnerID'] = $hubspotOwnerID;
+        $self['hsMeetingEndTime'] = $hsMeetingEndTime;
+        $self['hsMeetingOutcome'] = $hsMeetingOutcome;
+        $self['hsMeetingStartTime'] = $hsMeetingStartTime;
+        $self['hsMeetingTitle'] = $hsMeetingTitle;
+        $self['hsTimestamp'] = $hsTimestamp;
+        $self['hubspotOwnerID'] = $hubspotOwnerID;
 
-        null !== $hsActivityType && $obj['hsActivityType'] = $hsActivityType;
-        null !== $hsAttachmentIDs && $obj['hsAttachmentIDs'] = $hsAttachmentIDs;
-        null !== $hsAttendeeOwnerIDs && $obj['hsAttendeeOwnerIDs'] = $hsAttendeeOwnerIDs;
-        null !== $hsInternalMeetingNotes && $obj['hsInternalMeetingNotes'] = $hsInternalMeetingNotes;
-        null !== $hsMeetingBody && $obj['hsMeetingBody'] = $hsMeetingBody;
-        null !== $hsMeetingLocation && $obj['hsMeetingLocation'] = $hsMeetingLocation;
-        null !== $hsMeetingLocationType && $obj['hsMeetingLocationType'] = $hsMeetingLocationType;
+        null !== $hsActivityType && $self['hsActivityType'] = $hsActivityType;
+        null !== $hsAttachmentIDs && $self['hsAttachmentIDs'] = $hsAttachmentIDs;
+        null !== $hsAttendeeOwnerIDs && $self['hsAttendeeOwnerIDs'] = $hsAttendeeOwnerIDs;
+        null !== $hsInternalMeetingNotes && $self['hsInternalMeetingNotes'] = $hsInternalMeetingNotes;
+        null !== $hsMeetingBody && $self['hsMeetingBody'] = $hsMeetingBody;
+        null !== $hsMeetingLocation && $self['hsMeetingLocation'] = $hsMeetingLocation;
+        null !== $hsMeetingLocationType && $self['hsMeetingLocationType'] = $hsMeetingLocationType;
 
-        return $obj;
+        return $self;
     }
 
     public function withHsMeetingEndTime(
         \DateTimeInterface $hsMeetingEndTime
     ): self {
-        $obj = clone $this;
-        $obj['hsMeetingEndTime'] = $hsMeetingEndTime;
+        $self = clone $this;
+        $self['hsMeetingEndTime'] = $hsMeetingEndTime;
 
-        return $obj;
+        return $self;
     }
 
     public function withHsMeetingOutcome(string $hsMeetingOutcome): self
     {
-        $obj = clone $this;
-        $obj['hsMeetingOutcome'] = $hsMeetingOutcome;
+        $self = clone $this;
+        $self['hsMeetingOutcome'] = $hsMeetingOutcome;
 
-        return $obj;
+        return $self;
     }
 
     public function withHsMeetingStartTime(
         \DateTimeInterface $hsMeetingStartTime
     ): self {
-        $obj = clone $this;
-        $obj['hsMeetingStartTime'] = $hsMeetingStartTime;
+        $self = clone $this;
+        $self['hsMeetingStartTime'] = $hsMeetingStartTime;
 
-        return $obj;
+        return $self;
     }
 
     public function withHsMeetingTitle(string $hsMeetingTitle): self
     {
-        $obj = clone $this;
-        $obj['hsMeetingTitle'] = $hsMeetingTitle;
+        $self = clone $this;
+        $self['hsMeetingTitle'] = $hsMeetingTitle;
 
-        return $obj;
+        return $self;
     }
 
     public function withHsTimestamp(\DateTimeInterface $hsTimestamp): self
     {
-        $obj = clone $this;
-        $obj['hsTimestamp'] = $hsTimestamp;
+        $self = clone $this;
+        $self['hsTimestamp'] = $hsTimestamp;
 
-        return $obj;
+        return $self;
     }
 
     public function withHubspotOwnerID(string $hubspotOwnerID): self
     {
-        $obj = clone $this;
-        $obj['hubspotOwnerID'] = $hubspotOwnerID;
+        $self = clone $this;
+        $self['hubspotOwnerID'] = $hubspotOwnerID;
 
-        return $obj;
+        return $self;
     }
 
     public function withHsActivityType(string $hsActivityType): self
     {
-        $obj = clone $this;
-        $obj['hsActivityType'] = $hsActivityType;
+        $self = clone $this;
+        $self['hsActivityType'] = $hsActivityType;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -210,10 +210,10 @@ final class ExternalCalendarMeetingEventCreateProperties implements BaseModel
      */
     public function withHsAttachmentIDs(array $hsAttachmentIDs): self
     {
-        $obj = clone $this;
-        $obj['hsAttachmentIDs'] = $hsAttachmentIDs;
+        $self = clone $this;
+        $self['hsAttachmentIDs'] = $hsAttachmentIDs;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -221,43 +221,43 @@ final class ExternalCalendarMeetingEventCreateProperties implements BaseModel
      */
     public function withHsAttendeeOwnerIDs(array $hsAttendeeOwnerIDs): self
     {
-        $obj = clone $this;
-        $obj['hsAttendeeOwnerIDs'] = $hsAttendeeOwnerIDs;
+        $self = clone $this;
+        $self['hsAttendeeOwnerIDs'] = $hsAttendeeOwnerIDs;
 
-        return $obj;
+        return $self;
     }
 
     public function withHsInternalMeetingNotes(
         string $hsInternalMeetingNotes
     ): self {
-        $obj = clone $this;
-        $obj['hsInternalMeetingNotes'] = $hsInternalMeetingNotes;
+        $self = clone $this;
+        $self['hsInternalMeetingNotes'] = $hsInternalMeetingNotes;
 
-        return $obj;
+        return $self;
     }
 
     public function withHsMeetingBody(string $hsMeetingBody): self
     {
-        $obj = clone $this;
-        $obj['hsMeetingBody'] = $hsMeetingBody;
+        $self = clone $this;
+        $self['hsMeetingBody'] = $hsMeetingBody;
 
-        return $obj;
+        return $self;
     }
 
     public function withHsMeetingLocation(string $hsMeetingLocation): self
     {
-        $obj = clone $this;
-        $obj['hsMeetingLocation'] = $hsMeetingLocation;
+        $self = clone $this;
+        $self['hsMeetingLocation'] = $hsMeetingLocation;
 
-        return $obj;
+        return $self;
     }
 
     public function withHsMeetingLocationType(
         string $hsMeetingLocationType
     ): self {
-        $obj = clone $this;
-        $obj['hsMeetingLocationType'] = $hsMeetingLocationType;
+        $self = clone $this;
+        $self['hsMeetingLocationType'] = $hsMeetingLocationType;
 
-        return $obj;
+        return $self;
     }
 }

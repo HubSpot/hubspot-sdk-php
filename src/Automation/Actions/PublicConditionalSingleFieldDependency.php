@@ -78,31 +78,31 @@ final class PublicConditionalSingleFieldDependency implements BaseModel
         array $dependentFieldNames,
         DependencyType|string $dependencyType = 'CONDITIONAL_SINGLE_FIELD',
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['controllingFieldName'] = $controllingFieldName;
-        $obj['controllingFieldValue'] = $controllingFieldValue;
-        $obj['dependencyType'] = $dependencyType;
-        $obj['dependentFieldNames'] = $dependentFieldNames;
+        $self['controllingFieldName'] = $controllingFieldName;
+        $self['controllingFieldValue'] = $controllingFieldValue;
+        $self['dependencyType'] = $dependencyType;
+        $self['dependentFieldNames'] = $dependentFieldNames;
 
-        return $obj;
+        return $self;
     }
 
     public function withControllingFieldName(string $controllingFieldName): self
     {
-        $obj = clone $this;
-        $obj['controllingFieldName'] = $controllingFieldName;
+        $self = clone $this;
+        $self['controllingFieldName'] = $controllingFieldName;
 
-        return $obj;
+        return $self;
     }
 
     public function withControllingFieldValue(
         string $controllingFieldValue
     ): self {
-        $obj = clone $this;
-        $obj['controllingFieldValue'] = $controllingFieldValue;
+        $self = clone $this;
+        $self['controllingFieldValue'] = $controllingFieldValue;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -111,10 +111,10 @@ final class PublicConditionalSingleFieldDependency implements BaseModel
     public function withDependencyType(
         DependencyType|string $dependencyType
     ): self {
-        $obj = clone $this;
-        $obj['dependencyType'] = $dependencyType;
+        $self = clone $this;
+        $self['dependencyType'] = $dependencyType;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -122,9 +122,9 @@ final class PublicConditionalSingleFieldDependency implements BaseModel
      */
     public function withDependentFieldNames(array $dependentFieldNames): self
     {
-        $obj = clone $this;
-        $obj['dependentFieldNames'] = $dependentFieldNames;
+        $self = clone $this;
+        $self['dependentFieldNames'] = $dependentFieldNames;
 
-        return $obj;
+        return $self;
     }
 }
