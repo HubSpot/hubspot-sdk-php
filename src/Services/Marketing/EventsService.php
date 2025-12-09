@@ -668,7 +668,7 @@ final class EventsService implements EventsContract
      *
      * Upserts a marketing event If there is an existing marketing event with the specified ID, it will be updated; otherwise a new event will be created.
      *
-     * @param string $externalEventID The id of the marketing event in the external event application
+     * @param string $externalEventID_ The id of the marketing event in the external event application
      * @param list<array{
      *   dataSensitivity: 'high'|'none'|'standard'|DataSensitivity,
      *   isEncrypted: bool,
@@ -694,7 +694,7 @@ final class EventsService implements EventsContract
      * @param string $eventName the name of the marketing event
      * @param string $eventOrganizer the name of the organizer of the marketing event
      * @param string $externalAccountID the accountId that is associated with this marketing event in the external event application
-     * @param string $externalEventID1 the id of the marketing event in the external event application
+     * @param string $externalEventID the id of the marketing event in the external event application
      * @param string|\DateTimeInterface $endDateTime the end date and time of the marketing event
      * @param bool $eventCancelled Indicates if the marketing event has been cancelled.  Defaults to `false`
      * @param string $eventDescription the description of the marketing event
@@ -705,12 +705,12 @@ final class EventsService implements EventsContract
      * @throws APIException
      */
     public function upsertByExternalEventID(
-        string $externalEventID,
+        string $externalEventID_,
         array $customProperties,
         string $eventName,
         string $eventOrganizer,
         string $externalAccountID,
-        string $externalEventID1,
+        string $externalEventID,
         string|\DateTimeInterface|null $endDateTime = null,
         ?bool $eventCancelled = null,
         ?bool $eventCompleted = null,
@@ -725,7 +725,7 @@ final class EventsService implements EventsContract
             'eventName' => $eventName,
             'eventOrganizer' => $eventOrganizer,
             'externalAccountID' => $externalAccountID,
-            'externalEventID' => $externalEventID1,
+            'externalEventID' => $externalEventID,
             'endDateTime' => $endDateTime,
             'eventCancelled' => $eventCancelled,
             'eventCompleted' => $eventCompleted,
@@ -738,7 +738,7 @@ final class EventsService implements EventsContract
         $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
         // @phpstan-ignore-next-line argument.type
-        $response = $this->raw->upsertByExternalEventID($externalEventID, params: $params, requestOptions: $requestOptions);
+        $response = $this->raw->upsertByExternalEventID($externalEventID_, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }

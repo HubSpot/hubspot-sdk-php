@@ -715,7 +715,7 @@ final class EventsRawService implements EventsRawContract
      *
      * Upserts a marketing event If there is an existing marketing event with the specified ID, it will be updated; otherwise a new event will be created.
      *
-     * @param string $externalEventID The id of the marketing event in the external event application
+     * @param string $externalEventID_ The id of the marketing event in the external event application
      * @param array{
      *   customProperties: list<array{
      *     dataSensitivity: 'high'|'none'|'standard'|DataSensitivity,
@@ -756,7 +756,7 @@ final class EventsRawService implements EventsRawContract
      * @throws APIException
      */
     public function upsertByExternalEventID(
-        string $externalEventID,
+        string $externalEventID_,
         array|EventUpsertByExternalEventIDParams $params,
         ?RequestOptions $requestOptions = null,
     ): BaseResponse {
@@ -768,7 +768,7 @@ final class EventsRawService implements EventsRawContract
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'put',
-            path: ['marketing/v3/marketing-events/events/%1$s', $externalEventID],
+            path: ['marketing/v3/marketing-events/events/%1$s', $externalEventID_],
             body: (object) $parsed,
             options: $options,
             convert: MarketingEventPublicDefaultResponse::class,

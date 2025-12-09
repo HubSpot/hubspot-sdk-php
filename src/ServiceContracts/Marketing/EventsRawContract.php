@@ -275,7 +275,7 @@ interface EventsRawContract
     /**
      * @api
      *
-     * @param string $externalEventID The id of the marketing event in the external event application
+     * @param string $externalEventID_ The id of the marketing event in the external event application
      * @param array<mixed>|EventUpsertByExternalEventIDParams $params
      *
      * @return BaseResponse<MarketingEventPublicDefaultResponse>
@@ -283,7 +283,7 @@ interface EventsRawContract
      * @throws APIException
      */
     public function upsertByExternalEventID(
-        string $externalEventID,
+        string $externalEventID_,
         array|EventUpsertByExternalEventIDParams $params,
         ?RequestOptions $requestOptions = null,
     ): BaseResponse;

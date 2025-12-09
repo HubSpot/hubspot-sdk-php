@@ -414,7 +414,7 @@ interface EventsContract
     /**
      * @api
      *
-     * @param string $externalEventID The id of the marketing event in the external event application
+     * @param string $externalEventID_ The id of the marketing event in the external event application
      * @param list<array{
      *   dataSensitivity: 'high'|'none'|'standard'|DataSensitivity,
      *   isEncrypted: bool,
@@ -440,7 +440,7 @@ interface EventsContract
      * @param string $eventName the name of the marketing event
      * @param string $eventOrganizer the name of the organizer of the marketing event
      * @param string $externalAccountID the accountId that is associated with this marketing event in the external event application
-     * @param string $externalEventID1 the id of the marketing event in the external event application
+     * @param string $externalEventID the id of the marketing event in the external event application
      * @param string|\DateTimeInterface $endDateTime the end date and time of the marketing event
      * @param bool $eventCancelled Indicates if the marketing event has been cancelled.  Defaults to `false`
      * @param string $eventDescription the description of the marketing event
@@ -451,12 +451,12 @@ interface EventsContract
      * @throws APIException
      */
     public function upsertByExternalEventID(
-        string $externalEventID,
+        string $externalEventID_,
         array $customProperties,
         string $eventName,
         string $eventOrganizer,
         string $externalAccountID,
-        string $externalEventID1,
+        string $externalEventID,
         string|\DateTimeInterface|null $endDateTime = null,
         ?bool $eventCancelled = null,
         ?bool $eventCompleted = null,
