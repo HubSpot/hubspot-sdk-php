@@ -6,21 +6,17 @@ namespace HubspotSDK\Crm\PropertyValidations;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type CollectionResponsePublicPropertyValidationRuleMapNoPagingShape = array{
  *   results: list<PublicPropertyValidationRuleMap>
  * }
  */
-final class CollectionResponsePublicPropertyValidationRuleMapNoPaging implements BaseModel, ResponseConverter
+final class CollectionResponsePublicPropertyValidationRuleMapNoPaging implements BaseModel
 {
     /** @use SdkModel<CollectionResponsePublicPropertyValidationRuleMapNoPagingShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     /**
      * Collection of properties with their validation rules. Each item maps a property name to its configured validation rules for the specified object type.

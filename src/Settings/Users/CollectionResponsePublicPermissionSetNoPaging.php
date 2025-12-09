@@ -6,21 +6,17 @@ namespace HubspotSDK\Settings\Users;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type CollectionResponsePublicPermissionSetNoPagingShape = array{
  *   results: list<PublicPermissionSet>
  * }
  */
-final class CollectionResponsePublicPermissionSetNoPaging implements BaseModel, ResponseConverter
+final class CollectionResponsePublicPermissionSetNoPaging implements BaseModel
 {
     /** @use SdkModel<CollectionResponsePublicPermissionSetNoPagingShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     /** @var list<PublicPermissionSet> $results */
     #[Api(list: PublicPermissionSet::class)]

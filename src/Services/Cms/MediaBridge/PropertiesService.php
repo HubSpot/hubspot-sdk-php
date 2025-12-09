@@ -16,6 +16,7 @@ use HubspotSDK\Cms\MediaBridge\Properties\PropertyGetBatchParams;
 use HubspotSDK\Cms\MediaBridge\Properties\PropertyGetParams;
 use HubspotSDK\Cms\MediaBridge\Properties\PropertyListParams;
 use HubspotSDK\Cms\MediaBridge\Properties\PropertyUpdateParams;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Property;
 use HubspotSDK\RequestOptions;
@@ -72,14 +73,16 @@ final class PropertiesService implements PropertiesContract
         $appID = $parsed['appId'];
         unset($parsed['appId']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<Property> */
+        $response = $this->client->request(
             method: 'post',
             path: ['media-bridge/v1/%1$s/properties/%2$s', $appID, $objectType],
             body: (object) array_diff_key($parsed, ['appId']),
             options: $options,
             convert: Property::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -125,8 +128,8 @@ final class PropertiesService implements PropertiesContract
         $objectType = $parsed['objectType'];
         unset($parsed['objectType']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<Property> */
+        $response = $this->client->request(
             method: 'patch',
             path: [
                 'media-bridge/v1/%1$s/properties/%2$s/%3$s',
@@ -141,6 +144,8 @@ final class PropertiesService implements PropertiesContract
             options: $options,
             convert: Property::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -166,14 +171,16 @@ final class PropertiesService implements PropertiesContract
         $appID = $parsed['appId'];
         unset($parsed['appId']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<CollectionResponsePropertyNoPaging> */
+        $response = $this->client->request(
             method: 'get',
             path: ['media-bridge/v1/%1$s/properties/%2$s', $appID, $objectType],
             query: $parsed,
             options: $options,
             convert: CollectionResponsePropertyNoPaging::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -199,8 +206,8 @@ final class PropertiesService implements PropertiesContract
         $objectType = $parsed['objectType'];
         unset($parsed['objectType']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'delete',
             path: [
                 'media-bridge/v1/%1$s/properties/%2$s/%3$s',
@@ -211,6 +218,8 @@ final class PropertiesService implements PropertiesContract
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -253,8 +262,8 @@ final class PropertiesService implements PropertiesContract
         $appID = $parsed['appId'];
         unset($parsed['appId']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<BatchResponseProperty> */
+        $response = $this->client->request(
             method: 'post',
             path: [
                 'media-bridge/v1/%1$s/properties/%2$s/batch/create', $appID, $objectType,
@@ -263,6 +272,8 @@ final class PropertiesService implements PropertiesContract
             options: $options,
             convert: BatchResponseProperty::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -288,8 +299,8 @@ final class PropertiesService implements PropertiesContract
         $appID = $parsed['appId'];
         unset($parsed['appId']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'post',
             path: [
                 'media-bridge/v1/%1$s/properties/%2$s/batch/archive',
@@ -300,6 +311,8 @@ final class PropertiesService implements PropertiesContract
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -327,8 +340,8 @@ final class PropertiesService implements PropertiesContract
         $objectType = $parsed['objectType'];
         unset($parsed['objectType']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<Property> */
+        $response = $this->client->request(
             method: 'get',
             path: [
                 'media-bridge/v1/%1$s/properties/%2$s/%3$s',
@@ -340,6 +353,8 @@ final class PropertiesService implements PropertiesContract
             options: $options,
             convert: Property::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -368,8 +383,8 @@ final class PropertiesService implements PropertiesContract
         $appID = $parsed['appId'];
         unset($parsed['appId']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<BatchResponseProperty> */
+        $response = $this->client->request(
             method: 'post',
             path: [
                 'media-bridge/v1/%1$s/properties/%2$s/batch/read', $appID, $objectType,
@@ -378,5 +393,7 @@ final class PropertiesService implements PropertiesContract
             options: $options,
             convert: BatchResponseProperty::class,
         );
+
+        return $response->parse();
     }
 }

@@ -6,6 +6,7 @@ namespace HubspotSDK\Services\Crm\Objects;
 
 use HubspotSDK\AssociationSpec;
 use HubspotSDK\Client;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\Crm\CreatedResponseSimplePublicObject;
@@ -62,14 +63,16 @@ final class ObjectsService implements ObjectsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<CreatedResponseSimplePublicObject> */
+        $response = $this->client->request(
             method: 'post',
             path: ['crm/v3/objects/%1$s', $objectType],
             body: (object) $parsed,
             options: $options,
             convert: CreatedResponseSimplePublicObject::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -96,8 +99,8 @@ final class ObjectsService implements ObjectsContract
         unset($parsed['objectType']);
         $query_params = ['idProperty'];
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<SimplePublicObject> */
+        $response = $this->client->request(
             method: 'patch',
             path: ['crm/v3/objects/%1$s/%2$s', $objectType, $objectID],
             query: array_diff_key($parsed, $query_params),
@@ -108,6 +111,8 @@ final class ObjectsService implements ObjectsContract
             options: $options,
             convert: SimplePublicObject::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -138,8 +143,8 @@ final class ObjectsService implements ObjectsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<Page<SimplePublicObjectWithAssociations>> */
+        $response = $this->client->request(
             method: 'get',
             path: ['crm/v3/objects/%1$s', $objectType],
             query: $parsed,
@@ -147,6 +152,8 @@ final class ObjectsService implements ObjectsContract
             convert: SimplePublicObjectWithAssociations::class,
             page: Page::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -170,13 +177,15 @@ final class ObjectsService implements ObjectsContract
         $objectType = $parsed['objectType'];
         unset($parsed['objectType']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'delete',
             path: ['crm/v3/objects/%1$s/%2$s', $objectType, $objectID],
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -207,14 +216,16 @@ final class ObjectsService implements ObjectsContract
         $objectType = $parsed['objectType'];
         unset($parsed['objectType']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<SimplePublicObjectWithAssociations> */
+        $response = $this->client->request(
             method: 'get',
             path: ['crm/v3/objects/%1$s/%2$s', $objectType, $objectID],
             query: $parsed,
             options: $options,
             convert: SimplePublicObjectWithAssociations::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -241,13 +252,15 @@ final class ObjectsService implements ObjectsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<CollectionResponseWithTotalSimplePublicObject> */
+        $response = $this->client->request(
             method: 'post',
             path: ['crm/v3/objects/%1$s/search', $objectType],
             body: (object) $parsed,
             options: $options,
             convert: CollectionResponseWithTotalSimplePublicObject::class,
         );
+
+        return $response->parse();
     }
 }

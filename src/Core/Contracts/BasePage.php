@@ -4,12 +4,6 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Core\Contracts;
 
-use HubspotSDK\Client;
-use HubspotSDK\Core\Conversion\Contracts\Converter;
-use HubspotSDK\Core\Conversion\Contracts\ConverterSource;
-use HubspotSDK\RequestOptions;
-use Psr\Http\Message\ResponseInterface;
-
 /**
  * @internal
  *
@@ -21,19 +15,6 @@ use Psr\Http\Message\ResponseInterface;
  */
 interface BasePage extends \IteratorAggregate
 {
-    /**
-     * @internal
-     *
-     * @param normalized_request $request
-     */
-    public function __construct(
-        Converter|ConverterSource|string $convert,
-        Client $client,
-        array $request,
-        RequestOptions $options,
-        ResponseInterface $response,
-    );
-
     public function hasNextPage(): bool;
 
     /**

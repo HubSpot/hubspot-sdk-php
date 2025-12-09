@@ -6,9 +6,7 @@ namespace HubspotSDK\Crm\PropertyValidations;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 use HubspotSDK\Crm\PropertyValidations\PublicPropertyValidationRule\RuleType;
 
 /**
@@ -16,12 +14,10 @@ use HubspotSDK\Crm\PropertyValidations\PublicPropertyValidationRule\RuleType;
  *   results: list<PublicPropertyValidationRule>
  * }
  */
-final class CollectionResponsePublicPropertyValidationRuleNoPaging implements BaseModel, ResponseConverter
+final class CollectionResponsePublicPropertyValidationRuleNoPaging implements BaseModel
 {
     /** @use SdkModel<CollectionResponsePublicPropertyValidationRuleNoPagingShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     /**
      * Collection of validation rules configured for the specified property. Each rule defines a constraint that property values must satisfy (e.g., format requirements, length limits, allowed values).

@@ -7,6 +7,7 @@ namespace HubspotSDK\Services\Conversations;
 use HubspotSDK\Client;
 use HubspotSDK\Conversations\Channels\ChannelListParams;
 use HubspotSDK\Conversations\PublicChannel;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
@@ -39,8 +40,8 @@ final class ChannelsService implements ChannelsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<Page<PublicChannel>> */
+        $response = $this->client->request(
             method: 'get',
             path: 'conversations/v3/conversations/channels',
             query: $parsed,
@@ -48,6 +49,8 @@ final class ChannelsService implements ChannelsContract
             convert: PublicChannel::class,
             page: Page::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -59,12 +62,14 @@ final class ChannelsService implements ChannelsContract
         int $channelID,
         ?RequestOptions $requestOptions = null
     ): PublicChannel {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<PublicChannel> */
+        $response = $this->client->request(
             method: 'get',
             path: ['conversations/v3/conversations/channels/%1$s', $channelID],
             options: $requestOptions,
             convert: PublicChannel::class,
         );
+
+        return $response->parse();
     }
 }

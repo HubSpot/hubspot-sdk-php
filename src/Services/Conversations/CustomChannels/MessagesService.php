@@ -10,6 +10,7 @@ use HubspotSDK\Conversations\CustomChannels\Messages\MessageCreateParams;
 use HubspotSDK\Conversations\CustomChannels\Messages\MessageGetParams;
 use HubspotSDK\Conversations\CustomChannels\Messages\MessageUpdateParams;
 use HubspotSDK\Conversations\PublicDeliveryIdentifier;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Conversations\CustomChannels\MessagesContract;
@@ -61,14 +62,16 @@ final class MessagesService implements MessagesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<ConversationsPublicConversationsMessage> */
+        $response = $this->client->request(
             method: 'post',
             path: ['conversations/v3/custom-channels/%1$s/messages', $channelID],
             body: (object) $parsed,
             options: $options,
             convert: ConversationsPublicConversationsMessage::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -94,8 +97,8 @@ final class MessagesService implements MessagesContract
         $channelID = $parsed['channelId'];
         unset($parsed['channelId']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<ConversationsPublicConversationsMessage> */
+        $response = $this->client->request(
             method: 'patch',
             path: [
                 'conversations/v3/custom-channels/%1$s/messages/%2$s',
@@ -106,6 +109,8 @@ final class MessagesService implements MessagesContract
             options: $options,
             convert: ConversationsPublicConversationsMessage::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -129,8 +134,8 @@ final class MessagesService implements MessagesContract
         $channelID = $parsed['channelId'];
         unset($parsed['channelId']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<ConversationsPublicConversationsMessage> */
+        $response = $this->client->request(
             method: 'get',
             path: [
                 'conversations/v3/custom-channels/%1$s/messages/%2$s',
@@ -140,5 +145,7 @@ final class MessagesService implements MessagesContract
             options: $options,
             convert: ConversationsPublicConversationsMessage::class,
         );
+
+        return $response->parse();
     }
 }

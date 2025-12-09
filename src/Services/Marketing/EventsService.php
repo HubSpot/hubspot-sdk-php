@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Marketing;
 
 use HubspotSDK\Client;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Marketing\Events\BatchResponseMarketingEventPublicDefaultResponse;
 use HubspotSDK\Marketing\Events\BatchResponseMarketingEventPublicDefaultResponseV2;
@@ -124,14 +125,16 @@ final class EventsService implements EventsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<MarketingEventDefaultResponse> */
+        $response = $this->client->request(
             method: 'post',
             path: 'marketing/v3/marketing-events/events',
             body: (object) $parsed,
             options: $options,
             convert: MarketingEventDefaultResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -183,14 +186,16 @@ final class EventsService implements EventsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<MarketingEventPublicDefaultResponseV2> */
+        $response = $this->client->request(
             method: 'patch',
             path: ['marketing/v3/marketing-events/%1$s', $objectID],
             body: (object) $parsed,
             options: $options,
             convert: MarketingEventPublicDefaultResponseV2::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -215,8 +220,8 @@ final class EventsService implements EventsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<Page<MarketingEventPublicReadResponseV2>> */
+        $response = $this->client->request(
             method: 'get',
             path: 'marketing/v3/marketing-events/',
             query: $parsed,
@@ -224,6 +229,8 @@ final class EventsService implements EventsContract
             convert: MarketingEventPublicReadResponseV2::class,
             page: Page::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -237,13 +244,15 @@ final class EventsService implements EventsContract
         string $objectID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'delete',
             path: ['marketing/v3/marketing-events/%1$s', $objectID],
             options: $requestOptions,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -267,8 +276,8 @@ final class EventsService implements EventsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<MarketingEventDefaultResponse> */
+        $response = $this->client->request(
             method: 'post',
             path: [
                 'marketing/v3/marketing-events/events/%1$s/cancel', $externalEventID,
@@ -277,6 +286,8 @@ final class EventsService implements EventsContract
             options: $options,
             convert: MarketingEventDefaultResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -303,8 +314,8 @@ final class EventsService implements EventsContract
         );
         $query_params = ['externalAccountId'];
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<MarketingEventDefaultResponse> */
+        $response = $this->client->request(
             method: 'post',
             path: [
                 'marketing/v3/marketing-events/events/%1$s/complete', $externalEventID,
@@ -314,6 +325,8 @@ final class EventsService implements EventsContract
             options: $options,
             convert: MarketingEventDefaultResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -340,14 +353,16 @@ final class EventsService implements EventsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'post',
             path: 'marketing/v3/marketing-events/batch/archive',
             body: (object) $parsed,
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -374,8 +389,8 @@ final class EventsService implements EventsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<string> */
+        $response = $this->client->request(
             method: 'post',
             path: 'marketing/v3/marketing-events/events/delete',
             headers: ['Accept' => '*/*'],
@@ -383,6 +398,8 @@ final class EventsService implements EventsContract
             options: $options,
             convert: 'string',
         );
+
+        return $response->parse();
     }
 
     /**
@@ -408,14 +425,16 @@ final class EventsService implements EventsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'delete',
             path: ['marketing/v3/marketing-events/events/%1$s', $externalEventID],
             query: $parsed,
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -429,13 +448,15 @@ final class EventsService implements EventsContract
         string $objectID,
         ?RequestOptions $requestOptions = null
     ): MarketingEventPublicReadResponseV2 {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<MarketingEventPublicReadResponseV2> */
+        $response = $this->client->request(
             method: 'get',
             path: ['marketing/v3/marketing-events/%1$s', $objectID],
             options: $requestOptions,
             convert: MarketingEventPublicReadResponseV2::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -459,14 +480,16 @@ final class EventsService implements EventsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<MarketingEventPublicReadResponse> */
+        $response = $this->client->request(
             method: 'get',
             path: ['marketing/v3/marketing-events/events/%1$s', $externalEventID],
             query: $parsed,
             options: $options,
             convert: MarketingEventPublicReadResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -489,14 +512,16 @@ final class EventsService implements EventsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<CollectionResponseSearchPublicResponseWrapperNoPaging,> */
+        $response = $this->client->request(
             method: 'get',
             path: 'marketing/v3/marketing-events/events/search',
             query: $parsed,
             options: $options,
             convert: CollectionResponseSearchPublicResponseWrapperNoPaging::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -516,8 +541,8 @@ final class EventsService implements EventsContract
         string $externalEventID,
         ?RequestOptions $requestOptions = null
     ): CollectionResponseWithTotalMarketingEventIdentifiersResponseNoPaging {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<CollectionResponseWithTotalMarketingEventIdentifiersResponseNoPaging,> */
+        $response = $this->client->request(
             method: 'get',
             path: [
                 'marketing/v3/marketing-events/%1$s/identifiers', $externalEventID,
@@ -525,6 +550,8 @@ final class EventsService implements EventsContract
             options: $requestOptions,
             convert: CollectionResponseWithTotalMarketingEventIdentifiersResponseNoPaging::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -558,14 +585,16 @@ final class EventsService implements EventsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<BatchResponseMarketingEventPublicDefaultResponseV2> */
+        $response = $this->client->request(
             method: 'post',
             path: 'marketing/v3/marketing-events/batch/update',
             body: (object) $parsed,
             options: $options,
             convert: BatchResponseMarketingEventPublicDefaultResponseV2::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -622,8 +651,8 @@ final class EventsService implements EventsContract
         );
         $query_params = ['externalAccountId'];
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<MarketingEventPublicDefaultResponse> */
+        $response = $this->client->request(
             method: 'patch',
             path: ['marketing/v3/marketing-events/events/%1$s', $externalEventID],
             query: array_diff_key($parsed, $query_params),
@@ -631,6 +660,8 @@ final class EventsService implements EventsContract
             options: $options,
             convert: MarketingEventPublicDefaultResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -668,14 +699,16 @@ final class EventsService implements EventsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<BatchResponseMarketingEventPublicDefaultResponse> */
+        $response = $this->client->request(
             method: 'post',
             path: 'marketing/v3/marketing-events/events/upsert',
             body: (object) $parsed,
             options: $options,
             convert: BatchResponseMarketingEventPublicDefaultResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -730,14 +763,16 @@ final class EventsService implements EventsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<MarketingEventPublicDefaultResponse> */
+        $response = $this->client->request(
             method: 'put',
             path: ['marketing/v3/marketing-events/events/%1$s', $externalEventID],
             body: (object) $parsed,
             options: $options,
             convert: MarketingEventPublicDefaultResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -771,8 +806,8 @@ final class EventsService implements EventsContract
         unset($parsed['externalEventId']);
         $query_params = ['externalAccountId'];
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<string> */
+        $response = $this->client->request(
             method: 'post',
             path: [
                 'marketing/v3/marketing-events/events/%1$s/%2$s/email-upsert',
@@ -788,6 +823,8 @@ final class EventsService implements EventsContract
             options: $options,
             convert: 'string',
         );
+
+        return $response->parse();
     }
 
     /**
@@ -818,8 +855,8 @@ final class EventsService implements EventsContract
         unset($parsed['externalEventId']);
         $query_params = ['externalAccountId'];
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<string> */
+        $response = $this->client->request(
             method: 'post',
             path: [
                 'marketing/v3/marketing-events/events/%1$s/%2$s/upsert',
@@ -835,5 +872,7 @@ final class EventsService implements EventsContract
             options: $options,
             convert: 'string',
         );
+
+        return $response->parse();
     }
 }

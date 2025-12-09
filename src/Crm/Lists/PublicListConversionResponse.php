@@ -6,9 +6,7 @@ namespace HubspotSDK\Crm\Lists;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 use HubspotSDK\Crm\Lists\PublicListConversionDate\ConversionType;
 use HubspotSDK\Crm\Lists\PublicListConversionInactivity\TimeUnit;
 
@@ -19,12 +17,10 @@ use HubspotSDK\Crm\Lists\PublicListConversionInactivity\TimeUnit;
  *   requestedConversionTime?: null|PublicListConversionDate|PublicListConversionInactivity,
  * }
  */
-final class PublicListConversionResponse implements BaseModel, ResponseConverter
+final class PublicListConversionResponse implements BaseModel
 {
     /** @use SdkModel<PublicListConversionResponseShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     #[Api]
     public string $listId;

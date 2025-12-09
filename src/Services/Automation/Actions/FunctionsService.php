@@ -16,6 +16,7 @@ use HubspotSDK\Automation\Actions\Functions\FunctionListParams;
 use HubspotSDK\Automation\Actions\PublicActionFunction;
 use HubspotSDK\Automation\Actions\PublicActionFunctionIdentifier;
 use HubspotSDK\Client;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Automation\Actions\FunctionsContract;
@@ -48,8 +49,8 @@ final class FunctionsService implements FunctionsContract
         $appID = $parsed['appId'];
         unset($parsed['appId']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<CollectionResponsePublicActionFunctionIdentifierNoPaging,> */
+        $response = $this->client->request(
             method: 'get',
             path: [
                 'automation/v4/actions/%1$s/%2$s/functions', $appID, $definitionID,
@@ -57,6 +58,8 @@ final class FunctionsService implements FunctionsContract
             options: $options,
             convert: CollectionResponsePublicActionFunctionIdentifierNoPaging::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -86,8 +89,8 @@ final class FunctionsService implements FunctionsContract
         $functionType = $parsed['functionType'];
         unset($parsed['functionType']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'delete',
             path: [
                 'automation/v4/actions/%1$s/%2$s/functions/%3$s/%4$s',
@@ -99,6 +102,8 @@ final class FunctionsService implements FunctionsContract
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -124,8 +129,8 @@ final class FunctionsService implements FunctionsContract
         $functionType = $parsed['functionType'];
         unset($parsed['functionType']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<PublicActionFunctionIdentifier> */
+        $response = $this->client->request(
             method: 'put',
             path: [
                 'automation/v4/actions/%1$s/%2$s/functions/%3$s/%4$s',
@@ -142,6 +147,8 @@ final class FunctionsService implements FunctionsContract
             options: $options,
             convert: PublicActionFunctionIdentifier::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -167,8 +174,8 @@ final class FunctionsService implements FunctionsContract
         $definitionID = $parsed['definitionId'];
         unset($parsed['definitionId']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<PublicActionFunctionIdentifier> */
+        $response = $this->client->request(
             method: 'put',
             path: [
                 'automation/v4/actions/%1$s/%2$s/functions/%3$s',
@@ -184,6 +191,8 @@ final class FunctionsService implements FunctionsContract
             options: $options,
             convert: PublicActionFunctionIdentifier::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -212,8 +221,8 @@ final class FunctionsService implements FunctionsContract
         $definitionID = $parsed['definitionId'];
         unset($parsed['definitionId']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'delete',
             path: [
                 'automation/v4/actions/%1$s/%2$s/functions/%3$s',
@@ -224,6 +233,8 @@ final class FunctionsService implements FunctionsContract
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -255,8 +266,8 @@ final class FunctionsService implements FunctionsContract
         $functionType = $parsed['functionType'];
         unset($parsed['functionType']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<PublicActionFunction> */
+        $response = $this->client->request(
             method: 'get',
             path: [
                 'automation/v4/actions/%1$s/%2$s/functions/%3$s/%4$s',
@@ -268,6 +279,8 @@ final class FunctionsService implements FunctionsContract
             options: $options,
             convert: PublicActionFunction::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -296,8 +309,8 @@ final class FunctionsService implements FunctionsContract
         $definitionID = $parsed['definitionId'];
         unset($parsed['definitionId']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<PublicActionFunction> */
+        $response = $this->client->request(
             method: 'get',
             path: [
                 'automation/v4/actions/%1$s/%2$s/functions/%3$s',
@@ -308,5 +321,7 @@ final class FunctionsService implements FunctionsContract
             options: $options,
             convert: PublicActionFunction::class,
         );
+
+        return $response->parse();
     }
 }

@@ -6,23 +6,19 @@ namespace HubspotSDK\Marketing\Events;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type CollectionResponseWithTotalMarketingEventIdentifiersResponseNoPagingShape = array{
  *   results: list<MarketingEventIdentifiersResponse>, total: int
  * }
  */
-final class CollectionResponseWithTotalMarketingEventIdentifiersResponseNoPaging implements BaseModel, ResponseConverter
+final class CollectionResponseWithTotalMarketingEventIdentifiersResponseNoPaging implements BaseModel
 {
     /**
      * @use SdkModel<CollectionResponseWithTotalMarketingEventIdentifiersResponseNoPagingShape>
      */
     use SdkModel;
-
-    use SdkResponse;
 
     /** @var list<MarketingEventIdentifiersResponse> $results */
     #[Api(list: MarketingEventIdentifiersResponse::class)]

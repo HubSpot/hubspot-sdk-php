@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Crm\Associations;
 
 use HubspotSDK\Client;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\Associations\Schema\CollectionResponsePublicAssociationDefinitionNoPaging;
 use HubspotSDK\Crm\Associations\Schema\SchemaListParams;
@@ -46,8 +47,8 @@ final class SchemaService implements SchemaContract
         $fromObjectType = $parsed['fromObjectType'];
         unset($parsed['fromObjectType']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<CollectionResponsePublicAssociationDefinitionNoPaging,> */
+        $response = $this->client->request(
             method: 'get',
             path: [
                 'crm/v3/associations/%1$s/%2$s/types', $fromObjectType, $toObjectType,
@@ -55,5 +56,7 @@ final class SchemaService implements SchemaContract
             options: $options,
             convert: CollectionResponsePublicAssociationDefinitionNoPaging::class,
         );
+
+        return $response->parse();
     }
 }

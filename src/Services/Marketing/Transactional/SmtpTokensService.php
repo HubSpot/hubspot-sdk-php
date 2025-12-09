@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Marketing\Transactional;
 
 use HubspotSDK\Client;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Marketing\Transactional\SmtpAPITokenView;
 use HubspotSDK\Marketing\Transactional\SmtpTokens\SmtpTokenCreateParams;
@@ -40,14 +41,16 @@ final class SmtpTokensService implements SmtpTokensContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<SmtpAPITokenView> */
+        $response = $this->client->request(
             method: 'post',
             path: 'marketing/v3/transactional/smtp-tokens',
             body: (object) $parsed,
             options: $options,
             convert: SmtpAPITokenView::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -72,8 +75,8 @@ final class SmtpTokensService implements SmtpTokensContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<Page<SmtpAPITokenView>> */
+        $response = $this->client->request(
             method: 'get',
             path: 'marketing/v3/transactional/smtp-tokens',
             query: $parsed,
@@ -81,6 +84,8 @@ final class SmtpTokensService implements SmtpTokensContract
             convert: SmtpAPITokenView::class,
             page: Page::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -94,13 +99,15 @@ final class SmtpTokensService implements SmtpTokensContract
         string $tokenID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'delete',
             path: ['marketing/v3/transactional/smtp-tokens/%1$s', $tokenID],
             options: $requestOptions,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -114,13 +121,15 @@ final class SmtpTokensService implements SmtpTokensContract
         string $tokenID,
         ?RequestOptions $requestOptions = null
     ): SmtpAPITokenView {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<SmtpAPITokenView> */
+        $response = $this->client->request(
             method: 'get',
             path: ['marketing/v3/transactional/smtp-tokens/%1$s', $tokenID],
             options: $requestOptions,
             convert: SmtpAPITokenView::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -134,8 +143,8 @@ final class SmtpTokensService implements SmtpTokensContract
         string $tokenID,
         ?RequestOptions $requestOptions = null
     ): SmtpAPITokenView {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<SmtpAPITokenView> */
+        $response = $this->client->request(
             method: 'post',
             path: [
                 'marketing/v3/transactional/smtp-tokens/%1$s/password-reset', $tokenID,
@@ -143,5 +152,7 @@ final class SmtpTokensService implements SmtpTokensContract
             options: $requestOptions,
             convert: SmtpAPITokenView::class,
         );
+
+        return $response->parse();
     }
 }

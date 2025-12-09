@@ -6,21 +6,17 @@ namespace HubspotSDK\Crm\Extensions\Cards;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type PublicCardListResponseShape = array{
  *   results: list<PublicCardResponse>
  * }
  */
-final class PublicCardListResponse implements BaseModel, ResponseConverter
+final class PublicCardListResponse implements BaseModel
 {
     /** @use SdkModel<PublicCardListResponseShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     /** @var list<PublicCardResponse> $results */
     #[Api(list: PublicCardResponse::class)]

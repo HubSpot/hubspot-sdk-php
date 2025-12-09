@@ -7,6 +7,7 @@ namespace HubspotSDK\Services\Cms;
 use HubspotSDK\Client;
 use HubspotSDK\Cms\AuditLogs\AuditLogListParams;
 use HubspotSDK\Cms\AuditLogs\PublicAuditLog;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
@@ -48,8 +49,8 @@ final class AuditLogsService implements AuditLogsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<Page<PublicAuditLog>> */
+        $response = $this->client->request(
             method: 'get',
             path: 'cms/v3/audit-logs/',
             query: $parsed,
@@ -57,5 +58,7 @@ final class AuditLogsService implements AuditLogsContract
             convert: PublicAuditLog::class,
             page: Page::class,
         );
+
+        return $response->parse();
     }
 }

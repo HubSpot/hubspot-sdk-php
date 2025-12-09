@@ -6,9 +6,7 @@ namespace HubspotSDK\Crm\Objects\DealSplits;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 use HubspotSDK\Crm\Objects\DealSplits\BatchResponseDealToDealSplits\Status;
 use HubspotSDK\Crm\SimplePublicObject;
 
@@ -22,12 +20,10 @@ use HubspotSDK\Crm\SimplePublicObject;
  *   requestedAt?: \DateTimeInterface|null,
  * }
  */
-final class BatchResponseDealToDealSplits implements BaseModel, ResponseConverter
+final class BatchResponseDealToDealSplits implements BaseModel
 {
     /** @use SdkModel<BatchResponseDealToDealSplitsShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     #[Api]
     public \DateTimeInterface $completedAt;

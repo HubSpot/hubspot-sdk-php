@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Crm\Lists;
 
 use HubspotSDK\Client;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\Lists\Mapping\MappingBatchCreateIDMappingParams;
 use HubspotSDK\Crm\Lists\Mapping\MappingGetIDMappingParams;
@@ -38,14 +39,16 @@ final class MappingService implements MappingContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<PublicBatchMigrationMapping> */
+        $response = $this->client->request(
             method: 'post',
             path: 'crm/v3/lists/idmapping',
             body: $parsed['body'],
             options: $options,
             convert: PublicBatchMigrationMapping::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -66,13 +69,15 @@ final class MappingService implements MappingContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<PublicMigrationMapping> */
+        $response = $this->client->request(
             method: 'get',
             path: 'crm/v3/lists/idmapping',
             query: $parsed,
             options: $options,
             convert: PublicMigrationMapping::class,
         );
+
+        return $response->parse();
     }
 }

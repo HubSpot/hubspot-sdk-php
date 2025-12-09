@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Marketing;
 
 use HubspotSDK\Client;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Marketing\Subscriptions\PublicSubscriptionStatus;
 use HubspotSDK\Marketing\Subscriptions\PublicSubscriptionStatusesResponse;
@@ -41,13 +42,15 @@ final class SubscriptionsService implements SubscriptionsContract
     public function list(
         ?RequestOptions $requestOptions = null
     ): SubscriptionDefinitionsResponse {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<SubscriptionDefinitionsResponse> */
+        $response = $this->client->request(
             method: 'get',
             path: 'communication-preferences/v3/definitions',
             options: $requestOptions,
             convert: SubscriptionDefinitionsResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -61,13 +64,15 @@ final class SubscriptionsService implements SubscriptionsContract
         string $emailAddress,
         ?RequestOptions $requestOptions = null
     ): PublicSubscriptionStatusesResponse {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<PublicSubscriptionStatusesResponse> */
+        $response = $this->client->request(
             method: 'get',
             path: ['communication-preferences/v3/status/email/%1$s', $emailAddress],
             options: $requestOptions,
             convert: PublicSubscriptionStatusesResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -93,14 +98,16 @@ final class SubscriptionsService implements SubscriptionsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<PublicSubscriptionStatus> */
+        $response = $this->client->request(
             method: 'post',
             path: 'communication-preferences/v3/subscribe',
             body: (object) $parsed,
             options: $options,
             convert: PublicSubscriptionStatus::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -126,13 +133,15 @@ final class SubscriptionsService implements SubscriptionsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<PublicSubscriptionStatus> */
+        $response = $this->client->request(
             method: 'post',
             path: 'communication-preferences/v3/unsubscribe',
             body: (object) $parsed,
             options: $options,
             convert: PublicSubscriptionStatus::class,
         );
+
+        return $response->parse();
     }
 }

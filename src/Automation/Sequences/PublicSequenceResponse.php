@@ -6,9 +6,7 @@ namespace HubspotSDK\Automation\Sequences;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type PublicSequenceResponseShape = array{
@@ -23,12 +21,10 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
  *   settings?: PublicSequenceSettingsResponse|null,
  * }
  */
-final class PublicSequenceResponse implements BaseModel, ResponseConverter
+final class PublicSequenceResponse implements BaseModel
 {
     /** @use SdkModel<PublicSequenceResponseShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     #[Api]
     public string $id;

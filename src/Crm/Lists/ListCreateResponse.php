@@ -6,9 +6,7 @@ namespace HubspotSDK\Crm\Lists;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 use HubspotSDK\PublicAndFilterBranch;
 use HubspotSDK\PublicAssociationFilterBranch;
 use HubspotSDK\PublicNotAllFilterBranch;
@@ -23,12 +21,10 @@ use HubspotSDK\PublicUnifiedEventsFilterBranch;
  *
  * @phpstan-type ListCreateResponseShape = array{list: PublicObjectList}
  */
-final class ListCreateResponse implements BaseModel, ResponseConverter
+final class ListCreateResponse implements BaseModel
 {
     /** @use SdkModel<ListCreateResponseShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     /**
      * An object list definition.

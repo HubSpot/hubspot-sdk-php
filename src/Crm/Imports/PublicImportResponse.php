@@ -6,9 +6,7 @@ namespace HubspotSDK\Crm\Imports;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 use HubspotSDK\Crm\Imports\ImportTemplate\TemplateType;
 use HubspotSDK\Crm\Imports\PublicImportResponse\ImportSource;
 use HubspotSDK\Crm\Imports\PublicImportResponse\State;
@@ -28,12 +26,10 @@ use HubspotSDK\Crm\Imports\PublicImportResponse\State;
  *   importTemplate?: ImportTemplate|null,
  * }
  */
-final class PublicImportResponse implements BaseModel, ResponseConverter
+final class PublicImportResponse implements BaseModel
 {
     /** @use SdkModel<PublicImportResponseShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     #[Api]
     public string $id;

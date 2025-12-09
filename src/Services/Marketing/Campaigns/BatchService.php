@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Marketing\Campaigns;
 
 use HubspotSDK\Client;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Marketing\Campaigns\Batch\BatchCreateParams;
 use HubspotSDK\Marketing\Campaigns\Batch\BatchDeleteParams;
@@ -43,14 +44,16 @@ final class BatchService implements BatchContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<BatchResponsePublicCampaign> */
+        $response = $this->client->request(
             method: 'post',
             path: 'marketing/v3/campaigns/batch/create',
             body: (object) $parsed,
             options: $options,
             convert: BatchResponsePublicCampaign::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -75,14 +78,16 @@ final class BatchService implements BatchContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<BatchResponsePublicCampaign> */
+        $response = $this->client->request(
             method: 'post',
             path: 'marketing/v3/campaigns/batch/update',
             body: (object) $parsed,
             options: $options,
             convert: BatchResponsePublicCampaign::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -105,14 +110,16 @@ final class BatchService implements BatchContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'post',
             path: 'marketing/v3/campaigns/batch/archive',
             body: (object) $parsed,
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -142,8 +149,8 @@ final class BatchService implements BatchContract
         );
         $query_params = array_flip(['endDate', 'properties', 'startDate']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<BatchResponsePublicCampaignWithAssets> */
+        $response = $this->client->request(
             method: 'post',
             path: 'marketing/v3/campaigns/batch/read',
             query: array_diff_key($parsed, $query_params),
@@ -151,5 +158,7 @@ final class BatchService implements BatchContract
             options: $options,
             convert: BatchResponsePublicCampaignWithAssets::class,
         );
+
+        return $response->parse();
     }
 }

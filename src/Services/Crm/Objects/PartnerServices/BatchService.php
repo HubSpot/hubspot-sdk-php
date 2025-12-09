@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Crm\Objects\PartnerServices;
 
 use HubspotSDK\Client;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\BatchResponseSimplePublicObject;
 use HubspotSDK\Crm\Objects\PartnerServices\Batch\BatchGetParams;
@@ -44,14 +45,16 @@ final class BatchService implements BatchContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<BatchResponseSimplePublicObject> */
+        $response = $this->client->request(
             method: 'post',
             path: 'crm/v3/objects/partner_services/batch/update',
             body: (object) $parsed,
             options: $options,
             convert: BatchResponseSimplePublicObject::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -79,8 +82,8 @@ final class BatchService implements BatchContract
         );
         $query_params = ['archived'];
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<BatchResponseSimplePublicObject> */
+        $response = $this->client->request(
             method: 'post',
             path: 'crm/v3/objects/partner_services/batch/read',
             query: array_diff_key($parsed, $query_params),
@@ -88,5 +91,7 @@ final class BatchService implements BatchContract
             options: $options,
             convert: BatchResponseSimplePublicObject::class,
         );
+
+        return $response->parse();
     }
 }

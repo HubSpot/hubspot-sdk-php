@@ -6,6 +6,7 @@ namespace HubspotSDK\Services\Scheduler\Meetings;
 
 use HubspotSDK\AssociationSpec;
 use HubspotSDK\Client;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\PublicObjectID;
 use HubspotSDK\RequestOptions;
@@ -62,8 +63,8 @@ final class CalendarService implements CalendarContract
         );
         $query_params = ['organizerUserId'];
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<ExternalCalenderMeetingEventResponse> */
+        $response = $this->client->request(
             method: 'post',
             path: 'scheduler/v3/meetings/calendar',
             query: array_diff_key($parsed, $query_params),
@@ -71,5 +72,7 @@ final class CalendarService implements CalendarContract
             options: $options,
             convert: ExternalCalenderMeetingEventResponse::class,
         );
+
+        return $response->parse();
     }
 }

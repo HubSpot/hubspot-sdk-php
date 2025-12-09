@@ -6,9 +6,7 @@ namespace HubspotSDK\Events\EventDefinitions;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 use HubspotSDK\Events\EventDefinitions\AssociationDefinition\Cardinality;
 use HubspotSDK\Events\EventDefinitions\AssociationDefinition\Category;
 use HubspotSDK\Events\EventDefinitions\AssociationDefinition\FromObjectType;
@@ -40,12 +38,10 @@ use HubspotSDK\PropertyModificationMetadata;
  *   trackingType?: value-of<TrackingType>|null,
  * }
  */
-final class ExternalBehavioralEventTypeDefinition implements BaseModel, ResponseConverter
+final class ExternalBehavioralEventTypeDefinition implements BaseModel
 {
     /** @use SdkModel<ExternalBehavioralEventTypeDefinitionShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     #[Api]
     public string $id;

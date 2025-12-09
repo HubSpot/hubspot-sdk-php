@@ -6,6 +6,7 @@ namespace HubspotSDK\Services\Crm\Objects;
 
 use HubspotSDK\AssociationSpec;
 use HubspotSDK\Client;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\Crm\CreatedResponseSimplePublicObject;
@@ -68,14 +69,16 @@ final class ProjectsService implements ProjectsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<CreatedResponseSimplePublicObject> */
+        $response = $this->client->request(
             method: 'post',
             path: 'crm/objects/v3/projects',
             body: (object) $parsed,
             options: $options,
             convert: CreatedResponseSimplePublicObject::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -100,8 +103,8 @@ final class ProjectsService implements ProjectsContract
         );
         $query_params = ['idProperty'];
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<SimplePublicObject> */
+        $response = $this->client->request(
             method: 'patch',
             path: ['crm/objects/v3/projects/%1$s', $projectID],
             query: array_diff_key($parsed, $query_params),
@@ -109,6 +112,8 @@ final class ProjectsService implements ProjectsContract
             options: $options,
             convert: SimplePublicObject::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -138,8 +143,8 @@ final class ProjectsService implements ProjectsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<Page<SimplePublicObjectWithAssociations>> */
+        $response = $this->client->request(
             method: 'get',
             path: 'crm/objects/v3/projects',
             query: $parsed,
@@ -147,6 +152,8 @@ final class ProjectsService implements ProjectsContract
             convert: SimplePublicObjectWithAssociations::class,
             page: Page::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -160,13 +167,15 @@ final class ProjectsService implements ProjectsContract
         string $projectID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'delete',
             path: ['crm/objects/v3/projects/%1$s', $projectID],
             options: $requestOptions,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -194,14 +203,16 @@ final class ProjectsService implements ProjectsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<SimplePublicObjectWithAssociations> */
+        $response = $this->client->request(
             method: 'get',
             path: ['crm/objects/v3/projects/%1$s', $projectID],
             query: $parsed,
             options: $options,
             convert: SimplePublicObjectWithAssociations::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -224,14 +235,16 @@ final class ProjectsService implements ProjectsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<SimplePublicObject> */
+        $response = $this->client->request(
             method: 'post',
             path: 'crm/objects/v3/projects/merge',
             body: (object) $parsed,
             options: $options,
             convert: SimplePublicObject::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -259,13 +272,15 @@ final class ProjectsService implements ProjectsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<CollectionResponseWithTotalSimplePublicObject> */
+        $response = $this->client->request(
             method: 'post',
             path: 'crm/objects/v3/projects/search',
             body: (object) $parsed,
             options: $options,
             convert: CollectionResponseWithTotalSimplePublicObject::class,
         );
+
+        return $response->parse();
     }
 }

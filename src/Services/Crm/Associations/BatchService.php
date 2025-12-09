@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Crm\Associations;
 
 use HubspotSDK\Client;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\Associations\Batch\BatchCreateParams;
 use HubspotSDK\Crm\Associations\Batch\BatchDeleteParams;
@@ -51,8 +52,8 @@ final class BatchService implements BatchContract
         $fromObjectType = $parsed['fromObjectType'];
         unset($parsed['fromObjectType']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<BatchResponsePublicAssociation> */
+        $response = $this->client->request(
             method: 'post',
             path: [
                 'crm/v3/associations/%1$s/%2$s/batch/create',
@@ -63,6 +64,8 @@ final class BatchService implements BatchContract
             options: $options,
             convert: BatchResponsePublicAssociation::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -93,8 +96,8 @@ final class BatchService implements BatchContract
         $fromObjectType = $parsed['fromObjectType'];
         unset($parsed['fromObjectType']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'post',
             path: [
                 'crm/v3/associations/%1$s/%2$s/batch/archive',
@@ -105,6 +108,8 @@ final class BatchService implements BatchContract
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -130,8 +135,8 @@ final class BatchService implements BatchContract
         $fromObjectType = $parsed['fromObjectType'];
         unset($parsed['fromObjectType']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<BatchResponsePublicAssociationMulti> */
+        $response = $this->client->request(
             method: 'post',
             path: [
                 'crm/v3/associations/%1$s/%2$s/batch/read',
@@ -142,5 +147,7 @@ final class BatchService implements BatchContract
             options: $options,
             convert: BatchResponsePublicAssociationMulti::class,
         );
+
+        return $response->parse();
     }
 }

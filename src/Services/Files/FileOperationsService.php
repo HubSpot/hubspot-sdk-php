@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Files;
 
 use HubspotSDK\Client;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Files\File;
 use HubspotSDK\Files\FileActionResponse;
@@ -58,14 +59,16 @@ final class FileOperationsService implements FileOperationsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<File> */
+        $response = $this->client->request(
             method: 'patch',
             path: ['files/v3/files/%1$s', $fileID],
             body: (object) $parsed,
             options: $options,
             convert: File::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -79,13 +82,15 @@ final class FileOperationsService implements FileOperationsContract
         string $fileID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'delete',
             path: ['files/v3/files/%1$s', $fileID],
             options: $requestOptions,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -99,13 +104,15 @@ final class FileOperationsService implements FileOperationsContract
         string $fileID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'delete',
             path: ['files/v3/files/%1$s/gdpr-delete', $fileID],
             options: $requestOptions,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -127,14 +134,16 @@ final class FileOperationsService implements FileOperationsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<File> */
+        $response = $this->client->request(
             method: 'get',
             path: ['files/v3/files/%1$s', $fileID],
             query: $parsed,
             options: $options,
             convert: File::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -156,14 +165,16 @@ final class FileOperationsService implements FileOperationsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<FileStat> */
+        $response = $this->client->request(
             method: 'get',
             path: ['files/v3/files/stat/%1$s', $filePath],
             query: $parsed,
             options: $options,
             convert: FileStat::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -177,13 +188,15 @@ final class FileOperationsService implements FileOperationsContract
         string $taskID,
         ?RequestOptions $requestOptions = null
     ): FileActionResponse {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<FileActionResponse> */
+        $response = $this->client->request(
             method: 'get',
             path: ['files/v3/files/import-from-url/async/tasks/%1$s/status', $taskID],
             options: $requestOptions,
             convert: FileActionResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -209,14 +222,16 @@ final class FileOperationsService implements FileOperationsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<SignedURL> */
+        $response = $this->client->request(
             method: 'get',
             path: ['files/v3/files/%1$s/signed-url', $fileID],
             query: $parsed,
             options: $options,
             convert: SignedURL::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -248,14 +263,16 @@ final class FileOperationsService implements FileOperationsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<ImportFromURLTaskLocator> */
+        $response = $this->client->request(
             method: 'post',
             path: 'files/v3/files/import-from-url/async',
             body: (object) $parsed,
             options: $options,
             convert: ImportFromURLTaskLocator::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -279,8 +296,8 @@ final class FileOperationsService implements FileOperationsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<File> */
+        $response = $this->client->request(
             method: 'put',
             path: ['files/v3/files/%1$s', $fileID],
             headers: ['Content-Type' => 'multipart/form-data'],
@@ -288,6 +305,8 @@ final class FileOperationsService implements FileOperationsContract
             options: $options,
             convert: File::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -347,8 +366,8 @@ final class FileOperationsService implements FileOperationsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<Page<File>> */
+        $response = $this->client->request(
             method: 'get',
             path: 'files/v3/files/search',
             query: $parsed,
@@ -356,6 +375,8 @@ final class FileOperationsService implements FileOperationsContract
             convert: File::class,
             page: Page::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -383,8 +404,8 @@ final class FileOperationsService implements FileOperationsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<File> */
+        $response = $this->client->request(
             method: 'post',
             path: 'files/v3/files',
             headers: ['Content-Type' => 'multipart/form-data'],
@@ -392,5 +413,7 @@ final class FileOperationsService implements FileOperationsContract
             options: $options,
             convert: File::class,
         );
+
+        return $response->parse();
     }
 }

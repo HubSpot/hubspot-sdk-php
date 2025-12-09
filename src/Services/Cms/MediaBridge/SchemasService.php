@@ -11,6 +11,7 @@ use HubspotSDK\Cms\MediaBridge\Schemas\SchemaGetParams;
 use HubspotSDK\Cms\MediaBridge\Schemas\SchemaListParams;
 use HubspotSDK\Cms\MediaBridge\Schemas\SchemaListResponse;
 use HubspotSDK\Cms\MediaBridge\Schemas\SchemaUpdateParams;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\Objects\Schemas\ObjectSchema;
 use HubspotSDK\Crm\Objects\Schemas\ObjectsSchemasObjectTypeDefinition;
@@ -57,14 +58,16 @@ final class SchemasService implements SchemasContract
         $appID = $parsed['appId'];
         unset($parsed['appId']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<ObjectsSchemasObjectTypeDefinition> */
+        $response = $this->client->request(
             method: 'patch',
             path: ['media-bridge/v1/%1$s/schemas/%2$s', $appID, $objectType],
             body: (object) array_diff_key($parsed, ['appId']),
             options: $options,
             convert: ObjectsSchemasObjectTypeDefinition::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -86,14 +89,16 @@ final class SchemasService implements SchemasContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<SchemaListResponse> */
+        $response = $this->client->request(
             method: 'get',
             path: ['media-bridge/v1/%1$s/schemas', $appID],
             query: $parsed,
             options: $options,
             convert: SchemaListResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -119,8 +124,8 @@ final class SchemasService implements SchemasContract
         $appID = $parsed['appId'];
         unset($parsed['appId']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<AssociationDefinition> */
+        $response = $this->client->request(
             method: 'post',
             path: [
                 'media-bridge/v1/%1$s/schemas/%2$s/associations', $appID, $objectType,
@@ -129,6 +134,8 @@ final class SchemasService implements SchemasContract
             options: $options,
             convert: AssociationDefinition::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -156,8 +163,8 @@ final class SchemasService implements SchemasContract
         $objectType = $parsed['objectType'];
         unset($parsed['objectType']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'delete',
             path: [
                 'media-bridge/v1/%1$s/schemas/%2$s/associations/%3$s',
@@ -168,6 +175,8 @@ final class SchemasService implements SchemasContract
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -191,12 +200,14 @@ final class SchemasService implements SchemasContract
         $appID = $parsed['appId'];
         unset($parsed['appId']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<ObjectSchema> */
+        $response = $this->client->request(
             method: 'get',
             path: ['media-bridge/v1/%1$s/schemas/%2$s', $appID, $objectType],
             options: $options,
             convert: ObjectSchema::class,
         );
+
+        return $response->parse();
     }
 }

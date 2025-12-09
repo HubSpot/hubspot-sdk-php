@@ -11,6 +11,7 @@ use HubspotSDK\Conversations\CustomChannels\ChannelAccounts\ChannelAccountListPa
 use HubspotSDK\Conversations\CustomChannels\ChannelAccounts\ChannelAccountUpdateParams;
 use HubspotSDK\Conversations\PublicChannelAccount;
 use HubspotSDK\Conversations\PublicDeliveryIdentifier;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
@@ -49,8 +50,8 @@ final class ChannelAccountsService implements ChannelAccountsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<PublicChannelAccount> */
+        $response = $this->client->request(
             method: 'post',
             path: [
                 'conversations/v3/custom-channels/%1$s/channel-accounts', $channelID,
@@ -59,6 +60,8 @@ final class ChannelAccountsService implements ChannelAccountsContract
             options: $options,
             convert: PublicChannelAccount::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -84,8 +87,8 @@ final class ChannelAccountsService implements ChannelAccountsContract
         $channelID = $parsed['channelId'];
         unset($parsed['channelId']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<PublicChannelAccount> */
+        $response = $this->client->request(
             method: 'patch',
             path: [
                 'conversations/v3/custom-channels/%1$s/channel-accounts/%2$s',
@@ -96,6 +99,8 @@ final class ChannelAccountsService implements ChannelAccountsContract
             options: $options,
             convert: PublicChannelAccount::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -127,8 +132,8 @@ final class ChannelAccountsService implements ChannelAccountsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<Page<PublicChannelAccount>> */
+        $response = $this->client->request(
             method: 'get',
             path: [
                 'conversations/v3/custom-channels/%1$s/channel-accounts', $channelID,
@@ -138,6 +143,8 @@ final class ChannelAccountsService implements ChannelAccountsContract
             convert: PublicChannelAccount::class,
             page: Page::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -161,8 +168,8 @@ final class ChannelAccountsService implements ChannelAccountsContract
         $channelID = $parsed['channelId'];
         unset($parsed['channelId']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<PublicChannelAccount> */
+        $response = $this->client->request(
             method: 'get',
             path: [
                 'conversations/v3/custom-channels/%1$s/channel-accounts/%2$s',
@@ -173,5 +180,7 @@ final class ChannelAccountsService implements ChannelAccountsContract
             options: $options,
             convert: PublicChannelAccount::class,
         );
+
+        return $response->parse();
     }
 }

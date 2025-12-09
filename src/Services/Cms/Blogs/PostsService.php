@@ -30,6 +30,7 @@ use HubspotSDK\Cms\Blogs\Posts\VersionBlogPost;
 use HubspotSDK\Cms\LayoutSection;
 use HubspotSDK\Cms\Pages\PagesContentLanguageVariation;
 use HubspotSDK\Cms\Styles;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
@@ -160,14 +161,16 @@ final class PostsService implements PostsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<BlogPost> */
+        $response = $this->client->request(
             method: 'post',
             path: 'cms/v3/blogs/posts',
             body: (object) $parsed,
             options: $options,
             convert: BlogPost::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -282,8 +285,8 @@ final class PostsService implements PostsContract
         );
         $query_params = ['archived'];
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<BlogPost> */
+        $response = $this->client->request(
             method: 'patch',
             path: ['cms/v3/blogs/posts/%1$s', $objectID],
             query: array_diff_key($parsed, $query_params),
@@ -291,6 +294,8 @@ final class PostsService implements PostsContract
             options: $options,
             convert: BlogPost::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -325,8 +330,8 @@ final class PostsService implements PostsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<Page<BlogPost>> */
+        $response = $this->client->request(
             method: 'get',
             path: 'cms/v3/blogs/posts',
             query: $parsed,
@@ -334,6 +339,8 @@ final class PostsService implements PostsContract
             convert: BlogPost::class,
             page: Page::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -355,14 +362,16 @@ final class PostsService implements PostsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'delete',
             path: ['cms/v3/blogs/posts/%1$s', $objectID],
             query: $parsed,
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -385,14 +394,16 @@ final class PostsService implements PostsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'post',
             path: 'cms/v3/blogs/posts/multi-language/attach-to-lang-group',
             body: (object) $parsed,
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -413,14 +424,16 @@ final class PostsService implements PostsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<BlogPost> */
+        $response = $this->client->request(
             method: 'post',
             path: 'cms/v3/blogs/posts/clone',
             body: (object) $parsed,
             options: $options,
             convert: BlogPost::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -443,14 +456,16 @@ final class PostsService implements PostsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<BlogPost> */
+        $response = $this->client->request(
             method: 'post',
             path: 'cms/v3/blogs/posts/multi-language/create-language-variation',
             body: (object) $parsed,
             options: $options,
             convert: BlogPost::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -471,14 +486,16 @@ final class PostsService implements PostsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'post',
             path: 'cms/v3/blogs/posts/multi-language/detach-from-lang-group',
             body: (object) $parsed,
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -500,14 +517,16 @@ final class PostsService implements PostsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<BlogPost> */
+        $response = $this->client->request(
             method: 'get',
             path: ['cms/v3/blogs/posts/%1$s', $objectID],
             query: $parsed,
             options: $options,
             convert: BlogPost::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -521,13 +540,15 @@ final class PostsService implements PostsContract
         string $objectID,
         ?RequestOptions $requestOptions = null
     ): BlogPost {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<BlogPost> */
+        $response = $this->client->request(
             method: 'get',
             path: ['cms/v3/blogs/posts/%1$s/draft', $objectID],
             options: $requestOptions,
             convert: BlogPost::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -551,13 +572,15 @@ final class PostsService implements PostsContract
         $objectID = $parsed['objectId'];
         unset($parsed['objectId']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<VersionBlogPost> */
+        $response = $this->client->request(
             method: 'get',
             path: ['cms/v3/blogs/posts/%1$s/revisions/%2$s', $objectID, $revisionID],
             options: $options,
             convert: VersionBlogPost::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -583,8 +606,8 @@ final class PostsService implements PostsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<Page<VersionBlogPost>> */
+        $response = $this->client->request(
             method: 'get',
             path: ['cms/v3/blogs/posts/%1$s/revisions', $objectID],
             query: $parsed,
@@ -592,6 +615,8 @@ final class PostsService implements PostsContract
             convert: VersionBlogPost::class,
             page: Page::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -605,13 +630,15 @@ final class PostsService implements PostsContract
         string $objectID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'post',
             path: ['cms/v3/blogs/posts/%1$s/draft/push-live', $objectID],
             options: $requestOptions,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -625,13 +652,15 @@ final class PostsService implements PostsContract
         string $objectID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'post',
             path: ['cms/v3/blogs/posts/%1$s/draft/reset', $objectID],
             options: $requestOptions,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -655,8 +684,8 @@ final class PostsService implements PostsContract
         $objectID = $parsed['objectId'];
         unset($parsed['objectId']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<BlogPost> */
+        $response = $this->client->request(
             method: 'post',
             path: [
                 'cms/v3/blogs/posts/%1$s/revisions/%2$s/restore', $objectID, $revisionID,
@@ -664,6 +693,8 @@ final class PostsService implements PostsContract
             options: $options,
             convert: BlogPost::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -687,8 +718,8 @@ final class PostsService implements PostsContract
         $objectID = $parsed['objectId'];
         unset($parsed['objectId']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<BlogPost> */
+        $response = $this->client->request(
             method: 'post',
             path: [
                 'cms/v3/blogs/posts/%1$s/revisions/%2$s/restore-to-draft',
@@ -698,6 +729,8 @@ final class PostsService implements PostsContract
             options: $options,
             convert: BlogPost::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -720,14 +753,16 @@ final class PostsService implements PostsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'post',
             path: 'cms/v3/blogs/posts/schedule',
             body: (object) $parsed,
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -748,14 +783,16 @@ final class PostsService implements PostsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'put',
             path: 'cms/v3/blogs/posts/multi-language/set-new-lang-primary',
             body: (object) $parsed,
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -868,14 +905,16 @@ final class PostsService implements PostsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<BlogPost> */
+        $response = $this->client->request(
             method: 'patch',
             path: ['cms/v3/blogs/posts/%1$s/draft', $objectID],
             body: (object) $parsed,
             options: $options,
             convert: BlogPost::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -898,13 +937,15 @@ final class PostsService implements PostsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'post',
             path: 'cms/v3/blogs/posts/multi-language/update-languages',
             body: (object) $parsed,
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 }

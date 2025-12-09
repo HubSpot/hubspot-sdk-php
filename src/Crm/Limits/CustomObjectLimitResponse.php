@@ -6,21 +6,17 @@ namespace HubspotSDK\Crm\Limits;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type CustomObjectLimitResponseShape = array{
  *   limit: int, percentage: float, usage: int
  * }
  */
-final class CustomObjectLimitResponse implements BaseModel, ResponseConverter
+final class CustomObjectLimitResponse implements BaseModel
 {
     /** @use SdkModel<CustomObjectLimitResponseShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     /**
      * The maximum number of custom objects allowed.

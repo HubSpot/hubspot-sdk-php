@@ -6,21 +6,17 @@ namespace HubspotSDK\Events;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type VisibleExternalEventTypeNamesShape = array{
  *   eventTypes: list<string>
  * }
  */
-final class VisibleExternalEventTypeNames implements BaseModel, ResponseConverter
+final class VisibleExternalEventTypeNames implements BaseModel
 {
     /** @use SdkModel<VisibleExternalEventTypeNamesShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     /**
      * List of event type names.

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Events;
 
 use HubspotSDK\Client;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Events\Send\SendSendBatchParams;
 use HubspotSDK\Events\Send\SendSendParams;
@@ -44,14 +45,16 @@ final class SendService implements SendContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'post',
             path: 'events/v3/send',
             body: (object) $parsed,
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -82,13 +85,15 @@ final class SendService implements SendContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'post',
             path: 'events/v3/send/batch',
             body: (object) $parsed,
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 }

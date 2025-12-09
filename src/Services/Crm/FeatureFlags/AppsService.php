@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Crm\FeatureFlags;
 
 use HubspotSDK\Client;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\FeatureFlags\Apps\AppDeleteParams;
 use HubspotSDK\Crm\FeatureFlags\Apps\AppGetParams;
@@ -47,14 +48,16 @@ final class AppsService implements AppsContract
         $appID = $parsed['appId'];
         unset($parsed['appId']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<FlagResponse> */
+        $response = $this->client->request(
             method: 'put',
             path: ['feature-flags/v3/%1$s/flags/%2$s', $appID, $flagName],
             body: (object) array_diff_key($parsed, ['appId']),
             options: $options,
             convert: FlagResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -78,13 +81,15 @@ final class AppsService implements AppsContract
         $appID = $parsed['appId'];
         unset($parsed['appId']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<FlagResponse> */
+        $response = $this->client->request(
             method: 'delete',
             path: ['feature-flags/v3/%1$s/flags/%2$s', $appID, $flagName],
             options: $options,
             convert: FlagResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -108,13 +113,15 @@ final class AppsService implements AppsContract
         $appID = $parsed['appId'];
         unset($parsed['appId']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<FlagResponse> */
+        $response = $this->client->request(
             method: 'get',
             path: ['feature-flags/v3/%1$s/flags/%2$s', $appID, $flagName],
             options: $options,
             convert: FlagResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -140,13 +147,15 @@ final class AppsService implements AppsContract
         $appID = $parsed['appId'];
         unset($parsed['appId']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<PortalFlagStateBatchResponse> */
+        $response = $this->client->request(
             method: 'get',
             path: ['feature-flags/v3/%1$s/flags/%2$s/portals', $appID, $flagName],
             query: $parsed,
             options: $options,
             convert: PortalFlagStateBatchResponse::class,
         );
+
+        return $response->parse();
     }
 }

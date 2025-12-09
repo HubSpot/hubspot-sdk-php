@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Crm\Objects;
 
 use HubspotSDK\Client;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\Crm\Objects\PartnerServices\PartnerServiceGetParams;
@@ -62,8 +63,8 @@ final class PartnerServicesService implements PartnerServicesContract
         );
         $query_params = ['idProperty'];
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<SimplePublicObject> */
+        $response = $this->client->request(
             method: 'patch',
             path: ['crm/v3/objects/partner_services/%1$s', $partnerServiceID],
             query: array_diff_key($parsed, $query_params),
@@ -71,6 +72,8 @@ final class PartnerServicesService implements PartnerServicesContract
             options: $options,
             convert: SimplePublicObject::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -100,8 +103,8 @@ final class PartnerServicesService implements PartnerServicesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<Page<SimplePublicObjectWithAssociations>> */
+        $response = $this->client->request(
             method: 'get',
             path: 'crm/v3/objects/partner_services',
             query: $parsed,
@@ -109,6 +112,8 @@ final class PartnerServicesService implements PartnerServicesContract
             convert: SimplePublicObjectWithAssociations::class,
             page: Page::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -136,14 +141,16 @@ final class PartnerServicesService implements PartnerServicesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<SimplePublicObjectWithAssociations> */
+        $response = $this->client->request(
             method: 'get',
             path: ['crm/v3/objects/partner_services/%1$s', $partnerServiceID],
             query: $parsed,
             options: $options,
             convert: SimplePublicObjectWithAssociations::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -169,13 +176,15 @@ final class PartnerServicesService implements PartnerServicesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<CollectionResponseWithTotalSimplePublicObject> */
+        $response = $this->client->request(
             method: 'post',
             path: 'crm/v3/objects/partner_services/search',
             body: (object) $parsed,
             options: $options,
             convert: CollectionResponseWithTotalSimplePublicObject::class,
         );
+
+        return $response->parse();
     }
 }

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Crm\FeatureFlags;
 
 use HubspotSDK\Client;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\FeatureFlags\PortalFlagStateBatchResponse;
 use HubspotSDK\Crm\FeatureFlags\PortalFlagStateResponse;
@@ -48,8 +49,8 @@ final class PortalsService implements PortalsContract
         $flagName = $parsed['flagName'];
         unset($parsed['flagName']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<PortalFlagStateResponse> */
+        $response = $this->client->request(
             method: 'put',
             path: [
                 'feature-flags/v3/%1$s/flags/%2$s/portals/%3$s',
@@ -61,6 +62,8 @@ final class PortalsService implements PortalsContract
             options: $options,
             convert: PortalFlagStateResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -86,8 +89,8 @@ final class PortalsService implements PortalsContract
         $flagName = $parsed['flagName'];
         unset($parsed['flagName']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<PortalFlagStateResponse> */
+        $response = $this->client->request(
             method: 'delete',
             path: [
                 'feature-flags/v3/%1$s/flags/%2$s/portals/%3$s',
@@ -98,6 +101,8 @@ final class PortalsService implements PortalsContract
             options: $options,
             convert: PortalFlagStateResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -121,8 +126,8 @@ final class PortalsService implements PortalsContract
         $appID = $parsed['appId'];
         unset($parsed['appId']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<PortalFlagStateBatchResponse> */
+        $response = $this->client->request(
             method: 'post',
             path: [
                 'feature-flags/v3/%1$s/flags/%2$s/portals/batch/delete',
@@ -133,6 +138,8 @@ final class PortalsService implements PortalsContract
             options: $options,
             convert: PortalFlagStateBatchResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -159,8 +166,8 @@ final class PortalsService implements PortalsContract
         $appID = $parsed['appId'];
         unset($parsed['appId']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<PortalFlagStateBatchResponse> */
+        $response = $this->client->request(
             method: 'post',
             path: [
                 'feature-flags/v3/%1$s/flags/%2$s/portals/batch/upsert',
@@ -171,6 +178,8 @@ final class PortalsService implements PortalsContract
             options: $options,
             convert: PortalFlagStateBatchResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -196,8 +205,8 @@ final class PortalsService implements PortalsContract
         $flagName = $parsed['flagName'];
         unset($parsed['flagName']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<PortalFlagStateResponse> */
+        $response = $this->client->request(
             method: 'get',
             path: [
                 'feature-flags/v3/%1$s/flags/%2$s/portals/%3$s',
@@ -208,5 +217,7 @@ final class PortalsService implements PortalsContract
             options: $options,
             convert: PortalFlagStateResponse::class,
         );
+
+        return $response->parse();
     }
 }

@@ -18,6 +18,7 @@ use HubspotSDK\Automation\Actions\PublicActionLabels;
 use HubspotSDK\Automation\Actions\PublicExecutionTranslationRule;
 use HubspotSDK\Automation\Actions\PublicObjectRequestOptions;
 use HubspotSDK\Client;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
@@ -86,14 +87,16 @@ final class DefinitionsService implements DefinitionsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<PublicActionDefinition> */
+        $response = $this->client->request(
             method: 'post',
             path: ['automation/v4/actions/%1$s', $appID],
             body: (object) $parsed,
             options: $options,
             convert: PublicActionDefinition::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -149,14 +152,16 @@ final class DefinitionsService implements DefinitionsContract
         $appID = $parsed['appId'];
         unset($parsed['appId']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<PublicActionDefinition> */
+        $response = $this->client->request(
             method: 'patch',
             path: ['automation/v4/actions/%1$s/%2$s', $appID, $definitionID],
             body: (object) array_diff_key($parsed, ['appId']),
             options: $options,
             convert: PublicActionDefinition::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -182,8 +187,8 @@ final class DefinitionsService implements DefinitionsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<Page<PublicActionDefinition>> */
+        $response = $this->client->request(
             method: 'get',
             path: ['automation/v4/actions/%1$s', $appID],
             query: $parsed,
@@ -191,6 +196,8 @@ final class DefinitionsService implements DefinitionsContract
             convert: PublicActionDefinition::class,
             page: Page::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -214,13 +221,15 @@ final class DefinitionsService implements DefinitionsContract
         $appID = $parsed['appId'];
         unset($parsed['appId']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'delete',
             path: ['automation/v4/actions/%1$s/%2$s', $appID, $definitionID],
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -244,13 +253,15 @@ final class DefinitionsService implements DefinitionsContract
         $appID = $parsed['appId'];
         unset($parsed['appId']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<PublicActionDefinition> */
+        $response = $this->client->request(
             method: 'get',
             path: ['automation/v4/actions/%1$s/%2$s', $appID, $definitionID],
             query: $parsed,
             options: $options,
             convert: PublicActionDefinition::class,
         );
+
+        return $response->parse();
     }
 }

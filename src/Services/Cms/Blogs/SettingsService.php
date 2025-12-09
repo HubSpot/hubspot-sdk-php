@@ -15,6 +15,7 @@ use HubspotSDK\Cms\Blogs\Settings\SettingListRevisionsParams;
 use HubspotSDK\Cms\Blogs\Settings\SettingSetNewLangPrimaryParams;
 use HubspotSDK\Cms\Blogs\Settings\SettingUpdateLanguagesParams;
 use HubspotSDK\Cms\Blogs\Settings\VersionBlog;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
@@ -56,8 +57,8 @@ final class SettingsService implements SettingsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<Page<Blog>> */
+        $response = $this->client->request(
             method: 'get',
             path: 'cms/v3/blog-settings/settings',
             query: $parsed,
@@ -65,6 +66,8 @@ final class SettingsService implements SettingsContract
             convert: Blog::class,
             page: Page::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -85,14 +88,16 @@ final class SettingsService implements SettingsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'post',
             path: 'cms/v3/blog-settings/settings/multi-language/attach-to-lang-group',
             body: (object) $parsed,
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -113,14 +118,16 @@ final class SettingsService implements SettingsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<Blog> */
+        $response = $this->client->request(
             method: 'post',
             path: 'cms/v3/blog-settings/settings/multi-language/create-language-variation',
             body: (object) $parsed,
             options: $options,
             convert: Blog::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -139,14 +146,16 @@ final class SettingsService implements SettingsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'post',
             path: 'cms/v3/blog-settings/settings/multi-language/detach-from-lang-group',
             body: (object) $parsed,
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -158,13 +167,15 @@ final class SettingsService implements SettingsContract
         string $blogID,
         ?RequestOptions $requestOptions = null
     ): Blog {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<Blog> */
+        $response = $this->client->request(
             method: 'get',
             path: ['cms/v3/blog-settings/settings/%1$s', $blogID],
             options: $requestOptions,
             convert: Blog::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -186,8 +197,8 @@ final class SettingsService implements SettingsContract
         $blogID = $parsed['blogId'];
         unset($parsed['blogId']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<VersionBlog> */
+        $response = $this->client->request(
             method: 'get',
             path: [
                 'cms/v3/blog-settings/settings/%1$s/revisions/%2$s',
@@ -197,6 +208,8 @@ final class SettingsService implements SettingsContract
             options: $options,
             convert: VersionBlog::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -220,8 +233,8 @@ final class SettingsService implements SettingsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<Page<VersionBlog>> */
+        $response = $this->client->request(
             method: 'get',
             path: ['cms/v3/blog-settings/settings/%1$s/revisions', $blogID],
             query: $parsed,
@@ -229,6 +242,8 @@ final class SettingsService implements SettingsContract
             convert: VersionBlog::class,
             page: Page::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -247,14 +262,16 @@ final class SettingsService implements SettingsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'put',
             path: 'cms/v3/blog-settings/settings/multi-language/set-new-lang-primary',
             body: (object) $parsed,
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -275,13 +292,15 @@ final class SettingsService implements SettingsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'post',
             path: 'cms/v3/blog-settings/settings/multi-language/update-languages',
             body: (object) $parsed,
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 }

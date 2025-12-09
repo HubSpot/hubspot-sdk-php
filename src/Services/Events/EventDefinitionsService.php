@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Events;
 
 use HubspotSDK\Client;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Events\EventDefinitions\EventDefinitionCreateParams;
 use HubspotSDK\Events\EventDefinitions\EventDefinitionCreatePropertyParams;
@@ -55,14 +56,16 @@ final class EventDefinitionsService implements EventDefinitionsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<ExternalBehavioralEventTypeDefinition> */
+        $response = $this->client->request(
             method: 'post',
             path: 'events/v3/event-definitions',
             body: (object) $parsed,
             options: $options,
             convert: ExternalBehavioralEventTypeDefinition::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -86,14 +89,16 @@ final class EventDefinitionsService implements EventDefinitionsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<ExternalBehavioralEventTypeDefinition> */
+        $response = $this->client->request(
             method: 'patch',
             path: ['events/v3/event-definitions/%1$s', $eventName],
             body: (object) $parsed,
             options: $options,
             convert: ExternalBehavioralEventTypeDefinition::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -122,8 +127,8 @@ final class EventDefinitionsService implements EventDefinitionsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<Page<ExternalBehavioralEventTypeDefinition>> */
+        $response = $this->client->request(
             method: 'get',
             path: 'events/v3/event-definitions',
             query: $parsed,
@@ -131,6 +136,8 @@ final class EventDefinitionsService implements EventDefinitionsContract
             convert: ExternalBehavioralEventTypeDefinition::class,
             page: Page::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -144,13 +151,15 @@ final class EventDefinitionsService implements EventDefinitionsContract
         string $eventName,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'delete',
             path: ['events/v3/event-definitions/%1$s', $eventName],
             options: $requestOptions,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -184,14 +193,16 @@ final class EventDefinitionsService implements EventDefinitionsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<Property> */
+        $response = $this->client->request(
             method: 'post',
             path: ['events/v3/event-definitions/%1$s/property', $eventName],
             body: (object) $parsed,
             options: $options,
             convert: Property::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -215,8 +226,8 @@ final class EventDefinitionsService implements EventDefinitionsContract
         $eventName = $parsed['eventName'];
         unset($parsed['eventName']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'delete',
             path: [
                 'events/v3/event-definitions/%1$s/property/%2$s',
@@ -226,6 +237,8 @@ final class EventDefinitionsService implements EventDefinitionsContract
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -239,13 +252,15 @@ final class EventDefinitionsService implements EventDefinitionsContract
         string $eventName,
         ?RequestOptions $requestOptions = null
     ): ExternalBehavioralEventTypeDefinition {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<ExternalBehavioralEventTypeDefinition> */
+        $response = $this->client->request(
             method: 'get',
             path: ['events/v3/event-definitions/%1$s', $eventName],
             options: $requestOptions,
             convert: ExternalBehavioralEventTypeDefinition::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -280,8 +295,8 @@ final class EventDefinitionsService implements EventDefinitionsContract
         $eventName = $parsed['eventName'];
         unset($parsed['eventName']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<Property> */
+        $response = $this->client->request(
             method: 'patch',
             path: [
                 'events/v3/event-definitions/%1$s/property/%2$s',
@@ -292,5 +307,7 @@ final class EventDefinitionsService implements EventDefinitionsContract
             options: $options,
             convert: Property::class,
         );
+
+        return $response->parse();
     }
 }

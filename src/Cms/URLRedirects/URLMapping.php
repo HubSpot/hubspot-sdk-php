@@ -6,9 +6,7 @@ namespace HubspotSDK\Cms\URLRedirects;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type URLMappingShape = array{
@@ -27,12 +25,10 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
  *   updated?: \DateTimeInterface|null,
  * }
  */
-final class URLMapping implements BaseModel, ResponseConverter
+final class URLMapping implements BaseModel
 {
     /** @use SdkModel<URLMappingShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     /**
      * The unique ID of this URL redirect.

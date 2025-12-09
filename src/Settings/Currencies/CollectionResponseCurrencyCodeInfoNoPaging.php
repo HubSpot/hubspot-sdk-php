@@ -6,21 +6,17 @@ namespace HubspotSDK\Settings\Currencies;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type CollectionResponseCurrencyCodeInfoNoPagingShape = array{
  *   results: list<CurrencyCodeInfo>
  * }
  */
-final class CollectionResponseCurrencyCodeInfoNoPaging implements BaseModel, ResponseConverter
+final class CollectionResponseCurrencyCodeInfoNoPaging implements BaseModel
 {
     /** @use SdkModel<CollectionResponseCurrencyCodeInfoNoPagingShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     /** @var list<CurrencyCodeInfo> $results */
     #[Api(list: CurrencyCodeInfo::class)]

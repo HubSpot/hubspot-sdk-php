@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Settings\Currencies;
 
 use HubspotSDK\Client;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Settings\Currencies\CentralFxRatesContract;
@@ -41,14 +42,16 @@ final class CentralFxRatesService implements CentralFxRatesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<ExchangeRate> */
+        $response = $this->client->request(
             method: 'post',
             path: 'settings/v3/currencies/central-fx-rates/add-currency',
             body: (object) $parsed,
             options: $options,
             convert: ExchangeRate::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -61,13 +64,15 @@ final class CentralFxRatesService implements CentralFxRatesContract
     public function getInformation(
         ?RequestOptions $requestOptions = null
     ): CentralExchangeRatesInformation {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<CentralExchangeRatesInformation> */
+        $response = $this->client->request(
             method: 'get',
             path: 'settings/v3/currencies/central-fx-rates/information',
             options: $requestOptions,
             convert: CentralExchangeRatesInformation::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -80,12 +85,14 @@ final class CentralFxRatesService implements CentralFxRatesContract
     public function getUnsupportedCurrencies(
         ?RequestOptions $requestOptions = null
     ): CollectionResponseCurrencyCodeInfoNoPaging {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<CollectionResponseCurrencyCodeInfoNoPaging> */
+        $response = $this->client->request(
             method: 'get',
             path: 'settings/v3/currencies/central-fx-rates/unsupported-currencies',
             options: $requestOptions,
             convert: CollectionResponseCurrencyCodeInfoNoPaging::class,
         );
+
+        return $response->parse();
     }
 }

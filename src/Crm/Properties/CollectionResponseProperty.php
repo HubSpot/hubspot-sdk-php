@@ -6,9 +6,7 @@ namespace HubspotSDK\Crm\Properties;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 use HubspotSDK\NextPage;
 use HubspotSDK\Option;
 use HubspotSDK\Paging;
@@ -22,12 +20,10 @@ use HubspotSDK\PropertyModificationMetadata;
  *   results: list<Property>, paging?: Paging|null
  * }
  */
-final class CollectionResponseProperty implements BaseModel, ResponseConverter
+final class CollectionResponseProperty implements BaseModel
 {
     /** @use SdkModel<CollectionResponsePropertyShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     /** @var list<Property> $results */
     #[Api(list: Property::class)]

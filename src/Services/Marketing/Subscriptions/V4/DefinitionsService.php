@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Marketing\Subscriptions\V4;
 
 use HubspotSDK\Client;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Marketing\Subscriptions\V4\ActionResponseWithResultsSubscriptionDefinition;
 use HubspotSDK\Marketing\Subscriptions\V4\Definitions\DefinitionListParams;
@@ -38,13 +39,15 @@ final class DefinitionsService implements DefinitionsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<ActionResponseWithResultsSubscriptionDefinition> */
+        $response = $this->client->request(
             method: 'get',
             path: 'communication-preferences/v4/definitions',
             query: $parsed,
             options: $options,
             convert: ActionResponseWithResultsSubscriptionDefinition::class,
         );
+
+        return $response->parse();
     }
 }

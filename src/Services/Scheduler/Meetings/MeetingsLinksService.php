@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Scheduler\Meetings;
 
 use HubspotSDK\Client;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
@@ -52,8 +53,8 @@ final class MeetingsLinksService implements MeetingsLinksContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<Page<ExternalLinkMetadata>> */
+        $response = $this->client->request(
             method: 'get',
             path: 'scheduler/v3/meetings/meeting-links',
             query: $parsed,
@@ -61,6 +62,8 @@ final class MeetingsLinksService implements MeetingsLinksContract
             convert: ExternalLinkMetadata::class,
             page: Page::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -95,14 +98,16 @@ final class MeetingsLinksService implements MeetingsLinksContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<ExternalMeetingBookingResponse> */
+        $response = $this->client->request(
             method: 'post',
             path: 'scheduler/v3/meetings/meeting-links/book',
             body: (object) $parsed,
             options: $options,
             convert: ExternalMeetingBookingResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -126,8 +131,8 @@ final class MeetingsLinksService implements MeetingsLinksContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<ExternalLinkAvailabilityAndBusyTimes> */
+        $response = $this->client->request(
             method: 'get',
             path: [
                 'scheduler/v3/meetings/meeting-links/book/availability-page/%1$s', $slug,
@@ -136,6 +141,8 @@ final class MeetingsLinksService implements MeetingsLinksContract
             options: $options,
             convert: ExternalLinkAvailabilityAndBusyTimes::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -157,13 +164,15 @@ final class MeetingsLinksService implements MeetingsLinksContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<ExternalBookingInfo> */
+        $response = $this->client->request(
             method: 'get',
             path: ['scheduler/v3/meetings/meeting-links/book/%1$s', $slug],
             query: $parsed,
             options: $options,
             convert: ExternalBookingInfo::class,
         );
+
+        return $response->parse();
     }
 }

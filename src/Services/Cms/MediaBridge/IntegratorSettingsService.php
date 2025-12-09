@@ -24,6 +24,7 @@ use HubspotSDK\Cms\MediaBridge\IntegratorSettings\IntegratorSettingUpdateOembedD
 use HubspotSDK\Cms\MediaBridge\MediaBridgeProviderRegistrationResponse;
 use HubspotSDK\Cms\MediaBridge\ObjectDefinitionResponse;
 use HubspotSDK\Cms\MediaBridge\OEmbedDomainsCollectionResponse;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Cms\MediaBridge\IntegratorSettingsContract;
@@ -56,14 +57,16 @@ final class IntegratorSettingsService implements IntegratorSettingsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<BulkIntegratorObjectCreationResponse> */
+        $response = $this->client->request(
             method: 'post',
             path: ['media-bridge/v1/%1$s/settings/object-definitions', $appID],
             body: (object) $parsed,
             options: $options,
             convert: BulkIntegratorObjectCreationResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -90,14 +93,16 @@ final class IntegratorSettingsService implements IntegratorSettingsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<IntegratorOEmbedDomainModel> */
+        $response = $this->client->request(
             method: 'post',
             path: ['media-bridge/v1/%1$s/settings/oembed-domains', $appID],
             body: (object) $parsed,
             options: $options,
             convert: IntegratorOEmbedDomainModel::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -121,14 +126,16 @@ final class IntegratorSettingsService implements IntegratorSettingsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'delete',
             path: ['media-bridge/v1/%1$s/settings/oembed-domains', $appID],
             query: $parsed,
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -142,13 +149,15 @@ final class IntegratorSettingsService implements IntegratorSettingsContract
         int $appID,
         ?RequestOptions $requestOptions = null
     ): EventVisibilityResponse {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<EventVisibilityResponse> */
+        $response = $this->client->request(
             method: 'get',
             path: ['media-bridge/v1/%1$s/settings/event-visibility', $appID],
             options: $requestOptions,
             convert: EventVisibilityResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -175,8 +184,8 @@ final class IntegratorSettingsService implements IntegratorSettingsContract
         $appID = $parsed['appId'];
         unset($parsed['appId']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<ObjectDefinitionResponse> */
+        $response = $this->client->request(
             method: 'get',
             path: [
                 'media-bridge/v1/%1$s/settings/object-definitions/%2$s',
@@ -187,6 +196,8 @@ final class IntegratorSettingsService implements IntegratorSettingsContract
             options: $options,
             convert: ObjectDefinitionResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -210,8 +221,8 @@ final class IntegratorSettingsService implements IntegratorSettingsContract
         $appID = $parsed['appId'];
         unset($parsed['appId']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<IntegratorOEmbedDomainModel> */
+        $response = $this->client->request(
             method: 'get',
             path: [
                 'media-bridge/v1/%1$s/settings/oembed-domains/%2$s',
@@ -221,6 +232,8 @@ final class IntegratorSettingsService implements IntegratorSettingsContract
             options: $options,
             convert: IntegratorOEmbedDomainModel::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -244,14 +257,16 @@ final class IntegratorSettingsService implements IntegratorSettingsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<OEmbedDomainsCollectionResponse> */
+        $response = $this->client->request(
             method: 'get',
             path: ['media-bridge/v1/%1$s/settings/oembed-domains', $appID],
             query: $parsed,
             options: $options,
             convert: OEmbedDomainsCollectionResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -277,14 +292,16 @@ final class IntegratorSettingsService implements IntegratorSettingsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<MediaBridgeProviderRegistrationResponse> */
+        $response = $this->client->request(
             method: 'post',
             path: ['media-bridge/v1/%1$s/settings/register', $appID],
             body: (object) $parsed,
             options: $options,
             convert: MediaBridgeProviderRegistrationResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -308,14 +325,16 @@ final class IntegratorSettingsService implements IntegratorSettingsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<MediaBridgeProviderRegistrationResponse> */
+        $response = $this->client->request(
             method: 'put',
             path: ['media-bridge/v1/%1$s/settings', $appID],
             body: (object) $parsed,
             options: $options,
             convert: MediaBridgeProviderRegistrationResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -343,14 +362,16 @@ final class IntegratorSettingsService implements IntegratorSettingsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<EventVisibilityChange> */
+        $response = $this->client->request(
             method: 'patch',
             path: ['media-bridge/v1/%1$s/settings/event-visibility', $appID],
             body: (object) $parsed,
             options: $options,
             convert: EventVisibilityChange::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -380,8 +401,8 @@ final class IntegratorSettingsService implements IntegratorSettingsContract
         $appID = $parsed['appId'];
         unset($parsed['appId']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<IntegratorOEmbedDomainModel> */
+        $response = $this->client->request(
             method: 'patch',
             path: [
                 'media-bridge/v1/%1$s/settings/oembed-domains/%2$s',
@@ -392,5 +413,7 @@ final class IntegratorSettingsService implements IntegratorSettingsContract
             options: $options,
             convert: IntegratorOEmbedDomainModel::class,
         );
+
+        return $response->parse();
     }
 }

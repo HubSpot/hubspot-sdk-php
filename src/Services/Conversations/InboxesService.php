@@ -8,6 +8,7 @@ use HubspotSDK\Client;
 use HubspotSDK\Conversations\Inboxes\InboxGetParams;
 use HubspotSDK\Conversations\Inboxes\InboxListParams;
 use HubspotSDK\Conversations\PublicInbox;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
@@ -44,8 +45,8 @@ final class InboxesService implements InboxesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<Page<PublicInbox>> */
+        $response = $this->client->request(
             method: 'get',
             path: 'conversations/v3/conversations/inboxes',
             query: $parsed,
@@ -53,6 +54,8 @@ final class InboxesService implements InboxesContract
             convert: PublicInbox::class,
             page: Page::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -72,13 +75,15 @@ final class InboxesService implements InboxesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<PublicInbox> */
+        $response = $this->client->request(
             method: 'get',
             path: ['conversations/v3/conversations/inboxes/%1$s', $inboxID],
             query: $parsed,
             options: $options,
             convert: PublicInbox::class,
         );
+
+        return $response->parse();
     }
 }

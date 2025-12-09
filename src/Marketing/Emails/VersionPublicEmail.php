@@ -6,9 +6,7 @@ namespace HubspotSDK\Marketing\Emails;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 use HubspotSDK\Marketing\Emails\PublicEmail\EmailTemplateMode;
 use HubspotSDK\Marketing\Emails\PublicEmail\Language;
 use HubspotSDK\Marketing\Emails\PublicEmail\State;
@@ -25,12 +23,10 @@ use HubspotSDK\VersionUser;
  *   user: VersionUser,
  * }
  */
-final class VersionPublicEmail implements BaseModel, ResponseConverter
+final class VersionPublicEmail implements BaseModel
 {
     /** @use SdkModel<VersionPublicEmailShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     /**
      * ID of this marketing email version.

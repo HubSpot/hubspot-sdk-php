@@ -16,6 +16,7 @@ use HubspotSDK\Conversations\PublicMessageContent;
 use HubspotSDK\Conversations\PublicThreadInboxChange;
 use HubspotSDK\Conversations\PublicThreadStatusChange;
 use HubspotSDK\Conversations\PublicWelcomeMessage;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
@@ -37,13 +38,15 @@ final class MessagesService implements MessagesContract
         int $threadID,
         ?RequestOptions $requestOptions = null
     ): ConversationsPublicConversationsMessage|PublicComment|PublicWelcomeMessage|PublicAssignmentMessage|PublicThreadStatusChange|PublicThreadInboxChange {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<ConversationsPublicConversationsMessage|PublicComment|PublicWelcomeMessage|PublicAssignmentMessage|PublicThreadStatusChange|PublicThreadInboxChange,> */
+        $response = $this->client->request(
             method: 'post',
             path: ['conversations/v3/conversations/threads/%1$s/messages', $threadID],
             options: $requestOptions,
             convert: PublicMessage::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -71,8 +74,8 @@ final class MessagesService implements MessagesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<Page<ConversationsPublicConversationsMessage|PublicComment|PublicWelcomeMessage|PublicAssignmentMessage|PublicThreadStatusChange|PublicThreadInboxChange,>,> */
+        $response = $this->client->request(
             method: 'get',
             path: ['conversations/v3/conversations/threads/%1$s/messages', $threadID],
             query: $parsed,
@@ -80,6 +83,8 @@ final class MessagesService implements MessagesContract
             convert: PublicMessage::class,
             page: Page::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -101,8 +106,8 @@ final class MessagesService implements MessagesContract
         $threadID = $parsed['threadId'];
         unset($parsed['threadId']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<ConversationsPublicConversationsMessage|PublicComment|PublicWelcomeMessage|PublicAssignmentMessage|PublicThreadStatusChange|PublicThreadInboxChange,> */
+        $response = $this->client->request(
             method: 'get',
             path: [
                 'conversations/v3/conversations/threads/%1$s/messages/%2$s',
@@ -113,6 +118,8 @@ final class MessagesService implements MessagesContract
             options: $options,
             convert: PublicMessage::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -136,8 +143,8 @@ final class MessagesService implements MessagesContract
         $threadID = $parsed['threadId'];
         unset($parsed['threadId']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<PublicMessageContent> */
+        $response = $this->client->request(
             method: 'get',
             path: [
                 'conversations/v3/conversations/threads/%1$s/messages/%2$s/original-content',
@@ -148,5 +155,7 @@ final class MessagesService implements MessagesContract
             options: $options,
             convert: PublicMessageContent::class,
         );
+
+        return $response->parse();
     }
 }

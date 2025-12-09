@@ -6,9 +6,7 @@ namespace HubspotSDK\Marketing\Forms;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 use HubspotSDK\Marketing\Forms\FormDisplayOptions\Theme;
 use HubspotSDK\Marketing\Forms\HubSpotFormConfiguration\Language;
 use HubspotSDK\Marketing\Forms\HubSpotFormDefinition\FormType;
@@ -30,12 +28,10 @@ use HubspotSDK\Marketing\Forms\LegalConsentOptionsNone\Type;
  *   archivedAt?: \DateTimeInterface|null,
  * }
  */
-final class HubSpotFormDefinition implements BaseModel, ResponseConverter
+final class HubSpotFormDefinition implements BaseModel
 {
     /** @use SdkModel<HubSpotFormDefinitionShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     #[Api]
     public string $id;

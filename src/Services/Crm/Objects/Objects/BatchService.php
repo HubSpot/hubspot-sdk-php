@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Crm\Objects\Objects;
 
 use HubspotSDK\Client;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\BatchResponseSimplePublicObject;
 use HubspotSDK\Crm\BatchResponseSimplePublicUpsertObject;
@@ -48,14 +49,16 @@ final class BatchService implements BatchContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<BatchResponseSimplePublicObject> */
+        $response = $this->client->request(
             method: 'post',
             path: ['crm/v3/objects/%1$s/batch/create', $objectType],
             body: (object) $parsed,
             options: $options,
             convert: BatchResponseSimplePublicObject::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -84,14 +87,16 @@ final class BatchService implements BatchContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<BatchResponseSimplePublicObject> */
+        $response = $this->client->request(
             method: 'post',
             path: ['crm/v3/objects/%1$s/batch/update', $objectType],
             body: (object) $parsed,
             options: $options,
             convert: BatchResponseSimplePublicObject::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -113,14 +118,16 @@ final class BatchService implements BatchContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'post',
             path: ['crm/v3/objects/%1$s/batch/archive', $objectType],
             body: (object) $parsed,
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -149,8 +156,8 @@ final class BatchService implements BatchContract
         );
         $query_params = ['archived'];
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<BatchResponseSimplePublicObject> */
+        $response = $this->client->request(
             method: 'post',
             path: ['crm/v3/objects/%1$s/batch/read', $objectType],
             query: array_diff_key($parsed, $query_params),
@@ -158,6 +165,8 @@ final class BatchService implements BatchContract
             options: $options,
             convert: BatchResponseSimplePublicObject::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -186,13 +195,15 @@ final class BatchService implements BatchContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<BatchResponseSimplePublicUpsertObject> */
+        $response = $this->client->request(
             method: 'post',
             path: ['crm/v3/objects/%1$s/batch/upsert', $objectType],
             body: (object) $parsed,
             options: $options,
             convert: BatchResponseSimplePublicUpsertObject::class,
         );
+
+        return $response->parse();
     }
 }

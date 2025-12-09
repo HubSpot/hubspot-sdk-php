@@ -6,6 +6,7 @@ namespace HubspotSDK\Services\Crm\Objects;
 
 use HubspotSDK\AssociationSpec;
 use HubspotSDK\Client;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\Crm\CreatedResponseSimplePublicObject;
@@ -60,14 +61,16 @@ final class QuotesService implements QuotesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<CreatedResponseSimplePublicObject> */
+        $response = $this->client->request(
             method: 'post',
             path: 'crm/v3/objects/quotes',
             body: (object) $parsed,
             options: $options,
             convert: CreatedResponseSimplePublicObject::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -92,8 +95,8 @@ final class QuotesService implements QuotesContract
         );
         $query_params = ['idProperty'];
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<SimplePublicObject> */
+        $response = $this->client->request(
             method: 'patch',
             path: ['crm/v3/objects/quotes/%1$s', $quoteID],
             query: array_diff_key($parsed, $query_params),
@@ -101,6 +104,8 @@ final class QuotesService implements QuotesContract
             options: $options,
             convert: SimplePublicObject::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -130,8 +135,8 @@ final class QuotesService implements QuotesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<Page<SimplePublicObjectWithAssociations>> */
+        $response = $this->client->request(
             method: 'get',
             path: 'crm/v3/objects/quotes',
             query: $parsed,
@@ -139,6 +144,8 @@ final class QuotesService implements QuotesContract
             convert: SimplePublicObjectWithAssociations::class,
             page: Page::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -152,13 +159,15 @@ final class QuotesService implements QuotesContract
         string $quoteID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'delete',
             path: ['crm/v3/objects/quotes/%1$s', $quoteID],
             options: $requestOptions,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -186,14 +195,16 @@ final class QuotesService implements QuotesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<SimplePublicObjectWithAssociations> */
+        $response = $this->client->request(
             method: 'get',
             path: ['crm/v3/objects/quotes/%1$s', $quoteID],
             query: $parsed,
             options: $options,
             convert: SimplePublicObjectWithAssociations::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -219,13 +230,15 @@ final class QuotesService implements QuotesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<CollectionResponseWithTotalSimplePublicObject> */
+        $response = $this->client->request(
             method: 'post',
             path: 'crm/v3/objects/quotes/search',
             body: (object) $parsed,
             options: $options,
             convert: CollectionResponseWithTotalSimplePublicObject::class,
         );
+
+        return $response->parse();
     }
 }

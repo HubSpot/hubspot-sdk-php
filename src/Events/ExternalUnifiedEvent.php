@@ -6,9 +6,7 @@ namespace HubspotSDK\Events;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type ExternalUnifiedEventShape = array{
@@ -20,12 +18,10 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
  *   properties: array<string,string>,
  * }
  */
-final class ExternalUnifiedEvent implements BaseModel, ResponseConverter
+final class ExternalUnifiedEvent implements BaseModel
 {
     /** @use SdkModel<ExternalUnifiedEventShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     /**
      * A unique identifier for the event.

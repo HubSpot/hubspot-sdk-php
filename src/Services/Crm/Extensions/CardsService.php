@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Crm\Extensions;
 
 use HubspotSDK\Client;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\Extensions\Cards\CardActions;
 use HubspotSDK\Crm\Extensions\Cards\CardCreateParams;
@@ -58,14 +59,16 @@ final class CardsService implements CardsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<PublicCardResponse> */
+        $response = $this->client->request(
             method: 'post',
             path: ['crm/v3/extensions/cards-dev/%1$s', $appID],
             body: (object) $parsed,
             options: $options,
             convert: PublicCardResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -102,14 +105,16 @@ final class CardsService implements CardsContract
         $appID = $parsed['appId'];
         unset($parsed['appId']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<PublicCardResponse> */
+        $response = $this->client->request(
             method: 'patch',
             path: ['crm/v3/extensions/cards-dev/%1$s/%2$s', $appID, $cardID],
             body: (object) array_diff_key($parsed, ['appId']),
             options: $options,
             convert: PublicCardResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -123,13 +128,15 @@ final class CardsService implements CardsContract
         int $appID,
         ?RequestOptions $requestOptions = null
     ): PublicCardListResponse {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<PublicCardListResponse> */
+        $response = $this->client->request(
             method: 'get',
             path: ['crm/v3/extensions/cards-dev/%1$s', $appID],
             options: $requestOptions,
             convert: PublicCardListResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -153,13 +160,15 @@ final class CardsService implements CardsContract
         $appID = $parsed['appId'];
         unset($parsed['appId']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'delete',
             path: ['crm/v3/extensions/cards-dev/%1$s/%2$s', $appID, $cardID],
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -183,13 +192,15 @@ final class CardsService implements CardsContract
         $appID = $parsed['appId'];
         unset($parsed['appId']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<PublicCardResponse> */
+        $response = $this->client->request(
             method: 'get',
             path: ['crm/v3/extensions/cards-dev/%1$s/%2$s', $appID, $cardID],
             options: $options,
             convert: PublicCardResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -202,12 +213,14 @@ final class CardsService implements CardsContract
     public function getSampleResponse(
         ?RequestOptions $requestOptions = null
     ): IntegratorCardPayloadResponse {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<IntegratorCardPayloadResponse> */
+        $response = $this->client->request(
             method: 'get',
             path: 'crm/v3/extensions/cards-dev/sample-response',
             options: $requestOptions,
             convert: IntegratorCardPayloadResponse::class,
         );
+
+        return $response->parse();
     }
 }

@@ -6,21 +6,17 @@ namespace HubspotSDK\Marketing\Subscriptions;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type SubscriptionDefinitionsResponseShape = array{
  *   subscriptionDefinitions: list<SubscriptionDefinition>
  * }
  */
-final class SubscriptionDefinitionsResponse implements BaseModel, ResponseConverter
+final class SubscriptionDefinitionsResponse implements BaseModel
 {
     /** @use SdkModel<SubscriptionDefinitionsResponseShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     /**
      * A list of all subscription definitions.

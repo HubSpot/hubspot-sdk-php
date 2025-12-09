@@ -15,6 +15,7 @@ use HubspotSDK\Cms\Hubdb\Rows\RowListDraftParams;
 use HubspotSDK\Cms\Hubdb\Rows\RowListParams;
 use HubspotSDK\Cms\Hubdb\Rows\RowReplaceDraftParams;
 use HubspotSDK\Cms\Hubdb\Rows\RowUpdateDraftParams;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
@@ -61,14 +62,16 @@ final class RowsService implements RowsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<HubDBTableRowV3> */
+        $response = $this->client->request(
             method: 'post',
             path: ['cms/v3/hubdb/tables/%1$s/rows', $tableIDOrName],
             body: (object) $parsed,
             options: $options,
             convert: HubDBTableRowV3::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -100,8 +103,8 @@ final class RowsService implements RowsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<Page<mixed>> */
+        $response = $this->client->request(
             method: 'get',
             path: ['cms/v3/hubdb/tables/%1$s/rows', $tableIDOrName],
             query: $parsed,
@@ -109,6 +112,8 @@ final class RowsService implements RowsContract
             convert: 'mixed',
             page: Page::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -132,8 +137,8 @@ final class RowsService implements RowsContract
         $tableIDOrName = $parsed['tableIdOrName'];
         unset($parsed['tableIdOrName']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<HubDBTableRowV3> */
+        $response = $this->client->request(
             method: 'post',
             path: [
                 'cms/v3/hubdb/tables/%1$s/rows/%2$s/draft/clone', $tableIDOrName, $rowID,
@@ -142,6 +147,8 @@ final class RowsService implements RowsContract
             options: $options,
             convert: HubDBTableRowV3::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -165,8 +172,8 @@ final class RowsService implements RowsContract
         $tableIDOrName = $parsed['tableIdOrName'];
         unset($parsed['tableIdOrName']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'delete',
             path: [
                 'cms/v3/hubdb/tables/%1$s/rows/%2$s/draft', $tableIDOrName, $rowID,
@@ -174,6 +181,8 @@ final class RowsService implements RowsContract
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -198,14 +207,16 @@ final class RowsService implements RowsContract
         $tableIDOrName = $parsed['tableIdOrName'];
         unset($parsed['tableIdOrName']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<HubDBTableRowV3> */
+        $response = $this->client->request(
             method: 'get',
             path: ['cms/v3/hubdb/tables/%1$s/rows/%2$s', $tableIDOrName, $rowID],
             query: $parsed,
             options: $options,
             convert: HubDBTableRowV3::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -229,8 +240,8 @@ final class RowsService implements RowsContract
         $tableIDOrName = $parsed['tableIdOrName'];
         unset($parsed['tableIdOrName']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<HubDBTableRowV3> */
+        $response = $this->client->request(
             method: 'get',
             path: [
                 'cms/v3/hubdb/tables/%1$s/rows/%2$s/draft', $tableIDOrName, $rowID,
@@ -239,6 +250,8 @@ final class RowsService implements RowsContract
             options: $options,
             convert: HubDBTableRowV3::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -269,8 +282,8 @@ final class RowsService implements RowsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<Page<mixed>> */
+        $response = $this->client->request(
             method: 'get',
             path: ['cms/v3/hubdb/tables/%1$s/rows/draft', $tableIDOrName],
             query: $parsed,
@@ -278,6 +291,8 @@ final class RowsService implements RowsContract
             convert: 'mixed',
             page: Page::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -309,8 +324,8 @@ final class RowsService implements RowsContract
         $tableIDOrName = $parsed['tableIdOrName'];
         unset($parsed['tableIdOrName']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<HubDBTableRowV3> */
+        $response = $this->client->request(
             method: 'put',
             path: [
                 'cms/v3/hubdb/tables/%1$s/rows/%2$s/draft', $tableIDOrName, $rowID,
@@ -319,6 +334,8 @@ final class RowsService implements RowsContract
             options: $options,
             convert: HubDBTableRowV3::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -351,8 +368,8 @@ final class RowsService implements RowsContract
         $tableIDOrName = $parsed['tableIdOrName'];
         unset($parsed['tableIdOrName']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<HubDBTableRowV3> */
+        $response = $this->client->request(
             method: 'patch',
             path: [
                 'cms/v3/hubdb/tables/%1$s/rows/%2$s/draft', $tableIDOrName, $rowID,
@@ -361,5 +378,7 @@ final class RowsService implements RowsContract
             options: $options,
             convert: HubDBTableRowV3::class,
         );
+
+        return $response->parse();
     }
 }

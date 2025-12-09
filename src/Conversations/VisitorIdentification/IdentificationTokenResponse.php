@@ -6,21 +6,17 @@ namespace HubspotSDK\Conversations\VisitorIdentification;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * The identification token to be passed to the Conversations JS API to identify the visitor.
  *
  * @phpstan-type IdentificationTokenResponseShape = array{token: string}
  */
-final class IdentificationTokenResponse implements BaseModel, ResponseConverter
+final class IdentificationTokenResponse implements BaseModel
 {
     /** @use SdkModel<IdentificationTokenResponseShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     #[Api]
     public string $token;

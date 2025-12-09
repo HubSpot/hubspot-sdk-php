@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Crm\Associations\Schema\V4;
 
 use HubspotSDK\Client;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\Associations\Schema\V4\CollectionResponseAssociationSpecWithLabel;
 use HubspotSDK\Crm\Associations\Schema\V4\Definitions\DefinitionCreateLabelParams;
@@ -42,8 +43,8 @@ final class DefinitionsService implements DefinitionsContract
         $fromObjectType = $parsed['fromObjectType'];
         unset($parsed['fromObjectType']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<CollectionResponseAssociationSpecWithLabel> */
+        $response = $this->client->request(
             method: 'post',
             path: [
                 'crm/associations/v4/%1$s/%2$s/labels', $fromObjectType, $toObjectType,
@@ -52,6 +53,8 @@ final class DefinitionsService implements DefinitionsContract
             options: $options,
             convert: CollectionResponseAssociationSpecWithLabel::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -77,8 +80,8 @@ final class DefinitionsService implements DefinitionsContract
         $toObjectType = $parsed['toObjectType'];
         unset($parsed['toObjectType']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'delete',
             path: [
                 'crm/associations/v4/%1$s/%2$s/labels/%3$s',
@@ -89,6 +92,8 @@ final class DefinitionsService implements DefinitionsContract
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -110,8 +115,8 @@ final class DefinitionsService implements DefinitionsContract
         $fromObjectType = $parsed['fromObjectType'];
         unset($parsed['fromObjectType']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<CollectionResponseAssociationSpecWithLabel> */
+        $response = $this->client->request(
             method: 'get',
             path: [
                 'crm/associations/v4/%1$s/%2$s/labels', $fromObjectType, $toObjectType,
@@ -119,6 +124,8 @@ final class DefinitionsService implements DefinitionsContract
             options: $options,
             convert: CollectionResponseAssociationSpecWithLabel::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -145,8 +152,8 @@ final class DefinitionsService implements DefinitionsContract
         $fromObjectType = $parsed['fromObjectType'];
         unset($parsed['fromObjectType']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'put',
             path: [
                 'crm/associations/v4/%1$s/%2$s/labels', $fromObjectType, $toObjectType,
@@ -155,5 +162,7 @@ final class DefinitionsService implements DefinitionsContract
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 }

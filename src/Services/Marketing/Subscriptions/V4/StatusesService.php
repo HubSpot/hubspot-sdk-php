@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Marketing\Subscriptions\V4;
 
 use HubspotSDK\Client;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Marketing\Subscriptions\V4\ActionResponseWithResultsPublicStatus;
 use HubspotSDK\Marketing\Subscriptions\V4\ActionResponseWithResultsPublicWideStatus;
@@ -56,14 +57,16 @@ final class StatusesService implements StatusesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<ActionResponseWithResultsPublicStatus> */
+        $response = $this->client->request(
             method: 'post',
             path: ['communication-preferences/v4/statuses/%1$s', $subscriberIDString],
             body: (object) $parsed,
             options: $options,
             convert: ActionResponseWithResultsPublicStatus::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -87,8 +90,8 @@ final class StatusesService implements StatusesContract
         );
         $query_params = array_flip(['channel', 'businessUnitId']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<BatchResponsePublicStatusBulkResponse> */
+        $response = $this->client->request(
             method: 'post',
             path: 'communication-preferences/v4/statuses/batch/read',
             query: array_diff_key($parsed, $query_params),
@@ -96,6 +99,8 @@ final class StatusesService implements StatusesContract
             options: $options,
             convert: BatchResponsePublicStatusBulkResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -119,8 +124,8 @@ final class StatusesService implements StatusesContract
         );
         $query_params = array_flip(['channel', 'businessUnitId']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<BatchResponsePublicWideStatusBulkResponse> */
+        $response = $this->client->request(
             method: 'post',
             path: 'communication-preferences/v4/statuses/batch/unsubscribe-all/read',
             query: array_diff_key($parsed, $query_params),
@@ -128,6 +133,8 @@ final class StatusesService implements StatusesContract
             options: $options,
             convert: BatchResponsePublicWideStatusBulkResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -151,8 +158,8 @@ final class StatusesService implements StatusesContract
         );
         $query_params = array_flip(['channel', 'businessUnitId', 'verbose']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<BatchResponsePublicBulkOptOutFromAllResponse> */
+        $response = $this->client->request(
             method: 'post',
             path: 'communication-preferences/v4/statuses/batch/unsubscribe-all',
             query: array_diff_key($parsed, $query_params),
@@ -160,6 +167,8 @@ final class StatusesService implements StatusesContract
             options: $options,
             convert: BatchResponsePublicBulkOptOutFromAllResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -189,14 +198,16 @@ final class StatusesService implements StatusesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<BatchResponsePublicStatus> */
+        $response = $this->client->request(
             method: 'post',
             path: 'communication-preferences/v4/statuses/batch/write',
             body: (object) $parsed,
             options: $options,
             convert: BatchResponsePublicStatus::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -218,14 +229,16 @@ final class StatusesService implements StatusesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<ActionResponseWithResultsPublicStatus> */
+        $response = $this->client->request(
             method: 'get',
             path: ['communication-preferences/v4/statuses/%1$s', $subscriberIDString],
             query: $parsed,
             options: $options,
             convert: ActionResponseWithResultsPublicStatus::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -249,8 +262,8 @@ final class StatusesService implements StatusesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<ActionResponseWithResultsPublicWideStatus> */
+        $response = $this->client->request(
             method: 'get',
             path: [
                 'communication-preferences/v4/statuses/%1$s/unsubscribe-all',
@@ -260,6 +273,8 @@ final class StatusesService implements StatusesContract
             options: $options,
             convert: ActionResponseWithResultsPublicWideStatus::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -283,8 +298,8 @@ final class StatusesService implements StatusesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<ActionResponseWithResultsPublicStatus> */
+        $response = $this->client->request(
             method: 'post',
             path: [
                 'communication-preferences/v4/statuses/%1$s/unsubscribe-all',
@@ -294,5 +309,7 @@ final class StatusesService implements StatusesContract
             options: $options,
             convert: ActionResponseWithResultsPublicStatus::class,
         );
+
+        return $response->parse();
     }
 }

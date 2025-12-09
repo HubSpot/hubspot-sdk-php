@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Crm\Lists;
 
 use HubspotSDK\Client;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\Lists\APICollectionResponseRecordListMembershipNoPaging;
 use HubspotSDK\Crm\Lists\JoinTimeAndRecordID;
@@ -54,8 +55,8 @@ final class MembershipsService implements MembershipsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<Page<JoinTimeAndRecordID>> */
+        $response = $this->client->request(
             method: 'get',
             path: ['crm/v3/lists/%1$s/memberships', $listID],
             query: $parsed,
@@ -63,6 +64,8 @@ final class MembershipsService implements MembershipsContract
             convert: JoinTimeAndRecordID::class,
             page: Page::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -86,14 +89,16 @@ final class MembershipsService implements MembershipsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<MembershipsUpdateResponse> */
+        $response = $this->client->request(
             method: 'put',
             path: ['crm/v3/lists/%1$s/memberships/add', $listID],
             body: $parsed['body'],
             options: $options,
             convert: MembershipsUpdateResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -121,8 +126,8 @@ final class MembershipsService implements MembershipsContract
         $listID = $parsed['listId'];
         unset($parsed['listId']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'put',
             path: [
                 'crm/v3/lists/%1$s/memberships/add-from/%2$s', $listID, $sourceListID,
@@ -130,6 +135,8 @@ final class MembershipsService implements MembershipsContract
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -155,14 +162,16 @@ final class MembershipsService implements MembershipsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<MembershipsUpdateResponse> */
+        $response = $this->client->request(
             method: 'put',
             path: ['crm/v3/lists/%1$s/memberships/add-and-remove', $listID],
             body: (object) $parsed,
             options: $options,
             convert: MembershipsUpdateResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -186,8 +195,8 @@ final class MembershipsService implements MembershipsContract
         $objectTypeID = $parsed['objectTypeId'];
         unset($parsed['objectTypeId']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<APICollectionResponseRecordListMembershipNoPaging> */
+        $response = $this->client->request(
             method: 'get',
             path: [
                 'crm/v3/lists/records/%1$s/%2$s/memberships', $objectTypeID, $recordID,
@@ -195,6 +204,8 @@ final class MembershipsService implements MembershipsContract
             options: $options,
             convert: APICollectionResponseRecordListMembershipNoPaging::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -224,8 +235,8 @@ final class MembershipsService implements MembershipsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<Page<JoinTimeAndRecordID>> */
+        $response = $this->client->request(
             method: 'get',
             path: ['crm/v3/lists/%1$s/memberships/join-order', $listID],
             query: $parsed,
@@ -233,6 +244,8 @@ final class MembershipsService implements MembershipsContract
             convert: JoinTimeAndRecordID::class,
             page: Page::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -256,14 +269,16 @@ final class MembershipsService implements MembershipsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<MembershipsUpdateResponse> */
+        $response = $this->client->request(
             method: 'put',
             path: ['crm/v3/lists/%1$s/memberships/remove', $listID],
             body: $parsed['body'],
             options: $options,
             convert: MembershipsUpdateResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -281,12 +296,14 @@ final class MembershipsService implements MembershipsContract
         string $listID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'delete',
             path: ['crm/v3/lists/%1$s/memberships', $listID],
             options: $requestOptions,
             convert: null,
         );
+
+        return $response->parse();
     }
 }

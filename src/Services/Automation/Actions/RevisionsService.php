@@ -8,6 +8,7 @@ use HubspotSDK\Automation\Actions\PublicActionRevision;
 use HubspotSDK\Automation\Actions\Revisions\RevisionGetParams;
 use HubspotSDK\Automation\Actions\Revisions\RevisionListParams;
 use HubspotSDK\Client;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
@@ -43,8 +44,8 @@ final class RevisionsService implements RevisionsContract
         $appID = $parsed['appId'];
         unset($parsed['appId']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<Page<PublicActionRevision>> */
+        $response = $this->client->request(
             method: 'get',
             path: [
                 'automation/v4/actions/%1$s/%2$s/revisions', $appID, $definitionID,
@@ -54,6 +55,8 @@ final class RevisionsService implements RevisionsContract
             convert: PublicActionRevision::class,
             page: Page::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -79,8 +82,8 @@ final class RevisionsService implements RevisionsContract
         $definitionID = $parsed['definitionId'];
         unset($parsed['definitionId']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<PublicActionRevision> */
+        $response = $this->client->request(
             method: 'get',
             path: [
                 'automation/v4/actions/%1$s/%2$s/revisions/%3$s',
@@ -91,5 +94,7 @@ final class RevisionsService implements RevisionsContract
             options: $options,
             convert: PublicActionRevision::class,
         );
+
+        return $response->parse();
     }
 }

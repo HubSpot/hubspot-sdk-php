@@ -9,6 +9,7 @@ use HubspotSDK\Automation\Sequences\PublicSequenceResponse;
 use HubspotSDK\Automation\Sequences\SequenceGetParams;
 use HubspotSDK\Automation\Sequences\SequenceListParams;
 use HubspotSDK\Client;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
@@ -52,8 +53,8 @@ final class SequencesService implements SequencesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<Page<PublicSequenceLiteResponse>> */
+        $response = $this->client->request(
             method: 'get',
             path: 'automation/v4/sequences/',
             query: $parsed,
@@ -61,6 +62,8 @@ final class SequencesService implements SequencesContract
             convert: PublicSequenceLiteResponse::class,
             page: Page::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -82,13 +85,15 @@ final class SequencesService implements SequencesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<PublicSequenceResponse> */
+        $response = $this->client->request(
             method: 'get',
             path: ['automation/v4/sequences/%1$s', $sequenceID],
             query: $parsed,
             options: $options,
             convert: PublicSequenceResponse::class,
         );
+
+        return $response->parse();
     }
 }

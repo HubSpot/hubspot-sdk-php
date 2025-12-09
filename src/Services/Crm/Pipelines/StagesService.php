@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Crm\Pipelines;
 
 use HubspotSDK\Client;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\Pipelines\CollectionResponsePipelineStageNoPaging;
 use HubspotSDK\Crm\Pipelines\CollectionResponsePublicAuditInfoNoPaging;
@@ -52,14 +53,16 @@ final class StagesService implements StagesContract
         $objectType = $parsed['objectType'];
         unset($parsed['objectType']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<PipelineStage> */
+        $response = $this->client->request(
             method: 'post',
             path: ['crm/v3/pipelines/%1$s/%2$s/stages', $objectType, $pipelineID],
             body: (object) array_diff_key($parsed, ['objectType']),
             options: $options,
             convert: PipelineStage::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -92,8 +95,8 @@ final class StagesService implements StagesContract
         $pipelineID = $parsed['pipelineId'];
         unset($parsed['pipelineId']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<PipelineStage> */
+        $response = $this->client->request(
             method: 'patch',
             path: [
                 'crm/v3/pipelines/%1$s/%2$s/stages/%3$s',
@@ -108,6 +111,8 @@ final class StagesService implements StagesContract
             options: $options,
             convert: PipelineStage::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -131,13 +136,15 @@ final class StagesService implements StagesContract
         $objectType = $parsed['objectType'];
         unset($parsed['objectType']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<CollectionResponsePipelineStageNoPaging> */
+        $response = $this->client->request(
             method: 'get',
             path: ['crm/v3/pipelines/%1$s/%2$s/stages', $objectType, $pipelineID],
             options: $options,
             convert: CollectionResponsePipelineStageNoPaging::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -163,8 +170,8 @@ final class StagesService implements StagesContract
         $pipelineID = $parsed['pipelineId'];
         unset($parsed['pipelineId']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'delete',
             path: [
                 'crm/v3/pipelines/%1$s/%2$s/stages/%3$s',
@@ -175,6 +182,8 @@ final class StagesService implements StagesContract
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -200,8 +209,8 @@ final class StagesService implements StagesContract
         $pipelineID = $parsed['pipelineId'];
         unset($parsed['pipelineId']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<PipelineStage> */
+        $response = $this->client->request(
             method: 'get',
             path: [
                 'crm/v3/pipelines/%1$s/%2$s/stages/%3$s',
@@ -212,6 +221,8 @@ final class StagesService implements StagesContract
             options: $options,
             convert: PipelineStage::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -237,8 +248,8 @@ final class StagesService implements StagesContract
         $pipelineID = $parsed['pipelineId'];
         unset($parsed['pipelineId']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<CollectionResponsePublicAuditInfoNoPaging> */
+        $response = $this->client->request(
             method: 'get',
             path: [
                 'crm/v3/pipelines/%1$s/%2$s/stages/%3$s/audit',
@@ -249,6 +260,8 @@ final class StagesService implements StagesContract
             options: $options,
             convert: CollectionResponsePublicAuditInfoNoPaging::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -280,8 +293,8 @@ final class StagesService implements StagesContract
         $pipelineID = $parsed['pipelineId'];
         unset($parsed['pipelineId']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<PipelineStage> */
+        $response = $this->client->request(
             method: 'put',
             path: [
                 'crm/v3/pipelines/%1$s/%2$s/stages/%3$s',
@@ -296,5 +309,7 @@ final class StagesService implements StagesContract
             options: $options,
             convert: PipelineStage::class,
         );
+
+        return $response->parse();
     }
 }

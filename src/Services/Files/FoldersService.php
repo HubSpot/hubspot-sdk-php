@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Files;
 
 use HubspotSDK\Client;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Files\Folder;
 use HubspotSDK\Files\FolderActionResponse;
@@ -46,14 +47,16 @@ final class FoldersService implements FoldersContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<Folder> */
+        $response = $this->client->request(
             method: 'post',
             path: 'files/v3/folders',
             body: (object) $parsed,
             options: $options,
             convert: Folder::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -67,13 +70,15 @@ final class FoldersService implements FoldersContract
         string $folderID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'delete',
             path: ['files/v3/folders/%1$s', $folderID],
             options: $requestOptions,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -87,13 +92,15 @@ final class FoldersService implements FoldersContract
         string $folderPath,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'delete',
             path: ['files/v3/folders/%1$s', $folderPath],
             options: $requestOptions,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -115,14 +122,16 @@ final class FoldersService implements FoldersContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<Folder> */
+        $response = $this->client->request(
             method: 'get',
             path: ['files/v3/folders/%1$s', $folderID],
             query: $parsed,
             options: $options,
             convert: Folder::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -144,14 +153,16 @@ final class FoldersService implements FoldersContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<Folder> */
+        $response = $this->client->request(
             method: 'get',
             path: ['files/v3/folders/%1$s', $folderPath],
             query: $parsed,
             options: $options,
             convert: Folder::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -165,13 +176,15 @@ final class FoldersService implements FoldersContract
         string $taskID,
         ?RequestOptions $requestOptions = null
     ): FolderActionResponse {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<FolderActionResponse> */
+        $response = $this->client->request(
             method: 'get',
             path: ['files/v3/folders/update/async/tasks/%1$s/status', $taskID],
             options: $requestOptions,
             convert: FolderActionResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -212,8 +225,8 @@ final class FoldersService implements FoldersContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<Page<Folder>> */
+        $response = $this->client->request(
             method: 'get',
             path: 'files/v3/folders/search',
             query: $parsed,
@@ -221,6 +234,8 @@ final class FoldersService implements FoldersContract
             convert: Folder::class,
             page: Page::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -243,14 +258,16 @@ final class FoldersService implements FoldersContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<FolderUpdateTaskLocator> */
+        $response = $this->client->request(
             method: 'post',
             path: 'files/v3/folders/update/async',
             body: (object) $parsed,
             options: $options,
             convert: FolderUpdateTaskLocator::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -272,13 +289,15 @@ final class FoldersService implements FoldersContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<Folder> */
+        $response = $this->client->request(
             method: 'patch',
             path: ['files/v3/folders/%1$s', $folderID],
             body: (object) $parsed,
             options: $options,
             convert: Folder::class,
         );
+
+        return $response->parse();
     }
 }

@@ -16,6 +16,7 @@ use HubspotSDK\Automation\Workflows\WorkflowBatchGetParams;
 use HubspotSDK\Automation\Workflows\WorkflowListEmailCampaignsParams;
 use HubspotSDK\Automation\Workflows\WorkflowListParams;
 use HubspotSDK\Client;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
@@ -36,13 +37,15 @@ final class WorkflowsService implements WorkflowsContract
     public function create(
         ?RequestOptions $requestOptions = null
     ): APIContactFlow|APIPlatformFlow {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<APIContactFlow|APIPlatformFlow> */
+        $response = $this->client->request(
             method: 'post',
             path: 'automation/v4/flows',
             options: $requestOptions,
             convert: APIFlow::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -54,13 +57,15 @@ final class WorkflowsService implements WorkflowsContract
         string $flowID,
         ?RequestOptions $requestOptions = null
     ): APIContactFlow|APIPlatformFlow {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<APIContactFlow|APIPlatformFlow> */
+        $response = $this->client->request(
             method: 'put',
             path: ['automation/v4/flows/%1$s', $flowID],
             options: $requestOptions,
             convert: APIFlow::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -81,8 +86,8 @@ final class WorkflowsService implements WorkflowsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<Page<APIFlowListing>> */
+        $response = $this->client->request(
             method: 'get',
             path: 'automation/v4/flows',
             query: $parsed,
@@ -90,6 +95,8 @@ final class WorkflowsService implements WorkflowsContract
             convert: APIFlowListing::class,
             page: Page::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -101,13 +108,15 @@ final class WorkflowsService implements WorkflowsContract
         int $flowID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'delete',
             path: ['automation/v4/flows/%1$s', $flowID],
             options: $requestOptions,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -128,14 +137,16 @@ final class WorkflowsService implements WorkflowsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<BatchResponseAPIFlow> */
+        $response = $this->client->request(
             method: 'post',
             path: 'automation/v4/flows/batch/read',
             body: (object) $parsed,
             options: $options,
             convert: BatchResponseAPIFlow::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -156,14 +167,16 @@ final class WorkflowsService implements WorkflowsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<BatchResponseFlowIDWorkflowIDMappingResponse> */
+        $response = $this->client->request(
             method: 'post',
             path: 'automation/v4/workflow-id-mappings/batch/read',
             body: (object) $parsed,
             options: $options,
             convert: BatchResponseFlowIDWorkflowIDMappingResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -175,13 +188,15 @@ final class WorkflowsService implements WorkflowsContract
         string $flowID,
         ?RequestOptions $requestOptions = null
     ): APIContactFlow|APIPlatformFlow {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<APIContactFlow|APIPlatformFlow> */
+        $response = $this->client->request(
             method: 'get',
             path: ['automation/v4/flows/%1$s', $flowID],
             options: $requestOptions,
             convert: APIFlow::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -204,8 +219,8 @@ final class WorkflowsService implements WorkflowsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<Page<APIFlowEmailCampaign>> */
+        $response = $this->client->request(
             method: 'get',
             path: 'automation/v4/flows/email-campaigns',
             query: $parsed,
@@ -213,5 +228,7 @@ final class WorkflowsService implements WorkflowsContract
             convert: APIFlowEmailCampaign::class,
             page: Page::class,
         );
+
+        return $response->parse();
     }
 }

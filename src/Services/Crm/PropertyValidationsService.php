@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Crm;
 
 use HubspotSDK\Client;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\PropertyValidations\CollectionResponsePublicPropertyValidationRuleMapNoPaging;
 use HubspotSDK\Crm\PropertyValidations\CollectionResponsePublicPropertyValidationRuleNoPaging;
@@ -32,13 +33,15 @@ final class PropertyValidationsService implements PropertyValidationsContract
         string $objectTypeID,
         ?RequestOptions $requestOptions = null
     ): CollectionResponsePublicPropertyValidationRuleMapNoPaging {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<CollectionResponsePublicPropertyValidationRuleMapNoPaging,> */
+        $response = $this->client->request(
             method: 'get',
             path: ['crm/v3/property-validations/%1$s', $objectTypeID],
             options: $requestOptions,
             convert: CollectionResponsePublicPropertyValidationRuleMapNoPaging::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -67,8 +70,8 @@ final class PropertyValidationsService implements PropertyValidationsContract
         $propertyName = $parsed['propertyName'];
         unset($parsed['propertyName']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'put',
             path: [
                 'crm/v3/property-validations/%1$s/%2$s/rule-type/%3$s',
@@ -83,6 +86,8 @@ final class PropertyValidationsService implements PropertyValidationsContract
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -106,8 +111,8 @@ final class PropertyValidationsService implements PropertyValidationsContract
         $objectTypeID = $parsed['objectTypeId'];
         unset($parsed['objectTypeId']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<CollectionResponsePublicPropertyValidationRuleNoPaging,> */
+        $response = $this->client->request(
             method: 'get',
             path: [
                 'crm/v3/property-validations/%1$s/%2$s', $objectTypeID, $propertyName,
@@ -115,5 +120,7 @@ final class PropertyValidationsService implements PropertyValidationsContract
             options: $options,
             convert: CollectionResponsePublicPropertyValidationRuleNoPaging::class,
         );
+
+        return $response->parse();
     }
 }

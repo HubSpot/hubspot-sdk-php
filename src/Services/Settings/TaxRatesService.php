@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Settings;
 
 use HubspotSDK\Client;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
@@ -41,8 +42,8 @@ final class TaxRatesService implements TaxRatesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<Page<PublicTaxRateGroup>> */
+        $response = $this->client->request(
             method: 'get',
             path: 'tax-rates/v1/tax-rates',
             query: $parsed,
@@ -50,6 +51,8 @@ final class TaxRatesService implements TaxRatesContract
             convert: PublicTaxRateGroup::class,
             page: Page::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -63,12 +66,14 @@ final class TaxRatesService implements TaxRatesContract
         string $taxRateGroupID,
         ?RequestOptions $requestOptions = null
     ): PublicTaxRateGroup {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<PublicTaxRateGroup> */
+        $response = $this->client->request(
             method: 'get',
             path: ['tax-rates/v1/tax-rates/%1$s', $taxRateGroupID],
             options: $requestOptions,
             convert: PublicTaxRateGroup::class,
         );
+
+        return $response->parse();
     }
 }

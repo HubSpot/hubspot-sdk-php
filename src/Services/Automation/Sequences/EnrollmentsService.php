@@ -8,6 +8,7 @@ use HubspotSDK\Automation\Sequences\Enrollments\EnrollmentEnrollParams;
 use HubspotSDK\Automation\Sequences\PublicSequenceEnrollmentLiteResponse;
 use HubspotSDK\Automation\Sequences\PublicSequenceEnrollmentResponse;
 use HubspotSDK\Client;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Automation\Sequences\EnrollmentsContract;
@@ -44,8 +45,8 @@ final class EnrollmentsService implements EnrollmentsContract
         );
         $query_params = ['userId'];
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<PublicSequenceEnrollmentLiteResponse> */
+        $response = $this->client->request(
             method: 'post',
             path: 'automation/v4/sequences/enrollments',
             query: array_diff_key($parsed, $query_params),
@@ -53,6 +54,8 @@ final class EnrollmentsService implements EnrollmentsContract
             options: $options,
             convert: PublicSequenceEnrollmentLiteResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -66,12 +69,14 @@ final class EnrollmentsService implements EnrollmentsContract
         string $contactID,
         ?RequestOptions $requestOptions = null
     ): PublicSequenceEnrollmentResponse {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<PublicSequenceEnrollmentResponse> */
+        $response = $this->client->request(
             method: 'get',
             path: ['automation/v4/sequences/enrollments/contact/%1$s', $contactID],
             options: $requestOptions,
             convert: PublicSequenceEnrollmentResponse::class,
         );
+
+        return $response->parse();
     }
 }

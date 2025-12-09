@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Crm;
 
 use HubspotSDK\Client;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\Exports\ActionResponseWithSingleResultUri;
 use HubspotSDK\Crm\Exports\PublicExportResponse;
@@ -29,13 +30,15 @@ final class ExportsService implements ExportsContract
     public function createAsync(
         ?RequestOptions $requestOptions = null
     ): TaskLocator {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<TaskLocator> */
+        $response = $this->client->request(
             method: 'post',
             path: 'crm/v3/exports/export/async',
             options: $requestOptions,
             convert: TaskLocator::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -49,13 +52,15 @@ final class ExportsService implements ExportsContract
         int $exportID,
         ?RequestOptions $requestOptions = null
     ): PublicExportResponse {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<PublicExportResponse> */
+        $response = $this->client->request(
             method: 'get',
             path: ['crm/v3/exports/export/%1$s', $exportID],
             options: $requestOptions,
             convert: PublicExportResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -69,12 +74,14 @@ final class ExportsService implements ExportsContract
         int $taskID,
         ?RequestOptions $requestOptions = null
     ): ActionResponseWithSingleResultUri {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<ActionResponseWithSingleResultUri> */
+        $response = $this->client->request(
             method: 'get',
             path: ['crm/v3/exports/export/async/tasks/%1$s/status', $taskID],
             options: $requestOptions,
             convert: ActionResponseWithSingleResultUri::class,
         );
+
+        return $response->parse();
     }
 }

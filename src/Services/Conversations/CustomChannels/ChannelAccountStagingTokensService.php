@@ -8,6 +8,7 @@ use HubspotSDK\Client;
 use HubspotSDK\Conversations\CustomChannels\ChannelAccountStagingTokens\ChannelAccountStagingTokenUpdateParams;
 use HubspotSDK\Conversations\CustomChannels\PublicChannelAccountStagingToken;
 use HubspotSDK\Conversations\PublicDeliveryIdentifier;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Conversations\CustomChannels\ChannelAccountStagingTokensContract;
@@ -46,8 +47,8 @@ final class ChannelAccountStagingTokensService implements ChannelAccountStagingT
         $channelID = $parsed['channelId'];
         unset($parsed['channelId']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<PublicChannelAccountStagingToken> */
+        $response = $this->client->request(
             method: 'patch',
             path: [
                 'conversations/v3/custom-channels/%1$s/channel-account-staging-tokens/%2$s',
@@ -58,5 +59,7 @@ final class ChannelAccountStagingTokensService implements ChannelAccountStagingT
             options: $options,
             convert: PublicChannelAccountStagingToken::class,
         );
+
+        return $response->parse();
     }
 }

@@ -16,6 +16,7 @@ use HubspotSDK\Conversations\LlmActor;
 use HubspotSDK\Conversations\PublicActor;
 use HubspotSDK\Conversations\SystemActor;
 use HubspotSDK\Conversations\VisitorActor;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Conversations\ActorsContract;
@@ -46,8 +47,8 @@ final class ActorsService implements ActorsContract
         );
         $query_params = ['property'];
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<BatchResponsePublicActor> */
+        $response = $this->client->request(
             method: 'post',
             path: 'conversations/v3/conversations/actors/batch/read',
             query: array_diff_key($parsed, $query_params),
@@ -55,6 +56,8 @@ final class ActorsService implements ActorsContract
             options: $options,
             convert: BatchResponsePublicActor::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -74,13 +77,15 @@ final class ActorsService implements ActorsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<AgentActor|BotActor|IntegratorActor|SystemActor|VisitorActor|EmailActor|LlmActor,> */
+        $response = $this->client->request(
             method: 'get',
             path: ['conversations/v3/conversations/actors/%1$s', $actorID],
             query: $parsed,
             options: $options,
             convert: PublicActor::class,
         );
+
+        return $response->parse();
     }
 }

@@ -21,6 +21,7 @@ use HubspotSDK\Cms\Hubdb\Tables\TablePublishDraftParams;
 use HubspotSDK\Cms\Hubdb\Tables\TableResetDraftParams;
 use HubspotSDK\Cms\Hubdb\Tables\TableUnpublishParams;
 use HubspotSDK\Cms\Hubdb\Tables\TableUpdateDraftParams;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Option;
 use HubspotSDK\Page;
@@ -71,14 +72,16 @@ final class TablesService implements TablesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<HubDBTableV3> */
+        $response = $this->client->request(
             method: 'post',
             path: 'cms/v3/hubdb/tables',
             body: (object) $parsed,
             options: $options,
             convert: HubDBTableV3::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -114,8 +117,8 @@ final class TablesService implements TablesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<Page<HubDBTableV3>> */
+        $response = $this->client->request(
             method: 'get',
             path: 'cms/v3/hubdb/tables',
             query: $parsed,
@@ -123,6 +126,8 @@ final class TablesService implements TablesContract
             convert: HubDBTableV3::class,
             page: Page::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -136,13 +141,15 @@ final class TablesService implements TablesContract
         string $tableIDOrName,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'delete',
             path: ['cms/v3/hubdb/tables/%1$s', $tableIDOrName],
             options: $requestOptions,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -166,14 +173,16 @@ final class TablesService implements TablesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<HubDBTableV3> */
+        $response = $this->client->request(
             method: 'post',
             path: ['cms/v3/hubdb/tables/%1$s/draft/clone', $tableIDOrName],
             body: (object) $parsed,
             options: $options,
             convert: HubDBTableV3::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -197,8 +206,8 @@ final class TablesService implements TablesContract
         $tableIDOrName = $parsed['tableIdOrName'];
         unset($parsed['tableIdOrName']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'delete',
             path: [
                 'cms/v3/hubdb/tables/%1$s/versions/%2$s', $tableIDOrName, $versionID,
@@ -206,6 +215,8 @@ final class TablesService implements TablesContract
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -227,8 +238,8 @@ final class TablesService implements TablesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<string> */
+        $response = $this->client->request(
             method: 'get',
             path: ['cms/v3/hubdb/tables/%1$s/export', $tableIDOrName],
             query: $parsed,
@@ -236,6 +247,8 @@ final class TablesService implements TablesContract
             options: $options,
             convert: 'string',
         );
+
+        return $response->parse();
     }
 
     /**
@@ -257,8 +270,8 @@ final class TablesService implements TablesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<string> */
+        $response = $this->client->request(
             method: 'get',
             path: ['cms/v3/hubdb/tables/%1$s/draft/export', $tableIDOrName],
             query: $parsed,
@@ -266,6 +279,8 @@ final class TablesService implements TablesContract
             options: $options,
             convert: 'string',
         );
+
+        return $response->parse();
     }
 
     /**
@@ -291,14 +306,16 @@ final class TablesService implements TablesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<HubDBTableV3> */
+        $response = $this->client->request(
             method: 'get',
             path: ['cms/v3/hubdb/tables/%1$s', $tableIDOrName],
             query: $parsed,
             options: $options,
             convert: HubDBTableV3::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -322,14 +339,16 @@ final class TablesService implements TablesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<HubDBTableV3> */
+        $response = $this->client->request(
             method: 'get',
             path: ['cms/v3/hubdb/tables/%1$s/draft', $tableIDOrName],
             query: $parsed,
             options: $options,
             convert: HubDBTableV3::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -352,8 +371,8 @@ final class TablesService implements TablesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<ImportResult> */
+        $response = $this->client->request(
             method: 'post',
             path: ['cms/v3/hubdb/tables/%1$s/draft/import', $tableIDOrName],
             headers: ['Content-Type' => 'multipart/form-data'],
@@ -361,6 +380,8 @@ final class TablesService implements TablesContract
             options: $options,
             convert: ImportResult::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -396,8 +417,8 @@ final class TablesService implements TablesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<Page<HubDBTableV3>> */
+        $response = $this->client->request(
             method: 'get',
             path: 'cms/v3/hubdb/tables/draft',
             query: $parsed,
@@ -405,6 +426,8 @@ final class TablesService implements TablesContract
             convert: HubDBTableV3::class,
             page: Page::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -426,14 +449,16 @@ final class TablesService implements TablesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<HubDBTableV3> */
+        $response = $this->client->request(
             method: 'post',
             path: ['cms/v3/hubdb/tables/%1$s/draft/publish', $tableIDOrName],
             query: $parsed,
             options: $options,
             convert: HubDBTableV3::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -455,14 +480,16 @@ final class TablesService implements TablesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<HubDBTableV3> */
+        $response = $this->client->request(
             method: 'post',
             path: ['cms/v3/hubdb/tables/%1$s/draft/reset', $tableIDOrName],
             query: $parsed,
             options: $options,
             convert: HubDBTableV3::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -484,14 +511,16 @@ final class TablesService implements TablesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<HubDBTableV3> */
+        $response = $this->client->request(
             method: 'post',
             path: ['cms/v3/hubdb/tables/%1$s/unpublish', $tableIDOrName],
             query: $parsed,
             options: $options,
             convert: HubDBTableV3::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -539,8 +568,8 @@ final class TablesService implements TablesContract
             ['archived', 'includeForeignIds', 'isGetLocalizedSchema']
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<HubDBTableV3> */
+        $response = $this->client->request(
             method: 'patch',
             path: ['cms/v3/hubdb/tables/%1$s/draft', $tableIDOrName],
             query: array_diff_key($parsed, $query_params),
@@ -548,5 +577,7 @@ final class TablesService implements TablesContract
             options: $options,
             convert: HubDBTableV3::class,
         );
+
+        return $response->parse();
     }
 }

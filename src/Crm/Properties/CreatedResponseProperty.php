@@ -6,9 +6,7 @@ namespace HubspotSDK\Crm\Properties;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 use HubspotSDK\Option;
 use HubspotSDK\Property;
 use HubspotSDK\Property\DataSensitivity;
@@ -19,12 +17,10 @@ use HubspotSDK\PropertyModificationMetadata;
  *   createdResourceId: string, entity: Property, location?: string|null
  * }
  */
-final class CreatedResponseProperty implements BaseModel, ResponseConverter
+final class CreatedResponseProperty implements BaseModel
 {
     /** @use SdkModel<CreatedResponsePropertyShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     #[Api]
     public string $createdResourceId;

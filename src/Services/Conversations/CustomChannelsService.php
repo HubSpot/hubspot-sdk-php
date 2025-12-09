@@ -9,6 +9,7 @@ use HubspotSDK\Conversations\CustomChannels\CustomChannelCreateParams;
 use HubspotSDK\Conversations\CustomChannels\CustomChannelListParams;
 use HubspotSDK\Conversations\CustomChannels\CustomChannelUpdateParams;
 use HubspotSDK\Conversations\CustomChannels\PublicChannelIntegrationChannel;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
@@ -69,14 +70,16 @@ final class CustomChannelsService implements CustomChannelsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<PublicChannelIntegrationChannel> */
+        $response = $this->client->request(
             method: 'post',
             path: 'conversations/v3/custom-channels/',
             body: (object) $parsed,
             options: $options,
             convert: PublicChannelIntegrationChannel::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -105,14 +108,16 @@ final class CustomChannelsService implements CustomChannelsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<PublicChannelIntegrationChannel> */
+        $response = $this->client->request(
             method: 'patch',
             path: ['conversations/v3/custom-channels/%1$s', $channelID],
             body: (object) $parsed,
             options: $options,
             convert: PublicChannelIntegrationChannel::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -137,8 +142,8 @@ final class CustomChannelsService implements CustomChannelsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<Page<PublicChannelIntegrationChannel>> */
+        $response = $this->client->request(
             method: 'get',
             path: 'conversations/v3/custom-channels/',
             query: $parsed,
@@ -146,6 +151,8 @@ final class CustomChannelsService implements CustomChannelsContract
             convert: PublicChannelIntegrationChannel::class,
             page: Page::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -159,13 +166,15 @@ final class CustomChannelsService implements CustomChannelsContract
         int $channelID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'delete',
             path: ['conversations/v3/custom-channels/%1$s', $channelID],
             options: $requestOptions,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -179,12 +188,14 @@ final class CustomChannelsService implements CustomChannelsContract
         int $channelID,
         ?RequestOptions $requestOptions = null
     ): PublicChannelIntegrationChannel {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<PublicChannelIntegrationChannel> */
+        $response = $this->client->request(
             method: 'get',
             path: ['conversations/v3/custom-channels/%1$s', $channelID],
             options: $requestOptions,
             convert: PublicChannelIntegrationChannel::class,
         );
+
+        return $response->parse();
     }
 }

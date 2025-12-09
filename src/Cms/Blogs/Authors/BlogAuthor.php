@@ -7,9 +7,7 @@ namespace HubspotSDK\Cms\Blogs\Authors;
 use HubspotSDK\Cms\Blogs\Authors\BlogAuthor\Language;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * Model definition for a Blog Author.
@@ -34,12 +32,10 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
  *   website: string,
  * }
  */
-final class BlogAuthor implements BaseModel, ResponseConverter
+final class BlogAuthor implements BaseModel
 {
     /** @use SdkModel<BlogAuthorShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     /**
      * The unique ID of the Blog Author.

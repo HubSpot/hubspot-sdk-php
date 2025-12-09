@@ -6,9 +6,7 @@ namespace HubspotSDK\Auth\OAuth;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type RefreshTokenInfoResponseShape = array{
@@ -22,12 +20,10 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
  *   user?: string|null,
  * }
  */
-final class RefreshTokenInfoResponse implements BaseModel, ResponseConverter
+final class RefreshTokenInfoResponse implements BaseModel
 {
     /** @use SdkModel<RefreshTokenInfoResponseShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     #[Api]
     public string $token;

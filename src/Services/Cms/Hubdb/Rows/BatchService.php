@@ -13,6 +13,7 @@ use HubspotSDK\Cms\Hubdb\Rows\Batch\BatchGetDraftBatchParams;
 use HubspotSDK\Cms\Hubdb\Rows\Batch\BatchPurgeBatchParams;
 use HubspotSDK\Cms\Hubdb\Rows\Batch\BatchReplaceBatchParams;
 use HubspotSDK\Cms\Hubdb\Rows\Batch\BatchUpdateBatchParams;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Cms\Hubdb\Rows\BatchContract;
@@ -45,14 +46,16 @@ final class BatchService implements BatchContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<BatchResponseHubDBTableRowV3> */
+        $response = $this->client->request(
             method: 'post',
             path: ['cms/v3/hubdb/tables/%1$s/rows/draft/batch/clone', $tableIDOrName],
             body: (object) $parsed,
             options: $options,
             convert: BatchResponseHubDBTableRowV3::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -82,8 +85,8 @@ final class BatchService implements BatchContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<BatchResponseHubDBTableRowV3> */
+        $response = $this->client->request(
             method: 'post',
             path: [
                 'cms/v3/hubdb/tables/%1$s/rows/draft/batch/create', $tableIDOrName,
@@ -92,6 +95,8 @@ final class BatchService implements BatchContract
             options: $options,
             convert: BatchResponseHubDBTableRowV3::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -114,14 +119,16 @@ final class BatchService implements BatchContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<BatchResponseHubDBTableRowV3> */
+        $response = $this->client->request(
             method: 'post',
             path: ['cms/v3/hubdb/tables/%1$s/rows/batch/read', $tableIDOrName],
             body: (object) $parsed,
             options: $options,
             convert: BatchResponseHubDBTableRowV3::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -143,14 +150,16 @@ final class BatchService implements BatchContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<BatchResponseHubDBTableRowV3> */
+        $response = $this->client->request(
             method: 'post',
             path: ['cms/v3/hubdb/tables/%1$s/rows/draft/batch/read', $tableIDOrName],
             body: (object) $parsed,
             options: $options,
             convert: BatchResponseHubDBTableRowV3::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -172,14 +181,16 @@ final class BatchService implements BatchContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'post',
             path: ['cms/v3/hubdb/tables/%1$s/rows/draft/batch/purge', $tableIDOrName],
             body: (object) $parsed,
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -210,8 +221,8 @@ final class BatchService implements BatchContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<BatchResponseHubDBTableRowV3> */
+        $response = $this->client->request(
             method: 'post',
             path: [
                 'cms/v3/hubdb/tables/%1$s/rows/draft/batch/replace', $tableIDOrName,
@@ -220,6 +231,8 @@ final class BatchService implements BatchContract
             options: $options,
             convert: BatchResponseHubDBTableRowV3::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -250,8 +263,8 @@ final class BatchService implements BatchContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<BatchResponseHubDBTableRowV3> */
+        $response = $this->client->request(
             method: 'post',
             path: [
                 'cms/v3/hubdb/tables/%1$s/rows/draft/batch/update', $tableIDOrName,
@@ -260,5 +273,7 @@ final class BatchService implements BatchContract
             options: $options,
             convert: BatchResponseHubDBTableRowV3::class,
         );
+
+        return $response->parse();
     }
 }

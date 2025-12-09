@@ -11,6 +11,7 @@ use HubspotSDK\Cms\MediaBridge\Events\EventCreateMediaPlayedEventParams;
 use HubspotSDK\Cms\MediaBridge\Events\EventCreateMediaPlayedPercentEventParams;
 use HubspotSDK\Cms\MediaBridge\MediaPlayedEvent;
 use HubspotSDK\Cms\MediaBridge\MediaPlayedPercentageEvent;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Cms\MediaBridge\EventsContract;
@@ -57,14 +58,16 @@ final class EventsService implements EventsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<AttentionSpanEvent> */
+        $response = $this->client->request(
             method: 'post',
             path: 'media-bridge/v1/events/attention-span',
             body: (object) $parsed,
             options: $options,
             convert: AttentionSpanEvent::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -101,14 +104,16 @@ final class EventsService implements EventsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<MediaPlayedEvent> */
+        $response = $this->client->request(
             method: 'post',
             path: 'media-bridge/v1/events/media-played',
             body: (object) $parsed,
             options: $options,
             convert: MediaPlayedEvent::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -144,13 +149,15 @@ final class EventsService implements EventsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<MediaPlayedPercentageEvent> */
+        $response = $this->client->request(
             method: 'post',
             path: 'media-bridge/v1/events/media-played-percent',
             body: (object) $parsed,
             options: $options,
             convert: MediaPlayedPercentageEvent::class,
         );
+
+        return $response->parse();
     }
 }

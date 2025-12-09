@@ -6,9 +6,7 @@ namespace HubspotSDK\Crm\Exports;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 use HubspotSDK\Crm\Exports\ActionResponseWithSingleResultUri\Status;
 use HubspotSDK\ErrorDetail;
 use HubspotSDK\StandardError;
@@ -25,12 +23,10 @@ use HubspotSDK\StandardError;
  *   result?: string|null,
  * }
  */
-final class ActionResponseWithSingleResultUri implements BaseModel, ResponseConverter
+final class ActionResponseWithSingleResultUri implements BaseModel
 {
     /** @use SdkModel<ActionResponseWithSingleResultUriShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     /**
      * The timestamp when the export was completed, in ISO 8601 format.

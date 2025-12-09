@@ -11,6 +11,7 @@ use HubspotSDK\Cms\MediaBridge\Groups\GroupDeleteByNameParams;
 use HubspotSDK\Cms\MediaBridge\Groups\GroupGetByNameParams;
 use HubspotSDK\Cms\MediaBridge\Groups\GroupListParams;
 use HubspotSDK\Cms\MediaBridge\Groups\GroupUpdateByNameParams;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\Properties\PropertyGroup;
 use HubspotSDK\RequestOptions;
@@ -46,8 +47,8 @@ final class GroupsService implements GroupsContract
         $appID = $parsed['appId'];
         unset($parsed['appId']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<PropertyGroup> */
+        $response = $this->client->request(
             method: 'post',
             path: [
                 'media-bridge/v1/%1$s/properties/%2$s/groups', $appID, $objectType,
@@ -56,6 +57,8 @@ final class GroupsService implements GroupsContract
             options: $options,
             convert: PropertyGroup::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -79,8 +82,8 @@ final class GroupsService implements GroupsContract
         $appID = $parsed['appId'];
         unset($parsed['appId']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<CollectionResponsePropertyGroupNoPaging> */
+        $response = $this->client->request(
             method: 'get',
             path: [
                 'media-bridge/v1/%1$s/properties/%2$s/groups', $appID, $objectType,
@@ -88,6 +91,8 @@ final class GroupsService implements GroupsContract
             options: $options,
             convert: CollectionResponsePropertyGroupNoPaging::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -113,8 +118,8 @@ final class GroupsService implements GroupsContract
         $objectType = $parsed['objectType'];
         unset($parsed['objectType']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'delete',
             path: [
                 'media-bridge/v1/%1$s/properties/%2$s/groups/%3$s',
@@ -125,6 +130,8 @@ final class GroupsService implements GroupsContract
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -150,8 +157,8 @@ final class GroupsService implements GroupsContract
         $objectType = $parsed['objectType'];
         unset($parsed['objectType']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<PropertyGroup> */
+        $response = $this->client->request(
             method: 'get',
             path: [
                 'media-bridge/v1/%1$s/properties/%2$s/groups/%3$s',
@@ -162,6 +169,8 @@ final class GroupsService implements GroupsContract
             options: $options,
             convert: PropertyGroup::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -189,8 +198,8 @@ final class GroupsService implements GroupsContract
         $objectType = $parsed['objectType'];
         unset($parsed['objectType']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<PropertyGroup> */
+        $response = $this->client->request(
             method: 'patch',
             path: [
                 'media-bridge/v1/%1$s/properties/%2$s/groups/%3$s',
@@ -205,5 +214,7 @@ final class GroupsService implements GroupsContract
             options: $options,
             convert: PropertyGroup::class,
         );
+
+        return $response->parse();
     }
 }

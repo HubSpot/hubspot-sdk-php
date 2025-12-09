@@ -6,9 +6,7 @@ namespace HubspotSDK\Crm\Extensions\Cards;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 use HubspotSDK\Crm\Extensions\Cards\IntegratorCardPayloadResponse\ResponseVersion;
 
 /**
@@ -23,12 +21,10 @@ use HubspotSDK\Crm\Extensions\Cards\IntegratorCardPayloadResponse\ResponseVersio
  *   topLevelActions?: TopLevelActions|null,
  * }
  */
-final class IntegratorCardPayloadResponse implements BaseModel, ResponseConverter
+final class IntegratorCardPayloadResponse implements BaseModel
 {
     /** @use SdkModel<IntegratorCardPayloadResponseShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     /**
      * The total number of card properties that will be sent in this response.

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Crm\Associations\V4;
 
 use HubspotSDK\Client;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\Associations\V4\ReportCreationResponse;
 use HubspotSDK\RequestOptions;
@@ -28,12 +29,14 @@ final class ReportService implements ReportContract
         int $userID,
         ?RequestOptions $requestOptions = null
     ): ReportCreationResponse {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<ReportCreationResponse> */
+        $response = $this->client->request(
             method: 'post',
             path: ['crm/v4/associations/usage/high-usage-report/%1$s', $userID],
             options: $requestOptions,
             convert: ReportCreationResponse::class,
         );
+
+        return $response->parse();
     }
 }

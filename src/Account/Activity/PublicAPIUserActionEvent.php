@@ -6,9 +6,7 @@ namespace HubspotSDK\Account\Activity;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type PublicAPIUserActionEventShape = array{
@@ -21,12 +19,10 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
  *   targetObjectId?: string|null,
  * }
  */
-final class PublicAPIUserActionEvent implements BaseModel, ResponseConverter
+final class PublicAPIUserActionEvent implements BaseModel
 {
     /** @use SdkModel<PublicAPIUserActionEventShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     /**
      * The unique ID of the activity.

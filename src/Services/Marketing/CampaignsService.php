@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Marketing;
 
 use HubspotSDK\Client;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Marketing\Campaigns\CampaignCreateParams;
 use HubspotSDK\Marketing\Campaigns\CampaignGetParams;
@@ -78,14 +79,16 @@ final class CampaignsService implements CampaignsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<PublicCampaign> */
+        $response = $this->client->request(
             method: 'post',
             path: 'marketing/v3/campaigns/',
             body: (object) $parsed,
             options: $options,
             convert: PublicCampaign::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -108,14 +111,16 @@ final class CampaignsService implements CampaignsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<PublicCampaign> */
+        $response = $this->client->request(
             method: 'patch',
             path: ['marketing/v3/campaigns/%1$s', $campaignGuid],
             body: (object) $parsed,
             options: $options,
             convert: PublicCampaign::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -144,8 +149,8 @@ final class CampaignsService implements CampaignsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<Page<PublicCampaign>> */
+        $response = $this->client->request(
             method: 'get',
             path: 'marketing/v3/campaigns/',
             query: $parsed,
@@ -153,6 +158,8 @@ final class CampaignsService implements CampaignsContract
             convert: PublicCampaign::class,
             page: Page::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -167,13 +174,15 @@ final class CampaignsService implements CampaignsContract
         string $campaignGuid,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'delete',
             path: ['marketing/v3/campaigns/%1$s', $campaignGuid],
             options: $requestOptions,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -197,13 +206,15 @@ final class CampaignsService implements CampaignsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<PublicCampaignWithAssets> */
+        $response = $this->client->request(
             method: 'get',
             path: ['marketing/v3/campaigns/%1$s', $campaignGuid],
             query: $parsed,
             options: $options,
             convert: PublicCampaignWithAssets::class,
         );
+
+        return $response->parse();
     }
 }

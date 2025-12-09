@@ -6,21 +6,17 @@ namespace HubspotSDK\Crm\Lists;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * The response object containing the lists found for a multi-list fetch.
  *
  * @phpstan-type ListsByIDResponseShape = array{lists: list<mixed>}
  */
-final class ListsByIDResponse implements BaseModel, ResponseConverter
+final class ListsByIDResponse implements BaseModel
 {
     /** @use SdkModel<ListsByIDResponseShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     /**
      * The object list definitions.

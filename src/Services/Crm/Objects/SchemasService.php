@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Crm\Objects;
 
 use HubspotSDK\Client;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\Objects\Schemas\ObjectSchema;
 use HubspotSDK\Crm\Objects\Schemas\ObjectsSchemasObjectTypeDefinition;
@@ -71,14 +72,16 @@ final class SchemasService implements SchemasContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<ObjectSchema> */
+        $response = $this->client->request(
             method: 'post',
             path: 'crm-object-schemas/v3/schemas',
             body: (object) $parsed,
             options: $options,
             convert: ObjectSchema::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -107,14 +110,16 @@ final class SchemasService implements SchemasContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<ObjectsSchemasObjectTypeDefinition> */
+        $response = $this->client->request(
             method: 'patch',
             path: ['crm-object-schemas/v3/schemas/%1$s', $objectType],
             body: (object) $parsed,
             options: $options,
             convert: ObjectsSchemasObjectTypeDefinition::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -133,14 +138,16 @@ final class SchemasService implements SchemasContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<SchemaListResponse> */
+        $response = $this->client->request(
             method: 'get',
             path: 'crm-object-schemas/v3/schemas',
             query: $parsed,
             options: $options,
             convert: SchemaListResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -160,14 +167,16 @@ final class SchemasService implements SchemasContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'delete',
             path: ['crm-object-schemas/v3/schemas/%1$s', $objectType],
             query: $parsed,
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -189,14 +198,16 @@ final class SchemasService implements SchemasContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<AssociationDefinition> */
+        $response = $this->client->request(
             method: 'post',
             path: ['crm-object-schemas/v3/schemas/%1$s/associations', $objectType],
             body: (object) $parsed,
             options: $options,
             convert: AssociationDefinition::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -218,8 +229,8 @@ final class SchemasService implements SchemasContract
         $objectType = $parsed['objectType'];
         unset($parsed['objectType']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'delete',
             path: [
                 'crm-object-schemas/v3/schemas/%1$s/associations/%2$s',
@@ -229,6 +240,8 @@ final class SchemasService implements SchemasContract
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -240,12 +253,14 @@ final class SchemasService implements SchemasContract
         string $objectType,
         ?RequestOptions $requestOptions = null
     ): ObjectSchema {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<ObjectSchema> */
+        $response = $this->client->request(
             method: 'get',
             path: ['crm-object-schemas/v3/schemas/%1$s', $objectType],
             options: $requestOptions,
             convert: ObjectSchema::class,
         );
+
+        return $response->parse();
     }
 }

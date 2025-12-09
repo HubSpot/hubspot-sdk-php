@@ -6,21 +6,17 @@ namespace HubspotSDK\Automation\Workflows;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type APIFlowEmailCampaignShape = array{
  *   emailCampaignId: string, emailContentId: string, flowId: string
  * }
  */
-final class APIFlowEmailCampaign implements BaseModel, ResponseConverter
+final class APIFlowEmailCampaign implements BaseModel
 {
     /** @use SdkModel<APIFlowEmailCampaignShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     #[Api]
     public string $emailCampaignId;

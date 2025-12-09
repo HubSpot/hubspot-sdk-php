@@ -6,21 +6,17 @@ namespace HubspotSDK\Crm\Associations\Schema;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type CollectionResponsePublicAssociationDefinitionNoPagingShape = array{
  *   results: list<PublicAssociationDefinition>
  * }
  */
-final class CollectionResponsePublicAssociationDefinitionNoPaging implements BaseModel, ResponseConverter
+final class CollectionResponsePublicAssociationDefinitionNoPaging implements BaseModel
 {
     /** @use SdkModel<CollectionResponsePublicAssociationDefinitionNoPagingShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     /** @var list<PublicAssociationDefinition> $results */
     #[Api(list: PublicAssociationDefinition::class)]
