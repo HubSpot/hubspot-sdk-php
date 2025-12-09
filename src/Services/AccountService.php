@@ -15,6 +15,11 @@ final class AccountService implements AccountContract
     /**
      * @api
      */
+    public AccountRawService $raw;
+
+    /**
+     * @api
+     */
     public ActivityService $activity;
 
     /**
@@ -32,6 +37,7 @@ final class AccountService implements AccountContract
      */
     public function __construct(private Client $client)
     {
+        $this->raw = new AccountRawService($client);
         $this->activity = new ActivityService($client);
         $this->details = new DetailsService($client);
         $this->usage = new UsageService($client);

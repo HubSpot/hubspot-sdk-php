@@ -6,13 +6,6 @@ namespace HubspotSDK\ServiceContracts\Cms;
 
 use HubspotSDK\ActionResponse;
 use HubspotSDK\Cms\SourceCode\AssetFileMetadata;
-use HubspotSDK\Cms\SourceCode\SourceCodeCreateParams;
-use HubspotSDK\Cms\SourceCode\SourceCodeDeleteParams;
-use HubspotSDK\Cms\SourceCode\SourceCodeExtractAsyncParams;
-use HubspotSDK\Cms\SourceCode\SourceCodeGetMetadataParams;
-use HubspotSDK\Cms\SourceCode\SourceCodeGetParams;
-use HubspotSDK\Cms\SourceCode\SourceCodeUpsertParams;
-use HubspotSDK\Cms\SourceCode\SourceCodeValidateParams;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\TaskLocator;
@@ -24,56 +17,61 @@ interface SourceCodeContract
      *
      * @api
      *
-     * @param array<mixed>|SourceCodeCreateParams $params
+     * @param string $filePath path param: The file system location of the file
+     * @param string $environment path param: The environment of the file ("draft" or "published")
+     * @param string $file Body param:
      *
      * @throws APIException
      */
     public function create(
         string $filePath,
-        array|SourceCodeCreateParams $params,
+        string $environment,
+        ?string $file = null,
         ?RequestOptions $requestOptions = null,
     ): AssetFileMetadata;
 
     /**
      * @api
      *
-     * @param array<mixed>|SourceCodeDeleteParams $params
+     * @param string $filePath the file system location of the file
+     * @param string $environment the environment of the file ("draft" or "published")
      *
      * @throws APIException
      */
     public function delete(
         string $filePath,
-        array|SourceCodeDeleteParams $params,
+        string $environment,
         ?RequestOptions $requestOptions = null,
     ): mixed;
 
     /**
      * @api
      *
-     * @param array<mixed>|SourceCodeExtractAsyncParams $params
-     *
      * @throws APIException
      */
     public function extractAsync(
-        array|SourceCodeExtractAsyncParams $params,
-        ?RequestOptions $requestOptions = null,
+        string $path,
+        ?RequestOptions $requestOptions = null
     ): TaskLocator;
 
     /**
      * @api
      *
-     * @param array<mixed>|SourceCodeGetParams $params
+     * @param string $filePath the file system location of the file
+     * @param string $environment the environment of the file ("draft" or "published")
      *
      * @throws APIException
      */
     public function get(
         string $filePath,
-        array|SourceCodeGetParams $params,
+        string $environment,
         ?RequestOptions $requestOptions = null,
     ): string;
 
     /**
      * @api
+     *
+     * @param int $taskID the extraction task ID returned by the initial `extract/async` request
      *
      * @throws APIException
      */
@@ -85,39 +83,48 @@ interface SourceCodeContract
     /**
      * @api
      *
-     * @param array<mixed>|SourceCodeGetMetadataParams $params
+     * @param string $filePath path param: The file system location of the file
+     * @param string $environment path param: The environment of the file ("draft" or "published")
+     * @param string $properties Query param:
      *
      * @throws APIException
      */
     public function getMetadata(
         string $filePath,
-        array|SourceCodeGetMetadataParams $params,
+        string $environment,
+        ?string $properties = null,
         ?RequestOptions $requestOptions = null,
     ): AssetFileMetadata;
 
     /**
      * @api
      *
-     * @param array<mixed>|SourceCodeUpsertParams $params
+     * @param string $filePath path param: The file system location of the file
+     * @param string $environment path param: The environment of the file ("draft" or "published")
+     * @param string $file Body param:
      *
      * @throws APIException
      */
     public function upsert(
         string $filePath,
-        array|SourceCodeUpsertParams $params,
+        string $environment,
+        ?string $file = null,
         ?RequestOptions $requestOptions = null,
     ): AssetFileMetadata;
 
     /**
      * @api
      *
-     * @param array<mixed>|SourceCodeValidateParams $params
+     * @param string $filePath path param: The file system location of the file
+     * @param string $environment Path param:
+     * @param string $file Body param:
      *
      * @throws APIException
      */
     public function validate(
         string $filePath,
-        array|SourceCodeValidateParams $params,
+        string $environment,
+        ?string $file = null,
         ?RequestOptions $requestOptions = null,
     ): string;
 }

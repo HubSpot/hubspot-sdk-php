@@ -57,7 +57,7 @@ final class AssociationsTest extends TestCase
 
         $result = $this->client->marketing->events->associations->delete(
             'listId',
-            ['marketingEventID' => 'marketingEventId']
+            marketingEventID: 'marketingEventId'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -73,7 +73,7 @@ final class AssociationsTest extends TestCase
 
         $result = $this->client->marketing->events->associations->delete(
             'listId',
-            ['marketingEventID' => 'marketingEventId']
+            marketingEventID: 'marketingEventId'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -89,7 +89,7 @@ final class AssociationsTest extends TestCase
 
         $result = $this->client->marketing->events->associations->associate(
             'listId',
-            ['marketingEventID' => 'marketingEventId']
+            marketingEventID: 'marketingEventId'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -105,7 +105,7 @@ final class AssociationsTest extends TestCase
 
         $result = $this->client->marketing->events->associations->associate(
             'listId',
-            ['marketingEventID' => 'marketingEventId']
+            marketingEventID: 'marketingEventId'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -126,10 +126,8 @@ final class AssociationsTest extends TestCase
             ->associations
             ->associateByExternalAccount(
                 'listId',
-                [
-                    'externalAccountID' => 'externalAccountId',
-                    'externalEventID' => 'externalEventId',
-                ],
+                externalAccountID: 'externalAccountId',
+                externalEventID: 'externalEventId',
             )
         ;
 
@@ -151,10 +149,8 @@ final class AssociationsTest extends TestCase
             ->associations
             ->associateByExternalAccount(
                 'listId',
-                [
-                    'externalAccountID' => 'externalAccountId',
-                    'externalEventID' => 'externalEventId',
-                ],
+                externalAccountID: 'externalAccountId',
+                externalEventID: 'externalEventId',
             )
         ;
 
@@ -176,10 +172,8 @@ final class AssociationsTest extends TestCase
             ->associations
             ->deleteByExternalAccount(
                 'listId',
-                [
-                    'externalAccountID' => 'externalAccountId',
-                    'externalEventID' => 'externalEventId',
-                ],
+                externalAccountID: 'externalAccountId',
+                externalEventID: 'externalEventId',
             )
         ;
 
@@ -201,10 +195,8 @@ final class AssociationsTest extends TestCase
             ->associations
             ->deleteByExternalAccount(
                 'listId',
-                [
-                    'externalAccountID' => 'externalAccountId',
-                    'externalEventID' => 'externalEventId',
-                ],
+                externalAccountID: 'externalAccountId',
+                externalEventID: 'externalEventId',
             )
         ;
 
@@ -226,7 +218,7 @@ final class AssociationsTest extends TestCase
             ->associations
             ->listByExternalAccount(
                 'externalEventId',
-                ['externalAccountID' => 'externalAccountId']
+                externalAccountID: 'externalAccountId'
             )
         ;
 
@@ -251,7 +243,7 @@ final class AssociationsTest extends TestCase
             ->associations
             ->listByExternalAccount(
                 'externalEventId',
-                ['externalAccountID' => 'externalAccountId']
+                externalAccountID: 'externalAccountId'
             )
         ;
 

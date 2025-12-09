@@ -5,14 +5,9 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Marketing\Events;
 
 use HubspotSDK\Client;
-use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Marketing\Events\AttendanceCounters;
 use HubspotSDK\Marketing\Events\ParticipationBreakdown;
-use HubspotSDK\Marketing\Events\Participations\ParticipationGetByExternalAccountAndEventIDParams;
-use HubspotSDK\Marketing\Events\Participations\ParticipationListBreakdownByContactParams;
-use HubspotSDK\Marketing\Events\Participations\ParticipationListBreakdownByExternalAccountAndEventIDParams;
-use HubspotSDK\Marketing\Events\Participations\ParticipationListBreakdownByIDParams;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Marketing\Events\ParticipationsContract;
@@ -20,44 +15,37 @@ use HubspotSDK\ServiceContracts\Marketing\Events\ParticipationsContract;
 final class ParticipationsService implements ParticipationsContract
 {
     /**
+     * @api
+     */
+    public ParticipationsRawService $raw;
+
+    /**
      * @internal
      */
-    public function __construct(private Client $client) {}
+    public function __construct(private Client $client)
+    {
+        $this->raw = new ParticipationsRawService($client);
+    }
 
     /**
      * @api
      *
      * Read Marketing event's participations counters by externalAccountId and externalEventId pair.
      *
-     * @param array{
-     *   externalAccountID: string
-     * }|ParticipationGetByExternalAccountAndEventIDParams $params
+     * @param string $externalEventID the id of the marketing event in the external event application
+     * @param string $externalAccountID the accountId that is associated with this marketing event in the external event application
      *
      * @throws APIException
      */
     public function getByExternalAccountAndEventID(
         string $externalEventID,
-        array|ParticipationGetByExternalAccountAndEventIDParams $params,
+        string $externalAccountID,
         ?RequestOptions $requestOptions = null,
     ): AttendanceCounters {
-        [$parsed, $options] = ParticipationGetByExternalAccountAndEventIDParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $externalAccountID = $parsed['externalAccountID'];
-        unset($parsed['externalAccountID']);
+        $params = ['externalAccountID' => $externalAccountID];
 
-        /** @var BaseResponse<AttendanceCounters> */
-        $response = $this->client->request(
-            method: 'get',
-            path: [
-                'marketing/v3/marketing-events/participations/%1$s/%2$s',
-                $externalAccountID,
-                $externalEventID,
-            ],
-            options: $options,
-            convert: AttendanceCounters::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->getByExternalAccountAndEventID($externalEventID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -67,21 +55,16 @@ final class ParticipationsService implements ParticipationsContract
      *
      * Read Marketing event's participations counters by internal identifier marketingEventId.
      *
+     * @param int $marketingEventID the internal id of the marketing event in HubSpot
+     *
      * @throws APIException
      */
     public function getByID(
         int $marketingEventID,
         ?RequestOptions $requestOptions = null
     ): AttendanceCounters {
-        /** @var BaseResponse<AttendanceCounters> */
-        $response = $this->client->request(
-            method: 'get',
-            path: [
-                'marketing/v3/marketing-events/participations/%1$s', $marketingEventID,
-            ],
-            options: $requestOptions,
-            convert: AttendanceCounters::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->getByID($marketingEventID, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -91,9 +74,10 @@ final class ParticipationsService implements ParticipationsContract
      *
      * Read Contact's participations by identifier - email or internal id.
      *
-     * @param array{
-     *   after?: string, limit?: int, state?: string
-     * }|ParticipationListBreakdownByContactParams $params
+     * @param string $contactIdentifier The identifier of the Contact. It may be email or internal id.
+     * @param string $after the cursor indicating the position of the last retrieved item
+     * @param int $limit The limit for response size. The default value is 10, the max number is 100
+     * @param string $state The participation state value. It may be REGISTERED, CANCELLED, ATTENDED, NO_SHOW
      *
      * @return Page<ParticipationBreakdown>
      *
@@ -101,26 +85,17 @@ final class ParticipationsService implements ParticipationsContract
      */
     public function listBreakdownByContact(
         string $contactIdentifier,
-        array|ParticipationListBreakdownByContactParams $params,
+        ?string $after = null,
+        int $limit = 10,
+        ?string $state = null,
         ?RequestOptions $requestOptions = null,
     ): Page {
-        [$parsed, $options] = ParticipationListBreakdownByContactParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = ['after' => $after, 'limit' => $limit, 'state' => $state];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<Page<ParticipationBreakdown>> */
-        $response = $this->client->request(
-            method: 'get',
-            path: [
-                'marketing/v3/marketing-events/participations/contacts/%1$s/breakdown',
-                $contactIdentifier,
-            ],
-            query: $parsed,
-            options: $options,
-            convert: ParticipationBreakdown::class,
-            page: Page::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->listBreakdownByContact($contactIdentifier, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -130,13 +105,12 @@ final class ParticipationsService implements ParticipationsContract
      *
      * Read Marketing event's participations breakdown with optional filters by externalAccountId and externalEventId pair.
      *
-     * @param array{
-     *   externalAccountID: string,
-     *   after?: string,
-     *   contactIdentifier?: string,
-     *   limit?: int,
-     *   state?: string,
-     * }|ParticipationListBreakdownByExternalAccountAndEventIDParams $params
+     * @param string $externalEventID path param: The id of the marketing event in the external event application
+     * @param string $externalAccountID path param: The accountId that is associated with this marketing event in the external event application
+     * @param string $after query param: The cursor indicating the position of the last retrieved item
+     * @param string $contactIdentifier Query param: The identifier of the Contact. It may be email or internal id.
+     * @param int $limit Query param: The limit for response size. The default value is 10, the max number is 100
+     * @param string $state Query param: The participation state value. It may be REGISTERED, CANCELLED, ATTENDED, NO_SHOW
      *
      * @return Page<ParticipationBreakdown>
      *
@@ -144,29 +118,25 @@ final class ParticipationsService implements ParticipationsContract
      */
     public function listBreakdownByExternalAccountAndEventID(
         string $externalEventID,
-        array|ParticipationListBreakdownByExternalAccountAndEventIDParams $params,
+        string $externalAccountID,
+        ?string $after = null,
+        ?string $contactIdentifier = null,
+        int $limit = 10,
+        ?string $state = null,
         ?RequestOptions $requestOptions = null,
     ): Page {
-        [$parsed, $options] = ParticipationListBreakdownByExternalAccountAndEventIDParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $externalAccountID = $parsed['externalAccountID'];
-        unset($parsed['externalAccountID']);
+        $params = [
+            'externalAccountID' => $externalAccountID,
+            'after' => $after,
+            'contactIdentifier' => $contactIdentifier,
+            'limit' => $limit,
+            'state' => $state,
+        ];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<Page<ParticipationBreakdown>> */
-        $response = $this->client->request(
-            method: 'get',
-            path: [
-                'marketing/v3/marketing-events/participations/%1$s/%2$s/breakdown',
-                $externalAccountID,
-                $externalEventID,
-            ],
-            query: $parsed,
-            options: $options,
-            convert: ParticipationBreakdown::class,
-            page: Page::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->listBreakdownByExternalAccountAndEventID($externalEventID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -176,9 +146,11 @@ final class ParticipationsService implements ParticipationsContract
      *
      * Read Marketing event's participations breakdown with optional filters by internal identifier marketingEventId.
      *
-     * @param array{
-     *   after?: string, contactIdentifier?: string, limit?: int, state?: string
-     * }|ParticipationListBreakdownByIDParams $params
+     * @param int $marketingEventID the internal id of the marketing event in HubSpot
+     * @param string $after the cursor indicating the position of the last retrieved item
+     * @param string $contactIdentifier The identifier of the Contact. It may be email or internal id.
+     * @param int $limit The limit for response size. The default value is 10, the max number is 100
+     * @param string $state The participation state value. It may be REGISTERED, CANCELLED, ATTENDED, NO_SHOW
      *
      * @return Page<ParticipationBreakdown>
      *
@@ -186,26 +158,23 @@ final class ParticipationsService implements ParticipationsContract
      */
     public function listBreakdownByID(
         int $marketingEventID,
-        array|ParticipationListBreakdownByIDParams $params,
+        ?string $after = null,
+        ?string $contactIdentifier = null,
+        int $limit = 10,
+        ?string $state = null,
         ?RequestOptions $requestOptions = null,
     ): Page {
-        [$parsed, $options] = ParticipationListBreakdownByIDParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = [
+            'after' => $after,
+            'contactIdentifier' => $contactIdentifier,
+            'limit' => $limit,
+            'state' => $state,
+        ];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<Page<ParticipationBreakdown>> */
-        $response = $this->client->request(
-            method: 'get',
-            path: [
-                'marketing/v3/marketing-events/participations/%1$s/breakdown',
-                $marketingEventID,
-            ],
-            query: $parsed,
-            options: $options,
-            convert: ParticipationBreakdown::class,
-            page: Page::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->listBreakdownByID($marketingEventID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }

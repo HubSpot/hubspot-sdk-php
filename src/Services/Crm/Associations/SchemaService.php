@@ -5,16 +5,19 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Crm\Associations;
 
 use HubspotSDK\Client;
-use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\Associations\Schema\CollectionResponsePublicAssociationDefinitionNoPaging;
-use HubspotSDK\Crm\Associations\Schema\SchemaListParams;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Associations\SchemaContract;
 use HubspotSDK\Services\Crm\Associations\Schema\V4Service;
 
 final class SchemaService implements SchemaContract
 {
+    /**
+     * @api
+     */
+    public SchemaRawService $raw;
+
     /**
      * @api
      */
@@ -25,37 +28,24 @@ final class SchemaService implements SchemaContract
      */
     public function __construct(private Client $client)
     {
+        $this->raw = new SchemaRawService($client);
         $this->v4 = new V4Service($client);
     }
 
     /**
      * @api
      *
-     * @param array{fromObjectType: string}|SchemaListParams $params
-     *
      * @throws APIException
      */
     public function list(
         string $toObjectType,
-        array|SchemaListParams $params,
+        string $fromObjectType,
         ?RequestOptions $requestOptions = null,
     ): CollectionResponsePublicAssociationDefinitionNoPaging {
-        [$parsed, $options] = SchemaListParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $fromObjectType = $parsed['fromObjectType'];
-        unset($parsed['fromObjectType']);
+        $params = ['fromObjectType' => $fromObjectType];
 
-        /** @var BaseResponse<CollectionResponsePublicAssociationDefinitionNoPaging,> */
-        $response = $this->client->request(
-            method: 'get',
-            path: [
-                'crm/v3/associations/%1$s/%2$s/types', $fromObjectType, $toObjectType,
-            ],
-            options: $options,
-            convert: CollectionResponsePublicAssociationDefinitionNoPaging::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->list($toObjectType, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }

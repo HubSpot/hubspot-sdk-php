@@ -37,9 +37,10 @@ final class SingleEmailTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->transactional->singleEmail->send([
-            'emailID' => 0, 'message' => ['to' => 'to'],
-        ]);
+        $result = $this->client->marketing->transactional->singleEmail->send(
+            emailID: 0,
+            message: ['to' => 'to']
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(EmailSendStatusView::class, $result);
@@ -52,9 +53,9 @@ final class SingleEmailTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->transactional->singleEmail->send([
-            'emailID' => 0,
-            'message' => [
+        $result = $this->client->marketing->transactional->singleEmail->send(
+            emailID: 0,
+            message: [
                 'to' => 'to',
                 'bcc' => ['string'],
                 'cc' => ['string'],
@@ -62,9 +63,9 @@ final class SingleEmailTest extends TestCase
                 'replyTo' => ['string'],
                 'sendID' => 'sendId',
             ],
-            'contactProperties' => ['foo' => 'string'],
-            'customProperties' => ['foo' => []],
-        ]);
+            contactProperties: ['foo' => 'string'],
+            customProperties: ['foo' => []],
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(EmailSendStatusView::class, $result);

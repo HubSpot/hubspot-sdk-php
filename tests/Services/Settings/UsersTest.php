@@ -40,9 +40,9 @@ final class UsersTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->settings->users->create([
-            'email' => 'newUser@email.com',
-        ]);
+        $result = $this->client->settings->users->create(
+            email: 'newUser@email.com'
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(PublicUser::class, $result);
@@ -55,15 +55,15 @@ final class UsersTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->settings->users->create([
-            'email' => 'newUser@email.com',
-            'firstName' => 'firstName',
-            'lastName' => 'lastName',
-            'primaryTeamID' => '101',
-            'roleID' => '100',
-            'secondaryTeamIDs' => ['102'],
-            'sendWelcomeEmail' => true,
-        ]);
+        $result = $this->client->settings->users->create(
+            email: 'newUser@email.com',
+            firstName: 'firstName',
+            lastName: 'lastName',
+            primaryTeamID: '101',
+            roleID: '100',
+            secondaryTeamIDs: ['102'],
+            sendWelcomeEmail: true,
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(PublicUser::class, $result);
@@ -76,7 +76,7 @@ final class UsersTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->settings->users->update('userId', []);
+        $result = $this->client->settings->users->update('userId');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(PublicUser::class, $result);
@@ -89,7 +89,7 @@ final class UsersTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->settings->users->list([]);
+        $result = $this->client->settings->users->list();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(Page::class, $result);
@@ -102,7 +102,7 @@ final class UsersTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->settings->users->delete('userId', []);
+        $result = $this->client->settings->users->delete('userId');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);
@@ -115,7 +115,7 @@ final class UsersTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->settings->users->get('userId', []);
+        $result = $this->client->settings->users->get('userId');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(PublicUser::class, $result);

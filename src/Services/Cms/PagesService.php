@@ -14,6 +14,11 @@ final class PagesService implements PagesContract
     /**
      * @api
      */
+    public PagesRawService $raw;
+
+    /**
+     * @api
+     */
     public LandingPagesService $landingPages;
 
     /**
@@ -26,6 +31,7 @@ final class PagesService implements PagesContract
      */
     public function __construct(private Client $client)
     {
+        $this->raw = new PagesRawService($client);
         $this->landingPages = new LandingPagesService($client);
         $this->sitePages = new SitePagesService($client);
     }

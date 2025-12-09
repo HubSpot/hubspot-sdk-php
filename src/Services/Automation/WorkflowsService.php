@@ -5,21 +5,14 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Automation;
 
 use HubspotSDK\Automation\Workflows\APIContactFlow;
-use HubspotSDK\Automation\Workflows\APIFlow;
 use HubspotSDK\Automation\Workflows\APIFlowBatchFetchFlowIDCoordinate\Type;
 use HubspotSDK\Automation\Workflows\APIFlowEmailCampaign;
 use HubspotSDK\Automation\Workflows\APIFlowListing;
 use HubspotSDK\Automation\Workflows\APIPlatformFlow;
 use HubspotSDK\Automation\Workflows\BatchResponseAPIFlow;
 use HubspotSDK\Automation\Workflows\BatchResponseFlowIDWorkflowIDMappingResponse;
-use HubspotSDK\Automation\Workflows\WorkflowBatchGetIDMappingsParams;
-use HubspotSDK\Automation\Workflows\WorkflowBatchGetParams;
-use HubspotSDK\Automation\Workflows\WorkflowListEmailCampaignsParams;
-use HubspotSDK\Automation\Workflows\WorkflowListParams;
 use HubspotSDK\Client;
-use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Core\Util;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Automation\WorkflowsContract;
@@ -27,9 +20,17 @@ use HubspotSDK\ServiceContracts\Automation\WorkflowsContract;
 final class WorkflowsService implements WorkflowsContract
 {
     /**
+     * @api
+     */
+    public WorkflowsRawService $raw;
+
+    /**
      * @internal
      */
-    public function __construct(private Client $client) {}
+    public function __construct(private Client $client)
+    {
+        $this->raw = new WorkflowsRawService($client);
+    }
 
     /**
      * @api
@@ -39,13 +40,8 @@ final class WorkflowsService implements WorkflowsContract
     public function create(
         ?RequestOptions $requestOptions = null
     ): APIContactFlow|APIPlatformFlow {
-        /** @var BaseResponse<APIContactFlow|APIPlatformFlow> */
-        $response = $this->client->request(
-            method: 'post',
-            path: 'automation/v4/flows',
-            options: $requestOptions,
-            convert: APIFlow::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->create(requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -59,13 +55,8 @@ final class WorkflowsService implements WorkflowsContract
         string $flowID,
         ?RequestOptions $requestOptions = null
     ): APIContactFlow|APIPlatformFlow {
-        /** @var BaseResponse<APIContactFlow|APIPlatformFlow> */
-        $response = $this->client->request(
-            method: 'put',
-            path: ['automation/v4/flows/%1$s', $flowID],
-            options: $requestOptions,
-            convert: APIFlow::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->update($flowID, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -73,30 +64,21 @@ final class WorkflowsService implements WorkflowsContract
     /**
      * @api
      *
-     * @param array{after?: string, limit?: int}|WorkflowListParams $params
-     *
      * @return Page<APIFlowListing>
      *
      * @throws APIException
      */
     public function list(
-        array|WorkflowListParams $params,
-        ?RequestOptions $requestOptions = null
+        ?string $after = null,
+        int $limit = 100,
+        ?RequestOptions $requestOptions = null,
     ): Page {
-        [$parsed, $options] = WorkflowListParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = ['after' => $after, 'limit' => $limit];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<Page<APIFlowListing>> */
-        $response = $this->client->request(
-            method: 'get',
-            path: 'automation/v4/flows',
-            query: $parsed,
-            options: $options,
-            convert: APIFlowListing::class,
-            page: Page::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->list(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -110,13 +92,8 @@ final class WorkflowsService implements WorkflowsContract
         int $flowID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        /** @var BaseResponse<mixed> */
-        $response = $this->client->request(
-            method: 'delete',
-            path: ['automation/v4/flows/%1$s', $flowID],
-            options: $requestOptions,
-            convert: null,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->delete($flowID, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -124,29 +101,18 @@ final class WorkflowsService implements WorkflowsContract
     /**
      * @api
      *
-     * @param array{
-     *   inputs: list<array{flowID: string, type: 'FLOW_ID'|Type}>
-     * }|WorkflowBatchGetParams $params
+     * @param list<array{flowID: string, type: 'FLOW_ID'|Type}> $inputs
      *
      * @throws APIException
      */
     public function batchGet(
-        array|WorkflowBatchGetParams $params,
+        array $inputs,
         ?RequestOptions $requestOptions = null
     ): BatchResponseAPIFlow {
-        [$parsed, $options] = WorkflowBatchGetParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = ['inputs' => $inputs];
 
-        /** @var BaseResponse<BatchResponseAPIFlow> */
-        $response = $this->client->request(
-            method: 'post',
-            path: 'automation/v4/flows/batch/read',
-            body: (object) $parsed,
-            options: $options,
-            convert: BatchResponseAPIFlow::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->batchGet(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -154,29 +120,18 @@ final class WorkflowsService implements WorkflowsContract
     /**
      * @api
      *
-     * @param array{
-     *   inputs: list<array<string,mixed>>
-     * }|WorkflowBatchGetIDMappingsParams $params
+     * @param list<array<string,mixed>> $inputs
      *
      * @throws APIException
      */
     public function batchGetIDMappings(
-        array|WorkflowBatchGetIDMappingsParams $params,
-        ?RequestOptions $requestOptions = null,
+        array $inputs,
+        ?RequestOptions $requestOptions = null
     ): BatchResponseFlowIDWorkflowIDMappingResponse {
-        [$parsed, $options] = WorkflowBatchGetIDMappingsParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = ['inputs' => $inputs];
 
-        /** @var BaseResponse<BatchResponseFlowIDWorkflowIDMappingResponse> */
-        $response = $this->client->request(
-            method: 'post',
-            path: 'automation/v4/workflow-id-mappings/batch/read',
-            body: (object) $parsed,
-            options: $options,
-            convert: BatchResponseFlowIDWorkflowIDMappingResponse::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->batchGetIDMappings(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -190,13 +145,8 @@ final class WorkflowsService implements WorkflowsContract
         string $flowID,
         ?RequestOptions $requestOptions = null
     ): APIContactFlow|APIPlatformFlow {
-        /** @var BaseResponse<APIContactFlow|APIPlatformFlow> */
-        $response = $this->client->request(
-            method: 'get',
-            path: ['automation/v4/flows/%1$s', $flowID],
-            options: $requestOptions,
-            convert: APIFlow::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->get($flowID, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -204,32 +154,30 @@ final class WorkflowsService implements WorkflowsContract
     /**
      * @api
      *
-     * @param array{
-     *   after?: string, before?: string, flowID?: list<string>, limit?: int
-     * }|WorkflowListEmailCampaignsParams $params
+     * @param list<string> $flowID
      *
      * @return Page<APIFlowEmailCampaign>
      *
      * @throws APIException
      */
     public function listEmailCampaigns(
-        array|WorkflowListEmailCampaignsParams $params,
+        ?string $after = null,
+        ?string $before = null,
+        ?array $flowID = null,
+        ?int $limit = null,
         ?RequestOptions $requestOptions = null,
     ): Page {
-        [$parsed, $options] = WorkflowListEmailCampaignsParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = [
+            'after' => $after,
+            'before' => $before,
+            'flowID' => $flowID,
+            'limit' => $limit,
+        ];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<Page<APIFlowEmailCampaign>> */
-        $response = $this->client->request(
-            method: 'get',
-            path: 'automation/v4/flows/email-campaigns',
-            query: Util::array_transform_keys($parsed, ['flowID' => 'flowId']),
-            options: $options,
-            convert: APIFlowEmailCampaign::class,
-            page: Page::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->listEmailCampaigns(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }

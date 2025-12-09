@@ -38,11 +38,11 @@ final class URLRedirectsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->urlRedirects->create([
-            'destination' => 'destination',
-            'redirectStyle' => 0,
-            'routePrefix' => 'routePrefix',
-        ]);
+        $result = $this->client->cms->urlRedirects->create(
+            destination: 'destination',
+            redirectStyle: 0,
+            routePrefix: 'routePrefix'
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(URLMapping::class, $result);
@@ -55,18 +55,18 @@ final class URLRedirectsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->urlRedirects->create([
-            'destination' => 'destination',
-            'redirectStyle' => 0,
-            'routePrefix' => 'routePrefix',
-            'isMatchFullURL' => true,
-            'isMatchQueryString' => true,
-            'isOnlyAfterNotFound' => true,
-            'isPattern' => true,
-            'isProtocolAgnostic' => true,
-            'isTrailingSlashOptional' => true,
-            'precedence' => 0,
-        ]);
+        $result = $this->client->cms->urlRedirects->create(
+            destination: 'destination',
+            redirectStyle: 0,
+            routePrefix: 'routePrefix',
+            isMatchFullURL: true,
+            isMatchQueryString: true,
+            isOnlyAfterNotFound: true,
+            isPattern: true,
+            isProtocolAgnostic: true,
+            isTrailingSlashOptional: true,
+            precedence: 0,
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(URLMapping::class, $result);
@@ -81,19 +81,17 @@ final class URLRedirectsTest extends TestCase
 
         $result = $this->client->cms->urlRedirects->update(
             'urlRedirectId',
-            [
-                'id' => 'id',
-                'destination' => 'destination',
-                'isMatchFullURL' => true,
-                'isMatchQueryString' => true,
-                'isOnlyAfterNotFound' => true,
-                'isPattern' => true,
-                'isProtocolAgnostic' => true,
-                'isTrailingSlashOptional' => true,
-                'precedence' => 0,
-                'redirectStyle' => 0,
-                'routePrefix' => 'routePrefix',
-            ],
+            id: 'id',
+            destination: 'destination',
+            isMatchFullURL: true,
+            isMatchQueryString: true,
+            isOnlyAfterNotFound: true,
+            isPattern: true,
+            isProtocolAgnostic: true,
+            isTrailingSlashOptional: true,
+            precedence: 0,
+            redirectStyle: 0,
+            routePrefix: 'routePrefix',
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -109,21 +107,19 @@ final class URLRedirectsTest extends TestCase
 
         $result = $this->client->cms->urlRedirects->update(
             'urlRedirectId',
-            [
-                'id' => 'id',
-                'destination' => 'destination',
-                'isMatchFullURL' => true,
-                'isMatchQueryString' => true,
-                'isOnlyAfterNotFound' => true,
-                'isPattern' => true,
-                'isProtocolAgnostic' => true,
-                'isTrailingSlashOptional' => true,
-                'precedence' => 0,
-                'redirectStyle' => 0,
-                'routePrefix' => 'routePrefix',
-                'created' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-                'updated' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-            ],
+            id: 'id',
+            destination: 'destination',
+            isMatchFullURL: true,
+            isMatchQueryString: true,
+            isOnlyAfterNotFound: true,
+            isPattern: true,
+            isProtocolAgnostic: true,
+            isTrailingSlashOptional: true,
+            precedence: 0,
+            redirectStyle: 0,
+            routePrefix: 'routePrefix',
+            created: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
+            updated: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -137,7 +133,7 @@ final class URLRedirectsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->urlRedirects->list([]);
+        $result = $this->client->cms->urlRedirects->list();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(Page::class, $result);

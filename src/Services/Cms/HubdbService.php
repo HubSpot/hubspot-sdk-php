@@ -14,6 +14,11 @@ final class HubdbService implements HubdbContract
     /**
      * @api
      */
+    public HubdbRawService $raw;
+
+    /**
+     * @api
+     */
     public RowsService $rows;
 
     /**
@@ -26,6 +31,7 @@ final class HubdbService implements HubdbContract
      */
     public function __construct(private Client $client)
     {
+        $this->raw = new HubdbRawService($client);
         $this->rows = new RowsService($client);
         $this->tables = new TablesService($client);
     }

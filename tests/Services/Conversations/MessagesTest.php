@@ -51,7 +51,7 @@ final class MessagesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->conversations->messages->list(0, []);
+        $result = $this->client->conversations->messages->list(0);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(Page::class, $result);
@@ -66,7 +66,7 @@ final class MessagesTest extends TestCase
 
         $result = $this->client->conversations->messages->get(
             'messageId',
-            ['threadID' => 0]
+            threadID: 0
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -82,7 +82,8 @@ final class MessagesTest extends TestCase
 
         $result = $this->client->conversations->messages->get(
             'messageId',
-            ['threadID' => 0, 'property' => 'property']
+            threadID: 0,
+            property: 'property'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -98,7 +99,7 @@ final class MessagesTest extends TestCase
 
         $result = $this->client->conversations->messages->getOriginalContent(
             'messageId',
-            ['threadID' => 0]
+            threadID: 0
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -114,7 +115,8 @@ final class MessagesTest extends TestCase
 
         $result = $this->client->conversations->messages->getOriginalContent(
             'messageId',
-            ['threadID' => 0, 'property' => 'property']
+            threadID: 0,
+            property: 'property'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

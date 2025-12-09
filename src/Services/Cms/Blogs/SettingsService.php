@@ -6,16 +6,7 @@ namespace HubspotSDK\Services\Cms\Blogs;
 
 use HubspotSDK\Client;
 use HubspotSDK\Cms\Blogs\Settings\Blog;
-use HubspotSDK\Cms\Blogs\Settings\SettingAttachToLangGroupParams;
-use HubspotSDK\Cms\Blogs\Settings\SettingCreateLanguageVariationParams;
-use HubspotSDK\Cms\Blogs\Settings\SettingDetachFromLangGroupParams;
-use HubspotSDK\Cms\Blogs\Settings\SettingGetRevisionParams;
-use HubspotSDK\Cms\Blogs\Settings\SettingListParams;
-use HubspotSDK\Cms\Blogs\Settings\SettingListRevisionsParams;
-use HubspotSDK\Cms\Blogs\Settings\SettingSetNewLangPrimaryParams;
-use HubspotSDK\Cms\Blogs\Settings\SettingUpdateLanguagesParams;
 use HubspotSDK\Cms\Blogs\Settings\VersionBlog;
-use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
@@ -24,48 +15,57 @@ use HubspotSDK\ServiceContracts\Cms\Blogs\SettingsContract;
 final class SettingsService implements SettingsContract
 {
     /**
+     * @api
+     */
+    public SettingsRawService $raw;
+
+    /**
      * @internal
      */
-    public function __construct(private Client $client) {}
+    public function __construct(private Client $client)
+    {
+        $this->raw = new SettingsRawService($client);
+    }
 
     /**
      * @api
      *
-     * @param array{
-     *   after?: string,
-     *   archived?: bool,
-     *   createdAfter?: string|\DateTimeInterface,
-     *   createdAt?: string|\DateTimeInterface,
-     *   createdBefore?: string|\DateTimeInterface,
-     *   limit?: int,
-     *   sort?: list<string>,
-     *   updatedAfter?: string|\DateTimeInterface,
-     *   updatedAt?: string|\DateTimeInterface,
-     *   updatedBefore?: string|\DateTimeInterface,
-     * }|SettingListParams $params
+     * @param list<string> $sort
      *
      * @return Page<Blog>
      *
      * @throws APIException
      */
     public function list(
-        array|SettingListParams $params,
-        ?RequestOptions $requestOptions = null
+        ?string $after = null,
+        ?bool $archived = null,
+        string|\DateTimeInterface|null $createdAfter = null,
+        string|\DateTimeInterface|null $createdAt = null,
+        string|\DateTimeInterface|null $createdBefore = null,
+        ?int $limit = null,
+        ?array $sort = null,
+        string|\DateTimeInterface|null $updatedAfter = null,
+        string|\DateTimeInterface|null $updatedAt = null,
+        string|\DateTimeInterface|null $updatedBefore = null,
+        ?RequestOptions $requestOptions = null,
     ): Page {
-        [$parsed, $options] = SettingListParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = [
+            'after' => $after,
+            'archived' => $archived,
+            'createdAfter' => $createdAfter,
+            'createdAt' => $createdAt,
+            'createdBefore' => $createdBefore,
+            'limit' => $limit,
+            'sort' => $sort,
+            'updatedAfter' => $updatedAfter,
+            'updatedAt' => $updatedAt,
+            'updatedBefore' => $updatedBefore,
+        ];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<Page<Blog>> */
-        $response = $this->client->request(
-            method: 'get',
-            path: 'cms/v3/blog-settings/settings',
-            query: $parsed,
-            options: $options,
-            convert: Blog::class,
-            page: Page::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->list(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -73,29 +73,31 @@ final class SettingsService implements SettingsContract
     /**
      * @api
      *
-     * @param array{
-     *   id: string, language: string, primaryID: string, primaryLanguage?: string
-     * }|SettingAttachToLangGroupParams $params
+     * @param string $id ID of the object to add to a multi-language group
+     * @param string $language designated language of the object to add to a multi-language group
+     * @param string $primaryID ID of primary language object in multi-language group
+     * @param string $primaryLanguage primary language of the multi-language group
      *
      * @throws APIException
      */
     public function attachToLangGroup(
-        array|SettingAttachToLangGroupParams $params,
+        string $id,
+        string $language,
+        string $primaryID,
+        ?string $primaryLanguage = null,
         ?RequestOptions $requestOptions = null,
     ): mixed {
-        [$parsed, $options] = SettingAttachToLangGroupParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = [
+            'id' => $id,
+            'language' => $language,
+            'primaryID' => $primaryID,
+            'primaryLanguage' => $primaryLanguage,
+        ];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<mixed> */
-        $response = $this->client->request(
-            method: 'post',
-            path: 'cms/v3/blog-settings/settings/multi-language/attach-to-lang-group',
-            body: (object) $parsed,
-            options: $options,
-            convert: null,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->attachToLangGroup(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -103,29 +105,31 @@ final class SettingsService implements SettingsContract
     /**
      * @api
      *
-     * @param array{
-     *   id: string, language?: string, primaryLanguage?: string, slug?: string
-     * }|SettingCreateLanguageVariationParams $params
+     * @param string $id ID of blog to clone
+     * @param string $language target language of new variant
+     * @param string $primaryLanguage language of primary blog to clone
+     * @param string $slug path to this blog
      *
      * @throws APIException
      */
     public function createLanguageVariation(
-        array|SettingCreateLanguageVariationParams $params,
+        string $id,
+        ?string $language = null,
+        ?string $primaryLanguage = null,
+        ?string $slug = null,
         ?RequestOptions $requestOptions = null,
     ): Blog {
-        [$parsed, $options] = SettingCreateLanguageVariationParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = [
+            'id' => $id,
+            'language' => $language,
+            'primaryLanguage' => $primaryLanguage,
+            'slug' => $slug,
+        ];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<Blog> */
-        $response = $this->client->request(
-            method: 'post',
-            path: 'cms/v3/blog-settings/settings/multi-language/create-language-variation',
-            body: (object) $parsed,
-            options: $options,
-            convert: Blog::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->createLanguageVariation(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -133,27 +137,18 @@ final class SettingsService implements SettingsContract
     /**
      * @api
      *
-     * @param array{id: string}|SettingDetachFromLangGroupParams $params
+     * @param string $id ID of the object to remove from a multi-language group
      *
      * @throws APIException
      */
     public function detachFromLangGroup(
-        array|SettingDetachFromLangGroupParams $params,
-        ?RequestOptions $requestOptions = null,
+        string $id,
+        ?RequestOptions $requestOptions = null
     ): mixed {
-        [$parsed, $options] = SettingDetachFromLangGroupParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = ['id' => $id];
 
-        /** @var BaseResponse<mixed> */
-        $response = $this->client->request(
-            method: 'post',
-            path: 'cms/v3/blog-settings/settings/multi-language/detach-from-lang-group',
-            body: (object) $parsed,
-            options: $options,
-            convert: null,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->detachFromLangGroup(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -167,57 +162,32 @@ final class SettingsService implements SettingsContract
         string $blogID,
         ?RequestOptions $requestOptions = null
     ): Blog {
-        /** @var BaseResponse<Blog> */
-        $response = $this->client->request(
-            method: 'get',
-            path: ['cms/v3/blog-settings/settings/%1$s', $blogID],
-            options: $requestOptions,
-            convert: Blog::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->get($blogID, requestOptions: $requestOptions);
 
         return $response->parse();
     }
 
     /**
      * @api
-     *
-     * @param array{blogID: string}|SettingGetRevisionParams $params
      *
      * @throws APIException
      */
     public function getRevision(
         string $revisionID,
-        array|SettingGetRevisionParams $params,
-        ?RequestOptions $requestOptions = null,
+        string $blogID,
+        ?RequestOptions $requestOptions = null
     ): VersionBlog {
-        [$parsed, $options] = SettingGetRevisionParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $blogID = $parsed['blogID'];
-        unset($parsed['blogID']);
+        $params = ['blogID' => $blogID];
 
-        /** @var BaseResponse<VersionBlog> */
-        $response = $this->client->request(
-            method: 'get',
-            path: [
-                'cms/v3/blog-settings/settings/%1$s/revisions/%2$s',
-                $blogID,
-                $revisionID,
-            ],
-            options: $options,
-            convert: VersionBlog::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->getRevision($revisionID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
 
     /**
      * @api
-     *
-     * @param array{
-     *   after?: string, before?: string, limit?: int
-     * }|SettingListRevisionsParams $params
      *
      * @return Page<VersionBlog>
      *
@@ -225,23 +195,17 @@ final class SettingsService implements SettingsContract
      */
     public function listRevisions(
         string $blogID,
-        array|SettingListRevisionsParams $params,
+        ?string $after = null,
+        ?string $before = null,
+        ?int $limit = null,
         ?RequestOptions $requestOptions = null,
     ): Page {
-        [$parsed, $options] = SettingListRevisionsParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = ['after' => $after, 'before' => $before, 'limit' => $limit];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<Page<VersionBlog>> */
-        $response = $this->client->request(
-            method: 'get',
-            path: ['cms/v3/blog-settings/settings/%1$s/revisions', $blogID],
-            query: $parsed,
-            options: $options,
-            convert: VersionBlog::class,
-            page: Page::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->listRevisions($blogID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -249,27 +213,18 @@ final class SettingsService implements SettingsContract
     /**
      * @api
      *
-     * @param array{id: string}|SettingSetNewLangPrimaryParams $params
+     * @param string $id ID of object to set as primary in multi-language group
      *
      * @throws APIException
      */
     public function setNewLangPrimary(
-        array|SettingSetNewLangPrimaryParams $params,
-        ?RequestOptions $requestOptions = null,
+        string $id,
+        ?RequestOptions $requestOptions = null
     ): mixed {
-        [$parsed, $options] = SettingSetNewLangPrimaryParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = ['id' => $id];
 
-        /** @var BaseResponse<mixed> */
-        $response = $this->client->request(
-            method: 'put',
-            path: 'cms/v3/blog-settings/settings/multi-language/set-new-lang-primary',
-            body: (object) $parsed,
-            options: $options,
-            convert: null,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->setNewLangPrimary(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -277,29 +232,20 @@ final class SettingsService implements SettingsContract
     /**
      * @api
      *
-     * @param array{
-     *   languages: array<string,string>, primaryID: string
-     * }|SettingUpdateLanguagesParams $params
+     * @param array<string,string> $languages map of object IDs to associated languages of object in the multi-language group
+     * @param string $primaryID ID of the primary object in the multi-language group
      *
      * @throws APIException
      */
     public function updateLanguages(
-        array|SettingUpdateLanguagesParams $params,
-        ?RequestOptions $requestOptions = null,
+        array $languages,
+        string $primaryID,
+        ?RequestOptions $requestOptions = null
     ): mixed {
-        [$parsed, $options] = SettingUpdateLanguagesParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = ['languages' => $languages, 'primaryID' => $primaryID];
 
-        /** @var BaseResponse<mixed> */
-        $response = $this->client->request(
-            method: 'post',
-            path: 'cms/v3/blog-settings/settings/multi-language/update-languages',
-            body: (object) $parsed,
-            options: $options,
-            convert: null,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->updateLanguages(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }

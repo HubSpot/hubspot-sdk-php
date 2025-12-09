@@ -39,10 +39,8 @@ final class SettingsTest extends TestCase
 
         $result = $this->client->webhooks->settings->update(
             0,
-            [
-                'targetURL' => 'https://www.example.com/hubspot/target',
-                'throttling' => ['maxConcurrentRequests' => 10],
-            ],
+            targetURL: 'https://www.example.com/hubspot/target',
+            throttling: ['maxConcurrentRequests' => 10],
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -58,10 +56,8 @@ final class SettingsTest extends TestCase
 
         $result = $this->client->webhooks->settings->update(
             0,
-            [
-                'targetURL' => 'https://www.example.com/hubspot/target',
-                'throttling' => ['maxConcurrentRequests' => 10],
-            ],
+            targetURL: 'https://www.example.com/hubspot/target',
+            throttling: ['maxConcurrentRequests' => 10],
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

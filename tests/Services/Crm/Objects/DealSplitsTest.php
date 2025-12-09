@@ -37,9 +37,9 @@ final class DealSplitsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->objects->dealSplits->batchRead([
-            'inputs' => [['id' => '37295']],
-        ]);
+        $result = $this->client->crm->objects->dealSplits->batchRead(
+            inputs: [['id' => '37295']]
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(BatchResponseDealToDealSplits::class, $result);
@@ -52,9 +52,9 @@ final class DealSplitsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->objects->dealSplits->batchRead([
-            'inputs' => [['id' => '37295']],
-        ]);
+        $result = $this->client->crm->objects->dealSplits->batchRead(
+            inputs: [['id' => '37295']]
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(BatchResponseDealToDealSplits::class, $result);
@@ -67,11 +67,9 @@ final class DealSplitsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->objects->dealSplits->batchUpsert([
-            'inputs' => [
-                ['id' => 0, 'splits' => [['ownerID' => 0, 'percentage' => 0]]],
-            ],
-        ]);
+        $result = $this->client->crm->objects->dealSplits->batchUpsert(
+            inputs: [['id' => 0, 'splits' => [['ownerID' => 0, 'percentage' => 0]]]]
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(BatchResponseDealToDealSplits::class, $result);
@@ -84,11 +82,9 @@ final class DealSplitsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->objects->dealSplits->batchUpsert([
-            'inputs' => [
-                ['id' => 0, 'splits' => [['ownerID' => 0, 'percentage' => 0]]],
-            ],
-        ]);
+        $result = $this->client->crm->objects->dealSplits->batchUpsert(
+            inputs: [['id' => 0, 'splits' => [['ownerID' => 0, 'percentage' => 0]]]]
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(BatchResponseDealToDealSplits::class, $result);

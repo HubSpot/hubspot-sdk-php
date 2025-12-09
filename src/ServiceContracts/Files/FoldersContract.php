@@ -7,12 +7,6 @@ namespace HubspotSDK\ServiceContracts\Files;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Files\Folder;
 use HubspotSDK\Files\FolderActionResponse;
-use HubspotSDK\Files\Folders\FolderCreateParams;
-use HubspotSDK\Files\Folders\FolderGetByIDParams;
-use HubspotSDK\Files\Folders\FolderGetByPathParams;
-use HubspotSDK\Files\Folders\FolderSearchParams;
-use HubspotSDK\Files\Folders\FolderUpdateAsyncByIDParams;
-use HubspotSDK\Files\Folders\FolderUpdateByIDParams;
 use HubspotSDK\Files\FolderUpdateTaskLocator;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
@@ -22,17 +16,23 @@ interface FoldersContract
     /**
      * @api
      *
-     * @param array<mixed>|FolderCreateParams $params
+     * @param string $name desired name for the folder
+     * @param string $parentFolderID FolderId of the parent of the created folder. If not specified, the folder will be created at the root level. parentFolderId and parentFolderPath cannot be set at the same time.
+     * @param string $parentPath Path of the parent of the created folder. If not specified the folder will be created at the root level. parentFolderPath and parentFolderId cannot be set at the same time.
      *
      * @throws APIException
      */
     public function create(
-        array|FolderCreateParams $params,
-        ?RequestOptions $requestOptions = null
+        string $name,
+        ?string $parentFolderID = null,
+        ?string $parentPath = null,
+        ?RequestOptions $requestOptions = null,
     ): Folder;
 
     /**
      * @api
+     *
+     * @param string $folderID ID of folder to delete
      *
      * @throws APIException
      */
@@ -44,6 +44,8 @@ interface FoldersContract
     /**
      * @api
      *
+     * @param string $folderPath Path of folder to delete
+     *
      * @throws APIException
      */
     public function deleteByPath(
@@ -54,31 +56,35 @@ interface FoldersContract
     /**
      * @api
      *
-     * @param array<mixed>|FolderGetByIDParams $params
+     * @param string $folderID ID of desired folder
+     * @param list<string> $properties properties to set on returned folder
      *
      * @throws APIException
      */
     public function getByID(
         string $folderID,
-        array|FolderGetByIDParams $params,
+        ?array $properties = null,
         ?RequestOptions $requestOptions = null,
     ): Folder;
 
     /**
      * @api
      *
-     * @param array<mixed>|FolderGetByPathParams $params
+     * @param string $folderPath path of desired folder
+     * @param list<string> $properties properties to set on returned folder
      *
      * @throws APIException
      */
     public function getByPath(
         string $folderPath,
-        array|FolderGetByPathParams $params,
+        ?array $properties = null,
         ?RequestOptions $requestOptions = null,
     ): Folder;
 
     /**
      * @api
+     *
+     * @param string $taskID the ID of the folder update task
      *
      * @throws APIException
      */
@@ -90,39 +96,74 @@ interface FoldersContract
     /**
      * @api
      *
-     * @param array<mixed>|FolderSearchParams $params
+     * @param string $after Offset search results by this value. The default offset is 0 and the maximum offset of items for a given search is 10,000. Narrow your search down if you are reaching this limit.
+     * @param string|\DateTimeInterface $createdAt Search folders by exact time of creation. Time must be epoch time in milliseconds.
+     * @param string|\DateTimeInterface $createdAtGte Search folders by greater than or equal to time of creation. Can be used with createdAtLte to create a range.
+     * @param string|\DateTimeInterface $createdAtLte Search folders by less than or equal to time of creation. Can be used with createdAtGte to create a range.
+     * @param list<int> $ids
+     * @param int $limit Number of items to return. Default limit is 10, maximum limit is 100.
+     * @param string $name search for folders containing the specified name
+     * @param list<int> $parentFolderIDs search folders with the given parent folderId
+     * @param string $path search folders by path
+     * @param list<string> $properties properties that should be included in the returned folders
+     * @param list<string> $sort Sort results by given property. For example -name sorts by name field descending, name sorts by name field ascending.
+     * @param string|\DateTimeInterface $updatedAt Search folders by exact time of latest updated. Time must be epoch time in milliseconds.
+     * @param string|\DateTimeInterface $updatedAtGte Search folders by greater than or equal to time of latest update. Can be used with updatedAtLte to create a range.
+     * @param string|\DateTimeInterface $updatedAtLte Search folders by less than or equal to time of latest update. Can be used with updatedAtGte to create a range.
      *
      * @return Page<Folder>
      *
      * @throws APIException
      */
     public function search(
-        array|FolderSearchParams $params,
-        ?RequestOptions $requestOptions = null
+        ?string $after = null,
+        ?string $before = null,
+        string|\DateTimeInterface|null $createdAt = null,
+        string|\DateTimeInterface|null $createdAtGte = null,
+        string|\DateTimeInterface|null $createdAtLte = null,
+        ?int $idGte = null,
+        ?int $idLte = null,
+        ?array $ids = null,
+        ?int $limit = null,
+        ?string $name = null,
+        ?array $parentFolderIDs = null,
+        ?string $path = null,
+        ?array $properties = null,
+        ?array $sort = null,
+        string|\DateTimeInterface|null $updatedAt = null,
+        string|\DateTimeInterface|null $updatedAtGte = null,
+        string|\DateTimeInterface|null $updatedAtLte = null,
+        ?RequestOptions $requestOptions = null,
     ): Page;
 
     /**
      * @api
      *
-     * @param array<mixed>|FolderUpdateAsyncByIDParams $params
+     * @param string $id the unique identifier of the folder to be updated
+     * @param string $name the new name for the folder, which will also update the fullPath and all children of the folder
+     * @param int $parentFolderID the ID of the new parent folder, which will move the folder and its children into the specified folder
      *
      * @throws APIException
      */
     public function updateAsyncByID(
-        array|FolderUpdateAsyncByIDParams $params,
+        string $id,
+        ?string $name = null,
+        ?int $parentFolderID = null,
         ?RequestOptions $requestOptions = null,
     ): FolderUpdateTaskLocator;
 
     /**
      * @api
      *
-     * @param array<mixed>|FolderUpdateByIDParams $params
+     * @param string $name New name. If specified the folder's name and fullPath will change. All children of the folder will be updated accordingly.
+     * @param int $parentFolderID New parent folderId. If changed, the folder and all it's children will be moved into the specified folder. parentFolderId and parentFolderPath cannot be specified at the same time.
      *
      * @throws APIException
      */
     public function updateByID(
         string $folderID,
-        array|FolderUpdateByIDParams $params,
+        ?string $name = null,
+        ?int $parentFolderID = null,
         ?RequestOptions $requestOptions = null,
     ): Folder;
 }

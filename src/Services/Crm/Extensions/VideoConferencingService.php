@@ -13,6 +13,11 @@ final class VideoConferencingService implements VideoConferencingContract
     /**
      * @api
      */
+    public VideoConferencingRawService $raw;
+
+    /**
+     * @api
+     */
     public SettingsService $settings;
 
     /**
@@ -20,6 +25,7 @@ final class VideoConferencingService implements VideoConferencingContract
      */
     public function __construct(private Client $client)
     {
+        $this->raw = new VideoConferencingRawService($client);
         $this->settings = new SettingsService($client);
     }
 }

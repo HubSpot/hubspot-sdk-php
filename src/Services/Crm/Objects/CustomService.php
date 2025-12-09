@@ -5,18 +5,12 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Crm\Objects;
 
 use HubspotSDK\AssociationSpec;
+use HubspotSDK\AssociationSpec\AssociationCategory;
 use HubspotSDK\Client;
-use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\Crm\CreatedResponseSimplePublicObject;
-use HubspotSDK\Crm\Objects\Custom\CustomCreateParams;
-use HubspotSDK\Crm\Objects\Custom\CustomDeleteParams;
-use HubspotSDK\Crm\Objects\Custom\CustomGetParams;
-use HubspotSDK\Crm\Objects\Custom\CustomListParams;
-use HubspotSDK\Crm\Objects\Custom\CustomMergeParams;
-use HubspotSDK\Crm\Objects\Custom\CustomSearchParams;
-use HubspotSDK\Crm\Objects\Custom\CustomUpdateParams;
+use HubspotSDK\Crm\Filter\Operator;
 use HubspotSDK\Crm\SimplePublicObject;
 use HubspotSDK\Crm\SimplePublicObjectWithAssociations;
 use HubspotSDK\Page;
@@ -30,6 +24,11 @@ final class CustomService implements CustomContract
     /**
      * @api
      */
+    public CustomRawService $raw;
+
+    /**
+     * @api
+     */
     public BatchService $batch;
 
     /**
@@ -37,6 +36,7 @@ final class CustomService implements CustomContract
      */
     public function __construct(private Client $client)
     {
+        $this->raw = new CustomRawService($client);
         $this->batch = new BatchService($client);
     }
 
@@ -45,33 +45,27 @@ final class CustomService implements CustomContract
      *
      * Create a CRM object with the given properties and return a copy of the object, including the ID. Documentation and examples for creating standard objects is provided.
      *
-     * @param array{
-     *   associations: list<array{
-     *     to: array<mixed>|PublicObjectID, types: list<array<mixed>|AssociationSpec>
-     *   }>,
-     *   properties: array<string,string>,
-     * }|CustomCreateParams $params
+     * @param list<array{
+     *   to: array{id: string}|PublicObjectID,
+     *   types: list<array{
+     *     associationCategory: 'HUBSPOT_DEFINED'|'INTEGRATOR_DEFINED'|'USER_DEFINED'|AssociationCategory,
+     *     associationTypeID: int,
+     *   }|AssociationSpec>,
+     * }> $associations
+     * @param array<string,string> $properties key-value pairs for setting properties for the new object
      *
      * @throws APIException
      */
     public function create(
         string $objectType,
-        array|CustomCreateParams $params,
+        array $associations,
+        array $properties,
         ?RequestOptions $requestOptions = null,
     ): CreatedResponseSimplePublicObject {
-        [$parsed, $options] = CustomCreateParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = ['associations' => $associations, 'properties' => $properties];
 
-        /** @var BaseResponse<CreatedResponseSimplePublicObject> */
-        $response = $this->client->request(
-            method: 'post',
-            path: ['crm/v3/objects/%1$s', $objectType],
-            body: (object) $parsed,
-            options: $options,
-            convert: CreatedResponseSimplePublicObject::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->create($objectType, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -81,37 +75,30 @@ final class CustomService implements CustomContract
      *
      * Perform a partial update of an Object identified by `{objectId}`or optionally a unique property value as specified by the `idProperty` query param. `{objectId}` refers to the internal object ID by default, and the `idProperty` query param refers to a property whose values are unique for the object. Provided property values will be overwritten. Read-only and non-existent properties will result in an error. Properties values can be cleared by passing an empty string.
      *
-     * @param array{
-     *   objectType: string, properties: array<string,string>, idProperty?: string
-     * }|CustomUpdateParams $params
+     * @param string $objectID Path param:
+     * @param string $objectType Path param:
+     * @param array<string,string> $properties body param: Key value pairs representing the properties of the object
+     * @param string $idProperty Query param: The name of a property whose values are unique for this object
      *
      * @throws APIException
      */
     public function update(
         string $objectID,
-        array|CustomUpdateParams $params,
+        string $objectType,
+        array $properties,
+        ?string $idProperty = null,
         ?RequestOptions $requestOptions = null,
     ): SimplePublicObject {
-        [$parsed, $options] = CustomUpdateParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $objectType = $parsed['objectType'];
-        unset($parsed['objectType']);
-        $query_params = ['idProperty'];
+        $params = [
+            'objectType' => $objectType,
+            'properties' => $properties,
+            'idProperty' => $idProperty,
+        ];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<SimplePublicObject> */
-        $response = $this->client->request(
-            method: 'patch',
-            path: ['crm/v3/objects/%1$s/%2$s', $objectType, $objectID],
-            query: array_diff_key($parsed, $query_params),
-            body: (object) array_diff_key(
-                array_diff_key($parsed, $query_params),
-                ['objectType']
-            ),
-            options: $options,
-            convert: SimplePublicObject::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->update($objectID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -121,14 +108,12 @@ final class CustomService implements CustomContract
      *
      * Read a page of objects. Control what is returned via the `properties` query param.
      *
-     * @param array{
-     *   after?: string,
-     *   archived?: bool,
-     *   associations?: list<string>,
-     *   limit?: int,
-     *   properties?: list<string>,
-     *   propertiesWithHistory?: list<string>,
-     * }|CustomListParams $params
+     * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+     * @param bool $archived whether to return only results that have been archived
+     * @param list<string> $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored.
+     * @param int $limit the maximum number of results to display per page
+     * @param list<string> $properties A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored.
+     * @param list<string> $propertiesWithHistory A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored. Usage of this parameter will reduce the maximum number of objects that can be read by a single request.
      *
      * @return Page<SimplePublicObjectWithAssociations>
      *
@@ -136,23 +121,27 @@ final class CustomService implements CustomContract
      */
     public function list(
         string $objectType,
-        array|CustomListParams $params,
+        ?string $after = null,
+        bool $archived = false,
+        ?array $associations = null,
+        int $limit = 10,
+        ?array $properties = null,
+        ?array $propertiesWithHistory = null,
         ?RequestOptions $requestOptions = null,
     ): Page {
-        [$parsed, $options] = CustomListParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = [
+            'after' => $after,
+            'archived' => $archived,
+            'associations' => $associations,
+            'limit' => $limit,
+            'properties' => $properties,
+            'propertiesWithHistory' => $propertiesWithHistory,
+        ];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<Page<SimplePublicObjectWithAssociations>> */
-        $response = $this->client->request(
-            method: 'get',
-            path: ['crm/v3/objects/%1$s', $objectType],
-            query: $parsed,
-            options: $options,
-            convert: SimplePublicObjectWithAssociations::class,
-            page: Page::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->list($objectType, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -162,29 +151,17 @@ final class CustomService implements CustomContract
      *
      * Move an Object identified by `{objectId}` to the recycling bin.
      *
-     * @param array{objectType: string}|CustomDeleteParams $params
-     *
      * @throws APIException
      */
     public function delete(
         string $objectID,
-        array|CustomDeleteParams $params,
-        ?RequestOptions $requestOptions = null,
+        string $objectType,
+        ?RequestOptions $requestOptions = null
     ): mixed {
-        [$parsed, $options] = CustomDeleteParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $objectType = $parsed['objectType'];
-        unset($parsed['objectType']);
+        $params = ['objectType' => $objectType];
 
-        /** @var BaseResponse<mixed> */
-        $response = $this->client->request(
-            method: 'delete',
-            path: ['crm/v3/objects/%1$s/%2$s', $objectType, $objectID],
-            options: $options,
-            convert: null,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->delete($objectID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -194,37 +171,39 @@ final class CustomService implements CustomContract
      *
      * Read an Object identified by `{objectId}`. `{objectId}` refers to the internal object ID by default, or optionally any unique property value as specified by the `idProperty` query param.  Control what is returned via the `properties` query param.
      *
-     * @param array{
-     *   objectType: string,
-     *   archived?: bool,
-     *   associations?: list<string>,
-     *   idProperty?: string,
-     *   properties?: list<string>,
-     *   propertiesWithHistory?: list<string>,
-     * }|CustomGetParams $params
+     * @param string $objectID Path param:
+     * @param string $objectType Path param:
+     * @param bool $archived query param: Whether to return only results that have been archived
+     * @param list<string> $associations Query param: A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored.
+     * @param string $idProperty Query param: The name of a property whose values are unique for this object
+     * @param list<string> $properties Query param: A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored.
+     * @param list<string> $propertiesWithHistory Query param: A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored.
      *
      * @throws APIException
      */
     public function get(
         string $objectID,
-        array|CustomGetParams $params,
+        string $objectType,
+        bool $archived = false,
+        ?array $associations = null,
+        ?string $idProperty = null,
+        ?array $properties = null,
+        ?array $propertiesWithHistory = null,
         ?RequestOptions $requestOptions = null,
     ): SimplePublicObjectWithAssociations {
-        [$parsed, $options] = CustomGetParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $objectType = $parsed['objectType'];
-        unset($parsed['objectType']);
+        $params = [
+            'objectType' => $objectType,
+            'archived' => $archived,
+            'associations' => $associations,
+            'idProperty' => $idProperty,
+            'properties' => $properties,
+            'propertiesWithHistory' => $propertiesWithHistory,
+        ];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<SimplePublicObjectWithAssociations> */
-        $response = $this->client->request(
-            method: 'get',
-            path: ['crm/v3/objects/%1$s/%2$s', $objectType, $objectID],
-            query: $parsed,
-            options: $options,
-            convert: SimplePublicObjectWithAssociations::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->get($objectID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -234,30 +213,24 @@ final class CustomService implements CustomContract
      *
      * Merge two objects with same type
      *
-     * @param array{
-     *   objectIDToMerge: string, primaryObjectID: string
-     * }|CustomMergeParams $params
+     * @param string $objectIDToMerge the unique identifier of the CRM object that will be merged into the primary object
+     * @param string $primaryObjectID the unique identifier of the CRM object that will remain after the merge
      *
      * @throws APIException
      */
     public function merge(
         string $objectType,
-        array|CustomMergeParams $params,
+        string $objectIDToMerge,
+        string $primaryObjectID,
         ?RequestOptions $requestOptions = null,
     ): SimplePublicObject {
-        [$parsed, $options] = CustomMergeParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = [
+            'objectIDToMerge' => $objectIDToMerge,
+            'primaryObjectID' => $primaryObjectID,
+        ];
 
-        /** @var BaseResponse<SimplePublicObject> */
-        $response = $this->client->request(
-            method: 'post',
-            path: ['crm/v3/objects/%1$s/merge', $objectType],
-            body: (object) $parsed,
-            options: $options,
-            convert: SimplePublicObject::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->merge($objectType, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -265,35 +238,46 @@ final class CustomService implements CustomContract
     /**
      * @api
      *
-     * @param array{
-     *   after: string,
-     *   filterGroups: list<array{filters: list<array<mixed>>}>,
-     *   limit: int,
-     *   properties: list<string>,
-     *   sorts: list<string>,
-     *   query?: string,
-     * }|CustomSearchParams $params
+     * @param string $after a paging cursor token for retrieving subsequent pages
+     * @param list<array{
+     *   filters: list<array{
+     *     operator: 'BETWEEN'|'CONTAINS_TOKEN'|'EQ'|'GT'|'GTE'|'HAS_PROPERTY'|'IN'|'LT'|'LTE'|'NEQ'|'NOT_CONTAINS_TOKEN'|'NOT_HAS_PROPERTY'|'NOT_IN'|Operator,
+     *     propertyName: string,
+     *     highValue?: string,
+     *     value?: string,
+     *     values?: list<string>,
+     *   }>,
+     * }> $filterGroups Up to 6 groups of filters defining additional query criteria
+     * @param int $limit the maximum results to return, up to 200 objects
+     * @param list<string> $properties a list of property names to include in the response
+     * @param list<string> $sorts specifies sorting order based on object properties
+     * @param string $query the search query string, up to 3000 characters
      *
      * @throws APIException
      */
     public function search(
         string $objectType,
-        array|CustomSearchParams $params,
+        string $after,
+        array $filterGroups,
+        int $limit,
+        array $properties,
+        array $sorts,
+        ?string $query = null,
         ?RequestOptions $requestOptions = null,
     ): CollectionResponseWithTotalSimplePublicObject {
-        [$parsed, $options] = CustomSearchParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = [
+            'after' => $after,
+            'filterGroups' => $filterGroups,
+            'limit' => $limit,
+            'properties' => $properties,
+            'sorts' => $sorts,
+            'query' => $query,
+        ];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<CollectionResponseWithTotalSimplePublicObject> */
-        $response = $this->client->request(
-            method: 'post',
-            path: ['crm/v3/objects/%1$s/search', $objectType],
-            body: (object) $parsed,
-            options: $options,
-            convert: CollectionResponseWithTotalSimplePublicObject::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->search($objectType, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }

@@ -6,14 +6,9 @@ namespace HubspotSDK\Services\Conversations;
 
 use HubspotSDK\Client;
 use HubspotSDK\Conversations\PublicThread;
-use HubspotSDK\Conversations\Threads\ThreadGetParams;
-use HubspotSDK\Conversations\Threads\ThreadListParams;
 use HubspotSDK\Conversations\Threads\ThreadListParams\Association;
-use HubspotSDK\Conversations\Threads\ThreadUpdateParams;
 use HubspotSDK\Conversations\Threads\ThreadUpdateParams\Status;
-use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Core\Util;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Conversations\ThreadsContract;
@@ -21,39 +16,39 @@ use HubspotSDK\ServiceContracts\Conversations\ThreadsContract;
 final class ThreadsService implements ThreadsContract
 {
     /**
+     * @api
+     */
+    public ThreadsRawService $raw;
+
+    /**
      * @internal
      */
-    public function __construct(private Client $client) {}
+    public function __construct(private Client $client)
+    {
+        $this->raw = new ThreadsRawService($client);
+    }
 
     /**
      * @api
      *
-     * @param array{
-     *   archived?: bool, status?: 'CLOSED'|'OPEN'|Status
-     * }|ThreadUpdateParams $params
+     * @param int $threadID Path param:
+     * @param bool $archived Body param:
+     * @param 'CLOSED'|'OPEN'|Status $status Body param:
      *
      * @throws APIException
      */
     public function update(
         int $threadID,
-        array|ThreadUpdateParams $params,
+        ?bool $archived = null,
+        string|Status|null $status = null,
         ?RequestOptions $requestOptions = null,
     ): PublicThread {
-        [$parsed, $options] = ThreadUpdateParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $query_params = ['archived'];
+        $params = ['archived' => $archived, 'status' => $status];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<PublicThread> */
-        $response = $this->client->request(
-            method: 'patch',
-            path: ['conversations/v3/conversations/threads/%1$s', $threadID],
-            query: array_diff_key($parsed, $query_params),
-            body: (object) array_diff_key($parsed, $query_params),
-            options: $options,
-            convert: PublicThread::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->update($threadID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -61,46 +56,44 @@ final class ThreadsService implements ThreadsContract
     /**
      * @api
      *
-     * @param array{
-     *   after?: string,
-     *   archived?: bool,
-     *   associatedContactID?: int,
-     *   association?: list<'TICKET'|Association>,
-     *   inboxID?: list<int>,
-     *   latestMessageTimestampAfter?: string|\DateTimeInterface,
-     *   limit?: int,
-     *   property?: string,
-     *   sort?: list<string>,
-     *   threadStatus?: string,
-     * }|ThreadListParams $params
+     * @param list<'TICKET'|Association> $association
+     * @param list<int> $inboxID
+     * @param list<string> $sort
      *
      * @return Page<PublicThread>
      *
      * @throws APIException
      */
     public function list(
-        array|ThreadListParams $params,
-        ?RequestOptions $requestOptions = null
+        ?string $after = null,
+        ?bool $archived = null,
+        ?int $associatedContactID = null,
+        ?array $association = null,
+        ?array $inboxID = null,
+        string|\DateTimeInterface|null $latestMessageTimestampAfter = null,
+        ?int $limit = null,
+        ?string $property = null,
+        ?array $sort = null,
+        ?string $threadStatus = null,
+        ?RequestOptions $requestOptions = null,
     ): Page {
-        [$parsed, $options] = ThreadListParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = [
+            'after' => $after,
+            'archived' => $archived,
+            'associatedContactID' => $associatedContactID,
+            'association' => $association,
+            'inboxID' => $inboxID,
+            'latestMessageTimestampAfter' => $latestMessageTimestampAfter,
+            'limit' => $limit,
+            'property' => $property,
+            'sort' => $sort,
+            'threadStatus' => $threadStatus,
+        ];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<Page<PublicThread>> */
-        $response = $this->client->request(
-            method: 'get',
-            path: 'conversations/v3/conversations/threads',
-            query: Util::array_transform_keys(
-                $parsed,
-                [
-                    'associatedContactID' => 'associatedContactId', 'inboxID' => 'inboxId',
-                ],
-            ),
-            options: $options,
-            convert: PublicThread::class,
-            page: Page::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->list(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -114,13 +107,8 @@ final class ThreadsService implements ThreadsContract
         int $threadID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        /** @var BaseResponse<mixed> */
-        $response = $this->client->request(
-            method: 'delete',
-            path: ['conversations/v3/conversations/threads/%1$s', $threadID],
-            options: $requestOptions,
-            convert: null,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->delete($threadID, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -128,32 +116,27 @@ final class ThreadsService implements ThreadsContract
     /**
      * @api
      *
-     * @param array{
-     *   archived?: bool,
-     *   association?: list<'TICKET'|ThreadGetParams\Association>,
-     *   property?: string,
-     * }|ThreadGetParams $params
+     * @param list<'TICKET'|\HubspotSDK\Conversations\Threads\ThreadGetParams\Association> $association
      *
      * @throws APIException
      */
     public function get(
         int $threadID,
-        array|ThreadGetParams $params,
+        ?bool $archived = null,
+        ?array $association = null,
+        ?string $property = null,
         ?RequestOptions $requestOptions = null,
     ): PublicThread {
-        [$parsed, $options] = ThreadGetParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = [
+            'archived' => $archived,
+            'association' => $association,
+            'property' => $property,
+        ];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<PublicThread> */
-        $response = $this->client->request(
-            method: 'get',
-            path: ['conversations/v3/conversations/threads/%1$s', $threadID],
-            query: $parsed,
-            options: $options,
-            convert: PublicThread::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->get($threadID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }

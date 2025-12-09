@@ -6,8 +6,7 @@ namespace HubspotSDK\ServiceContracts\Crm\Objects;
 
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\Objects\DealSplits\BatchResponseDealToDealSplits;
-use HubspotSDK\Crm\Objects\DealSplits\DealSplitBatchReadParams;
-use HubspotSDK\Crm\Objects\DealSplits\DealSplitBatchUpsertParams;
+use HubspotSDK\PublicObjectID;
 use HubspotSDK\RequestOptions;
 
 interface DealSplitsContract
@@ -15,24 +14,26 @@ interface DealSplitsContract
     /**
      * @api
      *
-     * @param array<mixed>|DealSplitBatchReadParams $params
+     * @param list<array{id: string}|PublicObjectID> $inputs
      *
      * @throws APIException
      */
     public function batchRead(
-        array|DealSplitBatchReadParams $params,
-        ?RequestOptions $requestOptions = null,
+        array $inputs,
+        ?RequestOptions $requestOptions = null
     ): BatchResponseDealToDealSplits;
 
     /**
      * @api
      *
-     * @param array<mixed>|DealSplitBatchUpsertParams $params
+     * @param list<array{
+     *   id: int, splits: list<array{ownerID: int, percentage: float}>
+     * }> $inputs
      *
      * @throws APIException
      */
     public function batchUpsert(
-        array|DealSplitBatchUpsertParams $params,
-        ?RequestOptions $requestOptions = null,
+        array $inputs,
+        ?RequestOptions $requestOptions = null
     ): BatchResponseDealToDealSplits;
 }

@@ -5,17 +5,9 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Crm\Lists;
 
 use HubspotSDK\Client;
-use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\Lists\APICollectionResponseRecordListMembershipNoPaging;
 use HubspotSDK\Crm\Lists\JoinTimeAndRecordID;
-use HubspotSDK\Crm\Lists\Memberships\MembershipAddAllFromListParams;
-use HubspotSDK\Crm\Lists\Memberships\MembershipAddAndRemoveParams;
-use HubspotSDK\Crm\Lists\Memberships\MembershipAddParams;
-use HubspotSDK\Crm\Lists\Memberships\MembershipGetListsParams;
-use HubspotSDK\Crm\Lists\Memberships\MembershipGetPageOrderedByAddedToListDateParams;
-use HubspotSDK\Crm\Lists\Memberships\MembershipListParams;
-use HubspotSDK\Crm\Lists\Memberships\MembershipRemoveParams;
 use HubspotSDK\Crm\Lists\MembershipsUpdateResponse;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
@@ -24,9 +16,17 @@ use HubspotSDK\ServiceContracts\Crm\Lists\MembershipsContract;
 final class MembershipsService implements MembershipsContract
 {
     /**
+     * @api
+     */
+    public MembershipsRawService $raw;
+
+    /**
      * @internal
      */
-    public function __construct(private Client $client) {}
+    public function __construct(private Client $client)
+    {
+        $this->raw = new MembershipsRawService($client);
+    }
 
     /**
      * @api
@@ -37,9 +37,14 @@ final class MembershipsService implements MembershipsContract
      *
      * The `after` offset parameter will take precedence over the `before` offset in a case where both are provided.
      *
-     * @param array{
-     *   after?: string, before?: string, limit?: int
-     * }|MembershipListParams $params
+     * @param string $listID the **ILS ID** of the list
+     * @param string $after The paging offset token for the page that comes `after` the previously requested records.
+     *
+     * If provided, then the records in the response will be the records following the offset, sorted in *ascending* order. Takes precedence over the `before` offset.
+     * @param string $before The paging offset token for the page that comes `before` the previously requested records.
+     *
+     * If provided, then the records in the response will be the records preceding the offset, sorted in *descending* order.
+     * @param int $limit The number of records to return in the response. The maximum `limit` is 250.
      *
      * @return Page<JoinTimeAndRecordID>
      *
@@ -47,23 +52,17 @@ final class MembershipsService implements MembershipsContract
      */
     public function list(
         string $listID,
-        array|MembershipListParams $params,
+        ?string $after = null,
+        ?string $before = null,
+        int $limit = 100,
         ?RequestOptions $requestOptions = null,
     ): Page {
-        [$parsed, $options] = MembershipListParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = ['after' => $after, 'before' => $before, 'limit' => $limit];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<Page<JoinTimeAndRecordID>> */
-        $response = $this->client->request(
-            method: 'get',
-            path: ['crm/v3/lists/%1$s/memberships', $listID],
-            query: $parsed,
-            options: $options,
-            convert: JoinTimeAndRecordID::class,
-            page: Page::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->list($listID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -75,28 +74,20 @@ final class MembershipsService implements MembershipsContract
      *
      * This endpoint only works for lists that have a `processingType` of `MANUAL` or `SNAPSHOT`.
      *
-     * @param array{body: list<string>}|MembershipAddParams $params
+     * @param string $listID the **ILS ID** of the `MANUAL` or `SNAPSHOT` list
+     * @param list<string> $body
      *
      * @throws APIException
      */
     public function add(
         string $listID,
-        array|MembershipAddParams $params,
-        ?RequestOptions $requestOptions = null,
+        array $body,
+        ?RequestOptions $requestOptions = null
     ): MembershipsUpdateResponse {
-        [$parsed, $options] = MembershipAddParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = ['body' => $body];
 
-        /** @var BaseResponse<MembershipsUpdateResponse> */
-        $response = $this->client->request(
-            method: 'put',
-            path: ['crm/v3/lists/%1$s/memberships/add', $listID],
-            body: $parsed['body'],
-            options: $options,
-            convert: MembershipsUpdateResponse::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->add($listID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -110,31 +101,20 @@ final class MembershipsService implements MembershipsContract
      *
      * This endpoint only supports a `sourceListId` for lists with less than 100,000 memberships.
      *
-     * @param array{listID: string}|MembershipAddAllFromListParams $params
+     * @param string $sourceListID the **ILS ID** of the *source list* to grab the records from, which are then added to the *destination list*
+     * @param string $listID the **ILS ID** of the `MANUAL` or `SNAPSHOT` *destination list*, which the *source list* records are added to
      *
      * @throws APIException
      */
     public function addAllFromList(
         string $sourceListID,
-        array|MembershipAddAllFromListParams $params,
-        ?RequestOptions $requestOptions = null,
+        string $listID,
+        ?RequestOptions $requestOptions = null
     ): mixed {
-        [$parsed, $options] = MembershipAddAllFromListParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $listID = $parsed['listID'];
-        unset($parsed['listID']);
+        $params = ['listID' => $listID];
 
-        /** @var BaseResponse<mixed> */
-        $response = $this->client->request(
-            method: 'put',
-            path: [
-                'crm/v3/lists/%1$s/memberships/add-from/%2$s', $listID, $sourceListID,
-            ],
-            options: $options,
-            convert: null,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->addAllFromList($sourceListID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -146,30 +126,25 @@ final class MembershipsService implements MembershipsContract
      *
      * This endpoint only works for lists that have a `processingType` of `MANUAL` or `SNAPSHOT`.
      *
-     * @param array{
-     *   recordIDsToAdd: list<string>, recordIDsToRemove: list<string>
-     * }|MembershipAddAndRemoveParams $params
+     * @param string $listID the **ILS ID** of the `MANUAL` or `SNAPSHOT` list
+     * @param list<string> $recordIDsToAdd
+     * @param list<string> $recordIDsToRemove
      *
      * @throws APIException
      */
     public function addAndRemove(
         string $listID,
-        array|MembershipAddAndRemoveParams $params,
+        array $recordIDsToAdd,
+        array $recordIDsToRemove,
         ?RequestOptions $requestOptions = null,
     ): MembershipsUpdateResponse {
-        [$parsed, $options] = MembershipAddAndRemoveParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = [
+            'recordIDsToAdd' => $recordIDsToAdd,
+            'recordIDsToRemove' => $recordIDsToRemove,
+        ];
 
-        /** @var BaseResponse<MembershipsUpdateResponse> */
-        $response = $this->client->request(
-            method: 'put',
-            path: ['crm/v3/lists/%1$s/memberships/add-and-remove', $listID],
-            body: (object) $parsed,
-            options: $options,
-            convert: MembershipsUpdateResponse::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->addAndRemove($listID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -179,31 +154,20 @@ final class MembershipsService implements MembershipsContract
      *
      * For given record provide lists this record is member of.
      *
-     * @param array{objectTypeID: string}|MembershipGetListsParams $params
+     * @param string $recordID Id of the record
+     * @param string $objectTypeID Object type id of the record
      *
      * @throws APIException
      */
     public function getLists(
         string $recordID,
-        array|MembershipGetListsParams $params,
+        string $objectTypeID,
         ?RequestOptions $requestOptions = null,
     ): APICollectionResponseRecordListMembershipNoPaging {
-        [$parsed, $options] = MembershipGetListsParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $objectTypeID = $parsed['objectTypeID'];
-        unset($parsed['objectTypeID']);
+        $params = ['objectTypeID' => $objectTypeID];
 
-        /** @var BaseResponse<APICollectionResponseRecordListMembershipNoPaging> */
-        $response = $this->client->request(
-            method: 'get',
-            path: [
-                'crm/v3/lists/records/%1$s/%2$s/memberships', $objectTypeID, $recordID,
-            ],
-            options: $options,
-            convert: APICollectionResponseRecordListMembershipNoPaging::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->getLists($recordID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -217,9 +181,14 @@ final class MembershipsService implements MembershipsContract
      *
      * The `after` offset parameter will take precedence over the `before` offset in a case where both are provided.
      *
-     * @param array{
-     *   after?: string, before?: string, limit?: int
-     * }|MembershipGetPageOrderedByAddedToListDateParams $params
+     * @param string $listID the **ILS ID** of the list
+     * @param string $after The paging offset token for the page that comes `after` the previously requested records.
+     *
+     * If provided, then the records in the response will be the records following the offset, sorted in *ascending* order. Takes precedence over the `before` offset.
+     * @param string $before The paging offset token for the page that comes `before` the previously requested records.
+     *
+     * If provided, then the records in the response will be the records preceding the offset, sorted in *descending* order.
+     * @param int $limit The number of records to return in the response. The maximum `limit` is 250.
      *
      * @return Page<JoinTimeAndRecordID>
      *
@@ -227,23 +196,17 @@ final class MembershipsService implements MembershipsContract
      */
     public function getPageOrderedByAddedToListDate(
         string $listID,
-        array|MembershipGetPageOrderedByAddedToListDateParams $params,
+        ?string $after = null,
+        ?string $before = null,
+        int $limit = 100,
         ?RequestOptions $requestOptions = null,
     ): Page {
-        [$parsed, $options] = MembershipGetPageOrderedByAddedToListDateParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = ['after' => $after, 'before' => $before, 'limit' => $limit];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<Page<JoinTimeAndRecordID>> */
-        $response = $this->client->request(
-            method: 'get',
-            path: ['crm/v3/lists/%1$s/memberships/join-order', $listID],
-            query: $parsed,
-            options: $options,
-            convert: JoinTimeAndRecordID::class,
-            page: Page::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->getPageOrderedByAddedToListDate($listID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -255,28 +218,20 @@ final class MembershipsService implements MembershipsContract
      *
      * This endpoint only works for lists that have a `processingType` of `MANUAL` or `SNAPSHOT`.
      *
-     * @param array{body: list<string>}|MembershipRemoveParams $params
+     * @param string $listID the **ILS ID** of the `MANUAL` or `SNAPSHOT` list
+     * @param list<string> $body
      *
      * @throws APIException
      */
     public function remove(
         string $listID,
-        array|MembershipRemoveParams $params,
-        ?RequestOptions $requestOptions = null,
+        array $body,
+        ?RequestOptions $requestOptions = null
     ): MembershipsUpdateResponse {
-        [$parsed, $options] = MembershipRemoveParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = ['body' => $body];
 
-        /** @var BaseResponse<MembershipsUpdateResponse> */
-        $response = $this->client->request(
-            method: 'put',
-            path: ['crm/v3/lists/%1$s/memberships/remove', $listID],
-            body: $parsed['body'],
-            options: $options,
-            convert: MembershipsUpdateResponse::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->remove($listID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -290,19 +245,16 @@ final class MembershipsService implements MembershipsContract
      *
      * This endpoint only supports lists that have less than 100,000 memberships.
      *
+     * @param string $listID the **ILS ID** of the `MANUAL` or `SNAPSHOT` list
+     *
      * @throws APIException
      */
     public function removeAll(
         string $listID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        /** @var BaseResponse<mixed> */
-        $response = $this->client->request(
-            method: 'delete',
-            path: ['crm/v3/lists/%1$s/memberships', $listID],
-            options: $requestOptions,
-            convert: null,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->removeAll($listID, requestOptions: $requestOptions);
 
         return $response->parse();
     }

@@ -5,23 +5,21 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Crm;
 
 use HubspotSDK\Client;
-use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\Pipelines\CollectionResponsePipelineNoPaging;
 use HubspotSDK\Crm\Pipelines\CollectionResponsePublicAuditInfoNoPaging;
 use HubspotSDK\Crm\Pipelines\Pipeline;
-use HubspotSDK\Crm\Pipelines\PipelineCreateParams;
-use HubspotSDK\Crm\Pipelines\PipelineDeleteParams;
-use HubspotSDK\Crm\Pipelines\PipelineGetAuditParams;
-use HubspotSDK\Crm\Pipelines\PipelineGetParams;
-use HubspotSDK\Crm\Pipelines\PipelineReplaceParams;
-use HubspotSDK\Crm\Pipelines\PipelineUpdateParams;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\PipelinesContract;
 use HubspotSDK\Services\Crm\Pipelines\StagesService;
 
 final class PipelinesService implements PipelinesContract
 {
+    /**
+     * @api
+     */
+    public PipelinesRawService $raw;
+
     /**
      * @api
      */
@@ -32,6 +30,7 @@ final class PipelinesService implements PipelinesContract
      */
     public function __construct(private Client $client)
     {
+        $this->raw = new PipelinesRawService($client);
         $this->stages = new StagesService($client);
     }
 
@@ -40,34 +39,28 @@ final class PipelinesService implements PipelinesContract
      *
      * Create a new pipeline with the provided property values. The entire pipeline object, including its unique ID, will be returned in the response.
      *
-     * @param array{
-     *   displayOrder: int,
-     *   label: string,
-     *   stages: list<array{
-     *     displayOrder: int, label: string, metadata: array<string,string>
-     *   }>,
-     * }|PipelineCreateParams $params
+     * @param string $objectType The object type of the pipeline being created (ex. deals or tickets)
+     * @param int $displayOrder The order for displaying this pipeline. If two pipelines have a matching `displayOrder`, they will be sorted alphabetically by label.
+     * @param string $label A unique label used to organize pipelines in HubSpot's UI
+     * @param list<array{
+     *   displayOrder: int, label: string, metadata: array<string,string>
+     * }> $stages Pipeline stage inputs used to create the new or replacement pipeline
      *
      * @throws APIException
      */
     public function create(
         string $objectType,
-        array|PipelineCreateParams $params,
+        int $displayOrder,
+        string $label,
+        array $stages,
         ?RequestOptions $requestOptions = null,
     ): Pipeline {
-        [$parsed, $options] = PipelineCreateParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = [
+            'displayOrder' => $displayOrder, 'label' => $label, 'stages' => $stages,
+        ];
 
-        /** @var BaseResponse<Pipeline> */
-        $response = $this->client->request(
-            method: 'post',
-            path: ['crm/v3/pipelines/%1$s', $objectType],
-            body: (object) $parsed,
-            options: $options,
-            convert: Pipeline::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->create($objectType, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -77,44 +70,39 @@ final class PipelinesService implements PipelinesContract
      *
      * Perform a partial update of the pipeline identified by `{pipelineId}`. The updated pipeline will be returned in the response.
      *
-     * @param array{
-     *   objectType: string,
-     *   validateDealStageUsagesBeforeDelete?: bool,
-     *   validateReferencesBeforeDelete?: bool,
-     *   archived?: bool,
-     *   displayOrder?: int,
-     *   label?: string,
-     * }|PipelineUpdateParams $params
+     * @param string $pipelineID path param: The unique identifier of the pipeline to be updated
+     * @param string $objectType Path param: The object type of the pipeline being updated (ex. deals or tickets)
+     * @param bool $validateDealStageUsagesBeforeDelete query param: Indicates whether to validate deal stage usages before deleting the pipeline
+     * @param bool $validateReferencesBeforeDelete query param: Indicates whether to validate references before deleting the pipeline
+     * @param bool $archived Body param: Whether the pipeline is archived. This property should only be provided when restoring an archived pipeline. If it's provided in any other call, the request will fail and a `400 Bad Request` will be returned.
+     * @param int $displayOrder Body param: The order for displaying this pipeline. If two pipelines have a matching `displayOrder`, they will be sorted alphabetically by label.
+     * @param string $label Body param: A unique label used to organize pipelines in HubSpot's UI
      *
      * @throws APIException
      */
     public function update(
         string $pipelineID,
-        array|PipelineUpdateParams $params,
+        string $objectType,
+        bool $validateDealStageUsagesBeforeDelete = false,
+        bool $validateReferencesBeforeDelete = false,
+        ?bool $archived = null,
+        ?int $displayOrder = null,
+        ?string $label = null,
         ?RequestOptions $requestOptions = null,
     ): Pipeline {
-        [$parsed, $options] = PipelineUpdateParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $objectType = $parsed['objectType'];
-        unset($parsed['objectType']);
-        $query_params = array_flip(
-            ['validateDealStageUsagesBeforeDelete', 'validateReferencesBeforeDelete']
-        );
+        $params = [
+            'objectType' => $objectType,
+            'validateDealStageUsagesBeforeDelete' => $validateDealStageUsagesBeforeDelete,
+            'validateReferencesBeforeDelete' => $validateReferencesBeforeDelete,
+            'archived' => $archived,
+            'displayOrder' => $displayOrder,
+            'label' => $label,
+        ];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<Pipeline> */
-        $response = $this->client->request(
-            method: 'patch',
-            path: ['crm/v3/pipelines/%1$s/%2$s', $objectType, $pipelineID],
-            query: array_diff_key($parsed, $query_params),
-            body: (object) array_diff_key(
-                array_diff_key($parsed, $query_params),
-                ['objectType']
-            ),
-            options: $options,
-            convert: Pipeline::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->update($pipelineID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -124,19 +112,16 @@ final class PipelinesService implements PipelinesContract
      *
      * Return all pipelines for the object type specified by `{objectType}`.
      *
+     * @param string $objectType The object type of the pipelines being retrieved (ex. deals or tickets)
+     *
      * @throws APIException
      */
     public function list(
         string $objectType,
         ?RequestOptions $requestOptions = null
     ): CollectionResponsePipelineNoPaging {
-        /** @var BaseResponse<CollectionResponsePipelineNoPaging> */
-        $response = $this->client->request(
-            method: 'get',
-            path: ['crm/v3/pipelines/%1$s', $objectType],
-            options: $requestOptions,
-            convert: CollectionResponsePipelineNoPaging::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->list($objectType, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -146,34 +131,30 @@ final class PipelinesService implements PipelinesContract
      *
      * Delete a pipeline identified by its unique pipelineId
      *
-     * @param array{
-     *   objectType: string,
-     *   validateDealStageUsagesBeforeDelete?: bool,
-     *   validateReferencesBeforeDelete?: bool,
-     * }|PipelineDeleteParams $params
+     * @param string $pipelineID path param: The unique identifier of the pipeline to be deleted
+     * @param string $objectType Path param: The object type of the pipeline being deleted (ex. deals or tickets)
+     * @param bool $validateDealStageUsagesBeforeDelete query param: Indicates whether to validate deal stage usages before deleting the pipeline
+     * @param bool $validateReferencesBeforeDelete query param: Indicates whether to validate references before deleting the pipeline
      *
      * @throws APIException
      */
     public function delete(
         string $pipelineID,
-        array|PipelineDeleteParams $params,
+        string $objectType,
+        bool $validateDealStageUsagesBeforeDelete = false,
+        bool $validateReferencesBeforeDelete = false,
         ?RequestOptions $requestOptions = null,
     ): mixed {
-        [$parsed, $options] = PipelineDeleteParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $objectType = $parsed['objectType'];
-        unset($parsed['objectType']);
+        $params = [
+            'objectType' => $objectType,
+            'validateDealStageUsagesBeforeDelete' => $validateDealStageUsagesBeforeDelete,
+            'validateReferencesBeforeDelete' => $validateReferencesBeforeDelete,
+        ];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<mixed> */
-        $response = $this->client->request(
-            method: 'delete',
-            path: ['crm/v3/pipelines/%1$s/%2$s', $objectType, $pipelineID],
-            query: $parsed,
-            options: $options,
-            convert: null,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->delete($pipelineID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -183,29 +164,20 @@ final class PipelinesService implements PipelinesContract
      *
      * Return a single pipeline object identified by its unique `{pipelineId}`.
      *
-     * @param array{objectType: string}|PipelineGetParams $params
+     * @param string $pipelineID the unique identifier of the pipeline to be retrieved
+     * @param string $objectType The object type of the pipeline being retrieved (ex. deals or tickets)
      *
      * @throws APIException
      */
     public function get(
         string $pipelineID,
-        array|PipelineGetParams $params,
+        string $objectType,
         ?RequestOptions $requestOptions = null,
     ): Pipeline {
-        [$parsed, $options] = PipelineGetParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $objectType = $parsed['objectType'];
-        unset($parsed['objectType']);
+        $params = ['objectType' => $objectType];
 
-        /** @var BaseResponse<Pipeline> */
-        $response = $this->client->request(
-            method: 'get',
-            path: ['crm/v3/pipelines/%1$s/%2$s', $objectType, $pipelineID],
-            options: $options,
-            convert: Pipeline::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->get($pipelineID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -215,29 +187,20 @@ final class PipelinesService implements PipelinesContract
      *
      * Return a reverse chronological list of all mutations that have occurred on the pipeline identified by `{pipelineId}`.
      *
-     * @param array{objectType: string}|PipelineGetAuditParams $params
+     * @param string $pipelineID the unique identifier for the pipeline whose audit history is being retrieved
+     * @param string $objectType The object type of the pipeline audit being retrieved (ex. deals or tickets)
      *
      * @throws APIException
      */
     public function getAudit(
         string $pipelineID,
-        array|PipelineGetAuditParams $params,
+        string $objectType,
         ?RequestOptions $requestOptions = null,
     ): CollectionResponsePublicAuditInfoNoPaging {
-        [$parsed, $options] = PipelineGetAuditParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $objectType = $parsed['objectType'];
-        unset($parsed['objectType']);
+        $params = ['objectType' => $objectType];
 
-        /** @var BaseResponse<CollectionResponsePublicAuditInfoNoPaging> */
-        $response = $this->client->request(
-            method: 'get',
-            path: ['crm/v3/pipelines/%1$s/%2$s/audit', $objectType, $pipelineID],
-            options: $options,
-            convert: CollectionResponsePublicAuditInfoNoPaging::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->getAudit($pipelineID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -247,46 +210,41 @@ final class PipelinesService implements PipelinesContract
      *
      * Replace all properties of an existing pipeline with the provided values.
      *
-     * @param array{
-     *   objectType: string,
-     *   displayOrder: int,
-     *   label: string,
-     *   stages: list<array{
-     *     displayOrder: int, label: string, metadata: array<string,string>
-     *   }>,
-     *   validateDealStageUsagesBeforeDelete?: bool,
-     *   validateReferencesBeforeDelete?: bool,
-     * }|PipelineReplaceParams $params
+     * @param string $pipelineID path param: The unique identifier of the pipeline to be replaced
+     * @param string $objectType Path param: The object type of the pipeline being replaced (ex. deals or tickets)
+     * @param int $displayOrder Body param: The order for displaying this pipeline. If two pipelines have a matching `displayOrder`, they will be sorted alphabetically by label.
+     * @param string $label Body param: A unique label used to organize pipelines in HubSpot's UI
+     * @param list<array{
+     *   displayOrder: int, label: string, metadata: array<string,string>
+     * }> $stages Body param: Pipeline stage inputs used to create the new or replacement pipeline
+     * @param bool $validateDealStageUsagesBeforeDelete query param: Indicates whether to validate deal stage usages before deleting the pipeline
+     * @param bool $validateReferencesBeforeDelete query param: Indicates whether to validate references before deleting the pipeline
      *
      * @throws APIException
      */
     public function replace(
         string $pipelineID,
-        array|PipelineReplaceParams $params,
+        string $objectType,
+        int $displayOrder,
+        string $label,
+        array $stages,
+        bool $validateDealStageUsagesBeforeDelete = false,
+        bool $validateReferencesBeforeDelete = false,
         ?RequestOptions $requestOptions = null,
     ): Pipeline {
-        [$parsed, $options] = PipelineReplaceParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $objectType = $parsed['objectType'];
-        unset($parsed['objectType']);
-        $query_params = array_flip(
-            ['validateDealStageUsagesBeforeDelete', 'validateReferencesBeforeDelete']
-        );
+        $params = [
+            'objectType' => $objectType,
+            'displayOrder' => $displayOrder,
+            'label' => $label,
+            'stages' => $stages,
+            'validateDealStageUsagesBeforeDelete' => $validateDealStageUsagesBeforeDelete,
+            'validateReferencesBeforeDelete' => $validateReferencesBeforeDelete,
+        ];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<Pipeline> */
-        $response = $this->client->request(
-            method: 'put',
-            path: ['crm/v3/pipelines/%1$s/%2$s', $objectType, $pipelineID],
-            query: array_diff_key($parsed, $query_params),
-            body: (object) array_diff_key(
-                array_diff_key($parsed, $query_params),
-                ['objectType']
-            ),
-            options: $options,
-            convert: Pipeline::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->replace($pipelineID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }

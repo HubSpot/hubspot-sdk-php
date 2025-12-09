@@ -46,11 +46,9 @@ final class DefinitionsTest extends TestCase
             ->definitions
             ->createLabel(
                 'toObjectType',
-                [
-                    'fromObjectType' => 'fromObjectType',
-                    'label' => 'label',
-                    'name' => 'name',
-                ],
+                fromObjectType: 'fromObjectType',
+                label: 'label',
+                name: 'name',
             )
         ;
 
@@ -77,12 +75,10 @@ final class DefinitionsTest extends TestCase
             ->definitions
             ->createLabel(
                 'toObjectType',
-                [
-                    'fromObjectType' => 'fromObjectType',
-                    'label' => 'label',
-                    'name' => 'name',
-                    'inverseLabel' => 'inverseLabel',
-                ],
+                fromObjectType: 'fromObjectType',
+                label: 'label',
+                name: 'name',
+                inverseLabel: 'inverseLabel',
             )
         ;
 
@@ -109,7 +105,8 @@ final class DefinitionsTest extends TestCase
             ->definitions
             ->deleteLabel(
                 0,
-                ['fromObjectType' => 'fromObjectType', 'toObjectType' => 'toObjectType'],
+                fromObjectType: 'fromObjectType',
+                toObjectType: 'toObjectType'
             )
         ;
 
@@ -133,7 +130,8 @@ final class DefinitionsTest extends TestCase
             ->definitions
             ->deleteLabel(
                 0,
-                ['fromObjectType' => 'fromObjectType', 'toObjectType' => 'toObjectType'],
+                fromObjectType: 'fromObjectType',
+                toObjectType: 'toObjectType'
             )
         ;
 
@@ -155,7 +153,7 @@ final class DefinitionsTest extends TestCase
             ->schema
             ->v4
             ->definitions
-            ->listLabels('toObjectType', ['fromObjectType' => 'fromObjectType'])
+            ->listLabels('toObjectType', fromObjectType: 'fromObjectType')
         ;
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -179,7 +177,7 @@ final class DefinitionsTest extends TestCase
             ->schema
             ->v4
             ->definitions
-            ->listLabels('toObjectType', ['fromObjectType' => 'fromObjectType'])
+            ->listLabels('toObjectType', fromObjectType: 'fromObjectType')
         ;
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -205,11 +203,9 @@ final class DefinitionsTest extends TestCase
             ->definitions
             ->updateLabel(
                 'toObjectType',
-                [
-                    'fromObjectType' => 'fromObjectType',
-                    'associationTypeID' => 0,
-                    'label' => 'label',
-                ],
+                fromObjectType: 'fromObjectType',
+                associationTypeID: 0,
+                label: 'label',
             )
         ;
 
@@ -233,12 +229,10 @@ final class DefinitionsTest extends TestCase
             ->definitions
             ->updateLabel(
                 'toObjectType',
-                [
-                    'fromObjectType' => 'fromObjectType',
-                    'associationTypeID' => 0,
-                    'label' => 'label',
-                    'inverseLabel' => 'inverseLabel',
-                ],
+                fromObjectType: 'fromObjectType',
+                associationTypeID: 0,
+                label: 'label',
+                inverseLabel: 'inverseLabel',
             )
         ;
 

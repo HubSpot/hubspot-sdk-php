@@ -43,20 +43,18 @@ final class ObjectsTest extends TestCase
 
         $result = $this->client->crm->objects->objects->create(
             'objectType',
-            [
-                'associations' => [
-                    [
-                        'to' => ['id' => '37295'],
-                        'types' => [
-                            [
-                                'associationCategory' => 'HUBSPOT_DEFINED',
-                                'associationTypeID' => 0,
-                            ],
+            associations: [
+                [
+                    'to' => ['id' => '37295'],
+                    'types' => [
+                        [
+                            'associationCategory' => 'HUBSPOT_DEFINED',
+                            'associationTypeID' => 0,
                         ],
                     ],
                 ],
-                'properties' => ['foo' => 'string'],
             ],
+            properties: ['foo' => 'string'],
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -72,20 +70,18 @@ final class ObjectsTest extends TestCase
 
         $result = $this->client->crm->objects->objects->create(
             'objectType',
-            [
-                'associations' => [
-                    [
-                        'to' => ['id' => '37295'],
-                        'types' => [
-                            [
-                                'associationCategory' => 'HUBSPOT_DEFINED',
-                                'associationTypeID' => 0,
-                            ],
+            associations: [
+                [
+                    'to' => ['id' => '37295'],
+                    'types' => [
+                        [
+                            'associationCategory' => 'HUBSPOT_DEFINED',
+                            'associationTypeID' => 0,
                         ],
                     ],
                 ],
-                'properties' => ['foo' => 'string'],
             ],
+            properties: ['foo' => 'string'],
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -101,7 +97,8 @@ final class ObjectsTest extends TestCase
 
         $result = $this->client->crm->objects->objects->update(
             'objectId',
-            ['objectType' => 'objectType', 'properties' => ['foo' => 'string']],
+            objectType: 'objectType',
+            properties: ['foo' => 'string']
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -117,11 +114,9 @@ final class ObjectsTest extends TestCase
 
         $result = $this->client->crm->objects->objects->update(
             'objectId',
-            [
-                'objectType' => 'objectType',
-                'properties' => ['foo' => 'string'],
-                'idProperty' => 'idProperty',
-            ],
+            objectType: 'objectType',
+            properties: ['foo' => 'string'],
+            idProperty: 'idProperty',
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -135,7 +130,7 @@ final class ObjectsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->objects->objects->list('objectType', []);
+        $result = $this->client->crm->objects->objects->list('objectType');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(Page::class, $result);
@@ -150,7 +145,7 @@ final class ObjectsTest extends TestCase
 
         $result = $this->client->crm->objects->objects->delete(
             'objectId',
-            ['objectType' => 'objectType']
+            objectType: 'objectType'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -166,7 +161,7 @@ final class ObjectsTest extends TestCase
 
         $result = $this->client->crm->objects->objects->delete(
             'objectId',
-            ['objectType' => 'objectType']
+            objectType: 'objectType'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -182,7 +177,7 @@ final class ObjectsTest extends TestCase
 
         $result = $this->client->crm->objects->objects->get(
             'objectId',
-            ['objectType' => 'objectType']
+            objectType: 'objectType'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -198,14 +193,12 @@ final class ObjectsTest extends TestCase
 
         $result = $this->client->crm->objects->objects->get(
             'objectId',
-            [
-                'objectType' => 'objectType',
-                'archived' => true,
-                'associations' => ['string'],
-                'idProperty' => 'idProperty',
-                'properties' => ['string'],
-                'propertiesWithHistory' => ['string'],
-            ],
+            objectType: 'objectType',
+            archived: true,
+            associations: ['string'],
+            idProperty: 'idProperty',
+            properties: ['string'],
+            propertiesWithHistory: ['string'],
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -221,19 +214,17 @@ final class ObjectsTest extends TestCase
 
         $result = $this->client->crm->objects->objects->search(
             'objectType',
-            [
-                'after' => 'after',
-                'filterGroups' => [
-                    [
-                        'filters' => [
-                            ['operator' => 'BETWEEN', 'propertyName' => 'propertyName'],
-                        ],
+            after: 'after',
+            filterGroups: [
+                [
+                    'filters' => [
+                        ['operator' => 'BETWEEN', 'propertyName' => 'propertyName'],
                     ],
                 ],
-                'limit' => 0,
-                'properties' => ['string'],
-                'sorts' => ['string'],
             ],
+            limit: 0,
+            properties: ['string'],
+            sorts: ['string'],
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -252,26 +243,24 @@ final class ObjectsTest extends TestCase
 
         $result = $this->client->crm->objects->objects->search(
             'objectType',
-            [
-                'after' => 'after',
-                'filterGroups' => [
-                    [
-                        'filters' => [
-                            [
-                                'operator' => 'BETWEEN',
-                                'propertyName' => 'propertyName',
-                                'highValue' => 'highValue',
-                                'value' => 'value',
-                                'values' => ['string'],
-                            ],
+            after: 'after',
+            filterGroups: [
+                [
+                    'filters' => [
+                        [
+                            'operator' => 'BETWEEN',
+                            'propertyName' => 'propertyName',
+                            'highValue' => 'highValue',
+                            'value' => 'value',
+                            'values' => ['string'],
                         ],
                     ],
                 ],
-                'limit' => 0,
-                'properties' => ['string'],
-                'sorts' => ['string'],
-                'query' => 'query',
             ],
+            limit: 0,
+            properties: ['string'],
+            sorts: ['string'],
+            query: 'query',
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

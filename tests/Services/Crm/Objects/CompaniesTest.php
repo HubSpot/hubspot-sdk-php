@@ -41,8 +41,8 @@ final class CompaniesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->objects->companies->create([
-            'associations' => [
+        $result = $this->client->crm->objects->companies->create(
+            associations: [
                 [
                     'to' => ['id' => '37295'],
                     'types' => [
@@ -53,8 +53,8 @@ final class CompaniesTest extends TestCase
                     ],
                 ],
             ],
-            'properties' => ['foo' => 'string'],
-        ]);
+            properties: ['foo' => 'string'],
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(CreatedResponseSimplePublicObject::class, $result);
@@ -67,8 +67,8 @@ final class CompaniesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->objects->companies->create([
-            'associations' => [
+        $result = $this->client->crm->objects->companies->create(
+            associations: [
                 [
                     'to' => ['id' => '37295'],
                     'types' => [
@@ -79,8 +79,8 @@ final class CompaniesTest extends TestCase
                     ],
                 ],
             ],
-            'properties' => ['foo' => 'string'],
-        ]);
+            properties: ['foo' => 'string'],
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(CreatedResponseSimplePublicObject::class, $result);
@@ -95,7 +95,7 @@ final class CompaniesTest extends TestCase
 
         $result = $this->client->crm->objects->companies->update(
             'companyId',
-            ['properties' => ['foo' => 'string']]
+            properties: ['foo' => 'string']
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -111,7 +111,8 @@ final class CompaniesTest extends TestCase
 
         $result = $this->client->crm->objects->companies->update(
             'companyId',
-            ['properties' => ['foo' => 'string'], 'idProperty' => 'idProperty'],
+            properties: ['foo' => 'string'],
+            idProperty: 'idProperty'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -125,7 +126,7 @@ final class CompaniesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->objects->companies->list([]);
+        $result = $this->client->crm->objects->companies->list();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(Page::class, $result);
@@ -151,7 +152,7 @@ final class CompaniesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->objects->companies->get('companyId', []);
+        $result = $this->client->crm->objects->companies->get('companyId');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(SimplePublicObjectWithAssociations::class, $result);
@@ -164,10 +165,10 @@ final class CompaniesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->objects->companies->merge([
-            'objectIDToMerge' => 'objectIdToMerge',
-            'primaryObjectID' => 'primaryObjectId',
-        ]);
+        $result = $this->client->crm->objects->companies->merge(
+            objectIDToMerge: 'objectIdToMerge',
+            primaryObjectID: 'primaryObjectId'
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(SimplePublicObject::class, $result);
@@ -180,10 +181,10 @@ final class CompaniesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->objects->companies->merge([
-            'objectIDToMerge' => 'objectIdToMerge',
-            'primaryObjectID' => 'primaryObjectId',
-        ]);
+        $result = $this->client->crm->objects->companies->merge(
+            objectIDToMerge: 'objectIdToMerge',
+            primaryObjectID: 'primaryObjectId'
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(SimplePublicObject::class, $result);
@@ -196,19 +197,19 @@ final class CompaniesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->objects->companies->search([
-            'after' => 'after',
-            'filterGroups' => [
+        $result = $this->client->crm->objects->companies->search(
+            after: 'after',
+            filterGroups: [
                 [
                     'filters' => [
                         ['operator' => 'BETWEEN', 'propertyName' => 'propertyName'],
                     ],
                 ],
             ],
-            'limit' => 0,
-            'properties' => ['string'],
-            'sorts' => ['string'],
-        ]);
+            limit: 0,
+            properties: ['string'],
+            sorts: ['string'],
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(
@@ -224,9 +225,9 @@ final class CompaniesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->objects->companies->search([
-            'after' => 'after',
-            'filterGroups' => [
+        $result = $this->client->crm->objects->companies->search(
+            after: 'after',
+            filterGroups: [
                 [
                     'filters' => [
                         [
@@ -239,11 +240,11 @@ final class CompaniesTest extends TestCase
                     ],
                 ],
             ],
-            'limit' => 0,
-            'properties' => ['string'],
-            'sorts' => ['string'],
-            'query' => 'query',
-        ]);
+            limit: 0,
+            properties: ['string'],
+            sorts: ['string'],
+            query: 'query',
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(

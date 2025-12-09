@@ -6,12 +6,6 @@ namespace HubspotSDK\Services\Cms\MediaBridge;
 
 use HubspotSDK\Client;
 use HubspotSDK\Cms\MediaBridge\CollectionResponsePropertyGroupNoPaging;
-use HubspotSDK\Cms\MediaBridge\Groups\GroupCreateParams;
-use HubspotSDK\Cms\MediaBridge\Groups\GroupDeleteByNameParams;
-use HubspotSDK\Cms\MediaBridge\Groups\GroupGetByNameParams;
-use HubspotSDK\Cms\MediaBridge\Groups\GroupListParams;
-use HubspotSDK\Cms\MediaBridge\Groups\GroupUpdateByNameParams;
-use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\Properties\PropertyGroup;
 use HubspotSDK\RequestOptions;
@@ -20,43 +14,50 @@ use HubspotSDK\ServiceContracts\Cms\MediaBridge\GroupsContract;
 final class GroupsService implements GroupsContract
 {
     /**
+     * @api
+     */
+    public GroupsRawService $raw;
+
+    /**
      * @internal
      */
-    public function __construct(private Client $client) {}
+    public function __construct(private Client $client)
+    {
+        $this->raw = new GroupsRawService($client);
+    }
 
     /**
      * @api
      *
      * Create a new property group for the specified object type.
      *
-     * @param array{
-     *   appID: int, label: string, name: string, displayOrder?: int
-     * }|GroupCreateParams $params
+     * @param string $objectType path param: The object type to create the new property group for
+     * @param int $appID Path param: The appId for the media bridge app. It is possible to have multiple apps in your developer account that use the media bridge.
+     * @param string $label Body param:
+     * @param string $name Body param:
+     * @param int $displayOrder Body param:
      *
      * @throws APIException
      */
     public function create(
         string $objectType,
-        array|GroupCreateParams $params,
+        int $appID,
+        string $label,
+        string $name,
+        ?int $displayOrder = null,
         ?RequestOptions $requestOptions = null,
     ): PropertyGroup {
-        [$parsed, $options] = GroupCreateParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $appID = $parsed['appID'];
-        unset($parsed['appID']);
+        $params = [
+            'appID' => $appID,
+            'label' => $label,
+            'name' => $name,
+            'displayOrder' => $displayOrder,
+        ];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<PropertyGroup> */
-        $response = $this->client->request(
-            method: 'post',
-            path: [
-                'media-bridge/v1/%1$s/properties/%2$s/groups', $appID, $objectType,
-            ],
-            body: (object) array_diff_key($parsed, ['appID']),
-            options: $options,
-            convert: PropertyGroup::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->create($objectType, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -66,31 +67,20 @@ final class GroupsService implements GroupsContract
      *
      * Get the property groups for a specified object type.
      *
-     * @param array{appID: int}|GroupListParams $params
+     * @param string $objectType the type of object to get the property groups for
+     * @param int $appID The appId for the media bridge app. It is possible to have multiple apps in your developer account that use the media bridge.
      *
      * @throws APIException
      */
     public function list(
         string $objectType,
-        array|GroupListParams $params,
-        ?RequestOptions $requestOptions = null,
+        int $appID,
+        ?RequestOptions $requestOptions = null
     ): CollectionResponsePropertyGroupNoPaging {
-        [$parsed, $options] = GroupListParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $appID = $parsed['appID'];
-        unset($parsed['appID']);
+        $params = ['appID' => $appID];
 
-        /** @var BaseResponse<CollectionResponsePropertyGroupNoPaging> */
-        $response = $this->client->request(
-            method: 'get',
-            path: [
-                'media-bridge/v1/%1$s/properties/%2$s/groups', $appID, $objectType,
-            ],
-            options: $options,
-            convert: CollectionResponsePropertyGroupNoPaging::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->list($objectType, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -100,36 +90,22 @@ final class GroupsService implements GroupsContract
      *
      * Delete an existing property group by name
      *
-     * @param array{appID: int, objectType: string}|GroupDeleteByNameParams $params
+     * @param string $groupName the name of the property group to be deleted
+     * @param int $appID The appId for the media bridge app. It is possible to have multiple apps in your developer account that use the media bridge.
+     * @param string $objectType The object type for the property group
      *
      * @throws APIException
      */
     public function deleteByName(
         string $groupName,
-        array|GroupDeleteByNameParams $params,
+        int $appID,
+        string $objectType,
         ?RequestOptions $requestOptions = null,
     ): mixed {
-        [$parsed, $options] = GroupDeleteByNameParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $appID = $parsed['appID'];
-        unset($parsed['appID']);
-        $objectType = $parsed['objectType'];
-        unset($parsed['objectType']);
+        $params = ['appID' => $appID, 'objectType' => $objectType];
 
-        /** @var BaseResponse<mixed> */
-        $response = $this->client->request(
-            method: 'delete',
-            path: [
-                'media-bridge/v1/%1$s/properties/%2$s/groups/%3$s',
-                $appID,
-                $objectType,
-                $groupName,
-            ],
-            options: $options,
-            convert: null,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->deleteByName($groupName, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -139,36 +115,22 @@ final class GroupsService implements GroupsContract
      *
      * Get the details of an existing property group by name.
      *
-     * @param array{appID: int, objectType: string}|GroupGetByNameParams $params
+     * @param string $groupName the name for the property group you want to get the details for
+     * @param int $appID The appId for the media bridge app. It is possible to have multiple apps in your developer account that use the media bridge.
+     * @param string $objectType the object type for the property group
      *
      * @throws APIException
      */
     public function getByName(
         string $groupName,
-        array|GroupGetByNameParams $params,
+        int $appID,
+        string $objectType,
         ?RequestOptions $requestOptions = null,
     ): PropertyGroup {
-        [$parsed, $options] = GroupGetByNameParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $appID = $parsed['appID'];
-        unset($parsed['appID']);
-        $objectType = $parsed['objectType'];
-        unset($parsed['objectType']);
+        $params = ['appID' => $appID, 'objectType' => $objectType];
 
-        /** @var BaseResponse<PropertyGroup> */
-        $response = $this->client->request(
-            method: 'get',
-            path: [
-                'media-bridge/v1/%1$s/properties/%2$s/groups/%3$s',
-                $appID,
-                $objectType,
-                $groupName,
-            ],
-            options: $options,
-            convert: PropertyGroup::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->getByName($groupName, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -178,42 +140,33 @@ final class GroupsService implements GroupsContract
      *
      * Update an existing property group by name.
      *
-     * @param array{
-     *   appID: int, objectType: string, displayOrder?: int, label?: string
-     * }|GroupUpdateByNameParams $params
+     * @param string $groupName path param: The name of the property group to update
+     * @param int $appID Path param: The appId for the media bridge app. It is possible to have multiple apps in your developer account that use the media bridge.
+     * @param string $objectType path param: The object type for the property group
+     * @param int $displayOrder Body param:
+     * @param string $label Body param:
      *
      * @throws APIException
      */
     public function updateByName(
         string $groupName,
-        array|GroupUpdateByNameParams $params,
+        int $appID,
+        string $objectType,
+        ?int $displayOrder = null,
+        ?string $label = null,
         ?RequestOptions $requestOptions = null,
     ): PropertyGroup {
-        [$parsed, $options] = GroupUpdateByNameParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $appID = $parsed['appID'];
-        unset($parsed['appID']);
-        $objectType = $parsed['objectType'];
-        unset($parsed['objectType']);
+        $params = [
+            'appID' => $appID,
+            'objectType' => $objectType,
+            'displayOrder' => $displayOrder,
+            'label' => $label,
+        ];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<PropertyGroup> */
-        $response = $this->client->request(
-            method: 'patch',
-            path: [
-                'media-bridge/v1/%1$s/properties/%2$s/groups/%3$s',
-                $appID,
-                $objectType,
-                $groupName,
-            ],
-            body: (object) array_diff_key(
-                $parsed,
-                array_flip(['appID', 'objectType'])
-            ),
-            options: $options,
-            convert: PropertyGroup::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->updateByName($groupName, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }

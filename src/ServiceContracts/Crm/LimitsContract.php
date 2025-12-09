@@ -11,8 +11,6 @@ use HubspotSDK\Crm\Limits\CollectionResponseAssociationLabelLimitResponseNoPagin
 use HubspotSDK\Crm\Limits\CollectionResponseObjectTypeNearOrAtAssociationLimitNoPaging;
 use HubspotSDK\Crm\Limits\CustomObjectLimitResponse;
 use HubspotSDK\Crm\Limits\CustomPropertyLimitResponse;
-use HubspotSDK\Crm\Limits\LimitGetAssociationLabelLimitsParams;
-use HubspotSDK\Crm\Limits\LimitGetAssociationRecordsLimitsByObjectTypeParams;
 use HubspotSDK\Crm\Limits\PipelineLimitResponse;
 use HubspotSDK\Crm\Limits\RecordLimitResponse;
 use HubspotSDK\RequestOptions;
@@ -22,25 +20,28 @@ interface LimitsContract
     /**
      * @api
      *
-     * @param array<mixed>|LimitGetAssociationLabelLimitsParams $params
+     * @param string $fromObjectTypeID objectTypeId of the object type on the "from" side of the association
+     * @param string $toObjectTypeID objectTypeId of the object type on the "to" side of the association
      *
      * @throws APIException
      */
     public function getAssociationLabelLimits(
-        array|LimitGetAssociationLabelLimitsParams $params,
+        ?string $fromObjectTypeID = null,
+        ?string $toObjectTypeID = null,
         ?RequestOptions $requestOptions = null,
     ): CollectionResponseAssociationLabelLimitResponseNoPaging;
 
     /**
      * @api
      *
-     * @param array<mixed>|LimitGetAssociationRecordsLimitsByObjectTypeParams $params
+     * @param string $toObjectTypeID objectTypeId of the object type on the "to" side of the association
+     * @param string $fromObjectTypeID objectTypeId of the object type on the "from" side of the association
      *
      * @throws APIException
      */
     public function getAssociationRecordsLimitsByObjectType(
         string $toObjectTypeID,
-        array|LimitGetAssociationRecordsLimitsByObjectTypeParams $params,
+        string $fromObjectTypeID,
         ?RequestOptions $requestOptions = null,
     ): AssociationRecordLimitResponse;
 
@@ -55,6 +56,8 @@ interface LimitsContract
 
     /**
      * @api
+     *
+     * @param string $fromObjectTypeID objectTypeId of the object type on the "from" side of the association
      *
      * @throws APIException
      */

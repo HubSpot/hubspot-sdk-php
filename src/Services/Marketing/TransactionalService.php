@@ -14,6 +14,11 @@ final class TransactionalService implements TransactionalContract
     /**
      * @api
      */
+    public TransactionalRawService $raw;
+
+    /**
+     * @api
+     */
     public SingleEmailService $singleEmail;
 
     /**
@@ -26,6 +31,7 @@ final class TransactionalService implements TransactionalContract
      */
     public function __construct(private Client $client)
     {
+        $this->raw = new TransactionalRawService($client);
         $this->singleEmail = new SingleEmailService($client);
         $this->smtpTokens = new SmtpTokensService($client);
     }

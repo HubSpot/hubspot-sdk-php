@@ -5,10 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Crm\Extensions\Calling;
 
 use HubspotSDK\Client;
-use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Crm\Extensions\Calling\ChannelConnectionSettings\ChannelConnectionSettingCreateParams;
-use HubspotSDK\Crm\Extensions\Calling\ChannelConnectionSettings\ChannelConnectionSettingUpdateParams;
 use HubspotSDK\Crm\Extensions\Calling\ChannelConnectionSettingsResponse;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Extensions\Calling\ChannelConnectionSettingsContract;
@@ -16,39 +13,33 @@ use HubspotSDK\ServiceContracts\Crm\Extensions\Calling\ChannelConnectionSettings
 final class ChannelConnectionSettingsService implements ChannelConnectionSettingsContract
 {
     /**
+     * @api
+     */
+    public ChannelConnectionSettingsRawService $raw;
+
+    /**
      * @internal
      */
-    public function __construct(private Client $client) {}
+    public function __construct(private Client $client)
+    {
+        $this->raw = new ChannelConnectionSettingsRawService($client);
+    }
 
     /**
      * @api
-     *
-     * @param array{
-     *   isReady: bool, url: string
-     * }|ChannelConnectionSettingCreateParams $params
      *
      * @throws APIException
      */
     public function create(
         int $appID,
-        array|ChannelConnectionSettingCreateParams $params,
+        bool $isReady,
+        string $url,
         ?RequestOptions $requestOptions = null,
     ): ChannelConnectionSettingsResponse {
-        [$parsed, $options] = ChannelConnectionSettingCreateParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = ['isReady' => $isReady, 'url' => $url];
 
-        /** @var BaseResponse<ChannelConnectionSettingsResponse> */
-        $response = $this->client->request(
-            method: 'post',
-            path: [
-                'crm/v3/extensions/calling/%1$s/settings/channel-connection', $appID,
-            ],
-            body: (object) $parsed,
-            options: $options,
-            convert: ChannelConnectionSettingsResponse::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->create($appID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -56,32 +47,20 @@ final class ChannelConnectionSettingsService implements ChannelConnectionSetting
     /**
      * @api
      *
-     * @param array{
-     *   isReady?: bool, url?: string
-     * }|ChannelConnectionSettingUpdateParams $params
-     *
      * @throws APIException
      */
     public function update(
         int $appID,
-        array|ChannelConnectionSettingUpdateParams $params,
+        ?bool $isReady = null,
+        ?string $url = null,
         ?RequestOptions $requestOptions = null,
     ): ChannelConnectionSettingsResponse {
-        [$parsed, $options] = ChannelConnectionSettingUpdateParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = ['isReady' => $isReady, 'url' => $url];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<ChannelConnectionSettingsResponse> */
-        $response = $this->client->request(
-            method: 'patch',
-            path: [
-                'crm/v3/extensions/calling/%1$s/settings/channel-connection', $appID,
-            ],
-            body: (object) $parsed,
-            options: $options,
-            convert: ChannelConnectionSettingsResponse::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->update($appID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -95,15 +74,8 @@ final class ChannelConnectionSettingsService implements ChannelConnectionSetting
         int $appID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        /** @var BaseResponse<mixed> */
-        $response = $this->client->request(
-            method: 'delete',
-            path: [
-                'crm/v3/extensions/calling/%1$s/settings/channel-connection', $appID,
-            ],
-            options: $requestOptions,
-            convert: null,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->delete($appID, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -117,15 +89,8 @@ final class ChannelConnectionSettingsService implements ChannelConnectionSetting
         int $appID,
         ?RequestOptions $requestOptions = null
     ): ChannelConnectionSettingsResponse {
-        /** @var BaseResponse<ChannelConnectionSettingsResponse> */
-        $response = $this->client->request(
-            method: 'get',
-            path: [
-                'crm/v3/extensions/calling/%1$s/settings/channel-connection', $appID,
-            ],
-            options: $requestOptions,
-            convert: ChannelConnectionSettingsResponse::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->get($appID, requestOptions: $requestOptions);
 
         return $response->parse();
     }

@@ -14,6 +14,11 @@ final class FeatureFlagsService implements FeatureFlagsContract
     /**
      * @api
      */
+    public FeatureFlagsRawService $raw;
+
+    /**
+     * @api
+     */
     public AppsService $apps;
 
     /**
@@ -26,6 +31,7 @@ final class FeatureFlagsService implements FeatureFlagsContract
      */
     public function __construct(private Client $client)
     {
+        $this->raw = new FeatureFlagsRawService($client);
         $this->apps = new AppsService($client);
         $this->portals = new PortalsService($client);
     }

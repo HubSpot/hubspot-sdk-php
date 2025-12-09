@@ -5,16 +5,11 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Crm\Associations\Schema\V4;
 
 use HubspotSDK\Client;
-use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\Associations\BatchResponseVoid;
 use HubspotSDK\Crm\Associations\Schema\V4\BatchResponsePublicAssociationDefinitionConfigurationUpdateResult;
 use HubspotSDK\Crm\Associations\Schema\V4\BatchResponsePublicAssociationDefinitionUserConfiguration;
 use HubspotSDK\Crm\Associations\Schema\V4\CollectionResponsePublicAssociationDefinitionUserConfiguration;
-use HubspotSDK\Crm\Associations\Schema\V4\Configurations\ConfigurationBatchCreateParams;
-use HubspotSDK\Crm\Associations\Schema\V4\Configurations\ConfigurationBatchDeleteParams;
-use HubspotSDK\Crm\Associations\Schema\V4\Configurations\ConfigurationBatchUpdateParams;
-use HubspotSDK\Crm\Associations\Schema\V4\Configurations\ConfigurationGetByObjectTypesParams;
 use HubspotSDK\Crm\Associations\Schema\V4\PublicAssociationDefinitionConfigurationCreateRequest\Category;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Associations\Schema\V4\ConfigurationsContract;
@@ -22,9 +17,17 @@ use HubspotSDK\ServiceContracts\Crm\Associations\Schema\V4\ConfigurationsContrac
 final class ConfigurationsService implements ConfigurationsContract
 {
     /**
+     * @api
+     */
+    public ConfigurationsRawService $raw;
+
+    /**
      * @internal
      */
-    public function __construct(private Client $client) {}
+    public function __construct(private Client $client)
+    {
+        $this->raw = new ConfigurationsRawService($client);
+    }
 
     /**
      * @api
@@ -34,13 +37,8 @@ final class ConfigurationsService implements ConfigurationsContract
     public function list(
         ?RequestOptions $requestOptions = null
     ): CollectionResponsePublicAssociationDefinitionUserConfiguration {
-        /** @var BaseResponse<CollectionResponsePublicAssociationDefinitionUserConfiguration,> */
-        $response = $this->client->request(
-            method: 'get',
-            path: 'crm/associations/v4/definitions/configurations/all',
-            options: $requestOptions,
-            convert: CollectionResponsePublicAssociationDefinitionUserConfiguration::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->list(requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -48,41 +46,26 @@ final class ConfigurationsService implements ConfigurationsContract
     /**
      * @api
      *
-     * @param array{
-     *   fromObjectType: string,
-     *   inputs: list<array{
-     *     category: 'HUBSPOT_DEFINED'|'INTEGRATOR_DEFINED'|'USER_DEFINED'|Category,
-     *     maxToObjectIDs: int,
-     *     typeID: int,
-     *   }>,
-     * }|ConfigurationBatchCreateParams $params
+     * @param string $toObjectType Path param:
+     * @param string $fromObjectType Path param:
+     * @param list<array{
+     *   category: 'HUBSPOT_DEFINED'|'INTEGRATOR_DEFINED'|'USER_DEFINED'|Category,
+     *   maxToObjectIDs: int,
+     *   typeID: int,
+     * }> $inputs Body param:
      *
      * @throws APIException
      */
     public function batchCreate(
         string $toObjectType,
-        array|ConfigurationBatchCreateParams $params,
+        string $fromObjectType,
+        array $inputs,
         ?RequestOptions $requestOptions = null,
     ): BatchResponsePublicAssociationDefinitionUserConfiguration {
-        [$parsed, $options] = ConfigurationBatchCreateParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $fromObjectType = $parsed['fromObjectType'];
-        unset($parsed['fromObjectType']);
+        $params = ['fromObjectType' => $fromObjectType, 'inputs' => $inputs];
 
-        /** @var BaseResponse<BatchResponsePublicAssociationDefinitionUserConfiguration,> */
-        $response = $this->client->request(
-            method: 'post',
-            path: [
-                'crm/associations/v4/definitions/configurations/%1$s/%2$s/batch/create',
-                $fromObjectType,
-                $toObjectType,
-            ],
-            body: (object) array_diff_key($parsed, ['fromObjectType']),
-            options: $options,
-            convert: BatchResponsePublicAssociationDefinitionUserConfiguration::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->batchCreate($toObjectType, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -90,36 +73,22 @@ final class ConfigurationsService implements ConfigurationsContract
     /**
      * @api
      *
-     * @param array{
-     *   fromObjectType: string, inputs: list<array{category: string, typeID: int}>
-     * }|ConfigurationBatchDeleteParams $params
+     * @param string $toObjectType Path param:
+     * @param string $fromObjectType Path param:
+     * @param list<array{category: string, typeID: int}> $inputs Body param:
      *
      * @throws APIException
      */
     public function batchDelete(
         string $toObjectType,
-        array|ConfigurationBatchDeleteParams $params,
+        string $fromObjectType,
+        array $inputs,
         ?RequestOptions $requestOptions = null,
     ): BatchResponseVoid {
-        [$parsed, $options] = ConfigurationBatchDeleteParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $fromObjectType = $parsed['fromObjectType'];
-        unset($parsed['fromObjectType']);
+        $params = ['fromObjectType' => $fromObjectType, 'inputs' => $inputs];
 
-        /** @var BaseResponse<BatchResponseVoid> */
-        $response = $this->client->request(
-            method: 'post',
-            path: [
-                'crm/associations/v4/definitions/configurations/%1$s/%2$s/batch/purge',
-                $fromObjectType,
-                $toObjectType,
-            ],
-            body: (object) array_diff_key($parsed, ['fromObjectType']),
-            options: $options,
-            convert: BatchResponseVoid::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->batchDelete($toObjectType, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -127,41 +96,26 @@ final class ConfigurationsService implements ConfigurationsContract
     /**
      * @api
      *
-     * @param array{
-     *   fromObjectType: string,
-     *   inputs: list<array{
-     *     category: 'HUBSPOT_DEFINED'|'INTEGRATOR_DEFINED'|'USER_DEFINED'|\HubspotSDK\Crm\Associations\Schema\V4\PublicAssociationDefinitionConfigurationUpdateRequest\Category,
-     *     maxToObjectIDs: int,
-     *     typeID: int,
-     *   }>,
-     * }|ConfigurationBatchUpdateParams $params
+     * @param string $toObjectType Path param:
+     * @param string $fromObjectType Path param:
+     * @param list<array{
+     *   category: 'HUBSPOT_DEFINED'|'INTEGRATOR_DEFINED'|'USER_DEFINED'|\HubspotSDK\Crm\Associations\Schema\V4\PublicAssociationDefinitionConfigurationUpdateRequest\Category,
+     *   maxToObjectIDs: int,
+     *   typeID: int,
+     * }> $inputs Body param:
      *
      * @throws APIException
      */
     public function batchUpdate(
         string $toObjectType,
-        array|ConfigurationBatchUpdateParams $params,
+        string $fromObjectType,
+        array $inputs,
         ?RequestOptions $requestOptions = null,
     ): BatchResponsePublicAssociationDefinitionConfigurationUpdateResult {
-        [$parsed, $options] = ConfigurationBatchUpdateParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $fromObjectType = $parsed['fromObjectType'];
-        unset($parsed['fromObjectType']);
+        $params = ['fromObjectType' => $fromObjectType, 'inputs' => $inputs];
 
-        /** @var BaseResponse<BatchResponsePublicAssociationDefinitionConfigurationUpdateResult,> */
-        $response = $this->client->request(
-            method: 'post',
-            path: [
-                'crm/associations/v4/definitions/configurations/%1$s/%2$s/batch/update',
-                $fromObjectType,
-                $toObjectType,
-            ],
-            body: (object) array_diff_key($parsed, ['fromObjectType']),
-            options: $options,
-            convert: BatchResponsePublicAssociationDefinitionConfigurationUpdateResult::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->batchUpdate($toObjectType, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -169,33 +123,17 @@ final class ConfigurationsService implements ConfigurationsContract
     /**
      * @api
      *
-     * @param array{fromObjectType: string}|ConfigurationGetByObjectTypesParams $params
-     *
      * @throws APIException
      */
     public function getByObjectTypes(
         string $toObjectType,
-        array|ConfigurationGetByObjectTypesParams $params,
+        string $fromObjectType,
         ?RequestOptions $requestOptions = null,
     ): CollectionResponsePublicAssociationDefinitionUserConfiguration {
-        [$parsed, $options] = ConfigurationGetByObjectTypesParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $fromObjectType = $parsed['fromObjectType'];
-        unset($parsed['fromObjectType']);
+        $params = ['fromObjectType' => $fromObjectType];
 
-        /** @var BaseResponse<CollectionResponsePublicAssociationDefinitionUserConfiguration,> */
-        $response = $this->client->request(
-            method: 'get',
-            path: [
-                'crm/associations/v4/definitions/configurations/%1$s/%2$s',
-                $fromObjectType,
-                $toObjectType,
-            ],
-            options: $options,
-            convert: CollectionResponsePublicAssociationDefinitionUserConfiguration::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->getByObjectTypes($toObjectType, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }

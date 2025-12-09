@@ -20,6 +20,11 @@ final class ConversationsService implements ConversationsContract
     /**
      * @api
      */
+    public ConversationsRawService $raw;
+
+    /**
+     * @api
+     */
     public ActorsService $actors;
 
     /**
@@ -62,6 +67,7 @@ final class ConversationsService implements ConversationsContract
      */
     public function __construct(private Client $client)
     {
+        $this->raw = new ConversationsRawService($client);
         $this->actors = new ActorsService($client);
         $this->channelAccounts = new ChannelAccountsService($client);
         $this->channels = new ChannelsService($client);

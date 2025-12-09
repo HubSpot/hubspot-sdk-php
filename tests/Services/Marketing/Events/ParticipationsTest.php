@@ -45,7 +45,7 @@ final class ParticipationsTest extends TestCase
             ->participations
             ->getByExternalAccountAndEventID(
                 'externalEventId',
-                ['externalAccountID' => 'externalAccountId']
+                externalAccountID: 'externalAccountId'
             )
         ;
 
@@ -67,7 +67,7 @@ final class ParticipationsTest extends TestCase
             ->participations
             ->getByExternalAccountAndEventID(
                 'externalEventId',
-                ['externalAccountID' => 'externalAccountId']
+                externalAccountID: 'externalAccountId'
             )
         ;
 
@@ -100,7 +100,7 @@ final class ParticipationsTest extends TestCase
             ->marketing
             ->events
             ->participations
-            ->listBreakdownByContact('contactIdentifier', [])
+            ->listBreakdownByContact('contactIdentifier')
         ;
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -121,7 +121,7 @@ final class ParticipationsTest extends TestCase
             ->participations
             ->listBreakdownByExternalAccountAndEventID(
                 'externalEventId',
-                ['externalAccountID' => 'externalAccountId']
+                externalAccountID: 'externalAccountId'
             )
         ;
 
@@ -143,13 +143,11 @@ final class ParticipationsTest extends TestCase
             ->participations
             ->listBreakdownByExternalAccountAndEventID(
                 'externalEventId',
-                [
-                    'externalAccountID' => 'externalAccountId',
-                    'after' => 'after',
-                    'contactIdentifier' => 'contactIdentifier',
-                    'limit' => 0,
-                    'state' => 'state',
-                ],
+                externalAccountID: 'externalAccountId',
+                after: 'after',
+                contactIdentifier: 'contactIdentifier',
+                limit: 0,
+                state: 'state',
             )
         ;
 
@@ -169,7 +167,7 @@ final class ParticipationsTest extends TestCase
             ->marketing
             ->events
             ->participations
-            ->listBreakdownByID(0, [])
+            ->listBreakdownByID(0)
         ;
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

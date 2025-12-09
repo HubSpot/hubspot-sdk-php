@@ -38,7 +38,7 @@ final class OwnersTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->owners->list([]);
+        $result = $this->client->crm->owners->list();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(Page::class, $result);
@@ -51,7 +51,7 @@ final class OwnersTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->owners->get(0, []);
+        $result = $this->client->crm->owners->get(0);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(PublicOwner::class, $result);

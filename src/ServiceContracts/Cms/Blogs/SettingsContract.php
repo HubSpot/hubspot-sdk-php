@@ -5,14 +5,6 @@ declare(strict_types=1);
 namespace HubspotSDK\ServiceContracts\Cms\Blogs;
 
 use HubspotSDK\Cms\Blogs\Settings\Blog;
-use HubspotSDK\Cms\Blogs\Settings\SettingAttachToLangGroupParams;
-use HubspotSDK\Cms\Blogs\Settings\SettingCreateLanguageVariationParams;
-use HubspotSDK\Cms\Blogs\Settings\SettingDetachFromLangGroupParams;
-use HubspotSDK\Cms\Blogs\Settings\SettingGetRevisionParams;
-use HubspotSDK\Cms\Blogs\Settings\SettingListParams;
-use HubspotSDK\Cms\Blogs\Settings\SettingListRevisionsParams;
-use HubspotSDK\Cms\Blogs\Settings\SettingSetNewLangPrimaryParams;
-use HubspotSDK\Cms\Blogs\Settings\SettingUpdateLanguagesParams;
 use HubspotSDK\Cms\Blogs\Settings\VersionBlog;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Page;
@@ -23,51 +15,72 @@ interface SettingsContract
     /**
      * @api
      *
-     * @param array<mixed>|SettingListParams $params
+     * @param list<string> $sort
      *
      * @return Page<Blog>
      *
      * @throws APIException
      */
     public function list(
-        array|SettingListParams $params,
-        ?RequestOptions $requestOptions = null
+        ?string $after = null,
+        ?bool $archived = null,
+        string|\DateTimeInterface|null $createdAfter = null,
+        string|\DateTimeInterface|null $createdAt = null,
+        string|\DateTimeInterface|null $createdBefore = null,
+        ?int $limit = null,
+        ?array $sort = null,
+        string|\DateTimeInterface|null $updatedAfter = null,
+        string|\DateTimeInterface|null $updatedAt = null,
+        string|\DateTimeInterface|null $updatedBefore = null,
+        ?RequestOptions $requestOptions = null,
     ): Page;
 
     /**
      * @api
      *
-     * @param array<mixed>|SettingAttachToLangGroupParams $params
+     * @param string $id ID of the object to add to a multi-language group
+     * @param string $language designated language of the object to add to a multi-language group
+     * @param string $primaryID ID of primary language object in multi-language group
+     * @param string $primaryLanguage primary language of the multi-language group
      *
      * @throws APIException
      */
     public function attachToLangGroup(
-        array|SettingAttachToLangGroupParams $params,
+        string $id,
+        string $language,
+        string $primaryID,
+        ?string $primaryLanguage = null,
         ?RequestOptions $requestOptions = null,
     ): mixed;
 
     /**
      * @api
      *
-     * @param array<mixed>|SettingCreateLanguageVariationParams $params
+     * @param string $id ID of blog to clone
+     * @param string $language target language of new variant
+     * @param string $primaryLanguage language of primary blog to clone
+     * @param string $slug path to this blog
      *
      * @throws APIException
      */
     public function createLanguageVariation(
-        array|SettingCreateLanguageVariationParams $params,
+        string $id,
+        ?string $language = null,
+        ?string $primaryLanguage = null,
+        ?string $slug = null,
         ?RequestOptions $requestOptions = null,
     ): Blog;
 
     /**
      * @api
      *
-     * @param array<mixed>|SettingDetachFromLangGroupParams $params
+     * @param string $id ID of the object to remove from a multi-language group
      *
      * @throws APIException
      */
     public function detachFromLangGroup(
-        array|SettingDetachFromLangGroupParams $params,
-        ?RequestOptions $requestOptions = null,
+        string $id,
+        ?RequestOptions $requestOptions = null
     ): mixed;
 
     /**
@@ -83,20 +96,16 @@ interface SettingsContract
     /**
      * @api
      *
-     * @param array<mixed>|SettingGetRevisionParams $params
-     *
      * @throws APIException
      */
     public function getRevision(
         string $revisionID,
-        array|SettingGetRevisionParams $params,
-        ?RequestOptions $requestOptions = null,
+        string $blogID,
+        ?RequestOptions $requestOptions = null
     ): VersionBlog;
 
     /**
      * @api
-     *
-     * @param array<mixed>|SettingListRevisionsParams $params
      *
      * @return Page<VersionBlog>
      *
@@ -104,31 +113,35 @@ interface SettingsContract
      */
     public function listRevisions(
         string $blogID,
-        array|SettingListRevisionsParams $params,
+        ?string $after = null,
+        ?string $before = null,
+        ?int $limit = null,
         ?RequestOptions $requestOptions = null,
     ): Page;
 
     /**
      * @api
      *
-     * @param array<mixed>|SettingSetNewLangPrimaryParams $params
+     * @param string $id ID of object to set as primary in multi-language group
      *
      * @throws APIException
      */
     public function setNewLangPrimary(
-        array|SettingSetNewLangPrimaryParams $params,
-        ?RequestOptions $requestOptions = null,
+        string $id,
+        ?RequestOptions $requestOptions = null
     ): mixed;
 
     /**
      * @api
      *
-     * @param array<mixed>|SettingUpdateLanguagesParams $params
+     * @param array<string,string> $languages map of object IDs to associated languages of object in the multi-language group
+     * @param string $primaryID ID of the primary object in the multi-language group
      *
      * @throws APIException
      */
     public function updateLanguages(
-        array|SettingUpdateLanguagesParams $params,
+        array $languages,
+        string $primaryID,
         ?RequestOptions $requestOptions = null,
     ): mixed;
 }

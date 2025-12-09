@@ -43,10 +43,7 @@ final class RecordingSettingsTest extends TestCase
             ->extensions
             ->calling
             ->recordingSettings
-            ->create(
-                0,
-                ['urlToRetrieveAuthedRecording' => 'urlToRetrieveAuthedRecording']
-            )
+            ->create(0, urlToRetrieveAuthedRecording: 'urlToRetrieveAuthedRecording')
         ;
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -66,10 +63,7 @@ final class RecordingSettingsTest extends TestCase
             ->extensions
             ->calling
             ->recordingSettings
-            ->create(
-                0,
-                ['urlToRetrieveAuthedRecording' => 'urlToRetrieveAuthedRecording']
-            )
+            ->create(0, urlToRetrieveAuthedRecording: 'urlToRetrieveAuthedRecording')
         ;
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -89,7 +83,7 @@ final class RecordingSettingsTest extends TestCase
             ->extensions
             ->calling
             ->recordingSettings
-            ->update(0, [])
+            ->update(0)
         ;
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -124,7 +118,7 @@ final class RecordingSettingsTest extends TestCase
             ->extensions
             ->calling
             ->recordingSettings
-            ->markReady(['engagementID' => 0])
+            ->markReady(engagementID: 0)
         ;
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -144,7 +138,7 @@ final class RecordingSettingsTest extends TestCase
             ->extensions
             ->calling
             ->recordingSettings
-            ->markReady(['engagementID' => 0])
+            ->markReady(engagementID: 0)
         ;
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

@@ -5,24 +5,31 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Crm;
 
 use HubspotSDK\Client;
-use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Crm\Subscriptions\SubscriptionPauseParams;
-use HubspotSDK\Crm\Subscriptions\SubscriptionUnpauseParams;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\SubscriptionsContract;
 
 final class SubscriptionsService implements SubscriptionsContract
 {
     /**
+     * @api
+     */
+    public SubscriptionsRawService $raw;
+
+    /**
      * @internal
      */
-    public function __construct(private Client $client) {}
+    public function __construct(private Client $client)
+    {
+        $this->raw = new SubscriptionsRawService($client);
+    }
 
     /**
      * @api
      *
      * Cancel an active commerce subscription using the subscription ID.
+     *
+     * @param int $objectID subscription CRM id
      *
      * @throws APIException
      */
@@ -30,16 +37,8 @@ final class SubscriptionsService implements SubscriptionsContract
         int $objectID,
         ?RequestOptions $requestOptions = null
     ): string {
-        /** @var BaseResponse<string> */
-        $response = $this->client->request(
-            method: 'post',
-            path: [
-                'payments-subscriptions/v1/subscriptions/crm/%1$s/cancel', $objectID,
-            ],
-            headers: ['Accept' => '*/*'],
-            options: $requestOptions,
-            convert: 'string',
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->cancel($objectID, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -49,31 +48,21 @@ final class SubscriptionsService implements SubscriptionsContract
      *
      * Pause an active subscription using the subscription ID.
      *
-     * @param array{pauseReason?: string}|SubscriptionPauseParams $params
+     * @param int $objectID subscription CRM id
      *
      * @throws APIException
      */
     public function pause(
         int $objectID,
-        array|SubscriptionPauseParams $params,
+        ?string $pauseReason = null,
         ?RequestOptions $requestOptions = null,
     ): string {
-        [$parsed, $options] = SubscriptionPauseParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = ['pauseReason' => $pauseReason];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<string> */
-        $response = $this->client->request(
-            method: 'post',
-            path: [
-                'payments-subscriptions/v1/subscriptions/crm/%1$s/pause', $objectID,
-            ],
-            headers: ['Accept' => '*/*'],
-            body: (object) $parsed,
-            options: $options,
-            convert: 'string',
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->pause($objectID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -83,31 +72,19 @@ final class SubscriptionsService implements SubscriptionsContract
      *
      * Resume a previously paused subscription using the subscription ID.
      *
-     * @param array{proposedNextBillingDate: int}|SubscriptionUnpauseParams $params
+     * @param int $objectID subscription CRM id
      *
      * @throws APIException
      */
     public function unpause(
         int $objectID,
-        array|SubscriptionUnpauseParams $params,
+        int $proposedNextBillingDate,
         ?RequestOptions $requestOptions = null,
     ): string {
-        [$parsed, $options] = SubscriptionUnpauseParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = ['proposedNextBillingDate' => $proposedNextBillingDate];
 
-        /** @var BaseResponse<string> */
-        $response = $this->client->request(
-            method: 'post',
-            path: [
-                'payments-subscriptions/v1/subscriptions/crm/%1$s/unpause', $objectID,
-            ],
-            headers: ['Accept' => '*/*'],
-            body: (object) $parsed,
-            options: $options,
-            convert: 'string',
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->unpause($objectID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }

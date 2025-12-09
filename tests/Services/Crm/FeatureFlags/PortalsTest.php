@@ -40,7 +40,9 @@ final class PortalsTest extends TestCase
 
         $result = $this->client->crm->featureFlags->portals->update(
             0,
-            ['appID' => 0, 'flagName' => 'flagName', 'flagState' => 'ABSENT']
+            appID: 0,
+            flagName: 'flagName',
+            flagState: 'ABSENT'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -56,7 +58,9 @@ final class PortalsTest extends TestCase
 
         $result = $this->client->crm->featureFlags->portals->update(
             0,
-            ['appID' => 0, 'flagName' => 'flagName', 'flagState' => 'ABSENT']
+            appID: 0,
+            flagName: 'flagName',
+            flagState: 'ABSENT'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -72,7 +76,8 @@ final class PortalsTest extends TestCase
 
         $result = $this->client->crm->featureFlags->portals->delete(
             0,
-            ['appID' => 0, 'flagName' => 'flagName']
+            appID: 0,
+            flagName: 'flagName'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -88,7 +93,8 @@ final class PortalsTest extends TestCase
 
         $result = $this->client->crm->featureFlags->portals->delete(
             0,
-            ['appID' => 0, 'flagName' => 'flagName']
+            appID: 0,
+            flagName: 'flagName'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -104,7 +110,8 @@ final class PortalsTest extends TestCase
 
         $result = $this->client->crm->featureFlags->portals->batchDelete(
             'flagName',
-            ['appID' => 0, 'portalIDs' => [0]]
+            appID: 0,
+            portalIDs: [0]
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -120,7 +127,8 @@ final class PortalsTest extends TestCase
 
         $result = $this->client->crm->featureFlags->portals->batchDelete(
             'flagName',
-            ['appID' => 0, 'portalIDs' => [0]]
+            appID: 0,
+            portalIDs: [0]
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -136,10 +144,8 @@ final class PortalsTest extends TestCase
 
         $result = $this->client->crm->featureFlags->portals->batchUpsert(
             'flagName',
-            [
-                'appID' => 0,
-                'portalStates' => [['flagState' => 'ABSENT', 'portalID' => 0]],
-            ],
+            appID: 0,
+            portalStates: [['flagState' => 'ABSENT', 'portalID' => 0]],
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -155,10 +161,8 @@ final class PortalsTest extends TestCase
 
         $result = $this->client->crm->featureFlags->portals->batchUpsert(
             'flagName',
-            [
-                'appID' => 0,
-                'portalStates' => [['flagState' => 'ABSENT', 'portalID' => 0]],
-            ],
+            appID: 0,
+            portalStates: [['flagState' => 'ABSENT', 'portalID' => 0]],
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -174,7 +178,8 @@ final class PortalsTest extends TestCase
 
         $result = $this->client->crm->featureFlags->portals->get(
             0,
-            ['appID' => 0, 'flagName' => 'flagName']
+            appID: 0,
+            flagName: 'flagName'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -190,7 +195,8 @@ final class PortalsTest extends TestCase
 
         $result = $this->client->crm->featureFlags->portals->get(
             0,
-            ['appID' => 0, 'flagName' => 'flagName']
+            appID: 0,
+            flagName: 'flagName'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

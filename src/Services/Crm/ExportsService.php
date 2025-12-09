@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Crm;
 
 use HubspotSDK\Client;
-use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\Exports\ActionResponseWithSingleResultUri;
 use HubspotSDK\Crm\Exports\PublicExportResponse;
@@ -16,9 +15,17 @@ use HubspotSDK\TaskLocator;
 final class ExportsService implements ExportsContract
 {
     /**
+     * @api
+     */
+    public ExportsRawService $raw;
+
+    /**
      * @internal
      */
-    public function __construct(private Client $client) {}
+    public function __construct(private Client $client)
+    {
+        $this->raw = new ExportsRawService($client);
+    }
 
     /**
      * @api
@@ -30,13 +37,8 @@ final class ExportsService implements ExportsContract
     public function createAsync(
         ?RequestOptions $requestOptions = null
     ): TaskLocator {
-        /** @var BaseResponse<TaskLocator> */
-        $response = $this->client->request(
-            method: 'post',
-            path: 'crm/v3/exports/export/async',
-            options: $requestOptions,
-            convert: TaskLocator::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->createAsync(requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -46,19 +48,16 @@ final class ExportsService implements ExportsContract
      *
      * Retrieve detailed information about a specific CRM export, including its current state and properties.
      *
+     * @param int $exportID the unique ID of the export to retrieve
+     *
      * @throws APIException
      */
     public function get(
         int $exportID,
         ?RequestOptions $requestOptions = null
     ): PublicExportResponse {
-        /** @var BaseResponse<PublicExportResponse> */
-        $response = $this->client->request(
-            method: 'get',
-            path: ['crm/v3/exports/export/%1$s', $exportID],
-            options: $requestOptions,
-            convert: PublicExportResponse::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->get($exportID, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -68,19 +67,16 @@ final class ExportsService implements ExportsContract
      *
      * Returns the status of the export with taskId, including the URL of the resulting file if the export status is COMPLETE
      *
+     * @param int $taskID the unique ID of the export
+     *
      * @throws APIException
      */
     public function getStatus(
         int $taskID,
         ?RequestOptions $requestOptions = null
     ): ActionResponseWithSingleResultUri {
-        /** @var BaseResponse<ActionResponseWithSingleResultUri> */
-        $response = $this->client->request(
-            method: 'get',
-            path: ['crm/v3/exports/export/async/tasks/%1$s/status', $taskID],
-            options: $requestOptions,
-            convert: ActionResponseWithSingleResultUri::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->getStatus($taskID, requestOptions: $requestOptions);
 
         return $response->parse();
     }

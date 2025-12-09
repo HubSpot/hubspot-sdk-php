@@ -40,11 +40,11 @@ final class SchemasTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->objects->schemas->create([
-            'associatedObjects' => ['CONTACT'],
-            'labels' => [],
-            'name' => 'my_object',
-            'properties' => [
+        $result = $this->client->crm->objects->schemas->create(
+            associatedObjects: ['CONTACT'],
+            labels: [],
+            name: 'my_object',
+            properties: [
                 [
                     'fieldType' => 'select',
                     'label' => 'My object property',
@@ -52,8 +52,8 @@ final class SchemasTest extends TestCase
                     'type' => 'enumeration',
                 ],
             ],
-            'requiredProperties' => ['my_object_property'],
-        ]);
+            requiredProperties: ['my_object_property'],
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(ObjectSchema::class, $result);
@@ -66,11 +66,11 @@ final class SchemasTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->objects->schemas->create([
-            'associatedObjects' => ['CONTACT'],
-            'labels' => ['plural' => 'My objects', 'singular' => 'My object'],
-            'name' => 'my_object',
-            'properties' => [
+        $result = $this->client->crm->objects->schemas->create(
+            associatedObjects: ['CONTACT'],
+            labels: ['plural' => 'My objects', 'singular' => 'My object'],
+            name: 'my_object',
+            properties: [
                 [
                     'fieldType' => 'select',
                     'label' => 'My object property',
@@ -106,12 +106,12 @@ final class SchemasTest extends TestCase
                     'textDisplayHint' => 'domain_name',
                 ],
             ],
-            'requiredProperties' => ['my_object_property'],
-            'description' => 'description',
-            'primaryDisplayProperty' => 'my_object_property',
-            'searchableProperties' => ['string'],
-            'secondaryDisplayProperties' => ['string'],
-        ]);
+            requiredProperties: ['my_object_property'],
+            description: 'description',
+            primaryDisplayProperty: 'my_object_property',
+            searchableProperties: ['string'],
+            secondaryDisplayProperties: ['string'],
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(ObjectSchema::class, $result);
@@ -124,7 +124,7 @@ final class SchemasTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->objects->schemas->update('objectType', []);
+        $result = $this->client->crm->objects->schemas->update('objectType');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(ObjectsSchemasObjectTypeDefinition::class, $result);
@@ -137,7 +137,7 @@ final class SchemasTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->objects->schemas->list([]);
+        $result = $this->client->crm->objects->schemas->list();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(SchemaListResponse::class, $result);
@@ -150,7 +150,7 @@ final class SchemasTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->objects->schemas->delete('objectType', []);
+        $result = $this->client->crm->objects->schemas->delete('objectType');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);
@@ -165,10 +165,8 @@ final class SchemasTest extends TestCase
 
         $result = $this->client->crm->objects->schemas->createAssociation(
             'objectType',
-            [
-                'fromObjectTypeID' => 'fromObjectTypeId',
-                'toObjectTypeID' => 'toObjectTypeId',
-            ],
+            fromObjectTypeID: 'fromObjectTypeId',
+            toObjectTypeID: 'toObjectTypeId',
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -184,11 +182,9 @@ final class SchemasTest extends TestCase
 
         $result = $this->client->crm->objects->schemas->createAssociation(
             'objectType',
-            [
-                'fromObjectTypeID' => 'fromObjectTypeId',
-                'toObjectTypeID' => 'toObjectTypeId',
-                'name' => 'name',
-            ],
+            fromObjectTypeID: 'fromObjectTypeId',
+            toObjectTypeID: 'toObjectTypeId',
+            name: 'name',
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -204,7 +200,7 @@ final class SchemasTest extends TestCase
 
         $result = $this->client->crm->objects->schemas->deleteAssociation(
             'associationIdentifier',
-            ['objectType' => 'objectType']
+            objectType: 'objectType'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -220,7 +216,7 @@ final class SchemasTest extends TestCase
 
         $result = $this->client->crm->objects->schemas->deleteAssociation(
             'associationIdentifier',
-            ['objectType' => 'objectType']
+            objectType: 'objectType'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

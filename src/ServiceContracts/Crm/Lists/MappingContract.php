@@ -5,8 +5,6 @@ declare(strict_types=1);
 namespace HubspotSDK\ServiceContracts\Crm\Lists;
 
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Crm\Lists\Mapping\MappingBatchCreateIDMappingParams;
-use HubspotSDK\Crm\Lists\Mapping\MappingGetIDMappingParams;
 use HubspotSDK\Crm\Lists\PublicBatchMigrationMapping;
 use HubspotSDK\Crm\Lists\PublicMigrationMapping;
 use HubspotSDK\RequestOptions;
@@ -16,24 +14,24 @@ interface MappingContract
     /**
      * @api
      *
-     * @param array<mixed>|MappingBatchCreateIDMappingParams $params
+     * @param list<string> $body
      *
      * @throws APIException
      */
     public function batchCreateIDMapping(
-        array|MappingBatchCreateIDMappingParams $params,
-        ?RequestOptions $requestOptions = null,
+        array $body,
+        ?RequestOptions $requestOptions = null
     ): PublicBatchMigrationMapping;
 
     /**
      * @api
      *
-     * @param array<mixed>|MappingGetIDMappingParams $params
+     * @param string $legacyListID the legacy list id from lists v1 API
      *
      * @throws APIException
      */
     public function getIDMapping(
-        array|MappingGetIDMappingParams $params,
-        ?RequestOptions $requestOptions = null,
+        ?string $legacyListID = null,
+        ?RequestOptions $requestOptions = null
     ): PublicMigrationMapping;
 }

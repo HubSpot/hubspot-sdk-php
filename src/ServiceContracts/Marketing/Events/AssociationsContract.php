@@ -5,11 +5,6 @@ declare(strict_types=1);
 namespace HubspotSDK\ServiceContracts\Marketing\Events;
 
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Marketing\Events\Associations\AssociationAssociateByExternalAccountParams;
-use HubspotSDK\Marketing\Events\Associations\AssociationAssociateParams;
-use HubspotSDK\Marketing\Events\Associations\AssociationDeleteByExternalAccountParams;
-use HubspotSDK\Marketing\Events\Associations\AssociationDeleteParams;
-use HubspotSDK\Marketing\Events\Associations\AssociationListByExternalAccountParams;
 use HubspotSDK\Marketing\Events\CollectionResponseWithTotalPublicListNoPaging;
 use HubspotSDK\RequestOptions;
 
@@ -17,6 +12,8 @@ interface AssociationsContract
 {
     /**
      * @api
+     *
+     * @param string $marketingEventID the internal id of the marketing event in HubSpot
      *
      * @throws APIException
      */
@@ -28,65 +25,74 @@ interface AssociationsContract
     /**
      * @api
      *
-     * @param array<mixed>|AssociationDeleteParams $params
+     * @param string $listID the ILS ID of the list
+     * @param string $marketingEventID the internal id of the marketing event in HubSpot
      *
      * @throws APIException
      */
     public function delete(
         string $listID,
-        array|AssociationDeleteParams $params,
+        string $marketingEventID,
         ?RequestOptions $requestOptions = null,
     ): mixed;
 
     /**
      * @api
      *
-     * @param array<mixed>|AssociationAssociateParams $params
+     * @param string $listID the ILS ID of the list
+     * @param string $marketingEventID the internal id of the marketing event in HubSpot
      *
      * @throws APIException
      */
     public function associate(
         string $listID,
-        array|AssociationAssociateParams $params,
+        string $marketingEventID,
         ?RequestOptions $requestOptions = null,
     ): mixed;
 
     /**
      * @api
      *
-     * @param array<mixed>|AssociationAssociateByExternalAccountParams $params
+     * @param string $listID the ILS ID of the list
+     * @param string $externalAccountID the accountId that is associated with this marketing event in the external event application
+     * @param string $externalEventID the id of the marketing event in the external event application
      *
      * @throws APIException
      */
     public function associateByExternalAccount(
         string $listID,
-        array|AssociationAssociateByExternalAccountParams $params,
+        string $externalAccountID,
+        string $externalEventID,
         ?RequestOptions $requestOptions = null,
     ): mixed;
 
     /**
      * @api
      *
-     * @param array<mixed>|AssociationDeleteByExternalAccountParams $params
+     * @param string $listID the ILS ID of the list
+     * @param string $externalAccountID the accountId that is associated with this marketing event in the external event application
+     * @param string $externalEventID the id of the marketing event in the external event application
      *
      * @throws APIException
      */
     public function deleteByExternalAccount(
         string $listID,
-        array|AssociationDeleteByExternalAccountParams $params,
+        string $externalAccountID,
+        string $externalEventID,
         ?RequestOptions $requestOptions = null,
     ): mixed;
 
     /**
      * @api
      *
-     * @param array<mixed>|AssociationListByExternalAccountParams $params
+     * @param string $externalEventID the id of the marketing event in the external event application
+     * @param string $externalAccountID The accountId that is associated with this marketing event in the external event application
      *
      * @throws APIException
      */
     public function listByExternalAccount(
         string $externalEventID,
-        array|AssociationListByExternalAccountParams $params,
+        string $externalAccountID,
         ?RequestOptions $requestOptions = null,
     ): CollectionResponseWithTotalPublicListNoPaging;
 }

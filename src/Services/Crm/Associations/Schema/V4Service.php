@@ -14,6 +14,11 @@ final class V4Service implements V4Contract
     /**
      * @api
      */
+    public V4RawService $raw;
+
+    /**
+     * @api
+     */
     public ConfigurationsService $configurations;
 
     /**
@@ -26,6 +31,7 @@ final class V4Service implements V4Contract
      */
     public function __construct(private Client $client)
     {
+        $this->raw = new V4RawService($client);
         $this->configurations = new ConfigurationsService($client);
         $this->definitions = new DefinitionsService($client);
     }

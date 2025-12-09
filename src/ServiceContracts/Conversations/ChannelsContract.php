@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace HubspotSDK\ServiceContracts\Conversations;
 
-use HubspotSDK\Conversations\Channels\ChannelListParams;
 use HubspotSDK\Conversations\PublicChannel;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Page;
@@ -15,15 +14,18 @@ interface ChannelsContract
     /**
      * @api
      *
-     * @param array<mixed>|ChannelListParams $params
+     * @param list<string> $sort
      *
      * @return Page<PublicChannel>
      *
      * @throws APIException
      */
     public function list(
-        array|ChannelListParams $params,
-        ?RequestOptions $requestOptions = null
+        ?string $after = null,
+        ?int $defaultPageLength = null,
+        ?int $limit = null,
+        ?array $sort = null,
+        ?RequestOptions $requestOptions = null,
     ): Page;
 
     /**

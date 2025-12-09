@@ -13,6 +13,11 @@ final class ObjectLibraryService implements ObjectLibraryContract
     /**
      * @api
      */
+    public ObjectLibraryRawService $raw;
+
+    /**
+     * @api
+     */
     public EnablementService $enablement;
 
     /**
@@ -20,6 +25,7 @@ final class ObjectLibraryService implements ObjectLibraryContract
      */
     public function __construct(private Client $client)
     {
+        $this->raw = new ObjectLibraryRawService($client);
         $this->enablement = new EnablementService($client);
     }
 }

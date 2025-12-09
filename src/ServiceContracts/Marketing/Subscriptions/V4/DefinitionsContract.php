@@ -6,7 +6,6 @@ namespace HubspotSDK\ServiceContracts\Marketing\Subscriptions\V4;
 
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Marketing\Subscriptions\V4\ActionResponseWithResultsSubscriptionDefinition;
-use HubspotSDK\Marketing\Subscriptions\V4\Definitions\DefinitionListParams;
 use HubspotSDK\RequestOptions;
 
 interface DefinitionsContract
@@ -14,12 +13,14 @@ interface DefinitionsContract
     /**
      * @api
      *
-     * @param array<mixed>|DefinitionListParams $params
+     * @param int $businessUnitID If you have the [business unit add-on](https://developers.hubspot.com/beta-docs/guides/api/settings/business-units-api), include this parameter to filter results by business unit ID. The default Account business unit will always use `0`.
+     * @param bool $includeTranslations set to `true` to return subscription translations associated with each definition
      *
      * @throws APIException
      */
     public function list(
-        array|DefinitionListParams $params,
-        ?RequestOptions $requestOptions = null
+        ?int $businessUnitID = null,
+        ?bool $includeTranslations = null,
+        ?RequestOptions $requestOptions = null,
     ): ActionResponseWithResultsSubscriptionDefinition;
 }

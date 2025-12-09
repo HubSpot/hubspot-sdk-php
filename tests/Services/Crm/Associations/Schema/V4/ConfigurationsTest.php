@@ -73,15 +73,9 @@ final class ConfigurationsTest extends TestCase
             ->configurations
             ->batchCreate(
                 'toObjectType',
-                [
-                    'fromObjectType' => 'fromObjectType',
-                    'inputs' => [
-                        [
-                            'category' => 'HUBSPOT_DEFINED',
-                            'maxToObjectIDs' => 0,
-                            'typeID' => 0,
-                        ],
-                    ],
+                fromObjectType: 'fromObjectType',
+                inputs: [
+                    ['category' => 'HUBSPOT_DEFINED', 'maxToObjectIDs' => 0, 'typeID' => 0],
                 ],
             )
         ;
@@ -109,15 +103,9 @@ final class ConfigurationsTest extends TestCase
             ->configurations
             ->batchCreate(
                 'toObjectType',
-                [
-                    'fromObjectType' => 'fromObjectType',
-                    'inputs' => [
-                        [
-                            'category' => 'HUBSPOT_DEFINED',
-                            'maxToObjectIDs' => 0,
-                            'typeID' => 0,
-                        ],
-                    ],
+                fromObjectType: 'fromObjectType',
+                inputs: [
+                    ['category' => 'HUBSPOT_DEFINED', 'maxToObjectIDs' => 0, 'typeID' => 0],
                 ],
             )
         ;
@@ -145,10 +133,8 @@ final class ConfigurationsTest extends TestCase
             ->configurations
             ->batchDelete(
                 'toObjectType',
-                [
-                    'fromObjectType' => 'fromObjectType',
-                    'inputs' => [['category' => 'category', 'typeID' => 0]],
-                ],
+                fromObjectType: 'fromObjectType',
+                inputs: [['category' => 'category', 'typeID' => 0]],
             )
         ;
 
@@ -172,10 +158,8 @@ final class ConfigurationsTest extends TestCase
             ->configurations
             ->batchDelete(
                 'toObjectType',
-                [
-                    'fromObjectType' => 'fromObjectType',
-                    'inputs' => [['category' => 'category', 'typeID' => 0]],
-                ],
+                fromObjectType: 'fromObjectType',
+                inputs: [['category' => 'category', 'typeID' => 0]],
             )
         ;
 
@@ -199,15 +183,9 @@ final class ConfigurationsTest extends TestCase
             ->configurations
             ->batchUpdate(
                 'toObjectType',
-                [
-                    'fromObjectType' => 'fromObjectType',
-                    'inputs' => [
-                        [
-                            'category' => 'HUBSPOT_DEFINED',
-                            'maxToObjectIDs' => 0,
-                            'typeID' => 0,
-                        ],
-                    ],
+                fromObjectType: 'fromObjectType',
+                inputs: [
+                    ['category' => 'HUBSPOT_DEFINED', 'maxToObjectIDs' => 0, 'typeID' => 0],
                 ],
             )
         ;
@@ -235,15 +213,9 @@ final class ConfigurationsTest extends TestCase
             ->configurations
             ->batchUpdate(
                 'toObjectType',
-                [
-                    'fromObjectType' => 'fromObjectType',
-                    'inputs' => [
-                        [
-                            'category' => 'HUBSPOT_DEFINED',
-                            'maxToObjectIDs' => 0,
-                            'typeID' => 0,
-                        ],
-                    ],
+                fromObjectType: 'fromObjectType',
+                inputs: [
+                    ['category' => 'HUBSPOT_DEFINED', 'maxToObjectIDs' => 0, 'typeID' => 0],
                 ],
             )
         ;
@@ -269,10 +241,7 @@ final class ConfigurationsTest extends TestCase
             ->schema
             ->v4
             ->configurations
-            ->getByObjectTypes(
-                'toObjectType',
-                ['fromObjectType' => 'fromObjectType']
-            )
+            ->getByObjectTypes('toObjectType', fromObjectType: 'fromObjectType')
         ;
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -296,10 +265,7 @@ final class ConfigurationsTest extends TestCase
             ->schema
             ->v4
             ->configurations
-            ->getByObjectTypes(
-                'toObjectType',
-                ['fromObjectType' => 'fromObjectType']
-            )
+            ->getByObjectTypes('toObjectType', fromObjectType: 'fromObjectType')
         ;
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

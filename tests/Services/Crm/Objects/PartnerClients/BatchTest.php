@@ -37,11 +37,11 @@ final class BatchTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->objects->partnerClients->batch->batchGet([
-            'inputs' => [['id' => 'id']],
-            'properties' => ['string'],
-            'propertiesWithHistory' => ['string'],
-        ]);
+        $result = $this->client->crm->objects->partnerClients->batch->batchGet(
+            inputs: [['id' => 'id']],
+            properties: ['string'],
+            propertiesWithHistory: ['string'],
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(BatchResponseSimplePublicObject::class, $result);
@@ -54,13 +54,13 @@ final class BatchTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->objects->partnerClients->batch->batchGet([
-            'inputs' => [['id' => 'id']],
-            'properties' => ['string'],
-            'propertiesWithHistory' => ['string'],
-            'archived' => true,
-            'idProperty' => 'idProperty',
-        ]);
+        $result = $this->client->crm->objects->partnerClients->batch->batchGet(
+            inputs: [['id' => 'id']],
+            properties: ['string'],
+            propertiesWithHistory: ['string'],
+            archived: true,
+            idProperty: 'idProperty',
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(BatchResponseSimplePublicObject::class, $result);
@@ -73,9 +73,9 @@ final class BatchTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->objects->partnerClients->batch->batchUpdate([
-            'inputs' => [['id' => 'id', 'properties' => ['foo' => 'string']]],
-        ]);
+        $result = $this->client->crm->objects->partnerClients->batch->batchUpdate(
+            inputs: [['id' => 'id', 'properties' => ['foo' => 'string']]]
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(BatchResponseSimplePublicObject::class, $result);
@@ -88,8 +88,8 @@ final class BatchTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->objects->partnerClients->batch->batchUpdate([
-            'inputs' => [
+        $result = $this->client->crm->objects->partnerClients->batch->batchUpdate(
+            inputs: [
                 [
                     'id' => 'id',
                     'properties' => ['foo' => 'string'],
@@ -97,7 +97,7 @@ final class BatchTest extends TestCase
                     'objectWriteTraceID' => 'objectWriteTraceId',
                 ],
             ],
-        ]);
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(BatchResponseSimplePublicObject::class, $result);

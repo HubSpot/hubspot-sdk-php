@@ -9,10 +9,7 @@ use HubspotSDK\Crm\Associations\BatchResponseVoid;
 use HubspotSDK\Crm\Associations\Schema\V4\BatchResponsePublicAssociationDefinitionConfigurationUpdateResult;
 use HubspotSDK\Crm\Associations\Schema\V4\BatchResponsePublicAssociationDefinitionUserConfiguration;
 use HubspotSDK\Crm\Associations\Schema\V4\CollectionResponsePublicAssociationDefinitionUserConfiguration;
-use HubspotSDK\Crm\Associations\Schema\V4\Configurations\ConfigurationBatchCreateParams;
-use HubspotSDK\Crm\Associations\Schema\V4\Configurations\ConfigurationBatchDeleteParams;
-use HubspotSDK\Crm\Associations\Schema\V4\Configurations\ConfigurationBatchUpdateParams;
-use HubspotSDK\Crm\Associations\Schema\V4\Configurations\ConfigurationGetByObjectTypesParams;
+use HubspotSDK\Crm\Associations\Schema\V4\PublicAssociationDefinitionConfigurationCreateRequest\Category;
 use HubspotSDK\RequestOptions;
 
 interface ConfigurationsContract
@@ -29,52 +26,67 @@ interface ConfigurationsContract
     /**
      * @api
      *
-     * @param array<mixed>|ConfigurationBatchCreateParams $params
+     * @param string $toObjectType Path param:
+     * @param string $fromObjectType Path param:
+     * @param list<array{
+     *   category: 'HUBSPOT_DEFINED'|'INTEGRATOR_DEFINED'|'USER_DEFINED'|Category,
+     *   maxToObjectIDs: int,
+     *   typeID: int,
+     * }> $inputs Body param:
      *
      * @throws APIException
      */
     public function batchCreate(
         string $toObjectType,
-        array|ConfigurationBatchCreateParams $params,
+        string $fromObjectType,
+        array $inputs,
         ?RequestOptions $requestOptions = null,
     ): BatchResponsePublicAssociationDefinitionUserConfiguration;
 
     /**
      * @api
      *
-     * @param array<mixed>|ConfigurationBatchDeleteParams $params
+     * @param string $toObjectType Path param:
+     * @param string $fromObjectType Path param:
+     * @param list<array{category: string, typeID: int}> $inputs Body param:
      *
      * @throws APIException
      */
     public function batchDelete(
         string $toObjectType,
-        array|ConfigurationBatchDeleteParams $params,
+        string $fromObjectType,
+        array $inputs,
         ?RequestOptions $requestOptions = null,
     ): BatchResponseVoid;
 
     /**
      * @api
      *
-     * @param array<mixed>|ConfigurationBatchUpdateParams $params
+     * @param string $toObjectType Path param:
+     * @param string $fromObjectType Path param:
+     * @param list<array{
+     *   category: 'HUBSPOT_DEFINED'|'INTEGRATOR_DEFINED'|'USER_DEFINED'|\HubspotSDK\Crm\Associations\Schema\V4\PublicAssociationDefinitionConfigurationUpdateRequest\Category,
+     *   maxToObjectIDs: int,
+     *   typeID: int,
+     * }> $inputs Body param:
      *
      * @throws APIException
      */
     public function batchUpdate(
         string $toObjectType,
-        array|ConfigurationBatchUpdateParams $params,
+        string $fromObjectType,
+        array $inputs,
         ?RequestOptions $requestOptions = null,
     ): BatchResponsePublicAssociationDefinitionConfigurationUpdateResult;
 
     /**
      * @api
      *
-     * @param array<mixed>|ConfigurationGetByObjectTypesParams $params
-     *
      * @throws APIException
      */
     public function getByObjectTypes(
         string $toObjectType,
-        array|ConfigurationGetByObjectTypesParams $params,
+        string $fromObjectType,
         ?RequestOptions $requestOptions = null,
     ): CollectionResponsePublicAssociationDefinitionUserConfiguration;
 }

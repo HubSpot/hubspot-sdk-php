@@ -5,13 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Marketing\Events;
 
 use HubspotSDK\Client;
-use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Core\Util;
-use HubspotSDK\Marketing\Events\Attendance\AttendanceCreateByEventIDAndContactIDParams;
-use HubspotSDK\Marketing\Events\Attendance\AttendanceCreateByEventIDAndEmailParams;
-use HubspotSDK\Marketing\Events\Attendance\AttendanceCreateByExternalEventIDAndContactIDParams;
-use HubspotSDK\Marketing\Events\Attendance\AttendanceCreateByExternalEventIDAndEmailParams;
 use HubspotSDK\Marketing\Events\BatchResponseSubscriberEmailResponse;
 use HubspotSDK\Marketing\Events\BatchResponseSubscriberVidResponse;
 use HubspotSDK\RequestOptions;
@@ -20,9 +14,17 @@ use HubspotSDK\ServiceContracts\Marketing\Events\AttendanceContract;
 final class AttendanceService implements AttendanceContract
 {
     /**
+     * @api
+     */
+    public AttendanceRawService $raw;
+
+    /**
      * @internal
      */
-    public function __construct(private Client $client) {}
+    public function __construct(private Client $client)
+    {
+        $this->raw = new AttendanceRawService($client);
+    }
 
     /**
      * @api
@@ -37,39 +39,24 @@ final class AttendanceService implements AttendanceContract
      * - joinedAt
      * - leftAt
      *
-     * @param array{
-     *   objectID: string,
-     *   inputs: list<array{
-     *     interactionDateTime: int, properties: array<string,string>, vid: int
-     *   }>,
-     * }|AttendanceCreateByEventIDAndContactIDParams $params
+     * @param string $subscriberState Path param: The attendance state value. It may be 'register', 'attend' or 'cancel'
+     * @param string $objectID Path param: The internal id of the marketing event in HubSpot
+     * @param list<array{
+     *   interactionDateTime: int, properties: array<string,string>, vid: int
+     * }> $inputs Body param: List of HubSpot contacts to subscribe to the marketing event
      *
      * @throws APIException
      */
     public function createByEventIDAndContactID(
         string $subscriberState,
-        array|AttendanceCreateByEventIDAndContactIDParams $params,
+        string $objectID,
+        array $inputs,
         ?RequestOptions $requestOptions = null,
     ): BatchResponseSubscriberVidResponse {
-        [$parsed, $options] = AttendanceCreateByEventIDAndContactIDParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $objectID = $parsed['objectID'];
-        unset($parsed['objectID']);
+        $params = ['objectID' => $objectID, 'inputs' => $inputs];
 
-        /** @var BaseResponse<BatchResponseSubscriberVidResponse> */
-        $response = $this->client->request(
-            method: 'post',
-            path: [
-                'marketing/v3/marketing-events/%1$s/attendance/%2$s/create',
-                $objectID,
-                $subscriberState,
-            ],
-            body: (object) array_diff_key($parsed, ['objectID']),
-            options: $options,
-            convert: BatchResponseSubscriberVidResponse::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->createByEventIDAndContactID($subscriberState, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -89,42 +76,27 @@ final class AttendanceService implements AttendanceContract
      * - joinedAt
      * - leftAt
      *
-     * @param array{
-     *   objectID: string,
-     *   inputs: list<array{
-     *     contactProperties: array<string,string>,
-     *     email: string,
-     *     interactionDateTime: int,
-     *     properties: array<string,string>,
-     *   }>,
-     * }|AttendanceCreateByEventIDAndEmailParams $params
+     * @param string $subscriberState Path param: The attendance state value. It may be 'register', 'attend' or 'cancel'
+     * @param string $objectID Path param: The internal ID of the marketing event in HubSpot
+     * @param list<array{
+     *   contactProperties: array<string,string>,
+     *   email: string,
+     *   interactionDateTime: int,
+     *   properties: array<string,string>,
+     * }> $inputs Body param: List of marketing event details to create or update
      *
      * @throws APIException
      */
     public function createByEventIDAndEmail(
         string $subscriberState,
-        array|AttendanceCreateByEventIDAndEmailParams $params,
+        string $objectID,
+        array $inputs,
         ?RequestOptions $requestOptions = null,
     ): BatchResponseSubscriberEmailResponse {
-        [$parsed, $options] = AttendanceCreateByEventIDAndEmailParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $objectID = $parsed['objectID'];
-        unset($parsed['objectID']);
+        $params = ['objectID' => $objectID, 'inputs' => $inputs];
 
-        /** @var BaseResponse<BatchResponseSubscriberEmailResponse> */
-        $response = $this->client->request(
-            method: 'post',
-            path: [
-                'marketing/v3/marketing-events/%1$s/attendance/%2$s/email-create',
-                $objectID,
-                $subscriberState,
-            ],
-            body: (object) array_diff_key($parsed, ['objectID']),
-            options: $options,
-            convert: BatchResponseSubscriberEmailResponse::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->createByEventIDAndEmail($subscriberState, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -142,48 +114,32 @@ final class AttendanceService implements AttendanceContract
      * - joinedAt
      * - leftAt
      *
-     * @param array{
-     *   externalEventID: string,
-     *   inputs: list<array{
-     *     interactionDateTime: int, properties: array<string,string>, vid: int
-     *   }>,
-     *   externalAccountID?: string,
-     * }|AttendanceCreateByExternalEventIDAndContactIDParams $params
+     * @param string $subscriberState Path param: The new subscriber state for the HubSpot contacts and the specified marketing event. For example: 'register', 'attend' or 'cancel'.
+     * @param string $externalEventID Path param: The id of the marketing event in the external event application
+     * @param list<array{
+     *   interactionDateTime: int, properties: array<string,string>, vid: int
+     * }> $inputs Body param: List of HubSpot contacts to subscribe to the marketing event
+     * @param string $externalAccountID Query param: The accountId that is associated with this marketing event in the external event application
      *
      * @throws APIException
      */
     public function createByExternalEventIDAndContactID(
         string $subscriberState,
-        array|AttendanceCreateByExternalEventIDAndContactIDParams $params,
+        string $externalEventID,
+        array $inputs,
+        ?string $externalAccountID = null,
         ?RequestOptions $requestOptions = null,
     ): BatchResponseSubscriberVidResponse {
-        [$parsed, $options] = AttendanceCreateByExternalEventIDAndContactIDParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $externalEventID = $parsed['externalEventID'];
-        unset($parsed['externalEventID']);
-        $query_params = ['externalAccountId'];
+        $params = [
+            'externalEventID' => $externalEventID,
+            'inputs' => $inputs,
+            'externalAccountID' => $externalAccountID,
+        ];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<BatchResponseSubscriberVidResponse> */
-        $response = $this->client->request(
-            method: 'post',
-            path: [
-                'marketing/v3/marketing-events/attendance/%1$s/%2$s/create',
-                $externalEventID,
-                $subscriberState,
-            ],
-            query: Util::array_transform_keys(
-                array_diff_key($parsed, $query_params),
-                ['externalAccountID' => 'externalAccountId'],
-            ),
-            body: (object) array_diff_key(
-                array_diff_key($parsed, $query_params),
-                ['externalEventID']
-            ),
-            options: $options,
-            convert: BatchResponseSubscriberVidResponse::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->createByExternalEventIDAndContactID($subscriberState, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -203,51 +159,35 @@ final class AttendanceService implements AttendanceContract
      * - joinedAt
      * - leftAt
      *
-     * @param array{
-     *   externalEventID: string,
-     *   inputs: list<array{
-     *     contactProperties: array<string,string>,
-     *     email: string,
-     *     interactionDateTime: int,
-     *     properties: array<string,string>,
-     *   }>,
-     *   externalAccountID?: string,
-     * }|AttendanceCreateByExternalEventIDAndEmailParams $params
+     * @param string $subscriberState Path param: The new subscriber state for the HubSpot contacts and the specified marketing event. For example: 'register', 'attend' or 'cancel'.
+     * @param string $externalEventID Path param: The id of the marketing event in the external event application
+     * @param list<array{
+     *   contactProperties: array<string,string>,
+     *   email: string,
+     *   interactionDateTime: int,
+     *   properties: array<string,string>,
+     * }> $inputs Body param: List of marketing event details to create or update
+     * @param string $externalAccountID Query param: The accountId that is associated with this marketing event in the external event application
      *
      * @throws APIException
      */
     public function createByExternalEventIDAndEmail(
         string $subscriberState,
-        array|AttendanceCreateByExternalEventIDAndEmailParams $params,
+        string $externalEventID,
+        array $inputs,
+        ?string $externalAccountID = null,
         ?RequestOptions $requestOptions = null,
     ): BatchResponseSubscriberEmailResponse {
-        [$parsed, $options] = AttendanceCreateByExternalEventIDAndEmailParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $externalEventID = $parsed['externalEventID'];
-        unset($parsed['externalEventID']);
-        $query_params = ['externalAccountId'];
+        $params = [
+            'externalEventID' => $externalEventID,
+            'inputs' => $inputs,
+            'externalAccountID' => $externalAccountID,
+        ];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<BatchResponseSubscriberEmailResponse> */
-        $response = $this->client->request(
-            method: 'post',
-            path: [
-                'marketing/v3/marketing-events/attendance/%1$s/%2$s/email-create',
-                $externalEventID,
-                $subscriberState,
-            ],
-            query: Util::array_transform_keys(
-                array_diff_key($parsed, $query_params),
-                ['externalAccountID' => 'externalAccountId'],
-            ),
-            body: (object) array_diff_key(
-                array_diff_key($parsed, $query_params),
-                ['externalEventID']
-            ),
-            options: $options,
-            convert: BatchResponseSubscriberEmailResponse::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->createByExternalEventIDAndEmail($subscriberState, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }

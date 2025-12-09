@@ -14,6 +14,11 @@ final class V4Service implements V4Contract
     /**
      * @api
      */
+    public V4RawService $raw;
+
+    /**
+     * @api
+     */
     public BatchService $batch;
 
     /**
@@ -26,6 +31,7 @@ final class V4Service implements V4Contract
      */
     public function __construct(private Client $client)
     {
+        $this->raw = new V4RawService($client);
         $this->batch = new BatchService($client);
         $this->report = new ReportService($client);
     }

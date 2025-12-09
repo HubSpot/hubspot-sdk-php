@@ -5,125 +5,95 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Crm\Associations\Schema\V4;
 
 use HubspotSDK\Client;
-use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\Associations\Schema\V4\CollectionResponseAssociationSpecWithLabel;
-use HubspotSDK\Crm\Associations\Schema\V4\Definitions\DefinitionCreateLabelParams;
-use HubspotSDK\Crm\Associations\Schema\V4\Definitions\DefinitionDeleteLabelParams;
-use HubspotSDK\Crm\Associations\Schema\V4\Definitions\DefinitionListLabelsParams;
-use HubspotSDK\Crm\Associations\Schema\V4\Definitions\DefinitionUpdateLabelParams;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Associations\Schema\V4\DefinitionsContract;
 
 final class DefinitionsService implements DefinitionsContract
 {
     /**
+     * @api
+     */
+    public DefinitionsRawService $raw;
+
+    /**
      * @internal
      */
-    public function __construct(private Client $client) {}
+    public function __construct(private Client $client)
+    {
+        $this->raw = new DefinitionsRawService($client);
+    }
 
     /**
      * @api
      *
-     * @param array{
-     *   fromObjectType: string, label: string, name: string, inverseLabel?: string
-     * }|DefinitionCreateLabelParams $params
+     * @param string $toObjectType Path param:
+     * @param string $fromObjectType Path param:
+     * @param string $label Body param:
+     * @param string $name Body param:
+     * @param string $inverseLabel Body param:
      *
      * @throws APIException
      */
     public function createLabel(
         string $toObjectType,
-        array|DefinitionCreateLabelParams $params,
+        string $fromObjectType,
+        string $label,
+        string $name,
+        ?string $inverseLabel = null,
         ?RequestOptions $requestOptions = null,
     ): CollectionResponseAssociationSpecWithLabel {
-        [$parsed, $options] = DefinitionCreateLabelParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $fromObjectType = $parsed['fromObjectType'];
-        unset($parsed['fromObjectType']);
+        $params = [
+            'fromObjectType' => $fromObjectType,
+            'label' => $label,
+            'name' => $name,
+            'inverseLabel' => $inverseLabel,
+        ];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<CollectionResponseAssociationSpecWithLabel> */
-        $response = $this->client->request(
-            method: 'post',
-            path: [
-                'crm/associations/v4/%1$s/%2$s/labels', $fromObjectType, $toObjectType,
-            ],
-            body: (object) array_diff_key($parsed, ['fromObjectType']),
-            options: $options,
-            convert: CollectionResponseAssociationSpecWithLabel::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->createLabel($toObjectType, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
 
     /**
      * @api
-     *
-     * @param array{
-     *   fromObjectType: string, toObjectType: string
-     * }|DefinitionDeleteLabelParams $params
      *
      * @throws APIException
      */
     public function deleteLabel(
         int $associationTypeID,
-        array|DefinitionDeleteLabelParams $params,
+        string $fromObjectType,
+        string $toObjectType,
         ?RequestOptions $requestOptions = null,
     ): mixed {
-        [$parsed, $options] = DefinitionDeleteLabelParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $fromObjectType = $parsed['fromObjectType'];
-        unset($parsed['fromObjectType']);
-        $toObjectType = $parsed['toObjectType'];
-        unset($parsed['toObjectType']);
+        $params = [
+            'fromObjectType' => $fromObjectType, 'toObjectType' => $toObjectType,
+        ];
 
-        /** @var BaseResponse<mixed> */
-        $response = $this->client->request(
-            method: 'delete',
-            path: [
-                'crm/associations/v4/%1$s/%2$s/labels/%3$s',
-                $fromObjectType,
-                $toObjectType,
-                $associationTypeID,
-            ],
-            options: $options,
-            convert: null,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->deleteLabel($associationTypeID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
 
     /**
      * @api
-     *
-     * @param array{fromObjectType: string}|DefinitionListLabelsParams $params
      *
      * @throws APIException
      */
     public function listLabels(
         string $toObjectType,
-        array|DefinitionListLabelsParams $params,
+        string $fromObjectType,
         ?RequestOptions $requestOptions = null,
     ): CollectionResponseAssociationSpecWithLabel {
-        [$parsed, $options] = DefinitionListLabelsParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $fromObjectType = $parsed['fromObjectType'];
-        unset($parsed['fromObjectType']);
+        $params = ['fromObjectType' => $fromObjectType];
 
-        /** @var BaseResponse<CollectionResponseAssociationSpecWithLabel> */
-        $response = $this->client->request(
-            method: 'get',
-            path: [
-                'crm/associations/v4/%1$s/%2$s/labels', $fromObjectType, $toObjectType,
-            ],
-            options: $options,
-            convert: CollectionResponseAssociationSpecWithLabel::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->listLabels($toObjectType, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -131,37 +101,33 @@ final class DefinitionsService implements DefinitionsContract
     /**
      * @api
      *
-     * @param array{
-     *   fromObjectType: string,
-     *   associationTypeID: int,
-     *   label: string,
-     *   inverseLabel?: string,
-     * }|DefinitionUpdateLabelParams $params
+     * @param string $toObjectType Path param:
+     * @param string $fromObjectType Path param:
+     * @param int $associationTypeID Body param:
+     * @param string $label Body param:
+     * @param string $inverseLabel Body param:
      *
      * @throws APIException
      */
     public function updateLabel(
         string $toObjectType,
-        array|DefinitionUpdateLabelParams $params,
+        string $fromObjectType,
+        int $associationTypeID,
+        string $label,
+        ?string $inverseLabel = null,
         ?RequestOptions $requestOptions = null,
     ): mixed {
-        [$parsed, $options] = DefinitionUpdateLabelParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $fromObjectType = $parsed['fromObjectType'];
-        unset($parsed['fromObjectType']);
+        $params = [
+            'fromObjectType' => $fromObjectType,
+            'associationTypeID' => $associationTypeID,
+            'label' => $label,
+            'inverseLabel' => $inverseLabel,
+        ];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<mixed> */
-        $response = $this->client->request(
-            method: 'put',
-            path: [
-                'crm/associations/v4/%1$s/%2$s/labels', $fromObjectType, $toObjectType,
-            ],
-            body: (object) array_diff_key($parsed, ['fromObjectType']),
-            options: $options,
-            convert: null,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->updateLabel($toObjectType, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }

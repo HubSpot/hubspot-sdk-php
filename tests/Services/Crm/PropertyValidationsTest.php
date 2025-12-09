@@ -60,11 +60,9 @@ final class PropertyValidationsTest extends TestCase
             ->propertyValidations
             ->crmV3PropertyValidationsObjectTypeIDPropertyNameRuleTypeRuleType(
                 'AFTER_DATETIME_DURATION',
-                [
-                    'objectTypeID' => 'objectTypeId',
-                    'propertyName' => 'propertyName',
-                    'ruleArguments' => ['string'],
-                ],
+                objectTypeID: 'objectTypeId',
+                propertyName: 'propertyName',
+                ruleArguments: ['string'],
             )
         ;
 
@@ -85,11 +83,9 @@ final class PropertyValidationsTest extends TestCase
             ->propertyValidations
             ->crmV3PropertyValidationsObjectTypeIDPropertyNameRuleTypeRuleType(
                 'AFTER_DATETIME_DURATION',
-                [
-                    'objectTypeID' => 'objectTypeId',
-                    'propertyName' => 'propertyName',
-                    'ruleArguments' => ['string'],
-                ],
+                objectTypeID: 'objectTypeId',
+                propertyName: 'propertyName',
+                ruleArguments: ['string'],
             )
         ;
 
@@ -106,7 +102,7 @@ final class PropertyValidationsTest extends TestCase
 
         $result = $this->client->crm->propertyValidations->get(
             'propertyName',
-            ['objectTypeID' => 'objectTypeId']
+            objectTypeID: 'objectTypeId'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -125,7 +121,7 @@ final class PropertyValidationsTest extends TestCase
 
         $result = $this->client->crm->propertyValidations->get(
             'propertyName',
-            ['objectTypeID' => 'objectTypeId']
+            objectTypeID: 'objectTypeId'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

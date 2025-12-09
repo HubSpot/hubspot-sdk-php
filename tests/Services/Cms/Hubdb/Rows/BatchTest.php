@@ -39,7 +39,7 @@ final class BatchTest extends TestCase
 
         $result = $this->client->cms->hubdb->rows->batch->cloneBatch(
             'tableIdOrName',
-            ['inputs' => [['id' => 'id']]]
+            inputs: [['id' => 'id']]
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -55,7 +55,7 @@ final class BatchTest extends TestCase
 
         $result = $this->client->cms->hubdb->rows->batch->cloneBatch(
             'tableIdOrName',
-            ['inputs' => [['id' => 'id', 'name' => 'name']]]
+            inputs: [['id' => 'id', 'name' => 'name']]
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -71,10 +71,8 @@ final class BatchTest extends TestCase
 
         $result = $this->client->cms->hubdb->rows->batch->createBatch(
             'tableIdOrName',
-            [
-                'inputs' => [
-                    ['childTableID' => 0, 'displayIndex' => 0, 'values' => ['foo' => []]],
-                ],
+            inputs: [
+                ['childTableID' => 0, 'displayIndex' => 0, 'values' => ['foo' => []]],
             ],
         );
 
@@ -91,15 +89,13 @@ final class BatchTest extends TestCase
 
         $result = $this->client->cms->hubdb->rows->batch->createBatch(
             'tableIdOrName',
-            [
-                'inputs' => [
-                    [
-                        'childTableID' => 0,
-                        'displayIndex' => 0,
-                        'values' => ['foo' => []],
-                        'name' => 'name',
-                        'path' => 'path',
-                    ],
+            inputs: [
+                [
+                    'childTableID' => 0,
+                    'displayIndex' => 0,
+                    'values' => ['foo' => []],
+                    'name' => 'name',
+                    'path' => 'path',
                 ],
             ],
         );
@@ -117,7 +113,7 @@ final class BatchTest extends TestCase
 
         $result = $this->client->cms->hubdb->rows->batch->getBatch(
             'tableIdOrName',
-            ['inputs' => ['string']]
+            inputs: ['string']
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -133,7 +129,7 @@ final class BatchTest extends TestCase
 
         $result = $this->client->cms->hubdb->rows->batch->getBatch(
             'tableIdOrName',
-            ['inputs' => ['string']]
+            inputs: ['string']
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -149,7 +145,7 @@ final class BatchTest extends TestCase
 
         $result = $this->client->cms->hubdb->rows->batch->getDraftBatch(
             'tableIdOrName',
-            ['inputs' => ['string']]
+            inputs: ['string']
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -165,7 +161,7 @@ final class BatchTest extends TestCase
 
         $result = $this->client->cms->hubdb->rows->batch->getDraftBatch(
             'tableIdOrName',
-            ['inputs' => ['string']]
+            inputs: ['string']
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -181,7 +177,7 @@ final class BatchTest extends TestCase
 
         $result = $this->client->cms->hubdb->rows->batch->purgeBatch(
             'tableIdOrName',
-            ['inputs' => ['string']]
+            inputs: ['string']
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -197,7 +193,7 @@ final class BatchTest extends TestCase
 
         $result = $this->client->cms->hubdb->rows->batch->purgeBatch(
             'tableIdOrName',
-            ['inputs' => ['string']]
+            inputs: ['string']
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -213,10 +209,8 @@ final class BatchTest extends TestCase
 
         $result = $this->client->cms->hubdb->rows->batch->replaceBatch(
             'tableIdOrName',
-            [
-                'inputs' => [
-                    ['childTableID' => 0, 'displayIndex' => 0, 'values' => ['foo' => []]],
-                ],
+            inputs: [
+                ['childTableID' => 0, 'displayIndex' => 0, 'values' => ['foo' => []]],
             ],
         );
 
@@ -233,16 +227,14 @@ final class BatchTest extends TestCase
 
         $result = $this->client->cms->hubdb->rows->batch->replaceBatch(
             'tableIdOrName',
-            [
-                'inputs' => [
-                    [
-                        'childTableID' => 0,
-                        'displayIndex' => 0,
-                        'values' => ['foo' => []],
-                        'id' => 'id',
-                        'name' => 'name',
-                        'path' => 'path',
-                    ],
+            inputs: [
+                [
+                    'childTableID' => 0,
+                    'displayIndex' => 0,
+                    'values' => ['foo' => []],
+                    'id' => 'id',
+                    'name' => 'name',
+                    'path' => 'path',
                 ],
             ],
         );
@@ -260,10 +252,8 @@ final class BatchTest extends TestCase
 
         $result = $this->client->cms->hubdb->rows->batch->updateBatch(
             'tableIdOrName',
-            [
-                'inputs' => [
-                    ['childTableID' => 0, 'displayIndex' => 0, 'values' => ['foo' => []]],
-                ],
+            inputs: [
+                ['childTableID' => 0, 'displayIndex' => 0, 'values' => ['foo' => []]],
             ],
         );
 
@@ -280,16 +270,14 @@ final class BatchTest extends TestCase
 
         $result = $this->client->cms->hubdb->rows->batch->updateBatch(
             'tableIdOrName',
-            [
-                'inputs' => [
-                    [
-                        'childTableID' => 0,
-                        'displayIndex' => 0,
-                        'values' => ['foo' => []],
-                        'id' => 'id',
-                        'name' => 'name',
-                        'path' => 'path',
-                    ],
+            inputs: [
+                [
+                    'childTableID' => 0,
+                    'displayIndex' => 0,
+                    'values' => ['foo' => []],
+                    'id' => 'id',
+                    'name' => 'name',
+                    'path' => 'path',
                 ],
             ],
         );

@@ -21,6 +21,11 @@ final class CmsService implements CmsContract
     /**
      * @api
      */
+    public CmsRawService $raw;
+
+    /**
+     * @api
+     */
     public AuditLogsService $auditLogs;
 
     /**
@@ -68,6 +73,7 @@ final class CmsService implements CmsContract
      */
     public function __construct(private Client $client)
     {
+        $this->raw = new CmsRawService($client);
         $this->auditLogs = new AuditLogsService($client);
         $this->blogs = new BlogsService($client);
         $this->domains = new DomainsService($client);

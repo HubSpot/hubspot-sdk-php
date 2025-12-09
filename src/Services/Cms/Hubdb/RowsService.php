@@ -6,16 +6,6 @@ namespace HubspotSDK\Services\Cms\Hubdb;
 
 use HubspotSDK\Client;
 use HubspotSDK\Cms\Hubdb\HubDBTableRowV3;
-use HubspotSDK\Cms\Hubdb\Rows\RowCloneDraftParams;
-use HubspotSDK\Cms\Hubdb\Rows\RowCreateParams;
-use HubspotSDK\Cms\Hubdb\Rows\RowDeleteDraftParams;
-use HubspotSDK\Cms\Hubdb\Rows\RowGetDraftParams;
-use HubspotSDK\Cms\Hubdb\Rows\RowGetParams;
-use HubspotSDK\Cms\Hubdb\Rows\RowListDraftParams;
-use HubspotSDK\Cms\Hubdb\Rows\RowListParams;
-use HubspotSDK\Cms\Hubdb\Rows\RowReplaceDraftParams;
-use HubspotSDK\Cms\Hubdb\Rows\RowUpdateDraftParams;
-use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
@@ -27,6 +17,11 @@ final class RowsService implements RowsContract
     /**
      * @api
      */
+    public RowsRawService $raw;
+
+    /**
+     * @api
+     */
     public BatchService $batch;
 
     /**
@@ -34,6 +29,7 @@ final class RowsService implements RowsContract
      */
     public function __construct(private Client $client)
     {
+        $this->raw = new RowsRawService($client);
         $this->batch = new BatchService($client);
     }
 
@@ -42,34 +38,35 @@ final class RowsService implements RowsContract
      *
      * Add a new row to a HubDB table. New rows will be added to the draft version of the table. Use the `/publish` endpoint to push these changes to published version.
      *
-     * @param array{
-     *   childTableID: int,
-     *   displayIndex: int,
-     *   values: array<string,array<string,mixed>>,
-     *   name?: string,
-     *   path?: string,
-     * }|RowCreateParams $params
+     * @param string $tableIDOrName the ID or name of the target table
+     * @param int $childTableID Specifies the value for the column child table id
+     * @param array<string,array<string,mixed>> $values List of key value pairs with the column name and column value
+     * @param string $name Specifies the value for `hs_name` column, which will be used as title in the dynamic pages
+     * @param string $path Specifies the value for `hs_path` column, which will be used as slug in the dynamic pages
      *
      * @throws APIException
      */
     public function create(
         string $tableIDOrName,
-        array|RowCreateParams $params,
+        int $childTableID,
+        int $displayIndex,
+        array $values,
+        ?string $name = null,
+        ?string $path = null,
         ?RequestOptions $requestOptions = null,
     ): HubDBTableRowV3 {
-        [$parsed, $options] = RowCreateParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = [
+            'childTableID' => $childTableID,
+            'displayIndex' => $displayIndex,
+            'values' => $values,
+            'name' => $name,
+            'path' => $path,
+        ];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<HubDBTableRowV3> */
-        $response = $this->client->request(
-            method: 'post',
-            path: ['cms/v3/hubdb/tables/%1$s/rows', $tableIDOrName],
-            body: (object) $parsed,
-            options: $options,
-            convert: HubDBTableRowV3::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->create($tableIDOrName, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -80,14 +77,13 @@ final class RowsService implements RowsContract
      * Returns a set of rows in the published version of the specified table. Row results can be filtered and sorted. Filtering and sorting options will be sent as query parameters to the API request. For example, by adding the query parameters `column1__gt=5&sort=-column1`, API returns the rows with values for column `column1` greater than 5 and in the descending order of `column1` values. Refer to the [overview section](https://developers.hubspot.com/docs/api/cms/hubdb#filtering-and-sorting-table-rows) for detailed filtering and sorting options.
      * **Note:** This endpoint can be accessed without any authentication, if the table is set to be allowed for public access.
      *
-     * @param array{
-     *   after?: string,
-     *   archived?: bool,
-     *   limit?: int,
-     *   offset?: int,
-     *   properties?: list<string>,
-     *   sort?: list<string>,
-     * }|RowListParams $params
+     * @param string $tableIDOrName the ID or name of the table to query
+     * @param string $after The cursor token value to get the next set of results. You can get this from the `paging.next.after` JSON property of a paged response containing more results.
+     * @param bool $archived specifies whether to include archived rows in the response
+     * @param int $limit The maximum number of results to return. Default is `1000`.
+     * @param int $offset the number of rows to skip before starting to return results
+     * @param list<string> $properties specify the column names to get results containing only the required columns instead of all column details
+     * @param list<string> $sort Specifies the column names to sort the results by. See the above description for more details.
      *
      * @return Page<mixed>
      *
@@ -95,23 +91,27 @@ final class RowsService implements RowsContract
      */
     public function list(
         string $tableIDOrName,
-        array|RowListParams $params,
+        ?string $after = null,
+        ?bool $archived = null,
+        ?int $limit = null,
+        ?int $offset = null,
+        ?array $properties = null,
+        ?array $sort = null,
         ?RequestOptions $requestOptions = null,
     ): Page {
-        [$parsed, $options] = RowListParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = [
+            'after' => $after,
+            'archived' => $archived,
+            'limit' => $limit,
+            'offset' => $offset,
+            'properties' => $properties,
+            'sort' => $sort,
+        ];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<Page<mixed>> */
-        $response = $this->client->request(
-            method: 'get',
-            path: ['cms/v3/hubdb/tables/%1$s/rows', $tableIDOrName],
-            query: $parsed,
-            options: $options,
-            convert: 'mixed',
-            page: Page::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->list($tableIDOrName, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -121,32 +121,24 @@ final class RowsService implements RowsContract
      *
      * Clones a single row in the draft version of a table.
      *
-     * @param array{tableIDOrName: string, name?: string}|RowCloneDraftParams $params
+     * @param string $rowID Path param: The ID of the row
+     * @param string $tableIDOrName Path param: The ID or name of the table
+     * @param string $name query param: The name for the cloned row
      *
      * @throws APIException
      */
     public function cloneDraft(
         string $rowID,
-        array|RowCloneDraftParams $params,
+        string $tableIDOrName,
+        ?string $name = null,
         ?RequestOptions $requestOptions = null,
     ): HubDBTableRowV3 {
-        [$parsed, $options] = RowCloneDraftParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $tableIDOrName = $parsed['tableIDOrName'];
-        unset($parsed['tableIDOrName']);
+        $params = ['tableIDOrName' => $tableIDOrName, 'name' => $name];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<HubDBTableRowV3> */
-        $response = $this->client->request(
-            method: 'post',
-            path: [
-                'cms/v3/hubdb/tables/%1$s/rows/%2$s/draft/clone', $tableIDOrName, $rowID,
-            ],
-            query: $parsed,
-            options: $options,
-            convert: HubDBTableRowV3::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->cloneDraft($rowID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -156,31 +148,20 @@ final class RowsService implements RowsContract
      *
      * Permanently deletes a row from a table's draft version.
      *
-     * @param array{tableIDOrName: string}|RowDeleteDraftParams $params
+     * @param string $rowID The ID of the row
+     * @param string $tableIDOrName The ID or name of the table
      *
      * @throws APIException
      */
     public function deleteDraft(
         string $rowID,
-        array|RowDeleteDraftParams $params,
-        ?RequestOptions $requestOptions = null,
+        string $tableIDOrName,
+        ?RequestOptions $requestOptions = null
     ): mixed {
-        [$parsed, $options] = RowDeleteDraftParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $tableIDOrName = $parsed['tableIDOrName'];
-        unset($parsed['tableIDOrName']);
+        $params = ['tableIDOrName' => $tableIDOrName];
 
-        /** @var BaseResponse<mixed> */
-        $response = $this->client->request(
-            method: 'delete',
-            path: [
-                'cms/v3/hubdb/tables/%1$s/rows/%2$s/draft', $tableIDOrName, $rowID,
-            ],
-            options: $options,
-            convert: null,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->deleteDraft($rowID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -191,30 +172,24 @@ final class RowsService implements RowsContract
      * Get a single row by ID from the published version of a table.
      * **Note:** This endpoint can be accessed without any authentication, if the table is set to be allowed for public access.
      *
-     * @param array{tableIDOrName: string, archived?: bool}|RowGetParams $params
+     * @param string $rowID Path param: The ID of the row
+     * @param string $tableIDOrName Path param: The ID or name of the table
+     * @param bool $archived Query param: Specifies whether to return an archived row. Defaults to `false`.
      *
      * @throws APIException
      */
     public function get(
         string $rowID,
-        array|RowGetParams $params,
+        string $tableIDOrName,
+        ?bool $archived = null,
         ?RequestOptions $requestOptions = null,
     ): HubDBTableRowV3 {
-        [$parsed, $options] = RowGetParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $tableIDOrName = $parsed['tableIDOrName'];
-        unset($parsed['tableIDOrName']);
+        $params = ['tableIDOrName' => $tableIDOrName, 'archived' => $archived];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<HubDBTableRowV3> */
-        $response = $this->client->request(
-            method: 'get',
-            path: ['cms/v3/hubdb/tables/%1$s/rows/%2$s', $tableIDOrName, $rowID],
-            query: $parsed,
-            options: $options,
-            convert: HubDBTableRowV3::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->get($rowID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -224,32 +199,24 @@ final class RowsService implements RowsContract
      *
      * Get a single row by ID from a table's draft version.
      *
-     * @param array{tableIDOrName: string, archived?: bool}|RowGetDraftParams $params
+     * @param string $rowID Path param: The ID of the row
+     * @param string $tableIDOrName Path param: The ID or name of the table
+     * @param bool $archived Query param: Set this to `true` to return an archived row. Defaults to `false`.
      *
      * @throws APIException
      */
     public function getDraft(
         string $rowID,
-        array|RowGetDraftParams $params,
+        string $tableIDOrName,
+        ?bool $archived = null,
         ?RequestOptions $requestOptions = null,
     ): HubDBTableRowV3 {
-        [$parsed, $options] = RowGetDraftParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $tableIDOrName = $parsed['tableIDOrName'];
-        unset($parsed['tableIDOrName']);
+        $params = ['tableIDOrName' => $tableIDOrName, 'archived' => $archived];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<HubDBTableRowV3> */
-        $response = $this->client->request(
-            method: 'get',
-            path: [
-                'cms/v3/hubdb/tables/%1$s/rows/%2$s/draft', $tableIDOrName, $rowID,
-            ],
-            query: $parsed,
-            options: $options,
-            convert: HubDBTableRowV3::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->getDraft($rowID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -259,14 +226,13 @@ final class RowsService implements RowsContract
      *
      * Returns rows in the draft version of the specified table. Row results can be filtered and sorted. Filtering and sorting options will be sent as query parameters to the API request. For example, by adding the query parameters `column1__gt=5&sort=-column1`, API returns the rows with values for column `column1` greater than 5 and in the descending order of `column1` values. Refer to the [overview section](https://developers.hubspot.com/docs/api/cms/hubdb#filtering-and-sorting-table-rows) for detailed filtering and sorting options.
      *
-     * @param array{
-     *   after?: string,
-     *   archived?: bool,
-     *   limit?: int,
-     *   offset?: int,
-     *   properties?: list<string>,
-     *   sort?: list<string>,
-     * }|RowListDraftParams $params
+     * @param string $tableIDOrName the ID or name of the table to query
+     * @param string $after The cursor token value to get the next set of results. You can get this from the `paging.next.after` JSON property of a paged response containing more results.
+     * @param bool $archived Specifies whether to return archived rows. Defaults to `false`.
+     * @param int $limit The maximum number of results to return. Default is `1000`.
+     * @param int $offset the number of rows to skip before starting to return results
+     * @param list<string> $properties Specify the column names to get results containing only the required columns instead of all column details. If you want to include multiple columns in the result, use this query param as many times.
+     * @param list<string> $sort specifies the column names to sort the results by
      *
      * @return Page<mixed>
      *
@@ -274,23 +240,27 @@ final class RowsService implements RowsContract
      */
     public function listDraft(
         string $tableIDOrName,
-        array|RowListDraftParams $params,
+        ?string $after = null,
+        ?bool $archived = null,
+        ?int $limit = null,
+        ?int $offset = null,
+        ?array $properties = null,
+        ?array $sort = null,
         ?RequestOptions $requestOptions = null,
     ): Page {
-        [$parsed, $options] = RowListDraftParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = [
+            'after' => $after,
+            'archived' => $archived,
+            'limit' => $limit,
+            'offset' => $offset,
+            'properties' => $properties,
+            'sort' => $sort,
+        ];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<Page<mixed>> */
-        $response = $this->client->request(
-            method: 'get',
-            path: ['cms/v3/hubdb/tables/%1$s/rows/draft', $tableIDOrName],
-            query: $parsed,
-            options: $options,
-            convert: 'mixed',
-            page: Page::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->listDraft($tableIDOrName, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -301,39 +271,39 @@ final class RowsService implements RowsContract
      * Replace a single row in the draft version of a table. All column values must be specified. If a column has a value in the target table and this request doesn't define that value, it will be deleted.
      * See the "Create a row" endpoint for instructions on how to format the JSON row definitions.
      *
-     * @param array{
-     *   tableIDOrName: string,
-     *   childTableID: int,
-     *   displayIndex: int,
-     *   values: array<string,array<string,mixed>>,
-     *   name?: string,
-     *   path?: string,
-     * }|RowReplaceDraftParams $params
+     * @param string $rowID Path param: The ID of the row
+     * @param string $tableIDOrName Path param: The ID or name of the table
+     * @param int $childTableID Body param: Specifies the value for the column child table id
+     * @param int $displayIndex Body param:
+     * @param array<string,array<string,mixed>> $values Body param: List of key value pairs with the column name and column value
+     * @param string $name Body param: Specifies the value for `hs_name` column, which will be used as title in the dynamic pages
+     * @param string $path Body param: Specifies the value for `hs_path` column, which will be used as slug in the dynamic pages
      *
      * @throws APIException
      */
     public function replaceDraft(
         string $rowID,
-        array|RowReplaceDraftParams $params,
+        string $tableIDOrName,
+        int $childTableID,
+        int $displayIndex,
+        array $values,
+        ?string $name = null,
+        ?string $path = null,
         ?RequestOptions $requestOptions = null,
     ): HubDBTableRowV3 {
-        [$parsed, $options] = RowReplaceDraftParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $tableIDOrName = $parsed['tableIDOrName'];
-        unset($parsed['tableIDOrName']);
+        $params = [
+            'tableIDOrName' => $tableIDOrName,
+            'childTableID' => $childTableID,
+            'displayIndex' => $displayIndex,
+            'values' => $values,
+            'name' => $name,
+            'path' => $path,
+        ];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<HubDBTableRowV3> */
-        $response = $this->client->request(
-            method: 'put',
-            path: [
-                'cms/v3/hubdb/tables/%1$s/rows/%2$s/draft', $tableIDOrName, $rowID,
-            ],
-            body: (object) array_diff_key($parsed, ['tableIDOrName']),
-            options: $options,
-            convert: HubDBTableRowV3::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->replaceDraft($rowID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -345,39 +315,39 @@ final class RowsService implements RowsContract
      * All the column values need not be specified. Only the columns or fields that needs to be modified can be specified.
      * See the "Create a row" endpoint for instructions on how to format the JSON row definitions.
      *
-     * @param array{
-     *   tableIDOrName: string,
-     *   childTableID: int,
-     *   displayIndex: int,
-     *   values: array<string,array<string,mixed>>,
-     *   name?: string,
-     *   path?: string,
-     * }|RowUpdateDraftParams $params
+     * @param string $rowID Path param: The ID of the row
+     * @param string $tableIDOrName Path param: The ID or name of the table
+     * @param int $childTableID Body param: Specifies the value for the column child table id
+     * @param int $displayIndex Body param:
+     * @param array<string,array<string,mixed>> $values Body param: List of key value pairs with the column name and column value
+     * @param string $name Body param: Specifies the value for `hs_name` column, which will be used as title in the dynamic pages
+     * @param string $path Body param: Specifies the value for `hs_path` column, which will be used as slug in the dynamic pages
      *
      * @throws APIException
      */
     public function updateDraft(
         string $rowID,
-        array|RowUpdateDraftParams $params,
+        string $tableIDOrName,
+        int $childTableID,
+        int $displayIndex,
+        array $values,
+        ?string $name = null,
+        ?string $path = null,
         ?RequestOptions $requestOptions = null,
     ): HubDBTableRowV3 {
-        [$parsed, $options] = RowUpdateDraftParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $tableIDOrName = $parsed['tableIDOrName'];
-        unset($parsed['tableIDOrName']);
+        $params = [
+            'tableIDOrName' => $tableIDOrName,
+            'childTableID' => $childTableID,
+            'displayIndex' => $displayIndex,
+            'values' => $values,
+            'name' => $name,
+            'path' => $path,
+        ];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<HubDBTableRowV3> */
-        $response = $this->client->request(
-            method: 'patch',
-            path: [
-                'cms/v3/hubdb/tables/%1$s/rows/%2$s/draft', $tableIDOrName, $rowID,
-            ],
-            body: (object) array_diff_key($parsed, ['tableIDOrName']),
-            options: $options,
-            convert: HubDBTableRowV3::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->updateDraft($rowID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }

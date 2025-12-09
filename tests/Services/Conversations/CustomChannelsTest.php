@@ -38,9 +38,10 @@ final class CustomChannelsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->conversations->customChannels->create([
-            'capabilities' => ['foo' => []], 'name' => 'name',
-        ]);
+        $result = $this->client->conversations->customChannels->create(
+            capabilities: ['foo' => []],
+            name: 'name'
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(PublicChannelIntegrationChannel::class, $result);
@@ -53,14 +54,14 @@ final class CustomChannelsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->conversations->customChannels->create([
-            'capabilities' => ['foo' => []],
-            'name' => 'name',
-            'channelAccountConnectionRedirectURL' => 'channelAccountConnectionRedirectUrl',
-            'channelDescription' => 'channelDescription',
-            'channelLogoURL' => 'channelLogoUrl',
-            'webhookURL' => 'webhookUrl',
-        ]);
+        $result = $this->client->conversations->customChannels->create(
+            capabilities: ['foo' => []],
+            name: 'name',
+            channelAccountConnectionRedirectURL: 'channelAccountConnectionRedirectUrl',
+            channelDescription: 'channelDescription',
+            channelLogoURL: 'channelLogoUrl',
+            webhookURL: 'webhookUrl',
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(PublicChannelIntegrationChannel::class, $result);
@@ -75,14 +76,12 @@ final class CustomChannelsTest extends TestCase
 
         $result = $this->client->conversations->customChannels->update(
             0,
-            [
-                'capabilities' => ['foo' => []],
-                'channelAccountConnectionRedirectURL' => [],
-                'channelDescription' => [],
-                'channelLogoURL' => [],
-                'name' => [],
-                'webhookURL' => [],
-            ],
+            capabilities: ['foo' => []],
+            channelAccountConnectionRedirectURL: [],
+            channelDescription: [],
+            channelLogoURL: [],
+            name: [],
+            webhookURL: [],
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -98,14 +97,12 @@ final class CustomChannelsTest extends TestCase
 
         $result = $this->client->conversations->customChannels->update(
             0,
-            [
-                'capabilities' => ['foo' => []],
-                'channelAccountConnectionRedirectURL' => [],
-                'channelDescription' => [],
-                'channelLogoURL' => [],
-                'name' => [],
-                'webhookURL' => [],
-            ],
+            capabilities: ['foo' => []],
+            channelAccountConnectionRedirectURL: [],
+            channelDescription: [],
+            channelLogoURL: [],
+            name: [],
+            webhookURL: [],
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -119,7 +116,7 @@ final class CustomChannelsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->conversations->customChannels->list([]);
+        $result = $this->client->conversations->customChannels->list();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(Page::class, $result);

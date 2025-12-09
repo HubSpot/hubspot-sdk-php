@@ -40,31 +40,29 @@ final class DefinitionsTest extends TestCase
 
         $result = $this->client->automation->actions->definitions->create(
             0,
-            [
-                'actionURL' => 'actionUrl',
-                'functions' => [
-                    [
-                        'functionSource' => 'functionSource',
-                        'functionType' => 'POST_ACTION_EXECUTION',
-                    ],
+            actionURL: 'actionUrl',
+            functions: [
+                [
+                    'functionSource' => 'functionSource',
+                    'functionType' => 'POST_ACTION_EXECUTION',
                 ],
-                'inputFields' => [
-                    [
-                        'isRequired' => true,
-                        'typeDefinition' => [
-                            'externalOptions' => true,
-                            'name' => 'name',
-                            'options' => [
-                                ['hidden' => false, 'label' => 'Option A', 'value' => 'A'],
-                            ],
-                            'type' => 'bool',
-                        ],
-                    ],
-                ],
-                'labels' => ['foo' => ['actionName' => 'actionName']],
-                'objectTypes' => ['string'],
-                'published' => true,
             ],
+            inputFields: [
+                [
+                    'isRequired' => true,
+                    'typeDefinition' => [
+                        'externalOptions' => true,
+                        'name' => 'name',
+                        'options' => [
+                            ['hidden' => false, 'label' => 'Option A', 'value' => 'A'],
+                        ],
+                        'type' => 'bool',
+                    ],
+                ],
+            ],
+            labels: ['foo' => ['actionName' => 'actionName']],
+            objectTypes: ['string'],
+            published: true,
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -80,93 +78,91 @@ final class DefinitionsTest extends TestCase
 
         $result = $this->client->automation->actions->definitions->create(
             0,
-            [
-                'actionURL' => 'actionUrl',
-                'functions' => [
-                    [
-                        'functionSource' => 'functionSource',
-                        'functionType' => 'POST_ACTION_EXECUTION',
-                        'id' => 'id',
-                    ],
+            actionURL: 'actionUrl',
+            functions: [
+                [
+                    'functionSource' => 'functionSource',
+                    'functionType' => 'POST_ACTION_EXECUTION',
+                    'id' => 'id',
                 ],
-                'inputFields' => [
-                    [
-                        'isRequired' => true,
-                        'typeDefinition' => [
-                            'externalOptions' => true,
-                            'name' => 'name',
-                            'options' => [
-                                [
-                                    'hidden' => false,
-                                    'label' => 'Option A',
-                                    'value' => 'A',
-                                    'description' => 'Choice number one',
-                                    'displayOrder' => 1,
-                                ],
+            ],
+            inputFields: [
+                [
+                    'isRequired' => true,
+                    'typeDefinition' => [
+                        'externalOptions' => true,
+                        'name' => 'name',
+                        'options' => [
+                            [
+                                'hidden' => false,
+                                'label' => 'Option A',
+                                'value' => 'A',
+                                'description' => 'Choice number one',
+                                'displayOrder' => 1,
                             ],
-                            'type' => 'bool',
-                            'description' => 'description',
-                            'externalOptionsReferenceType' => 'externalOptionsReferenceType',
-                            'fieldType' => 'booleancheckbox',
-                            'helpText' => 'helpText',
-                            'label' => 'label',
-                            'optionsURL' => 'optionsUrl',
-                            'referencedObjectType' => 'ABANDONED_CART',
                         ],
-                        'automationFieldType' => 'automationFieldType',
-                        'supportedValueTypes' => ['STATIC_VALUE'],
+                        'type' => 'bool',
+                        'description' => 'description',
+                        'externalOptionsReferenceType' => 'externalOptionsReferenceType',
+                        'fieldType' => 'booleancheckbox',
+                        'helpText' => 'helpText',
+                        'label' => 'label',
+                        'optionsURL' => 'optionsUrl',
+                        'referencedObjectType' => 'ABANDONED_CART',
                     ],
+                    'automationFieldType' => 'automationFieldType',
+                    'supportedValueTypes' => ['STATIC_VALUE'],
                 ],
-                'labels' => [
-                    'foo' => [
-                        'actionName' => 'actionName',
-                        'actionCardContent' => 'actionCardContent',
-                        'actionDescription' => 'actionDescription',
-                        'appDisplayName' => 'appDisplayName',
-                        'executionRules' => ['foo' => 'string'],
-                        'inputFieldDescriptions' => ['foo' => 'string'],
-                        'inputFieldLabels' => ['foo' => 'string'],
-                        'inputFieldOptionLabels' => ['foo' => ['foo' => 'string']],
-                        'outputFieldLabels' => ['foo' => 'string'],
-                    ],
+            ],
+            labels: [
+                'foo' => [
+                    'actionName' => 'actionName',
+                    'actionCardContent' => 'actionCardContent',
+                    'actionDescription' => 'actionDescription',
+                    'appDisplayName' => 'appDisplayName',
+                    'executionRules' => ['foo' => 'string'],
+                    'inputFieldDescriptions' => ['foo' => 'string'],
+                    'inputFieldLabels' => ['foo' => 'string'],
+                    'inputFieldOptionLabels' => ['foo' => ['foo' => 'string']],
+                    'outputFieldLabels' => ['foo' => 'string'],
                 ],
-                'objectTypes' => ['string'],
-                'published' => true,
-                'archivedAt' => 0,
-                'executionRules' => [
-                    ['conditions' => ['foo' => []], 'labelName' => 'labelName'],
+            ],
+            objectTypes: ['string'],
+            published: true,
+            archivedAt: 0,
+            executionRules: [
+                ['conditions' => ['foo' => []], 'labelName' => 'labelName'],
+            ],
+            inputFieldDependencies: [
+                [
+                    'controllingFieldName' => 'controllingFieldName',
+                    'dependencyType' => 'SINGLE_FIELD',
+                    'dependentFieldNames' => ['string'],
                 ],
-                'inputFieldDependencies' => [
-                    [
-                        'controllingFieldName' => 'controllingFieldName',
-                        'dependencyType' => 'SINGLE_FIELD',
-                        'dependentFieldNames' => ['string'],
-                    ],
-                ],
-                'objectRequestOptions' => ['properties' => ['string']],
-                'outputFields' => [
-                    [
-                        'typeDefinition' => [
-                            'externalOptions' => true,
-                            'name' => 'name',
-                            'options' => [
-                                [
-                                    'hidden' => false,
-                                    'label' => 'Option A',
-                                    'value' => 'A',
-                                    'description' => 'Choice number one',
-                                    'displayOrder' => 1,
-                                ],
+            ],
+            objectRequestOptions: ['properties' => ['string']],
+            outputFields: [
+                [
+                    'typeDefinition' => [
+                        'externalOptions' => true,
+                        'name' => 'name',
+                        'options' => [
+                            [
+                                'hidden' => false,
+                                'label' => 'Option A',
+                                'value' => 'A',
+                                'description' => 'Choice number one',
+                                'displayOrder' => 1,
                             ],
-                            'type' => 'bool',
-                            'description' => 'description',
-                            'externalOptionsReferenceType' => 'externalOptionsReferenceType',
-                            'fieldType' => 'booleancheckbox',
-                            'helpText' => 'helpText',
-                            'label' => 'label',
-                            'optionsURL' => 'optionsUrl',
-                            'referencedObjectType' => 'ABANDONED_CART',
                         ],
+                        'type' => 'bool',
+                        'description' => 'description',
+                        'externalOptionsReferenceType' => 'externalOptionsReferenceType',
+                        'fieldType' => 'booleancheckbox',
+                        'helpText' => 'helpText',
+                        'label' => 'label',
+                        'optionsURL' => 'optionsUrl',
+                        'referencedObjectType' => 'ABANDONED_CART',
                     ],
                 ],
             ],
@@ -185,7 +181,7 @@ final class DefinitionsTest extends TestCase
 
         $result = $this->client->automation->actions->definitions->update(
             'definitionId',
-            ['appID' => 0]
+            appID: 0
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -201,89 +197,87 @@ final class DefinitionsTest extends TestCase
 
         $result = $this->client->automation->actions->definitions->update(
             'definitionId',
-            [
-                'appID' => 0,
-                'actionURL' => 'actionUrl',
-                'executionRules' => [
-                    ['conditions' => ['foo' => []], 'labelName' => 'labelName'],
-                ],
-                'inputFieldDependencies' => [
-                    [
-                        'controllingFieldName' => 'controllingFieldName',
-                        'dependencyType' => 'SINGLE_FIELD',
-                        'dependentFieldNames' => ['string'],
-                    ],
-                ],
-                'inputFields' => [
-                    [
-                        'isRequired' => true,
-                        'typeDefinition' => [
-                            'externalOptions' => true,
-                            'name' => 'name',
-                            'options' => [
-                                [
-                                    'hidden' => false,
-                                    'label' => 'Option A',
-                                    'value' => 'A',
-                                    'description' => 'Choice number one',
-                                    'displayOrder' => 1,
-                                ],
-                            ],
-                            'type' => 'bool',
-                            'description' => 'description',
-                            'externalOptionsReferenceType' => 'externalOptionsReferenceType',
-                            'fieldType' => 'booleancheckbox',
-                            'helpText' => 'helpText',
-                            'label' => 'label',
-                            'optionsURL' => 'optionsUrl',
-                            'referencedObjectType' => 'ABANDONED_CART',
-                        ],
-                        'automationFieldType' => 'automationFieldType',
-                        'supportedValueTypes' => ['STATIC_VALUE'],
-                    ],
-                ],
-                'labels' => [
-                    'foo' => [
-                        'actionName' => 'actionName',
-                        'actionCardContent' => 'actionCardContent',
-                        'actionDescription' => 'actionDescription',
-                        'appDisplayName' => 'appDisplayName',
-                        'executionRules' => ['foo' => 'string'],
-                        'inputFieldDescriptions' => ['foo' => 'string'],
-                        'inputFieldLabels' => ['foo' => 'string'],
-                        'inputFieldOptionLabels' => ['foo' => ['foo' => 'string']],
-                        'outputFieldLabels' => ['foo' => 'string'],
-                    ],
-                ],
-                'objectRequestOptions' => ['properties' => ['string']],
-                'objectTypes' => ['string'],
-                'outputFields' => [
-                    [
-                        'typeDefinition' => [
-                            'externalOptions' => true,
-                            'name' => 'name',
-                            'options' => [
-                                [
-                                    'hidden' => false,
-                                    'label' => 'Option A',
-                                    'value' => 'A',
-                                    'description' => 'Choice number one',
-                                    'displayOrder' => 1,
-                                ],
-                            ],
-                            'type' => 'bool',
-                            'description' => 'description',
-                            'externalOptionsReferenceType' => 'externalOptionsReferenceType',
-                            'fieldType' => 'booleancheckbox',
-                            'helpText' => 'helpText',
-                            'label' => 'label',
-                            'optionsURL' => 'optionsUrl',
-                            'referencedObjectType' => 'ABANDONED_CART',
-                        ],
-                    ],
-                ],
-                'published' => true,
+            appID: 0,
+            actionURL: 'actionUrl',
+            executionRules: [
+                ['conditions' => ['foo' => []], 'labelName' => 'labelName'],
             ],
+            inputFieldDependencies: [
+                [
+                    'controllingFieldName' => 'controllingFieldName',
+                    'dependencyType' => 'SINGLE_FIELD',
+                    'dependentFieldNames' => ['string'],
+                ],
+            ],
+            inputFields: [
+                [
+                    'isRequired' => true,
+                    'typeDefinition' => [
+                        'externalOptions' => true,
+                        'name' => 'name',
+                        'options' => [
+                            [
+                                'hidden' => false,
+                                'label' => 'Option A',
+                                'value' => 'A',
+                                'description' => 'Choice number one',
+                                'displayOrder' => 1,
+                            ],
+                        ],
+                        'type' => 'bool',
+                        'description' => 'description',
+                        'externalOptionsReferenceType' => 'externalOptionsReferenceType',
+                        'fieldType' => 'booleancheckbox',
+                        'helpText' => 'helpText',
+                        'label' => 'label',
+                        'optionsURL' => 'optionsUrl',
+                        'referencedObjectType' => 'ABANDONED_CART',
+                    ],
+                    'automationFieldType' => 'automationFieldType',
+                    'supportedValueTypes' => ['STATIC_VALUE'],
+                ],
+            ],
+            labels: [
+                'foo' => [
+                    'actionName' => 'actionName',
+                    'actionCardContent' => 'actionCardContent',
+                    'actionDescription' => 'actionDescription',
+                    'appDisplayName' => 'appDisplayName',
+                    'executionRules' => ['foo' => 'string'],
+                    'inputFieldDescriptions' => ['foo' => 'string'],
+                    'inputFieldLabels' => ['foo' => 'string'],
+                    'inputFieldOptionLabels' => ['foo' => ['foo' => 'string']],
+                    'outputFieldLabels' => ['foo' => 'string'],
+                ],
+            ],
+            objectRequestOptions: ['properties' => ['string']],
+            objectTypes: ['string'],
+            outputFields: [
+                [
+                    'typeDefinition' => [
+                        'externalOptions' => true,
+                        'name' => 'name',
+                        'options' => [
+                            [
+                                'hidden' => false,
+                                'label' => 'Option A',
+                                'value' => 'A',
+                                'description' => 'Choice number one',
+                                'displayOrder' => 1,
+                            ],
+                        ],
+                        'type' => 'bool',
+                        'description' => 'description',
+                        'externalOptionsReferenceType' => 'externalOptionsReferenceType',
+                        'fieldType' => 'booleancheckbox',
+                        'helpText' => 'helpText',
+                        'label' => 'label',
+                        'optionsURL' => 'optionsUrl',
+                        'referencedObjectType' => 'ABANDONED_CART',
+                    ],
+                ],
+            ],
+            published: true,
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -297,7 +291,7 @@ final class DefinitionsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->automation->actions->definitions->list(0, []);
+        $result = $this->client->automation->actions->definitions->list(0);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(Page::class, $result);
@@ -312,7 +306,7 @@ final class DefinitionsTest extends TestCase
 
         $result = $this->client->automation->actions->definitions->delete(
             'definitionId',
-            ['appID' => 0]
+            appID: 0
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -328,7 +322,7 @@ final class DefinitionsTest extends TestCase
 
         $result = $this->client->automation->actions->definitions->delete(
             'definitionId',
-            ['appID' => 0]
+            appID: 0
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -344,7 +338,7 @@ final class DefinitionsTest extends TestCase
 
         $result = $this->client->automation->actions->definitions->get(
             'definitionId',
-            ['appID' => 0]
+            appID: 0
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -360,7 +354,8 @@ final class DefinitionsTest extends TestCase
 
         $result = $this->client->automation->actions->definitions->get(
             'definitionId',
-            ['appID' => 0, 'archived' => true]
+            appID: 0,
+            archived: true
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

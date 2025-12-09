@@ -37,9 +37,9 @@ final class CalendarTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->scheduler->meetings->calendar->create([
-            'organizerUserID' => 'organizerUserId',
-            'associations' => [
+        $result = $this->client->scheduler->meetings->calendar->create(
+            organizerUserID: 'organizerUserId',
+            associations: [
                 [
                     'to' => ['id' => '37295'],
                     'types' => [
@@ -50,11 +50,11 @@ final class CalendarTest extends TestCase
                     ],
                 ],
             ],
-            'emailReminderSchedule' => [
+            emailReminderSchedule: [
                 'reminders' => [['numberOfTimeUnits' => 0, 'timeUnit' => 'timeUnit']],
                 'shouldIncludeInviteDescription' => true,
             ],
-            'properties' => [
+            properties: [
                 'hsMeetingEndTime' => new \DateTimeImmutable(
                     '2019-12-27T18:11:19.117Z'
                 ),
@@ -66,8 +66,8 @@ final class CalendarTest extends TestCase
                 'hsTimestamp' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
                 'hubspotOwnerID' => 'hubspot_owner_id',
             ],
-            'timezone' => 'timezone',
-        ]);
+            timezone: 'timezone',
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(
@@ -83,9 +83,9 @@ final class CalendarTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->scheduler->meetings->calendar->create([
-            'organizerUserID' => 'organizerUserId',
-            'associations' => [
+        $result = $this->client->scheduler->meetings->calendar->create(
+            organizerUserID: 'organizerUserId',
+            associations: [
                 [
                     'to' => ['id' => '37295'],
                     'types' => [
@@ -96,11 +96,11 @@ final class CalendarTest extends TestCase
                     ],
                 ],
             ],
-            'emailReminderSchedule' => [
+            emailReminderSchedule: [
                 'reminders' => [['numberOfTimeUnits' => 0, 'timeUnit' => 'timeUnit']],
                 'shouldIncludeInviteDescription' => true,
             ],
-            'properties' => [
+            properties: [
                 'hsMeetingEndTime' => new \DateTimeImmutable(
                     '2019-12-27T18:11:19.117Z'
                 ),
@@ -119,8 +119,8 @@ final class CalendarTest extends TestCase
                 'hsMeetingLocation' => 'hs_meeting_location',
                 'hsMeetingLocationType' => 'hs_meeting_location_type',
             ],
-            'timezone' => 'timezone',
-        ]);
+            timezone: 'timezone',
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(

@@ -17,6 +17,11 @@ final class MediaBridgeService implements MediaBridgeContract
     /**
      * @api
      */
+    public MediaBridgeRawService $raw;
+
+    /**
+     * @api
+     */
     public EventsService $events;
 
     /**
@@ -44,6 +49,7 @@ final class MediaBridgeService implements MediaBridgeContract
      */
     public function __construct(private Client $client)
     {
+        $this->raw = new MediaBridgeRawService($client);
         $this->events = new EventsService($client);
         $this->groups = new GroupsService($client);
         $this->integratorSettings = new IntegratorSettingsService($client);

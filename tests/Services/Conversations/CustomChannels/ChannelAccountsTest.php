@@ -43,10 +43,7 @@ final class ChannelAccountsTest extends TestCase
             ->conversations
             ->customChannels
             ->channelAccounts
-            ->create(
-                0,
-                ['authorized' => true, 'inboxID' => 'inboxId', 'name' => 'name']
-            )
+            ->create(0, authorized: true, inboxID: 'inboxId', name: 'name')
         ;
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -67,12 +64,10 @@ final class ChannelAccountsTest extends TestCase
             ->channelAccounts
             ->create(
                 0,
-                [
-                    'authorized' => true,
-                    'inboxID' => 'inboxId',
-                    'name' => 'name',
-                    'deliveryIdentifier' => ['type' => 'type', 'value' => 'value'],
-                ],
+                authorized: true,
+                inboxID: 'inboxId',
+                name: 'name',
+                deliveryIdentifier: ['type' => 'type', 'value' => 'value'],
             )
         ;
 
@@ -92,7 +87,7 @@ final class ChannelAccountsTest extends TestCase
             ->conversations
             ->customChannels
             ->channelAccounts
-            ->update(0, ['channelID' => 0])
+            ->update(0, channelID: 0)
         ;
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -111,7 +106,7 @@ final class ChannelAccountsTest extends TestCase
             ->conversations
             ->customChannels
             ->channelAccounts
-            ->update(0, ['channelID' => 0, 'authorized' => true, 'name' => 'name'])
+            ->update(0, channelID: 0, authorized: true, name: 'name')
         ;
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -130,7 +125,7 @@ final class ChannelAccountsTest extends TestCase
             ->conversations
             ->customChannels
             ->channelAccounts
-            ->list(0, [])
+            ->list(0)
         ;
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -149,7 +144,7 @@ final class ChannelAccountsTest extends TestCase
             ->conversations
             ->customChannels
             ->channelAccounts
-            ->get(0, ['channelID' => 0])
+            ->get(0, channelID: 0)
         ;
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -168,7 +163,7 @@ final class ChannelAccountsTest extends TestCase
             ->conversations
             ->customChannels
             ->channelAccounts
-            ->get(0, ['channelID' => 0, 'archived' => true])
+            ->get(0, channelID: 0, archived: true)
         ;
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

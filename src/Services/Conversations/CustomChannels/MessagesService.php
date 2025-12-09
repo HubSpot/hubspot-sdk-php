@@ -6,13 +6,9 @@ namespace HubspotSDK\Services\Conversations\CustomChannels;
 
 use HubspotSDK\Client;
 use HubspotSDK\Conversations\ConversationsPublicConversationsMessage;
-use HubspotSDK\Conversations\CustomChannels\Messages\MessageCreateParams;
 use HubspotSDK\Conversations\CustomChannels\Messages\MessageCreateParams\MessageDirection;
-use HubspotSDK\Conversations\CustomChannels\Messages\MessageGetParams;
-use HubspotSDK\Conversations\CustomChannels\Messages\MessageUpdateParams;
 use HubspotSDK\Conversations\CustomChannels\Messages\MessageUpdateParams\StatusType;
 use HubspotSDK\Conversations\PublicDeliveryIdentifier;
-use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Conversations\CustomChannels\MessagesContract;
@@ -20,58 +16,81 @@ use HubspotSDK\ServiceContracts\Conversations\CustomChannels\MessagesContract;
 final class MessagesService implements MessagesContract
 {
     /**
+     * @api
+     */
+    public MessagesRawService $raw;
+
+    /**
      * @internal
      */
-    public function __construct(private Client $client) {}
+    public function __construct(private Client $client)
+    {
+        $this->raw = new MessagesRawService($client);
+    }
 
     /**
      * @api
      *
      * Publish a message over your custom channel
      *
+     * @param int $channelID The channel the message will be sent over
+     * @param list<array<string,mixed>> $attachments
+     * @param 'INCOMING'|'OUTGOING'|MessageDirection $messageDirection
+     * @param list<array{
+     *   deliveryIdentifier: array{
+     *     type: string, value: string
+     *   }|PublicDeliveryIdentifier,
+     *   name?: string,
+     * }> $recipients
+     * @param list<array{
+     *   deliveryIdentifier: array{
+     *     type: string, value: string
+     *   }|PublicDeliveryIdentifier,
+     *   name?: string,
+     * }> $senders
      * @param array{
-     *   attachments: list<array<string,mixed>>,
-     *   channelAccountID: string,
-     *   messageDirection: 'INCOMING'|'OUTGOING'|MessageDirection,
-     *   recipients: list<array{
-     *     deliveryIdentifier: array<mixed>|PublicDeliveryIdentifier, name?: string
+     *   contacts: list<array{
+     *     contactPropertiesLeadingToMatch: list<string>, contactVid: int
      *   }>,
-     *   senders: list<array{
-     *     deliveryIdentifier: array<mixed>|PublicDeliveryIdentifier, name?: string
-     *   }>,
-     *   text: string,
-     *   timestamp: string|\DateTimeInterface,
-     *   inReplyToID?: string,
-     *   integrationIdempotencyID?: string,
-     *   integrationThreadID?: string,
-     *   preResolvedContacts?: array{
-     *     contacts: list<array{
-     *       contactPropertiesLeadingToMatch: list<string>, contactVid: int
-     *     }>,
-     *   },
-     *   richText?: string,
-     * }|MessageCreateParams $params
+     * } $preResolvedContacts
      *
      * @throws APIException
      */
     public function create(
         int $channelID,
-        array|MessageCreateParams $params,
+        array $attachments,
+        string $channelAccountID,
+        string|MessageDirection $messageDirection,
+        array $recipients,
+        array $senders,
+        string $text,
+        string|\DateTimeInterface $timestamp,
+        ?string $inReplyToID = null,
+        ?string $integrationIdempotencyID = null,
+        ?string $integrationThreadID = null,
+        ?array $preResolvedContacts = null,
+        ?string $richText = null,
         ?RequestOptions $requestOptions = null,
     ): ConversationsPublicConversationsMessage {
-        [$parsed, $options] = MessageCreateParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = [
+            'attachments' => $attachments,
+            'channelAccountID' => $channelAccountID,
+            'messageDirection' => $messageDirection,
+            'recipients' => $recipients,
+            'senders' => $senders,
+            'text' => $text,
+            'timestamp' => $timestamp,
+            'inReplyToID' => $inReplyToID,
+            'integrationIdempotencyID' => $integrationIdempotencyID,
+            'integrationThreadID' => $integrationThreadID,
+            'preResolvedContacts' => $preResolvedContacts,
+            'richText' => $richText,
+        ];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<ConversationsPublicConversationsMessage> */
-        $response = $this->client->request(
-            method: 'post',
-            path: ['conversations/v3/custom-channels/%1$s/messages', $channelID],
-            body: (object) $parsed,
-            options: $options,
-            convert: ConversationsPublicConversationsMessage::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->create($channelID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -81,38 +100,30 @@ final class MessagesService implements MessagesContract
      *
      * Update a message's status to indicate if it was successfully sent, failed to send, or was read. For failed messages, this can also include the error message for the failure.
      *
-     * @param array{
-     *   channelID: int,
-     *   statusType: 'FAILED'|'READ'|'SENT'|StatusType,
-     *   errorMessage?: string,
-     * }|MessageUpdateParams $params
+     * @param string $messageID Path param: The id of the message
+     * @param int $channelID Path param: The channel the message was sent over
+     * @param 'FAILED'|'READ'|'SENT'|StatusType $statusType Body param: Valid status are SENT, FAILED, and READ
+     * @param string $errorMessage Body param:
      *
      * @throws APIException
      */
     public function update(
         string $messageID,
-        array|MessageUpdateParams $params,
+        int $channelID,
+        string|StatusType $statusType,
+        ?string $errorMessage = null,
         ?RequestOptions $requestOptions = null,
     ): ConversationsPublicConversationsMessage {
-        [$parsed, $options] = MessageUpdateParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $channelID = $parsed['channelID'];
-        unset($parsed['channelID']);
+        $params = [
+            'channelID' => $channelID,
+            'statusType' => $statusType,
+            'errorMessage' => $errorMessage,
+        ];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<ConversationsPublicConversationsMessage> */
-        $response = $this->client->request(
-            method: 'patch',
-            path: [
-                'conversations/v3/custom-channels/%1$s/messages/%2$s',
-                $channelID,
-                $messageID,
-            ],
-            body: (object) array_diff_key($parsed, ['channelID']),
-            options: $options,
-            convert: ConversationsPublicConversationsMessage::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->update($messageID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -122,33 +133,20 @@ final class MessagesService implements MessagesContract
      *
      * Get the details for a specific message sent over a custom channel
      *
-     * @param array{channelID: int}|MessageGetParams $params
+     * @param string $messageID The id of the message
+     * @param int $channelID The channel the message was sent over
      *
      * @throws APIException
      */
     public function get(
         string $messageID,
-        array|MessageGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        int $channelID,
+        ?RequestOptions $requestOptions = null
     ): ConversationsPublicConversationsMessage {
-        [$parsed, $options] = MessageGetParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $channelID = $parsed['channelID'];
-        unset($parsed['channelID']);
+        $params = ['channelID' => $channelID];
 
-        /** @var BaseResponse<ConversationsPublicConversationsMessage> */
-        $response = $this->client->request(
-            method: 'get',
-            path: [
-                'conversations/v3/custom-channels/%1$s/messages/%2$s',
-                $channelID,
-                $messageID,
-            ],
-            options: $options,
-            convert: ConversationsPublicConversationsMessage::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->get($messageID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }

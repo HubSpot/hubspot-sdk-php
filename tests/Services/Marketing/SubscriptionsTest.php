@@ -67,9 +67,10 @@ final class SubscriptionsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->subscriptions->subscribe([
-            'emailAddress' => 'emailAddress', 'subscriptionID' => 'subscriptionId',
-        ]);
+        $result = $this->client->marketing->subscriptions->subscribe(
+            emailAddress: 'emailAddress',
+            subscriptionID: 'subscriptionId'
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(PublicSubscriptionStatus::class, $result);
@@ -82,12 +83,12 @@ final class SubscriptionsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->subscriptions->subscribe([
-            'emailAddress' => 'emailAddress',
-            'subscriptionID' => 'subscriptionId',
-            'legalBasis' => 'CONSENT_WITH_NOTICE',
-            'legalBasisExplanation' => 'legalBasisExplanation',
-        ]);
+        $result = $this->client->marketing->subscriptions->subscribe(
+            emailAddress: 'emailAddress',
+            subscriptionID: 'subscriptionId',
+            legalBasis: 'CONSENT_WITH_NOTICE',
+            legalBasisExplanation: 'legalBasisExplanation',
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(PublicSubscriptionStatus::class, $result);
@@ -100,9 +101,10 @@ final class SubscriptionsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->subscriptions->unsubscribe([
-            'emailAddress' => 'emailAddress', 'subscriptionID' => 'subscriptionId',
-        ]);
+        $result = $this->client->marketing->subscriptions->unsubscribe(
+            emailAddress: 'emailAddress',
+            subscriptionID: 'subscriptionId'
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(PublicSubscriptionStatus::class, $result);
@@ -115,12 +117,12 @@ final class SubscriptionsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->subscriptions->unsubscribe([
-            'emailAddress' => 'emailAddress',
-            'subscriptionID' => 'subscriptionId',
-            'legalBasis' => 'CONSENT_WITH_NOTICE',
-            'legalBasisExplanation' => 'legalBasisExplanation',
-        ]);
+        $result = $this->client->marketing->subscriptions->unsubscribe(
+            emailAddress: 'emailAddress',
+            subscriptionID: 'subscriptionId',
+            legalBasis: 'CONSENT_WITH_NOTICE',
+            legalBasisExplanation: 'legalBasisExplanation',
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(PublicSubscriptionStatus::class, $result);

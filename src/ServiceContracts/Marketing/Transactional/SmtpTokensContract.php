@@ -6,8 +6,6 @@ namespace HubspotSDK\ServiceContracts\Marketing\Transactional;
 
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Marketing\Transactional\SmtpAPITokenView;
-use HubspotSDK\Marketing\Transactional\SmtpTokens\SmtpTokenCreateParams;
-use HubspotSDK\Marketing\Transactional\SmtpTokens\SmtpTokenListParams;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 
@@ -16,31 +14,41 @@ interface SmtpTokensContract
     /**
      * @api
      *
-     * @param array<mixed>|SmtpTokenCreateParams $params
+     * @param string $campaignName a name for the campaign tied to the SMTP API token
+     * @param bool $createContact indicates whether a contact should be created for email recipients
      *
      * @throws APIException
      */
     public function create(
-        array|SmtpTokenCreateParams $params,
+        string $campaignName,
+        bool $createContact,
         ?RequestOptions $requestOptions = null,
     ): SmtpAPITokenView;
 
     /**
      * @api
      *
-     * @param array<mixed>|SmtpTokenListParams $params
+     * @param string $after starting point to get the next set of results
+     * @param string $campaignName a name for the campaign tied to the SMTP API token
+     * @param string $emailCampaignID identifier assigned to the campaign provided during the token creation
+     * @param int $limit maximum number of tokens to return
      *
      * @return Page<SmtpAPITokenView>
      *
      * @throws APIException
      */
     public function list(
-        array|SmtpTokenListParams $params,
-        ?RequestOptions $requestOptions = null
+        ?string $after = null,
+        ?string $campaignName = null,
+        ?string $emailCampaignID = null,
+        ?int $limit = null,
+        ?RequestOptions $requestOptions = null,
     ): Page;
 
     /**
      * @api
+     *
+     * @param string $tokenID identifier generated when a token is created
      *
      * @throws APIException
      */
@@ -52,6 +60,8 @@ interface SmtpTokensContract
     /**
      * @api
      *
+     * @param string $tokenID identifier generated when a token is created
+     *
      * @throws APIException
      */
     public function get(
@@ -61,6 +71,8 @@ interface SmtpTokensContract
 
     /**
      * @api
+     *
+     * @param string $tokenID identifier generated when a token is created
      *
      * @throws APIException
      */

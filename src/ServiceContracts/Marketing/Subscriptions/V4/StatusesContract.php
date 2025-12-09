@@ -11,14 +11,9 @@ use HubspotSDK\Marketing\Subscriptions\V4\BatchResponsePublicBulkOptOutFromAllRe
 use HubspotSDK\Marketing\Subscriptions\V4\BatchResponsePublicStatus;
 use HubspotSDK\Marketing\Subscriptions\V4\BatchResponsePublicStatusBulkResponse;
 use HubspotSDK\Marketing\Subscriptions\V4\BatchResponsePublicWideStatusBulkResponse;
-use HubspotSDK\Marketing\Subscriptions\V4\Statuses\StatusBatchGetParams;
-use HubspotSDK\Marketing\Subscriptions\V4\Statuses\StatusBatchGetUnsubscribeAllStatusParams;
-use HubspotSDK\Marketing\Subscriptions\V4\Statuses\StatusBatchUnsubscribeAllParams;
-use HubspotSDK\Marketing\Subscriptions\V4\Statuses\StatusBatchUpdateParams;
-use HubspotSDK\Marketing\Subscriptions\V4\Statuses\StatusGetParams;
-use HubspotSDK\Marketing\Subscriptions\V4\Statuses\StatusGetUnsubscribeAllStatusParams;
-use HubspotSDK\Marketing\Subscriptions\V4\Statuses\StatusUnsubscribeAllParams;
-use HubspotSDK\Marketing\Subscriptions\V4\Statuses\StatusUpdateParams;
+use HubspotSDK\Marketing\Subscriptions\V4\PublicStatusRequest\Channel;
+use HubspotSDK\Marketing\Subscriptions\V4\PublicStatusRequest\LegalBasis;
+use HubspotSDK\Marketing\Subscriptions\V4\PublicStatusRequest\StatusState;
 use HubspotSDK\RequestOptions;
 
 interface StatusesContract
@@ -26,100 +21,143 @@ interface StatusesContract
     /**
      * @api
      *
-     * @param array<mixed>|StatusUpdateParams $params
+     * @param string $subscriberIDString the contact's email address
+     * @param 'EMAIL'|\HubspotSDK\Marketing\Subscriptions\V4\Statuses\StatusUpdateParams\Channel $channel the type of communication channel, with 'EMAIL' as the only supported option
+     * @param 'NOT_SPECIFIED'|'SUBSCRIBED'|'UNSUBSCRIBED'|\HubspotSDK\Marketing\Subscriptions\V4\Statuses\StatusUpdateParams\StatusState $statusState the current subscription status of the contact, which can be 'SUBSCRIBED', 'UNSUBSCRIBED', or 'NOT_SPECIFIED'
+     * @param int $subscriptionID the unique identifier of the subscription to be updated
+     * @param 'CONSENT_WITH_NOTICE'|'LEGITIMATE_INTEREST_CLIENT'|'LEGITIMATE_INTEREST_OTHER'|'LEGITIMATE_INTEREST_PQL'|'NON_GDPR'|'PERFORMANCE_OF_CONTRACT'|'PROCESS_AND_STORE'|\HubspotSDK\Marketing\Subscriptions\V4\Statuses\StatusUpdateParams\LegalBasis $legalBasis the legal basis for communication, with options including 'LEGITIMATE_INTEREST_PQL', 'LEGITIMATE_INTEREST_CLIENT', 'PERFORMANCE_OF_CONTRACT', 'CONSENT_WITH_NOTICE', 'NON_GDPR', 'PROCESS_AND_STORE', and 'LEGITIMATE_INTEREST_OTHER'
+     * @param string $legalBasisExplanation an explanation for the legal basis used for communication
      *
      * @throws APIException
      */
     public function update(
         string $subscriberIDString,
-        array|StatusUpdateParams $params,
+        string|\HubspotSDK\Marketing\Subscriptions\V4\Statuses\StatusUpdateParams\Channel $channel,
+        string|\HubspotSDK\Marketing\Subscriptions\V4\Statuses\StatusUpdateParams\StatusState $statusState,
+        int $subscriptionID,
+        string|\HubspotSDK\Marketing\Subscriptions\V4\Statuses\StatusUpdateParams\LegalBasis|null $legalBasis = null,
+        ?string $legalBasisExplanation = null,
         ?RequestOptions $requestOptions = null,
     ): ActionResponseWithResultsPublicStatus;
 
     /**
      * @api
      *
-     * @param array<mixed>|StatusBatchGetParams $params
+     * @param 'EMAIL'|\HubspotSDK\Marketing\Subscriptions\V4\Statuses\StatusBatchGetParams\Channel $channel Query param: The channel type for the subscription type. Currently, the only supported channel type is `EMAIL`.
+     * @param list<string> $inputs body param: Strings to input
+     * @param int $businessUnitID Query param: If you have the [business unit add-on](https://developers.hubspot.com/beta-docs/guides/api/settings/business-units-api), include this parameter to filter results by business unit ID. The default Account business unit will always use `0`.
      *
      * @throws APIException
      */
     public function batchGet(
-        array|StatusBatchGetParams $params,
-        ?RequestOptions $requestOptions = null
+        string|\HubspotSDK\Marketing\Subscriptions\V4\Statuses\StatusBatchGetParams\Channel $channel,
+        array $inputs,
+        ?int $businessUnitID = null,
+        ?RequestOptions $requestOptions = null,
     ): BatchResponsePublicStatusBulkResponse;
 
     /**
      * @api
      *
-     * @param array<mixed>|StatusBatchGetUnsubscribeAllStatusParams $params
+     * @param 'EMAIL'|\HubspotSDK\Marketing\Subscriptions\V4\Statuses\StatusBatchGetUnsubscribeAllStatusParams\Channel $channel Query param: The channel type for the subscription type. Currently, the only supported channel type is `EMAIL`.
+     * @param list<string> $inputs body param: Strings to input
+     * @param int $businessUnitID Query param: If you have the [business unit add-on](https://developers.hubspot.com/beta-docs/guides/api/settings/business-units-api), include this parameter to filter results by business unit ID. The default Account business unit will always use `0`.
      *
      * @throws APIException
      */
     public function batchGetUnsubscribeAllStatus(
-        array|StatusBatchGetUnsubscribeAllStatusParams $params,
+        string|\HubspotSDK\Marketing\Subscriptions\V4\Statuses\StatusBatchGetUnsubscribeAllStatusParams\Channel $channel,
+        array $inputs,
+        ?int $businessUnitID = null,
         ?RequestOptions $requestOptions = null,
     ): BatchResponsePublicWideStatusBulkResponse;
 
     /**
      * @api
      *
-     * @param array<mixed>|StatusBatchUnsubscribeAllParams $params
+     * @param 'EMAIL'|\HubspotSDK\Marketing\Subscriptions\V4\Statuses\StatusBatchUnsubscribeAllParams\Channel $channel Query param: The channel type for the subscription type. Currently, the only supported channel type is `EMAIL`.
+     * @param list<string> $inputs body param: Strings to input
+     * @param int $businessUnitID Query param: If you have the [business unit add-on](https://developers.hubspot.com/beta-docs/guides/api/settings/business-units-api), include this parameter to filter results by business unit ID. The default Account business unit will always use `0`.
+     * @param bool $verbose Query param: Set to `true` to include the details of the updated subscription statuses in the response. Not including this parameter will result in an empty response.
      *
      * @throws APIException
      */
     public function batchUnsubscribeAll(
-        array|StatusBatchUnsubscribeAllParams $params,
+        string|\HubspotSDK\Marketing\Subscriptions\V4\Statuses\StatusBatchUnsubscribeAllParams\Channel $channel,
+        array $inputs,
+        ?int $businessUnitID = null,
+        bool $verbose = false,
         ?RequestOptions $requestOptions = null,
     ): BatchResponsePublicBulkOptOutFromAllResponse;
 
     /**
      * @api
      *
-     * @param array<mixed>|StatusBatchUpdateParams $params
+     * @param list<array{
+     *   channel: 'EMAIL'|Channel,
+     *   statusState: 'NOT_SPECIFIED'|'SUBSCRIBED'|'UNSUBSCRIBED'|StatusState,
+     *   subscriberIDString: string,
+     *   subscriptionID: int,
+     *   legalBasis?: 'CONSENT_WITH_NOTICE'|'LEGITIMATE_INTEREST_CLIENT'|'LEGITIMATE_INTEREST_OTHER'|'LEGITIMATE_INTEREST_PQL'|'NON_GDPR'|'PERFORMANCE_OF_CONTRACT'|'PROCESS_AND_STORE'|LegalBasis,
+     *   legalBasisExplanation?: string,
+     * }> $inputs
      *
      * @throws APIException
      */
     public function batchUpdate(
-        array|StatusBatchUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        array $inputs,
+        ?RequestOptions $requestOptions = null
     ): BatchResponsePublicStatus;
 
     /**
      * @api
      *
-     * @param array<mixed>|StatusGetParams $params
+     * @param string $subscriberIDString the contact's email address
+     * @param 'EMAIL'|\HubspotSDK\Marketing\Subscriptions\V4\Statuses\StatusGetParams\Channel $channel The channel type for the subscription type. Currently, the only supported channel type is `EMAIL`.
+     * @param int $businessUnitID If you have the [business unit add-on](https://developers.hubspot.com/beta-docs/guides/api/settings/business-units-api), include this parameter to filter results by business unit ID. The default Account business unit will always use `0`.
      *
      * @throws APIException
      */
     public function get(
         string $subscriberIDString,
-        array|StatusGetParams $params,
+        string|\HubspotSDK\Marketing\Subscriptions\V4\Statuses\StatusGetParams\Channel $channel,
+        ?int $businessUnitID = null,
         ?RequestOptions $requestOptions = null,
     ): ActionResponseWithResultsPublicStatus;
 
     /**
      * @api
      *
-     * @param array<mixed>|StatusGetUnsubscribeAllStatusParams $params
+     * @param string $subscriberIDString the contact's email address
+     * @param 'EMAIL'|\HubspotSDK\Marketing\Subscriptions\V4\Statuses\StatusGetUnsubscribeAllStatusParams\Channel $channel The channel type for the subscription type. Currently, the only supported channel type is `EMAIL`.
+     * @param int $businessUnitID If you have the [business unit add-on](https://developers.hubspot.com/beta-docs/guides/api/settings/business-units-api), include this parameter to filter results by business unit ID. The default Account business unit will always use `0`.
+     * @param bool $verbose Set to `true` to include the details of the updated subscription statuses in the response. Not including this parameter will result in an empty response.
      *
      * @throws APIException
      */
     public function getUnsubscribeAllStatus(
         string $subscriberIDString,
-        array|StatusGetUnsubscribeAllStatusParams $params,
+        string|\HubspotSDK\Marketing\Subscriptions\V4\Statuses\StatusGetUnsubscribeAllStatusParams\Channel $channel,
+        ?int $businessUnitID = null,
+        bool $verbose = false,
         ?RequestOptions $requestOptions = null,
     ): ActionResponseWithResultsPublicWideStatus;
 
     /**
      * @api
      *
-     * @param array<mixed>|StatusUnsubscribeAllParams $params
+     * @param string $subscriberIDString the contact's email address
+     * @param 'EMAIL'|\HubspotSDK\Marketing\Subscriptions\V4\Statuses\StatusUnsubscribeAllParams\Channel $channel The channel type for the subscription type. Currently, the only supported channel type is `EMAIL`.
+     * @param int $businessUnitID If you have the [business unit add-on](https://developers.hubspot.com/beta-docs/guides/api/settings/business-units-api), include this parameter to filter results by business unit ID. The default Account business unit will always use `0`.
+     * @param bool $verbose Set to `true` to include the details of the updated subscription statuses in the response. Not including this parameter will result in an empty response.
      *
      * @throws APIException
      */
     public function unsubscribeAll(
         string $subscriberIDString,
-        array|StatusUnsubscribeAllParams $params,
+        string|\HubspotSDK\Marketing\Subscriptions\V4\Statuses\StatusUnsubscribeAllParams\Channel $channel,
+        ?int $businessUnitID = null,
+        bool $verbose = false,
         ?RequestOptions $requestOptions = null,
     ): ActionResponseWithResultsPublicStatus;
 }

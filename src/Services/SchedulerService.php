@@ -13,6 +13,11 @@ final class SchedulerService implements SchedulerContract
     /**
      * @api
      */
+    public SchedulerRawService $raw;
+
+    /**
+     * @api
+     */
     public MeetingsService $meetings;
 
     /**
@@ -20,6 +25,7 @@ final class SchedulerService implements SchedulerContract
      */
     public function __construct(private Client $client)
     {
+        $this->raw = new SchedulerRawService($client);
         $this->meetings = new MeetingsService($client);
     }
 }

@@ -16,6 +16,11 @@ final class CallingService implements CallingContract
     /**
      * @api
      */
+    public CallingRawService $raw;
+
+    /**
+     * @api
+     */
     public ChannelConnectionSettingsService $channelConnectionSettings;
 
     /**
@@ -38,6 +43,7 @@ final class CallingService implements CallingContract
      */
     public function __construct(private Client $client)
     {
+        $this->raw = new CallingRawService($client);
         $this->channelConnectionSettings = new ChannelConnectionSettingsService($client);
         $this->recordingSettings = new RecordingSettingsService($client);
         $this->settings = new SettingsService($client);

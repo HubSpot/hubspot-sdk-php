@@ -6,9 +6,6 @@ namespace HubspotSDK\ServiceContracts\Crm\Objects\Projects;
 
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\AssociatedID;
-use HubspotSDK\Crm\Objects\Projects\Associations\AssociationDeleteParams;
-use HubspotSDK\Crm\Objects\Projects\Associations\AssociationListParams;
-use HubspotSDK\Crm\Objects\Projects\Associations\AssociationUpdateParams;
 use HubspotSDK\Crm\SimplePublicObjectWithAssociations;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
@@ -18,20 +15,24 @@ interface AssociationsContract
     /**
      * @api
      *
-     * @param array<mixed>|AssociationUpdateParams $params
-     *
      * @throws APIException
      */
     public function update(
         string $associationType,
-        array|AssociationUpdateParams $params,
+        string $projectID,
+        string $toObjectType,
+        string $toObjectID,
         ?RequestOptions $requestOptions = null,
     ): SimplePublicObjectWithAssociations;
 
     /**
      * @api
      *
-     * @param array<mixed>|AssociationListParams $params
+     * @param string $toObjectType Path param:
+     * @param string $projectID Path param:
+     * @param string $after Query param:
+     * @param bool $includeFa Query param:
+     * @param int $limit Query param:
      *
      * @return Page<AssociatedID>
      *
@@ -39,20 +40,23 @@ interface AssociationsContract
      */
     public function list(
         string $toObjectType,
-        array|AssociationListParams $params,
+        string $projectID,
+        ?string $after = null,
+        bool $includeFa = false,
+        int $limit = 500,
         ?RequestOptions $requestOptions = null,
     ): Page;
 
     /**
      * @api
      *
-     * @param array<mixed>|AssociationDeleteParams $params
-     *
      * @throws APIException
      */
     public function delete(
         string $associationType,
-        array|AssociationDeleteParams $params,
+        string $projectID,
+        string $toObjectType,
+        string $toObjectID,
         ?RequestOptions $requestOptions = null,
     ): mixed;
 }

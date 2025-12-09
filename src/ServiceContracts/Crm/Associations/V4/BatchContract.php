@@ -4,16 +4,14 @@ declare(strict_types=1);
 
 namespace HubspotSDK\ServiceContracts\Crm\Associations\V4;
 
+use HubspotSDK\AssociationSpec;
+use HubspotSDK\AssociationSpec\AssociationCategory;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\Associations\BatchResponseVoid;
-use HubspotSDK\Crm\Associations\V4\Batch\BatchCreateDefaultParams;
-use HubspotSDK\Crm\Associations\V4\Batch\BatchCreateParams;
-use HubspotSDK\Crm\Associations\V4\Batch\BatchDeleteLabelsParams;
-use HubspotSDK\Crm\Associations\V4\Batch\BatchDeleteParams;
-use HubspotSDK\Crm\Associations\V4\Batch\BatchGetParams;
 use HubspotSDK\Crm\Associations\V4\BatchResponseLabelsBetweenObjectPair;
 use HubspotSDK\Crm\Associations\V4\BatchResponsePublicAssociationMultiWithLabel;
 use HubspotSDK\Crm\BatchResponsePublicDefaultAssociation;
+use HubspotSDK\PublicObjectID;
 use HubspotSDK\RequestOptions;
 
 interface BatchContract
@@ -21,65 +19,99 @@ interface BatchContract
     /**
      * @api
      *
-     * @param array<mixed>|BatchCreateParams $params
+     * @param string $toObjectType Path param: The type of the to Object
+     * @param string $fromObjectType Path param: The type of the from Object
+     * @param list<array{
+     *   from: array{id: string}|PublicObjectID,
+     *   to: array{id: string}|PublicObjectID,
+     *   types: list<array{
+     *     associationCategory: 'HUBSPOT_DEFINED'|'INTEGRATOR_DEFINED'|'USER_DEFINED'|AssociationCategory,
+     *     associationTypeID: int,
+     *   }|AssociationSpec>,
+     * }> $inputs Body param:
      *
      * @throws APIException
      */
     public function create(
         string $toObjectType,
-        array|BatchCreateParams $params,
+        string $fromObjectType,
+        array $inputs,
         ?RequestOptions $requestOptions = null,
     ): BatchResponseLabelsBetweenObjectPair;
 
     /**
      * @api
      *
-     * @param array<mixed>|BatchDeleteParams $params
+     * @param string $toObjectType path param: Specifies the type of the target object in the batch association deletion
+     * @param string $fromObjectType path param: Specifies the type of the source object in the batch association deletion
+     * @param list<array{
+     *   from: array{id: string}|PublicObjectID,
+     *   to: list<array{id: string}|PublicObjectID>,
+     * }> $inputs Body param:
      *
      * @throws APIException
      */
     public function delete(
         string $toObjectType,
-        array|BatchDeleteParams $params,
+        string $fromObjectType,
+        array $inputs,
         ?RequestOptions $requestOptions = null,
     ): BatchResponseVoid;
 
     /**
      * @api
      *
-     * @param array<mixed>|BatchCreateDefaultParams $params
+     * @param string $toObjectType path param: Specifies the type of the target object in the association
+     * @param string $fromObjectType path param: Specifies the type of the source object in the association
+     * @param list<array{
+     *   from: array{id: string}|PublicObjectID, to: array{id: string}|PublicObjectID
+     * }> $inputs Body param:
      *
      * @throws APIException
      */
     public function createDefault(
         string $toObjectType,
-        array|BatchCreateDefaultParams $params,
+        string $fromObjectType,
+        array $inputs,
         ?RequestOptions $requestOptions = null,
     ): BatchResponsePublicDefaultAssociation;
 
     /**
      * @api
      *
-     * @param array<mixed>|BatchDeleteLabelsParams $params
+     * @param string $toObjectType Path param: The type of the to Object
+     * @param string $fromObjectType Path param: The type of the from Object
+     * @param list<array{
+     *   from: array{id: string}|PublicObjectID,
+     *   to: array{id: string}|PublicObjectID,
+     *   types: list<array{
+     *     associationCategory: 'HUBSPOT_DEFINED'|'INTEGRATOR_DEFINED'|'USER_DEFINED'|AssociationCategory,
+     *     associationTypeID: int,
+     *   }|AssociationSpec>,
+     * }> $inputs Body param:
      *
      * @throws APIException
      */
     public function deleteLabels(
         string $toObjectType,
-        array|BatchDeleteLabelsParams $params,
+        string $fromObjectType,
+        array $inputs,
         ?RequestOptions $requestOptions = null,
     ): BatchResponseVoid;
 
     /**
      * @api
      *
-     * @param array<mixed>|BatchGetParams $params
+     * @param string $toObjectType Path param: The type of the to Object
+     * @param string $fromObjectType Path param: The type of the from Object
+     * @param list<array{id: string, after?: string}> $inputs Body param:
      *
      * @throws APIException
      */
     public function get(
         string $toObjectType,
-        array|BatchGetParams $params,
+        string $fromObjectType,
+        array $inputs,
         ?RequestOptions $requestOptions = null,
     ): BatchResponsePublicAssociationMultiWithLabel;
 }

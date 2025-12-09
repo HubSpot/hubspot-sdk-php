@@ -15,6 +15,11 @@ final class TimelineService implements TimelineContract
     /**
      * @api
      */
+    public TimelineRawService $raw;
+
+    /**
+     * @api
+     */
     public EventsService $events;
 
     /**
@@ -32,6 +37,7 @@ final class TimelineService implements TimelineContract
      */
     public function __construct(private Client $client)
     {
+        $this->raw = new TimelineRawService($client);
         $this->events = new EventsService($client);
         $this->templates = new TemplatesService($client);
         $this->tokens = new TokensService($client);

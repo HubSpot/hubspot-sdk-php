@@ -42,11 +42,11 @@ final class ListsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->lists->create([
-            'name' => 'Dynamic Association List Example',
-            'objectTypeID' => '0-1',
-            'processingType' => 'DYNAMIC',
-        ]);
+        $result = $this->client->crm->lists->create(
+            name: 'Dynamic Association List Example',
+            objectTypeID: '0-1',
+            processingType: 'DYNAMIC',
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(ListCreateResponse::class, $result);
@@ -59,12 +59,12 @@ final class ListsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->lists->create([
-            'name' => 'Dynamic Association List Example',
-            'objectTypeID' => '0-1',
-            'processingType' => 'DYNAMIC',
-            'customProperties' => ['foo' => 'string'],
-            'filterBranch' => [
+        $result = $this->client->crm->lists->create(
+            name: 'Dynamic Association List Example',
+            objectTypeID: '0-1',
+            processingType: 'DYNAMIC',
+            customProperties: ['foo' => 'string'],
+            filterBranch: [
                 'filterBranches' => [
                     [
                         'filterBranches' => [
@@ -239,14 +239,14 @@ final class ListsTest extends TestCase
                     ],
                 ],
             ],
-            'listFolderID' => 0,
-            'listPermissions' => [
+            listFolderID: 0,
+            listPermissions: [
                 'teamsWithEditAccess' => [0], 'usersWithEditAccess' => [0],
             ],
-            'membershipSettings' => [
+            membershipSettings: [
                 'includeUnassigned' => true, 'membershipTeamID' => 0,
             ],
-        ]);
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(ListCreateResponse::class, $result);
@@ -259,7 +259,7 @@ final class ListsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->lists->list([]);
+        $result = $this->client->crm->lists->list();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(ListsByIDResponse::class, $result);
@@ -298,7 +298,7 @@ final class ListsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->lists->get('listId', []);
+        $result = $this->client->crm->lists->get('listId');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(ListFetchResponse::class, $result);
@@ -313,7 +313,7 @@ final class ListsTest extends TestCase
 
         $result = $this->client->crm->lists->getByObjectTypeIDAndName(
             'listName',
-            ['objectTypeID' => 'objectTypeId']
+            objectTypeID: 'objectTypeId'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -329,7 +329,8 @@ final class ListsTest extends TestCase
 
         $result = $this->client->crm->lists->getByObjectTypeIDAndName(
             'listName',
-            ['objectTypeID' => 'objectTypeId', 'includeFilters' => true]
+            objectTypeID: 'objectTypeId',
+            includeFilters: true
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -371,14 +372,12 @@ final class ListsTest extends TestCase
 
         $result = $this->client->crm->lists->scheduleConversion(
             'listId',
-            [
-                'conversionType' => 'INACTIVITY',
-                'day' => 0,
-                'month' => 0,
-                'year' => 0,
-                'offset' => 0,
-                'timeUnit' => 'DAY',
-            ],
+            conversionType: 'INACTIVITY',
+            day: 0,
+            month: 0,
+            year: 0,
+            offset: 0,
+            timeUnit: 'DAY',
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -394,14 +393,12 @@ final class ListsTest extends TestCase
 
         $result = $this->client->crm->lists->scheduleConversion(
             'listId',
-            [
-                'conversionType' => 'INACTIVITY',
-                'day' => 0,
-                'month' => 0,
-                'year' => 0,
-                'offset' => 0,
-                'timeUnit' => 'DAY',
-            ],
+            conversionType: 'INACTIVITY',
+            day: 0,
+            month: 0,
+            year: 0,
+            offset: 0,
+            timeUnit: 'DAY',
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -415,9 +412,10 @@ final class ListsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->lists->search([
-            'additionalProperties' => ['hs_list_size_week_delta'], 'offset' => 0,
-        ]);
+        $result = $this->client->crm->lists->search(
+            additionalProperties: ['hs_list_size_week_delta'],
+            offset: 0
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(ListSearchResponse::class, $result);
@@ -430,15 +428,15 @@ final class ListsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->lists->search([
-            'additionalProperties' => ['hs_list_size_week_delta'],
-            'offset' => 0,
-            'count' => 100,
-            'listIDs' => ['string'],
-            'processingTypes' => ['string'],
-            'query' => 'Test',
-            'sort' => 'sort',
-        ]);
+        $result = $this->client->crm->lists->search(
+            additionalProperties: ['hs_list_size_week_delta'],
+            offset: 0,
+            count: 100,
+            listIDs: ['string'],
+            processingTypes: ['string'],
+            query: 'Test',
+            sort: 'sort',
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(ListSearchResponse::class, $result);
@@ -453,190 +451,188 @@ final class ListsTest extends TestCase
 
         $result = $this->client->crm->lists->updateFilters(
             'listId',
-            [
-                'filterBranch' => [
-                    'filterBranches' => [
-                        [
-                            'filterBranches' => [
-                                [
-                                    'filterBranches' => [
-                                        [
-                                            'filterBranches' => [
-                                                [
-                                                    'filterBranches' => [
-                                                        [
-                                                            'eventTypeID' => 'eventTypeId',
-                                                            'filterBranches' => [
-                                                                [
-                                                                    'filterBranches' => [
-                                                                        [
-                                                                            'associationCategory' => 'associationCategory',
-                                                                            'associationTypeID' => 0,
-                                                                            'filterBranches' => [
-                                                                                [
-                                                                                    'filterBranches' => [],
-                                                                                    'filterBranchOperator' => 'filterBranchOperator',
-                                                                                    'filterBranchType' => 'OR',
-                                                                                    'filters' => [
-                                                                                        [
-                                                                                            'filterType' => 'PROPERTY',
-                                                                                            'operation' => [
-                                                                                                'includeObjectsWithNoValueSet' => true,
-                                                                                                'operationType' => 'BOOL',
-                                                                                                'operator' => 'operator',
-                                                                                                'value' => true,
-                                                                                            ],
-                                                                                            'property' => 'property',
+            filterBranch: [
+                'filterBranches' => [
+                    [
+                        'filterBranches' => [
+                            [
+                                'filterBranches' => [
+                                    [
+                                        'filterBranches' => [
+                                            [
+                                                'filterBranches' => [
+                                                    [
+                                                        'eventTypeID' => 'eventTypeId',
+                                                        'filterBranches' => [
+                                                            [
+                                                                'filterBranches' => [
+                                                                    [
+                                                                        'associationCategory' => 'associationCategory',
+                                                                        'associationTypeID' => 0,
+                                                                        'filterBranches' => [
+                                                                            [
+                                                                                'filterBranches' => [],
+                                                                                'filterBranchOperator' => 'filterBranchOperator',
+                                                                                'filterBranchType' => 'OR',
+                                                                                'filters' => [
+                                                                                    [
+                                                                                        'filterType' => 'PROPERTY',
+                                                                                        'operation' => [
+                                                                                            'includeObjectsWithNoValueSet' => true,
+                                                                                            'operationType' => 'BOOL',
+                                                                                            'operator' => 'operator',
+                                                                                            'value' => true,
                                                                                         ],
+                                                                                        'property' => 'property',
                                                                                     ],
                                                                                 ],
                                                                             ],
-                                                                            'filterBranchOperator' => 'filterBranchOperator',
-                                                                            'filterBranchType' => 'ASSOCIATION',
-                                                                            'filters' => [
-                                                                                [
-                                                                                    'filterType' => 'PROPERTY',
-                                                                                    'operation' => [
-                                                                                        'includeObjectsWithNoValueSet' => true,
-                                                                                        'operationType' => 'BOOL',
-                                                                                        'operator' => 'operator',
-                                                                                        'value' => true,
-                                                                                    ],
-                                                                                    'property' => 'property',
+                                                                        ],
+                                                                        'filterBranchOperator' => 'filterBranchOperator',
+                                                                        'filterBranchType' => 'ASSOCIATION',
+                                                                        'filters' => [
+                                                                            [
+                                                                                'filterType' => 'PROPERTY',
+                                                                                'operation' => [
+                                                                                    'includeObjectsWithNoValueSet' => true,
+                                                                                    'operationType' => 'BOOL',
+                                                                                    'operator' => 'operator',
+                                                                                    'value' => true,
                                                                                 ],
+                                                                                'property' => 'property',
                                                                             ],
-                                                                            'objectTypeID' => 'objectTypeId',
-                                                                            'operator' => 'operator',
                                                                         ],
-                                                                    ],
-                                                                    'filterBranchOperator' => 'filterBranchOperator',
-                                                                    'filterBranchType' => 'PROPERTY_ASSOCIATION',
-                                                                    'filters' => [
-                                                                        [
-                                                                            'filterType' => 'PROPERTY',
-                                                                            'operation' => [
-                                                                                'includeObjectsWithNoValueSet' => true,
-                                                                                'operationType' => 'BOOL',
-                                                                                'operator' => 'operator',
-                                                                                'value' => true,
-                                                                            ],
-                                                                            'property' => 'property',
-                                                                        ],
-                                                                    ],
-                                                                    'objectTypeID' => 'objectTypeId',
-                                                                    'operator' => 'operator',
-                                                                    'propertyWithObjectID' => 'propertyWithObjectId',
-                                                                ],
-                                                            ],
-                                                            'filterBranchOperator' => 'filterBranchOperator',
-                                                            'filterBranchType' => 'UNIFIED_EVENTS',
-                                                            'filters' => [
-                                                                [
-                                                                    'filterType' => 'PROPERTY',
-                                                                    'operation' => [
-                                                                        'includeObjectsWithNoValueSet' => true,
-                                                                        'operationType' => 'BOOL',
+                                                                        'objectTypeID' => 'objectTypeId',
                                                                         'operator' => 'operator',
-                                                                        'value' => true,
                                                                     ],
-                                                                    'property' => 'property',
                                                                 ],
-                                                            ],
-                                                            'operator' => 'HAS_COMPLETED',
-                                                        ],
-                                                    ],
-                                                    'filterBranchOperator' => 'filterBranchOperator',
-                                                    'filterBranchType' => 'RESTRICTED',
-                                                    'filters' => [
-                                                        [
-                                                            'filterType' => 'PROPERTY',
-                                                            'operation' => [
-                                                                'includeObjectsWithNoValueSet' => true,
-                                                                'operationType' => 'BOOL',
+                                                                'filterBranchOperator' => 'filterBranchOperator',
+                                                                'filterBranchType' => 'PROPERTY_ASSOCIATION',
+                                                                'filters' => [
+                                                                    [
+                                                                        'filterType' => 'PROPERTY',
+                                                                        'operation' => [
+                                                                            'includeObjectsWithNoValueSet' => true,
+                                                                            'operationType' => 'BOOL',
+                                                                            'operator' => 'operator',
+                                                                            'value' => true,
+                                                                        ],
+                                                                        'property' => 'property',
+                                                                    ],
+                                                                ],
+                                                                'objectTypeID' => 'objectTypeId',
                                                                 'operator' => 'operator',
-                                                                'value' => true,
+                                                                'propertyWithObjectID' => 'propertyWithObjectId',
                                                             ],
-                                                            'property' => 'property',
                                                         ],
+                                                        'filterBranchOperator' => 'filterBranchOperator',
+                                                        'filterBranchType' => 'UNIFIED_EVENTS',
+                                                        'filters' => [
+                                                            [
+                                                                'filterType' => 'PROPERTY',
+                                                                'operation' => [
+                                                                    'includeObjectsWithNoValueSet' => true,
+                                                                    'operationType' => 'BOOL',
+                                                                    'operator' => 'operator',
+                                                                    'value' => true,
+                                                                ],
+                                                                'property' => 'property',
+                                                            ],
+                                                        ],
+                                                        'operator' => 'HAS_COMPLETED',
+                                                    ],
+                                                ],
+                                                'filterBranchOperator' => 'filterBranchOperator',
+                                                'filterBranchType' => 'RESTRICTED',
+                                                'filters' => [
+                                                    [
+                                                        'filterType' => 'PROPERTY',
+                                                        'operation' => [
+                                                            'includeObjectsWithNoValueSet' => true,
+                                                            'operationType' => 'BOOL',
+                                                            'operator' => 'operator',
+                                                            'value' => true,
+                                                        ],
+                                                        'property' => 'property',
                                                     ],
                                                 ],
                                             ],
-                                            'filterBranchOperator' => 'filterBranchOperator',
-                                            'filterBranchType' => 'NOT_ANY',
-                                            'filters' => [
-                                                [
-                                                    'filterType' => 'PROPERTY',
-                                                    'operation' => [
-                                                        'includeObjectsWithNoValueSet' => true,
-                                                        'operationType' => 'BOOL',
-                                                        'operator' => 'operator',
-                                                        'value' => true,
-                                                    ],
-                                                    'property' => 'property',
+                                        ],
+                                        'filterBranchOperator' => 'filterBranchOperator',
+                                        'filterBranchType' => 'NOT_ANY',
+                                        'filters' => [
+                                            [
+                                                'filterType' => 'PROPERTY',
+                                                'operation' => [
+                                                    'includeObjectsWithNoValueSet' => true,
+                                                    'operationType' => 'BOOL',
+                                                    'operator' => 'operator',
+                                                    'value' => true,
                                                 ],
+                                                'property' => 'property',
                                             ],
                                         ],
                                     ],
-                                    'filterBranchOperator' => 'filterBranchOperator',
-                                    'filterBranchType' => 'NOT_ALL',
-                                    'filters' => [
-                                        [
-                                            'filterType' => 'PROPERTY',
-                                            'operation' => [
-                                                'includeObjectsWithNoValueSet' => true,
-                                                'operationType' => 'BOOL',
-                                                'operator' => 'operator',
-                                                'value' => true,
-                                            ],
-                                            'property' => 'property',
+                                ],
+                                'filterBranchOperator' => 'filterBranchOperator',
+                                'filterBranchType' => 'NOT_ALL',
+                                'filters' => [
+                                    [
+                                        'filterType' => 'PROPERTY',
+                                        'operation' => [
+                                            'includeObjectsWithNoValueSet' => true,
+                                            'operationType' => 'BOOL',
+                                            'operator' => 'operator',
+                                            'value' => true,
                                         ],
+                                        'property' => 'property',
                                     ],
                                 ],
                             ],
-                            'filterBranchOperator' => 'filterBranchOperator',
-                            'filterBranchType' => 'AND',
-                            'filters' => [
-                                [
-                                    'filterType' => 'PROPERTY',
-                                    'operation' => [
-                                        'includeObjectsWithNoValueSet' => true,
-                                        'operationType' => 'BOOL',
-                                        'operator' => 'IS_GREATER_THAN_OR_EQUAL_TO',
-                                        'value' => true,
-                                    ],
-                                    'property' => 'hs_predictivecontactscore_v2',
+                        ],
+                        'filterBranchOperator' => 'filterBranchOperator',
+                        'filterBranchType' => 'AND',
+                        'filters' => [
+                            [
+                                'filterType' => 'PROPERTY',
+                                'operation' => [
+                                    'includeObjectsWithNoValueSet' => true,
+                                    'operationType' => 'BOOL',
+                                    'operator' => 'IS_GREATER_THAN_OR_EQUAL_TO',
+                                    'value' => true,
                                 ],
-                                [
-                                    'filterType' => 'PROPERTY',
-                                    'operation' => [
-                                        'includeObjectsWithNoValueSet' => true,
-                                        'operationType' => 'BOOL',
-                                        'operator' => 'IS_UNKNOWN',
-                                        'value' => true,
-                                    ],
-                                    'property' => 'engagements_last_meeting_booked_source',
+                                'property' => 'hs_predictivecontactscore_v2',
+                            ],
+                            [
+                                'filterType' => 'PROPERTY',
+                                'operation' => [
+                                    'includeObjectsWithNoValueSet' => true,
+                                    'operationType' => 'BOOL',
+                                    'operator' => 'IS_UNKNOWN',
+                                    'value' => true,
                                 ],
-                                [
-                                    'acceptedStatuses' => ['OPT_IN'],
-                                    'filterType' => 'EMAIL_SUBSCRIPTION',
-                                    'subscriptionIDs' => ['81537745', '321981152'],
-                                ],
+                                'property' => 'engagements_last_meeting_booked_source',
+                            ],
+                            [
+                                'acceptedStatuses' => ['OPT_IN'],
+                                'filterType' => 'EMAIL_SUBSCRIPTION',
+                                'subscriptionIDs' => ['81537745', '321981152'],
                             ],
                         ],
                     ],
-                    'filterBranchOperator' => 'filterBranchOperator',
-                    'filterBranchType' => 'OR',
-                    'filters' => [
-                        [
-                            'filterType' => 'PROPERTY',
-                            'operation' => [
-                                'includeObjectsWithNoValueSet' => true,
-                                'operationType' => 'BOOL',
-                                'operator' => 'operator',
-                                'value' => true,
-                            ],
-                            'property' => 'property',
+                ],
+                'filterBranchOperator' => 'filterBranchOperator',
+                'filterBranchType' => 'OR',
+                'filters' => [
+                    [
+                        'filterType' => 'PROPERTY',
+                        'operation' => [
+                            'includeObjectsWithNoValueSet' => true,
+                            'operationType' => 'BOOL',
+                            'operator' => 'operator',
+                            'value' => true,
                         ],
+                        'property' => 'property',
                     ],
                 ],
             ],
@@ -655,200 +651,198 @@ final class ListsTest extends TestCase
 
         $result = $this->client->crm->lists->updateFilters(
             'listId',
-            [
-                'filterBranch' => [
-                    'filterBranches' => [
-                        [
-                            'filterBranches' => [
-                                [
-                                    'filterBranches' => [
-                                        [
-                                            'filterBranches' => [
-                                                [
-                                                    'filterBranches' => [
-                                                        [
-                                                            'eventTypeID' => 'eventTypeId',
-                                                            'filterBranches' => [
-                                                                [
-                                                                    'filterBranches' => [
-                                                                        [
-                                                                            'associationCategory' => 'associationCategory',
-                                                                            'associationTypeID' => 0,
-                                                                            'filterBranches' => [
-                                                                                [
-                                                                                    'filterBranches' => [],
-                                                                                    'filterBranchOperator' => 'filterBranchOperator',
-                                                                                    'filterBranchType' => 'OR',
-                                                                                    'filters' => [
-                                                                                        [
-                                                                                            'filterType' => 'PROPERTY',
-                                                                                            'operation' => [
-                                                                                                'includeObjectsWithNoValueSet' => true,
-                                                                                                'operationType' => 'BOOL',
-                                                                                                'operator' => 'operator',
-                                                                                                'value' => true,
-                                                                                            ],
-                                                                                            'property' => 'property',
+            filterBranch: [
+                'filterBranches' => [
+                    [
+                        'filterBranches' => [
+                            [
+                                'filterBranches' => [
+                                    [
+                                        'filterBranches' => [
+                                            [
+                                                'filterBranches' => [
+                                                    [
+                                                        'eventTypeID' => 'eventTypeId',
+                                                        'filterBranches' => [
+                                                            [
+                                                                'filterBranches' => [
+                                                                    [
+                                                                        'associationCategory' => 'associationCategory',
+                                                                        'associationTypeID' => 0,
+                                                                        'filterBranches' => [
+                                                                            [
+                                                                                'filterBranches' => [],
+                                                                                'filterBranchOperator' => 'filterBranchOperator',
+                                                                                'filterBranchType' => 'OR',
+                                                                                'filters' => [
+                                                                                    [
+                                                                                        'filterType' => 'PROPERTY',
+                                                                                        'operation' => [
+                                                                                            'includeObjectsWithNoValueSet' => true,
+                                                                                            'operationType' => 'BOOL',
+                                                                                            'operator' => 'operator',
+                                                                                            'value' => true,
                                                                                         ],
+                                                                                        'property' => 'property',
                                                                                     ],
                                                                                 ],
                                                                             ],
-                                                                            'filterBranchOperator' => 'filterBranchOperator',
-                                                                            'filterBranchType' => 'ASSOCIATION',
-                                                                            'filters' => [
-                                                                                [
-                                                                                    'filterType' => 'PROPERTY',
-                                                                                    'operation' => [
-                                                                                        'includeObjectsWithNoValueSet' => true,
-                                                                                        'operationType' => 'BOOL',
-                                                                                        'operator' => 'operator',
-                                                                                        'value' => true,
-                                                                                    ],
-                                                                                    'property' => 'property',
+                                                                        ],
+                                                                        'filterBranchOperator' => 'filterBranchOperator',
+                                                                        'filterBranchType' => 'ASSOCIATION',
+                                                                        'filters' => [
+                                                                            [
+                                                                                'filterType' => 'PROPERTY',
+                                                                                'operation' => [
+                                                                                    'includeObjectsWithNoValueSet' => true,
+                                                                                    'operationType' => 'BOOL',
+                                                                                    'operator' => 'operator',
+                                                                                    'value' => true,
                                                                                 ],
+                                                                                'property' => 'property',
                                                                             ],
-                                                                            'objectTypeID' => 'objectTypeId',
-                                                                            'operator' => 'operator',
                                                                         ],
-                                                                    ],
-                                                                    'filterBranchOperator' => 'filterBranchOperator',
-                                                                    'filterBranchType' => 'PROPERTY_ASSOCIATION',
-                                                                    'filters' => [
-                                                                        [
-                                                                            'filterType' => 'PROPERTY',
-                                                                            'operation' => [
-                                                                                'includeObjectsWithNoValueSet' => true,
-                                                                                'operationType' => 'BOOL',
-                                                                                'operator' => 'operator',
-                                                                                'value' => true,
-                                                                            ],
-                                                                            'property' => 'property',
-                                                                        ],
-                                                                    ],
-                                                                    'objectTypeID' => 'objectTypeId',
-                                                                    'operator' => 'operator',
-                                                                    'propertyWithObjectID' => 'propertyWithObjectId',
-                                                                ],
-                                                            ],
-                                                            'filterBranchOperator' => 'filterBranchOperator',
-                                                            'filterBranchType' => 'UNIFIED_EVENTS',
-                                                            'filters' => [
-                                                                [
-                                                                    'filterType' => 'PROPERTY',
-                                                                    'operation' => [
-                                                                        'includeObjectsWithNoValueSet' => true,
-                                                                        'operationType' => 'BOOL',
+                                                                        'objectTypeID' => 'objectTypeId',
                                                                         'operator' => 'operator',
-                                                                        'value' => true,
                                                                     ],
-                                                                    'property' => 'property',
                                                                 ],
-                                                            ],
-                                                            'operator' => 'HAS_COMPLETED',
-                                                            'coalescingRefineBy' => [
-                                                                'type' => 'NUM_OCCURRENCES',
-                                                                'maxOccurrences' => 0,
-                                                                'minOccurrences' => 0,
-                                                            ],
-                                                        ],
-                                                    ],
-                                                    'filterBranchOperator' => 'filterBranchOperator',
-                                                    'filterBranchType' => 'RESTRICTED',
-                                                    'filters' => [
-                                                        [
-                                                            'filterType' => 'PROPERTY',
-                                                            'operation' => [
-                                                                'includeObjectsWithNoValueSet' => true,
-                                                                'operationType' => 'BOOL',
+                                                                'filterBranchOperator' => 'filterBranchOperator',
+                                                                'filterBranchType' => 'PROPERTY_ASSOCIATION',
+                                                                'filters' => [
+                                                                    [
+                                                                        'filterType' => 'PROPERTY',
+                                                                        'operation' => [
+                                                                            'includeObjectsWithNoValueSet' => true,
+                                                                            'operationType' => 'BOOL',
+                                                                            'operator' => 'operator',
+                                                                            'value' => true,
+                                                                        ],
+                                                                        'property' => 'property',
+                                                                    ],
+                                                                ],
+                                                                'objectTypeID' => 'objectTypeId',
                                                                 'operator' => 'operator',
-                                                                'value' => true,
+                                                                'propertyWithObjectID' => 'propertyWithObjectId',
                                                             ],
-                                                            'property' => 'property',
+                                                        ],
+                                                        'filterBranchOperator' => 'filterBranchOperator',
+                                                        'filterBranchType' => 'UNIFIED_EVENTS',
+                                                        'filters' => [
+                                                            [
+                                                                'filterType' => 'PROPERTY',
+                                                                'operation' => [
+                                                                    'includeObjectsWithNoValueSet' => true,
+                                                                    'operationType' => 'BOOL',
+                                                                    'operator' => 'operator',
+                                                                    'value' => true,
+                                                                ],
+                                                                'property' => 'property',
+                                                            ],
+                                                        ],
+                                                        'operator' => 'HAS_COMPLETED',
+                                                        'coalescingRefineBy' => [
+                                                            'type' => 'NUM_OCCURRENCES',
+                                                            'maxOccurrences' => 0,
+                                                            'minOccurrences' => 0,
                                                         ],
                                                     ],
                                                 ],
-                                            ],
-                                            'filterBranchOperator' => 'filterBranchOperator',
-                                            'filterBranchType' => 'NOT_ANY',
-                                            'filters' => [
-                                                [
-                                                    'filterType' => 'PROPERTY',
-                                                    'operation' => [
-                                                        'includeObjectsWithNoValueSet' => true,
-                                                        'operationType' => 'BOOL',
-                                                        'operator' => 'operator',
-                                                        'value' => true,
+                                                'filterBranchOperator' => 'filterBranchOperator',
+                                                'filterBranchType' => 'RESTRICTED',
+                                                'filters' => [
+                                                    [
+                                                        'filterType' => 'PROPERTY',
+                                                        'operation' => [
+                                                            'includeObjectsWithNoValueSet' => true,
+                                                            'operationType' => 'BOOL',
+                                                            'operator' => 'operator',
+                                                            'value' => true,
+                                                        ],
+                                                        'property' => 'property',
                                                     ],
-                                                    'property' => 'property',
                                                 ],
                                             ],
                                         ],
-                                    ],
-                                    'filterBranchOperator' => 'filterBranchOperator',
-                                    'filterBranchType' => 'NOT_ALL',
-                                    'filters' => [
-                                        [
-                                            'filterType' => 'PROPERTY',
-                                            'operation' => [
-                                                'includeObjectsWithNoValueSet' => true,
-                                                'operationType' => 'BOOL',
-                                                'operator' => 'operator',
-                                                'value' => true,
+                                        'filterBranchOperator' => 'filterBranchOperator',
+                                        'filterBranchType' => 'NOT_ANY',
+                                        'filters' => [
+                                            [
+                                                'filterType' => 'PROPERTY',
+                                                'operation' => [
+                                                    'includeObjectsWithNoValueSet' => true,
+                                                    'operationType' => 'BOOL',
+                                                    'operator' => 'operator',
+                                                    'value' => true,
+                                                ],
+                                                'property' => 'property',
                                             ],
-                                            'property' => 'property',
                                         ],
                                     ],
                                 ],
-                            ],
-                            'filterBranchOperator' => 'filterBranchOperator',
-                            'filterBranchType' => 'AND',
-                            'filters' => [
-                                [
-                                    'filterType' => 'PROPERTY',
-                                    'operation' => [
-                                        'includeObjectsWithNoValueSet' => true,
-                                        'operationType' => 'BOOL',
-                                        'operator' => 'IS_GREATER_THAN_OR_EQUAL_TO',
-                                        'value' => true,
+                                'filterBranchOperator' => 'filterBranchOperator',
+                                'filterBranchType' => 'NOT_ALL',
+                                'filters' => [
+                                    [
+                                        'filterType' => 'PROPERTY',
+                                        'operation' => [
+                                            'includeObjectsWithNoValueSet' => true,
+                                            'operationType' => 'BOOL',
+                                            'operator' => 'operator',
+                                            'value' => true,
+                                        ],
+                                        'property' => 'property',
                                     ],
-                                    'property' => 'hs_predictivecontactscore_v2',
-                                ],
-                                [
-                                    'filterType' => 'PROPERTY',
-                                    'operation' => [
-                                        'includeObjectsWithNoValueSet' => true,
-                                        'operationType' => 'BOOL',
-                                        'operator' => 'IS_UNKNOWN',
-                                        'value' => true,
-                                    ],
-                                    'property' => 'engagements_last_meeting_booked_source',
-                                ],
-                                [
-                                    'acceptedStatuses' => ['OPT_IN'],
-                                    'filterType' => 'EMAIL_SUBSCRIPTION',
-                                    'subscriptionIDs' => ['81537745', '321981152'],
-                                    'subscriptionType' => 'subscriptionType',
                                 ],
                             ],
                         ],
-                    ],
-                    'filterBranchOperator' => 'filterBranchOperator',
-                    'filterBranchType' => 'OR',
-                    'filters' => [
-                        [
-                            'filterType' => 'PROPERTY',
-                            'operation' => [
-                                'includeObjectsWithNoValueSet' => true,
-                                'operationType' => 'BOOL',
-                                'operator' => 'operator',
-                                'value' => true,
+                        'filterBranchOperator' => 'filterBranchOperator',
+                        'filterBranchType' => 'AND',
+                        'filters' => [
+                            [
+                                'filterType' => 'PROPERTY',
+                                'operation' => [
+                                    'includeObjectsWithNoValueSet' => true,
+                                    'operationType' => 'BOOL',
+                                    'operator' => 'IS_GREATER_THAN_OR_EQUAL_TO',
+                                    'value' => true,
+                                ],
+                                'property' => 'hs_predictivecontactscore_v2',
                             ],
-                            'property' => 'property',
+                            [
+                                'filterType' => 'PROPERTY',
+                                'operation' => [
+                                    'includeObjectsWithNoValueSet' => true,
+                                    'operationType' => 'BOOL',
+                                    'operator' => 'IS_UNKNOWN',
+                                    'value' => true,
+                                ],
+                                'property' => 'engagements_last_meeting_booked_source',
+                            ],
+                            [
+                                'acceptedStatuses' => ['OPT_IN'],
+                                'filterType' => 'EMAIL_SUBSCRIPTION',
+                                'subscriptionIDs' => ['81537745', '321981152'],
+                                'subscriptionType' => 'subscriptionType',
+                            ],
                         ],
                     ],
                 ],
-                'enrollObjectsInWorkflows' => true,
+                'filterBranchOperator' => 'filterBranchOperator',
+                'filterBranchType' => 'OR',
+                'filters' => [
+                    [
+                        'filterType' => 'PROPERTY',
+                        'operation' => [
+                            'includeObjectsWithNoValueSet' => true,
+                            'operationType' => 'BOOL',
+                            'operator' => 'operator',
+                            'value' => true,
+                        ],
+                        'property' => 'property',
+                    ],
+                ],
             ],
+            enrollObjectsInWorkflows: true,
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -862,7 +856,7 @@ final class ListsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->lists->updateName('listId', []);
+        $result = $this->client->crm->lists->updateName('listId');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(ListUpdateResponse::class, $result);

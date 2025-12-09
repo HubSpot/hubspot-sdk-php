@@ -5,9 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Scheduler\Meetings;
 
 use HubspotSDK\Client;
-use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Core\Util;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\Scheduler\Meetings\ExternalBookingInfo;
@@ -15,57 +13,58 @@ use HubspotSDK\Scheduler\Meetings\ExternalLegalConsentResponse;
 use HubspotSDK\Scheduler\Meetings\ExternalLinkAvailabilityAndBusyTimes;
 use HubspotSDK\Scheduler\Meetings\ExternalLinkMetadata;
 use HubspotSDK\Scheduler\Meetings\ExternalMeetingBookingResponse;
-use HubspotSDK\Scheduler\Meetings\MeetingsLinks\MeetingsLinkBookParams;
-use HubspotSDK\Scheduler\Meetings\MeetingsLinks\MeetingsLinkGetAvailabilityBySlugParams;
-use HubspotSDK\Scheduler\Meetings\MeetingsLinks\MeetingsLinkGetBookingInfoBySlugParams;
-use HubspotSDK\Scheduler\Meetings\MeetingsLinks\MeetingsLinkListParams;
 use HubspotSDK\ServiceContracts\Scheduler\Meetings\MeetingsLinksContract;
 
 final class MeetingsLinksService implements MeetingsLinksContract
 {
     /**
+     * @api
+     */
+    public MeetingsLinksRawService $raw;
+
+    /**
      * @internal
      */
-    public function __construct(private Client $client) {}
+    public function __construct(private Client $client)
+    {
+        $this->raw = new MeetingsLinksRawService($client);
+    }
 
     /**
      * @api
      *
      * Get a paged list meeting scheduling pages
      *
-     * @param array{
-     *   after?: string,
-     *   limit?: int,
-     *   name?: string,
-     *   organizerUserID?: string,
-     *   type?: string,
-     * }|MeetingsLinkListParams $params
+     * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+     * @param int $limit the maximum number of results to display per page
+     * @param string $name retrieve scheduling pages with a specified name
+     * @param string $organizerUserID filter the response to scheduling pages created by the specified user
+     * @param string $type filter the response to the specific type of meeting
      *
      * @return Page<ExternalLinkMetadata>
      *
      * @throws APIException
      */
     public function list(
-        array|MeetingsLinkListParams $params,
-        ?RequestOptions $requestOptions = null
+        ?string $after = null,
+        ?int $limit = null,
+        ?string $name = null,
+        ?string $organizerUserID = null,
+        ?string $type = null,
+        ?RequestOptions $requestOptions = null,
     ): Page {
-        [$parsed, $options] = MeetingsLinkListParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = [
+            'after' => $after,
+            'limit' => $limit,
+            'name' => $name,
+            'organizerUserID' => $organizerUserID,
+            'type' => $type,
+        ];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<Page<ExternalLinkMetadata>> */
-        $response = $this->client->request(
-            method: 'get',
-            path: 'scheduler/v3/meetings/meeting-links',
-            query: Util::array_transform_keys(
-                $parsed,
-                ['organizerUserID' => 'organizerUserId']
-            ),
-            options: $options,
-            convert: ExternalLinkMetadata::class,
-            page: Page::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->list(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -75,41 +74,46 @@ final class MeetingsLinksService implements MeetingsLinksContract
      *
      * Book a meeting for a specified meeting page.
      *
-     * @param array{
-     *   duration: int,
-     *   email: string,
-     *   firstName: string,
-     *   formFields: list<array{name: string, value: string}>,
-     *   lastName: string,
-     *   legalConsentResponses: list<array{
-     *     communicationTypeID: string, consented: bool
-     *   }|ExternalLegalConsentResponse>,
-     *   likelyAvailableUserIDs: list<string>,
-     *   slug: string,
-     *   startTime: string|\DateTimeInterface,
-     *   locale?: string,
-     *   timezone?: string,
-     * }|MeetingsLinkBookParams $params
+     * @param list<array{name: string, value: string}> $formFields
+     * @param list<array{
+     *   communicationTypeID: string, consented: bool
+     * }|ExternalLegalConsentResponse> $legalConsentResponses
+     * @param list<string> $likelyAvailableUserIDs
      *
      * @throws APIException
      */
     public function book(
-        array|MeetingsLinkBookParams $params,
-        ?RequestOptions $requestOptions = null
+        int $duration,
+        string $email,
+        string $firstName,
+        array $formFields,
+        string $lastName,
+        array $legalConsentResponses,
+        array $likelyAvailableUserIDs,
+        string $slug,
+        string|\DateTimeInterface $startTime,
+        ?string $locale = null,
+        ?string $timezone = null,
+        ?RequestOptions $requestOptions = null,
     ): ExternalMeetingBookingResponse {
-        [$parsed, $options] = MeetingsLinkBookParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = [
+            'duration' => $duration,
+            'email' => $email,
+            'firstName' => $firstName,
+            'formFields' => $formFields,
+            'lastName' => $lastName,
+            'legalConsentResponses' => $legalConsentResponses,
+            'likelyAvailableUserIDs' => $likelyAvailableUserIDs,
+            'slug' => $slug,
+            'startTime' => $startTime,
+            'locale' => $locale,
+            'timezone' => $timezone,
+        ];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<ExternalMeetingBookingResponse> */
-        $response = $this->client->request(
-            method: 'post',
-            path: 'scheduler/v3/meetings/meeting-links/book',
-            body: (object) $parsed,
-            options: $options,
-            convert: ExternalMeetingBookingResponse::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->book(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -119,32 +123,24 @@ final class MeetingsLinksService implements MeetingsLinksContract
      *
      * Get the next availability times for a meeting page.
      *
-     * @param array{
-     *   timezone: string, monthOffset?: int
-     * }|MeetingsLinkGetAvailabilityBySlugParams $params
+     * @param string $slug the path for the meeting page that you want the available times for
+     * @param string $timezone return times in response based on specified time zone
+     * @param int $monthOffset get times for a different month
      *
      * @throws APIException
      */
     public function getAvailabilityBySlug(
         string $slug,
-        array|MeetingsLinkGetAvailabilityBySlugParams $params,
+        string $timezone,
+        ?int $monthOffset = null,
         ?RequestOptions $requestOptions = null,
     ): ExternalLinkAvailabilityAndBusyTimes {
-        [$parsed, $options] = MeetingsLinkGetAvailabilityBySlugParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = ['timezone' => $timezone, 'monthOffset' => $monthOffset];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<ExternalLinkAvailabilityAndBusyTimes> */
-        $response = $this->client->request(
-            method: 'get',
-            path: [
-                'scheduler/v3/meetings/meeting-links/book/availability-page/%1$s', $slug,
-            ],
-            query: $parsed,
-            options: $options,
-            convert: ExternalLinkAvailabilityAndBusyTimes::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->getAvailabilityBySlug($slug, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -154,28 +150,20 @@ final class MeetingsLinksService implements MeetingsLinksContract
      *
      * Get details about the initial information necessary for a meeting scheduler.
      *
-     * @param array{timezone: string}|MeetingsLinkGetBookingInfoBySlugParams $params
+     * @param string $slug the path to the scheduling page that you want the information for
+     * @param string $timezone return times in response based on specified time zone
      *
      * @throws APIException
      */
     public function getBookingInfoBySlug(
         string $slug,
-        array|MeetingsLinkGetBookingInfoBySlugParams $params,
-        ?RequestOptions $requestOptions = null,
+        string $timezone,
+        ?RequestOptions $requestOptions = null
     ): ExternalBookingInfo {
-        [$parsed, $options] = MeetingsLinkGetBookingInfoBySlugParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = ['timezone' => $timezone];
 
-        /** @var BaseResponse<ExternalBookingInfo> */
-        $response = $this->client->request(
-            method: 'get',
-            path: ['scheduler/v3/meetings/meeting-links/book/%1$s', $slug],
-            query: $parsed,
-            options: $options,
-            convert: ExternalBookingInfo::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->getBookingInfoBySlug($slug, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }

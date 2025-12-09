@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\ServiceContracts\Crm\Extensions\Calling;
 
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Crm\Extensions\Calling\Transcripts\TranscriptCreateParams;
+use HubspotSDK\Crm\Extensions\Calling\Transcripts\Speaker;
 use HubspotSDK\Crm\Extensions\Calling\Transcripts\TranscriptCreateResponse;
 use HubspotSDK\Crm\Extensions\Calling\Transcripts\TranscriptResponse;
 use HubspotSDK\RequestOptions;
@@ -15,12 +15,19 @@ interface TranscriptsContract
     /**
      * @api
      *
-     * @param array<mixed>|TranscriptCreateParams $params
+     * @param list<array{
+     *   endTimeMillis: int,
+     *   speaker: array{id: string, name: string, email?: string}|Speaker,
+     *   startTimeMillis: int,
+     *   text: string,
+     *   languageCode?: string,
+     * }> $transcriptCreateUtterances
      *
      * @throws APIException
      */
     public function create(
-        array|TranscriptCreateParams $params,
+        int $engagementID,
+        array $transcriptCreateUtterances,
         ?RequestOptions $requestOptions = null,
     ): TranscriptCreateResponse;
 

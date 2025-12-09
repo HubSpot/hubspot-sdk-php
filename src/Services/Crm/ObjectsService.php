@@ -46,6 +46,11 @@ final class ObjectsService implements ObjectsContract
     /**
      * @api
      */
+    public ObjectsRawService $raw;
+
+    /**
+     * @api
+     */
     public CallsService $calls;
 
     /**
@@ -223,6 +228,7 @@ final class ObjectsService implements ObjectsContract
      */
     public function __construct(private Client $client)
     {
+        $this->raw = new ObjectsRawService($client);
         $this->calls = new CallsService($client);
         $this->carts = new CartsService($client);
         $this->commercePayments = new CommercePaymentsService($client);

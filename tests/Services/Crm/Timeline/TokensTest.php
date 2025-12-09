@@ -39,12 +39,10 @@ final class TokensTest extends TestCase
 
         $result = $this->client->crm->timeline->tokens->create(
             'eventTemplateId',
-            [
-                'appID' => 0,
-                'label' => 'Pet Type',
-                'name' => 'petType',
-                'type' => 'enumeration',
-            ],
+            appID: 0,
+            label: 'Pet Type',
+            name: 'petType',
+            type: 'enumeration',
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -60,19 +58,17 @@ final class TokensTest extends TestCase
 
         $result = $this->client->crm->timeline->tokens->create(
             'eventTemplateId',
-            [
-                'appID' => 0,
-                'label' => 'Pet Type',
-                'name' => 'petType',
-                'type' => 'enumeration',
-                'createdAt' => new \DateTimeImmutable('2020-02-12T20:58:26Z'),
-                'objectPropertyName' => 'customPropertyPetType',
-                'options' => [
-                    ['label' => 'Dog', 'value' => 'dog'],
-                    ['label' => 'Cat', 'value' => 'cat'],
-                ],
-                'updatedAt' => new \DateTimeImmutable('2020-02-12T20:58:26Z'),
+            appID: 0,
+            label: 'Pet Type',
+            name: 'petType',
+            type: 'enumeration',
+            createdAt: new \DateTimeImmutable('2020-02-12T20:58:26Z'),
+            objectPropertyName: 'customPropertyPetType',
+            options: [
+                ['label' => 'Dog', 'value' => 'dog'],
+                ['label' => 'Cat', 'value' => 'cat'],
             ],
+            updatedAt: new \DateTimeImmutable('2020-02-12T20:58:26Z'),
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -88,11 +84,9 @@ final class TokensTest extends TestCase
 
         $result = $this->client->crm->timeline->tokens->update(
             'tokenName',
-            [
-                'appID' => 0,
-                'eventTemplateID' => 'eventTemplateId',
-                'label' => 'petType edit',
-            ],
+            appID: 0,
+            eventTemplateID: 'eventTemplateId',
+            label: 'petType edit',
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -108,16 +102,14 @@ final class TokensTest extends TestCase
 
         $result = $this->client->crm->timeline->tokens->update(
             'tokenName',
-            [
-                'appID' => 0,
-                'eventTemplateID' => 'eventTemplateId',
-                'label' => 'petType edit',
-                'objectPropertyName' => 'objectPropertyName',
-                'options' => [
-                    ['label' => 'Dog', 'value' => 'dog'],
-                    ['label' => 'Cat', 'value' => 'cat'],
-                    ['label' => 'Bird', 'value' => 'bird'],
-                ],
+            appID: 0,
+            eventTemplateID: 'eventTemplateId',
+            label: 'petType edit',
+            objectPropertyName: 'objectPropertyName',
+            options: [
+                ['label' => 'Dog', 'value' => 'dog'],
+                ['label' => 'Cat', 'value' => 'cat'],
+                ['label' => 'Bird', 'value' => 'bird'],
             ],
         );
 
@@ -134,7 +126,8 @@ final class TokensTest extends TestCase
 
         $result = $this->client->crm->timeline->tokens->delete(
             'tokenName',
-            ['appID' => 0, 'eventTemplateID' => 'eventTemplateId']
+            appID: 0,
+            eventTemplateID: 'eventTemplateId'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -150,7 +143,8 @@ final class TokensTest extends TestCase
 
         $result = $this->client->crm->timeline->tokens->delete(
             'tokenName',
-            ['appID' => 0, 'eventTemplateID' => 'eventTemplateId']
+            appID: 0,
+            eventTemplateID: 'eventTemplateId'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

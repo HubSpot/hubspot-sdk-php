@@ -14,6 +14,11 @@ final class MeetingsService implements MeetingsContract
     /**
      * @api
      */
+    public MeetingsRawService $raw;
+
+    /**
+     * @api
+     */
     public CalendarService $calendar;
 
     /**
@@ -26,6 +31,7 @@ final class MeetingsService implements MeetingsContract
      */
     public function __construct(private Client $client)
     {
+        $this->raw = new MeetingsRawService($client);
         $this->calendar = new CalendarService($client);
         $this->meetingsLinks = new MeetingsLinksService($client);
     }

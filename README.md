@@ -45,8 +45,8 @@ use HubspotSDK\Client;
 
 $client = new Client(accessToken: 'pat-na1-xxxxxxxx-xxxx');
 
-$createdResponseSimplePublicObject = $client->crm->objects->contacts->create([
-  'associations' => [
+$createdResponseSimplePublicObject = $client->crm->objects->contacts->create(
+  associations: [
     [
       'to' => ['id' => '37295'],
       'types' => [
@@ -54,8 +54,8 @@ $createdResponseSimplePublicObject = $client->crm->objects->contacts->create([
       ],
     ],
   ],
-  'properties' => ['email' => 'mark.s@lumon.industries'],
-]);
+  properties: ['email' => 'mark.s@lumon.industries'],
+);
 
 var_dump($createdResponseSimplePublicObject->createdResourceId);
 ```
@@ -80,7 +80,7 @@ use HubspotSDK\Client;
 
 $client = new Client(accessToken: 'pat-na1-xxxxxxxx-xxxx');
 
-$page = $client->crm->objects->contacts->list(['limit' => 100]);
+$page = $client->crm->objects->contacts->list(limit: 100);
 
 var_dump($page);
 
@@ -104,8 +104,8 @@ When the library is unable to connect to the API, or if the API returns a non-su
 use HubspotSDK\Core\Exceptions\APIConnectionException;
 
 try {
-  $createdResponseSimplePublicObject = $client->crm->objects->contacts->create([
-    'associations' => [
+  $createdResponseSimplePublicObject = $client->crm->objects->contacts->create(
+    associations: [
       [
         'to' => ['id' => '37295'],
         'types' => [
@@ -113,12 +113,12 @@ try {
         ],
       ],
     ],
-    'properties' => ['email' => 'mark.s@lumon.industries'],
-  ]);
+    properties: ['email' => 'mark.s@lumon.industries'],
+  );
 } catch (APIConnectionException $e) {
   echo "The server could not be reached", PHP_EOL;
   var_dump($e->getPrevious());
-} catch (RateLimitError $_) {
+} catch (RateLimitError $e) {
   echo "A 429 status code was received; we should back off a bit.", PHP_EOL;
 } catch (APIStatusError $e) {
   echo "Another non-200-range status code was received", PHP_EOL;
@@ -161,18 +161,16 @@ $client = new Client(maxRetries: 0);
 
 // Or, configure per-request:
 $result = $client->crm->objects->contacts->create(
-  [
-    'associations' => [
-      [
-        'to' => ['id' => '37295'],
-        'types' => [
-          ['associationCategory' => 'HUBSPOT_DEFINED', 'associationTypeID' => 0]
-        ],
+  associations: [
+    [
+      'to' => ['id' => '37295'],
+      'types' => [
+        ['associationCategory' => 'HUBSPOT_DEFINED', 'associationTypeID' => 0]
       ],
     ],
-    'properties' => ['email' => 'mark.s@lumon.industries'],
   ],
-  RequestOptions::with(maxRetries: 5),
+  properties: ['email' => 'mark.s@lumon.industries'],
+  requestOptions: RequestOptions::with(maxRetries: 5),
 );
 ```
 
@@ -192,18 +190,16 @@ Note: the `extra*` parameters of the same name overrides the documented paramete
 use HubspotSDK\RequestOptions;
 
 $createdResponseSimplePublicObject = $client->crm->objects->contacts->create(
-  [
-    'associations' => [
-      [
-        'to' => ['id' => '37295'],
-        'types' => [
-          ['associationCategory' => 'HUBSPOT_DEFINED', 'associationTypeID' => 0]
-        ],
+  associations: [
+    [
+      'to' => ['id' => '37295'],
+      'types' => [
+        ['associationCategory' => 'HUBSPOT_DEFINED', 'associationTypeID' => 0]
       ],
     ],
-    'properties' => ['email' => 'mark.s@lumon.industries'],
   ],
-  RequestOptions::with(
+  properties: ['email' => 'mark.s@lumon.industries'],
+  requestOptions: RequestOptions::with(
     extraQueryParams: ['my_query_parameter' => 'value'],
     extraBodyParams: ['my_body_parameter' => 'value'],
     extraHeaders: ['my-header' => 'value'],

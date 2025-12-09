@@ -6,8 +6,6 @@ namespace HubspotSDK\ServiceContracts\Crm\Objects\PartnerClients;
 
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\BatchResponseSimplePublicObject;
-use HubspotSDK\Crm\Objects\PartnerClients\Batch\BatchBatchGetParams;
-use HubspotSDK\Crm\Objects\PartnerClients\Batch\BatchBatchUpdateParams;
 use HubspotSDK\RequestOptions;
 
 interface BatchContract
@@ -15,24 +13,37 @@ interface BatchContract
     /**
      * @api
      *
-     * @param array<mixed>|BatchBatchGetParams $params
+     * @param list<array{id: string}> $inputs Body param:
+     * @param list<string> $properties body param: Key-value pairs for setting properties for the new object
+     * @param list<string> $propertiesWithHistory body param: Key-value pairs for setting properties for the new object and their histories
+     * @param bool $archived Query param:
+     * @param string $idProperty body param: A unique property used to identify objects instead of the default ID
      *
      * @throws APIException
      */
     public function batchGet(
-        array|BatchBatchGetParams $params,
-        ?RequestOptions $requestOptions = null
+        array $inputs,
+        array $properties,
+        array $propertiesWithHistory,
+        bool $archived = false,
+        ?string $idProperty = null,
+        ?RequestOptions $requestOptions = null,
     ): BatchResponseSimplePublicObject;
 
     /**
      * @api
      *
-     * @param array<mixed>|BatchBatchUpdateParams $params
+     * @param list<array{
+     *   id: string,
+     *   properties: array<string,string>,
+     *   idProperty?: string,
+     *   objectWriteTraceID?: string,
+     * }> $inputs
      *
      * @throws APIException
      */
     public function batchUpdate(
-        array|BatchBatchUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        array $inputs,
+        ?RequestOptions $requestOptions = null
     ): BatchResponseSimplePublicObject;
 }

@@ -48,7 +48,7 @@ final class IntegratorSettingsTest extends TestCase
             ->cms
             ->mediaBridge
             ->integratorSettings
-            ->createObjectDefinition(0, ['mediaTypes' => ['VIDEO']])
+            ->createObjectDefinition(0, mediaTypes: ['VIDEO'])
         ;
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -70,7 +70,7 @@ final class IntegratorSettingsTest extends TestCase
             ->cms
             ->mediaBridge
             ->integratorSettings
-            ->createObjectDefinition(0, ['mediaTypes' => ['VIDEO']])
+            ->createObjectDefinition(0, mediaTypes: ['VIDEO'])
         ;
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -94,11 +94,7 @@ final class IntegratorSettingsTest extends TestCase
             ->integratorSettings
             ->createOembedDomain(
                 0,
-                [
-                    'endpoints' => [
-                        'discovery' => true, 'schemes' => ['string'], 'url' => 'url',
-                    ],
-                ],
+                endpoints: ['discovery' => true, 'schemes' => ['string'], 'url' => 'url'],
             )
         ;
 
@@ -120,12 +116,8 @@ final class IntegratorSettingsTest extends TestCase
             ->integratorSettings
             ->createOembedDomain(
                 0,
-                [
-                    'endpoints' => [
-                        'discovery' => true, 'schemes' => ['string'], 'url' => 'url',
-                    ],
-                    'portalID' => 0,
-                ],
+                endpoints: ['discovery' => true, 'schemes' => ['string'], 'url' => 'url'],
+                portalID: 0,
             )
         ;
 
@@ -145,7 +137,7 @@ final class IntegratorSettingsTest extends TestCase
             ->cms
             ->mediaBridge
             ->integratorSettings
-            ->deleteOembedDomain(0, [])
+            ->deleteOembedDomain(0)
         ;
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -183,7 +175,7 @@ final class IntegratorSettingsTest extends TestCase
             ->cms
             ->mediaBridge
             ->integratorSettings
-            ->getObjectDefinitionsByMediaType('AUDIO', ['appID' => 0])
+            ->getObjectDefinitionsByMediaType('AUDIO', appID: 0)
         ;
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -204,7 +196,8 @@ final class IntegratorSettingsTest extends TestCase
             ->integratorSettings
             ->getObjectDefinitionsByMediaType(
                 'AUDIO',
-                ['appID' => 0, 'includeFullDefinition' => true]
+                appID: 0,
+                includeFullDefinition: true
             )
         ;
 
@@ -224,7 +217,7 @@ final class IntegratorSettingsTest extends TestCase
             ->cms
             ->mediaBridge
             ->integratorSettings
-            ->getOembedDomain('oEmbedDomainId', ['appID' => 0])
+            ->getOembedDomain('oEmbedDomainId', appID: 0)
         ;
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -243,7 +236,7 @@ final class IntegratorSettingsTest extends TestCase
             ->cms
             ->mediaBridge
             ->integratorSettings
-            ->getOembedDomain('oEmbedDomainId', ['appID' => 0])
+            ->getOembedDomain('oEmbedDomainId', appID: 0)
         ;
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -262,7 +255,7 @@ final class IntegratorSettingsTest extends TestCase
             ->cms
             ->mediaBridge
             ->integratorSettings
-            ->listOembedDomains(0, [])
+            ->listOembedDomains(0)
         ;
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -281,7 +274,7 @@ final class IntegratorSettingsTest extends TestCase
             ->cms
             ->mediaBridge
             ->integratorSettings
-            ->registerAppName(0, ['updatedAt' => 0])
+            ->registerAppName(0, updatedAt: 0)
         ;
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -303,7 +296,7 @@ final class IntegratorSettingsTest extends TestCase
             ->cms
             ->mediaBridge
             ->integratorSettings
-            ->registerAppName(0, ['updatedAt' => 0, 'name' => 'name'])
+            ->registerAppName(0, updatedAt: 0, name: 'name')
         ;
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -325,7 +318,7 @@ final class IntegratorSettingsTest extends TestCase
             ->cms
             ->mediaBridge
             ->integratorSettings
-            ->updateAppName(0, ['updatedAt' => 0])
+            ->updateAppName(0, updatedAt: 0)
         ;
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -347,7 +340,7 @@ final class IntegratorSettingsTest extends TestCase
             ->cms
             ->mediaBridge
             ->integratorSettings
-            ->updateAppName(0, ['updatedAt' => 0, 'name' => 'name'])
+            ->updateAppName(0, updatedAt: 0, name: 'name')
         ;
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -369,10 +362,7 @@ final class IntegratorSettingsTest extends TestCase
             ->cms
             ->mediaBridge
             ->integratorSettings
-            ->updateEventVisibilitySettings(
-                0,
-                ['eventType' => 'ALL', 'updatedAt' => 0]
-            )
+            ->updateEventVisibilitySettings(0, eventType: 'ALL', updatedAt: 0)
         ;
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -393,13 +383,11 @@ final class IntegratorSettingsTest extends TestCase
             ->integratorSettings
             ->updateEventVisibilitySettings(
                 0,
-                [
-                    'eventType' => 'ALL',
-                    'updatedAt' => 0,
-                    'showInReporting' => true,
-                    'showInTimeline' => true,
-                    'showInWorkflows' => true,
-                ],
+                eventType: 'ALL',
+                updatedAt: 0,
+                showInReporting: true,
+                showInTimeline: true,
+                showInWorkflows: true,
             )
         ;
 
@@ -421,12 +409,8 @@ final class IntegratorSettingsTest extends TestCase
             ->integratorSettings
             ->updateOembedDomain(
                 'oEmbedDomainId',
-                [
-                    'appID' => 0,
-                    'endpoints' => [
-                        'discovery' => true, 'schemes' => ['string'], 'url' => 'url',
-                    ],
-                ],
+                appID: 0,
+                endpoints: ['discovery' => true, 'schemes' => ['string'], 'url' => 'url'],
             )
         ;
 
@@ -448,13 +432,9 @@ final class IntegratorSettingsTest extends TestCase
             ->integratorSettings
             ->updateOembedDomain(
                 'oEmbedDomainId',
-                [
-                    'appID' => 0,
-                    'endpoints' => [
-                        'discovery' => true, 'schemes' => ['string'], 'url' => 'url',
-                    ],
-                    'portalID' => 0,
-                ],
+                appID: 0,
+                endpoints: ['discovery' => true, 'schemes' => ['string'], 'url' => 'url'],
+                portalID: 0,
             );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

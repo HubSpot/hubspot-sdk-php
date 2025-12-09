@@ -5,11 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Crm\Lists;
 
 use HubspotSDK\Client;
-use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Core\Util;
-use HubspotSDK\Crm\Lists\Mapping\MappingBatchCreateIDMappingParams;
-use HubspotSDK\Crm\Lists\Mapping\MappingGetIDMappingParams;
 use HubspotSDK\Crm\Lists\PublicBatchMigrationMapping;
 use HubspotSDK\Crm\Lists\PublicMigrationMapping;
 use HubspotSDK\RequestOptions;
@@ -18,36 +14,35 @@ use HubspotSDK\ServiceContracts\Crm\Lists\MappingContract;
 final class MappingService implements MappingContract
 {
     /**
+     * @api
+     */
+    public MappingRawService $raw;
+
+    /**
      * @internal
      */
-    public function __construct(private Client $client) {}
+    public function __construct(private Client $client)
+    {
+        $this->raw = new MappingRawService($client);
+    }
 
     /**
      * @api
      *
      * This API allows translation of a batch of legacy list id's to list id's. This allows for a maximum of 10,000 id's. This is a temporary API allowed for mapping old id's to new id's and will expire on May 30th, 2025.
      *
-     * @param array{body: list<string>}|MappingBatchCreateIDMappingParams $params
+     * @param list<string> $body
      *
      * @throws APIException
      */
     public function batchCreateIDMapping(
-        array|MappingBatchCreateIDMappingParams $params,
-        ?RequestOptions $requestOptions = null,
+        array $body,
+        ?RequestOptions $requestOptions = null
     ): PublicBatchMigrationMapping {
-        [$parsed, $options] = MappingBatchCreateIDMappingParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = ['body' => $body];
 
-        /** @var BaseResponse<PublicBatchMigrationMapping> */
-        $response = $this->client->request(
-            method: 'post',
-            path: 'crm/v3/lists/idmapping',
-            body: $parsed['body'],
-            options: $options,
-            convert: PublicBatchMigrationMapping::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->batchCreateIDMapping(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -57,30 +52,20 @@ final class MappingService implements MappingContract
      *
      * This API allows translation of legacy list id to list id. This is a temporary API allowed for mapping old id's to new id's and will expire on May 30th, 2025.
      *
-     * @param array{legacyListID?: string}|MappingGetIDMappingParams $params
+     * @param string $legacyListID the legacy list id from lists v1 API
      *
      * @throws APIException
      */
     public function getIDMapping(
-        array|MappingGetIDMappingParams $params,
-        ?RequestOptions $requestOptions = null,
+        ?string $legacyListID = null,
+        ?RequestOptions $requestOptions = null
     ): PublicMigrationMapping {
-        [$parsed, $options] = MappingGetIDMappingParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = ['legacyListID' => $legacyListID];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<PublicMigrationMapping> */
-        $response = $this->client->request(
-            method: 'get',
-            path: 'crm/v3/lists/idmapping',
-            query: Util::array_transform_keys(
-                $parsed,
-                ['legacyListID' => 'legacyListId']
-            ),
-            options: $options,
-            convert: PublicMigrationMapping::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->getIDMapping(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }

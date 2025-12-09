@@ -5,16 +5,12 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Crm\Objects;
 
 use HubspotSDK\AssociationSpec;
+use HubspotSDK\AssociationSpec\AssociationCategory;
 use HubspotSDK\Client;
-use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\Crm\CreatedResponseSimplePublicObject;
-use HubspotSDK\Crm\Objects\PostalMail\PostalMailCreateParams;
-use HubspotSDK\Crm\Objects\PostalMail\PostalMailGetParams;
-use HubspotSDK\Crm\Objects\PostalMail\PostalMailListParams;
-use HubspotSDK\Crm\Objects\PostalMail\PostalMailSearchParams;
-use HubspotSDK\Crm\Objects\PostalMail\PostalMailUpdateParams;
+use HubspotSDK\Crm\Filter\Operator;
 use HubspotSDK\Crm\SimplePublicObject;
 use HubspotSDK\Crm\SimplePublicObjectWithAssociations;
 use HubspotSDK\Page;
@@ -28,6 +24,11 @@ final class PostalMailService implements PostalMailContract
     /**
      * @api
      */
+    public PostalMailRawService $raw;
+
+    /**
+     * @api
+     */
     public BatchService $batch;
 
     /**
@@ -35,6 +36,7 @@ final class PostalMailService implements PostalMailContract
      */
     public function __construct(private Client $client)
     {
+        $this->raw = new PostalMailRawService($client);
         $this->batch = new BatchService($client);
     }
 
@@ -43,32 +45,26 @@ final class PostalMailService implements PostalMailContract
      *
      * Create a postal mail object with the given properties and return a copy of the object, including the ID.
      *
-     * @param array{
-     *   associations: list<array{
-     *     to: array<mixed>|PublicObjectID, types: list<array<mixed>|AssociationSpec>
-     *   }>,
-     *   properties: array<string,string>,
-     * }|PostalMailCreateParams $params
+     * @param list<array{
+     *   to: array{id: string}|PublicObjectID,
+     *   types: list<array{
+     *     associationCategory: 'HUBSPOT_DEFINED'|'INTEGRATOR_DEFINED'|'USER_DEFINED'|AssociationCategory,
+     *     associationTypeID: int,
+     *   }|AssociationSpec>,
+     * }> $associations
+     * @param array<string,string> $properties key-value pairs for setting properties for the new object
      *
      * @throws APIException
      */
     public function create(
-        array|PostalMailCreateParams $params,
-        ?RequestOptions $requestOptions = null
+        array $associations,
+        array $properties,
+        ?RequestOptions $requestOptions = null,
     ): CreatedResponseSimplePublicObject {
-        [$parsed, $options] = PostalMailCreateParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = ['associations' => $associations, 'properties' => $properties];
 
-        /** @var BaseResponse<CreatedResponseSimplePublicObject> */
-        $response = $this->client->request(
-            method: 'post',
-            path: 'crm/v3/objects/postal_mail',
-            body: (object) $parsed,
-            options: $options,
-            convert: CreatedResponseSimplePublicObject::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->create(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -76,32 +72,24 @@ final class PostalMailService implements PostalMailContract
     /**
      * @api
      *
-     * @param array{
-     *   properties: array<string,string>, idProperty?: string
-     * }|PostalMailUpdateParams $params
+     * @param string $postalMailID Path param:
+     * @param array<string,string> $properties body param: Key value pairs representing the properties of the object
+     * @param string $idProperty Query param:
      *
      * @throws APIException
      */
     public function update(
         string $postalMailID,
-        array|PostalMailUpdateParams $params,
+        array $properties,
+        ?string $idProperty = null,
         ?RequestOptions $requestOptions = null,
     ): SimplePublicObject {
-        [$parsed, $options] = PostalMailUpdateParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $query_params = ['idProperty'];
+        $params = ['properties' => $properties, 'idProperty' => $idProperty];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<SimplePublicObject> */
-        $response = $this->client->request(
-            method: 'patch',
-            path: ['crm/v3/objects/postal_mail/%1$s', $postalMailID],
-            query: array_diff_key($parsed, $query_params),
-            body: (object) array_diff_key($parsed, $query_params),
-            options: $options,
-            convert: SimplePublicObject::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->update($postalMailID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -109,37 +97,36 @@ final class PostalMailService implements PostalMailContract
     /**
      * @api
      *
-     * @param array{
-     *   after?: string,
-     *   archived?: bool,
-     *   associations?: list<string>,
-     *   limit?: int,
-     *   properties?: list<string>,
-     *   propertiesWithHistory?: list<string>,
-     * }|PostalMailListParams $params
+     * @param list<string> $associations
+     * @param list<string> $properties
+     * @param list<string> $propertiesWithHistory
      *
      * @return Page<SimplePublicObjectWithAssociations>
      *
      * @throws APIException
      */
     public function list(
-        array|PostalMailListParams $params,
-        ?RequestOptions $requestOptions = null
+        ?string $after = null,
+        bool $archived = false,
+        ?array $associations = null,
+        int $limit = 10,
+        ?array $properties = null,
+        ?array $propertiesWithHistory = null,
+        ?RequestOptions $requestOptions = null,
     ): Page {
-        [$parsed, $options] = PostalMailListParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = [
+            'after' => $after,
+            'archived' => $archived,
+            'associations' => $associations,
+            'limit' => $limit,
+            'properties' => $properties,
+            'propertiesWithHistory' => $propertiesWithHistory,
+        ];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<Page<SimplePublicObjectWithAssociations>> */
-        $response = $this->client->request(
-            method: 'get',
-            path: 'crm/v3/objects/postal_mail',
-            query: $parsed,
-            options: $options,
-            convert: SimplePublicObjectWithAssociations::class,
-            page: Page::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->list(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -155,13 +142,8 @@ final class PostalMailService implements PostalMailContract
         string $postalMailID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        /** @var BaseResponse<mixed> */
-        $response = $this->client->request(
-            method: 'delete',
-            path: ['crm/v3/objects/postal_mail/%1$s', $postalMailID],
-            options: $requestOptions,
-            convert: null,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->delete($postalMailID, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -169,34 +151,33 @@ final class PostalMailService implements PostalMailContract
     /**
      * @api
      *
-     * @param array{
-     *   archived?: bool,
-     *   associations?: list<string>,
-     *   idProperty?: string,
-     *   properties?: list<string>,
-     *   propertiesWithHistory?: list<string>,
-     * }|PostalMailGetParams $params
+     * @param list<string> $associations
+     * @param list<string> $properties
+     * @param list<string> $propertiesWithHistory
      *
      * @throws APIException
      */
     public function get(
         string $postalMailID,
-        array|PostalMailGetParams $params,
+        bool $archived = false,
+        ?array $associations = null,
+        ?string $idProperty = null,
+        ?array $properties = null,
+        ?array $propertiesWithHistory = null,
         ?RequestOptions $requestOptions = null,
     ): SimplePublicObjectWithAssociations {
-        [$parsed, $options] = PostalMailGetParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = [
+            'archived' => $archived,
+            'associations' => $associations,
+            'idProperty' => $idProperty,
+            'properties' => $properties,
+            'propertiesWithHistory' => $propertiesWithHistory,
+        ];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<SimplePublicObjectWithAssociations> */
-        $response = $this->client->request(
-            method: 'get',
-            path: ['crm/v3/objects/postal_mail/%1$s', $postalMailID],
-            query: $parsed,
-            options: $options,
-            convert: SimplePublicObjectWithAssociations::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->get($postalMailID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -206,34 +187,45 @@ final class PostalMailService implements PostalMailContract
      *
      * Search for postal mail objects using specific criteria in the request.
      *
-     * @param array{
-     *   after: string,
-     *   filterGroups: list<array{filters: list<array<mixed>>}>,
-     *   limit: int,
-     *   properties: list<string>,
-     *   sorts: list<string>,
-     *   query?: string,
-     * }|PostalMailSearchParams $params
+     * @param string $after a paging cursor token for retrieving subsequent pages
+     * @param list<array{
+     *   filters: list<array{
+     *     operator: 'BETWEEN'|'CONTAINS_TOKEN'|'EQ'|'GT'|'GTE'|'HAS_PROPERTY'|'IN'|'LT'|'LTE'|'NEQ'|'NOT_CONTAINS_TOKEN'|'NOT_HAS_PROPERTY'|'NOT_IN'|Operator,
+     *     propertyName: string,
+     *     highValue?: string,
+     *     value?: string,
+     *     values?: list<string>,
+     *   }>,
+     * }> $filterGroups Up to 6 groups of filters defining additional query criteria
+     * @param int $limit the maximum results to return, up to 200 objects
+     * @param list<string> $properties a list of property names to include in the response
+     * @param list<string> $sorts specifies sorting order based on object properties
+     * @param string $query the search query string, up to 3000 characters
      *
      * @throws APIException
      */
     public function search(
-        array|PostalMailSearchParams $params,
-        ?RequestOptions $requestOptions = null
+        string $after,
+        array $filterGroups,
+        int $limit,
+        array $properties,
+        array $sorts,
+        ?string $query = null,
+        ?RequestOptions $requestOptions = null,
     ): CollectionResponseWithTotalSimplePublicObject {
-        [$parsed, $options] = PostalMailSearchParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = [
+            'after' => $after,
+            'filterGroups' => $filterGroups,
+            'limit' => $limit,
+            'properties' => $properties,
+            'sorts' => $sorts,
+            'query' => $query,
+        ];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<CollectionResponseWithTotalSimplePublicObject> */
-        $response = $this->client->request(
-            method: 'post',
-            path: 'crm/v3/objects/postal_mail/search',
-            body: (object) $parsed,
-            options: $options,
-            convert: CollectionResponseWithTotalSimplePublicObject::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->search(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }

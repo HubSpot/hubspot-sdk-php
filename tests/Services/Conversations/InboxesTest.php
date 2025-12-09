@@ -38,7 +38,7 @@ final class InboxesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->conversations->inboxes->list([]);
+        $result = $this->client->conversations->inboxes->list();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(Page::class, $result);
@@ -51,7 +51,7 @@ final class InboxesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->conversations->inboxes->get(0, []);
+        $result = $this->client->conversations->inboxes->get(0);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(PublicInbox::class, $result);

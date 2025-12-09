@@ -5,10 +5,6 @@ declare(strict_types=1);
 namespace HubspotSDK\ServiceContracts\Marketing\Campaigns;
 
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Marketing\Campaigns\Budget\BudgetCreateParams;
-use HubspotSDK\Marketing\Campaigns\Budget\BudgetDeleteParams;
-use HubspotSDK\Marketing\Campaigns\Budget\BudgetGetParams;
-use HubspotSDK\Marketing\Campaigns\Budget\BudgetUpdateParams;
 use HubspotSDK\Marketing\Campaigns\PublicBudgetItem;
 use HubspotSDK\Marketing\Campaigns\PublicBudgetTotals;
 use HubspotSDK\RequestOptions;
@@ -18,57 +14,73 @@ interface BudgetContract
     /**
      * @api
      *
-     * @param array<mixed>|BudgetCreateParams $params
+     * @param string $campaignGuid unique identifier for the campaign
      *
      * @throws APIException
      */
     public function create(
         string $campaignGuid,
-        array|BudgetCreateParams $params,
+        float $amount,
+        string $name,
+        int $order,
+        ?string $description = null,
         ?RequestOptions $requestOptions = null,
     ): PublicBudgetItem;
 
     /**
      * @api
      *
-     * @param array<mixed>|BudgetUpdateParams $params
+     * @param int $budgetID path param: Unique identifier for the budget item
+     * @param string $campaignGuid path param: Unique identifier for the campaign
+     * @param float $amount Body param:
+     * @param string $name Body param:
+     * @param int $order Body param:
+     * @param string $description Body param:
      *
      * @throws APIException
      */
     public function update(
         int $budgetID,
-        array|BudgetUpdateParams $params,
+        string $campaignGuid,
+        float $amount,
+        string $name,
+        int $order,
+        ?string $description = null,
         ?RequestOptions $requestOptions = null,
     ): PublicBudgetItem;
 
     /**
      * @api
      *
-     * @param array<mixed>|BudgetDeleteParams $params
+     * @param int $budgetID unique identifier for the budget item
+     * @param string $campaignGuid unique identifier for the campaign
      *
      * @throws APIException
      */
     public function delete(
         int $budgetID,
-        array|BudgetDeleteParams $params,
+        string $campaignGuid,
         ?RequestOptions $requestOptions = null,
     ): mixed;
 
     /**
      * @api
      *
-     * @param array<mixed>|BudgetGetParams $params
+     * @param int $budgetID unique identifier for the budget item
+     * @param string $campaignGuid unique identifier for the campaign
      *
      * @throws APIException
      */
     public function get(
         int $budgetID,
-        array|BudgetGetParams $params,
+        string $campaignGuid,
         ?RequestOptions $requestOptions = null,
     ): PublicBudgetItem;
 
     /**
      * @api
+     *
+     * @param string $campaignGuid unique identifier for the campaign, formatted as a UUID
      *
      * @throws APIException
      */

@@ -10,63 +10,49 @@ use HubspotSDK\Cms\MediaBridge\Endpoints;
 use HubspotSDK\Cms\MediaBridge\EventVisibilityChange;
 use HubspotSDK\Cms\MediaBridge\EventVisibilityResponse;
 use HubspotSDK\Cms\MediaBridge\IntegratorOEmbedDomainModel;
-use HubspotSDK\Cms\MediaBridge\IntegratorSettings\IntegratorSettingCreateObjectDefinitionParams;
-use HubspotSDK\Cms\MediaBridge\IntegratorSettings\IntegratorSettingCreateOembedDomainParams;
-use HubspotSDK\Cms\MediaBridge\IntegratorSettings\IntegratorSettingDeleteOembedDomainParams;
-use HubspotSDK\Cms\MediaBridge\IntegratorSettings\IntegratorSettingGetObjectDefinitionsByMediaTypeParams;
 use HubspotSDK\Cms\MediaBridge\IntegratorSettings\IntegratorSettingGetObjectDefinitionsByMediaTypeParams\MediaType;
-use HubspotSDK\Cms\MediaBridge\IntegratorSettings\IntegratorSettingGetOembedDomainParams;
-use HubspotSDK\Cms\MediaBridge\IntegratorSettings\IntegratorSettingListOembedDomainsParams;
-use HubspotSDK\Cms\MediaBridge\IntegratorSettings\IntegratorSettingRegisterAppNameParams;
-use HubspotSDK\Cms\MediaBridge\IntegratorSettings\IntegratorSettingUpdateAppNameParams;
-use HubspotSDK\Cms\MediaBridge\IntegratorSettings\IntegratorSettingUpdateEventVisibilitySettingsParams;
 use HubspotSDK\Cms\MediaBridge\IntegratorSettings\IntegratorSettingUpdateEventVisibilitySettingsParams\EventType;
-use HubspotSDK\Cms\MediaBridge\IntegratorSettings\IntegratorSettingUpdateOembedDomainParams;
 use HubspotSDK\Cms\MediaBridge\MediaBridgeProviderRegistrationResponse;
 use HubspotSDK\Cms\MediaBridge\ObjectDefinitionResponse;
 use HubspotSDK\Cms\MediaBridge\OEmbedDomainsCollectionResponse;
-use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Core\Util;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Cms\MediaBridge\IntegratorSettingsContract;
 
 final class IntegratorSettingsService implements IntegratorSettingsContract
 {
     /**
+     * @api
+     */
+    public IntegratorSettingsRawService $raw;
+
+    /**
      * @internal
      */
-    public function __construct(private Client $client) {}
+    public function __construct(private Client $client)
+    {
+        $this->raw = new IntegratorSettingsRawService($client);
+    }
 
     /**
      * @api
      *
      * Create a new media object type
      *
-     * @param array{
-     *   mediaTypes: list<'VIDEO'|'AUDIO'|'DOCUMENT'|'OTHER'|'IMAGE'|IntegratorSettingCreateObjectDefinitionParams\MediaType>,
-     * }|IntegratorSettingCreateObjectDefinitionParams $params
+     * @param int $appID The appId for the media bridge app. It is possible to have multiple apps in your developer account that use the media bridge.
+     * @param list<'VIDEO'|'AUDIO'|'DOCUMENT'|'OTHER'|'IMAGE'|\HubspotSDK\Cms\MediaBridge\IntegratorSettings\IntegratorSettingCreateObjectDefinitionParams\MediaType> $mediaTypes
      *
      * @throws APIException
      */
     public function createObjectDefinition(
         int $appID,
-        array|IntegratorSettingCreateObjectDefinitionParams $params,
-        ?RequestOptions $requestOptions = null,
+        array $mediaTypes,
+        ?RequestOptions $requestOptions = null
     ): BulkIntegratorObjectCreationResponse {
-        [$parsed, $options] = IntegratorSettingCreateObjectDefinitionParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = ['mediaTypes' => $mediaTypes];
 
-        /** @var BaseResponse<BulkIntegratorObjectCreationResponse> */
-        $response = $this->client->request(
-            method: 'post',
-            path: ['media-bridge/v1/%1$s/settings/object-definitions', $appID],
-            body: (object) $parsed,
-            options: $options,
-            convert: BulkIntegratorObjectCreationResponse::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->createObjectDefinition($appID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -76,33 +62,25 @@ final class IntegratorSettingsService implements IntegratorSettingsContract
      *
      * Set up a new oEmbed domain for your media bridge app.
      *
+     * @param int $appID The appId for the media bridge app. It is possible to have multiple apps in your developer account that use the media bridge.
      * @param array{
-     *   endpoints: array{
-     *     discovery: bool, schemes: list<string>, url: string
-     *   }|Endpoints,
-     *   portalID?: int,
-     * }|IntegratorSettingCreateOembedDomainParams $params
+     *   discovery: bool, schemes: list<string>, url: string
+     * }|Endpoints $endpoints
      *
      * @throws APIException
      */
     public function createOembedDomain(
         int $appID,
-        array|IntegratorSettingCreateOembedDomainParams $params,
+        array|Endpoints $endpoints,
+        ?int $portalID = null,
         ?RequestOptions $requestOptions = null,
     ): IntegratorOEmbedDomainModel {
-        [$parsed, $options] = IntegratorSettingCreateOembedDomainParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = ['endpoints' => $endpoints, 'portalID' => $portalID];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<IntegratorOEmbedDomainModel> */
-        $response = $this->client->request(
-            method: 'post',
-            path: ['media-bridge/v1/%1$s/settings/oembed-domains', $appID],
-            body: (object) $parsed,
-            options: $options,
-            convert: IntegratorOEmbedDomainModel::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->createOembedDomain($appID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -112,33 +90,24 @@ final class IntegratorSettingsService implements IntegratorSettingsContract
      *
      * Delete an existing oEmbed domain.
      *
-     * @param array{
-     *   id?: int, domainPortalID?: int
-     * }|IntegratorSettingDeleteOembedDomainParams $params
+     * @param int $appID The appId for the media bridge app. It is possible to have multiple apps in your developer account that use the media bridge.
+     * @param int $id the ID of the oEmbed to delete
+     * @param int $domainPortalID filter response by Hub ID
      *
      * @throws APIException
      */
     public function deleteOembedDomain(
         int $appID,
-        array|IntegratorSettingDeleteOembedDomainParams $params,
+        ?int $id = null,
+        int $domainPortalID = -1,
         ?RequestOptions $requestOptions = null,
     ): mixed {
-        [$parsed, $options] = IntegratorSettingDeleteOembedDomainParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = ['id' => $id, 'domainPortalID' => $domainPortalID];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<mixed> */
-        $response = $this->client->request(
-            method: 'delete',
-            path: ['media-bridge/v1/%1$s/settings/oembed-domains', $appID],
-            query: Util::array_transform_keys(
-                $parsed,
-                ['domainPortalID' => 'domainPortalId']
-            ),
-            options: $options,
-            convert: null,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->deleteOembedDomain($appID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -148,19 +117,16 @@ final class IntegratorSettingsService implements IntegratorSettingsContract
      *
      * Get the visibility settings for media bridge events for your apps.
      *
+     * @param int $appID The appId for the media bridge app. It is possible to have multiple apps in your developer account that use the media bridge.
+     *
      * @throws APIException
      */
     public function getEventVisibilitySettings(
         int $appID,
         ?RequestOptions $requestOptions = null
     ): EventVisibilityResponse {
-        /** @var BaseResponse<EventVisibilityResponse> */
-        $response = $this->client->request(
-            method: 'get',
-            path: ['media-bridge/v1/%1$s/settings/event-visibility', $appID],
-            options: $requestOptions,
-            convert: EventVisibilityResponse::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->getEventVisibilitySettings($appID, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -170,37 +136,26 @@ final class IntegratorSettingsService implements IntegratorSettingsContract
      *
      * Get the existing objects types that belong to the specified media type.
      *
-     * @param MediaType|value-of<MediaType> $mediaType
-     * @param array{
-     *   appID: int, includeFullDefinition?: bool
-     * }|IntegratorSettingGetObjectDefinitionsByMediaTypeParams $params
+     * @param MediaType|value-of<MediaType> $mediaType path param: The type of media that you want to get the object types for
+     * @param int $appID Path param: The appId for the media bridge app. It is possible to have multiple apps in your developer account that use the media bridge.
+     * @param bool $includeFullDefinition query param: Include the full definition in the response
      *
      * @throws APIException
      */
     public function getObjectDefinitionsByMediaType(
         MediaType|string $mediaType,
-        array|IntegratorSettingGetObjectDefinitionsByMediaTypeParams $params,
+        int $appID,
+        ?bool $includeFullDefinition = null,
         ?RequestOptions $requestOptions = null,
     ): ObjectDefinitionResponse {
-        [$parsed, $options] = IntegratorSettingGetObjectDefinitionsByMediaTypeParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $appID = $parsed['appID'];
-        unset($parsed['appID']);
+        $params = [
+            'appID' => $appID, 'includeFullDefinition' => $includeFullDefinition,
+        ];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<ObjectDefinitionResponse> */
-        $response = $this->client->request(
-            method: 'get',
-            path: [
-                'media-bridge/v1/%1$s/settings/object-definitions/%2$s',
-                $appID,
-                $mediaType,
-            ],
-            query: $parsed,
-            options: $options,
-            convert: ObjectDefinitionResponse::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->getObjectDefinitionsByMediaType($mediaType, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -210,33 +165,20 @@ final class IntegratorSettingsService implements IntegratorSettingsContract
      *
      * Get the details for an existing oEmbed domain.
      *
-     * @param array{appID: int}|IntegratorSettingGetOembedDomainParams $params
+     * @param string $oEmbedDomainID the ID for the oEmbed domain
+     * @param int $appID The appId for the media bridge app. It is possible to have multiple apps in your developer account that use the media bridge.
      *
      * @throws APIException
      */
     public function getOembedDomain(
         string $oEmbedDomainID,
-        array|IntegratorSettingGetOembedDomainParams $params,
-        ?RequestOptions $requestOptions = null,
+        int $appID,
+        ?RequestOptions $requestOptions = null
     ): IntegratorOEmbedDomainModel {
-        [$parsed, $options] = IntegratorSettingGetOembedDomainParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $appID = $parsed['appID'];
-        unset($parsed['appID']);
+        $params = ['appID' => $appID];
 
-        /** @var BaseResponse<IntegratorOEmbedDomainModel> */
-        $response = $this->client->request(
-            method: 'get',
-            path: [
-                'media-bridge/v1/%1$s/settings/oembed-domains/%2$s',
-                $appID,
-                $oEmbedDomainID,
-            ],
-            options: $options,
-            convert: IntegratorOEmbedDomainModel::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->getOembedDomain($oEmbedDomainID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -246,33 +188,22 @@ final class IntegratorSettingsService implements IntegratorSettingsContract
      *
      * Get the details for existing oEmbed domains for your app
      *
-     * @param array{
-     *   domainPortalID?: int
-     * }|IntegratorSettingListOembedDomainsParams $params
+     * @param int $appID The appId for the media bridge app. It is possible to have multiple apps in your developer account that use the media bridge.
+     * @param int $domainPortalID filter response by Hub ID
      *
      * @throws APIException
      */
     public function listOembedDomains(
         int $appID,
-        array|IntegratorSettingListOembedDomainsParams $params,
-        ?RequestOptions $requestOptions = null,
+        int $domainPortalID = -1,
+        ?RequestOptions $requestOptions = null
     ): OEmbedDomainsCollectionResponse {
-        [$parsed, $options] = IntegratorSettingListOembedDomainsParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = ['domainPortalID' => $domainPortalID];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<OEmbedDomainsCollectionResponse> */
-        $response = $this->client->request(
-            method: 'get',
-            path: ['media-bridge/v1/%1$s/settings/oembed-domains', $appID],
-            query: Util::array_transform_keys(
-                $parsed,
-                ['domainPortalID' => 'domainPortalId']
-            ),
-            options: $options,
-            convert: OEmbedDomainsCollectionResponse::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->listOembedDomains($appID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -284,30 +215,22 @@ final class IntegratorSettingsService implements IntegratorSettingsContract
      *
      * Register the name that your app will display when a user is selecting media bridge items.
      *
-     * @param array{
-     *   updatedAt: int, name?: string
-     * }|IntegratorSettingRegisterAppNameParams $params
+     * @param int $appID The appId for the media bridge app. It is possible to have multiple apps in your developer account that use the media bridge.
      *
      * @throws APIException
      */
     public function registerAppName(
         int $appID,
-        array|IntegratorSettingRegisterAppNameParams $params,
+        int $updatedAt,
+        ?string $name = null,
         ?RequestOptions $requestOptions = null,
     ): MediaBridgeProviderRegistrationResponse {
-        [$parsed, $options] = IntegratorSettingRegisterAppNameParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = ['updatedAt' => $updatedAt, 'name' => $name];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<MediaBridgeProviderRegistrationResponse> */
-        $response = $this->client->request(
-            method: 'post',
-            path: ['media-bridge/v1/%1$s/settings/register', $appID],
-            body: (object) $parsed,
-            options: $options,
-            convert: MediaBridgeProviderRegistrationResponse::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->registerAppName($appID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -317,30 +240,22 @@ final class IntegratorSettingsService implements IntegratorSettingsContract
      *
      * Update the name that your app will display when a user is selecting media bridge items.
      *
-     * @param array{
-     *   updatedAt: int, name?: string
-     * }|IntegratorSettingUpdateAppNameParams $params
+     * @param int $appID The appId for the media bridge app. It is possible to have multiple apps in your developer account that use the media bridge.
      *
      * @throws APIException
      */
     public function updateAppName(
         int $appID,
-        array|IntegratorSettingUpdateAppNameParams $params,
+        int $updatedAt,
+        ?string $name = null,
         ?RequestOptions $requestOptions = null,
     ): MediaBridgeProviderRegistrationResponse {
-        [$parsed, $options] = IntegratorSettingUpdateAppNameParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = ['updatedAt' => $updatedAt, 'name' => $name];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<MediaBridgeProviderRegistrationResponse> */
-        $response = $this->client->request(
-            method: 'put',
-            path: ['media-bridge/v1/%1$s/settings', $appID],
-            body: (object) $parsed,
-            options: $options,
-            convert: MediaBridgeProviderRegistrationResponse::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->updateAppName($appID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -350,34 +265,32 @@ final class IntegratorSettingsService implements IntegratorSettingsContract
      *
      * Set the visibility settings for media bridge events created by your app.
      *
-     * @param array{
-     *   eventType: 'ALL'|'ATTENTION_SPAN'|'MEDIA_PLAYS'|'MEDIA_PLAYS_PERCENT'|EventType,
-     *   updatedAt: int,
-     *   showInReporting?: bool,
-     *   showInTimeline?: bool,
-     *   showInWorkflows?: bool,
-     * }|IntegratorSettingUpdateEventVisibilitySettingsParams $params
+     * @param int $appID The appId for the media bridge app. It is possible to have multiple apps in your developer account that use the media bridge.
+     * @param 'ALL'|'ATTENTION_SPAN'|'MEDIA_PLAYS'|'MEDIA_PLAYS_PERCENT'|EventType $eventType
      *
      * @throws APIException
      */
     public function updateEventVisibilitySettings(
         int $appID,
-        array|IntegratorSettingUpdateEventVisibilitySettingsParams $params,
+        string|EventType $eventType,
+        int $updatedAt,
+        ?bool $showInReporting = null,
+        ?bool $showInTimeline = null,
+        ?bool $showInWorkflows = null,
         ?RequestOptions $requestOptions = null,
     ): EventVisibilityChange {
-        [$parsed, $options] = IntegratorSettingUpdateEventVisibilitySettingsParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = [
+            'eventType' => $eventType,
+            'updatedAt' => $updatedAt,
+            'showInReporting' => $showInReporting,
+            'showInTimeline' => $showInTimeline,
+            'showInWorkflows' => $showInWorkflows,
+        ];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<EventVisibilityChange> */
-        $response = $this->client->request(
-            method: 'patch',
-            path: ['media-bridge/v1/%1$s/settings/event-visibility', $appID],
-            body: (object) $parsed,
-            options: $options,
-            convert: EventVisibilityChange::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->updateEventVisibilitySettings($appID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -387,40 +300,30 @@ final class IntegratorSettingsService implements IntegratorSettingsContract
      *
      * Update an existing oEmbed domain.
      *
+     * @param string $oEmbedDomainID path param: The ID of the domain to update
+     * @param int $appID Path param: The appId for the media bridge app. It is possible to have multiple apps in your developer account that use the media bridge.
      * @param array{
-     *   appID: int,
-     *   endpoints: array{
-     *     discovery: bool, schemes: list<string>, url: string
-     *   }|Endpoints,
-     *   portalID?: int,
-     * }|IntegratorSettingUpdateOembedDomainParams $params
+     *   discovery: bool, schemes: list<string>, url: string
+     * }|Endpoints $endpoints Body param:
+     * @param int $portalID Body param:
      *
      * @throws APIException
      */
     public function updateOembedDomain(
         string $oEmbedDomainID,
-        array|IntegratorSettingUpdateOembedDomainParams $params,
+        int $appID,
+        array|Endpoints $endpoints,
+        ?int $portalID = null,
         ?RequestOptions $requestOptions = null,
     ): IntegratorOEmbedDomainModel {
-        [$parsed, $options] = IntegratorSettingUpdateOembedDomainParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $appID = $parsed['appID'];
-        unset($parsed['appID']);
+        $params = [
+            'appID' => $appID, 'endpoints' => $endpoints, 'portalID' => $portalID,
+        ];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<IntegratorOEmbedDomainModel> */
-        $response = $this->client->request(
-            method: 'patch',
-            path: [
-                'media-bridge/v1/%1$s/settings/oembed-domains/%2$s',
-                $appID,
-                $oEmbedDomainID,
-            ],
-            body: (object) array_diff_key($parsed, ['appID']),
-            options: $options,
-            convert: IntegratorOEmbedDomainModel::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->updateOembedDomain($oEmbedDomainID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }

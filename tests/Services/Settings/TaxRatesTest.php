@@ -38,7 +38,7 @@ final class TaxRatesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->settings->taxRates->list([]);
+        $result = $this->client->settings->taxRates->list();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(Page::class, $result);

@@ -39,9 +39,7 @@ final class EmailsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->emails->create([
-            'name' => 'My subject',
-        ]);
+        $result = $this->client->marketing->emails->create(name: 'My subject');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(PublicEmail::class, $result);
@@ -54,13 +52,13 @@ final class EmailsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->emails->create([
-            'name' => 'My subject',
-            'activeDomain' => 'test.hs-sites.com',
-            'archived' => false,
-            'businessUnitID' => 0,
-            'campaign' => '1b7f51a6-33c1-44d6-ba28-fe81f655dced',
-            'content' => [
+        $result = $this->client->marketing->emails->create(
+            name: 'My subject',
+            activeDomain: 'test.hs-sites.com',
+            archived: false,
+            businessUnitID: 0,
+            campaign: '1b7f51a6-33c1-44d6-ba28-fe81f655dced',
+            content: [
                 'flexAreas' => ['main' => []],
                 'plainTextVersion' => 'This is custom! View in browser ({{view_as_page_url}})\n\nHello {{ contact.firstname }},\n\nPlain text emails have minimal formatting so your reader can really focus on what you have to say. Introduce yourself and explain why you’re reaching out.\n\nEvery email should try to lead the reader to some kind of action. Use this space to describe why the reader should want to click on the link below. Put the link on its own line to really draw their eye to it.\n\nLink text\n\nNow it’s time to wrap up your email. Before your signature, thank the recipient for reading. You can also invite them to send this email to any of their colleagues who might be interested.\n\nAll the best,\n\nYour full name\n\nYour job title\n\nOther contact information\n\n{{site_settings.company_name}}, {{site_settings.company_street_address_1}}, {{site_settings.company_street_address_2}}, {{site_settings.company_city}}, {{site_settings.company_state}} {{site_settings.company_zip}}, {{site_settings.company_country}}, {{site_settings.company_phone}}\n\nUnsubscribe ({{unsubscribe_link_all}})\n\nManage preferences ({{unsubscribe_link}})',
                 'smartFields' => ['foo' => []],
@@ -140,17 +138,17 @@ final class EmailsTest extends TestCase
                     'preview_text' => [],
                 ],
             ],
-            'feedbackSurveyID' => 'feedbackSurveyId',
-            'folderIDV2' => 0,
-            'from' => [
+            feedbackSurveyID: 'feedbackSurveyId',
+            folderIDV2: 0,
+            from: [
                 'customReplyTo' => 'customReplyTo',
                 'fromName' => 'Bruce Wayne',
                 'replyTo' => 'test@hubspot.com',
             ],
-            'jitterSendTime' => true,
-            'language' => 'af',
-            'publishDate' => new \DateTimeImmutable('2023-11-30T18:44:20.387Z'),
-            'rssData' => [
+            jitterSendTime: true,
+            language: 'af',
+            publishDate: new \DateTimeImmutable('2023-11-30T18:44:20.387Z'),
+            rssData: [
                 'blogEmailType' => 'blogEmailType',
                 'blogImageMaxWidth' => 0,
                 'blogLayout' => 'blogLayout',
@@ -161,17 +159,17 @@ final class EmailsTest extends TestCase
                 'url' => 'url',
                 'useHeadlineAsSubject' => true,
             ],
-            'sendOnPublish' => true,
-            'state' => 'DRAFT',
-            'subcategory' => 'batch',
-            'subject' => 'My subject',
-            'subscriptionDetails' => [
+            sendOnPublish: true,
+            state: 'DRAFT',
+            subcategory: 'batch',
+            subject: 'My subject',
+            subscriptionDetails: [
                 'officeLocationID' => '5449392956',
                 'preferencesGroupID' => 'preferencesGroupId',
                 'subscriptionID' => 'subscriptionId',
                 'subscriptionName' => 'subscriptionName',
             ],
-            'testing' => [
+            testing: [
                 'abSampleSizeDefault' => 'automated_loser_variant',
                 'abSamplingDefault' => 'automated_loser_variant',
                 'abStatus' => 'automated_loser_variant',
@@ -181,14 +179,14 @@ final class EmailsTest extends TestCase
                 'isAbVariation' => true,
                 'testID' => 'testId',
             ],
-            'to' => [
+            to: [
                 'contactIDs' => ['exclude' => ['string'], 'include' => ['string']],
                 'contactIlsLists' => ['exclude' => ['string'], 'include' => ['string']],
                 'contactLists' => ['exclude' => ['string'], 'include' => ['string']],
                 'limitSendFrequency' => true,
                 'suppressGraymail' => true,
             ],
-            'webversion' => [
+            webversion: [
                 'domain' => 'domain',
                 'enabled' => true,
                 'expiresAt' => new \DateTimeImmutable('2020-11-30T18:44:20.387Z'),
@@ -201,7 +199,7 @@ final class EmailsTest extends TestCase
                 'title' => 'title',
                 'url' => 'url',
             ],
-        ]);
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(PublicEmail::class, $result);
@@ -214,7 +212,7 @@ final class EmailsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->emails->update('emailId', []);
+        $result = $this->client->marketing->emails->update('emailId');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(PublicEmail::class, $result);
@@ -227,7 +225,7 @@ final class EmailsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->emails->list([]);
+        $result = $this->client->marketing->emails->list();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(Page::class, $result);
@@ -240,7 +238,7 @@ final class EmailsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->emails->delete('emailId', []);
+        $result = $this->client->marketing->emails->delete('emailId');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);
@@ -253,7 +251,7 @@ final class EmailsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->emails->clone(['id' => 'id']);
+        $result = $this->client->marketing->emails->clone(id: 'id');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(PublicEmail::class, $result);
@@ -266,9 +264,11 @@ final class EmailsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->emails->clone([
-            'id' => 'id', 'cloneName' => 'cloneName', 'language' => 'language',
-        ]);
+        $result = $this->client->marketing->emails->clone(
+            id: 'id',
+            cloneName: 'cloneName',
+            language: 'language'
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(PublicEmail::class, $result);
@@ -281,9 +281,10 @@ final class EmailsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->emails->createAbTestVariation([
-            'contentID' => 'contentId', 'variationName' => 'variationName',
-        ]);
+        $result = $this->client->marketing->emails->createAbTestVariation(
+            contentID: 'contentId',
+            variationName: 'variationName'
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(PublicEmail::class, $result);
@@ -296,9 +297,10 @@ final class EmailsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->emails->createAbTestVariation([
-            'contentID' => 'contentId', 'variationName' => 'variationName',
-        ]);
+        $result = $this->client->marketing->emails->createAbTestVariation(
+            contentID: 'contentId',
+            variationName: 'variationName'
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(PublicEmail::class, $result);
@@ -311,7 +313,7 @@ final class EmailsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->emails->get('emailId', []);
+        $result = $this->client->marketing->emails->get('emailId');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(PublicEmail::class, $result);
@@ -324,10 +326,7 @@ final class EmailsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->emails->getAbTestVariation(
-            'emailId',
-            []
-        );
+        $result = $this->client->marketing->emails->getAbTestVariation('emailId');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(PublicEmail::class, $result);
@@ -355,7 +354,7 @@ final class EmailsTest extends TestCase
 
         $result = $this->client->marketing->emails->getRevision(
             'revisionId',
-            ['emailID' => 'emailId']
+            emailID: 'emailId'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -371,7 +370,7 @@ final class EmailsTest extends TestCase
 
         $result = $this->client->marketing->emails->getRevision(
             'revisionId',
-            ['emailID' => 'emailId']
+            emailID: 'emailId'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -385,7 +384,7 @@ final class EmailsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->emails->listRevisions('emailId', []);
+        $result = $this->client->marketing->emails->listRevisions('emailId');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(Page::class, $result);
@@ -426,7 +425,7 @@ final class EmailsTest extends TestCase
 
         $result = $this->client->marketing->emails->restoreRevision(
             'revisionId',
-            ['emailID' => 'emailId']
+            emailID: 'emailId'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -442,7 +441,7 @@ final class EmailsTest extends TestCase
 
         $result = $this->client->marketing->emails->restoreRevision(
             'revisionId',
-            ['emailID' => 'emailId']
+            emailID: 'emailId'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -458,7 +457,7 @@ final class EmailsTest extends TestCase
 
         $result = $this->client->marketing->emails->restoreRevisionToDraft(
             0,
-            ['emailID' => 'emailId']
+            emailID: 'emailId'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -474,7 +473,7 @@ final class EmailsTest extends TestCase
 
         $result = $this->client->marketing->emails->restoreRevisionToDraft(
             0,
-            ['emailID' => 'emailId']
+            emailID: 'emailId'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -501,7 +500,7 @@ final class EmailsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->emails->updateDraft('emailId', []);
+        $result = $this->client->marketing->emails->updateDraft('emailId');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(PublicEmail::class, $result);

@@ -41,20 +41,18 @@ final class PipelinesTest extends TestCase
 
         $result = $this->client->crm->pipelines->create(
             'objectType',
-            [
-                'displayOrder' => 0,
-                'label' => 'My replaced pipeline',
-                'stages' => [
-                    [
-                        'displayOrder' => 0,
-                        'label' => 'In Progress',
-                        'metadata' => ['ticketState' => 'OPEN'],
-                    ],
-                    [
-                        'displayOrder' => 1,
-                        'label' => 'Done',
-                        'metadata' => ['ticketState' => 'CLOSED'],
-                    ],
+            displayOrder: 0,
+            label: 'My replaced pipeline',
+            stages: [
+                [
+                    'displayOrder' => 0,
+                    'label' => 'In Progress',
+                    'metadata' => ['ticketState' => 'OPEN'],
+                ],
+                [
+                    'displayOrder' => 1,
+                    'label' => 'Done',
+                    'metadata' => ['ticketState' => 'CLOSED'],
                 ],
             ],
         );
@@ -72,20 +70,18 @@ final class PipelinesTest extends TestCase
 
         $result = $this->client->crm->pipelines->create(
             'objectType',
-            [
-                'displayOrder' => 0,
-                'label' => 'My replaced pipeline',
-                'stages' => [
-                    [
-                        'displayOrder' => 0,
-                        'label' => 'In Progress',
-                        'metadata' => ['ticketState' => 'OPEN'],
-                    ],
-                    [
-                        'displayOrder' => 1,
-                        'label' => 'Done',
-                        'metadata' => ['ticketState' => 'CLOSED'],
-                    ],
+            displayOrder: 0,
+            label: 'My replaced pipeline',
+            stages: [
+                [
+                    'displayOrder' => 0,
+                    'label' => 'In Progress',
+                    'metadata' => ['ticketState' => 'OPEN'],
+                ],
+                [
+                    'displayOrder' => 1,
+                    'label' => 'Done',
+                    'metadata' => ['ticketState' => 'CLOSED'],
                 ],
             ],
         );
@@ -103,7 +99,7 @@ final class PipelinesTest extends TestCase
 
         $result = $this->client->crm->pipelines->update(
             'pipelineId',
-            ['objectType' => 'objectType']
+            objectType: 'objectType'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -119,14 +115,12 @@ final class PipelinesTest extends TestCase
 
         $result = $this->client->crm->pipelines->update(
             'pipelineId',
-            [
-                'objectType' => 'objectType',
-                'validateDealStageUsagesBeforeDelete' => true,
-                'validateReferencesBeforeDelete' => true,
-                'archived' => true,
-                'displayOrder' => 0,
-                'label' => 'My updated pipeline',
-            ],
+            objectType: 'objectType',
+            validateDealStageUsagesBeforeDelete: true,
+            validateReferencesBeforeDelete: true,
+            archived: true,
+            displayOrder: 0,
+            label: 'My updated pipeline',
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -155,7 +149,7 @@ final class PipelinesTest extends TestCase
 
         $result = $this->client->crm->pipelines->delete(
             'pipelineId',
-            ['objectType' => 'objectType']
+            objectType: 'objectType'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -171,11 +165,9 @@ final class PipelinesTest extends TestCase
 
         $result = $this->client->crm->pipelines->delete(
             'pipelineId',
-            [
-                'objectType' => 'objectType',
-                'validateDealStageUsagesBeforeDelete' => true,
-                'validateReferencesBeforeDelete' => true,
-            ],
+            objectType: 'objectType',
+            validateDealStageUsagesBeforeDelete: true,
+            validateReferencesBeforeDelete: true,
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -191,7 +183,7 @@ final class PipelinesTest extends TestCase
 
         $result = $this->client->crm->pipelines->get(
             'pipelineId',
-            ['objectType' => 'objectType']
+            objectType: 'objectType'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -207,7 +199,7 @@ final class PipelinesTest extends TestCase
 
         $result = $this->client->crm->pipelines->get(
             'pipelineId',
-            ['objectType' => 'objectType']
+            objectType: 'objectType'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -223,7 +215,7 @@ final class PipelinesTest extends TestCase
 
         $result = $this->client->crm->pipelines->getAudit(
             'pipelineId',
-            ['objectType' => 'objectType']
+            objectType: 'objectType'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -242,7 +234,7 @@ final class PipelinesTest extends TestCase
 
         $result = $this->client->crm->pipelines->getAudit(
             'pipelineId',
-            ['objectType' => 'objectType']
+            objectType: 'objectType'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -261,21 +253,19 @@ final class PipelinesTest extends TestCase
 
         $result = $this->client->crm->pipelines->replace(
             'pipelineId',
-            [
-                'objectType' => 'objectType',
-                'displayOrder' => 0,
-                'label' => 'My replaced pipeline',
-                'stages' => [
-                    [
-                        'displayOrder' => 0,
-                        'label' => 'In Progress',
-                        'metadata' => ['ticketState' => 'OPEN'],
-                    ],
-                    [
-                        'displayOrder' => 1,
-                        'label' => 'Done',
-                        'metadata' => ['ticketState' => 'CLOSED'],
-                    ],
+            objectType: 'objectType',
+            displayOrder: 0,
+            label: 'My replaced pipeline',
+            stages: [
+                [
+                    'displayOrder' => 0,
+                    'label' => 'In Progress',
+                    'metadata' => ['ticketState' => 'OPEN'],
+                ],
+                [
+                    'displayOrder' => 1,
+                    'label' => 'Done',
+                    'metadata' => ['ticketState' => 'CLOSED'],
                 ],
             ],
         );
@@ -293,25 +283,23 @@ final class PipelinesTest extends TestCase
 
         $result = $this->client->crm->pipelines->replace(
             'pipelineId',
-            [
-                'objectType' => 'objectType',
-                'displayOrder' => 0,
-                'label' => 'My replaced pipeline',
-                'stages' => [
-                    [
-                        'displayOrder' => 0,
-                        'label' => 'In Progress',
-                        'metadata' => ['ticketState' => 'OPEN'],
-                    ],
-                    [
-                        'displayOrder' => 1,
-                        'label' => 'Done',
-                        'metadata' => ['ticketState' => 'CLOSED'],
-                    ],
+            objectType: 'objectType',
+            displayOrder: 0,
+            label: 'My replaced pipeline',
+            stages: [
+                [
+                    'displayOrder' => 0,
+                    'label' => 'In Progress',
+                    'metadata' => ['ticketState' => 'OPEN'],
                 ],
-                'validateDealStageUsagesBeforeDelete' => true,
-                'validateReferencesBeforeDelete' => true,
+                [
+                    'displayOrder' => 1,
+                    'label' => 'Done',
+                    'metadata' => ['ticketState' => 'CLOSED'],
+                ],
             ],
+            validateDealStageUsagesBeforeDelete: true,
+            validateReferencesBeforeDelete: true,
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

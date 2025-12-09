@@ -41,7 +41,8 @@ final class GroupsTest extends TestCase
 
         $result = $this->client->crm->properties->groups->create(
             'objectType',
-            ['label' => 'label', 'name' => 'name']
+            label: 'label',
+            name: 'name'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -57,7 +58,9 @@ final class GroupsTest extends TestCase
 
         $result = $this->client->crm->properties->groups->create(
             'objectType',
-            ['label' => 'label', 'name' => 'name', 'displayOrder' => 0]
+            label: 'label',
+            name: 'name',
+            displayOrder: 0
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -73,7 +76,7 @@ final class GroupsTest extends TestCase
 
         $result = $this->client->crm->properties->groups->update(
             'groupName',
-            ['objectType' => 'objectType']
+            objectType: 'objectType'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -89,7 +92,9 @@ final class GroupsTest extends TestCase
 
         $result = $this->client->crm->properties->groups->update(
             'groupName',
-            ['objectType' => 'objectType', 'displayOrder' => 0, 'label' => 'label'],
+            objectType: 'objectType',
+            displayOrder: 0,
+            label: 'label'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -103,7 +108,7 @@ final class GroupsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->properties->groups->list('objectType', []);
+        $result = $this->client->crm->properties->groups->list('objectType');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(CollectionResponsePropertyGroup::class, $result);
@@ -118,7 +123,7 @@ final class GroupsTest extends TestCase
 
         $result = $this->client->crm->properties->groups->delete(
             'groupName',
-            ['objectType' => 'objectType']
+            objectType: 'objectType'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -134,7 +139,7 @@ final class GroupsTest extends TestCase
 
         $result = $this->client->crm->properties->groups->delete(
             'groupName',
-            ['objectType' => 'objectType']
+            objectType: 'objectType'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -150,7 +155,7 @@ final class GroupsTest extends TestCase
 
         $result = $this->client->crm->properties->groups->get(
             'groupName',
-            ['objectType' => 'objectType']
+            objectType: 'objectType'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -166,7 +171,8 @@ final class GroupsTest extends TestCase
 
         $result = $this->client->crm->properties->groups->get(
             'groupName',
-            ['objectType' => 'objectType', 'locale' => 'locale']
+            objectType: 'objectType',
+            locale: 'locale'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

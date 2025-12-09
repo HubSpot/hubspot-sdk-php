@@ -41,7 +41,7 @@ final class FunctionsTest extends TestCase
 
         $result = $this->client->automation->actions->functions->list(
             'definitionId',
-            ['appID' => 0]
+            appID: 0
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -60,7 +60,7 @@ final class FunctionsTest extends TestCase
 
         $result = $this->client->automation->actions->functions->list(
             'definitionId',
-            ['appID' => 0]
+            appID: 0
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -79,11 +79,9 @@ final class FunctionsTest extends TestCase
 
         $result = $this->client->automation->actions->functions->delete(
             'functionId',
-            [
-                'appID' => 0,
-                'definitionID' => 'definitionId',
-                'functionType' => 'POST_ACTION_EXECUTION',
-            ],
+            appID: 0,
+            definitionID: 'definitionId',
+            functionType: 'POST_ACTION_EXECUTION',
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -99,11 +97,9 @@ final class FunctionsTest extends TestCase
 
         $result = $this->client->automation->actions->functions->delete(
             'functionId',
-            [
-                'appID' => 0,
-                'definitionID' => 'definitionId',
-                'functionType' => 'POST_ACTION_EXECUTION',
-            ],
+            appID: 0,
+            definitionID: 'definitionId',
+            functionType: 'POST_ACTION_EXECUTION',
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -119,12 +115,10 @@ final class FunctionsTest extends TestCase
 
         $result = $this->client->automation->actions->functions->createOrReplace(
             'functionId',
-            [
-                'appID' => 0,
-                'definitionID' => 'definitionId',
-                'functionType' => 'POST_ACTION_EXECUTION',
-                'body' => 'body',
-            ],
+            appID: 0,
+            definitionID: 'definitionId',
+            functionType: 'POST_ACTION_EXECUTION',
+            body: 'body',
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -140,12 +134,10 @@ final class FunctionsTest extends TestCase
 
         $result = $this->client->automation->actions->functions->createOrReplace(
             'functionId',
-            [
-                'appID' => 0,
-                'definitionID' => 'definitionId',
-                'functionType' => 'POST_ACTION_EXECUTION',
-                'body' => 'body',
-            ],
+            appID: 0,
+            definitionID: 'definitionId',
+            functionType: 'POST_ACTION_EXECUTION',
+            body: 'body',
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -166,7 +158,9 @@ final class FunctionsTest extends TestCase
             ->functions
             ->createOrReplaceByFunctionType(
                 'POST_ACTION_EXECUTION',
-                ['appID' => 0, 'definitionID' => 'definitionId', 'body' => 'body'],
+                appID: 0,
+                definitionID: 'definitionId',
+                body: 'body',
             )
         ;
 
@@ -188,7 +182,9 @@ final class FunctionsTest extends TestCase
             ->functions
             ->createOrReplaceByFunctionType(
                 'POST_ACTION_EXECUTION',
-                ['appID' => 0, 'definitionID' => 'definitionId', 'body' => 'body'],
+                appID: 0,
+                definitionID: 'definitionId',
+                body: 'body',
             )
         ;
 
@@ -210,7 +206,8 @@ final class FunctionsTest extends TestCase
             ->functions
             ->deleteByFunctionType(
                 'POST_ACTION_EXECUTION',
-                ['appID' => 0, 'definitionID' => 'definitionId']
+                appID: 0,
+                definitionID: 'definitionId'
             )
         ;
 
@@ -232,7 +229,8 @@ final class FunctionsTest extends TestCase
             ->functions
             ->deleteByFunctionType(
                 'POST_ACTION_EXECUTION',
-                ['appID' => 0, 'definitionID' => 'definitionId']
+                appID: 0,
+                definitionID: 'definitionId'
             )
         ;
 
@@ -249,11 +247,9 @@ final class FunctionsTest extends TestCase
 
         $result = $this->client->automation->actions->functions->get(
             'functionId',
-            [
-                'appID' => 0,
-                'definitionID' => 'definitionId',
-                'functionType' => 'POST_ACTION_EXECUTION',
-            ],
+            appID: 0,
+            definitionID: 'definitionId',
+            functionType: 'POST_ACTION_EXECUTION',
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -269,11 +265,9 @@ final class FunctionsTest extends TestCase
 
         $result = $this->client->automation->actions->functions->get(
             'functionId',
-            [
-                'appID' => 0,
-                'definitionID' => 'definitionId',
-                'functionType' => 'POST_ACTION_EXECUTION',
-            ],
+            appID: 0,
+            definitionID: 'definitionId',
+            functionType: 'POST_ACTION_EXECUTION',
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -289,7 +283,8 @@ final class FunctionsTest extends TestCase
 
         $result = $this->client->automation->actions->functions->getByFunctionType(
             'POST_ACTION_EXECUTION',
-            ['appID' => 0, 'definitionID' => 'definitionId']
+            appID: 0,
+            definitionID: 'definitionId'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -305,7 +300,8 @@ final class FunctionsTest extends TestCase
 
         $result = $this->client->automation->actions->functions->getByFunctionType(
             'POST_ACTION_EXECUTION',
-            ['appID' => 0, 'definitionID' => 'definitionId']
+            appID: 0,
+            definitionID: 'definitionId'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

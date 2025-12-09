@@ -39,15 +39,15 @@ final class TagsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->blogs->tags->create([
-            'id' => 'id',
-            'created' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-            'deletedAt' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-            'language' => 'af',
-            'name' => 'name',
-            'translatedFromID' => 0,
-            'updated' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-        ]);
+        $result = $this->client->cms->blogs->tags->create(
+            id: 'id',
+            created: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
+            deletedAt: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
+            language: 'af',
+            name: 'name',
+            translatedFromID: 0,
+            updated: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(Tag::class, $result);
@@ -60,15 +60,15 @@ final class TagsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->blogs->tags->create([
-            'id' => 'id',
-            'created' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-            'deletedAt' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-            'language' => 'af',
-            'name' => 'name',
-            'translatedFromID' => 0,
-            'updated' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-        ]);
+        $result = $this->client->cms->blogs->tags->create(
+            id: 'id',
+            created: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
+            deletedAt: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
+            language: 'af',
+            name: 'name',
+            translatedFromID: 0,
+            updated: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(Tag::class, $result);
@@ -83,15 +83,13 @@ final class TagsTest extends TestCase
 
         $result = $this->client->cms->blogs->tags->update(
             'objectId',
-            [
-                'id' => 'id',
-                'created' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-                'deletedAt' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-                'language' => 'af',
-                'name' => 'name',
-                'translatedFromID' => 0,
-                'updated' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-            ],
+            id: 'id',
+            created: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
+            deletedAt: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
+            language: 'af',
+            name: 'name',
+            translatedFromID: 0,
+            updated: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -107,16 +105,14 @@ final class TagsTest extends TestCase
 
         $result = $this->client->cms->blogs->tags->update(
             'objectId',
-            [
-                'id' => 'id',
-                'created' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-                'deletedAt' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-                'language' => 'af',
-                'name' => 'name',
-                'translatedFromID' => 0,
-                'updated' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-                'archived' => true,
-            ],
+            id: 'id',
+            created: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
+            deletedAt: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
+            language: 'af',
+            name: 'name',
+            translatedFromID: 0,
+            updated: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
+            archived: true,
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -130,7 +126,7 @@ final class TagsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->blogs->tags->list([]);
+        $result = $this->client->cms->blogs->tags->list();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(Page::class, $result);
@@ -143,7 +139,7 @@ final class TagsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->blogs->tags->delete('objectId', []);
+        $result = $this->client->cms->blogs->tags->delete('objectId');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);
@@ -156,9 +152,11 @@ final class TagsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->blogs->tags->attachToLangGroup([
-            'id' => 'id', 'language' => 'language', 'primaryID' => 'primaryId',
-        ]);
+        $result = $this->client->cms->blogs->tags->attachToLangGroup(
+            id: 'id',
+            language: 'language',
+            primaryID: 'primaryId'
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);
@@ -171,12 +169,12 @@ final class TagsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->blogs->tags->attachToLangGroup([
-            'id' => 'id',
-            'language' => 'language',
-            'primaryID' => 'primaryId',
-            'primaryLanguage' => 'primaryLanguage',
-        ]);
+        $result = $this->client->cms->blogs->tags->attachToLangGroup(
+            id: 'id',
+            language: 'language',
+            primaryID: 'primaryId',
+            primaryLanguage: 'primaryLanguage',
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);
@@ -189,8 +187,8 @@ final class TagsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->blogs->tags->createBatch([
-            'inputs' => [
+        $result = $this->client->cms->blogs->tags->createBatch(
+            inputs: [
                 [
                     'id' => 'id',
                     'created' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
@@ -201,7 +199,7 @@ final class TagsTest extends TestCase
                     'updated' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
                 ],
             ],
-        ]);
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(BatchResponseTag::class, $result);
@@ -214,8 +212,8 @@ final class TagsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->blogs->tags->createBatch([
-            'inputs' => [
+        $result = $this->client->cms->blogs->tags->createBatch(
+            inputs: [
                 [
                     'id' => 'id',
                     'created' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
@@ -226,7 +224,7 @@ final class TagsTest extends TestCase
                     'updated' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
                 ],
             ],
-        ]);
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(BatchResponseTag::class, $result);
@@ -239,9 +237,10 @@ final class TagsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->blogs->tags->createLangVariation([
-            'id' => 'id', 'name' => 'name',
-        ]);
+        $result = $this->client->cms->blogs->tags->createLangVariation(
+            id: 'id',
+            name: 'name'
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(Tag::class, $result);
@@ -254,12 +253,12 @@ final class TagsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->blogs->tags->createLangVariation([
-            'id' => 'id',
-            'name' => 'name',
-            'language' => 'language',
-            'primaryLanguage' => 'primaryLanguage',
-        ]);
+        $result = $this->client->cms->blogs->tags->createLangVariation(
+            id: 'id',
+            name: 'name',
+            language: 'language',
+            primaryLanguage: 'primaryLanguage',
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(Tag::class, $result);
@@ -272,9 +271,7 @@ final class TagsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->blogs->tags->deleteBatch([
-            'inputs' => ['string'],
-        ]);
+        $result = $this->client->cms->blogs->tags->deleteBatch(inputs: ['string']);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);
@@ -287,9 +284,7 @@ final class TagsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->blogs->tags->deleteBatch([
-            'inputs' => ['string'],
-        ]);
+        $result = $this->client->cms->blogs->tags->deleteBatch(inputs: ['string']);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);
@@ -302,9 +297,7 @@ final class TagsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->blogs->tags->detachFromLangGroup([
-            'id' => 'id',
-        ]);
+        $result = $this->client->cms->blogs->tags->detachFromLangGroup(id: 'id');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);
@@ -317,9 +310,7 @@ final class TagsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->blogs->tags->detachFromLangGroup([
-            'id' => 'id',
-        ]);
+        $result = $this->client->cms->blogs->tags->detachFromLangGroup(id: 'id');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);
@@ -332,7 +323,7 @@ final class TagsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->blogs->tags->get('objectId', []);
+        $result = $this->client->cms->blogs->tags->get('objectId');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(Tag::class, $result);
@@ -345,9 +336,7 @@ final class TagsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->blogs->tags->getBatch([
-            'inputs' => ['string'],
-        ]);
+        $result = $this->client->cms->blogs->tags->getBatch(inputs: ['string']);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(BatchResponseTag::class, $result);
@@ -360,9 +349,10 @@ final class TagsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->blogs->tags->getBatch([
-            'inputs' => ['string'], 'archived' => true,
-        ]);
+        $result = $this->client->cms->blogs->tags->getBatch(
+            inputs: ['string'],
+            archived: true
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(BatchResponseTag::class, $result);
@@ -375,7 +365,7 @@ final class TagsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->blogs->tags->setLangPrimary(['id' => 'id']);
+        $result = $this->client->cms->blogs->tags->setLangPrimary(id: 'id');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);
@@ -388,7 +378,7 @@ final class TagsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->blogs->tags->setLangPrimary(['id' => 'id']);
+        $result = $this->client->cms->blogs->tags->setLangPrimary(id: 'id');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);
@@ -401,7 +391,7 @@ final class TagsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->blogs->tags->updateBatch(['inputs' => [[]]]);
+        $result = $this->client->cms->blogs->tags->updateBatch(inputs: [[]]);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(BatchResponseTag::class, $result);
@@ -414,9 +404,10 @@ final class TagsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->blogs->tags->updateBatch([
-            'inputs' => [[]], 'archived' => true,
-        ]);
+        $result = $this->client->cms->blogs->tags->updateBatch(
+            inputs: [[]],
+            archived: true
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(BatchResponseTag::class, $result);
@@ -429,9 +420,10 @@ final class TagsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->blogs->tags->updateLangs([
-            'languages' => ['foo' => 'string'], 'primaryID' => 'primaryId',
-        ]);
+        $result = $this->client->cms->blogs->tags->updateLangs(
+            languages: ['foo' => 'string'],
+            primaryID: 'primaryId'
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);
@@ -444,9 +436,10 @@ final class TagsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->blogs->tags->updateLangs([
-            'languages' => ['foo' => 'string'], 'primaryID' => 'primaryId',
-        ]);
+        $result = $this->client->cms->blogs->tags->updateLangs(
+            languages: ['foo' => 'string'],
+            primaryID: 'primaryId'
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);

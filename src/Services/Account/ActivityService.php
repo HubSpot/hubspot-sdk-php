@@ -4,16 +4,11 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Services\Account;
 
-use HubspotSDK\Account\Activity\ActivityListAuditLogsParams;
-use HubspotSDK\Account\Activity\ActivityListLoginActivitiesParams;
-use HubspotSDK\Account\Activity\ActivityListSecurityActivitiesParams;
 use HubspotSDK\Account\Activity\HydratedCriticalAction;
 use HubspotSDK\Account\Activity\PublicAPIUserActionEvent;
 use HubspotSDK\Account\Activity\PublicLoginAudit;
 use HubspotSDK\Client;
-use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Core\Util;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Account\ActivityContract;
@@ -21,49 +16,56 @@ use HubspotSDK\ServiceContracts\Account\ActivityContract;
 final class ActivityService implements ActivityContract
 {
     /**
+     * @api
+     */
+    public ActivityRawService $raw;
+
+    /**
      * @internal
      */
-    public function __construct(private Client $client) {}
+    public function __construct(private Client $client)
+    {
+        $this->raw = new ActivityRawService($client);
+    }
 
     /**
      * @api
      *
      * Retrieve activity history for user actions related to approvals, content updates, CRM object updates, security activity, and more (Enterprise only). Learn more about [activities included in audit log exports](https://knowledge.hubspot.com/account-management/view-and-export-account-activity-history-in-a-centralized-audit-log?hubs_content=knowledge.hubspot.com/account-management/view-and-export-account-activity-history&hubs_content-cta=centralized%20audit%20log#data-included-in-the-centralized-audit-log).
      *
-     * @param array{
-     *   actingUserID?: list<int>,
-     *   after?: string,
-     *   limit?: int,
-     *   occurredAfter?: string|\DateTimeInterface,
-     *   occurredBefore?: string|\DateTimeInterface,
-     *   sort?: list<string>,
-     * }|ActivityListAuditLogsParams $params
+     * @param list<int> $actingUserID the ID of a user, for retrieving user-specific logs
+     * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+     * @param int $limit the maximum number of results to display per page
+     * @param string|\DateTimeInterface $occurredAfter a timestamp, as a starting point for retrieving activity logs
+     * @param string|\DateTimeInterface $occurredBefore a timestamp, as an end point for retrieving activity logs
+     * @param list<string> $sort Set to `occurredAt` to order results by the time of the event. By default, events are ordered from oldest to newest.
      *
      * @return Page<PublicAPIUserActionEvent>
      *
      * @throws APIException
      */
     public function listAuditLogs(
-        array|ActivityListAuditLogsParams $params,
+        ?array $actingUserID = null,
+        ?string $after = null,
+        ?int $limit = null,
+        string|\DateTimeInterface|null $occurredAfter = null,
+        string|\DateTimeInterface|null $occurredBefore = null,
+        ?array $sort = null,
         ?RequestOptions $requestOptions = null,
     ): Page {
-        [$parsed, $options] = ActivityListAuditLogsParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = [
+            'actingUserID' => $actingUserID,
+            'after' => $after,
+            'limit' => $limit,
+            'occurredAfter' => $occurredAfter,
+            'occurredBefore' => $occurredBefore,
+            'sort' => $sort,
+        ];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<Page<PublicAPIUserActionEvent>> */
-        $response = $this->client->request(
-            method: 'get',
-            path: 'account-info/v3/activity/audit-logs',
-            query: Util::array_transform_keys(
-                $parsed,
-                ['actingUserID' => 'actingUserId']
-            ),
-            options: $options,
-            convert: PublicAPIUserActionEvent::class,
-            page: Page::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->listAuditLogs(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -73,32 +75,26 @@ final class ActivityService implements ActivityContract
      *
      * Retrieve logs of user actions related to [login activity](https://knowledge.hubspot.com/account-management/view-and-export-account-activity-history#account-login-history).
      *
-     * @param array{
-     *   after?: string, limit?: int, userID?: int
-     * }|ActivityListLoginActivitiesParams $params
+     * @param string $after The cursor token value to get the next set of results. You can get this from the `paging.next.after` JSON property of a paged response containing more results.
+     * @param int $limit The maximum number of results to display per page. Max value of limit is 200.
+     * @param int $userID the ID of a user, for retrieving user-specific logs
      *
      * @return Page<PublicLoginAudit>
      *
      * @throws APIException
      */
     public function listLoginActivities(
-        array|ActivityListLoginActivitiesParams $params,
+        ?string $after = null,
+        ?int $limit = null,
+        ?int $userID = null,
         ?RequestOptions $requestOptions = null,
     ): Page {
-        [$parsed, $options] = ActivityListLoginActivitiesParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = ['after' => $after, 'limit' => $limit, 'userID' => $userID];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<Page<PublicLoginAudit>> */
-        $response = $this->client->request(
-            method: 'get',
-            path: 'account-info/v3/activity/login',
-            query: Util::array_transform_keys($parsed, ['userID' => 'userId']),
-            options: $options,
-            convert: PublicLoginAudit::class,
-            page: Page::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->listLoginActivities(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -108,36 +104,36 @@ final class ActivityService implements ActivityContract
      *
      * Retrieve logs of user actions related to [security activity](https://knowledge.hubspot.com/account-management/view-and-export-account-activity-history#security-activity-history).
      *
-     * @param array{
-     *   after?: string,
-     *   fromTimestamp?: int,
-     *   limit?: int,
-     *   toTimestamp?: int,
-     *   userID?: int,
-     * }|ActivityListSecurityActivitiesParams $params
+     * @param string $after The cursor token value to get the next set of results. You can get this from the `paging.next.after` JSON property of a paged response containing more results.
+     * @param int $fromTimestamp the start time, for retrieving logs within a specific timeframe
+     * @param int $limit The maximum number of results to display per page. Max value of limit is 200.
+     * @param int $toTimestamp the end time, for retrieving logs within a specific timeframe
+     * @param int $userID the ID of a user, for retrieving user-specific logs
      *
      * @return Page<HydratedCriticalAction>
      *
      * @throws APIException
      */
     public function listSecurityActivities(
-        array|ActivityListSecurityActivitiesParams $params,
+        ?string $after = null,
+        ?int $fromTimestamp = null,
+        ?int $limit = null,
+        ?int $toTimestamp = null,
+        ?int $userID = null,
         ?RequestOptions $requestOptions = null,
     ): Page {
-        [$parsed, $options] = ActivityListSecurityActivitiesParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = [
+            'after' => $after,
+            'fromTimestamp' => $fromTimestamp,
+            'limit' => $limit,
+            'toTimestamp' => $toTimestamp,
+            'userID' => $userID,
+        ];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<Page<HydratedCriticalAction>> */
-        $response = $this->client->request(
-            method: 'get',
-            path: 'account-info/v3/activity/security',
-            query: Util::array_transform_keys($parsed, ['userID' => 'userId']),
-            options: $options,
-            convert: HydratedCriticalAction::class,
-            page: Page::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->listSecurityActivities(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }

@@ -5,10 +5,8 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Conversations\CustomChannels;
 
 use HubspotSDK\Client;
-use HubspotSDK\Conversations\CustomChannels\ChannelAccountStagingTokens\ChannelAccountStagingTokenUpdateParams;
 use HubspotSDK\Conversations\CustomChannels\PublicChannelAccountStagingToken;
 use HubspotSDK\Conversations\PublicDeliveryIdentifier;
-use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Conversations\CustomChannels\ChannelAccountStagingTokensContract;
@@ -16,49 +14,47 @@ use HubspotSDK\ServiceContracts\Conversations\CustomChannels\ChannelAccountStagi
 final class ChannelAccountStagingTokensService implements ChannelAccountStagingTokensContract
 {
     /**
+     * @api
+     */
+    public ChannelAccountStagingTokensRawService $raw;
+
+    /**
      * @internal
      */
-    public function __construct(private Client $client) {}
+    public function __construct(private Client $client)
+    {
+        $this->raw = new ChannelAccountStagingTokensRawService($client);
+    }
 
     /**
      * @api
      *
      * Update a channel account staging token's account name and delivery identifier. This information will be applied to the channel account created from this staging token. This is used for public apps.
      *
+     * @param string $accountToken path param: The unique token identifying the channel account staging token to update
+     * @param int $channelID path param: The ID of the channel associated with the staging token being updated
+     * @param string $accountName Body param:
      * @param array{
-     *   channelID: int,
-     *   accountName: string,
-     *   deliveryIdentifier: array{
-     *     type: string, value: string
-     *   }|PublicDeliveryIdentifier,
-     * }|ChannelAccountStagingTokenUpdateParams $params
+     *   type: string, value: string
+     * }|PublicDeliveryIdentifier $deliveryIdentifier Body param:
      *
      * @throws APIException
      */
     public function update(
         string $accountToken,
-        array|ChannelAccountStagingTokenUpdateParams $params,
+        int $channelID,
+        string $accountName,
+        array|PublicDeliveryIdentifier $deliveryIdentifier,
         ?RequestOptions $requestOptions = null,
     ): PublicChannelAccountStagingToken {
-        [$parsed, $options] = ChannelAccountStagingTokenUpdateParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $channelID = $parsed['channelID'];
-        unset($parsed['channelID']);
+        $params = [
+            'channelID' => $channelID,
+            'accountName' => $accountName,
+            'deliveryIdentifier' => $deliveryIdentifier,
+        ];
 
-        /** @var BaseResponse<PublicChannelAccountStagingToken> */
-        $response = $this->client->request(
-            method: 'patch',
-            path: [
-                'conversations/v3/custom-channels/%1$s/channel-account-staging-tokens/%2$s',
-                $channelID,
-                $accountToken,
-            ],
-            body: (object) array_diff_key($parsed, ['channelID']),
-            options: $options,
-            convert: PublicChannelAccountStagingToken::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->update($accountToken, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }

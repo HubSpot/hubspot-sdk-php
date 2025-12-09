@@ -5,20 +5,12 @@ declare(strict_types=1);
 namespace HubspotSDK\ServiceContracts\Cms\MediaBridge;
 
 use HubspotSDK\Cms\MediaBridge\BulkIntegratorObjectCreationResponse;
+use HubspotSDK\Cms\MediaBridge\Endpoints;
 use HubspotSDK\Cms\MediaBridge\EventVisibilityChange;
 use HubspotSDK\Cms\MediaBridge\EventVisibilityResponse;
 use HubspotSDK\Cms\MediaBridge\IntegratorOEmbedDomainModel;
-use HubspotSDK\Cms\MediaBridge\IntegratorSettings\IntegratorSettingCreateObjectDefinitionParams;
-use HubspotSDK\Cms\MediaBridge\IntegratorSettings\IntegratorSettingCreateOembedDomainParams;
-use HubspotSDK\Cms\MediaBridge\IntegratorSettings\IntegratorSettingDeleteOembedDomainParams;
-use HubspotSDK\Cms\MediaBridge\IntegratorSettings\IntegratorSettingGetObjectDefinitionsByMediaTypeParams;
 use HubspotSDK\Cms\MediaBridge\IntegratorSettings\IntegratorSettingGetObjectDefinitionsByMediaTypeParams\MediaType;
-use HubspotSDK\Cms\MediaBridge\IntegratorSettings\IntegratorSettingGetOembedDomainParams;
-use HubspotSDK\Cms\MediaBridge\IntegratorSettings\IntegratorSettingListOembedDomainsParams;
-use HubspotSDK\Cms\MediaBridge\IntegratorSettings\IntegratorSettingRegisterAppNameParams;
-use HubspotSDK\Cms\MediaBridge\IntegratorSettings\IntegratorSettingUpdateAppNameParams;
-use HubspotSDK\Cms\MediaBridge\IntegratorSettings\IntegratorSettingUpdateEventVisibilitySettingsParams;
-use HubspotSDK\Cms\MediaBridge\IntegratorSettings\IntegratorSettingUpdateOembedDomainParams;
+use HubspotSDK\Cms\MediaBridge\IntegratorSettings\IntegratorSettingUpdateEventVisibilitySettingsParams\EventType;
 use HubspotSDK\Cms\MediaBridge\MediaBridgeProviderRegistrationResponse;
 use HubspotSDK\Cms\MediaBridge\ObjectDefinitionResponse;
 use HubspotSDK\Cms\MediaBridge\OEmbedDomainsCollectionResponse;
@@ -30,44 +22,54 @@ interface IntegratorSettingsContract
     /**
      * @api
      *
-     * @param array<mixed>|IntegratorSettingCreateObjectDefinitionParams $params
+     * @param int $appID The appId for the media bridge app. It is possible to have multiple apps in your developer account that use the media bridge.
+     * @param list<'VIDEO'|'AUDIO'|'DOCUMENT'|'OTHER'|'IMAGE'|\HubspotSDK\Cms\MediaBridge\IntegratorSettings\IntegratorSettingCreateObjectDefinitionParams\MediaType> $mediaTypes
      *
      * @throws APIException
      */
     public function createObjectDefinition(
         int $appID,
-        array|IntegratorSettingCreateObjectDefinitionParams $params,
-        ?RequestOptions $requestOptions = null,
+        array $mediaTypes,
+        ?RequestOptions $requestOptions = null
     ): BulkIntegratorObjectCreationResponse;
 
     /**
      * @api
      *
-     * @param array<mixed>|IntegratorSettingCreateOembedDomainParams $params
+     * @param int $appID The appId for the media bridge app. It is possible to have multiple apps in your developer account that use the media bridge.
+     * @param array{
+     *   discovery: bool, schemes: list<string>, url: string
+     * }|Endpoints $endpoints
      *
      * @throws APIException
      */
     public function createOembedDomain(
         int $appID,
-        array|IntegratorSettingCreateOembedDomainParams $params,
+        array|Endpoints $endpoints,
+        ?int $portalID = null,
         ?RequestOptions $requestOptions = null,
     ): IntegratorOEmbedDomainModel;
 
     /**
      * @api
      *
-     * @param array<mixed>|IntegratorSettingDeleteOembedDomainParams $params
+     * @param int $appID The appId for the media bridge app. It is possible to have multiple apps in your developer account that use the media bridge.
+     * @param int $id the ID of the oEmbed to delete
+     * @param int $domainPortalID filter response by Hub ID
      *
      * @throws APIException
      */
     public function deleteOembedDomain(
         int $appID,
-        array|IntegratorSettingDeleteOembedDomainParams $params,
+        ?int $id = null,
+        int $domainPortalID = -1,
         ?RequestOptions $requestOptions = null,
     ): mixed;
 
     /**
      * @api
+     *
+     * @param int $appID The appId for the media bridge app. It is possible to have multiple apps in your developer account that use the media bridge.
      *
      * @throws APIException
      */
@@ -79,40 +81,44 @@ interface IntegratorSettingsContract
     /**
      * @api
      *
-     * @param MediaType|value-of<MediaType> $mediaType
-     * @param array<mixed>|IntegratorSettingGetObjectDefinitionsByMediaTypeParams $params
+     * @param MediaType|value-of<MediaType> $mediaType path param: The type of media that you want to get the object types for
+     * @param int $appID Path param: The appId for the media bridge app. It is possible to have multiple apps in your developer account that use the media bridge.
+     * @param bool $includeFullDefinition query param: Include the full definition in the response
      *
      * @throws APIException
      */
     public function getObjectDefinitionsByMediaType(
         MediaType|string $mediaType,
-        array|IntegratorSettingGetObjectDefinitionsByMediaTypeParams $params,
+        int $appID,
+        ?bool $includeFullDefinition = null,
         ?RequestOptions $requestOptions = null,
     ): ObjectDefinitionResponse;
 
     /**
      * @api
      *
-     * @param array<mixed>|IntegratorSettingGetOembedDomainParams $params
+     * @param string $oEmbedDomainID the ID for the oEmbed domain
+     * @param int $appID The appId for the media bridge app. It is possible to have multiple apps in your developer account that use the media bridge.
      *
      * @throws APIException
      */
     public function getOembedDomain(
         string $oEmbedDomainID,
-        array|IntegratorSettingGetOembedDomainParams $params,
-        ?RequestOptions $requestOptions = null,
+        int $appID,
+        ?RequestOptions $requestOptions = null
     ): IntegratorOEmbedDomainModel;
 
     /**
      * @api
      *
-     * @param array<mixed>|IntegratorSettingListOembedDomainsParams $params
+     * @param int $appID The appId for the media bridge app. It is possible to have multiple apps in your developer account that use the media bridge.
+     * @param int $domainPortalID filter response by Hub ID
      *
      * @throws APIException
      */
     public function listOembedDomains(
         int $appID,
-        array|IntegratorSettingListOembedDomainsParams $params,
+        int $domainPortalID = -1,
         ?RequestOptions $requestOptions = null,
     ): OEmbedDomainsCollectionResponse;
 
@@ -121,52 +127,66 @@ interface IntegratorSettingsContract
      *
      * @api
      *
-     * @param array<mixed>|IntegratorSettingRegisterAppNameParams $params
+     * @param int $appID The appId for the media bridge app. It is possible to have multiple apps in your developer account that use the media bridge.
      *
      * @throws APIException
      */
     public function registerAppName(
         int $appID,
-        array|IntegratorSettingRegisterAppNameParams $params,
+        int $updatedAt,
+        ?string $name = null,
         ?RequestOptions $requestOptions = null,
     ): MediaBridgeProviderRegistrationResponse;
 
     /**
      * @api
      *
-     * @param array<mixed>|IntegratorSettingUpdateAppNameParams $params
+     * @param int $appID The appId for the media bridge app. It is possible to have multiple apps in your developer account that use the media bridge.
      *
      * @throws APIException
      */
     public function updateAppName(
         int $appID,
-        array|IntegratorSettingUpdateAppNameParams $params,
+        int $updatedAt,
+        ?string $name = null,
         ?RequestOptions $requestOptions = null,
     ): MediaBridgeProviderRegistrationResponse;
 
     /**
      * @api
      *
-     * @param array<mixed>|IntegratorSettingUpdateEventVisibilitySettingsParams $params
+     * @param int $appID The appId for the media bridge app. It is possible to have multiple apps in your developer account that use the media bridge.
+     * @param 'ALL'|'ATTENTION_SPAN'|'MEDIA_PLAYS'|'MEDIA_PLAYS_PERCENT'|EventType $eventType
      *
      * @throws APIException
      */
     public function updateEventVisibilitySettings(
         int $appID,
-        array|IntegratorSettingUpdateEventVisibilitySettingsParams $params,
+        string|EventType $eventType,
+        int $updatedAt,
+        ?bool $showInReporting = null,
+        ?bool $showInTimeline = null,
+        ?bool $showInWorkflows = null,
         ?RequestOptions $requestOptions = null,
     ): EventVisibilityChange;
 
     /**
      * @api
      *
-     * @param array<mixed>|IntegratorSettingUpdateOembedDomainParams $params
+     * @param string $oEmbedDomainID path param: The ID of the domain to update
+     * @param int $appID Path param: The appId for the media bridge app. It is possible to have multiple apps in your developer account that use the media bridge.
+     * @param array{
+     *   discovery: bool, schemes: list<string>, url: string
+     * }|Endpoints $endpoints Body param:
+     * @param int $portalID Body param:
      *
      * @throws APIException
      */
     public function updateOembedDomain(
         string $oEmbedDomainID,
-        array|IntegratorSettingUpdateOembedDomainParams $params,
+        int $appID,
+        array|Endpoints $endpoints,
+        ?int $portalID = null,
         ?RequestOptions $requestOptions = null,
     ): IntegratorOEmbedDomainModel;
 }

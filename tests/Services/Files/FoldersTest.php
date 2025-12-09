@@ -40,7 +40,7 @@ final class FoldersTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->files->folders->create(['name' => 'name']);
+        $result = $this->client->files->folders->create(name: 'name');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(Folder::class, $result);
@@ -53,11 +53,11 @@ final class FoldersTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->files->folders->create([
-            'name' => 'name',
-            'parentFolderID' => 'parentFolderId',
-            'parentPath' => 'parentPath',
-        ]);
+        $result = $this->client->files->folders->create(
+            name: 'name',
+            parentFolderID: 'parentFolderId',
+            parentPath: 'parentPath'
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(Folder::class, $result);
@@ -96,7 +96,7 @@ final class FoldersTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->files->folders->getByID('321669910225', []);
+        $result = $this->client->files->folders->getByID('321669910225');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(Folder::class, $result);
@@ -109,7 +109,7 @@ final class FoldersTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->files->folders->getByPath('folderPath', []);
+        $result = $this->client->files->folders->getByPath('folderPath');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(Folder::class, $result);
@@ -135,7 +135,7 @@ final class FoldersTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->files->folders->search([]);
+        $result = $this->client->files->folders->search();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(Page::class, $result);
@@ -148,7 +148,7 @@ final class FoldersTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->files->folders->updateAsyncByID(['id' => 'id']);
+        $result = $this->client->files->folders->updateAsyncByID(id: 'id');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(FolderUpdateTaskLocator::class, $result);
@@ -161,9 +161,11 @@ final class FoldersTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->files->folders->updateAsyncByID([
-            'id' => 'id', 'name' => 'name', 'parentFolderID' => 0,
-        ]);
+        $result = $this->client->files->folders->updateAsyncByID(
+            id: 'id',
+            name: 'name',
+            parentFolderID: 0
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(FolderUpdateTaskLocator::class, $result);
@@ -176,7 +178,7 @@ final class FoldersTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->files->folders->updateByID('321669910225', []);
+        $result = $this->client->files->folders->updateByID('321669910225');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(Folder::class, $result);

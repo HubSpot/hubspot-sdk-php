@@ -38,12 +38,12 @@ final class EnrollmentsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->automation->sequences->enrollments->enroll([
-            'userID' => 'userId',
-            'contactID' => 'contactId',
-            'senderEmail' => 'senderEmail',
-            'sequenceID' => 'sequenceId',
-        ]);
+        $result = $this->client->automation->sequences->enrollments->enroll(
+            userID: 'userId',
+            contactID: 'contactId',
+            senderEmail: 'senderEmail',
+            sequenceID: 'sequenceId',
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(
@@ -59,13 +59,13 @@ final class EnrollmentsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->automation->sequences->enrollments->enroll([
-            'userID' => 'userId',
-            'contactID' => 'contactId',
-            'senderEmail' => 'senderEmail',
-            'sequenceID' => 'sequenceId',
-            'senderAliasAddress' => 'senderAliasAddress',
-        ]);
+        $result = $this->client->automation->sequences->enrollments->enroll(
+            userID: 'userId',
+            contactID: 'contactId',
+            senderEmail: 'senderEmail',
+            sequenceID: 'sequenceId',
+            senderAliasAddress: 'senderAliasAddress',
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(

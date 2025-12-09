@@ -5,9 +5,6 @@ declare(strict_types=1);
 namespace HubspotSDK\ServiceContracts\Conversations;
 
 use HubspotSDK\Conversations\ConversationsPublicConversationsMessage;
-use HubspotSDK\Conversations\Messages\MessageGetOriginalContentParams;
-use HubspotSDK\Conversations\Messages\MessageGetParams;
-use HubspotSDK\Conversations\Messages\MessageListParams;
 use HubspotSDK\Conversations\PublicAssignmentMessage;
 use HubspotSDK\Conversations\PublicComment;
 use HubspotSDK\Conversations\PublicMessageContent;
@@ -33,7 +30,7 @@ interface MessagesContract
     /**
      * @api
      *
-     * @param array<mixed>|MessageListParams $params
+     * @param list<string> $sort
      *
      * @return Page<ConversationsPublicConversationsMessage|PublicComment|PublicWelcomeMessage|PublicAssignmentMessage|PublicThreadStatusChange|PublicThreadInboxChange,>
      *
@@ -41,33 +38,43 @@ interface MessagesContract
      */
     public function list(
         int $threadID,
-        array|MessageListParams $params,
+        ?string $after = null,
+        ?bool $archived = null,
+        ?int $limit = null,
+        ?string $property = null,
+        ?array $sort = null,
         ?RequestOptions $requestOptions = null,
     ): Page;
 
     /**
      * @api
      *
-     * @param array<mixed>|MessageGetParams $params
+     * @param string $messageID Path param:
+     * @param int $threadID Path param:
+     * @param string $property Query param:
      *
      * @throws APIException
      */
     public function get(
         string $messageID,
-        array|MessageGetParams $params,
+        int $threadID,
+        ?string $property = null,
         ?RequestOptions $requestOptions = null,
     ): ConversationsPublicConversationsMessage|PublicComment|PublicWelcomeMessage|PublicAssignmentMessage|PublicThreadStatusChange|PublicThreadInboxChange;
 
     /**
      * @api
      *
-     * @param array<mixed>|MessageGetOriginalContentParams $params
+     * @param string $messageID Path param:
+     * @param int $threadID Path param:
+     * @param string $property Query param:
      *
      * @throws APIException
      */
     public function getOriginalContent(
         string $messageID,
-        array|MessageGetOriginalContentParams $params,
+        int $threadID,
+        ?string $property = null,
         ?RequestOptions $requestOptions = null,
     ): PublicMessageContent;
 }

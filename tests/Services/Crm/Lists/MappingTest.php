@@ -38,9 +38,9 @@ final class MappingTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->lists->mapping->batchCreateIDMapping([
-            'body' => ['string'],
-        ]);
+        $result = $this->client->crm->lists->mapping->batchCreateIDMapping(
+            body: ['string']
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(PublicBatchMigrationMapping::class, $result);
@@ -53,9 +53,9 @@ final class MappingTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->lists->mapping->batchCreateIDMapping([
-            'body' => ['string'],
-        ]);
+        $result = $this->client->crm->lists->mapping->batchCreateIDMapping(
+            body: ['string']
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(PublicBatchMigrationMapping::class, $result);
@@ -68,7 +68,7 @@ final class MappingTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->lists->mapping->getIDMapping([]);
+        $result = $this->client->crm->lists->mapping->getIDMapping();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(PublicMigrationMapping::class, $result);

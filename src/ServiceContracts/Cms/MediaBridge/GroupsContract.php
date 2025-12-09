@@ -5,11 +5,6 @@ declare(strict_types=1);
 namespace HubspotSDK\ServiceContracts\Cms\MediaBridge;
 
 use HubspotSDK\Cms\MediaBridge\CollectionResponsePropertyGroupNoPaging;
-use HubspotSDK\Cms\MediaBridge\Groups\GroupCreateParams;
-use HubspotSDK\Cms\MediaBridge\Groups\GroupDeleteByNameParams;
-use HubspotSDK\Cms\MediaBridge\Groups\GroupGetByNameParams;
-use HubspotSDK\Cms\MediaBridge\Groups\GroupListParams;
-use HubspotSDK\Cms\MediaBridge\Groups\GroupUpdateByNameParams;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\Properties\PropertyGroup;
 use HubspotSDK\RequestOptions;
@@ -19,65 +14,86 @@ interface GroupsContract
     /**
      * @api
      *
-     * @param array<mixed>|GroupCreateParams $params
+     * @param string $objectType path param: The object type to create the new property group for
+     * @param int $appID Path param: The appId for the media bridge app. It is possible to have multiple apps in your developer account that use the media bridge.
+     * @param string $label Body param:
+     * @param string $name Body param:
+     * @param int $displayOrder Body param:
      *
      * @throws APIException
      */
     public function create(
         string $objectType,
-        array|GroupCreateParams $params,
+        int $appID,
+        string $label,
+        string $name,
+        ?int $displayOrder = null,
         ?RequestOptions $requestOptions = null,
     ): PropertyGroup;
 
     /**
      * @api
      *
-     * @param array<mixed>|GroupListParams $params
+     * @param string $objectType the type of object to get the property groups for
+     * @param int $appID The appId for the media bridge app. It is possible to have multiple apps in your developer account that use the media bridge.
      *
      * @throws APIException
      */
     public function list(
         string $objectType,
-        array|GroupListParams $params,
-        ?RequestOptions $requestOptions = null,
+        int $appID,
+        ?RequestOptions $requestOptions = null
     ): CollectionResponsePropertyGroupNoPaging;
 
     /**
      * @api
      *
-     * @param array<mixed>|GroupDeleteByNameParams $params
+     * @param string $groupName the name of the property group to be deleted
+     * @param int $appID The appId for the media bridge app. It is possible to have multiple apps in your developer account that use the media bridge.
+     * @param string $objectType The object type for the property group
      *
      * @throws APIException
      */
     public function deleteByName(
         string $groupName,
-        array|GroupDeleteByNameParams $params,
+        int $appID,
+        string $objectType,
         ?RequestOptions $requestOptions = null,
     ): mixed;
 
     /**
      * @api
      *
-     * @param array<mixed>|GroupGetByNameParams $params
+     * @param string $groupName the name for the property group you want to get the details for
+     * @param int $appID The appId for the media bridge app. It is possible to have multiple apps in your developer account that use the media bridge.
+     * @param string $objectType the object type for the property group
      *
      * @throws APIException
      */
     public function getByName(
         string $groupName,
-        array|GroupGetByNameParams $params,
+        int $appID,
+        string $objectType,
         ?RequestOptions $requestOptions = null,
     ): PropertyGroup;
 
     /**
      * @api
      *
-     * @param array<mixed>|GroupUpdateByNameParams $params
+     * @param string $groupName path param: The name of the property group to update
+     * @param int $appID Path param: The appId for the media bridge app. It is possible to have multiple apps in your developer account that use the media bridge.
+     * @param string $objectType path param: The object type for the property group
+     * @param int $displayOrder Body param:
+     * @param string $label Body param:
      *
      * @throws APIException
      */
     public function updateByName(
         string $groupName,
-        array|GroupUpdateByNameParams $params,
+        int $appID,
+        string $objectType,
+        ?int $displayOrder = null,
+        ?string $label = null,
         ?RequestOptions $requestOptions = null,
     ): PropertyGroup;
 }

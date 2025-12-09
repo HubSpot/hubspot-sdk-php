@@ -39,7 +39,7 @@ final class SettingsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->blogs->settings->list([]);
+        $result = $this->client->cms->blogs->settings->list();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(Page::class, $result);
@@ -52,9 +52,11 @@ final class SettingsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->blogs->settings->attachToLangGroup([
-            'id' => 'id', 'language' => 'language', 'primaryID' => 'primaryId',
-        ]);
+        $result = $this->client->cms->blogs->settings->attachToLangGroup(
+            id: 'id',
+            language: 'language',
+            primaryID: 'primaryId'
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);
@@ -67,12 +69,12 @@ final class SettingsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->blogs->settings->attachToLangGroup([
-            'id' => 'id',
-            'language' => 'language',
-            'primaryID' => 'primaryId',
-            'primaryLanguage' => 'primaryLanguage',
-        ]);
+        $result = $this->client->cms->blogs->settings->attachToLangGroup(
+            id: 'id',
+            language: 'language',
+            primaryID: 'primaryId',
+            primaryLanguage: 'primaryLanguage',
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);
@@ -85,9 +87,9 @@ final class SettingsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->blogs->settings->createLanguageVariation([
-            'id' => 'id',
-        ]);
+        $result = $this->client->cms->blogs->settings->createLanguageVariation(
+            id: 'id'
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(Blog::class, $result);
@@ -100,12 +102,12 @@ final class SettingsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->blogs->settings->createLanguageVariation([
-            'id' => 'id',
-            'language' => 'language',
-            'primaryLanguage' => 'primaryLanguage',
-            'slug' => 'slug',
-        ]);
+        $result = $this->client->cms->blogs->settings->createLanguageVariation(
+            id: 'id',
+            language: 'language',
+            primaryLanguage: 'primaryLanguage',
+            slug: 'slug',
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(Blog::class, $result);
@@ -118,9 +120,9 @@ final class SettingsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->blogs->settings->detachFromLangGroup([
-            'id' => 'id',
-        ]);
+        $result = $this->client->cms->blogs->settings->detachFromLangGroup(
+            id: 'id'
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);
@@ -133,9 +135,9 @@ final class SettingsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->blogs->settings->detachFromLangGroup([
-            'id' => 'id',
-        ]);
+        $result = $this->client->cms->blogs->settings->detachFromLangGroup(
+            id: 'id'
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);
@@ -163,7 +165,7 @@ final class SettingsTest extends TestCase
 
         $result = $this->client->cms->blogs->settings->getRevision(
             'revisionId',
-            ['blogID' => 'blogId']
+            blogID: 'blogId'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -179,7 +181,7 @@ final class SettingsTest extends TestCase
 
         $result = $this->client->cms->blogs->settings->getRevision(
             'revisionId',
-            ['blogID' => 'blogId']
+            blogID: 'blogId'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -193,7 +195,7 @@ final class SettingsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->blogs->settings->listRevisions('blogId', []);
+        $result = $this->client->cms->blogs->settings->listRevisions('blogId');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(Page::class, $result);
@@ -206,9 +208,7 @@ final class SettingsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->blogs->settings->setNewLangPrimary([
-            'id' => 'id',
-        ]);
+        $result = $this->client->cms->blogs->settings->setNewLangPrimary(id: 'id');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);
@@ -221,9 +221,7 @@ final class SettingsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->blogs->settings->setNewLangPrimary([
-            'id' => 'id',
-        ]);
+        $result = $this->client->cms->blogs->settings->setNewLangPrimary(id: 'id');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);
@@ -236,9 +234,10 @@ final class SettingsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->blogs->settings->updateLanguages([
-            'languages' => ['foo' => 'string'], 'primaryID' => 'primaryId',
-        ]);
+        $result = $this->client->cms->blogs->settings->updateLanguages(
+            languages: ['foo' => 'string'],
+            primaryID: 'primaryId'
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);
@@ -251,9 +250,10 @@ final class SettingsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->blogs->settings->updateLanguages([
-            'languages' => ['foo' => 'string'], 'primaryID' => 'primaryId',
-        ]);
+        $result = $this->client->cms->blogs->settings->updateLanguages(
+            languages: ['foo' => 'string'],
+            primaryID: 'primaryId'
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);

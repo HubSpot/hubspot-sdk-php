@@ -6,7 +6,6 @@ namespace HubspotSDK\ServiceContracts\Marketing\Events;
 
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Marketing\Events\EventDetailSettings;
-use HubspotSDK\Marketing\Events\Settings\SettingCreateOrUpdateParams;
 use HubspotSDK\RequestOptions;
 
 interface SettingsContract
@@ -14,18 +13,21 @@ interface SettingsContract
     /**
      * @api
      *
-     * @param array<mixed>|SettingCreateOrUpdateParams $params
+     * @param int $appID the id of the application to update the settings for
+     * @param string $eventDetailsURL The url that will be used to fetch marketing event details by id. Must contain a `%s` character sequence that will be substituted with the event id. For example: `https://my.event.app/events/%s`
      *
      * @throws APIException
      */
     public function createOrUpdate(
         int $appID,
-        array|SettingCreateOrUpdateParams $params,
+        string $eventDetailsURL,
         ?RequestOptions $requestOptions = null,
     ): EventDetailSettings;
 
     /**
      * @api
+     *
+     * @param int $appID the id of the application to retrieve the settings for
      *
      * @throws APIException
      */

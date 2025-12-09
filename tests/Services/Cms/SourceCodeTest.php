@@ -41,7 +41,7 @@ final class SourceCodeTest extends TestCase
 
         $result = $this->client->cms->sourceCode->create(
             'file_path',
-            ['environment' => 'environment']
+            environment: 'environment'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -57,7 +57,8 @@ final class SourceCodeTest extends TestCase
 
         $result = $this->client->cms->sourceCode->create(
             'file_path',
-            ['environment' => 'environment', 'file' => 'file']
+            environment: 'environment',
+            file: 'file'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -73,7 +74,7 @@ final class SourceCodeTest extends TestCase
 
         $result = $this->client->cms->sourceCode->delete(
             'file_path',
-            ['environment' => 'environment']
+            environment: 'environment'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -89,7 +90,7 @@ final class SourceCodeTest extends TestCase
 
         $result = $this->client->cms->sourceCode->delete(
             'file_path',
-            ['environment' => 'environment']
+            environment: 'environment'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -103,7 +104,7 @@ final class SourceCodeTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->sourceCode->extractAsync(['path' => 'path']);
+        $result = $this->client->cms->sourceCode->extractAsync(path: 'path');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(TaskLocator::class, $result);
@@ -116,7 +117,7 @@ final class SourceCodeTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->sourceCode->extractAsync(['path' => 'path']);
+        $result = $this->client->cms->sourceCode->extractAsync(path: 'path');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(TaskLocator::class, $result);
@@ -131,7 +132,7 @@ final class SourceCodeTest extends TestCase
 
         $result = $this->client->cms->sourceCode->get(
             'file_path',
-            ['environment' => 'environment']
+            environment: 'environment'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -147,7 +148,7 @@ final class SourceCodeTest extends TestCase
 
         $result = $this->client->cms->sourceCode->get(
             'file_path',
-            ['environment' => 'environment']
+            environment: 'environment'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -176,7 +177,7 @@ final class SourceCodeTest extends TestCase
 
         $result = $this->client->cms->sourceCode->getMetadata(
             'file_path',
-            ['environment' => 'environment']
+            environment: 'environment'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -192,7 +193,8 @@ final class SourceCodeTest extends TestCase
 
         $result = $this->client->cms->sourceCode->getMetadata(
             'file_path',
-            ['environment' => 'environment', 'properties' => 'properties'],
+            environment: 'environment',
+            properties: 'properties'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -208,7 +210,7 @@ final class SourceCodeTest extends TestCase
 
         $result = $this->client->cms->sourceCode->upsert(
             'file_path',
-            ['environment' => 'environment']
+            environment: 'environment'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -224,7 +226,8 @@ final class SourceCodeTest extends TestCase
 
         $result = $this->client->cms->sourceCode->upsert(
             'file_path',
-            ['environment' => 'environment', 'file' => 'file']
+            environment: 'environment',
+            file: 'file'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -240,7 +243,7 @@ final class SourceCodeTest extends TestCase
 
         $result = $this->client->cms->sourceCode->validate(
             'file_path',
-            ['environment' => 'environment']
+            environment: 'environment'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -256,7 +259,8 @@ final class SourceCodeTest extends TestCase
 
         $result = $this->client->cms->sourceCode->validate(
             'file_path',
-            ['environment' => 'environment', 'file' => 'file']
+            environment: 'environment',
+            file: 'file'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

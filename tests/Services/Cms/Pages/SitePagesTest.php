@@ -39,37 +39,37 @@ final class SitePagesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->pages->sitePages->create([
-            'id' => 'id',
-            'abStatus' => 'automated_loser_variant',
-            'abTestID' => 'abTestId',
-            'archivedAt' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-            'archivedInDashboard' => true,
-            'attachedStylesheets' => [['foo' => []]],
-            'authorName' => 'authorName',
-            'campaign' => 'campaign',
-            'categoryID' => 0,
-            'contentGroupID' => 'contentGroupId',
-            'contentTypeCategory' => '0',
-            'created' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-            'createdByID' => 'createdById',
-            'currentlyPublished' => true,
-            'currentState' => 'AUTOMATED',
-            'domain' => 'domain',
-            'dynamicPageDataSourceID' => 'dynamicPageDataSourceId',
-            'dynamicPageDataSourceType' => 0,
-            'dynamicPageHubDBTableID' => 'dynamicPageHubDbTableId',
-            'enableDomainStylesheets' => true,
-            'enableLayoutStylesheets' => true,
-            'featuredImage' => 'featuredImage',
-            'featuredImageAltText' => 'featuredImageAltText',
-            'folderID' => 'folderId',
-            'footerHTML' => 'footerHtml',
-            'headHTML' => 'headHtml',
-            'htmlTitle' => 'htmlTitle',
-            'includeDefaultCustomCss' => true,
-            'language' => 'af',
-            'layoutSections' => [
+        $result = $this->client->cms->pages->sitePages->create(
+            id: 'id',
+            abStatus: 'automated_loser_variant',
+            abTestID: 'abTestId',
+            archivedAt: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
+            archivedInDashboard: true,
+            attachedStylesheets: [['foo' => []]],
+            authorName: 'authorName',
+            campaign: 'campaign',
+            categoryID: 0,
+            contentGroupID: 'contentGroupId',
+            contentTypeCategory: '0',
+            created: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
+            createdByID: 'createdById',
+            currentlyPublished: true,
+            currentState: 'AUTOMATED',
+            domain: 'domain',
+            dynamicPageDataSourceID: 'dynamicPageDataSourceId',
+            dynamicPageDataSourceType: 0,
+            dynamicPageHubDBTableID: 'dynamicPageHubDbTableId',
+            enableDomainStylesheets: true,
+            enableLayoutStylesheets: true,
+            featuredImage: 'featuredImage',
+            featuredImageAltText: 'featuredImageAltText',
+            folderID: 'folderId',
+            footerHTML: 'footerHtml',
+            headHTML: 'headHtml',
+            htmlTitle: 'htmlTitle',
+            includeDefaultCustomCss: true,
+            language: 'af',
+            layoutSections: [
                 'foo' => [
                     'cells' => [],
                     'cssClass' => 'cssClass',
@@ -133,27 +133,27 @@ final class SitePagesTest extends TestCase
                     'x' => 0,
                 ],
             ],
-            'linkRelCanonicalURL' => 'linkRelCanonicalUrl',
-            'mabExperimentID' => 'mabExperimentId',
-            'metaDescription' => 'metaDescription',
-            'name' => 'name',
-            'pageExpiryDate' => 0,
-            'pageExpiryEnabled' => true,
-            'pageExpiryRedirectID' => 0,
-            'pageExpiryRedirectURL' => 'pageExpiryRedirectUrl',
-            'pageRedirected' => true,
-            'password' => 'password',
-            'publicAccessRules' => [[]],
-            'publicAccessRulesEnabled' => true,
-            'publishDate' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-            'publishImmediately' => true,
-            'slug' => 'slug',
-            'state' => 'state',
-            'subcategory' => 'subcategory',
-            'templatePath' => 'templatePath',
-            'themeSettingsValues' => ['foo' => []],
-            'translatedFromID' => 'translatedFromId',
-            'translations' => [
+            linkRelCanonicalURL: 'linkRelCanonicalUrl',
+            mabExperimentID: 'mabExperimentId',
+            metaDescription: 'metaDescription',
+            name: 'name',
+            pageExpiryDate: 0,
+            pageExpiryEnabled: true,
+            pageExpiryRedirectID: 0,
+            pageExpiryRedirectURL: 'pageExpiryRedirectUrl',
+            pageRedirected: true,
+            password: 'password',
+            publicAccessRules: [[]],
+            publicAccessRulesEnabled: true,
+            publishDate: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
+            publishImmediately: true,
+            slug: 'slug',
+            state: 'state',
+            subcategory: 'subcategory',
+            templatePath: 'templatePath',
+            themeSettingsValues: ['foo' => []],
+            translatedFromID: 'translatedFromId',
+            translations: [
                 'foo' => [
                     'id' => 0,
                     'archivedInDashboard' => true,
@@ -170,13 +170,13 @@ final class SitePagesTest extends TestCase
                     'updated' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
                 ],
             ],
-            'updated' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-            'updatedByID' => 'updatedById',
-            'url' => 'url',
-            'useFeaturedImage' => true,
-            'widgetContainers' => ['foo' => []],
-            'widgets' => ['foo' => []],
-        ]);
+            updated: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
+            updatedByID: 'updatedById',
+            url: 'url',
+            useFeaturedImage: true,
+            widgetContainers: ['foo' => []],
+            widgets: ['foo' => []],
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);
@@ -189,37 +189,37 @@ final class SitePagesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->pages->sitePages->create([
-            'id' => 'id',
-            'abStatus' => 'automated_loser_variant',
-            'abTestID' => 'abTestId',
-            'archivedAt' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-            'archivedInDashboard' => true,
-            'attachedStylesheets' => [['foo' => []]],
-            'authorName' => 'authorName',
-            'campaign' => 'campaign',
-            'categoryID' => 0,
-            'contentGroupID' => 'contentGroupId',
-            'contentTypeCategory' => '0',
-            'created' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-            'createdByID' => 'createdById',
-            'currentlyPublished' => true,
-            'currentState' => 'AUTOMATED',
-            'domain' => 'domain',
-            'dynamicPageDataSourceID' => 'dynamicPageDataSourceId',
-            'dynamicPageDataSourceType' => 0,
-            'dynamicPageHubDBTableID' => 'dynamicPageHubDbTableId',
-            'enableDomainStylesheets' => true,
-            'enableLayoutStylesheets' => true,
-            'featuredImage' => 'featuredImage',
-            'featuredImageAltText' => 'featuredImageAltText',
-            'folderID' => 'folderId',
-            'footerHTML' => 'footerHtml',
-            'headHTML' => 'headHtml',
-            'htmlTitle' => 'htmlTitle',
-            'includeDefaultCustomCss' => true,
-            'language' => 'af',
-            'layoutSections' => [
+        $result = $this->client->cms->pages->sitePages->create(
+            id: 'id',
+            abStatus: 'automated_loser_variant',
+            abTestID: 'abTestId',
+            archivedAt: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
+            archivedInDashboard: true,
+            attachedStylesheets: [['foo' => []]],
+            authorName: 'authorName',
+            campaign: 'campaign',
+            categoryID: 0,
+            contentGroupID: 'contentGroupId',
+            contentTypeCategory: '0',
+            created: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
+            createdByID: 'createdById',
+            currentlyPublished: true,
+            currentState: 'AUTOMATED',
+            domain: 'domain',
+            dynamicPageDataSourceID: 'dynamicPageDataSourceId',
+            dynamicPageDataSourceType: 0,
+            dynamicPageHubDBTableID: 'dynamicPageHubDbTableId',
+            enableDomainStylesheets: true,
+            enableLayoutStylesheets: true,
+            featuredImage: 'featuredImage',
+            featuredImageAltText: 'featuredImageAltText',
+            folderID: 'folderId',
+            footerHTML: 'footerHtml',
+            headHTML: 'headHtml',
+            htmlTitle: 'htmlTitle',
+            includeDefaultCustomCss: true,
+            language: 'af',
+            layoutSections: [
                 'foo' => [
                     'cells' => [],
                     'cssClass' => 'cssClass',
@@ -289,27 +289,27 @@ final class SitePagesTest extends TestCase
                     'x' => 0,
                 ],
             ],
-            'linkRelCanonicalURL' => 'linkRelCanonicalUrl',
-            'mabExperimentID' => 'mabExperimentId',
-            'metaDescription' => 'metaDescription',
-            'name' => 'name',
-            'pageExpiryDate' => 0,
-            'pageExpiryEnabled' => true,
-            'pageExpiryRedirectID' => 0,
-            'pageExpiryRedirectURL' => 'pageExpiryRedirectUrl',
-            'pageRedirected' => true,
-            'password' => 'password',
-            'publicAccessRules' => [[]],
-            'publicAccessRulesEnabled' => true,
-            'publishDate' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-            'publishImmediately' => true,
-            'slug' => 'slug',
-            'state' => 'state',
-            'subcategory' => 'subcategory',
-            'templatePath' => 'templatePath',
-            'themeSettingsValues' => ['foo' => []],
-            'translatedFromID' => 'translatedFromId',
-            'translations' => [
+            linkRelCanonicalURL: 'linkRelCanonicalUrl',
+            mabExperimentID: 'mabExperimentId',
+            metaDescription: 'metaDescription',
+            name: 'name',
+            pageExpiryDate: 0,
+            pageExpiryEnabled: true,
+            pageExpiryRedirectID: 0,
+            pageExpiryRedirectURL: 'pageExpiryRedirectUrl',
+            pageRedirected: true,
+            password: 'password',
+            publicAccessRules: [[]],
+            publicAccessRulesEnabled: true,
+            publishDate: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
+            publishImmediately: true,
+            slug: 'slug',
+            state: 'state',
+            subcategory: 'subcategory',
+            templatePath: 'templatePath',
+            themeSettingsValues: ['foo' => []],
+            translatedFromID: 'translatedFromId',
+            translations: [
                 'foo' => [
                     'id' => 0,
                     'archivedInDashboard' => true,
@@ -327,13 +327,13 @@ final class SitePagesTest extends TestCase
                     'tagIDs' => [0],
                 ],
             ],
-            'updated' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-            'updatedByID' => 'updatedById',
-            'url' => 'url',
-            'useFeaturedImage' => true,
-            'widgetContainers' => ['foo' => []],
-            'widgets' => ['foo' => []],
-        ]);
+            updated: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
+            updatedByID: 'updatedById',
+            url: 'url',
+            useFeaturedImage: true,
+            widgetContainers: ['foo' => []],
+            widgets: ['foo' => []],
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);
@@ -348,144 +348,142 @@ final class SitePagesTest extends TestCase
 
         $result = $this->client->cms->pages->sitePages->update(
             'objectId',
-            [
-                'id' => 'id',
-                'abStatus' => 'automated_loser_variant',
-                'abTestID' => 'abTestId',
-                'archivedAt' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-                'archivedInDashboard' => true,
-                'attachedStylesheets' => [['foo' => []]],
-                'authorName' => 'authorName',
-                'campaign' => 'campaign',
-                'categoryID' => 0,
-                'contentGroupID' => 'contentGroupId',
-                'contentTypeCategory' => '0',
-                'created' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-                'createdByID' => 'createdById',
-                'currentlyPublished' => true,
-                'currentState' => 'AUTOMATED',
-                'domain' => 'domain',
-                'dynamicPageDataSourceID' => 'dynamicPageDataSourceId',
-                'dynamicPageDataSourceType' => 0,
-                'dynamicPageHubDBTableID' => 'dynamicPageHubDbTableId',
-                'enableDomainStylesheets' => true,
-                'enableLayoutStylesheets' => true,
-                'featuredImage' => 'featuredImage',
-                'featuredImageAltText' => 'featuredImageAltText',
-                'folderID' => 'folderId',
-                'footerHTML' => 'footerHtml',
-                'headHTML' => 'headHtml',
-                'htmlTitle' => 'htmlTitle',
-                'includeDefaultCustomCss' => true,
-                'language' => 'af',
-                'layoutSections' => [
-                    'foo' => [
-                        'cells' => [],
-                        'cssClass' => 'cssClass',
-                        'cssID' => 'cssId',
-                        'cssStyle' => 'cssStyle',
-                        'label' => 'label',
-                        'name' => 'name',
-                        'params' => ['foo' => []],
-                        'rowMetaData' => [
-                            [
-                                'cssClass' => 'cssClass',
-                                'styles' => [
-                                    'backgroundColor' => ['a' => 0, 'b' => 0, 'g' => 0, 'r' => 0],
-                                    'backgroundGradient' => [
-                                        'angle' => ['units' => 'units', 'value' => 0],
-                                        'colors' => [
-                                            ['color' => ['a' => 0, 'b' => 0, 'g' => 0, 'r' => 0]],
-                                        ],
-                                        'sideOrCorner' => [
-                                            'horizontalSide' => 'horizontalSide',
-                                            'verticalSide' => 'verticalSide',
-                                        ],
+            id: 'id',
+            abStatus: 'automated_loser_variant',
+            abTestID: 'abTestId',
+            archivedAt: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
+            archivedInDashboard: true,
+            attachedStylesheets: [['foo' => []]],
+            authorName: 'authorName',
+            campaign: 'campaign',
+            categoryID: 0,
+            contentGroupID: 'contentGroupId',
+            contentTypeCategory: '0',
+            created: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
+            createdByID: 'createdById',
+            currentlyPublished: true,
+            currentState: 'AUTOMATED',
+            domain: 'domain',
+            dynamicPageDataSourceID: 'dynamicPageDataSourceId',
+            dynamicPageDataSourceType: 0,
+            dynamicPageHubDBTableID: 'dynamicPageHubDbTableId',
+            enableDomainStylesheets: true,
+            enableLayoutStylesheets: true,
+            featuredImage: 'featuredImage',
+            featuredImageAltText: 'featuredImageAltText',
+            folderID: 'folderId',
+            footerHTML: 'footerHtml',
+            headHTML: 'headHtml',
+            htmlTitle: 'htmlTitle',
+            includeDefaultCustomCss: true,
+            language: 'af',
+            layoutSections: [
+                'foo' => [
+                    'cells' => [],
+                    'cssClass' => 'cssClass',
+                    'cssID' => 'cssId',
+                    'cssStyle' => 'cssStyle',
+                    'label' => 'label',
+                    'name' => 'name',
+                    'params' => ['foo' => []],
+                    'rowMetaData' => [
+                        [
+                            'cssClass' => 'cssClass',
+                            'styles' => [
+                                'backgroundColor' => ['a' => 0, 'b' => 0, 'g' => 0, 'r' => 0],
+                                'backgroundGradient' => [
+                                    'angle' => ['units' => 'units', 'value' => 0],
+                                    'colors' => [
+                                        ['color' => ['a' => 0, 'b' => 0, 'g' => 0, 'r' => 0]],
                                     ],
-                                    'backgroundImage' => [
-                                        'backgroundPosition' => 'backgroundPosition',
-                                        'backgroundSize' => 'backgroundSize',
-                                        'imageURL' => 'imageUrl',
+                                    'sideOrCorner' => [
+                                        'horizontalSide' => 'horizontalSide',
+                                        'verticalSide' => 'verticalSide',
                                     ],
-                                    'flexboxPositioning' => 'flexboxPositioning',
-                                    'forceFullWidthSection' => true,
-                                    'maxWidthSectionCentering' => 0,
-                                    'verticalAlignment' => 'verticalAlignment',
                                 ],
+                                'backgroundImage' => [
+                                    'backgroundPosition' => 'backgroundPosition',
+                                    'backgroundSize' => 'backgroundSize',
+                                    'imageURL' => 'imageUrl',
+                                ],
+                                'flexboxPositioning' => 'flexboxPositioning',
+                                'forceFullWidthSection' => true,
+                                'maxWidthSectionCentering' => 0,
+                                'verticalAlignment' => 'verticalAlignment',
                             ],
                         ],
-                        'rows' => [[]],
-                        'styles' => [
-                            'backgroundColor' => ['a' => 0, 'b' => 0, 'g' => 0, 'r' => 0],
-                            'backgroundGradient' => [
-                                'angle' => ['units' => 'units', 'value' => 0],
-                                'colors' => [
-                                    ['color' => ['a' => 0, 'b' => 0, 'g' => 0, 'r' => 0]],
-                                ],
-                                'sideOrCorner' => [
-                                    'horizontalSide' => 'horizontalSide',
-                                    'verticalSide' => 'verticalSide',
-                                ],
+                    ],
+                    'rows' => [[]],
+                    'styles' => [
+                        'backgroundColor' => ['a' => 0, 'b' => 0, 'g' => 0, 'r' => 0],
+                        'backgroundGradient' => [
+                            'angle' => ['units' => 'units', 'value' => 0],
+                            'colors' => [
+                                ['color' => ['a' => 0, 'b' => 0, 'g' => 0, 'r' => 0]],
                             ],
-                            'backgroundImage' => [
-                                'backgroundPosition' => 'backgroundPosition',
-                                'backgroundSize' => 'backgroundSize',
-                                'imageURL' => 'imageUrl',
+                            'sideOrCorner' => [
+                                'horizontalSide' => 'horizontalSide',
+                                'verticalSide' => 'verticalSide',
                             ],
-                            'flexboxPositioning' => 'flexboxPositioning',
-                            'forceFullWidthSection' => true,
-                            'maxWidthSectionCentering' => 0,
-                            'verticalAlignment' => 'verticalAlignment',
                         ],
-                        'type' => 'type',
-                        'w' => 0,
-                        'x' => 0,
+                        'backgroundImage' => [
+                            'backgroundPosition' => 'backgroundPosition',
+                            'backgroundSize' => 'backgroundSize',
+                            'imageURL' => 'imageUrl',
+                        ],
+                        'flexboxPositioning' => 'flexboxPositioning',
+                        'forceFullWidthSection' => true,
+                        'maxWidthSectionCentering' => 0,
+                        'verticalAlignment' => 'verticalAlignment',
                     ],
+                    'type' => 'type',
+                    'w' => 0,
+                    'x' => 0,
                 ],
-                'linkRelCanonicalURL' => 'linkRelCanonicalUrl',
-                'mabExperimentID' => 'mabExperimentId',
-                'metaDescription' => 'metaDescription',
-                'name' => 'name',
-                'pageExpiryDate' => 0,
-                'pageExpiryEnabled' => true,
-                'pageExpiryRedirectID' => 0,
-                'pageExpiryRedirectURL' => 'pageExpiryRedirectUrl',
-                'pageRedirected' => true,
-                'password' => 'password',
-                'publicAccessRules' => [[]],
-                'publicAccessRulesEnabled' => true,
-                'publishDate' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-                'publishImmediately' => true,
-                'slug' => 'slug',
-                'state' => 'state',
-                'subcategory' => 'subcategory',
-                'templatePath' => 'templatePath',
-                'themeSettingsValues' => ['foo' => []],
-                'translatedFromID' => 'translatedFromId',
-                'translations' => [
-                    'foo' => [
-                        'id' => 0,
-                        'archivedInDashboard' => true,
-                        'authorName' => 'authorName',
-                        'campaign' => 'campaign',
-                        'created' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-                        'name' => 'name',
-                        'password' => 'password',
-                        'publicAccessRules' => [[]],
-                        'publicAccessRulesEnabled' => true,
-                        'publishDate' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-                        'slug' => 'slug',
-                        'state' => 'state',
-                        'updated' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-                    ],
-                ],
-                'updated' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-                'updatedByID' => 'updatedById',
-                'url' => 'url',
-                'useFeaturedImage' => true,
-                'widgetContainers' => ['foo' => []],
-                'widgets' => ['foo' => []],
             ],
+            linkRelCanonicalURL: 'linkRelCanonicalUrl',
+            mabExperimentID: 'mabExperimentId',
+            metaDescription: 'metaDescription',
+            name: 'name',
+            pageExpiryDate: 0,
+            pageExpiryEnabled: true,
+            pageExpiryRedirectID: 0,
+            pageExpiryRedirectURL: 'pageExpiryRedirectUrl',
+            pageRedirected: true,
+            password: 'password',
+            publicAccessRules: [[]],
+            publicAccessRulesEnabled: true,
+            publishDate: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
+            publishImmediately: true,
+            slug: 'slug',
+            state: 'state',
+            subcategory: 'subcategory',
+            templatePath: 'templatePath',
+            themeSettingsValues: ['foo' => []],
+            translatedFromID: 'translatedFromId',
+            translations: [
+                'foo' => [
+                    'id' => 0,
+                    'archivedInDashboard' => true,
+                    'authorName' => 'authorName',
+                    'campaign' => 'campaign',
+                    'created' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
+                    'name' => 'name',
+                    'password' => 'password',
+                    'publicAccessRules' => [[]],
+                    'publicAccessRulesEnabled' => true,
+                    'publishDate' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
+                    'slug' => 'slug',
+                    'state' => 'state',
+                    'updated' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
+                ],
+            ],
+            updated: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
+            updatedByID: 'updatedById',
+            url: 'url',
+            useFeaturedImage: true,
+            widgetContainers: ['foo' => []],
+            widgets: ['foo' => []],
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -501,152 +499,150 @@ final class SitePagesTest extends TestCase
 
         $result = $this->client->cms->pages->sitePages->update(
             'objectId',
-            [
-                'id' => 'id',
-                'abStatus' => 'automated_loser_variant',
-                'abTestID' => 'abTestId',
-                'archivedAt' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-                'archivedInDashboard' => true,
-                'attachedStylesheets' => [['foo' => []]],
-                'authorName' => 'authorName',
-                'campaign' => 'campaign',
-                'categoryID' => 0,
-                'contentGroupID' => 'contentGroupId',
-                'contentTypeCategory' => '0',
-                'created' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-                'createdByID' => 'createdById',
-                'currentlyPublished' => true,
-                'currentState' => 'AUTOMATED',
-                'domain' => 'domain',
-                'dynamicPageDataSourceID' => 'dynamicPageDataSourceId',
-                'dynamicPageDataSourceType' => 0,
-                'dynamicPageHubDBTableID' => 'dynamicPageHubDbTableId',
-                'enableDomainStylesheets' => true,
-                'enableLayoutStylesheets' => true,
-                'featuredImage' => 'featuredImage',
-                'featuredImageAltText' => 'featuredImageAltText',
-                'folderID' => 'folderId',
-                'footerHTML' => 'footerHtml',
-                'headHTML' => 'headHtml',
-                'htmlTitle' => 'htmlTitle',
-                'includeDefaultCustomCss' => true,
-                'language' => 'af',
-                'layoutSections' => [
-                    'foo' => [
-                        'cells' => [],
-                        'cssClass' => 'cssClass',
-                        'cssID' => 'cssId',
-                        'cssStyle' => 'cssStyle',
-                        'label' => 'label',
-                        'name' => 'name',
-                        'params' => ['foo' => []],
-                        'rowMetaData' => [
-                            [
-                                'cssClass' => 'cssClass',
-                                'styles' => [
-                                    'backgroundColor' => ['a' => 0, 'b' => 0, 'g' => 0, 'r' => 0],
-                                    'backgroundGradient' => [
-                                        'angle' => ['units' => 'units', 'value' => 0],
-                                        'colors' => [
-                                            ['color' => ['a' => 0, 'b' => 0, 'g' => 0, 'r' => 0]],
-                                        ],
-                                        'sideOrCorner' => [
-                                            'horizontalSide' => 'horizontalSide',
-                                            'verticalSide' => 'verticalSide',
-                                        ],
+            id: 'id',
+            abStatus: 'automated_loser_variant',
+            abTestID: 'abTestId',
+            archivedAt: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
+            archivedInDashboard: true,
+            attachedStylesheets: [['foo' => []]],
+            authorName: 'authorName',
+            campaign: 'campaign',
+            categoryID: 0,
+            contentGroupID: 'contentGroupId',
+            contentTypeCategory: '0',
+            created: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
+            createdByID: 'createdById',
+            currentlyPublished: true,
+            currentState: 'AUTOMATED',
+            domain: 'domain',
+            dynamicPageDataSourceID: 'dynamicPageDataSourceId',
+            dynamicPageDataSourceType: 0,
+            dynamicPageHubDBTableID: 'dynamicPageHubDbTableId',
+            enableDomainStylesheets: true,
+            enableLayoutStylesheets: true,
+            featuredImage: 'featuredImage',
+            featuredImageAltText: 'featuredImageAltText',
+            folderID: 'folderId',
+            footerHTML: 'footerHtml',
+            headHTML: 'headHtml',
+            htmlTitle: 'htmlTitle',
+            includeDefaultCustomCss: true,
+            language: 'af',
+            layoutSections: [
+                'foo' => [
+                    'cells' => [],
+                    'cssClass' => 'cssClass',
+                    'cssID' => 'cssId',
+                    'cssStyle' => 'cssStyle',
+                    'label' => 'label',
+                    'name' => 'name',
+                    'params' => ['foo' => []],
+                    'rowMetaData' => [
+                        [
+                            'cssClass' => 'cssClass',
+                            'styles' => [
+                                'backgroundColor' => ['a' => 0, 'b' => 0, 'g' => 0, 'r' => 0],
+                                'backgroundGradient' => [
+                                    'angle' => ['units' => 'units', 'value' => 0],
+                                    'colors' => [
+                                        ['color' => ['a' => 0, 'b' => 0, 'g' => 0, 'r' => 0]],
                                     ],
-                                    'backgroundImage' => [
-                                        'backgroundPosition' => 'backgroundPosition',
-                                        'backgroundSize' => 'backgroundSize',
-                                        'imageURL' => 'imageUrl',
+                                    'sideOrCorner' => [
+                                        'horizontalSide' => 'horizontalSide',
+                                        'verticalSide' => 'verticalSide',
                                     ],
-                                    'flexboxPositioning' => 'flexboxPositioning',
-                                    'forceFullWidthSection' => true,
-                                    'maxWidthSectionCentering' => 0,
-                                    'verticalAlignment' => 'verticalAlignment',
-                                    'breakpointStyles' => [
-                                        'foo' => ['hidden' => true, 'margin' => [], 'padding' => []],
-                                    ],
+                                ],
+                                'backgroundImage' => [
+                                    'backgroundPosition' => 'backgroundPosition',
+                                    'backgroundSize' => 'backgroundSize',
+                                    'imageURL' => 'imageUrl',
+                                ],
+                                'flexboxPositioning' => 'flexboxPositioning',
+                                'forceFullWidthSection' => true,
+                                'maxWidthSectionCentering' => 0,
+                                'verticalAlignment' => 'verticalAlignment',
+                                'breakpointStyles' => [
+                                    'foo' => ['hidden' => true, 'margin' => [], 'padding' => []],
                                 ],
                             ],
                         ],
-                        'rows' => [[]],
-                        'styles' => [
-                            'backgroundColor' => ['a' => 0, 'b' => 0, 'g' => 0, 'r' => 0],
-                            'backgroundGradient' => [
-                                'angle' => ['units' => 'units', 'value' => 0],
-                                'colors' => [
-                                    ['color' => ['a' => 0, 'b' => 0, 'g' => 0, 'r' => 0]],
-                                ],
-                                'sideOrCorner' => [
-                                    'horizontalSide' => 'horizontalSide',
-                                    'verticalSide' => 'verticalSide',
-                                ],
+                    ],
+                    'rows' => [[]],
+                    'styles' => [
+                        'backgroundColor' => ['a' => 0, 'b' => 0, 'g' => 0, 'r' => 0],
+                        'backgroundGradient' => [
+                            'angle' => ['units' => 'units', 'value' => 0],
+                            'colors' => [
+                                ['color' => ['a' => 0, 'b' => 0, 'g' => 0, 'r' => 0]],
                             ],
-                            'backgroundImage' => [
-                                'backgroundPosition' => 'backgroundPosition',
-                                'backgroundSize' => 'backgroundSize',
-                                'imageURL' => 'imageUrl',
-                            ],
-                            'flexboxPositioning' => 'flexboxPositioning',
-                            'forceFullWidthSection' => true,
-                            'maxWidthSectionCentering' => 0,
-                            'verticalAlignment' => 'verticalAlignment',
-                            'breakpointStyles' => [
-                                'foo' => ['hidden' => true, 'margin' => [], 'padding' => []],
+                            'sideOrCorner' => [
+                                'horizontalSide' => 'horizontalSide',
+                                'verticalSide' => 'verticalSide',
                             ],
                         ],
-                        'type' => 'type',
-                        'w' => 0,
-                        'x' => 0,
+                        'backgroundImage' => [
+                            'backgroundPosition' => 'backgroundPosition',
+                            'backgroundSize' => 'backgroundSize',
+                            'imageURL' => 'imageUrl',
+                        ],
+                        'flexboxPositioning' => 'flexboxPositioning',
+                        'forceFullWidthSection' => true,
+                        'maxWidthSectionCentering' => 0,
+                        'verticalAlignment' => 'verticalAlignment',
+                        'breakpointStyles' => [
+                            'foo' => ['hidden' => true, 'margin' => [], 'padding' => []],
+                        ],
                     ],
+                    'type' => 'type',
+                    'w' => 0,
+                    'x' => 0,
                 ],
-                'linkRelCanonicalURL' => 'linkRelCanonicalUrl',
-                'mabExperimentID' => 'mabExperimentId',
-                'metaDescription' => 'metaDescription',
-                'name' => 'name',
-                'pageExpiryDate' => 0,
-                'pageExpiryEnabled' => true,
-                'pageExpiryRedirectID' => 0,
-                'pageExpiryRedirectURL' => 'pageExpiryRedirectUrl',
-                'pageRedirected' => true,
-                'password' => 'password',
-                'publicAccessRules' => [[]],
-                'publicAccessRulesEnabled' => true,
-                'publishDate' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-                'publishImmediately' => true,
-                'slug' => 'slug',
-                'state' => 'state',
-                'subcategory' => 'subcategory',
-                'templatePath' => 'templatePath',
-                'themeSettingsValues' => ['foo' => []],
-                'translatedFromID' => 'translatedFromId',
-                'translations' => [
-                    'foo' => [
-                        'id' => 0,
-                        'archivedInDashboard' => true,
-                        'authorName' => 'authorName',
-                        'campaign' => 'campaign',
-                        'created' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-                        'name' => 'name',
-                        'password' => 'password',
-                        'publicAccessRules' => [[]],
-                        'publicAccessRulesEnabled' => true,
-                        'publishDate' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-                        'slug' => 'slug',
-                        'state' => 'state',
-                        'updated' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-                        'tagIDs' => [0],
-                    ],
-                ],
-                'updated' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-                'updatedByID' => 'updatedById',
-                'url' => 'url',
-                'useFeaturedImage' => true,
-                'widgetContainers' => ['foo' => []],
-                'widgets' => ['foo' => []],
-                'archived' => true,
             ],
+            linkRelCanonicalURL: 'linkRelCanonicalUrl',
+            mabExperimentID: 'mabExperimentId',
+            metaDescription: 'metaDescription',
+            name: 'name',
+            pageExpiryDate: 0,
+            pageExpiryEnabled: true,
+            pageExpiryRedirectID: 0,
+            pageExpiryRedirectURL: 'pageExpiryRedirectUrl',
+            pageRedirected: true,
+            password: 'password',
+            publicAccessRules: [[]],
+            publicAccessRulesEnabled: true,
+            publishDate: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
+            publishImmediately: true,
+            slug: 'slug',
+            state: 'state',
+            subcategory: 'subcategory',
+            templatePath: 'templatePath',
+            themeSettingsValues: ['foo' => []],
+            translatedFromID: 'translatedFromId',
+            translations: [
+                'foo' => [
+                    'id' => 0,
+                    'archivedInDashboard' => true,
+                    'authorName' => 'authorName',
+                    'campaign' => 'campaign',
+                    'created' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
+                    'name' => 'name',
+                    'password' => 'password',
+                    'publicAccessRules' => [[]],
+                    'publicAccessRulesEnabled' => true,
+                    'publishDate' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
+                    'slug' => 'slug',
+                    'state' => 'state',
+                    'updated' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
+                    'tagIDs' => [0],
+                ],
+            ],
+            updated: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
+            updatedByID: 'updatedById',
+            url: 'url',
+            useFeaturedImage: true,
+            widgetContainers: ['foo' => []],
+            widgets: ['foo' => []],
+            archived: true,
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -660,7 +656,7 @@ final class SitePagesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->pages->sitePages->list([]);
+        $result = $this->client->cms->pages->sitePages->list();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(\HubspotSDK\Page::class, $result);
@@ -673,7 +669,7 @@ final class SitePagesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->pages->sitePages->delete('objectId', []);
+        $result = $this->client->cms->pages->sitePages->delete('objectId');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);
@@ -686,9 +682,11 @@ final class SitePagesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->pages->sitePages->attachToLangGroup([
-            'id' => 'id', 'language' => 'language', 'primaryID' => 'primaryId',
-        ]);
+        $result = $this->client->cms->pages->sitePages->attachToLangGroup(
+            id: 'id',
+            language: 'language',
+            primaryID: 'primaryId'
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);
@@ -701,12 +699,12 @@ final class SitePagesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->pages->sitePages->attachToLangGroup([
-            'id' => 'id',
-            'language' => 'language',
-            'primaryID' => 'primaryId',
-            'primaryLanguage' => 'primaryLanguage',
-        ]);
+        $result = $this->client->cms->pages->sitePages->attachToLangGroup(
+            id: 'id',
+            language: 'language',
+            primaryID: 'primaryId',
+            primaryLanguage: 'primaryLanguage',
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);
@@ -719,7 +717,7 @@ final class SitePagesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->pages->sitePages->clone(['id' => 'id']);
+        $result = $this->client->cms->pages->sitePages->clone(id: 'id');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(Page::class, $result);
@@ -732,9 +730,10 @@ final class SitePagesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->pages->sitePages->clone([
-            'id' => 'id', 'cloneName' => 'cloneName',
-        ]);
+        $result = $this->client->cms->pages->sitePages->clone(
+            id: 'id',
+            cloneName: 'cloneName'
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(Page::class, $result);
@@ -747,9 +746,10 @@ final class SitePagesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->pages->sitePages->createAbTestVariation([
-            'contentID' => 'contentId', 'variationName' => 'variationName',
-        ]);
+        $result = $this->client->cms->pages->sitePages->createAbTestVariation(
+            contentID: 'contentId',
+            variationName: 'variationName'
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(Page::class, $result);
@@ -762,9 +762,10 @@ final class SitePagesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->pages->sitePages->createAbTestVariation([
-            'contentID' => 'contentId', 'variationName' => 'variationName',
-        ]);
+        $result = $this->client->cms->pages->sitePages->createAbTestVariation(
+            contentID: 'contentId',
+            variationName: 'variationName'
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(Page::class, $result);
@@ -777,8 +778,8 @@ final class SitePagesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->pages->sitePages->createBatch([
-            'inputs' => [
+        $result = $this->client->cms->pages->sitePages->createBatch(
+            inputs: [
                 [
                     'id' => 'id',
                     'abStatus' => 'automated_loser_variant',
@@ -922,7 +923,7 @@ final class SitePagesTest extends TestCase
                     'widgets' => ['foo' => []],
                 ],
             ],
-        ]);
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(BatchResponsePage::class, $result);
@@ -935,8 +936,8 @@ final class SitePagesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->pages->sitePages->createBatch([
-            'inputs' => [
+        $result = $this->client->cms->pages->sitePages->createBatch(
+            inputs: [
                 [
                     'id' => 'id',
                     'abStatus' => 'automated_loser_variant',
@@ -1089,7 +1090,7 @@ final class SitePagesTest extends TestCase
                     'widgets' => ['foo' => []],
                 ],
             ],
-        ]);
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(BatchResponsePage::class, $result);
@@ -1102,9 +1103,9 @@ final class SitePagesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->pages->sitePages->createLanguageVariation([
-            'id' => 'id',
-        ]);
+        $result = $this->client->cms->pages->sitePages->createLanguageVariation(
+            id: 'id'
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(Page::class, $result);
@@ -1117,11 +1118,11 @@ final class SitePagesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->pages->sitePages->createLanguageVariation([
-            'id' => 'id',
-            'language' => 'language',
-            'primaryLanguage' => 'primaryLanguage',
-        ]);
+        $result = $this->client->cms->pages->sitePages->createLanguageVariation(
+            id: 'id',
+            language: 'language',
+            primaryLanguage: 'primaryLanguage'
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(Page::class, $result);
@@ -1134,9 +1135,9 @@ final class SitePagesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->pages->sitePages->deleteBatch([
-            'inputs' => ['string'],
-        ]);
+        $result = $this->client->cms->pages->sitePages->deleteBatch(
+            inputs: ['string']
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);
@@ -1149,9 +1150,9 @@ final class SitePagesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->pages->sitePages->deleteBatch([
-            'inputs' => ['string'],
-        ]);
+        $result = $this->client->cms->pages->sitePages->deleteBatch(
+            inputs: ['string']
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);
@@ -1164,9 +1165,9 @@ final class SitePagesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->pages->sitePages->detachFromLangGroup([
-            'id' => 'id',
-        ]);
+        $result = $this->client->cms->pages->sitePages->detachFromLangGroup(
+            id: 'id'
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);
@@ -1179,9 +1180,9 @@ final class SitePagesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->pages->sitePages->detachFromLangGroup([
-            'id' => 'id',
-        ]);
+        $result = $this->client->cms->pages->sitePages->detachFromLangGroup(
+            id: 'id'
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);
@@ -1194,9 +1195,10 @@ final class SitePagesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->pages->sitePages->endAbTest([
-            'abTestID' => 'abTestId', 'winnerID' => 'winnerId',
-        ]);
+        $result = $this->client->cms->pages->sitePages->endAbTest(
+            abTestID: 'abTestId',
+            winnerID: 'winnerId'
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);
@@ -1209,9 +1211,10 @@ final class SitePagesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->pages->sitePages->endAbTest([
-            'abTestID' => 'abTestId', 'winnerID' => 'winnerId',
-        ]);
+        $result = $this->client->cms->pages->sitePages->endAbTest(
+            abTestID: 'abTestId',
+            winnerID: 'winnerId'
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);
@@ -1224,7 +1227,7 @@ final class SitePagesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->pages->sitePages->get('objectId', []);
+        $result = $this->client->cms->pages->sitePages->get('objectId');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(Page::class, $result);
@@ -1237,9 +1240,9 @@ final class SitePagesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->pages->sitePages->getBatch([
-            'inputs' => ['string'],
-        ]);
+        $result = $this->client->cms->pages->sitePages->getBatch(
+            inputs: ['string']
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(BatchResponsePage::class, $result);
@@ -1252,9 +1255,10 @@ final class SitePagesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->pages->sitePages->getBatch([
-            'inputs' => ['string'], 'archived' => true,
-        ]);
+        $result = $this->client->cms->pages->sitePages->getBatch(
+            inputs: ['string'],
+            archived: true
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(BatchResponsePage::class, $result);
@@ -1282,7 +1286,7 @@ final class SitePagesTest extends TestCase
 
         $result = $this->client->cms->pages->sitePages->getRevision(
             'revisionId',
-            ['objectID' => 'objectId']
+            objectID: 'objectId'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -1298,7 +1302,7 @@ final class SitePagesTest extends TestCase
 
         $result = $this->client->cms->pages->sitePages->getRevision(
             'revisionId',
-            ['objectID' => 'objectId']
+            objectID: 'objectId'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -1312,10 +1316,7 @@ final class SitePagesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->pages->sitePages->listRevisions(
-            'objectId',
-            []
-        );
+        $result = $this->client->cms->pages->sitePages->listRevisions('objectId');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(\HubspotSDK\Page::class, $result);
@@ -1341,9 +1342,10 @@ final class SitePagesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->pages->sitePages->rerunAbTest([
-            'abTestID' => 'abTestId', 'variationID' => 'variationId',
-        ]);
+        $result = $this->client->cms->pages->sitePages->rerunAbTest(
+            abTestID: 'abTestId',
+            variationID: 'variationId'
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);
@@ -1356,9 +1358,10 @@ final class SitePagesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->pages->sitePages->rerunAbTest([
-            'abTestID' => 'abTestId', 'variationID' => 'variationId',
-        ]);
+        $result = $this->client->cms->pages->sitePages->rerunAbTest(
+            abTestID: 'abTestId',
+            variationID: 'variationId'
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);
@@ -1386,7 +1389,7 @@ final class SitePagesTest extends TestCase
 
         $result = $this->client->cms->pages->sitePages->restoreRevision(
             'revisionId',
-            ['objectID' => 'objectId']
+            objectID: 'objectId'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -1402,7 +1405,7 @@ final class SitePagesTest extends TestCase
 
         $result = $this->client->cms->pages->sitePages->restoreRevision(
             'revisionId',
-            ['objectID' => 'objectId']
+            objectID: 'objectId'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -1418,7 +1421,7 @@ final class SitePagesTest extends TestCase
 
         $result = $this->client->cms->pages->sitePages->restoreRevisionToDraft(
             0,
-            ['objectID' => 'objectId']
+            objectID: 'objectId'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -1434,7 +1437,7 @@ final class SitePagesTest extends TestCase
 
         $result = $this->client->cms->pages->sitePages->restoreRevisionToDraft(
             0,
-            ['objectID' => 'objectId']
+            objectID: 'objectId'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -1448,10 +1451,10 @@ final class SitePagesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->pages->sitePages->schedule([
-            'id' => 'id',
-            'publishDate' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-        ]);
+        $result = $this->client->cms->pages->sitePages->schedule(
+            id: 'id',
+            publishDate: new \DateTimeImmutable('2019-12-27T18:11:19.117Z')
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);
@@ -1464,10 +1467,10 @@ final class SitePagesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->pages->sitePages->schedule([
-            'id' => 'id',
-            'publishDate' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-        ]);
+        $result = $this->client->cms->pages->sitePages->schedule(
+            id: 'id',
+            publishDate: new \DateTimeImmutable('2019-12-27T18:11:19.117Z')
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);
@@ -1480,9 +1483,7 @@ final class SitePagesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->pages->sitePages->setNewLangPrimary([
-            'id' => 'id',
-        ]);
+        $result = $this->client->cms->pages->sitePages->setNewLangPrimary(id: 'id');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);
@@ -1495,9 +1496,7 @@ final class SitePagesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->pages->sitePages->setNewLangPrimary([
-            'id' => 'id',
-        ]);
+        $result = $this->client->cms->pages->sitePages->setNewLangPrimary(id: 'id');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);
@@ -1510,9 +1509,7 @@ final class SitePagesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->pages->sitePages->updateBatch([
-            'inputs' => [[]],
-        ]);
+        $result = $this->client->cms->pages->sitePages->updateBatch(inputs: [[]]);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(BatchResponsePage::class, $result);
@@ -1525,9 +1522,10 @@ final class SitePagesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->pages->sitePages->updateBatch([
-            'inputs' => [[]], 'archived' => true,
-        ]);
+        $result = $this->client->cms->pages->sitePages->updateBatch(
+            inputs: [[]],
+            archived: true
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(BatchResponsePage::class, $result);
@@ -1542,144 +1540,142 @@ final class SitePagesTest extends TestCase
 
         $result = $this->client->cms->pages->sitePages->updateDraft(
             'objectId',
-            [
-                'id' => 'id',
-                'abStatus' => 'automated_loser_variant',
-                'abTestID' => 'abTestId',
-                'archivedAt' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-                'archivedInDashboard' => true,
-                'attachedStylesheets' => [['foo' => []]],
-                'authorName' => 'authorName',
-                'campaign' => 'campaign',
-                'categoryID' => 0,
-                'contentGroupID' => 'contentGroupId',
-                'contentTypeCategory' => '0',
-                'created' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-                'createdByID' => 'createdById',
-                'currentlyPublished' => true,
-                'currentState' => 'AUTOMATED',
-                'domain' => 'domain',
-                'dynamicPageDataSourceID' => 'dynamicPageDataSourceId',
-                'dynamicPageDataSourceType' => 0,
-                'dynamicPageHubDBTableID' => 'dynamicPageHubDbTableId',
-                'enableDomainStylesheets' => true,
-                'enableLayoutStylesheets' => true,
-                'featuredImage' => 'featuredImage',
-                'featuredImageAltText' => 'featuredImageAltText',
-                'folderID' => 'folderId',
-                'footerHTML' => 'footerHtml',
-                'headHTML' => 'headHtml',
-                'htmlTitle' => 'htmlTitle',
-                'includeDefaultCustomCss' => true,
-                'language' => 'af',
-                'layoutSections' => [
-                    'foo' => [
-                        'cells' => [],
-                        'cssClass' => 'cssClass',
-                        'cssID' => 'cssId',
-                        'cssStyle' => 'cssStyle',
-                        'label' => 'label',
-                        'name' => 'name',
-                        'params' => ['foo' => []],
-                        'rowMetaData' => [
-                            [
-                                'cssClass' => 'cssClass',
-                                'styles' => [
-                                    'backgroundColor' => ['a' => 0, 'b' => 0, 'g' => 0, 'r' => 0],
-                                    'backgroundGradient' => [
-                                        'angle' => ['units' => 'units', 'value' => 0],
-                                        'colors' => [
-                                            ['color' => ['a' => 0, 'b' => 0, 'g' => 0, 'r' => 0]],
-                                        ],
-                                        'sideOrCorner' => [
-                                            'horizontalSide' => 'horizontalSide',
-                                            'verticalSide' => 'verticalSide',
-                                        ],
+            id: 'id',
+            abStatus: 'automated_loser_variant',
+            abTestID: 'abTestId',
+            archivedAt: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
+            archivedInDashboard: true,
+            attachedStylesheets: [['foo' => []]],
+            authorName: 'authorName',
+            campaign: 'campaign',
+            categoryID: 0,
+            contentGroupID: 'contentGroupId',
+            contentTypeCategory: '0',
+            created: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
+            createdByID: 'createdById',
+            currentlyPublished: true,
+            currentState: 'AUTOMATED',
+            domain: 'domain',
+            dynamicPageDataSourceID: 'dynamicPageDataSourceId',
+            dynamicPageDataSourceType: 0,
+            dynamicPageHubDBTableID: 'dynamicPageHubDbTableId',
+            enableDomainStylesheets: true,
+            enableLayoutStylesheets: true,
+            featuredImage: 'featuredImage',
+            featuredImageAltText: 'featuredImageAltText',
+            folderID: 'folderId',
+            footerHTML: 'footerHtml',
+            headHTML: 'headHtml',
+            htmlTitle: 'htmlTitle',
+            includeDefaultCustomCss: true,
+            language: 'af',
+            layoutSections: [
+                'foo' => [
+                    'cells' => [],
+                    'cssClass' => 'cssClass',
+                    'cssID' => 'cssId',
+                    'cssStyle' => 'cssStyle',
+                    'label' => 'label',
+                    'name' => 'name',
+                    'params' => ['foo' => []],
+                    'rowMetaData' => [
+                        [
+                            'cssClass' => 'cssClass',
+                            'styles' => [
+                                'backgroundColor' => ['a' => 0, 'b' => 0, 'g' => 0, 'r' => 0],
+                                'backgroundGradient' => [
+                                    'angle' => ['units' => 'units', 'value' => 0],
+                                    'colors' => [
+                                        ['color' => ['a' => 0, 'b' => 0, 'g' => 0, 'r' => 0]],
                                     ],
-                                    'backgroundImage' => [
-                                        'backgroundPosition' => 'backgroundPosition',
-                                        'backgroundSize' => 'backgroundSize',
-                                        'imageURL' => 'imageUrl',
+                                    'sideOrCorner' => [
+                                        'horizontalSide' => 'horizontalSide',
+                                        'verticalSide' => 'verticalSide',
                                     ],
-                                    'flexboxPositioning' => 'flexboxPositioning',
-                                    'forceFullWidthSection' => true,
-                                    'maxWidthSectionCentering' => 0,
-                                    'verticalAlignment' => 'verticalAlignment',
                                 ],
+                                'backgroundImage' => [
+                                    'backgroundPosition' => 'backgroundPosition',
+                                    'backgroundSize' => 'backgroundSize',
+                                    'imageURL' => 'imageUrl',
+                                ],
+                                'flexboxPositioning' => 'flexboxPositioning',
+                                'forceFullWidthSection' => true,
+                                'maxWidthSectionCentering' => 0,
+                                'verticalAlignment' => 'verticalAlignment',
                             ],
                         ],
-                        'rows' => [[]],
-                        'styles' => [
-                            'backgroundColor' => ['a' => 0, 'b' => 0, 'g' => 0, 'r' => 0],
-                            'backgroundGradient' => [
-                                'angle' => ['units' => 'units', 'value' => 0],
-                                'colors' => [
-                                    ['color' => ['a' => 0, 'b' => 0, 'g' => 0, 'r' => 0]],
-                                ],
-                                'sideOrCorner' => [
-                                    'horizontalSide' => 'horizontalSide',
-                                    'verticalSide' => 'verticalSide',
-                                ],
+                    ],
+                    'rows' => [[]],
+                    'styles' => [
+                        'backgroundColor' => ['a' => 0, 'b' => 0, 'g' => 0, 'r' => 0],
+                        'backgroundGradient' => [
+                            'angle' => ['units' => 'units', 'value' => 0],
+                            'colors' => [
+                                ['color' => ['a' => 0, 'b' => 0, 'g' => 0, 'r' => 0]],
                             ],
-                            'backgroundImage' => [
-                                'backgroundPosition' => 'backgroundPosition',
-                                'backgroundSize' => 'backgroundSize',
-                                'imageURL' => 'imageUrl',
+                            'sideOrCorner' => [
+                                'horizontalSide' => 'horizontalSide',
+                                'verticalSide' => 'verticalSide',
                             ],
-                            'flexboxPositioning' => 'flexboxPositioning',
-                            'forceFullWidthSection' => true,
-                            'maxWidthSectionCentering' => 0,
-                            'verticalAlignment' => 'verticalAlignment',
                         ],
-                        'type' => 'type',
-                        'w' => 0,
-                        'x' => 0,
+                        'backgroundImage' => [
+                            'backgroundPosition' => 'backgroundPosition',
+                            'backgroundSize' => 'backgroundSize',
+                            'imageURL' => 'imageUrl',
+                        ],
+                        'flexboxPositioning' => 'flexboxPositioning',
+                        'forceFullWidthSection' => true,
+                        'maxWidthSectionCentering' => 0,
+                        'verticalAlignment' => 'verticalAlignment',
                     ],
+                    'type' => 'type',
+                    'w' => 0,
+                    'x' => 0,
                 ],
-                'linkRelCanonicalURL' => 'linkRelCanonicalUrl',
-                'mabExperimentID' => 'mabExperimentId',
-                'metaDescription' => 'metaDescription',
-                'name' => 'name',
-                'pageExpiryDate' => 0,
-                'pageExpiryEnabled' => true,
-                'pageExpiryRedirectID' => 0,
-                'pageExpiryRedirectURL' => 'pageExpiryRedirectUrl',
-                'pageRedirected' => true,
-                'password' => 'password',
-                'publicAccessRules' => [[]],
-                'publicAccessRulesEnabled' => true,
-                'publishDate' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-                'publishImmediately' => true,
-                'slug' => 'slug',
-                'state' => 'state',
-                'subcategory' => 'subcategory',
-                'templatePath' => 'templatePath',
-                'themeSettingsValues' => ['foo' => []],
-                'translatedFromID' => 'translatedFromId',
-                'translations' => [
-                    'foo' => [
-                        'id' => 0,
-                        'archivedInDashboard' => true,
-                        'authorName' => 'authorName',
-                        'campaign' => 'campaign',
-                        'created' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-                        'name' => 'name',
-                        'password' => 'password',
-                        'publicAccessRules' => [[]],
-                        'publicAccessRulesEnabled' => true,
-                        'publishDate' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-                        'slug' => 'slug',
-                        'state' => 'state',
-                        'updated' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-                    ],
-                ],
-                'updated' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-                'updatedByID' => 'updatedById',
-                'url' => 'url',
-                'useFeaturedImage' => true,
-                'widgetContainers' => ['foo' => []],
-                'widgets' => ['foo' => []],
             ],
+            linkRelCanonicalURL: 'linkRelCanonicalUrl',
+            mabExperimentID: 'mabExperimentId',
+            metaDescription: 'metaDescription',
+            name: 'name',
+            pageExpiryDate: 0,
+            pageExpiryEnabled: true,
+            pageExpiryRedirectID: 0,
+            pageExpiryRedirectURL: 'pageExpiryRedirectUrl',
+            pageRedirected: true,
+            password: 'password',
+            publicAccessRules: [[]],
+            publicAccessRulesEnabled: true,
+            publishDate: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
+            publishImmediately: true,
+            slug: 'slug',
+            state: 'state',
+            subcategory: 'subcategory',
+            templatePath: 'templatePath',
+            themeSettingsValues: ['foo' => []],
+            translatedFromID: 'translatedFromId',
+            translations: [
+                'foo' => [
+                    'id' => 0,
+                    'archivedInDashboard' => true,
+                    'authorName' => 'authorName',
+                    'campaign' => 'campaign',
+                    'created' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
+                    'name' => 'name',
+                    'password' => 'password',
+                    'publicAccessRules' => [[]],
+                    'publicAccessRulesEnabled' => true,
+                    'publishDate' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
+                    'slug' => 'slug',
+                    'state' => 'state',
+                    'updated' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
+                ],
+            ],
+            updated: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
+            updatedByID: 'updatedById',
+            url: 'url',
+            useFeaturedImage: true,
+            widgetContainers: ['foo' => []],
+            widgets: ['foo' => []],
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -1695,151 +1691,149 @@ final class SitePagesTest extends TestCase
 
         $result = $this->client->cms->pages->sitePages->updateDraft(
             'objectId',
-            [
-                'id' => 'id',
-                'abStatus' => 'automated_loser_variant',
-                'abTestID' => 'abTestId',
-                'archivedAt' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-                'archivedInDashboard' => true,
-                'attachedStylesheets' => [['foo' => []]],
-                'authorName' => 'authorName',
-                'campaign' => 'campaign',
-                'categoryID' => 0,
-                'contentGroupID' => 'contentGroupId',
-                'contentTypeCategory' => '0',
-                'created' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-                'createdByID' => 'createdById',
-                'currentlyPublished' => true,
-                'currentState' => 'AUTOMATED',
-                'domain' => 'domain',
-                'dynamicPageDataSourceID' => 'dynamicPageDataSourceId',
-                'dynamicPageDataSourceType' => 0,
-                'dynamicPageHubDBTableID' => 'dynamicPageHubDbTableId',
-                'enableDomainStylesheets' => true,
-                'enableLayoutStylesheets' => true,
-                'featuredImage' => 'featuredImage',
-                'featuredImageAltText' => 'featuredImageAltText',
-                'folderID' => 'folderId',
-                'footerHTML' => 'footerHtml',
-                'headHTML' => 'headHtml',
-                'htmlTitle' => 'htmlTitle',
-                'includeDefaultCustomCss' => true,
-                'language' => 'af',
-                'layoutSections' => [
-                    'foo' => [
-                        'cells' => [],
-                        'cssClass' => 'cssClass',
-                        'cssID' => 'cssId',
-                        'cssStyle' => 'cssStyle',
-                        'label' => 'label',
-                        'name' => 'name',
-                        'params' => ['foo' => []],
-                        'rowMetaData' => [
-                            [
-                                'cssClass' => 'cssClass',
-                                'styles' => [
-                                    'backgroundColor' => ['a' => 0, 'b' => 0, 'g' => 0, 'r' => 0],
-                                    'backgroundGradient' => [
-                                        'angle' => ['units' => 'units', 'value' => 0],
-                                        'colors' => [
-                                            ['color' => ['a' => 0, 'b' => 0, 'g' => 0, 'r' => 0]],
-                                        ],
-                                        'sideOrCorner' => [
-                                            'horizontalSide' => 'horizontalSide',
-                                            'verticalSide' => 'verticalSide',
-                                        ],
+            id: 'id',
+            abStatus: 'automated_loser_variant',
+            abTestID: 'abTestId',
+            archivedAt: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
+            archivedInDashboard: true,
+            attachedStylesheets: [['foo' => []]],
+            authorName: 'authorName',
+            campaign: 'campaign',
+            categoryID: 0,
+            contentGroupID: 'contentGroupId',
+            contentTypeCategory: '0',
+            created: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
+            createdByID: 'createdById',
+            currentlyPublished: true,
+            currentState: 'AUTOMATED',
+            domain: 'domain',
+            dynamicPageDataSourceID: 'dynamicPageDataSourceId',
+            dynamicPageDataSourceType: 0,
+            dynamicPageHubDBTableID: 'dynamicPageHubDbTableId',
+            enableDomainStylesheets: true,
+            enableLayoutStylesheets: true,
+            featuredImage: 'featuredImage',
+            featuredImageAltText: 'featuredImageAltText',
+            folderID: 'folderId',
+            footerHTML: 'footerHtml',
+            headHTML: 'headHtml',
+            htmlTitle: 'htmlTitle',
+            includeDefaultCustomCss: true,
+            language: 'af',
+            layoutSections: [
+                'foo' => [
+                    'cells' => [],
+                    'cssClass' => 'cssClass',
+                    'cssID' => 'cssId',
+                    'cssStyle' => 'cssStyle',
+                    'label' => 'label',
+                    'name' => 'name',
+                    'params' => ['foo' => []],
+                    'rowMetaData' => [
+                        [
+                            'cssClass' => 'cssClass',
+                            'styles' => [
+                                'backgroundColor' => ['a' => 0, 'b' => 0, 'g' => 0, 'r' => 0],
+                                'backgroundGradient' => [
+                                    'angle' => ['units' => 'units', 'value' => 0],
+                                    'colors' => [
+                                        ['color' => ['a' => 0, 'b' => 0, 'g' => 0, 'r' => 0]],
                                     ],
-                                    'backgroundImage' => [
-                                        'backgroundPosition' => 'backgroundPosition',
-                                        'backgroundSize' => 'backgroundSize',
-                                        'imageURL' => 'imageUrl',
+                                    'sideOrCorner' => [
+                                        'horizontalSide' => 'horizontalSide',
+                                        'verticalSide' => 'verticalSide',
                                     ],
-                                    'flexboxPositioning' => 'flexboxPositioning',
-                                    'forceFullWidthSection' => true,
-                                    'maxWidthSectionCentering' => 0,
-                                    'verticalAlignment' => 'verticalAlignment',
-                                    'breakpointStyles' => [
-                                        'foo' => ['hidden' => true, 'margin' => [], 'padding' => []],
-                                    ],
+                                ],
+                                'backgroundImage' => [
+                                    'backgroundPosition' => 'backgroundPosition',
+                                    'backgroundSize' => 'backgroundSize',
+                                    'imageURL' => 'imageUrl',
+                                ],
+                                'flexboxPositioning' => 'flexboxPositioning',
+                                'forceFullWidthSection' => true,
+                                'maxWidthSectionCentering' => 0,
+                                'verticalAlignment' => 'verticalAlignment',
+                                'breakpointStyles' => [
+                                    'foo' => ['hidden' => true, 'margin' => [], 'padding' => []],
                                 ],
                             ],
                         ],
-                        'rows' => [[]],
-                        'styles' => [
-                            'backgroundColor' => ['a' => 0, 'b' => 0, 'g' => 0, 'r' => 0],
-                            'backgroundGradient' => [
-                                'angle' => ['units' => 'units', 'value' => 0],
-                                'colors' => [
-                                    ['color' => ['a' => 0, 'b' => 0, 'g' => 0, 'r' => 0]],
-                                ],
-                                'sideOrCorner' => [
-                                    'horizontalSide' => 'horizontalSide',
-                                    'verticalSide' => 'verticalSide',
-                                ],
+                    ],
+                    'rows' => [[]],
+                    'styles' => [
+                        'backgroundColor' => ['a' => 0, 'b' => 0, 'g' => 0, 'r' => 0],
+                        'backgroundGradient' => [
+                            'angle' => ['units' => 'units', 'value' => 0],
+                            'colors' => [
+                                ['color' => ['a' => 0, 'b' => 0, 'g' => 0, 'r' => 0]],
                             ],
-                            'backgroundImage' => [
-                                'backgroundPosition' => 'backgroundPosition',
-                                'backgroundSize' => 'backgroundSize',
-                                'imageURL' => 'imageUrl',
-                            ],
-                            'flexboxPositioning' => 'flexboxPositioning',
-                            'forceFullWidthSection' => true,
-                            'maxWidthSectionCentering' => 0,
-                            'verticalAlignment' => 'verticalAlignment',
-                            'breakpointStyles' => [
-                                'foo' => ['hidden' => true, 'margin' => [], 'padding' => []],
+                            'sideOrCorner' => [
+                                'horizontalSide' => 'horizontalSide',
+                                'verticalSide' => 'verticalSide',
                             ],
                         ],
-                        'type' => 'type',
-                        'w' => 0,
-                        'x' => 0,
+                        'backgroundImage' => [
+                            'backgroundPosition' => 'backgroundPosition',
+                            'backgroundSize' => 'backgroundSize',
+                            'imageURL' => 'imageUrl',
+                        ],
+                        'flexboxPositioning' => 'flexboxPositioning',
+                        'forceFullWidthSection' => true,
+                        'maxWidthSectionCentering' => 0,
+                        'verticalAlignment' => 'verticalAlignment',
+                        'breakpointStyles' => [
+                            'foo' => ['hidden' => true, 'margin' => [], 'padding' => []],
+                        ],
                     ],
+                    'type' => 'type',
+                    'w' => 0,
+                    'x' => 0,
                 ],
-                'linkRelCanonicalURL' => 'linkRelCanonicalUrl',
-                'mabExperimentID' => 'mabExperimentId',
-                'metaDescription' => 'metaDescription',
-                'name' => 'name',
-                'pageExpiryDate' => 0,
-                'pageExpiryEnabled' => true,
-                'pageExpiryRedirectID' => 0,
-                'pageExpiryRedirectURL' => 'pageExpiryRedirectUrl',
-                'pageRedirected' => true,
-                'password' => 'password',
-                'publicAccessRules' => [[]],
-                'publicAccessRulesEnabled' => true,
-                'publishDate' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-                'publishImmediately' => true,
-                'slug' => 'slug',
-                'state' => 'state',
-                'subcategory' => 'subcategory',
-                'templatePath' => 'templatePath',
-                'themeSettingsValues' => ['foo' => []],
-                'translatedFromID' => 'translatedFromId',
-                'translations' => [
-                    'foo' => [
-                        'id' => 0,
-                        'archivedInDashboard' => true,
-                        'authorName' => 'authorName',
-                        'campaign' => 'campaign',
-                        'created' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-                        'name' => 'name',
-                        'password' => 'password',
-                        'publicAccessRules' => [[]],
-                        'publicAccessRulesEnabled' => true,
-                        'publishDate' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-                        'slug' => 'slug',
-                        'state' => 'state',
-                        'updated' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-                        'tagIDs' => [0],
-                    ],
-                ],
-                'updated' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-                'updatedByID' => 'updatedById',
-                'url' => 'url',
-                'useFeaturedImage' => true,
-                'widgetContainers' => ['foo' => []],
-                'widgets' => ['foo' => []],
             ],
+            linkRelCanonicalURL: 'linkRelCanonicalUrl',
+            mabExperimentID: 'mabExperimentId',
+            metaDescription: 'metaDescription',
+            name: 'name',
+            pageExpiryDate: 0,
+            pageExpiryEnabled: true,
+            pageExpiryRedirectID: 0,
+            pageExpiryRedirectURL: 'pageExpiryRedirectUrl',
+            pageRedirected: true,
+            password: 'password',
+            publicAccessRules: [[]],
+            publicAccessRulesEnabled: true,
+            publishDate: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
+            publishImmediately: true,
+            slug: 'slug',
+            state: 'state',
+            subcategory: 'subcategory',
+            templatePath: 'templatePath',
+            themeSettingsValues: ['foo' => []],
+            translatedFromID: 'translatedFromId',
+            translations: [
+                'foo' => [
+                    'id' => 0,
+                    'archivedInDashboard' => true,
+                    'authorName' => 'authorName',
+                    'campaign' => 'campaign',
+                    'created' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
+                    'name' => 'name',
+                    'password' => 'password',
+                    'publicAccessRules' => [[]],
+                    'publicAccessRulesEnabled' => true,
+                    'publishDate' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
+                    'slug' => 'slug',
+                    'state' => 'state',
+                    'updated' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
+                    'tagIDs' => [0],
+                ],
+            ],
+            updated: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
+            updatedByID: 'updatedById',
+            url: 'url',
+            useFeaturedImage: true,
+            widgetContainers: ['foo' => []],
+            widgets: ['foo' => []],
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -1853,9 +1847,10 @@ final class SitePagesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->pages->sitePages->updateLanguages([
-            'languages' => ['foo' => 'string'], 'primaryID' => 'primaryId',
-        ]);
+        $result = $this->client->cms->pages->sitePages->updateLanguages(
+            languages: ['foo' => 'string'],
+            primaryID: 'primaryId'
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);
@@ -1868,9 +1863,10 @@ final class SitePagesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->pages->sitePages->updateLanguages([
-            'languages' => ['foo' => 'string'], 'primaryID' => 'primaryId',
-        ]);
+        $result = $this->client->cms->pages->sitePages->updateLanguages(
+            languages: ['foo' => 'string'],
+            primaryID: 'primaryId'
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);

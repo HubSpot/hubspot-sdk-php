@@ -6,8 +6,6 @@ namespace HubspotSDK\Services\Conversations;
 
 use HubspotSDK\Client;
 use HubspotSDK\Conversations\VisitorIdentification\IdentificationTokenResponse;
-use HubspotSDK\Conversations\VisitorIdentification\VisitorIdentificationGenerateTokenParams;
-use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Conversations\VisitorIdentificationContract;
@@ -15,36 +13,41 @@ use HubspotSDK\ServiceContracts\Conversations\VisitorIdentificationContract;
 final class VisitorIdentificationService implements VisitorIdentificationContract
 {
     /**
+     * @api
+     */
+    public VisitorIdentificationRawService $raw;
+
+    /**
      * @internal
      */
-    public function __construct(private Client $client) {}
+    public function __construct(private Client $client)
+    {
+        $this->raw = new VisitorIdentificationRawService($client);
+    }
 
     /**
      * @api
      *
-     * @param array{
-     *   email: string, firstName?: string, lastName?: string
-     * }|VisitorIdentificationGenerateTokenParams $params
+     * @param string $email The email of the visitor that you wish to identify
+     * @param string $firstName The first name of the visitor that you wish to identify. This value will only be set in HubSpot for new contacts and existing contacts where first name is unknown. Optional.
+     * @param string $lastName The last name of the visitor that you wish to identify. This value will only be set in HubSpot for new contacts and existing contacts where last name is unknown. Optional.
      *
      * @throws APIException
      */
     public function generateToken(
-        array|VisitorIdentificationGenerateTokenParams $params,
+        string $email,
+        ?string $firstName = null,
+        ?string $lastName = null,
         ?RequestOptions $requestOptions = null,
     ): IdentificationTokenResponse {
-        [$parsed, $options] = VisitorIdentificationGenerateTokenParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = [
+            'email' => $email, 'firstName' => $firstName, 'lastName' => $lastName,
+        ];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<IdentificationTokenResponse> */
-        $response = $this->client->request(
-            method: 'post',
-            path: 'visitor-identification/v3/tokens/create',
-            body: (object) $parsed,
-            options: $options,
-            convert: IdentificationTokenResponse::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->generateToken(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }

@@ -38,7 +38,7 @@ final class FoldersTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->lists->folders->create(['name' => 'name']);
+        $result = $this->client->crm->lists->folders->create(name: 'name');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(ListFolderCreateResponse::class, $result);
@@ -51,9 +51,10 @@ final class FoldersTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->lists->folders->create([
-            'name' => 'name', 'parentFolderID' => 'parentFolderId',
-        ]);
+        $result = $this->client->crm->lists->folders->create(
+            name: 'name',
+            parentFolderID: 'parentFolderId'
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(ListFolderCreateResponse::class, $result);
@@ -79,7 +80,7 @@ final class FoldersTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->lists->folders->get([]);
+        $result = $this->client->crm->lists->folders->get();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(ListFolderFetchResponse::class, $result);
@@ -94,7 +95,7 @@ final class FoldersTest extends TestCase
 
         $result = $this->client->crm->lists->folders->move(
             'newParentFolderId',
-            ['folderID' => 'folderId']
+            folderID: 'folderId'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -110,7 +111,7 @@ final class FoldersTest extends TestCase
 
         $result = $this->client->crm->lists->folders->move(
             'newParentFolderId',
-            ['folderID' => 'folderId']
+            folderID: 'folderId'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -124,9 +125,10 @@ final class FoldersTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->lists->folders->moveList([
-            'listID' => 'listId', 'newFolderID' => 'newFolderId',
-        ]);
+        $result = $this->client->crm->lists->folders->moveList(
+            listID: 'listId',
+            newFolderID: 'newFolderId'
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);
@@ -139,9 +141,10 @@ final class FoldersTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->lists->folders->moveList([
-            'listID' => 'listId', 'newFolderID' => 'newFolderId',
-        ]);
+        $result = $this->client->crm->lists->folders->moveList(
+            listID: 'listId',
+            newFolderID: 'newFolderId'
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);
@@ -154,7 +157,7 @@ final class FoldersTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->lists->folders->rename('folderId', []);
+        $result = $this->client->crm->lists->folders->rename('folderId');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(ListFolderFetchResponse::class, $result);

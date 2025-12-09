@@ -39,18 +39,12 @@ final class EventsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this
-            ->client
-            ->cms
-            ->mediaBridge
-            ->events
-            ->createAttentionSpanEvent([
-                'mediaType' => 'AUDIO',
-                'occurredTimestamp' => 0,
-                'rawDataMap' => ['foo' => 0],
-                'sessionID' => 'sessionId',
-            ])
-        ;
+        $result = $this->client->cms->mediaBridge->events->createAttentionSpanEvent(
+            mediaType: 'AUDIO',
+            occurredTimestamp: 0,
+            rawDataMap: ['foo' => 0],
+            sessionID: 'sessionId',
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(AttentionSpanEvent::class, $result);
@@ -63,30 +57,24 @@ final class EventsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this
-            ->client
-            ->cms
-            ->mediaBridge
-            ->events
-            ->createAttentionSpanEvent([
-                'mediaType' => 'AUDIO',
-                'occurredTimestamp' => 0,
-                'rawDataMap' => ['foo' => 0],
-                'sessionID' => 'sessionId',
-                '_hsenc' => '_hsenc',
-                'contactID' => 0,
-                'contactUtk' => 'contactUtk',
-                'derivedValues' => ['totalPercentPlayed' => 0, 'totalSecondsPlayed' => 0],
-                'externalID' => 'externalId',
-                'mediaBridgeID' => 0,
-                'mediaName' => 'mediaName',
-                'mediaURL' => 'mediaUrl',
-                'pageID' => 0,
-                'pageName' => 'pageName',
-                'pageURL' => 'pageUrl',
-                'rawDataString' => 'rawDataString',
-            ])
-        ;
+        $result = $this->client->cms->mediaBridge->events->createAttentionSpanEvent(
+            mediaType: 'AUDIO',
+            occurredTimestamp: 0,
+            rawDataMap: ['foo' => 0],
+            sessionID: 'sessionId',
+            _hsenc: '_hsenc',
+            contactID: 0,
+            contactUtk: 'contactUtk',
+            derivedValues: ['totalPercentPlayed' => 0, 'totalSecondsPlayed' => 0],
+            externalID: 'externalId',
+            mediaBridgeID: 0,
+            mediaName: 'mediaName',
+            mediaURL: 'mediaUrl',
+            pageID: 0,
+            pageName: 'pageName',
+            pageURL: 'pageUrl',
+            rawDataString: 'rawDataString',
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(AttentionSpanEvent::class, $result);
@@ -99,12 +87,12 @@ final class EventsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->mediaBridge->events->createMediaPlayedEvent([
-            'mediaType' => 'AUDIO',
-            'occurredTimestamp' => 0,
-            'sessionID' => 'sessionId',
-            'state' => 'STARTED',
-        ]);
+        $result = $this->client->cms->mediaBridge->events->createMediaPlayedEvent(
+            mediaType: 'AUDIO',
+            occurredTimestamp: 0,
+            sessionID: 'sessionId',
+            state: 'STARTED',
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(MediaPlayedEvent::class, $result);
@@ -117,23 +105,23 @@ final class EventsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->mediaBridge->events->createMediaPlayedEvent([
-            'mediaType' => 'AUDIO',
-            'occurredTimestamp' => 0,
-            'sessionID' => 'sessionId',
-            'state' => 'STARTED',
-            '_hsenc' => '_hsenc',
-            'contactID' => 0,
-            'contactUtk' => 'contactUtk',
-            'externalID' => 'externalId',
-            'iframeURL' => 'iframeUrl',
-            'mediaBridgeID' => 0,
-            'mediaName' => 'mediaName',
-            'mediaURL' => 'mediaUrl',
-            'pageID' => 0,
-            'pageName' => 'pageName',
-            'pageURL' => 'pageUrl',
-        ]);
+        $result = $this->client->cms->mediaBridge->events->createMediaPlayedEvent(
+            mediaType: 'AUDIO',
+            occurredTimestamp: 0,
+            sessionID: 'sessionId',
+            state: 'STARTED',
+            _hsenc: '_hsenc',
+            contactID: 0,
+            contactUtk: 'contactUtk',
+            externalID: 'externalId',
+            iframeURL: 'iframeUrl',
+            mediaBridgeID: 0,
+            mediaName: 'mediaName',
+            mediaURL: 'mediaUrl',
+            pageID: 0,
+            pageName: 'pageName',
+            pageURL: 'pageUrl',
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(MediaPlayedEvent::class, $result);
@@ -151,12 +139,12 @@ final class EventsTest extends TestCase
             ->cms
             ->mediaBridge
             ->events
-            ->createMediaPlayedPercentEvent([
-                'mediaType' => 'AUDIO',
-                'occurredTimestamp' => 0,
-                'playedPercent' => 0,
-                'sessionID' => 'sessionId',
-            ])
+            ->createMediaPlayedPercentEvent(
+                mediaType: 'AUDIO',
+                occurredTimestamp: 0,
+                playedPercent: 0,
+                sessionID: 'sessionId',
+            )
         ;
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -175,22 +163,22 @@ final class EventsTest extends TestCase
             ->cms
             ->mediaBridge
             ->events
-            ->createMediaPlayedPercentEvent([
-                'mediaType' => 'AUDIO',
-                'occurredTimestamp' => 0,
-                'playedPercent' => 0,
-                'sessionID' => 'sessionId',
-                '_hsenc' => '_hsenc',
-                'contactID' => 0,
-                'contactUtk' => 'contactUtk',
-                'externalID' => 'externalId',
-                'mediaBridgeID' => 0,
-                'mediaName' => 'mediaName',
-                'mediaURL' => 'mediaUrl',
-                'pageID' => 0,
-                'pageName' => 'pageName',
-                'pageURL' => 'pageUrl',
-            ])
+            ->createMediaPlayedPercentEvent(
+                mediaType: 'AUDIO',
+                occurredTimestamp: 0,
+                playedPercent: 0,
+                sessionID: 'sessionId',
+                _hsenc: '_hsenc',
+                contactID: 0,
+                contactUtk: 'contactUtk',
+                externalID: 'externalId',
+                mediaBridgeID: 0,
+                mediaName: 'mediaName',
+                mediaURL: 'mediaUrl',
+                pageID: 0,
+                pageName: 'pageName',
+                pageURL: 'pageUrl',
+            )
         ;
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

@@ -38,9 +38,9 @@ final class BatchTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->campaigns->batch->create([
-            'inputs' => [['properties' => ['foo' => 'string']]],
-        ]);
+        $result = $this->client->marketing->campaigns->batch->create(
+            inputs: [['properties' => ['foo' => 'string']]]
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(BatchResponsePublicCampaign::class, $result);
@@ -53,9 +53,9 @@ final class BatchTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->campaigns->batch->create([
-            'inputs' => [['properties' => ['foo' => 'string']]],
-        ]);
+        $result = $this->client->marketing->campaigns->batch->create(
+            inputs: [['properties' => ['foo' => 'string']]]
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(BatchResponsePublicCampaign::class, $result);
@@ -68,9 +68,9 @@ final class BatchTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->campaigns->batch->update([
-            'inputs' => [['id' => 'id', 'properties' => ['foo' => 'string']]],
-        ]);
+        $result = $this->client->marketing->campaigns->batch->update(
+            inputs: [['id' => 'id', 'properties' => ['foo' => 'string']]]
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(BatchResponsePublicCampaign::class, $result);
@@ -83,9 +83,9 @@ final class BatchTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->campaigns->batch->update([
-            'inputs' => [['id' => 'id', 'properties' => ['foo' => 'string']]],
-        ]);
+        $result = $this->client->marketing->campaigns->batch->update(
+            inputs: [['id' => 'id', 'properties' => ['foo' => 'string']]]
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(BatchResponsePublicCampaign::class, $result);
@@ -98,9 +98,9 @@ final class BatchTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->campaigns->batch->delete([
-            'inputs' => [['id' => 'id']],
-        ]);
+        $result = $this->client->marketing->campaigns->batch->delete(
+            inputs: [['id' => 'id']]
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);
@@ -113,9 +113,9 @@ final class BatchTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->campaigns->batch->delete([
-            'inputs' => [['id' => 'id']],
-        ]);
+        $result = $this->client->marketing->campaigns->batch->delete(
+            inputs: [['id' => 'id']]
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);
@@ -128,9 +128,9 @@ final class BatchTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->campaigns->batch->get([
-            'inputs' => [['id' => 'id']],
-        ]);
+        $result = $this->client->marketing->campaigns->batch->get(
+            inputs: [['id' => 'id']]
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(
@@ -146,12 +146,12 @@ final class BatchTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->campaigns->batch->get([
-            'inputs' => [['id' => 'id']],
-            'endDate' => 'endDate',
-            'properties' => ['string'],
-            'startDate' => 'startDate',
-        ]);
+        $result = $this->client->marketing->campaigns->batch->get(
+            inputs: [['id' => 'id']],
+            endDate: 'endDate',
+            properties: ['string'],
+            startDate: 'startDate',
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(

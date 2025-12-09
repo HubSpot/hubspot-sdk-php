@@ -15,6 +15,11 @@ final class AssociationsService implements AssociationsContract
     /**
      * @api
      */
+    public AssociationsRawService $raw;
+
+    /**
+     * @api
+     */
     public BatchService $batch;
 
     /**
@@ -32,6 +37,7 @@ final class AssociationsService implements AssociationsContract
      */
     public function __construct(private Client $client)
     {
+        $this->raw = new AssociationsRawService($client);
         $this->batch = new BatchService($client);
         $this->schema = new SchemaService($client);
         $this->v4 = new V4Service($client);

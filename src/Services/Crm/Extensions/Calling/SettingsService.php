@@ -5,10 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Crm\Extensions\Calling;
 
 use HubspotSDK\Client;
-use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Crm\Extensions\Calling\Settings\SettingCreateParams;
-use HubspotSDK\Crm\Extensions\Calling\Settings\SettingUpdateParams;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Extensions\Calling\SettingsContract;
 use HubspotSDK\Webhooks\SettingsResponse;
@@ -16,45 +13,50 @@ use HubspotSDK\Webhooks\SettingsResponse;
 final class SettingsService implements SettingsContract
 {
     /**
+     * @api
+     */
+    public SettingsRawService $raw;
+
+    /**
      * @internal
      */
-    public function __construct(private Client $client) {}
+    public function __construct(private Client $client)
+    {
+        $this->raw = new SettingsRawService($client);
+    }
 
     /**
      * @api
-     *
-     * @param array{
-     *   height: int,
-     *   isReady: bool,
-     *   name: string,
-     *   supportsCustomObjects: bool,
-     *   supportsInboundCalling: bool,
-     *   url: string,
-     *   usesCallingWindow: bool,
-     *   usesRemote: bool,
-     *   width: int,
-     * }|SettingCreateParams $params
      *
      * @throws APIException
      */
     public function create(
         int $appID,
-        array|SettingCreateParams $params,
+        int $height,
+        bool $isReady,
+        string $name,
+        bool $supportsCustomObjects,
+        bool $supportsInboundCalling,
+        string $url,
+        bool $usesCallingWindow,
+        bool $usesRemote,
+        int $width,
         ?RequestOptions $requestOptions = null,
     ): SettingsResponse {
-        [$parsed, $options] = SettingCreateParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = [
+            'height' => $height,
+            'isReady' => $isReady,
+            'name' => $name,
+            'supportsCustomObjects' => $supportsCustomObjects,
+            'supportsInboundCalling' => $supportsInboundCalling,
+            'url' => $url,
+            'usesCallingWindow' => $usesCallingWindow,
+            'usesRemote' => $usesRemote,
+            'width' => $width,
+        ];
 
-        /** @var BaseResponse<SettingsResponse> */
-        $response = $this->client->request(
-            method: 'post',
-            path: ['crm/v3/extensions/calling/%1$s/settings', $appID],
-            body: (object) $parsed,
-            options: $options,
-            convert: SettingsResponse::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->create($appID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -62,38 +64,37 @@ final class SettingsService implements SettingsContract
     /**
      * @api
      *
-     * @param array{
-     *   height?: int,
-     *   isReady?: bool,
-     *   name?: string,
-     *   supportsCustomObjects?: bool,
-     *   supportsInboundCalling?: bool,
-     *   url?: string,
-     *   usesCallingWindow?: bool,
-     *   usesRemote?: bool,
-     *   width?: int,
-     * }|SettingUpdateParams $params
-     *
      * @throws APIException
      */
     public function update(
         int $appID,
-        array|SettingUpdateParams $params,
+        ?int $height = null,
+        ?bool $isReady = null,
+        ?string $name = null,
+        ?bool $supportsCustomObjects = null,
+        ?bool $supportsInboundCalling = null,
+        ?string $url = null,
+        ?bool $usesCallingWindow = null,
+        ?bool $usesRemote = null,
+        ?int $width = null,
         ?RequestOptions $requestOptions = null,
     ): SettingsResponse {
-        [$parsed, $options] = SettingUpdateParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = [
+            'height' => $height,
+            'isReady' => $isReady,
+            'name' => $name,
+            'supportsCustomObjects' => $supportsCustomObjects,
+            'supportsInboundCalling' => $supportsInboundCalling,
+            'url' => $url,
+            'usesCallingWindow' => $usesCallingWindow,
+            'usesRemote' => $usesRemote,
+            'width' => $width,
+        ];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<SettingsResponse> */
-        $response = $this->client->request(
-            method: 'patch',
-            path: ['crm/v3/extensions/calling/%1$s/settings', $appID],
-            body: (object) $parsed,
-            options: $options,
-            convert: SettingsResponse::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->update($appID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -107,13 +108,8 @@ final class SettingsService implements SettingsContract
         int $appID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        /** @var BaseResponse<mixed> */
-        $response = $this->client->request(
-            method: 'delete',
-            path: ['crm/v3/extensions/calling/%1$s/settings', $appID],
-            options: $requestOptions,
-            convert: null,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->delete($appID, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -127,13 +123,8 @@ final class SettingsService implements SettingsContract
         int $appID,
         ?RequestOptions $requestOptions = null
     ): SettingsResponse {
-        /** @var BaseResponse<SettingsResponse> */
-        $response = $this->client->request(
-            method: 'get',
-            path: ['crm/v3/extensions/calling/%1$s/settings', $appID],
-            options: $requestOptions,
-            convert: SettingsResponse::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->get($appID, requestOptions: $requestOptions);
 
         return $response->parse();
     }

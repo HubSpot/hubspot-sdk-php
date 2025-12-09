@@ -39,7 +39,7 @@ final class FeedbackSubmissionsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->objects->feedbackSubmissions->list([]);
+        $result = $this->client->crm->objects->feedbackSubmissions->list();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(Page::class, $result);
@@ -53,8 +53,7 @@ final class FeedbackSubmissionsTest extends TestCase
         }
 
         $result = $this->client->crm->objects->feedbackSubmissions->get(
-            'feedbackSubmissionId',
-            []
+            'feedbackSubmissionId'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -68,19 +67,19 @@ final class FeedbackSubmissionsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->objects->feedbackSubmissions->search([
-            'after' => 'after',
-            'filterGroups' => [
+        $result = $this->client->crm->objects->feedbackSubmissions->search(
+            after: 'after',
+            filterGroups: [
                 [
                     'filters' => [
                         ['operator' => 'BETWEEN', 'propertyName' => 'propertyName'],
                     ],
                 ],
             ],
-            'limit' => 0,
-            'properties' => ['string'],
-            'sorts' => ['string'],
-        ]);
+            limit: 0,
+            properties: ['string'],
+            sorts: ['string'],
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(
@@ -96,9 +95,9 @@ final class FeedbackSubmissionsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->objects->feedbackSubmissions->search([
-            'after' => 'after',
-            'filterGroups' => [
+        $result = $this->client->crm->objects->feedbackSubmissions->search(
+            after: 'after',
+            filterGroups: [
                 [
                     'filters' => [
                         [
@@ -111,11 +110,11 @@ final class FeedbackSubmissionsTest extends TestCase
                     ],
                 ],
             ],
-            'limit' => 0,
-            'properties' => ['string'],
-            'sorts' => ['string'],
-            'query' => 'query',
-        ]);
+            limit: 0,
+            properties: ['string'],
+            sorts: ['string'],
+            query: 'query',
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(

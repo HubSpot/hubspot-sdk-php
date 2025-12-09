@@ -23,6 +23,8 @@ interface EnablementContract
     /**
      * @api
      *
+     * @param string $objectTypeID objectTypeId for the object type in question
+     *
      * @throws APIException
      */
     public function get(

@@ -5,13 +5,9 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Crm\Objects;
 
 use HubspotSDK\Client;
-use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
-use HubspotSDK\Crm\Objects\PartnerClients\PartnerClientGetParams;
-use HubspotSDK\Crm\Objects\PartnerClients\PartnerClientListParams;
-use HubspotSDK\Crm\Objects\PartnerClients\PartnerClientSearchParams;
-use HubspotSDK\Crm\Objects\PartnerClients\PartnerClientUpdateParams;
+use HubspotSDK\Crm\Filter\Operator;
 use HubspotSDK\Crm\SimplePublicObject;
 use HubspotSDK\Crm\SimplePublicObjectWithAssociations;
 use HubspotSDK\Page;
@@ -22,6 +18,11 @@ use HubspotSDK\Services\Crm\Objects\PartnerClients\BatchService;
 
 final class PartnerClientsService implements PartnerClientsContract
 {
+    /**
+     * @api
+     */
+    public PartnerClientsRawService $raw;
+
     /**
      * @api
      */
@@ -37,6 +38,7 @@ final class PartnerClientsService implements PartnerClientsContract
      */
     public function __construct(private Client $client)
     {
+        $this->raw = new PartnerClientsRawService($client);
         $this->associations = new AssociationsService($client);
         $this->batch = new BatchService($client);
     }
@@ -44,32 +46,24 @@ final class PartnerClientsService implements PartnerClientsContract
     /**
      * @api
      *
-     * @param array{
-     *   properties: array<string,string>, idProperty?: string
-     * }|PartnerClientUpdateParams $params
+     * @param string $partnerClientID Path param:
+     * @param array<string,string> $properties body param: Key value pairs representing the properties of the object
+     * @param string $idProperty Query param:
      *
      * @throws APIException
      */
     public function update(
         string $partnerClientID,
-        array|PartnerClientUpdateParams $params,
+        array $properties,
+        ?string $idProperty = null,
         ?RequestOptions $requestOptions = null,
     ): SimplePublicObject {
-        [$parsed, $options] = PartnerClientUpdateParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $query_params = ['idProperty'];
+        $params = ['properties' => $properties, 'idProperty' => $idProperty];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<SimplePublicObject> */
-        $response = $this->client->request(
-            method: 'patch',
-            path: ['crm/v3/objects/partner_clients/%1$s', $partnerClientID],
-            query: array_diff_key($parsed, $query_params),
-            body: (object) array_diff_key($parsed, $query_params),
-            options: $options,
-            convert: SimplePublicObject::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->update($partnerClientID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -77,37 +71,36 @@ final class PartnerClientsService implements PartnerClientsContract
     /**
      * @api
      *
-     * @param array{
-     *   after?: string,
-     *   archived?: bool,
-     *   associations?: list<string>,
-     *   limit?: int,
-     *   properties?: list<string>,
-     *   propertiesWithHistory?: list<string>,
-     * }|PartnerClientListParams $params
+     * @param list<string> $associations
+     * @param list<string> $properties
+     * @param list<string> $propertiesWithHistory
      *
      * @return Page<SimplePublicObjectWithAssociations>
      *
      * @throws APIException
      */
     public function list(
-        array|PartnerClientListParams $params,
+        ?string $after = null,
+        bool $archived = false,
+        ?array $associations = null,
+        int $limit = 10,
+        ?array $properties = null,
+        ?array $propertiesWithHistory = null,
         ?RequestOptions $requestOptions = null,
     ): Page {
-        [$parsed, $options] = PartnerClientListParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = [
+            'after' => $after,
+            'archived' => $archived,
+            'associations' => $associations,
+            'limit' => $limit,
+            'properties' => $properties,
+            'propertiesWithHistory' => $propertiesWithHistory,
+        ];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<Page<SimplePublicObjectWithAssociations>> */
-        $response = $this->client->request(
-            method: 'get',
-            path: 'crm/v3/objects/partner_clients',
-            query: $parsed,
-            options: $options,
-            convert: SimplePublicObjectWithAssociations::class,
-            page: Page::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->list(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -115,34 +108,33 @@ final class PartnerClientsService implements PartnerClientsContract
     /**
      * @api
      *
-     * @param array{
-     *   archived?: bool,
-     *   associations?: list<string>,
-     *   idProperty?: string,
-     *   properties?: list<string>,
-     *   propertiesWithHistory?: list<string>,
-     * }|PartnerClientGetParams $params
+     * @param list<string> $associations
+     * @param list<string> $properties
+     * @param list<string> $propertiesWithHistory
      *
      * @throws APIException
      */
     public function get(
         string $partnerClientID,
-        array|PartnerClientGetParams $params,
+        bool $archived = false,
+        ?array $associations = null,
+        ?string $idProperty = null,
+        ?array $properties = null,
+        ?array $propertiesWithHistory = null,
         ?RequestOptions $requestOptions = null,
     ): SimplePublicObjectWithAssociations {
-        [$parsed, $options] = PartnerClientGetParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = [
+            'archived' => $archived,
+            'associations' => $associations,
+            'idProperty' => $idProperty,
+            'properties' => $properties,
+            'propertiesWithHistory' => $propertiesWithHistory,
+        ];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<SimplePublicObjectWithAssociations> */
-        $response = $this->client->request(
-            method: 'get',
-            path: ['crm/v3/objects/partner_clients/%1$s', $partnerClientID],
-            query: $parsed,
-            options: $options,
-            convert: SimplePublicObjectWithAssociations::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->get($partnerClientID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -150,34 +142,45 @@ final class PartnerClientsService implements PartnerClientsContract
     /**
      * @api
      *
-     * @param array{
-     *   after: string,
-     *   filterGroups: list<array{filters: list<array<mixed>>}>,
-     *   limit: int,
-     *   properties: list<string>,
-     *   sorts: list<string>,
-     *   query?: string,
-     * }|PartnerClientSearchParams $params
+     * @param string $after a paging cursor token for retrieving subsequent pages
+     * @param list<array{
+     *   filters: list<array{
+     *     operator: 'BETWEEN'|'CONTAINS_TOKEN'|'EQ'|'GT'|'GTE'|'HAS_PROPERTY'|'IN'|'LT'|'LTE'|'NEQ'|'NOT_CONTAINS_TOKEN'|'NOT_HAS_PROPERTY'|'NOT_IN'|Operator,
+     *     propertyName: string,
+     *     highValue?: string,
+     *     value?: string,
+     *     values?: list<string>,
+     *   }>,
+     * }> $filterGroups Up to 6 groups of filters defining additional query criteria
+     * @param int $limit the maximum results to return, up to 200 objects
+     * @param list<string> $properties a list of property names to include in the response
+     * @param list<string> $sorts specifies sorting order based on object properties
+     * @param string $query the search query string, up to 3000 characters
      *
      * @throws APIException
      */
     public function search(
-        array|PartnerClientSearchParams $params,
+        string $after,
+        array $filterGroups,
+        int $limit,
+        array $properties,
+        array $sorts,
+        ?string $query = null,
         ?RequestOptions $requestOptions = null,
     ): CollectionResponseWithTotalSimplePublicObject {
-        [$parsed, $options] = PartnerClientSearchParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = [
+            'after' => $after,
+            'filterGroups' => $filterGroups,
+            'limit' => $limit,
+            'properties' => $properties,
+            'sorts' => $sorts,
+            'query' => $query,
+        ];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<CollectionResponseWithTotalSimplePublicObject> */
-        $response = $this->client->request(
-            method: 'post',
-            path: 'crm/v3/objects/partner_clients/search',
-            body: (object) $parsed,
-            options: $options,
-            convert: CollectionResponseWithTotalSimplePublicObject::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->search(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
