@@ -83,40 +83,40 @@ final class APIDatasetFieldPropertyFilterDataSource implements BaseModel
         Type|string $type = 'DATASET_FIELD_PROPERTY_FILTER',
         APISort|array|null $sortBy = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['datasetFieldName'] = $datasetFieldName;
-        $obj['name'] = $name;
-        $obj['propertyName'] = $propertyName;
-        $obj['type'] = $type;
+        $self['datasetFieldName'] = $datasetFieldName;
+        $self['name'] = $name;
+        $self['propertyName'] = $propertyName;
+        $self['type'] = $type;
 
-        null !== $sortBy && $obj['sortBy'] = $sortBy;
+        null !== $sortBy && $self['sortBy'] = $sortBy;
 
-        return $obj;
+        return $self;
     }
 
     public function withDatasetFieldName(string $datasetFieldName): self
     {
-        $obj = clone $this;
-        $obj['datasetFieldName'] = $datasetFieldName;
+        $self = clone $this;
+        $self['datasetFieldName'] = $datasetFieldName;
 
-        return $obj;
+        return $self;
     }
 
     public function withName(string $name): self
     {
-        $obj = clone $this;
-        $obj['name'] = $name;
+        $self = clone $this;
+        $self['name'] = $name;
 
-        return $obj;
+        return $self;
     }
 
     public function withPropertyName(string $propertyName): self
     {
-        $obj = clone $this;
-        $obj['propertyName'] = $propertyName;
+        $self = clone $this;
+        $self['propertyName'] = $propertyName;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -124,10 +124,10 @@ final class APIDatasetFieldPropertyFilterDataSource implements BaseModel
      */
     public function withType(Type|string $type): self
     {
-        $obj = clone $this;
-        $obj['type'] = $type;
+        $self = clone $this;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -137,9 +137,9 @@ final class APIDatasetFieldPropertyFilterDataSource implements BaseModel
      */
     public function withSortBy(APISort|array $sortBy): self
     {
-        $obj = clone $this;
-        $obj['sortBy'] = $sortBy;
+        $self = clone $this;
+        $self['sortBy'] = $sortBy;
 
-        return $obj;
+        return $self;
     }
 }

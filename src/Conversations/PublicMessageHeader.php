@@ -61,14 +61,14 @@ final class PublicMessageHeader implements BaseModel
         ?int $fileID = null,
         ?string $text = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['type'] = $type;
+        $self['type'] = $type;
 
-        null !== $fileID && $obj['fileID'] = $fileID;
-        null !== $text && $obj['text'] = $text;
+        null !== $fileID && $self['fileID'] = $fileID;
+        null !== $text && $self['text'] = $text;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -76,25 +76,25 @@ final class PublicMessageHeader implements BaseModel
      */
     public function withType(Type|string $type): self
     {
-        $obj = clone $this;
-        $obj['type'] = $type;
+        $self = clone $this;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 
     public function withFileID(int $fileID): self
     {
-        $obj = clone $this;
-        $obj['fileID'] = $fileID;
+        $self = clone $this;
+        $self['fileID'] = $fileID;
 
-        return $obj;
+        return $self;
     }
 
     public function withText(string $text): self
     {
-        $obj = clone $this;
-        $obj['text'] = $text;
+        $self = clone $this;
+        $self['text'] = $text;
 
-        return $obj;
+        return $self;
     }
 }

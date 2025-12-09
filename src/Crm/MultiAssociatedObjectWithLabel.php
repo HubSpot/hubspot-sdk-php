@@ -63,12 +63,12 @@ final class MultiAssociatedObjectWithLabel implements BaseModel
         array $associationTypes,
         string $toObjectID
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['associationTypes'] = $associationTypes;
-        $obj['toObjectID'] = $toObjectID;
+        $self['associationTypes'] = $associationTypes;
+        $self['toObjectID'] = $toObjectID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -78,10 +78,10 @@ final class MultiAssociatedObjectWithLabel implements BaseModel
      */
     public function withAssociationTypes(array $associationTypes): self
     {
-        $obj = clone $this;
-        $obj['associationTypes'] = $associationTypes;
+        $self = clone $this;
+        $self['associationTypes'] = $associationTypes;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -89,9 +89,9 @@ final class MultiAssociatedObjectWithLabel implements BaseModel
      */
     public function withToObjectID(string $toObjectID): self
     {
-        $obj = clone $this;
-        $obj['toObjectID'] = $toObjectID;
+        $self = clone $this;
+        $self['toObjectID'] = $toObjectID;
 
-        return $obj;
+        return $self;
     }
 }

@@ -55,11 +55,11 @@ final class CompanyCurrencyUpdateRequest implements BaseModel
      */
     public static function with(CurrencyCode|string $currencyCode): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['currencyCode'] = $currencyCode;
+        $self['currencyCode'] = $currencyCode;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -69,9 +69,9 @@ final class CompanyCurrencyUpdateRequest implements BaseModel
      */
     public function withCurrencyCode(CurrencyCode|string $currencyCode): self
     {
-        $obj = clone $this;
-        $obj['currencyCode'] = $currencyCode;
+        $self = clone $this;
+        $self['currencyCode'] = $currencyCode;
 
-        return $obj;
+        return $self;
     }
 }

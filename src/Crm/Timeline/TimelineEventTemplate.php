@@ -127,19 +127,19 @@ final class TimelineEventTemplate implements BaseModel
         ?string $headerTemplate = null,
         ?\DateTimeInterface $updatedAt = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['id'] = $id;
-        $obj['name'] = $name;
-        $obj['objectType'] = $objectType;
-        $obj['tokens'] = $tokens;
+        $self['id'] = $id;
+        $self['name'] = $name;
+        $self['objectType'] = $objectType;
+        $self['tokens'] = $tokens;
 
-        null !== $createdAt && $obj['createdAt'] = $createdAt;
-        null !== $detailTemplate && $obj['detailTemplate'] = $detailTemplate;
-        null !== $headerTemplate && $obj['headerTemplate'] = $headerTemplate;
-        null !== $updatedAt && $obj['updatedAt'] = $updatedAt;
+        null !== $createdAt && $self['createdAt'] = $createdAt;
+        null !== $detailTemplate && $self['detailTemplate'] = $detailTemplate;
+        null !== $headerTemplate && $self['headerTemplate'] = $headerTemplate;
+        null !== $updatedAt && $self['updatedAt'] = $updatedAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -147,10 +147,10 @@ final class TimelineEventTemplate implements BaseModel
      */
     public function withID(string $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -158,10 +158,10 @@ final class TimelineEventTemplate implements BaseModel
      */
     public function withName(string $name): self
     {
-        $obj = clone $this;
-        $obj['name'] = $name;
+        $self = clone $this;
+        $self['name'] = $name;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -169,10 +169,10 @@ final class TimelineEventTemplate implements BaseModel
      */
     public function withObjectType(string $objectType): self
     {
-        $obj = clone $this;
-        $obj['objectType'] = $objectType;
+        $self = clone $this;
+        $self['objectType'] = $objectType;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -190,10 +190,10 @@ final class TimelineEventTemplate implements BaseModel
      */
     public function withTokens(array $tokens): self
     {
-        $obj = clone $this;
-        $obj['tokens'] = $tokens;
+        $self = clone $this;
+        $self['tokens'] = $tokens;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -201,10 +201,10 @@ final class TimelineEventTemplate implements BaseModel
      */
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
-        $obj = clone $this;
-        $obj['createdAt'] = $createdAt;
+        $self = clone $this;
+        $self['createdAt'] = $createdAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -212,10 +212,10 @@ final class TimelineEventTemplate implements BaseModel
      */
     public function withDetailTemplate(string $detailTemplate): self
     {
-        $obj = clone $this;
-        $obj['detailTemplate'] = $detailTemplate;
+        $self = clone $this;
+        $self['detailTemplate'] = $detailTemplate;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -223,10 +223,10 @@ final class TimelineEventTemplate implements BaseModel
      */
     public function withHeaderTemplate(string $headerTemplate): self
     {
-        $obj = clone $this;
-        $obj['headerTemplate'] = $headerTemplate;
+        $self = clone $this;
+        $self['headerTemplate'] = $headerTemplate;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -234,9 +234,9 @@ final class TimelineEventTemplate implements BaseModel
      */
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
-        $obj = clone $this;
-        $obj['updatedAt'] = $updatedAt;
+        $self = clone $this;
+        $self['updatedAt'] = $updatedAt;
 
-        return $obj;
+        return $self;
     }
 }

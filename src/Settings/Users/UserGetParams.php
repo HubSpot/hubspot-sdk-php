@@ -47,11 +47,11 @@ final class UserGetParams implements BaseModel
      */
     public static function with(IDProperty|string|null $idProperty = null): self
     {
-        $obj = new self;
+        $self = new self;
 
-        null !== $idProperty && $obj['idProperty'] = $idProperty;
+        null !== $idProperty && $self['idProperty'] = $idProperty;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -61,9 +61,9 @@ final class UserGetParams implements BaseModel
      */
     public function withIDProperty(IDProperty|string $idProperty): self
     {
-        $obj = clone $this;
-        $obj['idProperty'] = $idProperty;
+        $self = clone $this;
+        $self['idProperty'] = $idProperty;
 
-        return $obj;
+        return $self;
     }
 }

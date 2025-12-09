@@ -85,15 +85,15 @@ final class PublicUpdateSubscriptionStatusRequest implements BaseModel
         LegalBasis|string|null $legalBasis = null,
         ?string $legalBasisExplanation = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['emailAddress'] = $emailAddress;
-        $obj['subscriptionID'] = $subscriptionID;
+        $self['emailAddress'] = $emailAddress;
+        $self['subscriptionID'] = $subscriptionID;
 
-        null !== $legalBasis && $obj['legalBasis'] = $legalBasis;
-        null !== $legalBasisExplanation && $obj['legalBasisExplanation'] = $legalBasisExplanation;
+        null !== $legalBasis && $self['legalBasis'] = $legalBasis;
+        null !== $legalBasisExplanation && $self['legalBasisExplanation'] = $legalBasisExplanation;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -101,10 +101,10 @@ final class PublicUpdateSubscriptionStatusRequest implements BaseModel
      */
     public function withEmailAddress(string $emailAddress): self
     {
-        $obj = clone $this;
-        $obj['emailAddress'] = $emailAddress;
+        $self = clone $this;
+        $self['emailAddress'] = $emailAddress;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -112,10 +112,10 @@ final class PublicUpdateSubscriptionStatusRequest implements BaseModel
      */
     public function withSubscriptionID(string $subscriptionID): self
     {
-        $obj = clone $this;
-        $obj['subscriptionID'] = $subscriptionID;
+        $self = clone $this;
+        $self['subscriptionID'] = $subscriptionID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -125,10 +125,10 @@ final class PublicUpdateSubscriptionStatusRequest implements BaseModel
      */
     public function withLegalBasis(LegalBasis|string $legalBasis): self
     {
-        $obj = clone $this;
-        $obj['legalBasis'] = $legalBasis;
+        $self = clone $this;
+        $self['legalBasis'] = $legalBasis;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -137,9 +137,9 @@ final class PublicUpdateSubscriptionStatusRequest implements BaseModel
     public function withLegalBasisExplanation(
         string $legalBasisExplanation
     ): self {
-        $obj = clone $this;
-        $obj['legalBasisExplanation'] = $legalBasisExplanation;
+        $self = clone $this;
+        $self['legalBasisExplanation'] = $legalBasisExplanation;
 
-        return $obj;
+        return $self;
     }
 }

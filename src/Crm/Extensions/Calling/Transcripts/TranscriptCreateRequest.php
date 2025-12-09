@@ -65,20 +65,20 @@ final class TranscriptCreateRequest implements BaseModel
         int $engagementID,
         array $transcriptCreateUtterances
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['engagementID'] = $engagementID;
-        $obj['transcriptCreateUtterances'] = $transcriptCreateUtterances;
+        $self['engagementID'] = $engagementID;
+        $self['transcriptCreateUtterances'] = $transcriptCreateUtterances;
 
-        return $obj;
+        return $self;
     }
 
     public function withEngagementID(int $engagementID): self
     {
-        $obj = clone $this;
-        $obj['engagementID'] = $engagementID;
+        $self = clone $this;
+        $self['engagementID'] = $engagementID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -93,9 +93,9 @@ final class TranscriptCreateRequest implements BaseModel
     public function withTranscriptCreateUtterances(
         array $transcriptCreateUtterances
     ): self {
-        $obj = clone $this;
-        $obj['transcriptCreateUtterances'] = $transcriptCreateUtterances;
+        $self = clone $this;
+        $self['transcriptCreateUtterances'] = $transcriptCreateUtterances;
 
-        return $obj;
+        return $self;
     }
 }

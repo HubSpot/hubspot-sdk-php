@@ -136,14 +136,14 @@ final class VersionPublicEmail implements BaseModel
         \DateTimeInterface $updatedAt,
         VersionUser|array $user,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['id'] = $id;
-        $obj['object'] = $object;
-        $obj['updatedAt'] = $updatedAt;
-        $obj['user'] = $user;
+        $self['id'] = $id;
+        $self['object'] = $object;
+        $self['updatedAt'] = $updatedAt;
+        $self['user'] = $user;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -151,10 +151,10 @@ final class VersionPublicEmail implements BaseModel
      */
     public function withID(string $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -214,18 +214,18 @@ final class VersionPublicEmail implements BaseModel
      */
     public function withObject(PublicEmail|array $object): self
     {
-        $obj = clone $this;
-        $obj['object'] = $object;
+        $self = clone $this;
+        $self['object'] = $object;
 
-        return $obj;
+        return $self;
     }
 
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
-        $obj = clone $this;
-        $obj['updatedAt'] = $updatedAt;
+        $self = clone $this;
+        $self['updatedAt'] = $updatedAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -235,9 +235,9 @@ final class VersionPublicEmail implements BaseModel
      */
     public function withUser(VersionUser|array $user): self
     {
-        $obj = clone $this;
-        $obj['user'] = $user;
+        $self = clone $this;
+        $self['user'] = $user;
 
-        return $obj;
+        return $self;
     }
 }

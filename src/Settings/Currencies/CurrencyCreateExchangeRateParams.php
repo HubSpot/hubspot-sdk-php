@@ -83,14 +83,14 @@ final class CurrencyCreateExchangeRateParams implements BaseModel
         FromCurrencyCode|string $fromCurrencyCode,
         ?\DateTimeInterface $effectiveAt = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['conversionRate'] = $conversionRate;
-        $obj['fromCurrencyCode'] = $fromCurrencyCode;
+        $self['conversionRate'] = $conversionRate;
+        $self['fromCurrencyCode'] = $fromCurrencyCode;
 
-        null !== $effectiveAt && $obj['effectiveAt'] = $effectiveAt;
+        null !== $effectiveAt && $self['effectiveAt'] = $effectiveAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -98,10 +98,10 @@ final class CurrencyCreateExchangeRateParams implements BaseModel
      */
     public function withConversionRate(float $conversionRate): self
     {
-        $obj = clone $this;
-        $obj['conversionRate'] = $conversionRate;
+        $self = clone $this;
+        $self['conversionRate'] = $conversionRate;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -112,10 +112,10 @@ final class CurrencyCreateExchangeRateParams implements BaseModel
     public function withFromCurrencyCode(
         FromCurrencyCode|string $fromCurrencyCode
     ): self {
-        $obj = clone $this;
-        $obj['fromCurrencyCode'] = $fromCurrencyCode;
+        $self = clone $this;
+        $self['fromCurrencyCode'] = $fromCurrencyCode;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -123,9 +123,9 @@ final class CurrencyCreateExchangeRateParams implements BaseModel
      */
     public function withEffectiveAt(\DateTimeInterface $effectiveAt): self
     {
-        $obj = clone $this;
-        $obj['effectiveAt'] = $effectiveAt;
+        $self = clone $this;
+        $self['effectiveAt'] = $effectiveAt;
 
-        return $obj;
+        return $self;
     }
 }

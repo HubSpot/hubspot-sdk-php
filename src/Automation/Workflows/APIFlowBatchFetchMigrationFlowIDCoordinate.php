@@ -60,21 +60,21 @@ final class APIFlowBatchFetchMigrationFlowIDCoordinate implements BaseModel
         string $flowMigrationStatuses,
         Type|string $type = 'FLOW_ID'
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['flowMigrationStatuses'] = $flowMigrationStatuses;
-        $obj['type'] = $type;
+        $self['flowMigrationStatuses'] = $flowMigrationStatuses;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 
     public function withFlowMigrationStatuses(
         string $flowMigrationStatuses
     ): self {
-        $obj = clone $this;
-        $obj['flowMigrationStatuses'] = $flowMigrationStatuses;
+        $self = clone $this;
+        $self['flowMigrationStatuses'] = $flowMigrationStatuses;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -82,9 +82,9 @@ final class APIFlowBatchFetchMigrationFlowIDCoordinate implements BaseModel
      */
     public function withType(Type|string $type): self
     {
-        $obj = clone $this;
-        $obj['type'] = $type;
+        $self = clone $this;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 }

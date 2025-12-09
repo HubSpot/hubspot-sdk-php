@@ -40,11 +40,11 @@ final class MappingGetIDMappingParams implements BaseModel
      */
     public static function with(?string $legacyListID = null): self
     {
-        $obj = new self;
+        $self = new self;
 
-        null !== $legacyListID && $obj['legacyListID'] = $legacyListID;
+        null !== $legacyListID && $self['legacyListID'] = $legacyListID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -52,9 +52,9 @@ final class MappingGetIDMappingParams implements BaseModel
      */
     public function withLegacyListID(string $legacyListID): self
     {
-        $obj = clone $this;
-        $obj['legacyListID'] = $legacyListID;
+        $self = clone $this;
+        $self['legacyListID'] = $legacyListID;
 
-        return $obj;
+        return $self;
     }
 }

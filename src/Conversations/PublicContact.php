@@ -64,12 +64,12 @@ final class PublicContact implements BaseModel
         ContactProfile|array $contactProfile,
         Type|string $type = 'CONTACT'
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['contactProfile'] = $contactProfile;
-        $obj['type'] = $type;
+        $self['contactProfile'] = $contactProfile;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -85,10 +85,10 @@ final class PublicContact implements BaseModel
     public function withContactProfile(
         ContactProfile|array $contactProfile
     ): self {
-        $obj = clone $this;
-        $obj['contactProfile'] = $contactProfile;
+        $self = clone $this;
+        $self['contactProfile'] = $contactProfile;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -96,9 +96,9 @@ final class PublicContact implements BaseModel
      */
     public function withType(Type|string $type): self
     {
-        $obj = clone $this;
-        $obj['type'] = $type;
+        $self = clone $this;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 }

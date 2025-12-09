@@ -146,81 +146,81 @@ final class PagesContentLanguageVariation implements BaseModel
         \DateTimeInterface $updated,
         ?array $tagIDs = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['id'] = $id;
-        $obj['archivedInDashboard'] = $archivedInDashboard;
-        $obj['authorName'] = $authorName;
-        $obj['campaign'] = $campaign;
-        $obj['created'] = $created;
-        $obj['name'] = $name;
-        $obj['password'] = $password;
-        $obj['publicAccessRules'] = $publicAccessRules;
-        $obj['publicAccessRulesEnabled'] = $publicAccessRulesEnabled;
-        $obj['publishDate'] = $publishDate;
-        $obj['slug'] = $slug;
-        $obj['state'] = $state;
-        $obj['updated'] = $updated;
+        $self['id'] = $id;
+        $self['archivedInDashboard'] = $archivedInDashboard;
+        $self['authorName'] = $authorName;
+        $self['campaign'] = $campaign;
+        $self['created'] = $created;
+        $self['name'] = $name;
+        $self['password'] = $password;
+        $self['publicAccessRules'] = $publicAccessRules;
+        $self['publicAccessRulesEnabled'] = $publicAccessRulesEnabled;
+        $self['publishDate'] = $publishDate;
+        $self['slug'] = $slug;
+        $self['state'] = $state;
+        $self['updated'] = $updated;
 
-        null !== $tagIDs && $obj['tagIDs'] = $tagIDs;
+        null !== $tagIDs && $self['tagIDs'] = $tagIDs;
 
-        return $obj;
+        return $self;
     }
 
     public function withID(int $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     public function withArchivedInDashboard(bool $archivedInDashboard): self
     {
-        $obj = clone $this;
-        $obj['archivedInDashboard'] = $archivedInDashboard;
+        $self = clone $this;
+        $self['archivedInDashboard'] = $archivedInDashboard;
 
-        return $obj;
+        return $self;
     }
 
     public function withAuthorName(string $authorName): self
     {
-        $obj = clone $this;
-        $obj['authorName'] = $authorName;
+        $self = clone $this;
+        $self['authorName'] = $authorName;
 
-        return $obj;
+        return $self;
     }
 
     public function withCampaign(string $campaign): self
     {
-        $obj = clone $this;
-        $obj['campaign'] = $campaign;
+        $self = clone $this;
+        $self['campaign'] = $campaign;
 
-        return $obj;
+        return $self;
     }
 
     public function withCreated(\DateTimeInterface $created): self
     {
-        $obj = clone $this;
-        $obj['created'] = $created;
+        $self = clone $this;
+        $self['created'] = $created;
 
-        return $obj;
+        return $self;
     }
 
     public function withName(string $name): self
     {
-        $obj = clone $this;
-        $obj['name'] = $name;
+        $self = clone $this;
+        $self['name'] = $name;
 
-        return $obj;
+        return $self;
     }
 
     public function withPassword(string $password): self
     {
-        $obj = clone $this;
-        $obj['password'] = $password;
+        $self = clone $this;
+        $self['password'] = $password;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -228,51 +228,51 @@ final class PagesContentLanguageVariation implements BaseModel
      */
     public function withPublicAccessRules(array $publicAccessRules): self
     {
-        $obj = clone $this;
-        $obj['publicAccessRules'] = $publicAccessRules;
+        $self = clone $this;
+        $self['publicAccessRules'] = $publicAccessRules;
 
-        return $obj;
+        return $self;
     }
 
     public function withPublicAccessRulesEnabled(
         bool $publicAccessRulesEnabled
     ): self {
-        $obj = clone $this;
-        $obj['publicAccessRulesEnabled'] = $publicAccessRulesEnabled;
+        $self = clone $this;
+        $self['publicAccessRulesEnabled'] = $publicAccessRulesEnabled;
 
-        return $obj;
+        return $self;
     }
 
     public function withPublishDate(\DateTimeInterface $publishDate): self
     {
-        $obj = clone $this;
-        $obj['publishDate'] = $publishDate;
+        $self = clone $this;
+        $self['publishDate'] = $publishDate;
 
-        return $obj;
+        return $self;
     }
 
     public function withSlug(string $slug): self
     {
-        $obj = clone $this;
-        $obj['slug'] = $slug;
+        $self = clone $this;
+        $self['slug'] = $slug;
 
-        return $obj;
+        return $self;
     }
 
     public function withState(string $state): self
     {
-        $obj = clone $this;
-        $obj['state'] = $state;
+        $self = clone $this;
+        $self['state'] = $state;
 
-        return $obj;
+        return $self;
     }
 
     public function withUpdated(\DateTimeInterface $updated): self
     {
-        $obj = clone $this;
-        $obj['updated'] = $updated;
+        $self = clone $this;
+        $self['updated'] = $updated;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -280,9 +280,9 @@ final class PagesContentLanguageVariation implements BaseModel
      */
     public function withTagIDs(array $tagIDs): self
     {
-        $obj = clone $this;
-        $obj['tagIDs'] = $tagIDs;
+        $self = clone $this;
+        $self['tagIDs'] = $tagIDs;
 
-        return $obj;
+        return $self;
     }
 }

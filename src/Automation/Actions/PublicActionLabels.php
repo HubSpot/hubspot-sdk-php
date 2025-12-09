@@ -101,52 +101,52 @@ final class PublicActionLabels implements BaseModel
         ?array $inputFieldOptionLabels = null,
         ?array $outputFieldLabels = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['actionName'] = $actionName;
+        $self['actionName'] = $actionName;
 
-        null !== $actionCardContent && $obj['actionCardContent'] = $actionCardContent;
-        null !== $actionDescription && $obj['actionDescription'] = $actionDescription;
-        null !== $appDisplayName && $obj['appDisplayName'] = $appDisplayName;
-        null !== $executionRules && $obj['executionRules'] = $executionRules;
-        null !== $inputFieldDescriptions && $obj['inputFieldDescriptions'] = $inputFieldDescriptions;
-        null !== $inputFieldLabels && $obj['inputFieldLabels'] = $inputFieldLabels;
-        null !== $inputFieldOptionLabels && $obj['inputFieldOptionLabels'] = $inputFieldOptionLabels;
-        null !== $outputFieldLabels && $obj['outputFieldLabels'] = $outputFieldLabels;
+        null !== $actionCardContent && $self['actionCardContent'] = $actionCardContent;
+        null !== $actionDescription && $self['actionDescription'] = $actionDescription;
+        null !== $appDisplayName && $self['appDisplayName'] = $appDisplayName;
+        null !== $executionRules && $self['executionRules'] = $executionRules;
+        null !== $inputFieldDescriptions && $self['inputFieldDescriptions'] = $inputFieldDescriptions;
+        null !== $inputFieldLabels && $self['inputFieldLabels'] = $inputFieldLabels;
+        null !== $inputFieldOptionLabels && $self['inputFieldOptionLabels'] = $inputFieldOptionLabels;
+        null !== $outputFieldLabels && $self['outputFieldLabels'] = $outputFieldLabels;
 
-        return $obj;
+        return $self;
     }
 
     public function withActionName(string $actionName): self
     {
-        $obj = clone $this;
-        $obj['actionName'] = $actionName;
+        $self = clone $this;
+        $self['actionName'] = $actionName;
 
-        return $obj;
+        return $self;
     }
 
     public function withActionCardContent(string $actionCardContent): self
     {
-        $obj = clone $this;
-        $obj['actionCardContent'] = $actionCardContent;
+        $self = clone $this;
+        $self['actionCardContent'] = $actionCardContent;
 
-        return $obj;
+        return $self;
     }
 
     public function withActionDescription(string $actionDescription): self
     {
-        $obj = clone $this;
-        $obj['actionDescription'] = $actionDescription;
+        $self = clone $this;
+        $self['actionDescription'] = $actionDescription;
 
-        return $obj;
+        return $self;
     }
 
     public function withAppDisplayName(string $appDisplayName): self
     {
-        $obj = clone $this;
-        $obj['appDisplayName'] = $appDisplayName;
+        $self = clone $this;
+        $self['appDisplayName'] = $appDisplayName;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -154,10 +154,10 @@ final class PublicActionLabels implements BaseModel
      */
     public function withExecutionRules(array $executionRules): self
     {
-        $obj = clone $this;
-        $obj['executionRules'] = $executionRules;
+        $self = clone $this;
+        $self['executionRules'] = $executionRules;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -166,10 +166,10 @@ final class PublicActionLabels implements BaseModel
     public function withInputFieldDescriptions(
         array $inputFieldDescriptions
     ): self {
-        $obj = clone $this;
-        $obj['inputFieldDescriptions'] = $inputFieldDescriptions;
+        $self = clone $this;
+        $self['inputFieldDescriptions'] = $inputFieldDescriptions;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -177,10 +177,10 @@ final class PublicActionLabels implements BaseModel
      */
     public function withInputFieldLabels(array $inputFieldLabels): self
     {
-        $obj = clone $this;
-        $obj['inputFieldLabels'] = $inputFieldLabels;
+        $self = clone $this;
+        $self['inputFieldLabels'] = $inputFieldLabels;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -189,10 +189,10 @@ final class PublicActionLabels implements BaseModel
     public function withInputFieldOptionLabels(
         array $inputFieldOptionLabels
     ): self {
-        $obj = clone $this;
-        $obj['inputFieldOptionLabels'] = $inputFieldOptionLabels;
+        $self = clone $this;
+        $self['inputFieldOptionLabels'] = $inputFieldOptionLabels;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -200,9 +200,9 @@ final class PublicActionLabels implements BaseModel
      */
     public function withOutputFieldLabels(array $outputFieldLabels): self
     {
-        $obj = clone $this;
-        $obj['outputFieldLabels'] = $outputFieldLabels;
+        $self = clone $this;
+        $self['outputFieldLabels'] = $outputFieldLabels;
 
-        return $obj;
+        return $self;
     }
 }

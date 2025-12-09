@@ -58,13 +58,13 @@ final class ChannelIntegrationParticipant implements BaseModel
         PublicDeliveryIdentifier|array $deliveryIdentifier,
         ?string $name = null
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['deliveryIdentifier'] = $deliveryIdentifier;
+        $self['deliveryIdentifier'] = $deliveryIdentifier;
 
-        null !== $name && $obj['name'] = $name;
+        null !== $name && $self['name'] = $name;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -75,17 +75,17 @@ final class ChannelIntegrationParticipant implements BaseModel
     public function withDeliveryIdentifier(
         PublicDeliveryIdentifier|array $deliveryIdentifier
     ): self {
-        $obj = clone $this;
-        $obj['deliveryIdentifier'] = $deliveryIdentifier;
+        $self = clone $this;
+        $self['deliveryIdentifier'] = $deliveryIdentifier;
 
-        return $obj;
+        return $self;
     }
 
     public function withName(string $name): self
     {
-        $obj = clone $this;
-        $obj['name'] = $name;
+        $self = clone $this;
+        $self['name'] = $name;
 
-        return $obj;
+        return $self;
     }
 }

@@ -54,12 +54,12 @@ final class ListMoveRequest implements BaseModel
      */
     public static function with(string $listID, string $newFolderID): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['listID'] = $listID;
-        $obj['newFolderID'] = $newFolderID;
+        $self['listID'] = $listID;
+        $self['newFolderID'] = $newFolderID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -67,10 +67,10 @@ final class ListMoveRequest implements BaseModel
      */
     public function withListID(string $listID): self
     {
-        $obj = clone $this;
-        $obj['listID'] = $listID;
+        $self = clone $this;
+        $self['listID'] = $listID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -78,9 +78,9 @@ final class ListMoveRequest implements BaseModel
      */
     public function withNewFolderID(string $newFolderID): self
     {
-        $obj = clone $this;
-        $obj['newFolderID'] = $newFolderID;
+        $self = clone $this;
+        $self['newFolderID'] = $newFolderID;
 
-        return $obj;
+        return $self;
     }
 }

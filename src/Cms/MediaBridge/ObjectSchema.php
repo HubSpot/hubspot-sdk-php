@@ -238,54 +238,54 @@ final class ObjectSchema implements BaseModel
         ?\DateTimeInterface $updatedAt = null,
         ?int $updatedByUserID = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['id'] = $id;
-        $obj['allowsSensitiveProperties'] = $allowsSensitiveProperties;
-        $obj['archived'] = $archived;
-        $obj['associations'] = $associations;
-        $obj['fullyQualifiedName'] = $fullyQualifiedName;
-        $obj['labels'] = $labels;
-        $obj['name'] = $name;
-        $obj['objectTypeID'] = $objectTypeID;
-        $obj['properties'] = $properties;
-        $obj['requiredProperties'] = $requiredProperties;
-        $obj['searchableProperties'] = $searchableProperties;
-        $obj['secondaryDisplayProperties'] = $secondaryDisplayProperties;
+        $self['id'] = $id;
+        $self['allowsSensitiveProperties'] = $allowsSensitiveProperties;
+        $self['archived'] = $archived;
+        $self['associations'] = $associations;
+        $self['fullyQualifiedName'] = $fullyQualifiedName;
+        $self['labels'] = $labels;
+        $self['name'] = $name;
+        $self['objectTypeID'] = $objectTypeID;
+        $self['properties'] = $properties;
+        $self['requiredProperties'] = $requiredProperties;
+        $self['searchableProperties'] = $searchableProperties;
+        $self['secondaryDisplayProperties'] = $secondaryDisplayProperties;
 
-        null !== $createdAt && $obj['createdAt'] = $createdAt;
-        null !== $createdByUserID && $obj['createdByUserID'] = $createdByUserID;
-        null !== $description && $obj['description'] = $description;
-        null !== $primaryDisplayProperty && $obj['primaryDisplayProperty'] = $primaryDisplayProperty;
-        null !== $updatedAt && $obj['updatedAt'] = $updatedAt;
-        null !== $updatedByUserID && $obj['updatedByUserID'] = $updatedByUserID;
+        null !== $createdAt && $self['createdAt'] = $createdAt;
+        null !== $createdByUserID && $self['createdByUserID'] = $createdByUserID;
+        null !== $description && $self['description'] = $description;
+        null !== $primaryDisplayProperty && $self['primaryDisplayProperty'] = $primaryDisplayProperty;
+        null !== $updatedAt && $self['updatedAt'] = $updatedAt;
+        null !== $updatedByUserID && $self['updatedByUserID'] = $updatedByUserID;
 
-        return $obj;
+        return $self;
     }
 
     public function withID(string $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     public function withAllowsSensitiveProperties(
         bool $allowsSensitiveProperties
     ): self {
-        $obj = clone $this;
-        $obj['allowsSensitiveProperties'] = $allowsSensitiveProperties;
+        $self = clone $this;
+        $self['allowsSensitiveProperties'] = $allowsSensitiveProperties;
 
-        return $obj;
+        return $self;
     }
 
     public function withArchived(bool $archived): self
     {
-        $obj = clone $this;
-        $obj['archived'] = $archived;
+        $self = clone $this;
+        $self['archived'] = $archived;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -320,18 +320,18 @@ final class ObjectSchema implements BaseModel
      */
     public function withAssociations(array $associations): self
     {
-        $obj = clone $this;
-        $obj['associations'] = $associations;
+        $self = clone $this;
+        $self['associations'] = $associations;
 
-        return $obj;
+        return $self;
     }
 
     public function withFullyQualifiedName(string $fullyQualifiedName): self
     {
-        $obj = clone $this;
-        $obj['fullyQualifiedName'] = $fullyQualifiedName;
+        $self = clone $this;
+        $self['fullyQualifiedName'] = $fullyQualifiedName;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -341,26 +341,26 @@ final class ObjectSchema implements BaseModel
      */
     public function withLabels(ObjectTypeDefinitionLabels|array $labels): self
     {
-        $obj = clone $this;
-        $obj['labels'] = $labels;
+        $self = clone $this;
+        $self['labels'] = $labels;
 
-        return $obj;
+        return $self;
     }
 
     public function withName(string $name): self
     {
-        $obj = clone $this;
-        $obj['name'] = $name;
+        $self = clone $this;
+        $self['name'] = $name;
 
-        return $obj;
+        return $self;
     }
 
     public function withObjectTypeID(string $objectTypeID): self
     {
-        $obj = clone $this;
-        $obj['objectTypeID'] = $objectTypeID;
+        $self = clone $this;
+        $self['objectTypeID'] = $objectTypeID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -396,10 +396,10 @@ final class ObjectSchema implements BaseModel
      */
     public function withProperties(array $properties): self
     {
-        $obj = clone $this;
-        $obj['properties'] = $properties;
+        $self = clone $this;
+        $self['properties'] = $properties;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -407,10 +407,10 @@ final class ObjectSchema implements BaseModel
      */
     public function withRequiredProperties(array $requiredProperties): self
     {
-        $obj = clone $this;
-        $obj['requiredProperties'] = $requiredProperties;
+        $self = clone $this;
+        $self['requiredProperties'] = $requiredProperties;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -418,10 +418,10 @@ final class ObjectSchema implements BaseModel
      */
     public function withSearchableProperties(array $searchableProperties): self
     {
-        $obj = clone $this;
-        $obj['searchableProperties'] = $searchableProperties;
+        $self = clone $this;
+        $self['searchableProperties'] = $searchableProperties;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -430,58 +430,58 @@ final class ObjectSchema implements BaseModel
     public function withSecondaryDisplayProperties(
         array $secondaryDisplayProperties
     ): self {
-        $obj = clone $this;
-        $obj['secondaryDisplayProperties'] = $secondaryDisplayProperties;
+        $self = clone $this;
+        $self['secondaryDisplayProperties'] = $secondaryDisplayProperties;
 
-        return $obj;
+        return $self;
     }
 
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
-        $obj = clone $this;
-        $obj['createdAt'] = $createdAt;
+        $self = clone $this;
+        $self['createdAt'] = $createdAt;
 
-        return $obj;
+        return $self;
     }
 
     public function withCreatedByUserID(int $createdByUserID): self
     {
-        $obj = clone $this;
-        $obj['createdByUserID'] = $createdByUserID;
+        $self = clone $this;
+        $self['createdByUserID'] = $createdByUserID;
 
-        return $obj;
+        return $self;
     }
 
     public function withDescription(string $description): self
     {
-        $obj = clone $this;
-        $obj['description'] = $description;
+        $self = clone $this;
+        $self['description'] = $description;
 
-        return $obj;
+        return $self;
     }
 
     public function withPrimaryDisplayProperty(
         string $primaryDisplayProperty
     ): self {
-        $obj = clone $this;
-        $obj['primaryDisplayProperty'] = $primaryDisplayProperty;
+        $self = clone $this;
+        $self['primaryDisplayProperty'] = $primaryDisplayProperty;
 
-        return $obj;
+        return $self;
     }
 
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
-        $obj = clone $this;
-        $obj['updatedAt'] = $updatedAt;
+        $self = clone $this;
+        $self['updatedAt'] = $updatedAt;
 
-        return $obj;
+        return $self;
     }
 
     public function withUpdatedByUserID(int $updatedByUserID): self
     {
-        $obj = clone $this;
-        $obj['updatedByUserID'] = $updatedByUserID;
+        $self = clone $this;
+        $self['updatedByUserID'] = $updatedByUserID;
 
-        return $obj;
+        return $self;
     }
 }

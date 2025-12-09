@@ -51,36 +51,36 @@ final class PublicTeam implements BaseModel
      */
     public static function with(string $id, string $name, bool $primary): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['id'] = $id;
-        $obj['name'] = $name;
-        $obj['primary'] = $primary;
+        $self['id'] = $id;
+        $self['name'] = $name;
+        $self['primary'] = $primary;
 
-        return $obj;
+        return $self;
     }
 
     public function withID(string $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     public function withName(string $name): self
     {
-        $obj = clone $this;
-        $obj['name'] = $name;
+        $self = clone $this;
+        $self['name'] = $name;
 
-        return $obj;
+        return $self;
     }
 
     public function withPrimary(bool $primary): self
     {
-        $obj = clone $this;
-        $obj['primary'] = $primary;
+        $self = clone $this;
+        $self['primary'] = $primary;
 
-        return $obj;
+        return $self;
     }
 }

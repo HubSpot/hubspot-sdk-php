@@ -80,14 +80,14 @@ final class StatusBatchGetParams implements BaseModel
         array $inputs,
         ?int $businessUnitID = null
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['channel'] = $channel;
-        $obj['inputs'] = $inputs;
+        $self['channel'] = $channel;
+        $self['inputs'] = $inputs;
 
-        null !== $businessUnitID && $obj['businessUnitID'] = $businessUnitID;
+        null !== $businessUnitID && $self['businessUnitID'] = $businessUnitID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -97,10 +97,10 @@ final class StatusBatchGetParams implements BaseModel
      */
     public function withChannel(Channel|string $channel): self
     {
-        $obj = clone $this;
-        $obj['channel'] = $channel;
+        $self = clone $this;
+        $self['channel'] = $channel;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -110,10 +110,10 @@ final class StatusBatchGetParams implements BaseModel
      */
     public function withInputs(array $inputs): self
     {
-        $obj = clone $this;
-        $obj['inputs'] = $inputs;
+        $self = clone $this;
+        $self['inputs'] = $inputs;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -121,9 +121,9 @@ final class StatusBatchGetParams implements BaseModel
      */
     public function withBusinessUnitID(int $businessUnitID): self
     {
-        $obj = clone $this;
-        $obj['businessUnitID'] = $businessUnitID;
+        $self = clone $this;
+        $self['businessUnitID'] = $businessUnitID;
 
-        return $obj;
+        return $self;
     }
 }

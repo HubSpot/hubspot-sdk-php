@@ -58,27 +58,27 @@ final class DefinitionDeleteLabelParams implements BaseModel
         string $fromObjectType,
         string $toObjectType
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['fromObjectType'] = $fromObjectType;
-        $obj['toObjectType'] = $toObjectType;
+        $self['fromObjectType'] = $fromObjectType;
+        $self['toObjectType'] = $toObjectType;
 
-        return $obj;
+        return $self;
     }
 
     public function withFromObjectType(string $fromObjectType): self
     {
-        $obj = clone $this;
-        $obj['fromObjectType'] = $fromObjectType;
+        $self = clone $this;
+        $self['fromObjectType'] = $fromObjectType;
 
-        return $obj;
+        return $self;
     }
 
     public function withToObjectType(string $toObjectType): self
     {
-        $obj = clone $this;
-        $obj['toObjectType'] = $toObjectType;
+        $self = clone $this;
+        $self['toObjectType'] = $toObjectType;
 
-        return $obj;
+        return $self;
     }
 }

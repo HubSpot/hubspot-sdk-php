@@ -66,13 +66,13 @@ final class PublicAssociationMultiPost implements BaseModel
         PublicObjectID|array $to,
         array $types
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['from'] = $from;
-        $obj['to'] = $to;
-        $obj['types'] = $types;
+        $self['from'] = $from;
+        $self['to'] = $to;
+        $self['types'] = $types;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -80,10 +80,10 @@ final class PublicAssociationMultiPost implements BaseModel
      */
     public function withFrom(PublicObjectID|array $from): self
     {
-        $obj = clone $this;
-        $obj['from'] = $from;
+        $self = clone $this;
+        $self['from'] = $from;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -91,10 +91,10 @@ final class PublicAssociationMultiPost implements BaseModel
      */
     public function withTo(PublicObjectID|array $to): self
     {
-        $obj = clone $this;
-        $obj['to'] = $to;
+        $self = clone $this;
+        $self['to'] = $to;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -104,9 +104,9 @@ final class PublicAssociationMultiPost implements BaseModel
      */
     public function withTypes(array $types): self
     {
-        $obj = clone $this;
-        $obj['types'] = $types;
+        $self = clone $this;
+        $self['types'] = $types;
 
-        return $obj;
+        return $self;
     }
 }

@@ -66,11 +66,11 @@ final class SubscriptionDefinitionsResponse implements BaseModel
      */
     public static function with(array $subscriptionDefinitions): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['subscriptionDefinitions'] = $subscriptionDefinitions;
+        $self['subscriptionDefinitions'] = $subscriptionDefinitions;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -93,9 +93,9 @@ final class SubscriptionDefinitionsResponse implements BaseModel
     public function withSubscriptionDefinitions(
         array $subscriptionDefinitions
     ): self {
-        $obj = clone $this;
-        $obj['subscriptionDefinitions'] = $subscriptionDefinitions;
+        $self = clone $this;
+        $self['subscriptionDefinitions'] = $subscriptionDefinitions;
 
-        return $obj;
+        return $self;
     }
 }

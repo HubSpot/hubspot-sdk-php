@@ -69,13 +69,13 @@ final class ReportCreationResponse implements BaseModel
         string $userEmail,
         int $userID
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['enqueueTime'] = $enqueueTime;
-        $obj['userEmail'] = $userEmail;
-        $obj['userID'] = $userID;
+        $self['enqueueTime'] = $enqueueTime;
+        $self['userEmail'] = $userEmail;
+        $self['userID'] = $userID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -85,10 +85,10 @@ final class ReportCreationResponse implements BaseModel
      */
     public function withEnqueueTime(DateTime|array $enqueueTime): self
     {
-        $obj = clone $this;
-        $obj['enqueueTime'] = $enqueueTime;
+        $self = clone $this;
+        $self['enqueueTime'] = $enqueueTime;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -96,10 +96,10 @@ final class ReportCreationResponse implements BaseModel
      */
     public function withUserEmail(string $userEmail): self
     {
-        $obj = clone $this;
-        $obj['userEmail'] = $userEmail;
+        $self = clone $this;
+        $self['userEmail'] = $userEmail;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -107,9 +107,9 @@ final class ReportCreationResponse implements BaseModel
      */
     public function withUserID(int $userID): self
     {
-        $obj = clone $this;
-        $obj['userID'] = $userID;
+        $self = clone $this;
+        $self['userID'] = $userID;
 
-        return $obj;
+        return $self;
     }
 }

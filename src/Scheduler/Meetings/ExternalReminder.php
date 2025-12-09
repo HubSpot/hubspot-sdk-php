@@ -50,27 +50,27 @@ final class ExternalReminder implements BaseModel
      */
     public static function with(int $numberOfTimeUnits, string $timeUnit): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['numberOfTimeUnits'] = $numberOfTimeUnits;
-        $obj['timeUnit'] = $timeUnit;
+        $self['numberOfTimeUnits'] = $numberOfTimeUnits;
+        $self['timeUnit'] = $timeUnit;
 
-        return $obj;
+        return $self;
     }
 
     public function withNumberOfTimeUnits(int $numberOfTimeUnits): self
     {
-        $obj = clone $this;
-        $obj['numberOfTimeUnits'] = $numberOfTimeUnits;
+        $self = clone $this;
+        $self['numberOfTimeUnits'] = $numberOfTimeUnits;
 
-        return $obj;
+        return $self;
     }
 
     public function withTimeUnit(string $timeUnit): self
     {
-        $obj = clone $this;
-        $obj['timeUnit'] = $timeUnit;
+        $self = clone $this;
+        $self['timeUnit'] = $timeUnit;
 
-        return $obj;
+        return $self;
     }
 }

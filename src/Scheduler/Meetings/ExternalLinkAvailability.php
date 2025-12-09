@@ -62,20 +62,20 @@ final class ExternalLinkAvailability implements BaseModel
         bool $hasMore,
         array $linkAvailabilityByDuration
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['hasMore'] = $hasMore;
-        $obj['linkAvailabilityByDuration'] = $linkAvailabilityByDuration;
+        $self['hasMore'] = $hasMore;
+        $self['linkAvailabilityByDuration'] = $linkAvailabilityByDuration;
 
-        return $obj;
+        return $self;
     }
 
     public function withHasMore(bool $hasMore): self
     {
-        $obj = clone $this;
-        $obj['hasMore'] = $hasMore;
+        $self = clone $this;
+        $self['hasMore'] = $hasMore;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -86,9 +86,9 @@ final class ExternalLinkAvailability implements BaseModel
     public function withLinkAvailabilityByDuration(
         array $linkAvailabilityByDuration
     ): self {
-        $obj = clone $this;
-        $obj['linkAvailabilityByDuration'] = $linkAvailabilityByDuration;
+        $self = clone $this;
+        $self['linkAvailabilityByDuration'] = $linkAvailabilityByDuration;
 
-        return $obj;
+        return $self;
     }
 }

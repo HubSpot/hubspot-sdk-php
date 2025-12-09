@@ -57,12 +57,12 @@ final class BusinessUnitGetByUserIDParams implements BaseModel
         ?array $name = null,
         ?array $properties = null
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $name && $obj['name'] = $name;
-        null !== $properties && $obj['properties'] = $properties;
+        null !== $name && $self['name'] = $name;
+        null !== $properties && $self['properties'] = $properties;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -72,10 +72,10 @@ final class BusinessUnitGetByUserIDParams implements BaseModel
      */
     public function withName(array $name): self
     {
-        $obj = clone $this;
-        $obj['name'] = $name;
+        $self = clone $this;
+        $self['name'] = $name;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -85,9 +85,9 @@ final class BusinessUnitGetByUserIDParams implements BaseModel
      */
     public function withProperties(array $properties): self
     {
-        $obj = clone $this;
-        $obj['properties'] = $properties;
+        $self = clone $this;
+        $self['properties'] = $properties;
 
-        return $obj;
+        return $self;
     }
 }

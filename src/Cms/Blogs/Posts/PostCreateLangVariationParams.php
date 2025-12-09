@@ -63,13 +63,13 @@ final class PostCreateLangVariationParams implements BaseModel
      */
     public static function with(string $id, ?string $language = null): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['id'] = $id;
+        $self['id'] = $id;
 
-        null !== $language && $obj['language'] = $language;
+        null !== $language && $self['language'] = $language;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -77,10 +77,10 @@ final class PostCreateLangVariationParams implements BaseModel
      */
     public function withID(string $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -88,9 +88,9 @@ final class PostCreateLangVariationParams implements BaseModel
      */
     public function withLanguage(string $language): self
     {
-        $obj = clone $this;
-        $obj['language'] = $language;
+        $self = clone $this;
+        $self['language'] = $language;
 
-        return $obj;
+        return $self;
     }
 }

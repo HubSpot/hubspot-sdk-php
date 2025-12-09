@@ -81,15 +81,15 @@ final class PublicCommentEgg implements BaseModel
         Type|string $type = 'COMMENT',
         ?string $richText = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['attachments'] = $attachments;
-        $obj['text'] = $text;
-        $obj['type'] = $type;
+        $self['attachments'] = $attachments;
+        $self['text'] = $text;
+        $self['type'] = $type;
 
-        null !== $richText && $obj['richText'] = $richText;
+        null !== $richText && $self['richText'] = $richText;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -105,18 +105,18 @@ final class PublicCommentEgg implements BaseModel
      */
     public function withAttachments(array $attachments): self
     {
-        $obj = clone $this;
-        $obj['attachments'] = $attachments;
+        $self = clone $this;
+        $self['attachments'] = $attachments;
 
-        return $obj;
+        return $self;
     }
 
     public function withText(string $text): self
     {
-        $obj = clone $this;
-        $obj['text'] = $text;
+        $self = clone $this;
+        $self['text'] = $text;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -124,17 +124,17 @@ final class PublicCommentEgg implements BaseModel
      */
     public function withType(Type|string $type): self
     {
-        $obj = clone $this;
-        $obj['type'] = $type;
+        $self = clone $this;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 
     public function withRichText(string $richText): self
     {
-        $obj = clone $this;
-        $obj['richText'] = $richText;
+        $self = clone $this;
+        $self['richText'] = $richText;
 
-        return $obj;
+        return $self;
     }
 }

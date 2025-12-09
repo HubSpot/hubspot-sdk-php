@@ -49,28 +49,28 @@ final class BoundedNextPage implements BaseModel
      */
     public static function with(int $offset, ?string $link = null): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['offset'] = $offset;
+        $self['offset'] = $offset;
 
-        null !== $link && $obj['link'] = $link;
+        null !== $link && $self['link'] = $link;
 
-        return $obj;
+        return $self;
     }
 
     public function withOffset(int $offset): self
     {
-        $obj = clone $this;
-        $obj['offset'] = $offset;
+        $self = clone $this;
+        $self['offset'] = $offset;
 
-        return $obj;
+        return $self;
     }
 
     public function withLink(string $link): self
     {
-        $obj = clone $this;
-        $obj['link'] = $link;
+        $self = clone $this;
+        $self['link'] = $link;
 
-        return $obj;
+        return $self;
     }
 }

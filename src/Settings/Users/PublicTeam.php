@@ -88,14 +88,14 @@ final class PublicTeam implements BaseModel
         array $secondaryUserIDs,
         array $userIDs
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['id'] = $id;
-        $obj['name'] = $name;
-        $obj['secondaryUserIDs'] = $secondaryUserIDs;
-        $obj['userIDs'] = $userIDs;
+        $self['id'] = $id;
+        $self['name'] = $name;
+        $self['secondaryUserIDs'] = $secondaryUserIDs;
+        $self['userIDs'] = $userIDs;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -103,10 +103,10 @@ final class PublicTeam implements BaseModel
      */
     public function withID(string $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -114,10 +114,10 @@ final class PublicTeam implements BaseModel
      */
     public function withName(string $name): self
     {
-        $obj = clone $this;
-        $obj['name'] = $name;
+        $self = clone $this;
+        $self['name'] = $name;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -127,10 +127,10 @@ final class PublicTeam implements BaseModel
      */
     public function withSecondaryUserIDs(array $secondaryUserIDs): self
     {
-        $obj = clone $this;
-        $obj['secondaryUserIDs'] = $secondaryUserIDs;
+        $self = clone $this;
+        $self['secondaryUserIDs'] = $secondaryUserIDs;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -140,9 +140,9 @@ final class PublicTeam implements BaseModel
      */
     public function withUserIDs(array $userIDs): self
     {
-        $obj = clone $this;
-        $obj['userIDs'] = $userIDs;
+        $self = clone $this;
+        $self['userIDs'] = $userIDs;
 
-        return $obj;
+        return $self;
     }
 }

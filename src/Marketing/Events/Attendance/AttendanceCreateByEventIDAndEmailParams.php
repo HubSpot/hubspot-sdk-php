@@ -87,20 +87,20 @@ final class AttendanceCreateByEventIDAndEmailParams implements BaseModel
      */
     public static function with(string $objectID, array $inputs): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['objectID'] = $objectID;
-        $obj['inputs'] = $inputs;
+        $self['objectID'] = $objectID;
+        $self['inputs'] = $inputs;
 
-        return $obj;
+        return $self;
     }
 
     public function withObjectID(string $objectID): self
     {
-        $obj = clone $this;
-        $obj['objectID'] = $objectID;
+        $self = clone $this;
+        $self['objectID'] = $objectID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -115,9 +115,9 @@ final class AttendanceCreateByEventIDAndEmailParams implements BaseModel
      */
     public function withInputs(array $inputs): self
     {
-        $obj = clone $this;
-        $obj['inputs'] = $inputs;
+        $self = clone $this;
+        $self['inputs'] = $inputs;
 
-        return $obj;
+        return $self;
     }
 }

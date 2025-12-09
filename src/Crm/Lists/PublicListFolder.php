@@ -125,20 +125,20 @@ final class PublicListFolder implements BaseModel
         ?\DateTimeInterface $updatedContentsAt = null,
         ?int $userID = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['id'] = $id;
-        $obj['childLists'] = $childLists;
-        $obj['childNodes'] = $childNodes;
-        $obj['parentFolderID'] = $parentFolderID;
+        $self['id'] = $id;
+        $self['childLists'] = $childLists;
+        $self['childNodes'] = $childNodes;
+        $self['parentFolderID'] = $parentFolderID;
 
-        null !== $createdAt && $obj['createdAt'] = $createdAt;
-        null !== $name && $obj['name'] = $name;
-        null !== $updatedAt && $obj['updatedAt'] = $updatedAt;
-        null !== $updatedContentsAt && $obj['updatedContentsAt'] = $updatedContentsAt;
-        null !== $userID && $obj['userID'] = $userID;
+        null !== $createdAt && $self['createdAt'] = $createdAt;
+        null !== $name && $self['name'] = $name;
+        null !== $updatedAt && $self['updatedAt'] = $updatedAt;
+        null !== $updatedContentsAt && $self['updatedContentsAt'] = $updatedContentsAt;
+        null !== $userID && $self['userID'] = $userID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -146,10 +146,10 @@ final class PublicListFolder implements BaseModel
      */
     public function withID(string $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -159,10 +159,10 @@ final class PublicListFolder implements BaseModel
      */
     public function withChildLists(array $childLists): self
     {
-        $obj = clone $this;
-        $obj['childLists'] = $childLists;
+        $self = clone $this;
+        $self['childLists'] = $childLists;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -170,10 +170,10 @@ final class PublicListFolder implements BaseModel
      */
     public function withChildNodes(array $childNodes): self
     {
-        $obj = clone $this;
-        $obj['childNodes'] = $childNodes;
+        $self = clone $this;
+        $self['childNodes'] = $childNodes;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -181,10 +181,10 @@ final class PublicListFolder implements BaseModel
      */
     public function withParentFolderID(string $parentFolderID): self
     {
-        $obj = clone $this;
-        $obj['parentFolderID'] = $parentFolderID;
+        $self = clone $this;
+        $self['parentFolderID'] = $parentFolderID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -192,10 +192,10 @@ final class PublicListFolder implements BaseModel
      */
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
-        $obj = clone $this;
-        $obj['createdAt'] = $createdAt;
+        $self = clone $this;
+        $self['createdAt'] = $createdAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -203,10 +203,10 @@ final class PublicListFolder implements BaseModel
      */
     public function withName(string $name): self
     {
-        $obj = clone $this;
-        $obj['name'] = $name;
+        $self = clone $this;
+        $self['name'] = $name;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -214,10 +214,10 @@ final class PublicListFolder implements BaseModel
      */
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
-        $obj = clone $this;
-        $obj['updatedAt'] = $updatedAt;
+        $self = clone $this;
+        $self['updatedAt'] = $updatedAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -226,10 +226,10 @@ final class PublicListFolder implements BaseModel
     public function withUpdatedContentsAt(
         \DateTimeInterface $updatedContentsAt
     ): self {
-        $obj = clone $this;
-        $obj['updatedContentsAt'] = $updatedContentsAt;
+        $self = clone $this;
+        $self['updatedContentsAt'] = $updatedContentsAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -237,9 +237,9 @@ final class PublicListFolder implements BaseModel
      */
     public function withUserID(int $userID): self
     {
-        $obj = clone $this;
-        $obj['userID'] = $userID;
+        $self = clone $this;
+        $self['userID'] = $userID;
 
-        return $obj;
+        return $self;
     }
 }

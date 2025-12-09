@@ -83,15 +83,15 @@ final class SettingsResponse implements BaseModel
         ThrottlingSettings|array $throttling,
         ?\DateTimeInterface $updatedAt = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['createdAt'] = $createdAt;
-        $obj['targetURL'] = $targetURL;
-        $obj['throttling'] = $throttling;
+        $self['createdAt'] = $createdAt;
+        $self['targetURL'] = $targetURL;
+        $self['throttling'] = $throttling;
 
-        null !== $updatedAt && $obj['updatedAt'] = $updatedAt;
+        null !== $updatedAt && $self['updatedAt'] = $updatedAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -99,10 +99,10 @@ final class SettingsResponse implements BaseModel
      */
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
-        $obj = clone $this;
-        $obj['createdAt'] = $createdAt;
+        $self = clone $this;
+        $self['createdAt'] = $createdAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -110,10 +110,10 @@ final class SettingsResponse implements BaseModel
      */
     public function withTargetURL(string $targetURL): self
     {
-        $obj = clone $this;
-        $obj['targetURL'] = $targetURL;
+        $self = clone $this;
+        $self['targetURL'] = $targetURL;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -123,10 +123,10 @@ final class SettingsResponse implements BaseModel
      */
     public function withThrottling(ThrottlingSettings|array $throttling): self
     {
-        $obj = clone $this;
-        $obj['throttling'] = $throttling;
+        $self = clone $this;
+        $self['throttling'] = $throttling;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -134,9 +134,9 @@ final class SettingsResponse implements BaseModel
      */
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
-        $obj = clone $this;
-        $obj['updatedAt'] = $updatedAt;
+        $self = clone $this;
+        $self['updatedAt'] = $updatedAt;
 
-        return $obj;
+        return $self;
     }
 }

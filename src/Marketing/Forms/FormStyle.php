@@ -134,87 +134,87 @@ final class FormStyle implements BaseModel
         string $submitFontColor,
         string $submitSize,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['backgroundWidth'] = $backgroundWidth;
-        $obj['fontFamily'] = $fontFamily;
-        $obj['helpTextColor'] = $helpTextColor;
-        $obj['helpTextSize'] = $helpTextSize;
-        $obj['labelTextColor'] = $labelTextColor;
-        $obj['labelTextSize'] = $labelTextSize;
-        $obj['legalConsentTextColor'] = $legalConsentTextColor;
-        $obj['legalConsentTextSize'] = $legalConsentTextSize;
-        $obj['submitAlignment'] = $submitAlignment;
-        $obj['submitColor'] = $submitColor;
-        $obj['submitFontColor'] = $submitFontColor;
-        $obj['submitSize'] = $submitSize;
+        $self['backgroundWidth'] = $backgroundWidth;
+        $self['fontFamily'] = $fontFamily;
+        $self['helpTextColor'] = $helpTextColor;
+        $self['helpTextSize'] = $helpTextSize;
+        $self['labelTextColor'] = $labelTextColor;
+        $self['labelTextSize'] = $labelTextSize;
+        $self['legalConsentTextColor'] = $legalConsentTextColor;
+        $self['legalConsentTextSize'] = $legalConsentTextSize;
+        $self['submitAlignment'] = $submitAlignment;
+        $self['submitColor'] = $submitColor;
+        $self['submitFontColor'] = $submitFontColor;
+        $self['submitSize'] = $submitSize;
 
-        return $obj;
+        return $self;
     }
 
     public function withBackgroundWidth(string $backgroundWidth): self
     {
-        $obj = clone $this;
-        $obj['backgroundWidth'] = $backgroundWidth;
+        $self = clone $this;
+        $self['backgroundWidth'] = $backgroundWidth;
 
-        return $obj;
+        return $self;
     }
 
     public function withFontFamily(string $fontFamily): self
     {
-        $obj = clone $this;
-        $obj['fontFamily'] = $fontFamily;
+        $self = clone $this;
+        $self['fontFamily'] = $fontFamily;
 
-        return $obj;
+        return $self;
     }
 
     public function withHelpTextColor(string $helpTextColor): self
     {
-        $obj = clone $this;
-        $obj['helpTextColor'] = $helpTextColor;
+        $self = clone $this;
+        $self['helpTextColor'] = $helpTextColor;
 
-        return $obj;
+        return $self;
     }
 
     public function withHelpTextSize(string $helpTextSize): self
     {
-        $obj = clone $this;
-        $obj['helpTextSize'] = $helpTextSize;
+        $self = clone $this;
+        $self['helpTextSize'] = $helpTextSize;
 
-        return $obj;
+        return $self;
     }
 
     public function withLabelTextColor(string $labelTextColor): self
     {
-        $obj = clone $this;
-        $obj['labelTextColor'] = $labelTextColor;
+        $self = clone $this;
+        $self['labelTextColor'] = $labelTextColor;
 
-        return $obj;
+        return $self;
     }
 
     public function withLabelTextSize(string $labelTextSize): self
     {
-        $obj = clone $this;
-        $obj['labelTextSize'] = $labelTextSize;
+        $self = clone $this;
+        $self['labelTextSize'] = $labelTextSize;
 
-        return $obj;
+        return $self;
     }
 
     public function withLegalConsentTextColor(
         string $legalConsentTextColor
     ): self {
-        $obj = clone $this;
-        $obj['legalConsentTextColor'] = $legalConsentTextColor;
+        $self = clone $this;
+        $self['legalConsentTextColor'] = $legalConsentTextColor;
 
-        return $obj;
+        return $self;
     }
 
     public function withLegalConsentTextSize(string $legalConsentTextSize): self
     {
-        $obj = clone $this;
-        $obj['legalConsentTextSize'] = $legalConsentTextSize;
+        $self = clone $this;
+        $self['legalConsentTextSize'] = $legalConsentTextSize;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -223,33 +223,33 @@ final class FormStyle implements BaseModel
     public function withSubmitAlignment(
         SubmitAlignment|string $submitAlignment
     ): self {
-        $obj = clone $this;
-        $obj['submitAlignment'] = $submitAlignment;
+        $self = clone $this;
+        $self['submitAlignment'] = $submitAlignment;
 
-        return $obj;
+        return $self;
     }
 
     public function withSubmitColor(string $submitColor): self
     {
-        $obj = clone $this;
-        $obj['submitColor'] = $submitColor;
+        $self = clone $this;
+        $self['submitColor'] = $submitColor;
 
-        return $obj;
+        return $self;
     }
 
     public function withSubmitFontColor(string $submitFontColor): self
     {
-        $obj = clone $this;
-        $obj['submitFontColor'] = $submitFontColor;
+        $self = clone $this;
+        $self['submitFontColor'] = $submitFontColor;
 
-        return $obj;
+        return $self;
     }
 
     public function withSubmitSize(string $submitSize): self
     {
-        $obj = clone $this;
-        $obj['submitSize'] = $submitSize;
+        $self = clone $this;
+        $self['submitSize'] = $submitSize;
 
-        return $obj;
+        return $self;
     }
 }

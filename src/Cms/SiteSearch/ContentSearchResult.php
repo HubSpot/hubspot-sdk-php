@@ -199,28 +199,28 @@ final class ContentSearchResult implements BaseModel
         ?array $tags = null,
         ?string $title = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['id'] = $id;
-        $obj['domain'] = $domain;
-        $obj['score'] = $score;
-        $obj['type'] = $type;
-        $obj['url'] = $url;
+        $self['id'] = $id;
+        $self['domain'] = $domain;
+        $self['score'] = $score;
+        $self['type'] = $type;
+        $self['url'] = $url;
 
-        null !== $authorFullName && $obj['authorFullName'] = $authorFullName;
-        null !== $category && $obj['category'] = $category;
-        null !== $combinedID && $obj['combinedID'] = $combinedID;
-        null !== $description && $obj['description'] = $description;
-        null !== $featuredImageURL && $obj['featuredImageURL'] = $featuredImageURL;
-        null !== $language && $obj['language'] = $language;
-        null !== $publishedDate && $obj['publishedDate'] = $publishedDate;
-        null !== $rowID && $obj['rowID'] = $rowID;
-        null !== $subcategory && $obj['subcategory'] = $subcategory;
-        null !== $tableID && $obj['tableID'] = $tableID;
-        null !== $tags && $obj['tags'] = $tags;
-        null !== $title && $obj['title'] = $title;
+        null !== $authorFullName && $self['authorFullName'] = $authorFullName;
+        null !== $category && $self['category'] = $category;
+        null !== $combinedID && $self['combinedID'] = $combinedID;
+        null !== $description && $self['description'] = $description;
+        null !== $featuredImageURL && $self['featuredImageURL'] = $featuredImageURL;
+        null !== $language && $self['language'] = $language;
+        null !== $publishedDate && $self['publishedDate'] = $publishedDate;
+        null !== $rowID && $self['rowID'] = $rowID;
+        null !== $subcategory && $self['subcategory'] = $subcategory;
+        null !== $tableID && $self['tableID'] = $tableID;
+        null !== $tags && $self['tags'] = $tags;
+        null !== $title && $self['title'] = $title;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -228,10 +228,10 @@ final class ContentSearchResult implements BaseModel
      */
     public function withID(int $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -239,10 +239,10 @@ final class ContentSearchResult implements BaseModel
      */
     public function withDomain(string $domain): self
     {
-        $obj = clone $this;
-        $obj['domain'] = $domain;
+        $self = clone $this;
+        $self['domain'] = $domain;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -250,10 +250,10 @@ final class ContentSearchResult implements BaseModel
      */
     public function withScore(float $score): self
     {
-        $obj = clone $this;
-        $obj['score'] = $score;
+        $self = clone $this;
+        $self['score'] = $score;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -263,10 +263,10 @@ final class ContentSearchResult implements BaseModel
      */
     public function withType(Type|string $type): self
     {
-        $obj = clone $this;
-        $obj['type'] = $type;
+        $self = clone $this;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -274,10 +274,10 @@ final class ContentSearchResult implements BaseModel
      */
     public function withURL(string $url): self
     {
-        $obj = clone $this;
-        $obj['url'] = $url;
+        $self = clone $this;
+        $self['url'] = $url;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -285,10 +285,10 @@ final class ContentSearchResult implements BaseModel
      */
     public function withAuthorFullName(string $authorFullName): self
     {
-        $obj = clone $this;
-        $obj['authorFullName'] = $authorFullName;
+        $self = clone $this;
+        $self['authorFullName'] = $authorFullName;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -296,10 +296,10 @@ final class ContentSearchResult implements BaseModel
      */
     public function withCategory(string $category): self
     {
-        $obj = clone $this;
-        $obj['category'] = $category;
+        $self = clone $this;
+        $self['category'] = $category;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -307,10 +307,10 @@ final class ContentSearchResult implements BaseModel
      */
     public function withCombinedID(string $combinedID): self
     {
-        $obj = clone $this;
-        $obj['combinedID'] = $combinedID;
+        $self = clone $this;
+        $self['combinedID'] = $combinedID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -318,10 +318,10 @@ final class ContentSearchResult implements BaseModel
      */
     public function withDescription(string $description): self
     {
-        $obj = clone $this;
-        $obj['description'] = $description;
+        $self = clone $this;
+        $self['description'] = $description;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -329,10 +329,10 @@ final class ContentSearchResult implements BaseModel
      */
     public function withFeaturedImageURL(string $featuredImageURL): self
     {
-        $obj = clone $this;
-        $obj['featuredImageURL'] = $featuredImageURL;
+        $self = clone $this;
+        $self['featuredImageURL'] = $featuredImageURL;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -342,10 +342,10 @@ final class ContentSearchResult implements BaseModel
      */
     public function withLanguage(Language|string $language): self
     {
-        $obj = clone $this;
-        $obj['language'] = $language;
+        $self = clone $this;
+        $self['language'] = $language;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -353,10 +353,10 @@ final class ContentSearchResult implements BaseModel
      */
     public function withPublishedDate(int $publishedDate): self
     {
-        $obj = clone $this;
-        $obj['publishedDate'] = $publishedDate;
+        $self = clone $this;
+        $self['publishedDate'] = $publishedDate;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -364,10 +364,10 @@ final class ContentSearchResult implements BaseModel
      */
     public function withRowID(int $rowID): self
     {
-        $obj = clone $this;
-        $obj['rowID'] = $rowID;
+        $self = clone $this;
+        $self['rowID'] = $rowID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -375,10 +375,10 @@ final class ContentSearchResult implements BaseModel
      */
     public function withSubcategory(string $subcategory): self
     {
-        $obj = clone $this;
-        $obj['subcategory'] = $subcategory;
+        $self = clone $this;
+        $self['subcategory'] = $subcategory;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -386,10 +386,10 @@ final class ContentSearchResult implements BaseModel
      */
     public function withTableID(int $tableID): self
     {
-        $obj = clone $this;
-        $obj['tableID'] = $tableID;
+        $self = clone $this;
+        $self['tableID'] = $tableID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -399,10 +399,10 @@ final class ContentSearchResult implements BaseModel
      */
     public function withTags(array $tags): self
     {
-        $obj = clone $this;
-        $obj['tags'] = $tags;
+        $self = clone $this;
+        $self['tags'] = $tags;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -410,9 +410,9 @@ final class ContentSearchResult implements BaseModel
      */
     public function withTitle(string $title): self
     {
-        $obj = clone $this;
-        $obj['title'] = $title;
+        $self = clone $this;
+        $self['title'] = $title;
 
-        return $obj;
+        return $self;
     }
 }

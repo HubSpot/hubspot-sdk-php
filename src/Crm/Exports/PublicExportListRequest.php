@@ -145,22 +145,22 @@ final class PublicExportListRequest implements BaseModel
         bool $overrideAssociatedObjectsPerDefinitionPerRowLimit,
         ExportType|string $exportType = 'LIST',
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['associatedObjectType'] = $associatedObjectType;
-        $obj['exportInternalValuesOptions'] = $exportInternalValuesOptions;
-        $obj['exportName'] = $exportName;
-        $obj['exportType'] = $exportType;
-        $obj['format'] = $format;
-        $obj['includeLabeledAssociations'] = $includeLabeledAssociations;
-        $obj['includePrimaryDisplayPropertyForAssociatedObjects'] = $includePrimaryDisplayPropertyForAssociatedObjects;
-        $obj['language'] = $language;
-        $obj['listID'] = $listID;
-        $obj['objectProperties'] = $objectProperties;
-        $obj['objectType'] = $objectType;
-        $obj['overrideAssociatedObjectsPerDefinitionPerRowLimit'] = $overrideAssociatedObjectsPerDefinitionPerRowLimit;
+        $self['associatedObjectType'] = $associatedObjectType;
+        $self['exportInternalValuesOptions'] = $exportInternalValuesOptions;
+        $self['exportName'] = $exportName;
+        $self['exportType'] = $exportType;
+        $self['format'] = $format;
+        $self['includeLabeledAssociations'] = $includeLabeledAssociations;
+        $self['includePrimaryDisplayPropertyForAssociatedObjects'] = $includePrimaryDisplayPropertyForAssociatedObjects;
+        $self['language'] = $language;
+        $self['listID'] = $listID;
+        $self['objectProperties'] = $objectProperties;
+        $self['objectType'] = $objectType;
+        $self['overrideAssociatedObjectsPerDefinitionPerRowLimit'] = $overrideAssociatedObjectsPerDefinitionPerRowLimit;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -168,10 +168,10 @@ final class PublicExportListRequest implements BaseModel
      */
     public function withAssociatedObjectType(array $associatedObjectType): self
     {
-        $obj = clone $this;
-        $obj['associatedObjectType'] = $associatedObjectType;
+        $self = clone $this;
+        $self['associatedObjectType'] = $associatedObjectType;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -180,18 +180,18 @@ final class PublicExportListRequest implements BaseModel
     public function withExportInternalValuesOptions(
         array $exportInternalValuesOptions
     ): self {
-        $obj = clone $this;
-        $obj['exportInternalValuesOptions'] = $exportInternalValuesOptions;
+        $self = clone $this;
+        $self['exportInternalValuesOptions'] = $exportInternalValuesOptions;
 
-        return $obj;
+        return $self;
     }
 
     public function withExportName(string $exportName): self
     {
-        $obj = clone $this;
-        $obj['exportName'] = $exportName;
+        $self = clone $this;
+        $self['exportName'] = $exportName;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -199,10 +199,10 @@ final class PublicExportListRequest implements BaseModel
      */
     public function withExportType(ExportType|string $exportType): self
     {
-        $obj = clone $this;
-        $obj['exportType'] = $exportType;
+        $self = clone $this;
+        $self['exportType'] = $exportType;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -210,28 +210,28 @@ final class PublicExportListRequest implements BaseModel
      */
     public function withFormat(Format|string $format): self
     {
-        $obj = clone $this;
-        $obj['format'] = $format;
+        $self = clone $this;
+        $self['format'] = $format;
 
-        return $obj;
+        return $self;
     }
 
     public function withIncludeLabeledAssociations(
         bool $includeLabeledAssociations
     ): self {
-        $obj = clone $this;
-        $obj['includeLabeledAssociations'] = $includeLabeledAssociations;
+        $self = clone $this;
+        $self['includeLabeledAssociations'] = $includeLabeledAssociations;
 
-        return $obj;
+        return $self;
     }
 
     public function withIncludePrimaryDisplayPropertyForAssociatedObjects(
         bool $includePrimaryDisplayPropertyForAssociatedObjects
     ): self {
-        $obj = clone $this;
-        $obj['includePrimaryDisplayPropertyForAssociatedObjects'] = $includePrimaryDisplayPropertyForAssociatedObjects;
+        $self = clone $this;
+        $self['includePrimaryDisplayPropertyForAssociatedObjects'] = $includePrimaryDisplayPropertyForAssociatedObjects;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -239,18 +239,18 @@ final class PublicExportListRequest implements BaseModel
      */
     public function withLanguage(Language|string $language): self
     {
-        $obj = clone $this;
-        $obj['language'] = $language;
+        $self = clone $this;
+        $self['language'] = $language;
 
-        return $obj;
+        return $self;
     }
 
     public function withListID(string $listID): self
     {
-        $obj = clone $this;
-        $obj['listID'] = $listID;
+        $self = clone $this;
+        $self['listID'] = $listID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -258,26 +258,26 @@ final class PublicExportListRequest implements BaseModel
      */
     public function withObjectProperties(array $objectProperties): self
     {
-        $obj = clone $this;
-        $obj['objectProperties'] = $objectProperties;
+        $self = clone $this;
+        $self['objectProperties'] = $objectProperties;
 
-        return $obj;
+        return $self;
     }
 
     public function withObjectType(string $objectType): self
     {
-        $obj = clone $this;
-        $obj['objectType'] = $objectType;
+        $self = clone $this;
+        $self['objectType'] = $objectType;
 
-        return $obj;
+        return $self;
     }
 
     public function withOverrideAssociatedObjectsPerDefinitionPerRowLimit(
         bool $overrideAssociatedObjectsPerDefinitionPerRowLimit
     ): self {
-        $obj = clone $this;
-        $obj['overrideAssociatedObjectsPerDefinitionPerRowLimit'] = $overrideAssociatedObjectsPerDefinitionPerRowLimit;
+        $self = clone $this;
+        $self['overrideAssociatedObjectsPerDefinitionPerRowLimit'] = $overrideAssociatedObjectsPerDefinitionPerRowLimit;
 
-        return $obj;
+        return $self;
     }
 }

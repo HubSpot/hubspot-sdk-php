@@ -102,14 +102,14 @@ final class TopLevelActions implements BaseModel
         ActionHookActionBody|array|IFrameActionBody|null $primary = null,
         IFrameActionBody|array|null $settings = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['secondary'] = $secondary;
+        $self['secondary'] = $secondary;
 
-        null !== $primary && $obj['primary'] = $primary;
-        null !== $settings && $obj['settings'] = $settings;
+        null !== $primary && $self['primary'] = $primary;
+        null !== $settings && $self['settings'] = $settings;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -131,10 +131,10 @@ final class TopLevelActions implements BaseModel
      */
     public function withSecondary(array $secondary): self
     {
-        $obj = clone $this;
-        $obj['secondary'] = $secondary;
+        $self = clone $this;
+        $self['secondary'] = $secondary;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -157,10 +157,10 @@ final class TopLevelActions implements BaseModel
     public function withPrimary(
         ActionHookActionBody|array|IFrameActionBody $primary
     ): self {
-        $obj = clone $this;
-        $obj['primary'] = $primary;
+        $self = clone $this;
+        $self['primary'] = $primary;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -175,9 +175,9 @@ final class TopLevelActions implements BaseModel
      */
     public function withSettings(IFrameActionBody|array $settings): self
     {
-        $obj = clone $this;
-        $obj['settings'] = $settings;
+        $self = clone $this;
+        $self['settings'] = $settings;
 
-        return $obj;
+        return $self;
     }
 }

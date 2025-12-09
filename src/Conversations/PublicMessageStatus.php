@@ -61,13 +61,13 @@ final class PublicMessageStatus implements BaseModel
         StatusType|string $statusType,
         PublicMessageFailureDetails|array|null $failureDetails = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['statusType'] = $statusType;
+        $self['statusType'] = $statusType;
 
-        null !== $failureDetails && $obj['failureDetails'] = $failureDetails;
+        null !== $failureDetails && $self['failureDetails'] = $failureDetails;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -75,10 +75,10 @@ final class PublicMessageStatus implements BaseModel
      */
     public function withStatusType(StatusType|string $statusType): self
     {
-        $obj = clone $this;
-        $obj['statusType'] = $statusType;
+        $self = clone $this;
+        $self['statusType'] = $statusType;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -89,9 +89,9 @@ final class PublicMessageStatus implements BaseModel
     public function withFailureDetails(
         PublicMessageFailureDetails|array $failureDetails
     ): self {
-        $obj = clone $this;
-        $obj['failureDetails'] = $failureDetails;
+        $self = clone $this;
+        $self['failureDetails'] = $failureDetails;
 
-        return $obj;
+        return $self;
     }
 }

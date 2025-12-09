@@ -69,13 +69,13 @@ final class APIWeeklyEnrollmentSchedule implements BaseModel
         APITimeOfDay|array $timeOfDay,
         Type|string $type = 'WEEKLY',
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['daysOfWeek'] = $daysOfWeek;
-        $obj['timeOfDay'] = $timeOfDay;
-        $obj['type'] = $type;
+        $self['daysOfWeek'] = $daysOfWeek;
+        $self['timeOfDay'] = $timeOfDay;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -83,10 +83,10 @@ final class APIWeeklyEnrollmentSchedule implements BaseModel
      */
     public function withDaysOfWeek(array $daysOfWeek): self
     {
-        $obj = clone $this;
-        $obj['daysOfWeek'] = $daysOfWeek;
+        $self = clone $this;
+        $self['daysOfWeek'] = $daysOfWeek;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -94,10 +94,10 @@ final class APIWeeklyEnrollmentSchedule implements BaseModel
      */
     public function withTimeOfDay(APITimeOfDay|array $timeOfDay): self
     {
-        $obj = clone $this;
-        $obj['timeOfDay'] = $timeOfDay;
+        $self = clone $this;
+        $self['timeOfDay'] = $timeOfDay;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -105,9 +105,9 @@ final class APIWeeklyEnrollmentSchedule implements BaseModel
      */
     public function withType(Type|string $type): self
     {
-        $obj = clone $this;
-        $obj['type'] = $type;
+        $self = clone $this;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 }

@@ -90,33 +90,33 @@ final class PublicRangedDatePropertyOperation implements BaseModel
         int $upperBound,
         OperationType|string $operationType = 'RANGED_DATE',
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['includeObjectsWithNoValueSet'] = $includeObjectsWithNoValueSet;
-        $obj['lowerBound'] = $lowerBound;
-        $obj['operationType'] = $operationType;
-        $obj['operator'] = $operator;
-        $obj['requiresTimeZoneConversion'] = $requiresTimeZoneConversion;
-        $obj['upperBound'] = $upperBound;
+        $self['includeObjectsWithNoValueSet'] = $includeObjectsWithNoValueSet;
+        $self['lowerBound'] = $lowerBound;
+        $self['operationType'] = $operationType;
+        $self['operator'] = $operator;
+        $self['requiresTimeZoneConversion'] = $requiresTimeZoneConversion;
+        $self['upperBound'] = $upperBound;
 
-        return $obj;
+        return $self;
     }
 
     public function withIncludeObjectsWithNoValueSet(
         bool $includeObjectsWithNoValueSet
     ): self {
-        $obj = clone $this;
-        $obj['includeObjectsWithNoValueSet'] = $includeObjectsWithNoValueSet;
+        $self = clone $this;
+        $self['includeObjectsWithNoValueSet'] = $includeObjectsWithNoValueSet;
 
-        return $obj;
+        return $self;
     }
 
     public function withLowerBound(int $lowerBound): self
     {
-        $obj = clone $this;
-        $obj['lowerBound'] = $lowerBound;
+        $self = clone $this;
+        $self['lowerBound'] = $lowerBound;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -124,34 +124,34 @@ final class PublicRangedDatePropertyOperation implements BaseModel
      */
     public function withOperationType(OperationType|string $operationType): self
     {
-        $obj = clone $this;
-        $obj['operationType'] = $operationType;
+        $self = clone $this;
+        $self['operationType'] = $operationType;
 
-        return $obj;
+        return $self;
     }
 
     public function withOperator(string $operator): self
     {
-        $obj = clone $this;
-        $obj['operator'] = $operator;
+        $self = clone $this;
+        $self['operator'] = $operator;
 
-        return $obj;
+        return $self;
     }
 
     public function withRequiresTimeZoneConversion(
         bool $requiresTimeZoneConversion
     ): self {
-        $obj = clone $this;
-        $obj['requiresTimeZoneConversion'] = $requiresTimeZoneConversion;
+        $self = clone $this;
+        $self['requiresTimeZoneConversion'] = $requiresTimeZoneConversion;
 
-        return $obj;
+        return $self;
     }
 
     public function withUpperBound(int $upperBound): self
     {
-        $obj = clone $this;
-        $obj['upperBound'] = $upperBound;
+        $self = clone $this;
+        $self['upperBound'] = $upperBound;
 
-        return $obj;
+        return $self;
     }
 }

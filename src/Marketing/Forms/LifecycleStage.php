@@ -54,12 +54,12 @@ final class LifecycleStage implements BaseModel
      */
     public static function with(string $objectTypeID, string $value): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['objectTypeID'] = $objectTypeID;
-        $obj['value'] = $value;
+        $self['objectTypeID'] = $objectTypeID;
+        $self['value'] = $value;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -67,10 +67,10 @@ final class LifecycleStage implements BaseModel
      */
     public function withObjectTypeID(string $objectTypeID): self
     {
-        $obj = clone $this;
-        $obj['objectTypeID'] = $objectTypeID;
+        $self = clone $this;
+        $self['objectTypeID'] = $objectTypeID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -78,9 +78,9 @@ final class LifecycleStage implements BaseModel
      */
     public function withValue(string $value): self
     {
-        $obj = clone $this;
-        $obj['value'] = $value;
+        $self = clone $this;
+        $self['value'] = $value;
 
-        return $obj;
+        return $self;
     }
 }

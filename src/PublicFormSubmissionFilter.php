@@ -164,16 +164,16 @@ final class PublicFormSubmissionFilter implements BaseModel
         ?string $formID = null,
         PublicNumOccurrencesRefineBy|array|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation|null $pruningRefineBy = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['filterType'] = $filterType;
-        $obj['operator'] = $operator;
+        $self['filterType'] = $filterType;
+        $self['operator'] = $operator;
 
-        null !== $coalescingRefineBy && $obj['coalescingRefineBy'] = $coalescingRefineBy;
-        null !== $formID && $obj['formID'] = $formID;
-        null !== $pruningRefineBy && $obj['pruningRefineBy'] = $pruningRefineBy;
+        null !== $coalescingRefineBy && $self['coalescingRefineBy'] = $coalescingRefineBy;
+        null !== $formID && $self['formID'] = $formID;
+        null !== $pruningRefineBy && $self['pruningRefineBy'] = $pruningRefineBy;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -181,10 +181,10 @@ final class PublicFormSubmissionFilter implements BaseModel
      */
     public function withFilterType(FilterType|string $filterType): self
     {
-        $obj = clone $this;
-        $obj['filterType'] = $filterType;
+        $self = clone $this;
+        $self['filterType'] = $filterType;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -192,10 +192,10 @@ final class PublicFormSubmissionFilter implements BaseModel
      */
     public function withOperator(Operator|string $operator): self
     {
-        $obj = clone $this;
-        $obj['operator'] = $operator;
+        $self = clone $this;
+        $self['operator'] = $operator;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -246,18 +246,18 @@ final class PublicFormSubmissionFilter implements BaseModel
     public function withCoalescingRefineBy(
         PublicNumOccurrencesRefineBy|array|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation $coalescingRefineBy,
     ): self {
-        $obj = clone $this;
-        $obj['coalescingRefineBy'] = $coalescingRefineBy;
+        $self = clone $this;
+        $self['coalescingRefineBy'] = $coalescingRefineBy;
 
-        return $obj;
+        return $self;
     }
 
     public function withFormID(string $formID): self
     {
-        $obj = clone $this;
-        $obj['formID'] = $formID;
+        $self = clone $this;
+        $self['formID'] = $formID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -308,9 +308,9 @@ final class PublicFormSubmissionFilter implements BaseModel
     public function withPruningRefineBy(
         PublicNumOccurrencesRefineBy|array|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation $pruningRefineBy,
     ): self {
-        $obj = clone $this;
-        $obj['pruningRefineBy'] = $pruningRefineBy;
+        $self = clone $this;
+        $self['pruningRefineBy'] = $pruningRefineBy;
 
-        return $obj;
+        return $self;
     }
 }

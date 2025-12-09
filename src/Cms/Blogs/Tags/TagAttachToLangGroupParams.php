@@ -82,15 +82,15 @@ final class TagAttachToLangGroupParams implements BaseModel
         string $primaryID,
         ?string $primaryLanguage = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['id'] = $id;
-        $obj['language'] = $language;
-        $obj['primaryID'] = $primaryID;
+        $self['id'] = $id;
+        $self['language'] = $language;
+        $self['primaryID'] = $primaryID;
 
-        null !== $primaryLanguage && $obj['primaryLanguage'] = $primaryLanguage;
+        null !== $primaryLanguage && $self['primaryLanguage'] = $primaryLanguage;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -98,10 +98,10 @@ final class TagAttachToLangGroupParams implements BaseModel
      */
     public function withID(string $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -109,10 +109,10 @@ final class TagAttachToLangGroupParams implements BaseModel
      */
     public function withLanguage(string $language): self
     {
-        $obj = clone $this;
-        $obj['language'] = $language;
+        $self = clone $this;
+        $self['language'] = $language;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -120,10 +120,10 @@ final class TagAttachToLangGroupParams implements BaseModel
      */
     public function withPrimaryID(string $primaryID): self
     {
-        $obj = clone $this;
-        $obj['primaryID'] = $primaryID;
+        $self = clone $this;
+        $self['primaryID'] = $primaryID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -131,9 +131,9 @@ final class TagAttachToLangGroupParams implements BaseModel
      */
     public function withPrimaryLanguage(string $primaryLanguage): self
     {
-        $obj = clone $this;
-        $obj['primaryLanguage'] = $primaryLanguage;
+        $self = clone $this;
+        $self['primaryLanguage'] = $primaryLanguage;
 
-        return $obj;
+        return $self;
     }
 }

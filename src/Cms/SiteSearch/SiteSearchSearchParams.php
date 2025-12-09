@@ -196,27 +196,27 @@ final class SiteSearchSearchParams implements BaseModel
         ?int $tableID = null,
         ?array $type = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $autocomplete && $obj['autocomplete'] = $autocomplete;
-        null !== $boostLimit && $obj['boostLimit'] = $boostLimit;
-        null !== $boostRecent && $obj['boostRecent'] = $boostRecent;
-        null !== $domain && $obj['domain'] = $domain;
-        null !== $groupID && $obj['groupID'] = $groupID;
-        null !== $hubdbQuery && $obj['hubdbQuery'] = $hubdbQuery;
-        null !== $language && $obj['language'] = $language;
-        null !== $length && $obj['length'] = $length;
-        null !== $limit && $obj['limit'] = $limit;
-        null !== $matchPrefix && $obj['matchPrefix'] = $matchPrefix;
-        null !== $offset && $obj['offset'] = $offset;
-        null !== $pathPrefix && $obj['pathPrefix'] = $pathPrefix;
-        null !== $popularityBoost && $obj['popularityBoost'] = $popularityBoost;
-        null !== $property && $obj['property'] = $property;
-        null !== $q && $obj['q'] = $q;
-        null !== $tableID && $obj['tableID'] = $tableID;
-        null !== $type && $obj['type'] = $type;
+        null !== $autocomplete && $self['autocomplete'] = $autocomplete;
+        null !== $boostLimit && $self['boostLimit'] = $boostLimit;
+        null !== $boostRecent && $self['boostRecent'] = $boostRecent;
+        null !== $domain && $self['domain'] = $domain;
+        null !== $groupID && $self['groupID'] = $groupID;
+        null !== $hubdbQuery && $self['hubdbQuery'] = $hubdbQuery;
+        null !== $language && $self['language'] = $language;
+        null !== $length && $self['length'] = $length;
+        null !== $limit && $self['limit'] = $limit;
+        null !== $matchPrefix && $self['matchPrefix'] = $matchPrefix;
+        null !== $offset && $self['offset'] = $offset;
+        null !== $pathPrefix && $self['pathPrefix'] = $pathPrefix;
+        null !== $popularityBoost && $self['popularityBoost'] = $popularityBoost;
+        null !== $property && $self['property'] = $property;
+        null !== $q && $self['q'] = $q;
+        null !== $tableID && $self['tableID'] = $tableID;
+        null !== $type && $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -224,10 +224,10 @@ final class SiteSearchSearchParams implements BaseModel
      */
     public function withAutocomplete(bool $autocomplete): self
     {
-        $obj = clone $this;
-        $obj['autocomplete'] = $autocomplete;
+        $self = clone $this;
+        $self['autocomplete'] = $autocomplete;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -235,10 +235,10 @@ final class SiteSearchSearchParams implements BaseModel
      */
     public function withBoostLimit(float $boostLimit): self
     {
-        $obj = clone $this;
-        $obj['boostLimit'] = $boostLimit;
+        $self = clone $this;
+        $self['boostLimit'] = $boostLimit;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -246,10 +246,10 @@ final class SiteSearchSearchParams implements BaseModel
      */
     public function withBoostRecent(string $boostRecent): self
     {
-        $obj = clone $this;
-        $obj['boostRecent'] = $boostRecent;
+        $self = clone $this;
+        $self['boostRecent'] = $boostRecent;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -259,10 +259,10 @@ final class SiteSearchSearchParams implements BaseModel
      */
     public function withDomain(array $domain): self
     {
-        $obj = clone $this;
-        $obj['domain'] = $domain;
+        $self = clone $this;
+        $self['domain'] = $domain;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -272,10 +272,10 @@ final class SiteSearchSearchParams implements BaseModel
      */
     public function withGroupID(array $groupID): self
     {
-        $obj = clone $this;
-        $obj['groupID'] = $groupID;
+        $self = clone $this;
+        $self['groupID'] = $groupID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -283,10 +283,10 @@ final class SiteSearchSearchParams implements BaseModel
      */
     public function withHubdbQuery(string $hubdbQuery): self
     {
-        $obj = clone $this;
-        $obj['hubdbQuery'] = $hubdbQuery;
+        $self = clone $this;
+        $self['hubdbQuery'] = $hubdbQuery;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -296,10 +296,10 @@ final class SiteSearchSearchParams implements BaseModel
      */
     public function withLanguage(Language|string $language): self
     {
-        $obj = clone $this;
-        $obj['language'] = $language;
+        $self = clone $this;
+        $self['language'] = $language;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -309,10 +309,10 @@ final class SiteSearchSearchParams implements BaseModel
      */
     public function withLength(Length|string $length): self
     {
-        $obj = clone $this;
-        $obj['length'] = $length;
+        $self = clone $this;
+        $self['length'] = $length;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -320,10 +320,10 @@ final class SiteSearchSearchParams implements BaseModel
      */
     public function withLimit(int $limit): self
     {
-        $obj = clone $this;
-        $obj['limit'] = $limit;
+        $self = clone $this;
+        $self['limit'] = $limit;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -331,10 +331,10 @@ final class SiteSearchSearchParams implements BaseModel
      */
     public function withMatchPrefix(bool $matchPrefix): self
     {
-        $obj = clone $this;
-        $obj['matchPrefix'] = $matchPrefix;
+        $self = clone $this;
+        $self['matchPrefix'] = $matchPrefix;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -342,10 +342,10 @@ final class SiteSearchSearchParams implements BaseModel
      */
     public function withOffset(int $offset): self
     {
-        $obj = clone $this;
-        $obj['offset'] = $offset;
+        $self = clone $this;
+        $self['offset'] = $offset;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -355,10 +355,10 @@ final class SiteSearchSearchParams implements BaseModel
      */
     public function withPathPrefix(array $pathPrefix): self
     {
-        $obj = clone $this;
-        $obj['pathPrefix'] = $pathPrefix;
+        $self = clone $this;
+        $self['pathPrefix'] = $pathPrefix;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -366,10 +366,10 @@ final class SiteSearchSearchParams implements BaseModel
      */
     public function withPopularityBoost(float $popularityBoost): self
     {
-        $obj = clone $this;
-        $obj['popularityBoost'] = $popularityBoost;
+        $self = clone $this;
+        $self['popularityBoost'] = $popularityBoost;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -379,10 +379,10 @@ final class SiteSearchSearchParams implements BaseModel
      */
     public function withProperty(array $property): self
     {
-        $obj = clone $this;
-        $obj['property'] = $property;
+        $self = clone $this;
+        $self['property'] = $property;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -390,10 +390,10 @@ final class SiteSearchSearchParams implements BaseModel
      */
     public function withQ(string $q): self
     {
-        $obj = clone $this;
-        $obj['q'] = $q;
+        $self = clone $this;
+        $self['q'] = $q;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -401,10 +401,10 @@ final class SiteSearchSearchParams implements BaseModel
      */
     public function withTableID(int $tableID): self
     {
-        $obj = clone $this;
-        $obj['tableID'] = $tableID;
+        $self = clone $this;
+        $self['tableID'] = $tableID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -414,9 +414,9 @@ final class SiteSearchSearchParams implements BaseModel
      */
     public function withType(array $type): self
     {
-        $obj = clone $this;
-        $obj['type'] = $type;
+        $self = clone $this;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 }

@@ -61,12 +61,12 @@ final class QuickRepliesAttachment implements BaseModel
         array $quickReplies,
         Type|string $type = 'QUICK_REPLIES'
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['quickReplies'] = $quickReplies;
-        $obj['type'] = $type;
+        $self['quickReplies'] = $quickReplies;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -76,10 +76,10 @@ final class QuickRepliesAttachment implements BaseModel
      */
     public function withQuickReplies(array $quickReplies): self
     {
-        $obj = clone $this;
-        $obj['quickReplies'] = $quickReplies;
+        $self = clone $this;
+        $self['quickReplies'] = $quickReplies;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -87,9 +87,9 @@ final class QuickRepliesAttachment implements BaseModel
      */
     public function withType(Type|string $type): self
     {
-        $obj = clone $this;
-        $obj['type'] = $type;
+        $self = clone $this;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 }

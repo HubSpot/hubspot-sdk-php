@@ -134,54 +134,54 @@ final class AccessTokenInfoResponse implements BaseModel
         SignedAccessToken|array|null $signedAccessToken = null,
         ?string $user = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['token'] = $token;
-        $obj['appID'] = $appID;
-        $obj['expiresIn'] = $expiresIn;
-        $obj['hubID'] = $hubID;
-        $obj['scopes'] = $scopes;
-        $obj['tokenType'] = $tokenType;
-        $obj['userID'] = $userID;
+        $self['token'] = $token;
+        $self['appID'] = $appID;
+        $self['expiresIn'] = $expiresIn;
+        $self['hubID'] = $hubID;
+        $self['scopes'] = $scopes;
+        $self['tokenType'] = $tokenType;
+        $self['userID'] = $userID;
 
-        null !== $hubDomain && $obj['hubDomain'] = $hubDomain;
-        null !== $isPrivateDistribution && $obj['isPrivateDistribution'] = $isPrivateDistribution;
-        null !== $signedAccessToken && $obj['signedAccessToken'] = $signedAccessToken;
-        null !== $user && $obj['user'] = $user;
+        null !== $hubDomain && $self['hubDomain'] = $hubDomain;
+        null !== $isPrivateDistribution && $self['isPrivateDistribution'] = $isPrivateDistribution;
+        null !== $signedAccessToken && $self['signedAccessToken'] = $signedAccessToken;
+        null !== $user && $self['user'] = $user;
 
-        return $obj;
+        return $self;
     }
 
     public function withToken(string $token): self
     {
-        $obj = clone $this;
-        $obj['token'] = $token;
+        $self = clone $this;
+        $self['token'] = $token;
 
-        return $obj;
+        return $self;
     }
 
     public function withAppID(int $appID): self
     {
-        $obj = clone $this;
-        $obj['appID'] = $appID;
+        $self = clone $this;
+        $self['appID'] = $appID;
 
-        return $obj;
+        return $self;
     }
 
     public function withExpiresIn(int $expiresIn): self
     {
-        $obj = clone $this;
-        $obj['expiresIn'] = $expiresIn;
+        $self = clone $this;
+        $self['expiresIn'] = $expiresIn;
 
-        return $obj;
+        return $self;
     }
 
     public function withHubID(int $hubID): self
     {
-        $obj = clone $this;
-        $obj['hubID'] = $hubID;
+        $self = clone $this;
+        $self['hubID'] = $hubID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -189,42 +189,42 @@ final class AccessTokenInfoResponse implements BaseModel
      */
     public function withScopes(array $scopes): self
     {
-        $obj = clone $this;
-        $obj['scopes'] = $scopes;
+        $self = clone $this;
+        $self['scopes'] = $scopes;
 
-        return $obj;
+        return $self;
     }
 
     public function withTokenType(string $tokenType): self
     {
-        $obj = clone $this;
-        $obj['tokenType'] = $tokenType;
+        $self = clone $this;
+        $self['tokenType'] = $tokenType;
 
-        return $obj;
+        return $self;
     }
 
     public function withUserID(int $userID): self
     {
-        $obj = clone $this;
-        $obj['userID'] = $userID;
+        $self = clone $this;
+        $self['userID'] = $userID;
 
-        return $obj;
+        return $self;
     }
 
     public function withHubDomain(string $hubDomain): self
     {
-        $obj = clone $this;
-        $obj['hubDomain'] = $hubDomain;
+        $self = clone $this;
+        $self['hubDomain'] = $hubDomain;
 
-        return $obj;
+        return $self;
     }
 
     public function withIsPrivateDistribution(bool $isPrivateDistribution): self
     {
-        $obj = clone $this;
-        $obj['isPrivateDistribution'] = $isPrivateDistribution;
+        $self = clone $this;
+        $self['isPrivateDistribution'] = $isPrivateDistribution;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -249,17 +249,17 @@ final class AccessTokenInfoResponse implements BaseModel
     public function withSignedAccessToken(
         SignedAccessToken|array $signedAccessToken
     ): self {
-        $obj = clone $this;
-        $obj['signedAccessToken'] = $signedAccessToken;
+        $self = clone $this;
+        $self['signedAccessToken'] = $signedAccessToken;
 
-        return $obj;
+        return $self;
     }
 
     public function withUser(string $user): self
     {
-        $obj = clone $this;
-        $obj['user'] = $user;
+        $self = clone $this;
+        $self['user'] = $user;
 
-        return $obj;
+        return $self;
     }
 }

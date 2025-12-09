@@ -166,16 +166,16 @@ final class PublicUnifiedEventsFilter implements BaseModel
         ?string $eventTypeID = null,
         PublicNumOccurrencesRefineBy|array|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation|null $pruningRefineBy = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['filterLines'] = $filterLines;
-        $obj['filterType'] = $filterType;
+        $self['filterLines'] = $filterLines;
+        $self['filterType'] = $filterType;
 
-        null !== $coalescingRefineBy && $obj['coalescingRefineBy'] = $coalescingRefineBy;
-        null !== $eventTypeID && $obj['eventTypeID'] = $eventTypeID;
-        null !== $pruningRefineBy && $obj['pruningRefineBy'] = $pruningRefineBy;
+        null !== $coalescingRefineBy && $self['coalescingRefineBy'] = $coalescingRefineBy;
+        null !== $eventTypeID && $self['eventTypeID'] = $eventTypeID;
+        null !== $pruningRefineBy && $self['pruningRefineBy'] = $pruningRefineBy;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -186,10 +186,10 @@ final class PublicUnifiedEventsFilter implements BaseModel
      */
     public function withFilterLines(array $filterLines): self
     {
-        $obj = clone $this;
-        $obj['filterLines'] = $filterLines;
+        $self = clone $this;
+        $self['filterLines'] = $filterLines;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -197,10 +197,10 @@ final class PublicUnifiedEventsFilter implements BaseModel
      */
     public function withFilterType(FilterType|string $filterType): self
     {
-        $obj = clone $this;
-        $obj['filterType'] = $filterType;
+        $self = clone $this;
+        $self['filterType'] = $filterType;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -251,18 +251,18 @@ final class PublicUnifiedEventsFilter implements BaseModel
     public function withCoalescingRefineBy(
         PublicNumOccurrencesRefineBy|array|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation $coalescingRefineBy,
     ): self {
-        $obj = clone $this;
-        $obj['coalescingRefineBy'] = $coalescingRefineBy;
+        $self = clone $this;
+        $self['coalescingRefineBy'] = $coalescingRefineBy;
 
-        return $obj;
+        return $self;
     }
 
     public function withEventTypeID(string $eventTypeID): self
     {
-        $obj = clone $this;
-        $obj['eventTypeID'] = $eventTypeID;
+        $self = clone $this;
+        $self['eventTypeID'] = $eventTypeID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -313,9 +313,9 @@ final class PublicUnifiedEventsFilter implements BaseModel
     public function withPruningRefineBy(
         PublicNumOccurrencesRefineBy|array|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation $pruningRefineBy,
     ): self {
-        $obj = clone $this;
-        $obj['pruningRefineBy'] = $pruningRefineBy;
+        $self = clone $this;
+        $self['pruningRefineBy'] = $pruningRefineBy;
 
-        return $obj;
+        return $self;
     }
 }

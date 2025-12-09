@@ -81,13 +81,13 @@ final class MembershipsUpdateResponse implements BaseModel
         array $recordIDsRemoved,
         array $recordsIDsAdded
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['recordIDsMissing'] = $recordIDsMissing;
-        $obj['recordIDsRemoved'] = $recordIDsRemoved;
-        $obj['recordsIDsAdded'] = $recordsIDsAdded;
+        $self['recordIDsMissing'] = $recordIDsMissing;
+        $self['recordIDsRemoved'] = $recordIDsRemoved;
+        $self['recordsIDsAdded'] = $recordsIDsAdded;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -97,10 +97,10 @@ final class MembershipsUpdateResponse implements BaseModel
      */
     public function withRecordIDsMissing(array $recordIDsMissing): self
     {
-        $obj = clone $this;
-        $obj['recordIDsMissing'] = $recordIDsMissing;
+        $self = clone $this;
+        $self['recordIDsMissing'] = $recordIDsMissing;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -110,10 +110,10 @@ final class MembershipsUpdateResponse implements BaseModel
      */
     public function withRecordIDsRemoved(array $recordIDsRemoved): self
     {
-        $obj = clone $this;
-        $obj['recordIDsRemoved'] = $recordIDsRemoved;
+        $self = clone $this;
+        $self['recordIDsRemoved'] = $recordIDsRemoved;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -121,9 +121,9 @@ final class MembershipsUpdateResponse implements BaseModel
      */
     public function withRecordsIDsAdded(array $recordsIDsAdded): self
     {
-        $obj = clone $this;
-        $obj['recordsIDsAdded'] = $recordsIDsAdded;
+        $self = clone $this;
+        $self['recordsIDsAdded'] = $recordsIDsAdded;
 
-        return $obj;
+        return $self;
     }
 }

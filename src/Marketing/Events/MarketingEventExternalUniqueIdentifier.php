@@ -70,13 +70,13 @@ final class MarketingEventExternalUniqueIdentifier implements BaseModel
         string $externalAccountID,
         string $externalEventID
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['appID'] = $appID;
-        $obj['externalAccountID'] = $externalAccountID;
-        $obj['externalEventID'] = $externalEventID;
+        $self['appID'] = $appID;
+        $self['externalAccountID'] = $externalAccountID;
+        $self['externalEventID'] = $externalEventID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -84,10 +84,10 @@ final class MarketingEventExternalUniqueIdentifier implements BaseModel
      */
     public function withAppID(int $appID): self
     {
-        $obj = clone $this;
-        $obj['appID'] = $appID;
+        $self = clone $this;
+        $self['appID'] = $appID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -95,10 +95,10 @@ final class MarketingEventExternalUniqueIdentifier implements BaseModel
      */
     public function withExternalAccountID(string $externalAccountID): self
     {
-        $obj = clone $this;
-        $obj['externalAccountID'] = $externalAccountID;
+        $self = clone $this;
+        $self['externalAccountID'] = $externalAccountID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -106,9 +106,9 @@ final class MarketingEventExternalUniqueIdentifier implements BaseModel
      */
     public function withExternalEventID(string $externalEventID): self
     {
-        $obj = clone $this;
-        $obj['externalEventID'] = $externalEventID;
+        $self = clone $this;
+        $self['externalEventID'] = $externalEventID;
 
-        return $obj;
+        return $self;
     }
 }

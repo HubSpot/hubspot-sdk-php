@@ -48,27 +48,27 @@ final class ExternalClosedRange implements BaseModel
      */
     public static function with(int $end, int $start): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['end'] = $end;
-        $obj['start'] = $start;
+        $self['end'] = $end;
+        $self['start'] = $start;
 
-        return $obj;
+        return $self;
     }
 
     public function withEnd(int $end): self
     {
-        $obj = clone $this;
-        $obj['end'] = $end;
+        $self = clone $this;
+        $self['end'] = $end;
 
-        return $obj;
+        return $self;
     }
 
     public function withStart(int $start): self
     {
-        $obj = clone $this;
-        $obj['start'] = $start;
+        $self = clone $this;
+        $self['start'] = $start;
 
-        return $obj;
+        return $self;
     }
 }

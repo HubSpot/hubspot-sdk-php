@@ -67,38 +67,38 @@ final class IndexedField implements BaseModel
         mixed $value,
         array $values
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['metadataField'] = $metadataField;
-        $obj['name'] = $name;
-        $obj['value'] = $value;
-        $obj['values'] = $values;
+        $self['metadataField'] = $metadataField;
+        $self['name'] = $name;
+        $self['value'] = $value;
+        $self['values'] = $values;
 
-        return $obj;
+        return $self;
     }
 
     public function withMetadataField(bool $metadataField): self
     {
-        $obj = clone $this;
-        $obj['metadataField'] = $metadataField;
+        $self = clone $this;
+        $self['metadataField'] = $metadataField;
 
-        return $obj;
+        return $self;
     }
 
     public function withName(string $name): self
     {
-        $obj = clone $this;
-        $obj['name'] = $name;
+        $self = clone $this;
+        $self['name'] = $name;
 
-        return $obj;
+        return $self;
     }
 
     public function withValue(mixed $value): self
     {
-        $obj = clone $this;
-        $obj['value'] = $value;
+        $self = clone $this;
+        $self['value'] = $value;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -106,9 +106,9 @@ final class IndexedField implements BaseModel
      */
     public function withValues(array $values): self
     {
-        $obj = clone $this;
-        $obj['values'] = $values;
+        $self = clone $this;
+        $self['values'] = $values;
 
-        return $obj;
+        return $self;
     }
 }

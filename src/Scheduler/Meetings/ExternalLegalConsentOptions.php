@@ -123,21 +123,21 @@ final class ExternalLegalConsentOptions implements BaseModel
         string $processingConsentType,
         LegitimateInterestLegalBasis|string|null $legitimateInterestLegalBasis = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['communicationConsentCheckboxes'] = $communicationConsentCheckboxes;
-        $obj['communicationConsentText'] = $communicationConsentText;
-        $obj['isLegitimateInterest'] = $isLegitimateInterest;
-        $obj['legitimateInterestSubscriptionTypes'] = $legitimateInterestSubscriptionTypes;
-        $obj['privacyPolicyText'] = $privacyPolicyText;
-        $obj['processingConsentCheckboxLabel'] = $processingConsentCheckboxLabel;
-        $obj['processingConsentFooterText'] = $processingConsentFooterText;
-        $obj['processingConsentText'] = $processingConsentText;
-        $obj['processingConsentType'] = $processingConsentType;
+        $self['communicationConsentCheckboxes'] = $communicationConsentCheckboxes;
+        $self['communicationConsentText'] = $communicationConsentText;
+        $self['isLegitimateInterest'] = $isLegitimateInterest;
+        $self['legitimateInterestSubscriptionTypes'] = $legitimateInterestSubscriptionTypes;
+        $self['privacyPolicyText'] = $privacyPolicyText;
+        $self['processingConsentCheckboxLabel'] = $processingConsentCheckboxLabel;
+        $self['processingConsentFooterText'] = $processingConsentFooterText;
+        $self['processingConsentText'] = $processingConsentText;
+        $self['processingConsentType'] = $processingConsentType;
 
-        null !== $legitimateInterestLegalBasis && $obj['legitimateInterestLegalBasis'] = $legitimateInterestLegalBasis;
+        null !== $legitimateInterestLegalBasis && $self['legitimateInterestLegalBasis'] = $legitimateInterestLegalBasis;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -148,27 +148,27 @@ final class ExternalLegalConsentOptions implements BaseModel
     public function withCommunicationConsentCheckboxes(
         array $communicationConsentCheckboxes
     ): self {
-        $obj = clone $this;
-        $obj['communicationConsentCheckboxes'] = $communicationConsentCheckboxes;
+        $self = clone $this;
+        $self['communicationConsentCheckboxes'] = $communicationConsentCheckboxes;
 
-        return $obj;
+        return $self;
     }
 
     public function withCommunicationConsentText(
         string $communicationConsentText
     ): self {
-        $obj = clone $this;
-        $obj['communicationConsentText'] = $communicationConsentText;
+        $self = clone $this;
+        $self['communicationConsentText'] = $communicationConsentText;
 
-        return $obj;
+        return $self;
     }
 
     public function withIsLegitimateInterest(bool $isLegitimateInterest): self
     {
-        $obj = clone $this;
-        $obj['isLegitimateInterest'] = $isLegitimateInterest;
+        $self = clone $this;
+        $self['isLegitimateInterest'] = $isLegitimateInterest;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -177,54 +177,54 @@ final class ExternalLegalConsentOptions implements BaseModel
     public function withLegitimateInterestSubscriptionTypes(
         array $legitimateInterestSubscriptionTypes
     ): self {
-        $obj = clone $this;
-        $obj['legitimateInterestSubscriptionTypes'] = $legitimateInterestSubscriptionTypes;
+        $self = clone $this;
+        $self['legitimateInterestSubscriptionTypes'] = $legitimateInterestSubscriptionTypes;
 
-        return $obj;
+        return $self;
     }
 
     public function withPrivacyPolicyText(string $privacyPolicyText): self
     {
-        $obj = clone $this;
-        $obj['privacyPolicyText'] = $privacyPolicyText;
+        $self = clone $this;
+        $self['privacyPolicyText'] = $privacyPolicyText;
 
-        return $obj;
+        return $self;
     }
 
     public function withProcessingConsentCheckboxLabel(
         string $processingConsentCheckboxLabel
     ): self {
-        $obj = clone $this;
-        $obj['processingConsentCheckboxLabel'] = $processingConsentCheckboxLabel;
+        $self = clone $this;
+        $self['processingConsentCheckboxLabel'] = $processingConsentCheckboxLabel;
 
-        return $obj;
+        return $self;
     }
 
     public function withProcessingConsentFooterText(
         string $processingConsentFooterText
     ): self {
-        $obj = clone $this;
-        $obj['processingConsentFooterText'] = $processingConsentFooterText;
+        $self = clone $this;
+        $self['processingConsentFooterText'] = $processingConsentFooterText;
 
-        return $obj;
+        return $self;
     }
 
     public function withProcessingConsentText(
         string $processingConsentText
     ): self {
-        $obj = clone $this;
-        $obj['processingConsentText'] = $processingConsentText;
+        $self = clone $this;
+        $self['processingConsentText'] = $processingConsentText;
 
-        return $obj;
+        return $self;
     }
 
     public function withProcessingConsentType(
         string $processingConsentType
     ): self {
-        $obj = clone $this;
-        $obj['processingConsentType'] = $processingConsentType;
+        $self = clone $this;
+        $self['processingConsentType'] = $processingConsentType;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -233,9 +233,9 @@ final class ExternalLegalConsentOptions implements BaseModel
     public function withLegitimateInterestLegalBasis(
         LegitimateInterestLegalBasis|string $legitimateInterestLegalBasis
     ): self {
-        $obj = clone $this;
-        $obj['legitimateInterestLegalBasis'] = $legitimateInterestLegalBasis;
+        $self = clone $this;
+        $self['legitimateInterestLegalBasis'] = $legitimateInterestLegalBasis;
 
-        return $obj;
+        return $self;
     }
 }

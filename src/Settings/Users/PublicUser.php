@@ -133,21 +133,21 @@ final class PublicUser implements BaseModel
         ?bool $sendWelcomeEmail = null,
         ?bool $superAdmin = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['id'] = $id;
-        $obj['email'] = $email;
+        $self['id'] = $id;
+        $self['email'] = $email;
 
-        null !== $firstName && $obj['firstName'] = $firstName;
-        null !== $lastName && $obj['lastName'] = $lastName;
-        null !== $primaryTeamID && $obj['primaryTeamID'] = $primaryTeamID;
-        null !== $roleID && $obj['roleID'] = $roleID;
-        null !== $roleIDs && $obj['roleIDs'] = $roleIDs;
-        null !== $secondaryTeamIDs && $obj['secondaryTeamIDs'] = $secondaryTeamIDs;
-        null !== $sendWelcomeEmail && $obj['sendWelcomeEmail'] = $sendWelcomeEmail;
-        null !== $superAdmin && $obj['superAdmin'] = $superAdmin;
+        null !== $firstName && $self['firstName'] = $firstName;
+        null !== $lastName && $self['lastName'] = $lastName;
+        null !== $primaryTeamID && $self['primaryTeamID'] = $primaryTeamID;
+        null !== $roleID && $self['roleID'] = $roleID;
+        null !== $roleIDs && $self['roleIDs'] = $roleIDs;
+        null !== $secondaryTeamIDs && $self['secondaryTeamIDs'] = $secondaryTeamIDs;
+        null !== $sendWelcomeEmail && $self['sendWelcomeEmail'] = $sendWelcomeEmail;
+        null !== $superAdmin && $self['superAdmin'] = $superAdmin;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -155,10 +155,10 @@ final class PublicUser implements BaseModel
      */
     public function withID(string $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -166,10 +166,10 @@ final class PublicUser implements BaseModel
      */
     public function withEmail(string $email): self
     {
-        $obj = clone $this;
-        $obj['email'] = $email;
+        $self = clone $this;
+        $self['email'] = $email;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -177,10 +177,10 @@ final class PublicUser implements BaseModel
      */
     public function withFirstName(string $firstName): self
     {
-        $obj = clone $this;
-        $obj['firstName'] = $firstName;
+        $self = clone $this;
+        $self['firstName'] = $firstName;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -188,10 +188,10 @@ final class PublicUser implements BaseModel
      */
     public function withLastName(string $lastName): self
     {
-        $obj = clone $this;
-        $obj['lastName'] = $lastName;
+        $self = clone $this;
+        $self['lastName'] = $lastName;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -199,10 +199,10 @@ final class PublicUser implements BaseModel
      */
     public function withPrimaryTeamID(string $primaryTeamID): self
     {
-        $obj = clone $this;
-        $obj['primaryTeamID'] = $primaryTeamID;
+        $self = clone $this;
+        $self['primaryTeamID'] = $primaryTeamID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -210,10 +210,10 @@ final class PublicUser implements BaseModel
      */
     public function withRoleID(string $roleID): self
     {
-        $obj = clone $this;
-        $obj['roleID'] = $roleID;
+        $self = clone $this;
+        $self['roleID'] = $roleID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -223,10 +223,10 @@ final class PublicUser implements BaseModel
      */
     public function withRoleIDs(array $roleIDs): self
     {
-        $obj = clone $this;
-        $obj['roleIDs'] = $roleIDs;
+        $self = clone $this;
+        $self['roleIDs'] = $roleIDs;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -236,10 +236,10 @@ final class PublicUser implements BaseModel
      */
     public function withSecondaryTeamIDs(array $secondaryTeamIDs): self
     {
-        $obj = clone $this;
-        $obj['secondaryTeamIDs'] = $secondaryTeamIDs;
+        $self = clone $this;
+        $self['secondaryTeamIDs'] = $secondaryTeamIDs;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -247,10 +247,10 @@ final class PublicUser implements BaseModel
      */
     public function withSendWelcomeEmail(bool $sendWelcomeEmail): self
     {
-        $obj = clone $this;
-        $obj['sendWelcomeEmail'] = $sendWelcomeEmail;
+        $self = clone $this;
+        $self['sendWelcomeEmail'] = $sendWelcomeEmail;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -258,9 +258,9 @@ final class PublicUser implements BaseModel
      */
     public function withSuperAdmin(bool $superAdmin): self
     {
-        $obj = clone $this;
-        $obj['superAdmin'] = $superAdmin;
+        $self = clone $this;
+        $self['superAdmin'] = $superAdmin;
 
-        return $obj;
+        return $self;
     }
 }

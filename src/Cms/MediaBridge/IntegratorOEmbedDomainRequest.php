@@ -57,13 +57,13 @@ final class IntegratorOEmbedDomainRequest implements BaseModel
         Endpoints|array $endpoints,
         ?int $portalID = null
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['endpoints'] = $endpoints;
+        $self['endpoints'] = $endpoints;
 
-        null !== $portalID && $obj['portalID'] = $portalID;
+        null !== $portalID && $self['portalID'] = $portalID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -73,17 +73,17 @@ final class IntegratorOEmbedDomainRequest implements BaseModel
      */
     public function withEndpoints(Endpoints|array $endpoints): self
     {
-        $obj = clone $this;
-        $obj['endpoints'] = $endpoints;
+        $self = clone $this;
+        $self['endpoints'] = $endpoints;
 
-        return $obj;
+        return $self;
     }
 
     public function withPortalID(int $portalID): self
     {
-        $obj = clone $this;
-        $obj['portalID'] = $portalID;
+        $self = clone $this;
+        $self['portalID'] = $portalID;
 
-        return $obj;
+        return $self;
     }
 }

@@ -77,30 +77,30 @@ final class PublicQuickReplies implements BaseModel
         array $quickReplies,
         Type|string $type = 'QUICK_REPLIES',
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['allowMultiSelect'] = $allowMultiSelect;
-        $obj['allowUserInput'] = $allowUserInput;
-        $obj['quickReplies'] = $quickReplies;
-        $obj['type'] = $type;
+        $self['allowMultiSelect'] = $allowMultiSelect;
+        $self['allowUserInput'] = $allowUserInput;
+        $self['quickReplies'] = $quickReplies;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 
     public function withAllowMultiSelect(bool $allowMultiSelect): self
     {
-        $obj = clone $this;
-        $obj['allowMultiSelect'] = $allowMultiSelect;
+        $self = clone $this;
+        $self['allowMultiSelect'] = $allowMultiSelect;
 
-        return $obj;
+        return $self;
     }
 
     public function withAllowUserInput(bool $allowUserInput): self
     {
-        $obj = clone $this;
-        $obj['allowUserInput'] = $allowUserInput;
+        $self = clone $this;
+        $self['allowUserInput'] = $allowUserInput;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -110,10 +110,10 @@ final class PublicQuickReplies implements BaseModel
      */
     public function withQuickReplies(array $quickReplies): self
     {
-        $obj = clone $this;
-        $obj['quickReplies'] = $quickReplies;
+        $self = clone $this;
+        $self['quickReplies'] = $quickReplies;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -121,9 +121,9 @@ final class PublicQuickReplies implements BaseModel
      */
     public function withType(Type|string $type): self
     {
-        $obj = clone $this;
-        $obj['type'] = $type;
+        $self = clone $this;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 }

@@ -176,23 +176,23 @@ final class HubSpotFormConfiguration implements BaseModel
         bool $recaptchaEnabled,
         ?array $lifecycleStages = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['allowLinkToResetKnownValues'] = $allowLinkToResetKnownValues;
-        $obj['archivable'] = $archivable;
-        $obj['cloneable'] = $cloneable;
-        $obj['createNewContactForNewEmail'] = $createNewContactForNewEmail;
-        $obj['editable'] = $editable;
-        $obj['language'] = $language;
-        $obj['notifyContactOwner'] = $notifyContactOwner;
-        $obj['notifyRecipients'] = $notifyRecipients;
-        $obj['postSubmitAction'] = $postSubmitAction;
-        $obj['prePopulateKnownValues'] = $prePopulateKnownValues;
-        $obj['recaptchaEnabled'] = $recaptchaEnabled;
+        $self['allowLinkToResetKnownValues'] = $allowLinkToResetKnownValues;
+        $self['archivable'] = $archivable;
+        $self['cloneable'] = $cloneable;
+        $self['createNewContactForNewEmail'] = $createNewContactForNewEmail;
+        $self['editable'] = $editable;
+        $self['language'] = $language;
+        $self['notifyContactOwner'] = $notifyContactOwner;
+        $self['notifyRecipients'] = $notifyRecipients;
+        $self['postSubmitAction'] = $postSubmitAction;
+        $self['prePopulateKnownValues'] = $prePopulateKnownValues;
+        $self['recaptchaEnabled'] = $recaptchaEnabled;
 
-        null !== $lifecycleStages && $obj['lifecycleStages'] = $lifecycleStages;
+        null !== $lifecycleStages && $self['lifecycleStages'] = $lifecycleStages;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -201,10 +201,10 @@ final class HubSpotFormConfiguration implements BaseModel
     public function withAllowLinkToResetKnownValues(
         bool $allowLinkToResetKnownValues
     ): self {
-        $obj = clone $this;
-        $obj['allowLinkToResetKnownValues'] = $allowLinkToResetKnownValues;
+        $self = clone $this;
+        $self['allowLinkToResetKnownValues'] = $allowLinkToResetKnownValues;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -212,10 +212,10 @@ final class HubSpotFormConfiguration implements BaseModel
      */
     public function withArchivable(bool $archivable): self
     {
-        $obj = clone $this;
-        $obj['archivable'] = $archivable;
+        $self = clone $this;
+        $self['archivable'] = $archivable;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -223,10 +223,10 @@ final class HubSpotFormConfiguration implements BaseModel
      */
     public function withCloneable(bool $cloneable): self
     {
-        $obj = clone $this;
-        $obj['cloneable'] = $cloneable;
+        $self = clone $this;
+        $self['cloneable'] = $cloneable;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -235,10 +235,10 @@ final class HubSpotFormConfiguration implements BaseModel
     public function withCreateNewContactForNewEmail(
         bool $createNewContactForNewEmail
     ): self {
-        $obj = clone $this;
-        $obj['createNewContactForNewEmail'] = $createNewContactForNewEmail;
+        $self = clone $this;
+        $self['createNewContactForNewEmail'] = $createNewContactForNewEmail;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -246,10 +246,10 @@ final class HubSpotFormConfiguration implements BaseModel
      */
     public function withEditable(bool $editable): self
     {
-        $obj = clone $this;
-        $obj['editable'] = $editable;
+        $self = clone $this;
+        $self['editable'] = $editable;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -259,10 +259,10 @@ final class HubSpotFormConfiguration implements BaseModel
      */
     public function withLanguage(Language|string $language): self
     {
-        $obj = clone $this;
-        $obj['language'] = $language;
+        $self = clone $this;
+        $self['language'] = $language;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -270,10 +270,10 @@ final class HubSpotFormConfiguration implements BaseModel
      */
     public function withNotifyContactOwner(bool $notifyContactOwner): self
     {
-        $obj = clone $this;
-        $obj['notifyContactOwner'] = $notifyContactOwner;
+        $self = clone $this;
+        $self['notifyContactOwner'] = $notifyContactOwner;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -283,10 +283,10 @@ final class HubSpotFormConfiguration implements BaseModel
      */
     public function withNotifyRecipients(array $notifyRecipients): self
     {
-        $obj = clone $this;
-        $obj['notifyRecipients'] = $notifyRecipients;
+        $self = clone $this;
+        $self['notifyRecipients'] = $notifyRecipients;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -299,10 +299,10 @@ final class HubSpotFormConfiguration implements BaseModel
     public function withPostSubmitAction(
         FormPostSubmitAction|array $postSubmitAction
     ): self {
-        $obj = clone $this;
-        $obj['postSubmitAction'] = $postSubmitAction;
+        $self = clone $this;
+        $self['postSubmitAction'] = $postSubmitAction;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -311,10 +311,10 @@ final class HubSpotFormConfiguration implements BaseModel
     public function withPrePopulateKnownValues(
         bool $prePopulateKnownValues
     ): self {
-        $obj = clone $this;
-        $obj['prePopulateKnownValues'] = $prePopulateKnownValues;
+        $self = clone $this;
+        $self['prePopulateKnownValues'] = $prePopulateKnownValues;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -322,10 +322,10 @@ final class HubSpotFormConfiguration implements BaseModel
      */
     public function withRecaptchaEnabled(bool $recaptchaEnabled): self
     {
-        $obj = clone $this;
-        $obj['recaptchaEnabled'] = $recaptchaEnabled;
+        $self = clone $this;
+        $self['recaptchaEnabled'] = $recaptchaEnabled;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -335,9 +335,9 @@ final class HubSpotFormConfiguration implements BaseModel
      */
     public function withLifecycleStages(array $lifecycleStages): self
     {
-        $obj = clone $this;
-        $obj['lifecycleStages'] = $lifecycleStages;
+        $self = clone $this;
+        $self['lifecycleStages'] = $lifecycleStages;
 
-        return $obj;
+        return $self;
     }
 }

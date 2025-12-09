@@ -93,16 +93,16 @@ final class CardAuditResponse implements BaseModel
         int $initiatingUserID,
         int $objectTypeID,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['actionType'] = $actionType;
-        $obj['applicationID'] = $applicationID;
-        $obj['authSource'] = $authSource;
-        $obj['changedAt'] = $changedAt;
-        $obj['initiatingUserID'] = $initiatingUserID;
-        $obj['objectTypeID'] = $objectTypeID;
+        $self['actionType'] = $actionType;
+        $self['applicationID'] = $applicationID;
+        $self['authSource'] = $authSource;
+        $self['changedAt'] = $changedAt;
+        $self['initiatingUserID'] = $initiatingUserID;
+        $self['objectTypeID'] = $objectTypeID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -110,18 +110,18 @@ final class CardAuditResponse implements BaseModel
      */
     public function withActionType(ActionType|string $actionType): self
     {
-        $obj = clone $this;
-        $obj['actionType'] = $actionType;
+        $self = clone $this;
+        $self['actionType'] = $actionType;
 
-        return $obj;
+        return $self;
     }
 
     public function withApplicationID(int $applicationID): self
     {
-        $obj = clone $this;
-        $obj['applicationID'] = $applicationID;
+        $self = clone $this;
+        $self['applicationID'] = $applicationID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -129,33 +129,33 @@ final class CardAuditResponse implements BaseModel
      */
     public function withAuthSource(AuthSource|string $authSource): self
     {
-        $obj = clone $this;
-        $obj['authSource'] = $authSource;
+        $self = clone $this;
+        $self['authSource'] = $authSource;
 
-        return $obj;
+        return $self;
     }
 
     public function withChangedAt(int $changedAt): self
     {
-        $obj = clone $this;
-        $obj['changedAt'] = $changedAt;
+        $self = clone $this;
+        $self['changedAt'] = $changedAt;
 
-        return $obj;
+        return $self;
     }
 
     public function withInitiatingUserID(int $initiatingUserID): self
     {
-        $obj = clone $this;
-        $obj['initiatingUserID'] = $initiatingUserID;
+        $self = clone $this;
+        $self['initiatingUserID'] = $initiatingUserID;
 
-        return $obj;
+        return $self;
     }
 
     public function withObjectTypeID(int $objectTypeID): self
     {
-        $obj = clone $this;
-        $obj['objectTypeID'] = $objectTypeID;
+        $self = clone $this;
+        $self['objectTypeID'] = $objectTypeID;
 
-        return $obj;
+        return $self;
     }
 }

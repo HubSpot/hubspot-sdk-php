@@ -65,23 +65,23 @@ final class PostalMailGetParams implements BaseModel
         ?array $properties = null,
         ?array $propertiesWithHistory = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $archived && $obj['archived'] = $archived;
-        null !== $associations && $obj['associations'] = $associations;
-        null !== $idProperty && $obj['idProperty'] = $idProperty;
-        null !== $properties && $obj['properties'] = $properties;
-        null !== $propertiesWithHistory && $obj['propertiesWithHistory'] = $propertiesWithHistory;
+        null !== $archived && $self['archived'] = $archived;
+        null !== $associations && $self['associations'] = $associations;
+        null !== $idProperty && $self['idProperty'] = $idProperty;
+        null !== $properties && $self['properties'] = $properties;
+        null !== $propertiesWithHistory && $self['propertiesWithHistory'] = $propertiesWithHistory;
 
-        return $obj;
+        return $self;
     }
 
     public function withArchived(bool $archived): self
     {
-        $obj = clone $this;
-        $obj['archived'] = $archived;
+        $self = clone $this;
+        $self['archived'] = $archived;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -89,18 +89,18 @@ final class PostalMailGetParams implements BaseModel
      */
     public function withAssociations(array $associations): self
     {
-        $obj = clone $this;
-        $obj['associations'] = $associations;
+        $self = clone $this;
+        $self['associations'] = $associations;
 
-        return $obj;
+        return $self;
     }
 
     public function withIDProperty(string $idProperty): self
     {
-        $obj = clone $this;
-        $obj['idProperty'] = $idProperty;
+        $self = clone $this;
+        $self['idProperty'] = $idProperty;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -108,10 +108,10 @@ final class PostalMailGetParams implements BaseModel
      */
     public function withProperties(array $properties): self
     {
-        $obj = clone $this;
-        $obj['properties'] = $properties;
+        $self = clone $this;
+        $self['properties'] = $properties;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -120,9 +120,9 @@ final class PostalMailGetParams implements BaseModel
     public function withPropertiesWithHistory(
         array $propertiesWithHistory
     ): self {
-        $obj = clone $this;
-        $obj['propertiesWithHistory'] = $propertiesWithHistory;
+        $self = clone $this;
+        $self['propertiesWithHistory'] = $propertiesWithHistory;
 
-        return $obj;
+        return $self;
     }
 }

@@ -80,31 +80,31 @@ final class APIPropertyBasedEnrollmentSchedule implements BaseModel
         bool $yearly,
         Type|string $type = 'PROPERTY_BASED',
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['dateProperty'] = $dateProperty;
-        $obj['daysDelta'] = $daysDelta;
-        $obj['timeOfDay'] = $timeOfDay;
-        $obj['type'] = $type;
-        $obj['yearly'] = $yearly;
+        $self['dateProperty'] = $dateProperty;
+        $self['daysDelta'] = $daysDelta;
+        $self['timeOfDay'] = $timeOfDay;
+        $self['type'] = $type;
+        $self['yearly'] = $yearly;
 
-        return $obj;
+        return $self;
     }
 
     public function withDateProperty(string $dateProperty): self
     {
-        $obj = clone $this;
-        $obj['dateProperty'] = $dateProperty;
+        $self = clone $this;
+        $self['dateProperty'] = $dateProperty;
 
-        return $obj;
+        return $self;
     }
 
     public function withDaysDelta(int $daysDelta): self
     {
-        $obj = clone $this;
-        $obj['daysDelta'] = $daysDelta;
+        $self = clone $this;
+        $self['daysDelta'] = $daysDelta;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -112,10 +112,10 @@ final class APIPropertyBasedEnrollmentSchedule implements BaseModel
      */
     public function withTimeOfDay(APITimeOfDay|array $timeOfDay): self
     {
-        $obj = clone $this;
-        $obj['timeOfDay'] = $timeOfDay;
+        $self = clone $this;
+        $self['timeOfDay'] = $timeOfDay;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -123,17 +123,17 @@ final class APIPropertyBasedEnrollmentSchedule implements BaseModel
      */
     public function withType(Type|string $type): self
     {
-        $obj = clone $this;
-        $obj['type'] = $type;
+        $self = clone $this;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 
     public function withYearly(bool $yearly): self
     {
-        $obj = clone $this;
-        $obj['yearly'] = $yearly;
+        $self = clone $this;
+        $self['yearly'] = $yearly;
 
-        return $obj;
+        return $self;
     }
 }

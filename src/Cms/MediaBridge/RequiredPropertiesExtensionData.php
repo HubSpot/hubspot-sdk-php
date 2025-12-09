@@ -47,18 +47,18 @@ final class RequiredPropertiesExtensionData implements BaseModel
      */
     public static function with(bool $isRequiredProperty): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['isRequiredProperty'] = $isRequiredProperty;
+        $self['isRequiredProperty'] = $isRequiredProperty;
 
-        return $obj;
+        return $self;
     }
 
     public function withIsRequiredProperty(bool $isRequiredProperty): self
     {
-        $obj = clone $this;
-        $obj['isRequiredProperty'] = $isRequiredProperty;
+        $self = clone $this;
+        $self['isRequiredProperty'] = $isRequiredProperty;
 
-        return $obj;
+        return $self;
     }
 }

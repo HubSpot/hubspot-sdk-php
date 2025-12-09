@@ -55,21 +55,21 @@ final class FilteringMetaData implements BaseModel
         bool $includeUnconfirmedUsers,
         array $pipelineIDs
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['includeUnconfirmedUsers'] = $includeUnconfirmedUsers;
-        $obj['pipelineIDs'] = $pipelineIDs;
+        $self['includeUnconfirmedUsers'] = $includeUnconfirmedUsers;
+        $self['pipelineIDs'] = $pipelineIDs;
 
-        return $obj;
+        return $self;
     }
 
     public function withIncludeUnconfirmedUsers(
         bool $includeUnconfirmedUsers
     ): self {
-        $obj = clone $this;
-        $obj['includeUnconfirmedUsers'] = $includeUnconfirmedUsers;
+        $self = clone $this;
+        $self['includeUnconfirmedUsers'] = $includeUnconfirmedUsers;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -77,9 +77,9 @@ final class FilteringMetaData implements BaseModel
      */
     public function withPipelineIDs(array $pipelineIDs): self
     {
-        $obj = clone $this;
-        $obj['pipelineIDs'] = $pipelineIDs;
+        $self = clone $this;
+        $self['pipelineIDs'] = $pipelineIDs;
 
-        return $obj;
+        return $self;
     }
 }

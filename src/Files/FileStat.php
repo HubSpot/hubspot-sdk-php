@@ -74,12 +74,12 @@ final class FileStat implements BaseModel
         File|array|null $file = null,
         Folder|array|null $folder = null
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $file && $obj['file'] = $file;
-        null !== $folder && $obj['folder'] = $folder;
+        null !== $file && $self['file'] = $file;
+        null !== $folder && $self['folder'] = $folder;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -111,10 +111,10 @@ final class FileStat implements BaseModel
      */
     public function withFile(File|array $file): self
     {
-        $obj = clone $this;
-        $obj['file'] = $file;
+        $self = clone $this;
+        $self['file'] = $file;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -131,9 +131,9 @@ final class FileStat implements BaseModel
      */
     public function withFolder(Folder|array $folder): self
     {
-        $obj = clone $this;
-        $obj['folder'] = $folder;
+        $self = clone $this;
+        $self['folder'] = $folder;
 
-        return $obj;
+        return $self;
     }
 }

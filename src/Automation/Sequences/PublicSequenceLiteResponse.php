@@ -81,64 +81,64 @@ final class PublicSequenceLiteResponse implements BaseModel
         string $userID,
         ?string $folderID = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['id'] = $id;
-        $obj['createdAt'] = $createdAt;
-        $obj['name'] = $name;
-        $obj['updatedAt'] = $updatedAt;
-        $obj['userID'] = $userID;
+        $self['id'] = $id;
+        $self['createdAt'] = $createdAt;
+        $self['name'] = $name;
+        $self['updatedAt'] = $updatedAt;
+        $self['userID'] = $userID;
 
-        null !== $folderID && $obj['folderID'] = $folderID;
+        null !== $folderID && $self['folderID'] = $folderID;
 
-        return $obj;
+        return $self;
     }
 
     public function withID(string $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
-        $obj = clone $this;
-        $obj['createdAt'] = $createdAt;
+        $self = clone $this;
+        $self['createdAt'] = $createdAt;
 
-        return $obj;
+        return $self;
     }
 
     public function withName(string $name): self
     {
-        $obj = clone $this;
-        $obj['name'] = $name;
+        $self = clone $this;
+        $self['name'] = $name;
 
-        return $obj;
+        return $self;
     }
 
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
-        $obj = clone $this;
-        $obj['updatedAt'] = $updatedAt;
+        $self = clone $this;
+        $self['updatedAt'] = $updatedAt;
 
-        return $obj;
+        return $self;
     }
 
     public function withUserID(string $userID): self
     {
-        $obj = clone $this;
-        $obj['userID'] = $userID;
+        $self = clone $this;
+        $self['userID'] = $userID;
 
-        return $obj;
+        return $self;
     }
 
     public function withFolderID(string $folderID): self
     {
-        $obj = clone $this;
-        $obj['folderID'] = $folderID;
+        $self = clone $this;
+        $self['folderID'] = $folderID;
 
-        return $obj;
+        return $self;
     }
 }

@@ -59,12 +59,12 @@ final class PublicListPermissions implements BaseModel
         array $teamsWithEditAccess,
         array $usersWithEditAccess
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['teamsWithEditAccess'] = $teamsWithEditAccess;
-        $obj['usersWithEditAccess'] = $usersWithEditAccess;
+        $self['teamsWithEditAccess'] = $teamsWithEditAccess;
+        $self['usersWithEditAccess'] = $usersWithEditAccess;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -72,10 +72,10 @@ final class PublicListPermissions implements BaseModel
      */
     public function withTeamsWithEditAccess(array $teamsWithEditAccess): self
     {
-        $obj = clone $this;
-        $obj['teamsWithEditAccess'] = $teamsWithEditAccess;
+        $self = clone $this;
+        $self['teamsWithEditAccess'] = $teamsWithEditAccess;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -83,9 +83,9 @@ final class PublicListPermissions implements BaseModel
      */
     public function withUsersWithEditAccess(array $usersWithEditAccess): self
     {
-        $obj = clone $this;
-        $obj['usersWithEditAccess'] = $usersWithEditAccess;
+        $self = clone $this;
+        $self['usersWithEditAccess'] = $usersWithEditAccess;
 
-        return $obj;
+        return $self;
     }
 }

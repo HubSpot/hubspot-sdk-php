@@ -82,15 +82,15 @@ final class SimplePublicObjectBatchInput implements BaseModel
         ?string $idProperty = null,
         ?string $objectWriteTraceID = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['id'] = $id;
-        $obj['properties'] = $properties;
+        $self['id'] = $id;
+        $self['properties'] = $properties;
 
-        null !== $idProperty && $obj['idProperty'] = $idProperty;
-        null !== $objectWriteTraceID && $obj['objectWriteTraceID'] = $objectWriteTraceID;
+        null !== $idProperty && $self['idProperty'] = $idProperty;
+        null !== $objectWriteTraceID && $self['objectWriteTraceID'] = $objectWriteTraceID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -98,10 +98,10 @@ final class SimplePublicObjectBatchInput implements BaseModel
      */
     public function withID(string $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -111,10 +111,10 @@ final class SimplePublicObjectBatchInput implements BaseModel
      */
     public function withProperties(array $properties): self
     {
-        $obj = clone $this;
-        $obj['properties'] = $properties;
+        $self = clone $this;
+        $self['properties'] = $properties;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -122,10 +122,10 @@ final class SimplePublicObjectBatchInput implements BaseModel
      */
     public function withIDProperty(string $idProperty): self
     {
-        $obj = clone $this;
-        $obj['idProperty'] = $idProperty;
+        $self = clone $this;
+        $self['idProperty'] = $idProperty;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -133,9 +133,9 @@ final class SimplePublicObjectBatchInput implements BaseModel
      */
     public function withObjectWriteTraceID(string $objectWriteTraceID): self
     {
-        $obj = clone $this;
-        $obj['objectWriteTraceID'] = $objectWriteTraceID;
+        $self = clone $this;
+        $self['objectWriteTraceID'] = $objectWriteTraceID;
 
-        return $obj;
+        return $self;
     }
 }

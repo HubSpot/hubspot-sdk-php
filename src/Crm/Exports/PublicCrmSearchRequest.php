@@ -90,15 +90,15 @@ final class PublicCrmSearchRequest implements BaseModel
         array $sorts,
         ?string $query = null
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['filterGroups'] = $filterGroups;
-        $obj['filters'] = $filters;
-        $obj['sorts'] = $sorts;
+        $self['filterGroups'] = $filterGroups;
+        $self['filters'] = $filters;
+        $self['sorts'] = $sorts;
 
-        null !== $query && $obj['query'] = $query;
+        null !== $query && $self['query'] = $query;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -106,10 +106,10 @@ final class PublicCrmSearchRequest implements BaseModel
      */
     public function withFilterGroups(array $filterGroups): self
     {
-        $obj = clone $this;
-        $obj['filterGroups'] = $filterGroups;
+        $self = clone $this;
+        $self['filterGroups'] = $filterGroups;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -123,10 +123,10 @@ final class PublicCrmSearchRequest implements BaseModel
      */
     public function withFilters(array $filters): self
     {
-        $obj = clone $this;
-        $obj['filters'] = $filters;
+        $self = clone $this;
+        $self['filters'] = $filters;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -136,10 +136,10 @@ final class PublicCrmSearchRequest implements BaseModel
      */
     public function withSorts(array $sorts): self
     {
-        $obj = clone $this;
-        $obj['sorts'] = $sorts;
+        $self = clone $this;
+        $self['sorts'] = $sorts;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -147,9 +147,9 @@ final class PublicCrmSearchRequest implements BaseModel
      */
     public function withQuery(string $query): self
     {
-        $obj = clone $this;
-        $obj['query'] = $query;
+        $self = clone $this;
+        $self['query'] = $query;
 
-        return $obj;
+        return $self;
     }
 }

@@ -80,23 +80,23 @@ final class BatchGetParams implements BaseModel
         array $inputs,
         ?string $locale = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['archived'] = $archived;
-        $obj['dataSensitivity'] = $dataSensitivity;
-        $obj['inputs'] = $inputs;
+        $self['archived'] = $archived;
+        $self['dataSensitivity'] = $dataSensitivity;
+        $self['inputs'] = $inputs;
 
-        null !== $locale && $obj['locale'] = $locale;
+        null !== $locale && $self['locale'] = $locale;
 
-        return $obj;
+        return $self;
     }
 
     public function withArchived(bool $archived): self
     {
-        $obj = clone $this;
-        $obj['archived'] = $archived;
+        $self = clone $this;
+        $self['archived'] = $archived;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -105,10 +105,10 @@ final class BatchGetParams implements BaseModel
     public function withDataSensitivity(
         DataSensitivity|string $dataSensitivity
     ): self {
-        $obj = clone $this;
-        $obj['dataSensitivity'] = $dataSensitivity;
+        $self = clone $this;
+        $self['dataSensitivity'] = $dataSensitivity;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -116,17 +116,17 @@ final class BatchGetParams implements BaseModel
      */
     public function withInputs(array $inputs): self
     {
-        $obj = clone $this;
-        $obj['inputs'] = $inputs;
+        $self = clone $this;
+        $self['inputs'] = $inputs;
 
-        return $obj;
+        return $self;
     }
 
     public function withLocale(string $locale): self
     {
-        $obj = clone $this;
-        $obj['locale'] = $locale;
+        $self = clone $this;
+        $self['locale'] = $locale;
 
-        return $obj;
+        return $self;
     }
 }

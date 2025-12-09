@@ -52,27 +52,27 @@ final class ExternalMeetingAvailability implements BaseModel
      */
     public static function with(int $endMillisUtc, int $startMillisUtc): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['endMillisUtc'] = $endMillisUtc;
-        $obj['startMillisUtc'] = $startMillisUtc;
+        $self['endMillisUtc'] = $endMillisUtc;
+        $self['startMillisUtc'] = $startMillisUtc;
 
-        return $obj;
+        return $self;
     }
 
     public function withEndMillisUtc(int $endMillisUtc): self
     {
-        $obj = clone $this;
-        $obj['endMillisUtc'] = $endMillisUtc;
+        $self = clone $this;
+        $self['endMillisUtc'] = $endMillisUtc;
 
-        return $obj;
+        return $self;
     }
 
     public function withStartMillisUtc(int $startMillisUtc): self
     {
-        $obj = clone $this;
-        $obj['startMillisUtc'] = $startMillisUtc;
+        $self = clone $this;
+        $self['startMillisUtc'] = $startMillisUtc;
 
-        return $obj;
+        return $self;
     }
 }

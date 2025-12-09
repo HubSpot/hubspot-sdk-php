@@ -40,11 +40,11 @@ final class ListGetParams implements BaseModel
      */
     public static function with(?bool $includeFilters = null): self
     {
-        $obj = new self;
+        $self = new self;
 
-        null !== $includeFilters && $obj['includeFilters'] = $includeFilters;
+        null !== $includeFilters && $self['includeFilters'] = $includeFilters;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -52,9 +52,9 @@ final class ListGetParams implements BaseModel
      */
     public function withIncludeFilters(bool $includeFilters): self
     {
-        $obj = clone $this;
-        $obj['includeFilters'] = $includeFilters;
+        $self = clone $this;
+        $self['includeFilters'] = $includeFilters;
 
-        return $obj;
+        return $self;
     }
 }

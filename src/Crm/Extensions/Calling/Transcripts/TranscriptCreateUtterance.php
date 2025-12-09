@@ -77,24 +77,24 @@ final class TranscriptCreateUtterance implements BaseModel
         string $text,
         ?string $languageCode = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['endTimeMillis'] = $endTimeMillis;
-        $obj['speaker'] = $speaker;
-        $obj['startTimeMillis'] = $startTimeMillis;
-        $obj['text'] = $text;
+        $self['endTimeMillis'] = $endTimeMillis;
+        $self['speaker'] = $speaker;
+        $self['startTimeMillis'] = $startTimeMillis;
+        $self['text'] = $text;
 
-        null !== $languageCode && $obj['languageCode'] = $languageCode;
+        null !== $languageCode && $self['languageCode'] = $languageCode;
 
-        return $obj;
+        return $self;
     }
 
     public function withEndTimeMillis(int $endTimeMillis): self
     {
-        $obj = clone $this;
-        $obj['endTimeMillis'] = $endTimeMillis;
+        $self = clone $this;
+        $self['endTimeMillis'] = $endTimeMillis;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -102,33 +102,33 @@ final class TranscriptCreateUtterance implements BaseModel
      */
     public function withSpeaker(Speaker|array $speaker): self
     {
-        $obj = clone $this;
-        $obj['speaker'] = $speaker;
+        $self = clone $this;
+        $self['speaker'] = $speaker;
 
-        return $obj;
+        return $self;
     }
 
     public function withStartTimeMillis(int $startTimeMillis): self
     {
-        $obj = clone $this;
-        $obj['startTimeMillis'] = $startTimeMillis;
+        $self = clone $this;
+        $self['startTimeMillis'] = $startTimeMillis;
 
-        return $obj;
+        return $self;
     }
 
     public function withText(string $text): self
     {
-        $obj = clone $this;
-        $obj['text'] = $text;
+        $self = clone $this;
+        $self['text'] = $text;
 
-        return $obj;
+        return $self;
     }
 
     public function withLanguageCode(string $languageCode): self
     {
-        $obj = clone $this;
-        $obj['languageCode'] = $languageCode;
+        $self = clone $this;
+        $self['languageCode'] = $languageCode;
 
-        return $obj;
+        return $self;
     }
 }

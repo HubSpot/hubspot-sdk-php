@@ -53,29 +53,29 @@ final class PublicButtonStyleSettings implements BaseModel
         ?int $cornerRadius = null,
         PublicFontStyle|array|null $fontStyle = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $backgroundColor && $obj['backgroundColor'] = $backgroundColor;
-        null !== $cornerRadius && $obj['cornerRadius'] = $cornerRadius;
-        null !== $fontStyle && $obj['fontStyle'] = $fontStyle;
+        null !== $backgroundColor && $self['backgroundColor'] = $backgroundColor;
+        null !== $cornerRadius && $self['cornerRadius'] = $cornerRadius;
+        null !== $fontStyle && $self['fontStyle'] = $fontStyle;
 
-        return $obj;
+        return $self;
     }
 
     public function withBackgroundColor(mixed $backgroundColor): self
     {
-        $obj = clone $this;
-        $obj['backgroundColor'] = $backgroundColor;
+        $self = clone $this;
+        $self['backgroundColor'] = $backgroundColor;
 
-        return $obj;
+        return $self;
     }
 
     public function withCornerRadius(int $cornerRadius): self
     {
-        $obj = clone $this;
-        $obj['cornerRadius'] = $cornerRadius;
+        $self = clone $this;
+        $self['cornerRadius'] = $cornerRadius;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -90,9 +90,9 @@ final class PublicButtonStyleSettings implements BaseModel
      */
     public function withFontStyle(PublicFontStyle|array $fontStyle): self
     {
-        $obj = clone $this;
-        $obj['fontStyle'] = $fontStyle;
+        $self = clone $this;
+        $self['fontStyle'] = $fontStyle;
 
-        return $obj;
+        return $self;
     }
 }

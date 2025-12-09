@@ -149,39 +149,39 @@ final class PublicThreadInboxChange implements BaseModel
         Type|string $type = 'THREAD_INBOX_CHANGE',
         ?\DateTimeInterface $updatedAt = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['id'] = $id;
-        $obj['archived'] = $archived;
-        $obj['client'] = $client;
-        $obj['conversationsThreadID'] = $conversationsThreadID;
-        $obj['createdAt'] = $createdAt;
-        $obj['createdBy'] = $createdBy;
-        $obj['fromInboxID'] = $fromInboxID;
-        $obj['recipients'] = $recipients;
-        $obj['senders'] = $senders;
-        $obj['toInboxID'] = $toInboxID;
-        $obj['type'] = $type;
+        $self['id'] = $id;
+        $self['archived'] = $archived;
+        $self['client'] = $client;
+        $self['conversationsThreadID'] = $conversationsThreadID;
+        $self['createdAt'] = $createdAt;
+        $self['createdBy'] = $createdBy;
+        $self['fromInboxID'] = $fromInboxID;
+        $self['recipients'] = $recipients;
+        $self['senders'] = $senders;
+        $self['toInboxID'] = $toInboxID;
+        $self['type'] = $type;
 
-        null !== $updatedAt && $obj['updatedAt'] = $updatedAt;
+        null !== $updatedAt && $self['updatedAt'] = $updatedAt;
 
-        return $obj;
+        return $self;
     }
 
     public function withID(string $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     public function withArchived(bool $archived): self
     {
-        $obj = clone $this;
-        $obj['archived'] = $archived;
+        $self = clone $this;
+        $self['archived'] = $archived;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -191,43 +191,43 @@ final class PublicThreadInboxChange implements BaseModel
      */
     public function withClient(PublicClient|array $client): self
     {
-        $obj = clone $this;
-        $obj['client'] = $client;
+        $self = clone $this;
+        $self['client'] = $client;
 
-        return $obj;
+        return $self;
     }
 
     public function withConversationsThreadID(
         string $conversationsThreadID
     ): self {
-        $obj = clone $this;
-        $obj['conversationsThreadID'] = $conversationsThreadID;
+        $self = clone $this;
+        $self['conversationsThreadID'] = $conversationsThreadID;
 
-        return $obj;
+        return $self;
     }
 
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
-        $obj = clone $this;
-        $obj['createdAt'] = $createdAt;
+        $self = clone $this;
+        $self['createdAt'] = $createdAt;
 
-        return $obj;
+        return $self;
     }
 
     public function withCreatedBy(string $createdBy): self
     {
-        $obj = clone $this;
-        $obj['createdBy'] = $createdBy;
+        $self = clone $this;
+        $self['createdBy'] = $createdBy;
 
-        return $obj;
+        return $self;
     }
 
     public function withFromInboxID(string $fromInboxID): self
     {
-        $obj = clone $this;
-        $obj['fromInboxID'] = $fromInboxID;
+        $self = clone $this;
+        $self['fromInboxID'] = $fromInboxID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -240,10 +240,10 @@ final class PublicThreadInboxChange implements BaseModel
      */
     public function withRecipients(array $recipients): self
     {
-        $obj = clone $this;
-        $obj['recipients'] = $recipients;
+        $self = clone $this;
+        $self['recipients'] = $recipients;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -256,18 +256,18 @@ final class PublicThreadInboxChange implements BaseModel
      */
     public function withSenders(array $senders): self
     {
-        $obj = clone $this;
-        $obj['senders'] = $senders;
+        $self = clone $this;
+        $self['senders'] = $senders;
 
-        return $obj;
+        return $self;
     }
 
     public function withToInboxID(string $toInboxID): self
     {
-        $obj = clone $this;
-        $obj['toInboxID'] = $toInboxID;
+        $self = clone $this;
+        $self['toInboxID'] = $toInboxID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -275,17 +275,17 @@ final class PublicThreadInboxChange implements BaseModel
      */
     public function withType(Type|string $type): self
     {
-        $obj = clone $this;
-        $obj['type'] = $type;
+        $self = clone $this;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
-        $obj = clone $this;
-        $obj['updatedAt'] = $updatedAt;
+        $self = clone $this;
+        $self['updatedAt'] = $updatedAt;
 
-        return $obj;
+        return $self;
     }
 }

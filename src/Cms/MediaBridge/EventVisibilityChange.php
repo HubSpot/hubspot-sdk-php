@@ -73,16 +73,16 @@ final class EventVisibilityChange implements BaseModel
         ?bool $showInTimeline = null,
         ?bool $showInWorkflows = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['eventType'] = $eventType;
-        $obj['updatedAt'] = $updatedAt;
+        $self['eventType'] = $eventType;
+        $self['updatedAt'] = $updatedAt;
 
-        null !== $showInReporting && $obj['showInReporting'] = $showInReporting;
-        null !== $showInTimeline && $obj['showInTimeline'] = $showInTimeline;
-        null !== $showInWorkflows && $obj['showInWorkflows'] = $showInWorkflows;
+        null !== $showInReporting && $self['showInReporting'] = $showInReporting;
+        null !== $showInTimeline && $self['showInTimeline'] = $showInTimeline;
+        null !== $showInWorkflows && $self['showInWorkflows'] = $showInWorkflows;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -90,41 +90,41 @@ final class EventVisibilityChange implements BaseModel
      */
     public function withEventType(EventType|string $eventType): self
     {
-        $obj = clone $this;
-        $obj['eventType'] = $eventType;
+        $self = clone $this;
+        $self['eventType'] = $eventType;
 
-        return $obj;
+        return $self;
     }
 
     public function withUpdatedAt(int $updatedAt): self
     {
-        $obj = clone $this;
-        $obj['updatedAt'] = $updatedAt;
+        $self = clone $this;
+        $self['updatedAt'] = $updatedAt;
 
-        return $obj;
+        return $self;
     }
 
     public function withShowInReporting(bool $showInReporting): self
     {
-        $obj = clone $this;
-        $obj['showInReporting'] = $showInReporting;
+        $self = clone $this;
+        $self['showInReporting'] = $showInReporting;
 
-        return $obj;
+        return $self;
     }
 
     public function withShowInTimeline(bool $showInTimeline): self
     {
-        $obj = clone $this;
-        $obj['showInTimeline'] = $showInTimeline;
+        $self = clone $this;
+        $self['showInTimeline'] = $showInTimeline;
 
-        return $obj;
+        return $self;
     }
 
     public function withShowInWorkflows(bool $showInWorkflows): self
     {
-        $obj = clone $this;
-        $obj['showInWorkflows'] = $showInWorkflows;
+        $self = clone $this;
+        $self['showInWorkflows'] = $showInWorkflows;
 
-        return $obj;
+        return $self;
     }
 }

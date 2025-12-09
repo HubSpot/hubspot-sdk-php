@@ -94,25 +94,25 @@ final class BatchResponsePublicCampaign implements BaseModel
         ?array $links = null,
         ?\DateTimeInterface $requestedAt = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['completedAt'] = $completedAt;
-        $obj['results'] = $results;
-        $obj['startedAt'] = $startedAt;
-        $obj['status'] = $status;
+        $self['completedAt'] = $completedAt;
+        $self['results'] = $results;
+        $self['startedAt'] = $startedAt;
+        $self['status'] = $status;
 
-        null !== $links && $obj['links'] = $links;
-        null !== $requestedAt && $obj['requestedAt'] = $requestedAt;
+        null !== $links && $self['links'] = $links;
+        null !== $requestedAt && $self['requestedAt'] = $requestedAt;
 
-        return $obj;
+        return $self;
     }
 
     public function withCompletedAt(\DateTimeInterface $completedAt): self
     {
-        $obj = clone $this;
-        $obj['completedAt'] = $completedAt;
+        $self = clone $this;
+        $self['completedAt'] = $completedAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -126,18 +126,18 @@ final class BatchResponsePublicCampaign implements BaseModel
      */
     public function withResults(array $results): self
     {
-        $obj = clone $this;
-        $obj['results'] = $results;
+        $self = clone $this;
+        $self['results'] = $results;
 
-        return $obj;
+        return $self;
     }
 
     public function withStartedAt(\DateTimeInterface $startedAt): self
     {
-        $obj = clone $this;
-        $obj['startedAt'] = $startedAt;
+        $self = clone $this;
+        $self['startedAt'] = $startedAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -145,10 +145,10 @@ final class BatchResponsePublicCampaign implements BaseModel
      */
     public function withStatus(Status|string $status): self
     {
-        $obj = clone $this;
-        $obj['status'] = $status;
+        $self = clone $this;
+        $self['status'] = $status;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -156,17 +156,17 @@ final class BatchResponsePublicCampaign implements BaseModel
      */
     public function withLinks(array $links): self
     {
-        $obj = clone $this;
-        $obj['links'] = $links;
+        $self = clone $this;
+        $self['links'] = $links;
 
-        return $obj;
+        return $self;
     }
 
     public function withRequestedAt(\DateTimeInterface $requestedAt): self
     {
-        $obj = clone $this;
-        $obj['requestedAt'] = $requestedAt;
+        $self = clone $this;
+        $self['requestedAt'] = $requestedAt;
 
-        return $obj;
+        return $self;
     }
 }

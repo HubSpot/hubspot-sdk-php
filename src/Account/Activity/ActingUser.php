@@ -55,13 +55,13 @@ final class ActingUser implements BaseModel
      */
     public static function with(int $userID, ?string $userEmail = null): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['userID'] = $userID;
+        $self['userID'] = $userID;
 
-        null !== $userEmail && $obj['userEmail'] = $userEmail;
+        null !== $userEmail && $self['userEmail'] = $userEmail;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -69,10 +69,10 @@ final class ActingUser implements BaseModel
      */
     public function withUserID(int $userID): self
     {
-        $obj = clone $this;
-        $obj['userID'] = $userID;
+        $self = clone $this;
+        $self['userID'] = $userID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -80,9 +80,9 @@ final class ActingUser implements BaseModel
      */
     public function withUserEmail(string $userEmail): self
     {
-        $obj = clone $this;
-        $obj['userEmail'] = $userEmail;
+        $self = clone $this;
+        $self['userEmail'] = $userEmail;
 
-        return $obj;
+        return $self;
     }
 }

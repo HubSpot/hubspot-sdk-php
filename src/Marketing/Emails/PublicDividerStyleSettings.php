@@ -42,36 +42,36 @@ final class PublicDividerStyleSettings implements BaseModel
         ?int $height = null,
         ?string $lineType = null
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $color && $obj['color'] = $color;
-        null !== $height && $obj['height'] = $height;
-        null !== $lineType && $obj['lineType'] = $lineType;
+        null !== $color && $self['color'] = $color;
+        null !== $height && $self['height'] = $height;
+        null !== $lineType && $self['lineType'] = $lineType;
 
-        return $obj;
+        return $self;
     }
 
     public function withColor(mixed $color): self
     {
-        $obj = clone $this;
-        $obj['color'] = $color;
+        $self = clone $this;
+        $self['color'] = $color;
 
-        return $obj;
+        return $self;
     }
 
     public function withHeight(int $height): self
     {
-        $obj = clone $this;
-        $obj['height'] = $height;
+        $self = clone $this;
+        $self['height'] = $height;
 
-        return $obj;
+        return $self;
     }
 
     public function withLineType(string $lineType): self
     {
-        $obj = clone $this;
-        $obj['lineType'] = $lineType;
+        $self = clone $this;
+        $self['lineType'] = $lineType;
 
-        return $obj;
+        return $self;
     }
 }

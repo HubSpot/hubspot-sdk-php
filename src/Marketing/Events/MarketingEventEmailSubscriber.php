@@ -80,14 +80,14 @@ final class MarketingEventEmailSubscriber implements BaseModel
         int $interactionDateTime,
         array $properties,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['contactProperties'] = $contactProperties;
-        $obj['email'] = $email;
-        $obj['interactionDateTime'] = $interactionDateTime;
-        $obj['properties'] = $properties;
+        $self['contactProperties'] = $contactProperties;
+        $self['email'] = $email;
+        $self['interactionDateTime'] = $interactionDateTime;
+        $self['properties'] = $properties;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -95,10 +95,10 @@ final class MarketingEventEmailSubscriber implements BaseModel
      */
     public function withContactProperties(array $contactProperties): self
     {
-        $obj = clone $this;
-        $obj['contactProperties'] = $contactProperties;
+        $self = clone $this;
+        $self['contactProperties'] = $contactProperties;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -106,10 +106,10 @@ final class MarketingEventEmailSubscriber implements BaseModel
      */
     public function withEmail(string $email): self
     {
-        $obj = clone $this;
-        $obj['email'] = $email;
+        $self = clone $this;
+        $self['email'] = $email;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -117,10 +117,10 @@ final class MarketingEventEmailSubscriber implements BaseModel
      */
     public function withInteractionDateTime(int $interactionDateTime): self
     {
-        $obj = clone $this;
-        $obj['interactionDateTime'] = $interactionDateTime;
+        $self = clone $this;
+        $self['interactionDateTime'] = $interactionDateTime;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -128,9 +128,9 @@ final class MarketingEventEmailSubscriber implements BaseModel
      */
     public function withProperties(array $properties): self
     {
-        $obj = clone $this;
-        $obj['properties'] = $properties;
+        $self = clone $this;
+        $self['properties'] = $properties;
 
-        return $obj;
+        return $self;
     }
 }

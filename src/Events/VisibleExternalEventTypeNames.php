@@ -54,11 +54,11 @@ final class VisibleExternalEventTypeNames implements BaseModel
      */
     public static function with(array $eventTypes): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['eventTypes'] = $eventTypes;
+        $self['eventTypes'] = $eventTypes;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -68,9 +68,9 @@ final class VisibleExternalEventTypeNames implements BaseModel
      */
     public function withEventTypes(array $eventTypes): self
     {
-        $obj = clone $this;
-        $obj['eventTypes'] = $eventTypes;
+        $self = clone $this;
+        $self['eventTypes'] = $eventTypes;
 
-        return $obj;
+        return $self;
     }
 }

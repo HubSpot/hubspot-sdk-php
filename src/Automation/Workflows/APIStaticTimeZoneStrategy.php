@@ -56,20 +56,20 @@ final class APIStaticTimeZoneStrategy implements BaseModel
         string $timeZoneID,
         Type|string $type = 'STATIC_TIME_ZONE'
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['timeZoneID'] = $timeZoneID;
-        $obj['type'] = $type;
+        $self['timeZoneID'] = $timeZoneID;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 
     public function withTimeZoneID(string $timeZoneID): self
     {
-        $obj = clone $this;
-        $obj['timeZoneID'] = $timeZoneID;
+        $self = clone $this;
+        $self['timeZoneID'] = $timeZoneID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -77,9 +77,9 @@ final class APIStaticTimeZoneStrategy implements BaseModel
      */
     public function withType(Type|string $type): self
     {
-        $obj = clone $this;
-        $obj['type'] = $type;
+        $self = clone $this;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 }

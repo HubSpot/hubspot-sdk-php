@@ -78,16 +78,16 @@ final class IsPresent implements BaseModel
         ?string $propertyName = null,
         ?bool $value = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['expressionToEvaluate'] = $expressionToEvaluate;
-        $obj['operator'] = $operator;
+        $self['expressionToEvaluate'] = $expressionToEvaluate;
+        $self['operator'] = $operator;
 
-        null !== $inputs && $obj['inputs'] = $inputs;
-        null !== $propertyName && $obj['propertyName'] = $propertyName;
-        null !== $value && $obj['value'] = $value;
+        null !== $inputs && $self['inputs'] = $inputs;
+        null !== $propertyName && $self['propertyName'] = $propertyName;
+        null !== $value && $self['value'] = $value;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -95,10 +95,10 @@ final class IsPresent implements BaseModel
      */
     public function withExpressionToEvaluate(array $expressionToEvaluate): self
     {
-        $obj = clone $this;
-        $obj['expressionToEvaluate'] = $expressionToEvaluate;
+        $self = clone $this;
+        $self['expressionToEvaluate'] = $expressionToEvaluate;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -106,10 +106,10 @@ final class IsPresent implements BaseModel
      */
     public function withOperator(Operator|string $operator): self
     {
-        $obj = clone $this;
-        $obj['operator'] = $operator;
+        $self = clone $this;
+        $self['operator'] = $operator;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -117,25 +117,25 @@ final class IsPresent implements BaseModel
      */
     public function withInputs(array $inputs): self
     {
-        $obj = clone $this;
-        $obj['inputs'] = $inputs;
+        $self = clone $this;
+        $self['inputs'] = $inputs;
 
-        return $obj;
+        return $self;
     }
 
     public function withPropertyName(string $propertyName): self
     {
-        $obj = clone $this;
-        $obj['propertyName'] = $propertyName;
+        $self = clone $this;
+        $self['propertyName'] = $propertyName;
 
-        return $obj;
+        return $self;
     }
 
     public function withValue(bool $value): self
     {
-        $obj = clone $this;
-        $obj['value'] = $value;
+        $self = clone $this;
+        $self['value'] = $value;
 
-        return $obj;
+        return $self;
     }
 }

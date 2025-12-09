@@ -73,46 +73,46 @@ final class DefinitionUpdateLabelParams implements BaseModel
         string $label,
         ?string $inverseLabel = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['fromObjectType'] = $fromObjectType;
-        $obj['associationTypeID'] = $associationTypeID;
-        $obj['label'] = $label;
+        $self['fromObjectType'] = $fromObjectType;
+        $self['associationTypeID'] = $associationTypeID;
+        $self['label'] = $label;
 
-        null !== $inverseLabel && $obj['inverseLabel'] = $inverseLabel;
+        null !== $inverseLabel && $self['inverseLabel'] = $inverseLabel;
 
-        return $obj;
+        return $self;
     }
 
     public function withFromObjectType(string $fromObjectType): self
     {
-        $obj = clone $this;
-        $obj['fromObjectType'] = $fromObjectType;
+        $self = clone $this;
+        $self['fromObjectType'] = $fromObjectType;
 
-        return $obj;
+        return $self;
     }
 
     public function withAssociationTypeID(int $associationTypeID): self
     {
-        $obj = clone $this;
-        $obj['associationTypeID'] = $associationTypeID;
+        $self = clone $this;
+        $self['associationTypeID'] = $associationTypeID;
 
-        return $obj;
+        return $self;
     }
 
     public function withLabel(string $label): self
     {
-        $obj = clone $this;
-        $obj['label'] = $label;
+        $self = clone $this;
+        $self['label'] = $label;
 
-        return $obj;
+        return $self;
     }
 
     public function withInverseLabel(string $inverseLabel): self
     {
-        $obj = clone $this;
-        $obj['inverseLabel'] = $inverseLabel;
+        $self = clone $this;
+        $self['inverseLabel'] = $inverseLabel;
 
-        return $obj;
+        return $self;
     }
 }

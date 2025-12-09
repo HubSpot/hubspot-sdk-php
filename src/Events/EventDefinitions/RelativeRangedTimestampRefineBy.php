@@ -88,14 +88,14 @@ final class RelativeRangedTimestampRefineBy implements BaseModel
         TimeOffset|array $upperBoundOffset,
         Type|string $type = 'RelativeRangedTimestampRefineBy',
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['lowerBoundOffset'] = $lowerBoundOffset;
-        $obj['rangeType'] = $rangeType;
-        $obj['type'] = $type;
-        $obj['upperBoundOffset'] = $upperBoundOffset;
+        $self['lowerBoundOffset'] = $lowerBoundOffset;
+        $self['rangeType'] = $rangeType;
+        $self['type'] = $type;
+        $self['upperBoundOffset'] = $upperBoundOffset;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -108,10 +108,10 @@ final class RelativeRangedTimestampRefineBy implements BaseModel
     public function withLowerBoundOffset(
         TimeOffset|array $lowerBoundOffset
     ): self {
-        $obj = clone $this;
-        $obj['lowerBoundOffset'] = $lowerBoundOffset;
+        $self = clone $this;
+        $self['lowerBoundOffset'] = $lowerBoundOffset;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -119,10 +119,10 @@ final class RelativeRangedTimestampRefineBy implements BaseModel
      */
     public function withRangeType(RangeType|string $rangeType): self
     {
-        $obj = clone $this;
-        $obj['rangeType'] = $rangeType;
+        $self = clone $this;
+        $self['rangeType'] = $rangeType;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -130,10 +130,10 @@ final class RelativeRangedTimestampRefineBy implements BaseModel
      */
     public function withType(Type|string $type): self
     {
-        $obj = clone $this;
-        $obj['type'] = $type;
+        $self = clone $this;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -146,9 +146,9 @@ final class RelativeRangedTimestampRefineBy implements BaseModel
     public function withUpperBoundOffset(
         TimeOffset|array $upperBoundOffset
     ): self {
-        $obj = clone $this;
-        $obj['upperBoundOffset'] = $upperBoundOffset;
+        $self = clone $this;
+        $self['upperBoundOffset'] = $upperBoundOffset;
 
-        return $obj;
+        return $self;
     }
 }

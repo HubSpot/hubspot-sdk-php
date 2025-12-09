@@ -485,68 +485,68 @@ final class PublicEmail implements BaseModel
         PublicWebversionDetails|array|null $webversion = null,
         ?array $workflowNames = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['isAb'] = $isAb;
+        $self['isAb'] = $isAb;
 
-        null !== $id && $obj['id'] = $id;
-        null !== $activeDomain && $obj['activeDomain'] = $activeDomain;
-        null !== $allEmailCampaignIDs && $obj['allEmailCampaignIDs'] = $allEmailCampaignIDs;
-        null !== $archived && $obj['archived'] = $archived;
-        null !== $businessUnitID && $obj['businessUnitID'] = $businessUnitID;
-        null !== $campaign && $obj['campaign'] = $campaign;
-        null !== $campaignName && $obj['campaignName'] = $campaignName;
-        null !== $campaignUtm && $obj['campaignUtm'] = $campaignUtm;
-        null !== $clonedFrom && $obj['clonedFrom'] = $clonedFrom;
-        null !== $content && $obj['content'] = $content;
-        null !== $createdAt && $obj['createdAt'] = $createdAt;
-        null !== $createdByID && $obj['createdByID'] = $createdByID;
-        null !== $deletedAt && $obj['deletedAt'] = $deletedAt;
-        null !== $emailCampaignGroupID && $obj['emailCampaignGroupID'] = $emailCampaignGroupID;
-        null !== $emailTemplateMode && $obj['emailTemplateMode'] = $emailTemplateMode;
-        null !== $feedbackSurveyID && $obj['feedbackSurveyID'] = $feedbackSurveyID;
-        null !== $folderID && $obj['folderID'] = $folderID;
-        null !== $folderIDV2 && $obj['folderIDV2'] = $folderIDV2;
-        null !== $from && $obj['from'] = $from;
-        null !== $isPublished && $obj['isPublished'] = $isPublished;
-        null !== $isTransactional && $obj['isTransactional'] = $isTransactional;
-        null !== $jitterSendTime && $obj['jitterSendTime'] = $jitterSendTime;
-        null !== $language && $obj['language'] = $language;
-        null !== $name && $obj['name'] = $name;
-        null !== $previewKey && $obj['previewKey'] = $previewKey;
-        null !== $primaryEmailCampaignID && $obj['primaryEmailCampaignID'] = $primaryEmailCampaignID;
-        null !== $publishDate && $obj['publishDate'] = $publishDate;
-        null !== $publishedAt && $obj['publishedAt'] = $publishedAt;
-        null !== $publishedByEmail && $obj['publishedByEmail'] = $publishedByEmail;
-        null !== $publishedByID && $obj['publishedByID'] = $publishedByID;
-        null !== $publishedByName && $obj['publishedByName'] = $publishedByName;
-        null !== $rssData && $obj['rssData'] = $rssData;
-        null !== $sendOnPublish && $obj['sendOnPublish'] = $sendOnPublish;
-        null !== $state && $obj['state'] = $state;
-        null !== $stats && $obj['stats'] = $stats;
-        null !== $subcategory && $obj['subcategory'] = $subcategory;
-        null !== $subject && $obj['subject'] = $subject;
-        null !== $subscriptionDetails && $obj['subscriptionDetails'] = $subscriptionDetails;
-        null !== $teamsWithAccess && $obj['teamsWithAccess'] = $teamsWithAccess;
-        null !== $testing && $obj['testing'] = $testing;
-        null !== $to && $obj['to'] = $to;
-        null !== $type && $obj['type'] = $type;
-        null !== $unpublishedAt && $obj['unpublishedAt'] = $unpublishedAt;
-        null !== $updatedAt && $obj['updatedAt'] = $updatedAt;
-        null !== $updatedByID && $obj['updatedByID'] = $updatedByID;
-        null !== $usersWithAccess && $obj['usersWithAccess'] = $usersWithAccess;
-        null !== $webversion && $obj['webversion'] = $webversion;
-        null !== $workflowNames && $obj['workflowNames'] = $workflowNames;
+        null !== $id && $self['id'] = $id;
+        null !== $activeDomain && $self['activeDomain'] = $activeDomain;
+        null !== $allEmailCampaignIDs && $self['allEmailCampaignIDs'] = $allEmailCampaignIDs;
+        null !== $archived && $self['archived'] = $archived;
+        null !== $businessUnitID && $self['businessUnitID'] = $businessUnitID;
+        null !== $campaign && $self['campaign'] = $campaign;
+        null !== $campaignName && $self['campaignName'] = $campaignName;
+        null !== $campaignUtm && $self['campaignUtm'] = $campaignUtm;
+        null !== $clonedFrom && $self['clonedFrom'] = $clonedFrom;
+        null !== $content && $self['content'] = $content;
+        null !== $createdAt && $self['createdAt'] = $createdAt;
+        null !== $createdByID && $self['createdByID'] = $createdByID;
+        null !== $deletedAt && $self['deletedAt'] = $deletedAt;
+        null !== $emailCampaignGroupID && $self['emailCampaignGroupID'] = $emailCampaignGroupID;
+        null !== $emailTemplateMode && $self['emailTemplateMode'] = $emailTemplateMode;
+        null !== $feedbackSurveyID && $self['feedbackSurveyID'] = $feedbackSurveyID;
+        null !== $folderID && $self['folderID'] = $folderID;
+        null !== $folderIDV2 && $self['folderIDV2'] = $folderIDV2;
+        null !== $from && $self['from'] = $from;
+        null !== $isPublished && $self['isPublished'] = $isPublished;
+        null !== $isTransactional && $self['isTransactional'] = $isTransactional;
+        null !== $jitterSendTime && $self['jitterSendTime'] = $jitterSendTime;
+        null !== $language && $self['language'] = $language;
+        null !== $name && $self['name'] = $name;
+        null !== $previewKey && $self['previewKey'] = $previewKey;
+        null !== $primaryEmailCampaignID && $self['primaryEmailCampaignID'] = $primaryEmailCampaignID;
+        null !== $publishDate && $self['publishDate'] = $publishDate;
+        null !== $publishedAt && $self['publishedAt'] = $publishedAt;
+        null !== $publishedByEmail && $self['publishedByEmail'] = $publishedByEmail;
+        null !== $publishedByID && $self['publishedByID'] = $publishedByID;
+        null !== $publishedByName && $self['publishedByName'] = $publishedByName;
+        null !== $rssData && $self['rssData'] = $rssData;
+        null !== $sendOnPublish && $self['sendOnPublish'] = $sendOnPublish;
+        null !== $state && $self['state'] = $state;
+        null !== $stats && $self['stats'] = $stats;
+        null !== $subcategory && $self['subcategory'] = $subcategory;
+        null !== $subject && $self['subject'] = $subject;
+        null !== $subscriptionDetails && $self['subscriptionDetails'] = $subscriptionDetails;
+        null !== $teamsWithAccess && $self['teamsWithAccess'] = $teamsWithAccess;
+        null !== $testing && $self['testing'] = $testing;
+        null !== $to && $self['to'] = $to;
+        null !== $type && $self['type'] = $type;
+        null !== $unpublishedAt && $self['unpublishedAt'] = $unpublishedAt;
+        null !== $updatedAt && $self['updatedAt'] = $updatedAt;
+        null !== $updatedByID && $self['updatedByID'] = $updatedByID;
+        null !== $usersWithAccess && $self['usersWithAccess'] = $usersWithAccess;
+        null !== $webversion && $self['webversion'] = $webversion;
+        null !== $workflowNames && $self['workflowNames'] = $workflowNames;
 
-        return $obj;
+        return $self;
     }
 
     public function withIsAb(bool $isAb): self
     {
-        $obj = clone $this;
-        $obj['isAb'] = $isAb;
+        $self = clone $this;
+        $self['isAb'] = $isAb;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -554,10 +554,10 @@ final class PublicEmail implements BaseModel
      */
     public function withID(string $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -565,10 +565,10 @@ final class PublicEmail implements BaseModel
      */
     public function withActiveDomain(string $activeDomain): self
     {
-        $obj = clone $this;
-        $obj['activeDomain'] = $activeDomain;
+        $self = clone $this;
+        $self['activeDomain'] = $activeDomain;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -578,10 +578,10 @@ final class PublicEmail implements BaseModel
      */
     public function withAllEmailCampaignIDs(array $allEmailCampaignIDs): self
     {
-        $obj = clone $this;
-        $obj['allEmailCampaignIDs'] = $allEmailCampaignIDs;
+        $self = clone $this;
+        $self['allEmailCampaignIDs'] = $allEmailCampaignIDs;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -589,18 +589,18 @@ final class PublicEmail implements BaseModel
      */
     public function withArchived(bool $archived): self
     {
-        $obj = clone $this;
-        $obj['archived'] = $archived;
+        $self = clone $this;
+        $self['archived'] = $archived;
 
-        return $obj;
+        return $self;
     }
 
     public function withBusinessUnitID(string $businessUnitID): self
     {
-        $obj = clone $this;
-        $obj['businessUnitID'] = $businessUnitID;
+        $self = clone $this;
+        $self['businessUnitID'] = $businessUnitID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -608,10 +608,10 @@ final class PublicEmail implements BaseModel
      */
     public function withCampaign(string $campaign): self
     {
-        $obj = clone $this;
-        $obj['campaign'] = $campaign;
+        $self = clone $this;
+        $self['campaign'] = $campaign;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -619,18 +619,18 @@ final class PublicEmail implements BaseModel
      */
     public function withCampaignName(string $campaignName): self
     {
-        $obj = clone $this;
-        $obj['campaignName'] = $campaignName;
+        $self = clone $this;
+        $self['campaignName'] = $campaignName;
 
-        return $obj;
+        return $self;
     }
 
     public function withCampaignUtm(string $campaignUtm): self
     {
-        $obj = clone $this;
-        $obj['campaignUtm'] = $campaignUtm;
+        $self = clone $this;
+        $self['campaignUtm'] = $campaignUtm;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -638,10 +638,10 @@ final class PublicEmail implements BaseModel
      */
     public function withClonedFrom(string $clonedFrom): self
     {
-        $obj = clone $this;
-        $obj['clonedFrom'] = $clonedFrom;
+        $self = clone $this;
+        $self['clonedFrom'] = $clonedFrom;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -660,10 +660,10 @@ final class PublicEmail implements BaseModel
      */
     public function withContent(PublicEmailContent|array $content): self
     {
-        $obj = clone $this;
-        $obj['content'] = $content;
+        $self = clone $this;
+        $self['content'] = $content;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -671,10 +671,10 @@ final class PublicEmail implements BaseModel
      */
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
-        $obj = clone $this;
-        $obj['createdAt'] = $createdAt;
+        $self = clone $this;
+        $self['createdAt'] = $createdAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -682,10 +682,10 @@ final class PublicEmail implements BaseModel
      */
     public function withCreatedByID(string $createdByID): self
     {
-        $obj = clone $this;
-        $obj['createdByID'] = $createdByID;
+        $self = clone $this;
+        $self['createdByID'] = $createdByID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -693,18 +693,18 @@ final class PublicEmail implements BaseModel
      */
     public function withDeletedAt(\DateTimeInterface $deletedAt): self
     {
-        $obj = clone $this;
-        $obj['deletedAt'] = $deletedAt;
+        $self = clone $this;
+        $self['deletedAt'] = $deletedAt;
 
-        return $obj;
+        return $self;
     }
 
     public function withEmailCampaignGroupID(string $emailCampaignGroupID): self
     {
-        $obj = clone $this;
-        $obj['emailCampaignGroupID'] = $emailCampaignGroupID;
+        $self = clone $this;
+        $self['emailCampaignGroupID'] = $emailCampaignGroupID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -713,10 +713,10 @@ final class PublicEmail implements BaseModel
     public function withEmailTemplateMode(
         EmailTemplateMode|string $emailTemplateMode
     ): self {
-        $obj = clone $this;
-        $obj['emailTemplateMode'] = $emailTemplateMode;
+        $self = clone $this;
+        $self['emailTemplateMode'] = $emailTemplateMode;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -724,26 +724,26 @@ final class PublicEmail implements BaseModel
      */
     public function withFeedbackSurveyID(string $feedbackSurveyID): self
     {
-        $obj = clone $this;
-        $obj['feedbackSurveyID'] = $feedbackSurveyID;
+        $self = clone $this;
+        $self['feedbackSurveyID'] = $feedbackSurveyID;
 
-        return $obj;
+        return $self;
     }
 
     public function withFolderID(int $folderID): self
     {
-        $obj = clone $this;
-        $obj['folderID'] = $folderID;
+        $self = clone $this;
+        $self['folderID'] = $folderID;
 
-        return $obj;
+        return $self;
     }
 
     public function withFolderIdv2(int $folderIDV2): self
     {
-        $obj = clone $this;
-        $obj['folderIDV2'] = $folderIDV2;
+        $self = clone $this;
+        $self['folderIDV2'] = $folderIDV2;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -755,10 +755,10 @@ final class PublicEmail implements BaseModel
      */
     public function withFrom(PublicEmailFromDetails|array $from): self
     {
-        $obj = clone $this;
-        $obj['from'] = $from;
+        $self = clone $this;
+        $self['from'] = $from;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -766,10 +766,10 @@ final class PublicEmail implements BaseModel
      */
     public function withIsPublished(bool $isPublished): self
     {
-        $obj = clone $this;
-        $obj['isPublished'] = $isPublished;
+        $self = clone $this;
+        $self['isPublished'] = $isPublished;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -777,18 +777,18 @@ final class PublicEmail implements BaseModel
      */
     public function withIsTransactional(bool $isTransactional): self
     {
-        $obj = clone $this;
-        $obj['isTransactional'] = $isTransactional;
+        $self = clone $this;
+        $self['isTransactional'] = $isTransactional;
 
-        return $obj;
+        return $self;
     }
 
     public function withJitterSendTime(bool $jitterSendTime): self
     {
-        $obj = clone $this;
-        $obj['jitterSendTime'] = $jitterSendTime;
+        $self = clone $this;
+        $self['jitterSendTime'] = $jitterSendTime;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -796,10 +796,10 @@ final class PublicEmail implements BaseModel
      */
     public function withLanguage(Language|string $language): self
     {
-        $obj = clone $this;
-        $obj['language'] = $language;
+        $self = clone $this;
+        $self['language'] = $language;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -807,27 +807,27 @@ final class PublicEmail implements BaseModel
      */
     public function withName(string $name): self
     {
-        $obj = clone $this;
-        $obj['name'] = $name;
+        $self = clone $this;
+        $self['name'] = $name;
 
-        return $obj;
+        return $self;
     }
 
     public function withPreviewKey(string $previewKey): self
     {
-        $obj = clone $this;
-        $obj['previewKey'] = $previewKey;
+        $self = clone $this;
+        $self['previewKey'] = $previewKey;
 
-        return $obj;
+        return $self;
     }
 
     public function withPrimaryEmailCampaignID(
         string $primaryEmailCampaignID
     ): self {
-        $obj = clone $this;
-        $obj['primaryEmailCampaignID'] = $primaryEmailCampaignID;
+        $self = clone $this;
+        $self['primaryEmailCampaignID'] = $primaryEmailCampaignID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -835,10 +835,10 @@ final class PublicEmail implements BaseModel
      */
     public function withPublishDate(\DateTimeInterface $publishDate): self
     {
-        $obj = clone $this;
-        $obj['publishDate'] = $publishDate;
+        $self = clone $this;
+        $self['publishDate'] = $publishDate;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -846,10 +846,10 @@ final class PublicEmail implements BaseModel
      */
     public function withPublishedAt(\DateTimeInterface $publishedAt): self
     {
-        $obj = clone $this;
-        $obj['publishedAt'] = $publishedAt;
+        $self = clone $this;
+        $self['publishedAt'] = $publishedAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -857,10 +857,10 @@ final class PublicEmail implements BaseModel
      */
     public function withPublishedByEmail(string $publishedByEmail): self
     {
-        $obj = clone $this;
-        $obj['publishedByEmail'] = $publishedByEmail;
+        $self = clone $this;
+        $self['publishedByEmail'] = $publishedByEmail;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -868,10 +868,10 @@ final class PublicEmail implements BaseModel
      */
     public function withPublishedByID(string $publishedByID): self
     {
-        $obj = clone $this;
-        $obj['publishedByID'] = $publishedByID;
+        $self = clone $this;
+        $self['publishedByID'] = $publishedByID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -879,10 +879,10 @@ final class PublicEmail implements BaseModel
      */
     public function withPublishedByName(string $publishedByName): self
     {
-        $obj = clone $this;
-        $obj['publishedByName'] = $publishedByName;
+        $self = clone $this;
+        $self['publishedByName'] = $publishedByName;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -902,10 +902,10 @@ final class PublicEmail implements BaseModel
      */
     public function withRssData(PublicRssEmailDetails|array $rssData): self
     {
-        $obj = clone $this;
-        $obj['rssData'] = $rssData;
+        $self = clone $this;
+        $self['rssData'] = $rssData;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -913,10 +913,10 @@ final class PublicEmail implements BaseModel
      */
     public function withSendOnPublish(bool $sendOnPublish): self
     {
-        $obj = clone $this;
-        $obj['sendOnPublish'] = $sendOnPublish;
+        $self = clone $this;
+        $self['sendOnPublish'] = $sendOnPublish;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -926,10 +926,10 @@ final class PublicEmail implements BaseModel
      */
     public function withState(State|string $state): self
     {
-        $obj = clone $this;
-        $obj['state'] = $state;
+        $self = clone $this;
+        $self['state'] = $state;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -942,10 +942,10 @@ final class PublicEmail implements BaseModel
      */
     public function withStats(EmailStatisticsData|array $stats): self
     {
-        $obj = clone $this;
-        $obj['stats'] = $stats;
+        $self = clone $this;
+        $self['stats'] = $stats;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -953,10 +953,10 @@ final class PublicEmail implements BaseModel
      */
     public function withSubcategory(string $subcategory): self
     {
-        $obj = clone $this;
-        $obj['subcategory'] = $subcategory;
+        $self = clone $this;
+        $self['subcategory'] = $subcategory;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -964,10 +964,10 @@ final class PublicEmail implements BaseModel
      */
     public function withSubject(string $subject): self
     {
-        $obj = clone $this;
-        $obj['subject'] = $subject;
+        $self = clone $this;
+        $self['subject'] = $subject;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -983,10 +983,10 @@ final class PublicEmail implements BaseModel
     public function withSubscriptionDetails(
         PublicEmailSubscriptionDetails|array $subscriptionDetails
     ): self {
-        $obj = clone $this;
-        $obj['subscriptionDetails'] = $subscriptionDetails;
+        $self = clone $this;
+        $self['subscriptionDetails'] = $subscriptionDetails;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -994,10 +994,10 @@ final class PublicEmail implements BaseModel
      */
     public function withTeamsWithAccess(array $teamsWithAccess): self
     {
-        $obj = clone $this;
-        $obj['teamsWithAccess'] = $teamsWithAccess;
+        $self = clone $this;
+        $self['teamsWithAccess'] = $teamsWithAccess;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -1016,10 +1016,10 @@ final class PublicEmail implements BaseModel
      */
     public function withTesting(PublicEmailTestingDetails|array $testing): self
     {
-        $obj = clone $this;
-        $obj['testing'] = $testing;
+        $self = clone $this;
+        $self['testing'] = $testing;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -1035,10 +1035,10 @@ final class PublicEmail implements BaseModel
      */
     public function withTo(PublicEmailToDetails|array $to): self
     {
-        $obj = clone $this;
-        $obj['to'] = $to;
+        $self = clone $this;
+        $self['to'] = $to;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -1048,18 +1048,18 @@ final class PublicEmail implements BaseModel
      */
     public function withType(Type|string $type): self
     {
-        $obj = clone $this;
-        $obj['type'] = $type;
+        $self = clone $this;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 
     public function withUnpublishedAt(\DateTimeInterface $unpublishedAt): self
     {
-        $obj = clone $this;
-        $obj['unpublishedAt'] = $unpublishedAt;
+        $self = clone $this;
+        $self['unpublishedAt'] = $unpublishedAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -1067,10 +1067,10 @@ final class PublicEmail implements BaseModel
      */
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
-        $obj = clone $this;
-        $obj['updatedAt'] = $updatedAt;
+        $self = clone $this;
+        $self['updatedAt'] = $updatedAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -1078,10 +1078,10 @@ final class PublicEmail implements BaseModel
      */
     public function withUpdatedByID(string $updatedByID): self
     {
-        $obj = clone $this;
-        $obj['updatedByID'] = $updatedByID;
+        $self = clone $this;
+        $self['updatedByID'] = $updatedByID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -1089,10 +1089,10 @@ final class PublicEmail implements BaseModel
      */
     public function withUsersWithAccess(array $usersWithAccess): self
     {
-        $obj = clone $this;
-        $obj['usersWithAccess'] = $usersWithAccess;
+        $self = clone $this;
+        $self['usersWithAccess'] = $usersWithAccess;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -1113,10 +1113,10 @@ final class PublicEmail implements BaseModel
     public function withWebversion(
         PublicWebversionDetails|array $webversion
     ): self {
-        $obj = clone $this;
-        $obj['webversion'] = $webversion;
+        $self = clone $this;
+        $self['webversion'] = $webversion;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -1126,9 +1126,9 @@ final class PublicEmail implements BaseModel
      */
     public function withWorkflowNames(array $workflowNames): self
     {
-        $obj = clone $this;
-        $obj['workflowNames'] = $workflowNames;
+        $self = clone $this;
+        $self['workflowNames'] = $workflowNames;
 
-        return $obj;
+        return $self;
     }
 }

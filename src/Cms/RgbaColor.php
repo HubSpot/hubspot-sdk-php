@@ -68,14 +68,14 @@ final class RgbaColor implements BaseModel
      */
     public static function with(float $a, int $b, int $g, int $r): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['a'] = $a;
-        $obj['b'] = $b;
-        $obj['g'] = $g;
-        $obj['r'] = $r;
+        $self['a'] = $a;
+        $self['b'] = $b;
+        $self['g'] = $g;
+        $self['r'] = $r;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -83,10 +83,10 @@ final class RgbaColor implements BaseModel
      */
     public function withA(float $a): self
     {
-        $obj = clone $this;
-        $obj['a'] = $a;
+        $self = clone $this;
+        $self['a'] = $a;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -94,10 +94,10 @@ final class RgbaColor implements BaseModel
      */
     public function withB(int $b): self
     {
-        $obj = clone $this;
-        $obj['b'] = $b;
+        $self = clone $this;
+        $self['b'] = $b;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -105,10 +105,10 @@ final class RgbaColor implements BaseModel
      */
     public function withG(int $g): self
     {
-        $obj = clone $this;
-        $obj['g'] = $g;
+        $self = clone $this;
+        $self['g'] = $g;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -116,9 +116,9 @@ final class RgbaColor implements BaseModel
      */
     public function withR(int $r): self
     {
-        $obj = clone $this;
-        $obj['r'] = $r;
+        $self = clone $this;
+        $self['r'] = $r;
 
-        return $obj;
+        return $self;
     }
 }

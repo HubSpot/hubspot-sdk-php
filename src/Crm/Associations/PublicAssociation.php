@@ -63,13 +63,13 @@ final class PublicAssociation implements BaseModel
         PublicObjectID|array $to,
         string $type
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['from'] = $from;
-        $obj['to'] = $to;
-        $obj['type'] = $type;
+        $self['from'] = $from;
+        $self['to'] = $to;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -77,10 +77,10 @@ final class PublicAssociation implements BaseModel
      */
     public function withFrom(PublicObjectID|array $from): self
     {
-        $obj = clone $this;
-        $obj['from'] = $from;
+        $self = clone $this;
+        $self['from'] = $from;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -88,10 +88,10 @@ final class PublicAssociation implements BaseModel
      */
     public function withTo(PublicObjectID|array $to): self
     {
-        $obj = clone $this;
-        $obj['to'] = $to;
+        $self = clone $this;
+        $self['to'] = $to;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -99,9 +99,9 @@ final class PublicAssociation implements BaseModel
      */
     public function withType(string $type): self
     {
-        $obj = clone $this;
-        $obj['type'] = $type;
+        $self = clone $this;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 }

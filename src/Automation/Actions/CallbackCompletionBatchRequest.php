@@ -53,20 +53,20 @@ final class CallbackCompletionBatchRequest implements BaseModel
      */
     public static function with(string $callbackID, array $outputFields): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['callbackID'] = $callbackID;
-        $obj['outputFields'] = $outputFields;
+        $self['callbackID'] = $callbackID;
+        $self['outputFields'] = $outputFields;
 
-        return $obj;
+        return $self;
     }
 
     public function withCallbackID(string $callbackID): self
     {
-        $obj = clone $this;
-        $obj['callbackID'] = $callbackID;
+        $self = clone $this;
+        $self['callbackID'] = $callbackID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -74,9 +74,9 @@ final class CallbackCompletionBatchRequest implements BaseModel
      */
     public function withOutputFields(array $outputFields): self
     {
-        $obj = clone $this;
-        $obj['outputFields'] = $outputFields;
+        $self = clone $this;
+        $self['outputFields'] = $outputFields;
 
-        return $obj;
+        return $self;
     }
 }

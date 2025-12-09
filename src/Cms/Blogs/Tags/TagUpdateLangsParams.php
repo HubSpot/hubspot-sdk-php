@@ -66,12 +66,12 @@ final class TagUpdateLangsParams implements BaseModel
      */
     public static function with(array $languages, string $primaryID): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['languages'] = $languages;
-        $obj['primaryID'] = $primaryID;
+        $self['languages'] = $languages;
+        $self['primaryID'] = $primaryID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -81,10 +81,10 @@ final class TagUpdateLangsParams implements BaseModel
      */
     public function withLanguages(array $languages): self
     {
-        $obj = clone $this;
-        $obj['languages'] = $languages;
+        $self = clone $this;
+        $self['languages'] = $languages;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -92,9 +92,9 @@ final class TagUpdateLangsParams implements BaseModel
      */
     public function withPrimaryID(string $primaryID): self
     {
-        $obj = clone $this;
-        $obj['primaryID'] = $primaryID;
+        $self = clone $this;
+        $self['primaryID'] = $primaryID;
 
-        return $obj;
+        return $self;
     }
 }

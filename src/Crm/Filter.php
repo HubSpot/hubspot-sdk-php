@@ -94,16 +94,16 @@ final class Filter implements BaseModel
         ?string $value = null,
         ?array $values = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['operator'] = $operator;
-        $obj['propertyName'] = $propertyName;
+        $self['operator'] = $operator;
+        $self['propertyName'] = $propertyName;
 
-        null !== $highValue && $obj['highValue'] = $highValue;
-        null !== $value && $obj['value'] = $value;
-        null !== $values && $obj['values'] = $values;
+        null !== $highValue && $self['highValue'] = $highValue;
+        null !== $value && $self['value'] = $value;
+        null !== $values && $self['values'] = $values;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -113,10 +113,10 @@ final class Filter implements BaseModel
      */
     public function withOperator(Operator|string $operator): self
     {
-        $obj = clone $this;
-        $obj['operator'] = $operator;
+        $self = clone $this;
+        $self['operator'] = $operator;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -124,10 +124,10 @@ final class Filter implements BaseModel
      */
     public function withPropertyName(string $propertyName): self
     {
-        $obj = clone $this;
-        $obj['propertyName'] = $propertyName;
+        $self = clone $this;
+        $self['propertyName'] = $propertyName;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -135,10 +135,10 @@ final class Filter implements BaseModel
      */
     public function withHighValue(string $highValue): self
     {
-        $obj = clone $this;
-        $obj['highValue'] = $highValue;
+        $self = clone $this;
+        $self['highValue'] = $highValue;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -146,10 +146,10 @@ final class Filter implements BaseModel
      */
     public function withValue(string $value): self
     {
-        $obj = clone $this;
-        $obj['value'] = $value;
+        $self = clone $this;
+        $self['value'] = $value;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -159,9 +159,9 @@ final class Filter implements BaseModel
      */
     public function withValues(array $values): self
     {
-        $obj = clone $this;
-        $obj['values'] = $values;
+        $self = clone $this;
+        $self['values'] = $values;
 
-        return $obj;
+        return $self;
     }
 }

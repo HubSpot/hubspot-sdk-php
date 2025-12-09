@@ -52,11 +52,11 @@ final class PreResolvedContacts implements BaseModel
      */
     public static function with(array $contacts): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['contacts'] = $contacts;
+        $self['contacts'] = $contacts;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -66,9 +66,9 @@ final class PreResolvedContacts implements BaseModel
      */
     public function withContacts(array $contacts): self
     {
-        $obj = clone $this;
-        $obj['contacts'] = $contacts;
+        $self = clone $this;
+        $self['contacts'] = $contacts;
 
-        return $obj;
+        return $self;
     }
 }

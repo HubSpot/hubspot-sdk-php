@@ -99,40 +99,40 @@ final class TranscriptResponse implements BaseModel
         array $transcriptUtterances,
         \DateTimeInterface $updatedAt,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['id'] = $id;
-        $obj['createdAt'] = $createdAt;
-        $obj['engagementID'] = $engagementID;
-        $obj['transcriptSource'] = $transcriptSource;
-        $obj['transcriptUtterances'] = $transcriptUtterances;
-        $obj['updatedAt'] = $updatedAt;
+        $self['id'] = $id;
+        $self['createdAt'] = $createdAt;
+        $self['engagementID'] = $engagementID;
+        $self['transcriptSource'] = $transcriptSource;
+        $self['transcriptUtterances'] = $transcriptUtterances;
+        $self['updatedAt'] = $updatedAt;
 
-        return $obj;
+        return $self;
     }
 
     public function withID(string $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
-        $obj = clone $this;
-        $obj['createdAt'] = $createdAt;
+        $self = clone $this;
+        $self['createdAt'] = $createdAt;
 
-        return $obj;
+        return $self;
     }
 
     public function withEngagementID(int $engagementID): self
     {
-        $obj = clone $this;
-        $obj['engagementID'] = $engagementID;
+        $self = clone $this;
+        $self['engagementID'] = $engagementID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -141,10 +141,10 @@ final class TranscriptResponse implements BaseModel
     public function withTranscriptSource(
         TranscriptSource|string $transcriptSource
     ): self {
-        $obj = clone $this;
-        $obj['transcriptSource'] = $transcriptSource;
+        $self = clone $this;
+        $self['transcriptSource'] = $transcriptSource;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -159,17 +159,17 @@ final class TranscriptResponse implements BaseModel
      */
     public function withTranscriptUtterances(array $transcriptUtterances): self
     {
-        $obj = clone $this;
-        $obj['transcriptUtterances'] = $transcriptUtterances;
+        $self = clone $this;
+        $self['transcriptUtterances'] = $transcriptUtterances;
 
-        return $obj;
+        return $self;
     }
 
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
-        $obj = clone $this;
-        $obj['updatedAt'] = $updatedAt;
+        $self = clone $this;
+        $self['updatedAt'] = $updatedAt;
 
-        return $obj;
+        return $self;
     }
 }

@@ -73,22 +73,22 @@ final class MessageUpdateParams implements BaseModel
         StatusType|string $statusType,
         ?string $errorMessage = null
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['channelID'] = $channelID;
-        $obj['statusType'] = $statusType;
+        $self['channelID'] = $channelID;
+        $self['statusType'] = $statusType;
 
-        null !== $errorMessage && $obj['errorMessage'] = $errorMessage;
+        null !== $errorMessage && $self['errorMessage'] = $errorMessage;
 
-        return $obj;
+        return $self;
     }
 
     public function withChannelID(int $channelID): self
     {
-        $obj = clone $this;
-        $obj['channelID'] = $channelID;
+        $self = clone $this;
+        $self['channelID'] = $channelID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -98,17 +98,17 @@ final class MessageUpdateParams implements BaseModel
      */
     public function withStatusType(StatusType|string $statusType): self
     {
-        $obj = clone $this;
-        $obj['statusType'] = $statusType;
+        $self = clone $this;
+        $self['statusType'] = $statusType;
 
-        return $obj;
+        return $self;
     }
 
     public function withErrorMessage(string $errorMessage): self
     {
-        $obj = clone $this;
-        $obj['errorMessage'] = $errorMessage;
+        $self = clone $this;
+        $self['errorMessage'] = $errorMessage;
 
-        return $obj;
+        return $self;
     }
 }

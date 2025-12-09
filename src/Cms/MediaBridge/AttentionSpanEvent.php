@@ -195,30 +195,30 @@ final class AttentionSpanEvent implements BaseModel
         ?string $rawData = null,
         ?int $totalSecondsPlayed = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['contactID'] = $contactID;
-        $obj['mediaBridgeID'] = $mediaBridgeID;
-        $obj['mediaBridgeObjectCoordinates'] = $mediaBridgeObjectCoordinates;
-        $obj['mediaBridgeObjectTypeID'] = $mediaBridgeObjectTypeID;
-        $obj['mediaName'] = $mediaName;
-        $obj['mediaType'] = $mediaType;
-        $obj['occurredTimestamp'] = $occurredTimestamp;
-        $obj['percentRange'] = $percentRange;
-        $obj['portalID'] = $portalID;
-        $obj['providerID'] = $providerID;
-        $obj['sessionID'] = $sessionID;
-        $obj['totalPercentPlayed'] = $totalPercentPlayed;
+        $self['contactID'] = $contactID;
+        $self['mediaBridgeID'] = $mediaBridgeID;
+        $self['mediaBridgeObjectCoordinates'] = $mediaBridgeObjectCoordinates;
+        $self['mediaBridgeObjectTypeID'] = $mediaBridgeObjectTypeID;
+        $self['mediaName'] = $mediaName;
+        $self['mediaType'] = $mediaType;
+        $self['occurredTimestamp'] = $occurredTimestamp;
+        $self['percentRange'] = $percentRange;
+        $self['portalID'] = $portalID;
+        $self['providerID'] = $providerID;
+        $self['sessionID'] = $sessionID;
+        $self['totalPercentPlayed'] = $totalPercentPlayed;
 
-        null !== $mediaURL && $obj['mediaURL'] = $mediaURL;
-        null !== $pageID && $obj['pageID'] = $pageID;
-        null !== $pageName && $obj['pageName'] = $pageName;
-        null !== $pageObjectCoordinates && $obj['pageObjectCoordinates'] = $pageObjectCoordinates;
-        null !== $pageURL && $obj['pageURL'] = $pageURL;
-        null !== $rawData && $obj['rawData'] = $rawData;
-        null !== $totalSecondsPlayed && $obj['totalSecondsPlayed'] = $totalSecondsPlayed;
+        null !== $mediaURL && $self['mediaURL'] = $mediaURL;
+        null !== $pageID && $self['pageID'] = $pageID;
+        null !== $pageName && $self['pageName'] = $pageName;
+        null !== $pageObjectCoordinates && $self['pageObjectCoordinates'] = $pageObjectCoordinates;
+        null !== $pageURL && $self['pageURL'] = $pageURL;
+        null !== $rawData && $self['rawData'] = $rawData;
+        null !== $totalSecondsPlayed && $self['totalSecondsPlayed'] = $totalSecondsPlayed;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -226,44 +226,44 @@ final class AttentionSpanEvent implements BaseModel
      */
     public function withContactID(int $contactID): self
     {
-        $obj = clone $this;
-        $obj['contactID'] = $contactID;
+        $self = clone $this;
+        $self['contactID'] = $contactID;
 
-        return $obj;
+        return $self;
     }
 
     public function withMediaBridgeID(int $mediaBridgeID): self
     {
-        $obj = clone $this;
-        $obj['mediaBridgeID'] = $mediaBridgeID;
+        $self = clone $this;
+        $self['mediaBridgeID'] = $mediaBridgeID;
 
-        return $obj;
+        return $self;
     }
 
     public function withMediaBridgeObjectCoordinates(
         string $mediaBridgeObjectCoordinates
     ): self {
-        $obj = clone $this;
-        $obj['mediaBridgeObjectCoordinates'] = $mediaBridgeObjectCoordinates;
+        $self = clone $this;
+        $self['mediaBridgeObjectCoordinates'] = $mediaBridgeObjectCoordinates;
 
-        return $obj;
+        return $self;
     }
 
     public function withMediaBridgeObjectTypeID(
         string $mediaBridgeObjectTypeID
     ): self {
-        $obj = clone $this;
-        $obj['mediaBridgeObjectTypeID'] = $mediaBridgeObjectTypeID;
+        $self = clone $this;
+        $self['mediaBridgeObjectTypeID'] = $mediaBridgeObjectTypeID;
 
-        return $obj;
+        return $self;
     }
 
     public function withMediaName(string $mediaName): self
     {
-        $obj = clone $this;
-        $obj['mediaName'] = $mediaName;
+        $self = clone $this;
+        $self['mediaName'] = $mediaName;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -271,10 +271,10 @@ final class AttentionSpanEvent implements BaseModel
      */
     public function withMediaType(MediaType|string $mediaType): self
     {
-        $obj = clone $this;
-        $obj['mediaType'] = $mediaType;
+        $self = clone $this;
+        $self['mediaType'] = $mediaType;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -282,18 +282,18 @@ final class AttentionSpanEvent implements BaseModel
      */
     public function withOccurredTimestamp(int $occurredTimestamp): self
     {
-        $obj = clone $this;
-        $obj['occurredTimestamp'] = $occurredTimestamp;
+        $self = clone $this;
+        $self['occurredTimestamp'] = $occurredTimestamp;
 
-        return $obj;
+        return $self;
     }
 
     public function withPercentRange(string $percentRange): self
     {
-        $obj = clone $this;
-        $obj['percentRange'] = $percentRange;
+        $self = clone $this;
+        $self['percentRange'] = $percentRange;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -301,26 +301,26 @@ final class AttentionSpanEvent implements BaseModel
      */
     public function withPortalID(int $portalID): self
     {
-        $obj = clone $this;
-        $obj['portalID'] = $portalID;
+        $self = clone $this;
+        $self['portalID'] = $portalID;
 
-        return $obj;
+        return $self;
     }
 
     public function withProviderID(int $providerID): self
     {
-        $obj = clone $this;
-        $obj['providerID'] = $providerID;
+        $self = clone $this;
+        $self['providerID'] = $providerID;
 
-        return $obj;
+        return $self;
     }
 
     public function withSessionID(string $sessionID): self
     {
-        $obj = clone $this;
-        $obj['sessionID'] = $sessionID;
+        $self = clone $this;
+        $self['sessionID'] = $sessionID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -328,18 +328,18 @@ final class AttentionSpanEvent implements BaseModel
      */
     public function withTotalPercentPlayed(float $totalPercentPlayed): self
     {
-        $obj = clone $this;
-        $obj['totalPercentPlayed'] = $totalPercentPlayed;
+        $self = clone $this;
+        $self['totalPercentPlayed'] = $totalPercentPlayed;
 
-        return $obj;
+        return $self;
     }
 
     public function withMediaURL(string $mediaURL): self
     {
-        $obj = clone $this;
-        $obj['mediaURL'] = $mediaURL;
+        $self = clone $this;
+        $self['mediaURL'] = $mediaURL;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -347,10 +347,10 @@ final class AttentionSpanEvent implements BaseModel
      */
     public function withPageID(int $pageID): self
     {
-        $obj = clone $this;
-        $obj['pageID'] = $pageID;
+        $self = clone $this;
+        $self['pageID'] = $pageID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -358,19 +358,19 @@ final class AttentionSpanEvent implements BaseModel
      */
     public function withPageName(string $pageName): self
     {
-        $obj = clone $this;
-        $obj['pageName'] = $pageName;
+        $self = clone $this;
+        $self['pageName'] = $pageName;
 
-        return $obj;
+        return $self;
     }
 
     public function withPageObjectCoordinates(
         string $pageObjectCoordinates
     ): self {
-        $obj = clone $this;
-        $obj['pageObjectCoordinates'] = $pageObjectCoordinates;
+        $self = clone $this;
+        $self['pageObjectCoordinates'] = $pageObjectCoordinates;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -378,10 +378,10 @@ final class AttentionSpanEvent implements BaseModel
      */
     public function withPageURL(string $pageURL): self
     {
-        $obj = clone $this;
-        $obj['pageURL'] = $pageURL;
+        $self = clone $this;
+        $self['pageURL'] = $pageURL;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -389,10 +389,10 @@ final class AttentionSpanEvent implements BaseModel
      */
     public function withRawData(string $rawData): self
     {
-        $obj = clone $this;
-        $obj['rawData'] = $rawData;
+        $self = clone $this;
+        $self['rawData'] = $rawData;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -400,9 +400,9 @@ final class AttentionSpanEvent implements BaseModel
      */
     public function withTotalSecondsPlayed(int $totalSecondsPlayed): self
     {
-        $obj = clone $this;
-        $obj['totalSecondsPlayed'] = $totalSecondsPlayed;
+        $self = clone $this;
+        $self['totalSecondsPlayed'] = $totalSecondsPlayed;
 
-        return $obj;
+        return $self;
     }
 }

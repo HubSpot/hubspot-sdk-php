@@ -130,23 +130,23 @@ final class CalendarCreateParams implements BaseModel
         ExternalCalendarMeetingEventCreateProperties|array $properties,
         string $timezone,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['organizerUserID'] = $organizerUserID;
-        $obj['associations'] = $associations;
-        $obj['emailReminderSchedule'] = $emailReminderSchedule;
-        $obj['properties'] = $properties;
-        $obj['timezone'] = $timezone;
+        $self['organizerUserID'] = $organizerUserID;
+        $self['associations'] = $associations;
+        $self['emailReminderSchedule'] = $emailReminderSchedule;
+        $self['properties'] = $properties;
+        $self['timezone'] = $timezone;
 
-        return $obj;
+        return $self;
     }
 
     public function withOrganizerUserID(string $organizerUserID): self
     {
-        $obj = clone $this;
-        $obj['organizerUserID'] = $organizerUserID;
+        $self = clone $this;
+        $self['organizerUserID'] = $organizerUserID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -156,10 +156,10 @@ final class CalendarCreateParams implements BaseModel
      */
     public function withAssociations(array $associations): self
     {
-        $obj = clone $this;
-        $obj['associations'] = $associations;
+        $self = clone $this;
+        $self['associations'] = $associations;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -170,10 +170,10 @@ final class CalendarCreateParams implements BaseModel
     public function withEmailReminderSchedule(
         ExternalEmailReminderSchedule|array $emailReminderSchedule
     ): self {
-        $obj = clone $this;
-        $obj['emailReminderSchedule'] = $emailReminderSchedule;
+        $self = clone $this;
+        $self['emailReminderSchedule'] = $emailReminderSchedule;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -196,17 +196,17 @@ final class CalendarCreateParams implements BaseModel
     public function withProperties(
         ExternalCalendarMeetingEventCreateProperties|array $properties
     ): self {
-        $obj = clone $this;
-        $obj['properties'] = $properties;
+        $self = clone $this;
+        $self['properties'] = $properties;
 
-        return $obj;
+        return $self;
     }
 
     public function withTimezone(string $timezone): self
     {
-        $obj = clone $this;
-        $obj['timezone'] = $timezone;
+        $self = clone $this;
+        $self['timezone'] = $timezone;
 
-        return $obj;
+        return $self;
     }
 }

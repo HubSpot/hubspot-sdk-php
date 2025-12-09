@@ -122,25 +122,25 @@ final class TemplateUpdateParams implements BaseModel
         ?string $detailTemplate = null,
         ?string $headerTemplate = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['appID'] = $appID;
-        $obj['id'] = $id;
-        $obj['name'] = $name;
-        $obj['tokens'] = $tokens;
+        $self['appID'] = $appID;
+        $self['id'] = $id;
+        $self['name'] = $name;
+        $self['tokens'] = $tokens;
 
-        null !== $detailTemplate && $obj['detailTemplate'] = $detailTemplate;
-        null !== $headerTemplate && $obj['headerTemplate'] = $headerTemplate;
+        null !== $detailTemplate && $self['detailTemplate'] = $detailTemplate;
+        null !== $headerTemplate && $self['headerTemplate'] = $headerTemplate;
 
-        return $obj;
+        return $self;
     }
 
     public function withAppID(int $appID): self
     {
-        $obj = clone $this;
-        $obj['appID'] = $appID;
+        $self = clone $this;
+        $self['appID'] = $appID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -148,10 +148,10 @@ final class TemplateUpdateParams implements BaseModel
      */
     public function withID(string $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -159,10 +159,10 @@ final class TemplateUpdateParams implements BaseModel
      */
     public function withName(string $name): self
     {
-        $obj = clone $this;
-        $obj['name'] = $name;
+        $self = clone $this;
+        $self['name'] = $name;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -180,10 +180,10 @@ final class TemplateUpdateParams implements BaseModel
      */
     public function withTokens(array $tokens): self
     {
-        $obj = clone $this;
-        $obj['tokens'] = $tokens;
+        $self = clone $this;
+        $self['tokens'] = $tokens;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -191,10 +191,10 @@ final class TemplateUpdateParams implements BaseModel
      */
     public function withDetailTemplate(string $detailTemplate): self
     {
-        $obj = clone $this;
-        $obj['detailTemplate'] = $detailTemplate;
+        $self = clone $this;
+        $self['detailTemplate'] = $detailTemplate;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -202,9 +202,9 @@ final class TemplateUpdateParams implements BaseModel
      */
     public function withHeaderTemplate(string $headerTemplate): self
     {
-        $obj = clone $this;
-        $obj['headerTemplate'] = $headerTemplate;
+        $self = clone $this;
+        $self['headerTemplate'] = $headerTemplate;
 
-        return $obj;
+        return $self;
     }
 }

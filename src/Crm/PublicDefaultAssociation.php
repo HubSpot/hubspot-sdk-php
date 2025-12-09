@@ -71,13 +71,13 @@ final class PublicDefaultAssociation implements BaseModel
         PublicObjectID|array $from,
         PublicObjectID|array $to,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['associationSpec'] = $associationSpec;
-        $obj['from'] = $from;
-        $obj['to'] = $to;
+        $self['associationSpec'] = $associationSpec;
+        $self['from'] = $from;
+        $self['to'] = $to;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -90,10 +90,10 @@ final class PublicDefaultAssociation implements BaseModel
     public function withAssociationSpec(
         AssociationSpec|array $associationSpec
     ): self {
-        $obj = clone $this;
-        $obj['associationSpec'] = $associationSpec;
+        $self = clone $this;
+        $self['associationSpec'] = $associationSpec;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -101,10 +101,10 @@ final class PublicDefaultAssociation implements BaseModel
      */
     public function withFrom(PublicObjectID|array $from): self
     {
-        $obj = clone $this;
-        $obj['from'] = $from;
+        $self = clone $this;
+        $self['from'] = $from;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -112,9 +112,9 @@ final class PublicDefaultAssociation implements BaseModel
      */
     public function withTo(PublicObjectID|array $to): self
     {
-        $obj = clone $this;
-        $obj['to'] = $to;
+        $self = clone $this;
+        $self['to'] = $to;
 
-        return $obj;
+        return $self;
     }
 }

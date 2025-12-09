@@ -59,21 +59,21 @@ final class Endpoints implements BaseModel
         array $schemes,
         string $url
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['discovery'] = $discovery;
-        $obj['schemes'] = $schemes;
-        $obj['url'] = $url;
+        $self['discovery'] = $discovery;
+        $self['schemes'] = $schemes;
+        $self['url'] = $url;
 
-        return $obj;
+        return $self;
     }
 
     public function withDiscovery(bool $discovery): self
     {
-        $obj = clone $this;
-        $obj['discovery'] = $discovery;
+        $self = clone $this;
+        $self['discovery'] = $discovery;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -81,17 +81,17 @@ final class Endpoints implements BaseModel
      */
     public function withSchemes(array $schemes): self
     {
-        $obj = clone $this;
-        $obj['schemes'] = $schemes;
+        $self = clone $this;
+        $self['schemes'] = $schemes;
 
-        return $obj;
+        return $self;
     }
 
     public function withURL(string $url): self
     {
-        $obj = clone $this;
-        $obj['url'] = $url;
+        $self = clone $this;
+        $self['url'] = $url;
 
-        return $obj;
+        return $self;
     }
 }

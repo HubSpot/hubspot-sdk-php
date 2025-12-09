@@ -215,14 +215,14 @@ final class PublicRestrictedFilterBranch implements BaseModel
         array $filters,
         FilterBranchType|string $filterBranchType = 'RESTRICTED',
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['filterBranches'] = $filterBranches;
-        $obj['filterBranchOperator'] = $filterBranchOperator;
-        $obj['filterBranchType'] = $filterBranchType;
-        $obj['filters'] = $filters;
+        $self['filterBranches'] = $filterBranches;
+        $self['filterBranchOperator'] = $filterBranchOperator;
+        $self['filterBranchType'] = $filterBranchType;
+        $self['filters'] = $filters;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -230,18 +230,18 @@ final class PublicRestrictedFilterBranch implements BaseModel
      */
     public function withFilterBranches(array $filterBranches): self
     {
-        $obj = clone $this;
-        $obj['filterBranches'] = $filterBranches;
+        $self = clone $this;
+        $self['filterBranches'] = $filterBranches;
 
-        return $obj;
+        return $self;
     }
 
     public function withFilterBranchOperator(string $filterBranchOperator): self
     {
-        $obj = clone $this;
-        $obj['filterBranchOperator'] = $filterBranchOperator;
+        $self = clone $this;
+        $self['filterBranchOperator'] = $filterBranchOperator;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -250,10 +250,10 @@ final class PublicRestrictedFilterBranch implements BaseModel
     public function withFilterBranchType(
         FilterBranchType|string $filterBranchType
     ): self {
-        $obj = clone $this;
-        $obj['filterBranchType'] = $filterBranchType;
+        $self = clone $this;
+        $self['filterBranchType'] = $filterBranchType;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -390,9 +390,9 @@ final class PublicRestrictedFilterBranch implements BaseModel
      */
     public function withFilters(array $filters): self
     {
-        $obj = clone $this;
-        $obj['filters'] = $filters;
+        $self = clone $this;
+        $self['filters'] = $filters;
 
-        return $obj;
+        return $self;
     }
 }

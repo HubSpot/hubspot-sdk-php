@@ -91,16 +91,16 @@ final class RowListParams implements BaseModel
         ?array $properties = null,
         ?array $sort = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $after && $obj['after'] = $after;
-        null !== $archived && $obj['archived'] = $archived;
-        null !== $limit && $obj['limit'] = $limit;
-        null !== $offset && $obj['offset'] = $offset;
-        null !== $properties && $obj['properties'] = $properties;
-        null !== $sort && $obj['sort'] = $sort;
+        null !== $after && $self['after'] = $after;
+        null !== $archived && $self['archived'] = $archived;
+        null !== $limit && $self['limit'] = $limit;
+        null !== $offset && $self['offset'] = $offset;
+        null !== $properties && $self['properties'] = $properties;
+        null !== $sort && $self['sort'] = $sort;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -108,10 +108,10 @@ final class RowListParams implements BaseModel
      */
     public function withAfter(string $after): self
     {
-        $obj = clone $this;
-        $obj['after'] = $after;
+        $self = clone $this;
+        $self['after'] = $after;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -119,10 +119,10 @@ final class RowListParams implements BaseModel
      */
     public function withArchived(bool $archived): self
     {
-        $obj = clone $this;
-        $obj['archived'] = $archived;
+        $self = clone $this;
+        $self['archived'] = $archived;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -130,10 +130,10 @@ final class RowListParams implements BaseModel
      */
     public function withLimit(int $limit): self
     {
-        $obj = clone $this;
-        $obj['limit'] = $limit;
+        $self = clone $this;
+        $self['limit'] = $limit;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -141,10 +141,10 @@ final class RowListParams implements BaseModel
      */
     public function withOffset(int $offset): self
     {
-        $obj = clone $this;
-        $obj['offset'] = $offset;
+        $self = clone $this;
+        $self['offset'] = $offset;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -154,10 +154,10 @@ final class RowListParams implements BaseModel
      */
     public function withProperties(array $properties): self
     {
-        $obj = clone $this;
-        $obj['properties'] = $properties;
+        $self = clone $this;
+        $self['properties'] = $properties;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -167,9 +167,9 @@ final class RowListParams implements BaseModel
      */
     public function withSort(array $sort): self
     {
-        $obj = clone $this;
-        $obj['sort'] = $sort;
+        $self = clone $this;
+        $self['sort'] = $sort;
 
-        return $obj;
+        return $self;
     }
 }

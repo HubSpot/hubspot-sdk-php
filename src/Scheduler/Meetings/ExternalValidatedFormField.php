@@ -85,73 +85,73 @@ final class ExternalValidatedFormField implements BaseModel
         ?string $translatedLabel = null,
         ?string $valueLabel = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['isCustom'] = $isCustom;
-        $obj['label'] = $label;
-        $obj['name'] = $name;
-        $obj['value'] = $value;
+        $self['isCustom'] = $isCustom;
+        $self['label'] = $label;
+        $self['name'] = $name;
+        $self['value'] = $value;
 
-        null !== $fieldType && $obj['fieldType'] = $fieldType;
-        null !== $translatedLabel && $obj['translatedLabel'] = $translatedLabel;
-        null !== $valueLabel && $obj['valueLabel'] = $valueLabel;
+        null !== $fieldType && $self['fieldType'] = $fieldType;
+        null !== $translatedLabel && $self['translatedLabel'] = $translatedLabel;
+        null !== $valueLabel && $self['valueLabel'] = $valueLabel;
 
-        return $obj;
+        return $self;
     }
 
     public function withIsCustom(bool $isCustom): self
     {
-        $obj = clone $this;
-        $obj['isCustom'] = $isCustom;
+        $self = clone $this;
+        $self['isCustom'] = $isCustom;
 
-        return $obj;
+        return $self;
     }
 
     public function withLabel(string $label): self
     {
-        $obj = clone $this;
-        $obj['label'] = $label;
+        $self = clone $this;
+        $self['label'] = $label;
 
-        return $obj;
+        return $self;
     }
 
     public function withName(string $name): self
     {
-        $obj = clone $this;
-        $obj['name'] = $name;
+        $self = clone $this;
+        $self['name'] = $name;
 
-        return $obj;
+        return $self;
     }
 
     public function withValue(string $value): self
     {
-        $obj = clone $this;
-        $obj['value'] = $value;
+        $self = clone $this;
+        $self['value'] = $value;
 
-        return $obj;
+        return $self;
     }
 
     public function withFieldType(string $fieldType): self
     {
-        $obj = clone $this;
-        $obj['fieldType'] = $fieldType;
+        $self = clone $this;
+        $self['fieldType'] = $fieldType;
 
-        return $obj;
+        return $self;
     }
 
     public function withTranslatedLabel(string $translatedLabel): self
     {
-        $obj = clone $this;
-        $obj['translatedLabel'] = $translatedLabel;
+        $self = clone $this;
+        $self['translatedLabel'] = $translatedLabel;
 
-        return $obj;
+        return $self;
     }
 
     public function withValueLabel(string $valueLabel): self
     {
-        $obj = clone $this;
-        $obj['valueLabel'] = $valueLabel;
+        $self = clone $this;
+        $self['valueLabel'] = $valueLabel;
 
-        return $obj;
+        return $self;
     }
 }

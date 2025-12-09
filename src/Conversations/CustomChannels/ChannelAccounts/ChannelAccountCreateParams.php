@@ -80,39 +80,39 @@ final class ChannelAccountCreateParams implements BaseModel
         string $name,
         PublicDeliveryIdentifier|array|null $deliveryIdentifier = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['authorized'] = $authorized;
-        $obj['inboxID'] = $inboxID;
-        $obj['name'] = $name;
+        $self['authorized'] = $authorized;
+        $self['inboxID'] = $inboxID;
+        $self['name'] = $name;
 
-        null !== $deliveryIdentifier && $obj['deliveryIdentifier'] = $deliveryIdentifier;
+        null !== $deliveryIdentifier && $self['deliveryIdentifier'] = $deliveryIdentifier;
 
-        return $obj;
+        return $self;
     }
 
     public function withAuthorized(bool $authorized): self
     {
-        $obj = clone $this;
-        $obj['authorized'] = $authorized;
+        $self = clone $this;
+        $self['authorized'] = $authorized;
 
-        return $obj;
+        return $self;
     }
 
     public function withInboxID(string $inboxID): self
     {
-        $obj = clone $this;
-        $obj['inboxID'] = $inboxID;
+        $self = clone $this;
+        $self['inboxID'] = $inboxID;
 
-        return $obj;
+        return $self;
     }
 
     public function withName(string $name): self
     {
-        $obj = clone $this;
-        $obj['name'] = $name;
+        $self = clone $this;
+        $self['name'] = $name;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -123,9 +123,9 @@ final class ChannelAccountCreateParams implements BaseModel
     public function withDeliveryIdentifier(
         PublicDeliveryIdentifier|array $deliveryIdentifier
     ): self {
-        $obj = clone $this;
-        $obj['deliveryIdentifier'] = $deliveryIdentifier;
+        $self = clone $this;
+        $self['deliveryIdentifier'] = $deliveryIdentifier;
 
-        return $obj;
+        return $self;
     }
 }

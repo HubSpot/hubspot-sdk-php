@@ -77,15 +77,15 @@ final class PublicEmailSubscriptionFilter implements BaseModel
         FilterType|string $filterType = 'EMAIL_SUBSCRIPTION',
         ?string $subscriptionType = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['acceptedStatuses'] = $acceptedStatuses;
-        $obj['filterType'] = $filterType;
-        $obj['subscriptionIDs'] = $subscriptionIDs;
+        $self['acceptedStatuses'] = $acceptedStatuses;
+        $self['filterType'] = $filterType;
+        $self['subscriptionIDs'] = $subscriptionIDs;
 
-        null !== $subscriptionType && $obj['subscriptionType'] = $subscriptionType;
+        null !== $subscriptionType && $self['subscriptionType'] = $subscriptionType;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -93,10 +93,10 @@ final class PublicEmailSubscriptionFilter implements BaseModel
      */
     public function withAcceptedStatuses(array $acceptedStatuses): self
     {
-        $obj = clone $this;
-        $obj['acceptedStatuses'] = $acceptedStatuses;
+        $self = clone $this;
+        $self['acceptedStatuses'] = $acceptedStatuses;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -104,10 +104,10 @@ final class PublicEmailSubscriptionFilter implements BaseModel
      */
     public function withFilterType(FilterType|string $filterType): self
     {
-        $obj = clone $this;
-        $obj['filterType'] = $filterType;
+        $self = clone $this;
+        $self['filterType'] = $filterType;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -115,17 +115,17 @@ final class PublicEmailSubscriptionFilter implements BaseModel
      */
     public function withSubscriptionIDs(array $subscriptionIDs): self
     {
-        $obj = clone $this;
-        $obj['subscriptionIDs'] = $subscriptionIDs;
+        $self = clone $this;
+        $self['subscriptionIDs'] = $subscriptionIDs;
 
-        return $obj;
+        return $self;
     }
 
     public function withSubscriptionType(string $subscriptionType): self
     {
-        $obj = clone $this;
-        $obj['subscriptionType'] = $subscriptionType;
+        $self = clone $this;
+        $self['subscriptionType'] = $subscriptionType;
 
-        return $obj;
+        return $self;
     }
 }

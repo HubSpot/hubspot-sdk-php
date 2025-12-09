@@ -78,13 +78,13 @@ final class PipelineStageInput implements BaseModel
         string $label,
         array $metadata
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['displayOrder'] = $displayOrder;
-        $obj['label'] = $label;
-        $obj['metadata'] = $metadata;
+        $self['displayOrder'] = $displayOrder;
+        $self['label'] = $label;
+        $self['metadata'] = $metadata;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -92,10 +92,10 @@ final class PipelineStageInput implements BaseModel
      */
     public function withDisplayOrder(int $displayOrder): self
     {
-        $obj = clone $this;
-        $obj['displayOrder'] = $displayOrder;
+        $self = clone $this;
+        $self['displayOrder'] = $displayOrder;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -103,10 +103,10 @@ final class PipelineStageInput implements BaseModel
      */
     public function withLabel(string $label): self
     {
-        $obj = clone $this;
-        $obj['label'] = $label;
+        $self = clone $this;
+        $self['label'] = $label;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -120,9 +120,9 @@ final class PipelineStageInput implements BaseModel
      */
     public function withMetadata(array $metadata): self
     {
-        $obj = clone $this;
-        $obj['metadata'] = $metadata;
+        $self = clone $this;
+        $self['metadata'] = $metadata;
 
-        return $obj;
+        return $self;
     }
 }

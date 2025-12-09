@@ -45,18 +45,18 @@ final class PublicBusinessUnit implements BaseModel
      */
     public static function with(int $id): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['id'] = $id;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     public function withID(int $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 }

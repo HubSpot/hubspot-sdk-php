@@ -116,17 +116,17 @@ final class PublicWideStatus implements BaseModel
         WideStatusType|string $wideStatusType,
         ?int $businessUnitID = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['channel'] = $channel;
-        $obj['status'] = $status;
-        $obj['subscriberIDString'] = $subscriberIDString;
-        $obj['timestamp'] = $timestamp;
-        $obj['wideStatusType'] = $wideStatusType;
+        $self['channel'] = $channel;
+        $self['status'] = $status;
+        $self['subscriberIDString'] = $subscriberIDString;
+        $self['timestamp'] = $timestamp;
+        $self['wideStatusType'] = $wideStatusType;
 
-        null !== $businessUnitID && $obj['businessUnitID'] = $businessUnitID;
+        null !== $businessUnitID && $self['businessUnitID'] = $businessUnitID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -136,10 +136,10 @@ final class PublicWideStatus implements BaseModel
      */
     public function withChannel(Channel|string $channel): self
     {
-        $obj = clone $this;
-        $obj['channel'] = $channel;
+        $self = clone $this;
+        $self['channel'] = $channel;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -149,10 +149,10 @@ final class PublicWideStatus implements BaseModel
      */
     public function withStatus(Status|string $status): self
     {
-        $obj = clone $this;
-        $obj['status'] = $status;
+        $self = clone $this;
+        $self['status'] = $status;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -160,10 +160,10 @@ final class PublicWideStatus implements BaseModel
      */
     public function withSubscriberIDString(string $subscriberIDString): self
     {
-        $obj = clone $this;
-        $obj['subscriberIDString'] = $subscriberIDString;
+        $self = clone $this;
+        $self['subscriberIDString'] = $subscriberIDString;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -171,10 +171,10 @@ final class PublicWideStatus implements BaseModel
      */
     public function withTimestamp(\DateTimeInterface $timestamp): self
     {
-        $obj = clone $this;
-        $obj['timestamp'] = $timestamp;
+        $self = clone $this;
+        $self['timestamp'] = $timestamp;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -185,10 +185,10 @@ final class PublicWideStatus implements BaseModel
     public function withWideStatusType(
         WideStatusType|string $wideStatusType
     ): self {
-        $obj = clone $this;
-        $obj['wideStatusType'] = $wideStatusType;
+        $self = clone $this;
+        $self['wideStatusType'] = $wideStatusType;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -196,9 +196,9 @@ final class PublicWideStatus implements BaseModel
      */
     public function withBusinessUnitID(int $businessUnitID): self
     {
-        $obj = clone $this;
-        $obj['businessUnitID'] = $businessUnitID;
+        $self = clone $this;
+        $self['businessUnitID'] = $businessUnitID;
 
-        return $obj;
+        return $self;
     }
 }

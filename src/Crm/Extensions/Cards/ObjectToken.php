@@ -68,23 +68,23 @@ final class ObjectToken implements BaseModel
         ?string $label = null,
         ?string $name = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['value'] = $value;
+        $self['value'] = $value;
 
-        null !== $dataType && $obj['dataType'] = $dataType;
-        null !== $label && $obj['label'] = $label;
-        null !== $name && $obj['name'] = $name;
+        null !== $dataType && $self['dataType'] = $dataType;
+        null !== $label && $self['label'] = $label;
+        null !== $name && $self['name'] = $name;
 
-        return $obj;
+        return $self;
     }
 
     public function withValue(string $value): self
     {
-        $obj = clone $this;
-        $obj['value'] = $value;
+        $self = clone $this;
+        $self['value'] = $value;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -92,25 +92,25 @@ final class ObjectToken implements BaseModel
      */
     public function withDataType(DataType|string $dataType): self
     {
-        $obj = clone $this;
-        $obj['dataType'] = $dataType;
+        $self = clone $this;
+        $self['dataType'] = $dataType;
 
-        return $obj;
+        return $self;
     }
 
     public function withLabel(string $label): self
     {
-        $obj = clone $this;
-        $obj['label'] = $label;
+        $self = clone $this;
+        $self['label'] = $label;
 
-        return $obj;
+        return $self;
     }
 
     public function withName(string $name): self
     {
-        $obj = clone $this;
-        $obj['name'] = $name;
+        $self = clone $this;
+        $self['name'] = $name;
 
-        return $obj;
+        return $self;
     }
 }

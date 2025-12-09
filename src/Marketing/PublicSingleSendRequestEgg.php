@@ -94,15 +94,15 @@ final class PublicSingleSendRequestEgg implements BaseModel
         ?array $contactProperties = null,
         ?array $customProperties = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['emailID'] = $emailID;
-        $obj['message'] = $message;
+        $self['emailID'] = $emailID;
+        $self['message'] = $message;
 
-        null !== $contactProperties && $obj['contactProperties'] = $contactProperties;
-        null !== $customProperties && $obj['customProperties'] = $customProperties;
+        null !== $contactProperties && $self['contactProperties'] = $contactProperties;
+        null !== $customProperties && $self['customProperties'] = $customProperties;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -110,10 +110,10 @@ final class PublicSingleSendRequestEgg implements BaseModel
      */
     public function withEmailID(int $emailID): self
     {
-        $obj = clone $this;
-        $obj['emailID'] = $emailID;
+        $self = clone $this;
+        $self['emailID'] = $emailID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -130,10 +130,10 @@ final class PublicSingleSendRequestEgg implements BaseModel
      */
     public function withMessage(PublicSingleSendEmail|array $message): self
     {
-        $obj = clone $this;
-        $obj['message'] = $message;
+        $self = clone $this;
+        $self['message'] = $message;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -143,10 +143,10 @@ final class PublicSingleSendRequestEgg implements BaseModel
      */
     public function withContactProperties(array $contactProperties): self
     {
-        $obj = clone $this;
-        $obj['contactProperties'] = $contactProperties;
+        $self = clone $this;
+        $self['contactProperties'] = $contactProperties;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -157,9 +157,9 @@ final class PublicSingleSendRequestEgg implements BaseModel
      */
     public function withCustomProperties(array $customProperties): self
     {
-        $obj = clone $this;
-        $obj['customProperties'] = $customProperties;
+        $self = clone $this;
+        $self['customProperties'] = $customProperties;
 
-        return $obj;
+        return $self;
     }
 }

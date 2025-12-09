@@ -84,15 +84,15 @@ final class SubscriptionCreateParams implements BaseModel
         ?string $objectTypeID = null,
         ?string $propertyName = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['eventType'] = $eventType;
+        $self['eventType'] = $eventType;
 
-        null !== $active && $obj['active'] = $active;
-        null !== $objectTypeID && $obj['objectTypeID'] = $objectTypeID;
-        null !== $propertyName && $obj['propertyName'] = $propertyName;
+        null !== $active && $self['active'] = $active;
+        null !== $objectTypeID && $self['objectTypeID'] = $objectTypeID;
+        null !== $propertyName && $self['propertyName'] = $propertyName;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -102,10 +102,10 @@ final class SubscriptionCreateParams implements BaseModel
      */
     public function withEventType(EventType|string $eventType): self
     {
-        $obj = clone $this;
-        $obj['eventType'] = $eventType;
+        $self = clone $this;
+        $self['eventType'] = $eventType;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -113,18 +113,18 @@ final class SubscriptionCreateParams implements BaseModel
      */
     public function withActive(bool $active): self
     {
-        $obj = clone $this;
-        $obj['active'] = $active;
+        $self = clone $this;
+        $self['active'] = $active;
 
-        return $obj;
+        return $self;
     }
 
     public function withObjectTypeID(string $objectTypeID): self
     {
-        $obj = clone $this;
-        $obj['objectTypeID'] = $objectTypeID;
+        $self = clone $this;
+        $self['objectTypeID'] = $objectTypeID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -132,9 +132,9 @@ final class SubscriptionCreateParams implements BaseModel
      */
     public function withPropertyName(string $propertyName): self
     {
-        $obj = clone $this;
-        $obj['propertyName'] = $propertyName;
+        $self = clone $this;
+        $self['propertyName'] = $propertyName;
 
-        return $obj;
+        return $self;
     }
 }

@@ -56,20 +56,20 @@ final class APIContactPropertyAnchor implements BaseModel
         string $contactProperty,
         Type|string $type = 'CONTACT_PROPERTY_ANCHOR'
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['contactProperty'] = $contactProperty;
-        $obj['type'] = $type;
+        $self['contactProperty'] = $contactProperty;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 
     public function withContactProperty(string $contactProperty): self
     {
-        $obj = clone $this;
-        $obj['contactProperty'] = $contactProperty;
+        $self = clone $this;
+        $self['contactProperty'] = $contactProperty;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -77,9 +77,9 @@ final class APIContactPropertyAnchor implements BaseModel
      */
     public function withType(Type|string $type): self
     {
-        $obj = clone $this;
-        $obj['type'] = $type;
+        $self = clone $this;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 }

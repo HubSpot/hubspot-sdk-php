@@ -95,14 +95,14 @@ final class EmailStatisticsData implements BaseModel
         array $qualifierStats,
         array $ratios,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['counters'] = $counters;
-        $obj['deviceBreakdown'] = $deviceBreakdown;
-        $obj['qualifierStats'] = $qualifierStats;
-        $obj['ratios'] = $ratios;
+        $self['counters'] = $counters;
+        $self['deviceBreakdown'] = $deviceBreakdown;
+        $self['qualifierStats'] = $qualifierStats;
+        $self['ratios'] = $ratios;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -112,10 +112,10 @@ final class EmailStatisticsData implements BaseModel
      */
     public function withCounters(array $counters): self
     {
-        $obj = clone $this;
-        $obj['counters'] = $counters;
+        $self = clone $this;
+        $self['counters'] = $counters;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -125,10 +125,10 @@ final class EmailStatisticsData implements BaseModel
      */
     public function withDeviceBreakdown(array $deviceBreakdown): self
     {
-        $obj = clone $this;
-        $obj['deviceBreakdown'] = $deviceBreakdown;
+        $self = clone $this;
+        $self['deviceBreakdown'] = $deviceBreakdown;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -138,10 +138,10 @@ final class EmailStatisticsData implements BaseModel
      */
     public function withQualifierStats(array $qualifierStats): self
     {
-        $obj = clone $this;
-        $obj['qualifierStats'] = $qualifierStats;
+        $self = clone $this;
+        $self['qualifierStats'] = $qualifierStats;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -151,9 +151,9 @@ final class EmailStatisticsData implements BaseModel
      */
     public function withRatios(array $ratios): self
     {
-        $obj = clone $this;
-        $obj['ratios'] = $ratios;
+        $self = clone $this;
+        $self['ratios'] = $ratios;
 
-        return $obj;
+        return $self;
     }
 }

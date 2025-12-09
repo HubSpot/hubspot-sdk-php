@@ -57,13 +57,13 @@ final class PublicClient implements BaseModel
         ClientType|string $clientType,
         ?int $integrationAppID = null
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['clientType'] = $clientType;
+        $self['clientType'] = $clientType;
 
-        null !== $integrationAppID && $obj['integrationAppID'] = $integrationAppID;
+        null !== $integrationAppID && $self['integrationAppID'] = $integrationAppID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -71,17 +71,17 @@ final class PublicClient implements BaseModel
      */
     public function withClientType(ClientType|string $clientType): self
     {
-        $obj = clone $this;
-        $obj['clientType'] = $clientType;
+        $self = clone $this;
+        $self['clientType'] = $clientType;
 
-        return $obj;
+        return $self;
     }
 
     public function withIntegrationAppID(int $integrationAppID): self
     {
-        $obj = clone $this;
-        $obj['integrationAppID'] = $integrationAppID;
+        $self = clone $this;
+        $self['integrationAppID'] = $integrationAppID;
 
-        return $obj;
+        return $self;
     }
 }

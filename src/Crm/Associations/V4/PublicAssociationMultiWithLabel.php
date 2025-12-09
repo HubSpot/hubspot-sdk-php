@@ -72,14 +72,14 @@ final class PublicAssociationMultiWithLabel implements BaseModel
         array $to,
         Paging|array|null $paging = null
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['from'] = $from;
-        $obj['to'] = $to;
+        $self['from'] = $from;
+        $self['to'] = $to;
 
-        null !== $paging && $obj['paging'] = $paging;
+        null !== $paging && $self['paging'] = $paging;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -87,10 +87,10 @@ final class PublicAssociationMultiWithLabel implements BaseModel
      */
     public function withFrom(PublicObjectID|array $from): self
     {
-        $obj = clone $this;
-        $obj['from'] = $from;
+        $self = clone $this;
+        $self['from'] = $from;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -100,10 +100,10 @@ final class PublicAssociationMultiWithLabel implements BaseModel
      */
     public function withTo(array $to): self
     {
-        $obj = clone $this;
-        $obj['to'] = $to;
+        $self = clone $this;
+        $self['to'] = $to;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -111,9 +111,9 @@ final class PublicAssociationMultiWithLabel implements BaseModel
      */
     public function withPaging(Paging|array $paging): self
     {
-        $obj = clone $this;
-        $obj['paging'] = $paging;
+        $self = clone $this;
+        $self['paging'] = $paging;
 
-        return $obj;
+        return $self;
     }
 }

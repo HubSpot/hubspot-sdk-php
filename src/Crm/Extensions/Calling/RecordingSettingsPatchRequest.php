@@ -34,19 +34,19 @@ final class RecordingSettingsPatchRequest implements BaseModel
     public static function with(
         ?string $urlToRetrieveAuthedRecording = null
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $urlToRetrieveAuthedRecording && $obj['urlToRetrieveAuthedRecording'] = $urlToRetrieveAuthedRecording;
+        null !== $urlToRetrieveAuthedRecording && $self['urlToRetrieveAuthedRecording'] = $urlToRetrieveAuthedRecording;
 
-        return $obj;
+        return $self;
     }
 
     public function withURLToRetrieveAuthedRecording(
         string $urlToRetrieveAuthedRecording
     ): self {
-        $obj = clone $this;
-        $obj['urlToRetrieveAuthedRecording'] = $urlToRetrieveAuthedRecording;
+        $self = clone $this;
+        $self['urlToRetrieveAuthedRecording'] = $urlToRetrieveAuthedRecording;
 
-        return $obj;
+        return $self;
     }
 }

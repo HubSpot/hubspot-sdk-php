@@ -193,25 +193,25 @@ final class Blog implements BaseModel
         string $translatedFromID,
         \DateTimeInterface $updated,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['id'] = $id;
-        $obj['absoluteURL'] = $absoluteURL;
-        $obj['allowComments'] = $allowComments;
-        $obj['created'] = $created;
-        $obj['deletedAt'] = $deletedAt;
-        $obj['description'] = $description;
-        $obj['htmlTitle'] = $htmlTitle;
-        $obj['language'] = $language;
-        $obj['name'] = $name;
-        $obj['publicAccessRules'] = $publicAccessRules;
-        $obj['publicAccessRulesEnabled'] = $publicAccessRulesEnabled;
-        $obj['publicTitle'] = $publicTitle;
-        $obj['slug'] = $slug;
-        $obj['translatedFromID'] = $translatedFromID;
-        $obj['updated'] = $updated;
+        $self['id'] = $id;
+        $self['absoluteURL'] = $absoluteURL;
+        $self['allowComments'] = $allowComments;
+        $self['created'] = $created;
+        $self['deletedAt'] = $deletedAt;
+        $self['description'] = $description;
+        $self['htmlTitle'] = $htmlTitle;
+        $self['language'] = $language;
+        $self['name'] = $name;
+        $self['publicAccessRules'] = $publicAccessRules;
+        $self['publicAccessRulesEnabled'] = $publicAccessRulesEnabled;
+        $self['publicTitle'] = $publicTitle;
+        $self['slug'] = $slug;
+        $self['translatedFromID'] = $translatedFromID;
+        $self['updated'] = $updated;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -219,18 +219,18 @@ final class Blog implements BaseModel
      */
     public function withID(string $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     public function withAbsoluteURL(string $absoluteURL): self
     {
-        $obj = clone $this;
-        $obj['absoluteURL'] = $absoluteURL;
+        $self = clone $this;
+        $self['absoluteURL'] = $absoluteURL;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -238,18 +238,18 @@ final class Blog implements BaseModel
      */
     public function withAllowComments(bool $allowComments): self
     {
-        $obj = clone $this;
-        $obj['allowComments'] = $allowComments;
+        $self = clone $this;
+        $self['allowComments'] = $allowComments;
 
-        return $obj;
+        return $self;
     }
 
     public function withCreated(\DateTimeInterface $created): self
     {
-        $obj = clone $this;
-        $obj['created'] = $created;
+        $self = clone $this;
+        $self['created'] = $created;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -257,10 +257,10 @@ final class Blog implements BaseModel
      */
     public function withDeletedAt(\DateTimeInterface $deletedAt): self
     {
-        $obj = clone $this;
-        $obj['deletedAt'] = $deletedAt;
+        $self = clone $this;
+        $self['deletedAt'] = $deletedAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -268,10 +268,10 @@ final class Blog implements BaseModel
      */
     public function withDescription(string $description): self
     {
-        $obj = clone $this;
-        $obj['description'] = $description;
+        $self = clone $this;
+        $self['description'] = $description;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -279,10 +279,10 @@ final class Blog implements BaseModel
      */
     public function withHTMLTitle(string $htmlTitle): self
     {
-        $obj = clone $this;
-        $obj['htmlTitle'] = $htmlTitle;
+        $self = clone $this;
+        $self['htmlTitle'] = $htmlTitle;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -292,10 +292,10 @@ final class Blog implements BaseModel
      */
     public function withLanguage(Language|string $language): self
     {
-        $obj = clone $this;
-        $obj['language'] = $language;
+        $self = clone $this;
+        $self['language'] = $language;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -303,10 +303,10 @@ final class Blog implements BaseModel
      */
     public function withName(string $name): self
     {
-        $obj = clone $this;
-        $obj['name'] = $name;
+        $self = clone $this;
+        $self['name'] = $name;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -316,10 +316,10 @@ final class Blog implements BaseModel
      */
     public function withPublicAccessRules(array $publicAccessRules): self
     {
-        $obj = clone $this;
-        $obj['publicAccessRules'] = $publicAccessRules;
+        $self = clone $this;
+        $self['publicAccessRules'] = $publicAccessRules;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -328,10 +328,10 @@ final class Blog implements BaseModel
     public function withPublicAccessRulesEnabled(
         bool $publicAccessRulesEnabled
     ): self {
-        $obj = clone $this;
-        $obj['publicAccessRulesEnabled'] = $publicAccessRulesEnabled;
+        $self = clone $this;
+        $self['publicAccessRulesEnabled'] = $publicAccessRulesEnabled;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -339,10 +339,10 @@ final class Blog implements BaseModel
      */
     public function withPublicTitle(string $publicTitle): self
     {
-        $obj = clone $this;
-        $obj['publicTitle'] = $publicTitle;
+        $self = clone $this;
+        $self['publicTitle'] = $publicTitle;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -350,10 +350,10 @@ final class Blog implements BaseModel
      */
     public function withSlug(string $slug): self
     {
-        $obj = clone $this;
-        $obj['slug'] = $slug;
+        $self = clone $this;
+        $self['slug'] = $slug;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -361,17 +361,17 @@ final class Blog implements BaseModel
      */
     public function withTranslatedFromID(string $translatedFromID): self
     {
-        $obj = clone $this;
-        $obj['translatedFromID'] = $translatedFromID;
+        $self = clone $this;
+        $self['translatedFromID'] = $translatedFromID;
 
-        return $obj;
+        return $self;
     }
 
     public function withUpdated(\DateTimeInterface $updated): self
     {
-        $obj = clone $this;
-        $obj['updated'] = $updated;
+        $self = clone $this;
+        $self['updated'] = $updated;
 
-        return $obj;
+        return $self;
     }
 }

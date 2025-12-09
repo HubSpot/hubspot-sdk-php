@@ -166,20 +166,20 @@ final class ObjectSchemaEgg implements BaseModel
         ?array $searchableProperties = null,
         ?array $secondaryDisplayProperties = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['associatedObjects'] = $associatedObjects;
-        $obj['labels'] = $labels;
-        $obj['name'] = $name;
-        $obj['properties'] = $properties;
-        $obj['requiredProperties'] = $requiredProperties;
+        $self['associatedObjects'] = $associatedObjects;
+        $self['labels'] = $labels;
+        $self['name'] = $name;
+        $self['properties'] = $properties;
+        $self['requiredProperties'] = $requiredProperties;
 
-        null !== $description && $obj['description'] = $description;
-        null !== $primaryDisplayProperty && $obj['primaryDisplayProperty'] = $primaryDisplayProperty;
-        null !== $searchableProperties && $obj['searchableProperties'] = $searchableProperties;
-        null !== $secondaryDisplayProperties && $obj['secondaryDisplayProperties'] = $secondaryDisplayProperties;
+        null !== $description && $self['description'] = $description;
+        null !== $primaryDisplayProperty && $self['primaryDisplayProperty'] = $primaryDisplayProperty;
+        null !== $searchableProperties && $self['searchableProperties'] = $searchableProperties;
+        null !== $secondaryDisplayProperties && $self['secondaryDisplayProperties'] = $secondaryDisplayProperties;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -189,10 +189,10 @@ final class ObjectSchemaEgg implements BaseModel
      */
     public function withAssociatedObjects(array $associatedObjects): self
     {
-        $obj = clone $this;
-        $obj['associatedObjects'] = $associatedObjects;
+        $self = clone $this;
+        $self['associatedObjects'] = $associatedObjects;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -202,10 +202,10 @@ final class ObjectSchemaEgg implements BaseModel
      */
     public function withLabels(ObjectTypeDefinitionLabels|array $labels): self
     {
-        $obj = clone $this;
-        $obj['labels'] = $labels;
+        $self = clone $this;
+        $self['labels'] = $labels;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -213,10 +213,10 @@ final class ObjectSchemaEgg implements BaseModel
      */
     public function withName(string $name): self
     {
-        $obj = clone $this;
-        $obj['name'] = $name;
+        $self = clone $this;
+        $self['name'] = $name;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -244,10 +244,10 @@ final class ObjectSchemaEgg implements BaseModel
      */
     public function withProperties(array $properties): self
     {
-        $obj = clone $this;
-        $obj['properties'] = $properties;
+        $self = clone $this;
+        $self['properties'] = $properties;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -257,18 +257,18 @@ final class ObjectSchemaEgg implements BaseModel
      */
     public function withRequiredProperties(array $requiredProperties): self
     {
-        $obj = clone $this;
-        $obj['requiredProperties'] = $requiredProperties;
+        $self = clone $this;
+        $self['requiredProperties'] = $requiredProperties;
 
-        return $obj;
+        return $self;
     }
 
     public function withDescription(string $description): self
     {
-        $obj = clone $this;
-        $obj['description'] = $description;
+        $self = clone $this;
+        $self['description'] = $description;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -277,10 +277,10 @@ final class ObjectSchemaEgg implements BaseModel
     public function withPrimaryDisplayProperty(
         string $primaryDisplayProperty
     ): self {
-        $obj = clone $this;
-        $obj['primaryDisplayProperty'] = $primaryDisplayProperty;
+        $self = clone $this;
+        $self['primaryDisplayProperty'] = $primaryDisplayProperty;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -290,10 +290,10 @@ final class ObjectSchemaEgg implements BaseModel
      */
     public function withSearchableProperties(array $searchableProperties): self
     {
-        $obj = clone $this;
-        $obj['searchableProperties'] = $searchableProperties;
+        $self = clone $this;
+        $self['searchableProperties'] = $searchableProperties;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -304,9 +304,9 @@ final class ObjectSchemaEgg implements BaseModel
     public function withSecondaryDisplayProperties(
         array $secondaryDisplayProperties
     ): self {
-        $obj = clone $this;
-        $obj['secondaryDisplayProperties'] = $secondaryDisplayProperties;
+        $self = clone $this;
+        $self['secondaryDisplayProperties'] = $secondaryDisplayProperties;
 
-        return $obj;
+        return $self;
     }
 }

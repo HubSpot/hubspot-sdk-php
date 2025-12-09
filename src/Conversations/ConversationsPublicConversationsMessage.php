@@ -248,47 +248,47 @@ final class ConversationsPublicConversationsMessage implements BaseModel
         ?string $subject = null,
         ?\DateTimeInterface $updatedAt = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['id'] = $id;
-        $obj['archived'] = $archived;
-        $obj['attachments'] = $attachments;
-        $obj['channelAccountID'] = $channelAccountID;
-        $obj['channelID'] = $channelID;
-        $obj['client'] = $client;
-        $obj['conversationsThreadID'] = $conversationsThreadID;
-        $obj['createdAt'] = $createdAt;
-        $obj['createdBy'] = $createdBy;
-        $obj['direction'] = $direction;
-        $obj['recipients'] = $recipients;
-        $obj['senders'] = $senders;
-        $obj['text'] = $text;
-        $obj['truncationStatus'] = $truncationStatus;
-        $obj['type'] = $type;
+        $self['id'] = $id;
+        $self['archived'] = $archived;
+        $self['attachments'] = $attachments;
+        $self['channelAccountID'] = $channelAccountID;
+        $self['channelID'] = $channelID;
+        $self['client'] = $client;
+        $self['conversationsThreadID'] = $conversationsThreadID;
+        $self['createdAt'] = $createdAt;
+        $self['createdBy'] = $createdBy;
+        $self['direction'] = $direction;
+        $self['recipients'] = $recipients;
+        $self['senders'] = $senders;
+        $self['text'] = $text;
+        $self['truncationStatus'] = $truncationStatus;
+        $self['type'] = $type;
 
-        null !== $inReplyToID && $obj['inReplyToID'] = $inReplyToID;
-        null !== $richText && $obj['richText'] = $richText;
-        null !== $status && $obj['status'] = $status;
-        null !== $subject && $obj['subject'] = $subject;
-        null !== $updatedAt && $obj['updatedAt'] = $updatedAt;
+        null !== $inReplyToID && $self['inReplyToID'] = $inReplyToID;
+        null !== $richText && $self['richText'] = $richText;
+        null !== $status && $self['status'] = $status;
+        null !== $subject && $self['subject'] = $subject;
+        null !== $updatedAt && $self['updatedAt'] = $updatedAt;
 
-        return $obj;
+        return $self;
     }
 
     public function withID(string $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     public function withArchived(bool $archived): self
     {
-        $obj = clone $this;
-        $obj['archived'] = $archived;
+        $self = clone $this;
+        $self['archived'] = $archived;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -331,26 +331,26 @@ final class ConversationsPublicConversationsMessage implements BaseModel
      */
     public function withAttachments(array $attachments): self
     {
-        $obj = clone $this;
-        $obj['attachments'] = $attachments;
+        $self = clone $this;
+        $self['attachments'] = $attachments;
 
-        return $obj;
+        return $self;
     }
 
     public function withChannelAccountID(string $channelAccountID): self
     {
-        $obj = clone $this;
-        $obj['channelAccountID'] = $channelAccountID;
+        $self = clone $this;
+        $self['channelAccountID'] = $channelAccountID;
 
-        return $obj;
+        return $self;
     }
 
     public function withChannelID(string $channelID): self
     {
-        $obj = clone $this;
-        $obj['channelID'] = $channelID;
+        $self = clone $this;
+        $self['channelID'] = $channelID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -360,35 +360,35 @@ final class ConversationsPublicConversationsMessage implements BaseModel
      */
     public function withClient(PublicClient|array $client): self
     {
-        $obj = clone $this;
-        $obj['client'] = $client;
+        $self = clone $this;
+        $self['client'] = $client;
 
-        return $obj;
+        return $self;
     }
 
     public function withConversationsThreadID(
         string $conversationsThreadID
     ): self {
-        $obj = clone $this;
-        $obj['conversationsThreadID'] = $conversationsThreadID;
+        $self = clone $this;
+        $self['conversationsThreadID'] = $conversationsThreadID;
 
-        return $obj;
+        return $self;
     }
 
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
-        $obj = clone $this;
-        $obj['createdAt'] = $createdAt;
+        $self = clone $this;
+        $self['createdAt'] = $createdAt;
 
-        return $obj;
+        return $self;
     }
 
     public function withCreatedBy(string $createdBy): self
     {
-        $obj = clone $this;
-        $obj['createdBy'] = $createdBy;
+        $self = clone $this;
+        $self['createdBy'] = $createdBy;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -396,10 +396,10 @@ final class ConversationsPublicConversationsMessage implements BaseModel
      */
     public function withDirection(Direction|string $direction): self
     {
-        $obj = clone $this;
-        $obj['direction'] = $direction;
+        $self = clone $this;
+        $self['direction'] = $direction;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -412,10 +412,10 @@ final class ConversationsPublicConversationsMessage implements BaseModel
      */
     public function withRecipients(array $recipients): self
     {
-        $obj = clone $this;
-        $obj['recipients'] = $recipients;
+        $self = clone $this;
+        $self['recipients'] = $recipients;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -428,18 +428,18 @@ final class ConversationsPublicConversationsMessage implements BaseModel
      */
     public function withSenders(array $senders): self
     {
-        $obj = clone $this;
-        $obj['senders'] = $senders;
+        $self = clone $this;
+        $self['senders'] = $senders;
 
-        return $obj;
+        return $self;
     }
 
     public function withText(string $text): self
     {
-        $obj = clone $this;
-        $obj['text'] = $text;
+        $self = clone $this;
+        $self['text'] = $text;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -448,10 +448,10 @@ final class ConversationsPublicConversationsMessage implements BaseModel
     public function withTruncationStatus(
         TruncationStatus|string $truncationStatus
     ): self {
-        $obj = clone $this;
-        $obj['truncationStatus'] = $truncationStatus;
+        $self = clone $this;
+        $self['truncationStatus'] = $truncationStatus;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -459,26 +459,26 @@ final class ConversationsPublicConversationsMessage implements BaseModel
      */
     public function withType(Type|string $type): self
     {
-        $obj = clone $this;
-        $obj['type'] = $type;
+        $self = clone $this;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 
     public function withInReplyToID(string $inReplyToID): self
     {
-        $obj = clone $this;
-        $obj['inReplyToID'] = $inReplyToID;
+        $self = clone $this;
+        $self['inReplyToID'] = $inReplyToID;
 
-        return $obj;
+        return $self;
     }
 
     public function withRichText(string $richText): self
     {
-        $obj = clone $this;
-        $obj['richText'] = $richText;
+        $self = clone $this;
+        $self['richText'] = $richText;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -489,25 +489,25 @@ final class ConversationsPublicConversationsMessage implements BaseModel
      */
     public function withStatus(PublicMessageStatus|array $status): self
     {
-        $obj = clone $this;
-        $obj['status'] = $status;
+        $self = clone $this;
+        $self['status'] = $status;
 
-        return $obj;
+        return $self;
     }
 
     public function withSubject(string $subject): self
     {
-        $obj = clone $this;
-        $obj['subject'] = $subject;
+        $self = clone $this;
+        $self['subject'] = $subject;
 
-        return $obj;
+        return $self;
     }
 
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
-        $obj = clone $this;
-        $obj['updatedAt'] = $updatedAt;
+        $self = clone $this;
+        $self['updatedAt'] = $updatedAt;
 
-        return $obj;
+        return $self;
     }
 }

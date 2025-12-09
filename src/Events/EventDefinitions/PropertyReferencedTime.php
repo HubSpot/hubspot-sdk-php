@@ -89,23 +89,23 @@ final class PropertyReferencedTime implements BaseModel
         string $zoneID,
         TimeType|string $timeType = 'PROPERTY_REFERENCED',
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['property'] = $property;
-        $obj['referenceType'] = $referenceType;
-        $obj['timeType'] = $timeType;
-        $obj['timezoneSource'] = $timezoneSource;
-        $obj['zoneID'] = $zoneID;
+        $self['property'] = $property;
+        $self['referenceType'] = $referenceType;
+        $self['timeType'] = $timeType;
+        $self['timezoneSource'] = $timezoneSource;
+        $self['zoneID'] = $zoneID;
 
-        return $obj;
+        return $self;
     }
 
     public function withProperty(string $property): self
     {
-        $obj = clone $this;
-        $obj['property'] = $property;
+        $self = clone $this;
+        $self['property'] = $property;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -113,10 +113,10 @@ final class PropertyReferencedTime implements BaseModel
      */
     public function withReferenceType(ReferenceType|string $referenceType): self
     {
-        $obj = clone $this;
-        $obj['referenceType'] = $referenceType;
+        $self = clone $this;
+        $self['referenceType'] = $referenceType;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -124,10 +124,10 @@ final class PropertyReferencedTime implements BaseModel
      */
     public function withTimeType(TimeType|string $timeType): self
     {
-        $obj = clone $this;
-        $obj['timeType'] = $timeType;
+        $self = clone $this;
+        $self['timeType'] = $timeType;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -136,17 +136,17 @@ final class PropertyReferencedTime implements BaseModel
     public function withTimezoneSource(
         TimezoneSource|string $timezoneSource
     ): self {
-        $obj = clone $this;
-        $obj['timezoneSource'] = $timezoneSource;
+        $self = clone $this;
+        $self['timezoneSource'] = $timezoneSource;
 
-        return $obj;
+        return $self;
     }
 
     public function withZoneID(string $zoneID): self
     {
-        $obj = clone $this;
-        $obj['zoneID'] = $zoneID;
+        $self = clone $this;
+        $self['zoneID'] = $zoneID;
 
-        return $obj;
+        return $self;
     }
 }

@@ -40,11 +40,11 @@ final class TableExportDraftParams implements BaseModel
      */
     public static function with(?string $format = null): self
     {
-        $obj = new self;
+        $self = new self;
 
-        null !== $format && $obj['format'] = $format;
+        null !== $format && $self['format'] = $format;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -52,9 +52,9 @@ final class TableExportDraftParams implements BaseModel
      */
     public function withFormat(string $format): self
     {
-        $obj = clone $this;
-        $obj['format'] = $format;
+        $self = clone $this;
+        $self['format'] = $format;
 
-        return $obj;
+        return $self;
     }
 }

@@ -104,25 +104,25 @@ final class RowReplaceDraftParams implements BaseModel
         ?string $name = null,
         ?string $path = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['tableIDOrName'] = $tableIDOrName;
-        $obj['childTableID'] = $childTableID;
-        $obj['displayIndex'] = $displayIndex;
-        $obj['values'] = $values;
+        $self['tableIDOrName'] = $tableIDOrName;
+        $self['childTableID'] = $childTableID;
+        $self['displayIndex'] = $displayIndex;
+        $self['values'] = $values;
 
-        null !== $name && $obj['name'] = $name;
-        null !== $path && $obj['path'] = $path;
+        null !== $name && $self['name'] = $name;
+        null !== $path && $self['path'] = $path;
 
-        return $obj;
+        return $self;
     }
 
     public function withTableIDOrName(string $tableIDOrName): self
     {
-        $obj = clone $this;
-        $obj['tableIDOrName'] = $tableIDOrName;
+        $self = clone $this;
+        $self['tableIDOrName'] = $tableIDOrName;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -130,18 +130,18 @@ final class RowReplaceDraftParams implements BaseModel
      */
     public function withChildTableID(int $childTableID): self
     {
-        $obj = clone $this;
-        $obj['childTableID'] = $childTableID;
+        $self = clone $this;
+        $self['childTableID'] = $childTableID;
 
-        return $obj;
+        return $self;
     }
 
     public function withDisplayIndex(int $displayIndex): self
     {
-        $obj = clone $this;
-        $obj['displayIndex'] = $displayIndex;
+        $self = clone $this;
+        $self['displayIndex'] = $displayIndex;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -151,10 +151,10 @@ final class RowReplaceDraftParams implements BaseModel
      */
     public function withValues(array $values): self
     {
-        $obj = clone $this;
-        $obj['values'] = $values;
+        $self = clone $this;
+        $self['values'] = $values;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -162,10 +162,10 @@ final class RowReplaceDraftParams implements BaseModel
      */
     public function withName(string $name): self
     {
-        $obj = clone $this;
-        $obj['name'] = $name;
+        $self = clone $this;
+        $self['name'] = $name;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -173,9 +173,9 @@ final class RowReplaceDraftParams implements BaseModel
      */
     public function withPath(string $path): self
     {
-        $obj = clone $this;
-        $obj['path'] = $path;
+        $self = clone $this;
+        $self['path'] = $path;
 
-        return $obj;
+        return $self;
     }
 }

@@ -91,44 +91,44 @@ final class ThreadListParams implements BaseModel
         ?array $sort = null,
         ?string $threadStatus = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $after && $obj['after'] = $after;
-        null !== $archived && $obj['archived'] = $archived;
-        null !== $associatedContactID && $obj['associatedContactID'] = $associatedContactID;
-        null !== $association && $obj['association'] = $association;
-        null !== $inboxID && $obj['inboxID'] = $inboxID;
-        null !== $latestMessageTimestampAfter && $obj['latestMessageTimestampAfter'] = $latestMessageTimestampAfter;
-        null !== $limit && $obj['limit'] = $limit;
-        null !== $property && $obj['property'] = $property;
-        null !== $sort && $obj['sort'] = $sort;
-        null !== $threadStatus && $obj['threadStatus'] = $threadStatus;
+        null !== $after && $self['after'] = $after;
+        null !== $archived && $self['archived'] = $archived;
+        null !== $associatedContactID && $self['associatedContactID'] = $associatedContactID;
+        null !== $association && $self['association'] = $association;
+        null !== $inboxID && $self['inboxID'] = $inboxID;
+        null !== $latestMessageTimestampAfter && $self['latestMessageTimestampAfter'] = $latestMessageTimestampAfter;
+        null !== $limit && $self['limit'] = $limit;
+        null !== $property && $self['property'] = $property;
+        null !== $sort && $self['sort'] = $sort;
+        null !== $threadStatus && $self['threadStatus'] = $threadStatus;
 
-        return $obj;
+        return $self;
     }
 
     public function withAfter(string $after): self
     {
-        $obj = clone $this;
-        $obj['after'] = $after;
+        $self = clone $this;
+        $self['after'] = $after;
 
-        return $obj;
+        return $self;
     }
 
     public function withArchived(bool $archived): self
     {
-        $obj = clone $this;
-        $obj['archived'] = $archived;
+        $self = clone $this;
+        $self['archived'] = $archived;
 
-        return $obj;
+        return $self;
     }
 
     public function withAssociatedContactID(int $associatedContactID): self
     {
-        $obj = clone $this;
-        $obj['associatedContactID'] = $associatedContactID;
+        $self = clone $this;
+        $self['associatedContactID'] = $associatedContactID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -136,10 +136,10 @@ final class ThreadListParams implements BaseModel
      */
     public function withAssociation(array $association): self
     {
-        $obj = clone $this;
-        $obj['association'] = $association;
+        $self = clone $this;
+        $self['association'] = $association;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -147,35 +147,35 @@ final class ThreadListParams implements BaseModel
      */
     public function withInboxID(array $inboxID): self
     {
-        $obj = clone $this;
-        $obj['inboxID'] = $inboxID;
+        $self = clone $this;
+        $self['inboxID'] = $inboxID;
 
-        return $obj;
+        return $self;
     }
 
     public function withLatestMessageTimestampAfter(
         \DateTimeInterface $latestMessageTimestampAfter
     ): self {
-        $obj = clone $this;
-        $obj['latestMessageTimestampAfter'] = $latestMessageTimestampAfter;
+        $self = clone $this;
+        $self['latestMessageTimestampAfter'] = $latestMessageTimestampAfter;
 
-        return $obj;
+        return $self;
     }
 
     public function withLimit(int $limit): self
     {
-        $obj = clone $this;
-        $obj['limit'] = $limit;
+        $self = clone $this;
+        $self['limit'] = $limit;
 
-        return $obj;
+        return $self;
     }
 
     public function withProperty(string $property): self
     {
-        $obj = clone $this;
-        $obj['property'] = $property;
+        $self = clone $this;
+        $self['property'] = $property;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -183,17 +183,17 @@ final class ThreadListParams implements BaseModel
      */
     public function withSort(array $sort): self
     {
-        $obj = clone $this;
-        $obj['sort'] = $sort;
+        $self = clone $this;
+        $self['sort'] = $sort;
 
-        return $obj;
+        return $self;
     }
 
     public function withThreadStatus(string $threadStatus): self
     {
-        $obj = clone $this;
-        $obj['threadStatus'] = $threadStatus;
+        $self = clone $this;
+        $self['threadStatus'] = $threadStatus;
 
-        return $obj;
+        return $self;
     }
 }

@@ -265,19 +265,19 @@ final class ListCreateParams implements BaseModel
         PublicListPermissions|array|null $listPermissions = null,
         PublicMembershipSettings|array|null $membershipSettings = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['name'] = $name;
-        $obj['objectTypeID'] = $objectTypeID;
-        $obj['processingType'] = $processingType;
+        $self['name'] = $name;
+        $self['objectTypeID'] = $objectTypeID;
+        $self['processingType'] = $processingType;
 
-        null !== $customProperties && $obj['customProperties'] = $customProperties;
-        null !== $filterBranch && $obj['filterBranch'] = $filterBranch;
-        null !== $listFolderID && $obj['listFolderID'] = $listFolderID;
-        null !== $listPermissions && $obj['listPermissions'] = $listPermissions;
-        null !== $membershipSettings && $obj['membershipSettings'] = $membershipSettings;
+        null !== $customProperties && $self['customProperties'] = $customProperties;
+        null !== $filterBranch && $self['filterBranch'] = $filterBranch;
+        null !== $listFolderID && $self['listFolderID'] = $listFolderID;
+        null !== $listPermissions && $self['listPermissions'] = $listPermissions;
+        null !== $membershipSettings && $self['membershipSettings'] = $membershipSettings;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -285,10 +285,10 @@ final class ListCreateParams implements BaseModel
      */
     public function withName(string $name): self
     {
-        $obj = clone $this;
-        $obj['name'] = $name;
+        $self = clone $this;
+        $self['name'] = $name;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -296,10 +296,10 @@ final class ListCreateParams implements BaseModel
      */
     public function withObjectTypeID(string $objectTypeID): self
     {
-        $obj = clone $this;
-        $obj['objectTypeID'] = $objectTypeID;
+        $self = clone $this;
+        $self['objectTypeID'] = $objectTypeID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -307,10 +307,10 @@ final class ListCreateParams implements BaseModel
      */
     public function withProcessingType(string $processingType): self
     {
-        $obj = clone $this;
-        $obj['processingType'] = $processingType;
+        $self = clone $this;
+        $self['processingType'] = $processingType;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -320,10 +320,10 @@ final class ListCreateParams implements BaseModel
      */
     public function withCustomProperties(array $customProperties): self
     {
-        $obj = clone $this;
-        $obj['customProperties'] = $customProperties;
+        $self = clone $this;
+        $self['customProperties'] = $customProperties;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -382,10 +382,10 @@ final class ListCreateParams implements BaseModel
     public function withFilterBranch(
         PublicOrFilterBranch|array|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch $filterBranch,
     ): self {
-        $obj = clone $this;
-        $obj['filterBranch'] = $filterBranch;
+        $self = clone $this;
+        $self['filterBranch'] = $filterBranch;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -393,10 +393,10 @@ final class ListCreateParams implements BaseModel
      */
     public function withListFolderID(int $listFolderID): self
     {
-        $obj = clone $this;
-        $obj['listFolderID'] = $listFolderID;
+        $self = clone $this;
+        $self['listFolderID'] = $listFolderID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -407,10 +407,10 @@ final class ListCreateParams implements BaseModel
     public function withListPermissions(
         PublicListPermissions|array $listPermissions
     ): self {
-        $obj = clone $this;
-        $obj['listPermissions'] = $listPermissions;
+        $self = clone $this;
+        $self['listPermissions'] = $listPermissions;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -421,9 +421,9 @@ final class ListCreateParams implements BaseModel
     public function withMembershipSettings(
         PublicMembershipSettings|array $membershipSettings
     ): self {
-        $obj = clone $this;
-        $obj['membershipSettings'] = $membershipSettings;
+        $self = clone $this;
+        $self['membershipSettings'] = $membershipSettings;
 
-        return $obj;
+        return $self;
     }
 }

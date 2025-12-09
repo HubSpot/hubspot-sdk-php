@@ -52,11 +52,11 @@ final class BatchInputMarketingEventPublicObjectIDDeleteRequest implements BaseM
      */
     public static function with(array $inputs): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['inputs'] = $inputs;
+        $self['inputs'] = $inputs;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -66,9 +66,9 @@ final class BatchInputMarketingEventPublicObjectIDDeleteRequest implements BaseM
      */
     public function withInputs(array $inputs): self
     {
-        $obj = clone $this;
-        $obj['inputs'] = $inputs;
+        $self = clone $this;
+        $self['inputs'] = $inputs;
 
-        return $obj;
+        return $self;
     }
 }

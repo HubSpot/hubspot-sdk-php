@@ -70,13 +70,13 @@ final class AggregateEmailStatistics implements BaseModel
         ?array $campaignAggregations = null,
         ?array $emails = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $aggregate && $obj['aggregate'] = $aggregate;
-        null !== $campaignAggregations && $obj['campaignAggregations'] = $campaignAggregations;
-        null !== $emails && $obj['emails'] = $emails;
+        null !== $aggregate && $self['aggregate'] = $aggregate;
+        null !== $campaignAggregations && $self['campaignAggregations'] = $campaignAggregations;
+        null !== $emails && $self['emails'] = $emails;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -89,10 +89,10 @@ final class AggregateEmailStatistics implements BaseModel
      */
     public function withAggregate(EmailStatisticsData|array $aggregate): self
     {
-        $obj = clone $this;
-        $obj['aggregate'] = $aggregate;
+        $self = clone $this;
+        $self['aggregate'] = $aggregate;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -107,10 +107,10 @@ final class AggregateEmailStatistics implements BaseModel
      */
     public function withCampaignAggregations(array $campaignAggregations): self
     {
-        $obj = clone $this;
-        $obj['campaignAggregations'] = $campaignAggregations;
+        $self = clone $this;
+        $self['campaignAggregations'] = $campaignAggregations;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -120,9 +120,9 @@ final class AggregateEmailStatistics implements BaseModel
      */
     public function withEmails(array $emails): self
     {
-        $obj = clone $this;
-        $obj['emails'] = $emails;
+        $self = clone $this;
+        $self['emails'] = $emails;
 
-        return $obj;
+        return $self;
     }
 }

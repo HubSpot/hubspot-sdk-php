@@ -53,11 +53,11 @@ final class PortalFlagStateBatchResponse implements BaseModel
      */
     public static function with(array $portalFlagStates): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['portalFlagStates'] = $portalFlagStates;
+        $self['portalFlagStates'] = $portalFlagStates;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -67,9 +67,9 @@ final class PortalFlagStateBatchResponse implements BaseModel
      */
     public function withPortalFlagStates(array $portalFlagStates): self
     {
-        $obj = clone $this;
-        $obj['portalFlagStates'] = $portalFlagStates;
+        $self = clone $this;
+        $self['portalFlagStates'] = $portalFlagStates;
 
-        return $obj;
+        return $self;
     }
 }

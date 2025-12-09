@@ -72,21 +72,21 @@ final class PublicIntegrationEventFilter implements BaseModel
         array $filterLines,
         FilterType|string $filterType = 'INTEGRATION_EVENT',
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['eventTypeID'] = $eventTypeID;
-        $obj['filterLines'] = $filterLines;
-        $obj['filterType'] = $filterType;
+        $self['eventTypeID'] = $eventTypeID;
+        $self['filterLines'] = $filterLines;
+        $self['filterType'] = $filterType;
 
-        return $obj;
+        return $self;
     }
 
     public function withEventTypeID(int $eventTypeID): self
     {
-        $obj = clone $this;
-        $obj['eventTypeID'] = $eventTypeID;
+        $self = clone $this;
+        $self['eventTypeID'] = $eventTypeID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -97,10 +97,10 @@ final class PublicIntegrationEventFilter implements BaseModel
      */
     public function withFilterLines(array $filterLines): self
     {
-        $obj = clone $this;
-        $obj['filterLines'] = $filterLines;
+        $self = clone $this;
+        $self['filterLines'] = $filterLines;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -108,9 +108,9 @@ final class PublicIntegrationEventFilter implements BaseModel
      */
     public function withFilterType(FilterType|string $filterType): self
     {
-        $obj = clone $this;
-        $obj['filterType'] = $filterType;
+        $self = clone $this;
+        $self['filterType'] = $filterType;
 
-        return $obj;
+        return $self;
     }
 }

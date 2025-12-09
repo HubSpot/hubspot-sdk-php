@@ -55,11 +55,11 @@ final class PortalObjectTypeEnablementPublicResponse implements BaseModel
      */
     public static function with(array $enablementByObjectTypeID): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['enablementByObjectTypeID'] = $enablementByObjectTypeID;
+        $self['enablementByObjectTypeID'] = $enablementByObjectTypeID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -70,9 +70,9 @@ final class PortalObjectTypeEnablementPublicResponse implements BaseModel
     public function withEnablementByObjectTypeID(
         array $enablementByObjectTypeID
     ): self {
-        $obj = clone $this;
-        $obj['enablementByObjectTypeID'] = $enablementByObjectTypeID;
+        $self = clone $this;
+        $self['enablementByObjectTypeID'] = $enablementByObjectTypeID;
 
-        return $obj;
+        return $self;
     }
 }

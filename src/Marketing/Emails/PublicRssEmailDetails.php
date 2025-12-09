@@ -79,67 +79,67 @@ final class PublicRssEmailDetails implements BaseModel
         ?string $url = null,
         ?bool $useHeadlineAsSubject = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $blogEmailType && $obj['blogEmailType'] = $blogEmailType;
-        null !== $blogImageMaxWidth && $obj['blogImageMaxWidth'] = $blogImageMaxWidth;
-        null !== $blogLayout && $obj['blogLayout'] = $blogLayout;
-        null !== $hubspotBlogID && $obj['hubspotBlogID'] = $hubspotBlogID;
-        null !== $maxEntries && $obj['maxEntries'] = $maxEntries;
-        null !== $rssEntryTemplate && $obj['rssEntryTemplate'] = $rssEntryTemplate;
-        null !== $timing && $obj['timing'] = $timing;
-        null !== $url && $obj['url'] = $url;
-        null !== $useHeadlineAsSubject && $obj['useHeadlineAsSubject'] = $useHeadlineAsSubject;
+        null !== $blogEmailType && $self['blogEmailType'] = $blogEmailType;
+        null !== $blogImageMaxWidth && $self['blogImageMaxWidth'] = $blogImageMaxWidth;
+        null !== $blogLayout && $self['blogLayout'] = $blogLayout;
+        null !== $hubspotBlogID && $self['hubspotBlogID'] = $hubspotBlogID;
+        null !== $maxEntries && $self['maxEntries'] = $maxEntries;
+        null !== $rssEntryTemplate && $self['rssEntryTemplate'] = $rssEntryTemplate;
+        null !== $timing && $self['timing'] = $timing;
+        null !== $url && $self['url'] = $url;
+        null !== $useHeadlineAsSubject && $self['useHeadlineAsSubject'] = $useHeadlineAsSubject;
 
-        return $obj;
+        return $self;
     }
 
     public function withBlogEmailType(string $blogEmailType): self
     {
-        $obj = clone $this;
-        $obj['blogEmailType'] = $blogEmailType;
+        $self = clone $this;
+        $self['blogEmailType'] = $blogEmailType;
 
-        return $obj;
+        return $self;
     }
 
     public function withBlogImageMaxWidth(int $blogImageMaxWidth): self
     {
-        $obj = clone $this;
-        $obj['blogImageMaxWidth'] = $blogImageMaxWidth;
+        $self = clone $this;
+        $self['blogImageMaxWidth'] = $blogImageMaxWidth;
 
-        return $obj;
+        return $self;
     }
 
     public function withBlogLayout(string $blogLayout): self
     {
-        $obj = clone $this;
-        $obj['blogLayout'] = $blogLayout;
+        $self = clone $this;
+        $self['blogLayout'] = $blogLayout;
 
-        return $obj;
+        return $self;
     }
 
     public function withHubspotBlogID(string $hubspotBlogID): self
     {
-        $obj = clone $this;
-        $obj['hubspotBlogID'] = $hubspotBlogID;
+        $self = clone $this;
+        $self['hubspotBlogID'] = $hubspotBlogID;
 
-        return $obj;
+        return $self;
     }
 
     public function withMaxEntries(int $maxEntries): self
     {
-        $obj = clone $this;
-        $obj['maxEntries'] = $maxEntries;
+        $self = clone $this;
+        $self['maxEntries'] = $maxEntries;
 
-        return $obj;
+        return $self;
     }
 
     public function withRssEntryTemplate(string $rssEntryTemplate): self
     {
-        $obj = clone $this;
-        $obj['rssEntryTemplate'] = $rssEntryTemplate;
+        $self = clone $this;
+        $self['rssEntryTemplate'] = $rssEntryTemplate;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -147,25 +147,25 @@ final class PublicRssEmailDetails implements BaseModel
      */
     public function withTiming(array $timing): self
     {
-        $obj = clone $this;
-        $obj['timing'] = $timing;
+        $self = clone $this;
+        $self['timing'] = $timing;
 
-        return $obj;
+        return $self;
     }
 
     public function withURL(string $url): self
     {
-        $obj = clone $this;
-        $obj['url'] = $url;
+        $self = clone $this;
+        $self['url'] = $url;
 
-        return $obj;
+        return $self;
     }
 
     public function withUseHeadlineAsSubject(bool $useHeadlineAsSubject): self
     {
-        $obj = clone $this;
-        $obj['useHeadlineAsSubject'] = $useHeadlineAsSubject;
+        $self = clone $this;
+        $self['useHeadlineAsSubject'] = $useHeadlineAsSubject;
 
-        return $obj;
+        return $self;
     }
 }

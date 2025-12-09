@@ -65,12 +65,12 @@ final class APIRelativeDateTimeValue implements BaseModel
         APITimeDelay|array $timeDelay,
         Type|string $type = 'RELATIVE_DATETIME'
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['timeDelay'] = $timeDelay;
-        $obj['type'] = $type;
+        $self['timeDelay'] = $timeDelay;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -84,10 +84,10 @@ final class APIRelativeDateTimeValue implements BaseModel
      */
     public function withTimeDelay(APITimeDelay|array $timeDelay): self
     {
-        $obj = clone $this;
-        $obj['timeDelay'] = $timeDelay;
+        $self = clone $this;
+        $self['timeDelay'] = $timeDelay;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -95,9 +95,9 @@ final class APIRelativeDateTimeValue implements BaseModel
      */
     public function withType(Type|string $type): self
     {
-        $obj = clone $this;
-        $obj['type'] = $type;
+        $self = clone $this;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 }

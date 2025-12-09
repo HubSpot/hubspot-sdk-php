@@ -51,18 +51,18 @@ final class EventGetParams implements BaseModel
      */
     public static function with(string $eventTemplateID): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['eventTemplateID'] = $eventTemplateID;
+        $self['eventTemplateID'] = $eventTemplateID;
 
-        return $obj;
+        return $self;
     }
 
     public function withEventTemplateID(string $eventTemplateID): self
     {
-        $obj = clone $this;
-        $obj['eventTemplateID'] = $eventTemplateID;
+        $self = clone $this;
+        $self['eventTemplateID'] = $eventTemplateID;
 
-        return $obj;
+        return $self;
     }
 }

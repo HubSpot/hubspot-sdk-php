@@ -133,18 +133,18 @@ final class ExchangeRate implements BaseModel
         \DateTimeInterface $updatedAt,
         bool $visibleInUi,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['id'] = $id;
-        $obj['conversionRate'] = $conversionRate;
-        $obj['createdAt'] = $createdAt;
-        $obj['effectiveAt'] = $effectiveAt;
-        $obj['fromCurrencyCode'] = $fromCurrencyCode;
-        $obj['toCurrencyCode'] = $toCurrencyCode;
-        $obj['updatedAt'] = $updatedAt;
-        $obj['visibleInUi'] = $visibleInUi;
+        $self['id'] = $id;
+        $self['conversionRate'] = $conversionRate;
+        $self['createdAt'] = $createdAt;
+        $self['effectiveAt'] = $effectiveAt;
+        $self['fromCurrencyCode'] = $fromCurrencyCode;
+        $self['toCurrencyCode'] = $toCurrencyCode;
+        $self['updatedAt'] = $updatedAt;
+        $self['visibleInUi'] = $visibleInUi;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -152,10 +152,10 @@ final class ExchangeRate implements BaseModel
      */
     public function withID(string $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -163,10 +163,10 @@ final class ExchangeRate implements BaseModel
      */
     public function withConversionRate(float $conversionRate): self
     {
-        $obj = clone $this;
-        $obj['conversionRate'] = $conversionRate;
+        $self = clone $this;
+        $self['conversionRate'] = $conversionRate;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -174,10 +174,10 @@ final class ExchangeRate implements BaseModel
      */
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
-        $obj = clone $this;
-        $obj['createdAt'] = $createdAt;
+        $self = clone $this;
+        $self['createdAt'] = $createdAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -185,10 +185,10 @@ final class ExchangeRate implements BaseModel
      */
     public function withEffectiveAt(\DateTimeInterface $effectiveAt): self
     {
-        $obj = clone $this;
-        $obj['effectiveAt'] = $effectiveAt;
+        $self = clone $this;
+        $self['effectiveAt'] = $effectiveAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -199,10 +199,10 @@ final class ExchangeRate implements BaseModel
     public function withFromCurrencyCode(
         FromCurrencyCode|string $fromCurrencyCode
     ): self {
-        $obj = clone $this;
-        $obj['fromCurrencyCode'] = $fromCurrencyCode;
+        $self = clone $this;
+        $self['fromCurrencyCode'] = $fromCurrencyCode;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -213,10 +213,10 @@ final class ExchangeRate implements BaseModel
     public function withToCurrencyCode(
         ToCurrencyCode|string $toCurrencyCode
     ): self {
-        $obj = clone $this;
-        $obj['toCurrencyCode'] = $toCurrencyCode;
+        $self = clone $this;
+        $self['toCurrencyCode'] = $toCurrencyCode;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -224,10 +224,10 @@ final class ExchangeRate implements BaseModel
      */
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
-        $obj = clone $this;
-        $obj['updatedAt'] = $updatedAt;
+        $self = clone $this;
+        $self['updatedAt'] = $updatedAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -235,9 +235,9 @@ final class ExchangeRate implements BaseModel
      */
     public function withVisibleInUi(bool $visibleInUi): self
     {
-        $obj = clone $this;
-        $obj['visibleInUi'] = $visibleInUi;
+        $self = clone $this;
+        $self['visibleInUi'] = $visibleInUi;
 
-        return $obj;
+        return $self;
     }
 }

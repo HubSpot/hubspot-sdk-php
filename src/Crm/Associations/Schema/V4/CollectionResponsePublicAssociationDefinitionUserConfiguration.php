@@ -72,13 +72,13 @@ final class CollectionResponsePublicAssociationDefinitionUserConfiguration imple
         array $results,
         Paging|array|null $paging = null
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['results'] = $results;
+        $self['results'] = $results;
 
-        null !== $paging && $obj['paging'] = $paging;
+        null !== $paging && $self['paging'] = $paging;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -91,10 +91,10 @@ final class CollectionResponsePublicAssociationDefinitionUserConfiguration imple
      */
     public function withResults(array $results): self
     {
-        $obj = clone $this;
-        $obj['results'] = $results;
+        $self = clone $this;
+        $self['results'] = $results;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -102,9 +102,9 @@ final class CollectionResponsePublicAssociationDefinitionUserConfiguration imple
      */
     public function withPaging(Paging|array $paging): self
     {
-        $obj = clone $this;
-        $obj['paging'] = $paging;
+        $self = clone $this;
+        $self['paging'] = $paging;
 
-        return $obj;
+        return $self;
     }
 }

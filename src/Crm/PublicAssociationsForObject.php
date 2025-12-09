@@ -59,12 +59,12 @@ final class PublicAssociationsForObject implements BaseModel
      */
     public static function with(PublicObjectID|array $to, array $types): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['to'] = $to;
-        $obj['types'] = $types;
+        $self['to'] = $to;
+        $self['types'] = $types;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -72,10 +72,10 @@ final class PublicAssociationsForObject implements BaseModel
      */
     public function withTo(PublicObjectID|array $to): self
     {
-        $obj = clone $this;
-        $obj['to'] = $to;
+        $self = clone $this;
+        $self['to'] = $to;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -85,9 +85,9 @@ final class PublicAssociationsForObject implements BaseModel
      */
     public function withTypes(array $types): self
     {
-        $obj = clone $this;
-        $obj['types'] = $types;
+        $self = clone $this;
+        $self['types'] = $types;
 
-        return $obj;
+        return $self;
     }
 }

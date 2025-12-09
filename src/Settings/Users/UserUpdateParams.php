@@ -91,16 +91,16 @@ final class UserUpdateParams implements BaseModel
         ?string $roleID = null,
         ?array $secondaryTeamIDs = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $idProperty && $obj['idProperty'] = $idProperty;
-        null !== $firstName && $obj['firstName'] = $firstName;
-        null !== $lastName && $obj['lastName'] = $lastName;
-        null !== $primaryTeamID && $obj['primaryTeamID'] = $primaryTeamID;
-        null !== $roleID && $obj['roleID'] = $roleID;
-        null !== $secondaryTeamIDs && $obj['secondaryTeamIDs'] = $secondaryTeamIDs;
+        null !== $idProperty && $self['idProperty'] = $idProperty;
+        null !== $firstName && $self['firstName'] = $firstName;
+        null !== $lastName && $self['lastName'] = $lastName;
+        null !== $primaryTeamID && $self['primaryTeamID'] = $primaryTeamID;
+        null !== $roleID && $self['roleID'] = $roleID;
+        null !== $secondaryTeamIDs && $self['secondaryTeamIDs'] = $secondaryTeamIDs;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -110,10 +110,10 @@ final class UserUpdateParams implements BaseModel
      */
     public function withIDProperty(IDProperty|string $idProperty): self
     {
-        $obj = clone $this;
-        $obj['idProperty'] = $idProperty;
+        $self = clone $this;
+        $self['idProperty'] = $idProperty;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -121,10 +121,10 @@ final class UserUpdateParams implements BaseModel
      */
     public function withFirstName(string $firstName): self
     {
-        $obj = clone $this;
-        $obj['firstName'] = $firstName;
+        $self = clone $this;
+        $self['firstName'] = $firstName;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -132,10 +132,10 @@ final class UserUpdateParams implements BaseModel
      */
     public function withLastName(string $lastName): self
     {
-        $obj = clone $this;
-        $obj['lastName'] = $lastName;
+        $self = clone $this;
+        $self['lastName'] = $lastName;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -143,10 +143,10 @@ final class UserUpdateParams implements BaseModel
      */
     public function withPrimaryTeamID(string $primaryTeamID): self
     {
-        $obj = clone $this;
-        $obj['primaryTeamID'] = $primaryTeamID;
+        $self = clone $this;
+        $self['primaryTeamID'] = $primaryTeamID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -154,10 +154,10 @@ final class UserUpdateParams implements BaseModel
      */
     public function withRoleID(string $roleID): self
     {
-        $obj = clone $this;
-        $obj['roleID'] = $roleID;
+        $self = clone $this;
+        $self['roleID'] = $roleID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -167,9 +167,9 @@ final class UserUpdateParams implements BaseModel
      */
     public function withSecondaryTeamIDs(array $secondaryTeamIDs): self
     {
-        $obj = clone $this;
-        $obj['secondaryTeamIDs'] = $secondaryTeamIDs;
+        $self = clone $this;
+        $self['secondaryTeamIDs'] = $secondaryTeamIDs;
 
-        return $obj;
+        return $self;
     }
 }

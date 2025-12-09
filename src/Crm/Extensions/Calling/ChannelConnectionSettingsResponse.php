@@ -69,45 +69,45 @@ final class ChannelConnectionSettingsResponse implements BaseModel
         \DateTimeInterface $updatedAt,
         string $url,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['createdAt'] = $createdAt;
-        $obj['isReady'] = $isReady;
-        $obj['updatedAt'] = $updatedAt;
-        $obj['url'] = $url;
+        $self['createdAt'] = $createdAt;
+        $self['isReady'] = $isReady;
+        $self['updatedAt'] = $updatedAt;
+        $self['url'] = $url;
 
-        return $obj;
+        return $self;
     }
 
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
-        $obj = clone $this;
-        $obj['createdAt'] = $createdAt;
+        $self = clone $this;
+        $self['createdAt'] = $createdAt;
 
-        return $obj;
+        return $self;
     }
 
     public function withIsReady(bool $isReady): self
     {
-        $obj = clone $this;
-        $obj['isReady'] = $isReady;
+        $self = clone $this;
+        $self['isReady'] = $isReady;
 
-        return $obj;
+        return $self;
     }
 
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
-        $obj = clone $this;
-        $obj['updatedAt'] = $updatedAt;
+        $self = clone $this;
+        $self['updatedAt'] = $updatedAt;
 
-        return $obj;
+        return $self;
     }
 
     public function withURL(string $url): self
     {
-        $obj = clone $this;
-        $obj['url'] = $url;
+        $self = clone $this;
+        $self['url'] = $url;
 
-        return $obj;
+        return $self;
     }
 }

@@ -104,91 +104,91 @@ final class APIFlowListing implements BaseModel
         ?string $name = null,
         ?string $uuid = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['id'] = $id;
-        $obj['createdAt'] = $createdAt;
-        $obj['flowType'] = $flowType;
-        $obj['isEnabled'] = $isEnabled;
-        $obj['objectTypeID'] = $objectTypeID;
-        $obj['revisionID'] = $revisionID;
-        $obj['updatedAt'] = $updatedAt;
+        $self['id'] = $id;
+        $self['createdAt'] = $createdAt;
+        $self['flowType'] = $flowType;
+        $self['isEnabled'] = $isEnabled;
+        $self['objectTypeID'] = $objectTypeID;
+        $self['revisionID'] = $revisionID;
+        $self['updatedAt'] = $updatedAt;
 
-        null !== $name && $obj['name'] = $name;
-        null !== $uuid && $obj['uuid'] = $uuid;
+        null !== $name && $self['name'] = $name;
+        null !== $uuid && $self['uuid'] = $uuid;
 
-        return $obj;
+        return $self;
     }
 
     public function withID(string $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
-        $obj = clone $this;
-        $obj['createdAt'] = $createdAt;
+        $self = clone $this;
+        $self['createdAt'] = $createdAt;
 
-        return $obj;
+        return $self;
     }
 
     public function withFlowType(string $flowType): self
     {
-        $obj = clone $this;
-        $obj['flowType'] = $flowType;
+        $self = clone $this;
+        $self['flowType'] = $flowType;
 
-        return $obj;
+        return $self;
     }
 
     public function withIsEnabled(bool $isEnabled): self
     {
-        $obj = clone $this;
-        $obj['isEnabled'] = $isEnabled;
+        $self = clone $this;
+        $self['isEnabled'] = $isEnabled;
 
-        return $obj;
+        return $self;
     }
 
     public function withObjectTypeID(string $objectTypeID): self
     {
-        $obj = clone $this;
-        $obj['objectTypeID'] = $objectTypeID;
+        $self = clone $this;
+        $self['objectTypeID'] = $objectTypeID;
 
-        return $obj;
+        return $self;
     }
 
     public function withRevisionID(string $revisionID): self
     {
-        $obj = clone $this;
-        $obj['revisionID'] = $revisionID;
+        $self = clone $this;
+        $self['revisionID'] = $revisionID;
 
-        return $obj;
+        return $self;
     }
 
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
-        $obj = clone $this;
-        $obj['updatedAt'] = $updatedAt;
+        $self = clone $this;
+        $self['updatedAt'] = $updatedAt;
 
-        return $obj;
+        return $self;
     }
 
     public function withName(string $name): self
     {
-        $obj = clone $this;
-        $obj['name'] = $name;
+        $self = clone $this;
+        $self['name'] = $name;
 
-        return $obj;
+        return $self;
     }
 
     public function withUuid(string $uuid): self
     {
-        $obj = clone $this;
-        $obj['uuid'] = $uuid;
+        $self = clone $this;
+        $self['uuid'] = $uuid;
 
-        return $obj;
+        return $self;
     }
 }

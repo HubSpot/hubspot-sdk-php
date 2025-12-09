@@ -148,16 +148,16 @@ final class PublicIndexedTimePoint implements BaseModel
         PublicIndexOffset|array|null $offset = null,
         ?string $timezoneSource = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['indexReference'] = $indexReference;
-        $obj['timeType'] = $timeType;
-        $obj['zoneID'] = $zoneID;
+        $self['indexReference'] = $indexReference;
+        $self['timeType'] = $timeType;
+        $self['zoneID'] = $zoneID;
 
-        null !== $offset && $obj['offset'] = $offset;
-        null !== $timezoneSource && $obj['timezoneSource'] = $timezoneSource;
+        null !== $offset && $self['offset'] = $offset;
+        null !== $timezoneSource && $self['timezoneSource'] = $timezoneSource;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -224,10 +224,10 @@ final class PublicIndexedTimePoint implements BaseModel
     public function withIndexReference(
         PublicNowReference|array|PublicTodayReference|PublicWeekReference|PublicFiscalQuarterReference|PublicFiscalYearReference|PublicYearReference|PublicQuarterReference|PublicMonthReference $indexReference,
     ): self {
-        $obj = clone $this;
-        $obj['indexReference'] = $indexReference;
+        $self = clone $this;
+        $self['indexReference'] = $indexReference;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -235,18 +235,18 @@ final class PublicIndexedTimePoint implements BaseModel
      */
     public function withTimeType(TimeType|string $timeType): self
     {
-        $obj = clone $this;
-        $obj['timeType'] = $timeType;
+        $self = clone $this;
+        $self['timeType'] = $timeType;
 
-        return $obj;
+        return $self;
     }
 
     public function withZoneID(string $zoneID): self
     {
-        $obj = clone $this;
-        $obj['zoneID'] = $zoneID;
+        $self = clone $this;
+        $self['zoneID'] = $zoneID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -264,17 +264,17 @@ final class PublicIndexedTimePoint implements BaseModel
      */
     public function withOffset(PublicIndexOffset|array $offset): self
     {
-        $obj = clone $this;
-        $obj['offset'] = $offset;
+        $self = clone $this;
+        $self['offset'] = $offset;
 
-        return $obj;
+        return $self;
     }
 
     public function withTimezoneSource(string $timezoneSource): self
     {
-        $obj = clone $this;
-        $obj['timezoneSource'] = $timezoneSource;
+        $self = clone $this;
+        $self['timezoneSource'] = $timezoneSource;
 
-        return $obj;
+        return $self;
     }
 }

@@ -56,20 +56,20 @@ final class ImportTemplate implements BaseModel
         int $templateID,
         TemplateType|string $templateType
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['templateID'] = $templateID;
-        $obj['templateType'] = $templateType;
+        $self['templateID'] = $templateID;
+        $self['templateType'] = $templateType;
 
-        return $obj;
+        return $self;
     }
 
     public function withTemplateID(int $templateID): self
     {
-        $obj = clone $this;
-        $obj['templateID'] = $templateID;
+        $self = clone $this;
+        $self['templateID'] = $templateID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -77,9 +77,9 @@ final class ImportTemplate implements BaseModel
      */
     public function withTemplateType(TemplateType|string $templateType): self
     {
-        $obj = clone $this;
-        $obj['templateType'] = $templateType;
+        $self = clone $this;
+        $self['templateType'] = $templateType;
 
-        return $obj;
+        return $self;
     }
 }

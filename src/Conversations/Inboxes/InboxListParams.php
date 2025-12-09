@@ -61,47 +61,47 @@ final class InboxListParams implements BaseModel
         ?int $limit = null,
         ?array $sort = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $after && $obj['after'] = $after;
-        null !== $archived && $obj['archived'] = $archived;
-        null !== $defaultPageLength && $obj['defaultPageLength'] = $defaultPageLength;
-        null !== $limit && $obj['limit'] = $limit;
-        null !== $sort && $obj['sort'] = $sort;
+        null !== $after && $self['after'] = $after;
+        null !== $archived && $self['archived'] = $archived;
+        null !== $defaultPageLength && $self['defaultPageLength'] = $defaultPageLength;
+        null !== $limit && $self['limit'] = $limit;
+        null !== $sort && $self['sort'] = $sort;
 
-        return $obj;
+        return $self;
     }
 
     public function withAfter(string $after): self
     {
-        $obj = clone $this;
-        $obj['after'] = $after;
+        $self = clone $this;
+        $self['after'] = $after;
 
-        return $obj;
+        return $self;
     }
 
     public function withArchived(bool $archived): self
     {
-        $obj = clone $this;
-        $obj['archived'] = $archived;
+        $self = clone $this;
+        $self['archived'] = $archived;
 
-        return $obj;
+        return $self;
     }
 
     public function withDefaultPageLength(int $defaultPageLength): self
     {
-        $obj = clone $this;
-        $obj['defaultPageLength'] = $defaultPageLength;
+        $self = clone $this;
+        $self['defaultPageLength'] = $defaultPageLength;
 
-        return $obj;
+        return $self;
     }
 
     public function withLimit(int $limit): self
     {
-        $obj = clone $this;
-        $obj['limit'] = $limit;
+        $self = clone $this;
+        $self['limit'] = $limit;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -109,9 +109,9 @@ final class InboxListParams implements BaseModel
      */
     public function withSort(array $sort): self
     {
-        $obj = clone $this;
-        $obj['sort'] = $sort;
+        $self = clone $this;
+        $self['sort'] = $sort;
 
-        return $obj;
+        return $self;
     }
 }

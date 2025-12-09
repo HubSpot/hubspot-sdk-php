@@ -214,23 +214,23 @@ final class MessageCreateParams implements BaseModel
         PreResolvedContacts|array|null $preResolvedContacts = null,
         ?string $richText = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['attachments'] = $attachments;
-        $obj['channelAccountID'] = $channelAccountID;
-        $obj['messageDirection'] = $messageDirection;
-        $obj['recipients'] = $recipients;
-        $obj['senders'] = $senders;
-        $obj['text'] = $text;
-        $obj['timestamp'] = $timestamp;
+        $self['attachments'] = $attachments;
+        $self['channelAccountID'] = $channelAccountID;
+        $self['messageDirection'] = $messageDirection;
+        $self['recipients'] = $recipients;
+        $self['senders'] = $senders;
+        $self['text'] = $text;
+        $self['timestamp'] = $timestamp;
 
-        null !== $inReplyToID && $obj['inReplyToID'] = $inReplyToID;
-        null !== $integrationIdempotencyID && $obj['integrationIdempotencyID'] = $integrationIdempotencyID;
-        null !== $integrationThreadID && $obj['integrationThreadID'] = $integrationThreadID;
-        null !== $preResolvedContacts && $obj['preResolvedContacts'] = $preResolvedContacts;
-        null !== $richText && $obj['richText'] = $richText;
+        null !== $inReplyToID && $self['inReplyToID'] = $inReplyToID;
+        null !== $integrationIdempotencyID && $self['integrationIdempotencyID'] = $integrationIdempotencyID;
+        null !== $integrationThreadID && $self['integrationThreadID'] = $integrationThreadID;
+        null !== $preResolvedContacts && $self['preResolvedContacts'] = $preResolvedContacts;
+        null !== $richText && $self['richText'] = $richText;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -262,18 +262,18 @@ final class MessageCreateParams implements BaseModel
      */
     public function withAttachments(array $attachments): self
     {
-        $obj = clone $this;
-        $obj['attachments'] = $attachments;
+        $self = clone $this;
+        $self['attachments'] = $attachments;
 
-        return $obj;
+        return $self;
     }
 
     public function withChannelAccountID(string $channelAccountID): self
     {
-        $obj = clone $this;
-        $obj['channelAccountID'] = $channelAccountID;
+        $self = clone $this;
+        $self['channelAccountID'] = $channelAccountID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -282,10 +282,10 @@ final class MessageCreateParams implements BaseModel
     public function withMessageDirection(
         MessageDirection|string $messageDirection
     ): self {
-        $obj = clone $this;
-        $obj['messageDirection'] = $messageDirection;
+        $self = clone $this;
+        $self['messageDirection'] = $messageDirection;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -295,10 +295,10 @@ final class MessageCreateParams implements BaseModel
      */
     public function withRecipients(array $recipients): self
     {
-        $obj = clone $this;
-        $obj['recipients'] = $recipients;
+        $self = clone $this;
+        $self['recipients'] = $recipients;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -308,51 +308,51 @@ final class MessageCreateParams implements BaseModel
      */
     public function withSenders(array $senders): self
     {
-        $obj = clone $this;
-        $obj['senders'] = $senders;
+        $self = clone $this;
+        $self['senders'] = $senders;
 
-        return $obj;
+        return $self;
     }
 
     public function withText(string $text): self
     {
-        $obj = clone $this;
-        $obj['text'] = $text;
+        $self = clone $this;
+        $self['text'] = $text;
 
-        return $obj;
+        return $self;
     }
 
     public function withTimestamp(\DateTimeInterface $timestamp): self
     {
-        $obj = clone $this;
-        $obj['timestamp'] = $timestamp;
+        $self = clone $this;
+        $self['timestamp'] = $timestamp;
 
-        return $obj;
+        return $self;
     }
 
     public function withInReplyToID(string $inReplyToID): self
     {
-        $obj = clone $this;
-        $obj['inReplyToID'] = $inReplyToID;
+        $self = clone $this;
+        $self['inReplyToID'] = $inReplyToID;
 
-        return $obj;
+        return $self;
     }
 
     public function withIntegrationIdempotencyID(
         string $integrationIdempotencyID
     ): self {
-        $obj = clone $this;
-        $obj['integrationIdempotencyID'] = $integrationIdempotencyID;
+        $self = clone $this;
+        $self['integrationIdempotencyID'] = $integrationIdempotencyID;
 
-        return $obj;
+        return $self;
     }
 
     public function withIntegrationThreadID(string $integrationThreadID): self
     {
-        $obj = clone $this;
-        $obj['integrationThreadID'] = $integrationThreadID;
+        $self = clone $this;
+        $self['integrationThreadID'] = $integrationThreadID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -363,17 +363,17 @@ final class MessageCreateParams implements BaseModel
     public function withPreResolvedContacts(
         PreResolvedContacts|array $preResolvedContacts
     ): self {
-        $obj = clone $this;
-        $obj['preResolvedContacts'] = $preResolvedContacts;
+        $self = clone $this;
+        $self['preResolvedContacts'] = $preResolvedContacts;
 
-        return $obj;
+        return $self;
     }
 
     public function withRichText(string $richText): self
     {
-        $obj = clone $this;
-        $obj['richText'] = $richText;
+        $self = clone $this;
+        $self['richText'] = $richText;
 
-        return $obj;
+        return $self;
     }
 }

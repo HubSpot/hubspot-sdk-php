@@ -55,12 +55,12 @@ final class PublicAssociationMultiArchive implements BaseModel
      */
     public static function with(PublicObjectID|array $from, array $to): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['from'] = $from;
-        $obj['to'] = $to;
+        $self['from'] = $from;
+        $self['to'] = $to;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -68,10 +68,10 @@ final class PublicAssociationMultiArchive implements BaseModel
      */
     public function withFrom(PublicObjectID|array $from): self
     {
-        $obj = clone $this;
-        $obj['from'] = $from;
+        $self = clone $this;
+        $self['from'] = $from;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -79,9 +79,9 @@ final class PublicAssociationMultiArchive implements BaseModel
      */
     public function withTo(array $to): self
     {
-        $obj = clone $this;
-        $obj['to'] = $to;
+        $self = clone $this;
+        $self['to'] = $to;
 
-        return $obj;
+        return $self;
     }
 }

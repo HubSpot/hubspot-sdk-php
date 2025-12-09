@@ -100,83 +100,83 @@ final class PublicSequenceStepDependencyResponse implements BaseModel
         int $requiredByStepOrder,
         \DateTimeInterface $updatedAt,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['id'] = $id;
-        $obj['createdAt'] = $createdAt;
-        $obj['dependencyType'] = $dependencyType;
-        $obj['reliesOnSequenceStepID'] = $reliesOnSequenceStepID;
-        $obj['reliesOnStepOrder'] = $reliesOnStepOrder;
-        $obj['requiredBySequenceStepID'] = $requiredBySequenceStepID;
-        $obj['requiredByStepOrder'] = $requiredByStepOrder;
-        $obj['updatedAt'] = $updatedAt;
+        $self['id'] = $id;
+        $self['createdAt'] = $createdAt;
+        $self['dependencyType'] = $dependencyType;
+        $self['reliesOnSequenceStepID'] = $reliesOnSequenceStepID;
+        $self['reliesOnStepOrder'] = $reliesOnStepOrder;
+        $self['requiredBySequenceStepID'] = $requiredBySequenceStepID;
+        $self['requiredByStepOrder'] = $requiredByStepOrder;
+        $self['updatedAt'] = $updatedAt;
 
-        return $obj;
+        return $self;
     }
 
     public function withID(string $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
-        $obj = clone $this;
-        $obj['createdAt'] = $createdAt;
+        $self = clone $this;
+        $self['createdAt'] = $createdAt;
 
-        return $obj;
+        return $self;
     }
 
     public function withDependencyType(string $dependencyType): self
     {
-        $obj = clone $this;
-        $obj['dependencyType'] = $dependencyType;
+        $self = clone $this;
+        $self['dependencyType'] = $dependencyType;
 
-        return $obj;
+        return $self;
     }
 
     public function withReliesOnSequenceStepID(
         string $reliesOnSequenceStepID
     ): self {
-        $obj = clone $this;
-        $obj['reliesOnSequenceStepID'] = $reliesOnSequenceStepID;
+        $self = clone $this;
+        $self['reliesOnSequenceStepID'] = $reliesOnSequenceStepID;
 
-        return $obj;
+        return $self;
     }
 
     public function withReliesOnStepOrder(int $reliesOnStepOrder): self
     {
-        $obj = clone $this;
-        $obj['reliesOnStepOrder'] = $reliesOnStepOrder;
+        $self = clone $this;
+        $self['reliesOnStepOrder'] = $reliesOnStepOrder;
 
-        return $obj;
+        return $self;
     }
 
     public function withRequiredBySequenceStepID(
         string $requiredBySequenceStepID
     ): self {
-        $obj = clone $this;
-        $obj['requiredBySequenceStepID'] = $requiredBySequenceStepID;
+        $self = clone $this;
+        $self['requiredBySequenceStepID'] = $requiredBySequenceStepID;
 
-        return $obj;
+        return $self;
     }
 
     public function withRequiredByStepOrder(int $requiredByStepOrder): self
     {
-        $obj = clone $this;
-        $obj['requiredByStepOrder'] = $requiredByStepOrder;
+        $self = clone $this;
+        $self['requiredByStepOrder'] = $requiredByStepOrder;
 
-        return $obj;
+        return $self;
     }
 
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
-        $obj = clone $this;
-        $obj['updatedAt'] = $updatedAt;
+        $self = clone $this;
+        $self['updatedAt'] = $updatedAt;
 
-        return $obj;
+        return $self;
     }
 }

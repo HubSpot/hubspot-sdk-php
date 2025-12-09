@@ -70,13 +70,13 @@ final class StatusGetParams implements BaseModel
         Channel|string $channel,
         ?int $businessUnitID = null
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['channel'] = $channel;
+        $self['channel'] = $channel;
 
-        null !== $businessUnitID && $obj['businessUnitID'] = $businessUnitID;
+        null !== $businessUnitID && $self['businessUnitID'] = $businessUnitID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -86,10 +86,10 @@ final class StatusGetParams implements BaseModel
      */
     public function withChannel(Channel|string $channel): self
     {
-        $obj = clone $this;
-        $obj['channel'] = $channel;
+        $self = clone $this;
+        $self['channel'] = $channel;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -97,9 +97,9 @@ final class StatusGetParams implements BaseModel
      */
     public function withBusinessUnitID(int $businessUnitID): self
     {
-        $obj = clone $this;
-        $obj['businessUnitID'] = $businessUnitID;
+        $self = clone $this;
+        $self['businessUnitID'] = $businessUnitID;
 
-        return $obj;
+        return $self;
     }
 }

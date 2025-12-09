@@ -96,17 +96,17 @@ final class APIAssociationDataSource implements BaseModel
         Type|string $type = 'ASSOCIATION',
         APISort|array|null $sortBy = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['associationCategory'] = $associationCategory;
-        $obj['associationTypeID'] = $associationTypeID;
-        $obj['name'] = $name;
-        $obj['objectTypeID'] = $objectTypeID;
-        $obj['type'] = $type;
+        $self['associationCategory'] = $associationCategory;
+        $self['associationTypeID'] = $associationTypeID;
+        $self['name'] = $name;
+        $self['objectTypeID'] = $objectTypeID;
+        $self['type'] = $type;
 
-        null !== $sortBy && $obj['sortBy'] = $sortBy;
+        null !== $sortBy && $self['sortBy'] = $sortBy;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -115,34 +115,34 @@ final class APIAssociationDataSource implements BaseModel
     public function withAssociationCategory(
         AssociationCategory|string $associationCategory
     ): self {
-        $obj = clone $this;
-        $obj['associationCategory'] = $associationCategory;
+        $self = clone $this;
+        $self['associationCategory'] = $associationCategory;
 
-        return $obj;
+        return $self;
     }
 
     public function withAssociationTypeID(int $associationTypeID): self
     {
-        $obj = clone $this;
-        $obj['associationTypeID'] = $associationTypeID;
+        $self = clone $this;
+        $self['associationTypeID'] = $associationTypeID;
 
-        return $obj;
+        return $self;
     }
 
     public function withName(string $name): self
     {
-        $obj = clone $this;
-        $obj['name'] = $name;
+        $self = clone $this;
+        $self['name'] = $name;
 
-        return $obj;
+        return $self;
     }
 
     public function withObjectTypeID(string $objectTypeID): self
     {
-        $obj = clone $this;
-        $obj['objectTypeID'] = $objectTypeID;
+        $self = clone $this;
+        $self['objectTypeID'] = $objectTypeID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -150,10 +150,10 @@ final class APIAssociationDataSource implements BaseModel
      */
     public function withType(Type|string $type): self
     {
-        $obj = clone $this;
-        $obj['type'] = $type;
+        $self = clone $this;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -163,9 +163,9 @@ final class APIAssociationDataSource implements BaseModel
      */
     public function withSortBy(APISort|array $sortBy): self
     {
-        $obj = clone $this;
-        $obj['sortBy'] = $sortBy;
+        $self = clone $this;
+        $self['sortBy'] = $sortBy;
 
-        return $obj;
+        return $self;
     }
 }

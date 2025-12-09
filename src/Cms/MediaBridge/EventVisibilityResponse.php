@@ -62,20 +62,20 @@ final class EventVisibilityResponse implements BaseModel
         \DateTimeInterface $createdAt,
         array $visibilitySettings
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['createdAt'] = $createdAt;
-        $obj['visibilitySettings'] = $visibilitySettings;
+        $self['createdAt'] = $createdAt;
+        $self['visibilitySettings'] = $visibilitySettings;
 
-        return $obj;
+        return $self;
     }
 
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
-        $obj = clone $this;
-        $obj['createdAt'] = $createdAt;
+        $self = clone $this;
+        $self['createdAt'] = $createdAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -89,9 +89,9 @@ final class EventVisibilityResponse implements BaseModel
      */
     public function withVisibilitySettings(array $visibilitySettings): self
     {
-        $obj = clone $this;
-        $obj['visibilitySettings'] = $visibilitySettings;
+        $self = clone $this;
+        $self['visibilitySettings'] = $visibilitySettings;
 
-        return $obj;
+        return $self;
     }
 }

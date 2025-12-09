@@ -56,12 +56,12 @@ final class APIUnEnrollmentSetting implements BaseModel
      */
     public static function with(array $flowIDs, Type|string $type): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['flowIDs'] = $flowIDs;
-        $obj['type'] = $type;
+        $self['flowIDs'] = $flowIDs;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -69,10 +69,10 @@ final class APIUnEnrollmentSetting implements BaseModel
      */
     public function withFlowIDs(array $flowIDs): self
     {
-        $obj = clone $this;
-        $obj['flowIDs'] = $flowIDs;
+        $self = clone $this;
+        $self['flowIDs'] = $flowIDs;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -80,9 +80,9 @@ final class APIUnEnrollmentSetting implements BaseModel
      */
     public function withType(Type|string $type): self
     {
-        $obj = clone $this;
-        $obj['type'] = $type;
+        $self = clone $this;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 }

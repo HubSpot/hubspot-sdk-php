@@ -56,27 +56,27 @@ final class TokenDeleteParams implements BaseModel
      */
     public static function with(int $appID, string $eventTemplateID): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['appID'] = $appID;
-        $obj['eventTemplateID'] = $eventTemplateID;
+        $self['appID'] = $appID;
+        $self['eventTemplateID'] = $eventTemplateID;
 
-        return $obj;
+        return $self;
     }
 
     public function withAppID(int $appID): self
     {
-        $obj = clone $this;
-        $obj['appID'] = $appID;
+        $self = clone $this;
+        $self['appID'] = $appID;
 
-        return $obj;
+        return $self;
     }
 
     public function withEventTemplateID(string $eventTemplateID): self
     {
-        $obj = clone $this;
-        $obj['eventTemplateID'] = $eventTemplateID;
+        $self = clone $this;
+        $self['eventTemplateID'] = $eventTemplateID;
 
-        return $obj;
+        return $self;
     }
 }

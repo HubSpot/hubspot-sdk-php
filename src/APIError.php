@@ -117,18 +117,18 @@ final class APIError implements BaseModel
         ?array $links = null,
         ?string $subCategory = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['category'] = $category;
-        $obj['correlationID'] = $correlationID;
-        $obj['message'] = $message;
+        $self['category'] = $category;
+        $self['correlationID'] = $correlationID;
+        $self['message'] = $message;
 
-        null !== $context && $obj['context'] = $context;
-        null !== $errors && $obj['errors'] = $errors;
-        null !== $links && $obj['links'] = $links;
-        null !== $subCategory && $obj['subCategory'] = $subCategory;
+        null !== $context && $self['context'] = $context;
+        null !== $errors && $self['errors'] = $errors;
+        null !== $links && $self['links'] = $links;
+        null !== $subCategory && $self['subCategory'] = $subCategory;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -136,10 +136,10 @@ final class APIError implements BaseModel
      */
     public function withCategory(string $category): self
     {
-        $obj = clone $this;
-        $obj['category'] = $category;
+        $self = clone $this;
+        $self['category'] = $category;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -147,10 +147,10 @@ final class APIError implements BaseModel
      */
     public function withCorrelationID(string $correlationID): self
     {
-        $obj = clone $this;
-        $obj['correlationID'] = $correlationID;
+        $self = clone $this;
+        $self['correlationID'] = $correlationID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -158,10 +158,10 @@ final class APIError implements BaseModel
      */
     public function withMessage(string $message): self
     {
-        $obj = clone $this;
-        $obj['message'] = $message;
+        $self = clone $this;
+        $self['message'] = $message;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -171,10 +171,10 @@ final class APIError implements BaseModel
      */
     public function withContext(array $context): self
     {
-        $obj = clone $this;
-        $obj['context'] = $context;
+        $self = clone $this;
+        $self['context'] = $context;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -190,10 +190,10 @@ final class APIError implements BaseModel
      */
     public function withErrors(array $errors): self
     {
-        $obj = clone $this;
-        $obj['errors'] = $errors;
+        $self = clone $this;
+        $self['errors'] = $errors;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -203,10 +203,10 @@ final class APIError implements BaseModel
      */
     public function withLinks(array $links): self
     {
-        $obj = clone $this;
-        $obj['links'] = $links;
+        $self = clone $this;
+        $self['links'] = $links;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -214,9 +214,9 @@ final class APIError implements BaseModel
      */
     public function withSubCategory(string $subCategory): self
     {
-        $obj = clone $this;
-        $obj['subCategory'] = $subCategory;
+        $self = clone $this;
+        $self['subCategory'] = $subCategory;
 
-        return $obj;
+        return $self;
     }
 }

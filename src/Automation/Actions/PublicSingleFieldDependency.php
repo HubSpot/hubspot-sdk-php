@@ -69,21 +69,21 @@ final class PublicSingleFieldDependency implements BaseModel
         array $dependentFieldNames,
         DependencyType|string $dependencyType = 'SINGLE_FIELD',
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['controllingFieldName'] = $controllingFieldName;
-        $obj['dependencyType'] = $dependencyType;
-        $obj['dependentFieldNames'] = $dependentFieldNames;
+        $self['controllingFieldName'] = $controllingFieldName;
+        $self['dependencyType'] = $dependencyType;
+        $self['dependentFieldNames'] = $dependentFieldNames;
 
-        return $obj;
+        return $self;
     }
 
     public function withControllingFieldName(string $controllingFieldName): self
     {
-        $obj = clone $this;
-        $obj['controllingFieldName'] = $controllingFieldName;
+        $self = clone $this;
+        $self['controllingFieldName'] = $controllingFieldName;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -92,10 +92,10 @@ final class PublicSingleFieldDependency implements BaseModel
     public function withDependencyType(
         DependencyType|string $dependencyType
     ): self {
-        $obj = clone $this;
-        $obj['dependencyType'] = $dependencyType;
+        $self = clone $this;
+        $self['dependencyType'] = $dependencyType;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -103,9 +103,9 @@ final class PublicSingleFieldDependency implements BaseModel
      */
     public function withDependentFieldNames(array $dependentFieldNames): self
     {
-        $obj = clone $this;
-        $obj['dependentFieldNames'] = $dependentFieldNames;
+        $self = clone $this;
+        $self['dependentFieldNames'] = $dependentFieldNames;
 
-        return $obj;
+        return $self;
     }
 }

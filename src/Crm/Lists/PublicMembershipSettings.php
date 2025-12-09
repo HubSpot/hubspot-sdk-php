@@ -38,27 +38,27 @@ final class PublicMembershipSettings implements BaseModel
         ?bool $includeUnassigned = null,
         ?int $membershipTeamID = null
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $includeUnassigned && $obj['includeUnassigned'] = $includeUnassigned;
-        null !== $membershipTeamID && $obj['membershipTeamID'] = $membershipTeamID;
+        null !== $includeUnassigned && $self['includeUnassigned'] = $includeUnassigned;
+        null !== $membershipTeamID && $self['membershipTeamID'] = $membershipTeamID;
 
-        return $obj;
+        return $self;
     }
 
     public function withIncludeUnassigned(bool $includeUnassigned): self
     {
-        $obj = clone $this;
-        $obj['includeUnassigned'] = $includeUnassigned;
+        $self = clone $this;
+        $self['includeUnassigned'] = $includeUnassigned;
 
-        return $obj;
+        return $self;
     }
 
     public function withMembershipTeamID(int $membershipTeamID): self
     {
-        $obj = clone $this;
-        $obj['membershipTeamID'] = $membershipTeamID;
+        $self = clone $this;
+        $self['membershipTeamID'] = $membershipTeamID;
 
-        return $obj;
+        return $self;
     }
 }

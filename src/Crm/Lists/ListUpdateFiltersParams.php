@@ -207,13 +207,13 @@ final class ListUpdateFiltersParams implements BaseModel
         PublicOrFilterBranch|array|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch $filterBranch,
         ?bool $enrollObjectsInWorkflows = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['filterBranch'] = $filterBranch;
+        $self['filterBranch'] = $filterBranch;
 
-        null !== $enrollObjectsInWorkflows && $obj['enrollObjectsInWorkflows'] = $enrollObjectsInWorkflows;
+        null !== $enrollObjectsInWorkflows && $self['enrollObjectsInWorkflows'] = $enrollObjectsInWorkflows;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -272,10 +272,10 @@ final class ListUpdateFiltersParams implements BaseModel
     public function withFilterBranch(
         PublicOrFilterBranch|array|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch $filterBranch,
     ): self {
-        $obj = clone $this;
-        $obj['filterBranch'] = $filterBranch;
+        $self = clone $this;
+        $self['filterBranch'] = $filterBranch;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -284,9 +284,9 @@ final class ListUpdateFiltersParams implements BaseModel
     public function withEnrollObjectsInWorkflows(
         bool $enrollObjectsInWorkflows
     ): self {
-        $obj = clone $this;
-        $obj['enrollObjectsInWorkflows'] = $enrollObjectsInWorkflows;
+        $self = clone $this;
+        $self['enrollObjectsInWorkflows'] = $enrollObjectsInWorkflows;
 
-        return $obj;
+        return $self;
     }
 }

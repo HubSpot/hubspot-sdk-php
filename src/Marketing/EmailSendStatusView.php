@@ -117,19 +117,19 @@ final class EmailSendStatusView implements BaseModel
         SendResult|string|null $sendResult = null,
         ?\DateTimeInterface $startedAt = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['status'] = $status;
-        $obj['statusID'] = $statusID;
+        $self['status'] = $status;
+        $self['statusID'] = $statusID;
 
-        null !== $completedAt && $obj['completedAt'] = $completedAt;
-        null !== $eventID && $obj['eventID'] = $eventID;
-        null !== $message && $obj['message'] = $message;
-        null !== $requestedAt && $obj['requestedAt'] = $requestedAt;
-        null !== $sendResult && $obj['sendResult'] = $sendResult;
-        null !== $startedAt && $obj['startedAt'] = $startedAt;
+        null !== $completedAt && $self['completedAt'] = $completedAt;
+        null !== $eventID && $self['eventID'] = $eventID;
+        null !== $message && $self['message'] = $message;
+        null !== $requestedAt && $self['requestedAt'] = $requestedAt;
+        null !== $sendResult && $self['sendResult'] = $sendResult;
+        null !== $startedAt && $self['startedAt'] = $startedAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -139,10 +139,10 @@ final class EmailSendStatusView implements BaseModel
      */
     public function withStatus(Status|string $status): self
     {
-        $obj = clone $this;
-        $obj['status'] = $status;
+        $self = clone $this;
+        $self['status'] = $status;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -150,10 +150,10 @@ final class EmailSendStatusView implements BaseModel
      */
     public function withStatusID(string $statusID): self
     {
-        $obj = clone $this;
-        $obj['statusID'] = $statusID;
+        $self = clone $this;
+        $self['statusID'] = $statusID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -161,10 +161,10 @@ final class EmailSendStatusView implements BaseModel
      */
     public function withCompletedAt(\DateTimeInterface $completedAt): self
     {
-        $obj = clone $this;
-        $obj['completedAt'] = $completedAt;
+        $self = clone $this;
+        $self['completedAt'] = $completedAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -174,18 +174,18 @@ final class EmailSendStatusView implements BaseModel
      */
     public function withEventID(EventIDView|array $eventID): self
     {
-        $obj = clone $this;
-        $obj['eventID'] = $eventID;
+        $self = clone $this;
+        $self['eventID'] = $eventID;
 
-        return $obj;
+        return $self;
     }
 
     public function withMessage(string $message): self
     {
-        $obj = clone $this;
-        $obj['message'] = $message;
+        $self = clone $this;
+        $self['message'] = $message;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -193,10 +193,10 @@ final class EmailSendStatusView implements BaseModel
      */
     public function withRequestedAt(\DateTimeInterface $requestedAt): self
     {
-        $obj = clone $this;
-        $obj['requestedAt'] = $requestedAt;
+        $self = clone $this;
+        $self['requestedAt'] = $requestedAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -206,10 +206,10 @@ final class EmailSendStatusView implements BaseModel
      */
     public function withSendResult(SendResult|string $sendResult): self
     {
-        $obj = clone $this;
-        $obj['sendResult'] = $sendResult;
+        $self = clone $this;
+        $self['sendResult'] = $sendResult;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -217,9 +217,9 @@ final class EmailSendStatusView implements BaseModel
      */
     public function withStartedAt(\DateTimeInterface $startedAt): self
     {
-        $obj = clone $this;
-        $obj['startedAt'] = $startedAt;
+        $self = clone $this;
+        $self['startedAt'] = $startedAt;
 
-        return $obj;
+        return $self;
     }
 }

@@ -278,27 +278,27 @@ final class PublicObjectList implements BaseModel
         ?\DateTimeInterface $updatedAt = null,
         ?string $updatedByID = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['listID'] = $listID;
-        $obj['listVersion'] = $listVersion;
-        $obj['name'] = $name;
-        $obj['objectTypeID'] = $objectTypeID;
-        $obj['processingStatus'] = $processingStatus;
-        $obj['processingType'] = $processingType;
+        $self['listID'] = $listID;
+        $self['listVersion'] = $listVersion;
+        $self['name'] = $name;
+        $self['objectTypeID'] = $objectTypeID;
+        $self['processingStatus'] = $processingStatus;
+        $self['processingType'] = $processingType;
 
-        null !== $createdAt && $obj['createdAt'] = $createdAt;
-        null !== $createdByID && $obj['createdByID'] = $createdByID;
-        null !== $deletedAt && $obj['deletedAt'] = $deletedAt;
-        null !== $filterBranch && $obj['filterBranch'] = $filterBranch;
-        null !== $filtersUpdatedAt && $obj['filtersUpdatedAt'] = $filtersUpdatedAt;
-        null !== $listPermissions && $obj['listPermissions'] = $listPermissions;
-        null !== $membershipSettings && $obj['membershipSettings'] = $membershipSettings;
-        null !== $size && $obj['size'] = $size;
-        null !== $updatedAt && $obj['updatedAt'] = $updatedAt;
-        null !== $updatedByID && $obj['updatedByID'] = $updatedByID;
+        null !== $createdAt && $self['createdAt'] = $createdAt;
+        null !== $createdByID && $self['createdByID'] = $createdByID;
+        null !== $deletedAt && $self['deletedAt'] = $deletedAt;
+        null !== $filterBranch && $self['filterBranch'] = $filterBranch;
+        null !== $filtersUpdatedAt && $self['filtersUpdatedAt'] = $filtersUpdatedAt;
+        null !== $listPermissions && $self['listPermissions'] = $listPermissions;
+        null !== $membershipSettings && $self['membershipSettings'] = $membershipSettings;
+        null !== $size && $self['size'] = $size;
+        null !== $updatedAt && $self['updatedAt'] = $updatedAt;
+        null !== $updatedByID && $self['updatedByID'] = $updatedByID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -306,10 +306,10 @@ final class PublicObjectList implements BaseModel
      */
     public function withListID(string $listID): self
     {
-        $obj = clone $this;
-        $obj['listID'] = $listID;
+        $self = clone $this;
+        $self['listID'] = $listID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -317,10 +317,10 @@ final class PublicObjectList implements BaseModel
      */
     public function withListVersion(int $listVersion): self
     {
-        $obj = clone $this;
-        $obj['listVersion'] = $listVersion;
+        $self = clone $this;
+        $self['listVersion'] = $listVersion;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -328,10 +328,10 @@ final class PublicObjectList implements BaseModel
      */
     public function withName(string $name): self
     {
-        $obj = clone $this;
-        $obj['name'] = $name;
+        $self = clone $this;
+        $self['name'] = $name;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -339,10 +339,10 @@ final class PublicObjectList implements BaseModel
      */
     public function withObjectTypeID(string $objectTypeID): self
     {
-        $obj = clone $this;
-        $obj['objectTypeID'] = $objectTypeID;
+        $self = clone $this;
+        $self['objectTypeID'] = $objectTypeID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -350,10 +350,10 @@ final class PublicObjectList implements BaseModel
      */
     public function withProcessingStatus(string $processingStatus): self
     {
-        $obj = clone $this;
-        $obj['processingStatus'] = $processingStatus;
+        $self = clone $this;
+        $self['processingStatus'] = $processingStatus;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -361,10 +361,10 @@ final class PublicObjectList implements BaseModel
      */
     public function withProcessingType(string $processingType): self
     {
-        $obj = clone $this;
-        $obj['processingType'] = $processingType;
+        $self = clone $this;
+        $self['processingType'] = $processingType;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -372,10 +372,10 @@ final class PublicObjectList implements BaseModel
      */
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
-        $obj = clone $this;
-        $obj['createdAt'] = $createdAt;
+        $self = clone $this;
+        $self['createdAt'] = $createdAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -383,10 +383,10 @@ final class PublicObjectList implements BaseModel
      */
     public function withCreatedByID(string $createdByID): self
     {
-        $obj = clone $this;
-        $obj['createdByID'] = $createdByID;
+        $self = clone $this;
+        $self['createdByID'] = $createdByID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -394,10 +394,10 @@ final class PublicObjectList implements BaseModel
      */
     public function withDeletedAt(\DateTimeInterface $deletedAt): self
     {
-        $obj = clone $this;
-        $obj['deletedAt'] = $deletedAt;
+        $self = clone $this;
+        $self['deletedAt'] = $deletedAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -456,10 +456,10 @@ final class PublicObjectList implements BaseModel
     public function withFilterBranch(
         PublicOrFilterBranch|array|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch $filterBranch,
     ): self {
-        $obj = clone $this;
-        $obj['filterBranch'] = $filterBranch;
+        $self = clone $this;
+        $self['filterBranch'] = $filterBranch;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -468,10 +468,10 @@ final class PublicObjectList implements BaseModel
     public function withFiltersUpdatedAt(
         \DateTimeInterface $filtersUpdatedAt
     ): self {
-        $obj = clone $this;
-        $obj['filtersUpdatedAt'] = $filtersUpdatedAt;
+        $self = clone $this;
+        $self['filtersUpdatedAt'] = $filtersUpdatedAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -482,10 +482,10 @@ final class PublicObjectList implements BaseModel
     public function withListPermissions(
         PublicListPermissions|array $listPermissions
     ): self {
-        $obj = clone $this;
-        $obj['listPermissions'] = $listPermissions;
+        $self = clone $this;
+        $self['listPermissions'] = $listPermissions;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -496,10 +496,10 @@ final class PublicObjectList implements BaseModel
     public function withMembershipSettings(
         PublicMembershipSettings|array $membershipSettings
     ): self {
-        $obj = clone $this;
-        $obj['membershipSettings'] = $membershipSettings;
+        $self = clone $this;
+        $self['membershipSettings'] = $membershipSettings;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -507,10 +507,10 @@ final class PublicObjectList implements BaseModel
      */
     public function withSize(int $size): self
     {
-        $obj = clone $this;
-        $obj['size'] = $size;
+        $self = clone $this;
+        $self['size'] = $size;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -518,10 +518,10 @@ final class PublicObjectList implements BaseModel
      */
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
-        $obj = clone $this;
-        $obj['updatedAt'] = $updatedAt;
+        $self = clone $this;
+        $self['updatedAt'] = $updatedAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -529,9 +529,9 @@ final class PublicObjectList implements BaseModel
      */
     public function withUpdatedByID(string $updatedByID): self
     {
-        $obj = clone $this;
-        $obj['updatedByID'] = $updatedByID;
+        $self = clone $this;
+        $self['updatedByID'] = $updatedByID;
 
-        return $obj;
+        return $self;
     }
 }

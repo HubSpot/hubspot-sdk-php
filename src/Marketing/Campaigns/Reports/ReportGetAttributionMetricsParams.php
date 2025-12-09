@@ -52,12 +52,12 @@ final class ReportGetAttributionMetricsParams implements BaseModel
         ?string $endDate = null,
         ?string $startDate = null
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $endDate && $obj['endDate'] = $endDate;
-        null !== $startDate && $obj['startDate'] = $startDate;
+        null !== $endDate && $self['endDate'] = $endDate;
+        null !== $startDate && $self['startDate'] = $startDate;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -66,10 +66,10 @@ final class ReportGetAttributionMetricsParams implements BaseModel
      */
     public function withEndDate(string $endDate): self
     {
-        $obj = clone $this;
-        $obj['endDate'] = $endDate;
+        $self = clone $this;
+        $self['endDate'] = $endDate;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -78,9 +78,9 @@ final class ReportGetAttributionMetricsParams implements BaseModel
      */
     public function withStartDate(string $startDate): self
     {
-        $obj = clone $this;
-        $obj['startDate'] = $startDate;
+        $self = clone $this;
+        $self['startDate'] = $startDate;
 
-        return $obj;
+        return $self;
     }
 }

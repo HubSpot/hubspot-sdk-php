@@ -68,12 +68,12 @@ final class PublicBatchMigrationMapping implements BaseModel
         array $legacyListIDsToIDsMapping,
         array $missingLegacyListIDs
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['legacyListIDsToIDsMapping'] = $legacyListIDsToIDsMapping;
-        $obj['missingLegacyListIDs'] = $missingLegacyListIDs;
+        $self['legacyListIDsToIDsMapping'] = $legacyListIDsToIDsMapping;
+        $self['missingLegacyListIDs'] = $missingLegacyListIDs;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -84,10 +84,10 @@ final class PublicBatchMigrationMapping implements BaseModel
     public function withLegacyListIDsToIDsMapping(
         array $legacyListIDsToIDsMapping
     ): self {
-        $obj = clone $this;
-        $obj['legacyListIDsToIDsMapping'] = $legacyListIDsToIDsMapping;
+        $self = clone $this;
+        $self['legacyListIDsToIDsMapping'] = $legacyListIDsToIDsMapping;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -97,9 +97,9 @@ final class PublicBatchMigrationMapping implements BaseModel
      */
     public function withMissingLegacyListIDs(array $missingLegacyListIDs): self
     {
-        $obj = clone $this;
-        $obj['missingLegacyListIDs'] = $missingLegacyListIDs;
+        $self = clone $this;
+        $self['missingLegacyListIDs'] = $missingLegacyListIDs;
 
-        return $obj;
+        return $self;
     }
 }

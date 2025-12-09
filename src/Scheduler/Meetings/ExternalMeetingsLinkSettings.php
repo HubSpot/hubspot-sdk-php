@@ -197,29 +197,29 @@ final class ExternalMeetingsLinkSettings implements BaseModel
         ?string $redirectURL = null,
         ExternalMeetingsWelcomeScreenInfo|array|null $welcomeScreenInfo = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['availability'] = $availability;
-        $obj['durations'] = $durations;
-        $obj['formFields'] = $formFields;
-        $obj['legalConsentEnabled'] = $legalConsentEnabled;
-        $obj['meetingBufferTime'] = $meetingBufferTime;
-        $obj['ownerPrioritized'] = $ownerPrioritized;
-        $obj['startTimeIncrementMinutes'] = $startTimeIncrementMinutes;
-        $obj['weeksToAdvertise'] = $weeksToAdvertise;
+        $self['availability'] = $availability;
+        $self['durations'] = $durations;
+        $self['formFields'] = $formFields;
+        $self['legalConsentEnabled'] = $legalConsentEnabled;
+        $self['meetingBufferTime'] = $meetingBufferTime;
+        $self['ownerPrioritized'] = $ownerPrioritized;
+        $self['startTimeIncrementMinutes'] = $startTimeIncrementMinutes;
+        $self['weeksToAdvertise'] = $weeksToAdvertise;
 
-        null !== $customAvailabilityEndDate && $obj['customAvailabilityEndDate'] = $customAvailabilityEndDate;
-        null !== $customAvailabilityStartDate && $obj['customAvailabilityStartDate'] = $customAvailabilityStartDate;
-        null !== $displayInfo && $obj['displayInfo'] = $displayInfo;
-        null !== $guestSettings && $obj['guestSettings'] = $guestSettings;
-        null !== $language && $obj['language'] = $language;
-        null !== $legalConsentOptions && $obj['legalConsentOptions'] = $legalConsentOptions;
-        null !== $locale && $obj['locale'] = $locale;
-        null !== $location && $obj['location'] = $location;
-        null !== $redirectURL && $obj['redirectURL'] = $redirectURL;
-        null !== $welcomeScreenInfo && $obj['welcomeScreenInfo'] = $welcomeScreenInfo;
+        null !== $customAvailabilityEndDate && $self['customAvailabilityEndDate'] = $customAvailabilityEndDate;
+        null !== $customAvailabilityStartDate && $self['customAvailabilityStartDate'] = $customAvailabilityStartDate;
+        null !== $displayInfo && $self['displayInfo'] = $displayInfo;
+        null !== $guestSettings && $self['guestSettings'] = $guestSettings;
+        null !== $language && $self['language'] = $language;
+        null !== $legalConsentOptions && $self['legalConsentOptions'] = $legalConsentOptions;
+        null !== $locale && $self['locale'] = $locale;
+        null !== $location && $self['location'] = $location;
+        null !== $redirectURL && $self['redirectURL'] = $redirectURL;
+        null !== $welcomeScreenInfo && $self['welcomeScreenInfo'] = $welcomeScreenInfo;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -229,10 +229,10 @@ final class ExternalMeetingsLinkSettings implements BaseModel
      */
     public function withAvailability(array $availability): self
     {
-        $obj = clone $this;
-        $obj['availability'] = $availability;
+        $self = clone $this;
+        $self['availability'] = $availability;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -240,10 +240,10 @@ final class ExternalMeetingsLinkSettings implements BaseModel
      */
     public function withDurations(array $durations): self
     {
-        $obj = clone $this;
-        $obj['durations'] = $durations;
+        $self = clone $this;
+        $self['durations'] = $durations;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -259,69 +259,69 @@ final class ExternalMeetingsLinkSettings implements BaseModel
      */
     public function withFormFields(array $formFields): self
     {
-        $obj = clone $this;
-        $obj['formFields'] = $formFields;
+        $self = clone $this;
+        $self['formFields'] = $formFields;
 
-        return $obj;
+        return $self;
     }
 
     public function withLegalConsentEnabled(bool $legalConsentEnabled): self
     {
-        $obj = clone $this;
-        $obj['legalConsentEnabled'] = $legalConsentEnabled;
+        $self = clone $this;
+        $self['legalConsentEnabled'] = $legalConsentEnabled;
 
-        return $obj;
+        return $self;
     }
 
     public function withMeetingBufferTime(int $meetingBufferTime): self
     {
-        $obj = clone $this;
-        $obj['meetingBufferTime'] = $meetingBufferTime;
+        $self = clone $this;
+        $self['meetingBufferTime'] = $meetingBufferTime;
 
-        return $obj;
+        return $self;
     }
 
     public function withOwnerPrioritized(bool $ownerPrioritized): self
     {
-        $obj = clone $this;
-        $obj['ownerPrioritized'] = $ownerPrioritized;
+        $self = clone $this;
+        $self['ownerPrioritized'] = $ownerPrioritized;
 
-        return $obj;
+        return $self;
     }
 
     public function withStartTimeIncrementMinutes(
         string $startTimeIncrementMinutes
     ): self {
-        $obj = clone $this;
-        $obj['startTimeIncrementMinutes'] = $startTimeIncrementMinutes;
+        $self = clone $this;
+        $self['startTimeIncrementMinutes'] = $startTimeIncrementMinutes;
 
-        return $obj;
+        return $self;
     }
 
     public function withWeeksToAdvertise(int $weeksToAdvertise): self
     {
-        $obj = clone $this;
-        $obj['weeksToAdvertise'] = $weeksToAdvertise;
+        $self = clone $this;
+        $self['weeksToAdvertise'] = $weeksToAdvertise;
 
-        return $obj;
+        return $self;
     }
 
     public function withCustomAvailabilityEndDate(
         int $customAvailabilityEndDate
     ): self {
-        $obj = clone $this;
-        $obj['customAvailabilityEndDate'] = $customAvailabilityEndDate;
+        $self = clone $this;
+        $self['customAvailabilityEndDate'] = $customAvailabilityEndDate;
 
-        return $obj;
+        return $self;
     }
 
     public function withCustomAvailabilityStartDate(
         int $customAvailabilityStartDate
     ): self {
-        $obj = clone $this;
-        $obj['customAvailabilityStartDate'] = $customAvailabilityStartDate;
+        $self = clone $this;
+        $self['customAvailabilityStartDate'] = $customAvailabilityStartDate;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -335,10 +335,10 @@ final class ExternalMeetingsLinkSettings implements BaseModel
     public function withDisplayInfo(
         ExternalLinkDisplayInfo|array $displayInfo
     ): self {
-        $obj = clone $this;
-        $obj['displayInfo'] = $displayInfo;
+        $self = clone $this;
+        $self['displayInfo'] = $displayInfo;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -349,18 +349,18 @@ final class ExternalMeetingsLinkSettings implements BaseModel
     public function withGuestSettings(
         ExternalGuestSettings|array $guestSettings
     ): self {
-        $obj = clone $this;
-        $obj['guestSettings'] = $guestSettings;
+        $self = clone $this;
+        $self['guestSettings'] = $guestSettings;
 
-        return $obj;
+        return $self;
     }
 
     public function withLanguage(string $language): self
     {
-        $obj = clone $this;
-        $obj['language'] = $language;
+        $self = clone $this;
+        $self['language'] = $language;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -380,34 +380,34 @@ final class ExternalMeetingsLinkSettings implements BaseModel
     public function withLegalConsentOptions(
         ExternalLegalConsentOptions|array $legalConsentOptions
     ): self {
-        $obj = clone $this;
-        $obj['legalConsentOptions'] = $legalConsentOptions;
+        $self = clone $this;
+        $self['legalConsentOptions'] = $legalConsentOptions;
 
-        return $obj;
+        return $self;
     }
 
     public function withLocale(string $locale): self
     {
-        $obj = clone $this;
-        $obj['locale'] = $locale;
+        $self = clone $this;
+        $self['locale'] = $locale;
 
-        return $obj;
+        return $self;
     }
 
     public function withLocation(string $location): self
     {
-        $obj = clone $this;
-        $obj['location'] = $location;
+        $self = clone $this;
+        $self['location'] = $location;
 
-        return $obj;
+        return $self;
     }
 
     public function withRedirectURL(string $redirectURL): self
     {
-        $obj = clone $this;
-        $obj['redirectURL'] = $redirectURL;
+        $self = clone $this;
+        $self['redirectURL'] = $redirectURL;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -422,9 +422,9 @@ final class ExternalMeetingsLinkSettings implements BaseModel
     public function withWelcomeScreenInfo(
         ExternalMeetingsWelcomeScreenInfo|array $welcomeScreenInfo
     ): self {
-        $obj = clone $this;
-        $obj['welcomeScreenInfo'] = $welcomeScreenInfo;
+        $self = clone $this;
+        $self['welcomeScreenInfo'] = $welcomeScreenInfo;
 
-        return $obj;
+        return $self;
     }
 }

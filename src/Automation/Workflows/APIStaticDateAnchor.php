@@ -68,23 +68,23 @@ final class APIStaticDateAnchor implements BaseModel
         Type|string $type = 'STATIC_DATE_ANCHOR',
         ?int $year = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['dayOfMonth'] = $dayOfMonth;
-        $obj['month'] = $month;
-        $obj['type'] = $type;
+        $self['dayOfMonth'] = $dayOfMonth;
+        $self['month'] = $month;
+        $self['type'] = $type;
 
-        null !== $year && $obj['year'] = $year;
+        null !== $year && $self['year'] = $year;
 
-        return $obj;
+        return $self;
     }
 
     public function withDayOfMonth(int $dayOfMonth): self
     {
-        $obj = clone $this;
-        $obj['dayOfMonth'] = $dayOfMonth;
+        $self = clone $this;
+        $self['dayOfMonth'] = $dayOfMonth;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -92,10 +92,10 @@ final class APIStaticDateAnchor implements BaseModel
      */
     public function withMonth(Month|string $month): self
     {
-        $obj = clone $this;
-        $obj['month'] = $month;
+        $self = clone $this;
+        $self['month'] = $month;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -103,17 +103,17 @@ final class APIStaticDateAnchor implements BaseModel
      */
     public function withType(Type|string $type): self
     {
-        $obj = clone $this;
-        $obj['type'] = $type;
+        $self = clone $this;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 
     public function withYear(int $year): self
     {
-        $obj = clone $this;
-        $obj['year'] = $year;
+        $self = clone $this;
+        $self['year'] = $year;
 
-        return $obj;
+        return $self;
     }
 }

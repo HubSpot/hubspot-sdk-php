@@ -70,12 +70,12 @@ final class DependentField implements BaseModel
         DependentFieldFilter|array $dependentCondition,
         EmailField|PhoneField|MobilePhoneField|SingleLineTextField|MultiLineTextField|NumberField|SingleCheckboxField|MultipleCheckboxesField|DropdownField|RadioField|DatepickerField|FileField|PaymentLinkRadioField $dependentField,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['dependentCondition'] = $dependentCondition;
-        $obj['dependentField'] = $dependentField;
+        $self['dependentCondition'] = $dependentCondition;
+        $self['dependentField'] = $dependentField;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -92,10 +92,10 @@ final class DependentField implements BaseModel
     public function withDependentCondition(
         DependentFieldFilter|array $dependentCondition
     ): self {
-        $obj = clone $this;
-        $obj['dependentCondition'] = $dependentCondition;
+        $self = clone $this;
+        $self['dependentCondition'] = $dependentCondition;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -104,9 +104,9 @@ final class DependentField implements BaseModel
     public function withDependentField(
         EmailField|PhoneField|MobilePhoneField|SingleLineTextField|MultiLineTextField|NumberField|SingleCheckboxField|MultipleCheckboxesField|DropdownField|RadioField|DatepickerField|FileField|PaymentLinkRadioField $dependentField,
     ): self {
-        $obj = clone $this;
-        $obj['dependentField'] = $dependentField;
+        $self = clone $this;
+        $self['dependentField'] = $dependentField;
 
-        return $obj;
+        return $self;
     }
 }

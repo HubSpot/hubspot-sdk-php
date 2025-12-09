@@ -71,57 +71,57 @@ final class RecordListMembership implements BaseModel
         ?bool $isPublicList = null,
         ?\DateTimeInterface $lastAddedTimestamp = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['listID'] = $listID;
-        $obj['listVersion'] = $listVersion;
+        $self['listID'] = $listID;
+        $self['listVersion'] = $listVersion;
 
-        null !== $firstAddedTimestamp && $obj['firstAddedTimestamp'] = $firstAddedTimestamp;
-        null !== $isPublicList && $obj['isPublicList'] = $isPublicList;
-        null !== $lastAddedTimestamp && $obj['lastAddedTimestamp'] = $lastAddedTimestamp;
+        null !== $firstAddedTimestamp && $self['firstAddedTimestamp'] = $firstAddedTimestamp;
+        null !== $isPublicList && $self['isPublicList'] = $isPublicList;
+        null !== $lastAddedTimestamp && $self['lastAddedTimestamp'] = $lastAddedTimestamp;
 
-        return $obj;
+        return $self;
     }
 
     public function withListID(string $listID): self
     {
-        $obj = clone $this;
-        $obj['listID'] = $listID;
+        $self = clone $this;
+        $self['listID'] = $listID;
 
-        return $obj;
+        return $self;
     }
 
     public function withListVersion(int $listVersion): self
     {
-        $obj = clone $this;
-        $obj['listVersion'] = $listVersion;
+        $self = clone $this;
+        $self['listVersion'] = $listVersion;
 
-        return $obj;
+        return $self;
     }
 
     public function withFirstAddedTimestamp(
         \DateTimeInterface $firstAddedTimestamp
     ): self {
-        $obj = clone $this;
-        $obj['firstAddedTimestamp'] = $firstAddedTimestamp;
+        $self = clone $this;
+        $self['firstAddedTimestamp'] = $firstAddedTimestamp;
 
-        return $obj;
+        return $self;
     }
 
     public function withIsPublicList(bool $isPublicList): self
     {
-        $obj = clone $this;
-        $obj['isPublicList'] = $isPublicList;
+        $self = clone $this;
+        $self['isPublicList'] = $isPublicList;
 
-        return $obj;
+        return $self;
     }
 
     public function withLastAddedTimestamp(
         \DateTimeInterface $lastAddedTimestamp
     ): self {
-        $obj = clone $this;
-        $obj['lastAddedTimestamp'] = $lastAddedTimestamp;
+        $self = clone $this;
+        $self['lastAddedTimestamp'] = $lastAddedTimestamp;
 
-        return $obj;
+        return $self;
     }
 }

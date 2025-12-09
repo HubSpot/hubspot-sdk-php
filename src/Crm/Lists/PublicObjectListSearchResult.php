@@ -167,24 +167,24 @@ final class PublicObjectListSearchResult implements BaseModel
         ?\DateTimeInterface $updatedAt = null,
         ?string $updatedByID = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['additionalProperties'] = $additionalProperties;
-        $obj['listID'] = $listID;
-        $obj['listVersion'] = $listVersion;
-        $obj['name'] = $name;
-        $obj['objectTypeID'] = $objectTypeID;
-        $obj['processingStatus'] = $processingStatus;
-        $obj['processingType'] = $processingType;
+        $self['additionalProperties'] = $additionalProperties;
+        $self['listID'] = $listID;
+        $self['listVersion'] = $listVersion;
+        $self['name'] = $name;
+        $self['objectTypeID'] = $objectTypeID;
+        $self['processingStatus'] = $processingStatus;
+        $self['processingType'] = $processingType;
 
-        null !== $createdAt && $obj['createdAt'] = $createdAt;
-        null !== $createdByID && $obj['createdByID'] = $createdByID;
-        null !== $deletedAt && $obj['deletedAt'] = $deletedAt;
-        null !== $filtersUpdatedAt && $obj['filtersUpdatedAt'] = $filtersUpdatedAt;
-        null !== $updatedAt && $obj['updatedAt'] = $updatedAt;
-        null !== $updatedByID && $obj['updatedByID'] = $updatedByID;
+        null !== $createdAt && $self['createdAt'] = $createdAt;
+        null !== $createdByID && $self['createdByID'] = $createdByID;
+        null !== $deletedAt && $self['deletedAt'] = $deletedAt;
+        null !== $filtersUpdatedAt && $self['filtersUpdatedAt'] = $filtersUpdatedAt;
+        null !== $updatedAt && $self['updatedAt'] = $updatedAt;
+        null !== $updatedByID && $self['updatedByID'] = $updatedByID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -194,10 +194,10 @@ final class PublicObjectListSearchResult implements BaseModel
      */
     public function withAdditionalProperties(array $additionalProperties): self
     {
-        $obj = clone $this;
-        $obj['additionalProperties'] = $additionalProperties;
+        $self = clone $this;
+        $self['additionalProperties'] = $additionalProperties;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -205,10 +205,10 @@ final class PublicObjectListSearchResult implements BaseModel
      */
     public function withListID(string $listID): self
     {
-        $obj = clone $this;
-        $obj['listID'] = $listID;
+        $self = clone $this;
+        $self['listID'] = $listID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -216,10 +216,10 @@ final class PublicObjectListSearchResult implements BaseModel
      */
     public function withListVersion(int $listVersion): self
     {
-        $obj = clone $this;
-        $obj['listVersion'] = $listVersion;
+        $self = clone $this;
+        $self['listVersion'] = $listVersion;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -227,10 +227,10 @@ final class PublicObjectListSearchResult implements BaseModel
      */
     public function withName(string $name): self
     {
-        $obj = clone $this;
-        $obj['name'] = $name;
+        $self = clone $this;
+        $self['name'] = $name;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -238,10 +238,10 @@ final class PublicObjectListSearchResult implements BaseModel
      */
     public function withObjectTypeID(string $objectTypeID): self
     {
-        $obj = clone $this;
-        $obj['objectTypeID'] = $objectTypeID;
+        $self = clone $this;
+        $self['objectTypeID'] = $objectTypeID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -249,10 +249,10 @@ final class PublicObjectListSearchResult implements BaseModel
      */
     public function withProcessingStatus(string $processingStatus): self
     {
-        $obj = clone $this;
-        $obj['processingStatus'] = $processingStatus;
+        $self = clone $this;
+        $self['processingStatus'] = $processingStatus;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -260,10 +260,10 @@ final class PublicObjectListSearchResult implements BaseModel
      */
     public function withProcessingType(string $processingType): self
     {
-        $obj = clone $this;
-        $obj['processingType'] = $processingType;
+        $self = clone $this;
+        $self['processingType'] = $processingType;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -271,10 +271,10 @@ final class PublicObjectListSearchResult implements BaseModel
      */
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
-        $obj = clone $this;
-        $obj['createdAt'] = $createdAt;
+        $self = clone $this;
+        $self['createdAt'] = $createdAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -282,10 +282,10 @@ final class PublicObjectListSearchResult implements BaseModel
      */
     public function withCreatedByID(string $createdByID): self
     {
-        $obj = clone $this;
-        $obj['createdByID'] = $createdByID;
+        $self = clone $this;
+        $self['createdByID'] = $createdByID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -293,10 +293,10 @@ final class PublicObjectListSearchResult implements BaseModel
      */
     public function withDeletedAt(\DateTimeInterface $deletedAt): self
     {
-        $obj = clone $this;
-        $obj['deletedAt'] = $deletedAt;
+        $self = clone $this;
+        $self['deletedAt'] = $deletedAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -305,10 +305,10 @@ final class PublicObjectListSearchResult implements BaseModel
     public function withFiltersUpdatedAt(
         \DateTimeInterface $filtersUpdatedAt
     ): self {
-        $obj = clone $this;
-        $obj['filtersUpdatedAt'] = $filtersUpdatedAt;
+        $self = clone $this;
+        $self['filtersUpdatedAt'] = $filtersUpdatedAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -316,10 +316,10 @@ final class PublicObjectListSearchResult implements BaseModel
      */
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
-        $obj = clone $this;
-        $obj['updatedAt'] = $updatedAt;
+        $self = clone $this;
+        $self['updatedAt'] = $updatedAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -327,9 +327,9 @@ final class PublicObjectListSearchResult implements BaseModel
      */
     public function withUpdatedByID(string $updatedByID): self
     {
-        $obj = clone $this;
-        $obj['updatedByID'] = $updatedByID;
+        $self = clone $this;
+        $self['updatedByID'] = $updatedByID;
 
-        return $obj;
+        return $self;
     }
 }

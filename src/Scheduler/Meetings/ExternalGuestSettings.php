@@ -50,27 +50,27 @@ final class ExternalGuestSettings implements BaseModel
      */
     public static function with(bool $canAddGuests, int $maxGuestCount): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['canAddGuests'] = $canAddGuests;
-        $obj['maxGuestCount'] = $maxGuestCount;
+        $self['canAddGuests'] = $canAddGuests;
+        $self['maxGuestCount'] = $maxGuestCount;
 
-        return $obj;
+        return $self;
     }
 
     public function withCanAddGuests(bool $canAddGuests): self
     {
-        $obj = clone $this;
-        $obj['canAddGuests'] = $canAddGuests;
+        $self = clone $this;
+        $self['canAddGuests'] = $canAddGuests;
 
-        return $obj;
+        return $self;
     }
 
     public function withMaxGuestCount(int $maxGuestCount): self
     {
-        $obj = clone $this;
-        $obj['maxGuestCount'] = $maxGuestCount;
+        $self = clone $this;
+        $self['maxGuestCount'] = $maxGuestCount;
 
-        return $obj;
+        return $self;
     }
 }

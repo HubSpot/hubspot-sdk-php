@@ -64,46 +64,46 @@ final class ExternalUserProfile implements BaseModel
         ?string $fullName = null,
         ?string $lastName = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['email'] = $email;
+        $self['email'] = $email;
 
-        null !== $firstName && $obj['firstName'] = $firstName;
-        null !== $fullName && $obj['fullName'] = $fullName;
-        null !== $lastName && $obj['lastName'] = $lastName;
+        null !== $firstName && $self['firstName'] = $firstName;
+        null !== $fullName && $self['fullName'] = $fullName;
+        null !== $lastName && $self['lastName'] = $lastName;
 
-        return $obj;
+        return $self;
     }
 
     public function withEmail(string $email): self
     {
-        $obj = clone $this;
-        $obj['email'] = $email;
+        $self = clone $this;
+        $self['email'] = $email;
 
-        return $obj;
+        return $self;
     }
 
     public function withFirstName(string $firstName): self
     {
-        $obj = clone $this;
-        $obj['firstName'] = $firstName;
+        $self = clone $this;
+        $self['firstName'] = $firstName;
 
-        return $obj;
+        return $self;
     }
 
     public function withFullName(string $fullName): self
     {
-        $obj = clone $this;
-        $obj['fullName'] = $fullName;
+        $self = clone $this;
+        $self['fullName'] = $fullName;
 
-        return $obj;
+        return $self;
     }
 
     public function withLastName(string $lastName): self
     {
-        $obj = clone $this;
-        $obj['lastName'] = $lastName;
+        $self = clone $this;
+        $self['lastName'] = $lastName;
 
-        return $obj;
+        return $self;
     }
 }

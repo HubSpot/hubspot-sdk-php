@@ -79,30 +79,30 @@ final class FunctionCreateOrReplaceParams implements BaseModel
         FunctionType|string $functionType,
         string $body,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['appID'] = $appID;
-        $obj['definitionID'] = $definitionID;
-        $obj['functionType'] = $functionType;
-        $obj['body'] = $body;
+        $self['appID'] = $appID;
+        $self['definitionID'] = $definitionID;
+        $self['functionType'] = $functionType;
+        $self['body'] = $body;
 
-        return $obj;
+        return $self;
     }
 
     public function withAppID(int $appID): self
     {
-        $obj = clone $this;
-        $obj['appID'] = $appID;
+        $self = clone $this;
+        $self['appID'] = $appID;
 
-        return $obj;
+        return $self;
     }
 
     public function withDefinitionID(string $definitionID): self
     {
-        $obj = clone $this;
-        $obj['definitionID'] = $definitionID;
+        $self = clone $this;
+        $self['definitionID'] = $definitionID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -110,17 +110,17 @@ final class FunctionCreateOrReplaceParams implements BaseModel
      */
     public function withFunctionType(FunctionType|string $functionType): self
     {
-        $obj = clone $this;
-        $obj['functionType'] = $functionType;
+        $self = clone $this;
+        $self['functionType'] = $functionType;
 
-        return $obj;
+        return $self;
     }
 
     public function withBody(string $body): self
     {
-        $obj = clone $this;
-        $obj['body'] = $body;
+        $self = clone $this;
+        $self['body'] = $body;
 
-        return $obj;
+        return $self;
     }
 }

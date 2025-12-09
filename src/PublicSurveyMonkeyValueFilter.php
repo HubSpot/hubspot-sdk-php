@@ -202,18 +202,18 @@ final class PublicSurveyMonkeyValueFilter implements BaseModel
         ?string $surveyAnswerColID = null,
         ?string $surveyAnswerRowID = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['filterType'] = $filterType;
-        $obj['operator'] = $operator;
-        $obj['surveyID'] = $surveyID;
-        $obj['surveyQuestion'] = $surveyQuestion;
-        $obj['valueComparison'] = $valueComparison;
+        $self['filterType'] = $filterType;
+        $self['operator'] = $operator;
+        $self['surveyID'] = $surveyID;
+        $self['surveyQuestion'] = $surveyQuestion;
+        $self['valueComparison'] = $valueComparison;
 
-        null !== $surveyAnswerColID && $obj['surveyAnswerColID'] = $surveyAnswerColID;
-        null !== $surveyAnswerRowID && $obj['surveyAnswerRowID'] = $surveyAnswerRowID;
+        null !== $surveyAnswerColID && $self['surveyAnswerColID'] = $surveyAnswerColID;
+        null !== $surveyAnswerRowID && $self['surveyAnswerRowID'] = $surveyAnswerRowID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -221,34 +221,34 @@ final class PublicSurveyMonkeyValueFilter implements BaseModel
      */
     public function withFilterType(FilterType|string $filterType): self
     {
-        $obj = clone $this;
-        $obj['filterType'] = $filterType;
+        $self = clone $this;
+        $self['filterType'] = $filterType;
 
-        return $obj;
+        return $self;
     }
 
     public function withOperator(string $operator): self
     {
-        $obj = clone $this;
-        $obj['operator'] = $operator;
+        $self = clone $this;
+        $self['operator'] = $operator;
 
-        return $obj;
+        return $self;
     }
 
     public function withSurveyID(string $surveyID): self
     {
-        $obj = clone $this;
-        $obj['surveyID'] = $surveyID;
+        $self = clone $this;
+        $self['surveyID'] = $surveyID;
 
-        return $obj;
+        return $self;
     }
 
     public function withSurveyQuestion(string $surveyQuestion): self
     {
-        $obj = clone $this;
-        $obj['surveyQuestion'] = $surveyQuestion;
+        $self = clone $this;
+        $self['surveyQuestion'] = $surveyQuestion;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -361,25 +361,25 @@ final class PublicSurveyMonkeyValueFilter implements BaseModel
     public function withValueComparison(
         PublicBoolPropertyOperation|array|PublicNumberPropertyOperation|PublicStringPropertyOperation|PublicDateTimePropertyOperation|PublicRangedDatePropertyOperation|PublicComparativePropertyUpdatedOperation|PublicComparativeDatePropertyOperation|PublicRollingDateRangePropertyOperation|PublicRollingPropertyUpdatedOperation|PublicEnumerationPropertyOperation|PublicAllPropertyTypesOperation|PublicRangedNumberPropertyOperation|PublicMultiStringPropertyOperation|PublicDatePropertyOperation|PublicCalendarDatePropertyOperation|PublicTimePointOperation|PublicRangedTimeOperation $valueComparison,
     ): self {
-        $obj = clone $this;
-        $obj['valueComparison'] = $valueComparison;
+        $self = clone $this;
+        $self['valueComparison'] = $valueComparison;
 
-        return $obj;
+        return $self;
     }
 
     public function withSurveyAnswerColID(string $surveyAnswerColID): self
     {
-        $obj = clone $this;
-        $obj['surveyAnswerColID'] = $surveyAnswerColID;
+        $self = clone $this;
+        $self['surveyAnswerColID'] = $surveyAnswerColID;
 
-        return $obj;
+        return $self;
     }
 
     public function withSurveyAnswerRowID(string $surveyAnswerRowID): self
     {
-        $obj = clone $this;
-        $obj['surveyAnswerRowID'] = $surveyAnswerRowID;
+        $self = clone $this;
+        $self['surveyAnswerRowID'] = $surveyAnswerRowID;
 
-        return $obj;
+        return $self;
     }
 }

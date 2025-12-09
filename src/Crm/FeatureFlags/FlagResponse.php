@@ -71,23 +71,23 @@ final class FlagResponse implements BaseModel
         string $flagName,
         OverrideState|string|null $overrideState = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['appID'] = $appID;
-        $obj['defaultState'] = $defaultState;
-        $obj['flagName'] = $flagName;
+        $self['appID'] = $appID;
+        $self['defaultState'] = $defaultState;
+        $self['flagName'] = $flagName;
 
-        null !== $overrideState && $obj['overrideState'] = $overrideState;
+        null !== $overrideState && $self['overrideState'] = $overrideState;
 
-        return $obj;
+        return $self;
     }
 
     public function withAppID(int $appID): self
     {
-        $obj = clone $this;
-        $obj['appID'] = $appID;
+        $self = clone $this;
+        $self['appID'] = $appID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -95,18 +95,18 @@ final class FlagResponse implements BaseModel
      */
     public function withDefaultState(DefaultState|string $defaultState): self
     {
-        $obj = clone $this;
-        $obj['defaultState'] = $defaultState;
+        $self = clone $this;
+        $self['defaultState'] = $defaultState;
 
-        return $obj;
+        return $self;
     }
 
     public function withFlagName(string $flagName): self
     {
-        $obj = clone $this;
-        $obj['flagName'] = $flagName;
+        $self = clone $this;
+        $self['flagName'] = $flagName;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -114,9 +114,9 @@ final class FlagResponse implements BaseModel
      */
     public function withOverrideState(OverrideState|string $overrideState): self
     {
-        $obj = clone $this;
-        $obj['overrideState'] = $overrideState;
+        $self = clone $this;
+        $self['overrideState'] = $overrideState;
 
-        return $obj;
+        return $self;
     }
 }

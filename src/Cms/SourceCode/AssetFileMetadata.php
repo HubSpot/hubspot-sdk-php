@@ -116,19 +116,19 @@ final class AssetFileMetadata implements BaseModel
         ?array $children = null,
         ?string $hash = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['id'] = $id;
-        $obj['createdAt'] = $createdAt;
-        $obj['folder'] = $folder;
-        $obj['name'] = $name;
-        $obj['updatedAt'] = $updatedAt;
+        $self['id'] = $id;
+        $self['createdAt'] = $createdAt;
+        $self['folder'] = $folder;
+        $self['name'] = $name;
+        $self['updatedAt'] = $updatedAt;
 
-        null !== $archivedAt && $obj['archivedAt'] = $archivedAt;
-        null !== $children && $obj['children'] = $children;
-        null !== $hash && $obj['hash'] = $hash;
+        null !== $archivedAt && $self['archivedAt'] = $archivedAt;
+        null !== $children && $self['children'] = $children;
+        null !== $hash && $self['hash'] = $hash;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -136,10 +136,10 @@ final class AssetFileMetadata implements BaseModel
      */
     public function withID(string $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -147,10 +147,10 @@ final class AssetFileMetadata implements BaseModel
      */
     public function withCreatedAt(int $createdAt): self
     {
-        $obj = clone $this;
-        $obj['createdAt'] = $createdAt;
+        $self = clone $this;
+        $self['createdAt'] = $createdAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -158,10 +158,10 @@ final class AssetFileMetadata implements BaseModel
      */
     public function withFolder(bool $folder): self
     {
-        $obj = clone $this;
-        $obj['folder'] = $folder;
+        $self = clone $this;
+        $self['folder'] = $folder;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -169,10 +169,10 @@ final class AssetFileMetadata implements BaseModel
      */
     public function withName(string $name): self
     {
-        $obj = clone $this;
-        $obj['name'] = $name;
+        $self = clone $this;
+        $self['name'] = $name;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -180,10 +180,10 @@ final class AssetFileMetadata implements BaseModel
      */
     public function withUpdatedAt(int $updatedAt): self
     {
-        $obj = clone $this;
-        $obj['updatedAt'] = $updatedAt;
+        $self = clone $this;
+        $self['updatedAt'] = $updatedAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -191,10 +191,10 @@ final class AssetFileMetadata implements BaseModel
      */
     public function withArchivedAt(int $archivedAt): self
     {
-        $obj = clone $this;
-        $obj['archivedAt'] = $archivedAt;
+        $self = clone $this;
+        $self['archivedAt'] = $archivedAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -204,17 +204,17 @@ final class AssetFileMetadata implements BaseModel
      */
     public function withChildren(array $children): self
     {
-        $obj = clone $this;
-        $obj['children'] = $children;
+        $self = clone $this;
+        $self['children'] = $children;
 
-        return $obj;
+        return $self;
     }
 
     public function withHash(string $hash): self
     {
-        $obj = clone $this;
-        $obj['hash'] = $hash;
+        $self = clone $this;
+        $self['hash'] = $hash;
 
-        return $obj;
+        return $self;
     }
 }

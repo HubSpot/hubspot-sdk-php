@@ -115,93 +115,93 @@ final class PublicChannelAccount implements BaseModel
         ?\DateTimeInterface $archivedAt = null,
         PublicDeliveryIdentifier|array|null $deliveryIdentifier = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['id'] = $id;
-        $obj['active'] = $active;
-        $obj['archived'] = $archived;
-        $obj['authorized'] = $authorized;
-        $obj['channelID'] = $channelID;
-        $obj['createdAt'] = $createdAt;
-        $obj['inboxID'] = $inboxID;
-        $obj['name'] = $name;
+        $self['id'] = $id;
+        $self['active'] = $active;
+        $self['archived'] = $archived;
+        $self['authorized'] = $authorized;
+        $self['channelID'] = $channelID;
+        $self['createdAt'] = $createdAt;
+        $self['inboxID'] = $inboxID;
+        $self['name'] = $name;
 
-        null !== $archivedAt && $obj['archivedAt'] = $archivedAt;
-        null !== $deliveryIdentifier && $obj['deliveryIdentifier'] = $deliveryIdentifier;
+        null !== $archivedAt && $self['archivedAt'] = $archivedAt;
+        null !== $deliveryIdentifier && $self['deliveryIdentifier'] = $deliveryIdentifier;
 
-        return $obj;
+        return $self;
     }
 
     public function withID(string $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     public function withActive(bool $active): self
     {
-        $obj = clone $this;
-        $obj['active'] = $active;
+        $self = clone $this;
+        $self['active'] = $active;
 
-        return $obj;
+        return $self;
     }
 
     public function withArchived(bool $archived): self
     {
-        $obj = clone $this;
-        $obj['archived'] = $archived;
+        $self = clone $this;
+        $self['archived'] = $archived;
 
-        return $obj;
+        return $self;
     }
 
     public function withAuthorized(bool $authorized): self
     {
-        $obj = clone $this;
-        $obj['authorized'] = $authorized;
+        $self = clone $this;
+        $self['authorized'] = $authorized;
 
-        return $obj;
+        return $self;
     }
 
     public function withChannelID(string $channelID): self
     {
-        $obj = clone $this;
-        $obj['channelID'] = $channelID;
+        $self = clone $this;
+        $self['channelID'] = $channelID;
 
-        return $obj;
+        return $self;
     }
 
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
-        $obj = clone $this;
-        $obj['createdAt'] = $createdAt;
+        $self = clone $this;
+        $self['createdAt'] = $createdAt;
 
-        return $obj;
+        return $self;
     }
 
     public function withInboxID(string $inboxID): self
     {
-        $obj = clone $this;
-        $obj['inboxID'] = $inboxID;
+        $self = clone $this;
+        $self['inboxID'] = $inboxID;
 
-        return $obj;
+        return $self;
     }
 
     public function withName(string $name): self
     {
-        $obj = clone $this;
-        $obj['name'] = $name;
+        $self = clone $this;
+        $self['name'] = $name;
 
-        return $obj;
+        return $self;
     }
 
     public function withArchivedAt(\DateTimeInterface $archivedAt): self
     {
-        $obj = clone $this;
-        $obj['archivedAt'] = $archivedAt;
+        $self = clone $this;
+        $self['archivedAt'] = $archivedAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -212,9 +212,9 @@ final class PublicChannelAccount implements BaseModel
     public function withDeliveryIdentifier(
         PublicDeliveryIdentifier|array $deliveryIdentifier
     ): self {
-        $obj = clone $this;
-        $obj['deliveryIdentifier'] = $deliveryIdentifier;
+        $self = clone $this;
+        $self['deliveryIdentifier'] = $deliveryIdentifier;
 
-        return $obj;
+        return $self;
     }
 }

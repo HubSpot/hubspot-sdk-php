@@ -65,21 +65,21 @@ final class TimeOffset implements BaseModel
         OffsetDirection|string $offsetDirection,
         TimeUnit|string $timeUnit,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['amount'] = $amount;
-        $obj['offsetDirection'] = $offsetDirection;
-        $obj['timeUnit'] = $timeUnit;
+        $self['amount'] = $amount;
+        $self['offsetDirection'] = $offsetDirection;
+        $self['timeUnit'] = $timeUnit;
 
-        return $obj;
+        return $self;
     }
 
     public function withAmount(int $amount): self
     {
-        $obj = clone $this;
-        $obj['amount'] = $amount;
+        $self = clone $this;
+        $self['amount'] = $amount;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -88,10 +88,10 @@ final class TimeOffset implements BaseModel
     public function withOffsetDirection(
         OffsetDirection|string $offsetDirection
     ): self {
-        $obj = clone $this;
-        $obj['offsetDirection'] = $offsetDirection;
+        $self = clone $this;
+        $self['offsetDirection'] = $offsetDirection;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -99,9 +99,9 @@ final class TimeOffset implements BaseModel
      */
     public function withTimeUnit(TimeUnit|string $timeUnit): self
     {
-        $obj = clone $this;
-        $obj['timeUnit'] = $timeUnit;
+        $self = clone $this;
+        $self['timeUnit'] = $timeUnit;
 
-        return $obj;
+        return $self;
     }
 }

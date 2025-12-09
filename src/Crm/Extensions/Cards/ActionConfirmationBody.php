@@ -61,36 +61,36 @@ final class ActionConfirmationBody implements BaseModel
         string $confirmButtonLabel,
         string $prompt
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['cancelButtonLabel'] = $cancelButtonLabel;
-        $obj['confirmButtonLabel'] = $confirmButtonLabel;
-        $obj['prompt'] = $prompt;
+        $self['cancelButtonLabel'] = $cancelButtonLabel;
+        $self['confirmButtonLabel'] = $confirmButtonLabel;
+        $self['prompt'] = $prompt;
 
-        return $obj;
+        return $self;
     }
 
     public function withCancelButtonLabel(string $cancelButtonLabel): self
     {
-        $obj = clone $this;
-        $obj['cancelButtonLabel'] = $cancelButtonLabel;
+        $self = clone $this;
+        $self['cancelButtonLabel'] = $cancelButtonLabel;
 
-        return $obj;
+        return $self;
     }
 
     public function withConfirmButtonLabel(string $confirmButtonLabel): self
     {
-        $obj = clone $this;
-        $obj['confirmButtonLabel'] = $confirmButtonLabel;
+        $self = clone $this;
+        $self['confirmButtonLabel'] = $confirmButtonLabel;
 
-        return $obj;
+        return $self;
     }
 
     public function withPrompt(string $prompt): self
     {
-        $obj = clone $this;
-        $obj['prompt'] = $prompt;
+        $self = clone $this;
+        $self['prompt'] = $prompt;
 
-        return $obj;
+        return $self;
     }
 }

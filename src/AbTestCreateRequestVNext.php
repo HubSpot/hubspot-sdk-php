@@ -58,12 +58,12 @@ final class AbTestCreateRequestVNext implements BaseModel
      */
     public static function with(string $contentID, string $variationName): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['contentID'] = $contentID;
-        $obj['variationName'] = $variationName;
+        $self['contentID'] = $contentID;
+        $self['variationName'] = $variationName;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -71,10 +71,10 @@ final class AbTestCreateRequestVNext implements BaseModel
      */
     public function withContentID(string $contentID): self
     {
-        $obj = clone $this;
-        $obj['contentID'] = $contentID;
+        $self = clone $this;
+        $self['contentID'] = $contentID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -82,9 +82,9 @@ final class AbTestCreateRequestVNext implements BaseModel
      */
     public function withVariationName(string $variationName): self
     {
-        $obj = clone $this;
-        $obj['variationName'] = $variationName;
+        $self = clone $this;
+        $self['variationName'] = $variationName;
 
-        return $obj;
+        return $self;
     }
 }

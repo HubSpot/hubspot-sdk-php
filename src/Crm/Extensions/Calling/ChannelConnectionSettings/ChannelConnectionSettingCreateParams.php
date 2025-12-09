@@ -54,27 +54,27 @@ final class ChannelConnectionSettingCreateParams implements BaseModel
      */
     public static function with(bool $isReady, string $url): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['isReady'] = $isReady;
-        $obj['url'] = $url;
+        $self['isReady'] = $isReady;
+        $self['url'] = $url;
 
-        return $obj;
+        return $self;
     }
 
     public function withIsReady(bool $isReady): self
     {
-        $obj = clone $this;
-        $obj['isReady'] = $isReady;
+        $self = clone $this;
+        $self['isReady'] = $isReady;
 
-        return $obj;
+        return $self;
     }
 
     public function withURL(string $url): self
     {
-        $obj = clone $this;
-        $obj['url'] = $url;
+        $self = clone $this;
+        $self['url'] = $url;
 
-        return $obj;
+        return $self;
     }
 }

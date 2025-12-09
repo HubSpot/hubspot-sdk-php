@@ -49,28 +49,28 @@ final class DefinitionSource implements BaseModel
      */
     public static function with(string $type, ?string $name = null): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['type'] = $type;
+        $self['type'] = $type;
 
-        null !== $name && $obj['name'] = $name;
+        null !== $name && $self['name'] = $name;
 
-        return $obj;
+        return $self;
     }
 
     public function withType(string $type): self
     {
-        $obj = clone $this;
-        $obj['type'] = $type;
+        $self = clone $this;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 
     public function withName(string $name): self
     {
-        $obj = clone $this;
-        $obj['name'] = $name;
+        $self = clone $this;
+        $self['name'] = $name;
 
-        return $obj;
+        return $self;
     }
 }

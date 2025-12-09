@@ -48,20 +48,20 @@ final class OwnerGetParams implements BaseModel
         ?bool $archived = null,
         IDProperty|string|null $idProperty = null
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $archived && $obj['archived'] = $archived;
-        null !== $idProperty && $obj['idProperty'] = $idProperty;
+        null !== $archived && $self['archived'] = $archived;
+        null !== $idProperty && $self['idProperty'] = $idProperty;
 
-        return $obj;
+        return $self;
     }
 
     public function withArchived(bool $archived): self
     {
-        $obj = clone $this;
-        $obj['archived'] = $archived;
+        $self = clone $this;
+        $self['archived'] = $archived;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -69,9 +69,9 @@ final class OwnerGetParams implements BaseModel
      */
     public function withIDProperty(IDProperty|string $idProperty): self
     {
-        $obj = clone $this;
-        $obj['idProperty'] = $idProperty;
+        $self = clone $this;
+        $self['idProperty'] = $idProperty;
 
-        return $obj;
+        return $self;
     }
 }

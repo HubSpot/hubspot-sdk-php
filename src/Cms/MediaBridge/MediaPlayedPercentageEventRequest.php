@@ -124,25 +124,25 @@ final class MediaPlayedPercentageEventRequest implements BaseModel
         ?string $pageName = null,
         ?string $pageURL = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['mediaType'] = $mediaType;
-        $obj['occurredTimestamp'] = $occurredTimestamp;
-        $obj['playedPercent'] = $playedPercent;
-        $obj['sessionID'] = $sessionID;
+        $self['mediaType'] = $mediaType;
+        $self['occurredTimestamp'] = $occurredTimestamp;
+        $self['playedPercent'] = $playedPercent;
+        $self['sessionID'] = $sessionID;
 
-        null !== $_hsenc && $obj['_hsenc'] = $_hsenc;
-        null !== $contactID && $obj['contactID'] = $contactID;
-        null !== $contactUtk && $obj['contactUtk'] = $contactUtk;
-        null !== $externalID && $obj['externalID'] = $externalID;
-        null !== $mediaBridgeID && $obj['mediaBridgeID'] = $mediaBridgeID;
-        null !== $mediaName && $obj['mediaName'] = $mediaName;
-        null !== $mediaURL && $obj['mediaURL'] = $mediaURL;
-        null !== $pageID && $obj['pageID'] = $pageID;
-        null !== $pageName && $obj['pageName'] = $pageName;
-        null !== $pageURL && $obj['pageURL'] = $pageURL;
+        null !== $_hsenc && $self['_hsenc'] = $_hsenc;
+        null !== $contactID && $self['contactID'] = $contactID;
+        null !== $contactUtk && $self['contactUtk'] = $contactUtk;
+        null !== $externalID && $self['externalID'] = $externalID;
+        null !== $mediaBridgeID && $self['mediaBridgeID'] = $mediaBridgeID;
+        null !== $mediaName && $self['mediaName'] = $mediaName;
+        null !== $mediaURL && $self['mediaURL'] = $mediaURL;
+        null !== $pageID && $self['pageID'] = $pageID;
+        null !== $pageName && $self['pageName'] = $pageName;
+        null !== $pageURL && $self['pageURL'] = $pageURL;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -150,113 +150,113 @@ final class MediaPlayedPercentageEventRequest implements BaseModel
      */
     public function withMediaType(MediaType|string $mediaType): self
     {
-        $obj = clone $this;
-        $obj['mediaType'] = $mediaType;
+        $self = clone $this;
+        $self['mediaType'] = $mediaType;
 
-        return $obj;
+        return $self;
     }
 
     public function withOccurredTimestamp(int $occurredTimestamp): self
     {
-        $obj = clone $this;
-        $obj['occurredTimestamp'] = $occurredTimestamp;
+        $self = clone $this;
+        $self['occurredTimestamp'] = $occurredTimestamp;
 
-        return $obj;
+        return $self;
     }
 
     public function withPlayedPercent(int $playedPercent): self
     {
-        $obj = clone $this;
-        $obj['playedPercent'] = $playedPercent;
+        $self = clone $this;
+        $self['playedPercent'] = $playedPercent;
 
-        return $obj;
+        return $self;
     }
 
     public function withSessionID(string $sessionID): self
     {
-        $obj = clone $this;
-        $obj['sessionID'] = $sessionID;
+        $self = clone $this;
+        $self['sessionID'] = $sessionID;
 
-        return $obj;
+        return $self;
     }
 
     public function withHsenc(string $_hsenc): self
     {
-        $obj = clone $this;
-        $obj['_hsenc'] = $_hsenc;
+        $self = clone $this;
+        $self['_hsenc'] = $_hsenc;
 
-        return $obj;
+        return $self;
     }
 
     public function withContactID(int $contactID): self
     {
-        $obj = clone $this;
-        $obj['contactID'] = $contactID;
+        $self = clone $this;
+        $self['contactID'] = $contactID;
 
-        return $obj;
+        return $self;
     }
 
     public function withContactUtk(string $contactUtk): self
     {
-        $obj = clone $this;
-        $obj['contactUtk'] = $contactUtk;
+        $self = clone $this;
+        $self['contactUtk'] = $contactUtk;
 
-        return $obj;
+        return $self;
     }
 
     public function withExternalID(string $externalID): self
     {
-        $obj = clone $this;
-        $obj['externalID'] = $externalID;
+        $self = clone $this;
+        $self['externalID'] = $externalID;
 
-        return $obj;
+        return $self;
     }
 
     public function withMediaBridgeID(int $mediaBridgeID): self
     {
-        $obj = clone $this;
-        $obj['mediaBridgeID'] = $mediaBridgeID;
+        $self = clone $this;
+        $self['mediaBridgeID'] = $mediaBridgeID;
 
-        return $obj;
+        return $self;
     }
 
     public function withMediaName(string $mediaName): self
     {
-        $obj = clone $this;
-        $obj['mediaName'] = $mediaName;
+        $self = clone $this;
+        $self['mediaName'] = $mediaName;
 
-        return $obj;
+        return $self;
     }
 
     public function withMediaURL(string $mediaURL): self
     {
-        $obj = clone $this;
-        $obj['mediaURL'] = $mediaURL;
+        $self = clone $this;
+        $self['mediaURL'] = $mediaURL;
 
-        return $obj;
+        return $self;
     }
 
     public function withPageID(int $pageID): self
     {
-        $obj = clone $this;
-        $obj['pageID'] = $pageID;
+        $self = clone $this;
+        $self['pageID'] = $pageID;
 
-        return $obj;
+        return $self;
     }
 
     public function withPageName(string $pageName): self
     {
-        $obj = clone $this;
-        $obj['pageName'] = $pageName;
+        $self = clone $this;
+        $self['pageName'] = $pageName;
 
-        return $obj;
+        return $self;
     }
 
     public function withPageURL(string $pageURL): self
     {
-        $obj = clone $this;
-        $obj['pageURL'] = $pageURL;
+        $self = clone $this;
+        $self['pageURL'] = $pageURL;
 
-        return $obj;
+        return $self;
     }
 }

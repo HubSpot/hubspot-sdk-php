@@ -97,49 +97,49 @@ final class IntegratorOEmbedDomainModel implements BaseModel
         int $portalID,
         int $updatedAt,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['id'] = $id;
-        $obj['appID'] = $appID;
-        $obj['createdAt'] = $createdAt;
-        $obj['deletedAt'] = $deletedAt;
-        $obj['endpoints'] = $endpoints;
-        $obj['portalID'] = $portalID;
-        $obj['updatedAt'] = $updatedAt;
+        $self['id'] = $id;
+        $self['appID'] = $appID;
+        $self['createdAt'] = $createdAt;
+        $self['deletedAt'] = $deletedAt;
+        $self['endpoints'] = $endpoints;
+        $self['portalID'] = $portalID;
+        $self['updatedAt'] = $updatedAt;
 
-        return $obj;
+        return $self;
     }
 
     public function withID(int $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     public function withAppID(int $appID): self
     {
-        $obj = clone $this;
-        $obj['appID'] = $appID;
+        $self = clone $this;
+        $self['appID'] = $appID;
 
-        return $obj;
+        return $self;
     }
 
     public function withCreatedAt(int $createdAt): self
     {
-        $obj = clone $this;
-        $obj['createdAt'] = $createdAt;
+        $self = clone $this;
+        $self['createdAt'] = $createdAt;
 
-        return $obj;
+        return $self;
     }
 
     public function withDeletedAt(int $deletedAt): self
     {
-        $obj = clone $this;
-        $obj['deletedAt'] = $deletedAt;
+        $self = clone $this;
+        $self['deletedAt'] = $deletedAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -149,25 +149,25 @@ final class IntegratorOEmbedDomainModel implements BaseModel
      */
     public function withEndpoints(Endpoints|array $endpoints): self
     {
-        $obj = clone $this;
-        $obj['endpoints'] = $endpoints;
+        $self = clone $this;
+        $self['endpoints'] = $endpoints;
 
-        return $obj;
+        return $self;
     }
 
     public function withPortalID(int $portalID): self
     {
-        $obj = clone $this;
-        $obj['portalID'] = $portalID;
+        $self = clone $this;
+        $self['portalID'] = $portalID;
 
-        return $obj;
+        return $self;
     }
 
     public function withUpdatedAt(int $updatedAt): self
     {
-        $obj = clone $this;
-        $obj['updatedAt'] = $updatedAt;
+        $self = clone $this;
+        $self['updatedAt'] = $updatedAt;
 
-        return $obj;
+        return $self;
     }
 }

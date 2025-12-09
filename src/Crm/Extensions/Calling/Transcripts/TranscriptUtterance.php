@@ -82,57 +82,57 @@ final class TranscriptUtterance implements BaseModel
         ?string $languageCode = null,
         Speaker|array|null $speaker = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['id'] = $id;
-        $obj['endTimeMillis'] = $endTimeMillis;
-        $obj['startTimeMillis'] = $startTimeMillis;
-        $obj['text'] = $text;
+        $self['id'] = $id;
+        $self['endTimeMillis'] = $endTimeMillis;
+        $self['startTimeMillis'] = $startTimeMillis;
+        $self['text'] = $text;
 
-        null !== $languageCode && $obj['languageCode'] = $languageCode;
-        null !== $speaker && $obj['speaker'] = $speaker;
+        null !== $languageCode && $self['languageCode'] = $languageCode;
+        null !== $speaker && $self['speaker'] = $speaker;
 
-        return $obj;
+        return $self;
     }
 
     public function withID(string $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     public function withEndTimeMillis(int $endTimeMillis): self
     {
-        $obj = clone $this;
-        $obj['endTimeMillis'] = $endTimeMillis;
+        $self = clone $this;
+        $self['endTimeMillis'] = $endTimeMillis;
 
-        return $obj;
+        return $self;
     }
 
     public function withStartTimeMillis(int $startTimeMillis): self
     {
-        $obj = clone $this;
-        $obj['startTimeMillis'] = $startTimeMillis;
+        $self = clone $this;
+        $self['startTimeMillis'] = $startTimeMillis;
 
-        return $obj;
+        return $self;
     }
 
     public function withText(string $text): self
     {
-        $obj = clone $this;
-        $obj['text'] = $text;
+        $self = clone $this;
+        $self['text'] = $text;
 
-        return $obj;
+        return $self;
     }
 
     public function withLanguageCode(string $languageCode): self
     {
-        $obj = clone $this;
-        $obj['languageCode'] = $languageCode;
+        $self = clone $this;
+        $self['languageCode'] = $languageCode;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -140,9 +140,9 @@ final class TranscriptUtterance implements BaseModel
      */
     public function withSpeaker(Speaker|array $speaker): self
     {
-        $obj = clone $this;
-        $obj['speaker'] = $speaker;
+        $self = clone $this;
+        $self['speaker'] = $speaker;
 
-        return $obj;
+        return $self;
     }
 }

@@ -50,11 +50,11 @@ final class ThrottlingSettings implements BaseModel
      */
     public static function with(int $maxConcurrentRequests): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['maxConcurrentRequests'] = $maxConcurrentRequests;
+        $self['maxConcurrentRequests'] = $maxConcurrentRequests;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -62,9 +62,9 @@ final class ThrottlingSettings implements BaseModel
      */
     public function withMaxConcurrentRequests(int $maxConcurrentRequests): self
     {
-        $obj = clone $this;
-        $obj['maxConcurrentRequests'] = $maxConcurrentRequests;
+        $self = clone $this;
+        $self['maxConcurrentRequests'] = $maxConcurrentRequests;
 
-        return $obj;
+        return $self;
     }
 }

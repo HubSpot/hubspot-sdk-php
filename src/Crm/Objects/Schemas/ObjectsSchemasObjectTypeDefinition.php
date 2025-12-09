@@ -163,25 +163,25 @@ final class ObjectsSchemasObjectTypeDefinition implements BaseModel
         ?array $secondaryDisplayProperties = null,
         ?\DateTimeInterface $updatedAt = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['id'] = $id;
-        $obj['labels'] = $labels;
-        $obj['name'] = $name;
-        $obj['requiredProperties'] = $requiredProperties;
+        $self['id'] = $id;
+        $self['labels'] = $labels;
+        $self['name'] = $name;
+        $self['requiredProperties'] = $requiredProperties;
 
-        null !== $archived && $obj['archived'] = $archived;
-        null !== $createdAt && $obj['createdAt'] = $createdAt;
-        null !== $description && $obj['description'] = $description;
-        null !== $fullyQualifiedName && $obj['fullyQualifiedName'] = $fullyQualifiedName;
-        null !== $objectTypeID && $obj['objectTypeID'] = $objectTypeID;
-        null !== $portalID && $obj['portalID'] = $portalID;
-        null !== $primaryDisplayProperty && $obj['primaryDisplayProperty'] = $primaryDisplayProperty;
-        null !== $searchableProperties && $obj['searchableProperties'] = $searchableProperties;
-        null !== $secondaryDisplayProperties && $obj['secondaryDisplayProperties'] = $secondaryDisplayProperties;
-        null !== $updatedAt && $obj['updatedAt'] = $updatedAt;
+        null !== $archived && $self['archived'] = $archived;
+        null !== $createdAt && $self['createdAt'] = $createdAt;
+        null !== $description && $self['description'] = $description;
+        null !== $fullyQualifiedName && $self['fullyQualifiedName'] = $fullyQualifiedName;
+        null !== $objectTypeID && $self['objectTypeID'] = $objectTypeID;
+        null !== $portalID && $self['portalID'] = $portalID;
+        null !== $primaryDisplayProperty && $self['primaryDisplayProperty'] = $primaryDisplayProperty;
+        null !== $searchableProperties && $self['searchableProperties'] = $searchableProperties;
+        null !== $secondaryDisplayProperties && $self['secondaryDisplayProperties'] = $secondaryDisplayProperties;
+        null !== $updatedAt && $self['updatedAt'] = $updatedAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -189,10 +189,10 @@ final class ObjectsSchemasObjectTypeDefinition implements BaseModel
      */
     public function withID(string $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -202,10 +202,10 @@ final class ObjectsSchemasObjectTypeDefinition implements BaseModel
      */
     public function withLabels(ObjectTypeDefinitionLabels|array $labels): self
     {
-        $obj = clone $this;
-        $obj['labels'] = $labels;
+        $self = clone $this;
+        $self['labels'] = $labels;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -213,10 +213,10 @@ final class ObjectsSchemasObjectTypeDefinition implements BaseModel
      */
     public function withName(string $name): self
     {
-        $obj = clone $this;
-        $obj['name'] = $name;
+        $self = clone $this;
+        $self['name'] = $name;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -226,18 +226,18 @@ final class ObjectsSchemasObjectTypeDefinition implements BaseModel
      */
     public function withRequiredProperties(array $requiredProperties): self
     {
-        $obj = clone $this;
-        $obj['requiredProperties'] = $requiredProperties;
+        $self = clone $this;
+        $self['requiredProperties'] = $requiredProperties;
 
-        return $obj;
+        return $self;
     }
 
     public function withArchived(bool $archived): self
     {
-        $obj = clone $this;
-        $obj['archived'] = $archived;
+        $self = clone $this;
+        $self['archived'] = $archived;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -245,34 +245,34 @@ final class ObjectsSchemasObjectTypeDefinition implements BaseModel
      */
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
-        $obj = clone $this;
-        $obj['createdAt'] = $createdAt;
+        $self = clone $this;
+        $self['createdAt'] = $createdAt;
 
-        return $obj;
+        return $self;
     }
 
     public function withDescription(string $description): self
     {
-        $obj = clone $this;
-        $obj['description'] = $description;
+        $self = clone $this;
+        $self['description'] = $description;
 
-        return $obj;
+        return $self;
     }
 
     public function withFullyQualifiedName(string $fullyQualifiedName): self
     {
-        $obj = clone $this;
-        $obj['fullyQualifiedName'] = $fullyQualifiedName;
+        $self = clone $this;
+        $self['fullyQualifiedName'] = $fullyQualifiedName;
 
-        return $obj;
+        return $self;
     }
 
     public function withObjectTypeID(string $objectTypeID): self
     {
-        $obj = clone $this;
-        $obj['objectTypeID'] = $objectTypeID;
+        $self = clone $this;
+        $self['objectTypeID'] = $objectTypeID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -280,10 +280,10 @@ final class ObjectsSchemasObjectTypeDefinition implements BaseModel
      */
     public function withPortalID(int $portalID): self
     {
-        $obj = clone $this;
-        $obj['portalID'] = $portalID;
+        $self = clone $this;
+        $self['portalID'] = $portalID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -292,10 +292,10 @@ final class ObjectsSchemasObjectTypeDefinition implements BaseModel
     public function withPrimaryDisplayProperty(
         string $primaryDisplayProperty
     ): self {
-        $obj = clone $this;
-        $obj['primaryDisplayProperty'] = $primaryDisplayProperty;
+        $self = clone $this;
+        $self['primaryDisplayProperty'] = $primaryDisplayProperty;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -305,10 +305,10 @@ final class ObjectsSchemasObjectTypeDefinition implements BaseModel
      */
     public function withSearchableProperties(array $searchableProperties): self
     {
-        $obj = clone $this;
-        $obj['searchableProperties'] = $searchableProperties;
+        $self = clone $this;
+        $self['searchableProperties'] = $searchableProperties;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -319,10 +319,10 @@ final class ObjectsSchemasObjectTypeDefinition implements BaseModel
     public function withSecondaryDisplayProperties(
         array $secondaryDisplayProperties
     ): self {
-        $obj = clone $this;
-        $obj['secondaryDisplayProperties'] = $secondaryDisplayProperties;
+        $self = clone $this;
+        $self['secondaryDisplayProperties'] = $secondaryDisplayProperties;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -330,9 +330,9 @@ final class ObjectsSchemasObjectTypeDefinition implements BaseModel
      */
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
-        $obj = clone $this;
-        $obj['updatedAt'] = $updatedAt;
+        $self = clone $this;
+        $self['updatedAt'] = $updatedAt;
 
-        return $obj;
+        return $self;
     }
 }

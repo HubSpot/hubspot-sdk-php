@@ -50,11 +50,11 @@ final class EventDetail implements BaseModel
      */
     public static function with(string $details): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['details'] = $details;
+        $self['details'] = $details;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -62,9 +62,9 @@ final class EventDetail implements BaseModel
      */
     public function withDetails(string $details): self
     {
-        $obj = clone $this;
-        $obj['details'] = $details;
+        $self = clone $this;
+        $self['details'] = $details;
 
-        return $obj;
+        return $self;
     }
 }

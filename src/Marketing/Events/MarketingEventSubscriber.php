@@ -67,13 +67,13 @@ final class MarketingEventSubscriber implements BaseModel
         array $properties,
         int $vid
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['interactionDateTime'] = $interactionDateTime;
-        $obj['properties'] = $properties;
-        $obj['vid'] = $vid;
+        $self['interactionDateTime'] = $interactionDateTime;
+        $self['properties'] = $properties;
+        $self['vid'] = $vid;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -81,10 +81,10 @@ final class MarketingEventSubscriber implements BaseModel
      */
     public function withInteractionDateTime(int $interactionDateTime): self
     {
-        $obj = clone $this;
-        $obj['interactionDateTime'] = $interactionDateTime;
+        $self = clone $this;
+        $self['interactionDateTime'] = $interactionDateTime;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -92,17 +92,17 @@ final class MarketingEventSubscriber implements BaseModel
      */
     public function withProperties(array $properties): self
     {
-        $obj = clone $this;
-        $obj['properties'] = $properties;
+        $self = clone $this;
+        $self['properties'] = $properties;
 
-        return $obj;
+        return $self;
     }
 
     public function withVid(int $vid): self
     {
-        $obj = clone $this;
-        $obj['vid'] = $vid;
+        $self = clone $this;
+        $self['vid'] = $vid;
 
-        return $obj;
+        return $self;
     }
 }

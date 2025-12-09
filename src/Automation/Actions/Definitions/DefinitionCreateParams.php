@@ -215,30 +215,30 @@ final class DefinitionCreateParams implements BaseModel
         PublicObjectRequestOptions|array|null $objectRequestOptions = null,
         ?array $outputFields = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['actionURL'] = $actionURL;
-        $obj['functions'] = $functions;
-        $obj['inputFields'] = $inputFields;
-        $obj['labels'] = $labels;
-        $obj['objectTypes'] = $objectTypes;
-        $obj['published'] = $published;
+        $self['actionURL'] = $actionURL;
+        $self['functions'] = $functions;
+        $self['inputFields'] = $inputFields;
+        $self['labels'] = $labels;
+        $self['objectTypes'] = $objectTypes;
+        $self['published'] = $published;
 
-        null !== $archivedAt && $obj['archivedAt'] = $archivedAt;
-        null !== $executionRules && $obj['executionRules'] = $executionRules;
-        null !== $inputFieldDependencies && $obj['inputFieldDependencies'] = $inputFieldDependencies;
-        null !== $objectRequestOptions && $obj['objectRequestOptions'] = $objectRequestOptions;
-        null !== $outputFields && $obj['outputFields'] = $outputFields;
+        null !== $archivedAt && $self['archivedAt'] = $archivedAt;
+        null !== $executionRules && $self['executionRules'] = $executionRules;
+        null !== $inputFieldDependencies && $self['inputFieldDependencies'] = $inputFieldDependencies;
+        null !== $objectRequestOptions && $self['objectRequestOptions'] = $objectRequestOptions;
+        null !== $outputFields && $self['outputFields'] = $outputFields;
 
-        return $obj;
+        return $self;
     }
 
     public function withActionURL(string $actionURL): self
     {
-        $obj = clone $this;
-        $obj['actionURL'] = $actionURL;
+        $self = clone $this;
+        $self['actionURL'] = $actionURL;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -248,10 +248,10 @@ final class DefinitionCreateParams implements BaseModel
      */
     public function withFunctions(array $functions): self
     {
-        $obj = clone $this;
-        $obj['functions'] = $functions;
+        $self = clone $this;
+        $self['functions'] = $functions;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -264,10 +264,10 @@ final class DefinitionCreateParams implements BaseModel
      */
     public function withInputFields(array $inputFields): self
     {
-        $obj = clone $this;
-        $obj['inputFields'] = $inputFields;
+        $self = clone $this;
+        $self['inputFields'] = $inputFields;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -285,10 +285,10 @@ final class DefinitionCreateParams implements BaseModel
      */
     public function withLabels(array $labels): self
     {
-        $obj = clone $this;
-        $obj['labels'] = $labels;
+        $self = clone $this;
+        $self['labels'] = $labels;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -296,26 +296,26 @@ final class DefinitionCreateParams implements BaseModel
      */
     public function withObjectTypes(array $objectTypes): self
     {
-        $obj = clone $this;
-        $obj['objectTypes'] = $objectTypes;
+        $self = clone $this;
+        $self['objectTypes'] = $objectTypes;
 
-        return $obj;
+        return $self;
     }
 
     public function withPublished(bool $published): self
     {
-        $obj = clone $this;
-        $obj['published'] = $published;
+        $self = clone $this;
+        $self['published'] = $published;
 
-        return $obj;
+        return $self;
     }
 
     public function withArchivedAt(int $archivedAt): self
     {
-        $obj = clone $this;
-        $obj['archivedAt'] = $archivedAt;
+        $self = clone $this;
+        $self['archivedAt'] = $archivedAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -325,10 +325,10 @@ final class DefinitionCreateParams implements BaseModel
      */
     public function withExecutionRules(array $executionRules): self
     {
-        $obj = clone $this;
-        $obj['executionRules'] = $executionRules;
+        $self = clone $this;
+        $self['executionRules'] = $executionRules;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -346,10 +346,10 @@ final class DefinitionCreateParams implements BaseModel
     public function withInputFieldDependencies(
         array $inputFieldDependencies
     ): self {
-        $obj = clone $this;
-        $obj['inputFieldDependencies'] = $inputFieldDependencies;
+        $self = clone $this;
+        $self['inputFieldDependencies'] = $inputFieldDependencies;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -360,10 +360,10 @@ final class DefinitionCreateParams implements BaseModel
     public function withObjectRequestOptions(
         PublicObjectRequestOptions|array $objectRequestOptions
     ): self {
-        $obj = clone $this;
-        $obj['objectRequestOptions'] = $objectRequestOptions;
+        $self = clone $this;
+        $self['objectRequestOptions'] = $objectRequestOptions;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -373,9 +373,9 @@ final class DefinitionCreateParams implements BaseModel
      */
     public function withOutputFields(array $outputFields): self
     {
-        $obj = clone $this;
-        $obj['outputFields'] = $outputFields;
+        $self = clone $this;
+        $self['outputFields'] = $outputFields;
 
-        return $obj;
+        return $self;
     }
 }

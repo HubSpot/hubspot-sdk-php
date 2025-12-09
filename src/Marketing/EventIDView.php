@@ -56,12 +56,12 @@ final class EventIDView implements BaseModel
      */
     public static function with(string $id, \DateTimeInterface $created): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['id'] = $id;
-        $obj['created'] = $created;
+        $self['id'] = $id;
+        $self['created'] = $created;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -69,10 +69,10 @@ final class EventIDView implements BaseModel
      */
     public function withID(string $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -80,9 +80,9 @@ final class EventIDView implements BaseModel
      */
     public function withCreated(\DateTimeInterface $created): self
     {
-        $obj = clone $this;
-        $obj['created'] = $created;
+        $self = clone $this;
+        $self['created'] = $created;
 
-        return $obj;
+        return $self;
     }
 }

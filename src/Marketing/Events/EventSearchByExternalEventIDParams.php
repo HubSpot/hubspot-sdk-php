@@ -56,11 +56,11 @@ final class EventSearchByExternalEventIDParams implements BaseModel
      */
     public static function with(string $q): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['q'] = $q;
+        $self['q'] = $q;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -68,9 +68,9 @@ final class EventSearchByExternalEventIDParams implements BaseModel
      */
     public function withQ(string $q): self
     {
-        $obj = clone $this;
-        $obj['q'] = $q;
+        $self = clone $this;
+        $self['q'] = $q;
 
-        return $obj;
+        return $self;
     }
 }

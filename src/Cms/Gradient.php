@@ -63,13 +63,13 @@ final class Gradient implements BaseModel
         array $colors,
         SideOrCorner|array $sideOrCorner
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['angle'] = $angle;
-        $obj['colors'] = $colors;
-        $obj['sideOrCorner'] = $sideOrCorner;
+        $self['angle'] = $angle;
+        $self['colors'] = $colors;
+        $self['sideOrCorner'] = $sideOrCorner;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -77,10 +77,10 @@ final class Gradient implements BaseModel
      */
     public function withAngle(Angle|array $angle): self
     {
-        $obj = clone $this;
-        $obj['angle'] = $angle;
+        $self = clone $this;
+        $self['angle'] = $angle;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -88,10 +88,10 @@ final class Gradient implements BaseModel
      */
     public function withColors(array $colors): self
     {
-        $obj = clone $this;
-        $obj['colors'] = $colors;
+        $self = clone $this;
+        $self['colors'] = $colors;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -101,9 +101,9 @@ final class Gradient implements BaseModel
      */
     public function withSideOrCorner(SideOrCorner|array $sideOrCorner): self
     {
-        $obj = clone $this;
-        $obj['sideOrCorner'] = $sideOrCorner;
+        $self = clone $this;
+        $self['sideOrCorner'] = $sideOrCorner;
 
-        return $obj;
+        return $self;
     }
 }

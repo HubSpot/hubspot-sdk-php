@@ -74,90 +74,90 @@ final class IndexOffset implements BaseModel
         ?int $weeks = null,
         ?int $years = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $days && $obj['days'] = $days;
-        null !== $hours && $obj['hours'] = $hours;
-        null !== $milliseconds && $obj['milliseconds'] = $milliseconds;
-        null !== $minutes && $obj['minutes'] = $minutes;
-        null !== $months && $obj['months'] = $months;
-        null !== $quarters && $obj['quarters'] = $quarters;
-        null !== $seconds && $obj['seconds'] = $seconds;
-        null !== $weeks && $obj['weeks'] = $weeks;
-        null !== $years && $obj['years'] = $years;
+        null !== $days && $self['days'] = $days;
+        null !== $hours && $self['hours'] = $hours;
+        null !== $milliseconds && $self['milliseconds'] = $milliseconds;
+        null !== $minutes && $self['minutes'] = $minutes;
+        null !== $months && $self['months'] = $months;
+        null !== $quarters && $self['quarters'] = $quarters;
+        null !== $seconds && $self['seconds'] = $seconds;
+        null !== $weeks && $self['weeks'] = $weeks;
+        null !== $years && $self['years'] = $years;
 
-        return $obj;
+        return $self;
     }
 
     public function withDays(int $days): self
     {
-        $obj = clone $this;
-        $obj['days'] = $days;
+        $self = clone $this;
+        $self['days'] = $days;
 
-        return $obj;
+        return $self;
     }
 
     public function withHours(int $hours): self
     {
-        $obj = clone $this;
-        $obj['hours'] = $hours;
+        $self = clone $this;
+        $self['hours'] = $hours;
 
-        return $obj;
+        return $self;
     }
 
     public function withMilliseconds(int $milliseconds): self
     {
-        $obj = clone $this;
-        $obj['milliseconds'] = $milliseconds;
+        $self = clone $this;
+        $self['milliseconds'] = $milliseconds;
 
-        return $obj;
+        return $self;
     }
 
     public function withMinutes(int $minutes): self
     {
-        $obj = clone $this;
-        $obj['minutes'] = $minutes;
+        $self = clone $this;
+        $self['minutes'] = $minutes;
 
-        return $obj;
+        return $self;
     }
 
     public function withMonths(int $months): self
     {
-        $obj = clone $this;
-        $obj['months'] = $months;
+        $self = clone $this;
+        $self['months'] = $months;
 
-        return $obj;
+        return $self;
     }
 
     public function withQuarters(int $quarters): self
     {
-        $obj = clone $this;
-        $obj['quarters'] = $quarters;
+        $self = clone $this;
+        $self['quarters'] = $quarters;
 
-        return $obj;
+        return $self;
     }
 
     public function withSeconds(int $seconds): self
     {
-        $obj = clone $this;
-        $obj['seconds'] = $seconds;
+        $self = clone $this;
+        $self['seconds'] = $seconds;
 
-        return $obj;
+        return $self;
     }
 
     public function withWeeks(int $weeks): self
     {
-        $obj = clone $this;
-        $obj['weeks'] = $weeks;
+        $self = clone $this;
+        $self['weeks'] = $weeks;
 
-        return $obj;
+        return $self;
     }
 
     public function withYears(int $years): self
     {
-        $obj = clone $this;
-        $obj['years'] = $years;
+        $self = clone $this;
+        $self['years'] = $years;
 
-        return $obj;
+        return $self;
     }
 }

@@ -61,36 +61,36 @@ final class APIFlowEmailCampaign implements BaseModel
         string $emailContentID,
         string $flowID
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['emailCampaignID'] = $emailCampaignID;
-        $obj['emailContentID'] = $emailContentID;
-        $obj['flowID'] = $flowID;
+        $self['emailCampaignID'] = $emailCampaignID;
+        $self['emailContentID'] = $emailContentID;
+        $self['flowID'] = $flowID;
 
-        return $obj;
+        return $self;
     }
 
     public function withEmailCampaignID(string $emailCampaignID): self
     {
-        $obj = clone $this;
-        $obj['emailCampaignID'] = $emailCampaignID;
+        $self = clone $this;
+        $self['emailCampaignID'] = $emailCampaignID;
 
-        return $obj;
+        return $self;
     }
 
     public function withEmailContentID(string $emailContentID): self
     {
-        $obj = clone $this;
-        $obj['emailContentID'] = $emailContentID;
+        $self = clone $this;
+        $self['emailContentID'] = $emailContentID;
 
-        return $obj;
+        return $self;
     }
 
     public function withFlowID(string $flowID): self
     {
-        $obj = clone $this;
-        $obj['flowID'] = $flowID;
+        $self = clone $this;
+        $self['flowID'] = $flowID;
 
-        return $obj;
+        return $self;
     }
 }

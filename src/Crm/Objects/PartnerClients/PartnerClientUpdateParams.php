@@ -64,13 +64,13 @@ final class PartnerClientUpdateParams implements BaseModel
         array $properties,
         ?string $idProperty = null
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['properties'] = $properties;
+        $self['properties'] = $properties;
 
-        null !== $idProperty && $obj['idProperty'] = $idProperty;
+        null !== $idProperty && $self['idProperty'] = $idProperty;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -80,17 +80,17 @@ final class PartnerClientUpdateParams implements BaseModel
      */
     public function withProperties(array $properties): self
     {
-        $obj = clone $this;
-        $obj['properties'] = $properties;
+        $self = clone $this;
+        $self['properties'] = $properties;
 
-        return $obj;
+        return $self;
     }
 
     public function withIDProperty(string $idProperty): self
     {
-        $obj = clone $this;
-        $obj['idProperty'] = $idProperty;
+        $self = clone $this;
+        $self['idProperty'] = $idProperty;
 
-        return $obj;
+        return $self;
     }
 }

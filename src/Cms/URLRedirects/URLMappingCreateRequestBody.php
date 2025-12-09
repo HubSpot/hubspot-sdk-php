@@ -99,101 +99,101 @@ final class URLMappingCreateRequestBody implements BaseModel
         ?bool $isTrailingSlashOptional = null,
         ?int $precedence = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['destination'] = $destination;
-        $obj['redirectStyle'] = $redirectStyle;
-        $obj['routePrefix'] = $routePrefix;
+        $self['destination'] = $destination;
+        $self['redirectStyle'] = $redirectStyle;
+        $self['routePrefix'] = $routePrefix;
 
-        null !== $isMatchFullURL && $obj['isMatchFullURL'] = $isMatchFullURL;
-        null !== $isMatchQueryString && $obj['isMatchQueryString'] = $isMatchQueryString;
-        null !== $isOnlyAfterNotFound && $obj['isOnlyAfterNotFound'] = $isOnlyAfterNotFound;
-        null !== $isPattern && $obj['isPattern'] = $isPattern;
-        null !== $isProtocolAgnostic && $obj['isProtocolAgnostic'] = $isProtocolAgnostic;
-        null !== $isTrailingSlashOptional && $obj['isTrailingSlashOptional'] = $isTrailingSlashOptional;
-        null !== $precedence && $obj['precedence'] = $precedence;
+        null !== $isMatchFullURL && $self['isMatchFullURL'] = $isMatchFullURL;
+        null !== $isMatchQueryString && $self['isMatchQueryString'] = $isMatchQueryString;
+        null !== $isOnlyAfterNotFound && $self['isOnlyAfterNotFound'] = $isOnlyAfterNotFound;
+        null !== $isPattern && $self['isPattern'] = $isPattern;
+        null !== $isProtocolAgnostic && $self['isProtocolAgnostic'] = $isProtocolAgnostic;
+        null !== $isTrailingSlashOptional && $self['isTrailingSlashOptional'] = $isTrailingSlashOptional;
+        null !== $precedence && $self['precedence'] = $precedence;
 
-        return $obj;
+        return $self;
     }
 
     public function withDestination(string $destination): self
     {
-        $obj = clone $this;
-        $obj['destination'] = $destination;
+        $self = clone $this;
+        $self['destination'] = $destination;
 
-        return $obj;
+        return $self;
     }
 
     public function withRedirectStyle(int $redirectStyle): self
     {
-        $obj = clone $this;
-        $obj['redirectStyle'] = $redirectStyle;
+        $self = clone $this;
+        $self['redirectStyle'] = $redirectStyle;
 
-        return $obj;
+        return $self;
     }
 
     public function withRoutePrefix(string $routePrefix): self
     {
-        $obj = clone $this;
-        $obj['routePrefix'] = $routePrefix;
+        $self = clone $this;
+        $self['routePrefix'] = $routePrefix;
 
-        return $obj;
+        return $self;
     }
 
     public function withIsMatchFullURL(bool $isMatchFullURL): self
     {
-        $obj = clone $this;
-        $obj['isMatchFullURL'] = $isMatchFullURL;
+        $self = clone $this;
+        $self['isMatchFullURL'] = $isMatchFullURL;
 
-        return $obj;
+        return $self;
     }
 
     public function withIsMatchQueryString(bool $isMatchQueryString): self
     {
-        $obj = clone $this;
-        $obj['isMatchQueryString'] = $isMatchQueryString;
+        $self = clone $this;
+        $self['isMatchQueryString'] = $isMatchQueryString;
 
-        return $obj;
+        return $self;
     }
 
     public function withIsOnlyAfterNotFound(bool $isOnlyAfterNotFound): self
     {
-        $obj = clone $this;
-        $obj['isOnlyAfterNotFound'] = $isOnlyAfterNotFound;
+        $self = clone $this;
+        $self['isOnlyAfterNotFound'] = $isOnlyAfterNotFound;
 
-        return $obj;
+        return $self;
     }
 
     public function withIsPattern(bool $isPattern): self
     {
-        $obj = clone $this;
-        $obj['isPattern'] = $isPattern;
+        $self = clone $this;
+        $self['isPattern'] = $isPattern;
 
-        return $obj;
+        return $self;
     }
 
     public function withIsProtocolAgnostic(bool $isProtocolAgnostic): self
     {
-        $obj = clone $this;
-        $obj['isProtocolAgnostic'] = $isProtocolAgnostic;
+        $self = clone $this;
+        $self['isProtocolAgnostic'] = $isProtocolAgnostic;
 
-        return $obj;
+        return $self;
     }
 
     public function withIsTrailingSlashOptional(
         bool $isTrailingSlashOptional
     ): self {
-        $obj = clone $this;
-        $obj['isTrailingSlashOptional'] = $isTrailingSlashOptional;
+        $self = clone $this;
+        $self['isTrailingSlashOptional'] = $isTrailingSlashOptional;
 
-        return $obj;
+        return $self;
     }
 
     public function withPrecedence(int $precedence): self
     {
-        $obj = clone $this;
-        $obj['precedence'] = $precedence;
+        $self = clone $this;
+        $self['precedence'] = $precedence;
 
-        return $obj;
+        return $self;
     }
 }

@@ -67,13 +67,13 @@ final class LandingPageUpdateBatchParams implements BaseModel
      */
     public static function with(array $inputs, ?bool $archived = null): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['inputs'] = $inputs;
+        $self['inputs'] = $inputs;
 
-        null !== $archived && $obj['archived'] = $archived;
+        null !== $archived && $self['archived'] = $archived;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -83,10 +83,10 @@ final class LandingPageUpdateBatchParams implements BaseModel
      */
     public function withInputs(array $inputs): self
     {
-        $obj = clone $this;
-        $obj['inputs'] = $inputs;
+        $self = clone $this;
+        $self['inputs'] = $inputs;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -94,9 +94,9 @@ final class LandingPageUpdateBatchParams implements BaseModel
      */
     public function withArchived(bool $archived): self
     {
-        $obj = clone $this;
-        $obj['archived'] = $archived;
+        $self = clone $this;
+        $self['archived'] = $archived;
 
-        return $obj;
+        return $self;
     }
 }

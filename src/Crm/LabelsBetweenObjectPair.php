@@ -98,15 +98,15 @@ final class LabelsBetweenObjectPair implements BaseModel
         string $toObjectID,
         string $toObjectTypeID,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['fromObjectID'] = $fromObjectID;
-        $obj['fromObjectTypeID'] = $fromObjectTypeID;
-        $obj['labels'] = $labels;
-        $obj['toObjectID'] = $toObjectID;
-        $obj['toObjectTypeID'] = $toObjectTypeID;
+        $self['fromObjectID'] = $fromObjectID;
+        $self['fromObjectTypeID'] = $fromObjectTypeID;
+        $self['labels'] = $labels;
+        $self['toObjectID'] = $toObjectID;
+        $self['toObjectTypeID'] = $toObjectTypeID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -114,10 +114,10 @@ final class LabelsBetweenObjectPair implements BaseModel
      */
     public function withFromObjectID(string $fromObjectID): self
     {
-        $obj = clone $this;
-        $obj['fromObjectID'] = $fromObjectID;
+        $self = clone $this;
+        $self['fromObjectID'] = $fromObjectID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -125,10 +125,10 @@ final class LabelsBetweenObjectPair implements BaseModel
      */
     public function withFromObjectTypeID(string $fromObjectTypeID): self
     {
-        $obj = clone $this;
-        $obj['fromObjectTypeID'] = $fromObjectTypeID;
+        $self = clone $this;
+        $self['fromObjectTypeID'] = $fromObjectTypeID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -138,10 +138,10 @@ final class LabelsBetweenObjectPair implements BaseModel
      */
     public function withLabels(array $labels): self
     {
-        $obj = clone $this;
-        $obj['labels'] = $labels;
+        $self = clone $this;
+        $self['labels'] = $labels;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -149,10 +149,10 @@ final class LabelsBetweenObjectPair implements BaseModel
      */
     public function withToObjectID(string $toObjectID): self
     {
-        $obj = clone $this;
-        $obj['toObjectID'] = $toObjectID;
+        $self = clone $this;
+        $self['toObjectID'] = $toObjectID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -160,9 +160,9 @@ final class LabelsBetweenObjectPair implements BaseModel
      */
     public function withToObjectTypeID(string $toObjectTypeID): self
     {
-        $obj = clone $this;
-        $obj['toObjectTypeID'] = $toObjectTypeID;
+        $self = clone $this;
+        $self['toObjectTypeID'] = $toObjectTypeID;
 
-        return $obj;
+        return $self;
     }
 }

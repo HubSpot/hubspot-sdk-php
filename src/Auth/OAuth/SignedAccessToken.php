@@ -149,145 +149,145 @@ final class SignedAccessToken implements BaseModel
         string $trialScopeToScopeGroupPks,
         int $userID,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['appID'] = $appID;
-        $obj['expiresAt'] = $expiresAt;
-        $obj['hubID'] = $hubID;
-        $obj['hublet'] = $hublet;
-        $obj['installingUserID'] = $installingUserID;
-        $obj['isPrivateDistribution'] = $isPrivateDistribution;
-        $obj['isServiceAccount'] = $isServiceAccount;
-        $obj['isUserLevel'] = $isUserLevel;
-        $obj['newSignature'] = $newSignature;
-        $obj['scopes'] = $scopes;
-        $obj['scopeToScopeGroupPks'] = $scopeToScopeGroupPks;
-        $obj['signature'] = $signature;
-        $obj['trialScopes'] = $trialScopes;
-        $obj['trialScopeToScopeGroupPks'] = $trialScopeToScopeGroupPks;
-        $obj['userID'] = $userID;
+        $self['appID'] = $appID;
+        $self['expiresAt'] = $expiresAt;
+        $self['hubID'] = $hubID;
+        $self['hublet'] = $hublet;
+        $self['installingUserID'] = $installingUserID;
+        $self['isPrivateDistribution'] = $isPrivateDistribution;
+        $self['isServiceAccount'] = $isServiceAccount;
+        $self['isUserLevel'] = $isUserLevel;
+        $self['newSignature'] = $newSignature;
+        $self['scopes'] = $scopes;
+        $self['scopeToScopeGroupPks'] = $scopeToScopeGroupPks;
+        $self['signature'] = $signature;
+        $self['trialScopes'] = $trialScopes;
+        $self['trialScopeToScopeGroupPks'] = $trialScopeToScopeGroupPks;
+        $self['userID'] = $userID;
 
-        return $obj;
+        return $self;
     }
 
     public function withAppID(int $appID): self
     {
-        $obj = clone $this;
-        $obj['appID'] = $appID;
+        $self = clone $this;
+        $self['appID'] = $appID;
 
-        return $obj;
+        return $self;
     }
 
     public function withExpiresAt(int $expiresAt): self
     {
-        $obj = clone $this;
-        $obj['expiresAt'] = $expiresAt;
+        $self = clone $this;
+        $self['expiresAt'] = $expiresAt;
 
-        return $obj;
+        return $self;
     }
 
     public function withHubID(int $hubID): self
     {
-        $obj = clone $this;
-        $obj['hubID'] = $hubID;
+        $self = clone $this;
+        $self['hubID'] = $hubID;
 
-        return $obj;
+        return $self;
     }
 
     public function withHublet(string $hublet): self
     {
-        $obj = clone $this;
-        $obj['hublet'] = $hublet;
+        $self = clone $this;
+        $self['hublet'] = $hublet;
 
-        return $obj;
+        return $self;
     }
 
     public function withInstallingUserID(int $installingUserID): self
     {
-        $obj = clone $this;
-        $obj['installingUserID'] = $installingUserID;
+        $self = clone $this;
+        $self['installingUserID'] = $installingUserID;
 
-        return $obj;
+        return $self;
     }
 
     public function withIsPrivateDistribution(bool $isPrivateDistribution): self
     {
-        $obj = clone $this;
-        $obj['isPrivateDistribution'] = $isPrivateDistribution;
+        $self = clone $this;
+        $self['isPrivateDistribution'] = $isPrivateDistribution;
 
-        return $obj;
+        return $self;
     }
 
     public function withIsServiceAccount(bool $isServiceAccount): self
     {
-        $obj = clone $this;
-        $obj['isServiceAccount'] = $isServiceAccount;
+        $self = clone $this;
+        $self['isServiceAccount'] = $isServiceAccount;
 
-        return $obj;
+        return $self;
     }
 
     public function withIsUserLevel(bool $isUserLevel): self
     {
-        $obj = clone $this;
-        $obj['isUserLevel'] = $isUserLevel;
+        $self = clone $this;
+        $self['isUserLevel'] = $isUserLevel;
 
-        return $obj;
+        return $self;
     }
 
     public function withNewSignature(string $newSignature): self
     {
-        $obj = clone $this;
-        $obj['newSignature'] = $newSignature;
+        $self = clone $this;
+        $self['newSignature'] = $newSignature;
 
-        return $obj;
+        return $self;
     }
 
     public function withScopes(string $scopes): self
     {
-        $obj = clone $this;
-        $obj['scopes'] = $scopes;
+        $self = clone $this;
+        $self['scopes'] = $scopes;
 
-        return $obj;
+        return $self;
     }
 
     public function withScopeToScopeGroupPks(string $scopeToScopeGroupPks): self
     {
-        $obj = clone $this;
-        $obj['scopeToScopeGroupPks'] = $scopeToScopeGroupPks;
+        $self = clone $this;
+        $self['scopeToScopeGroupPks'] = $scopeToScopeGroupPks;
 
-        return $obj;
+        return $self;
     }
 
     public function withSignature(string $signature): self
     {
-        $obj = clone $this;
-        $obj['signature'] = $signature;
+        $self = clone $this;
+        $self['signature'] = $signature;
 
-        return $obj;
+        return $self;
     }
 
     public function withTrialScopes(string $trialScopes): self
     {
-        $obj = clone $this;
-        $obj['trialScopes'] = $trialScopes;
+        $self = clone $this;
+        $self['trialScopes'] = $trialScopes;
 
-        return $obj;
+        return $self;
     }
 
     public function withTrialScopeToScopeGroupPks(
         string $trialScopeToScopeGroupPks
     ): self {
-        $obj = clone $this;
-        $obj['trialScopeToScopeGroupPks'] = $trialScopeToScopeGroupPks;
+        $self = clone $this;
+        $self['trialScopeToScopeGroupPks'] = $trialScopeToScopeGroupPks;
 
-        return $obj;
+        return $self;
     }
 
     public function withUserID(int $userID): self
     {
-        $obj = clone $this;
-        $obj['userID'] = $userID;
+        $self = clone $this;
+        $self['userID'] = $userID;
 
-        return $obj;
+        return $self;
     }
 }

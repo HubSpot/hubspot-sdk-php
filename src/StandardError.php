@@ -140,19 +140,19 @@ final class StandardError implements BaseModel
         ?string $id = null,
         mixed $subCategory = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['category'] = $category;
-        $obj['context'] = $context;
-        $obj['errors'] = $errors;
-        $obj['links'] = $links;
-        $obj['message'] = $message;
-        $obj['status'] = $status;
+        $self['category'] = $category;
+        $self['context'] = $context;
+        $self['errors'] = $errors;
+        $self['links'] = $links;
+        $self['message'] = $message;
+        $self['status'] = $status;
 
-        null !== $id && $obj['id'] = $id;
-        null !== $subCategory && $obj['subCategory'] = $subCategory;
+        null !== $id && $self['id'] = $id;
+        null !== $subCategory && $self['subCategory'] = $subCategory;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -160,10 +160,10 @@ final class StandardError implements BaseModel
      */
     public function withCategory(string $category): self
     {
-        $obj = clone $this;
-        $obj['category'] = $category;
+        $self = clone $this;
+        $self['category'] = $category;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -173,10 +173,10 @@ final class StandardError implements BaseModel
      */
     public function withContext(array $context): self
     {
-        $obj = clone $this;
-        $obj['context'] = $context;
+        $self = clone $this;
+        $self['context'] = $context;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -192,10 +192,10 @@ final class StandardError implements BaseModel
      */
     public function withErrors(array $errors): self
     {
-        $obj = clone $this;
-        $obj['errors'] = $errors;
+        $self = clone $this;
+        $self['errors'] = $errors;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -205,10 +205,10 @@ final class StandardError implements BaseModel
      */
     public function withLinks(array $links): self
     {
-        $obj = clone $this;
-        $obj['links'] = $links;
+        $self = clone $this;
+        $self['links'] = $links;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -216,10 +216,10 @@ final class StandardError implements BaseModel
      */
     public function withMessage(string $message): self
     {
-        $obj = clone $this;
-        $obj['message'] = $message;
+        $self = clone $this;
+        $self['message'] = $message;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -227,10 +227,10 @@ final class StandardError implements BaseModel
      */
     public function withStatus(string $status): self
     {
-        $obj = clone $this;
-        $obj['status'] = $status;
+        $self = clone $this;
+        $self['status'] = $status;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -238,10 +238,10 @@ final class StandardError implements BaseModel
      */
     public function withID(string $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -249,9 +249,9 @@ final class StandardError implements BaseModel
      */
     public function withSubCategory(mixed $subCategory): self
     {
-        $obj = clone $this;
-        $obj['subCategory'] = $subCategory;
+        $self = clone $this;
+        $self['subCategory'] = $subCategory;
 
-        return $obj;
+        return $self;
     }
 }

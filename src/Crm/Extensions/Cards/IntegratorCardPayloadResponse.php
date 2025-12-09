@@ -106,17 +106,17 @@ final class IntegratorCardPayloadResponse implements BaseModel
         ?array $sections = null,
         TopLevelActions|array|null $topLevelActions = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['totalCount'] = $totalCount;
+        $self['totalCount'] = $totalCount;
 
-        null !== $allItemsLinkURL && $obj['allItemsLinkURL'] = $allItemsLinkURL;
-        null !== $cardLabel && $obj['cardLabel'] = $cardLabel;
-        null !== $responseVersion && $obj['responseVersion'] = $responseVersion;
-        null !== $sections && $obj['sections'] = $sections;
-        null !== $topLevelActions && $obj['topLevelActions'] = $topLevelActions;
+        null !== $allItemsLinkURL && $self['allItemsLinkURL'] = $allItemsLinkURL;
+        null !== $cardLabel && $self['cardLabel'] = $cardLabel;
+        null !== $responseVersion && $self['responseVersion'] = $responseVersion;
+        null !== $sections && $self['sections'] = $sections;
+        null !== $topLevelActions && $self['topLevelActions'] = $topLevelActions;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -124,10 +124,10 @@ final class IntegratorCardPayloadResponse implements BaseModel
      */
     public function withTotalCount(int $totalCount): self
     {
-        $obj = clone $this;
-        $obj['totalCount'] = $totalCount;
+        $self = clone $this;
+        $self['totalCount'] = $totalCount;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -135,10 +135,10 @@ final class IntegratorCardPayloadResponse implements BaseModel
      */
     public function withAllItemsLinkURL(string $allItemsLinkURL): self
     {
-        $obj = clone $this;
-        $obj['allItemsLinkURL'] = $allItemsLinkURL;
+        $self = clone $this;
+        $self['allItemsLinkURL'] = $allItemsLinkURL;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -146,10 +146,10 @@ final class IntegratorCardPayloadResponse implements BaseModel
      */
     public function withCardLabel(string $cardLabel): self
     {
-        $obj = clone $this;
-        $obj['cardLabel'] = $cardLabel;
+        $self = clone $this;
+        $self['cardLabel'] = $cardLabel;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -158,10 +158,10 @@ final class IntegratorCardPayloadResponse implements BaseModel
     public function withResponseVersion(
         ResponseVersion|string $responseVersion
     ): self {
-        $obj = clone $this;
-        $obj['responseVersion'] = $responseVersion;
+        $self = clone $this;
+        $self['responseVersion'] = $responseVersion;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -177,10 +177,10 @@ final class IntegratorCardPayloadResponse implements BaseModel
      */
     public function withSections(array $sections): self
     {
-        $obj = clone $this;
-        $obj['sections'] = $sections;
+        $self = clone $this;
+        $self['sections'] = $sections;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -193,9 +193,9 @@ final class IntegratorCardPayloadResponse implements BaseModel
     public function withTopLevelActions(
         TopLevelActions|array $topLevelActions
     ): self {
-        $obj = clone $this;
-        $obj['topLevelActions'] = $topLevelActions;
+        $self = clone $this;
+        $self['topLevelActions'] = $topLevelActions;
 
-        return $obj;
+        return $self;
     }
 }

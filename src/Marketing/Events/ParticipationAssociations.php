@@ -65,12 +65,12 @@ final class ParticipationAssociations implements BaseModel
         ContactAssociation|array $contact,
         MarketingEventAssociation|array $marketingEvent,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['contact'] = $contact;
-        $obj['marketingEvent'] = $marketingEvent;
+        $self['contact'] = $contact;
+        $self['marketingEvent'] = $marketingEvent;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -83,10 +83,10 @@ final class ParticipationAssociations implements BaseModel
      */
     public function withContact(ContactAssociation|array $contact): self
     {
-        $obj = clone $this;
-        $obj['contact'] = $contact;
+        $self = clone $this;
+        $self['contact'] = $contact;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -100,9 +100,9 @@ final class ParticipationAssociations implements BaseModel
     public function withMarketingEvent(
         MarketingEventAssociation|array $marketingEvent
     ): self {
-        $obj = clone $this;
-        $obj['marketingEvent'] = $marketingEvent;
+        $self = clone $this;
+        $self['marketingEvent'] = $marketingEvent;
 
-        return $obj;
+        return $self;
     }
 }

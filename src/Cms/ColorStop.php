@@ -50,11 +50,11 @@ final class ColorStop implements BaseModel
      */
     public static function with(RgbaColor|array $color): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['color'] = $color;
+        $self['color'] = $color;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -64,9 +64,9 @@ final class ColorStop implements BaseModel
      */
     public function withColor(RgbaColor|array $color): self
     {
-        $obj = clone $this;
-        $obj['color'] = $color;
+        $self = clone $this;
+        $self['color'] = $color;
 
-        return $obj;
+        return $self;
     }
 }

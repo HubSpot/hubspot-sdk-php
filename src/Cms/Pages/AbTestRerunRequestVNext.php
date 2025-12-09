@@ -58,12 +58,12 @@ final class AbTestRerunRequestVNext implements BaseModel
      */
     public static function with(string $abTestID, string $variationID): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['abTestID'] = $abTestID;
-        $obj['variationID'] = $variationID;
+        $self['abTestID'] = $abTestID;
+        $self['variationID'] = $variationID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -71,10 +71,10 @@ final class AbTestRerunRequestVNext implements BaseModel
      */
     public function withAbTestID(string $abTestID): self
     {
-        $obj = clone $this;
-        $obj['abTestID'] = $abTestID;
+        $self = clone $this;
+        $self['abTestID'] = $abTestID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -82,9 +82,9 @@ final class AbTestRerunRequestVNext implements BaseModel
      */
     public function withVariationID(string $variationID): self
     {
-        $obj = clone $this;
-        $obj['variationID'] = $variationID;
+        $self = clone $this;
+        $self['variationID'] = $variationID;
 
-        return $obj;
+        return $self;
     }
 }

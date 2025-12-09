@@ -62,11 +62,11 @@ final class CardDisplayBody implements BaseModel
      */
     public static function with(array $properties): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['properties'] = $properties;
+        $self['properties'] = $properties;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -81,9 +81,9 @@ final class CardDisplayBody implements BaseModel
      */
     public function withProperties(array $properties): self
     {
-        $obj = clone $this;
-        $obj['properties'] = $properties;
+        $self = clone $this;
+        $self['properties'] = $properties;
 
-        return $obj;
+        return $self;
     }
 }

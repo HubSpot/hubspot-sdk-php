@@ -145,91 +145,91 @@ final class PublicThread implements BaseModel
         ?\DateTimeInterface $latestMessageTimestamp = null,
         PublicThreadAssociations|array|null $threadAssociations = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['id'] = $id;
-        $obj['archived'] = $archived;
-        $obj['associatedContactID'] = $associatedContactID;
-        $obj['createdAt'] = $createdAt;
-        $obj['inboxID'] = $inboxID;
-        $obj['originalChannelAccountID'] = $originalChannelAccountID;
-        $obj['originalChannelID'] = $originalChannelID;
-        $obj['spam'] = $spam;
-        $obj['status'] = $status;
+        $self['id'] = $id;
+        $self['archived'] = $archived;
+        $self['associatedContactID'] = $associatedContactID;
+        $self['createdAt'] = $createdAt;
+        $self['inboxID'] = $inboxID;
+        $self['originalChannelAccountID'] = $originalChannelAccountID;
+        $self['originalChannelID'] = $originalChannelID;
+        $self['spam'] = $spam;
+        $self['status'] = $status;
 
-        null !== $assignedTo && $obj['assignedTo'] = $assignedTo;
-        null !== $closedAt && $obj['closedAt'] = $closedAt;
-        null !== $latestMessageReceivedTimestamp && $obj['latestMessageReceivedTimestamp'] = $latestMessageReceivedTimestamp;
-        null !== $latestMessageSentTimestamp && $obj['latestMessageSentTimestamp'] = $latestMessageSentTimestamp;
-        null !== $latestMessageTimestamp && $obj['latestMessageTimestamp'] = $latestMessageTimestamp;
-        null !== $threadAssociations && $obj['threadAssociations'] = $threadAssociations;
+        null !== $assignedTo && $self['assignedTo'] = $assignedTo;
+        null !== $closedAt && $self['closedAt'] = $closedAt;
+        null !== $latestMessageReceivedTimestamp && $self['latestMessageReceivedTimestamp'] = $latestMessageReceivedTimestamp;
+        null !== $latestMessageSentTimestamp && $self['latestMessageSentTimestamp'] = $latestMessageSentTimestamp;
+        null !== $latestMessageTimestamp && $self['latestMessageTimestamp'] = $latestMessageTimestamp;
+        null !== $threadAssociations && $self['threadAssociations'] = $threadAssociations;
 
-        return $obj;
+        return $self;
     }
 
     public function withID(string $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     public function withArchived(bool $archived): self
     {
-        $obj = clone $this;
-        $obj['archived'] = $archived;
+        $self = clone $this;
+        $self['archived'] = $archived;
 
-        return $obj;
+        return $self;
     }
 
     public function withAssociatedContactID(string $associatedContactID): self
     {
-        $obj = clone $this;
-        $obj['associatedContactID'] = $associatedContactID;
+        $self = clone $this;
+        $self['associatedContactID'] = $associatedContactID;
 
-        return $obj;
+        return $self;
     }
 
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
-        $obj = clone $this;
-        $obj['createdAt'] = $createdAt;
+        $self = clone $this;
+        $self['createdAt'] = $createdAt;
 
-        return $obj;
+        return $self;
     }
 
     public function withInboxID(string $inboxID): self
     {
-        $obj = clone $this;
-        $obj['inboxID'] = $inboxID;
+        $self = clone $this;
+        $self['inboxID'] = $inboxID;
 
-        return $obj;
+        return $self;
     }
 
     public function withOriginalChannelAccountID(
         string $originalChannelAccountID
     ): self {
-        $obj = clone $this;
-        $obj['originalChannelAccountID'] = $originalChannelAccountID;
+        $self = clone $this;
+        $self['originalChannelAccountID'] = $originalChannelAccountID;
 
-        return $obj;
+        return $self;
     }
 
     public function withOriginalChannelID(string $originalChannelID): self
     {
-        $obj = clone $this;
-        $obj['originalChannelID'] = $originalChannelID;
+        $self = clone $this;
+        $self['originalChannelID'] = $originalChannelID;
 
-        return $obj;
+        return $self;
     }
 
     public function withSpam(bool $spam): self
     {
-        $obj = clone $this;
-        $obj['spam'] = $spam;
+        $self = clone $this;
+        $self['spam'] = $spam;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -237,53 +237,53 @@ final class PublicThread implements BaseModel
      */
     public function withStatus(Status|string $status): self
     {
-        $obj = clone $this;
-        $obj['status'] = $status;
+        $self = clone $this;
+        $self['status'] = $status;
 
-        return $obj;
+        return $self;
     }
 
     public function withAssignedTo(string $assignedTo): self
     {
-        $obj = clone $this;
-        $obj['assignedTo'] = $assignedTo;
+        $self = clone $this;
+        $self['assignedTo'] = $assignedTo;
 
-        return $obj;
+        return $self;
     }
 
     public function withClosedAt(\DateTimeInterface $closedAt): self
     {
-        $obj = clone $this;
-        $obj['closedAt'] = $closedAt;
+        $self = clone $this;
+        $self['closedAt'] = $closedAt;
 
-        return $obj;
+        return $self;
     }
 
     public function withLatestMessageReceivedTimestamp(
         \DateTimeInterface $latestMessageReceivedTimestamp
     ): self {
-        $obj = clone $this;
-        $obj['latestMessageReceivedTimestamp'] = $latestMessageReceivedTimestamp;
+        $self = clone $this;
+        $self['latestMessageReceivedTimestamp'] = $latestMessageReceivedTimestamp;
 
-        return $obj;
+        return $self;
     }
 
     public function withLatestMessageSentTimestamp(
         \DateTimeInterface $latestMessageSentTimestamp
     ): self {
-        $obj = clone $this;
-        $obj['latestMessageSentTimestamp'] = $latestMessageSentTimestamp;
+        $self = clone $this;
+        $self['latestMessageSentTimestamp'] = $latestMessageSentTimestamp;
 
-        return $obj;
+        return $self;
     }
 
     public function withLatestMessageTimestamp(
         \DateTimeInterface $latestMessageTimestamp
     ): self {
-        $obj = clone $this;
-        $obj['latestMessageTimestamp'] = $latestMessageTimestamp;
+        $self = clone $this;
+        $self['latestMessageTimestamp'] = $latestMessageTimestamp;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -294,9 +294,9 @@ final class PublicThread implements BaseModel
     public function withThreadAssociations(
         PublicThreadAssociations|array $threadAssociations
     ): self {
-        $obj = clone $this;
-        $obj['threadAssociations'] = $threadAssociations;
+        $self = clone $this;
+        $self['threadAssociations'] = $threadAssociations;
 
-        return $obj;
+        return $self;
     }
 }

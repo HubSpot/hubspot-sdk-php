@@ -56,11 +56,11 @@ final class MembershipAddParams implements BaseModel
      */
     public static function with(array $body): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['body'] = $body;
+        $self['body'] = $body;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -68,9 +68,9 @@ final class MembershipAddParams implements BaseModel
      */
     public function withBody(array $body): self
     {
-        $obj = clone $this;
-        $obj['body'] = $body;
+        $self = clone $this;
+        $self['body'] = $body;
 
-        return $obj;
+        return $self;
     }
 }

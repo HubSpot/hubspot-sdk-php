@@ -99,43 +99,43 @@ final class RollingPropertyUpdatedOperation implements BaseModel
         PropertyType|string $propertyType = 'rolling-property-updated',
         ?string $defaultValue = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['includeObjectsWithNoValueSet'] = $includeObjectsWithNoValueSet;
-        $obj['numberOfDays'] = $numberOfDays;
-        $obj['operationType'] = $operationType;
-        $obj['operator'] = $operator;
-        $obj['operatorName'] = $operatorName;
-        $obj['propertyType'] = $propertyType;
+        $self['includeObjectsWithNoValueSet'] = $includeObjectsWithNoValueSet;
+        $self['numberOfDays'] = $numberOfDays;
+        $self['operationType'] = $operationType;
+        $self['operator'] = $operator;
+        $self['operatorName'] = $operatorName;
+        $self['propertyType'] = $propertyType;
 
-        null !== $defaultValue && $obj['defaultValue'] = $defaultValue;
+        null !== $defaultValue && $self['defaultValue'] = $defaultValue;
 
-        return $obj;
+        return $self;
     }
 
     public function withIncludeObjectsWithNoValueSet(
         bool $includeObjectsWithNoValueSet
     ): self {
-        $obj = clone $this;
-        $obj['includeObjectsWithNoValueSet'] = $includeObjectsWithNoValueSet;
+        $self = clone $this;
+        $self['includeObjectsWithNoValueSet'] = $includeObjectsWithNoValueSet;
 
-        return $obj;
+        return $self;
     }
 
     public function withNumberOfDays(int $numberOfDays): self
     {
-        $obj = clone $this;
-        $obj['numberOfDays'] = $numberOfDays;
+        $self = clone $this;
+        $self['numberOfDays'] = $numberOfDays;
 
-        return $obj;
+        return $self;
     }
 
     public function withOperationType(string $operationType): self
     {
-        $obj = clone $this;
-        $obj['operationType'] = $operationType;
+        $self = clone $this;
+        $self['operationType'] = $operationType;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -143,18 +143,18 @@ final class RollingPropertyUpdatedOperation implements BaseModel
      */
     public function withOperator(Operator|string $operator): self
     {
-        $obj = clone $this;
-        $obj['operator'] = $operator;
+        $self = clone $this;
+        $self['operator'] = $operator;
 
-        return $obj;
+        return $self;
     }
 
     public function withOperatorName(string $operatorName): self
     {
-        $obj = clone $this;
-        $obj['operatorName'] = $operatorName;
+        $self = clone $this;
+        $self['operatorName'] = $operatorName;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -162,17 +162,17 @@ final class RollingPropertyUpdatedOperation implements BaseModel
      */
     public function withPropertyType(PropertyType|string $propertyType): self
     {
-        $obj = clone $this;
-        $obj['propertyType'] = $propertyType;
+        $self = clone $this;
+        $self['propertyType'] = $propertyType;
 
-        return $obj;
+        return $self;
     }
 
     public function withDefaultValue(string $defaultValue): self
     {
-        $obj = clone $this;
-        $obj['defaultValue'] = $defaultValue;
+        $self = clone $this;
+        $self['defaultValue'] = $defaultValue;
 
-        return $obj;
+        return $self;
     }
 }

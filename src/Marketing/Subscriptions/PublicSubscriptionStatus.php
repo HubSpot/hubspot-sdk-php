@@ -136,20 +136,20 @@ final class PublicSubscriptionStatus implements BaseModel
         ?string $legalBasisExplanation = null,
         ?string $preferenceGroupName = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['id'] = $id;
-        $obj['description'] = $description;
-        $obj['name'] = $name;
-        $obj['sourceOfStatus'] = $sourceOfStatus;
-        $obj['status'] = $status;
+        $self['id'] = $id;
+        $self['description'] = $description;
+        $self['name'] = $name;
+        $self['sourceOfStatus'] = $sourceOfStatus;
+        $self['status'] = $status;
 
-        null !== $brandID && $obj['brandID'] = $brandID;
-        null !== $legalBasis && $obj['legalBasis'] = $legalBasis;
-        null !== $legalBasisExplanation && $obj['legalBasisExplanation'] = $legalBasisExplanation;
-        null !== $preferenceGroupName && $obj['preferenceGroupName'] = $preferenceGroupName;
+        null !== $brandID && $self['brandID'] = $brandID;
+        null !== $legalBasis && $self['legalBasis'] = $legalBasis;
+        null !== $legalBasisExplanation && $self['legalBasisExplanation'] = $legalBasisExplanation;
+        null !== $preferenceGroupName && $self['preferenceGroupName'] = $preferenceGroupName;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -157,10 +157,10 @@ final class PublicSubscriptionStatus implements BaseModel
      */
     public function withID(string $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -168,10 +168,10 @@ final class PublicSubscriptionStatus implements BaseModel
      */
     public function withDescription(string $description): self
     {
-        $obj = clone $this;
-        $obj['description'] = $description;
+        $self = clone $this;
+        $self['description'] = $description;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -179,10 +179,10 @@ final class PublicSubscriptionStatus implements BaseModel
      */
     public function withName(string $name): self
     {
-        $obj = clone $this;
-        $obj['name'] = $name;
+        $self = clone $this;
+        $self['name'] = $name;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -193,10 +193,10 @@ final class PublicSubscriptionStatus implements BaseModel
     public function withSourceOfStatus(
         SourceOfStatus|string $sourceOfStatus
     ): self {
-        $obj = clone $this;
-        $obj['sourceOfStatus'] = $sourceOfStatus;
+        $self = clone $this;
+        $self['sourceOfStatus'] = $sourceOfStatus;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -206,10 +206,10 @@ final class PublicSubscriptionStatus implements BaseModel
      */
     public function withStatus(Status|string $status): self
     {
-        $obj = clone $this;
-        $obj['status'] = $status;
+        $self = clone $this;
+        $self['status'] = $status;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -217,10 +217,10 @@ final class PublicSubscriptionStatus implements BaseModel
      */
     public function withBrandID(int $brandID): self
     {
-        $obj = clone $this;
-        $obj['brandID'] = $brandID;
+        $self = clone $this;
+        $self['brandID'] = $brandID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -230,10 +230,10 @@ final class PublicSubscriptionStatus implements BaseModel
      */
     public function withLegalBasis(LegalBasis|string $legalBasis): self
     {
-        $obj = clone $this;
-        $obj['legalBasis'] = $legalBasis;
+        $self = clone $this;
+        $self['legalBasis'] = $legalBasis;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -242,10 +242,10 @@ final class PublicSubscriptionStatus implements BaseModel
     public function withLegalBasisExplanation(
         string $legalBasisExplanation
     ): self {
-        $obj = clone $this;
-        $obj['legalBasisExplanation'] = $legalBasisExplanation;
+        $self = clone $this;
+        $self['legalBasisExplanation'] = $legalBasisExplanation;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -253,9 +253,9 @@ final class PublicSubscriptionStatus implements BaseModel
      */
     public function withPreferenceGroupName(string $preferenceGroupName): self
     {
-        $obj = clone $this;
-        $obj['preferenceGroupName'] = $preferenceGroupName;
+        $self = clone $this;
+        $self['preferenceGroupName'] = $preferenceGroupName;
 
-        return $obj;
+        return $self;
     }
 }

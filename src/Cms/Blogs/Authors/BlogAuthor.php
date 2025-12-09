@@ -206,27 +206,27 @@ final class BlogAuthor implements BaseModel
         \DateTimeInterface $updated,
         string $website,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['id'] = $id;
-        $obj['avatar'] = $avatar;
-        $obj['bio'] = $bio;
-        $obj['created'] = $created;
-        $obj['deletedAt'] = $deletedAt;
-        $obj['displayName'] = $displayName;
-        $obj['email'] = $email;
-        $obj['facebook'] = $facebook;
-        $obj['fullName'] = $fullName;
-        $obj['language'] = $language;
-        $obj['linkedin'] = $linkedin;
-        $obj['name'] = $name;
-        $obj['slug'] = $slug;
-        $obj['translatedFromID'] = $translatedFromID;
-        $obj['twitter'] = $twitter;
-        $obj['updated'] = $updated;
-        $obj['website'] = $website;
+        $self['id'] = $id;
+        $self['avatar'] = $avatar;
+        $self['bio'] = $bio;
+        $self['created'] = $created;
+        $self['deletedAt'] = $deletedAt;
+        $self['displayName'] = $displayName;
+        $self['email'] = $email;
+        $self['facebook'] = $facebook;
+        $self['fullName'] = $fullName;
+        $self['language'] = $language;
+        $self['linkedin'] = $linkedin;
+        $self['name'] = $name;
+        $self['slug'] = $slug;
+        $self['translatedFromID'] = $translatedFromID;
+        $self['twitter'] = $twitter;
+        $self['updated'] = $updated;
+        $self['website'] = $website;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -234,10 +234,10 @@ final class BlogAuthor implements BaseModel
      */
     public function withID(string $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -245,10 +245,10 @@ final class BlogAuthor implements BaseModel
      */
     public function withAvatar(string $avatar): self
     {
-        $obj = clone $this;
-        $obj['avatar'] = $avatar;
+        $self = clone $this;
+        $self['avatar'] = $avatar;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -256,18 +256,18 @@ final class BlogAuthor implements BaseModel
      */
     public function withBio(string $bio): self
     {
-        $obj = clone $this;
-        $obj['bio'] = $bio;
+        $self = clone $this;
+        $self['bio'] = $bio;
 
-        return $obj;
+        return $self;
     }
 
     public function withCreated(\DateTimeInterface $created): self
     {
-        $obj = clone $this;
-        $obj['created'] = $created;
+        $self = clone $this;
+        $self['created'] = $created;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -275,10 +275,10 @@ final class BlogAuthor implements BaseModel
      */
     public function withDeletedAt(\DateTimeInterface $deletedAt): self
     {
-        $obj = clone $this;
-        $obj['deletedAt'] = $deletedAt;
+        $self = clone $this;
+        $self['deletedAt'] = $deletedAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -286,10 +286,10 @@ final class BlogAuthor implements BaseModel
      */
     public function withDisplayName(string $displayName): self
     {
-        $obj = clone $this;
-        $obj['displayName'] = $displayName;
+        $self = clone $this;
+        $self['displayName'] = $displayName;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -297,10 +297,10 @@ final class BlogAuthor implements BaseModel
      */
     public function withEmail(string $email): self
     {
-        $obj = clone $this;
-        $obj['email'] = $email;
+        $self = clone $this;
+        $self['email'] = $email;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -308,18 +308,18 @@ final class BlogAuthor implements BaseModel
      */
     public function withFacebook(string $facebook): self
     {
-        $obj = clone $this;
-        $obj['facebook'] = $facebook;
+        $self = clone $this;
+        $self['facebook'] = $facebook;
 
-        return $obj;
+        return $self;
     }
 
     public function withFullName(string $fullName): self
     {
-        $obj = clone $this;
-        $obj['fullName'] = $fullName;
+        $self = clone $this;
+        $self['fullName'] = $fullName;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -329,10 +329,10 @@ final class BlogAuthor implements BaseModel
      */
     public function withLanguage(Language|string $language): self
     {
-        $obj = clone $this;
-        $obj['language'] = $language;
+        $self = clone $this;
+        $self['language'] = $language;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -340,26 +340,26 @@ final class BlogAuthor implements BaseModel
      */
     public function withLinkedin(string $linkedin): self
     {
-        $obj = clone $this;
-        $obj['linkedin'] = $linkedin;
+        $self = clone $this;
+        $self['linkedin'] = $linkedin;
 
-        return $obj;
+        return $self;
     }
 
     public function withName(string $name): self
     {
-        $obj = clone $this;
-        $obj['name'] = $name;
+        $self = clone $this;
+        $self['name'] = $name;
 
-        return $obj;
+        return $self;
     }
 
     public function withSlug(string $slug): self
     {
-        $obj = clone $this;
-        $obj['slug'] = $slug;
+        $self = clone $this;
+        $self['slug'] = $slug;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -367,10 +367,10 @@ final class BlogAuthor implements BaseModel
      */
     public function withTranslatedFromID(int $translatedFromID): self
     {
-        $obj = clone $this;
-        $obj['translatedFromID'] = $translatedFromID;
+        $self = clone $this;
+        $self['translatedFromID'] = $translatedFromID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -378,18 +378,18 @@ final class BlogAuthor implements BaseModel
      */
     public function withTwitter(string $twitter): self
     {
-        $obj = clone $this;
-        $obj['twitter'] = $twitter;
+        $self = clone $this;
+        $self['twitter'] = $twitter;
 
-        return $obj;
+        return $self;
     }
 
     public function withUpdated(\DateTimeInterface $updated): self
     {
-        $obj = clone $this;
-        $obj['updated'] = $updated;
+        $self = clone $this;
+        $self['updated'] = $updated;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -397,9 +397,9 @@ final class BlogAuthor implements BaseModel
      */
     public function withWebsite(string $website): self
     {
-        $obj = clone $this;
-        $obj['website'] = $website;
+        $self = clone $this;
+        $self['website'] = $website;
 
-        return $obj;
+        return $self;
     }
 }

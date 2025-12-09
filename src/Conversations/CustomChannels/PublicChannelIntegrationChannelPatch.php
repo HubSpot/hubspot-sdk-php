@@ -89,16 +89,16 @@ final class PublicChannelIntegrationChannelPatch implements BaseModel
         mixed $name,
         mixed $webhookURL,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['capabilities'] = $capabilities;
-        $obj['channelAccountConnectionRedirectURL'] = $channelAccountConnectionRedirectURL;
-        $obj['channelDescription'] = $channelDescription;
-        $obj['channelLogoURL'] = $channelLogoURL;
-        $obj['name'] = $name;
-        $obj['webhookURL'] = $webhookURL;
+        $self['capabilities'] = $capabilities;
+        $self['channelAccountConnectionRedirectURL'] = $channelAccountConnectionRedirectURL;
+        $self['channelDescription'] = $channelDescription;
+        $self['channelLogoURL'] = $channelLogoURL;
+        $self['name'] = $name;
+        $self['webhookURL'] = $webhookURL;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -106,50 +106,50 @@ final class PublicChannelIntegrationChannelPatch implements BaseModel
      */
     public function withCapabilities(array $capabilities): self
     {
-        $obj = clone $this;
-        $obj['capabilities'] = $capabilities;
+        $self = clone $this;
+        $self['capabilities'] = $capabilities;
 
-        return $obj;
+        return $self;
     }
 
     public function withChannelAccountConnectionRedirectURL(
         mixed $channelAccountConnectionRedirectURL
     ): self {
-        $obj = clone $this;
-        $obj['channelAccountConnectionRedirectURL'] = $channelAccountConnectionRedirectURL;
+        $self = clone $this;
+        $self['channelAccountConnectionRedirectURL'] = $channelAccountConnectionRedirectURL;
 
-        return $obj;
+        return $self;
     }
 
     public function withChannelDescription(mixed $channelDescription): self
     {
-        $obj = clone $this;
-        $obj['channelDescription'] = $channelDescription;
+        $self = clone $this;
+        $self['channelDescription'] = $channelDescription;
 
-        return $obj;
+        return $self;
     }
 
     public function withChannelLogoURL(mixed $channelLogoURL): self
     {
-        $obj = clone $this;
-        $obj['channelLogoURL'] = $channelLogoURL;
+        $self = clone $this;
+        $self['channelLogoURL'] = $channelLogoURL;
 
-        return $obj;
+        return $self;
     }
 
     public function withName(mixed $name): self
     {
-        $obj = clone $this;
-        $obj['name'] = $name;
+        $self = clone $this;
+        $self['name'] = $name;
 
-        return $obj;
+        return $self;
     }
 
     public function withWebhookURL(mixed $webhookURL): self
     {
-        $obj = clone $this;
-        $obj['webhookURL'] = $webhookURL;
+        $self = clone $this;
+        $self['webhookURL'] = $webhookURL;
 
-        return $obj;
+        return $self;
     }
 }

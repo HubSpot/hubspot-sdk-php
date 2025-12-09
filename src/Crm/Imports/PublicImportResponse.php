@@ -139,38 +139,38 @@ final class PublicImportResponse implements BaseModel
         ImportSource|string|null $importSource = null,
         ImportTemplate|array|null $importTemplate = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['id'] = $id;
-        $obj['createdAt'] = $createdAt;
-        $obj['mappedObjectTypeIDs'] = $mappedObjectTypeIDs;
-        $obj['metadata'] = $metadata;
-        $obj['optOutImport'] = $optOutImport;
-        $obj['state'] = $state;
-        $obj['updatedAt'] = $updatedAt;
+        $self['id'] = $id;
+        $self['createdAt'] = $createdAt;
+        $self['mappedObjectTypeIDs'] = $mappedObjectTypeIDs;
+        $self['metadata'] = $metadata;
+        $self['optOutImport'] = $optOutImport;
+        $self['state'] = $state;
+        $self['updatedAt'] = $updatedAt;
 
-        null !== $importName && $obj['importName'] = $importName;
-        null !== $importRequestJson && $obj['importRequestJson'] = $importRequestJson;
-        null !== $importSource && $obj['importSource'] = $importSource;
-        null !== $importTemplate && $obj['importTemplate'] = $importTemplate;
+        null !== $importName && $self['importName'] = $importName;
+        null !== $importRequestJson && $self['importRequestJson'] = $importRequestJson;
+        null !== $importSource && $self['importSource'] = $importSource;
+        null !== $importTemplate && $self['importTemplate'] = $importTemplate;
 
-        return $obj;
+        return $self;
     }
 
     public function withID(string $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
-        $obj = clone $this;
-        $obj['createdAt'] = $createdAt;
+        $self = clone $this;
+        $self['createdAt'] = $createdAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -178,10 +178,10 @@ final class PublicImportResponse implements BaseModel
      */
     public function withMappedObjectTypeIDs(array $mappedObjectTypeIDs): self
     {
-        $obj = clone $this;
-        $obj['mappedObjectTypeIDs'] = $mappedObjectTypeIDs;
+        $self = clone $this;
+        $self['mappedObjectTypeIDs'] = $mappedObjectTypeIDs;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -193,10 +193,10 @@ final class PublicImportResponse implements BaseModel
      */
     public function withMetadata(PublicImportMetadata|array $metadata): self
     {
-        $obj = clone $this;
-        $obj['metadata'] = $metadata;
+        $self = clone $this;
+        $self['metadata'] = $metadata;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -204,10 +204,10 @@ final class PublicImportResponse implements BaseModel
      */
     public function withOptOutImport(bool $optOutImport): self
     {
-        $obj = clone $this;
-        $obj['optOutImport'] = $optOutImport;
+        $self = clone $this;
+        $self['optOutImport'] = $optOutImport;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -217,34 +217,34 @@ final class PublicImportResponse implements BaseModel
      */
     public function withState(State|string $state): self
     {
-        $obj = clone $this;
-        $obj['state'] = $state;
+        $self = clone $this;
+        $self['state'] = $state;
 
-        return $obj;
+        return $self;
     }
 
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
-        $obj = clone $this;
-        $obj['updatedAt'] = $updatedAt;
+        $self = clone $this;
+        $self['updatedAt'] = $updatedAt;
 
-        return $obj;
+        return $self;
     }
 
     public function withImportName(string $importName): self
     {
-        $obj = clone $this;
-        $obj['importName'] = $importName;
+        $self = clone $this;
+        $self['importName'] = $importName;
 
-        return $obj;
+        return $self;
     }
 
     public function withImportRequestJson(mixed $importRequestJson): self
     {
-        $obj = clone $this;
-        $obj['importRequestJson'] = $importRequestJson;
+        $self = clone $this;
+        $self['importRequestJson'] = $importRequestJson;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -252,10 +252,10 @@ final class PublicImportResponse implements BaseModel
      */
     public function withImportSource(ImportSource|string $importSource): self
     {
-        $obj = clone $this;
-        $obj['importSource'] = $importSource;
+        $self = clone $this;
+        $self['importSource'] = $importSource;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -266,9 +266,9 @@ final class PublicImportResponse implements BaseModel
     public function withImportTemplate(
         ImportTemplate|array $importTemplate
     ): self {
-        $obj = clone $this;
-        $obj['importTemplate'] = $importTemplate;
+        $self = clone $this;
+        $self['importTemplate'] = $importTemplate;
 
-        return $obj;
+        return $self;
     }
 }

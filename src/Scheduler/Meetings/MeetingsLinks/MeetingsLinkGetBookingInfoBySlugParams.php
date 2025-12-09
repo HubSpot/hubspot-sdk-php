@@ -56,11 +56,11 @@ final class MeetingsLinkGetBookingInfoBySlugParams implements BaseModel
      */
     public static function with(string $timezone): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['timezone'] = $timezone;
+        $self['timezone'] = $timezone;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -68,9 +68,9 @@ final class MeetingsLinkGetBookingInfoBySlugParams implements BaseModel
      */
     public function withTimezone(string $timezone): self
     {
-        $obj = clone $this;
-        $obj['timezone'] = $timezone;
+        $self = clone $this;
+        $self['timezone'] = $timezone;
 
-        return $obj;
+        return $self;
     }
 }

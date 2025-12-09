@@ -92,17 +92,17 @@ final class ExtensionData implements BaseModel
         RequiredPropertiesExtensionData|array|null $requiredPropertiesExtensionData = null,
         SoftRequiredPropertiesExtensionData|array|null $softRequiredPropertiesExtensionData = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['extensionStatusMap'] = $extensionStatusMap;
-        $obj['tags'] = $tags;
+        $self['extensionStatusMap'] = $extensionStatusMap;
+        $self['tags'] = $tags;
 
-        null !== $caseChangeTestExtensionData && $obj['caseChangeTestExtensionData'] = $caseChangeTestExtensionData;
-        null !== $optionDecoratorsExtensionData && $obj['optionDecoratorsExtensionData'] = $optionDecoratorsExtensionData;
-        null !== $requiredPropertiesExtensionData && $obj['requiredPropertiesExtensionData'] = $requiredPropertiesExtensionData;
-        null !== $softRequiredPropertiesExtensionData && $obj['softRequiredPropertiesExtensionData'] = $softRequiredPropertiesExtensionData;
+        null !== $caseChangeTestExtensionData && $self['caseChangeTestExtensionData'] = $caseChangeTestExtensionData;
+        null !== $optionDecoratorsExtensionData && $self['optionDecoratorsExtensionData'] = $optionDecoratorsExtensionData;
+        null !== $requiredPropertiesExtensionData && $self['requiredPropertiesExtensionData'] = $requiredPropertiesExtensionData;
+        null !== $softRequiredPropertiesExtensionData && $self['softRequiredPropertiesExtensionData'] = $softRequiredPropertiesExtensionData;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -110,10 +110,10 @@ final class ExtensionData implements BaseModel
      */
     public function withExtensionStatusMap(array $extensionStatusMap): self
     {
-        $obj = clone $this;
-        $obj['extensionStatusMap'] = $extensionStatusMap;
+        $self = clone $this;
+        $self['extensionStatusMap'] = $extensionStatusMap;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -121,10 +121,10 @@ final class ExtensionData implements BaseModel
      */
     public function withTags(array $tags): self
     {
-        $obj = clone $this;
-        $obj['tags'] = $tags;
+        $self = clone $this;
+        $self['tags'] = $tags;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -135,10 +135,10 @@ final class ExtensionData implements BaseModel
     public function withCaseChangeTestExtensionData(
         CaseChangeTestExtensionData|array $caseChangeTestExtensionData
     ): self {
-        $obj = clone $this;
-        $obj['caseChangeTestExtensionData'] = $caseChangeTestExtensionData;
+        $self = clone $this;
+        $self['caseChangeTestExtensionData'] = $caseChangeTestExtensionData;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -150,10 +150,10 @@ final class ExtensionData implements BaseModel
     public function withOptionDecoratorsExtensionData(
         OptionDecoratorsExtensionData|array $optionDecoratorsExtensionData
     ): self {
-        $obj = clone $this;
-        $obj['optionDecoratorsExtensionData'] = $optionDecoratorsExtensionData;
+        $self = clone $this;
+        $self['optionDecoratorsExtensionData'] = $optionDecoratorsExtensionData;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -164,10 +164,10 @@ final class ExtensionData implements BaseModel
     public function withRequiredPropertiesExtensionData(
         RequiredPropertiesExtensionData|array $requiredPropertiesExtensionData
     ): self {
-        $obj = clone $this;
-        $obj['requiredPropertiesExtensionData'] = $requiredPropertiesExtensionData;
+        $self = clone $this;
+        $self['requiredPropertiesExtensionData'] = $requiredPropertiesExtensionData;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -178,9 +178,9 @@ final class ExtensionData implements BaseModel
     public function withSoftRequiredPropertiesExtensionData(
         SoftRequiredPropertiesExtensionData|array $softRequiredPropertiesExtensionData,
     ): self {
-        $obj = clone $this;
-        $obj['softRequiredPropertiesExtensionData'] = $softRequiredPropertiesExtensionData;
+        $self = clone $this;
+        $self['softRequiredPropertiesExtensionData'] = $softRequiredPropertiesExtensionData;
 
-        return $obj;
+        return $self;
     }
 }

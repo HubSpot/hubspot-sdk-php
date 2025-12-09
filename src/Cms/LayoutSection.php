@@ -159,23 +159,23 @@ final class LayoutSection implements BaseModel
         int $w,
         int $x,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['cells'] = $cells;
-        $obj['cssClass'] = $cssClass;
-        $obj['cssID'] = $cssID;
-        $obj['cssStyle'] = $cssStyle;
-        $obj['label'] = $label;
-        $obj['name'] = $name;
-        $obj['params'] = $params;
-        $obj['rowMetaData'] = $rowMetaData;
-        $obj['rows'] = $rows;
-        $obj['styles'] = $styles;
-        $obj['type'] = $type;
-        $obj['w'] = $w;
-        $obj['x'] = $x;
+        $self['cells'] = $cells;
+        $self['cssClass'] = $cssClass;
+        $self['cssID'] = $cssID;
+        $self['cssStyle'] = $cssStyle;
+        $self['label'] = $label;
+        $self['name'] = $name;
+        $self['params'] = $params;
+        $self['rowMetaData'] = $rowMetaData;
+        $self['rows'] = $rows;
+        $self['styles'] = $styles;
+        $self['type'] = $type;
+        $self['w'] = $w;
+        $self['x'] = $x;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -183,50 +183,50 @@ final class LayoutSection implements BaseModel
      */
     public function withCells(array $cells): self
     {
-        $obj = clone $this;
-        $obj['cells'] = $cells;
+        $self = clone $this;
+        $self['cells'] = $cells;
 
-        return $obj;
+        return $self;
     }
 
     public function withCssClass(string $cssClass): self
     {
-        $obj = clone $this;
-        $obj['cssClass'] = $cssClass;
+        $self = clone $this;
+        $self['cssClass'] = $cssClass;
 
-        return $obj;
+        return $self;
     }
 
     public function withCssID(string $cssID): self
     {
-        $obj = clone $this;
-        $obj['cssID'] = $cssID;
+        $self = clone $this;
+        $self['cssID'] = $cssID;
 
-        return $obj;
+        return $self;
     }
 
     public function withCssStyle(string $cssStyle): self
     {
-        $obj = clone $this;
-        $obj['cssStyle'] = $cssStyle;
+        $self = clone $this;
+        $self['cssStyle'] = $cssStyle;
 
-        return $obj;
+        return $self;
     }
 
     public function withLabel(string $label): self
     {
-        $obj = clone $this;
-        $obj['label'] = $label;
+        $self = clone $this;
+        $self['label'] = $label;
 
-        return $obj;
+        return $self;
     }
 
     public function withName(string $name): self
     {
-        $obj = clone $this;
-        $obj['name'] = $name;
+        $self = clone $this;
+        $self['name'] = $name;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -236,10 +236,10 @@ final class LayoutSection implements BaseModel
      */
     public function withParams(array $params): self
     {
-        $obj = clone $this;
-        $obj['params'] = $params;
+        $self = clone $this;
+        $self['params'] = $params;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -247,10 +247,10 @@ final class LayoutSection implements BaseModel
      */
     public function withRowMetaData(array $rowMetaData): self
     {
-        $obj = clone $this;
-        $obj['rowMetaData'] = $rowMetaData;
+        $self = clone $this;
+        $self['rowMetaData'] = $rowMetaData;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -258,10 +258,10 @@ final class LayoutSection implements BaseModel
      */
     public function withRows(array $rows): self
     {
-        $obj = clone $this;
-        $obj['rows'] = $rows;
+        $self = clone $this;
+        $self['rows'] = $rows;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -278,33 +278,33 @@ final class LayoutSection implements BaseModel
      */
     public function withStyles(Styles|array $styles): self
     {
-        $obj = clone $this;
-        $obj['styles'] = $styles;
+        $self = clone $this;
+        $self['styles'] = $styles;
 
-        return $obj;
+        return $self;
     }
 
     public function withType(string $type): self
     {
-        $obj = clone $this;
-        $obj['type'] = $type;
+        $self = clone $this;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 
     public function withW(int $w): self
     {
-        $obj = clone $this;
-        $obj['w'] = $w;
+        $self = clone $this;
+        $self['w'] = $w;
 
-        return $obj;
+        return $self;
     }
 
     public function withX(int $x): self
     {
-        $obj = clone $this;
-        $obj['x'] = $x;
+        $self = clone $this;
+        $self['x'] = $x;
 
-        return $obj;
+        return $self;
     }
 }

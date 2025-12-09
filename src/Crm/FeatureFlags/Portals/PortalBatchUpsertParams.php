@@ -66,20 +66,20 @@ final class PortalBatchUpsertParams implements BaseModel
      */
     public static function with(int $appID, array $portalStates): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['appID'] = $appID;
-        $obj['portalStates'] = $portalStates;
+        $self['appID'] = $appID;
+        $self['portalStates'] = $portalStates;
 
-        return $obj;
+        return $self;
     }
 
     public function withAppID(int $appID): self
     {
-        $obj = clone $this;
-        $obj['appID'] = $appID;
+        $self = clone $this;
+        $self['appID'] = $appID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -89,9 +89,9 @@ final class PortalBatchUpsertParams implements BaseModel
      */
     public function withPortalStates(array $portalStates): self
     {
-        $obj = clone $this;
-        $obj['portalStates'] = $portalStates;
+        $self = clone $this;
+        $self['portalStates'] = $portalStates;
 
-        return $obj;
+        return $self;
     }
 }

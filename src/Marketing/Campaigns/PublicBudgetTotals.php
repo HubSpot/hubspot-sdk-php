@@ -101,17 +101,17 @@ final class PublicBudgetTotals implements BaseModel
         ?float $remainingBudget = null,
         ?float $spendTotal = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['budgetItems'] = $budgetItems;
-        $obj['currencyCode'] = $currencyCode;
-        $obj['spendItems'] = $spendItems;
+        $self['budgetItems'] = $budgetItems;
+        $self['currencyCode'] = $currencyCode;
+        $self['spendItems'] = $spendItems;
 
-        null !== $budgetTotal && $obj['budgetTotal'] = $budgetTotal;
-        null !== $remainingBudget && $obj['remainingBudget'] = $remainingBudget;
-        null !== $spendTotal && $obj['spendTotal'] = $spendTotal;
+        null !== $budgetTotal && $self['budgetTotal'] = $budgetTotal;
+        null !== $remainingBudget && $self['remainingBudget'] = $remainingBudget;
+        null !== $spendTotal && $self['spendTotal'] = $spendTotal;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -127,10 +127,10 @@ final class PublicBudgetTotals implements BaseModel
      */
     public function withBudgetItems(array $budgetItems): self
     {
-        $obj = clone $this;
-        $obj['budgetItems'] = $budgetItems;
+        $self = clone $this;
+        $self['budgetItems'] = $budgetItems;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -138,10 +138,10 @@ final class PublicBudgetTotals implements BaseModel
      */
     public function withCurrencyCode(CurrencyCode|string $currencyCode): self
     {
-        $obj = clone $this;
-        $obj['currencyCode'] = $currencyCode;
+        $self = clone $this;
+        $self['currencyCode'] = $currencyCode;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -157,33 +157,33 @@ final class PublicBudgetTotals implements BaseModel
      */
     public function withSpendItems(array $spendItems): self
     {
-        $obj = clone $this;
-        $obj['spendItems'] = $spendItems;
+        $self = clone $this;
+        $self['spendItems'] = $spendItems;
 
-        return $obj;
+        return $self;
     }
 
     public function withBudgetTotal(float $budgetTotal): self
     {
-        $obj = clone $this;
-        $obj['budgetTotal'] = $budgetTotal;
+        $self = clone $this;
+        $self['budgetTotal'] = $budgetTotal;
 
-        return $obj;
+        return $self;
     }
 
     public function withRemainingBudget(float $remainingBudget): self
     {
-        $obj = clone $this;
-        $obj['remainingBudget'] = $remainingBudget;
+        $self = clone $this;
+        $self['remainingBudget'] = $remainingBudget;
 
-        return $obj;
+        return $self;
     }
 
     public function withSpendTotal(float $spendTotal): self
     {
-        $obj = clone $this;
-        $obj['spendTotal'] = $spendTotal;
+        $self = clone $this;
+        $self['spendTotal'] = $spendTotal;
 
-        return $obj;
+        return $self;
     }
 }

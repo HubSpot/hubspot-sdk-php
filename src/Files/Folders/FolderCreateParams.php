@@ -72,14 +72,14 @@ final class FolderCreateParams implements BaseModel
         ?string $parentFolderID = null,
         ?string $parentPath = null
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['name'] = $name;
+        $self['name'] = $name;
 
-        null !== $parentFolderID && $obj['parentFolderID'] = $parentFolderID;
-        null !== $parentPath && $obj['parentPath'] = $parentPath;
+        null !== $parentFolderID && $self['parentFolderID'] = $parentFolderID;
+        null !== $parentPath && $self['parentPath'] = $parentPath;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -87,10 +87,10 @@ final class FolderCreateParams implements BaseModel
      */
     public function withName(string $name): self
     {
-        $obj = clone $this;
-        $obj['name'] = $name;
+        $self = clone $this;
+        $self['name'] = $name;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -98,10 +98,10 @@ final class FolderCreateParams implements BaseModel
      */
     public function withParentFolderID(string $parentFolderID): self
     {
-        $obj = clone $this;
-        $obj['parentFolderID'] = $parentFolderID;
+        $self = clone $this;
+        $self['parentFolderID'] = $parentFolderID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -109,9 +109,9 @@ final class FolderCreateParams implements BaseModel
      */
     public function withParentPath(string $parentPath): self
     {
-        $obj = clone $this;
-        $obj['parentPath'] = $parentPath;
+        $self = clone $this;
+        $self['parentPath'] = $parentPath;
 
-        return $obj;
+        return $self;
     }
 }

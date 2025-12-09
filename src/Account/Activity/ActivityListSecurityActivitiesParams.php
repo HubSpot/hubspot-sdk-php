@@ -75,15 +75,15 @@ final class ActivityListSecurityActivitiesParams implements BaseModel
         ?int $toTimestamp = null,
         ?int $userID = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $after && $obj['after'] = $after;
-        null !== $fromTimestamp && $obj['fromTimestamp'] = $fromTimestamp;
-        null !== $limit && $obj['limit'] = $limit;
-        null !== $toTimestamp && $obj['toTimestamp'] = $toTimestamp;
-        null !== $userID && $obj['userID'] = $userID;
+        null !== $after && $self['after'] = $after;
+        null !== $fromTimestamp && $self['fromTimestamp'] = $fromTimestamp;
+        null !== $limit && $self['limit'] = $limit;
+        null !== $toTimestamp && $self['toTimestamp'] = $toTimestamp;
+        null !== $userID && $self['userID'] = $userID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -91,10 +91,10 @@ final class ActivityListSecurityActivitiesParams implements BaseModel
      */
     public function withAfter(string $after): self
     {
-        $obj = clone $this;
-        $obj['after'] = $after;
+        $self = clone $this;
+        $self['after'] = $after;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -102,10 +102,10 @@ final class ActivityListSecurityActivitiesParams implements BaseModel
      */
     public function withFromTimestamp(int $fromTimestamp): self
     {
-        $obj = clone $this;
-        $obj['fromTimestamp'] = $fromTimestamp;
+        $self = clone $this;
+        $self['fromTimestamp'] = $fromTimestamp;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -113,10 +113,10 @@ final class ActivityListSecurityActivitiesParams implements BaseModel
      */
     public function withLimit(int $limit): self
     {
-        $obj = clone $this;
-        $obj['limit'] = $limit;
+        $self = clone $this;
+        $self['limit'] = $limit;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -124,10 +124,10 @@ final class ActivityListSecurityActivitiesParams implements BaseModel
      */
     public function withToTimestamp(int $toTimestamp): self
     {
-        $obj = clone $this;
-        $obj['toTimestamp'] = $toTimestamp;
+        $self = clone $this;
+        $self['toTimestamp'] = $toTimestamp;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -135,9 +135,9 @@ final class ActivityListSecurityActivitiesParams implements BaseModel
      */
     public function withUserID(int $userID): self
     {
-        $obj = clone $this;
-        $obj['userID'] = $userID;
+        $self = clone $this;
+        $self['userID'] = $userID;
 
-        return $obj;
+        return $self;
     }
 }

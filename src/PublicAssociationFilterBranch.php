@@ -243,34 +243,34 @@ final class PublicAssociationFilterBranch implements BaseModel
         string $operator,
         FilterBranchType|string $filterBranchType = 'ASSOCIATION',
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['associationCategory'] = $associationCategory;
-        $obj['associationTypeID'] = $associationTypeID;
-        $obj['filterBranches'] = $filterBranches;
-        $obj['filterBranchOperator'] = $filterBranchOperator;
-        $obj['filterBranchType'] = $filterBranchType;
-        $obj['filters'] = $filters;
-        $obj['objectTypeID'] = $objectTypeID;
-        $obj['operator'] = $operator;
+        $self['associationCategory'] = $associationCategory;
+        $self['associationTypeID'] = $associationTypeID;
+        $self['filterBranches'] = $filterBranches;
+        $self['filterBranchOperator'] = $filterBranchOperator;
+        $self['filterBranchType'] = $filterBranchType;
+        $self['filters'] = $filters;
+        $self['objectTypeID'] = $objectTypeID;
+        $self['operator'] = $operator;
 
-        return $obj;
+        return $self;
     }
 
     public function withAssociationCategory(string $associationCategory): self
     {
-        $obj = clone $this;
-        $obj['associationCategory'] = $associationCategory;
+        $self = clone $this;
+        $self['associationCategory'] = $associationCategory;
 
-        return $obj;
+        return $self;
     }
 
     public function withAssociationTypeID(int $associationTypeID): self
     {
-        $obj = clone $this;
-        $obj['associationTypeID'] = $associationTypeID;
+        $self = clone $this;
+        $self['associationTypeID'] = $associationTypeID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -278,18 +278,18 @@ final class PublicAssociationFilterBranch implements BaseModel
      */
     public function withFilterBranches(array $filterBranches): self
     {
-        $obj = clone $this;
-        $obj['filterBranches'] = $filterBranches;
+        $self = clone $this;
+        $self['filterBranches'] = $filterBranches;
 
-        return $obj;
+        return $self;
     }
 
     public function withFilterBranchOperator(string $filterBranchOperator): self
     {
-        $obj = clone $this;
-        $obj['filterBranchOperator'] = $filterBranchOperator;
+        $self = clone $this;
+        $self['filterBranchOperator'] = $filterBranchOperator;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -298,10 +298,10 @@ final class PublicAssociationFilterBranch implements BaseModel
     public function withFilterBranchType(
         FilterBranchType|string $filterBranchType
     ): self {
-        $obj = clone $this;
-        $obj['filterBranchType'] = $filterBranchType;
+        $self = clone $this;
+        $self['filterBranchType'] = $filterBranchType;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -438,25 +438,25 @@ final class PublicAssociationFilterBranch implements BaseModel
      */
     public function withFilters(array $filters): self
     {
-        $obj = clone $this;
-        $obj['filters'] = $filters;
+        $self = clone $this;
+        $self['filters'] = $filters;
 
-        return $obj;
+        return $self;
     }
 
     public function withObjectTypeID(string $objectTypeID): self
     {
-        $obj = clone $this;
-        $obj['objectTypeID'] = $objectTypeID;
+        $self = clone $this;
+        $self['objectTypeID'] = $objectTypeID;
 
-        return $obj;
+        return $self;
     }
 
     public function withOperator(string $operator): self
     {
-        $obj = clone $this;
-        $obj['operator'] = $operator;
+        $self = clone $this;
+        $self['operator'] = $operator;
 
-        return $obj;
+        return $self;
     }
 }

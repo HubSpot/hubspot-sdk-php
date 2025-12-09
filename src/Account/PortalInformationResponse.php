@@ -113,19 +113,19 @@ final class PortalInformationResponse implements BaseModel
         string $utcOffset,
         int $utcOffsetMilliseconds,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['accountType'] = $accountType;
-        $obj['additionalCurrencies'] = $additionalCurrencies;
-        $obj['companyCurrency'] = $companyCurrency;
-        $obj['dataHostingLocation'] = $dataHostingLocation;
-        $obj['portalID'] = $portalID;
-        $obj['timeZone'] = $timeZone;
-        $obj['uiDomain'] = $uiDomain;
-        $obj['utcOffset'] = $utcOffset;
-        $obj['utcOffsetMilliseconds'] = $utcOffsetMilliseconds;
+        $self['accountType'] = $accountType;
+        $self['additionalCurrencies'] = $additionalCurrencies;
+        $self['companyCurrency'] = $companyCurrency;
+        $self['dataHostingLocation'] = $dataHostingLocation;
+        $self['portalID'] = $portalID;
+        $self['timeZone'] = $timeZone;
+        $self['uiDomain'] = $uiDomain;
+        $self['utcOffset'] = $utcOffset;
+        $self['utcOffsetMilliseconds'] = $utcOffsetMilliseconds;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -133,10 +133,10 @@ final class PortalInformationResponse implements BaseModel
      */
     public function withAccountType(AccountType|string $accountType): self
     {
-        $obj = clone $this;
-        $obj['accountType'] = $accountType;
+        $self = clone $this;
+        $self['accountType'] = $accountType;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -144,65 +144,65 @@ final class PortalInformationResponse implements BaseModel
      */
     public function withAdditionalCurrencies(array $additionalCurrencies): self
     {
-        $obj = clone $this;
-        $obj['additionalCurrencies'] = $additionalCurrencies;
+        $self = clone $this;
+        $self['additionalCurrencies'] = $additionalCurrencies;
 
-        return $obj;
+        return $self;
     }
 
     public function withCompanyCurrency(string $companyCurrency): self
     {
-        $obj = clone $this;
-        $obj['companyCurrency'] = $companyCurrency;
+        $self = clone $this;
+        $self['companyCurrency'] = $companyCurrency;
 
-        return $obj;
+        return $self;
     }
 
     public function withDataHostingLocation(string $dataHostingLocation): self
     {
-        $obj = clone $this;
-        $obj['dataHostingLocation'] = $dataHostingLocation;
+        $self = clone $this;
+        $self['dataHostingLocation'] = $dataHostingLocation;
 
-        return $obj;
+        return $self;
     }
 
     public function withPortalID(int $portalID): self
     {
-        $obj = clone $this;
-        $obj['portalID'] = $portalID;
+        $self = clone $this;
+        $self['portalID'] = $portalID;
 
-        return $obj;
+        return $self;
     }
 
     public function withTimeZone(string $timeZone): self
     {
-        $obj = clone $this;
-        $obj['timeZone'] = $timeZone;
+        $self = clone $this;
+        $self['timeZone'] = $timeZone;
 
-        return $obj;
+        return $self;
     }
 
     public function withUiDomain(string $uiDomain): self
     {
-        $obj = clone $this;
-        $obj['uiDomain'] = $uiDomain;
+        $self = clone $this;
+        $self['uiDomain'] = $uiDomain;
 
-        return $obj;
+        return $self;
     }
 
     public function withUtcOffset(string $utcOffset): self
     {
-        $obj = clone $this;
-        $obj['utcOffset'] = $utcOffset;
+        $self = clone $this;
+        $self['utcOffset'] = $utcOffset;
 
-        return $obj;
+        return $self;
     }
 
     public function withUtcOffsetMilliseconds(int $utcOffsetMilliseconds): self
     {
-        $obj = clone $this;
-        $obj['utcOffsetMilliseconds'] = $utcOffsetMilliseconds;
+        $self = clone $this;
+        $self['utcOffsetMilliseconds'] = $utcOffsetMilliseconds;
 
-        return $obj;
+        return $self;
     }
 }

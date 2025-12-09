@@ -48,27 +48,27 @@ final class PublicDealSplitInput implements BaseModel
      */
     public static function with(int $ownerID, float $percentage): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['ownerID'] = $ownerID;
-        $obj['percentage'] = $percentage;
+        $self['ownerID'] = $ownerID;
+        $self['percentage'] = $percentage;
 
-        return $obj;
+        return $self;
     }
 
     public function withOwnerID(int $ownerID): self
     {
-        $obj = clone $this;
-        $obj['ownerID'] = $ownerID;
+        $self = clone $this;
+        $self['ownerID'] = $ownerID;
 
-        return $obj;
+        return $self;
     }
 
     public function withPercentage(float $percentage): self
     {
-        $obj = clone $this;
-        $obj['percentage'] = $percentage;
+        $self = clone $this;
+        $self['percentage'] = $percentage;
 
-        return $obj;
+        return $self;
     }
 }

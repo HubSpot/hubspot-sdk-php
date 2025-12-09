@@ -92,38 +92,38 @@ final class ExternalCalenderMeetingEventResponse implements BaseModel
         \DateTimeInterface $lastUpdatedAt,
         ExternalCalendarMeetingEventResponseProperties|array $properties,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['id'] = $id;
-        $obj['createdAt'] = $createdAt;
-        $obj['lastUpdatedAt'] = $lastUpdatedAt;
-        $obj['properties'] = $properties;
+        $self['id'] = $id;
+        $self['createdAt'] = $createdAt;
+        $self['lastUpdatedAt'] = $lastUpdatedAt;
+        $self['properties'] = $properties;
 
-        return $obj;
+        return $self;
     }
 
     public function withID(string $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
-        $obj = clone $this;
-        $obj['createdAt'] = $createdAt;
+        $self = clone $this;
+        $self['createdAt'] = $createdAt;
 
-        return $obj;
+        return $self;
     }
 
     public function withLastUpdatedAt(\DateTimeInterface $lastUpdatedAt): self
     {
-        $obj = clone $this;
-        $obj['lastUpdatedAt'] = $lastUpdatedAt;
+        $self = clone $this;
+        $self['lastUpdatedAt'] = $lastUpdatedAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -151,9 +151,9 @@ final class ExternalCalenderMeetingEventResponse implements BaseModel
     public function withProperties(
         ExternalCalendarMeetingEventResponseProperties|array $properties
     ): self {
-        $obj = clone $this;
-        $obj['properties'] = $properties;
+        $self = clone $this;
+        $self['properties'] = $properties;
 
-        return $obj;
+        return $self;
     }
 }

@@ -62,12 +62,12 @@ final class SettingsChangeRequest implements BaseModel
         string $targetURL,
         ThrottlingSettings|array $throttling
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['targetURL'] = $targetURL;
-        $obj['throttling'] = $throttling;
+        $self['targetURL'] = $targetURL;
+        $self['throttling'] = $throttling;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -75,10 +75,10 @@ final class SettingsChangeRequest implements BaseModel
      */
     public function withTargetURL(string $targetURL): self
     {
-        $obj = clone $this;
-        $obj['targetURL'] = $targetURL;
+        $self = clone $this;
+        $self['targetURL'] = $targetURL;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -88,9 +88,9 @@ final class SettingsChangeRequest implements BaseModel
      */
     public function withThrottling(ThrottlingSettings|array $throttling): self
     {
-        $obj = clone $this;
-        $obj['throttling'] = $throttling;
+        $self = clone $this;
+        $self['throttling'] = $throttling;
 
-        return $obj;
+        return $self;
     }
 }

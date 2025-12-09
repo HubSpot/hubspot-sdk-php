@@ -53,12 +53,12 @@ final class PublicExecutionTranslationRule implements BaseModel
      */
     public static function with(array $conditions, string $labelName): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['conditions'] = $conditions;
-        $obj['labelName'] = $labelName;
+        $self['conditions'] = $conditions;
+        $self['labelName'] = $labelName;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -66,17 +66,17 @@ final class PublicExecutionTranslationRule implements BaseModel
      */
     public function withConditions(array $conditions): self
     {
-        $obj = clone $this;
-        $obj['conditions'] = $conditions;
+        $self = clone $this;
+        $self['conditions'] = $conditions;
 
-        return $obj;
+        return $self;
     }
 
     public function withLabelName(string $labelName): self
     {
-        $obj = clone $this;
-        $obj['labelName'] = $labelName;
+        $self = clone $this;
+        $self['labelName'] = $labelName;
 
-        return $obj;
+        return $self;
     }
 }

@@ -63,13 +63,13 @@ final class PublicSurveyMonkeyFilter implements BaseModel
         string $surveyID,
         FilterType|string $filterType = 'SURVEY_MONKEY',
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['filterType'] = $filterType;
-        $obj['operator'] = $operator;
-        $obj['surveyID'] = $surveyID;
+        $self['filterType'] = $filterType;
+        $self['operator'] = $operator;
+        $self['surveyID'] = $surveyID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -77,25 +77,25 @@ final class PublicSurveyMonkeyFilter implements BaseModel
      */
     public function withFilterType(FilterType|string $filterType): self
     {
-        $obj = clone $this;
-        $obj['filterType'] = $filterType;
+        $self = clone $this;
+        $self['filterType'] = $filterType;
 
-        return $obj;
+        return $self;
     }
 
     public function withOperator(string $operator): self
     {
-        $obj = clone $this;
-        $obj['operator'] = $operator;
+        $self = clone $this;
+        $self['operator'] = $operator;
 
-        return $obj;
+        return $self;
     }
 
     public function withSurveyID(string $surveyID): self
     {
-        $obj = clone $this;
-        $obj['surveyID'] = $surveyID;
+        $self = clone $this;
+        $self['surveyID'] = $surveyID;
 
-        return $obj;
+        return $self;
     }
 }

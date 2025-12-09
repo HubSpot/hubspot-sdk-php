@@ -101,24 +101,24 @@ final class IntegratorObjectResult implements BaseModel
         array $tokens,
         ?string $linkURL = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['id'] = $id;
-        $obj['actions'] = $actions;
-        $obj['title'] = $title;
-        $obj['tokens'] = $tokens;
+        $self['id'] = $id;
+        $self['actions'] = $actions;
+        $self['title'] = $title;
+        $self['tokens'] = $tokens;
 
-        null !== $linkURL && $obj['linkURL'] = $linkURL;
+        null !== $linkURL && $self['linkURL'] = $linkURL;
 
-        return $obj;
+        return $self;
     }
 
     public function withID(string $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -140,18 +140,18 @@ final class IntegratorObjectResult implements BaseModel
      */
     public function withActions(array $actions): self
     {
-        $obj = clone $this;
-        $obj['actions'] = $actions;
+        $self = clone $this;
+        $self['actions'] = $actions;
 
-        return $obj;
+        return $self;
     }
 
     public function withTitle(string $title): self
     {
-        $obj = clone $this;
-        $obj['title'] = $title;
+        $self = clone $this;
+        $self['title'] = $title;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -164,17 +164,17 @@ final class IntegratorObjectResult implements BaseModel
      */
     public function withTokens(array $tokens): self
     {
-        $obj = clone $this;
-        $obj['tokens'] = $tokens;
+        $self = clone $this;
+        $self['tokens'] = $tokens;
 
-        return $obj;
+        return $self;
     }
 
     public function withLinkURL(string $linkURL): self
     {
-        $obj = clone $this;
-        $obj['linkURL'] = $linkURL;
+        $self = clone $this;
+        $self['linkURL'] = $linkURL;
 
-        return $obj;
+        return $self;
     }
 }

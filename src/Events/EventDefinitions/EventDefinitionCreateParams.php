@@ -107,16 +107,16 @@ final class EventDefinitionCreateParams implements BaseModel
         ?string $name = null,
         ?string $primaryObject = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['label'] = $label;
-        $obj['propertyDefinitions'] = $propertyDefinitions;
+        $self['label'] = $label;
+        $self['propertyDefinitions'] = $propertyDefinitions;
 
-        null !== $description && $obj['description'] = $description;
-        null !== $name && $obj['name'] = $name;
-        null !== $primaryObject && $obj['primaryObject'] = $primaryObject;
+        null !== $description && $self['description'] = $description;
+        null !== $name && $self['name'] = $name;
+        null !== $primaryObject && $self['primaryObject'] = $primaryObject;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -124,10 +124,10 @@ final class EventDefinitionCreateParams implements BaseModel
      */
     public function withLabel(string $label): self
     {
-        $obj = clone $this;
-        $obj['label'] = $label;
+        $self = clone $this;
+        $self['label'] = $label;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -143,10 +143,10 @@ final class EventDefinitionCreateParams implements BaseModel
      */
     public function withPropertyDefinitions(array $propertyDefinitions): self
     {
-        $obj = clone $this;
-        $obj['propertyDefinitions'] = $propertyDefinitions;
+        $self = clone $this;
+        $self['propertyDefinitions'] = $propertyDefinitions;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -154,10 +154,10 @@ final class EventDefinitionCreateParams implements BaseModel
      */
     public function withDescription(string $description): self
     {
-        $obj = clone $this;
-        $obj['description'] = $description;
+        $self = clone $this;
+        $self['description'] = $description;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -165,10 +165,10 @@ final class EventDefinitionCreateParams implements BaseModel
      */
     public function withName(string $name): self
     {
-        $obj = clone $this;
-        $obj['name'] = $name;
+        $self = clone $this;
+        $self['name'] = $name;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -176,9 +176,9 @@ final class EventDefinitionCreateParams implements BaseModel
      */
     public function withPrimaryObject(string $primaryObject): self
     {
-        $obj = clone $this;
-        $obj['primaryObject'] = $primaryObject;
+        $self = clone $this;
+        $self['primaryObject'] = $primaryObject;
 
-        return $obj;
+        return $self;
     }
 }

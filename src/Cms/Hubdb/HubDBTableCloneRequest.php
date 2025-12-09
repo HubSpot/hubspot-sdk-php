@@ -73,15 +73,15 @@ final class HubDBTableCloneRequest implements BaseModel
         ?string $newLabel = null,
         ?string $newName = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['copyRows'] = $copyRows;
-        $obj['isHubspotDefined'] = $isHubspotDefined;
+        $self['copyRows'] = $copyRows;
+        $self['isHubspotDefined'] = $isHubspotDefined;
 
-        null !== $newLabel && $obj['newLabel'] = $newLabel;
-        null !== $newName && $obj['newName'] = $newName;
+        null !== $newLabel && $self['newLabel'] = $newLabel;
+        null !== $newName && $self['newName'] = $newName;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -89,18 +89,18 @@ final class HubDBTableCloneRequest implements BaseModel
      */
     public function withCopyRows(bool $copyRows): self
     {
-        $obj = clone $this;
-        $obj['copyRows'] = $copyRows;
+        $self = clone $this;
+        $self['copyRows'] = $copyRows;
 
-        return $obj;
+        return $self;
     }
 
     public function withIsHubspotDefined(bool $isHubspotDefined): self
     {
-        $obj = clone $this;
-        $obj['isHubspotDefined'] = $isHubspotDefined;
+        $self = clone $this;
+        $self['isHubspotDefined'] = $isHubspotDefined;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -108,10 +108,10 @@ final class HubDBTableCloneRequest implements BaseModel
      */
     public function withNewLabel(string $newLabel): self
     {
-        $obj = clone $this;
-        $obj['newLabel'] = $newLabel;
+        $self = clone $this;
+        $self['newLabel'] = $newLabel;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -119,9 +119,9 @@ final class HubDBTableCloneRequest implements BaseModel
      */
     public function withNewName(string $newName): self
     {
-        $obj = clone $this;
-        $obj['newName'] = $newName;
+        $self = clone $this;
+        $self['newName'] = $newName;
 
-        return $obj;
+        return $self;
     }
 }

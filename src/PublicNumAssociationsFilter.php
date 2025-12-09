@@ -121,30 +121,30 @@ final class PublicNumAssociationsFilter implements BaseModel
         PublicNumOccurrencesRefineBy|array|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation $coalescingRefineBy,
         FilterType|string $filterType = 'NUM_ASSOCIATIONS',
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['associationCategory'] = $associationCategory;
-        $obj['associationTypeID'] = $associationTypeID;
-        $obj['coalescingRefineBy'] = $coalescingRefineBy;
-        $obj['filterType'] = $filterType;
+        $self['associationCategory'] = $associationCategory;
+        $self['associationTypeID'] = $associationTypeID;
+        $self['coalescingRefineBy'] = $coalescingRefineBy;
+        $self['filterType'] = $filterType;
 
-        return $obj;
+        return $self;
     }
 
     public function withAssociationCategory(string $associationCategory): self
     {
-        $obj = clone $this;
-        $obj['associationCategory'] = $associationCategory;
+        $self = clone $this;
+        $self['associationCategory'] = $associationCategory;
 
-        return $obj;
+        return $self;
     }
 
     public function withAssociationTypeID(int $associationTypeID): self
     {
-        $obj = clone $this;
-        $obj['associationTypeID'] = $associationTypeID;
+        $self = clone $this;
+        $self['associationTypeID'] = $associationTypeID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -195,10 +195,10 @@ final class PublicNumAssociationsFilter implements BaseModel
     public function withCoalescingRefineBy(
         PublicNumOccurrencesRefineBy|array|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation $coalescingRefineBy,
     ): self {
-        $obj = clone $this;
-        $obj['coalescingRefineBy'] = $coalescingRefineBy;
+        $self = clone $this;
+        $self['coalescingRefineBy'] = $coalescingRefineBy;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -206,9 +206,9 @@ final class PublicNumAssociationsFilter implements BaseModel
      */
     public function withFilterType(FilterType|string $filterType): self
     {
-        $obj = clone $this;
-        $obj['filterType'] = $filterType;
+        $self = clone $this;
+        $self['filterType'] = $filterType;
 
-        return $obj;
+        return $self;
     }
 }

@@ -100,81 +100,81 @@ final class Group implements BaseModel
         string $name,
         int $portalID,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['deleted'] = $deleted;
-        $obj['displayName'] = $displayName;
-        $obj['displayOrder'] = $displayOrder;
-        $obj['fulcrumPortalID'] = $fulcrumPortalID;
-        $obj['fulcrumTimestamp'] = $fulcrumTimestamp;
-        $obj['hubspotDefined'] = $hubspotDefined;
-        $obj['name'] = $name;
-        $obj['portalID'] = $portalID;
+        $self['deleted'] = $deleted;
+        $self['displayName'] = $displayName;
+        $self['displayOrder'] = $displayOrder;
+        $self['fulcrumPortalID'] = $fulcrumPortalID;
+        $self['fulcrumTimestamp'] = $fulcrumTimestamp;
+        $self['hubspotDefined'] = $hubspotDefined;
+        $self['name'] = $name;
+        $self['portalID'] = $portalID;
 
-        return $obj;
+        return $self;
     }
 
     public function withDeleted(bool $deleted): self
     {
-        $obj = clone $this;
-        $obj['deleted'] = $deleted;
+        $self = clone $this;
+        $self['deleted'] = $deleted;
 
-        return $obj;
+        return $self;
     }
 
     public function withDisplayName(string $displayName): self
     {
-        $obj = clone $this;
-        $obj['displayName'] = $displayName;
+        $self = clone $this;
+        $self['displayName'] = $displayName;
 
-        return $obj;
+        return $self;
     }
 
     public function withDisplayOrder(int $displayOrder): self
     {
-        $obj = clone $this;
-        $obj['displayOrder'] = $displayOrder;
+        $self = clone $this;
+        $self['displayOrder'] = $displayOrder;
 
-        return $obj;
+        return $self;
     }
 
     public function withFulcrumPortalID(int $fulcrumPortalID): self
     {
-        $obj = clone $this;
-        $obj['fulcrumPortalID'] = $fulcrumPortalID;
+        $self = clone $this;
+        $self['fulcrumPortalID'] = $fulcrumPortalID;
 
-        return $obj;
+        return $self;
     }
 
     public function withFulcrumTimestamp(int $fulcrumTimestamp): self
     {
-        $obj = clone $this;
-        $obj['fulcrumTimestamp'] = $fulcrumTimestamp;
+        $self = clone $this;
+        $self['fulcrumTimestamp'] = $fulcrumTimestamp;
 
-        return $obj;
+        return $self;
     }
 
     public function withHubspotDefined(bool $hubspotDefined): self
     {
-        $obj = clone $this;
-        $obj['hubspotDefined'] = $hubspotDefined;
+        $self = clone $this;
+        $self['hubspotDefined'] = $hubspotDefined;
 
-        return $obj;
+        return $self;
     }
 
     public function withName(string $name): self
     {
-        $obj = clone $this;
-        $obj['name'] = $name;
+        $self = clone $this;
+        $self['name'] = $name;
 
-        return $obj;
+        return $self;
     }
 
     public function withPortalID(int $portalID): self
     {
-        $obj = clone $this;
-        $obj['portalID'] = $portalID;
+        $self = clone $this;
+        $self['portalID'] = $portalID;
 
-        return $obj;
+        return $self;
     }
 }

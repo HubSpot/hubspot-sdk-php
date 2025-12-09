@@ -61,22 +61,22 @@ final class PublicActionFunction implements BaseModel
         FunctionType|string $functionType,
         ?string $id = null
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['functionSource'] = $functionSource;
-        $obj['functionType'] = $functionType;
+        $self['functionSource'] = $functionSource;
+        $self['functionType'] = $functionType;
 
-        null !== $id && $obj['id'] = $id;
+        null !== $id && $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     public function withFunctionSource(string $functionSource): self
     {
-        $obj = clone $this;
-        $obj['functionSource'] = $functionSource;
+        $self = clone $this;
+        $self['functionSource'] = $functionSource;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -84,17 +84,17 @@ final class PublicActionFunction implements BaseModel
      */
     public function withFunctionType(FunctionType|string $functionType): self
     {
-        $obj = clone $this;
-        $obj['functionType'] = $functionType;
+        $self = clone $this;
+        $self['functionType'] = $functionType;
 
-        return $obj;
+        return $self;
     }
 
     public function withID(string $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 }

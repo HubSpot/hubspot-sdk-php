@@ -48,27 +48,27 @@ final class PublicAssociationSpec implements BaseModel
      */
     public static function with(string $category, int $typeID): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['category'] = $category;
-        $obj['typeID'] = $typeID;
+        $self['category'] = $category;
+        $self['typeID'] = $typeID;
 
-        return $obj;
+        return $self;
     }
 
     public function withCategory(string $category): self
     {
-        $obj = clone $this;
-        $obj['category'] = $category;
+        $self = clone $this;
+        $self['category'] = $category;
 
-        return $obj;
+        return $self;
     }
 
     public function withTypeID(int $typeID): self
     {
-        $obj = clone $this;
-        $obj['typeID'] = $typeID;
+        $self = clone $this;
+        $self['typeID'] = $typeID;
 
-        return $obj;
+        return $self;
     }
 }

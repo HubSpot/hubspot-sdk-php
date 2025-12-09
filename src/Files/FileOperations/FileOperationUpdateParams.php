@@ -90,17 +90,17 @@ final class FileOperationUpdateParams implements BaseModel
         ?string $parentFolderID = null,
         ?string $parentFolderPath = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $access && $obj['access'] = $access;
-        null !== $clearExpires && $obj['clearExpires'] = $clearExpires;
-        null !== $expiresAt && $obj['expiresAt'] = $expiresAt;
-        null !== $isUsableInContent && $obj['isUsableInContent'] = $isUsableInContent;
-        null !== $name && $obj['name'] = $name;
-        null !== $parentFolderID && $obj['parentFolderID'] = $parentFolderID;
-        null !== $parentFolderPath && $obj['parentFolderPath'] = $parentFolderPath;
+        null !== $access && $self['access'] = $access;
+        null !== $clearExpires && $self['clearExpires'] = $clearExpires;
+        null !== $expiresAt && $self['expiresAt'] = $expiresAt;
+        null !== $isUsableInContent && $self['isUsableInContent'] = $isUsableInContent;
+        null !== $name && $self['name'] = $name;
+        null !== $parentFolderID && $self['parentFolderID'] = $parentFolderID;
+        null !== $parentFolderPath && $self['parentFolderPath'] = $parentFolderPath;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -110,26 +110,26 @@ final class FileOperationUpdateParams implements BaseModel
      */
     public function withAccess(Access|string $access): self
     {
-        $obj = clone $this;
-        $obj['access'] = $access;
+        $self = clone $this;
+        $self['access'] = $access;
 
-        return $obj;
+        return $self;
     }
 
     public function withClearExpires(bool $clearExpires): self
     {
-        $obj = clone $this;
-        $obj['clearExpires'] = $clearExpires;
+        $self = clone $this;
+        $self['clearExpires'] = $clearExpires;
 
-        return $obj;
+        return $self;
     }
 
     public function withExpiresAt(\DateTimeInterface $expiresAt): self
     {
-        $obj = clone $this;
-        $obj['expiresAt'] = $expiresAt;
+        $self = clone $this;
+        $self['expiresAt'] = $expiresAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -137,10 +137,10 @@ final class FileOperationUpdateParams implements BaseModel
      */
     public function withIsUsableInContent(bool $isUsableInContent): self
     {
-        $obj = clone $this;
-        $obj['isUsableInContent'] = $isUsableInContent;
+        $self = clone $this;
+        $self['isUsableInContent'] = $isUsableInContent;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -148,10 +148,10 @@ final class FileOperationUpdateParams implements BaseModel
      */
     public function withName(string $name): self
     {
-        $obj = clone $this;
-        $obj['name'] = $name;
+        $self = clone $this;
+        $self['name'] = $name;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -159,10 +159,10 @@ final class FileOperationUpdateParams implements BaseModel
      */
     public function withParentFolderID(string $parentFolderID): self
     {
-        $obj = clone $this;
-        $obj['parentFolderID'] = $parentFolderID;
+        $self = clone $this;
+        $self['parentFolderID'] = $parentFolderID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -170,9 +170,9 @@ final class FileOperationUpdateParams implements BaseModel
      */
     public function withParentFolderPath(string $parentFolderPath): self
     {
-        $obj = clone $this;
-        $obj['parentFolderPath'] = $parentFolderPath;
+        $self = clone $this;
+        $self['parentFolderPath'] = $parentFolderPath;
 
-        return $obj;
+        return $self;
     }
 }

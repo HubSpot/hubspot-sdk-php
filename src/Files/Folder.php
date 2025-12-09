@@ -112,19 +112,19 @@ final class Folder implements BaseModel
         ?string $parentFolderID = null,
         ?string $path = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['id'] = $id;
-        $obj['archived'] = $archived;
-        $obj['createdAt'] = $createdAt;
-        $obj['updatedAt'] = $updatedAt;
+        $self['id'] = $id;
+        $self['archived'] = $archived;
+        $self['createdAt'] = $createdAt;
+        $self['updatedAt'] = $updatedAt;
 
-        null !== $archivedAt && $obj['archivedAt'] = $archivedAt;
-        null !== $name && $obj['name'] = $name;
-        null !== $parentFolderID && $obj['parentFolderID'] = $parentFolderID;
-        null !== $path && $obj['path'] = $path;
+        null !== $archivedAt && $self['archivedAt'] = $archivedAt;
+        null !== $name && $self['name'] = $name;
+        null !== $parentFolderID && $self['parentFolderID'] = $parentFolderID;
+        null !== $path && $self['path'] = $path;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -132,10 +132,10 @@ final class Folder implements BaseModel
      */
     public function withID(string $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -143,10 +143,10 @@ final class Folder implements BaseModel
      */
     public function withArchived(bool $archived): self
     {
-        $obj = clone $this;
-        $obj['archived'] = $archived;
+        $self = clone $this;
+        $self['archived'] = $archived;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -154,10 +154,10 @@ final class Folder implements BaseModel
      */
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
-        $obj = clone $this;
-        $obj['createdAt'] = $createdAt;
+        $self = clone $this;
+        $self['createdAt'] = $createdAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -165,10 +165,10 @@ final class Folder implements BaseModel
      */
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
-        $obj = clone $this;
-        $obj['updatedAt'] = $updatedAt;
+        $self = clone $this;
+        $self['updatedAt'] = $updatedAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -176,10 +176,10 @@ final class Folder implements BaseModel
      */
     public function withArchivedAt(\DateTimeInterface $archivedAt): self
     {
-        $obj = clone $this;
-        $obj['archivedAt'] = $archivedAt;
+        $self = clone $this;
+        $self['archivedAt'] = $archivedAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -187,10 +187,10 @@ final class Folder implements BaseModel
      */
     public function withName(string $name): self
     {
-        $obj = clone $this;
-        $obj['name'] = $name;
+        $self = clone $this;
+        $self['name'] = $name;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -198,10 +198,10 @@ final class Folder implements BaseModel
      */
     public function withParentFolderID(string $parentFolderID): self
     {
-        $obj = clone $this;
-        $obj['parentFolderID'] = $parentFolderID;
+        $self = clone $this;
+        $self['parentFolderID'] = $parentFolderID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -209,9 +209,9 @@ final class Folder implements BaseModel
      */
     public function withPath(string $path): self
     {
-        $obj = clone $this;
-        $obj['path'] = $path;
+        $self = clone $this;
+        $self['path'] = $path;
 
-        return $obj;
+        return $self;
     }
 }

@@ -82,15 +82,15 @@ final class CardFetchBodyPatch implements BaseModel
         ?string $serverlessFunction = null,
         ?string $targetURL = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['objectTypes'] = $objectTypes;
+        $self['objectTypes'] = $objectTypes;
 
-        null !== $cardType && $obj['cardType'] = $cardType;
-        null !== $serverlessFunction && $obj['serverlessFunction'] = $serverlessFunction;
-        null !== $targetURL && $obj['targetURL'] = $targetURL;
+        null !== $cardType && $self['cardType'] = $cardType;
+        null !== $serverlessFunction && $self['serverlessFunction'] = $serverlessFunction;
+        null !== $targetURL && $self['targetURL'] = $targetURL;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -102,10 +102,10 @@ final class CardFetchBodyPatch implements BaseModel
      */
     public function withObjectTypes(array $objectTypes): self
     {
-        $obj = clone $this;
-        $obj['objectTypes'] = $objectTypes;
+        $self = clone $this;
+        $self['objectTypes'] = $objectTypes;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -113,18 +113,18 @@ final class CardFetchBodyPatch implements BaseModel
      */
     public function withCardType(CardType|string $cardType): self
     {
-        $obj = clone $this;
-        $obj['cardType'] = $cardType;
+        $self = clone $this;
+        $self['cardType'] = $cardType;
 
-        return $obj;
+        return $self;
     }
 
     public function withServerlessFunction(string $serverlessFunction): self
     {
-        $obj = clone $this;
-        $obj['serverlessFunction'] = $serverlessFunction;
+        $self = clone $this;
+        $self['serverlessFunction'] = $serverlessFunction;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -132,9 +132,9 @@ final class CardFetchBodyPatch implements BaseModel
      */
     public function withTargetURL(string $targetURL): self
     {
-        $obj = clone $this;
-        $obj['targetURL'] = $targetURL;
+        $self = clone $this;
+        $self['targetURL'] = $targetURL;
 
-        return $obj;
+        return $self;
     }
 }

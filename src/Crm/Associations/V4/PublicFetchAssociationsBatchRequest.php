@@ -57,13 +57,13 @@ final class PublicFetchAssociationsBatchRequest implements BaseModel
      */
     public static function with(string $id, ?string $after = null): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['id'] = $id;
+        $self['id'] = $id;
 
-        null !== $after && $obj['after'] = $after;
+        null !== $after && $self['after'] = $after;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -71,10 +71,10 @@ final class PublicFetchAssociationsBatchRequest implements BaseModel
      */
     public function withID(string $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -82,9 +82,9 @@ final class PublicFetchAssociationsBatchRequest implements BaseModel
      */
     public function withAfter(string $after): self
     {
-        $obj = clone $this;
-        $obj['after'] = $after;
+        $self = clone $this;
+        $self['after'] = $after;
 
-        return $obj;
+        return $self;
     }
 }

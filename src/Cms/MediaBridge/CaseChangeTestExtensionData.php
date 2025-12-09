@@ -45,18 +45,18 @@ final class CaseChangeTestExtensionData implements BaseModel
      */
     public static function with(string $mood): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['mood'] = $mood;
+        $self['mood'] = $mood;
 
-        return $obj;
+        return $self;
     }
 
     public function withMood(string $mood): self
     {
-        $obj = clone $this;
-        $obj['mood'] = $mood;
+        $self = clone $this;
+        $self['mood'] = $mood;
 
-        return $obj;
+        return $self;
     }
 }

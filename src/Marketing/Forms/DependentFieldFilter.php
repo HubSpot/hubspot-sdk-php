@@ -83,15 +83,15 @@ final class DependentFieldFilter implements BaseModel
         string $value,
         array $values,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['operator'] = $operator;
-        $obj['rangeEnd'] = $rangeEnd;
-        $obj['rangeStart'] = $rangeStart;
-        $obj['value'] = $value;
-        $obj['values'] = $values;
+        $self['operator'] = $operator;
+        $self['rangeEnd'] = $rangeEnd;
+        $self['rangeStart'] = $rangeStart;
+        $self['value'] = $value;
+        $self['values'] = $values;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -99,34 +99,34 @@ final class DependentFieldFilter implements BaseModel
      */
     public function withOperator(Operator|string $operator): self
     {
-        $obj = clone $this;
-        $obj['operator'] = $operator;
+        $self = clone $this;
+        $self['operator'] = $operator;
 
-        return $obj;
+        return $self;
     }
 
     public function withRangeEnd(string $rangeEnd): self
     {
-        $obj = clone $this;
-        $obj['rangeEnd'] = $rangeEnd;
+        $self = clone $this;
+        $self['rangeEnd'] = $rangeEnd;
 
-        return $obj;
+        return $self;
     }
 
     public function withRangeStart(string $rangeStart): self
     {
-        $obj = clone $this;
-        $obj['rangeStart'] = $rangeStart;
+        $self = clone $this;
+        $self['rangeStart'] = $rangeStart;
 
-        return $obj;
+        return $self;
     }
 
     public function withValue(string $value): self
     {
-        $obj = clone $this;
-        $obj['value'] = $value;
+        $self = clone $this;
+        $self['value'] = $value;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -134,9 +134,9 @@ final class DependentFieldFilter implements BaseModel
      */
     public function withValues(array $values): self
     {
-        $obj = clone $this;
-        $obj['values'] = $values;
+        $self = clone $this;
+        $self['values'] = $values;
 
-        return $obj;
+        return $self;
     }
 }

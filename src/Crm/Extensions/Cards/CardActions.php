@@ -54,11 +54,11 @@ final class CardActions implements BaseModel
      */
     public static function with(array $baseURLs): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['baseURLs'] = $baseURLs;
+        $self['baseURLs'] = $baseURLs;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -68,9 +68,9 @@ final class CardActions implements BaseModel
      */
     public function withBaseURLs(array $baseURLs): self
     {
-        $obj = clone $this;
-        $obj['baseURLs'] = $baseURLs;
+        $self = clone $this;
+        $self['baseURLs'] = $baseURLs;
 
-        return $obj;
+        return $self;
     }
 }

@@ -53,12 +53,12 @@ final class PublicEmailRecipients implements BaseModel
         ?array $exclude = null,
         ?array $include = null
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $exclude && $obj['exclude'] = $exclude;
-        null !== $include && $obj['include'] = $include;
+        null !== $exclude && $self['exclude'] = $exclude;
+        null !== $include && $self['include'] = $include;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -68,10 +68,10 @@ final class PublicEmailRecipients implements BaseModel
      */
     public function withExclude(array $exclude): self
     {
-        $obj = clone $this;
-        $obj['exclude'] = $exclude;
+        $self = clone $this;
+        $self['exclude'] = $exclude;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -81,9 +81,9 @@ final class PublicEmailRecipients implements BaseModel
      */
     public function withInclude(array $include): self
     {
-        $obj = clone $this;
-        $obj['include'] = $include;
+        $self = clone $this;
+        $self['include'] = $include;
 
-        return $obj;
+        return $self;
     }
 }

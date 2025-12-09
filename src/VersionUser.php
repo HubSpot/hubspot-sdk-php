@@ -67,13 +67,13 @@ final class VersionUser implements BaseModel
         string $email,
         string $fullName
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['id'] = $id;
-        $obj['email'] = $email;
-        $obj['fullName'] = $fullName;
+        $self['id'] = $id;
+        $self['email'] = $email;
+        $self['fullName'] = $fullName;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -81,10 +81,10 @@ final class VersionUser implements BaseModel
      */
     public function withID(string $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -92,10 +92,10 @@ final class VersionUser implements BaseModel
      */
     public function withEmail(string $email): self
     {
-        $obj = clone $this;
-        $obj['email'] = $email;
+        $self = clone $this;
+        $self['email'] = $email;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -103,9 +103,9 @@ final class VersionUser implements BaseModel
      */
     public function withFullName(string $fullName): self
     {
-        $obj = clone $this;
-        $obj['fullName'] = $fullName;
+        $self = clone $this;
+        $self['fullName'] = $fullName;
 
-        return $obj;
+        return $self;
     }
 }

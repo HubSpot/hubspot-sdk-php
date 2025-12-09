@@ -189,33 +189,33 @@ final class PropertyDefinition implements BaseModel
         DefaultRequirements|array|null $propertyRequirements = null,
         RollupExpression|array|null $rollupExpression = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['objectTypeID'] = $objectTypeID;
-        $obj['property'] = $property;
+        $self['objectTypeID'] = $objectTypeID;
+        $self['property'] = $property;
 
-        null !== $calculationExpression && $obj['calculationExpression'] = $calculationExpression;
-        null !== $calculationFormula && $obj['calculationFormula'] = $calculationFormula;
-        null !== $definitionSource && $obj['definitionSource'] = $definitionSource;
-        null !== $extensionData && $obj['extensionData'] = $extensionData;
-        null !== $externalOptionsMetaData && $obj['externalOptionsMetaData'] = $externalOptionsMetaData;
-        null !== $fulcrumPortalID && $obj['fulcrumPortalID'] = $fulcrumPortalID;
-        null !== $fulcrumTimestamp && $obj['fulcrumTimestamp'] = $fulcrumTimestamp;
-        null !== $janusGroup && $obj['janusGroup'] = $janusGroup;
-        null !== $permission && $obj['permission'] = $permission;
-        null !== $propertyDefinitionSource && $obj['propertyDefinitionSource'] = $propertyDefinitionSource;
-        null !== $propertyRequirements && $obj['propertyRequirements'] = $propertyRequirements;
-        null !== $rollupExpression && $obj['rollupExpression'] = $rollupExpression;
+        null !== $calculationExpression && $self['calculationExpression'] = $calculationExpression;
+        null !== $calculationFormula && $self['calculationFormula'] = $calculationFormula;
+        null !== $definitionSource && $self['definitionSource'] = $definitionSource;
+        null !== $extensionData && $self['extensionData'] = $extensionData;
+        null !== $externalOptionsMetaData && $self['externalOptionsMetaData'] = $externalOptionsMetaData;
+        null !== $fulcrumPortalID && $self['fulcrumPortalID'] = $fulcrumPortalID;
+        null !== $fulcrumTimestamp && $self['fulcrumTimestamp'] = $fulcrumTimestamp;
+        null !== $janusGroup && $self['janusGroup'] = $janusGroup;
+        null !== $permission && $self['permission'] = $permission;
+        null !== $propertyDefinitionSource && $self['propertyDefinitionSource'] = $propertyDefinitionSource;
+        null !== $propertyRequirements && $self['propertyRequirements'] = $propertyRequirements;
+        null !== $rollupExpression && $self['rollupExpression'] = $rollupExpression;
 
-        return $obj;
+        return $self;
     }
 
     public function withObjectTypeID(string $objectTypeID): self
     {
-        $obj = clone $this;
-        $obj['objectTypeID'] = $objectTypeID;
+        $self = clone $this;
+        $self['objectTypeID'] = $objectTypeID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -252,10 +252,10 @@ final class PropertyDefinition implements BaseModel
      */
     public function withProperty(Property|array $property): self
     {
-        $obj = clone $this;
-        $obj['property'] = $property;
+        $self = clone $this;
+        $self['property'] = $property;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -264,18 +264,18 @@ final class PropertyDefinition implements BaseModel
     public function withCalculationExpression(
         array $calculationExpression
     ): self {
-        $obj = clone $this;
-        $obj['calculationExpression'] = $calculationExpression;
+        $self = clone $this;
+        $self['calculationExpression'] = $calculationExpression;
 
-        return $obj;
+        return $self;
     }
 
     public function withCalculationFormula(string $calculationFormula): self
     {
-        $obj = clone $this;
-        $obj['calculationFormula'] = $calculationFormula;
+        $self = clone $this;
+        $self['calculationFormula'] = $calculationFormula;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -286,10 +286,10 @@ final class PropertyDefinition implements BaseModel
     public function withDefinitionSource(
         PropertyDefinitionSource|array $definitionSource
     ): self {
-        $obj = clone $this;
-        $obj['definitionSource'] = $definitionSource;
+        $self = clone $this;
+        $self['definitionSource'] = $definitionSource;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -304,10 +304,10 @@ final class PropertyDefinition implements BaseModel
      */
     public function withExtensionData(ExtensionData|array $extensionData): self
     {
-        $obj = clone $this;
-        $obj['extensionData'] = $extensionData;
+        $self = clone $this;
+        $self['extensionData'] = $extensionData;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -318,34 +318,34 @@ final class PropertyDefinition implements BaseModel
     public function withExternalOptionsMetaData(
         ExternalOptionsMetaData|array $externalOptionsMetaData
     ): self {
-        $obj = clone $this;
-        $obj['externalOptionsMetaData'] = $externalOptionsMetaData;
+        $self = clone $this;
+        $self['externalOptionsMetaData'] = $externalOptionsMetaData;
 
-        return $obj;
+        return $self;
     }
 
     public function withFulcrumPortalID(int $fulcrumPortalID): self
     {
-        $obj = clone $this;
-        $obj['fulcrumPortalID'] = $fulcrumPortalID;
+        $self = clone $this;
+        $self['fulcrumPortalID'] = $fulcrumPortalID;
 
-        return $obj;
+        return $self;
     }
 
     public function withFulcrumTimestamp(int $fulcrumTimestamp): self
     {
-        $obj = clone $this;
-        $obj['fulcrumTimestamp'] = $fulcrumTimestamp;
+        $self = clone $this;
+        $self['fulcrumTimestamp'] = $fulcrumTimestamp;
 
-        return $obj;
+        return $self;
     }
 
     public function withJanusGroup(string $janusGroup): self
     {
-        $obj = clone $this;
-        $obj['janusGroup'] = $janusGroup;
+        $self = clone $this;
+        $self['janusGroup'] = $janusGroup;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -353,10 +353,10 @@ final class PropertyDefinition implements BaseModel
      */
     public function withPermission(FieldLevelPermission|array $permission): self
     {
-        $obj = clone $this;
-        $obj['permission'] = $permission;
+        $self = clone $this;
+        $self['permission'] = $permission;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -367,10 +367,10 @@ final class PropertyDefinition implements BaseModel
     public function withPropertyDefinitionSource(
         DefinitionSource|array $propertyDefinitionSource
     ): self {
-        $obj = clone $this;
-        $obj['propertyDefinitionSource'] = $propertyDefinitionSource;
+        $self = clone $this;
+        $self['propertyDefinitionSource'] = $propertyDefinitionSource;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -384,10 +384,10 @@ final class PropertyDefinition implements BaseModel
     public function withPropertyRequirements(
         DefaultRequirements|array $propertyRequirements
     ): self {
-        $obj = clone $this;
-        $obj['propertyRequirements'] = $propertyRequirements;
+        $self = clone $this;
+        $self['propertyRequirements'] = $propertyRequirements;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -405,9 +405,9 @@ final class PropertyDefinition implements BaseModel
     public function withRollupExpression(
         RollupExpression|array $rollupExpression
     ): self {
-        $obj = clone $this;
-        $obj['rollupExpression'] = $rollupExpression;
+        $self = clone $this;
+        $self['rollupExpression'] = $rollupExpression;
 
-        return $obj;
+        return $self;
     }
 }

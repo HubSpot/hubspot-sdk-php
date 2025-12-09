@@ -57,11 +57,11 @@ final class ListFolderCreateResponse implements BaseModel
      */
     public static function with(PublicListFolder|array $folder): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['folder'] = $folder;
+        $self['folder'] = $folder;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -79,9 +79,9 @@ final class ListFolderCreateResponse implements BaseModel
      */
     public function withFolder(PublicListFolder|array $folder): self
     {
-        $obj = clone $this;
-        $obj['folder'] = $folder;
+        $self = clone $this;
+        $self['folder'] = $folder;
 
-        return $obj;
+        return $self;
     }
 }

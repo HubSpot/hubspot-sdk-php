@@ -218,32 +218,32 @@ final class File implements BaseModel
         ?string $url = null,
         ?int $width = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['id'] = $id;
-        $obj['access'] = $access;
-        $obj['archived'] = $archived;
-        $obj['createdAt'] = $createdAt;
-        $obj['updatedAt'] = $updatedAt;
+        $self['id'] = $id;
+        $self['access'] = $access;
+        $self['archived'] = $archived;
+        $self['createdAt'] = $createdAt;
+        $self['updatedAt'] = $updatedAt;
 
-        null !== $archivedAt && $obj['archivedAt'] = $archivedAt;
-        null !== $defaultHostingURL && $obj['defaultHostingURL'] = $defaultHostingURL;
-        null !== $encoding && $obj['encoding'] = $encoding;
-        null !== $expiresAt && $obj['expiresAt'] = $expiresAt;
-        null !== $extension && $obj['extension'] = $extension;
-        null !== $fileMd5 && $obj['fileMd5'] = $fileMd5;
-        null !== $height && $obj['height'] = $height;
-        null !== $isUsableInContent && $obj['isUsableInContent'] = $isUsableInContent;
-        null !== $name && $obj['name'] = $name;
-        null !== $parentFolderID && $obj['parentFolderID'] = $parentFolderID;
-        null !== $path && $obj['path'] = $path;
-        null !== $size && $obj['size'] = $size;
-        null !== $sourceGroup && $obj['sourceGroup'] = $sourceGroup;
-        null !== $type && $obj['type'] = $type;
-        null !== $url && $obj['url'] = $url;
-        null !== $width && $obj['width'] = $width;
+        null !== $archivedAt && $self['archivedAt'] = $archivedAt;
+        null !== $defaultHostingURL && $self['defaultHostingURL'] = $defaultHostingURL;
+        null !== $encoding && $self['encoding'] = $encoding;
+        null !== $expiresAt && $self['expiresAt'] = $expiresAt;
+        null !== $extension && $self['extension'] = $extension;
+        null !== $fileMd5 && $self['fileMd5'] = $fileMd5;
+        null !== $height && $self['height'] = $height;
+        null !== $isUsableInContent && $self['isUsableInContent'] = $isUsableInContent;
+        null !== $name && $self['name'] = $name;
+        null !== $parentFolderID && $self['parentFolderID'] = $parentFolderID;
+        null !== $path && $self['path'] = $path;
+        null !== $size && $self['size'] = $size;
+        null !== $sourceGroup && $self['sourceGroup'] = $sourceGroup;
+        null !== $type && $self['type'] = $type;
+        null !== $url && $self['url'] = $url;
+        null !== $width && $self['width'] = $width;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -251,10 +251,10 @@ final class File implements BaseModel
      */
     public function withID(string $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -264,10 +264,10 @@ final class File implements BaseModel
      */
     public function withAccess(Access|string $access): self
     {
-        $obj = clone $this;
-        $obj['access'] = $access;
+        $self = clone $this;
+        $self['access'] = $access;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -275,10 +275,10 @@ final class File implements BaseModel
      */
     public function withArchived(bool $archived): self
     {
-        $obj = clone $this;
-        $obj['archived'] = $archived;
+        $self = clone $this;
+        $self['archived'] = $archived;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -286,10 +286,10 @@ final class File implements BaseModel
      */
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
-        $obj = clone $this;
-        $obj['createdAt'] = $createdAt;
+        $self = clone $this;
+        $self['createdAt'] = $createdAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -297,10 +297,10 @@ final class File implements BaseModel
      */
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
-        $obj = clone $this;
-        $obj['updatedAt'] = $updatedAt;
+        $self = clone $this;
+        $self['updatedAt'] = $updatedAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -308,10 +308,10 @@ final class File implements BaseModel
      */
     public function withArchivedAt(\DateTimeInterface $archivedAt): self
     {
-        $obj = clone $this;
-        $obj['archivedAt'] = $archivedAt;
+        $self = clone $this;
+        $self['archivedAt'] = $archivedAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -319,10 +319,10 @@ final class File implements BaseModel
      */
     public function withDefaultHostingURL(string $defaultHostingURL): self
     {
-        $obj = clone $this;
-        $obj['defaultHostingURL'] = $defaultHostingURL;
+        $self = clone $this;
+        $self['defaultHostingURL'] = $defaultHostingURL;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -330,18 +330,18 @@ final class File implements BaseModel
      */
     public function withEncoding(string $encoding): self
     {
-        $obj = clone $this;
-        $obj['encoding'] = $encoding;
+        $self = clone $this;
+        $self['encoding'] = $encoding;
 
-        return $obj;
+        return $self;
     }
 
     public function withExpiresAt(int $expiresAt): self
     {
-        $obj = clone $this;
-        $obj['expiresAt'] = $expiresAt;
+        $self = clone $this;
+        $self['expiresAt'] = $expiresAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -349,10 +349,10 @@ final class File implements BaseModel
      */
     public function withExtension(string $extension): self
     {
-        $obj = clone $this;
-        $obj['extension'] = $extension;
+        $self = clone $this;
+        $self['extension'] = $extension;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -360,10 +360,10 @@ final class File implements BaseModel
      */
     public function withFileMd5(string $fileMd5): self
     {
-        $obj = clone $this;
-        $obj['fileMd5'] = $fileMd5;
+        $self = clone $this;
+        $self['fileMd5'] = $fileMd5;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -371,10 +371,10 @@ final class File implements BaseModel
      */
     public function withHeight(int $height): self
     {
-        $obj = clone $this;
-        $obj['height'] = $height;
+        $self = clone $this;
+        $self['height'] = $height;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -382,10 +382,10 @@ final class File implements BaseModel
      */
     public function withIsUsableInContent(bool $isUsableInContent): self
     {
-        $obj = clone $this;
-        $obj['isUsableInContent'] = $isUsableInContent;
+        $self = clone $this;
+        $self['isUsableInContent'] = $isUsableInContent;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -393,10 +393,10 @@ final class File implements BaseModel
      */
     public function withName(string $name): self
     {
-        $obj = clone $this;
-        $obj['name'] = $name;
+        $self = clone $this;
+        $self['name'] = $name;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -404,10 +404,10 @@ final class File implements BaseModel
      */
     public function withParentFolderID(string $parentFolderID): self
     {
-        $obj = clone $this;
-        $obj['parentFolderID'] = $parentFolderID;
+        $self = clone $this;
+        $self['parentFolderID'] = $parentFolderID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -415,10 +415,10 @@ final class File implements BaseModel
      */
     public function withPath(string $path): self
     {
-        $obj = clone $this;
-        $obj['path'] = $path;
+        $self = clone $this;
+        $self['path'] = $path;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -426,18 +426,18 @@ final class File implements BaseModel
      */
     public function withSize(int $size): self
     {
-        $obj = clone $this;
-        $obj['size'] = $size;
+        $self = clone $this;
+        $self['size'] = $size;
 
-        return $obj;
+        return $self;
     }
 
     public function withSourceGroup(string $sourceGroup): self
     {
-        $obj = clone $this;
-        $obj['sourceGroup'] = $sourceGroup;
+        $self = clone $this;
+        $self['sourceGroup'] = $sourceGroup;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -445,10 +445,10 @@ final class File implements BaseModel
      */
     public function withType(string $type): self
     {
-        $obj = clone $this;
-        $obj['type'] = $type;
+        $self = clone $this;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -456,10 +456,10 @@ final class File implements BaseModel
      */
     public function withURL(string $url): self
     {
-        $obj = clone $this;
-        $obj['url'] = $url;
+        $self = clone $this;
+        $self['url'] = $url;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -467,9 +467,9 @@ final class File implements BaseModel
      */
     public function withWidth(int $width): self
     {
-        $obj = clone $this;
-        $obj['width'] = $width;
+        $self = clone $this;
+        $self['width'] = $width;
 
-        return $obj;
+        return $self;
     }
 }

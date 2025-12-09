@@ -95,66 +95,66 @@ final class PublicChannelAccountStagingToken implements BaseModel
         ?string $accountName = null,
         PublicDeliveryIdentifier|array|null $deliveryIdentifier = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['accountToken'] = $accountToken;
-        $obj['createdAt'] = $createdAt;
-        $obj['genericChannelID'] = $genericChannelID;
-        $obj['inboxID'] = $inboxID;
-        $obj['userID'] = $userID;
+        $self['accountToken'] = $accountToken;
+        $self['createdAt'] = $createdAt;
+        $self['genericChannelID'] = $genericChannelID;
+        $self['inboxID'] = $inboxID;
+        $self['userID'] = $userID;
 
-        null !== $accountName && $obj['accountName'] = $accountName;
-        null !== $deliveryIdentifier && $obj['deliveryIdentifier'] = $deliveryIdentifier;
+        null !== $accountName && $self['accountName'] = $accountName;
+        null !== $deliveryIdentifier && $self['deliveryIdentifier'] = $deliveryIdentifier;
 
-        return $obj;
+        return $self;
     }
 
     public function withAccountToken(string $accountToken): self
     {
-        $obj = clone $this;
-        $obj['accountToken'] = $accountToken;
+        $self = clone $this;
+        $self['accountToken'] = $accountToken;
 
-        return $obj;
+        return $self;
     }
 
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
-        $obj = clone $this;
-        $obj['createdAt'] = $createdAt;
+        $self = clone $this;
+        $self['createdAt'] = $createdAt;
 
-        return $obj;
+        return $self;
     }
 
     public function withGenericChannelID(int $genericChannelID): self
     {
-        $obj = clone $this;
-        $obj['genericChannelID'] = $genericChannelID;
+        $self = clone $this;
+        $self['genericChannelID'] = $genericChannelID;
 
-        return $obj;
+        return $self;
     }
 
     public function withInboxID(int $inboxID): self
     {
-        $obj = clone $this;
-        $obj['inboxID'] = $inboxID;
+        $self = clone $this;
+        $self['inboxID'] = $inboxID;
 
-        return $obj;
+        return $self;
     }
 
     public function withUserID(int $userID): self
     {
-        $obj = clone $this;
-        $obj['userID'] = $userID;
+        $self = clone $this;
+        $self['userID'] = $userID;
 
-        return $obj;
+        return $self;
     }
 
     public function withAccountName(string $accountName): self
     {
-        $obj = clone $this;
-        $obj['accountName'] = $accountName;
+        $self = clone $this;
+        $self['accountName'] = $accountName;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -165,9 +165,9 @@ final class PublicChannelAccountStagingToken implements BaseModel
     public function withDeliveryIdentifier(
         PublicDeliveryIdentifier|array $deliveryIdentifier
     ): self {
-        $obj = clone $this;
-        $obj['deliveryIdentifier'] = $deliveryIdentifier;
+        $self = clone $this;
+        $self['deliveryIdentifier'] = $deliveryIdentifier;
 
-        return $obj;
+        return $self;
     }
 }

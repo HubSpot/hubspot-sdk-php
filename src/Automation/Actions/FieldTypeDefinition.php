@@ -124,38 +124,38 @@ final class FieldTypeDefinition implements BaseModel
         ?string $optionsURL = null,
         ReferencedObjectType|string|null $referencedObjectType = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['externalOptions'] = $externalOptions;
-        $obj['name'] = $name;
-        $obj['options'] = $options;
-        $obj['type'] = $type;
+        $self['externalOptions'] = $externalOptions;
+        $self['name'] = $name;
+        $self['options'] = $options;
+        $self['type'] = $type;
 
-        null !== $description && $obj['description'] = $description;
-        null !== $externalOptionsReferenceType && $obj['externalOptionsReferenceType'] = $externalOptionsReferenceType;
-        null !== $fieldType && $obj['fieldType'] = $fieldType;
-        null !== $helpText && $obj['helpText'] = $helpText;
-        null !== $label && $obj['label'] = $label;
-        null !== $optionsURL && $obj['optionsURL'] = $optionsURL;
-        null !== $referencedObjectType && $obj['referencedObjectType'] = $referencedObjectType;
+        null !== $description && $self['description'] = $description;
+        null !== $externalOptionsReferenceType && $self['externalOptionsReferenceType'] = $externalOptionsReferenceType;
+        null !== $fieldType && $self['fieldType'] = $fieldType;
+        null !== $helpText && $self['helpText'] = $helpText;
+        null !== $label && $self['label'] = $label;
+        null !== $optionsURL && $self['optionsURL'] = $optionsURL;
+        null !== $referencedObjectType && $self['referencedObjectType'] = $referencedObjectType;
 
-        return $obj;
+        return $self;
     }
 
     public function withExternalOptions(bool $externalOptions): self
     {
-        $obj = clone $this;
-        $obj['externalOptions'] = $externalOptions;
+        $self = clone $this;
+        $self['externalOptions'] = $externalOptions;
 
-        return $obj;
+        return $self;
     }
 
     public function withName(string $name): self
     {
-        $obj = clone $this;
-        $obj['name'] = $name;
+        $self = clone $this;
+        $self['name'] = $name;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -169,10 +169,10 @@ final class FieldTypeDefinition implements BaseModel
      */
     public function withOptions(array $options): self
     {
-        $obj = clone $this;
-        $obj['options'] = $options;
+        $self = clone $this;
+        $self['options'] = $options;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -180,27 +180,27 @@ final class FieldTypeDefinition implements BaseModel
      */
     public function withType(Type|string $type): self
     {
-        $obj = clone $this;
-        $obj['type'] = $type;
+        $self = clone $this;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 
     public function withDescription(string $description): self
     {
-        $obj = clone $this;
-        $obj['description'] = $description;
+        $self = clone $this;
+        $self['description'] = $description;
 
-        return $obj;
+        return $self;
     }
 
     public function withExternalOptionsReferenceType(
         string $externalOptionsReferenceType
     ): self {
-        $obj = clone $this;
-        $obj['externalOptionsReferenceType'] = $externalOptionsReferenceType;
+        $self = clone $this;
+        $self['externalOptionsReferenceType'] = $externalOptionsReferenceType;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -208,34 +208,34 @@ final class FieldTypeDefinition implements BaseModel
      */
     public function withFieldType(FieldType|string $fieldType): self
     {
-        $obj = clone $this;
-        $obj['fieldType'] = $fieldType;
+        $self = clone $this;
+        $self['fieldType'] = $fieldType;
 
-        return $obj;
+        return $self;
     }
 
     public function withHelpText(string $helpText): self
     {
-        $obj = clone $this;
-        $obj['helpText'] = $helpText;
+        $self = clone $this;
+        $self['helpText'] = $helpText;
 
-        return $obj;
+        return $self;
     }
 
     public function withLabel(string $label): self
     {
-        $obj = clone $this;
-        $obj['label'] = $label;
+        $self = clone $this;
+        $self['label'] = $label;
 
-        return $obj;
+        return $self;
     }
 
     public function withOptionsURL(string $optionsURL): self
     {
-        $obj = clone $this;
-        $obj['optionsURL'] = $optionsURL;
+        $self = clone $this;
+        $self['optionsURL'] = $optionsURL;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -244,9 +244,9 @@ final class FieldTypeDefinition implements BaseModel
     public function withReferencedObjectType(
         ReferencedObjectType|string $referencedObjectType
     ): self {
-        $obj = clone $this;
-        $obj['referencedObjectType'] = $referencedObjectType;
+        $self = clone $this;
+        $self['referencedObjectType'] = $referencedObjectType;
 
-        return $obj;
+        return $self;
     }
 }

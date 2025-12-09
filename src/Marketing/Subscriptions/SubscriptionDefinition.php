@@ -149,22 +149,22 @@ final class SubscriptionDefinition implements BaseModel
         ?string $communicationMethod = null,
         ?string $purpose = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['id'] = $id;
-        $obj['createdAt'] = $createdAt;
-        $obj['description'] = $description;
-        $obj['isActive'] = $isActive;
-        $obj['isDefault'] = $isDefault;
-        $obj['isInternal'] = $isInternal;
-        $obj['name'] = $name;
-        $obj['updatedAt'] = $updatedAt;
+        $self['id'] = $id;
+        $self['createdAt'] = $createdAt;
+        $self['description'] = $description;
+        $self['isActive'] = $isActive;
+        $self['isDefault'] = $isDefault;
+        $self['isInternal'] = $isInternal;
+        $self['name'] = $name;
+        $self['updatedAt'] = $updatedAt;
 
-        null !== $businessUnitID && $obj['businessUnitID'] = $businessUnitID;
-        null !== $communicationMethod && $obj['communicationMethod'] = $communicationMethod;
-        null !== $purpose && $obj['purpose'] = $purpose;
+        null !== $businessUnitID && $self['businessUnitID'] = $businessUnitID;
+        null !== $communicationMethod && $self['communicationMethod'] = $communicationMethod;
+        null !== $purpose && $self['purpose'] = $purpose;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -172,10 +172,10 @@ final class SubscriptionDefinition implements BaseModel
      */
     public function withID(string $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -183,10 +183,10 @@ final class SubscriptionDefinition implements BaseModel
      */
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
-        $obj = clone $this;
-        $obj['createdAt'] = $createdAt;
+        $self = clone $this;
+        $self['createdAt'] = $createdAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -194,10 +194,10 @@ final class SubscriptionDefinition implements BaseModel
      */
     public function withDescription(string $description): self
     {
-        $obj = clone $this;
-        $obj['description'] = $description;
+        $self = clone $this;
+        $self['description'] = $description;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -205,10 +205,10 @@ final class SubscriptionDefinition implements BaseModel
      */
     public function withIsActive(bool $isActive): self
     {
-        $obj = clone $this;
-        $obj['isActive'] = $isActive;
+        $self = clone $this;
+        $self['isActive'] = $isActive;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -216,10 +216,10 @@ final class SubscriptionDefinition implements BaseModel
      */
     public function withIsDefault(bool $isDefault): self
     {
-        $obj = clone $this;
-        $obj['isDefault'] = $isDefault;
+        $self = clone $this;
+        $self['isDefault'] = $isDefault;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -227,10 +227,10 @@ final class SubscriptionDefinition implements BaseModel
      */
     public function withIsInternal(bool $isInternal): self
     {
-        $obj = clone $this;
-        $obj['isInternal'] = $isInternal;
+        $self = clone $this;
+        $self['isInternal'] = $isInternal;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -238,10 +238,10 @@ final class SubscriptionDefinition implements BaseModel
      */
     public function withName(string $name): self
     {
-        $obj = clone $this;
-        $obj['name'] = $name;
+        $self = clone $this;
+        $self['name'] = $name;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -249,10 +249,10 @@ final class SubscriptionDefinition implements BaseModel
      */
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
-        $obj = clone $this;
-        $obj['updatedAt'] = $updatedAt;
+        $self = clone $this;
+        $self['updatedAt'] = $updatedAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -260,10 +260,10 @@ final class SubscriptionDefinition implements BaseModel
      */
     public function withBusinessUnitID(int $businessUnitID): self
     {
-        $obj = clone $this;
-        $obj['businessUnitID'] = $businessUnitID;
+        $self = clone $this;
+        $self['businessUnitID'] = $businessUnitID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -271,10 +271,10 @@ final class SubscriptionDefinition implements BaseModel
      */
     public function withCommunicationMethod(string $communicationMethod): self
     {
-        $obj = clone $this;
-        $obj['communicationMethod'] = $communicationMethod;
+        $self = clone $this;
+        $self['communicationMethod'] = $communicationMethod;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -282,9 +282,9 @@ final class SubscriptionDefinition implements BaseModel
      */
     public function withPurpose(string $purpose): self
     {
-        $obj = clone $this;
-        $obj['purpose'] = $purpose;
+        $self = clone $this;
+        $self['purpose'] = $purpose;
 
-        return $obj;
+        return $self;
     }
 }

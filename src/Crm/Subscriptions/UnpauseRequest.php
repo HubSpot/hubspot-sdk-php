@@ -45,19 +45,19 @@ final class UnpauseRequest implements BaseModel
      */
     public static function with(int $proposedNextBillingDate): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['proposedNextBillingDate'] = $proposedNextBillingDate;
+        $self['proposedNextBillingDate'] = $proposedNextBillingDate;
 
-        return $obj;
+        return $self;
     }
 
     public function withProposedNextBillingDate(
         int $proposedNextBillingDate
     ): self {
-        $obj = clone $this;
-        $obj['proposedNextBillingDate'] = $proposedNextBillingDate;
+        $self = clone $this;
+        $self['proposedNextBillingDate'] = $proposedNextBillingDate;
 
-        return $obj;
+        return $self;
     }
 }

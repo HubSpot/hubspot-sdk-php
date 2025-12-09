@@ -51,28 +51,28 @@ final class BehavioralEventTypeDefinitionLabels implements BaseModel
      */
     public static function with(string $singular, ?string $plural = null): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['singular'] = $singular;
+        $self['singular'] = $singular;
 
-        null !== $plural && $obj['plural'] = $plural;
+        null !== $plural && $self['plural'] = $plural;
 
-        return $obj;
+        return $self;
     }
 
     public function withSingular(string $singular): self
     {
-        $obj = clone $this;
-        $obj['singular'] = $singular;
+        $self = clone $this;
+        $self['singular'] = $singular;
 
-        return $obj;
+        return $self;
     }
 
     public function withPlural(string $plural): self
     {
-        $obj = clone $this;
-        $obj['plural'] = $plural;
+        $self = clone $this;
+        $self['plural'] = $plural;
 
-        return $obj;
+        return $self;
     }
 }

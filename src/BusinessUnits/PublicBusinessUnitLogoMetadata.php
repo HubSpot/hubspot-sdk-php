@@ -53,13 +53,13 @@ final class PublicBusinessUnitLogoMetadata implements BaseModel
         ?string $logoURL = null,
         ?string $resizedURL = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $logoAltText && $obj['logoAltText'] = $logoAltText;
-        null !== $logoURL && $obj['logoURL'] = $logoURL;
-        null !== $resizedURL && $obj['resizedURL'] = $resizedURL;
+        null !== $logoAltText && $self['logoAltText'] = $logoAltText;
+        null !== $logoURL && $self['logoURL'] = $logoURL;
+        null !== $resizedURL && $self['resizedURL'] = $resizedURL;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -67,10 +67,10 @@ final class PublicBusinessUnitLogoMetadata implements BaseModel
      */
     public function withLogoAltText(string $logoAltText): self
     {
-        $obj = clone $this;
-        $obj['logoAltText'] = $logoAltText;
+        $self = clone $this;
+        $self['logoAltText'] = $logoAltText;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -78,10 +78,10 @@ final class PublicBusinessUnitLogoMetadata implements BaseModel
      */
     public function withLogoURL(string $logoURL): self
     {
-        $obj = clone $this;
-        $obj['logoURL'] = $logoURL;
+        $self = clone $this;
+        $self['logoURL'] = $logoURL;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -89,9 +89,9 @@ final class PublicBusinessUnitLogoMetadata implements BaseModel
      */
     public function withResizedURL(string $resizedURL): self
     {
-        $obj = clone $this;
-        $obj['resizedURL'] = $resizedURL;
+        $self = clone $this;
+        $self['resizedURL'] = $resizedURL;
 
-        return $obj;
+        return $self;
     }
 }

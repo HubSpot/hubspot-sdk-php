@@ -57,37 +57,37 @@ final class QuickReply implements BaseModel
         string $valueType,
         ?string $label = null
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['value'] = $value;
-        $obj['valueType'] = $valueType;
+        $self['value'] = $value;
+        $self['valueType'] = $valueType;
 
-        null !== $label && $obj['label'] = $label;
+        null !== $label && $self['label'] = $label;
 
-        return $obj;
+        return $self;
     }
 
     public function withValue(string $value): self
     {
-        $obj = clone $this;
-        $obj['value'] = $value;
+        $self = clone $this;
+        $self['value'] = $value;
 
-        return $obj;
+        return $self;
     }
 
     public function withValueType(string $valueType): self
     {
-        $obj = clone $this;
-        $obj['valueType'] = $valueType;
+        $self = clone $this;
+        $self['valueType'] = $valueType;
 
-        return $obj;
+        return $self;
     }
 
     public function withLabel(string $label): self
     {
-        $obj = clone $this;
-        $obj['label'] = $label;
+        $self = clone $this;
+        $self['label'] = $label;
 
-        return $obj;
+        return $self;
     }
 }

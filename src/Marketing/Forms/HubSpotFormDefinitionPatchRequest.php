@@ -122,16 +122,16 @@ final class HubSpotFormDefinitionPatchRequest implements BaseModel
         LegalConsentOptionsNone|array|LegalConsentOptionsLegitimateInterest|LegalConsentOptionsExplicitConsentToProcess|LegalConsentOptionsImplicitConsentToProcess|null $legalConsentOptions = null,
         ?string $name = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $archived && $obj['archived'] = $archived;
-        null !== $configuration && $obj['configuration'] = $configuration;
-        null !== $displayOptions && $obj['displayOptions'] = $displayOptions;
-        null !== $fieldGroups && $obj['fieldGroups'] = $fieldGroups;
-        null !== $legalConsentOptions && $obj['legalConsentOptions'] = $legalConsentOptions;
-        null !== $name && $obj['name'] = $name;
+        null !== $archived && $self['archived'] = $archived;
+        null !== $configuration && $self['configuration'] = $configuration;
+        null !== $displayOptions && $self['displayOptions'] = $displayOptions;
+        null !== $fieldGroups && $self['fieldGroups'] = $fieldGroups;
+        null !== $legalConsentOptions && $self['legalConsentOptions'] = $legalConsentOptions;
+        null !== $name && $self['name'] = $name;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -139,10 +139,10 @@ final class HubSpotFormDefinitionPatchRequest implements BaseModel
      */
     public function withArchived(bool $archived): self
     {
-        $obj = clone $this;
-        $obj['archived'] = $archived;
+        $self = clone $this;
+        $self['archived'] = $archived;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -164,10 +164,10 @@ final class HubSpotFormDefinitionPatchRequest implements BaseModel
     public function withConfiguration(
         HubSpotFormConfiguration|array $configuration
     ): self {
-        $obj = clone $this;
-        $obj['configuration'] = $configuration;
+        $self = clone $this;
+        $self['configuration'] = $configuration;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -184,10 +184,10 @@ final class HubSpotFormDefinitionPatchRequest implements BaseModel
     public function withDisplayOptions(
         FormDisplayOptions|array $displayOptions
     ): self {
-        $obj = clone $this;
-        $obj['displayOptions'] = $displayOptions;
+        $self = clone $this;
+        $self['displayOptions'] = $displayOptions;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -197,10 +197,10 @@ final class HubSpotFormDefinitionPatchRequest implements BaseModel
      */
     public function withFieldGroups(array $fieldGroups): self
     {
-        $obj = clone $this;
-        $obj['fieldGroups'] = $fieldGroups;
+        $self = clone $this;
+        $self['fieldGroups'] = $fieldGroups;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -230,10 +230,10 @@ final class HubSpotFormDefinitionPatchRequest implements BaseModel
     public function withLegalConsentOptions(
         LegalConsentOptionsNone|array|LegalConsentOptionsLegitimateInterest|LegalConsentOptionsExplicitConsentToProcess|LegalConsentOptionsImplicitConsentToProcess $legalConsentOptions,
     ): self {
-        $obj = clone $this;
-        $obj['legalConsentOptions'] = $legalConsentOptions;
+        $self = clone $this;
+        $self['legalConsentOptions'] = $legalConsentOptions;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -241,9 +241,9 @@ final class HubSpotFormDefinitionPatchRequest implements BaseModel
      */
     public function withName(string $name): self
     {
-        $obj = clone $this;
-        $obj['name'] = $name;
+        $self = clone $this;
+        $self['name'] = $name;
 
-        return $obj;
+        return $self;
     }
 }

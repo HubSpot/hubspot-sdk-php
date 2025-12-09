@@ -86,68 +86,68 @@ final class SettingListParams implements BaseModel
         ?\DateTimeInterface $updatedAt = null,
         ?\DateTimeInterface $updatedBefore = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $after && $obj['after'] = $after;
-        null !== $archived && $obj['archived'] = $archived;
-        null !== $createdAfter && $obj['createdAfter'] = $createdAfter;
-        null !== $createdAt && $obj['createdAt'] = $createdAt;
-        null !== $createdBefore && $obj['createdBefore'] = $createdBefore;
-        null !== $limit && $obj['limit'] = $limit;
-        null !== $sort && $obj['sort'] = $sort;
-        null !== $updatedAfter && $obj['updatedAfter'] = $updatedAfter;
-        null !== $updatedAt && $obj['updatedAt'] = $updatedAt;
-        null !== $updatedBefore && $obj['updatedBefore'] = $updatedBefore;
+        null !== $after && $self['after'] = $after;
+        null !== $archived && $self['archived'] = $archived;
+        null !== $createdAfter && $self['createdAfter'] = $createdAfter;
+        null !== $createdAt && $self['createdAt'] = $createdAt;
+        null !== $createdBefore && $self['createdBefore'] = $createdBefore;
+        null !== $limit && $self['limit'] = $limit;
+        null !== $sort && $self['sort'] = $sort;
+        null !== $updatedAfter && $self['updatedAfter'] = $updatedAfter;
+        null !== $updatedAt && $self['updatedAt'] = $updatedAt;
+        null !== $updatedBefore && $self['updatedBefore'] = $updatedBefore;
 
-        return $obj;
+        return $self;
     }
 
     public function withAfter(string $after): self
     {
-        $obj = clone $this;
-        $obj['after'] = $after;
+        $self = clone $this;
+        $self['after'] = $after;
 
-        return $obj;
+        return $self;
     }
 
     public function withArchived(bool $archived): self
     {
-        $obj = clone $this;
-        $obj['archived'] = $archived;
+        $self = clone $this;
+        $self['archived'] = $archived;
 
-        return $obj;
+        return $self;
     }
 
     public function withCreatedAfter(\DateTimeInterface $createdAfter): self
     {
-        $obj = clone $this;
-        $obj['createdAfter'] = $createdAfter;
+        $self = clone $this;
+        $self['createdAfter'] = $createdAfter;
 
-        return $obj;
+        return $self;
     }
 
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
-        $obj = clone $this;
-        $obj['createdAt'] = $createdAt;
+        $self = clone $this;
+        $self['createdAt'] = $createdAt;
 
-        return $obj;
+        return $self;
     }
 
     public function withCreatedBefore(\DateTimeInterface $createdBefore): self
     {
-        $obj = clone $this;
-        $obj['createdBefore'] = $createdBefore;
+        $self = clone $this;
+        $self['createdBefore'] = $createdBefore;
 
-        return $obj;
+        return $self;
     }
 
     public function withLimit(int $limit): self
     {
-        $obj = clone $this;
-        $obj['limit'] = $limit;
+        $self = clone $this;
+        $self['limit'] = $limit;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -155,33 +155,33 @@ final class SettingListParams implements BaseModel
      */
     public function withSort(array $sort): self
     {
-        $obj = clone $this;
-        $obj['sort'] = $sort;
+        $self = clone $this;
+        $self['sort'] = $sort;
 
-        return $obj;
+        return $self;
     }
 
     public function withUpdatedAfter(\DateTimeInterface $updatedAfter): self
     {
-        $obj = clone $this;
-        $obj['updatedAfter'] = $updatedAfter;
+        $self = clone $this;
+        $self['updatedAfter'] = $updatedAfter;
 
-        return $obj;
+        return $self;
     }
 
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
-        $obj = clone $this;
-        $obj['updatedAt'] = $updatedAt;
+        $self = clone $this;
+        $self['updatedAt'] = $updatedAt;
 
-        return $obj;
+        return $self;
     }
 
     public function withUpdatedBefore(\DateTimeInterface $updatedBefore): self
     {
-        $obj = clone $this;
-        $obj['updatedBefore'] = $updatedBefore;
+        $self = clone $this;
+        $self['updatedBefore'] = $updatedBefore;
 
-        return $obj;
+        return $self;
     }
 }

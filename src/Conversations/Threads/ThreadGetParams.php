@@ -52,21 +52,21 @@ final class ThreadGetParams implements BaseModel
         ?array $association = null,
         ?string $property = null
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $archived && $obj['archived'] = $archived;
-        null !== $association && $obj['association'] = $association;
-        null !== $property && $obj['property'] = $property;
+        null !== $archived && $self['archived'] = $archived;
+        null !== $association && $self['association'] = $association;
+        null !== $property && $self['property'] = $property;
 
-        return $obj;
+        return $self;
     }
 
     public function withArchived(bool $archived): self
     {
-        $obj = clone $this;
-        $obj['archived'] = $archived;
+        $self = clone $this;
+        $self['archived'] = $archived;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -74,17 +74,17 @@ final class ThreadGetParams implements BaseModel
      */
     public function withAssociation(array $association): self
     {
-        $obj = clone $this;
-        $obj['association'] = $association;
+        $self = clone $this;
+        $self['association'] = $association;
 
-        return $obj;
+        return $self;
     }
 
     public function withProperty(string $property): self
     {
-        $obj = clone $this;
-        $obj['property'] = $property;
+        $self = clone $this;
+        $self['property'] = $property;
 
-        return $obj;
+        return $self;
     }
 }

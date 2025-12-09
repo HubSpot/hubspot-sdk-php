@@ -65,13 +65,13 @@ final class ExternalLinkAvailabilityAndBusyTimes implements BaseModel
         array $allUsersBusyTimes,
         ExternalLinkAvailability|array|null $linkAvailability = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['allUsersBusyTimes'] = $allUsersBusyTimes;
+        $self['allUsersBusyTimes'] = $allUsersBusyTimes;
 
-        null !== $linkAvailability && $obj['linkAvailability'] = $linkAvailability;
+        null !== $linkAvailability && $self['linkAvailability'] = $linkAvailability;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -83,10 +83,10 @@ final class ExternalLinkAvailabilityAndBusyTimes implements BaseModel
      */
     public function withAllUsersBusyTimes(array $allUsersBusyTimes): self
     {
-        $obj = clone $this;
-        $obj['allUsersBusyTimes'] = $allUsersBusyTimes;
+        $self = clone $this;
+        $self['allUsersBusyTimes'] = $allUsersBusyTimes;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -98,9 +98,9 @@ final class ExternalLinkAvailabilityAndBusyTimes implements BaseModel
     public function withLinkAvailability(
         ExternalLinkAvailability|array $linkAvailability
     ): self {
-        $obj = clone $this;
-        $obj['linkAvailability'] = $linkAvailability;
+        $self = clone $this;
+        $self['linkAvailability'] = $linkAvailability;
 
-        return $obj;
+        return $self;
     }
 }

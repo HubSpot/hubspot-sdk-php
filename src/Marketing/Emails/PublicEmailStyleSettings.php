@@ -212,97 +212,97 @@ final class PublicEmailStyleSettings implements BaseModel
         ?string $secondaryFontLineHeight = null,
         ?float $secondaryFontSize = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $backgroundColor && $obj['backgroundColor'] = $backgroundColor;
-        null !== $backgroundImage && $obj['backgroundImage'] = $backgroundImage;
-        null !== $backgroundImageType && $obj['backgroundImageType'] = $backgroundImageType;
-        null !== $bodyBorderColor && $obj['bodyBorderColor'] = $bodyBorderColor;
-        null !== $bodyBorderColorChoice && $obj['bodyBorderColorChoice'] = $bodyBorderColorChoice;
-        null !== $bodyBorderWidth && $obj['bodyBorderWidth'] = $bodyBorderWidth;
-        null !== $bodyColor && $obj['bodyColor'] = $bodyColor;
-        null !== $buttonStyleSettings && $obj['buttonStyleSettings'] = $buttonStyleSettings;
-        null !== $colorPickerFavorite1 && $obj['colorPickerFavorite1'] = $colorPickerFavorite1;
-        null !== $colorPickerFavorite2 && $obj['colorPickerFavorite2'] = $colorPickerFavorite2;
-        null !== $colorPickerFavorite3 && $obj['colorPickerFavorite3'] = $colorPickerFavorite3;
-        null !== $colorPickerFavorite4 && $obj['colorPickerFavorite4'] = $colorPickerFavorite4;
-        null !== $colorPickerFavorite5 && $obj['colorPickerFavorite5'] = $colorPickerFavorite5;
-        null !== $colorPickerFavorite6 && $obj['colorPickerFavorite6'] = $colorPickerFavorite6;
-        null !== $dividerStyleSettings && $obj['dividerStyleSettings'] = $dividerStyleSettings;
-        null !== $emailBodyPadding && $obj['emailBodyPadding'] = $emailBodyPadding;
-        null !== $emailBodyWidth && $obj['emailBodyWidth'] = $emailBodyWidth;
-        null !== $headingOneFont && $obj['headingOneFont'] = $headingOneFont;
-        null !== $headingTwoFont && $obj['headingTwoFont'] = $headingTwoFont;
-        null !== $linksFont && $obj['linksFont'] = $linksFont;
-        null !== $primaryAccentColor && $obj['primaryAccentColor'] = $primaryAccentColor;
-        null !== $primaryFont && $obj['primaryFont'] = $primaryFont;
-        null !== $primaryFontColor && $obj['primaryFontColor'] = $primaryFontColor;
-        null !== $primaryFontLineHeight && $obj['primaryFontLineHeight'] = $primaryFontLineHeight;
-        null !== $primaryFontSize && $obj['primaryFontSize'] = $primaryFontSize;
-        null !== $secondaryAccentColor && $obj['secondaryAccentColor'] = $secondaryAccentColor;
-        null !== $secondaryFont && $obj['secondaryFont'] = $secondaryFont;
-        null !== $secondaryFontColor && $obj['secondaryFontColor'] = $secondaryFontColor;
-        null !== $secondaryFontLineHeight && $obj['secondaryFontLineHeight'] = $secondaryFontLineHeight;
-        null !== $secondaryFontSize && $obj['secondaryFontSize'] = $secondaryFontSize;
+        null !== $backgroundColor && $self['backgroundColor'] = $backgroundColor;
+        null !== $backgroundImage && $self['backgroundImage'] = $backgroundImage;
+        null !== $backgroundImageType && $self['backgroundImageType'] = $backgroundImageType;
+        null !== $bodyBorderColor && $self['bodyBorderColor'] = $bodyBorderColor;
+        null !== $bodyBorderColorChoice && $self['bodyBorderColorChoice'] = $bodyBorderColorChoice;
+        null !== $bodyBorderWidth && $self['bodyBorderWidth'] = $bodyBorderWidth;
+        null !== $bodyColor && $self['bodyColor'] = $bodyColor;
+        null !== $buttonStyleSettings && $self['buttonStyleSettings'] = $buttonStyleSettings;
+        null !== $colorPickerFavorite1 && $self['colorPickerFavorite1'] = $colorPickerFavorite1;
+        null !== $colorPickerFavorite2 && $self['colorPickerFavorite2'] = $colorPickerFavorite2;
+        null !== $colorPickerFavorite3 && $self['colorPickerFavorite3'] = $colorPickerFavorite3;
+        null !== $colorPickerFavorite4 && $self['colorPickerFavorite4'] = $colorPickerFavorite4;
+        null !== $colorPickerFavorite5 && $self['colorPickerFavorite5'] = $colorPickerFavorite5;
+        null !== $colorPickerFavorite6 && $self['colorPickerFavorite6'] = $colorPickerFavorite6;
+        null !== $dividerStyleSettings && $self['dividerStyleSettings'] = $dividerStyleSettings;
+        null !== $emailBodyPadding && $self['emailBodyPadding'] = $emailBodyPadding;
+        null !== $emailBodyWidth && $self['emailBodyWidth'] = $emailBodyWidth;
+        null !== $headingOneFont && $self['headingOneFont'] = $headingOneFont;
+        null !== $headingTwoFont && $self['headingTwoFont'] = $headingTwoFont;
+        null !== $linksFont && $self['linksFont'] = $linksFont;
+        null !== $primaryAccentColor && $self['primaryAccentColor'] = $primaryAccentColor;
+        null !== $primaryFont && $self['primaryFont'] = $primaryFont;
+        null !== $primaryFontColor && $self['primaryFontColor'] = $primaryFontColor;
+        null !== $primaryFontLineHeight && $self['primaryFontLineHeight'] = $primaryFontLineHeight;
+        null !== $primaryFontSize && $self['primaryFontSize'] = $primaryFontSize;
+        null !== $secondaryAccentColor && $self['secondaryAccentColor'] = $secondaryAccentColor;
+        null !== $secondaryFont && $self['secondaryFont'] = $secondaryFont;
+        null !== $secondaryFontColor && $self['secondaryFontColor'] = $secondaryFontColor;
+        null !== $secondaryFontLineHeight && $self['secondaryFontLineHeight'] = $secondaryFontLineHeight;
+        null !== $secondaryFontSize && $self['secondaryFontSize'] = $secondaryFontSize;
 
-        return $obj;
+        return $self;
     }
 
     public function withBackgroundColor(string $backgroundColor): self
     {
-        $obj = clone $this;
-        $obj['backgroundColor'] = $backgroundColor;
+        $self = clone $this;
+        $self['backgroundColor'] = $backgroundColor;
 
-        return $obj;
+        return $self;
     }
 
     public function withBackgroundImage(string $backgroundImage): self
     {
-        $obj = clone $this;
-        $obj['backgroundImage'] = $backgroundImage;
+        $self = clone $this;
+        $self['backgroundImage'] = $backgroundImage;
 
-        return $obj;
+        return $self;
     }
 
     public function withBackgroundImageType(string $backgroundImageType): self
     {
-        $obj = clone $this;
-        $obj['backgroundImageType'] = $backgroundImageType;
+        $self = clone $this;
+        $self['backgroundImageType'] = $backgroundImageType;
 
-        return $obj;
+        return $self;
     }
 
     public function withBodyBorderColor(string $bodyBorderColor): self
     {
-        $obj = clone $this;
-        $obj['bodyBorderColor'] = $bodyBorderColor;
+        $self = clone $this;
+        $self['bodyBorderColor'] = $bodyBorderColor;
 
-        return $obj;
+        return $self;
     }
 
     public function withBodyBorderColorChoice(
         string $bodyBorderColorChoice
     ): self {
-        $obj = clone $this;
-        $obj['bodyBorderColorChoice'] = $bodyBorderColorChoice;
+        $self = clone $this;
+        $self['bodyBorderColorChoice'] = $bodyBorderColorChoice;
 
-        return $obj;
+        return $self;
     }
 
     public function withBodyBorderWidth(float $bodyBorderWidth): self
     {
-        $obj = clone $this;
-        $obj['bodyBorderWidth'] = $bodyBorderWidth;
+        $self = clone $this;
+        $self['bodyBorderWidth'] = $bodyBorderWidth;
 
-        return $obj;
+        return $self;
     }
 
     public function withBodyColor(string $bodyColor): self
     {
-        $obj = clone $this;
-        $obj['bodyColor'] = $bodyColor;
+        $self = clone $this;
+        $self['bodyColor'] = $bodyColor;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -315,58 +315,58 @@ final class PublicEmailStyleSettings implements BaseModel
     public function withButtonStyleSettings(
         PublicButtonStyleSettings|array $buttonStyleSettings
     ): self {
-        $obj = clone $this;
-        $obj['buttonStyleSettings'] = $buttonStyleSettings;
+        $self = clone $this;
+        $self['buttonStyleSettings'] = $buttonStyleSettings;
 
-        return $obj;
+        return $self;
     }
 
     public function withColorPickerFavorite1(string $colorPickerFavorite1): self
     {
-        $obj = clone $this;
-        $obj['colorPickerFavorite1'] = $colorPickerFavorite1;
+        $self = clone $this;
+        $self['colorPickerFavorite1'] = $colorPickerFavorite1;
 
-        return $obj;
+        return $self;
     }
 
     public function withColorPickerFavorite2(string $colorPickerFavorite2): self
     {
-        $obj = clone $this;
-        $obj['colorPickerFavorite2'] = $colorPickerFavorite2;
+        $self = clone $this;
+        $self['colorPickerFavorite2'] = $colorPickerFavorite2;
 
-        return $obj;
+        return $self;
     }
 
     public function withColorPickerFavorite3(string $colorPickerFavorite3): self
     {
-        $obj = clone $this;
-        $obj['colorPickerFavorite3'] = $colorPickerFavorite3;
+        $self = clone $this;
+        $self['colorPickerFavorite3'] = $colorPickerFavorite3;
 
-        return $obj;
+        return $self;
     }
 
     public function withColorPickerFavorite4(string $colorPickerFavorite4): self
     {
-        $obj = clone $this;
-        $obj['colorPickerFavorite4'] = $colorPickerFavorite4;
+        $self = clone $this;
+        $self['colorPickerFavorite4'] = $colorPickerFavorite4;
 
-        return $obj;
+        return $self;
     }
 
     public function withColorPickerFavorite5(string $colorPickerFavorite5): self
     {
-        $obj = clone $this;
-        $obj['colorPickerFavorite5'] = $colorPickerFavorite5;
+        $self = clone $this;
+        $self['colorPickerFavorite5'] = $colorPickerFavorite5;
 
-        return $obj;
+        return $self;
     }
 
     public function withColorPickerFavorite6(string $colorPickerFavorite6): self
     {
-        $obj = clone $this;
-        $obj['colorPickerFavorite6'] = $colorPickerFavorite6;
+        $self = clone $this;
+        $self['colorPickerFavorite6'] = $colorPickerFavorite6;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -377,26 +377,26 @@ final class PublicEmailStyleSettings implements BaseModel
     public function withDividerStyleSettings(
         PublicDividerStyleSettings|array $dividerStyleSettings
     ): self {
-        $obj = clone $this;
-        $obj['dividerStyleSettings'] = $dividerStyleSettings;
+        $self = clone $this;
+        $self['dividerStyleSettings'] = $dividerStyleSettings;
 
-        return $obj;
+        return $self;
     }
 
     public function withEmailBodyPadding(string $emailBodyPadding): self
     {
-        $obj = clone $this;
-        $obj['emailBodyPadding'] = $emailBodyPadding;
+        $self = clone $this;
+        $self['emailBodyPadding'] = $emailBodyPadding;
 
-        return $obj;
+        return $self;
     }
 
     public function withEmailBodyWidth(string $emailBodyWidth): self
     {
-        $obj = clone $this;
-        $obj['emailBodyWidth'] = $emailBodyWidth;
+        $self = clone $this;
+        $self['emailBodyWidth'] = $emailBodyWidth;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -412,10 +412,10 @@ final class PublicEmailStyleSettings implements BaseModel
     public function withHeadingOneFont(
         PublicFontStyle|array $headingOneFont
     ): self {
-        $obj = clone $this;
-        $obj['headingOneFont'] = $headingOneFont;
+        $self = clone $this;
+        $self['headingOneFont'] = $headingOneFont;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -431,10 +431,10 @@ final class PublicEmailStyleSettings implements BaseModel
     public function withHeadingTwoFont(
         PublicFontStyle|array $headingTwoFont
     ): self {
-        $obj = clone $this;
-        $obj['headingTwoFont'] = $headingTwoFont;
+        $self = clone $this;
+        $self['headingTwoFont'] = $headingTwoFont;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -449,91 +449,91 @@ final class PublicEmailStyleSettings implements BaseModel
      */
     public function withLinksFont(PublicFontStyle|array $linksFont): self
     {
-        $obj = clone $this;
-        $obj['linksFont'] = $linksFont;
+        $self = clone $this;
+        $self['linksFont'] = $linksFont;
 
-        return $obj;
+        return $self;
     }
 
     public function withPrimaryAccentColor(string $primaryAccentColor): self
     {
-        $obj = clone $this;
-        $obj['primaryAccentColor'] = $primaryAccentColor;
+        $self = clone $this;
+        $self['primaryAccentColor'] = $primaryAccentColor;
 
-        return $obj;
+        return $self;
     }
 
     public function withPrimaryFont(string $primaryFont): self
     {
-        $obj = clone $this;
-        $obj['primaryFont'] = $primaryFont;
+        $self = clone $this;
+        $self['primaryFont'] = $primaryFont;
 
-        return $obj;
+        return $self;
     }
 
     public function withPrimaryFontColor(string $primaryFontColor): self
     {
-        $obj = clone $this;
-        $obj['primaryFontColor'] = $primaryFontColor;
+        $self = clone $this;
+        $self['primaryFontColor'] = $primaryFontColor;
 
-        return $obj;
+        return $self;
     }
 
     public function withPrimaryFontLineHeight(
         string $primaryFontLineHeight
     ): self {
-        $obj = clone $this;
-        $obj['primaryFontLineHeight'] = $primaryFontLineHeight;
+        $self = clone $this;
+        $self['primaryFontLineHeight'] = $primaryFontLineHeight;
 
-        return $obj;
+        return $self;
     }
 
     public function withPrimaryFontSize(float $primaryFontSize): self
     {
-        $obj = clone $this;
-        $obj['primaryFontSize'] = $primaryFontSize;
+        $self = clone $this;
+        $self['primaryFontSize'] = $primaryFontSize;
 
-        return $obj;
+        return $self;
     }
 
     public function withSecondaryAccentColor(string $secondaryAccentColor): self
     {
-        $obj = clone $this;
-        $obj['secondaryAccentColor'] = $secondaryAccentColor;
+        $self = clone $this;
+        $self['secondaryAccentColor'] = $secondaryAccentColor;
 
-        return $obj;
+        return $self;
     }
 
     public function withSecondaryFont(string $secondaryFont): self
     {
-        $obj = clone $this;
-        $obj['secondaryFont'] = $secondaryFont;
+        $self = clone $this;
+        $self['secondaryFont'] = $secondaryFont;
 
-        return $obj;
+        return $self;
     }
 
     public function withSecondaryFontColor(string $secondaryFontColor): self
     {
-        $obj = clone $this;
-        $obj['secondaryFontColor'] = $secondaryFontColor;
+        $self = clone $this;
+        $self['secondaryFontColor'] = $secondaryFontColor;
 
-        return $obj;
+        return $self;
     }
 
     public function withSecondaryFontLineHeight(
         string $secondaryFontLineHeight
     ): self {
-        $obj = clone $this;
-        $obj['secondaryFontLineHeight'] = $secondaryFontLineHeight;
+        $self = clone $this;
+        $self['secondaryFontLineHeight'] = $secondaryFontLineHeight;
 
-        return $obj;
+        return $self;
     }
 
     public function withSecondaryFontSize(float $secondaryFontSize): self
     {
-        $obj = clone $this;
-        $obj['secondaryFontSize'] = $secondaryFontSize;
+        $self = clone $this;
+        $self['secondaryFontSize'] = $secondaryFontSize;
 
-        return $obj;
+        return $self;
     }
 }

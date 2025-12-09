@@ -104,17 +104,17 @@ final class PublicSingleSendEmail implements BaseModel
         ?array $replyTo = null,
         ?string $sendID = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['to'] = $to;
+        $self['to'] = $to;
 
-        null !== $bcc && $obj['bcc'] = $bcc;
-        null !== $cc && $obj['cc'] = $cc;
-        null !== $from && $obj['from'] = $from;
-        null !== $replyTo && $obj['replyTo'] = $replyTo;
-        null !== $sendID && $obj['sendID'] = $sendID;
+        null !== $bcc && $self['bcc'] = $bcc;
+        null !== $cc && $self['cc'] = $cc;
+        null !== $from && $self['from'] = $from;
+        null !== $replyTo && $self['replyTo'] = $replyTo;
+        null !== $sendID && $self['sendID'] = $sendID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -122,10 +122,10 @@ final class PublicSingleSendEmail implements BaseModel
      */
     public function withTo(string $to): self
     {
-        $obj = clone $this;
-        $obj['to'] = $to;
+        $self = clone $this;
+        $self['to'] = $to;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -135,10 +135,10 @@ final class PublicSingleSendEmail implements BaseModel
      */
     public function withBcc(array $bcc): self
     {
-        $obj = clone $this;
-        $obj['bcc'] = $bcc;
+        $self = clone $this;
+        $self['bcc'] = $bcc;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -148,10 +148,10 @@ final class PublicSingleSendEmail implements BaseModel
      */
     public function withCc(array $cc): self
     {
-        $obj = clone $this;
-        $obj['cc'] = $cc;
+        $self = clone $this;
+        $self['cc'] = $cc;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -159,10 +159,10 @@ final class PublicSingleSendEmail implements BaseModel
      */
     public function withFrom(string $from): self
     {
-        $obj = clone $this;
-        $obj['from'] = $from;
+        $self = clone $this;
+        $self['from'] = $from;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -172,10 +172,10 @@ final class PublicSingleSendEmail implements BaseModel
      */
     public function withReplyTo(array $replyTo): self
     {
-        $obj = clone $this;
-        $obj['replyTo'] = $replyTo;
+        $self = clone $this;
+        $self['replyTo'] = $replyTo;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -183,9 +183,9 @@ final class PublicSingleSendEmail implements BaseModel
      */
     public function withSendID(string $sendID): self
     {
-        $obj = clone $this;
-        $obj['sendID'] = $sendID;
+        $self = clone $this;
+        $self['sendID'] = $sendID;
 
-        return $obj;
+        return $self;
     }
 }

@@ -75,56 +75,56 @@ final class PublicEmailPatternResponse implements BaseModel
         \DateTimeInterface $updatedAt,
         ?int $threadEmailToStepOrder = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['id'] = $id;
-        $obj['createdAt'] = $createdAt;
-        $obj['templateID'] = $templateID;
-        $obj['updatedAt'] = $updatedAt;
+        $self['id'] = $id;
+        $self['createdAt'] = $createdAt;
+        $self['templateID'] = $templateID;
+        $self['updatedAt'] = $updatedAt;
 
-        null !== $threadEmailToStepOrder && $obj['threadEmailToStepOrder'] = $threadEmailToStepOrder;
+        null !== $threadEmailToStepOrder && $self['threadEmailToStepOrder'] = $threadEmailToStepOrder;
 
-        return $obj;
+        return $self;
     }
 
     public function withID(string $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
-        $obj = clone $this;
-        $obj['createdAt'] = $createdAt;
+        $self = clone $this;
+        $self['createdAt'] = $createdAt;
 
-        return $obj;
+        return $self;
     }
 
     public function withTemplateID(string $templateID): self
     {
-        $obj = clone $this;
-        $obj['templateID'] = $templateID;
+        $self = clone $this;
+        $self['templateID'] = $templateID;
 
-        return $obj;
+        return $self;
     }
 
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
-        $obj = clone $this;
-        $obj['updatedAt'] = $updatedAt;
+        $self = clone $this;
+        $self['updatedAt'] = $updatedAt;
 
-        return $obj;
+        return $self;
     }
 
     public function withThreadEmailToStepOrder(
         int $threadEmailToStepOrder
     ): self {
-        $obj = clone $this;
-        $obj['threadEmailToStepOrder'] = $threadEmailToStepOrder;
+        $self = clone $this;
+        $self['threadEmailToStepOrder'] = $threadEmailToStepOrder;
 
-        return $obj;
+        return $self;
     }
 }

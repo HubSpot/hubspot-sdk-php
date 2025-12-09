@@ -69,12 +69,12 @@ final class CollectionResponseWithTotalPublicListNoPaging implements BaseModel
      */
     public static function with(array $results, int $total): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['results'] = $results;
-        $obj['total'] = $total;
+        $self['results'] = $results;
+        $self['total'] = $total;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -96,17 +96,17 @@ final class CollectionResponseWithTotalPublicListNoPaging implements BaseModel
      */
     public function withResults(array $results): self
     {
-        $obj = clone $this;
-        $obj['results'] = $results;
+        $self = clone $this;
+        $self['results'] = $results;
 
-        return $obj;
+        return $self;
     }
 
     public function withTotal(int $total): self
     {
-        $obj = clone $this;
-        $obj['total'] = $total;
+        $self = clone $this;
+        $self['total'] = $total;
 
-        return $obj;
+        return $self;
     }
 }

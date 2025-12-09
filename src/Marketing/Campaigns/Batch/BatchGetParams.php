@@ -89,15 +89,15 @@ final class BatchGetParams implements BaseModel
         ?array $properties = null,
         ?string $startDate = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['inputs'] = $inputs;
+        $self['inputs'] = $inputs;
 
-        null !== $endDate && $obj['endDate'] = $endDate;
-        null !== $properties && $obj['properties'] = $properties;
-        null !== $startDate && $obj['startDate'] = $startDate;
+        null !== $endDate && $self['endDate'] = $endDate;
+        null !== $properties && $self['properties'] = $properties;
+        null !== $startDate && $self['startDate'] = $startDate;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -105,10 +105,10 @@ final class BatchGetParams implements BaseModel
      */
     public function withInputs(array $inputs): self
     {
-        $obj = clone $this;
-        $obj['inputs'] = $inputs;
+        $self = clone $this;
+        $self['inputs'] = $inputs;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -116,10 +116,10 @@ final class BatchGetParams implements BaseModel
      */
     public function withEndDate(string $endDate): self
     {
-        $obj = clone $this;
-        $obj['endDate'] = $endDate;
+        $self = clone $this;
+        $self['endDate'] = $endDate;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -129,10 +129,10 @@ final class BatchGetParams implements BaseModel
      */
     public function withProperties(array $properties): self
     {
-        $obj = clone $this;
-        $obj['properties'] = $properties;
+        $self = clone $this;
+        $self['properties'] = $properties;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -140,9 +140,9 @@ final class BatchGetParams implements BaseModel
      */
     public function withStartDate(string $startDate): self
     {
-        $obj = clone $this;
-        $obj['startDate'] = $startDate;
+        $self = clone $this;
+        $self['startDate'] = $startDate;
 
-        return $obj;
+        return $self;
     }
 }

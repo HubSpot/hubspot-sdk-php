@@ -78,33 +78,33 @@ final class LocationAttachment implements BaseModel
         ?string $name = null,
         ?string $url = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['latitude'] = $latitude;
-        $obj['longitude'] = $longitude;
-        $obj['type'] = $type;
+        $self['latitude'] = $latitude;
+        $self['longitude'] = $longitude;
+        $self['type'] = $type;
 
-        null !== $address && $obj['address'] = $address;
-        null !== $name && $obj['name'] = $name;
-        null !== $url && $obj['url'] = $url;
+        null !== $address && $self['address'] = $address;
+        null !== $name && $self['name'] = $name;
+        null !== $url && $self['url'] = $url;
 
-        return $obj;
+        return $self;
     }
 
     public function withLatitude(float $latitude): self
     {
-        $obj = clone $this;
-        $obj['latitude'] = $latitude;
+        $self = clone $this;
+        $self['latitude'] = $latitude;
 
-        return $obj;
+        return $self;
     }
 
     public function withLongitude(float $longitude): self
     {
-        $obj = clone $this;
-        $obj['longitude'] = $longitude;
+        $self = clone $this;
+        $self['longitude'] = $longitude;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -112,33 +112,33 @@ final class LocationAttachment implements BaseModel
      */
     public function withType(Type|string $type): self
     {
-        $obj = clone $this;
-        $obj['type'] = $type;
+        $self = clone $this;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 
     public function withAddress(string $address): self
     {
-        $obj = clone $this;
-        $obj['address'] = $address;
+        $self = clone $this;
+        $self['address'] = $address;
 
-        return $obj;
+        return $self;
     }
 
     public function withName(string $name): self
     {
-        $obj = clone $this;
-        $obj['name'] = $name;
+        $self = clone $this;
+        $self['name'] = $name;
 
-        return $obj;
+        return $self;
     }
 
     public function withURL(string $url): self
     {
-        $obj = clone $this;
-        $obj['url'] = $url;
+        $self = clone $this;
+        $self['url'] = $url;
 
-        return $obj;
+        return $self;
     }
 }

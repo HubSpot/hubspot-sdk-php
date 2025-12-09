@@ -138,34 +138,34 @@ final class PublicEmailEventFilter implements BaseModel
         ?string $clickURL = null,
         PublicNumOccurrencesRefineBy|array|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation|null $pruningRefineBy = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['appID'] = $appID;
-        $obj['emailID'] = $emailID;
-        $obj['filterType'] = $filterType;
-        $obj['level'] = $level;
-        $obj['operator'] = $operator;
+        $self['appID'] = $appID;
+        $self['emailID'] = $emailID;
+        $self['filterType'] = $filterType;
+        $self['level'] = $level;
+        $self['operator'] = $operator;
 
-        null !== $clickURL && $obj['clickURL'] = $clickURL;
-        null !== $pruningRefineBy && $obj['pruningRefineBy'] = $pruningRefineBy;
+        null !== $clickURL && $self['clickURL'] = $clickURL;
+        null !== $pruningRefineBy && $self['pruningRefineBy'] = $pruningRefineBy;
 
-        return $obj;
+        return $self;
     }
 
     public function withAppID(string $appID): self
     {
-        $obj = clone $this;
-        $obj['appID'] = $appID;
+        $self = clone $this;
+        $self['appID'] = $appID;
 
-        return $obj;
+        return $self;
     }
 
     public function withEmailID(string $emailID): self
     {
-        $obj = clone $this;
-        $obj['emailID'] = $emailID;
+        $self = clone $this;
+        $self['emailID'] = $emailID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -173,18 +173,18 @@ final class PublicEmailEventFilter implements BaseModel
      */
     public function withFilterType(FilterType|string $filterType): self
     {
-        $obj = clone $this;
-        $obj['filterType'] = $filterType;
+        $self = clone $this;
+        $self['filterType'] = $filterType;
 
-        return $obj;
+        return $self;
     }
 
     public function withLevel(string $level): self
     {
-        $obj = clone $this;
-        $obj['level'] = $level;
+        $self = clone $this;
+        $self['level'] = $level;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -192,18 +192,18 @@ final class PublicEmailEventFilter implements BaseModel
      */
     public function withOperator(Operator|string $operator): self
     {
-        $obj = clone $this;
-        $obj['operator'] = $operator;
+        $self = clone $this;
+        $self['operator'] = $operator;
 
-        return $obj;
+        return $self;
     }
 
     public function withClickURL(string $clickURL): self
     {
-        $obj = clone $this;
-        $obj['clickURL'] = $clickURL;
+        $self = clone $this;
+        $self['clickURL'] = $clickURL;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -254,9 +254,9 @@ final class PublicEmailEventFilter implements BaseModel
     public function withPruningRefineBy(
         PublicNumOccurrencesRefineBy|array|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation $pruningRefineBy,
     ): self {
-        $obj = clone $this;
-        $obj['pruningRefineBy'] = $pruningRefineBy;
+        $self = clone $this;
+        $self['pruningRefineBy'] = $pruningRefineBy;
 
-        return $obj;
+        return $self;
     }
 }

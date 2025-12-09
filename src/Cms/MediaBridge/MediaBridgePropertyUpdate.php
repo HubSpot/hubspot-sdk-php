@@ -100,45 +100,45 @@ final class MediaBridgePropertyUpdate implements BaseModel
         ?array $options = null,
         Type|string|null $type = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $calculationFormula && $obj['calculationFormula'] = $calculationFormula;
-        null !== $description && $obj['description'] = $description;
-        null !== $displayOrder && $obj['displayOrder'] = $displayOrder;
-        null !== $fieldType && $obj['fieldType'] = $fieldType;
-        null !== $formField && $obj['formField'] = $formField;
-        null !== $groupName && $obj['groupName'] = $groupName;
-        null !== $hasUniqueValue && $obj['hasUniqueValue'] = $hasUniqueValue;
-        null !== $hidden && $obj['hidden'] = $hidden;
-        null !== $label && $obj['label'] = $label;
-        null !== $options && $obj['options'] = $options;
-        null !== $type && $obj['type'] = $type;
+        null !== $calculationFormula && $self['calculationFormula'] = $calculationFormula;
+        null !== $description && $self['description'] = $description;
+        null !== $displayOrder && $self['displayOrder'] = $displayOrder;
+        null !== $fieldType && $self['fieldType'] = $fieldType;
+        null !== $formField && $self['formField'] = $formField;
+        null !== $groupName && $self['groupName'] = $groupName;
+        null !== $hasUniqueValue && $self['hasUniqueValue'] = $hasUniqueValue;
+        null !== $hidden && $self['hidden'] = $hidden;
+        null !== $label && $self['label'] = $label;
+        null !== $options && $self['options'] = $options;
+        null !== $type && $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 
     public function withCalculationFormula(string $calculationFormula): self
     {
-        $obj = clone $this;
-        $obj['calculationFormula'] = $calculationFormula;
+        $self = clone $this;
+        $self['calculationFormula'] = $calculationFormula;
 
-        return $obj;
+        return $self;
     }
 
     public function withDescription(string $description): self
     {
-        $obj = clone $this;
-        $obj['description'] = $description;
+        $self = clone $this;
+        $self['description'] = $description;
 
-        return $obj;
+        return $self;
     }
 
     public function withDisplayOrder(int $displayOrder): self
     {
-        $obj = clone $this;
-        $obj['displayOrder'] = $displayOrder;
+        $self = clone $this;
+        $self['displayOrder'] = $displayOrder;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -146,50 +146,50 @@ final class MediaBridgePropertyUpdate implements BaseModel
      */
     public function withFieldType(FieldType|string $fieldType): self
     {
-        $obj = clone $this;
-        $obj['fieldType'] = $fieldType;
+        $self = clone $this;
+        $self['fieldType'] = $fieldType;
 
-        return $obj;
+        return $self;
     }
 
     public function withFormField(bool $formField): self
     {
-        $obj = clone $this;
-        $obj['formField'] = $formField;
+        $self = clone $this;
+        $self['formField'] = $formField;
 
-        return $obj;
+        return $self;
     }
 
     public function withGroupName(string $groupName): self
     {
-        $obj = clone $this;
-        $obj['groupName'] = $groupName;
+        $self = clone $this;
+        $self['groupName'] = $groupName;
 
-        return $obj;
+        return $self;
     }
 
     public function withHasUniqueValue(bool $hasUniqueValue): self
     {
-        $obj = clone $this;
-        $obj['hasUniqueValue'] = $hasUniqueValue;
+        $self = clone $this;
+        $self['hasUniqueValue'] = $hasUniqueValue;
 
-        return $obj;
+        return $self;
     }
 
     public function withHidden(bool $hidden): self
     {
-        $obj = clone $this;
-        $obj['hidden'] = $hidden;
+        $self = clone $this;
+        $self['hidden'] = $hidden;
 
-        return $obj;
+        return $self;
     }
 
     public function withLabel(string $label): self
     {
-        $obj = clone $this;
-        $obj['label'] = $label;
+        $self = clone $this;
+        $self['label'] = $label;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -203,10 +203,10 @@ final class MediaBridgePropertyUpdate implements BaseModel
      */
     public function withOptions(array $options): self
     {
-        $obj = clone $this;
-        $obj['options'] = $options;
+        $self = clone $this;
+        $self['options'] = $options;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -214,9 +214,9 @@ final class MediaBridgePropertyUpdate implements BaseModel
      */
     public function withType(Type|string $type): self
     {
-        $obj = clone $this;
-        $obj['type'] = $type;
+        $self = clone $this;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 }

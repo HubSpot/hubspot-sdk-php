@@ -47,19 +47,19 @@ final class SoftRequiredPropertiesExtensionData implements BaseModel
      */
     public static function with(bool $isSoftRequiredProperty): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['isSoftRequiredProperty'] = $isSoftRequiredProperty;
+        $self['isSoftRequiredProperty'] = $isSoftRequiredProperty;
 
-        return $obj;
+        return $self;
     }
 
     public function withIsSoftRequiredProperty(
         bool $isSoftRequiredProperty
     ): self {
-        $obj = clone $this;
-        $obj['isSoftRequiredProperty'] = $isSoftRequiredProperty;
+        $self = clone $this;
+        $self['isSoftRequiredProperty'] = $isSoftRequiredProperty;
 
-        return $obj;
+        return $self;
     }
 }

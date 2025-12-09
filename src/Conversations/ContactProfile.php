@@ -114,17 +114,17 @@ final class ContactProfile implements BaseModel
         ContactName|array|null $name = null,
         ContactOrg|array|null $org = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['addresses'] = $addresses;
-        $obj['emails'] = $emails;
-        $obj['phones'] = $phones;
-        $obj['urls'] = $urls;
+        $self['addresses'] = $addresses;
+        $self['emails'] = $emails;
+        $self['phones'] = $phones;
+        $self['urls'] = $urls;
 
-        null !== $name && $obj['name'] = $name;
-        null !== $org && $obj['org'] = $org;
+        null !== $name && $self['name'] = $name;
+        null !== $org && $self['org'] = $org;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -140,10 +140,10 @@ final class ContactProfile implements BaseModel
      */
     public function withAddresses(array $addresses): self
     {
-        $obj = clone $this;
-        $obj['addresses'] = $addresses;
+        $self = clone $this;
+        $self['addresses'] = $addresses;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -154,10 +154,10 @@ final class ContactProfile implements BaseModel
      */
     public function withEmails(array $emails): self
     {
-        $obj = clone $this;
-        $obj['emails'] = $emails;
+        $self = clone $this;
+        $self['emails'] = $emails;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -168,10 +168,10 @@ final class ContactProfile implements BaseModel
      */
     public function withPhones(array $phones): self
     {
-        $obj = clone $this;
-        $obj['phones'] = $phones;
+        $self = clone $this;
+        $self['phones'] = $phones;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -181,10 +181,10 @@ final class ContactProfile implements BaseModel
      */
     public function withURLs(array $urls): self
     {
-        $obj = clone $this;
-        $obj['urls'] = $urls;
+        $self = clone $this;
+        $self['urls'] = $urls;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -198,10 +198,10 @@ final class ContactProfile implements BaseModel
      */
     public function withName(ContactName|array $name): self
     {
-        $obj = clone $this;
-        $obj['name'] = $name;
+        $self = clone $this;
+        $self['name'] = $name;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -211,9 +211,9 @@ final class ContactProfile implements BaseModel
      */
     public function withOrg(ContactOrg|array $org): self
     {
-        $obj = clone $this;
-        $obj['org'] = $org;
+        $self = clone $this;
+        $self['org'] = $org;
 
-        return $obj;
+        return $self;
     }
 }

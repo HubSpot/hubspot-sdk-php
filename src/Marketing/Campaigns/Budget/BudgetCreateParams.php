@@ -67,46 +67,46 @@ final class BudgetCreateParams implements BaseModel
         int $order,
         ?string $description = null
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['amount'] = $amount;
-        $obj['name'] = $name;
-        $obj['order'] = $order;
+        $self['amount'] = $amount;
+        $self['name'] = $name;
+        $self['order'] = $order;
 
-        null !== $description && $obj['description'] = $description;
+        null !== $description && $self['description'] = $description;
 
-        return $obj;
+        return $self;
     }
 
     public function withAmount(float $amount): self
     {
-        $obj = clone $this;
-        $obj['amount'] = $amount;
+        $self = clone $this;
+        $self['amount'] = $amount;
 
-        return $obj;
+        return $self;
     }
 
     public function withName(string $name): self
     {
-        $obj = clone $this;
-        $obj['name'] = $name;
+        $self = clone $this;
+        $self['name'] = $name;
 
-        return $obj;
+        return $self;
     }
 
     public function withOrder(int $order): self
     {
-        $obj = clone $this;
-        $obj['order'] = $order;
+        $self = clone $this;
+        $self['order'] = $order;
 
-        return $obj;
+        return $self;
     }
 
     public function withDescription(string $description): self
     {
-        $obj = clone $this;
-        $obj['description'] = $description;
+        $self = clone $this;
+        $self['description'] = $description;
 
-        return $obj;
+        return $self;
     }
 }

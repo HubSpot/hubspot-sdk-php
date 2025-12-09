@@ -59,13 +59,13 @@ final class TableGetParams implements BaseModel
         ?bool $includeForeignIDs = null,
         ?bool $isGetLocalizedSchema = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $archived && $obj['archived'] = $archived;
-        null !== $includeForeignIDs && $obj['includeForeignIDs'] = $includeForeignIDs;
-        null !== $isGetLocalizedSchema && $obj['isGetLocalizedSchema'] = $isGetLocalizedSchema;
+        null !== $archived && $self['archived'] = $archived;
+        null !== $includeForeignIDs && $self['includeForeignIDs'] = $includeForeignIDs;
+        null !== $isGetLocalizedSchema && $self['isGetLocalizedSchema'] = $isGetLocalizedSchema;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -73,10 +73,10 @@ final class TableGetParams implements BaseModel
      */
     public function withArchived(bool $archived): self
     {
-        $obj = clone $this;
-        $obj['archived'] = $archived;
+        $self = clone $this;
+        $self['archived'] = $archived;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -84,10 +84,10 @@ final class TableGetParams implements BaseModel
      */
     public function withIncludeForeignIDs(bool $includeForeignIDs): self
     {
-        $obj = clone $this;
-        $obj['includeForeignIDs'] = $includeForeignIDs;
+        $self = clone $this;
+        $self['includeForeignIDs'] = $includeForeignIDs;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -95,9 +95,9 @@ final class TableGetParams implements BaseModel
      */
     public function withIsGetLocalizedSchema(bool $isGetLocalizedSchema): self
     {
-        $obj = clone $this;
-        $obj['isGetLocalizedSchema'] = $isGetLocalizedSchema;
+        $self = clone $this;
+        $self['isGetLocalizedSchema'] = $isGetLocalizedSchema;
 
-        return $obj;
+        return $self;
     }
 }

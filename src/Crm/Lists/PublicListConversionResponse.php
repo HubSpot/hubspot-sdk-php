@@ -69,30 +69,30 @@ final class PublicListConversionResponse implements BaseModel
         ?\DateTimeInterface $convertedAt = null,
         PublicListConversionDate|array|PublicListConversionInactivity|null $requestedConversionTime = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['listID'] = $listID;
+        $self['listID'] = $listID;
 
-        null !== $convertedAt && $obj['convertedAt'] = $convertedAt;
-        null !== $requestedConversionTime && $obj['requestedConversionTime'] = $requestedConversionTime;
+        null !== $convertedAt && $self['convertedAt'] = $convertedAt;
+        null !== $requestedConversionTime && $self['requestedConversionTime'] = $requestedConversionTime;
 
-        return $obj;
+        return $self;
     }
 
     public function withListID(string $listID): self
     {
-        $obj = clone $this;
-        $obj['listID'] = $listID;
+        $self = clone $this;
+        $self['listID'] = $listID;
 
-        return $obj;
+        return $self;
     }
 
     public function withConvertedAt(\DateTimeInterface $convertedAt): self
     {
-        $obj = clone $this;
-        $obj['convertedAt'] = $convertedAt;
+        $self = clone $this;
+        $self['convertedAt'] = $convertedAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -107,9 +107,9 @@ final class PublicListConversionResponse implements BaseModel
     public function withRequestedConversionTime(
         PublicListConversionDate|array|PublicListConversionInactivity $requestedConversionTime,
     ): self {
-        $obj = clone $this;
-        $obj['requestedConversionTime'] = $requestedConversionTime;
+        $self = clone $this;
+        $self['requestedConversionTime'] = $requestedConversionTime;
 
-        return $obj;
+        return $self;
     }
 }

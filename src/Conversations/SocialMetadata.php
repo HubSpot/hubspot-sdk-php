@@ -79,73 +79,73 @@ final class SocialMetadata implements BaseModel
         ?string $mediaURLString = null,
         ?string $thumbnailURL = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['mediaType'] = $mediaType;
+        $self['mediaType'] = $mediaType;
 
-        null !== $id && $obj['id'] = $id;
-        null !== $description && $obj['description'] = $description;
-        null !== $mediaTitle && $obj['mediaTitle'] = $mediaTitle;
-        null !== $mediaURL && $obj['mediaURL'] = $mediaURL;
-        null !== $mediaURLString && $obj['mediaURLString'] = $mediaURLString;
-        null !== $thumbnailURL && $obj['thumbnailURL'] = $thumbnailURL;
+        null !== $id && $self['id'] = $id;
+        null !== $description && $self['description'] = $description;
+        null !== $mediaTitle && $self['mediaTitle'] = $mediaTitle;
+        null !== $mediaURL && $self['mediaURL'] = $mediaURL;
+        null !== $mediaURLString && $self['mediaURLString'] = $mediaURLString;
+        null !== $thumbnailURL && $self['thumbnailURL'] = $thumbnailURL;
 
-        return $obj;
+        return $self;
     }
 
     public function withMediaType(string $mediaType): self
     {
-        $obj = clone $this;
-        $obj['mediaType'] = $mediaType;
+        $self = clone $this;
+        $self['mediaType'] = $mediaType;
 
-        return $obj;
+        return $self;
     }
 
     public function withID(string $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     public function withDescription(string $description): self
     {
-        $obj = clone $this;
-        $obj['description'] = $description;
+        $self = clone $this;
+        $self['description'] = $description;
 
-        return $obj;
+        return $self;
     }
 
     public function withMediaTitle(string $mediaTitle): self
     {
-        $obj = clone $this;
-        $obj['mediaTitle'] = $mediaTitle;
+        $self = clone $this;
+        $self['mediaTitle'] = $mediaTitle;
 
-        return $obj;
+        return $self;
     }
 
     public function withMediaURL(string $mediaURL): self
     {
-        $obj = clone $this;
-        $obj['mediaURL'] = $mediaURL;
+        $self = clone $this;
+        $self['mediaURL'] = $mediaURL;
 
-        return $obj;
+        return $self;
     }
 
     public function withMediaURLString(string $mediaURLString): self
     {
-        $obj = clone $this;
-        $obj['mediaURLString'] = $mediaURLString;
+        $self = clone $this;
+        $self['mediaURLString'] = $mediaURLString;
 
-        return $obj;
+        return $self;
     }
 
     public function withThumbnailURL(string $thumbnailURL): self
     {
-        $obj = clone $this;
-        $obj['thumbnailURL'] = $thumbnailURL;
+        $self = clone $this;
+        $self['thumbnailURL'] = $thumbnailURL;
 
-        return $obj;
+        return $self;
     }
 }

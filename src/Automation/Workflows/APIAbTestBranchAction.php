@@ -67,21 +67,21 @@ final class APIAbTestBranchAction implements BaseModel
         array $testBranches,
         Type|string $type = 'AB_TEST_BRANCH'
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['actionID'] = $actionID;
-        $obj['testBranches'] = $testBranches;
-        $obj['type'] = $type;
+        $self['actionID'] = $actionID;
+        $self['testBranches'] = $testBranches;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 
     public function withActionID(string $actionID): self
     {
-        $obj = clone $this;
-        $obj['actionID'] = $actionID;
+        $self = clone $this;
+        $self['actionID'] = $actionID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -91,10 +91,10 @@ final class APIAbTestBranchAction implements BaseModel
      */
     public function withTestBranches(array $testBranches): self
     {
-        $obj = clone $this;
-        $obj['testBranches'] = $testBranches;
+        $self = clone $this;
+        $self['testBranches'] = $testBranches;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -102,9 +102,9 @@ final class APIAbTestBranchAction implements BaseModel
      */
     public function withType(Type|string $type): self
     {
-        $obj = clone $this;
-        $obj['type'] = $type;
+        $self = clone $this;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 }

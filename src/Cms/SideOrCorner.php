@@ -52,27 +52,27 @@ final class SideOrCorner implements BaseModel
         string $horizontalSide,
         string $verticalSide
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['horizontalSide'] = $horizontalSide;
-        $obj['verticalSide'] = $verticalSide;
+        $self['horizontalSide'] = $horizontalSide;
+        $self['verticalSide'] = $verticalSide;
 
-        return $obj;
+        return $self;
     }
 
     public function withHorizontalSide(string $horizontalSide): self
     {
-        $obj = clone $this;
-        $obj['horizontalSide'] = $horizontalSide;
+        $self = clone $this;
+        $self['horizontalSide'] = $horizontalSide;
 
-        return $obj;
+        return $self;
     }
 
     public function withVerticalSide(string $verticalSide): self
     {
-        $obj = clone $this;
-        $obj['verticalSide'] = $verticalSide;
+        $self = clone $this;
+        $self['verticalSide'] = $verticalSide;
 
-        return $obj;
+        return $self;
     }
 }

@@ -73,30 +73,30 @@ final class PublicAbsoluteRangedTimestampRefineBy implements BaseModel
         int $upperTimestamp,
         Type|string $type = 'ABSOLUTE_RANGED',
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['lowerTimestamp'] = $lowerTimestamp;
-        $obj['rangeType'] = $rangeType;
-        $obj['type'] = $type;
-        $obj['upperTimestamp'] = $upperTimestamp;
+        $self['lowerTimestamp'] = $lowerTimestamp;
+        $self['rangeType'] = $rangeType;
+        $self['type'] = $type;
+        $self['upperTimestamp'] = $upperTimestamp;
 
-        return $obj;
+        return $self;
     }
 
     public function withLowerTimestamp(int $lowerTimestamp): self
     {
-        $obj = clone $this;
-        $obj['lowerTimestamp'] = $lowerTimestamp;
+        $self = clone $this;
+        $self['lowerTimestamp'] = $lowerTimestamp;
 
-        return $obj;
+        return $self;
     }
 
     public function withRangeType(string $rangeType): self
     {
-        $obj = clone $this;
-        $obj['rangeType'] = $rangeType;
+        $self = clone $this;
+        $self['rangeType'] = $rangeType;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -104,17 +104,17 @@ final class PublicAbsoluteRangedTimestampRefineBy implements BaseModel
      */
     public function withType(Type|string $type): self
     {
-        $obj = clone $this;
-        $obj['type'] = $type;
+        $self = clone $this;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 
     public function withUpperTimestamp(int $upperTimestamp): self
     {
-        $obj = clone $this;
-        $obj['upperTimestamp'] = $upperTimestamp;
+        $self = clone $this;
+        $self['upperTimestamp'] = $upperTimestamp;
 
-        return $obj;
+        return $self;
     }
 }

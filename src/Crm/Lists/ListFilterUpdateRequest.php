@@ -144,11 +144,11 @@ final class ListFilterUpdateRequest implements BaseModel
     public static function with(
         PublicOrFilterBranch|array|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch $filterBranch,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['filterBranch'] = $filterBranch;
+        $self['filterBranch'] = $filterBranch;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -207,9 +207,9 @@ final class ListFilterUpdateRequest implements BaseModel
     public function withFilterBranch(
         PublicOrFilterBranch|array|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch $filterBranch,
     ): self {
-        $obj = clone $this;
-        $obj['filterBranch'] = $filterBranch;
+        $self = clone $this;
+        $self['filterBranch'] = $filterBranch;
 
-        return $obj;
+        return $self;
     }
 }

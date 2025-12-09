@@ -135,13 +135,13 @@ final class IntegratorObjectCreationResponse implements BaseModel
         array $properties,
         array $propertyGroups,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['objectType'] = $objectType;
-        $obj['properties'] = $properties;
-        $obj['propertyGroups'] = $propertyGroups;
+        $self['objectType'] = $objectType;
+        $self['properties'] = $properties;
+        $self['propertyGroups'] = $propertyGroups;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -189,10 +189,10 @@ final class IntegratorObjectCreationResponse implements BaseModel
      */
     public function withObjectType(InboundDBObjectType|array $objectType): self
     {
-        $obj = clone $this;
-        $obj['objectType'] = $objectType;
+        $self = clone $this;
+        $self['objectType'] = $objectType;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -215,10 +215,10 @@ final class IntegratorObjectCreationResponse implements BaseModel
      */
     public function withProperties(array $properties): self
     {
-        $obj = clone $this;
-        $obj['properties'] = $properties;
+        $self = clone $this;
+        $self['properties'] = $properties;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -235,9 +235,9 @@ final class IntegratorObjectCreationResponse implements BaseModel
      */
     public function withPropertyGroups(array $propertyGroups): self
     {
-        $obj = clone $this;
-        $obj['propertyGroups'] = $propertyGroups;
+        $self = clone $this;
+        $self['propertyGroups'] = $propertyGroups;
 
-        return $obj;
+        return $self;
     }
 }

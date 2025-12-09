@@ -80,22 +80,22 @@ final class ParticipationBreakdown implements BaseModel
         \DateTimeInterface $createdAt,
         ParticipationProperties|array $properties,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['id'] = $id;
-        $obj['associations'] = $associations;
-        $obj['createdAt'] = $createdAt;
-        $obj['properties'] = $properties;
+        $self['id'] = $id;
+        $self['associations'] = $associations;
+        $self['createdAt'] = $createdAt;
+        $self['properties'] = $properties;
 
-        return $obj;
+        return $self;
     }
 
     public function withID(string $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -106,18 +106,18 @@ final class ParticipationBreakdown implements BaseModel
     public function withAssociations(
         ParticipationAssociations|array $associations
     ): self {
-        $obj = clone $this;
-        $obj['associations'] = $associations;
+        $self = clone $this;
+        $self['associations'] = $associations;
 
-        return $obj;
+        return $self;
     }
 
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
-        $obj = clone $this;
-        $obj['createdAt'] = $createdAt;
+        $self = clone $this;
+        $self['createdAt'] = $createdAt;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -131,9 +131,9 @@ final class ParticipationBreakdown implements BaseModel
     public function withProperties(
         ParticipationProperties|array $properties
     ): self {
-        $obj = clone $this;
-        $obj['properties'] = $properties;
+        $self = clone $this;
+        $self['properties'] = $properties;
 
-        return $obj;
+        return $self;
     }
 }

@@ -93,72 +93,72 @@ final class PublicTaxRateGroup implements BaseModel
         float $percentageRate,
         \DateTimeInterface $updatedAt,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['id'] = $id;
-        $obj['active'] = $active;
-        $obj['createdAt'] = $createdAt;
-        $obj['label'] = $label;
-        $obj['name'] = $name;
-        $obj['percentageRate'] = $percentageRate;
-        $obj['updatedAt'] = $updatedAt;
+        $self['id'] = $id;
+        $self['active'] = $active;
+        $self['createdAt'] = $createdAt;
+        $self['label'] = $label;
+        $self['name'] = $name;
+        $self['percentageRate'] = $percentageRate;
+        $self['updatedAt'] = $updatedAt;
 
-        return $obj;
+        return $self;
     }
 
     public function withID(string $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     public function withActive(bool $active): self
     {
-        $obj = clone $this;
-        $obj['active'] = $active;
+        $self = clone $this;
+        $self['active'] = $active;
 
-        return $obj;
+        return $self;
     }
 
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
-        $obj = clone $this;
-        $obj['createdAt'] = $createdAt;
+        $self = clone $this;
+        $self['createdAt'] = $createdAt;
 
-        return $obj;
+        return $self;
     }
 
     public function withLabel(string $label): self
     {
-        $obj = clone $this;
-        $obj['label'] = $label;
+        $self = clone $this;
+        $self['label'] = $label;
 
-        return $obj;
+        return $self;
     }
 
     public function withName(string $name): self
     {
-        $obj = clone $this;
-        $obj['name'] = $name;
+        $self = clone $this;
+        $self['name'] = $name;
 
-        return $obj;
+        return $self;
     }
 
     public function withPercentageRate(float $percentageRate): self
     {
-        $obj = clone $this;
-        $obj['percentageRate'] = $percentageRate;
+        $self = clone $this;
+        $self['percentageRate'] = $percentageRate;
 
-        return $obj;
+        return $self;
     }
 
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
-        $obj = clone $this;
-        $obj['updatedAt'] = $updatedAt;
+        $self = clone $this;
+        $self['updatedAt'] = $updatedAt;
 
-        return $obj;
+        return $self;
     }
 }

@@ -114,18 +114,18 @@ final class PublicEmailContent implements BaseModel
         ?array $widgetContainers = null,
         ?array $widgets = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $flexAreas && $obj['flexAreas'] = $flexAreas;
-        null !== $plainTextVersion && $obj['plainTextVersion'] = $plainTextVersion;
-        null !== $smartFields && $obj['smartFields'] = $smartFields;
-        null !== $styleSettings && $obj['styleSettings'] = $styleSettings;
-        null !== $templatePath && $obj['templatePath'] = $templatePath;
-        null !== $themeSettingsValues && $obj['themeSettingsValues'] = $themeSettingsValues;
-        null !== $widgetContainers && $obj['widgetContainers'] = $widgetContainers;
-        null !== $widgets && $obj['widgets'] = $widgets;
+        null !== $flexAreas && $self['flexAreas'] = $flexAreas;
+        null !== $plainTextVersion && $self['plainTextVersion'] = $plainTextVersion;
+        null !== $smartFields && $self['smartFields'] = $smartFields;
+        null !== $styleSettings && $self['styleSettings'] = $styleSettings;
+        null !== $templatePath && $self['templatePath'] = $templatePath;
+        null !== $themeSettingsValues && $self['themeSettingsValues'] = $themeSettingsValues;
+        null !== $widgetContainers && $self['widgetContainers'] = $widgetContainers;
+        null !== $widgets && $self['widgets'] = $widgets;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -133,18 +133,18 @@ final class PublicEmailContent implements BaseModel
      */
     public function withFlexAreas(array $flexAreas): self
     {
-        $obj = clone $this;
-        $obj['flexAreas'] = $flexAreas;
+        $self = clone $this;
+        $self['flexAreas'] = $flexAreas;
 
-        return $obj;
+        return $self;
     }
 
     public function withPlainTextVersion(string $plainTextVersion): self
     {
-        $obj = clone $this;
-        $obj['plainTextVersion'] = $plainTextVersion;
+        $self = clone $this;
+        $self['plainTextVersion'] = $plainTextVersion;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -152,10 +152,10 @@ final class PublicEmailContent implements BaseModel
      */
     public function withSmartFields(array $smartFields): self
     {
-        $obj = clone $this;
-        $obj['smartFields'] = $smartFields;
+        $self = clone $this;
+        $self['smartFields'] = $smartFields;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -195,18 +195,18 @@ final class PublicEmailContent implements BaseModel
     public function withStyleSettings(
         PublicEmailStyleSettings|array $styleSettings
     ): self {
-        $obj = clone $this;
-        $obj['styleSettings'] = $styleSettings;
+        $self = clone $this;
+        $self['styleSettings'] = $styleSettings;
 
-        return $obj;
+        return $self;
     }
 
     public function withTemplatePath(string $templatePath): self
     {
-        $obj = clone $this;
-        $obj['templatePath'] = $templatePath;
+        $self = clone $this;
+        $self['templatePath'] = $templatePath;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -214,10 +214,10 @@ final class PublicEmailContent implements BaseModel
      */
     public function withThemeSettingsValues(array $themeSettingsValues): self
     {
-        $obj = clone $this;
-        $obj['themeSettingsValues'] = $themeSettingsValues;
+        $self = clone $this;
+        $self['themeSettingsValues'] = $themeSettingsValues;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -225,10 +225,10 @@ final class PublicEmailContent implements BaseModel
      */
     public function withWidgetContainers(array $widgetContainers): self
     {
-        $obj = clone $this;
-        $obj['widgetContainers'] = $widgetContainers;
+        $self = clone $this;
+        $self['widgetContainers'] = $widgetContainers;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -236,9 +236,9 @@ final class PublicEmailContent implements BaseModel
      */
     public function withWidgets(array $widgets): self
     {
-        $obj = clone $this;
-        $obj['widgets'] = $widgets;
+        $self = clone $this;
+        $self['widgets'] = $widgets;
 
-        return $obj;
+        return $self;
     }
 }

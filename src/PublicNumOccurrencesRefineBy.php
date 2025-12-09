@@ -61,14 +61,14 @@ final class PublicNumOccurrencesRefineBy implements BaseModel
         ?int $maxOccurrences = null,
         ?int $minOccurrences = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['type'] = $type;
+        $self['type'] = $type;
 
-        null !== $maxOccurrences && $obj['maxOccurrences'] = $maxOccurrences;
-        null !== $minOccurrences && $obj['minOccurrences'] = $minOccurrences;
+        null !== $maxOccurrences && $self['maxOccurrences'] = $maxOccurrences;
+        null !== $minOccurrences && $self['minOccurrences'] = $minOccurrences;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -76,25 +76,25 @@ final class PublicNumOccurrencesRefineBy implements BaseModel
      */
     public function withType(Type|string $type): self
     {
-        $obj = clone $this;
-        $obj['type'] = $type;
+        $self = clone $this;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 
     public function withMaxOccurrences(int $maxOccurrences): self
     {
-        $obj = clone $this;
-        $obj['maxOccurrences'] = $maxOccurrences;
+        $self = clone $this;
+        $self['maxOccurrences'] = $maxOccurrences;
 
-        return $obj;
+        return $self;
     }
 
     public function withMinOccurrences(int $minOccurrences): self
     {
-        $obj = clone $this;
-        $obj['minOccurrences'] = $minOccurrences;
+        $self = clone $this;
+        $self['minOccurrences'] = $minOccurrences;
 
-        return $obj;
+        return $self;
     }
 }

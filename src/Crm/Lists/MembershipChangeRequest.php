@@ -61,12 +61,12 @@ final class MembershipChangeRequest implements BaseModel
         array $recordIDsToAdd,
         array $recordIDsToRemove
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['recordIDsToAdd'] = $recordIDsToAdd;
-        $obj['recordIDsToRemove'] = $recordIDsToRemove;
+        $self['recordIDsToAdd'] = $recordIDsToAdd;
+        $self['recordIDsToRemove'] = $recordIDsToRemove;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -74,10 +74,10 @@ final class MembershipChangeRequest implements BaseModel
      */
     public function withRecordIDsToAdd(array $recordIDsToAdd): self
     {
-        $obj = clone $this;
-        $obj['recordIDsToAdd'] = $recordIDsToAdd;
+        $self = clone $this;
+        $self['recordIDsToAdd'] = $recordIDsToAdd;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -85,9 +85,9 @@ final class MembershipChangeRequest implements BaseModel
      */
     public function withRecordIDsToRemove(array $recordIDsToRemove): self
     {
-        $obj = clone $this;
-        $obj['recordIDsToRemove'] = $recordIDsToRemove;
+        $self = clone $this;
+        $self['recordIDsToRemove'] = $recordIDsToRemove;
 
-        return $obj;
+        return $self;
     }
 }

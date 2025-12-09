@@ -63,13 +63,13 @@ final class MeetingsLinkGetAvailabilityBySlugParams implements BaseModel
      */
     public static function with(string $timezone, ?int $monthOffset = null): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['timezone'] = $timezone;
+        $self['timezone'] = $timezone;
 
-        null !== $monthOffset && $obj['monthOffset'] = $monthOffset;
+        null !== $monthOffset && $self['monthOffset'] = $monthOffset;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -77,10 +77,10 @@ final class MeetingsLinkGetAvailabilityBySlugParams implements BaseModel
      */
     public function withTimezone(string $timezone): self
     {
-        $obj = clone $this;
-        $obj['timezone'] = $timezone;
+        $self = clone $this;
+        $self['timezone'] = $timezone;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -88,9 +88,9 @@ final class MeetingsLinkGetAvailabilityBySlugParams implements BaseModel
      */
     public function withMonthOffset(int $monthOffset): self
     {
-        $obj = clone $this;
-        $obj['monthOffset'] = $monthOffset;
+        $self = clone $this;
+        $self['monthOffset'] = $monthOffset;
 
-        return $obj;
+        return $self;
     }
 }

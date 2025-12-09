@@ -93,17 +93,17 @@ final class PublicCommunicationSubscriptionFilter implements BaseModel
         FilterType|string $filterType = 'COMMUNICATION_SUBSCRIPTION',
         ?string $businessUnitID = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['acceptedOptStates'] = $acceptedOptStates;
-        $obj['channel'] = $channel;
-        $obj['filterType'] = $filterType;
-        $obj['subscriptionIDs'] = $subscriptionIDs;
-        $obj['subscriptionType'] = $subscriptionType;
+        $self['acceptedOptStates'] = $acceptedOptStates;
+        $self['channel'] = $channel;
+        $self['filterType'] = $filterType;
+        $self['subscriptionIDs'] = $subscriptionIDs;
+        $self['subscriptionType'] = $subscriptionType;
 
-        null !== $businessUnitID && $obj['businessUnitID'] = $businessUnitID;
+        null !== $businessUnitID && $self['businessUnitID'] = $businessUnitID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -111,18 +111,18 @@ final class PublicCommunicationSubscriptionFilter implements BaseModel
      */
     public function withAcceptedOptStates(array $acceptedOptStates): self
     {
-        $obj = clone $this;
-        $obj['acceptedOptStates'] = $acceptedOptStates;
+        $self = clone $this;
+        $self['acceptedOptStates'] = $acceptedOptStates;
 
-        return $obj;
+        return $self;
     }
 
     public function withChannel(string $channel): self
     {
-        $obj = clone $this;
-        $obj['channel'] = $channel;
+        $self = clone $this;
+        $self['channel'] = $channel;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -130,10 +130,10 @@ final class PublicCommunicationSubscriptionFilter implements BaseModel
      */
     public function withFilterType(FilterType|string $filterType): self
     {
-        $obj = clone $this;
-        $obj['filterType'] = $filterType;
+        $self = clone $this;
+        $self['filterType'] = $filterType;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -141,25 +141,25 @@ final class PublicCommunicationSubscriptionFilter implements BaseModel
      */
     public function withSubscriptionIDs(array $subscriptionIDs): self
     {
-        $obj = clone $this;
-        $obj['subscriptionIDs'] = $subscriptionIDs;
+        $self = clone $this;
+        $self['subscriptionIDs'] = $subscriptionIDs;
 
-        return $obj;
+        return $self;
     }
 
     public function withSubscriptionType(string $subscriptionType): self
     {
-        $obj = clone $this;
-        $obj['subscriptionType'] = $subscriptionType;
+        $self = clone $this;
+        $self['subscriptionType'] = $subscriptionType;
 
-        return $obj;
+        return $self;
     }
 
     public function withBusinessUnitID(string $businessUnitID): self
     {
-        $obj = clone $this;
-        $obj['businessUnitID'] = $businessUnitID;
+        $self = clone $this;
+        $self['businessUnitID'] = $businessUnitID;
 
-        return $obj;
+        return $self;
     }
 }

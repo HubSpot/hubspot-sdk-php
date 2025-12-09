@@ -65,11 +65,11 @@ final class OutputFieldDefinition implements BaseModel
      */
     public static function with(FieldTypeDefinition|array $typeDefinition): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['typeDefinition'] = $typeDefinition;
+        $self['typeDefinition'] = $typeDefinition;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -90,9 +90,9 @@ final class OutputFieldDefinition implements BaseModel
     public function withTypeDefinition(
         FieldTypeDefinition|array $typeDefinition
     ): self {
-        $obj = clone $this;
-        $obj['typeDefinition'] = $typeDefinition;
+        $self = clone $this;
+        $self['typeDefinition'] = $typeDefinition;
 
-        return $obj;
+        return $self;
     }
 }

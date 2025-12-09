@@ -115,17 +115,17 @@ final class TaxSearchParams implements BaseModel
         array $sorts,
         ?string $query = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['after'] = $after;
-        $obj['filterGroups'] = $filterGroups;
-        $obj['limit'] = $limit;
-        $obj['properties'] = $properties;
-        $obj['sorts'] = $sorts;
+        $self['after'] = $after;
+        $self['filterGroups'] = $filterGroups;
+        $self['limit'] = $limit;
+        $self['properties'] = $properties;
+        $self['sorts'] = $sorts;
 
-        null !== $query && $obj['query'] = $query;
+        null !== $query && $self['query'] = $query;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -133,10 +133,10 @@ final class TaxSearchParams implements BaseModel
      */
     public function withAfter(string $after): self
     {
-        $obj = clone $this;
-        $obj['after'] = $after;
+        $self = clone $this;
+        $self['after'] = $after;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -146,10 +146,10 @@ final class TaxSearchParams implements BaseModel
      */
     public function withFilterGroups(array $filterGroups): self
     {
-        $obj = clone $this;
-        $obj['filterGroups'] = $filterGroups;
+        $self = clone $this;
+        $self['filterGroups'] = $filterGroups;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -157,10 +157,10 @@ final class TaxSearchParams implements BaseModel
      */
     public function withLimit(int $limit): self
     {
-        $obj = clone $this;
-        $obj['limit'] = $limit;
+        $self = clone $this;
+        $self['limit'] = $limit;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -170,10 +170,10 @@ final class TaxSearchParams implements BaseModel
      */
     public function withProperties(array $properties): self
     {
-        $obj = clone $this;
-        $obj['properties'] = $properties;
+        $self = clone $this;
+        $self['properties'] = $properties;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -183,10 +183,10 @@ final class TaxSearchParams implements BaseModel
      */
     public function withSorts(array $sorts): self
     {
-        $obj = clone $this;
-        $obj['sorts'] = $sorts;
+        $self = clone $this;
+        $self['sorts'] = $sorts;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -194,9 +194,9 @@ final class TaxSearchParams implements BaseModel
      */
     public function withQuery(string $query): self
     {
-        $obj = clone $this;
-        $obj['query'] = $query;
+        $self = clone $this;
+        $self['query'] = $query;
 
-        return $obj;
+        return $self;
     }
 }

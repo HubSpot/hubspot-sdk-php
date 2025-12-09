@@ -47,19 +47,19 @@ final class RecordingSettingsRequest implements BaseModel
      */
     public static function with(string $urlToRetrieveAuthedRecording): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['urlToRetrieveAuthedRecording'] = $urlToRetrieveAuthedRecording;
+        $self['urlToRetrieveAuthedRecording'] = $urlToRetrieveAuthedRecording;
 
-        return $obj;
+        return $self;
     }
 
     public function withURLToRetrieveAuthedRecording(
         string $urlToRetrieveAuthedRecording
     ): self {
-        $obj = clone $this;
-        $obj['urlToRetrieveAuthedRecording'] = $urlToRetrieveAuthedRecording;
+        $self = clone $this;
+        $self['urlToRetrieveAuthedRecording'] = $urlToRetrieveAuthedRecording;
 
-        return $obj;
+        return $self;
     }
 }

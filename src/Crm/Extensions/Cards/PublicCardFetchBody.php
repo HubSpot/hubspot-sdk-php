@@ -56,12 +56,12 @@ final class PublicCardFetchBody implements BaseModel
      */
     public static function with(array $objectTypes, string $targetURL): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['objectTypes'] = $objectTypes;
-        $obj['targetURL'] = $targetURL;
+        $self['objectTypes'] = $objectTypes;
+        $self['targetURL'] = $targetURL;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -71,17 +71,17 @@ final class PublicCardFetchBody implements BaseModel
      */
     public function withObjectTypes(array $objectTypes): self
     {
-        $obj = clone $this;
-        $obj['objectTypes'] = $objectTypes;
+        $self = clone $this;
+        $self['objectTypes'] = $objectTypes;
 
-        return $obj;
+        return $self;
     }
 
     public function withTargetURL(string $targetURL): self
     {
-        $obj = clone $this;
-        $obj['targetURL'] = $targetURL;
+        $self = clone $this;
+        $self['targetURL'] = $targetURL;
 
-        return $obj;
+        return $self;
     }
 }

@@ -62,21 +62,21 @@ final class APIEnumerationOutputField implements BaseModel
         array $options,
         Type|string $type = 'ENUMERATION'
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['name'] = $name;
-        $obj['options'] = $options;
-        $obj['type'] = $type;
+        $self['name'] = $name;
+        $self['options'] = $options;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 
     public function withName(string $name): self
     {
-        $obj = clone $this;
-        $obj['name'] = $name;
+        $self = clone $this;
+        $self['name'] = $name;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -84,10 +84,10 @@ final class APIEnumerationOutputField implements BaseModel
      */
     public function withOptions(array $options): self
     {
-        $obj = clone $this;
-        $obj['options'] = $options;
+        $self = clone $this;
+        $self['options'] = $options;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -95,9 +95,9 @@ final class APIEnumerationOutputField implements BaseModel
      */
     public function withType(Type|string $type): self
     {
-        $obj = clone $this;
-        $obj['type'] = $type;
+        $self = clone $this;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 }

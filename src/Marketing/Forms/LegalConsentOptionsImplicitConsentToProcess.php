@@ -82,16 +82,16 @@ final class LegalConsentOptionsImplicitConsentToProcess implements BaseModel
         ?string $communicationConsentText = null,
         ?string $consentToProcessText = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['communicationsCheckboxes'] = $communicationsCheckboxes;
-        $obj['privacyText'] = $privacyText;
-        $obj['type'] = $type;
+        $self['communicationsCheckboxes'] = $communicationsCheckboxes;
+        $self['privacyText'] = $privacyText;
+        $self['type'] = $type;
 
-        null !== $communicationConsentText && $obj['communicationConsentText'] = $communicationConsentText;
-        null !== $consentToProcessText && $obj['consentToProcessText'] = $consentToProcessText;
+        null !== $communicationConsentText && $self['communicationConsentText'] = $communicationConsentText;
+        null !== $consentToProcessText && $self['consentToProcessText'] = $consentToProcessText;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -102,18 +102,18 @@ final class LegalConsentOptionsImplicitConsentToProcess implements BaseModel
     public function withCommunicationsCheckboxes(
         array $communicationsCheckboxes
     ): self {
-        $obj = clone $this;
-        $obj['communicationsCheckboxes'] = $communicationsCheckboxes;
+        $self = clone $this;
+        $self['communicationsCheckboxes'] = $communicationsCheckboxes;
 
-        return $obj;
+        return $self;
     }
 
     public function withPrivacyText(string $privacyText): self
     {
-        $obj = clone $this;
-        $obj['privacyText'] = $privacyText;
+        $self = clone $this;
+        $self['privacyText'] = $privacyText;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -121,26 +121,26 @@ final class LegalConsentOptionsImplicitConsentToProcess implements BaseModel
      */
     public function withType(Type|string $type): self
     {
-        $obj = clone $this;
-        $obj['type'] = $type;
+        $self = clone $this;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 
     public function withCommunicationConsentText(
         string $communicationConsentText
     ): self {
-        $obj = clone $this;
-        $obj['communicationConsentText'] = $communicationConsentText;
+        $self = clone $this;
+        $self['communicationConsentText'] = $communicationConsentText;
 
-        return $obj;
+        return $self;
     }
 
     public function withConsentToProcessText(string $consentToProcessText): self
     {
-        $obj = clone $this;
-        $obj['consentToProcessText'] = $consentToProcessText;
+        $self = clone $this;
+        $self['consentToProcessText'] = $consentToProcessText;
 
-        return $obj;
+        return $self;
     }
 }

@@ -42,36 +42,36 @@ final class ContactOrg implements BaseModel
         ?string $department = null,
         ?string $title = null
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $company && $obj['company'] = $company;
-        null !== $department && $obj['department'] = $department;
-        null !== $title && $obj['title'] = $title;
+        null !== $company && $self['company'] = $company;
+        null !== $department && $self['department'] = $department;
+        null !== $title && $self['title'] = $title;
 
-        return $obj;
+        return $self;
     }
 
     public function withCompany(string $company): self
     {
-        $obj = clone $this;
-        $obj['company'] = $company;
+        $self = clone $this;
+        $self['company'] = $company;
 
-        return $obj;
+        return $self;
     }
 
     public function withDepartment(string $department): self
     {
-        $obj = clone $this;
-        $obj['department'] = $department;
+        $self = clone $this;
+        $self['department'] = $department;
 
-        return $obj;
+        return $self;
     }
 
     public function withTitle(string $title): self
     {
-        $obj = clone $this;
-        $obj['title'] = $title;
+        $self = clone $this;
+        $self['title'] = $title;
 
-        return $obj;
+        return $self;
     }
 }

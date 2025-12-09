@@ -79,12 +79,12 @@ final class PublicSubscriptionStatusesResponse implements BaseModel
         string $recipient,
         array $subscriptionStatuses
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['recipient'] = $recipient;
-        $obj['subscriptionStatuses'] = $subscriptionStatuses;
+        $self['recipient'] = $recipient;
+        $self['subscriptionStatuses'] = $subscriptionStatuses;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -92,10 +92,10 @@ final class PublicSubscriptionStatusesResponse implements BaseModel
      */
     public function withRecipient(string $recipient): self
     {
-        $obj = clone $this;
-        $obj['recipient'] = $recipient;
+        $self = clone $this;
+        $self['recipient'] = $recipient;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -115,9 +115,9 @@ final class PublicSubscriptionStatusesResponse implements BaseModel
      */
     public function withSubscriptionStatuses(array $subscriptionStatuses): self
     {
-        $obj = clone $this;
-        $obj['subscriptionStatuses'] = $subscriptionStatuses;
+        $self = clone $this;
+        $self['subscriptionStatuses'] = $subscriptionStatuses;
 
-        return $obj;
+        return $self;
     }
 }

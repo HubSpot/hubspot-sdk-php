@@ -65,13 +65,13 @@ final class PublicAssociationDefinitionConfigurationCreateRequest implements Bas
         int $maxToObjectIDs,
         int $typeID
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['category'] = $category;
-        $obj['maxToObjectIDs'] = $maxToObjectIDs;
-        $obj['typeID'] = $typeID;
+        $self['category'] = $category;
+        $self['maxToObjectIDs'] = $maxToObjectIDs;
+        $self['typeID'] = $typeID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -79,25 +79,25 @@ final class PublicAssociationDefinitionConfigurationCreateRequest implements Bas
      */
     public function withCategory(Category|string $category): self
     {
-        $obj = clone $this;
-        $obj['category'] = $category;
+        $self = clone $this;
+        $self['category'] = $category;
 
-        return $obj;
+        return $self;
     }
 
     public function withMaxToObjectIDs(int $maxToObjectIDs): self
     {
-        $obj = clone $this;
-        $obj['maxToObjectIDs'] = $maxToObjectIDs;
+        $self = clone $this;
+        $self['maxToObjectIDs'] = $maxToObjectIDs;
 
-        return $obj;
+        return $self;
     }
 
     public function withTypeID(int $typeID): self
     {
-        $obj = clone $this;
-        $obj['typeID'] = $typeID;
+        $self = clone $this;
+        $self['typeID'] = $typeID;
 
-        return $obj;
+        return $self;
     }
 }

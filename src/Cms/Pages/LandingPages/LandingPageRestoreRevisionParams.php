@@ -51,18 +51,18 @@ final class LandingPageRestoreRevisionParams implements BaseModel
      */
     public static function with(string $objectID): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['objectID'] = $objectID;
+        $self['objectID'] = $objectID;
 
-        return $obj;
+        return $self;
     }
 
     public function withObjectID(string $objectID): self
     {
-        $obj = clone $this;
-        $obj['objectID'] = $objectID;
+        $self = clone $this;
+        $self['objectID'] = $objectID;
 
-        return $obj;
+        return $self;
     }
 }

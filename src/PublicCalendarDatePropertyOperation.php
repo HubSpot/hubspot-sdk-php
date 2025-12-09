@@ -95,27 +95,27 @@ final class PublicCalendarDatePropertyOperation implements BaseModel
         ?int $timeUnitCount = null,
         ?bool $useFiscalYear = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['includeObjectsWithNoValueSet'] = $includeObjectsWithNoValueSet;
-        $obj['operationType'] = $operationType;
-        $obj['operator'] = $operator;
-        $obj['timeUnit'] = $timeUnit;
+        $self['includeObjectsWithNoValueSet'] = $includeObjectsWithNoValueSet;
+        $self['operationType'] = $operationType;
+        $self['operator'] = $operator;
+        $self['timeUnit'] = $timeUnit;
 
-        null !== $fiscalYearStart && $obj['fiscalYearStart'] = $fiscalYearStart;
-        null !== $timeUnitCount && $obj['timeUnitCount'] = $timeUnitCount;
-        null !== $useFiscalYear && $obj['useFiscalYear'] = $useFiscalYear;
+        null !== $fiscalYearStart && $self['fiscalYearStart'] = $fiscalYearStart;
+        null !== $timeUnitCount && $self['timeUnitCount'] = $timeUnitCount;
+        null !== $useFiscalYear && $self['useFiscalYear'] = $useFiscalYear;
 
-        return $obj;
+        return $self;
     }
 
     public function withIncludeObjectsWithNoValueSet(
         bool $includeObjectsWithNoValueSet
     ): self {
-        $obj = clone $this;
-        $obj['includeObjectsWithNoValueSet'] = $includeObjectsWithNoValueSet;
+        $self = clone $this;
+        $self['includeObjectsWithNoValueSet'] = $includeObjectsWithNoValueSet;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -123,26 +123,26 @@ final class PublicCalendarDatePropertyOperation implements BaseModel
      */
     public function withOperationType(OperationType|string $operationType): self
     {
-        $obj = clone $this;
-        $obj['operationType'] = $operationType;
+        $self = clone $this;
+        $self['operationType'] = $operationType;
 
-        return $obj;
+        return $self;
     }
 
     public function withOperator(string $operator): self
     {
-        $obj = clone $this;
-        $obj['operator'] = $operator;
+        $self = clone $this;
+        $self['operator'] = $operator;
 
-        return $obj;
+        return $self;
     }
 
     public function withTimeUnit(string $timeUnit): self
     {
-        $obj = clone $this;
-        $obj['timeUnit'] = $timeUnit;
+        $self = clone $this;
+        $self['timeUnit'] = $timeUnit;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -151,25 +151,25 @@ final class PublicCalendarDatePropertyOperation implements BaseModel
     public function withFiscalYearStart(
         FiscalYearStart|string $fiscalYearStart
     ): self {
-        $obj = clone $this;
-        $obj['fiscalYearStart'] = $fiscalYearStart;
+        $self = clone $this;
+        $self['fiscalYearStart'] = $fiscalYearStart;
 
-        return $obj;
+        return $self;
     }
 
     public function withTimeUnitCount(int $timeUnitCount): self
     {
-        $obj = clone $this;
-        $obj['timeUnitCount'] = $timeUnitCount;
+        $self = clone $this;
+        $self['timeUnitCount'] = $timeUnitCount;
 
-        return $obj;
+        return $self;
     }
 
     public function withUseFiscalYear(bool $useFiscalYear): self
     {
-        $obj = clone $this;
-        $obj['useFiscalYear'] = $useFiscalYear;
+        $self = clone $this;
+        $self['useFiscalYear'] = $useFiscalYear;
 
-        return $obj;
+        return $self;
     }
 }

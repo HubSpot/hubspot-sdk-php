@@ -129,20 +129,20 @@ final class PublicConversationsMessageEgg implements BaseModel
         ?string $richText = null,
         ?string $subject = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['attachments'] = $attachments;
-        $obj['channelAccountID'] = $channelAccountID;
-        $obj['channelID'] = $channelID;
-        $obj['recipients'] = $recipients;
-        $obj['senderActorID'] = $senderActorID;
-        $obj['text'] = $text;
-        $obj['type'] = $type;
+        $self['attachments'] = $attachments;
+        $self['channelAccountID'] = $channelAccountID;
+        $self['channelID'] = $channelID;
+        $self['recipients'] = $recipients;
+        $self['senderActorID'] = $senderActorID;
+        $self['text'] = $text;
+        $self['type'] = $type;
 
-        null !== $richText && $obj['richText'] = $richText;
-        null !== $subject && $obj['subject'] = $subject;
+        null !== $richText && $self['richText'] = $richText;
+        null !== $subject && $self['subject'] = $subject;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -158,26 +158,26 @@ final class PublicConversationsMessageEgg implements BaseModel
      */
     public function withAttachments(array $attachments): self
     {
-        $obj = clone $this;
-        $obj['attachments'] = $attachments;
+        $self = clone $this;
+        $self['attachments'] = $attachments;
 
-        return $obj;
+        return $self;
     }
 
     public function withChannelAccountID(string $channelAccountID): self
     {
-        $obj = clone $this;
-        $obj['channelAccountID'] = $channelAccountID;
+        $self = clone $this;
+        $self['channelAccountID'] = $channelAccountID;
 
-        return $obj;
+        return $self;
     }
 
     public function withChannelID(string $channelID): self
     {
-        $obj = clone $this;
-        $obj['channelID'] = $channelID;
+        $self = clone $this;
+        $self['channelID'] = $channelID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -191,26 +191,26 @@ final class PublicConversationsMessageEgg implements BaseModel
      */
     public function withRecipients(array $recipients): self
     {
-        $obj = clone $this;
-        $obj['recipients'] = $recipients;
+        $self = clone $this;
+        $self['recipients'] = $recipients;
 
-        return $obj;
+        return $self;
     }
 
     public function withSenderActorID(string $senderActorID): self
     {
-        $obj = clone $this;
-        $obj['senderActorID'] = $senderActorID;
+        $self = clone $this;
+        $self['senderActorID'] = $senderActorID;
 
-        return $obj;
+        return $self;
     }
 
     public function withText(string $text): self
     {
-        $obj = clone $this;
-        $obj['text'] = $text;
+        $self = clone $this;
+        $self['text'] = $text;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -218,25 +218,25 @@ final class PublicConversationsMessageEgg implements BaseModel
      */
     public function withType(Type|string $type): self
     {
-        $obj = clone $this;
-        $obj['type'] = $type;
+        $self = clone $this;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 
     public function withRichText(string $richText): self
     {
-        $obj = clone $this;
-        $obj['richText'] = $richText;
+        $self = clone $this;
+        $self['richText'] = $richText;
 
-        return $obj;
+        return $self;
     }
 
     public function withSubject(string $subject): self
     {
-        $obj = clone $this;
-        $obj['subject'] = $subject;
+        $self = clone $this;
+        $self['subject'] = $subject;
 
-        return $obj;
+        return $self;
     }
 }

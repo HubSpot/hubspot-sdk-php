@@ -48,11 +48,11 @@ final class EventDetailSettingsURL implements BaseModel
      */
     public static function with(string $eventDetailsURL): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['eventDetailsURL'] = $eventDetailsURL;
+        $self['eventDetailsURL'] = $eventDetailsURL;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -60,9 +60,9 @@ final class EventDetailSettingsURL implements BaseModel
      */
     public function withEventDetailsURL(string $eventDetailsURL): self
     {
-        $obj = clone $this;
-        $obj['eventDetailsURL'] = $eventDetailsURL;
+        $self = clone $this;
+        $self['eventDetailsURL'] = $eventDetailsURL;
 
-        return $obj;
+        return $self;
     }
 }

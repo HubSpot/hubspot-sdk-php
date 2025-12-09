@@ -65,12 +65,12 @@ final class AssociationSpec implements BaseModel
         AssociationCategory|string $associationCategory,
         int $associationTypeID
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['associationCategory'] = $associationCategory;
-        $obj['associationTypeID'] = $associationTypeID;
+        $self['associationCategory'] = $associationCategory;
+        $self['associationTypeID'] = $associationTypeID;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -81,10 +81,10 @@ final class AssociationSpec implements BaseModel
     public function withAssociationCategory(
         AssociationCategory|string $associationCategory
     ): self {
-        $obj = clone $this;
-        $obj['associationCategory'] = $associationCategory;
+        $self = clone $this;
+        $self['associationCategory'] = $associationCategory;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -92,9 +92,9 @@ final class AssociationSpec implements BaseModel
      */
     public function withAssociationTypeID(int $associationTypeID): self
     {
-        $obj = clone $this;
-        $obj['associationTypeID'] = $associationTypeID;
+        $self = clone $this;
+        $self['associationTypeID'] = $associationTypeID;
 
-        return $obj;
+        return $self;
     }
 }

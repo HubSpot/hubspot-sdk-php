@@ -52,45 +52,45 @@ final class OwnerListParams implements BaseModel
         ?string $email = null,
         ?int $limit = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $after && $obj['after'] = $after;
-        null !== $archived && $obj['archived'] = $archived;
-        null !== $email && $obj['email'] = $email;
-        null !== $limit && $obj['limit'] = $limit;
+        null !== $after && $self['after'] = $after;
+        null !== $archived && $self['archived'] = $archived;
+        null !== $email && $self['email'] = $email;
+        null !== $limit && $self['limit'] = $limit;
 
-        return $obj;
+        return $self;
     }
 
     public function withAfter(string $after): self
     {
-        $obj = clone $this;
-        $obj['after'] = $after;
+        $self = clone $this;
+        $self['after'] = $after;
 
-        return $obj;
+        return $self;
     }
 
     public function withArchived(bool $archived): self
     {
-        $obj = clone $this;
-        $obj['archived'] = $archived;
+        $self = clone $this;
+        $self['archived'] = $archived;
 
-        return $obj;
+        return $self;
     }
 
     public function withEmail(string $email): self
     {
-        $obj = clone $this;
-        $obj['email'] = $email;
+        $self = clone $this;
+        $self['email'] = $email;
 
-        return $obj;
+        return $self;
     }
 
     public function withLimit(int $limit): self
     {
-        $obj = clone $this;
-        $obj['limit'] = $limit;
+        $self = clone $this;
+        $self['limit'] = $limit;
 
-        return $obj;
+        return $self;
     }
 }

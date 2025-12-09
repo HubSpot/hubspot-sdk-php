@@ -73,24 +73,24 @@ final class AgentActor implements BaseModel
         ?string $email = null,
         ?string $name = null,
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['id'] = $id;
-        $obj['type'] = $type;
+        $self['id'] = $id;
+        $self['type'] = $type;
 
-        null !== $avatar && $obj['avatar'] = $avatar;
-        null !== $email && $obj['email'] = $email;
-        null !== $name && $obj['name'] = $name;
+        null !== $avatar && $self['avatar'] = $avatar;
+        null !== $email && $self['email'] = $email;
+        null !== $name && $self['name'] = $name;
 
-        return $obj;
+        return $self;
     }
 
     public function withID(string $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -98,33 +98,33 @@ final class AgentActor implements BaseModel
      */
     public function withType(Type|string $type): self
     {
-        $obj = clone $this;
-        $obj['type'] = $type;
+        $self = clone $this;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 
     public function withAvatar(string $avatar): self
     {
-        $obj = clone $this;
-        $obj['avatar'] = $avatar;
+        $self = clone $this;
+        $self['avatar'] = $avatar;
 
-        return $obj;
+        return $self;
     }
 
     public function withEmail(string $email): self
     {
-        $obj = clone $this;
-        $obj['email'] = $email;
+        $self = clone $this;
+        $self['email'] = $email;
 
-        return $obj;
+        return $self;
     }
 
     public function withName(string $name): self
     {
-        $obj = clone $this;
-        $obj['name'] = $name;
+        $self = clone $this;
+        $self['name'] = $name;
 
-        return $obj;
+        return $self;
     }
 }

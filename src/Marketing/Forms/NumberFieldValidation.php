@@ -56,27 +56,27 @@ final class NumberFieldValidation implements BaseModel
         int $maxAllowedDigits,
         int $minAllowedDigits
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['maxAllowedDigits'] = $maxAllowedDigits;
-        $obj['minAllowedDigits'] = $minAllowedDigits;
+        $self['maxAllowedDigits'] = $maxAllowedDigits;
+        $self['minAllowedDigits'] = $minAllowedDigits;
 
-        return $obj;
+        return $self;
     }
 
     public function withMaxAllowedDigits(int $maxAllowedDigits): self
     {
-        $obj = clone $this;
-        $obj['maxAllowedDigits'] = $maxAllowedDigits;
+        $self = clone $this;
+        $self['maxAllowedDigits'] = $maxAllowedDigits;
 
-        return $obj;
+        return $self;
     }
 
     public function withMinAllowedDigits(int $minAllowedDigits): self
     {
-        $obj = clone $this;
-        $obj['minAllowedDigits'] = $minAllowedDigits;
+        $self = clone $this;
+        $self['minAllowedDigits'] = $minAllowedDigits;
 
-        return $obj;
+        return $self;
     }
 }

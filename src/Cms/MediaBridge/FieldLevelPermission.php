@@ -45,18 +45,18 @@ final class FieldLevelPermission implements BaseModel
      */
     public static function with(string $accessLevel): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['accessLevel'] = $accessLevel;
+        $self['accessLevel'] = $accessLevel;
 
-        return $obj;
+        return $self;
     }
 
     public function withAccessLevel(string $accessLevel): self
     {
-        $obj = clone $this;
-        $obj['accessLevel'] = $accessLevel;
+        $self = clone $this;
+        $self['accessLevel'] = $accessLevel;
 
-        return $obj;
+        return $self;
     }
 }

@@ -61,12 +61,12 @@ final class ExternalLinkAvailabilityForDuration implements BaseModel
         array $availabilities,
         int $meetingDurationMillis
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['availabilities'] = $availabilities;
-        $obj['meetingDurationMillis'] = $meetingDurationMillis;
+        $self['availabilities'] = $availabilities;
+        $self['meetingDurationMillis'] = $meetingDurationMillis;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -76,17 +76,17 @@ final class ExternalLinkAvailabilityForDuration implements BaseModel
      */
     public function withAvailabilities(array $availabilities): self
     {
-        $obj = clone $this;
-        $obj['availabilities'] = $availabilities;
+        $self = clone $this;
+        $self['availabilities'] = $availabilities;
 
-        return $obj;
+        return $self;
     }
 
     public function withMeetingDurationMillis(int $meetingDurationMillis): self
     {
-        $obj = clone $this;
-        $obj['meetingDurationMillis'] = $meetingDurationMillis;
+        $self = clone $this;
+        $self['meetingDurationMillis'] = $meetingDurationMillis;
 
-        return $obj;
+        return $self;
     }
 }

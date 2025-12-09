@@ -54,27 +54,27 @@ final class PortalGetParams implements BaseModel
      */
     public static function with(int $appID, string $flagName): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['appID'] = $appID;
-        $obj['flagName'] = $flagName;
+        $self['appID'] = $appID;
+        $self['flagName'] = $flagName;
 
-        return $obj;
+        return $self;
     }
 
     public function withAppID(int $appID): self
     {
-        $obj = clone $this;
-        $obj['appID'] = $appID;
+        $self = clone $this;
+        $self['appID'] = $appID;
 
-        return $obj;
+        return $self;
     }
 
     public function withFlagName(string $flagName): self
     {
-        $obj = clone $this;
-        $obj['flagName'] = $flagName;
+        $self = clone $this;
+        $self['flagName'] = $flagName;
 
-        return $obj;
+        return $self;
     }
 }

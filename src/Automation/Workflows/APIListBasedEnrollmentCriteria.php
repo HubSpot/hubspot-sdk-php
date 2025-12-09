@@ -179,15 +179,15 @@ final class APIListBasedEnrollmentCriteria implements BaseModel
         bool $unEnrollObjectsNotMeetingCriteria,
         Type|string $type = 'LIST_BASED',
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['listFilterBranch'] = $listFilterBranch;
-        $obj['reEnrollmentTriggersFilterBranches'] = $reEnrollmentTriggersFilterBranches;
-        $obj['shouldReEnroll'] = $shouldReEnroll;
-        $obj['type'] = $type;
-        $obj['unEnrollObjectsNotMeetingCriteria'] = $unEnrollObjectsNotMeetingCriteria;
+        $self['listFilterBranch'] = $listFilterBranch;
+        $self['reEnrollmentTriggersFilterBranches'] = $reEnrollmentTriggersFilterBranches;
+        $self['shouldReEnroll'] = $shouldReEnroll;
+        $self['type'] = $type;
+        $self['unEnrollObjectsNotMeetingCriteria'] = $unEnrollObjectsNotMeetingCriteria;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -246,10 +246,10 @@ final class APIListBasedEnrollmentCriteria implements BaseModel
     public function withListFilterBranch(
         PublicOrFilterBranch|array|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch $listFilterBranch,
     ): self {
-        $obj = clone $this;
-        $obj['listFilterBranch'] = $listFilterBranch;
+        $self = clone $this;
+        $self['listFilterBranch'] = $listFilterBranch;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -258,18 +258,18 @@ final class APIListBasedEnrollmentCriteria implements BaseModel
     public function withReEnrollmentTriggersFilterBranches(
         array $reEnrollmentTriggersFilterBranches
     ): self {
-        $obj = clone $this;
-        $obj['reEnrollmentTriggersFilterBranches'] = $reEnrollmentTriggersFilterBranches;
+        $self = clone $this;
+        $self['reEnrollmentTriggersFilterBranches'] = $reEnrollmentTriggersFilterBranches;
 
-        return $obj;
+        return $self;
     }
 
     public function withShouldReEnroll(bool $shouldReEnroll): self
     {
-        $obj = clone $this;
-        $obj['shouldReEnroll'] = $shouldReEnroll;
+        $self = clone $this;
+        $self['shouldReEnroll'] = $shouldReEnroll;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -277,18 +277,18 @@ final class APIListBasedEnrollmentCriteria implements BaseModel
      */
     public function withType(Type|string $type): self
     {
-        $obj = clone $this;
-        $obj['type'] = $type;
+        $self = clone $this;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 
     public function withUnEnrollObjectsNotMeetingCriteria(
         bool $unEnrollObjectsNotMeetingCriteria
     ): self {
-        $obj = clone $this;
-        $obj['unEnrollObjectsNotMeetingCriteria'] = $unEnrollObjectsNotMeetingCriteria;
+        $self = clone $this;
+        $self['unEnrollObjectsNotMeetingCriteria'] = $unEnrollObjectsNotMeetingCriteria;
 
-        return $obj;
+        return $self;
     }
 }

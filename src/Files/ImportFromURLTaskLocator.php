@@ -62,12 +62,12 @@ final class ImportFromURLTaskLocator implements BaseModel
      */
     public static function with(string $id, array $links): self
     {
-        $obj = new self;
+        $self = new self;
 
-        $obj['id'] = $id;
-        $obj['links'] = $links;
+        $self['id'] = $id;
+        $self['links'] = $links;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -75,10 +75,10 @@ final class ImportFromURLTaskLocator implements BaseModel
      */
     public function withID(string $id): self
     {
-        $obj = clone $this;
-        $obj['id'] = $id;
+        $self = clone $this;
+        $self['id'] = $id;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -88,9 +88,9 @@ final class ImportFromURLTaskLocator implements BaseModel
      */
     public function withLinks(array $links): self
     {
-        $obj = clone $this;
-        $obj['links'] = $links;
+        $self = clone $this;
+        $self['links'] = $links;
 
-        return $obj;
+        return $self;
     }
 }

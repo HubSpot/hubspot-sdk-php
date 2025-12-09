@@ -38,27 +38,27 @@ final class ObjectTypeDefinitionLabels implements BaseModel
         ?string $plural = null,
         ?string $singular = null
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        null !== $plural && $obj['plural'] = $plural;
-        null !== $singular && $obj['singular'] = $singular;
+        null !== $plural && $self['plural'] = $plural;
+        null !== $singular && $self['singular'] = $singular;
 
-        return $obj;
+        return $self;
     }
 
     public function withPlural(string $plural): self
     {
-        $obj = clone $this;
-        $obj['plural'] = $plural;
+        $self = clone $this;
+        $self['plural'] = $plural;
 
-        return $obj;
+        return $self;
     }
 
     public function withSingular(string $singular): self
     {
-        $obj = clone $this;
-        $obj['singular'] = $singular;
+        $self = clone $this;
+        $self['singular'] = $singular;
 
-        return $obj;
+        return $self;
     }
 }

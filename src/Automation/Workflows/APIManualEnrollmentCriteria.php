@@ -56,20 +56,20 @@ final class APIManualEnrollmentCriteria implements BaseModel
         bool $shouldReEnroll,
         Type|string $type = 'MANUAL'
     ): self {
-        $obj = new self;
+        $self = new self;
 
-        $obj['shouldReEnroll'] = $shouldReEnroll;
-        $obj['type'] = $type;
+        $self['shouldReEnroll'] = $shouldReEnroll;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 
     public function withShouldReEnroll(bool $shouldReEnroll): self
     {
-        $obj = clone $this;
-        $obj['shouldReEnroll'] = $shouldReEnroll;
+        $self = clone $this;
+        $self['shouldReEnroll'] = $shouldReEnroll;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -77,9 +77,9 @@ final class APIManualEnrollmentCriteria implements BaseModel
      */
     public function withType(Type|string $type): self
     {
-        $obj = clone $this;
-        $obj['type'] = $type;
+        $self = clone $this;
+        $self['type'] = $type;
 
-        return $obj;
+        return $self;
     }
 }

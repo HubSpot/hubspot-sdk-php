@@ -40,11 +40,11 @@ final class FileOperationGetParams implements BaseModel
      */
     public static function with(?array $properties = null): self
     {
-        $obj = new self;
+        $self = new self;
 
-        null !== $properties && $obj['properties'] = $properties;
+        null !== $properties && $self['properties'] = $properties;
 
-        return $obj;
+        return $self;
     }
 
     /**
@@ -52,9 +52,9 @@ final class FileOperationGetParams implements BaseModel
      */
     public function withProperties(array $properties): self
     {
-        $obj = clone $this;
-        $obj['properties'] = $properties;
+        $self = clone $this;
+        $self['properties'] = $properties;
 
-        return $obj;
+        return $self;
     }
 }
