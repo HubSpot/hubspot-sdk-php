@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Crm\Lists;
 
 use HubspotSDK\Client;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\Lists\Folders\FolderCreateParams;
 use HubspotSDK\Crm\Lists\Folders\FolderGetParams;
@@ -41,14 +42,16 @@ final class FoldersService implements FoldersContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<ListFolderCreateResponse> */
+        $response = $this->client->request(
             method: 'post',
             path: 'crm/v3/lists/folders',
             body: (object) $parsed,
             options: $options,
             convert: ListFolderCreateResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -62,13 +65,15 @@ final class FoldersService implements FoldersContract
         string $folderID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'delete',
             path: ['crm/v3/lists/folders/%1$s', $folderID],
             options: $requestOptions,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -89,14 +94,16 @@ final class FoldersService implements FoldersContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<ListFolderFetchResponse> */
+        $response = $this->client->request(
             method: 'get',
             path: 'crm/v3/lists/folders',
             query: $parsed,
             options: $options,
             convert: ListFolderFetchResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -120,8 +127,8 @@ final class FoldersService implements FoldersContract
         $folderID = $parsed['folderId'];
         unset($parsed['folderId']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<ListFolderFetchResponse> */
+        $response = $this->client->request(
             method: 'put',
             path: [
                 'crm/v3/lists/folders/%1$s/move/%2$s', $folderID, $newParentFolderID,
@@ -129,6 +136,8 @@ final class FoldersService implements FoldersContract
             options: $options,
             convert: ListFolderFetchResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -149,14 +158,16 @@ final class FoldersService implements FoldersContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'put',
             path: 'crm/v3/lists/folders/move-list',
             body: (object) $parsed,
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -178,13 +189,15 @@ final class FoldersService implements FoldersContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<ListFolderFetchResponse> */
+        $response = $this->client->request(
             method: 'put',
             path: ['crm/v3/lists/folders/%1$s/rename', $folderID],
             query: $parsed,
             options: $options,
             convert: ListFolderFetchResponse::class,
         );
+
+        return $response->parse();
     }
 }

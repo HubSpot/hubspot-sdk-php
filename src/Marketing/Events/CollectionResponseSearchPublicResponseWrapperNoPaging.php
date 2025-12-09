@@ -6,21 +6,17 @@ namespace HubspotSDK\Marketing\Events;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type CollectionResponseSearchPublicResponseWrapperNoPagingShape = array{
  *   results: list<SearchPublicResponseWrapper>
  * }
  */
-final class CollectionResponseSearchPublicResponseWrapperNoPaging implements BaseModel, ResponseConverter
+final class CollectionResponseSearchPublicResponseWrapperNoPaging implements BaseModel
 {
     /** @use SdkModel<CollectionResponseSearchPublicResponseWrapperNoPagingShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     /** @var list<SearchPublicResponseWrapper> $results */
     #[Api(list: SearchPublicResponseWrapper::class)]

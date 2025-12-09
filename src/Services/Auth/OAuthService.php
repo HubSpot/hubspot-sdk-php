@@ -9,6 +9,7 @@ use HubspotSDK\Auth\OAuth\OAuthCreateAccessTokenParams;
 use HubspotSDK\Auth\OAuth\RefreshTokenInfoResponse;
 use HubspotSDK\Auth\OAuth\TokenResponseIf;
 use HubspotSDK\Client;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Auth\OAuthContract;
@@ -52,8 +53,8 @@ final class OAuthService implements OAuthContract
         );
         $query_params = array_flip(['client_secret', 'refresh_token']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<TokenResponseIf> */
+        $response = $this->client->request(
             method: 'post',
             path: 'oauth/v1/token',
             query: array_diff_key($parsed, $query_params),
@@ -62,6 +63,8 @@ final class OAuthService implements OAuthContract
             options: $options,
             convert: TokenResponseIf::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -79,13 +82,15 @@ final class OAuthService implements OAuthContract
         string $token,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'delete',
             path: ['oauth/v1/refresh-tokens/%1$s', $token],
             options: $requestOptions,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -103,13 +108,15 @@ final class OAuthService implements OAuthContract
         string $token,
         ?RequestOptions $requestOptions = null
     ): AccessTokenInfoResponse {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<AccessTokenInfoResponse> */
+        $response = $this->client->request(
             method: 'get',
             path: ['oauth/v1/access-tokens/%1$s', $token],
             options: $requestOptions,
             convert: AccessTokenInfoResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -125,12 +132,14 @@ final class OAuthService implements OAuthContract
         string $token,
         ?RequestOptions $requestOptions = null
     ): RefreshTokenInfoResponse {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<RefreshTokenInfoResponse> */
+        $response = $this->client->request(
             method: 'get',
             path: ['oauth/v1/refresh-tokens/%1$s', $token],
             options: $requestOptions,
             convert: RefreshTokenInfoResponse::class,
         );
+
+        return $response->parse();
     }
 }

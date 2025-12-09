@@ -11,6 +11,7 @@ use HubspotSDK\Account\Activity\HydratedCriticalAction;
 use HubspotSDK\Account\Activity\PublicAPIUserActionEvent;
 use HubspotSDK\Account\Activity\PublicLoginAudit;
 use HubspotSDK\Client;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
@@ -50,8 +51,8 @@ final class ActivityService implements ActivityContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<Page<PublicAPIUserActionEvent>> */
+        $response = $this->client->request(
             method: 'get',
             path: 'account-info/v3/activity/audit-logs',
             query: $parsed,
@@ -59,6 +60,8 @@ final class ActivityService implements ActivityContract
             convert: PublicAPIUserActionEvent::class,
             page: Page::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -83,8 +86,8 @@ final class ActivityService implements ActivityContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<Page<PublicLoginAudit>> */
+        $response = $this->client->request(
             method: 'get',
             path: 'account-info/v3/activity/login',
             query: $parsed,
@@ -92,6 +95,8 @@ final class ActivityService implements ActivityContract
             convert: PublicLoginAudit::class,
             page: Page::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -120,8 +125,8 @@ final class ActivityService implements ActivityContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<Page<HydratedCriticalAction>> */
+        $response = $this->client->request(
             method: 'get',
             path: 'account-info/v3/activity/security',
             query: $parsed,
@@ -129,5 +134,7 @@ final class ActivityService implements ActivityContract
             convert: HydratedCriticalAction::class,
             page: Page::class,
         );
+
+        return $response->parse();
     }
 }

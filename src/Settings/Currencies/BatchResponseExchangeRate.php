@@ -6,9 +6,7 @@ namespace HubspotSDK\Settings\Currencies;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 use HubspotSDK\Settings\Currencies\BatchResponseExchangeRate\Status;
 use HubspotSDK\Settings\Currencies\ExchangeRate\FromCurrencyCode;
 use HubspotSDK\Settings\Currencies\ExchangeRate\ToCurrencyCode;
@@ -23,12 +21,10 @@ use HubspotSDK\Settings\Currencies\ExchangeRate\ToCurrencyCode;
  *   requestedAt?: \DateTimeInterface|null,
  * }
  */
-final class BatchResponseExchangeRate implements BaseModel, ResponseConverter
+final class BatchResponseExchangeRate implements BaseModel
 {
     /** @use SdkModel<BatchResponseExchangeRateShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     #[Api]
     public \DateTimeInterface $completedAt;

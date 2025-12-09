@@ -14,6 +14,7 @@ use HubspotSDK\Cms\SourceCode\SourceCodeGetMetadataParams;
 use HubspotSDK\Cms\SourceCode\SourceCodeGetParams;
 use HubspotSDK\Cms\SourceCode\SourceCodeUpsertParams;
 use HubspotSDK\Cms\SourceCode\SourceCodeValidateParams;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Cms\SourceCodeContract;
@@ -49,8 +50,8 @@ final class SourceCodeService implements SourceCodeContract
         $environment = $parsed['environment'];
         unset($parsed['environment']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<AssetFileMetadata> */
+        $response = $this->client->request(
             method: 'post',
             path: ['cms/v3/source-code/%1$s/content/%2$s', $environment, $filePath],
             headers: ['Content-Type' => 'multipart/form-data'],
@@ -58,6 +59,8 @@ final class SourceCodeService implements SourceCodeContract
             options: $options,
             convert: AssetFileMetadata::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -81,13 +84,15 @@ final class SourceCodeService implements SourceCodeContract
         $environment = $parsed['environment'];
         unset($parsed['environment']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'delete',
             path: ['cms/v3/source-code/%1$s/content/%2$s', $environment, $filePath],
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -108,14 +113,16 @@ final class SourceCodeService implements SourceCodeContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<TaskLocator> */
+        $response = $this->client->request(
             method: 'post',
             path: 'cms/v3/source-code/extract/async',
             body: (object) $parsed,
             options: $options,
             convert: TaskLocator::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -139,14 +146,16 @@ final class SourceCodeService implements SourceCodeContract
         $environment = $parsed['environment'];
         unset($parsed['environment']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<string> */
+        $response = $this->client->request(
             method: 'get',
             path: ['cms/v3/source-code/%1$s/content/%2$s', $environment, $filePath],
             headers: ['Accept' => 'application/octet-stream'],
             options: $options,
             convert: 'string',
         );
+
+        return $response->parse();
     }
 
     /**
@@ -160,13 +169,15 @@ final class SourceCodeService implements SourceCodeContract
         int $taskID,
         ?RequestOptions $requestOptions = null
     ): ActionResponse {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<ActionResponse> */
+        $response = $this->client->request(
             method: 'get',
             path: ['cms/v3/source-code/extract/async/tasks/%1$s/status', $taskID],
             options: $requestOptions,
             convert: ActionResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -192,14 +203,16 @@ final class SourceCodeService implements SourceCodeContract
         $environment = $parsed['environment'];
         unset($parsed['environment']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<AssetFileMetadata> */
+        $response = $this->client->request(
             method: 'get',
             path: ['cms/v3/source-code/%1$s/metadata/%2$s', $environment, $filePath],
             query: $parsed,
             options: $options,
             convert: AssetFileMetadata::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -223,8 +236,8 @@ final class SourceCodeService implements SourceCodeContract
         $environment = $parsed['environment'];
         unset($parsed['environment']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<AssetFileMetadata> */
+        $response = $this->client->request(
             method: 'put',
             path: ['cms/v3/source-code/%1$s/content/%2$s', $environment, $filePath],
             headers: ['Content-Type' => 'multipart/form-data'],
@@ -232,6 +245,8 @@ final class SourceCodeService implements SourceCodeContract
             options: $options,
             convert: AssetFileMetadata::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -257,8 +272,8 @@ final class SourceCodeService implements SourceCodeContract
         $environment = $parsed['environment'];
         unset($parsed['environment']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<string> */
+        $response = $this->client->request(
             method: 'post',
             path: ['cms/v3/source-code/%1$s/validate/%2$s', $environment, $filePath],
             headers: ['Content-Type' => 'multipart/form-data', 'Accept' => '*/*'],
@@ -266,5 +281,7 @@ final class SourceCodeService implements SourceCodeContract
             options: $options,
             convert: 'string',
         );
+
+        return $response->parse();
     }
 }

@@ -9,6 +9,7 @@ use HubspotSDK\Conversations\PublicThread;
 use HubspotSDK\Conversations\Threads\ThreadGetParams;
 use HubspotSDK\Conversations\Threads\ThreadListParams;
 use HubspotSDK\Conversations\Threads\ThreadUpdateParams;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
@@ -41,8 +42,8 @@ final class ThreadsService implements ThreadsContract
         );
         $query_params = ['archived'];
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<PublicThread> */
+        $response = $this->client->request(
             method: 'patch',
             path: ['conversations/v3/conversations/threads/%1$s', $threadID],
             query: array_diff_key($parsed, $query_params),
@@ -50,6 +51,8 @@ final class ThreadsService implements ThreadsContract
             options: $options,
             convert: PublicThread::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -81,8 +84,8 @@ final class ThreadsService implements ThreadsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<Page<PublicThread>> */
+        $response = $this->client->request(
             method: 'get',
             path: 'conversations/v3/conversations/threads',
             query: $parsed,
@@ -90,6 +93,8 @@ final class ThreadsService implements ThreadsContract
             convert: PublicThread::class,
             page: Page::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -101,13 +106,15 @@ final class ThreadsService implements ThreadsContract
         int $threadID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'delete',
             path: ['conversations/v3/conversations/threads/%1$s', $threadID],
             options: $requestOptions,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -129,13 +136,15 @@ final class ThreadsService implements ThreadsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<PublicThread> */
+        $response = $this->client->request(
             method: 'get',
             path: ['conversations/v3/conversations/threads/%1$s', $threadID],
             query: $parsed,
             options: $options,
             convert: PublicThread::class,
         );
+
+        return $response->parse();
     }
 }

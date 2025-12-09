@@ -6,9 +6,7 @@ namespace HubspotSDK\Crm\Owners;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 use HubspotSDK\Crm\Owners\PublicOwner\Type;
 use HubspotSDK\Settings\Users\PublicTeam;
 
@@ -27,12 +25,10 @@ use HubspotSDK\Settings\Users\PublicTeam;
  *   userIdIncludingInactive?: int|null,
  * }
  */
-final class PublicOwner implements BaseModel, ResponseConverter
+final class PublicOwner implements BaseModel
 {
     /** @use SdkModel<PublicOwnerShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     /**
      * The unique identifier of the owner.

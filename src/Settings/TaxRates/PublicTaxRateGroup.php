@@ -6,9 +6,7 @@ namespace HubspotSDK\Settings\TaxRates;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type PublicTaxRateGroupShape = array{
@@ -21,12 +19,10 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
  *   updatedAt: \DateTimeInterface,
  * }
  */
-final class PublicTaxRateGroup implements BaseModel, ResponseConverter
+final class PublicTaxRateGroup implements BaseModel
 {
     /** @use SdkModel<PublicTaxRateGroupShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     #[Api]
     public string $id;

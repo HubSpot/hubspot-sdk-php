@@ -6,9 +6,7 @@ namespace HubspotSDK\BusinessUnits;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 use HubspotSDK\Marketing\Campaigns\PublicBusinessUnit;
 
 /**
@@ -18,12 +16,10 @@ use HubspotSDK\Marketing\Campaigns\PublicBusinessUnit;
  *   results: list<\HubspotSDK\Marketing\Campaigns\PublicBusinessUnit>
  * }
  */
-final class CollectionResponsePublicBusinessUnitNoPaging implements BaseModel, ResponseConverter
+final class CollectionResponsePublicBusinessUnitNoPaging implements BaseModel
 {
     /** @use SdkModel<CollectionResponsePublicBusinessUnitNoPagingShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     /**
      * The collection of Business Units.

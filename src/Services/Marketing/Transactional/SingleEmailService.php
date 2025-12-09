@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Marketing\Transactional;
 
 use HubspotSDK\Client;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Marketing\EmailSendStatusView;
 use HubspotSDK\Marketing\Transactional\SingleEmail\SingleEmailSendParams;
@@ -48,13 +49,15 @@ final class SingleEmailService implements SingleEmailContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<EmailSendStatusView> */
+        $response = $this->client->request(
             method: 'post',
             path: 'marketing/v3/transactional/single-email/send',
             body: (object) $parsed,
             options: $options,
             convert: EmailSendStatusView::class,
         );
+
+        return $response->parse();
     }
 }

@@ -6,9 +6,7 @@ namespace HubspotSDK\Crm\Limits;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 use HubspotSDK\Crm\Objects\Schemas\ObjectsSchemasObjectTypeDefinition;
 
 /**
@@ -16,12 +14,10 @@ use HubspotSDK\Crm\Objects\Schemas\ObjectsSchemasObjectTypeDefinition;
  *   results: list<AssociationLabelLimitResponse>
  * }
  */
-final class CollectionResponseAssociationLabelLimitResponseNoPaging implements BaseModel, ResponseConverter
+final class CollectionResponseAssociationLabelLimitResponseNoPaging implements BaseModel
 {
     /** @use SdkModel<CollectionResponseAssociationLabelLimitResponseNoPagingShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     /** @var list<AssociationLabelLimitResponse> $results */
     #[Api(list: AssociationLabelLimitResponse::class)]

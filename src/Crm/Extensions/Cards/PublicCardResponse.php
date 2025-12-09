@@ -6,9 +6,7 @@ namespace HubspotSDK\Crm\Extensions\Cards;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 use HubspotSDK\Crm\Extensions\Cards\CardAuditResponse\ActionType;
 use HubspotSDK\Crm\Extensions\Cards\CardAuditResponse\AuthSource;
 
@@ -24,12 +22,10 @@ use HubspotSDK\Crm\Extensions\Cards\CardAuditResponse\AuthSource;
  *   updatedAt?: \DateTimeInterface|null,
  * }
  */
-final class PublicCardResponse implements BaseModel, ResponseConverter
+final class PublicCardResponse implements BaseModel
 {
     /** @use SdkModel<PublicCardResponseShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     #[Api]
     public string $id;

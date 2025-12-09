@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Webhooks;
 
 use HubspotSDK\Client;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Webhooks\SettingsContract;
@@ -41,14 +42,16 @@ final class SettingsService implements SettingsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<SettingsResponse> */
+        $response = $this->client->request(
             method: 'put',
             path: ['webhooks/v3/%1$s/settings', $appID],
             body: (object) $parsed,
             options: $options,
             convert: SettingsResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -62,13 +65,15 @@ final class SettingsService implements SettingsContract
         int $appID,
         ?RequestOptions $requestOptions = null
     ): SettingsResponse {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<SettingsResponse> */
+        $response = $this->client->request(
             method: 'get',
             path: ['webhooks/v3/%1$s/settings', $appID],
             options: $requestOptions,
             convert: SettingsResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -82,12 +87,14 @@ final class SettingsService implements SettingsContract
         int $appID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'delete',
             path: ['webhooks/v3/%1$s/settings', $appID],
             options: $requestOptions,
             convert: null,
         );
+
+        return $response->parse();
     }
 }

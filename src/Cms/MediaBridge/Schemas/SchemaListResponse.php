@@ -6,9 +6,7 @@ namespace HubspotSDK\Cms\MediaBridge\Schemas;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 use HubspotSDK\Crm\Objects\Schemas\ObjectSchema;
 use HubspotSDK\Events\EventDefinitions\AssociationDefinition;
 use HubspotSDK\ObjectTypeDefinitionLabels;
@@ -17,12 +15,10 @@ use HubspotSDK\Property;
 /**
  * @phpstan-type SchemaListResponseShape = array{results: list<ObjectSchema>}
  */
-final class SchemaListResponse implements BaseModel, ResponseConverter
+final class SchemaListResponse implements BaseModel
 {
     /** @use SdkModel<SchemaListResponseShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     /** @var list<ObjectSchema> $results */
     #[Api(list: ObjectSchema::class)]

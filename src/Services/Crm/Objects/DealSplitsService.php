@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Crm\Objects;
 
 use HubspotSDK\Client;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\Objects\DealSplits\BatchResponseDealToDealSplits;
 use HubspotSDK\Crm\Objects\DealSplits\DealSplitBatchReadParams;
@@ -40,14 +41,16 @@ final class DealSplitsService implements DealSplitsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<BatchResponseDealToDealSplits> */
+        $response = $this->client->request(
             method: 'post',
             path: 'crm/v3/objects/deals/splits/batch/read',
             body: (object) $parsed,
             options: $options,
             convert: BatchResponseDealToDealSplits::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -70,13 +73,15 @@ final class DealSplitsService implements DealSplitsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<BatchResponseDealToDealSplits> */
+        $response = $this->client->request(
             method: 'post',
             path: 'crm/v3/objects/deals/splits/batch/upsert',
             body: (object) $parsed,
             options: $options,
             convert: BatchResponseDealToDealSplits::class,
         );
+
+        return $response->parse();
     }
 }

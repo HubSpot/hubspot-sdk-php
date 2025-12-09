@@ -6,6 +6,7 @@ namespace HubspotSDK\Services\Crm;
 
 use HubspotSDK\ActionResponse;
 use HubspotSDK\Client;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\Imports\ImportCreateParams;
 use HubspotSDK\Crm\Imports\ImportListErrorsParams;
@@ -41,8 +42,8 @@ final class ImportsService implements ImportsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<PublicImportResponse> */
+        $response = $this->client->request(
             method: 'post',
             path: 'crm/v3/imports/',
             headers: ['Content-Type' => 'multipart/form-data'],
@@ -50,6 +51,8 @@ final class ImportsService implements ImportsContract
             options: $options,
             convert: PublicImportResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -74,8 +77,8 @@ final class ImportsService implements ImportsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<Page<PublicImportResponse>> */
+        $response = $this->client->request(
             method: 'get',
             path: 'crm/v3/imports/',
             query: $parsed,
@@ -83,6 +86,8 @@ final class ImportsService implements ImportsContract
             convert: PublicImportResponse::class,
             page: Page::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -96,13 +101,15 @@ final class ImportsService implements ImportsContract
         int $importID,
         ?RequestOptions $requestOptions = null
     ): ActionResponse {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<ActionResponse> */
+        $response = $this->client->request(
             method: 'post',
             path: ['crm/v3/imports/%1$s/cancel', $importID],
             options: $requestOptions,
             convert: ActionResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -116,13 +123,15 @@ final class ImportsService implements ImportsContract
         int $importID,
         ?RequestOptions $requestOptions = null
     ): PublicImportResponse {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<PublicImportResponse> */
+        $response = $this->client->request(
             method: 'get',
             path: ['crm/v3/imports/%1$s', $importID],
             options: $requestOptions,
             convert: PublicImportResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -146,8 +155,8 @@ final class ImportsService implements ImportsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<Page<PublicImportError>> */
+        $response = $this->client->request(
             method: 'get',
             path: ['crm/v3/imports/%1$s/errors', $importID],
             query: $parsed,
@@ -155,5 +164,7 @@ final class ImportsService implements ImportsContract
             convert: PublicImportError::class,
             page: Page::class,
         );
+
+        return $response->parse();
     }
 }

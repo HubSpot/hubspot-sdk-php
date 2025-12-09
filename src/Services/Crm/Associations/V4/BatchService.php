@@ -6,6 +6,7 @@ namespace HubspotSDK\Services\Crm\Associations\V4;
 
 use HubspotSDK\AssociationSpec;
 use HubspotSDK\Client;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\Associations\BatchResponseVoid;
 use HubspotSDK\Crm\Associations\V4\Batch\BatchCreateDefaultParams;
@@ -55,8 +56,8 @@ final class BatchService implements BatchContract
         $fromObjectType = $parsed['fromObjectType'];
         unset($parsed['fromObjectType']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<BatchResponseLabelsBetweenObjectPair> */
+        $response = $this->client->request(
             method: 'post',
             path: [
                 'crm/v4/associations/%1$s/%2$s/batch/create',
@@ -67,6 +68,8 @@ final class BatchService implements BatchContract
             options: $options,
             convert: BatchResponseLabelsBetweenObjectPair::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -95,8 +98,8 @@ final class BatchService implements BatchContract
         $fromObjectType = $parsed['fromObjectType'];
         unset($parsed['fromObjectType']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<BatchResponseVoid> */
+        $response = $this->client->request(
             method: 'post',
             path: [
                 'crm/v4/associations/%1$s/%2$s/batch/archive',
@@ -107,6 +110,8 @@ final class BatchService implements BatchContract
             options: $options,
             convert: BatchResponseVoid::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -135,8 +140,8 @@ final class BatchService implements BatchContract
         $fromObjectType = $parsed['fromObjectType'];
         unset($parsed['fromObjectType']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<BatchResponsePublicDefaultAssociation> */
+        $response = $this->client->request(
             method: 'post',
             path: [
                 'crm/v4/associations/%1$s/%2$s/batch/associate/default',
@@ -147,6 +152,8 @@ final class BatchService implements BatchContract
             options: $options,
             convert: BatchResponsePublicDefaultAssociation::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -177,8 +184,8 @@ final class BatchService implements BatchContract
         $fromObjectType = $parsed['fromObjectType'];
         unset($parsed['fromObjectType']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<BatchResponseVoid> */
+        $response = $this->client->request(
             method: 'post',
             path: [
                 'crm/v4/associations/%1$s/%2$s/batch/labels/archive',
@@ -189,6 +196,8 @@ final class BatchService implements BatchContract
             options: $options,
             convert: BatchResponseVoid::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -214,8 +223,8 @@ final class BatchService implements BatchContract
         $fromObjectType = $parsed['fromObjectType'];
         unset($parsed['fromObjectType']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<BatchResponsePublicAssociationMultiWithLabel> */
+        $response = $this->client->request(
             method: 'post',
             path: [
                 'crm/v4/associations/%1$s/%2$s/batch/read',
@@ -226,5 +235,7 @@ final class BatchService implements BatchContract
             options: $options,
             convert: BatchResponsePublicAssociationMultiWithLabel::class,
         );
+
+        return $response->parse();
     }
 }

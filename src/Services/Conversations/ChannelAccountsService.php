@@ -8,6 +8,7 @@ use HubspotSDK\Client;
 use HubspotSDK\Conversations\ChannelAccounts\ChannelAccountGetParams;
 use HubspotSDK\Conversations\ChannelAccounts\ChannelAccountListParams;
 use HubspotSDK\Conversations\PublicChannelAccount;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
@@ -46,8 +47,8 @@ final class ChannelAccountsService implements ChannelAccountsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<Page<PublicChannelAccount>> */
+        $response = $this->client->request(
             method: 'get',
             path: 'conversations/v3/conversations/channel-accounts',
             query: $parsed,
@@ -55,6 +56,8 @@ final class ChannelAccountsService implements ChannelAccountsContract
             convert: PublicChannelAccount::class,
             page: Page::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -74,8 +77,8 @@ final class ChannelAccountsService implements ChannelAccountsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<PublicChannelAccount> */
+        $response = $this->client->request(
             method: 'get',
             path: [
                 'conversations/v3/conversations/channel-accounts/%1$s',
@@ -85,5 +88,7 @@ final class ChannelAccountsService implements ChannelAccountsContract
             options: $options,
             convert: PublicChannelAccount::class,
         );
+
+        return $response->parse();
     }
 }

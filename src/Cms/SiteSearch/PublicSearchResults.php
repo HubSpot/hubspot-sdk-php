@@ -8,9 +8,7 @@ use HubspotSDK\Cms\SiteSearch\ContentSearchResult\Language;
 use HubspotSDK\Cms\SiteSearch\ContentSearchResult\Type;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type PublicSearchResultsShape = array{
@@ -22,12 +20,10 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
  *   searchTerm?: string|null,
  * }
  */
-final class PublicSearchResults implements BaseModel, ResponseConverter
+final class PublicSearchResults implements BaseModel
 {
     /** @use SdkModel<PublicSearchResultsShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     #[Api]
     public int $limit;

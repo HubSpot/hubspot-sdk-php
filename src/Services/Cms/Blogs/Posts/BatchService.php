@@ -11,6 +11,7 @@ use HubspotSDK\Cms\Blogs\Posts\Batch\BatchGetParams;
 use HubspotSDK\Cms\Blogs\Posts\Batch\BatchUpdateParams;
 use HubspotSDK\Cms\Blogs\Posts\BatchResponseBlogPost;
 use HubspotSDK\Cms\Blogs\Posts\BlogPost;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Cms\Blogs\Posts\BatchContract;
@@ -104,14 +105,16 @@ final class BatchService implements BatchContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<BatchResponseBlogPost> */
+        $response = $this->client->request(
             method: 'post',
             path: 'cms/v3/blogs/posts/batch/create',
             body: (object) $parsed,
             options: $options,
             convert: BatchResponseBlogPost::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -133,8 +136,8 @@ final class BatchService implements BatchContract
         );
         $query_params = ['archived'];
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<BatchResponseBlogPost> */
+        $response = $this->client->request(
             method: 'post',
             path: 'cms/v3/blogs/posts/batch/update',
             query: array_diff_key($parsed, $query_params),
@@ -142,6 +145,8 @@ final class BatchService implements BatchContract
             options: $options,
             convert: BatchResponseBlogPost::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -163,14 +168,16 @@ final class BatchService implements BatchContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'post',
             path: 'cms/v3/blogs/posts/batch/archive',
             body: (object) $parsed,
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -192,8 +199,8 @@ final class BatchService implements BatchContract
         );
         $query_params = ['archived'];
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<BatchResponseBlogPost> */
+        $response = $this->client->request(
             method: 'post',
             path: 'cms/v3/blogs/posts/batch/read',
             query: array_diff_key($parsed, $query_params),
@@ -201,5 +208,7 @@ final class BatchService implements BatchContract
             options: $options,
             convert: BatchResponseBlogPost::class,
         );
+
+        return $response->parse();
     }
 }

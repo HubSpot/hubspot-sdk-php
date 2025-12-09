@@ -8,9 +8,7 @@ use HubspotSDK\Cms\Blogs\Tags\BatchResponseTag\Status;
 use HubspotSDK\Cms\Blogs\Tags\Tag\Language;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * Response object for batch operations on blog tags.
@@ -24,12 +22,10 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
  *   requestedAt?: \DateTimeInterface|null,
  * }
  */
-final class BatchResponseTag implements BaseModel, ResponseConverter
+final class BatchResponseTag implements BaseModel
 {
     /** @use SdkModel<BatchResponseTagShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     /**
      * Time of batch operation completion.

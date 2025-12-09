@@ -7,9 +7,7 @@ namespace HubspotSDK\Cms\Blogs\Tags;
 use HubspotSDK\Cms\Blogs\Tags\Tag\Language;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * Model definition for a Tag.
@@ -24,12 +22,10 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
  *   updated: \DateTimeInterface,
  * }
  */
-final class Tag implements BaseModel, ResponseConverter
+final class Tag implements BaseModel
 {
     /** @use SdkModel<TagShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     /**
      * The unique ID of the Blog Tag.

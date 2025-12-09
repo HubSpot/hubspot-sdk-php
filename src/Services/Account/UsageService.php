@@ -6,6 +6,7 @@ namespace HubspotSDK\Services\Account;
 
 use HubspotSDK\Account\CollectionResponseAPIUsage;
 use HubspotSDK\Client;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Account\UsageContract;
@@ -27,12 +28,14 @@ final class UsageService implements UsageContract
     public function getDailyPrivateAppsUsage(
         ?RequestOptions $requestOptions = null
     ): CollectionResponseAPIUsage {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<CollectionResponseAPIUsage> */
+        $response = $this->client->request(
             method: 'get',
             path: 'account-info/v3/api-usage/daily/private-apps',
             options: $requestOptions,
             convert: CollectionResponseAPIUsage::class,
         );
+
+        return $response->parse();
     }
 }

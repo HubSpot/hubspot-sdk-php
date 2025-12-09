@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Marketing\Subscriptions\V4;
 
 use HubspotSDK\Client;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Marketing\Subscriptions\V4\LinkGenerationResponse;
 use HubspotSDK\Marketing\Subscriptions\V4\Links\LinkCreateParams;
@@ -41,8 +42,8 @@ final class LinksService implements LinksContract
         );
         $query_params = array_flip(['channel', 'businessUnitId']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<LinkGenerationResponse> */
+        $response = $this->client->request(
             method: 'post',
             path: 'communication-preferences/v4/links/generate',
             query: array_diff_key($parsed, $query_params),
@@ -50,5 +51,7 @@ final class LinksService implements LinksContract
             options: $options,
             convert: LinkGenerationResponse::class,
         );
+
+        return $response->parse();
     }
 }

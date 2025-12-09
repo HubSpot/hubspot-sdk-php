@@ -6,21 +6,17 @@ namespace HubspotSDK\Crm\Pipelines;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type CollectionResponsePipelineNoPagingShape = array{
  *   results: list<Pipeline>
  * }
  */
-final class CollectionResponsePipelineNoPaging implements BaseModel, ResponseConverter
+final class CollectionResponsePipelineNoPaging implements BaseModel
 {
     /** @use SdkModel<CollectionResponsePipelineNoPagingShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     /** @var list<Pipeline> $results */
     #[Api(list: Pipeline::class)]

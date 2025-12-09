@@ -6,9 +6,7 @@ namespace HubspotSDK\Marketing\Events;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 use HubspotSDK\Marketing\Events\PropertyValue\DataSensitivity;
 use HubspotSDK\Marketing\Events\PropertyValue\Source;
 
@@ -27,12 +25,10 @@ use HubspotSDK\Marketing\Events\PropertyValue\Source;
  *   startDateTime?: \DateTimeInterface|null,
  * }
  */
-final class MarketingEventDefaultResponse implements BaseModel, ResponseConverter
+final class MarketingEventDefaultResponse implements BaseModel
 {
     /** @use SdkModel<MarketingEventDefaultResponseShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     /**
      * A list of PropertyValues. These can be whatever kind of property names and values you want. However, they must already exist on the HubSpot account's definition of the MarketingEvent Object. If they don't they will be filtered out and not set.

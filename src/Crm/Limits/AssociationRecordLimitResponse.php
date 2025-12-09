@@ -6,9 +6,7 @@ namespace HubspotSDK\Crm\Limits;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type AssociationRecordLimitResponseShape = array{
@@ -19,12 +17,10 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
  *   totalRecordsNearLimit: int,
  * }
  */
-final class AssociationRecordLimitResponse implements BaseModel, ResponseConverter
+final class AssociationRecordLimitResponse implements BaseModel
 {
     /** @use SdkModel<AssociationRecordLimitResponseShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     /** @var list<AtLimitRecordSample> $atLimitFromRecordSamples */
     #[Api(list: AtLimitRecordSample::class)]

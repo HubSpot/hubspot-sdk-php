@@ -22,6 +22,7 @@ use HubspotSDK\Cms\Blogs\Authors\AuthorUpdateLanguagesParams;
 use HubspotSDK\Cms\Blogs\Authors\AuthorUpdateParams;
 use HubspotSDK\Cms\Blogs\Authors\BatchResponseBlogAuthor;
 use HubspotSDK\Cms\Blogs\Authors\BlogAuthor;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
@@ -70,14 +71,16 @@ final class AuthorsService implements AuthorsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<BlogAuthor> */
+        $response = $this->client->request(
             method: 'post',
             path: 'cms/v3/blogs/authors',
             body: (object) $parsed,
             options: $options,
             convert: BlogAuthor::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -120,8 +123,8 @@ final class AuthorsService implements AuthorsContract
         );
         $query_params = ['archived'];
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<BlogAuthor> */
+        $response = $this->client->request(
             method: 'patch',
             path: ['cms/v3/blogs/authors/%1$s', $objectID],
             query: array_diff_key($parsed, $query_params),
@@ -129,6 +132,8 @@ final class AuthorsService implements AuthorsContract
             options: $options,
             convert: BlogAuthor::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -163,8 +168,8 @@ final class AuthorsService implements AuthorsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<Page<BlogAuthor>> */
+        $response = $this->client->request(
             method: 'get',
             path: 'cms/v3/blogs/authors',
             query: $parsed,
@@ -172,6 +177,8 @@ final class AuthorsService implements AuthorsContract
             convert: BlogAuthor::class,
             page: Page::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -193,14 +200,16 @@ final class AuthorsService implements AuthorsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'delete',
             path: ['cms/v3/blogs/authors/%1$s', $objectID],
             query: $parsed,
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -223,14 +232,16 @@ final class AuthorsService implements AuthorsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'post',
             path: 'cms/v3/blogs/authors/multi-language/attach-to-lang-group',
             body: (object) $parsed,
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -271,14 +282,16 @@ final class AuthorsService implements AuthorsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<BatchResponseBlogAuthor> */
+        $response = $this->client->request(
             method: 'post',
             path: 'cms/v3/blogs/authors/batch/create',
             body: (object) $parsed,
             options: $options,
             convert: BatchResponseBlogAuthor::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -322,14 +335,16 @@ final class AuthorsService implements AuthorsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<BlogAuthor> */
+        $response = $this->client->request(
             method: 'post',
             path: 'cms/v3/blogs/authors/multi-language/create-language-variation',
             body: (object) $parsed,
             options: $options,
             convert: BlogAuthor::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -350,14 +365,16 @@ final class AuthorsService implements AuthorsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'post',
             path: 'cms/v3/blogs/authors/batch/archive',
             body: (object) $parsed,
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -378,14 +395,16 @@ final class AuthorsService implements AuthorsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'post',
             path: 'cms/v3/blogs/authors/multi-language/detach-from-lang-group',
             body: (object) $parsed,
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -407,14 +426,16 @@ final class AuthorsService implements AuthorsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<BlogAuthor> */
+        $response = $this->client->request(
             method: 'get',
             path: ['cms/v3/blogs/authors/%1$s', $objectID],
             query: $parsed,
             options: $options,
             convert: BlogAuthor::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -436,8 +457,8 @@ final class AuthorsService implements AuthorsContract
         );
         $query_params = ['archived'];
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<BatchResponseBlogAuthor> */
+        $response = $this->client->request(
             method: 'post',
             path: 'cms/v3/blogs/authors/batch/read',
             query: array_diff_key($parsed, $query_params),
@@ -445,6 +466,8 @@ final class AuthorsService implements AuthorsContract
             options: $options,
             convert: BatchResponseBlogAuthor::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -465,14 +488,16 @@ final class AuthorsService implements AuthorsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'put',
             path: 'cms/v3/blogs/authors/multi-language/set-new-lang-primary',
             body: (object) $parsed,
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -496,8 +521,8 @@ final class AuthorsService implements AuthorsContract
         );
         $query_params = ['archived'];
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<BatchResponseBlogAuthor> */
+        $response = $this->client->request(
             method: 'post',
             path: 'cms/v3/blogs/authors/batch/update',
             query: array_diff_key($parsed, $query_params),
@@ -505,6 +530,8 @@ final class AuthorsService implements AuthorsContract
             options: $options,
             convert: BatchResponseBlogAuthor::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -527,13 +554,15 @@ final class AuthorsService implements AuthorsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'post',
             path: 'cms/v3/blogs/authors/multi-language/update-languages',
             body: (object) $parsed,
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 }

@@ -11,9 +11,7 @@ use HubspotSDK\Cms\Blogs\Posts\BlogPost\Language;
 use HubspotSDK\Cms\Pages\PagesContentLanguageVariation;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 use HubspotSDK\VersionUser;
 
 /**
@@ -23,12 +21,10 @@ use HubspotSDK\VersionUser;
  *   id: string, object: BlogPost, updatedAt: \DateTimeInterface, user: VersionUser
  * }
  */
-final class VersionBlogPost implements BaseModel, ResponseConverter
+final class VersionBlogPost implements BaseModel
 {
     /** @use SdkModel<VersionBlogPostShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     /**
      * The id of the version.

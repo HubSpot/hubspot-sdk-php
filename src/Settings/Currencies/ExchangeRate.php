@@ -6,9 +6,7 @@ namespace HubspotSDK\Settings\Currencies;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 use HubspotSDK\Settings\Currencies\ExchangeRate\FromCurrencyCode;
 use HubspotSDK\Settings\Currencies\ExchangeRate\ToCurrencyCode;
 
@@ -24,12 +22,10 @@ use HubspotSDK\Settings\Currencies\ExchangeRate\ToCurrencyCode;
  *   visibleInUI: bool,
  * }
  */
-final class ExchangeRate implements BaseModel, ResponseConverter
+final class ExchangeRate implements BaseModel
 {
     /** @use SdkModel<ExchangeRateShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     /**
      * A unique identifier for the exchange rate.

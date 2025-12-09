@@ -6,6 +6,7 @@ namespace HubspotSDK\Services\Crm\Properties;
 
 use HubspotSDK\BatchResponseProperty;
 use HubspotSDK\Client;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\Properties\Batch\BatchCreateParams;
 use HubspotSDK\Crm\Properties\Batch\BatchDeleteParams;
@@ -57,14 +58,16 @@ final class BatchService implements BatchContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<BatchResponseProperty> */
+        $response = $this->client->request(
             method: 'post',
             path: ['crm/v3/properties/%1$s/batch/create', $objectType],
             body: (object) $parsed,
             options: $options,
             convert: BatchResponseProperty::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -86,14 +89,16 @@ final class BatchService implements BatchContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'post',
             path: ['crm/v3/properties/%1$s/batch/archive', $objectType],
             body: (object) $parsed,
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -121,8 +126,8 @@ final class BatchService implements BatchContract
         );
         $query_params = ['locale'];
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<BatchResponseProperty> */
+        $response = $this->client->request(
             method: 'post',
             path: ['crm/v3/properties/%1$s/batch/read', $objectType],
             query: array_diff_key($parsed, $query_params),
@@ -130,5 +135,7 @@ final class BatchService implements BatchContract
             options: $options,
             convert: BatchResponseProperty::class,
         );
+
+        return $response->parse();
     }
 }

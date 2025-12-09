@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Marketing\Events;
 
 use HubspotSDK\Client;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Marketing\Events\Attendance\AttendanceCreateByEventIDAndContactIDParams;
 use HubspotSDK\Marketing\Events\Attendance\AttendanceCreateByEventIDAndEmailParams;
@@ -56,8 +57,8 @@ final class AttendanceService implements AttendanceContract
         $objectID = $parsed['objectId'];
         unset($parsed['objectId']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<BatchResponseSubscriberVidResponse> */
+        $response = $this->client->request(
             method: 'post',
             path: [
                 'marketing/v3/marketing-events/%1$s/attendance/%2$s/create',
@@ -68,6 +69,8 @@ final class AttendanceService implements AttendanceContract
             options: $options,
             convert: BatchResponseSubscriberVidResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -109,8 +112,8 @@ final class AttendanceService implements AttendanceContract
         $objectID = $parsed['objectId'];
         unset($parsed['objectId']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<BatchResponseSubscriberEmailResponse> */
+        $response = $this->client->request(
             method: 'post',
             path: [
                 'marketing/v3/marketing-events/%1$s/attendance/%2$s/email-create',
@@ -121,6 +124,8 @@ final class AttendanceService implements AttendanceContract
             options: $options,
             convert: BatchResponseSubscriberEmailResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -159,8 +164,8 @@ final class AttendanceService implements AttendanceContract
         unset($parsed['externalEventId']);
         $query_params = ['externalAccountId'];
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<BatchResponseSubscriberVidResponse> */
+        $response = $this->client->request(
             method: 'post',
             path: [
                 'marketing/v3/marketing-events/attendance/%1$s/%2$s/create',
@@ -175,6 +180,8 @@ final class AttendanceService implements AttendanceContract
             options: $options,
             convert: BatchResponseSubscriberVidResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -218,8 +225,8 @@ final class AttendanceService implements AttendanceContract
         unset($parsed['externalEventId']);
         $query_params = ['externalAccountId'];
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<BatchResponseSubscriberEmailResponse> */
+        $response = $this->client->request(
             method: 'post',
             path: [
                 'marketing/v3/marketing-events/attendance/%1$s/%2$s/email-create',
@@ -234,5 +241,7 @@ final class AttendanceService implements AttendanceContract
             options: $options,
             convert: BatchResponseSubscriberEmailResponse::class,
         );
+
+        return $response->parse();
     }
 }

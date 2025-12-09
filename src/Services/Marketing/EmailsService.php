@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Marketing;
 
 use HubspotSDK\Client;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Marketing\Emails\EmailCloneParams;
 use HubspotSDK\Marketing\Emails\EmailCreateAbTestVariationParams;
@@ -147,14 +148,16 @@ final class EmailsService implements EmailsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<PublicEmail> */
+        $response = $this->client->request(
             method: 'post',
             path: 'marketing/v3/emails/',
             body: (object) $parsed,
             options: $options,
             convert: PublicEmail::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -251,8 +254,8 @@ final class EmailsService implements EmailsContract
         );
         $query_params = ['archived'];
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<PublicEmail> */
+        $response = $this->client->request(
             method: 'patch',
             path: ['marketing/v3/emails/%1$s', $emailID],
             query: array_diff_key($parsed, $query_params),
@@ -260,6 +263,8 @@ final class EmailsService implements EmailsContract
             options: $options,
             convert: PublicEmail::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -303,8 +308,8 @@ final class EmailsService implements EmailsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<Page<PublicEmail>> */
+        $response = $this->client->request(
             method: 'get',
             path: 'marketing/v3/emails/',
             query: $parsed,
@@ -312,6 +317,8 @@ final class EmailsService implements EmailsContract
             convert: PublicEmail::class,
             page: Page::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -333,14 +340,16 @@ final class EmailsService implements EmailsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'delete',
             path: ['marketing/v3/emails/%1$s', $emailID],
             query: $parsed,
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -363,14 +372,16 @@ final class EmailsService implements EmailsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<PublicEmail> */
+        $response = $this->client->request(
             method: 'post',
             path: 'marketing/v3/emails/clone',
             body: (object) $parsed,
             options: $options,
             convert: PublicEmail::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -393,14 +404,16 @@ final class EmailsService implements EmailsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<PublicEmail> */
+        $response = $this->client->request(
             method: 'post',
             path: 'marketing/v3/emails/ab-test/create-variation',
             body: (object) $parsed,
             options: $options,
             convert: PublicEmail::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -428,14 +441,16 @@ final class EmailsService implements EmailsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<PublicEmail> */
+        $response = $this->client->request(
             method: 'get',
             path: ['marketing/v3/emails/%1$s', $emailID],
             query: $parsed,
             options: $options,
             convert: PublicEmail::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -463,14 +478,16 @@ final class EmailsService implements EmailsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<PublicEmail> */
+        $response = $this->client->request(
             method: 'get',
             path: ['marketing/v3/emails/%1$s/ab-test/get-variation', $emailID],
             query: $parsed,
             options: $options,
             convert: PublicEmail::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -484,13 +501,15 @@ final class EmailsService implements EmailsContract
         string $emailID,
         ?RequestOptions $requestOptions = null
     ): PublicEmail {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<PublicEmail> */
+        $response = $this->client->request(
             method: 'get',
             path: ['marketing/v3/emails/%1$s/draft', $emailID],
             options: $requestOptions,
             convert: PublicEmail::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -514,13 +533,15 @@ final class EmailsService implements EmailsContract
         $emailID = $parsed['emailId'];
         unset($parsed['emailId']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<VersionPublicEmail> */
+        $response = $this->client->request(
             method: 'get',
             path: ['marketing/v3/emails/%1$s/revisions/%2$s', $emailID, $revisionID],
             options: $options,
             convert: VersionPublicEmail::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -546,8 +567,8 @@ final class EmailsService implements EmailsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<Page<VersionPublicEmail>> */
+        $response = $this->client->request(
             method: 'get',
             path: ['marketing/v3/emails/%1$s/revisions', $emailID],
             query: $parsed,
@@ -555,6 +576,8 @@ final class EmailsService implements EmailsContract
             convert: VersionPublicEmail::class,
             page: Page::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -568,13 +591,15 @@ final class EmailsService implements EmailsContract
         string $emailID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'post',
             path: ['marketing/v3/emails/%1$s/publish', $emailID],
             options: $requestOptions,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -588,13 +613,15 @@ final class EmailsService implements EmailsContract
         string $emailID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'post',
             path: ['marketing/v3/emails/%1$s/draft/reset', $emailID],
             options: $requestOptions,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -618,8 +645,8 @@ final class EmailsService implements EmailsContract
         $emailID = $parsed['emailId'];
         unset($parsed['emailId']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'post',
             path: [
                 'marketing/v3/emails/%1$s/revisions/%2$s/restore', $emailID, $revisionID,
@@ -627,6 +654,8 @@ final class EmailsService implements EmailsContract
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -650,8 +679,8 @@ final class EmailsService implements EmailsContract
         $emailID = $parsed['emailId'];
         unset($parsed['emailId']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<PublicEmail> */
+        $response = $this->client->request(
             method: 'post',
             path: [
                 'marketing/v3/emails/%1$s/revisions/%2$s/restore-to-draft',
@@ -661,6 +690,8 @@ final class EmailsService implements EmailsContract
             options: $options,
             convert: PublicEmail::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -674,13 +705,15 @@ final class EmailsService implements EmailsContract
         string $emailID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'post',
             path: ['marketing/v3/emails/%1$s/unpublish', $emailID],
             options: $requestOptions,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -776,13 +809,15 @@ final class EmailsService implements EmailsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<PublicEmail> */
+        $response = $this->client->request(
             method: 'patch',
             path: ['marketing/v3/emails/%1$s/draft', $emailID],
             body: (object) $parsed,
             options: $options,
             convert: PublicEmail::class,
         );
+
+        return $response->parse();
     }
 }

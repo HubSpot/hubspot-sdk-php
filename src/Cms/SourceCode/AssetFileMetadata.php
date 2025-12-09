@@ -6,9 +6,7 @@ namespace HubspotSDK\Cms\SourceCode;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type AssetFileMetadataShape = array{
@@ -22,12 +20,10 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
  *   hash?: string|null,
  * }
  */
-final class AssetFileMetadata implements BaseModel, ResponseConverter
+final class AssetFileMetadata implements BaseModel
 {
     /** @use SdkModel<AssetFileMetadataShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     /**
      * The path of the file in the CMS Developer File System.

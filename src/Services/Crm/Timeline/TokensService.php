@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Crm\Timeline;
 
 use HubspotSDK\Client;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\Timeline\TimelineEventTemplateToken;
 use HubspotSDK\Crm\Timeline\TimelineEventTemplateTokenOption;
@@ -53,8 +54,8 @@ final class TokensService implements TokensContract
         $appID = $parsed['appId'];
         unset($parsed['appId']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<TimelineEventTemplateToken> */
+        $response = $this->client->request(
             method: 'post',
             path: [
                 'integrators/timeline/v3/%1$s/event-templates/%2$s/tokens',
@@ -65,6 +66,8 @@ final class TokensService implements TokensContract
             options: $options,
             convert: TimelineEventTemplateToken::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -98,8 +101,8 @@ final class TokensService implements TokensContract
         $eventTemplateID = $parsed['eventTemplateId'];
         unset($parsed['eventTemplateId']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<TimelineEventTemplateToken> */
+        $response = $this->client->request(
             method: 'put',
             path: [
                 'integrators/timeline/v3/%1$s/event-templates/%2$s/tokens/%3$s',
@@ -114,6 +117,8 @@ final class TokensService implements TokensContract
             options: $options,
             convert: TimelineEventTemplateToken::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -139,8 +144,8 @@ final class TokensService implements TokensContract
         $eventTemplateID = $parsed['eventTemplateId'];
         unset($parsed['eventTemplateId']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'delete',
             path: [
                 'integrators/timeline/v3/%1$s/event-templates/%2$s/tokens/%3$s',
@@ -151,5 +156,7 @@ final class TokensService implements TokensContract
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 }

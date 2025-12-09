@@ -6,9 +6,7 @@ namespace HubspotSDK\Marketing\Campaigns;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 use HubspotSDK\Paging;
 
 /**
@@ -21,12 +19,10 @@ use HubspotSDK\Paging;
  *   updatedAt: \DateTimeInterface,
  * }
  */
-final class PublicCampaignWithAssets implements BaseModel, ResponseConverter
+final class PublicCampaignWithAssets implements BaseModel
 {
     /** @use SdkModel<PublicCampaignWithAssetsShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     #[Api]
     public string $id;

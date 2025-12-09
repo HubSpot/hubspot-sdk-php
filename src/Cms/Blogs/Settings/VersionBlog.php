@@ -7,9 +7,7 @@ namespace HubspotSDK\Cms\Blogs\Settings;
 use HubspotSDK\Cms\Blogs\Settings\Blog\Language;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 use HubspotSDK\VersionUser;
 
 /**
@@ -19,12 +17,10 @@ use HubspotSDK\VersionUser;
  *   id: string, object: Blog, updatedAt: \DateTimeInterface, user: VersionUser
  * }
  */
-final class VersionBlog implements BaseModel, ResponseConverter
+final class VersionBlog implements BaseModel
 {
     /** @use SdkModel<VersionBlogShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     /**
      * The id of the version.

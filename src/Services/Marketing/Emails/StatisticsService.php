@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Marketing\Emails;
 
 use HubspotSDK\Client;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Marketing\Emails\AggregateEmailStatistics;
 use HubspotSDK\Marketing\Emails\CollectionResponseWithTotalEmailStatisticIntervalNoPaging;
@@ -43,14 +44,16 @@ final class StatisticsService implements StatisticsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<AggregateEmailStatistics> */
+        $response = $this->client->request(
             method: 'get',
             path: 'marketing/v3/emails/statistics/list',
             query: $parsed,
             options: $options,
             convert: AggregateEmailStatistics::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -76,13 +79,15 @@ final class StatisticsService implements StatisticsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<CollectionResponseWithTotalEmailStatisticIntervalNoPaging,> */
+        $response = $this->client->request(
             method: 'get',
             path: 'marketing/v3/emails/statistics/histogram',
             query: $parsed,
             options: $options,
             convert: CollectionResponseWithTotalEmailStatisticIntervalNoPaging::class,
         );
+
+        return $response->parse();
     }
 }

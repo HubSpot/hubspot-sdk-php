@@ -6,9 +6,7 @@ namespace HubspotSDK\Automation\Workflows;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type APIFlowListingShape = array{
@@ -23,12 +21,10 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
  *   uuid?: string|null,
  * }
  */
-final class APIFlowListing implements BaseModel, ResponseConverter
+final class APIFlowListing implements BaseModel
 {
     /** @use SdkModel<APIFlowListingShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     #[Api]
     public string $id;

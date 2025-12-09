@@ -6,9 +6,7 @@ namespace HubspotSDK\Marketing\Campaigns;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type PublicCampaignShape = array{
@@ -19,12 +17,10 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
  *   updatedAt: \DateTimeInterface,
  * }
  */
-final class PublicCampaign implements BaseModel, ResponseConverter
+final class PublicCampaign implements BaseModel
 {
     /** @use SdkModel<PublicCampaignShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     #[Api]
     public string $id;

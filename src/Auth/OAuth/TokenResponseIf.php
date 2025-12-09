@@ -6,9 +6,7 @@ namespace HubspotSDK\Auth\OAuth;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type TokenResponseIfShape = array{
@@ -21,12 +19,10 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
  *   userId?: int|null,
  * }
  */
-final class TokenResponseIf implements BaseModel, ResponseConverter
+final class TokenResponseIf implements BaseModel
 {
     /** @use SdkModel<TokenResponseIfShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     #[Api(optional: true)]
     public ?string $accessToken;

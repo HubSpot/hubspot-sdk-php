@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Crm;
 
 use HubspotSDK\Client;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\Pipelines\CollectionResponsePipelineNoPaging;
 use HubspotSDK\Crm\Pipelines\CollectionResponsePublicAuditInfoNoPaging;
@@ -59,14 +60,16 @@ final class PipelinesService implements PipelinesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<Pipeline> */
+        $response = $this->client->request(
             method: 'post',
             path: ['crm/v3/pipelines/%1$s', $objectType],
             body: (object) $parsed,
             options: $options,
             convert: Pipeline::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -100,8 +103,8 @@ final class PipelinesService implements PipelinesContract
             ['validateDealStageUsagesBeforeDelete', 'validateReferencesBeforeDelete']
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<Pipeline> */
+        $response = $this->client->request(
             method: 'patch',
             path: ['crm/v3/pipelines/%1$s/%2$s', $objectType, $pipelineID],
             query: array_diff_key($parsed, $query_params),
@@ -112,6 +115,8 @@ final class PipelinesService implements PipelinesContract
             options: $options,
             convert: Pipeline::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -125,13 +130,15 @@ final class PipelinesService implements PipelinesContract
         string $objectType,
         ?RequestOptions $requestOptions = null
     ): CollectionResponsePipelineNoPaging {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<CollectionResponsePipelineNoPaging> */
+        $response = $this->client->request(
             method: 'get',
             path: ['crm/v3/pipelines/%1$s', $objectType],
             options: $requestOptions,
             convert: CollectionResponsePipelineNoPaging::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -159,14 +166,16 @@ final class PipelinesService implements PipelinesContract
         $objectType = $parsed['objectType'];
         unset($parsed['objectType']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'delete',
             path: ['crm/v3/pipelines/%1$s/%2$s', $objectType, $pipelineID],
             query: $parsed,
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -190,13 +199,15 @@ final class PipelinesService implements PipelinesContract
         $objectType = $parsed['objectType'];
         unset($parsed['objectType']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<Pipeline> */
+        $response = $this->client->request(
             method: 'get',
             path: ['crm/v3/pipelines/%1$s/%2$s', $objectType, $pipelineID],
             options: $options,
             convert: Pipeline::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -220,13 +231,15 @@ final class PipelinesService implements PipelinesContract
         $objectType = $parsed['objectType'];
         unset($parsed['objectType']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<CollectionResponsePublicAuditInfoNoPaging> */
+        $response = $this->client->request(
             method: 'get',
             path: ['crm/v3/pipelines/%1$s/%2$s/audit', $objectType, $pipelineID],
             options: $options,
             convert: CollectionResponsePublicAuditInfoNoPaging::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -262,8 +275,8 @@ final class PipelinesService implements PipelinesContract
             ['validateDealStageUsagesBeforeDelete', 'validateReferencesBeforeDelete']
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<Pipeline> */
+        $response = $this->client->request(
             method: 'put',
             path: ['crm/v3/pipelines/%1$s/%2$s', $objectType, $pipelineID],
             query: array_diff_key($parsed, $query_params),
@@ -274,5 +287,7 @@ final class PipelinesService implements PipelinesContract
             options: $options,
             convert: Pipeline::class,
         );
+
+        return $response->parse();
     }
 }

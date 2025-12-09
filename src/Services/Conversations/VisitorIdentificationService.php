@@ -7,6 +7,7 @@ namespace HubspotSDK\Services\Conversations;
 use HubspotSDK\Client;
 use HubspotSDK\Conversations\VisitorIdentification\IdentificationTokenResponse;
 use HubspotSDK\Conversations\VisitorIdentification\VisitorIdentificationGenerateTokenParams;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Conversations\VisitorIdentificationContract;
@@ -36,13 +37,15 @@ final class VisitorIdentificationService implements VisitorIdentificationContrac
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<IdentificationTokenResponse> */
+        $response = $this->client->request(
             method: 'post',
             path: 'visitor-identification/v3/tokens/create',
             body: (object) $parsed,
             options: $options,
             convert: IdentificationTokenResponse::class,
         );
+
+        return $response->parse();
     }
 }

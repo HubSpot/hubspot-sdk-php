@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Marketing\Events;
 
 use HubspotSDK\Client;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Marketing\Events\Associations\AssociationAssociateByExternalAccountParams;
 use HubspotSDK\Marketing\Events\Associations\AssociationAssociateParams;
@@ -33,8 +34,8 @@ final class AssociationsService implements AssociationsContract
         string $marketingEventID,
         ?RequestOptions $requestOptions = null
     ): CollectionResponseWithTotalPublicListNoPaging {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<CollectionResponseWithTotalPublicListNoPaging> */
+        $response = $this->client->request(
             method: 'get',
             path: [
                 'marketing/v3/marketing-events/associations/%1$s/lists',
@@ -43,6 +44,8 @@ final class AssociationsService implements AssociationsContract
             options: $requestOptions,
             convert: CollectionResponseWithTotalPublicListNoPaging::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -66,8 +69,8 @@ final class AssociationsService implements AssociationsContract
         $marketingEventID = $parsed['marketingEventId'];
         unset($parsed['marketingEventId']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'delete',
             path: [
                 'marketing/v3/marketing-events/associations/%1$s/lists/%2$s',
@@ -77,6 +80,8 @@ final class AssociationsService implements AssociationsContract
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -100,8 +105,8 @@ final class AssociationsService implements AssociationsContract
         $marketingEventID = $parsed['marketingEventId'];
         unset($parsed['marketingEventId']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'put',
             path: [
                 'marketing/v3/marketing-events/associations/%1$s/lists/%2$s',
@@ -111,6 +116,8 @@ final class AssociationsService implements AssociationsContract
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -138,8 +145,8 @@ final class AssociationsService implements AssociationsContract
         $externalEventID = $parsed['externalEventId'];
         unset($parsed['externalEventId']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'put',
             path: [
                 'marketing/v3/marketing-events/associations/%1$s/%2$s/lists/%3$s',
@@ -150,6 +157,8 @@ final class AssociationsService implements AssociationsContract
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -177,8 +186,8 @@ final class AssociationsService implements AssociationsContract
         $externalEventID = $parsed['externalEventId'];
         unset($parsed['externalEventId']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'delete',
             path: [
                 'marketing/v3/marketing-events/associations/%1$s/%2$s/lists/%3$s',
@@ -189,6 +198,8 @@ final class AssociationsService implements AssociationsContract
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -214,8 +225,8 @@ final class AssociationsService implements AssociationsContract
         $externalAccountID = $parsed['externalAccountId'];
         unset($parsed['externalAccountId']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<CollectionResponseWithTotalPublicListNoPaging> */
+        $response = $this->client->request(
             method: 'get',
             path: [
                 'marketing/v3/marketing-events/associations/%1$s/%2$s/lists',
@@ -225,5 +236,7 @@ final class AssociationsService implements AssociationsContract
             options: $options,
             convert: CollectionResponseWithTotalPublicListNoPaging::class,
         );
+
+        return $response->parse();
     }
 }

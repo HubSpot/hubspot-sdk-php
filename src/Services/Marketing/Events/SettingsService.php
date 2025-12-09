@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Marketing\Events;
 
 use HubspotSDK\Client;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Marketing\Events\EventDetailSettings;
 use HubspotSDK\Marketing\Events\Settings\SettingCreateOrUpdateParams;
@@ -37,14 +38,16 @@ final class SettingsService implements SettingsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<EventDetailSettings> */
+        $response = $this->client->request(
             method: 'post',
             path: ['marketing/v3/marketing-events/%1$s/settings', $appID],
             body: (object) $parsed,
             options: $options,
             convert: EventDetailSettings::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -58,12 +61,14 @@ final class SettingsService implements SettingsContract
         int $appID,
         ?RequestOptions $requestOptions = null
     ): EventDetailSettings {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<EventDetailSettings> */
+        $response = $this->client->request(
             method: 'get',
             path: ['marketing/v3/marketing-events/%1$s/settings', $appID],
             options: $requestOptions,
             convert: EventDetailSettings::class,
         );
+
+        return $response->parse();
     }
 }

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Marketing\Campaigns;
 
 use HubspotSDK\Client;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Marketing\Campaigns\ContactReference;
 use HubspotSDK\Marketing\Campaigns\MetricsCounters;
@@ -44,14 +45,16 @@ final class ReportsService implements ReportsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<MetricsCounters> */
+        $response = $this->client->request(
             method: 'get',
             path: ['marketing/v3/campaigns/%1$s/reports/metrics', $campaignGuid],
             query: $parsed,
             options: $options,
             convert: MetricsCounters::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -75,14 +78,16 @@ final class ReportsService implements ReportsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<RevenueAttributionAggregate> */
+        $response = $this->client->request(
             method: 'get',
             path: ['marketing/v3/campaigns/%1$s/reports/revenue', $campaignGuid],
             query: $parsed,
             options: $options,
             convert: RevenueAttributionAggregate::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -114,8 +119,8 @@ final class ReportsService implements ReportsContract
         $campaignGuid = $parsed['campaignGuid'];
         unset($parsed['campaignGuid']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<Page<ContactReference>> */
+        $response = $this->client->request(
             method: 'get',
             path: [
                 'marketing/v3/campaigns/%1$s/reports/contacts/%2$s',
@@ -127,5 +132,7 @@ final class ReportsService implements ReportsContract
             convert: ContactReference::class,
             page: Page::class,
         );
+
+        return $response->parse();
     }
 }

@@ -6,9 +6,7 @@ namespace HubspotSDK\Marketing\Subscriptions;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 use HubspotSDK\Marketing\Subscriptions\PublicSubscriptionStatus\LegalBasis;
 use HubspotSDK\Marketing\Subscriptions\PublicSubscriptionStatus\SourceOfStatus;
 use HubspotSDK\Marketing\Subscriptions\PublicSubscriptionStatus\Status;
@@ -18,12 +16,10 @@ use HubspotSDK\Marketing\Subscriptions\PublicSubscriptionStatus\Status;
  *   recipient: string, subscriptionStatuses: list<PublicSubscriptionStatus>
  * }
  */
-final class PublicSubscriptionStatusesResponse implements BaseModel, ResponseConverter
+final class PublicSubscriptionStatusesResponse implements BaseModel
 {
     /** @use SdkModel<PublicSubscriptionStatusesResponseShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     /**
      * Email address of the contact.

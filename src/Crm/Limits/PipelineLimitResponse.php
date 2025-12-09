@@ -6,9 +6,7 @@ namespace HubspotSDK\Crm\Limits;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type PipelineLimitResponseShape = array{
@@ -16,12 +14,10 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
  *   hubspotDefinedObjectTypes: list<LimitAndUsageForObjectType>,
  * }
  */
-final class PipelineLimitResponse implements BaseModel, ResponseConverter
+final class PipelineLimitResponse implements BaseModel
 {
     /** @use SdkModel<PipelineLimitResponseShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     #[Api]
     public CustomObjectRecordLimitResponse $customObjectTypes;

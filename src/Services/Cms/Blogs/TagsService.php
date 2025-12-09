@@ -22,6 +22,7 @@ use HubspotSDK\Cms\Blogs\Tags\TagSetLangPrimaryParams;
 use HubspotSDK\Cms\Blogs\Tags\TagUpdateBatchParams;
 use HubspotSDK\Cms\Blogs\Tags\TagUpdateLangsParams;
 use HubspotSDK\Cms\Blogs\Tags\TagUpdateParams;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
@@ -60,14 +61,16 @@ final class TagsService implements TagsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<Tag> */
+        $response = $this->client->request(
             method: 'post',
             path: 'cms/v3/blogs/tags',
             body: (object) $parsed,
             options: $options,
             convert: Tag::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -100,8 +103,8 @@ final class TagsService implements TagsContract
         );
         $query_params = ['archived'];
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<Tag> */
+        $response = $this->client->request(
             method: 'patch',
             path: ['cms/v3/blogs/tags/%1$s', $objectID],
             query: array_diff_key($parsed, $query_params),
@@ -109,6 +112,8 @@ final class TagsService implements TagsContract
             options: $options,
             convert: Tag::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -143,8 +148,8 @@ final class TagsService implements TagsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<Page<Tag>> */
+        $response = $this->client->request(
             method: 'get',
             path: 'cms/v3/blogs/tags',
             query: $parsed,
@@ -152,6 +157,8 @@ final class TagsService implements TagsContract
             convert: Tag::class,
             page: Page::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -173,14 +180,16 @@ final class TagsService implements TagsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'delete',
             path: ['cms/v3/blogs/tags/%1$s', $objectID],
             query: $parsed,
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -203,14 +212,16 @@ final class TagsService implements TagsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'post',
             path: 'cms/v3/blogs/tags/multi-language/attach-to-lang-group',
             body: (object) $parsed,
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -241,14 +252,16 @@ final class TagsService implements TagsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<BatchResponseTag> */
+        $response = $this->client->request(
             method: 'post',
             path: 'cms/v3/blogs/tags/batch/create',
             body: (object) $parsed,
             options: $options,
             convert: BatchResponseTag::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -271,14 +284,16 @@ final class TagsService implements TagsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<Tag> */
+        $response = $this->client->request(
             method: 'post',
             path: 'cms/v3/blogs/tags/multi-language/create-language-variation',
             body: (object) $parsed,
             options: $options,
             convert: Tag::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -299,14 +314,16 @@ final class TagsService implements TagsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'post',
             path: 'cms/v3/blogs/tags/batch/archive',
             body: (object) $parsed,
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -327,14 +344,16 @@ final class TagsService implements TagsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'post',
             path: 'cms/v3/blogs/tags/multi-language/detach-from-lang-group',
             body: (object) $parsed,
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -356,14 +375,16 @@ final class TagsService implements TagsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<Tag> */
+        $response = $this->client->request(
             method: 'get',
             path: ['cms/v3/blogs/tags/%1$s', $objectID],
             query: $parsed,
             options: $options,
             convert: Tag::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -385,8 +406,8 @@ final class TagsService implements TagsContract
         );
         $query_params = ['archived'];
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<BatchResponseTag> */
+        $response = $this->client->request(
             method: 'post',
             path: 'cms/v3/blogs/tags/batch/read',
             query: array_diff_key($parsed, $query_params),
@@ -394,6 +415,8 @@ final class TagsService implements TagsContract
             options: $options,
             convert: BatchResponseTag::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -414,14 +437,16 @@ final class TagsService implements TagsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'put',
             path: 'cms/v3/blogs/tags/multi-language/set-new-lang-primary',
             body: (object) $parsed,
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -443,8 +468,8 @@ final class TagsService implements TagsContract
         );
         $query_params = ['archived'];
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<BatchResponseTag> */
+        $response = $this->client->request(
             method: 'post',
             path: 'cms/v3/blogs/tags/batch/update',
             query: array_diff_key($parsed, $query_params),
@@ -452,6 +477,8 @@ final class TagsService implements TagsContract
             options: $options,
             convert: BatchResponseTag::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -474,13 +501,15 @@ final class TagsService implements TagsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'post',
             path: 'cms/v3/blogs/tags/multi-language/update-languages',
             body: (object) $parsed,
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 }

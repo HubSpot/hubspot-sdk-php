@@ -8,9 +8,7 @@ use HubspotSDK\Cms\AuditLogs\PublicAuditLog\Event;
 use HubspotSDK\Cms\AuditLogs\PublicAuditLog\ObjectType;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type PublicAuditLogShape = array{
@@ -24,12 +22,10 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
  *   meta?: mixed,
  * }
  */
-final class PublicAuditLog implements BaseModel, ResponseConverter
+final class PublicAuditLog implements BaseModel
 {
     /** @use SdkModel<PublicAuditLogShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     /**
      * The type of event that took place (CREATED, UPDATED, PUBLISHED, DELETED, UNPUBLISHED).

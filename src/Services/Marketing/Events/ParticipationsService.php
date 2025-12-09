@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Marketing\Events;
 
 use HubspotSDK\Client;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Marketing\Events\AttendanceCounters;
 use HubspotSDK\Marketing\Events\ParticipationBreakdown;
@@ -46,8 +47,8 @@ final class ParticipationsService implements ParticipationsContract
         $externalAccountID = $parsed['externalAccountId'];
         unset($parsed['externalAccountId']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<AttendanceCounters> */
+        $response = $this->client->request(
             method: 'get',
             path: [
                 'marketing/v3/marketing-events/participations/%1$s/%2$s',
@@ -57,6 +58,8 @@ final class ParticipationsService implements ParticipationsContract
             options: $options,
             convert: AttendanceCounters::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -70,8 +73,8 @@ final class ParticipationsService implements ParticipationsContract
         int $marketingEventID,
         ?RequestOptions $requestOptions = null
     ): AttendanceCounters {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<AttendanceCounters> */
+        $response = $this->client->request(
             method: 'get',
             path: [
                 'marketing/v3/marketing-events/participations/%1$s', $marketingEventID,
@@ -79,6 +82,8 @@ final class ParticipationsService implements ParticipationsContract
             options: $requestOptions,
             convert: AttendanceCounters::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -104,8 +109,8 @@ final class ParticipationsService implements ParticipationsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<Page<ParticipationBreakdown>> */
+        $response = $this->client->request(
             method: 'get',
             path: [
                 'marketing/v3/marketing-events/participations/contacts/%1$s/breakdown',
@@ -116,6 +121,8 @@ final class ParticipationsService implements ParticipationsContract
             convert: ParticipationBreakdown::class,
             page: Page::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -147,8 +154,8 @@ final class ParticipationsService implements ParticipationsContract
         $externalAccountID = $parsed['externalAccountId'];
         unset($parsed['externalAccountId']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<Page<ParticipationBreakdown>> */
+        $response = $this->client->request(
             method: 'get',
             path: [
                 'marketing/v3/marketing-events/participations/%1$s/%2$s/breakdown',
@@ -160,6 +167,8 @@ final class ParticipationsService implements ParticipationsContract
             convert: ParticipationBreakdown::class,
             page: Page::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -185,8 +194,8 @@ final class ParticipationsService implements ParticipationsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<Page<ParticipationBreakdown>> */
+        $response = $this->client->request(
             method: 'get',
             path: [
                 'marketing/v3/marketing-events/participations/%1$s/breakdown',
@@ -197,5 +206,7 @@ final class ParticipationsService implements ParticipationsContract
             convert: ParticipationBreakdown::class,
             page: Page::class,
         );
+
+        return $response->parse();
     }
 }

@@ -6,9 +6,7 @@ namespace HubspotSDK\Cms\Domains;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type DomainShape = array{
@@ -34,12 +32,10 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
  *   updated?: \DateTimeInterface|null,
  * }
  */
-final class Domain implements BaseModel, ResponseConverter
+final class Domain implements BaseModel
 {
     /** @use SdkModel<DomainShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     /**
      * The unique ID of this domain.

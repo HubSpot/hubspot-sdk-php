@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Settings;
 
 use HubspotSDK\Client;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Page;
 use HubspotSDK\PublicObjectID;
@@ -67,14 +68,16 @@ final class CurrenciesService implements CurrenciesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<BatchResponseExchangeRate> */
+        $response = $this->client->request(
             method: 'post',
             path: 'settings/v3/currencies/exchange-rates/batch/create',
             body: (object) $parsed,
             options: $options,
             convert: BatchResponseExchangeRate::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -97,14 +100,16 @@ final class CurrenciesService implements CurrenciesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<BatchResponseExchangeRate> */
+        $response = $this->client->request(
             method: 'post',
             path: 'settings/v3/currencies/exchange-rates/batch/read',
             body: (object) $parsed,
             options: $options,
             convert: BatchResponseExchangeRate::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -129,14 +134,16 @@ final class CurrenciesService implements CurrenciesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<BatchResponseExchangeRate> */
+        $response = $this->client->request(
             method: 'post',
             path: 'settings/v3/currencies/exchange-rates/batch/update',
             body: (object) $parsed,
             options: $options,
             convert: BatchResponseExchangeRate::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -161,14 +168,16 @@ final class CurrenciesService implements CurrenciesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<ExchangeRate> */
+        $response = $this->client->request(
             method: 'post',
             path: 'settings/v3/currencies/exchange-rates',
             body: (object) $parsed,
             options: $options,
             convert: ExchangeRate::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -181,13 +190,15 @@ final class CurrenciesService implements CurrenciesContract
     public function getCompanyCurrency(
         ?RequestOptions $requestOptions = null
     ): CompanyCurrency {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<CompanyCurrency> */
+        $response = $this->client->request(
             method: 'get',
             path: 'settings/v3/currencies/company-currency',
             options: $requestOptions,
             convert: CompanyCurrency::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -201,13 +212,15 @@ final class CurrenciesService implements CurrenciesContract
         string $exchangeRateID,
         ?RequestOptions $requestOptions = null
     ): ExchangeRate {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<ExchangeRate> */
+        $response = $this->client->request(
             method: 'get',
             path: ['settings/v3/currencies/exchange-rates/%1$s', $exchangeRateID],
             options: $requestOptions,
             convert: ExchangeRate::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -220,13 +233,15 @@ final class CurrenciesService implements CurrenciesContract
     public function listCodes(
         ?RequestOptions $requestOptions = null
     ): CollectionResponseCurrencyCodeInfoNoPaging {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<CollectionResponseCurrencyCodeInfoNoPaging> */
+        $response = $this->client->request(
             method: 'get',
             path: 'settings/v3/currencies/codes',
             options: $requestOptions,
             convert: CollectionResponseCurrencyCodeInfoNoPaging::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -239,13 +254,15 @@ final class CurrenciesService implements CurrenciesContract
     public function listCurrentExchangeRates(
         ?RequestOptions $requestOptions = null
     ): CollectionResponseExchangeRateNoPaging {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<CollectionResponseExchangeRateNoPaging> */
+        $response = $this->client->request(
             method: 'get',
             path: 'settings/v3/currencies/exchange-rates/current',
             options: $requestOptions,
             convert: CollectionResponseExchangeRateNoPaging::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -273,8 +290,8 @@ final class CurrenciesService implements CurrenciesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<Page<ExchangeRate>> */
+        $response = $this->client->request(
             method: 'get',
             path: 'settings/v3/currencies/exchange-rates',
             query: $parsed,
@@ -282,6 +299,8 @@ final class CurrenciesService implements CurrenciesContract
             convert: ExchangeRate::class,
             page: Page::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -304,14 +323,16 @@ final class CurrenciesService implements CurrenciesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<CompanyCurrency> */
+        $response = $this->client->request(
             method: 'put',
             path: 'settings/v3/currencies/company-currency',
             body: (object) $parsed,
             options: $options,
             convert: CompanyCurrency::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -335,14 +356,16 @@ final class CurrenciesService implements CurrenciesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<ExchangeRate> */
+        $response = $this->client->request(
             method: 'patch',
             path: ['settings/v3/currencies/exchange-rates/%1$s', $exchangeRateID],
             body: (object) $parsed,
             options: $options,
             convert: ExchangeRate::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -367,13 +390,15 @@ final class CurrenciesService implements CurrenciesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'post',
             path: 'settings/v3/currencies/exchange-rates/update-visibility',
             body: (object) $parsed,
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 }

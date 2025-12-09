@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Crm\Extensions\Calling;
 
 use HubspotSDK\Client;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\Extensions\Calling\Transcripts\Speaker;
 use HubspotSDK\Crm\Extensions\Calling\Transcripts\TranscriptCreateParams;
@@ -45,14 +46,16 @@ final class TranscriptsService implements TranscriptsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<TranscriptCreateResponse> */
+        $response = $this->client->request(
             method: 'post',
             path: 'crm/v3/extensions/calling/transcripts',
             body: (object) $parsed,
             options: $options,
             convert: TranscriptCreateResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -64,13 +67,15 @@ final class TranscriptsService implements TranscriptsContract
         string $transcriptID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'delete',
             path: ['crm/v3/extensions/calling/transcripts/%1$s', $transcriptID],
             options: $requestOptions,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -82,12 +87,14 @@ final class TranscriptsService implements TranscriptsContract
         string $transcriptID,
         ?RequestOptions $requestOptions = null
     ): TranscriptResponse {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<TranscriptResponse> */
+        $response = $this->client->request(
             method: 'get',
             path: ['crm/v3/extensions/calling/transcripts/%1$s', $transcriptID],
             options: $requestOptions,
             convert: TranscriptResponse::class,
         );
+
+        return $response->parse();
     }
 }

@@ -7,9 +7,7 @@ namespace HubspotSDK\Cms\SiteSearch;
 use HubspotSDK\Cms\SiteSearch\IndexedData\Type;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * The indexed data in HubSpot.
@@ -18,12 +16,10 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
  *   id: string, fields: array<string,IndexedField>, type: value-of<Type>
  * }
  */
-final class IndexedData implements BaseModel, ResponseConverter
+final class IndexedData implements BaseModel
 {
     /** @use SdkModel<IndexedDataShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     /**
      * The ID of the document in HubSpot.

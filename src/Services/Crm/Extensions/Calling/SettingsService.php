@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Crm\Extensions\Calling;
 
 use HubspotSDK\Client;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\Extensions\Calling\Settings\SettingCreateParams;
 use HubspotSDK\Crm\Extensions\Calling\Settings\SettingUpdateParams;
@@ -46,14 +47,16 @@ final class SettingsService implements SettingsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<SettingsResponse> */
+        $response = $this->client->request(
             method: 'post',
             path: ['crm/v3/extensions/calling/%1$s/settings', $appID],
             body: (object) $parsed,
             options: $options,
             convert: SettingsResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -83,14 +86,16 @@ final class SettingsService implements SettingsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<SettingsResponse> */
+        $response = $this->client->request(
             method: 'patch',
             path: ['crm/v3/extensions/calling/%1$s/settings', $appID],
             body: (object) $parsed,
             options: $options,
             convert: SettingsResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -102,13 +107,15 @@ final class SettingsService implements SettingsContract
         int $appID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'delete',
             path: ['crm/v3/extensions/calling/%1$s/settings', $appID],
             options: $requestOptions,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -120,12 +127,14 @@ final class SettingsService implements SettingsContract
         int $appID,
         ?RequestOptions $requestOptions = null
     ): SettingsResponse {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<SettingsResponse> */
+        $response = $this->client->request(
             method: 'get',
             path: ['crm/v3/extensions/calling/%1$s/settings', $appID],
             options: $requestOptions,
             convert: SettingsResponse::class,
         );
+
+        return $response->parse();
     }
 }

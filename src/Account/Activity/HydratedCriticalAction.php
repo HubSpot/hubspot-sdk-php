@@ -6,9 +6,7 @@ namespace HubspotSDK\Account\Activity;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * Details about the a particular security activity for a HubSpot account.
@@ -27,12 +25,10 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
  *   regionCode?: string|null,
  * }
  */
-final class HydratedCriticalAction implements BaseModel, ResponseConverter
+final class HydratedCriticalAction implements BaseModel
 {
     /** @use SdkModel<HydratedCriticalActionShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     /**
      * The unique ID of the activity.

@@ -6,9 +6,7 @@ namespace HubspotSDK\Marketing\Emails;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 use HubspotSDK\Marketing\Emails\PublicEmail\EmailTemplateMode;
 use HubspotSDK\Marketing\Emails\PublicEmail\Language;
 use HubspotSDK\Marketing\Emails\PublicEmail\State;
@@ -73,12 +71,10 @@ use HubspotSDK\Marketing\Emails\PublicEmailTestingDetails\AbSuccessMetric;
  *   workflowNames?: list<string>|null,
  * }
  */
-final class PublicEmail implements BaseModel, ResponseConverter
+final class PublicEmail implements BaseModel
 {
     /** @use SdkModel<PublicEmailShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     #[Api]
     public bool $isAb;

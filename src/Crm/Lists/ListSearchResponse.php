@@ -6,9 +6,7 @@ namespace HubspotSDK\Crm\Lists;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * The response object with the list search hits and additional information regarding pagination.
@@ -20,12 +18,10 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
  *   total: int,
  * }
  */
-final class ListSearchResponse implements BaseModel, ResponseConverter
+final class ListSearchResponse implements BaseModel
 {
     /** @use SdkModel<ListSearchResponseShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     /**
      * Whether or not there are more results to page through.

@@ -6,9 +6,7 @@ namespace HubspotSDK\Crm\Extensions\Calling\Transcripts;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 use HubspotSDK\Crm\Extensions\Calling\Transcripts\TranscriptResponse\TranscriptSource;
 
 /**
@@ -21,12 +19,10 @@ use HubspotSDK\Crm\Extensions\Calling\Transcripts\TranscriptResponse\TranscriptS
  *   updatedAt: \DateTimeInterface,
  * }
  */
-final class TranscriptResponse implements BaseModel, ResponseConverter
+final class TranscriptResponse implements BaseModel
 {
     /** @use SdkModel<TranscriptResponseShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     #[Api]
     public string $id;

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Webhooks;
 
 use HubspotSDK\Client;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Webhooks\SubscriptionsContract;
@@ -49,14 +50,16 @@ final class SubscriptionsService implements SubscriptionsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<SubscriptionResponse> */
+        $response = $this->client->request(
             method: 'post',
             path: ['webhooks/v3/%1$s/subscriptions', $appID],
             body: (object) $parsed,
             options: $options,
             convert: SubscriptionResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -80,14 +83,16 @@ final class SubscriptionsService implements SubscriptionsContract
         $appID = $parsed['appId'];
         unset($parsed['appId']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<SubscriptionResponse> */
+        $response = $this->client->request(
             method: 'patch',
             path: ['webhooks/v3/%1$s/subscriptions/%2$s', $appID, $subscriptionID],
             body: (object) array_diff_key($parsed, ['appId']),
             options: $options,
             convert: SubscriptionResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -101,13 +106,15 @@ final class SubscriptionsService implements SubscriptionsContract
         int $appID,
         ?RequestOptions $requestOptions = null
     ): SubscriptionListResponse {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<SubscriptionListResponse> */
+        $response = $this->client->request(
             method: 'get',
             path: ['webhooks/v3/%1$s/subscriptions', $appID],
             options: $requestOptions,
             convert: SubscriptionListResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -131,13 +138,15 @@ final class SubscriptionsService implements SubscriptionsContract
         $appID = $parsed['appId'];
         unset($parsed['appId']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'delete',
             path: ['webhooks/v3/%1$s/subscriptions/%2$s', $appID, $subscriptionID],
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -161,13 +170,15 @@ final class SubscriptionsService implements SubscriptionsContract
         $appID = $parsed['appId'];
         unset($parsed['appId']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<SubscriptionResponse> */
+        $response = $this->client->request(
             method: 'get',
             path: ['webhooks/v3/%1$s/subscriptions/%2$s', $appID, $subscriptionID],
             options: $options,
             convert: SubscriptionResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -191,13 +202,15 @@ final class SubscriptionsService implements SubscriptionsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<BatchResponseSubscriptionResponse> */
+        $response = $this->client->request(
             method: 'post',
             path: ['webhooks/v3/%1$s/subscriptions/batch/update', $appID],
             body: (object) $parsed,
             options: $options,
             convert: BatchResponseSubscriptionResponse::class,
         );
+
+        return $response->parse();
     }
 }

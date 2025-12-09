@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Services;
 
 use HubspotSDK\Client;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Events\EventListParams;
 use HubspotSDK\Events\ExternalUnifiedEvent;
@@ -69,8 +70,8 @@ final class EventsService implements EventsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<Page<ExternalUnifiedEvent>> */
+        $response = $this->client->request(
             method: 'get',
             path: 'events/v3/events/',
             query: $parsed,
@@ -78,6 +79,8 @@ final class EventsService implements EventsContract
             convert: ExternalUnifiedEvent::class,
             page: Page::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -92,12 +95,14 @@ final class EventsService implements EventsContract
     public function listEventTypes(
         ?RequestOptions $requestOptions = null
     ): VisibleExternalEventTypeNames {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<VisibleExternalEventTypeNames> */
+        $response = $this->client->request(
             method: 'get',
             path: 'events/v3/events/event-types',
             options: $requestOptions,
             convert: VisibleExternalEventTypeNames::class,
         );
+
+        return $response->parse();
     }
 }

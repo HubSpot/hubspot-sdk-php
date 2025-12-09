@@ -6,9 +6,7 @@ namespace HubspotSDK\Marketing\Events;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type MarketingEventPublicReadResponseV2Shape = array{
@@ -34,12 +32,10 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
  *   startDateTime?: \DateTimeInterface|null,
  * }
  */
-final class MarketingEventPublicReadResponseV2 implements BaseModel, ResponseConverter
+final class MarketingEventPublicReadResponseV2 implements BaseModel
 {
     /** @use SdkModel<MarketingEventPublicReadResponseV2Shape> */
     use SdkModel;
-
-    use SdkResponse;
 
     #[Api]
     public \DateTimeInterface $createdAt;

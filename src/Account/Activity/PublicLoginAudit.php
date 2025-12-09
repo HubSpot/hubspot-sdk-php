@@ -6,9 +6,7 @@ namespace HubspotSDK\Account\Activity;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * Details about the a particular login activity for a HubSpot account.
@@ -26,12 +24,10 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
  *   userId?: int|null,
  * }
  */
-final class PublicLoginAudit implements BaseModel, ResponseConverter
+final class PublicLoginAudit implements BaseModel
 {
     /** @use SdkModel<PublicLoginAuditShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     /**
      * The login activity's unique ID.

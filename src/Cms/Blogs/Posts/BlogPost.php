@@ -12,9 +12,7 @@ use HubspotSDK\Cms\LayoutSection;
 use HubspotSDK\Cms\Pages\PagesContentLanguageVariation;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 use HubspotSDK\Core\Conversion\MapOf;
 
 /**
@@ -84,12 +82,10 @@ use HubspotSDK\Core\Conversion\MapOf;
  *   widgets: array<string,mixed>,
  * }
  */
-final class BlogPost implements BaseModel, ResponseConverter
+final class BlogPost implements BaseModel
 {
     /** @use SdkModel<BlogPostShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     /**
      * The unique ID of the blog post.

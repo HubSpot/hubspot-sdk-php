@@ -6,9 +6,7 @@ namespace HubspotSDK\Crm\Objects\Schemas;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 use HubspotSDK\ObjectTypeDefinitionLabels;
 
 /**
@@ -31,12 +29,10 @@ use HubspotSDK\ObjectTypeDefinitionLabels;
  *   updatedAt?: \DateTimeInterface|null,
  * }
  */
-final class ObjectsSchemasObjectTypeDefinition implements BaseModel, ResponseConverter
+final class ObjectsSchemasObjectTypeDefinition implements BaseModel
 {
     /** @use SdkModel<ObjectsSchemasObjectTypeDefinitionShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     /**
      * A unique ID for this object type. Will be defined as {meta-type}-{unique ID}.

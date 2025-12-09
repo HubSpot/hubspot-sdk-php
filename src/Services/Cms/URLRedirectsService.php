@@ -9,6 +9,7 @@ use HubspotSDK\Cms\URLRedirects\URLMapping;
 use HubspotSDK\Cms\URLRedirects\URLRedirectCreateParams;
 use HubspotSDK\Cms\URLRedirects\URLRedirectListParams;
 use HubspotSDK\Cms\URLRedirects\URLRedirectUpdateParams;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
@@ -50,14 +51,16 @@ final class URLRedirectsService implements URLRedirectsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<URLMapping> */
+        $response = $this->client->request(
             method: 'post',
             path: 'cms/v3/url-redirects/',
             body: (object) $parsed,
             options: $options,
             convert: URLMapping::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -93,14 +96,16 @@ final class URLRedirectsService implements URLRedirectsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<URLMapping> */
+        $response = $this->client->request(
             method: 'patch',
             path: ['cms/v3/url-redirects/%1$s', $urlRedirectID],
             body: (object) $parsed,
             options: $options,
             convert: URLMapping::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -134,8 +139,8 @@ final class URLRedirectsService implements URLRedirectsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<Page<URLMapping>> */
+        $response = $this->client->request(
             method: 'get',
             path: 'cms/v3/url-redirects/',
             query: $parsed,
@@ -143,6 +148,8 @@ final class URLRedirectsService implements URLRedirectsContract
             convert: URLMapping::class,
             page: Page::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -156,13 +163,15 @@ final class URLRedirectsService implements URLRedirectsContract
         string $urlRedirectID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'delete',
             path: ['cms/v3/url-redirects/%1$s', $urlRedirectID],
             options: $requestOptions,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -176,12 +185,14 @@ final class URLRedirectsService implements URLRedirectsContract
         string $urlRedirectID,
         ?RequestOptions $requestOptions = null
     ): URLMapping {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<URLMapping> */
+        $response = $this->client->request(
             method: 'get',
             path: ['cms/v3/url-redirects/%1$s', $urlRedirectID],
             options: $requestOptions,
             convert: URLMapping::class,
         );
+
+        return $response->parse();
     }
 }

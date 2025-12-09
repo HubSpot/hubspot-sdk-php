@@ -7,9 +7,7 @@ namespace HubspotSDK\Cms\Blogs\Settings;
 use HubspotSDK\Cms\Blogs\Settings\Blog\Language;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type BlogShape = array{
@@ -30,12 +28,10 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
  *   updated: \DateTimeInterface,
  * }
  */
-final class Blog implements BaseModel, ResponseConverter
+final class Blog implements BaseModel
 {
     /** @use SdkModel<BlogShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     /**
      * The unique ID of the Blog.

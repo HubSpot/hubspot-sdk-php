@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Crm;
 
 use HubspotSDK\Client;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\Limits\AssociationRecordLimitResponse;
 use HubspotSDK\Crm\Limits\CalculatedPropertyLimitResponse;
@@ -46,14 +47,16 @@ final class LimitsService implements LimitsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<CollectionResponseAssociationLabelLimitResponseNoPaging,> */
+        $response = $this->client->request(
             method: 'get',
             path: 'crm/v3/limits/associations/labels',
             query: $parsed,
             options: $options,
             convert: CollectionResponseAssociationLabelLimitResponseNoPaging::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -79,8 +82,8 @@ final class LimitsService implements LimitsContract
         $fromObjectTypeID = $parsed['fromObjectTypeId'];
         unset($parsed['fromObjectTypeId']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<AssociationRecordLimitResponse> */
+        $response = $this->client->request(
             method: 'get',
             path: [
                 'crm/v3/limits/associations/records/%1$s/%2$s',
@@ -90,6 +93,8 @@ final class LimitsService implements LimitsContract
             options: $options,
             convert: AssociationRecordLimitResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -102,13 +107,15 @@ final class LimitsService implements LimitsContract
     public function getAssociationRecordsLimitsFromObjects(
         ?RequestOptions $requestOptions = null
     ): CollectionResponseObjectTypeNearOrAtAssociationLimitNoPaging {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<CollectionResponseObjectTypeNearOrAtAssociationLimitNoPaging,> */
+        $response = $this->client->request(
             method: 'get',
             path: 'crm/v3/limits/associations/records/from',
             options: $requestOptions,
             convert: CollectionResponseObjectTypeNearOrAtAssociationLimitNoPaging::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -122,13 +129,15 @@ final class LimitsService implements LimitsContract
         string $fromObjectTypeID,
         ?RequestOptions $requestOptions = null
     ): CollectionResponseObjectTypeNearOrAtAssociationLimitNoPaging {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<CollectionResponseObjectTypeNearOrAtAssociationLimitNoPaging,> */
+        $response = $this->client->request(
             method: 'get',
             path: ['crm/v3/limits/associations/records/%1$s/to', $fromObjectTypeID],
             options: $requestOptions,
             convert: CollectionResponseObjectTypeNearOrAtAssociationLimitNoPaging::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -141,13 +150,15 @@ final class LimitsService implements LimitsContract
     public function getCalculatedPropertyLimits(
         ?RequestOptions $requestOptions = null
     ): CalculatedPropertyLimitResponse {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<CalculatedPropertyLimitResponse> */
+        $response = $this->client->request(
             method: 'get',
             path: 'crm/v3/limits/calculated-properties',
             options: $requestOptions,
             convert: CalculatedPropertyLimitResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -160,13 +171,15 @@ final class LimitsService implements LimitsContract
     public function getCustomObjectTypeLimits(
         ?RequestOptions $requestOptions = null
     ): CustomObjectLimitResponse {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<CustomObjectLimitResponse> */
+        $response = $this->client->request(
             method: 'get',
             path: 'crm/v3/limits/custom-object-types',
             options: $requestOptions,
             convert: CustomObjectLimitResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -179,13 +192,15 @@ final class LimitsService implements LimitsContract
     public function getCustomPropertyLimits(
         ?RequestOptions $requestOptions = null
     ): CustomPropertyLimitResponse {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<CustomPropertyLimitResponse> */
+        $response = $this->client->request(
             method: 'get',
             path: 'crm/v3/limits/custom-properties',
             options: $requestOptions,
             convert: CustomPropertyLimitResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -198,13 +213,15 @@ final class LimitsService implements LimitsContract
     public function getPipelineLimits(
         ?RequestOptions $requestOptions = null
     ): PipelineLimitResponse {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<PipelineLimitResponse> */
+        $response = $this->client->request(
             method: 'get',
             path: 'crm/v3/limits/pipelines',
             options: $requestOptions,
             convert: PipelineLimitResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -217,12 +234,14 @@ final class LimitsService implements LimitsContract
     public function getRecordLimits(
         ?RequestOptions $requestOptions = null
     ): RecordLimitResponse {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<RecordLimitResponse> */
+        $response = $this->client->request(
             method: 'get',
             path: 'crm/v3/limits/records',
             options: $requestOptions,
             convert: RecordLimitResponse::class,
         );
+
+        return $response->parse();
     }
 }

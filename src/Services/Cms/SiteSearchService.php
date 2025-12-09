@@ -10,6 +10,7 @@ use HubspotSDK\Cms\SiteSearch\PublicSearchResults;
 use HubspotSDK\Cms\SiteSearch\SiteSearchGetIndexedDataParams;
 use HubspotSDK\Cms\SiteSearch\SiteSearchSearchParams;
 use HubspotSDK\Cms\SiteSearch\SiteSearchSearchParams\Language;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Cms\SiteSearchContract;
@@ -42,14 +43,16 @@ final class SiteSearchService implements SiteSearchContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<IndexedData> */
+        $response = $this->client->request(
             method: 'get',
             path: ['cms/v3/site-search/indexed-data/%1$s', $contentID],
             query: $parsed,
             options: $options,
             convert: IndexedData::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -88,13 +91,15 @@ final class SiteSearchService implements SiteSearchContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<PublicSearchResults> */
+        $response = $this->client->request(
             method: 'get',
             path: 'cms/v3/site-search/search',
             query: $parsed,
             options: $options,
             convert: PublicSearchResults::class,
         );
+
+        return $response->parse();
     }
 }

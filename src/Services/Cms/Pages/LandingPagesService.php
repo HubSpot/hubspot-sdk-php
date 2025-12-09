@@ -53,6 +53,7 @@ use HubspotSDK\Cms\Pages\PagesContentLanguageVariation;
 use HubspotSDK\Cms\Pages\VersionContentFolder;
 use HubspotSDK\Cms\Pages\VersionPage;
 use HubspotSDK\Cms\Styles;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Cms\Pages\LandingPagesContract;
@@ -169,14 +170,16 @@ final class LandingPagesService implements LandingPagesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'post',
             path: 'cms/v3/pages/landing-pages',
             body: (object) $parsed,
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -288,8 +291,8 @@ final class LandingPagesService implements LandingPagesContract
         );
         $query_params = ['archived'];
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<Page> */
+        $response = $this->client->request(
             method: 'patch',
             path: ['cms/v3/pages/landing-pages/%1$s', $objectID],
             query: array_diff_key($parsed, $query_params),
@@ -297,6 +300,8 @@ final class LandingPagesService implements LandingPagesContract
             options: $options,
             convert: Page::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -331,8 +336,8 @@ final class LandingPagesService implements LandingPagesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<\HubspotSDK\Page<Page>> */
+        $response = $this->client->request(
             method: 'get',
             path: 'cms/v3/pages/landing-pages',
             query: $parsed,
@@ -340,6 +345,8 @@ final class LandingPagesService implements LandingPagesContract
             convert: Page::class,
             page: \HubspotSDK\Page::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -361,14 +368,16 @@ final class LandingPagesService implements LandingPagesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'delete',
             path: ['cms/v3/pages/landing-pages/%1$s', $objectID],
             query: $parsed,
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -391,14 +400,16 @@ final class LandingPagesService implements LandingPagesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'post',
             path: 'cms/v3/pages/landing-pages/multi-language/attach-to-lang-group',
             body: (object) $parsed,
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -419,14 +430,16 @@ final class LandingPagesService implements LandingPagesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<Page> */
+        $response = $this->client->request(
             method: 'post',
             path: 'cms/v3/pages/landing-pages/clone',
             body: (object) $parsed,
             options: $options,
             convert: Page::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -449,14 +462,16 @@ final class LandingPagesService implements LandingPagesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<Page> */
+        $response = $this->client->request(
             method: 'post',
             path: 'cms/v3/pages/landing-pages/ab-test/create-variation',
             body: (object) $parsed,
             options: $options,
             convert: Page::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -537,14 +552,16 @@ final class LandingPagesService implements LandingPagesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<BatchResponsePage> */
+        $response = $this->client->request(
             method: 'post',
             path: 'cms/v3/pages/landing-pages/batch/create',
             body: (object) $parsed,
             options: $options,
             convert: BatchResponsePage::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -573,14 +590,16 @@ final class LandingPagesService implements LandingPagesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<ContentFolder> */
+        $response = $this->client->request(
             method: 'post',
             path: 'cms/v3/pages/landing-pages/folders',
             body: (object) $parsed,
             options: $options,
             convert: ContentFolder::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -611,14 +630,16 @@ final class LandingPagesService implements LandingPagesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<BatchResponseContentFolder> */
+        $response = $this->client->request(
             method: 'post',
             path: 'cms/v3/pages/landing-pages/folders/batch/create',
             body: (object) $parsed,
             options: $options,
             convert: BatchResponseContentFolder::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -641,14 +662,16 @@ final class LandingPagesService implements LandingPagesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<Page> */
+        $response = $this->client->request(
             method: 'post',
             path: 'cms/v3/pages/landing-pages/multi-language/create-language-variation',
             body: (object) $parsed,
             options: $options,
             convert: Page::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -670,14 +693,16 @@ final class LandingPagesService implements LandingPagesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'post',
             path: 'cms/v3/pages/landing-pages/batch/archive',
             body: (object) $parsed,
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -699,14 +724,16 @@ final class LandingPagesService implements LandingPagesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'delete',
             path: ['cms/v3/pages/landing-pages/folders/%1$s', $objectID],
             query: $parsed,
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -727,14 +754,16 @@ final class LandingPagesService implements LandingPagesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'post',
             path: 'cms/v3/pages/landing-pages/folders/batch/archive',
             body: (object) $parsed,
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -755,14 +784,16 @@ final class LandingPagesService implements LandingPagesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'post',
             path: 'cms/v3/pages/landing-pages/multi-language/detach-from-lang-group',
             body: (object) $parsed,
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -785,14 +816,16 @@ final class LandingPagesService implements LandingPagesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'post',
             path: 'cms/v3/pages/landing-pages/ab-test/end',
             body: (object) $parsed,
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -814,14 +847,16 @@ final class LandingPagesService implements LandingPagesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<Page> */
+        $response = $this->client->request(
             method: 'get',
             path: ['cms/v3/pages/landing-pages/%1$s', $objectID],
             query: $parsed,
             options: $options,
             convert: Page::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -845,8 +880,8 @@ final class LandingPagesService implements LandingPagesContract
         );
         $query_params = ['archived'];
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<BatchResponsePage> */
+        $response = $this->client->request(
             method: 'post',
             path: 'cms/v3/pages/landing-pages/batch/read',
             query: array_diff_key($parsed, $query_params),
@@ -854,6 +889,8 @@ final class LandingPagesService implements LandingPagesContract
             options: $options,
             convert: BatchResponsePage::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -867,13 +904,15 @@ final class LandingPagesService implements LandingPagesContract
         string $objectID,
         ?RequestOptions $requestOptions = null
     ): Page {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<Page> */
+        $response = $this->client->request(
             method: 'get',
             path: ['cms/v3/pages/landing-pages/%1$s/draft', $objectID],
             options: $requestOptions,
             convert: Page::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -897,14 +936,16 @@ final class LandingPagesService implements LandingPagesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<ContentFolder> */
+        $response = $this->client->request(
             method: 'get',
             path: ['cms/v3/pages/landing-pages/folders/%1$s', $objectID],
             query: $parsed,
             options: $options,
             convert: ContentFolder::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -928,8 +969,8 @@ final class LandingPagesService implements LandingPagesContract
         $objectID = $parsed['objectId'];
         unset($parsed['objectId']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<VersionContentFolder> */
+        $response = $this->client->request(
             method: 'get',
             path: [
                 'cms/v3/pages/landing-pages/folders/%1$s/revisions/%2$s',
@@ -939,6 +980,8 @@ final class LandingPagesService implements LandingPagesContract
             options: $options,
             convert: VersionContentFolder::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -962,8 +1005,8 @@ final class LandingPagesService implements LandingPagesContract
         );
         $query_params = ['archived'];
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<BatchResponseContentFolder> */
+        $response = $this->client->request(
             method: 'post',
             path: 'cms/v3/pages/landing-pages/folders/batch/read',
             query: array_diff_key($parsed, $query_params),
@@ -971,6 +1014,8 @@ final class LandingPagesService implements LandingPagesContract
             options: $options,
             convert: BatchResponseContentFolder::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -994,8 +1039,8 @@ final class LandingPagesService implements LandingPagesContract
         $objectID = $parsed['objectId'];
         unset($parsed['objectId']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<VersionPage> */
+        $response = $this->client->request(
             method: 'get',
             path: [
                 'cms/v3/pages/landing-pages/%1$s/revisions/%2$s', $objectID, $revisionID,
@@ -1003,6 +1048,8 @@ final class LandingPagesService implements LandingPagesContract
             options: $options,
             convert: VersionPage::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -1028,8 +1075,8 @@ final class LandingPagesService implements LandingPagesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<\HubspotSDK\Page<VersionContentFolder>> */
+        $response = $this->client->request(
             method: 'get',
             path: ['cms/v3/pages/landing-pages/folders/%1$s/revisions', $objectID],
             query: $parsed,
@@ -1037,6 +1084,8 @@ final class LandingPagesService implements LandingPagesContract
             convert: VersionContentFolder::class,
             page: \HubspotSDK\Page::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -1071,8 +1120,8 @@ final class LandingPagesService implements LandingPagesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<\HubspotSDK\Page<ContentFolder>> */
+        $response = $this->client->request(
             method: 'get',
             path: 'cms/v3/pages/landing-pages/folders',
             query: $parsed,
@@ -1080,6 +1129,8 @@ final class LandingPagesService implements LandingPagesContract
             convert: ContentFolder::class,
             page: \HubspotSDK\Page::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -1105,8 +1156,8 @@ final class LandingPagesService implements LandingPagesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<\HubspotSDK\Page<VersionPage>> */
+        $response = $this->client->request(
             method: 'get',
             path: ['cms/v3/pages/landing-pages/%1$s/revisions', $objectID],
             query: $parsed,
@@ -1114,6 +1165,8 @@ final class LandingPagesService implements LandingPagesContract
             convert: VersionPage::class,
             page: \HubspotSDK\Page::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -1127,13 +1180,15 @@ final class LandingPagesService implements LandingPagesContract
         string $objectID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'post',
             path: ['cms/v3/pages/landing-pages/%1$s/draft/push-live', $objectID],
             options: $requestOptions,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -1156,14 +1211,16 @@ final class LandingPagesService implements LandingPagesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'post',
             path: 'cms/v3/pages/landing-pages/ab-test/rerun',
             body: (object) $parsed,
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -1177,13 +1234,15 @@ final class LandingPagesService implements LandingPagesContract
         string $objectID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'post',
             path: ['cms/v3/pages/landing-pages/%1$s/draft/reset', $objectID],
             options: $requestOptions,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -1207,8 +1266,8 @@ final class LandingPagesService implements LandingPagesContract
         $objectID = $parsed['objectId'];
         unset($parsed['objectId']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<ContentFolder> */
+        $response = $this->client->request(
             method: 'post',
             path: [
                 'cms/v3/pages/landing-pages/folders/%1$s/revisions/%2$s/restore',
@@ -1218,6 +1277,8 @@ final class LandingPagesService implements LandingPagesContract
             options: $options,
             convert: ContentFolder::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -1241,8 +1302,8 @@ final class LandingPagesService implements LandingPagesContract
         $objectID = $parsed['objectId'];
         unset($parsed['objectId']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<Page> */
+        $response = $this->client->request(
             method: 'post',
             path: [
                 'cms/v3/pages/landing-pages/%1$s/revisions/%2$s/restore',
@@ -1252,6 +1313,8 @@ final class LandingPagesService implements LandingPagesContract
             options: $options,
             convert: Page::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -1275,8 +1338,8 @@ final class LandingPagesService implements LandingPagesContract
         $objectID = $parsed['objectId'];
         unset($parsed['objectId']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<Page> */
+        $response = $this->client->request(
             method: 'post',
             path: [
                 'cms/v3/pages/landing-pages/%1$s/revisions/%2$s/restore-to-draft',
@@ -1286,6 +1349,8 @@ final class LandingPagesService implements LandingPagesContract
             options: $options,
             convert: Page::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -1308,14 +1373,16 @@ final class LandingPagesService implements LandingPagesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'post',
             path: 'cms/v3/pages/landing-pages/schedule',
             body: (object) $parsed,
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -1336,14 +1403,16 @@ final class LandingPagesService implements LandingPagesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'put',
             path: 'cms/v3/pages/landing-pages/multi-language/set-new-lang-primary',
             body: (object) $parsed,
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -1367,8 +1436,8 @@ final class LandingPagesService implements LandingPagesContract
         );
         $query_params = ['archived'];
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<BatchResponsePage> */
+        $response = $this->client->request(
             method: 'post',
             path: 'cms/v3/pages/landing-pages/batch/update',
             query: array_diff_key($parsed, $query_params),
@@ -1376,6 +1445,8 @@ final class LandingPagesService implements LandingPagesContract
             options: $options,
             convert: BatchResponsePage::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -1485,14 +1556,16 @@ final class LandingPagesService implements LandingPagesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<Page> */
+        $response = $this->client->request(
             method: 'patch',
             path: ['cms/v3/pages/landing-pages/%1$s/draft', $objectID],
             body: (object) $parsed,
             options: $options,
             convert: Page::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -1525,8 +1598,8 @@ final class LandingPagesService implements LandingPagesContract
         );
         $query_params = ['archived'];
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<ContentFolder> */
+        $response = $this->client->request(
             method: 'patch',
             path: ['cms/v3/pages/landing-pages/folders/%1$s', $objectID],
             query: array_diff_key($parsed, $query_params),
@@ -1534,6 +1607,8 @@ final class LandingPagesService implements LandingPagesContract
             options: $options,
             convert: ContentFolder::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -1557,8 +1632,8 @@ final class LandingPagesService implements LandingPagesContract
         );
         $query_params = ['archived'];
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<BatchResponseContentFolder> */
+        $response = $this->client->request(
             method: 'post',
             path: 'cms/v3/pages/landing-pages/folders/batch/update',
             query: array_diff_key($parsed, $query_params),
@@ -1566,6 +1641,8 @@ final class LandingPagesService implements LandingPagesContract
             options: $options,
             convert: BatchResponseContentFolder::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -1588,13 +1665,15 @@ final class LandingPagesService implements LandingPagesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'post',
             path: 'cms/v3/pages/landing-pages/multi-language/update-languages',
             body: (object) $parsed,
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 }

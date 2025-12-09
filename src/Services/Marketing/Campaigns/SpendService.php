@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Marketing\Campaigns;
 
 use HubspotSDK\Client;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Marketing\Campaigns\PublicSpendItem;
 use HubspotSDK\Marketing\Campaigns\Spend\SpendCreateParams;
@@ -42,14 +43,16 @@ final class SpendService implements SpendContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<PublicSpendItem> */
+        $response = $this->client->request(
             method: 'post',
             path: ['marketing/v3/campaigns/%1$s/spend', $campaignGuid],
             body: (object) $parsed,
             options: $options,
             convert: PublicSpendItem::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -79,14 +82,16 @@ final class SpendService implements SpendContract
         $campaignGuid = $parsed['campaignGuid'];
         unset($parsed['campaignGuid']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<PublicSpendItem> */
+        $response = $this->client->request(
             method: 'put',
             path: ['marketing/v3/campaigns/%1$s/spend/%2$s', $campaignGuid, $spendID],
             body: (object) array_diff_key($parsed, ['campaignGuid']),
             options: $options,
             convert: PublicSpendItem::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -110,13 +115,15 @@ final class SpendService implements SpendContract
         $campaignGuid = $parsed['campaignGuid'];
         unset($parsed['campaignGuid']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'delete',
             path: ['marketing/v3/campaigns/%1$s/spend/%2$s', $campaignGuid, $spendID],
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -140,12 +147,14 @@ final class SpendService implements SpendContract
         $campaignGuid = $parsed['campaignGuid'];
         unset($parsed['campaignGuid']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<PublicSpendItem> */
+        $response = $this->client->request(
             method: 'get',
             path: ['marketing/v3/campaigns/%1$s/spend/%2$s', $campaignGuid, $spendID],
             options: $options,
             convert: PublicSpendItem::class,
         );
+
+        return $response->parse();
     }
 }

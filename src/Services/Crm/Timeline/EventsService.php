@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Crm\Timeline;
 
 use HubspotSDK\Client;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\Timeline\EventDetail;
 use HubspotSDK\Crm\Timeline\Events\EventBatchCreateParams;
@@ -54,14 +55,16 @@ final class EventsService implements EventsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<TimelineEventResponse> */
+        $response = $this->client->request(
             method: 'post',
             path: 'integrators/timeline/v3/events',
             body: (object) $parsed,
             options: $options,
             convert: TimelineEventResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -95,14 +98,16 @@ final class EventsService implements EventsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'post',
             path: 'integrators/timeline/v3/events/batch/create',
             body: (object) $parsed,
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -126,8 +131,8 @@ final class EventsService implements EventsContract
         $eventTemplateID = $parsed['eventTemplateId'];
         unset($parsed['eventTemplateId']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<TimelineEventResponse> */
+        $response = $this->client->request(
             method: 'get',
             path: [
                 'integrators/timeline/v3/events/%1$s/%2$s', $eventTemplateID, $eventID,
@@ -135,6 +140,8 @@ final class EventsService implements EventsContract
             options: $options,
             convert: TimelineEventResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -158,8 +165,8 @@ final class EventsService implements EventsContract
         $eventTemplateID = $parsed['eventTemplateId'];
         unset($parsed['eventTemplateId']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<EventDetail> */
+        $response = $this->client->request(
             method: 'get',
             path: [
                 'integrators/timeline/v3/events/%1$s/%2$s/detail',
@@ -169,5 +176,7 @@ final class EventsService implements EventsContract
             options: $options,
             convert: EventDetail::class,
         );
+
+        return $response->parse();
     }
 }

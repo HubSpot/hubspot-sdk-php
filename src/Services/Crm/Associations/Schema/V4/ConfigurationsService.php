@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Crm\Associations\Schema\V4;
 
 use HubspotSDK\Client;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\Associations\BatchResponseVoid;
 use HubspotSDK\Crm\Associations\Schema\V4\BatchResponsePublicAssociationDefinitionConfigurationUpdateResult;
@@ -32,13 +33,15 @@ final class ConfigurationsService implements ConfigurationsContract
     public function list(
         ?RequestOptions $requestOptions = null
     ): CollectionResponsePublicAssociationDefinitionUserConfiguration {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<CollectionResponsePublicAssociationDefinitionUserConfiguration,> */
+        $response = $this->client->request(
             method: 'get',
             path: 'crm/associations/v4/definitions/configurations/all',
             options: $requestOptions,
             convert: CollectionResponsePublicAssociationDefinitionUserConfiguration::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -67,8 +70,8 @@ final class ConfigurationsService implements ConfigurationsContract
         $fromObjectType = $parsed['fromObjectType'];
         unset($parsed['fromObjectType']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<BatchResponsePublicAssociationDefinitionUserConfiguration,> */
+        $response = $this->client->request(
             method: 'post',
             path: [
                 'crm/associations/v4/definitions/configurations/%1$s/%2$s/batch/create',
@@ -79,6 +82,8 @@ final class ConfigurationsService implements ConfigurationsContract
             options: $options,
             convert: BatchResponsePublicAssociationDefinitionUserConfiguration::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -102,8 +107,8 @@ final class ConfigurationsService implements ConfigurationsContract
         $fromObjectType = $parsed['fromObjectType'];
         unset($parsed['fromObjectType']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<BatchResponseVoid> */
+        $response = $this->client->request(
             method: 'post',
             path: [
                 'crm/associations/v4/definitions/configurations/%1$s/%2$s/batch/purge',
@@ -114,6 +119,8 @@ final class ConfigurationsService implements ConfigurationsContract
             options: $options,
             convert: BatchResponseVoid::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -142,8 +149,8 @@ final class ConfigurationsService implements ConfigurationsContract
         $fromObjectType = $parsed['fromObjectType'];
         unset($parsed['fromObjectType']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<BatchResponsePublicAssociationDefinitionConfigurationUpdateResult,> */
+        $response = $this->client->request(
             method: 'post',
             path: [
                 'crm/associations/v4/definitions/configurations/%1$s/%2$s/batch/update',
@@ -154,6 +161,8 @@ final class ConfigurationsService implements ConfigurationsContract
             options: $options,
             convert: BatchResponsePublicAssociationDefinitionConfigurationUpdateResult::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -175,8 +184,8 @@ final class ConfigurationsService implements ConfigurationsContract
         $fromObjectType = $parsed['fromObjectType'];
         unset($parsed['fromObjectType']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<CollectionResponsePublicAssociationDefinitionUserConfiguration,> */
+        $response = $this->client->request(
             method: 'get',
             path: [
                 'crm/associations/v4/definitions/configurations/%1$s/%2$s',
@@ -186,5 +195,7 @@ final class ConfigurationsService implements ConfigurationsContract
             options: $options,
             convert: CollectionResponsePublicAssociationDefinitionUserConfiguration::class,
         );
+
+        return $response->parse();
     }
 }

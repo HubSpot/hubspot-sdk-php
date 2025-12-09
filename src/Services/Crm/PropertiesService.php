@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Crm;
 
 use HubspotSDK\Client;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\Properties\CollectionResponseProperty;
 use HubspotSDK\Crm\Properties\CreatedResponseProperty;
@@ -82,14 +83,16 @@ final class PropertiesService implements PropertiesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<CreatedResponseProperty> */
+        $response = $this->client->request(
             method: 'post',
             path: ['crm/v3/properties/%1$s', $objectType],
             body: (object) $parsed,
             options: $options,
             convert: CreatedResponseProperty::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -131,14 +134,16 @@ final class PropertiesService implements PropertiesContract
         $objectType = $parsed['objectType'];
         unset($parsed['objectType']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<Property> */
+        $response = $this->client->request(
             method: 'patch',
             path: ['crm/v3/properties/%1$s/%2$s', $objectType, $propertyName],
             body: (object) array_diff_key($parsed, ['objectType']),
             options: $options,
             convert: Property::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -165,14 +170,16 @@ final class PropertiesService implements PropertiesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<CollectionResponseProperty> */
+        $response = $this->client->request(
             method: 'get',
             path: ['crm/v3/properties/%1$s', $objectType],
             query: $parsed,
             options: $options,
             convert: CollectionResponseProperty::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -196,13 +203,15 @@ final class PropertiesService implements PropertiesContract
         $objectType = $parsed['objectType'];
         unset($parsed['objectType']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'delete',
             path: ['crm/v3/properties/%1$s/%2$s', $objectType, $propertyName],
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -232,13 +241,15 @@ final class PropertiesService implements PropertiesContract
         $objectType = $parsed['objectType'];
         unset($parsed['objectType']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<Property> */
+        $response = $this->client->request(
             method: 'get',
             path: ['crm/v3/properties/%1$s/%2$s', $objectType, $propertyName],
             query: $parsed,
             options: $options,
             convert: Property::class,
         );
+
+        return $response->parse();
     }
 }

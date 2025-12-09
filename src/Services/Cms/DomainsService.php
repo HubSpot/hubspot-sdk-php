@@ -7,6 +7,7 @@ namespace HubspotSDK\Services\Cms;
 use HubspotSDK\Client;
 use HubspotSDK\Cms\Domains\Domain;
 use HubspotSDK\Cms\Domains\DomainListParams;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
@@ -50,8 +51,8 @@ final class DomainsService implements DomainsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<Page<Domain>> */
+        $response = $this->client->request(
             method: 'get',
             path: 'cms/v3/domains/',
             query: $parsed,
@@ -59,6 +60,8 @@ final class DomainsService implements DomainsContract
             convert: Domain::class,
             page: Page::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -72,12 +75,14 @@ final class DomainsService implements DomainsContract
         string $domainID,
         ?RequestOptions $requestOptions = null
     ): Domain {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<Domain> */
+        $response = $this->client->request(
             method: 'get',
             path: ['cms/v3/domains/%1$s', $domainID],
             options: $requestOptions,
             convert: Domain::class,
         );
+
+        return $response->parse();
     }
 }

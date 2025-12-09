@@ -7,6 +7,7 @@ namespace HubspotSDK\Services\Automation\Actions;
 use HubspotSDK\Automation\Actions\Callbacks\CallbackCompleteBatchParams;
 use HubspotSDK\Automation\Actions\Callbacks\CallbackCompleteParams;
 use HubspotSDK\Client;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Automation\Actions\CallbacksContract;
@@ -37,14 +38,16 @@ final class CallbacksService implements CallbacksContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'post',
             path: ['automation/v4/actions/callbacks/%1$s/complete', $callbackID],
             body: (object) $parsed,
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -67,13 +70,15 @@ final class CallbacksService implements CallbacksContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'post',
             path: 'automation/v4/actions/callbacks/complete',
             body: (object) $parsed,
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 }

@@ -6,19 +6,15 @@ namespace HubspotSDK\Crm\Extensions\Calling\Transcripts;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type TranscriptCreateResponseShape = array{id: string}
  */
-final class TranscriptCreateResponse implements BaseModel, ResponseConverter
+final class TranscriptCreateResponse implements BaseModel
 {
     /** @use SdkModel<TranscriptCreateResponseShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     #[Api]
     public string $id;

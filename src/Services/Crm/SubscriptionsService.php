@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Crm;
 
 use HubspotSDK\Client;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\Subscriptions\SubscriptionPauseParams;
 use HubspotSDK\Crm\Subscriptions\SubscriptionUnpauseParams;
@@ -29,8 +30,8 @@ final class SubscriptionsService implements SubscriptionsContract
         int $objectID,
         ?RequestOptions $requestOptions = null
     ): string {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<string> */
+        $response = $this->client->request(
             method: 'post',
             path: [
                 'payments-subscriptions/v1/subscriptions/crm/%1$s/cancel', $objectID,
@@ -39,6 +40,8 @@ final class SubscriptionsService implements SubscriptionsContract
             options: $requestOptions,
             convert: 'string',
         );
+
+        return $response->parse();
     }
 
     /**
@@ -60,8 +63,8 @@ final class SubscriptionsService implements SubscriptionsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<string> */
+        $response = $this->client->request(
             method: 'post',
             path: [
                 'payments-subscriptions/v1/subscriptions/crm/%1$s/pause', $objectID,
@@ -71,6 +74,8 @@ final class SubscriptionsService implements SubscriptionsContract
             options: $options,
             convert: 'string',
         );
+
+        return $response->parse();
     }
 
     /**
@@ -92,8 +97,8 @@ final class SubscriptionsService implements SubscriptionsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<string> */
+        $response = $this->client->request(
             method: 'post',
             path: [
                 'payments-subscriptions/v1/subscriptions/crm/%1$s/unpause', $objectID,
@@ -103,5 +108,7 @@ final class SubscriptionsService implements SubscriptionsContract
             options: $options,
             convert: 'string',
         );
+
+        return $response->parse();
     }
 }

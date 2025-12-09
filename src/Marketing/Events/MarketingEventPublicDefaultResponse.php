@@ -6,9 +6,7 @@ namespace HubspotSDK\Marketing\Events;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 use HubspotSDK\Marketing\Events\PropertyValue\DataSensitivity;
 use HubspotSDK\Marketing\Events\PropertyValue\Source;
 
@@ -30,12 +28,10 @@ use HubspotSDK\Marketing\Events\PropertyValue\Source;
  *   startDateTime?: \DateTimeInterface|null,
  * }
  */
-final class MarketingEventPublicDefaultResponse implements BaseModel, ResponseConverter
+final class MarketingEventPublicDefaultResponse implements BaseModel
 {
     /** @use SdkModel<MarketingEventPublicDefaultResponseShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     #[Api]
     public string $id;

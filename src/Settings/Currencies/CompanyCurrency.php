@@ -6,21 +6,17 @@ namespace HubspotSDK\Settings\Currencies;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type CompanyCurrencyShape = array{
  *   id: string, createdAt: \DateTimeInterface
  * }
  */
-final class CompanyCurrency implements BaseModel, ResponseConverter
+final class CompanyCurrency implements BaseModel
 {
     /** @use SdkModel<CompanyCurrencyShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     /**
      * The currency code for the company currency.

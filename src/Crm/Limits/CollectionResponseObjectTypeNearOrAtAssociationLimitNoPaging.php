@@ -6,23 +6,19 @@ namespace HubspotSDK\Crm\Limits;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type CollectionResponseObjectTypeNearOrAtAssociationLimitNoPagingShape = array{
  *   results: list<ObjectTypeNearOrAtAssociationLimit>
  * }
  */
-final class CollectionResponseObjectTypeNearOrAtAssociationLimitNoPaging implements BaseModel, ResponseConverter
+final class CollectionResponseObjectTypeNearOrAtAssociationLimitNoPaging implements BaseModel
 {
     /**
      * @use SdkModel<CollectionResponseObjectTypeNearOrAtAssociationLimitNoPagingShape>
      */
     use SdkModel;
-
-    use SdkResponse;
 
     /** @var list<ObjectTypeNearOrAtAssociationLimit> $results */
     #[Api(list: ObjectTypeNearOrAtAssociationLimit::class)]

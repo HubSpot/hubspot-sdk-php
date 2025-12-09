@@ -6,9 +6,7 @@ namespace HubspotSDK\Settings\Users;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * A user.
@@ -26,12 +24,10 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
  *   superAdmin?: bool|null,
  * }
  */
-final class PublicUser implements BaseModel, ResponseConverter
+final class PublicUser implements BaseModel
 {
     /** @use SdkModel<PublicUserShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     /**
      * The user's unique ID.

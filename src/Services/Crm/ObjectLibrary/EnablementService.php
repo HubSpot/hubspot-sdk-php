@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Crm\ObjectLibrary;
 
 use HubspotSDK\Client;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\ObjectLibrary\ObjectTypeEnablementPublicResponse;
 use HubspotSDK\Crm\ObjectLibrary\PortalObjectTypeEnablementPublicResponse;
@@ -28,13 +29,15 @@ final class EnablementService implements EnablementContract
     public function list(
         ?RequestOptions $requestOptions = null
     ): PortalObjectTypeEnablementPublicResponse {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<PortalObjectTypeEnablementPublicResponse> */
+        $response = $this->client->request(
             method: 'get',
             path: 'crm/v3/object-library/enablement',
             options: $requestOptions,
             convert: PortalObjectTypeEnablementPublicResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -48,12 +51,14 @@ final class EnablementService implements EnablementContract
         string $objectTypeID,
         ?RequestOptions $requestOptions = null
     ): ObjectTypeEnablementPublicResponse {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<ObjectTypeEnablementPublicResponse> */
+        $response = $this->client->request(
             method: 'get',
             path: ['crm/v3/object-library/enablement/%1$s', $objectTypeID],
             options: $requestOptions,
             convert: ObjectTypeEnablementPublicResponse::class,
         );
+
+        return $response->parse();
     }
 }

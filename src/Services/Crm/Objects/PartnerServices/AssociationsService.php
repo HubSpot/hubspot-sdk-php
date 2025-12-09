@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Crm\Objects\PartnerServices;
 
 use HubspotSDK\Client;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\AssociatedID;
 use HubspotSDK\Crm\Objects\PartnerServices\Associations\AssociationDeleteParams;
@@ -49,8 +50,8 @@ final class AssociationsService implements AssociationsContract
         $toObjectID = $parsed['toObjectId'];
         unset($parsed['toObjectId']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<SimplePublicObjectWithAssociations> */
+        $response = $this->client->request(
             method: 'put',
             path: [
                 'crm/v3/objects/partner_services/%1$s/associations/%2$s/%3$s/%4$s',
@@ -62,6 +63,8 @@ final class AssociationsService implements AssociationsContract
             options: $options,
             convert: SimplePublicObjectWithAssociations::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -89,8 +92,8 @@ final class AssociationsService implements AssociationsContract
         $partnerServiceID = $parsed['partnerServiceId'];
         unset($parsed['partnerServiceId']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<Page<AssociatedID>> */
+        $response = $this->client->request(
             method: 'get',
             path: [
                 'crm/v3/objects/partner_services/%1$s/associations/%2$s',
@@ -102,6 +105,8 @@ final class AssociationsService implements AssociationsContract
             convert: AssociatedID::class,
             page: Page::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -131,8 +136,8 @@ final class AssociationsService implements AssociationsContract
         $toObjectID = $parsed['toObjectId'];
         unset($parsed['toObjectId']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'delete',
             path: [
                 'crm/v3/objects/partner_services/%1$s/associations/%2$s/%3$s/%4$s',
@@ -144,5 +149,7 @@ final class AssociationsService implements AssociationsContract
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 }

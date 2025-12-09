@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Crm\Timeline;
 
 use HubspotSDK\Client;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\Timeline\CollectionResponseTimelineEventTemplateNoPaging;
 use HubspotSDK\Crm\Timeline\Templates\TemplateCreateParams;
@@ -56,14 +57,16 @@ final class TemplatesService implements TemplatesContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<TimelineEventTemplate> */
+        $response = $this->client->request(
             method: 'post',
             path: ['integrators/timeline/v3/%1$s/event-templates', $appID],
             body: (object) $parsed,
             options: $options,
             convert: TimelineEventTemplate::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -102,8 +105,8 @@ final class TemplatesService implements TemplatesContract
         $appID = $parsed['appId'];
         unset($parsed['appId']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<TimelineEventTemplate> */
+        $response = $this->client->request(
             method: 'put',
             path: [
                 'integrators/timeline/v3/%1$s/event-templates/%2$s',
@@ -114,6 +117,8 @@ final class TemplatesService implements TemplatesContract
             options: $options,
             convert: TimelineEventTemplate::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -127,13 +132,15 @@ final class TemplatesService implements TemplatesContract
         int $appID,
         ?RequestOptions $requestOptions = null
     ): CollectionResponseTimelineEventTemplateNoPaging {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<CollectionResponseTimelineEventTemplateNoPaging> */
+        $response = $this->client->request(
             method: 'get',
             path: ['integrators/timeline/v3/%1$s/event-templates', $appID],
             options: $requestOptions,
             convert: CollectionResponseTimelineEventTemplateNoPaging::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -157,8 +164,8 @@ final class TemplatesService implements TemplatesContract
         $appID = $parsed['appId'];
         unset($parsed['appId']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'delete',
             path: [
                 'integrators/timeline/v3/%1$s/event-templates/%2$s',
@@ -168,6 +175,8 @@ final class TemplatesService implements TemplatesContract
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -191,8 +200,8 @@ final class TemplatesService implements TemplatesContract
         $appID = $parsed['appId'];
         unset($parsed['appId']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<TimelineEventTemplate> */
+        $response = $this->client->request(
             method: 'get',
             path: [
                 'integrators/timeline/v3/%1$s/event-templates/%2$s',
@@ -202,5 +211,7 @@ final class TemplatesService implements TemplatesContract
             options: $options,
             convert: TimelineEventTemplate::class,
         );
+
+        return $response->parse();
     }
 }

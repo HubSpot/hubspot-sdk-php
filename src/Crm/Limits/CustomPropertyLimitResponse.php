@@ -6,9 +6,7 @@ namespace HubspotSDK\Crm\Limits;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * @phpstan-type CustomPropertyLimitResponseShape = array{
@@ -18,12 +16,10 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
  *   overallUsage: int,
  * }
  */
-final class CustomPropertyLimitResponse implements BaseModel, ResponseConverter
+final class CustomPropertyLimitResponse implements BaseModel
 {
     /** @use SdkModel<CustomPropertyLimitResponseShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     /** @var list<LimitAndUsageForObjectType> $byObjectType */
     #[Api(list: LimitAndUsageForObjectType::class)]

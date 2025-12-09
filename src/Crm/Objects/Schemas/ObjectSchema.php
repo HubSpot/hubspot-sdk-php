@@ -6,9 +6,7 @@ namespace HubspotSDK\Crm\Objects\Schemas;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 use HubspotSDK\Events\EventDefinitions\AssociationDefinition;
 use HubspotSDK\Events\EventDefinitions\AssociationDefinition\Cardinality;
 use HubspotSDK\Events\EventDefinitions\AssociationDefinition\Category;
@@ -44,12 +42,10 @@ use HubspotSDK\PropertyModificationMetadata;
  *   updatedByUserId?: int|null,
  * }
  */
-final class ObjectSchema implements BaseModel, ResponseConverter
+final class ObjectSchema implements BaseModel
 {
     /** @use SdkModel<ObjectSchemaShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     /**
      * A unique ID for this schema's object type. Will be defined as {meta-type}-{unique ID}.

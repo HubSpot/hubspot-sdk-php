@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Settings;
 
 use HubspotSDK\Client;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
@@ -51,14 +52,16 @@ final class UsersService implements UsersContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<PublicUser> */
+        $response = $this->client->request(
             method: 'post',
             path: 'settings/v3/users/',
             body: (object) $parsed,
             options: $options,
             convert: PublicUser::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -88,8 +91,8 @@ final class UsersService implements UsersContract
         );
         $query_params = ['idProperty'];
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<PublicUser> */
+        $response = $this->client->request(
             method: 'put',
             path: ['settings/v3/users/%1$s', $userID],
             query: array_diff_key($parsed, $query_params),
@@ -97,6 +100,8 @@ final class UsersService implements UsersContract
             options: $options,
             convert: PublicUser::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -119,8 +124,8 @@ final class UsersService implements UsersContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<Page<PublicUser>> */
+        $response = $this->client->request(
             method: 'get',
             path: 'settings/v3/users/',
             query: $parsed,
@@ -128,6 +133,8 @@ final class UsersService implements UsersContract
             convert: PublicUser::class,
             page: Page::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -149,14 +156,16 @@ final class UsersService implements UsersContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'delete',
             path: ['settings/v3/users/%1$s', $userID],
             query: $parsed,
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -178,14 +187,16 @@ final class UsersService implements UsersContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<PublicUser> */
+        $response = $this->client->request(
             method: 'get',
             path: ['settings/v3/users/%1$s', $userID],
             query: $parsed,
             options: $options,
             convert: PublicUser::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -198,13 +209,15 @@ final class UsersService implements UsersContract
     public function listRoles(
         ?RequestOptions $requestOptions = null
     ): CollectionResponsePublicPermissionSetNoPaging {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<CollectionResponsePublicPermissionSetNoPaging> */
+        $response = $this->client->request(
             method: 'get',
             path: 'settings/v3/users/roles',
             options: $requestOptions,
             convert: CollectionResponsePublicPermissionSetNoPaging::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -217,12 +230,14 @@ final class UsersService implements UsersContract
     public function listTeams(
         ?RequestOptions $requestOptions = null
     ): CollectionResponsePublicTeamNoPaging {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<CollectionResponsePublicTeamNoPaging> */
+        $response = $this->client->request(
             method: 'get',
             path: 'settings/v3/users/teams',
             options: $requestOptions,
             convert: CollectionResponsePublicTeamNoPaging::class,
         );
+
+        return $response->parse();
     }
 }

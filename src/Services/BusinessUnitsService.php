@@ -7,6 +7,7 @@ namespace HubspotSDK\Services;
 use HubspotSDK\BusinessUnits\BusinessUnitGetByUserIDParams;
 use HubspotSDK\BusinessUnits\CollectionResponsePublicBusinessUnitNoPaging;
 use HubspotSDK\Client;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\BusinessUnitsContract;
@@ -39,13 +40,15 @@ final class BusinessUnitsService implements BusinessUnitsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<CollectionResponsePublicBusinessUnitNoPaging> */
+        $response = $this->client->request(
             method: 'get',
             path: ['business-units/v3/business-units/user/%1$s', $userID],
             query: $parsed,
             options: $options,
             convert: CollectionResponsePublicBusinessUnitNoPaging::class,
         );
+
+        return $response->parse();
     }
 }

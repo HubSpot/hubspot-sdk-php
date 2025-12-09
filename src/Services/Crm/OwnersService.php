@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Crm;
 
 use HubspotSDK\Client;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\Owners\OwnerGetParams;
 use HubspotSDK\Crm\Owners\OwnerListParams;
@@ -42,8 +43,8 @@ final class OwnersService implements OwnersContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<Page<PublicOwner>> */
+        $response = $this->client->request(
             method: 'get',
             path: 'crm/v3/owners/',
             query: $parsed,
@@ -51,6 +52,8 @@ final class OwnersService implements OwnersContract
             convert: PublicOwner::class,
             page: Page::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -72,13 +75,15 @@ final class OwnersService implements OwnersContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<PublicOwner> */
+        $response = $this->client->request(
             method: 'get',
             path: ['crm/v3/owners/%1$s', $ownerID],
             query: $parsed,
             options: $options,
             convert: PublicOwner::class,
         );
+
+        return $response->parse();
     }
 }

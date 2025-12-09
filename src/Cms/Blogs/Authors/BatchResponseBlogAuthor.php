@@ -8,9 +8,7 @@ use HubspotSDK\Cms\Blogs\Authors\BatchResponseBlogAuthor\Status;
 use HubspotSDK\Cms\Blogs\Authors\BlogAuthor\Language;
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 
 /**
  * Response object for batch operations on blog authors.
@@ -24,12 +22,10 @@ use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
  *   requestedAt?: \DateTimeInterface|null,
  * }
  */
-final class BatchResponseBlogAuthor implements BaseModel, ResponseConverter
+final class BatchResponseBlogAuthor implements BaseModel
 {
     /** @use SdkModel<BatchResponseBlogAuthorShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     /**
      * Time of batch operation completion.

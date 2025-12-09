@@ -6,9 +6,7 @@ namespace HubspotSDK\Crm\Lists;
 
 use HubspotSDK\Core\Attributes\Api;
 use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkResponse;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\Contracts\ResponseConverter;
 use HubspotSDK\PublicAndFilterBranch;
 use HubspotSDK\PublicAssociationFilterBranch;
 use HubspotSDK\PublicNotAllFilterBranch;
@@ -25,12 +23,10 @@ use HubspotSDK\PublicUnifiedEventsFilterBranch;
  *   updatedList?: PublicObjectList|null
  * }
  */
-final class ListUpdateResponse implements BaseModel, ResponseConverter
+final class ListUpdateResponse implements BaseModel
 {
     /** @use SdkModel<ListUpdateResponseShape> */
     use SdkModel;
-
-    use SdkResponse;
 
     /**
      * An object list definition.

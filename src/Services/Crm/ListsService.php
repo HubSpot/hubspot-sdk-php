@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Crm;
 
 use HubspotSDK\Client;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\Lists\ListCreateParams;
 use HubspotSDK\Crm\Lists\ListCreateResponse;
@@ -86,14 +87,16 @@ final class ListsService implements ListsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<ListCreateResponse> */
+        $response = $this->client->request(
             method: 'post',
             path: 'crm/v3/lists/',
             body: (object) $parsed,
             options: $options,
             convert: ListCreateResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -116,14 +119,16 @@ final class ListsService implements ListsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<ListsByIDResponse> */
+        $response = $this->client->request(
             method: 'get',
             path: 'crm/v3/lists/',
             query: $parsed,
             options: $options,
             convert: ListsByIDResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -137,13 +142,15 @@ final class ListsService implements ListsContract
         string $listID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'delete',
             path: ['crm/v3/lists/%1$s', $listID],
             options: $requestOptions,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -157,13 +164,15 @@ final class ListsService implements ListsContract
         string $listID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'delete',
             path: ['crm/v3/lists/%1$s/schedule-conversion', $listID],
             options: $requestOptions,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -185,14 +194,16 @@ final class ListsService implements ListsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<ListFetchResponse> */
+        $response = $this->client->request(
             method: 'get',
             path: ['crm/v3/lists/%1$s', $listID],
             query: $parsed,
             options: $options,
             convert: ListFetchResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -218,8 +229,8 @@ final class ListsService implements ListsContract
         $objectTypeID = $parsed['objectTypeId'];
         unset($parsed['objectTypeId']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<ListFetchResponse> */
+        $response = $this->client->request(
             method: 'get',
             path: [
                 'crm/v3/lists/object-type-id/%1$s/name/%2$s', $objectTypeID, $listName,
@@ -228,6 +239,8 @@ final class ListsService implements ListsContract
             options: $options,
             convert: ListFetchResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -241,13 +254,15 @@ final class ListsService implements ListsContract
         string $listID,
         ?RequestOptions $requestOptions = null
     ): PublicListConversionResponse {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<PublicListConversionResponse> */
+        $response = $this->client->request(
             method: 'get',
             path: ['crm/v3/lists/%1$s/schedule-conversion', $listID],
             options: $requestOptions,
             convert: PublicListConversionResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -261,13 +276,15 @@ final class ListsService implements ListsContract
         string $listID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'put',
             path: ['crm/v3/lists/%1$s/restore', $listID],
             options: $requestOptions,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -287,14 +304,16 @@ final class ListsService implements ListsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<PublicListConversionResponse> */
+        $response = $this->client->request(
             method: 'put',
             path: ['crm/v3/lists/%1$s/schedule-conversion', $listID],
             body: (object) $parsed,
             options: $options,
             convert: PublicListConversionResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -323,14 +342,16 @@ final class ListsService implements ListsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<ListSearchResponse> */
+        $response = $this->client->request(
             method: 'post',
             path: 'crm/v3/lists/search',
             body: (object) $parsed,
             options: $options,
             convert: ListSearchResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -355,8 +376,8 @@ final class ListsService implements ListsContract
         );
         $query_params = ['enrollObjectsInWorkflows'];
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<ListUpdateResponse> */
+        $response = $this->client->request(
             method: 'put',
             path: ['crm/v3/lists/%1$s/update-list-filters', $listID],
             query: array_diff_key($parsed, $query_params),
@@ -364,6 +385,8 @@ final class ListsService implements ListsContract
             options: $options,
             convert: ListUpdateResponse::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -387,13 +410,15 @@ final class ListsService implements ListsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<ListUpdateResponse> */
+        $response = $this->client->request(
             method: 'put',
             path: ['crm/v3/lists/%1$s/update-list-name', $listID],
             query: $parsed,
             options: $options,
             convert: ListUpdateResponse::class,
         );
+
+        return $response->parse();
     }
 }

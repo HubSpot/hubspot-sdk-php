@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Crm\Properties;
 
 use HubspotSDK\Client;
+use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\Properties\CollectionResponsePropertyGroup;
 use HubspotSDK\Crm\Properties\CreatedResponsePropertyGroup;
@@ -45,14 +46,16 @@ final class GroupsService implements GroupsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<CreatedResponsePropertyGroup> */
+        $response = $this->client->request(
             method: 'post',
             path: ['crm/v3/properties/%1$s/groups', $objectType],
             body: (object) $parsed,
             options: $options,
             convert: CreatedResponsePropertyGroup::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -78,14 +81,16 @@ final class GroupsService implements GroupsContract
         $objectType = $parsed['objectType'];
         unset($parsed['objectType']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<PropertyGroup> */
+        $response = $this->client->request(
             method: 'patch',
             path: ['crm/v3/properties/%1$s/groups/%2$s', $objectType, $groupName],
             body: (object) array_diff_key($parsed, ['objectType']),
             options: $options,
             convert: PropertyGroup::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -107,14 +112,16 @@ final class GroupsService implements GroupsContract
             $requestOptions,
         );
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<CollectionResponsePropertyGroup> */
+        $response = $this->client->request(
             method: 'get',
             path: ['crm/v3/properties/%1$s/groups', $objectType],
             query: $parsed,
             options: $options,
             convert: CollectionResponsePropertyGroup::class,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -138,13 +145,15 @@ final class GroupsService implements GroupsContract
         $objectType = $parsed['objectType'];
         unset($parsed['objectType']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<mixed> */
+        $response = $this->client->request(
             method: 'delete',
             path: ['crm/v3/properties/%1$s/groups/%2$s', $objectType, $groupName],
             options: $options,
             convert: null,
         );
+
+        return $response->parse();
     }
 
     /**
@@ -168,13 +177,15 @@ final class GroupsService implements GroupsContract
         $objectType = $parsed['objectType'];
         unset($parsed['objectType']);
 
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
+        /** @var BaseResponse<PropertyGroup> */
+        $response = $this->client->request(
             method: 'get',
             path: ['crm/v3/properties/%1$s/groups/%2$s', $objectType, $groupName],
             query: $parsed,
             options: $options,
             convert: PropertyGroup::class,
         );
+
+        return $response->parse();
     }
 }
