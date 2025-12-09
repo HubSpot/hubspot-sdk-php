@@ -10,6 +10,7 @@ use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Marketing\Emails\AggregateEmailStatistics;
 use HubspotSDK\Marketing\Emails\CollectionResponseWithTotalEmailStatisticIntervalNoPaging;
 use HubspotSDK\Marketing\Emails\Statistics\StatisticGetHistogramParams;
+use HubspotSDK\Marketing\Emails\Statistics\StatisticGetHistogramParams\Interval;
 use HubspotSDK\Marketing\Emails\Statistics\StatisticGetParams;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Marketing\Emails\StatisticsContract;
@@ -64,7 +65,7 @@ final class StatisticsService implements StatisticsContract
      * @param array{
      *   emailIds?: list<int>,
      *   endTimestamp?: string,
-     *   interval?: 'DAY'|'HOUR'|'MINUTE'|'MONTH'|'QUARTER'|'QUARTER_HOUR'|'SECOND'|'WEEK'|'YEAR',
+     *   interval?: 'DAY'|'HOUR'|'MINUTE'|'MONTH'|'QUARTER'|'QUARTER_HOUR'|'SECOND'|'WEEK'|'YEAR'|Interval,
      *   startTimestamp?: string,
      * }|StatisticGetHistogramParams $params
      *

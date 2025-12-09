@@ -21,7 +21,9 @@ use HubspotSDK\Marketing\Subscriptions\V4\Statuses\StatusGetParams;
 use HubspotSDK\Marketing\Subscriptions\V4\Statuses\StatusGetUnsubscribeAllStatusParams;
 use HubspotSDK\Marketing\Subscriptions\V4\Statuses\StatusUnsubscribeAllParams;
 use HubspotSDK\Marketing\Subscriptions\V4\Statuses\StatusUpdateParams;
+use HubspotSDK\Marketing\Subscriptions\V4\Statuses\StatusUpdateParams\Channel;
 use HubspotSDK\Marketing\Subscriptions\V4\Statuses\StatusUpdateParams\LegalBasis;
+use HubspotSDK\Marketing\Subscriptions\V4\Statuses\StatusUpdateParams\StatusState;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Marketing\Subscriptions\V4\StatusesContract;
 
@@ -38,8 +40,8 @@ final class StatusesService implements StatusesContract
      * Set the subscription status of a specific contact.
      *
      * @param array{
-     *   channel: 'EMAIL',
-     *   statusState: 'NOT_SPECIFIED'|'SUBSCRIBED'|'UNSUBSCRIBED',
+     *   channel: 'EMAIL'|Channel,
+     *   statusState: 'NOT_SPECIFIED'|'SUBSCRIBED'|'UNSUBSCRIBED'|StatusState,
      *   subscriptionId: int,
      *   legalBasis?: value-of<LegalBasis>,
      *   legalBasisExplanation?: string,
@@ -75,7 +77,9 @@ final class StatusesService implements StatusesContract
      * Batch retrieve subscription statuses for a set of contacts.
      *
      * @param array{
-     *   channel: 'EMAIL', inputs: list<string>, businessUnitId?: int
+     *   channel: 'EMAIL'|StatusBatchGetParams\Channel,
+     *   inputs: list<string>,
+     *   businessUnitId?: int,
      * }|StatusBatchGetParams $params
      *
      * @throws APIException
@@ -109,7 +113,9 @@ final class StatusesService implements StatusesContract
      * Checks whether a set of contacts have opted out of all communications.
      *
      * @param array{
-     *   channel: 'EMAIL', inputs: list<string>, businessUnitId?: int
+     *   channel: 'EMAIL'|StatusBatchGetUnsubscribeAllStatusParams\Channel,
+     *   inputs: list<string>,
+     *   businessUnitId?: int,
      * }|StatusBatchGetUnsubscribeAllStatusParams $params
      *
      * @throws APIException
@@ -143,7 +149,10 @@ final class StatusesService implements StatusesContract
      * Unsubscribe a set of contacts from all email subscriptions.
      *
      * @param array{
-     *   channel: 'EMAIL', inputs: list<string>, businessUnitId?: int, verbose?: bool
+     *   channel: 'EMAIL'|StatusBatchUnsubscribeAllParams\Channel,
+     *   inputs: list<string>,
+     *   businessUnitId?: int,
+     *   verbose?: bool,
      * }|StatusBatchUnsubscribeAllParams $params
      *
      * @throws APIException
@@ -178,11 +187,11 @@ final class StatusesService implements StatusesContract
      *
      * @param array{
      *   inputs: list<array{
-     *     channel: 'EMAIL',
-     *     statusState: 'NOT_SPECIFIED'|'SUBSCRIBED'|'UNSUBSCRIBED',
+     *     channel: 'EMAIL'|\HubspotSDK\Marketing\Subscriptions\V4\PublicStatusRequest\Channel,
+     *     statusState: 'NOT_SPECIFIED'|'SUBSCRIBED'|'UNSUBSCRIBED'|\HubspotSDK\Marketing\Subscriptions\V4\PublicStatusRequest\StatusState,
      *     subscriberIdString: string,
      *     subscriptionId: int,
-     *     legalBasis?: 'CONSENT_WITH_NOTICE'|'LEGITIMATE_INTEREST_CLIENT'|'LEGITIMATE_INTEREST_OTHER'|'LEGITIMATE_INTEREST_PQL'|'NON_GDPR'|'PERFORMANCE_OF_CONTRACT'|'PROCESS_AND_STORE',
+     *     legalBasis?: 'CONSENT_WITH_NOTICE'|'LEGITIMATE_INTEREST_CLIENT'|'LEGITIMATE_INTEREST_OTHER'|'LEGITIMATE_INTEREST_PQL'|'NON_GDPR'|'PERFORMANCE_OF_CONTRACT'|'PROCESS_AND_STORE'|\HubspotSDK\Marketing\Subscriptions\V4\PublicStatusRequest\LegalBasis,
      *     legalBasisExplanation?: string,
      *   }>,
      * }|StatusBatchUpdateParams $params
@@ -215,7 +224,10 @@ final class StatusesService implements StatusesContract
      *
      * Retrieve a contact's current email subscription preferences.
      *
-     * @param array{channel: 'EMAIL', businessUnitId?: int}|StatusGetParams $params
+     * @param array{
+     *   channel: 'EMAIL'|StatusGetParams\Channel,
+     *   businessUnitId?: int,
+     * }|StatusGetParams $params
      *
      * @throws APIException
      */
@@ -247,7 +259,9 @@ final class StatusesService implements StatusesContract
      * Check whether a contact has unsubscribed from all email subscriptions. If a contact has not opted out of all communications, the response `results` array will be empty.
      *
      * @param array{
-     *   channel: 'EMAIL', businessUnitId?: int, verbose?: bool
+     *   channel: 'EMAIL'|StatusGetUnsubscribeAllStatusParams\Channel,
+     *   businessUnitId?: int,
+     *   verbose?: bool,
      * }|StatusGetUnsubscribeAllStatusParams $params
      *
      * @throws APIException
@@ -283,7 +297,9 @@ final class StatusesService implements StatusesContract
      * Unsubscribe a contact from all email subscriptions.
      *
      * @param array{
-     *   channel: 'EMAIL', businessUnitId?: int, verbose?: bool
+     *   channel: 'EMAIL'|StatusUnsubscribeAllParams\Channel,
+     *   businessUnitId?: int,
+     *   verbose?: bool,
      * }|StatusUnsubscribeAllParams $params
      *
      * @throws APIException

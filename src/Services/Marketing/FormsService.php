@@ -8,14 +8,19 @@ use HubspotSDK\Client;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Marketing\Forms\FieldGroup;
+use HubspotSDK\Marketing\Forms\FieldGroup\GroupType;
+use HubspotSDK\Marketing\Forms\FieldGroup\RichTextType;
 use HubspotSDK\Marketing\Forms\FormDefinitionBase;
 use HubspotSDK\Marketing\Forms\FormDisplayOptions;
+use HubspotSDK\Marketing\Forms\FormDisplayOptions\Theme;
 use HubspotSDK\Marketing\Forms\FormGetParams;
 use HubspotSDK\Marketing\Forms\FormListParams;
+use HubspotSDK\Marketing\Forms\FormListParams\FormType;
 use HubspotSDK\Marketing\Forms\FormPostSubmitAction;
 use HubspotSDK\Marketing\Forms\FormStyle;
 use HubspotSDK\Marketing\Forms\FormUpdateParams;
 use HubspotSDK\Marketing\Forms\HubSpotFormConfiguration;
+use HubspotSDK\Marketing\Forms\HubSpotFormConfiguration\Language;
 use HubspotSDK\Marketing\Forms\HubSpotFormDefinition;
 use HubspotSDK\Marketing\Forms\LifecycleStage;
 use HubspotSDK\Page;
@@ -63,7 +68,7 @@ final class FormsService implements FormsContract
      *     cloneable: bool,
      *     createNewContactForNewEmail: bool,
      *     editable: bool,
-     *     language: 'af'|'ar-eg'|'bg'|'bn'|'ca-es'|'cs'|'da'|'de'|'el'|'en'|'es'|'es-mx'|'fi'|'fr'|'fr-ca'|'he-il'|'hr'|'hu'|'id'|'it'|'ja'|'ko'|'lt'|'ms'|'nl'|'no-no'|'pl'|'pt'|'pt-br'|'ro'|'ru'|'sk'|'sl'|'sv'|'th'|'tl'|'tr'|'uk'|'vi'|'zh-cn'|'zh-hk'|'zh-tw',
+     *     language: 'af'|'ar-eg'|'bg'|'bn'|'ca-es'|'cs'|'da'|'de'|'el'|'en'|'es'|'es-mx'|'fi'|'fr'|'fr-ca'|'he-il'|'hr'|'hu'|'id'|'it'|'ja'|'ko'|'lt'|'ms'|'nl'|'no-no'|'pl'|'pt'|'pt-br'|'ro'|'ru'|'sk'|'sl'|'sv'|'th'|'tl'|'tr'|'uk'|'vi'|'zh-cn'|'zh-hk'|'zh-tw'|Language,
      *     notifyContactOwner: bool,
      *     notifyRecipients: list<string>,
      *     postSubmitAction: array<mixed>|FormPostSubmitAction,
@@ -75,13 +80,13 @@ final class FormsService implements FormsContract
      *     renderRawHtml: bool,
      *     style: array<mixed>|FormStyle,
      *     submitButtonText: string,
-     *     theme: 'canvas'|'default_style'|'legacy'|'linear'|'round'|'sharp',
+     *     theme: 'canvas'|'default_style'|'legacy'|'linear'|'round'|'sharp'|Theme,
      *     cssClass?: string,
      *   }|FormDisplayOptions,
      *   fieldGroups?: list<array{
      *     fields: list<array<string,mixed>>,
-     *     groupType: 'default_group'|'progressive'|'queued',
-     *     richTextType: 'image'|'text',
+     *     groupType: 'default_group'|'progressive'|'queued'|GroupType,
+     *     richTextType: 'image'|'text'|RichTextType,
      *     richText?: string,
      *   }|FieldGroup>,
      *   legalConsentOptions?: array<string,mixed>,
@@ -120,7 +125,7 @@ final class FormsService implements FormsContract
      * @param array{
      *   after?: string,
      *   archived?: bool,
-     *   formTypes?: list<'hubspot'|'captured'|'flow'|'blog_comment'|'all'>,
+     *   formTypes?: list<'hubspot'|'captured'|'flow'|'blog_comment'|'all'|FormType>,
      *   limit?: int,
      * }|FormListParams $params
      *

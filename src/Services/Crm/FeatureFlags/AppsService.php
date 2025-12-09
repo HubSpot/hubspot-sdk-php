@@ -11,6 +11,8 @@ use HubspotSDK\Crm\FeatureFlags\Apps\AppDeleteParams;
 use HubspotSDK\Crm\FeatureFlags\Apps\AppGetParams;
 use HubspotSDK\Crm\FeatureFlags\Apps\AppListPortalsParams;
 use HubspotSDK\Crm\FeatureFlags\Apps\AppUpdateParams;
+use HubspotSDK\Crm\FeatureFlags\Apps\AppUpdateParams\DefaultState;
+use HubspotSDK\Crm\FeatureFlags\Apps\AppUpdateParams\OverrideState;
 use HubspotSDK\Crm\FeatureFlags\FlagResponse;
 use HubspotSDK\Crm\FeatureFlags\PortalFlagStateBatchResponse;
 use HubspotSDK\RequestOptions;
@@ -30,8 +32,8 @@ final class AppsService implements AppsContract
      *
      * @param array{
      *   appId: int,
-     *   defaultState: 'ABSENT'|'OFF'|'ON',
-     *   overrideState?: 'ABSENT'|'OFF'|'ON',
+     *   defaultState: 'ABSENT'|'OFF'|'ON'|DefaultState,
+     *   overrideState?: 'ABSENT'|'OFF'|'ON'|OverrideState,
      * }|AppUpdateParams $params
      *
      * @throws APIException

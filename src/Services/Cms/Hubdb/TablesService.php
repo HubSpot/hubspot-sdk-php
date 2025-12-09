@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Cms\Hubdb;
 
 use HubspotSDK\Client;
+use HubspotSDK\Cms\Hubdb\ColumnRequest\Type;
 use HubspotSDK\Cms\Hubdb\HubDBTableV3;
 use HubspotSDK\Cms\Hubdb\ImportResult;
 use HubspotSDK\Cms\Hubdb\Tables\TableCloneDraftParams;
@@ -48,7 +49,7 @@ final class TablesService implements TablesContract
      *     label: string,
      *     name: string,
      *     options: list<array<mixed>|Option>,
-     *     type: 'BOOLEAN'|'CODE'|'COMPOSITE'|'CTA'|'CURRENCY'|'DATE'|'DATETIME'|'EMBED'|'FILE'|'FOREIGN_ID'|'HUBSPOT_VIDEO'|'IMAGE'|'JSON'|'LOCATION'|'MULTISELECT'|'NULL'|'NUMBER'|'RICHTEXT'|'SELECT'|'TEXT'|'URL'|'VIDEO',
+     *     type: 'BOOLEAN'|'CODE'|'COMPOSITE'|'CTA'|'CURRENCY'|'DATE'|'DATETIME'|'EMBED'|'FILE'|'FOREIGN_ID'|'HUBSPOT_VIDEO'|'IMAGE'|'JSON'|'LOCATION'|'MULTISELECT'|'NULL'|'NUMBER'|'RICHTEXT'|'SELECT'|'TEXT'|'URL'|'VIDEO'|Type,
      *     foreignColumnId?: int,
      *     foreignTableId?: int,
      *     maxNumberOfCharacters?: int,
@@ -537,7 +538,7 @@ final class TablesService implements TablesContract
      *     label: string,
      *     name: string,
      *     options: list<array<mixed>|Option>,
-     *     type: 'BOOLEAN'|'CODE'|'COMPOSITE'|'CTA'|'CURRENCY'|'DATE'|'DATETIME'|'EMBED'|'FILE'|'FOREIGN_ID'|'HUBSPOT_VIDEO'|'IMAGE'|'JSON'|'LOCATION'|'MULTISELECT'|'NULL'|'NUMBER'|'RICHTEXT'|'SELECT'|'TEXT'|'URL'|'VIDEO',
+     *     type: 'BOOLEAN'|'CODE'|'COMPOSITE'|'CTA'|'CURRENCY'|'DATE'|'DATETIME'|'EMBED'|'FILE'|'FOREIGN_ID'|'HUBSPOT_VIDEO'|'IMAGE'|'JSON'|'LOCATION'|'MULTISELECT'|'NULL'|'NUMBER'|'RICHTEXT'|'SELECT'|'TEXT'|'URL'|'VIDEO'|Type,
      *     foreignColumnId?: int,
      *     foreignTableId?: int,
      *     maxNumberOfCharacters?: int,

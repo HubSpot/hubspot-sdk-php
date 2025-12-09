@@ -14,6 +14,7 @@ use HubspotSDK\Crm\FeatureFlags\Portals\PortalBatchUpsertParams;
 use HubspotSDK\Crm\FeatureFlags\Portals\PortalDeleteParams;
 use HubspotSDK\Crm\FeatureFlags\Portals\PortalGetParams;
 use HubspotSDK\Crm\FeatureFlags\Portals\PortalUpdateParams;
+use HubspotSDK\Crm\FeatureFlags\Portals\PortalUpdateParams\FlagState;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\FeatureFlags\PortalsContract;
 
@@ -30,7 +31,7 @@ final class PortalsService implements PortalsContract
      * Specify an account-level flag state for a specific HubSpot account.
      *
      * @param array{
-     *   appId: int, flagName: string, flagState: 'ABSENT'|'OFF'|'ON'
+     *   appId: int, flagName: string, flagState: 'ABSENT'|'OFF'|'ON'|FlagState
      * }|PortalUpdateParams $params
      *
      * @throws APIException
@@ -149,7 +150,10 @@ final class PortalsService implements PortalsContract
      *
      * @param array{
      *   appId: int,
-     *   portalStates: list<array{flagState: 'ABSENT'|'OFF'|'ON', portalId: int}>,
+     *   portalStates: list<array{
+     *     flagState: 'ABSENT'|'OFF'|'ON'|\HubspotSDK\Crm\FeatureFlags\BatchPortalEntry\FlagState,
+     *     portalId: int,
+     *   }>,
      * }|PortalBatchUpsertParams $params
      *
      * @throws APIException

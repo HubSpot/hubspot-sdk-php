@@ -10,6 +10,7 @@ use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\Timeline\TimelineEventTemplateToken;
 use HubspotSDK\Crm\Timeline\TimelineEventTemplateTokenOption;
 use HubspotSDK\Crm\Timeline\Tokens\TokenCreateParams;
+use HubspotSDK\Crm\Timeline\Tokens\TokenCreateParams\Type;
 use HubspotSDK\Crm\Timeline\Tokens\TokenDeleteParams;
 use HubspotSDK\Crm\Timeline\Tokens\TokenUpdateParams;
 use HubspotSDK\RequestOptions;
@@ -31,7 +32,7 @@ final class TokensService implements TokensContract
      *   appId: int,
      *   label: string,
      *   name: string,
-     *   type: 'date'|'enumeration'|'number'|'string',
+     *   type: 'date'|'enumeration'|'number'|'string'|Type,
      *   createdAt?: string|\DateTimeInterface,
      *   objectPropertyName?: string,
      *   options?: list<array{

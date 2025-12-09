@@ -10,7 +10,9 @@ use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\Properties\CollectionResponseProperty;
 use HubspotSDK\Crm\Properties\CreatedResponseProperty;
 use HubspotSDK\Crm\Properties\PropertyCreateParams;
+use HubspotSDK\Crm\Properties\PropertyCreateParams\DataSensitivity;
 use HubspotSDK\Crm\Properties\PropertyCreateParams\FieldType;
+use HubspotSDK\Crm\Properties\PropertyCreateParams\Type;
 use HubspotSDK\Crm\Properties\PropertyDeleteParams;
 use HubspotSDK\Crm\Properties\PropertyGetParams;
 use HubspotSDK\Crm\Properties\PropertyListParams;
@@ -52,9 +54,9 @@ final class PropertiesService implements PropertiesContract
      *   groupName: string,
      *   label: string,
      *   name: string,
-     *   type: 'bool'|'date'|'datetime'|'enumeration'|'number'|'phone_number'|'string',
+     *   type: 'bool'|'date'|'datetime'|'enumeration'|'number'|'phone_number'|'string'|Type,
      *   calculationFormula?: string,
-     *   dataSensitivity?: 'highly_sensitive'|'non_sensitive'|'sensitive',
+     *   dataSensitivity?: 'highly_sensitive'|'non_sensitive'|'sensitive'|DataSensitivity,
      *   description?: string,
      *   displayOrder?: int,
      *   externalOptions?: bool,
@@ -117,7 +119,7 @@ final class PropertiesService implements PropertiesContract
      *     value: string,
      *     description?: string,
      *   }>,
-     *   type?: 'bool'|'date'|'datetime'|'enumeration'|'number'|'phone_number'|'string',
+     *   type?: 'bool'|'date'|'datetime'|'enumeration'|'number'|'phone_number'|'string'|PropertyUpdateParams\Type,
      * }|PropertyUpdateParams $params
      *
      * @throws APIException
@@ -153,7 +155,7 @@ final class PropertiesService implements PropertiesContract
      *
      * @param array{
      *   archived?: bool,
-     *   dataSensitivity?: 'highly_sensitive'|'non_sensitive'|'sensitive',
+     *   dataSensitivity?: 'highly_sensitive'|'non_sensitive'|'sensitive'|PropertyListParams\DataSensitivity,
      *   locale?: string,
      *   properties?: string,
      * }|PropertyListParams $params
@@ -222,7 +224,7 @@ final class PropertiesService implements PropertiesContract
      * @param array{
      *   objectType: string,
      *   archived?: bool,
-     *   dataSensitivity?: 'highly_sensitive'|'non_sensitive'|'sensitive',
+     *   dataSensitivity?: 'highly_sensitive'|'non_sensitive'|'sensitive'|PropertyGetParams\DataSensitivity,
      *   locale?: string,
      *   properties?: string,
      * }|PropertyGetParams $params

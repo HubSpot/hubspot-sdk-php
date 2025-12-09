@@ -11,6 +11,9 @@ use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\Properties\Batch\BatchCreateParams;
 use HubspotSDK\Crm\Properties\Batch\BatchDeleteParams;
 use HubspotSDK\Crm\Properties\Batch\BatchGetParams;
+use HubspotSDK\PropertyCreate\DataSensitivity;
+use HubspotSDK\PropertyCreate\FieldType;
+use HubspotSDK\PropertyCreate\Type;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Properties\BatchContract;
 
@@ -28,13 +31,13 @@ final class BatchService implements BatchContract
      *
      * @param array{
      *   inputs: list<array{
-     *     fieldType: 'booleancheckbox'|'calculation_equation'|'checkbox'|'date'|'file'|'html'|'number'|'phonenumber'|'radio'|'select'|'text'|'textarea',
+     *     fieldType: 'booleancheckbox'|'calculation_equation'|'checkbox'|'date'|'file'|'html'|'number'|'phonenumber'|'radio'|'select'|'text'|'textarea'|FieldType,
      *     groupName: string,
      *     label: string,
      *     name: string,
-     *     type: 'bool'|'date'|'datetime'|'enumeration'|'number'|'phone_number'|'string',
+     *     type: 'bool'|'date'|'datetime'|'enumeration'|'number'|'phone_number'|'string'|Type,
      *     calculationFormula?: string,
-     *     dataSensitivity?: 'highly_sensitive'|'non_sensitive'|'sensitive',
+     *     dataSensitivity?: 'highly_sensitive'|'non_sensitive'|'sensitive'|DataSensitivity,
      *     description?: string,
      *     displayOrder?: int,
      *     externalOptions?: bool,
@@ -108,7 +111,7 @@ final class BatchService implements BatchContract
      *
      * @param array{
      *   archived: bool,
-     *   dataSensitivity: 'highly_sensitive'|'non_sensitive'|'sensitive',
+     *   dataSensitivity: 'highly_sensitive'|'non_sensitive'|'sensitive'|BatchGetParams\DataSensitivity,
      *   inputs: list<array{name: string}>,
      *   locale?: string,
      * }|BatchGetParams $params

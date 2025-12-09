@@ -12,7 +12,10 @@ use HubspotSDK\Files\FileActionResponse;
 use HubspotSDK\Files\FileOperations\FileOperationGetByPathParams;
 use HubspotSDK\Files\FileOperations\FileOperationGetParams;
 use HubspotSDK\Files\FileOperations\FileOperationGetSignedURLParams;
+use HubspotSDK\Files\FileOperations\FileOperationGetSignedURLParams\Size;
 use HubspotSDK\Files\FileOperations\FileOperationImportFromURLAsyncParams;
+use HubspotSDK\Files\FileOperations\FileOperationImportFromURLAsyncParams\DuplicateValidationScope;
+use HubspotSDK\Files\FileOperations\FileOperationImportFromURLAsyncParams\DuplicateValidationStrategy;
 use HubspotSDK\Files\FileOperations\FileOperationReplaceParams;
 use HubspotSDK\Files\FileOperations\FileOperationSearchParams;
 use HubspotSDK\Files\FileOperations\FileOperationUpdateParams;
@@ -206,7 +209,7 @@ final class FileOperationsService implements FileOperationsContract
      *
      * @param array{
      *   expirationSeconds?: int,
-     *   size?: 'icon'|'medium'|'preview'|'thumb',
+     *   size?: 'icon'|'medium'|'preview'|'thumb'|Size,
      *   upscale?: bool,
      * }|FileOperationGetSignedURLParams $params
      *
@@ -242,8 +245,8 @@ final class FileOperationsService implements FileOperationsContract
      * @param array{
      *   access: value-of<FileOperationImportFromURLAsyncParams\Access>,
      *   url: string,
-     *   duplicateValidationScope?: 'ENTIRE_PORTAL'|'EXACT_FOLDER',
-     *   duplicateValidationStrategy?: 'NONE'|'REJECT'|'RETURN_EXISTING',
+     *   duplicateValidationScope?: 'ENTIRE_PORTAL'|'EXACT_FOLDER'|DuplicateValidationScope,
+     *   duplicateValidationStrategy?: 'NONE'|'REJECT'|'RETURN_EXISTING'|DuplicateValidationStrategy,
      *   expiresAt?: string|\DateTimeInterface,
      *   folderId?: string,
      *   folderPath?: string,

@@ -6,6 +6,7 @@ namespace HubspotSDK\Services\Automation;
 
 use HubspotSDK\Automation\Workflows\APIContactFlow;
 use HubspotSDK\Automation\Workflows\APIFlow;
+use HubspotSDK\Automation\Workflows\APIFlowBatchFetchFlowIDCoordinate\Type;
 use HubspotSDK\Automation\Workflows\APIFlowEmailCampaign;
 use HubspotSDK\Automation\Workflows\APIFlowListing;
 use HubspotSDK\Automation\Workflows\APIPlatformFlow;
@@ -123,7 +124,7 @@ final class WorkflowsService implements WorkflowsContract
      * @api
      *
      * @param array{
-     *   inputs: list<array{flowId: string, type: 'FLOW_ID'}>
+     *   inputs: list<array{flowId: string, type: 'FLOW_ID'|Type}>
      * }|WorkflowBatchGetParams $params
      *
      * @throws APIException

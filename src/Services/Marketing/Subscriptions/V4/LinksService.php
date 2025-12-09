@@ -9,6 +9,7 @@ use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Marketing\Subscriptions\V4\LinkGenerationResponse;
 use HubspotSDK\Marketing\Subscriptions\V4\Links\LinkCreateParams;
+use HubspotSDK\Marketing\Subscriptions\V4\Links\LinkCreateParams\Channel;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Marketing\Subscriptions\V4\LinksContract;
 
@@ -23,7 +24,7 @@ final class LinksService implements LinksContract
      * @api
      *
      * @param array{
-     *   channel: 'EMAIL',
+     *   channel: 'EMAIL'|Channel,
      *   subscriberIdString: string,
      *   businessUnitId?: int,
      *   language?: string,

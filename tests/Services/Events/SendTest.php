@@ -56,7 +56,7 @@ final class SendTest extends TestCase
             'properties' => ['foo' => 'string'],
             'email' => 'email',
             'objectId' => 'objectId',
-            'occurredAt' => '2019-12-27T18:11:19.117Z',
+            'occurredAt' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
             'utk' => 'utk',
             'uuid' => 'uuid',
         ]);
@@ -96,7 +96,7 @@ final class SendTest extends TestCase
                     'properties' => ['foo' => 'string'],
                     'email' => 'email',
                     'objectId' => 'objectId',
-                    'occurredAt' => '2019-12-27T18:11:19.117Z',
+                    'occurredAt' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
                     'utk' => 'utk',
                     'uuid' => 'uuid',
                 ],

@@ -62,7 +62,7 @@ final class UsersTest extends TestCase
             'primaryTeamId' => '101',
             'roleId' => '100',
             'secondaryTeamIds' => ['102'],
-            'sendWelcomeEmail' => 'true',
+            'sendWelcomeEmail' => true,
         ]);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

@@ -78,7 +78,7 @@ final class EventsTest extends TestCase
                 'url' => 'https://my.petspot.com/pets/Art3mis',
                 'width' => 600,
             ],
-            'timestamp' => '2019-12-27T18:11:19.117Z',
+            'timestamp' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
             'utk' => 'utk',
         ]);
 
@@ -145,7 +145,7 @@ final class EventsTest extends TestCase
                         'url' => 'https://my.petspot.com/pets/Art3mis',
                         'width' => 600,
                     ],
-                    'timestamp' => '2019-12-27T18:11:19.117Z',
+                    'timestamp' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
                     'utk' => 'utk',
                 ],
                 [
@@ -173,7 +173,7 @@ final class EventsTest extends TestCase
                         'url' => 'https://my.petspot.com/pets/Pocket',
                         'width' => 600,
                     ],
-                    'timestamp' => '2019-12-27T18:11:19.117Z',
+                    'timestamp' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
                     'utk' => 'utk',
                 ],
             ],

@@ -121,8 +121,8 @@ final class URLRedirectsTest extends TestCase
                 'precedence' => 0,
                 'redirectStyle' => 0,
                 'routePrefix' => 'routePrefix',
-                'created' => '2019-12-27T18:11:19.117Z',
-                'updated' => '2019-12-27T18:11:19.117Z',
+                'created' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
+                'updated' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
             ],
         );
 

@@ -14,6 +14,7 @@ use HubspotSDK\Automation\Actions\InputFieldDefinition;
 use HubspotSDK\Automation\Actions\OutputFieldDefinition;
 use HubspotSDK\Automation\Actions\PublicActionDefinition;
 use HubspotSDK\Automation\Actions\PublicActionFunction;
+use HubspotSDK\Automation\Actions\PublicActionFunction\FunctionType;
 use HubspotSDK\Automation\Actions\PublicActionLabels;
 use HubspotSDK\Automation\Actions\PublicExecutionTranslationRule;
 use HubspotSDK\Automation\Actions\PublicObjectRequestOptions;
@@ -40,7 +41,7 @@ final class DefinitionsService implements DefinitionsContract
      *   actionUrl: string,
      *   functions: list<array{
      *     functionSource: string,
-     *     functionType: 'POST_ACTION_EXECUTION'|'POST_FETCH_OPTIONS'|'PRE_ACTION_EXECUTION'|'PRE_FETCH_OPTIONS',
+     *     functionType: 'POST_ACTION_EXECUTION'|'POST_FETCH_OPTIONS'|'PRE_ACTION_EXECUTION'|'PRE_FETCH_OPTIONS'|FunctionType,
      *     id?: string,
      *   }|PublicActionFunction>,
      *   inputFields: list<array{

@@ -6,6 +6,7 @@ namespace HubspotSDK\Services\Auth;
 
 use HubspotSDK\Auth\OAuth\AccessTokenInfoResponse;
 use HubspotSDK\Auth\OAuth\OAuthCreateAccessTokenParams;
+use HubspotSDK\Auth\OAuth\OAuthCreateAccessTokenParams\GrantType;
 use HubspotSDK\Auth\OAuth\RefreshTokenInfoResponse;
 use HubspotSDK\Auth\OAuth\TokenResponseIf;
 use HubspotSDK\Client;
@@ -36,7 +37,7 @@ final class OAuthService implements OAuthContract
      *   client_id?: string,
      *   code?: string,
      *   code_verifier?: string,
-     *   grant_type?: 'authorization_code'|'client_credentials'|'refresh_token',
+     *   grant_type?: 'authorization_code'|'client_credentials'|'refresh_token'|GrantType,
      *   redirect_uri?: string,
      *   scope?: string,
      * }|OAuthCreateAccessTokenParams $params

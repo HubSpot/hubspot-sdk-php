@@ -12,6 +12,7 @@ use HubspotSDK\Crm\Extensions\Cards\CardCreateParams;
 use HubspotSDK\Crm\Extensions\Cards\CardDeleteParams;
 use HubspotSDK\Crm\Extensions\Cards\CardDisplayBody;
 use HubspotSDK\Crm\Extensions\Cards\CardDisplayProperty;
+use HubspotSDK\Crm\Extensions\Cards\CardFetchBody\CardType;
 use HubspotSDK\Crm\Extensions\Cards\CardGetParams;
 use HubspotSDK\Crm\Extensions\Cards\CardObjectTypeBody;
 use HubspotSDK\Crm\Extensions\Cards\CardUpdateParams;
@@ -41,7 +42,7 @@ final class CardsService implements CardsContract
      *   fetch: array{
      *     objectTypes: list<array<mixed>|CardObjectTypeBody>,
      *     targetUrl: string,
-     *     cardType?: 'EXTERNAL'|'SERVERLESS',
+     *     cardType?: 'EXTERNAL'|'SERVERLESS'|CardType,
      *     serverlessFunction?: string,
      *   },
      *   title: string,
@@ -84,7 +85,7 @@ final class CardsService implements CardsContract
      *   }|CardDisplayBody,
      *   fetch?: array{
      *     objectTypes: list<array<mixed>|CardObjectTypeBody>,
-     *     cardType?: 'EXTERNAL'|'SERVERLESS',
+     *     cardType?: 'EXTERNAL'|'SERVERLESS'|\HubspotSDK\Crm\Extensions\Cards\CardFetchBodyPatch\CardType,
      *     serverlessFunction?: string,
      *     targetUrl?: string,
      *   },

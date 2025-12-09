@@ -9,7 +9,9 @@ use HubspotSDK\Client;
 use HubspotSDK\Cms\MediaBridge\CollectionResponsePropertyNoPaging;
 use HubspotSDK\Cms\MediaBridge\Properties\PropertyCreateBatchParams;
 use HubspotSDK\Cms\MediaBridge\Properties\PropertyCreateParams;
+use HubspotSDK\Cms\MediaBridge\Properties\PropertyCreateParams\DataSensitivity;
 use HubspotSDK\Cms\MediaBridge\Properties\PropertyCreateParams\FieldType;
+use HubspotSDK\Cms\MediaBridge\Properties\PropertyCreateParams\Type;
 use HubspotSDK\Cms\MediaBridge\Properties\PropertyDeleteBatchParams;
 use HubspotSDK\Cms\MediaBridge\Properties\PropertyDeleteParams;
 use HubspotSDK\Cms\MediaBridge\Properties\PropertyGetBatchParams;
@@ -40,9 +42,9 @@ final class PropertiesService implements PropertiesContract
      *   groupName: string,
      *   label: string,
      *   name: string,
-     *   type: 'bool'|'date'|'datetime'|'enumeration'|'number'|'phone_number'|'string',
+     *   type: 'bool'|'date'|'datetime'|'enumeration'|'number'|'phone_number'|'string'|Type,
      *   calculationFormula?: string,
-     *   dataSensitivity?: 'highly_sensitive'|'non_sensitive'|'sensitive',
+     *   dataSensitivity?: 'highly_sensitive'|'non_sensitive'|'sensitive'|DataSensitivity,
      *   description?: string,
      *   displayOrder?: int,
      *   externalOptions?: bool,
@@ -109,7 +111,7 @@ final class PropertiesService implements PropertiesContract
      *     value: string,
      *     description?: string,
      *   }>,
-     *   type?: 'bool'|'date'|'datetime'|'enumeration'|'number'|'phone_number'|'string',
+     *   type?: 'bool'|'date'|'datetime'|'enumeration'|'number'|'phone_number'|'string'|PropertyUpdateParams\Type,
      * }|PropertyUpdateParams $params
      *
      * @throws APIException
@@ -230,13 +232,13 @@ final class PropertiesService implements PropertiesContract
      * @param array{
      *   appId: int,
      *   inputs: list<array{
-     *     fieldType: 'booleancheckbox'|'calculation_equation'|'checkbox'|'date'|'file'|'html'|'number'|'phonenumber'|'radio'|'select'|'text'|'textarea',
+     *     fieldType: 'booleancheckbox'|'calculation_equation'|'checkbox'|'date'|'file'|'html'|'number'|'phonenumber'|'radio'|'select'|'text'|'textarea'|\HubspotSDK\PropertyCreate\FieldType,
      *     groupName: string,
      *     label: string,
      *     name: string,
-     *     type: 'bool'|'date'|'datetime'|'enumeration'|'number'|'phone_number'|'string',
+     *     type: 'bool'|'date'|'datetime'|'enumeration'|'number'|'phone_number'|'string'|\HubspotSDK\PropertyCreate\Type,
      *     calculationFormula?: string,
-     *     dataSensitivity?: 'highly_sensitive'|'non_sensitive'|'sensitive',
+     *     dataSensitivity?: 'highly_sensitive'|'non_sensitive'|'sensitive'|\HubspotSDK\PropertyCreate\DataSensitivity,
      *     description?: string,
      *     displayOrder?: int,
      *     externalOptions?: bool,
@@ -365,7 +367,7 @@ final class PropertiesService implements PropertiesContract
      * @param array{
      *   appId: int,
      *   archived: bool,
-     *   dataSensitivity: 'highly_sensitive'|'non_sensitive'|'sensitive',
+     *   dataSensitivity: 'highly_sensitive'|'non_sensitive'|'sensitive'|PropertyGetBatchParams\DataSensitivity,
      *   inputs: list<array{name: string}>,
      * }|PropertyGetBatchParams $params
      *

@@ -14,6 +14,7 @@ use HubspotSDK\Crm\Timeline\Templates\TemplateGetParams;
 use HubspotSDK\Crm\Timeline\Templates\TemplateUpdateParams;
 use HubspotSDK\Crm\Timeline\TimelineEventTemplate;
 use HubspotSDK\Crm\Timeline\TimelineEventTemplateToken;
+use HubspotSDK\Crm\Timeline\TimelineEventTemplateToken\Type;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Timeline\TemplatesContract;
 
@@ -35,7 +36,7 @@ final class TemplatesService implements TemplatesContract
      *   tokens: list<array{
      *     label: string,
      *     name: string,
-     *     type: 'date'|'enumeration'|'number'|'string',
+     *     type: 'date'|'enumeration'|'number'|'string'|Type,
      *     createdAt?: string|\DateTimeInterface,
      *     objectPropertyName?: string,
      *     options?: list<mixed>,
@@ -81,7 +82,7 @@ final class TemplatesService implements TemplatesContract
      *   tokens: list<array{
      *     label: string,
      *     name: string,
-     *     type: 'date'|'enumeration'|'number'|'string',
+     *     type: 'date'|'enumeration'|'number'|'string'|Type,
      *     createdAt?: string|\DateTimeInterface,
      *     objectPropertyName?: string,
      *     options?: list<mixed>,

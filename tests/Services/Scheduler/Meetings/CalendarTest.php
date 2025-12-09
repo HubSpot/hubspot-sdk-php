@@ -55,11 +55,15 @@ final class CalendarTest extends TestCase
                 'shouldIncludeInviteDescription' => true,
             ],
             'properties' => [
-                'hs_meeting_end_time' => '2019-12-27T18:11:19.117Z',
+                'hs_meeting_end_time' => new \DateTimeImmutable(
+                    '2019-12-27T18:11:19.117Z'
+                ),
                 'hs_meeting_outcome' => 'hs_meeting_outcome',
-                'hs_meeting_start_time' => '2019-12-27T18:11:19.117Z',
+                'hs_meeting_start_time' => new \DateTimeImmutable(
+                    '2019-12-27T18:11:19.117Z'
+                ),
                 'hs_meeting_title' => 'hs_meeting_title',
-                'hs_timestamp' => '2019-12-27T18:11:19.117Z',
+                'hs_timestamp' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
                 'hubspot_owner_id' => 'hubspot_owner_id',
             ],
             'timezone' => 'timezone',
@@ -97,11 +101,15 @@ final class CalendarTest extends TestCase
                 'shouldIncludeInviteDescription' => true,
             ],
             'properties' => [
-                'hs_meeting_end_time' => '2019-12-27T18:11:19.117Z',
+                'hs_meeting_end_time' => new \DateTimeImmutable(
+                    '2019-12-27T18:11:19.117Z'
+                ),
                 'hs_meeting_outcome' => 'hs_meeting_outcome',
-                'hs_meeting_start_time' => '2019-12-27T18:11:19.117Z',
+                'hs_meeting_start_time' => new \DateTimeImmutable(
+                    '2019-12-27T18:11:19.117Z'
+                ),
                 'hs_meeting_title' => 'hs_meeting_title',
-                'hs_timestamp' => '2019-12-27T18:11:19.117Z',
+                'hs_timestamp' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
                 'hubspot_owner_id' => 'hubspot_owner_id',
                 'hs_activity_type' => 'hs_activity_type',
                 'hs_attachment_ids' => ['string'],

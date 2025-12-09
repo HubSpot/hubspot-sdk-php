@@ -20,6 +20,7 @@ use HubspotSDK\Cms\MediaBridge\IntegratorSettings\IntegratorSettingListOembedDom
 use HubspotSDK\Cms\MediaBridge\IntegratorSettings\IntegratorSettingRegisterAppNameParams;
 use HubspotSDK\Cms\MediaBridge\IntegratorSettings\IntegratorSettingUpdateAppNameParams;
 use HubspotSDK\Cms\MediaBridge\IntegratorSettings\IntegratorSettingUpdateEventVisibilitySettingsParams;
+use HubspotSDK\Cms\MediaBridge\IntegratorSettings\IntegratorSettingUpdateEventVisibilitySettingsParams\EventType;
 use HubspotSDK\Cms\MediaBridge\IntegratorSettings\IntegratorSettingUpdateOembedDomainParams;
 use HubspotSDK\Cms\MediaBridge\MediaBridgeProviderRegistrationResponse;
 use HubspotSDK\Cms\MediaBridge\ObjectDefinitionResponse;
@@ -42,7 +43,7 @@ final class IntegratorSettingsService implements IntegratorSettingsContract
      * Create a new media object type
      *
      * @param array{
-     *   mediaTypes: list<'VIDEO'|'AUDIO'|'DOCUMENT'|'OTHER'|'IMAGE'>
+     *   mediaTypes: list<'VIDEO'|'AUDIO'|'DOCUMENT'|'OTHER'|'IMAGE'|IntegratorSettingCreateObjectDefinitionParams\MediaType>,
      * }|IntegratorSettingCreateObjectDefinitionParams $params
      *
      * @throws APIException
@@ -343,7 +344,7 @@ final class IntegratorSettingsService implements IntegratorSettingsContract
      * Set the visibility settings for media bridge events created by your app.
      *
      * @param array{
-     *   eventType: 'ALL'|'ATTENTION_SPAN'|'MEDIA_PLAYS'|'MEDIA_PLAYS_PERCENT',
+     *   eventType: 'ALL'|'ATTENTION_SPAN'|'MEDIA_PLAYS'|'MEDIA_PLAYS_PERCENT'|EventType,
      *   updatedAt: int,
      *   showInReporting?: bool,
      *   showInTimeline?: bool,
