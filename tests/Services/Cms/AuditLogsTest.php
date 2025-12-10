@@ -3,6 +3,7 @@
 namespace Tests\Services\Cms;
 
 use HubspotSDK\Client;
+use HubspotSDK\Cms\AuditLogs\PublicAuditLog;
 use HubspotSDK\Page;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
@@ -37,9 +38,14 @@ final class AuditLogsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->auditLogs->list();
+        $page = $this->client->cms->auditLogs->list();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(Page::class, $result);
+        $this->assertInstanceOf(Page::class, $page);
+
+        if ($item = $page->getItems()[0] ?? null) {
+            // @phpstan-ignore-next-line method.alreadyNarrowedType
+            $this->assertInstanceOf(PublicAuditLog::class, $item);
+        }
     }
 }

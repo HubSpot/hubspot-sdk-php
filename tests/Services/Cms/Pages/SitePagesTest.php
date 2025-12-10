@@ -656,10 +656,15 @@ final class SitePagesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->pages->sitePages->list();
+        $page = $this->client->cms->pages->sitePages->list();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(\HubspotSDK\Page::class, $result);
+        $this->assertInstanceOf(\HubspotSDK\Page::class, $page);
+
+        if ($item = $page->getItems()[0] ?? null) {
+            // @phpstan-ignore-next-line method.alreadyNarrowedType
+            $this->assertInstanceOf(Page::class, $item);
+        }
     }
 
     #[Test]
@@ -1316,10 +1321,15 @@ final class SitePagesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->pages->sitePages->listRevisions('objectId');
+        $page = $this->client->cms->pages->sitePages->listRevisions('objectId');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(\HubspotSDK\Page::class, $result);
+        $this->assertInstanceOf(\HubspotSDK\Page::class, $page);
+
+        if ($item = $page->getItems()[0] ?? null) {
+            // @phpstan-ignore-next-line method.alreadyNarrowedType
+            $this->assertInstanceOf(VersionPage::class, $item);
+        }
     }
 
     #[Test]

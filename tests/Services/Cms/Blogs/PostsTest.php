@@ -672,10 +672,15 @@ final class PostsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->blogs->posts->list();
+        $page = $this->client->cms->blogs->posts->list();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(Page::class, $result);
+        $this->assertInstanceOf(Page::class, $page);
+
+        if ($item = $page->getItems()[0] ?? null) {
+            // @phpstan-ignore-next-line method.alreadyNarrowedType
+            $this->assertInstanceOf(BlogPost::class, $item);
+        }
     }
 
     #[Test]
@@ -875,10 +880,15 @@ final class PostsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->blogs->posts->getPreviousVersions('objectId');
+        $page = $this->client->cms->blogs->posts->getPreviousVersions('objectId');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(Page::class, $result);
+        $this->assertInstanceOf(Page::class, $page);
+
+        if ($item = $page->getItems()[0] ?? null) {
+            // @phpstan-ignore-next-line method.alreadyNarrowedType
+            $this->assertInstanceOf(VersionBlogPost::class, $item);
+        }
     }
 
     #[Test]

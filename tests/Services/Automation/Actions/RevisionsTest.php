@@ -38,13 +38,18 @@ final class RevisionsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->automation->actions->revisions->list(
+        $page = $this->client->automation->actions->revisions->list(
             'definitionId',
             appID: 0
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(Page::class, $result);
+        $this->assertInstanceOf(Page::class, $page);
+
+        if ($item = $page->getItems()[0] ?? null) {
+            // @phpstan-ignore-next-line method.alreadyNarrowedType
+            $this->assertInstanceOf(PublicActionRevision::class, $item);
+        }
     }
 
     #[Test]
@@ -54,7 +59,7 @@ final class RevisionsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->automation->actions->revisions->list(
+        $page = $this->client->automation->actions->revisions->list(
             'definitionId',
             appID: 0,
             after: 'after',
@@ -62,7 +67,12 @@ final class RevisionsTest extends TestCase
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(Page::class, $result);
+        $this->assertInstanceOf(Page::class, $page);
+
+        if ($item = $page->getItems()[0] ?? null) {
+            // @phpstan-ignore-next-line method.alreadyNarrowedType
+            $this->assertInstanceOf(PublicActionRevision::class, $item);
+        }
     }
 
     #[Test]

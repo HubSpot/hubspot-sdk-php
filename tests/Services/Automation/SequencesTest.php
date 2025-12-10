@@ -2,6 +2,7 @@
 
 namespace Tests\Services\Automation;
 
+use HubspotSDK\Automation\Sequences\PublicSequenceLiteResponse;
 use HubspotSDK\Automation\Sequences\PublicSequenceResponse;
 use HubspotSDK\Client;
 use HubspotSDK\Page;
@@ -38,10 +39,15 @@ final class SequencesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->automation->sequences->list(userID: 'userId');
+        $page = $this->client->automation->sequences->list(userID: 'userId');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(Page::class, $result);
+        $this->assertInstanceOf(Page::class, $page);
+
+        if ($item = $page->getItems()[0] ?? null) {
+            // @phpstan-ignore-next-line method.alreadyNarrowedType
+            $this->assertInstanceOf(PublicSequenceLiteResponse::class, $item);
+        }
     }
 
     #[Test]
@@ -51,7 +57,7 @@ final class SequencesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->automation->sequences->list(
+        $page = $this->client->automation->sequences->list(
             userID: 'userId',
             after: 'after',
             limit: 0,
@@ -59,7 +65,12 @@ final class SequencesTest extends TestCase
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(Page::class, $result);
+        $this->assertInstanceOf(Page::class, $page);
+
+        if ($item = $page->getItems()[0] ?? null) {
+            // @phpstan-ignore-next-line method.alreadyNarrowedType
+            $this->assertInstanceOf(PublicSequenceLiteResponse::class, $item);
+        }
     }
 
     #[Test]

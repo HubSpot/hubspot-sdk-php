@@ -3,6 +3,7 @@
 namespace Tests\Services\Crm\Objects\Projects;
 
 use HubspotSDK\Client;
+use HubspotSDK\Crm\AssociatedID;
 use HubspotSDK\Crm\SimplePublicObjectWithAssociations;
 use HubspotSDK\Page;
 use PHPUnit\Framework\Attributes\CoversNothing;
@@ -74,13 +75,18 @@ final class AssociationsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->objects->projects->associations->list(
+        $page = $this->client->crm->objects->projects->associations->list(
             'toObjectType',
             projectID: 'projectId'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(Page::class, $result);
+        $this->assertInstanceOf(Page::class, $page);
+
+        if ($item = $page->getItems()[0] ?? null) {
+            // @phpstan-ignore-next-line method.alreadyNarrowedType
+            $this->assertInstanceOf(AssociatedID::class, $item);
+        }
     }
 
     #[Test]
@@ -90,7 +96,7 @@ final class AssociationsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->objects->projects->associations->list(
+        $page = $this->client->crm->objects->projects->associations->list(
             'toObjectType',
             projectID: 'projectId',
             after: 'after',
@@ -99,7 +105,12 @@ final class AssociationsTest extends TestCase
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(Page::class, $result);
+        $this->assertInstanceOf(Page::class, $page);
+
+        if ($item = $page->getItems()[0] ?? null) {
+            // @phpstan-ignore-next-line method.alreadyNarrowedType
+            $this->assertInstanceOf(AssociatedID::class, $item);
+        }
     }
 
     #[Test]
