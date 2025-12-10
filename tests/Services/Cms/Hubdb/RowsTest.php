@@ -83,7 +83,7 @@ final class RowsTest extends TestCase
 
         if ($item = $page->getItems()[0] ?? null) {
             // @phpstan-ignore-next-line method.alreadyNarrowedType
-            $this->assertTrue($item);
+            $this->assertIsNotResource($item);
         }
     }
 
@@ -232,7 +232,7 @@ final class RowsTest extends TestCase
 
         if ($item = $page->getItems()[0] ?? null) {
             // @phpstan-ignore-next-line method.alreadyNarrowedType
-            $this->assertTrue($item);
+            $this->assertIsNotResource($item);
         }
     }
 
