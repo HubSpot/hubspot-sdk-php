@@ -2,6 +2,9 @@
 
 namespace Tests\Services\Account;
 
+use HubspotSDK\Account\Activity\HydratedCriticalAction;
+use HubspotSDK\Account\Activity\PublicAPIUserActionEvent;
+use HubspotSDK\Account\Activity\PublicLoginAudit;
 use HubspotSDK\Client;
 use HubspotSDK\Page;
 use PHPUnit\Framework\Attributes\CoversNothing;
@@ -37,10 +40,15 @@ final class ActivityTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->account->activity->listAuditLogs();
+        $page = $this->client->account->activity->listAuditLogs();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(Page::class, $result);
+        $this->assertInstanceOf(Page::class, $page);
+
+        if ($item = $page->getItems()[0] ?? null) {
+            // @phpstan-ignore-next-line method.alreadyNarrowedType
+            $this->assertInstanceOf(PublicAPIUserActionEvent::class, $item);
+        }
     }
 
     #[Test]
@@ -50,10 +58,15 @@ final class ActivityTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->account->activity->listLoginActivities();
+        $page = $this->client->account->activity->listLoginActivities();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(Page::class, $result);
+        $this->assertInstanceOf(Page::class, $page);
+
+        if ($item = $page->getItems()[0] ?? null) {
+            // @phpstan-ignore-next-line method.alreadyNarrowedType
+            $this->assertInstanceOf(PublicLoginAudit::class, $item);
+        }
     }
 
     #[Test]
@@ -63,9 +76,14 @@ final class ActivityTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->account->activity->listSecurityActivities();
+        $page = $this->client->account->activity->listSecurityActivities();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(Page::class, $result);
+        $this->assertInstanceOf(Page::class, $page);
+
+        if ($item = $page->getItems()[0] ?? null) {
+            // @phpstan-ignore-next-line method.alreadyNarrowedType
+            $this->assertInstanceOf(HydratedCriticalAction::class, $item);
+        }
     }
 }

@@ -2,6 +2,8 @@
 
 namespace Tests\Services\Automation;
 
+use HubspotSDK\Automation\Workflows\APIFlowEmailCampaign;
+use HubspotSDK\Automation\Workflows\APIFlowListing;
 use HubspotSDK\Automation\Workflows\BatchResponseAPIFlow;
 use HubspotSDK\Automation\Workflows\BatchResponseFlowIDWorkflowIDMappingResponse;
 use HubspotSDK\Client;
@@ -65,10 +67,15 @@ final class WorkflowsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->automation->workflows->list();
+        $page = $this->client->automation->workflows->list();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(Page::class, $result);
+        $this->assertInstanceOf(Page::class, $page);
+
+        if ($item = $page->getItems()[0] ?? null) {
+            // @phpstan-ignore-next-line method.alreadyNarrowedType
+            $this->assertInstanceOf(APIFlowListing::class, $item);
+        }
     }
 
     #[Test]
@@ -180,9 +187,14 @@ final class WorkflowsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->automation->workflows->listEmailCampaigns();
+        $page = $this->client->automation->workflows->listEmailCampaigns();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(Page::class, $result);
+        $this->assertInstanceOf(Page::class, $page);
+
+        if ($item = $page->getItems()[0] ?? null) {
+            // @phpstan-ignore-next-line method.alreadyNarrowedType
+            $this->assertInstanceOf(APIFlowEmailCampaign::class, $item);
+        }
     }
 }

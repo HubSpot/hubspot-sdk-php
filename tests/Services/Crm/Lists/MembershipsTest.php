@@ -4,6 +4,7 @@ namespace Tests\Services\Crm\Lists;
 
 use HubspotSDK\Client;
 use HubspotSDK\Crm\Lists\APICollectionResponseRecordListMembershipNoPaging;
+use HubspotSDK\Crm\Lists\JoinTimeAndRecordID;
 use HubspotSDK\Crm\Lists\MembershipsUpdateResponse;
 use HubspotSDK\Page;
 use PHPUnit\Framework\Attributes\CoversNothing;
@@ -39,10 +40,15 @@ final class MembershipsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->lists->memberships->list('listId');
+        $page = $this->client->crm->lists->memberships->list('listId');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(Page::class, $result);
+        $this->assertInstanceOf(Page::class, $page);
+
+        if ($item = $page->getItems()[0] ?? null) {
+            // @phpstan-ignore-next-line method.alreadyNarrowedType
+            $this->assertInstanceOf(JoinTimeAndRecordID::class, $item);
+        }
     }
 
     #[Test]
@@ -188,7 +194,7 @@ final class MembershipsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this
+        $page = $this
             ->client
             ->crm
             ->lists
@@ -197,7 +203,12 @@ final class MembershipsTest extends TestCase
         ;
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(Page::class, $result);
+        $this->assertInstanceOf(Page::class, $page);
+
+        if ($item = $page->getItems()[0] ?? null) {
+            // @phpstan-ignore-next-line method.alreadyNarrowedType
+            $this->assertInstanceOf(JoinTimeAndRecordID::class, $item);
+        }
     }
 
     #[Test]

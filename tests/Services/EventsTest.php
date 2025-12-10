@@ -3,6 +3,7 @@
 namespace Tests\Services;
 
 use HubspotSDK\Client;
+use HubspotSDK\Events\ExternalUnifiedEvent;
 use HubspotSDK\Events\VisibleExternalEventTypeNames;
 use HubspotSDK\Page;
 use PHPUnit\Framework\Attributes\CoversNothing;
@@ -38,10 +39,15 @@ final class EventsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->events->list();
+        $page = $this->client->events->list();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(Page::class, $result);
+        $this->assertInstanceOf(Page::class, $page);
+
+        if ($item = $page->getItems()[0] ?? null) {
+            // @phpstan-ignore-next-line method.alreadyNarrowedType
+            $this->assertInstanceOf(ExternalUnifiedEvent::class, $item);
+        }
     }
 
     #[Test]

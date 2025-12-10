@@ -4,6 +4,7 @@ namespace Tests\Services\Crm;
 
 use HubspotSDK\ActionResponse;
 use HubspotSDK\Client;
+use HubspotSDK\Crm\Imports\PublicImportError;
 use HubspotSDK\Crm\Imports\PublicImportResponse;
 use HubspotSDK\Page;
 use PHPUnit\Framework\Attributes\CoversNothing;
@@ -52,10 +53,15 @@ final class ImportsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->imports->list();
+        $page = $this->client->crm->imports->list();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(Page::class, $result);
+        $this->assertInstanceOf(Page::class, $page);
+
+        if ($item = $page->getItems()[0] ?? null) {
+            // @phpstan-ignore-next-line method.alreadyNarrowedType
+            $this->assertInstanceOf(PublicImportResponse::class, $item);
+        }
     }
 
     #[Test]
@@ -91,9 +97,14 @@ final class ImportsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->imports->listErrors(0);
+        $page = $this->client->crm->imports->listErrors(0);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(Page::class, $result);
+        $this->assertInstanceOf(Page::class, $page);
+
+        if ($item = $page->getItems()[0] ?? null) {
+            // @phpstan-ignore-next-line method.alreadyNarrowedType
+            $this->assertInstanceOf(PublicImportError::class, $item);
+        }
     }
 }

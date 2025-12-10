@@ -76,10 +76,15 @@ final class RowsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->hubdb->rows->list('tableIdOrName');
+        $page = $this->client->cms->hubdb->rows->list('tableIdOrName');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(Page::class, $result);
+        $this->assertInstanceOf(Page::class, $page);
+
+        if ($item = $page->getItems()[0] ?? null) {
+            // @phpstan-ignore-next-line method.alreadyNarrowedType
+            $this->assertTrue($item);
+        }
     }
 
     #[Test]
@@ -220,10 +225,15 @@ final class RowsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->hubdb->rows->listDraft('tableIdOrName');
+        $page = $this->client->cms->hubdb->rows->listDraft('tableIdOrName');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(Page::class, $result);
+        $this->assertInstanceOf(Page::class, $page);
+
+        if ($item = $page->getItems()[0] ?? null) {
+            // @phpstan-ignore-next-line method.alreadyNarrowedType
+            $this->assertTrue($item);
+        }
     }
 
     #[Test]

@@ -659,10 +659,15 @@ final class LandingPagesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->pages->landingPages->list();
+        $page = $this->client->cms->pages->landingPages->list();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(\HubspotSDK\Page::class, $result);
+        $this->assertInstanceOf(\HubspotSDK\Page::class, $page);
+
+        if ($item = $page->getItems()[0] ?? null) {
+            // @phpstan-ignore-next-line method.alreadyNarrowedType
+            $this->assertInstanceOf(Page::class, $item);
+        }
     }
 
     #[Test]
@@ -1530,12 +1535,17 @@ final class LandingPagesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->pages->landingPages->listFolderRevisions(
+        $page = $this->client->cms->pages->landingPages->listFolderRevisions(
             'objectId'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(\HubspotSDK\Page::class, $result);
+        $this->assertInstanceOf(\HubspotSDK\Page::class, $page);
+
+        if ($item = $page->getItems()[0] ?? null) {
+            // @phpstan-ignore-next-line method.alreadyNarrowedType
+            $this->assertInstanceOf(VersionContentFolder::class, $item);
+        }
     }
 
     #[Test]
@@ -1545,10 +1555,15 @@ final class LandingPagesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->pages->landingPages->listFolders();
+        $page = $this->client->cms->pages->landingPages->listFolders();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(\HubspotSDK\Page::class, $result);
+        $this->assertInstanceOf(\HubspotSDK\Page::class, $page);
+
+        if ($item = $page->getItems()[0] ?? null) {
+            // @phpstan-ignore-next-line method.alreadyNarrowedType
+            $this->assertInstanceOf(ContentFolder::class, $item);
+        }
     }
 
     #[Test]
@@ -1558,12 +1573,15 @@ final class LandingPagesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->pages->landingPages->listRevisions(
-            'objectId'
-        );
+        $page = $this->client->cms->pages->landingPages->listRevisions('objectId');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(\HubspotSDK\Page::class, $result);
+        $this->assertInstanceOf(\HubspotSDK\Page::class, $page);
+
+        if ($item = $page->getItems()[0] ?? null) {
+            // @phpstan-ignore-next-line method.alreadyNarrowedType
+            $this->assertInstanceOf(VersionPage::class, $item);
+        }
     }
 
     #[Test]

@@ -4,6 +4,7 @@ namespace Tests\Services\Marketing\Events;
 
 use HubspotSDK\Client;
 use HubspotSDK\Marketing\Events\AttendanceCounters;
+use HubspotSDK\Marketing\Events\ParticipationBreakdown;
 use HubspotSDK\Page;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
@@ -95,7 +96,7 @@ final class ParticipationsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this
+        $page = $this
             ->client
             ->marketing
             ->events
@@ -104,7 +105,12 @@ final class ParticipationsTest extends TestCase
         ;
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(Page::class, $result);
+        $this->assertInstanceOf(Page::class, $page);
+
+        if ($item = $page->getItems()[0] ?? null) {
+            // @phpstan-ignore-next-line method.alreadyNarrowedType
+            $this->assertInstanceOf(ParticipationBreakdown::class, $item);
+        }
     }
 
     #[Test]
@@ -114,7 +120,7 @@ final class ParticipationsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this
+        $page = $this
             ->client
             ->marketing
             ->events
@@ -126,7 +132,12 @@ final class ParticipationsTest extends TestCase
         ;
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(Page::class, $result);
+        $this->assertInstanceOf(Page::class, $page);
+
+        if ($item = $page->getItems()[0] ?? null) {
+            // @phpstan-ignore-next-line method.alreadyNarrowedType
+            $this->assertInstanceOf(ParticipationBreakdown::class, $item);
+        }
     }
 
     #[Test]
@@ -136,7 +147,7 @@ final class ParticipationsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this
+        $page = $this
             ->client
             ->marketing
             ->events
@@ -152,7 +163,12 @@ final class ParticipationsTest extends TestCase
         ;
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(Page::class, $result);
+        $this->assertInstanceOf(Page::class, $page);
+
+        if ($item = $page->getItems()[0] ?? null) {
+            // @phpstan-ignore-next-line method.alreadyNarrowedType
+            $this->assertInstanceOf(ParticipationBreakdown::class, $item);
+        }
     }
 
     #[Test]
@@ -162,15 +178,16 @@ final class ParticipationsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this
-            ->client
-            ->marketing
-            ->events
-            ->participations
-            ->listBreakdownByID(0)
-        ;
+        $page = $this->client->marketing->events->participations->listBreakdownByID(
+            0
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(Page::class, $result);
+        $this->assertInstanceOf(Page::class, $page);
+
+        if ($item = $page->getItems()[0] ?? null) {
+            // @phpstan-ignore-next-line method.alreadyNarrowedType
+            $this->assertInstanceOf(ParticipationBreakdown::class, $item);
+        }
     }
 }
