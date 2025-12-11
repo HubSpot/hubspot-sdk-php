@@ -6,6 +6,7 @@ namespace HubspotSDK\Services\Settings;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Settings\UsersContract;
@@ -54,17 +55,17 @@ final class UsersService implements UsersContract
         ?bool $sendWelcomeEmail = null,
         ?RequestOptions $requestOptions = null,
     ): PublicUser {
-        $params = [
-            'email' => $email,
-            'firstName' => $firstName,
-            'lastName' => $lastName,
-            'primaryTeamID' => $primaryTeamID,
-            'roleID' => $roleID,
-            'secondaryTeamIDs' => $secondaryTeamIDs,
-            'sendWelcomeEmail' => $sendWelcomeEmail,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'email' => $email,
+                'firstName' => $firstName,
+                'lastName' => $lastName,
+                'primaryTeamID' => $primaryTeamID,
+                'roleID' => $roleID,
+                'secondaryTeamIDs' => $secondaryTeamIDs,
+                'sendWelcomeEmail' => $sendWelcomeEmail,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->create(params: $params, requestOptions: $requestOptions);
@@ -97,16 +98,16 @@ final class UsersService implements UsersContract
         ?array $secondaryTeamIDs = null,
         ?RequestOptions $requestOptions = null,
     ): PublicUser {
-        $params = [
-            'idProperty' => $idProperty,
-            'firstName' => $firstName,
-            'lastName' => $lastName,
-            'primaryTeamID' => $primaryTeamID,
-            'roleID' => $roleID,
-            'secondaryTeamIDs' => $secondaryTeamIDs,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'idProperty' => $idProperty,
+                'firstName' => $firstName,
+                'lastName' => $lastName,
+                'primaryTeamID' => $primaryTeamID,
+                'roleID' => $roleID,
+                'secondaryTeamIDs' => $secondaryTeamIDs,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->update($userID, params: $params, requestOptions: $requestOptions);
@@ -131,9 +132,7 @@ final class UsersService implements UsersContract
         ?int $limit = null,
         ?RequestOptions $requestOptions = null,
     ): Page {
-        $params = ['after' => $after, 'limit' => $limit];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(['after' => $after, 'limit' => $limit]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->list(params: $params, requestOptions: $requestOptions);
@@ -156,9 +155,7 @@ final class UsersService implements UsersContract
         string|\HubspotSDK\Settings\Users\UserDeleteParams\IDProperty|null $idProperty = null,
         ?RequestOptions $requestOptions = null,
     ): mixed {
-        $params = ['idProperty' => $idProperty];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(['idProperty' => $idProperty]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->delete($userID, params: $params, requestOptions: $requestOptions);
@@ -181,9 +178,7 @@ final class UsersService implements UsersContract
         string|\HubspotSDK\Settings\Users\UserGetParams\IDProperty|null $idProperty = null,
         ?RequestOptions $requestOptions = null,
     ): PublicUser {
-        $params = ['idProperty' => $idProperty];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(['idProperty' => $idProperty]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->get($userID, params: $params, requestOptions: $requestOptions);

@@ -45,14 +45,14 @@ final class LinksRawService implements LinksRawContract
             $params,
             $requestOptions,
         );
-        $query_params = array_flip(['channel', 'businessUnitId']);
+        $query_params = array_flip(['channel', 'businessUnitID']);
 
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'communication-preferences/v4/links/generate',
             query: Util::array_transform_keys(
-                array_diff_key($parsed, $query_params),
+                array_intersect_key($parsed, $query_params),
                 ['businessUnitID' => 'businessUnitId'],
             ),
             body: (object) array_diff_key($parsed, $query_params),

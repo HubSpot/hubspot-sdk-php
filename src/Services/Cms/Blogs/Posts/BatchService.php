@@ -23,6 +23,7 @@ use HubspotSDK\Cms\RowMetaData;
 use HubspotSDK\Cms\SideOrCorner;
 use HubspotSDK\Cms\Styles;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Cms\Blogs\Posts\BatchContract;
 
@@ -190,7 +191,7 @@ final class BatchService implements BatchContract
         array $inputs,
         ?RequestOptions $requestOptions = null
     ): BatchResponseBlogPost {
-        $params = ['inputs' => $inputs];
+        $params = Util::removeNulls(['inputs' => $inputs]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->create(params: $params, requestOptions: $requestOptions);
@@ -213,9 +214,7 @@ final class BatchService implements BatchContract
         ?bool $archived = null,
         ?RequestOptions $requestOptions = null
     ): BatchResponseBlogPost {
-        $params = ['inputs' => $inputs, 'archived' => $archived];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(['inputs' => $inputs, 'archived' => $archived]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->update(params: $params, requestOptions: $requestOptions);
@@ -237,7 +236,7 @@ final class BatchService implements BatchContract
         array $inputs,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        $params = ['inputs' => $inputs];
+        $params = Util::removeNulls(['inputs' => $inputs]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->delete(params: $params, requestOptions: $requestOptions);
@@ -260,9 +259,7 @@ final class BatchService implements BatchContract
         ?bool $archived = null,
         ?RequestOptions $requestOptions = null
     ): BatchResponseBlogPost {
-        $params = ['inputs' => $inputs, 'archived' => $archived];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(['inputs' => $inputs, 'archived' => $archived]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->get(params: $params, requestOptions: $requestOptions);

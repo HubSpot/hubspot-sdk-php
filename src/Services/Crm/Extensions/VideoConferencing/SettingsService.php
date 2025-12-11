@@ -6,6 +6,7 @@ namespace HubspotSDK\Services\Crm\Extensions\VideoConferencing;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Crm\Extensions\VideoConferencing\ExternalSettings;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Extensions\VideoConferencing\SettingsContract;
@@ -44,15 +45,15 @@ final class SettingsService implements SettingsContract
         ?string $userVerifyURL = null,
         ?RequestOptions $requestOptions = null,
     ): ExternalSettings {
-        $params = [
-            'createMeetingURL' => $createMeetingURL,
-            'deleteMeetingURL' => $deleteMeetingURL,
-            'fetchAccountsUri' => $fetchAccountsUri,
-            'updateMeetingURL' => $updateMeetingURL,
-            'userVerifyURL' => $userVerifyURL,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'createMeetingURL' => $createMeetingURL,
+                'deleteMeetingURL' => $deleteMeetingURL,
+                'fetchAccountsUri' => $fetchAccountsUri,
+                'updateMeetingURL' => $updateMeetingURL,
+                'userVerifyURL' => $userVerifyURL,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->update($appID, params: $params, requestOptions: $requestOptions);

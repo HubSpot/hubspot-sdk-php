@@ -6,6 +6,7 @@ namespace HubspotSDK\Services\Crm\Objects;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Crm\Objects\Schemas\ObjectSchema;
 use HubspotSDK\Crm\Objects\Schemas\ObjectsSchemasObjectTypeDefinition;
 use HubspotSDK\Crm\Objects\Schemas\ObjectTypePropertyCreate\NumberDisplayHint;
@@ -85,19 +86,19 @@ final class SchemasService implements SchemasContract
         ?array $secondaryDisplayProperties = null,
         ?RequestOptions $requestOptions = null,
     ): ObjectSchema {
-        $params = [
-            'associatedObjects' => $associatedObjects,
-            'labels' => $labels,
-            'name' => $name,
-            'properties' => $properties,
-            'requiredProperties' => $requiredProperties,
-            'description' => $description,
-            'primaryDisplayProperty' => $primaryDisplayProperty,
-            'searchableProperties' => $searchableProperties,
-            'secondaryDisplayProperties' => $secondaryDisplayProperties,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'associatedObjects' => $associatedObjects,
+                'labels' => $labels,
+                'name' => $name,
+                'properties' => $properties,
+                'requiredProperties' => $requiredProperties,
+                'description' => $description,
+                'primaryDisplayProperty' => $primaryDisplayProperty,
+                'searchableProperties' => $searchableProperties,
+                'secondaryDisplayProperties' => $secondaryDisplayProperties,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->create(params: $params, requestOptions: $requestOptions);
@@ -131,18 +132,18 @@ final class SchemasService implements SchemasContract
         ?array $secondaryDisplayProperties = null,
         ?RequestOptions $requestOptions = null,
     ): ObjectsSchemasObjectTypeDefinition {
-        $params = [
-            'clearDescription' => $clearDescription,
-            'description' => $description,
-            'labels' => $labels,
-            'primaryDisplayProperty' => $primaryDisplayProperty,
-            'requiredProperties' => $requiredProperties,
-            'restorable' => $restorable,
-            'searchableProperties' => $searchableProperties,
-            'secondaryDisplayProperties' => $secondaryDisplayProperties,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'clearDescription' => $clearDescription,
+                'description' => $description,
+                'labels' => $labels,
+                'primaryDisplayProperty' => $primaryDisplayProperty,
+                'requiredProperties' => $requiredProperties,
+                'restorable' => $restorable,
+                'searchableProperties' => $searchableProperties,
+                'secondaryDisplayProperties' => $secondaryDisplayProperties,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->update($objectType, params: $params, requestOptions: $requestOptions);
@@ -161,9 +162,7 @@ final class SchemasService implements SchemasContract
         bool $archived = false,
         ?RequestOptions $requestOptions = null
     ): SchemaListResponse {
-        $params = ['archived' => $archived];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(['archived' => $archived]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->list(params: $params, requestOptions: $requestOptions);
@@ -184,9 +183,7 @@ final class SchemasService implements SchemasContract
         bool $archived = false,
         ?RequestOptions $requestOptions = null,
     ): mixed {
-        $params = ['archived' => $archived];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(['archived' => $archived]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->delete($objectType, params: $params, requestOptions: $requestOptions);
@@ -208,13 +205,13 @@ final class SchemasService implements SchemasContract
         ?string $name = null,
         ?RequestOptions $requestOptions = null,
     ): AssociationDefinition {
-        $params = [
-            'fromObjectTypeID' => $fromObjectTypeID,
-            'toObjectTypeID' => $toObjectTypeID,
-            'name' => $name,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'fromObjectTypeID' => $fromObjectTypeID,
+                'toObjectTypeID' => $toObjectTypeID,
+                'name' => $name,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->createAssociation($objectType, params: $params, requestOptions: $requestOptions);
@@ -235,7 +232,7 @@ final class SchemasService implements SchemasContract
         string $objectType,
         ?RequestOptions $requestOptions = null,
     ): mixed {
-        $params = ['objectType' => $objectType];
+        $params = Util::removeNulls(['objectType' => $objectType]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->deleteAssociation($associationIdentifier, params: $params, requestOptions: $requestOptions);

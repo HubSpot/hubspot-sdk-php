@@ -54,7 +54,7 @@ final class ActorsRawService implements ActorsRawContract
         return $this->client->request(
             method: 'post',
             path: 'conversations/v3/conversations/actors/batch/read',
-            query: array_diff_key($parsed, $query_params),
+            query: array_intersect_key($parsed, $query_params),
             body: (object) array_diff_key($parsed, $query_params),
             options: $options,
             convert: BatchResponsePublicActor::class,

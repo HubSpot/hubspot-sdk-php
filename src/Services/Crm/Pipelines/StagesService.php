@@ -6,6 +6,7 @@ namespace HubspotSDK\Services\Crm\Pipelines;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Crm\Pipelines\CollectionResponsePipelineStageNoPaging;
 use HubspotSDK\Crm\Pipelines\CollectionResponsePublicAuditInfoNoPaging;
 use HubspotSDK\Crm\Pipelines\PipelineStage;
@@ -52,12 +53,14 @@ final class StagesService implements StagesContract
         array $metadata,
         ?RequestOptions $requestOptions = null,
     ): PipelineStage {
-        $params = [
-            'objectType' => $objectType,
-            'displayOrder' => $displayOrder,
-            'label' => $label,
-            'metadata' => $metadata,
-        ];
+        $params = Util::removeNulls(
+            [
+                'objectType' => $objectType,
+                'displayOrder' => $displayOrder,
+                'label' => $label,
+                'metadata' => $metadata,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->create($pipelineID, params: $params, requestOptions: $requestOptions);
@@ -94,16 +97,16 @@ final class StagesService implements StagesContract
         ?string $label = null,
         ?RequestOptions $requestOptions = null,
     ): PipelineStage {
-        $params = [
-            'objectType' => $objectType,
-            'pipelineID' => $pipelineID,
-            'metadata' => $metadata,
-            'archived' => $archived,
-            'displayOrder' => $displayOrder,
-            'label' => $label,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'objectType' => $objectType,
+                'pipelineID' => $pipelineID,
+                'metadata' => $metadata,
+                'archived' => $archived,
+                'displayOrder' => $displayOrder,
+                'label' => $label,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->update($stageID, params: $params, requestOptions: $requestOptions);
@@ -126,7 +129,7 @@ final class StagesService implements StagesContract
         string $objectType,
         ?RequestOptions $requestOptions = null,
     ): CollectionResponsePipelineStageNoPaging {
-        $params = ['objectType' => $objectType];
+        $params = Util::removeNulls(['objectType' => $objectType]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->list($pipelineID, params: $params, requestOptions: $requestOptions);
@@ -151,7 +154,9 @@ final class StagesService implements StagesContract
         string $pipelineID,
         ?RequestOptions $requestOptions = null,
     ): mixed {
-        $params = ['objectType' => $objectType, 'pipelineID' => $pipelineID];
+        $params = Util::removeNulls(
+            ['objectType' => $objectType, 'pipelineID' => $pipelineID]
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->delete($stageID, params: $params, requestOptions: $requestOptions);
@@ -176,7 +181,9 @@ final class StagesService implements StagesContract
         string $pipelineID,
         ?RequestOptions $requestOptions = null,
     ): PipelineStage {
-        $params = ['objectType' => $objectType, 'pipelineID' => $pipelineID];
+        $params = Util::removeNulls(
+            ['objectType' => $objectType, 'pipelineID' => $pipelineID]
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->get($stageID, params: $params, requestOptions: $requestOptions);
@@ -200,7 +207,9 @@ final class StagesService implements StagesContract
         string $pipelineID,
         ?RequestOptions $requestOptions = null,
     ): CollectionResponsePublicAuditInfoNoPaging {
-        $params = ['objectType' => $objectType, 'pipelineID' => $pipelineID];
+        $params = Util::removeNulls(
+            ['objectType' => $objectType, 'pipelineID' => $pipelineID]
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->getAudit($stageID, params: $params, requestOptions: $requestOptions);
@@ -235,13 +244,15 @@ final class StagesService implements StagesContract
         array $metadata,
         ?RequestOptions $requestOptions = null,
     ): PipelineStage {
-        $params = [
-            'objectType' => $objectType,
-            'pipelineID' => $pipelineID,
-            'displayOrder' => $displayOrder,
-            'label' => $label,
-            'metadata' => $metadata,
-        ];
+        $params = Util::removeNulls(
+            [
+                'objectType' => $objectType,
+                'pipelineID' => $pipelineID,
+                'displayOrder' => $displayOrder,
+                'label' => $label,
+                'metadata' => $metadata,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->replace($stageID, params: $params, requestOptions: $requestOptions);

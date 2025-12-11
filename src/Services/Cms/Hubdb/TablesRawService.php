@@ -594,7 +594,7 @@ final class TablesRawService implements TablesRawContract
             $requestOptions,
         );
         $query_params = array_flip(
-            ['archived', 'includeForeignIds', 'isGetLocalizedSchema']
+            ['archived', 'includeForeignIDs', 'isGetLocalizedSchema']
         );
 
         // @phpstan-ignore-next-line return.type
@@ -602,7 +602,7 @@ final class TablesRawService implements TablesRawContract
             method: 'patch',
             path: ['cms/v3/hubdb/tables/%1$s/draft', $tableIDOrName],
             query: Util::array_transform_keys(
-                array_diff_key($parsed, $query_params),
+                array_intersect_key($parsed, $query_params),
                 ['includeForeignIDs' => 'includeForeignIds'],
             ),
             body: (object) array_diff_key($parsed, $query_params),

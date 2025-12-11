@@ -10,6 +10,7 @@ use HubspotSDK\Auth\OAuth\RefreshTokenInfoResponse;
 use HubspotSDK\Auth\OAuth\TokenResponseIf;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Auth\OAuthContract;
 
@@ -59,18 +60,18 @@ final class OAuthService implements OAuthContract
         ?string $scope = null,
         ?RequestOptions $requestOptions = null,
     ): TokenResponseIf {
-        $params = [
-            'clientSecret' => $clientSecret,
-            'refreshToken' => $refreshToken,
-            'clientID' => $clientID,
-            'code' => $code,
-            'codeVerifier' => $codeVerifier,
-            'grantType' => $grantType,
-            'redirectUri' => $redirectUri,
-            'scope' => $scope,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'clientSecret' => $clientSecret,
+                'refreshToken' => $refreshToken,
+                'clientID' => $clientID,
+                'code' => $code,
+                'codeVerifier' => $codeVerifier,
+                'grantType' => $grantType,
+                'redirectUri' => $redirectUri,
+                'scope' => $scope,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->createAccessToken(params: $params, requestOptions: $requestOptions);

@@ -6,6 +6,7 @@ namespace HubspotSDK\Services\Crm\Lists;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Crm\Lists\ListFolderCreateResponse;
 use HubspotSDK\Crm\Lists\ListFolderFetchResponse;
 use HubspotSDK\RequestOptions;
@@ -41,9 +42,9 @@ final class FoldersService implements FoldersContract
         ?string $parentFolderID = null,
         ?RequestOptions $requestOptions = null,
     ): ListFolderCreateResponse {
-        $params = ['name' => $name, 'parentFolderID' => $parentFolderID];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            ['name' => $name, 'parentFolderID' => $parentFolderID]
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->create(params: $params, requestOptions: $requestOptions);
@@ -83,9 +84,7 @@ final class FoldersService implements FoldersContract
         string $folderID = '0',
         ?RequestOptions $requestOptions = null
     ): ListFolderFetchResponse {
-        $params = ['folderID' => $folderID];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(['folderID' => $folderID]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->get(params: $params, requestOptions: $requestOptions);
@@ -108,7 +107,7 @@ final class FoldersService implements FoldersContract
         string $folderID,
         ?RequestOptions $requestOptions = null,
     ): ListFolderFetchResponse {
-        $params = ['folderID' => $folderID];
+        $params = Util::removeNulls(['folderID' => $folderID]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->move($newParentFolderID, params: $params, requestOptions: $requestOptions);
@@ -131,7 +130,9 @@ final class FoldersService implements FoldersContract
         string $newFolderID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        $params = ['listID' => $listID, 'newFolderID' => $newFolderID];
+        $params = Util::removeNulls(
+            ['listID' => $listID, 'newFolderID' => $newFolderID]
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->moveList(params: $params, requestOptions: $requestOptions);
@@ -154,9 +155,7 @@ final class FoldersService implements FoldersContract
         ?string $newFolderName = null,
         ?RequestOptions $requestOptions = null,
     ): ListFolderFetchResponse {
-        $params = ['newFolderName' => $newFolderName];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(['newFolderName' => $newFolderName]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->rename($folderID, params: $params, requestOptions: $requestOptions);

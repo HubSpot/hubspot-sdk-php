@@ -6,6 +6,7 @@ namespace HubspotSDK\Services\Crm\Extensions\Calling;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Crm\Extensions\Calling\Transcripts\Speaker;
 use HubspotSDK\Crm\Extensions\Calling\Transcripts\TranscriptCreateResponse;
 use HubspotSDK\Crm\Extensions\Calling\Transcripts\TranscriptResponse;
@@ -45,10 +46,12 @@ final class TranscriptsService implements TranscriptsContract
         array $transcriptCreateUtterances,
         ?RequestOptions $requestOptions = null,
     ): TranscriptCreateResponse {
-        $params = [
-            'engagementID' => $engagementID,
-            'transcriptCreateUtterances' => $transcriptCreateUtterances,
-        ];
+        $params = Util::removeNulls(
+            [
+                'engagementID' => $engagementID,
+                'transcriptCreateUtterances' => $transcriptCreateUtterances,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->create(params: $params, requestOptions: $requestOptions);

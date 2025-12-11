@@ -11,6 +11,7 @@ use HubspotSDK\Cms\MediaBridge\Events\EventCreateMediaPlayedEventParams\State;
 use HubspotSDK\Cms\MediaBridge\MediaPlayedEvent;
 use HubspotSDK\Cms\MediaBridge\MediaPlayedPercentageEvent;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Cms\MediaBridge\EventsContract;
 
@@ -59,26 +60,26 @@ final class EventsService implements EventsContract
         ?string $rawDataString = null,
         ?RequestOptions $requestOptions = null,
     ): AttentionSpanEvent {
-        $params = [
-            'mediaType' => $mediaType,
-            'occurredTimestamp' => $occurredTimestamp,
-            'rawDataMap' => $rawDataMap,
-            'sessionID' => $sessionID,
-            '_hsenc' => $_hsenc,
-            'contactID' => $contactID,
-            'contactUtk' => $contactUtk,
-            'derivedValues' => $derivedValues,
-            'externalID' => $externalID,
-            'mediaBridgeID' => $mediaBridgeID,
-            'mediaName' => $mediaName,
-            'mediaURL' => $mediaURL,
-            'pageID' => $pageID,
-            'pageName' => $pageName,
-            'pageURL' => $pageURL,
-            'rawDataString' => $rawDataString,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'mediaType' => $mediaType,
+                'occurredTimestamp' => $occurredTimestamp,
+                'rawDataMap' => $rawDataMap,
+                'sessionID' => $sessionID,
+                '_hsenc' => $_hsenc,
+                'contactID' => $contactID,
+                'contactUtk' => $contactUtk,
+                'derivedValues' => $derivedValues,
+                'externalID' => $externalID,
+                'mediaBridgeID' => $mediaBridgeID,
+                'mediaName' => $mediaName,
+                'mediaURL' => $mediaURL,
+                'pageID' => $pageID,
+                'pageName' => $pageName,
+                'pageURL' => $pageURL,
+                'rawDataString' => $rawDataString,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->createAttentionSpanEvent(params: $params, requestOptions: $requestOptions);
@@ -114,25 +115,25 @@ final class EventsService implements EventsContract
         ?string $pageURL = null,
         ?RequestOptions $requestOptions = null,
     ): MediaPlayedEvent {
-        $params = [
-            'mediaType' => $mediaType,
-            'occurredTimestamp' => $occurredTimestamp,
-            'sessionID' => $sessionID,
-            'state' => $state,
-            '_hsenc' => $_hsenc,
-            'contactID' => $contactID,
-            'contactUtk' => $contactUtk,
-            'externalID' => $externalID,
-            'iframeURL' => $iframeURL,
-            'mediaBridgeID' => $mediaBridgeID,
-            'mediaName' => $mediaName,
-            'mediaURL' => $mediaURL,
-            'pageID' => $pageID,
-            'pageName' => $pageName,
-            'pageURL' => $pageURL,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'mediaType' => $mediaType,
+                'occurredTimestamp' => $occurredTimestamp,
+                'sessionID' => $sessionID,
+                'state' => $state,
+                '_hsenc' => $_hsenc,
+                'contactID' => $contactID,
+                'contactUtk' => $contactUtk,
+                'externalID' => $externalID,
+                'iframeURL' => $iframeURL,
+                'mediaBridgeID' => $mediaBridgeID,
+                'mediaName' => $mediaName,
+                'mediaURL' => $mediaURL,
+                'pageID' => $pageID,
+                'pageName' => $pageName,
+                'pageURL' => $pageURL,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->createMediaPlayedEvent(params: $params, requestOptions: $requestOptions);
@@ -166,24 +167,24 @@ final class EventsService implements EventsContract
         ?string $pageURL = null,
         ?RequestOptions $requestOptions = null,
     ): MediaPlayedPercentageEvent {
-        $params = [
-            'mediaType' => $mediaType,
-            'occurredTimestamp' => $occurredTimestamp,
-            'playedPercent' => $playedPercent,
-            'sessionID' => $sessionID,
-            '_hsenc' => $_hsenc,
-            'contactID' => $contactID,
-            'contactUtk' => $contactUtk,
-            'externalID' => $externalID,
-            'mediaBridgeID' => $mediaBridgeID,
-            'mediaName' => $mediaName,
-            'mediaURL' => $mediaURL,
-            'pageID' => $pageID,
-            'pageName' => $pageName,
-            'pageURL' => $pageURL,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'mediaType' => $mediaType,
+                'occurredTimestamp' => $occurredTimestamp,
+                'playedPercent' => $playedPercent,
+                'sessionID' => $sessionID,
+                '_hsenc' => $_hsenc,
+                'contactID' => $contactID,
+                'contactUtk' => $contactUtk,
+                'externalID' => $externalID,
+                'mediaBridgeID' => $mediaBridgeID,
+                'mediaName' => $mediaName,
+                'mediaURL' => $mediaURL,
+                'pageID' => $pageID,
+                'pageName' => $pageName,
+                'pageURL' => $pageURL,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->createMediaPlayedPercentEvent(params: $params, requestOptions: $requestOptions);

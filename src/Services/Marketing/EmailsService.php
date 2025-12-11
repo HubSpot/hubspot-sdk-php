@@ -6,6 +6,7 @@ namespace HubspotSDK\Services\Marketing;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Marketing\Emails\EmailCreateParams\Language;
 use HubspotSDK\Marketing\Emails\EmailCreateParams\State;
 use HubspotSDK\Marketing\Emails\EmailCreateParams\Subcategory;
@@ -228,31 +229,31 @@ final class EmailsService implements EmailsContract
         array|PublicWebversionDetails|null $webversion = null,
         ?RequestOptions $requestOptions = null,
     ): PublicEmail {
-        $params = [
-            'name' => $name,
-            'activeDomain' => $activeDomain,
-            'archived' => $archived,
-            'businessUnitID' => $businessUnitID,
-            'campaign' => $campaign,
-            'content' => $content,
-            'feedbackSurveyID' => $feedbackSurveyID,
-            'folderIDV2' => $folderIDV2,
-            'from' => $from,
-            'jitterSendTime' => $jitterSendTime,
-            'language' => $language,
-            'publishDate' => $publishDate,
-            'rssData' => $rssData,
-            'sendOnPublish' => $sendOnPublish,
-            'state' => $state,
-            'subcategory' => $subcategory,
-            'subject' => $subject,
-            'subscriptionDetails' => $subscriptionDetails,
-            'testing' => $testing,
-            'to' => $to,
-            'webversion' => $webversion,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'name' => $name,
+                'activeDomain' => $activeDomain,
+                'archived' => $archived,
+                'businessUnitID' => $businessUnitID,
+                'campaign' => $campaign,
+                'content' => $content,
+                'feedbackSurveyID' => $feedbackSurveyID,
+                'folderIDV2' => $folderIDV2,
+                'from' => $from,
+                'jitterSendTime' => $jitterSendTime,
+                'language' => $language,
+                'publishDate' => $publishDate,
+                'rssData' => $rssData,
+                'sendOnPublish' => $sendOnPublish,
+                'state' => $state,
+                'subcategory' => $subcategory,
+                'subject' => $subject,
+                'subscriptionDetails' => $subscriptionDetails,
+                'testing' => $testing,
+                'to' => $to,
+                'webversion' => $webversion,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->create(params: $params, requestOptions: $requestOptions);
@@ -437,30 +438,30 @@ final class EmailsService implements EmailsContract
         array|PublicWebversionDetails|null $webversion = null,
         ?RequestOptions $requestOptions = null,
     ): PublicEmail {
-        $params = [
-            'archived' => $archived,
-            'activeDomain' => $activeDomain,
-            'businessUnitID' => $businessUnitID,
-            'campaign' => $campaign,
-            'content' => $content,
-            'folderIDV2' => $folderIDV2,
-            'from' => $from,
-            'jitterSendTime' => $jitterSendTime,
-            'language' => $language,
-            'name' => $name,
-            'publishDate' => $publishDate,
-            'rssData' => $rssData,
-            'sendOnPublish' => $sendOnPublish,
-            'state' => $state,
-            'subcategory' => $subcategory,
-            'subject' => $subject,
-            'subscriptionDetails' => $subscriptionDetails,
-            'testing' => $testing,
-            'to' => $to,
-            'webversion' => $webversion,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'archived' => $archived,
+                'activeDomain' => $activeDomain,
+                'businessUnitID' => $businessUnitID,
+                'campaign' => $campaign,
+                'content' => $content,
+                'folderIDV2' => $folderIDV2,
+                'from' => $from,
+                'jitterSendTime' => $jitterSendTime,
+                'language' => $language,
+                'name' => $name,
+                'publishDate' => $publishDate,
+                'rssData' => $rssData,
+                'sendOnPublish' => $sendOnPublish,
+                'state' => $state,
+                'subcategory' => $subcategory,
+                'subject' => $subject,
+                'subscriptionDetails' => $subscriptionDetails,
+                'testing' => $testing,
+                'to' => $to,
+                'webversion' => $webversion,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->update($emailID, params: $params, requestOptions: $requestOptions);
@@ -518,30 +519,30 @@ final class EmailsService implements EmailsContract
         ?bool $workflowNames = null,
         ?RequestOptions $requestOptions = null,
     ): Page {
-        $params = [
-            'after' => $after,
-            'archived' => $archived,
-            'campaign' => $campaign,
-            'createdAfter' => $createdAfter,
-            'createdAt' => $createdAt,
-            'createdBefore' => $createdBefore,
-            'includedProperties' => $includedProperties,
-            'includeStats' => $includeStats,
-            'isPublished' => $isPublished,
-            'limit' => $limit,
-            'marketingCampaignNames' => $marketingCampaignNames,
-            'publishedAfter' => $publishedAfter,
-            'publishedAt' => $publishedAt,
-            'publishedBefore' => $publishedBefore,
-            'sort' => $sort,
-            'type' => $type,
-            'updatedAfter' => $updatedAfter,
-            'updatedAt' => $updatedAt,
-            'updatedBefore' => $updatedBefore,
-            'workflowNames' => $workflowNames,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'after' => $after,
+                'archived' => $archived,
+                'campaign' => $campaign,
+                'createdAfter' => $createdAfter,
+                'createdAt' => $createdAt,
+                'createdBefore' => $createdBefore,
+                'includedProperties' => $includedProperties,
+                'includeStats' => $includeStats,
+                'isPublished' => $isPublished,
+                'limit' => $limit,
+                'marketingCampaignNames' => $marketingCampaignNames,
+                'publishedAfter' => $publishedAfter,
+                'publishedAt' => $publishedAt,
+                'publishedBefore' => $publishedBefore,
+                'sort' => $sort,
+                'type' => $type,
+                'updatedAfter' => $updatedAfter,
+                'updatedAt' => $updatedAt,
+                'updatedBefore' => $updatedBefore,
+                'workflowNames' => $workflowNames,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->list(params: $params, requestOptions: $requestOptions);
@@ -564,9 +565,7 @@ final class EmailsService implements EmailsContract
         ?bool $archived = null,
         ?RequestOptions $requestOptions = null,
     ): mixed {
-        $params = ['archived' => $archived];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(['archived' => $archived]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->delete($emailID, params: $params, requestOptions: $requestOptions);
@@ -591,9 +590,9 @@ final class EmailsService implements EmailsContract
         ?string $language = null,
         ?RequestOptions $requestOptions = null,
     ): PublicEmail {
-        $params = ['id' => $id, 'cloneName' => $cloneName, 'language' => $language];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            ['id' => $id, 'cloneName' => $cloneName, 'language' => $language]
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->clone(params: $params, requestOptions: $requestOptions);
@@ -616,7 +615,9 @@ final class EmailsService implements EmailsContract
         string $variationName,
         ?RequestOptions $requestOptions = null,
     ): PublicEmail {
-        $params = ['contentID' => $contentID, 'variationName' => $variationName];
+        $params = Util::removeNulls(
+            ['contentID' => $contentID, 'variationName' => $variationName]
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->createAbTestVariation(params: $params, requestOptions: $requestOptions);
@@ -647,15 +648,15 @@ final class EmailsService implements EmailsContract
         ?bool $workflowNames = null,
         ?RequestOptions $requestOptions = null,
     ): PublicEmail {
-        $params = [
-            'archived' => $archived,
-            'includedProperties' => $includedProperties,
-            'includeStats' => $includeStats,
-            'marketingCampaignNames' => $marketingCampaignNames,
-            'workflowNames' => $workflowNames,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'archived' => $archived,
+                'includedProperties' => $includedProperties,
+                'includeStats' => $includeStats,
+                'marketingCampaignNames' => $marketingCampaignNames,
+                'workflowNames' => $workflowNames,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->get($emailID, params: $params, requestOptions: $requestOptions);
@@ -686,15 +687,15 @@ final class EmailsService implements EmailsContract
         ?bool $workflowNames = null,
         ?RequestOptions $requestOptions = null,
     ): PublicEmail {
-        $params = [
-            'archived' => $archived,
-            'includedProperties' => $includedProperties,
-            'includeStats' => $includeStats,
-            'marketingCampaignNames' => $marketingCampaignNames,
-            'workflowNames' => $workflowNames,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'archived' => $archived,
+                'includedProperties' => $includedProperties,
+                'includeStats' => $includeStats,
+                'marketingCampaignNames' => $marketingCampaignNames,
+                'workflowNames' => $workflowNames,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->getAbTestVariation($emailID, params: $params, requestOptions: $requestOptions);
@@ -736,7 +737,7 @@ final class EmailsService implements EmailsContract
         string $emailID,
         ?RequestOptions $requestOptions = null
     ): VersionPublicEmail {
-        $params = ['emailID' => $emailID];
+        $params = Util::removeNulls(['emailID' => $emailID]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->getRevision($revisionID, params: $params, requestOptions: $requestOptions);
@@ -765,9 +766,9 @@ final class EmailsService implements EmailsContract
         ?int $limit = null,
         ?RequestOptions $requestOptions = null,
     ): Page {
-        $params = ['after' => $after, 'before' => $before, 'limit' => $limit];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            ['after' => $after, 'before' => $before, 'limit' => $limit]
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->listRevisions($emailID, params: $params, requestOptions: $requestOptions);
@@ -828,7 +829,7 @@ final class EmailsService implements EmailsContract
         string $emailID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        $params = ['emailID' => $emailID];
+        $params = Util::removeNulls(['emailID' => $emailID]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->restoreRevision($revisionID, params: $params, requestOptions: $requestOptions);
@@ -851,7 +852,7 @@ final class EmailsService implements EmailsContract
         string $emailID,
         ?RequestOptions $requestOptions = null
     ): PublicEmail {
-        $params = ['emailID' => $emailID];
+        $params = Util::removeNulls(['emailID' => $emailID]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->restoreRevisionToDraft($revisionID, params: $params, requestOptions: $requestOptions);
@@ -1052,30 +1053,30 @@ final class EmailsService implements EmailsContract
         array|PublicWebversionDetails|null $webversion = null,
         ?RequestOptions $requestOptions = null,
     ): PublicEmail {
-        $params = [
-            'activeDomain' => $activeDomain,
-            'archived' => $archived,
-            'businessUnitID' => $businessUnitID,
-            'campaign' => $campaign,
-            'content' => $content,
-            'folderIDV2' => $folderIDV2,
-            'from' => $from,
-            'jitterSendTime' => $jitterSendTime,
-            'language' => $language,
-            'name' => $name,
-            'publishDate' => $publishDate,
-            'rssData' => $rssData,
-            'sendOnPublish' => $sendOnPublish,
-            'state' => $state,
-            'subcategory' => $subcategory,
-            'subject' => $subject,
-            'subscriptionDetails' => $subscriptionDetails,
-            'testing' => $testing,
-            'to' => $to,
-            'webversion' => $webversion,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'activeDomain' => $activeDomain,
+                'archived' => $archived,
+                'businessUnitID' => $businessUnitID,
+                'campaign' => $campaign,
+                'content' => $content,
+                'folderIDV2' => $folderIDV2,
+                'from' => $from,
+                'jitterSendTime' => $jitterSendTime,
+                'language' => $language,
+                'name' => $name,
+                'publishDate' => $publishDate,
+                'rssData' => $rssData,
+                'sendOnPublish' => $sendOnPublish,
+                'state' => $state,
+                'subcategory' => $subcategory,
+                'subject' => $subject,
+                'subscriptionDetails' => $subscriptionDetails,
+                'testing' => $testing,
+                'to' => $to,
+                'webversion' => $webversion,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->updateDraft($emailID, params: $params, requestOptions: $requestOptions);

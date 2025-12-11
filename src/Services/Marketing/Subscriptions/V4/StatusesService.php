@@ -6,6 +6,7 @@ namespace HubspotSDK\Services\Marketing\Subscriptions\V4;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Marketing\Subscriptions\V4\ActionResponseWithResultsPublicStatus;
 use HubspotSDK\Marketing\Subscriptions\V4\ActionResponseWithResultsPublicWideStatus;
 use HubspotSDK\Marketing\Subscriptions\V4\BatchResponsePublicBulkOptOutFromAllResponse;
@@ -56,15 +57,15 @@ final class StatusesService implements StatusesContract
         ?string $legalBasisExplanation = null,
         ?RequestOptions $requestOptions = null,
     ): ActionResponseWithResultsPublicStatus {
-        $params = [
-            'channel' => $channel,
-            'statusState' => $statusState,
-            'subscriptionID' => $subscriptionID,
-            'legalBasis' => $legalBasis,
-            'legalBasisExplanation' => $legalBasisExplanation,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'channel' => $channel,
+                'statusState' => $statusState,
+                'subscriptionID' => $subscriptionID,
+                'legalBasis' => $legalBasis,
+                'legalBasisExplanation' => $legalBasisExplanation,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->update($subscriberIDString, params: $params, requestOptions: $requestOptions);
@@ -89,13 +90,13 @@ final class StatusesService implements StatusesContract
         ?int $businessUnitID = null,
         ?RequestOptions $requestOptions = null,
     ): BatchResponsePublicStatusBulkResponse {
-        $params = [
-            'channel' => $channel,
-            'inputs' => $inputs,
-            'businessUnitID' => $businessUnitID,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'channel' => $channel,
+                'inputs' => $inputs,
+                'businessUnitID' => $businessUnitID,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->batchGet(params: $params, requestOptions: $requestOptions);
@@ -120,13 +121,13 @@ final class StatusesService implements StatusesContract
         ?int $businessUnitID = null,
         ?RequestOptions $requestOptions = null,
     ): BatchResponsePublicWideStatusBulkResponse {
-        $params = [
-            'channel' => $channel,
-            'inputs' => $inputs,
-            'businessUnitID' => $businessUnitID,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'channel' => $channel,
+                'inputs' => $inputs,
+                'businessUnitID' => $businessUnitID,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->batchGetUnsubscribeAllStatus(params: $params, requestOptions: $requestOptions);
@@ -153,14 +154,14 @@ final class StatusesService implements StatusesContract
         bool $verbose = false,
         ?RequestOptions $requestOptions = null,
     ): BatchResponsePublicBulkOptOutFromAllResponse {
-        $params = [
-            'channel' => $channel,
-            'inputs' => $inputs,
-            'businessUnitID' => $businessUnitID,
-            'verbose' => $verbose,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'channel' => $channel,
+                'inputs' => $inputs,
+                'businessUnitID' => $businessUnitID,
+                'verbose' => $verbose,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->batchUnsubscribeAll(params: $params, requestOptions: $requestOptions);
@@ -188,7 +189,7 @@ final class StatusesService implements StatusesContract
         array $inputs,
         ?RequestOptions $requestOptions = null
     ): BatchResponsePublicStatus {
-        $params = ['inputs' => $inputs];
+        $params = Util::removeNulls(['inputs' => $inputs]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->batchUpdate(params: $params, requestOptions: $requestOptions);
@@ -213,9 +214,9 @@ final class StatusesService implements StatusesContract
         ?int $businessUnitID = null,
         ?RequestOptions $requestOptions = null,
     ): ActionResponseWithResultsPublicStatus {
-        $params = ['channel' => $channel, 'businessUnitID' => $businessUnitID];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            ['channel' => $channel, 'businessUnitID' => $businessUnitID]
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->get($subscriberIDString, params: $params, requestOptions: $requestOptions);
@@ -242,13 +243,13 @@ final class StatusesService implements StatusesContract
         bool $verbose = false,
         ?RequestOptions $requestOptions = null,
     ): ActionResponseWithResultsPublicWideStatus {
-        $params = [
-            'channel' => $channel,
-            'businessUnitID' => $businessUnitID,
-            'verbose' => $verbose,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'channel' => $channel,
+                'businessUnitID' => $businessUnitID,
+                'verbose' => $verbose,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->getUnsubscribeAllStatus($subscriberIDString, params: $params, requestOptions: $requestOptions);
@@ -275,13 +276,13 @@ final class StatusesService implements StatusesContract
         bool $verbose = false,
         ?RequestOptions $requestOptions = null,
     ): ActionResponseWithResultsPublicStatus {
-        $params = [
-            'channel' => $channel,
-            'businessUnitID' => $businessUnitID,
-            'verbose' => $verbose,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'channel' => $channel,
+                'businessUnitID' => $businessUnitID,
+                'verbose' => $verbose,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->unsubscribeAll($subscriberIDString, params: $params, requestOptions: $requestOptions);

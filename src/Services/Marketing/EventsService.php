@@ -6,6 +6,7 @@ namespace HubspotSDK\Services\Marketing;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Marketing\Events\BatchResponseMarketingEventPublicDefaultResponse;
 use HubspotSDK\Marketing\Events\BatchResponseMarketingEventPublicDefaultResponseV2;
 use HubspotSDK\Marketing\Events\CollectionResponseSearchPublicResponseWrapperNoPaging;
@@ -120,22 +121,22 @@ final class EventsService implements EventsContract
         string|\DateTimeInterface|null $startDateTime = null,
         ?RequestOptions $requestOptions = null,
     ): MarketingEventDefaultResponse {
-        $params = [
-            'customProperties' => $customProperties,
-            'eventName' => $eventName,
-            'eventOrganizer' => $eventOrganizer,
-            'externalAccountID' => $externalAccountID,
-            'externalEventID' => $externalEventID,
-            'endDateTime' => $endDateTime,
-            'eventCancelled' => $eventCancelled,
-            'eventCompleted' => $eventCompleted,
-            'eventDescription' => $eventDescription,
-            'eventType' => $eventType,
-            'eventURL' => $eventURL,
-            'startDateTime' => $startDateTime,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'customProperties' => $customProperties,
+                'eventName' => $eventName,
+                'eventOrganizer' => $eventOrganizer,
+                'externalAccountID' => $externalAccountID,
+                'externalEventID' => $externalEventID,
+                'endDateTime' => $endDateTime,
+                'eventCancelled' => $eventCancelled,
+                'eventCompleted' => $eventCompleted,
+                'eventDescription' => $eventDescription,
+                'eventType' => $eventType,
+                'eventURL' => $eventURL,
+                'startDateTime' => $startDateTime,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->create(params: $params, requestOptions: $requestOptions);
@@ -186,19 +187,19 @@ final class EventsService implements EventsContract
         string|\DateTimeInterface|null $startDateTime = null,
         ?RequestOptions $requestOptions = null,
     ): MarketingEventPublicDefaultResponseV2 {
-        $params = [
-            'customProperties' => $customProperties,
-            'endDateTime' => $endDateTime,
-            'eventCancelled' => $eventCancelled,
-            'eventDescription' => $eventDescription,
-            'eventName' => $eventName,
-            'eventOrganizer' => $eventOrganizer,
-            'eventType' => $eventType,
-            'eventURL' => $eventURL,
-            'startDateTime' => $startDateTime,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'customProperties' => $customProperties,
+                'endDateTime' => $endDateTime,
+                'eventCancelled' => $eventCancelled,
+                'eventDescription' => $eventDescription,
+                'eventName' => $eventName,
+                'eventOrganizer' => $eventOrganizer,
+                'eventType' => $eventType,
+                'eventURL' => $eventURL,
+                'startDateTime' => $startDateTime,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->update($objectID, params: $params, requestOptions: $requestOptions);
@@ -225,9 +226,7 @@ final class EventsService implements EventsContract
         int $limit = 10,
         ?RequestOptions $requestOptions = null,
     ): Page {
-        $params = ['after' => $after, 'limit' => $limit];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(['after' => $after, 'limit' => $limit]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->list(params: $params, requestOptions: $requestOptions);
@@ -269,7 +268,7 @@ final class EventsService implements EventsContract
         string $externalAccountID,
         ?RequestOptions $requestOptions = null,
     ): MarketingEventDefaultResponse {
-        $params = ['externalAccountID' => $externalAccountID];
+        $params = Util::removeNulls(['externalAccountID' => $externalAccountID]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->cancelByExternalEventID($externalEventID, params: $params, requestOptions: $requestOptions);
@@ -296,11 +295,13 @@ final class EventsService implements EventsContract
         string|\DateTimeInterface $startDateTime,
         ?RequestOptions $requestOptions = null,
     ): MarketingEventDefaultResponse {
-        $params = [
-            'externalAccountID' => $externalAccountID,
-            'endDateTime' => $endDateTime,
-            'startDateTime' => $startDateTime,
-        ];
+        $params = Util::removeNulls(
+            [
+                'externalAccountID' => $externalAccountID,
+                'endDateTime' => $endDateTime,
+                'startDateTime' => $startDateTime,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->completeByExternalEventID($externalEventID, params: $params, requestOptions: $requestOptions);
@@ -325,7 +326,7 @@ final class EventsService implements EventsContract
         array $inputs,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        $params = ['inputs' => $inputs];
+        $params = Util::removeNulls(['inputs' => $inputs]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->deleteBatch(params: $params, requestOptions: $requestOptions);
@@ -350,7 +351,7 @@ final class EventsService implements EventsContract
         array $inputs,
         ?RequestOptions $requestOptions = null
     ): string {
-        $params = ['inputs' => $inputs];
+        $params = Util::removeNulls(['inputs' => $inputs]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->deleteBatchByExternalEventID(params: $params, requestOptions: $requestOptions);
@@ -375,7 +376,7 @@ final class EventsService implements EventsContract
         string $externalAccountID,
         ?RequestOptions $requestOptions = null,
     ): mixed {
-        $params = ['externalAccountID' => $externalAccountID];
+        $params = Util::removeNulls(['externalAccountID' => $externalAccountID]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->deleteByExternalEventID($externalEventID, params: $params, requestOptions: $requestOptions);
@@ -419,7 +420,7 @@ final class EventsService implements EventsContract
         string $externalAccountID,
         ?RequestOptions $requestOptions = null,
     ): MarketingEventPublicReadResponse {
-        $params = ['externalAccountID' => $externalAccountID];
+        $params = Util::removeNulls(['externalAccountID' => $externalAccountID]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->getByExternalEventID($externalEventID, params: $params, requestOptions: $requestOptions);
@@ -442,7 +443,7 @@ final class EventsService implements EventsContract
         string $q,
         ?RequestOptions $requestOptions = null
     ): CollectionResponseSearchPublicResponseWrapperNoPaging {
-        $params = ['q' => $q];
+        $params = Util::removeNulls(['q' => $q]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->searchByExternalEventID(params: $params, requestOptions: $requestOptions);
@@ -519,7 +520,7 @@ final class EventsService implements EventsContract
         array $inputs,
         ?RequestOptions $requestOptions = null
     ): BatchResponseMarketingEventPublicDefaultResponseV2 {
-        $params = ['inputs' => $inputs];
+        $params = Util::removeNulls(['inputs' => $inputs]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->updateBatch(params: $params, requestOptions: $requestOptions);
@@ -585,21 +586,21 @@ final class EventsService implements EventsContract
         string|\DateTimeInterface|null $startDateTime = null,
         ?RequestOptions $requestOptions = null,
     ): MarketingEventPublicDefaultResponse {
-        $params = [
-            'externalAccountID' => $externalAccountID,
-            'customProperties' => $customProperties,
-            'endDateTime' => $endDateTime,
-            'eventCancelled' => $eventCancelled,
-            'eventCompleted' => $eventCompleted,
-            'eventDescription' => $eventDescription,
-            'eventName' => $eventName,
-            'eventOrganizer' => $eventOrganizer,
-            'eventType' => $eventType,
-            'eventURL' => $eventURL,
-            'startDateTime' => $startDateTime,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'externalAccountID' => $externalAccountID,
+                'customProperties' => $customProperties,
+                'endDateTime' => $endDateTime,
+                'eventCancelled' => $eventCancelled,
+                'eventCompleted' => $eventCompleted,
+                'eventDescription' => $eventDescription,
+                'eventName' => $eventName,
+                'eventOrganizer' => $eventOrganizer,
+                'eventType' => $eventType,
+                'eventURL' => $eventURL,
+                'startDateTime' => $startDateTime,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->updateByExternalEventID($externalEventID, params: $params, requestOptions: $requestOptions);
@@ -655,7 +656,7 @@ final class EventsService implements EventsContract
         array $inputs,
         ?RequestOptions $requestOptions = null
     ): BatchResponseMarketingEventPublicDefaultResponse {
-        $params = ['inputs' => $inputs];
+        $params = Util::removeNulls(['inputs' => $inputs]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->upsertBatch(params: $params, requestOptions: $requestOptions);
@@ -720,22 +721,22 @@ final class EventsService implements EventsContract
         string|\DateTimeInterface|null $startDateTime = null,
         ?RequestOptions $requestOptions = null,
     ): MarketingEventPublicDefaultResponse {
-        $params = [
-            'customProperties' => $customProperties,
-            'eventName' => $eventName,
-            'eventOrganizer' => $eventOrganizer,
-            'externalAccountID' => $externalAccountID,
-            'externalEventID' => $externalEventID,
-            'endDateTime' => $endDateTime,
-            'eventCancelled' => $eventCancelled,
-            'eventCompleted' => $eventCompleted,
-            'eventDescription' => $eventDescription,
-            'eventType' => $eventType,
-            'eventURL' => $eventURL,
-            'startDateTime' => $startDateTime,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'customProperties' => $customProperties,
+                'eventName' => $eventName,
+                'eventOrganizer' => $eventOrganizer,
+                'externalAccountID' => $externalAccountID,
+                'externalEventID' => $externalEventID,
+                'endDateTime' => $endDateTime,
+                'eventCancelled' => $eventCancelled,
+                'eventCompleted' => $eventCompleted,
+                'eventDescription' => $eventDescription,
+                'eventType' => $eventType,
+                'eventURL' => $eventURL,
+                'startDateTime' => $startDateTime,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->upsertByExternalEventID($externalEventID_, params: $params, requestOptions: $requestOptions);
@@ -767,11 +768,13 @@ final class EventsService implements EventsContract
         array $inputs,
         ?RequestOptions $requestOptions = null,
     ): string {
-        $params = [
-            'externalEventID' => $externalEventID,
-            'externalAccountID' => $externalAccountID,
-            'inputs' => $inputs,
-        ];
+        $params = Util::removeNulls(
+            [
+                'externalEventID' => $externalEventID,
+                'externalAccountID' => $externalAccountID,
+                'inputs' => $inputs,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->upsertSubscriberStateByEmail($subscriberState, params: $params, requestOptions: $requestOptions);
@@ -800,11 +803,13 @@ final class EventsService implements EventsContract
         array $inputs,
         ?RequestOptions $requestOptions = null,
     ): string {
-        $params = [
-            'externalEventID' => $externalEventID,
-            'externalAccountID' => $externalAccountID,
-            'inputs' => $inputs,
-        ];
+        $params = Util::removeNulls(
+            [
+                'externalEventID' => $externalEventID,
+                'externalAccountID' => $externalAccountID,
+                'inputs' => $inputs,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->upsertSubscriberStateByID($subscriberState, params: $params, requestOptions: $requestOptions);

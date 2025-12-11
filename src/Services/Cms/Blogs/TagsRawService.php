@@ -111,7 +111,7 @@ final class TagsRawService implements TagsRawContract
         return $this->client->request(
             method: 'patch',
             path: ['cms/v3/blogs/tags/%1$s', $objectID],
-            query: array_diff_key($parsed, $query_params),
+            query: array_intersect_key($parsed, $query_params),
             body: (object) array_diff_key($parsed, $query_params),
             options: $options,
             convert: Tag::class,
@@ -414,7 +414,7 @@ final class TagsRawService implements TagsRawContract
         return $this->client->request(
             method: 'post',
             path: 'cms/v3/blogs/tags/batch/read',
-            query: array_diff_key($parsed, $query_params),
+            query: array_intersect_key($parsed, $query_params),
             body: (object) array_diff_key($parsed, $query_params),
             options: $options,
             convert: BatchResponseTag::class,
@@ -476,7 +476,7 @@ final class TagsRawService implements TagsRawContract
         return $this->client->request(
             method: 'post',
             path: 'cms/v3/blogs/tags/batch/update',
-            query: array_diff_key($parsed, $query_params),
+            query: array_intersect_key($parsed, $query_params),
             body: (object) array_diff_key($parsed, $query_params),
             options: $options,
             convert: BatchResponseTag::class,

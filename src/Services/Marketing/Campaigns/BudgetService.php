@@ -6,6 +6,7 @@ namespace HubspotSDK\Services\Marketing\Campaigns;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Marketing\Campaigns\PublicBudgetItem;
 use HubspotSDK\Marketing\Campaigns\PublicBudgetTotals;
 use HubspotSDK\RequestOptions;
@@ -43,14 +44,14 @@ final class BudgetService implements BudgetContract
         ?string $description = null,
         ?RequestOptions $requestOptions = null,
     ): PublicBudgetItem {
-        $params = [
-            'amount' => $amount,
-            'name' => $name,
-            'order' => $order,
-            'description' => $description,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'amount' => $amount,
+                'name' => $name,
+                'order' => $order,
+                'description' => $description,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->create($campaignGuid, params: $params, requestOptions: $requestOptions);
@@ -81,15 +82,15 @@ final class BudgetService implements BudgetContract
         ?string $description = null,
         ?RequestOptions $requestOptions = null,
     ): PublicBudgetItem {
-        $params = [
-            'campaignGuid' => $campaignGuid,
-            'amount' => $amount,
-            'name' => $name,
-            'order' => $order,
-            'description' => $description,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'campaignGuid' => $campaignGuid,
+                'amount' => $amount,
+                'name' => $name,
+                'order' => $order,
+                'description' => $description,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->update($budgetID, params: $params, requestOptions: $requestOptions);
@@ -112,7 +113,7 @@ final class BudgetService implements BudgetContract
         string $campaignGuid,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        $params = ['campaignGuid' => $campaignGuid];
+        $params = Util::removeNulls(['campaignGuid' => $campaignGuid]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->delete($budgetID, params: $params, requestOptions: $requestOptions);
@@ -135,7 +136,7 @@ final class BudgetService implements BudgetContract
         string $campaignGuid,
         ?RequestOptions $requestOptions = null
     ): PublicBudgetItem {
-        $params = ['campaignGuid' => $campaignGuid];
+        $params = Util::removeNulls(['campaignGuid' => $campaignGuid]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->get($budgetID, params: $params, requestOptions: $requestOptions);

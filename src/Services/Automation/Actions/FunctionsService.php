@@ -10,6 +10,7 @@ use HubspotSDK\Automation\Actions\PublicActionFunction;
 use HubspotSDK\Automation\Actions\PublicActionFunctionIdentifier;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Automation\Actions\FunctionsContract;
 
@@ -43,7 +44,7 @@ final class FunctionsService implements FunctionsContract
         int $appID,
         ?RequestOptions $requestOptions = null
     ): CollectionResponsePublicActionFunctionIdentifierNoPaging {
-        $params = ['appID' => $appID];
+        $params = Util::removeNulls(['appID' => $appID]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->list($definitionID, params: $params, requestOptions: $requestOptions);
@@ -67,11 +68,13 @@ final class FunctionsService implements FunctionsContract
         string|FunctionType $functionType,
         ?RequestOptions $requestOptions = null,
     ): mixed {
-        $params = [
-            'appID' => $appID,
-            'definitionID' => $definitionID,
-            'functionType' => $functionType,
-        ];
+        $params = Util::removeNulls(
+            [
+                'appID' => $appID,
+                'definitionID' => $definitionID,
+                'functionType' => $functionType,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->delete($functionID, params: $params, requestOptions: $requestOptions);
@@ -100,12 +103,14 @@ final class FunctionsService implements FunctionsContract
         string $body,
         ?RequestOptions $requestOptions = null,
     ): PublicActionFunctionIdentifier {
-        $params = [
-            'appID' => $appID,
-            'definitionID' => $definitionID,
-            'functionType' => $functionType,
-            'body' => $body,
-        ];
+        $params = Util::removeNulls(
+            [
+                'appID' => $appID,
+                'definitionID' => $definitionID,
+                'functionType' => $functionType,
+                'body' => $body,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->createOrReplace($functionID, params: $params, requestOptions: $requestOptions);
@@ -132,9 +137,9 @@ final class FunctionsService implements FunctionsContract
         string $body,
         ?RequestOptions $requestOptions = null,
     ): PublicActionFunctionIdentifier {
-        $params = [
-            'appID' => $appID, 'definitionID' => $definitionID, 'body' => $body,
-        ];
+        $params = Util::removeNulls(
+            ['appID' => $appID, 'definitionID' => $definitionID, 'body' => $body]
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->createOrReplaceByFunctionType($functionType, params: $params, requestOptions: $requestOptions);
@@ -159,7 +164,9 @@ final class FunctionsService implements FunctionsContract
         string $definitionID,
         ?RequestOptions $requestOptions = null,
     ): mixed {
-        $params = ['appID' => $appID, 'definitionID' => $definitionID];
+        $params = Util::removeNulls(
+            ['appID' => $appID, 'definitionID' => $definitionID]
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->deleteByFunctionType($functionType, params: $params, requestOptions: $requestOptions);
@@ -186,11 +193,13 @@ final class FunctionsService implements FunctionsContract
         string|\HubspotSDK\Automation\Actions\Functions\FunctionGetParams\FunctionType $functionType,
         ?RequestOptions $requestOptions = null,
     ): PublicActionFunction {
-        $params = [
-            'appID' => $appID,
-            'definitionID' => $definitionID,
-            'functionType' => $functionType,
-        ];
+        $params = Util::removeNulls(
+            [
+                'appID' => $appID,
+                'definitionID' => $definitionID,
+                'functionType' => $functionType,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->get($functionID, params: $params, requestOptions: $requestOptions);
@@ -215,7 +224,9 @@ final class FunctionsService implements FunctionsContract
         string $definitionID,
         ?RequestOptions $requestOptions = null,
     ): PublicActionFunction {
-        $params = ['appID' => $appID, 'definitionID' => $definitionID];
+        $params = Util::removeNulls(
+            ['appID' => $appID, 'definitionID' => $definitionID]
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->getByFunctionType($functionType, params: $params, requestOptions: $requestOptions);

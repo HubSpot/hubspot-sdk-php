@@ -7,6 +7,7 @@ namespace HubspotSDK\Services\Cms\Hubdb;
 use HubspotSDK\Client;
 use HubspotSDK\Cms\Hubdb\HubDBTableRowV3;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Cms\Hubdb\RowsContract;
@@ -55,15 +56,15 @@ final class RowsService implements RowsContract
         ?string $path = null,
         ?RequestOptions $requestOptions = null,
     ): HubDBTableRowV3 {
-        $params = [
-            'childTableID' => $childTableID,
-            'displayIndex' => $displayIndex,
-            'values' => $values,
-            'name' => $name,
-            'path' => $path,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'childTableID' => $childTableID,
+                'displayIndex' => $displayIndex,
+                'values' => $values,
+                'name' => $name,
+                'path' => $path,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->create($tableIDOrName, params: $params, requestOptions: $requestOptions);
@@ -99,16 +100,16 @@ final class RowsService implements RowsContract
         ?array $sort = null,
         ?RequestOptions $requestOptions = null,
     ): Page {
-        $params = [
-            'after' => $after,
-            'archived' => $archived,
-            'limit' => $limit,
-            'offset' => $offset,
-            'properties' => $properties,
-            'sort' => $sort,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'after' => $after,
+                'archived' => $archived,
+                'limit' => $limit,
+                'offset' => $offset,
+                'properties' => $properties,
+                'sort' => $sort,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->list($tableIDOrName, params: $params, requestOptions: $requestOptions);
@@ -133,9 +134,9 @@ final class RowsService implements RowsContract
         ?string $name = null,
         ?RequestOptions $requestOptions = null,
     ): HubDBTableRowV3 {
-        $params = ['tableIDOrName' => $tableIDOrName, 'name' => $name];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            ['tableIDOrName' => $tableIDOrName, 'name' => $name]
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->cloneDraft($rowID, params: $params, requestOptions: $requestOptions);
@@ -158,7 +159,7 @@ final class RowsService implements RowsContract
         string $tableIDOrName,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        $params = ['tableIDOrName' => $tableIDOrName];
+        $params = Util::removeNulls(['tableIDOrName' => $tableIDOrName]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->deleteDraft($rowID, params: $params, requestOptions: $requestOptions);
@@ -184,9 +185,9 @@ final class RowsService implements RowsContract
         ?bool $archived = null,
         ?RequestOptions $requestOptions = null,
     ): HubDBTableRowV3 {
-        $params = ['tableIDOrName' => $tableIDOrName, 'archived' => $archived];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            ['tableIDOrName' => $tableIDOrName, 'archived' => $archived]
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->get($rowID, params: $params, requestOptions: $requestOptions);
@@ -211,9 +212,9 @@ final class RowsService implements RowsContract
         ?bool $archived = null,
         ?RequestOptions $requestOptions = null,
     ): HubDBTableRowV3 {
-        $params = ['tableIDOrName' => $tableIDOrName, 'archived' => $archived];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            ['tableIDOrName' => $tableIDOrName, 'archived' => $archived]
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->getDraft($rowID, params: $params, requestOptions: $requestOptions);
@@ -248,16 +249,16 @@ final class RowsService implements RowsContract
         ?array $sort = null,
         ?RequestOptions $requestOptions = null,
     ): Page {
-        $params = [
-            'after' => $after,
-            'archived' => $archived,
-            'limit' => $limit,
-            'offset' => $offset,
-            'properties' => $properties,
-            'sort' => $sort,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'after' => $after,
+                'archived' => $archived,
+                'limit' => $limit,
+                'offset' => $offset,
+                'properties' => $properties,
+                'sort' => $sort,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->listDraft($tableIDOrName, params: $params, requestOptions: $requestOptions);
@@ -291,16 +292,16 @@ final class RowsService implements RowsContract
         ?string $path = null,
         ?RequestOptions $requestOptions = null,
     ): HubDBTableRowV3 {
-        $params = [
-            'tableIDOrName' => $tableIDOrName,
-            'childTableID' => $childTableID,
-            'displayIndex' => $displayIndex,
-            'values' => $values,
-            'name' => $name,
-            'path' => $path,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'tableIDOrName' => $tableIDOrName,
+                'childTableID' => $childTableID,
+                'displayIndex' => $displayIndex,
+                'values' => $values,
+                'name' => $name,
+                'path' => $path,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->replaceDraft($rowID, params: $params, requestOptions: $requestOptions);
@@ -335,16 +336,16 @@ final class RowsService implements RowsContract
         ?string $path = null,
         ?RequestOptions $requestOptions = null,
     ): HubDBTableRowV3 {
-        $params = [
-            'tableIDOrName' => $tableIDOrName,
-            'childTableID' => $childTableID,
-            'displayIndex' => $displayIndex,
-            'values' => $values,
-            'name' => $name,
-            'path' => $path,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'tableIDOrName' => $tableIDOrName,
+                'childTableID' => $childTableID,
+                'displayIndex' => $displayIndex,
+                'values' => $values,
+                'name' => $name,
+                'path' => $path,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->updateDraft($rowID, params: $params, requestOptions: $requestOptions);

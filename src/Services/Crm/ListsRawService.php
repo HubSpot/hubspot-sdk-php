@@ -384,7 +384,7 @@ final class ListsRawService implements ListsRawContract
         return $this->client->request(
             method: 'put',
             path: ['crm/v3/lists/%1$s/update-list-filters', $listID],
-            query: array_diff_key($parsed, $query_params),
+            query: array_intersect_key($parsed, $query_params),
             body: (object) array_diff_key($parsed, $query_params),
             options: $options,
             convert: ListUpdateResponse::class,

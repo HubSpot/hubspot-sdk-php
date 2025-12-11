@@ -6,6 +6,7 @@ namespace HubspotSDK\Services\Crm\Extensions\Calling;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Extensions\Calling\SettingsContract;
 use HubspotSDK\Webhooks\SettingsResponse;
@@ -43,17 +44,19 @@ final class SettingsService implements SettingsContract
         int $width,
         ?RequestOptions $requestOptions = null,
     ): SettingsResponse {
-        $params = [
-            'height' => $height,
-            'isReady' => $isReady,
-            'name' => $name,
-            'supportsCustomObjects' => $supportsCustomObjects,
-            'supportsInboundCalling' => $supportsInboundCalling,
-            'url' => $url,
-            'usesCallingWindow' => $usesCallingWindow,
-            'usesRemote' => $usesRemote,
-            'width' => $width,
-        ];
+        $params = Util::removeNulls(
+            [
+                'height' => $height,
+                'isReady' => $isReady,
+                'name' => $name,
+                'supportsCustomObjects' => $supportsCustomObjects,
+                'supportsInboundCalling' => $supportsInboundCalling,
+                'url' => $url,
+                'usesCallingWindow' => $usesCallingWindow,
+                'usesRemote' => $usesRemote,
+                'width' => $width,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->create($appID, params: $params, requestOptions: $requestOptions);
@@ -79,19 +82,19 @@ final class SettingsService implements SettingsContract
         ?int $width = null,
         ?RequestOptions $requestOptions = null,
     ): SettingsResponse {
-        $params = [
-            'height' => $height,
-            'isReady' => $isReady,
-            'name' => $name,
-            'supportsCustomObjects' => $supportsCustomObjects,
-            'supportsInboundCalling' => $supportsInboundCalling,
-            'url' => $url,
-            'usesCallingWindow' => $usesCallingWindow,
-            'usesRemote' => $usesRemote,
-            'width' => $width,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'height' => $height,
+                'isReady' => $isReady,
+                'name' => $name,
+                'supportsCustomObjects' => $supportsCustomObjects,
+                'supportsInboundCalling' => $supportsInboundCalling,
+                'url' => $url,
+                'usesCallingWindow' => $usesCallingWindow,
+                'usesRemote' => $usesRemote,
+                'width' => $width,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->update($appID, params: $params, requestOptions: $requestOptions);

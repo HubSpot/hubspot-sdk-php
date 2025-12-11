@@ -257,7 +257,7 @@ final class EmailsRawService implements EmailsRawContract
         return $this->client->request(
             method: 'patch',
             path: ['marketing/v3/emails/%1$s', $emailID],
-            query: array_diff_key($parsed, $query_params),
+            query: array_intersect_key($parsed, $query_params),
             body: (object) array_diff_key($parsed, $query_params),
             options: $options,
             convert: PublicEmail::class,

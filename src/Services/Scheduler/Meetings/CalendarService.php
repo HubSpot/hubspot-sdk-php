@@ -8,6 +8,7 @@ use HubspotSDK\AssociationSpec;
 use HubspotSDK\AssociationSpec\AssociationCategory;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\PublicObjectID;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\Scheduler\Meetings\ExternalCalenderMeetingEventResponse;
@@ -70,13 +71,15 @@ final class CalendarService implements CalendarContract
         string $timezone,
         ?RequestOptions $requestOptions = null,
     ): ExternalCalenderMeetingEventResponse {
-        $params = [
-            'organizerUserID' => $organizerUserID,
-            'associations' => $associations,
-            'emailReminderSchedule' => $emailReminderSchedule,
-            'properties' => $properties,
-            'timezone' => $timezone,
-        ];
+        $params = Util::removeNulls(
+            [
+                'organizerUserID' => $organizerUserID,
+                'associations' => $associations,
+                'emailReminderSchedule' => $emailReminderSchedule,
+                'properties' => $properties,
+                'timezone' => $timezone,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->create(params: $params, requestOptions: $requestOptions);

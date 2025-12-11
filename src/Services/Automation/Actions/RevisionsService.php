@@ -7,6 +7,7 @@ namespace HubspotSDK\Services\Automation\Actions;
 use HubspotSDK\Automation\Actions\PublicActionRevision;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Automation\Actions\RevisionsContract;
@@ -47,9 +48,9 @@ final class RevisionsService implements RevisionsContract
         ?int $limit = null,
         ?RequestOptions $requestOptions = null,
     ): Page {
-        $params = ['appID' => $appID, 'after' => $after, 'limit' => $limit];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            ['appID' => $appID, 'after' => $after, 'limit' => $limit]
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->list($definitionID, params: $params, requestOptions: $requestOptions);
@@ -74,7 +75,9 @@ final class RevisionsService implements RevisionsContract
         string $definitionID,
         ?RequestOptions $requestOptions = null,
     ): PublicActionRevision {
-        $params = ['appID' => $appID, 'definitionID' => $definitionID];
+        $params = Util::removeNulls(
+            ['appID' => $appID, 'definitionID' => $definitionID]
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->get($revisionID, params: $params, requestOptions: $requestOptions);

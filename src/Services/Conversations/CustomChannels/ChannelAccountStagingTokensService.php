@@ -8,6 +8,7 @@ use HubspotSDK\Client;
 use HubspotSDK\Conversations\CustomChannels\PublicChannelAccountStagingToken;
 use HubspotSDK\Conversations\PublicDeliveryIdentifier;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Conversations\CustomChannels\ChannelAccountStagingTokensContract;
 
@@ -47,11 +48,13 @@ final class ChannelAccountStagingTokensService implements ChannelAccountStagingT
         array|PublicDeliveryIdentifier $deliveryIdentifier,
         ?RequestOptions $requestOptions = null,
     ): PublicChannelAccountStagingToken {
-        $params = [
-            'channelID' => $channelID,
-            'accountName' => $accountName,
-            'deliveryIdentifier' => $deliveryIdentifier,
-        ];
+        $params = Util::removeNulls(
+            [
+                'channelID' => $channelID,
+                'accountName' => $accountName,
+                'deliveryIdentifier' => $deliveryIdentifier,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->update($accountToken, params: $params, requestOptions: $requestOptions);

@@ -94,7 +94,7 @@ final class ContractsRawService implements ContractsRawContract
         return $this->client->request(
             method: 'patch',
             path: ['crm/v3/objects/contracts/%1$s', $contractID],
-            query: array_diff_key($parsed, $query_params),
+            query: array_intersect_key($parsed, $query_params),
             body: (object) array_diff_key($parsed, $query_params),
             options: $options,
             convert: SimplePublicObject::class,

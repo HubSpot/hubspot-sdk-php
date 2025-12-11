@@ -6,6 +6,7 @@ namespace HubspotSDK\Services\Crm\Lists;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Crm\Lists\PublicBatchMigrationMapping;
 use HubspotSDK\Crm\Lists\PublicMigrationMapping;
 use HubspotSDK\RequestOptions;
@@ -39,7 +40,7 @@ final class MappingService implements MappingContract
         array $body,
         ?RequestOptions $requestOptions = null
     ): PublicBatchMigrationMapping {
-        $params = ['body' => $body];
+        $params = Util::removeNulls(['body' => $body]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->batchCreateIDMapping(params: $params, requestOptions: $requestOptions);
@@ -60,9 +61,7 @@ final class MappingService implements MappingContract
         ?string $legacyListID = null,
         ?RequestOptions $requestOptions = null
     ): PublicMigrationMapping {
-        $params = ['legacyListID' => $legacyListID];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(['legacyListID' => $legacyListID]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->getIDMapping(params: $params, requestOptions: $requestOptions);

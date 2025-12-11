@@ -6,6 +6,7 @@ namespace HubspotSDK\Services\Crm;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Crm\Pipelines\CollectionResponsePipelineNoPaging;
 use HubspotSDK\Crm\Pipelines\CollectionResponsePublicAuditInfoNoPaging;
 use HubspotSDK\Crm\Pipelines\Pipeline;
@@ -55,9 +56,9 @@ final class PipelinesService implements PipelinesContract
         array $stages,
         ?RequestOptions $requestOptions = null,
     ): Pipeline {
-        $params = [
-            'displayOrder' => $displayOrder, 'label' => $label, 'stages' => $stages,
-        ];
+        $params = Util::removeNulls(
+            ['displayOrder' => $displayOrder, 'label' => $label, 'stages' => $stages]
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->create($objectType, params: $params, requestOptions: $requestOptions);
@@ -90,16 +91,16 @@ final class PipelinesService implements PipelinesContract
         ?string $label = null,
         ?RequestOptions $requestOptions = null,
     ): Pipeline {
-        $params = [
-            'objectType' => $objectType,
-            'validateDealStageUsagesBeforeDelete' => $validateDealStageUsagesBeforeDelete,
-            'validateReferencesBeforeDelete' => $validateReferencesBeforeDelete,
-            'archived' => $archived,
-            'displayOrder' => $displayOrder,
-            'label' => $label,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'objectType' => $objectType,
+                'validateDealStageUsagesBeforeDelete' => $validateDealStageUsagesBeforeDelete,
+                'validateReferencesBeforeDelete' => $validateReferencesBeforeDelete,
+                'archived' => $archived,
+                'displayOrder' => $displayOrder,
+                'label' => $label,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->update($pipelineID, params: $params, requestOptions: $requestOptions);
@@ -145,13 +146,13 @@ final class PipelinesService implements PipelinesContract
         bool $validateReferencesBeforeDelete = false,
         ?RequestOptions $requestOptions = null,
     ): mixed {
-        $params = [
-            'objectType' => $objectType,
-            'validateDealStageUsagesBeforeDelete' => $validateDealStageUsagesBeforeDelete,
-            'validateReferencesBeforeDelete' => $validateReferencesBeforeDelete,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'objectType' => $objectType,
+                'validateDealStageUsagesBeforeDelete' => $validateDealStageUsagesBeforeDelete,
+                'validateReferencesBeforeDelete' => $validateReferencesBeforeDelete,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->delete($pipelineID, params: $params, requestOptions: $requestOptions);
@@ -174,7 +175,7 @@ final class PipelinesService implements PipelinesContract
         string $objectType,
         ?RequestOptions $requestOptions = null,
     ): Pipeline {
-        $params = ['objectType' => $objectType];
+        $params = Util::removeNulls(['objectType' => $objectType]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->get($pipelineID, params: $params, requestOptions: $requestOptions);
@@ -197,7 +198,7 @@ final class PipelinesService implements PipelinesContract
         string $objectType,
         ?RequestOptions $requestOptions = null,
     ): CollectionResponsePublicAuditInfoNoPaging {
-        $params = ['objectType' => $objectType];
+        $params = Util::removeNulls(['objectType' => $objectType]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->getAudit($pipelineID, params: $params, requestOptions: $requestOptions);
@@ -232,16 +233,16 @@ final class PipelinesService implements PipelinesContract
         bool $validateReferencesBeforeDelete = false,
         ?RequestOptions $requestOptions = null,
     ): Pipeline {
-        $params = [
-            'objectType' => $objectType,
-            'displayOrder' => $displayOrder,
-            'label' => $label,
-            'stages' => $stages,
-            'validateDealStageUsagesBeforeDelete' => $validateDealStageUsagesBeforeDelete,
-            'validateReferencesBeforeDelete' => $validateReferencesBeforeDelete,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'objectType' => $objectType,
+                'displayOrder' => $displayOrder,
+                'label' => $label,
+                'stages' => $stages,
+                'validateDealStageUsagesBeforeDelete' => $validateDealStageUsagesBeforeDelete,
+                'validateReferencesBeforeDelete' => $validateReferencesBeforeDelete,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->replace($pipelineID, params: $params, requestOptions: $requestOptions);

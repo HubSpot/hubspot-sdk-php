@@ -6,6 +6,7 @@ namespace HubspotSDK\Services\Crm;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Crm\Limits\AssociationRecordLimitResponse;
 use HubspotSDK\Crm\Limits\CalculatedPropertyLimitResponse;
 use HubspotSDK\Crm\Limits\CollectionResponseAssociationLabelLimitResponseNoPaging;
@@ -47,12 +48,12 @@ final class LimitsService implements LimitsContract
         ?string $toObjectTypeID = null,
         ?RequestOptions $requestOptions = null,
     ): CollectionResponseAssociationLabelLimitResponseNoPaging {
-        $params = [
-            'fromObjectTypeID' => $fromObjectTypeID,
-            'toObjectTypeID' => $toObjectTypeID,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'fromObjectTypeID' => $fromObjectTypeID,
+                'toObjectTypeID' => $toObjectTypeID,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->getAssociationLabelLimits(params: $params, requestOptions: $requestOptions);
@@ -75,7 +76,7 @@ final class LimitsService implements LimitsContract
         string $fromObjectTypeID,
         ?RequestOptions $requestOptions = null,
     ): AssociationRecordLimitResponse {
-        $params = ['fromObjectTypeID' => $fromObjectTypeID];
+        $params = Util::removeNulls(['fromObjectTypeID' => $fromObjectTypeID]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->getAssociationRecordsLimitsByObjectType($toObjectTypeID, params: $params, requestOptions: $requestOptions);

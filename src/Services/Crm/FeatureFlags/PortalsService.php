@@ -6,6 +6,7 @@ namespace HubspotSDK\Services\Crm\FeatureFlags;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Crm\FeatureFlags\BatchPortalEntry\FlagState;
 use HubspotSDK\Crm\FeatureFlags\PortalFlagStateBatchResponse;
 use HubspotSDK\Crm\FeatureFlags\PortalFlagStateResponse;
@@ -46,9 +47,9 @@ final class PortalsService implements PortalsContract
         string|\HubspotSDK\Crm\FeatureFlags\Portals\PortalUpdateParams\FlagState $flagState,
         ?RequestOptions $requestOptions = null,
     ): PortalFlagStateResponse {
-        $params = [
-            'appID' => $appID, 'flagName' => $flagName, 'flagState' => $flagState,
-        ];
+        $params = Util::removeNulls(
+            ['appID' => $appID, 'flagName' => $flagName, 'flagState' => $flagState]
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->update($portalID, params: $params, requestOptions: $requestOptions);
@@ -73,7 +74,7 @@ final class PortalsService implements PortalsContract
         string $flagName,
         ?RequestOptions $requestOptions = null,
     ): PortalFlagStateResponse {
-        $params = ['appID' => $appID, 'flagName' => $flagName];
+        $params = Util::removeNulls(['appID' => $appID, 'flagName' => $flagName]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->delete($portalID, params: $params, requestOptions: $requestOptions);
@@ -98,7 +99,7 @@ final class PortalsService implements PortalsContract
         array $portalIDs,
         ?RequestOptions $requestOptions = null,
     ): PortalFlagStateBatchResponse {
-        $params = ['appID' => $appID, 'portalIDs' => $portalIDs];
+        $params = Util::removeNulls(['appID' => $appID, 'portalIDs' => $portalIDs]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->batchDelete($flagName, params: $params, requestOptions: $requestOptions);
@@ -125,7 +126,9 @@ final class PortalsService implements PortalsContract
         array $portalStates,
         ?RequestOptions $requestOptions = null,
     ): PortalFlagStateBatchResponse {
-        $params = ['appID' => $appID, 'portalStates' => $portalStates];
+        $params = Util::removeNulls(
+            ['appID' => $appID, 'portalStates' => $portalStates]
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->batchUpsert($flagName, params: $params, requestOptions: $requestOptions);
@@ -150,7 +153,7 @@ final class PortalsService implements PortalsContract
         string $flagName,
         ?RequestOptions $requestOptions = null,
     ): PortalFlagStateResponse {
-        $params = ['appID' => $appID, 'flagName' => $flagName];
+        $params = Util::removeNulls(['appID' => $appID, 'flagName' => $flagName]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->get($portalID, params: $params, requestOptions: $requestOptions);

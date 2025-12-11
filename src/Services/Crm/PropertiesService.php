@@ -6,6 +6,7 @@ namespace HubspotSDK\Services\Crm;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Crm\Properties\CollectionResponseProperty;
 use HubspotSDK\Crm\Properties\CreatedResponseProperty;
 use HubspotSDK\Crm\Properties\PropertyCreateParams\DataSensitivity;
@@ -81,25 +82,25 @@ final class PropertiesService implements PropertiesContract
         ?string $referencedObjectType = null,
         ?RequestOptions $requestOptions = null,
     ): CreatedResponseProperty {
-        $params = [
-            'fieldType' => $fieldType,
-            'groupName' => $groupName,
-            'label' => $label,
-            'name' => $name,
-            'type' => $type,
-            'calculationFormula' => $calculationFormula,
-            'dataSensitivity' => $dataSensitivity,
-            'description' => $description,
-            'displayOrder' => $displayOrder,
-            'externalOptions' => $externalOptions,
-            'formField' => $formField,
-            'hasUniqueValue' => $hasUniqueValue,
-            'hidden' => $hidden,
-            'options' => $options,
-            'referencedObjectType' => $referencedObjectType,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'fieldType' => $fieldType,
+                'groupName' => $groupName,
+                'label' => $label,
+                'name' => $name,
+                'type' => $type,
+                'calculationFormula' => $calculationFormula,
+                'dataSensitivity' => $dataSensitivity,
+                'description' => $description,
+                'displayOrder' => $displayOrder,
+                'externalOptions' => $externalOptions,
+                'formField' => $formField,
+                'hasUniqueValue' => $hasUniqueValue,
+                'hidden' => $hidden,
+                'options' => $options,
+                'referencedObjectType' => $referencedObjectType,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->create($objectType, params: $params, requestOptions: $requestOptions);
@@ -148,21 +149,21 @@ final class PropertiesService implements PropertiesContract
         string|\HubspotSDK\Crm\Properties\PropertyUpdateParams\Type|null $type = null,
         ?RequestOptions $requestOptions = null,
     ): Property {
-        $params = [
-            'objectType' => $objectType,
-            'calculationFormula' => $calculationFormula,
-            'description' => $description,
-            'displayOrder' => $displayOrder,
-            'fieldType' => $fieldType,
-            'formField' => $formField,
-            'groupName' => $groupName,
-            'hidden' => $hidden,
-            'label' => $label,
-            'options' => $options,
-            'type' => $type,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'objectType' => $objectType,
+                'calculationFormula' => $calculationFormula,
+                'description' => $description,
+                'displayOrder' => $displayOrder,
+                'fieldType' => $fieldType,
+                'formField' => $formField,
+                'groupName' => $groupName,
+                'hidden' => $hidden,
+                'label' => $label,
+                'options' => $options,
+                'type' => $type,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->update($propertyName, params: $params, requestOptions: $requestOptions);
@@ -188,14 +189,14 @@ final class PropertiesService implements PropertiesContract
         ?string $properties = null,
         ?RequestOptions $requestOptions = null,
     ): CollectionResponseProperty {
-        $params = [
-            'archived' => $archived,
-            'dataSensitivity' => $dataSensitivity,
-            'locale' => $locale,
-            'properties' => $properties,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'archived' => $archived,
+                'dataSensitivity' => $dataSensitivity,
+                'locale' => $locale,
+                'properties' => $properties,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->list($objectType, params: $params, requestOptions: $requestOptions);
@@ -215,7 +216,7 @@ final class PropertiesService implements PropertiesContract
         string $objectType,
         ?RequestOptions $requestOptions = null,
     ): mixed {
-        $params = ['objectType' => $objectType];
+        $params = Util::removeNulls(['objectType' => $objectType]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->delete($propertyName, params: $params, requestOptions: $requestOptions);
@@ -246,15 +247,15 @@ final class PropertiesService implements PropertiesContract
         ?string $properties = null,
         ?RequestOptions $requestOptions = null,
     ): Property {
-        $params = [
-            'objectType' => $objectType,
-            'archived' => $archived,
-            'dataSensitivity' => $dataSensitivity,
-            'locale' => $locale,
-            'properties' => $properties,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'objectType' => $objectType,
+                'archived' => $archived,
+                'dataSensitivity' => $dataSensitivity,
+                'locale' => $locale,
+                'properties' => $properties,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->get($propertyName, params: $params, requestOptions: $requestOptions);

@@ -6,6 +6,7 @@ namespace HubspotSDK\Services\Marketing\Events;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Marketing\Events\AttendanceCounters;
 use HubspotSDK\Marketing\Events\ParticipationBreakdown;
 use HubspotSDK\Page;
@@ -42,7 +43,7 @@ final class ParticipationsService implements ParticipationsContract
         string $externalAccountID,
         ?RequestOptions $requestOptions = null,
     ): AttendanceCounters {
-        $params = ['externalAccountID' => $externalAccountID];
+        $params = Util::removeNulls(['externalAccountID' => $externalAccountID]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->getByExternalAccountAndEventID($externalEventID, params: $params, requestOptions: $requestOptions);
@@ -90,9 +91,9 @@ final class ParticipationsService implements ParticipationsContract
         ?string $state = null,
         ?RequestOptions $requestOptions = null,
     ): Page {
-        $params = ['after' => $after, 'limit' => $limit, 'state' => $state];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            ['after' => $after, 'limit' => $limit, 'state' => $state]
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->listBreakdownByContact($contactIdentifier, params: $params, requestOptions: $requestOptions);
@@ -125,15 +126,15 @@ final class ParticipationsService implements ParticipationsContract
         ?string $state = null,
         ?RequestOptions $requestOptions = null,
     ): Page {
-        $params = [
-            'externalAccountID' => $externalAccountID,
-            'after' => $after,
-            'contactIdentifier' => $contactIdentifier,
-            'limit' => $limit,
-            'state' => $state,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'externalAccountID' => $externalAccountID,
+                'after' => $after,
+                'contactIdentifier' => $contactIdentifier,
+                'limit' => $limit,
+                'state' => $state,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->listBreakdownByExternalAccountAndEventID($externalEventID, params: $params, requestOptions: $requestOptions);
@@ -164,14 +165,14 @@ final class ParticipationsService implements ParticipationsContract
         ?string $state = null,
         ?RequestOptions $requestOptions = null,
     ): Page {
-        $params = [
-            'after' => $after,
-            'contactIdentifier' => $contactIdentifier,
-            'limit' => $limit,
-            'state' => $state,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'after' => $after,
+                'contactIdentifier' => $contactIdentifier,
+                'limit' => $limit,
+                'state' => $state,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->listBreakdownByID($marketingEventID, params: $params, requestOptions: $requestOptions);

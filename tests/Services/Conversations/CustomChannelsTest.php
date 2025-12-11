@@ -39,7 +39,7 @@ final class CustomChannelsTest extends TestCase
         }
 
         $result = $this->client->conversations->customChannels->create(
-            capabilities: ['foo' => []],
+            capabilities: ['foo' => (object) []],
             name: 'name'
         );
 
@@ -55,7 +55,7 @@ final class CustomChannelsTest extends TestCase
         }
 
         $result = $this->client->conversations->customChannels->create(
-            capabilities: ['foo' => []],
+            capabilities: ['foo' => (object) []],
             name: 'name',
             channelAccountConnectionRedirectURL: 'channelAccountConnectionRedirectUrl',
             channelDescription: 'channelDescription',
@@ -76,12 +76,12 @@ final class CustomChannelsTest extends TestCase
 
         $result = $this->client->conversations->customChannels->update(
             0,
-            capabilities: ['foo' => []],
-            channelAccountConnectionRedirectURL: [],
-            channelDescription: [],
-            channelLogoURL: [],
-            name: [],
-            webhookURL: [],
+            capabilities: ['foo' => (object) []],
+            channelAccountConnectionRedirectURL: (object) [],
+            channelDescription: (object) [],
+            channelLogoURL: (object) [],
+            name: (object) [],
+            webhookURL: (object) [],
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -97,12 +97,12 @@ final class CustomChannelsTest extends TestCase
 
         $result = $this->client->conversations->customChannels->update(
             0,
-            capabilities: ['foo' => []],
-            channelAccountConnectionRedirectURL: [],
-            channelDescription: [],
-            channelLogoURL: [],
-            name: [],
-            webhookURL: [],
+            capabilities: ['foo' => (object) []],
+            channelAccountConnectionRedirectURL: (object) [],
+            channelDescription: (object) [],
+            channelLogoURL: (object) [],
+            name: (object) [],
+            webhookURL: (object) [],
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

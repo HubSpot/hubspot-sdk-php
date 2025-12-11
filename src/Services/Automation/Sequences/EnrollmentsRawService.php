@@ -47,14 +47,14 @@ final class EnrollmentsRawService implements EnrollmentsRawContract
             $params,
             $requestOptions,
         );
-        $query_params = array_flip(['userId']);
+        $query_params = array_flip(['userID']);
 
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'automation/v4/sequences/enrollments',
             query: Util::array_transform_keys(
-                array_diff_key($parsed, $query_params),
+                array_intersect_key($parsed, $query_params),
                 ['userID' => 'userId']
             ),
             body: (object) array_diff_key($parsed, $query_params),

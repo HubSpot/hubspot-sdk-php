@@ -6,6 +6,7 @@ namespace HubspotSDK\Services\Marketing\Emails;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Marketing\Emails\AggregateEmailStatistics;
 use HubspotSDK\Marketing\Emails\CollectionResponseWithTotalEmailStatisticIntervalNoPaging;
 use HubspotSDK\Marketing\Emails\Statistics\StatisticGetHistogramParams\Interval;
@@ -46,14 +47,14 @@ final class StatisticsService implements StatisticsContract
         ?string $startTimestamp = null,
         ?RequestOptions $requestOptions = null,
     ): AggregateEmailStatistics {
-        $params = [
-            'emailIDs' => $emailIDs,
-            'endTimestamp' => $endTimestamp,
-            'property' => $property,
-            'startTimestamp' => $startTimestamp,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'emailIDs' => $emailIDs,
+                'endTimestamp' => $endTimestamp,
+                'property' => $property,
+                'startTimestamp' => $startTimestamp,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->get(params: $params, requestOptions: $requestOptions);
@@ -80,14 +81,14 @@ final class StatisticsService implements StatisticsContract
         ?string $startTimestamp = null,
         ?RequestOptions $requestOptions = null,
     ): CollectionResponseWithTotalEmailStatisticIntervalNoPaging {
-        $params = [
-            'emailIDs' => $emailIDs,
-            'endTimestamp' => $endTimestamp,
-            'interval' => $interval,
-            'startTimestamp' => $startTimestamp,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'emailIDs' => $emailIDs,
+                'endTimestamp' => $endTimestamp,
+                'interval' => $interval,
+                'startTimestamp' => $startTimestamp,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->getHistogram(params: $params, requestOptions: $requestOptions);

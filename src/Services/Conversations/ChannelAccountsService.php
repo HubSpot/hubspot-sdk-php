@@ -7,6 +7,7 @@ namespace HubspotSDK\Services\Conversations;
 use HubspotSDK\Client;
 use HubspotSDK\Conversations\PublicChannelAccount;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Conversations\ChannelAccountsContract;
@@ -47,17 +48,17 @@ final class ChannelAccountsService implements ChannelAccountsContract
         ?array $sort = null,
         ?RequestOptions $requestOptions = null,
     ): Page {
-        $params = [
-            'after' => $after,
-            'archived' => $archived,
-            'channelID' => $channelID,
-            'defaultPageLength' => $defaultPageLength,
-            'inboxID' => $inboxID,
-            'limit' => $limit,
-            'sort' => $sort,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'after' => $after,
+                'archived' => $archived,
+                'channelID' => $channelID,
+                'defaultPageLength' => $defaultPageLength,
+                'inboxID' => $inboxID,
+                'limit' => $limit,
+                'sort' => $sort,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->list(params: $params, requestOptions: $requestOptions);
@@ -75,9 +76,7 @@ final class ChannelAccountsService implements ChannelAccountsContract
         bool $archived = false,
         ?RequestOptions $requestOptions = null,
     ): PublicChannelAccount {
-        $params = ['archived' => $archived];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(['archived' => $archived]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->get($channelAccountID, params: $params, requestOptions: $requestOptions);

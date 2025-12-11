@@ -6,6 +6,7 @@ namespace HubspotSDK\Services\Crm;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\SubscriptionsContract;
 
@@ -57,9 +58,7 @@ final class SubscriptionsService implements SubscriptionsContract
         ?string $pauseReason = null,
         ?RequestOptions $requestOptions = null,
     ): string {
-        $params = ['pauseReason' => $pauseReason];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(['pauseReason' => $pauseReason]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->pause($objectID, params: $params, requestOptions: $requestOptions);
@@ -81,7 +80,9 @@ final class SubscriptionsService implements SubscriptionsContract
         int $proposedNextBillingDate,
         ?RequestOptions $requestOptions = null,
     ): string {
-        $params = ['proposedNextBillingDate' => $proposedNextBillingDate];
+        $params = Util::removeNulls(
+            ['proposedNextBillingDate' => $proposedNextBillingDate]
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->unpause($objectID, params: $params, requestOptions: $requestOptions);

@@ -8,6 +8,7 @@ use HubspotSDK\Automation\Sequences\PublicSequenceLiteResponse;
 use HubspotSDK\Automation\Sequences\PublicSequenceResponse;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Automation\SequencesContract;
@@ -50,11 +51,14 @@ final class SequencesService implements SequencesContract
         ?string $name = null,
         ?RequestOptions $requestOptions = null,
     ): Page {
-        $params = [
-            'userID' => $userID, 'after' => $after, 'limit' => $limit, 'name' => $name,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'userID' => $userID,
+                'after' => $after,
+                'limit' => $limit,
+                'name' => $name,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->list(params: $params, requestOptions: $requestOptions);
@@ -74,7 +78,7 @@ final class SequencesService implements SequencesContract
         string $userID,
         ?RequestOptions $requestOptions = null
     ): PublicSequenceResponse {
-        $params = ['userID' => $userID];
+        $params = Util::removeNulls(['userID' => $userID]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->get($sequenceID, params: $params, requestOptions: $requestOptions);

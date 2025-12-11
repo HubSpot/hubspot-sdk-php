@@ -6,6 +6,7 @@ namespace HubspotSDK\Services\Marketing\Campaigns;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Marketing\Campaigns\PublicSpendItem;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Marketing\Campaigns\SpendContract;
@@ -42,14 +43,14 @@ final class SpendService implements SpendContract
         ?string $description = null,
         ?RequestOptions $requestOptions = null,
     ): PublicSpendItem {
-        $params = [
-            'amount' => $amount,
-            'name' => $name,
-            'order' => $order,
-            'description' => $description,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'amount' => $amount,
+                'name' => $name,
+                'order' => $order,
+                'description' => $description,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->create($campaignGuid, params: $params, requestOptions: $requestOptions);
@@ -80,15 +81,15 @@ final class SpendService implements SpendContract
         ?string $description = null,
         ?RequestOptions $requestOptions = null,
     ): PublicSpendItem {
-        $params = [
-            'campaignGuid' => $campaignGuid,
-            'amount' => $amount,
-            'name' => $name,
-            'order' => $order,
-            'description' => $description,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'campaignGuid' => $campaignGuid,
+                'amount' => $amount,
+                'name' => $name,
+                'order' => $order,
+                'description' => $description,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->update($spendID, params: $params, requestOptions: $requestOptions);
@@ -111,7 +112,7 @@ final class SpendService implements SpendContract
         string $campaignGuid,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        $params = ['campaignGuid' => $campaignGuid];
+        $params = Util::removeNulls(['campaignGuid' => $campaignGuid]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->delete($spendID, params: $params, requestOptions: $requestOptions);
@@ -134,7 +135,7 @@ final class SpendService implements SpendContract
         string $campaignGuid,
         ?RequestOptions $requestOptions = null
     ): PublicSpendItem {
-        $params = ['campaignGuid' => $campaignGuid];
+        $params = Util::removeNulls(['campaignGuid' => $campaignGuid]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->get($spendID, params: $params, requestOptions: $requestOptions);

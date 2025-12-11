@@ -6,6 +6,7 @@ namespace HubspotSDK\Services\Events;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Events\SendContract;
 
@@ -49,17 +50,17 @@ final class SendService implements SendContract
         ?string $uuid = null,
         ?RequestOptions $requestOptions = null,
     ): mixed {
-        $params = [
-            'eventName' => $eventName,
-            'properties' => $properties,
-            'email' => $email,
-            'objectID' => $objectID,
-            'occurredAt' => $occurredAt,
-            'utk' => $utk,
-            'uuid' => $uuid,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'eventName' => $eventName,
+                'properties' => $properties,
+                'email' => $email,
+                'objectID' => $objectID,
+                'occurredAt' => $occurredAt,
+                'utk' => $utk,
+                'uuid' => $uuid,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->send(params: $params, requestOptions: $requestOptions);
@@ -88,7 +89,7 @@ final class SendService implements SendContract
         array $inputs,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        $params = ['inputs' => $inputs];
+        $params = Util::removeNulls(['inputs' => $inputs]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->sendBatch(params: $params, requestOptions: $requestOptions);

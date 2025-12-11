@@ -6,6 +6,7 @@ namespace HubspotSDK\Services\Crm\Objects\Projects;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Crm\AssociatedID;
 use HubspotSDK\Crm\SimplePublicObjectWithAssociations;
 use HubspotSDK\Page;
@@ -39,11 +40,13 @@ final class AssociationsService implements AssociationsContract
         string $toObjectID,
         ?RequestOptions $requestOptions = null,
     ): SimplePublicObjectWithAssociations {
-        $params = [
-            'projectID' => $projectID,
-            'toObjectType' => $toObjectType,
-            'toObjectID' => $toObjectID,
-        ];
+        $params = Util::removeNulls(
+            [
+                'projectID' => $projectID,
+                'toObjectType' => $toObjectType,
+                'toObjectID' => $toObjectID,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->update($associationType, params: $params, requestOptions: $requestOptions);
@@ -72,14 +75,14 @@ final class AssociationsService implements AssociationsContract
         int $limit = 500,
         ?RequestOptions $requestOptions = null,
     ): Page {
-        $params = [
-            'projectID' => $projectID,
-            'after' => $after,
-            'includeFa' => $includeFa,
-            'limit' => $limit,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'projectID' => $projectID,
+                'after' => $after,
+                'includeFa' => $includeFa,
+                'limit' => $limit,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->list($toObjectType, params: $params, requestOptions: $requestOptions);
@@ -99,11 +102,13 @@ final class AssociationsService implements AssociationsContract
         string $toObjectID,
         ?RequestOptions $requestOptions = null,
     ): mixed {
-        $params = [
-            'projectID' => $projectID,
-            'toObjectType' => $toObjectType,
-            'toObjectID' => $toObjectID,
-        ];
+        $params = Util::removeNulls(
+            [
+                'projectID' => $projectID,
+                'toObjectType' => $toObjectType,
+                'toObjectID' => $toObjectID,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->delete($associationType, params: $params, requestOptions: $requestOptions);

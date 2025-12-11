@@ -6,6 +6,7 @@ namespace HubspotSDK\Services\Crm;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Crm\PropertyValidations\CollectionResponsePublicPropertyValidationRuleMapNoPaging;
 use HubspotSDK\Crm\PropertyValidations\CollectionResponsePublicPropertyValidationRuleNoPaging;
 use HubspotSDK\Crm\PropertyValidations\PropertyValidationCrmV3PropertyValidationsObjectTypeIDPropertyNameRuleTypeRuleTypeParams\RuleType;
@@ -65,11 +66,13 @@ final class PropertyValidationsService implements PropertyValidationsContract
         array $ruleArguments,
         ?RequestOptions $requestOptions = null,
     ): mixed {
-        $params = [
-            'objectTypeID' => $objectTypeID,
-            'propertyName' => $propertyName,
-            'ruleArguments' => $ruleArguments,
-        ];
+        $params = Util::removeNulls(
+            [
+                'objectTypeID' => $objectTypeID,
+                'propertyName' => $propertyName,
+                'ruleArguments' => $ruleArguments,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->crmV3PropertyValidationsObjectTypeIDPropertyNameRuleTypeRuleType($ruleType, params: $params, requestOptions: $requestOptions);
@@ -92,7 +95,7 @@ final class PropertyValidationsService implements PropertyValidationsContract
         string $objectTypeID,
         ?RequestOptions $requestOptions = null,
     ): CollectionResponsePublicPropertyValidationRuleNoPaging {
-        $params = ['objectTypeID' => $objectTypeID];
+        $params = Util::removeNulls(['objectTypeID' => $objectTypeID]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->get($propertyName, params: $params, requestOptions: $requestOptions);

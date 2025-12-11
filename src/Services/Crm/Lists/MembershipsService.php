@@ -6,6 +6,7 @@ namespace HubspotSDK\Services\Crm\Lists;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Crm\Lists\APICollectionResponseRecordListMembershipNoPaging;
 use HubspotSDK\Crm\Lists\JoinTimeAndRecordID;
 use HubspotSDK\Crm\Lists\MembershipsUpdateResponse;
@@ -57,9 +58,9 @@ final class MembershipsService implements MembershipsContract
         int $limit = 100,
         ?RequestOptions $requestOptions = null,
     ): Page {
-        $params = ['after' => $after, 'before' => $before, 'limit' => $limit];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            ['after' => $after, 'before' => $before, 'limit' => $limit]
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->list($listID, params: $params, requestOptions: $requestOptions);
@@ -84,7 +85,7 @@ final class MembershipsService implements MembershipsContract
         array $body,
         ?RequestOptions $requestOptions = null
     ): MembershipsUpdateResponse {
-        $params = ['body' => $body];
+        $params = Util::removeNulls(['body' => $body]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->add($listID, params: $params, requestOptions: $requestOptions);
@@ -111,7 +112,7 @@ final class MembershipsService implements MembershipsContract
         string $listID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        $params = ['listID' => $listID];
+        $params = Util::removeNulls(['listID' => $listID]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->addAllFromList($sourceListID, params: $params, requestOptions: $requestOptions);
@@ -138,10 +139,12 @@ final class MembershipsService implements MembershipsContract
         array $recordIDsToRemove,
         ?RequestOptions $requestOptions = null,
     ): MembershipsUpdateResponse {
-        $params = [
-            'recordIDsToAdd' => $recordIDsToAdd,
-            'recordIDsToRemove' => $recordIDsToRemove,
-        ];
+        $params = Util::removeNulls(
+            [
+                'recordIDsToAdd' => $recordIDsToAdd,
+                'recordIDsToRemove' => $recordIDsToRemove,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->addAndRemove($listID, params: $params, requestOptions: $requestOptions);
@@ -164,7 +167,7 @@ final class MembershipsService implements MembershipsContract
         string $objectTypeID,
         ?RequestOptions $requestOptions = null,
     ): APICollectionResponseRecordListMembershipNoPaging {
-        $params = ['objectTypeID' => $objectTypeID];
+        $params = Util::removeNulls(['objectTypeID' => $objectTypeID]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->getLists($recordID, params: $params, requestOptions: $requestOptions);
@@ -201,9 +204,9 @@ final class MembershipsService implements MembershipsContract
         int $limit = 100,
         ?RequestOptions $requestOptions = null,
     ): Page {
-        $params = ['after' => $after, 'before' => $before, 'limit' => $limit];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            ['after' => $after, 'before' => $before, 'limit' => $limit]
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->getPageOrderedByAddedToListDate($listID, params: $params, requestOptions: $requestOptions);
@@ -228,7 +231,7 @@ final class MembershipsService implements MembershipsContract
         array $body,
         ?RequestOptions $requestOptions = null
     ): MembershipsUpdateResponse {
-        $params = ['body' => $body];
+        $params = Util::removeNulls(['body' => $body]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->remove($listID, params: $params, requestOptions: $requestOptions);

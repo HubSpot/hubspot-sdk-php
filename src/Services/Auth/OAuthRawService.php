@@ -56,14 +56,14 @@ final class OAuthRawService implements OAuthRawContract
             $params,
             $requestOptions,
         );
-        $query_params = array_flip(['client_secret', 'refresh_token']);
+        $query_params = array_flip(['clientSecret', 'refreshToken']);
 
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'oauth/v1/token',
             query: Util::array_transform_keys(
-                array_diff_key($parsed, $query_params),
+                array_intersect_key($parsed, $query_params),
                 ['clientSecret' => 'client_secret', 'refreshToken' => 'refresh_token'],
             ),
             headers: ['Content-Type' => 'application/x-www-form-urlencoded'],

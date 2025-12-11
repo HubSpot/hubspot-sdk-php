@@ -396,7 +396,9 @@ final class TagsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->blogs->tags->updateBatch(inputs: [[]]);
+        $result = $this->client->cms->blogs->tags->updateBatch(
+            inputs: [(object) []]
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(BatchResponseTag::class, $result);
@@ -410,7 +412,7 @@ final class TagsTest extends TestCase
         }
 
         $result = $this->client->cms->blogs->tags->updateBatch(
-            inputs: [[]],
+            inputs: [(object) []],
             archived: true
         );
 

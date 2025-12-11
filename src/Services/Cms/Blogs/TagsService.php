@@ -9,6 +9,7 @@ use HubspotSDK\Cms\Blogs\Tags\BatchResponseTag;
 use HubspotSDK\Cms\Blogs\Tags\Tag;
 use HubspotSDK\Cms\Blogs\Tags\Tag\Language;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Cms\Blogs\TagsContract;
@@ -51,15 +52,17 @@ final class TagsService implements TagsContract
         string|\DateTimeInterface $updated,
         ?RequestOptions $requestOptions = null,
     ): Tag {
-        $params = [
-            'id' => $id,
-            'created' => $created,
-            'deletedAt' => $deletedAt,
-            'language' => $language,
-            'name' => $name,
-            'translatedFromID' => $translatedFromID,
-            'updated' => $updated,
-        ];
+        $params = Util::removeNulls(
+            [
+                'id' => $id,
+                'created' => $created,
+                'deletedAt' => $deletedAt,
+                'language' => $language,
+                'name' => $name,
+                'translatedFromID' => $translatedFromID,
+                'updated' => $updated,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->create(params: $params, requestOptions: $requestOptions);
@@ -97,18 +100,18 @@ final class TagsService implements TagsContract
         ?bool $archived = null,
         ?RequestOptions $requestOptions = null,
     ): Tag {
-        $params = [
-            'id' => $id,
-            'created' => $created,
-            'deletedAt' => $deletedAt,
-            'language' => $language,
-            'name' => $name,
-            'translatedFromID' => $translatedFromID,
-            'updated' => $updated,
-            'archived' => $archived,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'id' => $id,
+                'created' => $created,
+                'deletedAt' => $deletedAt,
+                'language' => $language,
+                'name' => $name,
+                'translatedFromID' => $translatedFromID,
+                'updated' => $updated,
+                'archived' => $archived,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->update($objectID, params: $params, requestOptions: $requestOptions);
@@ -150,21 +153,21 @@ final class TagsService implements TagsContract
         string|\DateTimeInterface|null $updatedBefore = null,
         ?RequestOptions $requestOptions = null,
     ): Page {
-        $params = [
-            'after' => $after,
-            'archived' => $archived,
-            'createdAfter' => $createdAfter,
-            'createdAt' => $createdAt,
-            'createdBefore' => $createdBefore,
-            'limit' => $limit,
-            'property' => $property,
-            'sort' => $sort,
-            'updatedAfter' => $updatedAfter,
-            'updatedAt' => $updatedAt,
-            'updatedBefore' => $updatedBefore,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'after' => $after,
+                'archived' => $archived,
+                'createdAfter' => $createdAfter,
+                'createdAt' => $createdAt,
+                'createdBefore' => $createdBefore,
+                'limit' => $limit,
+                'property' => $property,
+                'sort' => $sort,
+                'updatedAfter' => $updatedAfter,
+                'updatedAt' => $updatedAt,
+                'updatedBefore' => $updatedBefore,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->list(params: $params, requestOptions: $requestOptions);
@@ -187,9 +190,7 @@ final class TagsService implements TagsContract
         ?bool $archived = null,
         ?RequestOptions $requestOptions = null,
     ): mixed {
-        $params = ['archived' => $archived];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(['archived' => $archived]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->delete($objectID, params: $params, requestOptions: $requestOptions);
@@ -216,14 +217,14 @@ final class TagsService implements TagsContract
         ?string $primaryLanguage = null,
         ?RequestOptions $requestOptions = null,
     ): mixed {
-        $params = [
-            'id' => $id,
-            'language' => $language,
-            'primaryID' => $primaryID,
-            'primaryLanguage' => $primaryLanguage,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'id' => $id,
+                'language' => $language,
+                'primaryID' => $primaryID,
+                'primaryLanguage' => $primaryLanguage,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->attachToLangGroup(params: $params, requestOptions: $requestOptions);
@@ -252,7 +253,7 @@ final class TagsService implements TagsContract
         array $inputs,
         ?RequestOptions $requestOptions = null
     ): BatchResponseTag {
-        $params = ['inputs' => $inputs];
+        $params = Util::removeNulls(['inputs' => $inputs]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->createBatch(params: $params, requestOptions: $requestOptions);
@@ -279,14 +280,14 @@ final class TagsService implements TagsContract
         ?string $primaryLanguage = null,
         ?RequestOptions $requestOptions = null,
     ): Tag {
-        $params = [
-            'id' => $id,
-            'name' => $name,
-            'language' => $language,
-            'primaryLanguage' => $primaryLanguage,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'id' => $id,
+                'name' => $name,
+                'language' => $language,
+                'primaryLanguage' => $primaryLanguage,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->createLangVariation(params: $params, requestOptions: $requestOptions);
@@ -307,7 +308,7 @@ final class TagsService implements TagsContract
         array $inputs,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        $params = ['inputs' => $inputs];
+        $params = Util::removeNulls(['inputs' => $inputs]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->deleteBatch(params: $params, requestOptions: $requestOptions);
@@ -328,7 +329,7 @@ final class TagsService implements TagsContract
         string $id,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        $params = ['id' => $id];
+        $params = Util::removeNulls(['id' => $id]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->detachFromLangGroup(params: $params, requestOptions: $requestOptions);
@@ -352,9 +353,9 @@ final class TagsService implements TagsContract
         ?string $property = null,
         ?RequestOptions $requestOptions = null,
     ): Tag {
-        $params = ['archived' => $archived, 'property' => $property];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            ['archived' => $archived, 'property' => $property]
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->get($objectID, params: $params, requestOptions: $requestOptions);
@@ -377,9 +378,7 @@ final class TagsService implements TagsContract
         ?bool $archived = null,
         ?RequestOptions $requestOptions = null
     ): BatchResponseTag {
-        $params = ['inputs' => $inputs, 'archived' => $archived];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(['inputs' => $inputs, 'archived' => $archived]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->getBatch(params: $params, requestOptions: $requestOptions);
@@ -400,7 +399,7 @@ final class TagsService implements TagsContract
         string $id,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        $params = ['id' => $id];
+        $params = Util::removeNulls(['id' => $id]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->setLangPrimary(params: $params, requestOptions: $requestOptions);
@@ -423,9 +422,7 @@ final class TagsService implements TagsContract
         ?bool $archived = null,
         ?RequestOptions $requestOptions = null
     ): BatchResponseTag {
-        $params = ['inputs' => $inputs, 'archived' => $archived];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(['inputs' => $inputs, 'archived' => $archived]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->updateBatch(params: $params, requestOptions: $requestOptions);
@@ -448,7 +445,9 @@ final class TagsService implements TagsContract
         string $primaryID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        $params = ['languages' => $languages, 'primaryID' => $primaryID];
+        $params = Util::removeNulls(
+            ['languages' => $languages, 'primaryID' => $primaryID]
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->updateLangs(params: $params, requestOptions: $requestOptions);

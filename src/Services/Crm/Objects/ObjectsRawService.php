@@ -98,7 +98,7 @@ final class ObjectsRawService implements ObjectsRawContract
         return $this->client->request(
             method: 'patch',
             path: ['crm/v3/objects/%1$s/%2$s', $objectType, $objectID],
-            query: array_diff_key($parsed, $query_params),
+            query: array_intersect_key($parsed, $query_params),
             body: (object) array_diff_key(
                 array_diff_key($parsed, $query_params),
                 array_flip(['objectType'])

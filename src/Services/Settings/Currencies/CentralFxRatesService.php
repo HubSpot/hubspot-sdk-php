@@ -6,6 +6,7 @@ namespace HubspotSDK\Services\Settings\Currencies;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Settings\Currencies\CentralFxRatesContract;
 use HubspotSDK\Settings\Currencies\CentralExchangeRatesInformation;
@@ -41,7 +42,7 @@ final class CentralFxRatesService implements CentralFxRatesContract
         string|CurrencyCode $currencyCode,
         ?RequestOptions $requestOptions = null
     ): ExchangeRate {
-        $params = ['currencyCode' => $currencyCode];
+        $params = Util::removeNulls(['currencyCode' => $currencyCode]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->createCurrency(params: $params, requestOptions: $requestOptions);

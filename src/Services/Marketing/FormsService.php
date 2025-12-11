@@ -6,6 +6,7 @@ namespace HubspotSDK\Services\Marketing;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Marketing\Forms\FieldGroup;
 use HubspotSDK\Marketing\Forms\FieldGroup\GroupType;
 use HubspotSDK\Marketing\Forms\FieldGroup\RichTextType;
@@ -122,16 +123,16 @@ final class FormsService implements FormsContract
         ?string $name = null,
         ?RequestOptions $requestOptions = null,
     ): FormDefinitionBase {
-        $params = [
-            'archived' => $archived,
-            'configuration' => $configuration,
-            'displayOptions' => $displayOptions,
-            'fieldGroups' => $fieldGroups,
-            'legalConsentOptions' => $legalConsentOptions,
-            'name' => $name,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'archived' => $archived,
+                'configuration' => $configuration,
+                'displayOptions' => $displayOptions,
+                'fieldGroups' => $fieldGroups,
+                'legalConsentOptions' => $legalConsentOptions,
+                'name' => $name,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->update($formID, params: $params, requestOptions: $requestOptions);
@@ -160,14 +161,14 @@ final class FormsService implements FormsContract
         ?int $limit = null,
         ?RequestOptions $requestOptions = null,
     ): Page {
-        $params = [
-            'after' => $after,
-            'archived' => $archived,
-            'formTypes' => $formTypes,
-            'limit' => $limit,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'after' => $after,
+                'archived' => $archived,
+                'formTypes' => $formTypes,
+                'limit' => $limit,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->list(params: $params, requestOptions: $requestOptions);
@@ -209,9 +210,7 @@ final class FormsService implements FormsContract
         ?bool $archived = null,
         ?RequestOptions $requestOptions = null,
     ): FormDefinitionBase {
-        $params = ['archived' => $archived];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(['archived' => $archived]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->get($formID, params: $params, requestOptions: $requestOptions);

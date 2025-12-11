@@ -8,6 +8,7 @@ use HubspotSDK\BatchResponseProperty;
 use HubspotSDK\Client;
 use HubspotSDK\Cms\MediaBridge\CollectionResponsePropertyNoPaging;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Property;
 use HubspotSDK\PropertyCreate\DataSensitivity;
 use HubspotSDK\PropertyCreate\FieldType;
@@ -81,26 +82,26 @@ final class PropertiesService implements PropertiesContract
         ?string $referencedObjectType = null,
         ?RequestOptions $requestOptions = null,
     ): Property {
-        $params = [
-            'appID' => $appID,
-            'fieldType' => $fieldType,
-            'groupName' => $groupName,
-            'label' => $label,
-            'name' => $name,
-            'type' => $type,
-            'calculationFormula' => $calculationFormula,
-            'dataSensitivity' => $dataSensitivity,
-            'description' => $description,
-            'displayOrder' => $displayOrder,
-            'externalOptions' => $externalOptions,
-            'formField' => $formField,
-            'hasUniqueValue' => $hasUniqueValue,
-            'hidden' => $hidden,
-            'options' => $options,
-            'referencedObjectType' => $referencedObjectType,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'appID' => $appID,
+                'fieldType' => $fieldType,
+                'groupName' => $groupName,
+                'label' => $label,
+                'name' => $name,
+                'type' => $type,
+                'calculationFormula' => $calculationFormula,
+                'dataSensitivity' => $dataSensitivity,
+                'description' => $description,
+                'displayOrder' => $displayOrder,
+                'externalOptions' => $externalOptions,
+                'formField' => $formField,
+                'hasUniqueValue' => $hasUniqueValue,
+                'hidden' => $hidden,
+                'options' => $options,
+                'referencedObjectType' => $referencedObjectType,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->create($objectType, params: $params, requestOptions: $requestOptions);
@@ -153,23 +154,23 @@ final class PropertiesService implements PropertiesContract
         string|\HubspotSDK\Cms\MediaBridge\Properties\PropertyUpdateParams\Type|null $type = null,
         ?RequestOptions $requestOptions = null,
     ): Property {
-        $params = [
-            'appID' => $appID,
-            'objectType' => $objectType,
-            'calculationFormula' => $calculationFormula,
-            'description' => $description,
-            'displayOrder' => $displayOrder,
-            'fieldType' => $fieldType,
-            'formField' => $formField,
-            'groupName' => $groupName,
-            'hasUniqueValue' => $hasUniqueValue,
-            'hidden' => $hidden,
-            'label' => $label,
-            'options' => $options,
-            'type' => $type,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'appID' => $appID,
+                'objectType' => $objectType,
+                'calculationFormula' => $calculationFormula,
+                'description' => $description,
+                'displayOrder' => $displayOrder,
+                'fieldType' => $fieldType,
+                'formField' => $formField,
+                'groupName' => $groupName,
+                'hasUniqueValue' => $hasUniqueValue,
+                'hidden' => $hidden,
+                'label' => $label,
+                'options' => $options,
+                'type' => $type,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->update($propertyName, params: $params, requestOptions: $requestOptions);
@@ -196,11 +197,9 @@ final class PropertiesService implements PropertiesContract
         ?string $properties = null,
         ?RequestOptions $requestOptions = null,
     ): CollectionResponsePropertyNoPaging {
-        $params = [
-            'appID' => $appID, 'archived' => $archived, 'properties' => $properties,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            ['appID' => $appID, 'archived' => $archived, 'properties' => $properties]
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->list($objectType, params: $params, requestOptions: $requestOptions);
@@ -225,7 +224,9 @@ final class PropertiesService implements PropertiesContract
         string $objectType,
         ?RequestOptions $requestOptions = null,
     ): mixed {
-        $params = ['appID' => $appID, 'objectType' => $objectType];
+        $params = Util::removeNulls(
+            ['appID' => $appID, 'objectType' => $objectType]
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->delete($propertyName, params: $params, requestOptions: $requestOptions);
@@ -272,7 +273,7 @@ final class PropertiesService implements PropertiesContract
         array $inputs,
         ?RequestOptions $requestOptions = null,
     ): BatchResponseProperty {
-        $params = ['appID' => $appID, 'inputs' => $inputs];
+        $params = Util::removeNulls(['appID' => $appID, 'inputs' => $inputs]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->createBatch($objectType, params: $params, requestOptions: $requestOptions);
@@ -297,7 +298,7 @@ final class PropertiesService implements PropertiesContract
         array $inputs,
         ?RequestOptions $requestOptions = null,
     ): mixed {
-        $params = ['appID' => $appID, 'inputs' => $inputs];
+        $params = Util::removeNulls(['appID' => $appID, 'inputs' => $inputs]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->deleteBatch($objectType, params: $params, requestOptions: $requestOptions);
@@ -326,14 +327,14 @@ final class PropertiesService implements PropertiesContract
         ?string $properties = null,
         ?RequestOptions $requestOptions = null,
     ): Property {
-        $params = [
-            'appID' => $appID,
-            'objectType' => $objectType,
-            'archived' => $archived,
-            'properties' => $properties,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'appID' => $appID,
+                'objectType' => $objectType,
+                'archived' => $archived,
+                'properties' => $properties,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->get($propertyName, params: $params, requestOptions: $requestOptions);
@@ -362,12 +363,14 @@ final class PropertiesService implements PropertiesContract
         array $inputs,
         ?RequestOptions $requestOptions = null,
     ): BatchResponseProperty {
-        $params = [
-            'appID' => $appID,
-            'archived' => $archived,
-            'dataSensitivity' => $dataSensitivity,
-            'inputs' => $inputs,
-        ];
+        $params = Util::removeNulls(
+            [
+                'appID' => $appID,
+                'archived' => $archived,
+                'dataSensitivity' => $dataSensitivity,
+                'inputs' => $inputs,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->getBatch($objectType, params: $params, requestOptions: $requestOptions);

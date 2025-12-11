@@ -6,6 +6,7 @@ namespace HubspotSDK\Services;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Events\ExternalUnifiedEvent;
 use HubspotSDK\Events\VisibleExternalEventTypeNames;
 use HubspotSDK\Page;
@@ -77,22 +78,22 @@ final class EventsService implements EventsContract
         ?array $sort = null,
         ?RequestOptions $requestOptions = null,
     ): Page {
-        $params = [
-            'id' => $id,
-            'after' => $after,
-            'before' => $before,
-            'eventType' => $eventType,
-            'limit' => $limit,
-            'objectID' => $objectID,
-            'objectProperty' => $objectProperty,
-            'objectType' => $objectType,
-            'occurredAfter' => $occurredAfter,
-            'occurredBefore' => $occurredBefore,
-            'property' => $property,
-            'sort' => $sort,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'id' => $id,
+                'after' => $after,
+                'before' => $before,
+                'eventType' => $eventType,
+                'limit' => $limit,
+                'objectID' => $objectID,
+                'objectProperty' => $objectProperty,
+                'objectType' => $objectType,
+                'occurredAfter' => $occurredAfter,
+                'occurredBefore' => $occurredBefore,
+                'property' => $property,
+                'sort' => $sort,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->list(params: $params, requestOptions: $requestOptions);

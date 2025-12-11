@@ -285,7 +285,7 @@ final class SitePagesRawService implements SitePagesRawContract
         return $this->client->request(
             method: 'patch',
             path: ['cms/v3/pages/site-pages/%1$s', $objectID],
-            query: array_diff_key($parsed, $query_params),
+            query: array_intersect_key($parsed, $query_params),
             body: (object) array_diff_key($parsed, $query_params),
             options: $options,
             convert: Page::class,
@@ -733,7 +733,7 @@ final class SitePagesRawService implements SitePagesRawContract
         return $this->client->request(
             method: 'post',
             path: 'cms/v3/pages/site-pages/batch/read',
-            query: array_diff_key($parsed, $query_params),
+            query: array_intersect_key($parsed, $query_params),
             body: (object) array_diff_key($parsed, $query_params),
             options: $options,
             convert: BatchResponsePage::class,
@@ -1077,7 +1077,7 @@ final class SitePagesRawService implements SitePagesRawContract
         return $this->client->request(
             method: 'post',
             path: 'cms/v3/pages/site-pages/batch/update',
-            query: array_diff_key($parsed, $query_params),
+            query: array_intersect_key($parsed, $query_params),
             body: (object) array_diff_key($parsed, $query_params),
             options: $options,
             convert: BatchResponsePage::class,

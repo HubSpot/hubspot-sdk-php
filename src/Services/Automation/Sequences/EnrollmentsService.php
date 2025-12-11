@@ -8,6 +8,7 @@ use HubspotSDK\Automation\Sequences\PublicSequenceEnrollmentLiteResponse;
 use HubspotSDK\Automation\Sequences\PublicSequenceEnrollmentResponse;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Automation\Sequences\EnrollmentsContract;
 
@@ -47,15 +48,15 @@ final class EnrollmentsService implements EnrollmentsContract
         ?string $senderAliasAddress = null,
         ?RequestOptions $requestOptions = null,
     ): PublicSequenceEnrollmentLiteResponse {
-        $params = [
-            'userID' => $userID,
-            'contactID' => $contactID,
-            'senderEmail' => $senderEmail,
-            'sequenceID' => $sequenceID,
-            'senderAliasAddress' => $senderAliasAddress,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'userID' => $userID,
+                'contactID' => $contactID,
+                'senderEmail' => $senderEmail,
+                'sequenceID' => $sequenceID,
+                'senderAliasAddress' => $senderAliasAddress,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->enroll(params: $params, requestOptions: $requestOptions);

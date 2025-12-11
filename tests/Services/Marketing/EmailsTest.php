@@ -59,9 +59,9 @@ final class EmailsTest extends TestCase
             businessUnitID: 0,
             campaign: '1b7f51a6-33c1-44d6-ba28-fe81f655dced',
             content: [
-                'flexAreas' => ['main' => []],
+                'flexAreas' => ['main' => (object) []],
                 'plainTextVersion' => 'This is custom! View in browser ({{view_as_page_url}})\n\nHello {{ contact.firstname }},\n\nPlain text emails have minimal formatting so your reader can really focus on what you have to say. Introduce yourself and explain why you’re reaching out.\n\nEvery email should try to lead the reader to some kind of action. Use this space to describe why the reader should want to click on the link below. Put the link on its own line to really draw their eye to it.\n\nLink text\n\nNow it’s time to wrap up your email. Before your signature, thank the recipient for reading. You can also invite them to send this email to any of their colleagues who might be interested.\n\nAll the best,\n\nYour full name\n\nYour job title\n\nOther contact information\n\n{{site_settings.company_name}}, {{site_settings.company_street_address_1}}, {{site_settings.company_street_address_2}}, {{site_settings.company_city}}, {{site_settings.company_state}} {{site_settings.company_zip}}, {{site_settings.company_country}}, {{site_settings.company_phone}}\n\nUnsubscribe ({{unsubscribe_link_all}})\n\nManage preferences ({{unsubscribe_link}})',
-                'smartFields' => ['foo' => []],
+                'smartFields' => ['foo' => (object) []],
                 'styleSettings' => [
                     'backgroundColor' => 'backgroundColor',
                     'backgroundImage' => 'backgroundImage',
@@ -71,7 +71,7 @@ final class EmailsTest extends TestCase
                     'bodyBorderWidth' => 0,
                     'bodyColor' => 'bodyColor',
                     'buttonStyleSettings' => [
-                        'backgroundColor' => [],
+                        'backgroundColor' => (object) [],
                         'cornerRadius' => 0,
                         'fontStyle' => [
                             'bold' => true,
@@ -89,7 +89,7 @@ final class EmailsTest extends TestCase
                     'colorPickerFavorite5' => 'colorPickerFavorite5',
                     'colorPickerFavorite6' => 'colorPickerFavorite6',
                     'dividerStyleSettings' => [
-                        'color' => [], 'height' => 0, 'lineType' => 'lineType',
+                        'color' => (object) [], 'height' => 0, 'lineType' => 'lineType',
                     ],
                     'emailBodyPadding' => 'emailBodyPadding',
                     'emailBodyWidth' => 'emailBodyWidth',
@@ -129,13 +129,13 @@ final class EmailsTest extends TestCase
                     'secondaryFontSize' => 0,
                 ],
                 'templatePath' => 'templatePath',
-                'themeSettingsValues' => ['foo' => []],
-                'widgetContainers' => ['foo' => []],
+                'themeSettingsValues' => ['foo' => (object) []],
+                'widgetContainers' => ['foo' => (object) []],
                 'widgets' => [
-                    'module-0-1-1' => [],
-                    'module-1-1-1' => [],
-                    'module_160676180617911' => [],
-                    'preview_text' => [],
+                    'module-0-1-1' => (object) [],
+                    'module-1-1-1' => (object) [],
+                    'module_160676180617911' => (object) [],
+                    'preview_text' => (object) [],
                 ],
             ],
             feedbackSurveyID: 'feedbackSurveyId',
@@ -155,7 +155,7 @@ final class EmailsTest extends TestCase
                 'hubspotBlogID' => 'hubspotBlogId',
                 'maxEntries' => 0,
                 'rssEntryTemplate' => 'rssEntryTemplate',
-                'timing' => ['foo' => []],
+                'timing' => ['foo' => (object) []],
                 'url' => 'url',
                 'useHeadlineAsSubject' => true,
             ],

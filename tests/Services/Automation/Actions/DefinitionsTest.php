@@ -131,7 +131,7 @@ final class DefinitionsTest extends TestCase
             published: true,
             archivedAt: 0,
             executionRules: [
-                ['conditions' => ['foo' => []], 'labelName' => 'labelName'],
+                ['conditions' => ['foo' => (object) []], 'labelName' => 'labelName'],
             ],
             inputFieldDependencies: [
                 [
@@ -200,7 +200,7 @@ final class DefinitionsTest extends TestCase
             appID: 0,
             actionURL: 'actionUrl',
             executionRules: [
-                ['conditions' => ['foo' => []], 'labelName' => 'labelName'],
+                ['conditions' => ['foo' => (object) []], 'labelName' => 'labelName'],
             ],
             inputFieldDependencies: [
                 [

@@ -496,7 +496,9 @@ final class AuthorsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->blogs->authors->updateBatch(inputs: [[]]);
+        $result = $this->client->cms->blogs->authors->updateBatch(
+            inputs: [(object) []]
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(BatchResponseBlogAuthor::class, $result);
@@ -510,7 +512,7 @@ final class AuthorsTest extends TestCase
         }
 
         $result = $this->client->cms->blogs->authors->updateBatch(
-            inputs: [[]],
+            inputs: [(object) []],
             archived: true
         );
 

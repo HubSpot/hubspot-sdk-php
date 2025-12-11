@@ -6,6 +6,7 @@ namespace HubspotSDK\Services\Crm\Extensions;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Crm\Extensions\Cards\CardActions;
 use HubspotSDK\Crm\Extensions\Cards\CardDisplayBody;
 use HubspotSDK\Crm\Extensions\Cards\CardDisplayProperty;
@@ -78,12 +79,14 @@ final class CardsService implements CardsContract
         string $title,
         ?RequestOptions $requestOptions = null,
     ): PublicCardResponse {
-        $params = [
-            'actions' => $actions,
-            'display' => $display,
-            'fetch' => $fetch,
-            'title' => $title,
-        ];
+        $params = Util::removeNulls(
+            [
+                'actions' => $actions,
+                'display' => $display,
+                'fetch' => $fetch,
+                'title' => $title,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->create($appID, params: $params, requestOptions: $requestOptions);
@@ -135,15 +138,15 @@ final class CardsService implements CardsContract
         ?string $title = null,
         ?RequestOptions $requestOptions = null,
     ): PublicCardResponse {
-        $params = [
-            'appID' => $appID,
-            'actions' => $actions,
-            'display' => $display,
-            'fetch' => $fetch,
-            'title' => $title,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'appID' => $appID,
+                'actions' => $actions,
+                'display' => $display,
+                'fetch' => $fetch,
+                'title' => $title,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->update($cardID, params: $params, requestOptions: $requestOptions);
@@ -185,7 +188,7 @@ final class CardsService implements CardsContract
         int $appID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        $params = ['appID' => $appID];
+        $params = Util::removeNulls(['appID' => $appID]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->delete($cardID, params: $params, requestOptions: $requestOptions);
@@ -208,7 +211,7 @@ final class CardsService implements CardsContract
         int $appID,
         ?RequestOptions $requestOptions = null
     ): PublicCardResponse {
-        $params = ['appID' => $appID];
+        $params = Util::removeNulls(['appID' => $appID]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->get($cardID, params: $params, requestOptions: $requestOptions);

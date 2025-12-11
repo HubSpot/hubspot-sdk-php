@@ -6,6 +6,7 @@ namespace HubspotSDK\Services\Crm\Objects\PartnerServices;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Crm\BatchResponseSimplePublicObject;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Objects\PartnerServices\BatchContract;
@@ -43,7 +44,7 @@ final class BatchService implements BatchContract
         array $inputs,
         ?RequestOptions $requestOptions = null
     ): BatchResponseSimplePublicObject {
-        $params = ['inputs' => $inputs];
+        $params = Util::removeNulls(['inputs' => $inputs]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->update(params: $params, requestOptions: $requestOptions);
@@ -72,15 +73,15 @@ final class BatchService implements BatchContract
         ?string $idProperty = null,
         ?RequestOptions $requestOptions = null,
     ): BatchResponseSimplePublicObject {
-        $params = [
-            'inputs' => $inputs,
-            'properties' => $properties,
-            'propertiesWithHistory' => $propertiesWithHistory,
-            'archived' => $archived,
-            'idProperty' => $idProperty,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'inputs' => $inputs,
+                'properties' => $properties,
+                'propertiesWithHistory' => $propertiesWithHistory,
+                'archived' => $archived,
+                'idProperty' => $idProperty,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->get(params: $params, requestOptions: $requestOptions);

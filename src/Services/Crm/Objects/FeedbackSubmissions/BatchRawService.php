@@ -51,7 +51,7 @@ final class BatchRawService implements BatchRawContract
         return $this->client->request(
             method: 'post',
             path: 'crm/v3/objects/feedback_submissions/batch/read',
-            query: array_diff_key($parsed, $query_params),
+            query: array_intersect_key($parsed, $query_params),
             body: (object) array_diff_key($parsed, $query_params),
             options: $options,
             convert: BatchResponseSimplePublicObject::class,

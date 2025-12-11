@@ -6,6 +6,7 @@ namespace HubspotSDK\Services\Crm\Associations\Schema\V4;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Crm\Associations\Schema\V4\CollectionResponseAssociationSpecWithLabel;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Associations\Schema\V4\DefinitionsContract;
@@ -44,14 +45,14 @@ final class DefinitionsService implements DefinitionsContract
         ?string $inverseLabel = null,
         ?RequestOptions $requestOptions = null,
     ): CollectionResponseAssociationSpecWithLabel {
-        $params = [
-            'fromObjectType' => $fromObjectType,
-            'label' => $label,
-            'name' => $name,
-            'inverseLabel' => $inverseLabel,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'fromObjectType' => $fromObjectType,
+                'label' => $label,
+                'name' => $name,
+                'inverseLabel' => $inverseLabel,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->createLabel($toObjectType, params: $params, requestOptions: $requestOptions);
@@ -70,9 +71,9 @@ final class DefinitionsService implements DefinitionsContract
         string $toObjectType,
         ?RequestOptions $requestOptions = null,
     ): mixed {
-        $params = [
-            'fromObjectType' => $fromObjectType, 'toObjectType' => $toObjectType,
-        ];
+        $params = Util::removeNulls(
+            ['fromObjectType' => $fromObjectType, 'toObjectType' => $toObjectType]
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->deleteLabel($associationTypeID, params: $params, requestOptions: $requestOptions);
@@ -90,7 +91,7 @@ final class DefinitionsService implements DefinitionsContract
         string $fromObjectType,
         ?RequestOptions $requestOptions = null,
     ): CollectionResponseAssociationSpecWithLabel {
-        $params = ['fromObjectType' => $fromObjectType];
+        $params = Util::removeNulls(['fromObjectType' => $fromObjectType]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->listLabels($toObjectType, params: $params, requestOptions: $requestOptions);
@@ -117,14 +118,14 @@ final class DefinitionsService implements DefinitionsContract
         ?string $inverseLabel = null,
         ?RequestOptions $requestOptions = null,
     ): mixed {
-        $params = [
-            'fromObjectType' => $fromObjectType,
-            'associationTypeID' => $associationTypeID,
-            'label' => $label,
-            'inverseLabel' => $inverseLabel,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'fromObjectType' => $fromObjectType,
+                'associationTypeID' => $associationTypeID,
+                'label' => $label,
+                'inverseLabel' => $inverseLabel,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->updateLabel($toObjectType, params: $params, requestOptions: $requestOptions);

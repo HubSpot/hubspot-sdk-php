@@ -6,6 +6,7 @@ namespace HubspotSDK\Services\Files;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Files\File;
 use HubspotSDK\Files\FileActionResponse;
 use HubspotSDK\Files\FileOperations\FileOperationGetSignedURLParams\Size;
@@ -59,17 +60,17 @@ final class FileOperationsService implements FileOperationsContract
         ?string $parentFolderPath = null,
         ?RequestOptions $requestOptions = null,
     ): File {
-        $params = [
-            'access' => $access,
-            'clearExpires' => $clearExpires,
-            'expiresAt' => $expiresAt,
-            'isUsableInContent' => $isUsableInContent,
-            'name' => $name,
-            'parentFolderID' => $parentFolderID,
-            'parentFolderPath' => $parentFolderPath,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'access' => $access,
+                'clearExpires' => $clearExpires,
+                'expiresAt' => $expiresAt,
+                'isUsableInContent' => $isUsableInContent,
+                'name' => $name,
+                'parentFolderID' => $parentFolderID,
+                'parentFolderPath' => $parentFolderPath,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->update($fileID, params: $params, requestOptions: $requestOptions);
@@ -130,9 +131,7 @@ final class FileOperationsService implements FileOperationsContract
         ?array $properties = null,
         ?RequestOptions $requestOptions = null,
     ): File {
-        $params = ['properties' => $properties];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(['properties' => $properties]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->get($fileID, params: $params, requestOptions: $requestOptions);
@@ -155,9 +154,7 @@ final class FileOperationsService implements FileOperationsContract
         ?array $properties = null,
         ?RequestOptions $requestOptions = null,
     ): FileStat {
-        $params = ['properties' => $properties];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(['properties' => $properties]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->getByPath($filePath, params: $params, requestOptions: $requestOptions);
@@ -203,13 +200,13 @@ final class FileOperationsService implements FileOperationsContract
         ?bool $upscale = null,
         ?RequestOptions $requestOptions = null,
     ): SignedURL {
-        $params = [
-            'expirationSeconds' => $expirationSeconds,
-            'size' => $size,
-            'upscale' => $upscale,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'expirationSeconds' => $expirationSeconds,
+                'size' => $size,
+                'upscale' => $upscale,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->getSignedURL($fileID, params: $params, requestOptions: $requestOptions);
@@ -248,20 +245,20 @@ final class FileOperationsService implements FileOperationsContract
         ?string $ttl = null,
         ?RequestOptions $requestOptions = null,
     ): ImportFromURLTaskLocator {
-        $params = [
-            'access' => $access,
-            'url' => $url,
-            'duplicateValidationScope' => $duplicateValidationScope,
-            'duplicateValidationStrategy' => $duplicateValidationStrategy,
-            'expiresAt' => $expiresAt,
-            'folderID' => $folderID,
-            'folderPath' => $folderPath,
-            'name' => $name,
-            'overwrite' => $overwrite,
-            'ttl' => $ttl,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'access' => $access,
+                'url' => $url,
+                'duplicateValidationScope' => $duplicateValidationScope,
+                'duplicateValidationStrategy' => $duplicateValidationStrategy,
+                'expiresAt' => $expiresAt,
+                'folderID' => $folderID,
+                'folderPath' => $folderPath,
+                'name' => $name,
+                'overwrite' => $overwrite,
+                'ttl' => $ttl,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->importFromURLAsync(params: $params, requestOptions: $requestOptions);
@@ -288,11 +285,9 @@ final class FileOperationsService implements FileOperationsContract
         ?string $options = null,
         ?RequestOptions $requestOptions = null,
     ): File {
-        $params = [
-            'charsetHunch' => $charsetHunch, 'file' => $file, 'options' => $options,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            ['charsetHunch' => $charsetHunch, 'file' => $file, 'options' => $options]
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->replace($fileID, params: $params, requestOptions: $requestOptions);
@@ -382,46 +377,46 @@ final class FileOperationsService implements FileOperationsContract
         ?int $widthLte = null,
         ?RequestOptions $requestOptions = null,
     ): Page {
-        $params = [
-            'after' => $after,
-            'allowsAnonymousAccess' => $allowsAnonymousAccess,
-            'before' => $before,
-            'createdAt' => $createdAt,
-            'createdAtGte' => $createdAtGte,
-            'createdAtLte' => $createdAtLte,
-            'encoding' => $encoding,
-            'expiresAt' => $expiresAt,
-            'expiresAtGte' => $expiresAtGte,
-            'expiresAtLte' => $expiresAtLte,
-            'extension' => $extension,
-            'fileMd5' => $fileMd5,
-            'height' => $height,
-            'heightGte' => $heightGte,
-            'heightLte' => $heightLte,
-            'idGte' => $idGte,
-            'idLte' => $idLte,
-            'ids' => $ids,
-            'isUsableInContent' => $isUsableInContent,
-            'limit' => $limit,
-            'name' => $name,
-            'parentFolderIDs' => $parentFolderIDs,
-            'path' => $path,
-            'properties' => $properties,
-            'size' => $size,
-            'sizeGte' => $sizeGte,
-            'sizeLte' => $sizeLte,
-            'sort' => $sort,
-            'type' => $type,
-            'updatedAt' => $updatedAt,
-            'updatedAtGte' => $updatedAtGte,
-            'updatedAtLte' => $updatedAtLte,
-            'url' => $url,
-            'width' => $width,
-            'widthGte' => $widthGte,
-            'widthLte' => $widthLte,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'after' => $after,
+                'allowsAnonymousAccess' => $allowsAnonymousAccess,
+                'before' => $before,
+                'createdAt' => $createdAt,
+                'createdAtGte' => $createdAtGte,
+                'createdAtLte' => $createdAtLte,
+                'encoding' => $encoding,
+                'expiresAt' => $expiresAt,
+                'expiresAtGte' => $expiresAtGte,
+                'expiresAtLte' => $expiresAtLte,
+                'extension' => $extension,
+                'fileMd5' => $fileMd5,
+                'height' => $height,
+                'heightGte' => $heightGte,
+                'heightLte' => $heightLte,
+                'idGte' => $idGte,
+                'idLte' => $idLte,
+                'ids' => $ids,
+                'isUsableInContent' => $isUsableInContent,
+                'limit' => $limit,
+                'name' => $name,
+                'parentFolderIDs' => $parentFolderIDs,
+                'path' => $path,
+                'properties' => $properties,
+                'size' => $size,
+                'sizeGte' => $sizeGte,
+                'sizeLte' => $sizeLte,
+                'sort' => $sort,
+                'type' => $type,
+                'updatedAt' => $updatedAt,
+                'updatedAtGte' => $updatedAtGte,
+                'updatedAtLte' => $updatedAtLte,
+                'url' => $url,
+                'width' => $width,
+                'widthGte' => $widthGte,
+                'widthLte' => $widthLte,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->search(params: $params, requestOptions: $requestOptions);
@@ -452,16 +447,16 @@ final class FileOperationsService implements FileOperationsContract
         ?string $options = null,
         ?RequestOptions $requestOptions = null,
     ): File {
-        $params = [
-            'charsetHunch' => $charsetHunch,
-            'file' => $file,
-            'fileName' => $fileName,
-            'folderID' => $folderID,
-            'folderPath' => $folderPath,
-            'options' => $options,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'charsetHunch' => $charsetHunch,
+                'file' => $file,
+                'fileName' => $fileName,
+                'folderID' => $folderID,
+                'folderPath' => $folderPath,
+                'options' => $options,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->upload(params: $params, requestOptions: $requestOptions);

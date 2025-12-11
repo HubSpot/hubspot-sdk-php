@@ -13,6 +13,7 @@ use HubspotSDK\Conversations\PublicThreadInboxChange;
 use HubspotSDK\Conversations\PublicThreadStatusChange;
 use HubspotSDK\Conversations\PublicWelcomeMessage;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Conversations\MessagesContract;
@@ -65,15 +66,15 @@ final class MessagesService implements MessagesContract
         ?array $sort = null,
         ?RequestOptions $requestOptions = null,
     ): Page {
-        $params = [
-            'after' => $after,
-            'archived' => $archived,
-            'limit' => $limit,
-            'property' => $property,
-            'sort' => $sort,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'after' => $after,
+                'archived' => $archived,
+                'limit' => $limit,
+                'property' => $property,
+                'sort' => $sort,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->list($threadID, params: $params, requestOptions: $requestOptions);
@@ -96,9 +97,9 @@ final class MessagesService implements MessagesContract
         ?string $property = null,
         ?RequestOptions $requestOptions = null,
     ): ConversationsPublicConversationsMessage|PublicComment|PublicWelcomeMessage|PublicAssignmentMessage|PublicThreadStatusChange|PublicThreadInboxChange {
-        $params = ['threadID' => $threadID, 'property' => $property];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            ['threadID' => $threadID, 'property' => $property]
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->get($messageID, params: $params, requestOptions: $requestOptions);
@@ -121,9 +122,9 @@ final class MessagesService implements MessagesContract
         ?string $property = null,
         ?RequestOptions $requestOptions = null,
     ): PublicMessageContent {
-        $params = ['threadID' => $threadID, 'property' => $property];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            ['threadID' => $threadID, 'property' => $property]
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->getOriginalContent($messageID, params: $params, requestOptions: $requestOptions);

@@ -53,7 +53,7 @@ final class ThreadsRawService implements ThreadsRawContract
         return $this->client->request(
             method: 'patch',
             path: ['conversations/v3/conversations/threads/%1$s', $threadID],
-            query: array_diff_key($parsed, $query_params),
+            query: array_intersect_key($parsed, $query_params),
             body: (object) array_diff_key($parsed, $query_params),
             options: $options,
             convert: PublicThread::class,

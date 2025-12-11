@@ -6,6 +6,7 @@ namespace HubspotSDK\Services\Scheduler\Meetings;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\Scheduler\Meetings\ExternalBookingInfo;
@@ -53,15 +54,15 @@ final class MeetingsLinksService implements MeetingsLinksContract
         ?string $type = null,
         ?RequestOptions $requestOptions = null,
     ): Page {
-        $params = [
-            'after' => $after,
-            'limit' => $limit,
-            'name' => $name,
-            'organizerUserID' => $organizerUserID,
-            'type' => $type,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'after' => $after,
+                'limit' => $limit,
+                'name' => $name,
+                'organizerUserID' => $organizerUserID,
+                'type' => $type,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->list(params: $params, requestOptions: $requestOptions);
@@ -96,21 +97,21 @@ final class MeetingsLinksService implements MeetingsLinksContract
         ?string $timezone = null,
         ?RequestOptions $requestOptions = null,
     ): ExternalMeetingBookingResponse {
-        $params = [
-            'duration' => $duration,
-            'email' => $email,
-            'firstName' => $firstName,
-            'formFields' => $formFields,
-            'lastName' => $lastName,
-            'legalConsentResponses' => $legalConsentResponses,
-            'likelyAvailableUserIDs' => $likelyAvailableUserIDs,
-            'slug' => $slug,
-            'startTime' => $startTime,
-            'locale' => $locale,
-            'timezone' => $timezone,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'duration' => $duration,
+                'email' => $email,
+                'firstName' => $firstName,
+                'formFields' => $formFields,
+                'lastName' => $lastName,
+                'legalConsentResponses' => $legalConsentResponses,
+                'likelyAvailableUserIDs' => $likelyAvailableUserIDs,
+                'slug' => $slug,
+                'startTime' => $startTime,
+                'locale' => $locale,
+                'timezone' => $timezone,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->book(params: $params, requestOptions: $requestOptions);
@@ -135,9 +136,9 @@ final class MeetingsLinksService implements MeetingsLinksContract
         ?int $monthOffset = null,
         ?RequestOptions $requestOptions = null,
     ): ExternalLinkAvailabilityAndBusyTimes {
-        $params = ['timezone' => $timezone, 'monthOffset' => $monthOffset];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            ['timezone' => $timezone, 'monthOffset' => $monthOffset]
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->getAvailabilityBySlug($slug, params: $params, requestOptions: $requestOptions);
@@ -160,7 +161,7 @@ final class MeetingsLinksService implements MeetingsLinksContract
         string $timezone,
         ?RequestOptions $requestOptions = null
     ): ExternalBookingInfo {
-        $params = ['timezone' => $timezone];
+        $params = Util::removeNulls(['timezone' => $timezone]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->getBookingInfoBySlug($slug, params: $params, requestOptions: $requestOptions);

@@ -45,7 +45,7 @@ final class PostsTest extends TestCase
             abTestID: 'abTestId',
             archivedAt: 0,
             archivedInDashboard: true,
-            attachedStylesheets: [['foo' => []]],
+            attachedStylesheets: [['foo' => (object) []]],
             authorName: 'authorName',
             blogAuthorID: 'blogAuthorId',
             campaign: 'campaign',
@@ -79,7 +79,7 @@ final class PostsTest extends TestCase
                     'cssStyle' => 'cssStyle',
                     'label' => 'label',
                     'name' => 'name',
-                    'params' => ['foo' => []],
+                    'params' => ['foo' => (object) []],
                     'rowMetaData' => [
                         [
                             'cssClass' => 'cssClass',
@@ -146,7 +146,7 @@ final class PostsTest extends TestCase
             password: 'password',
             postBody: 'postBody',
             postSummary: 'postSummary',
-            publicAccessRules: [[]],
+            publicAccessRules: [(object) []],
             publicAccessRulesEnabled: true,
             publishDate: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
             publishImmediately: true,
@@ -155,7 +155,7 @@ final class PostsTest extends TestCase
             slug: 'slug',
             state: 'state',
             tagIDs: [0],
-            themeSettingsValues: ['foo' => []],
+            themeSettingsValues: ['foo' => (object) []],
             translatedFromID: 'translatedFromId',
             translations: [
                 'foo' => [
@@ -166,7 +166,7 @@ final class PostsTest extends TestCase
                     'created' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
                     'name' => 'name',
                     'password' => 'password',
-                    'publicAccessRules' => [[]],
+                    'publicAccessRules' => [(object) []],
                     'publicAccessRulesEnabled' => true,
                     'publishDate' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
                     'slug' => 'slug',
@@ -178,8 +178,8 @@ final class PostsTest extends TestCase
             updatedByID: 'updatedById',
             url: 'url',
             useFeaturedImage: true,
-            widgetContainers: ['foo' => []],
-            widgets: ['foo' => []],
+            widgetContainers: ['foo' => (object) []],
+            widgets: ['foo' => (object) []],
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -199,7 +199,7 @@ final class PostsTest extends TestCase
             abTestID: 'abTestId',
             archivedAt: 0,
             archivedInDashboard: true,
-            attachedStylesheets: [['foo' => []]],
+            attachedStylesheets: [['foo' => (object) []]],
             authorName: 'authorName',
             blogAuthorID: 'blogAuthorId',
             campaign: 'campaign',
@@ -233,7 +233,7 @@ final class PostsTest extends TestCase
                     'cssStyle' => 'cssStyle',
                     'label' => 'label',
                     'name' => 'name',
-                    'params' => ['foo' => []],
+                    'params' => ['foo' => (object) []],
                     'rowMetaData' => [
                         [
                             'cssClass' => 'cssClass',
@@ -259,7 +259,11 @@ final class PostsTest extends TestCase
                                 'maxWidthSectionCentering' => 0,
                                 'verticalAlignment' => 'verticalAlignment',
                                 'breakpointStyles' => [
-                                    'foo' => ['hidden' => true, 'margin' => [], 'padding' => []],
+                                    'foo' => [
+                                        'hidden' => true,
+                                        'margin' => (object) [],
+                                        'padding' => (object) [],
+                                    ],
                                 ],
                             ],
                         ],
@@ -287,7 +291,11 @@ final class PostsTest extends TestCase
                         'maxWidthSectionCentering' => 0,
                         'verticalAlignment' => 'verticalAlignment',
                         'breakpointStyles' => [
-                            'foo' => ['hidden' => true, 'margin' => [], 'padding' => []],
+                            'foo' => [
+                                'hidden' => true,
+                                'margin' => (object) [],
+                                'padding' => (object) [],
+                            ],
                         ],
                     ],
                     'type' => 'type',
@@ -306,7 +314,7 @@ final class PostsTest extends TestCase
             password: 'password',
             postBody: 'postBody',
             postSummary: 'postSummary',
-            publicAccessRules: [[]],
+            publicAccessRules: [(object) []],
             publicAccessRulesEnabled: true,
             publishDate: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
             publishImmediately: true,
@@ -315,7 +323,7 @@ final class PostsTest extends TestCase
             slug: 'slug',
             state: 'state',
             tagIDs: [0],
-            themeSettingsValues: ['foo' => []],
+            themeSettingsValues: ['foo' => (object) []],
             translatedFromID: 'translatedFromId',
             translations: [
                 'foo' => [
@@ -326,7 +334,7 @@ final class PostsTest extends TestCase
                     'created' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
                     'name' => 'name',
                     'password' => 'password',
-                    'publicAccessRules' => [[]],
+                    'publicAccessRules' => [(object) []],
                     'publicAccessRulesEnabled' => true,
                     'publishDate' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
                     'slug' => 'slug',
@@ -339,8 +347,8 @@ final class PostsTest extends TestCase
             updatedByID: 'updatedById',
             url: 'url',
             useFeaturedImage: true,
-            widgetContainers: ['foo' => []],
-            widgets: ['foo' => []],
+            widgetContainers: ['foo' => (object) []],
+            widgets: ['foo' => (object) []],
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -361,7 +369,7 @@ final class PostsTest extends TestCase
             abTestID: 'abTestId',
             archivedAt: 0,
             archivedInDashboard: true,
-            attachedStylesheets: [['foo' => []]],
+            attachedStylesheets: [['foo' => (object) []]],
             authorName: 'authorName',
             blogAuthorID: 'blogAuthorId',
             campaign: 'campaign',
@@ -395,7 +403,7 @@ final class PostsTest extends TestCase
                     'cssStyle' => 'cssStyle',
                     'label' => 'label',
                     'name' => 'name',
-                    'params' => ['foo' => []],
+                    'params' => ['foo' => (object) []],
                     'rowMetaData' => [
                         [
                             'cssClass' => 'cssClass',
@@ -462,7 +470,7 @@ final class PostsTest extends TestCase
             password: 'password',
             postBody: 'postBody',
             postSummary: 'postSummary',
-            publicAccessRules: [[]],
+            publicAccessRules: [(object) []],
             publicAccessRulesEnabled: true,
             publishDate: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
             publishImmediately: true,
@@ -471,7 +479,7 @@ final class PostsTest extends TestCase
             slug: 'slug',
             state: 'state',
             tagIDs: [0],
-            themeSettingsValues: ['foo' => []],
+            themeSettingsValues: ['foo' => (object) []],
             translatedFromID: 'translatedFromId',
             translations: [
                 'foo' => [
@@ -482,7 +490,7 @@ final class PostsTest extends TestCase
                     'created' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
                     'name' => 'name',
                     'password' => 'password',
-                    'publicAccessRules' => [[]],
+                    'publicAccessRules' => [(object) []],
                     'publicAccessRulesEnabled' => true,
                     'publishDate' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
                     'slug' => 'slug',
@@ -494,8 +502,8 @@ final class PostsTest extends TestCase
             updatedByID: 'updatedById',
             url: 'url',
             useFeaturedImage: true,
-            widgetContainers: ['foo' => []],
-            widgets: ['foo' => []],
+            widgetContainers: ['foo' => (object) []],
+            widgets: ['foo' => (object) []],
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -516,7 +524,7 @@ final class PostsTest extends TestCase
             abTestID: 'abTestId',
             archivedAt: 0,
             archivedInDashboard: true,
-            attachedStylesheets: [['foo' => []]],
+            attachedStylesheets: [['foo' => (object) []]],
             authorName: 'authorName',
             blogAuthorID: 'blogAuthorId',
             campaign: 'campaign',
@@ -550,7 +558,7 @@ final class PostsTest extends TestCase
                     'cssStyle' => 'cssStyle',
                     'label' => 'label',
                     'name' => 'name',
-                    'params' => ['foo' => []],
+                    'params' => ['foo' => (object) []],
                     'rowMetaData' => [
                         [
                             'cssClass' => 'cssClass',
@@ -576,7 +584,11 @@ final class PostsTest extends TestCase
                                 'maxWidthSectionCentering' => 0,
                                 'verticalAlignment' => 'verticalAlignment',
                                 'breakpointStyles' => [
-                                    'foo' => ['hidden' => true, 'margin' => [], 'padding' => []],
+                                    'foo' => [
+                                        'hidden' => true,
+                                        'margin' => (object) [],
+                                        'padding' => (object) [],
+                                    ],
                                 ],
                             ],
                         ],
@@ -604,7 +616,11 @@ final class PostsTest extends TestCase
                         'maxWidthSectionCentering' => 0,
                         'verticalAlignment' => 'verticalAlignment',
                         'breakpointStyles' => [
-                            'foo' => ['hidden' => true, 'margin' => [], 'padding' => []],
+                            'foo' => [
+                                'hidden' => true,
+                                'margin' => (object) [],
+                                'padding' => (object) [],
+                            ],
                         ],
                     ],
                     'type' => 'type',
@@ -623,7 +639,7 @@ final class PostsTest extends TestCase
             password: 'password',
             postBody: 'postBody',
             postSummary: 'postSummary',
-            publicAccessRules: [[]],
+            publicAccessRules: [(object) []],
             publicAccessRulesEnabled: true,
             publishDate: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
             publishImmediately: true,
@@ -632,7 +648,7 @@ final class PostsTest extends TestCase
             slug: 'slug',
             state: 'state',
             tagIDs: [0],
-            themeSettingsValues: ['foo' => []],
+            themeSettingsValues: ['foo' => (object) []],
             translatedFromID: 'translatedFromId',
             translations: [
                 'foo' => [
@@ -643,7 +659,7 @@ final class PostsTest extends TestCase
                     'created' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
                     'name' => 'name',
                     'password' => 'password',
-                    'publicAccessRules' => [[]],
+                    'publicAccessRules' => [(object) []],
                     'publicAccessRulesEnabled' => true,
                     'publishDate' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
                     'slug' => 'slug',
@@ -656,8 +672,8 @@ final class PostsTest extends TestCase
             updatedByID: 'updatedById',
             url: 'url',
             useFeaturedImage: true,
-            widgetContainers: ['foo' => []],
-            widgets: ['foo' => []],
+            widgetContainers: ['foo' => (object) []],
+            widgets: ['foo' => (object) []],
             archived: true,
         );
 
@@ -1053,7 +1069,7 @@ final class PostsTest extends TestCase
             abTestID: 'abTestId',
             archivedAt: 0,
             archivedInDashboard: true,
-            attachedStylesheets: [['foo' => []]],
+            attachedStylesheets: [['foo' => (object) []]],
             authorName: 'authorName',
             blogAuthorID: 'blogAuthorId',
             campaign: 'campaign',
@@ -1087,7 +1103,7 @@ final class PostsTest extends TestCase
                     'cssStyle' => 'cssStyle',
                     'label' => 'label',
                     'name' => 'name',
-                    'params' => ['foo' => []],
+                    'params' => ['foo' => (object) []],
                     'rowMetaData' => [
                         [
                             'cssClass' => 'cssClass',
@@ -1154,7 +1170,7 @@ final class PostsTest extends TestCase
             password: 'password',
             postBody: 'postBody',
             postSummary: 'postSummary',
-            publicAccessRules: [[]],
+            publicAccessRules: [(object) []],
             publicAccessRulesEnabled: true,
             publishDate: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
             publishImmediately: true,
@@ -1163,7 +1179,7 @@ final class PostsTest extends TestCase
             slug: 'slug',
             state: 'state',
             tagIDs: [0],
-            themeSettingsValues: ['foo' => []],
+            themeSettingsValues: ['foo' => (object) []],
             translatedFromID: 'translatedFromId',
             translations: [
                 'foo' => [
@@ -1174,7 +1190,7 @@ final class PostsTest extends TestCase
                     'created' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
                     'name' => 'name',
                     'password' => 'password',
-                    'publicAccessRules' => [[]],
+                    'publicAccessRules' => [(object) []],
                     'publicAccessRulesEnabled' => true,
                     'publishDate' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
                     'slug' => 'slug',
@@ -1186,8 +1202,8 @@ final class PostsTest extends TestCase
             updatedByID: 'updatedById',
             url: 'url',
             useFeaturedImage: true,
-            widgetContainers: ['foo' => []],
-            widgets: ['foo' => []],
+            widgetContainers: ['foo' => (object) []],
+            widgets: ['foo' => (object) []],
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -1208,7 +1224,7 @@ final class PostsTest extends TestCase
             abTestID: 'abTestId',
             archivedAt: 0,
             archivedInDashboard: true,
-            attachedStylesheets: [['foo' => []]],
+            attachedStylesheets: [['foo' => (object) []]],
             authorName: 'authorName',
             blogAuthorID: 'blogAuthorId',
             campaign: 'campaign',
@@ -1242,7 +1258,7 @@ final class PostsTest extends TestCase
                     'cssStyle' => 'cssStyle',
                     'label' => 'label',
                     'name' => 'name',
-                    'params' => ['foo' => []],
+                    'params' => ['foo' => (object) []],
                     'rowMetaData' => [
                         [
                             'cssClass' => 'cssClass',
@@ -1268,7 +1284,11 @@ final class PostsTest extends TestCase
                                 'maxWidthSectionCentering' => 0,
                                 'verticalAlignment' => 'verticalAlignment',
                                 'breakpointStyles' => [
-                                    'foo' => ['hidden' => true, 'margin' => [], 'padding' => []],
+                                    'foo' => [
+                                        'hidden' => true,
+                                        'margin' => (object) [],
+                                        'padding' => (object) [],
+                                    ],
                                 ],
                             ],
                         ],
@@ -1296,7 +1316,11 @@ final class PostsTest extends TestCase
                         'maxWidthSectionCentering' => 0,
                         'verticalAlignment' => 'verticalAlignment',
                         'breakpointStyles' => [
-                            'foo' => ['hidden' => true, 'margin' => [], 'padding' => []],
+                            'foo' => [
+                                'hidden' => true,
+                                'margin' => (object) [],
+                                'padding' => (object) [],
+                            ],
                         ],
                     ],
                     'type' => 'type',
@@ -1315,7 +1339,7 @@ final class PostsTest extends TestCase
             password: 'password',
             postBody: 'postBody',
             postSummary: 'postSummary',
-            publicAccessRules: [[]],
+            publicAccessRules: [(object) []],
             publicAccessRulesEnabled: true,
             publishDate: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
             publishImmediately: true,
@@ -1324,7 +1348,7 @@ final class PostsTest extends TestCase
             slug: 'slug',
             state: 'state',
             tagIDs: [0],
-            themeSettingsValues: ['foo' => []],
+            themeSettingsValues: ['foo' => (object) []],
             translatedFromID: 'translatedFromId',
             translations: [
                 'foo' => [
@@ -1335,7 +1359,7 @@ final class PostsTest extends TestCase
                     'created' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
                     'name' => 'name',
                     'password' => 'password',
-                    'publicAccessRules' => [[]],
+                    'publicAccessRules' => [(object) []],
                     'publicAccessRulesEnabled' => true,
                     'publishDate' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
                     'slug' => 'slug',
@@ -1348,8 +1372,8 @@ final class PostsTest extends TestCase
             updatedByID: 'updatedById',
             url: 'url',
             useFeaturedImage: true,
-            widgetContainers: ['foo' => []],
-            widgets: ['foo' => []],
+            widgetContainers: ['foo' => (object) []],
+            widgets: ['foo' => (object) []],
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
