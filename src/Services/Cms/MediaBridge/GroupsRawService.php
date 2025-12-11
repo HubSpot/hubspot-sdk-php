@@ -57,7 +57,7 @@ final class GroupsRawService implements GroupsRawContract
             path: [
                 'media-bridge/v1/%1$s/properties/%2$s/groups', $appID, $objectType,
             ],
-            body: (object) array_diff_key($parsed, ['appID']),
+            body: (object) array_diff_key($parsed, array_flip(['appID'])),
             options: $options,
             convert: PropertyGroup::class,
         );

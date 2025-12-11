@@ -66,7 +66,7 @@ final class SchemasRawService implements SchemasRawContract
         return $this->client->request(
             method: 'patch',
             path: ['media-bridge/v1/%1$s/schemas/%2$s', $appID, $objectType],
-            body: (object) array_diff_key($parsed, ['appID']),
+            body: (object) array_diff_key($parsed, array_flip(['appID'])),
             options: $options,
             convert: ObjectsSchemasObjectTypeDefinition::class,
         );
@@ -136,7 +136,7 @@ final class SchemasRawService implements SchemasRawContract
             path: [
                 'media-bridge/v1/%1$s/schemas/%2$s/associations', $appID, $objectType,
             ],
-            body: (object) array_diff_key($parsed, ['appID']),
+            body: (object) array_diff_key($parsed, array_flip(['appID'])),
             options: $options,
             convert: AssociationDefinition::class,
         );

@@ -114,7 +114,7 @@ final class MessagesRawService implements MessagesRawContract
                 $channelID,
                 $messageID,
             ],
-            body: (object) array_diff_key($parsed, ['channelID']),
+            body: (object) array_diff_key($parsed, array_flip(['channelID'])),
             options: $options,
             convert: ConversationsPublicConversationsMessage::class,
         );

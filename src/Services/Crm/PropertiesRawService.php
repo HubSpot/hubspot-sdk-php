@@ -128,7 +128,7 @@ final class PropertiesRawService implements PropertiesRawContract
         return $this->client->request(
             method: 'patch',
             path: ['crm/v3/properties/%1$s/%2$s', $objectType, $propertyName],
-            body: (object) array_diff_key($parsed, ['objectType']),
+            body: (object) array_diff_key($parsed, array_flip(['objectType'])),
             options: $options,
             convert: Property::class,
         );

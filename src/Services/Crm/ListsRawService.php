@@ -378,7 +378,7 @@ final class ListsRawService implements ListsRawContract
             $params,
             $requestOptions,
         );
-        $query_params = ['enrollObjectsInWorkflows'];
+        $query_params = array_flip(['enrollObjectsInWorkflows']);
 
         // @phpstan-ignore-next-line return.type
         return $this->client->request(

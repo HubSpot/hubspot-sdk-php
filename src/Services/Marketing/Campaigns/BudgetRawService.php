@@ -94,7 +94,7 @@ final class BudgetRawService implements BudgetRawContract
             path: [
                 'marketing/v3/campaigns/%1$s/budget/%2$s', $campaignGuid, $budgetID,
             ],
-            body: (object) array_diff_key($parsed, ['campaignGuid']),
+            body: (object) array_diff_key($parsed, array_flip(['campaignGuid'])),
             options: $options,
             convert: PublicBudgetItem::class,
         );

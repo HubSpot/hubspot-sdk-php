@@ -328,7 +328,7 @@ final class RowsRawService implements RowsRawContract
             path: [
                 'cms/v3/hubdb/tables/%1$s/rows/%2$s/draft', $tableIDOrName, $rowID,
             ],
-            body: (object) array_diff_key($parsed, ['tableIDOrName']),
+            body: (object) array_diff_key($parsed, array_flip(['tableIDOrName'])),
             options: $options,
             convert: HubDBTableRowV3::class,
         );
@@ -373,7 +373,7 @@ final class RowsRawService implements RowsRawContract
             path: [
                 'cms/v3/hubdb/tables/%1$s/rows/%2$s/draft', $tableIDOrName, $rowID,
             ],
-            body: (object) array_diff_key($parsed, ['tableIDOrName']),
+            body: (object) array_diff_key($parsed, array_flip(['tableIDOrName'])),
             options: $options,
             convert: HubDBTableRowV3::class,
         );

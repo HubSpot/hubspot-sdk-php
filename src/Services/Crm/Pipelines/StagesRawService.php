@@ -61,7 +61,7 @@ final class StagesRawService implements StagesRawContract
         return $this->client->request(
             method: 'post',
             path: ['crm/v3/pipelines/%1$s/%2$s/stages', $objectType, $pipelineID],
-            body: (object) array_diff_key($parsed, ['objectType']),
+            body: (object) array_diff_key($parsed, array_flip(['objectType'])),
             options: $options,
             convert: PipelineStage::class,
         );

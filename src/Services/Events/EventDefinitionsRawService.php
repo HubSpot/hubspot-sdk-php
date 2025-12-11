@@ -312,7 +312,7 @@ final class EventDefinitionsRawService implements EventDefinitionsRawContract
                 $eventName,
                 $propertyName,
             ],
-            body: (object) array_diff_key($parsed, ['eventName']),
+            body: (object) array_diff_key($parsed, array_flip(['eventName'])),
             options: $options,
             convert: Property::class,
         );

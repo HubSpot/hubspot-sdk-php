@@ -82,7 +82,7 @@ final class ConfigurationsRawService implements ConfigurationsRawContract
                 $fromObjectType,
                 $toObjectType,
             ],
-            body: (object) array_diff_key($parsed, ['fromObjectType']),
+            body: (object) array_diff_key($parsed, array_flip(['fromObjectType'])),
             options: $options,
             convert: BatchResponsePublicAssociationDefinitionUserConfiguration::class,
         );
@@ -120,7 +120,7 @@ final class ConfigurationsRawService implements ConfigurationsRawContract
                 $fromObjectType,
                 $toObjectType,
             ],
-            body: (object) array_diff_key($parsed, ['fromObjectType']),
+            body: (object) array_diff_key($parsed, array_flip(['fromObjectType'])),
             options: $options,
             convert: BatchResponseVoid::class,
         );
@@ -163,7 +163,7 @@ final class ConfigurationsRawService implements ConfigurationsRawContract
                 $fromObjectType,
                 $toObjectType,
             ],
-            body: (object) array_diff_key($parsed, ['fromObjectType']),
+            body: (object) array_diff_key($parsed, array_flip(['fromObjectType'])),
             options: $options,
             convert: BatchResponsePublicAssociationDefinitionConfigurationUpdateResult::class,
         );

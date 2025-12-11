@@ -131,7 +131,7 @@ final class BatchRawService implements BatchRawContract
             $params,
             $requestOptions,
         );
-        $query_params = ['locale'];
+        $query_params = array_flip(['locale']);
 
         // @phpstan-ignore-next-line return.type
         return $this->client->request(

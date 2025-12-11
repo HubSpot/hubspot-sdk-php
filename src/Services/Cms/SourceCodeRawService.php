@@ -59,7 +59,7 @@ final class SourceCodeRawService implements SourceCodeRawContract
             method: 'post',
             path: ['cms/v3/source-code/%1$s/content/%2$s', $environment, $filePath],
             headers: ['Content-Type' => 'multipart/form-data'],
-            body: (object) array_diff_key($parsed, ['environment']),
+            body: (object) array_diff_key($parsed, array_flip(['environment'])),
             options: $options,
             convert: AssetFileMetadata::class,
         );
@@ -251,7 +251,7 @@ final class SourceCodeRawService implements SourceCodeRawContract
             method: 'put',
             path: ['cms/v3/source-code/%1$s/content/%2$s', $environment, $filePath],
             headers: ['Content-Type' => 'multipart/form-data'],
-            body: (object) array_diff_key($parsed, ['environment']),
+            body: (object) array_diff_key($parsed, array_flip(['environment'])),
             options: $options,
             convert: AssetFileMetadata::class,
         );
@@ -288,7 +288,7 @@ final class SourceCodeRawService implements SourceCodeRawContract
             method: 'post',
             path: ['cms/v3/source-code/%1$s/validate/%2$s', $environment, $filePath],
             headers: ['Content-Type' => 'multipart/form-data', 'Accept' => '*/*'],
-            body: (object) array_diff_key($parsed, ['environment']),
+            body: (object) array_diff_key($parsed, array_flip(['environment'])),
             options: $options,
             convert: 'string',
         );
