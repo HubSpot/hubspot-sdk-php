@@ -83,7 +83,7 @@ final class PropertiesRawService implements PropertiesRawContract
         return $this->client->request(
             method: 'post',
             path: ['media-bridge/v1/%1$s/properties/%2$s', $appID, $objectType],
-            body: (object) array_diff_key($parsed, ['appID']),
+            body: (object) array_diff_key($parsed, array_flip(['appID'])),
             options: $options,
             convert: Property::class,
         );
@@ -278,7 +278,7 @@ final class PropertiesRawService implements PropertiesRawContract
             path: [
                 'media-bridge/v1/%1$s/properties/%2$s/batch/create', $appID, $objectType,
             ],
-            body: (object) array_diff_key($parsed, ['appID']),
+            body: (object) array_diff_key($parsed, array_flip(['appID'])),
             options: $options,
             convert: BatchResponseProperty::class,
         );
@@ -318,7 +318,7 @@ final class PropertiesRawService implements PropertiesRawContract
                 $appID,
                 $objectType,
             ],
-            body: (object) array_diff_key($parsed, ['appID']),
+            body: (object) array_diff_key($parsed, array_flip(['appID'])),
             options: $options,
             convert: null,
         );
@@ -402,7 +402,7 @@ final class PropertiesRawService implements PropertiesRawContract
             path: [
                 'media-bridge/v1/%1$s/properties/%2$s/batch/read', $appID, $objectType,
             ],
-            body: (object) array_diff_key($parsed, ['appID']),
+            body: (object) array_diff_key($parsed, array_flip(['appID'])),
             options: $options,
             convert: BatchResponseProperty::class,
         );

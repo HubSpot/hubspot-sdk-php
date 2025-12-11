@@ -141,7 +141,7 @@ final class PortalsRawService implements PortalsRawContract
                 $appID,
                 $flagName,
             ],
-            body: (object) array_diff_key($parsed, ['appID']),
+            body: (object) array_diff_key($parsed, array_flip(['appID'])),
             options: $options,
             convert: PortalFlagStateBatchResponse::class,
         );
@@ -185,7 +185,7 @@ final class PortalsRawService implements PortalsRawContract
                 $appID,
                 $flagName,
             ],
-            body: (object) array_diff_key($parsed, ['appID']),
+            body: (object) array_diff_key($parsed, array_flip(['appID'])),
             options: $options,
             convert: PortalFlagStateBatchResponse::class,
         );

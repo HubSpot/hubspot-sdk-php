@@ -91,7 +91,7 @@ final class SpendRawService implements SpendRawContract
         return $this->client->request(
             method: 'put',
             path: ['marketing/v3/campaigns/%1$s/spend/%2$s', $campaignGuid, $spendID],
-            body: (object) array_diff_key($parsed, ['campaignGuid']),
+            body: (object) array_diff_key($parsed, array_flip(['campaignGuid'])),
             options: $options,
             convert: PublicSpendItem::class,
         );

@@ -70,7 +70,7 @@ final class AttendanceRawService implements AttendanceRawContract
                 $objectID,
                 $subscriberState,
             ],
-            body: (object) array_diff_key($parsed, ['objectID']),
+            body: (object) array_diff_key($parsed, array_flip(['objectID'])),
             options: $options,
             convert: BatchResponseSubscriberVidResponse::class,
         );
@@ -126,7 +126,7 @@ final class AttendanceRawService implements AttendanceRawContract
                 $objectID,
                 $subscriberState,
             ],
-            body: (object) array_diff_key($parsed, ['objectID']),
+            body: (object) array_diff_key($parsed, array_flip(['objectID'])),
             options: $options,
             convert: BatchResponseSubscriberEmailResponse::class,
         );
@@ -169,7 +169,7 @@ final class AttendanceRawService implements AttendanceRawContract
         );
         $externalEventID = $parsed['externalEventID'];
         unset($parsed['externalEventID']);
-        $query_params = ['externalAccountId'];
+        $query_params = array_flip(['externalAccountId']);
 
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -185,7 +185,7 @@ final class AttendanceRawService implements AttendanceRawContract
             ),
             body: (object) array_diff_key(
                 array_diff_key($parsed, $query_params),
-                ['externalEventID']
+                array_flip(['externalEventID'])
             ),
             options: $options,
             convert: BatchResponseSubscriberVidResponse::class,
@@ -234,7 +234,7 @@ final class AttendanceRawService implements AttendanceRawContract
         );
         $externalEventID = $parsed['externalEventID'];
         unset($parsed['externalEventID']);
-        $query_params = ['externalAccountId'];
+        $query_params = array_flip(['externalAccountId']);
 
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -250,7 +250,7 @@ final class AttendanceRawService implements AttendanceRawContract
             ),
             body: (object) array_diff_key(
                 array_diff_key($parsed, $query_params),
-                ['externalEventID']
+                array_flip(['externalEventID'])
             ),
             options: $options,
             convert: BatchResponseSubscriberEmailResponse::class,

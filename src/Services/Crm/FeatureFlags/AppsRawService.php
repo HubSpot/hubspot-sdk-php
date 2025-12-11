@@ -59,7 +59,7 @@ final class AppsRawService implements AppsRawContract
         return $this->client->request(
             method: 'put',
             path: ['feature-flags/v3/%1$s/flags/%2$s', $appID, $flagName],
-            body: (object) array_diff_key($parsed, ['appID']),
+            body: (object) array_diff_key($parsed, array_flip(['appID'])),
             options: $options,
             convert: FlagResponse::class,
         );

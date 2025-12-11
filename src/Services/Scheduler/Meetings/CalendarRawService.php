@@ -65,7 +65,7 @@ final class CalendarRawService implements CalendarRawContract
             $params,
             $requestOptions,
         );
-        $query_params = ['organizerUserId'];
+        $query_params = array_flip(['organizerUserId']);
 
         // @phpstan-ignore-next-line return.type
         return $this->client->request(

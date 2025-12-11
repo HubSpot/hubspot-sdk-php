@@ -141,7 +141,7 @@ final class BatchRawService implements BatchRawContract
             $params,
             $requestOptions,
         );
-        $query_params = ['archived'];
+        $query_params = array_flip(['archived']);
 
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -204,7 +204,7 @@ final class BatchRawService implements BatchRawContract
             $params,
             $requestOptions,
         );
-        $query_params = ['archived'];
+        $query_params = array_flip(['archived']);
 
         // @phpstan-ignore-next-line return.type
         return $this->client->request(

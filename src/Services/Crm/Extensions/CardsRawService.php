@@ -115,7 +115,7 @@ final class CardsRawService implements CardsRawContract
         return $this->client->request(
             method: 'patch',
             path: ['crm/v3/extensions/cards-dev/%1$s/%2$s', $appID, $cardID],
-            body: (object) array_diff_key($parsed, ['appID']),
+            body: (object) array_diff_key($parsed, array_flip(['appID'])),
             options: $options,
             convert: PublicCardResponse::class,
         );

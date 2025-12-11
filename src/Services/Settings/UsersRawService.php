@@ -94,7 +94,7 @@ final class UsersRawService implements UsersRawContract
             $params,
             $requestOptions,
         );
-        $query_params = ['idProperty'];
+        $query_params = array_flip(['idProperty']);
 
         // @phpstan-ignore-next-line return.type
         return $this->client->request(

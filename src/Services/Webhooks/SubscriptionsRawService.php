@@ -92,7 +92,7 @@ final class SubscriptionsRawService implements SubscriptionsRawContract
         return $this->client->request(
             method: 'patch',
             path: ['webhooks/v3/%1$s/subscriptions/%2$s', $appID, $subscriptionID],
-            body: (object) array_diff_key($parsed, ['appID']),
+            body: (object) array_diff_key($parsed, array_flip(['appID'])),
             options: $options,
             convert: SubscriptionResponse::class,
         );

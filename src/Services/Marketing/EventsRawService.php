@@ -294,7 +294,7 @@ final class EventsRawService implements EventsRawContract
             $params,
             $requestOptions,
         );
-        $query_params = ['externalAccountId'];
+        $query_params = array_flip(['externalAccountId']);
 
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -647,7 +647,7 @@ final class EventsRawService implements EventsRawContract
             $params,
             $requestOptions,
         );
-        $query_params = ['externalAccountId'];
+        $query_params = array_flip(['externalAccountId']);
 
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -807,7 +807,7 @@ final class EventsRawService implements EventsRawContract
         );
         $externalEventID = $parsed['externalEventID'];
         unset($parsed['externalEventID']);
-        $query_params = ['externalAccountId'];
+        $query_params = array_flip(['externalAccountId']);
 
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -824,7 +824,7 @@ final class EventsRawService implements EventsRawContract
             headers: ['Accept' => '*/*'],
             body: (object) array_diff_key(
                 array_diff_key($parsed, $query_params),
-                ['externalEventID']
+                array_flip(['externalEventID'])
             ),
             options: $options,
             convert: 'string',
@@ -860,7 +860,7 @@ final class EventsRawService implements EventsRawContract
         );
         $externalEventID = $parsed['externalEventID'];
         unset($parsed['externalEventID']);
-        $query_params = ['externalAccountId'];
+        $query_params = array_flip(['externalAccountId']);
 
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -877,7 +877,7 @@ final class EventsRawService implements EventsRawContract
             headers: ['Accept' => '*/*'],
             body: (object) array_diff_key(
                 array_diff_key($parsed, $query_params),
-                ['externalEventID']
+                array_flip(['externalEventID'])
             ),
             options: $options,
             convert: 'string',

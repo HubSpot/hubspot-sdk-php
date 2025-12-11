@@ -431,7 +431,7 @@ final class IntegratorSettingsRawService implements IntegratorSettingsRawContrac
                 $appID,
                 $oEmbedDomainID,
             ],
-            body: (object) array_diff_key($parsed, ['appID']),
+            body: (object) array_diff_key($parsed, array_flip(['appID'])),
             options: $options,
             convert: IntegratorOEmbedDomainModel::class,
         );

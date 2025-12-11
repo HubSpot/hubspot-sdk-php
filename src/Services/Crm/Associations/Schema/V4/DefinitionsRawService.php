@@ -53,7 +53,7 @@ final class DefinitionsRawService implements DefinitionsRawContract
             path: [
                 'crm/associations/v4/%1$s/%2$s/labels', $fromObjectType, $toObjectType,
             ],
-            body: (object) array_diff_key($parsed, ['fromObjectType']),
+            body: (object) array_diff_key($parsed, array_flip(['fromObjectType'])),
             options: $options,
             convert: CollectionResponseAssociationSpecWithLabel::class,
         );
@@ -163,7 +163,7 @@ final class DefinitionsRawService implements DefinitionsRawContract
             path: [
                 'crm/associations/v4/%1$s/%2$s/labels', $fromObjectType, $toObjectType,
             ],
-            body: (object) array_diff_key($parsed, ['fromObjectType']),
+            body: (object) array_diff_key($parsed, array_flip(['fromObjectType'])),
             options: $options,
             convert: null,
         );

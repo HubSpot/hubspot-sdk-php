@@ -100,7 +100,7 @@ final class ChannelAccountsRawService implements ChannelAccountsRawContract
                 $channelID,
                 $channelAccountID,
             ],
-            body: (object) array_diff_key($parsed, ['channelID']),
+            body: (object) array_diff_key($parsed, array_flip(['channelID'])),
             options: $options,
             convert: PublicChannelAccount::class,
         );

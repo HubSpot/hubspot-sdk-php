@@ -59,7 +59,7 @@ final class ChannelAccountStagingTokensRawService implements ChannelAccountStagi
                 $channelID,
                 $accountToken,
             ],
-            body: (object) array_diff_key($parsed, ['channelID']),
+            body: (object) array_diff_key($parsed, array_flip(['channelID'])),
             options: $options,
             convert: PublicChannelAccountStagingToken::class,
         );

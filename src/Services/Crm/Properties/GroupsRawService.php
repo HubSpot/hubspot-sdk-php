@@ -89,7 +89,7 @@ final class GroupsRawService implements GroupsRawContract
         return $this->client->request(
             method: 'patch',
             path: ['crm/v3/properties/%1$s/groups/%2$s', $objectType, $groupName],
-            body: (object) array_diff_key($parsed, ['objectType']),
+            body: (object) array_diff_key($parsed, array_flip(['objectType'])),
             options: $options,
             convert: PropertyGroup::class,
         );

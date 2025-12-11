@@ -106,7 +106,7 @@ final class PipelinesRawService implements PipelinesRawContract
             query: array_diff_key($parsed, $query_params),
             body: (object) array_diff_key(
                 array_diff_key($parsed, $query_params),
-                ['objectType']
+                array_flip(['objectType'])
             ),
             options: $options,
             convert: Pipeline::class,
@@ -284,7 +284,7 @@ final class PipelinesRawService implements PipelinesRawContract
             query: array_diff_key($parsed, $query_params),
             body: (object) array_diff_key(
                 array_diff_key($parsed, $query_params),
-                ['objectType']
+                array_flip(['objectType'])
             ),
             options: $options,
             convert: Pipeline::class,

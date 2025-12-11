@@ -68,7 +68,7 @@ final class BatchRawService implements BatchRawContract
                 $fromObjectType,
                 $toObjectType,
             ],
-            body: (object) array_diff_key($parsed, ['fromObjectType']),
+            body: (object) array_diff_key($parsed, array_flip(['fromObjectType'])),
             options: $options,
             convert: BatchResponseLabelsBetweenObjectPair::class,
         );
@@ -111,7 +111,7 @@ final class BatchRawService implements BatchRawContract
                 $fromObjectType,
                 $toObjectType,
             ],
-            body: (object) array_diff_key($parsed, ['fromObjectType']),
+            body: (object) array_diff_key($parsed, array_flip(['fromObjectType'])),
             options: $options,
             convert: BatchResponseVoid::class,
         );
@@ -154,7 +154,7 @@ final class BatchRawService implements BatchRawContract
                 $fromObjectType,
                 $toObjectType,
             ],
-            body: (object) array_diff_key($parsed, ['fromObjectType']),
+            body: (object) array_diff_key($parsed, array_flip(['fromObjectType'])),
             options: $options,
             convert: BatchResponsePublicDefaultAssociation::class,
         );
@@ -199,7 +199,7 @@ final class BatchRawService implements BatchRawContract
                 $fromObjectType,
                 $toObjectType,
             ],
-            body: (object) array_diff_key($parsed, ['fromObjectType']),
+            body: (object) array_diff_key($parsed, array_flip(['fromObjectType'])),
             options: $options,
             convert: BatchResponseVoid::class,
         );
@@ -239,7 +239,7 @@ final class BatchRawService implements BatchRawContract
                 $fromObjectType,
                 $toObjectType,
             ],
-            body: (object) array_diff_key($parsed, ['fromObjectType']),
+            body: (object) array_diff_key($parsed, array_flip(['fromObjectType'])),
             options: $options,
             convert: BatchResponsePublicAssociationMultiWithLabel::class,
         );

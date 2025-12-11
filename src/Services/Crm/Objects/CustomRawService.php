@@ -93,7 +93,7 @@ final class CustomRawService implements CustomRawContract
         );
         $objectType = $parsed['objectType'];
         unset($parsed['objectType']);
-        $query_params = ['idProperty'];
+        $query_params = array_flip(['idProperty']);
 
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -102,7 +102,7 @@ final class CustomRawService implements CustomRawContract
             query: array_diff_key($parsed, $query_params),
             body: (object) array_diff_key(
                 array_diff_key($parsed, $query_params),
-                ['objectType']
+                array_flip(['objectType'])
             ),
             options: $options,
             convert: SimplePublicObject::class,

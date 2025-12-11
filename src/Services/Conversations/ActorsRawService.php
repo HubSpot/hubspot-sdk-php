@@ -48,7 +48,7 @@ final class ActorsRawService implements ActorsRawContract
             $params,
             $requestOptions,
         );
-        $query_params = ['property'];
+        $query_params = array_flip(['property']);
 
         // @phpstan-ignore-next-line return.type
         return $this->client->request(

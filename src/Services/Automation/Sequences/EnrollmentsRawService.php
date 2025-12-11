@@ -47,7 +47,7 @@ final class EnrollmentsRawService implements EnrollmentsRawContract
             $params,
             $requestOptions,
         );
-        $query_params = ['userId'];
+        $query_params = array_flip(['userId']);
 
         // @phpstan-ignore-next-line return.type
         return $this->client->request(

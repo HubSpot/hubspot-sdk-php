@@ -64,7 +64,7 @@ final class BatchRawService implements BatchRawContract
                 $fromObjectType,
                 $toObjectType,
             ],
-            body: (object) array_diff_key($parsed, ['fromObjectType']),
+            body: (object) array_diff_key($parsed, array_flip(['fromObjectType'])),
             options: $options,
             convert: BatchResponsePublicAssociation::class,
         );
@@ -109,7 +109,7 @@ final class BatchRawService implements BatchRawContract
                 $fromObjectType,
                 $toObjectType,
             ],
-            body: (object) array_diff_key($parsed, ['fromObjectType']),
+            body: (object) array_diff_key($parsed, array_flip(['fromObjectType'])),
             options: $options,
             convert: null,
         );
@@ -149,7 +149,7 @@ final class BatchRawService implements BatchRawContract
                 $fromObjectType,
                 $toObjectType,
             ],
-            body: (object) array_diff_key($parsed, ['fromObjectType']),
+            body: (object) array_diff_key($parsed, array_flip(['fromObjectType'])),
             options: $options,
             convert: BatchResponsePublicAssociationMulti::class,
         );

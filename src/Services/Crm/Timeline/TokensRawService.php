@@ -67,7 +67,7 @@ final class TokensRawService implements TokensRawContract
                 $appID,
                 $eventTemplateID,
             ],
-            body: (object) array_diff_key($parsed, ['appID']),
+            body: (object) array_diff_key($parsed, array_flip(['appID'])),
             options: $options,
             convert: TimelineEventTemplateToken::class,
         );

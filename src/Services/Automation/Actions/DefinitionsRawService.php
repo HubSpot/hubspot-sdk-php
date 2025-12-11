@@ -162,7 +162,7 @@ final class DefinitionsRawService implements DefinitionsRawContract
         return $this->client->request(
             method: 'patch',
             path: ['automation/v4/actions/%1$s/%2$s', $appID, $definitionID],
-            body: (object) array_diff_key($parsed, ['appID']),
+            body: (object) array_diff_key($parsed, array_flip(['appID'])),
             options: $options,
             convert: PublicActionDefinition::class,
         );
