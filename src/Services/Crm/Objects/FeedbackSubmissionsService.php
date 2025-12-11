@@ -6,6 +6,7 @@ namespace HubspotSDK\Services\Crm\Objects;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\Crm\Filter\Operator;
 use HubspotSDK\Crm\SimplePublicObjectWithAssociations;
@@ -60,16 +61,16 @@ final class FeedbackSubmissionsService implements FeedbackSubmissionsContract
         ?array $propertiesWithHistory = null,
         ?RequestOptions $requestOptions = null,
     ): Page {
-        $params = [
-            'after' => $after,
-            'archived' => $archived,
-            'associations' => $associations,
-            'limit' => $limit,
-            'properties' => $properties,
-            'propertiesWithHistory' => $propertiesWithHistory,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'after' => $after,
+                'archived' => $archived,
+                'associations' => $associations,
+                'limit' => $limit,
+                'properties' => $properties,
+                'propertiesWithHistory' => $propertiesWithHistory,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->list(params: $params, requestOptions: $requestOptions);
@@ -99,15 +100,15 @@ final class FeedbackSubmissionsService implements FeedbackSubmissionsContract
         ?array $propertiesWithHistory = null,
         ?RequestOptions $requestOptions = null,
     ): SimplePublicObjectWithAssociations {
-        $params = [
-            'archived' => $archived,
-            'associations' => $associations,
-            'idProperty' => $idProperty,
-            'properties' => $properties,
-            'propertiesWithHistory' => $propertiesWithHistory,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'archived' => $archived,
+                'associations' => $associations,
+                'idProperty' => $idProperty,
+                'properties' => $properties,
+                'propertiesWithHistory' => $propertiesWithHistory,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->get($feedbackSubmissionID, params: $params, requestOptions: $requestOptions);
@@ -146,16 +147,16 @@ final class FeedbackSubmissionsService implements FeedbackSubmissionsContract
         ?string $query = null,
         ?RequestOptions $requestOptions = null,
     ): CollectionResponseWithTotalSimplePublicObject {
-        $params = [
-            'after' => $after,
-            'filterGroups' => $filterGroups,
-            'limit' => $limit,
-            'properties' => $properties,
-            'sorts' => $sorts,
-            'query' => $query,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'after' => $after,
+                'filterGroups' => $filterGroups,
+                'limit' => $limit,
+                'properties' => $properties,
+                'sorts' => $sorts,
+                'query' => $query,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->search(params: $params, requestOptions: $requestOptions);

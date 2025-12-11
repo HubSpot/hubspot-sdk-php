@@ -23,6 +23,7 @@ use HubspotSDK\Cms\RowMetaData;
 use HubspotSDK\Cms\SideOrCorner;
 use HubspotSDK\Cms\Styles;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Cms\Blogs\PostsContract;
@@ -245,69 +246,71 @@ final class PostsService implements PostsContract
         array $widgets,
         ?RequestOptions $requestOptions = null,
     ): BlogPost {
-        $params = [
-            'id' => $id,
-            'abStatus' => $abStatus,
-            'abTestID' => $abTestID,
-            'archivedAt' => $archivedAt,
-            'archivedInDashboard' => $archivedInDashboard,
-            'attachedStylesheets' => $attachedStylesheets,
-            'authorName' => $authorName,
-            'blogAuthorID' => $blogAuthorID,
-            'campaign' => $campaign,
-            'categoryID' => $categoryID,
-            'contentGroupID' => $contentGroupID,
-            'contentTypeCategory' => $contentTypeCategory,
-            'created' => $created,
-            'createdByID' => $createdByID,
-            'currentlyPublished' => $currentlyPublished,
-            'currentState' => $currentState,
-            'domain' => $domain,
-            'dynamicPageDataSourceID' => $dynamicPageDataSourceID,
-            'dynamicPageDataSourceType' => $dynamicPageDataSourceType,
-            'dynamicPageHubDBTableID' => $dynamicPageHubDBTableID,
-            'enableDomainStylesheets' => $enableDomainStylesheets,
-            'enableGoogleAmpOutputOverride' => $enableGoogleAmpOutputOverride,
-            'enableLayoutStylesheets' => $enableLayoutStylesheets,
-            'featuredImage' => $featuredImage,
-            'featuredImageAltText' => $featuredImageAltText,
-            'folderID' => $folderID,
-            'footerHTML' => $footerHTML,
-            'headHTML' => $headHTML,
-            'htmlTitle' => $htmlTitle,
-            'includeDefaultCustomCss' => $includeDefaultCustomCss,
-            'language' => $language,
-            'layoutSections' => $layoutSections,
-            'linkRelCanonicalURL' => $linkRelCanonicalURL,
-            'mabExperimentID' => $mabExperimentID,
-            'metaDescription' => $metaDescription,
-            'name' => $name,
-            'pageExpiryDate' => $pageExpiryDate,
-            'pageExpiryEnabled' => $pageExpiryEnabled,
-            'pageExpiryRedirectID' => $pageExpiryRedirectID,
-            'pageExpiryRedirectURL' => $pageExpiryRedirectURL,
-            'password' => $password,
-            'postBody' => $postBody,
-            'postSummary' => $postSummary,
-            'publicAccessRules' => $publicAccessRules,
-            'publicAccessRulesEnabled' => $publicAccessRulesEnabled,
-            'publishDate' => $publishDate,
-            'publishImmediately' => $publishImmediately,
-            'rssBody' => $rssBody,
-            'rssSummary' => $rssSummary,
-            'slug' => $slug,
-            'state' => $state,
-            'tagIDs' => $tagIDs,
-            'themeSettingsValues' => $themeSettingsValues,
-            'translatedFromID' => $translatedFromID,
-            'translations' => $translations,
-            'updated' => $updated,
-            'updatedByID' => $updatedByID,
-            'url' => $url,
-            'useFeaturedImage' => $useFeaturedImage,
-            'widgetContainers' => $widgetContainers,
-            'widgets' => $widgets,
-        ];
+        $params = Util::removeNulls(
+            [
+                'id' => $id,
+                'abStatus' => $abStatus,
+                'abTestID' => $abTestID,
+                'archivedAt' => $archivedAt,
+                'archivedInDashboard' => $archivedInDashboard,
+                'attachedStylesheets' => $attachedStylesheets,
+                'authorName' => $authorName,
+                'blogAuthorID' => $blogAuthorID,
+                'campaign' => $campaign,
+                'categoryID' => $categoryID,
+                'contentGroupID' => $contentGroupID,
+                'contentTypeCategory' => $contentTypeCategory,
+                'created' => $created,
+                'createdByID' => $createdByID,
+                'currentlyPublished' => $currentlyPublished,
+                'currentState' => $currentState,
+                'domain' => $domain,
+                'dynamicPageDataSourceID' => $dynamicPageDataSourceID,
+                'dynamicPageDataSourceType' => $dynamicPageDataSourceType,
+                'dynamicPageHubDBTableID' => $dynamicPageHubDBTableID,
+                'enableDomainStylesheets' => $enableDomainStylesheets,
+                'enableGoogleAmpOutputOverride' => $enableGoogleAmpOutputOverride,
+                'enableLayoutStylesheets' => $enableLayoutStylesheets,
+                'featuredImage' => $featuredImage,
+                'featuredImageAltText' => $featuredImageAltText,
+                'folderID' => $folderID,
+                'footerHTML' => $footerHTML,
+                'headHTML' => $headHTML,
+                'htmlTitle' => $htmlTitle,
+                'includeDefaultCustomCss' => $includeDefaultCustomCss,
+                'language' => $language,
+                'layoutSections' => $layoutSections,
+                'linkRelCanonicalURL' => $linkRelCanonicalURL,
+                'mabExperimentID' => $mabExperimentID,
+                'metaDescription' => $metaDescription,
+                'name' => $name,
+                'pageExpiryDate' => $pageExpiryDate,
+                'pageExpiryEnabled' => $pageExpiryEnabled,
+                'pageExpiryRedirectID' => $pageExpiryRedirectID,
+                'pageExpiryRedirectURL' => $pageExpiryRedirectURL,
+                'password' => $password,
+                'postBody' => $postBody,
+                'postSummary' => $postSummary,
+                'publicAccessRules' => $publicAccessRules,
+                'publicAccessRulesEnabled' => $publicAccessRulesEnabled,
+                'publishDate' => $publishDate,
+                'publishImmediately' => $publishImmediately,
+                'rssBody' => $rssBody,
+                'rssSummary' => $rssSummary,
+                'slug' => $slug,
+                'state' => $state,
+                'tagIDs' => $tagIDs,
+                'themeSettingsValues' => $themeSettingsValues,
+                'translatedFromID' => $translatedFromID,
+                'translations' => $translations,
+                'updated' => $updated,
+                'updatedByID' => $updatedByID,
+                'url' => $url,
+                'useFeaturedImage' => $useFeaturedImage,
+                'widgetContainers' => $widgetContainers,
+                'widgets' => $widgets,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->create(params: $params, requestOptions: $requestOptions);
@@ -527,72 +530,72 @@ final class PostsService implements PostsContract
         ?bool $archived = null,
         ?RequestOptions $requestOptions = null,
     ): BlogPost {
-        $params = [
-            'id' => $id,
-            'abStatus' => $abStatus,
-            'abTestID' => $abTestID,
-            'archivedAt' => $archivedAt,
-            'archivedInDashboard' => $archivedInDashboard,
-            'attachedStylesheets' => $attachedStylesheets,
-            'authorName' => $authorName,
-            'blogAuthorID' => $blogAuthorID,
-            'campaign' => $campaign,
-            'categoryID' => $categoryID,
-            'contentGroupID' => $contentGroupID,
-            'contentTypeCategory' => $contentTypeCategory,
-            'created' => $created,
-            'createdByID' => $createdByID,
-            'currentlyPublished' => $currentlyPublished,
-            'currentState' => $currentState,
-            'domain' => $domain,
-            'dynamicPageDataSourceID' => $dynamicPageDataSourceID,
-            'dynamicPageDataSourceType' => $dynamicPageDataSourceType,
-            'dynamicPageHubDBTableID' => $dynamicPageHubDBTableID,
-            'enableDomainStylesheets' => $enableDomainStylesheets,
-            'enableGoogleAmpOutputOverride' => $enableGoogleAmpOutputOverride,
-            'enableLayoutStylesheets' => $enableLayoutStylesheets,
-            'featuredImage' => $featuredImage,
-            'featuredImageAltText' => $featuredImageAltText,
-            'folderID' => $folderID,
-            'footerHTML' => $footerHTML,
-            'headHTML' => $headHTML,
-            'htmlTitle' => $htmlTitle,
-            'includeDefaultCustomCss' => $includeDefaultCustomCss,
-            'language' => $language,
-            'layoutSections' => $layoutSections,
-            'linkRelCanonicalURL' => $linkRelCanonicalURL,
-            'mabExperimentID' => $mabExperimentID,
-            'metaDescription' => $metaDescription,
-            'name' => $name,
-            'pageExpiryDate' => $pageExpiryDate,
-            'pageExpiryEnabled' => $pageExpiryEnabled,
-            'pageExpiryRedirectID' => $pageExpiryRedirectID,
-            'pageExpiryRedirectURL' => $pageExpiryRedirectURL,
-            'password' => $password,
-            'postBody' => $postBody,
-            'postSummary' => $postSummary,
-            'publicAccessRules' => $publicAccessRules,
-            'publicAccessRulesEnabled' => $publicAccessRulesEnabled,
-            'publishDate' => $publishDate,
-            'publishImmediately' => $publishImmediately,
-            'rssBody' => $rssBody,
-            'rssSummary' => $rssSummary,
-            'slug' => $slug,
-            'state' => $state,
-            'tagIDs' => $tagIDs,
-            'themeSettingsValues' => $themeSettingsValues,
-            'translatedFromID' => $translatedFromID,
-            'translations' => $translations,
-            'updated' => $updated,
-            'updatedByID' => $updatedByID,
-            'url' => $url,
-            'useFeaturedImage' => $useFeaturedImage,
-            'widgetContainers' => $widgetContainers,
-            'widgets' => $widgets,
-            'archived' => $archived,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'id' => $id,
+                'abStatus' => $abStatus,
+                'abTestID' => $abTestID,
+                'archivedAt' => $archivedAt,
+                'archivedInDashboard' => $archivedInDashboard,
+                'attachedStylesheets' => $attachedStylesheets,
+                'authorName' => $authorName,
+                'blogAuthorID' => $blogAuthorID,
+                'campaign' => $campaign,
+                'categoryID' => $categoryID,
+                'contentGroupID' => $contentGroupID,
+                'contentTypeCategory' => $contentTypeCategory,
+                'created' => $created,
+                'createdByID' => $createdByID,
+                'currentlyPublished' => $currentlyPublished,
+                'currentState' => $currentState,
+                'domain' => $domain,
+                'dynamicPageDataSourceID' => $dynamicPageDataSourceID,
+                'dynamicPageDataSourceType' => $dynamicPageDataSourceType,
+                'dynamicPageHubDBTableID' => $dynamicPageHubDBTableID,
+                'enableDomainStylesheets' => $enableDomainStylesheets,
+                'enableGoogleAmpOutputOverride' => $enableGoogleAmpOutputOverride,
+                'enableLayoutStylesheets' => $enableLayoutStylesheets,
+                'featuredImage' => $featuredImage,
+                'featuredImageAltText' => $featuredImageAltText,
+                'folderID' => $folderID,
+                'footerHTML' => $footerHTML,
+                'headHTML' => $headHTML,
+                'htmlTitle' => $htmlTitle,
+                'includeDefaultCustomCss' => $includeDefaultCustomCss,
+                'language' => $language,
+                'layoutSections' => $layoutSections,
+                'linkRelCanonicalURL' => $linkRelCanonicalURL,
+                'mabExperimentID' => $mabExperimentID,
+                'metaDescription' => $metaDescription,
+                'name' => $name,
+                'pageExpiryDate' => $pageExpiryDate,
+                'pageExpiryEnabled' => $pageExpiryEnabled,
+                'pageExpiryRedirectID' => $pageExpiryRedirectID,
+                'pageExpiryRedirectURL' => $pageExpiryRedirectURL,
+                'password' => $password,
+                'postBody' => $postBody,
+                'postSummary' => $postSummary,
+                'publicAccessRules' => $publicAccessRules,
+                'publicAccessRulesEnabled' => $publicAccessRulesEnabled,
+                'publishDate' => $publishDate,
+                'publishImmediately' => $publishImmediately,
+                'rssBody' => $rssBody,
+                'rssSummary' => $rssSummary,
+                'slug' => $slug,
+                'state' => $state,
+                'tagIDs' => $tagIDs,
+                'themeSettingsValues' => $themeSettingsValues,
+                'translatedFromID' => $translatedFromID,
+                'translations' => $translations,
+                'updated' => $updated,
+                'updatedByID' => $updatedByID,
+                'url' => $url,
+                'useFeaturedImage' => $useFeaturedImage,
+                'widgetContainers' => $widgetContainers,
+                'widgets' => $widgets,
+                'archived' => $archived,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->update($objectID, params: $params, requestOptions: $requestOptions);
@@ -634,21 +637,21 @@ final class PostsService implements PostsContract
         string|\DateTimeInterface|null $updatedBefore = null,
         ?RequestOptions $requestOptions = null,
     ): Page {
-        $params = [
-            'after' => $after,
-            'archived' => $archived,
-            'createdAfter' => $createdAfter,
-            'createdAt' => $createdAt,
-            'createdBefore' => $createdBefore,
-            'limit' => $limit,
-            'property' => $property,
-            'sort' => $sort,
-            'updatedAfter' => $updatedAfter,
-            'updatedAt' => $updatedAt,
-            'updatedBefore' => $updatedBefore,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'after' => $after,
+                'archived' => $archived,
+                'createdAfter' => $createdAfter,
+                'createdAt' => $createdAt,
+                'createdBefore' => $createdBefore,
+                'limit' => $limit,
+                'property' => $property,
+                'sort' => $sort,
+                'updatedAfter' => $updatedAfter,
+                'updatedAt' => $updatedAt,
+                'updatedBefore' => $updatedBefore,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->list(params: $params, requestOptions: $requestOptions);
@@ -671,9 +674,7 @@ final class PostsService implements PostsContract
         ?bool $archived = null,
         ?RequestOptions $requestOptions = null,
     ): mixed {
-        $params = ['archived' => $archived];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(['archived' => $archived]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->delete($objectID, params: $params, requestOptions: $requestOptions);
@@ -700,14 +701,14 @@ final class PostsService implements PostsContract
         ?string $primaryLanguage = null,
         ?RequestOptions $requestOptions = null,
     ): mixed {
-        $params = [
-            'id' => $id,
-            'language' => $language,
-            'primaryID' => $primaryID,
-            'primaryLanguage' => $primaryLanguage,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'id' => $id,
+                'language' => $language,
+                'primaryID' => $primaryID,
+                'primaryLanguage' => $primaryLanguage,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->attachToLangGroup(params: $params, requestOptions: $requestOptions);
@@ -730,9 +731,7 @@ final class PostsService implements PostsContract
         ?string $cloneName = null,
         ?RequestOptions $requestOptions = null
     ): BlogPost {
-        $params = ['id' => $id, 'cloneName' => $cloneName];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(['id' => $id, 'cloneName' => $cloneName]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->clone(params: $params, requestOptions: $requestOptions);
@@ -755,9 +754,7 @@ final class PostsService implements PostsContract
         ?string $language = null,
         ?RequestOptions $requestOptions = null
     ): BlogPost {
-        $params = ['id' => $id, 'language' => $language];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(['id' => $id, 'language' => $language]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->createLangVariation(params: $params, requestOptions: $requestOptions);
@@ -778,7 +775,7 @@ final class PostsService implements PostsContract
         string $id,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        $params = ['id' => $id];
+        $params = Util::removeNulls(['id' => $id]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->detachFromLangGroup(params: $params, requestOptions: $requestOptions);
@@ -803,9 +800,9 @@ final class PostsService implements PostsContract
         ?string $property = null,
         ?RequestOptions $requestOptions = null,
     ): BlogPost {
-        $params = ['archived' => $archived, 'property' => $property];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            ['archived' => $archived, 'property' => $property]
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->get($objectID, params: $params, requestOptions: $requestOptions);
@@ -847,7 +844,7 @@ final class PostsService implements PostsContract
         string $objectID,
         ?RequestOptions $requestOptions = null
     ): VersionBlogPost {
-        $params = ['objectID' => $objectID];
+        $params = Util::removeNulls(['objectID' => $objectID]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->getPreviousVersion($revisionID, params: $params, requestOptions: $requestOptions);
@@ -875,9 +872,9 @@ final class PostsService implements PostsContract
         ?int $limit = null,
         ?RequestOptions $requestOptions = null,
     ): Page {
-        $params = ['after' => $after, 'before' => $before, 'limit' => $limit];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            ['after' => $after, 'before' => $before, 'limit' => $limit]
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->getPreviousVersions($objectID, params: $params, requestOptions: $requestOptions);
@@ -938,7 +935,7 @@ final class PostsService implements PostsContract
         string $objectID,
         ?RequestOptions $requestOptions = null
     ): BlogPost {
-        $params = ['objectID' => $objectID];
+        $params = Util::removeNulls(['objectID' => $objectID]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->restorePreviousVersion($revisionID, params: $params, requestOptions: $requestOptions);
@@ -961,7 +958,7 @@ final class PostsService implements PostsContract
         string $objectID,
         ?RequestOptions $requestOptions = null
     ): BlogPost {
-        $params = ['objectID' => $objectID];
+        $params = Util::removeNulls(['objectID' => $objectID]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->restorePreviousVersionToDraft($revisionID, params: $params, requestOptions: $requestOptions);
@@ -984,7 +981,7 @@ final class PostsService implements PostsContract
         string|\DateTimeInterface $publishDate,
         ?RequestOptions $requestOptions = null,
     ): mixed {
-        $params = ['id' => $id, 'publishDate' => $publishDate];
+        $params = Util::removeNulls(['id' => $id, 'publishDate' => $publishDate]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->schedule(params: $params, requestOptions: $requestOptions);
@@ -1005,7 +1002,7 @@ final class PostsService implements PostsContract
         string $id,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        $params = ['id' => $id];
+        $params = Util::removeNulls(['id' => $id]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->setLangPrimary(params: $params, requestOptions: $requestOptions);
@@ -1211,69 +1208,71 @@ final class PostsService implements PostsContract
         array $widgets,
         ?RequestOptions $requestOptions = null,
     ): BlogPost {
-        $params = [
-            'id' => $id,
-            'abStatus' => $abStatus,
-            'abTestID' => $abTestID,
-            'archivedAt' => $archivedAt,
-            'archivedInDashboard' => $archivedInDashboard,
-            'attachedStylesheets' => $attachedStylesheets,
-            'authorName' => $authorName,
-            'blogAuthorID' => $blogAuthorID,
-            'campaign' => $campaign,
-            'categoryID' => $categoryID,
-            'contentGroupID' => $contentGroupID,
-            'contentTypeCategory' => $contentTypeCategory,
-            'created' => $created,
-            'createdByID' => $createdByID,
-            'currentlyPublished' => $currentlyPublished,
-            'currentState' => $currentState,
-            'domain' => $domain,
-            'dynamicPageDataSourceID' => $dynamicPageDataSourceID,
-            'dynamicPageDataSourceType' => $dynamicPageDataSourceType,
-            'dynamicPageHubDBTableID' => $dynamicPageHubDBTableID,
-            'enableDomainStylesheets' => $enableDomainStylesheets,
-            'enableGoogleAmpOutputOverride' => $enableGoogleAmpOutputOverride,
-            'enableLayoutStylesheets' => $enableLayoutStylesheets,
-            'featuredImage' => $featuredImage,
-            'featuredImageAltText' => $featuredImageAltText,
-            'folderID' => $folderID,
-            'footerHTML' => $footerHTML,
-            'headHTML' => $headHTML,
-            'htmlTitle' => $htmlTitle,
-            'includeDefaultCustomCss' => $includeDefaultCustomCss,
-            'language' => $language,
-            'layoutSections' => $layoutSections,
-            'linkRelCanonicalURL' => $linkRelCanonicalURL,
-            'mabExperimentID' => $mabExperimentID,
-            'metaDescription' => $metaDescription,
-            'name' => $name,
-            'pageExpiryDate' => $pageExpiryDate,
-            'pageExpiryEnabled' => $pageExpiryEnabled,
-            'pageExpiryRedirectID' => $pageExpiryRedirectID,
-            'pageExpiryRedirectURL' => $pageExpiryRedirectURL,
-            'password' => $password,
-            'postBody' => $postBody,
-            'postSummary' => $postSummary,
-            'publicAccessRules' => $publicAccessRules,
-            'publicAccessRulesEnabled' => $publicAccessRulesEnabled,
-            'publishDate' => $publishDate,
-            'publishImmediately' => $publishImmediately,
-            'rssBody' => $rssBody,
-            'rssSummary' => $rssSummary,
-            'slug' => $slug,
-            'state' => $state,
-            'tagIDs' => $tagIDs,
-            'themeSettingsValues' => $themeSettingsValues,
-            'translatedFromID' => $translatedFromID,
-            'translations' => $translations,
-            'updated' => $updated,
-            'updatedByID' => $updatedByID,
-            'url' => $url,
-            'useFeaturedImage' => $useFeaturedImage,
-            'widgetContainers' => $widgetContainers,
-            'widgets' => $widgets,
-        ];
+        $params = Util::removeNulls(
+            [
+                'id' => $id,
+                'abStatus' => $abStatus,
+                'abTestID' => $abTestID,
+                'archivedAt' => $archivedAt,
+                'archivedInDashboard' => $archivedInDashboard,
+                'attachedStylesheets' => $attachedStylesheets,
+                'authorName' => $authorName,
+                'blogAuthorID' => $blogAuthorID,
+                'campaign' => $campaign,
+                'categoryID' => $categoryID,
+                'contentGroupID' => $contentGroupID,
+                'contentTypeCategory' => $contentTypeCategory,
+                'created' => $created,
+                'createdByID' => $createdByID,
+                'currentlyPublished' => $currentlyPublished,
+                'currentState' => $currentState,
+                'domain' => $domain,
+                'dynamicPageDataSourceID' => $dynamicPageDataSourceID,
+                'dynamicPageDataSourceType' => $dynamicPageDataSourceType,
+                'dynamicPageHubDBTableID' => $dynamicPageHubDBTableID,
+                'enableDomainStylesheets' => $enableDomainStylesheets,
+                'enableGoogleAmpOutputOverride' => $enableGoogleAmpOutputOverride,
+                'enableLayoutStylesheets' => $enableLayoutStylesheets,
+                'featuredImage' => $featuredImage,
+                'featuredImageAltText' => $featuredImageAltText,
+                'folderID' => $folderID,
+                'footerHTML' => $footerHTML,
+                'headHTML' => $headHTML,
+                'htmlTitle' => $htmlTitle,
+                'includeDefaultCustomCss' => $includeDefaultCustomCss,
+                'language' => $language,
+                'layoutSections' => $layoutSections,
+                'linkRelCanonicalURL' => $linkRelCanonicalURL,
+                'mabExperimentID' => $mabExperimentID,
+                'metaDescription' => $metaDescription,
+                'name' => $name,
+                'pageExpiryDate' => $pageExpiryDate,
+                'pageExpiryEnabled' => $pageExpiryEnabled,
+                'pageExpiryRedirectID' => $pageExpiryRedirectID,
+                'pageExpiryRedirectURL' => $pageExpiryRedirectURL,
+                'password' => $password,
+                'postBody' => $postBody,
+                'postSummary' => $postSummary,
+                'publicAccessRules' => $publicAccessRules,
+                'publicAccessRulesEnabled' => $publicAccessRulesEnabled,
+                'publishDate' => $publishDate,
+                'publishImmediately' => $publishImmediately,
+                'rssBody' => $rssBody,
+                'rssSummary' => $rssSummary,
+                'slug' => $slug,
+                'state' => $state,
+                'tagIDs' => $tagIDs,
+                'themeSettingsValues' => $themeSettingsValues,
+                'translatedFromID' => $translatedFromID,
+                'translations' => $translations,
+                'updated' => $updated,
+                'updatedByID' => $updatedByID,
+                'url' => $url,
+                'useFeaturedImage' => $useFeaturedImage,
+                'widgetContainers' => $widgetContainers,
+                'widgets' => $widgets,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->updateDraft($objectID, params: $params, requestOptions: $requestOptions);
@@ -1296,7 +1295,9 @@ final class PostsService implements PostsContract
         string $primaryID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        $params = ['languages' => $languages, 'primaryID' => $primaryID];
+        $params = Util::removeNulls(
+            ['languages' => $languages, 'primaryID' => $primaryID]
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->updateLangs(params: $params, requestOptions: $requestOptions);

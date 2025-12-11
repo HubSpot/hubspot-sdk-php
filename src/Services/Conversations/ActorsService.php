@@ -14,6 +14,7 @@ use HubspotSDK\Conversations\LlmActor;
 use HubspotSDK\Conversations\SystemActor;
 use HubspotSDK\Conversations\VisitorActor;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Conversations\ActorsContract;
 
@@ -45,9 +46,7 @@ final class ActorsService implements ActorsContract
         ?string $property = null,
         ?RequestOptions $requestOptions = null,
     ): BatchResponsePublicActor {
-        $params = ['inputs' => $inputs, 'property' => $property];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(['inputs' => $inputs, 'property' => $property]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->batchRead(params: $params, requestOptions: $requestOptions);
@@ -65,9 +64,7 @@ final class ActorsService implements ActorsContract
         ?string $property = null,
         ?RequestOptions $requestOptions = null,
     ): AgentActor|BotActor|IntegratorActor|SystemActor|VisitorActor|EmailActor|LlmActor {
-        $params = ['property' => $property];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(['property' => $property]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->get($actorID, params: $params, requestOptions: $requestOptions);

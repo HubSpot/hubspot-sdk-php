@@ -6,6 +6,7 @@ namespace HubspotSDK\Services\Crm;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Crm\Lists\ListCreateResponse;
 use HubspotSDK\Crm\Lists\ListFetchResponse;
 use HubspotSDK\Crm\Lists\ListsByIDResponse;
@@ -86,18 +87,18 @@ final class ListsService implements ListsContract
         array|PublicMembershipSettings|null $membershipSettings = null,
         ?RequestOptions $requestOptions = null,
     ): ListCreateResponse {
-        $params = [
-            'name' => $name,
-            'objectTypeID' => $objectTypeID,
-            'processingType' => $processingType,
-            'customProperties' => $customProperties,
-            'filterBranch' => $filterBranch,
-            'listFolderID' => $listFolderID,
-            'listPermissions' => $listPermissions,
-            'membershipSettings' => $membershipSettings,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'name' => $name,
+                'objectTypeID' => $objectTypeID,
+                'processingType' => $processingType,
+                'customProperties' => $customProperties,
+                'filterBranch' => $filterBranch,
+                'listFolderID' => $listFolderID,
+                'listPermissions' => $listPermissions,
+                'membershipSettings' => $membershipSettings,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->create(params: $params, requestOptions: $requestOptions);
@@ -120,9 +121,9 @@ final class ListsService implements ListsContract
         ?array $listIDs = null,
         ?RequestOptions $requestOptions = null,
     ): ListsByIDResponse {
-        $params = ['includeFilters' => $includeFilters, 'listIDs' => $listIDs];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            ['includeFilters' => $includeFilters, 'listIDs' => $listIDs]
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->list(params: $params, requestOptions: $requestOptions);
@@ -183,9 +184,7 @@ final class ListsService implements ListsContract
         bool $includeFilters = false,
         ?RequestOptions $requestOptions = null,
     ): ListFetchResponse {
-        $params = ['includeFilters' => $includeFilters];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(['includeFilters' => $includeFilters]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->get($listID, params: $params, requestOptions: $requestOptions);
@@ -210,11 +209,9 @@ final class ListsService implements ListsContract
         bool $includeFilters = false,
         ?RequestOptions $requestOptions = null,
     ): ListFetchResponse {
-        $params = [
-            'objectTypeID' => $objectTypeID, 'includeFilters' => $includeFilters,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            ['objectTypeID' => $objectTypeID, 'includeFilters' => $includeFilters]
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->getByObjectTypeIDAndName($listName, params: $params, requestOptions: $requestOptions);
@@ -281,16 +278,16 @@ final class ListsService implements ListsContract
         string|ConversionType $conversionType = 'INACTIVITY',
         ?RequestOptions $requestOptions = null,
     ): PublicListConversionResponse {
-        $params = [
-            'conversionType' => $conversionType,
-            'day' => $day,
-            'month' => $month,
-            'year' => $year,
-            'offset' => $offset,
-            'timeUnit' => $timeUnit,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'conversionType' => $conversionType,
+                'day' => $day,
+                'month' => $month,
+                'year' => $year,
+                'offset' => $offset,
+                'timeUnit' => $timeUnit,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->scheduleConversion($listID, params: $params, requestOptions: $requestOptions);
@@ -330,17 +327,17 @@ final class ListsService implements ListsContract
         ?string $sort = null,
         ?RequestOptions $requestOptions = null,
     ): ListSearchResponse {
-        $params = [
-            'additionalProperties' => $additionalProperties,
-            'offset' => $offset,
-            'count' => $count,
-            'listIDs' => $listIDs,
-            'processingTypes' => $processingTypes,
-            'query' => $query,
-            'sort' => $sort,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'additionalProperties' => $additionalProperties,
+                'offset' => $offset,
+                'count' => $count,
+                'listIDs' => $listIDs,
+                'processingTypes' => $processingTypes,
+                'query' => $query,
+                'sort' => $sort,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->search(params: $params, requestOptions: $requestOptions);
@@ -365,12 +362,12 @@ final class ListsService implements ListsContract
         bool $enrollObjectsInWorkflows = false,
         ?RequestOptions $requestOptions = null,
     ): ListUpdateResponse {
-        $params = [
-            'filterBranch' => $filterBranch,
-            'enrollObjectsInWorkflows' => $enrollObjectsInWorkflows,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'filterBranch' => $filterBranch,
+                'enrollObjectsInWorkflows' => $enrollObjectsInWorkflows,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->updateFilters($listID, params: $params, requestOptions: $requestOptions);
@@ -395,9 +392,9 @@ final class ListsService implements ListsContract
         ?string $listName = null,
         ?RequestOptions $requestOptions = null,
     ): ListUpdateResponse {
-        $params = ['includeFilters' => $includeFilters, 'listName' => $listName];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            ['includeFilters' => $includeFilters, 'listName' => $listName]
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->updateName($listID, params: $params, requestOptions: $requestOptions);

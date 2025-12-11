@@ -97,14 +97,14 @@ final class StatusesRawService implements StatusesRawContract
             $params,
             $requestOptions,
         );
-        $query_params = array_flip(['channel', 'businessUnitId']);
+        $query_params = array_flip(['channel', 'businessUnitID']);
 
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'communication-preferences/v4/statuses/batch/read',
             query: Util::array_transform_keys(
-                array_diff_key($parsed, $query_params),
+                array_intersect_key($parsed, $query_params),
                 ['businessUnitID' => 'businessUnitId'],
             ),
             body: (object) array_diff_key($parsed, $query_params),
@@ -136,14 +136,14 @@ final class StatusesRawService implements StatusesRawContract
             $params,
             $requestOptions,
         );
-        $query_params = array_flip(['channel', 'businessUnitId']);
+        $query_params = array_flip(['channel', 'businessUnitID']);
 
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'communication-preferences/v4/statuses/batch/unsubscribe-all/read',
             query: Util::array_transform_keys(
-                array_diff_key($parsed, $query_params),
+                array_intersect_key($parsed, $query_params),
                 ['businessUnitID' => 'businessUnitId'],
             ),
             body: (object) array_diff_key($parsed, $query_params),
@@ -176,14 +176,14 @@ final class StatusesRawService implements StatusesRawContract
             $params,
             $requestOptions,
         );
-        $query_params = array_flip(['channel', 'businessUnitId', 'verbose']);
+        $query_params = array_flip(['channel', 'businessUnitID', 'verbose']);
 
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'communication-preferences/v4/statuses/batch/unsubscribe-all',
             query: Util::array_transform_keys(
-                array_diff_key($parsed, $query_params),
+                array_intersect_key($parsed, $query_params),
                 ['businessUnitID' => 'businessUnitId'],
             ),
             body: (object) array_diff_key($parsed, $query_params),

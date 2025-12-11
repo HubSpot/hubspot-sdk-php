@@ -8,6 +8,7 @@ use HubspotSDK\Client;
 use HubspotSDK\Cms\Blogs\Settings\Blog;
 use HubspotSDK\Cms\Blogs\Settings\VersionBlog;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Cms\Blogs\SettingsContract;
@@ -49,20 +50,20 @@ final class SettingsService implements SettingsContract
         string|\DateTimeInterface|null $updatedBefore = null,
         ?RequestOptions $requestOptions = null,
     ): Page {
-        $params = [
-            'after' => $after,
-            'archived' => $archived,
-            'createdAfter' => $createdAfter,
-            'createdAt' => $createdAt,
-            'createdBefore' => $createdBefore,
-            'limit' => $limit,
-            'sort' => $sort,
-            'updatedAfter' => $updatedAfter,
-            'updatedAt' => $updatedAt,
-            'updatedBefore' => $updatedBefore,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'after' => $after,
+                'archived' => $archived,
+                'createdAfter' => $createdAfter,
+                'createdAt' => $createdAt,
+                'createdBefore' => $createdBefore,
+                'limit' => $limit,
+                'sort' => $sort,
+                'updatedAfter' => $updatedAfter,
+                'updatedAt' => $updatedAt,
+                'updatedBefore' => $updatedBefore,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->list(params: $params, requestOptions: $requestOptions);
@@ -87,14 +88,14 @@ final class SettingsService implements SettingsContract
         ?string $primaryLanguage = null,
         ?RequestOptions $requestOptions = null,
     ): mixed {
-        $params = [
-            'id' => $id,
-            'language' => $language,
-            'primaryID' => $primaryID,
-            'primaryLanguage' => $primaryLanguage,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'id' => $id,
+                'language' => $language,
+                'primaryID' => $primaryID,
+                'primaryLanguage' => $primaryLanguage,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->attachToLangGroup(params: $params, requestOptions: $requestOptions);
@@ -119,14 +120,14 @@ final class SettingsService implements SettingsContract
         ?string $slug = null,
         ?RequestOptions $requestOptions = null,
     ): Blog {
-        $params = [
-            'id' => $id,
-            'language' => $language,
-            'primaryLanguage' => $primaryLanguage,
-            'slug' => $slug,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'id' => $id,
+                'language' => $language,
+                'primaryLanguage' => $primaryLanguage,
+                'slug' => $slug,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->createLanguageVariation(params: $params, requestOptions: $requestOptions);
@@ -145,7 +146,7 @@ final class SettingsService implements SettingsContract
         string $id,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        $params = ['id' => $id];
+        $params = Util::removeNulls(['id' => $id]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->detachFromLangGroup(params: $params, requestOptions: $requestOptions);
@@ -178,7 +179,7 @@ final class SettingsService implements SettingsContract
         string $blogID,
         ?RequestOptions $requestOptions = null
     ): VersionBlog {
-        $params = ['blogID' => $blogID];
+        $params = Util::removeNulls(['blogID' => $blogID]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->getRevision($revisionID, params: $params, requestOptions: $requestOptions);
@@ -200,9 +201,9 @@ final class SettingsService implements SettingsContract
         ?int $limit = null,
         ?RequestOptions $requestOptions = null,
     ): Page {
-        $params = ['after' => $after, 'before' => $before, 'limit' => $limit];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            ['after' => $after, 'before' => $before, 'limit' => $limit]
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->listRevisions($blogID, params: $params, requestOptions: $requestOptions);
@@ -221,7 +222,7 @@ final class SettingsService implements SettingsContract
         string $id,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        $params = ['id' => $id];
+        $params = Util::removeNulls(['id' => $id]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->setNewLangPrimary(params: $params, requestOptions: $requestOptions);
@@ -242,7 +243,9 @@ final class SettingsService implements SettingsContract
         string $primaryID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        $params = ['languages' => $languages, 'primaryID' => $primaryID];
+        $params = Util::removeNulls(
+            ['languages' => $languages, 'primaryID' => $primaryID]
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->updateLanguages(params: $params, requestOptions: $requestOptions);

@@ -6,6 +6,7 @@ namespace HubspotSDK\Services\Crm\Associations;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Crm\Associations\Schema\CollectionResponsePublicAssociationDefinitionNoPaging;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Associations\SchemaContract;
@@ -42,7 +43,7 @@ final class SchemaService implements SchemaContract
         string $fromObjectType,
         ?RequestOptions $requestOptions = null,
     ): CollectionResponsePublicAssociationDefinitionNoPaging {
-        $params = ['fromObjectType' => $fromObjectType];
+        $params = Util::removeNulls(['fromObjectType' => $fromObjectType]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->list($toObjectType, params: $params, requestOptions: $requestOptions);

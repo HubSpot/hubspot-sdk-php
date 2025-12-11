@@ -13,6 +13,7 @@ use HubspotSDK\Automation\Workflows\BatchResponseAPIFlow;
 use HubspotSDK\Automation\Workflows\BatchResponseFlowIDWorkflowIDMappingResponse;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Automation\WorkflowsContract;
@@ -73,9 +74,7 @@ final class WorkflowsService implements WorkflowsContract
         int $limit = 100,
         ?RequestOptions $requestOptions = null,
     ): Page {
-        $params = ['after' => $after, 'limit' => $limit];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(['after' => $after, 'limit' => $limit]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->list(params: $params, requestOptions: $requestOptions);
@@ -109,7 +108,7 @@ final class WorkflowsService implements WorkflowsContract
         array $inputs,
         ?RequestOptions $requestOptions = null
     ): BatchResponseAPIFlow {
-        $params = ['inputs' => $inputs];
+        $params = Util::removeNulls(['inputs' => $inputs]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->batchGet(params: $params, requestOptions: $requestOptions);
@@ -128,7 +127,7 @@ final class WorkflowsService implements WorkflowsContract
         array $inputs,
         ?RequestOptions $requestOptions = null
     ): BatchResponseFlowIDWorkflowIDMappingResponse {
-        $params = ['inputs' => $inputs];
+        $params = Util::removeNulls(['inputs' => $inputs]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->batchGetIDMappings(params: $params, requestOptions: $requestOptions);
@@ -167,14 +166,14 @@ final class WorkflowsService implements WorkflowsContract
         ?int $limit = null,
         ?RequestOptions $requestOptions = null,
     ): Page {
-        $params = [
-            'after' => $after,
-            'before' => $before,
-            'flowID' => $flowID,
-            'limit' => $limit,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'after' => $after,
+                'before' => $before,
+                'flowID' => $flowID,
+                'limit' => $limit,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->listEmailCampaigns(params: $params, requestOptions: $requestOptions);

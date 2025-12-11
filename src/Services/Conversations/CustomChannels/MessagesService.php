@@ -10,6 +10,7 @@ use HubspotSDK\Conversations\CustomChannels\Messages\MessageCreateParams\Message
 use HubspotSDK\Conversations\CustomChannels\Messages\MessageUpdateParams\StatusType;
 use HubspotSDK\Conversations\PublicDeliveryIdentifier;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Conversations\CustomChannels\MessagesContract;
 
@@ -72,22 +73,22 @@ final class MessagesService implements MessagesContract
         ?string $richText = null,
         ?RequestOptions $requestOptions = null,
     ): ConversationsPublicConversationsMessage {
-        $params = [
-            'attachments' => $attachments,
-            'channelAccountID' => $channelAccountID,
-            'messageDirection' => $messageDirection,
-            'recipients' => $recipients,
-            'senders' => $senders,
-            'text' => $text,
-            'timestamp' => $timestamp,
-            'inReplyToID' => $inReplyToID,
-            'integrationIdempotencyID' => $integrationIdempotencyID,
-            'integrationThreadID' => $integrationThreadID,
-            'preResolvedContacts' => $preResolvedContacts,
-            'richText' => $richText,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'attachments' => $attachments,
+                'channelAccountID' => $channelAccountID,
+                'messageDirection' => $messageDirection,
+                'recipients' => $recipients,
+                'senders' => $senders,
+                'text' => $text,
+                'timestamp' => $timestamp,
+                'inReplyToID' => $inReplyToID,
+                'integrationIdempotencyID' => $integrationIdempotencyID,
+                'integrationThreadID' => $integrationThreadID,
+                'preResolvedContacts' => $preResolvedContacts,
+                'richText' => $richText,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->create($channelID, params: $params, requestOptions: $requestOptions);
@@ -114,13 +115,13 @@ final class MessagesService implements MessagesContract
         ?string $errorMessage = null,
         ?RequestOptions $requestOptions = null,
     ): ConversationsPublicConversationsMessage {
-        $params = [
-            'channelID' => $channelID,
-            'statusType' => $statusType,
-            'errorMessage' => $errorMessage,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'channelID' => $channelID,
+                'statusType' => $statusType,
+                'errorMessage' => $errorMessage,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->update($messageID, params: $params, requestOptions: $requestOptions);
@@ -143,7 +144,7 @@ final class MessagesService implements MessagesContract
         int $channelID,
         ?RequestOptions $requestOptions = null
     ): ConversationsPublicConversationsMessage {
-        $params = ['channelID' => $channelID];
+        $params = Util::removeNulls(['channelID' => $channelID]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->get($messageID, params: $params, requestOptions: $requestOptions);

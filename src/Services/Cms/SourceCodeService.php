@@ -8,6 +8,7 @@ use HubspotSDK\ActionResponse;
 use HubspotSDK\Client;
 use HubspotSDK\Cms\SourceCode\AssetFileMetadata;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Cms\SourceCodeContract;
 use HubspotSDK\TaskLocator;
@@ -46,9 +47,9 @@ final class SourceCodeService implements SourceCodeContract
         ?string $file = null,
         ?RequestOptions $requestOptions = null,
     ): AssetFileMetadata {
-        $params = ['environment' => $environment, 'file' => $file];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            ['environment' => $environment, 'file' => $file]
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->create($filePath, params: $params, requestOptions: $requestOptions);
@@ -71,7 +72,7 @@ final class SourceCodeService implements SourceCodeContract
         string $environment,
         ?RequestOptions $requestOptions = null,
     ): mixed {
-        $params = ['environment' => $environment];
+        $params = Util::removeNulls(['environment' => $environment]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->delete($filePath, params: $params, requestOptions: $requestOptions);
@@ -90,7 +91,7 @@ final class SourceCodeService implements SourceCodeContract
         string $path,
         ?RequestOptions $requestOptions = null
     ): TaskLocator {
-        $params = ['path' => $path];
+        $params = Util::removeNulls(['path' => $path]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->extractAsync(params: $params, requestOptions: $requestOptions);
@@ -113,7 +114,7 @@ final class SourceCodeService implements SourceCodeContract
         string $environment,
         ?RequestOptions $requestOptions = null,
     ): string {
-        $params = ['environment' => $environment];
+        $params = Util::removeNulls(['environment' => $environment]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->get($filePath, params: $params, requestOptions: $requestOptions);
@@ -157,9 +158,9 @@ final class SourceCodeService implements SourceCodeContract
         ?string $properties = null,
         ?RequestOptions $requestOptions = null,
     ): AssetFileMetadata {
-        $params = ['environment' => $environment, 'properties' => $properties];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            ['environment' => $environment, 'properties' => $properties]
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->getMetadata($filePath, params: $params, requestOptions: $requestOptions);
@@ -184,9 +185,9 @@ final class SourceCodeService implements SourceCodeContract
         ?string $file = null,
         ?RequestOptions $requestOptions = null,
     ): AssetFileMetadata {
-        $params = ['environment' => $environment, 'file' => $file];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            ['environment' => $environment, 'file' => $file]
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->upsert($filePath, params: $params, requestOptions: $requestOptions);
@@ -211,9 +212,9 @@ final class SourceCodeService implements SourceCodeContract
         ?string $file = null,
         ?RequestOptions $requestOptions = null,
     ): string {
-        $params = ['environment' => $environment, 'file' => $file];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            ['environment' => $environment, 'file' => $file]
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->validate($filePath, params: $params, requestOptions: $requestOptions);

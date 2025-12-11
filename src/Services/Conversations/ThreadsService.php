@@ -9,6 +9,7 @@ use HubspotSDK\Conversations\PublicThread;
 use HubspotSDK\Conversations\Threads\ThreadListParams\Association;
 use HubspotSDK\Conversations\Threads\ThreadUpdateParams\Status;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Conversations\ThreadsContract;
@@ -43,9 +44,7 @@ final class ThreadsService implements ThreadsContract
         string|Status|null $status = null,
         ?RequestOptions $requestOptions = null,
     ): PublicThread {
-        $params = ['archived' => $archived, 'status' => $status];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(['archived' => $archived, 'status' => $status]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->update($threadID, params: $params, requestOptions: $requestOptions);
@@ -77,20 +76,20 @@ final class ThreadsService implements ThreadsContract
         ?string $threadStatus = null,
         ?RequestOptions $requestOptions = null,
     ): Page {
-        $params = [
-            'after' => $after,
-            'archived' => $archived,
-            'associatedContactID' => $associatedContactID,
-            'association' => $association,
-            'inboxID' => $inboxID,
-            'latestMessageTimestampAfter' => $latestMessageTimestampAfter,
-            'limit' => $limit,
-            'property' => $property,
-            'sort' => $sort,
-            'threadStatus' => $threadStatus,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'after' => $after,
+                'archived' => $archived,
+                'associatedContactID' => $associatedContactID,
+                'association' => $association,
+                'inboxID' => $inboxID,
+                'latestMessageTimestampAfter' => $latestMessageTimestampAfter,
+                'limit' => $limit,
+                'property' => $property,
+                'sort' => $sort,
+                'threadStatus' => $threadStatus,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->list(params: $params, requestOptions: $requestOptions);
@@ -127,13 +126,13 @@ final class ThreadsService implements ThreadsContract
         ?string $property = null,
         ?RequestOptions $requestOptions = null,
     ): PublicThread {
-        $params = [
-            'archived' => $archived,
-            'association' => $association,
-            'property' => $property,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'archived' => $archived,
+                'association' => $association,
+                'property' => $property,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->get($threadID, params: $params, requestOptions: $requestOptions);

@@ -6,6 +6,7 @@ namespace HubspotSDK\Services\Marketing\Subscriptions\V4;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Marketing\Subscriptions\V4\LinkGenerationResponse;
 use HubspotSDK\Marketing\Subscriptions\V4\Links\LinkCreateParams\Channel;
 use HubspotSDK\RequestOptions;
@@ -45,15 +46,15 @@ final class LinksService implements LinksContract
         ?int $subscriptionID = null,
         ?RequestOptions $requestOptions = null,
     ): LinkGenerationResponse {
-        $params = [
-            'channel' => $channel,
-            'subscriberIDString' => $subscriberIDString,
-            'businessUnitID' => $businessUnitID,
-            'language' => $language,
-            'subscriptionID' => $subscriptionID,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'channel' => $channel,
+                'subscriberIDString' => $subscriberIDString,
+                'businessUnitID' => $businessUnitID,
+                'language' => $language,
+                'subscriptionID' => $subscriptionID,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->create(params: $params, requestOptions: $requestOptions);

@@ -6,6 +6,7 @@ namespace HubspotSDK\Services\Marketing\Events;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Marketing\Events\EventDetailSettings;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Marketing\Events\SettingsContract;
@@ -40,7 +41,7 @@ final class SettingsService implements SettingsContract
         string $eventDetailsURL,
         ?RequestOptions $requestOptions = null
     ): EventDetailSettings {
-        $params = ['eventDetailsURL' => $eventDetailsURL];
+        $params = Util::removeNulls(['eventDetailsURL' => $eventDetailsURL]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->createOrUpdate($appID, params: $params, requestOptions: $requestOptions);

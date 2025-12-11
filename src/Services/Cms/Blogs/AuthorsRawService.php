@@ -131,7 +131,7 @@ final class AuthorsRawService implements AuthorsRawContract
         return $this->client->request(
             method: 'patch',
             path: ['cms/v3/blogs/authors/%1$s', $objectID],
-            query: array_diff_key($parsed, $query_params),
+            query: array_intersect_key($parsed, $query_params),
             body: (object) array_diff_key($parsed, $query_params),
             options: $options,
             convert: BlogAuthor::class,
@@ -465,7 +465,7 @@ final class AuthorsRawService implements AuthorsRawContract
         return $this->client->request(
             method: 'post',
             path: 'cms/v3/blogs/authors/batch/read',
-            query: array_diff_key($parsed, $query_params),
+            query: array_intersect_key($parsed, $query_params),
             body: (object) array_diff_key($parsed, $query_params),
             options: $options,
             convert: BatchResponseBlogAuthor::class,
@@ -529,7 +529,7 @@ final class AuthorsRawService implements AuthorsRawContract
         return $this->client->request(
             method: 'post',
             path: 'cms/v3/blogs/authors/batch/update',
-            query: array_diff_key($parsed, $query_params),
+            query: array_intersect_key($parsed, $query_params),
             body: (object) array_diff_key($parsed, $query_params),
             options: $options,
             convert: BatchResponseBlogAuthor::class,

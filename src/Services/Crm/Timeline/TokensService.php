@@ -6,6 +6,7 @@ namespace HubspotSDK\Services\Crm\Timeline;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Crm\Timeline\TimelineEventTemplateToken;
 use HubspotSDK\Crm\Timeline\TimelineEventTemplateTokenOption;
 use HubspotSDK\Crm\Timeline\Tokens\TokenCreateParams\Type;
@@ -58,18 +59,18 @@ final class TokensService implements TokensContract
         string|\DateTimeInterface|null $updatedAt = null,
         ?RequestOptions $requestOptions = null,
     ): TimelineEventTemplateToken {
-        $params = [
-            'appID' => $appID,
-            'label' => $label,
-            'name' => $name,
-            'type' => $type,
-            'createdAt' => $createdAt,
-            'objectPropertyName' => $objectPropertyName,
-            'options' => $options,
-            'updatedAt' => $updatedAt,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'appID' => $appID,
+                'label' => $label,
+                'name' => $name,
+                'type' => $type,
+                'createdAt' => $createdAt,
+                'objectPropertyName' => $objectPropertyName,
+                'options' => $options,
+                'updatedAt' => $updatedAt,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->create($eventTemplateID, params: $params, requestOptions: $requestOptions);
@@ -102,15 +103,15 @@ final class TokensService implements TokensContract
         ?array $options = null,
         ?RequestOptions $requestOptions = null,
     ): TimelineEventTemplateToken {
-        $params = [
-            'appID' => $appID,
-            'eventTemplateID' => $eventTemplateID,
-            'label' => $label,
-            'objectPropertyName' => $objectPropertyName,
-            'options' => $options,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'appID' => $appID,
+                'eventTemplateID' => $eventTemplateID,
+                'label' => $label,
+                'objectPropertyName' => $objectPropertyName,
+                'options' => $options,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->update($tokenName, params: $params, requestOptions: $requestOptions);
@@ -135,7 +136,9 @@ final class TokensService implements TokensContract
         string $eventTemplateID,
         ?RequestOptions $requestOptions = null,
     ): mixed {
-        $params = ['appID' => $appID, 'eventTemplateID' => $eventTemplateID];
+        $params = Util::removeNulls(
+            ['appID' => $appID, 'eventTemplateID' => $eventTemplateID]
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->delete($tokenName, params: $params, requestOptions: $requestOptions);

@@ -92,7 +92,7 @@ final class PostalMailRawService implements PostalMailRawContract
         return $this->client->request(
             method: 'patch',
             path: ['crm/v3/objects/postal_mail/%1$s', $postalMailID],
-            query: array_diff_key($parsed, $query_params),
+            query: array_intersect_key($parsed, $query_params),
             body: (object) array_diff_key($parsed, $query_params),
             options: $options,
             convert: SimplePublicObject::class,

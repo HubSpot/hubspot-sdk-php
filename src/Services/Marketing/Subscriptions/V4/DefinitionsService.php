@@ -6,6 +6,7 @@ namespace HubspotSDK\Services\Marketing\Subscriptions\V4;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Marketing\Subscriptions\V4\ActionResponseWithResultsSubscriptionDefinition;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Marketing\Subscriptions\V4\DefinitionsContract;
@@ -40,12 +41,12 @@ final class DefinitionsService implements DefinitionsContract
         ?bool $includeTranslations = null,
         ?RequestOptions $requestOptions = null,
     ): ActionResponseWithResultsSubscriptionDefinition {
-        $params = [
-            'businessUnitID' => $businessUnitID,
-            'includeTranslations' => $includeTranslations,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'businessUnitID' => $businessUnitID,
+                'includeTranslations' => $includeTranslations,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->list(params: $params, requestOptions: $requestOptions);

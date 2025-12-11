@@ -100,7 +100,7 @@ final class UsersRawService implements UsersRawContract
         return $this->client->request(
             method: 'put',
             path: ['settings/v3/users/%1$s', $userID],
-            query: array_diff_key($parsed, $query_params),
+            query: array_intersect_key($parsed, $query_params),
             body: (object) array_diff_key($parsed, $query_params),
             options: $options,
             convert: PublicUser::class,

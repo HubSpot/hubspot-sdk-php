@@ -6,6 +6,7 @@ namespace HubspotSDK\Services\Marketing\Events;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Marketing\Events\BatchResponseSubscriberEmailResponse;
 use HubspotSDK\Marketing\Events\BatchResponseSubscriberVidResponse;
 use HubspotSDK\RequestOptions;
@@ -53,7 +54,7 @@ final class AttendanceService implements AttendanceContract
         array $inputs,
         ?RequestOptions $requestOptions = null,
     ): BatchResponseSubscriberVidResponse {
-        $params = ['objectID' => $objectID, 'inputs' => $inputs];
+        $params = Util::removeNulls(['objectID' => $objectID, 'inputs' => $inputs]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->createByEventIDAndContactID($subscriberState, params: $params, requestOptions: $requestOptions);
@@ -93,7 +94,7 @@ final class AttendanceService implements AttendanceContract
         array $inputs,
         ?RequestOptions $requestOptions = null,
     ): BatchResponseSubscriberEmailResponse {
-        $params = ['objectID' => $objectID, 'inputs' => $inputs];
+        $params = Util::removeNulls(['objectID' => $objectID, 'inputs' => $inputs]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->createByEventIDAndEmail($subscriberState, params: $params, requestOptions: $requestOptions);
@@ -130,13 +131,13 @@ final class AttendanceService implements AttendanceContract
         ?string $externalAccountID = null,
         ?RequestOptions $requestOptions = null,
     ): BatchResponseSubscriberVidResponse {
-        $params = [
-            'externalEventID' => $externalEventID,
-            'inputs' => $inputs,
-            'externalAccountID' => $externalAccountID,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'externalEventID' => $externalEventID,
+                'inputs' => $inputs,
+                'externalAccountID' => $externalAccountID,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->createByExternalEventIDAndContactID($subscriberState, params: $params, requestOptions: $requestOptions);
@@ -178,13 +179,13 @@ final class AttendanceService implements AttendanceContract
         ?string $externalAccountID = null,
         ?RequestOptions $requestOptions = null,
     ): BatchResponseSubscriberEmailResponse {
-        $params = [
-            'externalEventID' => $externalEventID,
-            'inputs' => $inputs,
-            'externalAccountID' => $externalAccountID,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'externalEventID' => $externalEventID,
+                'inputs' => $inputs,
+                'externalAccountID' => $externalAccountID,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->createByExternalEventIDAndEmail($subscriberState, params: $params, requestOptions: $requestOptions);

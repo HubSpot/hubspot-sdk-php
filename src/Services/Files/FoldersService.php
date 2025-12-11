@@ -6,6 +6,7 @@ namespace HubspotSDK\Services\Files;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Files\Folder;
 use HubspotSDK\Files\FolderActionResponse;
 use HubspotSDK\Files\FolderUpdateTaskLocator;
@@ -45,13 +46,13 @@ final class FoldersService implements FoldersContract
         ?string $parentPath = null,
         ?RequestOptions $requestOptions = null,
     ): Folder {
-        $params = [
-            'name' => $name,
-            'parentFolderID' => $parentFolderID,
-            'parentPath' => $parentPath,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'name' => $name,
+                'parentFolderID' => $parentFolderID,
+                'parentPath' => $parentPath,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->create(params: $params, requestOptions: $requestOptions);
@@ -112,9 +113,7 @@ final class FoldersService implements FoldersContract
         ?array $properties = null,
         ?RequestOptions $requestOptions = null,
     ): Folder {
-        $params = ['properties' => $properties];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(['properties' => $properties]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->getByID($folderID, params: $params, requestOptions: $requestOptions);
@@ -137,9 +136,7 @@ final class FoldersService implements FoldersContract
         ?array $properties = null,
         ?RequestOptions $requestOptions = null,
     ): Folder {
-        $params = ['properties' => $properties];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(['properties' => $properties]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->getByPath($folderPath, params: $params, requestOptions: $requestOptions);
@@ -210,27 +207,27 @@ final class FoldersService implements FoldersContract
         string|\DateTimeInterface|null $updatedAtLte = null,
         ?RequestOptions $requestOptions = null,
     ): Page {
-        $params = [
-            'after' => $after,
-            'before' => $before,
-            'createdAt' => $createdAt,
-            'createdAtGte' => $createdAtGte,
-            'createdAtLte' => $createdAtLte,
-            'idGte' => $idGte,
-            'idLte' => $idLte,
-            'ids' => $ids,
-            'limit' => $limit,
-            'name' => $name,
-            'parentFolderIDs' => $parentFolderIDs,
-            'path' => $path,
-            'properties' => $properties,
-            'sort' => $sort,
-            'updatedAt' => $updatedAt,
-            'updatedAtGte' => $updatedAtGte,
-            'updatedAtLte' => $updatedAtLte,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'after' => $after,
+                'before' => $before,
+                'createdAt' => $createdAt,
+                'createdAtGte' => $createdAtGte,
+                'createdAtLte' => $createdAtLte,
+                'idGte' => $idGte,
+                'idLte' => $idLte,
+                'ids' => $ids,
+                'limit' => $limit,
+                'name' => $name,
+                'parentFolderIDs' => $parentFolderIDs,
+                'path' => $path,
+                'properties' => $properties,
+                'sort' => $sort,
+                'updatedAt' => $updatedAt,
+                'updatedAtGte' => $updatedAtGte,
+                'updatedAtLte' => $updatedAtLte,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->search(params: $params, requestOptions: $requestOptions);
@@ -255,11 +252,9 @@ final class FoldersService implements FoldersContract
         ?int $parentFolderID = null,
         ?RequestOptions $requestOptions = null,
     ): FolderUpdateTaskLocator {
-        $params = [
-            'id' => $id, 'name' => $name, 'parentFolderID' => $parentFolderID,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            ['id' => $id, 'name' => $name, 'parentFolderID' => $parentFolderID]
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->updateAsyncByID(params: $params, requestOptions: $requestOptions);
@@ -283,9 +278,9 @@ final class FoldersService implements FoldersContract
         ?int $parentFolderID = null,
         ?RequestOptions $requestOptions = null,
     ): Folder {
-        $params = ['name' => $name, 'parentFolderID' => $parentFolderID];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            ['name' => $name, 'parentFolderID' => $parentFolderID]
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->updateByID($folderID, params: $params, requestOptions: $requestOptions);

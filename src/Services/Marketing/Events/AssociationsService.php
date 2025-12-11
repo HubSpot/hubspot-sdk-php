@@ -6,6 +6,7 @@ namespace HubspotSDK\Services\Marketing\Events;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Marketing\Events\CollectionResponseWithTotalPublicListNoPaging;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Marketing\Events\AssociationsContract;
@@ -59,7 +60,7 @@ final class AssociationsService implements AssociationsContract
         string $marketingEventID,
         ?RequestOptions $requestOptions = null,
     ): mixed {
-        $params = ['marketingEventID' => $marketingEventID];
+        $params = Util::removeNulls(['marketingEventID' => $marketingEventID]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->delete($listID, params: $params, requestOptions: $requestOptions);
@@ -82,7 +83,7 @@ final class AssociationsService implements AssociationsContract
         string $marketingEventID,
         ?RequestOptions $requestOptions = null,
     ): mixed {
-        $params = ['marketingEventID' => $marketingEventID];
+        $params = Util::removeNulls(['marketingEventID' => $marketingEventID]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->associate($listID, params: $params, requestOptions: $requestOptions);
@@ -107,10 +108,12 @@ final class AssociationsService implements AssociationsContract
         string $externalEventID,
         ?RequestOptions $requestOptions = null,
     ): mixed {
-        $params = [
-            'externalAccountID' => $externalAccountID,
-            'externalEventID' => $externalEventID,
-        ];
+        $params = Util::removeNulls(
+            [
+                'externalAccountID' => $externalAccountID,
+                'externalEventID' => $externalEventID,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->associateByExternalAccount($listID, params: $params, requestOptions: $requestOptions);
@@ -135,10 +138,12 @@ final class AssociationsService implements AssociationsContract
         string $externalEventID,
         ?RequestOptions $requestOptions = null,
     ): mixed {
-        $params = [
-            'externalAccountID' => $externalAccountID,
-            'externalEventID' => $externalEventID,
-        ];
+        $params = Util::removeNulls(
+            [
+                'externalAccountID' => $externalAccountID,
+                'externalEventID' => $externalEventID,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->deleteByExternalAccount($listID, params: $params, requestOptions: $requestOptions);
@@ -161,7 +166,7 @@ final class AssociationsService implements AssociationsContract
         string $externalAccountID,
         ?RequestOptions $requestOptions = null,
     ): CollectionResponseWithTotalPublicListNoPaging {
-        $params = ['externalAccountID' => $externalAccountID];
+        $params = Util::removeNulls(['externalAccountID' => $externalAccountID]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->listByExternalAccount($externalEventID, params: $params, requestOptions: $requestOptions);

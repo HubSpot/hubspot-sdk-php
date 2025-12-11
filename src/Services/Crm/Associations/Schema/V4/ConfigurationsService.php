@@ -6,6 +6,7 @@ namespace HubspotSDK\Services\Crm\Associations\Schema\V4;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Crm\Associations\BatchResponseVoid;
 use HubspotSDK\Crm\Associations\Schema\V4\BatchResponsePublicAssociationDefinitionConfigurationUpdateResult;
 use HubspotSDK\Crm\Associations\Schema\V4\BatchResponsePublicAssociationDefinitionUserConfiguration;
@@ -62,7 +63,9 @@ final class ConfigurationsService implements ConfigurationsContract
         array $inputs,
         ?RequestOptions $requestOptions = null,
     ): BatchResponsePublicAssociationDefinitionUserConfiguration {
-        $params = ['fromObjectType' => $fromObjectType, 'inputs' => $inputs];
+        $params = Util::removeNulls(
+            ['fromObjectType' => $fromObjectType, 'inputs' => $inputs]
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->batchCreate($toObjectType, params: $params, requestOptions: $requestOptions);
@@ -85,7 +88,9 @@ final class ConfigurationsService implements ConfigurationsContract
         array $inputs,
         ?RequestOptions $requestOptions = null,
     ): BatchResponseVoid {
-        $params = ['fromObjectType' => $fromObjectType, 'inputs' => $inputs];
+        $params = Util::removeNulls(
+            ['fromObjectType' => $fromObjectType, 'inputs' => $inputs]
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->batchDelete($toObjectType, params: $params, requestOptions: $requestOptions);
@@ -112,7 +117,9 @@ final class ConfigurationsService implements ConfigurationsContract
         array $inputs,
         ?RequestOptions $requestOptions = null,
     ): BatchResponsePublicAssociationDefinitionConfigurationUpdateResult {
-        $params = ['fromObjectType' => $fromObjectType, 'inputs' => $inputs];
+        $params = Util::removeNulls(
+            ['fromObjectType' => $fromObjectType, 'inputs' => $inputs]
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->batchUpdate($toObjectType, params: $params, requestOptions: $requestOptions);
@@ -130,7 +137,7 @@ final class ConfigurationsService implements ConfigurationsContract
         string $fromObjectType,
         ?RequestOptions $requestOptions = null,
     ): CollectionResponsePublicAssociationDefinitionUserConfiguration {
-        $params = ['fromObjectType' => $fromObjectType];
+        $params = Util::removeNulls(['fromObjectType' => $fromObjectType]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->getByObjectTypes($toObjectType, params: $params, requestOptions: $requestOptions);

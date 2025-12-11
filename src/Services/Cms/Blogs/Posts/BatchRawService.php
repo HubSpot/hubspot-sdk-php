@@ -147,7 +147,7 @@ final class BatchRawService implements BatchRawContract
         return $this->client->request(
             method: 'post',
             path: 'cms/v3/blogs/posts/batch/update',
-            query: array_diff_key($parsed, $query_params),
+            query: array_intersect_key($parsed, $query_params),
             body: (object) array_diff_key($parsed, $query_params),
             options: $options,
             convert: BatchResponseBlogPost::class,
@@ -210,7 +210,7 @@ final class BatchRawService implements BatchRawContract
         return $this->client->request(
             method: 'post',
             path: 'cms/v3/blogs/posts/batch/read',
-            query: array_diff_key($parsed, $query_params),
+            query: array_intersect_key($parsed, $query_params),
             body: (object) array_diff_key($parsed, $query_params),
             options: $options,
             convert: BatchResponseBlogPost::class,

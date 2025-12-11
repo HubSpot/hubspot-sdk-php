@@ -65,14 +65,14 @@ final class CalendarRawService implements CalendarRawContract
             $params,
             $requestOptions,
         );
-        $query_params = array_flip(['organizerUserId']);
+        $query_params = array_flip(['organizerUserID']);
 
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'scheduler/v3/meetings/calendar',
             query: Util::array_transform_keys(
-                array_diff_key($parsed, $query_params),
+                array_intersect_key($parsed, $query_params),
                 ['organizerUserID' => 'organizerUserId'],
             ),
             body: (object) array_diff_key($parsed, $query_params),

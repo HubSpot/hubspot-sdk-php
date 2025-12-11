@@ -6,6 +6,7 @@ namespace HubspotSDK\Services\Webhooks;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Webhooks\SubscriptionsContract;
 use HubspotSDK\Webhooks\BatchResponseSubscriptionResponse;
@@ -48,14 +49,14 @@ final class SubscriptionsService implements SubscriptionsContract
         ?string $propertyName = null,
         ?RequestOptions $requestOptions = null,
     ): SubscriptionResponse {
-        $params = [
-            'eventType' => $eventType,
-            'active' => $active,
-            'objectTypeID' => $objectTypeID,
-            'propertyName' => $propertyName,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'eventType' => $eventType,
+                'active' => $active,
+                'objectTypeID' => $objectTypeID,
+                'propertyName' => $propertyName,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->create($appID, params: $params, requestOptions: $requestOptions);
@@ -80,9 +81,7 @@ final class SubscriptionsService implements SubscriptionsContract
         ?bool $active = null,
         ?RequestOptions $requestOptions = null,
     ): SubscriptionResponse {
-        $params = ['appID' => $appID, 'active' => $active];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(['appID' => $appID, 'active' => $active]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->update($subscriptionID, params: $params, requestOptions: $requestOptions);
@@ -124,7 +123,7 @@ final class SubscriptionsService implements SubscriptionsContract
         int $appID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        $params = ['appID' => $appID];
+        $params = Util::removeNulls(['appID' => $appID]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->delete($subscriptionID, params: $params, requestOptions: $requestOptions);
@@ -147,7 +146,7 @@ final class SubscriptionsService implements SubscriptionsContract
         int $appID,
         ?RequestOptions $requestOptions = null
     ): SubscriptionResponse {
-        $params = ['appID' => $appID];
+        $params = Util::removeNulls(['appID' => $appID]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->get($subscriptionID, params: $params, requestOptions: $requestOptions);
@@ -170,7 +169,7 @@ final class SubscriptionsService implements SubscriptionsContract
         array $inputs,
         ?RequestOptions $requestOptions = null
     ): BatchResponseSubscriptionResponse {
-        $params = ['inputs' => $inputs];
+        $params = Util::removeNulls(['inputs' => $inputs]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->updateBatch($appID, params: $params, requestOptions: $requestOptions);

@@ -6,6 +6,7 @@ namespace HubspotSDK\Services\Crm;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Crm\Owners\OwnerGetParams\IDProperty;
 use HubspotSDK\Crm\Owners\PublicOwner;
 use HubspotSDK\Page;
@@ -43,14 +44,14 @@ final class OwnersService implements OwnersContract
         int $limit = 100,
         ?RequestOptions $requestOptions = null,
     ): Page {
-        $params = [
-            'after' => $after,
-            'archived' => $archived,
-            'email' => $email,
-            'limit' => $limit,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'after' => $after,
+                'archived' => $archived,
+                'email' => $email,
+                'limit' => $limit,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->list(params: $params, requestOptions: $requestOptions);
@@ -73,9 +74,9 @@ final class OwnersService implements OwnersContract
         string|IDProperty $idProperty = 'id',
         ?RequestOptions $requestOptions = null,
     ): PublicOwner {
-        $params = ['archived' => $archived, 'idProperty' => $idProperty];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            ['archived' => $archived, 'idProperty' => $idProperty]
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->get($ownerID, params: $params, requestOptions: $requestOptions);

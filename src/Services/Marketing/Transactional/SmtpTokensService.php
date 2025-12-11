@@ -6,6 +6,7 @@ namespace HubspotSDK\Services\Marketing\Transactional;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Marketing\Transactional\SmtpAPITokenView;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
@@ -41,9 +42,9 @@ final class SmtpTokensService implements SmtpTokensContract
         bool $createContact,
         ?RequestOptions $requestOptions = null,
     ): SmtpAPITokenView {
-        $params = [
-            'campaignName' => $campaignName, 'createContact' => $createContact,
-        ];
+        $params = Util::removeNulls(
+            ['campaignName' => $campaignName, 'createContact' => $createContact]
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->create(params: $params, requestOptions: $requestOptions);
@@ -72,14 +73,14 @@ final class SmtpTokensService implements SmtpTokensContract
         ?int $limit = null,
         ?RequestOptions $requestOptions = null,
     ): Page {
-        $params = [
-            'after' => $after,
-            'campaignName' => $campaignName,
-            'emailCampaignID' => $emailCampaignID,
-            'limit' => $limit,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'after' => $after,
+                'campaignName' => $campaignName,
+                'emailCampaignID' => $emailCampaignID,
+                'limit' => $limit,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->list(params: $params, requestOptions: $requestOptions);

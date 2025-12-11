@@ -6,6 +6,7 @@ namespace HubspotSDK\Services\Crm\Objects;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Crm\Objects\DealSplits\BatchResponseDealToDealSplits;
 use HubspotSDK\PublicObjectID;
 use HubspotSDK\RequestOptions;
@@ -39,7 +40,7 @@ final class DealSplitsService implements DealSplitsContract
         array $inputs,
         ?RequestOptions $requestOptions = null
     ): BatchResponseDealToDealSplits {
-        $params = ['inputs' => $inputs];
+        $params = Util::removeNulls(['inputs' => $inputs]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->batchRead(params: $params, requestOptions: $requestOptions);
@@ -62,7 +63,7 @@ final class DealSplitsService implements DealSplitsContract
         array $inputs,
         ?RequestOptions $requestOptions = null
     ): BatchResponseDealToDealSplits {
-        $params = ['inputs' => $inputs];
+        $params = Util::removeNulls(['inputs' => $inputs]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->batchUpsert(params: $params, requestOptions: $requestOptions);

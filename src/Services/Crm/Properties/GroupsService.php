@@ -6,6 +6,7 @@ namespace HubspotSDK\Services\Crm\Properties;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Crm\Properties\CollectionResponsePropertyGroup;
 use HubspotSDK\Crm\Properties\CreatedResponsePropertyGroup;
 use HubspotSDK\Crm\Properties\PropertyGroup;
@@ -41,11 +42,9 @@ final class GroupsService implements GroupsContract
         ?int $displayOrder = null,
         ?RequestOptions $requestOptions = null,
     ): CreatedResponsePropertyGroup {
-        $params = [
-            'label' => $label, 'name' => $name, 'displayOrder' => $displayOrder,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            ['label' => $label, 'name' => $name, 'displayOrder' => $displayOrder]
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->create($objectType, params: $params, requestOptions: $requestOptions);
@@ -72,13 +71,13 @@ final class GroupsService implements GroupsContract
         ?string $label = null,
         ?RequestOptions $requestOptions = null,
     ): PropertyGroup {
-        $params = [
-            'objectType' => $objectType,
-            'displayOrder' => $displayOrder,
-            'label' => $label,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'objectType' => $objectType,
+                'displayOrder' => $displayOrder,
+                'label' => $label,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->update($groupName, params: $params, requestOptions: $requestOptions);
@@ -98,9 +97,7 @@ final class GroupsService implements GroupsContract
         ?string $locale = null,
         ?RequestOptions $requestOptions = null,
     ): CollectionResponsePropertyGroup {
-        $params = ['locale' => $locale];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(['locale' => $locale]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->list($objectType, params: $params, requestOptions: $requestOptions);
@@ -120,7 +117,7 @@ final class GroupsService implements GroupsContract
         string $objectType,
         ?RequestOptions $requestOptions = null,
     ): mixed {
-        $params = ['objectType' => $objectType];
+        $params = Util::removeNulls(['objectType' => $objectType]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->delete($groupName, params: $params, requestOptions: $requestOptions);
@@ -145,9 +142,9 @@ final class GroupsService implements GroupsContract
         ?string $locale = null,
         ?RequestOptions $requestOptions = null,
     ): PropertyGroup {
-        $params = ['objectType' => $objectType, 'locale' => $locale];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            ['objectType' => $objectType, 'locale' => $locale]
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->get($groupName, params: $params, requestOptions: $requestOptions);

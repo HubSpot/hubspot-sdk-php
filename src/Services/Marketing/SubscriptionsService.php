@@ -6,6 +6,7 @@ namespace HubspotSDK\Services\Marketing;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Marketing\Subscriptions\PublicSubscriptionStatus;
 use HubspotSDK\Marketing\Subscriptions\PublicSubscriptionStatusesResponse;
 use HubspotSDK\Marketing\Subscriptions\SubscriptionDefinitionsResponse;
@@ -87,14 +88,14 @@ final class SubscriptionsService implements SubscriptionsContract
         ?string $legalBasisExplanation = null,
         ?RequestOptions $requestOptions = null,
     ): PublicSubscriptionStatus {
-        $params = [
-            'emailAddress' => $emailAddress,
-            'subscriptionID' => $subscriptionID,
-            'legalBasis' => $legalBasis,
-            'legalBasisExplanation' => $legalBasisExplanation,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'emailAddress' => $emailAddress,
+                'subscriptionID' => $subscriptionID,
+                'legalBasis' => $legalBasis,
+                'legalBasisExplanation' => $legalBasisExplanation,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->subscribe(params: $params, requestOptions: $requestOptions);
@@ -121,14 +122,14 @@ final class SubscriptionsService implements SubscriptionsContract
         ?string $legalBasisExplanation = null,
         ?RequestOptions $requestOptions = null,
     ): PublicSubscriptionStatus {
-        $params = [
-            'emailAddress' => $emailAddress,
-            'subscriptionID' => $subscriptionID,
-            'legalBasis' => $legalBasis,
-            'legalBasisExplanation' => $legalBasisExplanation,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'emailAddress' => $emailAddress,
+                'subscriptionID' => $subscriptionID,
+                'legalBasis' => $legalBasis,
+                'legalBasisExplanation' => $legalBasisExplanation,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->unsubscribe(params: $params, requestOptions: $requestOptions);

@@ -64,7 +64,7 @@ final class SingleSendTest extends TestCase
                 'sendID' => 'sendId',
             ],
             contactProperties: ['foo' => 'string'],
-            customProperties: ['foo' => []],
+            customProperties: ['foo' => (object) []],
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

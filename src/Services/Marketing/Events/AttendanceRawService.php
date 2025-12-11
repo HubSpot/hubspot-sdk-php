@@ -169,7 +169,7 @@ final class AttendanceRawService implements AttendanceRawContract
         );
         $externalEventID = $parsed['externalEventID'];
         unset($parsed['externalEventID']);
-        $query_params = array_flip(['externalAccountId']);
+        $query_params = array_flip(['externalAccountID']);
 
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -180,7 +180,7 @@ final class AttendanceRawService implements AttendanceRawContract
                 $subscriberState,
             ],
             query: Util::array_transform_keys(
-                array_diff_key($parsed, $query_params),
+                array_intersect_key($parsed, $query_params),
                 ['externalAccountID' => 'externalAccountId'],
             ),
             body: (object) array_diff_key(
@@ -234,7 +234,7 @@ final class AttendanceRawService implements AttendanceRawContract
         );
         $externalEventID = $parsed['externalEventID'];
         unset($parsed['externalEventID']);
-        $query_params = array_flip(['externalAccountId']);
+        $query_params = array_flip(['externalAccountID']);
 
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -245,7 +245,7 @@ final class AttendanceRawService implements AttendanceRawContract
                 $subscriberState,
             ],
             query: Util::array_transform_keys(
-                array_diff_key($parsed, $query_params),
+                array_intersect_key($parsed, $query_params),
                 ['externalAccountID' => 'externalAccountId'],
             ),
             body: (object) array_diff_key(

@@ -9,6 +9,7 @@ use HubspotSDK\Cms\Blogs\Authors\AuthorCreateParams\Language;
 use HubspotSDK\Cms\Blogs\Authors\BatchResponseBlogAuthor;
 use HubspotSDK\Cms\Blogs\Authors\BlogAuthor;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Cms\Blogs\AuthorsContract;
@@ -68,25 +69,27 @@ final class AuthorsService implements AuthorsContract
         string $website,
         ?RequestOptions $requestOptions = null,
     ): BlogAuthor {
-        $params = [
-            'id' => $id,
-            'avatar' => $avatar,
-            'bio' => $bio,
-            'created' => $created,
-            'deletedAt' => $deletedAt,
-            'displayName' => $displayName,
-            'email' => $email,
-            'facebook' => $facebook,
-            'fullName' => $fullName,
-            'language' => $language,
-            'linkedin' => $linkedin,
-            'name' => $name,
-            'slug' => $slug,
-            'translatedFromID' => $translatedFromID,
-            'twitter' => $twitter,
-            'updated' => $updated,
-            'website' => $website,
-        ];
+        $params = Util::removeNulls(
+            [
+                'id' => $id,
+                'avatar' => $avatar,
+                'bio' => $bio,
+                'created' => $created,
+                'deletedAt' => $deletedAt,
+                'displayName' => $displayName,
+                'email' => $email,
+                'facebook' => $facebook,
+                'fullName' => $fullName,
+                'language' => $language,
+                'linkedin' => $linkedin,
+                'name' => $name,
+                'slug' => $slug,
+                'translatedFromID' => $translatedFromID,
+                'twitter' => $twitter,
+                'updated' => $updated,
+                'website' => $website,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->create(params: $params, requestOptions: $requestOptions);
@@ -144,28 +147,28 @@ final class AuthorsService implements AuthorsContract
         ?bool $archived = null,
         ?RequestOptions $requestOptions = null,
     ): BlogAuthor {
-        $params = [
-            'id' => $id,
-            'avatar' => $avatar,
-            'bio' => $bio,
-            'created' => $created,
-            'deletedAt' => $deletedAt,
-            'displayName' => $displayName,
-            'email' => $email,
-            'facebook' => $facebook,
-            'fullName' => $fullName,
-            'language' => $language,
-            'linkedin' => $linkedin,
-            'name' => $name,
-            'slug' => $slug,
-            'translatedFromID' => $translatedFromID,
-            'twitter' => $twitter,
-            'updated' => $updated,
-            'website' => $website,
-            'archived' => $archived,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'id' => $id,
+                'avatar' => $avatar,
+                'bio' => $bio,
+                'created' => $created,
+                'deletedAt' => $deletedAt,
+                'displayName' => $displayName,
+                'email' => $email,
+                'facebook' => $facebook,
+                'fullName' => $fullName,
+                'language' => $language,
+                'linkedin' => $linkedin,
+                'name' => $name,
+                'slug' => $slug,
+                'translatedFromID' => $translatedFromID,
+                'twitter' => $twitter,
+                'updated' => $updated,
+                'website' => $website,
+                'archived' => $archived,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->update($objectID, params: $params, requestOptions: $requestOptions);
@@ -207,21 +210,21 @@ final class AuthorsService implements AuthorsContract
         string|\DateTimeInterface|null $updatedBefore = null,
         ?RequestOptions $requestOptions = null,
     ): Page {
-        $params = [
-            'after' => $after,
-            'archived' => $archived,
-            'createdAfter' => $createdAfter,
-            'createdAt' => $createdAt,
-            'createdBefore' => $createdBefore,
-            'limit' => $limit,
-            'property' => $property,
-            'sort' => $sort,
-            'updatedAfter' => $updatedAfter,
-            'updatedAt' => $updatedAt,
-            'updatedBefore' => $updatedBefore,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'after' => $after,
+                'archived' => $archived,
+                'createdAfter' => $createdAfter,
+                'createdAt' => $createdAt,
+                'createdBefore' => $createdBefore,
+                'limit' => $limit,
+                'property' => $property,
+                'sort' => $sort,
+                'updatedAfter' => $updatedAfter,
+                'updatedAt' => $updatedAt,
+                'updatedBefore' => $updatedBefore,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->list(params: $params, requestOptions: $requestOptions);
@@ -244,9 +247,7 @@ final class AuthorsService implements AuthorsContract
         ?bool $archived = null,
         ?RequestOptions $requestOptions = null,
     ): mixed {
-        $params = ['archived' => $archived];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(['archived' => $archived]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->delete($objectID, params: $params, requestOptions: $requestOptions);
@@ -273,14 +274,14 @@ final class AuthorsService implements AuthorsContract
         ?string $primaryLanguage = null,
         ?RequestOptions $requestOptions = null,
     ): mixed {
-        $params = [
-            'id' => $id,
-            'language' => $language,
-            'primaryID' => $primaryID,
-            'primaryLanguage' => $primaryLanguage,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'id' => $id,
+                'language' => $language,
+                'primaryID' => $primaryID,
+                'primaryLanguage' => $primaryLanguage,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->attachToLangGroup(params: $params, requestOptions: $requestOptions);
@@ -319,7 +320,7 @@ final class AuthorsService implements AuthorsContract
         array $inputs,
         ?RequestOptions $requestOptions = null
     ): BatchResponseBlogAuthor {
-        $params = ['inputs' => $inputs];
+        $params = Util::removeNulls(['inputs' => $inputs]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->createBatch(params: $params, requestOptions: $requestOptions);
@@ -364,14 +365,14 @@ final class AuthorsService implements AuthorsContract
         ?string $primaryLanguage = null,
         ?RequestOptions $requestOptions = null,
     ): BlogAuthor {
-        $params = [
-            'id' => $id,
-            'blogAuthor' => $blogAuthor,
-            'language' => $language,
-            'primaryLanguage' => $primaryLanguage,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'id' => $id,
+                'blogAuthor' => $blogAuthor,
+                'language' => $language,
+                'primaryLanguage' => $primaryLanguage,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->createLanguageVariation(params: $params, requestOptions: $requestOptions);
@@ -392,7 +393,7 @@ final class AuthorsService implements AuthorsContract
         array $inputs,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        $params = ['inputs' => $inputs];
+        $params = Util::removeNulls(['inputs' => $inputs]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->deleteBatch(params: $params, requestOptions: $requestOptions);
@@ -413,7 +414,7 @@ final class AuthorsService implements AuthorsContract
         string $id,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        $params = ['id' => $id];
+        $params = Util::removeNulls(['id' => $id]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->detachFromLangGroup(params: $params, requestOptions: $requestOptions);
@@ -437,9 +438,9 @@ final class AuthorsService implements AuthorsContract
         ?string $property = null,
         ?RequestOptions $requestOptions = null,
     ): BlogAuthor {
-        $params = ['archived' => $archived, 'property' => $property];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            ['archived' => $archived, 'property' => $property]
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->get($objectID, params: $params, requestOptions: $requestOptions);
@@ -462,9 +463,7 @@ final class AuthorsService implements AuthorsContract
         ?bool $archived = null,
         ?RequestOptions $requestOptions = null
     ): BatchResponseBlogAuthor {
-        $params = ['inputs' => $inputs, 'archived' => $archived];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(['inputs' => $inputs, 'archived' => $archived]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->getBatch(params: $params, requestOptions: $requestOptions);
@@ -485,7 +484,7 @@ final class AuthorsService implements AuthorsContract
         string $id,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        $params = ['id' => $id];
+        $params = Util::removeNulls(['id' => $id]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->setNewLangPrimary(params: $params, requestOptions: $requestOptions);
@@ -508,9 +507,7 @@ final class AuthorsService implements AuthorsContract
         ?bool $archived = null,
         ?RequestOptions $requestOptions = null
     ): BatchResponseBlogAuthor {
-        $params = ['inputs' => $inputs, 'archived' => $archived];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(['inputs' => $inputs, 'archived' => $archived]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->updateBatch(params: $params, requestOptions: $requestOptions);
@@ -533,7 +530,9 @@ final class AuthorsService implements AuthorsContract
         string $primaryID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        $params = ['languages' => $languages, 'primaryID' => $primaryID];
+        $params = Util::removeNulls(
+            ['languages' => $languages, 'primaryID' => $primaryID]
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->updateLanguages(params: $params, requestOptions: $requestOptions);

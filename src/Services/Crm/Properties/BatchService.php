@@ -7,6 +7,7 @@ namespace HubspotSDK\Services\Crm\Properties;
 use HubspotSDK\BatchResponseProperty;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\PropertyCreate\DataSensitivity;
 use HubspotSDK\PropertyCreate\FieldType;
 use HubspotSDK\PropertyCreate\Type;
@@ -64,7 +65,7 @@ final class BatchService implements BatchContract
         array $inputs,
         ?RequestOptions $requestOptions = null
     ): BatchResponseProperty {
-        $params = ['inputs' => $inputs];
+        $params = Util::removeNulls(['inputs' => $inputs]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->create($objectType, params: $params, requestOptions: $requestOptions);
@@ -86,7 +87,7 @@ final class BatchService implements BatchContract
         array $inputs,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        $params = ['inputs' => $inputs];
+        $params = Util::removeNulls(['inputs' => $inputs]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->delete($objectType, params: $params, requestOptions: $requestOptions);
@@ -115,14 +116,14 @@ final class BatchService implements BatchContract
         ?string $locale = null,
         ?RequestOptions $requestOptions = null,
     ): BatchResponseProperty {
-        $params = [
-            'archived' => $archived,
-            'dataSensitivity' => $dataSensitivity,
-            'inputs' => $inputs,
-            'locale' => $locale,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'archived' => $archived,
+                'dataSensitivity' => $dataSensitivity,
+                'inputs' => $inputs,
+                'locale' => $locale,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->get($objectType, params: $params, requestOptions: $requestOptions);

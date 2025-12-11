@@ -6,6 +6,7 @@ namespace HubspotSDK\Services\Events;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Events\EventDefinitions\ExternalBehavioralEventTypeDefinition;
 use HubspotSDK\Page;
 use HubspotSDK\Property;
@@ -60,15 +61,15 @@ final class EventDefinitionsService implements EventDefinitionsContract
         ?string $primaryObject = null,
         ?RequestOptions $requestOptions = null,
     ): ExternalBehavioralEventTypeDefinition {
-        $params = [
-            'label' => $label,
-            'propertyDefinitions' => $propertyDefinitions,
-            'description' => $description,
-            'name' => $name,
-            'primaryObject' => $primaryObject,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'label' => $label,
+                'propertyDefinitions' => $propertyDefinitions,
+                'description' => $description,
+                'name' => $name,
+                'primaryObject' => $primaryObject,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->create(params: $params, requestOptions: $requestOptions);
@@ -93,9 +94,9 @@ final class EventDefinitionsService implements EventDefinitionsContract
         ?string $label = null,
         ?RequestOptions $requestOptions = null,
     ): ExternalBehavioralEventTypeDefinition {
-        $params = ['description' => $description, 'label' => $label];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            ['description' => $description, 'label' => $label]
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->update($eventName, params: $params, requestOptions: $requestOptions);
@@ -124,15 +125,15 @@ final class EventDefinitionsService implements EventDefinitionsContract
         ?string $sortOrder = null,
         ?RequestOptions $requestOptions = null,
     ): Page {
-        $params = [
-            'after' => $after,
-            'includeProperties' => $includeProperties,
-            'limit' => $limit,
-            'searchString' => $searchString,
-            'sortOrder' => $sortOrder,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'after' => $after,
+                'includeProperties' => $includeProperties,
+                'limit' => $limit,
+                'searchString' => $searchString,
+                'sortOrder' => $sortOrder,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->list(params: $params, requestOptions: $requestOptions);
@@ -188,15 +189,15 @@ final class EventDefinitionsService implements EventDefinitionsContract
         ?array $options = null,
         ?RequestOptions $requestOptions = null,
     ): Property {
-        $params = [
-            'label' => $label,
-            'type' => $type,
-            'description' => $description,
-            'name' => $name,
-            'options' => $options,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'label' => $label,
+                'type' => $type,
+                'description' => $description,
+                'name' => $name,
+                'options' => $options,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->createProperty($eventName, params: $params, requestOptions: $requestOptions);
@@ -219,7 +220,7 @@ final class EventDefinitionsService implements EventDefinitionsContract
         string $eventName,
         ?RequestOptions $requestOptions = null,
     ): mixed {
-        $params = ['eventName' => $eventName];
+        $params = Util::removeNulls(['eventName' => $eventName]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->deleteProperty($propertyName, params: $params, requestOptions: $requestOptions);
@@ -273,14 +274,14 @@ final class EventDefinitionsService implements EventDefinitionsContract
         ?array $options = null,
         ?RequestOptions $requestOptions = null,
     ): Property {
-        $params = [
-            'eventName' => $eventName,
-            'description' => $description,
-            'label' => $label,
-            'options' => $options,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'eventName' => $eventName,
+                'description' => $description,
+                'label' => $label,
+                'options' => $options,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->updateProperty($propertyName, params: $params, requestOptions: $requestOptions);

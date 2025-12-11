@@ -7,6 +7,7 @@ namespace HubspotSDK\Services\Cms\MediaBridge;
 use HubspotSDK\Client;
 use HubspotSDK\Cms\MediaBridge\CollectionResponsePropertyGroupNoPaging;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Crm\Properties\PropertyGroup;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Cms\MediaBridge\GroupsContract;
@@ -47,14 +48,14 @@ final class GroupsService implements GroupsContract
         ?int $displayOrder = null,
         ?RequestOptions $requestOptions = null,
     ): PropertyGroup {
-        $params = [
-            'appID' => $appID,
-            'label' => $label,
-            'name' => $name,
-            'displayOrder' => $displayOrder,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'appID' => $appID,
+                'label' => $label,
+                'name' => $name,
+                'displayOrder' => $displayOrder,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->create($objectType, params: $params, requestOptions: $requestOptions);
@@ -77,7 +78,7 @@ final class GroupsService implements GroupsContract
         int $appID,
         ?RequestOptions $requestOptions = null
     ): CollectionResponsePropertyGroupNoPaging {
-        $params = ['appID' => $appID];
+        $params = Util::removeNulls(['appID' => $appID]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->list($objectType, params: $params, requestOptions: $requestOptions);
@@ -102,7 +103,9 @@ final class GroupsService implements GroupsContract
         string $objectType,
         ?RequestOptions $requestOptions = null,
     ): mixed {
-        $params = ['appID' => $appID, 'objectType' => $objectType];
+        $params = Util::removeNulls(
+            ['appID' => $appID, 'objectType' => $objectType]
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->deleteByName($groupName, params: $params, requestOptions: $requestOptions);
@@ -127,7 +130,9 @@ final class GroupsService implements GroupsContract
         string $objectType,
         ?RequestOptions $requestOptions = null,
     ): PropertyGroup {
-        $params = ['appID' => $appID, 'objectType' => $objectType];
+        $params = Util::removeNulls(
+            ['appID' => $appID, 'objectType' => $objectType]
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->getByName($groupName, params: $params, requestOptions: $requestOptions);
@@ -156,14 +161,14 @@ final class GroupsService implements GroupsContract
         ?string $label = null,
         ?RequestOptions $requestOptions = null,
     ): PropertyGroup {
-        $params = [
-            'appID' => $appID,
-            'objectType' => $objectType,
-            'displayOrder' => $displayOrder,
-            'label' => $label,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'appID' => $appID,
+                'objectType' => $objectType,
+                'displayOrder' => $displayOrder,
+                'label' => $label,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->updateByName($groupName, params: $params, requestOptions: $requestOptions);

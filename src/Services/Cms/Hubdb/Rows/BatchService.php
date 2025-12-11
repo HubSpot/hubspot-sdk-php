@@ -7,6 +7,7 @@ namespace HubspotSDK\Services\Cms\Hubdb\Rows;
 use HubspotSDK\Client;
 use HubspotSDK\Cms\Hubdb\BatchResponseHubDBTableRowV3;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Cms\Hubdb\Rows\BatchContract;
 
@@ -40,7 +41,7 @@ final class BatchService implements BatchContract
         array $inputs,
         ?RequestOptions $requestOptions = null
     ): BatchResponseHubDBTableRowV3 {
-        $params = ['inputs' => $inputs];
+        $params = Util::removeNulls(['inputs' => $inputs]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->cloneBatch($tableIDOrName, params: $params, requestOptions: $requestOptions);
@@ -69,7 +70,7 @@ final class BatchService implements BatchContract
         array $inputs,
         ?RequestOptions $requestOptions = null
     ): BatchResponseHubDBTableRowV3 {
-        $params = ['inputs' => $inputs];
+        $params = Util::removeNulls(['inputs' => $inputs]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->createBatch($tableIDOrName, params: $params, requestOptions: $requestOptions);
@@ -93,7 +94,7 @@ final class BatchService implements BatchContract
         array $inputs,
         ?RequestOptions $requestOptions = null
     ): BatchResponseHubDBTableRowV3 {
-        $params = ['inputs' => $inputs];
+        $params = Util::removeNulls(['inputs' => $inputs]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->getBatch($tableIDOrName, params: $params, requestOptions: $requestOptions);
@@ -116,7 +117,7 @@ final class BatchService implements BatchContract
         array $inputs,
         ?RequestOptions $requestOptions = null
     ): BatchResponseHubDBTableRowV3 {
-        $params = ['inputs' => $inputs];
+        $params = Util::removeNulls(['inputs' => $inputs]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->getDraftBatch($tableIDOrName, params: $params, requestOptions: $requestOptions);
@@ -139,7 +140,7 @@ final class BatchService implements BatchContract
         array $inputs,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        $params = ['inputs' => $inputs];
+        $params = Util::removeNulls(['inputs' => $inputs]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->purgeBatch($tableIDOrName, params: $params, requestOptions: $requestOptions);
@@ -169,7 +170,7 @@ final class BatchService implements BatchContract
         array $inputs,
         ?RequestOptions $requestOptions = null
     ): BatchResponseHubDBTableRowV3 {
-        $params = ['inputs' => $inputs];
+        $params = Util::removeNulls(['inputs' => $inputs]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->replaceBatch($tableIDOrName, params: $params, requestOptions: $requestOptions);
@@ -199,7 +200,7 @@ final class BatchService implements BatchContract
         array $inputs,
         ?RequestOptions $requestOptions = null
     ): BatchResponseHubDBTableRowV3 {
-        $params = ['inputs' => $inputs];
+        $params = Util::removeNulls(['inputs' => $inputs]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->updateBatch($tableIDOrName, params: $params, requestOptions: $requestOptions);

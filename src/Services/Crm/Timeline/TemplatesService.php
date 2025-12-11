@@ -6,6 +6,7 @@ namespace HubspotSDK\Services\Crm\Timeline;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Crm\Timeline\CollectionResponseTimelineEventTemplateNoPaging;
 use HubspotSDK\Crm\Timeline\TimelineEventTemplate;
 use HubspotSDK\Crm\Timeline\TimelineEventTemplateToken;
@@ -62,15 +63,15 @@ final class TemplatesService implements TemplatesContract
         ?string $headerTemplate = null,
         ?RequestOptions $requestOptions = null,
     ): TimelineEventTemplate {
-        $params = [
-            'name' => $name,
-            'objectType' => $objectType,
-            'tokens' => $tokens,
-            'detailTemplate' => $detailTemplate,
-            'headerTemplate' => $headerTemplate,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'name' => $name,
+                'objectType' => $objectType,
+                'tokens' => $tokens,
+                'detailTemplate' => $detailTemplate,
+                'headerTemplate' => $headerTemplate,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->create($appID, params: $params, requestOptions: $requestOptions);
@@ -113,16 +114,16 @@ final class TemplatesService implements TemplatesContract
         ?string $headerTemplate = null,
         ?RequestOptions $requestOptions = null,
     ): TimelineEventTemplate {
-        $params = [
-            'appID' => $appID,
-            'id' => $id,
-            'name' => $name,
-            'tokens' => $tokens,
-            'detailTemplate' => $detailTemplate,
-            'headerTemplate' => $headerTemplate,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'appID' => $appID,
+                'id' => $id,
+                'name' => $name,
+                'tokens' => $tokens,
+                'detailTemplate' => $detailTemplate,
+                'headerTemplate' => $headerTemplate,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->update($eventTemplateID, params: $params, requestOptions: $requestOptions);
@@ -164,7 +165,7 @@ final class TemplatesService implements TemplatesContract
         int $appID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        $params = ['appID' => $appID];
+        $params = Util::removeNulls(['appID' => $appID]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->delete($eventTemplateID, params: $params, requestOptions: $requestOptions);
@@ -187,7 +188,7 @@ final class TemplatesService implements TemplatesContract
         int $appID,
         ?RequestOptions $requestOptions = null
     ): TimelineEventTemplate {
-        $params = ['appID' => $appID];
+        $params = Util::removeNulls(['appID' => $appID]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->get($eventTemplateID, params: $params, requestOptions: $requestOptions);

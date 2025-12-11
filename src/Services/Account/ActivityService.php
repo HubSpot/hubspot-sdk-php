@@ -9,6 +9,7 @@ use HubspotSDK\Account\Activity\PublicAPIUserActionEvent;
 use HubspotSDK\Account\Activity\PublicLoginAudit;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Account\ActivityContract;
@@ -53,16 +54,16 @@ final class ActivityService implements ActivityContract
         ?array $sort = null,
         ?RequestOptions $requestOptions = null,
     ): Page {
-        $params = [
-            'actingUserID' => $actingUserID,
-            'after' => $after,
-            'limit' => $limit,
-            'occurredAfter' => $occurredAfter,
-            'occurredBefore' => $occurredBefore,
-            'sort' => $sort,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'actingUserID' => $actingUserID,
+                'after' => $after,
+                'limit' => $limit,
+                'occurredAfter' => $occurredAfter,
+                'occurredBefore' => $occurredBefore,
+                'sort' => $sort,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->listAuditLogs(params: $params, requestOptions: $requestOptions);
@@ -89,9 +90,9 @@ final class ActivityService implements ActivityContract
         ?int $userID = null,
         ?RequestOptions $requestOptions = null,
     ): Page {
-        $params = ['after' => $after, 'limit' => $limit, 'userID' => $userID];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            ['after' => $after, 'limit' => $limit, 'userID' => $userID]
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->listLoginActivities(params: $params, requestOptions: $requestOptions);
@@ -122,15 +123,15 @@ final class ActivityService implements ActivityContract
         ?int $userID = null,
         ?RequestOptions $requestOptions = null,
     ): Page {
-        $params = [
-            'after' => $after,
-            'fromTimestamp' => $fromTimestamp,
-            'limit' => $limit,
-            'toTimestamp' => $toTimestamp,
-            'userID' => $userID,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'after' => $after,
+                'fromTimestamp' => $fromTimestamp,
+                'limit' => $limit,
+                'toTimestamp' => $toTimestamp,
+                'userID' => $userID,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->listSecurityActivities(params: $params, requestOptions: $requestOptions);

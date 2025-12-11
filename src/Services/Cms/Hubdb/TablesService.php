@@ -9,6 +9,7 @@ use HubspotSDK\Cms\Hubdb\ColumnRequest\Type;
 use HubspotSDK\Cms\Hubdb\HubDBTableV3;
 use HubspotSDK\Cms\Hubdb\ImportResult;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Option;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
@@ -72,16 +73,18 @@ final class TablesService implements TablesContract
         bool $useForPages,
         ?RequestOptions $requestOptions = null,
     ): HubDBTableV3 {
-        $params = [
-            'allowChildTables' => $allowChildTables,
-            'allowPublicAPIAccess' => $allowPublicAPIAccess,
-            'columns' => $columns,
-            'dynamicMetaTags' => $dynamicMetaTags,
-            'enableChildTablePages' => $enableChildTablePages,
-            'label' => $label,
-            'name' => $name,
-            'useForPages' => $useForPages,
-        ];
+        $params = Util::removeNulls(
+            [
+                'allowChildTables' => $allowChildTables,
+                'allowPublicAPIAccess' => $allowPublicAPIAccess,
+                'columns' => $columns,
+                'dynamicMetaTags' => $dynamicMetaTags,
+                'enableChildTablePages' => $enableChildTablePages,
+                'label' => $label,
+                'name' => $name,
+                'useForPages' => $useForPages,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->create(params: $params, requestOptions: $requestOptions);
@@ -126,22 +129,22 @@ final class TablesService implements TablesContract
         string|\DateTimeInterface|null $updatedBefore = null,
         ?RequestOptions $requestOptions = null,
     ): Page {
-        $params = [
-            'after' => $after,
-            'archived' => $archived,
-            'contentType' => $contentType,
-            'createdAfter' => $createdAfter,
-            'createdAt' => $createdAt,
-            'createdBefore' => $createdBefore,
-            'isGetLocalizedSchema' => $isGetLocalizedSchema,
-            'limit' => $limit,
-            'sort' => $sort,
-            'updatedAfter' => $updatedAfter,
-            'updatedAt' => $updatedAt,
-            'updatedBefore' => $updatedBefore,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'after' => $after,
+                'archived' => $archived,
+                'contentType' => $contentType,
+                'createdAfter' => $createdAfter,
+                'createdAt' => $createdAt,
+                'createdBefore' => $createdBefore,
+                'isGetLocalizedSchema' => $isGetLocalizedSchema,
+                'limit' => $limit,
+                'sort' => $sort,
+                'updatedAfter' => $updatedAfter,
+                'updatedAt' => $updatedAt,
+                'updatedBefore' => $updatedBefore,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->list(params: $params, requestOptions: $requestOptions);
@@ -188,14 +191,14 @@ final class TablesService implements TablesContract
         ?string $newName = null,
         ?RequestOptions $requestOptions = null,
     ): HubDBTableV3 {
-        $params = [
-            'copyRows' => $copyRows,
-            'isHubspotDefined' => $isHubspotDefined,
-            'newLabel' => $newLabel,
-            'newName' => $newName,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'copyRows' => $copyRows,
+                'isHubspotDefined' => $isHubspotDefined,
+                'newLabel' => $newLabel,
+                'newName' => $newName,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->cloneDraft($tableIDOrName, params: $params, requestOptions: $requestOptions);
@@ -218,7 +221,7 @@ final class TablesService implements TablesContract
         string $tableIDOrName,
         ?RequestOptions $requestOptions = null,
     ): mixed {
-        $params = ['tableIDOrName' => $tableIDOrName];
+        $params = Util::removeNulls(['tableIDOrName' => $tableIDOrName]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->deleteVersion($versionID, params: $params, requestOptions: $requestOptions);
@@ -241,9 +244,7 @@ final class TablesService implements TablesContract
         ?string $format = null,
         ?RequestOptions $requestOptions = null,
     ): string {
-        $params = ['format' => $format];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(['format' => $format]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->export($tableIDOrName, params: $params, requestOptions: $requestOptions);
@@ -266,9 +267,7 @@ final class TablesService implements TablesContract
         ?string $format = null,
         ?RequestOptions $requestOptions = null,
     ): string {
-        $params = ['format' => $format];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(['format' => $format]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->exportDraft($tableIDOrName, params: $params, requestOptions: $requestOptions);
@@ -297,13 +296,13 @@ final class TablesService implements TablesContract
         ?bool $isGetLocalizedSchema = null,
         ?RequestOptions $requestOptions = null,
     ): HubDBTableV3 {
-        $params = [
-            'archived' => $archived,
-            'includeForeignIDs' => $includeForeignIDs,
-            'isGetLocalizedSchema' => $isGetLocalizedSchema,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'archived' => $archived,
+                'includeForeignIDs' => $includeForeignIDs,
+                'isGetLocalizedSchema' => $isGetLocalizedSchema,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->get($tableIDOrName, params: $params, requestOptions: $requestOptions);
@@ -330,13 +329,13 @@ final class TablesService implements TablesContract
         ?bool $isGetLocalizedSchema = null,
         ?RequestOptions $requestOptions = null,
     ): HubDBTableV3 {
-        $params = [
-            'archived' => $archived,
-            'includeForeignIDs' => $includeForeignIDs,
-            'isGetLocalizedSchema' => $isGetLocalizedSchema,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'archived' => $archived,
+                'includeForeignIDs' => $includeForeignIDs,
+                'isGetLocalizedSchema' => $isGetLocalizedSchema,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->getDraft($tableIDOrName, params: $params, requestOptions: $requestOptions);
@@ -360,9 +359,7 @@ final class TablesService implements TablesContract
         ?string $file = null,
         ?RequestOptions $requestOptions = null,
     ): ImportResult {
-        $params = ['config' => $config, 'file' => $file];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(['config' => $config, 'file' => $file]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->importDraft($tableIDOrName, params: $params, requestOptions: $requestOptions);
@@ -407,22 +404,22 @@ final class TablesService implements TablesContract
         string|\DateTimeInterface|null $updatedBefore = null,
         ?RequestOptions $requestOptions = null,
     ): Page {
-        $params = [
-            'after' => $after,
-            'archived' => $archived,
-            'contentType' => $contentType,
-            'createdAfter' => $createdAfter,
-            'createdAt' => $createdAt,
-            'createdBefore' => $createdBefore,
-            'isGetLocalizedSchema' => $isGetLocalizedSchema,
-            'limit' => $limit,
-            'sort' => $sort,
-            'updatedAfter' => $updatedAfter,
-            'updatedAt' => $updatedAt,
-            'updatedBefore' => $updatedBefore,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'after' => $after,
+                'archived' => $archived,
+                'contentType' => $contentType,
+                'createdAfter' => $createdAfter,
+                'createdAt' => $createdAt,
+                'createdBefore' => $createdBefore,
+                'isGetLocalizedSchema' => $isGetLocalizedSchema,
+                'limit' => $limit,
+                'sort' => $sort,
+                'updatedAfter' => $updatedAfter,
+                'updatedAt' => $updatedAt,
+                'updatedBefore' => $updatedBefore,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->listDraft(params: $params, requestOptions: $requestOptions);
@@ -445,9 +442,7 @@ final class TablesService implements TablesContract
         ?bool $includeForeignIDs = null,
         ?RequestOptions $requestOptions = null,
     ): HubDBTableV3 {
-        $params = ['includeForeignIDs' => $includeForeignIDs];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(['includeForeignIDs' => $includeForeignIDs]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->publishDraft($tableIDOrName, params: $params, requestOptions: $requestOptions);
@@ -470,9 +465,7 @@ final class TablesService implements TablesContract
         ?bool $includeForeignIDs = null,
         ?RequestOptions $requestOptions = null,
     ): HubDBTableV3 {
-        $params = ['includeForeignIDs' => $includeForeignIDs];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(['includeForeignIDs' => $includeForeignIDs]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->resetDraft($tableIDOrName, params: $params, requestOptions: $requestOptions);
@@ -495,9 +488,7 @@ final class TablesService implements TablesContract
         ?bool $includeForeignIDs = null,
         ?RequestOptions $requestOptions = null,
     ): HubDBTableV3 {
-        $params = ['includeForeignIDs' => $includeForeignIDs];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(['includeForeignIDs' => $includeForeignIDs]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->unpublish($tableIDOrName, params: $params, requestOptions: $requestOptions);
@@ -557,21 +548,21 @@ final class TablesService implements TablesContract
         ?bool $isGetLocalizedSchema = null,
         ?RequestOptions $requestOptions = null,
     ): HubDBTableV3 {
-        $params = [
-            'allowChildTables' => $allowChildTables,
-            'allowPublicAPIAccess' => $allowPublicAPIAccess,
-            'columns' => $columns,
-            'dynamicMetaTags' => $dynamicMetaTags,
-            'enableChildTablePages' => $enableChildTablePages,
-            'label' => $label,
-            'name' => $name,
-            'useForPages' => $useForPages,
-            'archived' => $archived,
-            'includeForeignIDs' => $includeForeignIDs,
-            'isGetLocalizedSchema' => $isGetLocalizedSchema,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'allowChildTables' => $allowChildTables,
+                'allowPublicAPIAccess' => $allowPublicAPIAccess,
+                'columns' => $columns,
+                'dynamicMetaTags' => $dynamicMetaTags,
+                'enableChildTablePages' => $enableChildTablePages,
+                'label' => $label,
+                'name' => $name,
+                'useForPages' => $useForPages,
+                'archived' => $archived,
+                'includeForeignIDs' => $includeForeignIDs,
+                'isGetLocalizedSchema' => $isGetLocalizedSchema,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->updateDraft($tableIDOrName, params: $params, requestOptions: $requestOptions);

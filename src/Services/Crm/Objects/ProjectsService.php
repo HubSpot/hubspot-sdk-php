@@ -8,6 +8,7 @@ use HubspotSDK\AssociationSpec;
 use HubspotSDK\AssociationSpec\AssociationCategory;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\Crm\CreatedResponseSimplePublicObject;
 use HubspotSDK\Crm\Filter\Operator;
@@ -68,7 +69,9 @@ final class ProjectsService implements ProjectsContract
         array $properties,
         ?RequestOptions $requestOptions = null,
     ): CreatedResponseSimplePublicObject {
-        $params = ['associations' => $associations, 'properties' => $properties];
+        $params = Util::removeNulls(
+            ['associations' => $associations, 'properties' => $properties]
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->create(params: $params, requestOptions: $requestOptions);
@@ -93,9 +96,9 @@ final class ProjectsService implements ProjectsContract
         ?string $idProperty = null,
         ?RequestOptions $requestOptions = null,
     ): SimplePublicObject {
-        $params = ['properties' => $properties, 'idProperty' => $idProperty];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            ['properties' => $properties, 'idProperty' => $idProperty]
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->update($projectID, params: $params, requestOptions: $requestOptions);
@@ -128,16 +131,16 @@ final class ProjectsService implements ProjectsContract
         ?array $propertiesWithHistory = null,
         ?RequestOptions $requestOptions = null,
     ): Page {
-        $params = [
-            'after' => $after,
-            'archived' => $archived,
-            'associations' => $associations,
-            'limit' => $limit,
-            'properties' => $properties,
-            'propertiesWithHistory' => $propertiesWithHistory,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'after' => $after,
+                'archived' => $archived,
+                'associations' => $associations,
+                'limit' => $limit,
+                'properties' => $properties,
+                'propertiesWithHistory' => $propertiesWithHistory,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->list(params: $params, requestOptions: $requestOptions);
@@ -184,15 +187,15 @@ final class ProjectsService implements ProjectsContract
         ?array $propertiesWithHistory = null,
         ?RequestOptions $requestOptions = null,
     ): SimplePublicObjectWithAssociations {
-        $params = [
-            'archived' => $archived,
-            'associations' => $associations,
-            'idProperty' => $idProperty,
-            'properties' => $properties,
-            'propertiesWithHistory' => $propertiesWithHistory,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'archived' => $archived,
+                'associations' => $associations,
+                'idProperty' => $idProperty,
+                'properties' => $properties,
+                'propertiesWithHistory' => $propertiesWithHistory,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->get($projectID, params: $params, requestOptions: $requestOptions);
@@ -215,10 +218,12 @@ final class ProjectsService implements ProjectsContract
         string $primaryObjectID,
         ?RequestOptions $requestOptions = null,
     ): SimplePublicObject {
-        $params = [
-            'objectIDToMerge' => $objectIDToMerge,
-            'primaryObjectID' => $primaryObjectID,
-        ];
+        $params = Util::removeNulls(
+            [
+                'objectIDToMerge' => $objectIDToMerge,
+                'primaryObjectID' => $primaryObjectID,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->merge(params: $params, requestOptions: $requestOptions);
@@ -257,16 +262,16 @@ final class ProjectsService implements ProjectsContract
         ?string $query = null,
         ?RequestOptions $requestOptions = null,
     ): CollectionResponseWithTotalSimplePublicObject {
-        $params = [
-            'after' => $after,
-            'filterGroups' => $filterGroups,
-            'limit' => $limit,
-            'properties' => $properties,
-            'sorts' => $sorts,
-            'query' => $query,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'after' => $after,
+                'filterGroups' => $filterGroups,
+                'limit' => $limit,
+                'properties' => $properties,
+                'sorts' => $sorts,
+                'query' => $query,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->search(params: $params, requestOptions: $requestOptions);

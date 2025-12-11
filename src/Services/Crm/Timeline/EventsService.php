@@ -6,6 +6,7 @@ namespace HubspotSDK\Services\Crm\Timeline;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Crm\Timeline\EventDetail;
 use HubspotSDK\Crm\Timeline\TimelineEventIFrame;
 use HubspotSDK\Crm\Timeline\TimelineEventResponse;
@@ -60,20 +61,20 @@ final class EventsService implements EventsContract
         ?string $utk = null,
         ?RequestOptions $requestOptions = null,
     ): TimelineEventResponse {
-        $params = [
-            'eventTemplateID' => $eventTemplateID,
-            'tokens' => $tokens,
-            'id' => $id,
-            'domain' => $domain,
-            'email' => $email,
-            'extraData' => $extraData,
-            'objectID' => $objectID,
-            'timelineIFrame' => $timelineIFrame,
-            'timestamp' => $timestamp,
-            'utk' => $utk,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'eventTemplateID' => $eventTemplateID,
+                'tokens' => $tokens,
+                'id' => $id,
+                'domain' => $domain,
+                'email' => $email,
+                'extraData' => $extraData,
+                'objectID' => $objectID,
+                'timelineIFrame' => $timelineIFrame,
+                'timestamp' => $timestamp,
+                'utk' => $utk,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->create(params: $params, requestOptions: $requestOptions);
@@ -107,7 +108,7 @@ final class EventsService implements EventsContract
         array $inputs,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        $params = ['inputs' => $inputs];
+        $params = Util::removeNulls(['inputs' => $inputs]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->batchCreate(params: $params, requestOptions: $requestOptions);
@@ -130,7 +131,7 @@ final class EventsService implements EventsContract
         string $eventTemplateID,
         ?RequestOptions $requestOptions = null,
     ): TimelineEventResponse {
-        $params = ['eventTemplateID' => $eventTemplateID];
+        $params = Util::removeNulls(['eventTemplateID' => $eventTemplateID]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->get($eventID, params: $params, requestOptions: $requestOptions);
@@ -153,7 +154,7 @@ final class EventsService implements EventsContract
         string $eventTemplateID,
         ?RequestOptions $requestOptions = null,
     ): EventDetail {
-        $params = ['eventTemplateID' => $eventTemplateID];
+        $params = Util::removeNulls(['eventTemplateID' => $eventTemplateID]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->getDetail($eventID, params: $params, requestOptions: $requestOptions);

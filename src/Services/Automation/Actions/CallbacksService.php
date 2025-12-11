@@ -6,6 +6,7 @@ namespace HubspotSDK\Services\Automation\Actions;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Automation\Actions\CallbacksContract;
 
@@ -39,7 +40,7 @@ final class CallbacksService implements CallbacksContract
         array $outputFields,
         ?RequestOptions $requestOptions = null,
     ): mixed {
-        $params = ['outputFields' => $outputFields];
+        $params = Util::removeNulls(['outputFields' => $outputFields]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->complete($callbackID, params: $params, requestOptions: $requestOptions);
@@ -62,7 +63,7 @@ final class CallbacksService implements CallbacksContract
         array $inputs,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        $params = ['inputs' => $inputs];
+        $params = Util::removeNulls(['inputs' => $inputs]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->completeBatch(params: $params, requestOptions: $requestOptions);

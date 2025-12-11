@@ -6,6 +6,7 @@ namespace HubspotSDK\Services\Marketing\Campaigns;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Marketing\Campaigns\ContactReference;
 use HubspotSDK\Marketing\Campaigns\MetricsCounters;
 use HubspotSDK\Marketing\Campaigns\RevenueAttributionAggregate;
@@ -47,9 +48,9 @@ final class ReportsService implements ReportsContract
         ?string $startDate = null,
         ?RequestOptions $requestOptions = null,
     ): MetricsCounters {
-        $params = ['endDate' => $endDate, 'startDate' => $startDate];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            ['endDate' => $endDate, 'startDate' => $startDate]
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->getAttributionMetrics($campaignGuid, params: $params, requestOptions: $requestOptions);
@@ -79,13 +80,13 @@ final class ReportsService implements ReportsContract
         ?string $startDate = null,
         ?RequestOptions $requestOptions = null,
     ): RevenueAttributionAggregate {
-        $params = [
-            'attributionModel' => $attributionModel,
-            'endDate' => $endDate,
-            'startDate' => $startDate,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'attributionModel' => $attributionModel,
+                'endDate' => $endDate,
+                'startDate' => $startDate,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->getRevenueAttribution($campaignGuid, params: $params, requestOptions: $requestOptions);
@@ -122,15 +123,15 @@ final class ReportsService implements ReportsContract
         ?string $startDate = null,
         ?RequestOptions $requestOptions = null,
     ): Page {
-        $params = [
-            'campaignGuid' => $campaignGuid,
-            'after' => $after,
-            'endDate' => $endDate,
-            'limit' => $limit,
-            'startDate' => $startDate,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'campaignGuid' => $campaignGuid,
+                'after' => $after,
+                'endDate' => $endDate,
+                'limit' => $limit,
+                'startDate' => $startDate,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->listContactIDsByType($contactType, params: $params, requestOptions: $requestOptions);

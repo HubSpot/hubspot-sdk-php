@@ -19,6 +19,7 @@ use HubspotSDK\Automation\Actions\PublicExecutionTranslationRule;
 use HubspotSDK\Automation\Actions\PublicObjectRequestOptions;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Option;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
@@ -132,21 +133,21 @@ final class DefinitionsService implements DefinitionsContract
         ?array $outputFields = null,
         ?RequestOptions $requestOptions = null,
     ): PublicActionDefinition {
-        $params = [
-            'actionURL' => $actionURL,
-            'functions' => $functions,
-            'inputFields' => $inputFields,
-            'labels' => $labels,
-            'objectTypes' => $objectTypes,
-            'published' => $published,
-            'archivedAt' => $archivedAt,
-            'executionRules' => $executionRules,
-            'inputFieldDependencies' => $inputFieldDependencies,
-            'objectRequestOptions' => $objectRequestOptions,
-            'outputFields' => $outputFields,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'actionURL' => $actionURL,
+                'functions' => $functions,
+                'inputFields' => $inputFields,
+                'labels' => $labels,
+                'objectTypes' => $objectTypes,
+                'published' => $published,
+                'archivedAt' => $archivedAt,
+                'executionRules' => $executionRules,
+                'inputFieldDependencies' => $inputFieldDependencies,
+                'objectRequestOptions' => $objectRequestOptions,
+                'outputFields' => $outputFields,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->create($appID, params: $params, requestOptions: $requestOptions);
@@ -244,20 +245,20 @@ final class DefinitionsService implements DefinitionsContract
         ?bool $published = null,
         ?RequestOptions $requestOptions = null,
     ): PublicActionDefinition {
-        $params = [
-            'appID' => $appID,
-            'actionURL' => $actionURL,
-            'executionRules' => $executionRules,
-            'inputFieldDependencies' => $inputFieldDependencies,
-            'inputFields' => $inputFields,
-            'labels' => $labels,
-            'objectRequestOptions' => $objectRequestOptions,
-            'objectTypes' => $objectTypes,
-            'outputFields' => $outputFields,
-            'published' => $published,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'appID' => $appID,
+                'actionURL' => $actionURL,
+                'executionRules' => $executionRules,
+                'inputFieldDependencies' => $inputFieldDependencies,
+                'inputFields' => $inputFields,
+                'labels' => $labels,
+                'objectRequestOptions' => $objectRequestOptions,
+                'objectTypes' => $objectTypes,
+                'outputFields' => $outputFields,
+                'published' => $published,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->update($definitionID, params: $params, requestOptions: $requestOptions);
@@ -286,9 +287,9 @@ final class DefinitionsService implements DefinitionsContract
         ?int $limit = null,
         ?RequestOptions $requestOptions = null,
     ): Page {
-        $params = ['after' => $after, 'archived' => $archived, 'limit' => $limit];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            ['after' => $after, 'archived' => $archived, 'limit' => $limit]
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->list($appID, params: $params, requestOptions: $requestOptions);
@@ -311,7 +312,7 @@ final class DefinitionsService implements DefinitionsContract
         int $appID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        $params = ['appID' => $appID];
+        $params = Util::removeNulls(['appID' => $appID]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->delete($definitionID, params: $params, requestOptions: $requestOptions);
@@ -336,9 +337,7 @@ final class DefinitionsService implements DefinitionsContract
         bool $archived = false,
         ?RequestOptions $requestOptions = null,
     ): PublicActionDefinition {
-        $params = ['appID' => $appID, 'archived' => $archived];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(['appID' => $appID, 'archived' => $archived]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->get($definitionID, params: $params, requestOptions: $requestOptions);

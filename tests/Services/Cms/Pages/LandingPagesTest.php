@@ -48,7 +48,7 @@ final class LandingPagesTest extends TestCase
             abTestID: 'abTestId',
             archivedAt: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
             archivedInDashboard: true,
-            attachedStylesheets: [['foo' => []]],
+            attachedStylesheets: [['foo' => (object) []]],
             authorName: 'authorName',
             campaign: 'campaign',
             categoryID: 0,
@@ -80,7 +80,7 @@ final class LandingPagesTest extends TestCase
                     'cssStyle' => 'cssStyle',
                     'label' => 'label',
                     'name' => 'name',
-                    'params' => ['foo' => []],
+                    'params' => ['foo' => (object) []],
                     'rowMetaData' => [
                         [
                             'cssClass' => 'cssClass',
@@ -146,7 +146,7 @@ final class LandingPagesTest extends TestCase
             pageExpiryRedirectURL: 'pageExpiryRedirectUrl',
             pageRedirected: true,
             password: 'password',
-            publicAccessRules: [[]],
+            publicAccessRules: [(object) []],
             publicAccessRulesEnabled: true,
             publishDate: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
             publishImmediately: true,
@@ -154,7 +154,7 @@ final class LandingPagesTest extends TestCase
             state: 'state',
             subcategory: 'subcategory',
             templatePath: 'templatePath',
-            themeSettingsValues: ['foo' => []],
+            themeSettingsValues: ['foo' => (object) []],
             translatedFromID: 'translatedFromId',
             translations: [
                 'foo' => [
@@ -165,7 +165,7 @@ final class LandingPagesTest extends TestCase
                     'created' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
                     'name' => 'name',
                     'password' => 'password',
-                    'publicAccessRules' => [[]],
+                    'publicAccessRules' => [(object) []],
                     'publicAccessRulesEnabled' => true,
                     'publishDate' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
                     'slug' => 'slug',
@@ -177,8 +177,8 @@ final class LandingPagesTest extends TestCase
             updatedByID: 'updatedById',
             url: 'url',
             useFeaturedImage: true,
-            widgetContainers: ['foo' => []],
-            widgets: ['foo' => []],
+            widgetContainers: ['foo' => (object) []],
+            widgets: ['foo' => (object) []],
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -198,7 +198,7 @@ final class LandingPagesTest extends TestCase
             abTestID: 'abTestId',
             archivedAt: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
             archivedInDashboard: true,
-            attachedStylesheets: [['foo' => []]],
+            attachedStylesheets: [['foo' => (object) []]],
             authorName: 'authorName',
             campaign: 'campaign',
             categoryID: 0,
@@ -230,7 +230,7 @@ final class LandingPagesTest extends TestCase
                     'cssStyle' => 'cssStyle',
                     'label' => 'label',
                     'name' => 'name',
-                    'params' => ['foo' => []],
+                    'params' => ['foo' => (object) []],
                     'rowMetaData' => [
                         [
                             'cssClass' => 'cssClass',
@@ -256,7 +256,11 @@ final class LandingPagesTest extends TestCase
                                 'maxWidthSectionCentering' => 0,
                                 'verticalAlignment' => 'verticalAlignment',
                                 'breakpointStyles' => [
-                                    'foo' => ['hidden' => true, 'margin' => [], 'padding' => []],
+                                    'foo' => [
+                                        'hidden' => true,
+                                        'margin' => (object) [],
+                                        'padding' => (object) [],
+                                    ],
                                 ],
                             ],
                         ],
@@ -284,7 +288,11 @@ final class LandingPagesTest extends TestCase
                         'maxWidthSectionCentering' => 0,
                         'verticalAlignment' => 'verticalAlignment',
                         'breakpointStyles' => [
-                            'foo' => ['hidden' => true, 'margin' => [], 'padding' => []],
+                            'foo' => [
+                                'hidden' => true,
+                                'margin' => (object) [],
+                                'padding' => (object) [],
+                            ],
                         ],
                     ],
                     'type' => 'type',
@@ -302,7 +310,7 @@ final class LandingPagesTest extends TestCase
             pageExpiryRedirectURL: 'pageExpiryRedirectUrl',
             pageRedirected: true,
             password: 'password',
-            publicAccessRules: [[]],
+            publicAccessRules: [(object) []],
             publicAccessRulesEnabled: true,
             publishDate: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
             publishImmediately: true,
@@ -310,7 +318,7 @@ final class LandingPagesTest extends TestCase
             state: 'state',
             subcategory: 'subcategory',
             templatePath: 'templatePath',
-            themeSettingsValues: ['foo' => []],
+            themeSettingsValues: ['foo' => (object) []],
             translatedFromID: 'translatedFromId',
             translations: [
                 'foo' => [
@@ -321,7 +329,7 @@ final class LandingPagesTest extends TestCase
                     'created' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
                     'name' => 'name',
                     'password' => 'password',
-                    'publicAccessRules' => [[]],
+                    'publicAccessRules' => [(object) []],
                     'publicAccessRulesEnabled' => true,
                     'publishDate' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
                     'slug' => 'slug',
@@ -334,8 +342,8 @@ final class LandingPagesTest extends TestCase
             updatedByID: 'updatedById',
             url: 'url',
             useFeaturedImage: true,
-            widgetContainers: ['foo' => []],
-            widgets: ['foo' => []],
+            widgetContainers: ['foo' => (object) []],
+            widgets: ['foo' => (object) []],
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -356,7 +364,7 @@ final class LandingPagesTest extends TestCase
             abTestID: 'abTestId',
             archivedAt: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
             archivedInDashboard: true,
-            attachedStylesheets: [['foo' => []]],
+            attachedStylesheets: [['foo' => (object) []]],
             authorName: 'authorName',
             campaign: 'campaign',
             categoryID: 0,
@@ -388,7 +396,7 @@ final class LandingPagesTest extends TestCase
                     'cssStyle' => 'cssStyle',
                     'label' => 'label',
                     'name' => 'name',
-                    'params' => ['foo' => []],
+                    'params' => ['foo' => (object) []],
                     'rowMetaData' => [
                         [
                             'cssClass' => 'cssClass',
@@ -454,7 +462,7 @@ final class LandingPagesTest extends TestCase
             pageExpiryRedirectURL: 'pageExpiryRedirectUrl',
             pageRedirected: true,
             password: 'password',
-            publicAccessRules: [[]],
+            publicAccessRules: [(object) []],
             publicAccessRulesEnabled: true,
             publishDate: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
             publishImmediately: true,
@@ -462,7 +470,7 @@ final class LandingPagesTest extends TestCase
             state: 'state',
             subcategory: 'subcategory',
             templatePath: 'templatePath',
-            themeSettingsValues: ['foo' => []],
+            themeSettingsValues: ['foo' => (object) []],
             translatedFromID: 'translatedFromId',
             translations: [
                 'foo' => [
@@ -473,7 +481,7 @@ final class LandingPagesTest extends TestCase
                     'created' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
                     'name' => 'name',
                     'password' => 'password',
-                    'publicAccessRules' => [[]],
+                    'publicAccessRules' => [(object) []],
                     'publicAccessRulesEnabled' => true,
                     'publishDate' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
                     'slug' => 'slug',
@@ -485,8 +493,8 @@ final class LandingPagesTest extends TestCase
             updatedByID: 'updatedById',
             url: 'url',
             useFeaturedImage: true,
-            widgetContainers: ['foo' => []],
-            widgets: ['foo' => []],
+            widgetContainers: ['foo' => (object) []],
+            widgets: ['foo' => (object) []],
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -507,7 +515,7 @@ final class LandingPagesTest extends TestCase
             abTestID: 'abTestId',
             archivedAt: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
             archivedInDashboard: true,
-            attachedStylesheets: [['foo' => []]],
+            attachedStylesheets: [['foo' => (object) []]],
             authorName: 'authorName',
             campaign: 'campaign',
             categoryID: 0,
@@ -539,7 +547,7 @@ final class LandingPagesTest extends TestCase
                     'cssStyle' => 'cssStyle',
                     'label' => 'label',
                     'name' => 'name',
-                    'params' => ['foo' => []],
+                    'params' => ['foo' => (object) []],
                     'rowMetaData' => [
                         [
                             'cssClass' => 'cssClass',
@@ -565,7 +573,11 @@ final class LandingPagesTest extends TestCase
                                 'maxWidthSectionCentering' => 0,
                                 'verticalAlignment' => 'verticalAlignment',
                                 'breakpointStyles' => [
-                                    'foo' => ['hidden' => true, 'margin' => [], 'padding' => []],
+                                    'foo' => [
+                                        'hidden' => true,
+                                        'margin' => (object) [],
+                                        'padding' => (object) [],
+                                    ],
                                 ],
                             ],
                         ],
@@ -593,7 +605,11 @@ final class LandingPagesTest extends TestCase
                         'maxWidthSectionCentering' => 0,
                         'verticalAlignment' => 'verticalAlignment',
                         'breakpointStyles' => [
-                            'foo' => ['hidden' => true, 'margin' => [], 'padding' => []],
+                            'foo' => [
+                                'hidden' => true,
+                                'margin' => (object) [],
+                                'padding' => (object) [],
+                            ],
                         ],
                     ],
                     'type' => 'type',
@@ -611,7 +627,7 @@ final class LandingPagesTest extends TestCase
             pageExpiryRedirectURL: 'pageExpiryRedirectUrl',
             pageRedirected: true,
             password: 'password',
-            publicAccessRules: [[]],
+            publicAccessRules: [(object) []],
             publicAccessRulesEnabled: true,
             publishDate: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
             publishImmediately: true,
@@ -619,7 +635,7 @@ final class LandingPagesTest extends TestCase
             state: 'state',
             subcategory: 'subcategory',
             templatePath: 'templatePath',
-            themeSettingsValues: ['foo' => []],
+            themeSettingsValues: ['foo' => (object) []],
             translatedFromID: 'translatedFromId',
             translations: [
                 'foo' => [
@@ -630,7 +646,7 @@ final class LandingPagesTest extends TestCase
                     'created' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
                     'name' => 'name',
                     'password' => 'password',
-                    'publicAccessRules' => [[]],
+                    'publicAccessRules' => [(object) []],
                     'publicAccessRulesEnabled' => true,
                     'publishDate' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
                     'slug' => 'slug',
@@ -643,8 +659,8 @@ final class LandingPagesTest extends TestCase
             updatedByID: 'updatedById',
             url: 'url',
             useFeaturedImage: true,
-            widgetContainers: ['foo' => []],
-            widgets: ['foo' => []],
+            widgetContainers: ['foo' => (object) []],
+            widgets: ['foo' => (object) []],
             archived: true,
         );
 
@@ -794,7 +810,7 @@ final class LandingPagesTest extends TestCase
                     'abTestID' => 'abTestId',
                     'archivedAt' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
                     'archivedInDashboard' => true,
-                    'attachedStylesheets' => [['foo' => []]],
+                    'attachedStylesheets' => [['foo' => (object) []]],
                     'authorName' => 'authorName',
                     'campaign' => 'campaign',
                     'categoryID' => 0,
@@ -826,7 +842,7 @@ final class LandingPagesTest extends TestCase
                             'cssStyle' => 'cssStyle',
                             'label' => 'label',
                             'name' => 'name',
-                            'params' => ['foo' => []],
+                            'params' => ['foo' => (object) []],
                             'rowMetaData' => [
                                 [
                                     'cssClass' => 'cssClass',
@@ -894,7 +910,7 @@ final class LandingPagesTest extends TestCase
                     'pageExpiryRedirectURL' => 'pageExpiryRedirectUrl',
                     'pageRedirected' => true,
                     'password' => 'password',
-                    'publicAccessRules' => [[]],
+                    'publicAccessRules' => [(object) []],
                     'publicAccessRulesEnabled' => true,
                     'publishDate' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
                     'publishImmediately' => true,
@@ -902,7 +918,7 @@ final class LandingPagesTest extends TestCase
                     'state' => 'state',
                     'subcategory' => 'subcategory',
                     'templatePath' => 'templatePath',
-                    'themeSettingsValues' => ['foo' => []],
+                    'themeSettingsValues' => ['foo' => (object) []],
                     'translatedFromID' => 'translatedFromId',
                     'translations' => [
                         'foo' => [
@@ -913,7 +929,7 @@ final class LandingPagesTest extends TestCase
                             'created' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
                             'name' => 'name',
                             'password' => 'password',
-                            'publicAccessRules' => [[]],
+                            'publicAccessRules' => [(object) []],
                             'publicAccessRulesEnabled' => true,
                             'publishDate' => new \DateTimeImmutable(
                                 '2019-12-27T18:11:19.117Z'
@@ -927,8 +943,8 @@ final class LandingPagesTest extends TestCase
                     'updatedByID' => 'updatedById',
                     'url' => 'url',
                     'useFeaturedImage' => true,
-                    'widgetContainers' => ['foo' => []],
-                    'widgets' => ['foo' => []],
+                    'widgetContainers' => ['foo' => (object) []],
+                    'widgets' => ['foo' => (object) []],
                 ],
             ],
         );
@@ -952,7 +968,7 @@ final class LandingPagesTest extends TestCase
                     'abTestID' => 'abTestId',
                     'archivedAt' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
                     'archivedInDashboard' => true,
-                    'attachedStylesheets' => [['foo' => []]],
+                    'attachedStylesheets' => [['foo' => (object) []]],
                     'authorName' => 'authorName',
                     'campaign' => 'campaign',
                     'categoryID' => 0,
@@ -984,7 +1000,7 @@ final class LandingPagesTest extends TestCase
                             'cssStyle' => 'cssStyle',
                             'label' => 'label',
                             'name' => 'name',
-                            'params' => ['foo' => []],
+                            'params' => ['foo' => (object) []],
                             'rowMetaData' => [
                                 [
                                     'cssClass' => 'cssClass',
@@ -1013,7 +1029,9 @@ final class LandingPagesTest extends TestCase
                                         'verticalAlignment' => 'verticalAlignment',
                                         'breakpointStyles' => [
                                             'foo' => [
-                                                'hidden' => true, 'margin' => [], 'padding' => [],
+                                                'hidden' => true,
+                                                'margin' => (object) [],
+                                                'padding' => (object) [],
                                             ],
                                         ],
                                     ],
@@ -1042,7 +1060,11 @@ final class LandingPagesTest extends TestCase
                                 'maxWidthSectionCentering' => 0,
                                 'verticalAlignment' => 'verticalAlignment',
                                 'breakpointStyles' => [
-                                    'foo' => ['hidden' => true, 'margin' => [], 'padding' => []],
+                                    'foo' => [
+                                        'hidden' => true,
+                                        'margin' => (object) [],
+                                        'padding' => (object) [],
+                                    ],
                                 ],
                             ],
                             'type' => 'type',
@@ -1060,7 +1082,7 @@ final class LandingPagesTest extends TestCase
                     'pageExpiryRedirectURL' => 'pageExpiryRedirectUrl',
                     'pageRedirected' => true,
                     'password' => 'password',
-                    'publicAccessRules' => [[]],
+                    'publicAccessRules' => [(object) []],
                     'publicAccessRulesEnabled' => true,
                     'publishDate' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
                     'publishImmediately' => true,
@@ -1068,7 +1090,7 @@ final class LandingPagesTest extends TestCase
                     'state' => 'state',
                     'subcategory' => 'subcategory',
                     'templatePath' => 'templatePath',
-                    'themeSettingsValues' => ['foo' => []],
+                    'themeSettingsValues' => ['foo' => (object) []],
                     'translatedFromID' => 'translatedFromId',
                     'translations' => [
                         'foo' => [
@@ -1079,7 +1101,7 @@ final class LandingPagesTest extends TestCase
                             'created' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
                             'name' => 'name',
                             'password' => 'password',
-                            'publicAccessRules' => [[]],
+                            'publicAccessRules' => [(object) []],
                             'publicAccessRulesEnabled' => true,
                             'publishDate' => new \DateTimeImmutable(
                                 '2019-12-27T18:11:19.117Z'
@@ -1094,8 +1116,8 @@ final class LandingPagesTest extends TestCase
                     'updatedByID' => 'updatedById',
                     'url' => 'url',
                     'useFeaturedImage' => true,
-                    'widgetContainers' => ['foo' => []],
-                    'widgets' => ['foo' => []],
+                    'widgetContainers' => ['foo' => (object) []],
+                    'widgets' => ['foo' => (object) []],
                 ],
             ],
         );
@@ -1808,7 +1830,7 @@ final class LandingPagesTest extends TestCase
         }
 
         $result = $this->client->cms->pages->landingPages->updateBatch(
-            inputs: [[]]
+            inputs: [(object) []]
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -1823,7 +1845,7 @@ final class LandingPagesTest extends TestCase
         }
 
         $result = $this->client->cms->pages->landingPages->updateBatch(
-            inputs: [[]],
+            inputs: [(object) []],
             archived: true
         );
 
@@ -1845,7 +1867,7 @@ final class LandingPagesTest extends TestCase
             abTestID: 'abTestId',
             archivedAt: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
             archivedInDashboard: true,
-            attachedStylesheets: [['foo' => []]],
+            attachedStylesheets: [['foo' => (object) []]],
             authorName: 'authorName',
             campaign: 'campaign',
             categoryID: 0,
@@ -1877,7 +1899,7 @@ final class LandingPagesTest extends TestCase
                     'cssStyle' => 'cssStyle',
                     'label' => 'label',
                     'name' => 'name',
-                    'params' => ['foo' => []],
+                    'params' => ['foo' => (object) []],
                     'rowMetaData' => [
                         [
                             'cssClass' => 'cssClass',
@@ -1943,7 +1965,7 @@ final class LandingPagesTest extends TestCase
             pageExpiryRedirectURL: 'pageExpiryRedirectUrl',
             pageRedirected: true,
             password: 'password',
-            publicAccessRules: [[]],
+            publicAccessRules: [(object) []],
             publicAccessRulesEnabled: true,
             publishDate: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
             publishImmediately: true,
@@ -1951,7 +1973,7 @@ final class LandingPagesTest extends TestCase
             state: 'state',
             subcategory: 'subcategory',
             templatePath: 'templatePath',
-            themeSettingsValues: ['foo' => []],
+            themeSettingsValues: ['foo' => (object) []],
             translatedFromID: 'translatedFromId',
             translations: [
                 'foo' => [
@@ -1962,7 +1984,7 @@ final class LandingPagesTest extends TestCase
                     'created' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
                     'name' => 'name',
                     'password' => 'password',
-                    'publicAccessRules' => [[]],
+                    'publicAccessRules' => [(object) []],
                     'publicAccessRulesEnabled' => true,
                     'publishDate' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
                     'slug' => 'slug',
@@ -1974,8 +1996,8 @@ final class LandingPagesTest extends TestCase
             updatedByID: 'updatedById',
             url: 'url',
             useFeaturedImage: true,
-            widgetContainers: ['foo' => []],
-            widgets: ['foo' => []],
+            widgetContainers: ['foo' => (object) []],
+            widgets: ['foo' => (object) []],
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -1996,7 +2018,7 @@ final class LandingPagesTest extends TestCase
             abTestID: 'abTestId',
             archivedAt: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
             archivedInDashboard: true,
-            attachedStylesheets: [['foo' => []]],
+            attachedStylesheets: [['foo' => (object) []]],
             authorName: 'authorName',
             campaign: 'campaign',
             categoryID: 0,
@@ -2028,7 +2050,7 @@ final class LandingPagesTest extends TestCase
                     'cssStyle' => 'cssStyle',
                     'label' => 'label',
                     'name' => 'name',
-                    'params' => ['foo' => []],
+                    'params' => ['foo' => (object) []],
                     'rowMetaData' => [
                         [
                             'cssClass' => 'cssClass',
@@ -2054,7 +2076,11 @@ final class LandingPagesTest extends TestCase
                                 'maxWidthSectionCentering' => 0,
                                 'verticalAlignment' => 'verticalAlignment',
                                 'breakpointStyles' => [
-                                    'foo' => ['hidden' => true, 'margin' => [], 'padding' => []],
+                                    'foo' => [
+                                        'hidden' => true,
+                                        'margin' => (object) [],
+                                        'padding' => (object) [],
+                                    ],
                                 ],
                             ],
                         ],
@@ -2082,7 +2108,11 @@ final class LandingPagesTest extends TestCase
                         'maxWidthSectionCentering' => 0,
                         'verticalAlignment' => 'verticalAlignment',
                         'breakpointStyles' => [
-                            'foo' => ['hidden' => true, 'margin' => [], 'padding' => []],
+                            'foo' => [
+                                'hidden' => true,
+                                'margin' => (object) [],
+                                'padding' => (object) [],
+                            ],
                         ],
                     ],
                     'type' => 'type',
@@ -2100,7 +2130,7 @@ final class LandingPagesTest extends TestCase
             pageExpiryRedirectURL: 'pageExpiryRedirectUrl',
             pageRedirected: true,
             password: 'password',
-            publicAccessRules: [[]],
+            publicAccessRules: [(object) []],
             publicAccessRulesEnabled: true,
             publishDate: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
             publishImmediately: true,
@@ -2108,7 +2138,7 @@ final class LandingPagesTest extends TestCase
             state: 'state',
             subcategory: 'subcategory',
             templatePath: 'templatePath',
-            themeSettingsValues: ['foo' => []],
+            themeSettingsValues: ['foo' => (object) []],
             translatedFromID: 'translatedFromId',
             translations: [
                 'foo' => [
@@ -2119,7 +2149,7 @@ final class LandingPagesTest extends TestCase
                     'created' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
                     'name' => 'name',
                     'password' => 'password',
-                    'publicAccessRules' => [[]],
+                    'publicAccessRules' => [(object) []],
                     'publicAccessRulesEnabled' => true,
                     'publishDate' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
                     'slug' => 'slug',
@@ -2132,8 +2162,8 @@ final class LandingPagesTest extends TestCase
             updatedByID: 'updatedById',
             url: 'url',
             useFeaturedImage: true,
-            widgetContainers: ['foo' => []],
-            widgets: ['foo' => []],
+            widgetContainers: ['foo' => (object) []],
+            widgets: ['foo' => (object) []],
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -2193,7 +2223,7 @@ final class LandingPagesTest extends TestCase
         }
 
         $result = $this->client->cms->pages->landingPages->updateFoldersBatch(
-            inputs: [[]]
+            inputs: [(object) []]
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -2208,7 +2238,7 @@ final class LandingPagesTest extends TestCase
         }
 
         $result = $this->client->cms->pages->landingPages->updateFoldersBatch(
-            inputs: [[]],
+            inputs: [(object) []],
             archived: true
         );
 

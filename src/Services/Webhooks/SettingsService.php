@@ -6,6 +6,7 @@ namespace HubspotSDK\Services\Webhooks;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Webhooks\SettingsContract;
 use HubspotSDK\Webhooks\SettingsResponse;
@@ -45,7 +46,9 @@ final class SettingsService implements SettingsContract
         array|ThrottlingSettings $throttling,
         ?RequestOptions $requestOptions = null,
     ): SettingsResponse {
-        $params = ['targetURL' => $targetURL, 'throttling' => $throttling];
+        $params = Util::removeNulls(
+            ['targetURL' => $targetURL, 'throttling' => $throttling]
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->update($appID, params: $params, requestOptions: $requestOptions);

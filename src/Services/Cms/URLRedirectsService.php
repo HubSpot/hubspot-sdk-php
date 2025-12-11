@@ -7,6 +7,7 @@ namespace HubspotSDK\Services\Cms;
 use HubspotSDK\Client;
 use HubspotSDK\Cms\URLRedirects\URLMapping;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Cms\URLRedirectsContract;
@@ -46,20 +47,20 @@ final class URLRedirectsService implements URLRedirectsContract
         ?int $precedence = null,
         ?RequestOptions $requestOptions = null,
     ): URLMapping {
-        $params = [
-            'destination' => $destination,
-            'redirectStyle' => $redirectStyle,
-            'routePrefix' => $routePrefix,
-            'isMatchFullURL' => $isMatchFullURL,
-            'isMatchQueryString' => $isMatchQueryString,
-            'isOnlyAfterNotFound' => $isOnlyAfterNotFound,
-            'isPattern' => $isPattern,
-            'isProtocolAgnostic' => $isProtocolAgnostic,
-            'isTrailingSlashOptional' => $isTrailingSlashOptional,
-            'precedence' => $precedence,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'destination' => $destination,
+                'redirectStyle' => $redirectStyle,
+                'routePrefix' => $routePrefix,
+                'isMatchFullURL' => $isMatchFullURL,
+                'isMatchQueryString' => $isMatchQueryString,
+                'isOnlyAfterNotFound' => $isOnlyAfterNotFound,
+                'isPattern' => $isPattern,
+                'isProtocolAgnostic' => $isProtocolAgnostic,
+                'isTrailingSlashOptional' => $isTrailingSlashOptional,
+                'precedence' => $precedence,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->create(params: $params, requestOptions: $requestOptions);
@@ -104,23 +105,23 @@ final class URLRedirectsService implements URLRedirectsContract
         string|\DateTimeInterface|null $updated = null,
         ?RequestOptions $requestOptions = null,
     ): URLMapping {
-        $params = [
-            'id' => $id,
-            'destination' => $destination,
-            'isMatchFullURL' => $isMatchFullURL,
-            'isMatchQueryString' => $isMatchQueryString,
-            'isOnlyAfterNotFound' => $isOnlyAfterNotFound,
-            'isPattern' => $isPattern,
-            'isProtocolAgnostic' => $isProtocolAgnostic,
-            'isTrailingSlashOptional' => $isTrailingSlashOptional,
-            'precedence' => $precedence,
-            'redirectStyle' => $redirectStyle,
-            'routePrefix' => $routePrefix,
-            'created' => $created,
-            'updated' => $updated,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'id' => $id,
+                'destination' => $destination,
+                'isMatchFullURL' => $isMatchFullURL,
+                'isMatchQueryString' => $isMatchQueryString,
+                'isOnlyAfterNotFound' => $isOnlyAfterNotFound,
+                'isPattern' => $isPattern,
+                'isProtocolAgnostic' => $isProtocolAgnostic,
+                'isTrailingSlashOptional' => $isTrailingSlashOptional,
+                'precedence' => $precedence,
+                'redirectStyle' => $redirectStyle,
+                'routePrefix' => $routePrefix,
+                'created' => $created,
+                'updated' => $updated,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->update($urlRedirectID, params: $params, requestOptions: $requestOptions);
@@ -161,20 +162,20 @@ final class URLRedirectsService implements URLRedirectsContract
         string|\DateTimeInterface|null $updatedBefore = null,
         ?RequestOptions $requestOptions = null,
     ): Page {
-        $params = [
-            'after' => $after,
-            'archived' => $archived,
-            'createdAfter' => $createdAfter,
-            'createdAt' => $createdAt,
-            'createdBefore' => $createdBefore,
-            'limit' => $limit,
-            'sort' => $sort,
-            'updatedAfter' => $updatedAfter,
-            'updatedAt' => $updatedAt,
-            'updatedBefore' => $updatedBefore,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'after' => $after,
+                'archived' => $archived,
+                'createdAfter' => $createdAfter,
+                'createdAt' => $createdAt,
+                'createdBefore' => $createdBefore,
+                'limit' => $limit,
+                'sort' => $sort,
+                'updatedAfter' => $updatedAfter,
+                'updatedAt' => $updatedAt,
+                'updatedBefore' => $updatedBefore,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->list(params: $params, requestOptions: $requestOptions);

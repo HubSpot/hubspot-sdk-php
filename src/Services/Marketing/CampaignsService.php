@@ -6,6 +6,7 @@ namespace HubspotSDK\Services\Marketing;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Marketing\Campaigns\PublicCampaign;
 use HubspotSDK\Marketing\Campaigns\PublicCampaignWithAssets;
 use HubspotSDK\Page;
@@ -75,7 +76,7 @@ final class CampaignsService implements CampaignsContract
         array $properties,
         ?RequestOptions $requestOptions = null
     ): PublicCampaign {
-        $params = ['properties' => $properties];
+        $params = Util::removeNulls(['properties' => $properties]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->create(params: $params, requestOptions: $requestOptions);
@@ -99,7 +100,7 @@ final class CampaignsService implements CampaignsContract
         array $properties,
         ?RequestOptions $requestOptions = null,
     ): PublicCampaign {
-        $params = ['properties' => $properties];
+        $params = Util::removeNulls(['properties' => $properties]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->update($campaignGuid, params: $params, requestOptions: $requestOptions);
@@ -133,15 +134,15 @@ final class CampaignsService implements CampaignsContract
         ?string $sort = null,
         ?RequestOptions $requestOptions = null,
     ): Page {
-        $params = [
-            'after' => $after,
-            'limit' => $limit,
-            'name' => $name,
-            'properties' => $properties,
-            'sort' => $sort,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'after' => $after,
+                'limit' => $limit,
+                'name' => $name,
+                'properties' => $properties,
+                'sort' => $sort,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->list(params: $params, requestOptions: $requestOptions);
@@ -190,13 +191,13 @@ final class CampaignsService implements CampaignsContract
         ?string $startDate = null,
         ?RequestOptions $requestOptions = null,
     ): PublicCampaignWithAssets {
-        $params = [
-            'endDate' => $endDate,
-            'properties' => $properties,
-            'startDate' => $startDate,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'endDate' => $endDate,
+                'properties' => $properties,
+                'startDate' => $startDate,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->get($campaignGuid, params: $params, requestOptions: $requestOptions);

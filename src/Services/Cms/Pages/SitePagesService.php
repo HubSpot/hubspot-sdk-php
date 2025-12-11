@@ -24,6 +24,7 @@ use HubspotSDK\Cms\RowMetaData;
 use HubspotSDK\Cms\SideOrCorner;
 use HubspotSDK\Cms\Styles;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Cms\Pages\SitePagesContract;
 
@@ -235,65 +236,67 @@ final class SitePagesService implements SitePagesContract
         array $widgets,
         ?RequestOptions $requestOptions = null,
     ): mixed {
-        $params = [
-            'id' => $id,
-            'abStatus' => $abStatus,
-            'abTestID' => $abTestID,
-            'archivedAt' => $archivedAt,
-            'archivedInDashboard' => $archivedInDashboard,
-            'attachedStylesheets' => $attachedStylesheets,
-            'authorName' => $authorName,
-            'campaign' => $campaign,
-            'categoryID' => $categoryID,
-            'contentGroupID' => $contentGroupID,
-            'contentTypeCategory' => $contentTypeCategory,
-            'created' => $created,
-            'createdByID' => $createdByID,
-            'currentlyPublished' => $currentlyPublished,
-            'currentState' => $currentState,
-            'domain' => $domain,
-            'dynamicPageDataSourceID' => $dynamicPageDataSourceID,
-            'dynamicPageDataSourceType' => $dynamicPageDataSourceType,
-            'dynamicPageHubDBTableID' => $dynamicPageHubDBTableID,
-            'enableDomainStylesheets' => $enableDomainStylesheets,
-            'enableLayoutStylesheets' => $enableLayoutStylesheets,
-            'featuredImage' => $featuredImage,
-            'featuredImageAltText' => $featuredImageAltText,
-            'folderID' => $folderID,
-            'footerHTML' => $footerHTML,
-            'headHTML' => $headHTML,
-            'htmlTitle' => $htmlTitle,
-            'includeDefaultCustomCss' => $includeDefaultCustomCss,
-            'language' => $language,
-            'layoutSections' => $layoutSections,
-            'linkRelCanonicalURL' => $linkRelCanonicalURL,
-            'mabExperimentID' => $mabExperimentID,
-            'metaDescription' => $metaDescription,
-            'name' => $name,
-            'pageExpiryDate' => $pageExpiryDate,
-            'pageExpiryEnabled' => $pageExpiryEnabled,
-            'pageExpiryRedirectID' => $pageExpiryRedirectID,
-            'pageExpiryRedirectURL' => $pageExpiryRedirectURL,
-            'pageRedirected' => $pageRedirected,
-            'password' => $password,
-            'publicAccessRules' => $publicAccessRules,
-            'publicAccessRulesEnabled' => $publicAccessRulesEnabled,
-            'publishDate' => $publishDate,
-            'publishImmediately' => $publishImmediately,
-            'slug' => $slug,
-            'state' => $state,
-            'subcategory' => $subcategory,
-            'templatePath' => $templatePath,
-            'themeSettingsValues' => $themeSettingsValues,
-            'translatedFromID' => $translatedFromID,
-            'translations' => $translations,
-            'updated' => $updated,
-            'updatedByID' => $updatedByID,
-            'url' => $url,
-            'useFeaturedImage' => $useFeaturedImage,
-            'widgetContainers' => $widgetContainers,
-            'widgets' => $widgets,
-        ];
+        $params = Util::removeNulls(
+            [
+                'id' => $id,
+                'abStatus' => $abStatus,
+                'abTestID' => $abTestID,
+                'archivedAt' => $archivedAt,
+                'archivedInDashboard' => $archivedInDashboard,
+                'attachedStylesheets' => $attachedStylesheets,
+                'authorName' => $authorName,
+                'campaign' => $campaign,
+                'categoryID' => $categoryID,
+                'contentGroupID' => $contentGroupID,
+                'contentTypeCategory' => $contentTypeCategory,
+                'created' => $created,
+                'createdByID' => $createdByID,
+                'currentlyPublished' => $currentlyPublished,
+                'currentState' => $currentState,
+                'domain' => $domain,
+                'dynamicPageDataSourceID' => $dynamicPageDataSourceID,
+                'dynamicPageDataSourceType' => $dynamicPageDataSourceType,
+                'dynamicPageHubDBTableID' => $dynamicPageHubDBTableID,
+                'enableDomainStylesheets' => $enableDomainStylesheets,
+                'enableLayoutStylesheets' => $enableLayoutStylesheets,
+                'featuredImage' => $featuredImage,
+                'featuredImageAltText' => $featuredImageAltText,
+                'folderID' => $folderID,
+                'footerHTML' => $footerHTML,
+                'headHTML' => $headHTML,
+                'htmlTitle' => $htmlTitle,
+                'includeDefaultCustomCss' => $includeDefaultCustomCss,
+                'language' => $language,
+                'layoutSections' => $layoutSections,
+                'linkRelCanonicalURL' => $linkRelCanonicalURL,
+                'mabExperimentID' => $mabExperimentID,
+                'metaDescription' => $metaDescription,
+                'name' => $name,
+                'pageExpiryDate' => $pageExpiryDate,
+                'pageExpiryEnabled' => $pageExpiryEnabled,
+                'pageExpiryRedirectID' => $pageExpiryRedirectID,
+                'pageExpiryRedirectURL' => $pageExpiryRedirectURL,
+                'pageRedirected' => $pageRedirected,
+                'password' => $password,
+                'publicAccessRules' => $publicAccessRules,
+                'publicAccessRulesEnabled' => $publicAccessRulesEnabled,
+                'publishDate' => $publishDate,
+                'publishImmediately' => $publishImmediately,
+                'slug' => $slug,
+                'state' => $state,
+                'subcategory' => $subcategory,
+                'templatePath' => $templatePath,
+                'themeSettingsValues' => $themeSettingsValues,
+                'translatedFromID' => $translatedFromID,
+                'translations' => $translations,
+                'updated' => $updated,
+                'updatedByID' => $updatedByID,
+                'url' => $url,
+                'useFeaturedImage' => $useFeaturedImage,
+                'widgetContainers' => $widgetContainers,
+                'widgets' => $widgets,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->create(params: $params, requestOptions: $requestOptions);
@@ -505,68 +508,68 @@ final class SitePagesService implements SitePagesContract
         ?bool $archived = null,
         ?RequestOptions $requestOptions = null,
     ): Page {
-        $params = [
-            'id' => $id,
-            'abStatus' => $abStatus,
-            'abTestID' => $abTestID,
-            'archivedAt' => $archivedAt,
-            'archivedInDashboard' => $archivedInDashboard,
-            'attachedStylesheets' => $attachedStylesheets,
-            'authorName' => $authorName,
-            'campaign' => $campaign,
-            'categoryID' => $categoryID,
-            'contentGroupID' => $contentGroupID,
-            'contentTypeCategory' => $contentTypeCategory,
-            'created' => $created,
-            'createdByID' => $createdByID,
-            'currentlyPublished' => $currentlyPublished,
-            'currentState' => $currentState,
-            'domain' => $domain,
-            'dynamicPageDataSourceID' => $dynamicPageDataSourceID,
-            'dynamicPageDataSourceType' => $dynamicPageDataSourceType,
-            'dynamicPageHubDBTableID' => $dynamicPageHubDBTableID,
-            'enableDomainStylesheets' => $enableDomainStylesheets,
-            'enableLayoutStylesheets' => $enableLayoutStylesheets,
-            'featuredImage' => $featuredImage,
-            'featuredImageAltText' => $featuredImageAltText,
-            'folderID' => $folderID,
-            'footerHTML' => $footerHTML,
-            'headHTML' => $headHTML,
-            'htmlTitle' => $htmlTitle,
-            'includeDefaultCustomCss' => $includeDefaultCustomCss,
-            'language' => $language,
-            'layoutSections' => $layoutSections,
-            'linkRelCanonicalURL' => $linkRelCanonicalURL,
-            'mabExperimentID' => $mabExperimentID,
-            'metaDescription' => $metaDescription,
-            'name' => $name,
-            'pageExpiryDate' => $pageExpiryDate,
-            'pageExpiryEnabled' => $pageExpiryEnabled,
-            'pageExpiryRedirectID' => $pageExpiryRedirectID,
-            'pageExpiryRedirectURL' => $pageExpiryRedirectURL,
-            'pageRedirected' => $pageRedirected,
-            'password' => $password,
-            'publicAccessRules' => $publicAccessRules,
-            'publicAccessRulesEnabled' => $publicAccessRulesEnabled,
-            'publishDate' => $publishDate,
-            'publishImmediately' => $publishImmediately,
-            'slug' => $slug,
-            'state' => $state,
-            'subcategory' => $subcategory,
-            'templatePath' => $templatePath,
-            'themeSettingsValues' => $themeSettingsValues,
-            'translatedFromID' => $translatedFromID,
-            'translations' => $translations,
-            'updated' => $updated,
-            'updatedByID' => $updatedByID,
-            'url' => $url,
-            'useFeaturedImage' => $useFeaturedImage,
-            'widgetContainers' => $widgetContainers,
-            'widgets' => $widgets,
-            'archived' => $archived,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'id' => $id,
+                'abStatus' => $abStatus,
+                'abTestID' => $abTestID,
+                'archivedAt' => $archivedAt,
+                'archivedInDashboard' => $archivedInDashboard,
+                'attachedStylesheets' => $attachedStylesheets,
+                'authorName' => $authorName,
+                'campaign' => $campaign,
+                'categoryID' => $categoryID,
+                'contentGroupID' => $contentGroupID,
+                'contentTypeCategory' => $contentTypeCategory,
+                'created' => $created,
+                'createdByID' => $createdByID,
+                'currentlyPublished' => $currentlyPublished,
+                'currentState' => $currentState,
+                'domain' => $domain,
+                'dynamicPageDataSourceID' => $dynamicPageDataSourceID,
+                'dynamicPageDataSourceType' => $dynamicPageDataSourceType,
+                'dynamicPageHubDBTableID' => $dynamicPageHubDBTableID,
+                'enableDomainStylesheets' => $enableDomainStylesheets,
+                'enableLayoutStylesheets' => $enableLayoutStylesheets,
+                'featuredImage' => $featuredImage,
+                'featuredImageAltText' => $featuredImageAltText,
+                'folderID' => $folderID,
+                'footerHTML' => $footerHTML,
+                'headHTML' => $headHTML,
+                'htmlTitle' => $htmlTitle,
+                'includeDefaultCustomCss' => $includeDefaultCustomCss,
+                'language' => $language,
+                'layoutSections' => $layoutSections,
+                'linkRelCanonicalURL' => $linkRelCanonicalURL,
+                'mabExperimentID' => $mabExperimentID,
+                'metaDescription' => $metaDescription,
+                'name' => $name,
+                'pageExpiryDate' => $pageExpiryDate,
+                'pageExpiryEnabled' => $pageExpiryEnabled,
+                'pageExpiryRedirectID' => $pageExpiryRedirectID,
+                'pageExpiryRedirectURL' => $pageExpiryRedirectURL,
+                'pageRedirected' => $pageRedirected,
+                'password' => $password,
+                'publicAccessRules' => $publicAccessRules,
+                'publicAccessRulesEnabled' => $publicAccessRulesEnabled,
+                'publishDate' => $publishDate,
+                'publishImmediately' => $publishImmediately,
+                'slug' => $slug,
+                'state' => $state,
+                'subcategory' => $subcategory,
+                'templatePath' => $templatePath,
+                'themeSettingsValues' => $themeSettingsValues,
+                'translatedFromID' => $translatedFromID,
+                'translations' => $translations,
+                'updated' => $updated,
+                'updatedByID' => $updatedByID,
+                'url' => $url,
+                'useFeaturedImage' => $useFeaturedImage,
+                'widgetContainers' => $widgetContainers,
+                'widgets' => $widgets,
+                'archived' => $archived,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->update($objectID, params: $params, requestOptions: $requestOptions);
@@ -608,21 +611,21 @@ final class SitePagesService implements SitePagesContract
         string|\DateTimeInterface|null $updatedBefore = null,
         ?RequestOptions $requestOptions = null,
     ): \HubspotSDK\Page {
-        $params = [
-            'after' => $after,
-            'archived' => $archived,
-            'createdAfter' => $createdAfter,
-            'createdAt' => $createdAt,
-            'createdBefore' => $createdBefore,
-            'limit' => $limit,
-            'property' => $property,
-            'sort' => $sort,
-            'updatedAfter' => $updatedAfter,
-            'updatedAt' => $updatedAt,
-            'updatedBefore' => $updatedBefore,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'after' => $after,
+                'archived' => $archived,
+                'createdAfter' => $createdAfter,
+                'createdAt' => $createdAt,
+                'createdBefore' => $createdBefore,
+                'limit' => $limit,
+                'property' => $property,
+                'sort' => $sort,
+                'updatedAfter' => $updatedAfter,
+                'updatedAt' => $updatedAt,
+                'updatedBefore' => $updatedBefore,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->list(params: $params, requestOptions: $requestOptions);
@@ -645,9 +648,7 @@ final class SitePagesService implements SitePagesContract
         ?bool $archived = null,
         ?RequestOptions $requestOptions = null,
     ): mixed {
-        $params = ['archived' => $archived];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(['archived' => $archived]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->delete($objectID, params: $params, requestOptions: $requestOptions);
@@ -674,14 +675,14 @@ final class SitePagesService implements SitePagesContract
         ?string $primaryLanguage = null,
         ?RequestOptions $requestOptions = null,
     ): mixed {
-        $params = [
-            'id' => $id,
-            'language' => $language,
-            'primaryID' => $primaryID,
-            'primaryLanguage' => $primaryLanguage,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'id' => $id,
+                'language' => $language,
+                'primaryID' => $primaryID,
+                'primaryLanguage' => $primaryLanguage,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->attachToLangGroup(params: $params, requestOptions: $requestOptions);
@@ -704,9 +705,7 @@ final class SitePagesService implements SitePagesContract
         ?string $cloneName = null,
         ?RequestOptions $requestOptions = null
     ): Page {
-        $params = ['id' => $id, 'cloneName' => $cloneName];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(['id' => $id, 'cloneName' => $cloneName]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->clone(params: $params, requestOptions: $requestOptions);
@@ -729,7 +728,9 @@ final class SitePagesService implements SitePagesContract
         string $variationName,
         ?RequestOptions $requestOptions = null,
     ): Page {
-        $params = ['contentID' => $contentID, 'variationName' => $variationName];
+        $params = Util::removeNulls(
+            ['contentID' => $contentID, 'variationName' => $variationName]
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->createAbTestVariation(params: $params, requestOptions: $requestOptions);
@@ -882,7 +883,7 @@ final class SitePagesService implements SitePagesContract
         array $inputs,
         ?RequestOptions $requestOptions = null
     ): BatchResponsePage {
-        $params = ['inputs' => $inputs];
+        $params = Util::removeNulls(['inputs' => $inputs]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->createBatch(params: $params, requestOptions: $requestOptions);
@@ -907,13 +908,13 @@ final class SitePagesService implements SitePagesContract
         ?string $primaryLanguage = null,
         ?RequestOptions $requestOptions = null,
     ): Page {
-        $params = [
-            'id' => $id,
-            'language' => $language,
-            'primaryLanguage' => $primaryLanguage,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'id' => $id,
+                'language' => $language,
+                'primaryLanguage' => $primaryLanguage,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->createLanguageVariation(params: $params, requestOptions: $requestOptions);
@@ -935,7 +936,7 @@ final class SitePagesService implements SitePagesContract
         array $inputs,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        $params = ['inputs' => $inputs];
+        $params = Util::removeNulls(['inputs' => $inputs]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->deleteBatch(params: $params, requestOptions: $requestOptions);
@@ -956,7 +957,7 @@ final class SitePagesService implements SitePagesContract
         string $id,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        $params = ['id' => $id];
+        $params = Util::removeNulls(['id' => $id]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->detachFromLangGroup(params: $params, requestOptions: $requestOptions);
@@ -979,7 +980,9 @@ final class SitePagesService implements SitePagesContract
         string $winnerID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        $params = ['abTestID' => $abTestID, 'winnerID' => $winnerID];
+        $params = Util::removeNulls(
+            ['abTestID' => $abTestID, 'winnerID' => $winnerID]
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->endAbTest(params: $params, requestOptions: $requestOptions);
@@ -1003,9 +1006,9 @@ final class SitePagesService implements SitePagesContract
         ?string $property = null,
         ?RequestOptions $requestOptions = null,
     ): Page {
-        $params = ['archived' => $archived, 'property' => $property];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            ['archived' => $archived, 'property' => $property]
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->get($objectID, params: $params, requestOptions: $requestOptions);
@@ -1028,9 +1031,7 @@ final class SitePagesService implements SitePagesContract
         ?bool $archived = null,
         ?RequestOptions $requestOptions = null
     ): BatchResponsePage {
-        $params = ['inputs' => $inputs, 'archived' => $archived];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(['inputs' => $inputs, 'archived' => $archived]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->getBatch(params: $params, requestOptions: $requestOptions);
@@ -1072,7 +1073,7 @@ final class SitePagesService implements SitePagesContract
         string $objectID,
         ?RequestOptions $requestOptions = null
     ): VersionPage {
-        $params = ['objectID' => $objectID];
+        $params = Util::removeNulls(['objectID' => $objectID]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->getRevision($revisionID, params: $params, requestOptions: $requestOptions);
@@ -1100,9 +1101,9 @@ final class SitePagesService implements SitePagesContract
         ?int $limit = null,
         ?RequestOptions $requestOptions = null,
     ): \HubspotSDK\Page {
-        $params = ['after' => $after, 'before' => $before, 'limit' => $limit];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            ['after' => $after, 'before' => $before, 'limit' => $limit]
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->listRevisions($objectID, params: $params, requestOptions: $requestOptions);
@@ -1144,7 +1145,9 @@ final class SitePagesService implements SitePagesContract
         string $variationID,
         ?RequestOptions $requestOptions = null,
     ): mixed {
-        $params = ['abTestID' => $abTestID, 'variationID' => $variationID];
+        $params = Util::removeNulls(
+            ['abTestID' => $abTestID, 'variationID' => $variationID]
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->rerunAbTest(params: $params, requestOptions: $requestOptions);
@@ -1186,7 +1189,7 @@ final class SitePagesService implements SitePagesContract
         string $objectID,
         ?RequestOptions $requestOptions = null
     ): Page {
-        $params = ['objectID' => $objectID];
+        $params = Util::removeNulls(['objectID' => $objectID]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->restoreRevision($revisionID, params: $params, requestOptions: $requestOptions);
@@ -1209,7 +1212,7 @@ final class SitePagesService implements SitePagesContract
         string $objectID,
         ?RequestOptions $requestOptions = null
     ): Page {
-        $params = ['objectID' => $objectID];
+        $params = Util::removeNulls(['objectID' => $objectID]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->restoreRevisionToDraft($revisionID, params: $params, requestOptions: $requestOptions);
@@ -1232,7 +1235,7 @@ final class SitePagesService implements SitePagesContract
         string|\DateTimeInterface $publishDate,
         ?RequestOptions $requestOptions = null,
     ): mixed {
-        $params = ['id' => $id, 'publishDate' => $publishDate];
+        $params = Util::removeNulls(['id' => $id, 'publishDate' => $publishDate]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->schedule(params: $params, requestOptions: $requestOptions);
@@ -1253,7 +1256,7 @@ final class SitePagesService implements SitePagesContract
         string $id,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        $params = ['id' => $id];
+        $params = Util::removeNulls(['id' => $id]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->setNewLangPrimary(params: $params, requestOptions: $requestOptions);
@@ -1276,9 +1279,7 @@ final class SitePagesService implements SitePagesContract
         ?bool $archived = null,
         ?RequestOptions $requestOptions = null
     ): BatchResponsePage {
-        $params = ['inputs' => $inputs, 'archived' => $archived];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(['inputs' => $inputs, 'archived' => $archived]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->updateBatch(params: $params, requestOptions: $requestOptions);
@@ -1482,65 +1483,67 @@ final class SitePagesService implements SitePagesContract
         array $widgets,
         ?RequestOptions $requestOptions = null,
     ): Page {
-        $params = [
-            'id' => $id,
-            'abStatus' => $abStatus,
-            'abTestID' => $abTestID,
-            'archivedAt' => $archivedAt,
-            'archivedInDashboard' => $archivedInDashboard,
-            'attachedStylesheets' => $attachedStylesheets,
-            'authorName' => $authorName,
-            'campaign' => $campaign,
-            'categoryID' => $categoryID,
-            'contentGroupID' => $contentGroupID,
-            'contentTypeCategory' => $contentTypeCategory,
-            'created' => $created,
-            'createdByID' => $createdByID,
-            'currentlyPublished' => $currentlyPublished,
-            'currentState' => $currentState,
-            'domain' => $domain,
-            'dynamicPageDataSourceID' => $dynamicPageDataSourceID,
-            'dynamicPageDataSourceType' => $dynamicPageDataSourceType,
-            'dynamicPageHubDBTableID' => $dynamicPageHubDBTableID,
-            'enableDomainStylesheets' => $enableDomainStylesheets,
-            'enableLayoutStylesheets' => $enableLayoutStylesheets,
-            'featuredImage' => $featuredImage,
-            'featuredImageAltText' => $featuredImageAltText,
-            'folderID' => $folderID,
-            'footerHTML' => $footerHTML,
-            'headHTML' => $headHTML,
-            'htmlTitle' => $htmlTitle,
-            'includeDefaultCustomCss' => $includeDefaultCustomCss,
-            'language' => $language,
-            'layoutSections' => $layoutSections,
-            'linkRelCanonicalURL' => $linkRelCanonicalURL,
-            'mabExperimentID' => $mabExperimentID,
-            'metaDescription' => $metaDescription,
-            'name' => $name,
-            'pageExpiryDate' => $pageExpiryDate,
-            'pageExpiryEnabled' => $pageExpiryEnabled,
-            'pageExpiryRedirectID' => $pageExpiryRedirectID,
-            'pageExpiryRedirectURL' => $pageExpiryRedirectURL,
-            'pageRedirected' => $pageRedirected,
-            'password' => $password,
-            'publicAccessRules' => $publicAccessRules,
-            'publicAccessRulesEnabled' => $publicAccessRulesEnabled,
-            'publishDate' => $publishDate,
-            'publishImmediately' => $publishImmediately,
-            'slug' => $slug,
-            'state' => $state,
-            'subcategory' => $subcategory,
-            'templatePath' => $templatePath,
-            'themeSettingsValues' => $themeSettingsValues,
-            'translatedFromID' => $translatedFromID,
-            'translations' => $translations,
-            'updated' => $updated,
-            'updatedByID' => $updatedByID,
-            'url' => $url,
-            'useFeaturedImage' => $useFeaturedImage,
-            'widgetContainers' => $widgetContainers,
-            'widgets' => $widgets,
-        ];
+        $params = Util::removeNulls(
+            [
+                'id' => $id,
+                'abStatus' => $abStatus,
+                'abTestID' => $abTestID,
+                'archivedAt' => $archivedAt,
+                'archivedInDashboard' => $archivedInDashboard,
+                'attachedStylesheets' => $attachedStylesheets,
+                'authorName' => $authorName,
+                'campaign' => $campaign,
+                'categoryID' => $categoryID,
+                'contentGroupID' => $contentGroupID,
+                'contentTypeCategory' => $contentTypeCategory,
+                'created' => $created,
+                'createdByID' => $createdByID,
+                'currentlyPublished' => $currentlyPublished,
+                'currentState' => $currentState,
+                'domain' => $domain,
+                'dynamicPageDataSourceID' => $dynamicPageDataSourceID,
+                'dynamicPageDataSourceType' => $dynamicPageDataSourceType,
+                'dynamicPageHubDBTableID' => $dynamicPageHubDBTableID,
+                'enableDomainStylesheets' => $enableDomainStylesheets,
+                'enableLayoutStylesheets' => $enableLayoutStylesheets,
+                'featuredImage' => $featuredImage,
+                'featuredImageAltText' => $featuredImageAltText,
+                'folderID' => $folderID,
+                'footerHTML' => $footerHTML,
+                'headHTML' => $headHTML,
+                'htmlTitle' => $htmlTitle,
+                'includeDefaultCustomCss' => $includeDefaultCustomCss,
+                'language' => $language,
+                'layoutSections' => $layoutSections,
+                'linkRelCanonicalURL' => $linkRelCanonicalURL,
+                'mabExperimentID' => $mabExperimentID,
+                'metaDescription' => $metaDescription,
+                'name' => $name,
+                'pageExpiryDate' => $pageExpiryDate,
+                'pageExpiryEnabled' => $pageExpiryEnabled,
+                'pageExpiryRedirectID' => $pageExpiryRedirectID,
+                'pageExpiryRedirectURL' => $pageExpiryRedirectURL,
+                'pageRedirected' => $pageRedirected,
+                'password' => $password,
+                'publicAccessRules' => $publicAccessRules,
+                'publicAccessRulesEnabled' => $publicAccessRulesEnabled,
+                'publishDate' => $publishDate,
+                'publishImmediately' => $publishImmediately,
+                'slug' => $slug,
+                'state' => $state,
+                'subcategory' => $subcategory,
+                'templatePath' => $templatePath,
+                'themeSettingsValues' => $themeSettingsValues,
+                'translatedFromID' => $translatedFromID,
+                'translations' => $translations,
+                'updated' => $updated,
+                'updatedByID' => $updatedByID,
+                'url' => $url,
+                'useFeaturedImage' => $useFeaturedImage,
+                'widgetContainers' => $widgetContainers,
+                'widgets' => $widgets,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->updateDraft($objectID, params: $params, requestOptions: $requestOptions);
@@ -1563,7 +1566,9 @@ final class SitePagesService implements SitePagesContract
         string $primaryID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        $params = ['languages' => $languages, 'primaryID' => $primaryID];
+        $params = Util::removeNulls(
+            ['languages' => $languages, 'primaryID' => $primaryID]
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->updateLanguages(params: $params, requestOptions: $requestOptions);

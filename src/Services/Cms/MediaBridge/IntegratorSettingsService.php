@@ -16,6 +16,7 @@ use HubspotSDK\Cms\MediaBridge\MediaBridgeProviderRegistrationResponse;
 use HubspotSDK\Cms\MediaBridge\ObjectDefinitionResponse;
 use HubspotSDK\Cms\MediaBridge\OEmbedDomainsCollectionResponse;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Cms\MediaBridge\IntegratorSettingsContract;
 
@@ -49,7 +50,7 @@ final class IntegratorSettingsService implements IntegratorSettingsContract
         array $mediaTypes,
         ?RequestOptions $requestOptions = null
     ): BulkIntegratorObjectCreationResponse {
-        $params = ['mediaTypes' => $mediaTypes];
+        $params = Util::removeNulls(['mediaTypes' => $mediaTypes]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->createObjectDefinition($appID, params: $params, requestOptions: $requestOptions);
@@ -75,9 +76,9 @@ final class IntegratorSettingsService implements IntegratorSettingsContract
         ?int $portalID = null,
         ?RequestOptions $requestOptions = null,
     ): IntegratorOEmbedDomainModel {
-        $params = ['endpoints' => $endpoints, 'portalID' => $portalID];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            ['endpoints' => $endpoints, 'portalID' => $portalID]
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->createOembedDomain($appID, params: $params, requestOptions: $requestOptions);
@@ -102,9 +103,9 @@ final class IntegratorSettingsService implements IntegratorSettingsContract
         int $domainPortalID = -1,
         ?RequestOptions $requestOptions = null,
     ): mixed {
-        $params = ['id' => $id, 'domainPortalID' => $domainPortalID];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            ['id' => $id, 'domainPortalID' => $domainPortalID]
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->deleteOembedDomain($appID, params: $params, requestOptions: $requestOptions);
@@ -148,11 +149,9 @@ final class IntegratorSettingsService implements IntegratorSettingsContract
         ?bool $includeFullDefinition = null,
         ?RequestOptions $requestOptions = null,
     ): ObjectDefinitionResponse {
-        $params = [
-            'appID' => $appID, 'includeFullDefinition' => $includeFullDefinition,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            ['appID' => $appID, 'includeFullDefinition' => $includeFullDefinition]
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->getObjectDefinitionsByMediaType($mediaType, params: $params, requestOptions: $requestOptions);
@@ -175,7 +174,7 @@ final class IntegratorSettingsService implements IntegratorSettingsContract
         int $appID,
         ?RequestOptions $requestOptions = null
     ): IntegratorOEmbedDomainModel {
-        $params = ['appID' => $appID];
+        $params = Util::removeNulls(['appID' => $appID]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->getOembedDomain($oEmbedDomainID, params: $params, requestOptions: $requestOptions);
@@ -198,9 +197,7 @@ final class IntegratorSettingsService implements IntegratorSettingsContract
         int $domainPortalID = -1,
         ?RequestOptions $requestOptions = null
     ): OEmbedDomainsCollectionResponse {
-        $params = ['domainPortalID' => $domainPortalID];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(['domainPortalID' => $domainPortalID]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->listOembedDomains($appID, params: $params, requestOptions: $requestOptions);
@@ -225,9 +222,7 @@ final class IntegratorSettingsService implements IntegratorSettingsContract
         ?string $name = null,
         ?RequestOptions $requestOptions = null,
     ): MediaBridgeProviderRegistrationResponse {
-        $params = ['updatedAt' => $updatedAt, 'name' => $name];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(['updatedAt' => $updatedAt, 'name' => $name]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->registerAppName($appID, params: $params, requestOptions: $requestOptions);
@@ -250,9 +245,7 @@ final class IntegratorSettingsService implements IntegratorSettingsContract
         ?string $name = null,
         ?RequestOptions $requestOptions = null,
     ): MediaBridgeProviderRegistrationResponse {
-        $params = ['updatedAt' => $updatedAt, 'name' => $name];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(['updatedAt' => $updatedAt, 'name' => $name]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->updateAppName($appID, params: $params, requestOptions: $requestOptions);
@@ -279,15 +272,15 @@ final class IntegratorSettingsService implements IntegratorSettingsContract
         ?bool $showInWorkflows = null,
         ?RequestOptions $requestOptions = null,
     ): EventVisibilityChange {
-        $params = [
-            'eventType' => $eventType,
-            'updatedAt' => $updatedAt,
-            'showInReporting' => $showInReporting,
-            'showInTimeline' => $showInTimeline,
-            'showInWorkflows' => $showInWorkflows,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'eventType' => $eventType,
+                'updatedAt' => $updatedAt,
+                'showInReporting' => $showInReporting,
+                'showInTimeline' => $showInTimeline,
+                'showInWorkflows' => $showInWorkflows,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->updateEventVisibilitySettings($appID, params: $params, requestOptions: $requestOptions);
@@ -316,11 +309,9 @@ final class IntegratorSettingsService implements IntegratorSettingsContract
         ?int $portalID = null,
         ?RequestOptions $requestOptions = null,
     ): IntegratorOEmbedDomainModel {
-        $params = [
-            'appID' => $appID, 'endpoints' => $endpoints, 'portalID' => $portalID,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            ['appID' => $appID, 'endpoints' => $endpoints, 'portalID' => $portalID]
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->updateOembedDomain($oEmbedDomainID, params: $params, requestOptions: $requestOptions);

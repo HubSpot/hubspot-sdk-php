@@ -7,6 +7,7 @@ namespace HubspotSDK\Services\Conversations;
 use HubspotSDK\Client;
 use HubspotSDK\Conversations\CustomChannels\PublicChannelIntegrationChannel;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Conversations\CustomChannelsContract;
@@ -65,16 +66,16 @@ final class CustomChannelsService implements CustomChannelsContract
         ?string $webhookURL = null,
         ?RequestOptions $requestOptions = null,
     ): PublicChannelIntegrationChannel {
-        $params = [
-            'capabilities' => $capabilities,
-            'name' => $name,
-            'channelAccountConnectionRedirectURL' => $channelAccountConnectionRedirectURL,
-            'channelDescription' => $channelDescription,
-            'channelLogoURL' => $channelLogoURL,
-            'webhookURL' => $webhookURL,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'capabilities' => $capabilities,
+                'name' => $name,
+                'channelAccountConnectionRedirectURL' => $channelAccountConnectionRedirectURL,
+                'channelDescription' => $channelDescription,
+                'channelLogoURL' => $channelLogoURL,
+                'webhookURL' => $webhookURL,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->create(params: $params, requestOptions: $requestOptions);
@@ -102,14 +103,16 @@ final class CustomChannelsService implements CustomChannelsContract
         mixed $webhookURL,
         ?RequestOptions $requestOptions = null,
     ): PublicChannelIntegrationChannel {
-        $params = [
-            'capabilities' => $capabilities,
-            'channelAccountConnectionRedirectURL' => $channelAccountConnectionRedirectURL,
-            'channelDescription' => $channelDescription,
-            'channelLogoURL' => $channelLogoURL,
-            'name' => $name,
-            'webhookURL' => $webhookURL,
-        ];
+        $params = Util::removeNulls(
+            [
+                'capabilities' => $capabilities,
+                'channelAccountConnectionRedirectURL' => $channelAccountConnectionRedirectURL,
+                'channelDescription' => $channelDescription,
+                'channelLogoURL' => $channelLogoURL,
+                'name' => $name,
+                'webhookURL' => $webhookURL,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->update($channelID, params: $params, requestOptions: $requestOptions);
@@ -138,14 +141,14 @@ final class CustomChannelsService implements CustomChannelsContract
         ?array $sort = null,
         ?RequestOptions $requestOptions = null,
     ): Page {
-        $params = [
-            'after' => $after,
-            'defaultPageLength' => $defaultPageLength,
-            'limit' => $limit,
-            'sort' => $sort,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'after' => $after,
+                'defaultPageLength' => $defaultPageLength,
+                'limit' => $limit,
+                'sort' => $sort,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->list(params: $params, requestOptions: $requestOptions);

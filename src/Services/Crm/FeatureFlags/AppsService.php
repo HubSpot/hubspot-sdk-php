@@ -6,6 +6,7 @@ namespace HubspotSDK\Services\Crm\FeatureFlags;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Crm\FeatureFlags\Apps\AppUpdateParams\DefaultState;
 use HubspotSDK\Crm\FeatureFlags\Apps\AppUpdateParams\OverrideState;
 use HubspotSDK\Crm\FeatureFlags\FlagResponse;
@@ -47,13 +48,13 @@ final class AppsService implements AppsContract
         string|OverrideState|null $overrideState = null,
         ?RequestOptions $requestOptions = null,
     ): FlagResponse {
-        $params = [
-            'appID' => $appID,
-            'defaultState' => $defaultState,
-            'overrideState' => $overrideState,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'appID' => $appID,
+                'defaultState' => $defaultState,
+                'overrideState' => $overrideState,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->update($flagName, params: $params, requestOptions: $requestOptions);
@@ -76,7 +77,7 @@ final class AppsService implements AppsContract
         int $appID,
         ?RequestOptions $requestOptions = null
     ): FlagResponse {
-        $params = ['appID' => $appID];
+        $params = Util::removeNulls(['appID' => $appID]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->delete($flagName, params: $params, requestOptions: $requestOptions);
@@ -99,7 +100,7 @@ final class AppsService implements AppsContract
         int $appID,
         ?RequestOptions $requestOptions = null
     ): FlagResponse {
-        $params = ['appID' => $appID];
+        $params = Util::removeNulls(['appID' => $appID]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->get($flagName, params: $params, requestOptions: $requestOptions);
@@ -126,11 +127,9 @@ final class AppsService implements AppsContract
         ?int $startPortalID = null,
         ?RequestOptions $requestOptions = null,
     ): PortalFlagStateBatchResponse {
-        $params = [
-            'appID' => $appID, 'limit' => $limit, 'startPortalID' => $startPortalID,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            ['appID' => $appID, 'limit' => $limit, 'startPortalID' => $startPortalID]
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->listPortals($flagName, params: $params, requestOptions: $requestOptions);

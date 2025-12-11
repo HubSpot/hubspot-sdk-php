@@ -6,6 +6,7 @@ namespace HubspotSDK\Services\Marketing\Campaigns;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Marketing\Campaigns\CollectionResponsePublicCampaignAssetForwardPaging;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Marketing\Campaigns\AssetsContract;
@@ -45,7 +46,9 @@ final class AssetsService implements AssetsContract
         string $assetType,
         ?RequestOptions $requestOptions = null,
     ): mixed {
-        $params = ['campaignGuid' => $campaignGuid, 'assetType' => $assetType];
+        $params = Util::removeNulls(
+            ['campaignGuid' => $campaignGuid, 'assetType' => $assetType]
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->update($assetID, params: $params, requestOptions: $requestOptions);
@@ -81,15 +84,15 @@ final class AssetsService implements AssetsContract
         ?string $startDate = null,
         ?RequestOptions $requestOptions = null,
     ): CollectionResponsePublicCampaignAssetForwardPaging {
-        $params = [
-            'campaignGuid' => $campaignGuid,
-            'after' => $after,
-            'endDate' => $endDate,
-            'limit' => $limit,
-            'startDate' => $startDate,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'campaignGuid' => $campaignGuid,
+                'after' => $after,
+                'endDate' => $endDate,
+                'limit' => $limit,
+                'startDate' => $startDate,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->list($assetType, params: $params, requestOptions: $requestOptions);
@@ -116,7 +119,9 @@ final class AssetsService implements AssetsContract
         string $assetType,
         ?RequestOptions $requestOptions = null,
     ): mixed {
-        $params = ['campaignGuid' => $campaignGuid, 'assetType' => $assetType];
+        $params = Util::removeNulls(
+            ['campaignGuid' => $campaignGuid, 'assetType' => $assetType]
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->delete($assetID, params: $params, requestOptions: $requestOptions);

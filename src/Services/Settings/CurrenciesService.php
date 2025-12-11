@@ -6,6 +6,7 @@ namespace HubspotSDK\Services\Settings;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Page;
 use HubspotSDK\PublicObjectID;
 use HubspotSDK\RequestOptions;
@@ -58,7 +59,7 @@ final class CurrenciesService implements CurrenciesContract
         array $inputs,
         ?RequestOptions $requestOptions = null
     ): BatchResponseExchangeRate {
-        $params = ['inputs' => $inputs];
+        $params = Util::removeNulls(['inputs' => $inputs]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->batchCreate(params: $params, requestOptions: $requestOptions);
@@ -79,7 +80,7 @@ final class CurrenciesService implements CurrenciesContract
         array $inputs,
         ?RequestOptions $requestOptions = null
     ): BatchResponseExchangeRate {
-        $params = ['inputs' => $inputs];
+        $params = Util::removeNulls(['inputs' => $inputs]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->batchGet(params: $params, requestOptions: $requestOptions);
@@ -102,7 +103,7 @@ final class CurrenciesService implements CurrenciesContract
         array $inputs,
         ?RequestOptions $requestOptions = null
     ): BatchResponseExchangeRate {
-        $params = ['inputs' => $inputs];
+        $params = Util::removeNulls(['inputs' => $inputs]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->batchUpdate(params: $params, requestOptions: $requestOptions);
@@ -127,13 +128,13 @@ final class CurrenciesService implements CurrenciesContract
         string|\DateTimeInterface|null $effectiveAt = null,
         ?RequestOptions $requestOptions = null,
     ): ExchangeRate {
-        $params = [
-            'conversionRate' => $conversionRate,
-            'fromCurrencyCode' => $fromCurrencyCode,
-            'effectiveAt' => $effectiveAt,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'conversionRate' => $conversionRate,
+                'fromCurrencyCode' => $fromCurrencyCode,
+                'effectiveAt' => $effectiveAt,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->createExchangeRate(params: $params, requestOptions: $requestOptions);
@@ -229,14 +230,14 @@ final class CurrenciesService implements CurrenciesContract
         string|ToCurrencyCode|null $toCurrencyCode = null,
         ?RequestOptions $requestOptions = null,
     ): Page {
-        $params = [
-            'after' => $after,
-            'fromCurrencyCode' => $fromCurrencyCode,
-            'limit' => $limit,
-            'toCurrencyCode' => $toCurrencyCode,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'after' => $after,
+                'fromCurrencyCode' => $fromCurrencyCode,
+                'limit' => $limit,
+                'toCurrencyCode' => $toCurrencyCode,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->listExchangeRates(params: $params, requestOptions: $requestOptions);
@@ -257,7 +258,7 @@ final class CurrenciesService implements CurrenciesContract
         string|CurrencyCode $currencyCode,
         ?RequestOptions $requestOptions = null
     ): CompanyCurrency {
-        $params = ['currencyCode' => $currencyCode];
+        $params = Util::removeNulls(['currencyCode' => $currencyCode]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->updateCompanyCurrency(params: $params, requestOptions: $requestOptions);
@@ -282,11 +283,9 @@ final class CurrenciesService implements CurrenciesContract
         string|\DateTimeInterface|null $effectiveAt = null,
         ?RequestOptions $requestOptions = null,
     ): ExchangeRate {
-        $params = [
-            'conversionRate' => $conversionRate, 'effectiveAt' => $effectiveAt,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            ['conversionRate' => $conversionRate, 'effectiveAt' => $effectiveAt]
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->updateExchangeRate($exchangeRateID, params: $params, requestOptions: $requestOptions);
@@ -311,11 +310,13 @@ final class CurrenciesService implements CurrenciesContract
         bool $visibleInUi,
         ?RequestOptions $requestOptions = null,
     ): mixed {
-        $params = [
-            'fromCurrencyCode' => $fromCurrencyCode,
-            'toCurrencyCode' => $toCurrencyCode,
-            'visibleInUi' => $visibleInUi,
-        ];
+        $params = Util::removeNulls(
+            [
+                'fromCurrencyCode' => $fromCurrencyCode,
+                'toCurrencyCode' => $toCurrencyCode,
+                'visibleInUi' => $visibleInUi,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->updateVisibility(params: $params, requestOptions: $requestOptions);

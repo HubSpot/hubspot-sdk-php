@@ -7,6 +7,7 @@ namespace HubspotSDK\Services\Conversations;
 use HubspotSDK\Client;
 use HubspotSDK\Conversations\VisitorIdentification\IdentificationTokenResponse;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Conversations\VisitorIdentificationContract;
 
@@ -40,11 +41,9 @@ final class VisitorIdentificationService implements VisitorIdentificationContrac
         ?string $lastName = null,
         ?RequestOptions $requestOptions = null,
     ): IdentificationTokenResponse {
-        $params = [
-            'email' => $email, 'firstName' => $firstName, 'lastName' => $lastName,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            ['email' => $email, 'firstName' => $firstName, 'lastName' => $lastName]
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->generateToken(params: $params, requestOptions: $requestOptions);

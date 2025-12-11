@@ -8,6 +8,7 @@ use HubspotSDK\AssociationSpec;
 use HubspotSDK\AssociationSpec\AssociationCategory;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Crm\Associations\BatchResponseVoid;
 use HubspotSDK\Crm\Associations\V4\BatchResponseLabelsBetweenObjectPair;
 use HubspotSDK\Crm\Associations\V4\BatchResponsePublicAssociationMultiWithLabel;
@@ -55,7 +56,9 @@ final class BatchService implements BatchContract
         array $inputs,
         ?RequestOptions $requestOptions = null,
     ): BatchResponseLabelsBetweenObjectPair {
-        $params = ['fromObjectType' => $fromObjectType, 'inputs' => $inputs];
+        $params = Util::removeNulls(
+            ['fromObjectType' => $fromObjectType, 'inputs' => $inputs]
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->create($toObjectType, params: $params, requestOptions: $requestOptions);
@@ -83,7 +86,9 @@ final class BatchService implements BatchContract
         array $inputs,
         ?RequestOptions $requestOptions = null,
     ): BatchResponseVoid {
-        $params = ['fromObjectType' => $fromObjectType, 'inputs' => $inputs];
+        $params = Util::removeNulls(
+            ['fromObjectType' => $fromObjectType, 'inputs' => $inputs]
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->delete($toObjectType, params: $params, requestOptions: $requestOptions);
@@ -110,7 +115,9 @@ final class BatchService implements BatchContract
         array $inputs,
         ?RequestOptions $requestOptions = null,
     ): BatchResponsePublicDefaultAssociation {
-        $params = ['fromObjectType' => $fromObjectType, 'inputs' => $inputs];
+        $params = Util::removeNulls(
+            ['fromObjectType' => $fromObjectType, 'inputs' => $inputs]
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->createDefault($toObjectType, params: $params, requestOptions: $requestOptions);
@@ -142,7 +149,9 @@ final class BatchService implements BatchContract
         array $inputs,
         ?RequestOptions $requestOptions = null,
     ): BatchResponseVoid {
-        $params = ['fromObjectType' => $fromObjectType, 'inputs' => $inputs];
+        $params = Util::removeNulls(
+            ['fromObjectType' => $fromObjectType, 'inputs' => $inputs]
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->deleteLabels($toObjectType, params: $params, requestOptions: $requestOptions);
@@ -167,7 +176,9 @@ final class BatchService implements BatchContract
         array $inputs,
         ?RequestOptions $requestOptions = null,
     ): BatchResponsePublicAssociationMultiWithLabel {
-        $params = ['fromObjectType' => $fromObjectType, 'inputs' => $inputs];
+        $params = Util::removeNulls(
+            ['fromObjectType' => $fromObjectType, 'inputs' => $inputs]
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->get($toObjectType, params: $params, requestOptions: $requestOptions);

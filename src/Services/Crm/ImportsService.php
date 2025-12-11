@@ -7,6 +7,7 @@ namespace HubspotSDK\Services\Crm;
 use HubspotSDK\ActionResponse;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Crm\Imports\PublicImportError;
 use HubspotSDK\Crm\Imports\PublicImportResponse;
 use HubspotSDK\Page;
@@ -40,9 +41,9 @@ final class ImportsService implements ImportsContract
         ?string $importRequest = null,
         ?RequestOptions $requestOptions = null,
     ): PublicImportResponse {
-        $params = ['files' => $files, 'importRequest' => $importRequest];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            ['files' => $files, 'importRequest' => $importRequest]
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->create(params: $params, requestOptions: $requestOptions);
@@ -68,9 +69,9 @@ final class ImportsService implements ImportsContract
         ?int $limit = null,
         ?RequestOptions $requestOptions = null,
     ): Page {
-        $params = ['after' => $after, 'before' => $before, 'limit' => $limit];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            ['after' => $after, 'before' => $before, 'limit' => $limit]
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->list(params: $params, requestOptions: $requestOptions);
@@ -132,14 +133,14 @@ final class ImportsService implements ImportsContract
         ?int $limit = null,
         ?RequestOptions $requestOptions = null,
     ): Page {
-        $params = [
-            'after' => $after,
-            'includeErrorMessage' => $includeErrorMessage,
-            'includeRowData' => $includeRowData,
-            'limit' => $limit,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'after' => $after,
+                'includeErrorMessage' => $includeErrorMessage,
+                'includeRowData' => $includeRowData,
+                'limit' => $limit,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->listErrors($importID, params: $params, requestOptions: $requestOptions);

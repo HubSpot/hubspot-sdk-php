@@ -294,7 +294,7 @@ final class EventsRawService implements EventsRawContract
             $params,
             $requestOptions,
         );
-        $query_params = array_flip(['externalAccountId']);
+        $query_params = array_flip(['externalAccountID']);
 
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -303,7 +303,7 @@ final class EventsRawService implements EventsRawContract
                 'marketing/v3/marketing-events/events/%1$s/complete', $externalEventID,
             ],
             query: Util::array_transform_keys(
-                array_diff_key($parsed, $query_params),
+                array_intersect_key($parsed, $query_params),
                 ['externalAccountID' => 'externalAccountId'],
             ),
             body: (object) array_diff_key($parsed, $query_params),
@@ -647,14 +647,14 @@ final class EventsRawService implements EventsRawContract
             $params,
             $requestOptions,
         );
-        $query_params = array_flip(['externalAccountId']);
+        $query_params = array_flip(['externalAccountID']);
 
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'patch',
             path: ['marketing/v3/marketing-events/events/%1$s', $externalEventID],
             query: Util::array_transform_keys(
-                array_diff_key($parsed, $query_params),
+                array_intersect_key($parsed, $query_params),
                 ['externalAccountID' => 'externalAccountId'],
             ),
             body: (object) array_diff_key($parsed, $query_params),
@@ -807,7 +807,7 @@ final class EventsRawService implements EventsRawContract
         );
         $externalEventID = $parsed['externalEventID'];
         unset($parsed['externalEventID']);
-        $query_params = array_flip(['externalAccountId']);
+        $query_params = array_flip(['externalAccountID']);
 
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -818,7 +818,7 @@ final class EventsRawService implements EventsRawContract
                 $subscriberState,
             ],
             query: Util::array_transform_keys(
-                array_diff_key($parsed, $query_params),
+                array_intersect_key($parsed, $query_params),
                 ['externalAccountID' => 'externalAccountId'],
             ),
             headers: ['Accept' => '*/*'],
@@ -860,7 +860,7 @@ final class EventsRawService implements EventsRawContract
         );
         $externalEventID = $parsed['externalEventID'];
         unset($parsed['externalEventID']);
-        $query_params = array_flip(['externalAccountId']);
+        $query_params = array_flip(['externalAccountID']);
 
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -871,7 +871,7 @@ final class EventsRawService implements EventsRawContract
                 $subscriberState,
             ],
             query: Util::array_transform_keys(
-                array_diff_key($parsed, $query_params),
+                array_intersect_key($parsed, $query_params),
                 ['externalAccountID' => 'externalAccountId'],
             ),
             headers: ['Accept' => '*/*'],

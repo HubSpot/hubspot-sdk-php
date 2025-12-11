@@ -11,6 +11,7 @@ use HubspotSDK\Cms\SiteSearch\SiteSearchGetIndexedDataParams\Type;
 use HubspotSDK\Cms\SiteSearch\SiteSearchSearchParams\Language;
 use HubspotSDK\Cms\SiteSearch\SiteSearchSearchParams\Length;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Cms\SiteSearchContract;
 
@@ -44,9 +45,7 @@ final class SiteSearchService implements SiteSearchContract
         string|Type|null $type = null,
         ?RequestOptions $requestOptions = null,
     ): IndexedData {
-        $params = ['type' => $type];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(['type' => $type]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->getIndexedData($contentID, params: $params, requestOptions: $requestOptions);
@@ -99,27 +98,27 @@ final class SiteSearchService implements SiteSearchContract
         ?array $type = null,
         ?RequestOptions $requestOptions = null,
     ): PublicSearchResults {
-        $params = [
-            'autocomplete' => $autocomplete,
-            'boostLimit' => $boostLimit,
-            'boostRecent' => $boostRecent,
-            'domain' => $domain,
-            'groupID' => $groupID,
-            'hubdbQuery' => $hubdbQuery,
-            'language' => $language,
-            'length' => $length,
-            'limit' => $limit,
-            'matchPrefix' => $matchPrefix,
-            'offset' => $offset,
-            'pathPrefix' => $pathPrefix,
-            'popularityBoost' => $popularityBoost,
-            'property' => $property,
-            'q' => $q,
-            'tableID' => $tableID,
-            'type' => $type,
-        ];
-        // @phpstan-ignore-next-line function.impossibleType
-        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+        $params = Util::removeNulls(
+            [
+                'autocomplete' => $autocomplete,
+                'boostLimit' => $boostLimit,
+                'boostRecent' => $boostRecent,
+                'domain' => $domain,
+                'groupID' => $groupID,
+                'hubdbQuery' => $hubdbQuery,
+                'language' => $language,
+                'length' => $length,
+                'limit' => $limit,
+                'matchPrefix' => $matchPrefix,
+                'offset' => $offset,
+                'pathPrefix' => $pathPrefix,
+                'popularityBoost' => $popularityBoost,
+                'property' => $property,
+                'q' => $q,
+                'tableID' => $tableID,
+                'type' => $type,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->search(params: $params, requestOptions: $requestOptions);
