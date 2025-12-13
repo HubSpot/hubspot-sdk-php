@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type PropertyShape = array{propname?: mixed}
+ * @phpstan-type PropertyShape = array{_propname?: mixed}
  */
 final class Property implements BaseModel
 {
@@ -20,7 +20,7 @@ final class Property implements BaseModel
      * Filter for event completions that contain a specific value for an event property (e.g., `property.hs_city=portland`). For properties values with spaces, replaces spaces with `%20` or `+` (e.g., `property.hs_city=new+york`).
      */
     #[Optional('{propname}')]
-    public mixed $propname;
+    public mixed $_propname;
 
     public function __construct()
     {
@@ -32,11 +32,11 @@ final class Property implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(mixed $propname = null): self
+    public static function with(mixed $_propname = null): self
     {
         $self = new self;
 
-        null !== $propname && $self['propname'] = $propname;
+        null !== $_propname && $self['_propname'] = $_propname;
 
         return $self;
     }
@@ -44,10 +44,10 @@ final class Property implements BaseModel
     /**
      * Filter for event completions that contain a specific value for an event property (e.g., `property.hs_city=portland`). For properties values with spaces, replaces spaces with `%20` or `+` (e.g., `property.hs_city=new+york`).
      */
-    public function withPropname(mixed $propname): self
+    public function withPropname(mixed $_propname): self
     {
         $self = clone $this;
-        $self['propname'] = $propname;
+        $self['_propname'] = $_propname;
 
         return $self;
     }

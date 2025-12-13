@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\MediaBridge;
 
-use HubspotSDK\Cms\MediaBridge\Or1\Operator;
+use HubspotSDK\Cms\MediaBridge\And_\Operator;
 use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\MapOf;
 
 /**
- * @phpstan-type Or1Shape = array{
+ * @phpstan-type AndShape = array{
  *   enclosedInParentheses: bool,
  *   operator: value-of<Operator>,
  *   inputs?: list<array<string,mixed>>|null,
@@ -20,9 +20,9 @@ use HubspotSDK\Core\Conversion\MapOf;
  *   value?: bool|null,
  * }
  */
-final class Or1 implements BaseModel
+final class And_ implements BaseModel
 {
-    /** @use SdkModel<Or1Shape> */
+    /** @use SdkModel<AndShape> */
     use SdkModel;
 
     #[Required]
@@ -43,17 +43,17 @@ final class Or1 implements BaseModel
     public ?bool $value;
 
     /**
-     * `new Or1()` is missing required properties by the API.
+     * `new And_()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * Or1::with(enclosedInParentheses: ..., operator: ...)
+     * And_::with(enclosedInParentheses: ..., operator: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
      *
      * ```
-     * (new Or1)->withEnclosedInParentheses(...)->withOperator(...)
+     * (new And_)->withEnclosedInParentheses(...)->withOperator(...)
      * ```
      */
     public function __construct()
@@ -71,7 +71,7 @@ final class Or1 implements BaseModel
      */
     public static function with(
         bool $enclosedInParentheses,
-        Operator|string $operator = 'OR',
+        Operator|string $operator = 'AND',
         ?array $inputs = null,
         ?string $propertyName = null,
         ?bool $value = null,

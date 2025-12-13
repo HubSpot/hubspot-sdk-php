@@ -61,7 +61,7 @@ final class PropertyValidationsRawService implements PropertyValidationsRawContr
      *
      * @throws APIException
      */
-    public function crmV3PropertyValidationsObjectTypeIDPropertyNameRuleTypeRuleType(
+    public function _crmV3PropertyValidationsObjectTypeIDPropertyNameRuleTypeRuleType(
         RuleType|string $ruleType,
         array|PropertyValidationCrmV3PropertyValidationsObjectTypeIDPropertyNameRuleTypeRuleTypeParams $params,
         ?RequestOptions $requestOptions = null,

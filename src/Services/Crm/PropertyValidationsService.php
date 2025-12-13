@@ -59,7 +59,7 @@ final class PropertyValidationsService implements PropertyValidationsContract
      *
      * @throws APIException
      */
-    public function crmV3PropertyValidationsObjectTypeIDPropertyNameRuleTypeRuleType(
+    public function _crmV3PropertyValidationsObjectTypeIDPropertyNameRuleTypeRuleType(
         RuleType|string $ruleType,
         string $objectTypeID,
         string $propertyName,
@@ -75,7 +75,7 @@ final class PropertyValidationsService implements PropertyValidationsContract
         );
 
         // @phpstan-ignore-next-line argument.type
-        $response = $this->raw->crmV3PropertyValidationsObjectTypeIDPropertyNameRuleTypeRuleType($ruleType, params: $params, requestOptions: $requestOptions);
+        $response = $this->raw->_crmV3PropertyValidationsObjectTypeIDPropertyNameRuleTypeRuleType($ruleType, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }

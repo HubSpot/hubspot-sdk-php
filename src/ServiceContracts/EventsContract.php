@@ -20,11 +20,11 @@ interface EventsContract
      * @param string $eventType The event type name. You can retrieve available event types using the [event types endpoint](#get-%2Fevents%2Fv3%2Fevents%2Fevent-types).
      * @param int $limit the maximum number of results to display per page
      * @param int $objectID The ID of the CRM Object to filter event instances on. When including this parameter, you must also include the `objectType` parameter.
-     * @param array{propname?: mixed} $objectProperty
+     * @param array{_propname?: mixed} $objectProperty
      * @param string $objectType The type of CRM object to filter event instances on (e.g., `contact`). To retrieve event data for a specific CRM record, include the additional `objectId` query parameter (below).
      * @param string|\DateTimeInterface $occurredAfter filter for event data that occurred after a specific datetime
      * @param string|\DateTimeInterface $occurredBefore filter for event data that occurred before a specific datetime
-     * @param array{propname?: mixed} $property
+     * @param array{_propname?: mixed} $property
      * @param list<string> $sort sort direction based on the timestamp of the event instance, `ASCENDING` or `DESCENDING`
      *
      * @return Page<ExternalUnifiedEvent>

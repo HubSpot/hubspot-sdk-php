@@ -35,11 +35,11 @@ final class EventsRawService implements EventsRawContract
      *   eventType?: string,
      *   limit?: int,
      *   objectID?: int,
-     *   objectProperty?: array{propname?: mixed},
+     *   objectProperty?: array{_propname?: mixed},
      *   objectType?: string,
      *   occurredAfter?: string|\DateTimeInterface,
      *   occurredBefore?: string|\DateTimeInterface,
-     *   property?: array{propname?: mixed},
+     *   property?: array{_propname?: mixed},
      *   sort?: list<string>,
      * }|EventListParams $params
      *

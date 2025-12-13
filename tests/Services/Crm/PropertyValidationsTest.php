@@ -58,7 +58,7 @@ final class PropertyValidationsTest extends TestCase
             ->client
             ->crm
             ->propertyValidations
-            ->crmV3PropertyValidationsObjectTypeIDPropertyNameRuleTypeRuleType(
+            ->_crmV3PropertyValidationsObjectTypeIDPropertyNameRuleTypeRuleType(
                 'AFTER_DATETIME_DURATION',
                 objectTypeID: 'objectTypeId',
                 propertyName: 'propertyName',
@@ -81,7 +81,7 @@ final class PropertyValidationsTest extends TestCase
             ->client
             ->crm
             ->propertyValidations
-            ->crmV3PropertyValidationsObjectTypeIDPropertyNameRuleTypeRuleType(
+            ->_crmV3PropertyValidationsObjectTypeIDPropertyNameRuleTypeRuleType(
                 'AFTER_DATETIME_DURATION',
                 objectTypeID: 'objectTypeId',
                 propertyName: 'propertyName',
