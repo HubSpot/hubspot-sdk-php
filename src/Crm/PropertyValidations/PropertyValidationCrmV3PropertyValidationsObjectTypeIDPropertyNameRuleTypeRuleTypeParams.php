@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Update a specific validation rule for a property identified by its name and rule type.
  *
- * @see HubspotSDK\Services\Crm\PropertyValidationsService::crmV3PropertyValidationsObjectTypeIDPropertyNameRuleTypeRuleType()
+ * @see HubspotSDK\Services\Crm\PropertyValidationsService::_crmV3PropertyValidationsObjectTypeIDPropertyNameRuleTypeRuleType()
  *
  * @phpstan-type PropertyValidationCrmV3PropertyValidationsObjectTypeIDPropertyNameRuleTypeRuleTypeParamsShape = array{
  *   objectTypeID: string, propertyName: string, ruleArguments: list<string>

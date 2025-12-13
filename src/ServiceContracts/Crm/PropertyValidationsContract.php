@@ -34,7 +34,7 @@ interface PropertyValidationsContract
      *
      * @throws APIException
      */
-    public function crmV3PropertyValidationsObjectTypeIDPropertyNameRuleTypeRuleType(
+    public function _crmV3PropertyValidationsObjectTypeIDPropertyNameRuleTypeRuleType(
         RuleType|string $ruleType,
         string $objectTypeID,
         string $propertyName,

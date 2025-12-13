@@ -23,11 +23,11 @@ use HubspotSDK\Events\EventListParams\Property;
  *   eventType?: string,
  *   limit?: int,
  *   objectID?: int,
- *   objectProperty?: ObjectProperty|array{propname?: mixed},
+ *   objectProperty?: ObjectProperty|array{_propname?: mixed},
  *   objectType?: string,
  *   occurredAfter?: \DateTimeInterface,
  *   occurredBefore?: \DateTimeInterface,
- *   property?: Property|array{propname?: mixed},
+ *   property?: Property|array{_propname?: mixed},
  *   sort?: list<string>,
  * }
  */
@@ -115,8 +115,8 @@ final class EventListParams implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<string> $id
-     * @param ObjectProperty|array{propname?: mixed} $objectProperty
-     * @param Property|array{propname?: mixed} $property
+     * @param ObjectProperty|array{_propname?: mixed} $objectProperty
+     * @param Property|array{_propname?: mixed} $property
      * @param list<string> $sort
      */
     public static function with(
@@ -217,7 +217,7 @@ final class EventListParams implements BaseModel
     }
 
     /**
-     * @param ObjectProperty|array{propname?: mixed} $objectProperty
+     * @param ObjectProperty|array{_propname?: mixed} $objectProperty
      */
     public function withObjectProperty(
         ObjectProperty|array $objectProperty
@@ -262,7 +262,7 @@ final class EventListParams implements BaseModel
     }
 
     /**
-     * @param Property|array{propname?: mixed} $property
+     * @param Property|array{_propname?: mixed} $property
      */
     public function withProperty(Property|array $property): self
     {

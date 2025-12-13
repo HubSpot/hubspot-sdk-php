@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\MediaBridge\Xor1;
+namespace HubspotSDK\Cms\MediaBridge\Xor_;
 
 enum Operator: string
 {
