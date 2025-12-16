@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Cms\SourceCodeService::getMetadata()
  *
  * @phpstan-type SourceCodeGetMetadataParamsShape = array{
- *   environment: string, properties?: string
+ *   environment: string, properties?: string|null
  * }
  */
 final class SourceCodeGetMetadataParams implements BaseModel

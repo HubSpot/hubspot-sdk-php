@@ -9,11 +9,14 @@ use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\ForwardPaging;
-use HubspotSDK\NextPage;
 
 /**
+ * @phpstan-import-type PublicAPIUserActionEventShape from \HubspotSDK\Account\Activity\PublicAPIUserActionEvent
+ * @phpstan-import-type ForwardPagingShape from \HubspotSDK\ForwardPaging
+ *
  * @phpstan-type CollectionResponsePublicAPIUserActionEventForwardPagingShape = array{
- *   results: list<PublicAPIUserActionEvent>, paging?: ForwardPaging|null
+ *   results: list<PublicAPIUserActionEventShape>,
+ *   paging?: null|ForwardPaging|ForwardPagingShape,
  * }
  */
 final class CollectionResponsePublicAPIUserActionEventForwardPaging implements BaseModel
@@ -52,16 +55,8 @@ final class CollectionResponsePublicAPIUserActionEventForwardPaging implements B
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicAPIUserActionEvent|array{
-     *   id: string,
-     *   actingUser: ActingUser,
-     *   action: string,
-     *   category: string,
-     *   occurredAt: \DateTimeInterface,
-     *   subCategory?: string|null,
-     *   targetObjectID?: string|null,
-     * }> $results
-     * @param ForwardPaging|array{next?: NextPage|null} $paging
+     * @param list<PublicAPIUserActionEventShape> $results
+     * @param ForwardPagingShape $paging
      */
     public static function with(
         array $results,
@@ -77,15 +72,7 @@ final class CollectionResponsePublicAPIUserActionEventForwardPaging implements B
     }
 
     /**
-     * @param list<PublicAPIUserActionEvent|array{
-     *   id: string,
-     *   actingUser: ActingUser,
-     *   action: string,
-     *   category: string,
-     *   occurredAt: \DateTimeInterface,
-     *   subCategory?: string|null,
-     *   targetObjectID?: string|null,
-     * }> $results
+     * @param list<PublicAPIUserActionEventShape> $results
      */
     public function withResults(array $results): self
     {
@@ -96,7 +83,7 @@ final class CollectionResponsePublicAPIUserActionEventForwardPaging implements B
     }
 
     /**
-     * @param ForwardPaging|array{next?: NextPage|null} $paging
+     * @param ForwardPagingShape $paging
      */
     public function withPaging(ForwardPaging|array $paging): self
     {

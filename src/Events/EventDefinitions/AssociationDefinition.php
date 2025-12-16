@@ -20,8 +20,8 @@ use HubspotSDK\Events\EventDefinitions\AssociationDefinition\ToObjectType;
  * @phpstan-type AssociationDefinitionShape = array{
  *   id: int,
  *   allowsCustomLabels: bool,
- *   cardinality: value-of<Cardinality>,
- *   category: value-of<Category>,
+ *   cardinality: Cardinality|value-of<Cardinality>,
+ *   category: Category|value-of<Category>,
  *   fromObjectTypeID: string,
  *   hasAllAssociatedObjects: bool,
  *   hasCascadingDeletes: bool,
@@ -29,7 +29,7 @@ use HubspotSDK\Events\EventDefinitions\AssociationDefinition\ToObjectType;
  *   hasUserEnforcedMaxToObjectIDs: bool,
  *   hidden: bool,
  *   inverseAllowsCustomLabels: bool,
- *   inverseCardinality: value-of<InverseCardinality>,
+ *   inverseCardinality: InverseCardinality|value-of<InverseCardinality>,
  *   inverseHasAllAssociatedObjects: bool,
  *   inverseID: int,
  *   inverseName: string,
@@ -40,10 +40,10 @@ use HubspotSDK\Events\EventDefinitions\AssociationDefinition\ToObjectType;
  *   name: string,
  *   portalUniqueIdentifier: string,
  *   toObjectTypeID: string,
- *   fromObjectType?: value-of<FromObjectType>|null,
+ *   fromObjectType?: null|FromObjectType|value-of<FromObjectType>,
  *   inverseLabel?: string|null,
  *   label?: string|null,
- *   toObjectType?: value-of<ToObjectType>|null,
+ *   toObjectType?: null|ToObjectType|value-of<ToObjectType>,
  * }
  */
 final class AssociationDefinition implements BaseModel

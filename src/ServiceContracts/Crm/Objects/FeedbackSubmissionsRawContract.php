@@ -19,7 +19,7 @@ interface FeedbackSubmissionsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|FeedbackSubmissionListParams $params
+     * @param array<string,mixed>|FeedbackSubmissionListParams $params
      *
      * @return BaseResponse<Page<SimplePublicObjectWithAssociations>>
      *
@@ -33,7 +33,7 @@ interface FeedbackSubmissionsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|FeedbackSubmissionGetParams $params
+     * @param array<string,mixed>|FeedbackSubmissionGetParams $params
      *
      * @return BaseResponse<SimplePublicObjectWithAssociations>
      *
@@ -48,7 +48,7 @@ interface FeedbackSubmissionsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|FeedbackSubmissionSearchParams $params
+     * @param array<string,mixed>|FeedbackSubmissionSearchParams $params
      *
      * @return BaseResponse<CollectionResponseWithTotalSimplePublicObject>
      *

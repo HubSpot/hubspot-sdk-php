@@ -9,8 +9,10 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type ExchangeRateUpdateRequestShape from \HubspotSDK\Settings\Currencies\ExchangeRateUpdateRequest
+ *
  * @phpstan-type BatchInputExchangeRateUpdateRequestShape = array{
- *   inputs: list<ExchangeRateUpdateRequest>
+ *   inputs: list<ExchangeRateUpdateRequestShape>
  * }
  */
 final class BatchInputExchangeRateUpdateRequest implements BaseModel
@@ -46,9 +48,7 @@ final class BatchInputExchangeRateUpdateRequest implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<ExchangeRateUpdateRequest|array{
-     *   id: string, conversionRate: float, effectiveAt?: \DateTimeInterface|null
-     * }> $inputs
+     * @param list<ExchangeRateUpdateRequestShape> $inputs
      */
     public static function with(array $inputs): self
     {
@@ -60,9 +60,7 @@ final class BatchInputExchangeRateUpdateRequest implements BaseModel
     }
 
     /**
-     * @param list<ExchangeRateUpdateRequest|array{
-     *   id: string, conversionRate: float, effectiveAt?: \DateTimeInterface|null
-     * }> $inputs
+     * @param list<ExchangeRateUpdateRequestShape> $inputs
      */
     public function withInputs(array $inputs): self
     {

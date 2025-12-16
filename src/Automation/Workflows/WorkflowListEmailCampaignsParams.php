@@ -13,7 +13,10 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Automation\WorkflowsService::listEmailCampaigns()
  *
  * @phpstan-type WorkflowListEmailCampaignsParamsShape = array{
- *   after?: string, before?: string, flowID?: list<string>, limit?: int
+ *   after?: string|null,
+ *   before?: string|null,
+ *   flowID?: list<string>|null,
+ *   limit?: int|null,
  * }
  */
 final class WorkflowListEmailCampaignsParams implements BaseModel

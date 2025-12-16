@@ -9,8 +9,6 @@ use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Marketing\Events\PropertyValue\DataSensitivity;
-use HubspotSDK\Marketing\Events\PropertyValue\Source;
 
 /**
  * Updates the details of an existing Marketing Event identified by its externalAccountId, externalEventId if it exists.
@@ -19,38 +17,20 @@ use HubspotSDK\Marketing\Events\PropertyValue\Source;
  *
  * @see HubspotSDK\Services\Marketing\EventsService::updateByExternalEventID()
  *
+ * @phpstan-import-type PropertyValueShape from \HubspotSDK\Marketing\Events\PropertyValue
+ *
  * @phpstan-type EventUpdateByExternalEventIDParamsShape = array{
  *   externalAccountID: string,
- *   customProperties: list<PropertyValue|array{
- *     dataSensitivity: value-of<DataSensitivity>,
- *     isEncrypted: bool,
- *     isLargeValue: bool,
- *     name: string,
- *     persistenceTimestamp: int,
- *     requestID: string,
- *     selectedByUser: bool,
- *     selectedByUserTimestamp: int,
- *     source: value-of<Source>,
- *     sourceID: string,
- *     sourceLabel: string,
- *     sourceMetadata: string,
- *     sourceUpstreamDeployable: string,
- *     sourceVid: list<int>,
- *     timestamp: int,
- *     unit: string,
- *     updatedByUserID: int,
- *     useTimestampAsPersistenceTimestamp: bool,
- *     value: string,
- *   }>,
- *   endDateTime?: \DateTimeInterface,
- *   eventCancelled?: bool,
- *   eventCompleted?: bool,
- *   eventDescription?: string,
- *   eventName?: string,
- *   eventOrganizer?: string,
- *   eventType?: string,
- *   eventURL?: string,
- *   startDateTime?: \DateTimeInterface,
+ *   customProperties: list<PropertyValueShape>,
+ *   endDateTime?: \DateTimeInterface|null,
+ *   eventCancelled?: bool|null,
+ *   eventCompleted?: bool|null,
+ *   eventDescription?: string|null,
+ *   eventName?: string|null,
+ *   eventOrganizer?: string|null,
+ *   eventType?: string|null,
+ *   eventURL?: string|null,
+ *   startDateTime?: \DateTimeInterface|null,
  * }
  */
 final class EventUpdateByExternalEventIDParams implements BaseModel
@@ -153,27 +133,7 @@ final class EventUpdateByExternalEventIDParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PropertyValue|array{
-     *   dataSensitivity: value-of<DataSensitivity>,
-     *   isEncrypted: bool,
-     *   isLargeValue: bool,
-     *   name: string,
-     *   persistenceTimestamp: int,
-     *   requestID: string,
-     *   selectedByUser: bool,
-     *   selectedByUserTimestamp: int,
-     *   source: value-of<Source>,
-     *   sourceID: string,
-     *   sourceLabel: string,
-     *   sourceMetadata: string,
-     *   sourceUpstreamDeployable: string,
-     *   sourceVid: list<int>,
-     *   timestamp: int,
-     *   unit: string,
-     *   updatedByUserID: int,
-     *   useTimestampAsPersistenceTimestamp: bool,
-     *   value: string,
-     * }> $customProperties
+     * @param list<PropertyValueShape> $customProperties
      */
     public static function with(
         string $externalAccountID,
@@ -221,27 +181,7 @@ final class EventUpdateByExternalEventIDParams implements BaseModel
      * A list of PropertyValues. These can be whatever kind of property names and values you want. However, they must already exist on the HubSpot account's definition of the MarketingEvent Object. If they don't they will be filtered out and not set.
      * In order to do this you'll need to create a new PropertyGroup on the HubSpot account's MarketingEvent object for your specific app and create the Custom Property you want to track on that HubSpot account. Do not create any new default properties on the MarketingEvent object as that will apply to all HubSpot accounts.
      *
-     * @param list<PropertyValue|array{
-     *   dataSensitivity: value-of<DataSensitivity>,
-     *   isEncrypted: bool,
-     *   isLargeValue: bool,
-     *   name: string,
-     *   persistenceTimestamp: int,
-     *   requestID: string,
-     *   selectedByUser: bool,
-     *   selectedByUserTimestamp: int,
-     *   source: value-of<Source>,
-     *   sourceID: string,
-     *   sourceLabel: string,
-     *   sourceMetadata: string,
-     *   sourceUpstreamDeployable: string,
-     *   sourceVid: list<int>,
-     *   timestamp: int,
-     *   unit: string,
-     *   updatedByUserID: int,
-     *   useTimestampAsPersistenceTimestamp: bool,
-     *   value: string,
-     * }> $customProperties
+     * @param list<PropertyValueShape> $customProperties
      */
     public function withCustomProperties(array $customProperties): self
     {

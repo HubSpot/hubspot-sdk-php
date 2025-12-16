@@ -13,10 +13,12 @@ use HubspotSDK\Core\Conversion\ListOf;
 /**
  * Ye olde error.
  *
+ * @phpstan-import-type ErrorDetailShape from \HubspotSDK\ErrorDetail
+ *
  * @phpstan-type StandardErrorShape = array{
  *   category: string,
  *   context: array<string,list<string>>,
- *   errors: list<ErrorDetail>,
+ *   errors: list<ErrorDetailShape>,
  *   links: array<string,string>,
  *   message: string,
  *   status: string,
@@ -121,13 +123,7 @@ final class StandardError implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param array<string,list<string>> $context
-     * @param list<ErrorDetail|array{
-     *   message: string,
-     *   code?: string|null,
-     *   context?: array<string,list<string>>|null,
-     *   in?: string|null,
-     *   subCategory?: string|null,
-     * }> $errors
+     * @param list<ErrorDetailShape> $errors
      * @param array<string,string> $links
      */
     public static function with(
@@ -182,13 +178,7 @@ final class StandardError implements BaseModel
     /**
      * The detailed error objects.
      *
-     * @param list<ErrorDetail|array{
-     *   message: string,
-     *   code?: string|null,
-     *   context?: array<string,list<string>>|null,
-     *   in?: string|null,
-     *   subCategory?: string|null,
-     * }> $errors
+     * @param list<ErrorDetailShape> $errors
      */
     public function withErrors(array $errors): self
     {

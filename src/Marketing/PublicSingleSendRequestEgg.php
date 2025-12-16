@@ -12,9 +12,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * A request to send a single email asynchronously.
  *
+ * @phpstan-import-type PublicSingleSendEmailShape from \HubspotSDK\Marketing\PublicSingleSendEmail
+ *
  * @phpstan-type PublicSingleSendRequestEggShape = array{
  *   emailID: int,
- *   message: PublicSingleSendEmail,
+ *   message: PublicSingleSendEmail|PublicSingleSendEmailShape,
  *   contactProperties?: array<string,string>|null,
  *   customProperties?: array<string,mixed>|null,
  * }
@@ -77,14 +79,7 @@ final class PublicSingleSendRequestEgg implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param PublicSingleSendEmail|array{
-     *   to: string,
-     *   bcc?: list<string>|null,
-     *   cc?: list<string>|null,
-     *   from?: string|null,
-     *   replyTo?: list<string>|null,
-     *   sendID?: string|null,
-     * } $message
+     * @param PublicSingleSendEmailShape $message
      * @param array<string,string> $contactProperties
      * @param array<string,mixed> $customProperties
      */
@@ -119,14 +114,7 @@ final class PublicSingleSendRequestEgg implements BaseModel
     /**
      * A JSON object containing anything you want to override.
      *
-     * @param PublicSingleSendEmail|array{
-     *   to: string,
-     *   bcc?: list<string>|null,
-     *   cc?: list<string>|null,
-     *   from?: string|null,
-     *   replyTo?: list<string>|null,
-     *   sendID?: string|null,
-     * } $message
+     * @param PublicSingleSendEmailShape $message
      */
     public function withMessage(PublicSingleSendEmail|array $message): self
     {

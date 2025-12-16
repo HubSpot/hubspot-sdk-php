@@ -16,7 +16,7 @@ interface EnrollmentsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|EnrollmentEnrollParams $params
+     * @param array<string,mixed>|EnrollmentEnrollParams $params
      *
      * @return BaseResponse<PublicSequenceEnrollmentLiteResponse>
      *

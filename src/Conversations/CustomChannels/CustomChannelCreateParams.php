@@ -18,10 +18,10 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-type CustomChannelCreateParamsShape = array{
  *   capabilities: array<string,mixed>,
  *   name: string,
- *   channelAccountConnectionRedirectURL?: string,
- *   channelDescription?: string,
- *   channelLogoURL?: string,
- *   webhookURL?: string,
+ *   channelAccountConnectionRedirectURL?: string|null,
+ *   channelDescription?: string|null,
+ *   channelLogoURL?: string|null,
+ *   webhookURL?: string|null,
  * }
  */
 final class CustomChannelCreateParams implements BaseModel

@@ -9,11 +9,15 @@ use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\ForwardPaging;
-use HubspotSDK\NextPage;
 
 /**
+ * @phpstan-import-type PublicInboxShape from \HubspotSDK\Conversations\PublicInbox
+ * @phpstan-import-type ForwardPagingShape from \HubspotSDK\ForwardPaging
+ *
  * @phpstan-type CollectionResponseWithTotalPublicInboxForwardPagingShape = array{
- *   results: list<PublicInbox>, total: int, paging?: ForwardPaging|null
+ *   results: list<PublicInboxShape>,
+ *   total: int,
+ *   paging?: null|ForwardPaging|ForwardPagingShape,
  * }
  */
 final class CollectionResponseWithTotalPublicInboxForwardPaging implements BaseModel
@@ -59,16 +63,8 @@ final class CollectionResponseWithTotalPublicInboxForwardPaging implements BaseM
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicInbox|array{
-     *   id: string,
-     *   archived: bool,
-     *   createdAt: \DateTimeInterface,
-     *   name: string,
-     *   type: string,
-     *   updatedAt: \DateTimeInterface,
-     *   archivedAt?: \DateTimeInterface|null,
-     * }> $results
-     * @param ForwardPaging|array{next?: NextPage|null} $paging
+     * @param list<PublicInboxShape> $results
+     * @param ForwardPagingShape $paging
      */
     public static function with(
         array $results,
@@ -86,15 +82,7 @@ final class CollectionResponseWithTotalPublicInboxForwardPaging implements BaseM
     }
 
     /**
-     * @param list<PublicInbox|array{
-     *   id: string,
-     *   archived: bool,
-     *   createdAt: \DateTimeInterface,
-     *   name: string,
-     *   type: string,
-     *   updatedAt: \DateTimeInterface,
-     *   archivedAt?: \DateTimeInterface|null,
-     * }> $results
+     * @param list<PublicInboxShape> $results
      */
     public function withResults(array $results): self
     {
@@ -113,7 +101,7 @@ final class CollectionResponseWithTotalPublicInboxForwardPaging implements BaseM
     }
 
     /**
-     * @param ForwardPaging|array{next?: NextPage|null} $paging
+     * @param ForwardPagingShape $paging
      */
     public function withPaging(ForwardPaging|array $paging): self
     {

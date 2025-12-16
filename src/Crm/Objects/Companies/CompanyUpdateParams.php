@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Crm\Objects\CompaniesService::update()
  *
  * @phpstan-type CompanyUpdateParamsShape = array{
- *   properties: array<string,string>, idProperty?: string
+ *   properties: array<string,string>, idProperty?: string|null
  * }
  */
 final class CompanyUpdateParams implements BaseModel

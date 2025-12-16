@@ -25,6 +25,27 @@ use HubspotSDK\Events\EventDefinitions\RollingPropertyUpdatedOperation;
 use HubspotSDK\Events\EventDefinitions\StringPropertyOperation;
 use HubspotSDK\Events\EventDefinitions\TimePointOperation;
 
+/**
+ * @phpstan-import-type BoolPropertyOperationShape from \HubspotSDK\Events\EventDefinitions\BoolPropertyOperation
+ * @phpstan-import-type NumberPropertyOperationShape from \HubspotSDK\Events\EventDefinitions\NumberPropertyOperation
+ * @phpstan-import-type StringPropertyOperationShape from \HubspotSDK\Events\EventDefinitions\StringPropertyOperation
+ * @phpstan-import-type DateTimePropertyOperationShape from \HubspotSDK\Events\EventDefinitions\DateTimePropertyOperation
+ * @phpstan-import-type RangedDatePropertyOperationShape from \HubspotSDK\Events\EventDefinitions\RangedDatePropertyOperation
+ * @phpstan-import-type ComparativeDatePropertyOperationShape from \HubspotSDK\Events\EventDefinitions\ComparativeDatePropertyOperation
+ * @phpstan-import-type ComparativePropertyUpdatedOperationShape from \HubspotSDK\Events\EventDefinitions\ComparativePropertyUpdatedOperation
+ * @phpstan-import-type RollingDateRangePropertyOperationShape from \HubspotSDK\Events\EventDefinitions\RollingDateRangePropertyOperation
+ * @phpstan-import-type RollingPropertyUpdatedOperationShape from \HubspotSDK\Events\EventDefinitions\RollingPropertyUpdatedOperation
+ * @phpstan-import-type EnumerationPropertyOperationShape from \HubspotSDK\Events\EventDefinitions\EnumerationPropertyOperation
+ * @phpstan-import-type AllPropertyTypesOperationShape from \HubspotSDK\Events\EventDefinitions\AllPropertyTypesOperation
+ * @phpstan-import-type RangedNumberPropertyOperationShape from \HubspotSDK\Events\EventDefinitions\RangedNumberPropertyOperation
+ * @phpstan-import-type MultiStringPropertyOperationShape from \HubspotSDK\Events\EventDefinitions\MultiStringPropertyOperation
+ * @phpstan-import-type DatePropertyOperationShape from \HubspotSDK\Events\EventDefinitions\DatePropertyOperation
+ * @phpstan-import-type CalendarDatePropertyOperationShape from \HubspotSDK\Events\EventDefinitions\CalendarDatePropertyOperation
+ * @phpstan-import-type TimePointOperationShape from \HubspotSDK\Events\EventDefinitions\TimePointOperation
+ * @phpstan-import-type RangedTimeOperationShape from \HubspotSDK\Events\EventDefinitions\RangedTimeOperation
+ *
+ * @phpstan-type OperationShape = BoolPropertyOperationShape|NumberPropertyOperationShape|StringPropertyOperationShape|DateTimePropertyOperationShape|RangedDatePropertyOperationShape|ComparativeDatePropertyOperationShape|ComparativePropertyUpdatedOperationShape|RollingDateRangePropertyOperationShape|RollingPropertyUpdatedOperationShape|EnumerationPropertyOperationShape|AllPropertyTypesOperationShape|RangedNumberPropertyOperationShape|MultiStringPropertyOperationShape|DatePropertyOperationShape|CalendarDatePropertyOperationShape|TimePointOperationShape|RangedTimeOperationShape
+ */
 final class Operation implements ConverterSource
 {
     use SdkUnion;

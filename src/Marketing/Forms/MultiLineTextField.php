@@ -15,7 +15,7 @@ use HubspotSDK\Marketing\Forms\MultiLineTextField\FieldType;
  *
  * @phpstan-type MultiLineTextFieldShape = array{
  *   dependentFields: list<mixed>,
- *   fieldType: value-of<FieldType>,
+ *   fieldType: FieldType|value-of<FieldType>,
  *   hidden: bool,
  *   label: string,
  *   name: string,

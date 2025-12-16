@@ -82,7 +82,7 @@ final class EventsRawService implements EventsRawContract
      *     email?: string,
      *     extraData?: mixed,
      *     objectID?: string,
-     *     timelineIFrame?: array<mixed>|TimelineEventIFrame,
+     *     timelineIFrame?: array<string,mixed>|TimelineEventIFrame,
      *     timestamp?: string|\DateTimeInterface,
      *     utk?: string,
      *   }>,

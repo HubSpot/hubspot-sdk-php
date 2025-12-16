@@ -10,6 +10,8 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type SignedAccessTokenShape from \HubspotSDK\Auth\OAuth\SignedAccessToken
+ *
  * @phpstan-type AccessTokenInfoResponseShape = array{
  *   token: string,
  *   appID: int,
@@ -20,7 +22,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   userID: int,
  *   hubDomain?: string|null,
  *   isPrivateDistribution?: bool|null,
- *   signedAccessToken?: SignedAccessToken|null,
+ *   signedAccessToken?: null|SignedAccessToken|SignedAccessTokenShape,
  *   user?: string|null,
  * }
  */
@@ -103,23 +105,7 @@ final class AccessTokenInfoResponse implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<string> $scopes
-     * @param SignedAccessToken|array{
-     *   appID: int,
-     *   expiresAt: int,
-     *   hubID: int,
-     *   hublet: string,
-     *   installingUserID: int,
-     *   isPrivateDistribution: bool,
-     *   isServiceAccount: bool,
-     *   isUserLevel: bool,
-     *   newSignature: string,
-     *   scopes: string,
-     *   scopeToScopeGroupPks: string,
-     *   signature: string,
-     *   trialScopes: string,
-     *   trialScopeToScopeGroupPks: string,
-     *   userID: int,
-     * } $signedAccessToken
+     * @param SignedAccessTokenShape $signedAccessToken
      */
     public static function with(
         string $token,
@@ -228,23 +214,7 @@ final class AccessTokenInfoResponse implements BaseModel
     }
 
     /**
-     * @param SignedAccessToken|array{
-     *   appID: int,
-     *   expiresAt: int,
-     *   hubID: int,
-     *   hublet: string,
-     *   installingUserID: int,
-     *   isPrivateDistribution: bool,
-     *   isServiceAccount: bool,
-     *   isUserLevel: bool,
-     *   newSignature: string,
-     *   scopes: string,
-     *   scopeToScopeGroupPks: string,
-     *   signature: string,
-     *   trialScopes: string,
-     *   trialScopeToScopeGroupPks: string,
-     *   userID: int,
-     * } $signedAccessToken
+     * @param SignedAccessTokenShape $signedAccessToken
      */
     public function withSignedAccessToken(
         SignedAccessToken|array $signedAccessToken

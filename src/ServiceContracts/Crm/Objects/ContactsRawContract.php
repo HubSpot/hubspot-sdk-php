@@ -25,7 +25,7 @@ interface ContactsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|ContactCreateParams $params
+     * @param array<string,mixed>|ContactCreateParams $params
      *
      * @return BaseResponse<CreatedResponseSimplePublicObject>
      *
@@ -40,7 +40,7 @@ interface ContactsRawContract
      * @api
      *
      * @param string $contactID Path param:
-     * @param array<mixed>|ContactUpdateParams $params
+     * @param array<string,mixed>|ContactUpdateParams $params
      *
      * @return BaseResponse<SimplePublicObject>
      *
@@ -55,7 +55,7 @@ interface ContactsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|ContactListParams $params
+     * @param array<string,mixed>|ContactListParams $params
      *
      * @return BaseResponse<Page<SimplePublicObjectWithAssociations>>
      *
@@ -81,7 +81,7 @@ interface ContactsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|ContactGdprDeleteParams $params
+     * @param array<string,mixed>|ContactGdprDeleteParams $params
      *
      * @return BaseResponse<mixed>
      *
@@ -95,7 +95,7 @@ interface ContactsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|ContactGetParams $params
+     * @param array<string,mixed>|ContactGetParams $params
      *
      * @return BaseResponse<SimplePublicObjectWithAssociations>
      *
@@ -110,7 +110,7 @@ interface ContactsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|ContactMergeParams $params
+     * @param array<string,mixed>|ContactMergeParams $params
      *
      * @return BaseResponse<SimplePublicObject>
      *
@@ -124,7 +124,7 @@ interface ContactsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|ContactSearchParams $params
+     * @param array<string,mixed>|ContactSearchParams $params
      *
      * @return BaseResponse<CollectionResponseWithTotalSimplePublicObject>
      *

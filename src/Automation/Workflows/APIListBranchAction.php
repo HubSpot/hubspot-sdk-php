@@ -11,11 +11,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type APIConnectionShape from \HubspotSDK\Automation\Workflows\APIConnection
+ *
  * @phpstan-type APIListBranchActionShape = array{
  *   actionID: string,
  *   listBranches: list<mixed>,
- *   type: value-of<Type>,
- *   defaultBranch?: APIConnection|null,
+ *   type: Type|value-of<Type>,
+ *   defaultBranch?: null|APIConnection|APIConnectionShape,
  *   defaultBranchName?: string|null,
  * }
  */
@@ -70,9 +72,7 @@ final class APIListBranchAction implements BaseModel
      *
      * @param list<mixed> $listBranches
      * @param Type|value-of<Type> $type
-     * @param APIConnection|array{
-     *   edgeType: string, nextActionID: string
-     * } $defaultBranch
+     * @param APIConnectionShape $defaultBranch
      */
     public static function with(
         string $actionID,
@@ -124,9 +124,7 @@ final class APIListBranchAction implements BaseModel
     }
 
     /**
-     * @param APIConnection|array{
-     *   edgeType: string, nextActionID: string
-     * } $defaultBranch
+     * @param APIConnectionShape $defaultBranch
      */
     public function withDefaultBranch(APIConnection|array $defaultBranch): self
     {

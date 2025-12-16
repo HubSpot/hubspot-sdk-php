@@ -15,12 +15,12 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Account\ActivityService::listAuditLogs()
  *
  * @phpstan-type ActivityListAuditLogsParamsShape = array{
- *   actingUserID?: list<int>,
- *   after?: string,
- *   limit?: int,
- *   occurredAfter?: \DateTimeInterface,
- *   occurredBefore?: \DateTimeInterface,
- *   sort?: list<string>,
+ *   actingUserID?: list<int>|null,
+ *   after?: string|null,
+ *   limit?: int|null,
+ *   occurredAfter?: \DateTimeInterface|null,
+ *   occurredBefore?: \DateTimeInterface|null,
+ *   sort?: list<string>|null,
  * }
  */
 final class ActivityListAuditLogsParams implements BaseModel

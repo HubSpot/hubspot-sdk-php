@@ -20,14 +20,14 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Auth\OAuthService::createAccessToken()
  *
  * @phpstan-type OAuthCreateAccessTokenParamsShape = array{
- *   clientSecret?: string,
- *   refreshToken?: string,
- *   clientID?: string,
- *   code?: string,
- *   codeVerifier?: string,
- *   grantType?: GrantType|value-of<GrantType>,
- *   redirectUri?: string,
- *   scope?: string,
+ *   clientSecret?: string|null,
+ *   refreshToken?: string|null,
+ *   clientID?: string|null,
+ *   code?: string|null,
+ *   codeVerifier?: string|null,
+ *   grantType?: null|GrantType|value-of<GrantType>,
+ *   redirectUri?: string|null,
+ *   scope?: string|null,
  * }
  */
 final class OAuthCreateAccessTokenParams implements BaseModel

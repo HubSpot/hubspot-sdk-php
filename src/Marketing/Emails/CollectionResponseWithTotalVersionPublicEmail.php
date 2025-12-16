@@ -8,16 +8,18 @@ use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\NextPage;
 use HubspotSDK\Paging;
-use HubspotSDK\PreviousPage;
-use HubspotSDK\VersionUser;
 
 /**
  * Response object for collections of marketing emails with pagination information.
  *
+ * @phpstan-import-type VersionPublicEmailShape from \HubspotSDK\Marketing\Emails\VersionPublicEmail
+ * @phpstan-import-type PagingShape from \HubspotSDK\Paging
+ *
  * @phpstan-type CollectionResponseWithTotalVersionPublicEmailShape = array{
- *   results: list<VersionPublicEmail>, total: int, paging?: Paging|null
+ *   results: list<VersionPublicEmailShape>,
+ *   total: int,
+ *   paging?: null|Paging|PagingShape,
  * }
  */
 final class CollectionResponseWithTotalVersionPublicEmail implements BaseModel
@@ -68,13 +70,8 @@ final class CollectionResponseWithTotalVersionPublicEmail implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<VersionPublicEmail|array{
-     *   id: string,
-     *   object: PublicEmail,
-     *   updatedAt: \DateTimeInterface,
-     *   user: VersionUser,
-     * }> $results
-     * @param Paging|array{next?: NextPage|null, prev?: PreviousPage|null} $paging
+     * @param list<VersionPublicEmailShape> $results
+     * @param PagingShape $paging
      */
     public static function with(
         array $results,
@@ -94,12 +91,7 @@ final class CollectionResponseWithTotalVersionPublicEmail implements BaseModel
     /**
      * Collection of emails.
      *
-     * @param list<VersionPublicEmail|array{
-     *   id: string,
-     *   object: PublicEmail,
-     *   updatedAt: \DateTimeInterface,
-     *   user: VersionUser,
-     * }> $results
+     * @param list<VersionPublicEmailShape> $results
      */
     public function withResults(array $results): self
     {
@@ -121,7 +113,7 @@ final class CollectionResponseWithTotalVersionPublicEmail implements BaseModel
     }
 
     /**
-     * @param Paging|array{next?: NextPage|null, prev?: PreviousPage|null} $paging
+     * @param PagingShape $paging
      */
     public function withPaging(Paging|array $paging): self
     {

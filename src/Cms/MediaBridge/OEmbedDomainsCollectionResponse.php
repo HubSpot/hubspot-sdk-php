@@ -10,8 +10,10 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type IntegratorOEmbedDomainModelShape from \HubspotSDK\Cms\MediaBridge\IntegratorOEmbedDomainModel
+ *
  * @phpstan-type OEmbedDomainsCollectionResponseShape = array{
- *   results: list<IntegratorOEmbedDomainModel>, totalCount?: int|null
+ *   results: list<IntegratorOEmbedDomainModelShape>, totalCount?: int|null
  * }
  */
 final class OEmbedDomainsCollectionResponse implements BaseModel
@@ -50,15 +52,7 @@ final class OEmbedDomainsCollectionResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<IntegratorOEmbedDomainModel|array{
-     *   id: int,
-     *   appID: int,
-     *   createdAt: int,
-     *   deletedAt: int,
-     *   endpoints: Endpoints,
-     *   portalID: int,
-     *   updatedAt: int,
-     * }> $results
+     * @param list<IntegratorOEmbedDomainModelShape> $results
      */
     public static function with(array $results, ?int $totalCount = null): self
     {
@@ -72,15 +66,7 @@ final class OEmbedDomainsCollectionResponse implements BaseModel
     }
 
     /**
-     * @param list<IntegratorOEmbedDomainModel|array{
-     *   id: int,
-     *   appID: int,
-     *   createdAt: int,
-     *   deletedAt: int,
-     *   endpoints: Endpoints,
-     *   portalID: int,
-     *   updatedAt: int,
-     * }> $results
+     * @param list<IntegratorOEmbedDomainModelShape> $results
      */
     public function withResults(array $results): self
     {

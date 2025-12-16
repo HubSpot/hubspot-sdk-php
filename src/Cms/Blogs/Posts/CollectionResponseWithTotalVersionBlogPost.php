@@ -8,15 +8,15 @@ use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\NextPage;
 use HubspotSDK\Paging;
-use HubspotSDK\PreviousPage;
 
 /**
  * Response object for collections of blog post versions with pagination information.
  *
+ * @phpstan-import-type PagingShape from \HubspotSDK\Paging
+ *
  * @phpstan-type CollectionResponseWithTotalVersionBlogPostShape = array{
- *   results: list<mixed>, total: int, paging?: Paging|null
+ *   results: list<mixed>, total: int, paging?: null|Paging|PagingShape
  * }
  */
 final class CollectionResponseWithTotalVersionBlogPost implements BaseModel
@@ -68,7 +68,7 @@ final class CollectionResponseWithTotalVersionBlogPost implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<mixed> $results
-     * @param Paging|array{next?: NextPage|null, prev?: PreviousPage|null} $paging
+     * @param PagingShape $paging
      */
     public static function with(
         array $results,
@@ -110,7 +110,7 @@ final class CollectionResponseWithTotalVersionBlogPost implements BaseModel
     }
 
     /**
-     * @param Paging|array{next?: NextPage|null, prev?: PreviousPage|null} $paging
+     * @param PagingShape $paging
      */
     public function withPaging(Paging|array $paging): self
     {

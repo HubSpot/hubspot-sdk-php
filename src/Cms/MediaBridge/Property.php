@@ -21,19 +21,22 @@ use HubspotSDK\Option;
 /**
  * A HubSpot property.
  *
+ * @phpstan-import-type ObjectTypeIDProtoShape from \HubspotSDK\Cms\MediaBridge\ObjectTypeIDProto
+ * @phpstan-import-type OptionShape from \HubspotSDK\Option
+ *
  * @phpstan-type PropertyShape = array{
- *   allowedObjectTypes: list<ObjectTypeIDProto>,
+ *   allowedObjectTypes: list<ObjectTypeIDProtoShape>,
  *   calculated: bool,
  *   canArchive: bool,
  *   canRestore: bool,
  *   createdAt: int,
  *   createdUserID: int,
  *   currencyPropertyName: string,
- *   dataSensitivity: value-of<DataSensitivity>,
- *   dateDisplayHint: value-of<DateDisplayHint>,
+ *   dataSensitivity: DataSensitivity|value-of<DataSensitivity>,
+ *   dateDisplayHint: DateDisplayHint|value-of<DateDisplayHint>,
  *   deleted: bool,
  *   description: string,
- *   displayMode: value-of<DisplayMode>,
+ *   displayMode: DisplayMode|value-of<DisplayMode>,
  *   displayOrder: int,
  *   enforceMultivalueUniqueness: bool,
  *   externalOptions: bool,
@@ -53,21 +56,21 @@ use HubspotSDK\Option;
  *   label: string,
  *   mutableDefinitionNotDeletable: bool,
  *   name: string,
- *   numberDisplayHint: value-of<NumberDisplayHint>,
- *   options: list<Option>,
+ *   numberDisplayHint: NumberDisplayHint|value-of<NumberDisplayHint>,
+ *   options: list<OptionShape>,
  *   optionsAreMutable: bool,
- *   optionSortStrategy: value-of<OptionSortStrategy>,
+ *   optionSortStrategy: OptionSortStrategy|value-of<OptionSortStrategy>,
  *   owningAppID: int,
  *   portalID: int,
  *   readOnlyDefinition: bool,
  *   readOnlyValue: bool,
- *   referencedObjectType: value-of<ReferencedObjectType>,
+ *   referencedObjectType: ReferencedObjectType|value-of<ReferencedObjectType>,
  *   searchableInGlobalSearch: bool,
- *   searchTextAnalysisMode: value-of<SearchTextAnalysisMode>,
+ *   searchTextAnalysisMode: SearchTextAnalysisMode|value-of<SearchTextAnalysisMode>,
  *   sensitiveDataCategories: list<string>,
  *   showCurrencySymbol: bool,
- *   textDisplayHint: value-of<TextDisplayHint>,
- *   type: value-of<Type>,
+ *   textDisplayHint: TextDisplayHint|value-of<TextDisplayHint>,
+ *   type: Type|value-of<Type>,
  *   updatedAt: int,
  * }
  */
@@ -481,20 +484,12 @@ final class Property implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<ObjectTypeIDProto|array{
-     *   innerID: int, metaTypeID: int
-     * }> $allowedObjectTypes
+     * @param list<ObjectTypeIDProtoShape> $allowedObjectTypes
      * @param DataSensitivity|value-of<DataSensitivity> $dataSensitivity
      * @param DateDisplayHint|value-of<DateDisplayHint> $dateDisplayHint
      * @param DisplayMode|value-of<DisplayMode> $displayMode
      * @param NumberDisplayHint|value-of<NumberDisplayHint> $numberDisplayHint
-     * @param list<Option|array{
-     *   hidden: bool,
-     *   label: string,
-     *   value: string,
-     *   description?: string|null,
-     *   displayOrder?: int|null,
-     * }> $options
+     * @param list<OptionShape> $options
      * @param OptionSortStrategy|value-of<OptionSortStrategy> $optionSortStrategy
      * @param ReferencedObjectType|value-of<ReferencedObjectType> $referencedObjectType
      * @param SearchTextAnalysisMode|value-of<SearchTextAnalysisMode> $searchTextAnalysisMode
@@ -607,9 +602,7 @@ final class Property implements BaseModel
     /**
      * Object types permitted to use this property.
      *
-     * @param list<ObjectTypeIDProto|array{
-     *   innerID: int, metaTypeID: int
-     * }> $allowedObjectTypes
+     * @param list<ObjectTypeIDProtoShape> $allowedObjectTypes
      */
     public function withAllowedObjectTypes(array $allowedObjectTypes): self
     {
@@ -966,13 +959,7 @@ final class Property implements BaseModel
     /**
      * A list of valid options for the property. This field is required for enumerated properties.
      *
-     * @param list<Option|array{
-     *   hidden: bool,
-     *   label: string,
-     *   value: string,
-     *   description?: string|null,
-     *   displayOrder?: int|null,
-     * }> $options
+     * @param list<OptionShape> $options
      */
     public function withOptions(array $options): self
     {

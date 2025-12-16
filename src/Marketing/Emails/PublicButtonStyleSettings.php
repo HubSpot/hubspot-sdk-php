@@ -9,10 +9,12 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type PublicFontStyleShape from \HubspotSDK\Marketing\Emails\PublicFontStyle
+ *
  * @phpstan-type PublicButtonStyleSettingsShape = array{
  *   backgroundColor?: mixed,
  *   cornerRadius?: int|null,
- *   fontStyle?: PublicFontStyle|null,
+ *   fontStyle?: null|PublicFontStyle|PublicFontStyleShape,
  * }
  */
 final class PublicButtonStyleSettings implements BaseModel
@@ -39,14 +41,7 @@ final class PublicButtonStyleSettings implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param PublicFontStyle|array{
-     *   bold?: bool|null,
-     *   color?: string|null,
-     *   font?: string|null,
-     *   italic?: bool|null,
-     *   size?: int|null,
-     *   underline?: bool|null,
-     * } $fontStyle
+     * @param PublicFontStyleShape $fontStyle
      */
     public static function with(
         mixed $backgroundColor = null,
@@ -79,14 +74,7 @@ final class PublicButtonStyleSettings implements BaseModel
     }
 
     /**
-     * @param PublicFontStyle|array{
-     *   bold?: bool|null,
-     *   color?: string|null,
-     *   font?: string|null,
-     *   italic?: bool|null,
-     *   size?: int|null,
-     *   underline?: bool|null,
-     * } $fontStyle
+     * @param PublicFontStyleShape $fontStyle
      */
     public function withFontStyle(PublicFontStyle|array $fontStyle): self
     {

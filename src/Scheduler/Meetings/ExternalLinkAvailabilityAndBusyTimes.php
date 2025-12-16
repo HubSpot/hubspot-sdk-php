@@ -10,9 +10,12 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type ExternalUserBusyTimesShape from \HubspotSDK\Scheduler\Meetings\ExternalUserBusyTimes
+ * @phpstan-import-type ExternalLinkAvailabilityShape from \HubspotSDK\Scheduler\Meetings\ExternalLinkAvailability
+ *
  * @phpstan-type ExternalLinkAvailabilityAndBusyTimesShape = array{
- *   allUsersBusyTimes: list<ExternalUserBusyTimes>,
- *   linkAvailability?: ExternalLinkAvailability|null,
+ *   allUsersBusyTimes: list<ExternalUserBusyTimesShape>,
+ *   linkAvailability?: null|ExternalLinkAvailability|ExternalLinkAvailabilityShape,
  * }
  */
 final class ExternalLinkAvailabilityAndBusyTimes implements BaseModel
@@ -51,15 +54,8 @@ final class ExternalLinkAvailabilityAndBusyTimes implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<ExternalUserBusyTimes|array{
-     *   busyTimes: list<ExternalTimeRange>,
-     *   isOffline: bool,
-     *   meetingsUser: ExternalMeetingsUser,
-     * }> $allUsersBusyTimes
-     * @param ExternalLinkAvailability|array{
-     *   hasMore: bool,
-     *   linkAvailabilityByDuration: array<string,ExternalLinkAvailabilityForDuration>,
-     * } $linkAvailability
+     * @param list<ExternalUserBusyTimesShape> $allUsersBusyTimes
+     * @param ExternalLinkAvailabilityShape $linkAvailability
      */
     public static function with(
         array $allUsersBusyTimes,
@@ -75,11 +71,7 @@ final class ExternalLinkAvailabilityAndBusyTimes implements BaseModel
     }
 
     /**
-     * @param list<ExternalUserBusyTimes|array{
-     *   busyTimes: list<ExternalTimeRange>,
-     *   isOffline: bool,
-     *   meetingsUser: ExternalMeetingsUser,
-     * }> $allUsersBusyTimes
+     * @param list<ExternalUserBusyTimesShape> $allUsersBusyTimes
      */
     public function withAllUsersBusyTimes(array $allUsersBusyTimes): self
     {
@@ -90,10 +82,7 @@ final class ExternalLinkAvailabilityAndBusyTimes implements BaseModel
     }
 
     /**
-     * @param ExternalLinkAvailability|array{
-     *   hasMore: bool,
-     *   linkAvailabilityByDuration: array<string,ExternalLinkAvailabilityForDuration>,
-     * } $linkAvailability
+     * @param ExternalLinkAvailabilityShape $linkAvailability
      */
     public function withLinkAvailability(
         ExternalLinkAvailability|array $linkAvailability

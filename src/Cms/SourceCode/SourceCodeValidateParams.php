@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Cms\SourceCodeService::validate()
  *
  * @phpstan-type SourceCodeValidateParamsShape = array{
- *   environment: string, file?: string
+ *   environment: string, file?: string|null
  * }
  */
 final class SourceCodeValidateParams implements BaseModel

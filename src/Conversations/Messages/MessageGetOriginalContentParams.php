@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Conversations\MessagesService::getOriginalContent()
  *
  * @phpstan-type MessageGetOriginalContentParamsShape = array{
- *   threadID: int, property?: string
+ *   threadID: int, property?: string|null
  * }
  */
 final class MessageGetOriginalContentParams implements BaseModel

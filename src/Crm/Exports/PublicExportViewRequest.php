@@ -12,23 +12,23 @@ use HubspotSDK\Crm\Exports\PublicExportViewRequest\ExportInternalValuesOption;
 use HubspotSDK\Crm\Exports\PublicExportViewRequest\ExportType;
 use HubspotSDK\Crm\Exports\PublicExportViewRequest\Format;
 use HubspotSDK\Crm\Exports\PublicExportViewRequest\Language;
-use HubspotSDK\Crm\Filter;
-use HubspotSDK\Crm\FilterGroup;
 
 /**
+ * @phpstan-import-type PublicCrmSearchRequestShape from \HubspotSDK\Crm\Exports\PublicCrmSearchRequest
+ *
  * @phpstan-type PublicExportViewRequestShape = array{
  *   associatedObjectType: list<string>,
- *   exportInternalValuesOptions: list<value-of<ExportInternalValuesOption>>,
+ *   exportInternalValuesOptions: list<ExportInternalValuesOption|value-of<ExportInternalValuesOption>>,
  *   exportName: string,
- *   exportType: value-of<ExportType>,
- *   format: value-of<Format>,
+ *   exportType: ExportType|value-of<ExportType>,
+ *   format: Format|value-of<Format>,
  *   includeLabeledAssociations: bool,
  *   includePrimaryDisplayPropertyForAssociatedObjects: bool,
- *   language: value-of<Language>,
+ *   language: Language|value-of<Language>,
  *   objectProperties: list<string>,
  *   objectType: string,
  *   overrideAssociatedObjectsPerDefinitionPerRowLimit: bool,
- *   publicCrmSearchRequest?: PublicCrmSearchRequest|null,
+ *   publicCrmSearchRequest?: null|PublicCrmSearchRequest|PublicCrmSearchRequestShape,
  * }
  */
 final class PublicExportViewRequest implements BaseModel
@@ -131,12 +131,7 @@ final class PublicExportViewRequest implements BaseModel
      * @param Language|value-of<Language> $language
      * @param list<string> $objectProperties
      * @param ExportType|value-of<ExportType> $exportType
-     * @param PublicCrmSearchRequest|array{
-     *   filterGroups: list<FilterGroup>,
-     *   filters: list<Filter>,
-     *   sorts: list<string>,
-     *   query?: string|null,
-     * } $publicCrmSearchRequest
+     * @param PublicCrmSearchRequestShape $publicCrmSearchRequest
      */
     public static function with(
         array $associatedObjectType,
@@ -282,12 +277,7 @@ final class PublicExportViewRequest implements BaseModel
     }
 
     /**
-     * @param PublicCrmSearchRequest|array{
-     *   filterGroups: list<FilterGroup>,
-     *   filters: list<Filter>,
-     *   sorts: list<string>,
-     *   query?: string|null,
-     * } $publicCrmSearchRequest
+     * @param PublicCrmSearchRequestShape $publicCrmSearchRequest
      */
     public function withPublicCrmSearchRequest(
         PublicCrmSearchRequest|array $publicCrmSearchRequest

@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\Blogs\Authors;
 
-use HubspotSDK\Cms\Blogs\Authors\BlogAuthor\Language;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
@@ -15,26 +14,10 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Services\Cms\Blogs\AuthorsService::createBatch()
  *
+ * @phpstan-import-type BlogAuthorShape from \HubspotSDK\Cms\Blogs\Authors\BlogAuthor
+ *
  * @phpstan-type AuthorCreateBatchParamsShape = array{
- *   inputs: list<BlogAuthor|array{
- *     id: string,
- *     avatar: string,
- *     bio: string,
- *     created: \DateTimeInterface,
- *     deletedAt: \DateTimeInterface,
- *     displayName: string,
- *     email: string,
- *     facebook: string,
- *     fullName: string,
- *     language: value-of<Language>,
- *     linkedin: string,
- *     name: string,
- *     slug: string,
- *     translatedFromID: int,
- *     twitter: string,
- *     updated: \DateTimeInterface,
- *     website: string,
- *   }>,
+ *   inputs: list<BlogAuthorShape>
  * }
  */
 final class AuthorCreateBatchParams implements BaseModel
@@ -75,25 +58,7 @@ final class AuthorCreateBatchParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<BlogAuthor|array{
-     *   id: string,
-     *   avatar: string,
-     *   bio: string,
-     *   created: \DateTimeInterface,
-     *   deletedAt: \DateTimeInterface,
-     *   displayName: string,
-     *   email: string,
-     *   facebook: string,
-     *   fullName: string,
-     *   language: value-of<Language>,
-     *   linkedin: string,
-     *   name: string,
-     *   slug: string,
-     *   translatedFromID: int,
-     *   twitter: string,
-     *   updated: \DateTimeInterface,
-     *   website: string,
-     * }> $inputs
+     * @param list<BlogAuthorShape> $inputs
      */
     public static function with(array $inputs): self
     {
@@ -107,25 +72,7 @@ final class AuthorCreateBatchParams implements BaseModel
     /**
      * Blog authors to input.
      *
-     * @param list<BlogAuthor|array{
-     *   id: string,
-     *   avatar: string,
-     *   bio: string,
-     *   created: \DateTimeInterface,
-     *   deletedAt: \DateTimeInterface,
-     *   displayName: string,
-     *   email: string,
-     *   facebook: string,
-     *   fullName: string,
-     *   language: value-of<Language>,
-     *   linkedin: string,
-     *   name: string,
-     *   slug: string,
-     *   translatedFromID: int,
-     *   twitter: string,
-     *   updated: \DateTimeInterface,
-     *   website: string,
-     * }> $inputs
+     * @param list<BlogAuthorShape> $inputs
      */
     public function withInputs(array $inputs): self
     {

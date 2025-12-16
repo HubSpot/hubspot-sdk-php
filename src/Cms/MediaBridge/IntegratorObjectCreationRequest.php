@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type IntegratorObjectCreationRequestShape = array{
- *   mediaTypes: list<value-of<MediaType>>
+ *   mediaTypes: list<MediaType|value-of<MediaType>>
  * }
  */
 final class IntegratorObjectCreationRequest implements BaseModel

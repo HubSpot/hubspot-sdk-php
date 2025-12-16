@@ -10,8 +10,12 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type PropertyGroupShape from \HubspotSDK\Crm\Properties\PropertyGroup
+ *
  * @phpstan-type CreatedResponsePropertyGroupShape = array{
- *   createdResourceID: string, entity: PropertyGroup, location?: string|null
+ *   createdResourceID: string,
+ *   entity: PropertyGroup|PropertyGroupShape,
+ *   location?: string|null,
  * }
  */
 final class CreatedResponsePropertyGroup implements BaseModel
@@ -55,9 +59,7 @@ final class CreatedResponsePropertyGroup implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param PropertyGroup|array{
-     *   archived: bool, displayOrder: int, label: string, name: string
-     * } $entity
+     * @param PropertyGroupShape $entity
      */
     public static function with(
         string $createdResourceID,
@@ -85,9 +87,7 @@ final class CreatedResponsePropertyGroup implements BaseModel
     /**
      * An ID for a group of properties.
      *
-     * @param PropertyGroup|array{
-     *   archived: bool, displayOrder: int, label: string, name: string
-     * } $entity
+     * @param PropertyGroupShape $entity
      */
     public function withEntity(PropertyGroup|array $entity): self
     {

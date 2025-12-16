@@ -27,7 +27,7 @@ interface CurrenciesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|CurrencyBatchCreateParams $params
+     * @param array<string,mixed>|CurrencyBatchCreateParams $params
      *
      * @return BaseResponse<BatchResponseExchangeRate>
      *
@@ -41,7 +41,7 @@ interface CurrenciesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|CurrencyBatchGetParams $params
+     * @param array<string,mixed>|CurrencyBatchGetParams $params
      *
      * @return BaseResponse<BatchResponseExchangeRate>
      *
@@ -55,7 +55,7 @@ interface CurrenciesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|CurrencyBatchUpdateParams $params
+     * @param array<string,mixed>|CurrencyBatchUpdateParams $params
      *
      * @return BaseResponse<BatchResponseExchangeRate>
      *
@@ -69,7 +69,7 @@ interface CurrenciesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|CurrencyCreateExchangeRateParams $params
+     * @param array<string,mixed>|CurrencyCreateExchangeRateParams $params
      *
      * @return BaseResponse<ExchangeRate>
      *
@@ -130,7 +130,7 @@ interface CurrenciesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|CurrencyListExchangeRatesParams $params
+     * @param array<string,mixed>|CurrencyListExchangeRatesParams $params
      *
      * @return BaseResponse<Page<ExchangeRate>>
      *
@@ -144,7 +144,7 @@ interface CurrenciesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|CurrencyUpdateCompanyCurrencyParams $params
+     * @param array<string,mixed>|CurrencyUpdateCompanyCurrencyParams $params
      *
      * @return BaseResponse<CompanyCurrency>
      *
@@ -159,7 +159,7 @@ interface CurrenciesRawContract
      * @api
      *
      * @param string $exchangeRateID the unique identifier of the exchange rate to be updated
-     * @param array<mixed>|CurrencyUpdateExchangeRateParams $params
+     * @param array<string,mixed>|CurrencyUpdateExchangeRateParams $params
      *
      * @return BaseResponse<ExchangeRate>
      *
@@ -174,7 +174,7 @@ interface CurrenciesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|CurrencyUpdateVisibilityParams $params
+     * @param array<string,mixed>|CurrencyUpdateVisibilityParams $params
      *
      * @return BaseResponse<mixed>
      *

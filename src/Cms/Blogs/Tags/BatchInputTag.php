@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\Blogs\Tags;
 
-use HubspotSDK\Cms\Blogs\Tags\Tag\Language;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -12,7 +11,9 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Wrapper for providing an array of blog tags as inputs.
  *
- * @phpstan-type BatchInputTagShape = array{inputs: list<Tag>}
+ * @phpstan-import-type TagShape from \HubspotSDK\Cms\Blogs\Tags\Tag
+ *
+ * @phpstan-type BatchInputTagShape = array{inputs: list<TagShape>}
  */
 final class BatchInputTag implements BaseModel
 {
@@ -51,15 +52,7 @@ final class BatchInputTag implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<Tag|array{
-     *   id: string,
-     *   created: \DateTimeInterface,
-     *   deletedAt: \DateTimeInterface,
-     *   language: value-of<Language>,
-     *   name: string,
-     *   translatedFromID: int,
-     *   updated: \DateTimeInterface,
-     * }> $inputs
+     * @param list<TagShape> $inputs
      */
     public static function with(array $inputs): self
     {
@@ -73,15 +66,7 @@ final class BatchInputTag implements BaseModel
     /**
      * Blog tags to input.
      *
-     * @param list<Tag|array{
-     *   id: string,
-     *   created: \DateTimeInterface,
-     *   deletedAt: \DateTimeInterface,
-     *   language: value-of<Language>,
-     *   name: string,
-     *   translatedFromID: int,
-     *   updated: \DateTimeInterface,
-     * }> $inputs
+     * @param list<TagShape> $inputs
      */
     public function withInputs(array $inputs): self
     {

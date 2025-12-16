@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace HubspotSDK\Cms\Blogs\Authors;
 
 use HubspotSDK\Cms\Blogs\Authors\BatchResponseBlogAuthor\Status;
-use HubspotSDK\Cms\Blogs\Authors\BlogAuthor\Language;
 use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
@@ -14,11 +13,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Response object for batch operations on blog authors.
  *
+ * @phpstan-import-type BlogAuthorShape from \HubspotSDK\Cms\Blogs\Authors\BlogAuthor
+ *
  * @phpstan-type BatchResponseBlogAuthorShape = array{
  *   completedAt: \DateTimeInterface,
- *   results: list<BlogAuthor>,
+ *   results: list<BlogAuthorShape>,
  *   startedAt: \DateTimeInterface,
- *   status: value-of<Status>,
+ *   status: Status|value-of<Status>,
  *   links?: array<string,string>|null,
  *   requestedAt?: \DateTimeInterface|null,
  * }
@@ -100,25 +101,7 @@ final class BatchResponseBlogAuthor implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<BlogAuthor|array{
-     *   id: string,
-     *   avatar: string,
-     *   bio: string,
-     *   created: \DateTimeInterface,
-     *   deletedAt: \DateTimeInterface,
-     *   displayName: string,
-     *   email: string,
-     *   facebook: string,
-     *   fullName: string,
-     *   language: value-of<Language>,
-     *   linkedin: string,
-     *   name: string,
-     *   slug: string,
-     *   translatedFromID: int,
-     *   twitter: string,
-     *   updated: \DateTimeInterface,
-     *   website: string,
-     * }> $results
+     * @param list<BlogAuthorShape> $results
      * @param Status|value-of<Status> $status
      * @param array<string,string> $links
      */
@@ -157,25 +140,7 @@ final class BatchResponseBlogAuthor implements BaseModel
     /**
      * Results of batch operation.
      *
-     * @param list<BlogAuthor|array{
-     *   id: string,
-     *   avatar: string,
-     *   bio: string,
-     *   created: \DateTimeInterface,
-     *   deletedAt: \DateTimeInterface,
-     *   displayName: string,
-     *   email: string,
-     *   facebook: string,
-     *   fullName: string,
-     *   language: value-of<Language>,
-     *   linkedin: string,
-     *   name: string,
-     *   slug: string,
-     *   translatedFromID: int,
-     *   twitter: string,
-     *   updated: \DateTimeInterface,
-     *   website: string,
-     * }> $results
+     * @param list<BlogAuthorShape> $results
      */
     public function withResults(array $results): self
     {

@@ -16,7 +16,7 @@ interface TaxRatesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|TaxRateListParams $params
+     * @param array<string,mixed>|TaxRateListParams $params
      *
      * @return BaseResponse<Page<PublicTaxRateGroup>>
      *

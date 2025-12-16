@@ -7,13 +7,12 @@ namespace HubspotSDK;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\PropertyCreate\DataSensitivity;
-use HubspotSDK\PropertyCreate\FieldType;
-use HubspotSDK\PropertyCreate\Type;
 
 /**
+ * @phpstan-import-type PropertyCreateShape from \HubspotSDK\PropertyCreate
+ *
  * @phpstan-type BatchInputPropertyCreateShape = array{
- *   inputs: list<PropertyCreate>
+ *   inputs: list<PropertyCreateShape>
  * }
  */
 final class BatchInputPropertyCreate implements BaseModel
@@ -49,23 +48,7 @@ final class BatchInputPropertyCreate implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PropertyCreate|array{
-     *   fieldType: value-of<FieldType>,
-     *   groupName: string,
-     *   label: string,
-     *   name: string,
-     *   type: value-of<Type>,
-     *   calculationFormula?: string|null,
-     *   dataSensitivity?: value-of<DataSensitivity>|null,
-     *   description?: string|null,
-     *   displayOrder?: int|null,
-     *   externalOptions?: bool|null,
-     *   formField?: bool|null,
-     *   hasUniqueValue?: bool|null,
-     *   hidden?: bool|null,
-     *   options?: list<OptionInput>|null,
-     *   referencedObjectType?: string|null,
-     * }> $inputs
+     * @param list<PropertyCreateShape> $inputs
      */
     public static function with(array $inputs): self
     {
@@ -77,23 +60,7 @@ final class BatchInputPropertyCreate implements BaseModel
     }
 
     /**
-     * @param list<PropertyCreate|array{
-     *   fieldType: value-of<FieldType>,
-     *   groupName: string,
-     *   label: string,
-     *   name: string,
-     *   type: value-of<Type>,
-     *   calculationFormula?: string|null,
-     *   dataSensitivity?: value-of<DataSensitivity>|null,
-     *   description?: string|null,
-     *   displayOrder?: int|null,
-     *   externalOptions?: bool|null,
-     *   formField?: bool|null,
-     *   hasUniqueValue?: bool|null,
-     *   hidden?: bool|null,
-     *   options?: list<OptionInput>|null,
-     *   referencedObjectType?: string|null,
-     * }> $inputs
+     * @param list<PropertyCreateShape> $inputs
      */
     public function withInputs(array $inputs): self
     {

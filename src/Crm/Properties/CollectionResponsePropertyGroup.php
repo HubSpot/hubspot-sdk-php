@@ -8,13 +8,14 @@ use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\NextPage;
 use HubspotSDK\Paging;
-use HubspotSDK\PreviousPage;
 
 /**
+ * @phpstan-import-type PropertyGroupShape from \HubspotSDK\Crm\Properties\PropertyGroup
+ * @phpstan-import-type PagingShape from \HubspotSDK\Paging
+ *
  * @phpstan-type CollectionResponsePropertyGroupShape = array{
- *   results: list<PropertyGroup>, paging?: Paging|null
+ *   results: list<PropertyGroupShape>, paging?: null|Paging|PagingShape
  * }
  */
 final class CollectionResponsePropertyGroup implements BaseModel
@@ -53,10 +54,8 @@ final class CollectionResponsePropertyGroup implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PropertyGroup|array{
-     *   archived: bool, displayOrder: int, label: string, name: string
-     * }> $results
-     * @param Paging|array{next?: NextPage|null, prev?: PreviousPage|null} $paging
+     * @param list<PropertyGroupShape> $results
+     * @param PagingShape $paging
      */
     public static function with(
         array $results,
@@ -72,9 +71,7 @@ final class CollectionResponsePropertyGroup implements BaseModel
     }
 
     /**
-     * @param list<PropertyGroup|array{
-     *   archived: bool, displayOrder: int, label: string, name: string
-     * }> $results
+     * @param list<PropertyGroupShape> $results
      */
     public function withResults(array $results): self
     {
@@ -85,7 +82,7 @@ final class CollectionResponsePropertyGroup implements BaseModel
     }
 
     /**
-     * @param Paging|array{next?: NextPage|null, prev?: PreviousPage|null} $paging
+     * @param PagingShape $paging
      */
     public function withPaging(Paging|array $paging): self
     {

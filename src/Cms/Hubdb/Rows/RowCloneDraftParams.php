@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Cms\Hubdb\RowsService::cloneDraft()
  *
  * @phpstan-type RowCloneDraftParamsShape = array{
- *   tableIDOrName: string, name?: string
+ *   tableIDOrName: string, name?: string|null
  * }
  */
 final class RowCloneDraftParams implements BaseModel

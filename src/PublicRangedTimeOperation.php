@@ -8,17 +8,19 @@ use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\PublicDatePoint\TimeType;
 use HubspotSDK\PublicRangedTimeOperation\Type;
 
 /**
+ * @phpstan-import-type LowerBoundTimePointShape from \HubspotSDK\PublicRangedTimeOperation\LowerBoundTimePoint
+ * @phpstan-import-type UpperBoundTimePointShape from \HubspotSDK\PublicRangedTimeOperation\UpperBoundTimePoint
+ *
  * @phpstan-type PublicRangedTimeOperationShape = array{
  *   includeObjectsWithNoValueSet: bool,
- *   lowerBoundTimePoint: PublicDatePoint|PublicIndexedTimePoint|PublicPropertyReferencedTime,
+ *   lowerBoundTimePoint: PublicDatePoint|PublicIndexedTimePoint|PublicPropertyReferencedTime|LowerBoundTimePointShape,
  *   operationType: string,
  *   operator: string,
- *   type: value-of<Type>,
- *   upperBoundTimePoint: PublicDatePoint|PublicIndexedTimePoint|PublicPropertyReferencedTime,
+ *   type: Type|value-of<Type>,
+ *   upperBoundTimePoint: PublicDatePoint|PublicIndexedTimePoint|PublicPropertyReferencedTime|UpperBoundTimePointShape,
  *   lowerBoundEndpointBehavior?: string|null,
  *   propertyParser?: string|null,
  *   upperBoundEndpointBehavior?: string|null,
@@ -94,54 +96,8 @@ final class PublicRangedTimeOperation implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param PublicDatePoint|array{
-     *   day: int,
-     *   month: int,
-     *   timeType: value-of<TimeType>,
-     *   year: int,
-     *   zoneID: string,
-     *   hour?: int|null,
-     *   millisecond?: int|null,
-     *   minute?: int|null,
-     *   second?: int|null,
-     *   timezoneSource?: string|null,
-     * }|PublicIndexedTimePoint|array{
-     *   indexReference: PublicNowReference|PublicTodayReference|PublicWeekReference|PublicFiscalQuarterReference|PublicFiscalYearReference|PublicYearReference|PublicQuarterReference|PublicMonthReference,
-     *   timeType: value-of<PublicIndexedTimePoint\TimeType>,
-     *   zoneID: string,
-     *   offset?: PublicIndexOffset|null,
-     *   timezoneSource?: string|null,
-     * }|PublicPropertyReferencedTime|array{
-     *   property: string,
-     *   referenceType: string,
-     *   timeType: value-of<PublicPropertyReferencedTime\TimeType>,
-     *   zoneID: string,
-     *   timezoneSource?: string|null,
-     * } $lowerBoundTimePoint
-     * @param PublicDatePoint|array{
-     *   day: int,
-     *   month: int,
-     *   timeType: value-of<TimeType>,
-     *   year: int,
-     *   zoneID: string,
-     *   hour?: int|null,
-     *   millisecond?: int|null,
-     *   minute?: int|null,
-     *   second?: int|null,
-     *   timezoneSource?: string|null,
-     * }|PublicIndexedTimePoint|array{
-     *   indexReference: PublicNowReference|PublicTodayReference|PublicWeekReference|PublicFiscalQuarterReference|PublicFiscalYearReference|PublicYearReference|PublicQuarterReference|PublicMonthReference,
-     *   timeType: value-of<PublicIndexedTimePoint\TimeType>,
-     *   zoneID: string,
-     *   offset?: PublicIndexOffset|null,
-     *   timezoneSource?: string|null,
-     * }|PublicPropertyReferencedTime|array{
-     *   property: string,
-     *   referenceType: string,
-     *   timeType: value-of<PublicPropertyReferencedTime\TimeType>,
-     *   zoneID: string,
-     *   timezoneSource?: string|null,
-     * } $upperBoundTimePoint
+     * @param LowerBoundTimePointShape $lowerBoundTimePoint
+     * @param UpperBoundTimePointShape $upperBoundTimePoint
      * @param Type|value-of<Type> $type
      */
     public static function with(
@@ -181,30 +137,7 @@ final class PublicRangedTimeOperation implements BaseModel
     }
 
     /**
-     * @param PublicDatePoint|array{
-     *   day: int,
-     *   month: int,
-     *   timeType: value-of<TimeType>,
-     *   year: int,
-     *   zoneID: string,
-     *   hour?: int|null,
-     *   millisecond?: int|null,
-     *   minute?: int|null,
-     *   second?: int|null,
-     *   timezoneSource?: string|null,
-     * }|PublicIndexedTimePoint|array{
-     *   indexReference: PublicNowReference|PublicTodayReference|PublicWeekReference|PublicFiscalQuarterReference|PublicFiscalYearReference|PublicYearReference|PublicQuarterReference|PublicMonthReference,
-     *   timeType: value-of<PublicIndexedTimePoint\TimeType>,
-     *   zoneID: string,
-     *   offset?: PublicIndexOffset|null,
-     *   timezoneSource?: string|null,
-     * }|PublicPropertyReferencedTime|array{
-     *   property: string,
-     *   referenceType: string,
-     *   timeType: value-of<PublicPropertyReferencedTime\TimeType>,
-     *   zoneID: string,
-     *   timezoneSource?: string|null,
-     * } $lowerBoundTimePoint
+     * @param LowerBoundTimePointShape $lowerBoundTimePoint
      */
     public function withLowerBoundTimePoint(
         PublicDatePoint|array|PublicIndexedTimePoint|PublicPropertyReferencedTime $lowerBoundTimePoint,
@@ -243,30 +176,7 @@ final class PublicRangedTimeOperation implements BaseModel
     }
 
     /**
-     * @param PublicDatePoint|array{
-     *   day: int,
-     *   month: int,
-     *   timeType: value-of<TimeType>,
-     *   year: int,
-     *   zoneID: string,
-     *   hour?: int|null,
-     *   millisecond?: int|null,
-     *   minute?: int|null,
-     *   second?: int|null,
-     *   timezoneSource?: string|null,
-     * }|PublicIndexedTimePoint|array{
-     *   indexReference: PublicNowReference|PublicTodayReference|PublicWeekReference|PublicFiscalQuarterReference|PublicFiscalYearReference|PublicYearReference|PublicQuarterReference|PublicMonthReference,
-     *   timeType: value-of<PublicIndexedTimePoint\TimeType>,
-     *   zoneID: string,
-     *   offset?: PublicIndexOffset|null,
-     *   timezoneSource?: string|null,
-     * }|PublicPropertyReferencedTime|array{
-     *   property: string,
-     *   referenceType: string,
-     *   timeType: value-of<PublicPropertyReferencedTime\TimeType>,
-     *   zoneID: string,
-     *   timezoneSource?: string|null,
-     * } $upperBoundTimePoint
+     * @param UpperBoundTimePointShape $upperBoundTimePoint
      */
     public function withUpperBoundTimePoint(
         PublicDatePoint|array|PublicIndexedTimePoint|PublicPropertyReferencedTime $upperBoundTimePoint,

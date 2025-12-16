@@ -23,7 +23,7 @@ interface ActorsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|ActorBatchReadParams $params
+     * @param array<string,mixed>|ActorBatchReadParams $params
      *
      * @return BaseResponse<BatchResponsePublicActor>
      *
@@ -37,7 +37,7 @@ interface ActorsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|ActorGetParams $params
+     * @param array<string,mixed>|ActorGetParams $params
      *
      * @return BaseResponse<AgentActor|BotActor|IntegratorActor|SystemActor|VisitorActor|EmailActor|LlmActor,>
      *

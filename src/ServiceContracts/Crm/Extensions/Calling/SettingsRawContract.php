@@ -16,7 +16,7 @@ interface SettingsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|SettingCreateParams $params
+     * @param array<string,mixed>|SettingCreateParams $params
      *
      * @return BaseResponse<SettingsResponse>
      *
@@ -31,7 +31,7 @@ interface SettingsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|SettingUpdateParams $params
+     * @param array<string,mixed>|SettingUpdateParams $params
      *
      * @return BaseResponse<SettingsResponse>
      *

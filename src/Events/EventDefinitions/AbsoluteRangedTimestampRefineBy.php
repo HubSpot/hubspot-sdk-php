@@ -13,8 +13,8 @@ use HubspotSDK\Events\EventDefinitions\AbsoluteRangedTimestampRefineBy\Type;
 /**
  * @phpstan-type AbsoluteRangedTimestampRefineByShape = array{
  *   lowerTimestamp: int,
- *   rangeType: value-of<RangeType>,
- *   type: value-of<Type>,
+ *   rangeType: RangeType|value-of<RangeType>,
+ *   type: Type|value-of<Type>,
  *   upperTimestamp: int,
  * }
  */

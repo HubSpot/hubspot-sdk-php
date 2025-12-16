@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Account\ActivityService::listLoginActivities()
  *
  * @phpstan-type ActivityListLoginActivitiesParamsShape = array{
- *   after?: string, limit?: int, userID?: int
+ *   after?: string|null, limit?: int|null, userID?: int|null
  * }
  */
 final class ActivityListLoginActivitiesParams implements BaseModel

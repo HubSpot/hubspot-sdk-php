@@ -19,9 +19,9 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-type IntegratorSettingUpdateEventVisibilitySettingsParamsShape = array{
  *   eventType: EventType|value-of<EventType>,
  *   updatedAt: int,
- *   showInReporting?: bool,
- *   showInTimeline?: bool,
- *   showInWorkflows?: bool,
+ *   showInReporting?: bool|null,
+ *   showInTimeline?: bool|null,
+ *   showInWorkflows?: bool|null,
  * }
  */
 final class IntegratorSettingUpdateEventVisibilitySettingsParams implements BaseModel

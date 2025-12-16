@@ -4,16 +4,15 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\MediaBridge;
 
-use HubspotSDK\Cms\MediaBridge\Property1\DataSensitivity;
-use HubspotSDK\Cms\MediaBridge\Property1\DateDisplayHint;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\PropertyModificationMetadata;
 
 /**
+ * @phpstan-import-type Property1Shape from \HubspotSDK\Cms\MediaBridge\Property1
+ *
  * @phpstan-type CollectionResponsePropertyNoPagingShape = array{
- *   results: list<Property1>
+ *   results: list<Property1Shape>
  * }
  */
 final class CollectionResponsePropertyNoPaging implements BaseModel
@@ -49,35 +48,7 @@ final class CollectionResponsePropertyNoPaging implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<Property1|array{
-     *   description: string,
-     *   fieldType: string,
-     *   groupName: string,
-     *   label: string,
-     *   name: string,
-     *   options: list<Option1>,
-     *   type: string,
-     *   archived?: bool|null,
-     *   archivedAt?: \DateTimeInterface|null,
-     *   calculated?: bool|null,
-     *   calculationFormula?: string|null,
-     *   createdAt?: \DateTimeInterface|null,
-     *   createdUserID?: string|null,
-     *   dataSensitivity?: value-of<DataSensitivity>|null,
-     *   dateDisplayHint?: value-of<DateDisplayHint>|null,
-     *   displayOrder?: int|null,
-     *   externalOptions?: bool|null,
-     *   formField?: bool|null,
-     *   hasUniqueValue?: bool|null,
-     *   hidden?: bool|null,
-     *   hubspotDefined?: bool|null,
-     *   modificationMetadata?: PropertyModificationMetadata|null,
-     *   referencedObjectType?: string|null,
-     *   sensitiveDataCategories?: list<string>|null,
-     *   showCurrencySymbol?: bool|null,
-     *   updatedAt?: \DateTimeInterface|null,
-     *   updatedUserID?: string|null,
-     * }> $results
+     * @param list<Property1Shape> $results
      */
     public static function with(array $results): self
     {
@@ -89,35 +60,7 @@ final class CollectionResponsePropertyNoPaging implements BaseModel
     }
 
     /**
-     * @param list<Property1|array{
-     *   description: string,
-     *   fieldType: string,
-     *   groupName: string,
-     *   label: string,
-     *   name: string,
-     *   options: list<Option1>,
-     *   type: string,
-     *   archived?: bool|null,
-     *   archivedAt?: \DateTimeInterface|null,
-     *   calculated?: bool|null,
-     *   calculationFormula?: string|null,
-     *   createdAt?: \DateTimeInterface|null,
-     *   createdUserID?: string|null,
-     *   dataSensitivity?: value-of<DataSensitivity>|null,
-     *   dateDisplayHint?: value-of<DateDisplayHint>|null,
-     *   displayOrder?: int|null,
-     *   externalOptions?: bool|null,
-     *   formField?: bool|null,
-     *   hasUniqueValue?: bool|null,
-     *   hidden?: bool|null,
-     *   hubspotDefined?: bool|null,
-     *   modificationMetadata?: PropertyModificationMetadata|null,
-     *   referencedObjectType?: string|null,
-     *   sensitiveDataCategories?: list<string>|null,
-     *   showCurrencySymbol?: bool|null,
-     *   updatedAt?: \DateTimeInterface|null,
-     *   updatedUserID?: string|null,
-     * }> $results
+     * @param list<Property1Shape> $results
      */
     public function withResults(array $results): self
     {

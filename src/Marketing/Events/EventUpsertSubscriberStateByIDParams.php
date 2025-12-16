@@ -14,12 +14,12 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Services\Marketing\EventsService::upsertSubscriberStateByID()
  *
+ * @phpstan-import-type MarketingEventSubscriberShape from \HubspotSDK\Marketing\Events\MarketingEventSubscriber
+ *
  * @phpstan-type EventUpsertSubscriberStateByIDParamsShape = array{
  *   externalEventID: string,
  *   externalAccountID: string,
- *   inputs: list<MarketingEventSubscriber|array{
- *     interactionDateTime: int, properties: array<string,string>, vid: int
- *   }>,
+ *   inputs: list<MarketingEventSubscriberShape>,
  * }
  */
 final class EventUpsertSubscriberStateByIDParams implements BaseModel
@@ -74,9 +74,7 @@ final class EventUpsertSubscriberStateByIDParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<MarketingEventSubscriber|array{
-     *   interactionDateTime: int, properties: array<string,string>, vid: int
-     * }> $inputs
+     * @param list<MarketingEventSubscriberShape> $inputs
      */
     public static function with(
         string $externalEventID,
@@ -114,9 +112,7 @@ final class EventUpsertSubscriberStateByIDParams implements BaseModel
     /**
      * List of HubSpot contacts to subscribe to the marketing event.
      *
-     * @param list<MarketingEventSubscriber|array{
-     *   interactionDateTime: int, properties: array<string,string>, vid: int
-     * }> $inputs
+     * @param list<MarketingEventSubscriberShape> $inputs
      */
     public function withInputs(array $inputs): self
     {

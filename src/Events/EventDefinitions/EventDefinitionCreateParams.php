@@ -9,25 +9,20 @@ use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\OptionInput;
 
 /**
  * Create a custom event definition.
  *
  * @see HubspotSDK\Services\Events\EventDefinitionsService::create()
  *
+ * @phpstan-import-type ExternalBehavioralEventPropertyCreateShape from \HubspotSDK\Events\EventDefinitions\ExternalBehavioralEventPropertyCreate
+ *
  * @phpstan-type EventDefinitionCreateParamsShape = array{
  *   label: string,
- *   propertyDefinitions: list<ExternalBehavioralEventPropertyCreate|array{
- *     label: string,
- *     type: string,
- *     description?: string|null,
- *     name?: string|null,
- *     options?: list<OptionInput>|null,
- *   }>,
- *   description?: string,
- *   name?: string,
- *   primaryObject?: string,
+ *   propertyDefinitions: list<ExternalBehavioralEventPropertyCreateShape>,
+ *   description?: string|null,
+ *   name?: string|null,
+ *   primaryObject?: string|null,
  * }
  */
 final class EventDefinitionCreateParams implements BaseModel
@@ -92,13 +87,7 @@ final class EventDefinitionCreateParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<ExternalBehavioralEventPropertyCreate|array{
-     *   label: string,
-     *   type: string,
-     *   description?: string|null,
-     *   name?: string|null,
-     *   options?: list<OptionInput>|null,
-     * }> $propertyDefinitions
+     * @param list<ExternalBehavioralEventPropertyCreateShape> $propertyDefinitions
      */
     public static function with(
         string $label,
@@ -133,13 +122,7 @@ final class EventDefinitionCreateParams implements BaseModel
     /**
      * List of custom properties on event.
      *
-     * @param list<ExternalBehavioralEventPropertyCreate|array{
-     *   label: string,
-     *   type: string,
-     *   description?: string|null,
-     *   name?: string|null,
-     *   options?: list<OptionInput>|null,
-     * }> $propertyDefinitions
+     * @param list<ExternalBehavioralEventPropertyCreateShape> $propertyDefinitions
      */
     public function withPropertyDefinitions(array $propertyDefinitions): self
     {

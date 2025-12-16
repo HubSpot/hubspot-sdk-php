@@ -11,11 +11,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Marketing\Campaigns\BatchResponsePublicCampaign\Status;
 
 /**
+ * @phpstan-import-type PublicCampaignShape from \HubspotSDK\Marketing\Campaigns\PublicCampaign
+ *
  * @phpstan-type BatchResponsePublicCampaignShape = array{
  *   completedAt: \DateTimeInterface,
- *   results: list<PublicCampaign>,
+ *   results: list<PublicCampaignShape>,
  *   startedAt: \DateTimeInterface,
- *   status: value-of<Status>,
+ *   status: Status|value-of<Status>,
  *   links?: array<string,string>|null,
  *   requestedAt?: \DateTimeInterface|null,
  * }
@@ -76,13 +78,7 @@ final class BatchResponsePublicCampaign implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicCampaign|array{
-     *   id: string,
-     *   businessUnits: list<PublicBusinessUnit>,
-     *   createdAt: \DateTimeInterface,
-     *   properties: array<string,string>,
-     *   updatedAt: \DateTimeInterface,
-     * }> $results
+     * @param list<PublicCampaignShape> $results
      * @param Status|value-of<Status> $status
      * @param array<string,string> $links
      */
@@ -116,13 +112,7 @@ final class BatchResponsePublicCampaign implements BaseModel
     }
 
     /**
-     * @param list<PublicCampaign|array{
-     *   id: string,
-     *   businessUnits: list<PublicBusinessUnit>,
-     *   createdAt: \DateTimeInterface,
-     *   properties: array<string,string>,
-     *   updatedAt: \DateTimeInterface,
-     * }> $results
+     * @param list<PublicCampaignShape> $results
      */
     public function withResults(array $results): self
     {

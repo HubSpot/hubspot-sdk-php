@@ -9,17 +9,18 @@ use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Associations\Schema\V4\BatchResponsePublicAssociationDefinitionConfigurationUpdateResult\Status;
-use HubspotSDK\Crm\Associations\Schema\V4\PublicAssociationDefinitionConfigurationUpdateResult\Category;
-use HubspotSDK\ErrorDetail;
 use HubspotSDK\StandardError;
 
 /**
+ * @phpstan-import-type PublicAssociationDefinitionConfigurationUpdateResultShape from \HubspotSDK\Crm\Associations\Schema\V4\PublicAssociationDefinitionConfigurationUpdateResult
+ * @phpstan-import-type StandardErrorShape from \HubspotSDK\StandardError
+ *
  * @phpstan-type BatchResponsePublicAssociationDefinitionConfigurationUpdateResultShape = array{
  *   completedAt: \DateTimeInterface,
- *   results: list<PublicAssociationDefinitionConfigurationUpdateResult>,
+ *   results: list<PublicAssociationDefinitionConfigurationUpdateResultShape>,
  *   startedAt: \DateTimeInterface,
- *   status: value-of<Status>,
- *   errors?: list<StandardError>|null,
+ *   status: Status|value-of<Status>,
+ *   errors?: list<StandardErrorShape>|null,
  *   links?: array<string,string>|null,
  *   numErrors?: int|null,
  *   requestedAt?: \DateTimeInterface|null,
@@ -90,22 +91,9 @@ final class BatchResponsePublicAssociationDefinitionConfigurationUpdateResult im
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicAssociationDefinitionConfigurationUpdateResult|array{
-     *   category: value-of<Category>,
-     *   typeID: int,
-     *   userEnforcedMaxToObjectIDs?: int|null,
-     * }> $results
+     * @param list<PublicAssociationDefinitionConfigurationUpdateResultShape> $results
      * @param Status|value-of<Status> $status
-     * @param list<StandardError|array{
-     *   category: string,
-     *   context: array<string,list<string>>,
-     *   errors: list<ErrorDetail>,
-     *   links: array<string,string>,
-     *   message: string,
-     *   status: string,
-     *   id?: string|null,
-     *   subCategory?: mixed,
-     * }> $errors
+     * @param list<StandardErrorShape> $errors
      * @param array<string,string> $links
      */
     public static function with(
@@ -142,11 +130,7 @@ final class BatchResponsePublicAssociationDefinitionConfigurationUpdateResult im
     }
 
     /**
-     * @param list<PublicAssociationDefinitionConfigurationUpdateResult|array{
-     *   category: value-of<Category>,
-     *   typeID: int,
-     *   userEnforcedMaxToObjectIDs?: int|null,
-     * }> $results
+     * @param list<PublicAssociationDefinitionConfigurationUpdateResultShape> $results
      */
     public function withResults(array $results): self
     {
@@ -176,16 +160,7 @@ final class BatchResponsePublicAssociationDefinitionConfigurationUpdateResult im
     }
 
     /**
-     * @param list<StandardError|array{
-     *   category: string,
-     *   context: array<string,list<string>>,
-     *   errors: list<ErrorDetail>,
-     *   links: array<string,string>,
-     *   message: string,
-     *   status: string,
-     *   id?: string|null,
-     *   subCategory?: mixed,
-     * }> $errors
+     * @param list<StandardErrorShape> $errors
      */
     public function withErrors(array $errors): self
     {

@@ -16,7 +16,7 @@ use HubspotSDK\Settings\Users\UserDeleteParams\IDProperty;
  * @see HubspotSDK\Services\Settings\UsersService::delete()
  *
  * @phpstan-type UserDeleteParamsShape = array{
- *   idProperty?: IDProperty|value-of<IDProperty>
+ *   idProperty?: null|IDProperty|value-of<IDProperty>
  * }
  */
 final class UserDeleteParams implements BaseModel

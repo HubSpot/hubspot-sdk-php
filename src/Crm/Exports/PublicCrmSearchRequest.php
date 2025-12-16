@@ -9,13 +9,15 @@ use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Filter;
-use HubspotSDK\Crm\Filter\Operator;
 use HubspotSDK\Crm\FilterGroup;
 
 /**
+ * @phpstan-import-type FilterGroupShape from \HubspotSDK\Crm\FilterGroup
+ * @phpstan-import-type FilterShape from \HubspotSDK\Crm\Filter
+ *
  * @phpstan-type PublicCrmSearchRequestShape = array{
- *   filterGroups: list<FilterGroup>,
- *   filters: list<Filter>,
+ *   filterGroups: list<FilterGroupShape>,
+ *   filters: list<FilterShape>,
  *   sorts: list<string>,
  *   query?: string|null,
  * }
@@ -74,14 +76,8 @@ final class PublicCrmSearchRequest implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<FilterGroup|array{filters: list<Filter>}> $filterGroups
-     * @param list<Filter|array{
-     *   operator: value-of<Operator>,
-     *   propertyName: string,
-     *   highValue?: string|null,
-     *   value?: string|null,
-     *   values?: list<string>|null,
-     * }> $filters
+     * @param list<FilterGroupShape> $filterGroups
+     * @param list<FilterShape> $filters
      * @param list<string> $sorts
      */
     public static function with(
@@ -102,7 +98,7 @@ final class PublicCrmSearchRequest implements BaseModel
     }
 
     /**
-     * @param list<FilterGroup|array{filters: list<Filter>}> $filterGroups
+     * @param list<FilterGroupShape> $filterGroups
      */
     public function withFilterGroups(array $filterGroups): self
     {
@@ -113,13 +109,7 @@ final class PublicCrmSearchRequest implements BaseModel
     }
 
     /**
-     * @param list<Filter|array{
-     *   operator: value-of<Operator>,
-     *   propertyName: string,
-     *   highValue?: string|null,
-     *   value?: string|null,
-     *   values?: list<string>|null,
-     * }> $filters
+     * @param list<FilterShape> $filters
      */
     public function withFilters(array $filters): self
     {

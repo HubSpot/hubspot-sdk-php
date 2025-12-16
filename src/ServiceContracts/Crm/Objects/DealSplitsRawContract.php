@@ -16,7 +16,7 @@ interface DealSplitsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|DealSplitBatchReadParams $params
+     * @param array<string,mixed>|DealSplitBatchReadParams $params
      *
      * @return BaseResponse<BatchResponseDealToDealSplits>
      *
@@ -30,7 +30,7 @@ interface DealSplitsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|DealSplitBatchUpsertParams $params
+     * @param array<string,mixed>|DealSplitBatchUpsertParams $params
      *
      * @return BaseResponse<BatchResponseDealToDealSplits>
      *

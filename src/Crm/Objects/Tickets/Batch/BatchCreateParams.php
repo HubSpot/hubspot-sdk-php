@@ -8,7 +8,6 @@ use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\PublicAssociationsForObject;
 use HubspotSDK\Crm\SimplePublicObjectBatchInputForCreate;
 
 /**
@@ -16,12 +15,10 @@ use HubspotSDK\Crm\SimplePublicObjectBatchInputForCreate;
  *
  * @see HubspotSDK\Services\Crm\Objects\Tickets\BatchService::create()
  *
+ * @phpstan-import-type SimplePublicObjectBatchInputForCreateShape from \HubspotSDK\Crm\SimplePublicObjectBatchInputForCreate
+ *
  * @phpstan-type BatchCreateParamsShape = array{
- *   inputs: list<SimplePublicObjectBatchInputForCreate|array{
- *     associations: list<PublicAssociationsForObject>,
- *     properties: array<string,string>,
- *     objectWriteTraceID?: string|null,
- *   }>,
+ *   inputs: list<SimplePublicObjectBatchInputForCreateShape>
  * }
  */
 final class BatchCreateParams implements BaseModel
@@ -58,11 +55,7 @@ final class BatchCreateParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<SimplePublicObjectBatchInputForCreate|array{
-     *   associations: list<PublicAssociationsForObject>,
-     *   properties: array<string,string>,
-     *   objectWriteTraceID?: string|null,
-     * }> $inputs
+     * @param list<SimplePublicObjectBatchInputForCreateShape> $inputs
      */
     public static function with(array $inputs): self
     {
@@ -74,11 +67,7 @@ final class BatchCreateParams implements BaseModel
     }
 
     /**
-     * @param list<SimplePublicObjectBatchInputForCreate|array{
-     *   associations: list<PublicAssociationsForObject>,
-     *   properties: array<string,string>,
-     *   objectWriteTraceID?: string|null,
-     * }> $inputs
+     * @param list<SimplePublicObjectBatchInputForCreateShape> $inputs
      */
     public function withInputs(array $inputs): self
     {

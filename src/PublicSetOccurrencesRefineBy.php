@@ -11,7 +11,7 @@ use HubspotSDK\PublicSetOccurrencesRefineBy\Type;
 
 /**
  * @phpstan-type PublicSetOccurrencesRefineByShape = array{
- *   setType: string, type: value-of<Type>
+ *   setType: string, type: Type|value-of<Type>
  * }
  */
 final class PublicSetOccurrencesRefineBy implements BaseModel

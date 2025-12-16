@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\Blogs\Authors;
 
-use HubspotSDK\Cms\Blogs\Authors\BlogAuthor\Language;
 use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
@@ -13,9 +12,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Request body object for cloning blog authors.
  *
+ * @phpstan-import-type BlogAuthorShape from \HubspotSDK\Cms\Blogs\Authors\BlogAuthor
+ *
  * @phpstan-type BlogAuthorCloneRequestVNextShape = array{
  *   id: string,
- *   blogAuthor: BlogAuthor,
+ *   blogAuthor: BlogAuthor|BlogAuthorShape,
  *   language?: string|null,
  *   primaryLanguage?: string|null,
  * }
@@ -73,25 +74,7 @@ final class BlogAuthorCloneRequestVNext implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param BlogAuthor|array{
-     *   id: string,
-     *   avatar: string,
-     *   bio: string,
-     *   created: \DateTimeInterface,
-     *   deletedAt: \DateTimeInterface,
-     *   displayName: string,
-     *   email: string,
-     *   facebook: string,
-     *   fullName: string,
-     *   language: value-of<Language>,
-     *   linkedin: string,
-     *   name: string,
-     *   slug: string,
-     *   translatedFromID: int,
-     *   twitter: string,
-     *   updated: \DateTimeInterface,
-     *   website: string,
-     * } $blogAuthor
+     * @param BlogAuthorShape $blogAuthor
      */
     public static function with(
         string $id,
@@ -124,25 +107,7 @@ final class BlogAuthorCloneRequestVNext implements BaseModel
     /**
      * Model definition for a Blog Author.
      *
-     * @param BlogAuthor|array{
-     *   id: string,
-     *   avatar: string,
-     *   bio: string,
-     *   created: \DateTimeInterface,
-     *   deletedAt: \DateTimeInterface,
-     *   displayName: string,
-     *   email: string,
-     *   facebook: string,
-     *   fullName: string,
-     *   language: value-of<Language>,
-     *   linkedin: string,
-     *   name: string,
-     *   slug: string,
-     *   translatedFromID: int,
-     *   twitter: string,
-     *   updated: \DateTimeInterface,
-     *   website: string,
-     * } $blogAuthor
+     * @param BlogAuthorShape $blogAuthor
      */
     public function withBlogAuthor(BlogAuthor|array $blogAuthor): self
     {

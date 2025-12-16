@@ -19,7 +19,7 @@ interface BatchRawContract
     /**
      * @api
      *
-     * @param array<mixed>|BatchCreateParams $params
+     * @param array<string,mixed>|BatchCreateParams $params
      *
      * @return BaseResponse<BatchResponsePublicCampaign>
      *
@@ -33,7 +33,7 @@ interface BatchRawContract
     /**
      * @api
      *
-     * @param array<mixed>|BatchUpdateParams $params
+     * @param array<string,mixed>|BatchUpdateParams $params
      *
      * @return BaseResponse<BatchResponsePublicCampaign>
      *
@@ -47,7 +47,7 @@ interface BatchRawContract
     /**
      * @api
      *
-     * @param array<mixed>|BatchDeleteParams $params
+     * @param array<string,mixed>|BatchDeleteParams $params
      *
      * @return BaseResponse<mixed>
      *
@@ -61,7 +61,7 @@ interface BatchRawContract
     /**
      * @api
      *
-     * @param array<mixed>|BatchGetParams $params
+     * @param array<string,mixed>|BatchGetParams $params
      *
      * @return BaseResponse<BatchResponsePublicCampaignWithAssets>
      *

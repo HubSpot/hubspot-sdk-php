@@ -9,11 +9,14 @@ use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\ForwardPaging;
-use HubspotSDK\NextPage;
 
 /**
+ * @phpstan-import-type PublicTaxRateGroupShape from \HubspotSDK\Settings\TaxRates\PublicTaxRateGroup
+ * @phpstan-import-type ForwardPagingShape from \HubspotSDK\ForwardPaging
+ *
  * @phpstan-type CollectionResponsePublicTaxRateGroupForwardPagingShape = array{
- *   results: list<PublicTaxRateGroup>, paging?: ForwardPaging|null
+ *   results: list<PublicTaxRateGroupShape>,
+ *   paging?: null|ForwardPaging|ForwardPagingShape,
  * }
  */
 final class CollectionResponsePublicTaxRateGroupForwardPaging implements BaseModel
@@ -52,16 +55,8 @@ final class CollectionResponsePublicTaxRateGroupForwardPaging implements BaseMod
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicTaxRateGroup|array{
-     *   id: string,
-     *   active: bool,
-     *   createdAt: \DateTimeInterface,
-     *   label: string,
-     *   name: string,
-     *   percentageRate: float,
-     *   updatedAt: \DateTimeInterface,
-     * }> $results
-     * @param ForwardPaging|array{next?: NextPage|null} $paging
+     * @param list<PublicTaxRateGroupShape> $results
+     * @param ForwardPagingShape $paging
      */
     public static function with(
         array $results,
@@ -77,15 +72,7 @@ final class CollectionResponsePublicTaxRateGroupForwardPaging implements BaseMod
     }
 
     /**
-     * @param list<PublicTaxRateGroup|array{
-     *   id: string,
-     *   active: bool,
-     *   createdAt: \DateTimeInterface,
-     *   label: string,
-     *   name: string,
-     *   percentageRate: float,
-     *   updatedAt: \DateTimeInterface,
-     * }> $results
+     * @param list<PublicTaxRateGroupShape> $results
      */
     public function withResults(array $results): self
     {
@@ -96,7 +83,7 @@ final class CollectionResponsePublicTaxRateGroupForwardPaging implements BaseMod
     }
 
     /**
-     * @param ForwardPaging|array{next?: NextPage|null} $paging
+     * @param ForwardPagingShape $paging
      */
     public function withPaging(ForwardPaging|array $paging): self
     {

@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Marketing\Events\ParticipationsService::listBreakdownByContact()
  *
  * @phpstan-type ParticipationListBreakdownByContactParamsShape = array{
- *   after?: string, limit?: int, state?: string
+ *   after?: string|null, limit?: int|null, state?: string|null
  * }
  */
 final class ParticipationListBreakdownByContactParams implements BaseModel

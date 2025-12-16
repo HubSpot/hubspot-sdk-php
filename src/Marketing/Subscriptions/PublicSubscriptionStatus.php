@@ -17,10 +17,10 @@ use HubspotSDK\Marketing\Subscriptions\PublicSubscriptionStatus\Status;
  *   id: string,
  *   description: string,
  *   name: string,
- *   sourceOfStatus: value-of<SourceOfStatus>,
- *   status: value-of<Status>,
+ *   sourceOfStatus: SourceOfStatus|value-of<SourceOfStatus>,
+ *   status: Status|value-of<Status>,
  *   brandID?: int|null,
- *   legalBasis?: value-of<LegalBasis>|null,
+ *   legalBasis?: null|LegalBasis|value-of<LegalBasis>,
  *   legalBasisExplanation?: string|null,
  *   preferenceGroupName?: string|null,
  * }

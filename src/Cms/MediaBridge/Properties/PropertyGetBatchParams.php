@@ -16,11 +16,13 @@ use HubspotSDK\PropertyName;
  *
  * @see HubspotSDK\Services\Cms\MediaBridge\PropertiesService::getBatch()
  *
+ * @phpstan-import-type PropertyNameShape from \HubspotSDK\PropertyName
+ *
  * @phpstan-type PropertyGetBatchParamsShape = array{
  *   appID: int,
  *   archived: bool,
  *   dataSensitivity: DataSensitivity|value-of<DataSensitivity>,
- *   inputs: list<PropertyName|array{name: string}>,
+ *   inputs: list<PropertyNameShape>,
  * }
  */
 final class PropertyGetBatchParams implements BaseModel
@@ -74,7 +76,7 @@ final class PropertyGetBatchParams implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param DataSensitivity|value-of<DataSensitivity> $dataSensitivity
-     * @param list<PropertyName|array{name: string}> $inputs
+     * @param list<PropertyNameShape> $inputs
      */
     public static function with(
         int $appID,
@@ -121,7 +123,7 @@ final class PropertyGetBatchParams implements BaseModel
     }
 
     /**
-     * @param list<PropertyName|array{name: string}> $inputs
+     * @param list<PropertyNameShape> $inputs
      */
     public function withInputs(array $inputs): self
     {

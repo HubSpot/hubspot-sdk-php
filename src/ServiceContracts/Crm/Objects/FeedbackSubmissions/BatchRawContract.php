@@ -15,7 +15,7 @@ interface BatchRawContract
     /**
      * @api
      *
-     * @param array<mixed>|BatchGetParams $params
+     * @param array<string,mixed>|BatchGetParams $params
      *
      * @return BaseResponse<BatchResponseSimplePublicObject>
      *

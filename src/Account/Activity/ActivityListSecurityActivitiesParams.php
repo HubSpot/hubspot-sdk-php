@@ -15,11 +15,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Account\ActivityService::listSecurityActivities()
  *
  * @phpstan-type ActivityListSecurityActivitiesParamsShape = array{
- *   after?: string,
- *   fromTimestamp?: int,
- *   limit?: int,
- *   toTimestamp?: int,
- *   userID?: int,
+ *   after?: string|null,
+ *   fromTimestamp?: int|null,
+ *   limit?: int|null,
+ *   toTimestamp?: int|null,
+ *   userID?: int|null,
  * }
  */
 final class ActivityListSecurityActivitiesParams implements BaseModel

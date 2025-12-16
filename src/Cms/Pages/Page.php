@@ -17,9 +17,11 @@ use HubspotSDK\Core\Conversion\MapOf;
 /**
  * Model definition for a landing page or site page.
  *
+ * @phpstan-import-type PagesContentLanguageVariationShape from \HubspotSDK\Cms\Pages\PagesContentLanguageVariation
+ *
  * @phpstan-type PageShape = array{
  *   id: string,
- *   abStatus: value-of<AbStatus>,
+ *   abStatus: AbStatus|value-of<AbStatus>,
  *   abTestID: string,
  *   archivedAt: \DateTimeInterface,
  *   archivedInDashboard: bool,
@@ -28,11 +30,11 @@ use HubspotSDK\Core\Conversion\MapOf;
  *   campaign: string,
  *   categoryID: int,
  *   contentGroupID: string,
- *   contentTypeCategory: value-of<ContentTypeCategory>,
+ *   contentTypeCategory: ContentTypeCategory|value-of<ContentTypeCategory>,
  *   created: \DateTimeInterface,
  *   createdByID: string,
  *   currentlyPublished: bool,
- *   currentState: value-of<CurrentState>,
+ *   currentState: CurrentState|value-of<CurrentState>,
  *   domain: string,
  *   dynamicPageDataSourceID: string,
  *   dynamicPageDataSourceType: int,
@@ -46,7 +48,7 @@ use HubspotSDK\Core\Conversion\MapOf;
  *   headHTML: string,
  *   htmlTitle: string,
  *   includeDefaultCustomCss: bool,
- *   language: value-of<Language>,
+ *   language: Language|value-of<Language>,
  *   layoutSections: array<string,mixed>,
  *   linkRelCanonicalURL: string,
  *   mabExperimentID: string,
@@ -68,7 +70,7 @@ use HubspotSDK\Core\Conversion\MapOf;
  *   templatePath: string,
  *   themeSettingsValues: array<string,mixed>,
  *   translatedFromID: string,
- *   translations: array<string,PagesContentLanguageVariation>,
+ *   translations: array<string,PagesContentLanguageVariationShape>,
  *   updated: \DateTimeInterface,
  *   updatedByID: string,
  *   url: string,
@@ -563,22 +565,7 @@ final class Page implements BaseModel
      * @param array<string,mixed> $layoutSections
      * @param list<mixed> $publicAccessRules
      * @param array<string,mixed> $themeSettingsValues
-     * @param array<string,PagesContentLanguageVariation|array{
-     *   id: int,
-     *   archivedInDashboard: bool,
-     *   authorName: string,
-     *   campaign: string,
-     *   created: \DateTimeInterface,
-     *   name: string,
-     *   password: string,
-     *   publicAccessRules: list<mixed>,
-     *   publicAccessRulesEnabled: bool,
-     *   publishDate: \DateTimeInterface,
-     *   slug: string,
-     *   state: string,
-     *   updated: \DateTimeInterface,
-     *   tagIDs?: list<int>|null,
-     * }> $translations
+     * @param array<string,PagesContentLanguageVariationShape> $translations
      * @param array<string,mixed> $widgetContainers
      * @param array<string,mixed> $widgets
      */
@@ -1261,22 +1248,7 @@ final class Page implements BaseModel
     }
 
     /**
-     * @param array<string,PagesContentLanguageVariation|array{
-     *   id: int,
-     *   archivedInDashboard: bool,
-     *   authorName: string,
-     *   campaign: string,
-     *   created: \DateTimeInterface,
-     *   name: string,
-     *   password: string,
-     *   publicAccessRules: list<mixed>,
-     *   publicAccessRulesEnabled: bool,
-     *   publishDate: \DateTimeInterface,
-     *   slug: string,
-     *   state: string,
-     *   updated: \DateTimeInterface,
-     *   tagIDs?: list<int>|null,
-     * }> $translations
+     * @param array<string,PagesContentLanguageVariationShape> $translations
      */
     public function withTranslations(array $translations): self
     {

@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Cms\Hubdb\TablesService::importDraft()
  *
  * @phpstan-type TableImportDraftParamsShape = array{
- *   config?: string, file?: string
+ *   config?: string|null, file?: string|null
  * }
  */
 final class TableImportDraftParams implements BaseModel

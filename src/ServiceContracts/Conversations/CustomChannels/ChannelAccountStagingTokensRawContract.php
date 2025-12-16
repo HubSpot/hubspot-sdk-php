@@ -16,7 +16,7 @@ interface ChannelAccountStagingTokensRawContract
      * @api
      *
      * @param string $accountToken path param: The unique token identifying the channel account staging token to update
-     * @param array<mixed>|ChannelAccountStagingTokenUpdateParams $params
+     * @param array<string,mixed>|ChannelAccountStagingTokenUpdateParams $params
      *
      * @return BaseResponse<PublicChannelAccountStagingToken>
      *

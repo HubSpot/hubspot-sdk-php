@@ -5,15 +5,19 @@ declare(strict_types=1);
 namespace HubspotSDK\Crm\Associations\V4;
 
 use HubspotSDK\AssociationSpec;
-use HubspotSDK\AssociationSpec\AssociationCategory;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicObjectID;
 
 /**
+ * @phpstan-import-type PublicObjectIDShape from \HubspotSDK\PublicObjectID
+ * @phpstan-import-type AssociationSpecShape from \HubspotSDK\AssociationSpec
+ *
  * @phpstan-type PublicAssociationMultiPostShape = array{
- *   from: PublicObjectID, to: PublicObjectID, types: list<AssociationSpec>
+ *   from: PublicObjectID|PublicObjectIDShape,
+ *   to: PublicObjectID|PublicObjectIDShape,
+ *   types: list<AssociationSpecShape>,
  * }
  */
 final class PublicAssociationMultiPost implements BaseModel
@@ -55,11 +59,9 @@ final class PublicAssociationMultiPost implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param PublicObjectID|array{id: string} $from
-     * @param PublicObjectID|array{id: string} $to
-     * @param list<AssociationSpec|array{
-     *   associationCategory: value-of<AssociationCategory>, associationTypeID: int
-     * }> $types
+     * @param PublicObjectIDShape $from
+     * @param PublicObjectIDShape $to
+     * @param list<AssociationSpecShape> $types
      */
     public static function with(
         PublicObjectID|array $from,
@@ -76,7 +78,7 @@ final class PublicAssociationMultiPost implements BaseModel
     }
 
     /**
-     * @param PublicObjectID|array{id: string} $from
+     * @param PublicObjectIDShape $from
      */
     public function withFrom(PublicObjectID|array $from): self
     {
@@ -87,7 +89,7 @@ final class PublicAssociationMultiPost implements BaseModel
     }
 
     /**
-     * @param PublicObjectID|array{id: string} $to
+     * @param PublicObjectIDShape $to
      */
     public function withTo(PublicObjectID|array $to): self
     {
@@ -98,9 +100,7 @@ final class PublicAssociationMultiPost implements BaseModel
     }
 
     /**
-     * @param list<AssociationSpec|array{
-     *   associationCategory: value-of<AssociationCategory>, associationTypeID: int
-     * }> $types
+     * @param list<AssociationSpecShape> $types
      */
     public function withTypes(array $types): self
     {

@@ -10,6 +10,8 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type UnenrollmentSettingsResponseShape from \HubspotSDK\Automation\Sequences\UnenrollmentSettingsResponse
+ *
  * @phpstan-type PublicSequenceSettingsResponseShape = array{
  *   id: string,
  *   createdAt: \DateTimeInterface,
@@ -20,7 +22,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   sendWindowStartMinute: int,
  *   taskReminderMinute: int,
  *   updatedAt: \DateTimeInterface,
- *   unenrollmentSettings?: UnenrollmentSettingsResponse|null,
+ *   unenrollmentSettings?: null|UnenrollmentSettingsResponse|UnenrollmentSettingsResponseShape,
  * }
  */
 final class PublicSequenceSettingsResponse implements BaseModel
@@ -101,9 +103,7 @@ final class PublicSequenceSettingsResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param UnenrollmentSettingsResponse|array{
-     *   emailSettings: EmailSettingsResponse, meetingSettings: MeetingSettingsResponse
-     * } $unenrollmentSettings
+     * @param UnenrollmentSettingsResponseShape $unenrollmentSettings
      */
     public static function with(
         string $id,
@@ -208,9 +208,7 @@ final class PublicSequenceSettingsResponse implements BaseModel
     }
 
     /**
-     * @param UnenrollmentSettingsResponse|array{
-     *   emailSettings: EmailSettingsResponse, meetingSettings: MeetingSettingsResponse
-     * } $unenrollmentSettings
+     * @param UnenrollmentSettingsResponseShape $unenrollmentSettings
      */
     public function withUnenrollmentSettings(
         UnenrollmentSettingsResponse|array $unenrollmentSettings

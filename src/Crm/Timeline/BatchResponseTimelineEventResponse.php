@@ -13,11 +13,13 @@ use HubspotSDK\Crm\Timeline\BatchResponseTimelineEventResponse\Status;
 /**
  * The state of the batch event request.
  *
+ * @phpstan-import-type TimelineEventResponseShape from \HubspotSDK\Crm\Timeline\TimelineEventResponse
+ *
  * @phpstan-type BatchResponseTimelineEventResponseShape = array{
  *   completedAt: \DateTimeInterface,
- *   results: list<TimelineEventResponse>,
+ *   results: list<TimelineEventResponseShape>,
  *   startedAt: \DateTimeInterface,
- *   status: value-of<Status>,
+ *   status: Status|value-of<Status>,
  *   links?: array<string,string>|null,
  *   requestedAt?: \DateTimeInterface|null,
  * }
@@ -95,20 +97,7 @@ final class BatchResponseTimelineEventResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<TimelineEventResponse|array{
-     *   id: string,
-     *   eventTemplateID: string,
-     *   objectType: string,
-     *   tokens: array<string,string>,
-     *   createdAt?: \DateTimeInterface|null,
-     *   domain?: string|null,
-     *   email?: string|null,
-     *   extraData?: mixed,
-     *   objectID?: string|null,
-     *   timelineIFrame?: TimelineEventIFrame|null,
-     *   timestamp?: \DateTimeInterface|null,
-     *   utk?: string|null,
-     * }> $results
+     * @param list<TimelineEventResponseShape> $results
      * @param Status|value-of<Status> $status
      * @param array<string,string> $links
      */
@@ -147,20 +136,7 @@ final class BatchResponseTimelineEventResponse implements BaseModel
     /**
      * Successfully created events.
      *
-     * @param list<TimelineEventResponse|array{
-     *   id: string,
-     *   eventTemplateID: string,
-     *   objectType: string,
-     *   tokens: array<string,string>,
-     *   createdAt?: \DateTimeInterface|null,
-     *   domain?: string|null,
-     *   email?: string|null,
-     *   extraData?: mixed,
-     *   objectID?: string|null,
-     *   timelineIFrame?: TimelineEventIFrame|null,
-     *   timestamp?: \DateTimeInterface|null,
-     *   utk?: string|null,
-     * }> $results
+     * @param list<TimelineEventResponseShape> $results
      */
     public function withResults(array $results): self
     {

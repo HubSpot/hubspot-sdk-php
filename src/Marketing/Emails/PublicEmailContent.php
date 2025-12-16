@@ -11,11 +11,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Data structure representing the content of the email.
  *
+ * @phpstan-import-type PublicEmailStyleSettingsShape from \HubspotSDK\Marketing\Emails\PublicEmailStyleSettings
+ *
  * @phpstan-type PublicEmailContentShape = array{
  *   flexAreas?: array<string,mixed>|null,
  *   plainTextVersion?: string|null,
  *   smartFields?: array<string,mixed>|null,
- *   styleSettings?: PublicEmailStyleSettings|null,
+ *   styleSettings?: null|PublicEmailStyleSettings|PublicEmailStyleSettingsShape,
  *   templatePath?: string|null,
  *   themeSettingsValues?: array<string,mixed>|null,
  *   widgetContainers?: array<string,mixed>|null,
@@ -68,38 +70,7 @@ final class PublicEmailContent implements BaseModel
      *
      * @param array<string,mixed> $flexAreas
      * @param array<string,mixed> $smartFields
-     * @param PublicEmailStyleSettings|array{
-     *   backgroundColor?: string|null,
-     *   backgroundImage?: string|null,
-     *   backgroundImageType?: string|null,
-     *   bodyBorderColor?: string|null,
-     *   bodyBorderColorChoice?: string|null,
-     *   bodyBorderWidth?: float|null,
-     *   bodyColor?: string|null,
-     *   buttonStyleSettings?: PublicButtonStyleSettings|null,
-     *   colorPickerFavorite1?: string|null,
-     *   colorPickerFavorite2?: string|null,
-     *   colorPickerFavorite3?: string|null,
-     *   colorPickerFavorite4?: string|null,
-     *   colorPickerFavorite5?: string|null,
-     *   colorPickerFavorite6?: string|null,
-     *   dividerStyleSettings?: PublicDividerStyleSettings|null,
-     *   emailBodyPadding?: string|null,
-     *   emailBodyWidth?: string|null,
-     *   headingOneFont?: PublicFontStyle|null,
-     *   headingTwoFont?: PublicFontStyle|null,
-     *   linksFont?: PublicFontStyle|null,
-     *   primaryAccentColor?: string|null,
-     *   primaryFont?: string|null,
-     *   primaryFontColor?: string|null,
-     *   primaryFontLineHeight?: string|null,
-     *   primaryFontSize?: float|null,
-     *   secondaryAccentColor?: string|null,
-     *   secondaryFont?: string|null,
-     *   secondaryFontColor?: string|null,
-     *   secondaryFontLineHeight?: string|null,
-     *   secondaryFontSize?: float|null,
-     * } $styleSettings
+     * @param PublicEmailStyleSettingsShape $styleSettings
      * @param array<string,mixed> $themeSettingsValues
      * @param array<string,mixed> $widgetContainers
      * @param array<string,mixed> $widgets
@@ -159,38 +130,7 @@ final class PublicEmailContent implements BaseModel
     }
 
     /**
-     * @param PublicEmailStyleSettings|array{
-     *   backgroundColor?: string|null,
-     *   backgroundImage?: string|null,
-     *   backgroundImageType?: string|null,
-     *   bodyBorderColor?: string|null,
-     *   bodyBorderColorChoice?: string|null,
-     *   bodyBorderWidth?: float|null,
-     *   bodyColor?: string|null,
-     *   buttonStyleSettings?: PublicButtonStyleSettings|null,
-     *   colorPickerFavorite1?: string|null,
-     *   colorPickerFavorite2?: string|null,
-     *   colorPickerFavorite3?: string|null,
-     *   colorPickerFavorite4?: string|null,
-     *   colorPickerFavorite5?: string|null,
-     *   colorPickerFavorite6?: string|null,
-     *   dividerStyleSettings?: PublicDividerStyleSettings|null,
-     *   emailBodyPadding?: string|null,
-     *   emailBodyWidth?: string|null,
-     *   headingOneFont?: PublicFontStyle|null,
-     *   headingTwoFont?: PublicFontStyle|null,
-     *   linksFont?: PublicFontStyle|null,
-     *   primaryAccentColor?: string|null,
-     *   primaryFont?: string|null,
-     *   primaryFontColor?: string|null,
-     *   primaryFontLineHeight?: string|null,
-     *   primaryFontSize?: float|null,
-     *   secondaryAccentColor?: string|null,
-     *   secondaryFont?: string|null,
-     *   secondaryFontColor?: string|null,
-     *   secondaryFontLineHeight?: string|null,
-     *   secondaryFontSize?: float|null,
-     * } $styleSettings
+     * @param PublicEmailStyleSettingsShape $styleSettings
      */
     public function withStyleSettings(
         PublicEmailStyleSettings|array $styleSettings

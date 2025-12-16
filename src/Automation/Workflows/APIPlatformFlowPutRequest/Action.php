@@ -14,6 +14,16 @@ use HubspotSDK\Core\Concerns\SdkUnion;
 use HubspotSDK\Core\Conversion\Contracts\Converter;
 use HubspotSDK\Core\Conversion\Contracts\ConverterSource;
 
+/**
+ * @phpstan-import-type APIStaticBranchActionShape from \HubspotSDK\Automation\Workflows\APIStaticBranchAction
+ * @phpstan-import-type APIListBranchActionShape from \HubspotSDK\Automation\Workflows\APIListBranchAction
+ * @phpstan-import-type APIAbTestBranchActionShape from \HubspotSDK\Automation\Workflows\APIAbTestBranchAction
+ * @phpstan-import-type APICustomCodeActionShape from \HubspotSDK\Automation\Workflows\APICustomCodeAction
+ * @phpstan-import-type APIWebhookActionShape from \HubspotSDK\Automation\Workflows\APIWebhookAction
+ * @phpstan-import-type APISingleConnectionActionShape from \HubspotSDK\Automation\Workflows\APISingleConnectionAction
+ *
+ * @phpstan-type ActionShape = APIStaticBranchActionShape|APIListBranchActionShape|APIAbTestBranchActionShape|APICustomCodeActionShape|APIWebhookActionShape|APISingleConnectionActionShape
+ */
 final class Action implements ConverterSource
 {
     use SdkUnion;

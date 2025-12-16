@@ -31,7 +31,7 @@ interface ConfigurationsRawContract
      * @api
      *
      * @param string $toObjectType Path param:
-     * @param array<mixed>|ConfigurationBatchCreateParams $params
+     * @param array<string,mixed>|ConfigurationBatchCreateParams $params
      *
      * @return BaseResponse<BatchResponsePublicAssociationDefinitionUserConfiguration>
      *
@@ -47,7 +47,7 @@ interface ConfigurationsRawContract
      * @api
      *
      * @param string $toObjectType Path param:
-     * @param array<mixed>|ConfigurationBatchDeleteParams $params
+     * @param array<string,mixed>|ConfigurationBatchDeleteParams $params
      *
      * @return BaseResponse<BatchResponseVoid>
      *
@@ -63,7 +63,7 @@ interface ConfigurationsRawContract
      * @api
      *
      * @param string $toObjectType Path param:
-     * @param array<mixed>|ConfigurationBatchUpdateParams $params
+     * @param array<string,mixed>|ConfigurationBatchUpdateParams $params
      *
      * @return BaseResponse<BatchResponsePublicAssociationDefinitionConfigurationUpdateResult,>
      *
@@ -78,7 +78,7 @@ interface ConfigurationsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|ConfigurationGetByObjectTypesParams $params
+     * @param array<string,mixed>|ConfigurationGetByObjectTypesParams $params
      *
      * @return BaseResponse<CollectionResponsePublicAssociationDefinitionUserConfiguration,>
      *

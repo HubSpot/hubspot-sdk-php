@@ -17,7 +17,9 @@ use HubspotSDK\Marketing\Subscriptions\V4\Statuses\StatusGetUnsubscribeAllStatus
  * @see HubspotSDK\Services\Marketing\Subscriptions\V4\StatusesService::getUnsubscribeAllStatus()
  *
  * @phpstan-type StatusGetUnsubscribeAllStatusParamsShape = array{
- *   channel: Channel|value-of<Channel>, businessUnitID?: int, verbose?: bool
+ *   channel: Channel|value-of<Channel>,
+ *   businessUnitID?: int|null,
+ *   verbose?: bool|null,
  * }
  */
 final class StatusGetUnsubscribeAllStatusParams implements BaseModel

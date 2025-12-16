@@ -9,8 +9,11 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type FilteringMetaDataShape from \HubspotSDK\Cms\MediaBridge\FilteringMetaData
+ *
  * @phpstan-type ExternalOptionsMetaDataShape = array{
- *   filter?: FilteringMetaData|null, relatedObjectTypeID?: string|null
+ *   filter?: null|FilteringMetaData|FilteringMetaDataShape,
+ *   relatedObjectTypeID?: string|null,
  * }
  */
 final class ExternalOptionsMetaData implements BaseModel
@@ -34,9 +37,7 @@ final class ExternalOptionsMetaData implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param FilteringMetaData|array{
-     *   includeUnconfirmedUsers: bool, pipelineIDs: list<string>
-     * } $filter
+     * @param FilteringMetaDataShape $filter
      */
     public static function with(
         FilteringMetaData|array|null $filter = null,
@@ -51,9 +52,7 @@ final class ExternalOptionsMetaData implements BaseModel
     }
 
     /**
-     * @param FilteringMetaData|array{
-     *   includeUnconfirmedUsers: bool, pipelineIDs: list<string>
-     * } $filter
+     * @param FilteringMetaDataShape $filter
      */
     public function withFilter(FilteringMetaData|array $filter): self
     {

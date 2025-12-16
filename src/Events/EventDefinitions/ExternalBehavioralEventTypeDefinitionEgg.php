@@ -8,12 +8,13 @@ use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\OptionInput;
 
 /**
+ * @phpstan-import-type ExternalBehavioralEventPropertyCreateShape from \HubspotSDK\Events\EventDefinitions\ExternalBehavioralEventPropertyCreate
+ *
  * @phpstan-type ExternalBehavioralEventTypeDefinitionEggShape = array{
  *   label: string,
- *   propertyDefinitions: list<ExternalBehavioralEventPropertyCreate>,
+ *   propertyDefinitions: list<ExternalBehavioralEventPropertyCreateShape>,
  *   description?: string|null,
  *   name?: string|null,
  *   primaryObject?: string|null,
@@ -84,13 +85,7 @@ final class ExternalBehavioralEventTypeDefinitionEgg implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<ExternalBehavioralEventPropertyCreate|array{
-     *   label: string,
-     *   type: string,
-     *   description?: string|null,
-     *   name?: string|null,
-     *   options?: list<OptionInput>|null,
-     * }> $propertyDefinitions
+     * @param list<ExternalBehavioralEventPropertyCreateShape> $propertyDefinitions
      */
     public static function with(
         string $label,
@@ -125,13 +120,7 @@ final class ExternalBehavioralEventTypeDefinitionEgg implements BaseModel
     /**
      * List of custom properties on event.
      *
-     * @param list<ExternalBehavioralEventPropertyCreate|array{
-     *   label: string,
-     *   type: string,
-     *   description?: string|null,
-     *   name?: string|null,
-     *   options?: list<OptionInput>|null,
-     * }> $propertyDefinitions
+     * @param list<ExternalBehavioralEventPropertyCreateShape> $propertyDefinitions
      */
     public function withPropertyDefinitions(array $propertyDefinitions): self
     {

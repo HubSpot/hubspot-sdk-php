@@ -17,11 +17,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @phpstan-type ObjectGetParamsShape = array{
  *   objectType: string,
- *   archived?: bool,
- *   associations?: list<string>,
- *   idProperty?: string,
- *   properties?: list<string>,
- *   propertiesWithHistory?: list<string>,
+ *   archived?: bool|null,
+ *   associations?: list<string>|null,
+ *   idProperty?: string|null,
+ *   properties?: list<string>|null,
+ *   propertiesWithHistory?: list<string>|null,
  * }
  */
 final class ObjectGetParams implements BaseModel

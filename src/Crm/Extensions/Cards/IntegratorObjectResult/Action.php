@@ -10,6 +10,12 @@ use HubspotSDK\Core\Conversion\Contracts\ConverterSource;
 use HubspotSDK\Crm\Extensions\Cards\ActionHookActionBody;
 use HubspotSDK\Crm\Extensions\Cards\IFrameActionBody;
 
+/**
+ * @phpstan-import-type ActionHookActionBodyShape from \HubspotSDK\Crm\Extensions\Cards\ActionHookActionBody
+ * @phpstan-import-type IFrameActionBodyShape from \HubspotSDK\Crm\Extensions\Cards\IFrameActionBody
+ *
+ * @phpstan-type ActionShape = ActionHookActionBodyShape|IFrameActionBodyShape
+ */
 final class Action implements ConverterSource
 {
     use SdkUnion;

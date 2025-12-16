@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Cms\Blogs\AuthorsService::getBatch()
  *
  * @phpstan-type AuthorGetBatchParamsShape = array{
- *   inputs: list<string>, archived?: bool
+ *   inputs: list<string>, archived?: bool|null
  * }
  */
 final class AuthorGetBatchParams implements BaseModel

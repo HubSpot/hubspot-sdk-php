@@ -9,8 +9,10 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type DateTimeShape from \HubspotSDK\Crm\Associations\V4\DateTime
+ *
  * @phpstan-type ReportCreationResponseShape = array{
- *   enqueueTime: DateTime, userEmail: string, userID: int
+ *   enqueueTime: DateTime|DateTimeShape, userEmail: string, userID: int
  * }
  */
 final class ReportCreationResponse implements BaseModel
@@ -60,9 +62,7 @@ final class ReportCreationResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param DateTime|array{
-     *   dateOnly: bool, timeZoneShift: int, value: int
-     * } $enqueueTime
+     * @param DateTimeShape $enqueueTime
      */
     public static function with(
         DateTime|array $enqueueTime,
@@ -79,9 +79,7 @@ final class ReportCreationResponse implements BaseModel
     }
 
     /**
-     * @param DateTime|array{
-     *   dateOnly: bool, timeZoneShift: int, value: int
-     * } $enqueueTime
+     * @param DateTimeShape $enqueueTime
      */
     public function withEnqueueTime(DateTime|array $enqueueTime): self
     {

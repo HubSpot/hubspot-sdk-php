@@ -34,7 +34,7 @@ interface AssociationsRawContract
      * @api
      *
      * @param string $listID the ILS ID of the list
-     * @param array<mixed>|AssociationDeleteParams $params
+     * @param array<string,mixed>|AssociationDeleteParams $params
      *
      * @return BaseResponse<mixed>
      *
@@ -50,7 +50,7 @@ interface AssociationsRawContract
      * @api
      *
      * @param string $listID the ILS ID of the list
-     * @param array<mixed>|AssociationAssociateParams $params
+     * @param array<string,mixed>|AssociationAssociateParams $params
      *
      * @return BaseResponse<mixed>
      *
@@ -66,7 +66,7 @@ interface AssociationsRawContract
      * @api
      *
      * @param string $listID the ILS ID of the list
-     * @param array<mixed>|AssociationAssociateByExternalAccountParams $params
+     * @param array<string,mixed>|AssociationAssociateByExternalAccountParams $params
      *
      * @return BaseResponse<mixed>
      *
@@ -82,7 +82,7 @@ interface AssociationsRawContract
      * @api
      *
      * @param string $listID the ILS ID of the list
-     * @param array<mixed>|AssociationDeleteByExternalAccountParams $params
+     * @param array<string,mixed>|AssociationDeleteByExternalAccountParams $params
      *
      * @return BaseResponse<mixed>
      *
@@ -98,7 +98,7 @@ interface AssociationsRawContract
      * @api
      *
      * @param string $externalEventID the id of the marketing event in the external event application
-     * @param array<mixed>|AssociationListByExternalAccountParams $params
+     * @param array<string,mixed>|AssociationListByExternalAccountParams $params
      *
      * @return BaseResponse<CollectionResponseWithTotalPublicListNoPaging>
      *

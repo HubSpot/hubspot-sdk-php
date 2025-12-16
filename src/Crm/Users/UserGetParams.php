@@ -15,11 +15,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Crm\UsersService::get()
  *
  * @phpstan-type UserGetParamsShape = array{
- *   archived?: bool,
- *   associations?: list<string>,
- *   idProperty?: string,
- *   properties?: list<string>,
- *   propertiesWithHistory?: list<string>,
+ *   archived?: bool|null,
+ *   associations?: list<string>|null,
+ *   idProperty?: string|null,
+ *   properties?: list<string>|null,
+ *   propertiesWithHistory?: list<string>|null,
  * }
  */
 final class UserGetParams implements BaseModel

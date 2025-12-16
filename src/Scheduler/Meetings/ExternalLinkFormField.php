@@ -9,13 +9,15 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type ExternalOptionShape from \HubspotSDK\Scheduler\Meetings\ExternalOption
+ *
  * @phpstan-type ExternalLinkFormFieldShape = array{
  *   fieldType: string,
  *   isCustom: bool,
  *   isRequired: bool,
  *   label: string,
  *   name: string,
- *   options: list<ExternalOption>,
+ *   options: list<ExternalOptionShape>,
  *   type: string,
  * }
  */
@@ -85,15 +87,7 @@ final class ExternalLinkFormField implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<ExternalOption|array{
-     *   description: string,
-     *   displayOrder: int,
-     *   doubleData: float,
-     *   hidden: bool,
-     *   label: string,
-     *   readOnly: bool,
-     *   value: string,
-     * }> $options
+     * @param list<ExternalOptionShape> $options
      */
     public static function with(
         string $fieldType,
@@ -158,15 +152,7 @@ final class ExternalLinkFormField implements BaseModel
     }
 
     /**
-     * @param list<ExternalOption|array{
-     *   description: string,
-     *   displayOrder: int,
-     *   doubleData: float,
-     *   hidden: bool,
-     *   label: string,
-     *   readOnly: bool,
-     *   value: string,
-     * }> $options
+     * @param list<ExternalOptionShape> $options
      */
     public function withOptions(array $options): self
     {

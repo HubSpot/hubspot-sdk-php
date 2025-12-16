@@ -13,10 +13,10 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type MediaPlayedEventRequestShape = array{
- *   mediaType: value-of<MediaType>,
+ *   mediaType: MediaType|value-of<MediaType>,
  *   occurredTimestamp: int,
  *   sessionID: string,
- *   state: value-of<State>,
+ *   state: State|value-of<State>,
  *   _hsenc?: string|null,
  *   contactID?: int|null,
  *   contactUtk?: string|null,

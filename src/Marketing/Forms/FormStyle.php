@@ -21,7 +21,7 @@ use HubspotSDK\Marketing\Forms\FormStyle\SubmitAlignment;
  *   labelTextSize: string,
  *   legalConsentTextColor: string,
  *   legalConsentTextSize: string,
- *   submitAlignment: value-of<SubmitAlignment>,
+ *   submitAlignment: SubmitAlignment|value-of<SubmitAlignment>,
  *   submitColor: string,
  *   submitFontColor: string,
  *   submitSize: string,

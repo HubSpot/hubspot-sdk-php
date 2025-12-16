@@ -15,6 +15,17 @@ use HubspotSDK\Events\EventDefinitions\RelativeComparativeTimestampRefineBy;
 use HubspotSDK\Events\EventDefinitions\RelativeRangedTimestampRefineBy;
 use HubspotSDK\Events\EventDefinitions\TimePointOperation;
 
+/**
+ * @phpstan-import-type RelativeComparativeTimestampRefineByShape from \HubspotSDK\Events\EventDefinitions\RelativeComparativeTimestampRefineBy
+ * @phpstan-import-type RelativeRangedTimestampRefineByShape from \HubspotSDK\Events\EventDefinitions\RelativeRangedTimestampRefineBy
+ * @phpstan-import-type AbsoluteComparativeTimestampRefineByShape from \HubspotSDK\Events\EventDefinitions\AbsoluteComparativeTimestampRefineBy
+ * @phpstan-import-type AbsoluteRangedTimestampRefineByShape from \HubspotSDK\Events\EventDefinitions\AbsoluteRangedTimestampRefineBy
+ * @phpstan-import-type AllHistoryRefineByShape from \HubspotSDK\Events\EventDefinitions\AllHistoryRefineBy
+ * @phpstan-import-type TimePointOperationShape from \HubspotSDK\Events\EventDefinitions\TimePointOperation
+ * @phpstan-import-type RangedTimeOperationShape from \HubspotSDK\Events\EventDefinitions\RangedTimeOperation
+ *
+ * @phpstan-type PruningRefineByShape = RelativeComparativeTimestampRefineByShape|RelativeRangedTimestampRefineByShape|AbsoluteComparativeTimestampRefineByShape|AbsoluteRangedTimestampRefineByShape|AllHistoryRefineByShape|TimePointOperationShape|RangedTimeOperationShape
+ */
 final class PruningRefineBy implements ConverterSource
 {
     use SdkUnion;

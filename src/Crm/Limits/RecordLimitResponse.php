@@ -9,9 +9,12 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type CustomObjectRecordLimitResponseShape from \HubspotSDK\Crm\Limits\CustomObjectRecordLimitResponse
+ * @phpstan-import-type LimitAndUsageForObjectTypeShape from \HubspotSDK\Crm\Limits\LimitAndUsageForObjectType
+ *
  * @phpstan-type RecordLimitResponseShape = array{
- *   customObjectTypes: CustomObjectRecordLimitResponse,
- *   hubspotDefinedObjectTypes: list<LimitAndUsageForObjectType>,
+ *   customObjectTypes: CustomObjectRecordLimitResponse|CustomObjectRecordLimitResponseShape,
+ *   hubspotDefinedObjectTypes: list<LimitAndUsageForObjectTypeShape>,
  * }
  */
 final class RecordLimitResponse implements BaseModel
@@ -54,20 +57,8 @@ final class RecordLimitResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param CustomObjectRecordLimitResponse|array{
-     *   byObjectType: list<UsageForObjectType>,
-     *   overallLimit: int,
-     *   overallPercentage: float,
-     *   overallUsage: int,
-     * } $customObjectTypes
-     * @param list<LimitAndUsageForObjectType|array{
-     *   limit: int,
-     *   objectTypeID: string,
-     *   percentage: float,
-     *   pluralLabel: string,
-     *   singularLabel: string,
-     *   usage: int,
-     * }> $hubspotDefinedObjectTypes
+     * @param CustomObjectRecordLimitResponseShape $customObjectTypes
+     * @param list<LimitAndUsageForObjectTypeShape> $hubspotDefinedObjectTypes
      */
     public static function with(
         CustomObjectRecordLimitResponse|array $customObjectTypes,
@@ -82,12 +73,7 @@ final class RecordLimitResponse implements BaseModel
     }
 
     /**
-     * @param CustomObjectRecordLimitResponse|array{
-     *   byObjectType: list<UsageForObjectType>,
-     *   overallLimit: int,
-     *   overallPercentage: float,
-     *   overallUsage: int,
-     * } $customObjectTypes
+     * @param CustomObjectRecordLimitResponseShape $customObjectTypes
      */
     public function withCustomObjectTypes(
         CustomObjectRecordLimitResponse|array $customObjectTypes
@@ -99,14 +85,7 @@ final class RecordLimitResponse implements BaseModel
     }
 
     /**
-     * @param list<LimitAndUsageForObjectType|array{
-     *   limit: int,
-     *   objectTypeID: string,
-     *   percentage: float,
-     *   pluralLabel: string,
-     *   singularLabel: string,
-     *   usage: int,
-     * }> $hubspotDefinedObjectTypes
+     * @param list<LimitAndUsageForObjectTypeShape> $hubspotDefinedObjectTypes
      */
     public function withHubspotDefinedObjectTypes(
         array $hubspotDefinedObjectTypes

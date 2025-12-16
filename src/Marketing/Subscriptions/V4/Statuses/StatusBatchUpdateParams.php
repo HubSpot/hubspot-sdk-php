@@ -9,24 +9,16 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Marketing\Subscriptions\V4\PublicStatusRequest;
-use HubspotSDK\Marketing\Subscriptions\V4\PublicStatusRequest\Channel;
-use HubspotSDK\Marketing\Subscriptions\V4\PublicStatusRequest\LegalBasis;
-use HubspotSDK\Marketing\Subscriptions\V4\PublicStatusRequest\StatusState;
 
 /**
  * Update the subscription status for a set of contacts.
  *
  * @see HubspotSDK\Services\Marketing\Subscriptions\V4\StatusesService::batchUpdate()
  *
+ * @phpstan-import-type PublicStatusRequestShape from \HubspotSDK\Marketing\Subscriptions\V4\PublicStatusRequest
+ *
  * @phpstan-type StatusBatchUpdateParamsShape = array{
- *   inputs: list<PublicStatusRequest|array{
- *     channel: value-of<Channel>,
- *     statusState: value-of<StatusState>,
- *     subscriberIDString: string,
- *     subscriptionID: int,
- *     legalBasis?: value-of<LegalBasis>|null,
- *     legalBasisExplanation?: string|null,
- *   }>,
+ *   inputs: list<PublicStatusRequestShape>
  * }
  */
 final class StatusBatchUpdateParams implements BaseModel
@@ -63,14 +55,7 @@ final class StatusBatchUpdateParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicStatusRequest|array{
-     *   channel: value-of<Channel>,
-     *   statusState: value-of<StatusState>,
-     *   subscriberIDString: string,
-     *   subscriptionID: int,
-     *   legalBasis?: value-of<LegalBasis>|null,
-     *   legalBasisExplanation?: string|null,
-     * }> $inputs
+     * @param list<PublicStatusRequestShape> $inputs
      */
     public static function with(array $inputs): self
     {
@@ -82,14 +67,7 @@ final class StatusBatchUpdateParams implements BaseModel
     }
 
     /**
-     * @param list<PublicStatusRequest|array{
-     *   channel: value-of<Channel>,
-     *   statusState: value-of<StatusState>,
-     *   subscriberIDString: string,
-     *   subscriptionID: int,
-     *   legalBasis?: value-of<LegalBasis>|null,
-     *   legalBasisExplanation?: string|null,
-     * }> $inputs
+     * @param list<PublicStatusRequestShape> $inputs
      */
     public function withInputs(array $inputs): self
     {

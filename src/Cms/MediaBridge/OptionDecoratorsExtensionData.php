@@ -9,8 +9,10 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type OptionDecorationsShape from \HubspotSDK\Cms\MediaBridge\OptionDecorations
+ *
  * @phpstan-type OptionDecoratorsExtensionDataShape = array{
- *   optionDecorators: array<string,OptionDecorations>,
+ *   optionDecorators: array<string,OptionDecorationsShape>,
  *   optionDecoratorStyle: string,
  * }
  */
@@ -54,7 +56,7 @@ final class OptionDecoratorsExtensionData implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string,OptionDecorations|array{color: string}> $optionDecorators
+     * @param array<string,OptionDecorationsShape> $optionDecorators
      */
     public static function with(
         array $optionDecorators,
@@ -69,7 +71,7 @@ final class OptionDecoratorsExtensionData implements BaseModel
     }
 
     /**
-     * @param array<string,OptionDecorations|array{color: string}> $optionDecorators
+     * @param array<string,OptionDecorationsShape> $optionDecorators
      */
     public function withOptionDecorators(array $optionDecorators): self
     {

@@ -9,10 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type ExternalTimeRangeShape from \HubspotSDK\Scheduler\Meetings\ExternalTimeRange
+ * @phpstan-import-type ExternalMeetingsUserShape from \HubspotSDK\Scheduler\Meetings\ExternalMeetingsUser
+ *
  * @phpstan-type ExternalUserBusyTimesShape = array{
- *   busyTimes: list<ExternalTimeRange>,
+ *   busyTimes: list<ExternalTimeRangeShape>,
  *   isOffline: bool,
- *   meetingsUser: ExternalMeetingsUser,
+ *   meetingsUser: ExternalMeetingsUser|ExternalMeetingsUserShape,
  * }
  */
 final class ExternalUserBusyTimes implements BaseModel
@@ -57,14 +60,8 @@ final class ExternalUserBusyTimes implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<ExternalTimeRange|array{end: int, start: int}> $busyTimes
-     * @param ExternalMeetingsUser|array{
-     *   id: string,
-     *   calendarProvider: string,
-     *   isSalesStarter: bool,
-     *   userID: string,
-     *   userProfile: ExternalUserProfile,
-     * } $meetingsUser
+     * @param list<ExternalTimeRangeShape> $busyTimes
+     * @param ExternalMeetingsUserShape $meetingsUser
      */
     public static function with(
         array $busyTimes,
@@ -81,7 +78,7 @@ final class ExternalUserBusyTimes implements BaseModel
     }
 
     /**
-     * @param list<ExternalTimeRange|array{end: int, start: int}> $busyTimes
+     * @param list<ExternalTimeRangeShape> $busyTimes
      */
     public function withBusyTimes(array $busyTimes): self
     {
@@ -100,13 +97,7 @@ final class ExternalUserBusyTimes implements BaseModel
     }
 
     /**
-     * @param ExternalMeetingsUser|array{
-     *   id: string,
-     *   calendarProvider: string,
-     *   isSalesStarter: bool,
-     *   userID: string,
-     *   userProfile: ExternalUserProfile,
-     * } $meetingsUser
+     * @param ExternalMeetingsUserShape $meetingsUser
      */
     public function withMeetingsUser(
         ExternalMeetingsUser|array $meetingsUser

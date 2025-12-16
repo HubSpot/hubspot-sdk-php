@@ -11,7 +11,7 @@ use HubspotSDK\PublicCampaignInfluencedFilter\FilterType;
 
 /**
  * @phpstan-type PublicCampaignInfluencedFilterShape = array{
- *   campaignID: string, filterType: value-of<FilterType>
+ *   campaignID: string, filterType: FilterType|value-of<FilterType>
  * }
  */
 final class PublicCampaignInfluencedFilter implements BaseModel

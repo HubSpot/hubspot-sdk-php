@@ -10,9 +10,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Events\EventDefinitions\ComboEventRuleBranch\OperationType;
 
 /**
+ * @phpstan-import-type ComboEventRuleShape from \HubspotSDK\Events\EventDefinitions\ComboEventRule
+ *
  * @phpstan-type ComboEventRuleBranchShape = array{
- *   composingRules: list<ComboEventRule>,
- *   operationType: value-of<OperationType>,
+ *   composingRules: list<ComboEventRuleShape>,
+ *   operationType: OperationType|value-of<OperationType>,
  *   ruleBranches: list<mixed>,
  * }
  */
@@ -62,12 +64,7 @@ final class ComboEventRuleBranch implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<ComboEventRule|array{
-     *   count: int,
-     *   eventTypeID: string,
-     *   propertyFilters: list<PropertyFilter>,
-     *   lookbackWindowDays?: int|null,
-     * }> $composingRules
+     * @param list<ComboEventRuleShape> $composingRules
      * @param OperationType|value-of<OperationType> $operationType
      * @param list<mixed> $ruleBranches
      */
@@ -86,12 +83,7 @@ final class ComboEventRuleBranch implements BaseModel
     }
 
     /**
-     * @param list<ComboEventRule|array{
-     *   count: int,
-     *   eventTypeID: string,
-     *   propertyFilters: list<PropertyFilter>,
-     *   lookbackWindowDays?: int|null,
-     * }> $composingRules
+     * @param list<ComboEventRuleShape> $composingRules
      */
     public function withComposingRules(array $composingRules): self
     {

@@ -19,7 +19,7 @@ interface EventsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|EventCreateAttentionSpanEventParams $params
+     * @param array<string,mixed>|EventCreateAttentionSpanEventParams $params
      *
      * @return BaseResponse<AttentionSpanEvent>
      *
@@ -33,7 +33,7 @@ interface EventsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|EventCreateMediaPlayedEventParams $params
+     * @param array<string,mixed>|EventCreateMediaPlayedEventParams $params
      *
      * @return BaseResponse<MediaPlayedEvent>
      *
@@ -47,7 +47,7 @@ interface EventsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|EventCreateMediaPlayedPercentEventParams $params
+     * @param array<string,mixed>|EventCreateMediaPlayedPercentEventParams $params
      *
      * @return BaseResponse<MediaPlayedPercentageEvent>
      *

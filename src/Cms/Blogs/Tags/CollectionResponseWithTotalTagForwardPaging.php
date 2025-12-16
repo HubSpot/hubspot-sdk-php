@@ -4,19 +4,22 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\Blogs\Tags;
 
-use HubspotSDK\Cms\Blogs\Tags\Tag\Language;
 use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\ForwardPaging;
-use HubspotSDK\NextPage;
 
 /**
  * Response object for collections of blog tags with pagination information.
  *
+ * @phpstan-import-type TagShape from \HubspotSDK\Cms\Blogs\Tags\Tag
+ * @phpstan-import-type ForwardPagingShape from \HubspotSDK\ForwardPaging
+ *
  * @phpstan-type CollectionResponseWithTotalTagForwardPagingShape = array{
- *   results: list<Tag>, total: int, paging?: ForwardPaging|null
+ *   results: list<TagShape>,
+ *   total: int,
+ *   paging?: null|ForwardPaging|ForwardPagingShape,
  * }
  */
 final class CollectionResponseWithTotalTagForwardPaging implements BaseModel
@@ -67,16 +70,8 @@ final class CollectionResponseWithTotalTagForwardPaging implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<Tag|array{
-     *   id: string,
-     *   created: \DateTimeInterface,
-     *   deletedAt: \DateTimeInterface,
-     *   language: value-of<Language>,
-     *   name: string,
-     *   translatedFromID: int,
-     *   updated: \DateTimeInterface,
-     * }> $results
-     * @param ForwardPaging|array{next?: NextPage|null} $paging
+     * @param list<TagShape> $results
+     * @param ForwardPagingShape $paging
      */
     public static function with(
         array $results,
@@ -96,15 +91,7 @@ final class CollectionResponseWithTotalTagForwardPaging implements BaseModel
     /**
      * Collection of blog tags.
      *
-     * @param list<Tag|array{
-     *   id: string,
-     *   created: \DateTimeInterface,
-     *   deletedAt: \DateTimeInterface,
-     *   language: value-of<Language>,
-     *   name: string,
-     *   translatedFromID: int,
-     *   updated: \DateTimeInterface,
-     * }> $results
+     * @param list<TagShape> $results
      */
     public function withResults(array $results): self
     {
@@ -126,7 +113,7 @@ final class CollectionResponseWithTotalTagForwardPaging implements BaseModel
     }
 
     /**
-     * @param ForwardPaging|array{next?: NextPage|null} $paging
+     * @param ForwardPagingShape $paging
      */
     public function withPaging(ForwardPaging|array $paging): self
     {

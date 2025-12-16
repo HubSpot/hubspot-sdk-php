@@ -13,7 +13,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Crm\Extensions\Calling\ChannelConnectionSettingsService::update()
  *
  * @phpstan-type ChannelConnectionSettingUpdateParamsShape = array{
- *   isReady?: bool, url?: string
+ *   isReady?: bool|null, url?: string|null
  * }
  */
 final class ChannelConnectionSettingUpdateParams implements BaseModel

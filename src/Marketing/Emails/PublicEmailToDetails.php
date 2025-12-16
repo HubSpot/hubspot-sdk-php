@@ -11,10 +11,12 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Data structure representing the to fields of the email.
  *
+ * @phpstan-import-type PublicEmailRecipientsShape from \HubspotSDK\Marketing\Emails\PublicEmailRecipients
+ *
  * @phpstan-type PublicEmailToDetailsShape = array{
- *   contactIDs?: PublicEmailRecipients|null,
- *   contactIlsLists?: PublicEmailRecipients|null,
- *   contactLists?: PublicEmailRecipients|null,
+ *   contactIDs?: null|PublicEmailRecipients|PublicEmailRecipientsShape,
+ *   contactIlsLists?: null|PublicEmailRecipients|PublicEmailRecipientsShape,
+ *   contactLists?: null|PublicEmailRecipients|PublicEmailRecipientsShape,
  *   limitSendFrequency?: bool|null,
  *   suppressGraymail?: bool|null,
  * }
@@ -61,15 +63,9 @@ final class PublicEmailToDetails implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param PublicEmailRecipients|array{
-     *   exclude?: list<string>|null, include?: list<string>|null
-     * } $contactIDs
-     * @param PublicEmailRecipients|array{
-     *   exclude?: list<string>|null, include?: list<string>|null
-     * } $contactIlsLists
-     * @param PublicEmailRecipients|array{
-     *   exclude?: list<string>|null, include?: list<string>|null
-     * } $contactLists
+     * @param PublicEmailRecipientsShape $contactIDs
+     * @param PublicEmailRecipientsShape $contactIlsLists
+     * @param PublicEmailRecipientsShape $contactLists
      */
     public static function with(
         PublicEmailRecipients|array|null $contactIDs = null,
@@ -92,9 +88,7 @@ final class PublicEmailToDetails implements BaseModel
     /**
      * Data structure representing lists of IDs that should be included and excluded.
      *
-     * @param PublicEmailRecipients|array{
-     *   exclude?: list<string>|null, include?: list<string>|null
-     * } $contactIDs
+     * @param PublicEmailRecipientsShape $contactIDs
      */
     public function withContactIDs(
         PublicEmailRecipients|array $contactIDs
@@ -108,9 +102,7 @@ final class PublicEmailToDetails implements BaseModel
     /**
      * Data structure representing lists of IDs that should be included and excluded.
      *
-     * @param PublicEmailRecipients|array{
-     *   exclude?: list<string>|null, include?: list<string>|null
-     * } $contactIlsLists
+     * @param PublicEmailRecipientsShape $contactIlsLists
      */
     public function withContactIlsLists(
         PublicEmailRecipients|array $contactIlsLists
@@ -124,9 +116,7 @@ final class PublicEmailToDetails implements BaseModel
     /**
      * Data structure representing lists of IDs that should be included and excluded.
      *
-     * @param PublicEmailRecipients|array{
-     *   exclude?: list<string>|null, include?: list<string>|null
-     * } $contactLists
+     * @param PublicEmailRecipientsShape $contactLists
      */
     public function withContactLists(
         PublicEmailRecipients|array $contactLists

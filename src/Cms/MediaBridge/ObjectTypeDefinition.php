@@ -11,12 +11,14 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\ObjectTypeDefinitionLabels;
 
 /**
+ * @phpstan-import-type ObjectTypeDefinitionLabelsShape from \HubspotSDK\ObjectTypeDefinitionLabels
+ *
  * @phpstan-type ObjectTypeDefinitionShape = array{
  *   id: string,
  *   allowsSensitiveProperties: bool,
  *   archived: bool,
  *   fullyQualifiedName: string,
- *   labels: ObjectTypeDefinitionLabels,
+ *   labels: ObjectTypeDefinitionLabels|ObjectTypeDefinitionLabelsShape,
  *   name: string,
  *   objectTypeID: string,
  *   requiredProperties: list<string>,
@@ -127,9 +129,7 @@ final class ObjectTypeDefinition implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param ObjectTypeDefinitionLabels|array{
-     *   plural?: string|null, singular?: string|null
-     * } $labels
+     * @param ObjectTypeDefinitionLabelsShape $labels
      * @param list<string> $requiredProperties
      * @param list<string> $searchableProperties
      * @param list<string> $secondaryDisplayProperties
@@ -207,9 +207,7 @@ final class ObjectTypeDefinition implements BaseModel
     }
 
     /**
-     * @param ObjectTypeDefinitionLabels|array{
-     *   plural?: string|null, singular?: string|null
-     * } $labels
+     * @param ObjectTypeDefinitionLabelsShape $labels
      */
     public function withLabels(ObjectTypeDefinitionLabels|array $labels): self
     {

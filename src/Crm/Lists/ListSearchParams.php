@@ -18,11 +18,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-type ListSearchParamsShape = array{
  *   additionalProperties: list<string>,
  *   offset: int,
- *   count?: int,
- *   listIDs?: list<string>,
- *   processingTypes?: list<string>,
- *   query?: string,
- *   sort?: string,
+ *   count?: int|null,
+ *   listIDs?: list<string>|null,
+ *   processingTypes?: list<string>|null,
+ *   query?: string|null,
+ *   sort?: string|null,
  * }
  */
 final class ListSearchParams implements BaseModel

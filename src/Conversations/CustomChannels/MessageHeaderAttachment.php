@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type MessageHeaderAttachmentShape = array{
- *   type: value-of<Type>, fileID?: int|null, text?: string|null
+ *   type: Type|value-of<Type>, fileID?: int|null, text?: string|null
  * }
  */
 final class MessageHeaderAttachment implements BaseModel

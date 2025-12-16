@@ -10,8 +10,12 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type APITimeOfDayShape from \HubspotSDK\Automation\Workflows\APITimeOfDay
+ *
  * @phpstan-type APIMonthlySpecificDaysEnrollmentScheduleShape = array{
- *   daysOfMonth: list<int>, timeOfDay: APITimeOfDay, type: value-of<Type>
+ *   daysOfMonth: list<int>,
+ *   timeOfDay: APITimeOfDay|APITimeOfDayShape,
+ *   type: Type|value-of<Type>,
  * }
  */
 final class APIMonthlySpecificDaysEnrollmentSchedule implements BaseModel
@@ -60,7 +64,7 @@ final class APIMonthlySpecificDaysEnrollmentSchedule implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<int> $daysOfMonth
-     * @param APITimeOfDay|array{hour: int, minute: int} $timeOfDay
+     * @param APITimeOfDayShape $timeOfDay
      * @param Type|value-of<Type> $type
      */
     public static function with(
@@ -89,7 +93,7 @@ final class APIMonthlySpecificDaysEnrollmentSchedule implements BaseModel
     }
 
     /**
-     * @param APITimeOfDay|array{hour: int, minute: int} $timeOfDay
+     * @param APITimeOfDayShape $timeOfDay
      */
     public function withTimeOfDay(APITimeOfDay|array $timeOfDay): self
     {

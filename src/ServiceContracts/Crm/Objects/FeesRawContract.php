@@ -23,7 +23,7 @@ interface FeesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|FeeCreateParams $params
+     * @param array<string,mixed>|FeeCreateParams $params
      *
      * @return BaseResponse<CreatedResponseSimplePublicObject>
      *
@@ -38,7 +38,7 @@ interface FeesRawContract
      * @api
      *
      * @param string $feeID Path param:
-     * @param array<mixed>|FeeUpdateParams $params
+     * @param array<string,mixed>|FeeUpdateParams $params
      *
      * @return BaseResponse<SimplePublicObject>
      *
@@ -53,7 +53,7 @@ interface FeesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|FeeListParams $params
+     * @param array<string,mixed>|FeeListParams $params
      *
      * @return BaseResponse<Page<SimplePublicObjectWithAssociations>>
      *
@@ -79,7 +79,7 @@ interface FeesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|FeeGetParams $params
+     * @param array<string,mixed>|FeeGetParams $params
      *
      * @return BaseResponse<SimplePublicObjectWithAssociations>
      *
@@ -94,7 +94,7 @@ interface FeesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|FeeSearchParams $params
+     * @param array<string,mixed>|FeeSearchParams $params
      *
      * @return BaseResponse<CollectionResponseWithTotalSimplePublicObject>
      *

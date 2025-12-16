@@ -24,7 +24,7 @@ interface CompaniesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|CompanyCreateParams $params
+     * @param array<string,mixed>|CompanyCreateParams $params
      *
      * @return BaseResponse<CreatedResponseSimplePublicObject>
      *
@@ -39,7 +39,7 @@ interface CompaniesRawContract
      * @api
      *
      * @param string $companyID Path param:
-     * @param array<mixed>|CompanyUpdateParams $params
+     * @param array<string,mixed>|CompanyUpdateParams $params
      *
      * @return BaseResponse<SimplePublicObject>
      *
@@ -54,7 +54,7 @@ interface CompaniesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|CompanyListParams $params
+     * @param array<string,mixed>|CompanyListParams $params
      *
      * @return BaseResponse<Page<SimplePublicObjectWithAssociations>>
      *
@@ -80,7 +80,7 @@ interface CompaniesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|CompanyGetParams $params
+     * @param array<string,mixed>|CompanyGetParams $params
      *
      * @return BaseResponse<SimplePublicObjectWithAssociations>
      *
@@ -95,7 +95,7 @@ interface CompaniesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|CompanyMergeParams $params
+     * @param array<string,mixed>|CompanyMergeParams $params
      *
      * @return BaseResponse<SimplePublicObject>
      *
@@ -109,7 +109,7 @@ interface CompaniesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|CompanySearchParams $params
+     * @param array<string,mixed>|CompanySearchParams $params
      *
      * @return BaseResponse<CollectionResponseWithTotalSimplePublicObject>
      *

@@ -7,13 +7,12 @@ namespace HubspotSDK\Marketing\Subscriptions\V4;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Marketing\Subscriptions\V4\PublicStatusRequest\Channel;
-use HubspotSDK\Marketing\Subscriptions\V4\PublicStatusRequest\LegalBasis;
-use HubspotSDK\Marketing\Subscriptions\V4\PublicStatusRequest\StatusState;
 
 /**
+ * @phpstan-import-type PublicStatusRequestShape from \HubspotSDK\Marketing\Subscriptions\V4\PublicStatusRequest
+ *
  * @phpstan-type BatchInputPublicStatusRequestShape = array{
- *   inputs: list<PublicStatusRequest>
+ *   inputs: list<PublicStatusRequestShape>
  * }
  */
 final class BatchInputPublicStatusRequest implements BaseModel
@@ -49,14 +48,7 @@ final class BatchInputPublicStatusRequest implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicStatusRequest|array{
-     *   channel: value-of<Channel>,
-     *   statusState: value-of<StatusState>,
-     *   subscriberIDString: string,
-     *   subscriptionID: int,
-     *   legalBasis?: value-of<LegalBasis>|null,
-     *   legalBasisExplanation?: string|null,
-     * }> $inputs
+     * @param list<PublicStatusRequestShape> $inputs
      */
     public static function with(array $inputs): self
     {
@@ -68,14 +60,7 @@ final class BatchInputPublicStatusRequest implements BaseModel
     }
 
     /**
-     * @param list<PublicStatusRequest|array{
-     *   channel: value-of<Channel>,
-     *   statusState: value-of<StatusState>,
-     *   subscriberIDString: string,
-     *   subscriptionID: int,
-     *   legalBasis?: value-of<LegalBasis>|null,
-     *   legalBasisExplanation?: string|null,
-     * }> $inputs
+     * @param list<PublicStatusRequestShape> $inputs
      */
     public function withInputs(array $inputs): self
     {

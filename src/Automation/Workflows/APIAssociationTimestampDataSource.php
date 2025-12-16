@@ -12,11 +12,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type APIAssociationTimestampDataSourceShape = array{
- *   associationCategory: value-of<AssociationCategory>,
+ *   associationCategory: AssociationCategory|value-of<AssociationCategory>,
  *   associationTypeID: int,
  *   name: string,
  *   objectTypeID: string,
- *   type: value-of<Type>,
+ *   type: Type|value-of<Type>,
  * }
  */
 final class APIAssociationTimestampDataSource implements BaseModel

@@ -13,7 +13,7 @@ use HubspotSDK\Crm\Extensions\Cards\DisplayOption\Type;
  * Option definition for STATUS dataTypes.
  *
  * @phpstan-type DisplayOptionShape = array{
- *   label: string, name: string, type: value-of<Type>
+ *   label: string, name: string, type: Type|value-of<Type>
  * }
  */
 final class DisplayOption implements BaseModel

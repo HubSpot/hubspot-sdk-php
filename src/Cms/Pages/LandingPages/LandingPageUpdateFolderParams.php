@@ -24,7 +24,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   name: string,
  *   parentFolderID: int,
  *   updated: \DateTimeInterface,
- *   archived?: bool,
+ *   archived?: bool|null,
  * }
  */
 final class LandingPageUpdateFolderParams implements BaseModel

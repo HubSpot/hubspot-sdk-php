@@ -12,12 +12,14 @@ use HubspotSDK\Crm\Extensions\Cards\ActionHookActionBody\HTTPMethod;
 use HubspotSDK\Crm\Extensions\Cards\ActionHookActionBody\Type;
 
 /**
+ * @phpstan-import-type ActionConfirmationBodyShape from \HubspotSDK\Crm\Extensions\Cards\ActionConfirmationBody
+ *
  * @phpstan-type ActionHookActionBodyShape = array{
- *   httpMethod: value-of<HTTPMethod>,
+ *   httpMethod: HTTPMethod|value-of<HTTPMethod>,
  *   propertyNamesIncluded: list<string>,
- *   type: value-of<Type>,
+ *   type: Type|value-of<Type>,
  *   url: string,
- *   confirmation?: ActionConfirmationBody|null,
+ *   confirmation?: null|ActionConfirmationBody|ActionConfirmationBodyShape,
  *   label?: string|null,
  * }
  */
@@ -80,9 +82,7 @@ final class ActionHookActionBody implements BaseModel
      * @param HTTPMethod|value-of<HTTPMethod> $httpMethod
      * @param list<string> $propertyNamesIncluded
      * @param Type|value-of<Type> $type
-     * @param ActionConfirmationBody|array{
-     *   cancelButtonLabel: string, confirmButtonLabel: string, prompt: string
-     * } $confirmation
+     * @param ActionConfirmationBodyShape $confirmation
      */
     public static function with(
         HTTPMethod|string $httpMethod,
@@ -148,9 +148,7 @@ final class ActionHookActionBody implements BaseModel
     }
 
     /**
-     * @param ActionConfirmationBody|array{
-     *   cancelButtonLabel: string, confirmButtonLabel: string, prompt: string
-     * } $confirmation
+     * @param ActionConfirmationBodyShape $confirmation
      */
     public function withConfirmation(
         ActionConfirmationBody|array $confirmation

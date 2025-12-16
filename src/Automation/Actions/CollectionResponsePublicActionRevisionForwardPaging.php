@@ -9,11 +9,14 @@ use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\ForwardPaging;
-use HubspotSDK\NextPage;
 
 /**
+ * @phpstan-import-type PublicActionRevisionShape from \HubspotSDK\Automation\Actions\PublicActionRevision
+ * @phpstan-import-type ForwardPagingShape from \HubspotSDK\ForwardPaging
+ *
  * @phpstan-type CollectionResponsePublicActionRevisionForwardPagingShape = array{
- *   results: list<PublicActionRevision>, paging?: ForwardPaging|null
+ *   results: list<PublicActionRevisionShape>,
+ *   paging?: null|ForwardPaging|ForwardPagingShape,
  * }
  */
 final class CollectionResponsePublicActionRevisionForwardPaging implements BaseModel
@@ -52,13 +55,8 @@ final class CollectionResponsePublicActionRevisionForwardPaging implements BaseM
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicActionRevision|array{
-     *   id: string,
-     *   createdAt: \DateTimeInterface,
-     *   definition: PublicActionDefinition,
-     *   revisionID: string,
-     * }> $results
-     * @param ForwardPaging|array{next?: NextPage|null} $paging
+     * @param list<PublicActionRevisionShape> $results
+     * @param ForwardPagingShape $paging
      */
     public static function with(
         array $results,
@@ -74,12 +72,7 @@ final class CollectionResponsePublicActionRevisionForwardPaging implements BaseM
     }
 
     /**
-     * @param list<PublicActionRevision|array{
-     *   id: string,
-     *   createdAt: \DateTimeInterface,
-     *   definition: PublicActionDefinition,
-     *   revisionID: string,
-     * }> $results
+     * @param list<PublicActionRevisionShape> $results
      */
     public function withResults(array $results): self
     {
@@ -90,7 +83,7 @@ final class CollectionResponsePublicActionRevisionForwardPaging implements BaseM
     }
 
     /**
-     * @param ForwardPaging|array{next?: NextPage|null} $paging
+     * @param ForwardPagingShape $paging
      */
     public function withPaging(ForwardPaging|array $paging): self
     {

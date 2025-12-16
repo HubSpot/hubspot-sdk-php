@@ -9,8 +9,14 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type AngleShape from \HubspotSDK\Cms\Angle
+ * @phpstan-import-type ColorStopShape from \HubspotSDK\Cms\ColorStop
+ * @phpstan-import-type SideOrCornerShape from \HubspotSDK\Cms\SideOrCorner
+ *
  * @phpstan-type GradientShape = array{
- *   angle: Angle, colors: list<ColorStop>, sideOrCorner: SideOrCorner
+ *   angle: Angle|AngleShape,
+ *   colors: list<ColorStopShape>,
+ *   sideOrCorner: SideOrCorner|SideOrCornerShape,
  * }
  */
 final class Gradient implements BaseModel
@@ -52,11 +58,9 @@ final class Gradient implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param Angle|array{units: string, value: float} $angle
-     * @param list<ColorStop|array{color: RgbaColor}> $colors
-     * @param SideOrCorner|array{
-     *   horizontalSide: string, verticalSide: string
-     * } $sideOrCorner
+     * @param AngleShape $angle
+     * @param list<ColorStopShape> $colors
+     * @param SideOrCornerShape $sideOrCorner
      */
     public static function with(
         Angle|array $angle,
@@ -73,7 +77,7 @@ final class Gradient implements BaseModel
     }
 
     /**
-     * @param Angle|array{units: string, value: float} $angle
+     * @param AngleShape $angle
      */
     public function withAngle(Angle|array $angle): self
     {
@@ -84,7 +88,7 @@ final class Gradient implements BaseModel
     }
 
     /**
-     * @param list<ColorStop|array{color: RgbaColor}> $colors
+     * @param list<ColorStopShape> $colors
      */
     public function withColors(array $colors): self
     {
@@ -95,9 +99,7 @@ final class Gradient implements BaseModel
     }
 
     /**
-     * @param SideOrCorner|array{
-     *   horizontalSide: string, verticalSide: string
-     * } $sideOrCorner
+     * @param SideOrCornerShape $sideOrCorner
      */
     public function withSideOrCorner(SideOrCorner|array $sideOrCorner): self
     {

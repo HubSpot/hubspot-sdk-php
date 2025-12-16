@@ -8,16 +8,17 @@ use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Extensions\Cards\CardDisplayProperty\DataType;
-use HubspotSDK\Crm\Extensions\Cards\DisplayOption\Type;
 
 /**
  * Definition for a card display property.
  *
+ * @phpstan-import-type DisplayOptionShape from \HubspotSDK\Crm\Extensions\Cards\DisplayOption
+ *
  * @phpstan-type CardDisplayPropertyShape = array{
- *   dataType: value-of<DataType>,
+ *   dataType: DataType|value-of<DataType>,
  *   label: string,
  *   name: string,
- *   options: list<DisplayOption>,
+ *   options: list<DisplayOptionShape>,
  * }
  */
 final class CardDisplayProperty implements BaseModel
@@ -82,9 +83,7 @@ final class CardDisplayProperty implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param DataType|value-of<DataType> $dataType
-     * @param list<DisplayOption|array{
-     *   label: string, name: string, type: value-of<Type>
-     * }> $options
+     * @param list<DisplayOptionShape> $options
      */
     public static function with(
         DataType|string $dataType,
@@ -140,9 +139,7 @@ final class CardDisplayProperty implements BaseModel
     /**
      * An array of available options that can be displayed. Only used in when `dataType` is `STATUS`.
      *
-     * @param list<DisplayOption|array{
-     *   label: string, name: string, type: value-of<Type>
-     * }> $options
+     * @param list<DisplayOptionShape> $options
      */
     public function withOptions(array $options): self
     {

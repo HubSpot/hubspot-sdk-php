@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Crm\ListsService::getByObjectTypeIDAndName()
  *
  * @phpstan-type ListGetByObjectTypeIDAndNameParamsShape = array{
- *   objectTypeID: string, includeFilters?: bool
+ *   objectTypeID: string, includeFilters?: bool|null
  * }
  */
 final class ListGetByObjectTypeIDAndNameParams implements BaseModel

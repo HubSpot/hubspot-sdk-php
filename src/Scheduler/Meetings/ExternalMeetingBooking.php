@@ -10,13 +10,16 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type ExternalBookingFormFieldShape from \HubspotSDK\Scheduler\Meetings\ExternalBookingFormField
+ * @phpstan-import-type ExternalLegalConsentResponseShape from \HubspotSDK\Scheduler\Meetings\ExternalLegalConsentResponse
+ *
  * @phpstan-type ExternalMeetingBookingShape = array{
  *   duration: int,
  *   email: string,
  *   firstName: string,
- *   formFields: list<ExternalBookingFormField>,
+ *   formFields: list<ExternalBookingFormFieldShape>,
  *   lastName: string,
- *   legalConsentResponses: list<ExternalLegalConsentResponse>,
+ *   legalConsentResponses: list<ExternalLegalConsentResponseShape>,
  *   likelyAvailableUserIDs: list<string>,
  *   slug: string,
  *   startTime: \DateTimeInterface,
@@ -108,12 +111,8 @@ final class ExternalMeetingBooking implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<ExternalBookingFormField|array{
-     *   name: string, value: string
-     * }> $formFields
-     * @param list<ExternalLegalConsentResponse|array{
-     *   communicationTypeID: string, consented: bool
-     * }> $legalConsentResponses
+     * @param list<ExternalBookingFormFieldShape> $formFields
+     * @param list<ExternalLegalConsentResponseShape> $legalConsentResponses
      * @param list<string> $likelyAvailableUserIDs
      */
     public static function with(
@@ -172,9 +171,7 @@ final class ExternalMeetingBooking implements BaseModel
     }
 
     /**
-     * @param list<ExternalBookingFormField|array{
-     *   name: string, value: string
-     * }> $formFields
+     * @param list<ExternalBookingFormFieldShape> $formFields
      */
     public function withFormFields(array $formFields): self
     {
@@ -193,9 +190,7 @@ final class ExternalMeetingBooking implements BaseModel
     }
 
     /**
-     * @param list<ExternalLegalConsentResponse|array{
-     *   communicationTypeID: string, consented: bool
-     * }> $legalConsentResponses
+     * @param list<ExternalLegalConsentResponseShape> $legalConsentResponses
      */
     public function withLegalConsentResponses(
         array $legalConsentResponses

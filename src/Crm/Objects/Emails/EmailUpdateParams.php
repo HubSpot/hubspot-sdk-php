@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Crm\Objects\EmailsService::update()
  *
  * @phpstan-type EmailUpdateParamsShape = array{
- *   properties: array<string,string>, idProperty?: string
+ *   properties: array<string,string>, idProperty?: string|null
  * }
  */
 final class EmailUpdateParams implements BaseModel

@@ -13,7 +13,7 @@ use HubspotSDK\PublicAdsSearchFilter\FilterType;
  * @phpstan-type PublicAdsSearchFilterShape = array{
  *   adNetwork: string,
  *   entityType: string,
- *   filterType: value-of<FilterType>,
+ *   filterType: FilterType|value-of<FilterType>,
  *   operator: string,
  *   searchTerms: list<string>,
  *   searchTermType: string,

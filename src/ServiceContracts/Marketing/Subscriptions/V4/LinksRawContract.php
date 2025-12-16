@@ -15,7 +15,7 @@ interface LinksRawContract
     /**
      * @api
      *
-     * @param array<mixed>|LinkCreateParams $params
+     * @param array<string,mixed>|LinkCreateParams $params
      *
      * @return BaseResponse<LinkGenerationResponse>
      *

@@ -17,7 +17,7 @@ interface MappingRawContract
     /**
      * @api
      *
-     * @param array<mixed>|MappingBatchCreateIDMappingParams $params
+     * @param array<string,mixed>|MappingBatchCreateIDMappingParams $params
      *
      * @return BaseResponse<PublicBatchMigrationMapping>
      *
@@ -31,7 +31,7 @@ interface MappingRawContract
     /**
      * @api
      *
-     * @param array<mixed>|MappingGetIDMappingParams $params
+     * @param array<string,mixed>|MappingGetIDMappingParams $params
      *
      * @return BaseResponse<PublicMigrationMapping>
      *

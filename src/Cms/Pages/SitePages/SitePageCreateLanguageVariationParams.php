@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Cms\Pages\SitePagesService::createLanguageVariation()
  *
  * @phpstan-type SitePageCreateLanguageVariationParamsShape = array{
- *   id: string, language?: string, primaryLanguage?: string
+ *   id: string, language?: string|null, primaryLanguage?: string|null
  * }
  */
 final class SitePageCreateLanguageVariationParams implements BaseModel

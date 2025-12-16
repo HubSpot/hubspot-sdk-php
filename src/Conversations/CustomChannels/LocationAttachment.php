@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-type LocationAttachmentShape = array{
  *   latitude: float,
  *   longitude: float,
- *   type: value-of<Type>,
+ *   type: Type|value-of<Type>,
  *   address?: string|null,
  *   name?: string|null,
  *   url?: string|null,

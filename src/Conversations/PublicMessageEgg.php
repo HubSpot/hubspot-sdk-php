@@ -8,6 +8,12 @@ use HubspotSDK\Core\Concerns\SdkUnion;
 use HubspotSDK\Core\Conversion\Contracts\Converter;
 use HubspotSDK\Core\Conversion\Contracts\ConverterSource;
 
+/**
+ * @phpstan-import-type PublicConversationsMessageEggShape from \HubspotSDK\Conversations\PublicConversationsMessageEgg
+ * @phpstan-import-type PublicCommentEggShape from \HubspotSDK\Conversations\PublicCommentEgg
+ *
+ * @phpstan-type PublicMessageEggShape = PublicConversationsMessageEggShape|PublicCommentEggShape
+ */
 final class PublicMessageEgg implements ConverterSource
 {
     use SdkUnion;

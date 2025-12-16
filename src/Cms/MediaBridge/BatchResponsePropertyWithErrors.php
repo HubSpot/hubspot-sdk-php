@@ -9,20 +9,19 @@ use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\ErrorDetail;
-use HubspotSDK\Option;
 use HubspotSDK\Property;
-use HubspotSDK\Property\DataSensitivity;
-use HubspotSDK\PropertyModificationMetadata;
 use HubspotSDK\StandardError;
 
 /**
+ * @phpstan-import-type PropertyShape from \HubspotSDK\Property
+ * @phpstan-import-type StandardErrorShape from \HubspotSDK\StandardError
+ *
  * @phpstan-type BatchResponsePropertyWithErrorsShape = array{
  *   completedAt: \DateTimeInterface,
- *   results: list<\HubspotSDK\Property>,
+ *   results: list<PropertyShape>,
  *   startedAt: \DateTimeInterface,
- *   status: value-of<Status>,
- *   errors?: list<StandardError>|null,
+ *   status: Status|value-of<Status>,
+ *   errors?: list<StandardErrorShape>|null,
  *   links?: array<string,string>|null,
  *   numErrors?: int|null,
  *   requestedAt?: \DateTimeInterface|null,
@@ -91,45 +90,9 @@ final class BatchResponsePropertyWithErrors implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<Property|array{
-     *   description: string,
-     *   fieldType: string,
-     *   groupName: string,
-     *   label: string,
-     *   name: string,
-     *   options: list<Option>,
-     *   type: string,
-     *   archived?: bool|null,
-     *   archivedAt?: \DateTimeInterface|null,
-     *   calculated?: bool|null,
-     *   calculationFormula?: string|null,
-     *   createdAt?: \DateTimeInterface|null,
-     *   createdUserID?: string|null,
-     *   dataSensitivity?: value-of<DataSensitivity>|null,
-     *   displayOrder?: int|null,
-     *   externalOptions?: bool|null,
-     *   formField?: bool|null,
-     *   hasUniqueValue?: bool|null,
-     *   hidden?: bool|null,
-     *   hubspotDefined?: bool|null,
-     *   modificationMetadata?: PropertyModificationMetadata|null,
-     *   referencedObjectType?: string|null,
-     *   sensitiveDataCategories?: list<string>|null,
-     *   showCurrencySymbol?: bool|null,
-     *   updatedAt?: \DateTimeInterface|null,
-     *   updatedUserID?: string|null,
-     * }> $results
+     * @param list<PropertyShape> $results
      * @param Status|value-of<Status> $status
-     * @param list<StandardError|array{
-     *   category: string,
-     *   context: array<string,list<string>>,
-     *   errors: list<ErrorDetail>,
-     *   links: array<string,string>,
-     *   message: string,
-     *   status: string,
-     *   id?: string|null,
-     *   subCategory?: mixed,
-     * }> $errors
+     * @param list<StandardErrorShape> $errors
      * @param array<string,string> $links
      */
     public static function with(
@@ -166,34 +129,7 @@ final class BatchResponsePropertyWithErrors implements BaseModel
     }
 
     /**
-     * @param list<Property|array{
-     *   description: string,
-     *   fieldType: string,
-     *   groupName: string,
-     *   label: string,
-     *   name: string,
-     *   options: list<Option>,
-     *   type: string,
-     *   archived?: bool|null,
-     *   archivedAt?: \DateTimeInterface|null,
-     *   calculated?: bool|null,
-     *   calculationFormula?: string|null,
-     *   createdAt?: \DateTimeInterface|null,
-     *   createdUserID?: string|null,
-     *   dataSensitivity?: value-of<DataSensitivity>|null,
-     *   displayOrder?: int|null,
-     *   externalOptions?: bool|null,
-     *   formField?: bool|null,
-     *   hasUniqueValue?: bool|null,
-     *   hidden?: bool|null,
-     *   hubspotDefined?: bool|null,
-     *   modificationMetadata?: PropertyModificationMetadata|null,
-     *   referencedObjectType?: string|null,
-     *   sensitiveDataCategories?: list<string>|null,
-     *   showCurrencySymbol?: bool|null,
-     *   updatedAt?: \DateTimeInterface|null,
-     *   updatedUserID?: string|null,
-     * }> $results
+     * @param list<PropertyShape> $results
      */
     public function withResults(array $results): self
     {
@@ -223,16 +159,7 @@ final class BatchResponsePropertyWithErrors implements BaseModel
     }
 
     /**
-     * @param list<StandardError|array{
-     *   category: string,
-     *   context: array<string,list<string>>,
-     *   errors: list<ErrorDetail>,
-     *   links: array<string,string>,
-     *   message: string,
-     *   status: string,
-     *   id?: string|null,
-     *   subCategory?: mixed,
-     * }> $errors
+     * @param list<StandardErrorShape> $errors
      */
     public function withErrors(array $errors): self
     {

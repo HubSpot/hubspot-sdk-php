@@ -21,7 +21,7 @@ interface CardsRawContract
      * @api
      *
      * @param int $appID the ID of the target app
-     * @param array<mixed>|CardCreateParams $params
+     * @param array<string,mixed>|CardCreateParams $params
      *
      * @return BaseResponse<PublicCardResponse>
      *
@@ -37,7 +37,7 @@ interface CardsRawContract
      * @api
      *
      * @param string $cardID path param: The ID of the card to update
-     * @param array<mixed>|CardUpdateParams $params
+     * @param array<string,mixed>|CardUpdateParams $params
      *
      * @return BaseResponse<PublicCardResponse>
      *
@@ -67,7 +67,7 @@ interface CardsRawContract
      * @api
      *
      * @param string $cardID the ID of the card to delete
-     * @param array<mixed>|CardDeleteParams $params
+     * @param array<string,mixed>|CardDeleteParams $params
      *
      * @return BaseResponse<mixed>
      *
@@ -83,7 +83,7 @@ interface CardsRawContract
      * @api
      *
      * @param string $cardID the ID of the target card
-     * @param array<mixed>|CardGetParams $params
+     * @param array<string,mixed>|CardGetParams $params
      *
      * @return BaseResponse<PublicCardResponse>
      *

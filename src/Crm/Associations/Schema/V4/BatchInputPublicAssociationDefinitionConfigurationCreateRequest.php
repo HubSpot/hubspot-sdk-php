@@ -7,11 +7,12 @@ namespace HubspotSDK\Crm\Associations\Schema\V4;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\Associations\Schema\V4\PublicAssociationDefinitionConfigurationCreateRequest\Category;
 
 /**
+ * @phpstan-import-type PublicAssociationDefinitionConfigurationCreateRequestShape from \HubspotSDK\Crm\Associations\Schema\V4\PublicAssociationDefinitionConfigurationCreateRequest
+ *
  * @phpstan-type BatchInputPublicAssociationDefinitionConfigurationCreateRequestShape = array{
- *   inputs: list<PublicAssociationDefinitionConfigurationCreateRequest>
+ *   inputs: list<PublicAssociationDefinitionConfigurationCreateRequestShape>
  * }
  */
 final class BatchInputPublicAssociationDefinitionConfigurationCreateRequest implements BaseModel
@@ -54,9 +55,7 @@ final class BatchInputPublicAssociationDefinitionConfigurationCreateRequest impl
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicAssociationDefinitionConfigurationCreateRequest|array{
-     *   category: value-of<Category>, maxToObjectIDs: int, typeID: int
-     * }> $inputs
+     * @param list<PublicAssociationDefinitionConfigurationCreateRequestShape> $inputs
      */
     public static function with(array $inputs): self
     {
@@ -68,9 +67,7 @@ final class BatchInputPublicAssociationDefinitionConfigurationCreateRequest impl
     }
 
     /**
-     * @param list<PublicAssociationDefinitionConfigurationCreateRequest|array{
-     *   category: value-of<Category>, maxToObjectIDs: int, typeID: int
-     * }> $inputs
+     * @param list<PublicAssociationDefinitionConfigurationCreateRequestShape> $inputs
      */
     public function withInputs(array $inputs): self
     {

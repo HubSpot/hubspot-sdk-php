@@ -22,7 +22,7 @@ interface PartnerServicesRawContract
      * @api
      *
      * @param string $partnerServiceID Path param:
-     * @param array<mixed>|PartnerServiceUpdateParams $params
+     * @param array<string,mixed>|PartnerServiceUpdateParams $params
      *
      * @return BaseResponse<SimplePublicObject>
      *
@@ -37,7 +37,7 @@ interface PartnerServicesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|PartnerServiceListParams $params
+     * @param array<string,mixed>|PartnerServiceListParams $params
      *
      * @return BaseResponse<Page<SimplePublicObjectWithAssociations>>
      *
@@ -51,7 +51,7 @@ interface PartnerServicesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|PartnerServiceGetParams $params
+     * @param array<string,mixed>|PartnerServiceGetParams $params
      *
      * @return BaseResponse<SimplePublicObjectWithAssociations>
      *
@@ -66,7 +66,7 @@ interface PartnerServicesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|PartnerServiceSearchParams $params
+     * @param array<string,mixed>|PartnerServiceSearchParams $params
      *
      * @return BaseResponse<CollectionResponseWithTotalSimplePublicObject>
      *

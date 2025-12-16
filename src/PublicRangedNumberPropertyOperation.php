@@ -13,7 +13,7 @@ use HubspotSDK\PublicRangedNumberPropertyOperation\OperationType;
  * @phpstan-type PublicRangedNumberPropertyOperationShape = array{
  *   includeObjectsWithNoValueSet: bool,
  *   lowerBound: int,
- *   operationType: value-of<OperationType>,
+ *   operationType: OperationType|value-of<OperationType>,
  *   operator: string,
  *   upperBound: int,
  * }

@@ -8,15 +8,14 @@ use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\Imports\PublicImportResponse\ImportSource;
-use HubspotSDK\Crm\Imports\PublicImportResponse\State;
-use HubspotSDK\NextPage;
 use HubspotSDK\Paging;
-use HubspotSDK\PreviousPage;
 
 /**
+ * @phpstan-import-type PublicImportResponseShape from \HubspotSDK\Crm\Imports\PublicImportResponse
+ * @phpstan-import-type PagingShape from \HubspotSDK\Paging
+ *
  * @phpstan-type CollectionResponsePublicImportResponseShape = array{
- *   results: list<PublicImportResponse>, paging?: Paging|null
+ *   results: list<PublicImportResponseShape>, paging?: null|Paging|PagingShape
  * }
  */
 final class CollectionResponsePublicImportResponse implements BaseModel
@@ -55,20 +54,8 @@ final class CollectionResponsePublicImportResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicImportResponse|array{
-     *   id: string,
-     *   createdAt: \DateTimeInterface,
-     *   mappedObjectTypeIDs: list<string>,
-     *   metadata: PublicImportMetadata,
-     *   optOutImport: bool,
-     *   state: value-of<State>,
-     *   updatedAt: \DateTimeInterface,
-     *   importName?: string|null,
-     *   importRequestJson?: mixed,
-     *   importSource?: value-of<ImportSource>|null,
-     *   importTemplate?: ImportTemplate|null,
-     * }> $results
-     * @param Paging|array{next?: NextPage|null, prev?: PreviousPage|null} $paging
+     * @param list<PublicImportResponseShape> $results
+     * @param PagingShape $paging
      */
     public static function with(
         array $results,
@@ -84,19 +71,7 @@ final class CollectionResponsePublicImportResponse implements BaseModel
     }
 
     /**
-     * @param list<PublicImportResponse|array{
-     *   id: string,
-     *   createdAt: \DateTimeInterface,
-     *   mappedObjectTypeIDs: list<string>,
-     *   metadata: PublicImportMetadata,
-     *   optOutImport: bool,
-     *   state: value-of<State>,
-     *   updatedAt: \DateTimeInterface,
-     *   importName?: string|null,
-     *   importRequestJson?: mixed,
-     *   importSource?: value-of<ImportSource>|null,
-     *   importTemplate?: ImportTemplate|null,
-     * }> $results
+     * @param list<PublicImportResponseShape> $results
      */
     public function withResults(array $results): self
     {
@@ -107,7 +82,7 @@ final class CollectionResponsePublicImportResponse implements BaseModel
     }
 
     /**
-     * @param Paging|array{next?: NextPage|null, prev?: PreviousPage|null} $paging
+     * @param PagingShape $paging
      */
     public function withPaging(Paging|array $paging): self
     {

@@ -25,7 +25,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   name: string,
  *   translatedFromID: int,
  *   updated: \DateTimeInterface,
- *   archived?: bool,
+ *   archived?: bool|null,
  * }
  */
 final class TagUpdateParams implements BaseModel

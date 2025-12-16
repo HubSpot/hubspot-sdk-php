@@ -23,7 +23,7 @@ interface ServicesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|ServiceCreateParams $params
+     * @param array<string,mixed>|ServiceCreateParams $params
      *
      * @return BaseResponse<CreatedResponseSimplePublicObject>
      *
@@ -38,7 +38,7 @@ interface ServicesRawContract
      * @api
      *
      * @param string $serviceID Path param:
-     * @param array<mixed>|ServiceUpdateParams $params
+     * @param array<string,mixed>|ServiceUpdateParams $params
      *
      * @return BaseResponse<SimplePublicObject>
      *
@@ -53,7 +53,7 @@ interface ServicesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|ServiceListParams $params
+     * @param array<string,mixed>|ServiceListParams $params
      *
      * @return BaseResponse<Page<SimplePublicObjectWithAssociations>>
      *
@@ -79,7 +79,7 @@ interface ServicesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|ServiceGetParams $params
+     * @param array<string,mixed>|ServiceGetParams $params
      *
      * @return BaseResponse<SimplePublicObjectWithAssociations>
      *
@@ -94,7 +94,7 @@ interface ServicesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|ServiceSearchParams $params
+     * @param array<string,mixed>|ServiceSearchParams $params
      *
      * @return BaseResponse<CollectionResponseWithTotalSimplePublicObject>
      *

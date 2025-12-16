@@ -9,12 +9,14 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Events\EventDefinitions\RelativeComparativeTimestampRefineBy\Comparison;
 use HubspotSDK\Events\EventDefinitions\RelativeComparativeTimestampRefineBy\Type;
-use HubspotSDK\Events\EventDefinitions\TimeOffset\OffsetDirection;
-use HubspotSDK\Events\EventDefinitions\TimeOffset\TimeUnit;
 
 /**
+ * @phpstan-import-type TimeOffsetShape from \HubspotSDK\Events\EventDefinitions\TimeOffset
+ *
  * @phpstan-type RelativeComparativeTimestampRefineByShape = array{
- *   comparison: value-of<Comparison>, timeOffset: TimeOffset, type: value-of<Type>
+ *   comparison: Comparison|value-of<Comparison>,
+ *   timeOffset: TimeOffset|TimeOffsetShape,
+ *   type: Type|value-of<Type>,
  * }
  */
 final class RelativeComparativeTimestampRefineBy implements BaseModel
@@ -63,11 +65,7 @@ final class RelativeComparativeTimestampRefineBy implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param Comparison|value-of<Comparison> $comparison
-     * @param TimeOffset|array{
-     *   amount: int,
-     *   offsetDirection: value-of<OffsetDirection>,
-     *   timeUnit: value-of<TimeUnit>,
-     * } $timeOffset
+     * @param TimeOffsetShape $timeOffset
      * @param Type|value-of<Type> $type
      */
     public static function with(
@@ -96,11 +94,7 @@ final class RelativeComparativeTimestampRefineBy implements BaseModel
     }
 
     /**
-     * @param TimeOffset|array{
-     *   amount: int,
-     *   offsetDirection: value-of<OffsetDirection>,
-     *   timeUnit: value-of<TimeUnit>,
-     * } $timeOffset
+     * @param TimeOffsetShape $timeOffset
      */
     public function withTimeOffset(TimeOffset|array $timeOffset): self
     {

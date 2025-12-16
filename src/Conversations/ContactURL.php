@@ -11,7 +11,9 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type ContactURLShape = array{url: string, type?: value-of<Type>|null}
+ * @phpstan-type ContactURLShape = array{
+ *   url: string, type?: null|Type|value-of<Type>
+ * }
  */
 final class ContactURL implements BaseModel
 {

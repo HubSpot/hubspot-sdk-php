@@ -15,7 +15,9 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Services\Webhooks\SubscriptionsService::update()
  *
- * @phpstan-type SubscriptionUpdateParamsShape = array{appID: int, active?: bool}
+ * @phpstan-type SubscriptionUpdateParamsShape = array{
+ *   appID: int, active?: bool|null
+ * }
  */
 final class SubscriptionUpdateParams implements BaseModel
 {

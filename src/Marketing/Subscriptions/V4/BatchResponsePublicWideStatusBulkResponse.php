@@ -11,11 +11,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Marketing\Subscriptions\V4\BatchResponsePublicWideStatusBulkResponse\Status;
 
 /**
+ * @phpstan-import-type PublicWideStatusBulkResponseShape from \HubspotSDK\Marketing\Subscriptions\V4\PublicWideStatusBulkResponse
+ *
  * @phpstan-type BatchResponsePublicWideStatusBulkResponseShape = array{
  *   completedAt: \DateTimeInterface,
- *   results: list<PublicWideStatusBulkResponse>,
+ *   results: list<PublicWideStatusBulkResponseShape>,
  *   startedAt: \DateTimeInterface,
- *   status: value-of<Status>,
+ *   status: Status|value-of<Status>,
  *   links?: array<string,string>|null,
  *   requestedAt?: \DateTimeInterface|null,
  * }
@@ -97,9 +99,7 @@ final class BatchResponsePublicWideStatusBulkResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicWideStatusBulkResponse|array{
-     *   subscriberIDString: string, wideStatuses: list<PublicWideStatus>
-     * }> $results
+     * @param list<PublicWideStatusBulkResponseShape> $results
      * @param Status|value-of<Status> $status
      * @param array<string,string> $links
      */
@@ -138,9 +138,7 @@ final class BatchResponsePublicWideStatusBulkResponse implements BaseModel
     /**
      * The array of results from the batch process, each containing subscription status information.
      *
-     * @param list<PublicWideStatusBulkResponse|array{
-     *   subscriberIDString: string, wideStatuses: list<PublicWideStatus>
-     * }> $results
+     * @param list<PublicWideStatusBulkResponseShape> $results
      */
     public function withResults(array $results): self
     {

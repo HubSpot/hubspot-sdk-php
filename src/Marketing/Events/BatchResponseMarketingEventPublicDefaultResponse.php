@@ -8,17 +8,19 @@ use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\ErrorDetail;
 use HubspotSDK\Marketing\Events\BatchResponseMarketingEventPublicDefaultResponse\Status;
 use HubspotSDK\StandardError;
 
 /**
+ * @phpstan-import-type MarketingEventPublicDefaultResponseShape from \HubspotSDK\Marketing\Events\MarketingEventPublicDefaultResponse
+ * @phpstan-import-type StandardErrorShape from \HubspotSDK\StandardError
+ *
  * @phpstan-type BatchResponseMarketingEventPublicDefaultResponseShape = array{
  *   completedAt: \DateTimeInterface,
- *   results: list<MarketingEventPublicDefaultResponse>,
+ *   results: list<MarketingEventPublicDefaultResponseShape>,
  *   startedAt: \DateTimeInterface,
- *   status: value-of<Status>,
- *   errors?: list<StandardError>|null,
+ *   status: Status|value-of<Status>,
+ *   errors?: list<StandardErrorShape>|null,
  *   links?: array<string,string>|null,
  *   numErrors?: int|null,
  *   requestedAt?: \DateTimeInterface|null,
@@ -87,33 +89,9 @@ final class BatchResponseMarketingEventPublicDefaultResponse implements BaseMode
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<MarketingEventPublicDefaultResponse|array{
-     *   id: string,
-     *   createdAt: \DateTimeInterface,
-     *   customProperties: list<PropertyValue>,
-     *   eventName: string,
-     *   eventOrganizer: string,
-     *   updatedAt: \DateTimeInterface,
-     *   endDateTime?: \DateTimeInterface|null,
-     *   eventCancelled?: bool|null,
-     *   eventCompleted?: bool|null,
-     *   eventDescription?: string|null,
-     *   eventType?: string|null,
-     *   eventURL?: string|null,
-     *   objectID?: string|null,
-     *   startDateTime?: \DateTimeInterface|null,
-     * }> $results
+     * @param list<MarketingEventPublicDefaultResponseShape> $results
      * @param Status|value-of<Status> $status
-     * @param list<StandardError|array{
-     *   category: string,
-     *   context: array<string,list<string>>,
-     *   errors: list<ErrorDetail>,
-     *   links: array<string,string>,
-     *   message: string,
-     *   status: string,
-     *   id?: string|null,
-     *   subCategory?: mixed,
-     * }> $errors
+     * @param list<StandardErrorShape> $errors
      * @param array<string,string> $links
      */
     public static function with(
@@ -150,22 +128,7 @@ final class BatchResponseMarketingEventPublicDefaultResponse implements BaseMode
     }
 
     /**
-     * @param list<MarketingEventPublicDefaultResponse|array{
-     *   id: string,
-     *   createdAt: \DateTimeInterface,
-     *   customProperties: list<PropertyValue>,
-     *   eventName: string,
-     *   eventOrganizer: string,
-     *   updatedAt: \DateTimeInterface,
-     *   endDateTime?: \DateTimeInterface|null,
-     *   eventCancelled?: bool|null,
-     *   eventCompleted?: bool|null,
-     *   eventDescription?: string|null,
-     *   eventType?: string|null,
-     *   eventURL?: string|null,
-     *   objectID?: string|null,
-     *   startDateTime?: \DateTimeInterface|null,
-     * }> $results
+     * @param list<MarketingEventPublicDefaultResponseShape> $results
      */
     public function withResults(array $results): self
     {
@@ -195,16 +158,7 @@ final class BatchResponseMarketingEventPublicDefaultResponse implements BaseMode
     }
 
     /**
-     * @param list<StandardError|array{
-     *   category: string,
-     *   context: array<string,list<string>>,
-     *   errors: list<ErrorDetail>,
-     *   links: array<string,string>,
-     *   message: string,
-     *   status: string,
-     *   id?: string|null,
-     *   subCategory?: mixed,
-     * }> $errors
+     * @param list<StandardErrorShape> $errors
      */
     public function withErrors(array $errors): self
     {

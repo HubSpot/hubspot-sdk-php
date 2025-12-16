@@ -17,7 +17,7 @@ interface StatisticsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|StatisticGetParams $params
+     * @param array<string,mixed>|StatisticGetParams $params
      *
      * @return BaseResponse<AggregateEmailStatistics>
      *
@@ -31,7 +31,7 @@ interface StatisticsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|StatisticGetHistogramParams $params
+     * @param array<string,mixed>|StatisticGetHistogramParams $params
      *
      * @return BaseResponse<CollectionResponseWithTotalEmailStatisticIntervalNoPaging>
      *

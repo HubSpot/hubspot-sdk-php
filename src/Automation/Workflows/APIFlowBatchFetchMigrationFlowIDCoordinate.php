@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type APIFlowBatchFetchMigrationFlowIDCoordinateShape = array{
- *   flowMigrationStatuses: string, type: value-of<Type>
+ *   flowMigrationStatuses: string, type: Type|value-of<Type>
  * }
  */
 final class APIFlowBatchFetchMigrationFlowIDCoordinate implements BaseModel

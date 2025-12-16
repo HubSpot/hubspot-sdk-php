@@ -16,6 +16,18 @@ use HubspotSDK\Core\Concerns\SdkUnion;
 use HubspotSDK\Core\Conversion\Contracts\Converter;
 use HubspotSDK\Core\Conversion\Contracts\ConverterSource;
 
+/**
+ * @phpstan-import-type PublicFileShape from \HubspotSDK\Conversations\PublicFile
+ * @phpstan-import-type PublicLocationShape from \HubspotSDK\Conversations\PublicLocation
+ * @phpstan-import-type PublicContactShape from \HubspotSDK\Conversations\PublicContact
+ * @phpstan-import-type PublicUnsupportedContentShape from \HubspotSDK\Conversations\PublicUnsupportedContent
+ * @phpstan-import-type PublicMessageHeaderShape from \HubspotSDK\Conversations\PublicMessageHeader
+ * @phpstan-import-type PublicQuickRepliesShape from \HubspotSDK\Conversations\PublicQuickReplies
+ * @phpstan-import-type PublicWhatsAppTemplateMetadataShape from \HubspotSDK\Conversations\PublicWhatsAppTemplateMetadata
+ * @phpstan-import-type PublicSocialMetadataAttachmentShape from \HubspotSDK\Conversations\PublicSocialMetadataAttachment
+ *
+ * @phpstan-type AttachmentShape = PublicFileShape|PublicLocationShape|PublicContactShape|PublicUnsupportedContentShape|PublicMessageHeaderShape|PublicQuickRepliesShape|PublicWhatsAppTemplateMetadataShape|PublicSocialMetadataAttachmentShape
+ */
 final class Attachment implements ConverterSource
 {
     use SdkUnion;

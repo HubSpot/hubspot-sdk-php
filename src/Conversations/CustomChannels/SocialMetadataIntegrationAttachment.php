@@ -11,8 +11,10 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type SocialMetadataShape from \HubspotSDK\Conversations\SocialMetadata
+ *
  * @phpstan-type SocialMetadataIntegrationAttachmentShape = array{
- *   socialMetadata: SocialMetadata, type: value-of<Type>
+ *   socialMetadata: SocialMetadata|SocialMetadataShape, type: Type|value-of<Type>
  * }
  */
 final class SocialMetadataIntegrationAttachment implements BaseModel
@@ -53,15 +55,7 @@ final class SocialMetadataIntegrationAttachment implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param SocialMetadata|array{
-     *   mediaType: string,
-     *   id?: string|null,
-     *   description?: string|null,
-     *   mediaTitle?: string|null,
-     *   mediaURL?: string|null,
-     *   mediaURLString?: string|null,
-     *   thumbnailURL?: string|null,
-     * } $socialMetadata
+     * @param SocialMetadataShape $socialMetadata
      * @param Type|value-of<Type> $type
      */
     public static function with(
@@ -77,15 +71,7 @@ final class SocialMetadataIntegrationAttachment implements BaseModel
     }
 
     /**
-     * @param SocialMetadata|array{
-     *   mediaType: string,
-     *   id?: string|null,
-     *   description?: string|null,
-     *   mediaTitle?: string|null,
-     *   mediaURL?: string|null,
-     *   mediaURLString?: string|null,
-     *   thumbnailURL?: string|null,
-     * } $socialMetadata
+     * @param SocialMetadataShape $socialMetadata
      */
     public function withSocialMetadata(
         SocialMetadata|array $socialMetadata

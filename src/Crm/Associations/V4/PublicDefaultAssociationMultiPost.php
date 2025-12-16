@@ -10,8 +10,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicObjectID;
 
 /**
+ * @phpstan-import-type PublicObjectIDShape from \HubspotSDK\PublicObjectID
+ *
  * @phpstan-type PublicDefaultAssociationMultiPostShape = array{
- *   from: PublicObjectID, to: PublicObjectID
+ *   from: PublicObjectID|PublicObjectIDShape,
+ *   to: PublicObjectID|PublicObjectIDShape,
  * }
  */
 final class PublicDefaultAssociationMultiPost implements BaseModel
@@ -49,8 +52,8 @@ final class PublicDefaultAssociationMultiPost implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param PublicObjectID|array{id: string} $from
-     * @param PublicObjectID|array{id: string} $to
+     * @param PublicObjectIDShape $from
+     * @param PublicObjectIDShape $to
      */
     public static function with(
         PublicObjectID|array $from,
@@ -65,7 +68,7 @@ final class PublicDefaultAssociationMultiPost implements BaseModel
     }
 
     /**
-     * @param PublicObjectID|array{id: string} $from
+     * @param PublicObjectIDShape $from
      */
     public function withFrom(PublicObjectID|array $from): self
     {
@@ -76,7 +79,7 @@ final class PublicDefaultAssociationMultiPost implements BaseModel
     }
 
     /**
-     * @param PublicObjectID|array{id: string} $to
+     * @param PublicObjectIDShape $to
      */
     public function withTo(PublicObjectID|array $to): self
     {

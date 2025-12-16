@@ -17,12 +17,12 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @phpstan-type UserCreateParamsShape = array{
  *   email: string,
- *   firstName?: string,
- *   lastName?: string,
- *   primaryTeamID?: string,
- *   roleID?: string,
- *   secondaryTeamIDs?: list<string>,
- *   sendWelcomeEmail?: bool,
+ *   firstName?: string|null,
+ *   lastName?: string|null,
+ *   primaryTeamID?: string|null,
+ *   roleID?: string|null,
+ *   secondaryTeamIDs?: list<string>|null,
+ *   sendWelcomeEmail?: bool|null,
  * }
  */
 final class UserCreateParams implements BaseModel

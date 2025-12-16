@@ -14,7 +14,10 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Cms\Blogs\SettingsService::createLanguageVariation()
  *
  * @phpstan-type SettingCreateLanguageVariationParamsShape = array{
- *   id: string, language?: string, primaryLanguage?: string, slug?: string
+ *   id: string,
+ *   language?: string|null,
+ *   primaryLanguage?: string|null,
+ *   slug?: string|null,
  * }
  */
 final class SettingCreateLanguageVariationParams implements BaseModel

@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Services\Cms\Hubdb\TablesService::unpublish()
  *
- * @phpstan-type TableUnpublishParamsShape = array{includeForeignIDs?: bool}
+ * @phpstan-type TableUnpublishParamsShape = array{includeForeignIDs?: bool|null}
  */
 final class TableUnpublishParams implements BaseModel
 {

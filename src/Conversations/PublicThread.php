@@ -11,6 +11,8 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type PublicThreadAssociationsShape from \HubspotSDK\Conversations\PublicThreadAssociations
+ *
  * @phpstan-type PublicThreadShape = array{
  *   id: string,
  *   archived: bool,
@@ -20,13 +22,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   originalChannelAccountID: string,
  *   originalChannelID: string,
  *   spam: bool,
- *   status: value-of<Status>,
+ *   status: Status|value-of<Status>,
  *   assignedTo?: string|null,
  *   closedAt?: \DateTimeInterface|null,
  *   latestMessageReceivedTimestamp?: \DateTimeInterface|null,
  *   latestMessageSentTimestamp?: \DateTimeInterface|null,
  *   latestMessageTimestamp?: \DateTimeInterface|null,
- *   threadAssociations?: PublicThreadAssociations|null,
+ *   threadAssociations?: null|PublicThreadAssociations|PublicThreadAssociationsShape,
  * }
  */
 final class PublicThread implements BaseModel
@@ -124,9 +126,7 @@ final class PublicThread implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param Status|value-of<Status> $status
-     * @param PublicThreadAssociations|array{
-     *   associatedTicketID?: string|null
-     * } $threadAssociations
+     * @param PublicThreadAssociationsShape $threadAssociations
      */
     public static function with(
         string $id,
@@ -287,9 +287,7 @@ final class PublicThread implements BaseModel
     }
 
     /**
-     * @param PublicThreadAssociations|array{
-     *   associatedTicketID?: string|null
-     * } $threadAssociations
+     * @param PublicThreadAssociationsShape $threadAssociations
      */
     public function withThreadAssociations(
         PublicThreadAssociations|array $threadAssociations

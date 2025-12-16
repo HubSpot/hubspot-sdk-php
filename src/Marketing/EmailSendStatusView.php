@@ -14,14 +14,16 @@ use HubspotSDK\Marketing\EmailSendStatusView\Status;
 /**
  * Describes the status of an email send request.
  *
+ * @phpstan-import-type EventIDViewShape from \HubspotSDK\Marketing\EventIDView
+ *
  * @phpstan-type EmailSendStatusViewShape = array{
- *   status: value-of<Status>,
+ *   status: Status|value-of<Status>,
  *   statusID: string,
  *   completedAt?: \DateTimeInterface|null,
- *   eventID?: EventIDView|null,
+ *   eventID?: null|EventIDView|EventIDViewShape,
  *   message?: string|null,
  *   requestedAt?: \DateTimeInterface|null,
- *   sendResult?: value-of<SendResult>|null,
+ *   sendResult?: null|SendResult|value-of<SendResult>,
  *   startedAt?: \DateTimeInterface|null,
  * }
  */
@@ -104,7 +106,7 @@ final class EmailSendStatusView implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param Status|value-of<Status> $status
-     * @param EventIDView|array{id: string, created: \DateTimeInterface} $eventID
+     * @param EventIDViewShape $eventID
      * @param SendResult|value-of<SendResult> $sendResult
      */
     public static function with(
@@ -170,7 +172,7 @@ final class EmailSendStatusView implements BaseModel
     /**
      * The ID of a send event.
      *
-     * @param EventIDView|array{id: string, created: \DateTimeInterface} $eventID
+     * @param EventIDViewShape $eventID
      */
     public function withEventID(EventIDView|array $eventID): self
     {

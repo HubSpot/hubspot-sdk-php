@@ -11,9 +11,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Aggregated statistics for the given interval, plus the IDs of emails that were sent during that interval.
  *
+ * @phpstan-import-type EmailStatisticsDataShape from \HubspotSDK\Marketing\Emails\EmailStatisticsData
+ *
  * @phpstan-type AggregateEmailStatisticsShape = array{
- *   aggregate?: EmailStatisticsData|null,
- *   campaignAggregations?: array<string,EmailStatisticsData>|null,
+ *   aggregate?: null|EmailStatisticsData|EmailStatisticsDataShape,
+ *   campaignAggregations?: array<string,EmailStatisticsDataShape>|null,
  *   emails?: list<int>|null,
  * }
  */
@@ -51,18 +53,8 @@ final class AggregateEmailStatistics implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param EmailStatisticsData|array{
-     *   counters: array<string,int>,
-     *   deviceBreakdown: array<string,array<string,int>>,
-     *   qualifierStats: array<string,array<string,int>>,
-     *   ratios: array<string,float>,
-     * } $aggregate
-     * @param array<string,EmailStatisticsData|array{
-     *   counters: array<string,int>,
-     *   deviceBreakdown: array<string,array<string,int>>,
-     *   qualifierStats: array<string,array<string,int>>,
-     *   ratios: array<string,float>,
-     * }> $campaignAggregations
+     * @param EmailStatisticsDataShape $aggregate
+     * @param array<string,EmailStatisticsDataShape> $campaignAggregations
      * @param list<int> $emails
      */
     public static function with(
@@ -80,12 +72,7 @@ final class AggregateEmailStatistics implements BaseModel
     }
 
     /**
-     * @param EmailStatisticsData|array{
-     *   counters: array<string,int>,
-     *   deviceBreakdown: array<string,array<string,int>>,
-     *   qualifierStats: array<string,array<string,int>>,
-     *   ratios: array<string,float>,
-     * } $aggregate
+     * @param EmailStatisticsDataShape $aggregate
      */
     public function withAggregate(EmailStatisticsData|array $aggregate): self
     {
@@ -98,12 +85,7 @@ final class AggregateEmailStatistics implements BaseModel
     /**
      * The aggregated statistics per campaign.
      *
-     * @param array<string,EmailStatisticsData|array{
-     *   counters: array<string,int>,
-     *   deviceBreakdown: array<string,array<string,int>>,
-     *   qualifierStats: array<string,array<string,int>>,
-     *   ratios: array<string,float>,
-     * }> $campaignAggregations
+     * @param array<string,EmailStatisticsDataShape> $campaignAggregations
      */
     public function withCampaignAggregations(array $campaignAggregations): self
     {

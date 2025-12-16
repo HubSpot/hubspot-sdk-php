@@ -11,12 +11,14 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\ListOf;
 
 /**
+ * @phpstan-import-type ErrorDetailShape from \HubspotSDK\ErrorDetail
+ *
  * @phpstan-type APIErrorShape = array{
  *   category: string,
  *   correlationID: string,
  *   message: string,
  *   context?: array<string,list<string>>|null,
- *   errors?: list<ErrorDetail>|null,
+ *   errors?: list<ErrorDetailShape>|null,
  *   links?: array<string,string>|null,
  *   subCategory?: string|null,
  * }
@@ -99,13 +101,7 @@ final class APIError implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param array<string,list<string>> $context
-     * @param list<ErrorDetail|array{
-     *   message: string,
-     *   code?: string|null,
-     *   context?: array<string,list<string>>|null,
-     *   in?: string|null,
-     *   subCategory?: string|null,
-     * }> $errors
+     * @param list<ErrorDetailShape> $errors
      * @param array<string,string> $links
      */
     public static function with(
@@ -180,13 +176,7 @@ final class APIError implements BaseModel
     /**
      * further information about the error.
      *
-     * @param list<ErrorDetail|array{
-     *   message: string,
-     *   code?: string|null,
-     *   context?: array<string,list<string>>|null,
-     *   in?: string|null,
-     *   subCategory?: string|null,
-     * }> $errors
+     * @param list<ErrorDetailShape> $errors
      */
     public function withErrors(array $errors): self
     {

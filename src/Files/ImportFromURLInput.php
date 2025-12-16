@@ -14,10 +14,10 @@ use HubspotSDK\Files\ImportFromURLInput\DuplicateValidationStrategy;
 
 /**
  * @phpstan-type ImportFromURLInputShape = array{
- *   access: value-of<Access>,
+ *   access: Access|value-of<Access>,
  *   url: string,
- *   duplicateValidationScope?: value-of<DuplicateValidationScope>|null,
- *   duplicateValidationStrategy?: value-of<DuplicateValidationStrategy>|null,
+ *   duplicateValidationScope?: null|DuplicateValidationScope|value-of<DuplicateValidationScope>,
+ *   duplicateValidationStrategy?: null|DuplicateValidationStrategy|value-of<DuplicateValidationStrategy>,
  *   expiresAt?: \DateTimeInterface|null,
  *   folderID?: string|null,
  *   folderPath?: string|null,

@@ -23,7 +23,7 @@ interface CallsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|CallCreateParams $params
+     * @param array<string,mixed>|CallCreateParams $params
      *
      * @return BaseResponse<CreatedResponseSimplePublicObject>
      *
@@ -38,7 +38,7 @@ interface CallsRawContract
      * @api
      *
      * @param string $callID Path param:
-     * @param array<mixed>|CallUpdateParams $params
+     * @param array<string,mixed>|CallUpdateParams $params
      *
      * @return BaseResponse<SimplePublicObject>
      *
@@ -53,7 +53,7 @@ interface CallsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|CallListParams $params
+     * @param array<string,mixed>|CallListParams $params
      *
      * @return BaseResponse<Page<SimplePublicObjectWithAssociations>>
      *
@@ -79,7 +79,7 @@ interface CallsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|CallGetParams $params
+     * @param array<string,mixed>|CallGetParams $params
      *
      * @return BaseResponse<SimplePublicObjectWithAssociations>
      *
@@ -94,7 +94,7 @@ interface CallsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|CallSearchParams $params
+     * @param array<string,mixed>|CallSearchParams $params
      *
      * @return BaseResponse<CollectionResponseWithTotalSimplePublicObject>
      *

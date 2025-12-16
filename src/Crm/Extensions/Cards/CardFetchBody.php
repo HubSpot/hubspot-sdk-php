@@ -9,15 +9,16 @@ use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Extensions\Cards\CardFetchBody\CardType;
-use HubspotSDK\Crm\Extensions\Cards\CardObjectTypeBody\Name;
 
 /**
  * Configuration for this card's data fetch request.
  *
+ * @phpstan-import-type CardObjectTypeBodyShape from \HubspotSDK\Crm\Extensions\Cards\CardObjectTypeBody
+ *
  * @phpstan-type CardFetchBodyShape = array{
- *   objectTypes: list<CardObjectTypeBody>,
+ *   objectTypes: list<CardObjectTypeBodyShape>,
  *   targetURL: string,
- *   cardType?: value-of<CardType>|null,
+ *   cardType?: null|CardType|value-of<CardType>,
  *   serverlessFunction?: string|null,
  * }
  */
@@ -71,9 +72,7 @@ final class CardFetchBody implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<CardObjectTypeBody|array{
-     *   name: value-of<Name>, propertiesToSend: list<string>
-     * }> $objectTypes
+     * @param list<CardObjectTypeBodyShape> $objectTypes
      * @param CardType|value-of<CardType> $cardType
      */
     public static function with(
@@ -96,9 +95,7 @@ final class CardFetchBody implements BaseModel
     /**
      * An array of CRM object types where this card should be displayed. HubSpot will call your data fetch URL whenever a user visits a record page of the types defined here.
      *
-     * @param list<CardObjectTypeBody|array{
-     *   name: value-of<Name>, propertiesToSend: list<string>
-     * }> $objectTypes
+     * @param list<CardObjectTypeBodyShape> $objectTypes
      */
     public function withObjectTypes(array $objectTypes): self
     {

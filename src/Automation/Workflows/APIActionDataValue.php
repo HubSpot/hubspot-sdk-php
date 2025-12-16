@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type APIActionDataValueShape = array{
- *   actionID: string, dataKey: string, type: value-of<Type>
+ *   actionID: string, dataKey: string, type: Type|value-of<Type>
  * }
  */
 final class APIActionDataValue implements BaseModel

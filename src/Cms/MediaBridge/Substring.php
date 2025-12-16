@@ -13,7 +13,7 @@ use HubspotSDK\Core\Conversion\MapOf;
 
 /**
  * @phpstan-type SubstringShape = array{
- *   operator: value-of<Operator>,
+ *   operator: Operator|value-of<Operator>,
  *   stringToCheck: array<string,mixed>,
  *   inputs?: list<array<string,mixed>>|null,
  *   propertyName?: string|null,

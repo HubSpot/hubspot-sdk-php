@@ -16,18 +16,14 @@ use HubspotSDK\OptionInput;
  *
  * @see HubspotSDK\Services\Events\EventDefinitionsService::createProperty()
  *
+ * @phpstan-import-type OptionInputShape from \HubspotSDK\OptionInput
+ *
  * @phpstan-type EventDefinitionCreatePropertyParamsShape = array{
  *   label: string,
  *   type: string,
- *   description?: string,
- *   name?: string,
- *   options?: list<OptionInput|array{
- *     displayOrder: int,
- *     hidden: bool,
- *     label: string,
- *     value: string,
- *     description?: string|null,
- *   }>,
+ *   description?: string|null,
+ *   name?: string|null,
+ *   options?: list<OptionInputShape>|null,
  * }
  */
 final class EventDefinitionCreatePropertyParams implements BaseModel
@@ -92,13 +88,7 @@ final class EventDefinitionCreatePropertyParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<OptionInput|array{
-     *   displayOrder: int,
-     *   hidden: bool,
-     *   label: string,
-     *   value: string,
-     *   description?: string|null,
-     * }> $options
+     * @param list<OptionInputShape> $options
      */
     public static function with(
         string $label,
@@ -166,13 +156,7 @@ final class EventDefinitionCreatePropertyParams implements BaseModel
     /**
      * A list of available options for the property if it is an enumeration. NOTE: This field is only applicable for enumerated properties.
      *
-     * @param list<OptionInput|array{
-     *   displayOrder: int,
-     *   hidden: bool,
-     *   label: string,
-     *   value: string,
-     *   description?: string|null,
-     * }> $options
+     * @param list<OptionInputShape> $options
      */
     public function withOptions(array $options): self
     {

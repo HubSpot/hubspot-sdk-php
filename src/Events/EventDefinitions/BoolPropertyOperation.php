@@ -15,9 +15,9 @@ use HubspotSDK\Events\EventDefinitions\BoolPropertyOperation\PropertyType;
  * @phpstan-type BoolPropertyOperationShape = array{
  *   includeObjectsWithNoValueSet: bool,
  *   operationType: string,
- *   operator: value-of<Operator>,
+ *   operator: Operator|value-of<Operator>,
  *   operatorName: string,
- *   propertyType: value-of<PropertyType>,
+ *   propertyType: PropertyType|value-of<PropertyType>,
  *   value: bool,
  *   defaultValue?: string|null,
  * }

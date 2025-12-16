@@ -4,16 +4,15 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Automation\Workflows;
 
-use HubspotSDK\Automation\Workflows\APIFlowBatchFetchMigrationFlowIDCoordinate\Type;
 use HubspotSDK\Automation\Workflows\APIFlowBatchMigrationInput\Input;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type APIFlowBatchMigrationInputShape = array{
- *   inputs: list<APIFlowBatchFetchMigrationFlowIDCoordinate|APIFlowBatchFetchMigrationWorkflowIDCoordinate>,
- * }
+ * @phpstan-import-type InputShape from \HubspotSDK\Automation\Workflows\APIFlowBatchMigrationInput\Input
+ *
+ * @phpstan-type APIFlowBatchMigrationInputShape = array{inputs: list<InputShape>}
  */
 final class APIFlowBatchMigrationInput implements BaseModel
 {
@@ -50,12 +49,7 @@ final class APIFlowBatchMigrationInput implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<APIFlowBatchFetchMigrationFlowIDCoordinate|array{
-     *   flowMigrationStatuses: string, type: value-of<Type>
-     * }|APIFlowBatchFetchMigrationWorkflowIDCoordinate|array{
-     *   flowMigrationStatusForClassicWorkflows: string,
-     *   type: value-of<APIFlowBatchFetchMigrationWorkflowIDCoordinate\Type>,
-     * }> $inputs
+     * @param list<InputShape> $inputs
      */
     public static function with(array $inputs): self
     {
@@ -67,12 +61,7 @@ final class APIFlowBatchMigrationInput implements BaseModel
     }
 
     /**
-     * @param list<APIFlowBatchFetchMigrationFlowIDCoordinate|array{
-     *   flowMigrationStatuses: string, type: value-of<Type>
-     * }|APIFlowBatchFetchMigrationWorkflowIDCoordinate|array{
-     *   flowMigrationStatusForClassicWorkflows: string,
-     *   type: value-of<APIFlowBatchFetchMigrationWorkflowIDCoordinate\Type>,
-     * }> $inputs
+     * @param list<InputShape> $inputs
      */
     public function withInputs(array $inputs): self
     {

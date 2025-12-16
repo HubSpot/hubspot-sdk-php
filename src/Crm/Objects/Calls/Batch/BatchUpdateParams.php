@@ -15,13 +15,10 @@ use HubspotSDK\Crm\SimplePublicObjectBatchInput;
  *
  * @see HubspotSDK\Services\Crm\Objects\Calls\BatchService::update()
  *
+ * @phpstan-import-type SimplePublicObjectBatchInputShape from \HubspotSDK\Crm\SimplePublicObjectBatchInput
+ *
  * @phpstan-type BatchUpdateParamsShape = array{
- *   inputs: list<SimplePublicObjectBatchInput|array{
- *     id: string,
- *     properties: array<string,string>,
- *     idProperty?: string|null,
- *     objectWriteTraceID?: string|null,
- *   }>,
+ *   inputs: list<SimplePublicObjectBatchInputShape>
  * }
  */
 final class BatchUpdateParams implements BaseModel
@@ -58,12 +55,7 @@ final class BatchUpdateParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<SimplePublicObjectBatchInput|array{
-     *   id: string,
-     *   properties: array<string,string>,
-     *   idProperty?: string|null,
-     *   objectWriteTraceID?: string|null,
-     * }> $inputs
+     * @param list<SimplePublicObjectBatchInputShape> $inputs
      */
     public static function with(array $inputs): self
     {
@@ -75,12 +67,7 @@ final class BatchUpdateParams implements BaseModel
     }
 
     /**
-     * @param list<SimplePublicObjectBatchInput|array{
-     *   id: string,
-     *   properties: array<string,string>,
-     *   idProperty?: string|null,
-     *   objectWriteTraceID?: string|null,
-     * }> $inputs
+     * @param list<SimplePublicObjectBatchInputShape> $inputs
      */
     public function withInputs(array $inputs): self
     {

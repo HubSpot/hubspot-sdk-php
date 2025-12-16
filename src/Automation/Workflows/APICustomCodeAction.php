@@ -11,15 +11,19 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type APIInputVariableShape from \HubspotSDK\Automation\Workflows\APIInputVariable
+ * @phpstan-import-type APIEnumerationOutputFieldShape from \HubspotSDK\Automation\Workflows\APIEnumerationOutputField
+ * @phpstan-import-type APIConnectionShape from \HubspotSDK\Automation\Workflows\APIConnection
+ *
  * @phpstan-type APICustomCodeActionShape = array{
  *   actionID: string,
- *   inputFields: list<APIInputVariable>,
- *   outputFields: list<APIEnumerationOutputField>,
+ *   inputFields: list<APIInputVariableShape>,
+ *   outputFields: list<APIEnumerationOutputFieldShape>,
  *   runtime: string,
  *   secretNames: list<string>,
  *   sourceCode: string,
- *   type: value-of<Type>,
- *   connection?: APIConnection|null,
+ *   type: Type|value-of<Type>,
+ *   connection?: null|APIConnection|APIConnectionShape,
  * }
  */
 final class APICustomCodeAction implements BaseModel
@@ -94,18 +98,11 @@ final class APICustomCodeAction implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<APIInputVariable|array{
-     *   name: string,
-     *   value: APIActionDataValue|APIObjectPropertyValue|APIStaticValue|APIRelativeDateTimeValue|APITimestampValue|APIIncrementValue|APIFetchedObjectPropertyValue|APIAppendObjectPropertyValue|APIStaticAppendValue|APIEnrollmentEventPropertyValue,
-     * }> $inputFields
-     * @param list<APIEnumerationOutputField|array{
-     *   name: string,
-     *   options: list<string>,
-     *   type: value-of<APIEnumerationOutputField\Type>,
-     * }> $outputFields
+     * @param list<APIInputVariableShape> $inputFields
+     * @param list<APIEnumerationOutputFieldShape> $outputFields
      * @param list<string> $secretNames
      * @param Type|value-of<Type> $type
-     * @param APIConnection|array{edgeType: string, nextActionID: string} $connection
+     * @param APIConnectionShape $connection
      */
     public static function with(
         string $actionID,
@@ -141,10 +138,7 @@ final class APICustomCodeAction implements BaseModel
     }
 
     /**
-     * @param list<APIInputVariable|array{
-     *   name: string,
-     *   value: APIActionDataValue|APIObjectPropertyValue|APIStaticValue|APIRelativeDateTimeValue|APITimestampValue|APIIncrementValue|APIFetchedObjectPropertyValue|APIAppendObjectPropertyValue|APIStaticAppendValue|APIEnrollmentEventPropertyValue,
-     * }> $inputFields
+     * @param list<APIInputVariableShape> $inputFields
      */
     public function withInputFields(array $inputFields): self
     {
@@ -155,11 +149,7 @@ final class APICustomCodeAction implements BaseModel
     }
 
     /**
-     * @param list<APIEnumerationOutputField|array{
-     *   name: string,
-     *   options: list<string>,
-     *   type: value-of<APIEnumerationOutputField\Type>,
-     * }> $outputFields
+     * @param list<APIEnumerationOutputFieldShape> $outputFields
      */
     public function withOutputFields(array $outputFields): self
     {
@@ -208,7 +198,7 @@ final class APICustomCodeAction implements BaseModel
     }
 
     /**
-     * @param APIConnection|array{edgeType: string, nextActionID: string} $connection
+     * @param APIConnectionShape $connection
      */
     public function withConnection(APIConnection|array $connection): self
     {

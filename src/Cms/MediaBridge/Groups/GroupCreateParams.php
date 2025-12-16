@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Cms\MediaBridge\GroupsService::create()
  *
  * @phpstan-type GroupCreateParamsShape = array{
- *   appID: int, label: string, name: string, displayOrder?: int
+ *   appID: int, label: string, name: string, displayOrder?: int|null
  * }
  */
 final class GroupCreateParams implements BaseModel

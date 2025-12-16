@@ -10,26 +10,21 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Events\EventDefinitions\MultiStringPropertyOperation\Operator;
 use HubspotSDK\Events\EventDefinitions\MultiStringPropertyOperation\PropertyType;
-use HubspotSDK\Events\EventDefinitions\NumOccurrencesRefineBy\Type;
-use HubspotSDK\Events\EventDefinitions\RangedTimeOperation\LowerBoundEndpointBehavior;
-use HubspotSDK\Events\EventDefinitions\RangedTimeOperation\UpperBoundEndpointBehavior;
-use HubspotSDK\Events\EventDefinitions\RelativeComparativeTimestampRefineBy\Comparison;
-use HubspotSDK\Events\EventDefinitions\RelativeRangedTimestampRefineBy\RangeType;
-use HubspotSDK\Events\EventDefinitions\SetOccurrencesRefineBy\SetType;
-use HubspotSDK\Events\EventDefinitions\TimePointOperation\EndpointBehavior;
-use HubspotSDK\Events\EventDefinitions\TimePointOperation\PropertyParser;
 
 /**
+ * @phpstan-import-type CoalescingRefineByShape from \HubspotSDK\Events\EventDefinitions\MultiStringPropertyOperation\CoalescingRefineBy
+ * @phpstan-import-type PruningRefineByShape from \HubspotSDK\Events\EventDefinitions\MultiStringPropertyOperation\PruningRefineBy
+ *
  * @phpstan-type MultiStringPropertyOperationShape = array{
- *   coalescingRefineBy: NumOccurrencesRefineBy|SetOccurrencesRefineBy,
+ *   coalescingRefineBy: NumOccurrencesRefineBy|SetOccurrencesRefineBy|CoalescingRefineByShape,
  *   includeObjectsWithNoValueSet: bool,
  *   operationType: string,
- *   operator: value-of<Operator>,
+ *   operator: Operator|value-of<Operator>,
  *   operatorName: string,
- *   propertyType: value-of<PropertyType>,
+ *   propertyType: PropertyType|value-of<PropertyType>,
  *   values: list<string>,
  *   defaultValue?: string|null,
- *   pruningRefineBy?: null|RelativeComparativeTimestampRefineBy|RelativeRangedTimestampRefineBy|AbsoluteComparativeTimestampRefineBy|AbsoluteRangedTimestampRefineBy|AllHistoryRefineBy|TimePointOperation|RangedTimeOperation,
+ *   pruningRefineBy?: null|PruningRefineByShape|RelativeComparativeTimestampRefineBy|RelativeRangedTimestampRefineBy|AbsoluteComparativeTimestampRefineBy|AbsoluteRangedTimestampRefineBy|AllHistoryRefineBy|TimePointOperation|RangedTimeOperation,
  * }
  */
 final class MultiStringPropertyOperation implements BaseModel
@@ -106,60 +101,11 @@ final class MultiStringPropertyOperation implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param NumOccurrencesRefineBy|array{
-     *   type: value-of<Type>, maxOccurrences?: int|null, minOccurrences?: int|null
-     * }|SetOccurrencesRefineBy|array{
-     *   setType: value-of<SetType>,
-     *   type: value-of<SetOccurrencesRefineBy\Type>,
-     * } $coalescingRefineBy
+     * @param CoalescingRefineByShape $coalescingRefineBy
      * @param Operator|value-of<Operator> $operator
      * @param list<string> $values
      * @param PropertyType|value-of<PropertyType> $propertyType
-     * @param RelativeComparativeTimestampRefineBy|array{
-     *   comparison: value-of<Comparison>,
-     *   timeOffset: TimeOffset,
-     *   type: value-of<RelativeComparativeTimestampRefineBy\Type>,
-     * }|RelativeRangedTimestampRefineBy|array{
-     *   lowerBoundOffset: TimeOffset,
-     *   rangeType: value-of<RangeType>,
-     *   type: value-of<RelativeRangedTimestampRefineBy\Type>,
-     *   upperBoundOffset: TimeOffset,
-     * }|AbsoluteComparativeTimestampRefineBy|array{
-     *   comparison: value-of<AbsoluteComparativeTimestampRefineBy\Comparison>,
-     *   timestamp: int,
-     *   type: value-of<AbsoluteComparativeTimestampRefineBy\Type>,
-     * }|AbsoluteRangedTimestampRefineBy|array{
-     *   lowerTimestamp: int,
-     *   rangeType: value-of<AbsoluteRangedTimestampRefineBy\RangeType>,
-     *   type: value-of<AbsoluteRangedTimestampRefineBy\Type>,
-     *   upperTimestamp: int,
-     * }|AllHistoryRefineBy|array{
-     *   type: value-of<AllHistoryRefineBy\Type>
-     * }|TimePointOperation|array{
-     *   endpointBehavior: value-of<EndpointBehavior>,
-     *   includeObjectsWithNoValueSet: bool,
-     *   operationType: string,
-     *   operator: value-of<TimePointOperation\Operator>,
-     *   operatorName: string,
-     *   propertyParser: value-of<PropertyParser>,
-     *   propertyType: value-of<TimePointOperation\PropertyType>,
-     *   timePoint: DatePoint|IndexedTimePoint|PropertyReferencedTime,
-     *   type: string,
-     *   defaultValue?: string|null,
-     * }|RangedTimeOperation|array{
-     *   includeObjectsWithNoValueSet: bool,
-     *   lowerBoundEndpointBehavior: value-of<LowerBoundEndpointBehavior>,
-     *   lowerBoundTimePoint: DatePoint|IndexedTimePoint|PropertyReferencedTime,
-     *   operationType: string,
-     *   operator: value-of<RangedTimeOperation\Operator>,
-     *   operatorName: string,
-     *   propertyParser: value-of<RangedTimeOperation\PropertyParser>,
-     *   propertyType: value-of<RangedTimeOperation\PropertyType>,
-     *   type: string,
-     *   upperBoundEndpointBehavior: value-of<UpperBoundEndpointBehavior>,
-     *   upperBoundTimePoint: DatePoint|IndexedTimePoint|PropertyReferencedTime,
-     *   defaultValue?: string|null,
-     * } $pruningRefineBy
+     * @param PruningRefineByShape $pruningRefineBy
      */
     public static function with(
         NumOccurrencesRefineBy|array|SetOccurrencesRefineBy $coalescingRefineBy,
@@ -189,12 +135,7 @@ final class MultiStringPropertyOperation implements BaseModel
     }
 
     /**
-     * @param NumOccurrencesRefineBy|array{
-     *   type: value-of<Type>, maxOccurrences?: int|null, minOccurrences?: int|null
-     * }|SetOccurrencesRefineBy|array{
-     *   setType: value-of<SetType>,
-     *   type: value-of<SetOccurrencesRefineBy\Type>,
-     * } $coalescingRefineBy
+     * @param CoalescingRefineByShape $coalescingRefineBy
      */
     public function withCoalescingRefineBy(
         NumOccurrencesRefineBy|array|SetOccurrencesRefineBy $coalescingRefineBy
@@ -272,51 +213,7 @@ final class MultiStringPropertyOperation implements BaseModel
     }
 
     /**
-     * @param RelativeComparativeTimestampRefineBy|array{
-     *   comparison: value-of<Comparison>,
-     *   timeOffset: TimeOffset,
-     *   type: value-of<RelativeComparativeTimestampRefineBy\Type>,
-     * }|RelativeRangedTimestampRefineBy|array{
-     *   lowerBoundOffset: TimeOffset,
-     *   rangeType: value-of<RangeType>,
-     *   type: value-of<RelativeRangedTimestampRefineBy\Type>,
-     *   upperBoundOffset: TimeOffset,
-     * }|AbsoluteComparativeTimestampRefineBy|array{
-     *   comparison: value-of<AbsoluteComparativeTimestampRefineBy\Comparison>,
-     *   timestamp: int,
-     *   type: value-of<AbsoluteComparativeTimestampRefineBy\Type>,
-     * }|AbsoluteRangedTimestampRefineBy|array{
-     *   lowerTimestamp: int,
-     *   rangeType: value-of<AbsoluteRangedTimestampRefineBy\RangeType>,
-     *   type: value-of<AbsoluteRangedTimestampRefineBy\Type>,
-     *   upperTimestamp: int,
-     * }|AllHistoryRefineBy|array{
-     *   type: value-of<AllHistoryRefineBy\Type>
-     * }|TimePointOperation|array{
-     *   endpointBehavior: value-of<EndpointBehavior>,
-     *   includeObjectsWithNoValueSet: bool,
-     *   operationType: string,
-     *   operator: value-of<TimePointOperation\Operator>,
-     *   operatorName: string,
-     *   propertyParser: value-of<PropertyParser>,
-     *   propertyType: value-of<TimePointOperation\PropertyType>,
-     *   timePoint: DatePoint|IndexedTimePoint|PropertyReferencedTime,
-     *   type: string,
-     *   defaultValue?: string|null,
-     * }|RangedTimeOperation|array{
-     *   includeObjectsWithNoValueSet: bool,
-     *   lowerBoundEndpointBehavior: value-of<LowerBoundEndpointBehavior>,
-     *   lowerBoundTimePoint: DatePoint|IndexedTimePoint|PropertyReferencedTime,
-     *   operationType: string,
-     *   operator: value-of<RangedTimeOperation\Operator>,
-     *   operatorName: string,
-     *   propertyParser: value-of<RangedTimeOperation\PropertyParser>,
-     *   propertyType: value-of<RangedTimeOperation\PropertyType>,
-     *   type: string,
-     *   upperBoundEndpointBehavior: value-of<UpperBoundEndpointBehavior>,
-     *   upperBoundTimePoint: DatePoint|IndexedTimePoint|PropertyReferencedTime,
-     *   defaultValue?: string|null,
-     * } $pruningRefineBy
+     * @param PruningRefineByShape $pruningRefineBy
      */
     public function withPruningRefineBy(
         RelativeComparativeTimestampRefineBy|array|RelativeRangedTimestampRefineBy|AbsoluteComparativeTimestampRefineBy|AbsoluteRangedTimestampRefineBy|AllHistoryRefineBy|TimePointOperation|RangedTimeOperation $pruningRefineBy,

@@ -9,24 +9,22 @@ use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\Extensions\Cards\CardFetchBodyPatch\CardType;
 
 /**
  * Update a card definition with new details.
  *
  * @see HubspotSDK\Services\Crm\Extensions\CardsService::update()
  *
+ * @phpstan-import-type CardActionsShape from \HubspotSDK\Crm\Extensions\Cards\CardActions
+ * @phpstan-import-type CardDisplayBodyShape from \HubspotSDK\Crm\Extensions\Cards\CardDisplayBody
+ * @phpstan-import-type CardFetchBodyPatchShape from \HubspotSDK\Crm\Extensions\Cards\CardFetchBodyPatch
+ *
  * @phpstan-type CardUpdateParamsShape = array{
  *   appID: int,
- *   actions?: CardActions|array{baseURLs: list<string>},
- *   display?: CardDisplayBody|array{properties: list<CardDisplayProperty>},
- *   fetch?: CardFetchBodyPatch|array{
- *     objectTypes: list<CardObjectTypeBody>,
- *     cardType?: value-of<CardType>|null,
- *     serverlessFunction?: string|null,
- *     targetURL?: string|null,
- *   },
- *   title?: string,
+ *   actions?: CardActionsShape|null,
+ *   display?: CardDisplayBodyShape|null,
+ *   fetch?: CardFetchBodyPatchShape|null,
+ *   title?: string|null,
  * }
  */
 final class CardUpdateParams implements BaseModel
@@ -86,14 +84,9 @@ final class CardUpdateParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param CardActions|array{baseURLs: list<string>} $actions
-     * @param CardDisplayBody|array{properties: list<CardDisplayProperty>} $display
-     * @param CardFetchBodyPatch|array{
-     *   objectTypes: list<CardObjectTypeBody>,
-     *   cardType?: value-of<CardType>|null,
-     *   serverlessFunction?: string|null,
-     *   targetURL?: string|null,
-     * } $fetch
+     * @param CardActionsShape $actions
+     * @param CardDisplayBodyShape $display
+     * @param CardFetchBodyPatchShape $fetch
      */
     public static function with(
         int $appID,
@@ -125,7 +118,7 @@ final class CardUpdateParams implements BaseModel
     /**
      * Configuration for custom user actions on cards.
      *
-     * @param CardActions|array{baseURLs: list<string>} $actions
+     * @param CardActionsShape $actions
      */
     public function withActions(CardActions|array $actions): self
     {
@@ -138,7 +131,7 @@ final class CardUpdateParams implements BaseModel
     /**
      * Configuration for displayed info on a card.
      *
-     * @param CardDisplayBody|array{properties: list<CardDisplayProperty>} $display
+     * @param CardDisplayBodyShape $display
      */
     public function withDisplay(CardDisplayBody|array $display): self
     {
@@ -151,12 +144,7 @@ final class CardUpdateParams implements BaseModel
     /**
      * Variant of CardFetchBody with fields as optional for patches.
      *
-     * @param CardFetchBodyPatch|array{
-     *   objectTypes: list<CardObjectTypeBody>,
-     *   cardType?: value-of<CardType>|null,
-     *   serverlessFunction?: string|null,
-     *   targetURL?: string|null,
-     * } $fetch
+     * @param CardFetchBodyPatchShape $fetch
      */
     public function withFetch(CardFetchBodyPatch|array $fetch): self
     {

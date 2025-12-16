@@ -11,7 +11,9 @@ use HubspotSDK\PublicSurveyMonkeyFilter\FilterType;
 
 /**
  * @phpstan-type PublicSurveyMonkeyFilterShape = array{
- *   filterType: value-of<FilterType>, operator: string, surveyID: string
+ *   filterType: FilterType|value-of<FilterType>,
+ *   operator: string,
+ *   surveyID: string,
  * }
  */
 final class PublicSurveyMonkeyFilter implements BaseModel

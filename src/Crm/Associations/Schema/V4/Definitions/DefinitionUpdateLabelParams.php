@@ -17,7 +17,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   fromObjectType: string,
  *   associationTypeID: int,
  *   label: string,
- *   inverseLabel?: string,
+ *   inverseLabel?: string|null,
  * }
  */
 final class DefinitionUpdateLabelParams implements BaseModel

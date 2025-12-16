@@ -16,6 +16,18 @@ use HubspotSDK\PublicTodayReference;
 use HubspotSDK\PublicWeekReference;
 use HubspotSDK\PublicYearReference;
 
+/**
+ * @phpstan-import-type PublicNowReferenceShape from \HubspotSDK\PublicNowReference
+ * @phpstan-import-type PublicTodayReferenceShape from \HubspotSDK\PublicTodayReference
+ * @phpstan-import-type PublicWeekReferenceShape from \HubspotSDK\PublicWeekReference
+ * @phpstan-import-type PublicFiscalQuarterReferenceShape from \HubspotSDK\PublicFiscalQuarterReference
+ * @phpstan-import-type PublicFiscalYearReferenceShape from \HubspotSDK\PublicFiscalYearReference
+ * @phpstan-import-type PublicYearReferenceShape from \HubspotSDK\PublicYearReference
+ * @phpstan-import-type PublicQuarterReferenceShape from \HubspotSDK\PublicQuarterReference
+ * @phpstan-import-type PublicMonthReferenceShape from \HubspotSDK\PublicMonthReference
+ *
+ * @phpstan-type IndexReferenceShape = PublicNowReferenceShape|PublicTodayReferenceShape|PublicWeekReferenceShape|PublicFiscalQuarterReferenceShape|PublicFiscalYearReferenceShape|PublicYearReferenceShape|PublicQuarterReferenceShape|PublicMonthReferenceShape
+ */
 final class IndexReference implements ConverterSource
 {
     use SdkUnion;

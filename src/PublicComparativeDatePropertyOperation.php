@@ -14,7 +14,7 @@ use HubspotSDK\PublicComparativeDatePropertyOperation\OperationType;
  * @phpstan-type PublicComparativeDatePropertyOperationShape = array{
  *   comparisonPropertyName: string,
  *   includeObjectsWithNoValueSet: bool,
- *   operationType: value-of<OperationType>,
+ *   operationType: OperationType|value-of<OperationType>,
  *   operator: string,
  *   defaultComparisonValue?: string|null,
  * }

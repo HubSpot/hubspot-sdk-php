@@ -10,6 +10,9 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\MapOf;
 
 /**
+ * @phpstan-import-type RowMetaDataShape from \HubspotSDK\Cms\RowMetaData
+ * @phpstan-import-type StylesShape from \HubspotSDK\Cms\Styles
+ *
  * @phpstan-type LayoutSectionShape = array{
  *   cells: list<mixed>,
  *   cssClass: string,
@@ -18,9 +21,9 @@ use HubspotSDK\Core\Conversion\MapOf;
  *   label: string,
  *   name: string,
  *   params: array<string,mixed>,
- *   rowMetaData: list<RowMetaData>,
+ *   rowMetaData: list<RowMetaDataShape>,
  *   rows: list<mixed>,
- *   styles: Styles,
+ *   styles: Styles|StylesShape,
  *   type: string,
  *   w: int,
  *   x: int,
@@ -131,18 +134,9 @@ final class LayoutSection implements BaseModel
      *
      * @param list<mixed> $cells
      * @param array<string,mixed> $params
-     * @param list<RowMetaData|array{cssClass: string, styles: Styles}> $rowMetaData
+     * @param list<RowMetaDataShape> $rowMetaData
      * @param list<mixed> $rows
-     * @param Styles|array{
-     *   backgroundColor: RgbaColor,
-     *   backgroundGradient: Gradient,
-     *   backgroundImage: BackgroundImage,
-     *   flexboxPositioning: string,
-     *   forceFullWidthSection: bool,
-     *   maxWidthSectionCentering: int,
-     *   verticalAlignment: string,
-     *   breakpointStyles?: array<string,BreakpointStyles>|null,
-     * } $styles
+     * @param StylesShape $styles
      */
     public static function with(
         array $cells,
@@ -243,7 +237,7 @@ final class LayoutSection implements BaseModel
     }
 
     /**
-     * @param list<RowMetaData|array{cssClass: string, styles: Styles}> $rowMetaData
+     * @param list<RowMetaDataShape> $rowMetaData
      */
     public function withRowMetaData(array $rowMetaData): self
     {
@@ -265,16 +259,7 @@ final class LayoutSection implements BaseModel
     }
 
     /**
-     * @param Styles|array{
-     *   backgroundColor: RgbaColor,
-     *   backgroundGradient: Gradient,
-     *   backgroundImage: BackgroundImage,
-     *   flexboxPositioning: string,
-     *   forceFullWidthSection: bool,
-     *   maxWidthSectionCentering: int,
-     *   verticalAlignment: string,
-     *   breakpointStyles?: array<string,BreakpointStyles>|null,
-     * } $styles
+     * @param StylesShape $styles
      */
     public function withStyles(Styles|array $styles): self
     {

@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Marketing\Campaigns\ReportsService::getRevenueAttribution()
  *
  * @phpstan-type ReportGetRevenueAttributionParamsShape = array{
- *   attributionModel?: string, endDate?: string, startDate?: string
+ *   attributionModel?: string|null, endDate?: string|null, startDate?: string|null
  * }
  */
 final class ReportGetRevenueAttributionParams implements BaseModel

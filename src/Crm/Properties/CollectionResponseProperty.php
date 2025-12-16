@@ -8,17 +8,15 @@ use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\NextPage;
-use HubspotSDK\Option;
 use HubspotSDK\Paging;
-use HubspotSDK\PreviousPage;
 use HubspotSDK\Property;
-use HubspotSDK\Property\DataSensitivity;
-use HubspotSDK\PropertyModificationMetadata;
 
 /**
+ * @phpstan-import-type PropertyShape from \HubspotSDK\Property
+ * @phpstan-import-type PagingShape from \HubspotSDK\Paging
+ *
  * @phpstan-type CollectionResponsePropertyShape = array{
- *   results: list<Property>, paging?: Paging|null
+ *   results: list<PropertyShape>, paging?: null|Paging|PagingShape
  * }
  */
 final class CollectionResponseProperty implements BaseModel
@@ -57,35 +55,8 @@ final class CollectionResponseProperty implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<Property|array{
-     *   description: string,
-     *   fieldType: string,
-     *   groupName: string,
-     *   label: string,
-     *   name: string,
-     *   options: list<Option>,
-     *   type: string,
-     *   archived?: bool|null,
-     *   archivedAt?: \DateTimeInterface|null,
-     *   calculated?: bool|null,
-     *   calculationFormula?: string|null,
-     *   createdAt?: \DateTimeInterface|null,
-     *   createdUserID?: string|null,
-     *   dataSensitivity?: value-of<DataSensitivity>|null,
-     *   displayOrder?: int|null,
-     *   externalOptions?: bool|null,
-     *   formField?: bool|null,
-     *   hasUniqueValue?: bool|null,
-     *   hidden?: bool|null,
-     *   hubspotDefined?: bool|null,
-     *   modificationMetadata?: PropertyModificationMetadata|null,
-     *   referencedObjectType?: string|null,
-     *   sensitiveDataCategories?: list<string>|null,
-     *   showCurrencySymbol?: bool|null,
-     *   updatedAt?: \DateTimeInterface|null,
-     *   updatedUserID?: string|null,
-     * }> $results
-     * @param Paging|array{next?: NextPage|null, prev?: PreviousPage|null} $paging
+     * @param list<PropertyShape> $results
+     * @param PagingShape $paging
      */
     public static function with(
         array $results,
@@ -101,34 +72,7 @@ final class CollectionResponseProperty implements BaseModel
     }
 
     /**
-     * @param list<Property|array{
-     *   description: string,
-     *   fieldType: string,
-     *   groupName: string,
-     *   label: string,
-     *   name: string,
-     *   options: list<Option>,
-     *   type: string,
-     *   archived?: bool|null,
-     *   archivedAt?: \DateTimeInterface|null,
-     *   calculated?: bool|null,
-     *   calculationFormula?: string|null,
-     *   createdAt?: \DateTimeInterface|null,
-     *   createdUserID?: string|null,
-     *   dataSensitivity?: value-of<DataSensitivity>|null,
-     *   displayOrder?: int|null,
-     *   externalOptions?: bool|null,
-     *   formField?: bool|null,
-     *   hasUniqueValue?: bool|null,
-     *   hidden?: bool|null,
-     *   hubspotDefined?: bool|null,
-     *   modificationMetadata?: PropertyModificationMetadata|null,
-     *   referencedObjectType?: string|null,
-     *   sensitiveDataCategories?: list<string>|null,
-     *   showCurrencySymbol?: bool|null,
-     *   updatedAt?: \DateTimeInterface|null,
-     *   updatedUserID?: string|null,
-     * }> $results
+     * @param list<PropertyShape> $results
      */
     public function withResults(array $results): self
     {
@@ -139,7 +83,7 @@ final class CollectionResponseProperty implements BaseModel
     }
 
     /**
-     * @param Paging|array{next?: NextPage|null, prev?: PreviousPage|null} $paging
+     * @param PagingShape $paging
      */
     public function withPaging(Paging|array $paging): self
     {

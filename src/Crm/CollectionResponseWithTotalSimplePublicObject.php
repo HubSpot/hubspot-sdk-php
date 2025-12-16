@@ -8,13 +8,16 @@ use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\NextPage;
 use HubspotSDK\Paging;
-use HubspotSDK\PreviousPage;
 
 /**
+ * @phpstan-import-type SimplePublicObjectShape from \HubspotSDK\Crm\SimplePublicObject
+ * @phpstan-import-type PagingShape from \HubspotSDK\Paging
+ *
  * @phpstan-type CollectionResponseWithTotalSimplePublicObjectShape = array{
- *   results: list<SimplePublicObject>, total: int, paging?: Paging|null
+ *   results: list<SimplePublicObjectShape>,
+ *   total: int,
+ *   paging?: null|Paging|PagingShape,
  * }
  */
 final class CollectionResponseWithTotalSimplePublicObject implements BaseModel
@@ -61,18 +64,8 @@ final class CollectionResponseWithTotalSimplePublicObject implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<SimplePublicObject|array{
-     *   id: string,
-     *   archived: bool,
-     *   createdAt: \DateTimeInterface,
-     *   properties: array<string,string|null>,
-     *   updatedAt: \DateTimeInterface,
-     *   archivedAt?: \DateTimeInterface|null,
-     *   objectWriteTraceID?: string|null,
-     *   propertiesWithHistory?: array<string,list<ValueWithTimestamp>>|null,
-     *   url?: string|null,
-     * }> $results
-     * @param Paging|array{next?: NextPage|null, prev?: PreviousPage|null} $paging
+     * @param list<SimplePublicObjectShape> $results
+     * @param PagingShape $paging
      */
     public static function with(
         array $results,
@@ -90,17 +83,7 @@ final class CollectionResponseWithTotalSimplePublicObject implements BaseModel
     }
 
     /**
-     * @param list<SimplePublicObject|array{
-     *   id: string,
-     *   archived: bool,
-     *   createdAt: \DateTimeInterface,
-     *   properties: array<string,string|null>,
-     *   updatedAt: \DateTimeInterface,
-     *   archivedAt?: \DateTimeInterface|null,
-     *   objectWriteTraceID?: string|null,
-     *   propertiesWithHistory?: array<string,list<ValueWithTimestamp>>|null,
-     *   url?: string|null,
-     * }> $results
+     * @param list<SimplePublicObjectShape> $results
      */
     public function withResults(array $results): self
     {
@@ -122,7 +105,7 @@ final class CollectionResponseWithTotalSimplePublicObject implements BaseModel
     }
 
     /**
-     * @param Paging|array{next?: NextPage|null, prev?: PreviousPage|null} $paging
+     * @param PagingShape $paging
      */
     public function withPaging(Paging|array $paging): self
     {

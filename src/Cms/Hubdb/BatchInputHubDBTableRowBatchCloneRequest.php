@@ -9,8 +9,10 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type HubDBTableRowBatchCloneRequestShape from \HubspotSDK\Cms\Hubdb\HubDBTableRowBatchCloneRequest
+ *
  * @phpstan-type BatchInputHubDBTableRowBatchCloneRequestShape = array{
- *   inputs: list<HubDBTableRowBatchCloneRequest>
+ *   inputs: list<HubDBTableRowBatchCloneRequestShape>
  * }
  */
 final class BatchInputHubDBTableRowBatchCloneRequest implements BaseModel
@@ -46,9 +48,7 @@ final class BatchInputHubDBTableRowBatchCloneRequest implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<HubDBTableRowBatchCloneRequest|array{
-     *   id: string, name?: string|null
-     * }> $inputs
+     * @param list<HubDBTableRowBatchCloneRequestShape> $inputs
      */
     public static function with(array $inputs): self
     {
@@ -60,9 +60,7 @@ final class BatchInputHubDBTableRowBatchCloneRequest implements BaseModel
     }
 
     /**
-     * @param list<HubDBTableRowBatchCloneRequest|array{
-     *   id: string, name?: string|null
-     * }> $inputs
+     * @param list<HubDBTableRowBatchCloneRequestShape> $inputs
      */
     public function withInputs(array $inputs): self
     {

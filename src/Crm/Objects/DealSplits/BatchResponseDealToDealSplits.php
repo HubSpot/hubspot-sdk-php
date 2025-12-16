@@ -9,14 +9,15 @@ use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Objects\DealSplits\BatchResponseDealToDealSplits\Status;
-use HubspotSDK\Crm\SimplePublicObject;
 
 /**
+ * @phpstan-import-type DealToDealSplitsShape from \HubspotSDK\Crm\Objects\DealSplits\DealToDealSplits
+ *
  * @phpstan-type BatchResponseDealToDealSplitsShape = array{
  *   completedAt: \DateTimeInterface,
- *   results: list<DealToDealSplits>,
+ *   results: list<DealToDealSplitsShape>,
  *   startedAt: \DateTimeInterface,
- *   status: value-of<Status>,
+ *   status: Status|value-of<Status>,
  *   links?: array<string,string>|null,
  *   requestedAt?: \DateTimeInterface|null,
  * }
@@ -77,9 +78,7 @@ final class BatchResponseDealToDealSplits implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<DealToDealSplits|array{
-     *   id: string, splits: list<SimplePublicObject>
-     * }> $results
+     * @param list<DealToDealSplitsShape> $results
      * @param Status|value-of<Status> $status
      * @param array<string,string> $links
      */
@@ -113,9 +112,7 @@ final class BatchResponseDealToDealSplits implements BaseModel
     }
 
     /**
-     * @param list<DealToDealSplits|array{
-     *   id: string, splits: list<SimplePublicObject>
-     * }> $results
+     * @param list<DealToDealSplitsShape> $results
      */
     public function withResults(array $results): self
     {

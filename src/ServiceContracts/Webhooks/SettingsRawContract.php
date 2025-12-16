@@ -16,7 +16,7 @@ interface SettingsRawContract
      * @api
      *
      * @param int $appID the ID of the app
-     * @param array<mixed>|SettingUpdateParams $params
+     * @param array<string,mixed>|SettingUpdateParams $params
      *
      * @return BaseResponse<SettingsResponse>
      *

@@ -7,12 +7,11 @@ namespace HubspotSDK\Crm\Objects\Schemas;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Events\EventDefinitions\AssociationDefinition;
-use HubspotSDK\ObjectTypeDefinitionLabels;
-use HubspotSDK\Property;
 
 /**
- * @phpstan-type SchemaListResponseShape = array{results: list<ObjectSchema>}
+ * @phpstan-import-type ObjectSchemaShape from \HubspotSDK\Crm\Objects\Schemas\ObjectSchema
+ *
+ * @phpstan-type SchemaListResponseShape = array{results: list<ObjectSchemaShape>}
  */
 final class SchemaListResponse implements BaseModel
 {
@@ -47,25 +46,7 @@ final class SchemaListResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<ObjectSchema|array{
-     *   id: string,
-     *   associations: list<AssociationDefinition>,
-     *   labels: ObjectTypeDefinitionLabels,
-     *   name: string,
-     *   properties: list<Property>,
-     *   requiredProperties: list<string>,
-     *   archived?: bool|null,
-     *   createdAt?: \DateTimeInterface|null,
-     *   createdByUserID?: int|null,
-     *   description?: string|null,
-     *   fullyQualifiedName?: string|null,
-     *   objectTypeID?: string|null,
-     *   primaryDisplayProperty?: string|null,
-     *   searchableProperties?: list<string>|null,
-     *   secondaryDisplayProperties?: list<string>|null,
-     *   updatedAt?: \DateTimeInterface|null,
-     *   updatedByUserID?: int|null,
-     * }> $results
+     * @param list<ObjectSchemaShape> $results
      */
     public static function with(array $results): self
     {
@@ -77,25 +58,7 @@ final class SchemaListResponse implements BaseModel
     }
 
     /**
-     * @param list<ObjectSchema|array{
-     *   id: string,
-     *   associations: list<AssociationDefinition>,
-     *   labels: ObjectTypeDefinitionLabels,
-     *   name: string,
-     *   properties: list<Property>,
-     *   requiredProperties: list<string>,
-     *   archived?: bool|null,
-     *   createdAt?: \DateTimeInterface|null,
-     *   createdByUserID?: int|null,
-     *   description?: string|null,
-     *   fullyQualifiedName?: string|null,
-     *   objectTypeID?: string|null,
-     *   primaryDisplayProperty?: string|null,
-     *   searchableProperties?: list<string>|null,
-     *   secondaryDisplayProperties?: list<string>|null,
-     *   updatedAt?: \DateTimeInterface|null,
-     *   updatedByUserID?: int|null,
-     * }> $results
+     * @param list<ObjectSchemaShape> $results
      */
     public function withResults(array $results): self
     {

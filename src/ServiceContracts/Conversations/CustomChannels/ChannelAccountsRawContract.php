@@ -20,7 +20,7 @@ interface ChannelAccountsRawContract
      * @api
      *
      * @param int $channelID the ID of the channel for which the account is being created
-     * @param array<mixed>|ChannelAccountCreateParams $params
+     * @param array<string,mixed>|ChannelAccountCreateParams $params
      *
      * @return BaseResponse<PublicChannelAccount>
      *
@@ -36,7 +36,7 @@ interface ChannelAccountsRawContract
      * @api
      *
      * @param int $channelAccountID Path param: The channel account to update
-     * @param array<mixed>|ChannelAccountUpdateParams $params
+     * @param array<string,mixed>|ChannelAccountUpdateParams $params
      *
      * @return BaseResponse<PublicChannelAccount>
      *
@@ -51,7 +51,7 @@ interface ChannelAccountsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|ChannelAccountListParams $params
+     * @param array<string,mixed>|ChannelAccountListParams $params
      *
      * @return BaseResponse<Page<PublicChannelAccount>>
      *
@@ -67,7 +67,7 @@ interface ChannelAccountsRawContract
      * @api
      *
      * @param int $channelAccountID path param: The ID of the channel account to retrieve
-     * @param array<mixed>|ChannelAccountGetParams $params
+     * @param array<string,mixed>|ChannelAccountGetParams $params
      *
      * @return BaseResponse<PublicChannelAccount>
      *

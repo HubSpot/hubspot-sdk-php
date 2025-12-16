@@ -14,9 +14,9 @@ use HubspotSDK\Crm\FeatureFlags\FlagResponse\OverrideState;
 /**
  * @phpstan-type FlagResponseShape = array{
  *   appID: int,
- *   defaultState: value-of<DefaultState>,
+ *   defaultState: DefaultState|value-of<DefaultState>,
  *   flagName: string,
- *   overrideState?: value-of<OverrideState>|null,
+ *   overrideState?: null|OverrideState|value-of<OverrideState>,
  * }
  */
 final class FlagResponse implements BaseModel

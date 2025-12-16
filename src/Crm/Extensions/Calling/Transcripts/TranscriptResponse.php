@@ -10,12 +10,14 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Extensions\Calling\Transcripts\TranscriptResponse\TranscriptSource;
 
 /**
+ * @phpstan-import-type TranscriptUtteranceShape from \HubspotSDK\Crm\Extensions\Calling\Transcripts\TranscriptUtterance
+ *
  * @phpstan-type TranscriptResponseShape = array{
  *   id: string,
  *   createdAt: \DateTimeInterface,
  *   engagementID: int,
- *   transcriptSource: value-of<TranscriptSource>,
- *   transcriptUtterances: list<TranscriptUtterance>,
+ *   transcriptSource: TranscriptSource|value-of<TranscriptSource>,
+ *   transcriptUtterances: list<TranscriptUtteranceShape>,
  *   updatedAt: \DateTimeInterface,
  * }
  */
@@ -82,14 +84,7 @@ final class TranscriptResponse implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param TranscriptSource|value-of<TranscriptSource> $transcriptSource
-     * @param list<TranscriptUtterance|array{
-     *   id: string,
-     *   endTimeMillis: int,
-     *   startTimeMillis: int,
-     *   text: string,
-     *   languageCode?: string|null,
-     *   speaker?: Speaker|null,
-     * }> $transcriptUtterances
+     * @param list<TranscriptUtteranceShape> $transcriptUtterances
      */
     public static function with(
         string $id,
@@ -148,14 +143,7 @@ final class TranscriptResponse implements BaseModel
     }
 
     /**
-     * @param list<TranscriptUtterance|array{
-     *   id: string,
-     *   endTimeMillis: int,
-     *   startTimeMillis: int,
-     *   text: string,
-     *   languageCode?: string|null,
-     *   speaker?: Speaker|null,
-     * }> $transcriptUtterances
+     * @param list<TranscriptUtteranceShape> $transcriptUtterances
      */
     public function withTranscriptUtterances(array $transcriptUtterances): self
     {

@@ -37,7 +37,8 @@ final class TasksRawService implements TasksRawContract
      *
      * @param array{
      *   associations: list<array{
-     *     to: array<mixed>|PublicObjectID, types: list<array<mixed>|AssociationSpec>
+     *     to: array<string,mixed>|PublicObjectID,
+     *     types: list<array<string,mixed>|AssociationSpec>,
      *   }>,
      *   properties: array<string,string>,
      * }|TaskCreateParams $params
@@ -203,7 +204,7 @@ final class TasksRawService implements TasksRawContract
      *
      * @param array{
      *   after: string,
-     *   filterGroups: list<array{filters: list<array<mixed>>}>,
+     *   filterGroups: list<array{filters: list<array<string,mixed>>}>,
      *   limit: int,
      *   properties: list<string>,
      *   sorts: list<string>,

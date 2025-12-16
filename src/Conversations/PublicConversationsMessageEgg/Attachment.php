@@ -11,6 +11,13 @@ use HubspotSDK\Core\Concerns\SdkUnion;
 use HubspotSDK\Core\Conversion\Contracts\Converter;
 use HubspotSDK\Core\Conversion\Contracts\ConverterSource;
 
+/**
+ * @phpstan-import-type PublicFileEggShape from \HubspotSDK\Conversations\PublicFileEgg
+ * @phpstan-import-type PublicQuickRepliesEggShape from \HubspotSDK\Conversations\PublicQuickRepliesEgg
+ * @phpstan-import-type PublicSocialMediaEggShape from \HubspotSDK\Conversations\PublicSocialMediaEgg
+ *
+ * @phpstan-type AttachmentShape = PublicFileEggShape|PublicQuickRepliesEggShape|PublicSocialMediaEggShape
+ */
 final class Attachment implements ConverterSource
 {
     use SdkUnion;

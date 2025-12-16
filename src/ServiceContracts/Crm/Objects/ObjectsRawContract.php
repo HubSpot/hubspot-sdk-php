@@ -24,7 +24,7 @@ interface ObjectsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|ObjectCreateParams $params
+     * @param array<string,mixed>|ObjectCreateParams $params
      *
      * @return BaseResponse<CreatedResponseSimplePublicObject>
      *
@@ -40,7 +40,7 @@ interface ObjectsRawContract
      * @api
      *
      * @param string $objectID Path param:
-     * @param array<mixed>|ObjectUpdateParams $params
+     * @param array<string,mixed>|ObjectUpdateParams $params
      *
      * @return BaseResponse<SimplePublicObject>
      *
@@ -55,7 +55,7 @@ interface ObjectsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|ObjectListParams $params
+     * @param array<string,mixed>|ObjectListParams $params
      *
      * @return BaseResponse<Page<SimplePublicObjectWithAssociations>>
      *
@@ -70,7 +70,7 @@ interface ObjectsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|ObjectDeleteParams $params
+     * @param array<string,mixed>|ObjectDeleteParams $params
      *
      * @return BaseResponse<mixed>
      *
@@ -86,7 +86,7 @@ interface ObjectsRawContract
      * @api
      *
      * @param string $objectID Path param:
-     * @param array<mixed>|ObjectGetParams $params
+     * @param array<string,mixed>|ObjectGetParams $params
      *
      * @return BaseResponse<SimplePublicObjectWithAssociations>
      *
@@ -101,7 +101,7 @@ interface ObjectsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|ObjectSearchParams $params
+     * @param array<string,mixed>|ObjectSearchParams $params
      *
      * @return BaseResponse<CollectionResponseWithTotalSimplePublicObject>
      *

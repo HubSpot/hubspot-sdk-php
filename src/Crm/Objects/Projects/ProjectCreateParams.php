@@ -4,23 +4,21 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Objects\Projects;
 
-use HubspotSDK\AssociationSpec;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\PublicAssociationsForObject;
-use HubspotSDK\PublicObjectID;
 
 /**
  * Create a project with the given properties and return a copy of the object, including the ID.
  *
  * @see HubspotSDK\Services\Crm\Objects\ProjectsService::create()
  *
+ * @phpstan-import-type PublicAssociationsForObjectShape from \HubspotSDK\Crm\PublicAssociationsForObject
+ *
  * @phpstan-type ProjectCreateParamsShape = array{
- *   associations: list<PublicAssociationsForObject|array{
- *     to: PublicObjectID, types: list<AssociationSpec>
- *   }>,
+ *   associations: list<PublicAssociationsForObjectShape>,
  *   properties: array<string,string>,
  * }
  */
@@ -66,9 +64,7 @@ final class ProjectCreateParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicAssociationsForObject|array{
-     *   to: PublicObjectID, types: list<AssociationSpec>
-     * }> $associations
+     * @param list<PublicAssociationsForObjectShape> $associations
      * @param array<string,string> $properties
      */
     public static function with(array $associations, array $properties): self
@@ -82,9 +78,7 @@ final class ProjectCreateParams implements BaseModel
     }
 
     /**
-     * @param list<PublicAssociationsForObject|array{
-     *   to: PublicObjectID, types: list<AssociationSpec>
-     * }> $associations
+     * @param list<PublicAssociationsForObjectShape> $associations
      */
     public function withAssociations(array $associations): self
     {

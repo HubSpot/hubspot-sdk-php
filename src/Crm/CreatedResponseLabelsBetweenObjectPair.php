@@ -10,9 +10,11 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type LabelsBetweenObjectPairShape from \HubspotSDK\Crm\LabelsBetweenObjectPair
+ *
  * @phpstan-type CreatedResponseLabelsBetweenObjectPairShape = array{
  *   createdResourceID: string,
- *   entity: LabelsBetweenObjectPair,
+ *   entity: LabelsBetweenObjectPair|LabelsBetweenObjectPairShape,
  *   location?: string|null,
  * }
  */
@@ -64,13 +66,7 @@ final class CreatedResponseLabelsBetweenObjectPair implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param LabelsBetweenObjectPair|array{
-     *   fromObjectID: string,
-     *   fromObjectTypeID: string,
-     *   labels: list<string>,
-     *   toObjectID: string,
-     *   toObjectTypeID: string,
-     * } $entity
+     * @param LabelsBetweenObjectPairShape $entity
      */
     public static function with(
         string $createdResourceID,
@@ -99,13 +95,7 @@ final class CreatedResponseLabelsBetweenObjectPair implements BaseModel
     }
 
     /**
-     * @param LabelsBetweenObjectPair|array{
-     *   fromObjectID: string,
-     *   fromObjectTypeID: string,
-     *   labels: list<string>,
-     *   toObjectID: string,
-     *   toObjectTypeID: string,
-     * } $entity
+     * @param LabelsBetweenObjectPairShape $entity
      */
     public function withEntity(LabelsBetweenObjectPair|array $entity): self
     {

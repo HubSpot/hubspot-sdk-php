@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * @see HubspotSDK\Services\Conversations\InboxesService::get()
  *
- * @phpstan-type InboxGetParamsShape = array{archived?: bool}
+ * @phpstan-type InboxGetParamsShape = array{archived?: bool|null}
  */
 final class InboxGetParams implements BaseModel
 {

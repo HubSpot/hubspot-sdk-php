@@ -16,7 +16,7 @@ interface ChannelConnectionSettingsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|ChannelConnectionSettingCreateParams $params
+     * @param array<string,mixed>|ChannelConnectionSettingCreateParams $params
      *
      * @return BaseResponse<ChannelConnectionSettingsResponse>
      *
@@ -31,7 +31,7 @@ interface ChannelConnectionSettingsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|ChannelConnectionSettingUpdateParams $params
+     * @param array<string,mixed>|ChannelConnectionSettingUpdateParams $params
      *
      * @return BaseResponse<ChannelConnectionSettingsResponse>
      *

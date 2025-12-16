@@ -8,19 +8,19 @@ use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\ErrorDetail;
 use HubspotSDK\Marketing\Subscriptions\V4\ActionResponseWithResultsPublicWideStatus\Status;
-use HubspotSDK\Marketing\Subscriptions\V4\PublicWideStatus\Channel;
-use HubspotSDK\Marketing\Subscriptions\V4\PublicWideStatus\WideStatusType;
 use HubspotSDK\StandardError;
 
 /**
+ * @phpstan-import-type PublicWideStatusShape from \HubspotSDK\Marketing\Subscriptions\V4\PublicWideStatus
+ * @phpstan-import-type StandardErrorShape from \HubspotSDK\StandardError
+ *
  * @phpstan-type ActionResponseWithResultsPublicWideStatusShape = array{
  *   completedAt: \DateTimeInterface,
- *   results: list<PublicWideStatus>,
+ *   results: list<PublicWideStatusShape>,
  *   startedAt: \DateTimeInterface,
- *   status: value-of<Status>,
- *   errors?: list<StandardError>|null,
+ *   status: Status|value-of<Status>,
+ *   errors?: list<StandardErrorShape>|null,
  *   links?: array<string,string>|null,
  *   numErrors?: int|null,
  *   requestedAt?: \DateTimeInterface|null,
@@ -117,25 +117,9 @@ final class ActionResponseWithResultsPublicWideStatus implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicWideStatus|array{
-     *   channel: value-of<Channel>,
-     *   status: value-of<PublicWideStatus\Status>,
-     *   subscriberIDString: string,
-     *   timestamp: \DateTimeInterface,
-     *   wideStatusType: value-of<WideStatusType>,
-     *   businessUnitID?: int|null,
-     * }> $results
+     * @param list<PublicWideStatusShape> $results
      * @param Status|value-of<Status> $status
-     * @param list<StandardError|array{
-     *   category: string,
-     *   context: array<string,list<string>>,
-     *   errors: list<ErrorDetail>,
-     *   links: array<string,string>,
-     *   message: string,
-     *   status: string,
-     *   id?: string|null,
-     *   subCategory?: mixed,
-     * }> $errors
+     * @param list<StandardErrorShape> $errors
      * @param array<string,string> $links
      */
     public static function with(
@@ -177,14 +161,7 @@ final class ActionResponseWithResultsPublicWideStatus implements BaseModel
     /**
      * An array containing the results of the operation.
      *
-     * @param list<PublicWideStatus|array{
-     *   channel: value-of<Channel>,
-     *   status: value-of<PublicWideStatus\Status>,
-     *   subscriberIDString: string,
-     *   timestamp: \DateTimeInterface,
-     *   wideStatusType: value-of<WideStatusType>,
-     *   businessUnitID?: int|null,
-     * }> $results
+     * @param list<PublicWideStatusShape> $results
      */
     public function withResults(array $results): self
     {
@@ -221,16 +198,7 @@ final class ActionResponseWithResultsPublicWideStatus implements BaseModel
     /**
      * An array of error objects detailing any issues encountered during the operation.
      *
-     * @param list<StandardError|array{
-     *   category: string,
-     *   context: array<string,list<string>>,
-     *   errors: list<ErrorDetail>,
-     *   links: array<string,string>,
-     *   message: string,
-     *   status: string,
-     *   id?: string|null,
-     *   subCategory?: mixed,
-     * }> $errors
+     * @param list<StandardErrorShape> $errors
      */
     public function withErrors(array $errors): self
     {

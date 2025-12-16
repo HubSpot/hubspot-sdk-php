@@ -14,7 +14,7 @@ use HubspotSDK\PublicCommunicationSubscriptionFilter\FilterType;
  * @phpstan-type PublicCommunicationSubscriptionFilterShape = array{
  *   acceptedOptStates: list<string>,
  *   channel: string,
- *   filterType: value-of<FilterType>,
+ *   filterType: FilterType|value-of<FilterType>,
  *   subscriptionIDs: list<string>,
  *   subscriptionType: string,
  *   businessUnitID?: string|null,

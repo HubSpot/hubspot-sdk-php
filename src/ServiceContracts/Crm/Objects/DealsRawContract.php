@@ -24,7 +24,7 @@ interface DealsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|DealCreateParams $params
+     * @param array<string,mixed>|DealCreateParams $params
      *
      * @return BaseResponse<CreatedResponseSimplePublicObject>
      *
@@ -39,7 +39,7 @@ interface DealsRawContract
      * @api
      *
      * @param string $dealID Path param:
-     * @param array<mixed>|DealUpdateParams $params
+     * @param array<string,mixed>|DealUpdateParams $params
      *
      * @return BaseResponse<SimplePublicObject>
      *
@@ -54,7 +54,7 @@ interface DealsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|DealListParams $params
+     * @param array<string,mixed>|DealListParams $params
      *
      * @return BaseResponse<Page<SimplePublicObjectWithAssociations>>
      *
@@ -80,7 +80,7 @@ interface DealsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|DealGetParams $params
+     * @param array<string,mixed>|DealGetParams $params
      *
      * @return BaseResponse<SimplePublicObjectWithAssociations>
      *
@@ -95,7 +95,7 @@ interface DealsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|DealMergeParams $params
+     * @param array<string,mixed>|DealMergeParams $params
      *
      * @return BaseResponse<SimplePublicObject>
      *
@@ -109,7 +109,7 @@ interface DealsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|DealSearchParams $params
+     * @param array<string,mixed>|DealSearchParams $params
      *
      * @return BaseResponse<CollectionResponseWithTotalSimplePublicObject>
      *

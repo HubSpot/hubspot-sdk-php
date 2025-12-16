@@ -13,7 +13,7 @@ use HubspotSDK\Files\FileUpdateInput\Access;
  * Object for updating files.
  *
  * @phpstan-type FileUpdateInputShape = array{
- *   access?: value-of<Access>|null,
+ *   access?: null|Access|value-of<Access>,
  *   clearExpires?: bool|null,
  *   expiresAt?: \DateTimeInterface|null,
  *   isUsableInContent?: bool|null,

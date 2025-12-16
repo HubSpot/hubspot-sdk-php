@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Automation\Workflows;
 
-use HubspotSDK\Automation\Workflows\APIFlowBatchFetchFlowIDCoordinate\Type;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
@@ -13,10 +12,10 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * @see HubspotSDK\Services\Automation\WorkflowsService::batchGet()
  *
+ * @phpstan-import-type APIFlowBatchFetchFlowIDCoordinateShape from \HubspotSDK\Automation\Workflows\APIFlowBatchFetchFlowIDCoordinate
+ *
  * @phpstan-type WorkflowBatchGetParamsShape = array{
- *   inputs: list<APIFlowBatchFetchFlowIDCoordinate|array{
- *     flowID: string, type: value-of<Type>
- *   }>,
+ *   inputs: list<APIFlowBatchFetchFlowIDCoordinateShape>
  * }
  */
 final class WorkflowBatchGetParams implements BaseModel
@@ -53,9 +52,7 @@ final class WorkflowBatchGetParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<APIFlowBatchFetchFlowIDCoordinate|array{
-     *   flowID: string, type: value-of<Type>
-     * }> $inputs
+     * @param list<APIFlowBatchFetchFlowIDCoordinateShape> $inputs
      */
     public static function with(array $inputs): self
     {
@@ -67,9 +64,7 @@ final class WorkflowBatchGetParams implements BaseModel
     }
 
     /**
-     * @param list<APIFlowBatchFetchFlowIDCoordinate|array{
-     *   flowID: string, type: value-of<Type>
-     * }> $inputs
+     * @param list<APIFlowBatchFetchFlowIDCoordinateShape> $inputs
      */
     public function withInputs(array $inputs): self
     {

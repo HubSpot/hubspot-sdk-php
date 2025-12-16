@@ -14,11 +14,11 @@ use HubspotSDK\Marketing\Subscriptions\V4\PublicWideStatus\WideStatusType;
 
 /**
  * @phpstan-type PublicWideStatusShape = array{
- *   channel: value-of<Channel>,
- *   status: value-of<Status>,
+ *   channel: Channel|value-of<Channel>,
+ *   status: Status|value-of<Status>,
  *   subscriberIDString: string,
  *   timestamp: \DateTimeInterface,
- *   wideStatusType: value-of<WideStatusType>,
+ *   wideStatusType: WideStatusType|value-of<WideStatusType>,
  *   businessUnitID?: int|null,
  * }
  */

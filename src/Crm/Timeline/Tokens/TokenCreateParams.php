@@ -17,17 +17,17 @@ use HubspotSDK\Crm\Timeline\Tokens\TokenCreateParams\Type;
  *
  * @see HubspotSDK\Services\Crm\Timeline\TokensService::create()
  *
+ * @phpstan-import-type TimelineEventTemplateTokenOptionShape from \HubspotSDK\Crm\Timeline\TimelineEventTemplateTokenOption
+ *
  * @phpstan-type TokenCreateParamsShape = array{
  *   appID: int,
  *   label: string,
  *   name: string,
  *   type: Type|value-of<Type>,
- *   createdAt?: \DateTimeInterface,
- *   objectPropertyName?: string,
- *   options?: list<TimelineEventTemplateTokenOption|array{
- *     label: string, value: string
- *   }>,
- *   updatedAt?: \DateTimeInterface,
+ *   createdAt?: \DateTimeInterface|null,
+ *   objectPropertyName?: string|null,
+ *   options?: list<TimelineEventTemplateTokenOptionShape>|null,
+ *   updatedAt?: \DateTimeInterface|null,
  * }
  */
 final class TokenCreateParams implements BaseModel
@@ -114,9 +114,7 @@ final class TokenCreateParams implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param Type|value-of<Type> $type
-     * @param list<TimelineEventTemplateTokenOption|array{
-     *   label: string, value: string
-     * }> $options
+     * @param list<TimelineEventTemplateTokenOptionShape> $options
      */
     public static function with(
         int $appID,
@@ -211,9 +209,7 @@ final class TokenCreateParams implements BaseModel
     /**
      * If type is `enumeration`, we should have a list of options to choose from.
      *
-     * @param list<TimelineEventTemplateTokenOption|array{
-     *   label: string, value: string
-     * }> $options
+     * @param list<TimelineEventTemplateTokenOptionShape> $options
      */
     public function withOptions(array $options): self
     {

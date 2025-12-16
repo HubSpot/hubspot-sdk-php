@@ -16,9 +16,9 @@ use HubspotSDK\Events\EventDefinitions\ComparativeDatePropertyOperation\Property
  *   comparisonPropertyName: string,
  *   includeObjectsWithNoValueSet: bool,
  *   operationType: string,
- *   operator: value-of<Operator>,
+ *   operator: Operator|value-of<Operator>,
  *   operatorName: string,
- *   propertyType: value-of<PropertyType>,
+ *   propertyType: PropertyType|value-of<PropertyType>,
  *   defaultComparisonValue?: string|null,
  *   defaultValue?: string|null,
  * }

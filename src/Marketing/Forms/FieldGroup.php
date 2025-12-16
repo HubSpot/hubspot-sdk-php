@@ -17,8 +17,8 @@ use HubspotSDK\Marketing\Forms\FieldGroup\RichTextType;
  *
  * @phpstan-type FieldGroupShape = array{
  *   fields: list<mixed>,
- *   groupType: value-of<GroupType>,
- *   richTextType: value-of<RichTextType>,
+ *   groupType: GroupType|value-of<GroupType>,
+ *   richTextType: RichTextType|value-of<RichTextType>,
  *   richText?: string|null,
  * }
  */

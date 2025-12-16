@@ -7,11 +7,12 @@ namespace HubspotSDK\Crm\PropertyValidations;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\PropertyValidations\PublicPropertyValidationRule\RuleType;
 
 /**
+ * @phpstan-import-type PublicPropertyValidationRuleShape from \HubspotSDK\Crm\PropertyValidations\PublicPropertyValidationRule
+ *
  * @phpstan-type CollectionResponsePublicPropertyValidationRuleNoPagingShape = array{
- *   results: list<PublicPropertyValidationRule>
+ *   results: list<PublicPropertyValidationRuleShape>
  * }
  */
 final class CollectionResponsePublicPropertyValidationRuleNoPaging implements BaseModel
@@ -51,9 +52,7 @@ final class CollectionResponsePublicPropertyValidationRuleNoPaging implements Ba
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicPropertyValidationRule|array{
-     *   ruleArguments: list<string>, ruleType: value-of<RuleType>
-     * }> $results
+     * @param list<PublicPropertyValidationRuleShape> $results
      */
     public static function with(array $results): self
     {
@@ -67,9 +66,7 @@ final class CollectionResponsePublicPropertyValidationRuleNoPaging implements Ba
     /**
      * Collection of validation rules configured for the specified property. Each rule defines a constraint that property values must satisfy (e.g., format requirements, length limits, allowed values).
      *
-     * @param list<PublicPropertyValidationRule|array{
-     *   ruleArguments: list<string>, ruleType: value-of<RuleType>
-     * }> $results
+     * @param list<PublicPropertyValidationRuleShape> $results
      */
     public function withResults(array $results): self
     {

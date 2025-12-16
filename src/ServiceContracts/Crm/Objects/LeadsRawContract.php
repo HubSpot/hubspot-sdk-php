@@ -23,7 +23,7 @@ interface LeadsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|LeadCreateParams $params
+     * @param array<string,mixed>|LeadCreateParams $params
      *
      * @return BaseResponse<CreatedResponseSimplePublicObject>
      *
@@ -38,7 +38,7 @@ interface LeadsRawContract
      * @api
      *
      * @param string $leadsID Path param:
-     * @param array<mixed>|LeadUpdateParams $params
+     * @param array<string,mixed>|LeadUpdateParams $params
      *
      * @return BaseResponse<SimplePublicObject>
      *
@@ -53,7 +53,7 @@ interface LeadsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|LeadListParams $params
+     * @param array<string,mixed>|LeadListParams $params
      *
      * @return BaseResponse<Page<SimplePublicObjectWithAssociations>>
      *
@@ -79,7 +79,7 @@ interface LeadsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|LeadGetParams $params
+     * @param array<string,mixed>|LeadGetParams $params
      *
      * @return BaseResponse<SimplePublicObjectWithAssociations>
      *
@@ -94,7 +94,7 @@ interface LeadsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|LeadSearchParams $params
+     * @param array<string,mixed>|LeadSearchParams $params
      *
      * @return BaseResponse<CollectionResponseWithTotalSimplePublicObject>
      *

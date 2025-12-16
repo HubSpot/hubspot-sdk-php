@@ -9,8 +9,10 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type PublicAuditInfoShape from \HubspotSDK\Crm\Pipelines\PublicAuditInfo
+ *
  * @phpstan-type CollectionResponsePublicAuditInfoNoPagingShape = array{
- *   results: list<PublicAuditInfo>
+ *   results: list<PublicAuditInfoShape>
  * }
  */
 final class CollectionResponsePublicAuditInfoNoPaging implements BaseModel
@@ -46,15 +48,7 @@ final class CollectionResponsePublicAuditInfoNoPaging implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicAuditInfo|array{
-     *   action: string,
-     *   identifier: string,
-     *   portalID: int,
-     *   fromUserID?: int|null,
-     *   message?: string|null,
-     *   rawObject?: mixed,
-     *   timestamp?: \DateTimeInterface|null,
-     * }> $results
+     * @param list<PublicAuditInfoShape> $results
      */
     public static function with(array $results): self
     {
@@ -66,15 +60,7 @@ final class CollectionResponsePublicAuditInfoNoPaging implements BaseModel
     }
 
     /**
-     * @param list<PublicAuditInfo|array{
-     *   action: string,
-     *   identifier: string,
-     *   portalID: int,
-     *   fromUserID?: int|null,
-     *   message?: string|null,
-     *   rawObject?: mixed,
-     *   timestamp?: \DateTimeInterface|null,
-     * }> $results
+     * @param list<PublicAuditInfoShape> $results
      */
     public function withResults(array $results): self
     {

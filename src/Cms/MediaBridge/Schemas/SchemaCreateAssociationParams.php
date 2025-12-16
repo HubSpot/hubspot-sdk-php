@@ -16,7 +16,10 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Cms\MediaBridge\SchemasService::createAssociation()
  *
  * @phpstan-type SchemaCreateAssociationParamsShape = array{
- *   appID: int, fromObjectTypeID: string, toObjectTypeID: string, name?: string
+ *   appID: int,
+ *   fromObjectTypeID: string,
+ *   toObjectTypeID: string,
+ *   name?: string|null,
  * }
  */
 final class SchemaCreateAssociationParams implements BaseModel

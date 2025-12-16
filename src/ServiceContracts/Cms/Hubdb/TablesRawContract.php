@@ -30,7 +30,7 @@ interface TablesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|TableCreateParams $params
+     * @param array<string,mixed>|TableCreateParams $params
      *
      * @return BaseResponse<HubDBTableV3>
      *
@@ -44,7 +44,7 @@ interface TablesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|TableListParams $params
+     * @param array<string,mixed>|TableListParams $params
      *
      * @return BaseResponse<Page<HubDBTableV3>>
      *
@@ -73,7 +73,7 @@ interface TablesRawContract
      * @api
      *
      * @param string $tableIDOrName the ID or name of the table to clone
-     * @param array<mixed>|TableCloneDraftParams $params
+     * @param array<string,mixed>|TableCloneDraftParams $params
      *
      * @return BaseResponse<HubDBTableV3>
      *
@@ -89,7 +89,7 @@ interface TablesRawContract
      * @api
      *
      * @param int $versionID the ID of the specific version of the table to delete
-     * @param array<mixed>|TableDeleteVersionParams $params
+     * @param array<string,mixed>|TableDeleteVersionParams $params
      *
      * @return BaseResponse<mixed>
      *
@@ -105,7 +105,7 @@ interface TablesRawContract
      * @api
      *
      * @param string $tableIDOrName the ID or name of the table to export
-     * @param array<mixed>|TableExportParams $params
+     * @param array<string,mixed>|TableExportParams $params
      *
      * @return BaseResponse<string>
      *
@@ -121,7 +121,7 @@ interface TablesRawContract
      * @api
      *
      * @param string $tableIDOrName the ID or name of the table to export
-     * @param array<mixed>|TableExportDraftParams $params
+     * @param array<string,mixed>|TableExportDraftParams $params
      *
      * @return BaseResponse<string>
      *
@@ -137,7 +137,7 @@ interface TablesRawContract
      * @api
      *
      * @param string $tableIDOrName the ID or name of the table to return
-     * @param array<mixed>|TableGetParams $params
+     * @param array<string,mixed>|TableGetParams $params
      *
      * @return BaseResponse<HubDBTableV3>
      *
@@ -153,7 +153,7 @@ interface TablesRawContract
      * @api
      *
      * @param string $tableIDOrName the ID or name of the table to return
-     * @param array<mixed>|TableGetDraftParams $params
+     * @param array<string,mixed>|TableGetDraftParams $params
      *
      * @return BaseResponse<HubDBTableV3>
      *
@@ -169,7 +169,7 @@ interface TablesRawContract
      * @api
      *
      * @param string $tableIDOrName the ID of the destination table where data will be imported
-     * @param array<mixed>|TableImportDraftParams $params
+     * @param array<string,mixed>|TableImportDraftParams $params
      *
      * @return BaseResponse<ImportResult>
      *
@@ -184,7 +184,7 @@ interface TablesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|TableListDraftParams $params
+     * @param array<string,mixed>|TableListDraftParams $params
      *
      * @return BaseResponse<Page<HubDBTableV3>>
      *
@@ -199,7 +199,7 @@ interface TablesRawContract
      * @api
      *
      * @param string $tableIDOrName the ID or name of the table to publish
-     * @param array<mixed>|TablePublishDraftParams $params
+     * @param array<string,mixed>|TablePublishDraftParams $params
      *
      * @return BaseResponse<HubDBTableV3>
      *
@@ -215,7 +215,7 @@ interface TablesRawContract
      * @api
      *
      * @param string $tableIDOrName the ID or name of the table to reset
-     * @param array<mixed>|TableResetDraftParams $params
+     * @param array<string,mixed>|TableResetDraftParams $params
      *
      * @return BaseResponse<HubDBTableV3>
      *
@@ -231,7 +231,7 @@ interface TablesRawContract
      * @api
      *
      * @param string $tableIDOrName the ID or name of the table to publish
-     * @param array<mixed>|TableUnpublishParams $params
+     * @param array<string,mixed>|TableUnpublishParams $params
      *
      * @return BaseResponse<HubDBTableV3>
      *
@@ -247,7 +247,7 @@ interface TablesRawContract
      * @api
      *
      * @param string $tableIDOrName path param: The ID or name of the table to update
-     * @param array<mixed>|TableUpdateDraftParams $params
+     * @param array<string,mixed>|TableUpdateDraftParams $params
      *
      * @return BaseResponse<HubDBTableV3>
      *

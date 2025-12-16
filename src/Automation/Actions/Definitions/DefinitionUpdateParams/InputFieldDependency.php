@@ -10,6 +10,12 @@ use HubspotSDK\Core\Concerns\SdkUnion;
 use HubspotSDK\Core\Conversion\Contracts\Converter;
 use HubspotSDK\Core\Conversion\Contracts\ConverterSource;
 
+/**
+ * @phpstan-import-type PublicSingleFieldDependencyShape from \HubspotSDK\Automation\Actions\PublicSingleFieldDependency
+ * @phpstan-import-type PublicConditionalSingleFieldDependencyShape from \HubspotSDK\Automation\Actions\PublicConditionalSingleFieldDependency
+ *
+ * @phpstan-type InputFieldDependencyShape = PublicSingleFieldDependencyShape|PublicConditionalSingleFieldDependencyShape
+ */
 final class InputFieldDependency implements ConverterSource
 {
     use SdkUnion;

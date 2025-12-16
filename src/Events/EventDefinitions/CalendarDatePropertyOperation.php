@@ -17,14 +17,14 @@ use HubspotSDK\Events\EventDefinitions\CalendarDatePropertyOperation\TimeUnit;
  * @phpstan-type CalendarDatePropertyOperationShape = array{
  *   includeObjectsWithNoValueSet: bool,
  *   operationType: string,
- *   operator: value-of<Operator>,
+ *   operator: Operator|value-of<Operator>,
  *   operatorName: string,
- *   propertyType: value-of<PropertyType>,
- *   timeUnit: value-of<TimeUnit>,
+ *   propertyType: PropertyType|value-of<PropertyType>,
+ *   timeUnit: TimeUnit|value-of<TimeUnit>,
  *   timeUnitCount: int,
  *   useFiscalYear: bool,
  *   defaultValue?: string|null,
- *   fiscalYearStart?: value-of<FiscalYearStart>|null,
+ *   fiscalYearStart?: null|FiscalYearStart|value-of<FiscalYearStart>,
  * }
  */
 final class CalendarDatePropertyOperation implements BaseModel

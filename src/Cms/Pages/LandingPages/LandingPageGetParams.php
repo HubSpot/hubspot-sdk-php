@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Cms\Pages\LandingPagesService::get()
  *
  * @phpstan-type LandingPageGetParamsShape = array{
- *   archived?: bool, property?: string
+ *   archived?: bool|null, property?: string|null
  * }
  */
 final class LandingPageGetParams implements BaseModel

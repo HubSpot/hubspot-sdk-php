@@ -8,18 +8,19 @@ use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\ErrorDetail;
 use HubspotSDK\StandardError;
 use HubspotSDK\Webhooks\BatchResponseSubscriptionResponseWithErrors\Status;
-use HubspotSDK\Webhooks\SubscriptionResponse\EventType;
 
 /**
+ * @phpstan-import-type SubscriptionResponseShape from \HubspotSDK\Webhooks\SubscriptionResponse
+ * @phpstan-import-type StandardErrorShape from \HubspotSDK\StandardError
+ *
  * @phpstan-type BatchResponseSubscriptionResponseWithErrorsShape = array{
  *   completedAt: \DateTimeInterface,
- *   results: list<SubscriptionResponse>,
+ *   results: list<SubscriptionResponseShape>,
  *   startedAt: \DateTimeInterface,
- *   status: value-of<Status>,
- *   errors?: list<StandardError>|null,
+ *   status: Status|value-of<Status>,
+ *   errors?: list<StandardErrorShape>|null,
  *   links?: array<string,string>|null,
  *   numErrors?: int|null,
  *   requestedAt?: \DateTimeInterface|null,
@@ -88,26 +89,9 @@ final class BatchResponseSubscriptionResponseWithErrors implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<SubscriptionResponse|array{
-     *   id: string,
-     *   active: bool,
-     *   createdAt: \DateTimeInterface,
-     *   eventType: value-of<EventType>,
-     *   objectTypeID?: string|null,
-     *   propertyName?: string|null,
-     *   updatedAt?: \DateTimeInterface|null,
-     * }> $results
+     * @param list<SubscriptionResponseShape> $results
      * @param Status|value-of<Status> $status
-     * @param list<StandardError|array{
-     *   category: string,
-     *   context: array<string,list<string>>,
-     *   errors: list<ErrorDetail>,
-     *   links: array<string,string>,
-     *   message: string,
-     *   status: string,
-     *   id?: string|null,
-     *   subCategory?: mixed,
-     * }> $errors
+     * @param list<StandardErrorShape> $errors
      * @param array<string,string> $links
      */
     public static function with(
@@ -144,15 +128,7 @@ final class BatchResponseSubscriptionResponseWithErrors implements BaseModel
     }
 
     /**
-     * @param list<SubscriptionResponse|array{
-     *   id: string,
-     *   active: bool,
-     *   createdAt: \DateTimeInterface,
-     *   eventType: value-of<EventType>,
-     *   objectTypeID?: string|null,
-     *   propertyName?: string|null,
-     *   updatedAt?: \DateTimeInterface|null,
-     * }> $results
+     * @param list<SubscriptionResponseShape> $results
      */
     public function withResults(array $results): self
     {
@@ -182,16 +158,7 @@ final class BatchResponseSubscriptionResponseWithErrors implements BaseModel
     }
 
     /**
-     * @param list<StandardError|array{
-     *   category: string,
-     *   context: array<string,list<string>>,
-     *   errors: list<ErrorDetail>,
-     *   links: array<string,string>,
-     *   message: string,
-     *   status: string,
-     *   id?: string|null,
-     *   subCategory?: mixed,
-     * }> $errors
+     * @param list<StandardErrorShape> $errors
      */
     public function withErrors(array $errors): self
     {

@@ -14,7 +14,7 @@ use HubspotSDK\Crm\Filter\Operator;
  * Defines a single condition for searching CRM objects, specifying the property to filter on, the operator to use (such as equals, greater than, or contains), and the value(s) to compare against.
  *
  * @phpstan-type FilterShape = array{
- *   operator: value-of<Operator>,
+ *   operator: Operator|value-of<Operator>,
  *   propertyName: string,
  *   highValue?: string|null,
  *   value?: string|null,

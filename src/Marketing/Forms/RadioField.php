@@ -13,15 +13,17 @@ use HubspotSDK\Marketing\Forms\RadioField\FieldType;
 /**
  * A form field consisting of a set of radio options, out of which one can be selected at a time.
  *
+ * @phpstan-import-type EnumeratedFieldOptionShape from \HubspotSDK\Marketing\Forms\EnumeratedFieldOption
+ *
  * @phpstan-type RadioFieldShape = array{
  *   defaultValues: list<string>,
  *   dependentFields: list<mixed>,
- *   fieldType: value-of<FieldType>,
+ *   fieldType: FieldType|value-of<FieldType>,
  *   hidden: bool,
  *   label: string,
  *   name: string,
  *   objectTypeID: string,
- *   options: list<EnumeratedFieldOption>,
+ *   options: list<EnumeratedFieldOptionShape>,
  *   required: bool,
  *   description?: string|null,
  *   placeholder?: string|null,
@@ -151,9 +153,7 @@ final class RadioField implements BaseModel
      *
      * @param list<string> $defaultValues
      * @param list<mixed> $dependentFields
-     * @param list<EnumeratedFieldOption|array{
-     *   displayOrder: int, label: string, value: string, description?: string|null
-     * }> $options
+     * @param list<EnumeratedFieldOptionShape> $options
      * @param FieldType|value-of<FieldType> $fieldType
      */
     public static function with(
@@ -273,9 +273,7 @@ final class RadioField implements BaseModel
     /**
      * The list of available choices for this field.
      *
-     * @param list<EnumeratedFieldOption|array{
-     *   displayOrder: int, label: string, value: string, description?: string|null
-     * }> $options
+     * @param list<EnumeratedFieldOptionShape> $options
      */
     public function withOptions(array $options): self
     {

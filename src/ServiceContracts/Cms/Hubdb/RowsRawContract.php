@@ -25,7 +25,7 @@ interface RowsRawContract
      * @api
      *
      * @param string $tableIDOrName the ID or name of the target table
-     * @param array<mixed>|RowCreateParams $params
+     * @param array<string,mixed>|RowCreateParams $params
      *
      * @return BaseResponse<HubDBTableRowV3>
      *
@@ -41,7 +41,7 @@ interface RowsRawContract
      * @api
      *
      * @param string $tableIDOrName the ID or name of the table to query
-     * @param array<mixed>|RowListParams $params
+     * @param array<string,mixed>|RowListParams $params
      *
      * @return BaseResponse<Page<mixed>>
      *
@@ -57,7 +57,7 @@ interface RowsRawContract
      * @api
      *
      * @param string $rowID Path param: The ID of the row
-     * @param array<mixed>|RowCloneDraftParams $params
+     * @param array<string,mixed>|RowCloneDraftParams $params
      *
      * @return BaseResponse<HubDBTableRowV3>
      *
@@ -73,7 +73,7 @@ interface RowsRawContract
      * @api
      *
      * @param string $rowID The ID of the row
-     * @param array<mixed>|RowDeleteDraftParams $params
+     * @param array<string,mixed>|RowDeleteDraftParams $params
      *
      * @return BaseResponse<mixed>
      *
@@ -89,7 +89,7 @@ interface RowsRawContract
      * @api
      *
      * @param string $rowID Path param: The ID of the row
-     * @param array<mixed>|RowGetParams $params
+     * @param array<string,mixed>|RowGetParams $params
      *
      * @return BaseResponse<HubDBTableRowV3>
      *
@@ -105,7 +105,7 @@ interface RowsRawContract
      * @api
      *
      * @param string $rowID Path param: The ID of the row
-     * @param array<mixed>|RowGetDraftParams $params
+     * @param array<string,mixed>|RowGetDraftParams $params
      *
      * @return BaseResponse<HubDBTableRowV3>
      *
@@ -121,7 +121,7 @@ interface RowsRawContract
      * @api
      *
      * @param string $tableIDOrName the ID or name of the table to query
-     * @param array<mixed>|RowListDraftParams $params
+     * @param array<string,mixed>|RowListDraftParams $params
      *
      * @return BaseResponse<Page<mixed>>
      *
@@ -137,7 +137,7 @@ interface RowsRawContract
      * @api
      *
      * @param string $rowID Path param: The ID of the row
-     * @param array<mixed>|RowReplaceDraftParams $params
+     * @param array<string,mixed>|RowReplaceDraftParams $params
      *
      * @return BaseResponse<HubDBTableRowV3>
      *
@@ -153,7 +153,7 @@ interface RowsRawContract
      * @api
      *
      * @param string $rowID Path param: The ID of the row
-     * @param array<mixed>|RowUpdateDraftParams $params
+     * @param array<string,mixed>|RowUpdateDraftParams $params
      *
      * @return BaseResponse<HubDBTableRowV3>
      *

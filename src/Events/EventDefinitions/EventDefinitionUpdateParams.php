@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Events\EventDefinitionsService::update()
  *
  * @phpstan-type EventDefinitionUpdateParamsShape = array{
- *   description?: string, label?: string
+ *   description?: string|null, label?: string|null
  * }
  */
 final class EventDefinitionUpdateParams implements BaseModel

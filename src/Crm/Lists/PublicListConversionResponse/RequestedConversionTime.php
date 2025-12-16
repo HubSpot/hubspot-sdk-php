@@ -10,6 +10,12 @@ use HubspotSDK\Core\Conversion\Contracts\ConverterSource;
 use HubspotSDK\Crm\Lists\PublicListConversionDate;
 use HubspotSDK\Crm\Lists\PublicListConversionInactivity;
 
+/**
+ * @phpstan-import-type PublicListConversionDateShape from \HubspotSDK\Crm\Lists\PublicListConversionDate
+ * @phpstan-import-type PublicListConversionInactivityShape from \HubspotSDK\Crm\Lists\PublicListConversionInactivity
+ *
+ * @phpstan-type RequestedConversionTimeShape = PublicListConversionDateShape|PublicListConversionInactivityShape
+ */
 final class RequestedConversionTime implements ConverterSource
 {
     use SdkUnion;

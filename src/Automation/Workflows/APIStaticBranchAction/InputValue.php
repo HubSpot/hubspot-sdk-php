@@ -18,6 +18,20 @@ use HubspotSDK\Core\Concerns\SdkUnion;
 use HubspotSDK\Core\Conversion\Contracts\Converter;
 use HubspotSDK\Core\Conversion\Contracts\ConverterSource;
 
+/**
+ * @phpstan-import-type APIActionDataValueShape from \HubspotSDK\Automation\Workflows\APIActionDataValue
+ * @phpstan-import-type APIObjectPropertyValueShape from \HubspotSDK\Automation\Workflows\APIObjectPropertyValue
+ * @phpstan-import-type APIStaticValueShape from \HubspotSDK\Automation\Workflows\APIStaticValue
+ * @phpstan-import-type APIRelativeDateTimeValueShape from \HubspotSDK\Automation\Workflows\APIRelativeDateTimeValue
+ * @phpstan-import-type APITimestampValueShape from \HubspotSDK\Automation\Workflows\APITimestampValue
+ * @phpstan-import-type APIIncrementValueShape from \HubspotSDK\Automation\Workflows\APIIncrementValue
+ * @phpstan-import-type APIFetchedObjectPropertyValueShape from \HubspotSDK\Automation\Workflows\APIFetchedObjectPropertyValue
+ * @phpstan-import-type APIAppendObjectPropertyValueShape from \HubspotSDK\Automation\Workflows\APIAppendObjectPropertyValue
+ * @phpstan-import-type APIStaticAppendValueShape from \HubspotSDK\Automation\Workflows\APIStaticAppendValue
+ * @phpstan-import-type APIEnrollmentEventPropertyValueShape from \HubspotSDK\Automation\Workflows\APIEnrollmentEventPropertyValue
+ *
+ * @phpstan-type InputValueShape = APIActionDataValueShape|APIObjectPropertyValueShape|APIStaticValueShape|APIRelativeDateTimeValueShape|APITimestampValueShape|APIIncrementValueShape|APIFetchedObjectPropertyValueShape|APIAppendObjectPropertyValueShape|APIStaticAppendValueShape|APIEnrollmentEventPropertyValueShape
+ */
 final class InputValue implements ConverterSource
 {
     use SdkUnion;

@@ -15,7 +15,7 @@ interface SingleEmailRawContract
     /**
      * @api
      *
-     * @param array<mixed>|SingleEmailSendParams $params
+     * @param array<string,mixed>|SingleEmailSendParams $params
      *
      * @return BaseResponse<EmailSendStatusView>
      *

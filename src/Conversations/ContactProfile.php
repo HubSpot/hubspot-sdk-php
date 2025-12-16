@@ -4,20 +4,26 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Conversations;
 
-use HubspotSDK\Conversations\ContactAddress\Type;
 use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type ContactAddressShape from \HubspotSDK\Conversations\ContactAddress
+ * @phpstan-import-type ContactEmailShape from \HubspotSDK\Conversations\ContactEmail
+ * @phpstan-import-type ContactPhoneShape from \HubspotSDK\Conversations\ContactPhone
+ * @phpstan-import-type ContactURLShape from \HubspotSDK\Conversations\ContactURL
+ * @phpstan-import-type ContactNameShape from \HubspotSDK\Conversations\ContactName
+ * @phpstan-import-type ContactOrgShape from \HubspotSDK\Conversations\ContactOrg
+ *
  * @phpstan-type ContactProfileShape = array{
- *   addresses: list<ContactAddress>,
- *   emails: list<ContactEmail>,
- *   phones: list<ContactPhone>,
- *   urls: list<ContactURL>,
- *   name?: ContactName|null,
- *   org?: ContactOrg|null,
+ *   addresses: list<ContactAddressShape>,
+ *   emails: list<ContactEmailShape>,
+ *   phones: list<ContactPhoneShape>,
+ *   urls: list<ContactURLShape>,
+ *   name?: null|ContactName|ContactNameShape,
+ *   org?: null|ContactOrg|ContactOrgShape,
  * }
  */
 final class ContactProfile implements BaseModel
@@ -75,36 +81,12 @@ final class ContactProfile implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<ContactAddress|array{
-     *   city?: string|null,
-     *   country?: string|null,
-     *   countryCode?: string|null,
-     *   state?: string|null,
-     *   street?: string|null,
-     *   type?: value-of<Type>|null,
-     *   zip?: string|null,
-     * }> $addresses
-     * @param list<ContactEmail|array{
-     *   email: string,
-     *   type?: value-of<ContactEmail\Type>|null,
-     * }> $emails
-     * @param list<ContactPhone|array{
-     *   phone: string,
-     *   type?: value-of<ContactPhone\Type>|null,
-     * }> $phones
-     * @param list<ContactURL|array{
-     *   url: string, type?: value-of<ContactURL\Type>|null
-     * }> $urls
-     * @param ContactName|array{
-     *   firstName?: string|null,
-     *   lastName?: string|null,
-     *   middleName?: string|null,
-     *   prefix?: string|null,
-     *   suffix?: string|null,
-     * } $name
-     * @param ContactOrg|array{
-     *   company?: string|null, department?: string|null, title?: string|null
-     * } $org
+     * @param list<ContactAddressShape> $addresses
+     * @param list<ContactEmailShape> $emails
+     * @param list<ContactPhoneShape> $phones
+     * @param list<ContactURLShape> $urls
+     * @param ContactNameShape $name
+     * @param ContactOrgShape $org
      */
     public static function with(
         array $addresses,
@@ -128,15 +110,7 @@ final class ContactProfile implements BaseModel
     }
 
     /**
-     * @param list<ContactAddress|array{
-     *   city?: string|null,
-     *   country?: string|null,
-     *   countryCode?: string|null,
-     *   state?: string|null,
-     *   street?: string|null,
-     *   type?: value-of<Type>|null,
-     *   zip?: string|null,
-     * }> $addresses
+     * @param list<ContactAddressShape> $addresses
      */
     public function withAddresses(array $addresses): self
     {
@@ -147,10 +121,7 @@ final class ContactProfile implements BaseModel
     }
 
     /**
-     * @param list<ContactEmail|array{
-     *   email: string,
-     *   type?: value-of<ContactEmail\Type>|null,
-     * }> $emails
+     * @param list<ContactEmailShape> $emails
      */
     public function withEmails(array $emails): self
     {
@@ -161,10 +132,7 @@ final class ContactProfile implements BaseModel
     }
 
     /**
-     * @param list<ContactPhone|array{
-     *   phone: string,
-     *   type?: value-of<ContactPhone\Type>|null,
-     * }> $phones
+     * @param list<ContactPhoneShape> $phones
      */
     public function withPhones(array $phones): self
     {
@@ -175,9 +143,7 @@ final class ContactProfile implements BaseModel
     }
 
     /**
-     * @param list<ContactURL|array{
-     *   url: string, type?: value-of<ContactURL\Type>|null
-     * }> $urls
+     * @param list<ContactURLShape> $urls
      */
     public function withURLs(array $urls): self
     {
@@ -188,13 +154,7 @@ final class ContactProfile implements BaseModel
     }
 
     /**
-     * @param ContactName|array{
-     *   firstName?: string|null,
-     *   lastName?: string|null,
-     *   middleName?: string|null,
-     *   prefix?: string|null,
-     *   suffix?: string|null,
-     * } $name
+     * @param ContactNameShape $name
      */
     public function withName(ContactName|array $name): self
     {
@@ -205,9 +165,7 @@ final class ContactProfile implements BaseModel
     }
 
     /**
-     * @param ContactOrg|array{
-     *   company?: string|null, department?: string|null, title?: string|null
-     * } $org
+     * @param ContactOrgShape $org
      */
     public function withOrg(ContactOrg|array $org): self
     {

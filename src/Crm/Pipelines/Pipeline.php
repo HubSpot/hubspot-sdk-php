@@ -8,10 +8,11 @@ use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\Pipelines\PipelineStage\WritePermissions;
 
 /**
  * A pipeline definition.
+ *
+ * @phpstan-import-type PipelineStageShape from \HubspotSDK\Crm\Pipelines\PipelineStage
  *
  * @phpstan-type PipelineShape = array{
  *   id: string,
@@ -19,7 +20,7 @@ use HubspotSDK\Crm\Pipelines\PipelineStage\WritePermissions;
  *   createdAt: \DateTimeInterface,
  *   displayOrder: int,
  *   label: string,
- *   stages: list<PipelineStage>,
+ *   stages: list<PipelineStageShape>,
  *   updatedAt: \DateTimeInterface,
  *   archivedAt?: \DateTimeInterface|null,
  * }
@@ -118,17 +119,7 @@ final class Pipeline implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PipelineStage|array{
-     *   id: string,
-     *   archived: bool,
-     *   createdAt: \DateTimeInterface,
-     *   displayOrder: int,
-     *   label: string,
-     *   metadata: array<string,string>,
-     *   updatedAt: \DateTimeInterface,
-     *   archivedAt?: \DateTimeInterface|null,
-     *   writePermissions?: value-of<WritePermissions>|null,
-     * }> $stages
+     * @param list<PipelineStageShape> $stages
      */
     public static function with(
         string $id,
@@ -213,17 +204,7 @@ final class Pipeline implements BaseModel
     /**
      * The stages associated with the pipeline. They can be retrieved and updated via the pipeline stages endpoints.
      *
-     * @param list<PipelineStage|array{
-     *   id: string,
-     *   archived: bool,
-     *   createdAt: \DateTimeInterface,
-     *   displayOrder: int,
-     *   label: string,
-     *   metadata: array<string,string>,
-     *   updatedAt: \DateTimeInterface,
-     *   archivedAt?: \DateTimeInterface|null,
-     *   writePermissions?: value-of<WritePermissions>|null,
-     * }> $stages
+     * @param list<PipelineStageShape> $stages
      */
     public function withStages(array $stages): self
     {

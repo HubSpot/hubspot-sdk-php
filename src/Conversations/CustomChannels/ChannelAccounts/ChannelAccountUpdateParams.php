@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Conversations\CustomChannels\ChannelAccountsService::update()
  *
  * @phpstan-type ChannelAccountUpdateParamsShape = array{
- *   channelID: int, authorized?: bool, name?: string
+ *   channelID: int, authorized?: bool|null, name?: string|null
  * }
  */
 final class ChannelAccountUpdateParams implements BaseModel

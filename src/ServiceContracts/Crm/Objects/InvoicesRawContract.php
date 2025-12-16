@@ -23,7 +23,7 @@ interface InvoicesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|InvoiceCreateParams $params
+     * @param array<string,mixed>|InvoiceCreateParams $params
      *
      * @return BaseResponse<CreatedResponseSimplePublicObject>
      *
@@ -38,7 +38,7 @@ interface InvoicesRawContract
      * @api
      *
      * @param string $invoiceID Path param:
-     * @param array<mixed>|InvoiceUpdateParams $params
+     * @param array<string,mixed>|InvoiceUpdateParams $params
      *
      * @return BaseResponse<SimplePublicObject>
      *
@@ -53,7 +53,7 @@ interface InvoicesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|InvoiceListParams $params
+     * @param array<string,mixed>|InvoiceListParams $params
      *
      * @return BaseResponse<Page<SimplePublicObjectWithAssociations>>
      *
@@ -79,7 +79,7 @@ interface InvoicesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|InvoiceGetParams $params
+     * @param array<string,mixed>|InvoiceGetParams $params
      *
      * @return BaseResponse<SimplePublicObjectWithAssociations>
      *
@@ -94,7 +94,7 @@ interface InvoicesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|InvoiceSearchParams $params
+     * @param array<string,mixed>|InvoiceSearchParams $params
      *
      * @return BaseResponse<CollectionResponseWithTotalSimplePublicObject>
      *

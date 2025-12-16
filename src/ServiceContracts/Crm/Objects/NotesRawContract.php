@@ -23,7 +23,7 @@ interface NotesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|NoteCreateParams $params
+     * @param array<string,mixed>|NoteCreateParams $params
      *
      * @return BaseResponse<CreatedResponseSimplePublicObject>
      *
@@ -38,7 +38,7 @@ interface NotesRawContract
      * @api
      *
      * @param string $noteID Path param:
-     * @param array<mixed>|NoteUpdateParams $params
+     * @param array<string,mixed>|NoteUpdateParams $params
      *
      * @return BaseResponse<SimplePublicObject>
      *
@@ -53,7 +53,7 @@ interface NotesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|NoteListParams $params
+     * @param array<string,mixed>|NoteListParams $params
      *
      * @return BaseResponse<Page<SimplePublicObjectWithAssociations>>
      *
@@ -79,7 +79,7 @@ interface NotesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|NoteGetParams $params
+     * @param array<string,mixed>|NoteGetParams $params
      *
      * @return BaseResponse<SimplePublicObjectWithAssociations>
      *
@@ -94,7 +94,7 @@ interface NotesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|NoteSearchParams $params
+     * @param array<string,mixed>|NoteSearchParams $params
      *
      * @return BaseResponse<CollectionResponseWithTotalSimplePublicObject>
      *

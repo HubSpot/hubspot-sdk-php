@@ -16,7 +16,7 @@ interface DomainsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|DomainListParams $params
+     * @param array<string,mixed>|DomainListParams $params
      *
      * @return BaseResponse<Page<Domain>>
      *

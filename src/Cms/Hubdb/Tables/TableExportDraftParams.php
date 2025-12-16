@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Services\Cms\Hubdb\TablesService::exportDraft()
  *
- * @phpstan-type TableExportDraftParamsShape = array{format?: string}
+ * @phpstan-type TableExportDraftParamsShape = array{format?: string|null}
  */
 final class TableExportDraftParams implements BaseModel
 {

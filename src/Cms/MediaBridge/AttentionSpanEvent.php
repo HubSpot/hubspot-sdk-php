@@ -17,7 +17,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   mediaBridgeObjectCoordinates: string,
  *   mediaBridgeObjectTypeID: string,
  *   mediaName: string,
- *   mediaType: value-of<MediaType>,
+ *   mediaType: MediaType|value-of<MediaType>,
  *   occurredTimestamp: int,
  *   percentRange: string,
  *   portalID: int,

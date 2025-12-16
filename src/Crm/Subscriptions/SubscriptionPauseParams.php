@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Services\Crm\SubscriptionsService::pause()
  *
- * @phpstan-type SubscriptionPauseParamsShape = array{pauseReason?: string}
+ * @phpstan-type SubscriptionPauseParamsShape = array{pauseReason?: string|null}
  */
 final class SubscriptionPauseParams implements BaseModel
 {

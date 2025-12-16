@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Cms\MediaBridge\IntegratorSettingsService::deleteOembedDomain()
  *
  * @phpstan-type IntegratorSettingDeleteOembedDomainParamsShape = array{
- *   id?: int, domainPortalID?: int
+ *   id?: int|null, domainPortalID?: int|null
  * }
  */
 final class IntegratorSettingDeleteOembedDomainParams implements BaseModel

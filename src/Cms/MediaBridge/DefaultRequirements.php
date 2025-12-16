@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * @phpstan-type DefaultRequirementsShape = array{
  *   gates: list<string>,
- *   operator: value-of<Operator>,
+ *   operator: Operator|value-of<Operator>,
  *   scopeNames: list<string>,
  *   settings: list<string>,
  * }

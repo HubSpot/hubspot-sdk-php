@@ -9,8 +9,10 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type PreResolvedContactShape from \HubspotSDK\Conversations\CustomChannels\PreResolvedContact
+ *
  * @phpstan-type PreResolvedContactsShape = array{
- *   contacts: list<PreResolvedContact>
+ *   contacts: list<PreResolvedContactShape>
  * }
  */
 final class PreResolvedContacts implements BaseModel
@@ -46,9 +48,7 @@ final class PreResolvedContacts implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PreResolvedContact|array{
-     *   contactPropertiesLeadingToMatch: list<string>, contactVid: int
-     * }> $contacts
+     * @param list<PreResolvedContactShape> $contacts
      */
     public static function with(array $contacts): self
     {
@@ -60,9 +60,7 @@ final class PreResolvedContacts implements BaseModel
     }
 
     /**
-     * @param list<PreResolvedContact|array{
-     *   contactPropertiesLeadingToMatch: list<string>, contactVid: int
-     * }> $contacts
+     * @param list<PreResolvedContactShape> $contacts
      */
     public function withContacts(array $contacts): self
     {

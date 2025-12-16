@@ -13,7 +13,7 @@ use HubspotSDK\PublicRollingPropertyUpdatedOperation\OperationType;
  * @phpstan-type PublicRollingPropertyUpdatedOperationShape = array{
  *   includeObjectsWithNoValueSet: bool,
  *   numberOfDays: int,
- *   operationType: value-of<OperationType>,
+ *   operationType: OperationType|value-of<OperationType>,
  *   operator: string,
  * }
  */

@@ -9,14 +9,15 @@ use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Extensions\Cards\CardFetchBodyPatch\CardType;
-use HubspotSDK\Crm\Extensions\Cards\CardObjectTypeBody\Name;
 
 /**
  * Variant of CardFetchBody with fields as optional for patches.
  *
+ * @phpstan-import-type CardObjectTypeBodyShape from \HubspotSDK\Crm\Extensions\Cards\CardObjectTypeBody
+ *
  * @phpstan-type CardFetchBodyPatchShape = array{
- *   objectTypes: list<CardObjectTypeBody>,
- *   cardType?: value-of<CardType>|null,
+ *   objectTypes: list<CardObjectTypeBodyShape>,
+ *   cardType?: null|CardType|value-of<CardType>,
  *   serverlessFunction?: string|null,
  *   targetURL?: string|null,
  * }
@@ -71,9 +72,7 @@ final class CardFetchBodyPatch implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<CardObjectTypeBody|array{
-     *   name: value-of<Name>, propertiesToSend: list<string>
-     * }> $objectTypes
+     * @param list<CardObjectTypeBodyShape> $objectTypes
      * @param CardType|value-of<CardType> $cardType
      */
     public static function with(
@@ -96,9 +95,7 @@ final class CardFetchBodyPatch implements BaseModel
     /**
      * An array of CRM object types where this card should be displayed. HubSpot will call your target URL whenever a user visits a record page of the types defined here.
      *
-     * @param list<CardObjectTypeBody|array{
-     *   name: value-of<Name>, propertiesToSend: list<string>
-     * }> $objectTypes
+     * @param list<CardObjectTypeBodyShape> $objectTypes
      */
     public function withObjectTypes(array $objectTypes): self
     {

@@ -9,13 +9,15 @@ use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\ForwardPaging;
-use HubspotSDK\NextPage;
 
 /**
+ * @phpstan-import-type PublicSequenceLiteResponseShape from \HubspotSDK\Automation\Sequences\PublicSequenceLiteResponse
+ * @phpstan-import-type ForwardPagingShape from \HubspotSDK\ForwardPaging
+ *
  * @phpstan-type CollectionResponseWithTotalPublicSequenceLiteResponseForwardPagingShape = array{
- *   results: list<PublicSequenceLiteResponse>,
+ *   results: list<PublicSequenceLiteResponseShape>,
  *   total: int,
- *   paging?: ForwardPaging|null,
+ *   paging?: null|ForwardPaging|ForwardPagingShape,
  * }
  */
 final class CollectionResponseWithTotalPublicSequenceLiteResponseForwardPaging implements BaseModel
@@ -63,15 +65,8 @@ final class CollectionResponseWithTotalPublicSequenceLiteResponseForwardPaging i
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicSequenceLiteResponse|array{
-     *   id: string,
-     *   createdAt: \DateTimeInterface,
-     *   name: string,
-     *   updatedAt: \DateTimeInterface,
-     *   userID: string,
-     *   folderID?: string|null,
-     * }> $results
-     * @param ForwardPaging|array{next?: NextPage|null} $paging
+     * @param list<PublicSequenceLiteResponseShape> $results
+     * @param ForwardPagingShape $paging
      */
     public static function with(
         array $results,
@@ -89,14 +84,7 @@ final class CollectionResponseWithTotalPublicSequenceLiteResponseForwardPaging i
     }
 
     /**
-     * @param list<PublicSequenceLiteResponse|array{
-     *   id: string,
-     *   createdAt: \DateTimeInterface,
-     *   name: string,
-     *   updatedAt: \DateTimeInterface,
-     *   userID: string,
-     *   folderID?: string|null,
-     * }> $results
+     * @param list<PublicSequenceLiteResponseShape> $results
      */
     public function withResults(array $results): self
     {
@@ -115,7 +103,7 @@ final class CollectionResponseWithTotalPublicSequenceLiteResponseForwardPaging i
     }
 
     /**
-     * @param ForwardPaging|array{next?: NextPage|null} $paging
+     * @param ForwardPagingShape $paging
      */
     public function withPaging(ForwardPaging|array $paging): self
     {

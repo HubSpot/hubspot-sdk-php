@@ -29,7 +29,7 @@ final class TranscriptsRawService implements TranscriptsRawContract
      *   engagementID: int,
      *   transcriptCreateUtterances: list<array{
      *     endTimeMillis: int,
-     *     speaker: array<mixed>|Speaker,
+     *     speaker: array<string,mixed>|Speaker,
      *     startTimeMillis: int,
      *     text: string,
      *     languageCode?: string,

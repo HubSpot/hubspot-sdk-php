@@ -10,8 +10,12 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type APIConnectionShape from \HubspotSDK\Automation\Workflows\APIConnection
+ *
  * @phpstan-type APIAbTestBranchActionShape = array{
- *   actionID: string, testBranches: list<APIConnection>, type: value-of<Type>
+ *   actionID: string,
+ *   testBranches: list<APIConnectionShape>,
+ *   type: Type|value-of<Type>,
  * }
  */
 final class APIAbTestBranchAction implements BaseModel
@@ -57,9 +61,7 @@ final class APIAbTestBranchAction implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<APIConnection|array{
-     *   edgeType: string, nextActionID: string
-     * }> $testBranches
+     * @param list<APIConnectionShape> $testBranches
      * @param Type|value-of<Type> $type
      */
     public static function with(
@@ -85,9 +87,7 @@ final class APIAbTestBranchAction implements BaseModel
     }
 
     /**
-     * @param list<APIConnection|array{
-     *   edgeType: string, nextActionID: string
-     * }> $testBranches
+     * @param list<APIConnectionShape> $testBranches
      */
     public function withTestBranches(array $testBranches): self
     {

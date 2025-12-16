@@ -10,18 +10,18 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicEmailEventFilter\FilterType;
 use HubspotSDK\PublicEmailEventFilter\Operator;
-use HubspotSDK\PublicNumOccurrencesRefineBy\Type;
-use HubspotSDK\PublicTimePointOperation\OperationType;
 
 /**
+ * @phpstan-import-type PruningRefineByShape from \HubspotSDK\PublicEmailEventFilter\PruningRefineBy
+ *
  * @phpstan-type PublicEmailEventFilterShape = array{
  *   appID: string,
  *   emailID: string,
- *   filterType: value-of<FilterType>,
+ *   filterType: FilterType|value-of<FilterType>,
  *   level: string,
- *   operator: value-of<Operator>,
+ *   operator: Operator|value-of<Operator>,
  *   clickURL?: string|null,
- *   pruningRefineBy?: null|PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation,
+ *   pruningRefineBy?: null|PruningRefineByShape|PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation,
  * }
  */
 final class PublicEmailEventFilter implements BaseModel
@@ -85,49 +85,7 @@ final class PublicEmailEventFilter implements BaseModel
      *
      * @param Operator|value-of<Operator> $operator
      * @param FilterType|value-of<FilterType> $filterType
-     * @param PublicNumOccurrencesRefineBy|array{
-     *   type: value-of<Type>, maxOccurrences?: int|null, minOccurrences?: int|null
-     * }|PublicSetOccurrencesRefineBy|array{
-     *   setType: string, type: value-of<PublicSetOccurrencesRefineBy\Type>
-     * }|PublicRelativeComparativeTimestampRefineBy|array{
-     *   comparison: string,
-     *   timeOffset: PublicTimeOffset,
-     *   type: value-of<PublicRelativeComparativeTimestampRefineBy\Type>,
-     * }|PublicRelativeRangedTimestampRefineBy|array{
-     *   lowerBoundOffset: PublicTimeOffset,
-     *   rangeType: string,
-     *   type: value-of<PublicRelativeRangedTimestampRefineBy\Type>,
-     *   upperBoundOffset: PublicTimeOffset,
-     * }|PublicAbsoluteComparativeTimestampRefineBy|array{
-     *   comparison: string,
-     *   timestamp: int,
-     *   type: value-of<PublicAbsoluteComparativeTimestampRefineBy\Type>,
-     * }|PublicAbsoluteRangedTimestampRefineBy|array{
-     *   lowerTimestamp: int,
-     *   rangeType: string,
-     *   type: value-of<PublicAbsoluteRangedTimestampRefineBy\Type>,
-     *   upperTimestamp: int,
-     * }|PublicAllHistoryRefineBy|array{
-     *   type: value-of<PublicAllHistoryRefineBy\Type>
-     * }|PublicTimePointOperation|array{
-     *   includeObjectsWithNoValueSet: bool,
-     *   operationType: value-of<OperationType>,
-     *   operator: string,
-     *   timePoint: PublicDatePoint|PublicIndexedTimePoint|PublicPropertyReferencedTime,
-     *   type: string,
-     *   endpointBehavior?: string|null,
-     *   propertyParser?: string|null,
-     * }|PublicRangedTimeOperation|array{
-     *   includeObjectsWithNoValueSet: bool,
-     *   lowerBoundTimePoint: PublicDatePoint|PublicIndexedTimePoint|PublicPropertyReferencedTime,
-     *   operationType: string,
-     *   operator: string,
-     *   type: value-of<PublicRangedTimeOperation\Type>,
-     *   upperBoundTimePoint: PublicDatePoint|PublicIndexedTimePoint|PublicPropertyReferencedTime,
-     *   lowerBoundEndpointBehavior?: string|null,
-     *   propertyParser?: string|null,
-     *   upperBoundEndpointBehavior?: string|null,
-     * } $pruningRefineBy
+     * @param PruningRefineByShape $pruningRefineBy
      */
     public static function with(
         string $appID,
@@ -207,49 +165,7 @@ final class PublicEmailEventFilter implements BaseModel
     }
 
     /**
-     * @param PublicNumOccurrencesRefineBy|array{
-     *   type: value-of<Type>, maxOccurrences?: int|null, minOccurrences?: int|null
-     * }|PublicSetOccurrencesRefineBy|array{
-     *   setType: string, type: value-of<PublicSetOccurrencesRefineBy\Type>
-     * }|PublicRelativeComparativeTimestampRefineBy|array{
-     *   comparison: string,
-     *   timeOffset: PublicTimeOffset,
-     *   type: value-of<PublicRelativeComparativeTimestampRefineBy\Type>,
-     * }|PublicRelativeRangedTimestampRefineBy|array{
-     *   lowerBoundOffset: PublicTimeOffset,
-     *   rangeType: string,
-     *   type: value-of<PublicRelativeRangedTimestampRefineBy\Type>,
-     *   upperBoundOffset: PublicTimeOffset,
-     * }|PublicAbsoluteComparativeTimestampRefineBy|array{
-     *   comparison: string,
-     *   timestamp: int,
-     *   type: value-of<PublicAbsoluteComparativeTimestampRefineBy\Type>,
-     * }|PublicAbsoluteRangedTimestampRefineBy|array{
-     *   lowerTimestamp: int,
-     *   rangeType: string,
-     *   type: value-of<PublicAbsoluteRangedTimestampRefineBy\Type>,
-     *   upperTimestamp: int,
-     * }|PublicAllHistoryRefineBy|array{
-     *   type: value-of<PublicAllHistoryRefineBy\Type>
-     * }|PublicTimePointOperation|array{
-     *   includeObjectsWithNoValueSet: bool,
-     *   operationType: value-of<OperationType>,
-     *   operator: string,
-     *   timePoint: PublicDatePoint|PublicIndexedTimePoint|PublicPropertyReferencedTime,
-     *   type: string,
-     *   endpointBehavior?: string|null,
-     *   propertyParser?: string|null,
-     * }|PublicRangedTimeOperation|array{
-     *   includeObjectsWithNoValueSet: bool,
-     *   lowerBoundTimePoint: PublicDatePoint|PublicIndexedTimePoint|PublicPropertyReferencedTime,
-     *   operationType: string,
-     *   operator: string,
-     *   type: value-of<PublicRangedTimeOperation\Type>,
-     *   upperBoundTimePoint: PublicDatePoint|PublicIndexedTimePoint|PublicPropertyReferencedTime,
-     *   lowerBoundEndpointBehavior?: string|null,
-     *   propertyParser?: string|null,
-     *   upperBoundEndpointBehavior?: string|null,
-     * } $pruningRefineBy
+     * @param PruningRefineByShape $pruningRefineBy
      */
     public function withPruningRefineBy(
         PublicNumOccurrencesRefineBy|array|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation $pruningRefineBy,

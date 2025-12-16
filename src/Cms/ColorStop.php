@@ -9,7 +9,9 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type ColorStopShape = array{color: RgbaColor}
+ * @phpstan-import-type RgbaColorShape from \HubspotSDK\Cms\RgbaColor
+ *
+ * @phpstan-type ColorStopShape = array{color: RgbaColor|RgbaColorShape}
  */
 final class ColorStop implements BaseModel
 {
@@ -46,7 +48,7 @@ final class ColorStop implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param RgbaColor|array{a: float, b: int, g: int, r: int} $color
+     * @param RgbaColorShape $color
      */
     public static function with(RgbaColor|array $color): self
     {
@@ -60,7 +62,7 @@ final class ColorStop implements BaseModel
     /**
      * A color defined by RGB values.
      *
-     * @param RgbaColor|array{a: float, b: int, g: int, r: int} $color
+     * @param RgbaColorShape $color
      */
     public function withColor(RgbaColor|array $color): self
     {

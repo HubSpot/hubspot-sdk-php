@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Services\Crm\Lists\MappingService::getIDMapping()
  *
- * @phpstan-type MappingGetIDMappingParamsShape = array{legacyListID?: string}
+ * @phpstan-type MappingGetIDMappingParamsShape = array{legacyListID?: string|null}
  */
 final class MappingGetIDMappingParams implements BaseModel
 {

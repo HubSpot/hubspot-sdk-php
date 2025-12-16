@@ -11,11 +11,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type HubDBTableRowV3Shape from \HubspotSDK\Cms\Hubdb\HubDBTableRowV3
+ *
  * @phpstan-type BatchResponseHubDBTableRowV3Shape = array{
  *   completedAt: \DateTimeInterface,
- *   results: list<HubDBTableRowV3>,
+ *   results: list<HubDBTableRowV3Shape>,
  *   startedAt: \DateTimeInterface,
- *   status: value-of<Status>,
+ *   status: Status|value-of<Status>,
  *   links?: array<string,string>|null,
  *   requestedAt?: \DateTimeInterface|null,
  * }
@@ -93,16 +95,7 @@ final class BatchResponseHubDBTableRowV3 implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<HubDBTableRowV3|array{
-     *   id: string,
-     *   childTableID: string,
-     *   createdAt: \DateTimeInterface,
-     *   name: string,
-     *   path: string,
-     *   publishedAt: \DateTimeInterface,
-     *   updatedAt: \DateTimeInterface,
-     *   values: array<string,mixed>,
-     * }> $results
+     * @param list<HubDBTableRowV3Shape> $results
      * @param Status|value-of<Status> $status
      * @param array<string,string> $links
      */
@@ -139,16 +132,7 @@ final class BatchResponseHubDBTableRowV3 implements BaseModel
     }
 
     /**
-     * @param list<HubDBTableRowV3|array{
-     *   id: string,
-     *   childTableID: string,
-     *   createdAt: \DateTimeInterface,
-     *   name: string,
-     *   path: string,
-     *   publishedAt: \DateTimeInterface,
-     *   updatedAt: \DateTimeInterface,
-     *   values: array<string,mixed>,
-     * }> $results
+     * @param list<HubDBTableRowV3Shape> $results
      */
     public function withResults(array $results): self
     {

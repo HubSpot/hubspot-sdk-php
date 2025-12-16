@@ -16,8 +16,8 @@ use HubspotSDK\Settings\Currencies\ExchangeRate\ToCurrencyCode;
  *   conversionRate: float,
  *   createdAt: \DateTimeInterface,
  *   effectiveAt: \DateTimeInterface,
- *   fromCurrencyCode: value-of<FromCurrencyCode>,
- *   toCurrencyCode: value-of<ToCurrencyCode>,
+ *   fromCurrencyCode: FromCurrencyCode|value-of<FromCurrencyCode>,
+ *   toCurrencyCode: ToCurrencyCode|value-of<ToCurrencyCode>,
  *   updatedAt: \DateTimeInterface,
  *   visibleInUi: bool,
  * }

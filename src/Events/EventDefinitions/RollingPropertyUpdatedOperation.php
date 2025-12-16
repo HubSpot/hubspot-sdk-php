@@ -16,9 +16,9 @@ use HubspotSDK\Events\EventDefinitions\RollingPropertyUpdatedOperation\PropertyT
  *   includeObjectsWithNoValueSet: bool,
  *   numberOfDays: int,
  *   operationType: string,
- *   operator: value-of<Operator>,
+ *   operator: Operator|value-of<Operator>,
  *   operatorName: string,
- *   propertyType: value-of<PropertyType>,
+ *   propertyType: PropertyType|value-of<PropertyType>,
  *   defaultValue?: string|null,
  * }
  */

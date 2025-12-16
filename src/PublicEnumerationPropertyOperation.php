@@ -12,7 +12,7 @@ use HubspotSDK\PublicEnumerationPropertyOperation\OperationType;
 /**
  * @phpstan-type PublicEnumerationPropertyOperationShape = array{
  *   includeObjectsWithNoValueSet: bool,
- *   operationType: value-of<OperationType>,
+ *   operationType: OperationType|value-of<OperationType>,
  *   operator: string,
  *   values: list<string>,
  * }

@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type IntegratorActorShape = array{
- *   id: string, name: string, type: value-of<Type>, avatar?: string|null
+ *   id: string, name: string, type: Type|value-of<Type>, avatar?: string|null
  * }
  */
 final class IntegratorActor implements BaseModel

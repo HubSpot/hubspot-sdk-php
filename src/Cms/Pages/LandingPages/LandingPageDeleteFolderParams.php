@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Services\Cms\Pages\LandingPagesService::deleteFolder()
  *
- * @phpstan-type LandingPageDeleteFolderParamsShape = array{archived?: bool}
+ * @phpstan-type LandingPageDeleteFolderParamsShape = array{archived?: bool|null}
  */
 final class LandingPageDeleteFolderParams implements BaseModel
 {

@@ -15,7 +15,9 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Cms\Hubdb\TablesService::getDraft()
  *
  * @phpstan-type TableGetDraftParamsShape = array{
- *   archived?: bool, includeForeignIDs?: bool, isGetLocalizedSchema?: bool
+ *   archived?: bool|null,
+ *   includeForeignIDs?: bool|null,
+ *   isGetLocalizedSchema?: bool|null,
  * }
  */
 final class TableGetDraftParams implements BaseModel

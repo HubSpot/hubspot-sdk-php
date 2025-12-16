@@ -19,8 +19,8 @@ use HubspotSDK\Marketing\Subscriptions\V4\Statuses\StatusBatchUnsubscribeAllPara
  * @phpstan-type StatusBatchUnsubscribeAllParamsShape = array{
  *   channel: Channel|value-of<Channel>,
  *   inputs: list<string>,
- *   businessUnitID?: int,
- *   verbose?: bool,
+ *   businessUnitID?: int|null,
+ *   verbose?: bool|null,
  * }
  */
 final class StatusBatchUnsubscribeAllParams implements BaseModel

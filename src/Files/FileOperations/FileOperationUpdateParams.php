@@ -16,13 +16,13 @@ use HubspotSDK\Files\FileOperations\FileOperationUpdateParams\Access;
  * @see HubspotSDK\Services\Files\FileOperationsService::update()
  *
  * @phpstan-type FileOperationUpdateParamsShape = array{
- *   access?: Access|value-of<Access>,
- *   clearExpires?: bool,
- *   expiresAt?: \DateTimeInterface,
- *   isUsableInContent?: bool,
- *   name?: string,
- *   parentFolderID?: string,
- *   parentFolderPath?: string,
+ *   access?: null|Access|value-of<Access>,
+ *   clearExpires?: bool|null,
+ *   expiresAt?: \DateTimeInterface|null,
+ *   isUsableInContent?: bool|null,
+ *   name?: string|null,
+ *   parentFolderID?: string|null,
+ *   parentFolderPath?: string|null,
  * }
  */
 final class FileOperationUpdateParams implements BaseModel

@@ -12,7 +12,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type APITimestampValueShape = array{
- *   timestampType: value-of<TimestampType>, type: value-of<Type>
+ *   timestampType: TimestampType|value-of<TimestampType>,
+ *   type: Type|value-of<Type>,
  * }
  */
 final class APITimestampValue implements BaseModel

@@ -4,23 +4,17 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Conversations\CustomChannels\Messages;
 
-use HubspotSDK\Conversations\ContactProfile;
 use HubspotSDK\Conversations\CustomChannels\ChannelIntegrationParticipant;
 use HubspotSDK\Conversations\CustomChannels\ContactAttachment;
 use HubspotSDK\Conversations\CustomChannels\FileAttachment;
-use HubspotSDK\Conversations\CustomChannels\FileAttachment\Type;
 use HubspotSDK\Conversations\CustomChannels\LocationAttachment;
 use HubspotSDK\Conversations\CustomChannels\MessageHeaderAttachment;
 use HubspotSDK\Conversations\CustomChannels\Messages\MessageCreateParams\Attachment;
 use HubspotSDK\Conversations\CustomChannels\Messages\MessageCreateParams\MessageDirection;
-use HubspotSDK\Conversations\CustomChannels\PreResolvedContact;
 use HubspotSDK\Conversations\CustomChannels\PreResolvedContacts;
 use HubspotSDK\Conversations\CustomChannels\QuickRepliesAttachment;
 use HubspotSDK\Conversations\CustomChannels\SocialMetadataIntegrationAttachment;
 use HubspotSDK\Conversations\CustomChannels\UnsupportedContentAttachment;
-use HubspotSDK\Conversations\PublicDeliveryIdentifier;
-use HubspotSDK\Conversations\QuickReply;
-use HubspotSDK\Conversations\SocialMetadata;
 use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
@@ -32,49 +26,23 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Services\Conversations\CustomChannels\MessagesService::create()
  *
+ * @phpstan-import-type AttachmentShape from \HubspotSDK\Conversations\CustomChannels\Messages\MessageCreateParams\Attachment
+ * @phpstan-import-type ChannelIntegrationParticipantShape from \HubspotSDK\Conversations\CustomChannels\ChannelIntegrationParticipant
+ * @phpstan-import-type PreResolvedContactsShape from \HubspotSDK\Conversations\CustomChannels\PreResolvedContacts
+ *
  * @phpstan-type MessageCreateParamsShape = array{
- *   attachments: list<FileAttachment|array{
- *     fileID: string, type: value-of<Type>, fileUsageType?: string|null
- *   }|LocationAttachment|array{
- *     latitude: float,
- *     longitude: float,
- *     type: value-of<\HubspotSDK\Conversations\CustomChannels\LocationAttachment\Type>,
- *     address?: string|null,
- *     name?: string|null,
- *     url?: string|null,
- *   }|ContactAttachment|array{
- *     contactProfile: ContactProfile,
- *     type: value-of<\HubspotSDK\Conversations\CustomChannels\ContactAttachment\Type>,
- *   }|UnsupportedContentAttachment|array{
- *     type: value-of<\HubspotSDK\Conversations\CustomChannels\UnsupportedContentAttachment\Type>,
- *   }|MessageHeaderAttachment|array{
- *     type: value-of<\HubspotSDK\Conversations\CustomChannels\MessageHeaderAttachment\Type>,
- *     fileID?: int|null,
- *     text?: string|null,
- *   }|QuickRepliesAttachment|array{
- *     quickReplies: list<QuickReply>,
- *     type: value-of<\HubspotSDK\Conversations\CustomChannels\QuickRepliesAttachment\Type>,
- *   }|SocialMetadataIntegrationAttachment|array{
- *     socialMetadata: SocialMetadata,
- *     type: value-of<\HubspotSDK\Conversations\CustomChannels\SocialMetadataIntegrationAttachment\Type>,
- *   }>,
+ *   attachments: list<AttachmentShape>,
  *   channelAccountID: string,
  *   messageDirection: MessageDirection|value-of<MessageDirection>,
- *   recipients: list<ChannelIntegrationParticipant|array{
- *     deliveryIdentifier: PublicDeliveryIdentifier, name?: string|null
- *   }>,
- *   senders: list<ChannelIntegrationParticipant|array{
- *     deliveryIdentifier: PublicDeliveryIdentifier, name?: string|null
- *   }>,
+ *   recipients: list<ChannelIntegrationParticipantShape>,
+ *   senders: list<ChannelIntegrationParticipantShape>,
  *   text: string,
  *   timestamp: \DateTimeInterface,
- *   inReplyToID?: string,
- *   integrationIdempotencyID?: string,
- *   integrationThreadID?: string,
- *   preResolvedContacts?: PreResolvedContacts|array{
- *     contacts: list<PreResolvedContact>
- *   },
- *   richText?: string,
+ *   inReplyToID?: string|null,
+ *   integrationIdempotencyID?: string|null,
+ *   integrationThreadID?: string|null,
+ *   preResolvedContacts?: PreResolvedContactsShape|null,
+ *   richText?: string|null,
  * }
  */
 final class MessageCreateParams implements BaseModel
@@ -164,41 +132,11 @@ final class MessageCreateParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<FileAttachment|array{
-     *   fileID: string, type: value-of<Type>, fileUsageType?: string|null
-     * }|LocationAttachment|array{
-     *   latitude: float,
-     *   longitude: float,
-     *   type: value-of<LocationAttachment\Type>,
-     *   address?: string|null,
-     *   name?: string|null,
-     *   url?: string|null,
-     * }|ContactAttachment|array{
-     *   contactProfile: ContactProfile,
-     *   type: value-of<ContactAttachment\Type>,
-     * }|UnsupportedContentAttachment|array{
-     *   type: value-of<UnsupportedContentAttachment\Type>,
-     * }|MessageHeaderAttachment|array{
-     *   type: value-of<MessageHeaderAttachment\Type>,
-     *   fileID?: int|null,
-     *   text?: string|null,
-     * }|QuickRepliesAttachment|array{
-     *   quickReplies: list<QuickReply>,
-     *   type: value-of<QuickRepliesAttachment\Type>,
-     * }|SocialMetadataIntegrationAttachment|array{
-     *   socialMetadata: SocialMetadata,
-     *   type: value-of<SocialMetadataIntegrationAttachment\Type>,
-     * }> $attachments
+     * @param list<AttachmentShape> $attachments
      * @param MessageDirection|value-of<MessageDirection> $messageDirection
-     * @param list<ChannelIntegrationParticipant|array{
-     *   deliveryIdentifier: PublicDeliveryIdentifier, name?: string|null
-     * }> $recipients
-     * @param list<ChannelIntegrationParticipant|array{
-     *   deliveryIdentifier: PublicDeliveryIdentifier, name?: string|null
-     * }> $senders
-     * @param PreResolvedContacts|array{
-     *   contacts: list<PreResolvedContact>
-     * } $preResolvedContacts
+     * @param list<ChannelIntegrationParticipantShape> $recipients
+     * @param list<ChannelIntegrationParticipantShape> $senders
+     * @param PreResolvedContactsShape $preResolvedContacts
      */
     public static function with(
         array $attachments,
@@ -234,31 +172,7 @@ final class MessageCreateParams implements BaseModel
     }
 
     /**
-     * @param list<FileAttachment|array{
-     *   fileID: string, type: value-of<Type>, fileUsageType?: string|null
-     * }|LocationAttachment|array{
-     *   latitude: float,
-     *   longitude: float,
-     *   type: value-of<LocationAttachment\Type>,
-     *   address?: string|null,
-     *   name?: string|null,
-     *   url?: string|null,
-     * }|ContactAttachment|array{
-     *   contactProfile: ContactProfile,
-     *   type: value-of<ContactAttachment\Type>,
-     * }|UnsupportedContentAttachment|array{
-     *   type: value-of<UnsupportedContentAttachment\Type>,
-     * }|MessageHeaderAttachment|array{
-     *   type: value-of<MessageHeaderAttachment\Type>,
-     *   fileID?: int|null,
-     *   text?: string|null,
-     * }|QuickRepliesAttachment|array{
-     *   quickReplies: list<QuickReply>,
-     *   type: value-of<QuickRepliesAttachment\Type>,
-     * }|SocialMetadataIntegrationAttachment|array{
-     *   socialMetadata: SocialMetadata,
-     *   type: value-of<SocialMetadataIntegrationAttachment\Type>,
-     * }> $attachments
+     * @param list<AttachmentShape> $attachments
      */
     public function withAttachments(array $attachments): self
     {
@@ -289,9 +203,7 @@ final class MessageCreateParams implements BaseModel
     }
 
     /**
-     * @param list<ChannelIntegrationParticipant|array{
-     *   deliveryIdentifier: PublicDeliveryIdentifier, name?: string|null
-     * }> $recipients
+     * @param list<ChannelIntegrationParticipantShape> $recipients
      */
     public function withRecipients(array $recipients): self
     {
@@ -302,9 +214,7 @@ final class MessageCreateParams implements BaseModel
     }
 
     /**
-     * @param list<ChannelIntegrationParticipant|array{
-     *   deliveryIdentifier: PublicDeliveryIdentifier, name?: string|null
-     * }> $senders
+     * @param list<ChannelIntegrationParticipantShape> $senders
      */
     public function withSenders(array $senders): self
     {
@@ -356,9 +266,7 @@ final class MessageCreateParams implements BaseModel
     }
 
     /**
-     * @param PreResolvedContacts|array{
-     *   contacts: list<PreResolvedContact>
-     * } $preResolvedContacts
+     * @param PreResolvedContactsShape $preResolvedContacts
      */
     public function withPreResolvedContacts(
         PreResolvedContacts|array $preResolvedContacts

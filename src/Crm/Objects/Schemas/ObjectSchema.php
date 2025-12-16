@@ -9,26 +9,22 @@ use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Events\EventDefinitions\AssociationDefinition;
-use HubspotSDK\Events\EventDefinitions\AssociationDefinition\Cardinality;
-use HubspotSDK\Events\EventDefinitions\AssociationDefinition\Category;
-use HubspotSDK\Events\EventDefinitions\AssociationDefinition\FromObjectType;
-use HubspotSDK\Events\EventDefinitions\AssociationDefinition\InverseCardinality;
-use HubspotSDK\Events\EventDefinitions\AssociationDefinition\ToObjectType;
 use HubspotSDK\ObjectTypeDefinitionLabels;
-use HubspotSDK\Option;
 use HubspotSDK\Property;
-use HubspotSDK\Property\DataSensitivity;
-use HubspotSDK\PropertyModificationMetadata;
 
 /**
  * Defines an object schema, including its properties and associations.
  *
+ * @phpstan-import-type AssociationDefinitionShape from \HubspotSDK\Events\EventDefinitions\AssociationDefinition
+ * @phpstan-import-type ObjectTypeDefinitionLabelsShape from \HubspotSDK\ObjectTypeDefinitionLabels
+ * @phpstan-import-type PropertyShape from \HubspotSDK\Property
+ *
  * @phpstan-type ObjectSchemaShape = array{
  *   id: string,
- *   associations: list<AssociationDefinition>,
- *   labels: ObjectTypeDefinitionLabels,
+ *   associations: list<AssociationDefinitionShape>,
+ *   labels: ObjectTypeDefinitionLabels|ObjectTypeDefinitionLabelsShape,
  *   name: string,
- *   properties: list<Property>,
+ *   properties: list<PropertyShape>,
  *   requiredProperties: list<string>,
  *   archived?: bool|null,
  *   createdAt?: \DateTimeInterface|null,
@@ -179,65 +175,9 @@ final class ObjectSchema implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<AssociationDefinition|array{
-     *   id: int,
-     *   allowsCustomLabels: bool,
-     *   cardinality: value-of<Cardinality>,
-     *   category: value-of<Category>,
-     *   fromObjectTypeID: string,
-     *   hasAllAssociatedObjects: bool,
-     *   hasCascadingDeletes: bool,
-     *   hasUserEnforcedMaxFromObjectIDs: bool,
-     *   hasUserEnforcedMaxToObjectIDs: bool,
-     *   hidden: bool,
-     *   inverseAllowsCustomLabels: bool,
-     *   inverseCardinality: value-of<InverseCardinality>,
-     *   inverseHasAllAssociatedObjects: bool,
-     *   inverseID: int,
-     *   inverseName: string,
-     *   isInversePrimary: bool,
-     *   isPrimary: bool,
-     *   maxFromObjectIDs: int,
-     *   maxToObjectIDs: int,
-     *   name: string,
-     *   portalUniqueIdentifier: string,
-     *   toObjectTypeID: string,
-     *   fromObjectType?: value-of<FromObjectType>|null,
-     *   inverseLabel?: string|null,
-     *   label?: string|null,
-     *   toObjectType?: value-of<ToObjectType>|null,
-     * }> $associations
-     * @param ObjectTypeDefinitionLabels|array{
-     *   plural?: string|null, singular?: string|null
-     * } $labels
-     * @param list<Property|array{
-     *   description: string,
-     *   fieldType: string,
-     *   groupName: string,
-     *   label: string,
-     *   name: string,
-     *   options: list<Option>,
-     *   type: string,
-     *   archived?: bool|null,
-     *   archivedAt?: \DateTimeInterface|null,
-     *   calculated?: bool|null,
-     *   calculationFormula?: string|null,
-     *   createdAt?: \DateTimeInterface|null,
-     *   createdUserID?: string|null,
-     *   dataSensitivity?: value-of<DataSensitivity>|null,
-     *   displayOrder?: int|null,
-     *   externalOptions?: bool|null,
-     *   formField?: bool|null,
-     *   hasUniqueValue?: bool|null,
-     *   hidden?: bool|null,
-     *   hubspotDefined?: bool|null,
-     *   modificationMetadata?: PropertyModificationMetadata|null,
-     *   referencedObjectType?: string|null,
-     *   sensitiveDataCategories?: list<string>|null,
-     *   showCurrencySymbol?: bool|null,
-     *   updatedAt?: \DateTimeInterface|null,
-     *   updatedUserID?: string|null,
-     * }> $properties
+     * @param list<AssociationDefinitionShape> $associations
+     * @param ObjectTypeDefinitionLabelsShape $labels
+     * @param list<PropertyShape> $properties
      * @param list<string> $requiredProperties
      * @param list<string> $searchableProperties
      * @param list<string> $secondaryDisplayProperties
@@ -299,34 +239,7 @@ final class ObjectSchema implements BaseModel
     /**
      * Associations defined for a given object type.
      *
-     * @param list<AssociationDefinition|array{
-     *   id: int,
-     *   allowsCustomLabels: bool,
-     *   cardinality: value-of<Cardinality>,
-     *   category: value-of<Category>,
-     *   fromObjectTypeID: string,
-     *   hasAllAssociatedObjects: bool,
-     *   hasCascadingDeletes: bool,
-     *   hasUserEnforcedMaxFromObjectIDs: bool,
-     *   hasUserEnforcedMaxToObjectIDs: bool,
-     *   hidden: bool,
-     *   inverseAllowsCustomLabels: bool,
-     *   inverseCardinality: value-of<InverseCardinality>,
-     *   inverseHasAllAssociatedObjects: bool,
-     *   inverseID: int,
-     *   inverseName: string,
-     *   isInversePrimary: bool,
-     *   isPrimary: bool,
-     *   maxFromObjectIDs: int,
-     *   maxToObjectIDs: int,
-     *   name: string,
-     *   portalUniqueIdentifier: string,
-     *   toObjectTypeID: string,
-     *   fromObjectType?: value-of<FromObjectType>|null,
-     *   inverseLabel?: string|null,
-     *   label?: string|null,
-     *   toObjectType?: value-of<ToObjectType>|null,
-     * }> $associations
+     * @param list<AssociationDefinitionShape> $associations
      */
     public function withAssociations(array $associations): self
     {
@@ -337,9 +250,7 @@ final class ObjectSchema implements BaseModel
     }
 
     /**
-     * @param ObjectTypeDefinitionLabels|array{
-     *   plural?: string|null, singular?: string|null
-     * } $labels
+     * @param ObjectTypeDefinitionLabelsShape $labels
      */
     public function withLabels(ObjectTypeDefinitionLabels|array $labels): self
     {
@@ -363,34 +274,7 @@ final class ObjectSchema implements BaseModel
     /**
      * Properties defined for this object type.
      *
-     * @param list<Property|array{
-     *   description: string,
-     *   fieldType: string,
-     *   groupName: string,
-     *   label: string,
-     *   name: string,
-     *   options: list<Option>,
-     *   type: string,
-     *   archived?: bool|null,
-     *   archivedAt?: \DateTimeInterface|null,
-     *   calculated?: bool|null,
-     *   calculationFormula?: string|null,
-     *   createdAt?: \DateTimeInterface|null,
-     *   createdUserID?: string|null,
-     *   dataSensitivity?: value-of<DataSensitivity>|null,
-     *   displayOrder?: int|null,
-     *   externalOptions?: bool|null,
-     *   formField?: bool|null,
-     *   hasUniqueValue?: bool|null,
-     *   hidden?: bool|null,
-     *   hubspotDefined?: bool|null,
-     *   modificationMetadata?: PropertyModificationMetadata|null,
-     *   referencedObjectType?: string|null,
-     *   sensitiveDataCategories?: list<string>|null,
-     *   showCurrencySymbol?: bool|null,
-     *   updatedAt?: \DateTimeInterface|null,
-     *   updatedUserID?: string|null,
-     * }> $properties
+     * @param list<PropertyShape> $properties
      */
     public function withProperties(array $properties): self
     {

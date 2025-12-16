@@ -19,7 +19,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Crm\Lists\MembershipsService::getPageOrderedByAddedToListDate()
  *
  * @phpstan-type MembershipGetPageOrderedByAddedToListDateParamsShape = array{
- *   after?: string, before?: string, limit?: int
+ *   after?: string|null, before?: string|null, limit?: int|null
  * }
  */
 final class MembershipGetPageOrderedByAddedToListDateParams implements BaseModel

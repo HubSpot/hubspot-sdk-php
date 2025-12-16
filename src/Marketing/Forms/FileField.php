@@ -16,7 +16,7 @@ use HubspotSDK\Marketing\Forms\FileField\FieldType;
  * @phpstan-type FileFieldShape = array{
  *   allowMultipleFiles: bool,
  *   dependentFields: list<mixed>,
- *   fieldType: value-of<FieldType>,
+ *   fieldType: FieldType|value-of<FieldType>,
  *   hidden: bool,
  *   label: string,
  *   name: string,

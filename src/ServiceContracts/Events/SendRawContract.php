@@ -15,7 +15,7 @@ interface SendRawContract
     /**
      * @api
      *
-     * @param array<mixed>|SendSendParams $params
+     * @param array<string,mixed>|SendSendParams $params
      *
      * @return BaseResponse<mixed>
      *
@@ -29,7 +29,7 @@ interface SendRawContract
     /**
      * @api
      *
-     * @param array<mixed>|SendSendBatchParams $params
+     * @param array<string,mixed>|SendSendBatchParams $params
      *
      * @return BaseResponse<mixed>
      *

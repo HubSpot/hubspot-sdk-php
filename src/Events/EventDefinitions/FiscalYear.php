@@ -14,7 +14,7 @@ use HubspotSDK\Events\EventDefinitions\FiscalYear\ReferenceType;
  * @phpstan-type FiscalYearShape = array{
  *   day: int,
  *   month: int,
- *   referenceType: value-of<ReferenceType>,
+ *   referenceType: ReferenceType|value-of<ReferenceType>,
  *   hour?: int|null,
  *   millisecond?: int|null,
  *   minute?: int|null,

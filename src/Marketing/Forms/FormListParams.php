@@ -16,10 +16,10 @@ use HubspotSDK\Marketing\Forms\FormListParams\FormType;
  * @see HubspotSDK\Services\Marketing\FormsService::list()
  *
  * @phpstan-type FormListParamsShape = array{
- *   after?: string,
- *   archived?: bool,
- *   formTypes?: list<FormType|value-of<FormType>>,
- *   limit?: int,
+ *   after?: string|null,
+ *   archived?: bool|null,
+ *   formTypes?: list<FormType|value-of<FormType>>|null,
+ *   limit?: int|null,
  * }
  */
 final class FormListParams implements BaseModel

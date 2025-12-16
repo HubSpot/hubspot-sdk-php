@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type FileAttachmentShape = array{
- *   fileID: string, type: value-of<Type>, fileUsageType?: string|null
+ *   fileID: string, type: Type|value-of<Type>, fileUsageType?: string|null
  * }
  */
 final class FileAttachment implements BaseModel

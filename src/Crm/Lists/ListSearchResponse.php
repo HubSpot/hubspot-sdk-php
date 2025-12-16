@@ -11,9 +11,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * The response object with the list search hits and additional information regarding pagination.
  *
+ * @phpstan-import-type PublicObjectListSearchResultShape from \HubspotSDK\Crm\Lists\PublicObjectListSearchResult
+ *
  * @phpstan-type ListSearchResponseShape = array{
  *   hasMore: bool,
- *   lists: list<PublicObjectListSearchResult>,
+ *   lists: list<PublicObjectListSearchResultShape>,
  *   offset: int,
  *   total: int,
  * }
@@ -77,21 +79,7 @@ final class ListSearchResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicObjectListSearchResult|array{
-     *   additionalProperties: array<string,string>,
-     *   listID: string,
-     *   listVersion: int,
-     *   name: string,
-     *   objectTypeID: string,
-     *   processingStatus: string,
-     *   processingType: string,
-     *   createdAt?: \DateTimeInterface|null,
-     *   createdByID?: string|null,
-     *   deletedAt?: \DateTimeInterface|null,
-     *   filtersUpdatedAt?: \DateTimeInterface|null,
-     *   updatedAt?: \DateTimeInterface|null,
-     *   updatedByID?: string|null,
-     * }> $lists
+     * @param list<PublicObjectListSearchResultShape> $lists
      */
     public static function with(
         bool $hasMore,
@@ -123,21 +111,7 @@ final class ListSearchResponse implements BaseModel
     /**
      * The lists that matched the search criteria.
      *
-     * @param list<PublicObjectListSearchResult|array{
-     *   additionalProperties: array<string,string>,
-     *   listID: string,
-     *   listVersion: int,
-     *   name: string,
-     *   objectTypeID: string,
-     *   processingStatus: string,
-     *   processingType: string,
-     *   createdAt?: \DateTimeInterface|null,
-     *   createdByID?: string|null,
-     *   deletedAt?: \DateTimeInterface|null,
-     *   filtersUpdatedAt?: \DateTimeInterface|null,
-     *   updatedAt?: \DateTimeInterface|null,
-     *   updatedByID?: string|null,
-     * }> $lists
+     * @param list<PublicObjectListSearchResultShape> $lists
      */
     public function withLists(array $lists): self
     {

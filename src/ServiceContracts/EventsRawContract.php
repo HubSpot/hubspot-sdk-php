@@ -17,7 +17,7 @@ interface EventsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|EventListParams $params
+     * @param array<string,mixed>|EventListParams $params
      *
      * @return BaseResponse<Page<ExternalUnifiedEvent>>
      *

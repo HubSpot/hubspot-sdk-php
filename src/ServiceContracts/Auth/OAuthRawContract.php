@@ -17,7 +17,7 @@ interface OAuthRawContract
     /**
      * @api
      *
-     * @param array<mixed>|OAuthCreateAccessTokenParams $params
+     * @param array<string,mixed>|OAuthCreateAccessTokenParams $params
      *
      * @return BaseResponse<TokenResponseIf>
      *

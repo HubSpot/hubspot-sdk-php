@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Cms\Hubdb\RowsService::getDraft()
  *
  * @phpstan-type RowGetDraftParamsShape = array{
- *   tableIDOrName: string, archived?: bool
+ *   tableIDOrName: string, archived?: bool|null
  * }
  */
 final class RowGetDraftParams implements BaseModel

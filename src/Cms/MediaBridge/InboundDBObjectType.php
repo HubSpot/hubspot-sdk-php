@@ -11,6 +11,8 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type ScopeMappingShape from \HubspotSDK\Cms\MediaBridge\ScopeMapping
+ *
  * @phpstan-type InboundDBObjectTypeShape = array{
  *   id: int,
  *   allowsSensitiveProperties: bool,
@@ -25,7 +27,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   hasPipelines: bool,
  *   indexedForFiltersAndReports: bool,
  *   lastModifiedPropertyName: string,
- *   metaType: value-of<MetaType>,
+ *   metaType: MetaType|value-of<MetaType>,
  *   metaTypeID: int,
  *   name: string,
  *   objectTypeID: string,
@@ -34,7 +36,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   pipelineStagePropertyName: string,
  *   requiredProperties: list<string>,
  *   restorable: bool,
- *   scopeMappings: list<ScopeMapping>,
+ *   scopeMappings: list<ScopeMappingShape>,
  *   secondaryDisplayLabelPropertyNames: list<string>,
  *   accessScopeName?: string|null,
  *   createdAt?: int|null,
@@ -256,9 +258,7 @@ final class InboundDBObjectType implements BaseModel
      * @param list<string> $defaultSearchPropertyNames
      * @param MetaType|value-of<MetaType> $metaType
      * @param list<string> $requiredProperties
-     * @param list<ScopeMapping|array{
-     *   accessLevel: string, requestAction: string, scopeName: string
-     * }> $scopeMappings
+     * @param list<ScopeMappingShape> $scopeMappings
      * @param list<string> $secondaryDisplayLabelPropertyNames
      */
     public static function with(
@@ -540,9 +540,7 @@ final class InboundDBObjectType implements BaseModel
     }
 
     /**
-     * @param list<ScopeMapping|array{
-     *   accessLevel: string, requestAction: string, scopeName: string
-     * }> $scopeMappings
+     * @param list<ScopeMappingShape> $scopeMappings
      */
     public function withScopeMappings(array $scopeMappings): self
     {

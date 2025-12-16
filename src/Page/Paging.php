@@ -10,7 +10,9 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Page\Paging\Next;
 
 /**
- * @phpstan-type PagingShape = array{next?: Next|null}
+ * @phpstan-import-type NextShape from \HubspotSDK\Page\Paging\Next
+ *
+ * @phpstan-type PagingShape = array{next?: null|Next|NextShape}
  */
 final class Paging implements BaseModel
 {
@@ -30,7 +32,7 @@ final class Paging implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param Next|array{after?: string|null} $next
+     * @param NextShape $next
      */
     public static function with(Next|array|null $next = null): self
     {
@@ -42,7 +44,7 @@ final class Paging implements BaseModel
     }
 
     /**
-     * @param Next|array{after?: string|null} $next
+     * @param NextShape $next
      */
     public function withNext(Next|array $next): self
     {

@@ -23,7 +23,7 @@ interface ContractsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|ContractCreateParams $params
+     * @param array<string,mixed>|ContractCreateParams $params
      *
      * @return BaseResponse<CreatedResponseSimplePublicObject>
      *
@@ -38,7 +38,7 @@ interface ContractsRawContract
      * @api
      *
      * @param string $contractID Path param:
-     * @param array<mixed>|ContractUpdateParams $params
+     * @param array<string,mixed>|ContractUpdateParams $params
      *
      * @return BaseResponse<SimplePublicObject>
      *
@@ -53,7 +53,7 @@ interface ContractsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|ContractListParams $params
+     * @param array<string,mixed>|ContractListParams $params
      *
      * @return BaseResponse<Page<SimplePublicObjectWithAssociations>>
      *
@@ -79,7 +79,7 @@ interface ContractsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|ContractGetParams $params
+     * @param array<string,mixed>|ContractGetParams $params
      *
      * @return BaseResponse<SimplePublicObjectWithAssociations>
      *
@@ -94,7 +94,7 @@ interface ContractsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|ContractSearchParams $params
+     * @param array<string,mixed>|ContractSearchParams $params
      *
      * @return BaseResponse<CollectionResponseWithTotalSimplePublicObject>
      *

@@ -14,12 +14,14 @@ use HubspotSDK\Crm\SimplePublicObjectID;
 /**
  * @see HubspotSDK\Services\Crm\Objects\PartnerClients\BatchService::batchGet()
  *
+ * @phpstan-import-type SimplePublicObjectIDShape from \HubspotSDK\Crm\SimplePublicObjectID
+ *
  * @phpstan-type BatchBatchGetParamsShape = array{
- *   inputs: list<SimplePublicObjectID|array{id: string}>,
+ *   inputs: list<SimplePublicObjectIDShape>,
  *   properties: list<string>,
  *   propertiesWithHistory: list<string>,
- *   archived?: bool,
- *   idProperty?: string,
+ *   archived?: bool|null,
+ *   idProperty?: string|null,
  * }
  */
 final class BatchBatchGetParams implements BaseModel
@@ -86,7 +88,7 @@ final class BatchBatchGetParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<SimplePublicObjectID|array{id: string}> $inputs
+     * @param list<SimplePublicObjectIDShape> $inputs
      * @param list<string> $properties
      * @param list<string> $propertiesWithHistory
      */
@@ -110,7 +112,7 @@ final class BatchBatchGetParams implements BaseModel
     }
 
     /**
-     * @param list<SimplePublicObjectID|array{id: string}> $inputs
+     * @param list<SimplePublicObjectIDShape> $inputs
      */
     public function withInputs(array $inputs): self
     {

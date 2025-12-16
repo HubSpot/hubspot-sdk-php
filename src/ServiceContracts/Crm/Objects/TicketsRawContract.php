@@ -24,7 +24,7 @@ interface TicketsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|TicketCreateParams $params
+     * @param array<string,mixed>|TicketCreateParams $params
      *
      * @return BaseResponse<CreatedResponseSimplePublicObject>
      *
@@ -39,7 +39,7 @@ interface TicketsRawContract
      * @api
      *
      * @param string $ticketID Path param:
-     * @param array<mixed>|TicketUpdateParams $params
+     * @param array<string,mixed>|TicketUpdateParams $params
      *
      * @return BaseResponse<SimplePublicObject>
      *
@@ -54,7 +54,7 @@ interface TicketsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|TicketListParams $params
+     * @param array<string,mixed>|TicketListParams $params
      *
      * @return BaseResponse<Page<SimplePublicObjectWithAssociations>>
      *
@@ -80,7 +80,7 @@ interface TicketsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|TicketGetParams $params
+     * @param array<string,mixed>|TicketGetParams $params
      *
      * @return BaseResponse<SimplePublicObjectWithAssociations>
      *
@@ -95,7 +95,7 @@ interface TicketsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|TicketMergeParams $params
+     * @param array<string,mixed>|TicketMergeParams $params
      *
      * @return BaseResponse<SimplePublicObject>
      *
@@ -109,7 +109,7 @@ interface TicketsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|TicketSearchParams $params
+     * @param array<string,mixed>|TicketSearchParams $params
      *
      * @return BaseResponse<CollectionResponseWithTotalSimplePublicObject>
      *

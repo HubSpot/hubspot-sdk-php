@@ -24,7 +24,7 @@ interface StagesRawContract
      * @api
      *
      * @param string $pipelineID path param: The unique identifier of the pipeline to which the stage will be added
-     * @param array<mixed>|StageCreateParams $params
+     * @param array<string,mixed>|StageCreateParams $params
      *
      * @return BaseResponse<PipelineStage>
      *
@@ -40,7 +40,7 @@ interface StagesRawContract
      * @api
      *
      * @param string $stageID path param: The unique identifier of the stage to be updated in the pipeline
-     * @param array<mixed>|StageUpdateParams $params
+     * @param array<string,mixed>|StageUpdateParams $params
      *
      * @return BaseResponse<PipelineStage>
      *
@@ -56,7 +56,7 @@ interface StagesRawContract
      * @api
      *
      * @param string $pipelineID the unique identifier of the pipeline whose stages are being retrieved
-     * @param array<mixed>|StageListParams $params
+     * @param array<string,mixed>|StageListParams $params
      *
      * @return BaseResponse<CollectionResponsePipelineStageNoPaging>
      *
@@ -72,7 +72,7 @@ interface StagesRawContract
      * @api
      *
      * @param string $stageID the unique identifier of the stage to be deleted from the pipeline
-     * @param array<mixed>|StageDeleteParams $params
+     * @param array<string,mixed>|StageDeleteParams $params
      *
      * @return BaseResponse<mixed>
      *
@@ -88,7 +88,7 @@ interface StagesRawContract
      * @api
      *
      * @param string $stageID the unique identifier of the stage to be retrieved from the pipeline
-     * @param array<mixed>|StageGetParams $params
+     * @param array<string,mixed>|StageGetParams $params
      *
      * @return BaseResponse<PipelineStage>
      *
@@ -104,7 +104,7 @@ interface StagesRawContract
      * @api
      *
      * @param string $stageID the unique identifier for the pipeline stage being audited
-     * @param array<mixed>|StageGetAuditParams $params
+     * @param array<string,mixed>|StageGetAuditParams $params
      *
      * @return BaseResponse<CollectionResponsePublicAuditInfoNoPaging>
      *
@@ -120,7 +120,7 @@ interface StagesRawContract
      * @api
      *
      * @param string $stageID path param: The unique identifier of the stage to be replaced in the pipeline
-     * @param array<mixed>|StageReplaceParams $params
+     * @param array<string,mixed>|StageReplaceParams $params
      *
      * @return BaseResponse<PipelineStage>
      *

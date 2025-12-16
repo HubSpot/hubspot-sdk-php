@@ -8,17 +8,19 @@ use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\ErrorDetail;
 use HubspotSDK\Marketing\Subscriptions\V4\BatchResponsePublicBulkOptOutFromAllResponse\Status;
 use HubspotSDK\StandardError;
 
 /**
+ * @phpstan-import-type PublicBulkOptOutFromAllResponseShape from \HubspotSDK\Marketing\Subscriptions\V4\PublicBulkOptOutFromAllResponse
+ * @phpstan-import-type StandardErrorShape from \HubspotSDK\StandardError
+ *
  * @phpstan-type BatchResponsePublicBulkOptOutFromAllResponseShape = array{
  *   completedAt: \DateTimeInterface,
- *   results: list<PublicBulkOptOutFromAllResponse>,
+ *   results: list<PublicBulkOptOutFromAllResponseShape>,
  *   startedAt: \DateTimeInterface,
- *   status: value-of<Status>,
- *   errors?: list<StandardError>|null,
+ *   status: Status|value-of<Status>,
+ *   errors?: list<StandardErrorShape>|null,
  *   links?: array<string,string>|null,
  *   numErrors?: int|null,
  *   requestedAt?: \DateTimeInterface|null,
@@ -115,20 +117,9 @@ final class BatchResponsePublicBulkOptOutFromAllResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicBulkOptOutFromAllResponse|array{
-     *   subscriberIDString: string, statuses?: list<PublicStatus>|null
-     * }> $results
+     * @param list<PublicBulkOptOutFromAllResponseShape> $results
      * @param Status|value-of<Status> $status
-     * @param list<StandardError|array{
-     *   category: string,
-     *   context: array<string,list<string>>,
-     *   errors: list<ErrorDetail>,
-     *   links: array<string,string>,
-     *   message: string,
-     *   status: string,
-     *   id?: string|null,
-     *   subCategory?: mixed,
-     * }> $errors
+     * @param list<StandardErrorShape> $errors
      * @param array<string,string> $links
      */
     public static function with(
@@ -170,9 +161,7 @@ final class BatchResponsePublicBulkOptOutFromAllResponse implements BaseModel
     /**
      * An array containing the results of the bulk opt-out from all communications operation.
      *
-     * @param list<PublicBulkOptOutFromAllResponse|array{
-     *   subscriberIDString: string, statuses?: list<PublicStatus>|null
-     * }> $results
+     * @param list<PublicBulkOptOutFromAllResponseShape> $results
      */
     public function withResults(array $results): self
     {
@@ -209,16 +198,7 @@ final class BatchResponsePublicBulkOptOutFromAllResponse implements BaseModel
     /**
      * An array of error objects detailing any issues encountered during the bulk opt-out operation.
      *
-     * @param list<StandardError|array{
-     *   category: string,
-     *   context: array<string,list<string>>,
-     *   errors: list<ErrorDetail>,
-     *   links: array<string,string>,
-     *   message: string,
-     *   status: string,
-     *   id?: string|null,
-     *   subCategory?: mixed,
-     * }> $errors
+     * @param list<StandardErrorShape> $errors
      */
     public function withErrors(array $errors): self
     {

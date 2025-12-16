@@ -15,7 +15,7 @@ interface VisitorIdentificationRawContract
     /**
      * @api
      *
-     * @param array<mixed>|VisitorIdentificationGenerateTokenParams $params
+     * @param array<string,mixed>|VisitorIdentificationGenerateTokenParams $params
      *
      * @return BaseResponse<IdentificationTokenResponse>
      *

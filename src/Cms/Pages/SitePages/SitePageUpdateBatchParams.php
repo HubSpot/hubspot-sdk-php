@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Cms\Pages\SitePagesService::updateBatch()
  *
  * @phpstan-type SitePageUpdateBatchParamsShape = array{
- *   inputs: list<mixed>, archived?: bool
+ *   inputs: list<mixed>, archived?: bool|null
  * }
  */
 final class SitePageUpdateBatchParams implements BaseModel

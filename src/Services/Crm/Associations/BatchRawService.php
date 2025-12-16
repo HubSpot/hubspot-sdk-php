@@ -34,8 +34,8 @@ final class BatchRawService implements BatchRawContract
      * @param array{
      *   fromObjectType: string,
      *   inputs: list<array{
-     *     from: array<mixed>|PublicObjectID,
-     *     to: array<mixed>|PublicObjectID,
+     *     from: array<string,mixed>|PublicObjectID,
+     *     to: array<string,mixed>|PublicObjectID,
      *     type: string,
      *   }|PublicAssociation>,
      * }|BatchCreateParams $params
@@ -79,8 +79,8 @@ final class BatchRawService implements BatchRawContract
      * @param array{
      *   fromObjectType: string,
      *   inputs: list<array{
-     *     from: array<mixed>|PublicObjectID,
-     *     to: array<mixed>|PublicObjectID,
+     *     from: array<string,mixed>|PublicObjectID,
+     *     to: array<string,mixed>|PublicObjectID,
      *     type: string,
      *   }|PublicAssociation>,
      * }|BatchDeleteParams $params

@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Crm\UsersService::update()
  *
  * @phpstan-type UserUpdateParamsShape = array{
- *   properties: array<string,string>, idProperty?: string
+ *   properties: array<string,string>, idProperty?: string|null
  * }
  */
 final class UserUpdateParams implements BaseModel

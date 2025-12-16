@@ -14,10 +14,10 @@ use HubspotSDK\PublicCalendarDatePropertyOperation\OperationType;
 /**
  * @phpstan-type PublicCalendarDatePropertyOperationShape = array{
  *   includeObjectsWithNoValueSet: bool,
- *   operationType: value-of<OperationType>,
+ *   operationType: OperationType|value-of<OperationType>,
  *   operator: string,
  *   timeUnit: string,
- *   fiscalYearStart?: value-of<FiscalYearStart>|null,
+ *   fiscalYearStart?: null|FiscalYearStart|value-of<FiscalYearStart>,
  *   timeUnitCount?: int|null,
  *   useFiscalYear?: bool|null,
  * }

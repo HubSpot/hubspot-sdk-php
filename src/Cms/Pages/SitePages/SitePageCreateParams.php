@@ -21,6 +21,8 @@ use HubspotSDK\Core\Conversion\MapOf;
  *
  * @see HubspotSDK\Services\Cms\Pages\SitePagesService::create()
  *
+ * @phpstan-import-type PagesContentLanguageVariationShape from \HubspotSDK\Cms\Pages\PagesContentLanguageVariation
+ *
  * @phpstan-type SitePageCreateParamsShape = array{
  *   id: string,
  *   abStatus: AbStatus|value-of<AbStatus>,
@@ -72,22 +74,7 @@ use HubspotSDK\Core\Conversion\MapOf;
  *   templatePath: string,
  *   themeSettingsValues: array<string,mixed>,
  *   translatedFromID: string,
- *   translations: array<string,PagesContentLanguageVariation|array{
- *     id: int,
- *     archivedInDashboard: bool,
- *     authorName: string,
- *     campaign: string,
- *     created: \DateTimeInterface,
- *     name: string,
- *     password: string,
- *     publicAccessRules: list<mixed>,
- *     publicAccessRulesEnabled: bool,
- *     publishDate: \DateTimeInterface,
- *     slug: string,
- *     state: string,
- *     updated: \DateTimeInterface,
- *     tagIDs?: list<int>|null,
- *   }>,
+ *   translations: array<string,PagesContentLanguageVariationShape>,
  *   updated: \DateTimeInterface,
  *   updatedByID: string,
  *   url: string,
@@ -583,22 +570,7 @@ final class SitePageCreateParams implements BaseModel
      * @param array<string,mixed> $layoutSections
      * @param list<mixed> $publicAccessRules
      * @param array<string,mixed> $themeSettingsValues
-     * @param array<string,PagesContentLanguageVariation|array{
-     *   id: int,
-     *   archivedInDashboard: bool,
-     *   authorName: string,
-     *   campaign: string,
-     *   created: \DateTimeInterface,
-     *   name: string,
-     *   password: string,
-     *   publicAccessRules: list<mixed>,
-     *   publicAccessRulesEnabled: bool,
-     *   publishDate: \DateTimeInterface,
-     *   slug: string,
-     *   state: string,
-     *   updated: \DateTimeInterface,
-     *   tagIDs?: list<int>|null,
-     * }> $translations
+     * @param array<string,PagesContentLanguageVariationShape> $translations
      * @param array<string,mixed> $widgetContainers
      * @param array<string,mixed> $widgets
      */
@@ -1281,22 +1253,7 @@ final class SitePageCreateParams implements BaseModel
     }
 
     /**
-     * @param array<string,PagesContentLanguageVariation|array{
-     *   id: int,
-     *   archivedInDashboard: bool,
-     *   authorName: string,
-     *   campaign: string,
-     *   created: \DateTimeInterface,
-     *   name: string,
-     *   password: string,
-     *   publicAccessRules: list<mixed>,
-     *   publicAccessRulesEnabled: bool,
-     *   publishDate: \DateTimeInterface,
-     *   slug: string,
-     *   state: string,
-     *   updated: \DateTimeInterface,
-     *   tagIDs?: list<int>|null,
-     * }> $translations
+     * @param array<string,PagesContentLanguageVariationShape> $translations
      */
     public function withTranslations(array $translations): self
     {

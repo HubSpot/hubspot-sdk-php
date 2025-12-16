@@ -11,7 +11,7 @@ use HubspotSDK\Crm\PropertyValidations\PublicPropertyValidationRule\RuleType;
 
 /**
  * @phpstan-type PublicPropertyValidationRuleShape = array{
- *   ruleArguments: list<string>, ruleType: value-of<RuleType>
+ *   ruleArguments: list<string>, ruleType: RuleType|value-of<RuleType>
  * }
  */
 final class PublicPropertyValidationRule implements BaseModel

@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   countryCode?: string|null,
  *   state?: string|null,
  *   street?: string|null,
- *   type?: value-of<Type>|null,
+ *   type?: null|Type|value-of<Type>,
  *   zip?: string|null,
  * }
  */

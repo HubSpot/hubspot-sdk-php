@@ -13,15 +13,17 @@ use HubspotSDK\Marketing\Forms\MultipleCheckboxesField\FieldType;
 /**
  * A form field consisting of a set of checkboxes allowing multiple choices to be selected at one time.
  *
+ * @phpstan-import-type EnumeratedFieldOptionShape from \HubspotSDK\Marketing\Forms\EnumeratedFieldOption
+ *
  * @phpstan-type MultipleCheckboxesFieldShape = array{
  *   defaultValues: list<string>,
  *   dependentFields: list<mixed>,
- *   fieldType: value-of<FieldType>,
+ *   fieldType: FieldType|value-of<FieldType>,
  *   hidden: bool,
  *   label: string,
  *   name: string,
  *   objectTypeID: string,
- *   options: list<EnumeratedFieldOption>,
+ *   options: list<EnumeratedFieldOptionShape>,
  *   required: bool,
  *   description?: string|null,
  * }
@@ -144,9 +146,7 @@ final class MultipleCheckboxesField implements BaseModel
      *
      * @param list<string> $defaultValues
      * @param list<mixed> $dependentFields
-     * @param list<EnumeratedFieldOption|array{
-     *   displayOrder: int, label: string, value: string, description?: string|null
-     * }> $options
+     * @param list<EnumeratedFieldOptionShape> $options
      * @param FieldType|value-of<FieldType> $fieldType
      */
     public static function with(
@@ -264,9 +264,7 @@ final class MultipleCheckboxesField implements BaseModel
     /**
      * The list of available choices for this field.
      *
-     * @param list<EnumeratedFieldOption|array{
-     *   displayOrder: int, label: string, value: string, description?: string|null
-     * }> $options
+     * @param list<EnumeratedFieldOptionShape> $options
      */
     public function withOptions(array $options): self
     {

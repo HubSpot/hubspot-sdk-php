@@ -8,15 +8,15 @@ use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\Imports\PublicImportError\ErrorType;
-use HubspotSDK\Crm\Imports\PublicImportError\ObjectType;
 use HubspotSDK\ForwardPaging;
-use HubspotSDK\Marketing\Events\PropertyValue;
-use HubspotSDK\NextPage;
 
 /**
+ * @phpstan-import-type PublicImportErrorShape from \HubspotSDK\Crm\Imports\PublicImportError
+ * @phpstan-import-type ForwardPagingShape from \HubspotSDK\ForwardPaging
+ *
  * @phpstan-type CollectionResponsePublicImportErrorForwardPagingShape = array{
- *   results: list<PublicImportError>, paging?: ForwardPaging|null
+ *   results: list<PublicImportErrorShape>,
+ *   paging?: null|ForwardPaging|ForwardPagingShape,
  * }
  */
 final class CollectionResponsePublicImportErrorForwardPaging implements BaseModel
@@ -55,21 +55,8 @@ final class CollectionResponsePublicImportErrorForwardPaging implements BaseMode
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicImportError|array{
-     *   id: string,
-     *   createdAt: int,
-     *   errorType: value-of<ErrorType>,
-     *   sourceData: ImportRowCore,
-     *   errorMessage?: string|null,
-     *   extraContext?: string|null,
-     *   invalidPropertyValue?: PropertyValue|null,
-     *   invalidValue?: string|null,
-     *   invalidValueToDisplay?: string|null,
-     *   knownColumnNumber?: int|null,
-     *   objectType?: value-of<ObjectType>|null,
-     *   objectTypeID?: string|null,
-     * }> $results
-     * @param ForwardPaging|array{next?: NextPage|null} $paging
+     * @param list<PublicImportErrorShape> $results
+     * @param ForwardPagingShape $paging
      */
     public static function with(
         array $results,
@@ -85,20 +72,7 @@ final class CollectionResponsePublicImportErrorForwardPaging implements BaseMode
     }
 
     /**
-     * @param list<PublicImportError|array{
-     *   id: string,
-     *   createdAt: int,
-     *   errorType: value-of<ErrorType>,
-     *   sourceData: ImportRowCore,
-     *   errorMessage?: string|null,
-     *   extraContext?: string|null,
-     *   invalidPropertyValue?: PropertyValue|null,
-     *   invalidValue?: string|null,
-     *   invalidValueToDisplay?: string|null,
-     *   knownColumnNumber?: int|null,
-     *   objectType?: value-of<ObjectType>|null,
-     *   objectTypeID?: string|null,
-     * }> $results
+     * @param list<PublicImportErrorShape> $results
      */
     public function withResults(array $results): self
     {
@@ -109,7 +83,7 @@ final class CollectionResponsePublicImportErrorForwardPaging implements BaseMode
     }
 
     /**
-     * @param ForwardPaging|array{next?: NextPage|null} $paging
+     * @param ForwardPagingShape $paging
      */
     public function withPaging(ForwardPaging|array $paging): self
     {

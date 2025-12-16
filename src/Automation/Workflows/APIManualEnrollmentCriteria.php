@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type APIManualEnrollmentCriteriaShape = array{
- *   shouldReEnroll: bool, type: value-of<Type>
+ *   shouldReEnroll: bool, type: Type|value-of<Type>
  * }
  */
 final class APIManualEnrollmentCriteria implements BaseModel

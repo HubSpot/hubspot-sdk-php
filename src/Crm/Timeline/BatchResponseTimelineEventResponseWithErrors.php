@@ -9,16 +9,18 @@ use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Timeline\BatchResponseTimelineEventResponseWithErrors\Status;
-use HubspotSDK\ErrorDetail;
 use HubspotSDK\StandardError;
 
 /**
+ * @phpstan-import-type TimelineEventResponseShape from \HubspotSDK\Crm\Timeline\TimelineEventResponse
+ * @phpstan-import-type StandardErrorShape from \HubspotSDK\StandardError
+ *
  * @phpstan-type BatchResponseTimelineEventResponseWithErrorsShape = array{
  *   completedAt: \DateTimeInterface,
- *   results: list<TimelineEventResponse>,
+ *   results: list<TimelineEventResponseShape>,
  *   startedAt: \DateTimeInterface,
- *   status: value-of<Status>,
- *   errors?: list<StandardError>|null,
+ *   status: Status|value-of<Status>,
+ *   errors?: list<StandardErrorShape>|null,
  *   links?: array<string,string>|null,
  *   numErrors?: int|null,
  *   requestedAt?: \DateTimeInterface|null,
@@ -87,31 +89,9 @@ final class BatchResponseTimelineEventResponseWithErrors implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<TimelineEventResponse|array{
-     *   id: string,
-     *   eventTemplateID: string,
-     *   objectType: string,
-     *   tokens: array<string,string>,
-     *   createdAt?: \DateTimeInterface|null,
-     *   domain?: string|null,
-     *   email?: string|null,
-     *   extraData?: mixed,
-     *   objectID?: string|null,
-     *   timelineIFrame?: TimelineEventIFrame|null,
-     *   timestamp?: \DateTimeInterface|null,
-     *   utk?: string|null,
-     * }> $results
+     * @param list<TimelineEventResponseShape> $results
      * @param Status|value-of<Status> $status
-     * @param list<StandardError|array{
-     *   category: string,
-     *   context: array<string,list<string>>,
-     *   errors: list<ErrorDetail>,
-     *   links: array<string,string>,
-     *   message: string,
-     *   status: string,
-     *   id?: string|null,
-     *   subCategory?: mixed,
-     * }> $errors
+     * @param list<StandardErrorShape> $errors
      * @param array<string,string> $links
      */
     public static function with(
@@ -148,20 +128,7 @@ final class BatchResponseTimelineEventResponseWithErrors implements BaseModel
     }
 
     /**
-     * @param list<TimelineEventResponse|array{
-     *   id: string,
-     *   eventTemplateID: string,
-     *   objectType: string,
-     *   tokens: array<string,string>,
-     *   createdAt?: \DateTimeInterface|null,
-     *   domain?: string|null,
-     *   email?: string|null,
-     *   extraData?: mixed,
-     *   objectID?: string|null,
-     *   timelineIFrame?: TimelineEventIFrame|null,
-     *   timestamp?: \DateTimeInterface|null,
-     *   utk?: string|null,
-     * }> $results
+     * @param list<TimelineEventResponseShape> $results
      */
     public function withResults(array $results): self
     {
@@ -191,16 +158,7 @@ final class BatchResponseTimelineEventResponseWithErrors implements BaseModel
     }
 
     /**
-     * @param list<StandardError|array{
-     *   category: string,
-     *   context: array<string,list<string>>,
-     *   errors: list<ErrorDetail>,
-     *   links: array<string,string>,
-     *   message: string,
-     *   status: string,
-     *   id?: string|null,
-     *   subCategory?: mixed,
-     * }> $errors
+     * @param list<StandardErrorShape> $errors
      */
     public function withErrors(array $errors): self
     {

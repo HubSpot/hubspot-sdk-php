@@ -251,7 +251,7 @@ final class PropertiesRawService implements PropertiesRawContract
      *     formField?: bool,
      *     hasUniqueValue?: bool,
      *     hidden?: bool,
-     *     options?: list<array<mixed>>,
+     *     options?: list<array<string,mixed>>,
      *     referencedObjectType?: string,
      *   }>,
      * }|PropertyCreateBatchParams $params

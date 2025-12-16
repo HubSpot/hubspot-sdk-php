@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Conversations\CustomChannels\ChannelAccountsService::get()
  *
  * @phpstan-type ChannelAccountGetParamsShape = array{
- *   channelID: int, archived?: bool
+ *   channelID: int, archived?: bool|null
  * }
  */
 final class ChannelAccountGetParams implements BaseModel

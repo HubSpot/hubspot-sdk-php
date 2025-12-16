@@ -10,7 +10,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type SystemActorShape = array{id: string, type: value-of<Type>}
+ * @phpstan-type SystemActorShape = array{id: string, type: Type|value-of<Type>}
  */
 final class SystemActor implements BaseModel
 {

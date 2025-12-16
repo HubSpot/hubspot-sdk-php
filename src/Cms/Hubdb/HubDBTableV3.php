@@ -4,20 +4,21 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\Hubdb;
 
-use HubspotSDK\Cms\Hubdb\Column\Type;
 use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Option;
 
 /**
+ * @phpstan-import-type ColumnShape from \HubspotSDK\Cms\Hubdb\Column
+ * @phpstan-import-type SimpleUserShape from \HubspotSDK\Cms\Hubdb\SimpleUser
+ *
  * @phpstan-type HubDBTableV3Shape = array{
  *   id: string,
  *   allowChildTables: bool,
  *   allowPublicAPIAccess: bool,
  *   columnCount: int,
- *   columns: list<Column>,
+ *   columns: list<ColumnShape>,
  *   createdAt: \DateTimeInterface,
  *   deleted: bool,
  *   deletedAt: \DateTimeInterface,
@@ -30,9 +31,9 @@ use HubspotSDK\Option;
  *   rowCount: int,
  *   updatedAt: \DateTimeInterface,
  *   useForPages: bool,
- *   createdBy?: SimpleUser|null,
+ *   createdBy?: null|SimpleUser|SimpleUserShape,
  *   isOrderedManually?: bool|null,
- *   updatedBy?: SimpleUser|null,
+ *   updatedBy?: null|SimpleUser|SimpleUserShape,
  * }
  */
 final class HubDBTableV3 implements BaseModel
@@ -205,35 +206,10 @@ final class HubDBTableV3 implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<Column|array{
-     *   id: string,
-     *   deleted: bool,
-     *   description: string,
-     *   label: string,
-     *   name: string,
-     *   type: value-of<Type>,
-     *   createdAt?: \DateTimeInterface|null,
-     *   createdBy?: SimpleUser|null,
-     *   createdByUserID?: int|null,
-     *   foreignColumnID?: int|null,
-     *   foreignIDs?: list<ForeignID>|null,
-     *   foreignIDsByID?: array<string,ForeignID>|null,
-     *   foreignIDsByName?: array<string,ForeignID>|null,
-     *   foreignTableID?: int|null,
-     *   optionCount?: int|null,
-     *   options?: list<Option>|null,
-     *   updatedAt?: \DateTimeInterface|null,
-     *   updatedBy?: SimpleUser|null,
-     *   updatedByUserID?: int|null,
-     *   width?: int|null,
-     * }> $columns
+     * @param list<ColumnShape> $columns
      * @param array<string,int> $dynamicMetaTags
-     * @param SimpleUser|array{
-     *   id: string, email: string, firstName: string, lastName: string
-     * } $createdBy
-     * @param SimpleUser|array{
-     *   id: string, email: string, firstName: string, lastName: string
-     * } $updatedBy
+     * @param SimpleUserShape $createdBy
+     * @param SimpleUserShape $updatedBy
      */
     public static function with(
         string $id,
@@ -331,28 +307,7 @@ final class HubDBTableV3 implements BaseModel
     /**
      * List of columns in the table.
      *
-     * @param list<Column|array{
-     *   id: string,
-     *   deleted: bool,
-     *   description: string,
-     *   label: string,
-     *   name: string,
-     *   type: value-of<Type>,
-     *   createdAt?: \DateTimeInterface|null,
-     *   createdBy?: SimpleUser|null,
-     *   createdByUserID?: int|null,
-     *   foreignColumnID?: int|null,
-     *   foreignIDs?: list<ForeignID>|null,
-     *   foreignIDsByID?: array<string,ForeignID>|null,
-     *   foreignIDsByName?: array<string,ForeignID>|null,
-     *   foreignTableID?: int|null,
-     *   optionCount?: int|null,
-     *   options?: list<Option>|null,
-     *   updatedAt?: \DateTimeInterface|null,
-     *   updatedBy?: SimpleUser|null,
-     *   updatedByUserID?: int|null,
-     *   width?: int|null,
-     * }> $columns
+     * @param list<ColumnShape> $columns
      */
     public function withColumns(array $columns): self
     {
@@ -488,9 +443,7 @@ final class HubDBTableV3 implements BaseModel
     }
 
     /**
-     * @param SimpleUser|array{
-     *   id: string, email: string, firstName: string, lastName: string
-     * } $createdBy
+     * @param SimpleUserShape $createdBy
      */
     public function withCreatedBy(SimpleUser|array $createdBy): self
     {
@@ -509,9 +462,7 @@ final class HubDBTableV3 implements BaseModel
     }
 
     /**
-     * @param SimpleUser|array{
-     *   id: string, email: string, firstName: string, lastName: string
-     * } $updatedBy
+     * @param SimpleUserShape $updatedBy
      */
     public function withUpdatedBy(SimpleUser|array $updatedBy): self
     {

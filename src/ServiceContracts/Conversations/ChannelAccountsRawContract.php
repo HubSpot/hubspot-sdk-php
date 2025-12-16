@@ -17,7 +17,7 @@ interface ChannelAccountsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|ChannelAccountListParams $params
+     * @param array<string,mixed>|ChannelAccountListParams $params
      *
      * @return BaseResponse<Page<PublicChannelAccount>>
      *
@@ -31,7 +31,7 @@ interface ChannelAccountsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|ChannelAccountGetParams $params
+     * @param array<string,mixed>|ChannelAccountGetParams $params
      *
      * @return BaseResponse<PublicChannelAccount>
      *

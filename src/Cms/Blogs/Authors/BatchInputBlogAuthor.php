@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\Blogs\Authors;
 
-use HubspotSDK\Cms\Blogs\Authors\BlogAuthor\Language;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -12,7 +11,9 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Wrapper for providing an array of blog authors as inputs.
  *
- * @phpstan-type BatchInputBlogAuthorShape = array{inputs: list<BlogAuthor>}
+ * @phpstan-import-type BlogAuthorShape from \HubspotSDK\Cms\Blogs\Authors\BlogAuthor
+ *
+ * @phpstan-type BatchInputBlogAuthorShape = array{inputs: list<BlogAuthorShape>}
  */
 final class BatchInputBlogAuthor implements BaseModel
 {
@@ -51,25 +52,7 @@ final class BatchInputBlogAuthor implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<BlogAuthor|array{
-     *   id: string,
-     *   avatar: string,
-     *   bio: string,
-     *   created: \DateTimeInterface,
-     *   deletedAt: \DateTimeInterface,
-     *   displayName: string,
-     *   email: string,
-     *   facebook: string,
-     *   fullName: string,
-     *   language: value-of<Language>,
-     *   linkedin: string,
-     *   name: string,
-     *   slug: string,
-     *   translatedFromID: int,
-     *   twitter: string,
-     *   updated: \DateTimeInterface,
-     *   website: string,
-     * }> $inputs
+     * @param list<BlogAuthorShape> $inputs
      */
     public static function with(array $inputs): self
     {
@@ -83,25 +66,7 @@ final class BatchInputBlogAuthor implements BaseModel
     /**
      * Blog authors to input.
      *
-     * @param list<BlogAuthor|array{
-     *   id: string,
-     *   avatar: string,
-     *   bio: string,
-     *   created: \DateTimeInterface,
-     *   deletedAt: \DateTimeInterface,
-     *   displayName: string,
-     *   email: string,
-     *   facebook: string,
-     *   fullName: string,
-     *   language: value-of<Language>,
-     *   linkedin: string,
-     *   name: string,
-     *   slug: string,
-     *   translatedFromID: int,
-     *   twitter: string,
-     *   updated: \DateTimeInterface,
-     *   website: string,
-     * }> $inputs
+     * @param list<BlogAuthorShape> $inputs
      */
     public function withInputs(array $inputs): self
     {

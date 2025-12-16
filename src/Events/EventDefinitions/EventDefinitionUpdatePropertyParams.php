@@ -16,17 +16,13 @@ use HubspotSDK\OptionInput;
  *
  * @see HubspotSDK\Services\Events\EventDefinitionsService::updateProperty()
  *
+ * @phpstan-import-type OptionInputShape from \HubspotSDK\OptionInput
+ *
  * @phpstan-type EventDefinitionUpdatePropertyParamsShape = array{
  *   eventName: string,
- *   description?: string,
- *   label?: string,
- *   options?: list<OptionInput|array{
- *     displayOrder: int,
- *     hidden: bool,
- *     label: string,
- *     value: string,
- *     description?: string|null,
- *   }>,
+ *   description?: string|null,
+ *   label?: string|null,
+ *   options?: list<OptionInputShape>|null,
  * }
  */
 final class EventDefinitionUpdatePropertyParams implements BaseModel
@@ -82,13 +78,7 @@ final class EventDefinitionUpdatePropertyParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<OptionInput|array{
-     *   displayOrder: int,
-     *   hidden: bool,
-     *   label: string,
-     *   value: string,
-     *   description?: string|null,
-     * }> $options
+     * @param list<OptionInputShape> $options
      */
     public static function with(
         string $eventName,
@@ -140,13 +130,7 @@ final class EventDefinitionUpdatePropertyParams implements BaseModel
     /**
      * A list of available options for the property if it is an enumeration. NOTE: This field is only applicable for enumerated properties.
      *
-     * @param list<OptionInput|array{
-     *   displayOrder: int,
-     *   hidden: bool,
-     *   label: string,
-     *   value: string,
-     *   description?: string|null,
-     * }> $options
+     * @param list<OptionInputShape> $options
      */
     public function withOptions(array $options): self
     {

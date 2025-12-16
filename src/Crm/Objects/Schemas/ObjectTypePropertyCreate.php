@@ -17,24 +17,26 @@ use HubspotSDK\OptionInput;
 /**
  * Defines a property to create.
  *
+ * @phpstan-import-type OptionInputShape from \HubspotSDK\OptionInput
+ *
  * @phpstan-type ObjectTypePropertyCreateShape = array{
  *   fieldType: string,
  *   label: string,
  *   name: string,
- *   type: value-of<Type>,
+ *   type: Type|value-of<Type>,
  *   description?: string|null,
  *   displayOrder?: int|null,
  *   formField?: bool|null,
  *   groupName?: string|null,
  *   hasUniqueValue?: bool|null,
  *   hidden?: bool|null,
- *   numberDisplayHint?: value-of<NumberDisplayHint>|null,
- *   options?: list<OptionInput>|null,
- *   optionSortStrategy?: value-of<OptionSortStrategy>|null,
+ *   numberDisplayHint?: null|NumberDisplayHint|value-of<NumberDisplayHint>,
+ *   options?: list<OptionInputShape>|null,
+ *   optionSortStrategy?: null|OptionSortStrategy|value-of<OptionSortStrategy>,
  *   referencedObjectType?: string|null,
  *   searchableInGlobalSearch?: bool|null,
  *   showCurrencySymbol?: bool|null,
- *   textDisplayHint?: value-of<TextDisplayHint>|null,
+ *   textDisplayHint?: null|TextDisplayHint|value-of<TextDisplayHint>,
  * }
  */
 final class ObjectTypePropertyCreate implements BaseModel
@@ -181,13 +183,7 @@ final class ObjectTypePropertyCreate implements BaseModel
      *
      * @param Type|value-of<Type> $type
      * @param NumberDisplayHint|value-of<NumberDisplayHint> $numberDisplayHint
-     * @param list<OptionInput|array{
-     *   displayOrder: int,
-     *   hidden: bool,
-     *   label: string,
-     *   value: string,
-     *   description?: string|null,
-     * }> $options
+     * @param list<OptionInputShape> $options
      * @param OptionSortStrategy|value-of<OptionSortStrategy> $optionSortStrategy
      * @param TextDisplayHint|value-of<TextDisplayHint> $textDisplayHint
      */
@@ -360,13 +356,7 @@ final class ObjectTypePropertyCreate implements BaseModel
     /**
      * A list of available options for the property. This field is only required for enumerated properties.
      *
-     * @param list<OptionInput|array{
-     *   displayOrder: int,
-     *   hidden: bool,
-     *   label: string,
-     *   value: string,
-     *   description?: string|null,
-     * }> $options
+     * @param list<OptionInputShape> $options
      */
     public function withOptions(array $options): self
     {

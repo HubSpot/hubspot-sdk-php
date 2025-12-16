@@ -12,7 +12,9 @@ use HubspotSDK\Events\EventDefinitions\AbsoluteComparativeTimestampRefineBy\Type
 
 /**
  * @phpstan-type AbsoluteComparativeTimestampRefineByShape = array{
- *   comparison: value-of<Comparison>, timestamp: int, type: value-of<Type>
+ *   comparison: Comparison|value-of<Comparison>,
+ *   timestamp: int,
+ *   type: Type|value-of<Type>,
  * }
  */
 final class AbsoluteComparativeTimestampRefineBy implements BaseModel

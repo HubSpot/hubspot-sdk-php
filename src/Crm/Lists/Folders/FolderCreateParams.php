@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Crm\Lists\FoldersService::create()
  *
  * @phpstan-type FolderCreateParamsShape = array{
- *   name: string, parentFolderID?: string
+ *   name: string, parentFolderID?: string|null
  * }
  */
 final class FolderCreateParams implements BaseModel

@@ -25,6 +25,27 @@ use HubspotSDK\PublicRollingPropertyUpdatedOperation;
 use HubspotSDK\PublicStringPropertyOperation;
 use HubspotSDK\PublicTimePointOperation;
 
+/**
+ * @phpstan-import-type PublicBoolPropertyOperationShape from \HubspotSDK\PublicBoolPropertyOperation
+ * @phpstan-import-type PublicNumberPropertyOperationShape from \HubspotSDK\PublicNumberPropertyOperation
+ * @phpstan-import-type PublicStringPropertyOperationShape from \HubspotSDK\PublicStringPropertyOperation
+ * @phpstan-import-type PublicDateTimePropertyOperationShape from \HubspotSDK\PublicDateTimePropertyOperation
+ * @phpstan-import-type PublicRangedDatePropertyOperationShape from \HubspotSDK\PublicRangedDatePropertyOperation
+ * @phpstan-import-type PublicComparativePropertyUpdatedOperationShape from \HubspotSDK\PublicComparativePropertyUpdatedOperation
+ * @phpstan-import-type PublicComparativeDatePropertyOperationShape from \HubspotSDK\PublicComparativeDatePropertyOperation
+ * @phpstan-import-type PublicRollingDateRangePropertyOperationShape from \HubspotSDK\PublicRollingDateRangePropertyOperation
+ * @phpstan-import-type PublicRollingPropertyUpdatedOperationShape from \HubspotSDK\PublicRollingPropertyUpdatedOperation
+ * @phpstan-import-type PublicEnumerationPropertyOperationShape from \HubspotSDK\PublicEnumerationPropertyOperation
+ * @phpstan-import-type PublicAllPropertyTypesOperationShape from \HubspotSDK\PublicAllPropertyTypesOperation
+ * @phpstan-import-type PublicRangedNumberPropertyOperationShape from \HubspotSDK\PublicRangedNumberPropertyOperation
+ * @phpstan-import-type PublicMultiStringPropertyOperationShape from \HubspotSDK\PublicMultiStringPropertyOperation
+ * @phpstan-import-type PublicDatePropertyOperationShape from \HubspotSDK\PublicDatePropertyOperation
+ * @phpstan-import-type PublicCalendarDatePropertyOperationShape from \HubspotSDK\PublicCalendarDatePropertyOperation
+ * @phpstan-import-type PublicTimePointOperationShape from \HubspotSDK\PublicTimePointOperation
+ * @phpstan-import-type PublicRangedTimeOperationShape from \HubspotSDK\PublicRangedTimeOperation
+ *
+ * @phpstan-type OperationShape = PublicBoolPropertyOperationShape|PublicNumberPropertyOperationShape|PublicStringPropertyOperationShape|PublicDateTimePropertyOperationShape|PublicRangedDatePropertyOperationShape|PublicComparativePropertyUpdatedOperationShape|PublicComparativeDatePropertyOperationShape|PublicRollingDateRangePropertyOperationShape|PublicRollingPropertyUpdatedOperationShape|PublicEnumerationPropertyOperationShape|PublicAllPropertyTypesOperationShape|PublicRangedNumberPropertyOperationShape|PublicMultiStringPropertyOperationShape|PublicDatePropertyOperationShape|PublicCalendarDatePropertyOperationShape|PublicTimePointOperationShape|PublicRangedTimeOperationShape
+ */
 final class Operation implements ConverterSource
 {
     use SdkUnion;

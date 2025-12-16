@@ -30,7 +30,7 @@ interface AuthorsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|AuthorCreateParams $params
+     * @param array<string,mixed>|AuthorCreateParams $params
      *
      * @return BaseResponse<BlogAuthor>
      *
@@ -45,7 +45,7 @@ interface AuthorsRawContract
      * @api
      *
      * @param string $objectID path param: The Blog Author id
-     * @param array<mixed>|AuthorUpdateParams $params
+     * @param array<string,mixed>|AuthorUpdateParams $params
      *
      * @return BaseResponse<BlogAuthor>
      *
@@ -60,7 +60,7 @@ interface AuthorsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|AuthorListParams $params
+     * @param array<string,mixed>|AuthorListParams $params
      *
      * @return BaseResponse<Page<BlogAuthor>>
      *
@@ -75,7 +75,7 @@ interface AuthorsRawContract
      * @api
      *
      * @param string $objectID the Blog Author id
-     * @param array<mixed>|AuthorDeleteParams $params
+     * @param array<string,mixed>|AuthorDeleteParams $params
      *
      * @return BaseResponse<mixed>
      *
@@ -90,7 +90,7 @@ interface AuthorsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|AuthorAttachToLangGroupParams $params
+     * @param array<string,mixed>|AuthorAttachToLangGroupParams $params
      *
      * @return BaseResponse<mixed>
      *
@@ -104,7 +104,7 @@ interface AuthorsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|AuthorCreateBatchParams $params
+     * @param array<string,mixed>|AuthorCreateBatchParams $params
      *
      * @return BaseResponse<BatchResponseBlogAuthor>
      *
@@ -118,7 +118,7 @@ interface AuthorsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|AuthorCreateLanguageVariationParams $params
+     * @param array<string,mixed>|AuthorCreateLanguageVariationParams $params
      *
      * @return BaseResponse<BlogAuthor>
      *
@@ -132,7 +132,7 @@ interface AuthorsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|AuthorDeleteBatchParams $params
+     * @param array<string,mixed>|AuthorDeleteBatchParams $params
      *
      * @return BaseResponse<mixed>
      *
@@ -146,7 +146,7 @@ interface AuthorsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|AuthorDetachFromLangGroupParams $params
+     * @param array<string,mixed>|AuthorDetachFromLangGroupParams $params
      *
      * @return BaseResponse<mixed>
      *
@@ -161,7 +161,7 @@ interface AuthorsRawContract
      * @api
      *
      * @param string $objectID the Blog Author id
-     * @param array<mixed>|AuthorGetParams $params
+     * @param array<string,mixed>|AuthorGetParams $params
      *
      * @return BaseResponse<BlogAuthor>
      *
@@ -176,7 +176,7 @@ interface AuthorsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|AuthorGetBatchParams $params
+     * @param array<string,mixed>|AuthorGetBatchParams $params
      *
      * @return BaseResponse<BatchResponseBlogAuthor>
      *
@@ -190,7 +190,7 @@ interface AuthorsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|AuthorSetNewLangPrimaryParams $params
+     * @param array<string,mixed>|AuthorSetNewLangPrimaryParams $params
      *
      * @return BaseResponse<mixed>
      *
@@ -204,7 +204,7 @@ interface AuthorsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|AuthorUpdateBatchParams $params
+     * @param array<string,mixed>|AuthorUpdateBatchParams $params
      *
      * @return BaseResponse<BatchResponseBlogAuthor>
      *
@@ -218,7 +218,7 @@ interface AuthorsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|AuthorUpdateLanguagesParams $params
+     * @param array<string,mixed>|AuthorUpdateLanguagesParams $params
      *
      * @return BaseResponse<mixed>
      *

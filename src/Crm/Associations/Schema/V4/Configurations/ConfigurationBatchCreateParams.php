@@ -9,16 +9,15 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Associations\Schema\V4\PublicAssociationDefinitionConfigurationCreateRequest;
-use HubspotSDK\Crm\Associations\Schema\V4\PublicAssociationDefinitionConfigurationCreateRequest\Category;
 
 /**
  * @see HubspotSDK\Services\Crm\Associations\Schema\V4\ConfigurationsService::batchCreate()
  *
+ * @phpstan-import-type PublicAssociationDefinitionConfigurationCreateRequestShape from \HubspotSDK\Crm\Associations\Schema\V4\PublicAssociationDefinitionConfigurationCreateRequest
+ *
  * @phpstan-type ConfigurationBatchCreateParamsShape = array{
  *   fromObjectType: string,
- *   inputs: list<PublicAssociationDefinitionConfigurationCreateRequest|array{
- *     category: value-of<Category>, maxToObjectIDs: int, typeID: int
- *   }>,
+ *   inputs: list<PublicAssociationDefinitionConfigurationCreateRequestShape>,
  * }
  */
 final class ConfigurationBatchCreateParams implements BaseModel
@@ -60,9 +59,7 @@ final class ConfigurationBatchCreateParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicAssociationDefinitionConfigurationCreateRequest|array{
-     *   category: value-of<Category>, maxToObjectIDs: int, typeID: int
-     * }> $inputs
+     * @param list<PublicAssociationDefinitionConfigurationCreateRequestShape> $inputs
      */
     public static function with(string $fromObjectType, array $inputs): self
     {
@@ -83,9 +80,7 @@ final class ConfigurationBatchCreateParams implements BaseModel
     }
 
     /**
-     * @param list<PublicAssociationDefinitionConfigurationCreateRequest|array{
-     *   category: value-of<Category>, maxToObjectIDs: int, typeID: int
-     * }> $inputs
+     * @param list<PublicAssociationDefinitionConfigurationCreateRequestShape> $inputs
      */
     public function withInputs(array $inputs): self
     {

@@ -9,13 +9,17 @@ use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\ForwardPaging;
-use HubspotSDK\NextPage;
 
 /**
  * Response object for collections of content folders with pagination information.
  *
+ * @phpstan-import-type ContentFolderShape from \HubspotSDK\Cms\Pages\ContentFolder
+ * @phpstan-import-type ForwardPagingShape from \HubspotSDK\ForwardPaging
+ *
  * @phpstan-type CollectionResponseWithTotalContentFolderForwardPagingShape = array{
- *   results: list<ContentFolder>, total: int, paging?: ForwardPaging|null
+ *   results: list<ContentFolderShape>,
+ *   total: int,
+ *   paging?: null|ForwardPaging|ForwardPagingShape,
  * }
  */
 final class CollectionResponseWithTotalContentFolderForwardPaging implements BaseModel
@@ -68,16 +72,8 @@ final class CollectionResponseWithTotalContentFolderForwardPaging implements Bas
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<ContentFolder|array{
-     *   id: string,
-     *   category: int,
-     *   created: \DateTimeInterface,
-     *   deletedAt: \DateTimeInterface,
-     *   name: string,
-     *   parentFolderID: int,
-     *   updated: \DateTimeInterface,
-     * }> $results
-     * @param ForwardPaging|array{next?: NextPage|null} $paging
+     * @param list<ContentFolderShape> $results
+     * @param ForwardPagingShape $paging
      */
     public static function with(
         array $results,
@@ -97,15 +93,7 @@ final class CollectionResponseWithTotalContentFolderForwardPaging implements Bas
     /**
      * Collection of content folders.
      *
-     * @param list<ContentFolder|array{
-     *   id: string,
-     *   category: int,
-     *   created: \DateTimeInterface,
-     *   deletedAt: \DateTimeInterface,
-     *   name: string,
-     *   parentFolderID: int,
-     *   updated: \DateTimeInterface,
-     * }> $results
+     * @param list<ContentFolderShape> $results
      */
     public function withResults(array $results): self
     {
@@ -127,7 +115,7 @@ final class CollectionResponseWithTotalContentFolderForwardPaging implements Bas
     }
 
     /**
-     * @param ForwardPaging|array{next?: NextPage|null} $paging
+     * @param ForwardPagingShape $paging
      */
     public function withPaging(ForwardPaging|array $paging): self
     {

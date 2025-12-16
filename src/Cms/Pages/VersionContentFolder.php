@@ -12,11 +12,14 @@ use HubspotSDK\VersionUser;
 /**
  * Model definition for a content folder version. Contains metadata describing the version of the folder. It can be used to view edit history of a folder.
  *
+ * @phpstan-import-type ContentFolderShape from \HubspotSDK\Cms\Pages\ContentFolder
+ * @phpstan-import-type VersionUserShape from \HubspotSDK\VersionUser
+ *
  * @phpstan-type VersionContentFolderShape = array{
  *   id: string,
- *   object: ContentFolder,
+ *   object: ContentFolder|ContentFolderShape,
  *   updatedAt: \DateTimeInterface,
- *   user: VersionUser,
+ *   user: VersionUser|VersionUserShape,
  * }
  */
 final class VersionContentFolder implements BaseModel
@@ -73,16 +76,8 @@ final class VersionContentFolder implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param ContentFolder|array{
-     *   id: string,
-     *   category: int,
-     *   created: \DateTimeInterface,
-     *   deletedAt: \DateTimeInterface,
-     *   name: string,
-     *   parentFolderID: int,
-     *   updated: \DateTimeInterface,
-     * } $object
-     * @param VersionUser|array{id: string, email: string, fullName: string} $user
+     * @param ContentFolderShape $object
+     * @param VersionUserShape $user
      */
     public static function with(
         string $id,
@@ -114,15 +109,7 @@ final class VersionContentFolder implements BaseModel
     /**
      * Model definition for a content folder.
      *
-     * @param ContentFolder|array{
-     *   id: string,
-     *   category: int,
-     *   created: \DateTimeInterface,
-     *   deletedAt: \DateTimeInterface,
-     *   name: string,
-     *   parentFolderID: int,
-     *   updated: \DateTimeInterface,
-     * } $object
+     * @param ContentFolderShape $object
      */
     public function withObject(ContentFolder|array $object): self
     {
@@ -143,7 +130,7 @@ final class VersionContentFolder implements BaseModel
     /**
      * Model definition for a version user. Contains addition information about the user who created a version.
      *
-     * @param VersionUser|array{id: string, email: string, fullName: string} $user
+     * @param VersionUserShape $user
      */
     public function withUser(VersionUser|array $user): self
     {

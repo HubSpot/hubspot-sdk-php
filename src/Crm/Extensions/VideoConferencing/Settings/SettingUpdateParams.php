@@ -15,10 +15,10 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @phpstan-type SettingUpdateParamsShape = array{
  *   createMeetingURL: string,
- *   deleteMeetingURL?: string,
- *   fetchAccountsUri?: string,
- *   updateMeetingURL?: string,
- *   userVerifyURL?: string,
+ *   deleteMeetingURL?: string|null,
+ *   fetchAccountsUri?: string|null,
+ *   updateMeetingURL?: string|null,
+ *   userVerifyURL?: string|null,
  * }
  */
 final class SettingUpdateParams implements BaseModel

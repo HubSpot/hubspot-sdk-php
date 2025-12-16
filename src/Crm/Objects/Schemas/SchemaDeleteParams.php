@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * @see HubspotSDK\Services\Crm\Objects\SchemasService::delete()
  *
- * @phpstan-type SchemaDeleteParamsShape = array{archived?: bool}
+ * @phpstan-type SchemaDeleteParamsShape = array{archived?: bool|null}
  */
 final class SchemaDeleteParams implements BaseModel
 {

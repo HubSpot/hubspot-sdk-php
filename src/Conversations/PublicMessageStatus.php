@@ -11,9 +11,11 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type PublicMessageFailureDetailsShape from \HubspotSDK\Conversations\PublicMessageFailureDetails
+ *
  * @phpstan-type PublicMessageStatusShape = array{
- *   statusType: value-of<StatusType>,
- *   failureDetails?: PublicMessageFailureDetails|null,
+ *   statusType: StatusType|value-of<StatusType>,
+ *   failureDetails?: null|PublicMessageFailureDetails|PublicMessageFailureDetailsShape,
  * }
  */
 final class PublicMessageStatus implements BaseModel
@@ -53,9 +55,7 @@ final class PublicMessageStatus implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param StatusType|value-of<StatusType> $statusType
-     * @param PublicMessageFailureDetails|array{
-     *   errorMessageTokens: array<string,string>, errorMessage?: string|null
-     * } $failureDetails
+     * @param PublicMessageFailureDetailsShape $failureDetails
      */
     public static function with(
         StatusType|string $statusType,
@@ -82,9 +82,7 @@ final class PublicMessageStatus implements BaseModel
     }
 
     /**
-     * @param PublicMessageFailureDetails|array{
-     *   errorMessageTokens: array<string,string>, errorMessage?: string|null
-     * } $failureDetails
+     * @param PublicMessageFailureDetailsShape $failureDetails
      */
     public function withFailureDetails(
         PublicMessageFailureDetails|array $failureDetails

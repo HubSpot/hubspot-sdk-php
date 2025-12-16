@@ -15,7 +15,7 @@ interface SettingsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|SettingUpdateParams $params
+     * @param array<string,mixed>|SettingUpdateParams $params
      *
      * @return BaseResponse<ExternalSettings>
      *

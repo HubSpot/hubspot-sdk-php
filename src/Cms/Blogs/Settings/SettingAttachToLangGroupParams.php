@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Cms\Blogs\SettingsService::attachToLangGroup()
  *
  * @phpstan-type SettingAttachToLangGroupParamsShape = array{
- *   id: string, language: string, primaryID: string, primaryLanguage?: string
+ *   id: string, language: string, primaryID: string, primaryLanguage?: string|null
  * }
  */
 final class SettingAttachToLangGroupParams implements BaseModel

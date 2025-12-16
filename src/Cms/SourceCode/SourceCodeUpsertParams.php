@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Cms\SourceCodeService::upsert()
  *
  * @phpstan-type SourceCodeUpsertParamsShape = array{
- *   environment: string, file?: string
+ *   environment: string, file?: string|null
  * }
  */
 final class SourceCodeUpsertParams implements BaseModel

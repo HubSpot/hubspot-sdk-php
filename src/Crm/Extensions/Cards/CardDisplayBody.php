@@ -7,13 +7,14 @@ namespace HubspotSDK\Crm\Extensions\Cards;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\Extensions\Cards\CardDisplayProperty\DataType;
 
 /**
  * Configuration for displayed info on a card.
  *
+ * @phpstan-import-type CardDisplayPropertyShape from \HubspotSDK\Crm\Extensions\Cards\CardDisplayProperty
+ *
  * @phpstan-type CardDisplayBodyShape = array{
- *   properties: list<CardDisplayProperty>
+ *   properties: list<CardDisplayPropertyShape>
  * }
  */
 final class CardDisplayBody implements BaseModel
@@ -53,12 +54,7 @@ final class CardDisplayBody implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<CardDisplayProperty|array{
-     *   dataType: value-of<DataType>,
-     *   label: string,
-     *   name: string,
-     *   options: list<DisplayOption>,
-     * }> $properties
+     * @param list<CardDisplayPropertyShape> $properties
      */
     public static function with(array $properties): self
     {
@@ -72,12 +68,7 @@ final class CardDisplayBody implements BaseModel
     /**
      * Card display properties. These will will be rendered as "label : value" pairs in the card UI. See the [example card](#) in the overview docs for more details.
      *
-     * @param list<CardDisplayProperty|array{
-     *   dataType: value-of<DataType>,
-     *   label: string,
-     *   name: string,
-     *   options: list<DisplayOption>,
-     * }> $properties
+     * @param list<CardDisplayPropertyShape> $properties
      */
     public function withProperties(array $properties): self
     {

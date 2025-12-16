@@ -9,13 +9,14 @@ use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\ForwardPaging;
-use HubspotSDK\NextPage;
-use HubspotSDK\Settings\Currencies\ExchangeRate\FromCurrencyCode;
-use HubspotSDK\Settings\Currencies\ExchangeRate\ToCurrencyCode;
 
 /**
+ * @phpstan-import-type ExchangeRateShape from \HubspotSDK\Settings\Currencies\ExchangeRate
+ * @phpstan-import-type ForwardPagingShape from \HubspotSDK\ForwardPaging
+ *
  * @phpstan-type CollectionResponseExchangeRateForwardPagingShape = array{
- *   results: list<ExchangeRate>, paging?: ForwardPaging|null
+ *   results: list<ExchangeRateShape>,
+ *   paging?: null|ForwardPaging|ForwardPagingShape,
  * }
  */
 final class CollectionResponseExchangeRateForwardPaging implements BaseModel
@@ -54,17 +55,8 @@ final class CollectionResponseExchangeRateForwardPaging implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<ExchangeRate|array{
-     *   id: string,
-     *   conversionRate: float,
-     *   createdAt: \DateTimeInterface,
-     *   effectiveAt: \DateTimeInterface,
-     *   fromCurrencyCode: value-of<FromCurrencyCode>,
-     *   toCurrencyCode: value-of<ToCurrencyCode>,
-     *   updatedAt: \DateTimeInterface,
-     *   visibleInUi: bool,
-     * }> $results
-     * @param ForwardPaging|array{next?: NextPage|null} $paging
+     * @param list<ExchangeRateShape> $results
+     * @param ForwardPagingShape $paging
      */
     public static function with(
         array $results,
@@ -80,16 +72,7 @@ final class CollectionResponseExchangeRateForwardPaging implements BaseModel
     }
 
     /**
-     * @param list<ExchangeRate|array{
-     *   id: string,
-     *   conversionRate: float,
-     *   createdAt: \DateTimeInterface,
-     *   effectiveAt: \DateTimeInterface,
-     *   fromCurrencyCode: value-of<FromCurrencyCode>,
-     *   toCurrencyCode: value-of<ToCurrencyCode>,
-     *   updatedAt: \DateTimeInterface,
-     *   visibleInUi: bool,
-     * }> $results
+     * @param list<ExchangeRateShape> $results
      */
     public function withResults(array $results): self
     {
@@ -100,7 +83,7 @@ final class CollectionResponseExchangeRateForwardPaging implements BaseModel
     }
 
     /**
-     * @param ForwardPaging|array{next?: NextPage|null} $paging
+     * @param ForwardPagingShape $paging
      */
     public function withPaging(ForwardPaging|array $paging): self
     {

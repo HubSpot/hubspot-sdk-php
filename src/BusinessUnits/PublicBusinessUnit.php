@@ -12,8 +12,12 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * A Business Unit.
  *
+ * @phpstan-import-type PublicBusinessUnitLogoMetadataShape from \HubspotSDK\BusinessUnits\PublicBusinessUnitLogoMetadata
+ *
  * @phpstan-type PublicBusinessUnitShape = array{
- *   id: string, name: string, logoMetadata?: PublicBusinessUnitLogoMetadata|null
+ *   id: string,
+ *   name: string,
+ *   logoMetadata?: null|PublicBusinessUnitLogoMetadata|PublicBusinessUnitLogoMetadataShape,
  * }
  */
 final class PublicBusinessUnit implements BaseModel
@@ -63,9 +67,7 @@ final class PublicBusinessUnit implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param PublicBusinessUnitLogoMetadata|array{
-     *   logoAltText?: string|null, logoURL?: string|null, resizedURL?: string|null
-     * } $logoMetadata
+     * @param PublicBusinessUnitLogoMetadataShape $logoMetadata
      */
     public static function with(
         string $id,
@@ -107,9 +109,7 @@ final class PublicBusinessUnit implements BaseModel
     /**
      * A Business Unit's logo metadata.
      *
-     * @param PublicBusinessUnitLogoMetadata|array{
-     *   logoAltText?: string|null, logoURL?: string|null, resizedURL?: string|null
-     * } $logoMetadata
+     * @param PublicBusinessUnitLogoMetadataShape $logoMetadata
      */
     public function withLogoMetadata(
         PublicBusinessUnitLogoMetadata|array $logoMetadata

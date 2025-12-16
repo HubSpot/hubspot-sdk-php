@@ -14,7 +14,9 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Services\Cms\Blogs\PostsService::get()
  *
- * @phpstan-type PostGetParamsShape = array{archived?: bool, property?: string}
+ * @phpstan-type PostGetParamsShape = array{
+ *   archived?: bool|null, property?: string|null
+ * }
  */
 final class PostGetParams implements BaseModel
 {

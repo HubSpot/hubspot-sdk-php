@@ -4,20 +4,22 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\MediaBridge;
 
-use HubspotSDK\Cms\MediaBridge\InboundDBObjectType\MetaType;
 use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Property;
 
 /**
+ * @phpstan-import-type PropertyDefinitionShape from \HubspotSDK\Cms\MediaBridge\PropertyDefinition
+ * @phpstan-import-type GroupViewShape from \HubspotSDK\Cms\MediaBridge\GroupView
+ * @phpstan-import-type InboundDBObjectTypeShape from \HubspotSDK\Cms\MediaBridge\InboundDBObjectType
+ *
  * @phpstan-type ObjectDefinitionResponseShape = array{
  *   objectTypeID: string,
  *   objectTypeName: string,
- *   properties: list<PropertyDefinition>,
- *   propertyGroups: list<GroupView>,
- *   schema?: InboundDBObjectType|null,
+ *   properties: list<PropertyDefinitionShape>,
+ *   propertyGroups: list<GroupViewShape>,
+ *   schema?: null|InboundDBObjectType|InboundDBObjectTypeShape,
  * }
  */
 final class ObjectDefinitionResponse implements BaseModel
@@ -72,71 +74,9 @@ final class ObjectDefinitionResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PropertyDefinition|array{
-     *   objectTypeID: string,
-     *   property: Property,
-     *   calculationExpression?: array<string,mixed>|null,
-     *   calculationFormula?: string|null,
-     *   definitionSource?: PropertyDefinitionSource|null,
-     *   extensionData?: ExtensionData|null,
-     *   externalOptionsMetaData?: ExternalOptionsMetaData|null,
-     *   fulcrumPortalID?: int|null,
-     *   fulcrumTimestamp?: int|null,
-     *   janusGroup?: string|null,
-     *   permission?: FieldLevelPermission|null,
-     *   propertyDefinitionSource?: DefinitionSource|null,
-     *   propertyRequirements?: DefaultRequirements|null,
-     *   rollupExpression?: RollupExpression|null,
-     * }> $properties
-     * @param list<GroupView|array{
-     *   displayName: string,
-     *   displayOrder: int,
-     *   fulcrumPortalID: int,
-     *   fulcrumTimestamp: int,
-     *   hubspotDefined: bool,
-     *   name: string,
-     * }> $propertyGroups
-     * @param InboundDBObjectType|array{
-     *   id: int,
-     *   allowsSensitiveProperties: bool,
-     *   createDatePropertyName: string,
-     *   defaultSearchPropertyNames: list<string>,
-     *   deleted: bool,
-     *   fullyQualifiedName: string,
-     *   hasCustomProperties: bool,
-     *   hasDefaultProperties: bool,
-     *   hasExternalObjectIDs: bool,
-     *   hasOwners: bool,
-     *   hasPipelines: bool,
-     *   indexedForFiltersAndReports: bool,
-     *   lastModifiedPropertyName: string,
-     *   metaType: value-of<MetaType>,
-     *   metaTypeID: int,
-     *   name: string,
-     *   objectTypeID: string,
-     *   permissioningType: string,
-     *   pipelinePropertyName: string,
-     *   pipelineStagePropertyName: string,
-     *   requiredProperties: list<string>,
-     *   restorable: bool,
-     *   scopeMappings: list<ScopeMapping>,
-     *   secondaryDisplayLabelPropertyNames: list<string>,
-     *   accessScopeName?: string|null,
-     *   createdAt?: int|null,
-     *   description?: string|null,
-     *   integrationAppID?: int|null,
-     *   janusGroup?: string|null,
-     *   ownerPortalID?: int|null,
-     *   pipelineCloseDatePropertyName?: string|null,
-     *   pipelineTimeToClosePropertyName?: string|null,
-     *   pluralForm?: string|null,
-     *   primaryDisplayLabelPropertyName?: string|null,
-     *   readScopeName?: string|null,
-     *   singularForm?: string|null,
-     *   status?: string|null,
-     *   visibility?: string|null,
-     *   writeScopeName?: string|null,
-     * } $schema
+     * @param list<PropertyDefinitionShape> $properties
+     * @param list<GroupViewShape> $propertyGroups
+     * @param InboundDBObjectTypeShape $schema
      */
     public static function with(
         string $objectTypeID,
@@ -174,22 +114,7 @@ final class ObjectDefinitionResponse implements BaseModel
     }
 
     /**
-     * @param list<PropertyDefinition|array{
-     *   objectTypeID: string,
-     *   property: Property,
-     *   calculationExpression?: array<string,mixed>|null,
-     *   calculationFormula?: string|null,
-     *   definitionSource?: PropertyDefinitionSource|null,
-     *   extensionData?: ExtensionData|null,
-     *   externalOptionsMetaData?: ExternalOptionsMetaData|null,
-     *   fulcrumPortalID?: int|null,
-     *   fulcrumTimestamp?: int|null,
-     *   janusGroup?: string|null,
-     *   permission?: FieldLevelPermission|null,
-     *   propertyDefinitionSource?: DefinitionSource|null,
-     *   propertyRequirements?: DefaultRequirements|null,
-     *   rollupExpression?: RollupExpression|null,
-     * }> $properties
+     * @param list<PropertyDefinitionShape> $properties
      */
     public function withProperties(array $properties): self
     {
@@ -200,14 +125,7 @@ final class ObjectDefinitionResponse implements BaseModel
     }
 
     /**
-     * @param list<GroupView|array{
-     *   displayName: string,
-     *   displayOrder: int,
-     *   fulcrumPortalID: int,
-     *   fulcrumTimestamp: int,
-     *   hubspotDefined: bool,
-     *   name: string,
-     * }> $propertyGroups
+     * @param list<GroupViewShape> $propertyGroups
      */
     public function withPropertyGroups(array $propertyGroups): self
     {
@@ -218,47 +136,7 @@ final class ObjectDefinitionResponse implements BaseModel
     }
 
     /**
-     * @param InboundDBObjectType|array{
-     *   id: int,
-     *   allowsSensitiveProperties: bool,
-     *   createDatePropertyName: string,
-     *   defaultSearchPropertyNames: list<string>,
-     *   deleted: bool,
-     *   fullyQualifiedName: string,
-     *   hasCustomProperties: bool,
-     *   hasDefaultProperties: bool,
-     *   hasExternalObjectIDs: bool,
-     *   hasOwners: bool,
-     *   hasPipelines: bool,
-     *   indexedForFiltersAndReports: bool,
-     *   lastModifiedPropertyName: string,
-     *   metaType: value-of<MetaType>,
-     *   metaTypeID: int,
-     *   name: string,
-     *   objectTypeID: string,
-     *   permissioningType: string,
-     *   pipelinePropertyName: string,
-     *   pipelineStagePropertyName: string,
-     *   requiredProperties: list<string>,
-     *   restorable: bool,
-     *   scopeMappings: list<ScopeMapping>,
-     *   secondaryDisplayLabelPropertyNames: list<string>,
-     *   accessScopeName?: string|null,
-     *   createdAt?: int|null,
-     *   description?: string|null,
-     *   integrationAppID?: int|null,
-     *   janusGroup?: string|null,
-     *   ownerPortalID?: int|null,
-     *   pipelineCloseDatePropertyName?: string|null,
-     *   pipelineTimeToClosePropertyName?: string|null,
-     *   pluralForm?: string|null,
-     *   primaryDisplayLabelPropertyName?: string|null,
-     *   readScopeName?: string|null,
-     *   singularForm?: string|null,
-     *   status?: string|null,
-     *   visibility?: string|null,
-     *   writeScopeName?: string|null,
-     * } $schema
+     * @param InboundDBObjectTypeShape $schema
      */
     public function withSchema(InboundDBObjectType|array $schema): self
     {

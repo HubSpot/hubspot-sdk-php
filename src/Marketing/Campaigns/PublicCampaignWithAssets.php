@@ -7,13 +7,15 @@ namespace HubspotSDK\Marketing\Campaigns;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Paging;
 
 /**
+ * @phpstan-import-type CollectionResponsePublicCampaignAssetShape from \HubspotSDK\Marketing\Campaigns\CollectionResponsePublicCampaignAsset
+ * @phpstan-import-type PublicBusinessUnitShape from \HubspotSDK\Marketing\Campaigns\PublicBusinessUnit
+ *
  * @phpstan-type PublicCampaignWithAssetsShape = array{
  *   id: string,
- *   assets: array<string,CollectionResponsePublicCampaignAsset>,
- *   businessUnits: list<PublicBusinessUnit>,
+ *   assets: array<string,CollectionResponsePublicCampaignAssetShape>,
+ *   businessUnits: list<PublicBusinessUnitShape>,
  *   createdAt: \DateTimeInterface,
  *   properties: array<string,string>,
  *   updatedAt: \DateTimeInterface,
@@ -82,10 +84,8 @@ final class PublicCampaignWithAssets implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string,CollectionResponsePublicCampaignAsset|array{
-     *   results: list<PublicCampaignAsset>, paging?: Paging|null
-     * }> $assets
-     * @param list<PublicBusinessUnit|array{id: int}> $businessUnits
+     * @param array<string,CollectionResponsePublicCampaignAssetShape> $assets
+     * @param list<PublicBusinessUnitShape> $businessUnits
      * @param array<string,string> $properties
      */
     public static function with(
@@ -117,9 +117,7 @@ final class PublicCampaignWithAssets implements BaseModel
     }
 
     /**
-     * @param array<string,CollectionResponsePublicCampaignAsset|array{
-     *   results: list<PublicCampaignAsset>, paging?: Paging|null
-     * }> $assets
+     * @param array<string,CollectionResponsePublicCampaignAssetShape> $assets
      */
     public function withAssets(array $assets): self
     {
@@ -130,7 +128,7 @@ final class PublicCampaignWithAssets implements BaseModel
     }
 
     /**
-     * @param list<PublicBusinessUnit|array{id: int}> $businessUnits
+     * @param list<PublicBusinessUnitShape> $businessUnits
      */
     public function withBusinessUnits(array $businessUnits): self
     {

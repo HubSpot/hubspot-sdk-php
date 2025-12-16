@@ -8,18 +8,20 @@ use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\ErrorDetail;
 use HubspotSDK\Marketing\Subscriptions\SubscriptionDefinition;
 use HubspotSDK\Marketing\Subscriptions\V4\ActionResponseWithResultsSubscriptionDefinition\Status;
 use HubspotSDK\StandardError;
 
 /**
+ * @phpstan-import-type SubscriptionDefinitionShape from \HubspotSDK\Marketing\Subscriptions\SubscriptionDefinition
+ * @phpstan-import-type StandardErrorShape from \HubspotSDK\StandardError
+ *
  * @phpstan-type ActionResponseWithResultsSubscriptionDefinitionShape = array{
  *   completedAt: \DateTimeInterface,
- *   results: list<SubscriptionDefinition>,
+ *   results: list<SubscriptionDefinitionShape>,
  *   startedAt: \DateTimeInterface,
- *   status: value-of<Status>,
- *   errors?: list<StandardError>|null,
+ *   status: Status|value-of<Status>,
+ *   errors?: list<StandardErrorShape>|null,
  *   links?: array<string,string>|null,
  *   numErrors?: int|null,
  *   requestedAt?: \DateTimeInterface|null,
@@ -116,30 +118,9 @@ final class ActionResponseWithResultsSubscriptionDefinition implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<SubscriptionDefinition|array{
-     *   id: string,
-     *   createdAt: \DateTimeInterface,
-     *   description: string,
-     *   isActive: bool,
-     *   isDefault: bool,
-     *   isInternal: bool,
-     *   name: string,
-     *   updatedAt: \DateTimeInterface,
-     *   businessUnitID?: int|null,
-     *   communicationMethod?: string|null,
-     *   purpose?: string|null,
-     * }> $results
+     * @param list<SubscriptionDefinitionShape> $results
      * @param Status|value-of<Status> $status
-     * @param list<StandardError|array{
-     *   category: string,
-     *   context: array<string,list<string>>,
-     *   errors: list<ErrorDetail>,
-     *   links: array<string,string>,
-     *   message: string,
-     *   status: string,
-     *   id?: string|null,
-     *   subCategory?: mixed,
-     * }> $errors
+     * @param list<StandardErrorShape> $errors
      * @param array<string,string> $links
      */
     public static function with(
@@ -181,19 +162,7 @@ final class ActionResponseWithResultsSubscriptionDefinition implements BaseModel
     /**
      * An array containing the results of the operation.
      *
-     * @param list<SubscriptionDefinition|array{
-     *   id: string,
-     *   createdAt: \DateTimeInterface,
-     *   description: string,
-     *   isActive: bool,
-     *   isDefault: bool,
-     *   isInternal: bool,
-     *   name: string,
-     *   updatedAt: \DateTimeInterface,
-     *   businessUnitID?: int|null,
-     *   communicationMethod?: string|null,
-     *   purpose?: string|null,
-     * }> $results
+     * @param list<SubscriptionDefinitionShape> $results
      */
     public function withResults(array $results): self
     {
@@ -230,16 +199,7 @@ final class ActionResponseWithResultsSubscriptionDefinition implements BaseModel
     /**
      * An array of errors that occurred during the operation.
      *
-     * @param list<StandardError|array{
-     *   category: string,
-     *   context: array<string,list<string>>,
-     *   errors: list<ErrorDetail>,
-     *   links: array<string,string>,
-     *   message: string,
-     *   status: string,
-     *   id?: string|null,
-     *   subCategory?: mixed,
-     * }> $errors
+     * @param list<StandardErrorShape> $errors
      */
     public function withErrors(array $errors): self
     {

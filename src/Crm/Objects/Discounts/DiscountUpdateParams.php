@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Crm\Objects\DiscountsService::update()
  *
  * @phpstan-type DiscountUpdateParamsShape = array{
- *   properties: array<string,string>, idProperty?: string
+ *   properties: array<string,string>, idProperty?: string|null
  * }
  */
 final class DiscountUpdateParams implements BaseModel

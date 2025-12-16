@@ -20,7 +20,7 @@ interface BudgetRawContract
      * @api
      *
      * @param string $campaignGuid unique identifier for the campaign
-     * @param array<mixed>|BudgetCreateParams $params
+     * @param array<string,mixed>|BudgetCreateParams $params
      *
      * @return BaseResponse<PublicBudgetItem>
      *
@@ -36,7 +36,7 @@ interface BudgetRawContract
      * @api
      *
      * @param int $budgetID path param: Unique identifier for the budget item
-     * @param array<mixed>|BudgetUpdateParams $params
+     * @param array<string,mixed>|BudgetUpdateParams $params
      *
      * @return BaseResponse<PublicBudgetItem>
      *
@@ -52,7 +52,7 @@ interface BudgetRawContract
      * @api
      *
      * @param int $budgetID unique identifier for the budget item
-     * @param array<mixed>|BudgetDeleteParams $params
+     * @param array<string,mixed>|BudgetDeleteParams $params
      *
      * @return BaseResponse<mixed>
      *
@@ -68,7 +68,7 @@ interface BudgetRawContract
      * @api
      *
      * @param int $budgetID unique identifier for the budget item
-     * @param array<mixed>|BudgetGetParams $params
+     * @param array<string,mixed>|BudgetGetParams $params
      *
      * @return BaseResponse<PublicBudgetItem>
      *

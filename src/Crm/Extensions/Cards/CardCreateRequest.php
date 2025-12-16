@@ -7,15 +7,18 @@ namespace HubspotSDK\Crm\Extensions\Cards;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\Extensions\Cards\CardFetchBody\CardType;
 
 /**
  * State of card definition to be created.
  *
+ * @phpstan-import-type CardActionsShape from \HubspotSDK\Crm\Extensions\Cards\CardActions
+ * @phpstan-import-type CardDisplayBodyShape from \HubspotSDK\Crm\Extensions\Cards\CardDisplayBody
+ * @phpstan-import-type CardFetchBodyShape from \HubspotSDK\Crm\Extensions\Cards\CardFetchBody
+ *
  * @phpstan-type CardCreateRequestShape = array{
- *   actions: CardActions,
- *   display: CardDisplayBody,
- *   fetch: CardFetchBody,
+ *   actions: CardActions|CardActionsShape,
+ *   display: CardDisplayBody|CardDisplayBodyShape,
+ *   fetch: CardFetchBody|CardFetchBodyShape,
  *   title: string,
  * }
  */
@@ -76,14 +79,9 @@ final class CardCreateRequest implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param CardActions|array{baseURLs: list<string>} $actions
-     * @param CardDisplayBody|array{properties: list<CardDisplayProperty>} $display
-     * @param CardFetchBody|array{
-     *   objectTypes: list<CardObjectTypeBody>,
-     *   targetURL: string,
-     *   cardType?: value-of<CardType>|null,
-     *   serverlessFunction?: string|null,
-     * } $fetch
+     * @param CardActionsShape $actions
+     * @param CardDisplayBodyShape $display
+     * @param CardFetchBodyShape $fetch
      */
     public static function with(
         CardActions|array $actions,
@@ -104,7 +102,7 @@ final class CardCreateRequest implements BaseModel
     /**
      * Configuration for custom user actions on cards.
      *
-     * @param CardActions|array{baseURLs: list<string>} $actions
+     * @param CardActionsShape $actions
      */
     public function withActions(CardActions|array $actions): self
     {
@@ -117,7 +115,7 @@ final class CardCreateRequest implements BaseModel
     /**
      * Configuration for displayed info on a card.
      *
-     * @param CardDisplayBody|array{properties: list<CardDisplayProperty>} $display
+     * @param CardDisplayBodyShape $display
      */
     public function withDisplay(CardDisplayBody|array $display): self
     {
@@ -130,12 +128,7 @@ final class CardCreateRequest implements BaseModel
     /**
      * Configuration for this card's data fetch request.
      *
-     * @param CardFetchBody|array{
-     *   objectTypes: list<CardObjectTypeBody>,
-     *   targetURL: string,
-     *   cardType?: value-of<CardType>|null,
-     *   serverlessFunction?: string|null,
-     * } $fetch
+     * @param CardFetchBodyShape $fetch
      */
     public function withFetch(CardFetchBody|array $fetch): self
     {

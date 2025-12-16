@@ -11,7 +11,7 @@ use HubspotSDK\Crm\Associations\Schema\V4\PublicAssociationDefinitionConfigurati
 
 /**
  * @phpstan-type PublicAssociationDefinitionConfigurationCreateRequestShape = array{
- *   category: value-of<Category>, maxToObjectIDs: int, typeID: int
+ *   category: Category|value-of<Category>, maxToObjectIDs: int, typeID: int
  * }
  */
 final class PublicAssociationDefinitionConfigurationCreateRequest implements BaseModel

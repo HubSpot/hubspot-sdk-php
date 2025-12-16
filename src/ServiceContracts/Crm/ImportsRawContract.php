@@ -20,7 +20,7 @@ interface ImportsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|ImportCreateParams $params
+     * @param array<string,mixed>|ImportCreateParams $params
      *
      * @return BaseResponse<PublicImportResponse>
      *
@@ -34,7 +34,7 @@ interface ImportsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|ImportListParams $params
+     * @param array<string,mixed>|ImportListParams $params
      *
      * @return BaseResponse<Page<PublicImportResponse>>
      *
@@ -72,7 +72,7 @@ interface ImportsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|ImportListErrorsParams $params
+     * @param array<string,mixed>|ImportListErrorsParams $params
      *
      * @return BaseResponse<Page<PublicImportError>>
      *

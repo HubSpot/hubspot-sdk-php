@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Cms\MediaBridge\PropertiesService::list()
  *
  * @phpstan-type PropertyListParamsShape = array{
- *   appID: int, archived?: bool, properties?: string
+ *   appID: int, archived?: bool|null, properties?: string|null
  * }
  */
 final class PropertyListParams implements BaseModel

@@ -9,11 +9,15 @@ use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\ForwardPaging;
-use HubspotSDK\NextPage;
 
 /**
+ * @phpstan-import-type URLMappingShape from \HubspotSDK\Cms\URLRedirects\URLMapping
+ * @phpstan-import-type ForwardPagingShape from \HubspotSDK\ForwardPaging
+ *
  * @phpstan-type CollectionResponseWithTotalURLMappingForwardPagingShape = array{
- *   results: list<URLMapping>, total: int, paging?: ForwardPaging|null
+ *   results: list<URLMappingShape>,
+ *   total: int,
+ *   paging?: null|ForwardPaging|ForwardPagingShape,
  * }
  */
 final class CollectionResponseWithTotalURLMappingForwardPaging implements BaseModel
@@ -59,22 +63,8 @@ final class CollectionResponseWithTotalURLMappingForwardPaging implements BaseMo
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<URLMapping|array{
-     *   id: string,
-     *   destination: string,
-     *   isMatchFullURL: bool,
-     *   isMatchQueryString: bool,
-     *   isOnlyAfterNotFound: bool,
-     *   isPattern: bool,
-     *   isProtocolAgnostic: bool,
-     *   isTrailingSlashOptional: bool,
-     *   precedence: int,
-     *   redirectStyle: int,
-     *   routePrefix: string,
-     *   created?: \DateTimeInterface|null,
-     *   updated?: \DateTimeInterface|null,
-     * }> $results
-     * @param ForwardPaging|array{next?: NextPage|null} $paging
+     * @param list<URLMappingShape> $results
+     * @param ForwardPagingShape $paging
      */
     public static function with(
         array $results,
@@ -92,21 +82,7 @@ final class CollectionResponseWithTotalURLMappingForwardPaging implements BaseMo
     }
 
     /**
-     * @param list<URLMapping|array{
-     *   id: string,
-     *   destination: string,
-     *   isMatchFullURL: bool,
-     *   isMatchQueryString: bool,
-     *   isOnlyAfterNotFound: bool,
-     *   isPattern: bool,
-     *   isProtocolAgnostic: bool,
-     *   isTrailingSlashOptional: bool,
-     *   precedence: int,
-     *   redirectStyle: int,
-     *   routePrefix: string,
-     *   created?: \DateTimeInterface|null,
-     *   updated?: \DateTimeInterface|null,
-     * }> $results
+     * @param list<URLMappingShape> $results
      */
     public function withResults(array $results): self
     {
@@ -125,7 +101,7 @@ final class CollectionResponseWithTotalURLMappingForwardPaging implements BaseMo
     }
 
     /**
-     * @param ForwardPaging|array{next?: NextPage|null} $paging
+     * @param ForwardPagingShape $paging
      */
     public function withPaging(ForwardPaging|array $paging): self
     {

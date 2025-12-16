@@ -11,11 +11,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicInListFilter\FilterType;
 
 /**
+ * @phpstan-import-type PublicInListFilterMetadataShape from \HubspotSDK\PublicInListFilterMetadata
+ *
  * @phpstan-type PublicInListFilterShape = array{
- *   filterType: value-of<FilterType>,
+ *   filterType: FilterType|value-of<FilterType>,
  *   listID: string,
  *   operator: string,
- *   metadata?: PublicInListFilterMetadata|null,
+ *   metadata?: null|PublicInListFilterMetadata|PublicInListFilterMetadataShape,
  * }
  */
 final class PublicInListFilter implements BaseModel
@@ -64,9 +66,7 @@ final class PublicInListFilter implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param FilterType|value-of<FilterType> $filterType
-     * @param PublicInListFilterMetadata|array{
-     *   id: string, inListType: string
-     * } $metadata
+     * @param PublicInListFilterMetadataShape $metadata
      */
     public static function with(
         string $listID,
@@ -113,9 +113,7 @@ final class PublicInListFilter implements BaseModel
     }
 
     /**
-     * @param PublicInListFilterMetadata|array{
-     *   id: string, inListType: string
-     * } $metadata
+     * @param PublicInListFilterMetadataShape $metadata
      */
     public function withMetadata(
         PublicInListFilterMetadata|array $metadata

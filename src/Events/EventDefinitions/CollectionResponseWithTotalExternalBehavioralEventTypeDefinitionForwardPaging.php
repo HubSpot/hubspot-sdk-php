@@ -9,11 +9,14 @@ use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\ForwardPaging;
-use HubspotSDK\NextPage;
 
 /**
+ * @phpstan-import-type ForwardPagingShape from \HubspotSDK\ForwardPaging
+ *
  * @phpstan-type CollectionResponseWithTotalExternalBehavioralEventTypeDefinitionForwardPagingShape = array{
- *   results: list<mixed>, total: int, paging?: ForwardPaging|null
+ *   results: list<mixed>,
+ *   total: int,
+ *   paging?: null|ForwardPaging|ForwardPagingShape,
  * }
  */
 final class CollectionResponseWithTotalExternalBehavioralEventTypeDefinitionForwardPaging implements BaseModel
@@ -62,7 +65,7 @@ final class CollectionResponseWithTotalExternalBehavioralEventTypeDefinitionForw
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<mixed> $results
-     * @param ForwardPaging|array{next?: NextPage|null} $paging
+     * @param ForwardPagingShape $paging
      */
     public static function with(
         array $results,
@@ -99,7 +102,7 @@ final class CollectionResponseWithTotalExternalBehavioralEventTypeDefinitionForw
     }
 
     /**
-     * @param ForwardPaging|array{next?: NextPage|null} $paging
+     * @param ForwardPagingShape $paging
      */
     public function withPaging(ForwardPaging|array $paging): self
     {

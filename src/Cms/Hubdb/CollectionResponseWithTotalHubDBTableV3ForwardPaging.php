@@ -9,11 +9,15 @@ use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\ForwardPaging;
-use HubspotSDK\NextPage;
 
 /**
+ * @phpstan-import-type HubDBTableV3Shape from \HubspotSDK\Cms\Hubdb\HubDBTableV3
+ * @phpstan-import-type ForwardPagingShape from \HubspotSDK\ForwardPaging
+ *
  * @phpstan-type CollectionResponseWithTotalHubDBTableV3ForwardPagingShape = array{
- *   results: list<HubDBTableV3>, total: int, paging?: ForwardPaging|null
+ *   results: list<HubDBTableV3Shape>,
+ *   total: int,
+ *   paging?: null|ForwardPaging|ForwardPagingShape,
  * }
  */
 final class CollectionResponseWithTotalHubDBTableV3ForwardPaging implements BaseModel
@@ -59,29 +63,8 @@ final class CollectionResponseWithTotalHubDBTableV3ForwardPaging implements Base
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<HubDBTableV3|array{
-     *   id: string,
-     *   allowChildTables: bool,
-     *   allowPublicAPIAccess: bool,
-     *   columnCount: int,
-     *   columns: list<Column>,
-     *   createdAt: \DateTimeInterface,
-     *   deleted: bool,
-     *   deletedAt: \DateTimeInterface,
-     *   dynamicMetaTags: array<string,int>,
-     *   enableChildTablePages: bool,
-     *   label: string,
-     *   name: string,
-     *   published: bool,
-     *   publishedAt: \DateTimeInterface,
-     *   rowCount: int,
-     *   updatedAt: \DateTimeInterface,
-     *   useForPages: bool,
-     *   createdBy?: SimpleUser|null,
-     *   isOrderedManually?: bool|null,
-     *   updatedBy?: SimpleUser|null,
-     * }> $results
-     * @param ForwardPaging|array{next?: NextPage|null} $paging
+     * @param list<HubDBTableV3Shape> $results
+     * @param ForwardPagingShape $paging
      */
     public static function with(
         array $results,
@@ -99,28 +82,7 @@ final class CollectionResponseWithTotalHubDBTableV3ForwardPaging implements Base
     }
 
     /**
-     * @param list<HubDBTableV3|array{
-     *   id: string,
-     *   allowChildTables: bool,
-     *   allowPublicAPIAccess: bool,
-     *   columnCount: int,
-     *   columns: list<Column>,
-     *   createdAt: \DateTimeInterface,
-     *   deleted: bool,
-     *   deletedAt: \DateTimeInterface,
-     *   dynamicMetaTags: array<string,int>,
-     *   enableChildTablePages: bool,
-     *   label: string,
-     *   name: string,
-     *   published: bool,
-     *   publishedAt: \DateTimeInterface,
-     *   rowCount: int,
-     *   updatedAt: \DateTimeInterface,
-     *   useForPages: bool,
-     *   createdBy?: SimpleUser|null,
-     *   isOrderedManually?: bool|null,
-     *   updatedBy?: SimpleUser|null,
-     * }> $results
+     * @param list<HubDBTableV3Shape> $results
      */
     public function withResults(array $results): self
     {
@@ -139,7 +101,7 @@ final class CollectionResponseWithTotalHubDBTableV3ForwardPaging implements Base
     }
 
     /**
-     * @param ForwardPaging|array{next?: NextPage|null} $paging
+     * @param ForwardPagingShape $paging
      */
     public function withPaging(ForwardPaging|array $paging): self
     {

@@ -11,7 +11,7 @@ use HubspotSDK\Crm\Extensions\Cards\CardObjectTypeBody\Name;
 
 /**
  * @phpstan-type CardObjectTypeBodyShape = array{
- *   name: value-of<Name>, propertiesToSend: list<string>
+ *   name: Name|value-of<Name>, propertiesToSend: list<string>
  * }
  */
 final class CardObjectTypeBody implements BaseModel

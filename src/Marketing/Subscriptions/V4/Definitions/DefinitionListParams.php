@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Marketing\Subscriptions\V4\DefinitionsService::list()
  *
  * @phpstan-type DefinitionListParamsShape = array{
- *   businessUnitID?: int, includeTranslations?: bool
+ *   businessUnitID?: int|null, includeTranslations?: bool|null
  * }
  */
 final class DefinitionListParams implements BaseModel

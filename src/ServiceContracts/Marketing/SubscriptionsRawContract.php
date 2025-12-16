@@ -39,7 +39,7 @@ interface SubscriptionsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|SubscriptionSubscribeParams $params
+     * @param array<string,mixed>|SubscriptionSubscribeParams $params
      *
      * @return BaseResponse<PublicSubscriptionStatus>
      *
@@ -53,7 +53,7 @@ interface SubscriptionsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|SubscriptionUnsubscribeParams $params
+     * @param array<string,mixed>|SubscriptionUnsubscribeParams $params
      *
      * @return BaseResponse<PublicSubscriptionStatus>
      *

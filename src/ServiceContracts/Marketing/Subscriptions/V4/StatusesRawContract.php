@@ -28,7 +28,7 @@ interface StatusesRawContract
      * @api
      *
      * @param string $subscriberIDString the contact's email address
-     * @param array<mixed>|StatusUpdateParams $params
+     * @param array<string,mixed>|StatusUpdateParams $params
      *
      * @return BaseResponse<ActionResponseWithResultsPublicStatus>
      *
@@ -43,7 +43,7 @@ interface StatusesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|StatusBatchGetParams $params
+     * @param array<string,mixed>|StatusBatchGetParams $params
      *
      * @return BaseResponse<BatchResponsePublicStatusBulkResponse>
      *
@@ -57,7 +57,7 @@ interface StatusesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|StatusBatchGetUnsubscribeAllStatusParams $params
+     * @param array<string,mixed>|StatusBatchGetUnsubscribeAllStatusParams $params
      *
      * @return BaseResponse<BatchResponsePublicWideStatusBulkResponse>
      *
@@ -71,7 +71,7 @@ interface StatusesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|StatusBatchUnsubscribeAllParams $params
+     * @param array<string,mixed>|StatusBatchUnsubscribeAllParams $params
      *
      * @return BaseResponse<BatchResponsePublicBulkOptOutFromAllResponse>
      *
@@ -85,7 +85,7 @@ interface StatusesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|StatusBatchUpdateParams $params
+     * @param array<string,mixed>|StatusBatchUpdateParams $params
      *
      * @return BaseResponse<BatchResponsePublicStatus>
      *
@@ -100,7 +100,7 @@ interface StatusesRawContract
      * @api
      *
      * @param string $subscriberIDString the contact's email address
-     * @param array<mixed>|StatusGetParams $params
+     * @param array<string,mixed>|StatusGetParams $params
      *
      * @return BaseResponse<ActionResponseWithResultsPublicStatus>
      *
@@ -116,7 +116,7 @@ interface StatusesRawContract
      * @api
      *
      * @param string $subscriberIDString the contact's email address
-     * @param array<mixed>|StatusGetUnsubscribeAllStatusParams $params
+     * @param array<string,mixed>|StatusGetUnsubscribeAllStatusParams $params
      *
      * @return BaseResponse<ActionResponseWithResultsPublicWideStatus>
      *
@@ -132,7 +132,7 @@ interface StatusesRawContract
      * @api
      *
      * @param string $subscriberIDString the contact's email address
-     * @param array<mixed>|StatusUnsubscribeAllParams $params
+     * @param array<string,mixed>|StatusUnsubscribeAllParams $params
      *
      * @return BaseResponse<ActionResponseWithResultsPublicStatus>
      *

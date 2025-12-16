@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Marketing\Campaigns\ReportsService::getAttributionMetrics()
  *
  * @phpstan-type ReportGetAttributionMetricsParamsShape = array{
- *   endDate?: string, startDate?: string
+ *   endDate?: string|null, startDate?: string|null
  * }
  */
 final class ReportGetAttributionMetricsParams implements BaseModel

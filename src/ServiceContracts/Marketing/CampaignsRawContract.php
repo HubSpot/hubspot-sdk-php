@@ -20,7 +20,7 @@ interface CampaignsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|CampaignCreateParams $params
+     * @param array<string,mixed>|CampaignCreateParams $params
      *
      * @return BaseResponse<PublicCampaign>
      *
@@ -35,7 +35,7 @@ interface CampaignsRawContract
      * @api
      *
      * @param string $campaignGuid unique identifier for the campaign, formatted as a UUID
-     * @param array<mixed>|CampaignUpdateParams $params
+     * @param array<string,mixed>|CampaignUpdateParams $params
      *
      * @return BaseResponse<PublicCampaign>
      *
@@ -50,7 +50,7 @@ interface CampaignsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|CampaignListParams $params
+     * @param array<string,mixed>|CampaignListParams $params
      *
      * @return BaseResponse<Page<PublicCampaign>>
      *
@@ -79,7 +79,7 @@ interface CampaignsRawContract
      * @api
      *
      * @param string $campaignGuid unique identifier for the campaign, formatted as a UUID
-     * @param array<mixed>|CampaignGetParams $params
+     * @param array<string,mixed>|CampaignGetParams $params
      *
      * @return BaseResponse<PublicCampaignWithAssets>
      *

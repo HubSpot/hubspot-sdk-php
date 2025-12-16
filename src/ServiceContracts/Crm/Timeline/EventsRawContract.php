@@ -19,7 +19,7 @@ interface EventsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|EventCreateParams $params
+     * @param array<string,mixed>|EventCreateParams $params
      *
      * @return BaseResponse<TimelineEventResponse>
      *
@@ -33,7 +33,7 @@ interface EventsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|EventBatchCreateParams $params
+     * @param array<string,mixed>|EventBatchCreateParams $params
      *
      * @return BaseResponse<mixed>
      *
@@ -48,7 +48,7 @@ interface EventsRawContract
      * @api
      *
      * @param string $eventID the event ID
-     * @param array<mixed>|EventGetParams $params
+     * @param array<string,mixed>|EventGetParams $params
      *
      * @return BaseResponse<TimelineEventResponse>
      *
@@ -64,7 +64,7 @@ interface EventsRawContract
      * @api
      *
      * @param string $eventID the event ID
-     * @param array<mixed>|EventGetDetailParams $params
+     * @param array<string,mixed>|EventGetDetailParams $params
      *
      * @return BaseResponse<EventDetail>
      *

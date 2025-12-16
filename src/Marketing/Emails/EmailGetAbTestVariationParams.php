@@ -15,11 +15,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Marketing\EmailsService::getAbTestVariation()
  *
  * @phpstan-type EmailGetAbTestVariationParamsShape = array{
- *   archived?: bool,
- *   includedProperties?: list<string>,
- *   includeStats?: bool,
- *   marketingCampaignNames?: bool,
- *   workflowNames?: bool,
+ *   archived?: bool|null,
+ *   includedProperties?: list<string>|null,
+ *   includeStats?: bool|null,
+ *   marketingCampaignNames?: bool|null,
+ *   workflowNames?: bool|null,
  * }
  */
 final class EmailGetAbTestVariationParams implements BaseModel

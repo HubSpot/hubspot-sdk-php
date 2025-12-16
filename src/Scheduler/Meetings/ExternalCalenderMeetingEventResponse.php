@@ -7,15 +7,15 @@ namespace HubspotSDK\Scheduler\Meetings;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Scheduler\Meetings\ExternalCalendarMeetingEventResponseProperties\HsEngagementSource;
-use HubspotSDK\Scheduler\Meetings\ExternalCalendarMeetingEventResponseProperties\HsMeetingLocationType;
 
 /**
+ * @phpstan-import-type ExternalCalendarMeetingEventResponsePropertiesShape from \HubspotSDK\Scheduler\Meetings\ExternalCalendarMeetingEventResponseProperties
+ *
  * @phpstan-type ExternalCalenderMeetingEventResponseShape = array{
  *   id: string,
  *   createdAt: \DateTimeInterface,
  *   lastUpdatedAt: \DateTimeInterface,
- *   properties: ExternalCalendarMeetingEventResponseProperties,
+ *   properties: ExternalCalendarMeetingEventResponseProperties|ExternalCalendarMeetingEventResponsePropertiesShape,
  * }
  */
 final class ExternalCalenderMeetingEventResponse implements BaseModel
@@ -65,26 +65,7 @@ final class ExternalCalenderMeetingEventResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param ExternalCalendarMeetingEventResponseProperties|array{
-     *   hsEngagementSource: value-of<HsEngagementSource>,
-     *   hsEngagementSourceID: string,
-     *   hsMeetingEndTime: \DateTimeInterface,
-     *   hsMeetingOutcome: string,
-     *   hsMeetingStartTime: \DateTimeInterface,
-     *   hsMeetingTitle: string,
-     *   hsTimestamp: \DateTimeInterface,
-     *   hsActivityType?: string|null,
-     *   hsAttachmentIDs?: list<string>|null,
-     *   hsAttendeeOwnerIDs?: list<string>|null,
-     *   hsIncludeDescriptionInReminder?: string|null,
-     *   hsInternalMeetingNotes?: string|null,
-     *   hsMeetingBody?: string|null,
-     *   hsMeetingExternalURL?: string|null,
-     *   hsMeetingLocation?: string|null,
-     *   hsMeetingLocationType?: value-of<HsMeetingLocationType>|null,
-     *   hsUniqueID?: string|null,
-     *   hubspotOwnerID?: string|null,
-     * } $properties
+     * @param ExternalCalendarMeetingEventResponsePropertiesShape $properties
      */
     public static function with(
         string $id,
@@ -127,26 +108,7 @@ final class ExternalCalenderMeetingEventResponse implements BaseModel
     }
 
     /**
-     * @param ExternalCalendarMeetingEventResponseProperties|array{
-     *   hsEngagementSource: value-of<HsEngagementSource>,
-     *   hsEngagementSourceID: string,
-     *   hsMeetingEndTime: \DateTimeInterface,
-     *   hsMeetingOutcome: string,
-     *   hsMeetingStartTime: \DateTimeInterface,
-     *   hsMeetingTitle: string,
-     *   hsTimestamp: \DateTimeInterface,
-     *   hsActivityType?: string|null,
-     *   hsAttachmentIDs?: list<string>|null,
-     *   hsAttendeeOwnerIDs?: list<string>|null,
-     *   hsIncludeDescriptionInReminder?: string|null,
-     *   hsInternalMeetingNotes?: string|null,
-     *   hsMeetingBody?: string|null,
-     *   hsMeetingExternalURL?: string|null,
-     *   hsMeetingLocation?: string|null,
-     *   hsMeetingLocationType?: value-of<HsMeetingLocationType>|null,
-     *   hsUniqueID?: string|null,
-     *   hubspotOwnerID?: string|null,
-     * } $properties
+     * @param ExternalCalendarMeetingEventResponsePropertiesShape $properties
      */
     public function withProperties(
         ExternalCalendarMeetingEventResponseProperties|array $properties

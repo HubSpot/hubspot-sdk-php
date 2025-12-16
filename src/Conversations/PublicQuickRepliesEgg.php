@@ -10,8 +10,10 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type QuickReplyShape from \HubspotSDK\Conversations\QuickReply
+ *
  * @phpstan-type PublicQuickRepliesEggShape = array{
- *   quickReplies: list<QuickReply>, type: value-of<Type>
+ *   quickReplies: list<QuickReplyShape>, type: Type|value-of<Type>
  * }
  */
 final class PublicQuickRepliesEgg implements BaseModel
@@ -51,9 +53,7 @@ final class PublicQuickRepliesEgg implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<QuickReply|array{
-     *   value: string, valueType: string, label?: string|null
-     * }> $quickReplies
+     * @param list<QuickReplyShape> $quickReplies
      * @param Type|value-of<Type> $type
      */
     public static function with(
@@ -69,9 +69,7 @@ final class PublicQuickRepliesEgg implements BaseModel
     }
 
     /**
-     * @param list<QuickReply|array{
-     *   value: string, valueType: string, label?: string|null
-     * }> $quickReplies
+     * @param list<QuickReplyShape> $quickReplies
      */
     public function withQuickReplies(array $quickReplies): self
     {

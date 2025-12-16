@@ -9,26 +9,16 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Timeline\TimelineEvent;
-use HubspotSDK\Crm\Timeline\TimelineEventIFrame;
 
 /**
  * Batch create multiple instances of timeline events based on an event template. Once created, these event are immutable on the object timeline and cannot be modified. If the event template was configured to update object properties via `objectPropertyName`, this call will also attempt to updates those properties, or add them if they don't exist.
  *
  * @see HubspotSDK\Services\Crm\Timeline\EventsService::batchCreate()
  *
+ * @phpstan-import-type TimelineEventShape from \HubspotSDK\Crm\Timeline\TimelineEvent
+ *
  * @phpstan-type EventBatchCreateParamsShape = array{
- *   inputs: list<TimelineEvent|array{
- *     eventTemplateID: string,
- *     tokens: array<string,string>,
- *     id?: string|null,
- *     domain?: string|null,
- *     email?: string|null,
- *     extraData?: mixed,
- *     objectID?: string|null,
- *     timelineIFrame?: TimelineEventIFrame|null,
- *     timestamp?: \DateTimeInterface|null,
- *     utk?: string|null,
- *   }>,
+ *   inputs: list<TimelineEventShape>
  * }
  */
 final class EventBatchCreateParams implements BaseModel
@@ -69,18 +59,7 @@ final class EventBatchCreateParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<TimelineEvent|array{
-     *   eventTemplateID: string,
-     *   tokens: array<string,string>,
-     *   id?: string|null,
-     *   domain?: string|null,
-     *   email?: string|null,
-     *   extraData?: mixed,
-     *   objectID?: string|null,
-     *   timelineIFrame?: TimelineEventIFrame|null,
-     *   timestamp?: \DateTimeInterface|null,
-     *   utk?: string|null,
-     * }> $inputs
+     * @param list<TimelineEventShape> $inputs
      */
     public static function with(array $inputs): self
     {
@@ -94,18 +73,7 @@ final class EventBatchCreateParams implements BaseModel
     /**
      * A collection of timeline events we want to create.
      *
-     * @param list<TimelineEvent|array{
-     *   eventTemplateID: string,
-     *   tokens: array<string,string>,
-     *   id?: string|null,
-     *   domain?: string|null,
-     *   email?: string|null,
-     *   extraData?: mixed,
-     *   objectID?: string|null,
-     *   timelineIFrame?: TimelineEventIFrame|null,
-     *   timestamp?: \DateTimeInterface|null,
-     *   utk?: string|null,
-     * }> $inputs
+     * @param list<TimelineEventShape> $inputs
      */
     public function withInputs(array $inputs): self
     {

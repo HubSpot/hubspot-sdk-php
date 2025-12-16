@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Services\Crm\Lists\FoldersService::get()
  *
- * @phpstan-type FolderGetParamsShape = array{folderID?: string}
+ * @phpstan-type FolderGetParamsShape = array{folderID?: string|null}
  */
 final class FolderGetParams implements BaseModel
 {

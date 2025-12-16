@@ -5,15 +5,19 @@ declare(strict_types=1);
 namespace HubspotSDK\Crm;
 
 use HubspotSDK\AssociationSpec;
-use HubspotSDK\AssociationSpec\AssociationCategory;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicObjectID;
 
 /**
+ * @phpstan-import-type AssociationSpecShape from \HubspotSDK\AssociationSpec
+ * @phpstan-import-type PublicObjectIDShape from \HubspotSDK\PublicObjectID
+ *
  * @phpstan-type PublicDefaultAssociationShape = array{
- *   associationSpec: AssociationSpec, from: PublicObjectID, to: PublicObjectID
+ *   associationSpec: AssociationSpec|AssociationSpecShape,
+ *   from: PublicObjectID|PublicObjectIDShape,
+ *   to: PublicObjectID|PublicObjectIDShape,
  * }
  */
 final class PublicDefaultAssociation implements BaseModel
@@ -60,11 +64,9 @@ final class PublicDefaultAssociation implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param AssociationSpec|array{
-     *   associationCategory: value-of<AssociationCategory>, associationTypeID: int
-     * } $associationSpec
-     * @param PublicObjectID|array{id: string} $from
-     * @param PublicObjectID|array{id: string} $to
+     * @param AssociationSpecShape $associationSpec
+     * @param PublicObjectIDShape $from
+     * @param PublicObjectIDShape $to
      */
     public static function with(
         AssociationSpec|array $associationSpec,
@@ -83,9 +85,7 @@ final class PublicDefaultAssociation implements BaseModel
     /**
      * Defines the type, direction, and details of the relationship between two CRM objects.
      *
-     * @param AssociationSpec|array{
-     *   associationCategory: value-of<AssociationCategory>, associationTypeID: int
-     * } $associationSpec
+     * @param AssociationSpecShape $associationSpec
      */
     public function withAssociationSpec(
         AssociationSpec|array $associationSpec
@@ -97,7 +97,7 @@ final class PublicDefaultAssociation implements BaseModel
     }
 
     /**
-     * @param PublicObjectID|array{id: string} $from
+     * @param PublicObjectIDShape $from
      */
     public function withFrom(PublicObjectID|array $from): self
     {
@@ -108,7 +108,7 @@ final class PublicDefaultAssociation implements BaseModel
     }
 
     /**
-     * @param PublicObjectID|array{id: string} $to
+     * @param PublicObjectIDShape $to
      */
     public function withTo(PublicObjectID|array $to): self
     {

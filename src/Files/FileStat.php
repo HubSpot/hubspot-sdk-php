@@ -7,10 +7,14 @@ namespace HubspotSDK\Files;
 use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Files\File\Access;
 
 /**
- * @phpstan-type FileStatShape = array{file?: File|null, folder?: Folder|null}
+ * @phpstan-import-type FileShape from \HubspotSDK\Files\File
+ * @phpstan-import-type FolderShape from \HubspotSDK\Files\Folder
+ *
+ * @phpstan-type FileStatShape = array{
+ *   file?: null|File|FileShape, folder?: null|Folder|FolderShape
+ * }
  */
 final class FileStat implements BaseModel
 {
@@ -36,39 +40,8 @@ final class FileStat implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param File|array{
-     *   id: string,
-     *   access: value-of<Access>,
-     *   archived: bool,
-     *   createdAt: \DateTimeInterface,
-     *   updatedAt: \DateTimeInterface,
-     *   archivedAt?: \DateTimeInterface|null,
-     *   defaultHostingURL?: string|null,
-     *   encoding?: string|null,
-     *   expiresAt?: int|null,
-     *   extension?: string|null,
-     *   fileMd5?: string|null,
-     *   height?: int|null,
-     *   isUsableInContent?: bool|null,
-     *   name?: string|null,
-     *   parentFolderID?: string|null,
-     *   path?: string|null,
-     *   size?: int|null,
-     *   sourceGroup?: string|null,
-     *   type?: string|null,
-     *   url?: string|null,
-     *   width?: int|null,
-     * } $file
-     * @param Folder|array{
-     *   id: string,
-     *   archived: bool,
-     *   createdAt: \DateTimeInterface,
-     *   updatedAt: \DateTimeInterface,
-     *   archivedAt?: \DateTimeInterface|null,
-     *   name?: string|null,
-     *   parentFolderID?: string|null,
-     *   path?: string|null,
-     * } $folder
+     * @param FileShape $file
+     * @param FolderShape $folder
      */
     public static function with(
         File|array|null $file = null,
@@ -85,29 +58,7 @@ final class FileStat implements BaseModel
     /**
      * File.
      *
-     * @param File|array{
-     *   id: string,
-     *   access: value-of<Access>,
-     *   archived: bool,
-     *   createdAt: \DateTimeInterface,
-     *   updatedAt: \DateTimeInterface,
-     *   archivedAt?: \DateTimeInterface|null,
-     *   defaultHostingURL?: string|null,
-     *   encoding?: string|null,
-     *   expiresAt?: int|null,
-     *   extension?: string|null,
-     *   fileMd5?: string|null,
-     *   height?: int|null,
-     *   isUsableInContent?: bool|null,
-     *   name?: string|null,
-     *   parentFolderID?: string|null,
-     *   path?: string|null,
-     *   size?: int|null,
-     *   sourceGroup?: string|null,
-     *   type?: string|null,
-     *   url?: string|null,
-     *   width?: int|null,
-     * } $file
+     * @param FileShape $file
      */
     public function withFile(File|array $file): self
     {
@@ -118,16 +69,7 @@ final class FileStat implements BaseModel
     }
 
     /**
-     * @param Folder|array{
-     *   id: string,
-     *   archived: bool,
-     *   createdAt: \DateTimeInterface,
-     *   updatedAt: \DateTimeInterface,
-     *   archivedAt?: \DateTimeInterface|null,
-     *   name?: string|null,
-     *   parentFolderID?: string|null,
-     *   path?: string|null,
-     * } $folder
+     * @param FolderShape $folder
      */
     public function withFolder(Folder|array $folder): self
     {

@@ -12,7 +12,9 @@ use HubspotSDK\PublicWebinarFilter\FilterType;
 
 /**
  * @phpstan-type PublicWebinarFilterShape = array{
- *   filterType: value-of<FilterType>, operator: string, webinarID?: string|null
+ *   filterType: FilterType|value-of<FilterType>,
+ *   operator: string,
+ *   webinarID?: string|null,
  * }
  */
 final class PublicWebinarFilter implements BaseModel

@@ -14,7 +14,9 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Services\Cms\Pages\SitePagesService::get()
  *
- * @phpstan-type SitePageGetParamsShape = array{archived?: bool, property?: string}
+ * @phpstan-type SitePageGetParamsShape = array{
+ *   archived?: bool|null, property?: string|null
+ * }
  */
 final class SitePageGetParams implements BaseModel
 {

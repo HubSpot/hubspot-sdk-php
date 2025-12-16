@@ -13,8 +13,8 @@ use HubspotSDK\Events\EventDefinitions\TimeOffset\TimeUnit;
 /**
  * @phpstan-type TimeOffsetShape = array{
  *   amount: int,
- *   offsetDirection: value-of<OffsetDirection>,
- *   timeUnit: value-of<TimeUnit>,
+ *   offsetDirection: OffsetDirection|value-of<OffsetDirection>,
+ *   timeUnit: TimeUnit|value-of<TimeUnit>,
  * }
  */
 final class TimeOffset implements BaseModel

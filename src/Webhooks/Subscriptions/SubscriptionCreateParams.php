@@ -18,9 +18,9 @@ use HubspotSDK\Webhooks\Subscriptions\SubscriptionCreateParams\EventType;
  *
  * @phpstan-type SubscriptionCreateParamsShape = array{
  *   eventType: EventType|value-of<EventType>,
- *   active?: bool,
- *   objectTypeID?: string,
- *   propertyName?: string,
+ *   active?: bool|null,
+ *   objectTypeID?: string|null,
+ *   propertyName?: string|null,
  * }
  */
 final class SubscriptionCreateParams implements BaseModel

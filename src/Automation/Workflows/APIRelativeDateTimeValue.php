@@ -5,15 +5,15 @@ declare(strict_types=1);
 namespace HubspotSDK\Automation\Workflows;
 
 use HubspotSDK\Automation\Workflows\APIRelativeDateTimeValue\Type;
-use HubspotSDK\Automation\Workflows\APITimeDelay\DaysOfWeek;
-use HubspotSDK\Automation\Workflows\APITimeDelay\TimeUnit;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type APITimeDelayShape from \HubspotSDK\Automation\Workflows\APITimeDelay
+ *
  * @phpstan-type APIRelativeDateTimeValueShape = array{
- *   timeDelay: APITimeDelay, type: value-of<Type>
+ *   timeDelay: APITimeDelay|APITimeDelayShape, type: Type|value-of<Type>
  * }
  */
 final class APIRelativeDateTimeValue implements BaseModel
@@ -52,13 +52,7 @@ final class APIRelativeDateTimeValue implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param APITimeDelay|array{
-     *   daysOfWeek: list<value-of<DaysOfWeek>>,
-     *   delta: int,
-     *   timeUnit: value-of<TimeUnit>,
-     *   timeOfDay?: APITimeOfDay|null,
-     *   timeZoneStrategy?: APIStaticTimeZoneStrategy|null,
-     * } $timeDelay
+     * @param APITimeDelayShape $timeDelay
      * @param Type|value-of<Type> $type
      */
     public static function with(
@@ -74,13 +68,7 @@ final class APIRelativeDateTimeValue implements BaseModel
     }
 
     /**
-     * @param APITimeDelay|array{
-     *   daysOfWeek: list<value-of<DaysOfWeek>>,
-     *   delta: int,
-     *   timeUnit: value-of<TimeUnit>,
-     *   timeOfDay?: APITimeOfDay|null,
-     *   timeZoneStrategy?: APIStaticTimeZoneStrategy|null,
-     * } $timeDelay
+     * @param APITimeDelayShape $timeDelay
      */
     public function withTimeDelay(APITimeDelay|array $timeDelay): self
     {

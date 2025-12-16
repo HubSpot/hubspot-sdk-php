@@ -13,13 +13,16 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PropertyModificationMetadata;
 
 /**
+ * @phpstan-import-type Option1Shape from \HubspotSDK\Cms\MediaBridge\Option1
+ * @phpstan-import-type PropertyModificationMetadataShape from \HubspotSDK\PropertyModificationMetadata
+ *
  * @phpstan-type Property1Shape = array{
  *   description: string,
  *   fieldType: string,
  *   groupName: string,
  *   label: string,
  *   name: string,
- *   options: list<Option1>,
+ *   options: list<Option1Shape>,
  *   type: string,
  *   archived?: bool|null,
  *   archivedAt?: \DateTimeInterface|null,
@@ -27,15 +30,15 @@ use HubspotSDK\PropertyModificationMetadata;
  *   calculationFormula?: string|null,
  *   createdAt?: \DateTimeInterface|null,
  *   createdUserID?: string|null,
- *   dataSensitivity?: value-of<DataSensitivity>|null,
- *   dateDisplayHint?: value-of<DateDisplayHint>|null,
+ *   dataSensitivity?: null|DataSensitivity|value-of<DataSensitivity>,
+ *   dateDisplayHint?: null|DateDisplayHint|value-of<DateDisplayHint>,
  *   displayOrder?: int|null,
  *   externalOptions?: bool|null,
  *   formField?: bool|null,
  *   hasUniqueValue?: bool|null,
  *   hidden?: bool|null,
  *   hubspotDefined?: bool|null,
- *   modificationMetadata?: PropertyModificationMetadata|null,
+ *   modificationMetadata?: null|PropertyModificationMetadata|PropertyModificationMetadataShape,
  *   referencedObjectType?: string|null,
  *   sensitiveDataCategories?: list<string>|null,
  *   showCurrencySymbol?: bool|null,
@@ -172,21 +175,10 @@ final class Property1 implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<Option1|array{
-     *   hidden: bool,
-     *   label: string,
-     *   value: string,
-     *   description?: string|null,
-     *   displayOrder?: int|null,
-     * }> $options
+     * @param list<Option1Shape> $options
      * @param DataSensitivity|value-of<DataSensitivity> $dataSensitivity
      * @param DateDisplayHint|value-of<DateDisplayHint> $dateDisplayHint
-     * @param PropertyModificationMetadata|array{
-     *   archivable: bool,
-     *   readOnlyDefinition: bool,
-     *   readOnlyValue: bool,
-     *   readOnlyOptions?: bool|null,
-     * } $modificationMetadata
+     * @param PropertyModificationMetadataShape $modificationMetadata
      * @param list<string> $sensitiveDataCategories
      */
     public static function with(
@@ -293,13 +285,7 @@ final class Property1 implements BaseModel
     }
 
     /**
-     * @param list<Option1|array{
-     *   hidden: bool,
-     *   label: string,
-     *   value: string,
-     *   description?: string|null,
-     *   displayOrder?: int|null,
-     * }> $options
+     * @param list<Option1Shape> $options
      */
     public function withOptions(array $options): self
     {
@@ -438,12 +424,7 @@ final class Property1 implements BaseModel
     }
 
     /**
-     * @param PropertyModificationMetadata|array{
-     *   archivable: bool,
-     *   readOnlyDefinition: bool,
-     *   readOnlyValue: bool,
-     *   readOnlyOptions?: bool|null,
-     * } $modificationMetadata
+     * @param PropertyModificationMetadataShape $modificationMetadata
      */
     public function withModificationMetadata(
         PropertyModificationMetadata|array $modificationMetadata

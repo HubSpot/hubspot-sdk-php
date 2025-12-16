@@ -9,18 +9,16 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Associations\V4\PublicDefaultAssociationMultiPost;
-use HubspotSDK\PublicObjectID;
 
 /**
  * Create the default (most generic) association type between two object types.
  *
  * @see HubspotSDK\Services\Crm\Associations\V4\BatchService::createDefault()
  *
+ * @phpstan-import-type PublicDefaultAssociationMultiPostShape from \HubspotSDK\Crm\Associations\V4\PublicDefaultAssociationMultiPost
+ *
  * @phpstan-type BatchCreateDefaultParamsShape = array{
- *   fromObjectType: string,
- *   inputs: list<PublicDefaultAssociationMultiPost|array{
- *     from: PublicObjectID, to: PublicObjectID
- *   }>,
+ *   fromObjectType: string, inputs: list<PublicDefaultAssociationMultiPostShape>
  * }
  */
 final class BatchCreateDefaultParams implements BaseModel
@@ -60,9 +58,7 @@ final class BatchCreateDefaultParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicDefaultAssociationMultiPost|array{
-     *   from: PublicObjectID, to: PublicObjectID
-     * }> $inputs
+     * @param list<PublicDefaultAssociationMultiPostShape> $inputs
      */
     public static function with(string $fromObjectType, array $inputs): self
     {
@@ -83,9 +79,7 @@ final class BatchCreateDefaultParams implements BaseModel
     }
 
     /**
-     * @param list<PublicDefaultAssociationMultiPost|array{
-     *   from: PublicObjectID, to: PublicObjectID
-     * }> $inputs
+     * @param list<PublicDefaultAssociationMultiPostShape> $inputs
      */
     public function withInputs(array $inputs): self
     {

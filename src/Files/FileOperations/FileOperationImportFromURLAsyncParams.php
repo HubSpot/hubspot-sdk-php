@@ -21,14 +21,14 @@ use HubspotSDK\Files\FileOperations\FileOperationImportFromURLAsyncParams\Duplic
  * @phpstan-type FileOperationImportFromURLAsyncParamsShape = array{
  *   access: Access|value-of<Access>,
  *   url: string,
- *   duplicateValidationScope?: DuplicateValidationScope|value-of<DuplicateValidationScope>,
- *   duplicateValidationStrategy?: DuplicateValidationStrategy|value-of<DuplicateValidationStrategy>,
- *   expiresAt?: \DateTimeInterface,
- *   folderID?: string,
- *   folderPath?: string,
- *   name?: string,
- *   overwrite?: bool,
- *   ttl?: string,
+ *   duplicateValidationScope?: null|DuplicateValidationScope|value-of<DuplicateValidationScope>,
+ *   duplicateValidationStrategy?: null|DuplicateValidationStrategy|value-of<DuplicateValidationStrategy>,
+ *   expiresAt?: \DateTimeInterface|null,
+ *   folderID?: string|null,
+ *   folderPath?: string|null,
+ *   name?: string|null,
+ *   overwrite?: bool|null,
+ *   ttl?: string|null,
  * }
  */
 final class FileOperationImportFromURLAsyncParams implements BaseModel

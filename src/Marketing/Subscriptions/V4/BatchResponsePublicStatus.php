@@ -8,20 +8,19 @@ use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\ErrorDetail;
 use HubspotSDK\Marketing\Subscriptions\V4\BatchResponsePublicStatus\Status;
-use HubspotSDK\Marketing\Subscriptions\V4\PublicStatus\Channel;
-use HubspotSDK\Marketing\Subscriptions\V4\PublicStatus\LegalBasis;
-use HubspotSDK\Marketing\Subscriptions\V4\PublicStatus\SetStatusSuccessReason;
 use HubspotSDK\StandardError;
 
 /**
+ * @phpstan-import-type PublicStatusShape from \HubspotSDK\Marketing\Subscriptions\V4\PublicStatus
+ * @phpstan-import-type StandardErrorShape from \HubspotSDK\StandardError
+ *
  * @phpstan-type BatchResponsePublicStatusShape = array{
  *   completedAt: \DateTimeInterface,
- *   results: list<PublicStatus>,
+ *   results: list<PublicStatusShape>,
  *   startedAt: \DateTimeInterface,
- *   status: value-of<Status>,
- *   errors?: list<StandardError>|null,
+ *   status: Status|value-of<Status>,
+ *   errors?: list<StandardErrorShape>|null,
  *   links?: array<string,string>|null,
  *   numErrors?: int|null,
  *   requestedAt?: \DateTimeInterface|null,
@@ -118,30 +117,9 @@ final class BatchResponsePublicStatus implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicStatus|array{
-     *   channel: value-of<Channel>,
-     *   source: string,
-     *   status: value-of<PublicStatus\Status>,
-     *   subscriberIDString: string,
-     *   subscriptionID: int,
-     *   timestamp: \DateTimeInterface,
-     *   businessUnitID?: int|null,
-     *   legalBasis?: value-of<LegalBasis>|null,
-     *   legalBasisExplanation?: string|null,
-     *   setStatusSuccessReason?: value-of<SetStatusSuccessReason>|null,
-     *   subscriptionName?: string|null,
-     * }> $results
+     * @param list<PublicStatusShape> $results
      * @param Status|value-of<Status> $status
-     * @param list<StandardError|array{
-     *   category: string,
-     *   context: array<string,list<string>>,
-     *   errors: list<ErrorDetail>,
-     *   links: array<string,string>,
-     *   message: string,
-     *   status: string,
-     *   id?: string|null,
-     *   subCategory?: mixed,
-     * }> $errors
+     * @param list<StandardErrorShape> $errors
      * @param array<string,string> $links
      */
     public static function with(
@@ -183,19 +161,7 @@ final class BatchResponsePublicStatus implements BaseModel
     /**
      * An array containing the results of the batch operation.
      *
-     * @param list<PublicStatus|array{
-     *   channel: value-of<Channel>,
-     *   source: string,
-     *   status: value-of<PublicStatus\Status>,
-     *   subscriberIDString: string,
-     *   subscriptionID: int,
-     *   timestamp: \DateTimeInterface,
-     *   businessUnitID?: int|null,
-     *   legalBasis?: value-of<LegalBasis>|null,
-     *   legalBasisExplanation?: string|null,
-     *   setStatusSuccessReason?: value-of<SetStatusSuccessReason>|null,
-     *   subscriptionName?: string|null,
-     * }> $results
+     * @param list<PublicStatusShape> $results
      */
     public function withResults(array $results): self
     {
@@ -232,16 +198,7 @@ final class BatchResponsePublicStatus implements BaseModel
     /**
      * An array of error objects detailing any issues encountered.
      *
-     * @param list<StandardError|array{
-     *   category: string,
-     *   context: array<string,list<string>>,
-     *   errors: list<ErrorDetail>,
-     *   links: array<string,string>,
-     *   message: string,
-     *   status: string,
-     *   id?: string|null,
-     *   subCategory?: mixed,
-     * }> $errors
+     * @param list<StandardErrorShape> $errors
      */
     public function withErrors(array $errors): self
     {

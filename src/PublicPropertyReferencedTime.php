@@ -14,7 +14,7 @@ use HubspotSDK\PublicPropertyReferencedTime\TimeType;
  * @phpstan-type PublicPropertyReferencedTimeShape = array{
  *   property: string,
  *   referenceType: string,
- *   timeType: value-of<TimeType>,
+ *   timeType: TimeType|value-of<TimeType>,
  *   zoneID: string,
  *   timezoneSource?: string|null,
  * }

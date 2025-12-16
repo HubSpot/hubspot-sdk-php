@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type APIEnumerationOutputFieldShape = array{
- *   name: string, options: list<string>, type: value-of<Type>
+ *   name: string, options: list<string>, type: Type|value-of<Type>
  * }
  */
 final class APIEnumerationOutputField implements BaseModel

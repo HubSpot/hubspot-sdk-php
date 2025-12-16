@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Marketing\EmailsService::listRevisions()
  *
  * @phpstan-type EmailListRevisionsParamsShape = array{
- *   after?: string, before?: string, limit?: int
+ *   after?: string|null, before?: string|null, limit?: int|null
  * }
  */
 final class EmailListRevisionsParams implements BaseModel

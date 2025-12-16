@@ -17,7 +17,7 @@ interface OwnersRawContract
     /**
      * @api
      *
-     * @param array<mixed>|OwnerListParams $params
+     * @param array<string,mixed>|OwnerListParams $params
      *
      * @return BaseResponse<Page<PublicOwner>>
      *
@@ -31,7 +31,7 @@ interface OwnersRawContract
     /**
      * @api
      *
-     * @param array<mixed>|OwnerGetParams $params
+     * @param array<string,mixed>|OwnerGetParams $params
      *
      * @return BaseResponse<PublicOwner>
      *

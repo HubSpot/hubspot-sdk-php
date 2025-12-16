@@ -10,7 +10,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type PublicUnsupportedContentShape = array{type: value-of<Type>}
+ * @phpstan-type PublicUnsupportedContentShape = array{type: Type|value-of<Type>}
  */
 final class PublicUnsupportedContent implements BaseModel
 {

@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Cms\MediaBridge\GroupsService::updateByName()
  *
  * @phpstan-type GroupUpdateByNameParamsShape = array{
- *   appID: int, objectType: string, displayOrder?: int, label?: string
+ *   appID: int, objectType: string, displayOrder?: int|null, label?: string|null
  * }
  */
 final class GroupUpdateByNameParams implements BaseModel

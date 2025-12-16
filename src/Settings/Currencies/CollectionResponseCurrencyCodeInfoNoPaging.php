@@ -9,8 +9,10 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type CurrencyCodeInfoShape from \HubspotSDK\Settings\Currencies\CurrencyCodeInfo
+ *
  * @phpstan-type CollectionResponseCurrencyCodeInfoNoPagingShape = array{
- *   results: list<CurrencyCodeInfo>
+ *   results: list<CurrencyCodeInfoShape>
  * }
  */
 final class CollectionResponseCurrencyCodeInfoNoPaging implements BaseModel
@@ -46,9 +48,7 @@ final class CollectionResponseCurrencyCodeInfoNoPaging implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<CurrencyCodeInfo|array{
-     *   currencyCode: string, currencyName: string
-     * }> $results
+     * @param list<CurrencyCodeInfoShape> $results
      */
     public static function with(array $results): self
     {
@@ -60,9 +60,7 @@ final class CollectionResponseCurrencyCodeInfoNoPaging implements BaseModel
     }
 
     /**
-     * @param list<CurrencyCodeInfo|array{
-     *   currencyCode: string, currencyName: string
-     * }> $results
+     * @param list<CurrencyCodeInfoShape> $results
      */
     public function withResults(array $results): self
     {

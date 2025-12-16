@@ -8,22 +8,23 @@ use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\ErrorDetail;
-use HubspotSDK\Files\File\Access;
 use HubspotSDK\Files\FileActionResponse\Status;
 use HubspotSDK\StandardError;
 
 /**
+ * @phpstan-import-type StandardErrorShape from \HubspotSDK\StandardError
+ * @phpstan-import-type FileShape from \HubspotSDK\Files\File
+ *
  * @phpstan-type FileActionResponseShape = array{
  *   completedAt: \DateTimeInterface,
  *   startedAt: \DateTimeInterface,
- *   status: value-of<Status>,
+ *   status: Status|value-of<Status>,
  *   taskID: string,
- *   errors?: list<StandardError>|null,
+ *   errors?: list<StandardErrorShape>|null,
  *   links?: array<string,string>|null,
  *   numErrors?: int|null,
  *   requestedAt?: \DateTimeInterface|null,
- *   result?: File|null,
+ *   result?: null|File|FileShape,
  * }
  */
 final class FileActionResponse implements BaseModel
@@ -122,40 +123,9 @@ final class FileActionResponse implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param Status|value-of<Status> $status
-     * @param list<StandardError|array{
-     *   category: string,
-     *   context: array<string,list<string>>,
-     *   errors: list<ErrorDetail>,
-     *   links: array<string,string>,
-     *   message: string,
-     *   status: string,
-     *   id?: string|null,
-     *   subCategory?: mixed,
-     * }> $errors
+     * @param list<StandardErrorShape> $errors
      * @param array<string,string> $links
-     * @param File|array{
-     *   id: string,
-     *   access: value-of<Access>,
-     *   archived: bool,
-     *   createdAt: \DateTimeInterface,
-     *   updatedAt: \DateTimeInterface,
-     *   archivedAt?: \DateTimeInterface|null,
-     *   defaultHostingURL?: string|null,
-     *   encoding?: string|null,
-     *   expiresAt?: int|null,
-     *   extension?: string|null,
-     *   fileMd5?: string|null,
-     *   height?: int|null,
-     *   isUsableInContent?: bool|null,
-     *   name?: string|null,
-     *   parentFolderID?: string|null,
-     *   path?: string|null,
-     *   size?: int|null,
-     *   sourceGroup?: string|null,
-     *   type?: string|null,
-     *   url?: string|null,
-     *   width?: int|null,
-     * } $result
+     * @param FileShape $result
      */
     public static function with(
         \DateTimeInterface $completedAt,
@@ -233,16 +203,7 @@ final class FileActionResponse implements BaseModel
     /**
      * Descriptive error messages.
      *
-     * @param list<StandardError|array{
-     *   category: string,
-     *   context: array<string,list<string>>,
-     *   errors: list<ErrorDetail>,
-     *   links: array<string,string>,
-     *   message: string,
-     *   status: string,
-     *   id?: string|null,
-     *   subCategory?: mixed,
-     * }> $errors
+     * @param list<StandardErrorShape> $errors
      */
     public function withErrors(array $errors): self
     {
@@ -290,29 +251,7 @@ final class FileActionResponse implements BaseModel
     /**
      * File.
      *
-     * @param File|array{
-     *   id: string,
-     *   access: value-of<Access>,
-     *   archived: bool,
-     *   createdAt: \DateTimeInterface,
-     *   updatedAt: \DateTimeInterface,
-     *   archivedAt?: \DateTimeInterface|null,
-     *   defaultHostingURL?: string|null,
-     *   encoding?: string|null,
-     *   expiresAt?: int|null,
-     *   extension?: string|null,
-     *   fileMd5?: string|null,
-     *   height?: int|null,
-     *   isUsableInContent?: bool|null,
-     *   name?: string|null,
-     *   parentFolderID?: string|null,
-     *   path?: string|null,
-     *   size?: int|null,
-     *   sourceGroup?: string|null,
-     *   type?: string|null,
-     *   url?: string|null,
-     *   width?: int|null,
-     * } $result
+     * @param FileShape $result
      */
     public function withResult(File|array $result): self
     {

@@ -9,18 +9,20 @@ use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\ErrorDetail;
 use HubspotSDK\StandardError;
 
 /**
  * Response object for batch operations on content folders with errors.
  *
+ * @phpstan-import-type ContentFolderShape from \HubspotSDK\Cms\Pages\ContentFolder
+ * @phpstan-import-type StandardErrorShape from \HubspotSDK\StandardError
+ *
  * @phpstan-type BatchResponseContentFolderWithErrorsShape = array{
  *   completedAt: \DateTimeInterface,
- *   results: list<ContentFolder>,
+ *   results: list<ContentFolderShape>,
  *   startedAt: \DateTimeInterface,
- *   status: value-of<Status>,
- *   errors?: list<StandardError>|null,
+ *   status: Status|value-of<Status>,
+ *   errors?: list<StandardErrorShape>|null,
  *   links?: array<string,string>|null,
  *   numErrors?: int|null,
  *   requestedAt?: \DateTimeInterface|null,
@@ -117,26 +119,9 @@ final class BatchResponseContentFolderWithErrors implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<ContentFolder|array{
-     *   id: string,
-     *   category: int,
-     *   created: \DateTimeInterface,
-     *   deletedAt: \DateTimeInterface,
-     *   name: string,
-     *   parentFolderID: int,
-     *   updated: \DateTimeInterface,
-     * }> $results
+     * @param list<ContentFolderShape> $results
      * @param Status|value-of<Status> $status
-     * @param list<StandardError|array{
-     *   category: string,
-     *   context: array<string,list<string>>,
-     *   errors: list<ErrorDetail>,
-     *   links: array<string,string>,
-     *   message: string,
-     *   status: string,
-     *   id?: string|null,
-     *   subCategory?: mixed,
-     * }> $errors
+     * @param list<StandardErrorShape> $errors
      * @param array<string,string> $links
      */
     public static function with(
@@ -178,15 +163,7 @@ final class BatchResponseContentFolderWithErrors implements BaseModel
     /**
      * Results of batch operation.
      *
-     * @param list<ContentFolder|array{
-     *   id: string,
-     *   category: int,
-     *   created: \DateTimeInterface,
-     *   deletedAt: \DateTimeInterface,
-     *   name: string,
-     *   parentFolderID: int,
-     *   updated: \DateTimeInterface,
-     * }> $results
+     * @param list<ContentFolderShape> $results
      */
     public function withResults(array $results): self
     {
@@ -223,16 +200,7 @@ final class BatchResponseContentFolderWithErrors implements BaseModel
     /**
      * Errors in batch operation.
      *
-     * @param list<StandardError|array{
-     *   category: string,
-     *   context: array<string,list<string>>,
-     *   errors: list<ErrorDetail>,
-     *   links: array<string,string>,
-     *   message: string,
-     *   status: string,
-     *   id?: string|null,
-     *   subCategory?: mixed,
-     * }> $errors
+     * @param list<StandardErrorShape> $errors
      */
     public function withErrors(array $errors): self
     {

@@ -21,7 +21,7 @@ interface ReportsRawContract
      * @api
      *
      * @param string $campaignGuid unique identifier for the campaign, formatted as a UUID
-     * @param array<mixed>|ReportGetAttributionMetricsParams $params
+     * @param array<string,mixed>|ReportGetAttributionMetricsParams $params
      *
      * @return BaseResponse<MetricsCounters>
      *
@@ -37,7 +37,7 @@ interface ReportsRawContract
      * @api
      *
      * @param string $campaignGuid unique identifier for the campaign, formatted as a UUID
-     * @param array<mixed>|ReportGetRevenueAttributionParams $params
+     * @param array<string,mixed>|ReportGetRevenueAttributionParams $params
      *
      * @return BaseResponse<RevenueAttributionAggregate>
      *
@@ -53,7 +53,7 @@ interface ReportsRawContract
      * @api
      *
      * @param string $contactType Path param: The type of metric to filter the influenced contacts. Allowed values: contactFirstTouch, contactLastTouch, influencedContacts
-     * @param array<mixed>|ReportListContactIDsByTypeParams $params
+     * @param array<string,mixed>|ReportListContactIDsByTypeParams $params
      *
      * @return BaseResponse<Page<ContactReference>>
      *

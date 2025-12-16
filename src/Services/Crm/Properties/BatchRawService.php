@@ -45,7 +45,7 @@ final class BatchRawService implements BatchRawContract
      *     formField?: bool,
      *     hasUniqueValue?: bool,
      *     hidden?: bool,
-     *     options?: list<array<mixed>>,
+     *     options?: list<array<string,mixed>>,
      *     referencedObjectType?: string,
      *   }>,
      * }|BatchCreateParams $params

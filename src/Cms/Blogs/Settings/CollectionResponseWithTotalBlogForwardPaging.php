@@ -4,19 +4,22 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\Blogs\Settings;
 
-use HubspotSDK\Cms\Blogs\Settings\Blog\Language;
 use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\ForwardPaging;
-use HubspotSDK\NextPage;
 
 /**
  * Response object for collections of blogs with pagination information.
  *
+ * @phpstan-import-type BlogShape from \HubspotSDK\Cms\Blogs\Settings\Blog
+ * @phpstan-import-type ForwardPagingShape from \HubspotSDK\ForwardPaging
+ *
  * @phpstan-type CollectionResponseWithTotalBlogForwardPagingShape = array{
- *   results: list<Blog>, total: int, paging?: ForwardPaging|null
+ *   results: list<BlogShape>,
+ *   total: int,
+ *   paging?: null|ForwardPaging|ForwardPagingShape,
  * }
  */
 final class CollectionResponseWithTotalBlogForwardPaging implements BaseModel
@@ -67,24 +70,8 @@ final class CollectionResponseWithTotalBlogForwardPaging implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<Blog|array{
-     *   id: string,
-     *   absoluteURL: string,
-     *   allowComments: bool,
-     *   created: \DateTimeInterface,
-     *   deletedAt: \DateTimeInterface,
-     *   description: string,
-     *   htmlTitle: string,
-     *   language: value-of<Language>,
-     *   name: string,
-     *   publicAccessRules: list<mixed>,
-     *   publicAccessRulesEnabled: bool,
-     *   publicTitle: string,
-     *   slug: string,
-     *   translatedFromID: string,
-     *   updated: \DateTimeInterface,
-     * }> $results
-     * @param ForwardPaging|array{next?: NextPage|null} $paging
+     * @param list<BlogShape> $results
+     * @param ForwardPagingShape $paging
      */
     public static function with(
         array $results,
@@ -104,23 +91,7 @@ final class CollectionResponseWithTotalBlogForwardPaging implements BaseModel
     /**
      * Collection of blogs.
      *
-     * @param list<Blog|array{
-     *   id: string,
-     *   absoluteURL: string,
-     *   allowComments: bool,
-     *   created: \DateTimeInterface,
-     *   deletedAt: \DateTimeInterface,
-     *   description: string,
-     *   htmlTitle: string,
-     *   language: value-of<Language>,
-     *   name: string,
-     *   publicAccessRules: list<mixed>,
-     *   publicAccessRulesEnabled: bool,
-     *   publicTitle: string,
-     *   slug: string,
-     *   translatedFromID: string,
-     *   updated: \DateTimeInterface,
-     * }> $results
+     * @param list<BlogShape> $results
      */
     public function withResults(array $results): self
     {
@@ -142,7 +113,7 @@ final class CollectionResponseWithTotalBlogForwardPaging implements BaseModel
     }
 
     /**
-     * @param ForwardPaging|array{next?: NextPage|null} $paging
+     * @param ForwardPagingShape $paging
      */
     public function withPaging(ForwardPaging|array $paging): self
     {

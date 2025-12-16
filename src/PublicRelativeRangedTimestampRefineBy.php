@@ -10,11 +10,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicRelativeRangedTimestampRefineBy\Type;
 
 /**
+ * @phpstan-import-type PublicTimeOffsetShape from \HubspotSDK\PublicTimeOffset
+ *
  * @phpstan-type PublicRelativeRangedTimestampRefineByShape = array{
- *   lowerBoundOffset: PublicTimeOffset,
+ *   lowerBoundOffset: PublicTimeOffset|PublicTimeOffsetShape,
  *   rangeType: string,
- *   type: value-of<Type>,
- *   upperBoundOffset: PublicTimeOffset,
+ *   type: Type|value-of<Type>,
+ *   upperBoundOffset: PublicTimeOffset|PublicTimeOffsetShape,
  * }
  */
 final class PublicRelativeRangedTimestampRefineBy implements BaseModel
@@ -65,12 +67,8 @@ final class PublicRelativeRangedTimestampRefineBy implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param PublicTimeOffset|array{
-     *   amount: int, offsetDirection: string, timeUnit: string
-     * } $lowerBoundOffset
-     * @param PublicTimeOffset|array{
-     *   amount: int, offsetDirection: string, timeUnit: string
-     * } $upperBoundOffset
+     * @param PublicTimeOffsetShape $lowerBoundOffset
+     * @param PublicTimeOffsetShape $upperBoundOffset
      * @param Type|value-of<Type> $type
      */
     public static function with(
@@ -90,9 +88,7 @@ final class PublicRelativeRangedTimestampRefineBy implements BaseModel
     }
 
     /**
-     * @param PublicTimeOffset|array{
-     *   amount: int, offsetDirection: string, timeUnit: string
-     * } $lowerBoundOffset
+     * @param PublicTimeOffsetShape $lowerBoundOffset
      */
     public function withLowerBoundOffset(
         PublicTimeOffset|array $lowerBoundOffset
@@ -123,9 +119,7 @@ final class PublicRelativeRangedTimestampRefineBy implements BaseModel
     }
 
     /**
-     * @param PublicTimeOffset|array{
-     *   amount: int, offsetDirection: string, timeUnit: string
-     * } $upperBoundOffset
+     * @param PublicTimeOffsetShape $upperBoundOffset
      */
     public function withUpperBoundOffset(
         PublicTimeOffset|array $upperBoundOffset

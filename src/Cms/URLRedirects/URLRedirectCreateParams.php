@@ -19,13 +19,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   destination: string,
  *   redirectStyle: int,
  *   routePrefix: string,
- *   isMatchFullURL?: bool,
- *   isMatchQueryString?: bool,
- *   isOnlyAfterNotFound?: bool,
- *   isPattern?: bool,
- *   isProtocolAgnostic?: bool,
- *   isTrailingSlashOptional?: bool,
- *   precedence?: int,
+ *   isMatchFullURL?: bool|null,
+ *   isMatchQueryString?: bool|null,
+ *   isOnlyAfterNotFound?: bool|null,
+ *   isPattern?: bool|null,
+ *   isProtocolAgnostic?: bool|null,
+ *   isTrailingSlashOptional?: bool|null,
+ *   precedence?: int|null,
  * }
  */
 final class URLRedirectCreateParams implements BaseModel

@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Services\Cms\Blogs\PostsService::clone()
  *
- * @phpstan-type PostCloneParamsShape = array{id: string, cloneName?: string}
+ * @phpstan-type PostCloneParamsShape = array{id: string, cloneName?: string|null}
  */
 final class PostCloneParams implements BaseModel
 {

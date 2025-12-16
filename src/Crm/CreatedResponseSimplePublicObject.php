@@ -10,8 +10,12 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type SimplePublicObjectShape from \HubspotSDK\Crm\SimplePublicObject
+ *
  * @phpstan-type CreatedResponseSimplePublicObjectShape = array{
- *   createdResourceID: string, entity: SimplePublicObject, location?: string|null
+ *   createdResourceID: string,
+ *   entity: SimplePublicObject|SimplePublicObjectShape,
+ *   location?: string|null,
  * }
  */
 final class CreatedResponseSimplePublicObject implements BaseModel
@@ -63,17 +67,7 @@ final class CreatedResponseSimplePublicObject implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param SimplePublicObject|array{
-     *   id: string,
-     *   archived: bool,
-     *   createdAt: \DateTimeInterface,
-     *   properties: array<string,string|null>,
-     *   updatedAt: \DateTimeInterface,
-     *   archivedAt?: \DateTimeInterface|null,
-     *   objectWriteTraceID?: string|null,
-     *   propertiesWithHistory?: array<string,list<ValueWithTimestamp>>|null,
-     *   url?: string|null,
-     * } $entity
+     * @param SimplePublicObjectShape $entity
      */
     public static function with(
         string $createdResourceID,
@@ -104,17 +98,7 @@ final class CreatedResponseSimplePublicObject implements BaseModel
     /**
      * A simple public object.
      *
-     * @param SimplePublicObject|array{
-     *   id: string,
-     *   archived: bool,
-     *   createdAt: \DateTimeInterface,
-     *   properties: array<string,string|null>,
-     *   updatedAt: \DateTimeInterface,
-     *   archivedAt?: \DateTimeInterface|null,
-     *   objectWriteTraceID?: string|null,
-     *   propertiesWithHistory?: array<string,list<ValueWithTimestamp>>|null,
-     *   url?: string|null,
-     * } $entity
+     * @param SimplePublicObjectShape $entity
      */
     public function withEntity(SimplePublicObject|array $entity): self
     {

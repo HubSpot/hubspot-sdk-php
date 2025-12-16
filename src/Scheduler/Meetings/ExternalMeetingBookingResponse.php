@@ -10,16 +10,19 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type ExternalValidatedFormFieldShape from \HubspotSDK\Scheduler\Meetings\ExternalValidatedFormField
+ * @phpstan-import-type ExternalLegalConsentResponseShape from \HubspotSDK\Scheduler\Meetings\ExternalLegalConsentResponse
+ *
  * @phpstan-type ExternalMeetingBookingResponseShape = array{
  *   bookingTimezone: string,
  *   calendarEventID: string,
  *   contactID: string,
  *   duration: int,
  *   end: \DateTimeInterface,
- *   formFields: list<ExternalValidatedFormField>,
+ *   formFields: list<ExternalValidatedFormFieldShape>,
  *   guestEmails: list<string>,
  *   isOffline: bool,
- *   legalConsentResponses: list<ExternalLegalConsentResponse>,
+ *   legalConsentResponses: list<ExternalLegalConsentResponseShape>,
  *   start: \DateTimeInterface,
  *   subject: string,
  *   locale?: string|null,
@@ -128,19 +131,9 @@ final class ExternalMeetingBookingResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<ExternalValidatedFormField|array{
-     *   isCustom: bool,
-     *   label: string,
-     *   name: string,
-     *   value: string,
-     *   fieldType?: string|null,
-     *   translatedLabel?: string|null,
-     *   valueLabel?: string|null,
-     * }> $formFields
+     * @param list<ExternalValidatedFormFieldShape> $formFields
      * @param list<string> $guestEmails
-     * @param list<ExternalLegalConsentResponse|array{
-     *   communicationTypeID: string, consented: bool
-     * }> $legalConsentResponses
+     * @param list<ExternalLegalConsentResponseShape> $legalConsentResponses
      */
     public static function with(
         string $bookingTimezone,
@@ -222,15 +215,7 @@ final class ExternalMeetingBookingResponse implements BaseModel
     }
 
     /**
-     * @param list<ExternalValidatedFormField|array{
-     *   isCustom: bool,
-     *   label: string,
-     *   name: string,
-     *   value: string,
-     *   fieldType?: string|null,
-     *   translatedLabel?: string|null,
-     *   valueLabel?: string|null,
-     * }> $formFields
+     * @param list<ExternalValidatedFormFieldShape> $formFields
      */
     public function withFormFields(array $formFields): self
     {
@@ -260,9 +245,7 @@ final class ExternalMeetingBookingResponse implements BaseModel
     }
 
     /**
-     * @param list<ExternalLegalConsentResponse|array{
-     *   communicationTypeID: string, consented: bool
-     * }> $legalConsentResponses
+     * @param list<ExternalLegalConsentResponseShape> $legalConsentResponses
      */
     public function withLegalConsentResponses(
         array $legalConsentResponses

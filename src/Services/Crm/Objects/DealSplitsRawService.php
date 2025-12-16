@@ -60,7 +60,7 @@ final class DealSplitsRawService implements DealSplitsRawContract
      * Create or replace deal splits for deals with the provided IDs. Deal split percentages for each deal must sum up to 1.0 (100%) and may have up to 8 decimal places
      *
      * @param array{
-     *   inputs: list<array{id: int, splits: list<array<mixed>>}>
+     *   inputs: list<array{id: int, splits: list<array<string,mixed>>}>
      * }|DealSplitBatchUpsertParams $params
      *
      * @return BaseResponse<BatchResponseDealToDealSplits>

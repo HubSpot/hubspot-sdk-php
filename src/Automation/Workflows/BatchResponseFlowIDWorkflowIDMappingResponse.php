@@ -11,11 +11,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type FlowIDWorkflowIDMappingResponseShape from \HubspotSDK\Automation\Workflows\FlowIDWorkflowIDMappingResponse
+ *
  * @phpstan-type BatchResponseFlowIDWorkflowIDMappingResponseShape = array{
  *   completedAt: \DateTimeInterface,
- *   results: list<FlowIDWorkflowIDMappingResponse>,
+ *   results: list<FlowIDWorkflowIDMappingResponseShape>,
  *   startedAt: \DateTimeInterface,
- *   status: value-of<Status>,
+ *   status: Status|value-of<Status>,
  *   links?: array<string,string>|null,
  *   requestedAt?: \DateTimeInterface|null,
  * }
@@ -76,9 +78,7 @@ final class BatchResponseFlowIDWorkflowIDMappingResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<FlowIDWorkflowIDMappingResponse|array{
-     *   flowID: int, workflowID: int
-     * }> $results
+     * @param list<FlowIDWorkflowIDMappingResponseShape> $results
      * @param Status|value-of<Status> $status
      * @param array<string,string> $links
      */
@@ -112,9 +112,7 @@ final class BatchResponseFlowIDWorkflowIDMappingResponse implements BaseModel
     }
 
     /**
-     * @param list<FlowIDWorkflowIDMappingResponse|array{
-     *   flowID: int, workflowID: int
-     * }> $results
+     * @param list<FlowIDWorkflowIDMappingResponseShape> $results
      */
     public function withResults(array $results): self
     {

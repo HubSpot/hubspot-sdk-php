@@ -8,21 +8,19 @@ use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\Objects\Schemas\ObjectTypePropertyCreate\NumberDisplayHint;
-use HubspotSDK\Crm\Objects\Schemas\ObjectTypePropertyCreate\OptionSortStrategy;
-use HubspotSDK\Crm\Objects\Schemas\ObjectTypePropertyCreate\TextDisplayHint;
-use HubspotSDK\Crm\Objects\Schemas\ObjectTypePropertyCreate\Type;
 use HubspotSDK\ObjectTypeDefinitionLabels;
-use HubspotSDK\OptionInput;
 
 /**
  * Defines a new object type, its properties, and associations.
  *
+ * @phpstan-import-type ObjectTypeDefinitionLabelsShape from \HubspotSDK\ObjectTypeDefinitionLabels
+ * @phpstan-import-type ObjectTypePropertyCreateShape from \HubspotSDK\Crm\Objects\Schemas\ObjectTypePropertyCreate
+ *
  * @phpstan-type ObjectSchemaEggShape = array{
  *   associatedObjects: list<string>,
- *   labels: ObjectTypeDefinitionLabels,
+ *   labels: ObjectTypeDefinitionLabels|ObjectTypeDefinitionLabelsShape,
  *   name: string,
- *   properties: list<ObjectTypePropertyCreate>,
+ *   properties: list<ObjectTypePropertyCreateShape>,
  *   requiredProperties: list<string>,
  *   description?: string|null,
  *   primaryDisplayProperty?: string|null,
@@ -129,28 +127,8 @@ final class ObjectSchemaEgg implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<string> $associatedObjects
-     * @param ObjectTypeDefinitionLabels|array{
-     *   plural?: string|null, singular?: string|null
-     * } $labels
-     * @param list<ObjectTypePropertyCreate|array{
-     *   fieldType: string,
-     *   label: string,
-     *   name: string,
-     *   type: value-of<Type>,
-     *   description?: string|null,
-     *   displayOrder?: int|null,
-     *   formField?: bool|null,
-     *   groupName?: string|null,
-     *   hasUniqueValue?: bool|null,
-     *   hidden?: bool|null,
-     *   numberDisplayHint?: value-of<NumberDisplayHint>|null,
-     *   options?: list<OptionInput>|null,
-     *   optionSortStrategy?: value-of<OptionSortStrategy>|null,
-     *   referencedObjectType?: string|null,
-     *   searchableInGlobalSearch?: bool|null,
-     *   showCurrencySymbol?: bool|null,
-     *   textDisplayHint?: value-of<TextDisplayHint>|null,
-     * }> $properties
+     * @param ObjectTypeDefinitionLabelsShape $labels
+     * @param list<ObjectTypePropertyCreateShape> $properties
      * @param list<string> $requiredProperties
      * @param list<string> $searchableProperties
      * @param list<string> $secondaryDisplayProperties
@@ -196,9 +174,7 @@ final class ObjectSchemaEgg implements BaseModel
     }
 
     /**
-     * @param ObjectTypeDefinitionLabels|array{
-     *   plural?: string|null, singular?: string|null
-     * } $labels
+     * @param ObjectTypeDefinitionLabelsShape $labels
      */
     public function withLabels(ObjectTypeDefinitionLabels|array $labels): self
     {
@@ -222,25 +198,7 @@ final class ObjectSchemaEgg implements BaseModel
     /**
      * Properties defined for this object type.
      *
-     * @param list<ObjectTypePropertyCreate|array{
-     *   fieldType: string,
-     *   label: string,
-     *   name: string,
-     *   type: value-of<Type>,
-     *   description?: string|null,
-     *   displayOrder?: int|null,
-     *   formField?: bool|null,
-     *   groupName?: string|null,
-     *   hasUniqueValue?: bool|null,
-     *   hidden?: bool|null,
-     *   numberDisplayHint?: value-of<NumberDisplayHint>|null,
-     *   options?: list<OptionInput>|null,
-     *   optionSortStrategy?: value-of<OptionSortStrategy>|null,
-     *   referencedObjectType?: string|null,
-     *   searchableInGlobalSearch?: bool|null,
-     *   showCurrencySymbol?: bool|null,
-     *   textDisplayHint?: value-of<TextDisplayHint>|null,
-     * }> $properties
+     * @param list<ObjectTypePropertyCreateShape> $properties
      */
     public function withProperties(array $properties): self
     {

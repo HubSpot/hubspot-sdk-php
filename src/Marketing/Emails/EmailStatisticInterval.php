@@ -9,8 +9,12 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type EmailStatisticsDataShape from \HubspotSDK\Marketing\Emails\EmailStatisticsData
+ * @phpstan-import-type IntervalShape from \HubspotSDK\Marketing\Emails\Interval
+ *
  * @phpstan-type EmailStatisticIntervalShape = array{
- *   aggregations: EmailStatisticsData, interval: Interval
+ *   aggregations: EmailStatisticsData|EmailStatisticsDataShape,
+ *   interval: Interval|IntervalShape,
  * }
  */
 final class EmailStatisticInterval implements BaseModel
@@ -48,15 +52,8 @@ final class EmailStatisticInterval implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param EmailStatisticsData|array{
-     *   counters: array<string,int>,
-     *   deviceBreakdown: array<string,array<string,int>>,
-     *   qualifierStats: array<string,array<string,int>>,
-     *   ratios: array<string,float>,
-     * } $aggregations
-     * @param Interval|array{
-     *   end: \DateTimeInterface, start: \DateTimeInterface
-     * } $interval
+     * @param EmailStatisticsDataShape $aggregations
+     * @param IntervalShape $interval
      */
     public static function with(
         EmailStatisticsData|array $aggregations,
@@ -71,12 +68,7 @@ final class EmailStatisticInterval implements BaseModel
     }
 
     /**
-     * @param EmailStatisticsData|array{
-     *   counters: array<string,int>,
-     *   deviceBreakdown: array<string,array<string,int>>,
-     *   qualifierStats: array<string,array<string,int>>,
-     *   ratios: array<string,float>,
-     * } $aggregations
+     * @param EmailStatisticsDataShape $aggregations
      */
     public function withAggregations(
         EmailStatisticsData|array $aggregations
@@ -88,9 +80,7 @@ final class EmailStatisticInterval implements BaseModel
     }
 
     /**
-     * @param Interval|array{
-     *   end: \DateTimeInterface, start: \DateTimeInterface
-     * } $interval
+     * @param IntervalShape $interval
      */
     public function withInterval(Interval|array $interval): self
     {

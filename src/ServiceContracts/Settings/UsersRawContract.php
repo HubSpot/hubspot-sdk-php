@@ -22,7 +22,7 @@ interface UsersRawContract
     /**
      * @api
      *
-     * @param array<mixed>|UserCreateParams $params
+     * @param array<string,mixed>|UserCreateParams $params
      *
      * @return BaseResponse<PublicUser>
      *
@@ -37,7 +37,7 @@ interface UsersRawContract
      * @api
      *
      * @param string $userID Path param: Identifier of user to retrieve
-     * @param array<mixed>|UserUpdateParams $params
+     * @param array<string,mixed>|UserUpdateParams $params
      *
      * @return BaseResponse<PublicUser>
      *
@@ -52,7 +52,7 @@ interface UsersRawContract
     /**
      * @api
      *
-     * @param array<mixed>|UserListParams $params
+     * @param array<string,mixed>|UserListParams $params
      *
      * @return BaseResponse<Page<PublicUser>>
      *
@@ -67,7 +67,7 @@ interface UsersRawContract
      * @api
      *
      * @param string $userID Identifier of user to delete
-     * @param array<mixed>|UserDeleteParams $params
+     * @param array<string,mixed>|UserDeleteParams $params
      *
      * @return BaseResponse<mixed>
      *
@@ -83,7 +83,7 @@ interface UsersRawContract
      * @api
      *
      * @param string $userID Identifier of user to retrieve
-     * @param array<mixed>|UserGetParams $params
+     * @param array<string,mixed>|UserGetParams $params
      *
      * @return BaseResponse<PublicUser>
      *

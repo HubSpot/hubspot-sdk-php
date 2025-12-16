@@ -7,13 +7,12 @@ namespace HubspotSDK\Marketing\Subscriptions;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Marketing\Subscriptions\PublicSubscriptionStatus\LegalBasis;
-use HubspotSDK\Marketing\Subscriptions\PublicSubscriptionStatus\SourceOfStatus;
-use HubspotSDK\Marketing\Subscriptions\PublicSubscriptionStatus\Status;
 
 /**
+ * @phpstan-import-type PublicSubscriptionStatusShape from \HubspotSDK\Marketing\Subscriptions\PublicSubscriptionStatus
+ *
  * @phpstan-type PublicSubscriptionStatusesResponseShape = array{
- *   recipient: string, subscriptionStatuses: list<PublicSubscriptionStatus>
+ *   recipient: string, subscriptionStatuses: list<PublicSubscriptionStatusShape>
  * }
  */
 final class PublicSubscriptionStatusesResponse implements BaseModel
@@ -63,17 +62,7 @@ final class PublicSubscriptionStatusesResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicSubscriptionStatus|array{
-     *   id: string,
-     *   description: string,
-     *   name: string,
-     *   sourceOfStatus: value-of<SourceOfStatus>,
-     *   status: value-of<Status>,
-     *   brandID?: int|null,
-     *   legalBasis?: value-of<LegalBasis>|null,
-     *   legalBasisExplanation?: string|null,
-     *   preferenceGroupName?: string|null,
-     * }> $subscriptionStatuses
+     * @param list<PublicSubscriptionStatusShape> $subscriptionStatuses
      */
     public static function with(
         string $recipient,
@@ -101,17 +90,7 @@ final class PublicSubscriptionStatusesResponse implements BaseModel
     /**
      * A list of all of the contact's subscriptions statuses.
      *
-     * @param list<PublicSubscriptionStatus|array{
-     *   id: string,
-     *   description: string,
-     *   name: string,
-     *   sourceOfStatus: value-of<SourceOfStatus>,
-     *   status: value-of<Status>,
-     *   brandID?: int|null,
-     *   legalBasis?: value-of<LegalBasis>|null,
-     *   legalBasisExplanation?: string|null,
-     *   preferenceGroupName?: string|null,
-     * }> $subscriptionStatuses
+     * @param list<PublicSubscriptionStatusShape> $subscriptionStatuses
      */
     public function withSubscriptionStatuses(array $subscriptionStatuses): self
     {

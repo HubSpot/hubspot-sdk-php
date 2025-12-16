@@ -8,17 +8,19 @@ use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\ErrorDetail;
 use HubspotSDK\Marketing\Subscriptions\V4\BatchResponsePublicWideStatusBulkResponseWithErrors\Status;
 use HubspotSDK\StandardError;
 
 /**
+ * @phpstan-import-type PublicWideStatusBulkResponseShape from \HubspotSDK\Marketing\Subscriptions\V4\PublicWideStatusBulkResponse
+ * @phpstan-import-type StandardErrorShape from \HubspotSDK\StandardError
+ *
  * @phpstan-type BatchResponsePublicWideStatusBulkResponseWithErrorsShape = array{
  *   completedAt: \DateTimeInterface,
- *   results: list<PublicWideStatusBulkResponse>,
+ *   results: list<PublicWideStatusBulkResponseShape>,
  *   startedAt: \DateTimeInterface,
- *   status: value-of<Status>,
- *   errors?: list<StandardError>|null,
+ *   status: Status|value-of<Status>,
+ *   errors?: list<StandardErrorShape>|null,
  *   links?: array<string,string>|null,
  *   numErrors?: int|null,
  *   requestedAt?: \DateTimeInterface|null,
@@ -115,20 +117,9 @@ final class BatchResponsePublicWideStatusBulkResponseWithErrors implements BaseM
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicWideStatusBulkResponse|array{
-     *   subscriberIDString: string, wideStatuses: list<PublicWideStatus>
-     * }> $results
+     * @param list<PublicWideStatusBulkResponseShape> $results
      * @param Status|value-of<Status> $status
-     * @param list<StandardError|array{
-     *   category: string,
-     *   context: array<string,list<string>>,
-     *   errors: list<ErrorDetail>,
-     *   links: array<string,string>,
-     *   message: string,
-     *   status: string,
-     *   id?: string|null,
-     *   subCategory?: mixed,
-     * }> $errors
+     * @param list<StandardErrorShape> $errors
      * @param array<string,string> $links
      */
     public static function with(
@@ -170,9 +161,7 @@ final class BatchResponsePublicWideStatusBulkResponseWithErrors implements BaseM
     /**
      * An array containing the results of the operation.
      *
-     * @param list<PublicWideStatusBulkResponse|array{
-     *   subscriberIDString: string, wideStatuses: list<PublicWideStatus>
-     * }> $results
+     * @param list<PublicWideStatusBulkResponseShape> $results
      */
     public function withResults(array $results): self
     {
@@ -209,16 +198,7 @@ final class BatchResponsePublicWideStatusBulkResponseWithErrors implements BaseM
     /**
      * An array of error objects detailing any issues encountered during the operation.
      *
-     * @param list<StandardError|array{
-     *   category: string,
-     *   context: array<string,list<string>>,
-     *   errors: list<ErrorDetail>,
-     *   links: array<string,string>,
-     *   message: string,
-     *   status: string,
-     *   id?: string|null,
-     *   subCategory?: mixed,
-     * }> $errors
+     * @param list<StandardErrorShape> $errors
      */
     public function withErrors(array $errors): self
     {

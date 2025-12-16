@@ -9,20 +9,20 @@ use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Marketing\Forms\FormDefinitionCreateRequestBase\FormType;
-use HubspotSDK\Marketing\Forms\FormDisplayOptions\Theme;
-use HubspotSDK\Marketing\Forms\HubSpotFormConfiguration\Language;
-use HubspotSDK\Marketing\Forms\LegalConsentOptionsLegitimateInterest\LawfulBasis;
-use HubspotSDK\Marketing\Forms\LegalConsentOptionsNone\Type;
 
 /**
+ * @phpstan-import-type HubSpotFormConfigurationShape from \HubspotSDK\Marketing\Forms\HubSpotFormConfiguration
+ * @phpstan-import-type FormDisplayOptionsShape from \HubspotSDK\Marketing\Forms\FormDisplayOptions
+ * @phpstan-import-type LegalConsentOptionsShape from \HubspotSDK\Marketing\Forms\FormDefinitionCreateRequestBase\LegalConsentOptions
+ *
  * @phpstan-type FormDefinitionCreateRequestBaseShape = array{
  *   archived: bool,
- *   configuration: HubSpotFormConfiguration,
+ *   configuration: HubSpotFormConfiguration|HubSpotFormConfigurationShape,
  *   createdAt: \DateTimeInterface,
- *   displayOptions: FormDisplayOptions,
+ *   displayOptions: FormDisplayOptions|FormDisplayOptionsShape,
  *   fieldGroups: list<mixed>,
- *   formType: value-of<FormType>,
- *   legalConsentOptions: LegalConsentOptionsNone|LegalConsentOptionsLegitimateInterest|LegalConsentOptionsExplicitConsentToProcess|LegalConsentOptionsImplicitConsentToProcess,
+ *   formType: FormType|value-of<FormType>,
+ *   legalConsentOptions: LegalConsentOptionsNone|LegalConsentOptionsLegitimateInterest|LegalConsentOptionsExplicitConsentToProcess|LegalConsentOptionsImplicitConsentToProcess|LegalConsentOptionsShape,
  *   name: string,
  *   updatedAt: \DateTimeInterface,
  *   archivedAt?: \DateTimeInterface|null,
@@ -111,50 +111,10 @@ final class FormDefinitionCreateRequestBase implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param HubSpotFormConfiguration|array{
-     *   allowLinkToResetKnownValues: bool,
-     *   archivable: bool,
-     *   cloneable: bool,
-     *   createNewContactForNewEmail: bool,
-     *   editable: bool,
-     *   language: value-of<Language>,
-     *   notifyContactOwner: bool,
-     *   notifyRecipients: list<string>,
-     *   postSubmitAction: FormPostSubmitAction,
-     *   prePopulateKnownValues: bool,
-     *   recaptchaEnabled: bool,
-     *   lifecycleStages?: list<LifecycleStage>|null,
-     * } $configuration
-     * @param FormDisplayOptions|array{
-     *   renderRawHTML: bool,
-     *   style: FormStyle,
-     *   submitButtonText: string,
-     *   theme: value-of<Theme>,
-     *   cssClass?: string|null,
-     * } $displayOptions
+     * @param HubSpotFormConfigurationShape $configuration
+     * @param FormDisplayOptionsShape $displayOptions
      * @param list<mixed> $fieldGroups
-     * @param LegalConsentOptionsNone|array{
-     *   type: value-of<Type>
-     * }|LegalConsentOptionsLegitimateInterest|array{
-     *   lawfulBasis: value-of<LawfulBasis>,
-     *   privacyText: string,
-     *   subscriptionTypeIDs: list<int>,
-     *   type: value-of<LegalConsentOptionsLegitimateInterest\Type>,
-     * }|LegalConsentOptionsExplicitConsentToProcess|array{
-     *   communicationsCheckboxes: list<LegalConsentCheckbox>,
-     *   privacyText: string,
-     *   type: value-of<LegalConsentOptionsExplicitConsentToProcess\Type>,
-     *   communicationConsentText?: string|null,
-     *   consentToProcessCheckboxLabel?: string|null,
-     *   consentToProcessFooterText?: string|null,
-     *   consentToProcessText?: string|null,
-     * }|LegalConsentOptionsImplicitConsentToProcess|array{
-     *   communicationsCheckboxes: list<LegalConsentCheckbox>,
-     *   privacyText: string,
-     *   type: value-of<LegalConsentOptionsImplicitConsentToProcess\Type>,
-     *   communicationConsentText?: string|null,
-     *   consentToProcessText?: string|null,
-     * } $legalConsentOptions
+     * @param LegalConsentOptionsShape $legalConsentOptions
      * @param FormType|value-of<FormType> $formType
      */
     public static function with(
@@ -195,20 +155,7 @@ final class FormDefinitionCreateRequestBase implements BaseModel
     }
 
     /**
-     * @param HubSpotFormConfiguration|array{
-     *   allowLinkToResetKnownValues: bool,
-     *   archivable: bool,
-     *   cloneable: bool,
-     *   createNewContactForNewEmail: bool,
-     *   editable: bool,
-     *   language: value-of<Language>,
-     *   notifyContactOwner: bool,
-     *   notifyRecipients: list<string>,
-     *   postSubmitAction: FormPostSubmitAction,
-     *   prePopulateKnownValues: bool,
-     *   recaptchaEnabled: bool,
-     *   lifecycleStages?: list<LifecycleStage>|null,
-     * } $configuration
+     * @param HubSpotFormConfigurationShape $configuration
      */
     public function withConfiguration(
         HubSpotFormConfiguration|array $configuration
@@ -230,13 +177,7 @@ final class FormDefinitionCreateRequestBase implements BaseModel
     /**
      * Options for styling the form.
      *
-     * @param FormDisplayOptions|array{
-     *   renderRawHTML: bool,
-     *   style: FormStyle,
-     *   submitButtonText: string,
-     *   theme: value-of<Theme>,
-     *   cssClass?: string|null,
-     * } $displayOptions
+     * @param FormDisplayOptionsShape $displayOptions
      */
     public function withDisplayOptions(
         FormDisplayOptions|array $displayOptions
@@ -270,28 +211,7 @@ final class FormDefinitionCreateRequestBase implements BaseModel
     }
 
     /**
-     * @param LegalConsentOptionsNone|array{
-     *   type: value-of<Type>
-     * }|LegalConsentOptionsLegitimateInterest|array{
-     *   lawfulBasis: value-of<LawfulBasis>,
-     *   privacyText: string,
-     *   subscriptionTypeIDs: list<int>,
-     *   type: value-of<LegalConsentOptionsLegitimateInterest\Type>,
-     * }|LegalConsentOptionsExplicitConsentToProcess|array{
-     *   communicationsCheckboxes: list<LegalConsentCheckbox>,
-     *   privacyText: string,
-     *   type: value-of<LegalConsentOptionsExplicitConsentToProcess\Type>,
-     *   communicationConsentText?: string|null,
-     *   consentToProcessCheckboxLabel?: string|null,
-     *   consentToProcessFooterText?: string|null,
-     *   consentToProcessText?: string|null,
-     * }|LegalConsentOptionsImplicitConsentToProcess|array{
-     *   communicationsCheckboxes: list<LegalConsentCheckbox>,
-     *   privacyText: string,
-     *   type: value-of<LegalConsentOptionsImplicitConsentToProcess\Type>,
-     *   communicationConsentText?: string|null,
-     *   consentToProcessText?: string|null,
-     * } $legalConsentOptions
+     * @param LegalConsentOptionsShape $legalConsentOptions
      */
     public function withLegalConsentOptions(
         LegalConsentOptionsNone|array|LegalConsentOptionsLegitimateInterest|LegalConsentOptionsExplicitConsentToProcess|LegalConsentOptionsImplicitConsentToProcess $legalConsentOptions,

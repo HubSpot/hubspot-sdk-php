@@ -15,8 +15,10 @@ use HubspotSDK\PublicObjectID;
  *
  * @see HubspotSDK\Services\Crm\Associations\BatchService::get()
  *
+ * @phpstan-import-type PublicObjectIDShape from \HubspotSDK\PublicObjectID
+ *
  * @phpstan-type BatchGetParamsShape = array{
- *   fromObjectType: string, inputs: list<PublicObjectID|array{id: string}>
+ *   fromObjectType: string, inputs: list<PublicObjectIDShape>
  * }
  */
 final class BatchGetParams implements BaseModel
@@ -56,7 +58,7 @@ final class BatchGetParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicObjectID|array{id: string}> $inputs
+     * @param list<PublicObjectIDShape> $inputs
      */
     public static function with(string $fromObjectType, array $inputs): self
     {
@@ -77,7 +79,7 @@ final class BatchGetParams implements BaseModel
     }
 
     /**
-     * @param list<PublicObjectID|array{id: string}> $inputs
+     * @param list<PublicObjectIDShape> $inputs
      */
     public function withInputs(array $inputs): self
     {

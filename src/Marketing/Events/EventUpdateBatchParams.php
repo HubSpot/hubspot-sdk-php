@@ -14,19 +14,10 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Services\Marketing\EventsService::updateBatch()
  *
+ * @phpstan-import-type MarketingEventPublicUpdateRequestFullV2Shape from \HubspotSDK\Marketing\Events\MarketingEventPublicUpdateRequestFullV2
+ *
  * @phpstan-type EventUpdateBatchParamsShape = array{
- *   inputs: list<MarketingEventPublicUpdateRequestFullV2|array{
- *     customProperties: list<PropertyValue>,
- *     objectID: string,
- *     endDateTime?: \DateTimeInterface|null,
- *     eventCancelled?: bool|null,
- *     eventDescription?: string|null,
- *     eventName?: string|null,
- *     eventOrganizer?: string|null,
- *     eventType?: string|null,
- *     eventURL?: string|null,
- *     startDateTime?: \DateTimeInterface|null,
- *   }>,
+ *   inputs: list<MarketingEventPublicUpdateRequestFullV2Shape>
  * }
  */
 final class EventUpdateBatchParams implements BaseModel
@@ -63,18 +54,7 @@ final class EventUpdateBatchParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<MarketingEventPublicUpdateRequestFullV2|array{
-     *   customProperties: list<PropertyValue>,
-     *   objectID: string,
-     *   endDateTime?: \DateTimeInterface|null,
-     *   eventCancelled?: bool|null,
-     *   eventDescription?: string|null,
-     *   eventName?: string|null,
-     *   eventOrganizer?: string|null,
-     *   eventType?: string|null,
-     *   eventURL?: string|null,
-     *   startDateTime?: \DateTimeInterface|null,
-     * }> $inputs
+     * @param list<MarketingEventPublicUpdateRequestFullV2Shape> $inputs
      */
     public static function with(array $inputs): self
     {
@@ -86,18 +66,7 @@ final class EventUpdateBatchParams implements BaseModel
     }
 
     /**
-     * @param list<MarketingEventPublicUpdateRequestFullV2|array{
-     *   customProperties: list<PropertyValue>,
-     *   objectID: string,
-     *   endDateTime?: \DateTimeInterface|null,
-     *   eventCancelled?: bool|null,
-     *   eventDescription?: string|null,
-     *   eventName?: string|null,
-     *   eventOrganizer?: string|null,
-     *   eventType?: string|null,
-     *   eventURL?: string|null,
-     *   startDateTime?: \DateTimeInterface|null,
-     * }> $inputs
+     * @param list<MarketingEventPublicUpdateRequestFullV2Shape> $inputs
      */
     public function withInputs(array $inputs): self
     {

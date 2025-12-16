@@ -15,6 +15,8 @@ use HubspotSDK\Crm\ValueWithTimestamp;
 /**
  * A simple public object.
  *
+ * @phpstan-import-type ValueWithTimestampShape from \HubspotSDK\Crm\ValueWithTimestamp
+ *
  * @phpstan-type ObjectsDealSplitsSimplePublicObjectShape = array{
  *   id: string,
  *   createdAt: \DateTimeInterface,
@@ -22,7 +24,7 @@ use HubspotSDK\Crm\ValueWithTimestamp;
  *   updatedAt: \DateTimeInterface,
  *   archived?: bool|null,
  *   archivedAt?: \DateTimeInterface|null,
- *   propertiesWithHistory?: array<string,list<ValueWithTimestamp>>|null,
+ *   propertiesWithHistory?: array<string,list<ValueWithTimestampShape>>|null,
  * }
  */
 final class ObjectsDealSplitsSimplePublicObject implements BaseModel
@@ -107,14 +109,7 @@ final class ObjectsDealSplitsSimplePublicObject implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param array<string,string|null> $properties
-     * @param array<string,list<ValueWithTimestamp|array{
-     *   sourceType: string,
-     *   timestamp: \DateTimeInterface,
-     *   value: string,
-     *   sourceID?: string|null,
-     *   sourceLabel?: string|null,
-     *   updatedByUserID?: int|null,
-     * }>> $propertiesWithHistory
+     * @param array<string,list<ValueWithTimestampShape>> $propertiesWithHistory
      */
     public static function with(
         string $id,
@@ -210,14 +205,7 @@ final class ObjectsDealSplitsSimplePublicObject implements BaseModel
     /**
      * Key-value pairs representing the properties of the object along with their history.
      *
-     * @param array<string,list<ValueWithTimestamp|array{
-     *   sourceType: string,
-     *   timestamp: \DateTimeInterface,
-     *   value: string,
-     *   sourceID?: string|null,
-     *   sourceLabel?: string|null,
-     *   updatedByUserID?: int|null,
-     * }>> $propertiesWithHistory
+     * @param array<string,list<ValueWithTimestampShape>> $propertiesWithHistory
      */
     public function withPropertiesWithHistory(
         array $propertiesWithHistory

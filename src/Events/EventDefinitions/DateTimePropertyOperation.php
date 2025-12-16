@@ -15,9 +15,9 @@ use HubspotSDK\Events\EventDefinitions\DateTimePropertyOperation\PropertyType;
  * @phpstan-type DateTimePropertyOperationShape = array{
  *   includeObjectsWithNoValueSet: bool,
  *   operationType: string,
- *   operator: value-of<Operator>,
+ *   operator: Operator|value-of<Operator>,
  *   operatorName: string,
- *   propertyType: value-of<PropertyType>,
+ *   propertyType: PropertyType|value-of<PropertyType>,
  *   requiresTimeZoneConversion: bool,
  *   timestamp: int,
  *   defaultValue?: string|null,

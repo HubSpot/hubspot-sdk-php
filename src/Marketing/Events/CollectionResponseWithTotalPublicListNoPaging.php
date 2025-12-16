@@ -9,8 +9,10 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type PublicListShape from \HubspotSDK\Marketing\Events\PublicList
+ *
  * @phpstan-type CollectionResponseWithTotalPublicListNoPagingShape = array{
- *   results: list<PublicList>, total: int
+ *   results: list<PublicListShape>, total: int
  * }
  */
 final class CollectionResponseWithTotalPublicListNoPaging implements BaseModel
@@ -51,21 +53,7 @@ final class CollectionResponseWithTotalPublicListNoPaging implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicList|array{
-     *   listID: string,
-     *   listVersion: int,
-     *   name: string,
-     *   objectTypeID: string,
-     *   processingStatus: string,
-     *   processingType: string,
-     *   createdAt?: \DateTimeInterface|null,
-     *   createdByID?: string|null,
-     *   deletedAt?: \DateTimeInterface|null,
-     *   filtersUpdatedAt?: \DateTimeInterface|null,
-     *   size?: int|null,
-     *   updatedAt?: \DateTimeInterface|null,
-     *   updatedByID?: string|null,
-     * }> $results
+     * @param list<PublicListShape> $results
      */
     public static function with(array $results, int $total): self
     {
@@ -78,21 +66,7 @@ final class CollectionResponseWithTotalPublicListNoPaging implements BaseModel
     }
 
     /**
-     * @param list<PublicList|array{
-     *   listID: string,
-     *   listVersion: int,
-     *   name: string,
-     *   objectTypeID: string,
-     *   processingStatus: string,
-     *   processingType: string,
-     *   createdAt?: \DateTimeInterface|null,
-     *   createdByID?: string|null,
-     *   deletedAt?: \DateTimeInterface|null,
-     *   filtersUpdatedAt?: \DateTimeInterface|null,
-     *   size?: int|null,
-     *   updatedAt?: \DateTimeInterface|null,
-     *   updatedByID?: string|null,
-     * }> $results
+     * @param list<PublicListShape> $results
      */
     public function withResults(array $results): self
     {

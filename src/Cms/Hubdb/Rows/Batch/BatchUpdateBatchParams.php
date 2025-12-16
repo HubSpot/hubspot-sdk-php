@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace HubspotSDK\Cms\Hubdb\Rows\Batch;
 
 use HubspotSDK\Cms\Hubdb\HubDBTableRowV3BatchUpdateRequest;
-use HubspotSDK\Cms\Hubdb\Variant;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
@@ -16,15 +15,10 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Services\Cms\Hubdb\Rows\BatchService::updateBatch()
  *
+ * @phpstan-import-type HubDBTableRowV3BatchUpdateRequestShape from \HubspotSDK\Cms\Hubdb\HubDBTableRowV3BatchUpdateRequest
+ *
  * @phpstan-type BatchUpdateBatchParamsShape = array{
- *   inputs: list<HubDBTableRowV3BatchUpdateRequest|array{
- *     childTableID: int,
- *     displayIndex: int,
- *     values: array<string,Variant>,
- *     id?: string|null,
- *     name?: string|null,
- *     path?: string|null,
- *   }>,
+ *   inputs: list<HubDBTableRowV3BatchUpdateRequestShape>
  * }
  */
 final class BatchUpdateBatchParams implements BaseModel
@@ -61,14 +55,7 @@ final class BatchUpdateBatchParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<HubDBTableRowV3BatchUpdateRequest|array{
-     *   childTableID: int,
-     *   displayIndex: int,
-     *   values: array<string,Variant>,
-     *   id?: string|null,
-     *   name?: string|null,
-     *   path?: string|null,
-     * }> $inputs
+     * @param list<HubDBTableRowV3BatchUpdateRequestShape> $inputs
      */
     public static function with(array $inputs): self
     {
@@ -80,14 +67,7 @@ final class BatchUpdateBatchParams implements BaseModel
     }
 
     /**
-     * @param list<HubDBTableRowV3BatchUpdateRequest|array{
-     *   childTableID: int,
-     *   displayIndex: int,
-     *   values: array<string,Variant>,
-     *   id?: string|null,
-     *   name?: string|null,
-     *   path?: string|null,
-     * }> $inputs
+     * @param list<HubDBTableRowV3BatchUpdateRequestShape> $inputs
      */
     public function withInputs(array $inputs): self
     {

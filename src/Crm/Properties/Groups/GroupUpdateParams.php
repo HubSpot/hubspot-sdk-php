@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Crm\Properties\GroupsService::update()
  *
  * @phpstan-type GroupUpdateParamsShape = array{
- *   objectType: string, displayOrder?: int, label?: string
+ *   objectType: string, displayOrder?: int|null, label?: string|null
  * }
  */
 final class GroupUpdateParams implements BaseModel

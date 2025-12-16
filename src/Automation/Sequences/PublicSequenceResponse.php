@@ -10,16 +10,20 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type PublicSequenceStepDependencyResponseShape from \HubspotSDK\Automation\Sequences\PublicSequenceStepDependencyResponse
+ * @phpstan-import-type PublicSequenceStepResponseShape from \HubspotSDK\Automation\Sequences\PublicSequenceStepResponse
+ * @phpstan-import-type PublicSequenceSettingsResponseShape from \HubspotSDK\Automation\Sequences\PublicSequenceSettingsResponse
+ *
  * @phpstan-type PublicSequenceResponseShape = array{
  *   id: string,
  *   createdAt: \DateTimeInterface,
- *   dependencies: list<PublicSequenceStepDependencyResponse>,
+ *   dependencies: list<PublicSequenceStepDependencyResponseShape>,
  *   name: string,
- *   steps: list<PublicSequenceStepResponse>,
+ *   steps: list<PublicSequenceStepResponseShape>,
  *   updatedAt: \DateTimeInterface,
  *   userID: string,
  *   folderID?: string|null,
- *   settings?: PublicSequenceSettingsResponse|null,
+ *   settings?: null|PublicSequenceSettingsResponse|PublicSequenceSettingsResponseShape,
  * }
  */
 final class PublicSequenceResponse implements BaseModel
@@ -95,38 +99,9 @@ final class PublicSequenceResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicSequenceStepDependencyResponse|array{
-     *   id: string,
-     *   createdAt: \DateTimeInterface,
-     *   dependencyType: string,
-     *   reliesOnSequenceStepID: string,
-     *   reliesOnStepOrder: int,
-     *   requiredBySequenceStepID: string,
-     *   requiredByStepOrder: int,
-     *   updatedAt: \DateTimeInterface,
-     * }> $dependencies
-     * @param list<PublicSequenceStepResponse|array{
-     *   id: string,
-     *   actionType: string,
-     *   createdAt: \DateTimeInterface,
-     *   delayMillis: int,
-     *   stepOrder: int,
-     *   updatedAt: \DateTimeInterface,
-     *   emailPattern?: PublicEmailPatternResponse|null,
-     *   taskPattern?: PublicTaskPatternResponse|null,
-     * }> $steps
-     * @param PublicSequenceSettingsResponse|array{
-     *   id: string,
-     *   createdAt: \DateTimeInterface,
-     *   eligibleFollowUpDays: string,
-     *   individualTaskRemindersEnabled: bool,
-     *   sellingStrategy: string,
-     *   sendWindowEndMinute: int,
-     *   sendWindowStartMinute: int,
-     *   taskReminderMinute: int,
-     *   updatedAt: \DateTimeInterface,
-     *   unenrollmentSettings?: UnenrollmentSettingsResponse|null,
-     * } $settings
+     * @param list<PublicSequenceStepDependencyResponseShape> $dependencies
+     * @param list<PublicSequenceStepResponseShape> $steps
+     * @param PublicSequenceSettingsResponseShape $settings
      */
     public static function with(
         string $id,
@@ -172,16 +147,7 @@ final class PublicSequenceResponse implements BaseModel
     }
 
     /**
-     * @param list<PublicSequenceStepDependencyResponse|array{
-     *   id: string,
-     *   createdAt: \DateTimeInterface,
-     *   dependencyType: string,
-     *   reliesOnSequenceStepID: string,
-     *   reliesOnStepOrder: int,
-     *   requiredBySequenceStepID: string,
-     *   requiredByStepOrder: int,
-     *   updatedAt: \DateTimeInterface,
-     * }> $dependencies
+     * @param list<PublicSequenceStepDependencyResponseShape> $dependencies
      */
     public function withDependencies(array $dependencies): self
     {
@@ -200,16 +166,7 @@ final class PublicSequenceResponse implements BaseModel
     }
 
     /**
-     * @param list<PublicSequenceStepResponse|array{
-     *   id: string,
-     *   actionType: string,
-     *   createdAt: \DateTimeInterface,
-     *   delayMillis: int,
-     *   stepOrder: int,
-     *   updatedAt: \DateTimeInterface,
-     *   emailPattern?: PublicEmailPatternResponse|null,
-     *   taskPattern?: PublicTaskPatternResponse|null,
-     * }> $steps
+     * @param list<PublicSequenceStepResponseShape> $steps
      */
     public function withSteps(array $steps): self
     {
@@ -244,18 +201,7 @@ final class PublicSequenceResponse implements BaseModel
     }
 
     /**
-     * @param PublicSequenceSettingsResponse|array{
-     *   id: string,
-     *   createdAt: \DateTimeInterface,
-     *   eligibleFollowUpDays: string,
-     *   individualTaskRemindersEnabled: bool,
-     *   sellingStrategy: string,
-     *   sendWindowEndMinute: int,
-     *   sendWindowStartMinute: int,
-     *   taskReminderMinute: int,
-     *   updatedAt: \DateTimeInterface,
-     *   unenrollmentSettings?: UnenrollmentSettingsResponse|null,
-     * } $settings
+     * @param PublicSequenceSettingsResponseShape $settings
      */
     public function withSettings(
         PublicSequenceSettingsResponse|array $settings

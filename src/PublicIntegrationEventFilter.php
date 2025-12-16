@@ -10,10 +10,12 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicIntegrationEventFilter\FilterType;
 
 /**
+ * @phpstan-import-type PublicEventFilterMetadataShape from \HubspotSDK\PublicEventFilterMetadata
+ *
  * @phpstan-type PublicIntegrationEventFilterShape = array{
  *   eventTypeID: int,
- *   filterLines: list<PublicEventFilterMetadata>,
- *   filterType: value-of<FilterType>,
+ *   filterLines: list<PublicEventFilterMetadataShape>,
+ *   filterType: FilterType|value-of<FilterType>,
  * }
  */
 final class PublicIntegrationEventFilter implements BaseModel
@@ -61,10 +63,7 @@ final class PublicIntegrationEventFilter implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicEventFilterMetadata|array{
-     *   operation: PublicBoolPropertyOperation|PublicNumberPropertyOperation|PublicStringPropertyOperation|PublicDateTimePropertyOperation|PublicRangedDatePropertyOperation|PublicComparativePropertyUpdatedOperation|PublicComparativeDatePropertyOperation|PublicRollingDateRangePropertyOperation|PublicRollingPropertyUpdatedOperation|PublicEnumerationPropertyOperation|PublicAllPropertyTypesOperation|PublicRangedNumberPropertyOperation|PublicMultiStringPropertyOperation|PublicDatePropertyOperation|PublicCalendarDatePropertyOperation|PublicTimePointOperation|PublicRangedTimeOperation,
-     *   property: string,
-     * }> $filterLines
+     * @param list<PublicEventFilterMetadataShape> $filterLines
      * @param FilterType|value-of<FilterType> $filterType
      */
     public static function with(
@@ -90,10 +89,7 @@ final class PublicIntegrationEventFilter implements BaseModel
     }
 
     /**
-     * @param list<PublicEventFilterMetadata|array{
-     *   operation: PublicBoolPropertyOperation|PublicNumberPropertyOperation|PublicStringPropertyOperation|PublicDateTimePropertyOperation|PublicRangedDatePropertyOperation|PublicComparativePropertyUpdatedOperation|PublicComparativeDatePropertyOperation|PublicRollingDateRangePropertyOperation|PublicRollingPropertyUpdatedOperation|PublicEnumerationPropertyOperation|PublicAllPropertyTypesOperation|PublicRangedNumberPropertyOperation|PublicMultiStringPropertyOperation|PublicDatePropertyOperation|PublicCalendarDatePropertyOperation|PublicTimePointOperation|PublicRangedTimeOperation,
-     *   property: string,
-     * }> $filterLines
+     * @param list<PublicEventFilterMetadataShape> $filterLines
      */
     public function withFilterLines(array $filterLines): self
     {

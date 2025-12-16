@@ -17,7 +17,7 @@ interface RecordingSettingsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|RecordingSettingCreateParams $params
+     * @param array<string,mixed>|RecordingSettingCreateParams $params
      *
      * @return BaseResponse<RecordingSettingsResponse>
      *
@@ -32,7 +32,7 @@ interface RecordingSettingsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|RecordingSettingUpdateParams $params
+     * @param array<string,mixed>|RecordingSettingUpdateParams $params
      *
      * @return BaseResponse<RecordingSettingsResponse>
      *
@@ -59,7 +59,7 @@ interface RecordingSettingsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|RecordingSettingMarkReadyParams $params
+     * @param array<string,mixed>|RecordingSettingMarkReadyParams $params
      *
      * @return BaseResponse<mixed>
      *

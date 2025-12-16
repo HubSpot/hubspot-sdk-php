@@ -14,7 +14,7 @@ use HubspotSDK\PublicComparativePropertyUpdatedOperation\OperationType;
  * @phpstan-type PublicComparativePropertyUpdatedOperationShape = array{
  *   comparisonPropertyName: string,
  *   includeObjectsWithNoValueSet: bool,
- *   operationType: value-of<OperationType>,
+ *   operationType: OperationType|value-of<OperationType>,
  *   operator: string,
  *   defaultComparisonValue?: string|null,
  * }

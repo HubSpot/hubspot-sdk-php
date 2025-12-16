@@ -136,7 +136,7 @@ final class PartnerClientsRawService implements PartnerClientsRawContract
      *
      * @param array{
      *   after: string,
-     *   filterGroups: list<array{filters: list<array<mixed>>}>,
+     *   filterGroups: list<array{filters: list<array<string,mixed>>}>,
      *   limit: int,
      *   properties: list<string>,
      *   sorts: list<string>,

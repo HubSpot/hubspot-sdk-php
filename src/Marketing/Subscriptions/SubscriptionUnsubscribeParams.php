@@ -19,8 +19,8 @@ use HubspotSDK\Marketing\Subscriptions\SubscriptionUnsubscribeParams\LegalBasis;
  * @phpstan-type SubscriptionUnsubscribeParamsShape = array{
  *   emailAddress: string,
  *   subscriptionID: string,
- *   legalBasis?: LegalBasis|value-of<LegalBasis>,
- *   legalBasisExplanation?: string,
+ *   legalBasis?: null|LegalBasis|value-of<LegalBasis>,
+ *   legalBasisExplanation?: string|null,
  * }
  */
 final class SubscriptionUnsubscribeParams implements BaseModel

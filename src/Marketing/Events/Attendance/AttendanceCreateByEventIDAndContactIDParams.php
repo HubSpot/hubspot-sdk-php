@@ -23,11 +23,10 @@ use HubspotSDK\Marketing\Events\MarketingEventSubscriber;
  *
  * @see HubspotSDK\Services\Marketing\Events\AttendanceService::createByEventIDAndContactID()
  *
+ * @phpstan-import-type MarketingEventSubscriberShape from \HubspotSDK\Marketing\Events\MarketingEventSubscriber
+ *
  * @phpstan-type AttendanceCreateByEventIDAndContactIDParamsShape = array{
- *   objectID: string,
- *   inputs: list<MarketingEventSubscriber|array{
- *     interactionDateTime: int, properties: array<string,string>, vid: int
- *   }>,
+ *   objectID: string, inputs: list<MarketingEventSubscriberShape>
  * }
  */
 final class AttendanceCreateByEventIDAndContactIDParams implements BaseModel
@@ -73,9 +72,7 @@ final class AttendanceCreateByEventIDAndContactIDParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<MarketingEventSubscriber|array{
-     *   interactionDateTime: int, properties: array<string,string>, vid: int
-     * }> $inputs
+     * @param list<MarketingEventSubscriberShape> $inputs
      */
     public static function with(string $objectID, array $inputs): self
     {
@@ -98,9 +95,7 @@ final class AttendanceCreateByEventIDAndContactIDParams implements BaseModel
     /**
      * List of HubSpot contacts to subscribe to the marketing event.
      *
-     * @param list<MarketingEventSubscriber|array{
-     *   interactionDateTime: int, properties: array<string,string>, vid: int
-     * }> $inputs
+     * @param list<MarketingEventSubscriberShape> $inputs
      */
     public function withInputs(array $inputs): self
     {

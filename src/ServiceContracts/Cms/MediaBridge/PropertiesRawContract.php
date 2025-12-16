@@ -25,7 +25,7 @@ interface PropertiesRawContract
      * @api
      *
      * @param string $objectType path param: The object type to create the new property for
-     * @param array<mixed>|PropertyCreateParams $params
+     * @param array<string,mixed>|PropertyCreateParams $params
      *
      * @return BaseResponse<Property>
      *
@@ -41,7 +41,7 @@ interface PropertiesRawContract
      * @api
      *
      * @param string $propertyName path param: The name of the property to update
-     * @param array<mixed>|PropertyUpdateParams $params
+     * @param array<string,mixed>|PropertyUpdateParams $params
      *
      * @return BaseResponse<Property>
      *
@@ -57,7 +57,7 @@ interface PropertiesRawContract
      * @api
      *
      * @param string $objectType path param: The specific object type to get the details for
-     * @param array<mixed>|PropertyListParams $params
+     * @param array<string,mixed>|PropertyListParams $params
      *
      * @return BaseResponse<CollectionResponsePropertyNoPaging>
      *
@@ -73,7 +73,7 @@ interface PropertiesRawContract
      * @api
      *
      * @param string $propertyName the name of the property to delete
-     * @param array<mixed>|PropertyDeleteParams $params
+     * @param array<string,mixed>|PropertyDeleteParams $params
      *
      * @return BaseResponse<mixed>
      *
@@ -89,7 +89,7 @@ interface PropertiesRawContract
      * @api
      *
      * @param string $objectType path param: The type of object to create the properties for
-     * @param array<mixed>|PropertyCreateBatchParams $params
+     * @param array<string,mixed>|PropertyCreateBatchParams $params
      *
      * @return BaseResponse<BatchResponseProperty>
      *
@@ -105,7 +105,7 @@ interface PropertiesRawContract
      * @api
      *
      * @param string $objectType path param: The object type for the specified properties to be archived
-     * @param array<mixed>|PropertyDeleteBatchParams $params
+     * @param array<string,mixed>|PropertyDeleteBatchParams $params
      *
      * @return BaseResponse<mixed>
      *
@@ -121,7 +121,7 @@ interface PropertiesRawContract
      * @api
      *
      * @param string $propertyName path param: The name of the property to get the details for
-     * @param array<mixed>|PropertyGetParams $params
+     * @param array<string,mixed>|PropertyGetParams $params
      *
      * @return BaseResponse<Property>
      *
@@ -137,7 +137,7 @@ interface PropertiesRawContract
      * @api
      *
      * @param string $objectType path param: The object type to get the properties for
-     * @param array<mixed>|PropertyGetBatchParams $params
+     * @param array<string,mixed>|PropertyGetBatchParams $params
      *
      * @return BaseResponse<BatchResponseProperty>
      *

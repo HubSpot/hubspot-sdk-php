@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\Blogs\Settings;
 
-use HubspotSDK\Cms\Blogs\Settings\Blog\Language;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -13,8 +12,14 @@ use HubspotSDK\VersionUser;
 /**
  * Model definition for a Version Blog. Contains metadata describing the version of the Blog. It can be used to view edit history of the settings.
  *
+ * @phpstan-import-type BlogShape from \HubspotSDK\Cms\Blogs\Settings\Blog
+ * @phpstan-import-type VersionUserShape from \HubspotSDK\VersionUser
+ *
  * @phpstan-type VersionBlogShape = array{
- *   id: string, object: Blog, updatedAt: \DateTimeInterface, user: VersionUser
+ *   id: string,
+ *   object: Blog|BlogShape,
+ *   updatedAt: \DateTimeInterface,
+ *   user: VersionUser|VersionUserShape,
  * }
  */
 final class VersionBlog implements BaseModel
@@ -68,24 +73,8 @@ final class VersionBlog implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param Blog|array{
-     *   id: string,
-     *   absoluteURL: string,
-     *   allowComments: bool,
-     *   created: \DateTimeInterface,
-     *   deletedAt: \DateTimeInterface,
-     *   description: string,
-     *   htmlTitle: string,
-     *   language: value-of<Language>,
-     *   name: string,
-     *   publicAccessRules: list<mixed>,
-     *   publicAccessRulesEnabled: bool,
-     *   publicTitle: string,
-     *   slug: string,
-     *   translatedFromID: string,
-     *   updated: \DateTimeInterface,
-     * } $object
-     * @param VersionUser|array{id: string, email: string, fullName: string} $user
+     * @param BlogShape $object
+     * @param VersionUserShape $user
      */
     public static function with(
         string $id,
@@ -115,23 +104,7 @@ final class VersionBlog implements BaseModel
     }
 
     /**
-     * @param Blog|array{
-     *   id: string,
-     *   absoluteURL: string,
-     *   allowComments: bool,
-     *   created: \DateTimeInterface,
-     *   deletedAt: \DateTimeInterface,
-     *   description: string,
-     *   htmlTitle: string,
-     *   language: value-of<Language>,
-     *   name: string,
-     *   publicAccessRules: list<mixed>,
-     *   publicAccessRulesEnabled: bool,
-     *   publicTitle: string,
-     *   slug: string,
-     *   translatedFromID: string,
-     *   updated: \DateTimeInterface,
-     * } $object
+     * @param BlogShape $object
      */
     public function withObject(Blog|array $object): self
     {
@@ -152,7 +125,7 @@ final class VersionBlog implements BaseModel
     /**
      * Model definition for a version user. Contains addition information about the user who created a version.
      *
-     * @param VersionUser|array{id: string, email: string, fullName: string} $user
+     * @param VersionUserShape $user
      */
     public function withUser(VersionUser|array $user): self
     {

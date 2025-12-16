@@ -8,15 +8,15 @@ use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\Associations\Schema\V4\PublicAssociationDefinitionUserConfiguration\Category;
-use HubspotSDK\NextPage;
 use HubspotSDK\Paging;
-use HubspotSDK\PreviousPage;
 
 /**
+ * @phpstan-import-type PublicAssociationDefinitionUserConfigurationShape from \HubspotSDK\Crm\Associations\Schema\V4\PublicAssociationDefinitionUserConfiguration
+ * @phpstan-import-type PagingShape from \HubspotSDK\Paging
+ *
  * @phpstan-type CollectionResponsePublicAssociationDefinitionUserConfigurationShape = array{
- *   results: list<PublicAssociationDefinitionUserConfiguration>,
- *   paging?: Paging|null,
+ *   results: list<PublicAssociationDefinitionUserConfigurationShape>,
+ *   paging?: null|Paging|PagingShape,
  * }
  */
 final class CollectionResponsePublicAssociationDefinitionUserConfiguration implements BaseModel
@@ -60,13 +60,8 @@ final class CollectionResponsePublicAssociationDefinitionUserConfiguration imple
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicAssociationDefinitionUserConfiguration|array{
-     *   category: value-of<Category>,
-     *   typeID: int,
-     *   label?: string|null,
-     *   userEnforcedMaxToObjectIDs?: int|null,
-     * }> $results
-     * @param Paging|array{next?: NextPage|null, prev?: PreviousPage|null} $paging
+     * @param list<PublicAssociationDefinitionUserConfigurationShape> $results
+     * @param PagingShape $paging
      */
     public static function with(
         array $results,
@@ -82,12 +77,7 @@ final class CollectionResponsePublicAssociationDefinitionUserConfiguration imple
     }
 
     /**
-     * @param list<PublicAssociationDefinitionUserConfiguration|array{
-     *   category: value-of<Category>,
-     *   typeID: int,
-     *   label?: string|null,
-     *   userEnforcedMaxToObjectIDs?: int|null,
-     * }> $results
+     * @param list<PublicAssociationDefinitionUserConfigurationShape> $results
      */
     public function withResults(array $results): self
     {
@@ -98,7 +88,7 @@ final class CollectionResponsePublicAssociationDefinitionUserConfiguration imple
     }
 
     /**
-     * @param Paging|array{next?: NextPage|null, prev?: PreviousPage|null} $paging
+     * @param PagingShape $paging
      */
     public function withPaging(Paging|array $paging): self
     {

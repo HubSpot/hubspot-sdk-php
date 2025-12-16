@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Files\FileOperationsService::replace()
  *
  * @phpstan-type FileOperationReplaceParamsShape = array{
- *   charsetHunch?: string, file?: string, options?: string
+ *   charsetHunch?: string|null, file?: string|null, options?: string|null
  * }
  */
 final class FileOperationReplaceParams implements BaseModel

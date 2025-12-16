@@ -11,8 +11,10 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * New or updated webhook settings for an app.
  *
+ * @phpstan-import-type ThrottlingSettingsShape from \HubspotSDK\Webhooks\ThrottlingSettings
+ *
  * @phpstan-type SettingsChangeRequestShape = array{
- *   targetURL: string, throttling: ThrottlingSettings
+ *   targetURL: string, throttling: ThrottlingSettings|ThrottlingSettingsShape
  * }
  */
 final class SettingsChangeRequest implements BaseModel
@@ -56,7 +58,7 @@ final class SettingsChangeRequest implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param ThrottlingSettings|array{maxConcurrentRequests: int} $throttling
+     * @param ThrottlingSettingsShape $throttling
      */
     public static function with(
         string $targetURL,
@@ -84,7 +86,7 @@ final class SettingsChangeRequest implements BaseModel
     /**
      * Configuration details for webhook throttling.
      *
-     * @param ThrottlingSettings|array{maxConcurrentRequests: int} $throttling
+     * @param ThrottlingSettingsShape $throttling
      */
     public function withThrottling(ThrottlingSettings|array $throttling): self
     {

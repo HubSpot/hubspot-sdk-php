@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Crm\Objects\ListingsService::update()
  *
  * @phpstan-type ListingUpdateParamsShape = array{
- *   properties: array<string,string>, idProperty?: string
+ *   properties: array<string,string>, idProperty?: string|null
  * }
  */
 final class ListingUpdateParams implements BaseModel

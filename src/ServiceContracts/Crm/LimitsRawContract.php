@@ -23,7 +23,7 @@ interface LimitsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|LimitGetAssociationLabelLimitsParams $params
+     * @param array<string,mixed>|LimitGetAssociationLabelLimitsParams $params
      *
      * @return BaseResponse<CollectionResponseAssociationLabelLimitResponseNoPaging>
      *
@@ -38,7 +38,7 @@ interface LimitsRawContract
      * @api
      *
      * @param string $toObjectTypeID objectTypeId of the object type on the "to" side of the association
-     * @param array<mixed>|LimitGetAssociationRecordsLimitsByObjectTypeParams $params
+     * @param array<string,mixed>|LimitGetAssociationRecordsLimitsByObjectTypeParams $params
      *
      * @return BaseResponse<AssociationRecordLimitResponse>
      *

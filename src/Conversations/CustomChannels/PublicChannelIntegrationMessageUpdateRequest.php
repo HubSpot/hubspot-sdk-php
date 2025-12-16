@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type PublicChannelIntegrationMessageUpdateRequestShape = array{
- *   statusType: value-of<StatusType>, errorMessage?: string|null
+ *   statusType: StatusType|value-of<StatusType>, errorMessage?: string|null
  * }
  */
 final class PublicChannelIntegrationMessageUpdateRequest implements BaseModel

@@ -47,7 +47,7 @@ interface WorkflowsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|WorkflowListParams $params
+     * @param array<string,mixed>|WorkflowListParams $params
      *
      * @return BaseResponse<Page<APIFlowListing>>
      *
@@ -73,7 +73,7 @@ interface WorkflowsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|WorkflowBatchGetParams $params
+     * @param array<string,mixed>|WorkflowBatchGetParams $params
      *
      * @return BaseResponse<BatchResponseAPIFlow>
      *
@@ -87,7 +87,7 @@ interface WorkflowsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|WorkflowBatchGetIDMappingsParams $params
+     * @param array<string,mixed>|WorkflowBatchGetIDMappingsParams $params
      *
      * @return BaseResponse<BatchResponseFlowIDWorkflowIDMappingResponse>
      *
@@ -113,7 +113,7 @@ interface WorkflowsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|WorkflowListEmailCampaignsParams $params
+     * @param array<string,mixed>|WorkflowListEmailCampaignsParams $params
      *
      * @return BaseResponse<Page<APIFlowEmailCampaign>>
      *

@@ -21,7 +21,7 @@ interface DefinitionsRawContract
      * @api
      *
      * @param int $appID the ID of the app
-     * @param array<mixed>|DefinitionCreateParams $params
+     * @param array<string,mixed>|DefinitionCreateParams $params
      *
      * @return BaseResponse<PublicActionDefinition>
      *
@@ -37,7 +37,7 @@ interface DefinitionsRawContract
      * @api
      *
      * @param string $definitionID path param: The ID of the custom action definition
-     * @param array<mixed>|DefinitionUpdateParams $params
+     * @param array<string,mixed>|DefinitionUpdateParams $params
      *
      * @return BaseResponse<PublicActionDefinition>
      *
@@ -53,7 +53,7 @@ interface DefinitionsRawContract
      * @api
      *
      * @param int $appID the ID of the app
-     * @param array<mixed>|DefinitionListParams $params
+     * @param array<string,mixed>|DefinitionListParams $params
      *
      * @return BaseResponse<Page<PublicActionDefinition>>
      *
@@ -69,7 +69,7 @@ interface DefinitionsRawContract
      * @api
      *
      * @param string $definitionID the ID of the custom action definition
-     * @param array<mixed>|DefinitionDeleteParams $params
+     * @param array<string,mixed>|DefinitionDeleteParams $params
      *
      * @return BaseResponse<mixed>
      *
@@ -85,7 +85,7 @@ interface DefinitionsRawContract
      * @api
      *
      * @param string $definitionID path param: The ID of the custom action
-     * @param array<mixed>|DefinitionGetParams $params
+     * @param array<string,mixed>|DefinitionGetParams $params
      *
      * @return BaseResponse<PublicActionDefinition>
      *

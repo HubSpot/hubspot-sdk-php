@@ -29,7 +29,8 @@ final class CalendarRawService implements CalendarRawContract
      * @param array{
      *   organizerUserID: string,
      *   associations: list<array{
-     *     to: array<mixed>|PublicObjectID, types: list<array<mixed>|AssociationSpec>
+     *     to: array<string,mixed>|PublicObjectID,
+     *     types: list<array<string,mixed>|AssociationSpec>,
      *   }>,
      *   emailReminderSchedule: array{
      *     reminders: list<array{numberOfTimeUnits: int, timeUnit: string}>,

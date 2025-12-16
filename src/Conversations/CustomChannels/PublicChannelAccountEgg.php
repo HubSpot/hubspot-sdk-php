@@ -11,11 +11,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type PublicDeliveryIdentifierShape from \HubspotSDK\Conversations\PublicDeliveryIdentifier
+ *
  * @phpstan-type PublicChannelAccountEggShape = array{
  *   authorized: bool,
  *   inboxID: string,
  *   name: string,
- *   deliveryIdentifier?: PublicDeliveryIdentifier|null,
+ *   deliveryIdentifier?: null|PublicDeliveryIdentifier|PublicDeliveryIdentifierShape,
  * }
  */
 final class PublicChannelAccountEgg implements BaseModel
@@ -62,9 +64,7 @@ final class PublicChannelAccountEgg implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param PublicDeliveryIdentifier|array{
-     *   type: string, value: string
-     * } $deliveryIdentifier
+     * @param PublicDeliveryIdentifierShape $deliveryIdentifier
      */
     public static function with(
         bool $authorized,
@@ -108,9 +108,7 @@ final class PublicChannelAccountEgg implements BaseModel
     }
 
     /**
-     * @param PublicDeliveryIdentifier|array{
-     *   type: string, value: string
-     * } $deliveryIdentifier
+     * @param PublicDeliveryIdentifierShape $deliveryIdentifier
      */
     public function withDeliveryIdentifier(
         PublicDeliveryIdentifier|array $deliveryIdentifier

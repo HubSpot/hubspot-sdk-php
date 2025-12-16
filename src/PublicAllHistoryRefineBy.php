@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicAllHistoryRefineBy\Type;
 
 /**
- * @phpstan-type PublicAllHistoryRefineByShape = array{type: value-of<Type>}
+ * @phpstan-type PublicAllHistoryRefineByShape = array{type: Type|value-of<Type>}
  */
 final class PublicAllHistoryRefineBy implements BaseModel
 {

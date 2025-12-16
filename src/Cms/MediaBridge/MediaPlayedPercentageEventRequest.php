@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type MediaPlayedPercentageEventRequestShape = array{
- *   mediaType: value-of<MediaType>,
+ *   mediaType: MediaType|value-of<MediaType>,
  *   occurredTimestamp: int,
  *   playedPercent: int,
  *   sessionID: string,

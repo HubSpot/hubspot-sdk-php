@@ -15,15 +15,15 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Services\Crm\PipelinesService::replace()
  *
+ * @phpstan-import-type PipelineStageInputShape from \HubspotSDK\Crm\Pipelines\PipelineStageInput
+ *
  * @phpstan-type PipelineReplaceParamsShape = array{
  *   objectType: string,
  *   displayOrder: int,
  *   label: string,
- *   stages: list<PipelineStageInput|array{
- *     displayOrder: int, label: string, metadata: array<string,string>
- *   }>,
- *   validateDealStageUsagesBeforeDelete?: bool,
- *   validateReferencesBeforeDelete?: bool,
+ *   stages: list<PipelineStageInputShape>,
+ *   validateDealStageUsagesBeforeDelete?: bool|null,
+ *   validateReferencesBeforeDelete?: bool|null,
  * }
  */
 final class PipelineReplaceParams implements BaseModel
@@ -97,9 +97,7 @@ final class PipelineReplaceParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PipelineStageInput|array{
-     *   displayOrder: int, label: string, metadata: array<string,string>
-     * }> $stages
+     * @param list<PipelineStageInputShape> $stages
      */
     public static function with(
         string $objectType,
@@ -155,9 +153,7 @@ final class PipelineReplaceParams implements BaseModel
     /**
      * Pipeline stage inputs used to create the new or replacement pipeline.
      *
-     * @param list<PipelineStageInput|array{
-     *   displayOrder: int, label: string, metadata: array<string,string>
-     * }> $stages
+     * @param list<PipelineStageInputShape> $stages
      */
     public function withStages(array $stages): self
     {

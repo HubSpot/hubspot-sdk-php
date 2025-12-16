@@ -9,8 +9,10 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type MarketingEventCreateRequestParamsShape from \HubspotSDK\Marketing\Events\MarketingEventCreateRequestParams
+ *
  * @phpstan-type BatchInputMarketingEventCreateRequestParamsShape = array{
- *   inputs: list<MarketingEventCreateRequestParams>
+ *   inputs: list<MarketingEventCreateRequestParamsShape>
  * }
  */
 final class BatchInputMarketingEventCreateRequestParams implements BaseModel
@@ -46,20 +48,7 @@ final class BatchInputMarketingEventCreateRequestParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<MarketingEventCreateRequestParams|array{
-     *   customProperties: list<PropertyValue>,
-     *   eventName: string,
-     *   eventOrganizer: string,
-     *   externalAccountID: string,
-     *   externalEventID: string,
-     *   endDateTime?: \DateTimeInterface|null,
-     *   eventCancelled?: bool|null,
-     *   eventCompleted?: bool|null,
-     *   eventDescription?: string|null,
-     *   eventType?: string|null,
-     *   eventURL?: string|null,
-     *   startDateTime?: \DateTimeInterface|null,
-     * }> $inputs
+     * @param list<MarketingEventCreateRequestParamsShape> $inputs
      */
     public static function with(array $inputs): self
     {
@@ -71,20 +60,7 @@ final class BatchInputMarketingEventCreateRequestParams implements BaseModel
     }
 
     /**
-     * @param list<MarketingEventCreateRequestParams|array{
-     *   customProperties: list<PropertyValue>,
-     *   eventName: string,
-     *   eventOrganizer: string,
-     *   externalAccountID: string,
-     *   externalEventID: string,
-     *   endDateTime?: \DateTimeInterface|null,
-     *   eventCancelled?: bool|null,
-     *   eventCompleted?: bool|null,
-     *   eventDescription?: string|null,
-     *   eventType?: string|null,
-     *   eventURL?: string|null,
-     *   startDateTime?: \DateTimeInterface|null,
-     * }> $inputs
+     * @param list<MarketingEventCreateRequestParamsShape> $inputs
      */
     public function withInputs(array $inputs): self
     {

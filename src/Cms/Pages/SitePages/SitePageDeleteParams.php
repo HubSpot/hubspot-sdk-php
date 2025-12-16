@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Services\Cms\Pages\SitePagesService::delete()
  *
- * @phpstan-type SitePageDeleteParamsShape = array{archived?: bool}
+ * @phpstan-type SitePageDeleteParamsShape = array{archived?: bool|null}
  */
 final class SitePageDeleteParams implements BaseModel
 {

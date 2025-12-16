@@ -20,7 +20,7 @@ interface FoldersRawContract
     /**
      * @api
      *
-     * @param array<mixed>|FolderCreateParams $params
+     * @param array<string,mixed>|FolderCreateParams $params
      *
      * @return BaseResponse<ListFolderCreateResponse>
      *
@@ -48,7 +48,7 @@ interface FoldersRawContract
     /**
      * @api
      *
-     * @param array<mixed>|FolderGetParams $params
+     * @param array<string,mixed>|FolderGetParams $params
      *
      * @return BaseResponse<ListFolderFetchResponse>
      *
@@ -63,7 +63,7 @@ interface FoldersRawContract
      * @api
      *
      * @param string $newParentFolderID the ID for the target parent folder
-     * @param array<mixed>|FolderMoveParams $params
+     * @param array<string,mixed>|FolderMoveParams $params
      *
      * @return BaseResponse<ListFolderFetchResponse>
      *
@@ -78,7 +78,7 @@ interface FoldersRawContract
     /**
      * @api
      *
-     * @param array<mixed>|FolderMoveListParams $params
+     * @param array<string,mixed>|FolderMoveListParams $params
      *
      * @return BaseResponse<mixed>
      *
@@ -93,7 +93,7 @@ interface FoldersRawContract
      * @api
      *
      * @param string $folderID The ID of the folder to rename
-     * @param array<mixed>|FolderRenameParams $params
+     * @param array<string,mixed>|FolderRenameParams $params
      *
      * @return BaseResponse<ListFolderFetchResponse>
      *

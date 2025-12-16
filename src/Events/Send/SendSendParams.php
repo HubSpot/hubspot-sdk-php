@@ -18,11 +18,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-type SendSendParamsShape = array{
  *   eventName: string,
  *   properties: array<string,string>,
- *   email?: string,
- *   objectID?: string,
- *   occurredAt?: \DateTimeInterface,
- *   utk?: string,
- *   uuid?: string,
+ *   email?: string|null,
+ *   objectID?: string|null,
+ *   occurredAt?: \DateTimeInterface|null,
+ *   utk?: string|null,
+ *   uuid?: string|null,
  * }
  */
 final class SendSendParams implements BaseModel

@@ -8,13 +8,16 @@ use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\NextPage;
 use HubspotSDK\Paging;
-use HubspotSDK\PreviousPage;
 
 /**
+ * @phpstan-import-type JoinTimeAndRecordIDShape from \HubspotSDK\Crm\Lists\JoinTimeAndRecordID
+ * @phpstan-import-type PagingShape from \HubspotSDK\Paging
+ *
  * @phpstan-type APICollectionResponseJoinTimeAndRecordIDShape = array{
- *   results: list<JoinTimeAndRecordID>, paging?: Paging|null, total?: int|null
+ *   results: list<JoinTimeAndRecordIDShape>,
+ *   paging?: null|Paging|PagingShape,
+ *   total?: int|null,
  * }
  */
 final class APICollectionResponseJoinTimeAndRecordID implements BaseModel
@@ -56,10 +59,8 @@ final class APICollectionResponseJoinTimeAndRecordID implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<JoinTimeAndRecordID|array{
-     *   membershipTimestamp: \DateTimeInterface, recordID: string
-     * }> $results
-     * @param Paging|array{next?: NextPage|null, prev?: PreviousPage|null} $paging
+     * @param list<JoinTimeAndRecordIDShape> $results
+     * @param PagingShape $paging
      */
     public static function with(
         array $results,
@@ -77,9 +78,7 @@ final class APICollectionResponseJoinTimeAndRecordID implements BaseModel
     }
 
     /**
-     * @param list<JoinTimeAndRecordID|array{
-     *   membershipTimestamp: \DateTimeInterface, recordID: string
-     * }> $results
+     * @param list<JoinTimeAndRecordIDShape> $results
      */
     public function withResults(array $results): self
     {
@@ -90,7 +89,7 @@ final class APICollectionResponseJoinTimeAndRecordID implements BaseModel
     }
 
     /**
-     * @param Paging|array{next?: NextPage|null, prev?: PreviousPage|null} $paging
+     * @param PagingShape $paging
      */
     public function withPaging(Paging|array $paging): self
     {

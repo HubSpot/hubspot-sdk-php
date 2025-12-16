@@ -9,8 +9,10 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type MarketingEventEmailSubscriberShape from \HubspotSDK\Marketing\Events\MarketingEventEmailSubscriber
+ *
  * @phpstan-type BatchInputMarketingEventEmailSubscriberShape = array{
- *   inputs: list<MarketingEventEmailSubscriber>
+ *   inputs: list<MarketingEventEmailSubscriberShape>
  * }
  */
 final class BatchInputMarketingEventEmailSubscriber implements BaseModel
@@ -50,12 +52,7 @@ final class BatchInputMarketingEventEmailSubscriber implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<MarketingEventEmailSubscriber|array{
-     *   contactProperties: array<string,string>,
-     *   email: string,
-     *   interactionDateTime: int,
-     *   properties: array<string,string>,
-     * }> $inputs
+     * @param list<MarketingEventEmailSubscriberShape> $inputs
      */
     public static function with(array $inputs): self
     {
@@ -69,12 +66,7 @@ final class BatchInputMarketingEventEmailSubscriber implements BaseModel
     /**
      * List of marketing event details to create or update.
      *
-     * @param list<MarketingEventEmailSubscriber|array{
-     *   contactProperties: array<string,string>,
-     *   email: string,
-     *   interactionDateTime: int,
-     *   properties: array<string,string>,
-     * }> $inputs
+     * @param list<MarketingEventEmailSubscriberShape> $inputs
      */
     public function withInputs(array $inputs): self
     {

@@ -14,7 +14,9 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Services\Cms\Hubdb\TablesService::publishDraft()
  *
- * @phpstan-type TablePublishDraftParamsShape = array{includeForeignIDs?: bool}
+ * @phpstan-type TablePublishDraftParamsShape = array{
+ *   includeForeignIDs?: bool|null
+ * }
  */
 final class TablePublishDraftParams implements BaseModel
 {

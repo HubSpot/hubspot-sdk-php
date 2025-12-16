@@ -7,13 +7,14 @@ namespace HubspotSDK\Webhooks;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Webhooks\SubscriptionResponse\EventType;
 
 /**
  * List of event subscriptions for your app.
  *
+ * @phpstan-import-type SubscriptionResponseShape from \HubspotSDK\Webhooks\SubscriptionResponse
+ *
  * @phpstan-type SubscriptionListResponseShape = array{
- *   results: list<SubscriptionResponse>
+ *   results: list<SubscriptionResponseShape>
  * }
  */
 final class SubscriptionListResponse implements BaseModel
@@ -53,15 +54,7 @@ final class SubscriptionListResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<SubscriptionResponse|array{
-     *   id: string,
-     *   active: bool,
-     *   createdAt: \DateTimeInterface,
-     *   eventType: value-of<EventType>,
-     *   objectTypeID?: string|null,
-     *   propertyName?: string|null,
-     *   updatedAt?: \DateTimeInterface|null,
-     * }> $results
+     * @param list<SubscriptionResponseShape> $results
      */
     public static function with(array $results): self
     {
@@ -75,15 +68,7 @@ final class SubscriptionListResponse implements BaseModel
     /**
      * List of event subscriptions for your app.
      *
-     * @param list<SubscriptionResponse|array{
-     *   id: string,
-     *   active: bool,
-     *   createdAt: \DateTimeInterface,
-     *   eventType: value-of<EventType>,
-     *   objectTypeID?: string|null,
-     *   propertyName?: string|null,
-     *   updatedAt?: \DateTimeInterface|null,
-     * }> $results
+     * @param list<SubscriptionResponseShape> $results
      */
     public function withResults(array $results): self
     {

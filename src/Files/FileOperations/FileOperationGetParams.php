@@ -14,7 +14,9 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Services\Files\FileOperationsService::get()
  *
- * @phpstan-type FileOperationGetParamsShape = array{properties?: list<string>}
+ * @phpstan-type FileOperationGetParamsShape = array{
+ *   properties?: list<string>|null
+ * }
  */
 final class FileOperationGetParams implements BaseModel
 {

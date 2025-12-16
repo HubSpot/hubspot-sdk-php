@@ -13,8 +13,8 @@ use HubspotSDK\Crm\FeatureFlags\FlagPutRequest\OverrideState;
 
 /**
  * @phpstan-type FlagPutRequestShape = array{
- *   defaultState: value-of<DefaultState>,
- *   overrideState?: value-of<OverrideState>|null,
+ *   defaultState: DefaultState|value-of<DefaultState>,
+ *   overrideState?: null|OverrideState|value-of<OverrideState>,
  * }
  */
 final class FlagPutRequest implements BaseModel

@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   id: string,
  *   created: \DateTimeInterface,
  *   deletedAt: \DateTimeInterface,
- *   language: value-of<Language>,
+ *   language: Language|value-of<Language>,
  *   name: string,
  *   translatedFromID: int,
  *   updated: \DateTimeInterface,

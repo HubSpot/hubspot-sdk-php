@@ -9,10 +9,12 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type PublicActionDefinitionShape from \HubspotSDK\Automation\Actions\PublicActionDefinition
+ *
  * @phpstan-type PublicActionRevisionShape = array{
  *   id: string,
  *   createdAt: \DateTimeInterface,
- *   definition: PublicActionDefinition,
+ *   definition: PublicActionDefinition|PublicActionDefinitionShape,
  *   revisionID: string,
  * }
  */
@@ -63,21 +65,7 @@ final class PublicActionRevision implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param PublicActionDefinition|array{
-     *   id: string,
-     *   actionURL: string,
-     *   functions: list<PublicActionFunctionIdentifier>,
-     *   inputFields: list<InputFieldDefinition>,
-     *   labels: array<string,PublicActionLabels>,
-     *   objectTypes: list<string>,
-     *   published: bool,
-     *   revisionID: string,
-     *   archivedAt?: int|null,
-     *   executionRules?: list<PublicExecutionTranslationRule>|null,
-     *   inputFieldDependencies?: list<PublicSingleFieldDependency|PublicConditionalSingleFieldDependency>|null,
-     *   objectRequestOptions?: PublicObjectRequestOptions|null,
-     *   outputFields?: list<OutputFieldDefinition>|null,
-     * } $definition
+     * @param PublicActionDefinitionShape $definition
      */
     public static function with(
         string $id,
@@ -112,21 +100,7 @@ final class PublicActionRevision implements BaseModel
     }
 
     /**
-     * @param PublicActionDefinition|array{
-     *   id: string,
-     *   actionURL: string,
-     *   functions: list<PublicActionFunctionIdentifier>,
-     *   inputFields: list<InputFieldDefinition>,
-     *   labels: array<string,PublicActionLabels>,
-     *   objectTypes: list<string>,
-     *   published: bool,
-     *   revisionID: string,
-     *   archivedAt?: int|null,
-     *   executionRules?: list<PublicExecutionTranslationRule>|null,
-     *   inputFieldDependencies?: list<PublicSingleFieldDependency|PublicConditionalSingleFieldDependency>|null,
-     *   objectRequestOptions?: PublicObjectRequestOptions|null,
-     *   outputFields?: list<OutputFieldDefinition>|null,
-     * } $definition
+     * @param PublicActionDefinitionShape $definition
      */
     public function withDefinition(
         PublicActionDefinition|array $definition

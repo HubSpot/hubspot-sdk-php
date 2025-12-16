@@ -14,7 +14,7 @@ use HubspotSDK\Webhooks\SubscriptionCreateRequest\EventType;
  * New webhook settings for an app.
  *
  * @phpstan-type SubscriptionCreateRequestShape = array{
- *   eventType: value-of<EventType>,
+ *   eventType: EventType|value-of<EventType>,
  *   active?: bool|null,
  *   objectTypeID?: string|null,
  *   propertyName?: string|null,

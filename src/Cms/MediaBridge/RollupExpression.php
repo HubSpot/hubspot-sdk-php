@@ -5,15 +5,16 @@ declare(strict_types=1);
 namespace HubspotSDK\Cms\MediaBridge;
 
 use HubspotSDK\AssociationSpec;
-use HubspotSDK\AssociationSpec\AssociationCategory;
 use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type AssociationSpecShape from \HubspotSDK\AssociationSpec
+ *
  * @phpstan-type RollupExpressionShape = array{
- *   associationTypes: list<AssociationSpec>,
+ *   associationTypes: list<AssociationSpecShape>,
  *   rollupOperator: string,
  *   sourceObjectTypeID: string,
  *   sourcePropertyName: string,
@@ -87,9 +88,7 @@ final class RollupExpression implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<AssociationSpec|array{
-     *   associationCategory: value-of<AssociationCategory>, associationTypeID: int
-     * }> $associationTypes
+     * @param list<AssociationSpecShape> $associationTypes
      * @param array<string,mixed> $conditionalExpression
      */
     public static function with(
@@ -118,9 +117,7 @@ final class RollupExpression implements BaseModel
     }
 
     /**
-     * @param list<AssociationSpec|array{
-     *   associationCategory: value-of<AssociationCategory>, associationTypeID: int
-     * }> $associationTypes
+     * @param list<AssociationSpecShape> $associationTypes
      */
     public function withAssociationTypes(array $associationTypes): self
     {

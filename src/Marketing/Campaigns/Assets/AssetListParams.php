@@ -18,10 +18,10 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @phpstan-type AssetListParamsShape = array{
  *   campaignGuid: string,
- *   after?: string,
- *   endDate?: string,
- *   limit?: string,
- *   startDate?: string,
+ *   after?: string|null,
+ *   endDate?: string|null,
+ *   limit?: string|null,
+ *   startDate?: string|null,
  * }
  */
 final class AssetListParams implements BaseModel

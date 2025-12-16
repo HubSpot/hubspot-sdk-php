@@ -17,7 +17,7 @@ interface InboxesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|InboxListParams $params
+     * @param array<string,mixed>|InboxListParams $params
      *
      * @return BaseResponse<Page<PublicInbox>>
      *
@@ -31,7 +31,7 @@ interface InboxesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|InboxGetParams $params
+     * @param array<string,mixed>|InboxGetParams $params
      *
      * @return BaseResponse<PublicInbox>
      *

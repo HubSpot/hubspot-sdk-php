@@ -9,8 +9,10 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type PublicCampaignDeleteInputShape from \HubspotSDK\Marketing\Campaigns\PublicCampaignDeleteInput
+ *
  * @phpstan-type BatchInputPublicCampaignDeleteInputShape = array{
- *   inputs: list<PublicCampaignDeleteInput>
+ *   inputs: list<PublicCampaignDeleteInputShape>
  * }
  */
 final class BatchInputPublicCampaignDeleteInput implements BaseModel
@@ -46,7 +48,7 @@ final class BatchInputPublicCampaignDeleteInput implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicCampaignDeleteInput|array{id: string}> $inputs
+     * @param list<PublicCampaignDeleteInputShape> $inputs
      */
     public static function with(array $inputs): self
     {
@@ -58,7 +60,7 @@ final class BatchInputPublicCampaignDeleteInput implements BaseModel
     }
 
     /**
-     * @param list<PublicCampaignDeleteInput|array{id: string}> $inputs
+     * @param list<PublicCampaignDeleteInputShape> $inputs
      */
     public function withInputs(array $inputs): self
     {

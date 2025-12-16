@@ -9,8 +9,10 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type PublicAssociationSpecShape from \HubspotSDK\Crm\Associations\Schema\V4\PublicAssociationSpec
+ *
  * @phpstan-type BatchInputPublicAssociationSpecShape = array{
- *   inputs: list<PublicAssociationSpec>
+ *   inputs: list<PublicAssociationSpecShape>
  * }
  */
 final class BatchInputPublicAssociationSpec implements BaseModel
@@ -46,7 +48,7 @@ final class BatchInputPublicAssociationSpec implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicAssociationSpec|array{category: string, typeID: int}> $inputs
+     * @param list<PublicAssociationSpecShape> $inputs
      */
     public static function with(array $inputs): self
     {
@@ -58,7 +60,7 @@ final class BatchInputPublicAssociationSpec implements BaseModel
     }
 
     /**
-     * @param list<PublicAssociationSpec|array{category: string, typeID: int}> $inputs
+     * @param list<PublicAssociationSpecShape> $inputs
      */
     public function withInputs(array $inputs): self
     {

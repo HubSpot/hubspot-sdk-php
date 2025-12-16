@@ -9,8 +9,12 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type ContactAssociationShape from \HubspotSDK\Marketing\Events\ContactAssociation
+ * @phpstan-import-type MarketingEventAssociationShape from \HubspotSDK\Marketing\Events\MarketingEventAssociation
+ *
  * @phpstan-type ParticipationAssociationsShape = array{
- *   contact: ContactAssociation, marketingEvent: MarketingEventAssociation
+ *   contact: ContactAssociation|ContactAssociationShape,
+ *   marketingEvent: MarketingEventAssociation|MarketingEventAssociationShape,
  * }
  */
 final class ParticipationAssociations implements BaseModel
@@ -48,18 +52,8 @@ final class ParticipationAssociations implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param ContactAssociation|array{
-     *   contactID: string,
-     *   email: string,
-     *   firstname?: string|null,
-     *   lastname?: string|null,
-     * } $contact
-     * @param MarketingEventAssociation|array{
-     *   marketingEventID: string,
-     *   name: string,
-     *   externalAccountID?: string|null,
-     *   externalEventID?: string|null,
-     * } $marketingEvent
+     * @param ContactAssociationShape $contact
+     * @param MarketingEventAssociationShape $marketingEvent
      */
     public static function with(
         ContactAssociation|array $contact,
@@ -74,12 +68,7 @@ final class ParticipationAssociations implements BaseModel
     }
 
     /**
-     * @param ContactAssociation|array{
-     *   contactID: string,
-     *   email: string,
-     *   firstname?: string|null,
-     *   lastname?: string|null,
-     * } $contact
+     * @param ContactAssociationShape $contact
      */
     public function withContact(ContactAssociation|array $contact): self
     {
@@ -90,12 +79,7 @@ final class ParticipationAssociations implements BaseModel
     }
 
     /**
-     * @param MarketingEventAssociation|array{
-     *   marketingEventID: string,
-     *   name: string,
-     *   externalAccountID?: string|null,
-     *   externalEventID?: string|null,
-     * } $marketingEvent
+     * @param MarketingEventAssociationShape $marketingEvent
      */
     public function withMarketingEvent(
         MarketingEventAssociation|array $marketingEvent

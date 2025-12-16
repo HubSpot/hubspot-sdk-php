@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Marketing\CampaignsService::get()
  *
  * @phpstan-type CampaignGetParamsShape = array{
- *   endDate?: string, properties?: list<string>, startDate?: string
+ *   endDate?: string|null, properties?: list<string>|null, startDate?: string|null
  * }
  */
 final class CampaignGetParams implements BaseModel

@@ -8,13 +8,14 @@ use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Events\EventDefinitions\PropertyFilter\FilterType;
 
 /**
+ * @phpstan-import-type PropertyFilterShape from \HubspotSDK\Events\EventDefinitions\PropertyFilter
+ *
  * @phpstan-type ComboEventRuleShape = array{
  *   count: int,
  *   eventTypeID: string,
- *   propertyFilters: list<PropertyFilter>,
+ *   propertyFilters: list<PropertyFilterShape>,
  *   lookbackWindowDays?: int|null,
  * }
  */
@@ -63,12 +64,7 @@ final class ComboEventRule implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PropertyFilter|array{
-     *   filterType: value-of<FilterType>,
-     *   operation: BoolPropertyOperation|NumberPropertyOperation|StringPropertyOperation|DateTimePropertyOperation|RangedDatePropertyOperation|ComparativeDatePropertyOperation|ComparativePropertyUpdatedOperation|RollingDateRangePropertyOperation|RollingPropertyUpdatedOperation|EnumerationPropertyOperation|AllPropertyTypesOperation|RangedNumberPropertyOperation|MultiStringPropertyOperation|DatePropertyOperation|CalendarDatePropertyOperation|TimePointOperation|RangedTimeOperation,
-     *   property: string,
-     *   frameworkFilterID?: int|null,
-     * }> $propertyFilters
+     * @param list<PropertyFilterShape> $propertyFilters
      */
     public static function with(
         int $count,
@@ -104,12 +100,7 @@ final class ComboEventRule implements BaseModel
     }
 
     /**
-     * @param list<PropertyFilter|array{
-     *   filterType: value-of<FilterType>,
-     *   operation: BoolPropertyOperation|NumberPropertyOperation|StringPropertyOperation|DateTimePropertyOperation|RangedDatePropertyOperation|ComparativeDatePropertyOperation|ComparativePropertyUpdatedOperation|RollingDateRangePropertyOperation|RollingPropertyUpdatedOperation|EnumerationPropertyOperation|AllPropertyTypesOperation|RangedNumberPropertyOperation|MultiStringPropertyOperation|DatePropertyOperation|CalendarDatePropertyOperation|TimePointOperation|RangedTimeOperation,
-     *   property: string,
-     *   frameworkFilterID?: int|null,
-     * }> $propertyFilters
+     * @param list<PropertyFilterShape> $propertyFilters
      */
     public function withPropertyFilters(array $propertyFilters): self
     {

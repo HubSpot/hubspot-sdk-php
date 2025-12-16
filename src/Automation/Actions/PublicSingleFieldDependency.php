@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * @phpstan-type PublicSingleFieldDependencyShape = array{
  *   controllingFieldName: string,
- *   dependencyType: value-of<DependencyType>,
+ *   dependencyType: DependencyType|value-of<DependencyType>,
  *   dependentFieldNames: list<string>,
  * }
  */

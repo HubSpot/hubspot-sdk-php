@@ -9,9 +9,11 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type PublicBusinessUnitShape from \HubspotSDK\Marketing\Campaigns\PublicBusinessUnit
+ *
  * @phpstan-type PublicCampaignShape = array{
  *   id: string,
- *   businessUnits: list<PublicBusinessUnit>,
+ *   businessUnits: list<PublicBusinessUnitShape>,
  *   createdAt: \DateTimeInterface,
  *   properties: array<string,string>,
  *   updatedAt: \DateTimeInterface,
@@ -70,7 +72,7 @@ final class PublicCampaign implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicBusinessUnit|array{id: int}> $businessUnits
+     * @param list<PublicBusinessUnitShape> $businessUnits
      * @param array<string,string> $properties
      */
     public static function with(
@@ -100,7 +102,7 @@ final class PublicCampaign implements BaseModel
     }
 
     /**
-     * @param list<PublicBusinessUnit|array{id: int}> $businessUnits
+     * @param list<PublicBusinessUnitShape> $businessUnits
      */
     public function withBusinessUnits(array $businessUnits): self
     {

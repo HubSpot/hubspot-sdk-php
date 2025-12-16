@@ -23,7 +23,7 @@ interface LineItemsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|LineItemCreateParams $params
+     * @param array<string,mixed>|LineItemCreateParams $params
      *
      * @return BaseResponse<CreatedResponseSimplePublicObject>
      *
@@ -38,7 +38,7 @@ interface LineItemsRawContract
      * @api
      *
      * @param string $lineItemID Path param:
-     * @param array<mixed>|LineItemUpdateParams $params
+     * @param array<string,mixed>|LineItemUpdateParams $params
      *
      * @return BaseResponse<SimplePublicObject>
      *
@@ -53,7 +53,7 @@ interface LineItemsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|LineItemListParams $params
+     * @param array<string,mixed>|LineItemListParams $params
      *
      * @return BaseResponse<Page<SimplePublicObjectWithAssociations>>
      *
@@ -79,7 +79,7 @@ interface LineItemsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|LineItemGetParams $params
+     * @param array<string,mixed>|LineItemGetParams $params
      *
      * @return BaseResponse<SimplePublicObjectWithAssociations>
      *
@@ -94,7 +94,7 @@ interface LineItemsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|LineItemSearchParams $params
+     * @param array<string,mixed>|LineItemSearchParams $params
      *
      * @return BaseResponse<CollectionResponseWithTotalSimplePublicObject>
      *

@@ -15,7 +15,9 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Services\Cms\Pages\SitePagesService::clone()
  *
- * @phpstan-type SitePageCloneParamsShape = array{id: string, cloneName?: string}
+ * @phpstan-type SitePageCloneParamsShape = array{
+ *   id: string, cloneName?: string|null
+ * }
  */
 final class SitePageCloneParams implements BaseModel
 {

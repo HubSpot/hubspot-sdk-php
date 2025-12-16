@@ -27,8 +27,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   precedence: int,
  *   redirectStyle: int,
  *   routePrefix: string,
- *   created?: \DateTimeInterface,
- *   updated?: \DateTimeInterface,
+ *   created?: \DateTimeInterface|null,
+ *   updated?: \DateTimeInterface|null,
  * }
  */
 final class URLRedirectUpdateParams implements BaseModel

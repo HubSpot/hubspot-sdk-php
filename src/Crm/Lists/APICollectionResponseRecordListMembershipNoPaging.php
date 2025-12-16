@@ -10,8 +10,10 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type RecordListMembershipShape from \HubspotSDK\Crm\Lists\RecordListMembership
+ *
  * @phpstan-type APICollectionResponseRecordListMembershipNoPagingShape = array{
- *   results: list<RecordListMembership>, total?: int|null
+ *   results: list<RecordListMembershipShape>, total?: int|null
  * }
  */
 final class APICollectionResponseRecordListMembershipNoPaging implements BaseModel
@@ -50,13 +52,7 @@ final class APICollectionResponseRecordListMembershipNoPaging implements BaseMod
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<RecordListMembership|array{
-     *   listID: string,
-     *   listVersion: int,
-     *   firstAddedTimestamp?: \DateTimeInterface|null,
-     *   isPublicList?: bool|null,
-     *   lastAddedTimestamp?: \DateTimeInterface|null,
-     * }> $results
+     * @param list<RecordListMembershipShape> $results
      */
     public static function with(array $results, ?int $total = null): self
     {
@@ -70,13 +66,7 @@ final class APICollectionResponseRecordListMembershipNoPaging implements BaseMod
     }
 
     /**
-     * @param list<RecordListMembership|array{
-     *   listID: string,
-     *   listVersion: int,
-     *   firstAddedTimestamp?: \DateTimeInterface|null,
-     *   isPublicList?: bool|null,
-     *   lastAddedTimestamp?: \DateTimeInterface|null,
-     * }> $results
+     * @param list<RecordListMembershipShape> $results
      */
     public function withResults(array $results): self
     {

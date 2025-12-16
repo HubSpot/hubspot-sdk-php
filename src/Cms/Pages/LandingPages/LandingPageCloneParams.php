@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Cms\Pages\LandingPagesService::clone()
  *
  * @phpstan-type LandingPageCloneParamsShape = array{
- *   id: string, cloneName?: string
+ *   id: string, cloneName?: string|null
  * }
  */
 final class LandingPageCloneParams implements BaseModel

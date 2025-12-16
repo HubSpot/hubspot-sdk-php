@@ -18,7 +18,7 @@ interface CustomChannelsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|CustomChannelCreateParams $params
+     * @param array<string,mixed>|CustomChannelCreateParams $params
      *
      * @return BaseResponse<PublicChannelIntegrationChannel>
      *
@@ -33,7 +33,7 @@ interface CustomChannelsRawContract
      * @api
      *
      * @param int $channelID the ID of the channel to update
-     * @param array<mixed>|CustomChannelUpdateParams $params
+     * @param array<string,mixed>|CustomChannelUpdateParams $params
      *
      * @return BaseResponse<PublicChannelIntegrationChannel>
      *
@@ -48,7 +48,7 @@ interface CustomChannelsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|CustomChannelListParams $params
+     * @param array<string,mixed>|CustomChannelListParams $params
      *
      * @return BaseResponse<Page<PublicChannelIntegrationChannel>>
      *

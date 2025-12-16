@@ -16,7 +16,7 @@ interface AuditLogsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|AuditLogListParams $params
+     * @param array<string,mixed>|AuditLogListParams $params
      *
      * @return BaseResponse<Page<PublicAuditLog>>
      *

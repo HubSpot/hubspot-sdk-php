@@ -12,9 +12,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Describes a search request.
  *
+ * @phpstan-import-type FilterGroupShape from \HubspotSDK\Crm\FilterGroup
+ *
  * @phpstan-type PublicObjectSearchRequestShape = array{
  *   after: string,
- *   filterGroups: list<FilterGroup>,
+ *   filterGroups: list<FilterGroupShape>,
  *   limit: int,
  *   properties: list<string>,
  *   sorts: list<string>,
@@ -99,7 +101,7 @@ final class PublicObjectSearchRequest implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<FilterGroup|array{filters: list<Filter>}> $filterGroups
+     * @param list<FilterGroupShape> $filterGroups
      * @param list<string> $properties
      * @param list<string> $sorts
      */
@@ -138,7 +140,7 @@ final class PublicObjectSearchRequest implements BaseModel
     /**
      * Up to 6 groups of filters defining additional query criteria.
      *
-     * @param list<FilterGroup|array{filters: list<Filter>}> $filterGroups
+     * @param list<FilterGroupShape> $filterGroups
      */
     public function withFilterGroups(array $filterGroups): self
     {

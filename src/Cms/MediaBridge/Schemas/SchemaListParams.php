@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Services\Cms\MediaBridge\SchemasService::list()
  *
- * @phpstan-type SchemaListParamsShape = array{archived?: bool}
+ * @phpstan-type SchemaListParamsShape = array{archived?: bool|null}
  */
 final class SchemaListParams implements BaseModel
 {

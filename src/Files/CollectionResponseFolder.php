@@ -8,13 +8,14 @@ use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\NextPage;
 use HubspotSDK\Paging;
-use HubspotSDK\PreviousPage;
 
 /**
+ * @phpstan-import-type FolderShape from \HubspotSDK\Files\Folder
+ * @phpstan-import-type PagingShape from \HubspotSDK\Paging
+ *
  * @phpstan-type CollectionResponseFolderShape = array{
- *   results: list<Folder>, paging?: Paging|null
+ *   results: list<FolderShape>, paging?: null|Paging|PagingShape
  * }
  */
 final class CollectionResponseFolder implements BaseModel
@@ -53,17 +54,8 @@ final class CollectionResponseFolder implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<Folder|array{
-     *   id: string,
-     *   archived: bool,
-     *   createdAt: \DateTimeInterface,
-     *   updatedAt: \DateTimeInterface,
-     *   archivedAt?: \DateTimeInterface|null,
-     *   name?: string|null,
-     *   parentFolderID?: string|null,
-     *   path?: string|null,
-     * }> $results
-     * @param Paging|array{next?: NextPage|null, prev?: PreviousPage|null} $paging
+     * @param list<FolderShape> $results
+     * @param PagingShape $paging
      */
     public static function with(
         array $results,
@@ -79,16 +71,7 @@ final class CollectionResponseFolder implements BaseModel
     }
 
     /**
-     * @param list<Folder|array{
-     *   id: string,
-     *   archived: bool,
-     *   createdAt: \DateTimeInterface,
-     *   updatedAt: \DateTimeInterface,
-     *   archivedAt?: \DateTimeInterface|null,
-     *   name?: string|null,
-     *   parentFolderID?: string|null,
-     *   path?: string|null,
-     * }> $results
+     * @param list<FolderShape> $results
      */
     public function withResults(array $results): self
     {
@@ -99,7 +82,7 @@ final class CollectionResponseFolder implements BaseModel
     }
 
     /**
-     * @param Paging|array{next?: NextPage|null, prev?: PreviousPage|null} $paging
+     * @param PagingShape $paging
      */
     public function withPaging(Paging|array $paging): self
     {

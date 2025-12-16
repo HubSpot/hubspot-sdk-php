@@ -15,7 +15,9 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Services\Crm\Properties\GroupsService::get()
  *
- * @phpstan-type GroupGetParamsShape = array{objectType: string, locale?: string}
+ * @phpstan-type GroupGetParamsShape = array{
+ *   objectType: string, locale?: string|null
+ * }
  */
 final class GroupGetParams implements BaseModel
 {

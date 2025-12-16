@@ -16,7 +16,7 @@ use HubspotSDK\Crm\Owners\OwnerGetParams\IDProperty;
  * @see HubspotSDK\Services\Crm\OwnersService::get()
  *
  * @phpstan-type OwnerGetParamsShape = array{
- *   archived?: bool, idProperty?: IDProperty|value-of<IDProperty>
+ *   archived?: bool|null, idProperty?: null|IDProperty|value-of<IDProperty>
  * }
  */
 final class OwnerGetParams implements BaseModel

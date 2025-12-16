@@ -25,7 +25,7 @@ interface FunctionsRawContract
      * @api
      *
      * @param string $definitionID the ID of the definition
-     * @param array<mixed>|FunctionListParams $params
+     * @param array<string,mixed>|FunctionListParams $params
      *
      * @return BaseResponse<CollectionResponsePublicActionFunctionIdentifierNoPaging>
      *
@@ -40,7 +40,7 @@ interface FunctionsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|FunctionDeleteParams $params
+     * @param array<string,mixed>|FunctionDeleteParams $params
      *
      * @return BaseResponse<mixed>
      *
@@ -56,7 +56,7 @@ interface FunctionsRawContract
      * @api
      *
      * @param string $functionID path param: The ID of the function
-     * @param array<mixed>|FunctionCreateOrReplaceParams $params
+     * @param array<string,mixed>|FunctionCreateOrReplaceParams $params
      *
      * @return BaseResponse<PublicActionFunctionIdentifier>
      *
@@ -72,7 +72,7 @@ interface FunctionsRawContract
      * @api
      *
      * @param FunctionType|value-of<FunctionType> $functionType Path param: The type of function. Can be `PRE_ACTION_EXECUTION`, `PRE_FETCH_OPTIONS`, `POST_FETCH_OPTIONS`, `POST_ACTION_EXECUTION`.
-     * @param array<mixed>|FunctionCreateOrReplaceByFunctionTypeParams $params
+     * @param array<string,mixed>|FunctionCreateOrReplaceByFunctionTypeParams $params
      *
      * @return BaseResponse<PublicActionFunctionIdentifier>
      *
@@ -88,7 +88,7 @@ interface FunctionsRawContract
      * @api
      *
      * @param FunctionDeleteByFunctionTypeParams\FunctionType|value-of<FunctionDeleteByFunctionTypeParams\FunctionType> $functionType The type of function. Can be `PRE_ACTION_EXECUTION`, `PRE_FETCH_OPTIONS`, `POST_FETCH_OPTIONS`, `POST_ACTION_EXECUTION`.
-     * @param array<mixed>|FunctionDeleteByFunctionTypeParams $params
+     * @param array<string,mixed>|FunctionDeleteByFunctionTypeParams $params
      *
      * @return BaseResponse<mixed>
      *
@@ -104,7 +104,7 @@ interface FunctionsRawContract
      * @api
      *
      * @param string $functionID the ID of the function
-     * @param array<mixed>|FunctionGetParams $params
+     * @param array<string,mixed>|FunctionGetParams $params
      *
      * @return BaseResponse<PublicActionFunction>
      *
@@ -120,7 +120,7 @@ interface FunctionsRawContract
      * @api
      *
      * @param FunctionGetByFunctionTypeParams\FunctionType|value-of<FunctionGetByFunctionTypeParams\FunctionType> $functionType The type of function. Can be `PRE_ACTION_EXECUTION`, `PRE_FETCH_OPTIONS`, `POST_FETCH_OPTIONS`, `POST_ACTION_EXECUTION`.
-     * @param array<mixed>|FunctionGetByFunctionTypeParams $params
+     * @param array<string,mixed>|FunctionGetByFunctionTypeParams $params
      *
      * @return BaseResponse<PublicActionFunction>
      *

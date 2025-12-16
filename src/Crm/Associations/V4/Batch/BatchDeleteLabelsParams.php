@@ -4,24 +4,21 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Associations\V4\Batch;
 
-use HubspotSDK\AssociationSpec;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Associations\V4\PublicAssociationMultiPost;
-use HubspotSDK\PublicObjectID;
 
 /**
  * Batch delete specific association labels for objects. Deleting an unlabeled association will also delete all labeled associations between those two objects.
  *
  * @see HubspotSDK\Services\Crm\Associations\V4\BatchService::deleteLabels()
  *
+ * @phpstan-import-type PublicAssociationMultiPostShape from \HubspotSDK\Crm\Associations\V4\PublicAssociationMultiPost
+ *
  * @phpstan-type BatchDeleteLabelsParamsShape = array{
- *   fromObjectType: string,
- *   inputs: list<PublicAssociationMultiPost|array{
- *     from: PublicObjectID, to: PublicObjectID, types: list<AssociationSpec>
- *   }>,
+ *   fromObjectType: string, inputs: list<PublicAssociationMultiPostShape>
  * }
  */
 final class BatchDeleteLabelsParams implements BaseModel
@@ -61,9 +58,7 @@ final class BatchDeleteLabelsParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicAssociationMultiPost|array{
-     *   from: PublicObjectID, to: PublicObjectID, types: list<AssociationSpec>
-     * }> $inputs
+     * @param list<PublicAssociationMultiPostShape> $inputs
      */
     public static function with(string $fromObjectType, array $inputs): self
     {
@@ -84,9 +79,7 @@ final class BatchDeleteLabelsParams implements BaseModel
     }
 
     /**
-     * @param list<PublicAssociationMultiPost|array{
-     *   from: PublicObjectID, to: PublicObjectID, types: list<AssociationSpec>
-     * }> $inputs
+     * @param list<PublicAssociationMultiPostShape> $inputs
      */
     public function withInputs(array $inputs): self
     {

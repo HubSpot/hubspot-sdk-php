@@ -13,7 +13,7 @@ use HubspotSDK\Scheduler\Meetings\ExternalCalendarMeetingEventResponseProperties
 
 /**
  * @phpstan-type ExternalCalendarMeetingEventResponsePropertiesShape = array{
- *   hsEngagementSource: value-of<HsEngagementSource>,
+ *   hsEngagementSource: HsEngagementSource|value-of<HsEngagementSource>,
  *   hsEngagementSourceID: string,
  *   hsMeetingEndTime: \DateTimeInterface,
  *   hsMeetingOutcome: string,
@@ -28,7 +28,7 @@ use HubspotSDK\Scheduler\Meetings\ExternalCalendarMeetingEventResponseProperties
  *   hsMeetingBody?: string|null,
  *   hsMeetingExternalURL?: string|null,
  *   hsMeetingLocation?: string|null,
- *   hsMeetingLocationType?: value-of<HsMeetingLocationType>|null,
+ *   hsMeetingLocationType?: null|HsMeetingLocationType|value-of<HsMeetingLocationType>,
  *   hsUniqueID?: string|null,
  *   hubspotOwnerID?: string|null,
  * }

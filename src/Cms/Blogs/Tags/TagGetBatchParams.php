@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Cms\Blogs\TagsService::getBatch()
  *
  * @phpstan-type TagGetBatchParamsShape = array{
- *   inputs: list<string>, archived?: bool
+ *   inputs: list<string>, archived?: bool|null
  * }
  */
 final class TagGetBatchParams implements BaseModel

@@ -8,17 +8,19 @@ use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\ErrorDetail;
 use HubspotSDK\Marketing\Events\BatchResponseMarketingEventPublicDefaultResponseV2WithErrors\Status;
 use HubspotSDK\StandardError;
 
 /**
+ * @phpstan-import-type MarketingEventPublicDefaultResponseV2Shape from \HubspotSDK\Marketing\Events\MarketingEventPublicDefaultResponseV2
+ * @phpstan-import-type StandardErrorShape from \HubspotSDK\StandardError
+ *
  * @phpstan-type BatchResponseMarketingEventPublicDefaultResponseV2WithErrorsShape = array{
  *   completedAt: \DateTimeInterface,
- *   results: list<MarketingEventPublicDefaultResponseV2>,
+ *   results: list<MarketingEventPublicDefaultResponseV2Shape>,
  *   startedAt: \DateTimeInterface,
- *   status: value-of<Status>,
- *   errors?: list<StandardError>|null,
+ *   status: Status|value-of<Status>,
+ *   errors?: list<StandardErrorShape>|null,
  *   links?: array<string,string>|null,
  *   numErrors?: int|null,
  *   requestedAt?: \DateTimeInterface|null,
@@ -89,33 +91,9 @@ final class BatchResponseMarketingEventPublicDefaultResponseV2WithErrors impleme
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<MarketingEventPublicDefaultResponseV2|array{
-     *   createdAt: \DateTimeInterface,
-     *   customProperties: list<CrmPropertyWrapper>,
-     *   eventName: string,
-     *   objectID: string,
-     *   updatedAt: \DateTimeInterface,
-     *   appInfo?: AppInfo|null,
-     *   endDateTime?: \DateTimeInterface|null,
-     *   eventCancelled?: bool|null,
-     *   eventCompleted?: bool|null,
-     *   eventDescription?: string|null,
-     *   eventOrganizer?: string|null,
-     *   eventType?: string|null,
-     *   eventURL?: string|null,
-     *   startDateTime?: \DateTimeInterface|null,
-     * }> $results
+     * @param list<MarketingEventPublicDefaultResponseV2Shape> $results
      * @param Status|value-of<Status> $status
-     * @param list<StandardError|array{
-     *   category: string,
-     *   context: array<string,list<string>>,
-     *   errors: list<ErrorDetail>,
-     *   links: array<string,string>,
-     *   message: string,
-     *   status: string,
-     *   id?: string|null,
-     *   subCategory?: mixed,
-     * }> $errors
+     * @param list<StandardErrorShape> $errors
      * @param array<string,string> $links
      */
     public static function with(
@@ -152,22 +130,7 @@ final class BatchResponseMarketingEventPublicDefaultResponseV2WithErrors impleme
     }
 
     /**
-     * @param list<MarketingEventPublicDefaultResponseV2|array{
-     *   createdAt: \DateTimeInterface,
-     *   customProperties: list<CrmPropertyWrapper>,
-     *   eventName: string,
-     *   objectID: string,
-     *   updatedAt: \DateTimeInterface,
-     *   appInfo?: AppInfo|null,
-     *   endDateTime?: \DateTimeInterface|null,
-     *   eventCancelled?: bool|null,
-     *   eventCompleted?: bool|null,
-     *   eventDescription?: string|null,
-     *   eventOrganizer?: string|null,
-     *   eventType?: string|null,
-     *   eventURL?: string|null,
-     *   startDateTime?: \DateTimeInterface|null,
-     * }> $results
+     * @param list<MarketingEventPublicDefaultResponseV2Shape> $results
      */
     public function withResults(array $results): self
     {
@@ -197,16 +160,7 @@ final class BatchResponseMarketingEventPublicDefaultResponseV2WithErrors impleme
     }
 
     /**
-     * @param list<StandardError|array{
-     *   category: string,
-     *   context: array<string,list<string>>,
-     *   errors: list<ErrorDetail>,
-     *   links: array<string,string>,
-     *   message: string,
-     *   status: string,
-     *   id?: string|null,
-     *   subCategory?: mixed,
-     * }> $errors
+     * @param list<StandardErrorShape> $errors
      */
     public function withErrors(array $errors): self
     {

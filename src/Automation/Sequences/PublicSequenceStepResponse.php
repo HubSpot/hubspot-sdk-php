@@ -10,6 +10,9 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type PublicEmailPatternResponseShape from \HubspotSDK\Automation\Sequences\PublicEmailPatternResponse
+ * @phpstan-import-type PublicTaskPatternResponseShape from \HubspotSDK\Automation\Sequences\PublicTaskPatternResponse
+ *
  * @phpstan-type PublicSequenceStepResponseShape = array{
  *   id: string,
  *   actionType: string,
@@ -17,8 +20,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   delayMillis: int,
  *   stepOrder: int,
  *   updatedAt: \DateTimeInterface,
- *   emailPattern?: PublicEmailPatternResponse|null,
- *   taskPattern?: PublicTaskPatternResponse|null,
+ *   emailPattern?: null|PublicEmailPatternResponse|PublicEmailPatternResponseShape,
+ *   taskPattern?: null|PublicTaskPatternResponse|PublicTaskPatternResponseShape,
  * }
  */
 final class PublicSequenceStepResponse implements BaseModel
@@ -87,25 +90,8 @@ final class PublicSequenceStepResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param PublicEmailPatternResponse|array{
-     *   id: string,
-     *   createdAt: \DateTimeInterface,
-     *   templateID: string,
-     *   updatedAt: \DateTimeInterface,
-     *   threadEmailToStepOrder?: int|null,
-     * } $emailPattern
-     * @param PublicTaskPatternResponse|array{
-     *   id: string,
-     *   createdAt: \DateTimeInterface,
-     *   taskPriority: string,
-     *   taskType: string,
-     *   updatedAt: \DateTimeInterface,
-     *   notes?: string|null,
-     *   queueID?: int|null,
-     *   subject?: string|null,
-     *   templateID?: int|null,
-     *   threadEmailToStepOrder?: int|null,
-     * } $taskPattern
+     * @param PublicEmailPatternResponseShape $emailPattern
+     * @param PublicTaskPatternResponseShape $taskPattern
      */
     public static function with(
         string $id,
@@ -181,13 +167,7 @@ final class PublicSequenceStepResponse implements BaseModel
     }
 
     /**
-     * @param PublicEmailPatternResponse|array{
-     *   id: string,
-     *   createdAt: \DateTimeInterface,
-     *   templateID: string,
-     *   updatedAt: \DateTimeInterface,
-     *   threadEmailToStepOrder?: int|null,
-     * } $emailPattern
+     * @param PublicEmailPatternResponseShape $emailPattern
      */
     public function withEmailPattern(
         PublicEmailPatternResponse|array $emailPattern
@@ -199,18 +179,7 @@ final class PublicSequenceStepResponse implements BaseModel
     }
 
     /**
-     * @param PublicTaskPatternResponse|array{
-     *   id: string,
-     *   createdAt: \DateTimeInterface,
-     *   taskPriority: string,
-     *   taskType: string,
-     *   updatedAt: \DateTimeInterface,
-     *   notes?: string|null,
-     *   queueID?: int|null,
-     *   subject?: string|null,
-     *   templateID?: int|null,
-     *   threadEmailToStepOrder?: int|null,
-     * } $taskPattern
+     * @param PublicTaskPatternResponseShape $taskPattern
      */
     public function withTaskPattern(
         PublicTaskPatternResponse|array $taskPattern

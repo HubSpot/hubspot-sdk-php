@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Crm\Objects\ContactsService::gdprDelete()
  *
  * @phpstan-type ContactGdprDeleteParamsShape = array{
- *   objectID: string, idProperty?: string
+ *   objectID: string, idProperty?: string|null
  * }
  */
 final class ContactGdprDeleteParams implements BaseModel

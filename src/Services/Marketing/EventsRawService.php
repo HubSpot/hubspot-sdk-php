@@ -556,7 +556,7 @@ final class EventsRawService implements EventsRawContract
      *
      * @param array{
      *   inputs: list<array{
-     *     customProperties: list<array<mixed>|PropertyValue>,
+     *     customProperties: list<array<string,mixed>|PropertyValue>,
      *     objectID: string,
      *     endDateTime?: string|\DateTimeInterface,
      *     eventCancelled?: bool,
@@ -672,7 +672,7 @@ final class EventsRawService implements EventsRawContract
      *
      * @param array{
      *   inputs: list<array{
-     *     customProperties: list<array<mixed>|PropertyValue>,
+     *     customProperties: list<array<string,mixed>|PropertyValue>,
      *     eventName: string,
      *     eventOrganizer: string,
      *     externalAccountID: string,

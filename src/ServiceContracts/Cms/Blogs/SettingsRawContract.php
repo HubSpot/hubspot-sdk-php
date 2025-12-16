@@ -24,7 +24,7 @@ interface SettingsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|SettingListParams $params
+     * @param array<string,mixed>|SettingListParams $params
      *
      * @return BaseResponse<Page<Blog>>
      *
@@ -38,7 +38,7 @@ interface SettingsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|SettingAttachToLangGroupParams $params
+     * @param array<string,mixed>|SettingAttachToLangGroupParams $params
      *
      * @return BaseResponse<mixed>
      *
@@ -52,7 +52,7 @@ interface SettingsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|SettingCreateLanguageVariationParams $params
+     * @param array<string,mixed>|SettingCreateLanguageVariationParams $params
      *
      * @return BaseResponse<Blog>
      *
@@ -66,7 +66,7 @@ interface SettingsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|SettingDetachFromLangGroupParams $params
+     * @param array<string,mixed>|SettingDetachFromLangGroupParams $params
      *
      * @return BaseResponse<mixed>
      *
@@ -92,7 +92,7 @@ interface SettingsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|SettingGetRevisionParams $params
+     * @param array<string,mixed>|SettingGetRevisionParams $params
      *
      * @return BaseResponse<VersionBlog>
      *
@@ -107,7 +107,7 @@ interface SettingsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|SettingListRevisionsParams $params
+     * @param array<string,mixed>|SettingListRevisionsParams $params
      *
      * @return BaseResponse<Page<VersionBlog>>
      *
@@ -122,7 +122,7 @@ interface SettingsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|SettingSetNewLangPrimaryParams $params
+     * @param array<string,mixed>|SettingSetNewLangPrimaryParams $params
      *
      * @return BaseResponse<mixed>
      *
@@ -136,7 +136,7 @@ interface SettingsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|SettingUpdateLanguagesParams $params
+     * @param array<string,mixed>|SettingUpdateLanguagesParams $params
      *
      * @return BaseResponse<mixed>
      *

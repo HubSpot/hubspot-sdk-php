@@ -9,44 +9,24 @@ use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Marketing\Events\PropertyValue\DataSensitivity;
-use HubspotSDK\Marketing\Events\PropertyValue\Source;
 
 /**
  * Updates the details of an existing Marketing Event identified by its objectId, if it exists.
  *
  * @see HubspotSDK\Services\Marketing\EventsService::update()
  *
+ * @phpstan-import-type PropertyValueShape from \HubspotSDK\Marketing\Events\PropertyValue
+ *
  * @phpstan-type EventUpdateParamsShape = array{
- *   customProperties: list<PropertyValue|array{
- *     dataSensitivity: value-of<DataSensitivity>,
- *     isEncrypted: bool,
- *     isLargeValue: bool,
- *     name: string,
- *     persistenceTimestamp: int,
- *     requestID: string,
- *     selectedByUser: bool,
- *     selectedByUserTimestamp: int,
- *     source: value-of<Source>,
- *     sourceID: string,
- *     sourceLabel: string,
- *     sourceMetadata: string,
- *     sourceUpstreamDeployable: string,
- *     sourceVid: list<int>,
- *     timestamp: int,
- *     unit: string,
- *     updatedByUserID: int,
- *     useTimestampAsPersistenceTimestamp: bool,
- *     value: string,
- *   }>,
- *   endDateTime?: \DateTimeInterface,
- *   eventCancelled?: bool,
- *   eventDescription?: string,
- *   eventName?: string,
- *   eventOrganizer?: string,
- *   eventType?: string,
- *   eventURL?: string,
- *   startDateTime?: \DateTimeInterface,
+ *   customProperties: list<PropertyValueShape>,
+ *   endDateTime?: \DateTimeInterface|null,
+ *   eventCancelled?: bool|null,
+ *   eventDescription?: string|null,
+ *   eventName?: string|null,
+ *   eventOrganizer?: string|null,
+ *   eventType?: string|null,
+ *   eventURL?: string|null,
+ *   startDateTime?: \DateTimeInterface|null,
  * }
  */
 final class EventUpdateParams implements BaseModel
@@ -107,27 +87,7 @@ final class EventUpdateParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PropertyValue|array{
-     *   dataSensitivity: value-of<DataSensitivity>,
-     *   isEncrypted: bool,
-     *   isLargeValue: bool,
-     *   name: string,
-     *   persistenceTimestamp: int,
-     *   requestID: string,
-     *   selectedByUser: bool,
-     *   selectedByUserTimestamp: int,
-     *   source: value-of<Source>,
-     *   sourceID: string,
-     *   sourceLabel: string,
-     *   sourceMetadata: string,
-     *   sourceUpstreamDeployable: string,
-     *   sourceVid: list<int>,
-     *   timestamp: int,
-     *   unit: string,
-     *   updatedByUserID: int,
-     *   useTimestampAsPersistenceTimestamp: bool,
-     *   value: string,
-     * }> $customProperties
+     * @param list<PropertyValueShape> $customProperties
      */
     public static function with(
         array $customProperties,
@@ -157,27 +117,7 @@ final class EventUpdateParams implements BaseModel
     }
 
     /**
-     * @param list<PropertyValue|array{
-     *   dataSensitivity: value-of<DataSensitivity>,
-     *   isEncrypted: bool,
-     *   isLargeValue: bool,
-     *   name: string,
-     *   persistenceTimestamp: int,
-     *   requestID: string,
-     *   selectedByUser: bool,
-     *   selectedByUserTimestamp: int,
-     *   source: value-of<Source>,
-     *   sourceID: string,
-     *   sourceLabel: string,
-     *   sourceMetadata: string,
-     *   sourceUpstreamDeployable: string,
-     *   sourceVid: list<int>,
-     *   timestamp: int,
-     *   unit: string,
-     *   updatedByUserID: int,
-     *   useTimestampAsPersistenceTimestamp: bool,
-     *   value: string,
-     * }> $customProperties
+     * @param list<PropertyValueShape> $customProperties
      */
     public function withCustomProperties(array $customProperties): self
     {

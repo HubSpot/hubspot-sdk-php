@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type PublicClientShape = array{
- *   clientType: value-of<ClientType>, integrationAppID?: int|null
+ *   clientType: ClientType|value-of<ClientType>, integrationAppID?: int|null
  * }
  */
 final class PublicClient implements BaseModel

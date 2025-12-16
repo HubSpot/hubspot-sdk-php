@@ -10,13 +10,18 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type CaseChangeTestExtensionDataShape from \HubspotSDK\Cms\MediaBridge\CaseChangeTestExtensionData
+ * @phpstan-import-type OptionDecoratorsExtensionDataShape from \HubspotSDK\Cms\MediaBridge\OptionDecoratorsExtensionData
+ * @phpstan-import-type RequiredPropertiesExtensionDataShape from \HubspotSDK\Cms\MediaBridge\RequiredPropertiesExtensionData
+ * @phpstan-import-type SoftRequiredPropertiesExtensionDataShape from \HubspotSDK\Cms\MediaBridge\SoftRequiredPropertiesExtensionData
+ *
  * @phpstan-type ExtensionDataShape = array{
  *   extensionStatusMap: array<string,string>,
  *   tags: list<string>,
- *   caseChangeTestExtensionData?: CaseChangeTestExtensionData|null,
- *   optionDecoratorsExtensionData?: OptionDecoratorsExtensionData|null,
- *   requiredPropertiesExtensionData?: RequiredPropertiesExtensionData|null,
- *   softRequiredPropertiesExtensionData?: SoftRequiredPropertiesExtensionData|null,
+ *   caseChangeTestExtensionData?: null|CaseChangeTestExtensionData|CaseChangeTestExtensionDataShape,
+ *   optionDecoratorsExtensionData?: null|OptionDecoratorsExtensionData|OptionDecoratorsExtensionDataShape,
+ *   requiredPropertiesExtensionData?: null|RequiredPropertiesExtensionData|RequiredPropertiesExtensionDataShape,
+ *   softRequiredPropertiesExtensionData?: null|SoftRequiredPropertiesExtensionData|SoftRequiredPropertiesExtensionDataShape,
  * }
  */
 final class ExtensionData implements BaseModel
@@ -70,19 +75,10 @@ final class ExtensionData implements BaseModel
      *
      * @param array<string,string> $extensionStatusMap
      * @param list<string> $tags
-     * @param CaseChangeTestExtensionData|array{
-     *   mood: string
-     * } $caseChangeTestExtensionData
-     * @param OptionDecoratorsExtensionData|array{
-     *   optionDecorators: array<string,OptionDecorations>,
-     *   optionDecoratorStyle: string,
-     * } $optionDecoratorsExtensionData
-     * @param RequiredPropertiesExtensionData|array{
-     *   isRequiredProperty: bool
-     * } $requiredPropertiesExtensionData
-     * @param SoftRequiredPropertiesExtensionData|array{
-     *   isSoftRequiredProperty: bool
-     * } $softRequiredPropertiesExtensionData
+     * @param CaseChangeTestExtensionDataShape $caseChangeTestExtensionData
+     * @param OptionDecoratorsExtensionDataShape $optionDecoratorsExtensionData
+     * @param RequiredPropertiesExtensionDataShape $requiredPropertiesExtensionData
+     * @param SoftRequiredPropertiesExtensionDataShape $softRequiredPropertiesExtensionData
      */
     public static function with(
         array $extensionStatusMap,
@@ -128,9 +124,7 @@ final class ExtensionData implements BaseModel
     }
 
     /**
-     * @param CaseChangeTestExtensionData|array{
-     *   mood: string
-     * } $caseChangeTestExtensionData
+     * @param CaseChangeTestExtensionDataShape $caseChangeTestExtensionData
      */
     public function withCaseChangeTestExtensionData(
         CaseChangeTestExtensionData|array $caseChangeTestExtensionData
@@ -142,10 +136,7 @@ final class ExtensionData implements BaseModel
     }
 
     /**
-     * @param OptionDecoratorsExtensionData|array{
-     *   optionDecorators: array<string,OptionDecorations>,
-     *   optionDecoratorStyle: string,
-     * } $optionDecoratorsExtensionData
+     * @param OptionDecoratorsExtensionDataShape $optionDecoratorsExtensionData
      */
     public function withOptionDecoratorsExtensionData(
         OptionDecoratorsExtensionData|array $optionDecoratorsExtensionData
@@ -157,9 +148,7 @@ final class ExtensionData implements BaseModel
     }
 
     /**
-     * @param RequiredPropertiesExtensionData|array{
-     *   isRequiredProperty: bool
-     * } $requiredPropertiesExtensionData
+     * @param RequiredPropertiesExtensionDataShape $requiredPropertiesExtensionData
      */
     public function withRequiredPropertiesExtensionData(
         RequiredPropertiesExtensionData|array $requiredPropertiesExtensionData
@@ -171,9 +160,7 @@ final class ExtensionData implements BaseModel
     }
 
     /**
-     * @param SoftRequiredPropertiesExtensionData|array{
-     *   isSoftRequiredProperty: bool
-     * } $softRequiredPropertiesExtensionData
+     * @param SoftRequiredPropertiesExtensionDataShape $softRequiredPropertiesExtensionData
      */
     public function withSoftRequiredPropertiesExtensionData(
         SoftRequiredPropertiesExtensionData|array $softRequiredPropertiesExtensionData,

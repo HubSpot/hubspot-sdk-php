@@ -7,14 +7,16 @@ namespace HubspotSDK\Marketing\Forms;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Marketing\Forms\DependentFieldFilter\Operator;
 
 /**
  * A form field that will be displayed based on what the customer entered in another field.
  *
+ * @phpstan-import-type DependentFieldFilterShape from \HubspotSDK\Marketing\Forms\DependentFieldFilter
+ * @phpstan-import-type DependentFieldShape from \HubspotSDK\Marketing\Forms\DependentField\DependentField as DependentFieldShape1
+ *
  * @phpstan-type DependentFieldShape = array{
- *   dependentCondition: DependentFieldFilter,
- *   dependentField: EmailField|PhoneField|MobilePhoneField|SingleLineTextField|MultiLineTextField|NumberField|SingleCheckboxField|MultipleCheckboxesField|DropdownField|RadioField|DatepickerField|FileField|PaymentLinkRadioField,
+ *   dependentCondition: DependentFieldFilter|DependentFieldFilterShape,
+ *   dependentField: EmailField|PhoneField|MobilePhoneField|SingleLineTextField|MultiLineTextField|NumberField|SingleCheckboxField|MultipleCheckboxesField|DropdownField|RadioField|DatepickerField|FileField|PaymentLinkRadioField|DependentFieldShape1,
  * }
  */
 final class DependentField implements BaseModel
@@ -58,13 +60,8 @@ final class DependentField implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param DependentFieldFilter|array{
-     *   operator: value-of<Operator>,
-     *   rangeEnd: string,
-     *   rangeStart: string,
-     *   value: string,
-     *   values: list<string>,
-     * } $dependentCondition
+     * @param DependentFieldFilterShape $dependentCondition
+     * @param DependentFieldShape1 $dependentField
      */
     public static function with(
         DependentFieldFilter|array $dependentCondition,
@@ -81,13 +78,7 @@ final class DependentField implements BaseModel
     /**
      * A condition based on customer input.
      *
-     * @param DependentFieldFilter|array{
-     *   operator: value-of<Operator>,
-     *   rangeEnd: string,
-     *   rangeStart: string,
-     *   value: string,
-     *   values: list<string>,
-     * } $dependentCondition
+     * @param DependentFieldFilterShape $dependentCondition
      */
     public function withDependentCondition(
         DependentFieldFilter|array $dependentCondition
@@ -100,6 +91,8 @@ final class DependentField implements BaseModel
 
     /**
      * A form field used for collecting an email address.
+     *
+     * @param DependentFieldShape1 $dependentField
      */
     public function withDependentField(
         EmailField|PhoneField|MobilePhoneField|SingleLineTextField|MultiLineTextField|NumberField|SingleCheckboxField|MultipleCheckboxesField|DropdownField|RadioField|DatepickerField|FileField|PaymentLinkRadioField $dependentField,

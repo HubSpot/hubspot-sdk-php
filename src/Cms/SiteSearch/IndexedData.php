@@ -12,8 +12,10 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * The indexed data in HubSpot.
  *
+ * @phpstan-import-type IndexedFieldShape from \HubspotSDK\Cms\SiteSearch\IndexedField
+ *
  * @phpstan-type IndexedDataShape = array{
- *   id: string, fields: array<string,IndexedField>, type: value-of<Type>
+ *   id: string, fields: array<string,IndexedFieldShape>, type: Type|value-of<Type>
  * }
  */
 final class IndexedData implements BaseModel
@@ -67,9 +69,7 @@ final class IndexedData implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string,IndexedField|array{
-     *   metadataField: bool, name: string, value: mixed, values: list<mixed>
-     * }> $fields
+     * @param array<string,IndexedFieldShape> $fields
      * @param Type|value-of<Type> $type
      */
     public static function with(
@@ -100,9 +100,7 @@ final class IndexedData implements BaseModel
     /**
      * The indexed fields in HubSpot.
      *
-     * @param array<string,IndexedField|array{
-     *   metadataField: bool, name: string, value: mixed, values: list<mixed>
-     * }> $fields
+     * @param array<string,IndexedFieldShape> $fields
      */
     public function withFields(array $fields): self
     {

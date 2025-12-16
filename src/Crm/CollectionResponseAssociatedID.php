@@ -8,13 +8,14 @@ use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\NextPage;
 use HubspotSDK\Paging;
-use HubspotSDK\PreviousPage;
 
 /**
+ * @phpstan-import-type AssociatedIDShape from \HubspotSDK\Crm\AssociatedID
+ * @phpstan-import-type PagingShape from \HubspotSDK\Paging
+ *
  * @phpstan-type CollectionResponseAssociatedIDShape = array{
- *   results: list<AssociatedID>, paging?: Paging|null
+ *   results: list<AssociatedIDShape>, paging?: null|Paging|PagingShape
  * }
  */
 final class CollectionResponseAssociatedID implements BaseModel
@@ -53,8 +54,8 @@ final class CollectionResponseAssociatedID implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<AssociatedID|array{id: string, type: string}> $results
-     * @param Paging|array{next?: NextPage|null, prev?: PreviousPage|null} $paging
+     * @param list<AssociatedIDShape> $results
+     * @param PagingShape $paging
      */
     public static function with(
         array $results,
@@ -70,7 +71,7 @@ final class CollectionResponseAssociatedID implements BaseModel
     }
 
     /**
-     * @param list<AssociatedID|array{id: string, type: string}> $results
+     * @param list<AssociatedIDShape> $results
      */
     public function withResults(array $results): self
     {
@@ -81,7 +82,7 @@ final class CollectionResponseAssociatedID implements BaseModel
     }
 
     /**
-     * @param Paging|array{next?: NextPage|null, prev?: PreviousPage|null} $paging
+     * @param PagingShape $paging
      */
     public function withPaging(Paging|array $paging): self
     {

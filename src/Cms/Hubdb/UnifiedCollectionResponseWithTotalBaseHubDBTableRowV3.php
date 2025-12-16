@@ -8,6 +8,12 @@ use HubspotSDK\Core\Concerns\SdkUnion;
 use HubspotSDK\Core\Conversion\Contracts\Converter;
 use HubspotSDK\Core\Conversion\Contracts\ConverterSource;
 
+/**
+ * @phpstan-import-type RandomAccessCollectionResponseWithTotalHubDBTableRowV3Shape from \HubspotSDK\Cms\Hubdb\RandomAccessCollectionResponseWithTotalHubDBTableRowV3
+ * @phpstan-import-type StreamingCollectionResponseWithTotalHubDBTableRowV3Shape from \HubspotSDK\Cms\Hubdb\StreamingCollectionResponseWithTotalHubDBTableRowV3
+ *
+ * @phpstan-type UnifiedCollectionResponseWithTotalBaseHubDBTableRowV3Shape = RandomAccessCollectionResponseWithTotalHubDBTableRowV3Shape|StreamingCollectionResponseWithTotalHubDBTableRowV3Shape
+ */
 final class UnifiedCollectionResponseWithTotalBaseHubDBTableRowV3 implements ConverterSource
 {
     use SdkUnion;

@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Services\Crm\Properties\GroupsService::list()
  *
- * @phpstan-type GroupListParamsShape = array{locale?: string}
+ * @phpstan-type GroupListParamsShape = array{locale?: string|null}
  */
 final class GroupListParams implements BaseModel
 {

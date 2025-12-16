@@ -17,7 +17,7 @@ use HubspotSDK\Marketing\Subscriptions\V4\Statuses\StatusGetParams\Channel;
  * @see HubspotSDK\Services\Marketing\Subscriptions\V4\StatusesService::get()
  *
  * @phpstan-type StatusGetParamsShape = array{
- *   channel: Channel|value-of<Channel>, businessUnitID?: int
+ *   channel: Channel|value-of<Channel>, businessUnitID?: int|null
  * }
  */
 final class StatusGetParams implements BaseModel

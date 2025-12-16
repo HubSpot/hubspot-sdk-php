@@ -21,7 +21,7 @@ interface PortalsRawContract
      * @api
      *
      * @param int $portalID path param: The ID of the account that installed the app
-     * @param array<mixed>|PortalUpdateParams $params
+     * @param array<string,mixed>|PortalUpdateParams $params
      *
      * @return BaseResponse<PortalFlagStateResponse>
      *
@@ -37,7 +37,7 @@ interface PortalsRawContract
      * @api
      *
      * @param int $portalID the ID of the account that installed the app
-     * @param array<mixed>|PortalDeleteParams $params
+     * @param array<string,mixed>|PortalDeleteParams $params
      *
      * @return BaseResponse<PortalFlagStateResponse>
      *
@@ -53,7 +53,7 @@ interface PortalsRawContract
      * @api
      *
      * @param string $flagName path param: The name of the flag, either `hs-release-app-cards` or `hs-hide-crm-cards`
-     * @param array<mixed>|PortalBatchDeleteParams $params
+     * @param array<string,mixed>|PortalBatchDeleteParams $params
      *
      * @return BaseResponse<PortalFlagStateBatchResponse>
      *
@@ -69,7 +69,7 @@ interface PortalsRawContract
      * @api
      *
      * @param string $flagName path param: The name of the flag, either `hs-release-app-cards` or `hs-hide-crm-cards`
-     * @param array<mixed>|PortalBatchUpsertParams $params
+     * @param array<string,mixed>|PortalBatchUpsertParams $params
      *
      * @return BaseResponse<PortalFlagStateBatchResponse>
      *
@@ -85,7 +85,7 @@ interface PortalsRawContract
      * @api
      *
      * @param int $portalID the ID of the account that installed the app
-     * @param array<mixed>|PortalGetParams $params
+     * @param array<string,mixed>|PortalGetParams $params
      *
      * @return BaseResponse<PortalFlagStateResponse>
      *
