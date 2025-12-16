@@ -9,17 +9,18 @@ use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Objects\DealSplits\BatchResponseDealToDealSplitsWithErrors\Status;
-use HubspotSDK\Crm\SimplePublicObject;
-use HubspotSDK\ErrorDetail;
 use HubspotSDK\StandardError;
 
 /**
+ * @phpstan-import-type DealToDealSplitsShape from \HubspotSDK\Crm\Objects\DealSplits\DealToDealSplits
+ * @phpstan-import-type StandardErrorShape from \HubspotSDK\StandardError
+ *
  * @phpstan-type BatchResponseDealToDealSplitsWithErrorsShape = array{
  *   completedAt: \DateTimeInterface,
- *   results: list<DealToDealSplits>,
+ *   results: list<DealToDealSplitsShape>,
  *   startedAt: \DateTimeInterface,
- *   status: value-of<Status>,
- *   errors?: list<StandardError>|null,
+ *   status: Status|value-of<Status>,
+ *   errors?: list<StandardErrorShape>|null,
  *   links?: array<string,string>|null,
  *   numErrors?: int|null,
  *   requestedAt?: \DateTimeInterface|null,
@@ -88,20 +89,9 @@ final class BatchResponseDealToDealSplitsWithErrors implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<DealToDealSplits|array{
-     *   id: string, splits: list<SimplePublicObject>
-     * }> $results
+     * @param list<DealToDealSplitsShape> $results
      * @param Status|value-of<Status> $status
-     * @param list<StandardError|array{
-     *   category: string,
-     *   context: array<string,list<string>>,
-     *   errors: list<ErrorDetail>,
-     *   links: array<string,string>,
-     *   message: string,
-     *   status: string,
-     *   id?: string|null,
-     *   subCategory?: mixed,
-     * }> $errors
+     * @param list<StandardErrorShape> $errors
      * @param array<string,string> $links
      */
     public static function with(
@@ -138,9 +128,7 @@ final class BatchResponseDealToDealSplitsWithErrors implements BaseModel
     }
 
     /**
-     * @param list<DealToDealSplits|array{
-     *   id: string, splits: list<SimplePublicObject>
-     * }> $results
+     * @param list<DealToDealSplitsShape> $results
      */
     public function withResults(array $results): self
     {
@@ -170,16 +158,7 @@ final class BatchResponseDealToDealSplitsWithErrors implements BaseModel
     }
 
     /**
-     * @param list<StandardError|array{
-     *   category: string,
-     *   context: array<string,list<string>>,
-     *   errors: list<ErrorDetail>,
-     *   links: array<string,string>,
-     *   message: string,
-     *   status: string,
-     *   id?: string|null,
-     *   subCategory?: mixed,
-     * }> $errors
+     * @param list<StandardErrorShape> $errors
      */
     public function withErrors(array $errors): self
     {

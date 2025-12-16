@@ -10,10 +10,12 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type PublicDeliveryIdentifierShape from \HubspotSDK\Conversations\PublicDeliveryIdentifier
+ *
  * @phpstan-type PublicRecipientEggShape = array{
- *   deliveryIdentifiers: list<PublicDeliveryIdentifier>,
+ *   deliveryIdentifiers: list<PublicDeliveryIdentifierShape>,
  *   actorID?: string|null,
- *   deliveryIdentifier?: PublicDeliveryIdentifier|null,
+ *   deliveryIdentifier?: null|PublicDeliveryIdentifier|PublicDeliveryIdentifierShape,
  *   name?: string|null,
  *   recipientField?: string|null,
  * }
@@ -63,12 +65,8 @@ final class PublicRecipientEgg implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicDeliveryIdentifier|array{
-     *   type: string, value: string
-     * }> $deliveryIdentifiers
-     * @param PublicDeliveryIdentifier|array{
-     *   type: string, value: string
-     * } $deliveryIdentifier
+     * @param list<PublicDeliveryIdentifierShape> $deliveryIdentifiers
+     * @param PublicDeliveryIdentifierShape $deliveryIdentifier
      */
     public static function with(
         array $deliveryIdentifiers,
@@ -90,9 +88,7 @@ final class PublicRecipientEgg implements BaseModel
     }
 
     /**
-     * @param list<PublicDeliveryIdentifier|array{
-     *   type: string, value: string
-     * }> $deliveryIdentifiers
+     * @param list<PublicDeliveryIdentifierShape> $deliveryIdentifiers
      */
     public function withDeliveryIdentifiers(array $deliveryIdentifiers): self
     {
@@ -111,9 +107,7 @@ final class PublicRecipientEgg implements BaseModel
     }
 
     /**
-     * @param PublicDeliveryIdentifier|array{
-     *   type: string, value: string
-     * } $deliveryIdentifier
+     * @param PublicDeliveryIdentifierShape $deliveryIdentifier
      */
     public function withDeliveryIdentifier(
         PublicDeliveryIdentifier|array $deliveryIdentifier

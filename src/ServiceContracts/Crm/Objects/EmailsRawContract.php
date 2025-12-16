@@ -23,7 +23,7 @@ interface EmailsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|EmailCreateParams $params
+     * @param array<string,mixed>|EmailCreateParams $params
      *
      * @return BaseResponse<CreatedResponseSimplePublicObject>
      *
@@ -38,7 +38,7 @@ interface EmailsRawContract
      * @api
      *
      * @param string $emailID Path param:
-     * @param array<mixed>|EmailUpdateParams $params
+     * @param array<string,mixed>|EmailUpdateParams $params
      *
      * @return BaseResponse<SimplePublicObject>
      *
@@ -53,7 +53,7 @@ interface EmailsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|EmailListParams $params
+     * @param array<string,mixed>|EmailListParams $params
      *
      * @return BaseResponse<Page<SimplePublicObjectWithAssociations>>
      *
@@ -79,7 +79,7 @@ interface EmailsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|EmailGetParams $params
+     * @param array<string,mixed>|EmailGetParams $params
      *
      * @return BaseResponse<SimplePublicObjectWithAssociations>
      *
@@ -94,7 +94,7 @@ interface EmailsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|EmailSearchParams $params
+     * @param array<string,mixed>|EmailSearchParams $params
      *
      * @return BaseResponse<CollectionResponseWithTotalSimplePublicObject>
      *

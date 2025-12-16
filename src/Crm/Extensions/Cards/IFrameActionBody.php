@@ -14,7 +14,7 @@ use HubspotSDK\Crm\Extensions\Cards\IFrameActionBody\Type;
  * @phpstan-type IFrameActionBodyShape = array{
  *   height: int,
  *   propertyNamesIncluded: list<string>,
- *   type: value-of<Type>,
+ *   type: Type|value-of<Type>,
  *   url: string,
  *   width: int,
  *   label?: string|null,

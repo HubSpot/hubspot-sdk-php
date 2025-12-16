@@ -15,16 +15,10 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Services\Cms\Pages\LandingPagesService::createFoldersBatch()
  *
+ * @phpstan-import-type ContentFolderShape from \HubspotSDK\Cms\Pages\ContentFolder
+ *
  * @phpstan-type LandingPageCreateFoldersBatchParamsShape = array{
- *   inputs: list<ContentFolder|array{
- *     id: string,
- *     category: int,
- *     created: \DateTimeInterface,
- *     deletedAt: \DateTimeInterface,
- *     name: string,
- *     parentFolderID: int,
- *     updated: \DateTimeInterface,
- *   }>,
+ *   inputs: list<ContentFolderShape>
  * }
  */
 final class LandingPageCreateFoldersBatchParams implements BaseModel
@@ -65,15 +59,7 @@ final class LandingPageCreateFoldersBatchParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<ContentFolder|array{
-     *   id: string,
-     *   category: int,
-     *   created: \DateTimeInterface,
-     *   deletedAt: \DateTimeInterface,
-     *   name: string,
-     *   parentFolderID: int,
-     *   updated: \DateTimeInterface,
-     * }> $inputs
+     * @param list<ContentFolderShape> $inputs
      */
     public static function with(array $inputs): self
     {
@@ -87,15 +73,7 @@ final class LandingPageCreateFoldersBatchParams implements BaseModel
     /**
      * Content folders to input.
      *
-     * @param list<ContentFolder|array{
-     *   id: string,
-     *   category: int,
-     *   created: \DateTimeInterface,
-     *   deletedAt: \DateTimeInterface,
-     *   name: string,
-     *   parentFolderID: int,
-     *   updated: \DateTimeInterface,
-     * }> $inputs
+     * @param list<ContentFolderShape> $inputs
      */
     public function withInputs(array $inputs): self
     {

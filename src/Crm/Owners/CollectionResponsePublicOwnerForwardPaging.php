@@ -8,14 +8,15 @@ use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\Owners\PublicOwner\Type;
 use HubspotSDK\ForwardPaging;
-use HubspotSDK\NextPage;
-use HubspotSDK\Settings\Users\PublicTeam;
 
 /**
+ * @phpstan-import-type PublicOwnerShape from \HubspotSDK\Crm\Owners\PublicOwner
+ * @phpstan-import-type ForwardPagingShape from \HubspotSDK\ForwardPaging
+ *
  * @phpstan-type CollectionResponsePublicOwnerForwardPagingShape = array{
- *   results: list<PublicOwner>, paging?: ForwardPaging|null
+ *   results: list<PublicOwnerShape>,
+ *   paging?: null|ForwardPaging|ForwardPagingShape,
  * }
  */
 final class CollectionResponsePublicOwnerForwardPaging implements BaseModel
@@ -54,20 +55,8 @@ final class CollectionResponsePublicOwnerForwardPaging implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicOwner|array{
-     *   id: string,
-     *   archived: bool,
-     *   createdAt: \DateTimeInterface,
-     *   type: value-of<Type>,
-     *   updatedAt: \DateTimeInterface,
-     *   email?: string|null,
-     *   firstName?: string|null,
-     *   lastName?: string|null,
-     *   teams?: list<PublicTeam>|null,
-     *   userID?: int|null,
-     *   userIDIncludingInactive?: int|null,
-     * }> $results
-     * @param ForwardPaging|array{next?: NextPage|null} $paging
+     * @param list<PublicOwnerShape> $results
+     * @param ForwardPagingShape $paging
      */
     public static function with(
         array $results,
@@ -83,19 +72,7 @@ final class CollectionResponsePublicOwnerForwardPaging implements BaseModel
     }
 
     /**
-     * @param list<PublicOwner|array{
-     *   id: string,
-     *   archived: bool,
-     *   createdAt: \DateTimeInterface,
-     *   type: value-of<Type>,
-     *   updatedAt: \DateTimeInterface,
-     *   email?: string|null,
-     *   firstName?: string|null,
-     *   lastName?: string|null,
-     *   teams?: list<PublicTeam>|null,
-     *   userID?: int|null,
-     *   userIDIncludingInactive?: int|null,
-     * }> $results
+     * @param list<PublicOwnerShape> $results
      */
     public function withResults(array $results): self
     {
@@ -106,7 +83,7 @@ final class CollectionResponsePublicOwnerForwardPaging implements BaseModel
     }
 
     /**
-     * @param ForwardPaging|array{next?: NextPage|null} $paging
+     * @param ForwardPagingShape $paging
      */
     public function withPaging(ForwardPaging|array $paging): self
     {

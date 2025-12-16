@@ -15,16 +15,16 @@ use HubspotSDK\Marketing\Subscriptions\V4\PublicStatus\Status;
 
 /**
  * @phpstan-type PublicStatusShape = array{
- *   channel: value-of<Channel>,
+ *   channel: Channel|value-of<Channel>,
  *   source: string,
- *   status: value-of<Status>,
+ *   status: Status|value-of<Status>,
  *   subscriberIDString: string,
  *   subscriptionID: int,
  *   timestamp: \DateTimeInterface,
  *   businessUnitID?: int|null,
- *   legalBasis?: value-of<LegalBasis>|null,
+ *   legalBasis?: null|LegalBasis|value-of<LegalBasis>,
  *   legalBasisExplanation?: string|null,
- *   setStatusSuccessReason?: value-of<SetStatusSuccessReason>|null,
+ *   setStatusSuccessReason?: null|SetStatusSuccessReason|value-of<SetStatusSuccessReason>,
  *   subscriptionName?: string|null,
  * }
  */

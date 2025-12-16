@@ -12,16 +12,18 @@ use HubspotSDK\Crm\Owners\PublicOwner\Type;
 use HubspotSDK\Settings\Users\PublicTeam;
 
 /**
+ * @phpstan-import-type PublicTeamShape from \HubspotSDK\Settings\Users\PublicTeam
+ *
  * @phpstan-type PublicOwnerShape = array{
  *   id: string,
  *   archived: bool,
  *   createdAt: \DateTimeInterface,
- *   type: value-of<Type>,
+ *   type: Type|value-of<Type>,
  *   updatedAt: \DateTimeInterface,
  *   email?: string|null,
  *   firstName?: string|null,
  *   lastName?: string|null,
- *   teams?: list<\HubspotSDK\Settings\Users\PublicTeam>|null,
+ *   teams?: list<PublicTeamShape>|null,
  *   userID?: int|null,
  *   userIDIncludingInactive?: int|null,
  * }
@@ -129,12 +131,7 @@ final class PublicOwner implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param Type|value-of<Type> $type
-     * @param list<PublicTeam|array{
-     *   id: string,
-     *   name: string,
-     *   secondaryUserIDs: list<string>,
-     *   userIDs: list<string>,
-     * }> $teams
+     * @param list<PublicTeamShape> $teams
      */
     public static function with(
         string $id,
@@ -258,12 +255,7 @@ final class PublicOwner implements BaseModel
     }
 
     /**
-     * @param list<PublicTeam|array{
-     *   id: string,
-     *   name: string,
-     *   secondaryUserIDs: list<string>,
-     *   userIDs: list<string>,
-     * }> $teams
+     * @param list<PublicTeamShape> $teams
      */
     public function withTeams(array $teams): self
     {

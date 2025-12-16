@@ -11,11 +11,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Marketing\Events\BatchResponseMarketingEventPublicDefaultResponseV2\Status;
 
 /**
+ * @phpstan-import-type MarketingEventPublicDefaultResponseV2Shape from \HubspotSDK\Marketing\Events\MarketingEventPublicDefaultResponseV2
+ *
  * @phpstan-type BatchResponseMarketingEventPublicDefaultResponseV2Shape = array{
  *   completedAt: \DateTimeInterface,
- *   results: list<MarketingEventPublicDefaultResponseV2>,
+ *   results: list<MarketingEventPublicDefaultResponseV2Shape>,
  *   startedAt: \DateTimeInterface,
- *   status: value-of<Status>,
+ *   status: Status|value-of<Status>,
  *   links?: array<string,string>|null,
  *   requestedAt?: \DateTimeInterface|null,
  * }
@@ -76,22 +78,7 @@ final class BatchResponseMarketingEventPublicDefaultResponseV2 implements BaseMo
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<MarketingEventPublicDefaultResponseV2|array{
-     *   createdAt: \DateTimeInterface,
-     *   customProperties: list<CrmPropertyWrapper>,
-     *   eventName: string,
-     *   objectID: string,
-     *   updatedAt: \DateTimeInterface,
-     *   appInfo?: AppInfo|null,
-     *   endDateTime?: \DateTimeInterface|null,
-     *   eventCancelled?: bool|null,
-     *   eventCompleted?: bool|null,
-     *   eventDescription?: string|null,
-     *   eventOrganizer?: string|null,
-     *   eventType?: string|null,
-     *   eventURL?: string|null,
-     *   startDateTime?: \DateTimeInterface|null,
-     * }> $results
+     * @param list<MarketingEventPublicDefaultResponseV2Shape> $results
      * @param Status|value-of<Status> $status
      * @param array<string,string> $links
      */
@@ -125,22 +112,7 @@ final class BatchResponseMarketingEventPublicDefaultResponseV2 implements BaseMo
     }
 
     /**
-     * @param list<MarketingEventPublicDefaultResponseV2|array{
-     *   createdAt: \DateTimeInterface,
-     *   customProperties: list<CrmPropertyWrapper>,
-     *   eventName: string,
-     *   objectID: string,
-     *   updatedAt: \DateTimeInterface,
-     *   appInfo?: AppInfo|null,
-     *   endDateTime?: \DateTimeInterface|null,
-     *   eventCancelled?: bool|null,
-     *   eventCompleted?: bool|null,
-     *   eventDescription?: string|null,
-     *   eventOrganizer?: string|null,
-     *   eventType?: string|null,
-     *   eventURL?: string|null,
-     *   startDateTime?: \DateTimeInterface|null,
-     * }> $results
+     * @param list<MarketingEventPublicDefaultResponseV2Shape> $results
      */
     public function withResults(array $results): self
     {

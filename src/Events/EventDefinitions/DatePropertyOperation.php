@@ -16,11 +16,11 @@ use HubspotSDK\Events\EventDefinitions\DatePropertyOperation\PropertyType;
  * @phpstan-type DatePropertyOperationShape = array{
  *   day: int,
  *   includeObjectsWithNoValueSet: bool,
- *   month: value-of<Month>,
+ *   month: Month|value-of<Month>,
  *   operationType: string,
- *   operator: value-of<Operator>,
+ *   operator: Operator|value-of<Operator>,
  *   operatorName: string,
- *   propertyType: value-of<PropertyType>,
+ *   propertyType: PropertyType|value-of<PropertyType>,
  *   year: int,
  *   defaultValue?: string|null,
  * }

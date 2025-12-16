@@ -8,15 +8,16 @@ use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\PublicDatePoint\TimeType;
 use HubspotSDK\PublicTimePointOperation\OperationType;
 
 /**
+ * @phpstan-import-type TimePointShape from \HubspotSDK\PublicTimePointOperation\TimePoint
+ *
  * @phpstan-type PublicTimePointOperationShape = array{
  *   includeObjectsWithNoValueSet: bool,
- *   operationType: value-of<OperationType>,
+ *   operationType: OperationType|value-of<OperationType>,
  *   operator: string,
- *   timePoint: PublicDatePoint|PublicIndexedTimePoint|PublicPropertyReferencedTime,
+ *   timePoint: PublicDatePoint|PublicIndexedTimePoint|PublicPropertyReferencedTime|TimePointShape,
  *   type: string,
  *   endpointBehavior?: string|null,
  *   propertyParser?: string|null,
@@ -84,30 +85,7 @@ final class PublicTimePointOperation implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param PublicDatePoint|array{
-     *   day: int,
-     *   month: int,
-     *   timeType: value-of<TimeType>,
-     *   year: int,
-     *   zoneID: string,
-     *   hour?: int|null,
-     *   millisecond?: int|null,
-     *   minute?: int|null,
-     *   second?: int|null,
-     *   timezoneSource?: string|null,
-     * }|PublicIndexedTimePoint|array{
-     *   indexReference: PublicNowReference|PublicTodayReference|PublicWeekReference|PublicFiscalQuarterReference|PublicFiscalYearReference|PublicYearReference|PublicQuarterReference|PublicMonthReference,
-     *   timeType: value-of<PublicIndexedTimePoint\TimeType>,
-     *   zoneID: string,
-     *   offset?: PublicIndexOffset|null,
-     *   timezoneSource?: string|null,
-     * }|PublicPropertyReferencedTime|array{
-     *   property: string,
-     *   referenceType: string,
-     *   timeType: value-of<PublicPropertyReferencedTime\TimeType>,
-     *   zoneID: string,
-     *   timezoneSource?: string|null,
-     * } $timePoint
+     * @param TimePointShape $timePoint
      * @param OperationType|value-of<OperationType> $operationType
      */
     public static function with(
@@ -162,30 +140,7 @@ final class PublicTimePointOperation implements BaseModel
     }
 
     /**
-     * @param PublicDatePoint|array{
-     *   day: int,
-     *   month: int,
-     *   timeType: value-of<TimeType>,
-     *   year: int,
-     *   zoneID: string,
-     *   hour?: int|null,
-     *   millisecond?: int|null,
-     *   minute?: int|null,
-     *   second?: int|null,
-     *   timezoneSource?: string|null,
-     * }|PublicIndexedTimePoint|array{
-     *   indexReference: PublicNowReference|PublicTodayReference|PublicWeekReference|PublicFiscalQuarterReference|PublicFiscalYearReference|PublicYearReference|PublicQuarterReference|PublicMonthReference,
-     *   timeType: value-of<PublicIndexedTimePoint\TimeType>,
-     *   zoneID: string,
-     *   offset?: PublicIndexOffset|null,
-     *   timezoneSource?: string|null,
-     * }|PublicPropertyReferencedTime|array{
-     *   property: string,
-     *   referenceType: string,
-     *   timeType: value-of<PublicPropertyReferencedTime\TimeType>,
-     *   zoneID: string,
-     *   timezoneSource?: string|null,
-     * } $timePoint
+     * @param TimePointShape $timePoint
      */
     public function withTimePoint(
         PublicDatePoint|array|PublicIndexedTimePoint|PublicPropertyReferencedTime $timePoint,

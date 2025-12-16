@@ -7,12 +7,13 @@ namespace HubspotSDK\Crm\PropertyValidations;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\PropertyValidations\PublicPropertyValidationRule\RuleType;
 
 /**
+ * @phpstan-import-type PublicPropertyValidationRuleShape from \HubspotSDK\Crm\PropertyValidations\PublicPropertyValidationRule
+ *
  * @phpstan-type PublicPropertyValidationRuleMapShape = array{
  *   propertyName: string,
- *   propertyValidationRules: list<PublicPropertyValidationRule>,
+ *   propertyValidationRules: list<PublicPropertyValidationRuleShape>,
  * }
  */
 final class PublicPropertyValidationRuleMap implements BaseModel
@@ -62,9 +63,7 @@ final class PublicPropertyValidationRuleMap implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicPropertyValidationRule|array{
-     *   ruleArguments: list<string>, ruleType: value-of<RuleType>
-     * }> $propertyValidationRules
+     * @param list<PublicPropertyValidationRuleShape> $propertyValidationRules
      */
     public static function with(
         string $propertyName,
@@ -92,9 +91,7 @@ final class PublicPropertyValidationRuleMap implements BaseModel
     /**
      * A list of validation rules applicable to the property.
      *
-     * @param list<PublicPropertyValidationRule|array{
-     *   ruleArguments: list<string>, ruleType: value-of<RuleType>
-     * }> $propertyValidationRules
+     * @param list<PublicPropertyValidationRuleShape> $propertyValidationRules
      */
     public function withPropertyValidationRules(
         array $propertyValidationRules

@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Crm\Objects\SchemasService::createAssociation()
  *
  * @phpstan-type SchemaCreateAssociationParamsShape = array{
- *   fromObjectTypeID: string, toObjectTypeID: string, name?: string
+ *   fromObjectTypeID: string, toObjectTypeID: string, name?: string|null
  * }
  */
 final class SchemaCreateAssociationParams implements BaseModel

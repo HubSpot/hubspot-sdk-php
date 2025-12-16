@@ -11,15 +11,17 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Marketing\Forms\PaymentLinkRadioField\FieldType;
 
 /**
+ * @phpstan-import-type EnumeratedFieldOptionShape from \HubspotSDK\Marketing\Forms\EnumeratedFieldOption
+ *
  * @phpstan-type PaymentLinkRadioFieldShape = array{
  *   defaultValues: list<string>,
  *   dependentFields: list<mixed>,
- *   fieldType: value-of<FieldType>,
+ *   fieldType: FieldType|value-of<FieldType>,
  *   hidden: bool,
  *   label: string,
  *   name: string,
  *   objectTypeID: string,
- *   options: list<EnumeratedFieldOption>,
+ *   options: list<EnumeratedFieldOptionShape>,
  *   required: bool,
  *   description?: string|null,
  * }
@@ -108,9 +110,7 @@ final class PaymentLinkRadioField implements BaseModel
      *
      * @param list<string> $defaultValues
      * @param list<mixed> $dependentFields
-     * @param list<EnumeratedFieldOption|array{
-     *   displayOrder: int, label: string, value: string, description?: string|null
-     * }> $options
+     * @param list<EnumeratedFieldOptionShape> $options
      * @param FieldType|value-of<FieldType> $fieldType
      */
     public static function with(
@@ -208,9 +208,7 @@ final class PaymentLinkRadioField implements BaseModel
     }
 
     /**
-     * @param list<EnumeratedFieldOption|array{
-     *   displayOrder: int, label: string, value: string, description?: string|null
-     * }> $options
+     * @param list<EnumeratedFieldOptionShape> $options
      */
     public function withOptions(array $options): self
     {

@@ -18,7 +18,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   deletedAt: \DateTimeInterface,
  *   description: string,
  *   htmlTitle: string,
- *   language: value-of<Language>,
+ *   language: Language|value-of<Language>,
  *   name: string,
  *   publicAccessRules: list<mixed>,
  *   publicAccessRulesEnabled: bool,

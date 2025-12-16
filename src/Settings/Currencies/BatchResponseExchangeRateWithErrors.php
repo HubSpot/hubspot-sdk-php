@@ -8,19 +8,19 @@ use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\ErrorDetail;
 use HubspotSDK\Settings\Currencies\BatchResponseExchangeRateWithErrors\Status;
-use HubspotSDK\Settings\Currencies\ExchangeRate\FromCurrencyCode;
-use HubspotSDK\Settings\Currencies\ExchangeRate\ToCurrencyCode;
 use HubspotSDK\StandardError;
 
 /**
+ * @phpstan-import-type ExchangeRateShape from \HubspotSDK\Settings\Currencies\ExchangeRate
+ * @phpstan-import-type StandardErrorShape from \HubspotSDK\StandardError
+ *
  * @phpstan-type BatchResponseExchangeRateWithErrorsShape = array{
  *   completedAt: \DateTimeInterface,
- *   results: list<ExchangeRate>,
+ *   results: list<ExchangeRateShape>,
  *   startedAt: \DateTimeInterface,
- *   status: value-of<Status>,
- *   errors?: list<StandardError>|null,
+ *   status: Status|value-of<Status>,
+ *   errors?: list<StandardErrorShape>|null,
  *   links?: array<string,string>|null,
  *   numErrors?: int|null,
  *   requestedAt?: \DateTimeInterface|null,
@@ -89,27 +89,9 @@ final class BatchResponseExchangeRateWithErrors implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<ExchangeRate|array{
-     *   id: string,
-     *   conversionRate: float,
-     *   createdAt: \DateTimeInterface,
-     *   effectiveAt: \DateTimeInterface,
-     *   fromCurrencyCode: value-of<FromCurrencyCode>,
-     *   toCurrencyCode: value-of<ToCurrencyCode>,
-     *   updatedAt: \DateTimeInterface,
-     *   visibleInUi: bool,
-     * }> $results
+     * @param list<ExchangeRateShape> $results
      * @param Status|value-of<Status> $status
-     * @param list<StandardError|array{
-     *   category: string,
-     *   context: array<string,list<string>>,
-     *   errors: list<ErrorDetail>,
-     *   links: array<string,string>,
-     *   message: string,
-     *   status: string,
-     *   id?: string|null,
-     *   subCategory?: mixed,
-     * }> $errors
+     * @param list<StandardErrorShape> $errors
      * @param array<string,string> $links
      */
     public static function with(
@@ -146,16 +128,7 @@ final class BatchResponseExchangeRateWithErrors implements BaseModel
     }
 
     /**
-     * @param list<ExchangeRate|array{
-     *   id: string,
-     *   conversionRate: float,
-     *   createdAt: \DateTimeInterface,
-     *   effectiveAt: \DateTimeInterface,
-     *   fromCurrencyCode: value-of<FromCurrencyCode>,
-     *   toCurrencyCode: value-of<ToCurrencyCode>,
-     *   updatedAt: \DateTimeInterface,
-     *   visibleInUi: bool,
-     * }> $results
+     * @param list<ExchangeRateShape> $results
      */
     public function withResults(array $results): self
     {
@@ -185,16 +158,7 @@ final class BatchResponseExchangeRateWithErrors implements BaseModel
     }
 
     /**
-     * @param list<StandardError|array{
-     *   category: string,
-     *   context: array<string,list<string>>,
-     *   errors: list<ErrorDetail>,
-     *   links: array<string,string>,
-     *   message: string,
-     *   status: string,
-     *   id?: string|null,
-     *   subCategory?: mixed,
-     * }> $errors
+     * @param list<StandardErrorShape> $errors
      */
     public function withErrors(array $errors): self
     {

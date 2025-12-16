@@ -5,15 +5,17 @@ declare(strict_types=1);
 namespace HubspotSDK\Scheduler\Meetings;
 
 use HubspotSDK\AssociationSpec;
-use HubspotSDK\AssociationSpec\AssociationCategory;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicObjectID;
 
 /**
+ * @phpstan-import-type PublicObjectIDShape from \HubspotSDK\PublicObjectID
+ * @phpstan-import-type AssociationSpecShape from \HubspotSDK\AssociationSpec
+ *
  * @phpstan-type ExternalAssociationCreateRequestShape = array{
- *   to: PublicObjectID, types: list<AssociationSpec>
+ *   to: PublicObjectID|PublicObjectIDShape, types: list<AssociationSpecShape>
  * }
  */
 final class ExternalAssociationCreateRequest implements BaseModel
@@ -52,10 +54,8 @@ final class ExternalAssociationCreateRequest implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param PublicObjectID|array{id: string} $to
-     * @param list<AssociationSpec|array{
-     *   associationCategory: value-of<AssociationCategory>, associationTypeID: int
-     * }> $types
+     * @param PublicObjectIDShape $to
+     * @param list<AssociationSpecShape> $types
      */
     public static function with(PublicObjectID|array $to, array $types): self
     {
@@ -68,7 +68,7 @@ final class ExternalAssociationCreateRequest implements BaseModel
     }
 
     /**
-     * @param PublicObjectID|array{id: string} $to
+     * @param PublicObjectIDShape $to
      */
     public function withTo(PublicObjectID|array $to): self
     {
@@ -79,9 +79,7 @@ final class ExternalAssociationCreateRequest implements BaseModel
     }
 
     /**
-     * @param list<AssociationSpec|array{
-     *   associationCategory: value-of<AssociationCategory>, associationTypeID: int
-     * }> $types
+     * @param list<AssociationSpecShape> $types
      */
     public function withTypes(array $types): self
     {

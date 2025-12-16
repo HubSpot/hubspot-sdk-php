@@ -33,7 +33,7 @@ interface PropertyValidationsRawContract
      * @api
      *
      * @param RuleType|value-of<RuleType> $ruleType path param: The type of validation rule being updated, such as FORMAT, ALPHANUMERIC, or MAX_LENGTH
-     * @param array<mixed>|PropertyValidationCrmV3PropertyValidationsObjectTypeIDPropertyNameRuleTypeRuleTypeParams $params
+     * @param array<string,mixed>|PropertyValidationCrmV3PropertyValidationsObjectTypeIDPropertyNameRuleTypeRuleTypeParams $params
      *
      * @return BaseResponse<mixed>
      *
@@ -49,7 +49,7 @@ interface PropertyValidationsRawContract
      * @api
      *
      * @param string $propertyName the name of the property whose validation rules are being retrieved
-     * @param array<mixed>|PropertyValidationGetParams $params
+     * @param array<string,mixed>|PropertyValidationGetParams $params
      *
      * @return BaseResponse<CollectionResponsePublicPropertyValidationRuleNoPaging>
      *

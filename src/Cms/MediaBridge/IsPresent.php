@@ -14,7 +14,7 @@ use HubspotSDK\Core\Conversion\MapOf;
 /**
  * @phpstan-type IsPresentShape = array{
  *   expressionToEvaluate: array<string,mixed>,
- *   operator: value-of<Operator>,
+ *   operator: Operator|value-of<Operator>,
  *   inputs?: list<array<string,mixed>>|null,
  *   propertyName?: string|null,
  *   value?: bool|null,

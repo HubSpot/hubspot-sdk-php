@@ -7,15 +7,18 @@ namespace HubspotSDK\Crm\Extensions\Cards;
 use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\Extensions\Cards\CardFetchBodyPatch\CardType;
 
 /**
  * Body for a patch with optional fields.
  *
+ * @phpstan-import-type CardActionsShape from \HubspotSDK\Crm\Extensions\Cards\CardActions
+ * @phpstan-import-type CardDisplayBodyShape from \HubspotSDK\Crm\Extensions\Cards\CardDisplayBody
+ * @phpstan-import-type CardFetchBodyPatchShape from \HubspotSDK\Crm\Extensions\Cards\CardFetchBodyPatch
+ *
  * @phpstan-type CardPatchRequestShape = array{
- *   actions?: CardActions|null,
- *   display?: CardDisplayBody|null,
- *   fetch?: CardFetchBodyPatch|null,
+ *   actions?: null|CardActions|CardActionsShape,
+ *   display?: null|CardDisplayBody|CardDisplayBodyShape,
+ *   fetch?: null|CardFetchBodyPatch|CardFetchBodyPatchShape,
  *   title?: string|null,
  * }
  */
@@ -58,14 +61,9 @@ final class CardPatchRequest implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param CardActions|array{baseURLs: list<string>} $actions
-     * @param CardDisplayBody|array{properties: list<CardDisplayProperty>} $display
-     * @param CardFetchBodyPatch|array{
-     *   objectTypes: list<CardObjectTypeBody>,
-     *   cardType?: value-of<CardType>|null,
-     *   serverlessFunction?: string|null,
-     *   targetURL?: string|null,
-     * } $fetch
+     * @param CardActionsShape $actions
+     * @param CardDisplayBodyShape $display
+     * @param CardFetchBodyPatchShape $fetch
      */
     public static function with(
         CardActions|array|null $actions = null,
@@ -86,7 +84,7 @@ final class CardPatchRequest implements BaseModel
     /**
      * Configuration for custom user actions on cards.
      *
-     * @param CardActions|array{baseURLs: list<string>} $actions
+     * @param CardActionsShape $actions
      */
     public function withActions(CardActions|array $actions): self
     {
@@ -99,7 +97,7 @@ final class CardPatchRequest implements BaseModel
     /**
      * Configuration for displayed info on a card.
      *
-     * @param CardDisplayBody|array{properties: list<CardDisplayProperty>} $display
+     * @param CardDisplayBodyShape $display
      */
     public function withDisplay(CardDisplayBody|array $display): self
     {
@@ -112,12 +110,7 @@ final class CardPatchRequest implements BaseModel
     /**
      * Variant of CardFetchBody with fields as optional for patches.
      *
-     * @param CardFetchBodyPatch|array{
-     *   objectTypes: list<CardObjectTypeBody>,
-     *   cardType?: value-of<CardType>|null,
-     *   serverlessFunction?: string|null,
-     *   targetURL?: string|null,
-     * } $fetch
+     * @param CardFetchBodyPatchShape $fetch
      */
     public function withFetch(CardFetchBodyPatch|array $fetch): self
     {

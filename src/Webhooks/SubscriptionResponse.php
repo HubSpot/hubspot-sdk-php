@@ -17,7 +17,7 @@ use HubspotSDK\Webhooks\SubscriptionResponse\EventType;
  *   id: string,
  *   active: bool,
  *   createdAt: \DateTimeInterface,
- *   eventType: value-of<EventType>,
+ *   eventType: EventType|value-of<EventType>,
  *   objectTypeID?: string|null,
  *   propertyName?: string|null,
  *   updatedAt?: \DateTimeInterface|null,

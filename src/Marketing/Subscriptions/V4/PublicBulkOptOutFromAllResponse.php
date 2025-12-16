@@ -8,14 +8,12 @@ use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Marketing\Subscriptions\V4\PublicStatus\Channel;
-use HubspotSDK\Marketing\Subscriptions\V4\PublicStatus\LegalBasis;
-use HubspotSDK\Marketing\Subscriptions\V4\PublicStatus\SetStatusSuccessReason;
-use HubspotSDK\Marketing\Subscriptions\V4\PublicStatus\Status;
 
 /**
+ * @phpstan-import-type PublicStatusShape from \HubspotSDK\Marketing\Subscriptions\V4\PublicStatus
+ *
  * @phpstan-type PublicBulkOptOutFromAllResponseShape = array{
- *   subscriberIDString: string, statuses?: list<PublicStatus>|null
+ *   subscriberIDString: string, statuses?: list<PublicStatusShape>|null
  * }
  */
 final class PublicBulkOptOutFromAllResponse implements BaseModel
@@ -61,19 +59,7 @@ final class PublicBulkOptOutFromAllResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicStatus|array{
-     *   channel: value-of<Channel>,
-     *   source: string,
-     *   status: value-of<Status>,
-     *   subscriberIDString: string,
-     *   subscriptionID: int,
-     *   timestamp: \DateTimeInterface,
-     *   businessUnitID?: int|null,
-     *   legalBasis?: value-of<LegalBasis>|null,
-     *   legalBasisExplanation?: string|null,
-     *   setStatusSuccessReason?: value-of<SetStatusSuccessReason>|null,
-     *   subscriptionName?: string|null,
-     * }> $statuses
+     * @param list<PublicStatusShape> $statuses
      */
     public static function with(
         string $subscriberIDString,
@@ -102,19 +88,7 @@ final class PublicBulkOptOutFromAllResponse implements BaseModel
     /**
      * An array of subscription status objects for the contact.
      *
-     * @param list<PublicStatus|array{
-     *   channel: value-of<Channel>,
-     *   source: string,
-     *   status: value-of<Status>,
-     *   subscriberIDString: string,
-     *   subscriptionID: int,
-     *   timestamp: \DateTimeInterface,
-     *   businessUnitID?: int|null,
-     *   legalBasis?: value-of<LegalBasis>|null,
-     *   legalBasisExplanation?: string|null,
-     *   setStatusSuccessReason?: value-of<SetStatusSuccessReason>|null,
-     *   subscriptionName?: string|null,
-     * }> $statuses
+     * @param list<PublicStatusShape> $statuses
      */
     public function withStatuses(array $statuses): self
     {

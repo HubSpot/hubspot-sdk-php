@@ -15,8 +15,8 @@ use HubspotSDK\Events\EventDefinitions\DatePoint\TimezoneSource;
  * @phpstan-type DatePointShape = array{
  *   day: int,
  *   month: int,
- *   timeType: value-of<TimeType>,
- *   timezoneSource: value-of<TimezoneSource>,
+ *   timeType: TimeType|value-of<TimeType>,
+ *   timezoneSource: TimezoneSource|value-of<TimezoneSource>,
  *   year: int,
  *   zoneID: string,
  *   hour?: int|null,

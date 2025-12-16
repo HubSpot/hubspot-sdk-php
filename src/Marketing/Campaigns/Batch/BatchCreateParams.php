@@ -16,8 +16,10 @@ use HubspotSDK\Marketing\Campaigns\PublicCampaignInput;
  *
  * @see HubspotSDK\Services\Marketing\Campaigns\BatchService::create()
  *
+ * @phpstan-import-type PublicCampaignInputShape from \HubspotSDK\Marketing\Campaigns\PublicCampaignInput
+ *
  * @phpstan-type BatchCreateParamsShape = array{
- *   inputs: list<PublicCampaignInput|array{properties: array<string,string>}>
+ *   inputs: list<PublicCampaignInputShape>
  * }
  */
 final class BatchCreateParams implements BaseModel
@@ -54,7 +56,7 @@ final class BatchCreateParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicCampaignInput|array{properties: array<string,string>}> $inputs
+     * @param list<PublicCampaignInputShape> $inputs
      */
     public static function with(array $inputs): self
     {
@@ -66,7 +68,7 @@ final class BatchCreateParams implements BaseModel
     }
 
     /**
-     * @param list<PublicCampaignInput|array{properties: array<string,string>}> $inputs
+     * @param list<PublicCampaignInputShape> $inputs
      */
     public function withInputs(array $inputs): self
     {

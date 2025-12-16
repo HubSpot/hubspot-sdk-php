@@ -14,7 +14,10 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Crm\Objects\Projects\AssociationsService::list()
  *
  * @phpstan-type AssociationListParamsShape = array{
- *   projectID: string, after?: string, includeFa?: bool, limit?: int
+ *   projectID: string,
+ *   after?: string|null,
+ *   includeFa?: bool|null,
+ *   limit?: int|null,
  * }
  */
 final class AssociationListParams implements BaseModel

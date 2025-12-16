@@ -12,9 +12,9 @@ use HubspotSDK\Crm\Lists\PublicListConversionInactivity\TimeUnit;
 
 /**
  * @phpstan-type PublicListConversionInactivityShape = array{
- *   conversionType: value-of<ConversionType>,
+ *   conversionType: ConversionType|value-of<ConversionType>,
  *   offset: int,
- *   timeUnit: value-of<TimeUnit>,
+ *   timeUnit: TimeUnit|value-of<TimeUnit>,
  * }
  */
 final class PublicListConversionInactivity implements BaseModel

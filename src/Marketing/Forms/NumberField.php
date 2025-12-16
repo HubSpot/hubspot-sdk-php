@@ -13,9 +13,11 @@ use HubspotSDK\Marketing\Forms\NumberField\FieldType;
 /**
  * A form field used for collecting a numeric value.
  *
+ * @phpstan-import-type NumberFieldValidationShape from \HubspotSDK\Marketing\Forms\NumberFieldValidation
+ *
  * @phpstan-type NumberFieldShape = array{
  *   dependentFields: list<mixed>,
- *   fieldType: value-of<FieldType>,
+ *   fieldType: FieldType|value-of<FieldType>,
  *   hidden: bool,
  *   label: string,
  *   name: string,
@@ -24,7 +26,7 @@ use HubspotSDK\Marketing\Forms\NumberField\FieldType;
  *   defaultValue?: string|null,
  *   description?: string|null,
  *   placeholder?: string|null,
- *   validation?: NumberFieldValidation|null,
+ *   validation?: null|NumberFieldValidation|NumberFieldValidationShape,
  * }
  */
 final class NumberField implements BaseModel
@@ -143,9 +145,7 @@ final class NumberField implements BaseModel
      *
      * @param list<mixed> $dependentFields
      * @param FieldType|value-of<FieldType> $fieldType
-     * @param NumberFieldValidation|array{
-     *   maxAllowedDigits: int, minAllowedDigits: int
-     * } $validation
+     * @param NumberFieldValidationShape $validation
      */
     public static function with(
         array $dependentFields,
@@ -295,9 +295,7 @@ final class NumberField implements BaseModel
     /**
      * Describes how a numeric value should be validated.
      *
-     * @param NumberFieldValidation|array{
-     *   maxAllowedDigits: int, minAllowedDigits: int
-     * } $validation
+     * @param NumberFieldValidationShape $validation
      */
     public function withValidation(
         NumberFieldValidation|array $validation

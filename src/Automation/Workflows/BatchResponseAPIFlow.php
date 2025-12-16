@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   completedAt: \DateTimeInterface,
  *   results: list<mixed>,
  *   startedAt: \DateTimeInterface,
- *   status: value-of<Status>,
+ *   status: Status|value-of<Status>,
  *   links?: array<string,string>|null,
  *   requestedAt?: \DateTimeInterface|null,
  * }

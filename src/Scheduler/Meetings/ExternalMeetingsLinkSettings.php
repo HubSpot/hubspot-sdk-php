@@ -8,13 +8,19 @@ use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Scheduler\Meetings\ExternalLegalConsentOptions\LegitimateInterestLegalBasis;
 
 /**
+ * @phpstan-import-type ExternalClosedRangeShape from \HubspotSDK\Scheduler\Meetings\ExternalClosedRange
+ * @phpstan-import-type ExternalLinkFormFieldShape from \HubspotSDK\Scheduler\Meetings\ExternalLinkFormField
+ * @phpstan-import-type ExternalLinkDisplayInfoShape from \HubspotSDK\Scheduler\Meetings\ExternalLinkDisplayInfo
+ * @phpstan-import-type ExternalGuestSettingsShape from \HubspotSDK\Scheduler\Meetings\ExternalGuestSettings
+ * @phpstan-import-type ExternalLegalConsentOptionsShape from \HubspotSDK\Scheduler\Meetings\ExternalLegalConsentOptions
+ * @phpstan-import-type ExternalMeetingsWelcomeScreenInfoShape from \HubspotSDK\Scheduler\Meetings\ExternalMeetingsWelcomeScreenInfo
+ *
  * @phpstan-type ExternalMeetingsLinkSettingsShape = array{
- *   availability: array<string,ExternalClosedRange>,
+ *   availability: array<string,ExternalClosedRangeShape>,
  *   durations: list<int>,
- *   formFields: list<ExternalLinkFormField>,
+ *   formFields: list<ExternalLinkFormFieldShape>,
  *   legalConsentEnabled: bool,
  *   meetingBufferTime: int,
  *   ownerPrioritized: bool,
@@ -22,14 +28,14 @@ use HubspotSDK\Scheduler\Meetings\ExternalLegalConsentOptions\LegitimateInterest
  *   weeksToAdvertise: int,
  *   customAvailabilityEndDate?: int|null,
  *   customAvailabilityStartDate?: int|null,
- *   displayInfo?: ExternalLinkDisplayInfo|null,
- *   guestSettings?: ExternalGuestSettings|null,
+ *   displayInfo?: null|ExternalLinkDisplayInfo|ExternalLinkDisplayInfoShape,
+ *   guestSettings?: null|ExternalGuestSettings|ExternalGuestSettingsShape,
  *   language?: string|null,
- *   legalConsentOptions?: ExternalLegalConsentOptions|null,
+ *   legalConsentOptions?: null|ExternalLegalConsentOptions|ExternalLegalConsentOptionsShape,
  *   locale?: string|null,
  *   location?: string|null,
  *   redirectURL?: string|null,
- *   welcomeScreenInfo?: ExternalMeetingsWelcomeScreenInfo|null,
+ *   welcomeScreenInfo?: null|ExternalMeetingsWelcomeScreenInfo|ExternalMeetingsWelcomeScreenInfoShape,
  * }
  */
 final class ExternalMeetingsLinkSettings implements BaseModel
@@ -135,47 +141,13 @@ final class ExternalMeetingsLinkSettings implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string,ExternalClosedRange|array{
-     *   end: int, start: int
-     * }> $availability
+     * @param array<string,ExternalClosedRangeShape> $availability
      * @param list<int> $durations
-     * @param list<ExternalLinkFormField|array{
-     *   fieldType: string,
-     *   isCustom: bool,
-     *   isRequired: bool,
-     *   label: string,
-     *   name: string,
-     *   options: list<ExternalOption>,
-     *   type: string,
-     * }> $formFields
-     * @param ExternalLinkDisplayInfo|array{
-     *   avatar?: string|null,
-     *   companyAvatar?: string|null,
-     *   headline?: string|null,
-     *   publicDisplayAvatarOption?: string|null,
-     * } $displayInfo
-     * @param ExternalGuestSettings|array{
-     *   canAddGuests: bool, maxGuestCount: int
-     * } $guestSettings
-     * @param ExternalLegalConsentOptions|array{
-     *   communicationConsentCheckboxes: list<ExternalCommunicationConsentCheckbox>,
-     *   communicationConsentText: string,
-     *   isLegitimateInterest: bool,
-     *   legitimateInterestSubscriptionTypes: list<int>,
-     *   privacyPolicyText: string,
-     *   processingConsentCheckboxLabel: string,
-     *   processingConsentFooterText: string,
-     *   processingConsentText: string,
-     *   processingConsentType: string,
-     *   legitimateInterestLegalBasis?: value-of<LegitimateInterestLegalBasis>|null,
-     * } $legalConsentOptions
-     * @param ExternalMeetingsWelcomeScreenInfo|array{
-     *   description?: string|null,
-     *   logoURL?: string|null,
-     *   showWelcomeScreen?: bool|null,
-     *   title?: string|null,
-     *   useCompanyLogo?: bool|null,
-     * } $welcomeScreenInfo
+     * @param list<ExternalLinkFormFieldShape> $formFields
+     * @param ExternalLinkDisplayInfoShape $displayInfo
+     * @param ExternalGuestSettingsShape $guestSettings
+     * @param ExternalLegalConsentOptionsShape $legalConsentOptions
+     * @param ExternalMeetingsWelcomeScreenInfoShape $welcomeScreenInfo
      */
     public static function with(
         array $availability,
@@ -223,9 +195,7 @@ final class ExternalMeetingsLinkSettings implements BaseModel
     }
 
     /**
-     * @param array<string,ExternalClosedRange|array{
-     *   end: int, start: int
-     * }> $availability
+     * @param array<string,ExternalClosedRangeShape> $availability
      */
     public function withAvailability(array $availability): self
     {
@@ -247,15 +217,7 @@ final class ExternalMeetingsLinkSettings implements BaseModel
     }
 
     /**
-     * @param list<ExternalLinkFormField|array{
-     *   fieldType: string,
-     *   isCustom: bool,
-     *   isRequired: bool,
-     *   label: string,
-     *   name: string,
-     *   options: list<ExternalOption>,
-     *   type: string,
-     * }> $formFields
+     * @param list<ExternalLinkFormFieldShape> $formFields
      */
     public function withFormFields(array $formFields): self
     {
@@ -325,12 +287,7 @@ final class ExternalMeetingsLinkSettings implements BaseModel
     }
 
     /**
-     * @param ExternalLinkDisplayInfo|array{
-     *   avatar?: string|null,
-     *   companyAvatar?: string|null,
-     *   headline?: string|null,
-     *   publicDisplayAvatarOption?: string|null,
-     * } $displayInfo
+     * @param ExternalLinkDisplayInfoShape $displayInfo
      */
     public function withDisplayInfo(
         ExternalLinkDisplayInfo|array $displayInfo
@@ -342,9 +299,7 @@ final class ExternalMeetingsLinkSettings implements BaseModel
     }
 
     /**
-     * @param ExternalGuestSettings|array{
-     *   canAddGuests: bool, maxGuestCount: int
-     * } $guestSettings
+     * @param ExternalGuestSettingsShape $guestSettings
      */
     public function withGuestSettings(
         ExternalGuestSettings|array $guestSettings
@@ -364,18 +319,7 @@ final class ExternalMeetingsLinkSettings implements BaseModel
     }
 
     /**
-     * @param ExternalLegalConsentOptions|array{
-     *   communicationConsentCheckboxes: list<ExternalCommunicationConsentCheckbox>,
-     *   communicationConsentText: string,
-     *   isLegitimateInterest: bool,
-     *   legitimateInterestSubscriptionTypes: list<int>,
-     *   privacyPolicyText: string,
-     *   processingConsentCheckboxLabel: string,
-     *   processingConsentFooterText: string,
-     *   processingConsentText: string,
-     *   processingConsentType: string,
-     *   legitimateInterestLegalBasis?: value-of<LegitimateInterestLegalBasis>|null,
-     * } $legalConsentOptions
+     * @param ExternalLegalConsentOptionsShape $legalConsentOptions
      */
     public function withLegalConsentOptions(
         ExternalLegalConsentOptions|array $legalConsentOptions
@@ -411,13 +355,7 @@ final class ExternalMeetingsLinkSettings implements BaseModel
     }
 
     /**
-     * @param ExternalMeetingsWelcomeScreenInfo|array{
-     *   description?: string|null,
-     *   logoURL?: string|null,
-     *   showWelcomeScreen?: bool|null,
-     *   title?: string|null,
-     *   useCompanyLogo?: bool|null,
-     * } $welcomeScreenInfo
+     * @param ExternalMeetingsWelcomeScreenInfoShape $welcomeScreenInfo
      */
     public function withWelcomeScreenInfo(
         ExternalMeetingsWelcomeScreenInfo|array $welcomeScreenInfo

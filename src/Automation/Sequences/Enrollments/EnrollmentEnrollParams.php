@@ -20,7 +20,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   contactID: string,
  *   senderEmail: string,
  *   sequenceID: string,
- *   senderAliasAddress?: string,
+ *   senderAliasAddress?: string|null,
  * }
  */
 final class EnrollmentEnrollParams implements BaseModel

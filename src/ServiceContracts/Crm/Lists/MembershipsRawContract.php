@@ -25,7 +25,7 @@ interface MembershipsRawContract
      * @api
      *
      * @param string $listID the **ILS ID** of the list
-     * @param array<mixed>|MembershipListParams $params
+     * @param array<string,mixed>|MembershipListParams $params
      *
      * @return BaseResponse<Page<JoinTimeAndRecordID>>
      *
@@ -41,7 +41,7 @@ interface MembershipsRawContract
      * @api
      *
      * @param string $listID the **ILS ID** of the `MANUAL` or `SNAPSHOT` list
-     * @param array<mixed>|MembershipAddParams $params
+     * @param array<string,mixed>|MembershipAddParams $params
      *
      * @return BaseResponse<MembershipsUpdateResponse>
      *
@@ -57,7 +57,7 @@ interface MembershipsRawContract
      * @api
      *
      * @param string $sourceListID the **ILS ID** of the *source list* to grab the records from, which are then added to the *destination list*
-     * @param array<mixed>|MembershipAddAllFromListParams $params
+     * @param array<string,mixed>|MembershipAddAllFromListParams $params
      *
      * @return BaseResponse<mixed>
      *
@@ -73,7 +73,7 @@ interface MembershipsRawContract
      * @api
      *
      * @param string $listID the **ILS ID** of the `MANUAL` or `SNAPSHOT` list
-     * @param array<mixed>|MembershipAddAndRemoveParams $params
+     * @param array<string,mixed>|MembershipAddAndRemoveParams $params
      *
      * @return BaseResponse<MembershipsUpdateResponse>
      *
@@ -89,7 +89,7 @@ interface MembershipsRawContract
      * @api
      *
      * @param string $recordID Id of the record
-     * @param array<mixed>|MembershipGetListsParams $params
+     * @param array<string,mixed>|MembershipGetListsParams $params
      *
      * @return BaseResponse<APICollectionResponseRecordListMembershipNoPaging>
      *
@@ -105,7 +105,7 @@ interface MembershipsRawContract
      * @api
      *
      * @param string $listID the **ILS ID** of the list
-     * @param array<mixed>|MembershipGetPageOrderedByAddedToListDateParams $params
+     * @param array<string,mixed>|MembershipGetPageOrderedByAddedToListDateParams $params
      *
      * @return BaseResponse<Page<JoinTimeAndRecordID>>
      *
@@ -121,7 +121,7 @@ interface MembershipsRawContract
      * @api
      *
      * @param string $listID the **ILS ID** of the `MANUAL` or `SNAPSHOT` list
-     * @param array<mixed>|MembershipRemoveParams $params
+     * @param array<string,mixed>|MembershipRemoveParams $params
      *
      * @return BaseResponse<MembershipsUpdateResponse>
      *

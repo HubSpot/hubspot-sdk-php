@@ -9,11 +9,15 @@ use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\ForwardPaging;
-use HubspotSDK\NextPage;
 
 /**
+ * @phpstan-import-type PublicChannelAccountShape from \HubspotSDK\Conversations\PublicChannelAccount
+ * @phpstan-import-type ForwardPagingShape from \HubspotSDK\ForwardPaging
+ *
  * @phpstan-type CollectionResponseWithTotalPublicChannelAccountForwardPagingShape = array{
- *   results: list<PublicChannelAccount>, total: int, paging?: ForwardPaging|null
+ *   results: list<PublicChannelAccountShape>,
+ *   total: int,
+ *   paging?: null|ForwardPaging|ForwardPagingShape,
  * }
  */
 final class CollectionResponseWithTotalPublicChannelAccountForwardPaging implements BaseModel
@@ -61,19 +65,8 @@ final class CollectionResponseWithTotalPublicChannelAccountForwardPaging impleme
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicChannelAccount|array{
-     *   id: string,
-     *   active: bool,
-     *   archived: bool,
-     *   authorized: bool,
-     *   channelID: string,
-     *   createdAt: \DateTimeInterface,
-     *   inboxID: string,
-     *   name: string,
-     *   archivedAt?: \DateTimeInterface|null,
-     *   deliveryIdentifier?: PublicDeliveryIdentifier|null,
-     * }> $results
-     * @param ForwardPaging|array{next?: NextPage|null} $paging
+     * @param list<PublicChannelAccountShape> $results
+     * @param ForwardPagingShape $paging
      */
     public static function with(
         array $results,
@@ -91,18 +84,7 @@ final class CollectionResponseWithTotalPublicChannelAccountForwardPaging impleme
     }
 
     /**
-     * @param list<PublicChannelAccount|array{
-     *   id: string,
-     *   active: bool,
-     *   archived: bool,
-     *   authorized: bool,
-     *   channelID: string,
-     *   createdAt: \DateTimeInterface,
-     *   inboxID: string,
-     *   name: string,
-     *   archivedAt?: \DateTimeInterface|null,
-     *   deliveryIdentifier?: PublicDeliveryIdentifier|null,
-     * }> $results
+     * @param list<PublicChannelAccountShape> $results
      */
     public function withResults(array $results): self
     {
@@ -121,7 +103,7 @@ final class CollectionResponseWithTotalPublicChannelAccountForwardPaging impleme
     }
 
     /**
-     * @param ForwardPaging|array{next?: NextPage|null} $paging
+     * @param ForwardPagingShape $paging
      */
     public function withPaging(ForwardPaging|array $paging): self
     {

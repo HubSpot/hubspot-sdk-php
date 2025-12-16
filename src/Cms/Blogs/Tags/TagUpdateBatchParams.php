@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Cms\Blogs\TagsService::updateBatch()
  *
  * @phpstan-type TagUpdateBatchParamsShape = array{
- *   inputs: list<mixed>, archived?: bool
+ *   inputs: list<mixed>, archived?: bool|null
  * }
  */
 final class TagUpdateBatchParams implements BaseModel

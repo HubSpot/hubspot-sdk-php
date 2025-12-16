@@ -17,7 +17,9 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Cms\Hubdb\TablesService::get()
  *
  * @phpstan-type TableGetParamsShape = array{
- *   archived?: bool, includeForeignIDs?: bool, isGetLocalizedSchema?: bool
+ *   archived?: bool|null,
+ *   includeForeignIDs?: bool|null,
+ *   isGetLocalizedSchema?: bool|null,
  * }
  */
 final class TableGetParams implements BaseModel

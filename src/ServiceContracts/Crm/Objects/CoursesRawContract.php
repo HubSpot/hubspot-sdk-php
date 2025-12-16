@@ -23,7 +23,7 @@ interface CoursesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|CourseCreateParams $params
+     * @param array<string,mixed>|CourseCreateParams $params
      *
      * @return BaseResponse<CreatedResponseSimplePublicObject>
      *
@@ -38,7 +38,7 @@ interface CoursesRawContract
      * @api
      *
      * @param string $courseID Path param:
-     * @param array<mixed>|CourseUpdateParams $params
+     * @param array<string,mixed>|CourseUpdateParams $params
      *
      * @return BaseResponse<SimplePublicObject>
      *
@@ -53,7 +53,7 @@ interface CoursesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|CourseListParams $params
+     * @param array<string,mixed>|CourseListParams $params
      *
      * @return BaseResponse<Page<SimplePublicObjectWithAssociations>>
      *
@@ -79,7 +79,7 @@ interface CoursesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|CourseGetParams $params
+     * @param array<string,mixed>|CourseGetParams $params
      *
      * @return BaseResponse<SimplePublicObjectWithAssociations>
      *
@@ -94,7 +94,7 @@ interface CoursesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|CourseSearchParams $params
+     * @param array<string,mixed>|CourseSearchParams $params
      *
      * @return BaseResponse<CollectionResponseWithTotalSimplePublicObject>
      *

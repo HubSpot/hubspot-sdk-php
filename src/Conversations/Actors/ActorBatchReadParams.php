@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Conversations\ActorsService::batchRead()
  *
  * @phpstan-type ActorBatchReadParamsShape = array{
- *   inputs: list<string>, property?: string
+ *   inputs: list<string>, property?: string|null
  * }
  */
 final class ActorBatchReadParams implements BaseModel

@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type APIBlockedDateShape = array{
- *   dayOfMonth: int, month: value-of<Month>, year?: int|null
+ *   dayOfMonth: int, month: Month|value-of<Month>, year?: int|null
  * }
  */
 final class APIBlockedDate implements BaseModel

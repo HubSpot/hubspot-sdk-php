@@ -10,6 +10,12 @@ use HubspotSDK\Core\Concerns\SdkUnion;
 use HubspotSDK\Core\Conversion\Contracts\Converter;
 use HubspotSDK\Core\Conversion\Contracts\ConverterSource;
 
+/**
+ * @phpstan-import-type APIAuthKeyWebhookAuthSettingsShape from \HubspotSDK\Automation\Workflows\APIAuthKeyWebhookAuthSettings
+ * @phpstan-import-type APISignatureWebhookAuthSettingsShape from \HubspotSDK\Automation\Workflows\APISignatureWebhookAuthSettings
+ *
+ * @phpstan-type AuthSettingsShape = APIAuthKeyWebhookAuthSettingsShape|APISignatureWebhookAuthSettingsShape
+ */
 final class AuthSettings implements ConverterSource
 {
     use SdkUnion;

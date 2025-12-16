@@ -16,7 +16,7 @@ use HubspotSDK\Settings\Users\UserGetParams\IDProperty;
  * @see HubspotSDK\Services\Settings\UsersService::get()
  *
  * @phpstan-type UserGetParamsShape = array{
- *   idProperty?: IDProperty|value-of<IDProperty>
+ *   idProperty?: null|IDProperty|value-of<IDProperty>
  * }
  */
 final class UserGetParams implements BaseModel

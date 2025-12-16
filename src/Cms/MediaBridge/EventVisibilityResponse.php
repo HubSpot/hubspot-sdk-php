@@ -4,14 +4,16 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\MediaBridge;
 
-use HubspotSDK\Cms\MediaBridge\EventVisibilityChange\EventType;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type EventVisibilityChangeShape from \HubspotSDK\Cms\MediaBridge\EventVisibilityChange
+ *
  * @phpstan-type EventVisibilityResponseShape = array{
- *   createdAt: \DateTimeInterface, visibilitySettings: list<EventVisibilityChange>
+ *   createdAt: \DateTimeInterface,
+ *   visibilitySettings: list<EventVisibilityChangeShape>,
  * }
  */
 final class EventVisibilityResponse implements BaseModel
@@ -50,13 +52,7 @@ final class EventVisibilityResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<EventVisibilityChange|array{
-     *   eventType: value-of<EventType>,
-     *   updatedAt: int,
-     *   showInReporting?: bool|null,
-     *   showInTimeline?: bool|null,
-     *   showInWorkflows?: bool|null,
-     * }> $visibilitySettings
+     * @param list<EventVisibilityChangeShape> $visibilitySettings
      */
     public static function with(
         \DateTimeInterface $createdAt,
@@ -79,13 +75,7 @@ final class EventVisibilityResponse implements BaseModel
     }
 
     /**
-     * @param list<EventVisibilityChange|array{
-     *   eventType: value-of<EventType>,
-     *   updatedAt: int,
-     *   showInReporting?: bool|null,
-     *   showInTimeline?: bool|null,
-     *   showInWorkflows?: bool|null,
-     * }> $visibilitySettings
+     * @param list<EventVisibilityChangeShape> $visibilitySettings
      */
     public function withVisibilitySettings(array $visibilitySettings): self
     {

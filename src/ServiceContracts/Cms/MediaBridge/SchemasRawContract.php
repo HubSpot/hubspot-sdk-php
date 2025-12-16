@@ -23,7 +23,7 @@ interface SchemasRawContract
      * @api
      *
      * @param string $objectType path param: The object type that you want to update the schema for
-     * @param array<mixed>|SchemaUpdateParams $params
+     * @param array<string,mixed>|SchemaUpdateParams $params
      *
      * @return BaseResponse<ObjectsSchemasObjectTypeDefinition>
      *
@@ -39,7 +39,7 @@ interface SchemasRawContract
      * @api
      *
      * @param int $appID The appId for the media bridge app. It is possible to have multiple apps in your developer account that use the media bridge.
-     * @param array<mixed>|SchemaListParams $params
+     * @param array<string,mixed>|SchemaListParams $params
      *
      * @return BaseResponse<SchemaListResponse>
      *
@@ -55,7 +55,7 @@ interface SchemasRawContract
      * @api
      *
      * @param string $objectType Path param: The object type to create the definition for
-     * @param array<mixed>|SchemaCreateAssociationParams $params
+     * @param array<string,mixed>|SchemaCreateAssociationParams $params
      *
      * @return BaseResponse<AssociationDefinition>
      *
@@ -71,7 +71,7 @@ interface SchemasRawContract
      * @api
      *
      * @param string $associationID the ID of the association definition to be deleted
-     * @param array<mixed>|SchemaDeleteAssociationParams $params
+     * @param array<string,mixed>|SchemaDeleteAssociationParams $params
      *
      * @return BaseResponse<mixed>
      *
@@ -87,7 +87,7 @@ interface SchemasRawContract
      * @api
      *
      * @param string $objectType the object type to get the schema for
-     * @param array<mixed>|SchemaGetParams $params
+     * @param array<string,mixed>|SchemaGetParams $params
      *
      * @return BaseResponse<ObjectSchema>
      *

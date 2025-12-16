@@ -16,13 +16,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Services\Conversations\CustomChannels\ChannelAccountsService::create()
  *
+ * @phpstan-import-type PublicDeliveryIdentifierShape from \HubspotSDK\Conversations\PublicDeliveryIdentifier
+ *
  * @phpstan-type ChannelAccountCreateParamsShape = array{
  *   authorized: bool,
  *   inboxID: string,
  *   name: string,
- *   deliveryIdentifier?: PublicDeliveryIdentifier|array{
- *     type: string, value: string
- *   },
+ *   deliveryIdentifier?: PublicDeliveryIdentifierShape|null,
  * }
  */
 final class ChannelAccountCreateParams implements BaseModel
@@ -70,9 +70,7 @@ final class ChannelAccountCreateParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param PublicDeliveryIdentifier|array{
-     *   type: string, value: string
-     * } $deliveryIdentifier
+     * @param PublicDeliveryIdentifierShape $deliveryIdentifier
      */
     public static function with(
         bool $authorized,
@@ -116,9 +114,7 @@ final class ChannelAccountCreateParams implements BaseModel
     }
 
     /**
-     * @param PublicDeliveryIdentifier|array{
-     *   type: string, value: string
-     * } $deliveryIdentifier
+     * @param PublicDeliveryIdentifierShape $deliveryIdentifier
      */
     public function withDeliveryIdentifier(
         PublicDeliveryIdentifier|array $deliveryIdentifier

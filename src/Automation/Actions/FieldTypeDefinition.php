@@ -14,18 +14,20 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Option;
 
 /**
+ * @phpstan-import-type OptionShape from \HubspotSDK\Option
+ *
  * @phpstan-type FieldTypeDefinitionShape = array{
  *   externalOptions: bool,
  *   name: string,
- *   options: list<Option>,
- *   type: value-of<Type>,
+ *   options: list<OptionShape>,
+ *   type: Type|value-of<Type>,
  *   description?: string|null,
  *   externalOptionsReferenceType?: string|null,
- *   fieldType?: value-of<FieldType>|null,
+ *   fieldType?: null|FieldType|value-of<FieldType>,
  *   helpText?: string|null,
  *   label?: string|null,
  *   optionsURL?: string|null,
- *   referencedObjectType?: value-of<ReferencedObjectType>|null,
+ *   referencedObjectType?: null|ReferencedObjectType|value-of<ReferencedObjectType>,
  * }
  */
 final class FieldTypeDefinition implements BaseModel
@@ -100,13 +102,7 @@ final class FieldTypeDefinition implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<Option|array{
-     *   hidden: bool,
-     *   label: string,
-     *   value: string,
-     *   description?: string|null,
-     *   displayOrder?: int|null,
-     * }> $options
+     * @param list<OptionShape> $options
      * @param Type|value-of<Type> $type
      * @param FieldType|value-of<FieldType> $fieldType
      * @param ReferencedObjectType|value-of<ReferencedObjectType> $referencedObjectType
@@ -159,13 +155,7 @@ final class FieldTypeDefinition implements BaseModel
     }
 
     /**
-     * @param list<Option|array{
-     *   hidden: bool,
-     *   label: string,
-     *   value: string,
-     *   description?: string|null,
-     *   displayOrder?: int|null,
-     * }> $options
+     * @param list<OptionShape> $options
      */
     public function withOptions(array $options): self
     {

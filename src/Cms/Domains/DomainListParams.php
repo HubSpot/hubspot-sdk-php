@@ -15,16 +15,16 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Cms\DomainsService::list()
  *
  * @phpstan-type DomainListParamsShape = array{
- *   after?: string,
- *   archived?: bool,
- *   createdAfter?: \DateTimeInterface,
- *   createdAt?: \DateTimeInterface,
- *   createdBefore?: \DateTimeInterface,
- *   limit?: int,
- *   sort?: list<string>,
- *   updatedAfter?: \DateTimeInterface,
- *   updatedAt?: \DateTimeInterface,
- *   updatedBefore?: \DateTimeInterface,
+ *   after?: string|null,
+ *   archived?: bool|null,
+ *   createdAfter?: \DateTimeInterface|null,
+ *   createdAt?: \DateTimeInterface|null,
+ *   createdBefore?: \DateTimeInterface|null,
+ *   limit?: int|null,
+ *   sort?: list<string>|null,
+ *   updatedAfter?: \DateTimeInterface|null,
+ *   updatedAt?: \DateTimeInterface|null,
+ *   updatedBefore?: \DateTimeInterface|null,
  * }
  */
 final class DomainListParams implements BaseModel

@@ -12,10 +12,12 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Webhook settings for an app.
  *
+ * @phpstan-import-type ThrottlingSettingsShape from \HubspotSDK\Webhooks\ThrottlingSettings
+ *
  * @phpstan-type SettingsResponseShape = array{
  *   createdAt: \DateTimeInterface,
  *   targetURL: string,
- *   throttling: ThrottlingSettings,
+ *   throttling: ThrottlingSettings|ThrottlingSettingsShape,
  *   updatedAt?: \DateTimeInterface|null,
  * }
  */
@@ -75,7 +77,7 @@ final class SettingsResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param ThrottlingSettings|array{maxConcurrentRequests: int} $throttling
+     * @param ThrottlingSettingsShape $throttling
      */
     public static function with(
         \DateTimeInterface $createdAt,
@@ -119,7 +121,7 @@ final class SettingsResponse implements BaseModel
     /**
      * Configuration details for webhook throttling.
      *
-     * @param ThrottlingSettings|array{maxConcurrentRequests: int} $throttling
+     * @param ThrottlingSettingsShape $throttling
      */
     public function withThrottling(ThrottlingSettings|array $throttling): self
     {

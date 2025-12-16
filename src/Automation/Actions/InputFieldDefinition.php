@@ -4,22 +4,20 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Automation\Actions;
 
-use HubspotSDK\Automation\Actions\FieldTypeDefinition\FieldType;
-use HubspotSDK\Automation\Actions\FieldTypeDefinition\ReferencedObjectType;
-use HubspotSDK\Automation\Actions\FieldTypeDefinition\Type;
 use HubspotSDK\Automation\Actions\InputFieldDefinition\SupportedValueType;
 use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Option;
 
 /**
+ * @phpstan-import-type FieldTypeDefinitionShape from \HubspotSDK\Automation\Actions\FieldTypeDefinition
+ *
  * @phpstan-type InputFieldDefinitionShape = array{
  *   isRequired: bool,
- *   typeDefinition: FieldTypeDefinition,
+ *   typeDefinition: FieldTypeDefinition|FieldTypeDefinitionShape,
  *   automationFieldType?: string|null,
- *   supportedValueTypes?: list<value-of<SupportedValueType>>|null,
+ *   supportedValueTypes?: list<SupportedValueType|value-of<SupportedValueType>>|null,
  * }
  */
 final class InputFieldDefinition implements BaseModel
@@ -64,19 +62,7 @@ final class InputFieldDefinition implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param FieldTypeDefinition|array{
-     *   externalOptions: bool,
-     *   name: string,
-     *   options: list<Option>,
-     *   type: value-of<Type>,
-     *   description?: string|null,
-     *   externalOptionsReferenceType?: string|null,
-     *   fieldType?: value-of<FieldType>|null,
-     *   helpText?: string|null,
-     *   label?: string|null,
-     *   optionsURL?: string|null,
-     *   referencedObjectType?: value-of<ReferencedObjectType>|null,
-     * } $typeDefinition
+     * @param FieldTypeDefinitionShape $typeDefinition
      * @param list<SupportedValueType|value-of<SupportedValueType>> $supportedValueTypes
      */
     public static function with(
@@ -105,19 +91,7 @@ final class InputFieldDefinition implements BaseModel
     }
 
     /**
-     * @param FieldTypeDefinition|array{
-     *   externalOptions: bool,
-     *   name: string,
-     *   options: list<Option>,
-     *   type: value-of<Type>,
-     *   description?: string|null,
-     *   externalOptionsReferenceType?: string|null,
-     *   fieldType?: value-of<FieldType>|null,
-     *   helpText?: string|null,
-     *   label?: string|null,
-     *   optionsURL?: string|null,
-     *   referencedObjectType?: value-of<ReferencedObjectType>|null,
-     * } $typeDefinition
+     * @param FieldTypeDefinitionShape $typeDefinition
      */
     public function withTypeDefinition(
         FieldTypeDefinition|array $typeDefinition

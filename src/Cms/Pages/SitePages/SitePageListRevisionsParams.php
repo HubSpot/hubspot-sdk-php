@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Cms\Pages\SitePagesService::listRevisions()
  *
  * @phpstan-type SitePageListRevisionsParamsShape = array{
- *   after?: string, before?: string, limit?: int
+ *   after?: string|null, before?: string|null, limit?: int|null
  * }
  */
 final class SitePageListRevisionsParams implements BaseModel

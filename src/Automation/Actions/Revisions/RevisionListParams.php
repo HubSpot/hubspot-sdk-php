@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Automation\Actions\RevisionsService::list()
  *
  * @phpstan-type RevisionListParamsShape = array{
- *   appID: int, after?: string, limit?: int
+ *   appID: int, after?: string|null, limit?: int|null
  * }
  */
 final class RevisionListParams implements BaseModel

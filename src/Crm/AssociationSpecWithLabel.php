@@ -12,7 +12,7 @@ use HubspotSDK\Crm\AssociationSpecWithLabel\Category;
 
 /**
  * @phpstan-type AssociationSpecWithLabelShape = array{
- *   category: value-of<Category>, typeID: int, label?: string|null
+ *   category: Category|value-of<Category>, typeID: int, label?: string|null
  * }
  */
 final class AssociationSpecWithLabel implements BaseModel

@@ -9,18 +9,16 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Associations\V4\PublicAssociationMultiArchive;
-use HubspotSDK\PublicObjectID;
 
 /**
  * Batch delete associations for objects.
  *
  * @see HubspotSDK\Services\Crm\Associations\V4\BatchService::delete()
  *
+ * @phpstan-import-type PublicAssociationMultiArchiveShape from \HubspotSDK\Crm\Associations\V4\PublicAssociationMultiArchive
+ *
  * @phpstan-type BatchDeleteParamsShape = array{
- *   fromObjectType: string,
- *   inputs: list<PublicAssociationMultiArchive|array{
- *     from: PublicObjectID, to: list<PublicObjectID>
- *   }>,
+ *   fromObjectType: string, inputs: list<PublicAssociationMultiArchiveShape>
  * }
  */
 final class BatchDeleteParams implements BaseModel
@@ -60,9 +58,7 @@ final class BatchDeleteParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicAssociationMultiArchive|array{
-     *   from: PublicObjectID, to: list<PublicObjectID>
-     * }> $inputs
+     * @param list<PublicAssociationMultiArchiveShape> $inputs
      */
     public static function with(string $fromObjectType, array $inputs): self
     {
@@ -83,9 +79,7 @@ final class BatchDeleteParams implements BaseModel
     }
 
     /**
-     * @param list<PublicAssociationMultiArchive|array{
-     *   from: PublicObjectID, to: list<PublicObjectID>
-     * }> $inputs
+     * @param list<PublicAssociationMultiArchiveShape> $inputs
      */
     public function withInputs(array $inputs): self
     {

@@ -15,11 +15,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Scheduler\Meetings\MeetingsLinksService::list()
  *
  * @phpstan-type MeetingsLinkListParamsShape = array{
- *   after?: string,
- *   limit?: int,
- *   name?: string,
- *   organizerUserID?: string,
- *   type?: string,
+ *   after?: string|null,
+ *   limit?: int|null,
+ *   name?: string|null,
+ *   organizerUserID?: string|null,
+ *   type?: string|null,
  * }
  */
 final class MeetingsLinkListParams implements BaseModel

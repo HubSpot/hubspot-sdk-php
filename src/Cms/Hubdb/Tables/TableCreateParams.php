@@ -5,32 +5,22 @@ declare(strict_types=1);
 namespace HubspotSDK\Cms\Hubdb\Tables;
 
 use HubspotSDK\Cms\Hubdb\ColumnRequest;
-use HubspotSDK\Cms\Hubdb\ColumnRequest\Type;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Option;
 
 /**
  * Creates a new draft HubDB table given a JSON schema. The table name and label should be unique for each account.
  *
  * @see HubspotSDK\Services\Cms\Hubdb\TablesService::create()
  *
+ * @phpstan-import-type ColumnRequestShape from \HubspotSDK\Cms\Hubdb\ColumnRequest
+ *
  * @phpstan-type TableCreateParamsShape = array{
  *   allowChildTables: bool,
  *   allowPublicAPIAccess: bool,
- *   columns: list<ColumnRequest|array{
- *     id: int,
- *     label: string,
- *     name: string,
- *     options: list<Option>,
- *     type: value-of<Type>,
- *     foreignColumnID?: int|null,
- *     foreignTableID?: int|null,
- *     maxNumberOfCharacters?: int|null,
- *     maxNumberOfOptions?: int|null,
- *   }>,
+ *   columns: list<ColumnRequestShape>,
  *   dynamicMetaTags: array<string,int>,
  *   enableChildTablePages: bool,
  *   label: string,
@@ -137,17 +127,7 @@ final class TableCreateParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<ColumnRequest|array{
-     *   id: int,
-     *   label: string,
-     *   name: string,
-     *   options: list<Option>,
-     *   type: value-of<Type>,
-     *   foreignColumnID?: int|null,
-     *   foreignTableID?: int|null,
-     *   maxNumberOfCharacters?: int|null,
-     *   maxNumberOfOptions?: int|null,
-     * }> $columns
+     * @param list<ColumnRequestShape> $columns
      * @param array<string,int> $dynamicMetaTags
      */
     public static function with(
@@ -199,17 +179,7 @@ final class TableCreateParams implements BaseModel
     /**
      * List of columns in the table.
      *
-     * @param list<ColumnRequest|array{
-     *   id: int,
-     *   label: string,
-     *   name: string,
-     *   options: list<Option>,
-     *   type: value-of<Type>,
-     *   foreignColumnID?: int|null,
-     *   foreignTableID?: int|null,
-     *   maxNumberOfCharacters?: int|null,
-     *   maxNumberOfOptions?: int|null,
-     * }> $columns
+     * @param list<ColumnRequestShape> $columns
      */
     public function withColumns(array $columns): self
     {

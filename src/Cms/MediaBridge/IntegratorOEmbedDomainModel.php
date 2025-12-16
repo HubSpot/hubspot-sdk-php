@@ -9,12 +9,14 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type EndpointsShape from \HubspotSDK\Cms\MediaBridge\Endpoints
+ *
  * @phpstan-type IntegratorOEmbedDomainModelShape = array{
  *   id: int,
  *   appID: int,
  *   createdAt: int,
  *   deletedAt: int,
- *   endpoints: Endpoints,
+ *   endpoints: Endpoints|EndpointsShape,
  *   portalID: int,
  *   updatedAt: int,
  * }
@@ -84,9 +86,7 @@ final class IntegratorOEmbedDomainModel implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param Endpoints|array{
-     *   discovery: bool, schemes: list<string>, url: string
-     * } $endpoints
+     * @param EndpointsShape $endpoints
      */
     public static function with(
         int $id,
@@ -143,9 +143,7 @@ final class IntegratorOEmbedDomainModel implements BaseModel
     }
 
     /**
-     * @param Endpoints|array{
-     *   discovery: bool, schemes: list<string>, url: string
-     * } $endpoints
+     * @param EndpointsShape $endpoints
      */
     public function withEndpoints(Endpoints|array $endpoints): self
     {

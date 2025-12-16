@@ -15,7 +15,7 @@ use HubspotSDK\Core\Conversion\MapOf;
  * @phpstan-type IfBooleanShape = array{
  *   enclosedInParentheses: bool,
  *   ifExpression: array<string,mixed>,
- *   operator: value-of<Operator>,
+ *   operator: Operator|value-of<Operator>,
  *   elseExpression?: array<string,mixed>|null,
  *   inputs?: list<array<string,mixed>>|null,
  *   propertyName?: string|null,

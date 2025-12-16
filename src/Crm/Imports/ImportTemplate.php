@@ -11,7 +11,7 @@ use HubspotSDK\Crm\Imports\ImportTemplate\TemplateType;
 
 /**
  * @phpstan-type ImportTemplateShape = array{
- *   templateID: int, templateType: value-of<TemplateType>
+ *   templateID: int, templateType: TemplateType|value-of<TemplateType>
  * }
  */
 final class ImportTemplate implements BaseModel

@@ -17,9 +17,9 @@ use HubspotSDK\Marketing\Subscriptions\V4\Links\LinkCreateParams\Channel;
  * @phpstan-type LinkCreateParamsShape = array{
  *   channel: Channel|value-of<Channel>,
  *   subscriberIDString: string,
- *   businessUnitID?: int,
- *   language?: string,
- *   subscriptionID?: int,
+ *   businessUnitID?: int|null,
+ *   language?: string|null,
+ *   subscriptionID?: int|null,
  * }
  */
 final class LinkCreateParams implements BaseModel

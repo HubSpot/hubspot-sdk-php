@@ -17,10 +17,10 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @phpstan-type ParticipationListBreakdownByExternalAccountAndEventIDParamsShape = array{
  *   externalAccountID: string,
- *   after?: string,
- *   contactIdentifier?: string,
- *   limit?: int,
- *   state?: string,
+ *   after?: string|null,
+ *   contactIdentifier?: string|null,
+ *   limit?: int|null,
+ *   state?: string|null,
  * }
  */
 final class ParticipationListBreakdownByExternalAccountAndEventIDParams implements BaseModel

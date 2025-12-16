@@ -11,6 +11,13 @@ use HubspotSDK\PublicDatePoint;
 use HubspotSDK\PublicIndexedTimePoint;
 use HubspotSDK\PublicPropertyReferencedTime;
 
+/**
+ * @phpstan-import-type PublicDatePointShape from \HubspotSDK\PublicDatePoint
+ * @phpstan-import-type PublicIndexedTimePointShape from \HubspotSDK\PublicIndexedTimePoint
+ * @phpstan-import-type PublicPropertyReferencedTimeShape from \HubspotSDK\PublicPropertyReferencedTime
+ *
+ * @phpstan-type LowerBoundTimePointShape = PublicDatePointShape|PublicIndexedTimePointShape|PublicPropertyReferencedTimeShape
+ */
 final class LowerBoundTimePoint implements ConverterSource
 {
     use SdkUnion;

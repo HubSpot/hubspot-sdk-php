@@ -4,19 +4,22 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\Blogs\Authors;
 
-use HubspotSDK\Cms\Blogs\Authors\BlogAuthor\Language;
 use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\ForwardPaging;
-use HubspotSDK\NextPage;
 
 /**
  * Response object for collections of blog authors with pagination information.
  *
+ * @phpstan-import-type BlogAuthorShape from \HubspotSDK\Cms\Blogs\Authors\BlogAuthor
+ * @phpstan-import-type ForwardPagingShape from \HubspotSDK\ForwardPaging
+ *
  * @phpstan-type CollectionResponseWithTotalBlogAuthorForwardPagingShape = array{
- *   results: list<BlogAuthor>, total: int, paging?: ForwardPaging|null
+ *   results: list<BlogAuthorShape>,
+ *   total: int,
+ *   paging?: null|ForwardPaging|ForwardPagingShape,
  * }
  */
 final class CollectionResponseWithTotalBlogAuthorForwardPaging implements BaseModel
@@ -69,26 +72,8 @@ final class CollectionResponseWithTotalBlogAuthorForwardPaging implements BaseMo
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<BlogAuthor|array{
-     *   id: string,
-     *   avatar: string,
-     *   bio: string,
-     *   created: \DateTimeInterface,
-     *   deletedAt: \DateTimeInterface,
-     *   displayName: string,
-     *   email: string,
-     *   facebook: string,
-     *   fullName: string,
-     *   language: value-of<Language>,
-     *   linkedin: string,
-     *   name: string,
-     *   slug: string,
-     *   translatedFromID: int,
-     *   twitter: string,
-     *   updated: \DateTimeInterface,
-     *   website: string,
-     * }> $results
-     * @param ForwardPaging|array{next?: NextPage|null} $paging
+     * @param list<BlogAuthorShape> $results
+     * @param ForwardPagingShape $paging
      */
     public static function with(
         array $results,
@@ -108,25 +93,7 @@ final class CollectionResponseWithTotalBlogAuthorForwardPaging implements BaseMo
     /**
      * Collection of blog authors.
      *
-     * @param list<BlogAuthor|array{
-     *   id: string,
-     *   avatar: string,
-     *   bio: string,
-     *   created: \DateTimeInterface,
-     *   deletedAt: \DateTimeInterface,
-     *   displayName: string,
-     *   email: string,
-     *   facebook: string,
-     *   fullName: string,
-     *   language: value-of<Language>,
-     *   linkedin: string,
-     *   name: string,
-     *   slug: string,
-     *   translatedFromID: int,
-     *   twitter: string,
-     *   updated: \DateTimeInterface,
-     *   website: string,
-     * }> $results
+     * @param list<BlogAuthorShape> $results
      */
     public function withResults(array $results): self
     {
@@ -148,7 +115,7 @@ final class CollectionResponseWithTotalBlogAuthorForwardPaging implements BaseMo
     }
 
     /**
-     * @param ForwardPaging|array{next?: NextPage|null} $paging
+     * @param ForwardPagingShape $paging
      */
     public function withPaging(ForwardPaging|array $paging): self
     {

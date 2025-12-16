@@ -11,7 +11,9 @@ use HubspotSDK\PublicPrivacyAnalyticsFilter\FilterType;
 
 /**
  * @phpstan-type PublicPrivacyAnalyticsFilterShape = array{
- *   filterType: value-of<FilterType>, operator: string, privacyName: string
+ *   filterType: FilterType|value-of<FilterType>,
+ *   operator: string,
+ *   privacyName: string,
  * }
  */
 final class PublicPrivacyAnalyticsFilter implements BaseModel

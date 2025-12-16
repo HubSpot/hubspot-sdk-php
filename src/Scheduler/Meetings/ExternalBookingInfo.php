@@ -11,14 +11,19 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Scheduler\Meetings\ExternalBookingInfo\LinkType;
 
 /**
+ * @phpstan-import-type ExternalUserBusyTimesShape from \HubspotSDK\Scheduler\Meetings\ExternalUserBusyTimes
+ * @phpstan-import-type ExternalMeetingsLinkSettingsShape from \HubspotSDK\Scheduler\Meetings\ExternalMeetingsLinkSettings
+ * @phpstan-import-type ExternalBrandingMetadataShape from \HubspotSDK\Scheduler\Meetings\ExternalBrandingMetadata
+ * @phpstan-import-type ExternalLinkAvailabilityShape from \HubspotSDK\Scheduler\Meetings\ExternalLinkAvailability
+ *
  * @phpstan-type ExternalBookingInfoShape = array{
- *   allUsersBusyTimes: list<ExternalUserBusyTimes>,
- *   customParams: ExternalMeetingsLinkSettings,
+ *   allUsersBusyTimes: list<ExternalUserBusyTimesShape>,
+ *   customParams: ExternalMeetingsLinkSettings|ExternalMeetingsLinkSettingsShape,
  *   isOffline: bool,
  *   linkID: string,
- *   linkType: value-of<LinkType>,
- *   brandingMetadata?: ExternalBrandingMetadata|null,
- *   linkAvailability?: ExternalLinkAvailability|null,
+ *   linkType: LinkType|value-of<LinkType>,
+ *   brandingMetadata?: null|ExternalBrandingMetadata|ExternalBrandingMetadataShape,
+ *   linkAvailability?: null|ExternalLinkAvailability|ExternalLinkAvailabilityShape,
  * }
  */
 final class ExternalBookingInfo implements BaseModel
@@ -84,57 +89,11 @@ final class ExternalBookingInfo implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<ExternalUserBusyTimes|array{
-     *   busyTimes: list<ExternalTimeRange>,
-     *   isOffline: bool,
-     *   meetingsUser: ExternalMeetingsUser,
-     * }> $allUsersBusyTimes
-     * @param ExternalMeetingsLinkSettings|array{
-     *   availability: array<string,ExternalClosedRange>,
-     *   durations: list<int>,
-     *   formFields: list<ExternalLinkFormField>,
-     *   legalConsentEnabled: bool,
-     *   meetingBufferTime: int,
-     *   ownerPrioritized: bool,
-     *   startTimeIncrementMinutes: string,
-     *   weeksToAdvertise: int,
-     *   customAvailabilityEndDate?: int|null,
-     *   customAvailabilityStartDate?: int|null,
-     *   displayInfo?: ExternalLinkDisplayInfo|null,
-     *   guestSettings?: ExternalGuestSettings|null,
-     *   language?: string|null,
-     *   legalConsentOptions?: ExternalLegalConsentOptions|null,
-     *   locale?: string|null,
-     *   location?: string|null,
-     *   redirectURL?: string|null,
-     *   welcomeScreenInfo?: ExternalMeetingsWelcomeScreenInfo|null,
-     * } $customParams
+     * @param list<ExternalUserBusyTimesShape> $allUsersBusyTimes
+     * @param ExternalMeetingsLinkSettingsShape $customParams
      * @param LinkType|value-of<LinkType> $linkType
-     * @param ExternalBrandingMetadata|array{
-     *   logoAltText: string,
-     *   showMarketingAd: bool,
-     *   showSalesAd: bool,
-     *   accent2Color?: string|null,
-     *   accentColor?: string|null,
-     *   companyAddressLine1?: string|null,
-     *   companyAddressLine2?: string|null,
-     *   companyAvatar?: string|null,
-     *   companyCity?: string|null,
-     *   companyCountry?: string|null,
-     *   companyDomain?: string|null,
-     *   companyName?: string|null,
-     *   companyState?: string|null,
-     *   companyZip?: string|null,
-     *   logoHeight?: int|null,
-     *   logoURL?: string|null,
-     *   logoWidth?: int|null,
-     *   primaryColor?: string|null,
-     *   secondaryColor?: string|null,
-     * } $brandingMetadata
-     * @param ExternalLinkAvailability|array{
-     *   hasMore: bool,
-     *   linkAvailabilityByDuration: array<string,ExternalLinkAvailabilityForDuration>,
-     * } $linkAvailability
+     * @param ExternalBrandingMetadataShape $brandingMetadata
+     * @param ExternalLinkAvailabilityShape $linkAvailability
      */
     public static function with(
         array $allUsersBusyTimes,
@@ -160,11 +119,7 @@ final class ExternalBookingInfo implements BaseModel
     }
 
     /**
-     * @param list<ExternalUserBusyTimes|array{
-     *   busyTimes: list<ExternalTimeRange>,
-     *   isOffline: bool,
-     *   meetingsUser: ExternalMeetingsUser,
-     * }> $allUsersBusyTimes
+     * @param list<ExternalUserBusyTimesShape> $allUsersBusyTimes
      */
     public function withAllUsersBusyTimes(array $allUsersBusyTimes): self
     {
@@ -175,26 +130,7 @@ final class ExternalBookingInfo implements BaseModel
     }
 
     /**
-     * @param ExternalMeetingsLinkSettings|array{
-     *   availability: array<string,ExternalClosedRange>,
-     *   durations: list<int>,
-     *   formFields: list<ExternalLinkFormField>,
-     *   legalConsentEnabled: bool,
-     *   meetingBufferTime: int,
-     *   ownerPrioritized: bool,
-     *   startTimeIncrementMinutes: string,
-     *   weeksToAdvertise: int,
-     *   customAvailabilityEndDate?: int|null,
-     *   customAvailabilityStartDate?: int|null,
-     *   displayInfo?: ExternalLinkDisplayInfo|null,
-     *   guestSettings?: ExternalGuestSettings|null,
-     *   language?: string|null,
-     *   legalConsentOptions?: ExternalLegalConsentOptions|null,
-     *   locale?: string|null,
-     *   location?: string|null,
-     *   redirectURL?: string|null,
-     *   welcomeScreenInfo?: ExternalMeetingsWelcomeScreenInfo|null,
-     * } $customParams
+     * @param ExternalMeetingsLinkSettingsShape $customParams
      */
     public function withCustomParams(
         ExternalMeetingsLinkSettings|array $customParams
@@ -233,27 +169,7 @@ final class ExternalBookingInfo implements BaseModel
     }
 
     /**
-     * @param ExternalBrandingMetadata|array{
-     *   logoAltText: string,
-     *   showMarketingAd: bool,
-     *   showSalesAd: bool,
-     *   accent2Color?: string|null,
-     *   accentColor?: string|null,
-     *   companyAddressLine1?: string|null,
-     *   companyAddressLine2?: string|null,
-     *   companyAvatar?: string|null,
-     *   companyCity?: string|null,
-     *   companyCountry?: string|null,
-     *   companyDomain?: string|null,
-     *   companyName?: string|null,
-     *   companyState?: string|null,
-     *   companyZip?: string|null,
-     *   logoHeight?: int|null,
-     *   logoURL?: string|null,
-     *   logoWidth?: int|null,
-     *   primaryColor?: string|null,
-     *   secondaryColor?: string|null,
-     * } $brandingMetadata
+     * @param ExternalBrandingMetadataShape $brandingMetadata
      */
     public function withBrandingMetadata(
         ExternalBrandingMetadata|array $brandingMetadata
@@ -265,10 +181,7 @@ final class ExternalBookingInfo implements BaseModel
     }
 
     /**
-     * @param ExternalLinkAvailability|array{
-     *   hasMore: bool,
-     *   linkAvailabilityByDuration: array<string,ExternalLinkAvailabilityForDuration>,
-     * } $linkAvailability
+     * @param ExternalLinkAvailabilityShape $linkAvailability
      */
     public function withLinkAvailability(
         ExternalLinkAvailability|array $linkAvailability

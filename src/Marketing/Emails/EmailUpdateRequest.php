@@ -10,35 +10,39 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Marketing\Emails\EmailUpdateRequest\Language;
 use HubspotSDK\Marketing\Emails\EmailUpdateRequest\State;
 use HubspotSDK\Marketing\Emails\EmailUpdateRequest\Subcategory;
-use HubspotSDK\Marketing\Emails\PublicEmailTestingDetails\AbSampleSizeDefault;
-use HubspotSDK\Marketing\Emails\PublicEmailTestingDetails\AbSamplingDefault;
-use HubspotSDK\Marketing\Emails\PublicEmailTestingDetails\AbStatus;
-use HubspotSDK\Marketing\Emails\PublicEmailTestingDetails\AbSuccessMetric;
 
 /**
  * Properties of a marketing email you can update via the API.
+ *
+ * @phpstan-import-type PublicEmailContentShape from \HubspotSDK\Marketing\Emails\PublicEmailContent
+ * @phpstan-import-type PublicEmailFromDetailsShape from \HubspotSDK\Marketing\Emails\PublicEmailFromDetails
+ * @phpstan-import-type PublicRssEmailDetailsShape from \HubspotSDK\Marketing\Emails\PublicRssEmailDetails
+ * @phpstan-import-type PublicEmailSubscriptionDetailsShape from \HubspotSDK\Marketing\Emails\PublicEmailSubscriptionDetails
+ * @phpstan-import-type PublicEmailTestingDetailsShape from \HubspotSDK\Marketing\Emails\PublicEmailTestingDetails
+ * @phpstan-import-type PublicEmailToDetailsShape from \HubspotSDK\Marketing\Emails\PublicEmailToDetails
+ * @phpstan-import-type PublicWebversionDetailsShape from \HubspotSDK\Marketing\Emails\PublicWebversionDetails
  *
  * @phpstan-type EmailUpdateRequestShape = array{
  *   activeDomain?: string|null,
  *   archived?: bool|null,
  *   businessUnitID?: int|null,
  *   campaign?: string|null,
- *   content?: PublicEmailContent|null,
+ *   content?: null|PublicEmailContent|PublicEmailContentShape,
  *   folderIDV2?: int|null,
- *   from?: PublicEmailFromDetails|null,
+ *   from?: null|PublicEmailFromDetails|PublicEmailFromDetailsShape,
  *   jitterSendTime?: bool|null,
- *   language?: value-of<Language>|null,
+ *   language?: null|Language|value-of<Language>,
  *   name?: string|null,
  *   publishDate?: \DateTimeInterface|null,
- *   rssData?: PublicRssEmailDetails|null,
+ *   rssData?: null|PublicRssEmailDetails|PublicRssEmailDetailsShape,
  *   sendOnPublish?: bool|null,
- *   state?: value-of<State>|null,
- *   subcategory?: value-of<Subcategory>|null,
+ *   state?: null|State|value-of<State>,
+ *   subcategory?: null|Subcategory|value-of<Subcategory>,
  *   subject?: string|null,
- *   subscriptionDetails?: PublicEmailSubscriptionDetails|null,
- *   testing?: PublicEmailTestingDetails|null,
- *   to?: PublicEmailToDetails|null,
- *   webversion?: PublicWebversionDetails|null,
+ *   subscriptionDetails?: null|PublicEmailSubscriptionDetails|PublicEmailSubscriptionDetailsShape,
+ *   testing?: null|PublicEmailTestingDetails|PublicEmailTestingDetailsShape,
+ *   to?: null|PublicEmailToDetails|PublicEmailToDetailsShape,
+ *   webversion?: null|PublicWebversionDetails|PublicWebversionDetailsShape,
  * }
  */
 final class EmailUpdateRequest implements BaseModel
@@ -166,69 +170,16 @@ final class EmailUpdateRequest implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param PublicEmailContent|array{
-     *   flexAreas?: array<string,mixed>|null,
-     *   plainTextVersion?: string|null,
-     *   smartFields?: array<string,mixed>|null,
-     *   styleSettings?: PublicEmailStyleSettings|null,
-     *   templatePath?: string|null,
-     *   themeSettingsValues?: array<string,mixed>|null,
-     *   widgetContainers?: array<string,mixed>|null,
-     *   widgets?: array<string,mixed>|null,
-     * } $content
-     * @param PublicEmailFromDetails|array{
-     *   customReplyTo?: string|null, fromName?: string|null, replyTo?: string|null
-     * } $from
+     * @param PublicEmailContentShape $content
+     * @param PublicEmailFromDetailsShape $from
      * @param Language|value-of<Language> $language
-     * @param PublicRssEmailDetails|array{
-     *   blogEmailType?: string|null,
-     *   blogImageMaxWidth?: int|null,
-     *   blogLayout?: string|null,
-     *   hubspotBlogID?: string|null,
-     *   maxEntries?: int|null,
-     *   rssEntryTemplate?: string|null,
-     *   timing?: array<string,mixed>|null,
-     *   url?: string|null,
-     *   useHeadlineAsSubject?: bool|null,
-     * } $rssData
+     * @param PublicRssEmailDetailsShape $rssData
      * @param State|value-of<State> $state
      * @param Subcategory|value-of<Subcategory> $subcategory
-     * @param PublicEmailSubscriptionDetails|array{
-     *   officeLocationID?: string|null,
-     *   preferencesGroupID?: string|null,
-     *   subscriptionID?: string|null,
-     *   subscriptionName?: string|null,
-     * } $subscriptionDetails
-     * @param PublicEmailTestingDetails|array{
-     *   abSampleSizeDefault?: value-of<AbSampleSizeDefault>|null,
-     *   abSamplingDefault?: value-of<AbSamplingDefault>|null,
-     *   abStatus?: value-of<AbStatus>|null,
-     *   abSuccessMetric?: value-of<AbSuccessMetric>|null,
-     *   abTestPercentage?: int|null,
-     *   hoursToWait?: int|null,
-     *   isAbVariation?: bool|null,
-     *   testID?: string|null,
-     * } $testing
-     * @param PublicEmailToDetails|array{
-     *   contactIDs?: PublicEmailRecipients|null,
-     *   contactIlsLists?: PublicEmailRecipients|null,
-     *   contactLists?: PublicEmailRecipients|null,
-     *   limitSendFrequency?: bool|null,
-     *   suppressGraymail?: bool|null,
-     * } $to
-     * @param PublicWebversionDetails|array{
-     *   domain?: string|null,
-     *   enabled?: bool|null,
-     *   expiresAt?: \DateTimeInterface|null,
-     *   isPageRedirected?: bool|null,
-     *   metaDescription?: string|null,
-     *   pageExpiryEnabled?: bool|null,
-     *   redirectToPageID?: string|null,
-     *   redirectToURL?: string|null,
-     *   slug?: string|null,
-     *   title?: string|null,
-     *   url?: string|null,
-     * } $webversion
+     * @param PublicEmailSubscriptionDetailsShape $subscriptionDetails
+     * @param PublicEmailTestingDetailsShape $testing
+     * @param PublicEmailToDetailsShape $to
+     * @param PublicWebversionDetailsShape $webversion
      */
     public static function with(
         ?string $activeDomain = null,
@@ -322,16 +273,7 @@ final class EmailUpdateRequest implements BaseModel
     /**
      * Data structure representing the content of the email.
      *
-     * @param PublicEmailContent|array{
-     *   flexAreas?: array<string,mixed>|null,
-     *   plainTextVersion?: string|null,
-     *   smartFields?: array<string,mixed>|null,
-     *   styleSettings?: PublicEmailStyleSettings|null,
-     *   templatePath?: string|null,
-     *   themeSettingsValues?: array<string,mixed>|null,
-     *   widgetContainers?: array<string,mixed>|null,
-     *   widgets?: array<string,mixed>|null,
-     * } $content
+     * @param PublicEmailContentShape $content
      */
     public function withContent(PublicEmailContent|array $content): self
     {
@@ -352,9 +294,7 @@ final class EmailUpdateRequest implements BaseModel
     /**
      * Data structure representing the from fields on the email.
      *
-     * @param PublicEmailFromDetails|array{
-     *   customReplyTo?: string|null, fromName?: string|null, replyTo?: string|null
-     * } $from
+     * @param PublicEmailFromDetailsShape $from
      */
     public function withFrom(PublicEmailFromDetails|array $from): self
     {
@@ -408,17 +348,7 @@ final class EmailUpdateRequest implements BaseModel
     /**
      * RSS related data if it is a blog or rss email.
      *
-     * @param PublicRssEmailDetails|array{
-     *   blogEmailType?: string|null,
-     *   blogImageMaxWidth?: int|null,
-     *   blogLayout?: string|null,
-     *   hubspotBlogID?: string|null,
-     *   maxEntries?: int|null,
-     *   rssEntryTemplate?: string|null,
-     *   timing?: array<string,mixed>|null,
-     *   url?: string|null,
-     *   useHeadlineAsSubject?: bool|null,
-     * } $rssData
+     * @param PublicRssEmailDetailsShape $rssData
      */
     public function withRssData(PublicRssEmailDetails|array $rssData): self
     {
@@ -479,12 +409,7 @@ final class EmailUpdateRequest implements BaseModel
     /**
      * Data structure representing the subscription fields of the email.
      *
-     * @param PublicEmailSubscriptionDetails|array{
-     *   officeLocationID?: string|null,
-     *   preferencesGroupID?: string|null,
-     *   subscriptionID?: string|null,
-     *   subscriptionName?: string|null,
-     * } $subscriptionDetails
+     * @param PublicEmailSubscriptionDetailsShape $subscriptionDetails
      */
     public function withSubscriptionDetails(
         PublicEmailSubscriptionDetails|array $subscriptionDetails
@@ -498,16 +423,7 @@ final class EmailUpdateRequest implements BaseModel
     /**
      * AB testing related data. This property is only returned for AB type emails.
      *
-     * @param PublicEmailTestingDetails|array{
-     *   abSampleSizeDefault?: value-of<AbSampleSizeDefault>|null,
-     *   abSamplingDefault?: value-of<AbSamplingDefault>|null,
-     *   abStatus?: value-of<AbStatus>|null,
-     *   abSuccessMetric?: value-of<AbSuccessMetric>|null,
-     *   abTestPercentage?: int|null,
-     *   hoursToWait?: int|null,
-     *   isAbVariation?: bool|null,
-     *   testID?: string|null,
-     * } $testing
+     * @param PublicEmailTestingDetailsShape $testing
      */
     public function withTesting(PublicEmailTestingDetails|array $testing): self
     {
@@ -520,13 +436,7 @@ final class EmailUpdateRequest implements BaseModel
     /**
      * Data structure representing the to fields of the email.
      *
-     * @param PublicEmailToDetails|array{
-     *   contactIDs?: PublicEmailRecipients|null,
-     *   contactIlsLists?: PublicEmailRecipients|null,
-     *   contactLists?: PublicEmailRecipients|null,
-     *   limitSendFrequency?: bool|null,
-     *   suppressGraymail?: bool|null,
-     * } $to
+     * @param PublicEmailToDetailsShape $to
      */
     public function withTo(PublicEmailToDetails|array $to): self
     {
@@ -537,19 +447,7 @@ final class EmailUpdateRequest implements BaseModel
     }
 
     /**
-     * @param PublicWebversionDetails|array{
-     *   domain?: string|null,
-     *   enabled?: bool|null,
-     *   expiresAt?: \DateTimeInterface|null,
-     *   isPageRedirected?: bool|null,
-     *   metaDescription?: string|null,
-     *   pageExpiryEnabled?: bool|null,
-     *   redirectToPageID?: string|null,
-     *   redirectToURL?: string|null,
-     *   slug?: string|null,
-     *   title?: string|null,
-     *   url?: string|null,
-     * } $webversion
+     * @param PublicWebversionDetailsShape $webversion
      */
     public function withWebversion(
         PublicWebversionDetails|array $webversion

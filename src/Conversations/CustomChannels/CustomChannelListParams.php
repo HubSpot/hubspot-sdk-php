@@ -15,7 +15,10 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Conversations\CustomChannelsService::list()
  *
  * @phpstan-type CustomChannelListParamsShape = array{
- *   after?: string, defaultPageLength?: int, limit?: int, sort?: list<string>
+ *   after?: string|null,
+ *   defaultPageLength?: int|null,
+ *   limit?: int|null,
+ *   sort?: list<string>|null,
  * }
  */
 final class CustomChannelListParams implements BaseModel

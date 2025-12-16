@@ -19,7 +19,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-type MessageUpdateParamsShape = array{
  *   channelID: int,
  *   statusType: StatusType|value-of<StatusType>,
- *   errorMessage?: string,
+ *   errorMessage?: string|null,
  * }
  */
 final class MessageUpdateParams implements BaseModel

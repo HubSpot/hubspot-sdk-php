@@ -19,9 +19,9 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   objectType: string,
  *   pipelineID: string,
  *   metadata: array<string,string>,
- *   archived?: bool,
- *   displayOrder?: int,
- *   label?: string,
+ *   archived?: bool|null,
+ *   displayOrder?: int|null,
+ *   label?: string|null,
  * }
  */
 final class StageUpdateParams implements BaseModel

@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Cms\MediaBridge\IntegratorSettingsService::getObjectDefinitionsByMediaType()
  *
  * @phpstan-type IntegratorSettingGetObjectDefinitionsByMediaTypeParamsShape = array{
- *   appID: int, includeFullDefinition?: bool
+ *   appID: int, includeFullDefinition?: bool|null
  * }
  */
 final class IntegratorSettingGetObjectDefinitionsByMediaTypeParams implements BaseModel

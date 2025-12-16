@@ -11,6 +11,8 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type PublicDeliveryIdentifierShape from \HubspotSDK\Conversations\PublicDeliveryIdentifier
+ *
  * @phpstan-type PublicChannelAccountStagingTokenShape = array{
  *   accountToken: string,
  *   createdAt: \DateTimeInterface,
@@ -18,7 +20,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   inboxID: int,
  *   userID: int,
  *   accountName?: string|null,
- *   deliveryIdentifier?: PublicDeliveryIdentifier|null,
+ *   deliveryIdentifier?: null|PublicDeliveryIdentifier|PublicDeliveryIdentifierShape,
  * }
  */
 final class PublicChannelAccountStagingToken implements BaseModel
@@ -82,9 +84,7 @@ final class PublicChannelAccountStagingToken implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param PublicDeliveryIdentifier|array{
-     *   type: string, value: string
-     * } $deliveryIdentifier
+     * @param PublicDeliveryIdentifierShape $deliveryIdentifier
      */
     public static function with(
         string $accountToken,
@@ -158,9 +158,7 @@ final class PublicChannelAccountStagingToken implements BaseModel
     }
 
     /**
-     * @param PublicDeliveryIdentifier|array{
-     *   type: string, value: string
-     * } $deliveryIdentifier
+     * @param PublicDeliveryIdentifierShape $deliveryIdentifier
      */
     public function withDeliveryIdentifier(
         PublicDeliveryIdentifier|array $deliveryIdentifier

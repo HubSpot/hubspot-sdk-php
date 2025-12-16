@@ -7,12 +7,12 @@ namespace HubspotSDK\Settings\Currencies;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Settings\Currencies\ExchangeRate\FromCurrencyCode;
-use HubspotSDK\Settings\Currencies\ExchangeRate\ToCurrencyCode;
 
 /**
+ * @phpstan-import-type ExchangeRateShape from \HubspotSDK\Settings\Currencies\ExchangeRate
+ *
  * @phpstan-type CollectionResponseExchangeRateNoPagingShape = array{
- *   results: list<ExchangeRate>
+ *   results: list<ExchangeRateShape>
  * }
  */
 final class CollectionResponseExchangeRateNoPaging implements BaseModel
@@ -48,16 +48,7 @@ final class CollectionResponseExchangeRateNoPaging implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<ExchangeRate|array{
-     *   id: string,
-     *   conversionRate: float,
-     *   createdAt: \DateTimeInterface,
-     *   effectiveAt: \DateTimeInterface,
-     *   fromCurrencyCode: value-of<FromCurrencyCode>,
-     *   toCurrencyCode: value-of<ToCurrencyCode>,
-     *   updatedAt: \DateTimeInterface,
-     *   visibleInUi: bool,
-     * }> $results
+     * @param list<ExchangeRateShape> $results
      */
     public static function with(array $results): self
     {
@@ -69,16 +60,7 @@ final class CollectionResponseExchangeRateNoPaging implements BaseModel
     }
 
     /**
-     * @param list<ExchangeRate|array{
-     *   id: string,
-     *   conversionRate: float,
-     *   createdAt: \DateTimeInterface,
-     *   effectiveAt: \DateTimeInterface,
-     *   fromCurrencyCode: value-of<FromCurrencyCode>,
-     *   toCurrencyCode: value-of<ToCurrencyCode>,
-     *   updatedAt: \DateTimeInterface,
-     *   visibleInUi: bool,
-     * }> $results
+     * @param list<ExchangeRateShape> $results
      */
     public function withResults(array $results): self
     {

@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\BusinessUnitsService::getByUserID()
  *
  * @phpstan-type BusinessUnitGetByUserIDParamsShape = array{
- *   name?: list<string>, properties?: list<string>
+ *   name?: list<string>|null, properties?: list<string>|null
  * }
  */
 final class BusinessUnitGetByUserIDParams implements BaseModel

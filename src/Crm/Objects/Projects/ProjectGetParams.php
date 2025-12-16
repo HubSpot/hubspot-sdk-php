@@ -15,11 +15,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Crm\Objects\ProjectsService::get()
  *
  * @phpstan-type ProjectGetParamsShape = array{
- *   archived?: bool,
- *   associations?: list<string>,
- *   idProperty?: string,
- *   properties?: list<string>,
- *   propertiesWithHistory?: list<string>,
+ *   archived?: bool|null,
+ *   associations?: list<string>|null,
+ *   idProperty?: string|null,
+ *   properties?: list<string>|null,
+ *   propertiesWithHistory?: list<string>|null,
  * }
  */
 final class ProjectGetParams implements BaseModel

@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Automation\SequencesService::list()
  *
  * @phpstan-type SequenceListParamsShape = array{
- *   userID: string, after?: string, limit?: int, name?: string
+ *   userID: string, after?: string|null, limit?: int|null, name?: string|null
  * }
  */
 final class SequenceListParams implements BaseModel

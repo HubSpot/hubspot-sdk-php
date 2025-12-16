@@ -30,7 +30,7 @@ interface SubscriptionsRawContract
      * @api
      *
      * @param int $objectID subscription CRM id
-     * @param array<mixed>|SubscriptionPauseParams $params
+     * @param array<string,mixed>|SubscriptionPauseParams $params
      *
      * @return BaseResponse<string>
      *
@@ -46,7 +46,7 @@ interface SubscriptionsRawContract
      * @api
      *
      * @param int $objectID subscription CRM id
-     * @param array<mixed>|SubscriptionUnpauseParams $params
+     * @param array<string,mixed>|SubscriptionUnpauseParams $params
      *
      * @return BaseResponse<string>
      *

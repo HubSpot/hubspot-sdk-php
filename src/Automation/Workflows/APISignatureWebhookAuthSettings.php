@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type APISignatureWebhookAuthSettingsShape = array{
- *   appID: int, type: value-of<Type>
+ *   appID: int, type: Type|value-of<Type>
  * }
  */
 final class APISignatureWebhookAuthSettings implements BaseModel

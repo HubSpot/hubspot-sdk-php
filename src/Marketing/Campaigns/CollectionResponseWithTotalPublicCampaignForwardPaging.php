@@ -9,11 +9,15 @@ use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\ForwardPaging;
-use HubspotSDK\NextPage;
 
 /**
+ * @phpstan-import-type PublicCampaignShape from \HubspotSDK\Marketing\Campaigns\PublicCampaign
+ * @phpstan-import-type ForwardPagingShape from \HubspotSDK\ForwardPaging
+ *
  * @phpstan-type CollectionResponseWithTotalPublicCampaignForwardPagingShape = array{
- *   results: list<PublicCampaign>, total: int, paging?: ForwardPaging|null
+ *   results: list<PublicCampaignShape>,
+ *   total: int,
+ *   paging?: null|ForwardPaging|ForwardPagingShape,
  * }
  */
 final class CollectionResponseWithTotalPublicCampaignForwardPaging implements BaseModel
@@ -59,14 +63,8 @@ final class CollectionResponseWithTotalPublicCampaignForwardPaging implements Ba
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicCampaign|array{
-     *   id: string,
-     *   businessUnits: list<PublicBusinessUnit>,
-     *   createdAt: \DateTimeInterface,
-     *   properties: array<string,string>,
-     *   updatedAt: \DateTimeInterface,
-     * }> $results
-     * @param ForwardPaging|array{next?: NextPage|null} $paging
+     * @param list<PublicCampaignShape> $results
+     * @param ForwardPagingShape $paging
      */
     public static function with(
         array $results,
@@ -84,13 +82,7 @@ final class CollectionResponseWithTotalPublicCampaignForwardPaging implements Ba
     }
 
     /**
-     * @param list<PublicCampaign|array{
-     *   id: string,
-     *   businessUnits: list<PublicBusinessUnit>,
-     *   createdAt: \DateTimeInterface,
-     *   properties: array<string,string>,
-     *   updatedAt: \DateTimeInterface,
-     * }> $results
+     * @param list<PublicCampaignShape> $results
      */
     public function withResults(array $results): self
     {
@@ -109,7 +101,7 @@ final class CollectionResponseWithTotalPublicCampaignForwardPaging implements Ba
     }
 
     /**
-     * @param ForwardPaging|array{next?: NextPage|null} $paging
+     * @param ForwardPagingShape $paging
      */
     public function withPaging(ForwardPaging|array $paging): self
     {

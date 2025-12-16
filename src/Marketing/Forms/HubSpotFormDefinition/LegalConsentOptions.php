@@ -12,6 +12,14 @@ use HubspotSDK\Marketing\Forms\LegalConsentOptionsImplicitConsentToProcess;
 use HubspotSDK\Marketing\Forms\LegalConsentOptionsLegitimateInterest;
 use HubspotSDK\Marketing\Forms\LegalConsentOptionsNone;
 
+/**
+ * @phpstan-import-type LegalConsentOptionsNoneShape from \HubspotSDK\Marketing\Forms\LegalConsentOptionsNone
+ * @phpstan-import-type LegalConsentOptionsLegitimateInterestShape from \HubspotSDK\Marketing\Forms\LegalConsentOptionsLegitimateInterest
+ * @phpstan-import-type LegalConsentOptionsExplicitConsentToProcessShape from \HubspotSDK\Marketing\Forms\LegalConsentOptionsExplicitConsentToProcess
+ * @phpstan-import-type LegalConsentOptionsImplicitConsentToProcessShape from \HubspotSDK\Marketing\Forms\LegalConsentOptionsImplicitConsentToProcess
+ *
+ * @phpstan-type LegalConsentOptionsShape = LegalConsentOptionsNoneShape|LegalConsentOptionsLegitimateInterestShape|LegalConsentOptionsExplicitConsentToProcessShape|LegalConsentOptionsImplicitConsentToProcessShape
+ */
 final class LegalConsentOptions implements ConverterSource
 {
     use SdkUnion;

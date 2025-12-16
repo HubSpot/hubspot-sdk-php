@@ -13,13 +13,16 @@ use HubspotSDK\Property\DataSensitivity;
 /**
  * Defines a property.
  *
+ * @phpstan-import-type OptionShape from \HubspotSDK\Option
+ * @phpstan-import-type PropertyModificationMetadataShape from \HubspotSDK\PropertyModificationMetadata
+ *
  * @phpstan-type PropertyShape = array{
  *   description: string,
  *   fieldType: string,
  *   groupName: string,
  *   label: string,
  *   name: string,
- *   options: list<Option>,
+ *   options: list<OptionShape>,
  *   type: string,
  *   archived?: bool|null,
  *   archivedAt?: \DateTimeInterface|null,
@@ -27,14 +30,14 @@ use HubspotSDK\Property\DataSensitivity;
  *   calculationFormula?: string|null,
  *   createdAt?: \DateTimeInterface|null,
  *   createdUserID?: string|null,
- *   dataSensitivity?: value-of<DataSensitivity>|null,
+ *   dataSensitivity?: null|DataSensitivity|value-of<DataSensitivity>,
  *   displayOrder?: int|null,
  *   externalOptions?: bool|null,
  *   formField?: bool|null,
  *   hasUniqueValue?: bool|null,
  *   hidden?: bool|null,
  *   hubspotDefined?: bool|null,
- *   modificationMetadata?: PropertyModificationMetadata|null,
+ *   modificationMetadata?: null|PropertyModificationMetadata|PropertyModificationMetadataShape,
  *   referencedObjectType?: string|null,
  *   sensitiveDataCategories?: list<string>|null,
  *   showCurrencySymbol?: bool|null,
@@ -245,20 +248,9 @@ final class Property implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<Option|array{
-     *   hidden: bool,
-     *   label: string,
-     *   value: string,
-     *   description?: string|null,
-     *   displayOrder?: int|null,
-     * }> $options
+     * @param list<OptionShape> $options
      * @param DataSensitivity|value-of<DataSensitivity> $dataSensitivity
-     * @param PropertyModificationMetadata|array{
-     *   archivable: bool,
-     *   readOnlyDefinition: bool,
-     *   readOnlyValue: bool,
-     *   readOnlyOptions?: bool|null,
-     * } $modificationMetadata
+     * @param PropertyModificationMetadataShape $modificationMetadata
      * @param list<string> $sensitiveDataCategories
      */
     public static function with(
@@ -380,13 +372,7 @@ final class Property implements BaseModel
     /**
      * A list of valid options for the property. This field is required for enumerated properties, but will be empty for other property types.
      *
-     * @param list<Option|array{
-     *   hidden: bool,
-     *   label: string,
-     *   value: string,
-     *   description?: string|null,
-     *   displayOrder?: int|null,
-     * }> $options
+     * @param list<OptionShape> $options
      */
     public function withOptions(array $options): self
     {
@@ -554,12 +540,7 @@ final class Property implements BaseModel
     }
 
     /**
-     * @param PropertyModificationMetadata|array{
-     *   archivable: bool,
-     *   readOnlyDefinition: bool,
-     *   readOnlyValue: bool,
-     *   readOnlyOptions?: bool|null,
-     * } $modificationMetadata
+     * @param PropertyModificationMetadataShape $modificationMetadata
      */
     public function withModificationMetadata(
         PropertyModificationMetadata|array $modificationMetadata

@@ -13,12 +13,12 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Crm\Objects\PostalMailService::list()
  *
  * @phpstan-type PostalMailListParamsShape = array{
- *   after?: string,
- *   archived?: bool,
- *   associations?: list<string>,
- *   limit?: int,
- *   properties?: list<string>,
- *   propertiesWithHistory?: list<string>,
+ *   after?: string|null,
+ *   archived?: bool|null,
+ *   associations?: list<string>|null,
+ *   limit?: int|null,
+ *   properties?: list<string>|null,
+ *   propertiesWithHistory?: list<string>|null,
  * }
  */
 final class PostalMailListParams implements BaseModel

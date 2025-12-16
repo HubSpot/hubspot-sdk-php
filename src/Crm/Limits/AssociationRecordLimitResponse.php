@@ -9,10 +9,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type AtLimitRecordSampleShape from \HubspotSDK\Crm\Limits\AtLimitRecordSample
+ * @phpstan-import-type NearLimitRecordSampleShape from \HubspotSDK\Crm\Limits\NearLimitRecordSample
+ *
  * @phpstan-type AssociationRecordLimitResponseShape = array{
- *   atLimitFromRecordSamples: list<AtLimitRecordSample>,
+ *   atLimitFromRecordSamples: list<AtLimitRecordSampleShape>,
  *   limit: int,
- *   nearLimitFromRecordSamples: list<NearLimitRecordSample>,
+ *   nearLimitFromRecordSamples: list<NearLimitRecordSampleShape>,
  *   totalRecordsAtLimit: int,
  *   totalRecordsNearLimit: int,
  * }
@@ -83,12 +86,8 @@ final class AssociationRecordLimitResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<AtLimitRecordSample|array{
-     *   label: string, objectID: int
-     * }> $atLimitFromRecordSamples
-     * @param list<NearLimitRecordSample|array{
-     *   label: string, objectID: int, percentage: float, usage: int
-     * }> $nearLimitFromRecordSamples
+     * @param list<AtLimitRecordSampleShape> $atLimitFromRecordSamples
+     * @param list<NearLimitRecordSampleShape> $nearLimitFromRecordSamples
      */
     public static function with(
         array $atLimitFromRecordSamples,
@@ -109,9 +108,7 @@ final class AssociationRecordLimitResponse implements BaseModel
     }
 
     /**
-     * @param list<AtLimitRecordSample|array{
-     *   label: string, objectID: int
-     * }> $atLimitFromRecordSamples
+     * @param list<AtLimitRecordSampleShape> $atLimitFromRecordSamples
      */
     public function withAtLimitFromRecordSamples(
         array $atLimitFromRecordSamples
@@ -134,9 +131,7 @@ final class AssociationRecordLimitResponse implements BaseModel
     }
 
     /**
-     * @param list<NearLimitRecordSample|array{
-     *   label: string, objectID: int, percentage: float, usage: int
-     * }> $nearLimitFromRecordSamples
+     * @param list<NearLimitRecordSampleShape> $nearLimitFromRecordSamples
      */
     public function withNearLimitFromRecordSamples(
         array $nearLimitFromRecordSamples

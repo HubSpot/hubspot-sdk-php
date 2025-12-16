@@ -13,8 +13,8 @@ use HubspotSDK\Events\EventDefinitions\WeekReference\ReferenceType;
 
 /**
  * @phpstan-type WeekReferenceShape = array{
- *   dayOfWeek: value-of<DayOfWeek>,
- *   referenceType: value-of<ReferenceType>,
+ *   dayOfWeek: DayOfWeek|value-of<DayOfWeek>,
+ *   referenceType: ReferenceType|value-of<ReferenceType>,
  *   hour?: int|null,
  *   millisecond?: int|null,
  *   minute?: int|null,

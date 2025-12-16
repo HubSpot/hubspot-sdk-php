@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Services\Cms\Blogs\AuthorsService::delete()
  *
- * @phpstan-type AuthorDeleteParamsShape = array{archived?: bool}
+ * @phpstan-type AuthorDeleteParamsShape = array{archived?: bool|null}
  */
 final class AuthorDeleteParams implements BaseModel
 {

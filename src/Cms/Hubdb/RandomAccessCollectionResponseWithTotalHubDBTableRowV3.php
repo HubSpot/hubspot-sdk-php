@@ -11,11 +11,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type BoundedPagingShape from \HubspotSDK\Cms\Hubdb\BoundedPaging
+ *
  * @phpstan-type RandomAccessCollectionResponseWithTotalHubDBTableRowV3Shape = array{
  *   results: list<mixed>,
  *   total: int,
- *   type: value-of<Type>,
- *   paging?: BoundedPaging|null,
+ *   type: Type|value-of<Type>,
+ *   paging?: null|BoundedPaging|BoundedPagingShape,
  * }
  */
 final class RandomAccessCollectionResponseWithTotalHubDBTableRowV3 implements BaseModel
@@ -68,7 +70,7 @@ final class RandomAccessCollectionResponseWithTotalHubDBTableRowV3 implements Ba
      *
      * @param list<mixed> $results
      * @param Type|value-of<Type> $type
-     * @param BoundedPaging|array{next?: BoundedNextPage|null} $paging
+     * @param BoundedPagingShape $paging
      */
     public static function with(
         array $results,
@@ -118,7 +120,7 @@ final class RandomAccessCollectionResponseWithTotalHubDBTableRowV3 implements Ba
     }
 
     /**
-     * @param BoundedPaging|array{next?: BoundedNextPage|null} $paging
+     * @param BoundedPagingShape $paging
      */
     public function withPaging(BoundedPaging|array $paging): self
     {

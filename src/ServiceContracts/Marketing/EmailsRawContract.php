@@ -29,7 +29,7 @@ interface EmailsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|EmailCreateParams $params
+     * @param array<string,mixed>|EmailCreateParams $params
      *
      * @return BaseResponse<PublicEmail>
      *
@@ -44,7 +44,7 @@ interface EmailsRawContract
      * @api
      *
      * @param string $emailID Path param: The ID of the marketing email that should get updated
-     * @param array<mixed>|EmailUpdateParams $params
+     * @param array<string,mixed>|EmailUpdateParams $params
      *
      * @return BaseResponse<PublicEmail>
      *
@@ -59,7 +59,7 @@ interface EmailsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|EmailListParams $params
+     * @param array<string,mixed>|EmailListParams $params
      *
      * @return BaseResponse<Page<PublicEmail>>
      *
@@ -74,7 +74,7 @@ interface EmailsRawContract
      * @api
      *
      * @param string $emailID the ID of the marketing email to delete
-     * @param array<mixed>|EmailDeleteParams $params
+     * @param array<string,mixed>|EmailDeleteParams $params
      *
      * @return BaseResponse<mixed>
      *
@@ -89,7 +89,7 @@ interface EmailsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|EmailCloneParams $params
+     * @param array<string,mixed>|EmailCloneParams $params
      *
      * @return BaseResponse<PublicEmail>
      *
@@ -103,7 +103,7 @@ interface EmailsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|EmailCreateAbTestVariationParams $params
+     * @param array<string,mixed>|EmailCreateAbTestVariationParams $params
      *
      * @return BaseResponse<PublicEmail>
      *
@@ -118,7 +118,7 @@ interface EmailsRawContract
      * @api
      *
      * @param string $emailID the marketing email ID
-     * @param array<mixed>|EmailGetParams $params
+     * @param array<string,mixed>|EmailGetParams $params
      *
      * @return BaseResponse<PublicEmail>
      *
@@ -134,7 +134,7 @@ interface EmailsRawContract
      * @api
      *
      * @param string $emailID the ID of an A/B marketing email
-     * @param array<mixed>|EmailGetAbTestVariationParams $params
+     * @param array<string,mixed>|EmailGetAbTestVariationParams $params
      *
      * @return BaseResponse<PublicEmail>
      *
@@ -164,7 +164,7 @@ interface EmailsRawContract
      * @api
      *
      * @param string $revisionID the ID of a revision
-     * @param array<mixed>|EmailGetRevisionParams $params
+     * @param array<string,mixed>|EmailGetRevisionParams $params
      *
      * @return BaseResponse<VersionPublicEmail>
      *
@@ -180,7 +180,7 @@ interface EmailsRawContract
      * @api
      *
      * @param string $emailID the marketing email ID
-     * @param array<mixed>|EmailListRevisionsParams $params
+     * @param array<string,mixed>|EmailListRevisionsParams $params
      *
      * @return BaseResponse<Page<VersionPublicEmail>>
      *
@@ -224,7 +224,7 @@ interface EmailsRawContract
      * @api
      *
      * @param string $revisionID the ID of a revision
-     * @param array<mixed>|EmailRestoreRevisionParams $params
+     * @param array<string,mixed>|EmailRestoreRevisionParams $params
      *
      * @return BaseResponse<mixed>
      *
@@ -240,7 +240,7 @@ interface EmailsRawContract
      * @api
      *
      * @param int $revisionID the ID of a revision
-     * @param array<mixed>|EmailRestoreRevisionToDraftParams $params
+     * @param array<string,mixed>|EmailRestoreRevisionToDraftParams $params
      *
      * @return BaseResponse<PublicEmail>
      *
@@ -270,7 +270,7 @@ interface EmailsRawContract
      * @api
      *
      * @param string $emailID the marketing email ID
-     * @param array<mixed>|EmailUpdateDraftParams $params
+     * @param array<string,mixed>|EmailUpdateDraftParams $params
      *
      * @return BaseResponse<PublicEmail>
      *

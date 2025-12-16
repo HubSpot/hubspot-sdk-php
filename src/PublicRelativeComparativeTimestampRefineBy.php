@@ -10,8 +10,12 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicRelativeComparativeTimestampRefineBy\Type;
 
 /**
+ * @phpstan-import-type PublicTimeOffsetShape from \HubspotSDK\PublicTimeOffset
+ *
  * @phpstan-type PublicRelativeComparativeTimestampRefineByShape = array{
- *   comparison: string, timeOffset: PublicTimeOffset, type: value-of<Type>
+ *   comparison: string,
+ *   timeOffset: PublicTimeOffset|PublicTimeOffsetShape,
+ *   type: Type|value-of<Type>,
  * }
  */
 final class PublicRelativeComparativeTimestampRefineBy implements BaseModel
@@ -58,9 +62,7 @@ final class PublicRelativeComparativeTimestampRefineBy implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param PublicTimeOffset|array{
-     *   amount: int, offsetDirection: string, timeUnit: string
-     * } $timeOffset
+     * @param PublicTimeOffsetShape $timeOffset
      * @param Type|value-of<Type> $type
      */
     public static function with(
@@ -86,9 +88,7 @@ final class PublicRelativeComparativeTimestampRefineBy implements BaseModel
     }
 
     /**
-     * @param PublicTimeOffset|array{
-     *   amount: int, offsetDirection: string, timeUnit: string
-     * } $timeOffset
+     * @param PublicTimeOffsetShape $timeOffset
      */
     public function withTimeOffset(PublicTimeOffset|array $timeOffset): self
     {

@@ -55,7 +55,7 @@ interface LandingPagesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|LandingPageCreateParams $params
+     * @param array<string,mixed>|LandingPageCreateParams $params
      *
      * @return BaseResponse<mixed>
      *
@@ -70,7 +70,7 @@ interface LandingPagesRawContract
      * @api
      *
      * @param string $objectID path param: The Landing Page id
-     * @param array<mixed>|LandingPageUpdateParams $params
+     * @param array<string,mixed>|LandingPageUpdateParams $params
      *
      * @return BaseResponse<Page>
      *
@@ -85,7 +85,7 @@ interface LandingPagesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|LandingPageListParams $params
+     * @param array<string,mixed>|LandingPageListParams $params
      *
      * @return BaseResponse<\HubspotSDK\Page<Page>>
      *
@@ -100,7 +100,7 @@ interface LandingPagesRawContract
      * @api
      *
      * @param string $objectID the Landing Page id
-     * @param array<mixed>|LandingPageDeleteParams $params
+     * @param array<string,mixed>|LandingPageDeleteParams $params
      *
      * @return BaseResponse<mixed>
      *
@@ -115,7 +115,7 @@ interface LandingPagesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|LandingPageAttachToLangGroupParams $params
+     * @param array<string,mixed>|LandingPageAttachToLangGroupParams $params
      *
      * @return BaseResponse<mixed>
      *
@@ -129,7 +129,7 @@ interface LandingPagesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|LandingPageCloneParams $params
+     * @param array<string,mixed>|LandingPageCloneParams $params
      *
      * @return BaseResponse<Page>
      *
@@ -143,7 +143,7 @@ interface LandingPagesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|LandingPageCreateAbTestVariationParams $params
+     * @param array<string,mixed>|LandingPageCreateAbTestVariationParams $params
      *
      * @return BaseResponse<Page>
      *
@@ -157,7 +157,7 @@ interface LandingPagesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|LandingPageCreateBatchParams $params
+     * @param array<string,mixed>|LandingPageCreateBatchParams $params
      *
      * @return BaseResponse<BatchResponsePage>
      *
@@ -171,7 +171,7 @@ interface LandingPagesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|LandingPageCreateFolderParams $params
+     * @param array<string,mixed>|LandingPageCreateFolderParams $params
      *
      * @return BaseResponse<ContentFolder>
      *
@@ -185,7 +185,7 @@ interface LandingPagesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|LandingPageCreateFoldersBatchParams $params
+     * @param array<string,mixed>|LandingPageCreateFoldersBatchParams $params
      *
      * @return BaseResponse<BatchResponseContentFolder>
      *
@@ -199,7 +199,7 @@ interface LandingPagesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|LandingPageCreateLanguageVariationParams $params
+     * @param array<string,mixed>|LandingPageCreateLanguageVariationParams $params
      *
      * @return BaseResponse<Page>
      *
@@ -213,7 +213,7 @@ interface LandingPagesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|LandingPageDeleteBatchParams $params
+     * @param array<string,mixed>|LandingPageDeleteBatchParams $params
      *
      * @return BaseResponse<mixed>
      *
@@ -228,7 +228,7 @@ interface LandingPagesRawContract
      * @api
      *
      * @param string $objectID the Folder id
-     * @param array<mixed>|LandingPageDeleteFolderParams $params
+     * @param array<string,mixed>|LandingPageDeleteFolderParams $params
      *
      * @return BaseResponse<mixed>
      *
@@ -243,7 +243,7 @@ interface LandingPagesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|LandingPageDeleteFoldersBatchParams $params
+     * @param array<string,mixed>|LandingPageDeleteFoldersBatchParams $params
      *
      * @return BaseResponse<mixed>
      *
@@ -257,7 +257,7 @@ interface LandingPagesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|LandingPageDetachFromLangGroupParams $params
+     * @param array<string,mixed>|LandingPageDetachFromLangGroupParams $params
      *
      * @return BaseResponse<mixed>
      *
@@ -271,7 +271,7 @@ interface LandingPagesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|LandingPageEndAbTestParams $params
+     * @param array<string,mixed>|LandingPageEndAbTestParams $params
      *
      * @return BaseResponse<mixed>
      *
@@ -286,7 +286,7 @@ interface LandingPagesRawContract
      * @api
      *
      * @param string $objectID the Landing Page id
-     * @param array<mixed>|LandingPageGetParams $params
+     * @param array<string,mixed>|LandingPageGetParams $params
      *
      * @return BaseResponse<Page>
      *
@@ -301,7 +301,7 @@ interface LandingPagesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|LandingPageGetBatchParams $params
+     * @param array<string,mixed>|LandingPageGetBatchParams $params
      *
      * @return BaseResponse<BatchResponsePage>
      *
@@ -330,7 +330,7 @@ interface LandingPagesRawContract
      * @api
      *
      * @param string $objectID the Folder id
-     * @param array<mixed>|LandingPageGetFolderParams $params
+     * @param array<string,mixed>|LandingPageGetFolderParams $params
      *
      * @return BaseResponse<ContentFolder>
      *
@@ -346,7 +346,7 @@ interface LandingPagesRawContract
      * @api
      *
      * @param string $revisionID the Folder version id
-     * @param array<mixed>|LandingPageGetFolderRevisionParams $params
+     * @param array<string,mixed>|LandingPageGetFolderRevisionParams $params
      *
      * @return BaseResponse<VersionContentFolder>
      *
@@ -361,7 +361,7 @@ interface LandingPagesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|LandingPageGetFoldersBatchParams $params
+     * @param array<string,mixed>|LandingPageGetFoldersBatchParams $params
      *
      * @return BaseResponse<BatchResponseContentFolder>
      *
@@ -376,7 +376,7 @@ interface LandingPagesRawContract
      * @api
      *
      * @param string $revisionID the Landing Page version id
-     * @param array<mixed>|LandingPageGetRevisionParams $params
+     * @param array<string,mixed>|LandingPageGetRevisionParams $params
      *
      * @return BaseResponse<VersionPage>
      *
@@ -392,7 +392,7 @@ interface LandingPagesRawContract
      * @api
      *
      * @param string $objectID the Folder id
-     * @param array<mixed>|LandingPageListFolderRevisionsParams $params
+     * @param array<string,mixed>|LandingPageListFolderRevisionsParams $params
      *
      * @return BaseResponse<\HubspotSDK\Page<VersionContentFolder>>
      *
@@ -407,7 +407,7 @@ interface LandingPagesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|LandingPageListFoldersParams $params
+     * @param array<string,mixed>|LandingPageListFoldersParams $params
      *
      * @return BaseResponse<\HubspotSDK\Page<ContentFolder>>
      *
@@ -422,7 +422,7 @@ interface LandingPagesRawContract
      * @api
      *
      * @param string $objectID the Landing Page id
-     * @param array<mixed>|LandingPageListRevisionsParams $params
+     * @param array<string,mixed>|LandingPageListRevisionsParams $params
      *
      * @return BaseResponse<\HubspotSDK\Page<VersionPage>>
      *
@@ -451,7 +451,7 @@ interface LandingPagesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|LandingPageRerunAbTestParams $params
+     * @param array<string,mixed>|LandingPageRerunAbTestParams $params
      *
      * @return BaseResponse<mixed>
      *
@@ -480,7 +480,7 @@ interface LandingPagesRawContract
      * @api
      *
      * @param string $revisionID the Folder version id to restore
-     * @param array<mixed>|LandingPageRestoreFolderRevisionParams $params
+     * @param array<string,mixed>|LandingPageRestoreFolderRevisionParams $params
      *
      * @return BaseResponse<ContentFolder>
      *
@@ -496,7 +496,7 @@ interface LandingPagesRawContract
      * @api
      *
      * @param string $revisionID the Landing Page version id to restore
-     * @param array<mixed>|LandingPageRestoreRevisionParams $params
+     * @param array<string,mixed>|LandingPageRestoreRevisionParams $params
      *
      * @return BaseResponse<Page>
      *
@@ -512,7 +512,7 @@ interface LandingPagesRawContract
      * @api
      *
      * @param int $revisionID the Landing Page version id to restore
-     * @param array<mixed>|LandingPageRestoreRevisionToDraftParams $params
+     * @param array<string,mixed>|LandingPageRestoreRevisionToDraftParams $params
      *
      * @return BaseResponse<Page>
      *
@@ -527,7 +527,7 @@ interface LandingPagesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|LandingPageScheduleParams $params
+     * @param array<string,mixed>|LandingPageScheduleParams $params
      *
      * @return BaseResponse<mixed>
      *
@@ -541,7 +541,7 @@ interface LandingPagesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|LandingPageSetNewLangPrimaryParams $params
+     * @param array<string,mixed>|LandingPageSetNewLangPrimaryParams $params
      *
      * @return BaseResponse<mixed>
      *
@@ -555,7 +555,7 @@ interface LandingPagesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|LandingPageUpdateBatchParams $params
+     * @param array<string,mixed>|LandingPageUpdateBatchParams $params
      *
      * @return BaseResponse<BatchResponsePage>
      *
@@ -570,7 +570,7 @@ interface LandingPagesRawContract
      * @api
      *
      * @param string $objectID the Landing Page id
-     * @param array<mixed>|LandingPageUpdateDraftParams $params
+     * @param array<string,mixed>|LandingPageUpdateDraftParams $params
      *
      * @return BaseResponse<Page>
      *
@@ -586,7 +586,7 @@ interface LandingPagesRawContract
      * @api
      *
      * @param string $objectID path param: The Folder id
-     * @param array<mixed>|LandingPageUpdateFolderParams $params
+     * @param array<string,mixed>|LandingPageUpdateFolderParams $params
      *
      * @return BaseResponse<ContentFolder>
      *
@@ -601,7 +601,7 @@ interface LandingPagesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|LandingPageUpdateFoldersBatchParams $params
+     * @param array<string,mixed>|LandingPageUpdateFoldersBatchParams $params
      *
      * @return BaseResponse<BatchResponseContentFolder>
      *
@@ -615,7 +615,7 @@ interface LandingPagesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|LandingPageUpdateLanguagesParams $params
+     * @param array<string,mixed>|LandingPageUpdateLanguagesParams $params
      *
      * @return BaseResponse<mixed>
      *

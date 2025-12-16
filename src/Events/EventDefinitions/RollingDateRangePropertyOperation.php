@@ -16,9 +16,9 @@ use HubspotSDK\Events\EventDefinitions\RollingDateRangePropertyOperation\Propert
  *   includeObjectsWithNoValueSet: bool,
  *   numberOfDays: int,
  *   operationType: string,
- *   operator: value-of<Operator>,
+ *   operator: Operator|value-of<Operator>,
  *   operatorName: string,
- *   propertyType: value-of<PropertyType>,
+ *   propertyType: PropertyType|value-of<PropertyType>,
  *   requiresTimeZoneConversion: bool,
  *   defaultValue?: string|null,
  * }

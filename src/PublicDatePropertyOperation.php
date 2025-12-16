@@ -14,7 +14,7 @@ use HubspotSDK\PublicDatePropertyOperation\OperationType;
  *   day: int,
  *   includeObjectsWithNoValueSet: bool,
  *   month: string,
- *   operationType: value-of<OperationType>,
+ *   operationType: OperationType|value-of<OperationType>,
  *   operator: string,
  *   year: int,
  * }

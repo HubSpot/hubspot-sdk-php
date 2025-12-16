@@ -21,7 +21,7 @@ interface ParticipationsRawContract
      * @api
      *
      * @param string $externalEventID the id of the marketing event in the external event application
-     * @param array<mixed>|ParticipationGetByExternalAccountAndEventIDParams $params
+     * @param array<string,mixed>|ParticipationGetByExternalAccountAndEventIDParams $params
      *
      * @return BaseResponse<AttendanceCounters>
      *
@@ -51,7 +51,7 @@ interface ParticipationsRawContract
      * @api
      *
      * @param string $contactIdentifier The identifier of the Contact. It may be email or internal id.
-     * @param array<mixed>|ParticipationListBreakdownByContactParams $params
+     * @param array<string,mixed>|ParticipationListBreakdownByContactParams $params
      *
      * @return BaseResponse<Page<ParticipationBreakdown>>
      *
@@ -67,7 +67,7 @@ interface ParticipationsRawContract
      * @api
      *
      * @param string $externalEventID path param: The id of the marketing event in the external event application
-     * @param array<mixed>|ParticipationListBreakdownByExternalAccountAndEventIDParams $params
+     * @param array<string,mixed>|ParticipationListBreakdownByExternalAccountAndEventIDParams $params
      *
      * @return BaseResponse<Page<ParticipationBreakdown>>
      *
@@ -83,7 +83,7 @@ interface ParticipationsRawContract
      * @api
      *
      * @param int $marketingEventID the internal id of the marketing event in HubSpot
-     * @param array<mixed>|ParticipationListBreakdownByIDParams $params
+     * @param array<string,mixed>|ParticipationListBreakdownByIDParams $params
      *
      * @return BaseResponse<Page<ParticipationBreakdown>>
      *

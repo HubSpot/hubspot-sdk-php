@@ -13,11 +13,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Conversations\MessagesService::list()
  *
  * @phpstan-type MessageListParamsShape = array{
- *   after?: string,
- *   archived?: bool,
- *   limit?: int,
- *   property?: string,
- *   sort?: list<string>,
+ *   after?: string|null,
+ *   archived?: bool|null,
+ *   limit?: int|null,
+ *   property?: string|null,
+ *   sort?: list<string>|null,
  * }
  */
 final class MessageListParams implements BaseModel

@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Services\Crm\Lists\FoldersService::rename()
  *
- * @phpstan-type FolderRenameParamsShape = array{newFolderName?: string}
+ * @phpstan-type FolderRenameParamsShape = array{newFolderName?: string|null}
  */
 final class FolderRenameParams implements BaseModel
 {

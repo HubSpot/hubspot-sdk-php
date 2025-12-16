@@ -4,21 +4,17 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Conversations\CustomChannels;
 
-use HubspotSDK\Conversations\ContactAddress;
-use HubspotSDK\Conversations\ContactEmail;
-use HubspotSDK\Conversations\ContactName;
-use HubspotSDK\Conversations\ContactOrg;
-use HubspotSDK\Conversations\ContactPhone;
 use HubspotSDK\Conversations\ContactProfile;
-use HubspotSDK\Conversations\ContactURL;
 use HubspotSDK\Conversations\CustomChannels\ContactAttachment\Type;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type ContactProfileShape from \HubspotSDK\Conversations\ContactProfile
+ *
  * @phpstan-type ContactAttachmentShape = array{
- *   contactProfile: ContactProfile, type: value-of<Type>
+ *   contactProfile: ContactProfile|ContactProfileShape, type: Type|value-of<Type>
  * }
  */
 final class ContactAttachment implements BaseModel
@@ -57,14 +53,7 @@ final class ContactAttachment implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param ContactProfile|array{
-     *   addresses: list<ContactAddress>,
-     *   emails: list<ContactEmail>,
-     *   phones: list<ContactPhone>,
-     *   urls: list<ContactURL>,
-     *   name?: ContactName|null,
-     *   org?: ContactOrg|null,
-     * } $contactProfile
+     * @param ContactProfileShape $contactProfile
      * @param Type|value-of<Type> $type
      */
     public static function with(
@@ -80,14 +69,7 @@ final class ContactAttachment implements BaseModel
     }
 
     /**
-     * @param ContactProfile|array{
-     *   addresses: list<ContactAddress>,
-     *   emails: list<ContactEmail>,
-     *   phones: list<ContactPhone>,
-     *   urls: list<ContactURL>,
-     *   name?: ContactName|null,
-     *   org?: ContactOrg|null,
-     * } $contactProfile
+     * @param ContactProfileShape $contactProfile
      */
     public function withContactProfile(
         ContactProfile|array $contactProfile

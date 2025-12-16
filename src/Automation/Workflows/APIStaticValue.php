@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type APIStaticValueShape = array{
- *   staticValue: string, type: value-of<Type>
+ *   staticValue: string, type: Type|value-of<Type>
  * }
  */
 final class APIStaticValue implements BaseModel

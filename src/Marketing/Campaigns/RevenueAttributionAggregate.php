@@ -12,7 +12,7 @@ use HubspotSDK\Marketing\Campaigns\RevenueAttributionAggregate\CurrencyCode;
 /**
  * @phpstan-type RevenueAttributionAggregateShape = array{
  *   contactsNumber?: int|null,
- *   currencyCode?: value-of<CurrencyCode>|null,
+ *   currencyCode?: null|CurrencyCode|value-of<CurrencyCode>,
  *   dealAmount?: float|null,
  *   dealsNumber?: int|null,
  *   revenueAmount?: float|null,

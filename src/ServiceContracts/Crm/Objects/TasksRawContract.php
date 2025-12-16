@@ -23,7 +23,7 @@ interface TasksRawContract
     /**
      * @api
      *
-     * @param array<mixed>|TaskCreateParams $params
+     * @param array<string,mixed>|TaskCreateParams $params
      *
      * @return BaseResponse<CreatedResponseSimplePublicObject>
      *
@@ -38,7 +38,7 @@ interface TasksRawContract
      * @api
      *
      * @param string $taskID Path param:
-     * @param array<mixed>|TaskUpdateParams $params
+     * @param array<string,mixed>|TaskUpdateParams $params
      *
      * @return BaseResponse<SimplePublicObject>
      *
@@ -53,7 +53,7 @@ interface TasksRawContract
     /**
      * @api
      *
-     * @param array<mixed>|TaskListParams $params
+     * @param array<string,mixed>|TaskListParams $params
      *
      * @return BaseResponse<Page<SimplePublicObjectWithAssociations>>
      *
@@ -79,7 +79,7 @@ interface TasksRawContract
     /**
      * @api
      *
-     * @param array<mixed>|TaskGetParams $params
+     * @param array<string,mixed>|TaskGetParams $params
      *
      * @return BaseResponse<SimplePublicObjectWithAssociations>
      *
@@ -94,7 +94,7 @@ interface TasksRawContract
     /**
      * @api
      *
-     * @param array<mixed>|TaskSearchParams $params
+     * @param array<string,mixed>|TaskSearchParams $params
      *
      * @return BaseResponse<CollectionResponseWithTotalSimplePublicObject>
      *

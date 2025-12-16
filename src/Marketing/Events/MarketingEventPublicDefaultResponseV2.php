@@ -10,13 +10,16 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type CrmPropertyWrapperShape from \HubspotSDK\Marketing\Events\CrmPropertyWrapper
+ * @phpstan-import-type AppInfoShape from \HubspotSDK\Marketing\Events\AppInfo
+ *
  * @phpstan-type MarketingEventPublicDefaultResponseV2Shape = array{
  *   createdAt: \DateTimeInterface,
- *   customProperties: list<CrmPropertyWrapper>,
+ *   customProperties: list<CrmPropertyWrapperShape>,
  *   eventName: string,
  *   objectID: string,
  *   updatedAt: \DateTimeInterface,
- *   appInfo?: AppInfo|null,
+ *   appInfo?: null|AppInfo|AppInfoShape,
  *   endDateTime?: \DateTimeInterface|null,
  *   eventCancelled?: bool|null,
  *   eventCompleted?: bool|null,
@@ -110,10 +113,8 @@ final class MarketingEventPublicDefaultResponseV2 implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<CrmPropertyWrapper|array{
-     *   name: string, value: string
-     * }> $customProperties
-     * @param AppInfo|array{id: string, name: string} $appInfo
+     * @param list<CrmPropertyWrapperShape> $customProperties
+     * @param AppInfoShape $appInfo
      */
     public static function with(
         \DateTimeInterface $createdAt,
@@ -161,9 +162,7 @@ final class MarketingEventPublicDefaultResponseV2 implements BaseModel
     }
 
     /**
-     * @param list<CrmPropertyWrapper|array{
-     *   name: string, value: string
-     * }> $customProperties
+     * @param list<CrmPropertyWrapperShape> $customProperties
      */
     public function withCustomProperties(array $customProperties): self
     {
@@ -198,7 +197,7 @@ final class MarketingEventPublicDefaultResponseV2 implements BaseModel
     }
 
     /**
-     * @param AppInfo|array{id: string, name: string} $appInfo
+     * @param AppInfoShape $appInfo
      */
     public function withAppInfo(AppInfo|array $appInfo): self
     {

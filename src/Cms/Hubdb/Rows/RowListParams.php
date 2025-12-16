@@ -16,12 +16,12 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Cms\Hubdb\RowsService::list()
  *
  * @phpstan-type RowListParamsShape = array{
- *   after?: string,
- *   archived?: bool,
- *   limit?: int,
- *   offset?: int,
- *   properties?: list<string>,
- *   sort?: list<string>,
+ *   after?: string|null,
+ *   archived?: bool|null,
+ *   limit?: int|null,
+ *   offset?: int|null,
+ *   properties?: list<string>|null,
+ *   sort?: list<string>|null,
  * }
  */
 final class RowListParams implements BaseModel

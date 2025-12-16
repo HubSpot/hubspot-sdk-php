@@ -32,7 +32,7 @@ interface IntegratorSettingsRawContract
      * @api
      *
      * @param int $appID The appId for the media bridge app. It is possible to have multiple apps in your developer account that use the media bridge.
-     * @param array<mixed>|IntegratorSettingCreateObjectDefinitionParams $params
+     * @param array<string,mixed>|IntegratorSettingCreateObjectDefinitionParams $params
      *
      * @return BaseResponse<BulkIntegratorObjectCreationResponse>
      *
@@ -48,7 +48,7 @@ interface IntegratorSettingsRawContract
      * @api
      *
      * @param int $appID The appId for the media bridge app. It is possible to have multiple apps in your developer account that use the media bridge.
-     * @param array<mixed>|IntegratorSettingCreateOembedDomainParams $params
+     * @param array<string,mixed>|IntegratorSettingCreateOembedDomainParams $params
      *
      * @return BaseResponse<IntegratorOEmbedDomainModel>
      *
@@ -64,7 +64,7 @@ interface IntegratorSettingsRawContract
      * @api
      *
      * @param int $appID The appId for the media bridge app. It is possible to have multiple apps in your developer account that use the media bridge.
-     * @param array<mixed>|IntegratorSettingDeleteOembedDomainParams $params
+     * @param array<string,mixed>|IntegratorSettingDeleteOembedDomainParams $params
      *
      * @return BaseResponse<mixed>
      *
@@ -94,7 +94,7 @@ interface IntegratorSettingsRawContract
      * @api
      *
      * @param MediaType|value-of<MediaType> $mediaType path param: The type of media that you want to get the object types for
-     * @param array<mixed>|IntegratorSettingGetObjectDefinitionsByMediaTypeParams $params
+     * @param array<string,mixed>|IntegratorSettingGetObjectDefinitionsByMediaTypeParams $params
      *
      * @return BaseResponse<ObjectDefinitionResponse>
      *
@@ -110,7 +110,7 @@ interface IntegratorSettingsRawContract
      * @api
      *
      * @param string $oEmbedDomainID the ID for the oEmbed domain
-     * @param array<mixed>|IntegratorSettingGetOembedDomainParams $params
+     * @param array<string,mixed>|IntegratorSettingGetOembedDomainParams $params
      *
      * @return BaseResponse<IntegratorOEmbedDomainModel>
      *
@@ -126,7 +126,7 @@ interface IntegratorSettingsRawContract
      * @api
      *
      * @param int $appID The appId for the media bridge app. It is possible to have multiple apps in your developer account that use the media bridge.
-     * @param array<mixed>|IntegratorSettingListOembedDomainsParams $params
+     * @param array<string,mixed>|IntegratorSettingListOembedDomainsParams $params
      *
      * @return BaseResponse<OEmbedDomainsCollectionResponse>
      *
@@ -144,7 +144,7 @@ interface IntegratorSettingsRawContract
      * @api
      *
      * @param int $appID The appId for the media bridge app. It is possible to have multiple apps in your developer account that use the media bridge.
-     * @param array<mixed>|IntegratorSettingRegisterAppNameParams $params
+     * @param array<string,mixed>|IntegratorSettingRegisterAppNameParams $params
      *
      * @return BaseResponse<MediaBridgeProviderRegistrationResponse>
      *
@@ -160,7 +160,7 @@ interface IntegratorSettingsRawContract
      * @api
      *
      * @param int $appID The appId for the media bridge app. It is possible to have multiple apps in your developer account that use the media bridge.
-     * @param array<mixed>|IntegratorSettingUpdateAppNameParams $params
+     * @param array<string,mixed>|IntegratorSettingUpdateAppNameParams $params
      *
      * @return BaseResponse<MediaBridgeProviderRegistrationResponse>
      *
@@ -176,7 +176,7 @@ interface IntegratorSettingsRawContract
      * @api
      *
      * @param int $appID The appId for the media bridge app. It is possible to have multiple apps in your developer account that use the media bridge.
-     * @param array<mixed>|IntegratorSettingUpdateEventVisibilitySettingsParams $params
+     * @param array<string,mixed>|IntegratorSettingUpdateEventVisibilitySettingsParams $params
      *
      * @return BaseResponse<EventVisibilityChange>
      *
@@ -192,7 +192,7 @@ interface IntegratorSettingsRawContract
      * @api
      *
      * @param string $oEmbedDomainID path param: The ID of the domain to update
-     * @param array<mixed>|IntegratorSettingUpdateOembedDomainParams $params
+     * @param array<string,mixed>|IntegratorSettingUpdateOembedDomainParams $params
      *
      * @return BaseResponse<IntegratorOEmbedDomainModel>
      *

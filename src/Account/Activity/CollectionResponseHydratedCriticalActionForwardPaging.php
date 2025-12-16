@@ -9,11 +9,14 @@ use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\ForwardPaging;
-use HubspotSDK\NextPage;
 
 /**
+ * @phpstan-import-type HydratedCriticalActionShape from \HubspotSDK\Account\Activity\HydratedCriticalAction
+ * @phpstan-import-type ForwardPagingShape from \HubspotSDK\ForwardPaging
+ *
  * @phpstan-type CollectionResponseHydratedCriticalActionForwardPagingShape = array{
- *   results: list<HydratedCriticalAction>, paging?: ForwardPaging|null
+ *   results: list<HydratedCriticalActionShape>,
+ *   paging?: null|ForwardPaging|ForwardPagingShape,
  * }
  */
 final class CollectionResponseHydratedCriticalActionForwardPaging implements BaseModel
@@ -52,20 +55,8 @@ final class CollectionResponseHydratedCriticalActionForwardPaging implements Bas
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<HydratedCriticalAction|array{
-     *   id: string,
-     *   createdAt: \DateTimeInterface,
-     *   type: string,
-     *   userID: int,
-     *   actingUser?: string|null,
-     *   countryCode?: string|null,
-     *   infoURL?: string|null,
-     *   ipAddress?: string|null,
-     *   location?: string|null,
-     *   objectID?: string|null,
-     *   regionCode?: string|null,
-     * }> $results
-     * @param ForwardPaging|array{next?: NextPage|null} $paging
+     * @param list<HydratedCriticalActionShape> $results
+     * @param ForwardPagingShape $paging
      */
     public static function with(
         array $results,
@@ -81,19 +72,7 @@ final class CollectionResponseHydratedCriticalActionForwardPaging implements Bas
     }
 
     /**
-     * @param list<HydratedCriticalAction|array{
-     *   id: string,
-     *   createdAt: \DateTimeInterface,
-     *   type: string,
-     *   userID: int,
-     *   actingUser?: string|null,
-     *   countryCode?: string|null,
-     *   infoURL?: string|null,
-     *   ipAddress?: string|null,
-     *   location?: string|null,
-     *   objectID?: string|null,
-     *   regionCode?: string|null,
-     * }> $results
+     * @param list<HydratedCriticalActionShape> $results
      */
     public function withResults(array $results): self
     {
@@ -104,7 +83,7 @@ final class CollectionResponseHydratedCriticalActionForwardPaging implements Bas
     }
 
     /**
-     * @param ForwardPaging|array{next?: NextPage|null} $paging
+     * @param ForwardPagingShape $paging
      */
     public function withPaging(ForwardPaging|array $paging): self
     {

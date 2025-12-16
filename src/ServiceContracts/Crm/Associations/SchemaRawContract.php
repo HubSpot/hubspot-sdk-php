@@ -15,7 +15,7 @@ interface SchemaRawContract
     /**
      * @api
      *
-     * @param array<mixed>|SchemaListParams $params
+     * @param array<string,mixed>|SchemaListParams $params
      *
      * @return BaseResponse<CollectionResponsePublicAssociationDefinitionNoPaging>
      *

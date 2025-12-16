@@ -36,10 +36,12 @@ final class MessagesRawService implements MessagesRawContract
      *   channelAccountID: string,
      *   messageDirection: 'INCOMING'|'OUTGOING'|MessageDirection,
      *   recipients: list<array{
-     *     deliveryIdentifier: array<mixed>|PublicDeliveryIdentifier, name?: string
+     *     deliveryIdentifier: array<string,mixed>|PublicDeliveryIdentifier,
+     *     name?: string,
      *   }>,
      *   senders: list<array{
-     *     deliveryIdentifier: array<mixed>|PublicDeliveryIdentifier, name?: string
+     *     deliveryIdentifier: array<string,mixed>|PublicDeliveryIdentifier,
+     *     name?: string,
      *   }>,
      *   text: string,
      *   timestamp: string|\DateTimeInterface,

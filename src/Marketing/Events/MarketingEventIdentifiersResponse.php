@@ -10,11 +10,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type AppInfoShape from \HubspotSDK\Marketing\Events\AppInfo
+ *
  * @phpstan-type MarketingEventIdentifiersResponseShape = array{
  *   externalEventID: string,
  *   marketingEventName: string,
  *   objectID: string,
- *   appInfo?: AppInfo|null,
+ *   appInfo?: null|AppInfo|AppInfoShape,
  *   externalAccountID?: string|null,
  * }
  */
@@ -67,7 +69,7 @@ final class MarketingEventIdentifiersResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param AppInfo|array{id: string, name: string} $appInfo
+     * @param AppInfoShape $appInfo
      */
     public static function with(
         string $externalEventID,
@@ -113,7 +115,7 @@ final class MarketingEventIdentifiersResponse implements BaseModel
     }
 
     /**
-     * @param AppInfo|array{id: string, name: string} $appInfo
+     * @param AppInfoShape $appInfo
      */
     public function withAppInfo(AppInfo|array $appInfo): self
     {

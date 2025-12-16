@@ -4,28 +4,33 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Automation\Actions;
 
-use HubspotSDK\Automation\Actions\InputFieldDefinition\SupportedValueType;
 use HubspotSDK\Automation\Actions\PublicActionDefinitionEgg\InputFieldDependency;
-use HubspotSDK\Automation\Actions\PublicActionFunction\FunctionType;
-use HubspotSDK\Automation\Actions\PublicSingleFieldDependency\DependencyType;
 use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type PublicActionFunctionShape from \HubspotSDK\Automation\Actions\PublicActionFunction
+ * @phpstan-import-type InputFieldDefinitionShape from \HubspotSDK\Automation\Actions\InputFieldDefinition
+ * @phpstan-import-type PublicActionLabelsShape from \HubspotSDK\Automation\Actions\PublicActionLabels
+ * @phpstan-import-type PublicExecutionTranslationRuleShape from \HubspotSDK\Automation\Actions\PublicExecutionTranslationRule
+ * @phpstan-import-type InputFieldDependencyShape from \HubspotSDK\Automation\Actions\PublicActionDefinitionEgg\InputFieldDependency
+ * @phpstan-import-type PublicObjectRequestOptionsShape from \HubspotSDK\Automation\Actions\PublicObjectRequestOptions
+ * @phpstan-import-type OutputFieldDefinitionShape from \HubspotSDK\Automation\Actions\OutputFieldDefinition
+ *
  * @phpstan-type PublicActionDefinitionEggShape = array{
  *   actionURL: string,
- *   functions: list<PublicActionFunction>,
- *   inputFields: list<InputFieldDefinition>,
- *   labels: array<string,PublicActionLabels>,
+ *   functions: list<PublicActionFunctionShape>,
+ *   inputFields: list<InputFieldDefinitionShape>,
+ *   labels: array<string,PublicActionLabelsShape>,
  *   objectTypes: list<string>,
  *   published: bool,
  *   archivedAt?: int|null,
- *   executionRules?: list<PublicExecutionTranslationRule>|null,
- *   inputFieldDependencies?: list<PublicSingleFieldDependency|PublicConditionalSingleFieldDependency>|null,
- *   objectRequestOptions?: PublicObjectRequestOptions|null,
- *   outputFields?: list<OutputFieldDefinition>|null,
+ *   executionRules?: list<PublicExecutionTranslationRuleShape>|null,
+ *   inputFieldDependencies?: list<InputFieldDependencyShape>|null,
+ *   objectRequestOptions?: null|PublicObjectRequestOptions|PublicObjectRequestOptionsShape,
+ *   outputFields?: list<OutputFieldDefinitionShape>|null,
  * }
  */
 final class PublicActionDefinitionEgg implements BaseModel
@@ -112,46 +117,14 @@ final class PublicActionDefinitionEgg implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicActionFunction|array{
-     *   functionSource: string, functionType: value-of<FunctionType>, id?: string|null
-     * }> $functions
-     * @param list<InputFieldDefinition|array{
-     *   isRequired: bool,
-     *   typeDefinition: FieldTypeDefinition,
-     *   automationFieldType?: string|null,
-     *   supportedValueTypes?: list<value-of<SupportedValueType>>|null,
-     * }> $inputFields
-     * @param array<string,PublicActionLabels|array{
-     *   actionName: string,
-     *   actionCardContent?: string|null,
-     *   actionDescription?: string|null,
-     *   appDisplayName?: string|null,
-     *   executionRules?: array<string,string>|null,
-     *   inputFieldDescriptions?: array<string,string>|null,
-     *   inputFieldLabels?: array<string,string>|null,
-     *   inputFieldOptionLabels?: array<string,array<string,string>>|null,
-     *   outputFieldLabels?: array<string,string>|null,
-     * }> $labels
+     * @param list<PublicActionFunctionShape> $functions
+     * @param list<InputFieldDefinitionShape> $inputFields
+     * @param array<string,PublicActionLabelsShape> $labels
      * @param list<string> $objectTypes
-     * @param list<PublicExecutionTranslationRule|array{
-     *   conditions: array<string,mixed>, labelName: string
-     * }> $executionRules
-     * @param list<PublicSingleFieldDependency|array{
-     *   controllingFieldName: string,
-     *   dependencyType: value-of<DependencyType>,
-     *   dependentFieldNames: list<string>,
-     * }|PublicConditionalSingleFieldDependency|array{
-     *   controllingFieldName: string,
-     *   controllingFieldValue: string,
-     *   dependencyType: value-of<PublicConditionalSingleFieldDependency\DependencyType>,
-     *   dependentFieldNames: list<string>,
-     * }> $inputFieldDependencies
-     * @param PublicObjectRequestOptions|array{
-     *   properties: list<string>
-     * } $objectRequestOptions
-     * @param list<OutputFieldDefinition|array{
-     *   typeDefinition: FieldTypeDefinition
-     * }> $outputFields
+     * @param list<PublicExecutionTranslationRuleShape> $executionRules
+     * @param list<InputFieldDependencyShape> $inputFieldDependencies
+     * @param PublicObjectRequestOptionsShape $objectRequestOptions
+     * @param list<OutputFieldDefinitionShape> $outputFields
      */
     public static function with(
         string $actionURL,
@@ -193,9 +166,7 @@ final class PublicActionDefinitionEgg implements BaseModel
     }
 
     /**
-     * @param list<PublicActionFunction|array{
-     *   functionSource: string, functionType: value-of<FunctionType>, id?: string|null
-     * }> $functions
+     * @param list<PublicActionFunctionShape> $functions
      */
     public function withFunctions(array $functions): self
     {
@@ -206,12 +177,7 @@ final class PublicActionDefinitionEgg implements BaseModel
     }
 
     /**
-     * @param list<InputFieldDefinition|array{
-     *   isRequired: bool,
-     *   typeDefinition: FieldTypeDefinition,
-     *   automationFieldType?: string|null,
-     *   supportedValueTypes?: list<value-of<SupportedValueType>>|null,
-     * }> $inputFields
+     * @param list<InputFieldDefinitionShape> $inputFields
      */
     public function withInputFields(array $inputFields): self
     {
@@ -222,17 +188,7 @@ final class PublicActionDefinitionEgg implements BaseModel
     }
 
     /**
-     * @param array<string,PublicActionLabels|array{
-     *   actionName: string,
-     *   actionCardContent?: string|null,
-     *   actionDescription?: string|null,
-     *   appDisplayName?: string|null,
-     *   executionRules?: array<string,string>|null,
-     *   inputFieldDescriptions?: array<string,string>|null,
-     *   inputFieldLabels?: array<string,string>|null,
-     *   inputFieldOptionLabels?: array<string,array<string,string>>|null,
-     *   outputFieldLabels?: array<string,string>|null,
-     * }> $labels
+     * @param array<string,PublicActionLabelsShape> $labels
      */
     public function withLabels(array $labels): self
     {
@@ -270,9 +226,7 @@ final class PublicActionDefinitionEgg implements BaseModel
     }
 
     /**
-     * @param list<PublicExecutionTranslationRule|array{
-     *   conditions: array<string,mixed>, labelName: string
-     * }> $executionRules
+     * @param list<PublicExecutionTranslationRuleShape> $executionRules
      */
     public function withExecutionRules(array $executionRules): self
     {
@@ -283,16 +237,7 @@ final class PublicActionDefinitionEgg implements BaseModel
     }
 
     /**
-     * @param list<PublicSingleFieldDependency|array{
-     *   controllingFieldName: string,
-     *   dependencyType: value-of<DependencyType>,
-     *   dependentFieldNames: list<string>,
-     * }|PublicConditionalSingleFieldDependency|array{
-     *   controllingFieldName: string,
-     *   controllingFieldValue: string,
-     *   dependencyType: value-of<PublicConditionalSingleFieldDependency\DependencyType>,
-     *   dependentFieldNames: list<string>,
-     * }> $inputFieldDependencies
+     * @param list<InputFieldDependencyShape> $inputFieldDependencies
      */
     public function withInputFieldDependencies(
         array $inputFieldDependencies
@@ -304,9 +249,7 @@ final class PublicActionDefinitionEgg implements BaseModel
     }
 
     /**
-     * @param PublicObjectRequestOptions|array{
-     *   properties: list<string>
-     * } $objectRequestOptions
+     * @param PublicObjectRequestOptionsShape $objectRequestOptions
      */
     public function withObjectRequestOptions(
         PublicObjectRequestOptions|array $objectRequestOptions
@@ -318,9 +261,7 @@ final class PublicActionDefinitionEgg implements BaseModel
     }
 
     /**
-     * @param list<OutputFieldDefinition|array{
-     *   typeDefinition: FieldTypeDefinition
-     * }> $outputFields
+     * @param list<OutputFieldDefinitionShape> $outputFields
      */
     public function withOutputFields(array $outputFields): self
     {

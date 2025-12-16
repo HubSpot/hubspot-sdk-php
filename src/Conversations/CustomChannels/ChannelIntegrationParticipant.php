@@ -11,8 +11,11 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type PublicDeliveryIdentifierShape from \HubspotSDK\Conversations\PublicDeliveryIdentifier
+ *
  * @phpstan-type ChannelIntegrationParticipantShape = array{
- *   deliveryIdentifier: PublicDeliveryIdentifier, name?: string|null
+ *   deliveryIdentifier: PublicDeliveryIdentifier|PublicDeliveryIdentifierShape,
+ *   name?: string|null,
  * }
  */
 final class ChannelIntegrationParticipant implements BaseModel
@@ -50,9 +53,7 @@ final class ChannelIntegrationParticipant implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param PublicDeliveryIdentifier|array{
-     *   type: string, value: string
-     * } $deliveryIdentifier
+     * @param PublicDeliveryIdentifierShape $deliveryIdentifier
      */
     public static function with(
         PublicDeliveryIdentifier|array $deliveryIdentifier,
@@ -68,9 +69,7 @@ final class ChannelIntegrationParticipant implements BaseModel
     }
 
     /**
-     * @param PublicDeliveryIdentifier|array{
-     *   type: string, value: string
-     * } $deliveryIdentifier
+     * @param PublicDeliveryIdentifierShape $deliveryIdentifier
      */
     public function withDeliveryIdentifier(
         PublicDeliveryIdentifier|array $deliveryIdentifier

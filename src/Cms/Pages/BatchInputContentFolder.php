@@ -11,7 +11,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Wrapper for providing an array of content folders as inputs.
  *
- * @phpstan-type BatchInputContentFolderShape = array{inputs: list<ContentFolder>}
+ * @phpstan-import-type ContentFolderShape from \HubspotSDK\Cms\Pages\ContentFolder
+ *
+ * @phpstan-type BatchInputContentFolderShape = array{
+ *   inputs: list<ContentFolderShape>
+ * }
  */
 final class BatchInputContentFolder implements BaseModel
 {
@@ -50,15 +54,7 @@ final class BatchInputContentFolder implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<ContentFolder|array{
-     *   id: string,
-     *   category: int,
-     *   created: \DateTimeInterface,
-     *   deletedAt: \DateTimeInterface,
-     *   name: string,
-     *   parentFolderID: int,
-     *   updated: \DateTimeInterface,
-     * }> $inputs
+     * @param list<ContentFolderShape> $inputs
      */
     public static function with(array $inputs): self
     {
@@ -72,15 +68,7 @@ final class BatchInputContentFolder implements BaseModel
     /**
      * Content folders to input.
      *
-     * @param list<ContentFolder|array{
-     *   id: string,
-     *   category: int,
-     *   created: \DateTimeInterface,
-     *   deletedAt: \DateTimeInterface,
-     *   name: string,
-     *   parentFolderID: int,
-     *   updated: \DateTimeInterface,
-     * }> $inputs
+     * @param list<ContentFolderShape> $inputs
      */
     public function withInputs(array $inputs): self
     {

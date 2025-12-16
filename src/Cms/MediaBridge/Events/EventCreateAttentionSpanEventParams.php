@@ -17,25 +17,25 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Services\Cms\MediaBridge\EventsService::createAttentionSpanEvent()
  *
+ * @phpstan-import-type AttentionSpanCalculatedValuesShape from \HubspotSDK\Cms\MediaBridge\AttentionSpanCalculatedValues
+ *
  * @phpstan-type EventCreateAttentionSpanEventParamsShape = array{
  *   mediaType: MediaType|value-of<MediaType>,
  *   occurredTimestamp: int,
  *   rawDataMap: array<string,int>,
  *   sessionID: string,
- *   _hsenc?: string,
- *   contactID?: int,
- *   contactUtk?: string,
- *   derivedValues?: AttentionSpanCalculatedValues|array{
- *     totalPercentPlayed: float, totalSecondsPlayed: int
- *   },
- *   externalID?: string,
- *   mediaBridgeID?: int,
- *   mediaName?: string,
- *   mediaURL?: string,
- *   pageID?: int,
- *   pageName?: string,
- *   pageURL?: string,
- *   rawDataString?: string,
+ *   _hsenc?: string|null,
+ *   contactID?: int|null,
+ *   contactUtk?: string|null,
+ *   derivedValues?: AttentionSpanCalculatedValuesShape|null,
+ *   externalID?: string|null,
+ *   mediaBridgeID?: int|null,
+ *   mediaName?: string|null,
+ *   mediaURL?: string|null,
+ *   pageID?: int|null,
+ *   pageName?: string|null,
+ *   pageURL?: string|null,
+ *   rawDataString?: string|null,
  * }
  */
 final class EventCreateAttentionSpanEventParams implements BaseModel
@@ -126,9 +126,7 @@ final class EventCreateAttentionSpanEventParams implements BaseModel
      *
      * @param MediaType|value-of<MediaType> $mediaType
      * @param array<string,int> $rawDataMap
-     * @param AttentionSpanCalculatedValues|array{
-     *   totalPercentPlayed: float, totalSecondsPlayed: int
-     * } $derivedValues
+     * @param AttentionSpanCalculatedValuesShape $derivedValues
      */
     public static function with(
         MediaType|string $mediaType,
@@ -234,9 +232,7 @@ final class EventCreateAttentionSpanEventParams implements BaseModel
     }
 
     /**
-     * @param AttentionSpanCalculatedValues|array{
-     *   totalPercentPlayed: float, totalSecondsPlayed: int
-     * } $derivedValues
+     * @param AttentionSpanCalculatedValuesShape $derivedValues
      */
     public function withDerivedValues(
         AttentionSpanCalculatedValues|array $derivedValues

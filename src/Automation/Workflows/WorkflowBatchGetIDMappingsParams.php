@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Automation\Workflows;
 
-use HubspotSDK\Automation\Workflows\APIFlowBatchFetchMigrationFlowIDCoordinate\Type;
 use HubspotSDK\Automation\Workflows\WorkflowBatchGetIDMappingsParams\Input;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
@@ -14,13 +13,10 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * @see HubspotSDK\Services\Automation\WorkflowsService::batchGetIDMappings()
  *
+ * @phpstan-import-type InputShape from \HubspotSDK\Automation\Workflows\WorkflowBatchGetIDMappingsParams\Input
+ *
  * @phpstan-type WorkflowBatchGetIDMappingsParamsShape = array{
- *   inputs: list<APIFlowBatchFetchMigrationFlowIDCoordinate|array{
- *     flowMigrationStatuses: string, type: value-of<Type>
- *   }|APIFlowBatchFetchMigrationWorkflowIDCoordinate|array{
- *     flowMigrationStatusForClassicWorkflows: string,
- *     type: value-of<\HubspotSDK\Automation\Workflows\APIFlowBatchFetchMigrationWorkflowIDCoordinate\Type>,
- *   }>,
+ *   inputs: list<InputShape>
  * }
  */
 final class WorkflowBatchGetIDMappingsParams implements BaseModel
@@ -59,12 +55,7 @@ final class WorkflowBatchGetIDMappingsParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<APIFlowBatchFetchMigrationFlowIDCoordinate|array{
-     *   flowMigrationStatuses: string, type: value-of<Type>
-     * }|APIFlowBatchFetchMigrationWorkflowIDCoordinate|array{
-     *   flowMigrationStatusForClassicWorkflows: string,
-     *   type: value-of<APIFlowBatchFetchMigrationWorkflowIDCoordinate\Type>,
-     * }> $inputs
+     * @param list<InputShape> $inputs
      */
     public static function with(array $inputs): self
     {
@@ -76,12 +67,7 @@ final class WorkflowBatchGetIDMappingsParams implements BaseModel
     }
 
     /**
-     * @param list<APIFlowBatchFetchMigrationFlowIDCoordinate|array{
-     *   flowMigrationStatuses: string, type: value-of<Type>
-     * }|APIFlowBatchFetchMigrationWorkflowIDCoordinate|array{
-     *   flowMigrationStatusForClassicWorkflows: string,
-     *   type: value-of<APIFlowBatchFetchMigrationWorkflowIDCoordinate\Type>,
-     * }> $inputs
+     * @param list<InputShape> $inputs
      */
     public function withInputs(array $inputs): self
     {

@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Services\Cms\Blogs\PostsService::delete()
  *
- * @phpstan-type PostDeleteParamsShape = array{archived?: bool}
+ * @phpstan-type PostDeleteParamsShape = array{archived?: bool|null}
  */
 final class PostDeleteParams implements BaseModel
 {

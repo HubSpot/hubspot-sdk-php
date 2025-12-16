@@ -12,7 +12,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type EmailSettingsResponseShape = array{
- *   criteria: value-of<Criteria>, sellingStrategy: value-of<SellingStrategy>
+ *   criteria: Criteria|value-of<Criteria>,
+ *   sellingStrategy: SellingStrategy|value-of<SellingStrategy>,
  * }
  */
 final class EmailSettingsResponse implements BaseModel

@@ -18,7 +18,7 @@ interface SequencesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|SequenceListParams $params
+     * @param array<string,mixed>|SequenceListParams $params
      *
      * @return BaseResponse<Page<PublicSequenceLiteResponse>>
      *
@@ -32,7 +32,7 @@ interface SequencesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|SequenceGetParams $params
+     * @param array<string,mixed>|SequenceGetParams $params
      *
      * @return BaseResponse<PublicSequenceResponse>
      *

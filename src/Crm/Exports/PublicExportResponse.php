@@ -15,8 +15,8 @@ use HubspotSDK\Crm\Exports\PublicExportResponse\ExportType;
  * @phpstan-type PublicExportResponseShape = array{
  *   id: string,
  *   createdAt: \DateTimeInterface,
- *   exportState: value-of<ExportState>,
- *   exportType: value-of<ExportType>,
+ *   exportState: ExportState|value-of<ExportState>,
+ *   exportType: ExportType|value-of<ExportType>,
  *   objectProperties: list<string>,
  *   objectType: string,
  *   updatedAt: \DateTimeInterface,

@@ -16,7 +16,9 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Services\Marketing\EventsService::list()
  *
- * @phpstan-type EventListParamsShape = array{after?: string, limit?: int}
+ * @phpstan-type EventListParamsShape = array{
+ *   after?: string|null, limit?: int|null
+ * }
  */
 final class EventListParams implements BaseModel
 {

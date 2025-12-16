@@ -21,7 +21,7 @@ interface GroupsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|GroupCreateParams $params
+     * @param array<string,mixed>|GroupCreateParams $params
      *
      * @return BaseResponse<CreatedResponsePropertyGroup>
      *
@@ -37,7 +37,7 @@ interface GroupsRawContract
      * @api
      *
      * @param string $groupName Path param:
-     * @param array<mixed>|GroupUpdateParams $params
+     * @param array<string,mixed>|GroupUpdateParams $params
      *
      * @return BaseResponse<PropertyGroup>
      *
@@ -52,7 +52,7 @@ interface GroupsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|GroupListParams $params
+     * @param array<string,mixed>|GroupListParams $params
      *
      * @return BaseResponse<CollectionResponsePropertyGroup>
      *
@@ -67,7 +67,7 @@ interface GroupsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|GroupDeleteParams $params
+     * @param array<string,mixed>|GroupDeleteParams $params
      *
      * @return BaseResponse<mixed>
      *
@@ -83,7 +83,7 @@ interface GroupsRawContract
      * @api
      *
      * @param string $groupName Path param:
-     * @param array<mixed>|GroupGetParams $params
+     * @param array<string,mixed>|GroupGetParams $params
      *
      * @return BaseResponse<PropertyGroup>
      *

@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * @see HubspotSDK\Services\Conversations\ActorsService::get()
  *
- * @phpstan-type ActorGetParamsShape = array{property?: string}
+ * @phpstan-type ActorGetParamsShape = array{property?: string|null}
  */
 final class ActorGetParams implements BaseModel
 {

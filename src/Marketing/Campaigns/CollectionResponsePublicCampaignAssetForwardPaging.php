@@ -9,11 +9,14 @@ use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\ForwardPaging;
-use HubspotSDK\NextPage;
 
 /**
+ * @phpstan-import-type PublicCampaignAssetShape from \HubspotSDK\Marketing\Campaigns\PublicCampaignAsset
+ * @phpstan-import-type ForwardPagingShape from \HubspotSDK\ForwardPaging
+ *
  * @phpstan-type CollectionResponsePublicCampaignAssetForwardPagingShape = array{
- *   results: list<PublicCampaignAsset>, paging?: ForwardPaging|null
+ *   results: list<PublicCampaignAssetShape>,
+ *   paging?: null|ForwardPaging|ForwardPagingShape,
  * }
  */
 final class CollectionResponsePublicCampaignAssetForwardPaging implements BaseModel
@@ -52,10 +55,8 @@ final class CollectionResponsePublicCampaignAssetForwardPaging implements BaseMo
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicCampaignAsset|array{
-     *   id: string, metrics?: array<string,float>|null, name?: string|null
-     * }> $results
-     * @param ForwardPaging|array{next?: NextPage|null} $paging
+     * @param list<PublicCampaignAssetShape> $results
+     * @param ForwardPagingShape $paging
      */
     public static function with(
         array $results,
@@ -71,9 +72,7 @@ final class CollectionResponsePublicCampaignAssetForwardPaging implements BaseMo
     }
 
     /**
-     * @param list<PublicCampaignAsset|array{
-     *   id: string, metrics?: array<string,float>|null, name?: string|null
-     * }> $results
+     * @param list<PublicCampaignAssetShape> $results
      */
     public function withResults(array $results): self
     {
@@ -84,7 +83,7 @@ final class CollectionResponsePublicCampaignAssetForwardPaging implements BaseMo
     }
 
     /**
-     * @param ForwardPaging|array{next?: NextPage|null} $paging
+     * @param ForwardPagingShape $paging
      */
     public function withPaging(ForwardPaging|array $paging): self
     {

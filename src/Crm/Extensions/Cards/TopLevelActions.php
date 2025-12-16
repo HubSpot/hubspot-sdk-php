@@ -8,15 +8,17 @@ use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\Extensions\Cards\ActionHookActionBody\HTTPMethod;
-use HubspotSDK\Crm\Extensions\Cards\ActionHookActionBody\Type;
 use HubspotSDK\Crm\Extensions\Cards\TopLevelActions\Secondary;
 
 /**
+ * @phpstan-import-type SecondaryShape from \HubspotSDK\Crm\Extensions\Cards\TopLevelActions\Secondary
+ * @phpstan-import-type PrimaryShape from \HubspotSDK\Crm\Extensions\Cards\TopLevelActions\Primary
+ * @phpstan-import-type IFrameActionBodyShape from \HubspotSDK\Crm\Extensions\Cards\IFrameActionBody
+ *
  * @phpstan-type TopLevelActionsShape = array{
- *   secondary: list<ActionHookActionBody|IFrameActionBody>,
- *   primary?: null|ActionHookActionBody|IFrameActionBody,
- *   settings?: IFrameActionBody|null,
+ *   secondary: list<SecondaryShape>,
+ *   primary?: null|PrimaryShape|ActionHookActionBody|IFrameActionBody,
+ *   settings?: null|IFrameActionBody|IFrameActionBodyShape,
  * }
  */
 final class TopLevelActions implements BaseModel
@@ -58,44 +60,9 @@ final class TopLevelActions implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<ActionHookActionBody|array{
-     *   httpMethod: value-of<HTTPMethod>,
-     *   propertyNamesIncluded: list<string>,
-     *   type: value-of<Type>,
-     *   url: string,
-     *   confirmation?: ActionConfirmationBody|null,
-     *   label?: string|null,
-     * }|IFrameActionBody|array{
-     *   height: int,
-     *   propertyNamesIncluded: list<string>,
-     *   type: value-of<IFrameActionBody\Type>,
-     *   url: string,
-     *   width: int,
-     *   label?: string|null,
-     * }> $secondary
-     * @param ActionHookActionBody|array{
-     *   httpMethod: value-of<HTTPMethod>,
-     *   propertyNamesIncluded: list<string>,
-     *   type: value-of<Type>,
-     *   url: string,
-     *   confirmation?: ActionConfirmationBody|null,
-     *   label?: string|null,
-     * }|IFrameActionBody|array{
-     *   height: int,
-     *   propertyNamesIncluded: list<string>,
-     *   type: value-of<IFrameActionBody\Type>,
-     *   url: string,
-     *   width: int,
-     *   label?: string|null,
-     * } $primary
-     * @param IFrameActionBody|array{
-     *   height: int,
-     *   propertyNamesIncluded: list<string>,
-     *   type: value-of<IFrameActionBody\Type>,
-     *   url: string,
-     *   width: int,
-     *   label?: string|null,
-     * } $settings
+     * @param list<SecondaryShape> $secondary
+     * @param PrimaryShape $primary
+     * @param IFrameActionBodyShape $settings
      */
     public static function with(
         array $secondary,
@@ -113,21 +80,7 @@ final class TopLevelActions implements BaseModel
     }
 
     /**
-     * @param list<ActionHookActionBody|array{
-     *   httpMethod: value-of<HTTPMethod>,
-     *   propertyNamesIncluded: list<string>,
-     *   type: value-of<Type>,
-     *   url: string,
-     *   confirmation?: ActionConfirmationBody|null,
-     *   label?: string|null,
-     * }|IFrameActionBody|array{
-     *   height: int,
-     *   propertyNamesIncluded: list<string>,
-     *   type: value-of<IFrameActionBody\Type>,
-     *   url: string,
-     *   width: int,
-     *   label?: string|null,
-     * }> $secondary
+     * @param list<SecondaryShape> $secondary
      */
     public function withSecondary(array $secondary): self
     {
@@ -138,21 +91,7 @@ final class TopLevelActions implements BaseModel
     }
 
     /**
-     * @param ActionHookActionBody|array{
-     *   httpMethod: value-of<HTTPMethod>,
-     *   propertyNamesIncluded: list<string>,
-     *   type: value-of<Type>,
-     *   url: string,
-     *   confirmation?: ActionConfirmationBody|null,
-     *   label?: string|null,
-     * }|IFrameActionBody|array{
-     *   height: int,
-     *   propertyNamesIncluded: list<string>,
-     *   type: value-of<IFrameActionBody\Type>,
-     *   url: string,
-     *   width: int,
-     *   label?: string|null,
-     * } $primary
+     * @param PrimaryShape $primary
      */
     public function withPrimary(
         ActionHookActionBody|array|IFrameActionBody $primary
@@ -164,14 +103,7 @@ final class TopLevelActions implements BaseModel
     }
 
     /**
-     * @param IFrameActionBody|array{
-     *   height: int,
-     *   propertyNamesIncluded: list<string>,
-     *   type: value-of<IFrameActionBody\Type>,
-     *   url: string,
-     *   width: int,
-     *   label?: string|null,
-     * } $settings
+     * @param IFrameActionBodyShape $settings
      */
     public function withSettings(IFrameActionBody|array $settings): self
     {

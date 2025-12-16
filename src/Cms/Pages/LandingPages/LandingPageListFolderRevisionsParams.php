@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Cms\Pages\LandingPagesService::listFolderRevisions()
  *
  * @phpstan-type LandingPageListFolderRevisionsParamsShape = array{
- *   after?: string, before?: string, limit?: int
+ *   after?: string|null, before?: string|null, limit?: int|null
  * }
  */
 final class LandingPageListFolderRevisionsParams implements BaseModel

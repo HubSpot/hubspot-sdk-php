@@ -16,7 +16,7 @@ interface BusinessUnitsRawContract
      * @api
      *
      * @param string $userID identifier of user to retrieve
-     * @param array<mixed>|BusinessUnitGetByUserIDParams $params
+     * @param array<string,mixed>|BusinessUnitGetByUserIDParams $params
      *
      * @return BaseResponse<CollectionResponsePublicBusinessUnitNoPaging>
      *

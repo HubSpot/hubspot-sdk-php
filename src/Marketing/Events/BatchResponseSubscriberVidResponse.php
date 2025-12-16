@@ -8,17 +8,19 @@ use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\ErrorDetail;
 use HubspotSDK\Marketing\Events\BatchResponseSubscriberVidResponse\Status;
 use HubspotSDK\StandardError;
 
 /**
+ * @phpstan-import-type SubscriberVidResponseShape from \HubspotSDK\Marketing\Events\SubscriberVidResponse
+ * @phpstan-import-type StandardErrorShape from \HubspotSDK\StandardError
+ *
  * @phpstan-type BatchResponseSubscriberVidResponseShape = array{
  *   completedAt: \DateTimeInterface,
- *   results: list<SubscriberVidResponse>,
+ *   results: list<SubscriberVidResponseShape>,
  *   startedAt: \DateTimeInterface,
- *   status: value-of<Status>,
- *   errors?: list<StandardError>|null,
+ *   status: Status|value-of<Status>,
+ *   errors?: list<StandardErrorShape>|null,
  *   links?: array<string,string>|null,
  *   numErrors?: int|null,
  *   requestedAt?: \DateTimeInterface|null,
@@ -87,18 +89,9 @@ final class BatchResponseSubscriberVidResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<SubscriberVidResponse|array{vid: int}> $results
+     * @param list<SubscriberVidResponseShape> $results
      * @param Status|value-of<Status> $status
-     * @param list<StandardError|array{
-     *   category: string,
-     *   context: array<string,list<string>>,
-     *   errors: list<ErrorDetail>,
-     *   links: array<string,string>,
-     *   message: string,
-     *   status: string,
-     *   id?: string|null,
-     *   subCategory?: mixed,
-     * }> $errors
+     * @param list<StandardErrorShape> $errors
      * @param array<string,string> $links
      */
     public static function with(
@@ -135,7 +128,7 @@ final class BatchResponseSubscriberVidResponse implements BaseModel
     }
 
     /**
-     * @param list<SubscriberVidResponse|array{vid: int}> $results
+     * @param list<SubscriberVidResponseShape> $results
      */
     public function withResults(array $results): self
     {
@@ -165,16 +158,7 @@ final class BatchResponseSubscriberVidResponse implements BaseModel
     }
 
     /**
-     * @param list<StandardError|array{
-     *   category: string,
-     *   context: array<string,list<string>>,
-     *   errors: list<ErrorDetail>,
-     *   links: array<string,string>,
-     *   message: string,
-     *   status: string,
-     *   id?: string|null,
-     *   subCategory?: mixed,
-     * }> $errors
+     * @param list<StandardErrorShape> $errors
      */
     public function withErrors(array $errors): self
     {

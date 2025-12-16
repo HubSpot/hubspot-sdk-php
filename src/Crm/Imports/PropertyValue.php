@@ -14,7 +14,7 @@ use HubspotSDK\Crm\Imports\PropertyValue\Source;
  * Represents a single custom property of a marketing event, storing its name, value, metadata (like source, timestamp, and sensitivity), and related audit information for tracking changes.
  *
  * @phpstan-type PropertyValueShape = array{
- *   dataSensitivity: value-of<DataSensitivity>,
+ *   dataSensitivity: DataSensitivity|value-of<DataSensitivity>,
  *   isEncrypted: bool,
  *   isLargeValue: bool,
  *   name: string,
@@ -22,7 +22,7 @@ use HubspotSDK\Crm\Imports\PropertyValue\Source;
  *   requestID: string,
  *   selectedByUser: bool,
  *   selectedByUserTimestamp: int,
- *   source: value-of<Source>,
+ *   source: Source|value-of<Source>,
  *   sourceID: string,
  *   sourceLabel: string,
  *   sourceMetadata: string,

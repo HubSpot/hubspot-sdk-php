@@ -22,8 +22,8 @@ use HubspotSDK\Marketing\Subscriptions\V4\Statuses\StatusUpdateParams\StatusStat
  *   channel: Channel|value-of<Channel>,
  *   statusState: StatusState|value-of<StatusState>,
  *   subscriptionID: int,
- *   legalBasis?: LegalBasis|value-of<LegalBasis>,
- *   legalBasisExplanation?: string,
+ *   legalBasis?: null|LegalBasis|value-of<LegalBasis>,
+ *   legalBasisExplanation?: string|null,
  * }
  */
 final class StatusUpdateParams implements BaseModel

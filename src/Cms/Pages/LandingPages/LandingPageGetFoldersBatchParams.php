@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Cms\Pages\LandingPagesService::getFoldersBatch()
  *
  * @phpstan-type LandingPageGetFoldersBatchParamsShape = array{
- *   inputs: list<string>, archived?: bool
+ *   inputs: list<string>, archived?: bool|null
  * }
  */
 final class LandingPageGetFoldersBatchParams implements BaseModel

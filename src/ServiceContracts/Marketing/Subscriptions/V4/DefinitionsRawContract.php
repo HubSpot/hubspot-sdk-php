@@ -15,7 +15,7 @@ interface DefinitionsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|DefinitionListParams $params
+     * @param array<string,mixed>|DefinitionListParams $params
      *
      * @return BaseResponse<ActionResponseWithResultsSubscriptionDefinition>
      *

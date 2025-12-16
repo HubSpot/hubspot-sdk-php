@@ -9,8 +9,10 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type SubscriptionDefinitionShape from \HubspotSDK\Marketing\Subscriptions\SubscriptionDefinition
+ *
  * @phpstan-type SubscriptionDefinitionsResponseShape = array{
- *   subscriptionDefinitions: list<SubscriptionDefinition>
+ *   subscriptionDefinitions: list<SubscriptionDefinitionShape>
  * }
  */
 final class SubscriptionDefinitionsResponse implements BaseModel
@@ -50,19 +52,7 @@ final class SubscriptionDefinitionsResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<SubscriptionDefinition|array{
-     *   id: string,
-     *   createdAt: \DateTimeInterface,
-     *   description: string,
-     *   isActive: bool,
-     *   isDefault: bool,
-     *   isInternal: bool,
-     *   name: string,
-     *   updatedAt: \DateTimeInterface,
-     *   businessUnitID?: int|null,
-     *   communicationMethod?: string|null,
-     *   purpose?: string|null,
-     * }> $subscriptionDefinitions
+     * @param list<SubscriptionDefinitionShape> $subscriptionDefinitions
      */
     public static function with(array $subscriptionDefinitions): self
     {
@@ -76,19 +66,7 @@ final class SubscriptionDefinitionsResponse implements BaseModel
     /**
      * A list of all subscription definitions.
      *
-     * @param list<SubscriptionDefinition|array{
-     *   id: string,
-     *   createdAt: \DateTimeInterface,
-     *   description: string,
-     *   isActive: bool,
-     *   isDefault: bool,
-     *   isInternal: bool,
-     *   name: string,
-     *   updatedAt: \DateTimeInterface,
-     *   businessUnitID?: int|null,
-     *   communicationMethod?: string|null,
-     *   purpose?: string|null,
-     * }> $subscriptionDefinitions
+     * @param list<SubscriptionDefinitionShape> $subscriptionDefinitions
      */
     public function withSubscriptionDefinitions(
         array $subscriptionDefinitions

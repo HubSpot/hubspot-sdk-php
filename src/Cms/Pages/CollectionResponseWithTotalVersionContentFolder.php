@@ -8,16 +8,18 @@ use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\NextPage;
 use HubspotSDK\Paging;
-use HubspotSDK\PreviousPage;
-use HubspotSDK\VersionUser;
 
 /**
  * Response object for collections of content folder versions with pagination information.
  *
+ * @phpstan-import-type VersionContentFolderShape from \HubspotSDK\Cms\Pages\VersionContentFolder
+ * @phpstan-import-type PagingShape from \HubspotSDK\Paging
+ *
  * @phpstan-type CollectionResponseWithTotalVersionContentFolderShape = array{
- *   results: list<VersionContentFolder>, total: int, paging?: Paging|null
+ *   results: list<VersionContentFolderShape>,
+ *   total: int,
+ *   paging?: null|Paging|PagingShape,
  * }
  */
 final class CollectionResponseWithTotalVersionContentFolder implements BaseModel
@@ -68,13 +70,8 @@ final class CollectionResponseWithTotalVersionContentFolder implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<VersionContentFolder|array{
-     *   id: string,
-     *   object: ContentFolder,
-     *   updatedAt: \DateTimeInterface,
-     *   user: VersionUser,
-     * }> $results
-     * @param Paging|array{next?: NextPage|null, prev?: PreviousPage|null} $paging
+     * @param list<VersionContentFolderShape> $results
+     * @param PagingShape $paging
      */
     public static function with(
         array $results,
@@ -94,12 +91,7 @@ final class CollectionResponseWithTotalVersionContentFolder implements BaseModel
     /**
      * Collection of content folder versions.
      *
-     * @param list<VersionContentFolder|array{
-     *   id: string,
-     *   object: ContentFolder,
-     *   updatedAt: \DateTimeInterface,
-     *   user: VersionUser,
-     * }> $results
+     * @param list<VersionContentFolderShape> $results
      */
     public function withResults(array $results): self
     {
@@ -121,7 +113,7 @@ final class CollectionResponseWithTotalVersionContentFolder implements BaseModel
     }
 
     /**
-     * @param Paging|array{next?: NextPage|null, prev?: PreviousPage|null} $paging
+     * @param PagingShape $paging
      */
     public function withPaging(Paging|array $paging): self
     {

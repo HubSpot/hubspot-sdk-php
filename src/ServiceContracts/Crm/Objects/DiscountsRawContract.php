@@ -23,7 +23,7 @@ interface DiscountsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|DiscountCreateParams $params
+     * @param array<string,mixed>|DiscountCreateParams $params
      *
      * @return BaseResponse<CreatedResponseSimplePublicObject>
      *
@@ -38,7 +38,7 @@ interface DiscountsRawContract
      * @api
      *
      * @param string $discountID Path param:
-     * @param array<mixed>|DiscountUpdateParams $params
+     * @param array<string,mixed>|DiscountUpdateParams $params
      *
      * @return BaseResponse<SimplePublicObject>
      *
@@ -53,7 +53,7 @@ interface DiscountsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|DiscountListParams $params
+     * @param array<string,mixed>|DiscountListParams $params
      *
      * @return BaseResponse<Page<SimplePublicObjectWithAssociations>>
      *
@@ -79,7 +79,7 @@ interface DiscountsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|DiscountGetParams $params
+     * @param array<string,mixed>|DiscountGetParams $params
      *
      * @return BaseResponse<SimplePublicObjectWithAssociations>
      *
@@ -94,7 +94,7 @@ interface DiscountsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|DiscountSearchParams $params
+     * @param array<string,mixed>|DiscountSearchParams $params
      *
      * @return BaseResponse<CollectionResponseWithTotalSimplePublicObject>
      *

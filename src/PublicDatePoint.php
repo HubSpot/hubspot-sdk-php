@@ -14,7 +14,7 @@ use HubspotSDK\PublicDatePoint\TimeType;
  * @phpstan-type PublicDatePointShape = array{
  *   day: int,
  *   month: int,
- *   timeType: value-of<TimeType>,
+ *   timeType: TimeType|value-of<TimeType>,
  *   year: int,
  *   zoneID: string,
  *   hour?: int|null,

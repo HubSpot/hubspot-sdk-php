@@ -10,9 +10,11 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type ActingUserShape from \HubspotSDK\Account\Activity\ActingUser
+ *
  * @phpstan-type PublicAPIUserActionEventShape = array{
  *   id: string,
- *   actingUser: ActingUser,
+ *   actingUser: ActingUser|ActingUserShape,
  *   action: string,
  *   category: string,
  *   occurredAt: \DateTimeInterface,
@@ -95,7 +97,7 @@ final class PublicAPIUserActionEvent implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param ActingUser|array{userID: int, userEmail?: string|null} $actingUser
+     * @param ActingUserShape $actingUser
      */
     public static function with(
         string $id,
@@ -132,7 +134,7 @@ final class PublicAPIUserActionEvent implements BaseModel
     }
 
     /**
-     * @param ActingUser|array{userID: int, userEmail?: string|null} $actingUser
+     * @param ActingUserShape $actingUser
      */
     public function withActingUser(ActingUser|array $actingUser): self
     {

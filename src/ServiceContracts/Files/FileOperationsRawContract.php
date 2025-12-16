@@ -28,7 +28,7 @@ interface FileOperationsRawContract
      * @api
      *
      * @param string $fileID ID of file to update
-     * @param array<mixed>|FileOperationUpdateParams $params
+     * @param array<string,mixed>|FileOperationUpdateParams $params
      *
      * @return BaseResponse<File>
      *
@@ -72,7 +72,7 @@ interface FileOperationsRawContract
      * @api
      *
      * @param string $fileID ID of the desired file
-     * @param array<mixed>|FileOperationGetParams $params
+     * @param array<string,mixed>|FileOperationGetParams $params
      *
      * @return BaseResponse<File>
      *
@@ -88,7 +88,7 @@ interface FileOperationsRawContract
      * @api
      *
      * @param string $filePath the path of the file
-     * @param array<mixed>|FileOperationGetByPathParams $params
+     * @param array<string,mixed>|FileOperationGetByPathParams $params
      *
      * @return BaseResponse<FileStat>
      *
@@ -118,7 +118,7 @@ interface FileOperationsRawContract
      * @api
      *
      * @param string $fileID ID of file
-     * @param array<mixed>|FileOperationGetSignedURLParams $params
+     * @param array<string,mixed>|FileOperationGetSignedURLParams $params
      *
      * @return BaseResponse<SignedURL>
      *
@@ -133,7 +133,7 @@ interface FileOperationsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|FileOperationImportFromURLAsyncParams $params
+     * @param array<string,mixed>|FileOperationImportFromURLAsyncParams $params
      *
      * @return BaseResponse<ImportFromURLTaskLocator>
      *
@@ -148,7 +148,7 @@ interface FileOperationsRawContract
      * @api
      *
      * @param string $fileID ID of the desired file
-     * @param array<mixed>|FileOperationReplaceParams $params
+     * @param array<string,mixed>|FileOperationReplaceParams $params
      *
      * @return BaseResponse<File>
      *
@@ -163,7 +163,7 @@ interface FileOperationsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|FileOperationSearchParams $params
+     * @param array<string,mixed>|FileOperationSearchParams $params
      *
      * @return BaseResponse<Page<File>>
      *
@@ -177,7 +177,7 @@ interface FileOperationsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|FileOperationUploadParams $params
+     * @param array<string,mixed>|FileOperationUploadParams $params
      *
      * @return BaseResponse<File>
      *

@@ -35,7 +35,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   twitter: string,
  *   updated: \DateTimeInterface,
  *   website: string,
- *   archived?: bool,
+ *   archived?: bool|null,
  * }
  */
 final class AuthorUpdateParams implements BaseModel

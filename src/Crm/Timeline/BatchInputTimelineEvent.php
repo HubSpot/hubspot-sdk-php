@@ -11,7 +11,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Used to create timeline events in batches.
  *
- * @phpstan-type BatchInputTimelineEventShape = array{inputs: list<TimelineEvent>}
+ * @phpstan-import-type TimelineEventShape from \HubspotSDK\Crm\Timeline\TimelineEvent
+ *
+ * @phpstan-type BatchInputTimelineEventShape = array{
+ *   inputs: list<TimelineEventShape>
+ * }
  */
 final class BatchInputTimelineEvent implements BaseModel
 {
@@ -50,18 +54,7 @@ final class BatchInputTimelineEvent implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<TimelineEvent|array{
-     *   eventTemplateID: string,
-     *   tokens: array<string,string>,
-     *   id?: string|null,
-     *   domain?: string|null,
-     *   email?: string|null,
-     *   extraData?: mixed,
-     *   objectID?: string|null,
-     *   timelineIFrame?: TimelineEventIFrame|null,
-     *   timestamp?: \DateTimeInterface|null,
-     *   utk?: string|null,
-     * }> $inputs
+     * @param list<TimelineEventShape> $inputs
      */
     public static function with(array $inputs): self
     {
@@ -75,18 +68,7 @@ final class BatchInputTimelineEvent implements BaseModel
     /**
      * A collection of timeline events we want to create.
      *
-     * @param list<TimelineEvent|array{
-     *   eventTemplateID: string,
-     *   tokens: array<string,string>,
-     *   id?: string|null,
-     *   domain?: string|null,
-     *   email?: string|null,
-     *   extraData?: mixed,
-     *   objectID?: string|null,
-     *   timelineIFrame?: TimelineEventIFrame|null,
-     *   timestamp?: \DateTimeInterface|null,
-     *   utk?: string|null,
-     * }> $inputs
+     * @param list<TimelineEventShape> $inputs
      */
     public function withInputs(array $inputs): self
     {

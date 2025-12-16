@@ -4,17 +4,19 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Conversations;
 
-use HubspotSDK\Conversations\PublicThread\Status;
 use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\ForwardPaging;
-use HubspotSDK\NextPage;
 
 /**
+ * @phpstan-import-type PublicThreadShape from \HubspotSDK\Conversations\PublicThread
+ * @phpstan-import-type ForwardPagingShape from \HubspotSDK\ForwardPaging
+ *
  * @phpstan-type CollectionResponsePublicThreadForwardPagingShape = array{
- *   results: list<PublicThread>, paging?: ForwardPaging|null
+ *   results: list<PublicThreadShape>,
+ *   paging?: null|ForwardPaging|ForwardPagingShape,
  * }
  */
 final class CollectionResponsePublicThreadForwardPaging implements BaseModel
@@ -53,24 +55,8 @@ final class CollectionResponsePublicThreadForwardPaging implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicThread|array{
-     *   id: string,
-     *   archived: bool,
-     *   associatedContactID: string,
-     *   createdAt: \DateTimeInterface,
-     *   inboxID: string,
-     *   originalChannelAccountID: string,
-     *   originalChannelID: string,
-     *   spam: bool,
-     *   status: value-of<Status>,
-     *   assignedTo?: string|null,
-     *   closedAt?: \DateTimeInterface|null,
-     *   latestMessageReceivedTimestamp?: \DateTimeInterface|null,
-     *   latestMessageSentTimestamp?: \DateTimeInterface|null,
-     *   latestMessageTimestamp?: \DateTimeInterface|null,
-     *   threadAssociations?: PublicThreadAssociations|null,
-     * }> $results
-     * @param ForwardPaging|array{next?: NextPage|null} $paging
+     * @param list<PublicThreadShape> $results
+     * @param ForwardPagingShape $paging
      */
     public static function with(
         array $results,
@@ -86,23 +72,7 @@ final class CollectionResponsePublicThreadForwardPaging implements BaseModel
     }
 
     /**
-     * @param list<PublicThread|array{
-     *   id: string,
-     *   archived: bool,
-     *   associatedContactID: string,
-     *   createdAt: \DateTimeInterface,
-     *   inboxID: string,
-     *   originalChannelAccountID: string,
-     *   originalChannelID: string,
-     *   spam: bool,
-     *   status: value-of<Status>,
-     *   assignedTo?: string|null,
-     *   closedAt?: \DateTimeInterface|null,
-     *   latestMessageReceivedTimestamp?: \DateTimeInterface|null,
-     *   latestMessageSentTimestamp?: \DateTimeInterface|null,
-     *   latestMessageTimestamp?: \DateTimeInterface|null,
-     *   threadAssociations?: PublicThreadAssociations|null,
-     * }> $results
+     * @param list<PublicThreadShape> $results
      */
     public function withResults(array $results): self
     {
@@ -113,7 +83,7 @@ final class CollectionResponsePublicThreadForwardPaging implements BaseModel
     }
 
     /**
-     * @param ForwardPaging|array{next?: NextPage|null} $paging
+     * @param ForwardPagingShape $paging
      */
     public function withPaging(ForwardPaging|array $paging): self
     {

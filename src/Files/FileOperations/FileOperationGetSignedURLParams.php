@@ -16,7 +16,9 @@ use HubspotSDK\Files\FileOperations\FileOperationGetSignedURLParams\Size;
  * @see HubspotSDK\Services\Files\FileOperationsService::getSignedURL()
  *
  * @phpstan-type FileOperationGetSignedURLParamsShape = array{
- *   expirationSeconds?: int, size?: Size|value-of<Size>, upscale?: bool
+ *   expirationSeconds?: int|null,
+ *   size?: null|Size|value-of<Size>,
+ *   upscale?: bool|null,
  * }
  */
 final class FileOperationGetSignedURLParams implements BaseModel

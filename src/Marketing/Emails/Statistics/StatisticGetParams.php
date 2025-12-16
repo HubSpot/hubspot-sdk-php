@@ -15,10 +15,10 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Marketing\Emails\StatisticsService::get()
  *
  * @phpstan-type StatisticGetParamsShape = array{
- *   emailIDs?: list<int>,
- *   endTimestamp?: string,
- *   property?: string,
- *   startTimestamp?: string,
+ *   emailIDs?: list<int>|null,
+ *   endTimestamp?: string|null,
+ *   property?: string|null,
+ *   startTimestamp?: string|null,
  * }
  */
 final class StatisticGetParams implements BaseModel

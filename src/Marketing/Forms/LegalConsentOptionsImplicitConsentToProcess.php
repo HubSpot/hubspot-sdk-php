@@ -11,10 +11,12 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Marketing\Forms\LegalConsentOptionsImplicitConsentToProcess\Type;
 
 /**
+ * @phpstan-import-type LegalConsentCheckboxShape from \HubspotSDK\Marketing\Forms\LegalConsentCheckbox
+ *
  * @phpstan-type LegalConsentOptionsImplicitConsentToProcessShape = array{
- *   communicationsCheckboxes: list<LegalConsentCheckbox>,
+ *   communicationsCheckboxes: list<LegalConsentCheckboxShape>,
  *   privacyText: string,
- *   type: value-of<Type>,
+ *   type: Type|value-of<Type>,
  *   communicationConsentText?: string|null,
  *   consentToProcessText?: string|null,
  * }
@@ -70,9 +72,7 @@ final class LegalConsentOptionsImplicitConsentToProcess implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<LegalConsentCheckbox|array{
-     *   label: string, required: bool, subscriptionTypeID: int
-     * }> $communicationsCheckboxes
+     * @param list<LegalConsentCheckboxShape> $communicationsCheckboxes
      * @param Type|value-of<Type> $type
      */
     public static function with(
@@ -95,9 +95,7 @@ final class LegalConsentOptionsImplicitConsentToProcess implements BaseModel
     }
 
     /**
-     * @param list<LegalConsentCheckbox|array{
-     *   label: string, required: bool, subscriptionTypeID: int
-     * }> $communicationsCheckboxes
+     * @param list<LegalConsentCheckboxShape> $communicationsCheckboxes
      */
     public function withCommunicationsCheckboxes(
         array $communicationsCheckboxes

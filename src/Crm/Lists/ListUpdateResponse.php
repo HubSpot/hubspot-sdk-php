@@ -7,20 +7,14 @@ namespace HubspotSDK\Crm\Lists;
 use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\PublicAndFilterBranch;
-use HubspotSDK\PublicAssociationFilterBranch;
-use HubspotSDK\PublicNotAllFilterBranch;
-use HubspotSDK\PublicNotAnyFilterBranch;
-use HubspotSDK\PublicOrFilterBranch;
-use HubspotSDK\PublicPropertyAssociationFilterBranch;
-use HubspotSDK\PublicRestrictedFilterBranch;
-use HubspotSDK\PublicUnifiedEventsFilterBranch;
 
 /**
  * The updated definition of the list in response to a list update request.
  *
+ * @phpstan-import-type PublicObjectListShape from \HubspotSDK\Crm\Lists\PublicObjectList
+ *
  * @phpstan-type ListUpdateResponseShape = array{
- *   updatedList?: PublicObjectList|null
+ *   updatedList?: null|PublicObjectList|PublicObjectListShape
  * }
  */
 final class ListUpdateResponse implements BaseModel
@@ -44,24 +38,7 @@ final class ListUpdateResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param PublicObjectList|array{
-     *   listID: string,
-     *   listVersion: int,
-     *   name: string,
-     *   objectTypeID: string,
-     *   processingStatus: string,
-     *   processingType: string,
-     *   createdAt?: \DateTimeInterface|null,
-     *   createdByID?: string|null,
-     *   deletedAt?: \DateTimeInterface|null,
-     *   filterBranch?: PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch|null,
-     *   filtersUpdatedAt?: \DateTimeInterface|null,
-     *   listPermissions?: PublicListPermissions|null,
-     *   membershipSettings?: PublicMembershipSettings|null,
-     *   size?: int|null,
-     *   updatedAt?: \DateTimeInterface|null,
-     *   updatedByID?: string|null,
-     * } $updatedList
+     * @param PublicObjectListShape $updatedList
      */
     public static function with(
         PublicObjectList|array|null $updatedList = null
@@ -76,24 +53,7 @@ final class ListUpdateResponse implements BaseModel
     /**
      * An object list definition.
      *
-     * @param PublicObjectList|array{
-     *   listID: string,
-     *   listVersion: int,
-     *   name: string,
-     *   objectTypeID: string,
-     *   processingStatus: string,
-     *   processingType: string,
-     *   createdAt?: \DateTimeInterface|null,
-     *   createdByID?: string|null,
-     *   deletedAt?: \DateTimeInterface|null,
-     *   filterBranch?: PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch|null,
-     *   filtersUpdatedAt?: \DateTimeInterface|null,
-     *   listPermissions?: PublicListPermissions|null,
-     *   membershipSettings?: PublicMembershipSettings|null,
-     *   size?: int|null,
-     *   updatedAt?: \DateTimeInterface|null,
-     *   updatedByID?: string|null,
-     * } $updatedList
+     * @param PublicObjectListShape $updatedList
      */
     public function withUpdatedList(PublicObjectList|array $updatedList): self
     {

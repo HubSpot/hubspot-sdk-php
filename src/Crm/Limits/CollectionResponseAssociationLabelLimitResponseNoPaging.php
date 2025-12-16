@@ -7,11 +7,12 @@ namespace HubspotSDK\Crm\Limits;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\Objects\Schemas\ObjectsSchemasObjectTypeDefinition;
 
 /**
+ * @phpstan-import-type AssociationLabelLimitResponseShape from \HubspotSDK\Crm\Limits\AssociationLabelLimitResponse
+ *
  * @phpstan-type CollectionResponseAssociationLabelLimitResponseNoPagingShape = array{
- *   results: list<AssociationLabelLimitResponse>
+ *   results: list<AssociationLabelLimitResponseShape>
  * }
  */
 final class CollectionResponseAssociationLabelLimitResponseNoPaging implements BaseModel
@@ -47,14 +48,7 @@ final class CollectionResponseAssociationLabelLimitResponseNoPaging implements B
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<AssociationLabelLimitResponse|array{
-     *   allLabels: list<string>,
-     *   fromObjectType: ObjectsSchemasObjectTypeDefinition,
-     *   limit: int,
-     *   percentage: float,
-     *   toObjectType: ObjectsSchemasObjectTypeDefinition,
-     *   usage: int,
-     * }> $results
+     * @param list<AssociationLabelLimitResponseShape> $results
      */
     public static function with(array $results): self
     {
@@ -66,14 +60,7 @@ final class CollectionResponseAssociationLabelLimitResponseNoPaging implements B
     }
 
     /**
-     * @param list<AssociationLabelLimitResponse|array{
-     *   allLabels: list<string>,
-     *   fromObjectType: ObjectsSchemasObjectTypeDefinition,
-     *   limit: int,
-     *   percentage: float,
-     *   toObjectType: ObjectsSchemasObjectTypeDefinition,
-     *   usage: int,
-     * }> $results
+     * @param list<AssociationLabelLimitResponseShape> $results
      */
     public function withResults(array $results): self
     {

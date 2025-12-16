@@ -23,7 +23,7 @@ interface PipelinesRawContract
      * @api
      *
      * @param string $objectType The object type of the pipeline being created (ex. deals or tickets)
-     * @param array<mixed>|PipelineCreateParams $params
+     * @param array<string,mixed>|PipelineCreateParams $params
      *
      * @return BaseResponse<Pipeline>
      *
@@ -39,7 +39,7 @@ interface PipelinesRawContract
      * @api
      *
      * @param string $pipelineID path param: The unique identifier of the pipeline to be updated
-     * @param array<mixed>|PipelineUpdateParams $params
+     * @param array<string,mixed>|PipelineUpdateParams $params
      *
      * @return BaseResponse<Pipeline>
      *
@@ -69,7 +69,7 @@ interface PipelinesRawContract
      * @api
      *
      * @param string $pipelineID path param: The unique identifier of the pipeline to be deleted
-     * @param array<mixed>|PipelineDeleteParams $params
+     * @param array<string,mixed>|PipelineDeleteParams $params
      *
      * @return BaseResponse<mixed>
      *
@@ -85,7 +85,7 @@ interface PipelinesRawContract
      * @api
      *
      * @param string $pipelineID the unique identifier of the pipeline to be retrieved
-     * @param array<mixed>|PipelineGetParams $params
+     * @param array<string,mixed>|PipelineGetParams $params
      *
      * @return BaseResponse<Pipeline>
      *
@@ -101,7 +101,7 @@ interface PipelinesRawContract
      * @api
      *
      * @param string $pipelineID the unique identifier for the pipeline whose audit history is being retrieved
-     * @param array<mixed>|PipelineGetAuditParams $params
+     * @param array<string,mixed>|PipelineGetAuditParams $params
      *
      * @return BaseResponse<CollectionResponsePublicAuditInfoNoPaging>
      *
@@ -117,7 +117,7 @@ interface PipelinesRawContract
      * @api
      *
      * @param string $pipelineID path param: The unique identifier of the pipeline to be replaced
-     * @param array<mixed>|PipelineReplaceParams $params
+     * @param array<string,mixed>|PipelineReplaceParams $params
      *
      * @return BaseResponse<Pipeline>
      *

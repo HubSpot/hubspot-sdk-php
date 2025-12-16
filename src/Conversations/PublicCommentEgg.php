@@ -12,10 +12,12 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type AttachmentShape from \HubspotSDK\Conversations\PublicCommentEgg\Attachment
+ *
  * @phpstan-type PublicCommentEggShape = array{
- *   attachments: list<PublicFileEgg|PublicQuickRepliesEgg|PublicSocialMediaEgg>,
+ *   attachments: list<AttachmentShape>,
  *   text: string,
- *   type: value-of<Type>,
+ *   type: Type|value-of<Type>,
  *   richText?: string|null,
  * }
  */
@@ -64,15 +66,7 @@ final class PublicCommentEgg implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicFileEgg|array{
-     *   fileID: string, type: value-of<PublicFileEgg\Type>
-     * }|PublicQuickRepliesEgg|array{
-     *   quickReplies: list<QuickReply>,
-     *   type: value-of<PublicQuickRepliesEgg\Type>,
-     * }|PublicSocialMediaEgg|array{
-     *   socialMetadata: SocialMetadata,
-     *   type: value-of<PublicSocialMediaEgg\Type>,
-     * }> $attachments
+     * @param list<AttachmentShape> $attachments
      * @param Type|value-of<Type> $type
      */
     public static function with(
@@ -93,15 +87,7 @@ final class PublicCommentEgg implements BaseModel
     }
 
     /**
-     * @param list<PublicFileEgg|array{
-     *   fileID: string, type: value-of<PublicFileEgg\Type>
-     * }|PublicQuickRepliesEgg|array{
-     *   quickReplies: list<QuickReply>,
-     *   type: value-of<PublicQuickRepliesEgg\Type>,
-     * }|PublicSocialMediaEgg|array{
-     *   socialMetadata: SocialMetadata,
-     *   type: value-of<PublicSocialMediaEgg\Type>,
-     * }> $attachments
+     * @param list<AttachmentShape> $attachments
      */
     public function withAttachments(array $attachments): self
     {

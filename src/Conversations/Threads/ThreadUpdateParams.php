@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Conversations\ThreadsService::update()
  *
  * @phpstan-type ThreadUpdateParamsShape = array{
- *   archived?: bool, status?: Status|value-of<Status>
+ *   archived?: bool|null, status?: null|Status|value-of<Status>
  * }
  */
 final class ThreadUpdateParams implements BaseModel

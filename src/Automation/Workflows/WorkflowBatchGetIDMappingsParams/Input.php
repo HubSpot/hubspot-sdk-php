@@ -10,6 +10,12 @@ use HubspotSDK\Core\Concerns\SdkUnion;
 use HubspotSDK\Core\Conversion\Contracts\Converter;
 use HubspotSDK\Core\Conversion\Contracts\ConverterSource;
 
+/**
+ * @phpstan-import-type APIFlowBatchFetchMigrationFlowIDCoordinateShape from \HubspotSDK\Automation\Workflows\APIFlowBatchFetchMigrationFlowIDCoordinate
+ * @phpstan-import-type APIFlowBatchFetchMigrationWorkflowIDCoordinateShape from \HubspotSDK\Automation\Workflows\APIFlowBatchFetchMigrationWorkflowIDCoordinate
+ *
+ * @phpstan-type InputShape = APIFlowBatchFetchMigrationFlowIDCoordinateShape|APIFlowBatchFetchMigrationWorkflowIDCoordinateShape
+ */
 final class Input implements ConverterSource
 {
     use SdkUnion;

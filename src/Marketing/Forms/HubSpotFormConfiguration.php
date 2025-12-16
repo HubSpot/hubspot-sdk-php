@@ -8,23 +8,25 @@ use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Marketing\Forms\FormPostSubmitAction\Type;
 use HubspotSDK\Marketing\Forms\HubSpotFormConfiguration\Language;
 
 /**
+ * @phpstan-import-type FormPostSubmitActionShape from \HubspotSDK\Marketing\Forms\FormPostSubmitAction
+ * @phpstan-import-type LifecycleStageShape from \HubspotSDK\Marketing\Forms\LifecycleStage
+ *
  * @phpstan-type HubSpotFormConfigurationShape = array{
  *   allowLinkToResetKnownValues: bool,
  *   archivable: bool,
  *   cloneable: bool,
  *   createNewContactForNewEmail: bool,
  *   editable: bool,
- *   language: value-of<Language>,
+ *   language: Language|value-of<Language>,
  *   notifyContactOwner: bool,
  *   notifyRecipients: list<string>,
- *   postSubmitAction: FormPostSubmitAction,
+ *   postSubmitAction: FormPostSubmitAction|FormPostSubmitActionShape,
  *   prePopulateKnownValues: bool,
  *   recaptchaEnabled: bool,
- *   lifecycleStages?: list<LifecycleStage>|null,
+ *   lifecycleStages?: list<LifecycleStageShape>|null,
  * }
  */
 final class HubSpotFormConfiguration implements BaseModel
@@ -155,12 +157,8 @@ final class HubSpotFormConfiguration implements BaseModel
      *
      * @param Language|value-of<Language> $language
      * @param list<string> $notifyRecipients
-     * @param FormPostSubmitAction|array{
-     *   type: value-of<Type>, value: string
-     * } $postSubmitAction
-     * @param list<LifecycleStage|array{
-     *   objectTypeID: string, value: string
-     * }> $lifecycleStages
+     * @param FormPostSubmitActionShape $postSubmitAction
+     * @param list<LifecycleStageShape> $lifecycleStages
      */
     public static function with(
         bool $allowLinkToResetKnownValues,
@@ -292,9 +290,7 @@ final class HubSpotFormConfiguration implements BaseModel
     /**
      * What should happen after the customer submits the form.
      *
-     * @param FormPostSubmitAction|array{
-     *   type: value-of<Type>, value: string
-     * } $postSubmitAction
+     * @param FormPostSubmitActionShape $postSubmitAction
      */
     public function withPostSubmitAction(
         FormPostSubmitAction|array $postSubmitAction
@@ -329,9 +325,7 @@ final class HubSpotFormConfiguration implements BaseModel
     }
 
     /**
-     * @param list<LifecycleStage|array{
-     *   objectTypeID: string, value: string
-     * }> $lifecycleStages
+     * @param list<LifecycleStageShape> $lifecycleStages
      */
     public function withLifecycleStages(array $lifecycleStages): self
     {

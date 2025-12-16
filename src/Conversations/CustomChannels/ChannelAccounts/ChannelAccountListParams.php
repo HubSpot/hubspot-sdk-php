@@ -15,13 +15,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Conversations\CustomChannels\ChannelAccountsService::list()
  *
  * @phpstan-type ChannelAccountListParamsShape = array{
- *   after?: string,
- *   archived?: bool,
- *   defaultPageLength?: int,
- *   deliveryIdentifierType?: list<string>,
- *   deliveryIdentifierValue?: list<string>,
- *   limit?: int,
- *   sort?: list<string>,
+ *   after?: string|null,
+ *   archived?: bool|null,
+ *   defaultPageLength?: int|null,
+ *   deliveryIdentifierType?: list<string>|null,
+ *   deliveryIdentifierValue?: list<string>|null,
+ *   limit?: int|null,
+ *   sort?: list<string>|null,
  * }
  */
 final class ChannelAccountListParams implements BaseModel

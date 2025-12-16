@@ -4,18 +4,18 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Account;
 
-use HubspotSDK\Account\APIUsage\FetchStatus;
 use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\NextPage;
 use HubspotSDK\Paging;
-use HubspotSDK\PreviousPage;
 
 /**
+ * @phpstan-import-type APIUsageShape from \HubspotSDK\Account\APIUsage
+ * @phpstan-import-type PagingShape from \HubspotSDK\Paging
+ *
  * @phpstan-type CollectionResponseAPIUsageShape = array{
- *   results: list<APIUsage>, paging?: Paging|null
+ *   results: list<APIUsageShape>, paging?: null|Paging|PagingShape
  * }
  */
 final class CollectionResponseAPIUsage implements BaseModel
@@ -54,15 +54,8 @@ final class CollectionResponseAPIUsage implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<APIUsage|array{
-     *   collectedAt: \DateTimeInterface,
-     *   currentUsage: int,
-     *   fetchStatus: value-of<FetchStatus>,
-     *   name: string,
-     *   usageLimit: int,
-     *   resetsAt?: \DateTimeInterface|null,
-     * }> $results
-     * @param Paging|array{next?: NextPage|null, prev?: PreviousPage|null} $paging
+     * @param list<APIUsageShape> $results
+     * @param PagingShape $paging
      */
     public static function with(
         array $results,
@@ -78,14 +71,7 @@ final class CollectionResponseAPIUsage implements BaseModel
     }
 
     /**
-     * @param list<APIUsage|array{
-     *   collectedAt: \DateTimeInterface,
-     *   currentUsage: int,
-     *   fetchStatus: value-of<FetchStatus>,
-     *   name: string,
-     *   usageLimit: int,
-     *   resetsAt?: \DateTimeInterface|null,
-     * }> $results
+     * @param list<APIUsageShape> $results
      */
     public function withResults(array $results): self
     {
@@ -96,7 +82,7 @@ final class CollectionResponseAPIUsage implements BaseModel
     }
 
     /**
-     * @param Paging|array{next?: NextPage|null, prev?: PreviousPage|null} $paging
+     * @param PagingShape $paging
      */
     public function withPaging(Paging|array $paging): self
     {

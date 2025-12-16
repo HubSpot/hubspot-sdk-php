@@ -15,12 +15,12 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Files\FileOperationsService::upload()
  *
  * @phpstan-type FileOperationUploadParamsShape = array{
- *   charsetHunch?: string,
- *   file?: string,
- *   fileName?: string,
- *   folderID?: string,
- *   folderPath?: string,
- *   options?: string,
+ *   charsetHunch?: string|null,
+ *   file?: string|null,
+ *   fileName?: string|null,
+ *   folderID?: string|null,
+ *   folderPath?: string|null,
+ *   options?: string|null,
  * }
  */
 final class FileOperationUploadParams implements BaseModel

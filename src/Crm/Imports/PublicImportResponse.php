@@ -8,23 +8,25 @@ use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\Imports\ImportTemplate\TemplateType;
 use HubspotSDK\Crm\Imports\PublicImportResponse\ImportSource;
 use HubspotSDK\Crm\Imports\PublicImportResponse\State;
 
 /**
+ * @phpstan-import-type PublicImportMetadataShape from \HubspotSDK\Crm\Imports\PublicImportMetadata
+ * @phpstan-import-type ImportTemplateShape from \HubspotSDK\Crm\Imports\ImportTemplate
+ *
  * @phpstan-type PublicImportResponseShape = array{
  *   id: string,
  *   createdAt: \DateTimeInterface,
  *   mappedObjectTypeIDs: list<string>,
- *   metadata: PublicImportMetadata,
+ *   metadata: PublicImportMetadata|PublicImportMetadataShape,
  *   optOutImport: bool,
- *   state: value-of<State>,
+ *   state: State|value-of<State>,
  *   updatedAt: \DateTimeInterface,
  *   importName?: string|null,
  *   importRequestJson?: mixed,
- *   importSource?: value-of<ImportSource>|null,
- *   importTemplate?: ImportTemplate|null,
+ *   importSource?: null|ImportSource|value-of<ImportSource>,
+ *   importTemplate?: null|ImportTemplate|ImportTemplateShape,
  * }
  */
 final class PublicImportResponse implements BaseModel
@@ -115,16 +117,10 @@ final class PublicImportResponse implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<string> $mappedObjectTypeIDs
-     * @param PublicImportMetadata|array{
-     *   counters: array<string,int>,
-     *   fileIDs: list<string>,
-     *   objectLists: list<PublicObjectListRecord>,
-     * } $metadata
+     * @param PublicImportMetadataShape $metadata
      * @param State|value-of<State> $state
      * @param ImportSource|value-of<ImportSource> $importSource
-     * @param ImportTemplate|array{
-     *   templateID: int, templateType: value-of<TemplateType>
-     * } $importTemplate
+     * @param ImportTemplateShape $importTemplate
      */
     public static function with(
         string $id,
@@ -185,11 +181,7 @@ final class PublicImportResponse implements BaseModel
     }
 
     /**
-     * @param PublicImportMetadata|array{
-     *   counters: array<string,int>,
-     *   fileIDs: list<string>,
-     *   objectLists: list<PublicObjectListRecord>,
-     * } $metadata
+     * @param PublicImportMetadataShape $metadata
      */
     public function withMetadata(PublicImportMetadata|array $metadata): self
     {
@@ -259,9 +251,7 @@ final class PublicImportResponse implements BaseModel
     }
 
     /**
-     * @param ImportTemplate|array{
-     *   templateID: int, templateType: value-of<TemplateType>
-     * } $importTemplate
+     * @param ImportTemplateShape $importTemplate
      */
     public function withImportTemplate(
         ImportTemplate|array $importTemplate

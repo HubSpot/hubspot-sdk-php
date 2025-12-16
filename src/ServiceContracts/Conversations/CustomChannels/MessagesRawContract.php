@@ -18,7 +18,7 @@ interface MessagesRawContract
      * @api
      *
      * @param int $channelID The channel the message will be sent over
-     * @param array<mixed>|MessageCreateParams $params
+     * @param array<string,mixed>|MessageCreateParams $params
      *
      * @return BaseResponse<ConversationsPublicConversationsMessage>
      *
@@ -34,7 +34,7 @@ interface MessagesRawContract
      * @api
      *
      * @param string $messageID Path param: The id of the message
-     * @param array<mixed>|MessageUpdateParams $params
+     * @param array<string,mixed>|MessageUpdateParams $params
      *
      * @return BaseResponse<ConversationsPublicConversationsMessage>
      *
@@ -50,7 +50,7 @@ interface MessagesRawContract
      * @api
      *
      * @param string $messageID The id of the message
-     * @param array<mixed>|MessageGetParams $params
+     * @param array<string,mixed>|MessageGetParams $params
      *
      * @return BaseResponse<ConversationsPublicConversationsMessage>
      *

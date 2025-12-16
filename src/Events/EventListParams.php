@@ -16,19 +16,22 @@ use HubspotSDK\Events\EventListParams\Property;
  *
  * @see HubspotSDK\Services\EventsService::list()
  *
+ * @phpstan-import-type ObjectPropertyShape from \HubspotSDK\Events\EventListParams\ObjectProperty
+ * @phpstan-import-type PropertyShape from \HubspotSDK\Events\EventListParams\Property
+ *
  * @phpstan-type EventListParamsShape = array{
- *   id?: list<string>,
- *   after?: string,
- *   before?: string,
- *   eventType?: string,
- *   limit?: int,
- *   objectID?: int,
- *   objectProperty?: ObjectProperty|array{_propname?: mixed},
- *   objectType?: string,
- *   occurredAfter?: \DateTimeInterface,
- *   occurredBefore?: \DateTimeInterface,
- *   property?: Property|array{_propname?: mixed},
- *   sort?: list<string>,
+ *   id?: list<string>|null,
+ *   after?: string|null,
+ *   before?: string|null,
+ *   eventType?: string|null,
+ *   limit?: int|null,
+ *   objectID?: int|null,
+ *   objectProperty?: ObjectPropertyShape|null,
+ *   objectType?: string|null,
+ *   occurredAfter?: \DateTimeInterface|null,
+ *   occurredBefore?: \DateTimeInterface|null,
+ *   property?: PropertyShape|null,
+ *   sort?: list<string>|null,
  * }
  */
 final class EventListParams implements BaseModel
@@ -115,8 +118,8 @@ final class EventListParams implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<string> $id
-     * @param ObjectProperty|array{_propname?: mixed} $objectProperty
-     * @param Property|array{_propname?: mixed} $property
+     * @param ObjectPropertyShape $objectProperty
+     * @param PropertyShape $property
      * @param list<string> $sort
      */
     public static function with(
@@ -217,7 +220,7 @@ final class EventListParams implements BaseModel
     }
 
     /**
-     * @param ObjectProperty|array{_propname?: mixed} $objectProperty
+     * @param ObjectPropertyShape $objectProperty
      */
     public function withObjectProperty(
         ObjectProperty|array $objectProperty
@@ -262,7 +265,7 @@ final class EventListParams implements BaseModel
     }
 
     /**
-     * @param Property|array{_propname?: mixed} $property
+     * @param PropertyShape $property
      */
     public function withProperty(Property|array $property): self
     {

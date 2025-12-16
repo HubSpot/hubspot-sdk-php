@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Crm\ListsService::updateName()
  *
  * @phpstan-type ListUpdateNameParamsShape = array{
- *   includeFilters?: bool, listName?: string
+ *   includeFilters?: bool|null, listName?: string|null
  * }
  */
 final class ListUpdateNameParams implements BaseModel

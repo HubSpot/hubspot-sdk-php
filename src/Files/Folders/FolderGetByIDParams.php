@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Services\Files\FoldersService::getByID()
  *
- * @phpstan-type FolderGetByIDParamsShape = array{properties?: list<string>}
+ * @phpstan-type FolderGetByIDParamsShape = array{properties?: list<string>|null}
  */
 final class FolderGetByIDParams implements BaseModel
 {

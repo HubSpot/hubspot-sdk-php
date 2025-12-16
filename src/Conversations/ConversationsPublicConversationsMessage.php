@@ -8,33 +8,37 @@ use HubspotSDK\Conversations\ConversationsPublicConversationsMessage\Attachment;
 use HubspotSDK\Conversations\ConversationsPublicConversationsMessage\Direction;
 use HubspotSDK\Conversations\ConversationsPublicConversationsMessage\TruncationStatus;
 use HubspotSDK\Conversations\ConversationsPublicConversationsMessage\Type;
-use HubspotSDK\Conversations\PublicClient\ClientType;
-use HubspotSDK\Conversations\PublicMessageStatus\StatusType;
 use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type AttachmentShape from \HubspotSDK\Conversations\ConversationsPublicConversationsMessage\Attachment
+ * @phpstan-import-type PublicClientShape from \HubspotSDK\Conversations\PublicClient
+ * @phpstan-import-type PublicRecipientShape from \HubspotSDK\Conversations\PublicRecipient
+ * @phpstan-import-type PublicSenderShape from \HubspotSDK\Conversations\PublicSender
+ * @phpstan-import-type PublicMessageStatusShape from \HubspotSDK\Conversations\PublicMessageStatus
+ *
  * @phpstan-type ConversationsPublicConversationsMessageShape = array{
  *   id: string,
  *   archived: bool,
- *   attachments: list<PublicFile|PublicLocation|PublicContact|PublicUnsupportedContent|PublicMessageHeader|PublicQuickReplies|PublicWhatsAppTemplateMetadata|PublicSocialMetadataAttachment>,
+ *   attachments: list<AttachmentShape>,
  *   channelAccountID: string,
  *   channelID: string,
- *   client: PublicClient,
+ *   client: PublicClient|PublicClientShape,
  *   conversationsThreadID: string,
  *   createdAt: \DateTimeInterface,
  *   createdBy: string,
- *   direction: value-of<Direction>,
- *   recipients: list<PublicRecipient>,
- *   senders: list<PublicSender>,
+ *   direction: Direction|value-of<Direction>,
+ *   recipients: list<PublicRecipientShape>,
+ *   senders: list<PublicSenderShape>,
  *   text: string,
- *   truncationStatus: value-of<TruncationStatus>,
- *   type: value-of<Type>,
+ *   truncationStatus: TruncationStatus|value-of<TruncationStatus>,
+ *   type: Type|value-of<Type>,
  *   inReplyToID?: string|null,
  *   richText?: string|null,
- *   status?: PublicMessageStatus|null,
+ *   status?: null|PublicMessageStatus|PublicMessageStatusShape,
  *   subject?: string|null,
  *   updatedAt?: \DateTimeInterface|null,
  * }
@@ -167,64 +171,14 @@ final class ConversationsPublicConversationsMessage implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicFile|array{
-     *   fileID: string,
-     *   fileUsageType: string,
-     *   type: value-of<PublicFile\Type>,
-     *   name?: string|null,
-     *   url?: string|null,
-     * }|PublicLocation|array{
-     *   latitude: float,
-     *   longitude: float,
-     *   type: value-of<PublicLocation\Type>,
-     *   address?: string|null,
-     *   name?: string|null,
-     *   url?: string|null,
-     * }|PublicContact|array{
-     *   contactProfile: ContactProfile,
-     *   type: value-of<PublicContact\Type>,
-     * }|PublicUnsupportedContent|array{
-     *   type: value-of<PublicUnsupportedContent\Type>
-     * }|PublicMessageHeader|array{
-     *   type: value-of<PublicMessageHeader\Type>,
-     *   fileID?: int|null,
-     *   text?: string|null,
-     * }|PublicQuickReplies|array{
-     *   allowMultiSelect: bool,
-     *   allowUserInput: bool,
-     *   quickReplies: list<QuickReply>,
-     *   type: value-of<PublicQuickReplies\Type>,
-     * }|PublicWhatsAppTemplateMetadata|array{
-     *   crmObjectIDs: array<string,int>,
-     *   mappedTemplateID: string,
-     *   parameters: array<string,string>,
-     *   type: value-of<PublicWhatsAppTemplateMetadata\Type>,
-     * }|PublicSocialMetadataAttachment|array{
-     *   socialMetadata: SocialMetadata,
-     *   type: value-of<PublicSocialMetadataAttachment\Type>,
-     * }> $attachments
-     * @param PublicClient|array{
-     *   clientType: value-of<ClientType>, integrationAppID?: int|null
-     * } $client
+     * @param list<AttachmentShape> $attachments
+     * @param PublicClientShape $client
      * @param Direction|value-of<Direction> $direction
-     * @param list<PublicRecipient|array{
-     *   deliveryIdentifier: PublicDeliveryIdentifier,
-     *   actorID?: string|null,
-     *   name?: string|null,
-     *   recipientField?: string|null,
-     * }> $recipients
-     * @param list<PublicSender|array{
-     *   actorID?: string|null,
-     *   deliveryIdentifier?: PublicDeliveryIdentifier|null,
-     *   name?: string|null,
-     *   senderField?: string|null,
-     * }> $senders
+     * @param list<PublicRecipientShape> $recipients
+     * @param list<PublicSenderShape> $senders
      * @param TruncationStatus|value-of<TruncationStatus> $truncationStatus
      * @param Type|value-of<Type> $type
-     * @param PublicMessageStatus|array{
-     *   statusType: value-of<StatusType>,
-     *   failureDetails?: PublicMessageFailureDetails|null,
-     * } $status
+     * @param PublicMessageStatusShape $status
      */
     public static function with(
         string $id,
@@ -292,42 +246,7 @@ final class ConversationsPublicConversationsMessage implements BaseModel
     }
 
     /**
-     * @param list<PublicFile|array{
-     *   fileID: string,
-     *   fileUsageType: string,
-     *   type: value-of<PublicFile\Type>,
-     *   name?: string|null,
-     *   url?: string|null,
-     * }|PublicLocation|array{
-     *   latitude: float,
-     *   longitude: float,
-     *   type: value-of<PublicLocation\Type>,
-     *   address?: string|null,
-     *   name?: string|null,
-     *   url?: string|null,
-     * }|PublicContact|array{
-     *   contactProfile: ContactProfile,
-     *   type: value-of<PublicContact\Type>,
-     * }|PublicUnsupportedContent|array{
-     *   type: value-of<PublicUnsupportedContent\Type>
-     * }|PublicMessageHeader|array{
-     *   type: value-of<PublicMessageHeader\Type>,
-     *   fileID?: int|null,
-     *   text?: string|null,
-     * }|PublicQuickReplies|array{
-     *   allowMultiSelect: bool,
-     *   allowUserInput: bool,
-     *   quickReplies: list<QuickReply>,
-     *   type: value-of<PublicQuickReplies\Type>,
-     * }|PublicWhatsAppTemplateMetadata|array{
-     *   crmObjectIDs: array<string,int>,
-     *   mappedTemplateID: string,
-     *   parameters: array<string,string>,
-     *   type: value-of<PublicWhatsAppTemplateMetadata\Type>,
-     * }|PublicSocialMetadataAttachment|array{
-     *   socialMetadata: SocialMetadata,
-     *   type: value-of<PublicSocialMetadataAttachment\Type>,
-     * }> $attachments
+     * @param list<AttachmentShape> $attachments
      */
     public function withAttachments(array $attachments): self
     {
@@ -354,9 +273,7 @@ final class ConversationsPublicConversationsMessage implements BaseModel
     }
 
     /**
-     * @param PublicClient|array{
-     *   clientType: value-of<ClientType>, integrationAppID?: int|null
-     * } $client
+     * @param PublicClientShape $client
      */
     public function withClient(PublicClient|array $client): self
     {
@@ -403,12 +320,7 @@ final class ConversationsPublicConversationsMessage implements BaseModel
     }
 
     /**
-     * @param list<PublicRecipient|array{
-     *   deliveryIdentifier: PublicDeliveryIdentifier,
-     *   actorID?: string|null,
-     *   name?: string|null,
-     *   recipientField?: string|null,
-     * }> $recipients
+     * @param list<PublicRecipientShape> $recipients
      */
     public function withRecipients(array $recipients): self
     {
@@ -419,12 +331,7 @@ final class ConversationsPublicConversationsMessage implements BaseModel
     }
 
     /**
-     * @param list<PublicSender|array{
-     *   actorID?: string|null,
-     *   deliveryIdentifier?: PublicDeliveryIdentifier|null,
-     *   name?: string|null,
-     *   senderField?: string|null,
-     * }> $senders
+     * @param list<PublicSenderShape> $senders
      */
     public function withSenders(array $senders): self
     {
@@ -482,10 +389,7 @@ final class ConversationsPublicConversationsMessage implements BaseModel
     }
 
     /**
-     * @param PublicMessageStatus|array{
-     *   statusType: value-of<StatusType>,
-     *   failureDetails?: PublicMessageFailureDetails|null,
-     * } $status
+     * @param PublicMessageStatusShape $status
      */
     public function withStatus(PublicMessageStatus|array $status): self
     {

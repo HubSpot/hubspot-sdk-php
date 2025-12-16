@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Services\Files\FoldersService::getByPath()
  *
- * @phpstan-type FolderGetByPathParamsShape = array{properties?: list<string>}
+ * @phpstan-type FolderGetByPathParamsShape = array{properties?: list<string>|null}
  */
 final class FolderGetByPathParams implements BaseModel
 {

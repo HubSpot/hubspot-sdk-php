@@ -16,7 +16,7 @@ interface ChannelsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|ChannelListParams $params
+     * @param array<string,mixed>|ChannelListParams $params
      *
      * @return BaseResponse<Page<PublicChannel>>
      *

@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   crmObjectIDs: array<string,int>,
  *   mappedTemplateID: string,
  *   parameters: array<string,string>,
- *   type: value-of<Type>,
+ *   type: Type|value-of<Type>,
  * }
  */
 final class PublicWhatsAppTemplateMetadata implements BaseModel

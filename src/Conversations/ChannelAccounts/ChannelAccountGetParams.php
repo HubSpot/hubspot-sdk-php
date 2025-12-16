@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * @see HubspotSDK\Services\Conversations\ChannelAccountsService::get()
  *
- * @phpstan-type ChannelAccountGetParamsShape = array{archived?: bool}
+ * @phpstan-type ChannelAccountGetParamsShape = array{archived?: bool|null}
  */
 final class ChannelAccountGetParams implements BaseModel
 {

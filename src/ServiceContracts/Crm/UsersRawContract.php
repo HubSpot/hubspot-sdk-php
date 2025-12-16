@@ -23,7 +23,7 @@ interface UsersRawContract
     /**
      * @api
      *
-     * @param array<mixed>|UserCreateParams $params
+     * @param array<string,mixed>|UserCreateParams $params
      *
      * @return BaseResponse<CreatedResponseSimplePublicObject>
      *
@@ -38,7 +38,7 @@ interface UsersRawContract
      * @api
      *
      * @param string $userID Path param:
-     * @param array<mixed>|UserUpdateParams $params
+     * @param array<string,mixed>|UserUpdateParams $params
      *
      * @return BaseResponse<SimplePublicObject>
      *
@@ -53,7 +53,7 @@ interface UsersRawContract
     /**
      * @api
      *
-     * @param array<mixed>|UserListParams $params
+     * @param array<string,mixed>|UserListParams $params
      *
      * @return BaseResponse<Page<SimplePublicObjectWithAssociations>>
      *
@@ -79,7 +79,7 @@ interface UsersRawContract
     /**
      * @api
      *
-     * @param array<mixed>|UserGetParams $params
+     * @param array<string,mixed>|UserGetParams $params
      *
      * @return BaseResponse<SimplePublicObjectWithAssociations>
      *
@@ -94,7 +94,7 @@ interface UsersRawContract
     /**
      * @api
      *
-     * @param array<mixed>|UserSearchParams $params
+     * @param array<string,mixed>|UserSearchParams $params
      *
      * @return BaseResponse<CollectionResponseWithTotalSimplePublicObject>
      *

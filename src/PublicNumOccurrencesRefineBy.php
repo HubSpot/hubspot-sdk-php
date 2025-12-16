@@ -12,7 +12,9 @@ use HubspotSDK\PublicNumOccurrencesRefineBy\Type;
 
 /**
  * @phpstan-type PublicNumOccurrencesRefineByShape = array{
- *   type: value-of<Type>, maxOccurrences?: int|null, minOccurrences?: int|null
+ *   type: Type|value-of<Type>,
+ *   maxOccurrences?: int|null,
+ *   minOccurrences?: int|null,
  * }
  */
 final class PublicNumOccurrencesRefineBy implements BaseModel

@@ -7,11 +7,12 @@ namespace HubspotSDK\Settings\Currencies;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Settings\Currencies\ExchangeRateCreateRequest\FromCurrencyCode;
 
 /**
+ * @phpstan-import-type ExchangeRateCreateRequestShape from \HubspotSDK\Settings\Currencies\ExchangeRateCreateRequest
+ *
  * @phpstan-type BatchInputExchangeRateCreateRequestShape = array{
- *   inputs: list<ExchangeRateCreateRequest>
+ *   inputs: list<ExchangeRateCreateRequestShape>
  * }
  */
 final class BatchInputExchangeRateCreateRequest implements BaseModel
@@ -47,11 +48,7 @@ final class BatchInputExchangeRateCreateRequest implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<ExchangeRateCreateRequest|array{
-     *   conversionRate: float,
-     *   fromCurrencyCode: value-of<FromCurrencyCode>,
-     *   effectiveAt?: \DateTimeInterface|null,
-     * }> $inputs
+     * @param list<ExchangeRateCreateRequestShape> $inputs
      */
     public static function with(array $inputs): self
     {
@@ -63,11 +60,7 @@ final class BatchInputExchangeRateCreateRequest implements BaseModel
     }
 
     /**
-     * @param list<ExchangeRateCreateRequest|array{
-     *   conversionRate: float,
-     *   fromCurrencyCode: value-of<FromCurrencyCode>,
-     *   effectiveAt?: \DateTimeInterface|null,
-     * }> $inputs
+     * @param list<ExchangeRateCreateRequestShape> $inputs
      */
     public function withInputs(array $inputs): self
     {

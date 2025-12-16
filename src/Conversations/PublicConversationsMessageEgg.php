@@ -12,14 +12,17 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type AttachmentShape from \HubspotSDK\Conversations\PublicConversationsMessageEgg\Attachment
+ * @phpstan-import-type PublicRecipientEggShape from \HubspotSDK\Conversations\PublicRecipientEgg
+ *
  * @phpstan-type PublicConversationsMessageEggShape = array{
- *   attachments: list<PublicFileEgg|PublicQuickRepliesEgg|PublicSocialMediaEgg>,
+ *   attachments: list<AttachmentShape>,
  *   channelAccountID: string,
  *   channelID: string,
- *   recipients: list<PublicRecipientEgg>,
+ *   recipients: list<PublicRecipientEggShape>,
  *   senderActorID: string,
  *   text: string,
- *   type: value-of<Type>,
+ *   type: Type|value-of<Type>,
  *   richText?: string|null,
  *   subject?: string|null,
  * }
@@ -100,22 +103,8 @@ final class PublicConversationsMessageEgg implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicFileEgg|array{
-     *   fileID: string, type: value-of<PublicFileEgg\Type>
-     * }|PublicQuickRepliesEgg|array{
-     *   quickReplies: list<QuickReply>,
-     *   type: value-of<PublicQuickRepliesEgg\Type>,
-     * }|PublicSocialMediaEgg|array{
-     *   socialMetadata: SocialMetadata,
-     *   type: value-of<PublicSocialMediaEgg\Type>,
-     * }> $attachments
-     * @param list<PublicRecipientEgg|array{
-     *   deliveryIdentifiers: list<PublicDeliveryIdentifier>,
-     *   actorID?: string|null,
-     *   deliveryIdentifier?: PublicDeliveryIdentifier|null,
-     *   name?: string|null,
-     *   recipientField?: string|null,
-     * }> $recipients
+     * @param list<AttachmentShape> $attachments
+     * @param list<PublicRecipientEggShape> $recipients
      * @param Type|value-of<Type> $type
      */
     public static function with(
@@ -146,15 +135,7 @@ final class PublicConversationsMessageEgg implements BaseModel
     }
 
     /**
-     * @param list<PublicFileEgg|array{
-     *   fileID: string, type: value-of<PublicFileEgg\Type>
-     * }|PublicQuickRepliesEgg|array{
-     *   quickReplies: list<QuickReply>,
-     *   type: value-of<PublicQuickRepliesEgg\Type>,
-     * }|PublicSocialMediaEgg|array{
-     *   socialMetadata: SocialMetadata,
-     *   type: value-of<PublicSocialMediaEgg\Type>,
-     * }> $attachments
+     * @param list<AttachmentShape> $attachments
      */
     public function withAttachments(array $attachments): self
     {
@@ -181,13 +162,7 @@ final class PublicConversationsMessageEgg implements BaseModel
     }
 
     /**
-     * @param list<PublicRecipientEgg|array{
-     *   deliveryIdentifiers: list<PublicDeliveryIdentifier>,
-     *   actorID?: string|null,
-     *   deliveryIdentifier?: PublicDeliveryIdentifier|null,
-     *   name?: string|null,
-     *   recipientField?: string|null,
-     * }> $recipients
+     * @param list<PublicRecipientEggShape> $recipients
      */
     public function withRecipients(array $recipients): self
     {

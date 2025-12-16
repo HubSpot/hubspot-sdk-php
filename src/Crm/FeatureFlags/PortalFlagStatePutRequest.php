@@ -11,7 +11,7 @@ use HubspotSDK\Crm\FeatureFlags\PortalFlagStatePutRequest\FlagState;
 
 /**
  * @phpstan-type PortalFlagStatePutRequestShape = array{
- *   flagState: value-of<FlagState>
+ *   flagState: FlagState|value-of<FlagState>
  * }
  */
 final class PortalFlagStatePutRequest implements BaseModel

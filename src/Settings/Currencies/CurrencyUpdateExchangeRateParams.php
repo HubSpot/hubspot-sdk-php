@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Settings\CurrenciesService::updateExchangeRate()
  *
  * @phpstan-type CurrencyUpdateExchangeRateParamsShape = array{
- *   conversionRate: float, effectiveAt?: \DateTimeInterface
+ *   conversionRate: float, effectiveAt?: \DateTimeInterface|null
  * }
  */
 final class CurrencyUpdateExchangeRateParams implements BaseModel

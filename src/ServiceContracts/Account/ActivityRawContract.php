@@ -20,7 +20,7 @@ interface ActivityRawContract
     /**
      * @api
      *
-     * @param array<mixed>|ActivityListAuditLogsParams $params
+     * @param array<string,mixed>|ActivityListAuditLogsParams $params
      *
      * @return BaseResponse<Page<PublicAPIUserActionEvent>>
      *
@@ -34,7 +34,7 @@ interface ActivityRawContract
     /**
      * @api
      *
-     * @param array<mixed>|ActivityListLoginActivitiesParams $params
+     * @param array<string,mixed>|ActivityListLoginActivitiesParams $params
      *
      * @return BaseResponse<Page<PublicLoginAudit>>
      *
@@ -48,7 +48,7 @@ interface ActivityRawContract
     /**
      * @api
      *
-     * @param array<mixed>|ActivityListSecurityActivitiesParams $params
+     * @param array<string,mixed>|ActivityListSecurityActivitiesParams $params
      *
      * @return BaseResponse<Page<HydratedCriticalAction>>
      *

@@ -12,7 +12,7 @@ use HubspotSDK\Marketing\Events\ParticipationProperties\AttendanceState;
 
 /**
  * @phpstan-type ParticipationPropertiesShape = array{
- *   attendanceState: value-of<AttendanceState>,
+ *   attendanceState: AttendanceState|value-of<AttendanceState>,
  *   occurredAt: int,
  *   attendanceDurationSeconds?: int|null,
  *   attendancePercentage?: string|null,

@@ -8,6 +8,12 @@ use HubspotSDK\Core\Concerns\SdkUnion;
 use HubspotSDK\Core\Conversion\Contracts\Converter;
 use HubspotSDK\Core\Conversion\Contracts\ConverterSource;
 
+/**
+ * @phpstan-import-type APIContactFlowShape from \HubspotSDK\Automation\Workflows\APIContactFlow
+ * @phpstan-import-type APIPlatformFlowShape from \HubspotSDK\Automation\Workflows\APIPlatformFlow
+ *
+ * @phpstan-type APIFlowShape = APIContactFlowShape|APIPlatformFlowShape
+ */
 final class APIFlow implements ConverterSource
 {
     use SdkUnion;

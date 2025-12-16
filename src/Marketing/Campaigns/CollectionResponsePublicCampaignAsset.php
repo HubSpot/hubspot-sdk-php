@@ -8,13 +8,14 @@ use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\NextPage;
 use HubspotSDK\Paging;
-use HubspotSDK\PreviousPage;
 
 /**
+ * @phpstan-import-type PublicCampaignAssetShape from \HubspotSDK\Marketing\Campaigns\PublicCampaignAsset
+ * @phpstan-import-type PagingShape from \HubspotSDK\Paging
+ *
  * @phpstan-type CollectionResponsePublicCampaignAssetShape = array{
- *   results: list<PublicCampaignAsset>, paging?: Paging|null
+ *   results: list<PublicCampaignAssetShape>, paging?: null|Paging|PagingShape
  * }
  */
 final class CollectionResponsePublicCampaignAsset implements BaseModel
@@ -53,10 +54,8 @@ final class CollectionResponsePublicCampaignAsset implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicCampaignAsset|array{
-     *   id: string, metrics?: array<string,float>|null, name?: string|null
-     * }> $results
-     * @param Paging|array{next?: NextPage|null, prev?: PreviousPage|null} $paging
+     * @param list<PublicCampaignAssetShape> $results
+     * @param PagingShape $paging
      */
     public static function with(
         array $results,
@@ -72,9 +71,7 @@ final class CollectionResponsePublicCampaignAsset implements BaseModel
     }
 
     /**
-     * @param list<PublicCampaignAsset|array{
-     *   id: string, metrics?: array<string,float>|null, name?: string|null
-     * }> $results
+     * @param list<PublicCampaignAssetShape> $results
      */
     public function withResults(array $results): self
     {
@@ -85,7 +82,7 @@ final class CollectionResponsePublicCampaignAsset implements BaseModel
     }
 
     /**
-     * @param Paging|array{next?: NextPage|null, prev?: PreviousPage|null} $paging
+     * @param PagingShape $paging
      */
     public function withPaging(Paging|array $paging): self
     {

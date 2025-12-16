@@ -8,17 +8,17 @@ use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\Extensions\Cards\ActionHookActionBody\HTTPMethod;
-use HubspotSDK\Crm\Extensions\Cards\ActionHookActionBody\Type;
 use HubspotSDK\Crm\Extensions\Cards\IntegratorObjectResult\Action;
-use HubspotSDK\Crm\Extensions\Cards\ObjectToken\DataType;
 
 /**
+ * @phpstan-import-type ActionShape from \HubspotSDK\Crm\Extensions\Cards\IntegratorObjectResult\Action
+ * @phpstan-import-type ObjectTokenShape from \HubspotSDK\Crm\Extensions\Cards\ObjectToken
+ *
  * @phpstan-type IntegratorObjectResultShape = array{
  *   id: string,
- *   actions: list<ActionHookActionBody|IFrameActionBody>,
+ *   actions: list<ActionShape>,
  *   title: string,
- *   tokens: list<ObjectToken>,
+ *   tokens: list<ObjectTokenShape>,
  *   linkURL?: string|null,
  * }
  */
@@ -72,27 +72,8 @@ final class IntegratorObjectResult implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<ActionHookActionBody|array{
-     *   httpMethod: value-of<HTTPMethod>,
-     *   propertyNamesIncluded: list<string>,
-     *   type: value-of<Type>,
-     *   url: string,
-     *   confirmation?: ActionConfirmationBody|null,
-     *   label?: string|null,
-     * }|IFrameActionBody|array{
-     *   height: int,
-     *   propertyNamesIncluded: list<string>,
-     *   type: value-of<IFrameActionBody\Type>,
-     *   url: string,
-     *   width: int,
-     *   label?: string|null,
-     * }> $actions
-     * @param list<ObjectToken|array{
-     *   value: string,
-     *   dataType?: value-of<DataType>|null,
-     *   label?: string|null,
-     *   name?: string|null,
-     * }> $tokens
+     * @param list<ActionShape> $actions
+     * @param list<ObjectTokenShape> $tokens
      */
     public static function with(
         string $id,
@@ -122,21 +103,7 @@ final class IntegratorObjectResult implements BaseModel
     }
 
     /**
-     * @param list<ActionHookActionBody|array{
-     *   httpMethod: value-of<HTTPMethod>,
-     *   propertyNamesIncluded: list<string>,
-     *   type: value-of<Type>,
-     *   url: string,
-     *   confirmation?: ActionConfirmationBody|null,
-     *   label?: string|null,
-     * }|IFrameActionBody|array{
-     *   height: int,
-     *   propertyNamesIncluded: list<string>,
-     *   type: value-of<IFrameActionBody\Type>,
-     *   url: string,
-     *   width: int,
-     *   label?: string|null,
-     * }> $actions
+     * @param list<ActionShape> $actions
      */
     public function withActions(array $actions): self
     {
@@ -155,12 +122,7 @@ final class IntegratorObjectResult implements BaseModel
     }
 
     /**
-     * @param list<ObjectToken|array{
-     *   value: string,
-     *   dataType?: value-of<DataType>|null,
-     *   label?: string|null,
-     *   name?: string|null,
-     * }> $tokens
+     * @param list<ObjectTokenShape> $tokens
      */
     public function withTokens(array $tokens): self
     {

@@ -7,13 +7,12 @@ namespace HubspotSDK\Marketing\Subscriptions\V4;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Marketing\Subscriptions\V4\PublicWideStatus\Channel;
-use HubspotSDK\Marketing\Subscriptions\V4\PublicWideStatus\Status;
-use HubspotSDK\Marketing\Subscriptions\V4\PublicWideStatus\WideStatusType;
 
 /**
+ * @phpstan-import-type PublicWideStatusShape from \HubspotSDK\Marketing\Subscriptions\V4\PublicWideStatus
+ *
  * @phpstan-type PublicWideStatusBulkResponseShape = array{
- *   subscriberIDString: string, wideStatuses: list<PublicWideStatus>
+ *   subscriberIDString: string, wideStatuses: list<PublicWideStatusShape>
  * }
  */
 final class PublicWideStatusBulkResponse implements BaseModel
@@ -61,14 +60,7 @@ final class PublicWideStatusBulkResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicWideStatus|array{
-     *   channel: value-of<Channel>,
-     *   status: value-of<Status>,
-     *   subscriberIDString: string,
-     *   timestamp: \DateTimeInterface,
-     *   wideStatusType: value-of<WideStatusType>,
-     *   businessUnitID?: int|null,
-     * }> $wideStatuses
+     * @param list<PublicWideStatusShape> $wideStatuses
      */
     public static function with(
         string $subscriberIDString,
@@ -96,14 +88,7 @@ final class PublicWideStatusBulkResponse implements BaseModel
     /**
      * An array containing the wide status results for the operation.
      *
-     * @param list<PublicWideStatus|array{
-     *   channel: value-of<Channel>,
-     *   status: value-of<Status>,
-     *   subscriberIDString: string,
-     *   timestamp: \DateTimeInterface,
-     *   wideStatusType: value-of<WideStatusType>,
-     *   businessUnitID?: int|null,
-     * }> $wideStatuses
+     * @param list<PublicWideStatusShape> $wideStatuses
      */
     public function withWideStatuses(array $wideStatuses): self
     {

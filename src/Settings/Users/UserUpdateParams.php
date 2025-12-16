@@ -16,12 +16,12 @@ use HubspotSDK\Settings\Users\UserUpdateParams\IDProperty;
  * @see HubspotSDK\Services\Settings\UsersService::update()
  *
  * @phpstan-type UserUpdateParamsShape = array{
- *   idProperty?: IDProperty|value-of<IDProperty>,
- *   firstName?: string,
- *   lastName?: string,
- *   primaryTeamID?: string,
- *   roleID?: string,
- *   secondaryTeamIDs?: list<string>,
+ *   idProperty?: null|IDProperty|value-of<IDProperty>,
+ *   firstName?: string|null,
+ *   lastName?: string|null,
+ *   primaryTeamID?: string|null,
+ *   roleID?: string|null,
+ *   secondaryTeamIDs?: list<string>|null,
  * }
  */
 final class UserUpdateParams implements BaseModel

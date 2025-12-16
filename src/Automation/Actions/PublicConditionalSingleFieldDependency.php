@@ -13,7 +13,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-type PublicConditionalSingleFieldDependencyShape = array{
  *   controllingFieldName: string,
  *   controllingFieldValue: string,
- *   dependencyType: value-of<DependencyType>,
+ *   dependencyType: DependencyType|value-of<DependencyType>,
  *   dependentFieldNames: list<string>,
  * }
  */

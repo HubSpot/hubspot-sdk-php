@@ -9,11 +9,15 @@ use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\ForwardPaging;
-use HubspotSDK\NextPage;
 
 /**
+ * @phpstan-import-type DomainShape from \HubspotSDK\Cms\Domains\Domain
+ * @phpstan-import-type ForwardPagingShape from \HubspotSDK\ForwardPaging
+ *
  * @phpstan-type CollectionResponseWithTotalDomainForwardPagingShape = array{
- *   results: list<Domain>, total: int, paging?: ForwardPaging|null
+ *   results: list<DomainShape>,
+ *   total: int,
+ *   paging?: null|ForwardPaging|ForwardPagingShape,
  * }
  */
 final class CollectionResponseWithTotalDomainForwardPaging implements BaseModel
@@ -57,29 +61,8 @@ final class CollectionResponseWithTotalDomainForwardPaging implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<Domain|array{
-     *   id: string,
-     *   domain: string,
-     *   isResolving: bool,
-     *   isUsedForBlogPost: bool,
-     *   isUsedForEmail: bool,
-     *   isUsedForKnowledge: bool,
-     *   isUsedForLandingPage: bool,
-     *   isUsedForSitePage: bool,
-     *   correctCname?: string|null,
-     *   created?: \DateTimeInterface|null,
-     *   isSslEnabled?: bool|null,
-     *   isSslOnly?: bool|null,
-     *   manuallyMarkedAsResolving?: bool|null,
-     *   primaryBlogPost?: bool|null,
-     *   primaryEmail?: bool|null,
-     *   primaryKnowledge?: bool|null,
-     *   primaryLandingPage?: bool|null,
-     *   primarySitePage?: bool|null,
-     *   secondaryToDomain?: string|null,
-     *   updated?: \DateTimeInterface|null,
-     * }> $results
-     * @param ForwardPaging|array{next?: NextPage|null} $paging
+     * @param list<DomainShape> $results
+     * @param ForwardPagingShape $paging
      */
     public static function with(
         array $results,
@@ -97,28 +80,7 @@ final class CollectionResponseWithTotalDomainForwardPaging implements BaseModel
     }
 
     /**
-     * @param list<Domain|array{
-     *   id: string,
-     *   domain: string,
-     *   isResolving: bool,
-     *   isUsedForBlogPost: bool,
-     *   isUsedForEmail: bool,
-     *   isUsedForKnowledge: bool,
-     *   isUsedForLandingPage: bool,
-     *   isUsedForSitePage: bool,
-     *   correctCname?: string|null,
-     *   created?: \DateTimeInterface|null,
-     *   isSslEnabled?: bool|null,
-     *   isSslOnly?: bool|null,
-     *   manuallyMarkedAsResolving?: bool|null,
-     *   primaryBlogPost?: bool|null,
-     *   primaryEmail?: bool|null,
-     *   primaryKnowledge?: bool|null,
-     *   primaryLandingPage?: bool|null,
-     *   primarySitePage?: bool|null,
-     *   secondaryToDomain?: string|null,
-     *   updated?: \DateTimeInterface|null,
-     * }> $results
+     * @param list<DomainShape> $results
      */
     public function withResults(array $results): self
     {
@@ -137,7 +99,7 @@ final class CollectionResponseWithTotalDomainForwardPaging implements BaseModel
     }
 
     /**
-     * @param ForwardPaging|array{next?: NextPage|null} $paging
+     * @param ForwardPagingShape $paging
      */
     public function withPaging(ForwardPaging|array $paging): self
     {

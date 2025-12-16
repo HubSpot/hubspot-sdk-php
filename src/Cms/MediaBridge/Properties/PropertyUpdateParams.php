@@ -18,26 +18,22 @@ use HubspotSDK\OptionInput;
  *
  * @see HubspotSDK\Services\Cms\MediaBridge\PropertiesService::update()
  *
+ * @phpstan-import-type OptionInputShape from \HubspotSDK\OptionInput
+ *
  * @phpstan-type PropertyUpdateParamsShape = array{
  *   appID: int,
  *   objectType: string,
- *   calculationFormula?: string,
- *   description?: string,
- *   displayOrder?: int,
- *   fieldType?: FieldType|value-of<FieldType>,
- *   formField?: bool,
- *   groupName?: string,
- *   hasUniqueValue?: bool,
- *   hidden?: bool,
- *   label?: string,
- *   options?: list<OptionInput|array{
- *     displayOrder: int,
- *     hidden: bool,
- *     label: string,
- *     value: string,
- *     description?: string|null,
- *   }>,
- *   type?: Type|value-of<Type>,
+ *   calculationFormula?: string|null,
+ *   description?: string|null,
+ *   displayOrder?: int|null,
+ *   fieldType?: null|FieldType|value-of<FieldType>,
+ *   formField?: bool|null,
+ *   groupName?: string|null,
+ *   hasUniqueValue?: bool|null,
+ *   hidden?: bool|null,
+ *   label?: string|null,
+ *   options?: list<OptionInputShape>|null,
+ *   type?: null|Type|value-of<Type>,
  * }
  */
 final class PropertyUpdateParams implements BaseModel
@@ -113,13 +109,7 @@ final class PropertyUpdateParams implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param FieldType|value-of<FieldType> $fieldType
-     * @param list<OptionInput|array{
-     *   displayOrder: int,
-     *   hidden: bool,
-     *   label: string,
-     *   value: string,
-     *   description?: string|null,
-     * }> $options
+     * @param list<OptionInputShape> $options
      * @param Type|value-of<Type> $type
      */
     public static function with(
@@ -249,13 +239,7 @@ final class PropertyUpdateParams implements BaseModel
     }
 
     /**
-     * @param list<OptionInput|array{
-     *   displayOrder: int,
-     *   hidden: bool,
-     *   label: string,
-     *   value: string,
-     *   description?: string|null,
-     * }> $options
+     * @param list<OptionInputShape> $options
      */
     public function withOptions(array $options): self
     {

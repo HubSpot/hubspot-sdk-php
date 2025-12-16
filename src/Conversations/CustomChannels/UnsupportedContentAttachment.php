@@ -10,7 +10,9 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type UnsupportedContentAttachmentShape = array{type: value-of<Type>}
+ * @phpstan-type UnsupportedContentAttachmentShape = array{
+ *   type: Type|value-of<Type>
+ * }
  */
 final class UnsupportedContentAttachment implements BaseModel
 {

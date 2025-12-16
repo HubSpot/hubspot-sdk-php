@@ -13,7 +13,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Crm\Extensions\Calling\RecordingSettingsService::update()
  *
  * @phpstan-type RecordingSettingUpdateParamsShape = array{
- *   urlToRetrieveAuthedRecording?: string
+ *   urlToRetrieveAuthedRecording?: string|null
  * }
  */
 final class RecordingSettingUpdateParams implements BaseModel

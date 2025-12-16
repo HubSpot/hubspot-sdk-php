@@ -15,13 +15,13 @@ use HubspotSDK\Crm\Exports\PublicExportListRequest\Language;
 /**
  * @phpstan-type PublicExportListRequestShape = array{
  *   associatedObjectType: list<string>,
- *   exportInternalValuesOptions: list<value-of<ExportInternalValuesOption>>,
+ *   exportInternalValuesOptions: list<ExportInternalValuesOption|value-of<ExportInternalValuesOption>>,
  *   exportName: string,
- *   exportType: value-of<ExportType>,
- *   format: value-of<Format>,
+ *   exportType: ExportType|value-of<ExportType>,
+ *   format: Format|value-of<Format>,
  *   includeLabeledAssociations: bool,
  *   includePrimaryDisplayPropertyForAssociatedObjects: bool,
- *   language: value-of<Language>,
+ *   language: Language|value-of<Language>,
  *   listID: string,
  *   objectProperties: list<string>,
  *   objectType: string,

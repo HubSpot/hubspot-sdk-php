@@ -15,12 +15,12 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Crm\Objects\ContactsService::list()
  *
  * @phpstan-type ContactListParamsShape = array{
- *   after?: string,
- *   archived?: bool,
- *   associations?: list<string>,
- *   limit?: int,
- *   properties?: list<string>,
- *   propertiesWithHistory?: list<string>,
+ *   after?: string|null,
+ *   archived?: bool|null,
+ *   associations?: list<string>|null,
+ *   limit?: int|null,
+ *   properties?: list<string>|null,
+ *   propertiesWithHistory?: list<string>|null,
  * }
  */
 final class ContactListParams implements BaseModel

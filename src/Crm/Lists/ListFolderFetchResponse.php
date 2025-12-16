@@ -9,7 +9,11 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type ListFolderFetchResponseShape = array{folder: PublicListFolder}
+ * @phpstan-import-type PublicListFolderShape from \HubspotSDK\Crm\Lists\PublicListFolder
+ *
+ * @phpstan-type ListFolderFetchResponseShape = array{
+ *   folder: PublicListFolder|PublicListFolderShape
+ * }
  */
 final class ListFolderFetchResponse implements BaseModel
 {
@@ -43,17 +47,7 @@ final class ListFolderFetchResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param PublicListFolder|array{
-     *   id: string,
-     *   childLists: list<int>,
-     *   childNodes: list<mixed>,
-     *   parentFolderID: string,
-     *   createdAt?: \DateTimeInterface|null,
-     *   name?: string|null,
-     *   updatedAt?: \DateTimeInterface|null,
-     *   updatedContentsAt?: \DateTimeInterface|null,
-     *   userID?: int|null,
-     * } $folder
+     * @param PublicListFolderShape $folder
      */
     public static function with(PublicListFolder|array $folder): self
     {
@@ -65,17 +59,7 @@ final class ListFolderFetchResponse implements BaseModel
     }
 
     /**
-     * @param PublicListFolder|array{
-     *   id: string,
-     *   childLists: list<int>,
-     *   childNodes: list<mixed>,
-     *   parentFolderID: string,
-     *   createdAt?: \DateTimeInterface|null,
-     *   name?: string|null,
-     *   updatedAt?: \DateTimeInterface|null,
-     *   updatedContentsAt?: \DateTimeInterface|null,
-     *   userID?: int|null,
-     * } $folder
+     * @param PublicListFolderShape $folder
      */
     public function withFolder(PublicListFolder|array $folder): self
     {

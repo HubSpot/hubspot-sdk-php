@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Cms\SiteSearchService::getIndexedData()
  *
  * @phpstan-type SiteSearchGetIndexedDataParamsShape = array{
- *   type?: Type|value-of<Type>
+ *   type?: null|Type|value-of<Type>
  * }
  */
 final class SiteSearchGetIndexedDataParams implements BaseModel

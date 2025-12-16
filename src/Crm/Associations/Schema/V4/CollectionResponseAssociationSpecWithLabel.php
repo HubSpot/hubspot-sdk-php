@@ -9,14 +9,14 @@ use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\AssociationSpecWithLabel;
-use HubspotSDK\Crm\AssociationSpecWithLabel\Category;
-use HubspotSDK\NextPage;
 use HubspotSDK\Paging;
-use HubspotSDK\PreviousPage;
 
 /**
+ * @phpstan-import-type AssociationSpecWithLabelShape from \HubspotSDK\Crm\AssociationSpecWithLabel
+ * @phpstan-import-type PagingShape from \HubspotSDK\Paging
+ *
  * @phpstan-type CollectionResponseAssociationSpecWithLabelShape = array{
- *   results: list<AssociationSpecWithLabel>, paging?: Paging|null
+ *   results: list<AssociationSpecWithLabelShape>, paging?: null|Paging|PagingShape
  * }
  */
 final class CollectionResponseAssociationSpecWithLabel implements BaseModel
@@ -55,10 +55,8 @@ final class CollectionResponseAssociationSpecWithLabel implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<AssociationSpecWithLabel|array{
-     *   category: value-of<Category>, typeID: int, label?: string|null
-     * }> $results
-     * @param Paging|array{next?: NextPage|null, prev?: PreviousPage|null} $paging
+     * @param list<AssociationSpecWithLabelShape> $results
+     * @param PagingShape $paging
      */
     public static function with(
         array $results,
@@ -74,9 +72,7 @@ final class CollectionResponseAssociationSpecWithLabel implements BaseModel
     }
 
     /**
-     * @param list<AssociationSpecWithLabel|array{
-     *   category: value-of<Category>, typeID: int, label?: string|null
-     * }> $results
+     * @param list<AssociationSpecWithLabelShape> $results
      */
     public function withResults(array $results): self
     {
@@ -87,7 +83,7 @@ final class CollectionResponseAssociationSpecWithLabel implements BaseModel
     }
 
     /**
-     * @param Paging|array{next?: NextPage|null, prev?: PreviousPage|null} $paging
+     * @param PagingShape $paging
      */
     public function withPaging(Paging|array $paging): self
     {

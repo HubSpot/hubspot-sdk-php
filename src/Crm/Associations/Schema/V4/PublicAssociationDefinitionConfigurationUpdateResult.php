@@ -12,7 +12,7 @@ use HubspotSDK\Crm\Associations\Schema\V4\PublicAssociationDefinitionConfigurati
 
 /**
  * @phpstan-type PublicAssociationDefinitionConfigurationUpdateResultShape = array{
- *   category: value-of<Category>,
+ *   category: Category|value-of<Category>,
  *   typeID: int,
  *   userEnforcedMaxToObjectIDs?: int|null,
  * }

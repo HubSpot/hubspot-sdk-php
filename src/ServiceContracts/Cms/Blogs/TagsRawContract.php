@@ -30,7 +30,7 @@ interface TagsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|TagCreateParams $params
+     * @param array<string,mixed>|TagCreateParams $params
      *
      * @return BaseResponse<Tag>
      *
@@ -45,7 +45,7 @@ interface TagsRawContract
      * @api
      *
      * @param string $objectID path param: The Blog Tag id
-     * @param array<mixed>|TagUpdateParams $params
+     * @param array<string,mixed>|TagUpdateParams $params
      *
      * @return BaseResponse<Tag>
      *
@@ -60,7 +60,7 @@ interface TagsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|TagListParams $params
+     * @param array<string,mixed>|TagListParams $params
      *
      * @return BaseResponse<Page<Tag>>
      *
@@ -75,7 +75,7 @@ interface TagsRawContract
      * @api
      *
      * @param string $objectID the Blog Tag id
-     * @param array<mixed>|TagDeleteParams $params
+     * @param array<string,mixed>|TagDeleteParams $params
      *
      * @return BaseResponse<mixed>
      *
@@ -90,7 +90,7 @@ interface TagsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|TagAttachToLangGroupParams $params
+     * @param array<string,mixed>|TagAttachToLangGroupParams $params
      *
      * @return BaseResponse<mixed>
      *
@@ -104,7 +104,7 @@ interface TagsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|TagCreateBatchParams $params
+     * @param array<string,mixed>|TagCreateBatchParams $params
      *
      * @return BaseResponse<BatchResponseTag>
      *
@@ -118,7 +118,7 @@ interface TagsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|TagCreateLangVariationParams $params
+     * @param array<string,mixed>|TagCreateLangVariationParams $params
      *
      * @return BaseResponse<Tag>
      *
@@ -132,7 +132,7 @@ interface TagsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|TagDeleteBatchParams $params
+     * @param array<string,mixed>|TagDeleteBatchParams $params
      *
      * @return BaseResponse<mixed>
      *
@@ -146,7 +146,7 @@ interface TagsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|TagDetachFromLangGroupParams $params
+     * @param array<string,mixed>|TagDetachFromLangGroupParams $params
      *
      * @return BaseResponse<mixed>
      *
@@ -161,7 +161,7 @@ interface TagsRawContract
      * @api
      *
      * @param string $objectID the Blog Tag id
-     * @param array<mixed>|TagGetParams $params
+     * @param array<string,mixed>|TagGetParams $params
      *
      * @return BaseResponse<Tag>
      *
@@ -176,7 +176,7 @@ interface TagsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|TagGetBatchParams $params
+     * @param array<string,mixed>|TagGetBatchParams $params
      *
      * @return BaseResponse<BatchResponseTag>
      *
@@ -190,7 +190,7 @@ interface TagsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|TagSetLangPrimaryParams $params
+     * @param array<string,mixed>|TagSetLangPrimaryParams $params
      *
      * @return BaseResponse<mixed>
      *
@@ -204,7 +204,7 @@ interface TagsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|TagUpdateBatchParams $params
+     * @param array<string,mixed>|TagUpdateBatchParams $params
      *
      * @return BaseResponse<BatchResponseTag>
      *
@@ -218,7 +218,7 @@ interface TagsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|TagUpdateLangsParams $params
+     * @param array<string,mixed>|TagUpdateLangsParams $params
      *
      * @return BaseResponse<mixed>
      *

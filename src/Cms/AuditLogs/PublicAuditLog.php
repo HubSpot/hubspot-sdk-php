@@ -13,11 +13,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type PublicAuditLogShape = array{
- *   event: value-of<Event>,
+ *   event: Event|value-of<Event>,
  *   fullName: string,
  *   objectID: string,
  *   objectName: string,
- *   objectType: value-of<ObjectType>,
+ *   objectType: ObjectType|value-of<ObjectType>,
  *   timestamp: \DateTimeInterface,
  *   userID: string,
  *   meta?: mixed,

@@ -12,9 +12,9 @@ use HubspotSDK\Crm\Extensions\Cards\CardAuditResponse\AuthSource;
 
 /**
  * @phpstan-type CardAuditResponseShape = array{
- *   actionType: value-of<ActionType>,
+ *   actionType: ActionType|value-of<ActionType>,
  *   applicationID: int,
- *   authSource: value-of<AuthSource>,
+ *   authSource: AuthSource|value-of<AuthSource>,
  *   changedAt: int,
  *   initiatingUserID: int,
  *   objectTypeID: int,

@@ -8,16 +8,16 @@ use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Files\File\Access;
-use HubspotSDK\NextPage;
 use HubspotSDK\Paging;
-use HubspotSDK\PreviousPage;
 
 /**
  * Collections of files.
  *
+ * @phpstan-import-type FileShape from \HubspotSDK\Files\File
+ * @phpstan-import-type PagingShape from \HubspotSDK\Paging
+ *
  * @phpstan-type CollectionResponseFileShape = array{
- *   results: list<File>, paging?: Paging|null
+ *   results: list<FileShape>, paging?: null|Paging|PagingShape
  * }
  */
 final class CollectionResponseFile implements BaseModel
@@ -56,30 +56,8 @@ final class CollectionResponseFile implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<File|array{
-     *   id: string,
-     *   access: value-of<Access>,
-     *   archived: bool,
-     *   createdAt: \DateTimeInterface,
-     *   updatedAt: \DateTimeInterface,
-     *   archivedAt?: \DateTimeInterface|null,
-     *   defaultHostingURL?: string|null,
-     *   encoding?: string|null,
-     *   expiresAt?: int|null,
-     *   extension?: string|null,
-     *   fileMd5?: string|null,
-     *   height?: int|null,
-     *   isUsableInContent?: bool|null,
-     *   name?: string|null,
-     *   parentFolderID?: string|null,
-     *   path?: string|null,
-     *   size?: int|null,
-     *   sourceGroup?: string|null,
-     *   type?: string|null,
-     *   url?: string|null,
-     *   width?: int|null,
-     * }> $results
-     * @param Paging|array{next?: NextPage|null, prev?: PreviousPage|null} $paging
+     * @param list<FileShape> $results
+     * @param PagingShape $paging
      */
     public static function with(
         array $results,
@@ -95,29 +73,7 @@ final class CollectionResponseFile implements BaseModel
     }
 
     /**
-     * @param list<File|array{
-     *   id: string,
-     *   access: value-of<Access>,
-     *   archived: bool,
-     *   createdAt: \DateTimeInterface,
-     *   updatedAt: \DateTimeInterface,
-     *   archivedAt?: \DateTimeInterface|null,
-     *   defaultHostingURL?: string|null,
-     *   encoding?: string|null,
-     *   expiresAt?: int|null,
-     *   extension?: string|null,
-     *   fileMd5?: string|null,
-     *   height?: int|null,
-     *   isUsableInContent?: bool|null,
-     *   name?: string|null,
-     *   parentFolderID?: string|null,
-     *   path?: string|null,
-     *   size?: int|null,
-     *   sourceGroup?: string|null,
-     *   type?: string|null,
-     *   url?: string|null,
-     *   width?: int|null,
-     * }> $results
+     * @param list<FileShape> $results
      */
     public function withResults(array $results): self
     {
@@ -128,7 +84,7 @@ final class CollectionResponseFile implements BaseModel
     }
 
     /**
-     * @param Paging|array{next?: NextPage|null, prev?: PreviousPage|null} $paging
+     * @param PagingShape $paging
      */
     public function withPaging(Paging|array $paging): self
     {

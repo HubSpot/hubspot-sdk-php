@@ -19,7 +19,7 @@ interface AssociationsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|AssociationUpdateParams $params
+     * @param array<string,mixed>|AssociationUpdateParams $params
      *
      * @return BaseResponse<SimplePublicObjectWithAssociations>
      *
@@ -35,7 +35,7 @@ interface AssociationsRawContract
      * @api
      *
      * @param string $toObjectType Path param:
-     * @param array<mixed>|AssociationListParams $params
+     * @param array<string,mixed>|AssociationListParams $params
      *
      * @return BaseResponse<Page<AssociatedID>>
      *
@@ -50,7 +50,7 @@ interface AssociationsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|AssociationDeleteParams $params
+     * @param array<string,mixed>|AssociationDeleteParams $params
      *
      * @return BaseResponse<mixed>
      *

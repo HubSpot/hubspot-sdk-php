@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Cms\Pages\LandingPagesService::attachToLangGroup()
  *
  * @phpstan-type LandingPageAttachToLangGroupParamsShape = array{
- *   id: string, language: string, primaryID: string, primaryLanguage?: string
+ *   id: string, language: string, primaryID: string, primaryLanguage?: string|null
  * }
  */
 final class LandingPageAttachToLangGroupParams implements BaseModel

@@ -11,22 +11,23 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Imports\PublicImportError\ErrorType;
 use HubspotSDK\Crm\Imports\PublicImportError\ObjectType;
 use HubspotSDK\Marketing\Events\PropertyValue;
-use HubspotSDK\Marketing\Events\PropertyValue\DataSensitivity;
-use HubspotSDK\Marketing\Events\PropertyValue\Source;
 
 /**
+ * @phpstan-import-type ImportRowCoreShape from \HubspotSDK\Crm\Imports\ImportRowCore
+ * @phpstan-import-type PropertyValueShape from \HubspotSDK\Marketing\Events\PropertyValue
+ *
  * @phpstan-type PublicImportErrorShape = array{
  *   id: string,
  *   createdAt: int,
- *   errorType: value-of<ErrorType>,
- *   sourceData: ImportRowCore,
+ *   errorType: ErrorType|value-of<ErrorType>,
+ *   sourceData: ImportRowCore|ImportRowCoreShape,
  *   errorMessage?: string|null,
  *   extraContext?: string|null,
- *   invalidPropertyValue?: \HubspotSDK\Marketing\Events\PropertyValue|null,
+ *   invalidPropertyValue?: null|\HubspotSDK\Marketing\Events\PropertyValue|PropertyValueShape,
  *   invalidValue?: string|null,
  *   invalidValueToDisplay?: string|null,
  *   knownColumnNumber?: int|null,
- *   objectType?: value-of<ObjectType>|null,
+ *   objectType?: null|ObjectType|value-of<ObjectType>,
  *   objectTypeID?: string|null,
  * }
  */
@@ -107,34 +108,8 @@ final class PublicImportError implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param ErrorType|value-of<ErrorType> $errorType
-     * @param ImportRowCore|array{
-     *   containsEncryptedProperties: bool,
-     *   fileID: int,
-     *   lineNumber: int,
-     *   rowData: list<string>,
-     *   pageName?: string|null,
-     * } $sourceData
-     * @param PropertyValue|array{
-     *   dataSensitivity: value-of<DataSensitivity>,
-     *   isEncrypted: bool,
-     *   isLargeValue: bool,
-     *   name: string,
-     *   persistenceTimestamp: int,
-     *   requestID: string,
-     *   selectedByUser: bool,
-     *   selectedByUserTimestamp: int,
-     *   source: value-of<Source>,
-     *   sourceID: string,
-     *   sourceLabel: string,
-     *   sourceMetadata: string,
-     *   sourceUpstreamDeployable: string,
-     *   sourceVid: list<int>,
-     *   timestamp: int,
-     *   unit: string,
-     *   updatedByUserID: int,
-     *   useTimestampAsPersistenceTimestamp: bool,
-     *   value: string,
-     * } $invalidPropertyValue
+     * @param ImportRowCoreShape $sourceData
+     * @param PropertyValueShape $invalidPropertyValue
      * @param ObjectType|value-of<ObjectType> $objectType
      */
     public static function with(
@@ -198,13 +173,7 @@ final class PublicImportError implements BaseModel
     }
 
     /**
-     * @param ImportRowCore|array{
-     *   containsEncryptedProperties: bool,
-     *   fileID: int,
-     *   lineNumber: int,
-     *   rowData: list<string>,
-     *   pageName?: string|null,
-     * } $sourceData
+     * @param ImportRowCoreShape $sourceData
      */
     public function withSourceData(ImportRowCore|array $sourceData): self
     {
@@ -233,27 +202,7 @@ final class PublicImportError implements BaseModel
     /**
      * Represents a single custom property of a marketing event, storing its name, value, metadata (like source, timestamp, and sensitivity), and related audit information for tracking changes.
      *
-     * @param PropertyValue|array{
-     *   dataSensitivity: value-of<DataSensitivity>,
-     *   isEncrypted: bool,
-     *   isLargeValue: bool,
-     *   name: string,
-     *   persistenceTimestamp: int,
-     *   requestID: string,
-     *   selectedByUser: bool,
-     *   selectedByUserTimestamp: int,
-     *   source: value-of<Source>,
-     *   sourceID: string,
-     *   sourceLabel: string,
-     *   sourceMetadata: string,
-     *   sourceUpstreamDeployable: string,
-     *   sourceVid: list<int>,
-     *   timestamp: int,
-     *   unit: string,
-     *   updatedByUserID: int,
-     *   useTimestampAsPersistenceTimestamp: bool,
-     *   value: string,
-     * } $invalidPropertyValue
+     * @param PropertyValueShape $invalidPropertyValue
      */
     public function withInvalidPropertyValue(
         PropertyValue|array $invalidPropertyValue

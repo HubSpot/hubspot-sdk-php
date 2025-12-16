@@ -23,7 +23,7 @@ interface CommunicationsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|CommunicationCreateParams $params
+     * @param array<string,mixed>|CommunicationCreateParams $params
      *
      * @return BaseResponse<CreatedResponseSimplePublicObject>
      *
@@ -38,7 +38,7 @@ interface CommunicationsRawContract
      * @api
      *
      * @param string $communicationID Path param:
-     * @param array<mixed>|CommunicationUpdateParams $params
+     * @param array<string,mixed>|CommunicationUpdateParams $params
      *
      * @return BaseResponse<SimplePublicObject>
      *
@@ -53,7 +53,7 @@ interface CommunicationsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|CommunicationListParams $params
+     * @param array<string,mixed>|CommunicationListParams $params
      *
      * @return BaseResponse<Page<SimplePublicObjectWithAssociations>>
      *
@@ -79,7 +79,7 @@ interface CommunicationsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|CommunicationGetParams $params
+     * @param array<string,mixed>|CommunicationGetParams $params
      *
      * @return BaseResponse<SimplePublicObjectWithAssociations>
      *
@@ -94,7 +94,7 @@ interface CommunicationsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|CommunicationSearchParams $params
+     * @param array<string,mixed>|CommunicationSearchParams $params
      *
      * @return BaseResponse<CollectionResponseWithTotalSimplePublicObject>
      *

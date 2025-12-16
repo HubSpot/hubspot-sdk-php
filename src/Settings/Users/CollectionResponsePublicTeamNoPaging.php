@@ -9,8 +9,10 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type PublicTeamShape from \HubspotSDK\Settings\Users\PublicTeam
+ *
  * @phpstan-type CollectionResponsePublicTeamNoPagingShape = array{
- *   results: list<PublicTeam>
+ *   results: list<PublicTeamShape>
  * }
  */
 final class CollectionResponsePublicTeamNoPaging implements BaseModel
@@ -46,12 +48,7 @@ final class CollectionResponsePublicTeamNoPaging implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicTeam|array{
-     *   id: string,
-     *   name: string,
-     *   secondaryUserIDs: list<string>,
-     *   userIDs: list<string>,
-     * }> $results
+     * @param list<PublicTeamShape> $results
      */
     public static function with(array $results): self
     {
@@ -63,12 +60,7 @@ final class CollectionResponsePublicTeamNoPaging implements BaseModel
     }
 
     /**
-     * @param list<PublicTeam|array{
-     *   id: string,
-     *   name: string,
-     *   secondaryUserIDs: list<string>,
-     *   userIDs: list<string>,
-     * }> $results
+     * @param list<PublicTeamShape> $results
      */
     public function withResults(array $results): self
     {

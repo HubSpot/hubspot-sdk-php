@@ -4,17 +4,19 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Scheduler\Meetings;
 
-use HubspotSDK\AssociationSpec;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\PublicObjectID;
 
 /**
+ * @phpstan-import-type ExternalAssociationCreateRequestShape from \HubspotSDK\Scheduler\Meetings\ExternalAssociationCreateRequest
+ * @phpstan-import-type ExternalEmailReminderScheduleShape from \HubspotSDK\Scheduler\Meetings\ExternalEmailReminderSchedule
+ * @phpstan-import-type ExternalCalendarMeetingEventCreatePropertiesShape from \HubspotSDK\Scheduler\Meetings\ExternalCalendarMeetingEventCreateProperties
+ *
  * @phpstan-type ExternalCalendarMeetingEventCreateRequestShape = array{
- *   associations: list<ExternalAssociationCreateRequest>,
- *   emailReminderSchedule: ExternalEmailReminderSchedule,
- *   properties: ExternalCalendarMeetingEventCreateProperties,
+ *   associations: list<ExternalAssociationCreateRequestShape>,
+ *   emailReminderSchedule: ExternalEmailReminderSchedule|ExternalEmailReminderScheduleShape,
+ *   properties: ExternalCalendarMeetingEventCreateProperties|ExternalCalendarMeetingEventCreatePropertiesShape,
  *   timezone: string,
  * }
  */
@@ -66,27 +68,9 @@ final class ExternalCalendarMeetingEventCreateRequest implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<ExternalAssociationCreateRequest|array{
-     *   to: PublicObjectID, types: list<AssociationSpec>
-     * }> $associations
-     * @param ExternalEmailReminderSchedule|array{
-     *   reminders: list<ExternalReminder>, shouldIncludeInviteDescription: bool
-     * } $emailReminderSchedule
-     * @param ExternalCalendarMeetingEventCreateProperties|array{
-     *   hsMeetingEndTime: \DateTimeInterface,
-     *   hsMeetingOutcome: string,
-     *   hsMeetingStartTime: \DateTimeInterface,
-     *   hsMeetingTitle: string,
-     *   hsTimestamp: \DateTimeInterface,
-     *   hubspotOwnerID: string,
-     *   hsActivityType?: string|null,
-     *   hsAttachmentIDs?: list<string>|null,
-     *   hsAttendeeOwnerIDs?: list<string>|null,
-     *   hsInternalMeetingNotes?: string|null,
-     *   hsMeetingBody?: string|null,
-     *   hsMeetingLocation?: string|null,
-     *   hsMeetingLocationType?: string|null,
-     * } $properties
+     * @param list<ExternalAssociationCreateRequestShape> $associations
+     * @param ExternalEmailReminderScheduleShape $emailReminderSchedule
+     * @param ExternalCalendarMeetingEventCreatePropertiesShape $properties
      */
     public static function with(
         array $associations,
@@ -105,9 +89,7 @@ final class ExternalCalendarMeetingEventCreateRequest implements BaseModel
     }
 
     /**
-     * @param list<ExternalAssociationCreateRequest|array{
-     *   to: PublicObjectID, types: list<AssociationSpec>
-     * }> $associations
+     * @param list<ExternalAssociationCreateRequestShape> $associations
      */
     public function withAssociations(array $associations): self
     {
@@ -118,9 +100,7 @@ final class ExternalCalendarMeetingEventCreateRequest implements BaseModel
     }
 
     /**
-     * @param ExternalEmailReminderSchedule|array{
-     *   reminders: list<ExternalReminder>, shouldIncludeInviteDescription: bool
-     * } $emailReminderSchedule
+     * @param ExternalEmailReminderScheduleShape $emailReminderSchedule
      */
     public function withEmailReminderSchedule(
         ExternalEmailReminderSchedule|array $emailReminderSchedule
@@ -132,21 +112,7 @@ final class ExternalCalendarMeetingEventCreateRequest implements BaseModel
     }
 
     /**
-     * @param ExternalCalendarMeetingEventCreateProperties|array{
-     *   hsMeetingEndTime: \DateTimeInterface,
-     *   hsMeetingOutcome: string,
-     *   hsMeetingStartTime: \DateTimeInterface,
-     *   hsMeetingTitle: string,
-     *   hsTimestamp: \DateTimeInterface,
-     *   hubspotOwnerID: string,
-     *   hsActivityType?: string|null,
-     *   hsAttachmentIDs?: list<string>|null,
-     *   hsAttendeeOwnerIDs?: list<string>|null,
-     *   hsInternalMeetingNotes?: string|null,
-     *   hsMeetingBody?: string|null,
-     *   hsMeetingLocation?: string|null,
-     *   hsMeetingLocationType?: string|null,
-     * } $properties
+     * @param ExternalCalendarMeetingEventCreatePropertiesShape $properties
      */
     public function withProperties(
         ExternalCalendarMeetingEventCreateProperties|array $properties

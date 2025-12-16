@@ -22,7 +22,7 @@ interface SubscriptionsRawContract
      * @api
      *
      * @param int $appID the ID of the app
-     * @param array<mixed>|SubscriptionCreateParams $params
+     * @param array<string,mixed>|SubscriptionCreateParams $params
      *
      * @return BaseResponse<SubscriptionResponse>
      *
@@ -38,7 +38,7 @@ interface SubscriptionsRawContract
      * @api
      *
      * @param int $subscriptionID path param: The ID of the event subscription
-     * @param array<mixed>|SubscriptionUpdateParams $params
+     * @param array<string,mixed>|SubscriptionUpdateParams $params
      *
      * @return BaseResponse<SubscriptionResponse>
      *
@@ -68,7 +68,7 @@ interface SubscriptionsRawContract
      * @api
      *
      * @param int $subscriptionID the ID of the event subscription
-     * @param array<mixed>|SubscriptionDeleteParams $params
+     * @param array<string,mixed>|SubscriptionDeleteParams $params
      *
      * @return BaseResponse<mixed>
      *
@@ -84,7 +84,7 @@ interface SubscriptionsRawContract
      * @api
      *
      * @param int $subscriptionID the ID of the event subscription
-     * @param array<mixed>|SubscriptionGetParams $params
+     * @param array<string,mixed>|SubscriptionGetParams $params
      *
      * @return BaseResponse<SubscriptionResponse>
      *
@@ -100,7 +100,7 @@ interface SubscriptionsRawContract
      * @api
      *
      * @param int $appID the ID of the app
-     * @param array<mixed>|SubscriptionUpdateBatchParams $params
+     * @param array<string,mixed>|SubscriptionUpdateBatchParams $params
      *
      * @return BaseResponse<BatchResponseSubscriptionResponse>
      *

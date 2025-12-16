@@ -40,7 +40,7 @@ interface SitePagesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|SitePageCreateParams $params
+     * @param array<string,mixed>|SitePageCreateParams $params
      *
      * @return BaseResponse<mixed>
      *
@@ -55,7 +55,7 @@ interface SitePagesRawContract
      * @api
      *
      * @param string $objectID path param: The Site Page id
-     * @param array<mixed>|SitePageUpdateParams $params
+     * @param array<string,mixed>|SitePageUpdateParams $params
      *
      * @return BaseResponse<Page>
      *
@@ -70,7 +70,7 @@ interface SitePagesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|SitePageListParams $params
+     * @param array<string,mixed>|SitePageListParams $params
      *
      * @return BaseResponse<\HubspotSDK\Page<Page>>
      *
@@ -85,7 +85,7 @@ interface SitePagesRawContract
      * @api
      *
      * @param string $objectID the Site Page id
-     * @param array<mixed>|SitePageDeleteParams $params
+     * @param array<string,mixed>|SitePageDeleteParams $params
      *
      * @return BaseResponse<mixed>
      *
@@ -100,7 +100,7 @@ interface SitePagesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|SitePageAttachToLangGroupParams $params
+     * @param array<string,mixed>|SitePageAttachToLangGroupParams $params
      *
      * @return BaseResponse<mixed>
      *
@@ -114,7 +114,7 @@ interface SitePagesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|SitePageCloneParams $params
+     * @param array<string,mixed>|SitePageCloneParams $params
      *
      * @return BaseResponse<Page>
      *
@@ -128,7 +128,7 @@ interface SitePagesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|SitePageCreateAbTestVariationParams $params
+     * @param array<string,mixed>|SitePageCreateAbTestVariationParams $params
      *
      * @return BaseResponse<Page>
      *
@@ -142,7 +142,7 @@ interface SitePagesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|SitePageCreateBatchParams $params
+     * @param array<string,mixed>|SitePageCreateBatchParams $params
      *
      * @return BaseResponse<BatchResponsePage>
      *
@@ -156,7 +156,7 @@ interface SitePagesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|SitePageCreateLanguageVariationParams $params
+     * @param array<string,mixed>|SitePageCreateLanguageVariationParams $params
      *
      * @return BaseResponse<Page>
      *
@@ -170,7 +170,7 @@ interface SitePagesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|SitePageDeleteBatchParams $params
+     * @param array<string,mixed>|SitePageDeleteBatchParams $params
      *
      * @return BaseResponse<mixed>
      *
@@ -184,7 +184,7 @@ interface SitePagesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|SitePageDetachFromLangGroupParams $params
+     * @param array<string,mixed>|SitePageDetachFromLangGroupParams $params
      *
      * @return BaseResponse<mixed>
      *
@@ -198,7 +198,7 @@ interface SitePagesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|SitePageEndAbTestParams $params
+     * @param array<string,mixed>|SitePageEndAbTestParams $params
      *
      * @return BaseResponse<mixed>
      *
@@ -213,7 +213,7 @@ interface SitePagesRawContract
      * @api
      *
      * @param string $objectID the Site Page id
-     * @param array<mixed>|SitePageGetParams $params
+     * @param array<string,mixed>|SitePageGetParams $params
      *
      * @return BaseResponse<Page>
      *
@@ -228,7 +228,7 @@ interface SitePagesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|SitePageGetBatchParams $params
+     * @param array<string,mixed>|SitePageGetBatchParams $params
      *
      * @return BaseResponse<BatchResponsePage>
      *
@@ -257,7 +257,7 @@ interface SitePagesRawContract
      * @api
      *
      * @param string $revisionID the Site Page version id
-     * @param array<mixed>|SitePageGetRevisionParams $params
+     * @param array<string,mixed>|SitePageGetRevisionParams $params
      *
      * @return BaseResponse<VersionPage>
      *
@@ -273,7 +273,7 @@ interface SitePagesRawContract
      * @api
      *
      * @param string $objectID the Site Page id
-     * @param array<mixed>|SitePageListRevisionsParams $params
+     * @param array<string,mixed>|SitePageListRevisionsParams $params
      *
      * @return BaseResponse<\HubspotSDK\Page<VersionPage>>
      *
@@ -302,7 +302,7 @@ interface SitePagesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|SitePageRerunAbTestParams $params
+     * @param array<string,mixed>|SitePageRerunAbTestParams $params
      *
      * @return BaseResponse<mixed>
      *
@@ -331,7 +331,7 @@ interface SitePagesRawContract
      * @api
      *
      * @param string $revisionID the Site Page version id to restore
-     * @param array<mixed>|SitePageRestoreRevisionParams $params
+     * @param array<string,mixed>|SitePageRestoreRevisionParams $params
      *
      * @return BaseResponse<Page>
      *
@@ -347,7 +347,7 @@ interface SitePagesRawContract
      * @api
      *
      * @param int $revisionID the Site Page version id to restore
-     * @param array<mixed>|SitePageRestoreRevisionToDraftParams $params
+     * @param array<string,mixed>|SitePageRestoreRevisionToDraftParams $params
      *
      * @return BaseResponse<Page>
      *
@@ -362,7 +362,7 @@ interface SitePagesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|SitePageScheduleParams $params
+     * @param array<string,mixed>|SitePageScheduleParams $params
      *
      * @return BaseResponse<mixed>
      *
@@ -376,7 +376,7 @@ interface SitePagesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|SitePageSetNewLangPrimaryParams $params
+     * @param array<string,mixed>|SitePageSetNewLangPrimaryParams $params
      *
      * @return BaseResponse<mixed>
      *
@@ -390,7 +390,7 @@ interface SitePagesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|SitePageUpdateBatchParams $params
+     * @param array<string,mixed>|SitePageUpdateBatchParams $params
      *
      * @return BaseResponse<BatchResponsePage>
      *
@@ -405,7 +405,7 @@ interface SitePagesRawContract
      * @api
      *
      * @param string $objectID the Site Page id
-     * @param array<mixed>|SitePageUpdateDraftParams $params
+     * @param array<string,mixed>|SitePageUpdateDraftParams $params
      *
      * @return BaseResponse<Page>
      *
@@ -420,7 +420,7 @@ interface SitePagesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|SitePageUpdateLanguagesParams $params
+     * @param array<string,mixed>|SitePageUpdateLanguagesParams $params
      *
      * @return BaseResponse<mixed>
      *

@@ -8,18 +8,19 @@ use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\AssociationSpecWithLabel;
 use HubspotSDK\Crm\MultiAssociatedObjectWithLabel;
-use HubspotSDK\NextPage;
 use HubspotSDK\Paging;
-use HubspotSDK\PreviousPage;
 use HubspotSDK\PublicObjectID;
 
 /**
+ * @phpstan-import-type PublicObjectIDShape from \HubspotSDK\PublicObjectID
+ * @phpstan-import-type MultiAssociatedObjectWithLabelShape from \HubspotSDK\Crm\MultiAssociatedObjectWithLabel
+ * @phpstan-import-type PagingShape from \HubspotSDK\Paging
+ *
  * @phpstan-type PublicAssociationMultiWithLabelShape = array{
- *   from: PublicObjectID,
- *   to: list<MultiAssociatedObjectWithLabel>,
- *   paging?: Paging|null,
+ *   from: PublicObjectID|PublicObjectIDShape,
+ *   to: list<MultiAssociatedObjectWithLabelShape>,
+ *   paging?: null|Paging|PagingShape,
  * }
  */
 final class PublicAssociationMultiWithLabel implements BaseModel
@@ -61,11 +62,9 @@ final class PublicAssociationMultiWithLabel implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param PublicObjectID|array{id: string} $from
-     * @param list<MultiAssociatedObjectWithLabel|array{
-     *   associationTypes: list<AssociationSpecWithLabel>, toObjectID: string
-     * }> $to
-     * @param Paging|array{next?: NextPage|null, prev?: PreviousPage|null} $paging
+     * @param PublicObjectIDShape $from
+     * @param list<MultiAssociatedObjectWithLabelShape> $to
+     * @param PagingShape $paging
      */
     public static function with(
         PublicObjectID|array $from,
@@ -83,7 +82,7 @@ final class PublicAssociationMultiWithLabel implements BaseModel
     }
 
     /**
-     * @param PublicObjectID|array{id: string} $from
+     * @param PublicObjectIDShape $from
      */
     public function withFrom(PublicObjectID|array $from): self
     {
@@ -94,9 +93,7 @@ final class PublicAssociationMultiWithLabel implements BaseModel
     }
 
     /**
-     * @param list<MultiAssociatedObjectWithLabel|array{
-     *   associationTypes: list<AssociationSpecWithLabel>, toObjectID: string
-     * }> $to
+     * @param list<MultiAssociatedObjectWithLabelShape> $to
      */
     public function withTo(array $to): self
     {
@@ -107,7 +104,7 @@ final class PublicAssociationMultiWithLabel implements BaseModel
     }
 
     /**
-     * @param Paging|array{next?: NextPage|null, prev?: PreviousPage|null} $paging
+     * @param PagingShape $paging
      */
     public function withPaging(Paging|array $paging): self
     {

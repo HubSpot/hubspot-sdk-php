@@ -10,16 +10,18 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Associations\V4\BatchResponseLabelsBetweenObjectPair\Status;
 use HubspotSDK\Crm\LabelsBetweenObjectPair;
-use HubspotSDK\ErrorDetail;
 use HubspotSDK\StandardError;
 
 /**
+ * @phpstan-import-type LabelsBetweenObjectPairShape from \HubspotSDK\Crm\LabelsBetweenObjectPair
+ * @phpstan-import-type StandardErrorShape from \HubspotSDK\StandardError
+ *
  * @phpstan-type BatchResponseLabelsBetweenObjectPairShape = array{
  *   completedAt: \DateTimeInterface,
- *   results: list<LabelsBetweenObjectPair>,
+ *   results: list<LabelsBetweenObjectPairShape>,
  *   startedAt: \DateTimeInterface,
- *   status: value-of<Status>,
- *   errors?: list<StandardError>|null,
+ *   status: Status|value-of<Status>,
+ *   errors?: list<StandardErrorShape>|null,
  *   links?: array<string,string>|null,
  *   numErrors?: int|null,
  *   requestedAt?: \DateTimeInterface|null,
@@ -108,24 +110,9 @@ final class BatchResponseLabelsBetweenObjectPair implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<LabelsBetweenObjectPair|array{
-     *   fromObjectID: string,
-     *   fromObjectTypeID: string,
-     *   labels: list<string>,
-     *   toObjectID: string,
-     *   toObjectTypeID: string,
-     * }> $results
+     * @param list<LabelsBetweenObjectPairShape> $results
      * @param Status|value-of<Status> $status
-     * @param list<StandardError|array{
-     *   category: string,
-     *   context: array<string,list<string>>,
-     *   errors: list<ErrorDetail>,
-     *   links: array<string,string>,
-     *   message: string,
-     *   status: string,
-     *   id?: string|null,
-     *   subCategory?: mixed,
-     * }> $errors
+     * @param list<StandardErrorShape> $errors
      * @param array<string,string> $links
      */
     public static function with(
@@ -165,13 +152,7 @@ final class BatchResponseLabelsBetweenObjectPair implements BaseModel
     }
 
     /**
-     * @param list<LabelsBetweenObjectPair|array{
-     *   fromObjectID: string,
-     *   fromObjectTypeID: string,
-     *   labels: list<string>,
-     *   toObjectID: string,
-     *   toObjectTypeID: string,
-     * }> $results
+     * @param list<LabelsBetweenObjectPairShape> $results
      */
     public function withResults(array $results): self
     {
@@ -206,16 +187,7 @@ final class BatchResponseLabelsBetweenObjectPair implements BaseModel
     }
 
     /**
-     * @param list<StandardError|array{
-     *   category: string,
-     *   context: array<string,list<string>>,
-     *   errors: list<ErrorDetail>,
-     *   links: array<string,string>,
-     *   message: string,
-     *   status: string,
-     *   id?: string|null,
-     *   subCategory?: mixed,
-     * }> $errors
+     * @param list<StandardErrorShape> $errors
      */
     public function withErrors(array $errors): self
     {

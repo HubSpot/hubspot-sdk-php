@@ -8,15 +8,16 @@ use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\Timeline\TimelineEventTemplateToken\Type;
 
 /**
  * State of the template definition being updated.
  *
+ * @phpstan-import-type TimelineEventTemplateTokenShape from \HubspotSDK\Crm\Timeline\TimelineEventTemplateToken
+ *
  * @phpstan-type TimelineEventTemplateUpdateRequestShape = array{
  *   id: string,
  *   name: string,
- *   tokens: list<TimelineEventTemplateToken>,
+ *   tokens: list<TimelineEventTemplateTokenShape>,
  *   detailTemplate?: string|null,
  *   headerTemplate?: string|null,
  * }
@@ -85,15 +86,7 @@ final class TimelineEventTemplateUpdateRequest implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<TimelineEventTemplateToken|array{
-     *   label: string,
-     *   name: string,
-     *   type: value-of<Type>,
-     *   createdAt?: \DateTimeInterface|null,
-     *   objectPropertyName?: string|null,
-     *   options?: list<TimelineEventTemplateTokenOption>|null,
-     *   updatedAt?: \DateTimeInterface|null,
-     * }> $tokens
+     * @param list<TimelineEventTemplateTokenShape> $tokens
      */
     public static function with(
         string $id,
@@ -139,15 +132,7 @@ final class TimelineEventTemplateUpdateRequest implements BaseModel
     /**
      * A collection of tokens that can be used as custom properties on the event and to create fully fledged CRM objects.
      *
-     * @param list<TimelineEventTemplateToken|array{
-     *   label: string,
-     *   name: string,
-     *   type: value-of<Type>,
-     *   createdAt?: \DateTimeInterface|null,
-     *   objectPropertyName?: string|null,
-     *   options?: list<TimelineEventTemplateTokenOption>|null,
-     *   updatedAt?: \DateTimeInterface|null,
-     * }> $tokens
+     * @param list<TimelineEventTemplateTokenShape> $tokens
      */
     public function withTokens(array $tokens): self
     {

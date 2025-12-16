@@ -8,21 +8,23 @@ use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\ErrorDetail;
 use HubspotSDK\Files\FolderActionResponse\Status;
 use HubspotSDK\StandardError;
 
 /**
+ * @phpstan-import-type StandardErrorShape from \HubspotSDK\StandardError
+ * @phpstan-import-type FolderShape from \HubspotSDK\Files\Folder
+ *
  * @phpstan-type FolderActionResponseShape = array{
  *   completedAt: \DateTimeInterface,
  *   startedAt: \DateTimeInterface,
- *   status: value-of<Status>,
+ *   status: Status|value-of<Status>,
  *   taskID: string,
- *   errors?: list<StandardError>|null,
+ *   errors?: list<StandardErrorShape>|null,
  *   links?: array<string,string>|null,
  *   numErrors?: int|null,
  *   requestedAt?: \DateTimeInterface|null,
- *   result?: Folder|null,
+ *   result?: null|Folder|FolderShape,
  * }
  */
 final class FolderActionResponse implements BaseModel
@@ -118,27 +120,9 @@ final class FolderActionResponse implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param Status|value-of<Status> $status
-     * @param list<StandardError|array{
-     *   category: string,
-     *   context: array<string,list<string>>,
-     *   errors: list<ErrorDetail>,
-     *   links: array<string,string>,
-     *   message: string,
-     *   status: string,
-     *   id?: string|null,
-     *   subCategory?: mixed,
-     * }> $errors
+     * @param list<StandardErrorShape> $errors
      * @param array<string,string> $links
-     * @param Folder|array{
-     *   id: string,
-     *   archived: bool,
-     *   createdAt: \DateTimeInterface,
-     *   updatedAt: \DateTimeInterface,
-     *   archivedAt?: \DateTimeInterface|null,
-     *   name?: string|null,
-     *   parentFolderID?: string|null,
-     *   path?: string|null,
-     * } $result
+     * @param FolderShape $result
      */
     public static function with(
         \DateTimeInterface $completedAt,
@@ -216,16 +200,7 @@ final class FolderActionResponse implements BaseModel
     /**
      * Detailed errors resulting from the task.
      *
-     * @param list<StandardError|array{
-     *   category: string,
-     *   context: array<string,list<string>>,
-     *   errors: list<ErrorDetail>,
-     *   links: array<string,string>,
-     *   message: string,
-     *   status: string,
-     *   id?: string|null,
-     *   subCategory?: mixed,
-     * }> $errors
+     * @param list<StandardErrorShape> $errors
      */
     public function withErrors(array $errors): self
     {
@@ -271,16 +246,7 @@ final class FolderActionResponse implements BaseModel
     }
 
     /**
-     * @param Folder|array{
-     *   id: string,
-     *   archived: bool,
-     *   createdAt: \DateTimeInterface,
-     *   updatedAt: \DateTimeInterface,
-     *   archivedAt?: \DateTimeInterface|null,
-     *   name?: string|null,
-     *   parentFolderID?: string|null,
-     *   path?: string|null,
-     * } $result
+     * @param FolderShape $result
      */
     public function withResult(Folder|array $result): self
     {

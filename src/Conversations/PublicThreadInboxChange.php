@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Conversations;
 
-use HubspotSDK\Conversations\PublicClient\ClientType;
 use HubspotSDK\Conversations\PublicThreadInboxChange\Type;
 use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
@@ -12,18 +11,22 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type PublicClientShape from \HubspotSDK\Conversations\PublicClient
+ * @phpstan-import-type PublicRecipientShape from \HubspotSDK\Conversations\PublicRecipient
+ * @phpstan-import-type PublicSenderShape from \HubspotSDK\Conversations\PublicSender
+ *
  * @phpstan-type PublicThreadInboxChangeShape = array{
  *   id: string,
  *   archived: bool,
- *   client: PublicClient,
+ *   client: PublicClient|PublicClientShape,
  *   conversationsThreadID: string,
  *   createdAt: \DateTimeInterface,
  *   createdBy: string,
  *   fromInboxID: string,
- *   recipients: list<PublicRecipient>,
- *   senders: list<PublicSender>,
+ *   recipients: list<PublicRecipientShape>,
+ *   senders: list<PublicSenderShape>,
  *   toInboxID: string,
- *   type: value-of<Type>,
+ *   type: Type|value-of<Type>,
  *   updatedAt?: \DateTimeInterface|null,
  * }
  */
@@ -118,21 +121,9 @@ final class PublicThreadInboxChange implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param PublicClient|array{
-     *   clientType: value-of<ClientType>, integrationAppID?: int|null
-     * } $client
-     * @param list<PublicRecipient|array{
-     *   deliveryIdentifier: PublicDeliveryIdentifier,
-     *   actorID?: string|null,
-     *   name?: string|null,
-     *   recipientField?: string|null,
-     * }> $recipients
-     * @param list<PublicSender|array{
-     *   actorID?: string|null,
-     *   deliveryIdentifier?: PublicDeliveryIdentifier|null,
-     *   name?: string|null,
-     *   senderField?: string|null,
-     * }> $senders
+     * @param PublicClientShape $client
+     * @param list<PublicRecipientShape> $recipients
+     * @param list<PublicSenderShape> $senders
      * @param Type|value-of<Type> $type
      */
     public static function with(
@@ -185,9 +176,7 @@ final class PublicThreadInboxChange implements BaseModel
     }
 
     /**
-     * @param PublicClient|array{
-     *   clientType: value-of<ClientType>, integrationAppID?: int|null
-     * } $client
+     * @param PublicClientShape $client
      */
     public function withClient(PublicClient|array $client): self
     {
@@ -231,12 +220,7 @@ final class PublicThreadInboxChange implements BaseModel
     }
 
     /**
-     * @param list<PublicRecipient|array{
-     *   deliveryIdentifier: PublicDeliveryIdentifier,
-     *   actorID?: string|null,
-     *   name?: string|null,
-     *   recipientField?: string|null,
-     * }> $recipients
+     * @param list<PublicRecipientShape> $recipients
      */
     public function withRecipients(array $recipients): self
     {
@@ -247,12 +231,7 @@ final class PublicThreadInboxChange implements BaseModel
     }
 
     /**
-     * @param list<PublicSender|array{
-     *   actorID?: string|null,
-     *   deliveryIdentifier?: PublicDeliveryIdentifier|null,
-     *   name?: string|null,
-     *   senderField?: string|null,
-     * }> $senders
+     * @param list<PublicSenderShape> $senders
      */
     public function withSenders(array $senders): self
     {

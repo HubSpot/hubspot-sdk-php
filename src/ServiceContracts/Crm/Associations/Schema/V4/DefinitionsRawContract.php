@@ -19,7 +19,7 @@ interface DefinitionsRawContract
      * @api
      *
      * @param string $toObjectType Path param:
-     * @param array<mixed>|DefinitionCreateLabelParams $params
+     * @param array<string,mixed>|DefinitionCreateLabelParams $params
      *
      * @return BaseResponse<CollectionResponseAssociationSpecWithLabel>
      *
@@ -34,7 +34,7 @@ interface DefinitionsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|DefinitionDeleteLabelParams $params
+     * @param array<string,mixed>|DefinitionDeleteLabelParams $params
      *
      * @return BaseResponse<mixed>
      *
@@ -49,7 +49,7 @@ interface DefinitionsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|DefinitionListLabelsParams $params
+     * @param array<string,mixed>|DefinitionListLabelsParams $params
      *
      * @return BaseResponse<CollectionResponseAssociationSpecWithLabel>
      *
@@ -65,7 +65,7 @@ interface DefinitionsRawContract
      * @api
      *
      * @param string $toObjectType Path param:
-     * @param array<mixed>|DefinitionUpdateLabelParams $params
+     * @param array<string,mixed>|DefinitionUpdateLabelParams $params
      *
      * @return BaseResponse<mixed>
      *

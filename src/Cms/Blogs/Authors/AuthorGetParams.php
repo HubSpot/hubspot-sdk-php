@@ -14,7 +14,9 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Services\Cms\Blogs\AuthorsService::get()
  *
- * @phpstan-type AuthorGetParamsShape = array{archived?: bool, property?: string}
+ * @phpstan-type AuthorGetParamsShape = array{
+ *   archived?: bool|null, property?: string|null
+ * }
  */
 final class AuthorGetParams implements BaseModel
 {

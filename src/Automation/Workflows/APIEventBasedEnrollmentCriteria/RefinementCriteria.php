@@ -16,6 +16,18 @@ use HubspotSDK\PublicPropertyAssociationFilterBranch;
 use HubspotSDK\PublicRestrictedFilterBranch;
 use HubspotSDK\PublicUnifiedEventsFilterBranch;
 
+/**
+ * @phpstan-import-type PublicOrFilterBranchShape from \HubspotSDK\PublicOrFilterBranch
+ * @phpstan-import-type PublicAndFilterBranchShape from \HubspotSDK\PublicAndFilterBranch
+ * @phpstan-import-type PublicNotAllFilterBranchShape from \HubspotSDK\PublicNotAllFilterBranch
+ * @phpstan-import-type PublicNotAnyFilterBranchShape from \HubspotSDK\PublicNotAnyFilterBranch
+ * @phpstan-import-type PublicRestrictedFilterBranchShape from \HubspotSDK\PublicRestrictedFilterBranch
+ * @phpstan-import-type PublicUnifiedEventsFilterBranchShape from \HubspotSDK\PublicUnifiedEventsFilterBranch
+ * @phpstan-import-type PublicPropertyAssociationFilterBranchShape from \HubspotSDK\PublicPropertyAssociationFilterBranch
+ * @phpstan-import-type PublicAssociationFilterBranchShape from \HubspotSDK\PublicAssociationFilterBranch
+ *
+ * @phpstan-type RefinementCriteriaShape = PublicOrFilterBranchShape|PublicAndFilterBranchShape|PublicNotAllFilterBranchShape|PublicNotAnyFilterBranchShape|PublicRestrictedFilterBranchShape|PublicUnifiedEventsFilterBranchShape|PublicPropertyAssociationFilterBranchShape|PublicAssociationFilterBranchShape
+ */
 final class RefinementCriteria implements ConverterSource
 {
     use SdkUnion;

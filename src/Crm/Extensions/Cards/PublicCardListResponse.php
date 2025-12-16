@@ -9,8 +9,10 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type PublicCardResponseShape from \HubspotSDK\Crm\Extensions\Cards\PublicCardResponse
+ *
  * @phpstan-type PublicCardListResponseShape = array{
- *   results: list<PublicCardResponse>
+ *   results: list<PublicCardResponseShape>
  * }
  */
 final class PublicCardListResponse implements BaseModel
@@ -46,16 +48,7 @@ final class PublicCardListResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicCardResponse|array{
-     *   id: string,
-     *   actions: CardActions,
-     *   auditHistory: list<CardAuditResponse>,
-     *   display: CardDisplayBody,
-     *   fetch: PublicCardFetchBody,
-     *   title: string,
-     *   createdAt?: \DateTimeInterface|null,
-     *   updatedAt?: \DateTimeInterface|null,
-     * }> $results
+     * @param list<PublicCardResponseShape> $results
      */
     public static function with(array $results): self
     {
@@ -67,16 +60,7 @@ final class PublicCardListResponse implements BaseModel
     }
 
     /**
-     * @param list<PublicCardResponse|array{
-     *   id: string,
-     *   actions: CardActions,
-     *   auditHistory: list<CardAuditResponse>,
-     *   display: CardDisplayBody,
-     *   fetch: PublicCardFetchBody,
-     *   title: string,
-     *   createdAt?: \DateTimeInterface|null,
-     *   updatedAt?: \DateTimeInterface|null,
-     * }> $results
+     * @param list<PublicCardResponseShape> $results
      */
     public function withResults(array $results): self
     {

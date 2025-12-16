@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Files\FoldersService::updateAsyncByID()
  *
  * @phpstan-type FolderUpdateAsyncByIDParamsShape = array{
- *   id: string, name?: string, parentFolderID?: int
+ *   id: string, name?: string|null, parentFolderID?: int|null
  * }
  */
 final class FolderUpdateAsyncByIDParams implements BaseModel

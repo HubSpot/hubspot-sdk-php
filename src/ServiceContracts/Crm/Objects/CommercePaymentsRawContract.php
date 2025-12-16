@@ -23,7 +23,7 @@ interface CommercePaymentsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|CommercePaymentCreateParams $params
+     * @param array<string,mixed>|CommercePaymentCreateParams $params
      *
      * @return BaseResponse<CreatedResponseSimplePublicObject>
      *
@@ -38,7 +38,7 @@ interface CommercePaymentsRawContract
      * @api
      *
      * @param string $commercePaymentID Path param:
-     * @param array<mixed>|CommercePaymentUpdateParams $params
+     * @param array<string,mixed>|CommercePaymentUpdateParams $params
      *
      * @return BaseResponse<SimplePublicObject>
      *
@@ -53,7 +53,7 @@ interface CommercePaymentsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|CommercePaymentListParams $params
+     * @param array<string,mixed>|CommercePaymentListParams $params
      *
      * @return BaseResponse<Page<SimplePublicObjectWithAssociations>>
      *
@@ -79,7 +79,7 @@ interface CommercePaymentsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|CommercePaymentGetParams $params
+     * @param array<string,mixed>|CommercePaymentGetParams $params
      *
      * @return BaseResponse<SimplePublicObjectWithAssociations>
      *
@@ -94,7 +94,7 @@ interface CommercePaymentsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|CommercePaymentSearchParams $params
+     * @param array<string,mixed>|CommercePaymentSearchParams $params
      *
      * @return BaseResponse<CollectionResponseWithTotalSimplePublicObject>
      *

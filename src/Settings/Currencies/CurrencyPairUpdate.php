@@ -12,8 +12,8 @@ use HubspotSDK\Settings\Currencies\CurrencyPairUpdate\ToCurrencyCode;
 
 /**
  * @phpstan-type CurrencyPairUpdateShape = array{
- *   fromCurrencyCode: value-of<FromCurrencyCode>,
- *   toCurrencyCode: value-of<ToCurrencyCode>,
+ *   fromCurrencyCode: FromCurrencyCode|value-of<FromCurrencyCode>,
+ *   toCurrencyCode: ToCurrencyCode|value-of<ToCurrencyCode>,
  *   visibleInUi: bool,
  * }
  */

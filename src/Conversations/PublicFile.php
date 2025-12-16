@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-type PublicFileShape = array{
  *   fileID: string,
  *   fileUsageType: string,
- *   type: value-of<Type>,
+ *   type: Type|value-of<Type>,
  *   name?: string|null,
  *   url?: string|null,
  * }

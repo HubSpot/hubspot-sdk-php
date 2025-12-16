@@ -9,12 +9,14 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type ExternalUserProfileShape from \HubspotSDK\Scheduler\Meetings\ExternalUserProfile
+ *
  * @phpstan-type ExternalMeetingsUserShape = array{
  *   id: string,
  *   calendarProvider: string,
  *   isSalesStarter: bool,
  *   userID: string,
- *   userProfile: ExternalUserProfile,
+ *   userProfile: ExternalUserProfile|ExternalUserProfileShape,
  * }
  */
 final class ExternalMeetingsUser implements BaseModel
@@ -72,12 +74,7 @@ final class ExternalMeetingsUser implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param ExternalUserProfile|array{
-     *   email: string,
-     *   firstName?: string|null,
-     *   fullName?: string|null,
-     *   lastName?: string|null,
-     * } $userProfile
+     * @param ExternalUserProfileShape $userProfile
      */
     public static function with(
         string $id,
@@ -130,12 +127,7 @@ final class ExternalMeetingsUser implements BaseModel
     }
 
     /**
-     * @param ExternalUserProfile|array{
-     *   email: string,
-     *   firstName?: string|null,
-     *   fullName?: string|null,
-     *   lastName?: string|null,
-     * } $userProfile
+     * @param ExternalUserProfileShape $userProfile
      */
     public function withUserProfile(
         ExternalUserProfile|array $userProfile

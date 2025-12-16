@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Conversations\VisitorIdentificationService::generateToken()
  *
  * @phpstan-type VisitorIdentificationGenerateTokenParamsShape = array{
- *   email: string, firstName?: string, lastName?: string
+ *   email: string, firstName?: string|null, lastName?: string|null
  * }
  */
 final class VisitorIdentificationGenerateTokenParams implements BaseModel

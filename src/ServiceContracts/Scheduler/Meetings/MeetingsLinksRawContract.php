@@ -22,7 +22,7 @@ interface MeetingsLinksRawContract
     /**
      * @api
      *
-     * @param array<mixed>|MeetingsLinkListParams $params
+     * @param array<string,mixed>|MeetingsLinkListParams $params
      *
      * @return BaseResponse<Page<ExternalLinkMetadata>>
      *
@@ -36,7 +36,7 @@ interface MeetingsLinksRawContract
     /**
      * @api
      *
-     * @param array<mixed>|MeetingsLinkBookParams $params
+     * @param array<string,mixed>|MeetingsLinkBookParams $params
      *
      * @return BaseResponse<ExternalMeetingBookingResponse>
      *
@@ -51,7 +51,7 @@ interface MeetingsLinksRawContract
      * @api
      *
      * @param string $slug the path for the meeting page that you want the available times for
-     * @param array<mixed>|MeetingsLinkGetAvailabilityBySlugParams $params
+     * @param array<string,mixed>|MeetingsLinkGetAvailabilityBySlugParams $params
      *
      * @return BaseResponse<ExternalLinkAvailabilityAndBusyTimes>
      *
@@ -67,7 +67,7 @@ interface MeetingsLinksRawContract
      * @api
      *
      * @param string $slug the path to the scheduling page that you want the information for
-     * @param array<mixed>|MeetingsLinkGetBookingInfoBySlugParams $params
+     * @param array<string,mixed>|MeetingsLinkGetBookingInfoBySlugParams $params
      *
      * @return BaseResponse<ExternalBookingInfo>
      *

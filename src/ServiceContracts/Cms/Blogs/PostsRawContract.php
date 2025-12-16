@@ -33,7 +33,7 @@ interface PostsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|PostCreateParams $params
+     * @param array<string,mixed>|PostCreateParams $params
      *
      * @return BaseResponse<BlogPost>
      *
@@ -48,7 +48,7 @@ interface PostsRawContract
      * @api
      *
      * @param string $objectID path param: The ID of the blog post to update
-     * @param array<mixed>|PostUpdateParams $params
+     * @param array<string,mixed>|PostUpdateParams $params
      *
      * @return BaseResponse<BlogPost>
      *
@@ -63,7 +63,7 @@ interface PostsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|PostListParams $params
+     * @param array<string,mixed>|PostListParams $params
      *
      * @return BaseResponse<Page<BlogPost>>
      *
@@ -78,7 +78,7 @@ interface PostsRawContract
      * @api
      *
      * @param string $objectID the ID of the blog post to delete
-     * @param array<mixed>|PostDeleteParams $params
+     * @param array<string,mixed>|PostDeleteParams $params
      *
      * @return BaseResponse<mixed>
      *
@@ -93,7 +93,7 @@ interface PostsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|PostAttachToLangGroupParams $params
+     * @param array<string,mixed>|PostAttachToLangGroupParams $params
      *
      * @return BaseResponse<mixed>
      *
@@ -107,7 +107,7 @@ interface PostsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|PostCloneParams $params
+     * @param array<string,mixed>|PostCloneParams $params
      *
      * @return BaseResponse<BlogPost>
      *
@@ -121,7 +121,7 @@ interface PostsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|PostCreateLangVariationParams $params
+     * @param array<string,mixed>|PostCreateLangVariationParams $params
      *
      * @return BaseResponse<BlogPost>
      *
@@ -135,7 +135,7 @@ interface PostsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|PostDetachFromLangGroupParams $params
+     * @param array<string,mixed>|PostDetachFromLangGroupParams $params
      *
      * @return BaseResponse<mixed>
      *
@@ -150,7 +150,7 @@ interface PostsRawContract
      * @api
      *
      * @param string $objectID the ID of the blog post to retrieve
-     * @param array<mixed>|PostGetParams $params
+     * @param array<string,mixed>|PostGetParams $params
      *
      * @return BaseResponse<BlogPost>
      *
@@ -180,7 +180,7 @@ interface PostsRawContract
      * @api
      *
      * @param string $revisionID the ID of the version to retrieve
-     * @param array<mixed>|PostGetPreviousVersionParams $params
+     * @param array<string,mixed>|PostGetPreviousVersionParams $params
      *
      * @return BaseResponse<VersionBlogPost>
      *
@@ -196,7 +196,7 @@ interface PostsRawContract
      * @api
      *
      * @param string $objectID the ID of the blog post to retrieve previous versions of
-     * @param array<mixed>|PostGetPreviousVersionsParams $params
+     * @param array<string,mixed>|PostGetPreviousVersionsParams $params
      *
      * @return BaseResponse<Page<VersionBlogPost>>
      *
@@ -240,7 +240,7 @@ interface PostsRawContract
      * @api
      *
      * @param string $revisionID the ID of the version to restore the blog post to
-     * @param array<mixed>|PostRestorePreviousVersionParams $params
+     * @param array<string,mixed>|PostRestorePreviousVersionParams $params
      *
      * @return BaseResponse<BlogPost>
      *
@@ -256,7 +256,7 @@ interface PostsRawContract
      * @api
      *
      * @param int $revisionID the ID of the version to restore the blog post to
-     * @param array<mixed>|PostRestorePreviousVersionToDraftParams $params
+     * @param array<string,mixed>|PostRestorePreviousVersionToDraftParams $params
      *
      * @return BaseResponse<BlogPost>
      *
@@ -271,7 +271,7 @@ interface PostsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|PostScheduleParams $params
+     * @param array<string,mixed>|PostScheduleParams $params
      *
      * @return BaseResponse<mixed>
      *
@@ -285,7 +285,7 @@ interface PostsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|PostSetLangPrimaryParams $params
+     * @param array<string,mixed>|PostSetLangPrimaryParams $params
      *
      * @return BaseResponse<mixed>
      *
@@ -300,7 +300,7 @@ interface PostsRawContract
      * @api
      *
      * @param string $objectID the ID of the blog post to update the draft of
-     * @param array<mixed>|PostUpdateDraftParams $params
+     * @param array<string,mixed>|PostUpdateDraftParams $params
      *
      * @return BaseResponse<BlogPost>
      *
@@ -315,7 +315,7 @@ interface PostsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|PostUpdateLangsParams $params
+     * @param array<string,mixed>|PostUpdateLangsParams $params
      *
      * @return BaseResponse<mixed>
      *

@@ -23,7 +23,7 @@ interface ListingsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|ListingCreateParams $params
+     * @param array<string,mixed>|ListingCreateParams $params
      *
      * @return BaseResponse<CreatedResponseSimplePublicObject>
      *
@@ -38,7 +38,7 @@ interface ListingsRawContract
      * @api
      *
      * @param string $listingID Path param:
-     * @param array<mixed>|ListingUpdateParams $params
+     * @param array<string,mixed>|ListingUpdateParams $params
      *
      * @return BaseResponse<SimplePublicObject>
      *
@@ -53,7 +53,7 @@ interface ListingsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|ListingListParams $params
+     * @param array<string,mixed>|ListingListParams $params
      *
      * @return BaseResponse<Page<SimplePublicObjectWithAssociations>>
      *
@@ -79,7 +79,7 @@ interface ListingsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|ListingGetParams $params
+     * @param array<string,mixed>|ListingGetParams $params
      *
      * @return BaseResponse<SimplePublicObjectWithAssociations>
      *
@@ -94,7 +94,7 @@ interface ListingsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|ListingSearchParams $params
+     * @param array<string,mixed>|ListingSearchParams $params
      *
      * @return BaseResponse<CollectionResponseWithTotalSimplePublicObject>
      *

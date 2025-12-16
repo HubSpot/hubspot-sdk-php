@@ -9,11 +9,14 @@ use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\ForwardPaging;
-use HubspotSDK\NextPage;
 
 /**
+ * @phpstan-import-type ContactReferenceShape from \HubspotSDK\Marketing\Campaigns\ContactReference
+ * @phpstan-import-type ForwardPagingShape from \HubspotSDK\ForwardPaging
+ *
  * @phpstan-type CollectionResponseContactReferenceForwardPagingShape = array{
- *   results: list<ContactReference>, paging?: ForwardPaging|null
+ *   results: list<ContactReferenceShape>,
+ *   paging?: null|ForwardPaging|ForwardPagingShape,
  * }
  */
 final class CollectionResponseContactReferenceForwardPaging implements BaseModel
@@ -52,8 +55,8 @@ final class CollectionResponseContactReferenceForwardPaging implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<ContactReference|array{id: string}> $results
-     * @param ForwardPaging|array{next?: NextPage|null} $paging
+     * @param list<ContactReferenceShape> $results
+     * @param ForwardPagingShape $paging
      */
     public static function with(
         array $results,
@@ -69,7 +72,7 @@ final class CollectionResponseContactReferenceForwardPaging implements BaseModel
     }
 
     /**
-     * @param list<ContactReference|array{id: string}> $results
+     * @param list<ContactReferenceShape> $results
      */
     public function withResults(array $results): self
     {
@@ -80,7 +83,7 @@ final class CollectionResponseContactReferenceForwardPaging implements BaseModel
     }
 
     /**
-     * @param ForwardPaging|array{next?: NextPage|null} $paging
+     * @param ForwardPagingShape $paging
      */
     public function withPaging(ForwardPaging|array $paging): self
     {

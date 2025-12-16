@@ -17,10 +17,10 @@ use HubspotSDK\Settings\Currencies\CurrencyListExchangeRatesParams\ToCurrencyCod
  * @see HubspotSDK\Services\Settings\CurrenciesService::listExchangeRates()
  *
  * @phpstan-type CurrencyListExchangeRatesParamsShape = array{
- *   after?: string,
- *   fromCurrencyCode?: FromCurrencyCode|value-of<FromCurrencyCode>,
- *   limit?: int,
- *   toCurrencyCode?: ToCurrencyCode|value-of<ToCurrencyCode>,
+ *   after?: string|null,
+ *   fromCurrencyCode?: null|FromCurrencyCode|value-of<FromCurrencyCode>,
+ *   limit?: int|null,
+ *   toCurrencyCode?: null|ToCurrencyCode|value-of<ToCurrencyCode>,
  * }
  */
 final class CurrencyListExchangeRatesParams implements BaseModel

@@ -22,7 +22,7 @@ interface EventDefinitionsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|EventDefinitionCreateParams $params
+     * @param array<string,mixed>|EventDefinitionCreateParams $params
      *
      * @return BaseResponse<ExternalBehavioralEventTypeDefinition>
      *
@@ -37,7 +37,7 @@ interface EventDefinitionsRawContract
      * @api
      *
      * @param string $eventName the internal name of the custom event
-     * @param array<mixed>|EventDefinitionUpdateParams $params
+     * @param array<string,mixed>|EventDefinitionUpdateParams $params
      *
      * @return BaseResponse<ExternalBehavioralEventTypeDefinition>
      *
@@ -52,7 +52,7 @@ interface EventDefinitionsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|EventDefinitionListParams $params
+     * @param array<string,mixed>|EventDefinitionListParams $params
      *
      * @return BaseResponse<Page<ExternalBehavioralEventTypeDefinition>>
      *
@@ -81,7 +81,7 @@ interface EventDefinitionsRawContract
      * @api
      *
      * @param string $eventName the internal name of the custom event
-     * @param array<mixed>|EventDefinitionCreatePropertyParams $params
+     * @param array<string,mixed>|EventDefinitionCreatePropertyParams $params
      *
      * @return BaseResponse<Property>
      *
@@ -97,7 +97,7 @@ interface EventDefinitionsRawContract
      * @api
      *
      * @param string $propertyName the internal name of the property to delete
-     * @param array<mixed>|EventDefinitionDeletePropertyParams $params
+     * @param array<string,mixed>|EventDefinitionDeletePropertyParams $params
      *
      * @return BaseResponse<mixed>
      *
@@ -127,7 +127,7 @@ interface EventDefinitionsRawContract
      * @api
      *
      * @param string $propertyName path param: The internal name of the property to update
-     * @param array<mixed>|EventDefinitionUpdatePropertyParams $params
+     * @param array<string,mixed>|EventDefinitionUpdatePropertyParams $params
      *
      * @return BaseResponse<Property>
      *

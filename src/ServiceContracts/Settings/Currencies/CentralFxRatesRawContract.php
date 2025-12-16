@@ -17,7 +17,7 @@ interface CentralFxRatesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|CentralFxRateCreateCurrencyParams $params
+     * @param array<string,mixed>|CentralFxRateCreateCurrencyParams $params
      *
      * @return BaseResponse<ExchangeRate>
      *

@@ -23,7 +23,7 @@ interface QuotesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|QuoteCreateParams $params
+     * @param array<string,mixed>|QuoteCreateParams $params
      *
      * @return BaseResponse<CreatedResponseSimplePublicObject>
      *
@@ -38,7 +38,7 @@ interface QuotesRawContract
      * @api
      *
      * @param string $quoteID Path param:
-     * @param array<mixed>|QuoteUpdateParams $params
+     * @param array<string,mixed>|QuoteUpdateParams $params
      *
      * @return BaseResponse<SimplePublicObject>
      *
@@ -53,7 +53,7 @@ interface QuotesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|QuoteListParams $params
+     * @param array<string,mixed>|QuoteListParams $params
      *
      * @return BaseResponse<Page<SimplePublicObjectWithAssociations>>
      *
@@ -79,7 +79,7 @@ interface QuotesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|QuoteGetParams $params
+     * @param array<string,mixed>|QuoteGetParams $params
      *
      * @return BaseResponse<SimplePublicObjectWithAssociations>
      *
@@ -94,7 +94,7 @@ interface QuotesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|QuoteSearchParams $params
+     * @param array<string,mixed>|QuoteSearchParams $params
      *
      * @return BaseResponse<CollectionResponseWithTotalSimplePublicObject>
      *

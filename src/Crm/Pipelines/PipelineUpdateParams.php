@@ -17,11 +17,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @phpstan-type PipelineUpdateParamsShape = array{
  *   objectType: string,
- *   validateDealStageUsagesBeforeDelete?: bool,
- *   validateReferencesBeforeDelete?: bool,
- *   archived?: bool,
- *   displayOrder?: int,
- *   label?: string,
+ *   validateDealStageUsagesBeforeDelete?: bool|null,
+ *   validateReferencesBeforeDelete?: bool|null,
+ *   archived?: bool|null,
+ *   displayOrder?: int|null,
+ *   label?: string|null,
  * }
  */
 final class PipelineUpdateParams implements BaseModel

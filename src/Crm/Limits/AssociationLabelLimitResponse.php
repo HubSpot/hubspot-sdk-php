@@ -8,15 +8,16 @@ use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Objects\Schemas\ObjectsSchemasObjectTypeDefinition;
-use HubspotSDK\ObjectTypeDefinitionLabels;
 
 /**
+ * @phpstan-import-type ObjectsSchemasObjectTypeDefinitionShape from \HubspotSDK\Crm\Objects\Schemas\ObjectsSchemasObjectTypeDefinition
+ *
  * @phpstan-type AssociationLabelLimitResponseShape = array{
  *   allLabels: list<string>,
- *   fromObjectType: ObjectsSchemasObjectTypeDefinition,
+ *   fromObjectType: ObjectsSchemasObjectTypeDefinition|ObjectsSchemasObjectTypeDefinitionShape,
  *   limit: int,
  *   percentage: float,
- *   toObjectType: ObjectsSchemasObjectTypeDefinition,
+ *   toObjectType: ObjectsSchemasObjectTypeDefinition|ObjectsSchemasObjectTypeDefinitionShape,
  *   usage: int,
  * }
  */
@@ -101,38 +102,8 @@ final class AssociationLabelLimitResponse implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<string> $allLabels
-     * @param ObjectsSchemasObjectTypeDefinition|array{
-     *   id: string,
-     *   labels: ObjectTypeDefinitionLabels,
-     *   name: string,
-     *   requiredProperties: list<string>,
-     *   archived?: bool|null,
-     *   createdAt?: \DateTimeInterface|null,
-     *   description?: string|null,
-     *   fullyQualifiedName?: string|null,
-     *   objectTypeID?: string|null,
-     *   portalID?: int|null,
-     *   primaryDisplayProperty?: string|null,
-     *   searchableProperties?: list<string>|null,
-     *   secondaryDisplayProperties?: list<string>|null,
-     *   updatedAt?: \DateTimeInterface|null,
-     * } $fromObjectType
-     * @param ObjectsSchemasObjectTypeDefinition|array{
-     *   id: string,
-     *   labels: ObjectTypeDefinitionLabels,
-     *   name: string,
-     *   requiredProperties: list<string>,
-     *   archived?: bool|null,
-     *   createdAt?: \DateTimeInterface|null,
-     *   description?: string|null,
-     *   fullyQualifiedName?: string|null,
-     *   objectTypeID?: string|null,
-     *   portalID?: int|null,
-     *   primaryDisplayProperty?: string|null,
-     *   searchableProperties?: list<string>|null,
-     *   secondaryDisplayProperties?: list<string>|null,
-     *   updatedAt?: \DateTimeInterface|null,
-     * } $toObjectType
+     * @param ObjectsSchemasObjectTypeDefinitionShape $fromObjectType
+     * @param ObjectsSchemasObjectTypeDefinitionShape $toObjectType
      */
     public static function with(
         array $allLabels,
@@ -170,22 +141,7 @@ final class AssociationLabelLimitResponse implements BaseModel
     /**
      * Defines an object type.
      *
-     * @param ObjectsSchemasObjectTypeDefinition|array{
-     *   id: string,
-     *   labels: ObjectTypeDefinitionLabels,
-     *   name: string,
-     *   requiredProperties: list<string>,
-     *   archived?: bool|null,
-     *   createdAt?: \DateTimeInterface|null,
-     *   description?: string|null,
-     *   fullyQualifiedName?: string|null,
-     *   objectTypeID?: string|null,
-     *   portalID?: int|null,
-     *   primaryDisplayProperty?: string|null,
-     *   searchableProperties?: list<string>|null,
-     *   secondaryDisplayProperties?: list<string>|null,
-     *   updatedAt?: \DateTimeInterface|null,
-     * } $fromObjectType
+     * @param ObjectsSchemasObjectTypeDefinitionShape $fromObjectType
      */
     public function withFromObjectType(
         ObjectsSchemasObjectTypeDefinition|array $fromObjectType
@@ -221,22 +177,7 @@ final class AssociationLabelLimitResponse implements BaseModel
     /**
      * Defines an object type.
      *
-     * @param ObjectsSchemasObjectTypeDefinition|array{
-     *   id: string,
-     *   labels: ObjectTypeDefinitionLabels,
-     *   name: string,
-     *   requiredProperties: list<string>,
-     *   archived?: bool|null,
-     *   createdAt?: \DateTimeInterface|null,
-     *   description?: string|null,
-     *   fullyQualifiedName?: string|null,
-     *   objectTypeID?: string|null,
-     *   portalID?: int|null,
-     *   primaryDisplayProperty?: string|null,
-     *   searchableProperties?: list<string>|null,
-     *   secondaryDisplayProperties?: list<string>|null,
-     *   updatedAt?: \DateTimeInterface|null,
-     * } $toObjectType
+     * @param ObjectsSchemasObjectTypeDefinitionShape $toObjectType
      */
     public function withToObjectType(
         ObjectsSchemasObjectTypeDefinition|array $toObjectType

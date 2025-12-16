@@ -15,9 +15,9 @@ use HubspotSDK\Events\EventDefinitions\EnumerationPropertyOperation\PropertyType
  * @phpstan-type EnumerationPropertyOperationShape = array{
  *   includeObjectsWithNoValueSet: bool,
  *   operationType: string,
- *   operator: value-of<Operator>,
+ *   operator: Operator|value-of<Operator>,
  *   operatorName: string,
- *   propertyType: value-of<PropertyType>,
+ *   propertyType: PropertyType|value-of<PropertyType>,
  *   values: list<string>,
  *   defaultValue?: string|null,
  * }

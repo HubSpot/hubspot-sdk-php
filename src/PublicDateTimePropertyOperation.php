@@ -12,7 +12,7 @@ use HubspotSDK\PublicDateTimePropertyOperation\OperationType;
 /**
  * @phpstan-type PublicDateTimePropertyOperationShape = array{
  *   includeObjectsWithNoValueSet: bool,
- *   operationType: value-of<OperationType>,
+ *   operationType: OperationType|value-of<OperationType>,
  *   operator: string,
  *   requiresTimeZoneConversion: bool,
  *   timestamp: int,

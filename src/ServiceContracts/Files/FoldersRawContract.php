@@ -23,7 +23,7 @@ interface FoldersRawContract
     /**
      * @api
      *
-     * @param array<mixed>|FolderCreateParams $params
+     * @param array<string,mixed>|FolderCreateParams $params
      *
      * @return BaseResponse<Folder>
      *
@@ -66,7 +66,7 @@ interface FoldersRawContract
      * @api
      *
      * @param string $folderID ID of desired folder
-     * @param array<mixed>|FolderGetByIDParams $params
+     * @param array<string,mixed>|FolderGetByIDParams $params
      *
      * @return BaseResponse<Folder>
      *
@@ -82,7 +82,7 @@ interface FoldersRawContract
      * @api
      *
      * @param string $folderPath path of desired folder
-     * @param array<mixed>|FolderGetByPathParams $params
+     * @param array<string,mixed>|FolderGetByPathParams $params
      *
      * @return BaseResponse<Folder>
      *
@@ -111,7 +111,7 @@ interface FoldersRawContract
     /**
      * @api
      *
-     * @param array<mixed>|FolderSearchParams $params
+     * @param array<string,mixed>|FolderSearchParams $params
      *
      * @return BaseResponse<Page<Folder>>
      *
@@ -125,7 +125,7 @@ interface FoldersRawContract
     /**
      * @api
      *
-     * @param array<mixed>|FolderUpdateAsyncByIDParams $params
+     * @param array<string,mixed>|FolderUpdateAsyncByIDParams $params
      *
      * @return BaseResponse<FolderUpdateTaskLocator>
      *
@@ -139,7 +139,7 @@ interface FoldersRawContract
     /**
      * @api
      *
-     * @param array<mixed>|FolderUpdateByIDParams $params
+     * @param array<string,mixed>|FolderUpdateByIDParams $params
      *
      * @return BaseResponse<Folder>
      *

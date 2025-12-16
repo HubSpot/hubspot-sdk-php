@@ -16,14 +16,14 @@ use HubspotSDK\Crm\Timeline\TimelineEventTemplateTokenOption;
  *
  * @see HubspotSDK\Services\Crm\Timeline\TokensService::update()
  *
+ * @phpstan-import-type TimelineEventTemplateTokenOptionShape from \HubspotSDK\Crm\Timeline\TimelineEventTemplateTokenOption
+ *
  * @phpstan-type TokenUpdateParamsShape = array{
  *   appID: int,
  *   eventTemplateID: string,
  *   label: string,
- *   objectPropertyName?: string,
- *   options?: list<TimelineEventTemplateTokenOption|array{
- *     label: string, value: string
- *   }>,
+ *   objectPropertyName?: string|null,
+ *   options?: list<TimelineEventTemplateTokenOptionShape>|null,
  * }
  */
 final class TokenUpdateParams implements BaseModel
@@ -85,9 +85,7 @@ final class TokenUpdateParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<TimelineEventTemplateTokenOption|array{
-     *   label: string, value: string
-     * }> $options
+     * @param list<TimelineEventTemplateTokenOptionShape> $options
      */
     public static function with(
         int $appID,
@@ -149,9 +147,7 @@ final class TokenUpdateParams implements BaseModel
     /**
      * If type is `enumeration`, we should have a list of options to choose from.
      *
-     * @param list<TimelineEventTemplateTokenOption|array{
-     *   label: string, value: string
-     * }> $options
+     * @param list<TimelineEventTemplateTokenOptionShape> $options
      */
     public function withOptions(array $options): self
     {

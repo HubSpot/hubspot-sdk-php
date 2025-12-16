@@ -9,11 +9,14 @@ use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\ForwardPaging;
-use HubspotSDK\NextPage;
 
 /**
+ * @phpstan-import-type PublicActionDefinitionShape from \HubspotSDK\Automation\Actions\PublicActionDefinition
+ * @phpstan-import-type ForwardPagingShape from \HubspotSDK\ForwardPaging
+ *
  * @phpstan-type CollectionResponsePublicActionDefinitionForwardPagingShape = array{
- *   results: list<PublicActionDefinition>, paging?: ForwardPaging|null
+ *   results: list<PublicActionDefinitionShape>,
+ *   paging?: null|ForwardPaging|ForwardPagingShape,
  * }
  */
 final class CollectionResponsePublicActionDefinitionForwardPaging implements BaseModel
@@ -52,22 +55,8 @@ final class CollectionResponsePublicActionDefinitionForwardPaging implements Bas
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicActionDefinition|array{
-     *   id: string,
-     *   actionURL: string,
-     *   functions: list<PublicActionFunctionIdentifier>,
-     *   inputFields: list<InputFieldDefinition>,
-     *   labels: array<string,PublicActionLabels>,
-     *   objectTypes: list<string>,
-     *   published: bool,
-     *   revisionID: string,
-     *   archivedAt?: int|null,
-     *   executionRules?: list<PublicExecutionTranslationRule>|null,
-     *   inputFieldDependencies?: list<PublicSingleFieldDependency|PublicConditionalSingleFieldDependency>|null,
-     *   objectRequestOptions?: PublicObjectRequestOptions|null,
-     *   outputFields?: list<OutputFieldDefinition>|null,
-     * }> $results
-     * @param ForwardPaging|array{next?: NextPage|null} $paging
+     * @param list<PublicActionDefinitionShape> $results
+     * @param ForwardPagingShape $paging
      */
     public static function with(
         array $results,
@@ -83,21 +72,7 @@ final class CollectionResponsePublicActionDefinitionForwardPaging implements Bas
     }
 
     /**
-     * @param list<PublicActionDefinition|array{
-     *   id: string,
-     *   actionURL: string,
-     *   functions: list<PublicActionFunctionIdentifier>,
-     *   inputFields: list<InputFieldDefinition>,
-     *   labels: array<string,PublicActionLabels>,
-     *   objectTypes: list<string>,
-     *   published: bool,
-     *   revisionID: string,
-     *   archivedAt?: int|null,
-     *   executionRules?: list<PublicExecutionTranslationRule>|null,
-     *   inputFieldDependencies?: list<PublicSingleFieldDependency|PublicConditionalSingleFieldDependency>|null,
-     *   objectRequestOptions?: PublicObjectRequestOptions|null,
-     *   outputFields?: list<OutputFieldDefinition>|null,
-     * }> $results
+     * @param list<PublicActionDefinitionShape> $results
      */
     public function withResults(array $results): self
     {
@@ -108,7 +83,7 @@ final class CollectionResponsePublicActionDefinitionForwardPaging implements Bas
     }
 
     /**
-     * @param ForwardPaging|array{next?: NextPage|null} $paging
+     * @param ForwardPagingShape $paging
      */
     public function withPaging(ForwardPaging|array $paging): self
     {

@@ -8,14 +8,14 @@ use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\Lists\PublicListConversionDate\ConversionType;
-use HubspotSDK\Crm\Lists\PublicListConversionInactivity\TimeUnit;
 
 /**
+ * @phpstan-import-type RequestedConversionTimeShape from \HubspotSDK\Crm\Lists\PublicListConversionResponse\RequestedConversionTime
+ *
  * @phpstan-type PublicListConversionResponseShape = array{
  *   listID: string,
  *   convertedAt?: \DateTimeInterface|null,
- *   requestedConversionTime?: null|PublicListConversionDate|PublicListConversionInactivity,
+ *   requestedConversionTime?: null|RequestedConversionTimeShape|PublicListConversionDate|PublicListConversionInactivity,
  * }
  */
 final class PublicListConversionResponse implements BaseModel
@@ -56,13 +56,7 @@ final class PublicListConversionResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param PublicListConversionDate|array{
-     *   conversionType: value-of<ConversionType>, day: int, month: int, year: int
-     * }|PublicListConversionInactivity|array{
-     *   conversionType: value-of<PublicListConversionInactivity\ConversionType>,
-     *   offset: int,
-     *   timeUnit: value-of<TimeUnit>,
-     * } $requestedConversionTime
+     * @param RequestedConversionTimeShape $requestedConversionTime
      */
     public static function with(
         string $listID,
@@ -96,13 +90,7 @@ final class PublicListConversionResponse implements BaseModel
     }
 
     /**
-     * @param PublicListConversionDate|array{
-     *   conversionType: value-of<ConversionType>, day: int, month: int, year: int
-     * }|PublicListConversionInactivity|array{
-     *   conversionType: value-of<PublicListConversionInactivity\ConversionType>,
-     *   offset: int,
-     *   timeUnit: value-of<TimeUnit>,
-     * } $requestedConversionTime
+     * @param RequestedConversionTimeShape $requestedConversionTime
      */
     public function withRequestedConversionTime(
         PublicListConversionDate|array|PublicListConversionInactivity $requestedConversionTime,

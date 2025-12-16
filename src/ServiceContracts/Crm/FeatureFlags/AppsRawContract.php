@@ -20,7 +20,7 @@ interface AppsRawContract
      * @api
      *
      * @param string $flagName path param: The name of the flag, either `hs-release-app-cards` or `hs-hide-crm-cards`
-     * @param array<mixed>|AppUpdateParams $params
+     * @param array<string,mixed>|AppUpdateParams $params
      *
      * @return BaseResponse<FlagResponse>
      *
@@ -36,7 +36,7 @@ interface AppsRawContract
      * @api
      *
      * @param string $flagName the name of the flag, either `hs-release-app-cards` or `hs-hide-crm-cards`
-     * @param array<mixed>|AppDeleteParams $params
+     * @param array<string,mixed>|AppDeleteParams $params
      *
      * @return BaseResponse<FlagResponse>
      *
@@ -52,7 +52,7 @@ interface AppsRawContract
      * @api
      *
      * @param string $flagName the name of the flag, either `hs-release-app-cards` or `hs-hide-crm-cards`
-     * @param array<mixed>|AppGetParams $params
+     * @param array<string,mixed>|AppGetParams $params
      *
      * @return BaseResponse<FlagResponse>
      *
@@ -68,7 +68,7 @@ interface AppsRawContract
      * @api
      *
      * @param string $flagName path param: The name of the flag, either `hs-release-app-cards` or `hs-hide-crm-cards`
-     * @param array<mixed>|AppListPortalsParams $params
+     * @param array<string,mixed>|AppListPortalsParams $params
      *
      * @return BaseResponse<PortalFlagStateBatchResponse>
      *

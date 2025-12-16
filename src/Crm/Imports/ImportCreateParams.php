@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Crm\ImportsService::create()
  *
  * @phpstan-type ImportCreateParamsShape = array{
- *   files?: string, importRequest?: string
+ *   files?: string|null, importRequest?: string|null
  * }
  */
 final class ImportCreateParams implements BaseModel

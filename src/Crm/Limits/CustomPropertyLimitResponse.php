@@ -9,8 +9,10 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type LimitAndUsageForObjectTypeShape from \HubspotSDK\Crm\Limits\LimitAndUsageForObjectType
+ *
  * @phpstan-type CustomPropertyLimitResponseShape = array{
- *   byObjectType: list<LimitAndUsageForObjectType>,
+ *   byObjectType: list<LimitAndUsageForObjectTypeShape>,
  *   overallLimit: int,
  *   overallPercentage: float,
  *   overallUsage: int,
@@ -76,14 +78,7 @@ final class CustomPropertyLimitResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<LimitAndUsageForObjectType|array{
-     *   limit: int,
-     *   objectTypeID: string,
-     *   percentage: float,
-     *   pluralLabel: string,
-     *   singularLabel: string,
-     *   usage: int,
-     * }> $byObjectType
+     * @param list<LimitAndUsageForObjectTypeShape> $byObjectType
      */
     public static function with(
         array $byObjectType,
@@ -102,14 +97,7 @@ final class CustomPropertyLimitResponse implements BaseModel
     }
 
     /**
-     * @param list<LimitAndUsageForObjectType|array{
-     *   limit: int,
-     *   objectTypeID: string,
-     *   percentage: float,
-     *   pluralLabel: string,
-     *   singularLabel: string,
-     *   usage: int,
-     * }> $byObjectType
+     * @param list<LimitAndUsageForObjectTypeShape> $byObjectType
      */
     public function withByObjectType(array $byObjectType): self
     {

@@ -20,7 +20,7 @@ interface TemplatesRawContract
      * @api
      *
      * @param int $appID the ID of the target app
-     * @param array<mixed>|TemplateCreateParams $params
+     * @param array<string,mixed>|TemplateCreateParams $params
      *
      * @return BaseResponse<TimelineEventTemplate>
      *
@@ -36,7 +36,7 @@ interface TemplatesRawContract
      * @api
      *
      * @param string $eventTemplateID path param: The event template ID
-     * @param array<mixed>|TemplateUpdateParams $params
+     * @param array<string,mixed>|TemplateUpdateParams $params
      *
      * @return BaseResponse<TimelineEventTemplate>
      *
@@ -66,7 +66,7 @@ interface TemplatesRawContract
      * @api
      *
      * @param string $eventTemplateID the event template ID
-     * @param array<mixed>|TemplateDeleteParams $params
+     * @param array<string,mixed>|TemplateDeleteParams $params
      *
      * @return BaseResponse<mixed>
      *
@@ -82,7 +82,7 @@ interface TemplatesRawContract
      * @api
      *
      * @param string $eventTemplateID the event template ID
-     * @param array<mixed>|TemplateGetParams $params
+     * @param array<string,mixed>|TemplateGetParams $params
      *
      * @return BaseResponse<TimelineEventTemplate>
      *

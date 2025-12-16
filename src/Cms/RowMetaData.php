@@ -9,7 +9,11 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type RowMetaDataShape = array{cssClass: string, styles: Styles}
+ * @phpstan-import-type StylesShape from \HubspotSDK\Cms\Styles
+ *
+ * @phpstan-type RowMetaDataShape = array{
+ *   cssClass: string, styles: Styles|StylesShape
+ * }
  */
 final class RowMetaData implements BaseModel
 {
@@ -46,16 +50,7 @@ final class RowMetaData implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param Styles|array{
-     *   backgroundColor: RgbaColor,
-     *   backgroundGradient: Gradient,
-     *   backgroundImage: BackgroundImage,
-     *   flexboxPositioning: string,
-     *   forceFullWidthSection: bool,
-     *   maxWidthSectionCentering: int,
-     *   verticalAlignment: string,
-     *   breakpointStyles?: array<string,BreakpointStyles>|null,
-     * } $styles
+     * @param StylesShape $styles
      */
     public static function with(string $cssClass, Styles|array $styles): self
     {
@@ -76,16 +71,7 @@ final class RowMetaData implements BaseModel
     }
 
     /**
-     * @param Styles|array{
-     *   backgroundColor: RgbaColor,
-     *   backgroundGradient: Gradient,
-     *   backgroundImage: BackgroundImage,
-     *   flexboxPositioning: string,
-     *   forceFullWidthSection: bool,
-     *   maxWidthSectionCentering: int,
-     *   verticalAlignment: string,
-     *   breakpointStyles?: array<string,BreakpointStyles>|null,
-     * } $styles
+     * @param StylesShape $styles
      */
     public function withStyles(Styles|array $styles): self
     {

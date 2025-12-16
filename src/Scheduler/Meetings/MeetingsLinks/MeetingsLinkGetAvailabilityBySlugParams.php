@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Scheduler\Meetings\MeetingsLinksService::getAvailabilityBySlug()
  *
  * @phpstan-type MeetingsLinkGetAvailabilityBySlugParamsShape = array{
- *   timezone: string, monthOffset?: int
+ *   timezone: string, monthOffset?: int|null
  * }
  */
 final class MeetingsLinkGetAvailabilityBySlugParams implements BaseModel

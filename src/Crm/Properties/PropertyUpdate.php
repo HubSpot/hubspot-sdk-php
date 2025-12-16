@@ -12,17 +12,19 @@ use HubspotSDK\Crm\Properties\PropertyUpdate\Type;
 use HubspotSDK\OptionInput;
 
 /**
+ * @phpstan-import-type OptionInputShape from \HubspotSDK\OptionInput
+ *
  * @phpstan-type PropertyUpdateShape = array{
  *   calculationFormula?: string|null,
  *   description?: string|null,
  *   displayOrder?: int|null,
- *   fieldType?: value-of<FieldType>|null,
+ *   fieldType?: null|FieldType|value-of<FieldType>,
  *   formField?: bool|null,
  *   groupName?: string|null,
  *   hidden?: bool|null,
  *   label?: string|null,
- *   options?: list<OptionInput>|null,
- *   type?: value-of<Type>|null,
+ *   options?: list<OptionInputShape>|null,
+ *   type?: null|Type|value-of<Type>,
  * }
  */
 final class PropertyUpdate implements BaseModel
@@ -107,13 +109,7 @@ final class PropertyUpdate implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param FieldType|value-of<FieldType> $fieldType
-     * @param list<OptionInput|array{
-     *   displayOrder: int,
-     *   hidden: bool,
-     *   label: string,
-     *   value: string,
-     *   description?: string|null,
-     * }> $options
+     * @param list<OptionInputShape> $options
      * @param Type|value-of<Type> $type
      */
     public static function with(
@@ -237,13 +233,7 @@ final class PropertyUpdate implements BaseModel
     /**
      * A list of valid options for the property.
      *
-     * @param list<OptionInput|array{
-     *   displayOrder: int,
-     *   hidden: bool,
-     *   label: string,
-     *   value: string,
-     *   description?: string|null,
-     * }> $options
+     * @param list<OptionInputShape> $options
      */
     public function withOptions(array $options): self
     {

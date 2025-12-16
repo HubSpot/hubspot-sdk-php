@@ -9,11 +9,14 @@ use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\ForwardPaging;
-use HubspotSDK\NextPage;
 
 /**
+ * @phpstan-import-type MarketingEventPublicReadResponseV2Shape from \HubspotSDK\Marketing\Events\MarketingEventPublicReadResponseV2
+ * @phpstan-import-type ForwardPagingShape from \HubspotSDK\ForwardPaging
+ *
  * @phpstan-type CollectionResponseMarketingEventPublicReadResponseV2ForwardPagingShape = array{
- *   results: list<MarketingEventPublicReadResponseV2>, paging?: ForwardPaging|null
+ *   results: list<MarketingEventPublicReadResponseV2Shape>,
+ *   paging?: null|ForwardPaging|ForwardPagingShape,
  * }
  */
 final class CollectionResponseMarketingEventPublicReadResponseV2ForwardPaging implements BaseModel
@@ -57,29 +60,8 @@ final class CollectionResponseMarketingEventPublicReadResponseV2ForwardPaging im
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<MarketingEventPublicReadResponseV2|array{
-     *   createdAt: \DateTimeInterface,
-     *   customProperties: list<CrmPropertyWrapper>,
-     *   eventName: string,
-     *   objectID: string,
-     *   updatedAt: \DateTimeInterface,
-     *   appInfo?: AppInfo|null,
-     *   attendees?: int|null,
-     *   cancellations?: int|null,
-     *   endDateTime?: \DateTimeInterface|null,
-     *   eventCancelled?: bool|null,
-     *   eventCompleted?: bool|null,
-     *   eventDescription?: string|null,
-     *   eventOrganizer?: string|null,
-     *   eventStatus?: string|null,
-     *   eventType?: string|null,
-     *   eventURL?: string|null,
-     *   externalEventID?: string|null,
-     *   noShows?: int|null,
-     *   registrants?: int|null,
-     *   startDateTime?: \DateTimeInterface|null,
-     * }> $results
-     * @param ForwardPaging|array{next?: NextPage|null} $paging
+     * @param list<MarketingEventPublicReadResponseV2Shape> $results
+     * @param ForwardPagingShape $paging
      */
     public static function with(
         array $results,
@@ -95,28 +77,7 @@ final class CollectionResponseMarketingEventPublicReadResponseV2ForwardPaging im
     }
 
     /**
-     * @param list<MarketingEventPublicReadResponseV2|array{
-     *   createdAt: \DateTimeInterface,
-     *   customProperties: list<CrmPropertyWrapper>,
-     *   eventName: string,
-     *   objectID: string,
-     *   updatedAt: \DateTimeInterface,
-     *   appInfo?: AppInfo|null,
-     *   attendees?: int|null,
-     *   cancellations?: int|null,
-     *   endDateTime?: \DateTimeInterface|null,
-     *   eventCancelled?: bool|null,
-     *   eventCompleted?: bool|null,
-     *   eventDescription?: string|null,
-     *   eventOrganizer?: string|null,
-     *   eventStatus?: string|null,
-     *   eventType?: string|null,
-     *   eventURL?: string|null,
-     *   externalEventID?: string|null,
-     *   noShows?: int|null,
-     *   registrants?: int|null,
-     *   startDateTime?: \DateTimeInterface|null,
-     * }> $results
+     * @param list<MarketingEventPublicReadResponseV2Shape> $results
      */
     public function withResults(array $results): self
     {
@@ -127,7 +88,7 @@ final class CollectionResponseMarketingEventPublicReadResponseV2ForwardPaging im
     }
 
     /**
-     * @param ForwardPaging|array{next?: NextPage|null} $paging
+     * @param ForwardPagingShape $paging
      */
     public function withPaging(ForwardPaging|array $paging): self
     {

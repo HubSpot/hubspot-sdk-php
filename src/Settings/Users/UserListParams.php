@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Services\Settings\UsersService::list()
  *
- * @phpstan-type UserListParamsShape = array{after?: string, limit?: int}
+ * @phpstan-type UserListParamsShape = array{after?: string|null, limit?: int|null}
  */
 final class UserListParams implements BaseModel
 {

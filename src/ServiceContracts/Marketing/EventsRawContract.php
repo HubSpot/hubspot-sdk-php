@@ -39,7 +39,7 @@ interface EventsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|EventCreateParams $params
+     * @param array<string,mixed>|EventCreateParams $params
      *
      * @return BaseResponse<MarketingEventDefaultResponse>
      *
@@ -54,7 +54,7 @@ interface EventsRawContract
      * @api
      *
      * @param string $objectID The internal ID of the marketing event in HubSpot
-     * @param array<mixed>|EventUpdateParams $params
+     * @param array<string,mixed>|EventUpdateParams $params
      *
      * @return BaseResponse<MarketingEventPublicDefaultResponseV2>
      *
@@ -69,7 +69,7 @@ interface EventsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|EventListParams $params
+     * @param array<string,mixed>|EventListParams $params
      *
      * @return BaseResponse<Page<MarketingEventPublicReadResponseV2>>
      *
@@ -98,7 +98,7 @@ interface EventsRawContract
      * @api
      *
      * @param string $externalEventID The id of the marketing event in the external event application
-     * @param array<mixed>|EventCancelByExternalEventIDParams $params
+     * @param array<string,mixed>|EventCancelByExternalEventIDParams $params
      *
      * @return BaseResponse<MarketingEventDefaultResponse>
      *
@@ -114,7 +114,7 @@ interface EventsRawContract
      * @api
      *
      * @param string $externalEventID path param: The id of the marketing event in the external event application
-     * @param array<mixed>|EventCompleteByExternalEventIDParams $params
+     * @param array<string,mixed>|EventCompleteByExternalEventIDParams $params
      *
      * @return BaseResponse<MarketingEventDefaultResponse>
      *
@@ -129,7 +129,7 @@ interface EventsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|EventDeleteBatchParams $params
+     * @param array<string,mixed>|EventDeleteBatchParams $params
      *
      * @return BaseResponse<mixed>
      *
@@ -143,7 +143,7 @@ interface EventsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|EventDeleteBatchByExternalEventIDParams $params
+     * @param array<string,mixed>|EventDeleteBatchByExternalEventIDParams $params
      *
      * @return BaseResponse<string>
      *
@@ -158,7 +158,7 @@ interface EventsRawContract
      * @api
      *
      * @param string $externalEventID The id of the marketing event in the external event application
-     * @param array<mixed>|EventDeleteByExternalEventIDParams $params
+     * @param array<string,mixed>|EventDeleteByExternalEventIDParams $params
      *
      * @return BaseResponse<mixed>
      *
@@ -188,7 +188,7 @@ interface EventsRawContract
      * @api
      *
      * @param string $externalEventID The id of the marketing event in the external event application
-     * @param array<mixed>|EventGetByExternalEventIDParams $params
+     * @param array<string,mixed>|EventGetByExternalEventIDParams $params
      *
      * @return BaseResponse<MarketingEventPublicReadResponse>
      *
@@ -203,7 +203,7 @@ interface EventsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|EventSearchByExternalEventIDParams $params
+     * @param array<string,mixed>|EventSearchByExternalEventIDParams $params
      *
      * @return BaseResponse<CollectionResponseSearchPublicResponseWrapperNoPaging>
      *
@@ -231,7 +231,7 @@ interface EventsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|EventUpdateBatchParams $params
+     * @param array<string,mixed>|EventUpdateBatchParams $params
      *
      * @return BaseResponse<BatchResponseMarketingEventPublicDefaultResponseV2>
      *
@@ -246,7 +246,7 @@ interface EventsRawContract
      * @api
      *
      * @param string $externalEventID Path param: The id of the marketing event in the external event application
-     * @param array<mixed>|EventUpdateByExternalEventIDParams $params
+     * @param array<string,mixed>|EventUpdateByExternalEventIDParams $params
      *
      * @return BaseResponse<MarketingEventPublicDefaultResponse>
      *
@@ -261,7 +261,7 @@ interface EventsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|EventUpsertBatchParams $params
+     * @param array<string,mixed>|EventUpsertBatchParams $params
      *
      * @return BaseResponse<BatchResponseMarketingEventPublicDefaultResponse>
      *
@@ -276,7 +276,7 @@ interface EventsRawContract
      * @api
      *
      * @param string $externalEventID_ The id of the marketing event in the external event application
-     * @param array<mixed>|EventUpsertByExternalEventIDParams $params
+     * @param array<string,mixed>|EventUpsertByExternalEventIDParams $params
      *
      * @return BaseResponse<MarketingEventPublicDefaultResponse>
      *
@@ -292,7 +292,7 @@ interface EventsRawContract
      * @api
      *
      * @param string $subscriberState Path param: The new subscriber state for the HubSpot contacts and the specified marketing event. For example: 'register', 'attend' or 'cancel'.
-     * @param array<mixed>|EventUpsertSubscriberStateByEmailParams $params
+     * @param array<string,mixed>|EventUpsertSubscriberStateByEmailParams $params
      *
      * @return BaseResponse<string>
      *
@@ -308,7 +308,7 @@ interface EventsRawContract
      * @api
      *
      * @param string $subscriberState Path param: The new subscriber state for the HubSpot contacts and the specified marketing event. For example: 'register', 'attend' or 'cancel'.
-     * @param array<mixed>|EventUpsertSubscriberStateByIDParams $params
+     * @param array<string,mixed>|EventUpsertSubscriberStateByIDParams $params
      *
      * @return BaseResponse<string>
      *

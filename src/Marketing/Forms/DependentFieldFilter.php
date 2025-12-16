@@ -13,7 +13,7 @@ use HubspotSDK\Marketing\Forms\DependentFieldFilter\Operator;
  * A condition based on customer input.
  *
  * @phpstan-type DependentFieldFilterShape = array{
- *   operator: value-of<Operator>,
+ *   operator: Operator|value-of<Operator>,
  *   rangeEnd: string,
  *   rangeStart: string,
  *   value: string,

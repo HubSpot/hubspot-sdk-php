@@ -7,19 +7,15 @@ namespace HubspotSDK\Crm\Lists;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\PublicAndFilterBranch;
-use HubspotSDK\PublicAssociationFilterBranch;
-use HubspotSDK\PublicNotAllFilterBranch;
-use HubspotSDK\PublicNotAnyFilterBranch;
-use HubspotSDK\PublicOrFilterBranch;
-use HubspotSDK\PublicPropertyAssociationFilterBranch;
-use HubspotSDK\PublicRestrictedFilterBranch;
-use HubspotSDK\PublicUnifiedEventsFilterBranch;
 
 /**
  * The response for a list fetch request.
  *
- * @phpstan-type ListFetchResponseShape = array{list: PublicObjectList}
+ * @phpstan-import-type PublicObjectListShape from \HubspotSDK\Crm\Lists\PublicObjectList
+ *
+ * @phpstan-type ListFetchResponseShape = array{
+ *   list: PublicObjectList|PublicObjectListShape
+ * }
  */
 final class ListFetchResponse implements BaseModel
 {
@@ -56,24 +52,7 @@ final class ListFetchResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param PublicObjectList|array{
-     *   listID: string,
-     *   listVersion: int,
-     *   name: string,
-     *   objectTypeID: string,
-     *   processingStatus: string,
-     *   processingType: string,
-     *   createdAt?: \DateTimeInterface|null,
-     *   createdByID?: string|null,
-     *   deletedAt?: \DateTimeInterface|null,
-     *   filterBranch?: PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch|null,
-     *   filtersUpdatedAt?: \DateTimeInterface|null,
-     *   listPermissions?: PublicListPermissions|null,
-     *   membershipSettings?: PublicMembershipSettings|null,
-     *   size?: int|null,
-     *   updatedAt?: \DateTimeInterface|null,
-     *   updatedByID?: string|null,
-     * } $list
+     * @param PublicObjectListShape $list
      */
     public static function with(PublicObjectList|array $list): self
     {
@@ -87,24 +66,7 @@ final class ListFetchResponse implements BaseModel
     /**
      * An object list definition.
      *
-     * @param PublicObjectList|array{
-     *   listID: string,
-     *   listVersion: int,
-     *   name: string,
-     *   objectTypeID: string,
-     *   processingStatus: string,
-     *   processingType: string,
-     *   createdAt?: \DateTimeInterface|null,
-     *   createdByID?: string|null,
-     *   deletedAt?: \DateTimeInterface|null,
-     *   filterBranch?: PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch|null,
-     *   filtersUpdatedAt?: \DateTimeInterface|null,
-     *   listPermissions?: PublicListPermissions|null,
-     *   membershipSettings?: PublicMembershipSettings|null,
-     *   size?: int|null,
-     *   updatedAt?: \DateTimeInterface|null,
-     *   updatedByID?: string|null,
-     * } $list
+     * @param PublicObjectListShape $list
      */
     public function withList(PublicObjectList|array $list): self
     {

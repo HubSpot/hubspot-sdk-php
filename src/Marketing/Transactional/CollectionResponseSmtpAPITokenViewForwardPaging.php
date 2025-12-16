@@ -9,11 +9,14 @@ use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\ForwardPaging;
-use HubspotSDK\NextPage;
 
 /**
+ * @phpstan-import-type SmtpAPITokenViewShape from \HubspotSDK\Marketing\Transactional\SmtpAPITokenView
+ * @phpstan-import-type ForwardPagingShape from \HubspotSDK\ForwardPaging
+ *
  * @phpstan-type CollectionResponseSmtpAPITokenViewForwardPagingShape = array{
- *   results: list<SmtpAPITokenView>, paging?: ForwardPaging|null
+ *   results: list<SmtpAPITokenViewShape>,
+ *   paging?: null|ForwardPaging|ForwardPagingShape,
  * }
  */
 final class CollectionResponseSmtpAPITokenViewForwardPaging implements BaseModel
@@ -52,16 +55,8 @@ final class CollectionResponseSmtpAPITokenViewForwardPaging implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<SmtpAPITokenView|array{
-     *   id: string,
-     *   campaignName: string,
-     *   createContact: bool,
-     *   createdAt: \DateTimeInterface,
-     *   createdBy: string,
-     *   emailCampaignID: string,
-     *   password?: string|null,
-     * }> $results
-     * @param ForwardPaging|array{next?: NextPage|null} $paging
+     * @param list<SmtpAPITokenViewShape> $results
+     * @param ForwardPagingShape $paging
      */
     public static function with(
         array $results,
@@ -77,15 +72,7 @@ final class CollectionResponseSmtpAPITokenViewForwardPaging implements BaseModel
     }
 
     /**
-     * @param list<SmtpAPITokenView|array{
-     *   id: string,
-     *   campaignName: string,
-     *   createContact: bool,
-     *   createdAt: \DateTimeInterface,
-     *   createdBy: string,
-     *   emailCampaignID: string,
-     *   password?: string|null,
-     * }> $results
+     * @param list<SmtpAPITokenViewShape> $results
      */
     public function withResults(array $results): self
     {
@@ -96,7 +83,7 @@ final class CollectionResponseSmtpAPITokenViewForwardPaging implements BaseModel
     }
 
     /**
-     * @param ForwardPaging|array{next?: NextPage|null} $paging
+     * @param ForwardPagingShape $paging
      */
     public function withPaging(ForwardPaging|array $paging): self
     {

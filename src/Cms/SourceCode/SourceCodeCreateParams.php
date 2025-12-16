@@ -17,7 +17,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Cms\SourceCodeService::create()
  *
  * @phpstan-type SourceCodeCreateParamsShape = array{
- *   environment: string, file?: string
+ *   environment: string, file?: string|null
  * }
  */
 final class SourceCodeCreateParams implements BaseModel

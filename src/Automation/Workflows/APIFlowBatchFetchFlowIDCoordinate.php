@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type APIFlowBatchFetchFlowIDCoordinateShape = array{
- *   flowID: string, type: value-of<Type>
+ *   flowID: string, type: Type|value-of<Type>
  * }
  */
 final class APIFlowBatchFetchFlowIDCoordinate implements BaseModel

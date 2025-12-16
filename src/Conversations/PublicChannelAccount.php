@@ -10,6 +10,8 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type PublicDeliveryIdentifierShape from \HubspotSDK\Conversations\PublicDeliveryIdentifier
+ *
  * @phpstan-type PublicChannelAccountShape = array{
  *   id: string,
  *   active: bool,
@@ -20,7 +22,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   inboxID: string,
  *   name: string,
  *   archivedAt?: \DateTimeInterface|null,
- *   deliveryIdentifier?: PublicDeliveryIdentifier|null,
+ *   deliveryIdentifier?: null|PublicDeliveryIdentifier|PublicDeliveryIdentifierShape,
  * }
  */
 final class PublicChannelAccount implements BaseModel
@@ -99,9 +101,7 @@ final class PublicChannelAccount implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param PublicDeliveryIdentifier|array{
-     *   type: string, value: string
-     * } $deliveryIdentifier
+     * @param PublicDeliveryIdentifierShape $deliveryIdentifier
      */
     public static function with(
         string $id,
@@ -205,9 +205,7 @@ final class PublicChannelAccount implements BaseModel
     }
 
     /**
-     * @param PublicDeliveryIdentifier|array{
-     *   type: string, value: string
-     * } $deliveryIdentifier
+     * @param PublicDeliveryIdentifierShape $deliveryIdentifier
      */
     public function withDeliveryIdentifier(
         PublicDeliveryIdentifier|array $deliveryIdentifier

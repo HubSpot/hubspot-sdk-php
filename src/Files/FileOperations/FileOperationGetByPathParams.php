@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Files\FileOperationsService::getByPath()
  *
  * @phpstan-type FileOperationGetByPathParamsShape = array{
- *   properties?: list<string>
+ *   properties?: list<string>|null
  * }
  */
 final class FileOperationGetByPathParams implements BaseModel

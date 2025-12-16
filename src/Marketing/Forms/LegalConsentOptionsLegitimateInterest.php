@@ -12,10 +12,10 @@ use HubspotSDK\Marketing\Forms\LegalConsentOptionsLegitimateInterest\Type;
 
 /**
  * @phpstan-type LegalConsentOptionsLegitimateInterestShape = array{
- *   lawfulBasis: value-of<LawfulBasis>,
+ *   lawfulBasis: LawfulBasis|value-of<LawfulBasis>,
  *   privacyText: string,
  *   subscriptionTypeIDs: list<int>,
- *   type: value-of<Type>,
+ *   type: Type|value-of<Type>,
  * }
  */
 final class LegalConsentOptionsLegitimateInterest implements BaseModel

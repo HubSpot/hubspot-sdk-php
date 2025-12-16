@@ -9,13 +9,15 @@ use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\ForwardPaging;
-use HubspotSDK\NextPage;
 
 /**
+ * @phpstan-import-type PublicChannelIntegrationChannelShape from \HubspotSDK\Conversations\CustomChannels\PublicChannelIntegrationChannel
+ * @phpstan-import-type ForwardPagingShape from \HubspotSDK\ForwardPaging
+ *
  * @phpstan-type CollectionResponseWithTotalPublicChannelIntegrationChannelForwardPagingShape = array{
- *   results: list<PublicChannelIntegrationChannel>,
+ *   results: list<PublicChannelIntegrationChannelShape>,
  *   total: int,
- *   paging?: ForwardPaging|null,
+ *   paging?: null|ForwardPaging|ForwardPagingShape,
  * }
  */
 final class CollectionResponseWithTotalPublicChannelIntegrationChannelForwardPaging implements BaseModel
@@ -63,17 +65,8 @@ final class CollectionResponseWithTotalPublicChannelIntegrationChannelForwardPag
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicChannelIntegrationChannel|array{
-     *   id: string,
-     *   capabilities: array<string,mixed>,
-     *   createdAt: \DateTimeInterface,
-     *   name: string,
-     *   channelAccountConnectionRedirectURL?: string|null,
-     *   channelDescription?: string|null,
-     *   channelLogoURL?: string|null,
-     *   webhookURL?: string|null,
-     * }> $results
-     * @param ForwardPaging|array{next?: NextPage|null} $paging
+     * @param list<PublicChannelIntegrationChannelShape> $results
+     * @param ForwardPagingShape $paging
      */
     public static function with(
         array $results,
@@ -91,16 +84,7 @@ final class CollectionResponseWithTotalPublicChannelIntegrationChannelForwardPag
     }
 
     /**
-     * @param list<PublicChannelIntegrationChannel|array{
-     *   id: string,
-     *   capabilities: array<string,mixed>,
-     *   createdAt: \DateTimeInterface,
-     *   name: string,
-     *   channelAccountConnectionRedirectURL?: string|null,
-     *   channelDescription?: string|null,
-     *   channelLogoURL?: string|null,
-     *   webhookURL?: string|null,
-     * }> $results
+     * @param list<PublicChannelIntegrationChannelShape> $results
      */
     public function withResults(array $results): self
     {
@@ -119,7 +103,7 @@ final class CollectionResponseWithTotalPublicChannelIntegrationChannelForwardPag
     }
 
     /**
-     * @param ForwardPaging|array{next?: NextPage|null} $paging
+     * @param ForwardPagingShape $paging
      */
     public function withPaging(ForwardPaging|array $paging): self
     {

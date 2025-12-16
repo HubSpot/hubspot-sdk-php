@@ -18,13 +18,15 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Services\Cms\Hubdb\RowsService::updateDraft()
  *
+ * @phpstan-import-type VariantShape from \HubspotSDK\Cms\Hubdb\Variant
+ *
  * @phpstan-type RowUpdateDraftParamsShape = array{
  *   tableIDOrName: string,
  *   childTableID: int,
  *   displayIndex: int,
- *   values: array<string,Variant|array<string,mixed>>,
- *   name?: string,
- *   path?: string,
+ *   values: array<string,VariantShape>,
+ *   name?: string|null,
+ *   path?: string|null,
  * }
  */
 final class RowUpdateDraftParams implements BaseModel
@@ -95,7 +97,7 @@ final class RowUpdateDraftParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string,Variant|array<string,mixed>> $values
+     * @param array<string,VariantShape> $values
      */
     public static function with(
         string $tableIDOrName,
@@ -148,7 +150,7 @@ final class RowUpdateDraftParams implements BaseModel
     /**
      * List of key value pairs with the column name and column value.
      *
-     * @param array<string,Variant|array<string,mixed>> $values
+     * @param array<string,VariantShape> $values
      */
     public function withValues(array $values): self
     {

@@ -8,16 +8,19 @@ use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\Extensions\Cards\CardAuditResponse\ActionType;
-use HubspotSDK\Crm\Extensions\Cards\CardAuditResponse\AuthSource;
 
 /**
+ * @phpstan-import-type CardActionsShape from \HubspotSDK\Crm\Extensions\Cards\CardActions
+ * @phpstan-import-type CardAuditResponseShape from \HubspotSDK\Crm\Extensions\Cards\CardAuditResponse
+ * @phpstan-import-type CardDisplayBodyShape from \HubspotSDK\Crm\Extensions\Cards\CardDisplayBody
+ * @phpstan-import-type PublicCardFetchBodyShape from \HubspotSDK\Crm\Extensions\Cards\PublicCardFetchBody
+ *
  * @phpstan-type PublicCardResponseShape = array{
  *   id: string,
- *   actions: CardActions,
- *   auditHistory: list<CardAuditResponse>,
- *   display: CardDisplayBody,
- *   fetch: PublicCardFetchBody,
+ *   actions: CardActions|CardActionsShape,
+ *   auditHistory: list<CardAuditResponseShape>,
+ *   display: CardDisplayBody|CardDisplayBodyShape,
+ *   fetch: PublicCardFetchBody|PublicCardFetchBodyShape,
  *   title: string,
  *   createdAt?: \DateTimeInterface|null,
  *   updatedAt?: \DateTimeInterface|null,
@@ -91,19 +94,10 @@ final class PublicCardResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param CardActions|array{baseURLs: list<string>} $actions
-     * @param list<CardAuditResponse|array{
-     *   actionType: value-of<ActionType>,
-     *   applicationID: int,
-     *   authSource: value-of<AuthSource>,
-     *   changedAt: int,
-     *   initiatingUserID: int,
-     *   objectTypeID: int,
-     * }> $auditHistory
-     * @param CardDisplayBody|array{properties: list<CardDisplayProperty>} $display
-     * @param PublicCardFetchBody|array{
-     *   objectTypes: list<CardObjectTypeBody>, targetURL: string
-     * } $fetch
+     * @param CardActionsShape $actions
+     * @param list<CardAuditResponseShape> $auditHistory
+     * @param CardDisplayBodyShape $display
+     * @param PublicCardFetchBodyShape $fetch
      */
     public static function with(
         string $id,
@@ -141,7 +135,7 @@ final class PublicCardResponse implements BaseModel
     /**
      * Configuration for custom user actions on cards.
      *
-     * @param CardActions|array{baseURLs: list<string>} $actions
+     * @param CardActionsShape $actions
      */
     public function withActions(CardActions|array $actions): self
     {
@@ -152,14 +146,7 @@ final class PublicCardResponse implements BaseModel
     }
 
     /**
-     * @param list<CardAuditResponse|array{
-     *   actionType: value-of<ActionType>,
-     *   applicationID: int,
-     *   authSource: value-of<AuthSource>,
-     *   changedAt: int,
-     *   initiatingUserID: int,
-     *   objectTypeID: int,
-     * }> $auditHistory
+     * @param list<CardAuditResponseShape> $auditHistory
      */
     public function withAuditHistory(array $auditHistory): self
     {
@@ -172,7 +159,7 @@ final class PublicCardResponse implements BaseModel
     /**
      * Configuration for displayed info on a card.
      *
-     * @param CardDisplayBody|array{properties: list<CardDisplayProperty>} $display
+     * @param CardDisplayBodyShape $display
      */
     public function withDisplay(CardDisplayBody|array $display): self
     {
@@ -183,9 +170,7 @@ final class PublicCardResponse implements BaseModel
     }
 
     /**
-     * @param PublicCardFetchBody|array{
-     *   objectTypes: list<CardObjectTypeBody>, targetURL: string
-     * } $fetch
+     * @param PublicCardFetchBodyShape $fetch
      */
     public function withFetch(PublicCardFetchBody|array $fetch): self
     {

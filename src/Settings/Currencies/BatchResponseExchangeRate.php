@@ -9,15 +9,15 @@ use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Settings\Currencies\BatchResponseExchangeRate\Status;
-use HubspotSDK\Settings\Currencies\ExchangeRate\FromCurrencyCode;
-use HubspotSDK\Settings\Currencies\ExchangeRate\ToCurrencyCode;
 
 /**
+ * @phpstan-import-type ExchangeRateShape from \HubspotSDK\Settings\Currencies\ExchangeRate
+ *
  * @phpstan-type BatchResponseExchangeRateShape = array{
  *   completedAt: \DateTimeInterface,
- *   results: list<ExchangeRate>,
+ *   results: list<ExchangeRateShape>,
  *   startedAt: \DateTimeInterface,
- *   status: value-of<Status>,
+ *   status: Status|value-of<Status>,
  *   links?: array<string,string>|null,
  *   requestedAt?: \DateTimeInterface|null,
  * }
@@ -78,16 +78,7 @@ final class BatchResponseExchangeRate implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<ExchangeRate|array{
-     *   id: string,
-     *   conversionRate: float,
-     *   createdAt: \DateTimeInterface,
-     *   effectiveAt: \DateTimeInterface,
-     *   fromCurrencyCode: value-of<FromCurrencyCode>,
-     *   toCurrencyCode: value-of<ToCurrencyCode>,
-     *   updatedAt: \DateTimeInterface,
-     *   visibleInUi: bool,
-     * }> $results
+     * @param list<ExchangeRateShape> $results
      * @param Status|value-of<Status> $status
      * @param array<string,string> $links
      */
@@ -121,16 +112,7 @@ final class BatchResponseExchangeRate implements BaseModel
     }
 
     /**
-     * @param list<ExchangeRate|array{
-     *   id: string,
-     *   conversionRate: float,
-     *   createdAt: \DateTimeInterface,
-     *   effectiveAt: \DateTimeInterface,
-     *   fromCurrencyCode: value-of<FromCurrencyCode>,
-     *   toCurrencyCode: value-of<ToCurrencyCode>,
-     *   updatedAt: \DateTimeInterface,
-     *   visibleInUi: bool,
-     * }> $results
+     * @param list<ExchangeRateShape> $results
      */
     public function withResults(array $results): self
     {

@@ -8,12 +8,12 @@ use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Marketing\Events\PropertyValue\DataSensitivity;
-use HubspotSDK\Marketing\Events\PropertyValue\Source;
 
 /**
+ * @phpstan-import-type PropertyValueShape from \HubspotSDK\Marketing\Events\PropertyValue
+ *
  * @phpstan-type MarketingEventPublicUpdateRequestFullV2Shape = array{
- *   customProperties: list<PropertyValue>,
+ *   customProperties: list<PropertyValueShape>,
  *   objectID: string,
  *   endDateTime?: \DateTimeInterface|null,
  *   eventCancelled?: bool|null,
@@ -89,27 +89,7 @@ final class MarketingEventPublicUpdateRequestFullV2 implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PropertyValue|array{
-     *   dataSensitivity: value-of<DataSensitivity>,
-     *   isEncrypted: bool,
-     *   isLargeValue: bool,
-     *   name: string,
-     *   persistenceTimestamp: int,
-     *   requestID: string,
-     *   selectedByUser: bool,
-     *   selectedByUserTimestamp: int,
-     *   source: value-of<Source>,
-     *   sourceID: string,
-     *   sourceLabel: string,
-     *   sourceMetadata: string,
-     *   sourceUpstreamDeployable: string,
-     *   sourceVid: list<int>,
-     *   timestamp: int,
-     *   unit: string,
-     *   updatedByUserID: int,
-     *   useTimestampAsPersistenceTimestamp: bool,
-     *   value: string,
-     * }> $customProperties
+     * @param list<PropertyValueShape> $customProperties
      */
     public static function with(
         array $customProperties,
@@ -141,27 +121,7 @@ final class MarketingEventPublicUpdateRequestFullV2 implements BaseModel
     }
 
     /**
-     * @param list<PropertyValue|array{
-     *   dataSensitivity: value-of<DataSensitivity>,
-     *   isEncrypted: bool,
-     *   isLargeValue: bool,
-     *   name: string,
-     *   persistenceTimestamp: int,
-     *   requestID: string,
-     *   selectedByUser: bool,
-     *   selectedByUserTimestamp: int,
-     *   source: value-of<Source>,
-     *   sourceID: string,
-     *   sourceLabel: string,
-     *   sourceMetadata: string,
-     *   sourceUpstreamDeployable: string,
-     *   sourceVid: list<int>,
-     *   timestamp: int,
-     *   unit: string,
-     *   updatedByUserID: int,
-     *   useTimestampAsPersistenceTimestamp: bool,
-     *   value: string,
-     * }> $customProperties
+     * @param list<PropertyValueShape> $customProperties
      */
     public function withCustomProperties(array $customProperties): self
     {

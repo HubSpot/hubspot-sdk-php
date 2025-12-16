@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-type APIUsageShape = array{
  *   collectedAt: \DateTimeInterface,
  *   currentUsage: int,
- *   fetchStatus: value-of<FetchStatus>,
+ *   fetchStatus: FetchStatus|value-of<FetchStatus>,
  *   name: string,
  *   usageLimit: int,
  *   resetsAt?: \DateTimeInterface|null,

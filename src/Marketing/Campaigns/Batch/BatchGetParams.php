@@ -19,11 +19,13 @@ use HubspotSDK\Marketing\Campaigns\PublicCampaignReadInput;
  *
  * @see HubspotSDK\Services\Marketing\Campaigns\BatchService::get()
  *
+ * @phpstan-import-type PublicCampaignReadInputShape from \HubspotSDK\Marketing\Campaigns\PublicCampaignReadInput
+ *
  * @phpstan-type BatchGetParamsShape = array{
- *   inputs: list<PublicCampaignReadInput|array{id: string}>,
- *   endDate?: string,
- *   properties?: list<string>,
- *   startDate?: string,
+ *   inputs: list<PublicCampaignReadInputShape>,
+ *   endDate?: string|null,
+ *   properties?: list<string>|null,
+ *   startDate?: string|null,
  * }
  */
 final class BatchGetParams implements BaseModel
@@ -80,7 +82,7 @@ final class BatchGetParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicCampaignReadInput|array{id: string}> $inputs
+     * @param list<PublicCampaignReadInputShape> $inputs
      * @param list<string> $properties
      */
     public static function with(
@@ -101,7 +103,7 @@ final class BatchGetParams implements BaseModel
     }
 
     /**
-     * @param list<PublicCampaignReadInput|array{id: string}> $inputs
+     * @param list<PublicCampaignReadInputShape> $inputs
      */
     public function withInputs(array $inputs): self
     {

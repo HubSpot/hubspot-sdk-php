@@ -13,7 +13,7 @@ use HubspotSDK\PublicMonthReference\ReferenceType;
 /**
  * @phpstan-type PublicMonthReferenceShape = array{
  *   day: int,
- *   referenceType: value-of<ReferenceType>,
+ *   referenceType: ReferenceType|value-of<ReferenceType>,
  *   hour?: int|null,
  *   millisecond?: int|null,
  *   minute?: int|null,

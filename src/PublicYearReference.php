@@ -14,7 +14,7 @@ use HubspotSDK\PublicYearReference\ReferenceType;
  * @phpstan-type PublicYearReferenceShape = array{
  *   day: int,
  *   month: int,
- *   referenceType: value-of<ReferenceType>,
+ *   referenceType: ReferenceType|value-of<ReferenceType>,
  *   hour?: int|null,
  *   millisecond?: int|null,
  *   minute?: int|null,

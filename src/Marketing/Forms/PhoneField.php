@@ -13,16 +13,18 @@ use HubspotSDK\Marketing\Forms\PhoneField\FieldType;
 /**
  * A form field used for collecting a phone number.
  *
+ * @phpstan-import-type PhoneFieldValidationShape from \HubspotSDK\Marketing\Forms\PhoneFieldValidation
+ *
  * @phpstan-type PhoneFieldShape = array{
  *   dependentFields: list<mixed>,
- *   fieldType: value-of<FieldType>,
+ *   fieldType: FieldType|value-of<FieldType>,
  *   hidden: bool,
  *   label: string,
  *   name: string,
  *   objectTypeID: string,
  *   required: bool,
  *   useCountryCodeSelect: bool,
- *   validation: PhoneFieldValidation,
+ *   validation: PhoneFieldValidation|PhoneFieldValidationShape,
  *   defaultValue?: string|null,
  *   description?: string|null,
  *   placeholder?: string|null,
@@ -153,9 +155,7 @@ final class PhoneField implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<mixed> $dependentFields
-     * @param PhoneFieldValidation|array{
-     *   maxAllowedDigits: int, minAllowedDigits: int
-     * } $validation
+     * @param PhoneFieldValidationShape $validation
      * @param FieldType|value-of<FieldType> $fieldType
      */
     public static function with(
@@ -286,9 +286,7 @@ final class PhoneField implements BaseModel
     /**
      * Describes how a phone number should be validated.
      *
-     * @param PhoneFieldValidation|array{
-     *   maxAllowedDigits: int, minAllowedDigits: int
-     * } $validation
+     * @param PhoneFieldValidationShape $validation
      */
     public function withValidation(PhoneFieldValidation|array $validation): self
     {

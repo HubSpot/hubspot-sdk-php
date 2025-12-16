@@ -9,16 +9,18 @@ use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\ErrorDetail;
 use HubspotSDK\StandardError;
 
 /**
+ * @phpstan-import-type HubDBTableRowV3Shape from \HubspotSDK\Cms\Hubdb\HubDBTableRowV3
+ * @phpstan-import-type StandardErrorShape from \HubspotSDK\StandardError
+ *
  * @phpstan-type BatchResponseHubDBTableRowV3WithErrorsShape = array{
  *   completedAt: \DateTimeInterface,
- *   results: list<HubDBTableRowV3>,
+ *   results: list<HubDBTableRowV3Shape>,
  *   startedAt: \DateTimeInterface,
- *   status: value-of<Status>,
- *   errors?: list<StandardError>|null,
+ *   status: Status|value-of<Status>,
+ *   errors?: list<StandardErrorShape>|null,
  *   links?: array<string,string>|null,
  *   numErrors?: int|null,
  *   requestedAt?: \DateTimeInterface|null,
@@ -87,27 +89,9 @@ final class BatchResponseHubDBTableRowV3WithErrors implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<HubDBTableRowV3|array{
-     *   id: string,
-     *   childTableID: string,
-     *   createdAt: \DateTimeInterface,
-     *   name: string,
-     *   path: string,
-     *   publishedAt: \DateTimeInterface,
-     *   updatedAt: \DateTimeInterface,
-     *   values: array<string,mixed>,
-     * }> $results
+     * @param list<HubDBTableRowV3Shape> $results
      * @param Status|value-of<Status> $status
-     * @param list<StandardError|array{
-     *   category: string,
-     *   context: array<string,list<string>>,
-     *   errors: list<ErrorDetail>,
-     *   links: array<string,string>,
-     *   message: string,
-     *   status: string,
-     *   id?: string|null,
-     *   subCategory?: mixed,
-     * }> $errors
+     * @param list<StandardErrorShape> $errors
      * @param array<string,string> $links
      */
     public static function with(
@@ -144,16 +128,7 @@ final class BatchResponseHubDBTableRowV3WithErrors implements BaseModel
     }
 
     /**
-     * @param list<HubDBTableRowV3|array{
-     *   id: string,
-     *   childTableID: string,
-     *   createdAt: \DateTimeInterface,
-     *   name: string,
-     *   path: string,
-     *   publishedAt: \DateTimeInterface,
-     *   updatedAt: \DateTimeInterface,
-     *   values: array<string,mixed>,
-     * }> $results
+     * @param list<HubDBTableRowV3Shape> $results
      */
     public function withResults(array $results): self
     {
@@ -183,16 +158,7 @@ final class BatchResponseHubDBTableRowV3WithErrors implements BaseModel
     }
 
     /**
-     * @param list<StandardError|array{
-     *   category: string,
-     *   context: array<string,list<string>>,
-     *   errors: list<ErrorDetail>,
-     *   links: array<string,string>,
-     *   message: string,
-     *   status: string,
-     *   id?: string|null,
-     *   subCategory?: mixed,
-     * }> $errors
+     * @param list<StandardErrorShape> $errors
      */
     public function withErrors(array $errors): self
     {

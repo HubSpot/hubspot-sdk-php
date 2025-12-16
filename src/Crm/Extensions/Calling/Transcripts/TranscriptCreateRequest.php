@@ -9,8 +9,11 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type TranscriptCreateUtteranceShape from \HubspotSDK\Crm\Extensions\Calling\Transcripts\TranscriptCreateUtterance
+ *
  * @phpstan-type TranscriptCreateRequestShape = array{
- *   engagementID: int, transcriptCreateUtterances: list<TranscriptCreateUtterance>
+ *   engagementID: int,
+ *   transcriptCreateUtterances: list<TranscriptCreateUtteranceShape>,
  * }
  */
 final class TranscriptCreateRequest implements BaseModel
@@ -53,13 +56,7 @@ final class TranscriptCreateRequest implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<TranscriptCreateUtterance|array{
-     *   endTimeMillis: int,
-     *   speaker: Speaker,
-     *   startTimeMillis: int,
-     *   text: string,
-     *   languageCode?: string|null,
-     * }> $transcriptCreateUtterances
+     * @param list<TranscriptCreateUtteranceShape> $transcriptCreateUtterances
      */
     public static function with(
         int $engagementID,
@@ -82,13 +79,7 @@ final class TranscriptCreateRequest implements BaseModel
     }
 
     /**
-     * @param list<TranscriptCreateUtterance|array{
-     *   endTimeMillis: int,
-     *   speaker: Speaker,
-     *   startTimeMillis: int,
-     *   text: string,
-     *   languageCode?: string|null,
-     * }> $transcriptCreateUtterances
+     * @param list<TranscriptCreateUtteranceShape> $transcriptCreateUtterances
      */
     public function withTranscriptCreateUtterances(
         array $transcriptCreateUtterances

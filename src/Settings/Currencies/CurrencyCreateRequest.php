@@ -11,7 +11,7 @@ use HubspotSDK\Settings\Currencies\CurrencyCreateRequest\CurrencyCode;
 
 /**
  * @phpstan-type CurrencyCreateRequestShape = array{
- *   currencyCode: value-of<CurrencyCode>
+ *   currencyCode: CurrencyCode|value-of<CurrencyCode>
  * }
  */
 final class CurrencyCreateRequest implements BaseModel

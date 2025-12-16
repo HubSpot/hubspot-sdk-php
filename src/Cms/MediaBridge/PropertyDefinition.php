@@ -4,34 +4,37 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\MediaBridge;
 
-use HubspotSDK\AssociationSpec;
-use HubspotSDK\Cms\MediaBridge\DefaultRequirements\Operator;
-use HubspotSDK\Cms\MediaBridge\PropertyDefinitionSource\Type;
 use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Option;
 use HubspotSDK\Property;
-use HubspotSDK\Property\DataSensitivity;
-use HubspotSDK\PropertyModificationMetadata;
 
 /**
+ * @phpstan-import-type PropertyShape from \HubspotSDK\Property
+ * @phpstan-import-type PropertyDefinitionSourceShape from \HubspotSDK\Cms\MediaBridge\PropertyDefinitionSource
+ * @phpstan-import-type ExtensionDataShape from \HubspotSDK\Cms\MediaBridge\ExtensionData
+ * @phpstan-import-type ExternalOptionsMetaDataShape from \HubspotSDK\Cms\MediaBridge\ExternalOptionsMetaData
+ * @phpstan-import-type FieldLevelPermissionShape from \HubspotSDK\Cms\MediaBridge\FieldLevelPermission
+ * @phpstan-import-type DefinitionSourceShape from \HubspotSDK\Cms\MediaBridge\DefinitionSource
+ * @phpstan-import-type DefaultRequirementsShape from \HubspotSDK\Cms\MediaBridge\DefaultRequirements
+ * @phpstan-import-type RollupExpressionShape from \HubspotSDK\Cms\MediaBridge\RollupExpression
+ *
  * @phpstan-type PropertyDefinitionShape = array{
  *   objectTypeID: string,
- *   property: \HubspotSDK\Property,
+ *   property: \HubspotSDK\Property|PropertyShape,
  *   calculationExpression?: array<string,mixed>|null,
  *   calculationFormula?: string|null,
- *   definitionSource?: PropertyDefinitionSource|null,
- *   extensionData?: ExtensionData|null,
- *   externalOptionsMetaData?: ExternalOptionsMetaData|null,
+ *   definitionSource?: null|PropertyDefinitionSource|PropertyDefinitionSourceShape,
+ *   extensionData?: null|ExtensionData|ExtensionDataShape,
+ *   externalOptionsMetaData?: null|ExternalOptionsMetaData|ExternalOptionsMetaDataShape,
  *   fulcrumPortalID?: int|null,
  *   fulcrumTimestamp?: int|null,
  *   janusGroup?: string|null,
- *   permission?: FieldLevelPermission|null,
- *   propertyDefinitionSource?: DefinitionSource|null,
- *   propertyRequirements?: DefaultRequirements|null,
- *   rollupExpression?: RollupExpression|null,
+ *   permission?: null|FieldLevelPermission|FieldLevelPermissionShape,
+ *   propertyDefinitionSource?: null|DefinitionSource|DefinitionSourceShape,
+ *   propertyRequirements?: null|DefaultRequirements|DefaultRequirementsShape,
+ *   rollupExpression?: null|RollupExpression|RollupExpressionShape,
  * }
  */
 final class PropertyDefinition implements BaseModel
@@ -109,69 +112,15 @@ final class PropertyDefinition implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param Property|array{
-     *   description: string,
-     *   fieldType: string,
-     *   groupName: string,
-     *   label: string,
-     *   name: string,
-     *   options: list<Option>,
-     *   type: string,
-     *   archived?: bool|null,
-     *   archivedAt?: \DateTimeInterface|null,
-     *   calculated?: bool|null,
-     *   calculationFormula?: string|null,
-     *   createdAt?: \DateTimeInterface|null,
-     *   createdUserID?: string|null,
-     *   dataSensitivity?: value-of<DataSensitivity>|null,
-     *   displayOrder?: int|null,
-     *   externalOptions?: bool|null,
-     *   formField?: bool|null,
-     *   hasUniqueValue?: bool|null,
-     *   hidden?: bool|null,
-     *   hubspotDefined?: bool|null,
-     *   modificationMetadata?: PropertyModificationMetadata|null,
-     *   referencedObjectType?: string|null,
-     *   sensitiveDataCategories?: list<string>|null,
-     *   showCurrencySymbol?: bool|null,
-     *   updatedAt?: \DateTimeInterface|null,
-     *   updatedUserID?: string|null,
-     * } $property
+     * @param PropertyShape $property
      * @param array<string,mixed> $calculationExpression
-     * @param PropertyDefinitionSource|array{
-     *   type: value-of<Type>, name?: string|null
-     * } $definitionSource
-     * @param ExtensionData|array{
-     *   extensionStatusMap: array<string,string>,
-     *   tags: list<string>,
-     *   caseChangeTestExtensionData?: CaseChangeTestExtensionData|null,
-     *   optionDecoratorsExtensionData?: OptionDecoratorsExtensionData|null,
-     *   requiredPropertiesExtensionData?: RequiredPropertiesExtensionData|null,
-     *   softRequiredPropertiesExtensionData?: SoftRequiredPropertiesExtensionData|null,
-     * } $extensionData
-     * @param ExternalOptionsMetaData|array{
-     *   filter?: FilteringMetaData|null, relatedObjectTypeID?: string|null
-     * } $externalOptionsMetaData
-     * @param FieldLevelPermission|array{accessLevel: string} $permission
-     * @param DefinitionSource|array{
-     *   type: string, name?: string|null
-     * } $propertyDefinitionSource
-     * @param DefaultRequirements|array{
-     *   gates: list<string>,
-     *   operator: value-of<Operator>,
-     *   scopeNames: list<string>,
-     *   settings: list<string>,
-     * } $propertyRequirements
-     * @param RollupExpression|array{
-     *   associationTypes: list<AssociationSpec>,
-     *   rollupOperator: string,
-     *   sourceObjectTypeID: string,
-     *   sourcePropertyName: string,
-     *   conditionalExpression?: array<string,mixed>|null,
-     *   conditionalFormula?: string|null,
-     *   emptyRollupValue?: string|null,
-     *   sourceCompareByPropertyName?: string|null,
-     * } $rollupExpression
+     * @param PropertyDefinitionSourceShape $definitionSource
+     * @param ExtensionDataShape $extensionData
+     * @param ExternalOptionsMetaDataShape $externalOptionsMetaData
+     * @param FieldLevelPermissionShape $permission
+     * @param DefinitionSourceShape $propertyDefinitionSource
+     * @param DefaultRequirementsShape $propertyRequirements
+     * @param RollupExpressionShape $rollupExpression
      */
     public static function with(
         string $objectTypeID,
@@ -221,34 +170,7 @@ final class PropertyDefinition implements BaseModel
     /**
      * Defines a property.
      *
-     * @param Property|array{
-     *   description: string,
-     *   fieldType: string,
-     *   groupName: string,
-     *   label: string,
-     *   name: string,
-     *   options: list<Option>,
-     *   type: string,
-     *   archived?: bool|null,
-     *   archivedAt?: \DateTimeInterface|null,
-     *   calculated?: bool|null,
-     *   calculationFormula?: string|null,
-     *   createdAt?: \DateTimeInterface|null,
-     *   createdUserID?: string|null,
-     *   dataSensitivity?: value-of<DataSensitivity>|null,
-     *   displayOrder?: int|null,
-     *   externalOptions?: bool|null,
-     *   formField?: bool|null,
-     *   hasUniqueValue?: bool|null,
-     *   hidden?: bool|null,
-     *   hubspotDefined?: bool|null,
-     *   modificationMetadata?: PropertyModificationMetadata|null,
-     *   referencedObjectType?: string|null,
-     *   sensitiveDataCategories?: list<string>|null,
-     *   showCurrencySymbol?: bool|null,
-     *   updatedAt?: \DateTimeInterface|null,
-     *   updatedUserID?: string|null,
-     * } $property
+     * @param PropertyShape $property
      */
     public function withProperty(Property|array $property): self
     {
@@ -279,9 +201,7 @@ final class PropertyDefinition implements BaseModel
     }
 
     /**
-     * @param PropertyDefinitionSource|array{
-     *   type: value-of<Type>, name?: string|null
-     * } $definitionSource
+     * @param PropertyDefinitionSourceShape $definitionSource
      */
     public function withDefinitionSource(
         PropertyDefinitionSource|array $definitionSource
@@ -293,14 +213,7 @@ final class PropertyDefinition implements BaseModel
     }
 
     /**
-     * @param ExtensionData|array{
-     *   extensionStatusMap: array<string,string>,
-     *   tags: list<string>,
-     *   caseChangeTestExtensionData?: CaseChangeTestExtensionData|null,
-     *   optionDecoratorsExtensionData?: OptionDecoratorsExtensionData|null,
-     *   requiredPropertiesExtensionData?: RequiredPropertiesExtensionData|null,
-     *   softRequiredPropertiesExtensionData?: SoftRequiredPropertiesExtensionData|null,
-     * } $extensionData
+     * @param ExtensionDataShape $extensionData
      */
     public function withExtensionData(ExtensionData|array $extensionData): self
     {
@@ -311,9 +224,7 @@ final class PropertyDefinition implements BaseModel
     }
 
     /**
-     * @param ExternalOptionsMetaData|array{
-     *   filter?: FilteringMetaData|null, relatedObjectTypeID?: string|null
-     * } $externalOptionsMetaData
+     * @param ExternalOptionsMetaDataShape $externalOptionsMetaData
      */
     public function withExternalOptionsMetaData(
         ExternalOptionsMetaData|array $externalOptionsMetaData
@@ -349,7 +260,7 @@ final class PropertyDefinition implements BaseModel
     }
 
     /**
-     * @param FieldLevelPermission|array{accessLevel: string} $permission
+     * @param FieldLevelPermissionShape $permission
      */
     public function withPermission(FieldLevelPermission|array $permission): self
     {
@@ -360,9 +271,7 @@ final class PropertyDefinition implements BaseModel
     }
 
     /**
-     * @param DefinitionSource|array{
-     *   type: string, name?: string|null
-     * } $propertyDefinitionSource
+     * @param DefinitionSourceShape $propertyDefinitionSource
      */
     public function withPropertyDefinitionSource(
         DefinitionSource|array $propertyDefinitionSource
@@ -374,12 +283,7 @@ final class PropertyDefinition implements BaseModel
     }
 
     /**
-     * @param DefaultRequirements|array{
-     *   gates: list<string>,
-     *   operator: value-of<Operator>,
-     *   scopeNames: list<string>,
-     *   settings: list<string>,
-     * } $propertyRequirements
+     * @param DefaultRequirementsShape $propertyRequirements
      */
     public function withPropertyRequirements(
         DefaultRequirements|array $propertyRequirements
@@ -391,16 +295,7 @@ final class PropertyDefinition implements BaseModel
     }
 
     /**
-     * @param RollupExpression|array{
-     *   associationTypes: list<AssociationSpec>,
-     *   rollupOperator: string,
-     *   sourceObjectTypeID: string,
-     *   sourcePropertyName: string,
-     *   conditionalExpression?: array<string,mixed>|null,
-     *   conditionalFormula?: string|null,
-     *   emptyRollupValue?: string|null,
-     *   sourceCompareByPropertyName?: string|null,
-     * } $rollupExpression
+     * @param RollupExpressionShape $rollupExpression
      */
     public function withRollupExpression(
         RollupExpression|array $rollupExpression

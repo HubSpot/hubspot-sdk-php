@@ -16,10 +16,10 @@ use HubspotSDK\Marketing\Emails\PublicEmailTestingDetails\AbSuccessMetric;
  * AB testing related data. This property is only returned for AB type emails.
  *
  * @phpstan-type PublicEmailTestingDetailsShape = array{
- *   abSampleSizeDefault?: value-of<AbSampleSizeDefault>|null,
- *   abSamplingDefault?: value-of<AbSamplingDefault>|null,
- *   abStatus?: value-of<AbStatus>|null,
- *   abSuccessMetric?: value-of<AbSuccessMetric>|null,
+ *   abSampleSizeDefault?: null|AbSampleSizeDefault|value-of<AbSampleSizeDefault>,
+ *   abSamplingDefault?: null|AbSamplingDefault|value-of<AbSamplingDefault>,
+ *   abStatus?: null|AbStatus|value-of<AbStatus>,
+ *   abSuccessMetric?: null|AbSuccessMetric|value-of<AbSuccessMetric>,
  *   abTestPercentage?: int|null,
  *   hoursToWait?: int|null,
  *   isAbVariation?: bool|null,

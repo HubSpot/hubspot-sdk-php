@@ -39,7 +39,7 @@ final class EventDefinitionsRawService implements EventDefinitionsRawContract
      *     type: string,
      *     description?: string,
      *     name?: string,
-     *     options?: list<array<mixed>>,
+     *     options?: list<array<string,mixed>>,
      *   }>,
      *   description?: string,
      *   name?: string,

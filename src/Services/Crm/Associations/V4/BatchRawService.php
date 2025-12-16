@@ -38,9 +38,9 @@ final class BatchRawService implements BatchRawContract
      * @param array{
      *   fromObjectType: string,
      *   inputs: list<array{
-     *     from: array<mixed>|PublicObjectID,
-     *     to: array<mixed>|PublicObjectID,
-     *     types: list<array<mixed>|AssociationSpec>,
+     *     from: array<string,mixed>|PublicObjectID,
+     *     to: array<string,mixed>|PublicObjectID,
+     *     types: list<array<string,mixed>|AssociationSpec>,
      *   }>,
      * }|BatchCreateParams $params
      *
@@ -83,7 +83,8 @@ final class BatchRawService implements BatchRawContract
      * @param array{
      *   fromObjectType: string,
      *   inputs: list<array{
-     *     from: array<mixed>|PublicObjectID, to: list<array<mixed>|PublicObjectID>
+     *     from: array<string,mixed>|PublicObjectID,
+     *     to: list<array<string,mixed>|PublicObjectID>,
      *   }>,
      * }|BatchDeleteParams $params
      *
@@ -126,7 +127,8 @@ final class BatchRawService implements BatchRawContract
      * @param array{
      *   fromObjectType: string,
      *   inputs: list<array{
-     *     from: array<mixed>|PublicObjectID, to: array<mixed>|PublicObjectID
+     *     from: array<string,mixed>|PublicObjectID,
+     *     to: array<string,mixed>|PublicObjectID,
      *   }>,
      * }|BatchCreateDefaultParams $params
      *
@@ -169,9 +171,9 @@ final class BatchRawService implements BatchRawContract
      * @param array{
      *   fromObjectType: string,
      *   inputs: list<array{
-     *     from: array<mixed>|PublicObjectID,
-     *     to: array<mixed>|PublicObjectID,
-     *     types: list<array<mixed>|AssociationSpec>,
+     *     from: array<string,mixed>|PublicObjectID,
+     *     to: array<string,mixed>|PublicObjectID,
+     *     types: list<array<string,mixed>|AssociationSpec>,
      *   }>,
      * }|BatchDeleteLabelsParams $params
      *

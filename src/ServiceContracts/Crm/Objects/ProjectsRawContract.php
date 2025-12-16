@@ -24,7 +24,7 @@ interface ProjectsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|ProjectCreateParams $params
+     * @param array<string,mixed>|ProjectCreateParams $params
      *
      * @return BaseResponse<CreatedResponseSimplePublicObject>
      *
@@ -39,7 +39,7 @@ interface ProjectsRawContract
      * @api
      *
      * @param string $projectID Path param:
-     * @param array<mixed>|ProjectUpdateParams $params
+     * @param array<string,mixed>|ProjectUpdateParams $params
      *
      * @return BaseResponse<SimplePublicObject>
      *
@@ -54,7 +54,7 @@ interface ProjectsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|ProjectListParams $params
+     * @param array<string,mixed>|ProjectListParams $params
      *
      * @return BaseResponse<Page<SimplePublicObjectWithAssociations>>
      *
@@ -80,7 +80,7 @@ interface ProjectsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|ProjectGetParams $params
+     * @param array<string,mixed>|ProjectGetParams $params
      *
      * @return BaseResponse<SimplePublicObjectWithAssociations>
      *
@@ -95,7 +95,7 @@ interface ProjectsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|ProjectMergeParams $params
+     * @param array<string,mixed>|ProjectMergeParams $params
      *
      * @return BaseResponse<SimplePublicObject>
      *
@@ -109,7 +109,7 @@ interface ProjectsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|ProjectSearchParams $params
+     * @param array<string,mixed>|ProjectSearchParams $params
      *
      * @return BaseResponse<CollectionResponseWithTotalSimplePublicObject>
      *

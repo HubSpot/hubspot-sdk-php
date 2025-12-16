@@ -15,11 +15,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Marketing\CampaignsService::list()
  *
  * @phpstan-type CampaignListParamsShape = array{
- *   after?: string,
- *   limit?: int,
- *   name?: string,
- *   properties?: list<string>,
- *   sort?: string,
+ *   after?: string|null,
+ *   limit?: int|null,
+ *   name?: string|null,
+ *   properties?: list<string>|null,
+ *   sort?: string|null,
  * }
  */
 final class CampaignListParams implements BaseModel

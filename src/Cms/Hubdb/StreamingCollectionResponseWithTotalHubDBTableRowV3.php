@@ -9,13 +9,16 @@ use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\NextPage;
 use HubspotSDK\Paging;
-use HubspotSDK\PreviousPage;
 
 /**
+ * @phpstan-import-type PagingShape from \HubspotSDK\Paging
+ *
  * @phpstan-type StreamingCollectionResponseWithTotalHubDBTableRowV3Shape = array{
- *   results: list<mixed>, total: int, type: value-of<Type>, paging?: Paging|null
+ *   results: list<mixed>,
+ *   total: int,
+ *   type: Type|value-of<Type>,
+ *   paging?: null|Paging|PagingShape,
  * }
  */
 final class StreamingCollectionResponseWithTotalHubDBTableRowV3 implements BaseModel
@@ -75,7 +78,7 @@ final class StreamingCollectionResponseWithTotalHubDBTableRowV3 implements BaseM
      *
      * @param list<mixed> $results
      * @param Type|value-of<Type> $type
-     * @param Paging|array{next?: NextPage|null, prev?: PreviousPage|null} $paging
+     * @param PagingShape $paging
      */
     public static function with(
         array $results,
@@ -130,7 +133,7 @@ final class StreamingCollectionResponseWithTotalHubDBTableRowV3 implements BaseM
     }
 
     /**
-     * @param Paging|array{next?: NextPage|null, prev?: PreviousPage|null} $paging
+     * @param PagingShape $paging
      */
     public function withPaging(Paging|array $paging): self
     {

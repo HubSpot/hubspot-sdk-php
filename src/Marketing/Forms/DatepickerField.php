@@ -15,7 +15,7 @@ use HubspotSDK\Marketing\Forms\DatepickerField\FieldType;
  *
  * @phpstan-type DatepickerFieldShape = array{
  *   dependentFields: list<mixed>,
- *   fieldType: value-of<FieldType>,
+ *   fieldType: FieldType|value-of<FieldType>,
  *   hidden: bool,
  *   label: string,
  *   name: string,

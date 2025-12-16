@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Cms\Blogs\PostsService::createLangVariation()
  *
  * @phpstan-type PostCreateLangVariationParamsShape = array{
- *   id: string, language?: string
+ *   id: string, language?: string|null
  * }
  */
 final class PostCreateLangVariationParams implements BaseModel

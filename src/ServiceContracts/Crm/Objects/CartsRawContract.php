@@ -23,7 +23,7 @@ interface CartsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|CartCreateParams $params
+     * @param array<string,mixed>|CartCreateParams $params
      *
      * @return BaseResponse<CreatedResponseSimplePublicObject>
      *
@@ -38,7 +38,7 @@ interface CartsRawContract
      * @api
      *
      * @param string $cartID Path param:
-     * @param array<mixed>|CartUpdateParams $params
+     * @param array<string,mixed>|CartUpdateParams $params
      *
      * @return BaseResponse<SimplePublicObject>
      *
@@ -53,7 +53,7 @@ interface CartsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|CartListParams $params
+     * @param array<string,mixed>|CartListParams $params
      *
      * @return BaseResponse<Page<SimplePublicObjectWithAssociations>>
      *
@@ -79,7 +79,7 @@ interface CartsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|CartGetParams $params
+     * @param array<string,mixed>|CartGetParams $params
      *
      * @return BaseResponse<SimplePublicObjectWithAssociations>
      *
@@ -94,7 +94,7 @@ interface CartsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|CartSearchParams $params
+     * @param array<string,mixed>|CartSearchParams $params
      *
      * @return BaseResponse<CollectionResponseWithTotalSimplePublicObject>
      *

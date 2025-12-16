@@ -11,7 +11,10 @@ use HubspotSDK\Crm\Lists\PublicListConversionDate\ConversionType;
 
 /**
  * @phpstan-type PublicListConversionDateShape = array{
- *   conversionType: value-of<ConversionType>, day: int, month: int, year: int
+ *   conversionType: ConversionType|value-of<ConversionType>,
+ *   day: int,
+ *   month: int,
+ *   year: int,
  * }
  */
 final class PublicListConversionDate implements BaseModel

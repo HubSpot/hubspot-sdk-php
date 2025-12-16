@@ -19,7 +19,7 @@ interface BatchRawContract
      * @api
      *
      * @param string $toObjectType path param: The type of the target object in the association
-     * @param array<mixed>|BatchCreateParams $params
+     * @param array<string,mixed>|BatchCreateParams $params
      *
      * @return BaseResponse<BatchResponsePublicAssociation>
      *
@@ -35,7 +35,7 @@ interface BatchRawContract
      * @api
      *
      * @param string $toObjectType path param: The type of the target object in the association
-     * @param array<mixed>|BatchDeleteParams $params
+     * @param array<string,mixed>|BatchDeleteParams $params
      *
      * @return BaseResponse<mixed>
      *
@@ -51,7 +51,7 @@ interface BatchRawContract
      * @api
      *
      * @param string $toObjectType path param: The type of the target object in the association
-     * @param array<mixed>|BatchGetParams $params
+     * @param array<string,mixed>|BatchGetParams $params
      *
      * @return BaseResponse<BatchResponsePublicAssociationMulti>
      *

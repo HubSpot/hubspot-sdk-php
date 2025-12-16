@@ -15,7 +15,9 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Services\Cms\Blogs\Posts\BatchService::get()
  *
- * @phpstan-type BatchGetParamsShape = array{inputs: list<string>, archived?: bool}
+ * @phpstan-type BatchGetParamsShape = array{
+ *   inputs: list<string>, archived?: bool|null
+ * }
  */
 final class BatchGetParams implements BaseModel
 {

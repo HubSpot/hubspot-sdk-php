@@ -14,10 +14,10 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Services\Crm\Objects\DealSplitsService::batchUpsert()
  *
+ * @phpstan-import-type PublicDealSplitsCreateRequestShape from \HubspotSDK\Crm\Objects\DealSplits\PublicDealSplitsCreateRequest
+ *
  * @phpstan-type DealSplitBatchUpsertParamsShape = array{
- *   inputs: list<PublicDealSplitsCreateRequest|array{
- *     id: int, splits: list<PublicDealSplitInput>
- *   }>,
+ *   inputs: list<PublicDealSplitsCreateRequestShape>
  * }
  */
 final class DealSplitBatchUpsertParams implements BaseModel
@@ -54,9 +54,7 @@ final class DealSplitBatchUpsertParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicDealSplitsCreateRequest|array{
-     *   id: int, splits: list<PublicDealSplitInput>
-     * }> $inputs
+     * @param list<PublicDealSplitsCreateRequestShape> $inputs
      */
     public static function with(array $inputs): self
     {
@@ -68,9 +66,7 @@ final class DealSplitBatchUpsertParams implements BaseModel
     }
 
     /**
-     * @param list<PublicDealSplitsCreateRequest|array{
-     *   id: int, splits: list<PublicDealSplitInput>
-     * }> $inputs
+     * @param list<PublicDealSplitsCreateRequestShape> $inputs
      */
     public function withInputs(array $inputs): self
     {

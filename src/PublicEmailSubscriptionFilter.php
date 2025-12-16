@@ -13,7 +13,7 @@ use HubspotSDK\PublicEmailSubscriptionFilter\FilterType;
 /**
  * @phpstan-type PublicEmailSubscriptionFilterShape = array{
  *   acceptedStatuses: list<string>,
- *   filterType: value-of<FilterType>,
+ *   filterType: FilterType|value-of<FilterType>,
  *   subscriptionIDs: list<string>,
  *   subscriptionType?: string|null,
  * }

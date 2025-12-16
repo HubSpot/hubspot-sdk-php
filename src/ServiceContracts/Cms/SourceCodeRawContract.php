@@ -26,7 +26,7 @@ interface SourceCodeRawContract
      * @api
      *
      * @param string $filePath path param: The file system location of the file
-     * @param array<mixed>|SourceCodeCreateParams $params
+     * @param array<string,mixed>|SourceCodeCreateParams $params
      *
      * @return BaseResponse<AssetFileMetadata>
      *
@@ -42,7 +42,7 @@ interface SourceCodeRawContract
      * @api
      *
      * @param string $filePath the file system location of the file
-     * @param array<mixed>|SourceCodeDeleteParams $params
+     * @param array<string,mixed>|SourceCodeDeleteParams $params
      *
      * @return BaseResponse<mixed>
      *
@@ -57,7 +57,7 @@ interface SourceCodeRawContract
     /**
      * @api
      *
-     * @param array<mixed>|SourceCodeExtractAsyncParams $params
+     * @param array<string,mixed>|SourceCodeExtractAsyncParams $params
      *
      * @return BaseResponse<TaskLocator>
      *
@@ -72,7 +72,7 @@ interface SourceCodeRawContract
      * @api
      *
      * @param string $filePath the file system location of the file
-     * @param array<mixed>|SourceCodeGetParams $params
+     * @param array<string,mixed>|SourceCodeGetParams $params
      *
      * @return BaseResponse<string>
      *
@@ -102,7 +102,7 @@ interface SourceCodeRawContract
      * @api
      *
      * @param string $filePath path param: The file system location of the file
-     * @param array<mixed>|SourceCodeGetMetadataParams $params
+     * @param array<string,mixed>|SourceCodeGetMetadataParams $params
      *
      * @return BaseResponse<AssetFileMetadata>
      *
@@ -118,7 +118,7 @@ interface SourceCodeRawContract
      * @api
      *
      * @param string $filePath path param: The file system location of the file
-     * @param array<mixed>|SourceCodeUpsertParams $params
+     * @param array<string,mixed>|SourceCodeUpsertParams $params
      *
      * @return BaseResponse<AssetFileMetadata>
      *
@@ -134,7 +134,7 @@ interface SourceCodeRawContract
      * @api
      *
      * @param string $filePath path param: The file system location of the file
-     * @param array<mixed>|SourceCodeValidateParams $params
+     * @param array<string,mixed>|SourceCodeValidateParams $params
      *
      * @return BaseResponse<string>
      *

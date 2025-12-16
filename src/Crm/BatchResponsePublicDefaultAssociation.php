@@ -4,23 +4,23 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm;
 
-use HubspotSDK\AssociationSpec;
 use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\BatchResponsePublicDefaultAssociation\Status;
-use HubspotSDK\ErrorDetail;
-use HubspotSDK\PublicObjectID;
 use HubspotSDK\StandardError;
 
 /**
+ * @phpstan-import-type PublicDefaultAssociationShape from \HubspotSDK\Crm\PublicDefaultAssociation
+ * @phpstan-import-type StandardErrorShape from \HubspotSDK\StandardError
+ *
  * @phpstan-type BatchResponsePublicDefaultAssociationShape = array{
  *   completedAt: \DateTimeInterface,
- *   results: list<PublicDefaultAssociation>,
+ *   results: list<PublicDefaultAssociationShape>,
  *   startedAt: \DateTimeInterface,
- *   status: value-of<Status>,
- *   errors?: list<StandardError>|null,
+ *   status: Status|value-of<Status>,
+ *   errors?: list<StandardErrorShape>|null,
  *   links?: array<string,string>|null,
  *   numErrors?: int|null,
  *   requestedAt?: \DateTimeInterface|null,
@@ -109,20 +109,9 @@ final class BatchResponsePublicDefaultAssociation implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicDefaultAssociation|array{
-     *   associationSpec: AssociationSpec, from: PublicObjectID, to: PublicObjectID
-     * }> $results
+     * @param list<PublicDefaultAssociationShape> $results
      * @param Status|value-of<Status> $status
-     * @param list<StandardError|array{
-     *   category: string,
-     *   context: array<string,list<string>>,
-     *   errors: list<ErrorDetail>,
-     *   links: array<string,string>,
-     *   message: string,
-     *   status: string,
-     *   id?: string|null,
-     *   subCategory?: mixed,
-     * }> $errors
+     * @param list<StandardErrorShape> $errors
      * @param array<string,string> $links
      */
     public static function with(
@@ -162,9 +151,7 @@ final class BatchResponsePublicDefaultAssociation implements BaseModel
     }
 
     /**
-     * @param list<PublicDefaultAssociation|array{
-     *   associationSpec: AssociationSpec, from: PublicObjectID, to: PublicObjectID
-     * }> $results
+     * @param list<PublicDefaultAssociationShape> $results
      */
     public function withResults(array $results): self
     {
@@ -199,16 +186,7 @@ final class BatchResponsePublicDefaultAssociation implements BaseModel
     }
 
     /**
-     * @param list<StandardError|array{
-     *   category: string,
-     *   context: array<string,list<string>>,
-     *   errors: list<ErrorDetail>,
-     *   links: array<string,string>,
-     *   message: string,
-     *   status: string,
-     *   id?: string|null,
-     *   subCategory?: mixed,
-     * }> $errors
+     * @param list<StandardErrorShape> $errors
      */
     public function withErrors(array $errors): self
     {

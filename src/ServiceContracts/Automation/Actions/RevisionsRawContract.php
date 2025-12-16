@@ -18,7 +18,7 @@ interface RevisionsRawContract
      * @api
      *
      * @param string $definitionID path param: The ID of the definition
-     * @param array<mixed>|RevisionListParams $params
+     * @param array<string,mixed>|RevisionListParams $params
      *
      * @return BaseResponse<Page<PublicActionRevision>>
      *
@@ -34,7 +34,7 @@ interface RevisionsRawContract
      * @api
      *
      * @param string $revisionID the ID of the revision
-     * @param array<mixed>|RevisionGetParams $params
+     * @param array<string,mixed>|RevisionGetParams $params
      *
      * @return BaseResponse<PublicActionRevision>
      *

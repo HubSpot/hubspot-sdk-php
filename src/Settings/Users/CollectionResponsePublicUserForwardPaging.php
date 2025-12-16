@@ -9,11 +9,13 @@ use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\ForwardPaging;
-use HubspotSDK\NextPage;
 
 /**
+ * @phpstan-import-type PublicUserShape from \HubspotSDK\Settings\Users\PublicUser
+ * @phpstan-import-type ForwardPagingShape from \HubspotSDK\ForwardPaging
+ *
  * @phpstan-type CollectionResponsePublicUserForwardPagingShape = array{
- *   results: list<PublicUser>, paging?: ForwardPaging|null
+ *   results: list<PublicUserShape>, paging?: null|ForwardPaging|ForwardPagingShape
  * }
  */
 final class CollectionResponsePublicUserForwardPaging implements BaseModel
@@ -52,19 +54,8 @@ final class CollectionResponsePublicUserForwardPaging implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicUser|array{
-     *   id: string,
-     *   email: string,
-     *   firstName?: string|null,
-     *   lastName?: string|null,
-     *   primaryTeamID?: string|null,
-     *   roleID?: string|null,
-     *   roleIDs?: list<string>|null,
-     *   secondaryTeamIDs?: list<string>|null,
-     *   sendWelcomeEmail?: bool|null,
-     *   superAdmin?: bool|null,
-     * }> $results
-     * @param ForwardPaging|array{next?: NextPage|null} $paging
+     * @param list<PublicUserShape> $results
+     * @param ForwardPagingShape $paging
      */
     public static function with(
         array $results,
@@ -80,18 +71,7 @@ final class CollectionResponsePublicUserForwardPaging implements BaseModel
     }
 
     /**
-     * @param list<PublicUser|array{
-     *   id: string,
-     *   email: string,
-     *   firstName?: string|null,
-     *   lastName?: string|null,
-     *   primaryTeamID?: string|null,
-     *   roleID?: string|null,
-     *   roleIDs?: list<string>|null,
-     *   secondaryTeamIDs?: list<string>|null,
-     *   sendWelcomeEmail?: bool|null,
-     *   superAdmin?: bool|null,
-     * }> $results
+     * @param list<PublicUserShape> $results
      */
     public function withResults(array $results): self
     {
@@ -102,7 +82,7 @@ final class CollectionResponsePublicUserForwardPaging implements BaseModel
     }
 
     /**
-     * @param ForwardPaging|array{next?: NextPage|null} $paging
+     * @param ForwardPagingShape $paging
      */
     public function withPaging(ForwardPaging|array $paging): self
     {

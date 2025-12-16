@@ -7,11 +7,12 @@ namespace HubspotSDK\Crm\Associations\V4;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\PublicObjectID;
 
 /**
+ * @phpstan-import-type PublicDefaultAssociationMultiPostShape from \HubspotSDK\Crm\Associations\V4\PublicDefaultAssociationMultiPost
+ *
  * @phpstan-type BatchInputPublicDefaultAssociationMultiPostShape = array{
- *   inputs: list<PublicDefaultAssociationMultiPost>
+ *   inputs: list<PublicDefaultAssociationMultiPostShape>
  * }
  */
 final class BatchInputPublicDefaultAssociationMultiPost implements BaseModel
@@ -47,9 +48,7 @@ final class BatchInputPublicDefaultAssociationMultiPost implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicDefaultAssociationMultiPost|array{
-     *   from: PublicObjectID, to: PublicObjectID
-     * }> $inputs
+     * @param list<PublicDefaultAssociationMultiPostShape> $inputs
      */
     public static function with(array $inputs): self
     {
@@ -61,9 +60,7 @@ final class BatchInputPublicDefaultAssociationMultiPost implements BaseModel
     }
 
     /**
-     * @param list<PublicDefaultAssociationMultiPost|array{
-     *   from: PublicObjectID, to: PublicObjectID
-     * }> $inputs
+     * @param list<PublicDefaultAssociationMultiPostShape> $inputs
      */
     public function withInputs(array $inputs): self
     {

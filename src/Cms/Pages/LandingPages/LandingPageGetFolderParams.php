@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Cms\Pages\LandingPagesService::getFolder()
  *
  * @phpstan-type LandingPageGetFolderParamsShape = array{
- *   archived?: bool, property?: string
+ *   archived?: bool|null, property?: string|null
  * }
  */
 final class LandingPageGetFolderParams implements BaseModel

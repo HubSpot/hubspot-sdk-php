@@ -22,7 +22,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   email: string,
  *   facebook: string,
  *   fullName: string,
- *   language: value-of<Language>,
+ *   language: Language|value-of<Language>,
  *   linkedin: string,
  *   name: string,
  *   slug: string,

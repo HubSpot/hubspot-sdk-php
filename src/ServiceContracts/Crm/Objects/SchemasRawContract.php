@@ -23,7 +23,7 @@ interface SchemasRawContract
     /**
      * @api
      *
-     * @param array<mixed>|SchemaCreateParams $params
+     * @param array<string,mixed>|SchemaCreateParams $params
      *
      * @return BaseResponse<ObjectSchema>
      *
@@ -38,7 +38,7 @@ interface SchemasRawContract
      * @api
      *
      * @param string $objectType fully qualified name or object type ID of your schema
-     * @param array<mixed>|SchemaUpdateParams $params
+     * @param array<string,mixed>|SchemaUpdateParams $params
      *
      * @return BaseResponse<ObjectsSchemasObjectTypeDefinition>
      *
@@ -53,7 +53,7 @@ interface SchemasRawContract
     /**
      * @api
      *
-     * @param array<mixed>|SchemaListParams $params
+     * @param array<string,mixed>|SchemaListParams $params
      *
      * @return BaseResponse<SchemaListResponse>
      *
@@ -68,7 +68,7 @@ interface SchemasRawContract
      * @api
      *
      * @param string $objectType fully qualified name or object type ID of your schema
-     * @param array<mixed>|SchemaDeleteParams $params
+     * @param array<string,mixed>|SchemaDeleteParams $params
      *
      * @return BaseResponse<mixed>
      *
@@ -84,7 +84,7 @@ interface SchemasRawContract
      * @api
      *
      * @param string $objectType fully qualified name or object type ID of your schema
-     * @param array<mixed>|SchemaCreateAssociationParams $params
+     * @param array<string,mixed>|SchemaCreateAssociationParams $params
      *
      * @return BaseResponse<AssociationDefinition>
      *
@@ -100,7 +100,7 @@ interface SchemasRawContract
      * @api
      *
      * @param string $associationIdentifier unique ID of the association to remove
-     * @param array<mixed>|SchemaDeleteAssociationParams $params
+     * @param array<string,mixed>|SchemaDeleteAssociationParams $params
      *
      * @return BaseResponse<mixed>
      *

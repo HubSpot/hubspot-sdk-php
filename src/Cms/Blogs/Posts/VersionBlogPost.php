@@ -4,11 +4,6 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\Blogs\Posts;
 
-use HubspotSDK\Cms\Blogs\Posts\BlogPost\AbStatus;
-use HubspotSDK\Cms\Blogs\Posts\BlogPost\ContentTypeCategory;
-use HubspotSDK\Cms\Blogs\Posts\BlogPost\CurrentState;
-use HubspotSDK\Cms\Blogs\Posts\BlogPost\Language;
-use HubspotSDK\Cms\Pages\PagesContentLanguageVariation;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
@@ -17,8 +12,14 @@ use HubspotSDK\VersionUser;
 /**
  * Model definition of a version of a blog post.
  *
+ * @phpstan-import-type BlogPostShape from \HubspotSDK\Cms\Blogs\Posts\BlogPost
+ * @phpstan-import-type VersionUserShape from \HubspotSDK\VersionUser
+ *
  * @phpstan-type VersionBlogPostShape = array{
- *   id: string, object: BlogPost, updatedAt: \DateTimeInterface, user: VersionUser
+ *   id: string,
+ *   object: BlogPost|BlogPostShape,
+ *   updatedAt: \DateTimeInterface,
+ *   user: VersionUser|VersionUserShape,
  * }
  */
 final class VersionBlogPost implements BaseModel
@@ -75,70 +76,8 @@ final class VersionBlogPost implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param BlogPost|array{
-     *   id: string,
-     *   abStatus: value-of<AbStatus>,
-     *   abTestID: string,
-     *   archivedAt: int,
-     *   archivedInDashboard: bool,
-     *   attachedStylesheets: list<array<string,mixed>>,
-     *   authorName: string,
-     *   blogAuthorID: string,
-     *   campaign: string,
-     *   categoryID: int,
-     *   contentGroupID: string,
-     *   contentTypeCategory: value-of<ContentTypeCategory>,
-     *   created: \DateTimeInterface,
-     *   createdByID: string,
-     *   currentlyPublished: bool,
-     *   currentState: value-of<CurrentState>,
-     *   domain: string,
-     *   dynamicPageDataSourceID: string,
-     *   dynamicPageDataSourceType: int,
-     *   dynamicPageHubDBTableID: string,
-     *   enableDomainStylesheets: bool,
-     *   enableGoogleAmpOutputOverride: bool,
-     *   enableLayoutStylesheets: bool,
-     *   featuredImage: string,
-     *   featuredImageAltText: string,
-     *   folderID: string,
-     *   footerHTML: string,
-     *   headHTML: string,
-     *   htmlTitle: string,
-     *   includeDefaultCustomCss: bool,
-     *   language: value-of<Language>,
-     *   layoutSections: array<string,mixed>,
-     *   linkRelCanonicalURL: string,
-     *   mabExperimentID: string,
-     *   metaDescription: string,
-     *   name: string,
-     *   pageExpiryDate: int,
-     *   pageExpiryEnabled: bool,
-     *   pageExpiryRedirectID: int,
-     *   pageExpiryRedirectURL: string,
-     *   password: string,
-     *   postBody: string,
-     *   postSummary: string,
-     *   publicAccessRules: list<mixed>,
-     *   publicAccessRulesEnabled: bool,
-     *   publishDate: \DateTimeInterface,
-     *   publishImmediately: bool,
-     *   rssBody: string,
-     *   rssSummary: string,
-     *   slug: string,
-     *   state: string,
-     *   tagIDs: list<int>,
-     *   themeSettingsValues: array<string,mixed>,
-     *   translatedFromID: string,
-     *   translations: array<string,PagesContentLanguageVariation>,
-     *   updated: \DateTimeInterface,
-     *   updatedByID: string,
-     *   url: string,
-     *   useFeaturedImage: bool,
-     *   widgetContainers: array<string,mixed>,
-     *   widgets: array<string,mixed>,
-     * } $object
-     * @param VersionUser|array{id: string, email: string, fullName: string} $user
+     * @param BlogPostShape $object
+     * @param VersionUserShape $user
      */
     public static function with(
         string $id,
@@ -170,69 +109,7 @@ final class VersionBlogPost implements BaseModel
     /**
      * Model definition for a Blog Post.
      *
-     * @param BlogPost|array{
-     *   id: string,
-     *   abStatus: value-of<AbStatus>,
-     *   abTestID: string,
-     *   archivedAt: int,
-     *   archivedInDashboard: bool,
-     *   attachedStylesheets: list<array<string,mixed>>,
-     *   authorName: string,
-     *   blogAuthorID: string,
-     *   campaign: string,
-     *   categoryID: int,
-     *   contentGroupID: string,
-     *   contentTypeCategory: value-of<ContentTypeCategory>,
-     *   created: \DateTimeInterface,
-     *   createdByID: string,
-     *   currentlyPublished: bool,
-     *   currentState: value-of<CurrentState>,
-     *   domain: string,
-     *   dynamicPageDataSourceID: string,
-     *   dynamicPageDataSourceType: int,
-     *   dynamicPageHubDBTableID: string,
-     *   enableDomainStylesheets: bool,
-     *   enableGoogleAmpOutputOverride: bool,
-     *   enableLayoutStylesheets: bool,
-     *   featuredImage: string,
-     *   featuredImageAltText: string,
-     *   folderID: string,
-     *   footerHTML: string,
-     *   headHTML: string,
-     *   htmlTitle: string,
-     *   includeDefaultCustomCss: bool,
-     *   language: value-of<Language>,
-     *   layoutSections: array<string,mixed>,
-     *   linkRelCanonicalURL: string,
-     *   mabExperimentID: string,
-     *   metaDescription: string,
-     *   name: string,
-     *   pageExpiryDate: int,
-     *   pageExpiryEnabled: bool,
-     *   pageExpiryRedirectID: int,
-     *   pageExpiryRedirectURL: string,
-     *   password: string,
-     *   postBody: string,
-     *   postSummary: string,
-     *   publicAccessRules: list<mixed>,
-     *   publicAccessRulesEnabled: bool,
-     *   publishDate: \DateTimeInterface,
-     *   publishImmediately: bool,
-     *   rssBody: string,
-     *   rssSummary: string,
-     *   slug: string,
-     *   state: string,
-     *   tagIDs: list<int>,
-     *   themeSettingsValues: array<string,mixed>,
-     *   translatedFromID: string,
-     *   translations: array<string,PagesContentLanguageVariation>,
-     *   updated: \DateTimeInterface,
-     *   updatedByID: string,
-     *   url: string,
-     *   useFeaturedImage: bool,
-     *   widgetContainers: array<string,mixed>,
-     *   widgets: array<string,mixed>,
-     * } $object
+     * @param BlogPostShape $object
      */
     public function withObject(BlogPost|array $object): self
     {
@@ -253,7 +130,7 @@ final class VersionBlogPost implements BaseModel
     /**
      * Model definition for a version user. Contains addition information about the user who created a version.
      *
-     * @param VersionUser|array{id: string, email: string, fullName: string} $user
+     * @param VersionUserShape $user
      */
     public function withUser(VersionUser|array $user): self
     {

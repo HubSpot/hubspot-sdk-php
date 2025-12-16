@@ -11,8 +11,10 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Scheduler\Meetings\ExternalLegalConsentOptions\LegitimateInterestLegalBasis;
 
 /**
+ * @phpstan-import-type ExternalCommunicationConsentCheckboxShape from \HubspotSDK\Scheduler\Meetings\ExternalCommunicationConsentCheckbox
+ *
  * @phpstan-type ExternalLegalConsentOptionsShape = array{
- *   communicationConsentCheckboxes: list<ExternalCommunicationConsentCheckbox>,
+ *   communicationConsentCheckboxes: list<ExternalCommunicationConsentCheckboxShape>,
  *   communicationConsentText: string,
  *   isLegitimateInterest: bool,
  *   legitimateInterestSubscriptionTypes: list<int>,
@@ -21,7 +23,7 @@ use HubspotSDK\Scheduler\Meetings\ExternalLegalConsentOptions\LegitimateInterest
  *   processingConsentFooterText: string,
  *   processingConsentText: string,
  *   processingConsentType: string,
- *   legitimateInterestLegalBasis?: value-of<LegitimateInterestLegalBasis>|null,
+ *   legitimateInterestLegalBasis?: null|LegitimateInterestLegalBasis|value-of<LegitimateInterestLegalBasis>,
  * }
  */
 final class ExternalLegalConsentOptions implements BaseModel
@@ -105,9 +107,7 @@ final class ExternalLegalConsentOptions implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<ExternalCommunicationConsentCheckbox|array{
-     *   communicationTypeID: string, label: string, required: bool
-     * }> $communicationConsentCheckboxes
+     * @param list<ExternalCommunicationConsentCheckboxShape> $communicationConsentCheckboxes
      * @param list<int> $legitimateInterestSubscriptionTypes
      * @param LegitimateInterestLegalBasis|value-of<LegitimateInterestLegalBasis> $legitimateInterestLegalBasis
      */
@@ -141,9 +141,7 @@ final class ExternalLegalConsentOptions implements BaseModel
     }
 
     /**
-     * @param list<ExternalCommunicationConsentCheckbox|array{
-     *   communicationTypeID: string, label: string, required: bool
-     * }> $communicationConsentCheckboxes
+     * @param list<ExternalCommunicationConsentCheckboxShape> $communicationConsentCheckboxes
      */
     public function withCommunicationConsentCheckboxes(
         array $communicationConsentCheckboxes

@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Crm\LimitsService::getAssociationLabelLimits()
  *
  * @phpstan-type LimitGetAssociationLabelLimitsParamsShape = array{
- *   fromObjectTypeID?: string, toObjectTypeID?: string
+ *   fromObjectTypeID?: string|null, toObjectTypeID?: string|null
  * }
  */
 final class LimitGetAssociationLabelLimitsParams implements BaseModel

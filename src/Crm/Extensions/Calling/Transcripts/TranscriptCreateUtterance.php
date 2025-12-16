@@ -10,9 +10,11 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type SpeakerShape from \HubspotSDK\Crm\Extensions\Calling\Transcripts\Speaker
+ *
  * @phpstan-type TranscriptCreateUtteranceShape = array{
  *   endTimeMillis: int,
- *   speaker: Speaker,
+ *   speaker: Speaker|SpeakerShape,
  *   startTimeMillis: int,
  *   text: string,
  *   languageCode?: string|null,
@@ -68,7 +70,7 @@ final class TranscriptCreateUtterance implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param Speaker|array{id: string, name: string, email?: string|null} $speaker
+     * @param SpeakerShape $speaker
      */
     public static function with(
         int $endTimeMillis,
@@ -98,7 +100,7 @@ final class TranscriptCreateUtterance implements BaseModel
     }
 
     /**
-     * @param Speaker|array{id: string, name: string, email?: string|null} $speaker
+     * @param SpeakerShape $speaker
      */
     public function withSpeaker(Speaker|array $speaker): self
     {

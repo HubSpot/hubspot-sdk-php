@@ -16,19 +16,19 @@ use HubspotSDK\Crm\Timeline\TimelineEventIFrame;
  *
  * @see HubspotSDK\Services\Crm\Timeline\EventsService::create()
  *
+ * @phpstan-import-type TimelineEventIFrameShape from \HubspotSDK\Crm\Timeline\TimelineEventIFrame
+ *
  * @phpstan-type EventCreateParamsShape = array{
  *   eventTemplateID: string,
  *   tokens: array<string,string>,
- *   id?: string,
- *   domain?: string,
- *   email?: string,
+ *   id?: string|null,
+ *   domain?: string|null,
+ *   email?: string|null,
  *   extraData?: mixed,
- *   objectID?: string,
- *   timelineIFrame?: TimelineEventIFrame|array{
- *     headerLabel: string, height: int, linkLabel: string, url: string, width: int
- *   },
- *   timestamp?: \DateTimeInterface,
- *   utk?: string,
+ *   objectID?: string|null,
+ *   timelineIFrame?: TimelineEventIFrameShape|null,
+ *   timestamp?: \DateTimeInterface|null,
+ *   utk?: string|null,
  * }
  */
 final class EventCreateParams implements BaseModel
@@ -121,9 +121,7 @@ final class EventCreateParams implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param array<string,string> $tokens
-     * @param TimelineEventIFrame|array{
-     *   headerLabel: string, height: int, linkLabel: string, url: string, width: int
-     * } $timelineIFrame
+     * @param TimelineEventIFrameShape $timelineIFrame
      */
     public static function with(
         string $eventTemplateID,
@@ -234,9 +232,7 @@ final class EventCreateParams implements BaseModel
     }
 
     /**
-     * @param TimelineEventIFrame|array{
-     *   headerLabel: string, height: int, linkLabel: string, url: string, width: int
-     * } $timelineIFrame
+     * @param TimelineEventIFrameShape $timelineIFrame
      */
     public function withTimelineIFrame(
         TimelineEventIFrame|array $timelineIFrame

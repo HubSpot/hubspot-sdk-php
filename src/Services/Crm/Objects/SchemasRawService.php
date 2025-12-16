@@ -52,7 +52,7 @@ final class SchemasRawService implements SchemasRawContract
      *     hasUniqueValue?: bool,
      *     hidden?: bool,
      *     numberDisplayHint?: 'currency'|'duration'|'formatted'|'percentage'|'probability'|'unformatted'|NumberDisplayHint,
-     *     options?: list<array<mixed>>,
+     *     options?: list<array<string,mixed>>,
      *     optionSortStrategy?: 'ALPHABETICAL'|'DISPLAY_ORDER'|OptionSortStrategy,
      *     referencedObjectType?: string,
      *     searchableInGlobalSearch?: bool,

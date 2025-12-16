@@ -11,8 +11,12 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type APITimeOfDayShape from \HubspotSDK\Automation\Workflows\APITimeOfDay
+ *
  * @phpstan-type APITimeWindowShape = array{
- *   day: value-of<Day>, endTime?: APITimeOfDay|null, startTime?: APITimeOfDay|null
+ *   day: Day|value-of<Day>,
+ *   endTime?: null|APITimeOfDay|APITimeOfDayShape,
+ *   startTime?: null|APITimeOfDay|APITimeOfDayShape,
  * }
  */
 final class APITimeWindow implements BaseModel
@@ -55,8 +59,8 @@ final class APITimeWindow implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param Day|value-of<Day> $day
-     * @param APITimeOfDay|array{hour: int, minute: int} $endTime
-     * @param APITimeOfDay|array{hour: int, minute: int} $startTime
+     * @param APITimeOfDayShape $endTime
+     * @param APITimeOfDayShape $startTime
      */
     public static function with(
         Day|string $day,
@@ -85,7 +89,7 @@ final class APITimeWindow implements BaseModel
     }
 
     /**
-     * @param APITimeOfDay|array{hour: int, minute: int} $endTime
+     * @param APITimeOfDayShape $endTime
      */
     public function withEndTime(APITimeOfDay|array $endTime): self
     {
@@ -96,7 +100,7 @@ final class APITimeWindow implements BaseModel
     }
 
     /**
-     * @param APITimeOfDay|array{hour: int, minute: int} $startTime
+     * @param APITimeOfDayShape $startTime
      */
     public function withStartTime(APITimeOfDay|array $startTime): self
     {

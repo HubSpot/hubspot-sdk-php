@@ -4,17 +4,15 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Automation\Actions;
 
-use HubspotSDK\Automation\Actions\FieldTypeDefinition\FieldType;
-use HubspotSDK\Automation\Actions\FieldTypeDefinition\ReferencedObjectType;
-use HubspotSDK\Automation\Actions\FieldTypeDefinition\Type;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Option;
 
 /**
+ * @phpstan-import-type FieldTypeDefinitionShape from \HubspotSDK\Automation\Actions\FieldTypeDefinition
+ *
  * @phpstan-type OutputFieldDefinitionShape = array{
- *   typeDefinition: FieldTypeDefinition
+ *   typeDefinition: FieldTypeDefinition|FieldTypeDefinitionShape
  * }
  */
 final class OutputFieldDefinition implements BaseModel
@@ -49,19 +47,7 @@ final class OutputFieldDefinition implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param FieldTypeDefinition|array{
-     *   externalOptions: bool,
-     *   name: string,
-     *   options: list<Option>,
-     *   type: value-of<Type>,
-     *   description?: string|null,
-     *   externalOptionsReferenceType?: string|null,
-     *   fieldType?: value-of<FieldType>|null,
-     *   helpText?: string|null,
-     *   label?: string|null,
-     *   optionsURL?: string|null,
-     *   referencedObjectType?: value-of<ReferencedObjectType>|null,
-     * } $typeDefinition
+     * @param FieldTypeDefinitionShape $typeDefinition
      */
     public static function with(FieldTypeDefinition|array $typeDefinition): self
     {
@@ -73,19 +59,7 @@ final class OutputFieldDefinition implements BaseModel
     }
 
     /**
-     * @param FieldTypeDefinition|array{
-     *   externalOptions: bool,
-     *   name: string,
-     *   options: list<Option>,
-     *   type: value-of<Type>,
-     *   description?: string|null,
-     *   externalOptionsReferenceType?: string|null,
-     *   fieldType?: value-of<FieldType>|null,
-     *   helpText?: string|null,
-     *   label?: string|null,
-     *   optionsURL?: string|null,
-     *   referencedObjectType?: value-of<ReferencedObjectType>|null,
-     * } $typeDefinition
+     * @param FieldTypeDefinitionShape $typeDefinition
      */
     public function withTypeDefinition(
         FieldTypeDefinition|array $typeDefinition

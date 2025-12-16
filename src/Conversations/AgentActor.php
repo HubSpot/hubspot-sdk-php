@@ -13,7 +13,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * @phpstan-type AgentActorShape = array{
  *   id: string,
- *   type: value-of<Type>,
+ *   type: Type|value-of<Type>,
  *   avatar?: string|null,
  *   email?: string|null,
  *   name?: string|null,

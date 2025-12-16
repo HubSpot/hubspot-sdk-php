@@ -21,7 +21,7 @@ interface PropertiesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|PropertyCreateParams $params
+     * @param array<string,mixed>|PropertyCreateParams $params
      *
      * @return BaseResponse<CreatedResponseProperty>
      *
@@ -37,7 +37,7 @@ interface PropertiesRawContract
      * @api
      *
      * @param string $propertyName Path param:
-     * @param array<mixed>|PropertyUpdateParams $params
+     * @param array<string,mixed>|PropertyUpdateParams $params
      *
      * @return BaseResponse<Property>
      *
@@ -52,7 +52,7 @@ interface PropertiesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|PropertyListParams $params
+     * @param array<string,mixed>|PropertyListParams $params
      *
      * @return BaseResponse<CollectionResponseProperty>
      *
@@ -67,7 +67,7 @@ interface PropertiesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|PropertyDeleteParams $params
+     * @param array<string,mixed>|PropertyDeleteParams $params
      *
      * @return BaseResponse<mixed>
      *
@@ -83,7 +83,7 @@ interface PropertiesRawContract
      * @api
      *
      * @param string $propertyName Path param:
-     * @param array<mixed>|PropertyGetParams $params
+     * @param array<string,mixed>|PropertyGetParams $params
      *
      * @return BaseResponse<Property>
      *

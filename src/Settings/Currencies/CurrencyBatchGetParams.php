@@ -15,8 +15,10 @@ use HubspotSDK\PublicObjectID;
  *
  * @see HubspotSDK\Services\Settings\CurrenciesService::batchGet()
  *
+ * @phpstan-import-type PublicObjectIDShape from \HubspotSDK\PublicObjectID
+ *
  * @phpstan-type CurrencyBatchGetParamsShape = array{
- *   inputs: list<PublicObjectID|array{id: string}>
+ *   inputs: list<PublicObjectIDShape>
  * }
  */
 final class CurrencyBatchGetParams implements BaseModel
@@ -53,7 +55,7 @@ final class CurrencyBatchGetParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicObjectID|array{id: string}> $inputs
+     * @param list<PublicObjectIDShape> $inputs
      */
     public static function with(array $inputs): self
     {
@@ -65,7 +67,7 @@ final class CurrencyBatchGetParams implements BaseModel
     }
 
     /**
-     * @param list<PublicObjectID|array{id: string}> $inputs
+     * @param list<PublicObjectIDShape> $inputs
      */
     public function withInputs(array $inputs): self
     {

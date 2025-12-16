@@ -17,6 +17,19 @@ use HubspotSDK\PublicRelativeRangedTimestampRefineBy;
 use HubspotSDK\PublicSetOccurrencesRefineBy;
 use HubspotSDK\PublicTimePointOperation;
 
+/**
+ * @phpstan-import-type PublicNumOccurrencesRefineByShape from \HubspotSDK\PublicNumOccurrencesRefineBy
+ * @phpstan-import-type PublicSetOccurrencesRefineByShape from \HubspotSDK\PublicSetOccurrencesRefineBy
+ * @phpstan-import-type PublicRelativeComparativeTimestampRefineByShape from \HubspotSDK\PublicRelativeComparativeTimestampRefineBy
+ * @phpstan-import-type PublicRelativeRangedTimestampRefineByShape from \HubspotSDK\PublicRelativeRangedTimestampRefineBy
+ * @phpstan-import-type PublicAbsoluteComparativeTimestampRefineByShape from \HubspotSDK\PublicAbsoluteComparativeTimestampRefineBy
+ * @phpstan-import-type PublicAbsoluteRangedTimestampRefineByShape from \HubspotSDK\PublicAbsoluteRangedTimestampRefineBy
+ * @phpstan-import-type PublicAllHistoryRefineByShape from \HubspotSDK\PublicAllHistoryRefineBy
+ * @phpstan-import-type PublicTimePointOperationShape from \HubspotSDK\PublicTimePointOperation
+ * @phpstan-import-type PublicRangedTimeOperationShape from \HubspotSDK\PublicRangedTimeOperation
+ *
+ * @phpstan-type PruningRefineByShape = PublicNumOccurrencesRefineByShape|PublicSetOccurrencesRefineByShape|PublicRelativeComparativeTimestampRefineByShape|PublicRelativeRangedTimestampRefineByShape|PublicAbsoluteComparativeTimestampRefineByShape|PublicAbsoluteRangedTimestampRefineByShape|PublicAllHistoryRefineByShape|PublicTimePointOperationShape|PublicRangedTimeOperationShape
+ */
 final class PruningRefineBy implements ConverterSource
 {
     use SdkUnion;

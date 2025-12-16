@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Cms\Blogs\TagsService::attachToLangGroup()
  *
  * @phpstan-type TagAttachToLangGroupParamsShape = array{
- *   id: string, language: string, primaryID: string, primaryLanguage?: string
+ *   id: string, language: string, primaryID: string, primaryLanguage?: string|null
  * }
  */
 final class TagAttachToLangGroupParams implements BaseModel

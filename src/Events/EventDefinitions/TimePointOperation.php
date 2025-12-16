@@ -8,24 +8,23 @@ use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Events\EventDefinitions\DatePoint\TimeType;
-use HubspotSDK\Events\EventDefinitions\DatePoint\TimezoneSource;
-use HubspotSDK\Events\EventDefinitions\PropertyReferencedTime\ReferenceType;
 use HubspotSDK\Events\EventDefinitions\TimePointOperation\EndpointBehavior;
 use HubspotSDK\Events\EventDefinitions\TimePointOperation\Operator;
 use HubspotSDK\Events\EventDefinitions\TimePointOperation\PropertyParser;
 use HubspotSDK\Events\EventDefinitions\TimePointOperation\PropertyType;
 
 /**
+ * @phpstan-import-type TimePointShape from \HubspotSDK\Events\EventDefinitions\TimePointOperation\TimePoint
+ *
  * @phpstan-type TimePointOperationShape = array{
- *   endpointBehavior: value-of<EndpointBehavior>,
+ *   endpointBehavior: EndpointBehavior|value-of<EndpointBehavior>,
  *   includeObjectsWithNoValueSet: bool,
  *   operationType: string,
- *   operator: value-of<Operator>,
+ *   operator: Operator|value-of<Operator>,
  *   operatorName: string,
- *   propertyParser: value-of<PropertyParser>,
- *   propertyType: value-of<PropertyType>,
- *   timePoint: DatePoint|IndexedTimePoint|PropertyReferencedTime,
+ *   propertyParser: PropertyParser|value-of<PropertyParser>,
+ *   propertyType: PropertyType|value-of<PropertyType>,
+ *   timePoint: DatePoint|IndexedTimePoint|PropertyReferencedTime|TimePointShape,
  *   type: string,
  *   defaultValue?: string|null,
  * }
@@ -115,30 +114,7 @@ final class TimePointOperation implements BaseModel
      * @param EndpointBehavior|value-of<EndpointBehavior> $endpointBehavior
      * @param Operator|value-of<Operator> $operator
      * @param PropertyParser|value-of<PropertyParser> $propertyParser
-     * @param DatePoint|array{
-     *   day: int,
-     *   month: int,
-     *   timeType: value-of<TimeType>,
-     *   timezoneSource: value-of<TimezoneSource>,
-     *   year: int,
-     *   zoneID: string,
-     *   hour?: int|null,
-     *   millisecond?: int|null,
-     *   minute?: int|null,
-     *   second?: int|null,
-     * }|IndexedTimePoint|array{
-     *   indexReference: NowReference|TodayReference|WeekReference|MonthReference|QuarterReference|FiscalQuarter|YearReference|FiscalYear,
-     *   timeType: value-of<IndexedTimePoint\TimeType>,
-     *   timezoneSource: value-of<IndexedTimePoint\TimezoneSource>,
-     *   zoneID: string,
-     *   offset?: IndexOffset|null,
-     * }|PropertyReferencedTime|array{
-     *   property: string,
-     *   referenceType: value-of<ReferenceType>,
-     *   timeType: value-of<PropertyReferencedTime\TimeType>,
-     *   timezoneSource: value-of<PropertyReferencedTime\TimezoneSource>,
-     *   zoneID: string,
-     * } $timePoint
+     * @param TimePointShape $timePoint
      * @param PropertyType|value-of<PropertyType> $propertyType
      */
     public static function with(
@@ -242,30 +218,7 @@ final class TimePointOperation implements BaseModel
     }
 
     /**
-     * @param DatePoint|array{
-     *   day: int,
-     *   month: int,
-     *   timeType: value-of<TimeType>,
-     *   timezoneSource: value-of<TimezoneSource>,
-     *   year: int,
-     *   zoneID: string,
-     *   hour?: int|null,
-     *   millisecond?: int|null,
-     *   minute?: int|null,
-     *   second?: int|null,
-     * }|IndexedTimePoint|array{
-     *   indexReference: NowReference|TodayReference|WeekReference|MonthReference|QuarterReference|FiscalQuarter|YearReference|FiscalYear,
-     *   timeType: value-of<IndexedTimePoint\TimeType>,
-     *   timezoneSource: value-of<IndexedTimePoint\TimezoneSource>,
-     *   zoneID: string,
-     *   offset?: IndexOffset|null,
-     * }|PropertyReferencedTime|array{
-     *   property: string,
-     *   referenceType: value-of<ReferenceType>,
-     *   timeType: value-of<PropertyReferencedTime\TimeType>,
-     *   timezoneSource: value-of<PropertyReferencedTime\TimezoneSource>,
-     *   zoneID: string,
-     * } $timePoint
+     * @param TimePointShape $timePoint
      */
     public function withTimePoint(
         DatePoint|array|IndexedTimePoint|PropertyReferencedTime $timePoint

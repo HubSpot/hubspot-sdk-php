@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type APIContactPropertyAnchorShape = array{
- *   contactProperty: string, type: value-of<Type>
+ *   contactProperty: string, type: Type|value-of<Type>
  * }
  */
 final class APIContactPropertyAnchor implements BaseModel

@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Conversations;
 
-use HubspotSDK\Conversations\PublicClient\ClientType;
 use HubspotSDK\Conversations\PublicThreadStatusChange\NewStatus;
 use HubspotSDK\Conversations\PublicThreadStatusChange\Type;
 use HubspotSDK\Core\Attributes\Optional;
@@ -13,17 +12,21 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type PublicClientShape from \HubspotSDK\Conversations\PublicClient
+ * @phpstan-import-type PublicRecipientShape from \HubspotSDK\Conversations\PublicRecipient
+ * @phpstan-import-type PublicSenderShape from \HubspotSDK\Conversations\PublicSender
+ *
  * @phpstan-type PublicThreadStatusChangeShape = array{
  *   id: string,
  *   archived: bool,
- *   client: PublicClient,
+ *   client: PublicClient|PublicClientShape,
  *   conversationsThreadID: string,
  *   createdAt: \DateTimeInterface,
  *   createdBy: string,
- *   newStatus: value-of<NewStatus>,
- *   recipients: list<PublicRecipient>,
- *   senders: list<PublicSender>,
- *   type: value-of<Type>,
+ *   newStatus: NewStatus|value-of<NewStatus>,
+ *   recipients: list<PublicRecipientShape>,
+ *   senders: list<PublicSenderShape>,
+ *   type: Type|value-of<Type>,
  *   updatedAt?: \DateTimeInterface|null,
  * }
  */
@@ -114,22 +117,10 @@ final class PublicThreadStatusChange implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param PublicClient|array{
-     *   clientType: value-of<ClientType>, integrationAppID?: int|null
-     * } $client
+     * @param PublicClientShape $client
      * @param NewStatus|value-of<NewStatus> $newStatus
-     * @param list<PublicRecipient|array{
-     *   deliveryIdentifier: PublicDeliveryIdentifier,
-     *   actorID?: string|null,
-     *   name?: string|null,
-     *   recipientField?: string|null,
-     * }> $recipients
-     * @param list<PublicSender|array{
-     *   actorID?: string|null,
-     *   deliveryIdentifier?: PublicDeliveryIdentifier|null,
-     *   name?: string|null,
-     *   senderField?: string|null,
-     * }> $senders
+     * @param list<PublicRecipientShape> $recipients
+     * @param list<PublicSenderShape> $senders
      * @param Type|value-of<Type> $type
      */
     public static function with(
@@ -180,9 +171,7 @@ final class PublicThreadStatusChange implements BaseModel
     }
 
     /**
-     * @param PublicClient|array{
-     *   clientType: value-of<ClientType>, integrationAppID?: int|null
-     * } $client
+     * @param PublicClientShape $client
      */
     public function withClient(PublicClient|array $client): self
     {
@@ -229,12 +218,7 @@ final class PublicThreadStatusChange implements BaseModel
     }
 
     /**
-     * @param list<PublicRecipient|array{
-     *   deliveryIdentifier: PublicDeliveryIdentifier,
-     *   actorID?: string|null,
-     *   name?: string|null,
-     *   recipientField?: string|null,
-     * }> $recipients
+     * @param list<PublicRecipientShape> $recipients
      */
     public function withRecipients(array $recipients): self
     {
@@ -245,12 +229,7 @@ final class PublicThreadStatusChange implements BaseModel
     }
 
     /**
-     * @param list<PublicSender|array{
-     *   actorID?: string|null,
-     *   deliveryIdentifier?: PublicDeliveryIdentifier|null,
-     *   name?: string|null,
-     *   senderField?: string|null,
-     * }> $senders
+     * @param list<PublicSenderShape> $senders
      */
     public function withSenders(array $senders): self
     {

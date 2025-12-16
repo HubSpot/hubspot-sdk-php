@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Settings\TaxRatesService::list()
  *
  * @phpstan-type TaxRateListParamsShape = array{
- *   active?: bool, after?: string, limit?: int
+ *   active?: bool|null, after?: string|null, limit?: int|null
  * }
  */
 final class TaxRateListParams implements BaseModel

@@ -10,7 +10,9 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type PublicFileEggShape = array{fileID: string, type: value-of<Type>}
+ * @phpstan-type PublicFileEggShape = array{
+ *   fileID: string, type: Type|value-of<Type>
+ * }
  */
 final class PublicFileEgg implements BaseModel
 {

@@ -12,7 +12,7 @@ use HubspotSDK\PublicTodayReference\ReferenceType;
 
 /**
  * @phpstan-type PublicTodayReferenceShape = array{
- *   referenceType: value-of<ReferenceType>,
+ *   referenceType: ReferenceType|value-of<ReferenceType>,
  *   hour?: int|null,
  *   millisecond?: int|null,
  *   minute?: int|null,

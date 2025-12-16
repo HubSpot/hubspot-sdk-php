@@ -23,7 +23,7 @@ interface PostalMailRawContract
     /**
      * @api
      *
-     * @param array<mixed>|PostalMailCreateParams $params
+     * @param array<string,mixed>|PostalMailCreateParams $params
      *
      * @return BaseResponse<CreatedResponseSimplePublicObject>
      *
@@ -38,7 +38,7 @@ interface PostalMailRawContract
      * @api
      *
      * @param string $postalMailID Path param:
-     * @param array<mixed>|PostalMailUpdateParams $params
+     * @param array<string,mixed>|PostalMailUpdateParams $params
      *
      * @return BaseResponse<SimplePublicObject>
      *
@@ -53,7 +53,7 @@ interface PostalMailRawContract
     /**
      * @api
      *
-     * @param array<mixed>|PostalMailListParams $params
+     * @param array<string,mixed>|PostalMailListParams $params
      *
      * @return BaseResponse<Page<SimplePublicObjectWithAssociations>>
      *
@@ -79,7 +79,7 @@ interface PostalMailRawContract
     /**
      * @api
      *
-     * @param array<mixed>|PostalMailGetParams $params
+     * @param array<string,mixed>|PostalMailGetParams $params
      *
      * @return BaseResponse<SimplePublicObjectWithAssociations>
      *
@@ -94,7 +94,7 @@ interface PostalMailRawContract
     /**
      * @api
      *
-     * @param array<mixed>|PostalMailSearchParams $params
+     * @param array<string,mixed>|PostalMailSearchParams $params
      *
      * @return BaseResponse<CollectionResponseWithTotalSimplePublicObject>
      *

@@ -4,14 +4,15 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Automation\Actions;
 
-use HubspotSDK\Automation\Actions\PublicActionFunctionIdentifier\FunctionType;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type PublicActionFunctionIdentifierShape from \HubspotSDK\Automation\Actions\PublicActionFunctionIdentifier
+ *
  * @phpstan-type CollectionResponsePublicActionFunctionIdentifierNoPagingShape = array{
- *   results: list<PublicActionFunctionIdentifier>
+ *   results: list<PublicActionFunctionIdentifierShape>
  * }
  */
 final class CollectionResponsePublicActionFunctionIdentifierNoPaging implements BaseModel
@@ -47,9 +48,7 @@ final class CollectionResponsePublicActionFunctionIdentifierNoPaging implements 
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicActionFunctionIdentifier|array{
-     *   functionType: value-of<FunctionType>, id?: string|null
-     * }> $results
+     * @param list<PublicActionFunctionIdentifierShape> $results
      */
     public static function with(array $results): self
     {
@@ -61,9 +60,7 @@ final class CollectionResponsePublicActionFunctionIdentifierNoPaging implements 
     }
 
     /**
-     * @param list<PublicActionFunctionIdentifier|array{
-     *   functionType: value-of<FunctionType>, id?: string|null
-     * }> $results
+     * @param list<PublicActionFunctionIdentifierShape> $results
      */
     public function withResults(array $results): self
     {

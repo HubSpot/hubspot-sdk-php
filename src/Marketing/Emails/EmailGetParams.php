@@ -15,11 +15,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Marketing\EmailsService::get()
  *
  * @phpstan-type EmailGetParamsShape = array{
- *   archived?: bool,
- *   includedProperties?: list<string>,
- *   includeStats?: bool,
- *   marketingCampaignNames?: bool,
- *   workflowNames?: bool,
+ *   archived?: bool|null,
+ *   includedProperties?: list<string>|null,
+ *   includeStats?: bool|null,
+ *   marketingCampaignNames?: bool|null,
+ *   workflowNames?: bool|null,
  * }
  */
 final class EmailGetParams implements BaseModel

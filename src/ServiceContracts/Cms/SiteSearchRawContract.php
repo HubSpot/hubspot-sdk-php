@@ -18,7 +18,7 @@ interface SiteSearchRawContract
      * @api
      *
      * @param string $contentID ID of the target document when searching for indexed properties
-     * @param array<mixed>|SiteSearchGetIndexedDataParams $params
+     * @param array<string,mixed>|SiteSearchGetIndexedDataParams $params
      *
      * @return BaseResponse<IndexedData>
      *
@@ -33,7 +33,7 @@ interface SiteSearchRawContract
     /**
      * @api
      *
-     * @param array<mixed>|SiteSearchSearchParams $params
+     * @param array<string,mixed>|SiteSearchSearchParams $params
      *
      * @return BaseResponse<PublicSearchResults>
      *

@@ -48,7 +48,7 @@ final class DefinitionsRawService implements DefinitionsRawContract
      *   }|PublicActionFunction>,
      *   inputFields: list<array{
      *     isRequired: bool,
-     *     typeDefinition: array<mixed>|FieldTypeDefinition,
+     *     typeDefinition: array<string,mixed>|FieldTypeDefinition,
      *     automationFieldType?: string,
      *     supportedValueTypes?: list<mixed>,
      *   }|InputFieldDefinition>,
@@ -74,7 +74,7 @@ final class DefinitionsRawService implements DefinitionsRawContract
      *     properties: list<string>
      *   }|PublicObjectRequestOptions,
      *   outputFields?: list<array{
-     *     typeDefinition: array<mixed>|FieldTypeDefinition
+     *     typeDefinition: array<string,mixed>|FieldTypeDefinition
      *   }|OutputFieldDefinition>,
      * }|DefinitionCreateParams $params
      *
@@ -117,7 +117,7 @@ final class DefinitionsRawService implements DefinitionsRawContract
      *   inputFieldDependencies?: list<array<string,mixed>>,
      *   inputFields?: list<array{
      *     isRequired: bool,
-     *     typeDefinition: array<mixed>|FieldTypeDefinition,
+     *     typeDefinition: array<string,mixed>|FieldTypeDefinition,
      *     automationFieldType?: string,
      *     supportedValueTypes?: list<mixed>,
      *   }|InputFieldDefinition>,
@@ -137,7 +137,7 @@ final class DefinitionsRawService implements DefinitionsRawContract
      *   }|PublicObjectRequestOptions,
      *   objectTypes?: list<string>,
      *   outputFields?: list<array{
-     *     typeDefinition: array<mixed>|FieldTypeDefinition
+     *     typeDefinition: array<string,mixed>|FieldTypeDefinition
      *   }|OutputFieldDefinition>,
      *   published?: bool,
      * }|DefinitionUpdateParams $params

@@ -9,8 +9,10 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type PublicDealSplitInputShape from \HubspotSDK\Crm\Objects\DealSplits\PublicDealSplitInput
+ *
  * @phpstan-type PublicDealSplitsCreateRequestShape = array{
- *   id: int, splits: list<PublicDealSplitInput>
+ *   id: int, splits: list<PublicDealSplitInputShape>
  * }
  */
 final class PublicDealSplitsCreateRequest implements BaseModel
@@ -49,7 +51,7 @@ final class PublicDealSplitsCreateRequest implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicDealSplitInput|array{ownerID: int, percentage: float}> $splits
+     * @param list<PublicDealSplitInputShape> $splits
      */
     public static function with(int $id, array $splits): self
     {
@@ -70,7 +72,7 @@ final class PublicDealSplitsCreateRequest implements BaseModel
     }
 
     /**
-     * @param list<PublicDealSplitInput|array{ownerID: int, percentage: float}> $splits
+     * @param list<PublicDealSplitInputShape> $splits
      */
     public function withSplits(array $splits): self
     {

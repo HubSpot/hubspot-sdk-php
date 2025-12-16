@@ -22,7 +22,7 @@ interface BatchRawContract
      * @api
      *
      * @param string $tableIDOrName The ID or name of the table
-     * @param array<mixed>|BatchCloneBatchParams $params
+     * @param array<string,mixed>|BatchCloneBatchParams $params
      *
      * @return BaseResponse<BatchResponseHubDBTableRowV3>
      *
@@ -38,7 +38,7 @@ interface BatchRawContract
      * @api
      *
      * @param string $tableIDOrName The ID or name of the table
-     * @param array<mixed>|BatchCreateBatchParams $params
+     * @param array<string,mixed>|BatchCreateBatchParams $params
      *
      * @return BaseResponse<BatchResponseHubDBTableRowV3>
      *
@@ -54,7 +54,7 @@ interface BatchRawContract
      * @api
      *
      * @param string $tableIDOrName the ID or name of the table to query
-     * @param array<mixed>|BatchGetBatchParams $params
+     * @param array<string,mixed>|BatchGetBatchParams $params
      *
      * @return BaseResponse<BatchResponseHubDBTableRowV3>
      *
@@ -70,7 +70,7 @@ interface BatchRawContract
      * @api
      *
      * @param string $tableIDOrName The ID or name of the table
-     * @param array<mixed>|BatchGetDraftBatchParams $params
+     * @param array<string,mixed>|BatchGetDraftBatchParams $params
      *
      * @return BaseResponse<BatchResponseHubDBTableRowV3>
      *
@@ -86,7 +86,7 @@ interface BatchRawContract
      * @api
      *
      * @param string $tableIDOrName The ID or name of the table
-     * @param array<mixed>|BatchPurgeBatchParams $params
+     * @param array<string,mixed>|BatchPurgeBatchParams $params
      *
      * @return BaseResponse<mixed>
      *
@@ -102,7 +102,7 @@ interface BatchRawContract
      * @api
      *
      * @param string $tableIDOrName The ID or name of the table
-     * @param array<mixed>|BatchReplaceBatchParams $params
+     * @param array<string,mixed>|BatchReplaceBatchParams $params
      *
      * @return BaseResponse<BatchResponseHubDBTableRowV3>
      *
@@ -118,7 +118,7 @@ interface BatchRawContract
      * @api
      *
      * @param string $tableIDOrName The ID or name of the table
-     * @param array<mixed>|BatchUpdateBatchParams $params
+     * @param array<string,mixed>|BatchUpdateBatchParams $params
      *
      * @return BaseResponse<BatchResponseHubDBTableRowV3>
      *

@@ -14,16 +14,16 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Conversations\ThreadsService::list()
  *
  * @phpstan-type ThreadListParamsShape = array{
- *   after?: string,
- *   archived?: bool,
- *   associatedContactID?: int,
- *   association?: list<Association|value-of<Association>>,
- *   inboxID?: list<int>,
- *   latestMessageTimestampAfter?: \DateTimeInterface,
- *   limit?: int,
- *   property?: string,
- *   sort?: list<string>,
- *   threadStatus?: string,
+ *   after?: string|null,
+ *   archived?: bool|null,
+ *   associatedContactID?: int|null,
+ *   association?: list<Association|value-of<Association>>|null,
+ *   inboxID?: list<int>|null,
+ *   latestMessageTimestampAfter?: \DateTimeInterface|null,
+ *   limit?: int|null,
+ *   property?: string|null,
+ *   sort?: list<string>|null,
+ *   threadStatus?: string|null,
  * }
  */
 final class ThreadListParams implements BaseModel

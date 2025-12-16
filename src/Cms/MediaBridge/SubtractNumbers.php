@@ -14,7 +14,7 @@ use HubspotSDK\Core\Conversion\MapOf;
 /**
  * @phpstan-type SubtractNumbersShape = array{
  *   enclosedInParentheses: bool,
- *   operator: value-of<Operator>,
+ *   operator: Operator|value-of<Operator>,
  *   inputs?: list<array<string,mixed>>|null,
  *   propertyName?: string|null,
  *   value?: float|null,

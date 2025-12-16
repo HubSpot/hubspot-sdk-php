@@ -14,11 +14,11 @@ use HubspotSDK\Marketing\Subscriptions\V4\PublicStatusRequest\StatusState;
 
 /**
  * @phpstan-type PublicStatusRequestShape = array{
- *   channel: value-of<Channel>,
- *   statusState: value-of<StatusState>,
+ *   channel: Channel|value-of<Channel>,
+ *   statusState: StatusState|value-of<StatusState>,
  *   subscriberIDString: string,
  *   subscriptionID: int,
- *   legalBasis?: value-of<LegalBasis>|null,
+ *   legalBasis?: null|LegalBasis|value-of<LegalBasis>,
  *   legalBasisExplanation?: string|null,
  * }
  */

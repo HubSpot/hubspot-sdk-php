@@ -14,16 +14,10 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Services\Events\SendService::sendBatch()
  *
+ * @phpstan-import-type BehavioralEventHTTPCompletionRequestShape from \HubspotSDK\Events\Send\BehavioralEventHTTPCompletionRequest
+ *
  * @phpstan-type SendSendBatchParamsShape = array{
- *   inputs: list<BehavioralEventHTTPCompletionRequest|array{
- *     eventName: string,
- *     properties: array<string,string>,
- *     email?: string|null,
- *     objectID?: string|null,
- *     occurredAt?: \DateTimeInterface|null,
- *     utk?: string|null,
- *     uuid?: string|null,
- *   }>,
+ *   inputs: list<BehavioralEventHTTPCompletionRequestShape>
  * }
  */
 final class SendSendBatchParams implements BaseModel
@@ -60,15 +54,7 @@ final class SendSendBatchParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<BehavioralEventHTTPCompletionRequest|array{
-     *   eventName: string,
-     *   properties: array<string,string>,
-     *   email?: string|null,
-     *   objectID?: string|null,
-     *   occurredAt?: \DateTimeInterface|null,
-     *   utk?: string|null,
-     *   uuid?: string|null,
-     * }> $inputs
+     * @param list<BehavioralEventHTTPCompletionRequestShape> $inputs
      */
     public static function with(array $inputs): self
     {
@@ -80,15 +66,7 @@ final class SendSendBatchParams implements BaseModel
     }
 
     /**
-     * @param list<BehavioralEventHTTPCompletionRequest|array{
-     *   eventName: string,
-     *   properties: array<string,string>,
-     *   email?: string|null,
-     *   objectID?: string|null,
-     *   occurredAt?: \DateTimeInterface|null,
-     *   utk?: string|null,
-     *   uuid?: string|null,
-     * }> $inputs
+     * @param list<BehavioralEventHTTPCompletionRequestShape> $inputs
      */
     public function withInputs(array $inputs): self
     {

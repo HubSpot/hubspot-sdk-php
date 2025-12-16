@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace HubspotSDK\Cms\Blogs\Tags;
 
 use HubspotSDK\Cms\Blogs\Tags\BatchResponseTag\Status;
-use HubspotSDK\Cms\Blogs\Tags\Tag\Language;
 use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
@@ -14,11 +13,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Response object for batch operations on blog tags.
  *
+ * @phpstan-import-type TagShape from \HubspotSDK\Cms\Blogs\Tags\Tag
+ *
  * @phpstan-type BatchResponseTagShape = array{
  *   completedAt: \DateTimeInterface,
- *   results: list<Tag>,
+ *   results: list<TagShape>,
  *   startedAt: \DateTimeInterface,
- *   status: value-of<Status>,
+ *   status: Status|value-of<Status>,
  *   links?: array<string,string>|null,
  *   requestedAt?: \DateTimeInterface|null,
  * }
@@ -100,15 +101,7 @@ final class BatchResponseTag implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<Tag|array{
-     *   id: string,
-     *   created: \DateTimeInterface,
-     *   deletedAt: \DateTimeInterface,
-     *   language: value-of<Language>,
-     *   name: string,
-     *   translatedFromID: int,
-     *   updated: \DateTimeInterface,
-     * }> $results
+     * @param list<TagShape> $results
      * @param Status|value-of<Status> $status
      * @param array<string,string> $links
      */
@@ -147,15 +140,7 @@ final class BatchResponseTag implements BaseModel
     /**
      * Results of batch operation.
      *
-     * @param list<Tag|array{
-     *   id: string,
-     *   created: \DateTimeInterface,
-     *   deletedAt: \DateTimeInterface,
-     *   language: value-of<Language>,
-     *   name: string,
-     *   translatedFromID: int,
-     *   updated: \DateTimeInterface,
-     * }> $results
+     * @param list<TagShape> $results
      */
     public function withResults(array $results): self
     {

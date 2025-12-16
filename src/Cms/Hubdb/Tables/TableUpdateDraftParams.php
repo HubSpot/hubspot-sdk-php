@@ -5,13 +5,11 @@ declare(strict_types=1);
 namespace HubspotSDK\Cms\Hubdb\Tables;
 
 use HubspotSDK\Cms\Hubdb\ColumnRequest;
-use HubspotSDK\Cms\Hubdb\ColumnRequest\Type;
 use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Option;
 
 /**
  * Update an existing HubDB table. You can use this endpoint to add or remove columns to the table as well as restore an archived table. Tables updated using the endpoint will only modify the draft verion of the table. Use the `/publish` endpoint to push all the changes to the published version. To restore a table, include the query parameter `archived=true` and `"archived": false` in the json body.
@@ -19,28 +17,20 @@ use HubspotSDK\Option;
  *
  * @see HubspotSDK\Services\Cms\Hubdb\TablesService::updateDraft()
  *
+ * @phpstan-import-type ColumnRequestShape from \HubspotSDK\Cms\Hubdb\ColumnRequest
+ *
  * @phpstan-type TableUpdateDraftParamsShape = array{
  *   allowChildTables: bool,
  *   allowPublicAPIAccess: bool,
- *   columns: list<ColumnRequest|array{
- *     id: int,
- *     label: string,
- *     name: string,
- *     options: list<Option>,
- *     type: value-of<Type>,
- *     foreignColumnID?: int|null,
- *     foreignTableID?: int|null,
- *     maxNumberOfCharacters?: int|null,
- *     maxNumberOfOptions?: int|null,
- *   }>,
+ *   columns: list<ColumnRequestShape>,
  *   dynamicMetaTags: array<string,int>,
  *   enableChildTablePages: bool,
  *   label: string,
  *   name: string,
  *   useForPages: bool,
- *   archived?: bool,
- *   includeForeignIDs?: bool,
- *   isGetLocalizedSchema?: bool,
+ *   archived?: bool|null,
+ *   includeForeignIDs?: bool|null,
+ *   isGetLocalizedSchema?: bool|null,
  * }
  */
 final class TableUpdateDraftParams implements BaseModel
@@ -160,17 +150,7 @@ final class TableUpdateDraftParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<ColumnRequest|array{
-     *   id: int,
-     *   label: string,
-     *   name: string,
-     *   options: list<Option>,
-     *   type: value-of<Type>,
-     *   foreignColumnID?: int|null,
-     *   foreignTableID?: int|null,
-     *   maxNumberOfCharacters?: int|null,
-     *   maxNumberOfOptions?: int|null,
-     * }> $columns
+     * @param list<ColumnRequestShape> $columns
      * @param array<string,int> $dynamicMetaTags
      */
     public static function with(
@@ -229,17 +209,7 @@ final class TableUpdateDraftParams implements BaseModel
     /**
      * List of columns in the table.
      *
-     * @param list<ColumnRequest|array{
-     *   id: int,
-     *   label: string,
-     *   name: string,
-     *   options: list<Option>,
-     *   type: value-of<Type>,
-     *   foreignColumnID?: int|null,
-     *   foreignTableID?: int|null,
-     *   maxNumberOfCharacters?: int|null,
-     *   maxNumberOfOptions?: int|null,
-     * }> $columns
+     * @param list<ColumnRequestShape> $columns
      */
     public function withColumns(array $columns): self
     {

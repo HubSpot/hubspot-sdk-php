@@ -8,13 +8,15 @@ use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\NextPage;
 use HubspotSDK\Paging;
-use HubspotSDK\PreviousPage;
 
 /**
+ * @phpstan-import-type MultiAssociatedObjectWithLabelShape from \HubspotSDK\Crm\MultiAssociatedObjectWithLabel
+ * @phpstan-import-type PagingShape from \HubspotSDK\Paging
+ *
  * @phpstan-type CollectionResponseMultiAssociatedObjectWithLabelShape = array{
- *   results: list<MultiAssociatedObjectWithLabel>, paging?: Paging|null
+ *   results: list<MultiAssociatedObjectWithLabelShape>,
+ *   paging?: null|Paging|PagingShape,
  * }
  */
 final class CollectionResponseMultiAssociatedObjectWithLabel implements BaseModel
@@ -53,10 +55,8 @@ final class CollectionResponseMultiAssociatedObjectWithLabel implements BaseMode
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<MultiAssociatedObjectWithLabel|array{
-     *   associationTypes: list<AssociationSpecWithLabel>, toObjectID: string
-     * }> $results
-     * @param Paging|array{next?: NextPage|null, prev?: PreviousPage|null} $paging
+     * @param list<MultiAssociatedObjectWithLabelShape> $results
+     * @param PagingShape $paging
      */
     public static function with(
         array $results,
@@ -72,9 +72,7 @@ final class CollectionResponseMultiAssociatedObjectWithLabel implements BaseMode
     }
 
     /**
-     * @param list<MultiAssociatedObjectWithLabel|array{
-     *   associationTypes: list<AssociationSpecWithLabel>, toObjectID: string
-     * }> $results
+     * @param list<MultiAssociatedObjectWithLabelShape> $results
      */
     public function withResults(array $results): self
     {
@@ -85,7 +83,7 @@ final class CollectionResponseMultiAssociatedObjectWithLabel implements BaseMode
     }
 
     /**
-     * @param Paging|array{next?: NextPage|null, prev?: PreviousPage|null} $paging
+     * @param PagingShape $paging
      */
     public function withPaging(Paging|array $paging): self
     {

@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type PropertyDefinitionSourceShape = array{
- *   type: value-of<Type>, name?: string|null
+ *   type: Type|value-of<Type>, name?: string|null
  * }
  */
 final class PropertyDefinitionSource implements BaseModel

@@ -13,7 +13,9 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * @see HubspotSDK\Services\Conversations\MessagesService::get()
  *
- * @phpstan-type MessageGetParamsShape = array{threadID: int, property?: string}
+ * @phpstan-type MessageGetParamsShape = array{
+ *   threadID: int, property?: string|null
+ * }
  */
 final class MessageGetParams implements BaseModel
 {

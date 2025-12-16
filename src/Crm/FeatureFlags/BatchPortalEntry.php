@@ -11,7 +11,7 @@ use HubspotSDK\Crm\FeatureFlags\BatchPortalEntry\FlagState;
 
 /**
  * @phpstan-type BatchPortalEntryShape = array{
- *   flagState: value-of<FlagState>, portalID: int
+ *   flagState: FlagState|value-of<FlagState>, portalID: int
  * }
  */
 final class BatchPortalEntry implements BaseModel

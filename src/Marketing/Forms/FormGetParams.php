@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Services\Marketing\FormsService::get()
  *
- * @phpstan-type FormGetParamsShape = array{archived?: bool}
+ * @phpstan-type FormGetParamsShape = array{archived?: bool|null}
  */
 final class FormGetParams implements BaseModel
 {

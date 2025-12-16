@@ -13,6 +13,8 @@ use HubspotSDK\Core\Conversion\ListOf;
 /**
  * Represents a CRM object that has either been created or updated (upserted).
  *
+ * @phpstan-import-type ValueWithTimestampShape from \HubspotSDK\Crm\ValueWithTimestamp
+ *
  * @phpstan-type SimplePublicUpsertObjectShape = array{
  *   id: string,
  *   archived: bool,
@@ -22,7 +24,7 @@ use HubspotSDK\Core\Conversion\ListOf;
  *   updatedAt: \DateTimeInterface,
  *   archivedAt?: \DateTimeInterface|null,
  *   objectWriteTraceID?: string|null,
- *   propertiesWithHistory?: array<string,list<ValueWithTimestamp>>|null,
+ *   propertiesWithHistory?: array<string,list<ValueWithTimestampShape>>|null,
  *   url?: string|null,
  * }
  */
@@ -130,14 +132,7 @@ final class SimplePublicUpsertObject implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param array<string,string> $properties
-     * @param array<string,list<ValueWithTimestamp|array{
-     *   sourceType: string,
-     *   timestamp: \DateTimeInterface,
-     *   value: string,
-     *   sourceID?: string|null,
-     *   sourceLabel?: string|null,
-     *   updatedByUserID?: int|null,
-     * }>> $propertiesWithHistory
+     * @param array<string,list<ValueWithTimestampShape>> $propertiesWithHistory
      */
     public static function with(
         string $id,
@@ -261,14 +256,7 @@ final class SimplePublicUpsertObject implements BaseModel
     /**
      * Key-value pairs representing the properties of the object along with their history.
      *
-     * @param array<string,list<ValueWithTimestamp|array{
-     *   sourceType: string,
-     *   timestamp: \DateTimeInterface,
-     *   value: string,
-     *   sourceID?: string|null,
-     *   sourceLabel?: string|null,
-     *   updatedByUserID?: int|null,
-     * }>> $propertiesWithHistory
+     * @param array<string,list<ValueWithTimestampShape>> $propertiesWithHistory
      */
     public function withPropertiesWithHistory(
         array $propertiesWithHistory

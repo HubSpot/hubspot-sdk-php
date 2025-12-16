@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type EmailActorShape = array{
- *   id: string, email: string, type: value-of<Type>
+ *   id: string, email: string, type: Type|value-of<Type>
  * }
  */
 final class EmailActor implements BaseModel

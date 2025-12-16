@@ -9,11 +9,14 @@ use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\ForwardPaging;
-use HubspotSDK\NextPage;
 
 /**
+ * @phpstan-import-type APIFlowListingShape from \HubspotSDK\Automation\Workflows\APIFlowListing
+ * @phpstan-import-type ForwardPagingShape from \HubspotSDK\ForwardPaging
+ *
  * @phpstan-type CollectionResponseAPIFlowListingForwardPagingShape = array{
- *   results: list<APIFlowListing>, paging?: ForwardPaging|null
+ *   results: list<APIFlowListingShape>,
+ *   paging?: null|ForwardPaging|ForwardPagingShape,
  * }
  */
 final class CollectionResponseAPIFlowListingForwardPaging implements BaseModel
@@ -52,18 +55,8 @@ final class CollectionResponseAPIFlowListingForwardPaging implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<APIFlowListing|array{
-     *   id: string,
-     *   createdAt: \DateTimeInterface,
-     *   flowType: string,
-     *   isEnabled: bool,
-     *   objectTypeID: string,
-     *   revisionID: string,
-     *   updatedAt: \DateTimeInterface,
-     *   name?: string|null,
-     *   uuid?: string|null,
-     * }> $results
-     * @param ForwardPaging|array{next?: NextPage|null} $paging
+     * @param list<APIFlowListingShape> $results
+     * @param ForwardPagingShape $paging
      */
     public static function with(
         array $results,
@@ -79,17 +72,7 @@ final class CollectionResponseAPIFlowListingForwardPaging implements BaseModel
     }
 
     /**
-     * @param list<APIFlowListing|array{
-     *   id: string,
-     *   createdAt: \DateTimeInterface,
-     *   flowType: string,
-     *   isEnabled: bool,
-     *   objectTypeID: string,
-     *   revisionID: string,
-     *   updatedAt: \DateTimeInterface,
-     *   name?: string|null,
-     *   uuid?: string|null,
-     * }> $results
+     * @param list<APIFlowListingShape> $results
      */
     public function withResults(array $results): self
     {
@@ -100,7 +83,7 @@ final class CollectionResponseAPIFlowListingForwardPaging implements BaseModel
     }
 
     /**
-     * @param ForwardPaging|array{next?: NextPage|null} $paging
+     * @param ForwardPagingShape $paging
      */
     public function withPaging(ForwardPaging|array $paging): self
     {

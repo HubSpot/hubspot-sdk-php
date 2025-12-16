@@ -6,20 +6,21 @@ namespace HubspotSDK\Automation\Workflows;
 
 use HubspotSDK\Automation\Workflows\APIAssociationDataSource\AssociationCategory;
 use HubspotSDK\Automation\Workflows\APIAssociationDataSource\Type;
-use HubspotSDK\Automation\Workflows\APISort\Order;
 use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type APISortShape from \HubspotSDK\Automation\Workflows\APISort
+ *
  * @phpstan-type APIAssociationDataSourceShape = array{
- *   associationCategory: value-of<AssociationCategory>,
+ *   associationCategory: AssociationCategory|value-of<AssociationCategory>,
  *   associationTypeID: int,
  *   name: string,
  *   objectTypeID: string,
- *   type: value-of<Type>,
- *   sortBy?: APISort|null,
+ *   type: Type|value-of<Type>,
+ *   sortBy?: null|APISort|APISortShape,
  * }
  */
 final class APIAssociationDataSource implements BaseModel
@@ -84,9 +85,7 @@ final class APIAssociationDataSource implements BaseModel
      *
      * @param AssociationCategory|value-of<AssociationCategory> $associationCategory
      * @param Type|value-of<Type> $type
-     * @param APISort|array{
-     *   order: value-of<Order>, property: string, missing?: string|null
-     * } $sortBy
+     * @param APISortShape $sortBy
      */
     public static function with(
         AssociationCategory|string $associationCategory,
@@ -157,9 +156,7 @@ final class APIAssociationDataSource implements BaseModel
     }
 
     /**
-     * @param APISort|array{
-     *   order: value-of<Order>, property: string, missing?: string|null
-     * } $sortBy
+     * @param APISortShape $sortBy
      */
     public function withSortBy(APISort|array $sortBy): self
     {

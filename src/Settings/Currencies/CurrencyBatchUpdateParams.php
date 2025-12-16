@@ -14,10 +14,10 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Services\Settings\CurrenciesService::batchUpdate()
  *
+ * @phpstan-import-type ExchangeRateUpdateRequestShape from \HubspotSDK\Settings\Currencies\ExchangeRateUpdateRequest
+ *
  * @phpstan-type CurrencyBatchUpdateParamsShape = array{
- *   inputs: list<ExchangeRateUpdateRequest|array{
- *     id: string, conversionRate: float, effectiveAt?: \DateTimeInterface|null
- *   }>,
+ *   inputs: list<ExchangeRateUpdateRequestShape>
  * }
  */
 final class CurrencyBatchUpdateParams implements BaseModel
@@ -54,9 +54,7 @@ final class CurrencyBatchUpdateParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<ExchangeRateUpdateRequest|array{
-     *   id: string, conversionRate: float, effectiveAt?: \DateTimeInterface|null
-     * }> $inputs
+     * @param list<ExchangeRateUpdateRequestShape> $inputs
      */
     public static function with(array $inputs): self
     {
@@ -68,9 +66,7 @@ final class CurrencyBatchUpdateParams implements BaseModel
     }
 
     /**
-     * @param list<ExchangeRateUpdateRequest|array{
-     *   id: string, conversionRate: float, effectiveAt?: \DateTimeInterface|null
-     * }> $inputs
+     * @param list<ExchangeRateUpdateRequestShape> $inputs
      */
     public function withInputs(array $inputs): self
     {

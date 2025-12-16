@@ -12,6 +12,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * The current state of the timeline event.
  *
+ * @phpstan-import-type TimelineEventIFrameShape from \HubspotSDK\Crm\Timeline\TimelineEventIFrame
+ *
  * @phpstan-type TimelineEventResponseShape = array{
  *   id: string,
  *   eventTemplateID: string,
@@ -22,7 +24,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   email?: string|null,
  *   extraData?: mixed,
  *   objectID?: string|null,
- *   timelineIFrame?: TimelineEventIFrame|null,
+ *   timelineIFrame?: null|TimelineEventIFrame|TimelineEventIFrameShape,
  *   timestamp?: \DateTimeInterface|null,
  *   utk?: string|null,
  * }
@@ -131,9 +133,7 @@ final class TimelineEventResponse implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param array<string,string> $tokens
-     * @param TimelineEventIFrame|array{
-     *   headerLabel: string, height: int, linkLabel: string, url: string, width: int
-     * } $timelineIFrame
+     * @param TimelineEventIFrameShape $timelineIFrame
      */
     public static function with(
         string $id,
@@ -267,9 +267,7 @@ final class TimelineEventResponse implements BaseModel
     }
 
     /**
-     * @param TimelineEventIFrame|array{
-     *   headerLabel: string, height: int, linkLabel: string, url: string, width: int
-     * } $timelineIFrame
+     * @param TimelineEventIFrameShape $timelineIFrame
      */
     public function withTimelineIFrame(
         TimelineEventIFrame|array $timelineIFrame

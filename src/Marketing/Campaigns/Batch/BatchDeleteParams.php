@@ -17,8 +17,10 @@ use HubspotSDK\Marketing\Campaigns\PublicCampaignDeleteInput;
  *
  * @see HubspotSDK\Services\Marketing\Campaigns\BatchService::delete()
  *
+ * @phpstan-import-type PublicCampaignDeleteInputShape from \HubspotSDK\Marketing\Campaigns\PublicCampaignDeleteInput
+ *
  * @phpstan-type BatchDeleteParamsShape = array{
- *   inputs: list<PublicCampaignDeleteInput|array{id: string}>
+ *   inputs: list<PublicCampaignDeleteInputShape>
  * }
  */
 final class BatchDeleteParams implements BaseModel
@@ -55,7 +57,7 @@ final class BatchDeleteParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicCampaignDeleteInput|array{id: string}> $inputs
+     * @param list<PublicCampaignDeleteInputShape> $inputs
      */
     public static function with(array $inputs): self
     {
@@ -67,7 +69,7 @@ final class BatchDeleteParams implements BaseModel
     }
 
     /**
-     * @param list<PublicCampaignDeleteInput|array{id: string}> $inputs
+     * @param list<PublicCampaignDeleteInputShape> $inputs
      */
     public function withInputs(array $inputs): self
     {

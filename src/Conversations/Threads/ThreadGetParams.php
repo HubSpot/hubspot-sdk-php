@@ -14,9 +14,9 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Conversations\ThreadsService::get()
  *
  * @phpstan-type ThreadGetParamsShape = array{
- *   archived?: bool,
- *   association?: list<Association|value-of<Association>>,
- *   property?: string,
+ *   archived?: bool|null,
+ *   association?: list<Association|value-of<Association>>|null,
+ *   property?: string|null,
  * }
  */
 final class ThreadGetParams implements BaseModel

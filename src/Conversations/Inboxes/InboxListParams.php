@@ -13,11 +13,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Conversations\InboxesService::list()
  *
  * @phpstan-type InboxListParamsShape = array{
- *   after?: string,
- *   archived?: bool,
- *   defaultPageLength?: int,
- *   limit?: int,
- *   sort?: list<string>,
+ *   after?: string|null,
+ *   archived?: bool|null,
+ *   defaultPageLength?: int|null,
+ *   limit?: int|null,
+ *   sort?: list<string>|null,
  * }
  */
 final class InboxListParams implements BaseModel

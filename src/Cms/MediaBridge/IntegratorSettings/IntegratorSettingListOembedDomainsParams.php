@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Cms\MediaBridge\IntegratorSettingsService::listOembedDomains()
  *
  * @phpstan-type IntegratorSettingListOembedDomainsParamsShape = array{
- *   domainPortalID?: int
+ *   domainPortalID?: int|null
  * }
  */
 final class IntegratorSettingListOembedDomainsParams implements BaseModel

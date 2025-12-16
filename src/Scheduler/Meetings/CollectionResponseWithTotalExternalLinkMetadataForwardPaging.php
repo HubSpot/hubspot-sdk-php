@@ -9,11 +9,15 @@ use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\ForwardPaging;
-use HubspotSDK\NextPage;
 
 /**
+ * @phpstan-import-type ExternalLinkMetadataShape from \HubspotSDK\Scheduler\Meetings\ExternalLinkMetadata
+ * @phpstan-import-type ForwardPagingShape from \HubspotSDK\ForwardPaging
+ *
  * @phpstan-type CollectionResponseWithTotalExternalLinkMetadataForwardPagingShape = array{
- *   results: list<ExternalLinkMetadata>, total: int, paging?: ForwardPaging|null
+ *   results: list<ExternalLinkMetadataShape>,
+ *   total: int,
+ *   paging?: null|ForwardPaging|ForwardPagingShape,
  * }
  */
 final class CollectionResponseWithTotalExternalLinkMetadataForwardPaging implements BaseModel
@@ -61,19 +65,8 @@ final class CollectionResponseWithTotalExternalLinkMetadataForwardPaging impleme
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<ExternalLinkMetadata|array{
-     *   id: string,
-     *   createdAt: \DateTimeInterface,
-     *   defaultLink: bool,
-     *   link: string,
-     *   organizerUserID: string,
-     *   slug: string,
-     *   type: string,
-     *   userIDsOfLinkMembers: list<string>,
-     *   name?: string|null,
-     *   updatedAt?: \DateTimeInterface|null,
-     * }> $results
-     * @param ForwardPaging|array{next?: NextPage|null} $paging
+     * @param list<ExternalLinkMetadataShape> $results
+     * @param ForwardPagingShape $paging
      */
     public static function with(
         array $results,
@@ -91,18 +84,7 @@ final class CollectionResponseWithTotalExternalLinkMetadataForwardPaging impleme
     }
 
     /**
-     * @param list<ExternalLinkMetadata|array{
-     *   id: string,
-     *   createdAt: \DateTimeInterface,
-     *   defaultLink: bool,
-     *   link: string,
-     *   organizerUserID: string,
-     *   slug: string,
-     *   type: string,
-     *   userIDsOfLinkMembers: list<string>,
-     *   name?: string|null,
-     *   updatedAt?: \DateTimeInterface|null,
-     * }> $results
+     * @param list<ExternalLinkMetadataShape> $results
      */
     public function withResults(array $results): self
     {
@@ -121,7 +103,7 @@ final class CollectionResponseWithTotalExternalLinkMetadataForwardPaging impleme
     }
 
     /**
-     * @param ForwardPaging|array{next?: NextPage|null} $paging
+     * @param ForwardPagingShape $paging
      */
     public function withPaging(ForwardPaging|array $paging): self
     {

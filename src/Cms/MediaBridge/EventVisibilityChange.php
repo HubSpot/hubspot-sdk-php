@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type EventVisibilityChangeShape = array{
- *   eventType: value-of<EventType>,
+ *   eventType: EventType|value-of<EventType>,
  *   updatedAt: int,
  *   showInReporting?: bool|null,
  *   showInTimeline?: bool|null,

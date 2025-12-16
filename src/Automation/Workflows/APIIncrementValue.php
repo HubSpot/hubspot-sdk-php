@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type APIIncrementValueShape = array{
- *   incrementAmount: float, type: value-of<Type>
+ *   incrementAmount: float, type: Type|value-of<Type>
  * }
  */
 final class APIIncrementValue implements BaseModel

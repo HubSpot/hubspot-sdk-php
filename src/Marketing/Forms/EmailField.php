@@ -13,15 +13,17 @@ use HubspotSDK\Marketing\Forms\EmailField\FieldType;
 /**
  * A form field used for collecting an email address.
  *
+ * @phpstan-import-type EmailFieldValidationShape from \HubspotSDK\Marketing\Forms\EmailFieldValidation
+ *
  * @phpstan-type EmailFieldShape = array{
  *   dependentFields: list<mixed>,
- *   fieldType: value-of<FieldType>,
+ *   fieldType: FieldType|value-of<FieldType>,
  *   hidden: bool,
  *   label: string,
  *   name: string,
  *   objectTypeID: string,
  *   required: bool,
- *   validation: EmailFieldValidation,
+ *   validation: EmailFieldValidation|EmailFieldValidationShape,
  *   defaultValue?: string|null,
  *   description?: string|null,
  *   placeholder?: string|null,
@@ -144,9 +146,7 @@ final class EmailField implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<mixed> $dependentFields
-     * @param EmailFieldValidation|array{
-     *   blockedEmailDomains: list<string>, useDefaultBlockList: bool
-     * } $validation
+     * @param EmailFieldValidationShape $validation
      * @param FieldType|value-of<FieldType> $fieldType
      */
     public static function with(
@@ -264,9 +264,7 @@ final class EmailField implements BaseModel
     /**
      * Describes how an email address should be validated.
      *
-     * @param EmailFieldValidation|array{
-     *   blockedEmailDomains: list<string>, useDefaultBlockList: bool
-     * } $validation
+     * @param EmailFieldValidationShape $validation
      */
     public function withValidation(EmailFieldValidation|array $validation): self
     {

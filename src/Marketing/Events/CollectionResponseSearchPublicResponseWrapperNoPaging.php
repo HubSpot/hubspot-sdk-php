@@ -9,8 +9,10 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type SearchPublicResponseWrapperShape from \HubspotSDK\Marketing\Events\SearchPublicResponseWrapper
+ *
  * @phpstan-type CollectionResponseSearchPublicResponseWrapperNoPagingShape = array{
- *   results: list<SearchPublicResponseWrapper>
+ *   results: list<SearchPublicResponseWrapperShape>
  * }
  */
 final class CollectionResponseSearchPublicResponseWrapperNoPaging implements BaseModel
@@ -46,12 +48,7 @@ final class CollectionResponseSearchPublicResponseWrapperNoPaging implements Bas
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<SearchPublicResponseWrapper|array{
-     *   appID: int,
-     *   externalAccountID: string,
-     *   externalEventID: string,
-     *   objectID: string,
-     * }> $results
+     * @param list<SearchPublicResponseWrapperShape> $results
      */
     public static function with(array $results): self
     {
@@ -63,12 +60,7 @@ final class CollectionResponseSearchPublicResponseWrapperNoPaging implements Bas
     }
 
     /**
-     * @param list<SearchPublicResponseWrapper|array{
-     *   appID: int,
-     *   externalAccountID: string,
-     *   externalEventID: string,
-     *   objectID: string,
-     * }> $results
+     * @param list<SearchPublicResponseWrapperShape> $results
      */
     public function withResults(array $results): self
     {

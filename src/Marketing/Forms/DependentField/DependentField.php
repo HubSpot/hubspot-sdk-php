@@ -23,6 +23,8 @@ use HubspotSDK\Marketing\Forms\SingleLineTextField;
 
 /**
  * A form field used for collecting an email address.
+ *
+ * @phpstan-type DependentFieldShape = EmailField|PhoneField|MobilePhoneField|SingleLineTextField|MultiLineTextField|NumberField|SingleCheckboxField|MultipleCheckboxesField|DropdownField|RadioField|DatepickerField|FileField|PaymentLinkRadioField
  */
 final class DependentField implements ConverterSource
 {

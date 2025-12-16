@@ -12,6 +12,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * A HubSpot property option.
  *
+ * @phpstan-import-type SimpleUserShape from \HubspotSDK\Cms\Hubdb\SimpleUser
+ *
  * @phpstan-type OptionShape = array{
  *   id: string,
  *   createdAt: \DateTimeInterface,
@@ -20,9 +22,9 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   order: int,
  *   type: string,
  *   updatedAt: \DateTimeInterface,
- *   createdBy?: SimpleUser|null,
+ *   createdBy?: null|SimpleUser|SimpleUserShape,
  *   createdByUserID?: int|null,
- *   updatedBy?: SimpleUser|null,
+ *   updatedBy?: null|SimpleUser|SimpleUserShape,
  *   updatedByUserID?: int|null,
  * }
  */
@@ -127,12 +129,8 @@ final class Option implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param SimpleUser|array{
-     *   id: string, email: string, firstName: string, lastName: string
-     * } $createdBy
-     * @param SimpleUser|array{
-     *   id: string, email: string, firstName: string, lastName: string
-     * } $updatedBy
+     * @param SimpleUserShape $createdBy
+     * @param SimpleUserShape $updatedBy
      */
     public static function with(
         string $id,
@@ -240,9 +238,7 @@ final class Option implements BaseModel
     }
 
     /**
-     * @param SimpleUser|array{
-     *   id: string, email: string, firstName: string, lastName: string
-     * } $createdBy
+     * @param SimpleUserShape $createdBy
      */
     public function withCreatedBy(SimpleUser|array $createdBy): self
     {
@@ -264,9 +260,7 @@ final class Option implements BaseModel
     }
 
     /**
-     * @param SimpleUser|array{
-     *   id: string, email: string, firstName: string, lastName: string
-     * } $updatedBy
+     * @param SimpleUserShape $updatedBy
      */
     public function withUpdatedBy(SimpleUser|array $updatedBy): self
     {

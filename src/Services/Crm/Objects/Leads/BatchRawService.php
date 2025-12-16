@@ -30,7 +30,7 @@ final class BatchRawService implements BatchRawContract
      *
      * @param array{
      *   inputs: list<array{
-     *     associations: list<array<mixed>>,
+     *     associations: list<array<string,mixed>>,
      *     properties: array<string,string>,
      *     objectWriteTraceID?: string,
      *   }>,

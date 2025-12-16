@@ -20,7 +20,7 @@ interface AttendanceRawContract
      * @api
      *
      * @param string $subscriberState Path param: The attendance state value. It may be 'register', 'attend' or 'cancel'
-     * @param array<mixed>|AttendanceCreateByEventIDAndContactIDParams $params
+     * @param array<string,mixed>|AttendanceCreateByEventIDAndContactIDParams $params
      *
      * @return BaseResponse<BatchResponseSubscriberVidResponse>
      *
@@ -36,7 +36,7 @@ interface AttendanceRawContract
      * @api
      *
      * @param string $subscriberState Path param: The attendance state value. It may be 'register', 'attend' or 'cancel'
-     * @param array<mixed>|AttendanceCreateByEventIDAndEmailParams $params
+     * @param array<string,mixed>|AttendanceCreateByEventIDAndEmailParams $params
      *
      * @return BaseResponse<BatchResponseSubscriberEmailResponse>
      *
@@ -52,7 +52,7 @@ interface AttendanceRawContract
      * @api
      *
      * @param string $subscriberState Path param: The new subscriber state for the HubSpot contacts and the specified marketing event. For example: 'register', 'attend' or 'cancel'.
-     * @param array<mixed>|AttendanceCreateByExternalEventIDAndContactIDParams $params
+     * @param array<string,mixed>|AttendanceCreateByExternalEventIDAndContactIDParams $params
      *
      * @return BaseResponse<BatchResponseSubscriberVidResponse>
      *
@@ -68,7 +68,7 @@ interface AttendanceRawContract
      * @api
      *
      * @param string $subscriberState Path param: The new subscriber state for the HubSpot contacts and the specified marketing event. For example: 'register', 'attend' or 'cancel'.
-     * @param array<mixed>|AttendanceCreateByExternalEventIDAndEmailParams $params
+     * @param array<string,mixed>|AttendanceCreateByExternalEventIDAndEmailParams $params
      *
      * @return BaseResponse<BatchResponseSubscriberEmailResponse>
      *

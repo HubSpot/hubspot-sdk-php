@@ -9,15 +9,15 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Events\EventDefinitions\RelativeRangedTimestampRefineBy\RangeType;
 use HubspotSDK\Events\EventDefinitions\RelativeRangedTimestampRefineBy\Type;
-use HubspotSDK\Events\EventDefinitions\TimeOffset\OffsetDirection;
-use HubspotSDK\Events\EventDefinitions\TimeOffset\TimeUnit;
 
 /**
+ * @phpstan-import-type TimeOffsetShape from \HubspotSDK\Events\EventDefinitions\TimeOffset
+ *
  * @phpstan-type RelativeRangedTimestampRefineByShape = array{
- *   lowerBoundOffset: TimeOffset,
- *   rangeType: value-of<RangeType>,
- *   type: value-of<Type>,
- *   upperBoundOffset: TimeOffset,
+ *   lowerBoundOffset: TimeOffset|TimeOffsetShape,
+ *   rangeType: RangeType|value-of<RangeType>,
+ *   type: Type|value-of<Type>,
+ *   upperBoundOffset: TimeOffset|TimeOffsetShape,
  * }
  */
 final class RelativeRangedTimestampRefineBy implements BaseModel
@@ -69,17 +69,9 @@ final class RelativeRangedTimestampRefineBy implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param TimeOffset|array{
-     *   amount: int,
-     *   offsetDirection: value-of<OffsetDirection>,
-     *   timeUnit: value-of<TimeUnit>,
-     * } $lowerBoundOffset
+     * @param TimeOffsetShape $lowerBoundOffset
      * @param RangeType|value-of<RangeType> $rangeType
-     * @param TimeOffset|array{
-     *   amount: int,
-     *   offsetDirection: value-of<OffsetDirection>,
-     *   timeUnit: value-of<TimeUnit>,
-     * } $upperBoundOffset
+     * @param TimeOffsetShape $upperBoundOffset
      * @param Type|value-of<Type> $type
      */
     public static function with(
@@ -99,11 +91,7 @@ final class RelativeRangedTimestampRefineBy implements BaseModel
     }
 
     /**
-     * @param TimeOffset|array{
-     *   amount: int,
-     *   offsetDirection: value-of<OffsetDirection>,
-     *   timeUnit: value-of<TimeUnit>,
-     * } $lowerBoundOffset
+     * @param TimeOffsetShape $lowerBoundOffset
      */
     public function withLowerBoundOffset(
         TimeOffset|array $lowerBoundOffset
@@ -137,11 +125,7 @@ final class RelativeRangedTimestampRefineBy implements BaseModel
     }
 
     /**
-     * @param TimeOffset|array{
-     *   amount: int,
-     *   offsetDirection: value-of<OffsetDirection>,
-     *   timeUnit: value-of<TimeUnit>,
-     * } $upperBoundOffset
+     * @param TimeOffsetShape $upperBoundOffset
      */
     public function withUpperBoundOffset(
         TimeOffset|array $upperBoundOffset

@@ -20,7 +20,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   amount: float,
  *   name: string,
  *   order: int,
- *   description?: string,
+ *   description?: string|null,
  * }
  */
 final class BudgetUpdateParams implements BaseModel

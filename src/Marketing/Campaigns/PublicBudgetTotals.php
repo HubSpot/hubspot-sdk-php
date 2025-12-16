@@ -11,10 +11,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Marketing\Campaigns\PublicBudgetTotals\CurrencyCode;
 
 /**
+ * @phpstan-import-type PublicBudgetItemShape from \HubspotSDK\Marketing\Campaigns\PublicBudgetItem
+ * @phpstan-import-type PublicSpendItemShape from \HubspotSDK\Marketing\Campaigns\PublicSpendItem
+ *
  * @phpstan-type PublicBudgetTotalsShape = array{
- *   budgetItems: list<PublicBudgetItem>,
- *   currencyCode: value-of<CurrencyCode>,
- *   spendItems: list<PublicSpendItem>,
+ *   budgetItems: list<PublicBudgetItemShape>,
+ *   currencyCode: CurrencyCode|value-of<CurrencyCode>,
+ *   spendItems: list<PublicSpendItemShape>,
  *   budgetTotal?: float|null,
  *   remainingBudget?: float|null,
  *   spendTotal?: float|null,
@@ -73,25 +76,9 @@ final class PublicBudgetTotals implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicBudgetItem|array{
-     *   id: string,
-     *   amount: float,
-     *   createdAt: int,
-     *   name: string,
-     *   order: int,
-     *   updatedAt: int,
-     *   description?: string|null,
-     * }> $budgetItems
+     * @param list<PublicBudgetItemShape> $budgetItems
      * @param CurrencyCode|value-of<CurrencyCode> $currencyCode
-     * @param list<PublicSpendItem|array{
-     *   id: string,
-     *   amount: float,
-     *   createdAt: int,
-     *   name: string,
-     *   order: int,
-     *   updatedAt: int,
-     *   description?: string|null,
-     * }> $spendItems
+     * @param list<PublicSpendItemShape> $spendItems
      */
     public static function with(
         array $budgetItems,
@@ -115,15 +102,7 @@ final class PublicBudgetTotals implements BaseModel
     }
 
     /**
-     * @param list<PublicBudgetItem|array{
-     *   id: string,
-     *   amount: float,
-     *   createdAt: int,
-     *   name: string,
-     *   order: int,
-     *   updatedAt: int,
-     *   description?: string|null,
-     * }> $budgetItems
+     * @param list<PublicBudgetItemShape> $budgetItems
      */
     public function withBudgetItems(array $budgetItems): self
     {
@@ -145,15 +124,7 @@ final class PublicBudgetTotals implements BaseModel
     }
 
     /**
-     * @param list<PublicSpendItem|array{
-     *   id: string,
-     *   amount: float,
-     *   createdAt: int,
-     *   name: string,
-     *   order: int,
-     *   updatedAt: int,
-     *   description?: string|null,
-     * }> $spendItems
+     * @param list<PublicSpendItemShape> $spendItems
      */
     public function withSpendItems(array $spendItems): self
     {

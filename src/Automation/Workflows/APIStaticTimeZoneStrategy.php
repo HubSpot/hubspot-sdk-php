@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type APIStaticTimeZoneStrategyShape = array{
- *   timeZoneID: string, type: value-of<Type>
+ *   timeZoneID: string, type: Type|value-of<Type>
  * }
  */
 final class APIStaticTimeZoneStrategy implements BaseModel

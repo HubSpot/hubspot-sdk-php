@@ -8,11 +8,12 @@ use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\SimplePublicObject;
-use HubspotSDK\Crm\ValueWithTimestamp;
 
 /**
+ * @phpstan-import-type SimplePublicObjectShape from \HubspotSDK\Crm\SimplePublicObject
+ *
  * @phpstan-type DealToDealSplitsShape = array{
- *   id: string, splits: list<SimplePublicObject>
+ *   id: string, splits: list<SimplePublicObjectShape>
  * }
  */
 final class DealToDealSplits implements BaseModel
@@ -51,17 +52,7 @@ final class DealToDealSplits implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<SimplePublicObject|array{
-     *   id: string,
-     *   archived: bool,
-     *   createdAt: \DateTimeInterface,
-     *   properties: array<string,string|null>,
-     *   updatedAt: \DateTimeInterface,
-     *   archivedAt?: \DateTimeInterface|null,
-     *   objectWriteTraceID?: string|null,
-     *   propertiesWithHistory?: array<string,list<ValueWithTimestamp>>|null,
-     *   url?: string|null,
-     * }> $splits
+     * @param list<SimplePublicObjectShape> $splits
      */
     public static function with(string $id, array $splits): self
     {
@@ -82,17 +73,7 @@ final class DealToDealSplits implements BaseModel
     }
 
     /**
-     * @param list<SimplePublicObject|array{
-     *   id: string,
-     *   archived: bool,
-     *   createdAt: \DateTimeInterface,
-     *   properties: array<string,string|null>,
-     *   updatedAt: \DateTimeInterface,
-     *   archivedAt?: \DateTimeInterface|null,
-     *   objectWriteTraceID?: string|null,
-     *   propertiesWithHistory?: array<string,list<ValueWithTimestamp>>|null,
-     *   url?: string|null,
-     * }> $splits
+     * @param list<SimplePublicObjectShape> $splits
      */
     public function withSplits(array $splits): self
     {

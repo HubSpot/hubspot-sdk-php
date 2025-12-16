@@ -14,7 +14,7 @@ use HubspotSDK\Marketing\Subscriptions\PublicUpdateSubscriptionStatusRequest\Leg
  * @phpstan-type PublicUpdateSubscriptionStatusRequestShape = array{
  *   emailAddress: string,
  *   subscriptionID: string,
- *   legalBasis?: value-of<LegalBasis>|null,
+ *   legalBasis?: null|LegalBasis|value-of<LegalBasis>,
  *   legalBasisExplanation?: string|null,
  * }
  */

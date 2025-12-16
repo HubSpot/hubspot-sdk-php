@@ -12,25 +12,29 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Option;
 
 /**
+ * @phpstan-import-type SimpleUserShape from \HubspotSDK\Cms\Hubdb\SimpleUser
+ * @phpstan-import-type ForeignIDShape from \HubspotSDK\Cms\Hubdb\ForeignID
+ * @phpstan-import-type OptionShape from \HubspotSDK\Option
+ *
  * @phpstan-type ColumnShape = array{
  *   id: string,
  *   deleted: bool,
  *   description: string,
  *   label: string,
  *   name: string,
- *   type: value-of<Type>,
+ *   type: Type|value-of<Type>,
  *   createdAt?: \DateTimeInterface|null,
- *   createdBy?: SimpleUser|null,
+ *   createdBy?: null|SimpleUser|SimpleUserShape,
  *   createdByUserID?: int|null,
  *   foreignColumnID?: int|null,
- *   foreignIDs?: list<ForeignID>|null,
- *   foreignIDsByID?: array<string,ForeignID>|null,
- *   foreignIDsByName?: array<string,ForeignID>|null,
+ *   foreignIDs?: list<ForeignIDShape>|null,
+ *   foreignIDsByID?: array<string,ForeignIDShape>|null,
+ *   foreignIDsByName?: array<string,ForeignIDShape>|null,
  *   foreignTableID?: int|null,
  *   optionCount?: int|null,
- *   options?: list<\HubspotSDK\Option>|null,
+ *   options?: list<OptionShape>|null,
  *   updatedAt?: \DateTimeInterface|null,
- *   updatedBy?: SimpleUser|null,
+ *   updatedBy?: null|SimpleUser|SimpleUserShape,
  *   updatedByUserID?: int|null,
  *   width?: int|null,
  * }
@@ -179,26 +183,12 @@ final class Column implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param Type|value-of<Type> $type
-     * @param SimpleUser|array{
-     *   id: string, email: string, firstName: string, lastName: string
-     * } $createdBy
-     * @param list<ForeignID|array{id: string, name: string, type: string}> $foreignIDs
-     * @param array<string,ForeignID|array{
-     *   id: string, name: string, type: string
-     * }> $foreignIDsByID
-     * @param array<string,ForeignID|array{
-     *   id: string, name: string, type: string
-     * }> $foreignIDsByName
-     * @param list<Option|array{
-     *   hidden: bool,
-     *   label: string,
-     *   value: string,
-     *   description?: string|null,
-     *   displayOrder?: int|null,
-     * }> $options
-     * @param SimpleUser|array{
-     *   id: string, email: string, firstName: string, lastName: string
-     * } $updatedBy
+     * @param SimpleUserShape $createdBy
+     * @param list<ForeignIDShape> $foreignIDs
+     * @param array<string,ForeignIDShape> $foreignIDsByID
+     * @param array<string,ForeignIDShape> $foreignIDsByName
+     * @param list<OptionShape> $options
+     * @param SimpleUserShape $updatedBy
      */
     public static function with(
         string $id,
@@ -320,9 +310,7 @@ final class Column implements BaseModel
     }
 
     /**
-     * @param SimpleUser|array{
-     *   id: string, email: string, firstName: string, lastName: string
-     * } $createdBy
+     * @param SimpleUserShape $createdBy
      */
     public function withCreatedBy(SimpleUser|array $createdBy): self
     {
@@ -354,7 +342,7 @@ final class Column implements BaseModel
     /**
      * Foreign Ids.
      *
-     * @param list<ForeignID|array{id: string, name: string, type: string}> $foreignIDs
+     * @param list<ForeignIDShape> $foreignIDs
      */
     public function withForeignIDs(array $foreignIDs): self
     {
@@ -367,9 +355,7 @@ final class Column implements BaseModel
     /**
      * Foreign ids.
      *
-     * @param array<string,ForeignID|array{
-     *   id: string, name: string, type: string
-     * }> $foreignIDsByID
+     * @param array<string,ForeignIDShape> $foreignIDsByID
      */
     public function withForeignIDsByID(array $foreignIDsByID): self
     {
@@ -382,9 +368,7 @@ final class Column implements BaseModel
     /**
      * Foreign ids by name.
      *
-     * @param array<string,ForeignID|array{
-     *   id: string, name: string, type: string
-     * }> $foreignIDsByName
+     * @param array<string,ForeignIDShape> $foreignIDsByName
      */
     public function withForeignIDsByName(array $foreignIDsByName): self
     {
@@ -419,13 +403,7 @@ final class Column implements BaseModel
     /**
      * Options to choose for select and multi-select columns.
      *
-     * @param list<Option|array{
-     *   hidden: bool,
-     *   label: string,
-     *   value: string,
-     *   description?: string|null,
-     *   displayOrder?: int|null,
-     * }> $options
+     * @param list<OptionShape> $options
      */
     public function withOptions(array $options): self
     {
@@ -444,9 +422,7 @@ final class Column implements BaseModel
     }
 
     /**
-     * @param SimpleUser|array{
-     *   id: string, email: string, firstName: string, lastName: string
-     * } $updatedBy
+     * @param SimpleUserShape $updatedBy
      */
     public function withUpdatedBy(SimpleUser|array $updatedBy): self
     {

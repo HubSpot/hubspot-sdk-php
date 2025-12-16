@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Marketing\EmailsService::clone()
  *
  * @phpstan-type EmailCloneParamsShape = array{
- *   id: string, cloneName?: string, language?: string
+ *   id: string, cloneName?: string|null, language?: string|null
  * }
  */
 final class EmailCloneParams implements BaseModel

@@ -12,7 +12,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type MeetingSettingsResponseShape = array{
- *   criteria: value-of<Criteria>, sellingStrategy: value-of<SellingStrategy>
+ *   criteria: Criteria|value-of<Criteria>,
+ *   sellingStrategy: SellingStrategy|value-of<SellingStrategy>,
  * }
  */
 final class MeetingSettingsResponse implements BaseModel

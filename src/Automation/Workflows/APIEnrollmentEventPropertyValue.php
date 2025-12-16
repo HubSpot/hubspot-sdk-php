@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type APIEnrollmentEventPropertyValueShape = array{
- *   enrollmentEventPropertyToken: string, type: value-of<Type>
+ *   enrollmentEventPropertyToken: string, type: Type|value-of<Type>
  * }
  */
 final class APIEnrollmentEventPropertyValue implements BaseModel

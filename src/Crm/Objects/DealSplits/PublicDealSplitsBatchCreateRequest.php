@@ -9,8 +9,10 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type PublicDealSplitsCreateRequestShape from \HubspotSDK\Crm\Objects\DealSplits\PublicDealSplitsCreateRequest
+ *
  * @phpstan-type PublicDealSplitsBatchCreateRequestShape = array{
- *   inputs: list<PublicDealSplitsCreateRequest>
+ *   inputs: list<PublicDealSplitsCreateRequestShape>
  * }
  */
 final class PublicDealSplitsBatchCreateRequest implements BaseModel
@@ -46,9 +48,7 @@ final class PublicDealSplitsBatchCreateRequest implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicDealSplitsCreateRequest|array{
-     *   id: int, splits: list<PublicDealSplitInput>
-     * }> $inputs
+     * @param list<PublicDealSplitsCreateRequestShape> $inputs
      */
     public static function with(array $inputs): self
     {
@@ -60,9 +60,7 @@ final class PublicDealSplitsBatchCreateRequest implements BaseModel
     }
 
     /**
-     * @param list<PublicDealSplitsCreateRequest|array{
-     *   id: int, splits: list<PublicDealSplitInput>
-     * }> $inputs
+     * @param list<PublicDealSplitsCreateRequestShape> $inputs
      */
     public function withInputs(array $inputs): self
     {

@@ -14,7 +14,10 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Crm\Associations\Schema\V4\DefinitionsService::createLabel()
  *
  * @phpstan-type DefinitionCreateLabelParamsShape = array{
- *   fromObjectType: string, label: string, name: string, inverseLabel?: string
+ *   fromObjectType: string,
+ *   label: string,
+ *   name: string,
+ *   inverseLabel?: string|null,
  * }
  */
 final class DefinitionCreateLabelParams implements BaseModel

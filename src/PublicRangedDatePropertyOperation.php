@@ -13,7 +13,7 @@ use HubspotSDK\PublicRangedDatePropertyOperation\OperationType;
  * @phpstan-type PublicRangedDatePropertyOperationShape = array{
  *   includeObjectsWithNoValueSet: bool,
  *   lowerBound: int,
- *   operationType: value-of<OperationType>,
+ *   operationType: OperationType|value-of<OperationType>,
  *   operator: string,
  *   requiresTimeZoneConversion: bool,
  *   upperBound: int,

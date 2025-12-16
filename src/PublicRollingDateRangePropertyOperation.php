@@ -13,7 +13,7 @@ use HubspotSDK\PublicRollingDateRangePropertyOperation\OperationType;
  * @phpstan-type PublicRollingDateRangePropertyOperationShape = array{
  *   includeObjectsWithNoValueSet: bool,
  *   numberOfDays: int,
- *   operationType: value-of<OperationType>,
+ *   operationType: OperationType|value-of<OperationType>,
  *   operator: string,
  *   requiresTimeZoneConversion: bool,
  * }

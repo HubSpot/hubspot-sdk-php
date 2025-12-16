@@ -27,7 +27,7 @@ interface ListsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|ListCreateParams $params
+     * @param array<string,mixed>|ListCreateParams $params
      *
      * @return BaseResponse<ListCreateResponse>
      *
@@ -41,7 +41,7 @@ interface ListsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|ListListParams $params
+     * @param array<string,mixed>|ListListParams $params
      *
      * @return BaseResponse<ListsByIDResponse>
      *
@@ -84,7 +84,7 @@ interface ListsRawContract
      * @api
      *
      * @param string $listID the **ILS ID** of the list to fetch
-     * @param array<mixed>|ListGetParams $params
+     * @param array<string,mixed>|ListGetParams $params
      *
      * @return BaseResponse<ListFetchResponse>
      *
@@ -100,7 +100,7 @@ interface ListsRawContract
      * @api
      *
      * @param string $listName Path param: The name of the list to fetch. This is **not** case sensitive.
-     * @param array<mixed>|ListGetByObjectTypeIDAndNameParams $params
+     * @param array<string,mixed>|ListGetByObjectTypeIDAndNameParams $params
      *
      * @return BaseResponse<ListFetchResponse>
      *
@@ -144,7 +144,7 @@ interface ListsRawContract
      * @api
      *
      * @param string $listID the ID of the list to schedule the conversion for
-     * @param array<mixed>|ListScheduleConversionParams $params
+     * @param array<string,mixed>|ListScheduleConversionParams $params
      *
      * @return BaseResponse<PublicListConversionResponse>
      *
@@ -159,7 +159,7 @@ interface ListsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|ListSearchParams $params
+     * @param array<string,mixed>|ListSearchParams $params
      *
      * @return BaseResponse<ListSearchResponse>
      *
@@ -174,7 +174,7 @@ interface ListsRawContract
      * @api
      *
      * @param string $listID path param: The **ILS ID** of the list to update
-     * @param array<mixed>|ListUpdateFiltersParams $params
+     * @param array<string,mixed>|ListUpdateFiltersParams $params
      *
      * @return BaseResponse<ListUpdateResponse>
      *
@@ -190,7 +190,7 @@ interface ListsRawContract
      * @api
      *
      * @param string $listID the **ILS ID** of the list to update
-     * @param array<mixed>|ListUpdateNameParams $params
+     * @param array<string,mixed>|ListUpdateNameParams $params
      *
      * @return BaseResponse<ListUpdateResponse>
      *

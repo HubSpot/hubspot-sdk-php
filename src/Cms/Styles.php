@@ -10,15 +10,20 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type RgbaColorShape from \HubspotSDK\Cms\RgbaColor
+ * @phpstan-import-type GradientShape from \HubspotSDK\Cms\Gradient
+ * @phpstan-import-type BackgroundImageShape from \HubspotSDK\Cms\BackgroundImage
+ * @phpstan-import-type BreakpointStylesShape from \HubspotSDK\Cms\BreakpointStyles
+ *
  * @phpstan-type StylesShape = array{
- *   backgroundColor: RgbaColor,
- *   backgroundGradient: Gradient,
- *   backgroundImage: BackgroundImage,
+ *   backgroundColor: RgbaColor|RgbaColorShape,
+ *   backgroundGradient: Gradient|GradientShape,
+ *   backgroundImage: BackgroundImage|BackgroundImageShape,
  *   flexboxPositioning: string,
  *   forceFullWidthSection: bool,
  *   maxWidthSectionCentering: int,
  *   verticalAlignment: string,
- *   breakpointStyles?: array<string,BreakpointStyles>|null,
+ *   breakpointStyles?: array<string,BreakpointStylesShape>|null,
  * }
  */
 final class Styles implements BaseModel
@@ -93,16 +98,10 @@ final class Styles implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param RgbaColor|array{a: float, b: int, g: int, r: int} $backgroundColor
-     * @param Gradient|array{
-     *   angle: Angle, colors: list<ColorStop>, sideOrCorner: SideOrCorner
-     * } $backgroundGradient
-     * @param BackgroundImage|array{
-     *   backgroundPosition: string, backgroundSize: string, imageURL: string
-     * } $backgroundImage
-     * @param array<string,BreakpointStyles|array{
-     *   hidden: bool, margin: mixed, padding: mixed
-     * }> $breakpointStyles
+     * @param RgbaColorShape $backgroundColor
+     * @param GradientShape $backgroundGradient
+     * @param BackgroundImageShape $backgroundImage
+     * @param array<string,BreakpointStylesShape> $breakpointStyles
      */
     public static function with(
         RgbaColor|array $backgroundColor,
@@ -132,7 +131,7 @@ final class Styles implements BaseModel
     /**
      * A color defined by RGB values.
      *
-     * @param RgbaColor|array{a: float, b: int, g: int, r: int} $backgroundColor
+     * @param RgbaColorShape $backgroundColor
      */
     public function withBackgroundColor(RgbaColor|array $backgroundColor): self
     {
@@ -143,9 +142,7 @@ final class Styles implements BaseModel
     }
 
     /**
-     * @param Gradient|array{
-     *   angle: Angle, colors: list<ColorStop>, sideOrCorner: SideOrCorner
-     * } $backgroundGradient
+     * @param GradientShape $backgroundGradient
      */
     public function withBackgroundGradient(
         Gradient|array $backgroundGradient
@@ -157,9 +154,7 @@ final class Styles implements BaseModel
     }
 
     /**
-     * @param BackgroundImage|array{
-     *   backgroundPosition: string, backgroundSize: string, imageURL: string
-     * } $backgroundImage
+     * @param BackgroundImageShape $backgroundImage
      */
     public function withBackgroundImage(
         BackgroundImage|array $backgroundImage
@@ -204,9 +199,7 @@ final class Styles implements BaseModel
     }
 
     /**
-     * @param array<string,BreakpointStyles|array{
-     *   hidden: bool, margin: mixed, padding: mixed
-     * }> $breakpointStyles
+     * @param array<string,BreakpointStylesShape> $breakpointStyles
      */
     public function withBreakpointStyles(array $breakpointStyles): self
     {

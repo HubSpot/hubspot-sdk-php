@@ -22,7 +22,7 @@ use HubspotSDK\Crm\Pipelines\PipelineStage\WritePermissions;
  *   metadata: array<string,string>,
  *   updatedAt: \DateTimeInterface,
  *   archivedAt?: \DateTimeInterface|null,
- *   writePermissions?: value-of<WritePermissions>|null,
+ *   writePermissions?: null|WritePermissions|value-of<WritePermissions>,
  * }
  */
 final class PipelineStage implements BaseModel

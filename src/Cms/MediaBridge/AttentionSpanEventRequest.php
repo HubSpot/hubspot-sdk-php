@@ -11,15 +11,17 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type AttentionSpanCalculatedValuesShape from \HubspotSDK\Cms\MediaBridge\AttentionSpanCalculatedValues
+ *
  * @phpstan-type AttentionSpanEventRequestShape = array{
- *   mediaType: value-of<MediaType>,
+ *   mediaType: MediaType|value-of<MediaType>,
  *   occurredTimestamp: int,
  *   rawDataMap: array<string,int>,
  *   sessionID: string,
  *   _hsenc?: string|null,
  *   contactID?: int|null,
  *   contactUtk?: string|null,
- *   derivedValues?: AttentionSpanCalculatedValues|null,
+ *   derivedValues?: null|AttentionSpanCalculatedValues|AttentionSpanCalculatedValuesShape,
  *   externalID?: string|null,
  *   mediaBridgeID?: int|null,
  *   mediaName?: string|null,
@@ -117,9 +119,7 @@ final class AttentionSpanEventRequest implements BaseModel
      *
      * @param MediaType|value-of<MediaType> $mediaType
      * @param array<string,int> $rawDataMap
-     * @param AttentionSpanCalculatedValues|array{
-     *   totalPercentPlayed: float, totalSecondsPlayed: int
-     * } $derivedValues
+     * @param AttentionSpanCalculatedValuesShape $derivedValues
      */
     public static function with(
         MediaType|string $mediaType,
@@ -225,9 +225,7 @@ final class AttentionSpanEventRequest implements BaseModel
     }
 
     /**
-     * @param AttentionSpanCalculatedValues|array{
-     *   totalPercentPlayed: float, totalSecondsPlayed: int
-     * } $derivedValues
+     * @param AttentionSpanCalculatedValuesShape $derivedValues
      */
     public function withDerivedValues(
         AttentionSpanCalculatedValues|array $derivedValues

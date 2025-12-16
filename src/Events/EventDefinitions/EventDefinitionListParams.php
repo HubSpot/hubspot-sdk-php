@@ -15,11 +15,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Events\EventDefinitionsService::list()
  *
  * @phpstan-type EventDefinitionListParamsShape = array{
- *   after?: string,
- *   includeProperties?: bool,
- *   limit?: int,
- *   searchString?: string,
- *   sortOrder?: string,
+ *   after?: string|null,
+ *   includeProperties?: bool|null,
+ *   limit?: int|null,
+ *   searchString?: string|null,
+ *   sortOrder?: string|null,
  * }
  */
 final class EventDefinitionListParams implements BaseModel

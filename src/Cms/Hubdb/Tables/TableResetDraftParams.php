@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Services\Cms\Hubdb\TablesService::resetDraft()
  *
- * @phpstan-type TableResetDraftParamsShape = array{includeForeignIDs?: bool}
+ * @phpstan-type TableResetDraftParamsShape = array{includeForeignIDs?: bool|null}
  */
 final class TableResetDraftParams implements BaseModel
 {

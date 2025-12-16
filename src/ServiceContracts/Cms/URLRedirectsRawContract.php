@@ -18,7 +18,7 @@ interface URLRedirectsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|URLRedirectCreateParams $params
+     * @param array<string,mixed>|URLRedirectCreateParams $params
      *
      * @return BaseResponse<URLMapping>
      *
@@ -33,7 +33,7 @@ interface URLRedirectsRawContract
      * @api
      *
      * @param string $urlRedirectID the ID of the target url redirect to update
-     * @param array<mixed>|URLRedirectUpdateParams $params
+     * @param array<string,mixed>|URLRedirectUpdateParams $params
      *
      * @return BaseResponse<URLMapping>
      *
@@ -48,7 +48,7 @@ interface URLRedirectsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|URLRedirectListParams $params
+     * @param array<string,mixed>|URLRedirectListParams $params
      *
      * @return BaseResponse<Page<URLMapping>>
      *

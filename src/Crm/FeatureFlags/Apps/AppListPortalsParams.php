@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Crm\FeatureFlags\AppsService::listPortals()
  *
  * @phpstan-type AppListPortalsParamsShape = array{
- *   appID: int, limit?: int, startPortalID?: int
+ *   appID: int, limit?: int|null, startPortalID?: int|null
  * }
  */
 final class AppListPortalsParams implements BaseModel

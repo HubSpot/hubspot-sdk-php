@@ -8,35 +8,31 @@ use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Events\EventDefinitions\AssociationDefinition\Cardinality;
-use HubspotSDK\Events\EventDefinitions\AssociationDefinition\Category;
-use HubspotSDK\Events\EventDefinitions\AssociationDefinition\FromObjectType;
-use HubspotSDK\Events\EventDefinitions\AssociationDefinition\InverseCardinality;
-use HubspotSDK\Events\EventDefinitions\AssociationDefinition\ToObjectType;
-use HubspotSDK\Events\EventDefinitions\ComboEventRuleBranch\OperationType;
 use HubspotSDK\Events\EventDefinitions\ExternalBehavioralEventTypeDefinition\TrackingType;
-use HubspotSDK\Option;
 use HubspotSDK\Property;
-use HubspotSDK\Property\DataSensitivity;
-use HubspotSDK\PropertyModificationMetadata;
 
 /**
+ * @phpstan-import-type AssociationDefinitionShape from \HubspotSDK\Events\EventDefinitions\AssociationDefinition
+ * @phpstan-import-type BehavioralEventTypeDefinitionLabelsShape from \HubspotSDK\Events\EventDefinitions\BehavioralEventTypeDefinitionLabels
+ * @phpstan-import-type PropertyShape from \HubspotSDK\Property
+ * @phpstan-import-type ComboEventRuleBranchShape from \HubspotSDK\Events\EventDefinitions\ComboEventRuleBranch
+ *
  * @phpstan-type ExternalBehavioralEventTypeDefinitionShape = array{
  *   id: string,
  *   archived: bool,
- *   associations: list<AssociationDefinition>,
+ *   associations: list<AssociationDefinitionShape>,
  *   fullyQualifiedName: string,
- *   labels: BehavioralEventTypeDefinitionLabels,
+ *   labels: BehavioralEventTypeDefinitionLabels|BehavioralEventTypeDefinitionLabelsShape,
  *   name: string,
  *   objectTypeID: string,
- *   properties: list<Property>,
- *   comboEventRules?: ComboEventRuleBranch|null,
+ *   properties: list<PropertyShape>,
+ *   comboEventRules?: null|ComboEventRuleBranch|ComboEventRuleBranchShape,
  *   createdAt?: \DateTimeInterface|null,
  *   createdUserID?: int|null,
  *   description?: string|null,
  *   primaryObject?: string|null,
  *   primaryObjectID?: string|null,
- *   trackingType?: value-of<TrackingType>|null,
+ *   trackingType?: null|TrackingType|value-of<TrackingType>,
  * }
  */
 final class ExternalBehavioralEventTypeDefinition implements BaseModel
@@ -133,70 +129,10 @@ final class ExternalBehavioralEventTypeDefinition implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<AssociationDefinition|array{
-     *   id: int,
-     *   allowsCustomLabels: bool,
-     *   cardinality: value-of<Cardinality>,
-     *   category: value-of<Category>,
-     *   fromObjectTypeID: string,
-     *   hasAllAssociatedObjects: bool,
-     *   hasCascadingDeletes: bool,
-     *   hasUserEnforcedMaxFromObjectIDs: bool,
-     *   hasUserEnforcedMaxToObjectIDs: bool,
-     *   hidden: bool,
-     *   inverseAllowsCustomLabels: bool,
-     *   inverseCardinality: value-of<InverseCardinality>,
-     *   inverseHasAllAssociatedObjects: bool,
-     *   inverseID: int,
-     *   inverseName: string,
-     *   isInversePrimary: bool,
-     *   isPrimary: bool,
-     *   maxFromObjectIDs: int,
-     *   maxToObjectIDs: int,
-     *   name: string,
-     *   portalUniqueIdentifier: string,
-     *   toObjectTypeID: string,
-     *   fromObjectType?: value-of<FromObjectType>|null,
-     *   inverseLabel?: string|null,
-     *   label?: string|null,
-     *   toObjectType?: value-of<ToObjectType>|null,
-     * }> $associations
-     * @param BehavioralEventTypeDefinitionLabels|array{
-     *   singular: string, plural?: string|null
-     * } $labels
-     * @param list<Property|array{
-     *   description: string,
-     *   fieldType: string,
-     *   groupName: string,
-     *   label: string,
-     *   name: string,
-     *   options: list<Option>,
-     *   type: string,
-     *   archived?: bool|null,
-     *   archivedAt?: \DateTimeInterface|null,
-     *   calculated?: bool|null,
-     *   calculationFormula?: string|null,
-     *   createdAt?: \DateTimeInterface|null,
-     *   createdUserID?: string|null,
-     *   dataSensitivity?: value-of<DataSensitivity>|null,
-     *   displayOrder?: int|null,
-     *   externalOptions?: bool|null,
-     *   formField?: bool|null,
-     *   hasUniqueValue?: bool|null,
-     *   hidden?: bool|null,
-     *   hubspotDefined?: bool|null,
-     *   modificationMetadata?: PropertyModificationMetadata|null,
-     *   referencedObjectType?: string|null,
-     *   sensitiveDataCategories?: list<string>|null,
-     *   showCurrencySymbol?: bool|null,
-     *   updatedAt?: \DateTimeInterface|null,
-     *   updatedUserID?: string|null,
-     * }> $properties
-     * @param ComboEventRuleBranch|array{
-     *   composingRules: list<ComboEventRule>,
-     *   operationType: value-of<OperationType>,
-     *   ruleBranches: list<mixed>,
-     * } $comboEventRules
+     * @param list<AssociationDefinitionShape> $associations
+     * @param BehavioralEventTypeDefinitionLabelsShape $labels
+     * @param list<PropertyShape> $properties
+     * @param ComboEventRuleBranchShape $comboEventRules
      * @param TrackingType|value-of<TrackingType> $trackingType
      */
     public static function with(
@@ -255,34 +191,7 @@ final class ExternalBehavioralEventTypeDefinition implements BaseModel
     }
 
     /**
-     * @param list<AssociationDefinition|array{
-     *   id: int,
-     *   allowsCustomLabels: bool,
-     *   cardinality: value-of<Cardinality>,
-     *   category: value-of<Category>,
-     *   fromObjectTypeID: string,
-     *   hasAllAssociatedObjects: bool,
-     *   hasCascadingDeletes: bool,
-     *   hasUserEnforcedMaxFromObjectIDs: bool,
-     *   hasUserEnforcedMaxToObjectIDs: bool,
-     *   hidden: bool,
-     *   inverseAllowsCustomLabels: bool,
-     *   inverseCardinality: value-of<InverseCardinality>,
-     *   inverseHasAllAssociatedObjects: bool,
-     *   inverseID: int,
-     *   inverseName: string,
-     *   isInversePrimary: bool,
-     *   isPrimary: bool,
-     *   maxFromObjectIDs: int,
-     *   maxToObjectIDs: int,
-     *   name: string,
-     *   portalUniqueIdentifier: string,
-     *   toObjectTypeID: string,
-     *   fromObjectType?: value-of<FromObjectType>|null,
-     *   inverseLabel?: string|null,
-     *   label?: string|null,
-     *   toObjectType?: value-of<ToObjectType>|null,
-     * }> $associations
+     * @param list<AssociationDefinitionShape> $associations
      */
     public function withAssociations(array $associations): self
     {
@@ -301,9 +210,7 @@ final class ExternalBehavioralEventTypeDefinition implements BaseModel
     }
 
     /**
-     * @param BehavioralEventTypeDefinitionLabels|array{
-     *   singular: string, plural?: string|null
-     * } $labels
+     * @param BehavioralEventTypeDefinitionLabelsShape $labels
      */
     public function withLabels(
         BehavioralEventTypeDefinitionLabels|array $labels
@@ -331,34 +238,7 @@ final class ExternalBehavioralEventTypeDefinition implements BaseModel
     }
 
     /**
-     * @param list<Property|array{
-     *   description: string,
-     *   fieldType: string,
-     *   groupName: string,
-     *   label: string,
-     *   name: string,
-     *   options: list<Option>,
-     *   type: string,
-     *   archived?: bool|null,
-     *   archivedAt?: \DateTimeInterface|null,
-     *   calculated?: bool|null,
-     *   calculationFormula?: string|null,
-     *   createdAt?: \DateTimeInterface|null,
-     *   createdUserID?: string|null,
-     *   dataSensitivity?: value-of<DataSensitivity>|null,
-     *   displayOrder?: int|null,
-     *   externalOptions?: bool|null,
-     *   formField?: bool|null,
-     *   hasUniqueValue?: bool|null,
-     *   hidden?: bool|null,
-     *   hubspotDefined?: bool|null,
-     *   modificationMetadata?: PropertyModificationMetadata|null,
-     *   referencedObjectType?: string|null,
-     *   sensitiveDataCategories?: list<string>|null,
-     *   showCurrencySymbol?: bool|null,
-     *   updatedAt?: \DateTimeInterface|null,
-     *   updatedUserID?: string|null,
-     * }> $properties
+     * @param list<PropertyShape> $properties
      */
     public function withProperties(array $properties): self
     {
@@ -369,11 +249,7 @@ final class ExternalBehavioralEventTypeDefinition implements BaseModel
     }
 
     /**
-     * @param ComboEventRuleBranch|array{
-     *   composingRules: list<ComboEventRule>,
-     *   operationType: value-of<OperationType>,
-     *   ruleBranches: list<mixed>,
-     * } $comboEventRules
+     * @param ComboEventRuleBranchShape $comboEventRules
      */
     public function withComboEventRules(
         ComboEventRuleBranch|array $comboEventRules

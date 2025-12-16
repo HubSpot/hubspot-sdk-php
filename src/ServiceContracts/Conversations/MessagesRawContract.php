@@ -36,7 +36,7 @@ interface MessagesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|MessageListParams $params
+     * @param array<string,mixed>|MessageListParams $params
      *
      * @return BaseResponse<Page<ConversationsPublicConversationsMessage|PublicComment|PublicWelcomeMessage|PublicAssignmentMessage|PublicThreadStatusChange|PublicThreadInboxChange,>,>
      *
@@ -52,7 +52,7 @@ interface MessagesRawContract
      * @api
      *
      * @param string $messageID Path param:
-     * @param array<mixed>|MessageGetParams $params
+     * @param array<string,mixed>|MessageGetParams $params
      *
      * @return BaseResponse<ConversationsPublicConversationsMessage|PublicComment|PublicWelcomeMessage|PublicAssignmentMessage|PublicThreadStatusChange|PublicThreadInboxChange,>
      *
@@ -68,7 +68,7 @@ interface MessagesRawContract
      * @api
      *
      * @param string $messageID Path param:
-     * @param array<mixed>|MessageGetOriginalContentParams $params
+     * @param array<string,mixed>|MessageGetOriginalContentParams $params
      *
      * @return BaseResponse<PublicMessageContent>
      *

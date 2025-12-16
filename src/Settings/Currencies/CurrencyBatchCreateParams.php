@@ -8,19 +8,16 @@ use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Settings\Currencies\ExchangeRateCreateRequest\FromCurrencyCode;
 
 /**
  * Create multiple exchange rates in a single request.
  *
  * @see HubspotSDK\Services\Settings\CurrenciesService::batchCreate()
  *
+ * @phpstan-import-type ExchangeRateCreateRequestShape from \HubspotSDK\Settings\Currencies\ExchangeRateCreateRequest
+ *
  * @phpstan-type CurrencyBatchCreateParamsShape = array{
- *   inputs: list<ExchangeRateCreateRequest|array{
- *     conversionRate: float,
- *     fromCurrencyCode: value-of<FromCurrencyCode>,
- *     effectiveAt?: \DateTimeInterface|null,
- *   }>,
+ *   inputs: list<ExchangeRateCreateRequestShape>
  * }
  */
 final class CurrencyBatchCreateParams implements BaseModel
@@ -57,11 +54,7 @@ final class CurrencyBatchCreateParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<ExchangeRateCreateRequest|array{
-     *   conversionRate: float,
-     *   fromCurrencyCode: value-of<FromCurrencyCode>,
-     *   effectiveAt?: \DateTimeInterface|null,
-     * }> $inputs
+     * @param list<ExchangeRateCreateRequestShape> $inputs
      */
     public static function with(array $inputs): self
     {
@@ -73,11 +66,7 @@ final class CurrencyBatchCreateParams implements BaseModel
     }
 
     /**
-     * @param list<ExchangeRateCreateRequest|array{
-     *   conversionRate: float,
-     *   fromCurrencyCode: value-of<FromCurrencyCode>,
-     *   effectiveAt?: \DateTimeInterface|null,
-     * }> $inputs
+     * @param list<ExchangeRateCreateRequestShape> $inputs
      */
     public function withInputs(array $inputs): self
     {

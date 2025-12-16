@@ -16,7 +16,7 @@ interface CallbacksRawContract
      * @api
      *
      * @param string $callbackID the ID of the action execution
-     * @param array<mixed>|CallbackCompleteParams $params
+     * @param array<string,mixed>|CallbackCompleteParams $params
      *
      * @return BaseResponse<mixed>
      *
@@ -31,7 +31,7 @@ interface CallbacksRawContract
     /**
      * @api
      *
-     * @param array<mixed>|CallbackCompleteBatchParams $params
+     * @param array<string,mixed>|CallbackCompleteBatchParams $params
      *
      * @return BaseResponse<mixed>
      *

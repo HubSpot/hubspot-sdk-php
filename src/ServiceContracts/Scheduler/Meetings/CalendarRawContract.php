@@ -15,7 +15,7 @@ interface CalendarRawContract
     /**
      * @api
      *
-     * @param array<mixed>|CalendarCreateParams $params
+     * @param array<string,mixed>|CalendarCreateParams $params
      *
      * @return BaseResponse<ExternalCalenderMeetingEventResponse>
      *

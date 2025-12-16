@@ -17,7 +17,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Cms\MediaBridge\IntegratorSettingsService::registerAppName()
  *
  * @phpstan-type IntegratorSettingRegisterAppNameParamsShape = array{
- *   updatedAt: int, name?: string
+ *   updatedAt: int, name?: string|null
  * }
  */
 final class IntegratorSettingRegisterAppNameParams implements BaseModel

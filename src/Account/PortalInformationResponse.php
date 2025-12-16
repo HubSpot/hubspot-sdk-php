@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type PortalInformationResponseShape = array{
- *   accountType: value-of<AccountType>,
+ *   accountType: AccountType|value-of<AccountType>,
  *   additionalCurrencies: list<string>,
  *   companyCurrency: string,
  *   dataHostingLocation: string,

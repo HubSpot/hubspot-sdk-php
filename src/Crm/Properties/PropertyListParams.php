@@ -16,10 +16,10 @@ use HubspotSDK\Crm\Properties\PropertyListParams\DataSensitivity;
  * @see HubspotSDK\Services\Crm\PropertiesService::list()
  *
  * @phpstan-type PropertyListParamsShape = array{
- *   archived?: bool,
- *   dataSensitivity?: DataSensitivity|value-of<DataSensitivity>,
- *   locale?: string,
- *   properties?: string,
+ *   archived?: bool|null,
+ *   dataSensitivity?: null|DataSensitivity|value-of<DataSensitivity>,
+ *   locale?: string|null,
+ *   properties?: string|null,
  * }
  */
 final class PropertyListParams implements BaseModel

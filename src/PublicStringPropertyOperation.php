@@ -12,7 +12,7 @@ use HubspotSDK\PublicStringPropertyOperation\OperationType;
 /**
  * @phpstan-type PublicStringPropertyOperationShape = array{
  *   includeObjectsWithNoValueSet: bool,
- *   operationType: value-of<OperationType>,
+ *   operationType: OperationType|value-of<OperationType>,
  *   operator: string,
  *   value: string,
  * }

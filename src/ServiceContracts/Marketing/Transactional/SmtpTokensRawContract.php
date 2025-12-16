@@ -17,7 +17,7 @@ interface SmtpTokensRawContract
     /**
      * @api
      *
-     * @param array<mixed>|SmtpTokenCreateParams $params
+     * @param array<string,mixed>|SmtpTokenCreateParams $params
      *
      * @return BaseResponse<SmtpAPITokenView>
      *
@@ -31,7 +31,7 @@ interface SmtpTokensRawContract
     /**
      * @api
      *
-     * @param array<mixed>|SmtpTokenListParams $params
+     * @param array<string,mixed>|SmtpTokenListParams $params
      *
      * @return BaseResponse<Page<SmtpAPITokenView>>
      *

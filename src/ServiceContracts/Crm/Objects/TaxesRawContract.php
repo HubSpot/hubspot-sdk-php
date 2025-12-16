@@ -23,7 +23,7 @@ interface TaxesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|TaxCreateParams $params
+     * @param array<string,mixed>|TaxCreateParams $params
      *
      * @return BaseResponse<CreatedResponseSimplePublicObject>
      *
@@ -38,7 +38,7 @@ interface TaxesRawContract
      * @api
      *
      * @param string $taxID Path param:
-     * @param array<mixed>|TaxUpdateParams $params
+     * @param array<string,mixed>|TaxUpdateParams $params
      *
      * @return BaseResponse<SimplePublicObject>
      *
@@ -53,7 +53,7 @@ interface TaxesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|TaxListParams $params
+     * @param array<string,mixed>|TaxListParams $params
      *
      * @return BaseResponse<Page<SimplePublicObjectWithAssociations>>
      *
@@ -79,7 +79,7 @@ interface TaxesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|TaxGetParams $params
+     * @param array<string,mixed>|TaxGetParams $params
      *
      * @return BaseResponse<SimplePublicObjectWithAssociations>
      *
@@ -94,7 +94,7 @@ interface TaxesRawContract
     /**
      * @api
      *
-     * @param array<mixed>|TaxSearchParams $params
+     * @param array<string,mixed>|TaxSearchParams $params
      *
      * @return BaseResponse<CollectionResponseWithTotalSimplePublicObject>
      *

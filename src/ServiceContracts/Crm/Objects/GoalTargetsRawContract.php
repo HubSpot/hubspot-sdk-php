@@ -23,7 +23,7 @@ interface GoalTargetsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|GoalTargetCreateParams $params
+     * @param array<string,mixed>|GoalTargetCreateParams $params
      *
      * @return BaseResponse<CreatedResponseSimplePublicObject>
      *
@@ -38,7 +38,7 @@ interface GoalTargetsRawContract
      * @api
      *
      * @param string $goalTargetID Path param:
-     * @param array<mixed>|GoalTargetUpdateParams $params
+     * @param array<string,mixed>|GoalTargetUpdateParams $params
      *
      * @return BaseResponse<SimplePublicObject>
      *
@@ -53,7 +53,7 @@ interface GoalTargetsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|GoalTargetListParams $params
+     * @param array<string,mixed>|GoalTargetListParams $params
      *
      * @return BaseResponse<Page<SimplePublicObjectWithAssociations>>
      *
@@ -79,7 +79,7 @@ interface GoalTargetsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|GoalTargetGetParams $params
+     * @param array<string,mixed>|GoalTargetGetParams $params
      *
      * @return BaseResponse<SimplePublicObjectWithAssociations>
      *
@@ -94,7 +94,7 @@ interface GoalTargetsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|GoalTargetSearchParams $params
+     * @param array<string,mixed>|GoalTargetSearchParams $params
      *
      * @return BaseResponse<CollectionResponseWithTotalSimplePublicObject>
      *

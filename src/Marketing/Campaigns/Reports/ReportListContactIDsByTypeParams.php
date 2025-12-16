@@ -17,10 +17,10 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @phpstan-type ReportListContactIDsByTypeParamsShape = array{
  *   campaignGuid: string,
- *   after?: string,
- *   endDate?: string,
- *   limit?: int,
- *   startDate?: string,
+ *   after?: string|null,
+ *   endDate?: string|null,
+ *   limit?: int|null,
+ *   startDate?: string|null,
  * }
  */
 final class ReportListContactIDsByTypeParams implements BaseModel

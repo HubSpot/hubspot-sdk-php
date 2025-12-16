@@ -21,7 +21,7 @@ interface GroupsRawContract
      * @api
      *
      * @param string $objectType path param: The object type to create the new property group for
-     * @param array<mixed>|GroupCreateParams $params
+     * @param array<string,mixed>|GroupCreateParams $params
      *
      * @return BaseResponse<PropertyGroup>
      *
@@ -37,7 +37,7 @@ interface GroupsRawContract
      * @api
      *
      * @param string $objectType the type of object to get the property groups for
-     * @param array<mixed>|GroupListParams $params
+     * @param array<string,mixed>|GroupListParams $params
      *
      * @return BaseResponse<CollectionResponsePropertyGroupNoPaging>
      *
@@ -53,7 +53,7 @@ interface GroupsRawContract
      * @api
      *
      * @param string $groupName the name of the property group to be deleted
-     * @param array<mixed>|GroupDeleteByNameParams $params
+     * @param array<string,mixed>|GroupDeleteByNameParams $params
      *
      * @return BaseResponse<mixed>
      *
@@ -69,7 +69,7 @@ interface GroupsRawContract
      * @api
      *
      * @param string $groupName the name for the property group you want to get the details for
-     * @param array<mixed>|GroupGetByNameParams $params
+     * @param array<string,mixed>|GroupGetByNameParams $params
      *
      * @return BaseResponse<PropertyGroup>
      *
@@ -85,7 +85,7 @@ interface GroupsRawContract
      * @api
      *
      * @param string $groupName path param: The name of the property group to update
-     * @param array<mixed>|GroupUpdateByNameParams $params
+     * @param array<string,mixed>|GroupUpdateByNameParams $params
      *
      * @return BaseResponse<PropertyGroup>
      *

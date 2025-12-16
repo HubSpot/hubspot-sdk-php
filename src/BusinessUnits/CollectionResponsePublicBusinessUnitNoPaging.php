@@ -12,8 +12,10 @@ use HubspotSDK\Marketing\Campaigns\PublicBusinessUnit;
 /**
  * A response object containing a collection of Business Units.
  *
+ * @phpstan-import-type PublicBusinessUnitShape from \HubspotSDK\Marketing\Campaigns\PublicBusinessUnit
+ *
  * @phpstan-type CollectionResponsePublicBusinessUnitNoPagingShape = array{
- *   results: list<\HubspotSDK\Marketing\Campaigns\PublicBusinessUnit>
+ *   results: list<PublicBusinessUnitShape>
  * }
  */
 final class CollectionResponsePublicBusinessUnitNoPaging implements BaseModel
@@ -53,9 +55,7 @@ final class CollectionResponsePublicBusinessUnitNoPaging implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicBusinessUnit|array{
-     *   id: int
-     * }> $results
+     * @param list<PublicBusinessUnitShape> $results
      */
     public static function with(array $results): self
     {
@@ -69,9 +69,7 @@ final class CollectionResponsePublicBusinessUnitNoPaging implements BaseModel
     /**
      * The collection of Business Units.
      *
-     * @param list<PublicBusinessUnit|array{
-     *   id: int
-     * }> $results
+     * @param list<PublicBusinessUnitShape> $results
      */
     public function withResults(array $results): self
     {

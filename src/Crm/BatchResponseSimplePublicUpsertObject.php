@@ -9,18 +9,20 @@ use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\BatchResponseSimplePublicUpsertObject\Status;
-use HubspotSDK\ErrorDetail;
 use HubspotSDK\StandardError;
 
 /**
  * Represents the result of a batch upsert operation, including the operation’s status, timestamps, and a list of successfully created or updated objects.
  *
+ * @phpstan-import-type SimplePublicUpsertObjectShape from \HubspotSDK\Crm\SimplePublicUpsertObject
+ * @phpstan-import-type StandardErrorShape from \HubspotSDK\StandardError
+ *
  * @phpstan-type BatchResponseSimplePublicUpsertObjectShape = array{
  *   completedAt: \DateTimeInterface,
- *   results: list<SimplePublicUpsertObject>,
+ *   results: list<SimplePublicUpsertObjectShape>,
  *   startedAt: \DateTimeInterface,
- *   status: value-of<Status>,
- *   errors?: list<StandardError>|null,
+ *   status: Status|value-of<Status>,
+ *   errors?: list<StandardErrorShape>|null,
  *   links?: array<string,string>|null,
  *   numErrors?: int|null,
  *   requestedAt?: \DateTimeInterface|null,
@@ -109,29 +111,9 @@ final class BatchResponseSimplePublicUpsertObject implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<SimplePublicUpsertObject|array{
-     *   id: string,
-     *   archived: bool,
-     *   createdAt: \DateTimeInterface,
-     *   new: bool,
-     *   properties: array<string,string>,
-     *   updatedAt: \DateTimeInterface,
-     *   archivedAt?: \DateTimeInterface|null,
-     *   objectWriteTraceID?: string|null,
-     *   propertiesWithHistory?: array<string,list<ValueWithTimestamp>>|null,
-     *   url?: string|null,
-     * }> $results
+     * @param list<SimplePublicUpsertObjectShape> $results
      * @param Status|value-of<Status> $status
-     * @param list<StandardError|array{
-     *   category: string,
-     *   context: array<string,list<string>>,
-     *   errors: list<ErrorDetail>,
-     *   links: array<string,string>,
-     *   message: string,
-     *   status: string,
-     *   id?: string|null,
-     *   subCategory?: mixed,
-     * }> $errors
+     * @param list<StandardErrorShape> $errors
      * @param array<string,string> $links
      */
     public static function with(
@@ -171,18 +153,7 @@ final class BatchResponseSimplePublicUpsertObject implements BaseModel
     }
 
     /**
-     * @param list<SimplePublicUpsertObject|array{
-     *   id: string,
-     *   archived: bool,
-     *   createdAt: \DateTimeInterface,
-     *   new: bool,
-     *   properties: array<string,string>,
-     *   updatedAt: \DateTimeInterface,
-     *   archivedAt?: \DateTimeInterface|null,
-     *   objectWriteTraceID?: string|null,
-     *   propertiesWithHistory?: array<string,list<ValueWithTimestamp>>|null,
-     *   url?: string|null,
-     * }> $results
+     * @param list<SimplePublicUpsertObjectShape> $results
      */
     public function withResults(array $results): self
     {
@@ -217,16 +188,7 @@ final class BatchResponseSimplePublicUpsertObject implements BaseModel
     }
 
     /**
-     * @param list<StandardError|array{
-     *   category: string,
-     *   context: array<string,list<string>>,
-     *   errors: list<ErrorDetail>,
-     *   links: array<string,string>,
-     *   message: string,
-     *   status: string,
-     *   id?: string|null,
-     *   subCategory?: mixed,
-     * }> $errors
+     * @param list<StandardErrorShape> $errors
      */
     public function withErrors(array $errors): self
     {

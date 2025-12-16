@@ -17,8 +17,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @phpstan-type PipelineDeleteParamsShape = array{
  *   objectType: string,
- *   validateDealStageUsagesBeforeDelete?: bool,
- *   validateReferencesBeforeDelete?: bool,
+ *   validateDealStageUsagesBeforeDelete?: bool|null,
+ *   validateReferencesBeforeDelete?: bool|null,
  * }
  */
 final class PipelineDeleteParams implements BaseModel

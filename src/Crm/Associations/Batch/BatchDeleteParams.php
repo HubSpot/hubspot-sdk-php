@@ -9,18 +9,16 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Associations\PublicAssociation;
-use HubspotSDK\PublicObjectID;
 
 /**
  * This endpoint allows you to archive multiple associations between specified 'from' and 'to' object types in a single batch request.
  *
  * @see HubspotSDK\Services\Crm\Associations\BatchService::delete()
  *
+ * @phpstan-import-type PublicAssociationShape from \HubspotSDK\Crm\Associations\PublicAssociation
+ *
  * @phpstan-type BatchDeleteParamsShape = array{
- *   fromObjectType: string,
- *   inputs: list<PublicAssociation|array{
- *     from: PublicObjectID, to: PublicObjectID, type: string
- *   }>,
+ *   fromObjectType: string, inputs: list<PublicAssociationShape>
  * }
  */
 final class BatchDeleteParams implements BaseModel
@@ -60,9 +58,7 @@ final class BatchDeleteParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicAssociation|array{
-     *   from: PublicObjectID, to: PublicObjectID, type: string
-     * }> $inputs
+     * @param list<PublicAssociationShape> $inputs
      */
     public static function with(string $fromObjectType, array $inputs): self
     {
@@ -83,9 +79,7 @@ final class BatchDeleteParams implements BaseModel
     }
 
     /**
-     * @param list<PublicAssociation|array{
-     *   from: PublicObjectID, to: PublicObjectID, type: string
-     * }> $inputs
+     * @param list<PublicAssociationShape> $inputs
      */
     public function withInputs(array $inputs): self
     {

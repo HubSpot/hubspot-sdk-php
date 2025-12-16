@@ -8,6 +8,12 @@ use HubspotSDK\Core\Concerns\SdkUnion;
 use HubspotSDK\Core\Conversion\Contracts\Converter;
 use HubspotSDK\Core\Conversion\Contracts\ConverterSource;
 
+/**
+ * @phpstan-import-type PublicExportViewRequestShape from \HubspotSDK\Crm\Exports\PublicExportViewRequest
+ * @phpstan-import-type PublicExportListRequestShape from \HubspotSDK\Crm\Exports\PublicExportListRequest
+ *
+ * @phpstan-type PublicExportRequestShape = PublicExportViewRequestShape|PublicExportListRequestShape
+ */
 final class PublicExportRequest implements ConverterSource
 {
     use SdkUnion;

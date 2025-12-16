@@ -8,13 +8,14 @@ use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\NextPage;
 use HubspotSDK\Paging;
-use HubspotSDK\PreviousPage;
 
 /**
+ * @phpstan-import-type APIFlowEmailCampaignShape from \HubspotSDK\Automation\Workflows\APIFlowEmailCampaign
+ * @phpstan-import-type PagingShape from \HubspotSDK\Paging
+ *
  * @phpstan-type CollectionResponseAPIFlowEmailCampaignShape = array{
- *   results: list<APIFlowEmailCampaign>, paging?: Paging|null
+ *   results: list<APIFlowEmailCampaignShape>, paging?: null|Paging|PagingShape
  * }
  */
 final class CollectionResponseAPIFlowEmailCampaign implements BaseModel
@@ -53,10 +54,8 @@ final class CollectionResponseAPIFlowEmailCampaign implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<APIFlowEmailCampaign|array{
-     *   emailCampaignID: string, emailContentID: string, flowID: string
-     * }> $results
-     * @param Paging|array{next?: NextPage|null, prev?: PreviousPage|null} $paging
+     * @param list<APIFlowEmailCampaignShape> $results
+     * @param PagingShape $paging
      */
     public static function with(
         array $results,
@@ -72,9 +71,7 @@ final class CollectionResponseAPIFlowEmailCampaign implements BaseModel
     }
 
     /**
-     * @param list<APIFlowEmailCampaign|array{
-     *   emailCampaignID: string, emailContentID: string, flowID: string
-     * }> $results
+     * @param list<APIFlowEmailCampaignShape> $results
      */
     public function withResults(array $results): self
     {
@@ -85,7 +82,7 @@ final class CollectionResponseAPIFlowEmailCampaign implements BaseModel
     }
 
     /**
-     * @param Paging|array{next?: NextPage|null, prev?: PreviousPage|null} $paging
+     * @param PagingShape $paging
      */
     public function withPaging(Paging|array $paging): self
     {

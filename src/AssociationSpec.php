@@ -13,7 +13,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * Defines the type, direction, and details of the relationship between two CRM objects.
  *
  * @phpstan-type AssociationSpecShape = array{
- *   associationCategory: value-of<AssociationCategory>, associationTypeID: int
+ *   associationCategory: AssociationCategory|value-of<AssociationCategory>,
+ *   associationTypeID: int,
  * }
  */
 final class AssociationSpec implements BaseModel

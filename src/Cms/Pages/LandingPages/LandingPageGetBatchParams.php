@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Cms\Pages\LandingPagesService::getBatch()
  *
  * @phpstan-type LandingPageGetBatchParamsShape = array{
- *   inputs: list<string>, archived?: bool
+ *   inputs: list<string>, archived?: bool|null
  * }
  */
 final class LandingPageGetBatchParams implements BaseModel

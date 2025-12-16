@@ -9,11 +9,12 @@ use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\ForwardPaging;
-use HubspotSDK\NextPage;
 
 /**
+ * @phpstan-import-type ForwardPagingShape from \HubspotSDK\ForwardPaging
+ *
  * @phpstan-type CollectionResponseFormDefinitionBaseForwardPagingShape = array{
- *   results: list<mixed>, paging?: ForwardPaging|null
+ *   results: list<mixed>, paging?: null|ForwardPaging|ForwardPagingShape
  * }
  */
 final class CollectionResponseFormDefinitionBaseForwardPaging implements BaseModel
@@ -53,7 +54,7 @@ final class CollectionResponseFormDefinitionBaseForwardPaging implements BaseMod
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<mixed> $results
-     * @param ForwardPaging|array{next?: NextPage|null} $paging
+     * @param ForwardPagingShape $paging
      */
     public static function with(
         array $results,
@@ -80,7 +81,7 @@ final class CollectionResponseFormDefinitionBaseForwardPaging implements BaseMod
     }
 
     /**
-     * @param ForwardPaging|array{next?: NextPage|null} $paging
+     * @param ForwardPagingShape $paging
      */
     public function withPaging(ForwardPaging|array $paging): self
     {

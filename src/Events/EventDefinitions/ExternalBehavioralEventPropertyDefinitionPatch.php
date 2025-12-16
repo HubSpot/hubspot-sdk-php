@@ -10,10 +10,12 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\OptionInput;
 
 /**
+ * @phpstan-import-type OptionInputShape from \HubspotSDK\OptionInput
+ *
  * @phpstan-type ExternalBehavioralEventPropertyDefinitionPatchShape = array{
  *   description?: string|null,
  *   label?: string|null,
- *   options?: list<OptionInput>|null,
+ *   options?: list<OptionInputShape>|null,
  * }
  */
 final class ExternalBehavioralEventPropertyDefinitionPatch implements BaseModel
@@ -51,13 +53,7 @@ final class ExternalBehavioralEventPropertyDefinitionPatch implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<OptionInput|array{
-     *   displayOrder: int,
-     *   hidden: bool,
-     *   label: string,
-     *   value: string,
-     *   description?: string|null,
-     * }> $options
+     * @param list<OptionInputShape> $options
      */
     public static function with(
         ?string $description = null,
@@ -98,13 +94,7 @@ final class ExternalBehavioralEventPropertyDefinitionPatch implements BaseModel
     /**
      * A list of available options for the property if it is an enumeration. NOTE: This field is only applicable for enumerated properties.
      *
-     * @param list<OptionInput|array{
-     *   displayOrder: int,
-     *   hidden: bool,
-     *   label: string,
-     *   value: string,
-     *   description?: string|null,
-     * }> $options
+     * @param list<OptionInputShape> $options
      */
     public function withOptions(array $options): self
     {

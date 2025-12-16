@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type APIUnEnrollmentSettingShape = array{
- *   flowIDs: list<string>, type: value-of<Type>
+ *   flowIDs: list<string>, type: Type|value-of<Type>
  * }
  */
 final class APIUnEnrollmentSetting implements BaseModel

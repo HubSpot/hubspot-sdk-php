@@ -7,14 +7,16 @@ namespace HubspotSDK\Marketing\Events;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Marketing\Events\ParticipationProperties\AttendanceState;
 
 /**
+ * @phpstan-import-type ParticipationAssociationsShape from \HubspotSDK\Marketing\Events\ParticipationAssociations
+ * @phpstan-import-type ParticipationPropertiesShape from \HubspotSDK\Marketing\Events\ParticipationProperties
+ *
  * @phpstan-type ParticipationBreakdownShape = array{
  *   id: string,
- *   associations: ParticipationAssociations,
+ *   associations: ParticipationAssociations|ParticipationAssociationsShape,
  *   createdAt: \DateTimeInterface,
- *   properties: ParticipationProperties,
+ *   properties: ParticipationProperties|ParticipationPropertiesShape,
  * }
  */
 final class ParticipationBreakdown implements BaseModel
@@ -64,15 +66,8 @@ final class ParticipationBreakdown implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param ParticipationAssociations|array{
-     *   contact: ContactAssociation, marketingEvent: MarketingEventAssociation
-     * } $associations
-     * @param ParticipationProperties|array{
-     *   attendanceState: value-of<AttendanceState>,
-     *   occurredAt: int,
-     *   attendanceDurationSeconds?: int|null,
-     *   attendancePercentage?: string|null,
-     * } $properties
+     * @param ParticipationAssociationsShape $associations
+     * @param ParticipationPropertiesShape $properties
      */
     public static function with(
         string $id,
@@ -99,9 +94,7 @@ final class ParticipationBreakdown implements BaseModel
     }
 
     /**
-     * @param ParticipationAssociations|array{
-     *   contact: ContactAssociation, marketingEvent: MarketingEventAssociation
-     * } $associations
+     * @param ParticipationAssociationsShape $associations
      */
     public function withAssociations(
         ParticipationAssociations|array $associations
@@ -121,12 +114,7 @@ final class ParticipationBreakdown implements BaseModel
     }
 
     /**
-     * @param ParticipationProperties|array{
-     *   attendanceState: value-of<AttendanceState>,
-     *   occurredAt: int,
-     *   attendanceDurationSeconds?: int|null,
-     *   attendancePercentage?: string|null,
-     * } $properties
+     * @param ParticipationPropertiesShape $properties
      */
     public function withProperties(
         ParticipationProperties|array $properties

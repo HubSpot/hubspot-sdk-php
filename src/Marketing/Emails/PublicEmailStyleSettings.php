@@ -9,6 +9,10 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type PublicButtonStyleSettingsShape from \HubspotSDK\Marketing\Emails\PublicButtonStyleSettings
+ * @phpstan-import-type PublicDividerStyleSettingsShape from \HubspotSDK\Marketing\Emails\PublicDividerStyleSettings
+ * @phpstan-import-type PublicFontStyleShape from \HubspotSDK\Marketing\Emails\PublicFontStyle
+ *
  * @phpstan-type PublicEmailStyleSettingsShape = array{
  *   backgroundColor?: string|null,
  *   backgroundImage?: string|null,
@@ -17,19 +21,19 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   bodyBorderColorChoice?: string|null,
  *   bodyBorderWidth?: float|null,
  *   bodyColor?: string|null,
- *   buttonStyleSettings?: PublicButtonStyleSettings|null,
+ *   buttonStyleSettings?: null|PublicButtonStyleSettings|PublicButtonStyleSettingsShape,
  *   colorPickerFavorite1?: string|null,
  *   colorPickerFavorite2?: string|null,
  *   colorPickerFavorite3?: string|null,
  *   colorPickerFavorite4?: string|null,
  *   colorPickerFavorite5?: string|null,
  *   colorPickerFavorite6?: string|null,
- *   dividerStyleSettings?: PublicDividerStyleSettings|null,
+ *   dividerStyleSettings?: null|PublicDividerStyleSettings|PublicDividerStyleSettingsShape,
  *   emailBodyPadding?: string|null,
  *   emailBodyWidth?: string|null,
- *   headingOneFont?: PublicFontStyle|null,
- *   headingTwoFont?: PublicFontStyle|null,
- *   linksFont?: PublicFontStyle|null,
+ *   headingOneFont?: null|PublicFontStyle|PublicFontStyleShape,
+ *   headingTwoFont?: null|PublicFontStyle|PublicFontStyleShape,
+ *   linksFont?: null|PublicFontStyle|PublicFontStyleShape,
  *   primaryAccentColor?: string|null,
  *   primaryFont?: string|null,
  *   primaryFontColor?: string|null,
@@ -147,38 +151,11 @@ final class PublicEmailStyleSettings implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param PublicButtonStyleSettings|array{
-     *   backgroundColor?: mixed,
-     *   cornerRadius?: int|null,
-     *   fontStyle?: PublicFontStyle|null,
-     * } $buttonStyleSettings
-     * @param PublicDividerStyleSettings|array{
-     *   color?: mixed, height?: int|null, lineType?: string|null
-     * } $dividerStyleSettings
-     * @param PublicFontStyle|array{
-     *   bold?: bool|null,
-     *   color?: string|null,
-     *   font?: string|null,
-     *   italic?: bool|null,
-     *   size?: int|null,
-     *   underline?: bool|null,
-     * } $headingOneFont
-     * @param PublicFontStyle|array{
-     *   bold?: bool|null,
-     *   color?: string|null,
-     *   font?: string|null,
-     *   italic?: bool|null,
-     *   size?: int|null,
-     *   underline?: bool|null,
-     * } $headingTwoFont
-     * @param PublicFontStyle|array{
-     *   bold?: bool|null,
-     *   color?: string|null,
-     *   font?: string|null,
-     *   italic?: bool|null,
-     *   size?: int|null,
-     *   underline?: bool|null,
-     * } $linksFont
+     * @param PublicButtonStyleSettingsShape $buttonStyleSettings
+     * @param PublicDividerStyleSettingsShape $dividerStyleSettings
+     * @param PublicFontStyleShape $headingOneFont
+     * @param PublicFontStyleShape $headingTwoFont
+     * @param PublicFontStyleShape $linksFont
      */
     public static function with(
         ?string $backgroundColor = null,
@@ -306,11 +283,7 @@ final class PublicEmailStyleSettings implements BaseModel
     }
 
     /**
-     * @param PublicButtonStyleSettings|array{
-     *   backgroundColor?: mixed,
-     *   cornerRadius?: int|null,
-     *   fontStyle?: PublicFontStyle|null,
-     * } $buttonStyleSettings
+     * @param PublicButtonStyleSettingsShape $buttonStyleSettings
      */
     public function withButtonStyleSettings(
         PublicButtonStyleSettings|array $buttonStyleSettings
@@ -370,9 +343,7 @@ final class PublicEmailStyleSettings implements BaseModel
     }
 
     /**
-     * @param PublicDividerStyleSettings|array{
-     *   color?: mixed, height?: int|null, lineType?: string|null
-     * } $dividerStyleSettings
+     * @param PublicDividerStyleSettingsShape $dividerStyleSettings
      */
     public function withDividerStyleSettings(
         PublicDividerStyleSettings|array $dividerStyleSettings
@@ -400,14 +371,7 @@ final class PublicEmailStyleSettings implements BaseModel
     }
 
     /**
-     * @param PublicFontStyle|array{
-     *   bold?: bool|null,
-     *   color?: string|null,
-     *   font?: string|null,
-     *   italic?: bool|null,
-     *   size?: int|null,
-     *   underline?: bool|null,
-     * } $headingOneFont
+     * @param PublicFontStyleShape $headingOneFont
      */
     public function withHeadingOneFont(
         PublicFontStyle|array $headingOneFont
@@ -419,14 +383,7 @@ final class PublicEmailStyleSettings implements BaseModel
     }
 
     /**
-     * @param PublicFontStyle|array{
-     *   bold?: bool|null,
-     *   color?: string|null,
-     *   font?: string|null,
-     *   italic?: bool|null,
-     *   size?: int|null,
-     *   underline?: bool|null,
-     * } $headingTwoFont
+     * @param PublicFontStyleShape $headingTwoFont
      */
     public function withHeadingTwoFont(
         PublicFontStyle|array $headingTwoFont
@@ -438,14 +395,7 @@ final class PublicEmailStyleSettings implements BaseModel
     }
 
     /**
-     * @param PublicFontStyle|array{
-     *   bold?: bool|null,
-     *   color?: string|null,
-     *   font?: string|null,
-     *   italic?: bool|null,
-     *   size?: int|null,
-     *   underline?: bool|null,
-     * } $linksFont
+     * @param PublicFontStyleShape $linksFont
      */
     public function withLinksFont(PublicFontStyle|array $linksFont): self
     {

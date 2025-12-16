@@ -11,7 +11,7 @@ use HubspotSDK\Settings\Currencies\CompanyCurrencyUpdateRequest\CurrencyCode;
 
 /**
  * @phpstan-type CompanyCurrencyUpdateRequestShape = array{
- *   currencyCode: value-of<CurrencyCode>
+ *   currencyCode: CurrencyCode|value-of<CurrencyCode>
  * }
  */
 final class CompanyCurrencyUpdateRequest implements BaseModel

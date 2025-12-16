@@ -9,11 +9,14 @@ use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\ForwardPaging;
-use HubspotSDK\NextPage;
 
 /**
+ * @phpstan-import-type PublicLoginAuditShape from \HubspotSDK\Account\Activity\PublicLoginAudit
+ * @phpstan-import-type ForwardPagingShape from \HubspotSDK\ForwardPaging
+ *
  * @phpstan-type CollectionResponsePublicLoginAuditForwardPagingShape = array{
- *   results: list<PublicLoginAudit>, paging?: ForwardPaging|null
+ *   results: list<PublicLoginAuditShape>,
+ *   paging?: null|ForwardPaging|ForwardPagingShape,
  * }
  */
 final class CollectionResponsePublicLoginAuditForwardPaging implements BaseModel
@@ -52,19 +55,8 @@ final class CollectionResponsePublicLoginAuditForwardPaging implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicLoginAudit|array{
-     *   id: string,
-     *   loginAt: \DateTimeInterface,
-     *   loginSucceeded: bool,
-     *   countryCode?: string|null,
-     *   email?: string|null,
-     *   ipAddress?: string|null,
-     *   location?: string|null,
-     *   regionCode?: string|null,
-     *   userAgent?: string|null,
-     *   userID?: int|null,
-     * }> $results
-     * @param ForwardPaging|array{next?: NextPage|null} $paging
+     * @param list<PublicLoginAuditShape> $results
+     * @param ForwardPagingShape $paging
      */
     public static function with(
         array $results,
@@ -80,18 +72,7 @@ final class CollectionResponsePublicLoginAuditForwardPaging implements BaseModel
     }
 
     /**
-     * @param list<PublicLoginAudit|array{
-     *   id: string,
-     *   loginAt: \DateTimeInterface,
-     *   loginSucceeded: bool,
-     *   countryCode?: string|null,
-     *   email?: string|null,
-     *   ipAddress?: string|null,
-     *   location?: string|null,
-     *   regionCode?: string|null,
-     *   userAgent?: string|null,
-     *   userID?: int|null,
-     * }> $results
+     * @param list<PublicLoginAuditShape> $results
      */
     public function withResults(array $results): self
     {
@@ -102,7 +83,7 @@ final class CollectionResponsePublicLoginAuditForwardPaging implements BaseModel
     }
 
     /**
-     * @param ForwardPaging|array{next?: NextPage|null} $paging
+     * @param ForwardPagingShape $paging
      */
     public function withPaging(ForwardPaging|array $paging): self
     {

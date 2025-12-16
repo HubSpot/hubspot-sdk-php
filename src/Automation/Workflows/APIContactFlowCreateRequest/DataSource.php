@@ -14,6 +14,16 @@ use HubspotSDK\Core\Concerns\SdkUnion;
 use HubspotSDK\Core\Conversion\Contracts\Converter;
 use HubspotSDK\Core\Conversion\Contracts\ConverterSource;
 
+/**
+ * @phpstan-import-type APIAssociationDataSourceShape from \HubspotSDK\Automation\Workflows\APIAssociationDataSource
+ * @phpstan-import-type APIAssociationTimestampDataSourceShape from \HubspotSDK\Automation\Workflows\APIAssociationTimestampDataSource
+ * @phpstan-import-type APIStaticPropertyFilterDataSourceShape from \HubspotSDK\Automation\Workflows\APIStaticPropertyFilterDataSource
+ * @phpstan-import-type APIEnrolledRecordPropertyFilterDataSourceShape from \HubspotSDK\Automation\Workflows\APIEnrolledRecordPropertyFilterDataSource
+ * @phpstan-import-type APIDatasetFieldPropertyFilterDataSourceShape from \HubspotSDK\Automation\Workflows\APIDatasetFieldPropertyFilterDataSource
+ * @phpstan-import-type APIEnrolledArgumentPropertyFilterDataSourceShape from \HubspotSDK\Automation\Workflows\APIEnrolledArgumentPropertyFilterDataSource
+ *
+ * @phpstan-type DataSourceShape = APIAssociationDataSourceShape|APIAssociationTimestampDataSourceShape|APIStaticPropertyFilterDataSourceShape|APIEnrolledRecordPropertyFilterDataSourceShape|APIDatasetFieldPropertyFilterDataSourceShape|APIEnrolledArgumentPropertyFilterDataSourceShape
+ */
 final class DataSource implements ConverterSource
 {
     use SdkUnion;

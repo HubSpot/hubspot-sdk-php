@@ -8,17 +8,19 @@ use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\ErrorDetail;
 use HubspotSDK\Marketing\Campaigns\BatchResponsePublicCampaignWithErrors\Status;
 use HubspotSDK\StandardError;
 
 /**
+ * @phpstan-import-type PublicCampaignShape from \HubspotSDK\Marketing\Campaigns\PublicCampaign
+ * @phpstan-import-type StandardErrorShape from \HubspotSDK\StandardError
+ *
  * @phpstan-type BatchResponsePublicCampaignWithErrorsShape = array{
  *   completedAt: \DateTimeInterface,
- *   results: list<PublicCampaign>,
+ *   results: list<PublicCampaignShape>,
  *   startedAt: \DateTimeInterface,
- *   status: value-of<Status>,
- *   errors?: list<StandardError>|null,
+ *   status: Status|value-of<Status>,
+ *   errors?: list<StandardErrorShape>|null,
  *   links?: array<string,string>|null,
  *   numErrors?: int|null,
  *   requestedAt?: \DateTimeInterface|null,
@@ -87,24 +89,9 @@ final class BatchResponsePublicCampaignWithErrors implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicCampaign|array{
-     *   id: string,
-     *   businessUnits: list<PublicBusinessUnit>,
-     *   createdAt: \DateTimeInterface,
-     *   properties: array<string,string>,
-     *   updatedAt: \DateTimeInterface,
-     * }> $results
+     * @param list<PublicCampaignShape> $results
      * @param Status|value-of<Status> $status
-     * @param list<StandardError|array{
-     *   category: string,
-     *   context: array<string,list<string>>,
-     *   errors: list<ErrorDetail>,
-     *   links: array<string,string>,
-     *   message: string,
-     *   status: string,
-     *   id?: string|null,
-     *   subCategory?: mixed,
-     * }> $errors
+     * @param list<StandardErrorShape> $errors
      * @param array<string,string> $links
      */
     public static function with(
@@ -141,13 +128,7 @@ final class BatchResponsePublicCampaignWithErrors implements BaseModel
     }
 
     /**
-     * @param list<PublicCampaign|array{
-     *   id: string,
-     *   businessUnits: list<PublicBusinessUnit>,
-     *   createdAt: \DateTimeInterface,
-     *   properties: array<string,string>,
-     *   updatedAt: \DateTimeInterface,
-     * }> $results
+     * @param list<PublicCampaignShape> $results
      */
     public function withResults(array $results): self
     {
@@ -177,16 +158,7 @@ final class BatchResponsePublicCampaignWithErrors implements BaseModel
     }
 
     /**
-     * @param list<StandardError|array{
-     *   category: string,
-     *   context: array<string,list<string>>,
-     *   errors: list<ErrorDetail>,
-     *   links: array<string,string>,
-     *   message: string,
-     *   status: string,
-     *   id?: string|null,
-     *   subCategory?: mixed,
-     * }> $errors
+     * @param list<StandardErrorShape> $errors
      */
     public function withErrors(array $errors): self
     {

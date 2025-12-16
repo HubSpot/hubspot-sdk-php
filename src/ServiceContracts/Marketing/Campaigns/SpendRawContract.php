@@ -19,7 +19,7 @@ interface SpendRawContract
      * @api
      *
      * @param string $campaignGuid unique identifier for the campaign
-     * @param array<mixed>|SpendCreateParams $params
+     * @param array<string,mixed>|SpendCreateParams $params
      *
      * @return BaseResponse<PublicSpendItem>
      *
@@ -35,7 +35,7 @@ interface SpendRawContract
      * @api
      *
      * @param int $spendID path param: Unique identifier for the spend item
-     * @param array<mixed>|SpendUpdateParams $params
+     * @param array<string,mixed>|SpendUpdateParams $params
      *
      * @return BaseResponse<PublicSpendItem>
      *
@@ -51,7 +51,7 @@ interface SpendRawContract
      * @api
      *
      * @param int $spendID unique identifier for the spend item
-     * @param array<mixed>|SpendDeleteParams $params
+     * @param array<string,mixed>|SpendDeleteParams $params
      *
      * @return BaseResponse<mixed>
      *
@@ -67,7 +67,7 @@ interface SpendRawContract
      * @api
      *
      * @param int $spendID unique identifier for the spend item
-     * @param array<mixed>|SpendGetParams $params
+     * @param array<string,mixed>|SpendGetParams $params
      *
      * @return BaseResponse<PublicSpendItem>
      *

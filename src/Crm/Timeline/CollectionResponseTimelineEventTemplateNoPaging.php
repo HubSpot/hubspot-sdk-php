@@ -9,8 +9,10 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type TimelineEventTemplateShape from \HubspotSDK\Crm\Timeline\TimelineEventTemplate
+ *
  * @phpstan-type CollectionResponseTimelineEventTemplateNoPagingShape = array{
- *   results: list<TimelineEventTemplate>
+ *   results: list<TimelineEventTemplateShape>
  * }
  */
 final class CollectionResponseTimelineEventTemplateNoPaging implements BaseModel
@@ -46,16 +48,7 @@ final class CollectionResponseTimelineEventTemplateNoPaging implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<TimelineEventTemplate|array{
-     *   id: string,
-     *   name: string,
-     *   objectType: string,
-     *   tokens: list<TimelineEventTemplateToken>,
-     *   createdAt?: \DateTimeInterface|null,
-     *   detailTemplate?: string|null,
-     *   headerTemplate?: string|null,
-     *   updatedAt?: \DateTimeInterface|null,
-     * }> $results
+     * @param list<TimelineEventTemplateShape> $results
      */
     public static function with(array $results): self
     {
@@ -67,16 +60,7 @@ final class CollectionResponseTimelineEventTemplateNoPaging implements BaseModel
     }
 
     /**
-     * @param list<TimelineEventTemplate|array{
-     *   id: string,
-     *   name: string,
-     *   objectType: string,
-     *   tokens: list<TimelineEventTemplateToken>,
-     *   createdAt?: \DateTimeInterface|null,
-     *   detailTemplate?: string|null,
-     *   headerTemplate?: string|null,
-     *   updatedAt?: \DateTimeInterface|null,
-     * }> $results
+     * @param list<TimelineEventTemplateShape> $results
      */
     public function withResults(array $results): self
     {

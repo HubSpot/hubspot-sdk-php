@@ -23,7 +23,7 @@ interface OrdersRawContract
     /**
      * @api
      *
-     * @param array<mixed>|OrderCreateParams $params
+     * @param array<string,mixed>|OrderCreateParams $params
      *
      * @return BaseResponse<CreatedResponseSimplePublicObject>
      *
@@ -38,7 +38,7 @@ interface OrdersRawContract
      * @api
      *
      * @param string $orderID Path param:
-     * @param array<mixed>|OrderUpdateParams $params
+     * @param array<string,mixed>|OrderUpdateParams $params
      *
      * @return BaseResponse<SimplePublicObject>
      *
@@ -53,7 +53,7 @@ interface OrdersRawContract
     /**
      * @api
      *
-     * @param array<mixed>|OrderListParams $params
+     * @param array<string,mixed>|OrderListParams $params
      *
      * @return BaseResponse<Page<SimplePublicObjectWithAssociations>>
      *
@@ -79,7 +79,7 @@ interface OrdersRawContract
     /**
      * @api
      *
-     * @param array<mixed>|OrderGetParams $params
+     * @param array<string,mixed>|OrderGetParams $params
      *
      * @return BaseResponse<SimplePublicObjectWithAssociations>
      *
@@ -94,7 +94,7 @@ interface OrdersRawContract
     /**
      * @api
      *
-     * @param array<mixed>|OrderSearchParams $params
+     * @param array<string,mixed>|OrderSearchParams $params
      *
      * @return BaseResponse<CollectionResponseWithTotalSimplePublicObject>
      *

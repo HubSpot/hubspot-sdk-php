@@ -5,19 +5,20 @@ declare(strict_types=1);
 namespace HubspotSDK\Automation\Workflows;
 
 use HubspotSDK\Automation\Workflows\APIEnrolledRecordPropertyFilterDataSource\Type;
-use HubspotSDK\Automation\Workflows\APISort\Order;
 use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type APISortShape from \HubspotSDK\Automation\Workflows\APISort
+ *
  * @phpstan-type APIEnrolledRecordPropertyFilterDataSourceShape = array{
  *   name: string,
  *   propertyName: string,
  *   recordFieldName: string,
- *   type: value-of<Type>,
- *   sortBy?: APISort|null,
+ *   type: Type|value-of<Type>,
+ *   sortBy?: null|APISort|APISortShape,
  * }
  */
 final class APIEnrolledRecordPropertyFilterDataSource implements BaseModel
@@ -72,9 +73,7 @@ final class APIEnrolledRecordPropertyFilterDataSource implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param Type|value-of<Type> $type
-     * @param APISort|array{
-     *   order: value-of<Order>, property: string, missing?: string|null
-     * } $sortBy
+     * @param APISortShape $sortBy
      */
     public static function with(
         string $name,
@@ -131,9 +130,7 @@ final class APIEnrolledRecordPropertyFilterDataSource implements BaseModel
     }
 
     /**
-     * @param APISort|array{
-     *   order: value-of<Order>, property: string, missing?: string|null
-     * } $sortBy
+     * @param APISortShape $sortBy
      */
     public function withSortBy(APISort|array $sortBy): self
     {

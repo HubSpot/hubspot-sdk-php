@@ -12,7 +12,9 @@ use HubspotSDK\Events\EventDefinitions\NumOccurrencesRefineBy\Type;
 
 /**
  * @phpstan-type NumOccurrencesRefineByShape = array{
- *   type: value-of<Type>, maxOccurrences?: int|null, minOccurrences?: int|null
+ *   type: Type|value-of<Type>,
+ *   maxOccurrences?: int|null,
+ *   minOccurrences?: int|null,
  * }
  */
 final class NumOccurrencesRefineBy implements BaseModel

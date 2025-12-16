@@ -10,10 +10,12 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\ListOf;
 use HubspotSDK\Core\Conversion\MapOf;
-use HubspotSDK\Paging;
 
 /**
  * Represents a CRM object along with its properties, timestamps, and a set of associated object IDs grouped by association type.
+ *
+ * @phpstan-import-type CollectionResponseAssociatedIDShape from \HubspotSDK\Crm\CollectionResponseAssociatedID
+ * @phpstan-import-type ValueWithTimestampShape from \HubspotSDK\Crm\ValueWithTimestamp
  *
  * @phpstan-type SimplePublicObjectWithAssociationsShape = array{
  *   id: string,
@@ -22,9 +24,9 @@ use HubspotSDK\Paging;
  *   properties: array<string,string|null>,
  *   updatedAt: \DateTimeInterface,
  *   archivedAt?: \DateTimeInterface|null,
- *   associations?: array<string,CollectionResponseAssociatedID>|null,
+ *   associations?: array<string,CollectionResponseAssociatedIDShape>|null,
  *   objectWriteTraceID?: string|null,
- *   propertiesWithHistory?: array<string,list<ValueWithTimestamp>>|null,
+ *   propertiesWithHistory?: array<string,list<ValueWithTimestampShape>>|null,
  *   url?: string|null,
  * }
  */
@@ -128,17 +130,8 @@ final class SimplePublicObjectWithAssociations implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param array<string,string|null> $properties
-     * @param array<string,CollectionResponseAssociatedID|array{
-     *   results: list<AssociatedID>, paging?: Paging|null
-     * }> $associations
-     * @param array<string,list<ValueWithTimestamp|array{
-     *   sourceType: string,
-     *   timestamp: \DateTimeInterface,
-     *   value: string,
-     *   sourceID?: string|null,
-     *   sourceLabel?: string|null,
-     *   updatedByUserID?: int|null,
-     * }>> $propertiesWithHistory
+     * @param array<string,CollectionResponseAssociatedIDShape> $associations
+     * @param array<string,list<ValueWithTimestampShape>> $propertiesWithHistory
      */
     public static function with(
         string $id,
@@ -240,9 +233,7 @@ final class SimplePublicObjectWithAssociations implements BaseModel
     /**
      * A list defining relationships with other objects.
      *
-     * @param array<string,CollectionResponseAssociatedID|array{
-     *   results: list<AssociatedID>, paging?: Paging|null
-     * }> $associations
+     * @param array<string,CollectionResponseAssociatedIDShape> $associations
      */
     public function withAssociations(array $associations): self
     {
@@ -266,14 +257,7 @@ final class SimplePublicObjectWithAssociations implements BaseModel
     /**
      * Key-value pairs representing the properties of the object along with their history.
      *
-     * @param array<string,list<ValueWithTimestamp|array{
-     *   sourceType: string,
-     *   timestamp: \DateTimeInterface,
-     *   value: string,
-     *   sourceID?: string|null,
-     *   sourceLabel?: string|null,
-     *   updatedByUserID?: int|null,
-     * }>> $propertiesWithHistory
+     * @param array<string,list<ValueWithTimestampShape>> $propertiesWithHistory
      */
     public function withPropertiesWithHistory(
         array $propertiesWithHistory

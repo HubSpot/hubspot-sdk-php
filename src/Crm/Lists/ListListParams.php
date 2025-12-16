@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Crm\ListsService::list()
  *
  * @phpstan-type ListListParamsShape = array{
- *   includeFilters?: bool, listIDs?: list<string>
+ *   includeFilters?: bool|null, listIDs?: list<string>|null
  * }
  */
 final class ListListParams implements BaseModel

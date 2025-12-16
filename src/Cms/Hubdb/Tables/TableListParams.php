@@ -15,18 +15,18 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Cms\Hubdb\TablesService::list()
  *
  * @phpstan-type TableListParamsShape = array{
- *   after?: string,
- *   archived?: bool,
- *   contentType?: string,
- *   createdAfter?: \DateTimeInterface,
- *   createdAt?: \DateTimeInterface,
- *   createdBefore?: \DateTimeInterface,
- *   isGetLocalizedSchema?: bool,
- *   limit?: int,
- *   sort?: list<string>,
- *   updatedAfter?: \DateTimeInterface,
- *   updatedAt?: \DateTimeInterface,
- *   updatedBefore?: \DateTimeInterface,
+ *   after?: string|null,
+ *   archived?: bool|null,
+ *   contentType?: string|null,
+ *   createdAfter?: \DateTimeInterface|null,
+ *   createdAt?: \DateTimeInterface|null,
+ *   createdBefore?: \DateTimeInterface|null,
+ *   isGetLocalizedSchema?: bool|null,
+ *   limit?: int|null,
+ *   sort?: list<string>|null,
+ *   updatedAfter?: \DateTimeInterface|null,
+ *   updatedAt?: \DateTimeInterface|null,
+ *   updatedBefore?: \DateTimeInterface|null,
  * }
  */
 final class TableListParams implements BaseModel

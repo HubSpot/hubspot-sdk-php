@@ -9,8 +9,10 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type PublicFetchAssociationsBatchRequestShape from \HubspotSDK\Crm\Associations\V4\PublicFetchAssociationsBatchRequest
+ *
  * @phpstan-type BatchInputPublicFetchAssociationsBatchRequestShape = array{
- *   inputs: list<PublicFetchAssociationsBatchRequest>
+ *   inputs: list<PublicFetchAssociationsBatchRequestShape>
  * }
  */
 final class BatchInputPublicFetchAssociationsBatchRequest implements BaseModel
@@ -46,9 +48,7 @@ final class BatchInputPublicFetchAssociationsBatchRequest implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicFetchAssociationsBatchRequest|array{
-     *   id: string, after?: string|null
-     * }> $inputs
+     * @param list<PublicFetchAssociationsBatchRequestShape> $inputs
      */
     public static function with(array $inputs): self
     {
@@ -60,9 +60,7 @@ final class BatchInputPublicFetchAssociationsBatchRequest implements BaseModel
     }
 
     /**
-     * @param list<PublicFetchAssociationsBatchRequest|array{
-     *   id: string, after?: string|null
-     * }> $inputs
+     * @param list<PublicFetchAssociationsBatchRequestShape> $inputs
      */
     public function withInputs(array $inputs): self
     {

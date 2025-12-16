@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Marketing\Campaigns\BudgetService::create()
  *
  * @phpstan-type BudgetCreateParamsShape = array{
- *   amount: float, name: string, order: int, description?: string
+ *   amount: float, name: string, order: int, description?: string|null
  * }
  */
 final class BudgetCreateParams implements BaseModel

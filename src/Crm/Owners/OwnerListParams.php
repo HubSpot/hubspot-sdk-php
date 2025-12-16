@@ -15,7 +15,10 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Crm\OwnersService::list()
  *
  * @phpstan-type OwnerListParamsShape = array{
- *   after?: string, archived?: bool, email?: string, limit?: int
+ *   after?: string|null,
+ *   archived?: bool|null,
+ *   email?: string|null,
+ *   limit?: int|null,
  * }
  */
 final class OwnerListParams implements BaseModel

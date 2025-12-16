@@ -11,13 +11,15 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type APIConnectionShape from \HubspotSDK\Automation\Workflows\APIConnection
+ *
  * @phpstan-type APISingleConnectionActionShape = array{
  *   actionID: string,
  *   actionTypeID: string,
  *   actionTypeVersion: int,
  *   fields: array<string,mixed>,
- *   type: value-of<Type>,
- *   connection?: APIConnection|null,
+ *   type: Type|value-of<Type>,
+ *   connection?: null|APIConnection|APIConnectionShape,
  * }
  */
 final class APISingleConnectionAction implements BaseModel
@@ -82,7 +84,7 @@ final class APISingleConnectionAction implements BaseModel
      *
      * @param array<string,mixed> $fields
      * @param Type|value-of<Type> $type
-     * @param APIConnection|array{edgeType: string, nextActionID: string} $connection
+     * @param APIConnectionShape $connection
      */
     public static function with(
         string $actionID,
@@ -152,7 +154,7 @@ final class APISingleConnectionAction implements BaseModel
     }
 
     /**
-     * @param APIConnection|array{edgeType: string, nextActionID: string} $connection
+     * @param APIConnectionShape $connection
      */
     public function withConnection(APIConnection|array $connection): self
     {

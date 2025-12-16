@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Services\Cms\Pages\LandingPagesService::delete()
  *
- * @phpstan-type LandingPageDeleteParamsShape = array{archived?: bool}
+ * @phpstan-type LandingPageDeleteParamsShape = array{archived?: bool|null}
  */
 final class LandingPageDeleteParams implements BaseModel
 {

@@ -19,6 +19,8 @@ use HubspotSDK\OptionInput;
  *
  * @see HubspotSDK\Services\Cms\MediaBridge\PropertiesService::create()
  *
+ * @phpstan-import-type OptionInputShape from \HubspotSDK\OptionInput
+ *
  * @phpstan-type PropertyCreateParamsShape = array{
  *   appID: int,
  *   fieldType: FieldType|value-of<FieldType>,
@@ -26,22 +28,16 @@ use HubspotSDK\OptionInput;
  *   label: string,
  *   name: string,
  *   type: Type|value-of<Type>,
- *   calculationFormula?: string,
- *   dataSensitivity?: DataSensitivity|value-of<DataSensitivity>,
- *   description?: string,
- *   displayOrder?: int,
- *   externalOptions?: bool,
- *   formField?: bool,
- *   hasUniqueValue?: bool,
- *   hidden?: bool,
- *   options?: list<OptionInput|array{
- *     displayOrder: int,
- *     hidden: bool,
- *     label: string,
- *     value: string,
- *     description?: string|null,
- *   }>,
- *   referencedObjectType?: string,
+ *   calculationFormula?: string|null,
+ *   dataSensitivity?: null|DataSensitivity|value-of<DataSensitivity>,
+ *   description?: string|null,
+ *   displayOrder?: int|null,
+ *   externalOptions?: bool|null,
+ *   formField?: bool|null,
+ *   hasUniqueValue?: bool|null,
+ *   hidden?: bool|null,
+ *   options?: list<OptionInputShape>|null,
+ *   referencedObjectType?: string|null,
  * }
  */
 final class PropertyCreateParams implements BaseModel
@@ -137,13 +133,7 @@ final class PropertyCreateParams implements BaseModel
      * @param FieldType|value-of<FieldType> $fieldType
      * @param Type|value-of<Type> $type
      * @param DataSensitivity|value-of<DataSensitivity> $dataSensitivity
-     * @param list<OptionInput|array{
-     *   displayOrder: int,
-     *   hidden: bool,
-     *   label: string,
-     *   value: string,
-     *   description?: string|null,
-     * }> $options
+     * @param list<OptionInputShape> $options
      */
     public static function with(
         int $appID,
@@ -309,13 +299,7 @@ final class PropertyCreateParams implements BaseModel
     }
 
     /**
-     * @param list<OptionInput|array{
-     *   displayOrder: int,
-     *   hidden: bool,
-     *   label: string,
-     *   value: string,
-     *   description?: string|null,
-     * }> $options
+     * @param list<OptionInputShape> $options
      */
     public function withOptions(array $options): self
     {

@@ -18,7 +18,7 @@ interface TokensRawContract
      * @api
      *
      * @param string $eventTemplateID path param: The event template ID
-     * @param array<mixed>|TokenCreateParams $params
+     * @param array<string,mixed>|TokenCreateParams $params
      *
      * @return BaseResponse<TimelineEventTemplateToken>
      *
@@ -34,7 +34,7 @@ interface TokensRawContract
      * @api
      *
      * @param string $tokenName path param: The token name
-     * @param array<mixed>|TokenUpdateParams $params
+     * @param array<string,mixed>|TokenUpdateParams $params
      *
      * @return BaseResponse<TimelineEventTemplateToken>
      *
@@ -50,7 +50,7 @@ interface TokensRawContract
      * @api
      *
      * @param string $tokenName the token name
-     * @param array<mixed>|TokenDeleteParams $params
+     * @param array<string,mixed>|TokenDeleteParams $params
      *
      * @return BaseResponse<mixed>
      *

@@ -9,7 +9,6 @@ use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\Filter;
 use HubspotSDK\Crm\FilterGroup;
 
 /**
@@ -17,13 +16,15 @@ use HubspotSDK\Crm\FilterGroup;
  *
  * @see HubspotSDK\Services\Crm\Objects\FeedbackSubmissionsService::search()
  *
+ * @phpstan-import-type FilterGroupShape from \HubspotSDK\Crm\FilterGroup
+ *
  * @phpstan-type FeedbackSubmissionSearchParamsShape = array{
  *   after: string,
- *   filterGroups: list<FilterGroup|array{filters: list<Filter>}>,
+ *   filterGroups: list<FilterGroupShape>,
  *   limit: int,
  *   properties: list<string>,
  *   sorts: list<string>,
- *   query?: string,
+ *   query?: string|null,
  * }
  */
 final class FeedbackSubmissionSearchParams implements BaseModel
@@ -105,7 +106,7 @@ final class FeedbackSubmissionSearchParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<FilterGroup|array{filters: list<Filter>}> $filterGroups
+     * @param list<FilterGroupShape> $filterGroups
      * @param list<string> $properties
      * @param list<string> $sorts
      */
@@ -144,7 +145,7 @@ final class FeedbackSubmissionSearchParams implements BaseModel
     /**
      * Up to 6 groups of filters defining additional query criteria.
      *
-     * @param list<FilterGroup|array{filters: list<Filter>}> $filterGroups
+     * @param list<FilterGroupShape> $filterGroups
      */
     public function withFilterGroups(array $filterGroups): self
     {

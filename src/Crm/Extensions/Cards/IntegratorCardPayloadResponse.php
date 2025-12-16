@@ -13,13 +13,16 @@ use HubspotSDK\Crm\Extensions\Cards\IntegratorCardPayloadResponse\ResponseVersio
 /**
  * The card details payload, sent to HubSpot by an app in response to a data fetch request when a user visits a CRM record page.
  *
+ * @phpstan-import-type IntegratorObjectResultShape from \HubspotSDK\Crm\Extensions\Cards\IntegratorObjectResult
+ * @phpstan-import-type TopLevelActionsShape from \HubspotSDK\Crm\Extensions\Cards\TopLevelActions
+ *
  * @phpstan-type IntegratorCardPayloadResponseShape = array{
  *   totalCount: int,
  *   allItemsLinkURL?: string|null,
  *   cardLabel?: string|null,
- *   responseVersion?: value-of<ResponseVersion>|null,
- *   sections?: list<IntegratorObjectResult>|null,
- *   topLevelActions?: TopLevelActions|null,
+ *   responseVersion?: null|ResponseVersion|value-of<ResponseVersion>,
+ *   sections?: list<IntegratorObjectResultShape>|null,
+ *   topLevelActions?: null|TopLevelActions|TopLevelActionsShape,
  * }
  */
 final class IntegratorCardPayloadResponse implements BaseModel
@@ -85,18 +88,8 @@ final class IntegratorCardPayloadResponse implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param ResponseVersion|value-of<ResponseVersion> $responseVersion
-     * @param list<IntegratorObjectResult|array{
-     *   id: string,
-     *   actions: list<ActionHookActionBody|IFrameActionBody>,
-     *   title: string,
-     *   tokens: list<ObjectToken>,
-     *   linkURL?: string|null,
-     * }> $sections
-     * @param TopLevelActions|array{
-     *   secondary: list<ActionHookActionBody|IFrameActionBody>,
-     *   primary?: ActionHookActionBody|IFrameActionBody|null,
-     *   settings?: IFrameActionBody|null,
-     * } $topLevelActions
+     * @param list<IntegratorObjectResultShape> $sections
+     * @param TopLevelActionsShape $topLevelActions
      */
     public static function with(
         int $totalCount,
@@ -167,13 +160,7 @@ final class IntegratorCardPayloadResponse implements BaseModel
     /**
      * A list of up to five valid card sub categories.
      *
-     * @param list<IntegratorObjectResult|array{
-     *   id: string,
-     *   actions: list<ActionHookActionBody|IFrameActionBody>,
-     *   title: string,
-     *   tokens: list<ObjectToken>,
-     *   linkURL?: string|null,
-     * }> $sections
+     * @param list<IntegratorObjectResultShape> $sections
      */
     public function withSections(array $sections): self
     {
@@ -184,11 +171,7 @@ final class IntegratorCardPayloadResponse implements BaseModel
     }
 
     /**
-     * @param TopLevelActions|array{
-     *   secondary: list<ActionHookActionBody|IFrameActionBody>,
-     *   primary?: ActionHookActionBody|IFrameActionBody|null,
-     *   settings?: IFrameActionBody|null,
-     * } $topLevelActions
+     * @param TopLevelActionsShape $topLevelActions
      */
     public function withTopLevelActions(
         TopLevelActions|array $topLevelActions

@@ -13,17 +13,17 @@ use HubspotSDK\ObjectTypeDefinitionLabels;
 /**
  * @see HubspotSDK\Services\Crm\Objects\SchemasService::update()
  *
+ * @phpstan-import-type ObjectTypeDefinitionLabelsShape from \HubspotSDK\ObjectTypeDefinitionLabels
+ *
  * @phpstan-type SchemaUpdateParamsShape = array{
- *   clearDescription?: bool,
- *   description?: string,
- *   labels?: ObjectTypeDefinitionLabels|array{
- *     plural?: string|null, singular?: string|null
- *   },
- *   primaryDisplayProperty?: string,
- *   requiredProperties?: list<string>,
- *   restorable?: bool,
- *   searchableProperties?: list<string>,
- *   secondaryDisplayProperties?: list<string>,
+ *   clearDescription?: bool|null,
+ *   description?: string|null,
+ *   labels?: ObjectTypeDefinitionLabelsShape|null,
+ *   primaryDisplayProperty?: string|null,
+ *   requiredProperties?: list<string>|null,
+ *   restorable?: bool|null,
+ *   searchableProperties?: list<string>|null,
+ *   secondaryDisplayProperties?: list<string>|null,
  * }
  */
 final class SchemaUpdateParams implements BaseModel
@@ -84,9 +84,7 @@ final class SchemaUpdateParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param ObjectTypeDefinitionLabels|array{
-     *   plural?: string|null, singular?: string|null
-     * } $labels
+     * @param ObjectTypeDefinitionLabelsShape $labels
      * @param list<string> $requiredProperties
      * @param list<string> $searchableProperties
      * @param list<string> $secondaryDisplayProperties
@@ -132,9 +130,7 @@ final class SchemaUpdateParams implements BaseModel
     }
 
     /**
-     * @param ObjectTypeDefinitionLabels|array{
-     *   plural?: string|null, singular?: string|null
-     * } $labels
+     * @param ObjectTypeDefinitionLabelsShape $labels
      */
     public function withLabels(ObjectTypeDefinitionLabels|array $labels): self
     {

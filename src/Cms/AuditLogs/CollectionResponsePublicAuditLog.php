@@ -4,21 +4,20 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\AuditLogs;
 
-use HubspotSDK\Cms\AuditLogs\PublicAuditLog\Event;
-use HubspotSDK\Cms\AuditLogs\PublicAuditLog\ObjectType;
 use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\NextPage;
 use HubspotSDK\Paging;
-use HubspotSDK\PreviousPage;
 
 /**
  * The collection of audit logs.
  *
+ * @phpstan-import-type PublicAuditLogShape from \HubspotSDK\Cms\AuditLogs\PublicAuditLog
+ * @phpstan-import-type PagingShape from \HubspotSDK\Paging
+ *
  * @phpstan-type CollectionResponsePublicAuditLogShape = array{
- *   results: list<PublicAuditLog>, paging?: Paging|null
+ *   results: list<PublicAuditLogShape>, paging?: null|Paging|PagingShape
  * }
  */
 final class CollectionResponsePublicAuditLog implements BaseModel
@@ -57,17 +56,8 @@ final class CollectionResponsePublicAuditLog implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicAuditLog|array{
-     *   event: value-of<Event>,
-     *   fullName: string,
-     *   objectID: string,
-     *   objectName: string,
-     *   objectType: value-of<ObjectType>,
-     *   timestamp: \DateTimeInterface,
-     *   userID: string,
-     *   meta?: mixed,
-     * }> $results
-     * @param Paging|array{next?: NextPage|null, prev?: PreviousPage|null} $paging
+     * @param list<PublicAuditLogShape> $results
+     * @param PagingShape $paging
      */
     public static function with(
         array $results,
@@ -83,16 +73,7 @@ final class CollectionResponsePublicAuditLog implements BaseModel
     }
 
     /**
-     * @param list<PublicAuditLog|array{
-     *   event: value-of<Event>,
-     *   fullName: string,
-     *   objectID: string,
-     *   objectName: string,
-     *   objectType: value-of<ObjectType>,
-     *   timestamp: \DateTimeInterface,
-     *   userID: string,
-     *   meta?: mixed,
-     * }> $results
+     * @param list<PublicAuditLogShape> $results
      */
     public function withResults(array $results): self
     {
@@ -103,7 +84,7 @@ final class CollectionResponsePublicAuditLog implements BaseModel
     }
 
     /**
-     * @param Paging|array{next?: NextPage|null, prev?: PreviousPage|null} $paging
+     * @param PagingShape $paging
      */
     public function withPaging(Paging|array $paging): self
     {

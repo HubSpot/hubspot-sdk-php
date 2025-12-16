@@ -15,7 +15,7 @@ use HubspotSDK\Files\File\Access;
  *
  * @phpstan-type FileShape = array{
  *   id: string,
- *   access: value-of<Access>,
+ *   access: Access|value-of<Access>,
  *   archived: bool,
  *   createdAt: \DateTimeInterface,
  *   updatedAt: \DateTimeInterface,

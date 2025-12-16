@@ -13,7 +13,7 @@ use HubspotSDK\Crm\Extensions\Cards\ObjectToken\DataType;
 /**
  * @phpstan-type ObjectTokenShape = array{
  *   value: string,
- *   dataType?: value-of<DataType>|null,
+ *   dataType?: null|DataType|value-of<DataType>,
  *   label?: string|null,
  *   name?: string|null,
  * }

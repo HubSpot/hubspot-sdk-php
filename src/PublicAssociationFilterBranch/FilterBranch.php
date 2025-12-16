@@ -16,6 +16,9 @@ use HubspotSDK\PublicPropertyAssociationFilterBranch;
 use HubspotSDK\PublicRestrictedFilterBranch;
 use HubspotSDK\PublicUnifiedEventsFilterBranch;
 
+/**
+ * @phpstan-type FilterBranchShape = PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch
+ */
 final class FilterBranch implements ConverterSource
 {
     use SdkUnion;

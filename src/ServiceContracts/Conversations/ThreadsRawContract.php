@@ -19,7 +19,7 @@ interface ThreadsRawContract
      * @api
      *
      * @param int $threadID Path param:
-     * @param array<mixed>|ThreadUpdateParams $params
+     * @param array<string,mixed>|ThreadUpdateParams $params
      *
      * @return BaseResponse<PublicThread>
      *
@@ -34,7 +34,7 @@ interface ThreadsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|ThreadListParams $params
+     * @param array<string,mixed>|ThreadListParams $params
      *
      * @return BaseResponse<Page<PublicThread>>
      *
@@ -60,7 +60,7 @@ interface ThreadsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|ThreadGetParams $params
+     * @param array<string,mixed>|ThreadGetParams $params
      *
      * @return BaseResponse<PublicThread>
      *

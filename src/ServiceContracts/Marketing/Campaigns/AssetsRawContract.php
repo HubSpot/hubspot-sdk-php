@@ -18,7 +18,7 @@ interface AssetsRawContract
      * @api
      *
      * @param string $assetID Id of the asset
-     * @param array<mixed>|AssetUpdateParams $params
+     * @param array<string,mixed>|AssetUpdateParams $params
      *
      * @return BaseResponse<mixed>
      *
@@ -34,7 +34,7 @@ interface AssetsRawContract
      * @api
      *
      * @param string $assetType path param: The type of asset to fetch
-     * @param array<mixed>|AssetListParams $params
+     * @param array<string,mixed>|AssetListParams $params
      *
      * @return BaseResponse<CollectionResponsePublicCampaignAssetForwardPaging>
      *
@@ -50,7 +50,7 @@ interface AssetsRawContract
      * @api
      *
      * @param string $assetID Id of the asset
-     * @param array<mixed>|AssetDeleteParams $params
+     * @param array<string,mixed>|AssetDeleteParams $params
      *
      * @return BaseResponse<mixed>
      *

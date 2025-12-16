@@ -16,7 +16,7 @@ interface TranscriptsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|TranscriptCreateParams $params
+     * @param array<string,mixed>|TranscriptCreateParams $params
      *
      * @return BaseResponse<TranscriptCreateResponse>
      *

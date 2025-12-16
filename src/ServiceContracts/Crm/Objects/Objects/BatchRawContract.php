@@ -20,7 +20,7 @@ interface BatchRawContract
     /**
      * @api
      *
-     * @param array<mixed>|BatchCreateParams $params
+     * @param array<string,mixed>|BatchCreateParams $params
      *
      * @return BaseResponse<BatchResponseSimplePublicObject>
      *
@@ -35,7 +35,7 @@ interface BatchRawContract
     /**
      * @api
      *
-     * @param array<mixed>|BatchUpdateParams $params
+     * @param array<string,mixed>|BatchUpdateParams $params
      *
      * @return BaseResponse<BatchResponseSimplePublicObject>
      *
@@ -50,7 +50,7 @@ interface BatchRawContract
     /**
      * @api
      *
-     * @param array<mixed>|BatchDeleteParams $params
+     * @param array<string,mixed>|BatchDeleteParams $params
      *
      * @return BaseResponse<mixed>
      *
@@ -66,7 +66,7 @@ interface BatchRawContract
      * @api
      *
      * @param string $objectType Path param:
-     * @param array<mixed>|BatchGetParams $params
+     * @param array<string,mixed>|BatchGetParams $params
      *
      * @return BaseResponse<BatchResponseSimplePublicObject>
      *
@@ -81,7 +81,7 @@ interface BatchRawContract
     /**
      * @api
      *
-     * @param array<mixed>|BatchUpsertParams $params
+     * @param array<string,mixed>|BatchUpsertParams $params
      *
      * @return BaseResponse<BatchResponseSimplePublicUpsertObject>
      *

@@ -9,8 +9,11 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type NextPageShape from \HubspotSDK\NextPage
+ * @phpstan-import-type PreviousPageShape from \HubspotSDK\PreviousPage
+ *
  * @phpstan-type PagingShape = array{
- *   next?: NextPage|null, prev?: PreviousPage|null
+ *   next?: null|NextPage|NextPageShape, prev?: null|PreviousPage|PreviousPageShape
  * }
  */
 final class Paging implements BaseModel
@@ -40,8 +43,8 @@ final class Paging implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param NextPage|array{after: string, link?: string|null} $next
-     * @param PreviousPage|array{before: string, link?: string|null} $prev
+     * @param NextPageShape $next
+     * @param PreviousPageShape $prev
      */
     public static function with(
         NextPage|array|null $next = null,
@@ -58,7 +61,7 @@ final class Paging implements BaseModel
     /**
      * Specifies the paging information needed to retrieve the next set of results in a paginated API response.
      *
-     * @param NextPage|array{after: string, link?: string|null} $next
+     * @param NextPageShape $next
      */
     public function withNext(NextPage|array $next): self
     {
@@ -71,7 +74,7 @@ final class Paging implements BaseModel
     /**
      * specifies the paging information needed to retrieve the previous set of results in a paginated API response.
      *
-     * @param PreviousPage|array{before: string, link?: string|null} $prev
+     * @param PreviousPageShape $prev
      */
     public function withPrev(PreviousPage|array $prev): self
     {

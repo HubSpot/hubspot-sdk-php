@@ -39,10 +39,10 @@ final class CardsRawService implements CardsRawContract
      * @param array{
      *   actions: array{baseURLs: list<string>}|CardActions,
      *   display: array{
-     *     properties: list<array<mixed>|CardDisplayProperty>
+     *     properties: list<array<string,mixed>|CardDisplayProperty>
      *   }|CardDisplayBody,
      *   fetch: array{
-     *     objectTypes: list<array<mixed>|CardObjectTypeBody>,
+     *     objectTypes: list<array<string,mixed>|CardObjectTypeBody>,
      *     targetURL: string,
      *     cardType?: 'EXTERNAL'|'SERVERLESS'|CardType,
      *     serverlessFunction?: string,
@@ -84,10 +84,10 @@ final class CardsRawService implements CardsRawContract
      *   appID: int,
      *   actions?: array{baseURLs: list<string>}|CardActions,
      *   display?: array{
-     *     properties: list<array<mixed>|CardDisplayProperty>
+     *     properties: list<array<string,mixed>|CardDisplayProperty>
      *   }|CardDisplayBody,
      *   fetch?: array{
-     *     objectTypes: list<array<mixed>|CardObjectTypeBody>,
+     *     objectTypes: list<array<string,mixed>|CardObjectTypeBody>,
      *     cardType?: 'EXTERNAL'|'SERVERLESS'|\HubspotSDK\Crm\Extensions\Cards\CardFetchBodyPatch\CardType,
      *     serverlessFunction?: string,
      *     targetURL?: string,

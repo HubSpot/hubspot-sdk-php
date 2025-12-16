@@ -26,15 +26,12 @@ use HubspotSDK\Marketing\Events\MarketingEventEmailSubscriber;
  *
  * @see HubspotSDK\Services\Marketing\Events\AttendanceService::createByExternalEventIDAndEmail()
  *
+ * @phpstan-import-type MarketingEventEmailSubscriberShape from \HubspotSDK\Marketing\Events\MarketingEventEmailSubscriber
+ *
  * @phpstan-type AttendanceCreateByExternalEventIDAndEmailParamsShape = array{
  *   externalEventID: string,
- *   inputs: list<MarketingEventEmailSubscriber|array{
- *     contactProperties: array<string,string>,
- *     email: string,
- *     interactionDateTime: int,
- *     properties: array<string,string>,
- *   }>,
- *   externalAccountID?: string,
+ *   inputs: list<MarketingEventEmailSubscriberShape>,
+ *   externalAccountID?: string|null,
  * }
  */
 final class AttendanceCreateByExternalEventIDAndEmailParams implements BaseModel
@@ -88,12 +85,7 @@ final class AttendanceCreateByExternalEventIDAndEmailParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<MarketingEventEmailSubscriber|array{
-     *   contactProperties: array<string,string>,
-     *   email: string,
-     *   interactionDateTime: int,
-     *   properties: array<string,string>,
-     * }> $inputs
+     * @param list<MarketingEventEmailSubscriberShape> $inputs
      */
     public static function with(
         string $externalEventID,
@@ -121,12 +113,7 @@ final class AttendanceCreateByExternalEventIDAndEmailParams implements BaseModel
     /**
      * List of marketing event details to create or update.
      *
-     * @param list<MarketingEventEmailSubscriber|array{
-     *   contactProperties: array<string,string>,
-     *   email: string,
-     *   interactionDateTime: int,
-     *   properties: array<string,string>,
-     * }> $inputs
+     * @param list<MarketingEventEmailSubscriberShape> $inputs
      */
     public function withInputs(array $inputs): self
     {

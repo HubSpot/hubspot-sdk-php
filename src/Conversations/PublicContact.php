@@ -10,8 +10,10 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type ContactProfileShape from \HubspotSDK\Conversations\ContactProfile
+ *
  * @phpstan-type PublicContactShape = array{
- *   contactProfile: ContactProfile, type: value-of<Type>
+ *   contactProfile: ContactProfile|ContactProfileShape, type: Type|value-of<Type>
  * }
  */
 final class PublicContact implements BaseModel
@@ -50,14 +52,7 @@ final class PublicContact implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param ContactProfile|array{
-     *   addresses: list<ContactAddress>,
-     *   emails: list<ContactEmail>,
-     *   phones: list<ContactPhone>,
-     *   urls: list<ContactURL>,
-     *   name?: ContactName|null,
-     *   org?: ContactOrg|null,
-     * } $contactProfile
+     * @param ContactProfileShape $contactProfile
      * @param Type|value-of<Type> $type
      */
     public static function with(
@@ -73,14 +68,7 @@ final class PublicContact implements BaseModel
     }
 
     /**
-     * @param ContactProfile|array{
-     *   addresses: list<ContactAddress>,
-     *   emails: list<ContactEmail>,
-     *   phones: list<ContactPhone>,
-     *   urls: list<ContactURL>,
-     *   name?: ContactName|null,
-     *   org?: ContactOrg|null,
-     * } $contactProfile
+     * @param ContactProfileShape $contactProfile
      */
     public function withContactProfile(
         ContactProfile|array $contactProfile

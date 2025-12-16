@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type APIObjectPropertyValueShape = array{
- *   propertyName: string, type: value-of<Type>
+ *   propertyName: string, type: Type|value-of<Type>
  * }
  */
 final class APIObjectPropertyValue implements BaseModel

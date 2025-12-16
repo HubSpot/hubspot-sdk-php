@@ -9,16 +9,17 @@ use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Marketing\Forms\FormDisplayOptions\Theme;
-use HubspotSDK\Marketing\Forms\FormStyle\SubmitAlignment;
 
 /**
  * Options for styling the form.
  *
+ * @phpstan-import-type FormStyleShape from \HubspotSDK\Marketing\Forms\FormStyle
+ *
  * @phpstan-type FormDisplayOptionsShape = array{
  *   renderRawHTML: bool,
- *   style: FormStyle,
+ *   style: FormStyle|FormStyleShape,
  *   submitButtonText: string,
- *   theme: value-of<Theme>,
+ *   theme: Theme|value-of<Theme>,
  *   cssClass?: string|null,
  * }
  */
@@ -86,20 +87,7 @@ final class FormDisplayOptions implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param FormStyle|array{
-     *   backgroundWidth: string,
-     *   fontFamily: string,
-     *   helpTextColor: string,
-     *   helpTextSize: string,
-     *   labelTextColor: string,
-     *   labelTextSize: string,
-     *   legalConsentTextColor: string,
-     *   legalConsentTextSize: string,
-     *   submitAlignment: value-of<SubmitAlignment>,
-     *   submitColor: string,
-     *   submitFontColor: string,
-     *   submitSize: string,
-     * } $style
+     * @param FormStyleShape $style
      * @param Theme|value-of<Theme> $theme
      */
     public static function with(
@@ -135,20 +123,7 @@ final class FormDisplayOptions implements BaseModel
     /**
      * Styling options for the form.
      *
-     * @param FormStyle|array{
-     *   backgroundWidth: string,
-     *   fontFamily: string,
-     *   helpTextColor: string,
-     *   helpTextSize: string,
-     *   labelTextColor: string,
-     *   labelTextSize: string,
-     *   legalConsentTextColor: string,
-     *   legalConsentTextSize: string,
-     *   submitAlignment: value-of<SubmitAlignment>,
-     *   submitColor: string,
-     *   submitFontColor: string,
-     *   submitSize: string,
-     * } $style
+     * @param FormStyleShape $style
      */
     public function withStyle(FormStyle|array $style): self
     {

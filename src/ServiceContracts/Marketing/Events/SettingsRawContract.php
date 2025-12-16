@@ -16,7 +16,7 @@ interface SettingsRawContract
      * @api
      *
      * @param int $appID the id of the application to update the settings for
-     * @param array<mixed>|SettingCreateOrUpdateParams $params
+     * @param array<string,mixed>|SettingCreateOrUpdateParams $params
      *
      * @return BaseResponse<EventDetailSettings>
      *

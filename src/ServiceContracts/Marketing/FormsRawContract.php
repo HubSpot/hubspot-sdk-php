@@ -31,7 +31,7 @@ interface FormsRawContract
      * @api
      *
      * @param string $formID the ID of the form to update
-     * @param array<mixed>|FormUpdateParams $params
+     * @param array<string,mixed>|FormUpdateParams $params
      *
      * @return BaseResponse<FormDefinitionBase>
      *
@@ -46,7 +46,7 @@ interface FormsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|FormListParams $params
+     * @param array<string,mixed>|FormListParams $params
      *
      * @return BaseResponse<Page<HubSpotFormDefinition>>
      *
@@ -75,7 +75,7 @@ interface FormsRawContract
      * @api
      *
      * @param string $formID The unique identifier of the form
-     * @param array<mixed>|FormGetParams $params
+     * @param array<string,mixed>|FormGetParams $params
      *
      * @return BaseResponse<FormDefinitionBase>
      *

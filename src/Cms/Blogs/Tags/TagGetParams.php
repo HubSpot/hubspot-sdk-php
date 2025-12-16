@@ -14,7 +14,9 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Services\Cms\Blogs\TagsService::get()
  *
- * @phpstan-type TagGetParamsShape = array{archived?: bool, property?: string}
+ * @phpstan-type TagGetParamsShape = array{
+ *   archived?: bool|null, property?: string|null
+ * }
  */
 final class TagGetParams implements BaseModel
 {

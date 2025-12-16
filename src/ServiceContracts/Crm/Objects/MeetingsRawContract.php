@@ -23,7 +23,7 @@ interface MeetingsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|MeetingCreateParams $params
+     * @param array<string,mixed>|MeetingCreateParams $params
      *
      * @return BaseResponse<CreatedResponseSimplePublicObject>
      *
@@ -38,7 +38,7 @@ interface MeetingsRawContract
      * @api
      *
      * @param string $meetingID Path param:
-     * @param array<mixed>|MeetingUpdateParams $params
+     * @param array<string,mixed>|MeetingUpdateParams $params
      *
      * @return BaseResponse<SimplePublicObject>
      *
@@ -53,7 +53,7 @@ interface MeetingsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|MeetingListParams $params
+     * @param array<string,mixed>|MeetingListParams $params
      *
      * @return BaseResponse<Page<SimplePublicObjectWithAssociations>>
      *
@@ -79,7 +79,7 @@ interface MeetingsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|MeetingGetParams $params
+     * @param array<string,mixed>|MeetingGetParams $params
      *
      * @return BaseResponse<SimplePublicObjectWithAssociations>
      *
@@ -94,7 +94,7 @@ interface MeetingsRawContract
     /**
      * @api
      *
-     * @param array<mixed>|MeetingSearchParams $params
+     * @param array<string,mixed>|MeetingSearchParams $params
      *
      * @return BaseResponse<CollectionResponseWithTotalSimplePublicObject>
      *

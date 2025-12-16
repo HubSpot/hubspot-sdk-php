@@ -10,10 +10,12 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type VariantShape from \HubspotSDK\Cms\Hubdb\Variant
+ *
  * @phpstan-type HubDBTableRowV3RequestShape = array{
  *   childTableID: int,
  *   displayIndex: int,
- *   values: array<string,Variant>,
+ *   values: array<string,VariantShape>,
  *   name?: string|null,
  *   path?: string|null,
  * }
@@ -79,7 +81,7 @@ final class HubDBTableRowV3Request implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string,Variant|array<string,mixed>> $values
+     * @param array<string,VariantShape> $values
      */
     public static function with(
         int $childTableID,
@@ -122,7 +124,7 @@ final class HubDBTableRowV3Request implements BaseModel
     /**
      * List of key value pairs with the column name and column value.
      *
-     * @param array<string,Variant|array<string,mixed>> $values
+     * @param array<string,VariantShape> $values
      */
     public function withValues(array $values): self
     {

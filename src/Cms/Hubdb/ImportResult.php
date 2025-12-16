@@ -8,12 +8,13 @@ use HubspotSDK\APIError;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\ErrorDetail;
 
 /**
+ * @phpstan-import-type APIErrorShape from \HubspotSDK\APIError
+ *
  * @phpstan-type ImportResultShape = array{
  *   duplicateRows: int,
- *   errors: list<APIError>,
+ *   errors: list<APIErrorShape>,
  *   rowLimitExceeded: bool,
  *   rowsImported: int,
  * }
@@ -79,15 +80,7 @@ final class ImportResult implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<APIError|array{
-     *   category: string,
-     *   correlationID: string,
-     *   message: string,
-     *   context?: array<string,list<string>>|null,
-     *   errors?: list<ErrorDetail>|null,
-     *   links?: array<string,string>|null,
-     *   subCategory?: string|null,
-     * }> $errors
+     * @param list<APIErrorShape> $errors
      */
     public static function with(
         int $duplicateRows,
@@ -119,15 +112,7 @@ final class ImportResult implements BaseModel
     /**
      * List of errors during import.
      *
-     * @param list<APIError|array{
-     *   category: string,
-     *   correlationID: string,
-     *   message: string,
-     *   context?: array<string,list<string>>|null,
-     *   errors?: list<ErrorDetail>|null,
-     *   links?: array<string,string>|null,
-     *   subCategory?: string|null,
-     * }> $errors
+     * @param list<APIErrorShape> $errors
      */
     public function withErrors(array $errors): self
     {

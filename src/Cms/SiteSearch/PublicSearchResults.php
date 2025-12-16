@@ -4,19 +4,19 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\SiteSearch;
 
-use HubspotSDK\Cms\SiteSearch\ContentSearchResult\Language;
-use HubspotSDK\Cms\SiteSearch\ContentSearchResult\Type;
 use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type ContentSearchResultShape from \HubspotSDK\Cms\SiteSearch\ContentSearchResult
+ *
  * @phpstan-type PublicSearchResultsShape = array{
  *   limit: int,
  *   offset: int,
  *   page: int,
- *   results: list<ContentSearchResult>,
+ *   results: list<ContentSearchResultShape>,
  *   total: int,
  *   searchTerm?: string|null,
  * }
@@ -76,25 +76,7 @@ final class PublicSearchResults implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<ContentSearchResult|array{
-     *   id: int,
-     *   domain: string,
-     *   score: float,
-     *   type: value-of<Type>,
-     *   url: string,
-     *   authorFullName?: string|null,
-     *   category?: string|null,
-     *   combinedID?: string|null,
-     *   description?: string|null,
-     *   featuredImageURL?: string|null,
-     *   language?: value-of<Language>|null,
-     *   publishedDate?: int|null,
-     *   rowID?: int|null,
-     *   subcategory?: string|null,
-     *   tableID?: int|null,
-     *   tags?: list<string>|null,
-     *   title?: string|null,
-     * }> $results
+     * @param list<ContentSearchResultShape> $results
      */
     public static function with(
         int $limit,
@@ -142,25 +124,7 @@ final class PublicSearchResults implements BaseModel
     }
 
     /**
-     * @param list<ContentSearchResult|array{
-     *   id: int,
-     *   domain: string,
-     *   score: float,
-     *   type: value-of<Type>,
-     *   url: string,
-     *   authorFullName?: string|null,
-     *   category?: string|null,
-     *   combinedID?: string|null,
-     *   description?: string|null,
-     *   featuredImageURL?: string|null,
-     *   language?: value-of<Language>|null,
-     *   publishedDate?: int|null,
-     *   rowID?: int|null,
-     *   subcategory?: string|null,
-     *   tableID?: int|null,
-     *   tags?: list<string>|null,
-     *   title?: string|null,
-     * }> $results
+     * @param list<ContentSearchResultShape> $results
      */
     public function withResults(array $results): self
     {

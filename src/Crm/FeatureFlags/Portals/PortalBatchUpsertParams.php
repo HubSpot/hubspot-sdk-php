@@ -9,18 +9,16 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\FeatureFlags\BatchPortalEntry;
-use HubspotSDK\Crm\FeatureFlags\BatchPortalEntry\FlagState;
 
 /**
  * Set the portal flag state for multiple HubSpot accounts at once. Use this endpoint to manage flag exposure for groups of HubSpot accounts.
  *
  * @see HubspotSDK\Services\Crm\FeatureFlags\PortalsService::batchUpsert()
  *
+ * @phpstan-import-type BatchPortalEntryShape from \HubspotSDK\Crm\FeatureFlags\BatchPortalEntry
+ *
  * @phpstan-type PortalBatchUpsertParamsShape = array{
- *   appID: int,
- *   portalStates: list<BatchPortalEntry|array{
- *     flagState: value-of<FlagState>, portalID: int
- *   }>,
+ *   appID: int, portalStates: list<BatchPortalEntryShape>
  * }
  */
 final class PortalBatchUpsertParams implements BaseModel
@@ -60,9 +58,7 @@ final class PortalBatchUpsertParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<BatchPortalEntry|array{
-     *   flagState: value-of<FlagState>, portalID: int
-     * }> $portalStates
+     * @param list<BatchPortalEntryShape> $portalStates
      */
     public static function with(int $appID, array $portalStates): self
     {
@@ -83,9 +79,7 @@ final class PortalBatchUpsertParams implements BaseModel
     }
 
     /**
-     * @param list<BatchPortalEntry|array{
-     *   flagState: value-of<FlagState>, portalID: int
-     * }> $portalStates
+     * @param list<BatchPortalEntryShape> $portalStates
      */
     public function withPortalStates(array $portalStates): self
     {

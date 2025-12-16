@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Services\Automation\Actions\DefinitionsService::get()
  *
- * @phpstan-type DefinitionGetParamsShape = array{appID: int, archived?: bool}
+ * @phpstan-type DefinitionGetParamsShape = array{appID: int, archived?: bool|null}
  */
 final class DefinitionGetParams implements BaseModel
 {

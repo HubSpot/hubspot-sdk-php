@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Automation\Workflows;
 
-use HubspotSDK\Automation\Workflows\APIAuthKeyWebhookAuthSettings\Location;
 use HubspotSDK\Automation\Workflows\APIWebhookAction\Method;
 use HubspotSDK\Automation\Workflows\APIWebhookAction\Type;
 use HubspotSDK\Core\Attributes\Optional;
@@ -13,14 +12,18 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type APIInputVariableShape from \HubspotSDK\Automation\Workflows\APIInputVariable
+ * @phpstan-import-type AuthSettingsShape from \HubspotSDK\Automation\Workflows\APIWebhookAction\AuthSettings
+ * @phpstan-import-type APIConnectionShape from \HubspotSDK\Automation\Workflows\APIConnection
+ *
  * @phpstan-type APIWebhookActionShape = array{
  *   actionID: string,
- *   method: value-of<Method>,
- *   queryParams: list<APIInputVariable>,
- *   type: value-of<Type>,
+ *   method: Method|value-of<Method>,
+ *   queryParams: list<APIInputVariableShape>,
+ *   type: Type|value-of<Type>,
  *   webhookURL: string,
- *   authSettings?: null|APIAuthKeyWebhookAuthSettings|APISignatureWebhookAuthSettings,
- *   connection?: APIConnection|null,
+ *   authSettings?: null|AuthSettingsShape|APIAuthKeyWebhookAuthSettings|APISignatureWebhookAuthSettings,
+ *   connection?: null|APIConnection|APIConnectionShape,
  * }
  */
 final class APIWebhookAction implements BaseModel
@@ -84,21 +87,10 @@ final class APIWebhookAction implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param Method|value-of<Method> $method
-     * @param list<APIInputVariable|array{
-     *   name: string,
-     *   value: APIActionDataValue|APIObjectPropertyValue|APIStaticValue|APIRelativeDateTimeValue|APITimestampValue|APIIncrementValue|APIFetchedObjectPropertyValue|APIAppendObjectPropertyValue|APIStaticAppendValue|APIEnrollmentEventPropertyValue,
-     * }> $queryParams
+     * @param list<APIInputVariableShape> $queryParams
      * @param Type|value-of<Type> $type
-     * @param APIAuthKeyWebhookAuthSettings|array{
-     *   location: value-of<Location>,
-     *   name: string,
-     *   secretName: string,
-     *   type: value-of<APIAuthKeyWebhookAuthSettings\Type>,
-     * }|APISignatureWebhookAuthSettings|array{
-     *   appID: int,
-     *   type: value-of<APISignatureWebhookAuthSettings\Type>,
-     * } $authSettings
-     * @param APIConnection|array{edgeType: string, nextActionID: string} $connection
+     * @param AuthSettingsShape $authSettings
+     * @param APIConnectionShape $connection
      */
     public static function with(
         string $actionID,
@@ -143,10 +135,7 @@ final class APIWebhookAction implements BaseModel
     }
 
     /**
-     * @param list<APIInputVariable|array{
-     *   name: string,
-     *   value: APIActionDataValue|APIObjectPropertyValue|APIStaticValue|APIRelativeDateTimeValue|APITimestampValue|APIIncrementValue|APIFetchedObjectPropertyValue|APIAppendObjectPropertyValue|APIStaticAppendValue|APIEnrollmentEventPropertyValue,
-     * }> $queryParams
+     * @param list<APIInputVariableShape> $queryParams
      */
     public function withQueryParams(array $queryParams): self
     {
@@ -176,15 +165,7 @@ final class APIWebhookAction implements BaseModel
     }
 
     /**
-     * @param APIAuthKeyWebhookAuthSettings|array{
-     *   location: value-of<Location>,
-     *   name: string,
-     *   secretName: string,
-     *   type: value-of<APIAuthKeyWebhookAuthSettings\Type>,
-     * }|APISignatureWebhookAuthSettings|array{
-     *   appID: int,
-     *   type: value-of<APISignatureWebhookAuthSettings\Type>,
-     * } $authSettings
+     * @param AuthSettingsShape $authSettings
      */
     public function withAuthSettings(
         APIAuthKeyWebhookAuthSettings|array|APISignatureWebhookAuthSettings $authSettings,
@@ -196,7 +177,7 @@ final class APIWebhookAction implements BaseModel
     }
 
     /**
-     * @param APIConnection|array{edgeType: string, nextActionID: string} $connection
+     * @param APIConnectionShape $connection
      */
     public function withConnection(APIConnection|array $connection): self
     {

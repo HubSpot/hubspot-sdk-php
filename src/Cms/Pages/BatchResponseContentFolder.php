@@ -13,11 +13,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Response object for successful batch operations on content folders.
  *
+ * @phpstan-import-type ContentFolderShape from \HubspotSDK\Cms\Pages\ContentFolder
+ *
  * @phpstan-type BatchResponseContentFolderShape = array{
  *   completedAt: \DateTimeInterface,
- *   results: list<ContentFolder>,
+ *   results: list<ContentFolderShape>,
  *   startedAt: \DateTimeInterface,
- *   status: value-of<Status>,
+ *   status: Status|value-of<Status>,
  *   links?: array<string,string>|null,
  *   requestedAt?: \DateTimeInterface|null,
  * }
@@ -78,15 +80,7 @@ final class BatchResponseContentFolder implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<ContentFolder|array{
-     *   id: string,
-     *   category: int,
-     *   created: \DateTimeInterface,
-     *   deletedAt: \DateTimeInterface,
-     *   name: string,
-     *   parentFolderID: int,
-     *   updated: \DateTimeInterface,
-     * }> $results
+     * @param list<ContentFolderShape> $results
      * @param Status|value-of<Status> $status
      * @param array<string,string> $links
      */
@@ -120,15 +114,7 @@ final class BatchResponseContentFolder implements BaseModel
     }
 
     /**
-     * @param list<ContentFolder|array{
-     *   id: string,
-     *   category: int,
-     *   created: \DateTimeInterface,
-     *   deletedAt: \DateTimeInterface,
-     *   name: string,
-     *   parentFolderID: int,
-     *   updated: \DateTimeInterface,
-     * }> $results
+     * @param list<ContentFolderShape> $results
      */
     public function withResults(array $results): self
     {
