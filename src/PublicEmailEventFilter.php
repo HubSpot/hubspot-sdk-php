@@ -21,7 +21,7 @@ use HubspotSDK\PublicEmailEventFilter\Operator;
  *   level: string,
  *   operator: Operator|value-of<Operator>,
  *   clickURL?: string|null,
- *   pruningRefineBy?: null|PruningRefineByShape|PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation,
+ *   pruningRefineBy?: PruningRefineByShape|null,
  * }
  */
 final class PublicEmailEventFilter implements BaseModel
@@ -85,7 +85,7 @@ final class PublicEmailEventFilter implements BaseModel
      *
      * @param Operator|value-of<Operator> $operator
      * @param FilterType|value-of<FilterType> $filterType
-     * @param PruningRefineByShape $pruningRefineBy
+     * @param PruningRefineByShape|null $pruningRefineBy
      */
     public static function with(
         string $appID,

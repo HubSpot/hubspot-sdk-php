@@ -62,7 +62,7 @@ final class ReportCreationResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param DateTimeShape $enqueueTime
+     * @param DateTime|DateTimeShape $enqueueTime
      */
     public static function with(
         DateTime|array $enqueueTime,
@@ -79,7 +79,7 @@ final class ReportCreationResponse implements BaseModel
     }
 
     /**
-     * @param DateTimeShape $enqueueTime
+     * @param DateTime|DateTimeShape $enqueueTime
      */
     public function withEnqueueTime(DateTime|array $enqueueTime): self
     {

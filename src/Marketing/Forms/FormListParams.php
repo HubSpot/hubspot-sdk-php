@@ -64,7 +64,7 @@ final class FormListParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<FormType|value-of<FormType>> $formTypes
+     * @param list<FormType|value-of<FormType>>|null $formTypes
      */
     public static function with(
         ?string $after = null,

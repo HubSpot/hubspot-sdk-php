@@ -132,7 +132,7 @@ final class PipelineStage implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param array<string,string> $metadata
-     * @param WritePermissions|value-of<WritePermissions> $writePermissions
+     * @param WritePermissions|value-of<WritePermissions>|null $writePermissions
      */
     public static function with(
         string $id,

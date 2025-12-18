@@ -103,7 +103,7 @@ final class BatchResponseBlogAuthor implements BaseModel
      *
      * @param list<BlogAuthorShape> $results
      * @param Status|value-of<Status> $status
-     * @param array<string,string> $links
+     * @param array<string,string>|null $links
      */
     public static function with(
         \DateTimeInterface $completedAt,

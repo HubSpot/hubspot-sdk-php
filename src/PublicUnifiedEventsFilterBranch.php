@@ -24,7 +24,7 @@ use HubspotSDK\PublicUnifiedEventsFilterBranch\Operator;
  *   filterBranchType: FilterBranchType|value-of<FilterBranchType>,
  *   filters: list<FilterShape>,
  *   operator: Operator|value-of<Operator>,
- *   coalescingRefineBy?: null|CoalescingRefineByShape|PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation,
+ *   coalescingRefineBy?: CoalescingRefineByShape|null,
  * }
  */
 final class PublicUnifiedEventsFilterBranch implements BaseModel
@@ -100,7 +100,7 @@ final class PublicUnifiedEventsFilterBranch implements BaseModel
      * @param list<FilterShape> $filters
      * @param Operator|value-of<Operator> $operator
      * @param FilterBranchType|value-of<FilterBranchType> $filterBranchType
-     * @param CoalescingRefineByShape $coalescingRefineBy
+     * @param CoalescingRefineByShape|null $coalescingRefineBy
      */
     public static function with(
         string $eventTypeID,

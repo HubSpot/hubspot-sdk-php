@@ -176,10 +176,10 @@ final class Property1 implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<Option1Shape> $options
-     * @param DataSensitivity|value-of<DataSensitivity> $dataSensitivity
-     * @param DateDisplayHint|value-of<DateDisplayHint> $dateDisplayHint
-     * @param PropertyModificationMetadataShape $modificationMetadata
-     * @param list<string> $sensitiveDataCategories
+     * @param DataSensitivity|value-of<DataSensitivity>|null $dataSensitivity
+     * @param DateDisplayHint|value-of<DateDisplayHint>|null $dateDisplayHint
+     * @param PropertyModificationMetadata|PropertyModificationMetadataShape|null $modificationMetadata
+     * @param list<string>|null $sensitiveDataCategories
      */
     public static function with(
         string $description,
@@ -424,7 +424,7 @@ final class Property1 implements BaseModel
     }
 
     /**
-     * @param PropertyModificationMetadataShape $modificationMetadata
+     * @param PropertyModificationMetadata|PropertyModificationMetadataShape $modificationMetadata
      */
     public function withModificationMetadata(
         PropertyModificationMetadata|array $modificationMetadata

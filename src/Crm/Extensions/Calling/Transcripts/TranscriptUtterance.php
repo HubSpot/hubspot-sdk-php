@@ -74,7 +74,7 @@ final class TranscriptUtterance implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param SpeakerShape $speaker
+     * @param Speaker|SpeakerShape|null $speaker
      */
     public static function with(
         string $id,
@@ -138,7 +138,7 @@ final class TranscriptUtterance implements BaseModel
     }
 
     /**
-     * @param SpeakerShape $speaker
+     * @param Speaker|SpeakerShape $speaker
      */
     public function withSpeaker(Speaker|array $speaker): self
     {

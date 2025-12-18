@@ -133,7 +133,7 @@ final class PublicComment implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<AttachmentShape> $attachments
-     * @param PublicClientShape $client
+     * @param PublicClient|PublicClientShape $client
      * @param list<PublicRecipientShape> $recipients
      * @param list<PublicSenderShape> $senders
      * @param Type|value-of<Type> $type
@@ -201,7 +201,7 @@ final class PublicComment implements BaseModel
     }
 
     /**
-     * @param PublicClientShape $client
+     * @param PublicClient|PublicClientShape $client
      */
     public function withClient(PublicClient|array $client): self
     {

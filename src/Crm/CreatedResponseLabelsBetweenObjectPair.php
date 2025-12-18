@@ -66,7 +66,7 @@ final class CreatedResponseLabelsBetweenObjectPair implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param LabelsBetweenObjectPairShape $entity
+     * @param LabelsBetweenObjectPair|LabelsBetweenObjectPairShape $entity
      */
     public static function with(
         string $createdResourceID,
@@ -95,7 +95,7 @@ final class CreatedResponseLabelsBetweenObjectPair implements BaseModel
     }
 
     /**
-     * @param LabelsBetweenObjectPairShape $entity
+     * @param LabelsBetweenObjectPair|LabelsBetweenObjectPairShape $entity
      */
     public function withEntity(LabelsBetweenObjectPair|array $entity): self
     {

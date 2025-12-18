@@ -60,7 +60,7 @@ final class CreatedResponseProperty implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param PropertyShape $entity
+     * @param Property|PropertyShape $entity
      */
     public static function with(
         string $createdResourceID,
@@ -88,7 +88,7 @@ final class CreatedResponseProperty implements BaseModel
     /**
      * Defines a property.
      *
-     * @param PropertyShape $entity
+     * @param Property|PropertyShape $entity
      */
     public function withEntity(Property|array $entity): self
     {

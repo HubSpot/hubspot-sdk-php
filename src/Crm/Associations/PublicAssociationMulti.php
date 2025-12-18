@@ -66,9 +66,9 @@ final class PublicAssociationMulti implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param PublicObjectIDShape $from
+     * @param PublicObjectID|PublicObjectIDShape $from
      * @param list<AssociatedIDShape> $to
-     * @param PagingShape $paging
+     * @param Paging|PagingShape|null $paging
      */
     public static function with(
         PublicObjectID|array $from,
@@ -86,7 +86,7 @@ final class PublicAssociationMulti implements BaseModel
     }
 
     /**
-     * @param PublicObjectIDShape $from
+     * @param PublicObjectID|PublicObjectIDShape $from
      */
     public function withFrom(PublicObjectID|array $from): self
     {
@@ -110,7 +110,7 @@ final class PublicAssociationMulti implements BaseModel
     }
 
     /**
-     * @param PagingShape $paging
+     * @param Paging|PagingShape $paging
      */
     public function withPaging(Paging|array $paging): self
     {

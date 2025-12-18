@@ -56,7 +56,7 @@ final class PublicChannelAccountStagingTokenUpdateRequest implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param PublicDeliveryIdentifierShape $deliveryIdentifier
+     * @param PublicDeliveryIdentifier|PublicDeliveryIdentifierShape $deliveryIdentifier
      */
     public static function with(
         string $accountName,
@@ -79,7 +79,7 @@ final class PublicChannelAccountStagingTokenUpdateRequest implements BaseModel
     }
 
     /**
-     * @param PublicDeliveryIdentifierShape $deliveryIdentifier
+     * @param PublicDeliveryIdentifier|PublicDeliveryIdentifierShape $deliveryIdentifier
      */
     public function withDeliveryIdentifier(
         PublicDeliveryIdentifier|array $deliveryIdentifier

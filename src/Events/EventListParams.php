@@ -26,11 +26,11 @@ use HubspotSDK\Events\EventListParams\Property;
  *   eventType?: string|null,
  *   limit?: int|null,
  *   objectID?: int|null,
- *   objectProperty?: ObjectPropertyShape|null,
+ *   objectProperty?: null|ObjectProperty|ObjectPropertyShape,
  *   objectType?: string|null,
  *   occurredAfter?: \DateTimeInterface|null,
  *   occurredBefore?: \DateTimeInterface|null,
- *   property?: PropertyShape|null,
+ *   property?: null|Property|PropertyShape,
  *   sort?: list<string>|null,
  * }
  */
@@ -117,10 +117,10 @@ final class EventListParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<string> $id
-     * @param ObjectPropertyShape $objectProperty
-     * @param PropertyShape $property
-     * @param list<string> $sort
+     * @param list<string>|null $id
+     * @param ObjectProperty|ObjectPropertyShape|null $objectProperty
+     * @param Property|PropertyShape|null $property
+     * @param list<string>|null $sort
      */
     public static function with(
         ?array $id = null,
@@ -220,7 +220,7 @@ final class EventListParams implements BaseModel
     }
 
     /**
-     * @param ObjectPropertyShape $objectProperty
+     * @param ObjectProperty|ObjectPropertyShape $objectProperty
      */
     public function withObjectProperty(
         ObjectProperty|array $objectProperty
@@ -265,7 +265,7 @@ final class EventListParams implements BaseModel
     }
 
     /**
-     * @param PropertyShape $property
+     * @param Property|PropertyShape $property
      */
     public function withProperty(Property|array $property): self
     {

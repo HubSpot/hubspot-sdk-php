@@ -81,9 +81,9 @@ final class FeedbackSubmissionListParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<string> $associations
-     * @param list<string> $properties
-     * @param list<string> $propertiesWithHistory
+     * @param list<string>|null $associations
+     * @param list<string>|null $properties
+     * @param list<string>|null $propertiesWithHistory
      */
     public static function with(
         ?string $after = null,

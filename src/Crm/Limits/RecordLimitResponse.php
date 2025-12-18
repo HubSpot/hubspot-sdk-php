@@ -57,7 +57,7 @@ final class RecordLimitResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param CustomObjectRecordLimitResponseShape $customObjectTypes
+     * @param CustomObjectRecordLimitResponse|CustomObjectRecordLimitResponseShape $customObjectTypes
      * @param list<LimitAndUsageForObjectTypeShape> $hubspotDefinedObjectTypes
      */
     public static function with(
@@ -73,7 +73,7 @@ final class RecordLimitResponse implements BaseModel
     }
 
     /**
-     * @param CustomObjectRecordLimitResponseShape $customObjectTypes
+     * @param CustomObjectRecordLimitResponse|CustomObjectRecordLimitResponseShape $customObjectTypes
      */
     public function withCustomObjectTypes(
         CustomObjectRecordLimitResponse|array $customObjectTypes

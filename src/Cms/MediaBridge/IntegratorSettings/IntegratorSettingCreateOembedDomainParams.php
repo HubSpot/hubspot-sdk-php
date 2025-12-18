@@ -19,7 +19,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-import-type EndpointsShape from \HubspotSDK\Cms\MediaBridge\Endpoints
  *
  * @phpstan-type IntegratorSettingCreateOembedDomainParamsShape = array{
- *   endpoints: EndpointsShape, portalID?: int|null
+ *   endpoints: Endpoints|EndpointsShape, portalID?: int|null
  * }
  */
 final class IntegratorSettingCreateOembedDomainParams implements BaseModel
@@ -58,7 +58,7 @@ final class IntegratorSettingCreateOembedDomainParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param EndpointsShape $endpoints
+     * @param Endpoints|EndpointsShape $endpoints
      */
     public static function with(
         Endpoints|array $endpoints,
@@ -74,7 +74,7 @@ final class IntegratorSettingCreateOembedDomainParams implements BaseModel
     }
 
     /**
-     * @param EndpointsShape $endpoints
+     * @param Endpoints|EndpointsShape $endpoints
      */
     public function withEndpoints(Endpoints|array $endpoints): self
     {

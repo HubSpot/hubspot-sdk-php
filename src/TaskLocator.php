@@ -50,7 +50,7 @@ final class TaskLocator implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string,string> $links
+     * @param array<string,string>|null $links
      */
     public static function with(string $id, ?array $links = null): self
     {

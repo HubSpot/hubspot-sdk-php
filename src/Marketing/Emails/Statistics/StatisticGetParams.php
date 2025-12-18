@@ -63,7 +63,7 @@ final class StatisticGetParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<int> $emailIDs
+     * @param list<int>|null $emailIDs
      */
     public static function with(
         ?array $emailIDs = null,

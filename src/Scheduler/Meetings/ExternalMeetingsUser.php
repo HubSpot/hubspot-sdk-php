@@ -74,7 +74,7 @@ final class ExternalMeetingsUser implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param ExternalUserProfileShape $userProfile
+     * @param ExternalUserProfile|ExternalUserProfileShape $userProfile
      */
     public static function with(
         string $id,
@@ -127,7 +127,7 @@ final class ExternalMeetingsUser implements BaseModel
     }
 
     /**
-     * @param ExternalUserProfileShape $userProfile
+     * @param ExternalUserProfile|ExternalUserProfileShape $userProfile
      */
     public function withUserProfile(
         ExternalUserProfile|array $userProfile

@@ -26,7 +26,7 @@ use HubspotSDK\Crm\Timeline\TimelineEventIFrame;
  *   email?: string|null,
  *   extraData?: mixed,
  *   objectID?: string|null,
- *   timelineIFrame?: TimelineEventIFrameShape|null,
+ *   timelineIFrame?: null|TimelineEventIFrame|TimelineEventIFrameShape,
  *   timestamp?: \DateTimeInterface|null,
  *   utk?: string|null,
  * }
@@ -121,7 +121,7 @@ final class EventCreateParams implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param array<string,string> $tokens
-     * @param TimelineEventIFrameShape $timelineIFrame
+     * @param TimelineEventIFrame|TimelineEventIFrameShape|null $timelineIFrame
      */
     public static function with(
         string $eventTemplateID,
@@ -232,7 +232,7 @@ final class EventCreateParams implements BaseModel
     }
 
     /**
-     * @param TimelineEventIFrameShape $timelineIFrame
+     * @param TimelineEventIFrame|TimelineEventIFrameShape $timelineIFrame
      */
     public function withTimelineIFrame(
         TimelineEventIFrame|array $timelineIFrame

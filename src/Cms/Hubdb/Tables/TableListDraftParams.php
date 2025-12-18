@@ -119,7 +119,7 @@ final class TableListDraftParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<string> $sort
+     * @param list<string>|null $sort
      */
     public static function with(
         ?string $after = null,

@@ -133,9 +133,9 @@ final class PropertyUpdateParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param FieldType|value-of<FieldType> $fieldType
-     * @param list<OptionInputShape> $options
-     * @param Type|value-of<Type> $type
+     * @param FieldType|value-of<FieldType>|null $fieldType
+     * @param list<OptionInputShape>|null $options
+     * @param Type|value-of<Type>|null $type
      */
     public static function with(
         string $objectType,

@@ -55,7 +55,7 @@ final class PublicMessageStatus implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param StatusType|value-of<StatusType> $statusType
-     * @param PublicMessageFailureDetailsShape $failureDetails
+     * @param PublicMessageFailureDetails|PublicMessageFailureDetailsShape|null $failureDetails
      */
     public static function with(
         StatusType|string $statusType,
@@ -82,7 +82,7 @@ final class PublicMessageStatus implements BaseModel
     }
 
     /**
-     * @param PublicMessageFailureDetailsShape $failureDetails
+     * @param PublicMessageFailureDetails|PublicMessageFailureDetailsShape $failureDetails
      */
     public function withFailureDetails(
         PublicMessageFailureDetails|array $failureDetails

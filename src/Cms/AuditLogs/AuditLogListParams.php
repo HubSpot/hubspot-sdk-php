@@ -99,11 +99,11 @@ final class AuditLogListParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<string> $eventType
-     * @param list<string> $objectID
-     * @param list<string> $objectType
-     * @param list<string> $sort
-     * @param list<string> $userID
+     * @param list<string>|null $eventType
+     * @param list<string>|null $objectID
+     * @param list<string>|null $objectType
+     * @param list<string>|null $sort
+     * @param list<string>|null $userID
      */
     public static function with(
         ?string $after = null,

@@ -43,8 +43,8 @@ final class Paging implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param NextPageShape $next
-     * @param PreviousPageShape $prev
+     * @param NextPage|NextPageShape|null $next
+     * @param PreviousPage|PreviousPageShape|null $prev
      */
     public static function with(
         NextPage|array|null $next = null,
@@ -61,7 +61,7 @@ final class Paging implements BaseModel
     /**
      * Specifies the paging information needed to retrieve the next set of results in a paginated API response.
      *
-     * @param NextPageShape $next
+     * @param NextPage|NextPageShape $next
      */
     public function withNext(NextPage|array $next): self
     {
@@ -74,7 +74,7 @@ final class Paging implements BaseModel
     /**
      * specifies the paging information needed to retrieve the previous set of results in a paginated API response.
      *
-     * @param PreviousPageShape $prev
+     * @param PreviousPage|PreviousPageShape $prev
      */
     public function withPrev(PreviousPage|array $prev): self
     {

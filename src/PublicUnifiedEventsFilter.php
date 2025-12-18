@@ -18,9 +18,9 @@ use HubspotSDK\PublicUnifiedEventsFilter\FilterType;
  * @phpstan-type PublicUnifiedEventsFilterShape = array{
  *   filterLines: list<PublicEventFilterMetadataShape>,
  *   filterType: FilterType|value-of<FilterType>,
- *   coalescingRefineBy?: null|CoalescingRefineByShape|PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation,
+ *   coalescingRefineBy?: CoalescingRefineByShape|null,
  *   eventTypeID?: string|null,
- *   pruningRefineBy?: null|PruningRefineByShape|PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation,
+ *   pruningRefineBy?: PruningRefineByShape|null,
  * }
  */
 final class PublicUnifiedEventsFilter implements BaseModel
@@ -71,8 +71,8 @@ final class PublicUnifiedEventsFilter implements BaseModel
      *
      * @param list<PublicEventFilterMetadataShape> $filterLines
      * @param FilterType|value-of<FilterType> $filterType
-     * @param CoalescingRefineByShape $coalescingRefineBy
-     * @param PruningRefineByShape $pruningRefineBy
+     * @param CoalescingRefineByShape|null $coalescingRefineBy
+     * @param PruningRefineByShape|null $pruningRefineBy
      */
     public static function with(
         array $filterLines,

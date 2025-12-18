@@ -22,7 +22,7 @@ use HubspotSDK\Marketing\Forms\HubSpotFormDefinitionCreateRequest\FormType;
  *   displayOptions: FormDisplayOptions|FormDisplayOptionsShape,
  *   fieldGroups: list<mixed>,
  *   formType: FormType|value-of<FormType>,
- *   legalConsentOptions: LegalConsentOptionsNone|LegalConsentOptionsLegitimateInterest|LegalConsentOptionsExplicitConsentToProcess|LegalConsentOptionsImplicitConsentToProcess|LegalConsentOptionsShape,
+ *   legalConsentOptions: LegalConsentOptionsShape,
  *   name: string,
  *   updatedAt: \DateTimeInterface,
  *   archivedAt?: \DateTimeInterface|null,
@@ -111,8 +111,8 @@ final class HubSpotFormDefinitionCreateRequest implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param HubSpotFormConfigurationShape $configuration
-     * @param FormDisplayOptionsShape $displayOptions
+     * @param HubSpotFormConfiguration|HubSpotFormConfigurationShape $configuration
+     * @param FormDisplayOptions|FormDisplayOptionsShape $displayOptions
      * @param list<mixed> $fieldGroups
      * @param LegalConsentOptionsShape $legalConsentOptions
      * @param FormType|value-of<FormType> $formType
@@ -155,7 +155,7 @@ final class HubSpotFormDefinitionCreateRequest implements BaseModel
     }
 
     /**
-     * @param HubSpotFormConfigurationShape $configuration
+     * @param HubSpotFormConfiguration|HubSpotFormConfigurationShape $configuration
      */
     public function withConfiguration(
         HubSpotFormConfiguration|array $configuration
@@ -177,7 +177,7 @@ final class HubSpotFormDefinitionCreateRequest implements BaseModel
     /**
      * Options for styling the form.
      *
-     * @param FormDisplayOptionsShape $displayOptions
+     * @param FormDisplayOptions|FormDisplayOptionsShape $displayOptions
      */
     public function withDisplayOptions(
         FormDisplayOptions|array $displayOptions

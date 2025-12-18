@@ -284,10 +284,10 @@ final class FileOperationSearchParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<int> $ids
-     * @param list<int> $parentFolderIDs
-     * @param list<string> $properties
-     * @param list<string> $sort
+     * @param list<int>|null $ids
+     * @param list<int>|null $parentFolderIDs
+     * @param list<string>|null $properties
+     * @param list<string>|null $sort
      */
     public static function with(
         ?string $after = null,

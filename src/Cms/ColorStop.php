@@ -48,7 +48,7 @@ final class ColorStop implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param RgbaColorShape $color
+     * @param RgbaColor|RgbaColorShape $color
      */
     public static function with(RgbaColor|array $color): self
     {
@@ -62,7 +62,7 @@ final class ColorStop implements BaseModel
     /**
      * A color defined by RGB values.
      *
-     * @param RgbaColorShape $color
+     * @param RgbaColor|RgbaColorShape $color
      */
     public function withColor(RgbaColor|array $color): self
     {

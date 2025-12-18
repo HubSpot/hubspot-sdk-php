@@ -76,8 +76,8 @@ final class VersionPage implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param PageShape $object
-     * @param VersionUserShape $user
+     * @param Page|PageShape $object
+     * @param VersionUser|VersionUserShape $user
      */
     public static function with(
         string $id,
@@ -109,7 +109,7 @@ final class VersionPage implements BaseModel
     /**
      * Model definition for a landing page or site page.
      *
-     * @param PageShape $object
+     * @param Page|PageShape $object
      */
     public function withObject(Page|array $object): self
     {
@@ -130,7 +130,7 @@ final class VersionPage implements BaseModel
     /**
      * Model definition for a version user. Contains addition information about the user who created a version.
      *
-     * @param VersionUserShape $user
+     * @param VersionUser|VersionUserShape $user
      */
     public function withUser(VersionUser|array $user): self
     {

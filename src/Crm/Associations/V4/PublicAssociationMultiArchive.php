@@ -52,7 +52,7 @@ final class PublicAssociationMultiArchive implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param PublicObjectIDShape $from
+     * @param PublicObjectID|PublicObjectIDShape $from
      * @param list<PublicObjectIDShape> $to
      */
     public static function with(PublicObjectID|array $from, array $to): self
@@ -66,7 +66,7 @@ final class PublicAssociationMultiArchive implements BaseModel
     }
 
     /**
-     * @param PublicObjectIDShape $from
+     * @param PublicObjectID|PublicObjectIDShape $from
      */
     public function withFrom(PublicObjectID|array $from): self
     {

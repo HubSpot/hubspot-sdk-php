@@ -27,7 +27,7 @@ use HubspotSDK\PublicUnifiedEventsFilterBranch;
  *   listMembershipFilterBranches: list<mixed>,
  *   shouldReEnroll: bool,
  *   type: Type|value-of<Type>,
- *   refinementCriteria?: null|RefinementCriteriaShape|PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch,
+ *   refinementCriteria?: RefinementCriteriaShape|null,
  * }
  */
 final class APIEventBasedEnrollmentCriteria implements BaseModel
@@ -89,7 +89,7 @@ final class APIEventBasedEnrollmentCriteria implements BaseModel
      * @param list<mixed> $eventFilterBranches
      * @param list<mixed> $listMembershipFilterBranches
      * @param Type|value-of<Type> $type
-     * @param RefinementCriteriaShape $refinementCriteria
+     * @param RefinementCriteriaShape|null $refinementCriteria
      */
     public static function with(
         array $eventFilterBranches,

@@ -90,8 +90,8 @@ final class PublicSequenceStepResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param PublicEmailPatternResponseShape $emailPattern
-     * @param PublicTaskPatternResponseShape $taskPattern
+     * @param PublicEmailPatternResponse|PublicEmailPatternResponseShape|null $emailPattern
+     * @param PublicTaskPatternResponse|PublicTaskPatternResponseShape|null $taskPattern
      */
     public static function with(
         string $id,
@@ -167,7 +167,7 @@ final class PublicSequenceStepResponse implements BaseModel
     }
 
     /**
-     * @param PublicEmailPatternResponseShape $emailPattern
+     * @param PublicEmailPatternResponse|PublicEmailPatternResponseShape $emailPattern
      */
     public function withEmailPattern(
         PublicEmailPatternResponse|array $emailPattern
@@ -179,7 +179,7 @@ final class PublicSequenceStepResponse implements BaseModel
     }
 
     /**
-     * @param PublicTaskPatternResponseShape $taskPattern
+     * @param PublicTaskPatternResponse|PublicTaskPatternResponseShape $taskPattern
      */
     public function withTaskPattern(
         PublicTaskPatternResponse|array $taskPattern

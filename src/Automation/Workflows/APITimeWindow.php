@@ -59,8 +59,8 @@ final class APITimeWindow implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param Day|value-of<Day> $day
-     * @param APITimeOfDayShape $endTime
-     * @param APITimeOfDayShape $startTime
+     * @param APITimeOfDay|APITimeOfDayShape|null $endTime
+     * @param APITimeOfDay|APITimeOfDayShape|null $startTime
      */
     public static function with(
         Day|string $day,
@@ -89,7 +89,7 @@ final class APITimeWindow implements BaseModel
     }
 
     /**
-     * @param APITimeOfDayShape $endTime
+     * @param APITimeOfDay|APITimeOfDayShape $endTime
      */
     public function withEndTime(APITimeOfDay|array $endTime): self
     {
@@ -100,7 +100,7 @@ final class APITimeWindow implements BaseModel
     }
 
     /**
-     * @param APITimeOfDayShape $startTime
+     * @param APITimeOfDay|APITimeOfDayShape $startTime
      */
     public function withStartTime(APITimeOfDay|array $startTime): self
     {

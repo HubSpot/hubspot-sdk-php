@@ -16,7 +16,7 @@ use HubspotSDK\PublicAssociationInListFilter\FilterType;
  * @phpstan-type PublicAssociationInListFilterShape = array{
  *   associationCategory: string,
  *   associationTypeID: int,
- *   coalescingRefineBy: PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation|CoalescingRefineByShape,
+ *   coalescingRefineBy: CoalescingRefineByShape,
  *   filterType: FilterType|value-of<FilterType>,
  *   listID: string,
  *   operator: string,

@@ -73,7 +73,7 @@ final class CampaignListParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<string> $properties
+     * @param list<string>|null $properties
      */
     public static function with(
         ?string $after = null,

@@ -105,7 +105,7 @@ final class AccessTokenInfoResponse implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<string> $scopes
-     * @param SignedAccessTokenShape $signedAccessToken
+     * @param SignedAccessToken|SignedAccessTokenShape|null $signedAccessToken
      */
     public static function with(
         string $token,
@@ -214,7 +214,7 @@ final class AccessTokenInfoResponse implements BaseModel
     }
 
     /**
-     * @param SignedAccessTokenShape $signedAccessToken
+     * @param SignedAccessToken|SignedAccessTokenShape $signedAccessToken
      */
     public function withSignedAccessToken(
         SignedAccessToken|array $signedAccessToken

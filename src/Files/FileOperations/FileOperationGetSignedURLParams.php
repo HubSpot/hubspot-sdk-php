@@ -57,7 +57,7 @@ final class FileOperationGetSignedURLParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param Size|value-of<Size> $size
+     * @param Size|value-of<Size>|null $size
      */
     public static function with(
         ?int $expirationSeconds = null,

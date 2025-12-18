@@ -122,8 +122,8 @@ final class ImportFromURLInput implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param Access|value-of<Access> $access
-     * @param DuplicateValidationScope|value-of<DuplicateValidationScope> $duplicateValidationScope
-     * @param DuplicateValidationStrategy|value-of<DuplicateValidationStrategy> $duplicateValidationStrategy
+     * @param DuplicateValidationScope|value-of<DuplicateValidationScope>|null $duplicateValidationScope
+     * @param DuplicateValidationStrategy|value-of<DuplicateValidationStrategy>|null $duplicateValidationStrategy
      */
     public static function with(
         Access|string $access,

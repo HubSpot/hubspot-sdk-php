@@ -91,8 +91,8 @@ final class BatchResponseMarketingEventPublicDefaultResponse implements BaseMode
      *
      * @param list<MarketingEventPublicDefaultResponseShape> $results
      * @param Status|value-of<Status> $status
-     * @param list<StandardErrorShape> $errors
-     * @param array<string,string> $links
+     * @param list<StandardErrorShape>|null $errors
+     * @param array<string,string>|null $links
      */
     public static function with(
         \DateTimeInterface $completedAt,

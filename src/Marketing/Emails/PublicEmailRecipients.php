@@ -46,8 +46,8 @@ final class PublicEmailRecipients implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<string> $exclude
-     * @param list<string> $include
+     * @param list<string>|null $exclude
+     * @param list<string>|null $include
      */
     public static function with(
         ?array $exclude = null,

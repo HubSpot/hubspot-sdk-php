@@ -103,7 +103,7 @@ final class PublicSequenceSettingsResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param UnenrollmentSettingsResponseShape $unenrollmentSettings
+     * @param UnenrollmentSettingsResponse|UnenrollmentSettingsResponseShape|null $unenrollmentSettings
      */
     public static function with(
         string $id,
@@ -208,7 +208,7 @@ final class PublicSequenceSettingsResponse implements BaseModel
     }
 
     /**
-     * @param UnenrollmentSettingsResponseShape $unenrollmentSettings
+     * @param UnenrollmentSettingsResponse|UnenrollmentSettingsResponseShape $unenrollmentSettings
      */
     public function withUnenrollmentSettings(
         UnenrollmentSettingsResponse|array $unenrollmentSettings

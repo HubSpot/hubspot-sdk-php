@@ -364,22 +364,22 @@ final class PublicEmail implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<string> $allEmailCampaignIDs
-     * @param PublicEmailContentShape $content
-     * @param EmailTemplateMode|value-of<EmailTemplateMode> $emailTemplateMode
-     * @param PublicEmailFromDetailsShape $from
-     * @param Language|value-of<Language> $language
-     * @param PublicRssEmailDetailsShape $rssData
-     * @param State|value-of<State> $state
-     * @param EmailStatisticsDataShape $stats
-     * @param PublicEmailSubscriptionDetailsShape $subscriptionDetails
-     * @param list<string> $teamsWithAccess
-     * @param PublicEmailTestingDetailsShape $testing
-     * @param PublicEmailToDetailsShape $to
-     * @param Type|value-of<Type> $type
-     * @param list<string> $usersWithAccess
-     * @param PublicWebversionDetailsShape $webversion
-     * @param list<string> $workflowNames
+     * @param list<string>|null $allEmailCampaignIDs
+     * @param PublicEmailContent|PublicEmailContentShape|null $content
+     * @param EmailTemplateMode|value-of<EmailTemplateMode>|null $emailTemplateMode
+     * @param PublicEmailFromDetails|PublicEmailFromDetailsShape|null $from
+     * @param Language|value-of<Language>|null $language
+     * @param PublicRssEmailDetails|PublicRssEmailDetailsShape|null $rssData
+     * @param State|value-of<State>|null $state
+     * @param EmailStatisticsData|EmailStatisticsDataShape|null $stats
+     * @param PublicEmailSubscriptionDetails|PublicEmailSubscriptionDetailsShape|null $subscriptionDetails
+     * @param list<string>|null $teamsWithAccess
+     * @param PublicEmailTestingDetails|PublicEmailTestingDetailsShape|null $testing
+     * @param PublicEmailToDetails|PublicEmailToDetailsShape|null $to
+     * @param Type|value-of<Type>|null $type
+     * @param list<string>|null $usersWithAccess
+     * @param PublicWebversionDetails|PublicWebversionDetailsShape|null $webversion
+     * @param list<string>|null $workflowNames
      */
     public static function with(
         bool $isAb,
@@ -594,7 +594,7 @@ final class PublicEmail implements BaseModel
     /**
      * Data structure representing the content of the email.
      *
-     * @param PublicEmailContentShape $content
+     * @param PublicEmailContent|PublicEmailContentShape $content
      */
     public function withContent(PublicEmailContent|array $content): self
     {
@@ -687,7 +687,7 @@ final class PublicEmail implements BaseModel
     /**
      * Data structure representing the from fields on the email.
      *
-     * @param PublicEmailFromDetailsShape $from
+     * @param PublicEmailFromDetails|PublicEmailFromDetailsShape $from
      */
     public function withFrom(PublicEmailFromDetails|array $from): self
     {
@@ -824,7 +824,7 @@ final class PublicEmail implements BaseModel
     /**
      * RSS related data if it is a blog or rss email.
      *
-     * @param PublicRssEmailDetailsShape $rssData
+     * @param PublicRssEmailDetails|PublicRssEmailDetailsShape $rssData
      */
     public function withRssData(PublicRssEmailDetails|array $rssData): self
     {
@@ -859,7 +859,7 @@ final class PublicEmail implements BaseModel
     }
 
     /**
-     * @param EmailStatisticsDataShape $stats
+     * @param EmailStatisticsData|EmailStatisticsDataShape $stats
      */
     public function withStats(EmailStatisticsData|array $stats): self
     {
@@ -894,7 +894,7 @@ final class PublicEmail implements BaseModel
     /**
      * Data structure representing the subscription fields of the email.
      *
-     * @param PublicEmailSubscriptionDetailsShape $subscriptionDetails
+     * @param PublicEmailSubscriptionDetails|PublicEmailSubscriptionDetailsShape $subscriptionDetails
      */
     public function withSubscriptionDetails(
         PublicEmailSubscriptionDetails|array $subscriptionDetails
@@ -919,7 +919,7 @@ final class PublicEmail implements BaseModel
     /**
      * AB testing related data. This property is only returned for AB type emails.
      *
-     * @param PublicEmailTestingDetailsShape $testing
+     * @param PublicEmailTestingDetails|PublicEmailTestingDetailsShape $testing
      */
     public function withTesting(PublicEmailTestingDetails|array $testing): self
     {
@@ -932,7 +932,7 @@ final class PublicEmail implements BaseModel
     /**
      * Data structure representing the to fields of the email.
      *
-     * @param PublicEmailToDetailsShape $to
+     * @param PublicEmailToDetails|PublicEmailToDetailsShape $to
      */
     public function withTo(PublicEmailToDetails|array $to): self
     {
@@ -997,7 +997,7 @@ final class PublicEmail implements BaseModel
     }
 
     /**
-     * @param PublicWebversionDetailsShape $webversion
+     * @param PublicWebversionDetails|PublicWebversionDetailsShape $webversion
      */
     public function withWebversion(
         PublicWebversionDetails|array $webversion

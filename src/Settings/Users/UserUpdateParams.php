@@ -80,8 +80,8 @@ final class UserUpdateParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param IDProperty|value-of<IDProperty> $idProperty
-     * @param list<string> $secondaryTeamIDs
+     * @param IDProperty|value-of<IDProperty>|null $idProperty
+     * @param list<string>|null $secondaryTeamIDs
      */
     public static function with(
         IDProperty|string|null $idProperty = null,

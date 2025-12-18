@@ -90,10 +90,10 @@ final class ExternalBookingInfo implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<ExternalUserBusyTimesShape> $allUsersBusyTimes
-     * @param ExternalMeetingsLinkSettingsShape $customParams
+     * @param ExternalMeetingsLinkSettings|ExternalMeetingsLinkSettingsShape $customParams
      * @param LinkType|value-of<LinkType> $linkType
-     * @param ExternalBrandingMetadataShape $brandingMetadata
-     * @param ExternalLinkAvailabilityShape $linkAvailability
+     * @param ExternalBrandingMetadata|ExternalBrandingMetadataShape|null $brandingMetadata
+     * @param ExternalLinkAvailability|ExternalLinkAvailabilityShape|null $linkAvailability
      */
     public static function with(
         array $allUsersBusyTimes,
@@ -130,7 +130,7 @@ final class ExternalBookingInfo implements BaseModel
     }
 
     /**
-     * @param ExternalMeetingsLinkSettingsShape $customParams
+     * @param ExternalMeetingsLinkSettings|ExternalMeetingsLinkSettingsShape $customParams
      */
     public function withCustomParams(
         ExternalMeetingsLinkSettings|array $customParams
@@ -169,7 +169,7 @@ final class ExternalBookingInfo implements BaseModel
     }
 
     /**
-     * @param ExternalBrandingMetadataShape $brandingMetadata
+     * @param ExternalBrandingMetadata|ExternalBrandingMetadataShape $brandingMetadata
      */
     public function withBrandingMetadata(
         ExternalBrandingMetadata|array $brandingMetadata
@@ -181,7 +181,7 @@ final class ExternalBookingInfo implements BaseModel
     }
 
     /**
-     * @param ExternalLinkAvailabilityShape $linkAvailability
+     * @param ExternalLinkAvailability|ExternalLinkAvailabilityShape $linkAvailability
      */
     public function withLinkAvailability(
         ExternalLinkAvailability|array $linkAvailability

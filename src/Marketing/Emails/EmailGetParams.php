@@ -70,7 +70,7 @@ final class EmailGetParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<string> $includedProperties
+     * @param list<string>|null $includedProperties
      */
     public static function with(
         ?bool $archived = null,

@@ -69,7 +69,7 @@ final class SetContainsString implements BaseModel
      *
      * @param array<string,mixed> $stringToCheck
      * @param Operator|value-of<Operator> $operator
-     * @param list<array<string,mixed>> $inputs
+     * @param list<array<string,mixed>>|null $inputs
      */
     public static function with(
         array $stringToCheck,

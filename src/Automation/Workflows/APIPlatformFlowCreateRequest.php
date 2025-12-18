@@ -40,11 +40,11 @@ use HubspotSDK\PublicUnifiedEventsFilterBranch;
  *   timeWindows: list<APITimeWindowShape>,
  *   type: Type|value-of<Type>,
  *   description?: string|null,
- *   enrollmentCriteria?: null|EnrollmentCriteriaShape|APIListBasedEnrollmentCriteria|APIEventBasedEnrollmentCriteria|APIManualEnrollmentCriteria,
- *   enrollmentSchedule?: null|EnrollmentScheduleShape|APIDailyEnrollmentSchedule|APIWeeklyEnrollmentSchedule|APIMonthlySpecificDaysEnrollmentSchedule|APIMonthlyRelativeDaysEnrollmentSchedule|APIYearlyEnrollmentSchedule|APIPropertyBasedEnrollmentSchedule,
+ *   enrollmentCriteria?: EnrollmentCriteriaShape|null,
+ *   enrollmentSchedule?: EnrollmentScheduleShape|null,
  *   name?: string|null,
  *   startActionID?: string|null,
- *   suppressionFilterBranch?: null|SuppressionFilterBranchShape|PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch,
+ *   suppressionFilterBranch?: SuppressionFilterBranchShape|null,
  *   uuid?: string|null,
  * }
  */
@@ -160,9 +160,9 @@ final class APIPlatformFlowCreateRequest implements BaseModel
      * @param FlowType|value-of<FlowType> $flowType
      * @param list<APITimeWindowShape> $timeWindows
      * @param Type|value-of<Type> $type
-     * @param EnrollmentCriteriaShape $enrollmentCriteria
-     * @param EnrollmentScheduleShape $enrollmentSchedule
-     * @param SuppressionFilterBranchShape $suppressionFilterBranch
+     * @param EnrollmentCriteriaShape|null $enrollmentCriteria
+     * @param EnrollmentScheduleShape|null $enrollmentSchedule
+     * @param SuppressionFilterBranchShape|null $suppressionFilterBranch
      */
     public static function with(
         array $actions,

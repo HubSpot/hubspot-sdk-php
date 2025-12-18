@@ -130,10 +130,10 @@ final class ExternalBehavioralEventTypeDefinition implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<AssociationDefinitionShape> $associations
-     * @param BehavioralEventTypeDefinitionLabelsShape $labels
+     * @param BehavioralEventTypeDefinitionLabels|BehavioralEventTypeDefinitionLabelsShape $labels
      * @param list<PropertyShape> $properties
-     * @param ComboEventRuleBranchShape $comboEventRules
-     * @param TrackingType|value-of<TrackingType> $trackingType
+     * @param ComboEventRuleBranch|ComboEventRuleBranchShape|null $comboEventRules
+     * @param TrackingType|value-of<TrackingType>|null $trackingType
      */
     public static function with(
         string $id,
@@ -210,7 +210,7 @@ final class ExternalBehavioralEventTypeDefinition implements BaseModel
     }
 
     /**
-     * @param BehavioralEventTypeDefinitionLabelsShape $labels
+     * @param BehavioralEventTypeDefinitionLabels|BehavioralEventTypeDefinitionLabelsShape $labels
      */
     public function withLabels(
         BehavioralEventTypeDefinitionLabels|array $labels
@@ -249,7 +249,7 @@ final class ExternalBehavioralEventTypeDefinition implements BaseModel
     }
 
     /**
-     * @param ComboEventRuleBranchShape $comboEventRules
+     * @param ComboEventRuleBranch|ComboEventRuleBranchShape $comboEventRules
      */
     public function withComboEventRules(
         ComboEventRuleBranch|array $comboEventRules

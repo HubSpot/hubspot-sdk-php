@@ -73,7 +73,7 @@ final class CollectionResponseWithTotalBlogAuthorForwardPaging implements BaseMo
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<BlogAuthorShape> $results
-     * @param ForwardPagingShape $paging
+     * @param ForwardPaging|ForwardPagingShape|null $paging
      */
     public static function with(
         array $results,
@@ -115,7 +115,7 @@ final class CollectionResponseWithTotalBlogAuthorForwardPaging implements BaseMo
     }
 
     /**
-     * @param ForwardPagingShape $paging
+     * @param ForwardPaging|ForwardPagingShape $paging
      */
     public function withPaging(ForwardPaging|array $paging): self
     {

@@ -56,7 +56,7 @@ final class CollectionResponseAssociationSpecWithLabel implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<AssociationSpecWithLabelShape> $results
-     * @param PagingShape $paging
+     * @param Paging|PagingShape|null $paging
      */
     public static function with(
         array $results,
@@ -83,7 +83,7 @@ final class CollectionResponseAssociationSpecWithLabel implements BaseModel
     }
 
     /**
-     * @param PagingShape $paging
+     * @param Paging|PagingShape $paging
      */
     public function withPaging(Paging|array $paging): self
     {

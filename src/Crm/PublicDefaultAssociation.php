@@ -64,9 +64,9 @@ final class PublicDefaultAssociation implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param AssociationSpecShape $associationSpec
-     * @param PublicObjectIDShape $from
-     * @param PublicObjectIDShape $to
+     * @param AssociationSpec|AssociationSpecShape $associationSpec
+     * @param PublicObjectID|PublicObjectIDShape $from
+     * @param PublicObjectID|PublicObjectIDShape $to
      */
     public static function with(
         AssociationSpec|array $associationSpec,
@@ -85,7 +85,7 @@ final class PublicDefaultAssociation implements BaseModel
     /**
      * Defines the type, direction, and details of the relationship between two CRM objects.
      *
-     * @param AssociationSpecShape $associationSpec
+     * @param AssociationSpec|AssociationSpecShape $associationSpec
      */
     public function withAssociationSpec(
         AssociationSpec|array $associationSpec
@@ -97,7 +97,7 @@ final class PublicDefaultAssociation implements BaseModel
     }
 
     /**
-     * @param PublicObjectIDShape $from
+     * @param PublicObjectID|PublicObjectIDShape $from
      */
     public function withFrom(PublicObjectID|array $from): self
     {
@@ -108,7 +108,7 @@ final class PublicDefaultAssociation implements BaseModel
     }
 
     /**
-     * @param PublicObjectIDShape $to
+     * @param PublicObjectID|PublicObjectIDShape $to
      */
     public function withTo(PublicObjectID|array $to): self
     {

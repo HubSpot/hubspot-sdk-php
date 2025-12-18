@@ -76,7 +76,7 @@ final class ObjectDefinitionResponse implements BaseModel
      *
      * @param list<PropertyDefinitionShape> $properties
      * @param list<GroupViewShape> $propertyGroups
-     * @param InboundDBObjectTypeShape $schema
+     * @param InboundDBObjectType|InboundDBObjectTypeShape|null $schema
      */
     public static function with(
         string $objectTypeID,
@@ -136,7 +136,7 @@ final class ObjectDefinitionResponse implements BaseModel
     }
 
     /**
-     * @param InboundDBObjectTypeShape $schema
+     * @param InboundDBObjectType|InboundDBObjectTypeShape $schema
      */
     public function withSchema(InboundDBObjectType|array $schema): self
     {

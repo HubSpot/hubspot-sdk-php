@@ -101,7 +101,7 @@ final class PublicSequenceResponse implements BaseModel
      *
      * @param list<PublicSequenceStepDependencyResponseShape> $dependencies
      * @param list<PublicSequenceStepResponseShape> $steps
-     * @param PublicSequenceSettingsResponseShape $settings
+     * @param PublicSequenceSettingsResponse|PublicSequenceSettingsResponseShape|null $settings
      */
     public static function with(
         string $id,
@@ -201,7 +201,7 @@ final class PublicSequenceResponse implements BaseModel
     }
 
     /**
-     * @param PublicSequenceSettingsResponseShape $settings
+     * @param PublicSequenceSettingsResponse|PublicSequenceSettingsResponseShape $settings
      */
     public function withSettings(
         PublicSequenceSettingsResponse|array $settings

@@ -144,10 +144,10 @@ final class ExternalMeetingsLinkSettings implements BaseModel
      * @param array<string,ExternalClosedRangeShape> $availability
      * @param list<int> $durations
      * @param list<ExternalLinkFormFieldShape> $formFields
-     * @param ExternalLinkDisplayInfoShape $displayInfo
-     * @param ExternalGuestSettingsShape $guestSettings
-     * @param ExternalLegalConsentOptionsShape $legalConsentOptions
-     * @param ExternalMeetingsWelcomeScreenInfoShape $welcomeScreenInfo
+     * @param ExternalLinkDisplayInfo|ExternalLinkDisplayInfoShape|null $displayInfo
+     * @param ExternalGuestSettings|ExternalGuestSettingsShape|null $guestSettings
+     * @param ExternalLegalConsentOptions|ExternalLegalConsentOptionsShape|null $legalConsentOptions
+     * @param ExternalMeetingsWelcomeScreenInfo|ExternalMeetingsWelcomeScreenInfoShape|null $welcomeScreenInfo
      */
     public static function with(
         array $availability,
@@ -287,7 +287,7 @@ final class ExternalMeetingsLinkSettings implements BaseModel
     }
 
     /**
-     * @param ExternalLinkDisplayInfoShape $displayInfo
+     * @param ExternalLinkDisplayInfo|ExternalLinkDisplayInfoShape $displayInfo
      */
     public function withDisplayInfo(
         ExternalLinkDisplayInfo|array $displayInfo
@@ -299,7 +299,7 @@ final class ExternalMeetingsLinkSettings implements BaseModel
     }
 
     /**
-     * @param ExternalGuestSettingsShape $guestSettings
+     * @param ExternalGuestSettings|ExternalGuestSettingsShape $guestSettings
      */
     public function withGuestSettings(
         ExternalGuestSettings|array $guestSettings
@@ -319,7 +319,7 @@ final class ExternalMeetingsLinkSettings implements BaseModel
     }
 
     /**
-     * @param ExternalLegalConsentOptionsShape $legalConsentOptions
+     * @param ExternalLegalConsentOptions|ExternalLegalConsentOptionsShape $legalConsentOptions
      */
     public function withLegalConsentOptions(
         ExternalLegalConsentOptions|array $legalConsentOptions
@@ -355,7 +355,7 @@ final class ExternalMeetingsLinkSettings implements BaseModel
     }
 
     /**
-     * @param ExternalMeetingsWelcomeScreenInfoShape $welcomeScreenInfo
+     * @param ExternalMeetingsWelcomeScreenInfo|ExternalMeetingsWelcomeScreenInfoShape $welcomeScreenInfo
      */
     public function withWelcomeScreenInfo(
         ExternalMeetingsWelcomeScreenInfo|array $welcomeScreenInfo

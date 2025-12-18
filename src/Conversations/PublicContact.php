@@ -52,7 +52,7 @@ final class PublicContact implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param ContactProfileShape $contactProfile
+     * @param ContactProfile|ContactProfileShape $contactProfile
      * @param Type|value-of<Type> $type
      */
     public static function with(
@@ -68,7 +68,7 @@ final class PublicContact implements BaseModel
     }
 
     /**
-     * @param ContactProfileShape $contactProfile
+     * @param ContactProfile|ContactProfileShape $contactProfile
      */
     public function withContactProfile(
         ContactProfile|array $contactProfile

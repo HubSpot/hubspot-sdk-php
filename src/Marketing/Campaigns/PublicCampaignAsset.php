@@ -53,7 +53,7 @@ final class PublicCampaignAsset implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string,float> $metrics
+     * @param array<string,float>|null $metrics
      */
     public static function with(
         string $id,

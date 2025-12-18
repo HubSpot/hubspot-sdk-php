@@ -50,7 +50,7 @@ final class RowMetaData implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param StylesShape $styles
+     * @param Styles|StylesShape $styles
      */
     public static function with(string $cssClass, Styles|array $styles): self
     {
@@ -71,7 +71,7 @@ final class RowMetaData implements BaseModel
     }
 
     /**
-     * @param StylesShape $styles
+     * @param Styles|StylesShape $styles
      */
     public function withStyles(Styles|array $styles): self
     {

@@ -21,9 +21,9 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @phpstan-type CardUpdateParamsShape = array{
  *   appID: int,
- *   actions?: CardActionsShape|null,
- *   display?: CardDisplayBodyShape|null,
- *   fetch?: CardFetchBodyPatchShape|null,
+ *   actions?: null|CardActions|CardActionsShape,
+ *   display?: null|CardDisplayBody|CardDisplayBodyShape,
+ *   fetch?: null|CardFetchBodyPatch|CardFetchBodyPatchShape,
  *   title?: string|null,
  * }
  */
@@ -84,9 +84,9 @@ final class CardUpdateParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param CardActionsShape $actions
-     * @param CardDisplayBodyShape $display
-     * @param CardFetchBodyPatchShape $fetch
+     * @param CardActions|CardActionsShape|null $actions
+     * @param CardDisplayBody|CardDisplayBodyShape|null $display
+     * @param CardFetchBodyPatch|CardFetchBodyPatchShape|null $fetch
      */
     public static function with(
         int $appID,
@@ -118,7 +118,7 @@ final class CardUpdateParams implements BaseModel
     /**
      * Configuration for custom user actions on cards.
      *
-     * @param CardActionsShape $actions
+     * @param CardActions|CardActionsShape $actions
      */
     public function withActions(CardActions|array $actions): self
     {
@@ -131,7 +131,7 @@ final class CardUpdateParams implements BaseModel
     /**
      * Configuration for displayed info on a card.
      *
-     * @param CardDisplayBodyShape $display
+     * @param CardDisplayBody|CardDisplayBodyShape $display
      */
     public function withDisplay(CardDisplayBody|array $display): self
     {
@@ -144,7 +144,7 @@ final class CardUpdateParams implements BaseModel
     /**
      * Variant of CardFetchBody with fields as optional for patches.
      *
-     * @param CardFetchBodyPatchShape $fetch
+     * @param CardFetchBodyPatch|CardFetchBodyPatchShape $fetch
      */
     public function withFetch(CardFetchBodyPatch|array $fetch): self
     {

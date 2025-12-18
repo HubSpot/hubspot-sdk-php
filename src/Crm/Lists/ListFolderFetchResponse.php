@@ -47,7 +47,7 @@ final class ListFolderFetchResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param PublicListFolderShape $folder
+     * @param PublicListFolder|PublicListFolderShape $folder
      */
     public static function with(PublicListFolder|array $folder): self
     {
@@ -59,7 +59,7 @@ final class ListFolderFetchResponse implements BaseModel
     }
 
     /**
-     * @param PublicListFolderShape $folder
+     * @param PublicListFolder|PublicListFolderShape $folder
      */
     public function withFolder(PublicListFolder|array $folder): self
     {

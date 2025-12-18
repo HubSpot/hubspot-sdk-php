@@ -155,7 +155,7 @@ final class PhoneField implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<mixed> $dependentFields
-     * @param PhoneFieldValidationShape $validation
+     * @param PhoneFieldValidation|PhoneFieldValidationShape $validation
      * @param FieldType|value-of<FieldType> $fieldType
      */
     public static function with(
@@ -286,7 +286,7 @@ final class PhoneField implements BaseModel
     /**
      * Describes how a phone number should be validated.
      *
-     * @param PhoneFieldValidationShape $validation
+     * @param PhoneFieldValidation|PhoneFieldValidationShape $validation
      */
     public function withValidation(PhoneFieldValidation|array $validation): self
     {

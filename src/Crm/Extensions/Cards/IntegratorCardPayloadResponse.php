@@ -87,9 +87,9 @@ final class IntegratorCardPayloadResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param ResponseVersion|value-of<ResponseVersion> $responseVersion
-     * @param list<IntegratorObjectResultShape> $sections
-     * @param TopLevelActionsShape $topLevelActions
+     * @param ResponseVersion|value-of<ResponseVersion>|null $responseVersion
+     * @param list<IntegratorObjectResultShape>|null $sections
+     * @param TopLevelActions|TopLevelActionsShape|null $topLevelActions
      */
     public static function with(
         int $totalCount,
@@ -171,7 +171,7 @@ final class IntegratorCardPayloadResponse implements BaseModel
     }
 
     /**
-     * @param TopLevelActionsShape $topLevelActions
+     * @param TopLevelActions|TopLevelActionsShape $topLevelActions
      */
     public function withTopLevelActions(
         TopLevelActions|array $topLevelActions

@@ -12,8 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-import-type OperationShape from \HubspotSDK\PublicEventFilterMetadata\Operation
  *
  * @phpstan-type PublicEventFilterMetadataShape = array{
- *   operation: PublicBoolPropertyOperation|PublicNumberPropertyOperation|PublicStringPropertyOperation|PublicDateTimePropertyOperation|PublicRangedDatePropertyOperation|PublicComparativePropertyUpdatedOperation|PublicComparativeDatePropertyOperation|PublicRollingDateRangePropertyOperation|PublicRollingPropertyUpdatedOperation|PublicEnumerationPropertyOperation|PublicAllPropertyTypesOperation|PublicRangedNumberPropertyOperation|PublicMultiStringPropertyOperation|PublicDatePropertyOperation|PublicCalendarDatePropertyOperation|PublicTimePointOperation|PublicRangedTimeOperation|OperationShape,
- *   property: string,
+ *   operation: OperationShape, property: string
  * }
  */
 final class PublicEventFilterMetadata implements BaseModel

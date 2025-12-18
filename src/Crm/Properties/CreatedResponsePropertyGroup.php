@@ -59,7 +59,7 @@ final class CreatedResponsePropertyGroup implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param PropertyGroupShape $entity
+     * @param PropertyGroup|PropertyGroupShape $entity
      */
     public static function with(
         string $createdResourceID,
@@ -87,7 +87,7 @@ final class CreatedResponsePropertyGroup implements BaseModel
     /**
      * An ID for a group of properties.
      *
-     * @param PropertyGroupShape $entity
+     * @param PropertyGroup|PropertyGroupShape $entity
      */
     public function withEntity(PropertyGroup|array $entity): self
     {

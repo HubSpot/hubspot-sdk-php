@@ -85,8 +85,8 @@ final class ContactProfile implements BaseModel
      * @param list<ContactEmailShape> $emails
      * @param list<ContactPhoneShape> $phones
      * @param list<ContactURLShape> $urls
-     * @param ContactNameShape $name
-     * @param ContactOrgShape $org
+     * @param ContactName|ContactNameShape|null $name
+     * @param ContactOrg|ContactOrgShape|null $org
      */
     public static function with(
         array $addresses,
@@ -154,7 +154,7 @@ final class ContactProfile implements BaseModel
     }
 
     /**
-     * @param ContactNameShape $name
+     * @param ContactName|ContactNameShape $name
      */
     public function withName(ContactName|array $name): self
     {
@@ -165,7 +165,7 @@ final class ContactProfile implements BaseModel
     }
 
     /**
-     * @param ContactOrgShape $org
+     * @param ContactOrg|ContactOrgShape $org
      */
     public function withOrg(ContactOrg|array $org): self
     {

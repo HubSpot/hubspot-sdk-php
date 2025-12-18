@@ -67,8 +67,8 @@ final class PublicRelativeRangedTimestampRefineBy implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param PublicTimeOffsetShape $lowerBoundOffset
-     * @param PublicTimeOffsetShape $upperBoundOffset
+     * @param PublicTimeOffset|PublicTimeOffsetShape $lowerBoundOffset
+     * @param PublicTimeOffset|PublicTimeOffsetShape $upperBoundOffset
      * @param Type|value-of<Type> $type
      */
     public static function with(
@@ -88,7 +88,7 @@ final class PublicRelativeRangedTimestampRefineBy implements BaseModel
     }
 
     /**
-     * @param PublicTimeOffsetShape $lowerBoundOffset
+     * @param PublicTimeOffset|PublicTimeOffsetShape $lowerBoundOffset
      */
     public function withLowerBoundOffset(
         PublicTimeOffset|array $lowerBoundOffset
@@ -119,7 +119,7 @@ final class PublicRelativeRangedTimestampRefineBy implements BaseModel
     }
 
     /**
-     * @param PublicTimeOffsetShape $upperBoundOffset
+     * @param PublicTimeOffset|PublicTimeOffsetShape $upperBoundOffset
      */
     public function withUpperBoundOffset(
         PublicTimeOffset|array $upperBoundOffset

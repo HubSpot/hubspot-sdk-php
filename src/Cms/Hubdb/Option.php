@@ -129,8 +129,8 @@ final class Option implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param SimpleUserShape $createdBy
-     * @param SimpleUserShape $updatedBy
+     * @param SimpleUser|SimpleUserShape|null $createdBy
+     * @param SimpleUser|SimpleUserShape|null $updatedBy
      */
     public static function with(
         string $id,
@@ -238,7 +238,7 @@ final class Option implements BaseModel
     }
 
     /**
-     * @param SimpleUserShape $createdBy
+     * @param SimpleUser|SimpleUserShape $createdBy
      */
     public function withCreatedBy(SimpleUser|array $createdBy): self
     {
@@ -260,7 +260,7 @@ final class Option implements BaseModel
     }
 
     /**
-     * @param SimpleUserShape $updatedBy
+     * @param SimpleUser|SimpleUserShape $updatedBy
      */
     public function withUpdatedBy(SimpleUser|array $updatedBy): self
     {

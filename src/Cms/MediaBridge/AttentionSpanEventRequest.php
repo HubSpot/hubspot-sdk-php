@@ -119,7 +119,7 @@ final class AttentionSpanEventRequest implements BaseModel
      *
      * @param MediaType|value-of<MediaType> $mediaType
      * @param array<string,int> $rawDataMap
-     * @param AttentionSpanCalculatedValuesShape $derivedValues
+     * @param AttentionSpanCalculatedValues|AttentionSpanCalculatedValuesShape|null $derivedValues
      */
     public static function with(
         MediaType|string $mediaType,
@@ -225,7 +225,7 @@ final class AttentionSpanEventRequest implements BaseModel
     }
 
     /**
-     * @param AttentionSpanCalculatedValuesShape $derivedValues
+     * @param AttentionSpanCalculatedValues|AttentionSpanCalculatedValuesShape $derivedValues
      */
     public function withDerivedValues(
         AttentionSpanCalculatedValues|array $derivedValues

@@ -94,10 +94,10 @@ final class PublicEmailTestingDetails implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param AbSampleSizeDefault|value-of<AbSampleSizeDefault> $abSampleSizeDefault
-     * @param AbSamplingDefault|value-of<AbSamplingDefault> $abSamplingDefault
-     * @param AbStatus|value-of<AbStatus> $abStatus
-     * @param AbSuccessMetric|value-of<AbSuccessMetric> $abSuccessMetric
+     * @param AbSampleSizeDefault|value-of<AbSampleSizeDefault>|null $abSampleSizeDefault
+     * @param AbSamplingDefault|value-of<AbSamplingDefault>|null $abSamplingDefault
+     * @param AbStatus|value-of<AbStatus>|null $abStatus
+     * @param AbSuccessMetric|value-of<AbSuccessMetric>|null $abSuccessMetric
      */
     public static function with(
         AbSampleSizeDefault|string|null $abSampleSizeDefault = null,

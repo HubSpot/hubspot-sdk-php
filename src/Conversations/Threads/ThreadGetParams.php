@@ -45,7 +45,7 @@ final class ThreadGetParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<Association|value-of<Association>> $association
+     * @param list<Association|value-of<Association>>|null $association
      */
     public static function with(
         ?bool $archived = null,

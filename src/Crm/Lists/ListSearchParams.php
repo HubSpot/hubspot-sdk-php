@@ -109,8 +109,8 @@ final class ListSearchParams implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<string> $additionalProperties
-     * @param list<string> $listIDs
-     * @param list<string> $processingTypes
+     * @param list<string>|null $listIDs
+     * @param list<string>|null $processingTypes
      */
     public static function with(
         array $additionalProperties,

@@ -54,8 +54,8 @@ final class UnenrollmentSettingsResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param EmailSettingsResponseShape $emailSettings
-     * @param MeetingSettingsResponseShape $meetingSettings
+     * @param EmailSettingsResponse|EmailSettingsResponseShape $emailSettings
+     * @param MeetingSettingsResponse|MeetingSettingsResponseShape $meetingSettings
      */
     public static function with(
         EmailSettingsResponse|array $emailSettings,
@@ -70,7 +70,7 @@ final class UnenrollmentSettingsResponse implements BaseModel
     }
 
     /**
-     * @param EmailSettingsResponseShape $emailSettings
+     * @param EmailSettingsResponse|EmailSettingsResponseShape $emailSettings
      */
     public function withEmailSettings(
         EmailSettingsResponse|array $emailSettings
@@ -82,7 +82,7 @@ final class UnenrollmentSettingsResponse implements BaseModel
     }
 
     /**
-     * @param MeetingSettingsResponseShape $meetingSettings
+     * @param MeetingSettingsResponse|MeetingSettingsResponseShape $meetingSettings
      */
     public function withMeetingSettings(
         MeetingSettingsResponse|array $meetingSettings

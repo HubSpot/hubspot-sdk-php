@@ -77,7 +77,7 @@ final class SettingsResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param ThrottlingSettingsShape $throttling
+     * @param ThrottlingSettings|ThrottlingSettingsShape $throttling
      */
     public static function with(
         \DateTimeInterface $createdAt,
@@ -121,7 +121,7 @@ final class SettingsResponse implements BaseModel
     /**
      * Configuration details for webhook throttling.
      *
-     * @param ThrottlingSettingsShape $throttling
+     * @param ThrottlingSettings|ThrottlingSettingsShape $throttling
      */
     public function withThrottling(ThrottlingSettings|array $throttling): self
     {

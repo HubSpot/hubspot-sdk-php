@@ -52,8 +52,8 @@ final class EmailStatisticInterval implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param EmailStatisticsDataShape $aggregations
-     * @param IntervalShape $interval
+     * @param EmailStatisticsData|EmailStatisticsDataShape $aggregations
+     * @param Interval|IntervalShape $interval
      */
     public static function with(
         EmailStatisticsData|array $aggregations,
@@ -68,7 +68,7 @@ final class EmailStatisticInterval implements BaseModel
     }
 
     /**
-     * @param EmailStatisticsDataShape $aggregations
+     * @param EmailStatisticsData|EmailStatisticsDataShape $aggregations
      */
     public function withAggregations(
         EmailStatisticsData|array $aggregations
@@ -80,7 +80,7 @@ final class EmailStatisticInterval implements BaseModel
     }
 
     /**
-     * @param IntervalShape $interval
+     * @param Interval|IntervalShape $interval
      */
     public function withInterval(Interval|array $interval): self
     {

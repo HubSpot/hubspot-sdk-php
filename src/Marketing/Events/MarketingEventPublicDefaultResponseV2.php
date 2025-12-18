@@ -114,7 +114,7 @@ final class MarketingEventPublicDefaultResponseV2 implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<CrmPropertyWrapperShape> $customProperties
-     * @param AppInfoShape $appInfo
+     * @param AppInfo|AppInfoShape|null $appInfo
      */
     public static function with(
         \DateTimeInterface $createdAt,
@@ -197,7 +197,7 @@ final class MarketingEventPublicDefaultResponseV2 implements BaseModel
     }
 
     /**
-     * @param AppInfoShape $appInfo
+     * @param AppInfo|AppInfoShape $appInfo
      */
     public function withAppInfo(AppInfo|array $appInfo): self
     {

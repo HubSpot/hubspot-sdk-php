@@ -38,7 +38,7 @@ final class ListUpdateResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param PublicObjectListShape $updatedList
+     * @param PublicObjectList|PublicObjectListShape|null $updatedList
      */
     public static function with(
         PublicObjectList|array|null $updatedList = null
@@ -53,7 +53,7 @@ final class ListUpdateResponse implements BaseModel
     /**
      * An object list definition.
      *
-     * @param PublicObjectListShape $updatedList
+     * @param PublicObjectList|PublicObjectListShape $updatedList
      */
     public function withUpdatedList(PublicObjectList|array $updatedList): self
     {

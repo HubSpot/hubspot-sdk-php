@@ -84,11 +84,11 @@ final class PublicActionLabels implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string,string> $executionRules
-     * @param array<string,string> $inputFieldDescriptions
-     * @param array<string,string> $inputFieldLabels
-     * @param array<string,array<string,string>> $inputFieldOptionLabels
-     * @param array<string,string> $outputFieldLabels
+     * @param array<string,string>|null $executionRules
+     * @param array<string,string>|null $inputFieldDescriptions
+     * @param array<string,string>|null $inputFieldLabels
+     * @param array<string,array<string,string>>|null $inputFieldOptionLabels
+     * @param array<string,string>|null $outputFieldLabels
      */
     public static function with(
         string $actionName,

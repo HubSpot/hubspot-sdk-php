@@ -42,7 +42,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   archivedAt?: int|null,
  *   executionRules?: list<PublicExecutionTranslationRuleShape>|null,
  *   inputFieldDependencies?: list<InputFieldDependencyShape>|null,
- *   objectRequestOptions?: PublicObjectRequestOptionsShape|null,
+ *   objectRequestOptions?: null|PublicObjectRequestOptions|PublicObjectRequestOptionsShape,
  *   outputFields?: list<OutputFieldDefinitionShape>|null,
  * }
  */
@@ -135,10 +135,10 @@ final class DefinitionCreateParams implements BaseModel
      * @param list<InputFieldDefinitionShape> $inputFields
      * @param array<string,PublicActionLabelsShape> $labels
      * @param list<string> $objectTypes
-     * @param list<PublicExecutionTranslationRuleShape> $executionRules
-     * @param list<InputFieldDependencyShape> $inputFieldDependencies
-     * @param PublicObjectRequestOptionsShape $objectRequestOptions
-     * @param list<OutputFieldDefinitionShape> $outputFields
+     * @param list<PublicExecutionTranslationRuleShape>|null $executionRules
+     * @param list<InputFieldDependencyShape>|null $inputFieldDependencies
+     * @param PublicObjectRequestOptions|PublicObjectRequestOptionsShape|null $objectRequestOptions
+     * @param list<OutputFieldDefinitionShape>|null $outputFields
      */
     public static function with(
         string $actionURL,
@@ -263,7 +263,7 @@ final class DefinitionCreateParams implements BaseModel
     }
 
     /**
-     * @param PublicObjectRequestOptionsShape $objectRequestOptions
+     * @param PublicObjectRequestOptions|PublicObjectRequestOptionsShape $objectRequestOptions
      */
     public function withObjectRequestOptions(
         PublicObjectRequestOptions|array $objectRequestOptions

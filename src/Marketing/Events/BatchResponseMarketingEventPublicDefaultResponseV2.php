@@ -80,7 +80,7 @@ final class BatchResponseMarketingEventPublicDefaultResponseV2 implements BaseMo
      *
      * @param list<MarketingEventPublicDefaultResponseV2Shape> $results
      * @param Status|value-of<Status> $status
-     * @param array<string,string> $links
+     * @param array<string,string>|null $links
      */
     public static function with(
         \DateTimeInterface $completedAt,

@@ -17,7 +17,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @phpstan-type APIStaticBranchActionShape = array{
  *   actionID: string,
- *   inputValue: APIActionDataValue|APIObjectPropertyValue|APIStaticValue|APIRelativeDateTimeValue|APITimestampValue|APIIncrementValue|APIFetchedObjectPropertyValue|APIAppendObjectPropertyValue|APIStaticAppendValue|APIEnrollmentEventPropertyValue|InputValueShape,
+ *   inputValue: InputValueShape,
  *   staticBranches: list<APIStaticBranchShape>,
  *   type: Type|value-of<Type>,
  *   defaultBranch?: null|APIConnection|APIConnectionShape,
@@ -82,7 +82,7 @@ final class APIStaticBranchAction implements BaseModel
      * @param InputValueShape $inputValue
      * @param list<APIStaticBranchShape> $staticBranches
      * @param Type|value-of<Type> $type
-     * @param APIConnectionShape $defaultBranch
+     * @param APIConnection|APIConnectionShape|null $defaultBranch
      */
     public static function with(
         string $actionID,
@@ -148,7 +148,7 @@ final class APIStaticBranchAction implements BaseModel
     }
 
     /**
-     * @param APIConnectionShape $defaultBranch
+     * @param APIConnection|APIConnectionShape $defaultBranch
      */
     public function withDefaultBranch(APIConnection|array $defaultBranch): self
     {

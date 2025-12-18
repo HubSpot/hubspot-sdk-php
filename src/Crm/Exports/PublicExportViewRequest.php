@@ -131,7 +131,7 @@ final class PublicExportViewRequest implements BaseModel
      * @param Language|value-of<Language> $language
      * @param list<string> $objectProperties
      * @param ExportType|value-of<ExportType> $exportType
-     * @param PublicCrmSearchRequestShape $publicCrmSearchRequest
+     * @param PublicCrmSearchRequest|PublicCrmSearchRequestShape|null $publicCrmSearchRequest
      */
     public static function with(
         array $associatedObjectType,
@@ -277,7 +277,7 @@ final class PublicExportViewRequest implements BaseModel
     }
 
     /**
-     * @param PublicCrmSearchRequestShape $publicCrmSearchRequest
+     * @param PublicCrmSearchRequest|PublicCrmSearchRequestShape $publicCrmSearchRequest
      */
     public function withPublicCrmSearchRequest(
         PublicCrmSearchRequest|array $publicCrmSearchRequest

@@ -49,7 +49,7 @@ final class RevenueAttributionAggregate implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param CurrencyCode|value-of<CurrencyCode> $currencyCode
+     * @param CurrencyCode|value-of<CurrencyCode>|null $currencyCode
      */
     public static function with(
         ?int $contactsNumber = null,

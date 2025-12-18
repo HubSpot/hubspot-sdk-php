@@ -126,7 +126,7 @@ final class PublicThread implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param Status|value-of<Status> $status
-     * @param PublicThreadAssociationsShape $threadAssociations
+     * @param PublicThreadAssociations|PublicThreadAssociationsShape|null $threadAssociations
      */
     public static function with(
         string $id,
@@ -287,7 +287,7 @@ final class PublicThread implements BaseModel
     }
 
     /**
-     * @param PublicThreadAssociationsShape $threadAssociations
+     * @param PublicThreadAssociations|PublicThreadAssociationsShape $threadAssociations
      */
     public function withThreadAssociations(
         PublicThreadAssociations|array $threadAssociations

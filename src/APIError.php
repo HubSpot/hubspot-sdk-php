@@ -100,9 +100,9 @@ final class APIError implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string,list<string>> $context
-     * @param list<ErrorDetailShape> $errors
-     * @param array<string,string> $links
+     * @param array<string,list<string>>|null $context
+     * @param list<ErrorDetailShape>|null $errors
+     * @param array<string,string>|null $links
      */
     public static function with(
         string $category,

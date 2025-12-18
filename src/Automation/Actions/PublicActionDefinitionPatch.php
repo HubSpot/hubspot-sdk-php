@@ -79,13 +79,13 @@ final class PublicActionDefinitionPatch implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicExecutionTranslationRuleShape> $executionRules
-     * @param list<InputFieldDependencyShape> $inputFieldDependencies
-     * @param list<InputFieldDefinitionShape> $inputFields
-     * @param array<string,PublicActionLabelsShape> $labels
-     * @param PublicObjectRequestOptionsShape $objectRequestOptions
-     * @param list<string> $objectTypes
-     * @param list<OutputFieldDefinitionShape> $outputFields
+     * @param list<PublicExecutionTranslationRuleShape>|null $executionRules
+     * @param list<InputFieldDependencyShape>|null $inputFieldDependencies
+     * @param list<InputFieldDefinitionShape>|null $inputFields
+     * @param array<string,PublicActionLabelsShape>|null $labels
+     * @param PublicObjectRequestOptions|PublicObjectRequestOptionsShape|null $objectRequestOptions
+     * @param list<string>|null $objectTypes
+     * @param list<OutputFieldDefinitionShape>|null $outputFields
      */
     public static function with(
         ?string $actionURL = null,
@@ -167,7 +167,7 @@ final class PublicActionDefinitionPatch implements BaseModel
     }
 
     /**
-     * @param PublicObjectRequestOptionsShape $objectRequestOptions
+     * @param PublicObjectRequestOptions|PublicObjectRequestOptionsShape $objectRequestOptions
      */
     public function withObjectRequestOptions(
         PublicObjectRequestOptions|array $objectRequestOptions

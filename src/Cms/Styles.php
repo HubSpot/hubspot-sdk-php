@@ -98,10 +98,10 @@ final class Styles implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param RgbaColorShape $backgroundColor
-     * @param GradientShape $backgroundGradient
-     * @param BackgroundImageShape $backgroundImage
-     * @param array<string,BreakpointStylesShape> $breakpointStyles
+     * @param RgbaColor|RgbaColorShape $backgroundColor
+     * @param Gradient|GradientShape $backgroundGradient
+     * @param BackgroundImage|BackgroundImageShape $backgroundImage
+     * @param array<string,BreakpointStylesShape>|null $breakpointStyles
      */
     public static function with(
         RgbaColor|array $backgroundColor,
@@ -131,7 +131,7 @@ final class Styles implements BaseModel
     /**
      * A color defined by RGB values.
      *
-     * @param RgbaColorShape $backgroundColor
+     * @param RgbaColor|RgbaColorShape $backgroundColor
      */
     public function withBackgroundColor(RgbaColor|array $backgroundColor): self
     {
@@ -142,7 +142,7 @@ final class Styles implements BaseModel
     }
 
     /**
-     * @param GradientShape $backgroundGradient
+     * @param Gradient|GradientShape $backgroundGradient
      */
     public function withBackgroundGradient(
         Gradient|array $backgroundGradient
@@ -154,7 +154,7 @@ final class Styles implements BaseModel
     }
 
     /**
-     * @param BackgroundImageShape $backgroundImage
+     * @param BackgroundImage|BackgroundImageShape $backgroundImage
      */
     public function withBackgroundImage(
         BackgroundImage|array $backgroundImage

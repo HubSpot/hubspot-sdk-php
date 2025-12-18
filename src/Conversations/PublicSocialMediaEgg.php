@@ -52,7 +52,7 @@ final class PublicSocialMediaEgg implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param SocialMetadataShape $socialMetadata
+     * @param SocialMetadata|SocialMetadataShape $socialMetadata
      * @param Type|value-of<Type> $type
      */
     public static function with(
@@ -68,7 +68,7 @@ final class PublicSocialMediaEgg implements BaseModel
     }
 
     /**
-     * @param SocialMetadataShape $socialMetadata
+     * @param SocialMetadata|SocialMetadataShape $socialMetadata
      */
     public function withSocialMetadata(
         SocialMetadata|array $socialMetadata

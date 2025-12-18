@@ -78,7 +78,7 @@ final class StreamingCollectionResponseWithTotalHubDBTableRowV3 implements BaseM
      *
      * @param list<mixed> $results
      * @param Type|value-of<Type> $type
-     * @param PagingShape $paging
+     * @param Paging|PagingShape|null $paging
      */
     public static function with(
         array $results,
@@ -133,7 +133,7 @@ final class StreamingCollectionResponseWithTotalHubDBTableRowV3 implements BaseM
     }
 
     /**
-     * @param PagingShape $paging
+     * @param Paging|PagingShape $paging
      */
     public function withPaging(Paging|array $paging): self
     {

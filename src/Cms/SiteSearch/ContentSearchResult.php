@@ -177,8 +177,8 @@ final class ContentSearchResult implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param Type|value-of<Type> $type
-     * @param Language|value-of<Language> $language
-     * @param list<string> $tags
+     * @param Language|value-of<Language>|null $language
+     * @param list<string>|null $tags
      */
     public static function with(
         int $id,

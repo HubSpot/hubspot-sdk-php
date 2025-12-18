@@ -42,7 +42,7 @@ final class OwnerGetParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param IDProperty|value-of<IDProperty> $idProperty
+     * @param IDProperty|value-of<IDProperty>|null $idProperty
      */
     public static function with(
         ?bool $archived = null,

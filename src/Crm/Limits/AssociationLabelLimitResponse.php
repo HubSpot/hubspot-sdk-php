@@ -102,8 +102,8 @@ final class AssociationLabelLimitResponse implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<string> $allLabels
-     * @param ObjectsSchemasObjectTypeDefinitionShape $fromObjectType
-     * @param ObjectsSchemasObjectTypeDefinitionShape $toObjectType
+     * @param ObjectsSchemasObjectTypeDefinition|ObjectsSchemasObjectTypeDefinitionShape $fromObjectType
+     * @param ObjectsSchemasObjectTypeDefinition|ObjectsSchemasObjectTypeDefinitionShape $toObjectType
      */
     public static function with(
         array $allLabels,
@@ -141,7 +141,7 @@ final class AssociationLabelLimitResponse implements BaseModel
     /**
      * Defines an object type.
      *
-     * @param ObjectsSchemasObjectTypeDefinitionShape $fromObjectType
+     * @param ObjectsSchemasObjectTypeDefinition|ObjectsSchemasObjectTypeDefinitionShape $fromObjectType
      */
     public function withFromObjectType(
         ObjectsSchemasObjectTypeDefinition|array $fromObjectType
@@ -177,7 +177,7 @@ final class AssociationLabelLimitResponse implements BaseModel
     /**
      * Defines an object type.
      *
-     * @param ObjectsSchemasObjectTypeDefinitionShape $toObjectType
+     * @param ObjectsSchemasObjectTypeDefinition|ObjectsSchemasObjectTypeDefinitionShape $toObjectType
      */
     public function withToObjectType(
         ObjectsSchemasObjectTypeDefinition|array $toObjectType

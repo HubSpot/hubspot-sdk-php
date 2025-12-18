@@ -94,10 +94,10 @@ final class PublicCardResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param CardActionsShape $actions
+     * @param CardActions|CardActionsShape $actions
      * @param list<CardAuditResponseShape> $auditHistory
-     * @param CardDisplayBodyShape $display
-     * @param PublicCardFetchBodyShape $fetch
+     * @param CardDisplayBody|CardDisplayBodyShape $display
+     * @param PublicCardFetchBody|PublicCardFetchBodyShape $fetch
      */
     public static function with(
         string $id,
@@ -135,7 +135,7 @@ final class PublicCardResponse implements BaseModel
     /**
      * Configuration for custom user actions on cards.
      *
-     * @param CardActionsShape $actions
+     * @param CardActions|CardActionsShape $actions
      */
     public function withActions(CardActions|array $actions): self
     {
@@ -159,7 +159,7 @@ final class PublicCardResponse implements BaseModel
     /**
      * Configuration for displayed info on a card.
      *
-     * @param CardDisplayBodyShape $display
+     * @param CardDisplayBody|CardDisplayBodyShape $display
      */
     public function withDisplay(CardDisplayBody|array $display): self
     {
@@ -170,7 +170,7 @@ final class PublicCardResponse implements BaseModel
     }
 
     /**
-     * @param PublicCardFetchBodyShape $fetch
+     * @param PublicCardFetchBody|PublicCardFetchBodyShape $fetch
      */
     public function withFetch(PublicCardFetchBody|array $fetch): self
     {

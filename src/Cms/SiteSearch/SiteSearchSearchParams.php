@@ -169,13 +169,13 @@ final class SiteSearchSearchParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<string> $domain
-     * @param list<int> $groupID
-     * @param Language|value-of<Language> $language
-     * @param Length|value-of<Length> $length
-     * @param list<string> $pathPrefix
-     * @param list<string> $property
-     * @param list<Type|value-of<Type>> $type
+     * @param list<string>|null $domain
+     * @param list<int>|null $groupID
+     * @param Language|value-of<Language>|null $language
+     * @param Length|value-of<Length>|null $length
+     * @param list<string>|null $pathPrefix
+     * @param list<string>|null $property
+     * @param list<Type|value-of<Type>>|null $type
      */
     public static function with(
         ?bool $autocomplete = null,

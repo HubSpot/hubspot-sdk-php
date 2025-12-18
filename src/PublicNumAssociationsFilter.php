@@ -15,7 +15,7 @@ use HubspotSDK\PublicNumAssociationsFilter\FilterType;
  * @phpstan-type PublicNumAssociationsFilterShape = array{
  *   associationCategory: string,
  *   associationTypeID: int,
- *   coalescingRefineBy: PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation|CoalescingRefineByShape,
+ *   coalescingRefineBy: CoalescingRefineByShape,
  *   filterType: FilterType|value-of<FilterType>,
  * }
  */

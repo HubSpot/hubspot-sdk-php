@@ -18,7 +18,7 @@ use HubspotSDK\Webhooks\ThrottlingSettings;
  * @phpstan-import-type ThrottlingSettingsShape from \HubspotSDK\Webhooks\ThrottlingSettings
  *
  * @phpstan-type SettingUpdateParamsShape = array{
- *   targetURL: string, throttling: ThrottlingSettingsShape
+ *   targetURL: string, throttling: ThrottlingSettings|ThrottlingSettingsShape
  * }
  */
 final class SettingUpdateParams implements BaseModel
@@ -63,7 +63,7 @@ final class SettingUpdateParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param ThrottlingSettingsShape $throttling
+     * @param ThrottlingSettings|ThrottlingSettingsShape $throttling
      */
     public static function with(
         string $targetURL,
@@ -91,7 +91,7 @@ final class SettingUpdateParams implements BaseModel
     /**
      * Configuration details for webhook throttling.
      *
-     * @param ThrottlingSettingsShape $throttling
+     * @param ThrottlingSettings|ThrottlingSettingsShape $throttling
      */
     public function withThrottling(ThrottlingSettings|array $throttling): self
     {

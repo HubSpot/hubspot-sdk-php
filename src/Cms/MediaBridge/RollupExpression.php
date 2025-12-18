@@ -89,7 +89,7 @@ final class RollupExpression implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<AssociationSpecShape> $associationTypes
-     * @param array<string,mixed> $conditionalExpression
+     * @param array<string,mixed>|null $conditionalExpression
      */
     public static function with(
         array $associationTypes,

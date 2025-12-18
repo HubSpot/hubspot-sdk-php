@@ -70,7 +70,7 @@ final class RandomAccessCollectionResponseWithTotalHubDBTableRowV3 implements Ba
      *
      * @param list<mixed> $results
      * @param Type|value-of<Type> $type
-     * @param BoundedPagingShape $paging
+     * @param BoundedPaging|BoundedPagingShape|null $paging
      */
     public static function with(
         array $results,
@@ -120,7 +120,7 @@ final class RandomAccessCollectionResponseWithTotalHubDBTableRowV3 implements Ba
     }
 
     /**
-     * @param BoundedPagingShape $paging
+     * @param BoundedPaging|BoundedPagingShape $paging
      */
     public function withPaging(BoundedPaging|array $paging): self
     {

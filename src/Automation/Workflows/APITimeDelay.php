@@ -71,8 +71,8 @@ final class APITimeDelay implements BaseModel
      *
      * @param list<DaysOfWeek|value-of<DaysOfWeek>> $daysOfWeek
      * @param TimeUnit|value-of<TimeUnit> $timeUnit
-     * @param APITimeOfDayShape $timeOfDay
-     * @param APIStaticTimeZoneStrategyShape $timeZoneStrategy
+     * @param APITimeOfDay|APITimeOfDayShape|null $timeOfDay
+     * @param APIStaticTimeZoneStrategy|APIStaticTimeZoneStrategyShape|null $timeZoneStrategy
      */
     public static function with(
         array $daysOfWeek,
@@ -124,7 +124,7 @@ final class APITimeDelay implements BaseModel
     }
 
     /**
-     * @param APITimeOfDayShape $timeOfDay
+     * @param APITimeOfDay|APITimeOfDayShape $timeOfDay
      */
     public function withTimeOfDay(APITimeOfDay|array $timeOfDay): self
     {
@@ -135,7 +135,7 @@ final class APITimeDelay implements BaseModel
     }
 
     /**
-     * @param APIStaticTimeZoneStrategyShape $timeZoneStrategy
+     * @param APIStaticTimeZoneStrategy|APIStaticTimeZoneStrategyShape $timeZoneStrategy
      */
     public function withTimeZoneStrategy(
         APIStaticTimeZoneStrategy|array $timeZoneStrategy

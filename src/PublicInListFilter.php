@@ -66,7 +66,7 @@ final class PublicInListFilter implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param FilterType|value-of<FilterType> $filterType
-     * @param PublicInListFilterMetadataShape $metadata
+     * @param PublicInListFilterMetadata|PublicInListFilterMetadataShape|null $metadata
      */
     public static function with(
         string $listID,
@@ -113,7 +113,7 @@ final class PublicInListFilter implements BaseModel
     }
 
     /**
-     * @param PublicInListFilterMetadataShape $metadata
+     * @param PublicInListFilterMetadata|PublicInListFilterMetadataShape $metadata
      */
     public function withMetadata(
         PublicInListFilterMetadata|array $metadata

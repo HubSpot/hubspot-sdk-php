@@ -64,7 +64,7 @@ final class IntegratorObjectCreationResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param InboundDBObjectTypeShape $objectType
+     * @param InboundDBObjectType|InboundDBObjectTypeShape $objectType
      * @param list<PropertyDefinitionShape> $properties
      * @param list<GroupShape> $propertyGroups
      */
@@ -83,7 +83,7 @@ final class IntegratorObjectCreationResponse implements BaseModel
     }
 
     /**
-     * @param InboundDBObjectTypeShape $objectType
+     * @param InboundDBObjectType|InboundDBObjectTypeShape $objectType
      */
     public function withObjectType(InboundDBObjectType|array $objectType): self
     {

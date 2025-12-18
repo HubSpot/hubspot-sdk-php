@@ -62,7 +62,7 @@ final class PublicRelativeComparativeTimestampRefineBy implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param PublicTimeOffsetShape $timeOffset
+     * @param PublicTimeOffset|PublicTimeOffsetShape $timeOffset
      * @param Type|value-of<Type> $type
      */
     public static function with(
@@ -88,7 +88,7 @@ final class PublicRelativeComparativeTimestampRefineBy implements BaseModel
     }
 
     /**
-     * @param PublicTimeOffsetShape $timeOffset
+     * @param PublicTimeOffset|PublicTimeOffsetShape $timeOffset
      */
     public function withTimeOffset(PublicTimeOffset|array $timeOffset): self
     {

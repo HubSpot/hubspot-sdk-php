@@ -76,8 +76,8 @@ final class VersionContentFolder implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param ContentFolderShape $object
-     * @param VersionUserShape $user
+     * @param ContentFolder|ContentFolderShape $object
+     * @param VersionUser|VersionUserShape $user
      */
     public static function with(
         string $id,
@@ -109,7 +109,7 @@ final class VersionContentFolder implements BaseModel
     /**
      * Model definition for a content folder.
      *
-     * @param ContentFolderShape $object
+     * @param ContentFolder|ContentFolderShape $object
      */
     public function withObject(ContentFolder|array $object): self
     {
@@ -130,7 +130,7 @@ final class VersionContentFolder implements BaseModel
     /**
      * Model definition for a version user. Contains addition information about the user who created a version.
      *
-     * @param VersionUserShape $user
+     * @param VersionUser|VersionUserShape $user
      */
     public function withUser(VersionUser|array $user): self
     {

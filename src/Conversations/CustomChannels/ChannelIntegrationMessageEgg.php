@@ -121,7 +121,7 @@ final class ChannelIntegrationMessageEgg implements BaseModel
      * @param MessageDirection|value-of<MessageDirection> $messageDirection
      * @param list<ChannelIntegrationParticipantShape> $recipients
      * @param list<ChannelIntegrationParticipantShape> $senders
-     * @param PreResolvedContactsShape $preResolvedContacts
+     * @param PreResolvedContacts|PreResolvedContactsShape|null $preResolvedContacts
      */
     public static function with(
         array $attachments,
@@ -251,7 +251,7 @@ final class ChannelIntegrationMessageEgg implements BaseModel
     }
 
     /**
-     * @param PreResolvedContactsShape $preResolvedContacts
+     * @param PreResolvedContacts|PreResolvedContactsShape $preResolvedContacts
      */
     public function withPreResolvedContacts(
         PreResolvedContacts|array $preResolvedContacts

@@ -157,8 +157,8 @@ final class HubSpotFormConfiguration implements BaseModel
      *
      * @param Language|value-of<Language> $language
      * @param list<string> $notifyRecipients
-     * @param FormPostSubmitActionShape $postSubmitAction
-     * @param list<LifecycleStageShape> $lifecycleStages
+     * @param FormPostSubmitAction|FormPostSubmitActionShape $postSubmitAction
+     * @param list<LifecycleStageShape>|null $lifecycleStages
      */
     public static function with(
         bool $allowLinkToResetKnownValues,
@@ -290,7 +290,7 @@ final class HubSpotFormConfiguration implements BaseModel
     /**
      * What should happen after the customer submits the form.
      *
-     * @param FormPostSubmitActionShape $postSubmitAction
+     * @param FormPostSubmitAction|FormPostSubmitActionShape $postSubmitAction
      */
     public function withPostSubmitAction(
         FormPostSubmitAction|array $postSubmitAction

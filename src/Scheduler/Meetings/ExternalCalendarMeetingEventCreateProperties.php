@@ -109,8 +109,8 @@ final class ExternalCalendarMeetingEventCreateProperties implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<string> $hsAttachmentIDs
-     * @param list<string> $hsAttendeeOwnerIDs
+     * @param list<string>|null $hsAttachmentIDs
+     * @param list<string>|null $hsAttendeeOwnerIDs
      */
     public static function with(
         \DateTimeInterface $hsMeetingEndTime,

@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-type PublicListConversionResponseShape = array{
  *   listID: string,
  *   convertedAt?: \DateTimeInterface|null,
- *   requestedConversionTime?: null|RequestedConversionTimeShape|PublicListConversionDate|PublicListConversionInactivity,
+ *   requestedConversionTime?: RequestedConversionTimeShape|null,
  * }
  */
 final class PublicListConversionResponse implements BaseModel
@@ -56,7 +56,7 @@ final class PublicListConversionResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param RequestedConversionTimeShape $requestedConversionTime
+     * @param RequestedConversionTimeShape|null $requestedConversionTime
      */
     public static function with(
         string $listID,

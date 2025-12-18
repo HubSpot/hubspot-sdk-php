@@ -85,7 +85,7 @@ final class APIAssociationDataSource implements BaseModel
      *
      * @param AssociationCategory|value-of<AssociationCategory> $associationCategory
      * @param Type|value-of<Type> $type
-     * @param APISortShape $sortBy
+     * @param APISort|APISortShape|null $sortBy
      */
     public static function with(
         AssociationCategory|string $associationCategory,
@@ -156,7 +156,7 @@ final class APIAssociationDataSource implements BaseModel
     }
 
     /**
-     * @param APISortShape $sortBy
+     * @param APISort|APISortShape $sortBy
      */
     public function withSortBy(APISort|array $sortBy): self
     {

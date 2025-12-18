@@ -123,9 +123,9 @@ final class FileActionResponse implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param Status|value-of<Status> $status
-     * @param list<StandardErrorShape> $errors
-     * @param array<string,string> $links
-     * @param FileShape $result
+     * @param list<StandardErrorShape>|null $errors
+     * @param array<string,string>|null $links
+     * @param File|FileShape|null $result
      */
     public static function with(
         \DateTimeInterface $completedAt,
@@ -251,7 +251,7 @@ final class FileActionResponse implements BaseModel
     /**
      * File.
      *
-     * @param FileShape $result
+     * @param File|FileShape $result
      */
     public function withResult(File|array $result): self
     {

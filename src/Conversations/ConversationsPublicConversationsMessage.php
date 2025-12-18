@@ -172,13 +172,13 @@ final class ConversationsPublicConversationsMessage implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<AttachmentShape> $attachments
-     * @param PublicClientShape $client
+     * @param PublicClient|PublicClientShape $client
      * @param Direction|value-of<Direction> $direction
      * @param list<PublicRecipientShape> $recipients
      * @param list<PublicSenderShape> $senders
      * @param TruncationStatus|value-of<TruncationStatus> $truncationStatus
      * @param Type|value-of<Type> $type
-     * @param PublicMessageStatusShape $status
+     * @param PublicMessageStatus|PublicMessageStatusShape|null $status
      */
     public static function with(
         string $id,
@@ -273,7 +273,7 @@ final class ConversationsPublicConversationsMessage implements BaseModel
     }
 
     /**
-     * @param PublicClientShape $client
+     * @param PublicClient|PublicClientShape $client
      */
     public function withClient(PublicClient|array $client): self
     {
@@ -389,7 +389,7 @@ final class ConversationsPublicConversationsMessage implements BaseModel
     }
 
     /**
-     * @param PublicMessageStatusShape $status
+     * @param PublicMessageStatus|PublicMessageStatusShape $status
      */
     public function withStatus(PublicMessageStatus|array $status): self
     {

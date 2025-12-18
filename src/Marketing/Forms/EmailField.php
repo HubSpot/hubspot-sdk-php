@@ -146,7 +146,7 @@ final class EmailField implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<mixed> $dependentFields
-     * @param EmailFieldValidationShape $validation
+     * @param EmailFieldValidation|EmailFieldValidationShape $validation
      * @param FieldType|value-of<FieldType> $fieldType
      */
     public static function with(
@@ -264,7 +264,7 @@ final class EmailField implements BaseModel
     /**
      * Describes how an email address should be validated.
      *
-     * @param EmailFieldValidationShape $validation
+     * @param EmailFieldValidation|EmailFieldValidationShape $validation
      */
     public function withValidation(EmailFieldValidation|array $validation): self
     {

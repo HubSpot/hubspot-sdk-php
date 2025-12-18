@@ -66,7 +66,7 @@ final class PublicUserUpdate implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<string> $secondaryTeamIDs
+     * @param list<string>|null $secondaryTeamIDs
      */
     public static function with(
         ?string $firstName = null,

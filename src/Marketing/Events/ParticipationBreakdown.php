@@ -66,8 +66,8 @@ final class ParticipationBreakdown implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param ParticipationAssociationsShape $associations
-     * @param ParticipationPropertiesShape $properties
+     * @param ParticipationAssociations|ParticipationAssociationsShape $associations
+     * @param ParticipationProperties|ParticipationPropertiesShape $properties
      */
     public static function with(
         string $id,
@@ -94,7 +94,7 @@ final class ParticipationBreakdown implements BaseModel
     }
 
     /**
-     * @param ParticipationAssociationsShape $associations
+     * @param ParticipationAssociations|ParticipationAssociationsShape $associations
      */
     public function withAssociations(
         ParticipationAssociations|array $associations
@@ -114,7 +114,7 @@ final class ParticipationBreakdown implements BaseModel
     }
 
     /**
-     * @param ParticipationPropertiesShape $properties
+     * @param ParticipationProperties|ParticipationPropertiesShape $properties
      */
     public function withProperties(
         ParticipationProperties|array $properties

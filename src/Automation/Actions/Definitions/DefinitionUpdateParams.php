@@ -37,7 +37,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   inputFieldDependencies?: list<InputFieldDependencyShape>|null,
  *   inputFields?: list<InputFieldDefinitionShape>|null,
  *   labels?: array<string,PublicActionLabelsShape>|null,
- *   objectRequestOptions?: PublicObjectRequestOptionsShape|null,
+ *   objectRequestOptions?: null|PublicObjectRequestOptions|PublicObjectRequestOptionsShape,
  *   objectTypes?: list<string>|null,
  *   outputFields?: list<OutputFieldDefinitionShape>|null,
  *   published?: bool|null,
@@ -111,13 +111,13 @@ final class DefinitionUpdateParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicExecutionTranslationRuleShape> $executionRules
-     * @param list<InputFieldDependencyShape> $inputFieldDependencies
-     * @param list<InputFieldDefinitionShape> $inputFields
-     * @param array<string,PublicActionLabelsShape> $labels
-     * @param PublicObjectRequestOptionsShape $objectRequestOptions
-     * @param list<string> $objectTypes
-     * @param list<OutputFieldDefinitionShape> $outputFields
+     * @param list<PublicExecutionTranslationRuleShape>|null $executionRules
+     * @param list<InputFieldDependencyShape>|null $inputFieldDependencies
+     * @param list<InputFieldDefinitionShape>|null $inputFields
+     * @param array<string,PublicActionLabelsShape>|null $labels
+     * @param PublicObjectRequestOptions|PublicObjectRequestOptionsShape|null $objectRequestOptions
+     * @param list<string>|null $objectTypes
+     * @param list<OutputFieldDefinitionShape>|null $outputFields
      */
     public static function with(
         int $appID,
@@ -210,7 +210,7 @@ final class DefinitionUpdateParams implements BaseModel
     }
 
     /**
-     * @param PublicObjectRequestOptionsShape $objectRequestOptions
+     * @param PublicObjectRequestOptions|PublicObjectRequestOptionsShape $objectRequestOptions
      */
     public function withObjectRequestOptions(
         PublicObjectRequestOptions|array $objectRequestOptions

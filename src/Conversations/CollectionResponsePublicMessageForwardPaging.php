@@ -58,7 +58,7 @@ final class CollectionResponsePublicMessageForwardPaging implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<PublicMessageShape> $results
-     * @param ForwardPagingShape $paging
+     * @param ForwardPaging|ForwardPagingShape|null $paging
      */
     public static function with(
         array $results,
@@ -85,7 +85,7 @@ final class CollectionResponsePublicMessageForwardPaging implements BaseModel
     }
 
     /**
-     * @param ForwardPagingShape $paging
+     * @param ForwardPaging|ForwardPagingShape $paging
      */
     public function withPaging(ForwardPaging|array $paging): self
     {

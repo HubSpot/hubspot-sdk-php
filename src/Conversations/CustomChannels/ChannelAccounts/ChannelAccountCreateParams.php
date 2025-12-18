@@ -22,7 +22,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   authorized: bool,
  *   inboxID: string,
  *   name: string,
- *   deliveryIdentifier?: PublicDeliveryIdentifierShape|null,
+ *   deliveryIdentifier?: null|PublicDeliveryIdentifier|PublicDeliveryIdentifierShape,
  * }
  */
 final class ChannelAccountCreateParams implements BaseModel
@@ -70,7 +70,7 @@ final class ChannelAccountCreateParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param PublicDeliveryIdentifierShape $deliveryIdentifier
+     * @param PublicDeliveryIdentifier|PublicDeliveryIdentifierShape|null $deliveryIdentifier
      */
     public static function with(
         bool $authorized,
@@ -114,7 +114,7 @@ final class ChannelAccountCreateParams implements BaseModel
     }
 
     /**
-     * @param PublicDeliveryIdentifierShape $deliveryIdentifier
+     * @param PublicDeliveryIdentifier|PublicDeliveryIdentifierShape $deliveryIdentifier
      */
     public function withDeliveryIdentifier(
         PublicDeliveryIdentifier|array $deliveryIdentifier

@@ -63,7 +63,7 @@ final class StringTargetPropertyVariable implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param Operator|value-of<Operator> $operator
-     * @param list<array<string,mixed>> $inputs
+     * @param list<array<string,mixed>>|null $inputs
      */
     public static function with(
         Operator|string $operator = 'STRING_TARGET_PROPERTY_VARIABLE',

@@ -22,7 +22,7 @@ use HubspotSDK\PublicUnifiedEventsFilterBranch;
  * @phpstan-import-type ListFilterBranchShape from \HubspotSDK\Automation\Workflows\APIListBasedEnrollmentCriteria\ListFilterBranch
  *
  * @phpstan-type APIListBasedEnrollmentCriteriaShape = array{
- *   listFilterBranch: PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch|ListFilterBranchShape,
+ *   listFilterBranch: ListFilterBranchShape,
  *   reEnrollmentTriggersFilterBranches: list<mixed>,
  *   shouldReEnroll: bool,
  *   type: Type|value-of<Type>,

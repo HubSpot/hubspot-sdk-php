@@ -34,7 +34,7 @@ use HubspotSDK\PublicUnifiedEventsFilterBranch;
  *   createdAt?: \DateTimeInterface|null,
  *   createdByID?: string|null,
  *   deletedAt?: \DateTimeInterface|null,
- *   filterBranch?: null|FilterBranchShape|PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch,
+ *   filterBranch?: FilterBranchShape|null,
  *   filtersUpdatedAt?: \DateTimeInterface|null,
  *   listPermissions?: null|PublicListPermissions|PublicListPermissionsShape,
  *   membershipSettings?: null|PublicMembershipSettings|PublicMembershipSettingsShape,
@@ -172,9 +172,9 @@ final class PublicObjectList implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param FilterBranchShape $filterBranch
-     * @param PublicListPermissionsShape $listPermissions
-     * @param PublicMembershipSettingsShape $membershipSettings
+     * @param FilterBranchShape|null $filterBranch
+     * @param PublicListPermissions|PublicListPermissionsShape|null $listPermissions
+     * @param PublicMembershipSettings|PublicMembershipSettingsShape|null $membershipSettings
      */
     public static function with(
         string $listID,
@@ -341,7 +341,7 @@ final class PublicObjectList implements BaseModel
     }
 
     /**
-     * @param PublicListPermissionsShape $listPermissions
+     * @param PublicListPermissions|PublicListPermissionsShape $listPermissions
      */
     public function withListPermissions(
         PublicListPermissions|array $listPermissions
@@ -353,7 +353,7 @@ final class PublicObjectList implements BaseModel
     }
 
     /**
-     * @param PublicMembershipSettingsShape $membershipSettings
+     * @param PublicMembershipSettings|PublicMembershipSettingsShape $membershipSettings
      */
     public function withMembershipSettings(
         PublicMembershipSettings|array $membershipSettings
