@@ -34,8 +34,8 @@ use HubspotSDK\PublicUnifiedEventsFilterBranch;
  *   customProperties?: array<string,string>|null,
  *   filterBranch?: FilterBranchShape|null,
  *   listFolderID?: int|null,
- *   listPermissions?: PublicListPermissionsShape|null,
- *   membershipSettings?: PublicMembershipSettingsShape|null,
+ *   listPermissions?: null|PublicListPermissions|PublicListPermissionsShape,
+ *   membershipSettings?: null|PublicMembershipSettings|PublicMembershipSettingsShape,
  * }
  */
 final class ListCreateParams implements BaseModel
@@ -112,10 +112,10 @@ final class ListCreateParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string,string> $customProperties
-     * @param FilterBranchShape $filterBranch
-     * @param PublicListPermissionsShape $listPermissions
-     * @param PublicMembershipSettingsShape $membershipSettings
+     * @param array<string,string>|null $customProperties
+     * @param FilterBranchShape|null $filterBranch
+     * @param PublicListPermissions|PublicListPermissionsShape|null $listPermissions
+     * @param PublicMembershipSettings|PublicMembershipSettingsShape|null $membershipSettings
      */
     public static function with(
         string $name,
@@ -212,7 +212,7 @@ final class ListCreateParams implements BaseModel
     }
 
     /**
-     * @param PublicListPermissionsShape $listPermissions
+     * @param PublicListPermissions|PublicListPermissionsShape $listPermissions
      */
     public function withListPermissions(
         PublicListPermissions|array $listPermissions
@@ -224,7 +224,7 @@ final class ListCreateParams implements BaseModel
     }
 
     /**
-     * @param PublicMembershipSettingsShape $membershipSettings
+     * @param PublicMembershipSettings|PublicMembershipSettingsShape $membershipSettings
      */
     public function withMembershipSettings(
         PublicMembershipSettings|array $membershipSettings

@@ -65,7 +65,7 @@ final class AppUpdateParams implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param DefaultState|value-of<DefaultState> $defaultState
-     * @param OverrideState|value-of<OverrideState> $overrideState
+     * @param OverrideState|value-of<OverrideState>|null $overrideState
      */
     public static function with(
         int $appID,

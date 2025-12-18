@@ -53,7 +53,7 @@ final class ExternalBehavioralEventPropertyDefinitionPatch implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<OptionInputShape> $options
+     * @param list<OptionInputShape>|null $options
      */
     public static function with(
         ?string $description = null,

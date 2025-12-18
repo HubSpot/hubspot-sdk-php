@@ -18,9 +18,9 @@ use HubspotSDK\PublicPageViewAnalyticsFilter\FilterType;
  *   filterType: FilterType|value-of<FilterType>,
  *   operator: string,
  *   pageURL: string,
- *   coalescingRefineBy?: null|CoalescingRefineByShape|PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation,
+ *   coalescingRefineBy?: CoalescingRefineByShape|null,
  *   enableTracking?: bool|null,
- *   pruningRefineBy?: null|PruningRefineByShape|PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation,
+ *   pruningRefineBy?: PruningRefineByShape|null,
  * }
  */
 final class PublicPageViewAnalyticsFilter implements BaseModel
@@ -77,8 +77,8 @@ final class PublicPageViewAnalyticsFilter implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param FilterType|value-of<FilterType> $filterType
-     * @param CoalescingRefineByShape $coalescingRefineBy
-     * @param PruningRefineByShape $pruningRefineBy
+     * @param CoalescingRefineByShape|null $coalescingRefineBy
+     * @param PruningRefineByShape|null $pruningRefineBy
      */
     public static function with(
         string $operator,

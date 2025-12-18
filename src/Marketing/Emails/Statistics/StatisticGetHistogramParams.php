@@ -66,8 +66,8 @@ final class StatisticGetHistogramParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<int> $emailIDs
-     * @param Interval|value-of<Interval> $interval
+     * @param list<int>|null $emailIDs
+     * @param Interval|value-of<Interval>|null $interval
      */
     public static function with(
         ?array $emailIDs = null,

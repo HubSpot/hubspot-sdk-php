@@ -33,7 +33,7 @@ final class BoundedPaging implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param BoundedNextPageShape $next
+     * @param BoundedNextPage|BoundedNextPageShape|null $next
      */
     public static function with(BoundedNextPage|array|null $next = null): self
     {
@@ -45,7 +45,7 @@ final class BoundedPaging implements BaseModel
     }
 
     /**
-     * @param BoundedNextPageShape $next
+     * @param BoundedNextPage|BoundedNextPageShape $next
      */
     public function withNext(BoundedNextPage|array $next): self
     {

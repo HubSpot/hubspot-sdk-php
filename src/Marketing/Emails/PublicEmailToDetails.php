@@ -63,9 +63,9 @@ final class PublicEmailToDetails implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param PublicEmailRecipientsShape $contactIDs
-     * @param PublicEmailRecipientsShape $contactIlsLists
-     * @param PublicEmailRecipientsShape $contactLists
+     * @param PublicEmailRecipients|PublicEmailRecipientsShape|null $contactIDs
+     * @param PublicEmailRecipients|PublicEmailRecipientsShape|null $contactIlsLists
+     * @param PublicEmailRecipients|PublicEmailRecipientsShape|null $contactLists
      */
     public static function with(
         PublicEmailRecipients|array|null $contactIDs = null,
@@ -88,7 +88,7 @@ final class PublicEmailToDetails implements BaseModel
     /**
      * Data structure representing lists of IDs that should be included and excluded.
      *
-     * @param PublicEmailRecipientsShape $contactIDs
+     * @param PublicEmailRecipients|PublicEmailRecipientsShape $contactIDs
      */
     public function withContactIDs(
         PublicEmailRecipients|array $contactIDs
@@ -102,7 +102,7 @@ final class PublicEmailToDetails implements BaseModel
     /**
      * Data structure representing lists of IDs that should be included and excluded.
      *
-     * @param PublicEmailRecipientsShape $contactIlsLists
+     * @param PublicEmailRecipients|PublicEmailRecipientsShape $contactIlsLists
      */
     public function withContactIlsLists(
         PublicEmailRecipients|array $contactIlsLists
@@ -116,7 +116,7 @@ final class PublicEmailToDetails implements BaseModel
     /**
      * Data structure representing lists of IDs that should be included and excluded.
      *
-     * @param PublicEmailRecipientsShape $contactLists
+     * @param PublicEmailRecipients|PublicEmailRecipientsShape $contactLists
      */
     public function withContactLists(
         PublicEmailRecipients|array $contactLists

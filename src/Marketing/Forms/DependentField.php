@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @phpstan-type DependentFieldShape = array{
  *   dependentCondition: DependentFieldFilter|DependentFieldFilterShape,
- *   dependentField: EmailField|PhoneField|MobilePhoneField|SingleLineTextField|MultiLineTextField|NumberField|SingleCheckboxField|MultipleCheckboxesField|DropdownField|RadioField|DatepickerField|FileField|PaymentLinkRadioField|DependentFieldShape1,
+ *   dependentField: DependentFieldShape1,
  * }
  */
 final class DependentField implements BaseModel
@@ -60,7 +60,7 @@ final class DependentField implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param DependentFieldFilterShape $dependentCondition
+     * @param DependentFieldFilter|DependentFieldFilterShape $dependentCondition
      * @param DependentFieldShape1 $dependentField
      */
     public static function with(
@@ -78,7 +78,7 @@ final class DependentField implements BaseModel
     /**
      * A condition based on customer input.
      *
-     * @param DependentFieldFilterShape $dependentCondition
+     * @param DependentFieldFilter|DependentFieldFilterShape $dependentCondition
      */
     public function withDependentCondition(
         DependentFieldFilter|array $dependentCondition

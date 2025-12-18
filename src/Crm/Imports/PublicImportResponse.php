@@ -117,10 +117,10 @@ final class PublicImportResponse implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<string> $mappedObjectTypeIDs
-     * @param PublicImportMetadataShape $metadata
+     * @param PublicImportMetadata|PublicImportMetadataShape $metadata
      * @param State|value-of<State> $state
-     * @param ImportSource|value-of<ImportSource> $importSource
-     * @param ImportTemplateShape $importTemplate
+     * @param ImportSource|value-of<ImportSource>|null $importSource
+     * @param ImportTemplate|ImportTemplateShape|null $importTemplate
      */
     public static function with(
         string $id,
@@ -181,7 +181,7 @@ final class PublicImportResponse implements BaseModel
     }
 
     /**
-     * @param PublicImportMetadataShape $metadata
+     * @param PublicImportMetadata|PublicImportMetadataShape $metadata
      */
     public function withMetadata(PublicImportMetadata|array $metadata): self
     {
@@ -251,7 +251,7 @@ final class PublicImportResponse implements BaseModel
     }
 
     /**
-     * @param ImportTemplateShape $importTemplate
+     * @param ImportTemplate|ImportTemplateShape $importTemplate
      */
     public function withImportTemplate(
         ImportTemplate|array $importTemplate

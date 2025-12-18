@@ -70,7 +70,7 @@ final class TranscriptCreateUtterance implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param SpeakerShape $speaker
+     * @param Speaker|SpeakerShape $speaker
      */
     public static function with(
         int $endTimeMillis,
@@ -100,7 +100,7 @@ final class TranscriptCreateUtterance implements BaseModel
     }
 
     /**
-     * @param SpeakerShape $speaker
+     * @param Speaker|SpeakerShape $speaker
      */
     public function withSpeaker(Speaker|array $speaker): self
     {

@@ -14,7 +14,7 @@ use HubspotSDK\PublicPropertyAssociationInListFilter\FilterType;
  * @phpstan-import-type CoalescingRefineByShape from \HubspotSDK\PublicPropertyAssociationInListFilter\CoalescingRefineBy
  *
  * @phpstan-type PublicPropertyAssociationInListFilterShape = array{
- *   coalescingRefineBy: PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation|CoalescingRefineByShape,
+ *   coalescingRefineBy: CoalescingRefineByShape,
  *   filterType: FilterType|value-of<FilterType>,
  *   listID: string,
  *   operator: string,

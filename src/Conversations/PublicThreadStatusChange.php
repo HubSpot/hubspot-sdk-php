@@ -117,7 +117,7 @@ final class PublicThreadStatusChange implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param PublicClientShape $client
+     * @param PublicClient|PublicClientShape $client
      * @param NewStatus|value-of<NewStatus> $newStatus
      * @param list<PublicRecipientShape> $recipients
      * @param list<PublicSenderShape> $senders
@@ -171,7 +171,7 @@ final class PublicThreadStatusChange implements BaseModel
     }
 
     /**
-     * @param PublicClientShape $client
+     * @param PublicClient|PublicClientShape $client
      */
     public function withClient(PublicClient|array $client): self
     {

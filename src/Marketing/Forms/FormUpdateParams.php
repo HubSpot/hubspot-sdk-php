@@ -20,8 +20,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @phpstan-type FormUpdateParamsShape = array{
  *   archived?: bool|null,
- *   configuration?: HubSpotFormConfigurationShape|null,
- *   displayOptions?: FormDisplayOptionsShape|null,
+ *   configuration?: null|HubSpotFormConfiguration|HubSpotFormConfigurationShape,
+ *   displayOptions?: null|FormDisplayOptions|FormDisplayOptionsShape,
  *   fieldGroups?: list<mixed>|null,
  *   legalConsentOptions?: LegalConsentOptionsShape|null,
  *   name?: string|null,
@@ -75,10 +75,10 @@ final class FormUpdateParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param HubSpotFormConfigurationShape $configuration
-     * @param FormDisplayOptionsShape $displayOptions
-     * @param list<mixed> $fieldGroups
-     * @param LegalConsentOptionsShape $legalConsentOptions
+     * @param HubSpotFormConfiguration|HubSpotFormConfigurationShape|null $configuration
+     * @param FormDisplayOptions|FormDisplayOptionsShape|null $displayOptions
+     * @param list<mixed>|null $fieldGroups
+     * @param LegalConsentOptionsShape|null $legalConsentOptions
      */
     public static function with(
         ?bool $archived = null,
@@ -112,7 +112,7 @@ final class FormUpdateParams implements BaseModel
     }
 
     /**
-     * @param HubSpotFormConfigurationShape $configuration
+     * @param HubSpotFormConfiguration|HubSpotFormConfigurationShape $configuration
      */
     public function withConfiguration(
         HubSpotFormConfiguration|array $configuration
@@ -126,7 +126,7 @@ final class FormUpdateParams implements BaseModel
     /**
      * Options for styling the form.
      *
-     * @param FormDisplayOptionsShape $displayOptions
+     * @param FormDisplayOptions|FormDisplayOptionsShape $displayOptions
      */
     public function withDisplayOptions(
         FormDisplayOptions|array $displayOptions

@@ -61,7 +61,7 @@ final class ExternalUserBusyTimes implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<ExternalTimeRangeShape> $busyTimes
-     * @param ExternalMeetingsUserShape $meetingsUser
+     * @param ExternalMeetingsUser|ExternalMeetingsUserShape $meetingsUser
      */
     public static function with(
         array $busyTimes,
@@ -97,7 +97,7 @@ final class ExternalUserBusyTimes implements BaseModel
     }
 
     /**
-     * @param ExternalMeetingsUserShape $meetingsUser
+     * @param ExternalMeetingsUser|ExternalMeetingsUserShape $meetingsUser
      */
     public function withMeetingsUser(
         ExternalMeetingsUser|array $meetingsUser

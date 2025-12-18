@@ -42,7 +42,7 @@ final class FileOperationGetByPathParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<string> $properties
+     * @param list<string>|null $properties
      */
     public static function with(?array $properties = null): self
     {

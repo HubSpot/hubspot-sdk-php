@@ -73,7 +73,7 @@ final class APIEnrolledArgumentPropertyFilterDataSource implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param Type|value-of<Type> $type
-     * @param APISortShape $sortBy
+     * @param APISort|APISortShape|null $sortBy
      */
     public static function with(
         string $argumentName,
@@ -130,7 +130,7 @@ final class APIEnrolledArgumentPropertyFilterDataSource implements BaseModel
     }
 
     /**
-     * @param APISortShape $sortBy
+     * @param APISort|APISortShape $sortBy
      */
     public function withSortBy(APISort|array $sortBy): self
     {

@@ -62,8 +62,8 @@ final class InputFieldDefinition implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param FieldTypeDefinitionShape $typeDefinition
-     * @param list<SupportedValueType|value-of<SupportedValueType>> $supportedValueTypes
+     * @param FieldTypeDefinition|FieldTypeDefinitionShape $typeDefinition
+     * @param list<SupportedValueType|value-of<SupportedValueType>>|null $supportedValueTypes
      */
     public static function with(
         bool $isRequired,
@@ -91,7 +91,7 @@ final class InputFieldDefinition implements BaseModel
     }
 
     /**
-     * @param FieldTypeDefinitionShape $typeDefinition
+     * @param FieldTypeDefinition|FieldTypeDefinitionShape $typeDefinition
      */
     public function withTypeDefinition(
         FieldTypeDefinition|array $typeDefinition

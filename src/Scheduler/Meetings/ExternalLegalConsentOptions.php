@@ -109,7 +109,7 @@ final class ExternalLegalConsentOptions implements BaseModel
      *
      * @param list<ExternalCommunicationConsentCheckboxShape> $communicationConsentCheckboxes
      * @param list<int> $legitimateInterestSubscriptionTypes
-     * @param LegitimateInterestLegalBasis|value-of<LegitimateInterestLegalBasis> $legitimateInterestLegalBasis
+     * @param LegitimateInterestLegalBasis|value-of<LegitimateInterestLegalBasis>|null $legitimateInterestLegalBasis
      */
     public static function with(
         array $communicationConsentCheckboxes,

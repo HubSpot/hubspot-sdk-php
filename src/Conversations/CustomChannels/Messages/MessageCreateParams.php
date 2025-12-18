@@ -41,7 +41,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   inReplyToID?: string|null,
  *   integrationIdempotencyID?: string|null,
  *   integrationThreadID?: string|null,
- *   preResolvedContacts?: PreResolvedContactsShape|null,
+ *   preResolvedContacts?: null|PreResolvedContacts|PreResolvedContactsShape,
  *   richText?: string|null,
  * }
  */
@@ -136,7 +136,7 @@ final class MessageCreateParams implements BaseModel
      * @param MessageDirection|value-of<MessageDirection> $messageDirection
      * @param list<ChannelIntegrationParticipantShape> $recipients
      * @param list<ChannelIntegrationParticipantShape> $senders
-     * @param PreResolvedContactsShape $preResolvedContacts
+     * @param PreResolvedContacts|PreResolvedContactsShape|null $preResolvedContacts
      */
     public static function with(
         array $attachments,
@@ -266,7 +266,7 @@ final class MessageCreateParams implements BaseModel
     }
 
     /**
-     * @param PreResolvedContactsShape $preResolvedContacts
+     * @param PreResolvedContacts|PreResolvedContactsShape $preResolvedContacts
      */
     public function withPreResolvedContacts(
         PreResolvedContacts|array $preResolvedContacts

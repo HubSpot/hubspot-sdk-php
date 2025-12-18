@@ -48,7 +48,7 @@ final class WorkflowListEmailCampaignsParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<string> $flowID
+     * @param list<string>|null $flowID
      */
     public static function with(
         ?string $after = null,

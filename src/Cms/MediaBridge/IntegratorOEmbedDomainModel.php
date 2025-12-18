@@ -86,7 +86,7 @@ final class IntegratorOEmbedDomainModel implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param EndpointsShape $endpoints
+     * @param Endpoints|EndpointsShape $endpoints
      */
     public static function with(
         int $id,
@@ -143,7 +143,7 @@ final class IntegratorOEmbedDomainModel implements BaseModel
     }
 
     /**
-     * @param EndpointsShape $endpoints
+     * @param Endpoints|EndpointsShape $endpoints
      */
     public function withEndpoints(Endpoints|array $endpoints): self
     {

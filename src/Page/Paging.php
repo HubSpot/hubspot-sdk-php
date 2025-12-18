@@ -32,7 +32,7 @@ final class Paging implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param NextShape $next
+     * @param Next|NextShape|null $next
      */
     public static function with(Next|array|null $next = null): self
     {
@@ -44,7 +44,7 @@ final class Paging implements BaseModel
     }
 
     /**
-     * @param NextShape $next
+     * @param Next|NextShape $next
      */
     public function withNext(Next|array $next): self
     {

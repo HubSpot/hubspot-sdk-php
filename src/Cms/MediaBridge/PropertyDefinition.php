@@ -112,15 +112,15 @@ final class PropertyDefinition implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param PropertyShape $property
-     * @param array<string,mixed> $calculationExpression
-     * @param PropertyDefinitionSourceShape $definitionSource
-     * @param ExtensionDataShape $extensionData
-     * @param ExternalOptionsMetaDataShape $externalOptionsMetaData
-     * @param FieldLevelPermissionShape $permission
-     * @param DefinitionSourceShape $propertyDefinitionSource
-     * @param DefaultRequirementsShape $propertyRequirements
-     * @param RollupExpressionShape $rollupExpression
+     * @param Property|PropertyShape $property
+     * @param array<string,mixed>|null $calculationExpression
+     * @param PropertyDefinitionSource|PropertyDefinitionSourceShape|null $definitionSource
+     * @param ExtensionData|ExtensionDataShape|null $extensionData
+     * @param ExternalOptionsMetaData|ExternalOptionsMetaDataShape|null $externalOptionsMetaData
+     * @param FieldLevelPermission|FieldLevelPermissionShape|null $permission
+     * @param DefinitionSource|DefinitionSourceShape|null $propertyDefinitionSource
+     * @param DefaultRequirements|DefaultRequirementsShape|null $propertyRequirements
+     * @param RollupExpression|RollupExpressionShape|null $rollupExpression
      */
     public static function with(
         string $objectTypeID,
@@ -170,7 +170,7 @@ final class PropertyDefinition implements BaseModel
     /**
      * Defines a property.
      *
-     * @param PropertyShape $property
+     * @param Property|PropertyShape $property
      */
     public function withProperty(Property|array $property): self
     {
@@ -201,7 +201,7 @@ final class PropertyDefinition implements BaseModel
     }
 
     /**
-     * @param PropertyDefinitionSourceShape $definitionSource
+     * @param PropertyDefinitionSource|PropertyDefinitionSourceShape $definitionSource
      */
     public function withDefinitionSource(
         PropertyDefinitionSource|array $definitionSource
@@ -213,7 +213,7 @@ final class PropertyDefinition implements BaseModel
     }
 
     /**
-     * @param ExtensionDataShape $extensionData
+     * @param ExtensionData|ExtensionDataShape $extensionData
      */
     public function withExtensionData(ExtensionData|array $extensionData): self
     {
@@ -224,7 +224,7 @@ final class PropertyDefinition implements BaseModel
     }
 
     /**
-     * @param ExternalOptionsMetaDataShape $externalOptionsMetaData
+     * @param ExternalOptionsMetaData|ExternalOptionsMetaDataShape $externalOptionsMetaData
      */
     public function withExternalOptionsMetaData(
         ExternalOptionsMetaData|array $externalOptionsMetaData
@@ -260,7 +260,7 @@ final class PropertyDefinition implements BaseModel
     }
 
     /**
-     * @param FieldLevelPermissionShape $permission
+     * @param FieldLevelPermission|FieldLevelPermissionShape $permission
      */
     public function withPermission(FieldLevelPermission|array $permission): self
     {
@@ -271,7 +271,7 @@ final class PropertyDefinition implements BaseModel
     }
 
     /**
-     * @param DefinitionSourceShape $propertyDefinitionSource
+     * @param DefinitionSource|DefinitionSourceShape $propertyDefinitionSource
      */
     public function withPropertyDefinitionSource(
         DefinitionSource|array $propertyDefinitionSource
@@ -283,7 +283,7 @@ final class PropertyDefinition implements BaseModel
     }
 
     /**
-     * @param DefaultRequirementsShape $propertyRequirements
+     * @param DefaultRequirements|DefaultRequirementsShape $propertyRequirements
      */
     public function withPropertyRequirements(
         DefaultRequirements|array $propertyRequirements
@@ -295,7 +295,7 @@ final class PropertyDefinition implements BaseModel
     }
 
     /**
-     * @param RollupExpressionShape $rollupExpression
+     * @param RollupExpression|RollupExpressionShape $rollupExpression
      */
     public function withRollupExpression(
         RollupExpression|array $rollupExpression

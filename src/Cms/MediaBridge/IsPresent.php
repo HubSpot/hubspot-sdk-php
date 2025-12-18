@@ -69,7 +69,7 @@ final class IsPresent implements BaseModel
      *
      * @param array<string,mixed> $expressionToEvaluate
      * @param Operator|value-of<Operator> $operator
-     * @param list<array<string,mixed>> $inputs
+     * @param list<array<string,mixed>>|null $inputs
      */
     public static function with(
         array $expressionToEvaluate,

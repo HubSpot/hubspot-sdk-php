@@ -18,7 +18,7 @@ use HubspotSDK\PublicSurveyMonkeyValueFilter\FilterType;
  *   operator: string,
  *   surveyID: string,
  *   surveyQuestion: string,
- *   valueComparison: PublicBoolPropertyOperation|PublicNumberPropertyOperation|PublicStringPropertyOperation|PublicDateTimePropertyOperation|PublicRangedDatePropertyOperation|PublicComparativePropertyUpdatedOperation|PublicComparativeDatePropertyOperation|PublicRollingDateRangePropertyOperation|PublicRollingPropertyUpdatedOperation|PublicEnumerationPropertyOperation|PublicAllPropertyTypesOperation|PublicRangedNumberPropertyOperation|PublicMultiStringPropertyOperation|PublicDatePropertyOperation|PublicCalendarDatePropertyOperation|PublicTimePointOperation|PublicRangedTimeOperation|ValueComparisonShape,
+ *   valueComparison: ValueComparisonShape,
  *   surveyAnswerColID?: string|null,
  *   surveyAnswerRowID?: string|null,
  * }

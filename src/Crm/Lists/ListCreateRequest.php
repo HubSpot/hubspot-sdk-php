@@ -29,7 +29,7 @@ use HubspotSDK\PublicUnifiedEventsFilterBranch;
  *   objectTypeID: string,
  *   processingType: string,
  *   customProperties?: array<string,string>|null,
- *   filterBranch?: null|FilterBranchShape|PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch,
+ *   filterBranch?: FilterBranchShape|null,
  *   listFolderID?: int|null,
  *   listPermissions?: null|PublicListPermissions|PublicListPermissionsShape,
  *   membershipSettings?: null|PublicMembershipSettings|PublicMembershipSettingsShape,
@@ -108,10 +108,10 @@ final class ListCreateRequest implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string,string> $customProperties
-     * @param FilterBranchShape $filterBranch
-     * @param PublicListPermissionsShape $listPermissions
-     * @param PublicMembershipSettingsShape $membershipSettings
+     * @param array<string,string>|null $customProperties
+     * @param FilterBranchShape|null $filterBranch
+     * @param PublicListPermissions|PublicListPermissionsShape|null $listPermissions
+     * @param PublicMembershipSettings|PublicMembershipSettingsShape|null $membershipSettings
      */
     public static function with(
         string $name,
@@ -208,7 +208,7 @@ final class ListCreateRequest implements BaseModel
     }
 
     /**
-     * @param PublicListPermissionsShape $listPermissions
+     * @param PublicListPermissions|PublicListPermissionsShape $listPermissions
      */
     public function withListPermissions(
         PublicListPermissions|array $listPermissions
@@ -220,7 +220,7 @@ final class ListCreateRequest implements BaseModel
     }
 
     /**
-     * @param PublicMembershipSettingsShape $membershipSettings
+     * @param PublicMembershipSettings|PublicMembershipSettingsShape $membershipSettings
      */
     public function withMembershipSettings(
         PublicMembershipSettings|array $membershipSettings

@@ -176,11 +176,11 @@ final class ObjectSchema implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<AssociationDefinitionShape> $associations
-     * @param ObjectTypeDefinitionLabelsShape $labels
+     * @param ObjectTypeDefinitionLabels|ObjectTypeDefinitionLabelsShape $labels
      * @param list<PropertyShape> $properties
      * @param list<string> $requiredProperties
-     * @param list<string> $searchableProperties
-     * @param list<string> $secondaryDisplayProperties
+     * @param list<string>|null $searchableProperties
+     * @param list<string>|null $secondaryDisplayProperties
      */
     public static function with(
         string $id,
@@ -250,7 +250,7 @@ final class ObjectSchema implements BaseModel
     }
 
     /**
-     * @param ObjectTypeDefinitionLabelsShape $labels
+     * @param ObjectTypeDefinitionLabels|ObjectTypeDefinitionLabelsShape $labels
      */
     public function withLabels(ObjectTypeDefinitionLabels|array $labels): self
     {

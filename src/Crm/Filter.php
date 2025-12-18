@@ -85,7 +85,7 @@ final class Filter implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param Operator|value-of<Operator> $operator
-     * @param list<string> $values
+     * @param list<string>|null $values
      */
     public static function with(
         Operator|string $operator,

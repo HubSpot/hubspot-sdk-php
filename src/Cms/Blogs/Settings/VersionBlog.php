@@ -73,8 +73,8 @@ final class VersionBlog implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param BlogShape $object
-     * @param VersionUserShape $user
+     * @param Blog|BlogShape $object
+     * @param VersionUser|VersionUserShape $user
      */
     public static function with(
         string $id,
@@ -104,7 +104,7 @@ final class VersionBlog implements BaseModel
     }
 
     /**
-     * @param BlogShape $object
+     * @param Blog|BlogShape $object
      */
     public function withObject(Blog|array $object): self
     {
@@ -125,7 +125,7 @@ final class VersionBlog implements BaseModel
     /**
      * Model definition for a version user. Contains addition information about the user who created a version.
      *
-     * @param VersionUserShape $user
+     * @param VersionUser|VersionUserShape $user
      */
     public function withUser(VersionUser|array $user): self
     {

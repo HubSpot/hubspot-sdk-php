@@ -14,7 +14,7 @@ use HubspotSDK\PublicPropertyFilter\FilterType;
  *
  * @phpstan-type PublicPropertyFilterShape = array{
  *   filterType: FilterType|value-of<FilterType>,
- *   operation: PublicBoolPropertyOperation|PublicNumberPropertyOperation|PublicStringPropertyOperation|PublicDateTimePropertyOperation|PublicRangedDatePropertyOperation|PublicComparativePropertyUpdatedOperation|PublicComparativeDatePropertyOperation|PublicRollingDateRangePropertyOperation|PublicRollingPropertyUpdatedOperation|PublicEnumerationPropertyOperation|PublicAllPropertyTypesOperation|PublicRangedNumberPropertyOperation|PublicMultiStringPropertyOperation|PublicDatePropertyOperation|PublicCalendarDatePropertyOperation|PublicTimePointOperation|PublicRangedTimeOperation|OperationShape,
+ *   operation: OperationShape,
  *   property: string,
  * }
  */

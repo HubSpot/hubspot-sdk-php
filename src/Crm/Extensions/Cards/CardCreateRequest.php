@@ -79,9 +79,9 @@ final class CardCreateRequest implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param CardActionsShape $actions
-     * @param CardDisplayBodyShape $display
-     * @param CardFetchBodyShape $fetch
+     * @param CardActions|CardActionsShape $actions
+     * @param CardDisplayBody|CardDisplayBodyShape $display
+     * @param CardFetchBody|CardFetchBodyShape $fetch
      */
     public static function with(
         CardActions|array $actions,
@@ -102,7 +102,7 @@ final class CardCreateRequest implements BaseModel
     /**
      * Configuration for custom user actions on cards.
      *
-     * @param CardActionsShape $actions
+     * @param CardActions|CardActionsShape $actions
      */
     public function withActions(CardActions|array $actions): self
     {
@@ -115,7 +115,7 @@ final class CardCreateRequest implements BaseModel
     /**
      * Configuration for displayed info on a card.
      *
-     * @param CardDisplayBodyShape $display
+     * @param CardDisplayBody|CardDisplayBodyShape $display
      */
     public function withDisplay(CardDisplayBody|array $display): self
     {
@@ -128,7 +128,7 @@ final class CardCreateRequest implements BaseModel
     /**
      * Configuration for this card's data fetch request.
      *
-     * @param CardFetchBodyShape $fetch
+     * @param CardFetchBody|CardFetchBodyShape $fetch
      */
     public function withFetch(CardFetchBody|array $fetch): self
     {

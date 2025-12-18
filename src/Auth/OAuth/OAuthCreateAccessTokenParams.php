@@ -71,7 +71,7 @@ final class OAuthCreateAccessTokenParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param GrantType|value-of<GrantType> $grantType
+     * @param GrantType|value-of<GrantType>|null $grantType
      */
     public static function with(
         ?string $clientSecret = null,

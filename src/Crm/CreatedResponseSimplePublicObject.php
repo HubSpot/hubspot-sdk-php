@@ -67,7 +67,7 @@ final class CreatedResponseSimplePublicObject implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param SimplePublicObjectShape $entity
+     * @param SimplePublicObject|SimplePublicObjectShape $entity
      */
     public static function with(
         string $createdResourceID,
@@ -98,7 +98,7 @@ final class CreatedResponseSimplePublicObject implements BaseModel
     /**
      * A simple public object.
      *
-     * @param SimplePublicObjectShape $entity
+     * @param SimplePublicObject|SimplePublicObjectShape $entity
      */
     public function withEntity(SimplePublicObject|array $entity): self
     {

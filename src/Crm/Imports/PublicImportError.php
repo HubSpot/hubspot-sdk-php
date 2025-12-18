@@ -108,9 +108,9 @@ final class PublicImportError implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param ErrorType|value-of<ErrorType> $errorType
-     * @param ImportRowCoreShape $sourceData
-     * @param PropertyValueShape $invalidPropertyValue
-     * @param ObjectType|value-of<ObjectType> $objectType
+     * @param ImportRowCore|ImportRowCoreShape $sourceData
+     * @param PropertyValue|PropertyValueShape|null $invalidPropertyValue
+     * @param ObjectType|value-of<ObjectType>|null $objectType
      */
     public static function with(
         string $id,
@@ -173,7 +173,7 @@ final class PublicImportError implements BaseModel
     }
 
     /**
-     * @param ImportRowCoreShape $sourceData
+     * @param ImportRowCore|ImportRowCoreShape $sourceData
      */
     public function withSourceData(ImportRowCore|array $sourceData): self
     {
@@ -202,7 +202,7 @@ final class PublicImportError implements BaseModel
     /**
      * Represents a single custom property of a marketing event, storing its name, value, metadata (like source, timestamp, and sensitivity), and related audit information for tracking changes.
      *
-     * @param PropertyValueShape $invalidPropertyValue
+     * @param PropertyValue|PropertyValueShape $invalidPropertyValue
      */
     public function withInvalidPropertyValue(
         PropertyValue|array $invalidPropertyValue

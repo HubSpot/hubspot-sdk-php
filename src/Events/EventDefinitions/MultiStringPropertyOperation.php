@@ -16,7 +16,7 @@ use HubspotSDK\Events\EventDefinitions\MultiStringPropertyOperation\PropertyType
  * @phpstan-import-type PruningRefineByShape from \HubspotSDK\Events\EventDefinitions\MultiStringPropertyOperation\PruningRefineBy
  *
  * @phpstan-type MultiStringPropertyOperationShape = array{
- *   coalescingRefineBy: NumOccurrencesRefineBy|SetOccurrencesRefineBy|CoalescingRefineByShape,
+ *   coalescingRefineBy: CoalescingRefineByShape,
  *   includeObjectsWithNoValueSet: bool,
  *   operationType: string,
  *   operator: Operator|value-of<Operator>,
@@ -24,7 +24,7 @@ use HubspotSDK\Events\EventDefinitions\MultiStringPropertyOperation\PropertyType
  *   propertyType: PropertyType|value-of<PropertyType>,
  *   values: list<string>,
  *   defaultValue?: string|null,
- *   pruningRefineBy?: null|PruningRefineByShape|RelativeComparativeTimestampRefineBy|RelativeRangedTimestampRefineBy|AbsoluteComparativeTimestampRefineBy|AbsoluteRangedTimestampRefineBy|AllHistoryRefineBy|TimePointOperation|RangedTimeOperation,
+ *   pruningRefineBy?: PruningRefineByShape|null,
  * }
  */
 final class MultiStringPropertyOperation implements BaseModel
@@ -105,7 +105,7 @@ final class MultiStringPropertyOperation implements BaseModel
      * @param Operator|value-of<Operator> $operator
      * @param list<string> $values
      * @param PropertyType|value-of<PropertyType> $propertyType
-     * @param PruningRefineByShape $pruningRefineBy
+     * @param PruningRefineByShape|null $pruningRefineBy
      */
     public static function with(
         NumOccurrencesRefineBy|array|SetOccurrencesRefineBy $coalescingRefineBy,

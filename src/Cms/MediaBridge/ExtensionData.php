@@ -75,10 +75,10 @@ final class ExtensionData implements BaseModel
      *
      * @param array<string,string> $extensionStatusMap
      * @param list<string> $tags
-     * @param CaseChangeTestExtensionDataShape $caseChangeTestExtensionData
-     * @param OptionDecoratorsExtensionDataShape $optionDecoratorsExtensionData
-     * @param RequiredPropertiesExtensionDataShape $requiredPropertiesExtensionData
-     * @param SoftRequiredPropertiesExtensionDataShape $softRequiredPropertiesExtensionData
+     * @param CaseChangeTestExtensionData|CaseChangeTestExtensionDataShape|null $caseChangeTestExtensionData
+     * @param OptionDecoratorsExtensionData|OptionDecoratorsExtensionDataShape|null $optionDecoratorsExtensionData
+     * @param RequiredPropertiesExtensionData|RequiredPropertiesExtensionDataShape|null $requiredPropertiesExtensionData
+     * @param SoftRequiredPropertiesExtensionData|SoftRequiredPropertiesExtensionDataShape|null $softRequiredPropertiesExtensionData
      */
     public static function with(
         array $extensionStatusMap,
@@ -124,7 +124,7 @@ final class ExtensionData implements BaseModel
     }
 
     /**
-     * @param CaseChangeTestExtensionDataShape $caseChangeTestExtensionData
+     * @param CaseChangeTestExtensionData|CaseChangeTestExtensionDataShape $caseChangeTestExtensionData
      */
     public function withCaseChangeTestExtensionData(
         CaseChangeTestExtensionData|array $caseChangeTestExtensionData
@@ -136,7 +136,7 @@ final class ExtensionData implements BaseModel
     }
 
     /**
-     * @param OptionDecoratorsExtensionDataShape $optionDecoratorsExtensionData
+     * @param OptionDecoratorsExtensionData|OptionDecoratorsExtensionDataShape $optionDecoratorsExtensionData
      */
     public function withOptionDecoratorsExtensionData(
         OptionDecoratorsExtensionData|array $optionDecoratorsExtensionData
@@ -148,7 +148,7 @@ final class ExtensionData implements BaseModel
     }
 
     /**
-     * @param RequiredPropertiesExtensionDataShape $requiredPropertiesExtensionData
+     * @param RequiredPropertiesExtensionData|RequiredPropertiesExtensionDataShape $requiredPropertiesExtensionData
      */
     public function withRequiredPropertiesExtensionData(
         RequiredPropertiesExtensionData|array $requiredPropertiesExtensionData
@@ -160,7 +160,7 @@ final class ExtensionData implements BaseModel
     }
 
     /**
-     * @param SoftRequiredPropertiesExtensionDataShape $softRequiredPropertiesExtensionData
+     * @param SoftRequiredPropertiesExtensionData|SoftRequiredPropertiesExtensionDataShape $softRequiredPropertiesExtensionData
      */
     public function withSoftRequiredPropertiesExtensionData(
         SoftRequiredPropertiesExtensionData|array $softRequiredPropertiesExtensionData,

@@ -16,11 +16,11 @@ use HubspotSDK\PublicRangedTimeOperation\Type;
  *
  * @phpstan-type PublicRangedTimeOperationShape = array{
  *   includeObjectsWithNoValueSet: bool,
- *   lowerBoundTimePoint: PublicDatePoint|PublicIndexedTimePoint|PublicPropertyReferencedTime|LowerBoundTimePointShape,
+ *   lowerBoundTimePoint: LowerBoundTimePointShape,
  *   operationType: string,
  *   operator: string,
  *   type: Type|value-of<Type>,
- *   upperBoundTimePoint: PublicDatePoint|PublicIndexedTimePoint|PublicPropertyReferencedTime|UpperBoundTimePointShape,
+ *   upperBoundTimePoint: UpperBoundTimePointShape,
  *   lowerBoundEndpointBehavior?: string|null,
  *   propertyParser?: string|null,
  *   upperBoundEndpointBehavior?: string|null,

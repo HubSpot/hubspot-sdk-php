@@ -18,8 +18,8 @@ use HubspotSDK\PublicCtaAnalyticsFilter\FilterType;
  *   ctaName: string,
  *   filterType: FilterType|value-of<FilterType>,
  *   operator: string,
- *   coalescingRefineBy?: null|CoalescingRefineByShape|PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation,
- *   pruningRefineBy?: null|PruningRefineByShape|PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation,
+ *   coalescingRefineBy?: CoalescingRefineByShape|null,
+ *   pruningRefineBy?: PruningRefineByShape|null,
  * }
  */
 final class PublicCtaAnalyticsFilter implements BaseModel
@@ -71,8 +71,8 @@ final class PublicCtaAnalyticsFilter implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param FilterType|value-of<FilterType> $filterType
-     * @param CoalescingRefineByShape $coalescingRefineBy
-     * @param PruningRefineByShape $pruningRefineBy
+     * @param CoalescingRefineByShape|null $coalescingRefineBy
+     * @param PruningRefineByShape|null $pruningRefineBy
      */
     public static function with(
         string $ctaName,

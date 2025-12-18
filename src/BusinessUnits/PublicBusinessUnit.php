@@ -67,7 +67,7 @@ final class PublicBusinessUnit implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param PublicBusinessUnitLogoMetadataShape $logoMetadata
+     * @param PublicBusinessUnitLogoMetadata|PublicBusinessUnitLogoMetadataShape|null $logoMetadata
      */
     public static function with(
         string $id,
@@ -109,7 +109,7 @@ final class PublicBusinessUnit implements BaseModel
     /**
      * A Business Unit's logo metadata.
      *
-     * @param PublicBusinessUnitLogoMetadataShape $logoMetadata
+     * @param PublicBusinessUnitLogoMetadata|PublicBusinessUnitLogoMetadataShape $logoMetadata
      */
     public function withLogoMetadata(
         PublicBusinessUnitLogoMetadata|array $logoMetadata

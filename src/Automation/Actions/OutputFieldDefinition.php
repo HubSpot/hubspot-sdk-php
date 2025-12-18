@@ -47,7 +47,7 @@ final class OutputFieldDefinition implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param FieldTypeDefinitionShape $typeDefinition
+     * @param FieldTypeDefinition|FieldTypeDefinitionShape $typeDefinition
      */
     public static function with(FieldTypeDefinition|array $typeDefinition): self
     {
@@ -59,7 +59,7 @@ final class OutputFieldDefinition implements BaseModel
     }
 
     /**
-     * @param FieldTypeDefinitionShape $typeDefinition
+     * @param FieldTypeDefinition|FieldTypeDefinitionShape $typeDefinition
      */
     public function withTypeDefinition(
         FieldTypeDefinition|array $typeDefinition

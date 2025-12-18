@@ -22,7 +22,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   queryParams: list<APIInputVariableShape>,
  *   type: Type|value-of<Type>,
  *   webhookURL: string,
- *   authSettings?: null|AuthSettingsShape|APIAuthKeyWebhookAuthSettings|APISignatureWebhookAuthSettings,
+ *   authSettings?: AuthSettingsShape|null,
  *   connection?: null|APIConnection|APIConnectionShape,
  * }
  */
@@ -89,8 +89,8 @@ final class APIWebhookAction implements BaseModel
      * @param Method|value-of<Method> $method
      * @param list<APIInputVariableShape> $queryParams
      * @param Type|value-of<Type> $type
-     * @param AuthSettingsShape $authSettings
-     * @param APIConnectionShape $connection
+     * @param AuthSettingsShape|null $authSettings
+     * @param APIConnection|APIConnectionShape|null $connection
      */
     public static function with(
         string $actionID,
@@ -177,7 +177,7 @@ final class APIWebhookAction implements BaseModel
     }
 
     /**
-     * @param APIConnectionShape $connection
+     * @param APIConnection|APIConnectionShape $connection
      */
     public function withConnection(APIConnection|array $connection): self
     {

@@ -41,7 +41,7 @@ final class PublicButtonStyleSettings implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param PublicFontStyleShape $fontStyle
+     * @param PublicFontStyle|PublicFontStyleShape|null $fontStyle
      */
     public static function with(
         mixed $backgroundColor = null,
@@ -74,7 +74,7 @@ final class PublicButtonStyleSettings implements BaseModel
     }
 
     /**
-     * @param PublicFontStyleShape $fontStyle
+     * @param PublicFontStyle|PublicFontStyleShape $fontStyle
      */
     public function withFontStyle(PublicFontStyle|array $fontStyle): self
     {

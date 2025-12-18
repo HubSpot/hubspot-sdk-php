@@ -145,7 +145,7 @@ final class NumberField implements BaseModel
      *
      * @param list<mixed> $dependentFields
      * @param FieldType|value-of<FieldType> $fieldType
-     * @param NumberFieldValidationShape $validation
+     * @param NumberFieldValidation|NumberFieldValidationShape|null $validation
      */
     public static function with(
         array $dependentFields,
@@ -295,7 +295,7 @@ final class NumberField implements BaseModel
     /**
      * Describes how a numeric value should be validated.
      *
-     * @param NumberFieldValidationShape $validation
+     * @param NumberFieldValidation|NumberFieldValidationShape $validation
      */
     public function withValidation(
         NumberFieldValidation|array $validation

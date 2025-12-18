@@ -93,7 +93,7 @@ final class PartialPublicStatusRequest implements BaseModel
      *
      * @param Channel|value-of<Channel> $channel
      * @param StatusState|value-of<StatusState> $statusState
-     * @param LegalBasis|value-of<LegalBasis> $legalBasis
+     * @param LegalBasis|value-of<LegalBasis>|null $legalBasis
      */
     public static function with(
         Channel|string $channel,

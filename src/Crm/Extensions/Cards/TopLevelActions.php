@@ -17,7 +17,7 @@ use HubspotSDK\Crm\Extensions\Cards\TopLevelActions\Secondary;
  *
  * @phpstan-type TopLevelActionsShape = array{
  *   secondary: list<SecondaryShape>,
- *   primary?: null|PrimaryShape|ActionHookActionBody|IFrameActionBody,
+ *   primary?: PrimaryShape|null,
  *   settings?: null|IFrameActionBody|IFrameActionBodyShape,
  * }
  */
@@ -61,8 +61,8 @@ final class TopLevelActions implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<SecondaryShape> $secondary
-     * @param PrimaryShape $primary
-     * @param IFrameActionBodyShape $settings
+     * @param PrimaryShape|null $primary
+     * @param IFrameActionBody|IFrameActionBodyShape|null $settings
      */
     public static function with(
         array $secondary,
@@ -103,7 +103,7 @@ final class TopLevelActions implements BaseModel
     }
 
     /**
-     * @param IFrameActionBodyShape $settings
+     * @param IFrameActionBody|IFrameActionBodyShape $settings
      */
     public function withSettings(IFrameActionBody|array $settings): self
     {

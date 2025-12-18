@@ -69,7 +69,7 @@ final class MarketingEventIdentifiersResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param AppInfoShape $appInfo
+     * @param AppInfo|AppInfoShape|null $appInfo
      */
     public static function with(
         string $externalEventID,
@@ -115,7 +115,7 @@ final class MarketingEventIdentifiersResponse implements BaseModel
     }
 
     /**
-     * @param AppInfoShape $appInfo
+     * @param AppInfo|AppInfoShape $appInfo
      */
     public function withAppInfo(AppInfo|array $appInfo): self
     {

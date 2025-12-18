@@ -15,7 +15,7 @@ use HubspotSDK\PublicIndexedTimePoint\TimeType;
  * @phpstan-import-type PublicIndexOffsetShape from \HubspotSDK\PublicIndexOffset
  *
  * @phpstan-type PublicIndexedTimePointShape = array{
- *   indexReference: PublicNowReference|PublicTodayReference|PublicWeekReference|PublicFiscalQuarterReference|PublicFiscalYearReference|PublicYearReference|PublicQuarterReference|PublicMonthReference|IndexReferenceShape,
+ *   indexReference: IndexReferenceShape,
  *   timeType: TimeType|value-of<TimeType>,
  *   zoneID: string,
  *   offset?: null|PublicIndexOffset|PublicIndexOffsetShape,
@@ -72,7 +72,7 @@ final class PublicIndexedTimePoint implements BaseModel
      *
      * @param IndexReferenceShape $indexReference
      * @param TimeType|value-of<TimeType> $timeType
-     * @param PublicIndexOffsetShape $offset
+     * @param PublicIndexOffset|PublicIndexOffsetShape|null $offset
      */
     public static function with(
         PublicNowReference|array|PublicTodayReference|PublicWeekReference|PublicFiscalQuarterReference|PublicFiscalYearReference|PublicYearReference|PublicQuarterReference|PublicMonthReference $indexReference,
@@ -125,7 +125,7 @@ final class PublicIndexedTimePoint implements BaseModel
     }
 
     /**
-     * @param PublicIndexOffsetShape $offset
+     * @param PublicIndexOffset|PublicIndexOffsetShape $offset
      */
     public function withOffset(PublicIndexOffset|array $offset): self
     {

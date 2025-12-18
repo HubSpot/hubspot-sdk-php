@@ -68,7 +68,7 @@ final class CollectionResponseWithTotalVersionBlogPost implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<mixed> $results
-     * @param PagingShape $paging
+     * @param Paging|PagingShape|null $paging
      */
     public static function with(
         array $results,
@@ -110,7 +110,7 @@ final class CollectionResponseWithTotalVersionBlogPost implements BaseModel
     }
 
     /**
-     * @param PagingShape $paging
+     * @param Paging|PagingShape $paging
      */
     public function withPaging(Paging|array $paging): self
     {

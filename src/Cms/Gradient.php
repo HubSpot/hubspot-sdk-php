@@ -58,9 +58,9 @@ final class Gradient implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param AngleShape $angle
+     * @param Angle|AngleShape $angle
      * @param list<ColorStopShape> $colors
-     * @param SideOrCornerShape $sideOrCorner
+     * @param SideOrCorner|SideOrCornerShape $sideOrCorner
      */
     public static function with(
         Angle|array $angle,
@@ -77,7 +77,7 @@ final class Gradient implements BaseModel
     }
 
     /**
-     * @param AngleShape $angle
+     * @param Angle|AngleShape $angle
      */
     public function withAngle(Angle|array $angle): self
     {
@@ -99,7 +99,7 @@ final class Gradient implements BaseModel
     }
 
     /**
-     * @param SideOrCornerShape $sideOrCorner
+     * @param SideOrCorner|SideOrCornerShape $sideOrCorner
      */
     public function withSideOrCorner(SideOrCorner|array $sideOrCorner): self
     {

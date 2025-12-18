@@ -75,9 +75,9 @@ final class ThreadListParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<Association|value-of<Association>> $association
-     * @param list<int> $inboxID
-     * @param list<string> $sort
+     * @param list<Association|value-of<Association>>|null $association
+     * @param list<int>|null $inboxID
+     * @param list<string>|null $sort
      */
     public static function with(
         ?string $after = null,

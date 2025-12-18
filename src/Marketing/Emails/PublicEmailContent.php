@@ -68,12 +68,12 @@ final class PublicEmailContent implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string,mixed> $flexAreas
-     * @param array<string,mixed> $smartFields
-     * @param PublicEmailStyleSettingsShape $styleSettings
-     * @param array<string,mixed> $themeSettingsValues
-     * @param array<string,mixed> $widgetContainers
-     * @param array<string,mixed> $widgets
+     * @param array<string,mixed>|null $flexAreas
+     * @param array<string,mixed>|null $smartFields
+     * @param PublicEmailStyleSettings|PublicEmailStyleSettingsShape|null $styleSettings
+     * @param array<string,mixed>|null $themeSettingsValues
+     * @param array<string,mixed>|null $widgetContainers
+     * @param array<string,mixed>|null $widgets
      */
     public static function with(
         ?array $flexAreas = null,
@@ -130,7 +130,7 @@ final class PublicEmailContent implements BaseModel
     }
 
     /**
-     * @param PublicEmailStyleSettingsShape $styleSettings
+     * @param PublicEmailStyleSettings|PublicEmailStyleSettingsShape $styleSettings
      */
     public function withStyleSettings(
         PublicEmailStyleSettings|array $styleSettings

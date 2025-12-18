@@ -183,12 +183,12 @@ final class Column implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param Type|value-of<Type> $type
-     * @param SimpleUserShape $createdBy
-     * @param list<ForeignIDShape> $foreignIDs
-     * @param array<string,ForeignIDShape> $foreignIDsByID
-     * @param array<string,ForeignIDShape> $foreignIDsByName
-     * @param list<OptionShape> $options
-     * @param SimpleUserShape $updatedBy
+     * @param SimpleUser|SimpleUserShape|null $createdBy
+     * @param list<ForeignIDShape>|null $foreignIDs
+     * @param array<string,ForeignIDShape>|null $foreignIDsByID
+     * @param array<string,ForeignIDShape>|null $foreignIDsByName
+     * @param list<OptionShape>|null $options
+     * @param SimpleUser|SimpleUserShape|null $updatedBy
      */
     public static function with(
         string $id,
@@ -310,7 +310,7 @@ final class Column implements BaseModel
     }
 
     /**
-     * @param SimpleUserShape $createdBy
+     * @param SimpleUser|SimpleUserShape $createdBy
      */
     public function withCreatedBy(SimpleUser|array $createdBy): self
     {
@@ -422,7 +422,7 @@ final class Column implements BaseModel
     }
 
     /**
-     * @param SimpleUserShape $updatedBy
+     * @param SimpleUser|SimpleUserShape $updatedBy
      */
     public function withUpdatedBy(SimpleUser|array $updatedBy): self
     {

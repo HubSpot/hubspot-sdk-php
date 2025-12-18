@@ -66,7 +66,7 @@ final class PublicRssEmailDetails implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string,mixed> $timing
+     * @param array<string,mixed>|null $timing
      */
     public static function with(
         ?string $blogEmailType = null,

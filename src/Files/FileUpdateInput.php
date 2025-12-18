@@ -75,7 +75,7 @@ final class FileUpdateInput implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param Access|value-of<Access> $access
+     * @param Access|value-of<Access>|null $access
      */
     public static function with(
         Access|string|null $access = null,

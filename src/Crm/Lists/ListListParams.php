@@ -48,7 +48,7 @@ final class ListListParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<string> $listIDs
+     * @param list<string>|null $listIDs
      */
     public static function with(
         ?bool $includeFilters = null,

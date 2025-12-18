@@ -92,9 +92,9 @@ final class PublicSingleSendEmail implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<string> $bcc
-     * @param list<string> $cc
-     * @param list<string> $replyTo
+     * @param list<string>|null $bcc
+     * @param list<string>|null $cc
+     * @param list<string>|null $replyTo
      */
     public static function with(
         string $to,

@@ -289,8 +289,8 @@ final class AssociationDefinition implements BaseModel
      * @param Cardinality|value-of<Cardinality> $cardinality
      * @param Category|value-of<Category> $category
      * @param InverseCardinality|value-of<InverseCardinality> $inverseCardinality
-     * @param FromObjectType|value-of<FromObjectType> $fromObjectType
-     * @param ToObjectType|value-of<ToObjectType> $toObjectType
+     * @param FromObjectType|value-of<FromObjectType>|null $fromObjectType
+     * @param ToObjectType|value-of<ToObjectType>|null $toObjectType
      */
     public static function with(
         int $id,

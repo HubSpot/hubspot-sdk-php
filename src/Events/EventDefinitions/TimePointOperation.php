@@ -24,7 +24,7 @@ use HubspotSDK\Events\EventDefinitions\TimePointOperation\PropertyType;
  *   operatorName: string,
  *   propertyParser: PropertyParser|value-of<PropertyParser>,
  *   propertyType: PropertyType|value-of<PropertyType>,
- *   timePoint: DatePoint|IndexedTimePoint|PropertyReferencedTime|TimePointShape,
+ *   timePoint: TimePointShape,
  *   type: string,
  *   defaultValue?: string|null,
  * }

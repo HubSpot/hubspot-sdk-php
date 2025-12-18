@@ -97,7 +97,7 @@ final class BatchResponseHubDBTableRowV3 implements BaseModel
      *
      * @param list<HubDBTableRowV3Shape> $results
      * @param Status|value-of<Status> $status
-     * @param array<string,string> $links
+     * @param array<string,string>|null $links
      */
     public static function with(
         \DateTimeInterface $completedAt,

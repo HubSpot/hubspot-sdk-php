@@ -151,11 +151,11 @@ final class PublicEmailStyleSettings implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param PublicButtonStyleSettingsShape $buttonStyleSettings
-     * @param PublicDividerStyleSettingsShape $dividerStyleSettings
-     * @param PublicFontStyleShape $headingOneFont
-     * @param PublicFontStyleShape $headingTwoFont
-     * @param PublicFontStyleShape $linksFont
+     * @param PublicButtonStyleSettings|PublicButtonStyleSettingsShape|null $buttonStyleSettings
+     * @param PublicDividerStyleSettings|PublicDividerStyleSettingsShape|null $dividerStyleSettings
+     * @param PublicFontStyle|PublicFontStyleShape|null $headingOneFont
+     * @param PublicFontStyle|PublicFontStyleShape|null $headingTwoFont
+     * @param PublicFontStyle|PublicFontStyleShape|null $linksFont
      */
     public static function with(
         ?string $backgroundColor = null,
@@ -283,7 +283,7 @@ final class PublicEmailStyleSettings implements BaseModel
     }
 
     /**
-     * @param PublicButtonStyleSettingsShape $buttonStyleSettings
+     * @param PublicButtonStyleSettings|PublicButtonStyleSettingsShape $buttonStyleSettings
      */
     public function withButtonStyleSettings(
         PublicButtonStyleSettings|array $buttonStyleSettings
@@ -343,7 +343,7 @@ final class PublicEmailStyleSettings implements BaseModel
     }
 
     /**
-     * @param PublicDividerStyleSettingsShape $dividerStyleSettings
+     * @param PublicDividerStyleSettings|PublicDividerStyleSettingsShape $dividerStyleSettings
      */
     public function withDividerStyleSettings(
         PublicDividerStyleSettings|array $dividerStyleSettings
@@ -371,7 +371,7 @@ final class PublicEmailStyleSettings implements BaseModel
     }
 
     /**
-     * @param PublicFontStyleShape $headingOneFont
+     * @param PublicFontStyle|PublicFontStyleShape $headingOneFont
      */
     public function withHeadingOneFont(
         PublicFontStyle|array $headingOneFont
@@ -383,7 +383,7 @@ final class PublicEmailStyleSettings implements BaseModel
     }
 
     /**
-     * @param PublicFontStyleShape $headingTwoFont
+     * @param PublicFontStyle|PublicFontStyleShape $headingTwoFont
      */
     public function withHeadingTwoFont(
         PublicFontStyle|array $headingTwoFont
@@ -395,7 +395,7 @@ final class PublicEmailStyleSettings implements BaseModel
     }
 
     /**
-     * @param PublicFontStyleShape $linksFont
+     * @param PublicFontStyle|PublicFontStyleShape $linksFont
      */
     public function withLinksFont(PublicFontStyle|array $linksFont): self
     {

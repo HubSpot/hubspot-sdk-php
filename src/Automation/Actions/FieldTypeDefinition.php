@@ -104,8 +104,8 @@ final class FieldTypeDefinition implements BaseModel
      *
      * @param list<OptionShape> $options
      * @param Type|value-of<Type> $type
-     * @param FieldType|value-of<FieldType> $fieldType
-     * @param ReferencedObjectType|value-of<ReferencedObjectType> $referencedObjectType
+     * @param FieldType|value-of<FieldType>|null $fieldType
+     * @param ReferencedObjectType|value-of<ReferencedObjectType>|null $referencedObjectType
      */
     public static function with(
         bool $externalOptions,

@@ -182,10 +182,10 @@ final class ObjectTypePropertyCreate implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param Type|value-of<Type> $type
-     * @param NumberDisplayHint|value-of<NumberDisplayHint> $numberDisplayHint
-     * @param list<OptionInputShape> $options
-     * @param OptionSortStrategy|value-of<OptionSortStrategy> $optionSortStrategy
-     * @param TextDisplayHint|value-of<TextDisplayHint> $textDisplayHint
+     * @param NumberDisplayHint|value-of<NumberDisplayHint>|null $numberDisplayHint
+     * @param list<OptionInputShape>|null $options
+     * @param OptionSortStrategy|value-of<OptionSortStrategy>|null $optionSortStrategy
+     * @param TextDisplayHint|value-of<TextDisplayHint>|null $textDisplayHint
      */
     public static function with(
         string $fieldType,

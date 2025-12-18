@@ -54,7 +54,7 @@ final class PublicAssociationsForObject implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param PublicObjectIDShape $to
+     * @param PublicObjectID|PublicObjectIDShape $to
      * @param list<AssociationSpecShape> $types
      */
     public static function with(PublicObjectID|array $to, array $types): self
@@ -68,7 +68,7 @@ final class PublicAssociationsForObject implements BaseModel
     }
 
     /**
-     * @param PublicObjectIDShape $to
+     * @param PublicObjectID|PublicObjectIDShape $to
      */
     public function withTo(PublicObjectID|array $to): self
     {

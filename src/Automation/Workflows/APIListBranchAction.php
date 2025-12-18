@@ -72,7 +72,7 @@ final class APIListBranchAction implements BaseModel
      *
      * @param list<mixed> $listBranches
      * @param Type|value-of<Type> $type
-     * @param APIConnectionShape $defaultBranch
+     * @param APIConnection|APIConnectionShape|null $defaultBranch
      */
     public static function with(
         string $actionID,
@@ -124,7 +124,7 @@ final class APIListBranchAction implements BaseModel
     }
 
     /**
-     * @param APIConnectionShape $defaultBranch
+     * @param APIConnection|APIConnectionShape $defaultBranch
      */
     public function withDefaultBranch(APIConnection|array $defaultBranch): self
     {

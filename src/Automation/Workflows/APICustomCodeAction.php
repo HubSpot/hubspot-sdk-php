@@ -102,7 +102,7 @@ final class APICustomCodeAction implements BaseModel
      * @param list<APIEnumerationOutputFieldShape> $outputFields
      * @param list<string> $secretNames
      * @param Type|value-of<Type> $type
-     * @param APIConnectionShape $connection
+     * @param APIConnection|APIConnectionShape|null $connection
      */
     public static function with(
         string $actionID,
@@ -198,7 +198,7 @@ final class APICustomCodeAction implements BaseModel
     }
 
     /**
-     * @param APIConnectionShape $connection
+     * @param APIConnection|APIConnectionShape $connection
      */
     public function withConnection(APIConnection|array $connection): self
     {

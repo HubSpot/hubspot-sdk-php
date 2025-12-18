@@ -14,7 +14,7 @@ use HubspotSDK\PublicAdsTimeFilter\FilterType;
  *
  * @phpstan-type PublicAdsTimeFilterShape = array{
  *   filterType: FilterType|value-of<FilterType>,
- *   pruningRefineBy: PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation|PruningRefineByShape,
+ *   pruningRefineBy: PruningRefineByShape,
  * }
  */
 final class PublicAdsTimeFilter implements BaseModel

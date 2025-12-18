@@ -146,8 +146,8 @@ final class PublicStatus implements BaseModel
      *
      * @param Channel|value-of<Channel> $channel
      * @param Status|value-of<Status> $status
-     * @param LegalBasis|value-of<LegalBasis> $legalBasis
-     * @param SetStatusSuccessReason|value-of<SetStatusSuccessReason> $setStatusSuccessReason
+     * @param LegalBasis|value-of<LegalBasis>|null $legalBasis
+     * @param SetStatusSuccessReason|value-of<SetStatusSuccessReason>|null $setStatusSuccessReason
      */
     public static function with(
         Channel|string $channel,

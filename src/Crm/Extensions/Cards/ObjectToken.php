@@ -60,7 +60,7 @@ final class ObjectToken implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param DataType|value-of<DataType> $dataType
+     * @param DataType|value-of<DataType>|null $dataType
      */
     public static function with(
         string $value,

@@ -55,7 +55,7 @@ final class ExternalLinkAvailabilityAndBusyTimes implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<ExternalUserBusyTimesShape> $allUsersBusyTimes
-     * @param ExternalLinkAvailabilityShape $linkAvailability
+     * @param ExternalLinkAvailability|ExternalLinkAvailabilityShape|null $linkAvailability
      */
     public static function with(
         array $allUsersBusyTimes,
@@ -82,7 +82,7 @@ final class ExternalLinkAvailabilityAndBusyTimes implements BaseModel
     }
 
     /**
-     * @param ExternalLinkAvailabilityShape $linkAvailability
+     * @param ExternalLinkAvailability|ExternalLinkAvailabilityShape $linkAvailability
      */
     public function withLinkAvailability(
         ExternalLinkAvailability|array $linkAvailability

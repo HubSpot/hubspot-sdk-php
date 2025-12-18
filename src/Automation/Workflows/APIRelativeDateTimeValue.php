@@ -52,7 +52,7 @@ final class APIRelativeDateTimeValue implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param APITimeDelayShape $timeDelay
+     * @param APITimeDelay|APITimeDelayShape $timeDelay
      * @param Type|value-of<Type> $type
      */
     public static function with(
@@ -68,7 +68,7 @@ final class APIRelativeDateTimeValue implements BaseModel
     }
 
     /**
-     * @param APITimeDelayShape $timeDelay
+     * @param APITimeDelay|APITimeDelayShape $timeDelay
      */
     public function withTimeDelay(APITimeDelay|array $timeDelay): self
     {

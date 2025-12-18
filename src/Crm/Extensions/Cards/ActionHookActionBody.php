@@ -82,7 +82,7 @@ final class ActionHookActionBody implements BaseModel
      * @param HTTPMethod|value-of<HTTPMethod> $httpMethod
      * @param list<string> $propertyNamesIncluded
      * @param Type|value-of<Type> $type
-     * @param ActionConfirmationBodyShape $confirmation
+     * @param ActionConfirmationBody|ActionConfirmationBodyShape|null $confirmation
      */
     public static function with(
         HTTPMethod|string $httpMethod,
@@ -148,7 +148,7 @@ final class ActionHookActionBody implements BaseModel
     }
 
     /**
-     * @param ActionConfirmationBodyShape $confirmation
+     * @param ActionConfirmationBody|ActionConfirmationBodyShape $confirmation
      */
     public function withConfirmation(
         ActionConfirmationBody|array $confirmation

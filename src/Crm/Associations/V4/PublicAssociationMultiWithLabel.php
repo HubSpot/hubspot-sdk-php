@@ -62,9 +62,9 @@ final class PublicAssociationMultiWithLabel implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param PublicObjectIDShape $from
+     * @param PublicObjectID|PublicObjectIDShape $from
      * @param list<MultiAssociatedObjectWithLabelShape> $to
-     * @param PagingShape $paging
+     * @param Paging|PagingShape|null $paging
      */
     public static function with(
         PublicObjectID|array $from,
@@ -82,7 +82,7 @@ final class PublicAssociationMultiWithLabel implements BaseModel
     }
 
     /**
-     * @param PublicObjectIDShape $from
+     * @param PublicObjectID|PublicObjectIDShape $from
      */
     public function withFrom(PublicObjectID|array $from): self
     {
@@ -104,7 +104,7 @@ final class PublicAssociationMultiWithLabel implements BaseModel
     }
 
     /**
-     * @param PagingShape $paging
+     * @param Paging|PagingShape $paging
      */
     public function withPaging(Paging|array $paging): self
     {

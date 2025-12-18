@@ -74,7 +74,7 @@ final class BlogAuthorCloneRequestVNext implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param BlogAuthorShape $blogAuthor
+     * @param BlogAuthor|BlogAuthorShape $blogAuthor
      */
     public static function with(
         string $id,
@@ -107,7 +107,7 @@ final class BlogAuthorCloneRequestVNext implements BaseModel
     /**
      * Model definition for a Blog Author.
      *
-     * @param BlogAuthorShape $blogAuthor
+     * @param BlogAuthor|BlogAuthorShape $blogAuthor
      */
     public function withBlogAuthor(BlogAuthor|array $blogAuthor): self
     {

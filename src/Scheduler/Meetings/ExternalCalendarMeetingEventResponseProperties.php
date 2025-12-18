@@ -136,9 +136,9 @@ final class ExternalCalendarMeetingEventResponseProperties implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param HsEngagementSource|value-of<HsEngagementSource> $hsEngagementSource
-     * @param list<string> $hsAttachmentIDs
-     * @param list<string> $hsAttendeeOwnerIDs
-     * @param HsMeetingLocationType|value-of<HsMeetingLocationType> $hsMeetingLocationType
+     * @param list<string>|null $hsAttachmentIDs
+     * @param list<string>|null $hsAttendeeOwnerIDs
+     * @param HsMeetingLocationType|value-of<HsMeetingLocationType>|null $hsMeetingLocationType
      */
     public static function with(
         HsEngagementSource|string $hsEngagementSource,

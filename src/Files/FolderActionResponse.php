@@ -120,9 +120,9 @@ final class FolderActionResponse implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param Status|value-of<Status> $status
-     * @param list<StandardErrorShape> $errors
-     * @param array<string,string> $links
-     * @param FolderShape $result
+     * @param list<StandardErrorShape>|null $errors
+     * @param array<string,string>|null $links
+     * @param Folder|FolderShape|null $result
      */
     public static function with(
         \DateTimeInterface $completedAt,
@@ -246,7 +246,7 @@ final class FolderActionResponse implements BaseModel
     }
 
     /**
-     * @param FolderShape $result
+     * @param Folder|FolderShape $result
      */
     public function withResult(Folder|array $result): self
     {

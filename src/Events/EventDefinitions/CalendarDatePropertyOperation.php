@@ -110,7 +110,7 @@ final class CalendarDatePropertyOperation implements BaseModel
      * @param Operator|value-of<Operator> $operator
      * @param TimeUnit|value-of<TimeUnit> $timeUnit
      * @param PropertyType|value-of<PropertyType> $propertyType
-     * @param FiscalYearStart|value-of<FiscalYearStart> $fiscalYearStart
+     * @param FiscalYearStart|value-of<FiscalYearStart>|null $fiscalYearStart
      */
     public static function with(
         bool $includeObjectsWithNoValueSet,

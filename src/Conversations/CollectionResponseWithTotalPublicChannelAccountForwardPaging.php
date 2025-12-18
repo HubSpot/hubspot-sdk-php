@@ -66,7 +66,7 @@ final class CollectionResponseWithTotalPublicChannelAccountForwardPaging impleme
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<PublicChannelAccountShape> $results
-     * @param ForwardPagingShape $paging
+     * @param ForwardPaging|ForwardPagingShape|null $paging
      */
     public static function with(
         array $results,
@@ -103,7 +103,7 @@ final class CollectionResponseWithTotalPublicChannelAccountForwardPaging impleme
     }
 
     /**
-     * @param ForwardPagingShape $paging
+     * @param ForwardPaging|ForwardPagingShape $paging
      */
     public function withPaging(ForwardPaging|array $paging): self
     {

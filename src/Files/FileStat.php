@@ -40,8 +40,8 @@ final class FileStat implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param FileShape $file
-     * @param FolderShape $folder
+     * @param File|FileShape|null $file
+     * @param Folder|FolderShape|null $folder
      */
     public static function with(
         File|array|null $file = null,
@@ -58,7 +58,7 @@ final class FileStat implements BaseModel
     /**
      * File.
      *
-     * @param FileShape $file
+     * @param File|FileShape $file
      */
     public function withFile(File|array $file): self
     {
@@ -69,7 +69,7 @@ final class FileStat implements BaseModel
     }
 
     /**
-     * @param FolderShape $folder
+     * @param Folder|FolderShape $folder
      */
     public function withFolder(Folder|array $folder): self
     {

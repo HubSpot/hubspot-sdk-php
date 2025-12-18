@@ -73,7 +73,7 @@ final class CardFetchBodyPatch implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<CardObjectTypeBodyShape> $objectTypes
-     * @param CardType|value-of<CardType> $cardType
+     * @param CardType|value-of<CardType>|null $cardType
      */
     public static function with(
         array $objectTypes,

@@ -16,7 +16,7 @@ use HubspotSDK\Events\EventDefinitions\IndexedTimePoint\TimezoneSource;
  * @phpstan-import-type IndexOffsetShape from \HubspotSDK\Events\EventDefinitions\IndexOffset
  *
  * @phpstan-type IndexedTimePointShape = array{
- *   indexReference: NowReference|TodayReference|WeekReference|MonthReference|QuarterReference|FiscalQuarter|YearReference|FiscalYear|IndexReferenceShape,
+ *   indexReference: IndexReferenceShape,
  *   timeType: TimeType|value-of<TimeType>,
  *   timezoneSource: TimezoneSource|value-of<TimezoneSource>,
  *   zoneID: string,
@@ -78,7 +78,7 @@ final class IndexedTimePoint implements BaseModel
      * @param IndexReferenceShape $indexReference
      * @param TimezoneSource|value-of<TimezoneSource> $timezoneSource
      * @param TimeType|value-of<TimeType> $timeType
-     * @param IndexOffsetShape $offset
+     * @param IndexOffset|IndexOffsetShape|null $offset
      */
     public static function with(
         NowReference|array|TodayReference|WeekReference|MonthReference|QuarterReference|FiscalQuarter|YearReference|FiscalYear $indexReference,
@@ -143,7 +143,7 @@ final class IndexedTimePoint implements BaseModel
     }
 
     /**
-     * @param IndexOffsetShape $offset
+     * @param IndexOffset|IndexOffsetShape $offset
      */
     public function withOffset(IndexOffset|array $offset): self
     {

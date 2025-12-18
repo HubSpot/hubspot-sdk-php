@@ -21,7 +21,7 @@ use HubspotSDK\Events\EventDefinitions\RangedTimeOperation\UpperBoundEndpointBeh
  * @phpstan-type RangedTimeOperationShape = array{
  *   includeObjectsWithNoValueSet: bool,
  *   lowerBoundEndpointBehavior: LowerBoundEndpointBehavior|value-of<LowerBoundEndpointBehavior>,
- *   lowerBoundTimePoint: DatePoint|IndexedTimePoint|PropertyReferencedTime|LowerBoundTimePointShape,
+ *   lowerBoundTimePoint: LowerBoundTimePointShape,
  *   operationType: string,
  *   operator: Operator|value-of<Operator>,
  *   operatorName: string,
@@ -29,7 +29,7 @@ use HubspotSDK\Events\EventDefinitions\RangedTimeOperation\UpperBoundEndpointBeh
  *   propertyType: PropertyType|value-of<PropertyType>,
  *   type: string,
  *   upperBoundEndpointBehavior: UpperBoundEndpointBehavior|value-of<UpperBoundEndpointBehavior>,
- *   upperBoundTimePoint: DatePoint|IndexedTimePoint|PropertyReferencedTime|UpperBoundTimePointShape,
+ *   upperBoundTimePoint: UpperBoundTimePointShape,
  *   defaultValue?: string|null,
  * }
  */

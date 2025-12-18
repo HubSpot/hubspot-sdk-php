@@ -69,8 +69,8 @@ final class ExternalCalendarMeetingEventCreateRequest implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<ExternalAssociationCreateRequestShape> $associations
-     * @param ExternalEmailReminderScheduleShape $emailReminderSchedule
-     * @param ExternalCalendarMeetingEventCreatePropertiesShape $properties
+     * @param ExternalEmailReminderSchedule|ExternalEmailReminderScheduleShape $emailReminderSchedule
+     * @param ExternalCalendarMeetingEventCreateProperties|ExternalCalendarMeetingEventCreatePropertiesShape $properties
      */
     public static function with(
         array $associations,
@@ -100,7 +100,7 @@ final class ExternalCalendarMeetingEventCreateRequest implements BaseModel
     }
 
     /**
-     * @param ExternalEmailReminderScheduleShape $emailReminderSchedule
+     * @param ExternalEmailReminderSchedule|ExternalEmailReminderScheduleShape $emailReminderSchedule
      */
     public function withEmailReminderSchedule(
         ExternalEmailReminderSchedule|array $emailReminderSchedule
@@ -112,7 +112,7 @@ final class ExternalCalendarMeetingEventCreateRequest implements BaseModel
     }
 
     /**
-     * @param ExternalCalendarMeetingEventCreatePropertiesShape $properties
+     * @param ExternalCalendarMeetingEventCreateProperties|ExternalCalendarMeetingEventCreatePropertiesShape $properties
      */
     public function withProperties(
         ExternalCalendarMeetingEventCreateProperties|array $properties

@@ -81,8 +81,8 @@ final class IfBoolean implements BaseModel
      *
      * @param array<string,mixed> $ifExpression
      * @param Operator|value-of<Operator> $operator
-     * @param array<string,mixed> $elseExpression
-     * @param list<array<string,mixed>> $inputs
+     * @param array<string,mixed>|null $elseExpression
+     * @param list<array<string,mixed>>|null $inputs
      */
     public static function with(
         bool $enclosedInParentheses,

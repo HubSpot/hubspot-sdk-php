@@ -51,7 +51,7 @@ final class APIStaticBranch implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param APIConnectionShape $connection
+     * @param APIConnection|APIConnectionShape|null $connection
      */
     public static function with(
         string $branchValue,
@@ -75,7 +75,7 @@ final class APIStaticBranch implements BaseModel
     }
 
     /**
-     * @param APIConnectionShape $connection
+     * @param APIConnection|APIConnectionShape $connection
      */
     public function withConnection(APIConnection|array $connection): self
     {

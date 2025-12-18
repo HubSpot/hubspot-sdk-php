@@ -67,8 +67,8 @@ final class CurrencyListExchangeRatesParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param FromCurrencyCode|value-of<FromCurrencyCode> $fromCurrencyCode
-     * @param ToCurrencyCode|value-of<ToCurrencyCode> $toCurrencyCode
+     * @param FromCurrencyCode|value-of<FromCurrencyCode>|null $fromCurrencyCode
+     * @param ToCurrencyCode|value-of<ToCurrencyCode>|null $toCurrencyCode
      */
     public static function with(
         ?string $after = null,

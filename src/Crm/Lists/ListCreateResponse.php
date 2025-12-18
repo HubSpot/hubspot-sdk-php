@@ -52,7 +52,7 @@ final class ListCreateResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param PublicObjectListShape $list
+     * @param PublicObjectList|PublicObjectListShape $list
      */
     public static function with(PublicObjectList|array $list): self
     {
@@ -66,7 +66,7 @@ final class ListCreateResponse implements BaseModel
     /**
      * An object list definition.
      *
-     * @param PublicObjectListShape $list
+     * @param PublicObjectList|PublicObjectListShape $list
      */
     public function withList(PublicObjectList|array $list): self
     {

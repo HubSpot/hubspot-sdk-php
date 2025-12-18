@@ -53,9 +53,9 @@ final class AggregateEmailStatistics implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param EmailStatisticsDataShape $aggregate
-     * @param array<string,EmailStatisticsDataShape> $campaignAggregations
-     * @param list<int> $emails
+     * @param EmailStatisticsData|EmailStatisticsDataShape|null $aggregate
+     * @param array<string,EmailStatisticsDataShape>|null $campaignAggregations
+     * @param list<int>|null $emails
      */
     public static function with(
         EmailStatisticsData|array|null $aggregate = null,
@@ -72,7 +72,7 @@ final class AggregateEmailStatistics implements BaseModel
     }
 
     /**
-     * @param EmailStatisticsDataShape $aggregate
+     * @param EmailStatisticsData|EmailStatisticsDataShape $aggregate
      */
     public function withAggregate(EmailStatisticsData|array $aggregate): self
     {

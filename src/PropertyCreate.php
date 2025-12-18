@@ -120,8 +120,8 @@ final class PropertyCreate implements BaseModel
      *
      * @param FieldType|value-of<FieldType> $fieldType
      * @param Type|value-of<Type> $type
-     * @param DataSensitivity|value-of<DataSensitivity> $dataSensitivity
-     * @param list<OptionInputShape> $options
+     * @param DataSensitivity|value-of<DataSensitivity>|null $dataSensitivity
+     * @param list<OptionInputShape>|null $options
      */
     public static function with(
         FieldType|string $fieldType,

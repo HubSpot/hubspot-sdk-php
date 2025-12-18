@@ -71,7 +71,7 @@ final class CollectionResponseWithTotalVersionPublicEmail implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<VersionPublicEmailShape> $results
-     * @param PagingShape $paging
+     * @param Paging|PagingShape|null $paging
      */
     public static function with(
         array $results,
@@ -113,7 +113,7 @@ final class CollectionResponseWithTotalVersionPublicEmail implements BaseModel
     }
 
     /**
-     * @param PagingShape $paging
+     * @param Paging|PagingShape $paging
      */
     public function withPaging(Paging|array $paging): self
     {

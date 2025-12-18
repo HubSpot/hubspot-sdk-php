@@ -97,7 +97,7 @@ final class PublicAPIUserActionEvent implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param ActingUserShape $actingUser
+     * @param ActingUser|ActingUserShape $actingUser
      */
     public static function with(
         string $id,
@@ -134,7 +134,7 @@ final class PublicAPIUserActionEvent implements BaseModel
     }
 
     /**
-     * @param ActingUserShape $actingUser
+     * @param ActingUser|ActingUserShape $actingUser
      */
     public function withActingUser(ActingUser|array $actingUser): self
     {

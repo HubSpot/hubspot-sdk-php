@@ -66,7 +66,7 @@ final class PublicRecipientEgg implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<PublicDeliveryIdentifierShape> $deliveryIdentifiers
-     * @param PublicDeliveryIdentifierShape $deliveryIdentifier
+     * @param PublicDeliveryIdentifier|PublicDeliveryIdentifierShape|null $deliveryIdentifier
      */
     public static function with(
         array $deliveryIdentifiers,
@@ -107,7 +107,7 @@ final class PublicRecipientEgg implements BaseModel
     }
 
     /**
-     * @param PublicDeliveryIdentifierShape $deliveryIdentifier
+     * @param PublicDeliveryIdentifier|PublicDeliveryIdentifierShape $deliveryIdentifier
      */
     public function withDeliveryIdentifier(
         PublicDeliveryIdentifier|array $deliveryIdentifier

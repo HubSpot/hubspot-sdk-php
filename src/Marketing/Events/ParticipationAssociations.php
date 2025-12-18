@@ -52,8 +52,8 @@ final class ParticipationAssociations implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param ContactAssociationShape $contact
-     * @param MarketingEventAssociationShape $marketingEvent
+     * @param ContactAssociation|ContactAssociationShape $contact
+     * @param MarketingEventAssociation|MarketingEventAssociationShape $marketingEvent
      */
     public static function with(
         ContactAssociation|array $contact,
@@ -68,7 +68,7 @@ final class ParticipationAssociations implements BaseModel
     }
 
     /**
-     * @param ContactAssociationShape $contact
+     * @param ContactAssociation|ContactAssociationShape $contact
      */
     public function withContact(ContactAssociation|array $contact): self
     {
@@ -79,7 +79,7 @@ final class ParticipationAssociations implements BaseModel
     }
 
     /**
-     * @param MarketingEventAssociationShape $marketingEvent
+     * @param MarketingEventAssociation|MarketingEventAssociationShape $marketingEvent
      */
     public function withMarketingEvent(
         MarketingEventAssociation|array $marketingEvent

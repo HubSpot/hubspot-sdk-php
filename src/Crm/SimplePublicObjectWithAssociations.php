@@ -130,8 +130,8 @@ final class SimplePublicObjectWithAssociations implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param array<string,string|null> $properties
-     * @param array<string,CollectionResponseAssociatedIDShape> $associations
-     * @param array<string,list<ValueWithTimestampShape>> $propertiesWithHistory
+     * @param array<string,CollectionResponseAssociatedIDShape>|null $associations
+     * @param array<string,list<ValueWithTimestampShape>>|null $propertiesWithHistory
      */
     public static function with(
         string $id,

@@ -17,7 +17,7 @@ use HubspotSDK\PublicTimePointOperation\OperationType;
  *   includeObjectsWithNoValueSet: bool,
  *   operationType: OperationType|value-of<OperationType>,
  *   operator: string,
- *   timePoint: PublicDatePoint|PublicIndexedTimePoint|PublicPropertyReferencedTime|TimePointShape,
+ *   timePoint: TimePointShape,
  *   type: string,
  *   endpointBehavior?: string|null,
  *   propertyParser?: string|null,

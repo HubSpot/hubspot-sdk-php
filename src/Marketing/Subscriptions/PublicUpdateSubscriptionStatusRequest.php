@@ -77,7 +77,7 @@ final class PublicUpdateSubscriptionStatusRequest implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param LegalBasis|value-of<LegalBasis> $legalBasis
+     * @param LegalBasis|value-of<LegalBasis>|null $legalBasis
      */
     public static function with(
         string $emailAddress,

@@ -30,22 +30,22 @@ use HubspotSDK\Marketing\Emails\EmailUpdateParams\Subcategory;
  *   activeDomain?: string|null,
  *   businessUnitID?: int|null,
  *   campaign?: string|null,
- *   content?: PublicEmailContentShape|null,
+ *   content?: null|PublicEmailContent|PublicEmailContentShape,
  *   folderIDV2?: int|null,
- *   from?: PublicEmailFromDetailsShape|null,
+ *   from?: null|PublicEmailFromDetails|PublicEmailFromDetailsShape,
  *   jitterSendTime?: bool|null,
  *   language?: null|Language|value-of<Language>,
  *   name?: string|null,
  *   publishDate?: \DateTimeInterface|null,
- *   rssData?: PublicRssEmailDetailsShape|null,
+ *   rssData?: null|PublicRssEmailDetails|PublicRssEmailDetailsShape,
  *   sendOnPublish?: bool|null,
  *   state?: null|State|value-of<State>,
  *   subcategory?: null|Subcategory|value-of<Subcategory>,
  *   subject?: string|null,
- *   subscriptionDetails?: PublicEmailSubscriptionDetailsShape|null,
- *   testing?: PublicEmailTestingDetailsShape|null,
- *   to?: PublicEmailToDetailsShape|null,
- *   webversion?: PublicWebversionDetailsShape|null,
+ *   subscriptionDetails?: null|PublicEmailSubscriptionDetails|PublicEmailSubscriptionDetailsShape,
+ *   testing?: null|PublicEmailTestingDetails|PublicEmailTestingDetailsShape,
+ *   to?: null|PublicEmailToDetails|PublicEmailToDetailsShape,
+ *   webversion?: null|PublicWebversionDetails|PublicWebversionDetailsShape,
  * }
  */
 final class EmailUpdateParams implements BaseModel
@@ -174,16 +174,16 @@ final class EmailUpdateParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param PublicEmailContentShape $content
-     * @param PublicEmailFromDetailsShape $from
-     * @param Language|value-of<Language> $language
-     * @param PublicRssEmailDetailsShape $rssData
-     * @param State|value-of<State> $state
-     * @param Subcategory|value-of<Subcategory> $subcategory
-     * @param PublicEmailSubscriptionDetailsShape $subscriptionDetails
-     * @param PublicEmailTestingDetailsShape $testing
-     * @param PublicEmailToDetailsShape $to
-     * @param PublicWebversionDetailsShape $webversion
+     * @param PublicEmailContent|PublicEmailContentShape|null $content
+     * @param PublicEmailFromDetails|PublicEmailFromDetailsShape|null $from
+     * @param Language|value-of<Language>|null $language
+     * @param PublicRssEmailDetails|PublicRssEmailDetailsShape|null $rssData
+     * @param State|value-of<State>|null $state
+     * @param Subcategory|value-of<Subcategory>|null $subcategory
+     * @param PublicEmailSubscriptionDetails|PublicEmailSubscriptionDetailsShape|null $subscriptionDetails
+     * @param PublicEmailTestingDetails|PublicEmailTestingDetailsShape|null $testing
+     * @param PublicEmailToDetails|PublicEmailToDetailsShape|null $to
+     * @param PublicWebversionDetails|PublicWebversionDetailsShape|null $webversion
      */
     public static function with(
         ?bool $archived = null,
@@ -277,7 +277,7 @@ final class EmailUpdateParams implements BaseModel
     /**
      * Data structure representing the content of the email.
      *
-     * @param PublicEmailContentShape $content
+     * @param PublicEmailContent|PublicEmailContentShape $content
      */
     public function withContent(PublicEmailContent|array $content): self
     {
@@ -298,7 +298,7 @@ final class EmailUpdateParams implements BaseModel
     /**
      * Data structure representing the from fields on the email.
      *
-     * @param PublicEmailFromDetailsShape $from
+     * @param PublicEmailFromDetails|PublicEmailFromDetailsShape $from
      */
     public function withFrom(PublicEmailFromDetails|array $from): self
     {
@@ -352,7 +352,7 @@ final class EmailUpdateParams implements BaseModel
     /**
      * RSS related data if it is a blog or rss email.
      *
-     * @param PublicRssEmailDetailsShape $rssData
+     * @param PublicRssEmailDetails|PublicRssEmailDetailsShape $rssData
      */
     public function withRssData(PublicRssEmailDetails|array $rssData): self
     {
@@ -413,7 +413,7 @@ final class EmailUpdateParams implements BaseModel
     /**
      * Data structure representing the subscription fields of the email.
      *
-     * @param PublicEmailSubscriptionDetailsShape $subscriptionDetails
+     * @param PublicEmailSubscriptionDetails|PublicEmailSubscriptionDetailsShape $subscriptionDetails
      */
     public function withSubscriptionDetails(
         PublicEmailSubscriptionDetails|array $subscriptionDetails
@@ -427,7 +427,7 @@ final class EmailUpdateParams implements BaseModel
     /**
      * AB testing related data. This property is only returned for AB type emails.
      *
-     * @param PublicEmailTestingDetailsShape $testing
+     * @param PublicEmailTestingDetails|PublicEmailTestingDetailsShape $testing
      */
     public function withTesting(PublicEmailTestingDetails|array $testing): self
     {
@@ -440,7 +440,7 @@ final class EmailUpdateParams implements BaseModel
     /**
      * Data structure representing the to fields of the email.
      *
-     * @param PublicEmailToDetailsShape $to
+     * @param PublicEmailToDetails|PublicEmailToDetailsShape $to
      */
     public function withTo(PublicEmailToDetails|array $to): self
     {
@@ -451,7 +451,7 @@ final class EmailUpdateParams implements BaseModel
     }
 
     /**
-     * @param PublicWebversionDetailsShape $webversion
+     * @param PublicWebversionDetails|PublicWebversionDetailsShape $webversion
      */
     public function withWebversion(
         PublicWebversionDetails|array $webversion

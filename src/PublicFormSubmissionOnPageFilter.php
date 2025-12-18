@@ -19,9 +19,9 @@ use HubspotSDK\PublicFormSubmissionOnPageFilter\Operator;
  *   filterType: FilterType|value-of<FilterType>,
  *   operator: Operator|value-of<Operator>,
  *   pageID: string,
- *   coalescingRefineBy?: null|CoalescingRefineByShape|PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation,
+ *   coalescingRefineBy?: CoalescingRefineByShape|null,
  *   formID?: string|null,
- *   pruningRefineBy?: null|PruningRefineByShape|PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation,
+ *   pruningRefineBy?: PruningRefineByShape|null,
  * }
  */
 final class PublicFormSubmissionOnPageFilter implements BaseModel
@@ -80,8 +80,8 @@ final class PublicFormSubmissionOnPageFilter implements BaseModel
      *
      * @param Operator|value-of<Operator> $operator
      * @param FilterType|value-of<FilterType> $filterType
-     * @param CoalescingRefineByShape $coalescingRefineBy
-     * @param PruningRefineByShape $pruningRefineBy
+     * @param CoalescingRefineByShape|null $coalescingRefineBy
+     * @param PruningRefineByShape|null $pruningRefineBy
      */
     public static function with(
         Operator|string $operator,

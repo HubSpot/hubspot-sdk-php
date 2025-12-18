@@ -84,7 +84,7 @@ final class PublicCalendarDatePropertyOperation implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param OperationType|value-of<OperationType> $operationType
-     * @param FiscalYearStart|value-of<FiscalYearStart> $fiscalYearStart
+     * @param FiscalYearStart|value-of<FiscalYearStart>|null $fiscalYearStart
      */
     public static function with(
         bool $includeObjectsWithNoValueSet,

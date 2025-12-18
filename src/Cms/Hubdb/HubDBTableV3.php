@@ -208,8 +208,8 @@ final class HubDBTableV3 implements BaseModel
      *
      * @param list<ColumnShape> $columns
      * @param array<string,int> $dynamicMetaTags
-     * @param SimpleUserShape $createdBy
-     * @param SimpleUserShape $updatedBy
+     * @param SimpleUser|SimpleUserShape|null $createdBy
+     * @param SimpleUser|SimpleUserShape|null $updatedBy
      */
     public static function with(
         string $id,
@@ -443,7 +443,7 @@ final class HubDBTableV3 implements BaseModel
     }
 
     /**
-     * @param SimpleUserShape $createdBy
+     * @param SimpleUser|SimpleUserShape $createdBy
      */
     public function withCreatedBy(SimpleUser|array $createdBy): self
     {
@@ -462,7 +462,7 @@ final class HubDBTableV3 implements BaseModel
     }
 
     /**
-     * @param SimpleUserShape $updatedBy
+     * @param SimpleUser|SimpleUserShape $updatedBy
      */
     public function withUpdatedBy(SimpleUser|array $updatedBy): self
     {

@@ -65,7 +65,7 @@ final class ExternalCalenderMeetingEventResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param ExternalCalendarMeetingEventResponsePropertiesShape $properties
+     * @param ExternalCalendarMeetingEventResponseProperties|ExternalCalendarMeetingEventResponsePropertiesShape $properties
      */
     public static function with(
         string $id,
@@ -108,7 +108,7 @@ final class ExternalCalenderMeetingEventResponse implements BaseModel
     }
 
     /**
-     * @param ExternalCalendarMeetingEventResponsePropertiesShape $properties
+     * @param ExternalCalendarMeetingEventResponseProperties|ExternalCalendarMeetingEventResponsePropertiesShape $properties
      */
     public function withProperties(
         ExternalCalendarMeetingEventResponseProperties|array $properties

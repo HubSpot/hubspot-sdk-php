@@ -101,7 +101,7 @@ final class TimelineEventTemplateToken implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param Type|value-of<Type> $type
-     * @param list<TimelineEventTemplateTokenOptionShape> $options
+     * @param list<TimelineEventTemplateTokenOptionShape>|null $options
      */
     public static function with(
         string $label,

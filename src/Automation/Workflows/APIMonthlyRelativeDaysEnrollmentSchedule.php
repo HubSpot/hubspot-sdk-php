@@ -65,7 +65,7 @@ final class APIMonthlyRelativeDaysEnrollmentSchedule implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param MonthlyRelativeDays|value-of<MonthlyRelativeDays> $monthlyRelativeDays
-     * @param APITimeOfDayShape $timeOfDay
+     * @param APITimeOfDay|APITimeOfDayShape $timeOfDay
      * @param Type|value-of<Type> $type
      */
     public static function with(
@@ -95,7 +95,7 @@ final class APIMonthlyRelativeDaysEnrollmentSchedule implements BaseModel
     }
 
     /**
-     * @param APITimeOfDayShape $timeOfDay
+     * @param APITimeOfDay|APITimeOfDayShape $timeOfDay
      */
     public function withTimeOfDay(APITimeOfDay|array $timeOfDay): self
     {

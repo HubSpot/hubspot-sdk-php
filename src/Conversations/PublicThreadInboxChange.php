@@ -121,7 +121,7 @@ final class PublicThreadInboxChange implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param PublicClientShape $client
+     * @param PublicClient|PublicClientShape $client
      * @param list<PublicRecipientShape> $recipients
      * @param list<PublicSenderShape> $senders
      * @param Type|value-of<Type> $type
@@ -176,7 +176,7 @@ final class PublicThreadInboxChange implements BaseModel
     }
 
     /**
-     * @param PublicClientShape $client
+     * @param PublicClient|PublicClientShape $client
      */
     public function withClient(PublicClient|array $client): self
     {

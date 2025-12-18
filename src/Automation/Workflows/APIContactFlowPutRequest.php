@@ -39,10 +39,10 @@ use HubspotSDK\PublicUnifiedEventsFilterBranch;
  *   timeWindows: list<APITimeWindowShape>,
  *   type: Type|value-of<Type>,
  *   description?: string|null,
- *   enrollmentCriteria?: null|EnrollmentCriteriaShape|APIListBasedEnrollmentCriteria|APIEventBasedEnrollmentCriteria|APIManualEnrollmentCriteria,
- *   enrollmentSchedule?: null|EnrollmentScheduleShape|APIDailyEnrollmentSchedule|APIWeeklyEnrollmentSchedule|APIMonthlySpecificDaysEnrollmentSchedule|APIMonthlyRelativeDaysEnrollmentSchedule|APIYearlyEnrollmentSchedule|APIPropertyBasedEnrollmentSchedule,
- *   eventAnchor?: null|EventAnchorShape|APIContactPropertyAnchor|APIStaticDateAnchor,
- *   goalFilterBranch?: null|GoalFilterBranchShape|PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch,
+ *   enrollmentCriteria?: EnrollmentCriteriaShape|null,
+ *   enrollmentSchedule?: EnrollmentScheduleShape|null,
+ *   eventAnchor?: EventAnchorShape|null,
+ *   goalFilterBranch?: GoalFilterBranchShape|null,
  *   name?: string|null,
  *   startActionID?: string|null,
  *   unEnrollmentSetting?: null|APIUnEnrollmentSetting|APIUnEnrollmentSettingShape,
@@ -163,11 +163,11 @@ final class APIContactFlowPutRequest implements BaseModel
      * @param list<int> $suppressionListIDs
      * @param list<APITimeWindowShape> $timeWindows
      * @param Type|value-of<Type> $type
-     * @param EnrollmentCriteriaShape $enrollmentCriteria
-     * @param EnrollmentScheduleShape $enrollmentSchedule
-     * @param EventAnchorShape $eventAnchor
-     * @param GoalFilterBranchShape $goalFilterBranch
-     * @param APIUnEnrollmentSettingShape $unEnrollmentSetting
+     * @param EnrollmentCriteriaShape|null $enrollmentCriteria
+     * @param EnrollmentScheduleShape|null $enrollmentSchedule
+     * @param EventAnchorShape|null $eventAnchor
+     * @param GoalFilterBranchShape|null $goalFilterBranch
+     * @param APIUnEnrollmentSetting|APIUnEnrollmentSettingShape|null $unEnrollmentSetting
      */
     public static function with(
         array $actions,
@@ -378,7 +378,7 @@ final class APIContactFlowPutRequest implements BaseModel
     }
 
     /**
-     * @param APIUnEnrollmentSettingShape $unEnrollmentSetting
+     * @param APIUnEnrollmentSetting|APIUnEnrollmentSettingShape $unEnrollmentSetting
      */
     public function withUnEnrollmentSetting(
         APIUnEnrollmentSetting|array $unEnrollmentSetting

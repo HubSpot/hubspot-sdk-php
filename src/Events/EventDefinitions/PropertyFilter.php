@@ -15,7 +15,7 @@ use HubspotSDK\Events\EventDefinitions\PropertyFilter\FilterType;
  *
  * @phpstan-type PropertyFilterShape = array{
  *   filterType: FilterType|value-of<FilterType>,
- *   operation: BoolPropertyOperation|NumberPropertyOperation|StringPropertyOperation|DateTimePropertyOperation|RangedDatePropertyOperation|ComparativeDatePropertyOperation|ComparativePropertyUpdatedOperation|RollingDateRangePropertyOperation|RollingPropertyUpdatedOperation|EnumerationPropertyOperation|AllPropertyTypesOperation|RangedNumberPropertyOperation|MultiStringPropertyOperation|DatePropertyOperation|CalendarDatePropertyOperation|TimePointOperation|RangedTimeOperation|OperationShape,
+ *   operation: OperationShape,
  *   property: string,
  *   frameworkFilterID?: int|null,
  * }

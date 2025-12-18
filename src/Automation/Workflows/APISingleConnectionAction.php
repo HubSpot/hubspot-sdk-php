@@ -84,7 +84,7 @@ final class APISingleConnectionAction implements BaseModel
      *
      * @param array<string,mixed> $fields
      * @param Type|value-of<Type> $type
-     * @param APIConnectionShape $connection
+     * @param APIConnection|APIConnectionShape|null $connection
      */
     public static function with(
         string $actionID,
@@ -154,7 +154,7 @@ final class APISingleConnectionAction implements BaseModel
     }
 
     /**
-     * @param APIConnectionShape $connection
+     * @param APIConnection|APIConnectionShape $connection
      */
     public function withConnection(APIConnection|array $connection): self
     {

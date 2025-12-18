@@ -27,7 +27,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   _hsenc?: string|null,
  *   contactID?: int|null,
  *   contactUtk?: string|null,
- *   derivedValues?: AttentionSpanCalculatedValuesShape|null,
+ *   derivedValues?: null|AttentionSpanCalculatedValues|AttentionSpanCalculatedValuesShape,
  *   externalID?: string|null,
  *   mediaBridgeID?: int|null,
  *   mediaName?: string|null,
@@ -126,7 +126,7 @@ final class EventCreateAttentionSpanEventParams implements BaseModel
      *
      * @param MediaType|value-of<MediaType> $mediaType
      * @param array<string,int> $rawDataMap
-     * @param AttentionSpanCalculatedValuesShape $derivedValues
+     * @param AttentionSpanCalculatedValues|AttentionSpanCalculatedValuesShape|null $derivedValues
      */
     public static function with(
         MediaType|string $mediaType,
@@ -232,7 +232,7 @@ final class EventCreateAttentionSpanEventParams implements BaseModel
     }
 
     /**
-     * @param AttentionSpanCalculatedValuesShape $derivedValues
+     * @param AttentionSpanCalculatedValues|AttentionSpanCalculatedValuesShape $derivedValues
      */
     public function withDerivedValues(
         AttentionSpanCalculatedValues|array $derivedValues

@@ -22,7 +22,7 @@ use HubspotSDK\PublicUnifiedEventsFilterBranch;
  * @phpstan-import-type FilterBranchShape from \HubspotSDK\Crm\Lists\ListFilterUpdateRequest\FilterBranch
  *
  * @phpstan-type ListFilterUpdateRequestShape = array{
- *   filterBranch: PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch|FilterBranchShape,
+ *   filterBranch: FilterBranchShape
  * }
  */
 final class ListFilterUpdateRequest implements BaseModel

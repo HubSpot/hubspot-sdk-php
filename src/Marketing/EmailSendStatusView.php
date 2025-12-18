@@ -106,8 +106,8 @@ final class EmailSendStatusView implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param Status|value-of<Status> $status
-     * @param EventIDViewShape $eventID
-     * @param SendResult|value-of<SendResult> $sendResult
+     * @param EventIDView|EventIDViewShape|null $eventID
+     * @param SendResult|value-of<SendResult>|null $sendResult
      */
     public static function with(
         Status|string $status,
@@ -172,7 +172,7 @@ final class EmailSendStatusView implements BaseModel
     /**
      * The ID of a send event.
      *
-     * @param EventIDViewShape $eventID
+     * @param EventIDView|EventIDViewShape $eventID
      */
     public function withEventID(EventIDView|array $eventID): self
     {

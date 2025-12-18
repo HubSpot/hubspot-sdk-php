@@ -132,7 +132,7 @@ final class SimplePublicUpsertObject implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param array<string,string> $properties
-     * @param array<string,list<ValueWithTimestampShape>> $propertiesWithHistory
+     * @param array<string,list<ValueWithTimestampShape>>|null $propertiesWithHistory
      */
     public static function with(
         string $id,

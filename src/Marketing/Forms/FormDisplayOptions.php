@@ -87,7 +87,7 @@ final class FormDisplayOptions implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param FormStyleShape $style
+     * @param FormStyle|FormStyleShape $style
      * @param Theme|value-of<Theme> $theme
      */
     public static function with(
@@ -123,7 +123,7 @@ final class FormDisplayOptions implements BaseModel
     /**
      * Styling options for the form.
      *
-     * @param FormStyleShape $style
+     * @param FormStyle|FormStyleShape $style
      */
     public function withStyle(FormStyle|array $style): self
     {

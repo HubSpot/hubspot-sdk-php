@@ -73,7 +73,7 @@ final class PropertyGetParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param DataSensitivity|value-of<DataSensitivity> $dataSensitivity
+     * @param DataSensitivity|value-of<DataSensitivity>|null $dataSensitivity
      */
     public static function with(
         string $objectType,

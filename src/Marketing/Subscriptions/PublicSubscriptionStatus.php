@@ -123,7 +123,7 @@ final class PublicSubscriptionStatus implements BaseModel
      *
      * @param SourceOfStatus|value-of<SourceOfStatus> $sourceOfStatus
      * @param Status|value-of<Status> $status
-     * @param LegalBasis|value-of<LegalBasis> $legalBasis
+     * @param LegalBasis|value-of<LegalBasis>|null $legalBasis
      */
     public static function with(
         string $id,

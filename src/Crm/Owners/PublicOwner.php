@@ -131,7 +131,7 @@ final class PublicOwner implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param Type|value-of<Type> $type
-     * @param list<PublicTeamShape> $teams
+     * @param list<PublicTeamShape>|null $teams
      */
     public static function with(
         string $id,

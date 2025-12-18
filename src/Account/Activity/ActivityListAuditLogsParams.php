@@ -79,8 +79,8 @@ final class ActivityListAuditLogsParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<int> $actingUserID
-     * @param list<string> $sort
+     * @param list<int>|null $actingUserID
+     * @param list<string>|null $sort
      */
     public static function with(
         ?array $actingUserID = null,

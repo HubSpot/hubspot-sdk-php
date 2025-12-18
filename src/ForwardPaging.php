@@ -34,7 +34,7 @@ final class ForwardPaging implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param NextPageShape $next
+     * @param NextPage|NextPageShape|null $next
      */
     public static function with(NextPage|array|null $next = null): self
     {
@@ -48,7 +48,7 @@ final class ForwardPaging implements BaseModel
     /**
      * Specifies the paging information needed to retrieve the next set of results in a paginated API response.
      *
-     * @param NextPageShape $next
+     * @param NextPage|NextPageShape $next
      */
     public function withNext(NextPage|array $next): self
     {

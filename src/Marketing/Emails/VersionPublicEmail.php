@@ -76,8 +76,8 @@ final class VersionPublicEmail implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param PublicEmailShape $object
-     * @param VersionUserShape $user
+     * @param PublicEmail|PublicEmailShape $object
+     * @param VersionUser|VersionUserShape $user
      */
     public static function with(
         string $id,
@@ -109,7 +109,7 @@ final class VersionPublicEmail implements BaseModel
     /**
      * A marketing email.
      *
-     * @param PublicEmailShape $object
+     * @param PublicEmail|PublicEmailShape $object
      */
     public function withObject(PublicEmail|array $object): self
     {
@@ -130,7 +130,7 @@ final class VersionPublicEmail implements BaseModel
     /**
      * Model definition for a version user. Contains addition information about the user who created a version.
      *
-     * @param VersionUserShape $user
+     * @param VersionUser|VersionUserShape $user
      */
     public function withUser(VersionUser|array $user): self
     {

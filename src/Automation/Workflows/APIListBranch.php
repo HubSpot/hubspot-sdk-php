@@ -23,7 +23,7 @@ use HubspotSDK\PublicUnifiedEventsFilterBranch;
  * @phpstan-type APIListBranchShape = array{
  *   branchName?: string|null,
  *   connection?: null|APIConnection|APIConnectionShape,
- *   filterBranch?: null|FilterBranchShape|PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch,
+ *   filterBranch?: FilterBranchShape|null,
  * }
  */
 final class APIListBranch implements BaseModel
@@ -50,8 +50,8 @@ final class APIListBranch implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param APIConnectionShape $connection
-     * @param FilterBranchShape $filterBranch
+     * @param APIConnection|APIConnectionShape|null $connection
+     * @param FilterBranchShape|null $filterBranch
      */
     public static function with(
         ?string $branchName = null,
@@ -76,7 +76,7 @@ final class APIListBranch implements BaseModel
     }
 
     /**
-     * @param APIConnectionShape $connection
+     * @param APIConnection|APIConnectionShape $connection
      */
     public function withConnection(APIConnection|array $connection): self
     {

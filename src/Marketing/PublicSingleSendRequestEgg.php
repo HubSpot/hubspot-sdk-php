@@ -79,9 +79,9 @@ final class PublicSingleSendRequestEgg implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param PublicSingleSendEmailShape $message
-     * @param array<string,string> $contactProperties
-     * @param array<string,mixed> $customProperties
+     * @param PublicSingleSendEmail|PublicSingleSendEmailShape $message
+     * @param array<string,string>|null $contactProperties
+     * @param array<string,mixed>|null $customProperties
      */
     public static function with(
         int $emailID,
@@ -114,7 +114,7 @@ final class PublicSingleSendRequestEgg implements BaseModel
     /**
      * A JSON object containing anything you want to override.
      *
-     * @param PublicSingleSendEmailShape $message
+     * @param PublicSingleSendEmail|PublicSingleSendEmailShape $message
      */
     public function withMessage(PublicSingleSendEmail|array $message): self
     {

@@ -57,7 +57,7 @@ final class CollectionResponsePublicAuditLog implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<PublicAuditLogShape> $results
-     * @param PagingShape $paging
+     * @param Paging|PagingShape|null $paging
      */
     public static function with(
         array $results,
@@ -84,7 +84,7 @@ final class CollectionResponsePublicAuditLog implements BaseModel
     }
 
     /**
-     * @param PagingShape $paging
+     * @param Paging|PagingShape $paging
      */
     public function withPaging(Paging|array $paging): self
     {

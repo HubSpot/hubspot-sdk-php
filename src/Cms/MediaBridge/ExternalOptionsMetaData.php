@@ -37,7 +37,7 @@ final class ExternalOptionsMetaData implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param FilteringMetaDataShape $filter
+     * @param FilteringMetaData|FilteringMetaDataShape|null $filter
      */
     public static function with(
         FilteringMetaData|array|null $filter = null,
@@ -52,7 +52,7 @@ final class ExternalOptionsMetaData implements BaseModel
     }
 
     /**
-     * @param FilteringMetaDataShape $filter
+     * @param FilteringMetaData|FilteringMetaDataShape $filter
      */
     public function withFilter(FilteringMetaData|array $filter): self
     {

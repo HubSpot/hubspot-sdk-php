@@ -136,7 +136,7 @@ final class LayoutSection implements BaseModel
      * @param array<string,mixed> $params
      * @param list<RowMetaDataShape> $rowMetaData
      * @param list<mixed> $rows
-     * @param StylesShape $styles
+     * @param Styles|StylesShape $styles
      */
     public static function with(
         array $cells,
@@ -259,7 +259,7 @@ final class LayoutSection implements BaseModel
     }
 
     /**
-     * @param StylesShape $styles
+     * @param Styles|StylesShape $styles
      */
     public function withStyles(Styles|array $styles): self
     {

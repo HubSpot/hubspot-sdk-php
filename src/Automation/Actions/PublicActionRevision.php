@@ -65,7 +65,7 @@ final class PublicActionRevision implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param PublicActionDefinitionShape $definition
+     * @param PublicActionDefinition|PublicActionDefinitionShape $definition
      */
     public static function with(
         string $id,
@@ -100,7 +100,7 @@ final class PublicActionRevision implements BaseModel
     }
 
     /**
-     * @param PublicActionDefinitionShape $definition
+     * @param PublicActionDefinition|PublicActionDefinitionShape $definition
      */
     public function withDefinition(
         PublicActionDefinition|array $definition

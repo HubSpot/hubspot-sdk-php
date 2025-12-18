@@ -249,9 +249,9 @@ final class Property implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<OptionShape> $options
-     * @param DataSensitivity|value-of<DataSensitivity> $dataSensitivity
-     * @param PropertyModificationMetadataShape $modificationMetadata
-     * @param list<string> $sensitiveDataCategories
+     * @param DataSensitivity|value-of<DataSensitivity>|null $dataSensitivity
+     * @param PropertyModificationMetadata|PropertyModificationMetadataShape|null $modificationMetadata
+     * @param list<string>|null $sensitiveDataCategories
      */
     public static function with(
         string $description,
@@ -540,7 +540,7 @@ final class Property implements BaseModel
     }
 
     /**
-     * @param PropertyModificationMetadataShape $modificationMetadata
+     * @param PropertyModificationMetadata|PropertyModificationMetadataShape $modificationMetadata
      */
     public function withModificationMetadata(
         PropertyModificationMetadata|array $modificationMetadata

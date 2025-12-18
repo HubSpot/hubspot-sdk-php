@@ -171,9 +171,9 @@ final class EmailListParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<string> $includedProperties
-     * @param list<string> $sort
-     * @param Type|value-of<Type> $type
+     * @param list<string>|null $includedProperties
+     * @param list<string>|null $sort
+     * @param Type|value-of<Type>|null $type
      */
     public static function with(
         ?string $after = null,

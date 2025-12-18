@@ -11,10 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * @phpstan-import-type ValueShape from \HubspotSDK\Automation\Workflows\APIInputVariable\Value
  *
- * @phpstan-type APIInputVariableShape = array{
- *   name: string,
- *   value: APIActionDataValue|APIObjectPropertyValue|APIStaticValue|APIRelativeDateTimeValue|APITimestampValue|APIIncrementValue|APIFetchedObjectPropertyValue|APIAppendObjectPropertyValue|APIStaticAppendValue|APIEnrollmentEventPropertyValue|ValueShape,
- * }
+ * @phpstan-type APIInputVariableShape = array{name: string, value: ValueShape}
  */
 final class APIInputVariable implements BaseModel
 {

@@ -59,7 +59,7 @@ final class PublicBulkOptOutFromAllResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicStatusShape> $statuses
+     * @param list<PublicStatusShape>|null $statuses
      */
     public static function with(
         string $subscriberIDString,

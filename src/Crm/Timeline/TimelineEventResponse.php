@@ -133,7 +133,7 @@ final class TimelineEventResponse implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param array<string,string> $tokens
-     * @param TimelineEventIFrameShape $timelineIFrame
+     * @param TimelineEventIFrame|TimelineEventIFrameShape|null $timelineIFrame
      */
     public static function with(
         string $id,
@@ -267,7 +267,7 @@ final class TimelineEventResponse implements BaseModel
     }
 
     /**
-     * @param TimelineEventIFrameShape $timelineIFrame
+     * @param TimelineEventIFrame|TimelineEventIFrameShape $timelineIFrame
      */
     public function withTimelineIFrame(
         TimelineEventIFrame|array $timelineIFrame
