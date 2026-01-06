@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Automation\Actions\FunctionsService::deleteByFunctionType()
  *
  * @phpstan-type FunctionDeleteByFunctionTypeParamsShape = array{
- *   appId: int, definitionId: string
+ *   appID: int, definitionID: string
  * }
  */
 final class FunctionDeleteByFunctionTypeParams implements BaseModel
@@ -25,17 +25,17 @@ final class FunctionDeleteByFunctionTypeParams implements BaseModel
     use SdkParams;
 
     #[Required]
-    public int $appId;
+    public int $appID;
 
     #[Required]
-    public string $definitionId;
+    public string $definitionID;
 
     /**
      * `new FunctionDeleteByFunctionTypeParams()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * FunctionDeleteByFunctionTypeParams::with(appId: ..., definitionId: ...)
+     * FunctionDeleteByFunctionTypeParams::with(appID: ..., definitionID: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -54,12 +54,12 @@ final class FunctionDeleteByFunctionTypeParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(int $appId, string $definitionId): self
+    public static function with(int $appID, string $definitionID): self
     {
         $obj = new self;
 
-        $obj['appId'] = $appId;
-        $obj['definitionId'] = $definitionId;
+        $obj['appID'] = $appID;
+        $obj['definitionID'] = $definitionID;
 
         return $obj;
     }
@@ -67,7 +67,7 @@ final class FunctionDeleteByFunctionTypeParams implements BaseModel
     public function withAppID(int $appID): self
     {
         $obj = clone $this;
-        $obj['appId'] = $appID;
+        $obj['appID'] = $appID;
 
         return $obj;
     }
@@ -75,7 +75,7 @@ final class FunctionDeleteByFunctionTypeParams implements BaseModel
     public function withDefinitionID(string $definitionID): self
     {
         $obj = clone $this;
-        $obj['definitionId'] = $definitionID;
+        $obj['definitionID'] = $definitionID;
 
         return $obj;
     }

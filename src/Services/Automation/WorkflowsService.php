@@ -19,6 +19,7 @@ use HubspotSDK\Automation\Workflows\WorkflowListParams;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Automation\WorkflowsContract;
@@ -124,7 +125,7 @@ final class WorkflowsService implements WorkflowsContract
      * @api
      *
      * @param array{
-     *   inputs: list<array{flowId: string, type: 'FLOW_ID'|Type}>
+     *   inputs: list<array{flowID: string, type: 'FLOW_ID'|Type}>
      * }|WorkflowBatchGetParams $params
      *
      * @throws APIException
@@ -204,7 +205,7 @@ final class WorkflowsService implements WorkflowsContract
      * @api
      *
      * @param array{
-     *   after?: string, before?: string, flowId?: list<string>, limit?: int
+     *   after?: string, before?: string, flowID?: list<string>, limit?: int
      * }|WorkflowListEmailCampaignsParams $params
      *
      * @return Page<APIFlowEmailCampaign>
@@ -224,7 +225,7 @@ final class WorkflowsService implements WorkflowsContract
         $response = $this->client->request(
             method: 'get',
             path: 'automation/v4/flows/email-campaigns',
-            query: $parsed,
+            query: Util::array_transform_keys($parsed, ['flowID' => 'flowId']),
             options: $options,
             convert: APIFlowEmailCampaign::class,
             page: Page::class,

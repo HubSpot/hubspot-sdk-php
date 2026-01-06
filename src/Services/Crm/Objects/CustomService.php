@@ -235,7 +235,7 @@ final class CustomService implements CustomContract
      * Merge two objects with same type
      *
      * @param array{
-     *   objectIdToMerge: string, primaryObjectId: string
+     *   objectIDToMerge: string, primaryObjectID: string
      * }|CustomMergeParams $params
      *
      * @throws APIException

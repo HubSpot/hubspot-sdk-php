@@ -49,16 +49,16 @@ final class ParticipationAssociations implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param ContactAssociation|array{
-     *   contactId: string,
+     *   contactID: string,
      *   email: string,
      *   firstname?: string|null,
      *   lastname?: string|null,
      * } $contact
      * @param MarketingEventAssociation|array{
-     *   marketingEventId: string,
+     *   marketingEventID: string,
      *   name: string,
-     *   externalAccountId?: string|null,
-     *   externalEventId?: string|null,
+     *   externalAccountID?: string|null,
+     *   externalEventID?: string|null,
      * } $marketingEvent
      */
     public static function with(
@@ -75,7 +75,7 @@ final class ParticipationAssociations implements BaseModel
 
     /**
      * @param ContactAssociation|array{
-     *   contactId: string,
+     *   contactID: string,
      *   email: string,
      *   firstname?: string|null,
      *   lastname?: string|null,
@@ -91,10 +91,10 @@ final class ParticipationAssociations implements BaseModel
 
     /**
      * @param MarketingEventAssociation|array{
-     *   marketingEventId: string,
+     *   marketingEventID: string,
      *   name: string,
-     *   externalAccountId?: string|null,
-     *   externalEventId?: string|null,
+     *   externalAccountID?: string|null,
+     *   externalEventID?: string|null,
      * } $marketingEvent
      */
     public function withMarketingEvent(

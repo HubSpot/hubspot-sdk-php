@@ -16,13 +16,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   id: string,
  *   archived: bool,
  *   client: PublicClient,
- *   conversationsThreadId: string,
+ *   conversationsThreadID: string,
  *   createdAt: \DateTimeInterface,
  *   createdBy: string,
- *   fromInboxId: string,
+ *   fromInboxID: string,
  *   recipients: list<PublicRecipient>,
  *   senders: list<PublicSender>,
- *   toInboxId: string,
+ *   toInboxID: string,
  *   type: value-of<Type>,
  *   updatedAt?: \DateTimeInterface|null,
  * }
@@ -41,8 +41,8 @@ final class PublicThreadInboxChange implements BaseModel
     #[Required]
     public PublicClient $client;
 
-    #[Required]
-    public string $conversationsThreadId;
+    #[Required('conversationsThreadId')]
+    public string $conversationsThreadID;
 
     #[Required]
     public \DateTimeInterface $createdAt;
@@ -50,8 +50,8 @@ final class PublicThreadInboxChange implements BaseModel
     #[Required]
     public string $createdBy;
 
-    #[Required]
-    public string $fromInboxId;
+    #[Required('fromInboxId')]
+    public string $fromInboxID;
 
     /** @var list<PublicRecipient> $recipients */
     #[Required(list: PublicRecipient::class)]
@@ -61,8 +61,8 @@ final class PublicThreadInboxChange implements BaseModel
     #[Required(list: PublicSender::class)]
     public array $senders;
 
-    #[Required]
-    public string $toInboxId;
+    #[Required('toInboxId')]
+    public string $toInboxID;
 
     /** @var value-of<Type> $type */
     #[Required(enum: Type::class)]
@@ -80,13 +80,13 @@ final class PublicThreadInboxChange implements BaseModel
      *   id: ...,
      *   archived: ...,
      *   client: ...,
-     *   conversationsThreadId: ...,
+     *   conversationsThreadID: ...,
      *   createdAt: ...,
      *   createdBy: ...,
-     *   fromInboxId: ...,
+     *   fromInboxID: ...,
      *   recipients: ...,
      *   senders: ...,
-     *   toInboxId: ...,
+     *   toInboxID: ...,
      *   type: ...,
      * )
      * ```
@@ -119,16 +119,16 @@ final class PublicThreadInboxChange implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param PublicClient|array{
-     *   clientType: value-of<ClientType>, integrationAppId?: int|null
+     *   clientType: value-of<ClientType>, integrationAppID?: int|null
      * } $client
      * @param list<PublicRecipient|array{
      *   deliveryIdentifier: PublicDeliveryIdentifier,
-     *   actorId?: string|null,
+     *   actorID?: string|null,
      *   name?: string|null,
      *   recipientField?: string|null,
      * }> $recipients
      * @param list<PublicSender|array{
-     *   actorId?: string|null,
+     *   actorID?: string|null,
      *   deliveryIdentifier?: PublicDeliveryIdentifier|null,
      *   name?: string|null,
      *   senderField?: string|null,
@@ -139,13 +139,13 @@ final class PublicThreadInboxChange implements BaseModel
         string $id,
         bool $archived,
         PublicClient|array $client,
-        string $conversationsThreadId,
+        string $conversationsThreadID,
         \DateTimeInterface $createdAt,
         string $createdBy,
-        string $fromInboxId,
+        string $fromInboxID,
         array $recipients,
         array $senders,
-        string $toInboxId,
+        string $toInboxID,
         Type|string $type = 'THREAD_INBOX_CHANGE',
         ?\DateTimeInterface $updatedAt = null,
     ): self {
@@ -154,13 +154,13 @@ final class PublicThreadInboxChange implements BaseModel
         $obj['id'] = $id;
         $obj['archived'] = $archived;
         $obj['client'] = $client;
-        $obj['conversationsThreadId'] = $conversationsThreadId;
+        $obj['conversationsThreadID'] = $conversationsThreadID;
         $obj['createdAt'] = $createdAt;
         $obj['createdBy'] = $createdBy;
-        $obj['fromInboxId'] = $fromInboxId;
+        $obj['fromInboxID'] = $fromInboxID;
         $obj['recipients'] = $recipients;
         $obj['senders'] = $senders;
-        $obj['toInboxId'] = $toInboxId;
+        $obj['toInboxID'] = $toInboxID;
         $obj['type'] = $type;
 
         null !== $updatedAt && $obj['updatedAt'] = $updatedAt;
@@ -186,7 +186,7 @@ final class PublicThreadInboxChange implements BaseModel
 
     /**
      * @param PublicClient|array{
-     *   clientType: value-of<ClientType>, integrationAppId?: int|null
+     *   clientType: value-of<ClientType>, integrationAppID?: int|null
      * } $client
      */
     public function withClient(PublicClient|array $client): self
@@ -201,7 +201,7 @@ final class PublicThreadInboxChange implements BaseModel
         string $conversationsThreadID
     ): self {
         $obj = clone $this;
-        $obj['conversationsThreadId'] = $conversationsThreadID;
+        $obj['conversationsThreadID'] = $conversationsThreadID;
 
         return $obj;
     }
@@ -225,7 +225,7 @@ final class PublicThreadInboxChange implements BaseModel
     public function withFromInboxID(string $fromInboxID): self
     {
         $obj = clone $this;
-        $obj['fromInboxId'] = $fromInboxID;
+        $obj['fromInboxID'] = $fromInboxID;
 
         return $obj;
     }
@@ -233,7 +233,7 @@ final class PublicThreadInboxChange implements BaseModel
     /**
      * @param list<PublicRecipient|array{
      *   deliveryIdentifier: PublicDeliveryIdentifier,
-     *   actorId?: string|null,
+     *   actorID?: string|null,
      *   name?: string|null,
      *   recipientField?: string|null,
      * }> $recipients
@@ -248,7 +248,7 @@ final class PublicThreadInboxChange implements BaseModel
 
     /**
      * @param list<PublicSender|array{
-     *   actorId?: string|null,
+     *   actorID?: string|null,
      *   deliveryIdentifier?: PublicDeliveryIdentifier|null,
      *   name?: string|null,
      *   senderField?: string|null,
@@ -265,7 +265,7 @@ final class PublicThreadInboxChange implements BaseModel
     public function withToInboxID(string $toInboxID): self
     {
         $obj = clone $this;
-        $obj['toInboxId'] = $toInboxID;
+        $obj['toInboxID'] = $toInboxID;
 
         return $obj;
     }

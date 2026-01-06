@@ -79,7 +79,7 @@ final class LegalConsentOptionsExplicitConsentToProcess implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<LegalConsentCheckbox|array{
-     *   label: string, required: bool, subscriptionTypeId: int
+     *   label: string, required: bool, subscriptionTypeID: int
      * }> $communicationsCheckboxes
      * @param Type|value-of<Type> $type
      */
@@ -108,7 +108,7 @@ final class LegalConsentOptionsExplicitConsentToProcess implements BaseModel
 
     /**
      * @param list<LegalConsentCheckbox|array{
-     *   label: string, required: bool, subscriptionTypeId: int
+     *   label: string, required: bool, subscriptionTypeID: int
      * }> $communicationsCheckboxes
      */
     public function withCommunicationsCheckboxes(

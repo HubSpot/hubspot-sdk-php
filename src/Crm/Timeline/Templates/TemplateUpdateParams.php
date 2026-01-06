@@ -19,7 +19,7 @@ use HubspotSDK\Crm\Timeline\TimelineEventTemplateTokenOption;
  * @see HubspotSDK\Services\Crm\Timeline\TemplatesService::update()
  *
  * @phpstan-type TemplateUpdateParamsShape = array{
- *   appId: int,
+ *   appID: int,
  *   id: string,
  *   name: string,
  *   tokens: list<TimelineEventTemplateToken|array{
@@ -42,7 +42,7 @@ final class TemplateUpdateParams implements BaseModel
     use SdkParams;
 
     #[Required]
-    public int $appId;
+    public int $appID;
 
     /**
      * The template ID.
@@ -81,7 +81,7 @@ final class TemplateUpdateParams implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * TemplateUpdateParams::with(appId: ..., id: ..., name: ..., tokens: ...)
+     * TemplateUpdateParams::with(appID: ..., id: ..., name: ..., tokens: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -115,7 +115,7 @@ final class TemplateUpdateParams implements BaseModel
      * }> $tokens
      */
     public static function with(
-        int $appId,
+        int $appID,
         string $id,
         string $name,
         array $tokens,
@@ -124,7 +124,7 @@ final class TemplateUpdateParams implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj['appId'] = $appId;
+        $obj['appID'] = $appID;
         $obj['id'] = $id;
         $obj['name'] = $name;
         $obj['tokens'] = $tokens;
@@ -138,7 +138,7 @@ final class TemplateUpdateParams implements BaseModel
     public function withAppID(int $appID): self
     {
         $obj = clone $this;
-        $obj['appId'] = $appID;
+        $obj['appID'] = $appID;
 
         return $obj;
     }

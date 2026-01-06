@@ -7,6 +7,7 @@ namespace HubspotSDK\Services\Crm;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Crm\Lists\ListCreateParams;
 use HubspotSDK\Crm\Lists\ListCreateResponse;
 use HubspotSDK\Crm\Lists\ListFetchResponse;
@@ -15,6 +16,8 @@ use HubspotSDK\Crm\Lists\ListGetParams;
 use HubspotSDK\Crm\Lists\ListListParams;
 use HubspotSDK\Crm\Lists\ListsByIDResponse;
 use HubspotSDK\Crm\Lists\ListScheduleConversionParams;
+use HubspotSDK\Crm\Lists\ListScheduleConversionParams\ConversionType;
+use HubspotSDK\Crm\Lists\ListScheduleConversionParams\TimeUnit;
 use HubspotSDK\Crm\Lists\ListSearchParams;
 use HubspotSDK\Crm\Lists\ListSearchResponse;
 use HubspotSDK\Crm\Lists\ListUpdateFiltersParams;
@@ -63,16 +66,16 @@ final class ListsService implements ListsContract
      *
      * @param array{
      *   name: string,
-     *   objectTypeId: string,
+     *   objectTypeID: string,
      *   processingType: string,
      *   customProperties?: array<string,string>,
      *   filterBranch?: array<string,mixed>,
-     *   listFolderId?: int,
+     *   listFolderID?: int,
      *   listPermissions?: array{
      *     teamsWithEditAccess: list<int>, usersWithEditAccess: list<int>
      *   }|PublicListPermissions,
      *   membershipSettings?: array{
-     *     includeUnassigned?: bool, membershipTeamId?: int
+     *     includeUnassigned?: bool, membershipTeamID?: int
      *   }|PublicMembershipSettings,
      * }|ListCreateParams $params
      *
@@ -105,7 +108,7 @@ final class ListsService implements ListsContract
      * Fetch multiple lists in a single request by **ILS list ID**. The response will include the definitions of all lists that exist for the `listIds` provided.
      *
      * @param array{
-     *   includeFilters?: bool, listIds?: list<string>
+     *   includeFilters?: bool, listIDs?: list<string>
      * }|ListListParams $params
      *
      * @throws APIException
@@ -123,7 +126,7 @@ final class ListsService implements ListsContract
         $response = $this->client->request(
             method: 'get',
             path: 'crm/v3/lists/',
-            query: $parsed,
+            query: Util::array_transform_keys($parsed, ['listIDs' => 'listIds']),
             options: $options,
             convert: ListsByIDResponse::class,
         );
@@ -212,7 +215,7 @@ final class ListsService implements ListsContract
      * Fetch a single list by list name and object type.
      *
      * @param array{
-     *   objectTypeId: string, includeFilters?: bool
+     *   objectTypeID: string, includeFilters?: bool
      * }|ListGetByObjectTypeIDAndNameParams $params
      *
      * @throws APIException
@@ -226,8 +229,8 @@ final class ListsService implements ListsContract
             $params,
             $requestOptions,
         );
-        $objectTypeID = $parsed['objectTypeId'];
-        unset($parsed['objectTypeId']);
+        $objectTypeID = $parsed['objectTypeID'];
+        unset($parsed['objectTypeID']);
 
         /** @var BaseResponse<ListFetchResponse> */
         $response = $this->client->request(
@@ -292,12 +295,21 @@ final class ListsService implements ListsContract
      *
      * Schedule the conversion of an active list into a static list, or update the already scheduled conversion. This can be scheduled for a specific date or based on activity.
      *
+     * @param array{
+     *   conversionType: 'INACTIVITY'|ConversionType,
+     *   day: int,
+     *   month: int,
+     *   year: int,
+     *   offset: int,
+     *   timeUnit: 'DAY'|'MONTH'|'WEEK'|TimeUnit,
+     * }|ListScheduleConversionParams $params
+     *
      * @throws APIException
      */
     public function scheduleConversion(
         string $listID,
-        mixed $params,
-        ?RequestOptions $requestOptions = null
+        array|ListScheduleConversionParams $params,
+        ?RequestOptions $requestOptions = null,
     ): PublicListConversionResponse {
         [$parsed, $options] = ListScheduleConversionParams::parseRequest(
             $params,
@@ -325,7 +337,7 @@ final class ListsService implements ListsContract
      *   additionalProperties: list<string>,
      *   offset: int,
      *   count?: int,
-     *   listIds?: list<string>,
+     *   listIDs?: list<string>,
      *   processingTypes?: list<string>,
      *   query?: string,
      *   sort?: string,

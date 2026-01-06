@@ -57,14 +57,14 @@ final class ListCreateResponse implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param PublicObjectList|array{
-     *   listId: string,
+     *   listID: string,
      *   listVersion: int,
      *   name: string,
-     *   objectTypeId: string,
+     *   objectTypeID: string,
      *   processingStatus: string,
      *   processingType: string,
      *   createdAt?: \DateTimeInterface|null,
-     *   createdById?: string|null,
+     *   createdByID?: string|null,
      *   deletedAt?: \DateTimeInterface|null,
      *   filterBranch?: PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch|null,
      *   filtersUpdatedAt?: \DateTimeInterface|null,
@@ -72,7 +72,7 @@ final class ListCreateResponse implements BaseModel
      *   membershipSettings?: PublicMembershipSettings|null,
      *   size?: int|null,
      *   updatedAt?: \DateTimeInterface|null,
-     *   updatedById?: string|null,
+     *   updatedByID?: string|null,
      * } $list
      */
     public static function with(PublicObjectList|array $list): self
@@ -88,14 +88,14 @@ final class ListCreateResponse implements BaseModel
      * An object list definition.
      *
      * @param PublicObjectList|array{
-     *   listId: string,
+     *   listID: string,
      *   listVersion: int,
      *   name: string,
-     *   objectTypeId: string,
+     *   objectTypeID: string,
      *   processingStatus: string,
      *   processingType: string,
      *   createdAt?: \DateTimeInterface|null,
-     *   createdById?: string|null,
+     *   createdByID?: string|null,
      *   deletedAt?: \DateTimeInterface|null,
      *   filterBranch?: PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch|null,
      *   filtersUpdatedAt?: \DateTimeInterface|null,
@@ -103,7 +103,7 @@ final class ListCreateResponse implements BaseModel
      *   membershipSettings?: PublicMembershipSettings|null,
      *   size?: int|null,
      *   updatedAt?: \DateTimeInterface|null,
-     *   updatedById?: string|null,
+     *   updatedByID?: string|null,
      * } $list
      */
     public function withList(PublicObjectList|array $list): self

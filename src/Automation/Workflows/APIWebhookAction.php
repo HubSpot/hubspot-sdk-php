@@ -14,11 +14,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type APIWebhookActionShape = array{
- *   actionId: string,
+ *   actionID: string,
  *   method: value-of<Method>,
  *   queryParams: list<APIInputVariable>,
  *   type: value-of<Type>,
- *   webhookUrl: string,
+ *   webhookURL: string,
  *   authSettings?: null|APIAuthKeyWebhookAuthSettings|APISignatureWebhookAuthSettings,
  *   connection?: APIConnection|null,
  * }
@@ -28,8 +28,8 @@ final class APIWebhookAction implements BaseModel
     /** @use SdkModel<APIWebhookActionShape> */
     use SdkModel;
 
-    #[Required]
-    public string $actionId;
+    #[Required('actionId')]
+    public string $actionID;
 
     /** @var value-of<Method> $method */
     #[Required(enum: Method::class)]
@@ -43,8 +43,8 @@ final class APIWebhookAction implements BaseModel
     #[Required(enum: Type::class)]
     public string $type;
 
-    #[Required]
-    public string $webhookUrl;
+    #[Required('webhookUrl')]
+    public string $webhookURL;
 
     #[Optional]
     public APIAuthKeyWebhookAuthSettings|APISignatureWebhookAuthSettings|null $authSettings;
@@ -58,7 +58,7 @@ final class APIWebhookAction implements BaseModel
      * To enforce required parameters use
      * ```
      * APIWebhookAction::with(
-     *   actionId: ..., method: ..., queryParams: ..., type: ..., webhookUrl: ...
+     *   actionID: ..., method: ..., queryParams: ..., type: ..., webhookURL: ...
      * )
      * ```
      *
@@ -95,27 +95,27 @@ final class APIWebhookAction implements BaseModel
      *   secretName: string,
      *   type: value-of<APIAuthKeyWebhookAuthSettings\Type>,
      * }|APISignatureWebhookAuthSettings|array{
-     *   appId: int,
+     *   appID: int,
      *   type: value-of<APISignatureWebhookAuthSettings\Type>,
      * } $authSettings
-     * @param APIConnection|array{edgeType: string, nextActionId: string} $connection
+     * @param APIConnection|array{edgeType: string, nextActionID: string} $connection
      */
     public static function with(
-        string $actionId,
+        string $actionID,
         Method|string $method,
         array $queryParams,
-        string $webhookUrl,
+        string $webhookURL,
         Type|string $type = 'WEBHOOK',
         APIAuthKeyWebhookAuthSettings|array|APISignatureWebhookAuthSettings|null $authSettings = null,
         APIConnection|array|null $connection = null,
     ): self {
         $obj = new self;
 
-        $obj['actionId'] = $actionId;
+        $obj['actionID'] = $actionID;
         $obj['method'] = $method;
         $obj['queryParams'] = $queryParams;
         $obj['type'] = $type;
-        $obj['webhookUrl'] = $webhookUrl;
+        $obj['webhookURL'] = $webhookURL;
 
         null !== $authSettings && $obj['authSettings'] = $authSettings;
         null !== $connection && $obj['connection'] = $connection;
@@ -126,7 +126,7 @@ final class APIWebhookAction implements BaseModel
     public function withActionID(string $actionID): self
     {
         $obj = clone $this;
-        $obj['actionId'] = $actionID;
+        $obj['actionID'] = $actionID;
 
         return $obj;
     }
@@ -170,7 +170,7 @@ final class APIWebhookAction implements BaseModel
     public function withWebhookURL(string $webhookURL): self
     {
         $obj = clone $this;
-        $obj['webhookUrl'] = $webhookURL;
+        $obj['webhookURL'] = $webhookURL;
 
         return $obj;
     }
@@ -182,7 +182,7 @@ final class APIWebhookAction implements BaseModel
      *   secretName: string,
      *   type: value-of<APIAuthKeyWebhookAuthSettings\Type>,
      * }|APISignatureWebhookAuthSettings|array{
-     *   appId: int,
+     *   appID: int,
      *   type: value-of<APISignatureWebhookAuthSettings\Type>,
      * } $authSettings
      */
@@ -196,7 +196,7 @@ final class APIWebhookAction implements BaseModel
     }
 
     /**
-     * @param APIConnection|array{edgeType: string, nextActionId: string} $connection
+     * @param APIConnection|array{edgeType: string, nextActionID: string} $connection
      */
     public function withConnection(APIConnection|array $connection): self
     {

@@ -52,7 +52,7 @@ final class CollectionResponseObjectTypeNearOrAtAssociationLimitNoPaging impleme
      * @param list<ObjectTypeNearOrAtAssociationLimit|array{
      *   hasRecordsAtLimit: bool,
      *   hasRecordsNearLimit: bool,
-     *   objectTypeId: string,
+     *   objectTypeID: string,
      *   pluralLabel: string,
      *   singularLabel: string,
      * }> $results
@@ -70,7 +70,7 @@ final class CollectionResponseObjectTypeNearOrAtAssociationLimitNoPaging impleme
      * @param list<ObjectTypeNearOrAtAssociationLimit|array{
      *   hasRecordsAtLimit: bool,
      *   hasRecordsNearLimit: bool,
-     *   objectTypeId: string,
+     *   objectTypeID: string,
      *   pluralLabel: string,
      *   singularLabel: string,
      * }> $results

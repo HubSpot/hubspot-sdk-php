@@ -7,6 +7,7 @@ namespace HubspotSDK\Services\Files;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Files\Folder;
 use HubspotSDK\Files\FolderActionResponse;
 use HubspotSDK\Files\Folders\FolderCreateParams;
@@ -33,7 +34,7 @@ final class FoldersService implements FoldersContract
      * Creates a folder.
      *
      * @param array{
-     *   name: string, parentFolderId?: string, parentPath?: string
+     *   name: string, parentFolderID?: string, parentPath?: string
      * }|FolderCreateParams $params
      *
      * @throws APIException
@@ -203,7 +204,7 @@ final class FoldersService implements FoldersContract
      *   ids?: list<int>,
      *   limit?: int,
      *   name?: string,
-     *   parentFolderIds?: list<int>,
+     *   parentFolderIDs?: list<int>,
      *   path?: string,
      *   properties?: list<string>,
      *   sort?: list<string>,
@@ -229,7 +230,10 @@ final class FoldersService implements FoldersContract
         $response = $this->client->request(
             method: 'get',
             path: 'files/v3/folders/search',
-            query: $parsed,
+            query: Util::array_transform_keys(
+                $parsed,
+                ['parentFolderIDs' => 'parentFolderIds']
+            ),
             options: $options,
             convert: Folder::class,
             page: Page::class,
@@ -244,7 +248,7 @@ final class FoldersService implements FoldersContract
      * Update properties of folder by given ID. This action happens asynchronously and will update all of the folder's children as well.
      *
      * @param array{
-     *   id: string, name?: string, parentFolderId?: int
+     *   id: string, name?: string, parentFolderID?: int
      * }|FolderUpdateAsyncByIDParams $params
      *
      * @throws APIException
@@ -275,7 +279,7 @@ final class FoldersService implements FoldersContract
      *
      * Update a folder's properties, identified by folder ID.
      *
-     * @param array{name?: string, parentFolderId?: int}|FolderUpdateByIDParams $params
+     * @param array{name?: string, parentFolderID?: int}|FolderUpdateByIDParams $params
      *
      * @throws APIException
      */

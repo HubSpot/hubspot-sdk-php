@@ -11,6 +11,7 @@ use HubspotSDK\Automation\Sequences\SequenceListParams;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Automation\SequencesContract;
@@ -37,7 +38,7 @@ final class SequencesService implements SequencesContract
      * Retrieve a list of sequences that belong to a specific user.
      *
      * @param array{
-     *   userId: string, after?: string, limit?: int, name?: string
+     *   userID: string, after?: string, limit?: int, name?: string
      * }|SequenceListParams $params
      *
      * @return Page<PublicSequenceLiteResponse>
@@ -57,7 +58,7 @@ final class SequencesService implements SequencesContract
         $response = $this->client->request(
             method: 'get',
             path: 'automation/v4/sequences/',
-            query: $parsed,
+            query: Util::array_transform_keys($parsed, ['userID' => 'userId']),
             options: $options,
             convert: PublicSequenceLiteResponse::class,
             page: Page::class,
@@ -71,7 +72,7 @@ final class SequencesService implements SequencesContract
      *
      * Retrieve details of a specific sequence by its ID.
      *
-     * @param array{userId: string}|SequenceGetParams $params
+     * @param array{userID: string}|SequenceGetParams $params
      *
      * @throws APIException
      */
@@ -89,7 +90,7 @@ final class SequencesService implements SequencesContract
         $response = $this->client->request(
             method: 'get',
             path: ['automation/v4/sequences/%1$s', $sequenceID],
-            query: $parsed,
+            query: Util::array_transform_keys($parsed, ['userID' => 'userId']),
             options: $options,
             convert: PublicSequenceResponse::class,
         );

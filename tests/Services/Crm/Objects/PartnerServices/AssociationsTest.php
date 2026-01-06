@@ -47,9 +47,9 @@ final class AssociationsTest extends TestCase
             ->update(
                 'associationType',
                 [
-                    'partnerServiceId' => 'partnerServiceId',
+                    'partnerServiceID' => 'partnerServiceId',
                     'toObjectType' => 'toObjectType',
-                    'toObjectId' => 'toObjectId',
+                    'toObjectID' => 'toObjectId',
                 ],
             )
         ;
@@ -74,9 +74,9 @@ final class AssociationsTest extends TestCase
             ->update(
                 'associationType',
                 [
-                    'partnerServiceId' => 'partnerServiceId',
+                    'partnerServiceID' => 'partnerServiceId',
                     'toObjectType' => 'toObjectType',
-                    'toObjectId' => 'toObjectId',
+                    'toObjectID' => 'toObjectId',
                 ],
             )
         ;
@@ -94,7 +94,7 @@ final class AssociationsTest extends TestCase
 
         $result = $this->client->crm->objects->partnerServices->associations->list(
             'toObjectType',
-            ['partnerServiceId' => 'partnerServiceId']
+            ['partnerServiceID' => 'partnerServiceId']
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -111,9 +111,9 @@ final class AssociationsTest extends TestCase
         $result = $this->client->crm->objects->partnerServices->associations->list(
             'toObjectType',
             [
-                'partnerServiceId' => 'partnerServiceId',
+                'partnerServiceID' => 'partnerServiceId',
                 'after' => 'after',
-                'includeFA' => true,
+                'includeFa' => true,
                 'limit' => 0,
             ],
         );
@@ -138,9 +138,9 @@ final class AssociationsTest extends TestCase
             ->delete(
                 'associationType',
                 [
-                    'partnerServiceId' => 'partnerServiceId',
+                    'partnerServiceID' => 'partnerServiceId',
                     'toObjectType' => 'toObjectType',
-                    'toObjectId' => 'toObjectId',
+                    'toObjectID' => 'toObjectId',
                 ],
             )
         ;
@@ -165,9 +165,9 @@ final class AssociationsTest extends TestCase
             ->delete(
                 'associationType',
                 [
-                    'partnerServiceId' => 'partnerServiceId',
+                    'partnerServiceID' => 'partnerServiceId',
                     'toObjectType' => 'toObjectType',
-                    'toObjectId' => 'toObjectId',
+                    'toObjectID' => 'toObjectId',
                 ],
             )
         ;

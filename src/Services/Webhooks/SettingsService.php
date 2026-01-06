@@ -26,7 +26,7 @@ final class SettingsService implements SettingsContract
      * Update webhook settings for the specified app.
      *
      * @param array{
-     *   targetUrl: string,
+     *   targetURL: string,
      *   throttling: array{maxConcurrentRequests: int}|ThrottlingSettings,
      * }|SettingUpdateParams $params
      *

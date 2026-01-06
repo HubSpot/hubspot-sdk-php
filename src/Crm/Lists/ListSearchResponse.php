@@ -79,18 +79,18 @@ final class ListSearchResponse implements BaseModel
      *
      * @param list<PublicObjectListSearchResult|array{
      *   additionalProperties: array<string,string>,
-     *   listId: string,
+     *   listID: string,
      *   listVersion: int,
      *   name: string,
-     *   objectTypeId: string,
+     *   objectTypeID: string,
      *   processingStatus: string,
      *   processingType: string,
      *   createdAt?: \DateTimeInterface|null,
-     *   createdById?: string|null,
+     *   createdByID?: string|null,
      *   deletedAt?: \DateTimeInterface|null,
      *   filtersUpdatedAt?: \DateTimeInterface|null,
      *   updatedAt?: \DateTimeInterface|null,
-     *   updatedById?: string|null,
+     *   updatedByID?: string|null,
      * }> $lists
      */
     public static function with(
@@ -125,18 +125,18 @@ final class ListSearchResponse implements BaseModel
      *
      * @param list<PublicObjectListSearchResult|array{
      *   additionalProperties: array<string,string>,
-     *   listId: string,
+     *   listID: string,
      *   listVersion: int,
      *   name: string,
-     *   objectTypeId: string,
+     *   objectTypeID: string,
      *   processingStatus: string,
      *   processingType: string,
      *   createdAt?: \DateTimeInterface|null,
-     *   createdById?: string|null,
+     *   createdByID?: string|null,
      *   deletedAt?: \DateTimeInterface|null,
      *   filtersUpdatedAt?: \DateTimeInterface|null,
      *   updatedAt?: \DateTimeInterface|null,
-     *   updatedById?: string|null,
+     *   updatedByID?: string|null,
      * }> $lists
      */
     public function withLists(array $lists): self

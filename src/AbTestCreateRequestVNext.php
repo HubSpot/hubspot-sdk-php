@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * Request body object for creating A/B tests.
  *
  * @phpstan-type AbTestCreateRequestVNextShape = array{
- *   contentId: string, variationName: string
+ *   contentID: string, variationName: string
  * }
  */
 final class AbTestCreateRequestVNext implements BaseModel
@@ -23,8 +23,8 @@ final class AbTestCreateRequestVNext implements BaseModel
     /**
      * ID of the object to test.
      */
-    #[Required]
-    public string $contentId;
+    #[Required('contentId')]
+    public string $contentID;
 
     /**
      * Name of A/B test variation.
@@ -37,7 +37,7 @@ final class AbTestCreateRequestVNext implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * AbTestCreateRequestVNext::with(contentId: ..., variationName: ...)
+     * AbTestCreateRequestVNext::with(contentID: ..., variationName: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -56,11 +56,11 @@ final class AbTestCreateRequestVNext implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(string $contentId, string $variationName): self
+    public static function with(string $contentID, string $variationName): self
     {
         $obj = new self;
 
-        $obj['contentId'] = $contentId;
+        $obj['contentID'] = $contentID;
         $obj['variationName'] = $variationName;
 
         return $obj;
@@ -72,7 +72,7 @@ final class AbTestCreateRequestVNext implements BaseModel
     public function withContentID(string $contentID): self
     {
         $obj = clone $this;
-        $obj['contentId'] = $contentID;
+        $obj['contentID'] = $contentID;
 
         return $obj;
     }

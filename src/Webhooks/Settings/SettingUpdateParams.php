@@ -16,7 +16,7 @@ use HubspotSDK\Webhooks\ThrottlingSettings;
  * @see HubspotSDK\Services\Webhooks\SettingsService::update()
  *
  * @phpstan-type SettingUpdateParamsShape = array{
- *   targetUrl: string,
+ *   targetURL: string,
  *   throttling: ThrottlingSettings|array{maxConcurrentRequests: int},
  * }
  */
@@ -29,8 +29,8 @@ final class SettingUpdateParams implements BaseModel
     /**
      * A publicly available URL for HubSpot to call where event payloads will be delivered.
      */
-    #[Required]
-    public string $targetUrl;
+    #[Required('targetUrl')]
+    public string $targetURL;
 
     /**
      * Configuration details for webhook throttling.
@@ -43,7 +43,7 @@ final class SettingUpdateParams implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * SettingUpdateParams::with(targetUrl: ..., throttling: ...)
+     * SettingUpdateParams::with(targetURL: ..., throttling: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -65,12 +65,12 @@ final class SettingUpdateParams implements BaseModel
      * @param ThrottlingSettings|array{maxConcurrentRequests: int} $throttling
      */
     public static function with(
-        string $targetUrl,
+        string $targetURL,
         ThrottlingSettings|array $throttling
     ): self {
         $obj = new self;
 
-        $obj['targetUrl'] = $targetUrl;
+        $obj['targetURL'] = $targetURL;
         $obj['throttling'] = $throttling;
 
         return $obj;
@@ -82,7 +82,7 @@ final class SettingUpdateParams implements BaseModel
     public function withTargetURL(string $targetURL): self
     {
         $obj = clone $this;
-        $obj['targetUrl'] = $targetURL;
+        $obj['targetURL'] = $targetURL;
 
         return $obj;
     }

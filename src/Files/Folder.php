@@ -17,7 +17,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   updatedAt: \DateTimeInterface,
  *   archivedAt?: \DateTimeInterface|null,
  *   name?: string|null,
- *   parentFolderId?: string|null,
+ *   parentFolderID?: string|null,
  *   path?: string|null,
  * }
  */
@@ -65,8 +65,8 @@ final class Folder implements BaseModel
     /**
      * ID of the parent folder.
      */
-    #[Optional]
-    public ?string $parentFolderId;
+    #[Optional('parentFolderId')]
+    public ?string $parentFolderID;
 
     /**
      * Path of the folder in the file manager.
@@ -109,7 +109,7 @@ final class Folder implements BaseModel
         \DateTimeInterface $updatedAt,
         ?\DateTimeInterface $archivedAt = null,
         ?string $name = null,
-        ?string $parentFolderId = null,
+        ?string $parentFolderID = null,
         ?string $path = null,
     ): self {
         $obj = new self;
@@ -121,7 +121,7 @@ final class Folder implements BaseModel
 
         null !== $archivedAt && $obj['archivedAt'] = $archivedAt;
         null !== $name && $obj['name'] = $name;
-        null !== $parentFolderId && $obj['parentFolderId'] = $parentFolderId;
+        null !== $parentFolderID && $obj['parentFolderID'] = $parentFolderID;
         null !== $path && $obj['path'] = $path;
 
         return $obj;
@@ -199,7 +199,7 @@ final class Folder implements BaseModel
     public function withParentFolderID(string $parentFolderID): self
     {
         $obj = clone $this;
-        $obj['parentFolderId'] = $parentFolderID;
+        $obj['parentFolderID'] = $parentFolderID;
 
         return $obj;
     }

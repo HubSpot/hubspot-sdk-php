@@ -73,7 +73,7 @@ final class BatchTest extends TestCase
             'tableIdOrName',
             [
                 'inputs' => [
-                    ['childTableId' => 0, 'displayIndex' => 0, 'values' => ['foo' => []]],
+                    ['childTableID' => 0, 'displayIndex' => 0, 'values' => ['foo' => []]],
                 ],
             ],
         );
@@ -94,7 +94,7 @@ final class BatchTest extends TestCase
             [
                 'inputs' => [
                     [
-                        'childTableId' => 0,
+                        'childTableID' => 0,
                         'displayIndex' => 0,
                         'values' => ['foo' => []],
                         'name' => 'name',
@@ -215,7 +215,7 @@ final class BatchTest extends TestCase
             'tableIdOrName',
             [
                 'inputs' => [
-                    ['childTableId' => 0, 'displayIndex' => 0, 'values' => ['foo' => []]],
+                    ['childTableID' => 0, 'displayIndex' => 0, 'values' => ['foo' => []]],
                 ],
             ],
         );
@@ -236,7 +236,7 @@ final class BatchTest extends TestCase
             [
                 'inputs' => [
                     [
-                        'childTableId' => 0,
+                        'childTableID' => 0,
                         'displayIndex' => 0,
                         'values' => ['foo' => []],
                         'id' => 'id',
@@ -262,7 +262,7 @@ final class BatchTest extends TestCase
             'tableIdOrName',
             [
                 'inputs' => [
-                    ['childTableId' => 0, 'displayIndex' => 0, 'values' => ['foo' => []]],
+                    ['childTableID' => 0, 'displayIndex' => 0, 'values' => ['foo' => []]],
                 ],
             ],
         );
@@ -283,7 +283,7 @@ final class BatchTest extends TestCase
             [
                 'inputs' => [
                     [
-                        'childTableId' => 0,
+                        'childTableID' => 0,
                         'displayIndex' => 0,
                         'values' => ['foo' => []],
                         'id' => 'id',

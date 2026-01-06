@@ -7,6 +7,7 @@ namespace HubspotSDK\Services\Marketing\Subscriptions\V4;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Marketing\Subscriptions\V4\LinkGenerationResponse;
 use HubspotSDK\Marketing\Subscriptions\V4\Links\LinkCreateParams;
 use HubspotSDK\Marketing\Subscriptions\V4\Links\LinkCreateParams\Channel;
@@ -25,10 +26,10 @@ final class LinksService implements LinksContract
      *
      * @param array{
      *   channel: 'EMAIL'|Channel,
-     *   subscriberIdString: string,
-     *   businessUnitId?: int,
+     *   subscriberIDString: string,
+     *   businessUnitID?: int,
      *   language?: string,
-     *   subscriptionId?: int,
+     *   subscriptionID?: int,
      * }|LinkCreateParams $params
      *
      * @throws APIException
@@ -47,7 +48,10 @@ final class LinksService implements LinksContract
         $response = $this->client->request(
             method: 'post',
             path: 'communication-preferences/v4/links/generate',
-            query: array_diff_key($parsed, $query_params),
+            query: Util::array_transform_keys(
+                array_diff_key($parsed, $query_params),
+                ['businessUnitID' => 'businessUnitId'],
+            ),
             body: (object) array_diff_key($parsed, $query_params),
             options: $options,
             convert: LinkGenerationResponse::class,

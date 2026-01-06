@@ -99,7 +99,7 @@ final class PublicRangedTimeOperation implements BaseModel
      *   month: int,
      *   timeType: value-of<TimeType>,
      *   year: int,
-     *   zoneId: string,
+     *   zoneID: string,
      *   hour?: int|null,
      *   millisecond?: int|null,
      *   minute?: int|null,
@@ -108,14 +108,14 @@ final class PublicRangedTimeOperation implements BaseModel
      * }|PublicIndexedTimePoint|array{
      *   indexReference: PublicNowReference|PublicTodayReference|PublicWeekReference|PublicFiscalQuarterReference|PublicFiscalYearReference|PublicYearReference|PublicQuarterReference|PublicMonthReference,
      *   timeType: value-of<PublicIndexedTimePoint\TimeType>,
-     *   zoneId: string,
+     *   zoneID: string,
      *   offset?: PublicIndexOffset|null,
      *   timezoneSource?: string|null,
      * }|PublicPropertyReferencedTime|array{
      *   property: string,
      *   referenceType: string,
      *   timeType: value-of<PublicPropertyReferencedTime\TimeType>,
-     *   zoneId: string,
+     *   zoneID: string,
      *   timezoneSource?: string|null,
      * } $lowerBoundTimePoint
      * @param PublicDatePoint|array{
@@ -123,7 +123,7 @@ final class PublicRangedTimeOperation implements BaseModel
      *   month: int,
      *   timeType: value-of<TimeType>,
      *   year: int,
-     *   zoneId: string,
+     *   zoneID: string,
      *   hour?: int|null,
      *   millisecond?: int|null,
      *   minute?: int|null,
@@ -132,14 +132,14 @@ final class PublicRangedTimeOperation implements BaseModel
      * }|PublicIndexedTimePoint|array{
      *   indexReference: PublicNowReference|PublicTodayReference|PublicWeekReference|PublicFiscalQuarterReference|PublicFiscalYearReference|PublicYearReference|PublicQuarterReference|PublicMonthReference,
      *   timeType: value-of<PublicIndexedTimePoint\TimeType>,
-     *   zoneId: string,
+     *   zoneID: string,
      *   offset?: PublicIndexOffset|null,
      *   timezoneSource?: string|null,
      * }|PublicPropertyReferencedTime|array{
      *   property: string,
      *   referenceType: string,
      *   timeType: value-of<PublicPropertyReferencedTime\TimeType>,
-     *   zoneId: string,
+     *   zoneID: string,
      *   timezoneSource?: string|null,
      * } $upperBoundTimePoint
      * @param Type|value-of<Type> $type
@@ -186,7 +186,7 @@ final class PublicRangedTimeOperation implements BaseModel
      *   month: int,
      *   timeType: value-of<TimeType>,
      *   year: int,
-     *   zoneId: string,
+     *   zoneID: string,
      *   hour?: int|null,
      *   millisecond?: int|null,
      *   minute?: int|null,
@@ -195,14 +195,14 @@ final class PublicRangedTimeOperation implements BaseModel
      * }|PublicIndexedTimePoint|array{
      *   indexReference: PublicNowReference|PublicTodayReference|PublicWeekReference|PublicFiscalQuarterReference|PublicFiscalYearReference|PublicYearReference|PublicQuarterReference|PublicMonthReference,
      *   timeType: value-of<PublicIndexedTimePoint\TimeType>,
-     *   zoneId: string,
+     *   zoneID: string,
      *   offset?: PublicIndexOffset|null,
      *   timezoneSource?: string|null,
      * }|PublicPropertyReferencedTime|array{
      *   property: string,
      *   referenceType: string,
      *   timeType: value-of<PublicPropertyReferencedTime\TimeType>,
-     *   zoneId: string,
+     *   zoneID: string,
      *   timezoneSource?: string|null,
      * } $lowerBoundTimePoint
      */
@@ -248,7 +248,7 @@ final class PublicRangedTimeOperation implements BaseModel
      *   month: int,
      *   timeType: value-of<TimeType>,
      *   year: int,
-     *   zoneId: string,
+     *   zoneID: string,
      *   hour?: int|null,
      *   millisecond?: int|null,
      *   minute?: int|null,
@@ -257,14 +257,14 @@ final class PublicRangedTimeOperation implements BaseModel
      * }|PublicIndexedTimePoint|array{
      *   indexReference: PublicNowReference|PublicTodayReference|PublicWeekReference|PublicFiscalQuarterReference|PublicFiscalYearReference|PublicYearReference|PublicQuarterReference|PublicMonthReference,
      *   timeType: value-of<PublicIndexedTimePoint\TimeType>,
-     *   zoneId: string,
+     *   zoneID: string,
      *   offset?: PublicIndexOffset|null,
      *   timezoneSource?: string|null,
      * }|PublicPropertyReferencedTime|array{
      *   property: string,
      *   referenceType: string,
      *   timeType: value-of<PublicPropertyReferencedTime\TimeType>,
-     *   zoneId: string,
+     *   zoneID: string,
      *   timezoneSource?: string|null,
      * } $upperBoundTimePoint
      */

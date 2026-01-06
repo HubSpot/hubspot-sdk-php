@@ -52,8 +52,8 @@ final class ConfigurationsService implements ConfigurationsContract
      *   fromObjectType: string,
      *   inputs: list<array{
      *     category: 'HUBSPOT_DEFINED'|'INTEGRATOR_DEFINED'|'USER_DEFINED'|Category,
-     *     maxToObjectIds: int,
-     *     typeId: int,
+     *     maxToObjectIDs: int,
+     *     typeID: int,
      *   }>,
      * }|ConfigurationBatchCreateParams $params
      *
@@ -91,7 +91,7 @@ final class ConfigurationsService implements ConfigurationsContract
      * @api
      *
      * @param array{
-     *   fromObjectType: string, inputs: list<array{category: string, typeId: int}>
+     *   fromObjectType: string, inputs: list<array{category: string, typeID: int}>
      * }|ConfigurationBatchDeleteParams $params
      *
      * @throws APIException
@@ -131,8 +131,8 @@ final class ConfigurationsService implements ConfigurationsContract
      *   fromObjectType: string,
      *   inputs: list<array{
      *     category: 'HUBSPOT_DEFINED'|'INTEGRATOR_DEFINED'|'USER_DEFINED'|\HubspotSDK\Crm\Associations\Schema\V4\PublicAssociationDefinitionConfigurationUpdateRequest\Category,
-     *     maxToObjectIds: int,
-     *     typeId: int,
+     *     maxToObjectIDs: int,
+     *     typeID: int,
      *   }>,
      * }|ConfigurationBatchUpdateParams $params
      *

@@ -20,7 +20,7 @@ use HubspotSDK\OptionInput;
  * @see HubspotSDK\Services\Cms\MediaBridge\PropertiesService::create()
  *
  * @phpstan-type PropertyCreateParamsShape = array{
- *   appId: int,
+ *   appID: int,
  *   fieldType: FieldType|value-of<FieldType>,
  *   groupName: string,
  *   label: string,
@@ -51,7 +51,7 @@ final class PropertyCreateParams implements BaseModel
     use SdkParams;
 
     #[Required]
-    public int $appId;
+    public int $appID;
 
     /** @var value-of<FieldType> $fieldType */
     #[Required(enum: FieldType::class)]
@@ -108,7 +108,7 @@ final class PropertyCreateParams implements BaseModel
      * To enforce required parameters use
      * ```
      * PropertyCreateParams::with(
-     *   appId: ..., fieldType: ..., groupName: ..., label: ..., name: ..., type: ...
+     *   appID: ..., fieldType: ..., groupName: ..., label: ..., name: ..., type: ...
      * )
      * ```
      *
@@ -146,7 +146,7 @@ final class PropertyCreateParams implements BaseModel
      * }> $options
      */
     public static function with(
-        int $appId,
+        int $appID,
         FieldType|string $fieldType,
         string $groupName,
         string $label,
@@ -165,7 +165,7 @@ final class PropertyCreateParams implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj['appId'] = $appId;
+        $obj['appID'] = $appID;
         $obj['fieldType'] = $fieldType;
         $obj['groupName'] = $groupName;
         $obj['label'] = $label;
@@ -189,7 +189,7 @@ final class PropertyCreateParams implements BaseModel
     public function withAppID(int $appID): self
     {
         $obj = clone $this;
-        $obj['appId'] = $appID;
+        $obj['appID'] = $appID;
 
         return $obj;
     }

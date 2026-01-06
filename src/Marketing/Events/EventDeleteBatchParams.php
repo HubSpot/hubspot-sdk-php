@@ -20,7 +20,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @phpstan-type EventDeleteBatchParamsShape = array{
  *   inputs: list<MarketingEventPublicObjectIDDeleteRequest|array{
- *     objectId: string
+ *     objectID: string
  *   }>,
  * }
  */
@@ -59,7 +59,7 @@ final class EventDeleteBatchParams implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<MarketingEventPublicObjectIDDeleteRequest|array{
-     *   objectId: string
+     *   objectID: string
      * }> $inputs
      */
     public static function with(array $inputs): self
@@ -73,7 +73,7 @@ final class EventDeleteBatchParams implements BaseModel
 
     /**
      * @param list<MarketingEventPublicObjectIDDeleteRequest|array{
-     *   objectId: string
+     *   objectID: string
      * }> $inputs
      */
     public function withInputs(array $inputs): self

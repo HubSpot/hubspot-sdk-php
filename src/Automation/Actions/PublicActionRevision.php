@@ -13,7 +13,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   id: string,
  *   createdAt: \DateTimeInterface,
  *   definition: PublicActionDefinition,
- *   revisionId: string,
+ *   revisionID: string,
  * }
  */
 final class PublicActionRevision implements BaseModel
@@ -30,8 +30,8 @@ final class PublicActionRevision implements BaseModel
     #[Required]
     public PublicActionDefinition $definition;
 
-    #[Required]
-    public string $revisionId;
+    #[Required('revisionId')]
+    public string $revisionID;
 
     /**
      * `new PublicActionRevision()` is missing required properties by the API.
@@ -39,7 +39,7 @@ final class PublicActionRevision implements BaseModel
      * To enforce required parameters use
      * ```
      * PublicActionRevision::with(
-     *   id: ..., createdAt: ..., definition: ..., revisionId: ...
+     *   id: ..., createdAt: ..., definition: ..., revisionID: ...
      * )
      * ```
      *
@@ -65,13 +65,13 @@ final class PublicActionRevision implements BaseModel
      *
      * @param PublicActionDefinition|array{
      *   id: string,
-     *   actionUrl: string,
+     *   actionURL: string,
      *   functions: list<PublicActionFunctionIdentifier>,
      *   inputFields: list<InputFieldDefinition>,
      *   labels: array<string,PublicActionLabels>,
      *   objectTypes: list<string>,
      *   published: bool,
-     *   revisionId: string,
+     *   revisionID: string,
      *   archivedAt?: int|null,
      *   executionRules?: list<PublicExecutionTranslationRule>|null,
      *   inputFieldDependencies?: list<PublicSingleFieldDependency|PublicConditionalSingleFieldDependency>|null,
@@ -83,14 +83,14 @@ final class PublicActionRevision implements BaseModel
         string $id,
         \DateTimeInterface $createdAt,
         PublicActionDefinition|array $definition,
-        string $revisionId,
+        string $revisionID,
     ): self {
         $obj = new self;
 
         $obj['id'] = $id;
         $obj['createdAt'] = $createdAt;
         $obj['definition'] = $definition;
-        $obj['revisionId'] = $revisionId;
+        $obj['revisionID'] = $revisionID;
 
         return $obj;
     }
@@ -114,13 +114,13 @@ final class PublicActionRevision implements BaseModel
     /**
      * @param PublicActionDefinition|array{
      *   id: string,
-     *   actionUrl: string,
+     *   actionURL: string,
      *   functions: list<PublicActionFunctionIdentifier>,
      *   inputFields: list<InputFieldDefinition>,
      *   labels: array<string,PublicActionLabels>,
      *   objectTypes: list<string>,
      *   published: bool,
-     *   revisionId: string,
+     *   revisionID: string,
      *   archivedAt?: int|null,
      *   executionRules?: list<PublicExecutionTranslationRule>|null,
      *   inputFieldDependencies?: list<PublicSingleFieldDependency|PublicConditionalSingleFieldDependency>|null,
@@ -140,7 +140,7 @@ final class PublicActionRevision implements BaseModel
     public function withRevisionID(string $revisionID): self
     {
         $obj = clone $this;
-        $obj['revisionId'] = $revisionID;
+        $obj['revisionID'] = $revisionID;
 
         return $obj;
     }

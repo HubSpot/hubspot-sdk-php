@@ -116,7 +116,7 @@ final class BatchResponsePublicWideStatusBulkResponseWithErrors implements BaseM
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<PublicWideStatusBulkResponse|array{
-     *   subscriberIdString: string, wideStatuses: list<PublicWideStatus>
+     *   subscriberIDString: string, wideStatuses: list<PublicWideStatus>
      * }> $results
      * @param Status|value-of<Status> $status
      * @param list<StandardError|array{
@@ -171,7 +171,7 @@ final class BatchResponsePublicWideStatusBulkResponseWithErrors implements BaseM
      * An array containing the results of the operation.
      *
      * @param list<PublicWideStatusBulkResponse|array{
-     *   subscriberIdString: string, wideStatuses: list<PublicWideStatus>
+     *   subscriberIDString: string, wideStatuses: list<PublicWideStatus>
      * }> $results
      */
     public function withResults(array $results): self

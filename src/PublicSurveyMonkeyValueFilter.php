@@ -17,11 +17,11 @@ use HubspotSDK\PublicSurveyMonkeyValueFilter\FilterType;
  * @phpstan-type PublicSurveyMonkeyValueFilterShape = array{
  *   filterType: value-of<FilterType>,
  *   operator: string,
- *   surveyId: string,
+ *   surveyID: string,
  *   surveyQuestion: string,
  *   valueComparison: PublicBoolPropertyOperation|PublicNumberPropertyOperation|PublicStringPropertyOperation|PublicDateTimePropertyOperation|PublicRangedDatePropertyOperation|PublicComparativePropertyUpdatedOperation|PublicComparativeDatePropertyOperation|PublicRollingDateRangePropertyOperation|PublicRollingPropertyUpdatedOperation|PublicEnumerationPropertyOperation|PublicAllPropertyTypesOperation|PublicRangedNumberPropertyOperation|PublicMultiStringPropertyOperation|PublicDatePropertyOperation|PublicCalendarDatePropertyOperation|PublicTimePointOperation|PublicRangedTimeOperation,
- *   surveyAnswerColId?: string|null,
- *   surveyAnswerRowId?: string|null,
+ *   surveyAnswerColID?: string|null,
+ *   surveyAnswerRowID?: string|null,
  * }
  */
 final class PublicSurveyMonkeyValueFilter implements BaseModel
@@ -36,8 +36,8 @@ final class PublicSurveyMonkeyValueFilter implements BaseModel
     #[Required]
     public string $operator;
 
-    #[Required]
-    public string $surveyId;
+    #[Required('surveyId')]
+    public string $surveyID;
 
     #[Required]
     public string $surveyQuestion;
@@ -45,11 +45,11 @@ final class PublicSurveyMonkeyValueFilter implements BaseModel
     #[Required]
     public PublicBoolPropertyOperation|PublicNumberPropertyOperation|PublicStringPropertyOperation|PublicDateTimePropertyOperation|PublicRangedDatePropertyOperation|PublicComparativePropertyUpdatedOperation|PublicComparativeDatePropertyOperation|PublicRollingDateRangePropertyOperation|PublicRollingPropertyUpdatedOperation|PublicEnumerationPropertyOperation|PublicAllPropertyTypesOperation|PublicRangedNumberPropertyOperation|PublicMultiStringPropertyOperation|PublicDatePropertyOperation|PublicCalendarDatePropertyOperation|PublicTimePointOperation|PublicRangedTimeOperation $valueComparison;
 
-    #[Optional]
-    public ?string $surveyAnswerColId;
+    #[Optional('surveyAnswerColId')]
+    public ?string $surveyAnswerColID;
 
-    #[Optional]
-    public ?string $surveyAnswerRowId;
+    #[Optional('surveyAnswerRowId')]
+    public ?string $surveyAnswerRowID;
 
     /**
      * `new PublicSurveyMonkeyValueFilter()` is missing required properties by the API.
@@ -59,7 +59,7 @@ final class PublicSurveyMonkeyValueFilter implements BaseModel
      * PublicSurveyMonkeyValueFilter::with(
      *   filterType: ...,
      *   operator: ...,
-     *   surveyId: ...,
+     *   surveyID: ...,
      *   surveyQuestion: ...,
      *   valueComparison: ...,
      * )
@@ -195,23 +195,23 @@ final class PublicSurveyMonkeyValueFilter implements BaseModel
      */
     public static function with(
         string $operator,
-        string $surveyId,
+        string $surveyID,
         string $surveyQuestion,
         PublicBoolPropertyOperation|array|PublicNumberPropertyOperation|PublicStringPropertyOperation|PublicDateTimePropertyOperation|PublicRangedDatePropertyOperation|PublicComparativePropertyUpdatedOperation|PublicComparativeDatePropertyOperation|PublicRollingDateRangePropertyOperation|PublicRollingPropertyUpdatedOperation|PublicEnumerationPropertyOperation|PublicAllPropertyTypesOperation|PublicRangedNumberPropertyOperation|PublicMultiStringPropertyOperation|PublicDatePropertyOperation|PublicCalendarDatePropertyOperation|PublicTimePointOperation|PublicRangedTimeOperation $valueComparison,
         FilterType|string $filterType = 'SURVEY_MONKEY_VALUE',
-        ?string $surveyAnswerColId = null,
-        ?string $surveyAnswerRowId = null,
+        ?string $surveyAnswerColID = null,
+        ?string $surveyAnswerRowID = null,
     ): self {
         $obj = new self;
 
         $obj['filterType'] = $filterType;
         $obj['operator'] = $operator;
-        $obj['surveyId'] = $surveyId;
+        $obj['surveyID'] = $surveyID;
         $obj['surveyQuestion'] = $surveyQuestion;
         $obj['valueComparison'] = $valueComparison;
 
-        null !== $surveyAnswerColId && $obj['surveyAnswerColId'] = $surveyAnswerColId;
-        null !== $surveyAnswerRowId && $obj['surveyAnswerRowId'] = $surveyAnswerRowId;
+        null !== $surveyAnswerColID && $obj['surveyAnswerColID'] = $surveyAnswerColID;
+        null !== $surveyAnswerRowID && $obj['surveyAnswerRowID'] = $surveyAnswerRowID;
 
         return $obj;
     }
@@ -238,7 +238,7 @@ final class PublicSurveyMonkeyValueFilter implements BaseModel
     public function withSurveyID(string $surveyID): self
     {
         $obj = clone $this;
-        $obj['surveyId'] = $surveyID;
+        $obj['surveyID'] = $surveyID;
 
         return $obj;
     }
@@ -370,7 +370,7 @@ final class PublicSurveyMonkeyValueFilter implements BaseModel
     public function withSurveyAnswerColID(string $surveyAnswerColID): self
     {
         $obj = clone $this;
-        $obj['surveyAnswerColId'] = $surveyAnswerColID;
+        $obj['surveyAnswerColID'] = $surveyAnswerColID;
 
         return $obj;
     }
@@ -378,7 +378,7 @@ final class PublicSurveyMonkeyValueFilter implements BaseModel
     public function withSurveyAnswerRowID(string $surveyAnswerRowID): self
     {
         $obj = clone $this;
-        $obj['surveyAnswerRowId'] = $surveyAnswerRowID;
+        $obj['surveyAnswerRowID'] = $surveyAnswerRowID;
 
         return $obj;
     }

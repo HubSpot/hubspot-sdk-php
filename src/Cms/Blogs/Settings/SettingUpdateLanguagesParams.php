@@ -13,7 +13,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Cms\Blogs\SettingsService::updateLanguages()
  *
  * @phpstan-type SettingUpdateLanguagesParamsShape = array{
- *   languages: array<string,string>, primaryId: string
+ *   languages: array<string,string>, primaryID: string
  * }
  */
 final class SettingUpdateLanguagesParams implements BaseModel
@@ -33,15 +33,15 @@ final class SettingUpdateLanguagesParams implements BaseModel
     /**
      * ID of the primary object in the multi-language group.
      */
-    #[Required]
-    public string $primaryId;
+    #[Required('primaryId')]
+    public string $primaryID;
 
     /**
      * `new SettingUpdateLanguagesParams()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * SettingUpdateLanguagesParams::with(languages: ..., primaryId: ...)
+     * SettingUpdateLanguagesParams::with(languages: ..., primaryID: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -62,12 +62,12 @@ final class SettingUpdateLanguagesParams implements BaseModel
      *
      * @param array<string,string> $languages
      */
-    public static function with(array $languages, string $primaryId): self
+    public static function with(array $languages, string $primaryID): self
     {
         $obj = new self;
 
         $obj['languages'] = $languages;
-        $obj['primaryId'] = $primaryId;
+        $obj['primaryID'] = $primaryID;
 
         return $obj;
     }
@@ -91,7 +91,7 @@ final class SettingUpdateLanguagesParams implements BaseModel
     public function withPrimaryID(string $primaryID): self
     {
         $obj = clone $this;
-        $obj['primaryId'] = $primaryID;
+        $obj['primaryID'] = $primaryID;
 
         return $obj;
     }

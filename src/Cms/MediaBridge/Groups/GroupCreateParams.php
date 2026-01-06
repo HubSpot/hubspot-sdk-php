@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Cms\MediaBridge\GroupsService::create()
  *
  * @phpstan-type GroupCreateParamsShape = array{
- *   appId: int, label: string, name: string, displayOrder?: int
+ *   appID: int, label: string, name: string, displayOrder?: int
  * }
  */
 final class GroupCreateParams implements BaseModel
@@ -26,7 +26,7 @@ final class GroupCreateParams implements BaseModel
     use SdkParams;
 
     #[Required]
-    public int $appId;
+    public int $appID;
 
     #[Required]
     public string $label;
@@ -42,7 +42,7 @@ final class GroupCreateParams implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * GroupCreateParams::with(appId: ..., label: ..., name: ...)
+     * GroupCreateParams::with(appID: ..., label: ..., name: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -62,14 +62,14 @@ final class GroupCreateParams implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      */
     public static function with(
-        int $appId,
+        int $appID,
         string $label,
         string $name,
         ?int $displayOrder = null
     ): self {
         $obj = new self;
 
-        $obj['appId'] = $appId;
+        $obj['appID'] = $appID;
         $obj['label'] = $label;
         $obj['name'] = $name;
 
@@ -81,7 +81,7 @@ final class GroupCreateParams implements BaseModel
     public function withAppID(int $appID): self
     {
         $obj = clone $this;
-        $obj['appId'] = $appID;
+        $obj['appID'] = $appID;
 
         return $obj;
     }

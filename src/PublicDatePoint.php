@@ -16,7 +16,7 @@ use HubspotSDK\PublicDatePoint\TimeType;
  *   month: int,
  *   timeType: value-of<TimeType>,
  *   year: int,
- *   zoneId: string,
+ *   zoneID: string,
  *   hour?: int|null,
  *   millisecond?: int|null,
  *   minute?: int|null,
@@ -42,8 +42,8 @@ final class PublicDatePoint implements BaseModel
     #[Required]
     public int $year;
 
-    #[Required]
-    public string $zoneId;
+    #[Required('zoneId')]
+    public string $zoneID;
 
     #[Optional]
     public ?int $hour;
@@ -66,7 +66,7 @@ final class PublicDatePoint implements BaseModel
      * To enforce required parameters use
      * ```
      * PublicDatePoint::with(
-     *   day: ..., month: ..., timeType: ..., year: ..., zoneId: ...
+     *   day: ..., month: ..., timeType: ..., year: ..., zoneID: ...
      * )
      * ```
      *
@@ -97,7 +97,7 @@ final class PublicDatePoint implements BaseModel
         int $day,
         int $month,
         int $year,
-        string $zoneId,
+        string $zoneID,
         TimeType|string $timeType = 'DATE',
         ?int $hour = null,
         ?int $millisecond = null,
@@ -111,7 +111,7 @@ final class PublicDatePoint implements BaseModel
         $obj['month'] = $month;
         $obj['timeType'] = $timeType;
         $obj['year'] = $year;
-        $obj['zoneId'] = $zoneId;
+        $obj['zoneID'] = $zoneID;
 
         null !== $hour && $obj['hour'] = $hour;
         null !== $millisecond && $obj['millisecond'] = $millisecond;
@@ -160,7 +160,7 @@ final class PublicDatePoint implements BaseModel
     public function withZoneID(string $zoneID): self
     {
         $obj = clone $this;
-        $obj['zoneId'] = $zoneID;
+        $obj['zoneID'] = $zoneID;
 
         return $obj;
     }

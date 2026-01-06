@@ -38,7 +38,6 @@ final class MessagesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        // Note: create() currently doesn't accept body params due to codegen issue (SDK-3797)
         $result = $this->client->conversations->messages->create(0);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -67,7 +66,7 @@ final class MessagesTest extends TestCase
 
         $result = $this->client->conversations->messages->get(
             'messageId',
-            ['threadId' => 0]
+            ['threadID' => 0]
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -83,7 +82,7 @@ final class MessagesTest extends TestCase
 
         $result = $this->client->conversations->messages->get(
             'messageId',
-            ['threadId' => 0, 'property' => 'property']
+            ['threadID' => 0, 'property' => 'property']
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -99,7 +98,7 @@ final class MessagesTest extends TestCase
 
         $result = $this->client->conversations->messages->getOriginalContent(
             'messageId',
-            ['threadId' => 0]
+            ['threadID' => 0]
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -115,7 +114,7 @@ final class MessagesTest extends TestCase
 
         $result = $this->client->conversations->messages->getOriginalContent(
             'messageId',
-            ['threadId' => 0, 'property' => 'property']
+            ['threadID' => 0, 'property' => 'property']
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

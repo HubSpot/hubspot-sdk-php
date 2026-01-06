@@ -17,7 +17,7 @@ use HubspotSDK\StandardError;
  *   completedAt: \DateTimeInterface,
  *   startedAt: \DateTimeInterface,
  *   status: value-of<Status>,
- *   taskId: string,
+ *   taskID: string,
  *   errors?: list<StandardError>|null,
  *   links?: array<string,string>|null,
  *   numErrors?: int|null,
@@ -53,8 +53,8 @@ final class FolderActionResponse implements BaseModel
     /**
      * ID of the task.
      */
-    #[Required]
-    public string $taskId;
+    #[Required('taskId')]
+    public string $taskID;
 
     /**
      * Detailed errors resulting from the task.
@@ -93,7 +93,7 @@ final class FolderActionResponse implements BaseModel
      * To enforce required parameters use
      * ```
      * FolderActionResponse::with(
-     *   completedAt: ..., startedAt: ..., status: ..., taskId: ...
+     *   completedAt: ..., startedAt: ..., status: ..., taskID: ...
      * )
      * ```
      *
@@ -136,7 +136,7 @@ final class FolderActionResponse implements BaseModel
      *   updatedAt: \DateTimeInterface,
      *   archivedAt?: \DateTimeInterface|null,
      *   name?: string|null,
-     *   parentFolderId?: string|null,
+     *   parentFolderID?: string|null,
      *   path?: string|null,
      * } $result
      */
@@ -144,7 +144,7 @@ final class FolderActionResponse implements BaseModel
         \DateTimeInterface $completedAt,
         \DateTimeInterface $startedAt,
         Status|string $status,
-        string $taskId,
+        string $taskID,
         ?array $errors = null,
         ?array $links = null,
         ?int $numErrors = null,
@@ -156,7 +156,7 @@ final class FolderActionResponse implements BaseModel
         $obj['completedAt'] = $completedAt;
         $obj['startedAt'] = $startedAt;
         $obj['status'] = $status;
-        $obj['taskId'] = $taskId;
+        $obj['taskID'] = $taskID;
 
         null !== $errors && $obj['errors'] = $errors;
         null !== $links && $obj['links'] = $links;
@@ -208,7 +208,7 @@ final class FolderActionResponse implements BaseModel
     public function withTaskID(string $taskID): self
     {
         $obj = clone $this;
-        $obj['taskId'] = $taskID;
+        $obj['taskID'] = $taskID;
 
         return $obj;
     }
@@ -278,7 +278,7 @@ final class FolderActionResponse implements BaseModel
      *   updatedAt: \DateTimeInterface,
      *   archivedAt?: \DateTimeInterface|null,
      *   name?: string|null,
-     *   parentFolderId?: string|null,
+     *   parentFolderID?: string|null,
      *   path?: string|null,
      * } $result
      */

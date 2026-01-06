@@ -56,7 +56,7 @@ final class CallbacksService implements CallbacksContract
      * Complete a batch of blocked action executions.
      *
      * @param array{
-     *   inputs: list<array{callbackId: string, outputFields: array<string,string>}>
+     *   inputs: list<array{callbackID: string, outputFields: array<string,string>}>
      * }|CallbackCompleteBatchParams $params
      *
      * @throws APIException

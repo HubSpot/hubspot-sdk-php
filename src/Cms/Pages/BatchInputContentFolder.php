@@ -56,7 +56,7 @@ final class BatchInputContentFolder implements BaseModel
      *   created: \DateTimeInterface,
      *   deletedAt: \DateTimeInterface,
      *   name: string,
-     *   parentFolderId: int,
+     *   parentFolderID: int,
      *   updated: \DateTimeInterface,
      * }> $inputs
      */
@@ -78,7 +78,7 @@ final class BatchInputContentFolder implements BaseModel
      *   created: \DateTimeInterface,
      *   deletedAt: \DateTimeInterface,
      *   name: string,
-     *   parentFolderId: int,
+     *   parentFolderID: int,
      *   updated: \DateTimeInterface,
      * }> $inputs
      */

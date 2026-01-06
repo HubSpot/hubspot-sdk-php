@@ -21,8 +21,8 @@ use HubspotSDK\Marketing\Events\PropertyValue\Source;
  *   eventCompleted?: bool|null,
  *   eventDescription?: string|null,
  *   eventType?: string|null,
- *   eventUrl?: string|null,
- *   objectId?: string|null,
+ *   eventURL?: string|null,
+ *   objectID?: string|null,
  *   startDateTime?: \DateTimeInterface|null,
  * }
  */
@@ -82,11 +82,11 @@ final class MarketingEventDefaultResponse implements BaseModel
     /**
      * The URL in the external event application where the marketing event can be managed.
      */
-    #[Optional]
-    public ?string $eventUrl;
+    #[Optional('eventUrl')]
+    public ?string $eventURL;
 
-    #[Optional]
-    public ?string $objectId;
+    #[Optional('objectId')]
+    public ?string $objectID;
 
     /**
      * The start date and time of the marketing event.
@@ -129,18 +129,18 @@ final class MarketingEventDefaultResponse implements BaseModel
      *   isLargeValue: bool,
      *   name: string,
      *   persistenceTimestamp: int,
-     *   requestId: string,
+     *   requestID: string,
      *   selectedByUser: bool,
      *   selectedByUserTimestamp: int,
      *   source: value-of<Source>,
-     *   sourceId: string,
+     *   sourceID: string,
      *   sourceLabel: string,
      *   sourceMetadata: string,
      *   sourceUpstreamDeployable: string,
      *   sourceVid: list<int>,
      *   timestamp: int,
      *   unit: string,
-     *   updatedByUserId: int,
+     *   updatedByUserID: int,
      *   useTimestampAsPersistenceTimestamp: bool,
      *   value: string,
      * }> $customProperties
@@ -154,8 +154,8 @@ final class MarketingEventDefaultResponse implements BaseModel
         ?bool $eventCompleted = null,
         ?string $eventDescription = null,
         ?string $eventType = null,
-        ?string $eventUrl = null,
-        ?string $objectId = null,
+        ?string $eventURL = null,
+        ?string $objectID = null,
         ?\DateTimeInterface $startDateTime = null,
     ): self {
         $obj = new self;
@@ -169,8 +169,8 @@ final class MarketingEventDefaultResponse implements BaseModel
         null !== $eventCompleted && $obj['eventCompleted'] = $eventCompleted;
         null !== $eventDescription && $obj['eventDescription'] = $eventDescription;
         null !== $eventType && $obj['eventType'] = $eventType;
-        null !== $eventUrl && $obj['eventUrl'] = $eventUrl;
-        null !== $objectId && $obj['objectId'] = $objectId;
+        null !== $eventURL && $obj['eventURL'] = $eventURL;
+        null !== $objectID && $obj['objectID'] = $objectID;
         null !== $startDateTime && $obj['startDateTime'] = $startDateTime;
 
         return $obj;
@@ -186,18 +186,18 @@ final class MarketingEventDefaultResponse implements BaseModel
      *   isLargeValue: bool,
      *   name: string,
      *   persistenceTimestamp: int,
-     *   requestId: string,
+     *   requestID: string,
      *   selectedByUser: bool,
      *   selectedByUserTimestamp: int,
      *   source: value-of<Source>,
-     *   sourceId: string,
+     *   sourceID: string,
      *   sourceLabel: string,
      *   sourceMetadata: string,
      *   sourceUpstreamDeployable: string,
      *   sourceVid: list<int>,
      *   timestamp: int,
      *   unit: string,
-     *   updatedByUserId: int,
+     *   updatedByUserID: int,
      *   useTimestampAsPersistenceTimestamp: bool,
      *   value: string,
      * }> $customProperties
@@ -290,7 +290,7 @@ final class MarketingEventDefaultResponse implements BaseModel
     public function withEventURL(string $eventURL): self
     {
         $obj = clone $this;
-        $obj['eventUrl'] = $eventURL;
+        $obj['eventURL'] = $eventURL;
 
         return $obj;
     }
@@ -298,7 +298,7 @@ final class MarketingEventDefaultResponse implements BaseModel
     public function withObjectID(string $objectID): self
     {
         $obj = clone $this;
-        $obj['objectId'] = $objectID;
+        $obj['objectID'] = $objectID;
 
         return $obj;
     }

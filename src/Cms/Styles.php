@@ -98,7 +98,7 @@ final class Styles implements BaseModel
      *   angle: Angle, colors: list<ColorStop>, sideOrCorner: SideOrCorner
      * } $backgroundGradient
      * @param BackgroundImage|array{
-     *   backgroundPosition: string, backgroundSize: string, imageUrl: string
+     *   backgroundPosition: string, backgroundSize: string, imageURL: string
      * } $backgroundImage
      * @param array<string,BreakpointStyles|array{
      *   hidden: bool, margin: mixed, padding: mixed
@@ -158,7 +158,7 @@ final class Styles implements BaseModel
 
     /**
      * @param BackgroundImage|array{
-     *   backgroundPosition: string, backgroundSize: string, imageUrl: string
+     *   backgroundPosition: string, backgroundSize: string, imageURL: string
      * } $backgroundImage
      */
     public function withBackgroundImage(

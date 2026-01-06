@@ -7,6 +7,7 @@ namespace HubspotSDK\Services\Marketing\Emails;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Marketing\Emails\AggregateEmailStatistics;
 use HubspotSDK\Marketing\Emails\CollectionResponseWithTotalEmailStatisticIntervalNoPaging;
 use HubspotSDK\Marketing\Emails\Statistics\StatisticGetHistogramParams;
@@ -28,7 +29,7 @@ final class StatisticsService implements StatisticsContract
      * Use this endpoint to get aggregated statistics of emails sent in a specified time span. It also returns the list of emails that were sent during the time span.
      *
      * @param array{
-     *   emailIds?: list<int>,
+     *   emailIDs?: list<int>,
      *   endTimestamp?: string,
      *   property?: string,
      *   startTimestamp?: string,
@@ -49,7 +50,7 @@ final class StatisticsService implements StatisticsContract
         $response = $this->client->request(
             method: 'get',
             path: 'marketing/v3/emails/statistics/list',
-            query: $parsed,
+            query: Util::array_transform_keys($parsed, ['emailIDs' => 'emailIds']),
             options: $options,
             convert: AggregateEmailStatistics::class,
         );
@@ -63,7 +64,7 @@ final class StatisticsService implements StatisticsContract
      * Get aggregated statistics in intervals for a specified time span. Each interval contains aggregated statistics of the emails that were sent in that time.
      *
      * @param array{
-     *   emailIds?: list<int>,
+     *   emailIDs?: list<int>,
      *   endTimestamp?: string,
      *   interval?: 'DAY'|'HOUR'|'MINUTE'|'MONTH'|'QUARTER'|'QUARTER_HOUR'|'SECOND'|'WEEK'|'YEAR'|Interval,
      *   startTimestamp?: string,
@@ -84,7 +85,7 @@ final class StatisticsService implements StatisticsContract
         $response = $this->client->request(
             method: 'get',
             path: 'marketing/v3/emails/statistics/histogram',
-            query: $parsed,
+            query: Util::array_transform_keys($parsed, ['emailIDs' => 'emailIds']),
             options: $options,
             convert: CollectionResponseWithTotalEmailStatisticIntervalNoPaging::class,
         );

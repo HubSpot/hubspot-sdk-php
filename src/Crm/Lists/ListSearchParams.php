@@ -19,7 +19,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   additionalProperties: list<string>,
  *   offset: int,
  *   count?: int,
- *   listIds?: list<string>,
+ *   listIDs?: list<string>,
  *   processingTypes?: list<string>,
  *   query?: string,
  *   sort?: string,
@@ -58,10 +58,10 @@ final class ListSearchParams implements BaseModel
      *
      * If no value is provided, or if an empty list is provided, then the results will not be filtered by `listId`.
      *
-     * @var list<string>|null $listIds
+     * @var list<string>|null $listIDs
      */
-    #[Optional(list: 'string')]
-    public ?array $listIds;
+    #[Optional('listIds', list: 'string')]
+    public ?array $listIDs;
 
     /**
      * The `processingTypes` that will be used to filter results by `processingType`. If values are provided, then the response will only include results that have a `processingType` in this array.
@@ -109,14 +109,14 @@ final class ListSearchParams implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<string> $additionalProperties
-     * @param list<string> $listIds
+     * @param list<string> $listIDs
      * @param list<string> $processingTypes
      */
     public static function with(
         array $additionalProperties,
         int $offset,
         ?int $count = null,
-        ?array $listIds = null,
+        ?array $listIDs = null,
         ?array $processingTypes = null,
         ?string $query = null,
         ?string $sort = null,
@@ -127,7 +127,7 @@ final class ListSearchParams implements BaseModel
         $obj['offset'] = $offset;
 
         null !== $count && $obj['count'] = $count;
-        null !== $listIds && $obj['listIds'] = $listIds;
+        null !== $listIDs && $obj['listIDs'] = $listIDs;
         null !== $processingTypes && $obj['processingTypes'] = $processingTypes;
         null !== $query && $obj['query'] = $query;
         null !== $sort && $obj['sort'] = $sort;
@@ -182,7 +182,7 @@ final class ListSearchParams implements BaseModel
     public function withListIDs(array $listIDs): self
     {
         $obj = clone $this;
-        $obj['listIds'] = $listIDs;
+        $obj['listIDs'] = $listIDs;
 
         return $obj;
     }

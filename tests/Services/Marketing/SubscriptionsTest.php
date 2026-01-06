@@ -68,7 +68,7 @@ final class SubscriptionsTest extends TestCase
         }
 
         $result = $this->client->marketing->subscriptions->subscribe([
-            'emailAddress' => 'emailAddress', 'subscriptionId' => 'subscriptionId',
+            'emailAddress' => 'emailAddress', 'subscriptionID' => 'subscriptionId',
         ]);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -84,7 +84,7 @@ final class SubscriptionsTest extends TestCase
 
         $result = $this->client->marketing->subscriptions->subscribe([
             'emailAddress' => 'emailAddress',
-            'subscriptionId' => 'subscriptionId',
+            'subscriptionID' => 'subscriptionId',
             'legalBasis' => 'CONSENT_WITH_NOTICE',
             'legalBasisExplanation' => 'legalBasisExplanation',
         ]);
@@ -101,7 +101,7 @@ final class SubscriptionsTest extends TestCase
         }
 
         $result = $this->client->marketing->subscriptions->unsubscribe([
-            'emailAddress' => 'emailAddress', 'subscriptionId' => 'subscriptionId',
+            'emailAddress' => 'emailAddress', 'subscriptionID' => 'subscriptionId',
         ]);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -117,7 +117,7 @@ final class SubscriptionsTest extends TestCase
 
         $result = $this->client->marketing->subscriptions->unsubscribe([
             'emailAddress' => 'emailAddress',
-            'subscriptionId' => 'subscriptionId',
+            'subscriptionID' => 'subscriptionId',
             'legalBasis' => 'CONSENT_WITH_NOTICE',
             'legalBasisExplanation' => 'legalBasisExplanation',
         ]);

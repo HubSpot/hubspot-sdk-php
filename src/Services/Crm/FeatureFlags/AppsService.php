@@ -7,6 +7,7 @@ namespace HubspotSDK\Services\Crm\FeatureFlags;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Crm\FeatureFlags\Apps\AppDeleteParams;
 use HubspotSDK\Crm\FeatureFlags\Apps\AppGetParams;
 use HubspotSDK\Crm\FeatureFlags\Apps\AppListPortalsParams;
@@ -31,7 +32,7 @@ final class AppsService implements AppsContract
      * Set a feature flag for an app. For example, update the `hs-hide-crm-cards` flag's `defaultState` to `ON` to hide classic CRM cards from new installs.
      *
      * @param array{
-     *   appId: int,
+     *   appID: int,
      *   defaultState: 'ABSENT'|'OFF'|'ON'|DefaultState,
      *   overrideState?: 'ABSENT'|'OFF'|'ON'|OverrideState,
      * }|AppUpdateParams $params
@@ -47,14 +48,14 @@ final class AppsService implements AppsContract
             $params,
             $requestOptions,
         );
-        $appID = $parsed['appId'];
-        unset($parsed['appId']);
+        $appID = $parsed['appID'];
+        unset($parsed['appID']);
 
         /** @var BaseResponse<FlagResponse> */
         $response = $this->client->request(
             method: 'put',
             path: ['feature-flags/v3/%1$s/flags/%2$s', $appID, $flagName],
-            body: (object) array_diff_key($parsed, ['appId']),
+            body: (object) array_diff_key($parsed, ['appID']),
             options: $options,
             convert: FlagResponse::class,
         );
@@ -67,7 +68,7 @@ final class AppsService implements AppsContract
      *
      * Delete a feature flag in an app.  For example, delete the `hs-release-app-cards` flag after all accounts have been migrated.
      *
-     * @param array{appId: int}|AppDeleteParams $params
+     * @param array{appID: int}|AppDeleteParams $params
      *
      * @throws APIException
      */
@@ -80,8 +81,8 @@ final class AppsService implements AppsContract
             $params,
             $requestOptions,
         );
-        $appID = $parsed['appId'];
-        unset($parsed['appId']);
+        $appID = $parsed['appID'];
+        unset($parsed['appID']);
 
         /** @var BaseResponse<FlagResponse> */
         $response = $this->client->request(
@@ -99,7 +100,7 @@ final class AppsService implements AppsContract
      *
      * Retrieve the current status of the app's feature flags. No request body is included.
      *
-     * @param array{appId: int}|AppGetParams $params
+     * @param array{appID: int}|AppGetParams $params
      *
      * @throws APIException
      */
@@ -112,8 +113,8 @@ final class AppsService implements AppsContract
             $params,
             $requestOptions,
         );
-        $appID = $parsed['appId'];
-        unset($parsed['appId']);
+        $appID = $parsed['appID'];
+        unset($parsed['appID']);
 
         /** @var BaseResponse<FlagResponse> */
         $response = $this->client->request(
@@ -132,7 +133,7 @@ final class AppsService implements AppsContract
      * Retrieve a list of HubSpot accounts with an account-level flag setting for the specified app. No request body is included.
      *
      * @param array{
-     *   appId: int, limit?: int, startPortalId?: int
+     *   appID: int, limit?: int, startPortalID?: int
      * }|AppListPortalsParams $params
      *
      * @throws APIException
@@ -146,14 +147,17 @@ final class AppsService implements AppsContract
             $params,
             $requestOptions,
         );
-        $appID = $parsed['appId'];
-        unset($parsed['appId']);
+        $appID = $parsed['appID'];
+        unset($parsed['appID']);
 
         /** @var BaseResponse<PortalFlagStateBatchResponse> */
         $response = $this->client->request(
             method: 'get',
             path: ['feature-flags/v3/%1$s/flags/%2$s/portals', $appID, $flagName],
-            query: $parsed,
+            query: Util::array_transform_keys(
+                $parsed,
+                ['startPortalID' => 'startPortalId']
+            ),
             options: $options,
             convert: PortalFlagStateBatchResponse::class,
         );

@@ -25,7 +25,7 @@ final class TranscriptsService implements TranscriptsContract
      * @api
      *
      * @param array{
-     *   engagementId: int,
+     *   engagementID: int,
      *   transcriptCreateUtterances: list<array{
      *     endTimeMillis: int,
      *     speaker: array<mixed>|Speaker,

@@ -11,11 +11,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * @phpstan-type PublicChannelIntegrationChannelPatchShape = array{
  *   capabilities: array<string,mixed>,
- *   channelAccountConnectionRedirectUrl: mixed,
+ *   channelAccountConnectionRedirectURL: mixed,
  *   channelDescription: mixed,
- *   channelLogoUrl: mixed,
+ *   channelLogoURL: mixed,
  *   name: mixed,
- *   webhookUrl: mixed,
+ *   webhookURL: mixed,
  * }
  */
 final class PublicChannelIntegrationChannelPatch implements BaseModel
@@ -27,20 +27,20 @@ final class PublicChannelIntegrationChannelPatch implements BaseModel
     #[Required(map: 'mixed')]
     public array $capabilities;
 
-    #[Required]
-    public mixed $channelAccountConnectionRedirectUrl;
+    #[Required('channelAccountConnectionRedirectUrl')]
+    public mixed $channelAccountConnectionRedirectURL;
 
     #[Required]
     public mixed $channelDescription;
 
-    #[Required]
-    public mixed $channelLogoUrl;
+    #[Required('channelLogoUrl')]
+    public mixed $channelLogoURL;
 
     #[Required]
     public mixed $name;
 
-    #[Required]
-    public mixed $webhookUrl;
+    #[Required('webhookUrl')]
+    public mixed $webhookURL;
 
     /**
      * `new PublicChannelIntegrationChannelPatch()` is missing required properties by the API.
@@ -49,11 +49,11 @@ final class PublicChannelIntegrationChannelPatch implements BaseModel
      * ```
      * PublicChannelIntegrationChannelPatch::with(
      *   capabilities: ...,
-     *   channelAccountConnectionRedirectUrl: ...,
+     *   channelAccountConnectionRedirectURL: ...,
      *   channelDescription: ...,
-     *   channelLogoUrl: ...,
+     *   channelLogoURL: ...,
      *   name: ...,
-     *   webhookUrl: ...,
+     *   webhookURL: ...,
      * )
      * ```
      *
@@ -83,20 +83,20 @@ final class PublicChannelIntegrationChannelPatch implements BaseModel
      */
     public static function with(
         array $capabilities,
-        mixed $channelAccountConnectionRedirectUrl,
+        mixed $channelAccountConnectionRedirectURL,
         mixed $channelDescription,
-        mixed $channelLogoUrl,
+        mixed $channelLogoURL,
         mixed $name,
-        mixed $webhookUrl,
+        mixed $webhookURL,
     ): self {
         $obj = new self;
 
         $obj['capabilities'] = $capabilities;
-        $obj['channelAccountConnectionRedirectUrl'] = $channelAccountConnectionRedirectUrl;
+        $obj['channelAccountConnectionRedirectURL'] = $channelAccountConnectionRedirectURL;
         $obj['channelDescription'] = $channelDescription;
-        $obj['channelLogoUrl'] = $channelLogoUrl;
+        $obj['channelLogoURL'] = $channelLogoURL;
         $obj['name'] = $name;
-        $obj['webhookUrl'] = $webhookUrl;
+        $obj['webhookURL'] = $webhookURL;
 
         return $obj;
     }
@@ -116,7 +116,7 @@ final class PublicChannelIntegrationChannelPatch implements BaseModel
         mixed $channelAccountConnectionRedirectURL
     ): self {
         $obj = clone $this;
-        $obj['channelAccountConnectionRedirectUrl'] = $channelAccountConnectionRedirectURL;
+        $obj['channelAccountConnectionRedirectURL'] = $channelAccountConnectionRedirectURL;
 
         return $obj;
     }
@@ -132,7 +132,7 @@ final class PublicChannelIntegrationChannelPatch implements BaseModel
     public function withChannelLogoURL(mixed $channelLogoURL): self
     {
         $obj = clone $this;
-        $obj['channelLogoUrl'] = $channelLogoURL;
+        $obj['channelLogoURL'] = $channelLogoURL;
 
         return $obj;
     }
@@ -148,7 +148,7 @@ final class PublicChannelIntegrationChannelPatch implements BaseModel
     public function withWebhookURL(mixed $webhookURL): self
     {
         $obj = clone $this;
-        $obj['webhookUrl'] = $webhookURL;
+        $obj['webhookURL'] = $webhookURL;
 
         return $obj;
     }

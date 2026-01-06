@@ -41,9 +41,9 @@ final class AssociationsTest extends TestCase
         $result = $this->client->crm->objects->partnerClients->associations->update(
             'associationType',
             [
-                'partnerClientId' => 'partnerClientId',
+                'partnerClientID' => 'partnerClientId',
                 'toObjectType' => 'toObjectType',
-                'toObjectId' => 'toObjectId',
+                'toObjectID' => 'toObjectId',
             ],
         );
 
@@ -61,9 +61,9 @@ final class AssociationsTest extends TestCase
         $result = $this->client->crm->objects->partnerClients->associations->update(
             'associationType',
             [
-                'partnerClientId' => 'partnerClientId',
+                'partnerClientID' => 'partnerClientId',
                 'toObjectType' => 'toObjectType',
-                'toObjectId' => 'toObjectId',
+                'toObjectID' => 'toObjectId',
             ],
         );
 
@@ -80,7 +80,7 @@ final class AssociationsTest extends TestCase
 
         $result = $this->client->crm->objects->partnerClients->associations->list(
             'toObjectType',
-            ['partnerClientId' => 'partnerClientId']
+            ['partnerClientID' => 'partnerClientId']
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -97,9 +97,9 @@ final class AssociationsTest extends TestCase
         $result = $this->client->crm->objects->partnerClients->associations->list(
             'toObjectType',
             [
-                'partnerClientId' => 'partnerClientId',
+                'partnerClientID' => 'partnerClientId',
                 'after' => 'after',
-                'includeFA' => true,
+                'includeFa' => true,
                 'limit' => 0,
             ],
         );
@@ -118,9 +118,9 @@ final class AssociationsTest extends TestCase
         $result = $this->client->crm->objects->partnerClients->associations->delete(
             'associationType',
             [
-                'partnerClientId' => 'partnerClientId',
+                'partnerClientID' => 'partnerClientId',
                 'toObjectType' => 'toObjectType',
-                'toObjectId' => 'toObjectId',
+                'toObjectID' => 'toObjectId',
             ],
         );
 
@@ -138,9 +138,9 @@ final class AssociationsTest extends TestCase
         $result = $this->client->crm->objects->partnerClients->associations->delete(
             'associationType',
             [
-                'partnerClientId' => 'partnerClientId',
+                'partnerClientID' => 'partnerClientId',
                 'toObjectType' => 'toObjectType',
-                'toObjectId' => 'toObjectId',
+                'toObjectID' => 'toObjectId',
             ],
         );
 

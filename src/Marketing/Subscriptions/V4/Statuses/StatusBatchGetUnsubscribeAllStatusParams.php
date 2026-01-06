@@ -17,7 +17,7 @@ use HubspotSDK\Marketing\Subscriptions\V4\Statuses\StatusBatchGetUnsubscribeAllS
  * @see HubspotSDK\Services\Marketing\Subscriptions\V4\StatusesService::batchGetUnsubscribeAllStatus()
  *
  * @phpstan-type StatusBatchGetUnsubscribeAllStatusParamsShape = array{
- *   channel: Channel|value-of<Channel>, inputs: list<string>, businessUnitId?: int
+ *   channel: Channel|value-of<Channel>, inputs: list<string>, businessUnitID?: int
  * }
  */
 final class StatusBatchGetUnsubscribeAllStatusParams implements BaseModel
@@ -46,7 +46,7 @@ final class StatusBatchGetUnsubscribeAllStatusParams implements BaseModel
      * If you have the [business unit add-on](https://developers.hubspot.com/beta-docs/guides/api/settings/business-units-api), include this parameter to filter results by business unit ID. The default Account business unit will always use `0`.
      */
     #[Optional]
-    public ?int $businessUnitId;
+    public ?int $businessUnitID;
 
     /**
      * `new StatusBatchGetUnsubscribeAllStatusParams()` is missing required properties by the API.
@@ -80,14 +80,14 @@ final class StatusBatchGetUnsubscribeAllStatusParams implements BaseModel
     public static function with(
         Channel|string $channel,
         array $inputs,
-        ?int $businessUnitId = null
+        ?int $businessUnitID = null
     ): self {
         $obj = new self;
 
         $obj['channel'] = $channel;
         $obj['inputs'] = $inputs;
 
-        null !== $businessUnitId && $obj['businessUnitId'] = $businessUnitId;
+        null !== $businessUnitID && $obj['businessUnitID'] = $businessUnitID;
 
         return $obj;
     }
@@ -124,7 +124,7 @@ final class StatusBatchGetUnsubscribeAllStatusParams implements BaseModel
     public function withBusinessUnitID(int $businessUnitID): self
     {
         $obj = clone $this;
-        $obj['businessUnitId'] = $businessUnitID;
+        $obj['businessUnitID'] = $businessUnitID;
 
         return $obj;
     }

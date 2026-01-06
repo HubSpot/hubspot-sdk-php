@@ -27,6 +27,7 @@ use HubspotSDK\Cms\MediaBridge\ObjectDefinitionResponse;
 use HubspotSDK\Cms\MediaBridge\OEmbedDomainsCollectionResponse;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Cms\MediaBridge\IntegratorSettingsContract;
 
@@ -79,7 +80,7 @@ final class IntegratorSettingsService implements IntegratorSettingsContract
      *   endpoints: array{
      *     discovery: bool, schemes: list<string>, url: string
      *   }|Endpoints,
-     *   portalId?: int,
+     *   portalID?: int,
      * }|IntegratorSettingCreateOembedDomainParams $params
      *
      * @throws APIException
@@ -112,7 +113,7 @@ final class IntegratorSettingsService implements IntegratorSettingsContract
      * Delete an existing oEmbed domain.
      *
      * @param array{
-     *   id?: int, domainPortalId?: int
+     *   id?: int, domainPortalID?: int
      * }|IntegratorSettingDeleteOembedDomainParams $params
      *
      * @throws APIException
@@ -131,7 +132,10 @@ final class IntegratorSettingsService implements IntegratorSettingsContract
         $response = $this->client->request(
             method: 'delete',
             path: ['media-bridge/v1/%1$s/settings/oembed-domains', $appID],
-            query: $parsed,
+            query: Util::array_transform_keys(
+                $parsed,
+                ['domainPortalID' => 'domainPortalId']
+            ),
             options: $options,
             convert: null,
         );
@@ -168,7 +172,7 @@ final class IntegratorSettingsService implements IntegratorSettingsContract
      *
      * @param MediaType|value-of<MediaType> $mediaType
      * @param array{
-     *   appId: int, includeFullDefinition?: bool
+     *   appID: int, includeFullDefinition?: bool
      * }|IntegratorSettingGetObjectDefinitionsByMediaTypeParams $params
      *
      * @throws APIException
@@ -182,8 +186,8 @@ final class IntegratorSettingsService implements IntegratorSettingsContract
             $params,
             $requestOptions,
         );
-        $appID = $parsed['appId'];
-        unset($parsed['appId']);
+        $appID = $parsed['appID'];
+        unset($parsed['appID']);
 
         /** @var BaseResponse<ObjectDefinitionResponse> */
         $response = $this->client->request(
@@ -206,7 +210,7 @@ final class IntegratorSettingsService implements IntegratorSettingsContract
      *
      * Get the details for an existing oEmbed domain.
      *
-     * @param array{appId: int}|IntegratorSettingGetOembedDomainParams $params
+     * @param array{appID: int}|IntegratorSettingGetOembedDomainParams $params
      *
      * @throws APIException
      */
@@ -219,8 +223,8 @@ final class IntegratorSettingsService implements IntegratorSettingsContract
             $params,
             $requestOptions,
         );
-        $appID = $parsed['appId'];
-        unset($parsed['appId']);
+        $appID = $parsed['appID'];
+        unset($parsed['appID']);
 
         /** @var BaseResponse<IntegratorOEmbedDomainModel> */
         $response = $this->client->request(
@@ -243,7 +247,7 @@ final class IntegratorSettingsService implements IntegratorSettingsContract
      * Get the details for existing oEmbed domains for your app
      *
      * @param array{
-     *   domainPortalId?: int
+     *   domainPortalID?: int
      * }|IntegratorSettingListOembedDomainsParams $params
      *
      * @throws APIException
@@ -262,7 +266,10 @@ final class IntegratorSettingsService implements IntegratorSettingsContract
         $response = $this->client->request(
             method: 'get',
             path: ['media-bridge/v1/%1$s/settings/oembed-domains', $appID],
-            query: $parsed,
+            query: Util::array_transform_keys(
+                $parsed,
+                ['domainPortalID' => 'domainPortalId']
+            ),
             options: $options,
             convert: OEmbedDomainsCollectionResponse::class,
         );
@@ -381,11 +388,11 @@ final class IntegratorSettingsService implements IntegratorSettingsContract
      * Update an existing oEmbed domain.
      *
      * @param array{
-     *   appId: int,
+     *   appID: int,
      *   endpoints: array{
      *     discovery: bool, schemes: list<string>, url: string
      *   }|Endpoints,
-     *   portalId?: int,
+     *   portalID?: int,
      * }|IntegratorSettingUpdateOembedDomainParams $params
      *
      * @throws APIException
@@ -399,8 +406,8 @@ final class IntegratorSettingsService implements IntegratorSettingsContract
             $params,
             $requestOptions,
         );
-        $appID = $parsed['appId'];
-        unset($parsed['appId']);
+        $appID = $parsed['appID'];
+        unset($parsed['appID']);
 
         /** @var BaseResponse<IntegratorOEmbedDomainModel> */
         $response = $this->client->request(
@@ -410,7 +417,7 @@ final class IntegratorSettingsService implements IntegratorSettingsContract
                 $appID,
                 $oEmbedDomainID,
             ],
-            body: (object) array_diff_key($parsed, ['appId']),
+            body: (object) array_diff_key($parsed, ['appID']),
             options: $options,
             convert: IntegratorOEmbedDomainModel::class,
         );

@@ -16,7 +16,7 @@ use HubspotSDK\PublicTimePointOperation\OperationType;
  * @phpstan-type PublicPageViewAnalyticsFilterShape = array{
  *   filterType: value-of<FilterType>,
  *   operator: string,
- *   pageUrl: string,
+ *   pageURL: string,
  *   coalescingRefineBy?: null|PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation,
  *   enableTracking?: bool|null,
  *   pruningRefineBy?: null|PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation,
@@ -34,8 +34,8 @@ final class PublicPageViewAnalyticsFilter implements BaseModel
     #[Required]
     public string $operator;
 
-    #[Required]
-    public string $pageUrl;
+    #[Required('pageUrl')]
+    public string $pageURL;
 
     #[Optional]
     public PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation|null $coalescingRefineBy;
@@ -52,7 +52,7 @@ final class PublicPageViewAnalyticsFilter implements BaseModel
      * To enforce required parameters use
      * ```
      * PublicPageViewAnalyticsFilter::with(
-     *   filterType: ..., operator: ..., pageUrl: ...
+     *   filterType: ..., operator: ..., pageURL: ...
      * )
      * ```
      *
@@ -165,7 +165,7 @@ final class PublicPageViewAnalyticsFilter implements BaseModel
      */
     public static function with(
         string $operator,
-        string $pageUrl,
+        string $pageURL,
         FilterType|string $filterType = 'PAGE_VIEW',
         PublicNumOccurrencesRefineBy|array|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation|null $coalescingRefineBy = null,
         ?bool $enableTracking = null,
@@ -175,7 +175,7 @@ final class PublicPageViewAnalyticsFilter implements BaseModel
 
         $obj['filterType'] = $filterType;
         $obj['operator'] = $operator;
-        $obj['pageUrl'] = $pageUrl;
+        $obj['pageURL'] = $pageURL;
 
         null !== $coalescingRefineBy && $obj['coalescingRefineBy'] = $coalescingRefineBy;
         null !== $enableTracking && $obj['enableTracking'] = $enableTracking;
@@ -206,7 +206,7 @@ final class PublicPageViewAnalyticsFilter implements BaseModel
     public function withPageURL(string $pageURL): self
     {
         $obj = clone $this;
-        $obj['pageUrl'] = $pageURL;
+        $obj['pageURL'] = $pageURL;
 
         return $obj;
     }

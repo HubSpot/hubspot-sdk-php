@@ -69,7 +69,7 @@ final class CollectionResponseWithTotalBlogForwardPaging implements BaseModel
      *
      * @param list<Blog|array{
      *   id: string,
-     *   absoluteUrl: string,
+     *   absoluteURL: string,
      *   allowComments: bool,
      *   created: \DateTimeInterface,
      *   deletedAt: \DateTimeInterface,
@@ -81,7 +81,7 @@ final class CollectionResponseWithTotalBlogForwardPaging implements BaseModel
      *   publicAccessRulesEnabled: bool,
      *   publicTitle: string,
      *   slug: string,
-     *   translatedFromId: string,
+     *   translatedFromID: string,
      *   updated: \DateTimeInterface,
      * }> $results
      * @param ForwardPaging|array{next?: NextPage|null} $paging
@@ -106,7 +106,7 @@ final class CollectionResponseWithTotalBlogForwardPaging implements BaseModel
      *
      * @param list<Blog|array{
      *   id: string,
-     *   absoluteUrl: string,
+     *   absoluteURL: string,
      *   allowComments: bool,
      *   created: \DateTimeInterface,
      *   deletedAt: \DateTimeInterface,
@@ -118,7 +118,7 @@ final class CollectionResponseWithTotalBlogForwardPaging implements BaseModel
      *   publicAccessRulesEnabled: bool,
      *   publicTitle: string,
      *   slug: string,
-     *   translatedFromId: string,
+     *   translatedFromID: string,
      *   updated: \DateTimeInterface,
      * }> $results
      */

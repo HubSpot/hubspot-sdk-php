@@ -59,7 +59,7 @@ final class URLRedirectsTest extends TestCase
             'destination' => 'destination',
             'redirectStyle' => 0,
             'routePrefix' => 'routePrefix',
-            'isMatchFullUrl' => true,
+            'isMatchFullURL' => true,
             'isMatchQueryString' => true,
             'isOnlyAfterNotFound' => true,
             'isPattern' => true,
@@ -84,7 +84,7 @@ final class URLRedirectsTest extends TestCase
             [
                 'id' => 'id',
                 'destination' => 'destination',
-                'isMatchFullUrl' => true,
+                'isMatchFullURL' => true,
                 'isMatchQueryString' => true,
                 'isOnlyAfterNotFound' => true,
                 'isPattern' => true,
@@ -112,7 +112,7 @@ final class URLRedirectsTest extends TestCase
             [
                 'id' => 'id',
                 'destination' => 'destination',
-                'isMatchFullUrl' => true,
+                'isMatchFullURL' => true,
                 'isMatchQueryString' => true,
                 'isOnlyAfterNotFound' => true,
                 'isPattern' => true,

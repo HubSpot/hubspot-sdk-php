@@ -12,12 +12,12 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * @phpstan-type RefreshTokenInfoResponseShape = array{
  *   token: string,
- *   client_id: string,
- *   hub_id: int,
+ *   clientID: string,
+ *   hubID: int,
  *   scopes: list<string>,
- *   token_type: string,
- *   user_id: int,
- *   hub_domain?: string|null,
+ *   tokenType: string,
+ *   userID: int,
+ *   hubDomain?: string|null,
  *   user?: string|null,
  * }
  */
@@ -29,24 +29,24 @@ final class RefreshTokenInfoResponse implements BaseModel
     #[Required]
     public string $token;
 
-    #[Required]
-    public string $client_id;
+    #[Required('client_id')]
+    public string $clientID;
 
-    #[Required]
-    public int $hub_id;
+    #[Required('hub_id')]
+    public int $hubID;
 
     /** @var list<string> $scopes */
     #[Required(list: 'string')]
     public array $scopes;
 
-    #[Required]
-    public string $token_type;
+    #[Required('token_type')]
+    public string $tokenType;
 
-    #[Required]
-    public int $user_id;
+    #[Required('user_id')]
+    public int $userID;
 
-    #[Optional]
-    public ?string $hub_domain;
+    #[Optional('hub_domain')]
+    public ?string $hubDomain;
 
     #[Optional]
     public ?string $user;
@@ -58,11 +58,11 @@ final class RefreshTokenInfoResponse implements BaseModel
      * ```
      * RefreshTokenInfoResponse::with(
      *   token: ...,
-     *   client_id: ...,
-     *   hub_id: ...,
+     *   clientID: ...,
+     *   hubID: ...,
      *   scopes: ...,
-     *   token_type: ...,
-     *   user_id: ...,
+     *   tokenType: ...,
+     *   userID: ...,
      * )
      * ```
      *
@@ -92,24 +92,24 @@ final class RefreshTokenInfoResponse implements BaseModel
      */
     public static function with(
         string $token,
-        string $client_id,
-        int $hub_id,
+        string $clientID,
+        int $hubID,
         array $scopes,
-        string $token_type,
-        int $user_id,
-        ?string $hub_domain = null,
+        string $tokenType,
+        int $userID,
+        ?string $hubDomain = null,
         ?string $user = null,
     ): self {
         $obj = new self;
 
         $obj['token'] = $token;
-        $obj['client_id'] = $client_id;
-        $obj['hub_id'] = $hub_id;
+        $obj['clientID'] = $clientID;
+        $obj['hubID'] = $hubID;
         $obj['scopes'] = $scopes;
-        $obj['token_type'] = $token_type;
-        $obj['user_id'] = $user_id;
+        $obj['tokenType'] = $tokenType;
+        $obj['userID'] = $userID;
 
-        null !== $hub_domain && $obj['hub_domain'] = $hub_domain;
+        null !== $hubDomain && $obj['hubDomain'] = $hubDomain;
         null !== $user && $obj['user'] = $user;
 
         return $obj;
@@ -126,7 +126,7 @@ final class RefreshTokenInfoResponse implements BaseModel
     public function withClientID(string $clientID): self
     {
         $obj = clone $this;
-        $obj['client_id'] = $clientID;
+        $obj['clientID'] = $clientID;
 
         return $obj;
     }
@@ -134,7 +134,7 @@ final class RefreshTokenInfoResponse implements BaseModel
     public function withHubID(int $hubID): self
     {
         $obj = clone $this;
-        $obj['hub_id'] = $hubID;
+        $obj['hubID'] = $hubID;
 
         return $obj;
     }
@@ -153,7 +153,7 @@ final class RefreshTokenInfoResponse implements BaseModel
     public function withTokenType(string $tokenType): self
     {
         $obj = clone $this;
-        $obj['token_type'] = $tokenType;
+        $obj['tokenType'] = $tokenType;
 
         return $obj;
     }
@@ -161,7 +161,7 @@ final class RefreshTokenInfoResponse implements BaseModel
     public function withUserID(int $userID): self
     {
         $obj = clone $this;
-        $obj['user_id'] = $userID;
+        $obj['userID'] = $userID;
 
         return $obj;
     }
@@ -169,7 +169,7 @@ final class RefreshTokenInfoResponse implements BaseModel
     public function withHubDomain(string $hubDomain): self
     {
         $obj = clone $this;
-        $obj['hub_domain'] = $hubDomain;
+        $obj['hubDomain'] = $hubDomain;
 
         return $obj;
     }

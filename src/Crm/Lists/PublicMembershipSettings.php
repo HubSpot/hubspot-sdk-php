@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type PublicMembershipSettingsShape = array{
- *   includeUnassigned?: bool|null, membershipTeamId?: int|null
+ *   includeUnassigned?: bool|null, membershipTeamID?: int|null
  * }
  */
 final class PublicMembershipSettings implements BaseModel
@@ -21,8 +21,8 @@ final class PublicMembershipSettings implements BaseModel
     #[Optional]
     public ?bool $includeUnassigned;
 
-    #[Optional]
-    public ?int $membershipTeamId;
+    #[Optional('membershipTeamId')]
+    public ?int $membershipTeamID;
 
     public function __construct()
     {
@@ -36,12 +36,12 @@ final class PublicMembershipSettings implements BaseModel
      */
     public static function with(
         ?bool $includeUnassigned = null,
-        ?int $membershipTeamId = null
+        ?int $membershipTeamID = null
     ): self {
         $obj = new self;
 
         null !== $includeUnassigned && $obj['includeUnassigned'] = $includeUnassigned;
-        null !== $membershipTeamId && $obj['membershipTeamId'] = $membershipTeamId;
+        null !== $membershipTeamID && $obj['membershipTeamID'] = $membershipTeamID;
 
         return $obj;
     }
@@ -57,7 +57,7 @@ final class PublicMembershipSettings implements BaseModel
     public function withMembershipTeamID(int $membershipTeamID): self
     {
         $obj = clone $this;
-        $obj['membershipTeamId'] = $membershipTeamID;
+        $obj['membershipTeamID'] = $membershipTeamID;
 
         return $obj;
     }

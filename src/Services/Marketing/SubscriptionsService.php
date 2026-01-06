@@ -82,7 +82,7 @@ final class SubscriptionsService implements SubscriptionsContract
      *
      * @param array{
      *   emailAddress: string,
-     *   subscriptionId: string,
+     *   subscriptionID: string,
      *   legalBasis?: value-of<LegalBasis>,
      *   legalBasisExplanation?: string,
      * }|SubscriptionSubscribeParams $params
@@ -117,7 +117,7 @@ final class SubscriptionsService implements SubscriptionsContract
      *
      * @param array{
      *   emailAddress: string,
-     *   subscriptionId: string,
+     *   subscriptionID: string,
      *   legalBasis?: value-of<SubscriptionUnsubscribeParams\LegalBasis>,
      *   legalBasisExplanation?: string,
      * }|SubscriptionUnsubscribeParams $params

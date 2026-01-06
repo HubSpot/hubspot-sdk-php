@@ -56,7 +56,7 @@ final class CollectionResponseExchangeRateNoPaging implements BaseModel
      *   fromCurrencyCode: value-of<FromCurrencyCode>,
      *   toCurrencyCode: value-of<ToCurrencyCode>,
      *   updatedAt: \DateTimeInterface,
-     *   visibleInUI: bool,
+     *   visibleInUi: bool,
      * }> $results
      */
     public static function with(array $results): self
@@ -77,7 +77,7 @@ final class CollectionResponseExchangeRateNoPaging implements BaseModel
      *   fromCurrencyCode: value-of<FromCurrencyCode>,
      *   toCurrencyCode: value-of<ToCurrencyCode>,
      *   updatedAt: \DateTimeInterface,
-     *   visibleInUI: bool,
+     *   visibleInUi: bool,
      * }> $results
      */
     public function withResults(array $results): self

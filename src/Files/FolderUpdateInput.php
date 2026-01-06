@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * Object for updating folders.
  *
  * @phpstan-type FolderUpdateInputShape = array{
- *   name?: string|null, parentFolderId?: int|null
+ *   name?: string|null, parentFolderID?: int|null
  * }
  */
 final class FolderUpdateInput implements BaseModel
@@ -29,8 +29,8 @@ final class FolderUpdateInput implements BaseModel
     /**
      * New parent folderId. If changed, the folder and all it's children will be moved into the specified folder. parentFolderId and parentFolderPath cannot be specified at the same time.
      */
-    #[Optional]
-    public ?int $parentFolderId;
+    #[Optional('parentFolderId')]
+    public ?int $parentFolderID;
 
     public function __construct()
     {
@@ -44,12 +44,12 @@ final class FolderUpdateInput implements BaseModel
      */
     public static function with(
         ?string $name = null,
-        ?int $parentFolderId = null
+        ?int $parentFolderID = null
     ): self {
         $obj = new self;
 
         null !== $name && $obj['name'] = $name;
-        null !== $parentFolderId && $obj['parentFolderId'] = $parentFolderId;
+        null !== $parentFolderID && $obj['parentFolderID'] = $parentFolderID;
 
         return $obj;
     }
@@ -71,7 +71,7 @@ final class FolderUpdateInput implements BaseModel
     public function withParentFolderID(int $parentFolderID): self
     {
         $obj = clone $this;
-        $obj['parentFolderId'] = $parentFolderID;
+        $obj['parentFolderID'] = $parentFolderID;
 
         return $obj;
     }

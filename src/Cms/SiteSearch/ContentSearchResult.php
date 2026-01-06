@@ -22,14 +22,14 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   url: string,
  *   authorFullName?: string|null,
  *   category?: string|null,
- *   combinedId?: string|null,
+ *   combinedID?: string|null,
  *   description?: string|null,
- *   featuredImageUrl?: string|null,
+ *   featuredImageURL?: string|null,
  *   language?: value-of<Language>|null,
  *   publishedDate?: int|null,
- *   rowId?: int|null,
+ *   rowID?: int|null,
  *   subcategory?: string|null,
- *   tableId?: int|null,
+ *   tableID?: int|null,
  *   tags?: list<string>|null,
  *   title?: string|null,
  * }
@@ -86,8 +86,8 @@ final class ContentSearchResult implements BaseModel
     /**
      * The ID of the document in HubSpot.
      */
-    #[Optional]
-    public ?string $combinedId;
+    #[Optional('combinedId')]
+    public ?string $combinedID;
 
     /**
      * The result's description. The content will be determined by the value of `length` in the request.
@@ -98,8 +98,8 @@ final class ContentSearchResult implements BaseModel
     /**
      * URL of the featured image.
      */
-    #[Optional]
-    public ?string $featuredImageUrl;
+    #[Optional('featuredImageUrl')]
+    public ?string $featuredImageURL;
 
     /**
      * The document's language.
@@ -118,8 +118,8 @@ final class ContentSearchResult implements BaseModel
     /**
      * If a dynamic page, the row ID in the HubDB table.
      */
-    #[Optional]
-    public ?int $rowId;
+    #[Optional('rowId')]
+    public ?int $rowID;
 
     /**
      * For knowledge articles, the subcategory of the article.
@@ -130,8 +130,8 @@ final class ContentSearchResult implements BaseModel
     /**
      * If a dynamic page, the ID of the HubDB table.
      */
-    #[Optional]
-    public ?int $tableId;
+    #[Optional('tableId')]
+    public ?int $tableID;
 
     /**
      * If a blog post, the tags associated with it.
@@ -188,14 +188,14 @@ final class ContentSearchResult implements BaseModel
         string $url,
         ?string $authorFullName = null,
         ?string $category = null,
-        ?string $combinedId = null,
+        ?string $combinedID = null,
         ?string $description = null,
-        ?string $featuredImageUrl = null,
+        ?string $featuredImageURL = null,
         Language|string|null $language = null,
         ?int $publishedDate = null,
-        ?int $rowId = null,
+        ?int $rowID = null,
         ?string $subcategory = null,
-        ?int $tableId = null,
+        ?int $tableID = null,
         ?array $tags = null,
         ?string $title = null,
     ): self {
@@ -209,14 +209,14 @@ final class ContentSearchResult implements BaseModel
 
         null !== $authorFullName && $obj['authorFullName'] = $authorFullName;
         null !== $category && $obj['category'] = $category;
-        null !== $combinedId && $obj['combinedId'] = $combinedId;
+        null !== $combinedID && $obj['combinedID'] = $combinedID;
         null !== $description && $obj['description'] = $description;
-        null !== $featuredImageUrl && $obj['featuredImageUrl'] = $featuredImageUrl;
+        null !== $featuredImageURL && $obj['featuredImageURL'] = $featuredImageURL;
         null !== $language && $obj['language'] = $language;
         null !== $publishedDate && $obj['publishedDate'] = $publishedDate;
-        null !== $rowId && $obj['rowId'] = $rowId;
+        null !== $rowID && $obj['rowID'] = $rowID;
         null !== $subcategory && $obj['subcategory'] = $subcategory;
-        null !== $tableId && $obj['tableId'] = $tableId;
+        null !== $tableID && $obj['tableID'] = $tableID;
         null !== $tags && $obj['tags'] = $tags;
         null !== $title && $obj['title'] = $title;
 
@@ -308,7 +308,7 @@ final class ContentSearchResult implements BaseModel
     public function withCombinedID(string $combinedID): self
     {
         $obj = clone $this;
-        $obj['combinedId'] = $combinedID;
+        $obj['combinedID'] = $combinedID;
 
         return $obj;
     }
@@ -330,7 +330,7 @@ final class ContentSearchResult implements BaseModel
     public function withFeaturedImageURL(string $featuredImageURL): self
     {
         $obj = clone $this;
-        $obj['featuredImageUrl'] = $featuredImageURL;
+        $obj['featuredImageURL'] = $featuredImageURL;
 
         return $obj;
     }
@@ -365,7 +365,7 @@ final class ContentSearchResult implements BaseModel
     public function withRowID(int $rowID): self
     {
         $obj = clone $this;
-        $obj['rowId'] = $rowID;
+        $obj['rowID'] = $rowID;
 
         return $obj;
     }
@@ -387,7 +387,7 @@ final class ContentSearchResult implements BaseModel
     public function withTableID(int $tableID): self
     {
         $obj = clone $this;
-        $obj['tableId'] = $tableID;
+        $obj['tableID'] = $tableID;
 
         return $obj;
     }

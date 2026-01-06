@@ -22,7 +22,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   location?: string|null,
  *   regionCode?: string|null,
  *   userAgent?: string|null,
- *   userId?: int|null,
+ *   userID?: int|null,
  * }
  */
 final class PublicLoginAudit implements BaseModel
@@ -84,8 +84,8 @@ final class PublicLoginAudit implements BaseModel
     /**
      * The user's unique ID.
      */
-    #[Optional]
-    public ?int $userId;
+    #[Optional('userId')]
+    public ?int $userID;
 
     /**
      * `new PublicLoginAudit()` is missing required properties by the API.
@@ -121,7 +121,7 @@ final class PublicLoginAudit implements BaseModel
         ?string $location = null,
         ?string $regionCode = null,
         ?string $userAgent = null,
-        ?int $userId = null,
+        ?int $userID = null,
     ): self {
         $obj = new self;
 
@@ -135,7 +135,7 @@ final class PublicLoginAudit implements BaseModel
         null !== $location && $obj['location'] = $location;
         null !== $regionCode && $obj['regionCode'] = $regionCode;
         null !== $userAgent && $obj['userAgent'] = $userAgent;
-        null !== $userId && $obj['userId'] = $userId;
+        null !== $userID && $obj['userID'] = $userID;
 
         return $obj;
     }
@@ -242,7 +242,7 @@ final class PublicLoginAudit implements BaseModel
     public function withUserID(int $userID): self
     {
         $obj = clone $this;
-        $obj['userId'] = $userID;
+        $obj['userID'] = $userID;
 
         return $obj;
     }

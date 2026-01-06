@@ -18,7 +18,7 @@ use HubspotSDK\Events\EventDefinitions\DatePoint\TimezoneSource;
  *   timeType: value-of<TimeType>,
  *   timezoneSource: value-of<TimezoneSource>,
  *   year: int,
- *   zoneId: string,
+ *   zoneID: string,
  *   hour?: int|null,
  *   millisecond?: int|null,
  *   minute?: int|null,
@@ -47,8 +47,8 @@ final class DatePoint implements BaseModel
     #[Required]
     public int $year;
 
-    #[Required]
-    public string $zoneId;
+    #[Required('zoneId')]
+    public string $zoneID;
 
     #[Optional]
     public ?int $hour;
@@ -73,7 +73,7 @@ final class DatePoint implements BaseModel
      *   timeType: ...,
      *   timezoneSource: ...,
      *   year: ...,
-     *   zoneId: ...,
+     *   zoneID: ...,
      * )
      * ```
      *
@@ -107,7 +107,7 @@ final class DatePoint implements BaseModel
         int $month,
         TimezoneSource|string $timezoneSource,
         int $year,
-        string $zoneId,
+        string $zoneID,
         TimeType|string $timeType = 'DATE',
         ?int $hour = null,
         ?int $millisecond = null,
@@ -121,7 +121,7 @@ final class DatePoint implements BaseModel
         $obj['timeType'] = $timeType;
         $obj['timezoneSource'] = $timezoneSource;
         $obj['year'] = $year;
-        $obj['zoneId'] = $zoneId;
+        $obj['zoneID'] = $zoneID;
 
         null !== $hour && $obj['hour'] = $hour;
         null !== $millisecond && $obj['millisecond'] = $millisecond;
@@ -181,7 +181,7 @@ final class DatePoint implements BaseModel
     public function withZoneID(string $zoneID): self
     {
         $obj = clone $this;
-        $obj['zoneId'] = $zoneID;
+        $obj['zoneID'] = $zoneID;
 
         return $obj;
     }

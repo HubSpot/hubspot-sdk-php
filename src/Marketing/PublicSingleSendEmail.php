@@ -18,7 +18,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   cc?: list<string>|null,
  *   from?: string|null,
  *   replyTo?: list<string>|null,
- *   sendId?: string|null,
+ *   sendID?: string|null,
  * }
  */
 final class PublicSingleSendEmail implements BaseModel
@@ -65,8 +65,8 @@ final class PublicSingleSendEmail implements BaseModel
     /**
      * ID for a particular send. No more than one email will be sent per sendId.
      */
-    #[Optional]
-    public ?string $sendId;
+    #[Optional('sendId')]
+    public ?string $sendID;
 
     /**
      * `new PublicSingleSendEmail()` is missing required properties by the API.
@@ -102,7 +102,7 @@ final class PublicSingleSendEmail implements BaseModel
         ?array $cc = null,
         ?string $from = null,
         ?array $replyTo = null,
-        ?string $sendId = null,
+        ?string $sendID = null,
     ): self {
         $obj = new self;
 
@@ -112,7 +112,7 @@ final class PublicSingleSendEmail implements BaseModel
         null !== $cc && $obj['cc'] = $cc;
         null !== $from && $obj['from'] = $from;
         null !== $replyTo && $obj['replyTo'] = $replyTo;
-        null !== $sendId && $obj['sendId'] = $sendId;
+        null !== $sendID && $obj['sendID'] = $sendID;
 
         return $obj;
     }
@@ -184,7 +184,7 @@ final class PublicSingleSendEmail implements BaseModel
     public function withSendID(string $sendID): self
     {
         $obj = clone $this;
-        $obj['sendId'] = $sendID;
+        $obj['sendID'] = $sendID;
 
         return $obj;
     }

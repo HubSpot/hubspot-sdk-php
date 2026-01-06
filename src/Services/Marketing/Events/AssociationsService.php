@@ -53,7 +53,7 @@ final class AssociationsService implements AssociationsContract
      *
      * Disassociates a list from a marketing event by marketing event id and ILS list id
      *
-     * @param array{marketingEventId: string}|AssociationDeleteParams $params
+     * @param array{marketingEventID: string}|AssociationDeleteParams $params
      *
      * @throws APIException
      */
@@ -66,8 +66,8 @@ final class AssociationsService implements AssociationsContract
             $params,
             $requestOptions,
         );
-        $marketingEventID = $parsed['marketingEventId'];
-        unset($parsed['marketingEventId']);
+        $marketingEventID = $parsed['marketingEventID'];
+        unset($parsed['marketingEventID']);
 
         /** @var BaseResponse<mixed> */
         $response = $this->client->request(
@@ -89,7 +89,7 @@ final class AssociationsService implements AssociationsContract
      *
      * Associates a list with a marketing event by marketing event id and ILS list id
      *
-     * @param array{marketingEventId: string}|AssociationAssociateParams $params
+     * @param array{marketingEventID: string}|AssociationAssociateParams $params
      *
      * @throws APIException
      */
@@ -102,8 +102,8 @@ final class AssociationsService implements AssociationsContract
             $params,
             $requestOptions,
         );
-        $marketingEventID = $parsed['marketingEventId'];
-        unset($parsed['marketingEventId']);
+        $marketingEventID = $parsed['marketingEventID'];
+        unset($parsed['marketingEventID']);
 
         /** @var BaseResponse<mixed> */
         $response = $this->client->request(
@@ -126,7 +126,7 @@ final class AssociationsService implements AssociationsContract
      * Associates a list with a marketing event by external account id, external event id, and ILS list id
      *
      * @param array{
-     *   externalAccountId: string, externalEventId: string
+     *   externalAccountID: string, externalEventID: string
      * }|AssociationAssociateByExternalAccountParams $params
      *
      * @throws APIException
@@ -140,10 +140,10 @@ final class AssociationsService implements AssociationsContract
             $params,
             $requestOptions,
         );
-        $externalAccountID = $parsed['externalAccountId'];
-        unset($parsed['externalAccountId']);
-        $externalEventID = $parsed['externalEventId'];
-        unset($parsed['externalEventId']);
+        $externalAccountID = $parsed['externalAccountID'];
+        unset($parsed['externalAccountID']);
+        $externalEventID = $parsed['externalEventID'];
+        unset($parsed['externalEventID']);
 
         /** @var BaseResponse<mixed> */
         $response = $this->client->request(
@@ -167,7 +167,7 @@ final class AssociationsService implements AssociationsContract
      * Disassociates a list from a marketing event by external account id, external event id, and ILS list id
      *
      * @param array{
-     *   externalAccountId: string, externalEventId: string
+     *   externalAccountID: string, externalEventID: string
      * }|AssociationDeleteByExternalAccountParams $params
      *
      * @throws APIException
@@ -181,10 +181,10 @@ final class AssociationsService implements AssociationsContract
             $params,
             $requestOptions,
         );
-        $externalAccountID = $parsed['externalAccountId'];
-        unset($parsed['externalAccountId']);
-        $externalEventID = $parsed['externalEventId'];
-        unset($parsed['externalEventId']);
+        $externalAccountID = $parsed['externalAccountID'];
+        unset($parsed['externalAccountID']);
+        $externalEventID = $parsed['externalEventID'];
+        unset($parsed['externalEventID']);
 
         /** @var BaseResponse<mixed> */
         $response = $this->client->request(
@@ -208,7 +208,7 @@ final class AssociationsService implements AssociationsContract
      * Gets lists associated with a marketing event by external account id and external event id
      *
      * @param array{
-     *   externalAccountId: string
+     *   externalAccountID: string
      * }|AssociationListByExternalAccountParams $params
      *
      * @throws APIException
@@ -222,8 +222,8 @@ final class AssociationsService implements AssociationsContract
             $params,
             $requestOptions,
         );
-        $externalAccountID = $parsed['externalAccountId'];
-        unset($parsed['externalAccountId']);
+        $externalAccountID = $parsed['externalAccountID'];
+        unset($parsed['externalAccountID']);
 
         /** @var BaseResponse<CollectionResponseWithTotalPublicListNoPaging> */
         $response = $this->client->request(

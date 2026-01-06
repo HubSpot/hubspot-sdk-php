@@ -13,7 +13,7 @@ use HubspotSDK\PublicInListFilter\FilterType;
 /**
  * @phpstan-type PublicInListFilterShape = array{
  *   filterType: value-of<FilterType>,
- *   listId: string,
+ *   listID: string,
  *   operator: string,
  *   metadata?: PublicInListFilterMetadata|null,
  * }
@@ -27,8 +27,8 @@ final class PublicInListFilter implements BaseModel
     #[Required(enum: FilterType::class)]
     public string $filterType;
 
-    #[Required]
-    public string $listId;
+    #[Required('listId')]
+    public string $listID;
 
     #[Required]
     public string $operator;
@@ -41,7 +41,7 @@ final class PublicInListFilter implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * PublicInListFilter::with(filterType: ..., listId: ..., operator: ...)
+     * PublicInListFilter::with(filterType: ..., listID: ..., operator: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -69,7 +69,7 @@ final class PublicInListFilter implements BaseModel
      * } $metadata
      */
     public static function with(
-        string $listId,
+        string $listID,
         string $operator,
         FilterType|string $filterType = 'IN_LIST',
         PublicInListFilterMetadata|array|null $metadata = null,
@@ -77,7 +77,7 @@ final class PublicInListFilter implements BaseModel
         $obj = new self;
 
         $obj['filterType'] = $filterType;
-        $obj['listId'] = $listId;
+        $obj['listID'] = $listID;
         $obj['operator'] = $operator;
 
         null !== $metadata && $obj['metadata'] = $metadata;
@@ -99,7 +99,7 @@ final class PublicInListFilter implements BaseModel
     public function withListID(string $listID): self
     {
         $obj = clone $this;
-        $obj['listId'] = $listID;
+        $obj['listID'] = $listID;
 
         return $obj;
     }

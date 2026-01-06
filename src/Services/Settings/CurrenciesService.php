@@ -376,7 +376,7 @@ final class CurrenciesService implements CurrenciesContract
      * @param array{
      *   fromCurrencyCode: value-of<CurrencyUpdateVisibilityParams\FromCurrencyCode>,
      *   toCurrencyCode: value-of<CurrencyUpdateVisibilityParams\ToCurrencyCode>,
-     *   visibleInUI: bool,
+     *   visibleInUi: bool,
      * }|CurrencyUpdateVisibilityParams $params
      *
      * @throws APIException

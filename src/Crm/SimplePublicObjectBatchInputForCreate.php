@@ -15,7 +15,7 @@ use HubspotSDK\PublicObjectID;
  * @phpstan-type SimplePublicObjectBatchInputForCreateShape = array{
  *   associations: list<PublicAssociationsForObject>,
  *   properties: array<string,string>,
- *   objectWriteTraceId?: string|null,
+ *   objectWriteTraceID?: string|null,
  * }
  */
 final class SimplePublicObjectBatchInputForCreate implements BaseModel
@@ -38,8 +38,8 @@ final class SimplePublicObjectBatchInputForCreate implements BaseModel
     /**
      * A unique identifier for tracing the creation request.
      */
-    #[Optional]
-    public ?string $objectWriteTraceId;
+    #[Optional('objectWriteTraceId')]
+    public ?string $objectWriteTraceID;
 
     /**
      * `new SimplePublicObjectBatchInputForCreate()` is missing required properties by the API.
@@ -75,14 +75,14 @@ final class SimplePublicObjectBatchInputForCreate implements BaseModel
     public static function with(
         array $associations,
         array $properties,
-        ?string $objectWriteTraceId = null
+        ?string $objectWriteTraceID = null
     ): self {
         $obj = new self;
 
         $obj['associations'] = $associations;
         $obj['properties'] = $properties;
 
-        null !== $objectWriteTraceId && $obj['objectWriteTraceId'] = $objectWriteTraceId;
+        null !== $objectWriteTraceID && $obj['objectWriteTraceID'] = $objectWriteTraceID;
 
         return $obj;
     }
@@ -119,7 +119,7 @@ final class SimplePublicObjectBatchInputForCreate implements BaseModel
     public function withObjectWriteTraceID(string $objectWriteTraceID): self
     {
         $obj = clone $this;
-        $obj['objectWriteTraceId'] = $objectWriteTraceID;
+        $obj['objectWriteTraceID'] = $objectWriteTraceID;
 
         return $obj;
     }

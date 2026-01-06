@@ -56,11 +56,11 @@ final class CollectionResponseWithTotalMarketingEventIdentifiersResponseNoPaging
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<MarketingEventIdentifiersResponse|array{
-     *   externalEventId: string,
+     *   externalEventID: string,
      *   marketingEventName: string,
-     *   objectId: string,
+     *   objectID: string,
      *   appInfo?: AppInfo|null,
-     *   externalAccountId?: string|null,
+     *   externalAccountID?: string|null,
      * }> $results
      */
     public static function with(array $results, int $total): self
@@ -75,11 +75,11 @@ final class CollectionResponseWithTotalMarketingEventIdentifiersResponseNoPaging
 
     /**
      * @param list<MarketingEventIdentifiersResponse|array{
-     *   externalEventId: string,
+     *   externalEventID: string,
      *   marketingEventName: string,
-     *   objectId: string,
+     *   objectID: string,
      *   appInfo?: AppInfo|null,
-     *   externalAccountId?: string|null,
+     *   externalAccountID?: string|null,
      * }> $results
      */
     public function withResults(array $results): self

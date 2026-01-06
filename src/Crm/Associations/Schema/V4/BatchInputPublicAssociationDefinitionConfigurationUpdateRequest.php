@@ -55,7 +55,7 @@ final class BatchInputPublicAssociationDefinitionConfigurationUpdateRequest impl
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<PublicAssociationDefinitionConfigurationUpdateRequest|array{
-     *   category: value-of<Category>, maxToObjectIds: int, typeId: int
+     *   category: value-of<Category>, maxToObjectIDs: int, typeID: int
      * }> $inputs
      */
     public static function with(array $inputs): self
@@ -69,7 +69,7 @@ final class BatchInputPublicAssociationDefinitionConfigurationUpdateRequest impl
 
     /**
      * @param list<PublicAssociationDefinitionConfigurationUpdateRequest|array{
-     *   category: value-of<Category>, maxToObjectIds: int, typeId: int
+     *   category: value-of<Category>, maxToObjectIDs: int, typeID: int
      * }> $inputs
      */
     public function withInputs(array $inputs): self

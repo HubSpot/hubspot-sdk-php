@@ -24,6 +24,7 @@ use HubspotSDK\Cms\Hubdb\Tables\TableUnpublishParams;
 use HubspotSDK\Cms\Hubdb\Tables\TableUpdateDraftParams;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Option;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
@@ -43,15 +44,15 @@ final class TablesService implements TablesContract
      *
      * @param array{
      *   allowChildTables: bool,
-     *   allowPublicApiAccess: bool,
+     *   allowPublicAPIAccess: bool,
      *   columns: list<array{
      *     id: int,
      *     label: string,
      *     name: string,
      *     options: list<array<mixed>|Option>,
      *     type: 'BOOLEAN'|'CODE'|'COMPOSITE'|'CTA'|'CURRENCY'|'DATE'|'DATETIME'|'EMBED'|'FILE'|'FOREIGN_ID'|'HUBSPOT_VIDEO'|'IMAGE'|'JSON'|'LOCATION'|'MULTISELECT'|'NULL'|'NUMBER'|'RICHTEXT'|'SELECT'|'TEXT'|'URL'|'VIDEO'|Type,
-     *     foreignColumnId?: int,
-     *     foreignTableId?: int,
+     *     foreignColumnID?: int,
+     *     foreignTableID?: int,
      *     maxNumberOfCharacters?: int,
      *     maxNumberOfOptions?: int,
      *   }>,
@@ -191,7 +192,7 @@ final class TablesService implements TablesContract
      *
      * Delete a specific version of a table
      *
-     * @param array{tableIdOrName: string}|TableDeleteVersionParams $params
+     * @param array{tableIDOrName: string}|TableDeleteVersionParams $params
      *
      * @throws APIException
      */
@@ -204,8 +205,8 @@ final class TablesService implements TablesContract
             $params,
             $requestOptions,
         );
-        $tableIDOrName = $parsed['tableIdOrName'];
-        unset($parsed['tableIdOrName']);
+        $tableIDOrName = $parsed['tableIDOrName'];
+        unset($parsed['tableIDOrName']);
 
         /** @var BaseResponse<mixed> */
         $response = $this->client->request(
@@ -292,7 +293,7 @@ final class TablesService implements TablesContract
      * **Note:** This endpoint can be accessed without any authentication if the table is set to be allowed for public access. To do so, you'll need to include the HubSpot account ID in a `portalId` query parameter.
      *
      * @param array{
-     *   archived?: bool, includeForeignIds?: bool, isGetLocalizedSchema?: bool
+     *   archived?: bool, includeForeignIDs?: bool, isGetLocalizedSchema?: bool
      * }|TableGetParams $params
      *
      * @throws APIException
@@ -311,7 +312,10 @@ final class TablesService implements TablesContract
         $response = $this->client->request(
             method: 'get',
             path: ['cms/v3/hubdb/tables/%1$s', $tableIDOrName],
-            query: $parsed,
+            query: Util::array_transform_keys(
+                $parsed,
+                ['includeForeignIDs' => 'includeForeignIds']
+            ),
             options: $options,
             convert: HubDBTableV3::class,
         );
@@ -325,7 +329,7 @@ final class TablesService implements TablesContract
      * Get the details for the draft version of a specific HubDB table. This will include the definitions for the columns in the table and the number of rows in the table.
      *
      * @param array{
-     *   archived?: bool, includeForeignIds?: bool, isGetLocalizedSchema?: bool
+     *   archived?: bool, includeForeignIDs?: bool, isGetLocalizedSchema?: bool
      * }|TableGetDraftParams $params
      *
      * @throws APIException
@@ -344,7 +348,10 @@ final class TablesService implements TablesContract
         $response = $this->client->request(
             method: 'get',
             path: ['cms/v3/hubdb/tables/%1$s/draft', $tableIDOrName],
-            query: $parsed,
+            query: Util::array_transform_keys(
+                $parsed,
+                ['includeForeignIDs' => 'includeForeignIds']
+            ),
             options: $options,
             convert: HubDBTableV3::class,
         );
@@ -436,7 +443,7 @@ final class TablesService implements TablesContract
      *
      * Publishes the table by copying the data and table schema changes from draft version to the published version, meaning any website pages using data from the table will be updated.
      *
-     * @param array{includeForeignIds?: bool}|TablePublishDraftParams $params
+     * @param array{includeForeignIDs?: bool}|TablePublishDraftParams $params
      *
      * @throws APIException
      */
@@ -454,7 +461,10 @@ final class TablesService implements TablesContract
         $response = $this->client->request(
             method: 'post',
             path: ['cms/v3/hubdb/tables/%1$s/draft/publish', $tableIDOrName],
-            query: $parsed,
+            query: Util::array_transform_keys(
+                $parsed,
+                ['includeForeignIDs' => 'includeForeignIds']
+            ),
             options: $options,
             convert: HubDBTableV3::class,
         );
@@ -467,7 +477,7 @@ final class TablesService implements TablesContract
      *
      * Replaces the data in the draft version of the table with values from the published version. Any unpublished changes in the draft will be lost after this call is made.
      *
-     * @param array{includeForeignIds?: bool}|TableResetDraftParams $params
+     * @param array{includeForeignIDs?: bool}|TableResetDraftParams $params
      *
      * @throws APIException
      */
@@ -485,7 +495,10 @@ final class TablesService implements TablesContract
         $response = $this->client->request(
             method: 'post',
             path: ['cms/v3/hubdb/tables/%1$s/draft/reset', $tableIDOrName],
-            query: $parsed,
+            query: Util::array_transform_keys(
+                $parsed,
+                ['includeForeignIDs' => 'includeForeignIds']
+            ),
             options: $options,
             convert: HubDBTableV3::class,
         );
@@ -498,7 +511,7 @@ final class TablesService implements TablesContract
      *
      * Unpublishes the table, meaning any website pages using data from the table will not render any data.
      *
-     * @param array{includeForeignIds?: bool}|TableUnpublishParams $params
+     * @param array{includeForeignIDs?: bool}|TableUnpublishParams $params
      *
      * @throws APIException
      */
@@ -516,7 +529,10 @@ final class TablesService implements TablesContract
         $response = $this->client->request(
             method: 'post',
             path: ['cms/v3/hubdb/tables/%1$s/unpublish', $tableIDOrName],
-            query: $parsed,
+            query: Util::array_transform_keys(
+                $parsed,
+                ['includeForeignIDs' => 'includeForeignIds']
+            ),
             options: $options,
             convert: HubDBTableV3::class,
         );
@@ -532,15 +548,15 @@ final class TablesService implements TablesContract
      *
      * @param array{
      *   allowChildTables: bool,
-     *   allowPublicApiAccess: bool,
+     *   allowPublicAPIAccess: bool,
      *   columns: list<array{
      *     id: int,
      *     label: string,
      *     name: string,
      *     options: list<array<mixed>|Option>,
      *     type: 'BOOLEAN'|'CODE'|'COMPOSITE'|'CTA'|'CURRENCY'|'DATE'|'DATETIME'|'EMBED'|'FILE'|'FOREIGN_ID'|'HUBSPOT_VIDEO'|'IMAGE'|'JSON'|'LOCATION'|'MULTISELECT'|'NULL'|'NUMBER'|'RICHTEXT'|'SELECT'|'TEXT'|'URL'|'VIDEO'|Type,
-     *     foreignColumnId?: int,
-     *     foreignTableId?: int,
+     *     foreignColumnID?: int,
+     *     foreignTableID?: int,
      *     maxNumberOfCharacters?: int,
      *     maxNumberOfOptions?: int,
      *   }>,
@@ -550,7 +566,7 @@ final class TablesService implements TablesContract
      *   name: string,
      *   useForPages: bool,
      *   archived?: bool,
-     *   includeForeignIds?: bool,
+     *   includeForeignIDs?: bool,
      *   isGetLocalizedSchema?: bool,
      * }|TableUpdateDraftParams $params
      *
@@ -573,7 +589,10 @@ final class TablesService implements TablesContract
         $response = $this->client->request(
             method: 'patch',
             path: ['cms/v3/hubdb/tables/%1$s/draft', $tableIDOrName],
-            query: array_diff_key($parsed, $query_params),
+            query: Util::array_transform_keys(
+                array_diff_key($parsed, $query_params),
+                ['includeForeignIDs' => 'includeForeignIds'],
+            ),
             body: (object) array_diff_key($parsed, $query_params),
             options: $options,
             convert: HubDBTableV3::class,

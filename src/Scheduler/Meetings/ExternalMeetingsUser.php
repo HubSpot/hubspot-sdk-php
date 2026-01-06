@@ -13,7 +13,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   id: string,
  *   calendarProvider: string,
  *   isSalesStarter: bool,
- *   userId: string,
+ *   userID: string,
  *   userProfile: ExternalUserProfile,
  * }
  */
@@ -31,8 +31,8 @@ final class ExternalMeetingsUser implements BaseModel
     #[Required]
     public bool $isSalesStarter;
 
-    #[Required]
-    public string $userId;
+    #[Required('userId')]
+    public string $userID;
 
     #[Required]
     public ExternalUserProfile $userProfile;
@@ -46,7 +46,7 @@ final class ExternalMeetingsUser implements BaseModel
      *   id: ...,
      *   calendarProvider: ...,
      *   isSalesStarter: ...,
-     *   userId: ...,
+     *   userID: ...,
      *   userProfile: ...,
      * )
      * ```
@@ -83,7 +83,7 @@ final class ExternalMeetingsUser implements BaseModel
         string $id,
         string $calendarProvider,
         bool $isSalesStarter,
-        string $userId,
+        string $userID,
         ExternalUserProfile|array $userProfile,
     ): self {
         $obj = new self;
@@ -91,7 +91,7 @@ final class ExternalMeetingsUser implements BaseModel
         $obj['id'] = $id;
         $obj['calendarProvider'] = $calendarProvider;
         $obj['isSalesStarter'] = $isSalesStarter;
-        $obj['userId'] = $userId;
+        $obj['userID'] = $userID;
         $obj['userProfile'] = $userProfile;
 
         return $obj;
@@ -124,7 +124,7 @@ final class ExternalMeetingsUser implements BaseModel
     public function withUserID(string $userID): self
     {
         $obj = clone $this;
-        $obj['userId'] = $userID;
+        $obj['userID'] = $userID;
 
         return $obj;
     }

@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @phpstan-type WorkflowBatchGetParamsShape = array{
  *   inputs: list<APIFlowBatchFetchFlowIDCoordinate|array{
- *     flowId: string, type: value-of<Type>
+ *     flowID: string, type: value-of<Type>
  *   }>,
  * }
  */
@@ -54,7 +54,7 @@ final class WorkflowBatchGetParams implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<APIFlowBatchFetchFlowIDCoordinate|array{
-     *   flowId: string, type: value-of<Type>
+     *   flowID: string, type: value-of<Type>
      * }> $inputs
      */
     public static function with(array $inputs): self
@@ -68,7 +68,7 @@ final class WorkflowBatchGetParams implements BaseModel
 
     /**
      * @param list<APIFlowBatchFetchFlowIDCoordinate|array{
-     *   flowId: string, type: value-of<Type>
+     *   flowID: string, type: value-of<Type>
      * }> $inputs
      */
     public function withInputs(array $inputs): self

@@ -18,7 +18,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @phpstan-type BatchCreateBatchParamsShape = array{
  *   inputs: list<HubDBTableRowV3Request|array{
- *     childTableId: int,
+ *     childTableID: int,
  *     displayIndex: int,
  *     values: array<string,Variant>,
  *     name?: string|null,
@@ -61,7 +61,7 @@ final class BatchCreateBatchParams implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<HubDBTableRowV3Request|array{
-     *   childTableId: int,
+     *   childTableID: int,
      *   displayIndex: int,
      *   values: array<string,Variant>,
      *   name?: string|null,
@@ -79,7 +79,7 @@ final class BatchCreateBatchParams implements BaseModel
 
     /**
      * @param list<HubDBTableRowV3Request|array{
-     *   childTableId: int,
+     *   childTableID: int,
      *   displayIndex: int,
      *   values: array<string,Variant>,
      *   name?: string|null,

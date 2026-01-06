@@ -13,6 +13,7 @@ use HubspotSDK\Conversations\Threads\ThreadUpdateParams;
 use HubspotSDK\Conversations\Threads\ThreadUpdateParams\Status;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Conversations\ThreadsContract;
@@ -63,9 +64,9 @@ final class ThreadsService implements ThreadsContract
      * @param array{
      *   after?: string,
      *   archived?: bool,
-     *   associatedContactId?: int,
+     *   associatedContactID?: int,
      *   association?: list<'TICKET'|Association>,
-     *   inboxId?: list<int>,
+     *   inboxID?: list<int>,
      *   latestMessageTimestampAfter?: string|\DateTimeInterface,
      *   limit?: int,
      *   property?: string,
@@ -90,7 +91,12 @@ final class ThreadsService implements ThreadsContract
         $response = $this->client->request(
             method: 'get',
             path: 'conversations/v3/conversations/threads',
-            query: $parsed,
+            query: Util::array_transform_keys(
+                $parsed,
+                [
+                    'associatedContactID' => 'associatedContactId', 'inboxID' => 'inboxId',
+                ],
+            ),
             options: $options,
             convert: PublicThread::class,
             page: Page::class,

@@ -117,7 +117,7 @@ final class BatchResponseSimplePublicUpsertObject implements BaseModel
      *   properties: array<string,string>,
      *   updatedAt: \DateTimeInterface,
      *   archivedAt?: \DateTimeInterface|null,
-     *   objectWriteTraceId?: string|null,
+     *   objectWriteTraceID?: string|null,
      *   propertiesWithHistory?: array<string,list<ValueWithTimestamp>>|null,
      *   url?: string|null,
      * }> $results
@@ -179,7 +179,7 @@ final class BatchResponseSimplePublicUpsertObject implements BaseModel
      *   properties: array<string,string>,
      *   updatedAt: \DateTimeInterface,
      *   archivedAt?: \DateTimeInterface|null,
-     *   objectWriteTraceId?: string|null,
+     *   objectWriteTraceID?: string|null,
      *   propertiesWithHistory?: array<string,list<ValueWithTimestamp>>|null,
      *   url?: string|null,
      * }> $results

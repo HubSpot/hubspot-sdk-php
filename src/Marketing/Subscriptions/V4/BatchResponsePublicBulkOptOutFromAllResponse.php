@@ -116,7 +116,7 @@ final class BatchResponsePublicBulkOptOutFromAllResponse implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<PublicBulkOptOutFromAllResponse|array{
-     *   subscriberIdString: string, statuses?: list<PublicStatus>|null
+     *   subscriberIDString: string, statuses?: list<PublicStatus>|null
      * }> $results
      * @param Status|value-of<Status> $status
      * @param list<StandardError|array{
@@ -171,7 +171,7 @@ final class BatchResponsePublicBulkOptOutFromAllResponse implements BaseModel
      * An array containing the results of the bulk opt-out from all communications operation.
      *
      * @param list<PublicBulkOptOutFromAllResponse|array{
-     *   subscriberIdString: string, statuses?: list<PublicStatus>|null
+     *   subscriberIDString: string, statuses?: list<PublicStatus>|null
      * }> $results
      */
     public function withResults(array $results): self

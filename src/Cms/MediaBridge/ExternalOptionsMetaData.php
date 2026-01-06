@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type ExternalOptionsMetaDataShape = array{
- *   filter?: FilteringMetaData|null, relatedObjectTypeId?: string|null
+ *   filter?: FilteringMetaData|null, relatedObjectTypeID?: string|null
  * }
  */
 final class ExternalOptionsMetaData implements BaseModel
@@ -21,8 +21,8 @@ final class ExternalOptionsMetaData implements BaseModel
     #[Optional]
     public ?FilteringMetaData $filter;
 
-    #[Optional]
-    public ?string $relatedObjectTypeId;
+    #[Optional('relatedObjectTypeId')]
+    public ?string $relatedObjectTypeID;
 
     public function __construct()
     {
@@ -35,24 +35,24 @@ final class ExternalOptionsMetaData implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param FilteringMetaData|array{
-     *   includeUnconfirmedUsers: bool, pipelineIds: list<string>
+     *   includeUnconfirmedUsers: bool, pipelineIDs: list<string>
      * } $filter
      */
     public static function with(
         FilteringMetaData|array|null $filter = null,
-        ?string $relatedObjectTypeId = null
+        ?string $relatedObjectTypeID = null
     ): self {
         $obj = new self;
 
         null !== $filter && $obj['filter'] = $filter;
-        null !== $relatedObjectTypeId && $obj['relatedObjectTypeId'] = $relatedObjectTypeId;
+        null !== $relatedObjectTypeID && $obj['relatedObjectTypeID'] = $relatedObjectTypeID;
 
         return $obj;
     }
 
     /**
      * @param FilteringMetaData|array{
-     *   includeUnconfirmedUsers: bool, pipelineIds: list<string>
+     *   includeUnconfirmedUsers: bool, pipelineIDs: list<string>
      * } $filter
      */
     public function withFilter(FilteringMetaData|array $filter): self
@@ -66,7 +66,7 @@ final class ExternalOptionsMetaData implements BaseModel
     public function withRelatedObjectTypeID(string $relatedObjectTypeID): self
     {
         $obj = clone $this;
-        $obj['relatedObjectTypeId'] = $relatedObjectTypeID;
+        $obj['relatedObjectTypeID'] = $relatedObjectTypeID;
 
         return $obj;
     }

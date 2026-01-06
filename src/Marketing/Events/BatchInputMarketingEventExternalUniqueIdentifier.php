@@ -47,7 +47,7 @@ final class BatchInputMarketingEventExternalUniqueIdentifier implements BaseMode
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<MarketingEventExternalUniqueIdentifier|array{
-     *   appId: int, externalAccountId: string, externalEventId: string
+     *   appID: int, externalAccountID: string, externalEventID: string
      * }> $inputs
      */
     public static function with(array $inputs): self
@@ -61,7 +61,7 @@ final class BatchInputMarketingEventExternalUniqueIdentifier implements BaseMode
 
     /**
      * @param list<MarketingEventExternalUniqueIdentifier|array{
-     *   appId: int, externalAccountId: string, externalEventId: string
+     *   appID: int, externalAccountID: string, externalEventID: string
      * }> $inputs
      */
     public function withInputs(array $inputs): self

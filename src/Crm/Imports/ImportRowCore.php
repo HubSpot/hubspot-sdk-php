@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * @phpstan-type ImportRowCoreShape = array{
  *   containsEncryptedProperties: bool,
- *   fileId: int,
+ *   fileID: int,
  *   lineNumber: int,
  *   rowData: list<string>,
  *   pageName?: string|null,
@@ -26,8 +26,8 @@ final class ImportRowCore implements BaseModel
     #[Required]
     public bool $containsEncryptedProperties;
 
-    #[Required]
-    public int $fileId;
+    #[Required('fileId')]
+    public int $fileID;
 
     #[Required]
     public int $lineNumber;
@@ -45,7 +45,7 @@ final class ImportRowCore implements BaseModel
      * To enforce required parameters use
      * ```
      * ImportRowCore::with(
-     *   containsEncryptedProperties: ..., fileId: ..., lineNumber: ..., rowData: ...
+     *   containsEncryptedProperties: ..., fileID: ..., lineNumber: ..., rowData: ...
      * )
      * ```
      *
@@ -73,7 +73,7 @@ final class ImportRowCore implements BaseModel
      */
     public static function with(
         bool $containsEncryptedProperties,
-        int $fileId,
+        int $fileID,
         int $lineNumber,
         array $rowData,
         ?string $pageName = null,
@@ -81,7 +81,7 @@ final class ImportRowCore implements BaseModel
         $obj = new self;
 
         $obj['containsEncryptedProperties'] = $containsEncryptedProperties;
-        $obj['fileId'] = $fileId;
+        $obj['fileID'] = $fileID;
         $obj['lineNumber'] = $lineNumber;
         $obj['rowData'] = $rowData;
 
@@ -102,7 +102,7 @@ final class ImportRowCore implements BaseModel
     public function withFileID(int $fileID): self
     {
         $obj = clone $this;
-        $obj['fileId'] = $fileID;
+        $obj['fileID'] = $fileID;
 
         return $obj;
     }

@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Cms\Pages\SitePagesService::rerunAbTest()
  *
  * @phpstan-type SitePageRerunAbTestParamsShape = array{
- *   abTestId: string, variationId: string
+ *   abTestID: string, variationID: string
  * }
  */
 final class SitePageRerunAbTestParams implements BaseModel
@@ -27,21 +27,21 @@ final class SitePageRerunAbTestParams implements BaseModel
     /**
      * ID of the test to rerun.
      */
-    #[Required]
-    public string $abTestId;
+    #[Required('abTestId')]
+    public string $abTestID;
 
     /**
      * ID of the object to reactivate as a test variation.
      */
-    #[Required]
-    public string $variationId;
+    #[Required('variationId')]
+    public string $variationID;
 
     /**
      * `new SitePageRerunAbTestParams()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * SitePageRerunAbTestParams::with(abTestId: ..., variationId: ...)
+     * SitePageRerunAbTestParams::with(abTestID: ..., variationID: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -60,12 +60,12 @@ final class SitePageRerunAbTestParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(string $abTestId, string $variationId): self
+    public static function with(string $abTestID, string $variationID): self
     {
         $obj = new self;
 
-        $obj['abTestId'] = $abTestId;
-        $obj['variationId'] = $variationId;
+        $obj['abTestID'] = $abTestID;
+        $obj['variationID'] = $variationID;
 
         return $obj;
     }
@@ -76,7 +76,7 @@ final class SitePageRerunAbTestParams implements BaseModel
     public function withAbTestID(string $abTestID): self
     {
         $obj = clone $this;
-        $obj['abTestId'] = $abTestID;
+        $obj['abTestID'] = $abTestID;
 
         return $obj;
     }
@@ -87,7 +87,7 @@ final class SitePageRerunAbTestParams implements BaseModel
     public function withVariationID(string $variationID): self
     {
         $obj = clone $this;
-        $obj['variationId'] = $variationID;
+        $obj['variationID'] = $variationID;
 
         return $obj;
     }

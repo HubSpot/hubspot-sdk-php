@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type PublicObjectListRecordShape = array{
- *   listId: string, objectType: string
+ *   listID: string, objectType: string
  * }
  */
 final class PublicObjectListRecord implements BaseModel
@@ -21,8 +21,8 @@ final class PublicObjectListRecord implements BaseModel
     /**
      * The ID of the list containing the imported objects.
      */
-    #[Required]
-    public string $listId;
+    #[Required('listId')]
+    public string $listID;
 
     /**
      * The type of object contained in the list.
@@ -35,7 +35,7 @@ final class PublicObjectListRecord implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * PublicObjectListRecord::with(listId: ..., objectType: ...)
+     * PublicObjectListRecord::with(listID: ..., objectType: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -54,11 +54,11 @@ final class PublicObjectListRecord implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(string $listId, string $objectType): self
+    public static function with(string $listID, string $objectType): self
     {
         $obj = new self;
 
-        $obj['listId'] = $listId;
+        $obj['listID'] = $listID;
         $obj['objectType'] = $objectType;
 
         return $obj;
@@ -70,7 +70,7 @@ final class PublicObjectListRecord implements BaseModel
     public function withListID(string $listID): self
     {
         $obj = clone $this;
-        $obj['listId'] = $listID;
+        $obj['listID'] = $listID;
 
         return $obj;
     }

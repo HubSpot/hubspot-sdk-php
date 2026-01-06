@@ -54,26 +54,26 @@ final class EventsTest extends TestCase
                     'isLargeValue' => true,
                     'name' => 'name',
                     'persistenceTimestamp' => 0,
-                    'requestId' => 'requestId',
+                    'requestID' => 'requestId',
                     'selectedByUser' => true,
                     'selectedByUserTimestamp' => 0,
                     'source' => 'ACADEMY',
-                    'sourceId' => 'sourceId',
+                    'sourceID' => 'sourceId',
                     'sourceLabel' => 'sourceLabel',
                     'sourceMetadata' => 'sourceMetadata',
                     'sourceUpstreamDeployable' => 'sourceUpstreamDeployable',
                     'sourceVid' => [0],
                     'timestamp' => 0,
                     'unit' => 'unit',
-                    'updatedByUserId' => 0,
+                    'updatedByUserID' => 0,
                     'useTimestampAsPersistenceTimestamp' => true,
                     'value' => 'value',
                 ],
             ],
             'eventName' => 'eventName',
             'eventOrganizer' => 'eventOrganizer',
-            'externalAccountId' => 'externalAccountId',
-            'externalEventId' => 'externalEventId',
+            'externalAccountID' => 'externalAccountId',
+            'externalEventID' => 'externalEventId',
         ]);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -95,32 +95,32 @@ final class EventsTest extends TestCase
                     'isLargeValue' => true,
                     'name' => 'name',
                     'persistenceTimestamp' => 0,
-                    'requestId' => 'requestId',
+                    'requestID' => 'requestId',
                     'selectedByUser' => true,
                     'selectedByUserTimestamp' => 0,
                     'source' => 'ACADEMY',
-                    'sourceId' => 'sourceId',
+                    'sourceID' => 'sourceId',
                     'sourceLabel' => 'sourceLabel',
                     'sourceMetadata' => 'sourceMetadata',
                     'sourceUpstreamDeployable' => 'sourceUpstreamDeployable',
                     'sourceVid' => [0],
                     'timestamp' => 0,
                     'unit' => 'unit',
-                    'updatedByUserId' => 0,
+                    'updatedByUserID' => 0,
                     'useTimestampAsPersistenceTimestamp' => true,
                     'value' => 'value',
                 ],
             ],
             'eventName' => 'eventName',
             'eventOrganizer' => 'eventOrganizer',
-            'externalAccountId' => 'externalAccountId',
-            'externalEventId' => 'externalEventId',
+            'externalAccountID' => 'externalAccountId',
+            'externalEventID' => 'externalEventId',
             'endDateTime' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
             'eventCancelled' => true,
             'eventCompleted' => true,
             'eventDescription' => 'eventDescription',
             'eventType' => 'eventType',
-            'eventUrl' => 'eventUrl',
+            'eventURL' => 'eventUrl',
             'startDateTime' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
         ]);
 
@@ -145,18 +145,18 @@ final class EventsTest extends TestCase
                         'isLargeValue' => true,
                         'name' => 'name',
                         'persistenceTimestamp' => 0,
-                        'requestId' => 'requestId',
+                        'requestID' => 'requestId',
                         'selectedByUser' => true,
                         'selectedByUserTimestamp' => 0,
                         'source' => 'ACADEMY',
-                        'sourceId' => 'sourceId',
+                        'sourceID' => 'sourceId',
                         'sourceLabel' => 'sourceLabel',
                         'sourceMetadata' => 'sourceMetadata',
                         'sourceUpstreamDeployable' => 'sourceUpstreamDeployable',
                         'sourceVid' => [0],
                         'timestamp' => 0,
                         'unit' => 'unit',
-                        'updatedByUserId' => 0,
+                        'updatedByUserID' => 0,
                         'useTimestampAsPersistenceTimestamp' => true,
                         'value' => 'value',
                     ],
@@ -188,18 +188,18 @@ final class EventsTest extends TestCase
                         'isLargeValue' => true,
                         'name' => 'name',
                         'persistenceTimestamp' => 0,
-                        'requestId' => 'requestId',
+                        'requestID' => 'requestId',
                         'selectedByUser' => true,
                         'selectedByUserTimestamp' => 0,
                         'source' => 'ACADEMY',
-                        'sourceId' => 'sourceId',
+                        'sourceID' => 'sourceId',
                         'sourceLabel' => 'sourceLabel',
                         'sourceMetadata' => 'sourceMetadata',
                         'sourceUpstreamDeployable' => 'sourceUpstreamDeployable',
                         'sourceVid' => [0],
                         'timestamp' => 0,
                         'unit' => 'unit',
-                        'updatedByUserId' => 0,
+                        'updatedByUserID' => 0,
                         'useTimestampAsPersistenceTimestamp' => true,
                         'value' => 'value',
                     ],
@@ -210,7 +210,7 @@ final class EventsTest extends TestCase
                 'eventName' => 'eventName',
                 'eventOrganizer' => 'eventOrganizer',
                 'eventType' => 'eventType',
-                'eventUrl' => 'eventUrl',
+                'eventURL' => 'eventUrl',
                 'startDateTime' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
             ],
         );
@@ -257,7 +257,7 @@ final class EventsTest extends TestCase
 
         $result = $this->client->marketing->events->cancelByExternalEventID(
             'externalEventId',
-            ['externalAccountId' => 'externalAccountId']
+            ['externalAccountID' => 'externalAccountId']
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -273,7 +273,7 @@ final class EventsTest extends TestCase
 
         $result = $this->client->marketing->events->cancelByExternalEventID(
             'externalEventId',
-            ['externalAccountId' => 'externalAccountId']
+            ['externalAccountID' => 'externalAccountId']
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -290,7 +290,7 @@ final class EventsTest extends TestCase
         $result = $this->client->marketing->events->completeByExternalEventID(
             'externalEventId',
             [
-                'externalAccountId' => 'externalAccountId',
+                'externalAccountID' => 'externalAccountId',
                 'endDateTime' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
                 'startDateTime' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
             ],
@@ -310,7 +310,7 @@ final class EventsTest extends TestCase
         $result = $this->client->marketing->events->completeByExternalEventID(
             'externalEventId',
             [
-                'externalAccountId' => 'externalAccountId',
+                'externalAccountID' => 'externalAccountId',
                 'endDateTime' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
                 'startDateTime' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
             ],
@@ -328,7 +328,7 @@ final class EventsTest extends TestCase
         }
 
         $result = $this->client->marketing->events->deleteBatch([
-            'inputs' => [['objectId' => 'objectId']],
+            'inputs' => [['objectID' => 'objectId']],
         ]);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -343,7 +343,7 @@ final class EventsTest extends TestCase
         }
 
         $result = $this->client->marketing->events->deleteBatch([
-            'inputs' => [['objectId' => 'objectId']],
+            'inputs' => [['objectID' => 'objectId']],
         ]);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -360,9 +360,9 @@ final class EventsTest extends TestCase
         $result = $this->client->marketing->events->deleteBatchByExternalEventID([
             'inputs' => [
                 [
-                    'appId' => 0,
-                    'externalAccountId' => 'externalAccountId',
-                    'externalEventId' => 'externalEventId',
+                    'appID' => 0,
+                    'externalAccountID' => 'externalAccountId',
+                    'externalEventID' => 'externalEventId',
                 ],
             ],
         ]);
@@ -381,9 +381,9 @@ final class EventsTest extends TestCase
         $result = $this->client->marketing->events->deleteBatchByExternalEventID([
             'inputs' => [
                 [
-                    'appId' => 0,
-                    'externalAccountId' => 'externalAccountId',
-                    'externalEventId' => 'externalEventId',
+                    'appID' => 0,
+                    'externalAccountID' => 'externalAccountId',
+                    'externalEventID' => 'externalEventId',
                 ],
             ],
         ]);
@@ -401,7 +401,7 @@ final class EventsTest extends TestCase
 
         $result = $this->client->marketing->events->deleteByExternalEventID(
             'externalEventId',
-            ['externalAccountId' => 'externalAccountId']
+            ['externalAccountID' => 'externalAccountId']
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -417,7 +417,7 @@ final class EventsTest extends TestCase
 
         $result = $this->client->marketing->events->deleteByExternalEventID(
             'externalEventId',
-            ['externalAccountId' => 'externalAccountId']
+            ['externalAccountID' => 'externalAccountId']
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -446,7 +446,7 @@ final class EventsTest extends TestCase
 
         $result = $this->client->marketing->events->getByExternalEventID(
             'externalEventId',
-            ['externalAccountId' => 'externalAccountId']
+            ['externalAccountID' => 'externalAccountId']
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -462,7 +462,7 @@ final class EventsTest extends TestCase
 
         $result = $this->client->marketing->events->getByExternalEventID(
             'externalEventId',
-            ['externalAccountId' => 'externalAccountId']
+            ['externalAccountID' => 'externalAccountId']
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -543,23 +543,23 @@ final class EventsTest extends TestCase
                             'isLargeValue' => true,
                             'name' => 'name',
                             'persistenceTimestamp' => 0,
-                            'requestId' => 'requestId',
+                            'requestID' => 'requestId',
                             'selectedByUser' => true,
                             'selectedByUserTimestamp' => 0,
                             'source' => 'ACADEMY',
-                            'sourceId' => 'sourceId',
+                            'sourceID' => 'sourceId',
                             'sourceLabel' => 'sourceLabel',
                             'sourceMetadata' => 'sourceMetadata',
                             'sourceUpstreamDeployable' => 'sourceUpstreamDeployable',
                             'sourceVid' => [0],
                             'timestamp' => 0,
                             'unit' => 'unit',
-                            'updatedByUserId' => 0,
+                            'updatedByUserID' => 0,
                             'useTimestampAsPersistenceTimestamp' => true,
                             'value' => 'value',
                         ],
                     ],
-                    'objectId' => 'objectId',
+                    'objectID' => 'objectId',
                 ],
             ],
         ]);
@@ -588,30 +588,30 @@ final class EventsTest extends TestCase
                             'isLargeValue' => true,
                             'name' => 'name',
                             'persistenceTimestamp' => 0,
-                            'requestId' => 'requestId',
+                            'requestID' => 'requestId',
                             'selectedByUser' => true,
                             'selectedByUserTimestamp' => 0,
                             'source' => 'ACADEMY',
-                            'sourceId' => 'sourceId',
+                            'sourceID' => 'sourceId',
                             'sourceLabel' => 'sourceLabel',
                             'sourceMetadata' => 'sourceMetadata',
                             'sourceUpstreamDeployable' => 'sourceUpstreamDeployable',
                             'sourceVid' => [0],
                             'timestamp' => 0,
                             'unit' => 'unit',
-                            'updatedByUserId' => 0,
+                            'updatedByUserID' => 0,
                             'useTimestampAsPersistenceTimestamp' => true,
                             'value' => 'value',
                         ],
                     ],
-                    'objectId' => 'objectId',
+                    'objectID' => 'objectId',
                     'endDateTime' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
                     'eventCancelled' => true,
                     'eventDescription' => 'eventDescription',
                     'eventName' => 'eventName',
                     'eventOrganizer' => 'eventOrganizer',
                     'eventType' => 'eventType',
-                    'eventUrl' => 'eventUrl',
+                    'eventURL' => 'eventUrl',
                     'startDateTime' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
                 ],
             ],
@@ -634,7 +634,7 @@ final class EventsTest extends TestCase
         $result = $this->client->marketing->events->updateByExternalEventID(
             'externalEventId',
             [
-                'externalAccountId' => 'externalAccountId',
+                'externalAccountID' => 'externalAccountId',
                 'customProperties' => [
                     [
                         'dataSensitivity' => 'high',
@@ -642,18 +642,18 @@ final class EventsTest extends TestCase
                         'isLargeValue' => true,
                         'name' => 'name',
                         'persistenceTimestamp' => 0,
-                        'requestId' => 'requestId',
+                        'requestID' => 'requestId',
                         'selectedByUser' => true,
                         'selectedByUserTimestamp' => 0,
                         'source' => 'ACADEMY',
-                        'sourceId' => 'sourceId',
+                        'sourceID' => 'sourceId',
                         'sourceLabel' => 'sourceLabel',
                         'sourceMetadata' => 'sourceMetadata',
                         'sourceUpstreamDeployable' => 'sourceUpstreamDeployable',
                         'sourceVid' => [0],
                         'timestamp' => 0,
                         'unit' => 'unit',
-                        'updatedByUserId' => 0,
+                        'updatedByUserID' => 0,
                         'useTimestampAsPersistenceTimestamp' => true,
                         'value' => 'value',
                     ],
@@ -678,7 +678,7 @@ final class EventsTest extends TestCase
         $result = $this->client->marketing->events->updateByExternalEventID(
             'externalEventId',
             [
-                'externalAccountId' => 'externalAccountId',
+                'externalAccountID' => 'externalAccountId',
                 'customProperties' => [
                     [
                         'dataSensitivity' => 'high',
@@ -686,18 +686,18 @@ final class EventsTest extends TestCase
                         'isLargeValue' => true,
                         'name' => 'name',
                         'persistenceTimestamp' => 0,
-                        'requestId' => 'requestId',
+                        'requestID' => 'requestId',
                         'selectedByUser' => true,
                         'selectedByUserTimestamp' => 0,
                         'source' => 'ACADEMY',
-                        'sourceId' => 'sourceId',
+                        'sourceID' => 'sourceId',
                         'sourceLabel' => 'sourceLabel',
                         'sourceMetadata' => 'sourceMetadata',
                         'sourceUpstreamDeployable' => 'sourceUpstreamDeployable',
                         'sourceVid' => [0],
                         'timestamp' => 0,
                         'unit' => 'unit',
-                        'updatedByUserId' => 0,
+                        'updatedByUserID' => 0,
                         'useTimestampAsPersistenceTimestamp' => true,
                         'value' => 'value',
                     ],
@@ -709,7 +709,7 @@ final class EventsTest extends TestCase
                 'eventName' => 'eventName',
                 'eventOrganizer' => 'eventOrganizer',
                 'eventType' => 'eventType',
-                'eventUrl' => 'eventUrl',
+                'eventURL' => 'eventUrl',
                 'startDateTime' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
             ],
         );
@@ -738,26 +738,26 @@ final class EventsTest extends TestCase
                             'isLargeValue' => true,
                             'name' => 'name',
                             'persistenceTimestamp' => 0,
-                            'requestId' => 'requestId',
+                            'requestID' => 'requestId',
                             'selectedByUser' => true,
                             'selectedByUserTimestamp' => 0,
                             'source' => 'ACADEMY',
-                            'sourceId' => 'sourceId',
+                            'sourceID' => 'sourceId',
                             'sourceLabel' => 'sourceLabel',
                             'sourceMetadata' => 'sourceMetadata',
                             'sourceUpstreamDeployable' => 'sourceUpstreamDeployable',
                             'sourceVid' => [0],
                             'timestamp' => 0,
                             'unit' => 'unit',
-                            'updatedByUserId' => 0,
+                            'updatedByUserID' => 0,
                             'useTimestampAsPersistenceTimestamp' => true,
                             'value' => 'value',
                         ],
                     ],
                     'eventName' => 'eventName',
                     'eventOrganizer' => 'eventOrganizer',
-                    'externalAccountId' => 'externalAccountId',
-                    'externalEventId' => 'externalEventId',
+                    'externalAccountID' => 'externalAccountId',
+                    'externalEventID' => 'externalEventId',
                 ],
             ],
         ]);
@@ -786,32 +786,32 @@ final class EventsTest extends TestCase
                             'isLargeValue' => true,
                             'name' => 'name',
                             'persistenceTimestamp' => 0,
-                            'requestId' => 'requestId',
+                            'requestID' => 'requestId',
                             'selectedByUser' => true,
                             'selectedByUserTimestamp' => 0,
                             'source' => 'ACADEMY',
-                            'sourceId' => 'sourceId',
+                            'sourceID' => 'sourceId',
                             'sourceLabel' => 'sourceLabel',
                             'sourceMetadata' => 'sourceMetadata',
                             'sourceUpstreamDeployable' => 'sourceUpstreamDeployable',
                             'sourceVid' => [0],
                             'timestamp' => 0,
                             'unit' => 'unit',
-                            'updatedByUserId' => 0,
+                            'updatedByUserID' => 0,
                             'useTimestampAsPersistenceTimestamp' => true,
                             'value' => 'value',
                         ],
                     ],
                     'eventName' => 'eventName',
                     'eventOrganizer' => 'eventOrganizer',
-                    'externalAccountId' => 'externalAccountId',
-                    'externalEventId' => 'externalEventId',
+                    'externalAccountID' => 'externalAccountId',
+                    'externalEventID' => 'externalEventId',
                     'endDateTime' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
                     'eventCancelled' => true,
                     'eventCompleted' => true,
                     'eventDescription' => 'eventDescription',
                     'eventType' => 'eventType',
-                    'eventUrl' => 'eventUrl',
+                    'eventURL' => 'eventUrl',
                     'startDateTime' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
                 ],
             ],
@@ -841,26 +841,26 @@ final class EventsTest extends TestCase
                         'isLargeValue' => true,
                         'name' => 'name',
                         'persistenceTimestamp' => 0,
-                        'requestId' => 'requestId',
+                        'requestID' => 'requestId',
                         'selectedByUser' => true,
                         'selectedByUserTimestamp' => 0,
                         'source' => 'ACADEMY',
-                        'sourceId' => 'sourceId',
+                        'sourceID' => 'sourceId',
                         'sourceLabel' => 'sourceLabel',
                         'sourceMetadata' => 'sourceMetadata',
                         'sourceUpstreamDeployable' => 'sourceUpstreamDeployable',
                         'sourceVid' => [0],
                         'timestamp' => 0,
                         'unit' => 'unit',
-                        'updatedByUserId' => 0,
+                        'updatedByUserID' => 0,
                         'useTimestampAsPersistenceTimestamp' => true,
                         'value' => 'value',
                     ],
                 ],
                 'eventName' => 'eventName',
                 'eventOrganizer' => 'eventOrganizer',
-                'externalAccountId' => 'externalAccountId',
-                'externalEventId' => 'externalEventId',
+                'externalAccountID' => 'externalAccountId',
+                'externalEventID' => 'externalEventId',
             ],
         );
 
@@ -888,32 +888,32 @@ final class EventsTest extends TestCase
                         'isLargeValue' => true,
                         'name' => 'name',
                         'persistenceTimestamp' => 0,
-                        'requestId' => 'requestId',
+                        'requestID' => 'requestId',
                         'selectedByUser' => true,
                         'selectedByUserTimestamp' => 0,
                         'source' => 'ACADEMY',
-                        'sourceId' => 'sourceId',
+                        'sourceID' => 'sourceId',
                         'sourceLabel' => 'sourceLabel',
                         'sourceMetadata' => 'sourceMetadata',
                         'sourceUpstreamDeployable' => 'sourceUpstreamDeployable',
                         'sourceVid' => [0],
                         'timestamp' => 0,
                         'unit' => 'unit',
-                        'updatedByUserId' => 0,
+                        'updatedByUserID' => 0,
                         'useTimestampAsPersistenceTimestamp' => true,
                         'value' => 'value',
                     ],
                 ],
                 'eventName' => 'eventName',
                 'eventOrganizer' => 'eventOrganizer',
-                'externalAccountId' => 'externalAccountId',
-                'externalEventId' => 'externalEventId',
+                'externalAccountID' => 'externalAccountId',
+                'externalEventID' => 'externalEventId',
                 'endDateTime' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
                 'eventCancelled' => true,
                 'eventCompleted' => true,
                 'eventDescription' => 'eventDescription',
                 'eventType' => 'eventType',
-                'eventUrl' => 'eventUrl',
+                'eventURL' => 'eventUrl',
                 'startDateTime' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
             ],
         );
@@ -935,8 +935,8 @@ final class EventsTest extends TestCase
         $result = $this->client->marketing->events->upsertSubscriberStateByEmail(
             'subscriberState',
             [
-                'externalEventId' => 'externalEventId',
-                'externalAccountId' => 'externalAccountId',
+                'externalEventID' => 'externalEventId',
+                'externalAccountID' => 'externalAccountId',
                 'inputs' => [
                     [
                         'contactProperties' => ['foo' => 'string'],
@@ -962,8 +962,8 @@ final class EventsTest extends TestCase
         $result = $this->client->marketing->events->upsertSubscriberStateByEmail(
             'subscriberState',
             [
-                'externalEventId' => 'externalEventId',
-                'externalAccountId' => 'externalAccountId',
+                'externalEventID' => 'externalEventId',
+                'externalAccountID' => 'externalAccountId',
                 'inputs' => [
                     [
                         'contactProperties' => ['foo' => 'string'],
@@ -989,8 +989,8 @@ final class EventsTest extends TestCase
         $result = $this->client->marketing->events->upsertSubscriberStateByID(
             'subscriberState',
             [
-                'externalEventId' => 'externalEventId',
-                'externalAccountId' => 'externalAccountId',
+                'externalEventID' => 'externalEventId',
+                'externalAccountID' => 'externalAccountId',
                 'inputs' => [
                     [
                         'interactionDateTime' => 0,
@@ -1015,8 +1015,8 @@ final class EventsTest extends TestCase
         $result = $this->client->marketing->events->upsertSubscriberStateByID(
             'subscriberState',
             [
-                'externalEventId' => 'externalEventId',
-                'externalAccountId' => 'externalAccountId',
+                'externalEventID' => 'externalEventId',
+                'externalAccountID' => 'externalAccountId',
                 'inputs' => [
                     [
                         'interactionDateTime' => 0,

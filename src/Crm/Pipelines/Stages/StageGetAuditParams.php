@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Crm\Pipelines\StagesService::getAudit()
  *
  * @phpstan-type StageGetAuditParamsShape = array{
- *   objectType: string, pipelineId: string
+ *   objectType: string, pipelineID: string
  * }
  */
 final class StageGetAuditParams implements BaseModel
@@ -28,14 +28,14 @@ final class StageGetAuditParams implements BaseModel
     public string $objectType;
 
     #[Required]
-    public string $pipelineId;
+    public string $pipelineID;
 
     /**
      * `new StageGetAuditParams()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * StageGetAuditParams::with(objectType: ..., pipelineId: ...)
+     * StageGetAuditParams::with(objectType: ..., pipelineID: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -54,12 +54,12 @@ final class StageGetAuditParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(string $objectType, string $pipelineId): self
+    public static function with(string $objectType, string $pipelineID): self
     {
         $obj = new self;
 
         $obj['objectType'] = $objectType;
-        $obj['pipelineId'] = $pipelineId;
+        $obj['pipelineID'] = $pipelineID;
 
         return $obj;
     }
@@ -75,7 +75,7 @@ final class StageGetAuditParams implements BaseModel
     public function withPipelineID(string $pipelineID): self
     {
         $obj = clone $this;
-        $obj['pipelineId'] = $pipelineID;
+        $obj['pipelineID'] = $pipelineID;
 
         return $obj;
     }

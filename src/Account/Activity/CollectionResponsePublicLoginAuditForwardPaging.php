@@ -62,7 +62,7 @@ final class CollectionResponsePublicLoginAuditForwardPaging implements BaseModel
      *   location?: string|null,
      *   regionCode?: string|null,
      *   userAgent?: string|null,
-     *   userId?: int|null,
+     *   userID?: int|null,
      * }> $results
      * @param ForwardPaging|array{next?: NextPage|null} $paging
      */
@@ -90,7 +90,7 @@ final class CollectionResponsePublicLoginAuditForwardPaging implements BaseModel
      *   location?: string|null,
      *   regionCode?: string|null,
      *   userAgent?: string|null,
-     *   userId?: int|null,
+     *   userID?: int|null,
      * }> $results
      */
     public function withResults(array $results): self

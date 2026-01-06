@@ -52,7 +52,7 @@ final class FoldersTest extends TestCase
         }
 
         $result = $this->client->crm->lists->folders->create([
-            'name' => 'name', 'parentFolderId' => 'parentFolderId',
+            'name' => 'name', 'parentFolderID' => 'parentFolderId',
         ]);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -94,7 +94,7 @@ final class FoldersTest extends TestCase
 
         $result = $this->client->crm->lists->folders->move(
             'newParentFolderId',
-            ['folderId' => 'folderId']
+            ['folderID' => 'folderId']
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -110,7 +110,7 @@ final class FoldersTest extends TestCase
 
         $result = $this->client->crm->lists->folders->move(
             'newParentFolderId',
-            ['folderId' => 'folderId']
+            ['folderID' => 'folderId']
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -125,7 +125,7 @@ final class FoldersTest extends TestCase
         }
 
         $result = $this->client->crm->lists->folders->moveList([
-            'listId' => 'listId', 'newFolderId' => 'newFolderId',
+            'listID' => 'listId', 'newFolderID' => 'newFolderId',
         ]);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -140,7 +140,7 @@ final class FoldersTest extends TestCase
         }
 
         $result = $this->client->crm->lists->folders->moveList([
-            'listId' => 'listId', 'newFolderId' => 'newFolderId',
+            'listID' => 'listId', 'newFolderID' => 'newFolderId',
         ]);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

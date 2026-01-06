@@ -52,7 +52,7 @@ final class APIInputVariable implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param APIActionDataValue|array{
-     *   actionId: string, dataKey: string, type: value-of<Type>
+     *   actionID: string, dataKey: string, type: value-of<Type>
      * }|APIObjectPropertyValue|array{
      *   propertyName: string,
      *   type: value-of<APIObjectPropertyValue\Type>,
@@ -104,7 +104,7 @@ final class APIInputVariable implements BaseModel
 
     /**
      * @param APIActionDataValue|array{
-     *   actionId: string, dataKey: string, type: value-of<Type>
+     *   actionID: string, dataKey: string, type: value-of<Type>
      * }|APIObjectPropertyValue|array{
      *   propertyName: string,
      *   type: value-of<APIObjectPropertyValue\Type>,

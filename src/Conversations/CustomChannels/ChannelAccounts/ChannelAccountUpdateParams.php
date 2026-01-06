@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Conversations\CustomChannels\ChannelAccountsService::update()
  *
  * @phpstan-type ChannelAccountUpdateParamsShape = array{
- *   channelId: int, authorized?: bool, name?: string
+ *   channelID: int, authorized?: bool, name?: string
  * }
  */
 final class ChannelAccountUpdateParams implements BaseModel
@@ -26,7 +26,7 @@ final class ChannelAccountUpdateParams implements BaseModel
     use SdkParams;
 
     #[Required]
-    public int $channelId;
+    public int $channelID;
 
     #[Optional]
     public ?bool $authorized;
@@ -39,7 +39,7 @@ final class ChannelAccountUpdateParams implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * ChannelAccountUpdateParams::with(channelId: ...)
+     * ChannelAccountUpdateParams::with(channelID: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -59,13 +59,13 @@ final class ChannelAccountUpdateParams implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      */
     public static function with(
-        int $channelId,
+        int $channelID,
         ?bool $authorized = null,
         ?string $name = null
     ): self {
         $obj = new self;
 
-        $obj['channelId'] = $channelId;
+        $obj['channelID'] = $channelID;
 
         null !== $authorized && $obj['authorized'] = $authorized;
         null !== $name && $obj['name'] = $name;
@@ -76,7 +76,7 @@ final class ChannelAccountUpdateParams implements BaseModel
     public function withChannelID(int $channelID): self
     {
         $obj = clone $this;
-        $obj['channelId'] = $channelID;
+        $obj['channelID'] = $channelID;
 
         return $obj;
     }

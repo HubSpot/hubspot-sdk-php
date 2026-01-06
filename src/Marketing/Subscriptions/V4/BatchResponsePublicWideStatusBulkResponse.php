@@ -98,7 +98,7 @@ final class BatchResponsePublicWideStatusBulkResponse implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<PublicWideStatusBulkResponse|array{
-     *   subscriberIdString: string, wideStatuses: list<PublicWideStatus>
+     *   subscriberIDString: string, wideStatuses: list<PublicWideStatus>
      * }> $results
      * @param Status|value-of<Status> $status
      * @param array<string,string> $links
@@ -139,7 +139,7 @@ final class BatchResponsePublicWideStatusBulkResponse implements BaseModel
      * The array of results from the batch process, each containing subscription status information.
      *
      * @param list<PublicWideStatusBulkResponse|array{
-     *   subscriberIdString: string, wideStatuses: list<PublicWideStatus>
+     *   subscriberIDString: string, wideStatuses: list<PublicWideStatus>
      * }> $results
      */
     public function withResults(array $results): self

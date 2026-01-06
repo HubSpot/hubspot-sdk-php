@@ -7,6 +7,7 @@ namespace HubspotSDK\Services\Files;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Files\File;
 use HubspotSDK\Files\FileActionResponse;
 use HubspotSDK\Files\FileOperations\FileOperationGetByPathParams;
@@ -46,7 +47,7 @@ final class FileOperationsService implements FileOperationsContract
      *   expiresAt?: string|\DateTimeInterface,
      *   isUsableInContent?: bool,
      *   name?: string,
-     *   parentFolderId?: string,
+     *   parentFolderID?: string,
      *   parentFolderPath?: string,
      * }|FileOperationUpdateParams $params
      *
@@ -248,7 +249,7 @@ final class FileOperationsService implements FileOperationsContract
      *   duplicateValidationScope?: 'ENTIRE_PORTAL'|'EXACT_FOLDER'|DuplicateValidationScope,
      *   duplicateValidationStrategy?: 'NONE'|'REJECT'|'RETURN_EXISTING'|DuplicateValidationStrategy,
      *   expiresAt?: string|\DateTimeInterface,
-     *   folderId?: string,
+     *   folderID?: string,
      *   folderPath?: string,
      *   name?: string,
      *   overwrite?: bool,
@@ -339,7 +340,7 @@ final class FileOperationsService implements FileOperationsContract
      *   isUsableInContent?: bool,
      *   limit?: int,
      *   name?: string,
-     *   parentFolderIds?: list<int>,
+     *   parentFolderIDs?: list<int>,
      *   path?: string,
      *   properties?: list<string>,
      *   size?: int,
@@ -373,7 +374,10 @@ final class FileOperationsService implements FileOperationsContract
         $response = $this->client->request(
             method: 'get',
             path: 'files/v3/files/search',
-            query: $parsed,
+            query: Util::array_transform_keys(
+                $parsed,
+                ['parentFolderIDs' => 'parentFolderIds']
+            ),
             options: $options,
             convert: File::class,
             page: Page::class,
@@ -391,7 +395,7 @@ final class FileOperationsService implements FileOperationsContract
      *   charsetHunch?: string,
      *   file?: string,
      *   fileName?: string,
-     *   folderId?: string,
+     *   folderID?: string,
      *   folderPath?: string,
      *   options?: string,
      * }|FileOperationUploadParams $params

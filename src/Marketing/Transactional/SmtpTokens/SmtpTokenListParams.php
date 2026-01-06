@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Marketing\Transactional\SmtpTokensService::list()
  *
  * @phpstan-type SmtpTokenListParamsShape = array{
- *   after?: string, campaignName?: string, emailCampaignId?: string, limit?: int
+ *   after?: string, campaignName?: string, emailCampaignID?: string, limit?: int
  * }
  */
 final class SmtpTokenListParams implements BaseModel
@@ -40,7 +40,7 @@ final class SmtpTokenListParams implements BaseModel
      * Identifier assigned to the campaign provided during the token creation.
      */
     #[Optional]
-    public ?string $emailCampaignId;
+    public ?string $emailCampaignID;
 
     /**
      * Maximum number of tokens to return.
@@ -61,14 +61,14 @@ final class SmtpTokenListParams implements BaseModel
     public static function with(
         ?string $after = null,
         ?string $campaignName = null,
-        ?string $emailCampaignId = null,
+        ?string $emailCampaignID = null,
         ?int $limit = null,
     ): self {
         $obj = new self;
 
         null !== $after && $obj['after'] = $after;
         null !== $campaignName && $obj['campaignName'] = $campaignName;
-        null !== $emailCampaignId && $obj['emailCampaignId'] = $emailCampaignId;
+        null !== $emailCampaignID && $obj['emailCampaignID'] = $emailCampaignID;
         null !== $limit && $obj['limit'] = $limit;
 
         return $obj;
@@ -102,7 +102,7 @@ final class SmtpTokenListParams implements BaseModel
     public function withEmailCampaignID(string $emailCampaignID): self
     {
         $obj = clone $this;
-        $obj['emailCampaignId'] = $emailCampaignID;
+        $obj['emailCampaignID'] = $emailCampaignID;
 
         return $obj;
     }

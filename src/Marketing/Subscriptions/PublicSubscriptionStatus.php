@@ -19,7 +19,7 @@ use HubspotSDK\Marketing\Subscriptions\PublicSubscriptionStatus\Status;
  *   name: string,
  *   sourceOfStatus: value-of<SourceOfStatus>,
  *   status: value-of<Status>,
- *   brandId?: int|null,
+ *   brandID?: int|null,
  *   legalBasis?: value-of<LegalBasis>|null,
  *   legalBasisExplanation?: string|null,
  *   preferenceGroupName?: string|null,
@@ -67,8 +67,8 @@ final class PublicSubscriptionStatus implements BaseModel
     /**
      * The ID of the brand that the subscription is associated with, if there is one.
      */
-    #[Optional]
-    public ?int $brandId;
+    #[Optional('brandId')]
+    public ?int $brandID;
 
     /**
      * The legal reason for the current status of the subscription.
@@ -131,7 +131,7 @@ final class PublicSubscriptionStatus implements BaseModel
         string $name,
         SourceOfStatus|string $sourceOfStatus,
         Status|string $status,
-        ?int $brandId = null,
+        ?int $brandID = null,
         LegalBasis|string|null $legalBasis = null,
         ?string $legalBasisExplanation = null,
         ?string $preferenceGroupName = null,
@@ -144,7 +144,7 @@ final class PublicSubscriptionStatus implements BaseModel
         $obj['sourceOfStatus'] = $sourceOfStatus;
         $obj['status'] = $status;
 
-        null !== $brandId && $obj['brandId'] = $brandId;
+        null !== $brandID && $obj['brandID'] = $brandID;
         null !== $legalBasis && $obj['legalBasis'] = $legalBasis;
         null !== $legalBasisExplanation && $obj['legalBasisExplanation'] = $legalBasisExplanation;
         null !== $preferenceGroupName && $obj['preferenceGroupName'] = $preferenceGroupName;
@@ -218,7 +218,7 @@ final class PublicSubscriptionStatus implements BaseModel
     public function withBrandID(int $brandID): self
     {
         $obj = clone $this;
-        $obj['brandId'] = $brandID;
+        $obj['brandID'] = $brandID;
 
         return $obj;
     }

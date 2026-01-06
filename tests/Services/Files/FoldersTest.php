@@ -55,7 +55,7 @@ final class FoldersTest extends TestCase
 
         $result = $this->client->files->folders->create([
             'name' => 'name',
-            'parentFolderId' => 'parentFolderId',
+            'parentFolderID' => 'parentFolderId',
             'parentPath' => 'parentPath',
         ]);
 
@@ -162,7 +162,7 @@ final class FoldersTest extends TestCase
         }
 
         $result = $this->client->files->folders->updateAsyncByID([
-            'id' => 'id', 'name' => 'name', 'parentFolderId' => 0,
+            'id' => 'id', 'name' => 'name', 'parentFolderID' => 0,
         ]);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

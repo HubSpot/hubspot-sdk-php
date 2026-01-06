@@ -12,15 +12,15 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * @phpstan-type AccessTokenInfoResponseShape = array{
  *   token: string,
- *   app_id: int,
- *   expires_in: int,
- *   hub_id: int,
+ *   appID: int,
+ *   expiresIn: int,
+ *   hubID: int,
  *   scopes: list<string>,
- *   token_type: string,
- *   user_id: int,
- *   hub_domain?: string|null,
- *   is_private_distribution?: bool|null,
- *   signed_access_token?: SignedAccessToken|null,
+ *   tokenType: string,
+ *   userID: int,
+ *   hubDomain?: string|null,
+ *   isPrivateDistribution?: bool|null,
+ *   signedAccessToken?: SignedAccessToken|null,
  *   user?: string|null,
  * }
  */
@@ -32,33 +32,33 @@ final class AccessTokenInfoResponse implements BaseModel
     #[Required]
     public string $token;
 
-    #[Required]
-    public int $app_id;
+    #[Required('app_id')]
+    public int $appID;
 
-    #[Required]
-    public int $expires_in;
+    #[Required('expires_in')]
+    public int $expiresIn;
 
-    #[Required]
-    public int $hub_id;
+    #[Required('hub_id')]
+    public int $hubID;
 
     /** @var list<string> $scopes */
     #[Required(list: 'string')]
     public array $scopes;
 
-    #[Required]
-    public string $token_type;
+    #[Required('token_type')]
+    public string $tokenType;
 
-    #[Required]
-    public int $user_id;
+    #[Required('user_id')]
+    public int $userID;
 
-    #[Optional]
-    public ?string $hub_domain;
+    #[Optional('hub_domain')]
+    public ?string $hubDomain;
 
-    #[Optional]
-    public ?bool $is_private_distribution;
+    #[Optional('is_private_distribution')]
+    public ?bool $isPrivateDistribution;
 
-    #[Optional]
-    public ?SignedAccessToken $signed_access_token;
+    #[Optional('signed_access_token')]
+    public ?SignedAccessToken $signedAccessToken;
 
     #[Optional]
     public ?string $user;
@@ -70,12 +70,12 @@ final class AccessTokenInfoResponse implements BaseModel
      * ```
      * AccessTokenInfoResponse::with(
      *   token: ...,
-     *   app_id: ...,
-     *   expires_in: ...,
-     *   hub_id: ...,
+     *   appID: ...,
+     *   expiresIn: ...,
+     *   hubID: ...,
      *   scopes: ...,
-     *   token_type: ...,
-     *   user_id: ...,
+     *   tokenType: ...,
+     *   userID: ...,
      * )
      * ```
      *
@@ -104,11 +104,11 @@ final class AccessTokenInfoResponse implements BaseModel
      *
      * @param list<string> $scopes
      * @param SignedAccessToken|array{
-     *   appId: int,
+     *   appID: int,
      *   expiresAt: int,
-     *   hubId: int,
+     *   hubID: int,
      *   hublet: string,
-     *   installingUserId: int,
+     *   installingUserID: int,
      *   isPrivateDistribution: bool,
      *   isServiceAccount: bool,
      *   isUserLevel: bool,
@@ -118,35 +118,35 @@ final class AccessTokenInfoResponse implements BaseModel
      *   signature: string,
      *   trialScopes: string,
      *   trialScopeToScopeGroupPks: string,
-     *   userId: int,
-     * } $signed_access_token
+     *   userID: int,
+     * } $signedAccessToken
      */
     public static function with(
         string $token,
-        int $app_id,
-        int $expires_in,
-        int $hub_id,
+        int $appID,
+        int $expiresIn,
+        int $hubID,
         array $scopes,
-        string $token_type,
-        int $user_id,
-        ?string $hub_domain = null,
-        ?bool $is_private_distribution = null,
-        SignedAccessToken|array|null $signed_access_token = null,
+        string $tokenType,
+        int $userID,
+        ?string $hubDomain = null,
+        ?bool $isPrivateDistribution = null,
+        SignedAccessToken|array|null $signedAccessToken = null,
         ?string $user = null,
     ): self {
         $obj = new self;
 
         $obj['token'] = $token;
-        $obj['app_id'] = $app_id;
-        $obj['expires_in'] = $expires_in;
-        $obj['hub_id'] = $hub_id;
+        $obj['appID'] = $appID;
+        $obj['expiresIn'] = $expiresIn;
+        $obj['hubID'] = $hubID;
         $obj['scopes'] = $scopes;
-        $obj['token_type'] = $token_type;
-        $obj['user_id'] = $user_id;
+        $obj['tokenType'] = $tokenType;
+        $obj['userID'] = $userID;
 
-        null !== $hub_domain && $obj['hub_domain'] = $hub_domain;
-        null !== $is_private_distribution && $obj['is_private_distribution'] = $is_private_distribution;
-        null !== $signed_access_token && $obj['signed_access_token'] = $signed_access_token;
+        null !== $hubDomain && $obj['hubDomain'] = $hubDomain;
+        null !== $isPrivateDistribution && $obj['isPrivateDistribution'] = $isPrivateDistribution;
+        null !== $signedAccessToken && $obj['signedAccessToken'] = $signedAccessToken;
         null !== $user && $obj['user'] = $user;
 
         return $obj;
@@ -163,7 +163,7 @@ final class AccessTokenInfoResponse implements BaseModel
     public function withAppID(int $appID): self
     {
         $obj = clone $this;
-        $obj['app_id'] = $appID;
+        $obj['appID'] = $appID;
 
         return $obj;
     }
@@ -171,7 +171,7 @@ final class AccessTokenInfoResponse implements BaseModel
     public function withExpiresIn(int $expiresIn): self
     {
         $obj = clone $this;
-        $obj['expires_in'] = $expiresIn;
+        $obj['expiresIn'] = $expiresIn;
 
         return $obj;
     }
@@ -179,7 +179,7 @@ final class AccessTokenInfoResponse implements BaseModel
     public function withHubID(int $hubID): self
     {
         $obj = clone $this;
-        $obj['hub_id'] = $hubID;
+        $obj['hubID'] = $hubID;
 
         return $obj;
     }
@@ -198,7 +198,7 @@ final class AccessTokenInfoResponse implements BaseModel
     public function withTokenType(string $tokenType): self
     {
         $obj = clone $this;
-        $obj['token_type'] = $tokenType;
+        $obj['tokenType'] = $tokenType;
 
         return $obj;
     }
@@ -206,7 +206,7 @@ final class AccessTokenInfoResponse implements BaseModel
     public function withUserID(int $userID): self
     {
         $obj = clone $this;
-        $obj['user_id'] = $userID;
+        $obj['userID'] = $userID;
 
         return $obj;
     }
@@ -214,7 +214,7 @@ final class AccessTokenInfoResponse implements BaseModel
     public function withHubDomain(string $hubDomain): self
     {
         $obj = clone $this;
-        $obj['hub_domain'] = $hubDomain;
+        $obj['hubDomain'] = $hubDomain;
 
         return $obj;
     }
@@ -222,18 +222,18 @@ final class AccessTokenInfoResponse implements BaseModel
     public function withIsPrivateDistribution(bool $isPrivateDistribution): self
     {
         $obj = clone $this;
-        $obj['is_private_distribution'] = $isPrivateDistribution;
+        $obj['isPrivateDistribution'] = $isPrivateDistribution;
 
         return $obj;
     }
 
     /**
      * @param SignedAccessToken|array{
-     *   appId: int,
+     *   appID: int,
      *   expiresAt: int,
-     *   hubId: int,
+     *   hubID: int,
      *   hublet: string,
-     *   installingUserId: int,
+     *   installingUserID: int,
      *   isPrivateDistribution: bool,
      *   isServiceAccount: bool,
      *   isUserLevel: bool,
@@ -243,14 +243,14 @@ final class AccessTokenInfoResponse implements BaseModel
      *   signature: string,
      *   trialScopes: string,
      *   trialScopeToScopeGroupPks: string,
-     *   userId: int,
+     *   userID: int,
      * } $signedAccessToken
      */
     public function withSignedAccessToken(
         SignedAccessToken|array $signedAccessToken
     ): self {
         $obj = clone $this;
-        $obj['signed_access_token'] = $signedAccessToken;
+        $obj['signedAccessToken'] = $signedAccessToken;
 
         return $obj;
     }

@@ -48,7 +48,7 @@ final class TicketsTest extends TestCase
                     'types' => [
                         [
                             'associationCategory' => 'HUBSPOT_DEFINED',
-                            'associationTypeId' => 0,
+                            'associationTypeID' => 0,
                         ],
                     ],
                 ],
@@ -74,7 +74,7 @@ final class TicketsTest extends TestCase
                     'types' => [
                         [
                             'associationCategory' => 'HUBSPOT_DEFINED',
-                            'associationTypeId' => 0,
+                            'associationTypeID' => 0,
                         ],
                     ],
                 ],
@@ -165,8 +165,8 @@ final class TicketsTest extends TestCase
         }
 
         $result = $this->client->crm->objects->tickets->merge([
-            'objectIdToMerge' => 'objectIdToMerge',
-            'primaryObjectId' => 'primaryObjectId',
+            'objectIDToMerge' => 'objectIdToMerge',
+            'primaryObjectID' => 'primaryObjectId',
         ]);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -181,8 +181,8 @@ final class TicketsTest extends TestCase
         }
 
         $result = $this->client->crm->objects->tickets->merge([
-            'objectIdToMerge' => 'objectIdToMerge',
-            'primaryObjectId' => 'primaryObjectId',
+            'objectIDToMerge' => 'objectIdToMerge',
+            'primaryObjectID' => 'primaryObjectId',
         ]);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * A Business Unit's logo metadata.
  *
  * @phpstan-type PublicBusinessUnitLogoMetadataShape = array{
- *   logoAltText?: string|null, logoUrl?: string|null, resizedUrl?: string|null
+ *   logoAltText?: string|null, logoURL?: string|null, resizedURL?: string|null
  * }
  */
 final class PublicBusinessUnitLogoMetadata implements BaseModel
@@ -29,14 +29,14 @@ final class PublicBusinessUnitLogoMetadata implements BaseModel
     /**
      * The logo's url.
      */
-    #[Optional]
-    public ?string $logoUrl;
+    #[Optional('logoUrl')]
+    public ?string $logoURL;
 
     /**
      * The logo's resized url.
      */
-    #[Optional]
-    public ?string $resizedUrl;
+    #[Optional('resizedUrl')]
+    public ?string $resizedURL;
 
     public function __construct()
     {
@@ -50,14 +50,14 @@ final class PublicBusinessUnitLogoMetadata implements BaseModel
      */
     public static function with(
         ?string $logoAltText = null,
-        ?string $logoUrl = null,
-        ?string $resizedUrl = null,
+        ?string $logoURL = null,
+        ?string $resizedURL = null,
     ): self {
         $obj = new self;
 
         null !== $logoAltText && $obj['logoAltText'] = $logoAltText;
-        null !== $logoUrl && $obj['logoUrl'] = $logoUrl;
-        null !== $resizedUrl && $obj['resizedUrl'] = $resizedUrl;
+        null !== $logoURL && $obj['logoURL'] = $logoURL;
+        null !== $resizedURL && $obj['resizedURL'] = $resizedURL;
 
         return $obj;
     }
@@ -79,7 +79,7 @@ final class PublicBusinessUnitLogoMetadata implements BaseModel
     public function withLogoURL(string $logoURL): self
     {
         $obj = clone $this;
-        $obj['logoUrl'] = $logoURL;
+        $obj['logoURL'] = $logoURL;
 
         return $obj;
     }
@@ -90,7 +90,7 @@ final class PublicBusinessUnitLogoMetadata implements BaseModel
     public function withResizedURL(string $resizedURL): self
     {
         $obj = clone $this;
-        $obj['resizedUrl'] = $resizedURL;
+        $obj['resizedURL'] = $resizedURL;
 
         return $obj;
     }

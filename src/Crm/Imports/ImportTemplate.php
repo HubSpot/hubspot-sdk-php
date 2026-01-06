@@ -11,7 +11,7 @@ use HubspotSDK\Crm\Imports\ImportTemplate\TemplateType;
 
 /**
  * @phpstan-type ImportTemplateShape = array{
- *   templateId: int, templateType: value-of<TemplateType>
+ *   templateID: int, templateType: value-of<TemplateType>
  * }
  */
 final class ImportTemplate implements BaseModel
@@ -19,8 +19,8 @@ final class ImportTemplate implements BaseModel
     /** @use SdkModel<ImportTemplateShape> */
     use SdkModel;
 
-    #[Required]
-    public int $templateId;
+    #[Required('templateId')]
+    public int $templateID;
 
     /** @var value-of<TemplateType> $templateType */
     #[Required(enum: TemplateType::class)]
@@ -31,7 +31,7 @@ final class ImportTemplate implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * ImportTemplate::with(templateId: ..., templateType: ...)
+     * ImportTemplate::with(templateID: ..., templateType: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -53,12 +53,12 @@ final class ImportTemplate implements BaseModel
      * @param TemplateType|value-of<TemplateType> $templateType
      */
     public static function with(
-        int $templateId,
+        int $templateID,
         TemplateType|string $templateType
     ): self {
         $obj = new self;
 
-        $obj['templateId'] = $templateId;
+        $obj['templateID'] = $templateID;
         $obj['templateType'] = $templateType;
 
         return $obj;
@@ -67,7 +67,7 @@ final class ImportTemplate implements BaseModel
     public function withTemplateID(int $templateID): self
     {
         $obj = clone $this;
-        $obj['templateId'] = $templateID;
+        $obj['templateID'] = $templateID;
 
         return $obj;
     }

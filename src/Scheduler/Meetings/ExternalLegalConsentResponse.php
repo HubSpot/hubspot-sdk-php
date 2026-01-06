@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type ExternalLegalConsentResponseShape = array{
- *   communicationTypeId: string, consented: bool
+ *   communicationTypeID: string, consented: bool
  * }
  */
 final class ExternalLegalConsentResponse implements BaseModel
@@ -18,8 +18,8 @@ final class ExternalLegalConsentResponse implements BaseModel
     /** @use SdkModel<ExternalLegalConsentResponseShape> */
     use SdkModel;
 
-    #[Required]
-    public string $communicationTypeId;
+    #[Required('communicationTypeId')]
+    public string $communicationTypeID;
 
     #[Required]
     public bool $consented;
@@ -29,7 +29,7 @@ final class ExternalLegalConsentResponse implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * ExternalLegalConsentResponse::with(communicationTypeId: ..., consented: ...)
+     * ExternalLegalConsentResponse::with(communicationTypeID: ..., consented: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -51,12 +51,12 @@ final class ExternalLegalConsentResponse implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      */
     public static function with(
-        string $communicationTypeId,
+        string $communicationTypeID,
         bool $consented
     ): self {
         $obj = new self;
 
-        $obj['communicationTypeId'] = $communicationTypeId;
+        $obj['communicationTypeID'] = $communicationTypeID;
         $obj['consented'] = $consented;
 
         return $obj;
@@ -65,7 +65,7 @@ final class ExternalLegalConsentResponse implements BaseModel
     public function withCommunicationTypeID(string $communicationTypeID): self
     {
         $obj = clone $this;
-        $obj['communicationTypeId'] = $communicationTypeID;
+        $obj['communicationTypeID'] = $communicationTypeID;
 
         return $obj;
     }

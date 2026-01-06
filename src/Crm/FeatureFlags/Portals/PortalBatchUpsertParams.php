@@ -17,9 +17,9 @@ use HubspotSDK\Crm\FeatureFlags\BatchPortalEntry\FlagState;
  * @see HubspotSDK\Services\Crm\FeatureFlags\PortalsService::batchUpsert()
  *
  * @phpstan-type PortalBatchUpsertParamsShape = array{
- *   appId: int,
+ *   appID: int,
  *   portalStates: list<BatchPortalEntry|array{
- *     flagState: value-of<FlagState>, portalId: int
+ *     flagState: value-of<FlagState>, portalID: int
  *   }>,
  * }
  */
@@ -30,7 +30,7 @@ final class PortalBatchUpsertParams implements BaseModel
     use SdkParams;
 
     #[Required]
-    public int $appId;
+    public int $appID;
 
     /** @var list<BatchPortalEntry> $portalStates */
     #[Required(list: BatchPortalEntry::class)]
@@ -41,7 +41,7 @@ final class PortalBatchUpsertParams implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * PortalBatchUpsertParams::with(appId: ..., portalStates: ...)
+     * PortalBatchUpsertParams::with(appID: ..., portalStates: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -61,14 +61,14 @@ final class PortalBatchUpsertParams implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<BatchPortalEntry|array{
-     *   flagState: value-of<FlagState>, portalId: int
+     *   flagState: value-of<FlagState>, portalID: int
      * }> $portalStates
      */
-    public static function with(int $appId, array $portalStates): self
+    public static function with(int $appID, array $portalStates): self
     {
         $obj = new self;
 
-        $obj['appId'] = $appId;
+        $obj['appID'] = $appID;
         $obj['portalStates'] = $portalStates;
 
         return $obj;
@@ -77,14 +77,14 @@ final class PortalBatchUpsertParams implements BaseModel
     public function withAppID(int $appID): self
     {
         $obj = clone $this;
-        $obj['appId'] = $appID;
+        $obj['appID'] = $appID;
 
         return $obj;
     }
 
     /**
      * @param list<BatchPortalEntry|array{
-     *   flagState: value-of<FlagState>, portalId: int
+     *   flagState: value-of<FlagState>, portalID: int
      * }> $portalStates
      */
     public function withPortalStates(array $portalStates): self

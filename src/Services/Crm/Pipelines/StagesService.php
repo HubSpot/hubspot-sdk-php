@@ -72,7 +72,7 @@ final class StagesService implements StagesContract
      *
      * @param array{
      *   objectType: string,
-     *   pipelineId: string,
+     *   pipelineID: string,
      *   metadata: array<string,string>,
      *   archived?: bool,
      *   displayOrder?: int,
@@ -92,8 +92,8 @@ final class StagesService implements StagesContract
         );
         $objectType = $parsed['objectType'];
         unset($parsed['objectType']);
-        $pipelineID = $parsed['pipelineId'];
-        unset($parsed['pipelineId']);
+        $pipelineID = $parsed['pipelineID'];
+        unset($parsed['pipelineID']);
 
         /** @var BaseResponse<PipelineStage> */
         $response = $this->client->request(
@@ -106,7 +106,7 @@ final class StagesService implements StagesContract
             ],
             body: (object) array_diff_key(
                 $parsed,
-                array_flip(['objectType', 'pipelineId'])
+                array_flip(['objectType', 'pipelineID'])
             ),
             options: $options,
             convert: PipelineStage::class,
@@ -152,7 +152,7 @@ final class StagesService implements StagesContract
      *
      * Delete a specific stage from a pipeline.
      *
-     * @param array{objectType: string, pipelineId: string}|StageDeleteParams $params
+     * @param array{objectType: string, pipelineID: string}|StageDeleteParams $params
      *
      * @throws APIException
      */
@@ -167,8 +167,8 @@ final class StagesService implements StagesContract
         );
         $objectType = $parsed['objectType'];
         unset($parsed['objectType']);
-        $pipelineID = $parsed['pipelineId'];
-        unset($parsed['pipelineId']);
+        $pipelineID = $parsed['pipelineID'];
+        unset($parsed['pipelineID']);
 
         /** @var BaseResponse<mixed> */
         $response = $this->client->request(
@@ -191,7 +191,7 @@ final class StagesService implements StagesContract
      *
      * Retrieve a specific stage from a pipeline using its ID.
      *
-     * @param array{objectType: string, pipelineId: string}|StageGetParams $params
+     * @param array{objectType: string, pipelineID: string}|StageGetParams $params
      *
      * @throws APIException
      */
@@ -206,8 +206,8 @@ final class StagesService implements StagesContract
         );
         $objectType = $parsed['objectType'];
         unset($parsed['objectType']);
-        $pipelineID = $parsed['pipelineId'];
-        unset($parsed['pipelineId']);
+        $pipelineID = $parsed['pipelineID'];
+        unset($parsed['pipelineID']);
 
         /** @var BaseResponse<PipelineStage> */
         $response = $this->client->request(
@@ -230,7 +230,7 @@ final class StagesService implements StagesContract
      *
      * Return a reverse chronological list of all mutations that have occurred on the pipeline stage identified by `{stageId}`.
      *
-     * @param array{objectType: string, pipelineId: string}|StageGetAuditParams $params
+     * @param array{objectType: string, pipelineID: string}|StageGetAuditParams $params
      *
      * @throws APIException
      */
@@ -245,8 +245,8 @@ final class StagesService implements StagesContract
         );
         $objectType = $parsed['objectType'];
         unset($parsed['objectType']);
-        $pipelineID = $parsed['pipelineId'];
-        unset($parsed['pipelineId']);
+        $pipelineID = $parsed['pipelineID'];
+        unset($parsed['pipelineID']);
 
         /** @var BaseResponse<CollectionResponsePublicAuditInfoNoPaging> */
         $response = $this->client->request(
@@ -271,7 +271,7 @@ final class StagesService implements StagesContract
      *
      * @param array{
      *   objectType: string,
-     *   pipelineId: string,
+     *   pipelineID: string,
      *   displayOrder: int,
      *   label: string,
      *   metadata: array<string,string>,
@@ -290,8 +290,8 @@ final class StagesService implements StagesContract
         );
         $objectType = $parsed['objectType'];
         unset($parsed['objectType']);
-        $pipelineID = $parsed['pipelineId'];
-        unset($parsed['pipelineId']);
+        $pipelineID = $parsed['pipelineID'];
+        unset($parsed['pipelineID']);
 
         /** @var BaseResponse<PipelineStage> */
         $response = $this->client->request(
@@ -304,7 +304,7 @@ final class StagesService implements StagesContract
             ],
             body: (object) array_diff_key(
                 $parsed,
-                array_flip(['objectType', 'pipelineId'])
+                array_flip(['objectType', 'pipelineID'])
             ),
             options: $options,
             convert: PipelineStage::class,

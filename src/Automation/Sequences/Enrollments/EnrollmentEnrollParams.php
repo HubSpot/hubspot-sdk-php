@@ -16,10 +16,10 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Automation\Sequences\EnrollmentsService::enroll()
  *
  * @phpstan-type EnrollmentEnrollParamsShape = array{
- *   userId: string,
- *   contactId: string,
+ *   userID: string,
+ *   contactID: string,
  *   senderEmail: string,
- *   sequenceId: string,
+ *   sequenceID: string,
  *   senderAliasAddress?: string,
  * }
  */
@@ -30,16 +30,16 @@ final class EnrollmentEnrollParams implements BaseModel
     use SdkParams;
 
     #[Required]
-    public string $userId;
+    public string $userID;
 
-    #[Required]
-    public string $contactId;
+    #[Required('contactId')]
+    public string $contactID;
 
     #[Required]
     public string $senderEmail;
 
-    #[Required]
-    public string $sequenceId;
+    #[Required('sequenceId')]
+    public string $sequenceID;
 
     #[Optional]
     public ?string $senderAliasAddress;
@@ -50,7 +50,7 @@ final class EnrollmentEnrollParams implements BaseModel
      * To enforce required parameters use
      * ```
      * EnrollmentEnrollParams::with(
-     *   userId: ..., contactId: ..., senderEmail: ..., sequenceId: ...
+     *   userID: ..., contactID: ..., senderEmail: ..., sequenceID: ...
      * )
      * ```
      *
@@ -75,18 +75,18 @@ final class EnrollmentEnrollParams implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      */
     public static function with(
-        string $userId,
-        string $contactId,
+        string $userID,
+        string $contactID,
         string $senderEmail,
-        string $sequenceId,
+        string $sequenceID,
         ?string $senderAliasAddress = null,
     ): self {
         $obj = new self;
 
-        $obj['userId'] = $userId;
-        $obj['contactId'] = $contactId;
+        $obj['userID'] = $userID;
+        $obj['contactID'] = $contactID;
         $obj['senderEmail'] = $senderEmail;
-        $obj['sequenceId'] = $sequenceId;
+        $obj['sequenceID'] = $sequenceID;
 
         null !== $senderAliasAddress && $obj['senderAliasAddress'] = $senderAliasAddress;
 
@@ -96,7 +96,7 @@ final class EnrollmentEnrollParams implements BaseModel
     public function withUserID(string $userID): self
     {
         $obj = clone $this;
-        $obj['userId'] = $userID;
+        $obj['userID'] = $userID;
 
         return $obj;
     }
@@ -104,7 +104,7 @@ final class EnrollmentEnrollParams implements BaseModel
     public function withContactID(string $contactID): self
     {
         $obj = clone $this;
-        $obj['contactId'] = $contactID;
+        $obj['contactID'] = $contactID;
 
         return $obj;
     }
@@ -120,7 +120,7 @@ final class EnrollmentEnrollParams implements BaseModel
     public function withSequenceID(string $sequenceID): self
     {
         $obj = clone $this;
-        $obj['sequenceId'] = $sequenceID;
+        $obj['sequenceID'] = $sequenceID;
 
         return $obj;
     }

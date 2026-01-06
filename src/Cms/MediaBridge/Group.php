@@ -13,11 +13,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   deleted: bool,
  *   displayName: string,
  *   displayOrder: int,
- *   fulcrumPortalId: int,
+ *   fulcrumPortalID: int,
  *   fulcrumTimestamp: int,
  *   hubspotDefined: bool,
  *   name: string,
- *   portalId: int,
+ *   portalID: int,
  * }
  */
 final class Group implements BaseModel
@@ -34,8 +34,8 @@ final class Group implements BaseModel
     #[Required]
     public int $displayOrder;
 
-    #[Required]
-    public int $fulcrumPortalId;
+    #[Required('fulcrumPortalId')]
+    public int $fulcrumPortalID;
 
     #[Required]
     public int $fulcrumTimestamp;
@@ -46,8 +46,8 @@ final class Group implements BaseModel
     #[Required]
     public string $name;
 
-    #[Required]
-    public int $portalId;
+    #[Required('portalId')]
+    public int $portalID;
 
     /**
      * `new Group()` is missing required properties by the API.
@@ -58,11 +58,11 @@ final class Group implements BaseModel
      *   deleted: ...,
      *   displayName: ...,
      *   displayOrder: ...,
-     *   fulcrumPortalId: ...,
+     *   fulcrumPortalID: ...,
      *   fulcrumTimestamp: ...,
      *   hubspotDefined: ...,
      *   name: ...,
-     *   portalId: ...,
+     *   portalID: ...,
      * )
      * ```
      *
@@ -94,22 +94,22 @@ final class Group implements BaseModel
         bool $deleted,
         string $displayName,
         int $displayOrder,
-        int $fulcrumPortalId,
+        int $fulcrumPortalID,
         int $fulcrumTimestamp,
         bool $hubspotDefined,
         string $name,
-        int $portalId,
+        int $portalID,
     ): self {
         $obj = new self;
 
         $obj['deleted'] = $deleted;
         $obj['displayName'] = $displayName;
         $obj['displayOrder'] = $displayOrder;
-        $obj['fulcrumPortalId'] = $fulcrumPortalId;
+        $obj['fulcrumPortalID'] = $fulcrumPortalID;
         $obj['fulcrumTimestamp'] = $fulcrumTimestamp;
         $obj['hubspotDefined'] = $hubspotDefined;
         $obj['name'] = $name;
-        $obj['portalId'] = $portalId;
+        $obj['portalID'] = $portalID;
 
         return $obj;
     }
@@ -141,7 +141,7 @@ final class Group implements BaseModel
     public function withFulcrumPortalID(int $fulcrumPortalID): self
     {
         $obj = clone $this;
-        $obj['fulcrumPortalId'] = $fulcrumPortalID;
+        $obj['fulcrumPortalID'] = $fulcrumPortalID;
 
         return $obj;
     }
@@ -173,7 +173,7 @@ final class Group implements BaseModel
     public function withPortalID(int $portalID): self
     {
         $obj = clone $this;
-        $obj['portalId'] = $portalID;
+        $obj['portalID'] = $portalID;
 
         return $obj;
     }

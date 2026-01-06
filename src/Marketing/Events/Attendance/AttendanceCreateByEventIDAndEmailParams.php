@@ -26,7 +26,7 @@ use HubspotSDK\Marketing\Events\MarketingEventEmailSubscriber;
  * @see HubspotSDK\Services\Marketing\Events\AttendanceService::createByEventIDAndEmail()
  *
  * @phpstan-type AttendanceCreateByEventIDAndEmailParamsShape = array{
- *   objectId: string,
+ *   objectID: string,
  *   inputs: list<MarketingEventEmailSubscriber|array{
  *     contactProperties: array<string,string>,
  *     email: string,
@@ -42,7 +42,7 @@ final class AttendanceCreateByEventIDAndEmailParams implements BaseModel
     use SdkParams;
 
     #[Required]
-    public string $objectId;
+    public string $objectID;
 
     /**
      * List of marketing event details to create or update.
@@ -57,7 +57,7 @@ final class AttendanceCreateByEventIDAndEmailParams implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * AttendanceCreateByEventIDAndEmailParams::with(objectId: ..., inputs: ...)
+     * AttendanceCreateByEventIDAndEmailParams::with(objectID: ..., inputs: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -85,11 +85,11 @@ final class AttendanceCreateByEventIDAndEmailParams implements BaseModel
      *   properties: array<string,string>,
      * }> $inputs
      */
-    public static function with(string $objectId, array $inputs): self
+    public static function with(string $objectID, array $inputs): self
     {
         $obj = new self;
 
-        $obj['objectId'] = $objectId;
+        $obj['objectID'] = $objectID;
         $obj['inputs'] = $inputs;
 
         return $obj;
@@ -98,7 +98,7 @@ final class AttendanceCreateByEventIDAndEmailParams implements BaseModel
     public function withObjectID(string $objectID): self
     {
         $obj = clone $this;
-        $obj['objectId'] = $objectID;
+        $obj['objectID'] = $objectID;
 
         return $obj;
     }

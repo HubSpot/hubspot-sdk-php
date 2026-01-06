@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type PublicMessageHeaderShape = array{
- *   type: value-of<Type>, fileId?: int|null, text?: string|null
+ *   type: value-of<Type>, fileID?: int|null, text?: string|null
  * }
  */
 final class PublicMessageHeader implements BaseModel
@@ -24,8 +24,8 @@ final class PublicMessageHeader implements BaseModel
     #[Required(enum: Type::class)]
     public string $type;
 
-    #[Optional]
-    public ?int $fileId;
+    #[Optional('fileId')]
+    public ?int $fileID;
 
     #[Optional]
     public ?string $text;
@@ -58,14 +58,14 @@ final class PublicMessageHeader implements BaseModel
      */
     public static function with(
         Type|string $type = 'MESSAGE_HEADER',
-        ?int $fileId = null,
+        ?int $fileID = null,
         ?string $text = null,
     ): self {
         $obj = new self;
 
         $obj['type'] = $type;
 
-        null !== $fileId && $obj['fileId'] = $fileId;
+        null !== $fileID && $obj['fileID'] = $fileID;
         null !== $text && $obj['text'] = $text;
 
         return $obj;
@@ -85,7 +85,7 @@ final class PublicMessageHeader implements BaseModel
     public function withFileID(int $fileID): self
     {
         $obj = clone $this;
-        $obj['fileId'] = $fileID;
+        $obj['fileID'] = $fileID;
 
         return $obj;
     }

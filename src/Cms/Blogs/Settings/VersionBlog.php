@@ -70,7 +70,7 @@ final class VersionBlog implements BaseModel
      *
      * @param Blog|array{
      *   id: string,
-     *   absoluteUrl: string,
+     *   absoluteURL: string,
      *   allowComments: bool,
      *   created: \DateTimeInterface,
      *   deletedAt: \DateTimeInterface,
@@ -82,7 +82,7 @@ final class VersionBlog implements BaseModel
      *   publicAccessRulesEnabled: bool,
      *   publicTitle: string,
      *   slug: string,
-     *   translatedFromId: string,
+     *   translatedFromID: string,
      *   updated: \DateTimeInterface,
      * } $object
      * @param VersionUser|array{id: string, email: string, fullName: string} $user
@@ -117,7 +117,7 @@ final class VersionBlog implements BaseModel
     /**
      * @param Blog|array{
      *   id: string,
-     *   absoluteUrl: string,
+     *   absoluteURL: string,
      *   allowComments: bool,
      *   created: \DateTimeInterface,
      *   deletedAt: \DateTimeInterface,
@@ -129,7 +129,7 @@ final class VersionBlog implements BaseModel
      *   publicAccessRulesEnabled: bool,
      *   publicTitle: string,
      *   slug: string,
-     *   translatedFromId: string,
+     *   translatedFromID: string,
      *   updated: \DateTimeInterface,
      * } $object
      */

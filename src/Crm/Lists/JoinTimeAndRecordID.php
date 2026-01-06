@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type JoinTimeAndRecordIDShape = array{
- *   membershipTimestamp: \DateTimeInterface, recordId: string
+ *   membershipTimestamp: \DateTimeInterface, recordID: string
  * }
  */
 final class JoinTimeAndRecordID implements BaseModel
@@ -21,15 +21,15 @@ final class JoinTimeAndRecordID implements BaseModel
     #[Required]
     public \DateTimeInterface $membershipTimestamp;
 
-    #[Required]
-    public string $recordId;
+    #[Required('recordId')]
+    public string $recordID;
 
     /**
      * `new JoinTimeAndRecordID()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * JoinTimeAndRecordID::with(membershipTimestamp: ..., recordId: ...)
+     * JoinTimeAndRecordID::with(membershipTimestamp: ..., recordID: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -50,12 +50,12 @@ final class JoinTimeAndRecordID implements BaseModel
      */
     public static function with(
         \DateTimeInterface $membershipTimestamp,
-        string $recordId
+        string $recordID
     ): self {
         $obj = new self;
 
         $obj['membershipTimestamp'] = $membershipTimestamp;
-        $obj['recordId'] = $recordId;
+        $obj['recordID'] = $recordID;
 
         return $obj;
     }
@@ -72,7 +72,7 @@ final class JoinTimeAndRecordID implements BaseModel
     public function withRecordID(string $recordID): self
     {
         $obj = clone $this;
-        $obj['recordId'] = $recordID;
+        $obj['recordID'] = $recordID;
 
         return $obj;
     }

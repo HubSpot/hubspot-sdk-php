@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Services\Cms\Hubdb\TablesService::unpublish()
  *
- * @phpstan-type TableUnpublishParamsShape = array{includeForeignIds?: bool}
+ * @phpstan-type TableUnpublishParamsShape = array{includeForeignIDs?: bool}
  */
 final class TableUnpublishParams implements BaseModel
 {
@@ -26,7 +26,7 @@ final class TableUnpublishParams implements BaseModel
      * Set this to `true` to populate foreign ID values in the response.
      */
     #[Optional]
-    public ?bool $includeForeignIds;
+    public ?bool $includeForeignIDs;
 
     public function __construct()
     {
@@ -38,11 +38,11 @@ final class TableUnpublishParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(?bool $includeForeignIds = null): self
+    public static function with(?bool $includeForeignIDs = null): self
     {
         $obj = new self;
 
-        null !== $includeForeignIds && $obj['includeForeignIds'] = $includeForeignIds;
+        null !== $includeForeignIDs && $obj['includeForeignIDs'] = $includeForeignIDs;
 
         return $obj;
     }
@@ -53,7 +53,7 @@ final class TableUnpublishParams implements BaseModel
     public function withIncludeForeignIDs(bool $includeForeignIDs): self
     {
         $obj = clone $this;
-        $obj['includeForeignIds'] = $includeForeignIDs;
+        $obj['includeForeignIDs'] = $includeForeignIDs;
 
         return $obj;
     }

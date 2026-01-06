@@ -58,7 +58,7 @@ final class PublicAssociationMultiPost implements BaseModel
      * @param PublicObjectID|array{id: string} $from
      * @param PublicObjectID|array{id: string} $to
      * @param list<AssociationSpec|array{
-     *   associationCategory: value-of<AssociationCategory>, associationTypeId: int
+     *   associationCategory: value-of<AssociationCategory>, associationTypeID: int
      * }> $types
      */
     public static function with(
@@ -99,7 +99,7 @@ final class PublicAssociationMultiPost implements BaseModel
 
     /**
      * @param list<AssociationSpec|array{
-     *   associationCategory: value-of<AssociationCategory>, associationTypeId: int
+     *   associationCategory: value-of<AssociationCategory>, associationTypeID: int
      * }> $types
      */
     public function withTypes(array $types): self

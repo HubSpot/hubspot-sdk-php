@@ -40,7 +40,7 @@ final class TokensTest extends TestCase
         $result = $this->client->crm->timeline->tokens->create(
             'eventTemplateId',
             [
-                'appId' => 0,
+                'appID' => 0,
                 'label' => 'Pet Type',
                 'name' => 'petType',
                 'type' => 'enumeration',
@@ -61,7 +61,7 @@ final class TokensTest extends TestCase
         $result = $this->client->crm->timeline->tokens->create(
             'eventTemplateId',
             [
-                'appId' => 0,
+                'appID' => 0,
                 'label' => 'Pet Type',
                 'name' => 'petType',
                 'type' => 'enumeration',
@@ -89,8 +89,8 @@ final class TokensTest extends TestCase
         $result = $this->client->crm->timeline->tokens->update(
             'tokenName',
             [
-                'appId' => 0,
-                'eventTemplateId' => 'eventTemplateId',
+                'appID' => 0,
+                'eventTemplateID' => 'eventTemplateId',
                 'label' => 'petType edit',
             ],
         );
@@ -109,8 +109,8 @@ final class TokensTest extends TestCase
         $result = $this->client->crm->timeline->tokens->update(
             'tokenName',
             [
-                'appId' => 0,
-                'eventTemplateId' => 'eventTemplateId',
+                'appID' => 0,
+                'eventTemplateID' => 'eventTemplateId',
                 'label' => 'petType edit',
                 'objectPropertyName' => 'objectPropertyName',
                 'options' => [
@@ -134,7 +134,7 @@ final class TokensTest extends TestCase
 
         $result = $this->client->crm->timeline->tokens->delete(
             'tokenName',
-            ['appId' => 0, 'eventTemplateId' => 'eventTemplateId']
+            ['appID' => 0, 'eventTemplateID' => 'eventTemplateId']
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -150,7 +150,7 @@ final class TokensTest extends TestCase
 
         $result = $this->client->crm->timeline->tokens->delete(
             'tokenName',
-            ['appId' => 0, 'eventTemplateId' => 'eventTemplateId']
+            ['appID' => 0, 'eventTemplateID' => 'eventTemplateId']
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

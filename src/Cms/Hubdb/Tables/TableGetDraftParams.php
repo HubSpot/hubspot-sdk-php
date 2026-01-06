@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Cms\Hubdb\TablesService::getDraft()
  *
  * @phpstan-type TableGetDraftParamsShape = array{
- *   archived?: bool, includeForeignIds?: bool, isGetLocalizedSchema?: bool
+ *   archived?: bool, includeForeignIDs?: bool, isGetLocalizedSchema?: bool
  * }
  */
 final class TableGetDraftParams implements BaseModel
@@ -34,7 +34,7 @@ final class TableGetDraftParams implements BaseModel
      * Set this to `true` to populate foreign ID values in the result.
      */
     #[Optional]
-    public ?bool $includeForeignIds;
+    public ?bool $includeForeignIDs;
 
     /**
      * Indicates whether to retrieve the localized schema for the table.
@@ -54,13 +54,13 @@ final class TableGetDraftParams implements BaseModel
      */
     public static function with(
         ?bool $archived = null,
-        ?bool $includeForeignIds = null,
+        ?bool $includeForeignIDs = null,
         ?bool $isGetLocalizedSchema = null,
     ): self {
         $obj = new self;
 
         null !== $archived && $obj['archived'] = $archived;
-        null !== $includeForeignIds && $obj['includeForeignIds'] = $includeForeignIds;
+        null !== $includeForeignIDs && $obj['includeForeignIDs'] = $includeForeignIDs;
         null !== $isGetLocalizedSchema && $obj['isGetLocalizedSchema'] = $isGetLocalizedSchema;
 
         return $obj;
@@ -83,7 +83,7 @@ final class TableGetDraftParams implements BaseModel
     public function withIncludeForeignIDs(bool $includeForeignIDs): self
     {
         $obj = clone $this;
-        $obj['includeForeignIds'] = $includeForeignIDs;
+        $obj['includeForeignIDs'] = $includeForeignIDs;
 
         return $obj;
     }

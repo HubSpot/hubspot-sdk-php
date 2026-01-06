@@ -214,7 +214,7 @@ final class CompaniesService implements CompaniesContract
      * Merge two company records. Learn more about [merging records](https://knowledge.hubspot.com/records/merge-records).
      *
      * @param array{
-     *   objectIdToMerge: string, primaryObjectId: string
+     *   objectIDToMerge: string, primaryObjectID: string
      * }|CompanyMergeParams $params
      *
      * @throws APIException

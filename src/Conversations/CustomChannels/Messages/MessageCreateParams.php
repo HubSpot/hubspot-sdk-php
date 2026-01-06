@@ -34,7 +34,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @phpstan-type MessageCreateParamsShape = array{
  *   attachments: list<FileAttachment|array{
- *     fileId: string, type: value-of<Type>, fileUsageType?: string|null
+ *     fileID: string, type: value-of<Type>, fileUsageType?: string|null
  *   }|LocationAttachment|array{
  *     latitude: float,
  *     longitude: float,
@@ -49,7 +49,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *     type: value-of<\HubspotSDK\Conversations\CustomChannels\UnsupportedContentAttachment\Type>,
  *   }|MessageHeaderAttachment|array{
  *     type: value-of<\HubspotSDK\Conversations\CustomChannels\MessageHeaderAttachment\Type>,
- *     fileId?: int|null,
+ *     fileID?: int|null,
  *     text?: string|null,
  *   }|QuickRepliesAttachment|array{
  *     quickReplies: list<QuickReply>,
@@ -58,7 +58,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *     socialMetadata: SocialMetadata,
  *     type: value-of<\HubspotSDK\Conversations\CustomChannels\SocialMetadataIntegrationAttachment\Type>,
  *   }>,
- *   channelAccountId: string,
+ *   channelAccountID: string,
  *   messageDirection: MessageDirection|value-of<MessageDirection>,
  *   recipients: list<ChannelIntegrationParticipant|array{
  *     deliveryIdentifier: PublicDeliveryIdentifier, name?: string|null
@@ -68,9 +68,9 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   }>,
  *   text: string,
  *   timestamp: \DateTimeInterface,
- *   inReplyToId?: string,
- *   integrationIdempotencyId?: string,
- *   integrationThreadId?: string,
+ *   inReplyToID?: string,
+ *   integrationIdempotencyID?: string,
+ *   integrationThreadID?: string,
  *   preResolvedContacts?: PreResolvedContacts|array{
  *     contacts: list<PreResolvedContact>
  *   },
@@ -89,8 +89,8 @@ final class MessageCreateParams implements BaseModel
     #[Required(list: Attachment::class)]
     public array $attachments;
 
-    #[Required]
-    public string $channelAccountId;
+    #[Required('channelAccountId')]
+    public string $channelAccountID;
 
     /** @var value-of<MessageDirection> $messageDirection */
     #[Required(enum: MessageDirection::class)]
@@ -110,14 +110,14 @@ final class MessageCreateParams implements BaseModel
     #[Required]
     public \DateTimeInterface $timestamp;
 
-    #[Optional]
-    public ?string $inReplyToId;
+    #[Optional('inReplyToId')]
+    public ?string $inReplyToID;
 
-    #[Optional]
-    public ?string $integrationIdempotencyId;
+    #[Optional('integrationIdempotencyId')]
+    public ?string $integrationIdempotencyID;
 
-    #[Optional]
-    public ?string $integrationThreadId;
+    #[Optional('integrationThreadId')]
+    public ?string $integrationThreadID;
 
     #[Optional]
     public ?PreResolvedContacts $preResolvedContacts;
@@ -132,7 +132,7 @@ final class MessageCreateParams implements BaseModel
      * ```
      * MessageCreateParams::with(
      *   attachments: ...,
-     *   channelAccountId: ...,
+     *   channelAccountID: ...,
      *   messageDirection: ...,
      *   recipients: ...,
      *   senders: ...,
@@ -165,7 +165,7 @@ final class MessageCreateParams implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<FileAttachment|array{
-     *   fileId: string, type: value-of<Type>, fileUsageType?: string|null
+     *   fileID: string, type: value-of<Type>, fileUsageType?: string|null
      * }|LocationAttachment|array{
      *   latitude: float,
      *   longitude: float,
@@ -180,7 +180,7 @@ final class MessageCreateParams implements BaseModel
      *   type: value-of<UnsupportedContentAttachment\Type>,
      * }|MessageHeaderAttachment|array{
      *   type: value-of<MessageHeaderAttachment\Type>,
-     *   fileId?: int|null,
+     *   fileID?: int|null,
      *   text?: string|null,
      * }|QuickRepliesAttachment|array{
      *   quickReplies: list<QuickReply>,
@@ -202,31 +202,31 @@ final class MessageCreateParams implements BaseModel
      */
     public static function with(
         array $attachments,
-        string $channelAccountId,
+        string $channelAccountID,
         MessageDirection|string $messageDirection,
         array $recipients,
         array $senders,
         string $text,
         \DateTimeInterface $timestamp,
-        ?string $inReplyToId = null,
-        ?string $integrationIdempotencyId = null,
-        ?string $integrationThreadId = null,
+        ?string $inReplyToID = null,
+        ?string $integrationIdempotencyID = null,
+        ?string $integrationThreadID = null,
         PreResolvedContacts|array|null $preResolvedContacts = null,
         ?string $richText = null,
     ): self {
         $obj = new self;
 
         $obj['attachments'] = $attachments;
-        $obj['channelAccountId'] = $channelAccountId;
+        $obj['channelAccountID'] = $channelAccountID;
         $obj['messageDirection'] = $messageDirection;
         $obj['recipients'] = $recipients;
         $obj['senders'] = $senders;
         $obj['text'] = $text;
         $obj['timestamp'] = $timestamp;
 
-        null !== $inReplyToId && $obj['inReplyToId'] = $inReplyToId;
-        null !== $integrationIdempotencyId && $obj['integrationIdempotencyId'] = $integrationIdempotencyId;
-        null !== $integrationThreadId && $obj['integrationThreadId'] = $integrationThreadId;
+        null !== $inReplyToID && $obj['inReplyToID'] = $inReplyToID;
+        null !== $integrationIdempotencyID && $obj['integrationIdempotencyID'] = $integrationIdempotencyID;
+        null !== $integrationThreadID && $obj['integrationThreadID'] = $integrationThreadID;
         null !== $preResolvedContacts && $obj['preResolvedContacts'] = $preResolvedContacts;
         null !== $richText && $obj['richText'] = $richText;
 
@@ -235,7 +235,7 @@ final class MessageCreateParams implements BaseModel
 
     /**
      * @param list<FileAttachment|array{
-     *   fileId: string, type: value-of<Type>, fileUsageType?: string|null
+     *   fileID: string, type: value-of<Type>, fileUsageType?: string|null
      * }|LocationAttachment|array{
      *   latitude: float,
      *   longitude: float,
@@ -250,7 +250,7 @@ final class MessageCreateParams implements BaseModel
      *   type: value-of<UnsupportedContentAttachment\Type>,
      * }|MessageHeaderAttachment|array{
      *   type: value-of<MessageHeaderAttachment\Type>,
-     *   fileId?: int|null,
+     *   fileID?: int|null,
      *   text?: string|null,
      * }|QuickRepliesAttachment|array{
      *   quickReplies: list<QuickReply>,
@@ -271,7 +271,7 @@ final class MessageCreateParams implements BaseModel
     public function withChannelAccountID(string $channelAccountID): self
     {
         $obj = clone $this;
-        $obj['channelAccountId'] = $channelAccountID;
+        $obj['channelAccountID'] = $channelAccountID;
 
         return $obj;
     }
@@ -333,7 +333,7 @@ final class MessageCreateParams implements BaseModel
     public function withInReplyToID(string $inReplyToID): self
     {
         $obj = clone $this;
-        $obj['inReplyToId'] = $inReplyToID;
+        $obj['inReplyToID'] = $inReplyToID;
 
         return $obj;
     }
@@ -342,7 +342,7 @@ final class MessageCreateParams implements BaseModel
         string $integrationIdempotencyID
     ): self {
         $obj = clone $this;
-        $obj['integrationIdempotencyId'] = $integrationIdempotencyID;
+        $obj['integrationIdempotencyID'] = $integrationIdempotencyID;
 
         return $obj;
     }
@@ -350,7 +350,7 @@ final class MessageCreateParams implements BaseModel
     public function withIntegrationThreadID(string $integrationThreadID): self
     {
         $obj = clone $this;
-        $obj['integrationThreadId'] = $integrationThreadID;
+        $obj['integrationThreadID'] = $integrationThreadID;
 
         return $obj;
     }

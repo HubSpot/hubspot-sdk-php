@@ -23,11 +23,11 @@ use HubspotSDK\Marketing\Emails\PublicEmailTestingDetails\AbSuccessMetric;
  *   name: string,
  *   activeDomain?: string|null,
  *   archived?: bool|null,
- *   businessUnitId?: int|null,
+ *   businessUnitID?: int|null,
  *   campaign?: string|null,
  *   content?: PublicEmailContent|null,
- *   feedbackSurveyId?: string|null,
- *   folderIdV2?: int|null,
+ *   feedbackSurveyID?: string|null,
+ *   folderIDV2?: int|null,
  *   from?: PublicEmailFromDetails|null,
  *   jitterSendTime?: bool|null,
  *   language?: value-of<Language>|null,
@@ -66,8 +66,8 @@ final class EmailCreateRequest implements BaseModel
     #[Optional]
     public ?bool $archived;
 
-    #[Optional]
-    public ?int $businessUnitId;
+    #[Optional('businessUnitId')]
+    public ?int $businessUnitID;
 
     /**
      * The ID of the campaign this email is associated to.
@@ -84,11 +84,11 @@ final class EmailCreateRequest implements BaseModel
     /**
      * The ID of the feedback survey linked to the email.
      */
-    #[Optional]
-    public ?string $feedbackSurveyId;
+    #[Optional('feedbackSurveyId')]
+    public ?string $feedbackSurveyID;
 
-    #[Optional]
-    public ?int $folderIdV2;
+    #[Optional('folderIdV2')]
+    public ?int $folderIDV2;
 
     /**
      * Data structure representing the from fields on the email.
@@ -206,7 +206,7 @@ final class EmailCreateRequest implements BaseModel
      *   blogEmailType?: string|null,
      *   blogImageMaxWidth?: int|null,
      *   blogLayout?: string|null,
-     *   hubspotBlogId?: string|null,
+     *   hubspotBlogID?: string|null,
      *   maxEntries?: int|null,
      *   rssEntryTemplate?: string|null,
      *   timing?: array<string,mixed>|null,
@@ -216,9 +216,9 @@ final class EmailCreateRequest implements BaseModel
      * @param State|value-of<State> $state
      * @param Subcategory|value-of<Subcategory> $subcategory
      * @param PublicEmailSubscriptionDetails|array{
-     *   officeLocationId?: string|null,
-     *   preferencesGroupId?: string|null,
-     *   subscriptionId?: string|null,
+     *   officeLocationID?: string|null,
+     *   preferencesGroupID?: string|null,
+     *   subscriptionID?: string|null,
      *   subscriptionName?: string|null,
      * } $subscriptionDetails
      * @param PublicEmailTestingDetails|array{
@@ -229,10 +229,10 @@ final class EmailCreateRequest implements BaseModel
      *   abTestPercentage?: int|null,
      *   hoursToWait?: int|null,
      *   isAbVariation?: bool|null,
-     *   testId?: string|null,
+     *   testID?: string|null,
      * } $testing
      * @param PublicEmailToDetails|array{
-     *   contactIds?: PublicEmailRecipients|null,
+     *   contactIDs?: PublicEmailRecipients|null,
      *   contactIlsLists?: PublicEmailRecipients|null,
      *   contactLists?: PublicEmailRecipients|null,
      *   limitSendFrequency?: bool|null,
@@ -245,8 +245,8 @@ final class EmailCreateRequest implements BaseModel
      *   isPageRedirected?: bool|null,
      *   metaDescription?: string|null,
      *   pageExpiryEnabled?: bool|null,
-     *   redirectToPageId?: string|null,
-     *   redirectToUrl?: string|null,
+     *   redirectToPageID?: string|null,
+     *   redirectToURL?: string|null,
      *   slug?: string|null,
      *   title?: string|null,
      *   url?: string|null,
@@ -256,11 +256,11 @@ final class EmailCreateRequest implements BaseModel
         string $name,
         ?string $activeDomain = null,
         ?bool $archived = null,
-        ?int $businessUnitId = null,
+        ?int $businessUnitID = null,
         ?string $campaign = null,
         PublicEmailContent|array|null $content = null,
-        ?string $feedbackSurveyId = null,
-        ?int $folderIdV2 = null,
+        ?string $feedbackSurveyID = null,
+        ?int $folderIDV2 = null,
         PublicEmailFromDetails|array|null $from = null,
         ?bool $jitterSendTime = null,
         Language|string|null $language = null,
@@ -281,11 +281,11 @@ final class EmailCreateRequest implements BaseModel
 
         null !== $activeDomain && $obj['activeDomain'] = $activeDomain;
         null !== $archived && $obj['archived'] = $archived;
-        null !== $businessUnitId && $obj['businessUnitId'] = $businessUnitId;
+        null !== $businessUnitID && $obj['businessUnitID'] = $businessUnitID;
         null !== $campaign && $obj['campaign'] = $campaign;
         null !== $content && $obj['content'] = $content;
-        null !== $feedbackSurveyId && $obj['feedbackSurveyId'] = $feedbackSurveyId;
-        null !== $folderIdV2 && $obj['folderIdV2'] = $folderIdV2;
+        null !== $feedbackSurveyID && $obj['feedbackSurveyID'] = $feedbackSurveyID;
+        null !== $folderIDV2 && $obj['folderIDV2'] = $folderIDV2;
         null !== $from && $obj['from'] = $from;
         null !== $jitterSendTime && $obj['jitterSendTime'] = $jitterSendTime;
         null !== $language && $obj['language'] = $language;
@@ -339,7 +339,7 @@ final class EmailCreateRequest implements BaseModel
     public function withBusinessUnitID(int $businessUnitID): self
     {
         $obj = clone $this;
-        $obj['businessUnitId'] = $businessUnitID;
+        $obj['businessUnitID'] = $businessUnitID;
 
         return $obj;
     }
@@ -383,15 +383,15 @@ final class EmailCreateRequest implements BaseModel
     public function withFeedbackSurveyID(string $feedbackSurveyID): self
     {
         $obj = clone $this;
-        $obj['feedbackSurveyId'] = $feedbackSurveyID;
+        $obj['feedbackSurveyID'] = $feedbackSurveyID;
 
         return $obj;
     }
 
-    public function withFolderIDV2(int $folderIDV2): self
+    public function withFolderIdv2(int $folderIDV2): self
     {
         $obj = clone $this;
-        $obj['folderIdV2'] = $folderIDV2;
+        $obj['folderIDV2'] = $folderIDV2;
 
         return $obj;
     }
@@ -448,7 +448,7 @@ final class EmailCreateRequest implements BaseModel
      *   blogEmailType?: string|null,
      *   blogImageMaxWidth?: int|null,
      *   blogLayout?: string|null,
-     *   hubspotBlogId?: string|null,
+     *   hubspotBlogID?: string|null,
      *   maxEntries?: int|null,
      *   rssEntryTemplate?: string|null,
      *   timing?: array<string,mixed>|null,
@@ -516,9 +516,9 @@ final class EmailCreateRequest implements BaseModel
      * Data structure representing the subscription fields of the email.
      *
      * @param PublicEmailSubscriptionDetails|array{
-     *   officeLocationId?: string|null,
-     *   preferencesGroupId?: string|null,
-     *   subscriptionId?: string|null,
+     *   officeLocationID?: string|null,
+     *   preferencesGroupID?: string|null,
+     *   subscriptionID?: string|null,
      *   subscriptionName?: string|null,
      * } $subscriptionDetails
      */
@@ -542,7 +542,7 @@ final class EmailCreateRequest implements BaseModel
      *   abTestPercentage?: int|null,
      *   hoursToWait?: int|null,
      *   isAbVariation?: bool|null,
-     *   testId?: string|null,
+     *   testID?: string|null,
      * } $testing
      */
     public function withTesting(PublicEmailTestingDetails|array $testing): self
@@ -557,7 +557,7 @@ final class EmailCreateRequest implements BaseModel
      * Data structure representing the to fields of the email.
      *
      * @param PublicEmailToDetails|array{
-     *   contactIds?: PublicEmailRecipients|null,
+     *   contactIDs?: PublicEmailRecipients|null,
      *   contactIlsLists?: PublicEmailRecipients|null,
      *   contactLists?: PublicEmailRecipients|null,
      *   limitSendFrequency?: bool|null,
@@ -580,8 +580,8 @@ final class EmailCreateRequest implements BaseModel
      *   isPageRedirected?: bool|null,
      *   metaDescription?: string|null,
      *   pageExpiryEnabled?: bool|null,
-     *   redirectToPageId?: string|null,
-     *   redirectToUrl?: string|null,
+     *   redirectToPageID?: string|null,
+     *   redirectToURL?: string|null,
      *   slug?: string|null,
      *   title?: string|null,
      *   url?: string|null,

@@ -19,15 +19,15 @@ use HubspotSDK\Option;
  *
  * @phpstan-type TableCreateParamsShape = array{
  *   allowChildTables: bool,
- *   allowPublicApiAccess: bool,
+ *   allowPublicAPIAccess: bool,
  *   columns: list<ColumnRequest|array{
  *     id: int,
  *     label: string,
  *     name: string,
  *     options: list<Option>,
  *     type: value-of<Type>,
- *     foreignColumnId?: int|null,
- *     foreignTableId?: int|null,
+ *     foreignColumnID?: int|null,
+ *     foreignTableID?: int|null,
  *     maxNumberOfCharacters?: int|null,
  *     maxNumberOfOptions?: int|null,
  *   }>,
@@ -53,8 +53,8 @@ final class TableCreateParams implements BaseModel
     /**
      * Specifies whether the table can be read by public without authorization.
      */
-    #[Required]
-    public bool $allowPublicApiAccess;
+    #[Required('allowPublicApiAccess')]
+    public bool $allowPublicAPIAccess;
 
     /**
      * List of columns in the table.
@@ -103,7 +103,7 @@ final class TableCreateParams implements BaseModel
      * ```
      * TableCreateParams::with(
      *   allowChildTables: ...,
-     *   allowPublicApiAccess: ...,
+     *   allowPublicAPIAccess: ...,
      *   columns: ...,
      *   dynamicMetaTags: ...,
      *   enableChildTablePages: ...,
@@ -143,8 +143,8 @@ final class TableCreateParams implements BaseModel
      *   name: string,
      *   options: list<Option>,
      *   type: value-of<Type>,
-     *   foreignColumnId?: int|null,
-     *   foreignTableId?: int|null,
+     *   foreignColumnID?: int|null,
+     *   foreignTableID?: int|null,
      *   maxNumberOfCharacters?: int|null,
      *   maxNumberOfOptions?: int|null,
      * }> $columns
@@ -152,7 +152,7 @@ final class TableCreateParams implements BaseModel
      */
     public static function with(
         bool $allowChildTables,
-        bool $allowPublicApiAccess,
+        bool $allowPublicAPIAccess,
         array $columns,
         array $dynamicMetaTags,
         bool $enableChildTablePages,
@@ -163,7 +163,7 @@ final class TableCreateParams implements BaseModel
         $obj = new self;
 
         $obj['allowChildTables'] = $allowChildTables;
-        $obj['allowPublicApiAccess'] = $allowPublicApiAccess;
+        $obj['allowPublicAPIAccess'] = $allowPublicAPIAccess;
         $obj['columns'] = $columns;
         $obj['dynamicMetaTags'] = $dynamicMetaTags;
         $obj['enableChildTablePages'] = $enableChildTablePages;
@@ -191,7 +191,7 @@ final class TableCreateParams implements BaseModel
     public function withAllowPublicAPIAccess(bool $allowPublicAPIAccess): self
     {
         $obj = clone $this;
-        $obj['allowPublicApiAccess'] = $allowPublicAPIAccess;
+        $obj['allowPublicAPIAccess'] = $allowPublicAPIAccess;
 
         return $obj;
     }
@@ -205,8 +205,8 @@ final class TableCreateParams implements BaseModel
      *   name: string,
      *   options: list<Option>,
      *   type: value-of<Type>,
-     *   foreignColumnId?: int|null,
-     *   foreignTableId?: int|null,
+     *   foreignColumnID?: int|null,
+     *   foreignTableID?: int|null,
      *   maxNumberOfCharacters?: int|null,
      *   maxNumberOfOptions?: int|null,
      * }> $columns

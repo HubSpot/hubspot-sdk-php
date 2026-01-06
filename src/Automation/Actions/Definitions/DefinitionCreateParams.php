@@ -29,7 +29,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Automation\Actions\DefinitionsService::create()
  *
  * @phpstan-type DefinitionCreateParamsShape = array{
- *   actionUrl: string,
+ *   actionURL: string,
  *   functions: list<PublicActionFunction|array{
  *     functionSource: string,
  *     functionType: value-of<FunctionType>,
@@ -82,8 +82,8 @@ final class DefinitionCreateParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    #[Required]
-    public string $actionUrl;
+    #[Required('actionUrl')]
+    public string $actionURL;
 
     /** @var list<PublicActionFunction> $functions */
     #[Required(list: PublicActionFunction::class)]
@@ -130,7 +130,7 @@ final class DefinitionCreateParams implements BaseModel
      * To enforce required parameters use
      * ```
      * DefinitionCreateParams::with(
-     *   actionUrl: ...,
+     *   actionURL: ...,
      *   functions: ...,
      *   inputFields: ...,
      *   labels: ...,
@@ -203,7 +203,7 @@ final class DefinitionCreateParams implements BaseModel
      * }> $outputFields
      */
     public static function with(
-        string $actionUrl,
+        string $actionURL,
         array $functions,
         array $inputFields,
         array $labels,
@@ -217,7 +217,7 @@ final class DefinitionCreateParams implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj['actionUrl'] = $actionUrl;
+        $obj['actionURL'] = $actionURL;
         $obj['functions'] = $functions;
         $obj['inputFields'] = $inputFields;
         $obj['labels'] = $labels;
@@ -236,7 +236,7 @@ final class DefinitionCreateParams implements BaseModel
     public function withActionURL(string $actionURL): self
     {
         $obj = clone $this;
-        $obj['actionUrl'] = $actionURL;
+        $obj['actionURL'] = $actionURL;
 
         return $obj;
     }

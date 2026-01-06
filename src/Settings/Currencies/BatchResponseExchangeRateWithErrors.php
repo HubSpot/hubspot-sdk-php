@@ -97,7 +97,7 @@ final class BatchResponseExchangeRateWithErrors implements BaseModel
      *   fromCurrencyCode: value-of<FromCurrencyCode>,
      *   toCurrencyCode: value-of<ToCurrencyCode>,
      *   updatedAt: \DateTimeInterface,
-     *   visibleInUI: bool,
+     *   visibleInUi: bool,
      * }> $results
      * @param Status|value-of<Status> $status
      * @param list<StandardError|array{
@@ -154,7 +154,7 @@ final class BatchResponseExchangeRateWithErrors implements BaseModel
      *   fromCurrencyCode: value-of<FromCurrencyCode>,
      *   toCurrencyCode: value-of<ToCurrencyCode>,
      *   updatedAt: \DateTimeInterface,
-     *   visibleInUI: bool,
+     *   visibleInUi: bool,
      * }> $results
      */
     public function withResults(array $results): self

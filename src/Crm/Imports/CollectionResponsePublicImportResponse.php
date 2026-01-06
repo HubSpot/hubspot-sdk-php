@@ -58,7 +58,7 @@ final class CollectionResponsePublicImportResponse implements BaseModel
      * @param list<PublicImportResponse|array{
      *   id: string,
      *   createdAt: \DateTimeInterface,
-     *   mappedObjectTypeIds: list<string>,
+     *   mappedObjectTypeIDs: list<string>,
      *   metadata: PublicImportMetadata,
      *   optOutImport: bool,
      *   state: value-of<State>,
@@ -87,7 +87,7 @@ final class CollectionResponsePublicImportResponse implements BaseModel
      * @param list<PublicImportResponse|array{
      *   id: string,
      *   createdAt: \DateTimeInterface,
-     *   mappedObjectTypeIds: list<string>,
+     *   mappedObjectTypeIDs: list<string>,
      *   metadata: PublicImportMetadata,
      *   optOutImport: bool,
      *   state: value-of<State>,

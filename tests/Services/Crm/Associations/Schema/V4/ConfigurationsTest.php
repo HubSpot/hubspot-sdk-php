@@ -78,8 +78,8 @@ final class ConfigurationsTest extends TestCase
                     'inputs' => [
                         [
                             'category' => 'HUBSPOT_DEFINED',
-                            'maxToObjectIds' => 0,
-                            'typeId' => 0,
+                            'maxToObjectIDs' => 0,
+                            'typeID' => 0,
                         ],
                     ],
                 ],
@@ -114,8 +114,8 @@ final class ConfigurationsTest extends TestCase
                     'inputs' => [
                         [
                             'category' => 'HUBSPOT_DEFINED',
-                            'maxToObjectIds' => 0,
-                            'typeId' => 0,
+                            'maxToObjectIDs' => 0,
+                            'typeID' => 0,
                         ],
                     ],
                 ],
@@ -147,7 +147,7 @@ final class ConfigurationsTest extends TestCase
                 'toObjectType',
                 [
                     'fromObjectType' => 'fromObjectType',
-                    'inputs' => [['category' => 'category', 'typeId' => 0]],
+                    'inputs' => [['category' => 'category', 'typeID' => 0]],
                 ],
             )
         ;
@@ -174,7 +174,7 @@ final class ConfigurationsTest extends TestCase
                 'toObjectType',
                 [
                     'fromObjectType' => 'fromObjectType',
-                    'inputs' => [['category' => 'category', 'typeId' => 0]],
+                    'inputs' => [['category' => 'category', 'typeID' => 0]],
                 ],
             )
         ;
@@ -204,8 +204,8 @@ final class ConfigurationsTest extends TestCase
                     'inputs' => [
                         [
                             'category' => 'HUBSPOT_DEFINED',
-                            'maxToObjectIds' => 0,
-                            'typeId' => 0,
+                            'maxToObjectIDs' => 0,
+                            'typeID' => 0,
                         ],
                     ],
                 ],
@@ -240,8 +240,8 @@ final class ConfigurationsTest extends TestCase
                     'inputs' => [
                         [
                             'category' => 'HUBSPOT_DEFINED',
-                            'maxToObjectIds' => 0,
-                            'typeId' => 0,
+                            'maxToObjectIDs' => 0,
+                            'typeID' => 0,
                         ],
                     ],
                 ],

@@ -90,7 +90,7 @@ final class PublicSequenceStepResponse implements BaseModel
      * @param PublicEmailPatternResponse|array{
      *   id: string,
      *   createdAt: \DateTimeInterface,
-     *   templateId: string,
+     *   templateID: string,
      *   updatedAt: \DateTimeInterface,
      *   threadEmailToStepOrder?: int|null,
      * } $emailPattern
@@ -101,9 +101,9 @@ final class PublicSequenceStepResponse implements BaseModel
      *   taskType: string,
      *   updatedAt: \DateTimeInterface,
      *   notes?: string|null,
-     *   queueId?: int|null,
+     *   queueID?: int|null,
      *   subject?: string|null,
-     *   templateId?: int|null,
+     *   templateID?: int|null,
      *   threadEmailToStepOrder?: int|null,
      * } $taskPattern
      */
@@ -184,7 +184,7 @@ final class PublicSequenceStepResponse implements BaseModel
      * @param PublicEmailPatternResponse|array{
      *   id: string,
      *   createdAt: \DateTimeInterface,
-     *   templateId: string,
+     *   templateID: string,
      *   updatedAt: \DateTimeInterface,
      *   threadEmailToStepOrder?: int|null,
      * } $emailPattern
@@ -206,9 +206,9 @@ final class PublicSequenceStepResponse implements BaseModel
      *   taskType: string,
      *   updatedAt: \DateTimeInterface,
      *   notes?: string|null,
-     *   queueId?: int|null,
+     *   queueID?: int|null,
      *   subject?: string|null,
-     *   templateId?: int|null,
+     *   templateID?: int|null,
      *   threadEmailToStepOrder?: int|null,
      * } $taskPattern
      */

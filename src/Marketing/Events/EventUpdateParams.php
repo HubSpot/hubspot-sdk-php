@@ -24,18 +24,18 @@ use HubspotSDK\Marketing\Events\PropertyValue\Source;
  *     isLargeValue: bool,
  *     name: string,
  *     persistenceTimestamp: int,
- *     requestId: string,
+ *     requestID: string,
  *     selectedByUser: bool,
  *     selectedByUserTimestamp: int,
  *     source: value-of<Source>,
- *     sourceId: string,
+ *     sourceID: string,
  *     sourceLabel: string,
  *     sourceMetadata: string,
  *     sourceUpstreamDeployable: string,
  *     sourceVid: list<int>,
  *     timestamp: int,
  *     unit: string,
- *     updatedByUserId: int,
+ *     updatedByUserID: int,
  *     useTimestampAsPersistenceTimestamp: bool,
  *     value: string,
  *   }>,
@@ -45,7 +45,7 @@ use HubspotSDK\Marketing\Events\PropertyValue\Source;
  *   eventName?: string,
  *   eventOrganizer?: string,
  *   eventType?: string,
- *   eventUrl?: string,
+ *   eventURL?: string,
  *   startDateTime?: \DateTimeInterface,
  * }
  */
@@ -77,8 +77,8 @@ final class EventUpdateParams implements BaseModel
     #[Optional]
     public ?string $eventType;
 
-    #[Optional]
-    public ?string $eventUrl;
+    #[Optional('eventUrl')]
+    public ?string $eventURL;
 
     #[Optional]
     public ?\DateTimeInterface $startDateTime;
@@ -113,18 +113,18 @@ final class EventUpdateParams implements BaseModel
      *   isLargeValue: bool,
      *   name: string,
      *   persistenceTimestamp: int,
-     *   requestId: string,
+     *   requestID: string,
      *   selectedByUser: bool,
      *   selectedByUserTimestamp: int,
      *   source: value-of<Source>,
-     *   sourceId: string,
+     *   sourceID: string,
      *   sourceLabel: string,
      *   sourceMetadata: string,
      *   sourceUpstreamDeployable: string,
      *   sourceVid: list<int>,
      *   timestamp: int,
      *   unit: string,
-     *   updatedByUserId: int,
+     *   updatedByUserID: int,
      *   useTimestampAsPersistenceTimestamp: bool,
      *   value: string,
      * }> $customProperties
@@ -137,7 +137,7 @@ final class EventUpdateParams implements BaseModel
         ?string $eventName = null,
         ?string $eventOrganizer = null,
         ?string $eventType = null,
-        ?string $eventUrl = null,
+        ?string $eventURL = null,
         ?\DateTimeInterface $startDateTime = null,
     ): self {
         $obj = new self;
@@ -150,7 +150,7 @@ final class EventUpdateParams implements BaseModel
         null !== $eventName && $obj['eventName'] = $eventName;
         null !== $eventOrganizer && $obj['eventOrganizer'] = $eventOrganizer;
         null !== $eventType && $obj['eventType'] = $eventType;
-        null !== $eventUrl && $obj['eventUrl'] = $eventUrl;
+        null !== $eventURL && $obj['eventURL'] = $eventURL;
         null !== $startDateTime && $obj['startDateTime'] = $startDateTime;
 
         return $obj;
@@ -163,18 +163,18 @@ final class EventUpdateParams implements BaseModel
      *   isLargeValue: bool,
      *   name: string,
      *   persistenceTimestamp: int,
-     *   requestId: string,
+     *   requestID: string,
      *   selectedByUser: bool,
      *   selectedByUserTimestamp: int,
      *   source: value-of<Source>,
-     *   sourceId: string,
+     *   sourceID: string,
      *   sourceLabel: string,
      *   sourceMetadata: string,
      *   sourceUpstreamDeployable: string,
      *   sourceVid: list<int>,
      *   timestamp: int,
      *   unit: string,
-     *   updatedByUserId: int,
+     *   updatedByUserID: int,
      *   useTimestampAsPersistenceTimestamp: bool,
      *   value: string,
      * }> $customProperties
@@ -238,7 +238,7 @@ final class EventUpdateParams implements BaseModel
     public function withEventURL(string $eventURL): self
     {
         $obj = clone $this;
-        $obj['eventUrl'] = $eventURL;
+        $obj['eventURL'] = $eventURL;
 
         return $obj;
     }

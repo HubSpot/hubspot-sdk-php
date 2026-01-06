@@ -33,7 +33,7 @@ final class FunctionsService implements FunctionsContract
      *
      * Retrieve all functions included in a definition.
      *
-     * @param array{appId: int}|FunctionListParams $params
+     * @param array{appID: int}|FunctionListParams $params
      *
      * @throws APIException
      */
@@ -46,8 +46,8 @@ final class FunctionsService implements FunctionsContract
             $params,
             $requestOptions,
         );
-        $appID = $parsed['appId'];
-        unset($parsed['appId']);
+        $appID = $parsed['appID'];
+        unset($parsed['appID']);
 
         /** @var BaseResponse<CollectionResponsePublicActionFunctionIdentifierNoPaging,> */
         $response = $this->client->request(
@@ -68,7 +68,7 @@ final class FunctionsService implements FunctionsContract
      * Archive a function for a specific definition.
      *
      * @param array{
-     *   appId: int, definitionId: string, functionType: value-of<FunctionType>
+     *   appID: int, definitionID: string, functionType: value-of<FunctionType>
      * }|FunctionDeleteParams $params
      *
      * @throws APIException
@@ -82,10 +82,10 @@ final class FunctionsService implements FunctionsContract
             $params,
             $requestOptions,
         );
-        $appID = $parsed['appId'];
-        unset($parsed['appId']);
-        $definitionID = $parsed['definitionId'];
-        unset($parsed['definitionId']);
+        $appID = $parsed['appID'];
+        unset($parsed['appID']);
+        $definitionID = $parsed['definitionID'];
+        unset($parsed['definitionID']);
         $functionType = $parsed['functionType'];
         unset($parsed['functionType']);
 
@@ -111,21 +111,28 @@ final class FunctionsService implements FunctionsContract
      *
      * Update a function for a given definition by ID.
      *
+     * @param array{
+     *   appID: int,
+     *   definitionID: string,
+     *   functionType: value-of<FunctionCreateOrReplaceParams\FunctionType>,
+     *   body: string,
+     * }|FunctionCreateOrReplaceParams $params
+     *
      * @throws APIException
      */
     public function createOrReplace(
         string $functionID,
-        string $params,
-        ?RequestOptions $requestOptions = null
+        array|FunctionCreateOrReplaceParams $params,
+        ?RequestOptions $requestOptions = null,
     ): PublicActionFunctionIdentifier {
         [$parsed, $options] = FunctionCreateOrReplaceParams::parseRequest(
             $params,
             $requestOptions,
         );
-        $appID = $parsed['appId'];
-        unset($parsed['appId']);
-        $definitionID = $parsed['definitionId'];
-        unset($parsed['definitionId']);
+        $appID = $parsed['appID'];
+        unset($parsed['appID']);
+        $definitionID = $parsed['definitionID'];
+        unset($parsed['definitionID']);
         $functionType = $parsed['functionType'];
         unset($parsed['functionType']);
 
@@ -140,7 +147,10 @@ final class FunctionsService implements FunctionsContract
                 $functionID,
             ],
             headers: ['Content-Type' => 'text/plain'],
-            body: $parsed['body'],
+            body: array_diff_key(
+                $parsed['body'],
+                array_flip(['appID', 'definitionID', 'functionType'])
+            ),
             options: $options,
             convert: PublicActionFunctionIdentifier::class,
         );
@@ -154,22 +164,25 @@ final class FunctionsService implements FunctionsContract
      * Add a function for a given definition.
      *
      * @param FunctionCreateOrReplaceByFunctionTypeParams\FunctionType|value-of<FunctionCreateOrReplaceByFunctionTypeParams\FunctionType> $functionType
+     * @param array{
+     *   appID: int, definitionID: string, body: string
+     * }|FunctionCreateOrReplaceByFunctionTypeParams $params
      *
      * @throws APIException
      */
     public function createOrReplaceByFunctionType(
         FunctionCreateOrReplaceByFunctionTypeParams\FunctionType|string $functionType,
-        string $params,
+        array|FunctionCreateOrReplaceByFunctionTypeParams $params,
         ?RequestOptions $requestOptions = null,
     ): PublicActionFunctionIdentifier {
         [$parsed, $options] = FunctionCreateOrReplaceByFunctionTypeParams::parseRequest(
             $params,
             $requestOptions,
         );
-        $appID = $parsed['appId'];
-        unset($parsed['appId']);
-        $definitionID = $parsed['definitionId'];
-        unset($parsed['definitionId']);
+        $appID = $parsed['appID'];
+        unset($parsed['appID']);
+        $definitionID = $parsed['definitionID'];
+        unset($parsed['definitionID']);
 
         /** @var BaseResponse<PublicActionFunctionIdentifier> */
         $response = $this->client->request(
@@ -181,7 +194,10 @@ final class FunctionsService implements FunctionsContract
                 $functionType,
             ],
             headers: ['Content-Type' => 'text/plain'],
-            body: $parsed['body'],
+            body: array_diff_key(
+                $parsed['body'],
+                array_flip(['appID', 'definitionID'])
+            ),
             options: $options,
             convert: PublicActionFunctionIdentifier::class,
         );
@@ -196,7 +212,7 @@ final class FunctionsService implements FunctionsContract
      *
      * @param FunctionDeleteByFunctionTypeParams\FunctionType|value-of<FunctionDeleteByFunctionTypeParams\FunctionType> $functionType
      * @param array{
-     *   appId: int, definitionId: string
+     *   appID: int, definitionID: string
      * }|FunctionDeleteByFunctionTypeParams $params
      *
      * @throws APIException
@@ -210,10 +226,10 @@ final class FunctionsService implements FunctionsContract
             $params,
             $requestOptions,
         );
-        $appID = $parsed['appId'];
-        unset($parsed['appId']);
-        $definitionID = $parsed['definitionId'];
-        unset($parsed['definitionId']);
+        $appID = $parsed['appID'];
+        unset($parsed['appID']);
+        $definitionID = $parsed['definitionID'];
+        unset($parsed['definitionID']);
 
         /** @var BaseResponse<mixed> */
         $response = $this->client->request(
@@ -237,8 +253,8 @@ final class FunctionsService implements FunctionsContract
      * Retrieve a specific function from a given definition.
      *
      * @param array{
-     *   appId: int,
-     *   definitionId: string,
+     *   appID: int,
+     *   definitionID: string,
      *   functionType: value-of<FunctionGetParams\FunctionType>,
      * }|FunctionGetParams $params
      *
@@ -253,10 +269,10 @@ final class FunctionsService implements FunctionsContract
             $params,
             $requestOptions,
         );
-        $appID = $parsed['appId'];
-        unset($parsed['appId']);
-        $definitionID = $parsed['definitionId'];
-        unset($parsed['definitionId']);
+        $appID = $parsed['appID'];
+        unset($parsed['appID']);
+        $definitionID = $parsed['definitionID'];
+        unset($parsed['definitionID']);
         $functionType = $parsed['functionType'];
         unset($parsed['functionType']);
 
@@ -284,7 +300,7 @@ final class FunctionsService implements FunctionsContract
      *
      * @param FunctionGetByFunctionTypeParams\FunctionType|value-of<FunctionGetByFunctionTypeParams\FunctionType> $functionType
      * @param array{
-     *   appId: int, definitionId: string
+     *   appID: int, definitionID: string
      * }|FunctionGetByFunctionTypeParams $params
      *
      * @throws APIException
@@ -298,10 +314,10 @@ final class FunctionsService implements FunctionsContract
             $params,
             $requestOptions,
         );
-        $appID = $parsed['appId'];
-        unset($parsed['appId']);
-        $definitionID = $parsed['definitionId'];
-        unset($parsed['definitionId']);
+        $appID = $parsed['appID'];
+        unset($parsed['appID']);
+        $definitionID = $parsed['definitionID'];
+        unset($parsed['definitionID']);
 
         /** @var BaseResponse<PublicActionFunction> */
         $response = $this->client->request(

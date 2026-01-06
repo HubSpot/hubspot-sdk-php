@@ -46,7 +46,7 @@ final class BatchInputPublicAssociationSpec implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicAssociationSpec|array{category: string, typeId: int}> $inputs
+     * @param list<PublicAssociationSpec|array{category: string, typeID: int}> $inputs
      */
     public static function with(array $inputs): self
     {
@@ -58,7 +58,7 @@ final class BatchInputPublicAssociationSpec implements BaseModel
     }
 
     /**
-     * @param list<PublicAssociationSpec|array{category: string, typeId: int}> $inputs
+     * @param list<PublicAssociationSpec|array{category: string, typeID: int}> $inputs
      */
     public function withInputs(array $inputs): self
     {

@@ -52,7 +52,10 @@ final class MembershipsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->lists->memberships->add('listId', ['string']);
+        $result = $this->client->crm->lists->memberships->add(
+            'listId',
+            ['body' => ['string']]
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(MembershipsUpdateResponse::class, $result);
@@ -65,7 +68,10 @@ final class MembershipsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->lists->memberships->add('listId', ['string']);
+        $result = $this->client->crm->lists->memberships->add(
+            'listId',
+            ['body' => ['string']]
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(MembershipsUpdateResponse::class, $result);
@@ -80,7 +86,7 @@ final class MembershipsTest extends TestCase
 
         $result = $this->client->crm->lists->memberships->addAllFromList(
             'sourceListId',
-            ['listId' => 'listId']
+            ['listID' => 'listId']
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -96,7 +102,7 @@ final class MembershipsTest extends TestCase
 
         $result = $this->client->crm->lists->memberships->addAllFromList(
             'sourceListId',
-            ['listId' => 'listId']
+            ['listID' => 'listId']
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -113,8 +119,8 @@ final class MembershipsTest extends TestCase
         $result = $this->client->crm->lists->memberships->addAndRemove(
             'listId',
             [
-                'recordIdsToAdd' => ['123', '456', '789'],
-                'recordIdsToRemove' => ['654'],
+                'recordIDsToAdd' => ['123', '456', '789'],
+                'recordIDsToRemove' => ['654'],
             ],
         );
 
@@ -132,8 +138,8 @@ final class MembershipsTest extends TestCase
         $result = $this->client->crm->lists->memberships->addAndRemove(
             'listId',
             [
-                'recordIdsToAdd' => ['123', '456', '789'],
-                'recordIdsToRemove' => ['654'],
+                'recordIDsToAdd' => ['123', '456', '789'],
+                'recordIDsToRemove' => ['654'],
             ],
         );
 
@@ -150,7 +156,7 @@ final class MembershipsTest extends TestCase
 
         $result = $this->client->crm->lists->memberships->getLists(
             'recordId',
-            ['objectTypeId' => 'objectTypeId']
+            ['objectTypeID' => 'objectTypeId']
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -169,7 +175,7 @@ final class MembershipsTest extends TestCase
 
         $result = $this->client->crm->lists->memberships->getLists(
             'recordId',
-            ['objectTypeId' => 'objectTypeId']
+            ['objectTypeID' => 'objectTypeId']
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -207,7 +213,7 @@ final class MembershipsTest extends TestCase
 
         $result = $this->client->crm->lists->memberships->remove(
             'listId',
-            ['string']
+            ['body' => ['string']]
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -223,7 +229,7 @@ final class MembershipsTest extends TestCase
 
         $result = $this->client->crm->lists->memberships->remove(
             'listId',
-            ['string']
+            ['body' => ['string']]
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

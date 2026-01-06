@@ -47,7 +47,7 @@ final class StatusesTest extends TestCase
             [
                 'channel' => 'EMAIL',
                 'statusState' => 'NOT_SPECIFIED',
-                'subscriptionId' => 0,
+                'subscriptionID' => 0,
             ],
         );
 
@@ -70,7 +70,7 @@ final class StatusesTest extends TestCase
             [
                 'channel' => 'EMAIL',
                 'statusState' => 'NOT_SPECIFIED',
-                'subscriptionId' => 0,
+                'subscriptionID' => 0,
                 'legalBasis' => 'CONSENT_WITH_NOTICE',
                 'legalBasisExplanation' => 'legalBasisExplanation',
             ],
@@ -109,7 +109,7 @@ final class StatusesTest extends TestCase
         }
 
         $result = $this->client->marketing->subscriptions->v4->statuses->batchGet([
-            'channel' => 'EMAIL', 'inputs' => ['string'], 'businessUnitId' => 0,
+            'channel' => 'EMAIL', 'inputs' => ['string'], 'businessUnitID' => 0,
         ]);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -158,7 +158,7 @@ final class StatusesTest extends TestCase
             ->v4
             ->statuses
             ->batchGetUnsubscribeAllStatus([
-                'channel' => 'EMAIL', 'inputs' => ['string'], 'businessUnitId' => 0,
+                'channel' => 'EMAIL', 'inputs' => ['string'], 'businessUnitID' => 0,
             ])
         ;
 
@@ -208,7 +208,7 @@ final class StatusesTest extends TestCase
             ->batchUnsubscribeAll([
                 'channel' => 'EMAIL',
                 'inputs' => ['string'],
-                'businessUnitId' => 0,
+                'businessUnitID' => 0,
                 'verbose' => true,
             ])
         ;
@@ -238,8 +238,8 @@ final class StatusesTest extends TestCase
                     [
                         'channel' => 'EMAIL',
                         'statusState' => 'NOT_SPECIFIED',
-                        'subscriberIdString' => 'subscriberIdString',
-                        'subscriptionId' => 0,
+                        'subscriberIDString' => 'subscriberIdString',
+                        'subscriptionID' => 0,
                     ],
                 ],
             ])
@@ -267,8 +267,8 @@ final class StatusesTest extends TestCase
                     [
                         'channel' => 'EMAIL',
                         'statusState' => 'NOT_SPECIFIED',
-                        'subscriberIdString' => 'subscriberIdString',
-                        'subscriptionId' => 0,
+                        'subscriberIDString' => 'subscriberIdString',
+                        'subscriptionID' => 0,
                         'legalBasis' => 'CONSENT_WITH_NOTICE',
                         'legalBasisExplanation' => 'legalBasisExplanation',
                     ],
@@ -308,7 +308,7 @@ final class StatusesTest extends TestCase
 
         $result = $this->client->marketing->subscriptions->v4->statuses->get(
             'subscriberIdString',
-            ['channel' => 'EMAIL', 'businessUnitId' => 0]
+            ['channel' => 'EMAIL', 'businessUnitID' => 0]
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -356,7 +356,7 @@ final class StatusesTest extends TestCase
             ->statuses
             ->getUnsubscribeAllStatus(
                 'subscriberIdString',
-                ['channel' => 'EMAIL', 'businessUnitId' => 0, 'verbose' => true],
+                ['channel' => 'EMAIL', 'businessUnitID' => 0, 'verbose' => true],
             )
         ;
 
@@ -405,7 +405,7 @@ final class StatusesTest extends TestCase
             ->statuses
             ->unsubscribeAll(
                 'subscriberIdString',
-                ['channel' => 'EMAIL', 'businessUnitId' => 0, 'verbose' => true],
+                ['channel' => 'EMAIL', 'businessUnitID' => 0, 'verbose' => true],
             )
         ;
 

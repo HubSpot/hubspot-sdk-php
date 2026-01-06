@@ -23,7 +23,7 @@ use HubspotSDK\Paging;
  *   updatedAt: \DateTimeInterface,
  *   archivedAt?: \DateTimeInterface|null,
  *   associations?: array<string,CollectionResponseAssociatedID>|null,
- *   objectWriteTraceId?: string|null,
+ *   objectWriteTraceID?: string|null,
  *   propertiesWithHistory?: array<string,list<ValueWithTimestamp>>|null,
  *   url?: string|null,
  * }
@@ -82,8 +82,8 @@ final class SimplePublicObjectWithAssociations implements BaseModel
     /**
      * A unique identifier for tracing the creation request.
      */
-    #[Optional]
-    public ?string $objectWriteTraceId;
+    #[Optional('objectWriteTraceId')]
+    public ?string $objectWriteTraceID;
 
     /**
      * Key-value pairs representing the properties of the object along with their history.
@@ -135,9 +135,9 @@ final class SimplePublicObjectWithAssociations implements BaseModel
      *   sourceType: string,
      *   timestamp: \DateTimeInterface,
      *   value: string,
-     *   sourceId?: string|null,
+     *   sourceID?: string|null,
      *   sourceLabel?: string|null,
-     *   updatedByUserId?: int|null,
+     *   updatedByUserID?: int|null,
      * }>> $propertiesWithHistory
      */
     public static function with(
@@ -148,7 +148,7 @@ final class SimplePublicObjectWithAssociations implements BaseModel
         \DateTimeInterface $updatedAt,
         ?\DateTimeInterface $archivedAt = null,
         ?array $associations = null,
-        ?string $objectWriteTraceId = null,
+        ?string $objectWriteTraceID = null,
         ?array $propertiesWithHistory = null,
         ?string $url = null,
     ): self {
@@ -162,7 +162,7 @@ final class SimplePublicObjectWithAssociations implements BaseModel
 
         null !== $archivedAt && $obj['archivedAt'] = $archivedAt;
         null !== $associations && $obj['associations'] = $associations;
-        null !== $objectWriteTraceId && $obj['objectWriteTraceId'] = $objectWriteTraceId;
+        null !== $objectWriteTraceID && $obj['objectWriteTraceID'] = $objectWriteTraceID;
         null !== $propertiesWithHistory && $obj['propertiesWithHistory'] = $propertiesWithHistory;
         null !== $url && $obj['url'] = $url;
 
@@ -258,7 +258,7 @@ final class SimplePublicObjectWithAssociations implements BaseModel
     public function withObjectWriteTraceID(string $objectWriteTraceID): self
     {
         $obj = clone $this;
-        $obj['objectWriteTraceId'] = $objectWriteTraceID;
+        $obj['objectWriteTraceID'] = $objectWriteTraceID;
 
         return $obj;
     }
@@ -270,9 +270,9 @@ final class SimplePublicObjectWithAssociations implements BaseModel
      *   sourceType: string,
      *   timestamp: \DateTimeInterface,
      *   value: string,
-     *   sourceId?: string|null,
+     *   sourceID?: string|null,
      *   sourceLabel?: string|null,
-     *   updatedByUserId?: int|null,
+     *   updatedByUserID?: int|null,
      * }>> $propertiesWithHistory
      */
     public function withPropertiesWithHistory(

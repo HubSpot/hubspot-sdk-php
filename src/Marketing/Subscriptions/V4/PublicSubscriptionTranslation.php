@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   description: string,
  *   languageCode: string,
  *   name: string,
- *   subscriptionId: int,
+ *   subscriptionID: int,
  *   updatedAt: int,
  * }
  */
@@ -50,8 +50,8 @@ final class PublicSubscriptionTranslation implements BaseModel
     /**
      * The unique identifier for the subscription associated with the translation.
      */
-    #[Required]
-    public int $subscriptionId;
+    #[Required('subscriptionId')]
+    public int $subscriptionID;
 
     /**
      * The timestamp indicating when the subscription translation was last updated.
@@ -69,7 +69,7 @@ final class PublicSubscriptionTranslation implements BaseModel
      *   description: ...,
      *   languageCode: ...,
      *   name: ...,
-     *   subscriptionId: ...,
+     *   subscriptionID: ...,
      *   updatedAt: ...,
      * )
      * ```
@@ -101,7 +101,7 @@ final class PublicSubscriptionTranslation implements BaseModel
         string $description,
         string $languageCode,
         string $name,
-        int $subscriptionId,
+        int $subscriptionID,
         int $updatedAt,
     ): self {
         $obj = new self;
@@ -110,7 +110,7 @@ final class PublicSubscriptionTranslation implements BaseModel
         $obj['description'] = $description;
         $obj['languageCode'] = $languageCode;
         $obj['name'] = $name;
-        $obj['subscriptionId'] = $subscriptionId;
+        $obj['subscriptionID'] = $subscriptionID;
         $obj['updatedAt'] = $updatedAt;
 
         return $obj;
@@ -166,7 +166,7 @@ final class PublicSubscriptionTranslation implements BaseModel
     public function withSubscriptionID(int $subscriptionID): self
     {
         $obj = clone $this;
-        $obj['subscriptionId'] = $subscriptionID;
+        $obj['subscriptionID'] = $subscriptionID;
 
         return $obj;
     }

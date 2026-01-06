@@ -61,7 +61,7 @@ final class CollectionResponseSimplePublicObjectWithAssociations implements Base
      *   updatedAt: \DateTimeInterface,
      *   archivedAt?: \DateTimeInterface|null,
      *   associations?: array<string,CollectionResponseAssociatedID>|null,
-     *   objectWriteTraceId?: string|null,
+     *   objectWriteTraceID?: string|null,
      *   propertiesWithHistory?: array<string,list<ValueWithTimestamp>>|null,
      *   url?: string|null,
      * }> $results
@@ -89,7 +89,7 @@ final class CollectionResponseSimplePublicObjectWithAssociations implements Base
      *   updatedAt: \DateTimeInterface,
      *   archivedAt?: \DateTimeInterface|null,
      *   associations?: array<string,CollectionResponseAssociatedID>|null,
-     *   objectWriteTraceId?: string|null,
+     *   objectWriteTraceID?: string|null,
      *   propertiesWithHistory?: array<string,list<ValueWithTimestamp>>|null,
      *   url?: string|null,
      * }> $results

@@ -19,7 +19,7 @@ use HubspotSDK\Settings\Currencies\ExchangeRate\ToCurrencyCode;
  *   fromCurrencyCode: value-of<FromCurrencyCode>,
  *   toCurrencyCode: value-of<ToCurrencyCode>,
  *   updatedAt: \DateTimeInterface,
- *   visibleInUI: bool,
+ *   visibleInUi: bool,
  * }
  */
 final class ExchangeRate implements BaseModel
@@ -76,8 +76,8 @@ final class ExchangeRate implements BaseModel
     /**
      * This indicates if the exchange rate is shown in the MultiCurrency settings page.
      */
-    #[Required]
-    public bool $visibleInUI;
+    #[Required('visibleInUI')]
+    public bool $visibleInUi;
 
     /**
      * `new ExchangeRate()` is missing required properties by the API.
@@ -92,7 +92,7 @@ final class ExchangeRate implements BaseModel
      *   fromCurrencyCode: ...,
      *   toCurrencyCode: ...,
      *   updatedAt: ...,
-     *   visibleInUI: ...,
+     *   visibleInUi: ...,
      * )
      * ```
      *
@@ -131,7 +131,7 @@ final class ExchangeRate implements BaseModel
         FromCurrencyCode|string $fromCurrencyCode,
         ToCurrencyCode|string $toCurrencyCode,
         \DateTimeInterface $updatedAt,
-        bool $visibleInUI,
+        bool $visibleInUi,
     ): self {
         $obj = new self;
 
@@ -142,7 +142,7 @@ final class ExchangeRate implements BaseModel
         $obj['fromCurrencyCode'] = $fromCurrencyCode;
         $obj['toCurrencyCode'] = $toCurrencyCode;
         $obj['updatedAt'] = $updatedAt;
-        $obj['visibleInUI'] = $visibleInUI;
+        $obj['visibleInUi'] = $visibleInUi;
 
         return $obj;
     }
@@ -236,7 +236,7 @@ final class ExchangeRate implements BaseModel
     public function withVisibleInUi(bool $visibleInUi): self
     {
         $obj = clone $this;
-        $obj['visibleInUI'] = $visibleInUi;
+        $obj['visibleInUi'] = $visibleInUi;
 
         return $obj;
     }

@@ -49,7 +49,7 @@ final class PublicDealSplitsCreateRequest implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicDealSplitInput|array{ownerId: int, percentage: float}> $splits
+     * @param list<PublicDealSplitInput|array{ownerID: int, percentage: float}> $splits
      */
     public static function with(int $id, array $splits): self
     {
@@ -70,7 +70,7 @@ final class PublicDealSplitsCreateRequest implements BaseModel
     }
 
     /**
-     * @param list<PublicDealSplitInput|array{ownerId: int, percentage: float}> $splits
+     * @param list<PublicDealSplitInput|array{ownerID: int, percentage: float}> $splits
      */
     public function withSplits(array $splits): self
     {

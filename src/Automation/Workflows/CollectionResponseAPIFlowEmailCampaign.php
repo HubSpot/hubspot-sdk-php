@@ -54,7 +54,7 @@ final class CollectionResponseAPIFlowEmailCampaign implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<APIFlowEmailCampaign|array{
-     *   emailCampaignId: string, emailContentId: string, flowId: string
+     *   emailCampaignID: string, emailContentID: string, flowID: string
      * }> $results
      * @param Paging|array{next?: NextPage|null, prev?: PreviousPage|null} $paging
      */
@@ -73,7 +73,7 @@ final class CollectionResponseAPIFlowEmailCampaign implements BaseModel
 
     /**
      * @param list<APIFlowEmailCampaign|array{
-     *   emailCampaignId: string, emailContentId: string, flowId: string
+     *   emailCampaignID: string, emailContentID: string, flowID: string
      * }> $results
      */
     public function withResults(array $results): self

@@ -90,7 +90,7 @@ final class BatchResponseProperty implements BaseModel
      *   calculated?: bool|null,
      *   calculationFormula?: string|null,
      *   createdAt?: \DateTimeInterface|null,
-     *   createdUserId?: string|null,
+     *   createdUserID?: string|null,
      *   dataSensitivity?: value-of<DataSensitivity>|null,
      *   displayOrder?: int|null,
      *   externalOptions?: bool|null,
@@ -103,7 +103,7 @@ final class BatchResponseProperty implements BaseModel
      *   sensitiveDataCategories?: list<string>|null,
      *   showCurrencySymbol?: bool|null,
      *   updatedAt?: \DateTimeInterface|null,
-     *   updatedUserId?: string|null,
+     *   updatedUserID?: string|null,
      * }> $results
      * @param Status|value-of<Status> $status
      * @param array<string,string> $links
@@ -151,7 +151,7 @@ final class BatchResponseProperty implements BaseModel
      *   calculated?: bool|null,
      *   calculationFormula?: string|null,
      *   createdAt?: \DateTimeInterface|null,
-     *   createdUserId?: string|null,
+     *   createdUserID?: string|null,
      *   dataSensitivity?: value-of<DataSensitivity>|null,
      *   displayOrder?: int|null,
      *   externalOptions?: bool|null,
@@ -164,7 +164,7 @@ final class BatchResponseProperty implements BaseModel
      *   sensitiveDataCategories?: list<string>|null,
      *   showCurrencySymbol?: bool|null,
      *   updatedAt?: \DateTimeInterface|null,
-     *   updatedUserId?: string|null,
+     *   updatedUserID?: string|null,
      * }> $results
      */
     public function withResults(array $results): self

@@ -14,7 +14,7 @@ use HubspotSDK\PublicEmailSubscriptionFilter\FilterType;
  * @phpstan-type PublicEmailSubscriptionFilterShape = array{
  *   acceptedStatuses: list<string>,
  *   filterType: value-of<FilterType>,
- *   subscriptionIds: list<string>,
+ *   subscriptionIDs: list<string>,
  *   subscriptionType?: string|null,
  * }
  */
@@ -31,9 +31,9 @@ final class PublicEmailSubscriptionFilter implements BaseModel
     #[Required(enum: FilterType::class)]
     public string $filterType;
 
-    /** @var list<string> $subscriptionIds */
-    #[Required(list: 'string')]
-    public array $subscriptionIds;
+    /** @var list<string> $subscriptionIDs */
+    #[Required('subscriptionIds', list: 'string')]
+    public array $subscriptionIDs;
 
     #[Optional]
     public ?string $subscriptionType;
@@ -44,7 +44,7 @@ final class PublicEmailSubscriptionFilter implements BaseModel
      * To enforce required parameters use
      * ```
      * PublicEmailSubscriptionFilter::with(
-     *   acceptedStatuses: ..., filterType: ..., subscriptionIds: ...
+     *   acceptedStatuses: ..., filterType: ..., subscriptionIDs: ...
      * )
      * ```
      *
@@ -68,12 +68,12 @@ final class PublicEmailSubscriptionFilter implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<string> $acceptedStatuses
-     * @param list<string> $subscriptionIds
+     * @param list<string> $subscriptionIDs
      * @param FilterType|value-of<FilterType> $filterType
      */
     public static function with(
         array $acceptedStatuses,
-        array $subscriptionIds,
+        array $subscriptionIDs,
         FilterType|string $filterType = 'EMAIL_SUBSCRIPTION',
         ?string $subscriptionType = null,
     ): self {
@@ -81,7 +81,7 @@ final class PublicEmailSubscriptionFilter implements BaseModel
 
         $obj['acceptedStatuses'] = $acceptedStatuses;
         $obj['filterType'] = $filterType;
-        $obj['subscriptionIds'] = $subscriptionIds;
+        $obj['subscriptionIDs'] = $subscriptionIDs;
 
         null !== $subscriptionType && $obj['subscriptionType'] = $subscriptionType;
 
@@ -116,7 +116,7 @@ final class PublicEmailSubscriptionFilter implements BaseModel
     public function withSubscriptionIDs(array $subscriptionIDs): self
     {
         $obj = clone $this;
-        $obj['subscriptionIds'] = $subscriptionIDs;
+        $obj['subscriptionIDs'] = $subscriptionIDs;
 
         return $obj;
     }

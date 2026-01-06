@@ -14,8 +14,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @phpstan-type AssociationDefinitionShape = array{
  *   id: string,
- *   fromObjectTypeId: string,
- *   toObjectTypeId: string,
+ *   fromObjectTypeID: string,
+ *   toObjectTypeID: string,
  *   createdAt?: \DateTimeInterface|null,
  *   name?: string|null,
  *   updatedAt?: \DateTimeInterface|null,
@@ -35,14 +35,14 @@ final class AssociationDefinition implements BaseModel
     /**
      * The ID of the source object type (e.g., 0-1 for contacts).
      */
-    #[Required]
-    public string $fromObjectTypeId;
+    #[Required('fromObjectTypeId')]
+    public string $fromObjectTypeID;
 
     /**
      * The ID of the destination object type (e.g., 0-3 for deals).
      */
-    #[Required]
-    public string $toObjectTypeId;
+    #[Required('toObjectTypeId')]
+    public string $toObjectTypeID;
 
     /**
      * The timestamp when the association was created, in ISO 8601 format.
@@ -67,7 +67,7 @@ final class AssociationDefinition implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * AssociationDefinition::with(id: ..., fromObjectTypeId: ..., toObjectTypeId: ...)
+     * AssociationDefinition::with(id: ..., fromObjectTypeID: ..., toObjectTypeID: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -91,8 +91,8 @@ final class AssociationDefinition implements BaseModel
      */
     public static function with(
         string $id,
-        string $fromObjectTypeId,
-        string $toObjectTypeId,
+        string $fromObjectTypeID,
+        string $toObjectTypeID,
         ?\DateTimeInterface $createdAt = null,
         ?string $name = null,
         ?\DateTimeInterface $updatedAt = null,
@@ -100,8 +100,8 @@ final class AssociationDefinition implements BaseModel
         $obj = new self;
 
         $obj['id'] = $id;
-        $obj['fromObjectTypeId'] = $fromObjectTypeId;
-        $obj['toObjectTypeId'] = $toObjectTypeId;
+        $obj['fromObjectTypeID'] = $fromObjectTypeID;
+        $obj['toObjectTypeID'] = $toObjectTypeID;
 
         null !== $createdAt && $obj['createdAt'] = $createdAt;
         null !== $name && $obj['name'] = $name;
@@ -127,7 +127,7 @@ final class AssociationDefinition implements BaseModel
     public function withFromObjectTypeID(string $fromObjectTypeID): self
     {
         $obj = clone $this;
-        $obj['fromObjectTypeId'] = $fromObjectTypeID;
+        $obj['fromObjectTypeID'] = $fromObjectTypeID;
 
         return $obj;
     }
@@ -138,7 +138,7 @@ final class AssociationDefinition implements BaseModel
     public function withToObjectTypeID(string $toObjectTypeID): self
     {
         $obj = clone $this;
-        $obj['toObjectTypeId'] = $toObjectTypeID;
+        $obj['toObjectTypeID'] = $toObjectTypeID;
 
         return $obj;
     }

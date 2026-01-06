@@ -18,7 +18,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   archived: bool,
  *   attachments: list<PublicFile|PublicLocation|PublicContact|PublicUnsupportedContent|PublicMessageHeader|PublicQuickReplies|PublicWhatsAppTemplateMetadata|PublicSocialMetadataAttachment>,
  *   client: PublicClient,
- *   conversationsThreadId: string,
+ *   conversationsThreadID: string,
  *   createdAt: \DateTimeInterface,
  *   createdBy: string,
  *   recipients: list<PublicRecipient>,
@@ -49,8 +49,8 @@ final class PublicComment implements BaseModel
     #[Required]
     public PublicClient $client;
 
-    #[Required]
-    public string $conversationsThreadId;
+    #[Required('conversationsThreadId')]
+    public string $conversationsThreadID;
 
     #[Required]
     public \DateTimeInterface $createdAt;
@@ -89,7 +89,7 @@ final class PublicComment implements BaseModel
      *   archived: ...,
      *   attachments: ...,
      *   client: ...,
-     *   conversationsThreadId: ...,
+     *   conversationsThreadID: ...,
      *   createdAt: ...,
      *   createdBy: ...,
      *   recipients: ...,
@@ -129,7 +129,7 @@ final class PublicComment implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<PublicFile|array{
-     *   fileId: string,
+     *   fileID: string,
      *   fileUsageType: string,
      *   type: value-of<PublicFile\Type>,
      *   name?: string|null,
@@ -148,7 +148,7 @@ final class PublicComment implements BaseModel
      *   type: value-of<PublicUnsupportedContent\Type>
      * }|PublicMessageHeader|array{
      *   type: value-of<PublicMessageHeader\Type>,
-     *   fileId?: int|null,
+     *   fileID?: int|null,
      *   text?: string|null,
      * }|PublicQuickReplies|array{
      *   allowMultiSelect: bool,
@@ -156,8 +156,8 @@ final class PublicComment implements BaseModel
      *   quickReplies: list<QuickReply>,
      *   type: value-of<PublicQuickReplies\Type>,
      * }|PublicWhatsAppTemplateMetadata|array{
-     *   crmObjectIds: array<string,int>,
-     *   mappedTemplateId: string,
+     *   crmObjectIDs: array<string,int>,
+     *   mappedTemplateID: string,
      *   parameters: array<string,string>,
      *   type: value-of<PublicWhatsAppTemplateMetadata\Type>,
      * }|PublicSocialMetadataAttachment|array{
@@ -165,16 +165,16 @@ final class PublicComment implements BaseModel
      *   type: value-of<PublicSocialMetadataAttachment\Type>,
      * }> $attachments
      * @param PublicClient|array{
-     *   clientType: value-of<ClientType>, integrationAppId?: int|null
+     *   clientType: value-of<ClientType>, integrationAppID?: int|null
      * } $client
      * @param list<PublicRecipient|array{
      *   deliveryIdentifier: PublicDeliveryIdentifier,
-     *   actorId?: string|null,
+     *   actorID?: string|null,
      *   name?: string|null,
      *   recipientField?: string|null,
      * }> $recipients
      * @param list<PublicSender|array{
-     *   actorId?: string|null,
+     *   actorID?: string|null,
      *   deliveryIdentifier?: PublicDeliveryIdentifier|null,
      *   name?: string|null,
      *   senderField?: string|null,
@@ -186,7 +186,7 @@ final class PublicComment implements BaseModel
         bool $archived,
         array $attachments,
         PublicClient|array $client,
-        string $conversationsThreadId,
+        string $conversationsThreadID,
         \DateTimeInterface $createdAt,
         string $createdBy,
         array $recipients,
@@ -202,7 +202,7 @@ final class PublicComment implements BaseModel
         $obj['archived'] = $archived;
         $obj['attachments'] = $attachments;
         $obj['client'] = $client;
-        $obj['conversationsThreadId'] = $conversationsThreadId;
+        $obj['conversationsThreadID'] = $conversationsThreadID;
         $obj['createdAt'] = $createdAt;
         $obj['createdBy'] = $createdBy;
         $obj['recipients'] = $recipients;
@@ -234,7 +234,7 @@ final class PublicComment implements BaseModel
 
     /**
      * @param list<PublicFile|array{
-     *   fileId: string,
+     *   fileID: string,
      *   fileUsageType: string,
      *   type: value-of<PublicFile\Type>,
      *   name?: string|null,
@@ -253,7 +253,7 @@ final class PublicComment implements BaseModel
      *   type: value-of<PublicUnsupportedContent\Type>
      * }|PublicMessageHeader|array{
      *   type: value-of<PublicMessageHeader\Type>,
-     *   fileId?: int|null,
+     *   fileID?: int|null,
      *   text?: string|null,
      * }|PublicQuickReplies|array{
      *   allowMultiSelect: bool,
@@ -261,8 +261,8 @@ final class PublicComment implements BaseModel
      *   quickReplies: list<QuickReply>,
      *   type: value-of<PublicQuickReplies\Type>,
      * }|PublicWhatsAppTemplateMetadata|array{
-     *   crmObjectIds: array<string,int>,
-     *   mappedTemplateId: string,
+     *   crmObjectIDs: array<string,int>,
+     *   mappedTemplateID: string,
      *   parameters: array<string,string>,
      *   type: value-of<PublicWhatsAppTemplateMetadata\Type>,
      * }|PublicSocialMetadataAttachment|array{
@@ -280,7 +280,7 @@ final class PublicComment implements BaseModel
 
     /**
      * @param PublicClient|array{
-     *   clientType: value-of<ClientType>, integrationAppId?: int|null
+     *   clientType: value-of<ClientType>, integrationAppID?: int|null
      * } $client
      */
     public function withClient(PublicClient|array $client): self
@@ -295,7 +295,7 @@ final class PublicComment implements BaseModel
         string $conversationsThreadID
     ): self {
         $obj = clone $this;
-        $obj['conversationsThreadId'] = $conversationsThreadID;
+        $obj['conversationsThreadID'] = $conversationsThreadID;
 
         return $obj;
     }
@@ -319,7 +319,7 @@ final class PublicComment implements BaseModel
     /**
      * @param list<PublicRecipient|array{
      *   deliveryIdentifier: PublicDeliveryIdentifier,
-     *   actorId?: string|null,
+     *   actorID?: string|null,
      *   name?: string|null,
      *   recipientField?: string|null,
      * }> $recipients
@@ -342,7 +342,7 @@ final class PublicComment implements BaseModel
 
     /**
      * @param list<PublicSender|array{
-     *   actorId?: string|null,
+     *   actorID?: string|null,
      *   deliveryIdentifier?: PublicDeliveryIdentifier|null,
      *   name?: string|null,
      *   senderField?: string|null,

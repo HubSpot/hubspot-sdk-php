@@ -90,9 +90,9 @@ final class BatchResponsePublicAssociationDefinitionUserConfiguration implements
      *
      * @param list<PublicAssociationDefinitionUserConfiguration|array{
      *   category: value-of<Category>,
-     *   typeId: int,
+     *   typeID: int,
      *   label?: string|null,
-     *   userEnforcedMaxToObjectIds?: int|null,
+     *   userEnforcedMaxToObjectIDs?: int|null,
      * }> $results
      * @param Status|value-of<Status> $status
      * @param list<StandardError|array{
@@ -143,9 +143,9 @@ final class BatchResponsePublicAssociationDefinitionUserConfiguration implements
     /**
      * @param list<PublicAssociationDefinitionUserConfiguration|array{
      *   category: value-of<Category>,
-     *   typeId: int,
+     *   typeID: int,
      *   label?: string|null,
-     *   userEnforcedMaxToObjectIds?: int|null,
+     *   userEnforcedMaxToObjectIDs?: int|null,
      * }> $results
      */
     public function withResults(array $results): self

@@ -28,7 +28,7 @@ use HubspotSDK\Scheduler\Meetings\ExternalLegalConsentOptions\LegitimateInterest
  *   legalConsentOptions?: ExternalLegalConsentOptions|null,
  *   locale?: string|null,
  *   location?: string|null,
- *   redirectUrl?: string|null,
+ *   redirectURL?: string|null,
  *   welcomeScreenInfo?: ExternalMeetingsWelcomeScreenInfo|null,
  * }
  */
@@ -88,8 +88,8 @@ final class ExternalMeetingsLinkSettings implements BaseModel
     #[Optional]
     public ?string $location;
 
-    #[Optional]
-    public ?string $redirectUrl;
+    #[Optional('redirectUrl')]
+    public ?string $redirectURL;
 
     #[Optional]
     public ?ExternalMeetingsWelcomeScreenInfo $welcomeScreenInfo;
@@ -171,7 +171,7 @@ final class ExternalMeetingsLinkSettings implements BaseModel
      * } $legalConsentOptions
      * @param ExternalMeetingsWelcomeScreenInfo|array{
      *   description?: string|null,
-     *   logoUrl?: string|null,
+     *   logoURL?: string|null,
      *   showWelcomeScreen?: bool|null,
      *   title?: string|null,
      *   useCompanyLogo?: bool|null,
@@ -194,7 +194,7 @@ final class ExternalMeetingsLinkSettings implements BaseModel
         ExternalLegalConsentOptions|array|null $legalConsentOptions = null,
         ?string $locale = null,
         ?string $location = null,
-        ?string $redirectUrl = null,
+        ?string $redirectURL = null,
         ExternalMeetingsWelcomeScreenInfo|array|null $welcomeScreenInfo = null,
     ): self {
         $obj = new self;
@@ -216,7 +216,7 @@ final class ExternalMeetingsLinkSettings implements BaseModel
         null !== $legalConsentOptions && $obj['legalConsentOptions'] = $legalConsentOptions;
         null !== $locale && $obj['locale'] = $locale;
         null !== $location && $obj['location'] = $location;
-        null !== $redirectUrl && $obj['redirectUrl'] = $redirectUrl;
+        null !== $redirectURL && $obj['redirectURL'] = $redirectURL;
         null !== $welcomeScreenInfo && $obj['welcomeScreenInfo'] = $welcomeScreenInfo;
 
         return $obj;
@@ -405,7 +405,7 @@ final class ExternalMeetingsLinkSettings implements BaseModel
     public function withRedirectURL(string $redirectURL): self
     {
         $obj = clone $this;
-        $obj['redirectUrl'] = $redirectURL;
+        $obj['redirectURL'] = $redirectURL;
 
         return $obj;
     }
@@ -413,7 +413,7 @@ final class ExternalMeetingsLinkSettings implements BaseModel
     /**
      * @param ExternalMeetingsWelcomeScreenInfo|array{
      *   description?: string|null,
-     *   logoUrl?: string|null,
+     *   logoURL?: string|null,
      *   showWelcomeScreen?: bool|null,
      *   title?: string|null,
      *   useCompanyLogo?: bool|null,

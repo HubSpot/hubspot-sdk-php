@@ -16,9 +16,9 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   sourceType: string,
  *   timestamp: \DateTimeInterface,
  *   value: string,
- *   sourceId?: string|null,
+ *   sourceID?: string|null,
  *   sourceLabel?: string|null,
- *   updatedByUserId?: int|null,
+ *   updatedByUserID?: int|null,
  * }
  */
 final class ValueWithTimestamp implements BaseModel
@@ -47,8 +47,8 @@ final class ValueWithTimestamp implements BaseModel
     /**
      * The unique ID of the property.
      */
-    #[Optional]
-    public ?string $sourceId;
+    #[Optional('sourceId')]
+    public ?string $sourceID;
 
     /**
      * A human-readable label.
@@ -59,8 +59,8 @@ final class ValueWithTimestamp implements BaseModel
     /**
      * The ID of the user who last updated the property.
      */
-    #[Optional]
-    public ?int $updatedByUserId;
+    #[Optional('updatedByUserId')]
+    public ?int $updatedByUserID;
 
     /**
      * `new ValueWithTimestamp()` is missing required properties by the API.
@@ -93,9 +93,9 @@ final class ValueWithTimestamp implements BaseModel
         string $sourceType,
         \DateTimeInterface $timestamp,
         string $value,
-        ?string $sourceId = null,
+        ?string $sourceID = null,
         ?string $sourceLabel = null,
-        ?int $updatedByUserId = null,
+        ?int $updatedByUserID = null,
     ): self {
         $obj = new self;
 
@@ -103,9 +103,9 @@ final class ValueWithTimestamp implements BaseModel
         $obj['timestamp'] = $timestamp;
         $obj['value'] = $value;
 
-        null !== $sourceId && $obj['sourceId'] = $sourceId;
+        null !== $sourceID && $obj['sourceID'] = $sourceID;
         null !== $sourceLabel && $obj['sourceLabel'] = $sourceLabel;
-        null !== $updatedByUserId && $obj['updatedByUserId'] = $updatedByUserId;
+        null !== $updatedByUserID && $obj['updatedByUserID'] = $updatedByUserID;
 
         return $obj;
     }
@@ -149,7 +149,7 @@ final class ValueWithTimestamp implements BaseModel
     public function withSourceID(string $sourceID): self
     {
         $obj = clone $this;
-        $obj['sourceId'] = $sourceID;
+        $obj['sourceID'] = $sourceID;
 
         return $obj;
     }
@@ -171,7 +171,7 @@ final class ValueWithTimestamp implements BaseModel
     public function withUpdatedByUserID(int $updatedByUserID): self
     {
         $obj = clone $this;
-        $obj['updatedByUserId'] = $updatedByUserID;
+        $obj['updatedByUserID'] = $updatedByUserID;
 
         return $obj;
     }

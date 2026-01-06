@@ -74,7 +74,7 @@ final class SettingsService implements SettingsContract
      * @api
      *
      * @param array{
-     *   id: string, language: string, primaryId: string, primaryLanguage?: string
+     *   id: string, language: string, primaryID: string, primaryLanguage?: string
      * }|SettingAttachToLangGroupParams $params
      *
      * @throws APIException
@@ -181,7 +181,7 @@ final class SettingsService implements SettingsContract
     /**
      * @api
      *
-     * @param array{blogId: string}|SettingGetRevisionParams $params
+     * @param array{blogID: string}|SettingGetRevisionParams $params
      *
      * @throws APIException
      */
@@ -194,8 +194,8 @@ final class SettingsService implements SettingsContract
             $params,
             $requestOptions,
         );
-        $blogID = $parsed['blogId'];
-        unset($parsed['blogId']);
+        $blogID = $parsed['blogID'];
+        unset($parsed['blogID']);
 
         /** @var BaseResponse<VersionBlog> */
         $response = $this->client->request(
@@ -278,7 +278,7 @@ final class SettingsService implements SettingsContract
      * @api
      *
      * @param array{
-     *   languages: array<string,string>, primaryId: string
+     *   languages: array<string,string>, primaryID: string
      * }|SettingUpdateLanguagesParams $params
      *
      * @throws APIException

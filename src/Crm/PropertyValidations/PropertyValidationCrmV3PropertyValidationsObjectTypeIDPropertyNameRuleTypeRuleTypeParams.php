@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Crm\PropertyValidationsService::crmV3PropertyValidationsObjectTypeIDPropertyNameRuleTypeRuleType()
  *
  * @phpstan-type PropertyValidationCrmV3PropertyValidationsObjectTypeIDPropertyNameRuleTypeRuleTypeParamsShape = array{
- *   objectTypeId: string, propertyName: string, ruleArguments: list<string>
+ *   objectTypeID: string, propertyName: string, ruleArguments: list<string>
  * }
  */
 final class PropertyValidationCrmV3PropertyValidationsObjectTypeIDPropertyNameRuleTypeRuleTypeParams implements BaseModel
@@ -27,7 +27,7 @@ final class PropertyValidationCrmV3PropertyValidationsObjectTypeIDPropertyNameRu
     use SdkParams;
 
     #[Required]
-    public string $objectTypeId;
+    public string $objectTypeID;
 
     #[Required]
     public string $propertyName;
@@ -46,7 +46,7 @@ final class PropertyValidationCrmV3PropertyValidationsObjectTypeIDPropertyNameRu
      * To enforce required parameters use
      * ```
      * PropertyValidationCrmV3PropertyValidationsObjectTypeIDPropertyNameRuleTypeRuleTypeParams::with(
-     *   objectTypeId: ..., propertyName: ..., ruleArguments: ...
+     *   objectTypeID: ..., propertyName: ..., ruleArguments: ...
      * )
      * ```
      *
@@ -72,13 +72,13 @@ final class PropertyValidationCrmV3PropertyValidationsObjectTypeIDPropertyNameRu
      * @param list<string> $ruleArguments
      */
     public static function with(
-        string $objectTypeId,
+        string $objectTypeID,
         string $propertyName,
         array $ruleArguments
     ): self {
         $obj = new self;
 
-        $obj['objectTypeId'] = $objectTypeId;
+        $obj['objectTypeID'] = $objectTypeID;
         $obj['propertyName'] = $propertyName;
         $obj['ruleArguments'] = $ruleArguments;
 
@@ -88,7 +88,7 @@ final class PropertyValidationCrmV3PropertyValidationsObjectTypeIDPropertyNameRu
     public function withObjectTypeID(string $objectTypeID): self
     {
         $obj = clone $this;
-        $obj['objectTypeId'] = $objectTypeID;
+        $obj['objectTypeID'] = $objectTypeID;
 
         return $obj;
     }

@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type PortalFlagStateBatchDeleteRequestShape = array{
- *   portalIds: list<int>
+ *   portalIDs: list<int>
  * }
  */
 final class PortalFlagStateBatchDeleteRequest implements BaseModel
@@ -18,16 +18,16 @@ final class PortalFlagStateBatchDeleteRequest implements BaseModel
     /** @use SdkModel<PortalFlagStateBatchDeleteRequestShape> */
     use SdkModel;
 
-    /** @var list<int> $portalIds */
-    #[Required(list: 'int')]
-    public array $portalIds;
+    /** @var list<int> $portalIDs */
+    #[Required('portalIds', list: 'int')]
+    public array $portalIDs;
 
     /**
      * `new PortalFlagStateBatchDeleteRequest()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * PortalFlagStateBatchDeleteRequest::with(portalIds: ...)
+     * PortalFlagStateBatchDeleteRequest::with(portalIDs: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -46,13 +46,13 @@ final class PortalFlagStateBatchDeleteRequest implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<int> $portalIds
+     * @param list<int> $portalIDs
      */
-    public static function with(array $portalIds): self
+    public static function with(array $portalIDs): self
     {
         $obj = new self;
 
-        $obj['portalIds'] = $portalIds;
+        $obj['portalIDs'] = $portalIDs;
 
         return $obj;
     }
@@ -63,7 +63,7 @@ final class PortalFlagStateBatchDeleteRequest implements BaseModel
     public function withPortalIDs(array $portalIDs): self
     {
         $obj = clone $this;
-        $obj['portalIds'] = $portalIDs;
+        $obj['portalIDs'] = $portalIDs;
 
         return $obj;
     }

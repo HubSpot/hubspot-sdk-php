@@ -14,9 +14,9 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-type PublicUserUpdateShape = array{
  *   firstName?: string|null,
  *   lastName?: string|null,
- *   primaryTeamId?: string|null,
- *   roleId?: string|null,
- *   secondaryTeamIds?: list<string>|null,
+ *   primaryTeamID?: string|null,
+ *   roleID?: string|null,
+ *   secondaryTeamIDs?: list<string>|null,
  * }
  */
 final class PublicUserUpdate implements BaseModel
@@ -39,22 +39,22 @@ final class PublicUserUpdate implements BaseModel
     /**
      * The user's primary team.
      */
-    #[Optional]
-    public ?string $primaryTeamId;
+    #[Optional('primaryTeamId')]
+    public ?string $primaryTeamID;
 
     /**
      * The user's role.
      */
-    #[Optional]
-    public ?string $roleId;
+    #[Optional('roleId')]
+    public ?string $roleID;
 
     /**
      * The user's additional teams.
      *
-     * @var list<string>|null $secondaryTeamIds
+     * @var list<string>|null $secondaryTeamIDs
      */
-    #[Optional(list: 'string')]
-    public ?array $secondaryTeamIds;
+    #[Optional('secondaryTeamIds', list: 'string')]
+    public ?array $secondaryTeamIDs;
 
     public function __construct()
     {
@@ -66,22 +66,22 @@ final class PublicUserUpdate implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<string> $secondaryTeamIds
+     * @param list<string> $secondaryTeamIDs
      */
     public static function with(
         ?string $firstName = null,
         ?string $lastName = null,
-        ?string $primaryTeamId = null,
-        ?string $roleId = null,
-        ?array $secondaryTeamIds = null,
+        ?string $primaryTeamID = null,
+        ?string $roleID = null,
+        ?array $secondaryTeamIDs = null,
     ): self {
         $obj = new self;
 
         null !== $firstName && $obj['firstName'] = $firstName;
         null !== $lastName && $obj['lastName'] = $lastName;
-        null !== $primaryTeamId && $obj['primaryTeamId'] = $primaryTeamId;
-        null !== $roleId && $obj['roleId'] = $roleId;
-        null !== $secondaryTeamIds && $obj['secondaryTeamIds'] = $secondaryTeamIds;
+        null !== $primaryTeamID && $obj['primaryTeamID'] = $primaryTeamID;
+        null !== $roleID && $obj['roleID'] = $roleID;
+        null !== $secondaryTeamIDs && $obj['secondaryTeamIDs'] = $secondaryTeamIDs;
 
         return $obj;
     }
@@ -114,7 +114,7 @@ final class PublicUserUpdate implements BaseModel
     public function withPrimaryTeamID(string $primaryTeamID): self
     {
         $obj = clone $this;
-        $obj['primaryTeamId'] = $primaryTeamID;
+        $obj['primaryTeamID'] = $primaryTeamID;
 
         return $obj;
     }
@@ -125,7 +125,7 @@ final class PublicUserUpdate implements BaseModel
     public function withRoleID(string $roleID): self
     {
         $obj = clone $this;
-        $obj['roleId'] = $roleID;
+        $obj['roleID'] = $roleID;
 
         return $obj;
     }
@@ -138,7 +138,7 @@ final class PublicUserUpdate implements BaseModel
     public function withSecondaryTeamIDs(array $secondaryTeamIDs): self
     {
         $obj = clone $this;
-        $obj['secondaryTeamIds'] = $secondaryTeamIDs;
+        $obj['secondaryTeamIDs'] = $secondaryTeamIDs;
 
         return $obj;
     }

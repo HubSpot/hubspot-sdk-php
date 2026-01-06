@@ -9,15 +9,15 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type PublicDealSplitInputShape = array{ownerId: int, percentage: float}
+ * @phpstan-type PublicDealSplitInputShape = array{ownerID: int, percentage: float}
  */
 final class PublicDealSplitInput implements BaseModel
 {
     /** @use SdkModel<PublicDealSplitInputShape> */
     use SdkModel;
 
-    #[Required]
-    public int $ownerId;
+    #[Required('ownerId')]
+    public int $ownerID;
 
     #[Required]
     public float $percentage;
@@ -27,7 +27,7 @@ final class PublicDealSplitInput implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * PublicDealSplitInput::with(ownerId: ..., percentage: ...)
+     * PublicDealSplitInput::with(ownerID: ..., percentage: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -46,11 +46,11 @@ final class PublicDealSplitInput implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(int $ownerId, float $percentage): self
+    public static function with(int $ownerID, float $percentage): self
     {
         $obj = new self;
 
-        $obj['ownerId'] = $ownerId;
+        $obj['ownerID'] = $ownerID;
         $obj['percentage'] = $percentage;
 
         return $obj;
@@ -59,7 +59,7 @@ final class PublicDealSplitInput implements BaseModel
     public function withOwnerID(int $ownerID): self
     {
         $obj = clone $this;
-        $obj['ownerId'] = $ownerID;
+        $obj['ownerID'] = $ownerID;
 
         return $obj;
     }

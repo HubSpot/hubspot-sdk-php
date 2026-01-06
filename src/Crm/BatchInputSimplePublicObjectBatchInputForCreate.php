@@ -49,7 +49,7 @@ final class BatchInputSimplePublicObjectBatchInputForCreate implements BaseModel
      * @param list<SimplePublicObjectBatchInputForCreate|array{
      *   associations: list<PublicAssociationsForObject>,
      *   properties: array<string,string>,
-     *   objectWriteTraceId?: string|null,
+     *   objectWriteTraceID?: string|null,
      * }> $inputs
      */
     public static function with(array $inputs): self
@@ -65,7 +65,7 @@ final class BatchInputSimplePublicObjectBatchInputForCreate implements BaseModel
      * @param list<SimplePublicObjectBatchInputForCreate|array{
      *   associations: list<PublicAssociationsForObject>,
      *   properties: array<string,string>,
-     *   objectWriteTraceId?: string|null,
+     *   objectWriteTraceID?: string|null,
      * }> $inputs
      */
     public function withInputs(array $inputs): self

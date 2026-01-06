@@ -73,10 +73,10 @@ use HubspotSDK\PublicWebinarFilter;
  *   dataSources: list<APIAssociationDataSource|APIAssociationTimestampDataSource|APIStaticPropertyFilterDataSource|APIEnrolledRecordPropertyFilterDataSource|APIDatasetFieldPropertyFilterDataSource|APIEnrolledArgumentPropertyFilterDataSource>,
  *   flowType: value-of<FlowType>,
  *   isEnabled: bool,
- *   nextAvailableActionId: string,
- *   objectTypeId: string,
- *   revisionId: string,
- *   suppressionListIds: list<int>,
+ *   nextAvailableActionID: string,
+ *   objectTypeID: string,
+ *   revisionID: string,
+ *   suppressionListIDs: list<int>,
  *   timeWindows: list<APITimeWindow>,
  *   type: value-of<Type>,
  *   updatedAt: \DateTimeInterface,
@@ -86,7 +86,7 @@ use HubspotSDK\PublicWebinarFilter;
  *   eventAnchor?: null|APIContactPropertyAnchor|APIStaticDateAnchor,
  *   goalFilterBranch?: null|PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch,
  *   name?: string|null,
- *   startActionId?: string|null,
+ *   startActionID?: string|null,
  *   unEnrollmentSetting?: APIUnEnrollmentSetting|null,
  *   uuid?: string|null,
  * }
@@ -134,18 +134,18 @@ final class APIContactFlow implements BaseModel
     #[Required]
     public bool $isEnabled;
 
-    #[Required]
-    public string $nextAvailableActionId;
+    #[Required('nextAvailableActionId')]
+    public string $nextAvailableActionID;
 
-    #[Required]
-    public string $objectTypeId;
+    #[Required('objectTypeId')]
+    public string $objectTypeID;
 
-    #[Required]
-    public string $revisionId;
+    #[Required('revisionId')]
+    public string $revisionID;
 
-    /** @var list<int> $suppressionListIds */
-    #[Required(list: 'int')]
-    public array $suppressionListIds;
+    /** @var list<int> $suppressionListIDs */
+    #[Required('suppressionListIds', list: 'int')]
+    public array $suppressionListIDs;
 
     /** @var list<APITimeWindow> $timeWindows */
     #[Required(list: APITimeWindow::class)]
@@ -176,8 +176,8 @@ final class APIContactFlow implements BaseModel
     #[Optional]
     public ?string $name;
 
-    #[Optional]
-    public ?string $startActionId;
+    #[Optional('startActionId')]
+    public ?string $startActionID;
 
     #[Optional]
     public ?APIUnEnrollmentSetting $unEnrollmentSetting;
@@ -201,10 +201,10 @@ final class APIContactFlow implements BaseModel
      *   dataSources: ...,
      *   flowType: ...,
      *   isEnabled: ...,
-     *   nextAvailableActionId: ...,
-     *   objectTypeId: ...,
-     *   revisionId: ...,
-     *   suppressionListIds: ...,
+     *   nextAvailableActionID: ...,
+     *   objectTypeID: ...,
+     *   revisionID: ...,
+     *   suppressionListIDs: ...,
      *   timeWindows: ...,
      *   type: ...,
      *   updatedAt: ...,
@@ -252,16 +252,16 @@ final class APIContactFlow implements BaseModel
      * @param array<string,string> $customProperties
      * @param list<APIAssociationDataSource|array{
      *   associationCategory: value-of<AssociationCategory>,
-     *   associationTypeId: int,
+     *   associationTypeID: int,
      *   name: string,
-     *   objectTypeId: string,
+     *   objectTypeID: string,
      *   type: value-of<APIAssociationDataSource\Type>,
      *   sortBy?: APISort|null,
      * }|APIAssociationTimestampDataSource|array{
      *   associationCategory: value-of<APIAssociationTimestampDataSource\AssociationCategory>,
-     *   associationTypeId: int,
+     *   associationTypeID: int,
      *   name: string,
-     *   objectTypeId: string,
+     *   objectTypeID: string,
      *   type: value-of<APIAssociationTimestampDataSource\Type>,
      * }|APIStaticPropertyFilterDataSource|array{
      *   name: string,
@@ -289,7 +289,7 @@ final class APIContactFlow implements BaseModel
      *   sortBy?: APISort|null,
      * }> $dataSources
      * @param FlowType|value-of<FlowType> $flowType
-     * @param list<int> $suppressionListIds
+     * @param list<int> $suppressionListIDs
      * @param list<APITimeWindow|array{
      *   day: value-of<Day>, endTime?: APITimeOfDay|null, startTime?: APITimeOfDay|null
      * }> $timeWindows
@@ -372,7 +372,7 @@ final class APIContactFlow implements BaseModel
      *   filterBranchType: value-of<PublicRestrictedFilterBranch\FilterBranchType>,
      *   filters: list<PublicPropertyFilter|PublicAssociationInListFilter|PublicPageViewAnalyticsFilter|PublicCtaAnalyticsFilter|PublicEventAnalyticsFilter|PublicFormSubmissionFilter|PublicFormSubmissionOnPageFilter|PublicIntegrationEventFilter|PublicEmailSubscriptionFilter|PublicCommunicationSubscriptionFilter|PublicCampaignInfluencedFilter|PublicSurveyMonkeyFilter|PublicSurveyMonkeyValueFilter|PublicWebinarFilter|PublicEmailEventFilter|PublicPrivacyAnalyticsFilter|PublicAdsSearchFilter|PublicAdsTimeFilter|PublicInListFilter|PublicNumAssociationsFilter|PublicUnifiedEventsFilter|PublicPropertyAssociationInListFilter|PublicConstantFilter>,
      * }|PublicUnifiedEventsFilterBranch|array{
-     *   eventTypeId: string,
+     *   eventTypeID: string,
      *   filterBranches: list<mixed>,
      *   filterBranchOperator: string,
      *   filterBranchType: value-of<PublicUnifiedEventsFilterBranch\FilterBranchType>,
@@ -384,21 +384,21 @@ final class APIContactFlow implements BaseModel
      *   filterBranchOperator: string,
      *   filterBranchType: value-of<PublicPropertyAssociationFilterBranch\FilterBranchType>,
      *   filters: list<PublicPropertyFilter|PublicAssociationInListFilter|PublicPageViewAnalyticsFilter|PublicCtaAnalyticsFilter|PublicEventAnalyticsFilter|PublicFormSubmissionFilter|PublicFormSubmissionOnPageFilter|PublicIntegrationEventFilter|PublicEmailSubscriptionFilter|PublicCommunicationSubscriptionFilter|PublicCampaignInfluencedFilter|PublicSurveyMonkeyFilter|PublicSurveyMonkeyValueFilter|PublicWebinarFilter|PublicEmailEventFilter|PublicPrivacyAnalyticsFilter|PublicAdsSearchFilter|PublicAdsTimeFilter|PublicInListFilter|PublicNumAssociationsFilter|PublicUnifiedEventsFilter|PublicPropertyAssociationInListFilter|PublicConstantFilter>,
-     *   objectTypeId: string,
+     *   objectTypeID: string,
      *   operator: string,
-     *   propertyWithObjectId: string,
+     *   propertyWithObjectID: string,
      * }|PublicAssociationFilterBranch|array{
      *   associationCategory: string,
-     *   associationTypeId: int,
+     *   associationTypeID: int,
      *   filterBranches: list<mixed>,
      *   filterBranchOperator: string,
      *   filterBranchType: value-of<PublicAssociationFilterBranch\FilterBranchType>,
      *   filters: list<PublicPropertyFilter|PublicAssociationInListFilter|PublicPageViewAnalyticsFilter|PublicCtaAnalyticsFilter|PublicEventAnalyticsFilter|PublicFormSubmissionFilter|PublicFormSubmissionOnPageFilter|PublicIntegrationEventFilter|PublicEmailSubscriptionFilter|PublicCommunicationSubscriptionFilter|PublicCampaignInfluencedFilter|PublicSurveyMonkeyFilter|PublicSurveyMonkeyValueFilter|PublicWebinarFilter|PublicEmailEventFilter|PublicPrivacyAnalyticsFilter|PublicAdsSearchFilter|PublicAdsTimeFilter|PublicInListFilter|PublicNumAssociationsFilter|PublicUnifiedEventsFilter|PublicPropertyAssociationInListFilter|PublicConstantFilter>,
-     *   objectTypeId: string,
+     *   objectTypeID: string,
      *   operator: string,
      * } $goalFilterBranch
      * @param APIUnEnrollmentSetting|array{
-     *   flowIds: list<string>,
+     *   flowIDs: list<string>,
      *   type: value-of<APIUnEnrollmentSetting\Type>,
      * } $unEnrollmentSetting
      */
@@ -413,10 +413,10 @@ final class APIContactFlow implements BaseModel
         array $dataSources,
         FlowType|string $flowType,
         bool $isEnabled,
-        string $nextAvailableActionId,
-        string $objectTypeId,
-        string $revisionId,
-        array $suppressionListIds,
+        string $nextAvailableActionID,
+        string $objectTypeID,
+        string $revisionID,
+        array $suppressionListIDs,
         array $timeWindows,
         \DateTimeInterface $updatedAt,
         Type|string $type = 'CONTACT_FLOW',
@@ -426,7 +426,7 @@ final class APIContactFlow implements BaseModel
         APIContactPropertyAnchor|array|APIStaticDateAnchor|null $eventAnchor = null,
         PublicOrFilterBranch|array|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch|null $goalFilterBranch = null,
         ?string $name = null,
-        ?string $startActionId = null,
+        ?string $startActionID = null,
         APIUnEnrollmentSetting|array|null $unEnrollmentSetting = null,
         ?string $uuid = null,
     ): self {
@@ -442,10 +442,10 @@ final class APIContactFlow implements BaseModel
         $obj['dataSources'] = $dataSources;
         $obj['flowType'] = $flowType;
         $obj['isEnabled'] = $isEnabled;
-        $obj['nextAvailableActionId'] = $nextAvailableActionId;
-        $obj['objectTypeId'] = $objectTypeId;
-        $obj['revisionId'] = $revisionId;
-        $obj['suppressionListIds'] = $suppressionListIds;
+        $obj['nextAvailableActionID'] = $nextAvailableActionID;
+        $obj['objectTypeID'] = $objectTypeID;
+        $obj['revisionID'] = $revisionID;
+        $obj['suppressionListIDs'] = $suppressionListIDs;
         $obj['timeWindows'] = $timeWindows;
         $obj['type'] = $type;
         $obj['updatedAt'] = $updatedAt;
@@ -456,7 +456,7 @@ final class APIContactFlow implements BaseModel
         null !== $eventAnchor && $obj['eventAnchor'] = $eventAnchor;
         null !== $goalFilterBranch && $obj['goalFilterBranch'] = $goalFilterBranch;
         null !== $name && $obj['name'] = $name;
-        null !== $startActionId && $obj['startActionId'] = $startActionId;
+        null !== $startActionID && $obj['startActionID'] = $startActionID;
         null !== $unEnrollmentSetting && $obj['unEnrollmentSetting'] = $unEnrollmentSetting;
         null !== $uuid && $obj['uuid'] = $uuid;
 
@@ -538,16 +538,16 @@ final class APIContactFlow implements BaseModel
     /**
      * @param list<APIAssociationDataSource|array{
      *   associationCategory: value-of<AssociationCategory>,
-     *   associationTypeId: int,
+     *   associationTypeID: int,
      *   name: string,
-     *   objectTypeId: string,
+     *   objectTypeID: string,
      *   type: value-of<APIAssociationDataSource\Type>,
      *   sortBy?: APISort|null,
      * }|APIAssociationTimestampDataSource|array{
      *   associationCategory: value-of<APIAssociationTimestampDataSource\AssociationCategory>,
-     *   associationTypeId: int,
+     *   associationTypeID: int,
      *   name: string,
-     *   objectTypeId: string,
+     *   objectTypeID: string,
      *   type: value-of<APIAssociationTimestampDataSource\Type>,
      * }|APIStaticPropertyFilterDataSource|array{
      *   name: string,
@@ -606,7 +606,7 @@ final class APIContactFlow implements BaseModel
         string $nextAvailableActionID
     ): self {
         $obj = clone $this;
-        $obj['nextAvailableActionId'] = $nextAvailableActionID;
+        $obj['nextAvailableActionID'] = $nextAvailableActionID;
 
         return $obj;
     }
@@ -614,7 +614,7 @@ final class APIContactFlow implements BaseModel
     public function withObjectTypeID(string $objectTypeID): self
     {
         $obj = clone $this;
-        $obj['objectTypeId'] = $objectTypeID;
+        $obj['objectTypeID'] = $objectTypeID;
 
         return $obj;
     }
@@ -622,7 +622,7 @@ final class APIContactFlow implements BaseModel
     public function withRevisionID(string $revisionID): self
     {
         $obj = clone $this;
-        $obj['revisionId'] = $revisionID;
+        $obj['revisionID'] = $revisionID;
 
         return $obj;
     }
@@ -633,7 +633,7 @@ final class APIContactFlow implements BaseModel
     public function withSuppressionListIDs(array $suppressionListIDs): self
     {
         $obj = clone $this;
-        $obj['suppressionListIds'] = $suppressionListIDs;
+        $obj['suppressionListIDs'] = $suppressionListIDs;
 
         return $obj;
     }
@@ -790,7 +790,7 @@ final class APIContactFlow implements BaseModel
      *   filterBranchType: value-of<PublicRestrictedFilterBranch\FilterBranchType>,
      *   filters: list<PublicPropertyFilter|PublicAssociationInListFilter|PublicPageViewAnalyticsFilter|PublicCtaAnalyticsFilter|PublicEventAnalyticsFilter|PublicFormSubmissionFilter|PublicFormSubmissionOnPageFilter|PublicIntegrationEventFilter|PublicEmailSubscriptionFilter|PublicCommunicationSubscriptionFilter|PublicCampaignInfluencedFilter|PublicSurveyMonkeyFilter|PublicSurveyMonkeyValueFilter|PublicWebinarFilter|PublicEmailEventFilter|PublicPrivacyAnalyticsFilter|PublicAdsSearchFilter|PublicAdsTimeFilter|PublicInListFilter|PublicNumAssociationsFilter|PublicUnifiedEventsFilter|PublicPropertyAssociationInListFilter|PublicConstantFilter>,
      * }|PublicUnifiedEventsFilterBranch|array{
-     *   eventTypeId: string,
+     *   eventTypeID: string,
      *   filterBranches: list<mixed>,
      *   filterBranchOperator: string,
      *   filterBranchType: value-of<PublicUnifiedEventsFilterBranch\FilterBranchType>,
@@ -802,17 +802,17 @@ final class APIContactFlow implements BaseModel
      *   filterBranchOperator: string,
      *   filterBranchType: value-of<PublicPropertyAssociationFilterBranch\FilterBranchType>,
      *   filters: list<PublicPropertyFilter|PublicAssociationInListFilter|PublicPageViewAnalyticsFilter|PublicCtaAnalyticsFilter|PublicEventAnalyticsFilter|PublicFormSubmissionFilter|PublicFormSubmissionOnPageFilter|PublicIntegrationEventFilter|PublicEmailSubscriptionFilter|PublicCommunicationSubscriptionFilter|PublicCampaignInfluencedFilter|PublicSurveyMonkeyFilter|PublicSurveyMonkeyValueFilter|PublicWebinarFilter|PublicEmailEventFilter|PublicPrivacyAnalyticsFilter|PublicAdsSearchFilter|PublicAdsTimeFilter|PublicInListFilter|PublicNumAssociationsFilter|PublicUnifiedEventsFilter|PublicPropertyAssociationInListFilter|PublicConstantFilter>,
-     *   objectTypeId: string,
+     *   objectTypeID: string,
      *   operator: string,
-     *   propertyWithObjectId: string,
+     *   propertyWithObjectID: string,
      * }|PublicAssociationFilterBranch|array{
      *   associationCategory: string,
-     *   associationTypeId: int,
+     *   associationTypeID: int,
      *   filterBranches: list<mixed>,
      *   filterBranchOperator: string,
      *   filterBranchType: value-of<PublicAssociationFilterBranch\FilterBranchType>,
      *   filters: list<PublicPropertyFilter|PublicAssociationInListFilter|PublicPageViewAnalyticsFilter|PublicCtaAnalyticsFilter|PublicEventAnalyticsFilter|PublicFormSubmissionFilter|PublicFormSubmissionOnPageFilter|PublicIntegrationEventFilter|PublicEmailSubscriptionFilter|PublicCommunicationSubscriptionFilter|PublicCampaignInfluencedFilter|PublicSurveyMonkeyFilter|PublicSurveyMonkeyValueFilter|PublicWebinarFilter|PublicEmailEventFilter|PublicPrivacyAnalyticsFilter|PublicAdsSearchFilter|PublicAdsTimeFilter|PublicInListFilter|PublicNumAssociationsFilter|PublicUnifiedEventsFilter|PublicPropertyAssociationInListFilter|PublicConstantFilter>,
-     *   objectTypeId: string,
+     *   objectTypeID: string,
      *   operator: string,
      * } $goalFilterBranch
      */
@@ -836,14 +836,14 @@ final class APIContactFlow implements BaseModel
     public function withStartActionID(string $startActionID): self
     {
         $obj = clone $this;
-        $obj['startActionId'] = $startActionID;
+        $obj['startActionID'] = $startActionID;
 
         return $obj;
     }
 
     /**
      * @param APIUnEnrollmentSetting|array{
-     *   flowIds: list<string>,
+     *   flowIDs: list<string>,
      *   type: value-of<APIUnEnrollmentSetting\Type>,
      * } $unEnrollmentSetting
      */

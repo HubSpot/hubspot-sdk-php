@@ -17,9 +17,9 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   taskType: string,
  *   updatedAt: \DateTimeInterface,
  *   notes?: string|null,
- *   queueId?: int|null,
+ *   queueID?: int|null,
  *   subject?: string|null,
- *   templateId?: int|null,
+ *   templateID?: int|null,
  *   threadEmailToStepOrder?: int|null,
  * }
  */
@@ -46,14 +46,14 @@ final class PublicTaskPatternResponse implements BaseModel
     #[Optional]
     public ?string $notes;
 
-    #[Optional]
-    public ?int $queueId;
+    #[Optional('queueId')]
+    public ?int $queueID;
 
     #[Optional]
     public ?string $subject;
 
-    #[Optional]
-    public ?int $templateId;
+    #[Optional('templateId')]
+    public ?int $templateID;
 
     #[Optional]
     public ?int $threadEmailToStepOrder;
@@ -96,9 +96,9 @@ final class PublicTaskPatternResponse implements BaseModel
         string $taskType,
         \DateTimeInterface $updatedAt,
         ?string $notes = null,
-        ?int $queueId = null,
+        ?int $queueID = null,
         ?string $subject = null,
-        ?int $templateId = null,
+        ?int $templateID = null,
         ?int $threadEmailToStepOrder = null,
     ): self {
         $obj = new self;
@@ -110,9 +110,9 @@ final class PublicTaskPatternResponse implements BaseModel
         $obj['updatedAt'] = $updatedAt;
 
         null !== $notes && $obj['notes'] = $notes;
-        null !== $queueId && $obj['queueId'] = $queueId;
+        null !== $queueID && $obj['queueID'] = $queueID;
         null !== $subject && $obj['subject'] = $subject;
-        null !== $templateId && $obj['templateId'] = $templateId;
+        null !== $templateID && $obj['templateID'] = $templateID;
         null !== $threadEmailToStepOrder && $obj['threadEmailToStepOrder'] = $threadEmailToStepOrder;
 
         return $obj;
@@ -169,7 +169,7 @@ final class PublicTaskPatternResponse implements BaseModel
     public function withQueueID(int $queueID): self
     {
         $obj = clone $this;
-        $obj['queueId'] = $queueID;
+        $obj['queueID'] = $queueID;
 
         return $obj;
     }
@@ -185,7 +185,7 @@ final class PublicTaskPatternResponse implements BaseModel
     public function withTemplateID(int $templateID): self
     {
         $obj = clone $this;
-        $obj['templateId'] = $templateID;
+        $obj['templateID'] = $templateID;
 
         return $obj;
     }

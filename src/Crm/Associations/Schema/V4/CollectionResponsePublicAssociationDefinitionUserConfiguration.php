@@ -62,9 +62,9 @@ final class CollectionResponsePublicAssociationDefinitionUserConfiguration imple
      *
      * @param list<PublicAssociationDefinitionUserConfiguration|array{
      *   category: value-of<Category>,
-     *   typeId: int,
+     *   typeID: int,
      *   label?: string|null,
-     *   userEnforcedMaxToObjectIds?: int|null,
+     *   userEnforcedMaxToObjectIDs?: int|null,
      * }> $results
      * @param Paging|array{next?: NextPage|null, prev?: PreviousPage|null} $paging
      */
@@ -84,9 +84,9 @@ final class CollectionResponsePublicAssociationDefinitionUserConfiguration imple
     /**
      * @param list<PublicAssociationDefinitionUserConfiguration|array{
      *   category: value-of<Category>,
-     *   typeId: int,
+     *   typeID: int,
      *   label?: string|null,
-     *   userEnforcedMaxToObjectIds?: int|null,
+     *   userEnforcedMaxToObjectIDs?: int|null,
      * }> $results
      */
     public function withResults(array $results): self

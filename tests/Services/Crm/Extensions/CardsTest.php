@@ -42,7 +42,7 @@ final class CardsTest extends TestCase
         $result = $this->client->crm->extensions->cards->create(
             0,
             [
-                'actions' => ['baseUrls' => ['https://www.example.com/hubspot']],
+                'actions' => ['baseURLs' => ['https://www.example.com/hubspot']],
                 'display' => [
                     'properties' => [
                         [
@@ -59,7 +59,7 @@ final class CardsTest extends TestCase
                     'objectTypes' => [
                         ['name' => 'contacts', 'propertiesToSend' => ['email', 'firstname']],
                     ],
-                    'targetUrl' => 'https://www.example.com/hubspot/target',
+                    'targetURL' => 'https://www.example.com/hubspot/target',
                 ],
                 'title' => 'PetSpot',
             ],
@@ -79,7 +79,7 @@ final class CardsTest extends TestCase
         $result = $this->client->crm->extensions->cards->create(
             0,
             [
-                'actions' => ['baseUrls' => ['https://www.example.com/hubspot']],
+                'actions' => ['baseURLs' => ['https://www.example.com/hubspot']],
                 'display' => [
                     'properties' => [
                         [
@@ -96,7 +96,7 @@ final class CardsTest extends TestCase
                     'objectTypes' => [
                         ['name' => 'contacts', 'propertiesToSend' => ['email', 'firstname']],
                     ],
-                    'targetUrl' => 'https://www.example.com/hubspot/target',
+                    'targetURL' => 'https://www.example.com/hubspot/target',
                     'cardType' => 'EXTERNAL',
                     'serverlessFunction' => 'serverlessFunction',
                 ],
@@ -117,7 +117,7 @@ final class CardsTest extends TestCase
 
         $result = $this->client->crm->extensions->cards->update(
             'cardId',
-            ['appId' => 0]
+            ['appID' => 0]
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -134,8 +134,8 @@ final class CardsTest extends TestCase
         $result = $this->client->crm->extensions->cards->update(
             'cardId',
             [
-                'appId' => 0,
-                'actions' => ['baseUrls' => ['https://www.example.com/hubspot']],
+                'appID' => 0,
+                'actions' => ['baseURLs' => ['https://www.example.com/hubspot']],
                 'display' => [
                     'properties' => [
                         [
@@ -154,7 +154,7 @@ final class CardsTest extends TestCase
                     ],
                     'cardType' => 'EXTERNAL',
                     'serverlessFunction' => 'serverlessFunction',
-                    'targetUrl' => 'https://www.example.com/hubspot/target',
+                    'targetURL' => 'https://www.example.com/hubspot/target',
                 ],
                 'title' => 'PetSpot',
             ],
@@ -186,7 +186,7 @@ final class CardsTest extends TestCase
 
         $result = $this->client->crm->extensions->cards->delete(
             'cardId',
-            ['appId' => 0]
+            ['appID' => 0]
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -202,7 +202,7 @@ final class CardsTest extends TestCase
 
         $result = $this->client->crm->extensions->cards->delete(
             'cardId',
-            ['appId' => 0]
+            ['appID' => 0]
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -218,7 +218,7 @@ final class CardsTest extends TestCase
 
         $result = $this->client->crm->extensions->cards->get(
             'cardId',
-            ['appId' => 0]
+            ['appID' => 0]
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -234,7 +234,7 @@ final class CardsTest extends TestCase
 
         $result = $this->client->crm->extensions->cards->get(
             'cardId',
-            ['appId' => 0]
+            ['appID' => 0]
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

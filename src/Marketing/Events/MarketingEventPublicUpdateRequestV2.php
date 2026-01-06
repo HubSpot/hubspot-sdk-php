@@ -20,7 +20,7 @@ use HubspotSDK\Marketing\Events\PropertyValue\Source;
  *   eventName?: string|null,
  *   eventOrganizer?: string|null,
  *   eventType?: string|null,
- *   eventUrl?: string|null,
+ *   eventURL?: string|null,
  *   startDateTime?: \DateTimeInterface|null,
  * }
  */
@@ -51,8 +51,8 @@ final class MarketingEventPublicUpdateRequestV2 implements BaseModel
     #[Optional]
     public ?string $eventType;
 
-    #[Optional]
-    public ?string $eventUrl;
+    #[Optional('eventUrl')]
+    public ?string $eventURL;
 
     #[Optional]
     public ?\DateTimeInterface $startDateTime;
@@ -87,18 +87,18 @@ final class MarketingEventPublicUpdateRequestV2 implements BaseModel
      *   isLargeValue: bool,
      *   name: string,
      *   persistenceTimestamp: int,
-     *   requestId: string,
+     *   requestID: string,
      *   selectedByUser: bool,
      *   selectedByUserTimestamp: int,
      *   source: value-of<Source>,
-     *   sourceId: string,
+     *   sourceID: string,
      *   sourceLabel: string,
      *   sourceMetadata: string,
      *   sourceUpstreamDeployable: string,
      *   sourceVid: list<int>,
      *   timestamp: int,
      *   unit: string,
-     *   updatedByUserId: int,
+     *   updatedByUserID: int,
      *   useTimestampAsPersistenceTimestamp: bool,
      *   value: string,
      * }> $customProperties
@@ -111,7 +111,7 @@ final class MarketingEventPublicUpdateRequestV2 implements BaseModel
         ?string $eventName = null,
         ?string $eventOrganizer = null,
         ?string $eventType = null,
-        ?string $eventUrl = null,
+        ?string $eventURL = null,
         ?\DateTimeInterface $startDateTime = null,
     ): self {
         $obj = new self;
@@ -124,7 +124,7 @@ final class MarketingEventPublicUpdateRequestV2 implements BaseModel
         null !== $eventName && $obj['eventName'] = $eventName;
         null !== $eventOrganizer && $obj['eventOrganizer'] = $eventOrganizer;
         null !== $eventType && $obj['eventType'] = $eventType;
-        null !== $eventUrl && $obj['eventUrl'] = $eventUrl;
+        null !== $eventURL && $obj['eventURL'] = $eventURL;
         null !== $startDateTime && $obj['startDateTime'] = $startDateTime;
 
         return $obj;
@@ -137,18 +137,18 @@ final class MarketingEventPublicUpdateRequestV2 implements BaseModel
      *   isLargeValue: bool,
      *   name: string,
      *   persistenceTimestamp: int,
-     *   requestId: string,
+     *   requestID: string,
      *   selectedByUser: bool,
      *   selectedByUserTimestamp: int,
      *   source: value-of<Source>,
-     *   sourceId: string,
+     *   sourceID: string,
      *   sourceLabel: string,
      *   sourceMetadata: string,
      *   sourceUpstreamDeployable: string,
      *   sourceVid: list<int>,
      *   timestamp: int,
      *   unit: string,
-     *   updatedByUserId: int,
+     *   updatedByUserID: int,
      *   useTimestampAsPersistenceTimestamp: bool,
      *   value: string,
      * }> $customProperties
@@ -212,7 +212,7 @@ final class MarketingEventPublicUpdateRequestV2 implements BaseModel
     public function withEventURL(string $eventURL): self
     {
         $obj = clone $this;
-        $obj['eventUrl'] = $eventURL;
+        $obj['eventURL'] = $eventURL;
 
         return $obj;
     }

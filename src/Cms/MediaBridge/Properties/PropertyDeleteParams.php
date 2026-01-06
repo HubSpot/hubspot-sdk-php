@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Services\Cms\MediaBridge\PropertiesService::delete()
  *
- * @phpstan-type PropertyDeleteParamsShape = array{appId: int, objectType: string}
+ * @phpstan-type PropertyDeleteParamsShape = array{appID: int, objectType: string}
  */
 final class PropertyDeleteParams implements BaseModel
 {
@@ -23,7 +23,7 @@ final class PropertyDeleteParams implements BaseModel
     use SdkParams;
 
     #[Required]
-    public int $appId;
+    public int $appID;
 
     #[Required]
     public string $objectType;
@@ -33,7 +33,7 @@ final class PropertyDeleteParams implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * PropertyDeleteParams::with(appId: ..., objectType: ...)
+     * PropertyDeleteParams::with(appID: ..., objectType: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -52,11 +52,11 @@ final class PropertyDeleteParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(int $appId, string $objectType): self
+    public static function with(int $appID, string $objectType): self
     {
         $obj = new self;
 
-        $obj['appId'] = $appId;
+        $obj['appID'] = $appID;
         $obj['objectType'] = $objectType;
 
         return $obj;
@@ -65,7 +65,7 @@ final class PropertyDeleteParams implements BaseModel
     public function withAppID(int $appID): self
     {
         $obj = clone $this;
-        $obj['appId'] = $appID;
+        $obj['appID'] = $appID;
 
         return $obj;
     }

@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   createdAt: \DateTimeInterface,
  *   customProperties: list<CrmPropertyWrapper>,
  *   eventName: string,
- *   objectId: string,
+ *   objectID: string,
  *   updatedAt: \DateTimeInterface,
  *   appInfo?: AppInfo|null,
  *   endDateTime?: \DateTimeInterface|null,
@@ -23,7 +23,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   eventDescription?: string|null,
  *   eventOrganizer?: string|null,
  *   eventType?: string|null,
- *   eventUrl?: string|null,
+ *   eventURL?: string|null,
  *   startDateTime?: \DateTimeInterface|null,
  * }
  */
@@ -42,8 +42,8 @@ final class MarketingEventPublicDefaultResponseV2 implements BaseModel
     #[Required]
     public string $eventName;
 
-    #[Required]
-    public string $objectId;
+    #[Required('objectId')]
+    public string $objectID;
 
     #[Required]
     public \DateTimeInterface $updatedAt;
@@ -69,8 +69,8 @@ final class MarketingEventPublicDefaultResponseV2 implements BaseModel
     #[Optional]
     public ?string $eventType;
 
-    #[Optional]
-    public ?string $eventUrl;
+    #[Optional('eventUrl')]
+    public ?string $eventURL;
 
     #[Optional]
     public ?\DateTimeInterface $startDateTime;
@@ -84,7 +84,7 @@ final class MarketingEventPublicDefaultResponseV2 implements BaseModel
      *   createdAt: ...,
      *   customProperties: ...,
      *   eventName: ...,
-     *   objectId: ...,
+     *   objectID: ...,
      *   updatedAt: ...,
      * )
      * ```
@@ -119,7 +119,7 @@ final class MarketingEventPublicDefaultResponseV2 implements BaseModel
         \DateTimeInterface $createdAt,
         array $customProperties,
         string $eventName,
-        string $objectId,
+        string $objectID,
         \DateTimeInterface $updatedAt,
         AppInfo|array|null $appInfo = null,
         ?\DateTimeInterface $endDateTime = null,
@@ -128,7 +128,7 @@ final class MarketingEventPublicDefaultResponseV2 implements BaseModel
         ?string $eventDescription = null,
         ?string $eventOrganizer = null,
         ?string $eventType = null,
-        ?string $eventUrl = null,
+        ?string $eventURL = null,
         ?\DateTimeInterface $startDateTime = null,
     ): self {
         $obj = new self;
@@ -136,7 +136,7 @@ final class MarketingEventPublicDefaultResponseV2 implements BaseModel
         $obj['createdAt'] = $createdAt;
         $obj['customProperties'] = $customProperties;
         $obj['eventName'] = $eventName;
-        $obj['objectId'] = $objectId;
+        $obj['objectID'] = $objectID;
         $obj['updatedAt'] = $updatedAt;
 
         null !== $appInfo && $obj['appInfo'] = $appInfo;
@@ -146,7 +146,7 @@ final class MarketingEventPublicDefaultResponseV2 implements BaseModel
         null !== $eventDescription && $obj['eventDescription'] = $eventDescription;
         null !== $eventOrganizer && $obj['eventOrganizer'] = $eventOrganizer;
         null !== $eventType && $obj['eventType'] = $eventType;
-        null !== $eventUrl && $obj['eventUrl'] = $eventUrl;
+        null !== $eventURL && $obj['eventURL'] = $eventURL;
         null !== $startDateTime && $obj['startDateTime'] = $startDateTime;
 
         return $obj;
@@ -184,7 +184,7 @@ final class MarketingEventPublicDefaultResponseV2 implements BaseModel
     public function withObjectID(string $objectID): self
     {
         $obj = clone $this;
-        $obj['objectId'] = $objectID;
+        $obj['objectID'] = $objectID;
 
         return $obj;
     }
@@ -259,7 +259,7 @@ final class MarketingEventPublicDefaultResponseV2 implements BaseModel
     public function withEventURL(string $eventURL): self
     {
         $obj = clone $this;
-        $obj['eventUrl'] = $eventURL;
+        $obj['eventURL'] = $eventURL;
 
         return $obj;
     }

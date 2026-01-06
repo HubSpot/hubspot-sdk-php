@@ -16,10 +16,10 @@ use HubspotSDK\Marketing\Subscriptions\V4\PublicWideStatus\WideStatusType;
  * @phpstan-type PublicWideStatusShape = array{
  *   channel: value-of<Channel>,
  *   status: value-of<Status>,
- *   subscriberIdString: string,
+ *   subscriberIDString: string,
  *   timestamp: \DateTimeInterface,
  *   wideStatusType: value-of<WideStatusType>,
- *   businessUnitId?: int|null,
+ *   businessUnitID?: int|null,
  * }
  */
 final class PublicWideStatus implements BaseModel
@@ -46,8 +46,8 @@ final class PublicWideStatus implements BaseModel
     /**
      * The email address of the contact.
      */
-    #[Required]
-    public string $subscriberIdString;
+    #[Required('subscriberIdString')]
+    public string $subscriberIDString;
 
     /**
      * The date and time when the status was recorded.
@@ -66,8 +66,8 @@ final class PublicWideStatus implements BaseModel
     /**
      * The ID of the business unit associated with the status.
      */
-    #[Optional]
-    public ?int $businessUnitId;
+    #[Optional('businessUnitId')]
+    public ?int $businessUnitID;
 
     /**
      * `new PublicWideStatus()` is missing required properties by the API.
@@ -77,7 +77,7 @@ final class PublicWideStatus implements BaseModel
      * PublicWideStatus::with(
      *   channel: ...,
      *   status: ...,
-     *   subscriberIdString: ...,
+     *   subscriberIDString: ...,
      *   timestamp: ...,
      *   wideStatusType: ...,
      * )
@@ -111,20 +111,20 @@ final class PublicWideStatus implements BaseModel
     public static function with(
         Channel|string $channel,
         Status|string $status,
-        string $subscriberIdString,
+        string $subscriberIDString,
         \DateTimeInterface $timestamp,
         WideStatusType|string $wideStatusType,
-        ?int $businessUnitId = null,
+        ?int $businessUnitID = null,
     ): self {
         $obj = new self;
 
         $obj['channel'] = $channel;
         $obj['status'] = $status;
-        $obj['subscriberIdString'] = $subscriberIdString;
+        $obj['subscriberIDString'] = $subscriberIDString;
         $obj['timestamp'] = $timestamp;
         $obj['wideStatusType'] = $wideStatusType;
 
-        null !== $businessUnitId && $obj['businessUnitId'] = $businessUnitId;
+        null !== $businessUnitID && $obj['businessUnitID'] = $businessUnitID;
 
         return $obj;
     }
@@ -161,7 +161,7 @@ final class PublicWideStatus implements BaseModel
     public function withSubscriberIDString(string $subscriberIDString): self
     {
         $obj = clone $this;
-        $obj['subscriberIdString'] = $subscriberIDString;
+        $obj['subscriberIDString'] = $subscriberIDString;
 
         return $obj;
     }
@@ -197,7 +197,7 @@ final class PublicWideStatus implements BaseModel
     public function withBusinessUnitID(int $businessUnitID): self
     {
         $obj = clone $this;
-        $obj['businessUnitId'] = $businessUnitID;
+        $obj['businessUnitID'] = $businessUnitID;
 
         return $obj;
     }

@@ -42,7 +42,7 @@ final class SchemasTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->schemas->update(
             'objectType',
-            ['appId' => 0]
+            ['appID' => 0]
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -59,7 +59,7 @@ final class SchemasTest extends TestCase
         $result = $this->client->cms->mediaBridge->schemas->update(
             'objectType',
             [
-                'appId' => 0,
+                'appID' => 0,
                 'clearDescription' => true,
                 'description' => 'description',
                 'labels' => ['plural' => 'plural', 'singular' => 'singular'],
@@ -98,9 +98,9 @@ final class SchemasTest extends TestCase
         $result = $this->client->cms->mediaBridge->schemas->createAssociation(
             'objectType',
             [
-                'appId' => 0,
-                'fromObjectTypeId' => 'fromObjectTypeId',
-                'toObjectTypeId' => 'toObjectTypeId',
+                'appID' => 0,
+                'fromObjectTypeID' => 'fromObjectTypeId',
+                'toObjectTypeID' => 'toObjectTypeId',
             ],
         );
 
@@ -118,9 +118,9 @@ final class SchemasTest extends TestCase
         $result = $this->client->cms->mediaBridge->schemas->createAssociation(
             'objectType',
             [
-                'appId' => 0,
-                'fromObjectTypeId' => 'fromObjectTypeId',
-                'toObjectTypeId' => 'toObjectTypeId',
+                'appID' => 0,
+                'fromObjectTypeID' => 'fromObjectTypeId',
+                'toObjectTypeID' => 'toObjectTypeId',
                 'name' => 'name',
             ],
         );
@@ -138,7 +138,7 @@ final class SchemasTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->schemas->deleteAssociation(
             'associationId',
-            ['appId' => 0, 'objectType' => 'objectType']
+            ['appID' => 0, 'objectType' => 'objectType']
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -154,7 +154,7 @@ final class SchemasTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->schemas->deleteAssociation(
             'associationId',
-            ['appId' => 0, 'objectType' => 'objectType']
+            ['appID' => 0, 'objectType' => 'objectType']
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -170,7 +170,7 @@ final class SchemasTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->schemas->get(
             'objectType',
-            ['appId' => 0]
+            ['appID' => 0]
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -186,7 +186,7 @@ final class SchemasTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->schemas->get(
             'objectType',
-            ['appId' => 0]
+            ['appID' => 0]
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

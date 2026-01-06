@@ -19,7 +19,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   isInternal: bool,
  *   name: string,
  *   updatedAt: \DateTimeInterface,
- *   businessUnitId?: int|null,
+ *   businessUnitID?: int|null,
  *   communicationMethod?: string|null,
  *   purpose?: string|null,
  * }
@@ -80,8 +80,8 @@ final class SubscriptionDefinition implements BaseModel
     /**
      * The ID of the business unit associated with the subscription definition.
      */
-    #[Optional]
-    public ?int $businessUnitId;
+    #[Optional('businessUnitId')]
+    public ?int $businessUnitID;
 
     /**
      * The method or technology used to contact.
@@ -145,7 +145,7 @@ final class SubscriptionDefinition implements BaseModel
         bool $isInternal,
         string $name,
         \DateTimeInterface $updatedAt,
-        ?int $businessUnitId = null,
+        ?int $businessUnitID = null,
         ?string $communicationMethod = null,
         ?string $purpose = null,
     ): self {
@@ -160,7 +160,7 @@ final class SubscriptionDefinition implements BaseModel
         $obj['name'] = $name;
         $obj['updatedAt'] = $updatedAt;
 
-        null !== $businessUnitId && $obj['businessUnitId'] = $businessUnitId;
+        null !== $businessUnitID && $obj['businessUnitID'] = $businessUnitID;
         null !== $communicationMethod && $obj['communicationMethod'] = $communicationMethod;
         null !== $purpose && $obj['purpose'] = $purpose;
 
@@ -261,7 +261,7 @@ final class SubscriptionDefinition implements BaseModel
     public function withBusinessUnitID(int $businessUnitID): self
     {
         $obj = clone $this;
-        $obj['businessUnitId'] = $businessUnitID;
+        $obj['businessUnitID'] = $businessUnitID;
 
         return $obj;
     }

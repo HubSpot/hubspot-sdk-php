@@ -10,6 +10,7 @@ use HubspotSDK\Conversations\ChannelAccounts\ChannelAccountListParams;
 use HubspotSDK\Conversations\PublicChannelAccount;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Conversations\ChannelAccountsContract;
@@ -27,9 +28,9 @@ final class ChannelAccountsService implements ChannelAccountsContract
      * @param array{
      *   after?: string,
      *   archived?: bool,
-     *   channelId?: list<int>,
+     *   channelID?: list<int>,
      *   defaultPageLength?: int,
-     *   inboxId?: list<int>,
+     *   inboxID?: list<int>,
      *   limit?: int,
      *   sort?: list<string>,
      * }|ChannelAccountListParams $params
@@ -51,7 +52,10 @@ final class ChannelAccountsService implements ChannelAccountsContract
         $response = $this->client->request(
             method: 'get',
             path: 'conversations/v3/conversations/channel-accounts',
-            query: $parsed,
+            query: Util::array_transform_keys(
+                $parsed,
+                ['channelID' => 'channelId', 'inboxID' => 'inboxId']
+            ),
             options: $options,
             convert: PublicChannelAccount::class,
             page: Page::class,

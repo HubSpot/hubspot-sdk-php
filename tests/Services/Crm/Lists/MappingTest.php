@@ -39,7 +39,7 @@ final class MappingTest extends TestCase
         }
 
         $result = $this->client->crm->lists->mapping->batchCreateIDMapping([
-            'string',
+            'body' => ['string'],
         ]);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -54,7 +54,7 @@ final class MappingTest extends TestCase
         }
 
         $result = $this->client->crm->lists->mapping->batchCreateIDMapping([
-            'string',
+            'body' => ['string'],
         ]);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

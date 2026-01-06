@@ -62,7 +62,7 @@ final class ExternalUserBusyTimes implements BaseModel
      *   id: string,
      *   calendarProvider: string,
      *   isSalesStarter: bool,
-     *   userId: string,
+     *   userID: string,
      *   userProfile: ExternalUserProfile,
      * } $meetingsUser
      */
@@ -104,7 +104,7 @@ final class ExternalUserBusyTimes implements BaseModel
      *   id: string,
      *   calendarProvider: string,
      *   isSalesStarter: bool,
-     *   userId: string,
+     *   userID: string,
      *   userProfile: ExternalUserProfile,
      * } $meetingsUser
      */

@@ -14,6 +14,7 @@ use HubspotSDK\Cms\SiteSearch\SiteSearchSearchParams\Language;
 use HubspotSDK\Cms\SiteSearch\SiteSearchSearchParams\Length;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Cms\SiteSearchContract;
 
@@ -67,7 +68,7 @@ final class SiteSearchService implements SiteSearchContract
      *   boostLimit?: float,
      *   boostRecent?: string,
      *   domain?: list<string>,
-     *   groupId?: list<int>,
+     *   groupID?: list<int>,
      *   hubdbQuery?: string,
      *   language?: value-of<Language>,
      *   length?: 'LONG'|'SHORT'|Length,
@@ -78,7 +79,7 @@ final class SiteSearchService implements SiteSearchContract
      *   popularityBoost?: float,
      *   property?: list<string>,
      *   q?: string,
-     *   tableId?: int,
+     *   tableID?: int,
      *   type?: list<'LANDING_PAGE'|'BLOG_POST'|'SITE_PAGE'|'KNOWLEDGE_ARTICLE'|'LISTING_PAGE'|SiteSearchSearchParams\Type>,
      * }|SiteSearchSearchParams $params
      *
@@ -97,7 +98,10 @@ final class SiteSearchService implements SiteSearchContract
         $response = $this->client->request(
             method: 'get',
             path: 'cms/v3/site-search/search',
-            query: $parsed,
+            query: Util::array_transform_keys(
+                $parsed,
+                ['groupID' => 'groupId', 'tableID' => 'tableId']
+            ),
             options: $options,
             convert: PublicSearchResults::class,
         );

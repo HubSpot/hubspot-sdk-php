@@ -16,7 +16,7 @@ use HubspotSDK\Crm\Extensions\Cards\CardObjectTypeBody\Name;
  *
  * @phpstan-type CardFetchBodyShape = array{
  *   objectTypes: list<CardObjectTypeBody>,
- *   targetUrl: string,
+ *   targetURL: string,
  *   cardType?: value-of<CardType>|null,
  *   serverlessFunction?: string|null,
  * }
@@ -37,8 +37,8 @@ final class CardFetchBody implements BaseModel
     /**
      * URL to a service endpoints that will respond with card details. HubSpot will call this endpoint each time a user visits a CRM record page where this card should be displayed.
      */
-    #[Required]
-    public string $targetUrl;
+    #[Required('targetUrl')]
+    public string $targetURL;
 
     /** @var value-of<CardType>|null $cardType */
     #[Optional(enum: CardType::class)]
@@ -52,7 +52,7 @@ final class CardFetchBody implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * CardFetchBody::with(objectTypes: ..., targetUrl: ...)
+     * CardFetchBody::with(objectTypes: ..., targetURL: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -78,14 +78,14 @@ final class CardFetchBody implements BaseModel
      */
     public static function with(
         array $objectTypes,
-        string $targetUrl,
+        string $targetURL,
         CardType|string|null $cardType = null,
         ?string $serverlessFunction = null,
     ): self {
         $obj = new self;
 
         $obj['objectTypes'] = $objectTypes;
-        $obj['targetUrl'] = $targetUrl;
+        $obj['targetURL'] = $targetURL;
 
         null !== $cardType && $obj['cardType'] = $cardType;
         null !== $serverlessFunction && $obj['serverlessFunction'] = $serverlessFunction;
@@ -114,7 +114,7 @@ final class CardFetchBody implements BaseModel
     public function withTargetURL(string $targetURL): self
     {
         $obj = clone $this;
-        $obj['targetUrl'] = $targetURL;
+        $obj['targetURL'] = $targetURL;
 
         return $obj;
     }

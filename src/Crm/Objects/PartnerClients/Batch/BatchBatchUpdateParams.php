@@ -18,7 +18,7 @@ use HubspotSDK\Crm\SimplePublicObjectBatchInput;
  *     id: string,
  *     properties: array<string,string>,
  *     idProperty?: string|null,
- *     objectWriteTraceId?: string|null,
+ *     objectWriteTraceID?: string|null,
  *   }>,
  * }
  */
@@ -60,7 +60,7 @@ final class BatchBatchUpdateParams implements BaseModel
      *   id: string,
      *   properties: array<string,string>,
      *   idProperty?: string|null,
-     *   objectWriteTraceId?: string|null,
+     *   objectWriteTraceID?: string|null,
      * }> $inputs
      */
     public static function with(array $inputs): self
@@ -77,7 +77,7 @@ final class BatchBatchUpdateParams implements BaseModel
      *   id: string,
      *   properties: array<string,string>,
      *   idProperty?: string|null,
-     *   objectWriteTraceId?: string|null,
+     *   objectWriteTraceID?: string|null,
      * }> $inputs
      */
     public function withInputs(array $inputs): self

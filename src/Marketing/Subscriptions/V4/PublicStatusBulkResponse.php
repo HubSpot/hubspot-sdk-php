@@ -14,7 +14,7 @@ use HubspotSDK\Marketing\Subscriptions\V4\PublicStatus\Status;
 
 /**
  * @phpstan-type PublicStatusBulkResponseShape = array{
- *   statuses: list<PublicStatus>, subscriberIdString: string
+ *   statuses: list<PublicStatus>, subscriberIDString: string
  * }
  */
 final class PublicStatusBulkResponse implements BaseModel
@@ -33,15 +33,15 @@ final class PublicStatusBulkResponse implements BaseModel
     /**
      * The email address of the contact.
      */
-    #[Required]
-    public string $subscriberIdString;
+    #[Required('subscriberIdString')]
+    public string $subscriberIDString;
 
     /**
      * `new PublicStatusBulkResponse()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * PublicStatusBulkResponse::with(statuses: ..., subscriberIdString: ...)
+     * PublicStatusBulkResponse::with(statuses: ..., subscriberIDString: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -64,10 +64,10 @@ final class PublicStatusBulkResponse implements BaseModel
      *   channel: value-of<Channel>,
      *   source: string,
      *   status: value-of<Status>,
-     *   subscriberIdString: string,
-     *   subscriptionId: int,
+     *   subscriberIDString: string,
+     *   subscriptionID: int,
      *   timestamp: \DateTimeInterface,
-     *   businessUnitId?: int|null,
+     *   businessUnitID?: int|null,
      *   legalBasis?: value-of<LegalBasis>|null,
      *   legalBasisExplanation?: string|null,
      *   setStatusSuccessReason?: value-of<SetStatusSuccessReason>|null,
@@ -76,12 +76,12 @@ final class PublicStatusBulkResponse implements BaseModel
      */
     public static function with(
         array $statuses,
-        string $subscriberIdString
+        string $subscriberIDString
     ): self {
         $obj = new self;
 
         $obj['statuses'] = $statuses;
-        $obj['subscriberIdString'] = $subscriberIdString;
+        $obj['subscriberIDString'] = $subscriberIDString;
 
         return $obj;
     }
@@ -93,10 +93,10 @@ final class PublicStatusBulkResponse implements BaseModel
      *   channel: value-of<Channel>,
      *   source: string,
      *   status: value-of<Status>,
-     *   subscriberIdString: string,
-     *   subscriptionId: int,
+     *   subscriberIDString: string,
+     *   subscriptionID: int,
      *   timestamp: \DateTimeInterface,
-     *   businessUnitId?: int|null,
+     *   businessUnitID?: int|null,
      *   legalBasis?: value-of<LegalBasis>|null,
      *   legalBasisExplanation?: string|null,
      *   setStatusSuccessReason?: value-of<SetStatusSuccessReason>|null,
@@ -117,7 +117,7 @@ final class PublicStatusBulkResponse implements BaseModel
     public function withSubscriberIDString(string $subscriberIDString): self
     {
         $obj = clone $this;
-        $obj['subscriberIdString'] = $subscriberIDString;
+        $obj['subscriberIDString'] = $subscriberIDString;
 
         return $obj;
     }

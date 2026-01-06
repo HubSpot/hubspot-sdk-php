@@ -207,7 +207,7 @@ final class DefinitionsTest extends TestCase
                 'toObjectType',
                 [
                     'fromObjectType' => 'fromObjectType',
-                    'associationTypeId' => 0,
+                    'associationTypeID' => 0,
                     'label' => 'label',
                 ],
             )
@@ -235,7 +235,7 @@ final class DefinitionsTest extends TestCase
                 'toObjectType',
                 [
                     'fromObjectType' => 'fromObjectType',
-                    'associationTypeId' => 0,
+                    'associationTypeID' => 0,
                     'label' => 'label',
                     'inverseLabel' => 'inverseLabel',
                 ],

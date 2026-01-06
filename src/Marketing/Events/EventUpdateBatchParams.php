@@ -17,14 +17,14 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-type EventUpdateBatchParamsShape = array{
  *   inputs: list<MarketingEventPublicUpdateRequestFullV2|array{
  *     customProperties: list<PropertyValue>,
- *     objectId: string,
+ *     objectID: string,
  *     endDateTime?: \DateTimeInterface|null,
  *     eventCancelled?: bool|null,
  *     eventDescription?: string|null,
  *     eventName?: string|null,
  *     eventOrganizer?: string|null,
  *     eventType?: string|null,
- *     eventUrl?: string|null,
+ *     eventURL?: string|null,
  *     startDateTime?: \DateTimeInterface|null,
  *   }>,
  * }
@@ -65,14 +65,14 @@ final class EventUpdateBatchParams implements BaseModel
      *
      * @param list<MarketingEventPublicUpdateRequestFullV2|array{
      *   customProperties: list<PropertyValue>,
-     *   objectId: string,
+     *   objectID: string,
      *   endDateTime?: \DateTimeInterface|null,
      *   eventCancelled?: bool|null,
      *   eventDescription?: string|null,
      *   eventName?: string|null,
      *   eventOrganizer?: string|null,
      *   eventType?: string|null,
-     *   eventUrl?: string|null,
+     *   eventURL?: string|null,
      *   startDateTime?: \DateTimeInterface|null,
      * }> $inputs
      */
@@ -88,14 +88,14 @@ final class EventUpdateBatchParams implements BaseModel
     /**
      * @param list<MarketingEventPublicUpdateRequestFullV2|array{
      *   customProperties: list<PropertyValue>,
-     *   objectId: string,
+     *   objectID: string,
      *   endDateTime?: \DateTimeInterface|null,
      *   eventCancelled?: bool|null,
      *   eventDescription?: string|null,
      *   eventName?: string|null,
      *   eventOrganizer?: string|null,
      *   eventType?: string|null,
-     *   eventUrl?: string|null,
+     *   eventURL?: string|null,
      *   startDateTime?: \DateTimeInterface|null,
      * }> $inputs
      */

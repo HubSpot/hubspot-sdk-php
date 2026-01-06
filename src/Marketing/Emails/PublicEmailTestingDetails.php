@@ -23,7 +23,7 @@ use HubspotSDK\Marketing\Emails\PublicEmailTestingDetails\AbSuccessMetric;
  *   abTestPercentage?: int|null,
  *   hoursToWait?: int|null,
  *   isAbVariation?: bool|null,
- *   testId?: string|null,
+ *   testID?: string|null,
  * }
  */
 final class PublicEmailTestingDetails implements BaseModel
@@ -81,8 +81,8 @@ final class PublicEmailTestingDetails implements BaseModel
     /**
      * The ID of the AB test.
      */
-    #[Optional]
-    public ?string $testId;
+    #[Optional('testId')]
+    public ?string $testID;
 
     public function __construct()
     {
@@ -107,7 +107,7 @@ final class PublicEmailTestingDetails implements BaseModel
         ?int $abTestPercentage = null,
         ?int $hoursToWait = null,
         ?bool $isAbVariation = null,
-        ?string $testId = null,
+        ?string $testID = null,
     ): self {
         $obj = new self;
 
@@ -118,7 +118,7 @@ final class PublicEmailTestingDetails implements BaseModel
         null !== $abTestPercentage && $obj['abTestPercentage'] = $abTestPercentage;
         null !== $hoursToWait && $obj['hoursToWait'] = $hoursToWait;
         null !== $isAbVariation && $obj['isAbVariation'] = $isAbVariation;
-        null !== $testId && $obj['testId'] = $testId;
+        null !== $testID && $obj['testID'] = $testID;
 
         return $obj;
     }
@@ -214,7 +214,7 @@ final class PublicEmailTestingDetails implements BaseModel
     public function withTestID(string $testID): self
     {
         $obj = clone $this;
-        $obj['testId'] = $testID;
+        $obj['testID'] = $testID;
 
         return $obj;
     }

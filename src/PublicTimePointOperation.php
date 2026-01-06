@@ -89,7 +89,7 @@ final class PublicTimePointOperation implements BaseModel
      *   month: int,
      *   timeType: value-of<TimeType>,
      *   year: int,
-     *   zoneId: string,
+     *   zoneID: string,
      *   hour?: int|null,
      *   millisecond?: int|null,
      *   minute?: int|null,
@@ -98,14 +98,14 @@ final class PublicTimePointOperation implements BaseModel
      * }|PublicIndexedTimePoint|array{
      *   indexReference: PublicNowReference|PublicTodayReference|PublicWeekReference|PublicFiscalQuarterReference|PublicFiscalYearReference|PublicYearReference|PublicQuarterReference|PublicMonthReference,
      *   timeType: value-of<PublicIndexedTimePoint\TimeType>,
-     *   zoneId: string,
+     *   zoneID: string,
      *   offset?: PublicIndexOffset|null,
      *   timezoneSource?: string|null,
      * }|PublicPropertyReferencedTime|array{
      *   property: string,
      *   referenceType: string,
      *   timeType: value-of<PublicPropertyReferencedTime\TimeType>,
-     *   zoneId: string,
+     *   zoneID: string,
      *   timezoneSource?: string|null,
      * } $timePoint
      * @param OperationType|value-of<OperationType> $operationType
@@ -167,7 +167,7 @@ final class PublicTimePointOperation implements BaseModel
      *   month: int,
      *   timeType: value-of<TimeType>,
      *   year: int,
-     *   zoneId: string,
+     *   zoneID: string,
      *   hour?: int|null,
      *   millisecond?: int|null,
      *   minute?: int|null,
@@ -176,14 +176,14 @@ final class PublicTimePointOperation implements BaseModel
      * }|PublicIndexedTimePoint|array{
      *   indexReference: PublicNowReference|PublicTodayReference|PublicWeekReference|PublicFiscalQuarterReference|PublicFiscalYearReference|PublicYearReference|PublicQuarterReference|PublicMonthReference,
      *   timeType: value-of<PublicIndexedTimePoint\TimeType>,
-     *   zoneId: string,
+     *   zoneID: string,
      *   offset?: PublicIndexOffset|null,
      *   timezoneSource?: string|null,
      * }|PublicPropertyReferencedTime|array{
      *   property: string,
      *   referenceType: string,
      *   timeType: value-of<PublicPropertyReferencedTime\TimeType>,
-     *   zoneId: string,
+     *   zoneID: string,
      *   timezoneSource?: string|null,
      * } $timePoint
      */

@@ -7,6 +7,7 @@ namespace HubspotSDK\Services\Marketing\Transactional;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Marketing\Transactional\SmtpAPITokenView;
 use HubspotSDK\Marketing\Transactional\SmtpTokens\SmtpTokenCreateParams;
 use HubspotSDK\Marketing\Transactional\SmtpTokens\SmtpTokenListParams;
@@ -59,7 +60,7 @@ final class SmtpTokensService implements SmtpTokensContract
      * Query multiple SMTP API tokens by campaign name or a single token by emailCampaignId.
      *
      * @param array{
-     *   after?: string, campaignName?: string, emailCampaignId?: string, limit?: int
+     *   after?: string, campaignName?: string, emailCampaignID?: string, limit?: int
      * }|SmtpTokenListParams $params
      *
      * @return Page<SmtpAPITokenView>
@@ -79,7 +80,10 @@ final class SmtpTokensService implements SmtpTokensContract
         $response = $this->client->request(
             method: 'get',
             path: 'marketing/v3/transactional/smtp-tokens',
-            query: $parsed,
+            query: Util::array_transform_keys(
+                $parsed,
+                ['emailCampaignID' => 'emailCampaignId']
+            ),
             options: $options,
             convert: SmtpAPITokenView::class,
             page: Page::class,

@@ -53,7 +53,7 @@ final class SettingsTest extends TestCase
         }
 
         $result = $this->client->cms->blogs->settings->attachToLangGroup([
-            'id' => 'id', 'language' => 'language', 'primaryId' => 'primaryId',
+            'id' => 'id', 'language' => 'language', 'primaryID' => 'primaryId',
         ]);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -70,7 +70,7 @@ final class SettingsTest extends TestCase
         $result = $this->client->cms->blogs->settings->attachToLangGroup([
             'id' => 'id',
             'language' => 'language',
-            'primaryId' => 'primaryId',
+            'primaryID' => 'primaryId',
             'primaryLanguage' => 'primaryLanguage',
         ]);
 
@@ -163,7 +163,7 @@ final class SettingsTest extends TestCase
 
         $result = $this->client->cms->blogs->settings->getRevision(
             'revisionId',
-            ['blogId' => 'blogId']
+            ['blogID' => 'blogId']
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -179,7 +179,7 @@ final class SettingsTest extends TestCase
 
         $result = $this->client->cms->blogs->settings->getRevision(
             'revisionId',
-            ['blogId' => 'blogId']
+            ['blogID' => 'blogId']
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -237,7 +237,7 @@ final class SettingsTest extends TestCase
         }
 
         $result = $this->client->cms->blogs->settings->updateLanguages([
-            'languages' => ['foo' => 'string'], 'primaryId' => 'primaryId',
+            'languages' => ['foo' => 'string'], 'primaryID' => 'primaryId',
         ]);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -252,7 +252,7 @@ final class SettingsTest extends TestCase
         }
 
         $result = $this->client->cms->blogs->settings->updateLanguages([
-            'languages' => ['foo' => 'string'], 'primaryId' => 'primaryId',
+            'languages' => ['foo' => 'string'], 'primaryID' => 'primaryId',
         ]);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

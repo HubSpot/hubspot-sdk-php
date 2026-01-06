@@ -166,8 +166,8 @@ final class SchemasTest extends TestCase
         $result = $this->client->crm->objects->schemas->createAssociation(
             'objectType',
             [
-                'fromObjectTypeId' => 'fromObjectTypeId',
-                'toObjectTypeId' => 'toObjectTypeId',
+                'fromObjectTypeID' => 'fromObjectTypeId',
+                'toObjectTypeID' => 'toObjectTypeId',
             ],
         );
 
@@ -185,8 +185,8 @@ final class SchemasTest extends TestCase
         $result = $this->client->crm->objects->schemas->createAssociation(
             'objectType',
             [
-                'fromObjectTypeId' => 'fromObjectTypeId',
-                'toObjectTypeId' => 'toObjectTypeId',
+                'fromObjectTypeID' => 'fromObjectTypeId',
+                'toObjectTypeID' => 'toObjectTypeId',
                 'name' => 'name',
             ],
         );

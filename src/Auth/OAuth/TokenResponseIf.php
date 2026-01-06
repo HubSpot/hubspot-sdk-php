@@ -12,11 +12,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-type TokenResponseIfShape = array{
  *   accessToken?: string|null,
  *   expiresIn?: int|null,
- *   hubId?: int|null,
+ *   hubID?: int|null,
  *   idToken?: string|null,
  *   scopes?: list<string>|null,
  *   tokenType?: string|null,
- *   userId?: int|null,
+ *   userID?: int|null,
  * }
  */
 final class TokenResponseIf implements BaseModel
@@ -30,8 +30,8 @@ final class TokenResponseIf implements BaseModel
     #[Optional]
     public ?int $expiresIn;
 
-    #[Optional]
-    public ?int $hubId;
+    #[Optional('hubId')]
+    public ?int $hubID;
 
     #[Optional]
     public ?string $idToken;
@@ -43,8 +43,8 @@ final class TokenResponseIf implements BaseModel
     #[Optional]
     public ?string $tokenType;
 
-    #[Optional]
-    public ?int $userId;
+    #[Optional('userId')]
+    public ?int $userID;
 
     public function __construct()
     {
@@ -61,21 +61,21 @@ final class TokenResponseIf implements BaseModel
     public static function with(
         ?string $accessToken = null,
         ?int $expiresIn = null,
-        ?int $hubId = null,
+        ?int $hubID = null,
         ?string $idToken = null,
         ?array $scopes = null,
         ?string $tokenType = null,
-        ?int $userId = null,
+        ?int $userID = null,
     ): self {
         $obj = new self;
 
         null !== $accessToken && $obj['accessToken'] = $accessToken;
         null !== $expiresIn && $obj['expiresIn'] = $expiresIn;
-        null !== $hubId && $obj['hubId'] = $hubId;
+        null !== $hubID && $obj['hubID'] = $hubID;
         null !== $idToken && $obj['idToken'] = $idToken;
         null !== $scopes && $obj['scopes'] = $scopes;
         null !== $tokenType && $obj['tokenType'] = $tokenType;
-        null !== $userId && $obj['userId'] = $userId;
+        null !== $userID && $obj['userID'] = $userID;
 
         return $obj;
     }
@@ -99,7 +99,7 @@ final class TokenResponseIf implements BaseModel
     public function withHubID(int $hubID): self
     {
         $obj = clone $this;
-        $obj['hubId'] = $hubID;
+        $obj['hubID'] = $hubID;
 
         return $obj;
     }
@@ -134,7 +134,7 @@ final class TokenResponseIf implements BaseModel
     public function withUserID(int $userID): self
     {
         $obj = clone $this;
-        $obj['userId'] = $userID;
+        $obj['userID'] = $userID;
 
         return $obj;
     }

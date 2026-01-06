@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   blogEmailType?: string|null,
  *   blogImageMaxWidth?: int|null,
  *   blogLayout?: string|null,
- *   hubspotBlogId?: string|null,
+ *   hubspotBlogID?: string|null,
  *   maxEntries?: int|null,
  *   rssEntryTemplate?: string|null,
  *   timing?: array<string,mixed>|null,
@@ -37,8 +37,8 @@ final class PublicRssEmailDetails implements BaseModel
     #[Optional]
     public ?string $blogLayout;
 
-    #[Optional]
-    public ?string $hubspotBlogId;
+    #[Optional('hubspotBlogId')]
+    public ?string $hubspotBlogID;
 
     #[Optional]
     public ?int $maxEntries;
@@ -72,7 +72,7 @@ final class PublicRssEmailDetails implements BaseModel
         ?string $blogEmailType = null,
         ?int $blogImageMaxWidth = null,
         ?string $blogLayout = null,
-        ?string $hubspotBlogId = null,
+        ?string $hubspotBlogID = null,
         ?int $maxEntries = null,
         ?string $rssEntryTemplate = null,
         ?array $timing = null,
@@ -84,7 +84,7 @@ final class PublicRssEmailDetails implements BaseModel
         null !== $blogEmailType && $obj['blogEmailType'] = $blogEmailType;
         null !== $blogImageMaxWidth && $obj['blogImageMaxWidth'] = $blogImageMaxWidth;
         null !== $blogLayout && $obj['blogLayout'] = $blogLayout;
-        null !== $hubspotBlogId && $obj['hubspotBlogId'] = $hubspotBlogId;
+        null !== $hubspotBlogID && $obj['hubspotBlogID'] = $hubspotBlogID;
         null !== $maxEntries && $obj['maxEntries'] = $maxEntries;
         null !== $rssEntryTemplate && $obj['rssEntryTemplate'] = $rssEntryTemplate;
         null !== $timing && $obj['timing'] = $timing;
@@ -121,7 +121,7 @@ final class PublicRssEmailDetails implements BaseModel
     public function withHubspotBlogID(string $hubspotBlogID): self
     {
         $obj = clone $this;
-        $obj['hubspotBlogId'] = $hubspotBlogID;
+        $obj['hubspotBlogID'] = $hubspotBlogID;
 
         return $obj;
     }

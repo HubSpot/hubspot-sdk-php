@@ -17,7 +17,7 @@ use HubspotSDK\Events\EventDefinitions\PropertyReferencedTime\TimezoneSource;
  *   referenceType: value-of<ReferenceType>,
  *   timeType: value-of<TimeType>,
  *   timezoneSource: value-of<TimezoneSource>,
- *   zoneId: string,
+ *   zoneID: string,
  * }
  */
 final class PropertyReferencedTime implements BaseModel
@@ -40,8 +40,8 @@ final class PropertyReferencedTime implements BaseModel
     #[Required(enum: TimezoneSource::class)]
     public string $timezoneSource;
 
-    #[Required]
-    public string $zoneId;
+    #[Required('zoneId')]
+    public string $zoneID;
 
     /**
      * `new PropertyReferencedTime()` is missing required properties by the API.
@@ -53,7 +53,7 @@ final class PropertyReferencedTime implements BaseModel
      *   referenceType: ...,
      *   timeType: ...,
      *   timezoneSource: ...,
-     *   zoneId: ...,
+     *   zoneID: ...,
      * )
      * ```
      *
@@ -86,7 +86,7 @@ final class PropertyReferencedTime implements BaseModel
         string $property,
         ReferenceType|string $referenceType,
         TimezoneSource|string $timezoneSource,
-        string $zoneId,
+        string $zoneID,
         TimeType|string $timeType = 'PROPERTY_REFERENCED',
     ): self {
         $obj = new self;
@@ -95,7 +95,7 @@ final class PropertyReferencedTime implements BaseModel
         $obj['referenceType'] = $referenceType;
         $obj['timeType'] = $timeType;
         $obj['timezoneSource'] = $timezoneSource;
-        $obj['zoneId'] = $zoneId;
+        $obj['zoneID'] = $zoneID;
 
         return $obj;
     }
@@ -145,7 +145,7 @@ final class PropertyReferencedTime implements BaseModel
     public function withZoneID(string $zoneID): self
     {
         $obj = clone $this;
-        $obj['zoneId'] = $zoneID;
+        $obj['zoneID'] = $zoneID;
 
         return $obj;
     }

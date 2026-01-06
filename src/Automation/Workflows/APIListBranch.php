@@ -81,7 +81,7 @@ final class APIListBranch implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param APIConnection|array{edgeType: string, nextActionId: string} $connection
+     * @param APIConnection|array{edgeType: string, nextActionID: string} $connection
      * @param PublicOrFilterBranch|array{
      *   filterBranches: list<mixed>,
      *   filterBranchOperator: string,
@@ -108,7 +108,7 @@ final class APIListBranch implements BaseModel
      *   filterBranchType: value-of<PublicRestrictedFilterBranch\FilterBranchType>,
      *   filters: list<PublicPropertyFilter|PublicAssociationInListFilter|PublicPageViewAnalyticsFilter|PublicCtaAnalyticsFilter|PublicEventAnalyticsFilter|PublicFormSubmissionFilter|PublicFormSubmissionOnPageFilter|PublicIntegrationEventFilter|PublicEmailSubscriptionFilter|PublicCommunicationSubscriptionFilter|PublicCampaignInfluencedFilter|PublicSurveyMonkeyFilter|PublicSurveyMonkeyValueFilter|PublicWebinarFilter|PublicEmailEventFilter|PublicPrivacyAnalyticsFilter|PublicAdsSearchFilter|PublicAdsTimeFilter|PublicInListFilter|PublicNumAssociationsFilter|PublicUnifiedEventsFilter|PublicPropertyAssociationInListFilter|PublicConstantFilter>,
      * }|PublicUnifiedEventsFilterBranch|array{
-     *   eventTypeId: string,
+     *   eventTypeID: string,
      *   filterBranches: list<mixed>,
      *   filterBranchOperator: string,
      *   filterBranchType: value-of<PublicUnifiedEventsFilterBranch\FilterBranchType>,
@@ -120,17 +120,17 @@ final class APIListBranch implements BaseModel
      *   filterBranchOperator: string,
      *   filterBranchType: value-of<PublicPropertyAssociationFilterBranch\FilterBranchType>,
      *   filters: list<PublicPropertyFilter|PublicAssociationInListFilter|PublicPageViewAnalyticsFilter|PublicCtaAnalyticsFilter|PublicEventAnalyticsFilter|PublicFormSubmissionFilter|PublicFormSubmissionOnPageFilter|PublicIntegrationEventFilter|PublicEmailSubscriptionFilter|PublicCommunicationSubscriptionFilter|PublicCampaignInfluencedFilter|PublicSurveyMonkeyFilter|PublicSurveyMonkeyValueFilter|PublicWebinarFilter|PublicEmailEventFilter|PublicPrivacyAnalyticsFilter|PublicAdsSearchFilter|PublicAdsTimeFilter|PublicInListFilter|PublicNumAssociationsFilter|PublicUnifiedEventsFilter|PublicPropertyAssociationInListFilter|PublicConstantFilter>,
-     *   objectTypeId: string,
+     *   objectTypeID: string,
      *   operator: string,
-     *   propertyWithObjectId: string,
+     *   propertyWithObjectID: string,
      * }|PublicAssociationFilterBranch|array{
      *   associationCategory: string,
-     *   associationTypeId: int,
+     *   associationTypeID: int,
      *   filterBranches: list<mixed>,
      *   filterBranchOperator: string,
      *   filterBranchType: value-of<PublicAssociationFilterBranch\FilterBranchType>,
      *   filters: list<PublicPropertyFilter|PublicAssociationInListFilter|PublicPageViewAnalyticsFilter|PublicCtaAnalyticsFilter|PublicEventAnalyticsFilter|PublicFormSubmissionFilter|PublicFormSubmissionOnPageFilter|PublicIntegrationEventFilter|PublicEmailSubscriptionFilter|PublicCommunicationSubscriptionFilter|PublicCampaignInfluencedFilter|PublicSurveyMonkeyFilter|PublicSurveyMonkeyValueFilter|PublicWebinarFilter|PublicEmailEventFilter|PublicPrivacyAnalyticsFilter|PublicAdsSearchFilter|PublicAdsTimeFilter|PublicInListFilter|PublicNumAssociationsFilter|PublicUnifiedEventsFilter|PublicPropertyAssociationInListFilter|PublicConstantFilter>,
-     *   objectTypeId: string,
+     *   objectTypeID: string,
      *   operator: string,
      * } $filterBranch
      */
@@ -157,7 +157,7 @@ final class APIListBranch implements BaseModel
     }
 
     /**
-     * @param APIConnection|array{edgeType: string, nextActionId: string} $connection
+     * @param APIConnection|array{edgeType: string, nextActionID: string} $connection
      */
     public function withConnection(APIConnection|array $connection): self
     {
@@ -194,7 +194,7 @@ final class APIListBranch implements BaseModel
      *   filterBranchType: value-of<PublicRestrictedFilterBranch\FilterBranchType>,
      *   filters: list<PublicPropertyFilter|PublicAssociationInListFilter|PublicPageViewAnalyticsFilter|PublicCtaAnalyticsFilter|PublicEventAnalyticsFilter|PublicFormSubmissionFilter|PublicFormSubmissionOnPageFilter|PublicIntegrationEventFilter|PublicEmailSubscriptionFilter|PublicCommunicationSubscriptionFilter|PublicCampaignInfluencedFilter|PublicSurveyMonkeyFilter|PublicSurveyMonkeyValueFilter|PublicWebinarFilter|PublicEmailEventFilter|PublicPrivacyAnalyticsFilter|PublicAdsSearchFilter|PublicAdsTimeFilter|PublicInListFilter|PublicNumAssociationsFilter|PublicUnifiedEventsFilter|PublicPropertyAssociationInListFilter|PublicConstantFilter>,
      * }|PublicUnifiedEventsFilterBranch|array{
-     *   eventTypeId: string,
+     *   eventTypeID: string,
      *   filterBranches: list<mixed>,
      *   filterBranchOperator: string,
      *   filterBranchType: value-of<PublicUnifiedEventsFilterBranch\FilterBranchType>,
@@ -206,17 +206,17 @@ final class APIListBranch implements BaseModel
      *   filterBranchOperator: string,
      *   filterBranchType: value-of<PublicPropertyAssociationFilterBranch\FilterBranchType>,
      *   filters: list<PublicPropertyFilter|PublicAssociationInListFilter|PublicPageViewAnalyticsFilter|PublicCtaAnalyticsFilter|PublicEventAnalyticsFilter|PublicFormSubmissionFilter|PublicFormSubmissionOnPageFilter|PublicIntegrationEventFilter|PublicEmailSubscriptionFilter|PublicCommunicationSubscriptionFilter|PublicCampaignInfluencedFilter|PublicSurveyMonkeyFilter|PublicSurveyMonkeyValueFilter|PublicWebinarFilter|PublicEmailEventFilter|PublicPrivacyAnalyticsFilter|PublicAdsSearchFilter|PublicAdsTimeFilter|PublicInListFilter|PublicNumAssociationsFilter|PublicUnifiedEventsFilter|PublicPropertyAssociationInListFilter|PublicConstantFilter>,
-     *   objectTypeId: string,
+     *   objectTypeID: string,
      *   operator: string,
-     *   propertyWithObjectId: string,
+     *   propertyWithObjectID: string,
      * }|PublicAssociationFilterBranch|array{
      *   associationCategory: string,
-     *   associationTypeId: int,
+     *   associationTypeID: int,
      *   filterBranches: list<mixed>,
      *   filterBranchOperator: string,
      *   filterBranchType: value-of<PublicAssociationFilterBranch\FilterBranchType>,
      *   filters: list<PublicPropertyFilter|PublicAssociationInListFilter|PublicPageViewAnalyticsFilter|PublicCtaAnalyticsFilter|PublicEventAnalyticsFilter|PublicFormSubmissionFilter|PublicFormSubmissionOnPageFilter|PublicIntegrationEventFilter|PublicEmailSubscriptionFilter|PublicCommunicationSubscriptionFilter|PublicCampaignInfluencedFilter|PublicSurveyMonkeyFilter|PublicSurveyMonkeyValueFilter|PublicWebinarFilter|PublicEmailEventFilter|PublicPrivacyAnalyticsFilter|PublicAdsSearchFilter|PublicAdsTimeFilter|PublicInListFilter|PublicNumAssociationsFilter|PublicUnifiedEventsFilter|PublicPropertyAssociationInListFilter|PublicConstantFilter>,
-     *   objectTypeId: string,
+     *   objectTypeID: string,
      *   operator: string,
      * } $filterBranch
      */

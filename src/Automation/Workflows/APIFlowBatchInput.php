@@ -48,7 +48,7 @@ final class APIFlowBatchInput implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<APIFlowBatchFetchFlowIDCoordinate|array{
-     *   flowId: string, type: value-of<Type>
+     *   flowID: string, type: value-of<Type>
      * }> $inputs
      */
     public static function with(array $inputs): self
@@ -62,7 +62,7 @@ final class APIFlowBatchInput implements BaseModel
 
     /**
      * @param list<APIFlowBatchFetchFlowIDCoordinate|array{
-     *   flowId: string, type: value-of<Type>
+     *   flowID: string, type: value-of<Type>
      * }> $inputs
      */
     public function withInputs(array $inputs): self

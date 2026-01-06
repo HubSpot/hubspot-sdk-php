@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Cms\Pages\SitePagesService::endAbTest()
  *
  * @phpstan-type SitePageEndAbTestParamsShape = array{
- *   abTestId: string, winnerId: string
+ *   abTestID: string, winnerID: string
  * }
  */
 final class SitePageEndAbTestParams implements BaseModel
@@ -27,21 +27,21 @@ final class SitePageEndAbTestParams implements BaseModel
     /**
      * ID of the test to end.
      */
-    #[Required]
-    public string $abTestId;
+    #[Required('abTestId')]
+    public string $abTestID;
 
     /**
      * ID of the object to designate as the test winner.
      */
-    #[Required]
-    public string $winnerId;
+    #[Required('winnerId')]
+    public string $winnerID;
 
     /**
      * `new SitePageEndAbTestParams()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * SitePageEndAbTestParams::with(abTestId: ..., winnerId: ...)
+     * SitePageEndAbTestParams::with(abTestID: ..., winnerID: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -60,12 +60,12 @@ final class SitePageEndAbTestParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(string $abTestId, string $winnerId): self
+    public static function with(string $abTestID, string $winnerID): self
     {
         $obj = new self;
 
-        $obj['abTestId'] = $abTestId;
-        $obj['winnerId'] = $winnerId;
+        $obj['abTestID'] = $abTestID;
+        $obj['winnerID'] = $winnerID;
 
         return $obj;
     }
@@ -76,7 +76,7 @@ final class SitePageEndAbTestParams implements BaseModel
     public function withAbTestID(string $abTestID): self
     {
         $obj = clone $this;
-        $obj['abTestId'] = $abTestID;
+        $obj['abTestID'] = $abTestID;
 
         return $obj;
     }
@@ -87,7 +87,7 @@ final class SitePageEndAbTestParams implements BaseModel
     public function withWinnerID(string $winnerID): self
     {
         $obj = clone $this;
-        $obj['winnerId'] = $winnerID;
+        $obj['winnerID'] = $winnerID;
 
         return $obj;
     }

@@ -47,10 +47,10 @@ final class CollectionResponseSearchPublicResponseWrapperNoPaging implements Bas
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<SearchPublicResponseWrapper|array{
-     *   appId: int,
-     *   externalAccountId: string,
-     *   externalEventId: string,
-     *   objectId: string,
+     *   appID: int,
+     *   externalAccountID: string,
+     *   externalEventID: string,
+     *   objectID: string,
      * }> $results
      */
     public static function with(array $results): self
@@ -64,10 +64,10 @@ final class CollectionResponseSearchPublicResponseWrapperNoPaging implements Bas
 
     /**
      * @param list<SearchPublicResponseWrapper|array{
-     *   appId: int,
-     *   externalAccountId: string,
-     *   externalEventId: string,
-     *   objectId: string,
+     *   appID: int,
+     *   externalAccountID: string,
+     *   externalEventID: string,
+     *   objectID: string,
      * }> $results
      */
     public function withResults(array $results): self

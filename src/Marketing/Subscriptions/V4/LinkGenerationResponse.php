@@ -11,10 +11,10 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type LinkGenerationResponseShape = array{
- *   managePreferencesUrl: string,
- *   subscriberIdString: string,
- *   unsubscribeAllUrl: string,
- *   unsubscribeSingleUrl?: string|null,
+ *   managePreferencesURL: string,
+ *   subscriberIDString: string,
+ *   unsubscribeAllURL: string,
+ *   unsubscribeSingleURL?: string|null,
  * }
  */
 final class LinkGenerationResponse implements BaseModel
@@ -22,17 +22,17 @@ final class LinkGenerationResponse implements BaseModel
     /** @use SdkModel<LinkGenerationResponseShape> */
     use SdkModel;
 
-    #[Required]
-    public string $managePreferencesUrl;
+    #[Required('managePreferencesUrl')]
+    public string $managePreferencesURL;
 
-    #[Required]
-    public string $subscriberIdString;
+    #[Required('subscriberIdString')]
+    public string $subscriberIDString;
 
-    #[Required]
-    public string $unsubscribeAllUrl;
+    #[Required('unsubscribeAllUrl')]
+    public string $unsubscribeAllURL;
 
-    #[Optional]
-    public ?string $unsubscribeSingleUrl;
+    #[Optional('unsubscribeSingleUrl')]
+    public ?string $unsubscribeSingleURL;
 
     /**
      * `new LinkGenerationResponse()` is missing required properties by the API.
@@ -40,7 +40,7 @@ final class LinkGenerationResponse implements BaseModel
      * To enforce required parameters use
      * ```
      * LinkGenerationResponse::with(
-     *   managePreferencesUrl: ..., subscriberIdString: ..., unsubscribeAllUrl: ...
+     *   managePreferencesURL: ..., subscriberIDString: ..., unsubscribeAllURL: ...
      * )
      * ```
      *
@@ -64,18 +64,18 @@ final class LinkGenerationResponse implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      */
     public static function with(
-        string $managePreferencesUrl,
-        string $subscriberIdString,
-        string $unsubscribeAllUrl,
-        ?string $unsubscribeSingleUrl = null,
+        string $managePreferencesURL,
+        string $subscriberIDString,
+        string $unsubscribeAllURL,
+        ?string $unsubscribeSingleURL = null,
     ): self {
         $obj = new self;
 
-        $obj['managePreferencesUrl'] = $managePreferencesUrl;
-        $obj['subscriberIdString'] = $subscriberIdString;
-        $obj['unsubscribeAllUrl'] = $unsubscribeAllUrl;
+        $obj['managePreferencesURL'] = $managePreferencesURL;
+        $obj['subscriberIDString'] = $subscriberIDString;
+        $obj['unsubscribeAllURL'] = $unsubscribeAllURL;
 
-        null !== $unsubscribeSingleUrl && $obj['unsubscribeSingleUrl'] = $unsubscribeSingleUrl;
+        null !== $unsubscribeSingleURL && $obj['unsubscribeSingleURL'] = $unsubscribeSingleURL;
 
         return $obj;
     }
@@ -83,7 +83,7 @@ final class LinkGenerationResponse implements BaseModel
     public function withManagePreferencesURL(string $managePreferencesURL): self
     {
         $obj = clone $this;
-        $obj['managePreferencesUrl'] = $managePreferencesURL;
+        $obj['managePreferencesURL'] = $managePreferencesURL;
 
         return $obj;
     }
@@ -91,7 +91,7 @@ final class LinkGenerationResponse implements BaseModel
     public function withSubscriberIDString(string $subscriberIDString): self
     {
         $obj = clone $this;
-        $obj['subscriberIdString'] = $subscriberIDString;
+        $obj['subscriberIDString'] = $subscriberIDString;
 
         return $obj;
     }
@@ -99,7 +99,7 @@ final class LinkGenerationResponse implements BaseModel
     public function withUnsubscribeAllURL(string $unsubscribeAllURL): self
     {
         $obj = clone $this;
-        $obj['unsubscribeAllUrl'] = $unsubscribeAllURL;
+        $obj['unsubscribeAllURL'] = $unsubscribeAllURL;
 
         return $obj;
     }
@@ -107,7 +107,7 @@ final class LinkGenerationResponse implements BaseModel
     public function withUnsubscribeSingleURL(string $unsubscribeSingleURL): self
     {
         $obj = clone $this;
-        $obj['unsubscribeSingleUrl'] = $unsubscribeSingleURL;
+        $obj['unsubscribeSingleURL'] = $unsubscribeSingleURL;
 
         return $obj;
     }

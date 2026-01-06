@@ -18,7 +18,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   after?: string,
  *   limit?: int,
  *   name?: string,
- *   organizerUserId?: string,
+ *   organizerUserID?: string,
  *   type?: string,
  * }
  */
@@ -50,7 +50,7 @@ final class MeetingsLinkListParams implements BaseModel
      * Filter the response to scheduling pages created by the specified user.
      */
     #[Optional]
-    public ?string $organizerUserId;
+    public ?string $organizerUserID;
 
     /**
      * Filter the response to the specific type of meeting.
@@ -72,7 +72,7 @@ final class MeetingsLinkListParams implements BaseModel
         ?string $after = null,
         ?int $limit = null,
         ?string $name = null,
-        ?string $organizerUserId = null,
+        ?string $organizerUserID = null,
         ?string $type = null,
     ): self {
         $obj = new self;
@@ -80,7 +80,7 @@ final class MeetingsLinkListParams implements BaseModel
         null !== $after && $obj['after'] = $after;
         null !== $limit && $obj['limit'] = $limit;
         null !== $name && $obj['name'] = $name;
-        null !== $organizerUserId && $obj['organizerUserId'] = $organizerUserId;
+        null !== $organizerUserID && $obj['organizerUserID'] = $organizerUserID;
         null !== $type && $obj['type'] = $type;
 
         return $obj;
@@ -125,7 +125,7 @@ final class MeetingsLinkListParams implements BaseModel
     public function withOrganizerUserID(string $organizerUserID): self
     {
         $obj = clone $this;
-        $obj['organizerUserId'] = $organizerUserID;
+        $obj['organizerUserID'] = $organizerUserID;
 
         return $obj;
     }

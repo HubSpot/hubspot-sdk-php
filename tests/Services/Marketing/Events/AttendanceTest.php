@@ -46,7 +46,7 @@ final class AttendanceTest extends TestCase
             ->createByEventIDAndContactID(
                 'subscriberState',
                 [
-                    'objectId' => 'objectId',
+                    'objectID' => 'objectId',
                     'inputs' => [
                         [
                             'interactionDateTime' => 0,
@@ -77,7 +77,7 @@ final class AttendanceTest extends TestCase
             ->createByEventIDAndContactID(
                 'subscriberState',
                 [
-                    'objectId' => 'objectId',
+                    'objectID' => 'objectId',
                     'inputs' => [
                         [
                             'interactionDateTime' => 0,
@@ -108,7 +108,7 @@ final class AttendanceTest extends TestCase
             ->createByEventIDAndEmail(
                 'subscriberState',
                 [
-                    'objectId' => 'objectId',
+                    'objectID' => 'objectId',
                     'inputs' => [
                         [
                             'contactProperties' => ['foo' => 'string'],
@@ -143,7 +143,7 @@ final class AttendanceTest extends TestCase
             ->createByEventIDAndEmail(
                 'subscriberState',
                 [
-                    'objectId' => 'objectId',
+                    'objectID' => 'objectId',
                     'inputs' => [
                         [
                             'contactProperties' => ['foo' => 'string'],
@@ -178,7 +178,7 @@ final class AttendanceTest extends TestCase
             ->createByExternalEventIDAndContactID(
                 'subscriberState',
                 [
-                    'externalEventId' => 'externalEventId',
+                    'externalEventID' => 'externalEventId',
                     'inputs' => [
                         [
                             'interactionDateTime' => 0,
@@ -209,7 +209,7 @@ final class AttendanceTest extends TestCase
             ->createByExternalEventIDAndContactID(
                 'subscriberState',
                 [
-                    'externalEventId' => 'externalEventId',
+                    'externalEventID' => 'externalEventId',
                     'inputs' => [
                         [
                             'interactionDateTime' => 0,
@@ -217,7 +217,7 @@ final class AttendanceTest extends TestCase
                             'vid' => 0,
                         ],
                     ],
-                    'externalAccountId' => 'externalAccountId',
+                    'externalAccountID' => 'externalAccountId',
                 ],
             )
         ;
@@ -241,7 +241,7 @@ final class AttendanceTest extends TestCase
             ->createByExternalEventIDAndEmail(
                 'subscriberState',
                 [
-                    'externalEventId' => 'externalEventId',
+                    'externalEventID' => 'externalEventId',
                     'inputs' => [
                         [
                             'contactProperties' => ['foo' => 'string'],
@@ -276,7 +276,7 @@ final class AttendanceTest extends TestCase
             ->createByExternalEventIDAndEmail(
                 'subscriberState',
                 [
-                    'externalEventId' => 'externalEventId',
+                    'externalEventID' => 'externalEventId',
                     'inputs' => [
                         [
                             'contactProperties' => ['foo' => 'string'],
@@ -285,7 +285,7 @@ final class AttendanceTest extends TestCase
                             'properties' => ['foo' => 'string'],
                         ],
                     ],
-                    'externalAccountId' => 'externalAccountId',
+                    'externalAccountID' => 'externalAccountId',
                 ],
             )
         ;

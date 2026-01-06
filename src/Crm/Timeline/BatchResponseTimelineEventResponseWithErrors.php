@@ -89,14 +89,14 @@ final class BatchResponseTimelineEventResponseWithErrors implements BaseModel
      *
      * @param list<TimelineEventResponse|array{
      *   id: string,
-     *   eventTemplateId: string,
+     *   eventTemplateID: string,
      *   objectType: string,
      *   tokens: array<string,string>,
      *   createdAt?: \DateTimeInterface|null,
      *   domain?: string|null,
      *   email?: string|null,
      *   extraData?: mixed,
-     *   objectId?: string|null,
+     *   objectID?: string|null,
      *   timelineIFrame?: TimelineEventIFrame|null,
      *   timestamp?: \DateTimeInterface|null,
      *   utk?: string|null,
@@ -150,14 +150,14 @@ final class BatchResponseTimelineEventResponseWithErrors implements BaseModel
     /**
      * @param list<TimelineEventResponse|array{
      *   id: string,
-     *   eventTemplateId: string,
+     *   eventTemplateID: string,
      *   objectType: string,
      *   tokens: array<string,string>,
      *   createdAt?: \DateTimeInterface|null,
      *   domain?: string|null,
      *   email?: string|null,
      *   extraData?: mixed,
-     *   objectId?: string|null,
+     *   objectID?: string|null,
      *   timelineIFrame?: TimelineEventIFrame|null,
      *   timestamp?: \DateTimeInterface|null,
      *   utk?: string|null,

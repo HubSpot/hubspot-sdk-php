@@ -16,9 +16,9 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-type ThreadListParamsShape = array{
  *   after?: string,
  *   archived?: bool,
- *   associatedContactId?: int,
+ *   associatedContactID?: int,
  *   association?: list<Association|value-of<Association>>,
- *   inboxId?: list<int>,
+ *   inboxID?: list<int>,
  *   latestMessageTimestampAfter?: \DateTimeInterface,
  *   limit?: int,
  *   property?: string,
@@ -39,15 +39,15 @@ final class ThreadListParams implements BaseModel
     public ?bool $archived;
 
     #[Optional]
-    public ?int $associatedContactId;
+    public ?int $associatedContactID;
 
     /** @var list<value-of<Association>>|null $association */
     #[Optional(list: Association::class)]
     public ?array $association;
 
-    /** @var list<int>|null $inboxId */
+    /** @var list<int>|null $inboxID */
     #[Optional(list: 'int')]
-    public ?array $inboxId;
+    public ?array $inboxID;
 
     #[Optional]
     public ?\DateTimeInterface $latestMessageTimestampAfter;
@@ -76,15 +76,15 @@ final class ThreadListParams implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<Association|value-of<Association>> $association
-     * @param list<int> $inboxId
+     * @param list<int> $inboxID
      * @param list<string> $sort
      */
     public static function with(
         ?string $after = null,
         ?bool $archived = null,
-        ?int $associatedContactId = null,
+        ?int $associatedContactID = null,
         ?array $association = null,
-        ?array $inboxId = null,
+        ?array $inboxID = null,
         ?\DateTimeInterface $latestMessageTimestampAfter = null,
         ?int $limit = null,
         ?string $property = null,
@@ -95,9 +95,9 @@ final class ThreadListParams implements BaseModel
 
         null !== $after && $obj['after'] = $after;
         null !== $archived && $obj['archived'] = $archived;
-        null !== $associatedContactId && $obj['associatedContactId'] = $associatedContactId;
+        null !== $associatedContactID && $obj['associatedContactID'] = $associatedContactID;
         null !== $association && $obj['association'] = $association;
-        null !== $inboxId && $obj['inboxId'] = $inboxId;
+        null !== $inboxID && $obj['inboxID'] = $inboxID;
         null !== $latestMessageTimestampAfter && $obj['latestMessageTimestampAfter'] = $latestMessageTimestampAfter;
         null !== $limit && $obj['limit'] = $limit;
         null !== $property && $obj['property'] = $property;
@@ -126,7 +126,7 @@ final class ThreadListParams implements BaseModel
     public function withAssociatedContactID(int $associatedContactID): self
     {
         $obj = clone $this;
-        $obj['associatedContactId'] = $associatedContactID;
+        $obj['associatedContactID'] = $associatedContactID;
 
         return $obj;
     }
@@ -148,7 +148,7 @@ final class ThreadListParams implements BaseModel
     public function withInboxID(array $inboxID): self
     {
         $obj = clone $this;
-        $obj['inboxId'] = $inboxID;
+        $obj['inboxID'] = $inboxID;
 
         return $obj;
     }

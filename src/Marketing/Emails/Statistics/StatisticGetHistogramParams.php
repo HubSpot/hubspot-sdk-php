@@ -16,7 +16,7 @@ use HubspotSDK\Marketing\Emails\Statistics\StatisticGetHistogramParams\Interval;
  * @see HubspotSDK\Services\Marketing\Emails\StatisticsService::getHistogram()
  *
  * @phpstan-type StatisticGetHistogramParamsShape = array{
- *   emailIds?: list<int>,
+ *   emailIDs?: list<int>,
  *   endTimestamp?: string,
  *   interval?: Interval|value-of<Interval>,
  *   startTimestamp?: string,
@@ -31,10 +31,10 @@ final class StatisticGetHistogramParams implements BaseModel
     /**
      * Filter by email IDs. Only include statistics of emails with these IDs.
      *
-     * @var list<int>|null $emailIds
+     * @var list<int>|null $emailIDs
      */
     #[Optional(list: 'int')]
-    public ?array $emailIds;
+    public ?array $emailIDs;
 
     /**
      * The end timestamp of the time span, in ISO8601 representation.
@@ -66,18 +66,18 @@ final class StatisticGetHistogramParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<int> $emailIds
+     * @param list<int> $emailIDs
      * @param Interval|value-of<Interval> $interval
      */
     public static function with(
-        ?array $emailIds = null,
+        ?array $emailIDs = null,
         ?string $endTimestamp = null,
         Interval|string|null $interval = null,
         ?string $startTimestamp = null,
     ): self {
         $obj = new self;
 
-        null !== $emailIds && $obj['emailIds'] = $emailIds;
+        null !== $emailIDs && $obj['emailIDs'] = $emailIDs;
         null !== $endTimestamp && $obj['endTimestamp'] = $endTimestamp;
         null !== $interval && $obj['interval'] = $interval;
         null !== $startTimestamp && $obj['startTimestamp'] = $startTimestamp;
@@ -93,7 +93,7 @@ final class StatisticGetHistogramParams implements BaseModel
     public function withEmailIDs(array $emailIDs): self
     {
         $obj = clone $this;
-        $obj['emailIds'] = $emailIDs;
+        $obj['emailIDs'] = $emailIDs;
 
         return $obj;
     }

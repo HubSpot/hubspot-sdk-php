@@ -7,6 +7,7 @@ namespace HubspotSDK\Services\Marketing\Subscriptions\V4;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Marketing\Subscriptions\V4\ActionResponseWithResultsSubscriptionDefinition;
 use HubspotSDK\Marketing\Subscriptions\V4\Definitions\DefinitionListParams;
 use HubspotSDK\RequestOptions;
@@ -25,7 +26,7 @@ final class DefinitionsService implements DefinitionsContract
      * Get a list of subscription status definitions from the account.
      *
      * @param array{
-     *   businessUnitId?: int, includeTranslations?: bool
+     *   businessUnitID?: int, includeTranslations?: bool
      * }|DefinitionListParams $params
      *
      * @throws APIException
@@ -43,7 +44,10 @@ final class DefinitionsService implements DefinitionsContract
         $response = $this->client->request(
             method: 'get',
             path: 'communication-preferences/v4/definitions',
-            query: $parsed,
+            query: Util::array_transform_keys(
+                $parsed,
+                ['businessUnitID' => 'businessUnitId']
+            ),
             options: $options,
             convert: ActionResponseWithResultsSubscriptionDefinition::class,
         );

@@ -24,7 +24,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   slug: string,
  *   state: string,
  *   updated: \DateTimeInterface,
- *   tagIds?: list<int>|null,
+ *   tagIDs?: list<int>|null,
  * }
  */
 final class PagesContentLanguageVariation implements BaseModel
@@ -72,9 +72,9 @@ final class PagesContentLanguageVariation implements BaseModel
     #[Required]
     public \DateTimeInterface $updated;
 
-    /** @var list<int>|null $tagIds */
-    #[Optional(list: 'int')]
-    public ?array $tagIds;
+    /** @var list<int>|null $tagIDs */
+    #[Optional('tagIds', list: 'int')]
+    public ?array $tagIDs;
 
     /**
      * `new PagesContentLanguageVariation()` is missing required properties by the API.
@@ -128,7 +128,7 @@ final class PagesContentLanguageVariation implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<mixed> $publicAccessRules
-     * @param list<int> $tagIds
+     * @param list<int> $tagIDs
      */
     public static function with(
         int $id,
@@ -144,7 +144,7 @@ final class PagesContentLanguageVariation implements BaseModel
         string $slug,
         string $state,
         \DateTimeInterface $updated,
-        ?array $tagIds = null,
+        ?array $tagIDs = null,
     ): self {
         $obj = new self;
 
@@ -162,7 +162,7 @@ final class PagesContentLanguageVariation implements BaseModel
         $obj['state'] = $state;
         $obj['updated'] = $updated;
 
-        null !== $tagIds && $obj['tagIds'] = $tagIds;
+        null !== $tagIDs && $obj['tagIDs'] = $tagIDs;
 
         return $obj;
     }
@@ -281,7 +281,7 @@ final class PagesContentLanguageVariation implements BaseModel
     public function withTagIDs(array $tagIDs): self
     {
         $obj = clone $this;
-        $obj['tagIds'] = $tagIDs;
+        $obj['tagIDs'] = $tagIDs;
 
         return $obj;
     }

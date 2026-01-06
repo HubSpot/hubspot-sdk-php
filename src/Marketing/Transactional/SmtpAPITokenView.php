@@ -18,7 +18,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   createContact: bool,
  *   createdAt: \DateTimeInterface,
  *   createdBy: string,
- *   emailCampaignId: string,
+ *   emailCampaignID: string,
  *   password?: string|null,
  * }
  */
@@ -60,8 +60,8 @@ final class SmtpAPITokenView implements BaseModel
     /**
      * Identifier assigned to the campaign provided in the token creation request.
      */
-    #[Required]
-    public string $emailCampaignId;
+    #[Required('emailCampaignId')]
+    public string $emailCampaignID;
 
     /**
      * Password used to log into the HubSpot SMTP server.
@@ -80,7 +80,7 @@ final class SmtpAPITokenView implements BaseModel
      *   createContact: ...,
      *   createdAt: ...,
      *   createdBy: ...,
-     *   emailCampaignId: ...,
+     *   emailCampaignID: ...,
      * )
      * ```
      *
@@ -112,7 +112,7 @@ final class SmtpAPITokenView implements BaseModel
         bool $createContact,
         \DateTimeInterface $createdAt,
         string $createdBy,
-        string $emailCampaignId,
+        string $emailCampaignID,
         ?string $password = null,
     ): self {
         $obj = new self;
@@ -122,7 +122,7 @@ final class SmtpAPITokenView implements BaseModel
         $obj['createContact'] = $createContact;
         $obj['createdAt'] = $createdAt;
         $obj['createdBy'] = $createdBy;
-        $obj['emailCampaignId'] = $emailCampaignId;
+        $obj['emailCampaignID'] = $emailCampaignID;
 
         null !== $password && $obj['password'] = $password;
 
@@ -190,7 +190,7 @@ final class SmtpAPITokenView implements BaseModel
     public function withEmailCampaignID(string $emailCampaignID): self
     {
         $obj = clone $this;
-        $obj['emailCampaignId'] = $emailCampaignID;
+        $obj['emailCampaignID'] = $emailCampaignID;
 
         return $obj;
     }

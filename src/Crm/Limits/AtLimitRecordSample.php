@@ -9,7 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type AtLimitRecordSampleShape = array{label: string, objectId: int}
+ * @phpstan-type AtLimitRecordSampleShape = array{label: string, objectID: int}
  */
 final class AtLimitRecordSample implements BaseModel
 {
@@ -25,15 +25,15 @@ final class AtLimitRecordSample implements BaseModel
     /**
      * The objectId of the object that is at its limit.
      */
-    #[Required]
-    public int $objectId;
+    #[Required('objectId')]
+    public int $objectID;
 
     /**
      * `new AtLimitRecordSample()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * AtLimitRecordSample::with(label: ..., objectId: ...)
+     * AtLimitRecordSample::with(label: ..., objectID: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -52,12 +52,12 @@ final class AtLimitRecordSample implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(string $label, int $objectId): self
+    public static function with(string $label, int $objectID): self
     {
         $obj = new self;
 
         $obj['label'] = $label;
-        $obj['objectId'] = $objectId;
+        $obj['objectID'] = $objectID;
 
         return $obj;
     }
@@ -79,7 +79,7 @@ final class AtLimitRecordSample implements BaseModel
     public function withObjectID(int $objectID): self
     {
         $obj = clone $this;
-        $obj['objectId'] = $objectID;
+        $obj['objectID'] = $objectID;
 
         return $obj;
     }

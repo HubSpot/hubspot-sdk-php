@@ -12,6 +12,7 @@ use HubspotSDK\Auth\OAuth\TokenResponseIf;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Auth\OAuthContract;
 
@@ -32,13 +33,13 @@ final class OAuthService implements OAuthContract
      * Note: HubSpot access tokens will fluctuate in size as the information that's encoded in them changes over time. It's recommended to allow for tokens to be up to 300 characters to account for any potential changes.
      *
      * @param array{
-     *   client_secret?: string,
-     *   refresh_token?: string,
-     *   client_id?: string,
+     *   clientSecret?: string,
+     *   refreshToken?: string,
+     *   clientID?: string,
      *   code?: string,
-     *   code_verifier?: string,
-     *   grant_type?: 'authorization_code'|'client_credentials'|'refresh_token'|GrantType,
-     *   redirect_uri?: string,
+     *   codeVerifier?: string,
+     *   grantType?: 'authorization_code'|'client_credentials'|'refresh_token'|GrantType,
+     *   redirectUri?: string,
      *   scope?: string,
      * }|OAuthCreateAccessTokenParams $params
      *
@@ -58,7 +59,10 @@ final class OAuthService implements OAuthContract
         $response = $this->client->request(
             method: 'post',
             path: 'oauth/v1/token',
-            query: array_diff_key($parsed, $query_params),
+            query: Util::array_transform_keys(
+                array_diff_key($parsed, $query_params),
+                ['clientSecret' => 'client_secret', 'refreshToken' => 'refresh_token'],
+            ),
             headers: ['Content-Type' => 'application/x-www-form-urlencoded'],
             body: (object) array_diff_key($parsed, $query_params),
             options: $options,

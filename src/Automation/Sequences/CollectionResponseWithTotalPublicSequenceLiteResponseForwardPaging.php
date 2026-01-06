@@ -68,8 +68,8 @@ final class CollectionResponseWithTotalPublicSequenceLiteResponseForwardPaging i
      *   createdAt: \DateTimeInterface,
      *   name: string,
      *   updatedAt: \DateTimeInterface,
-     *   userId: string,
-     *   folderId?: string|null,
+     *   userID: string,
+     *   folderID?: string|null,
      * }> $results
      * @param ForwardPaging|array{next?: NextPage|null} $paging
      */
@@ -94,8 +94,8 @@ final class CollectionResponseWithTotalPublicSequenceLiteResponseForwardPaging i
      *   createdAt: \DateTimeInterface,
      *   name: string,
      *   updatedAt: \DateTimeInterface,
-     *   userId: string,
-     *   folderId?: string|null,
+     *   userID: string,
+     *   folderID?: string|null,
      * }> $results
      */
     public function withResults(array $results): self

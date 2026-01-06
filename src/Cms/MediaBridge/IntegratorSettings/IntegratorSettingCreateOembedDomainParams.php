@@ -20,7 +20,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   endpoints: Endpoints|array{
  *     discovery: bool, schemes: list<string>, url: string
  *   },
- *   portalId?: int,
+ *   portalID?: int,
  * }
  */
 final class IntegratorSettingCreateOembedDomainParams implements BaseModel
@@ -32,8 +32,8 @@ final class IntegratorSettingCreateOembedDomainParams implements BaseModel
     #[Required]
     public Endpoints $endpoints;
 
-    #[Optional]
-    public ?int $portalId;
+    #[Optional('portalId')]
+    public ?int $portalID;
 
     /**
      * `new IntegratorSettingCreateOembedDomainParams()` is missing required properties by the API.
@@ -65,13 +65,13 @@ final class IntegratorSettingCreateOembedDomainParams implements BaseModel
      */
     public static function with(
         Endpoints|array $endpoints,
-        ?int $portalId = null
+        ?int $portalID = null
     ): self {
         $obj = new self;
 
         $obj['endpoints'] = $endpoints;
 
-        null !== $portalId && $obj['portalId'] = $portalId;
+        null !== $portalID && $obj['portalID'] = $portalID;
 
         return $obj;
     }
@@ -92,7 +92,7 @@ final class IntegratorSettingCreateOembedDomainParams implements BaseModel
     public function withPortalID(int $portalID): self
     {
         $obj = clone $this;
-        $obj['portalId'] = $portalID;
+        $obj['portalID'] = $portalID;
 
         return $obj;
     }

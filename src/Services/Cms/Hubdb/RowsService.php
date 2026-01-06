@@ -43,7 +43,7 @@ final class RowsService implements RowsContract
      * Add a new row to a HubDB table. New rows will be added to the draft version of the table. Use the `/publish` endpoint to push these changes to published version.
      *
      * @param array{
-     *   childTableId: int,
+     *   childTableID: int,
      *   displayIndex: int,
      *   values: array<string,array<string,mixed>>,
      *   name?: string,
@@ -121,7 +121,7 @@ final class RowsService implements RowsContract
      *
      * Clones a single row in the draft version of a table.
      *
-     * @param array{tableIdOrName: string, name?: string}|RowCloneDraftParams $params
+     * @param array{tableIDOrName: string, name?: string}|RowCloneDraftParams $params
      *
      * @throws APIException
      */
@@ -134,8 +134,8 @@ final class RowsService implements RowsContract
             $params,
             $requestOptions,
         );
-        $tableIDOrName = $parsed['tableIdOrName'];
-        unset($parsed['tableIdOrName']);
+        $tableIDOrName = $parsed['tableIDOrName'];
+        unset($parsed['tableIDOrName']);
 
         /** @var BaseResponse<HubDBTableRowV3> */
         $response = $this->client->request(
@@ -156,7 +156,7 @@ final class RowsService implements RowsContract
      *
      * Permanently deletes a row from a table's draft version.
      *
-     * @param array{tableIdOrName: string}|RowDeleteDraftParams $params
+     * @param array{tableIDOrName: string}|RowDeleteDraftParams $params
      *
      * @throws APIException
      */
@@ -169,8 +169,8 @@ final class RowsService implements RowsContract
             $params,
             $requestOptions,
         );
-        $tableIDOrName = $parsed['tableIdOrName'];
-        unset($parsed['tableIdOrName']);
+        $tableIDOrName = $parsed['tableIDOrName'];
+        unset($parsed['tableIDOrName']);
 
         /** @var BaseResponse<mixed> */
         $response = $this->client->request(
@@ -191,7 +191,7 @@ final class RowsService implements RowsContract
      * Get a single row by ID from the published version of a table.
      * **Note:** This endpoint can be accessed without any authentication, if the table is set to be allowed for public access.
      *
-     * @param array{tableIdOrName: string, archived?: bool}|RowGetParams $params
+     * @param array{tableIDOrName: string, archived?: bool}|RowGetParams $params
      *
      * @throws APIException
      */
@@ -204,8 +204,8 @@ final class RowsService implements RowsContract
             $params,
             $requestOptions,
         );
-        $tableIDOrName = $parsed['tableIdOrName'];
-        unset($parsed['tableIdOrName']);
+        $tableIDOrName = $parsed['tableIDOrName'];
+        unset($parsed['tableIDOrName']);
 
         /** @var BaseResponse<HubDBTableRowV3> */
         $response = $this->client->request(
@@ -224,7 +224,7 @@ final class RowsService implements RowsContract
      *
      * Get a single row by ID from a table's draft version.
      *
-     * @param array{tableIdOrName: string, archived?: bool}|RowGetDraftParams $params
+     * @param array{tableIDOrName: string, archived?: bool}|RowGetDraftParams $params
      *
      * @throws APIException
      */
@@ -237,8 +237,8 @@ final class RowsService implements RowsContract
             $params,
             $requestOptions,
         );
-        $tableIDOrName = $parsed['tableIdOrName'];
-        unset($parsed['tableIdOrName']);
+        $tableIDOrName = $parsed['tableIDOrName'];
+        unset($parsed['tableIDOrName']);
 
         /** @var BaseResponse<HubDBTableRowV3> */
         $response = $this->client->request(
@@ -302,8 +302,8 @@ final class RowsService implements RowsContract
      * See the "Create a row" endpoint for instructions on how to format the JSON row definitions.
      *
      * @param array{
-     *   tableIdOrName: string,
-     *   childTableId: int,
+     *   tableIDOrName: string,
+     *   childTableID: int,
      *   displayIndex: int,
      *   values: array<string,array<string,mixed>>,
      *   name?: string,
@@ -321,8 +321,8 @@ final class RowsService implements RowsContract
             $params,
             $requestOptions,
         );
-        $tableIDOrName = $parsed['tableIdOrName'];
-        unset($parsed['tableIdOrName']);
+        $tableIDOrName = $parsed['tableIDOrName'];
+        unset($parsed['tableIDOrName']);
 
         /** @var BaseResponse<HubDBTableRowV3> */
         $response = $this->client->request(
@@ -330,7 +330,7 @@ final class RowsService implements RowsContract
             path: [
                 'cms/v3/hubdb/tables/%1$s/rows/%2$s/draft', $tableIDOrName, $rowID,
             ],
-            body: (object) array_diff_key($parsed, ['tableIdOrName']),
+            body: (object) array_diff_key($parsed, ['tableIDOrName']),
             options: $options,
             convert: HubDBTableRowV3::class,
         );
@@ -346,8 +346,8 @@ final class RowsService implements RowsContract
      * See the "Create a row" endpoint for instructions on how to format the JSON row definitions.
      *
      * @param array{
-     *   tableIdOrName: string,
-     *   childTableId: int,
+     *   tableIDOrName: string,
+     *   childTableID: int,
      *   displayIndex: int,
      *   values: array<string,array<string,mixed>>,
      *   name?: string,
@@ -365,8 +365,8 @@ final class RowsService implements RowsContract
             $params,
             $requestOptions,
         );
-        $tableIDOrName = $parsed['tableIdOrName'];
-        unset($parsed['tableIdOrName']);
+        $tableIDOrName = $parsed['tableIDOrName'];
+        unset($parsed['tableIDOrName']);
 
         /** @var BaseResponse<HubDBTableRowV3> */
         $response = $this->client->request(
@@ -374,7 +374,7 @@ final class RowsService implements RowsContract
             path: [
                 'cms/v3/hubdb/tables/%1$s/rows/%2$s/draft', $tableIDOrName, $rowID,
             ],
-            body: (object) array_diff_key($parsed, ['tableIdOrName']),
+            body: (object) array_diff_key($parsed, ['tableIDOrName']),
             options: $options,
             convert: HubDBTableRowV3::class,
         );

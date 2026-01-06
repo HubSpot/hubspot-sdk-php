@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type MarketingEventPublicObjectIDDeleteRequestShape = array{
- *   objectId: string
+ *   objectID: string
  * }
  */
 final class MarketingEventPublicObjectIDDeleteRequest implements BaseModel
@@ -18,15 +18,15 @@ final class MarketingEventPublicObjectIDDeleteRequest implements BaseModel
     /** @use SdkModel<MarketingEventPublicObjectIDDeleteRequestShape> */
     use SdkModel;
 
-    #[Required]
-    public string $objectId;
+    #[Required('objectId')]
+    public string $objectID;
 
     /**
      * `new MarketingEventPublicObjectIDDeleteRequest()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * MarketingEventPublicObjectIDDeleteRequest::with(objectId: ...)
+     * MarketingEventPublicObjectIDDeleteRequest::with(objectID: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -45,11 +45,11 @@ final class MarketingEventPublicObjectIDDeleteRequest implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(string $objectId): self
+    public static function with(string $objectID): self
     {
         $obj = new self;
 
-        $obj['objectId'] = $objectId;
+        $obj['objectID'] = $objectID;
 
         return $obj;
     }
@@ -57,7 +57,7 @@ final class MarketingEventPublicObjectIDDeleteRequest implements BaseModel
     public function withObjectID(string $objectID): self
     {
         $obj = clone $this;
-        $obj['objectId'] = $objectID;
+        $obj['objectID'] = $objectID;
 
         return $obj;
     }

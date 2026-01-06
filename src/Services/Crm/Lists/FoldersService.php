@@ -7,6 +7,7 @@ namespace HubspotSDK\Services\Crm\Lists;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Crm\Lists\Folders\FolderCreateParams;
 use HubspotSDK\Crm\Lists\Folders\FolderGetParams;
 use HubspotSDK\Crm\Lists\Folders\FolderMoveListParams;
@@ -29,7 +30,7 @@ final class FoldersService implements FoldersContract
      *
      * Creates a folder with the given information.
      *
-     * @param array{name: string, parentFolderId?: string}|FolderCreateParams $params
+     * @param array{name: string, parentFolderID?: string}|FolderCreateParams $params
      *
      * @throws APIException
      */
@@ -81,7 +82,7 @@ final class FoldersService implements FoldersContract
      *
      * Retrieves a folder and recursively includes all folders via the childNodes attribute.  The child lists field will be empty in all child nodes. Only the folder retrieved will include the child lists in that folder.
      *
-     * @param array{folderId?: string}|FolderGetParams $params
+     * @param array{folderID?: string}|FolderGetParams $params
      *
      * @throws APIException
      */
@@ -98,7 +99,7 @@ final class FoldersService implements FoldersContract
         $response = $this->client->request(
             method: 'get',
             path: 'crm/v3/lists/folders',
-            query: $parsed,
+            query: Util::array_transform_keys($parsed, ['folderID' => 'folderId']),
             options: $options,
             convert: ListFolderFetchResponse::class,
         );
@@ -111,7 +112,7 @@ final class FoldersService implements FoldersContract
      *
      * This moves the folder from its current location to a new location. It updates the parent of this folder to the new Id given.
      *
-     * @param array{folderId: string}|FolderMoveParams $params
+     * @param array{folderID: string}|FolderMoveParams $params
      *
      * @throws APIException
      */
@@ -124,8 +125,8 @@ final class FoldersService implements FoldersContract
             $params,
             $requestOptions,
         );
-        $folderID = $parsed['folderId'];
-        unset($parsed['folderId']);
+        $folderID = $parsed['folderID'];
+        unset($parsed['folderID']);
 
         /** @var BaseResponse<ListFolderFetchResponse> */
         $response = $this->client->request(
@@ -145,7 +146,7 @@ final class FoldersService implements FoldersContract
      *
      * Given a list and a folder, the list will be moved to that folder.
      *
-     * @param array{listId: string, newFolderId: string}|FolderMoveListParams $params
+     * @param array{listID: string, newFolderID: string}|FolderMoveListParams $params
      *
      * @throws APIException
      */

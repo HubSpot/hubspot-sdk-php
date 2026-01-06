@@ -70,7 +70,7 @@ final class CallbacksTest extends TestCase
 
         $result = $this->client->automation->actions->callbacks->completeBatch([
             'inputs' => [
-                ['callbackId' => 'callbackId', 'outputFields' => ['foo' => 'string']],
+                ['callbackID' => 'callbackId', 'outputFields' => ['foo' => 'string']],
             ],
         ]);
 
@@ -87,7 +87,7 @@ final class CallbacksTest extends TestCase
 
         $result = $this->client->automation->actions->callbacks->completeBatch([
             'inputs' => [
-                ['callbackId' => 'callbackId', 'outputFields' => ['foo' => 'string']],
+                ['callbackID' => 'callbackId', 'outputFields' => ['foo' => 'string']],
             ],
         ]);
 

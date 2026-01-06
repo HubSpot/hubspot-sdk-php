@@ -12,6 +12,7 @@ use HubspotSDK\Crm\Lists\ListGetByObjectTypeIDAndNameParams;
 use HubspotSDK\Crm\Lists\ListGetParams;
 use HubspotSDK\Crm\Lists\ListListParams;
 use HubspotSDK\Crm\Lists\ListsByIDResponse;
+use HubspotSDK\Crm\Lists\ListScheduleConversionParams;
 use HubspotSDK\Crm\Lists\ListSearchParams;
 use HubspotSDK\Crm\Lists\ListSearchResponse;
 use HubspotSDK\Crm\Lists\ListUpdateFiltersParams;
@@ -115,12 +116,14 @@ interface ListsContract
     /**
      * @api
      *
+     * @param array<mixed>|ListScheduleConversionParams $params
+     *
      * @throws APIException
      */
     public function scheduleConversion(
         string $listID,
-        mixed $params,
-        ?RequestOptions $requestOptions = null
+        array|ListScheduleConversionParams $params,
+        ?RequestOptions $requestOptions = null,
     ): PublicListConversionResponse;
 
     /**

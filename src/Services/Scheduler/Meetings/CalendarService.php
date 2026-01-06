@@ -8,6 +8,7 @@ use HubspotSDK\AssociationSpec;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\PublicObjectID;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\Scheduler\Meetings\Calendar\CalendarCreateParams;
@@ -25,7 +26,7 @@ final class CalendarService implements CalendarContract
      * @api
      *
      * @param array{
-     *   organizerUserId: string,
+     *   organizerUserID: string,
      *   associations: list<array{
      *     to: array<mixed>|PublicObjectID, types: list<array<mixed>|AssociationSpec>
      *   }>,
@@ -34,19 +35,19 @@ final class CalendarService implements CalendarContract
      *     shouldIncludeInviteDescription: bool,
      *   },
      *   properties: array{
-     *     hs_meeting_end_time: string|\DateTimeInterface,
-     *     hs_meeting_outcome: string,
-     *     hs_meeting_start_time: string|\DateTimeInterface,
-     *     hs_meeting_title: string,
-     *     hs_timestamp: string|\DateTimeInterface,
-     *     hubspot_owner_id: string,
-     *     hs_activity_type?: string,
-     *     hs_attachment_ids?: list<string>,
-     *     hs_attendee_owner_ids?: list<string>,
-     *     hs_internal_meeting_notes?: string,
-     *     hs_meeting_body?: string,
-     *     hs_meeting_location?: string,
-     *     hs_meeting_location_type?: string,
+     *     hsMeetingEndTime: string|\DateTimeInterface,
+     *     hsMeetingOutcome: string,
+     *     hsMeetingStartTime: string|\DateTimeInterface,
+     *     hsMeetingTitle: string,
+     *     hsTimestamp: string|\DateTimeInterface,
+     *     hubspotOwnerID: string,
+     *     hsActivityType?: string,
+     *     hsAttachmentIDs?: list<string>,
+     *     hsAttendeeOwnerIDs?: list<string>,
+     *     hsInternalMeetingNotes?: string,
+     *     hsMeetingBody?: string,
+     *     hsMeetingLocation?: string,
+     *     hsMeetingLocationType?: string,
      *   },
      *   timezone: string,
      * }|CalendarCreateParams $params
@@ -67,7 +68,10 @@ final class CalendarService implements CalendarContract
         $response = $this->client->request(
             method: 'post',
             path: 'scheduler/v3/meetings/calendar',
-            query: array_diff_key($parsed, $query_params),
+            query: Util::array_transform_keys(
+                array_diff_key($parsed, $query_params),
+                ['organizerUserID' => 'organizerUserId'],
+            ),
             body: (object) array_diff_key($parsed, $query_params),
             options: $options,
             convert: ExternalCalenderMeetingEventResponse::class,

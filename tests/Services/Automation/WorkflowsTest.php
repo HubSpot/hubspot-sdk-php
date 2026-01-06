@@ -39,7 +39,6 @@ final class WorkflowsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        // Note: create() currently doesn't accept body params due to codegen issue (SDK-3797)
         $result = $this->client->automation->workflows->create();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -53,7 +52,6 @@ final class WorkflowsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        // Note: update() currently doesn't accept body params due to codegen issue (SDK-3797)
         $result = $this->client->automation->workflows->update('flowId');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -94,7 +92,7 @@ final class WorkflowsTest extends TestCase
         }
 
         $result = $this->client->automation->workflows->batchGet([
-            'inputs' => [['flowId' => 'flowId', 'type' => 'FLOW_ID']],
+            'inputs' => [['flowID' => 'flowId', 'type' => 'FLOW_ID']],
         ]);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -109,7 +107,7 @@ final class WorkflowsTest extends TestCase
         }
 
         $result = $this->client->automation->workflows->batchGet([
-            'inputs' => [['flowId' => 'flowId', 'type' => 'FLOW_ID']],
+            'inputs' => [['flowID' => 'flowId', 'type' => 'FLOW_ID']],
         ]);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

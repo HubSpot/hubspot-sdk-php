@@ -58,7 +58,7 @@ final class CollectionResponseSmtpAPITokenViewForwardPaging implements BaseModel
      *   createContact: bool,
      *   createdAt: \DateTimeInterface,
      *   createdBy: string,
-     *   emailCampaignId: string,
+     *   emailCampaignID: string,
      *   password?: string|null,
      * }> $results
      * @param ForwardPaging|array{next?: NextPage|null} $paging
@@ -83,7 +83,7 @@ final class CollectionResponseSmtpAPITokenViewForwardPaging implements BaseModel
      *   createContact: bool,
      *   createdAt: \DateTimeInterface,
      *   createdBy: string,
-     *   emailCampaignId: string,
+     *   emailCampaignID: string,
      *   password?: string|null,
      * }> $results
      */

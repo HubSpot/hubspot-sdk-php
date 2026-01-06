@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Services\Cms\Pages\LandingPagesService::getRevision()
  *
- * @phpstan-type LandingPageGetRevisionParamsShape = array{objectId: string}
+ * @phpstan-type LandingPageGetRevisionParamsShape = array{objectID: string}
  */
 final class LandingPageGetRevisionParams implements BaseModel
 {
@@ -23,14 +23,14 @@ final class LandingPageGetRevisionParams implements BaseModel
     use SdkParams;
 
     #[Required]
-    public string $objectId;
+    public string $objectID;
 
     /**
      * `new LandingPageGetRevisionParams()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * LandingPageGetRevisionParams::with(objectId: ...)
+     * LandingPageGetRevisionParams::with(objectID: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -49,11 +49,11 @@ final class LandingPageGetRevisionParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(string $objectId): self
+    public static function with(string $objectID): self
     {
         $obj = new self;
 
-        $obj['objectId'] = $objectId;
+        $obj['objectID'] = $objectID;
 
         return $obj;
     }
@@ -61,7 +61,7 @@ final class LandingPageGetRevisionParams implements BaseModel
     public function withObjectID(string $objectID): self
     {
         $obj = clone $this;
-        $obj['objectId'] = $objectID;
+        $obj['objectID'] = $objectID;
 
         return $obj;
     }

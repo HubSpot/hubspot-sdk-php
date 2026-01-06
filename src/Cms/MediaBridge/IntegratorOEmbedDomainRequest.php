@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type IntegratorOEmbedDomainRequestShape = array{
- *   endpoints: Endpoints, portalId?: int|null
+ *   endpoints: Endpoints, portalID?: int|null
  * }
  */
 final class IntegratorOEmbedDomainRequest implements BaseModel
@@ -22,8 +22,8 @@ final class IntegratorOEmbedDomainRequest implements BaseModel
     #[Required]
     public Endpoints $endpoints;
 
-    #[Optional]
-    public ?int $portalId;
+    #[Optional('portalId')]
+    public ?int $portalID;
 
     /**
      * `new IntegratorOEmbedDomainRequest()` is missing required properties by the API.
@@ -55,13 +55,13 @@ final class IntegratorOEmbedDomainRequest implements BaseModel
      */
     public static function with(
         Endpoints|array $endpoints,
-        ?int $portalId = null
+        ?int $portalID = null
     ): self {
         $obj = new self;
 
         $obj['endpoints'] = $endpoints;
 
-        null !== $portalId && $obj['portalId'] = $portalId;
+        null !== $portalID && $obj['portalID'] = $portalID;
 
         return $obj;
     }
@@ -82,7 +82,7 @@ final class IntegratorOEmbedDomainRequest implements BaseModel
     public function withPortalID(int $portalID): self
     {
         $obj = clone $this;
-        $obj['portalId'] = $portalID;
+        $obj['portalID'] = $portalID;
 
         return $obj;
     }

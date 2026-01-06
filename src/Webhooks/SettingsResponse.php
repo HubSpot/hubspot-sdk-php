@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @phpstan-type SettingsResponseShape = array{
  *   createdAt: \DateTimeInterface,
- *   targetUrl: string,
+ *   targetURL: string,
  *   throttling: ThrottlingSettings,
  *   updatedAt?: \DateTimeInterface|null,
  * }
@@ -33,8 +33,8 @@ final class SettingsResponse implements BaseModel
     /**
      * A publicly available URL for HubSpot to call where event payloads will be delivered. See [link-so-some-doc](#) for details about the format of these event payloads.
      */
-    #[Required]
-    public string $targetUrl;
+    #[Required('targetUrl')]
+    public string $targetURL;
 
     /**
      * Configuration details for webhook throttling.
@@ -53,7 +53,7 @@ final class SettingsResponse implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * SettingsResponse::with(createdAt: ..., targetUrl: ..., throttling: ...)
+     * SettingsResponse::with(createdAt: ..., targetURL: ..., throttling: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -79,14 +79,14 @@ final class SettingsResponse implements BaseModel
      */
     public static function with(
         \DateTimeInterface $createdAt,
-        string $targetUrl,
+        string $targetURL,
         ThrottlingSettings|array $throttling,
         ?\DateTimeInterface $updatedAt = null,
     ): self {
         $obj = new self;
 
         $obj['createdAt'] = $createdAt;
-        $obj['targetUrl'] = $targetUrl;
+        $obj['targetURL'] = $targetURL;
         $obj['throttling'] = $throttling;
 
         null !== $updatedAt && $obj['updatedAt'] = $updatedAt;
@@ -111,7 +111,7 @@ final class SettingsResponse implements BaseModel
     public function withTargetURL(string $targetURL): self
     {
         $obj = clone $this;
-        $obj['targetUrl'] = $targetURL;
+        $obj['targetURL'] = $targetURL;
 
         return $obj;
     }

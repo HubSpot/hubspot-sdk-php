@@ -49,8 +49,8 @@ final class CollectionResponsePublicAuditInfoNoPaging implements BaseModel
      * @param list<PublicAuditInfo|array{
      *   action: string,
      *   identifier: string,
-     *   portalId: int,
-     *   fromUserId?: int|null,
+     *   portalID: int,
+     *   fromUserID?: int|null,
      *   message?: string|null,
      *   rawObject?: mixed,
      *   timestamp?: \DateTimeInterface|null,
@@ -69,8 +69,8 @@ final class CollectionResponsePublicAuditInfoNoPaging implements BaseModel
      * @param list<PublicAuditInfo|array{
      *   action: string,
      *   identifier: string,
-     *   portalId: int,
-     *   fromUserId?: int|null,
+     *   portalID: int,
+     *   fromUserID?: int|null,
      *   message?: string|null,
      *   rawObject?: mixed,
      *   timestamp?: \DateTimeInterface|null,

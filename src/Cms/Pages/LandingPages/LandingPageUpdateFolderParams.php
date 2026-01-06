@@ -22,7 +22,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   created: \DateTimeInterface,
  *   deletedAt: \DateTimeInterface,
  *   name: string,
- *   parentFolderId: int,
+ *   parentFolderID: int,
  *   updated: \DateTimeInterface,
  *   archived?: bool,
  * }
@@ -63,8 +63,8 @@ final class LandingPageUpdateFolderParams implements BaseModel
     /**
      * The ID of the content folder this folder is nested under.
      */
-    #[Required]
-    public int $parentFolderId;
+    #[Required('parentFolderId')]
+    public int $parentFolderID;
 
     #[Required]
     public \DateTimeInterface $updated;
@@ -86,7 +86,7 @@ final class LandingPageUpdateFolderParams implements BaseModel
      *   created: ...,
      *   deletedAt: ...,
      *   name: ...,
-     *   parentFolderId: ...,
+     *   parentFolderID: ...,
      *   updated: ...,
      * )
      * ```
@@ -120,7 +120,7 @@ final class LandingPageUpdateFolderParams implements BaseModel
         \DateTimeInterface $created,
         \DateTimeInterface $deletedAt,
         string $name,
-        int $parentFolderId,
+        int $parentFolderID,
         \DateTimeInterface $updated,
         ?bool $archived = null,
     ): self {
@@ -131,7 +131,7 @@ final class LandingPageUpdateFolderParams implements BaseModel
         $obj['created'] = $created;
         $obj['deletedAt'] = $deletedAt;
         $obj['name'] = $name;
-        $obj['parentFolderId'] = $parentFolderId;
+        $obj['parentFolderID'] = $parentFolderID;
         $obj['updated'] = $updated;
 
         null !== $archived && $obj['archived'] = $archived;
@@ -197,7 +197,7 @@ final class LandingPageUpdateFolderParams implements BaseModel
     public function withParentFolderID(int $parentFolderID): self
     {
         $obj = clone $this;
-        $obj['parentFolderId'] = $parentFolderID;
+        $obj['parentFolderID'] = $parentFolderID;
 
         return $obj;
     }

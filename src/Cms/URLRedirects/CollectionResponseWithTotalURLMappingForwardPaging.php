@@ -62,7 +62,7 @@ final class CollectionResponseWithTotalURLMappingForwardPaging implements BaseMo
      * @param list<URLMapping|array{
      *   id: string,
      *   destination: string,
-     *   isMatchFullUrl: bool,
+     *   isMatchFullURL: bool,
      *   isMatchQueryString: bool,
      *   isOnlyAfterNotFound: bool,
      *   isPattern: bool,
@@ -95,7 +95,7 @@ final class CollectionResponseWithTotalURLMappingForwardPaging implements BaseMo
      * @param list<URLMapping|array{
      *   id: string,
      *   destination: string,
-     *   isMatchFullUrl: bool,
+     *   isMatchFullURL: bool,
      *   isMatchQueryString: bool,
      *   isOnlyAfterNotFound: bool,
      *   isPattern: bool,

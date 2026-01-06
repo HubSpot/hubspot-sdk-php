@@ -16,7 +16,7 @@ use HubspotSDK\Crm\Imports\PublicImportResponse\State;
  * @phpstan-type PublicImportResponseShape = array{
  *   id: string,
  *   createdAt: \DateTimeInterface,
- *   mappedObjectTypeIds: list<string>,
+ *   mappedObjectTypeIDs: list<string>,
  *   metadata: PublicImportMetadata,
  *   optOutImport: bool,
  *   state: value-of<State>,
@@ -38,9 +38,9 @@ final class PublicImportResponse implements BaseModel
     #[Required]
     public \DateTimeInterface $createdAt;
 
-    /** @var list<string> $mappedObjectTypeIds */
-    #[Required(list: 'string')]
-    public array $mappedObjectTypeIds;
+    /** @var list<string> $mappedObjectTypeIDs */
+    #[Required('mappedObjectTypeIds', list: 'string')]
+    public array $mappedObjectTypeIDs;
 
     #[Required]
     public PublicImportMetadata $metadata;
@@ -83,7 +83,7 @@ final class PublicImportResponse implements BaseModel
      * PublicImportResponse::with(
      *   id: ...,
      *   createdAt: ...,
-     *   mappedObjectTypeIds: ...,
+     *   mappedObjectTypeIDs: ...,
      *   metadata: ...,
      *   optOutImport: ...,
      *   state: ...,
@@ -114,22 +114,22 @@ final class PublicImportResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<string> $mappedObjectTypeIds
+     * @param list<string> $mappedObjectTypeIDs
      * @param PublicImportMetadata|array{
      *   counters: array<string,int>,
-     *   fileIds: list<string>,
+     *   fileIDs: list<string>,
      *   objectLists: list<PublicObjectListRecord>,
      * } $metadata
      * @param State|value-of<State> $state
      * @param ImportSource|value-of<ImportSource> $importSource
      * @param ImportTemplate|array{
-     *   templateId: int, templateType: value-of<TemplateType>
+     *   templateID: int, templateType: value-of<TemplateType>
      * } $importTemplate
      */
     public static function with(
         string $id,
         \DateTimeInterface $createdAt,
-        array $mappedObjectTypeIds,
+        array $mappedObjectTypeIDs,
         PublicImportMetadata|array $metadata,
         bool $optOutImport,
         State|string $state,
@@ -143,7 +143,7 @@ final class PublicImportResponse implements BaseModel
 
         $obj['id'] = $id;
         $obj['createdAt'] = $createdAt;
-        $obj['mappedObjectTypeIds'] = $mappedObjectTypeIds;
+        $obj['mappedObjectTypeIDs'] = $mappedObjectTypeIDs;
         $obj['metadata'] = $metadata;
         $obj['optOutImport'] = $optOutImport;
         $obj['state'] = $state;
@@ -179,7 +179,7 @@ final class PublicImportResponse implements BaseModel
     public function withMappedObjectTypeIDs(array $mappedObjectTypeIDs): self
     {
         $obj = clone $this;
-        $obj['mappedObjectTypeIds'] = $mappedObjectTypeIDs;
+        $obj['mappedObjectTypeIDs'] = $mappedObjectTypeIDs;
 
         return $obj;
     }
@@ -187,7 +187,7 @@ final class PublicImportResponse implements BaseModel
     /**
      * @param PublicImportMetadata|array{
      *   counters: array<string,int>,
-     *   fileIds: list<string>,
+     *   fileIDs: list<string>,
      *   objectLists: list<PublicObjectListRecord>,
      * } $metadata
      */
@@ -260,7 +260,7 @@ final class PublicImportResponse implements BaseModel
 
     /**
      * @param ImportTemplate|array{
-     *   templateId: int, templateType: value-of<TemplateType>
+     *   templateID: int, templateType: value-of<TemplateType>
      * } $importTemplate
      */
     public function withImportTemplate(

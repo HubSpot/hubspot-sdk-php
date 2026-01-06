@@ -56,11 +56,11 @@ use HubspotSDK\PublicWebinarFilter;
  *
  * @phpstan-type ListCreateRequestShape = array{
  *   name: string,
- *   objectTypeId: string,
+ *   objectTypeID: string,
  *   processingType: string,
  *   customProperties?: array<string,string>|null,
  *   filterBranch?: null|PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch,
- *   listFolderId?: int|null,
+ *   listFolderID?: int|null,
  *   listPermissions?: PublicListPermissions|null,
  *   membershipSettings?: PublicMembershipSettings|null,
  * }
@@ -79,8 +79,8 @@ final class ListCreateRequest implements BaseModel
     /**
      * The object type ID of the type of objects that the list will store.
      */
-    #[Required]
-    public string $objectTypeId;
+    #[Required('objectTypeId')]
+    public string $objectTypeID;
 
     /**
      * The processing type of the list. One of: `SNAPSHOT`, `MANUAL`, or `DYNAMIC`.
@@ -102,8 +102,8 @@ final class ListCreateRequest implements BaseModel
     /**
      * The ID of the folder that the list should be created in. If left blank, then the list will be created in the root of the list folder structure.
      */
-    #[Optional]
-    public ?int $listFolderId;
+    #[Optional('listFolderId')]
+    public ?int $listFolderID;
 
     #[Optional]
     public ?PublicListPermissions $listPermissions;
@@ -116,7 +116,7 @@ final class ListCreateRequest implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * ListCreateRequest::with(name: ..., objectTypeId: ..., processingType: ...)
+     * ListCreateRequest::with(name: ..., objectTypeID: ..., processingType: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -165,7 +165,7 @@ final class ListCreateRequest implements BaseModel
      *   filterBranchType: value-of<PublicRestrictedFilterBranch\FilterBranchType>,
      *   filters: list<PublicPropertyFilter|PublicAssociationInListFilter|PublicPageViewAnalyticsFilter|PublicCtaAnalyticsFilter|PublicEventAnalyticsFilter|PublicFormSubmissionFilter|PublicFormSubmissionOnPageFilter|PublicIntegrationEventFilter|PublicEmailSubscriptionFilter|PublicCommunicationSubscriptionFilter|PublicCampaignInfluencedFilter|PublicSurveyMonkeyFilter|PublicSurveyMonkeyValueFilter|PublicWebinarFilter|PublicEmailEventFilter|PublicPrivacyAnalyticsFilter|PublicAdsSearchFilter|PublicAdsTimeFilter|PublicInListFilter|PublicNumAssociationsFilter|PublicUnifiedEventsFilter|PublicPropertyAssociationInListFilter|PublicConstantFilter>,
      * }|PublicUnifiedEventsFilterBranch|array{
-     *   eventTypeId: string,
+     *   eventTypeID: string,
      *   filterBranches: list<mixed>,
      *   filterBranchOperator: string,
      *   filterBranchType: value-of<PublicUnifiedEventsFilterBranch\FilterBranchType>,
@@ -177,45 +177,45 @@ final class ListCreateRequest implements BaseModel
      *   filterBranchOperator: string,
      *   filterBranchType: value-of<PublicPropertyAssociationFilterBranch\FilterBranchType>,
      *   filters: list<PublicPropertyFilter|PublicAssociationInListFilter|PublicPageViewAnalyticsFilter|PublicCtaAnalyticsFilter|PublicEventAnalyticsFilter|PublicFormSubmissionFilter|PublicFormSubmissionOnPageFilter|PublicIntegrationEventFilter|PublicEmailSubscriptionFilter|PublicCommunicationSubscriptionFilter|PublicCampaignInfluencedFilter|PublicSurveyMonkeyFilter|PublicSurveyMonkeyValueFilter|PublicWebinarFilter|PublicEmailEventFilter|PublicPrivacyAnalyticsFilter|PublicAdsSearchFilter|PublicAdsTimeFilter|PublicInListFilter|PublicNumAssociationsFilter|PublicUnifiedEventsFilter|PublicPropertyAssociationInListFilter|PublicConstantFilter>,
-     *   objectTypeId: string,
+     *   objectTypeID: string,
      *   operator: string,
-     *   propertyWithObjectId: string,
+     *   propertyWithObjectID: string,
      * }|PublicAssociationFilterBranch|array{
      *   associationCategory: string,
-     *   associationTypeId: int,
+     *   associationTypeID: int,
      *   filterBranches: list<mixed>,
      *   filterBranchOperator: string,
      *   filterBranchType: value-of<PublicAssociationFilterBranch\FilterBranchType>,
      *   filters: list<PublicPropertyFilter|PublicAssociationInListFilter|PublicPageViewAnalyticsFilter|PublicCtaAnalyticsFilter|PublicEventAnalyticsFilter|PublicFormSubmissionFilter|PublicFormSubmissionOnPageFilter|PublicIntegrationEventFilter|PublicEmailSubscriptionFilter|PublicCommunicationSubscriptionFilter|PublicCampaignInfluencedFilter|PublicSurveyMonkeyFilter|PublicSurveyMonkeyValueFilter|PublicWebinarFilter|PublicEmailEventFilter|PublicPrivacyAnalyticsFilter|PublicAdsSearchFilter|PublicAdsTimeFilter|PublicInListFilter|PublicNumAssociationsFilter|PublicUnifiedEventsFilter|PublicPropertyAssociationInListFilter|PublicConstantFilter>,
-     *   objectTypeId: string,
+     *   objectTypeID: string,
      *   operator: string,
      * } $filterBranch
      * @param PublicListPermissions|array{
      *   teamsWithEditAccess: list<int>, usersWithEditAccess: list<int>
      * } $listPermissions
      * @param PublicMembershipSettings|array{
-     *   includeUnassigned?: bool|null, membershipTeamId?: int|null
+     *   includeUnassigned?: bool|null, membershipTeamID?: int|null
      * } $membershipSettings
      */
     public static function with(
         string $name,
-        string $objectTypeId,
+        string $objectTypeID,
         string $processingType,
         ?array $customProperties = null,
         PublicOrFilterBranch|array|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch|null $filterBranch = null,
-        ?int $listFolderId = null,
+        ?int $listFolderID = null,
         PublicListPermissions|array|null $listPermissions = null,
         PublicMembershipSettings|array|null $membershipSettings = null,
     ): self {
         $obj = new self;
 
         $obj['name'] = $name;
-        $obj['objectTypeId'] = $objectTypeId;
+        $obj['objectTypeID'] = $objectTypeID;
         $obj['processingType'] = $processingType;
 
         null !== $customProperties && $obj['customProperties'] = $customProperties;
         null !== $filterBranch && $obj['filterBranch'] = $filterBranch;
-        null !== $listFolderId && $obj['listFolderId'] = $listFolderId;
+        null !== $listFolderID && $obj['listFolderID'] = $listFolderID;
         null !== $listPermissions && $obj['listPermissions'] = $listPermissions;
         null !== $membershipSettings && $obj['membershipSettings'] = $membershipSettings;
 
@@ -239,7 +239,7 @@ final class ListCreateRequest implements BaseModel
     public function withObjectTypeID(string $objectTypeID): self
     {
         $obj = clone $this;
-        $obj['objectTypeId'] = $objectTypeID;
+        $obj['objectTypeID'] = $objectTypeID;
 
         return $obj;
     }
@@ -295,7 +295,7 @@ final class ListCreateRequest implements BaseModel
      *   filterBranchType: value-of<PublicRestrictedFilterBranch\FilterBranchType>,
      *   filters: list<PublicPropertyFilter|PublicAssociationInListFilter|PublicPageViewAnalyticsFilter|PublicCtaAnalyticsFilter|PublicEventAnalyticsFilter|PublicFormSubmissionFilter|PublicFormSubmissionOnPageFilter|PublicIntegrationEventFilter|PublicEmailSubscriptionFilter|PublicCommunicationSubscriptionFilter|PublicCampaignInfluencedFilter|PublicSurveyMonkeyFilter|PublicSurveyMonkeyValueFilter|PublicWebinarFilter|PublicEmailEventFilter|PublicPrivacyAnalyticsFilter|PublicAdsSearchFilter|PublicAdsTimeFilter|PublicInListFilter|PublicNumAssociationsFilter|PublicUnifiedEventsFilter|PublicPropertyAssociationInListFilter|PublicConstantFilter>,
      * }|PublicUnifiedEventsFilterBranch|array{
-     *   eventTypeId: string,
+     *   eventTypeID: string,
      *   filterBranches: list<mixed>,
      *   filterBranchOperator: string,
      *   filterBranchType: value-of<PublicUnifiedEventsFilterBranch\FilterBranchType>,
@@ -307,17 +307,17 @@ final class ListCreateRequest implements BaseModel
      *   filterBranchOperator: string,
      *   filterBranchType: value-of<PublicPropertyAssociationFilterBranch\FilterBranchType>,
      *   filters: list<PublicPropertyFilter|PublicAssociationInListFilter|PublicPageViewAnalyticsFilter|PublicCtaAnalyticsFilter|PublicEventAnalyticsFilter|PublicFormSubmissionFilter|PublicFormSubmissionOnPageFilter|PublicIntegrationEventFilter|PublicEmailSubscriptionFilter|PublicCommunicationSubscriptionFilter|PublicCampaignInfluencedFilter|PublicSurveyMonkeyFilter|PublicSurveyMonkeyValueFilter|PublicWebinarFilter|PublicEmailEventFilter|PublicPrivacyAnalyticsFilter|PublicAdsSearchFilter|PublicAdsTimeFilter|PublicInListFilter|PublicNumAssociationsFilter|PublicUnifiedEventsFilter|PublicPropertyAssociationInListFilter|PublicConstantFilter>,
-     *   objectTypeId: string,
+     *   objectTypeID: string,
      *   operator: string,
-     *   propertyWithObjectId: string,
+     *   propertyWithObjectID: string,
      * }|PublicAssociationFilterBranch|array{
      *   associationCategory: string,
-     *   associationTypeId: int,
+     *   associationTypeID: int,
      *   filterBranches: list<mixed>,
      *   filterBranchOperator: string,
      *   filterBranchType: value-of<PublicAssociationFilterBranch\FilterBranchType>,
      *   filters: list<PublicPropertyFilter|PublicAssociationInListFilter|PublicPageViewAnalyticsFilter|PublicCtaAnalyticsFilter|PublicEventAnalyticsFilter|PublicFormSubmissionFilter|PublicFormSubmissionOnPageFilter|PublicIntegrationEventFilter|PublicEmailSubscriptionFilter|PublicCommunicationSubscriptionFilter|PublicCampaignInfluencedFilter|PublicSurveyMonkeyFilter|PublicSurveyMonkeyValueFilter|PublicWebinarFilter|PublicEmailEventFilter|PublicPrivacyAnalyticsFilter|PublicAdsSearchFilter|PublicAdsTimeFilter|PublicInListFilter|PublicNumAssociationsFilter|PublicUnifiedEventsFilter|PublicPropertyAssociationInListFilter|PublicConstantFilter>,
-     *   objectTypeId: string,
+     *   objectTypeID: string,
      *   operator: string,
      * } $filterBranch
      */
@@ -336,7 +336,7 @@ final class ListCreateRequest implements BaseModel
     public function withListFolderID(int $listFolderID): self
     {
         $obj = clone $this;
-        $obj['listFolderId'] = $listFolderID;
+        $obj['listFolderID'] = $listFolderID;
 
         return $obj;
     }
@@ -357,7 +357,7 @@ final class ListCreateRequest implements BaseModel
 
     /**
      * @param PublicMembershipSettings|array{
-     *   includeUnassigned?: bool|null, membershipTeamId?: int|null
+     *   includeUnassigned?: bool|null, membershipTeamID?: int|null
      * } $membershipSettings
      */
     public function withMembershipSettings(

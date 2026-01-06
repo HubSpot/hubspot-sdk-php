@@ -41,7 +41,7 @@ final class TablesTest extends TestCase
 
         $result = $this->client->cms->hubdb->tables->create([
             'allowChildTables' => true,
-            'allowPublicApiAccess' => true,
+            'allowPublicAPIAccess' => true,
             'columns' => [
                 [
                     'id' => 0,
@@ -73,7 +73,7 @@ final class TablesTest extends TestCase
 
         $result = $this->client->cms->hubdb->tables->create([
             'allowChildTables' => true,
-            'allowPublicApiAccess' => true,
+            'allowPublicAPIAccess' => true,
             'columns' => [
                 [
                     'id' => 0,
@@ -89,8 +89,8 @@ final class TablesTest extends TestCase
                         ],
                     ],
                     'type' => 'BOOLEAN',
-                    'foreignColumnId' => 0,
-                    'foreignTableId' => 0,
+                    'foreignColumnID' => 0,
+                    'foreignTableID' => 0,
                     'maxNumberOfCharacters' => 0,
                     'maxNumberOfOptions' => 0,
                 ],
@@ -178,7 +178,7 @@ final class TablesTest extends TestCase
 
         $result = $this->client->cms->hubdb->tables->deleteVersion(
             0,
-            ['tableIdOrName' => 'tableIdOrName']
+            ['tableIDOrName' => 'tableIdOrName']
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -194,7 +194,7 @@ final class TablesTest extends TestCase
 
         $result = $this->client->cms->hubdb->tables->deleteVersion(
             0,
-            ['tableIdOrName' => 'tableIdOrName']
+            ['tableIDOrName' => 'tableIdOrName']
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -341,7 +341,7 @@ final class TablesTest extends TestCase
             'tableIdOrName',
             [
                 'allowChildTables' => true,
-                'allowPublicApiAccess' => true,
+                'allowPublicAPIAccess' => true,
                 'columns' => [
                     [
                         'id' => 0,
@@ -376,7 +376,7 @@ final class TablesTest extends TestCase
             'tableIdOrName',
             [
                 'allowChildTables' => true,
-                'allowPublicApiAccess' => true,
+                'allowPublicAPIAccess' => true,
                 'columns' => [
                     [
                         'id' => 0,
@@ -392,8 +392,8 @@ final class TablesTest extends TestCase
                             ],
                         ],
                         'type' => 'BOOLEAN',
-                        'foreignColumnId' => 0,
-                        'foreignTableId' => 0,
+                        'foreignColumnID' => 0,
+                        'foreignTableID' => 0,
                         'maxNumberOfCharacters' => 0,
                         'maxNumberOfOptions' => 0,
                     ],
@@ -404,7 +404,7 @@ final class TablesTest extends TestCase
                 'name' => 'name',
                 'useForPages' => true,
                 'archived' => true,
-                'includeForeignIds' => true,
+                'includeForeignIDs' => true,
                 'isGetLocalizedSchema' => true,
             ],
         );

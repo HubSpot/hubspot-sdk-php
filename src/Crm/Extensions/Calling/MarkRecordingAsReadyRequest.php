@@ -9,22 +9,22 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type MarkRecordingAsReadyRequestShape = array{engagementId: int}
+ * @phpstan-type MarkRecordingAsReadyRequestShape = array{engagementID: int}
  */
 final class MarkRecordingAsReadyRequest implements BaseModel
 {
     /** @use SdkModel<MarkRecordingAsReadyRequestShape> */
     use SdkModel;
 
-    #[Required]
-    public int $engagementId;
+    #[Required('engagementId')]
+    public int $engagementID;
 
     /**
      * `new MarkRecordingAsReadyRequest()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * MarkRecordingAsReadyRequest::with(engagementId: ...)
+     * MarkRecordingAsReadyRequest::with(engagementID: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -43,11 +43,11 @@ final class MarkRecordingAsReadyRequest implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(int $engagementId): self
+    public static function with(int $engagementID): self
     {
         $obj = new self;
 
-        $obj['engagementId'] = $engagementId;
+        $obj['engagementID'] = $engagementID;
 
         return $obj;
     }
@@ -55,7 +55,7 @@ final class MarkRecordingAsReadyRequest implements BaseModel
     public function withEngagementID(int $engagementID): self
     {
         $obj = clone $this;
-        $obj['engagementId'] = $engagementID;
+        $obj['engagementID'] = $engagementID;
 
         return $obj;
     }

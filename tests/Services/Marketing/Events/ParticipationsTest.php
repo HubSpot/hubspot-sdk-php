@@ -45,7 +45,7 @@ final class ParticipationsTest extends TestCase
             ->participations
             ->getByExternalAccountAndEventID(
                 'externalEventId',
-                ['externalAccountId' => 'externalAccountId']
+                ['externalAccountID' => 'externalAccountId']
             )
         ;
 
@@ -67,7 +67,7 @@ final class ParticipationsTest extends TestCase
             ->participations
             ->getByExternalAccountAndEventID(
                 'externalEventId',
-                ['externalAccountId' => 'externalAccountId']
+                ['externalAccountID' => 'externalAccountId']
             )
         ;
 
@@ -121,7 +121,7 @@ final class ParticipationsTest extends TestCase
             ->participations
             ->listBreakdownByExternalAccountAndEventID(
                 'externalEventId',
-                ['externalAccountId' => 'externalAccountId']
+                ['externalAccountID' => 'externalAccountId']
             )
         ;
 
@@ -144,7 +144,7 @@ final class ParticipationsTest extends TestCase
             ->listBreakdownByExternalAccountAndEventID(
                 'externalEventId',
                 [
-                    'externalAccountId' => 'externalAccountId',
+                    'externalAccountID' => 'externalAccountId',
                     'after' => 'after',
                     'contactIdentifier' => 'contactIdentifier',
                     'limit' => 0,

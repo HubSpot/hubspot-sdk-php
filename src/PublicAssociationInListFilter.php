@@ -15,13 +15,13 @@ use HubspotSDK\PublicTimePointOperation\OperationType;
 /**
  * @phpstan-type PublicAssociationInListFilterShape = array{
  *   associationCategory: string,
- *   associationTypeId: int,
+ *   associationTypeID: int,
  *   coalescingRefineBy: PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation,
  *   filterType: value-of<FilterType>,
- *   listId: string,
+ *   listID: string,
  *   operator: string,
  *   toObjectType?: string|null,
- *   toObjectTypeId?: string|null,
+ *   toObjectTypeID?: string|null,
  * }
  */
 final class PublicAssociationInListFilter implements BaseModel
@@ -32,8 +32,8 @@ final class PublicAssociationInListFilter implements BaseModel
     #[Required]
     public string $associationCategory;
 
-    #[Required]
-    public int $associationTypeId;
+    #[Required('associationTypeId')]
+    public int $associationTypeID;
 
     #[Required]
     public PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation $coalescingRefineBy;
@@ -42,8 +42,8 @@ final class PublicAssociationInListFilter implements BaseModel
     #[Required(enum: FilterType::class)]
     public string $filterType;
 
-    #[Required]
-    public string $listId;
+    #[Required('listId')]
+    public string $listID;
 
     #[Required]
     public string $operator;
@@ -51,8 +51,8 @@ final class PublicAssociationInListFilter implements BaseModel
     #[Optional]
     public ?string $toObjectType;
 
-    #[Optional]
-    public ?string $toObjectTypeId;
+    #[Optional('toObjectTypeId')]
+    public ?string $toObjectTypeID;
 
     /**
      * `new PublicAssociationInListFilter()` is missing required properties by the API.
@@ -61,10 +61,10 @@ final class PublicAssociationInListFilter implements BaseModel
      * ```
      * PublicAssociationInListFilter::with(
      *   associationCategory: ...,
-     *   associationTypeId: ...,
+     *   associationTypeID: ...,
      *   coalescingRefineBy: ...,
      *   filterType: ...,
-     *   listId: ...,
+     *   listID: ...,
      *   operator: ...,
      * )
      * ```
@@ -138,25 +138,25 @@ final class PublicAssociationInListFilter implements BaseModel
      */
     public static function with(
         string $associationCategory,
-        int $associationTypeId,
+        int $associationTypeID,
         PublicNumOccurrencesRefineBy|array|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation $coalescingRefineBy,
-        string $listId,
+        string $listID,
         string $operator,
         FilterType|string $filterType = 'ASSOCIATION',
         ?string $toObjectType = null,
-        ?string $toObjectTypeId = null,
+        ?string $toObjectTypeID = null,
     ): self {
         $obj = new self;
 
         $obj['associationCategory'] = $associationCategory;
-        $obj['associationTypeId'] = $associationTypeId;
+        $obj['associationTypeID'] = $associationTypeID;
         $obj['coalescingRefineBy'] = $coalescingRefineBy;
         $obj['filterType'] = $filterType;
-        $obj['listId'] = $listId;
+        $obj['listID'] = $listID;
         $obj['operator'] = $operator;
 
         null !== $toObjectType && $obj['toObjectType'] = $toObjectType;
-        null !== $toObjectTypeId && $obj['toObjectTypeId'] = $toObjectTypeId;
+        null !== $toObjectTypeID && $obj['toObjectTypeID'] = $toObjectTypeID;
 
         return $obj;
     }
@@ -172,7 +172,7 @@ final class PublicAssociationInListFilter implements BaseModel
     public function withAssociationTypeID(int $associationTypeID): self
     {
         $obj = clone $this;
-        $obj['associationTypeId'] = $associationTypeID;
+        $obj['associationTypeID'] = $associationTypeID;
 
         return $obj;
     }
@@ -245,7 +245,7 @@ final class PublicAssociationInListFilter implements BaseModel
     public function withListID(string $listID): self
     {
         $obj = clone $this;
-        $obj['listId'] = $listID;
+        $obj['listID'] = $listID;
 
         return $obj;
     }
@@ -269,7 +269,7 @@ final class PublicAssociationInListFilter implements BaseModel
     public function withToObjectTypeID(string $toObjectTypeID): self
     {
         $obj = clone $this;
-        $obj['toObjectTypeId'] = $toObjectTypeID;
+        $obj['toObjectTypeID'] = $toObjectTypeID;
 
         return $obj;
     }

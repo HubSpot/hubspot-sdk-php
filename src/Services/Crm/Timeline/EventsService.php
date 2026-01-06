@@ -30,13 +30,13 @@ final class EventsService implements EventsContract
      * Send a single instance of event data to a specified event type.
      *
      * @param array{
-     *   eventTemplateId: string,
+     *   eventTemplateID: string,
      *   tokens: array<string,string>,
      *   id?: string,
      *   domain?: string,
      *   email?: string,
      *   extraData?: mixed,
-     *   objectId?: string,
+     *   objectID?: string,
      *   timelineIFrame?: array{
      *     headerLabel: string, height: int, linkLabel: string, url: string, width: int
      *   }|TimelineEventIFrame,
@@ -74,13 +74,13 @@ final class EventsService implements EventsContract
      *
      * @param array{
      *   inputs: list<array{
-     *     eventTemplateId: string,
+     *     eventTemplateID: string,
      *     tokens: array<string,string>,
      *     id?: string,
      *     domain?: string,
      *     email?: string,
      *     extraData?: mixed,
-     *     objectId?: string,
+     *     objectID?: string,
      *     timelineIFrame?: array<mixed>|TimelineEventIFrame,
      *     timestamp?: string|\DateTimeInterface,
      *     utk?: string,
@@ -115,7 +115,7 @@ final class EventsService implements EventsContract
      *
      * Retrieve an event instance, specified by template ID and event ID.
      *
-     * @param array{eventTemplateId: string}|EventGetParams $params
+     * @param array{eventTemplateID: string}|EventGetParams $params
      *
      * @throws APIException
      */
@@ -128,8 +128,8 @@ final class EventsService implements EventsContract
             $params,
             $requestOptions,
         );
-        $eventTemplateID = $parsed['eventTemplateId'];
-        unset($parsed['eventTemplateId']);
+        $eventTemplateID = $parsed['eventTemplateID'];
+        unset($parsed['eventTemplateID']);
 
         /** @var BaseResponse<TimelineEventResponse> */
         $response = $this->client->request(
@@ -149,7 +149,7 @@ final class EventsService implements EventsContract
      *
      * Retrieve details for a specific event, specified by template ID and event ID.
      *
-     * @param array{eventTemplateId: string}|EventGetDetailParams $params
+     * @param array{eventTemplateID: string}|EventGetDetailParams $params
      *
      * @throws APIException
      */
@@ -162,8 +162,8 @@ final class EventsService implements EventsContract
             $params,
             $requestOptions,
         );
-        $eventTemplateID = $parsed['eventTemplateId'];
-        unset($parsed['eventTemplateId']);
+        $eventTemplateID = $parsed['eventTemplateID'];
+        unset($parsed['eventTemplateID']);
 
         /** @var BaseResponse<EventDetail> */
         $response = $this->client->request(

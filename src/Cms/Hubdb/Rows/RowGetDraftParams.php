@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Cms\Hubdb\RowsService::getDraft()
  *
  * @phpstan-type RowGetDraftParamsShape = array{
- *   tableIdOrName: string, archived?: bool
+ *   tableIDOrName: string, archived?: bool
  * }
  */
 final class RowGetDraftParams implements BaseModel
@@ -26,7 +26,7 @@ final class RowGetDraftParams implements BaseModel
     use SdkParams;
 
     #[Required]
-    public string $tableIdOrName;
+    public string $tableIDOrName;
 
     /**
      * Set this to `true` to return an archived row. Defaults to `false`.
@@ -39,7 +39,7 @@ final class RowGetDraftParams implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * RowGetDraftParams::with(tableIdOrName: ...)
+     * RowGetDraftParams::with(tableIDOrName: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -59,12 +59,12 @@ final class RowGetDraftParams implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      */
     public static function with(
-        string $tableIdOrName,
+        string $tableIDOrName,
         ?bool $archived = null
     ): self {
         $obj = new self;
 
-        $obj['tableIdOrName'] = $tableIdOrName;
+        $obj['tableIDOrName'] = $tableIDOrName;
 
         null !== $archived && $obj['archived'] = $archived;
 
@@ -74,7 +74,7 @@ final class RowGetDraftParams implements BaseModel
     public function withTableIDOrName(string $tableIDOrName): self
     {
         $obj = clone $this;
-        $obj['tableIdOrName'] = $tableIDOrName;
+        $obj['tableIDOrName'] = $tableIDOrName;
 
         return $obj;
     }

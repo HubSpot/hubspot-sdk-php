@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Services\Cms\Hubdb\RowsService::deleteDraft()
  *
- * @phpstan-type RowDeleteDraftParamsShape = array{tableIdOrName: string}
+ * @phpstan-type RowDeleteDraftParamsShape = array{tableIDOrName: string}
  */
 final class RowDeleteDraftParams implements BaseModel
 {
@@ -23,14 +23,14 @@ final class RowDeleteDraftParams implements BaseModel
     use SdkParams;
 
     #[Required]
-    public string $tableIdOrName;
+    public string $tableIDOrName;
 
     /**
      * `new RowDeleteDraftParams()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * RowDeleteDraftParams::with(tableIdOrName: ...)
+     * RowDeleteDraftParams::with(tableIDOrName: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -49,11 +49,11 @@ final class RowDeleteDraftParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(string $tableIdOrName): self
+    public static function with(string $tableIDOrName): self
     {
         $obj = new self;
 
-        $obj['tableIdOrName'] = $tableIdOrName;
+        $obj['tableIDOrName'] = $tableIDOrName;
 
         return $obj;
     }
@@ -61,7 +61,7 @@ final class RowDeleteDraftParams implements BaseModel
     public function withTableIDOrName(string $tableIDOrName): self
     {
         $obj = clone $this;
-        $obj['tableIdOrName'] = $tableIDOrName;
+        $obj['tableIDOrName'] = $tableIDOrName;
 
         return $obj;
     }

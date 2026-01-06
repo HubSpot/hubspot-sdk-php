@@ -13,7 +13,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-type PublicEmailPatternResponseShape = array{
  *   id: string,
  *   createdAt: \DateTimeInterface,
- *   templateId: string,
+ *   templateID: string,
  *   updatedAt: \DateTimeInterface,
  *   threadEmailToStepOrder?: int|null,
  * }
@@ -29,8 +29,8 @@ final class PublicEmailPatternResponse implements BaseModel
     #[Required]
     public \DateTimeInterface $createdAt;
 
-    #[Required]
-    public string $templateId;
+    #[Required('templateId')]
+    public string $templateID;
 
     #[Required]
     public \DateTimeInterface $updatedAt;
@@ -44,7 +44,7 @@ final class PublicEmailPatternResponse implements BaseModel
      * To enforce required parameters use
      * ```
      * PublicEmailPatternResponse::with(
-     *   id: ..., createdAt: ..., templateId: ..., updatedAt: ...
+     *   id: ..., createdAt: ..., templateID: ..., updatedAt: ...
      * )
      * ```
      *
@@ -71,7 +71,7 @@ final class PublicEmailPatternResponse implements BaseModel
     public static function with(
         string $id,
         \DateTimeInterface $createdAt,
-        string $templateId,
+        string $templateID,
         \DateTimeInterface $updatedAt,
         ?int $threadEmailToStepOrder = null,
     ): self {
@@ -79,7 +79,7 @@ final class PublicEmailPatternResponse implements BaseModel
 
         $obj['id'] = $id;
         $obj['createdAt'] = $createdAt;
-        $obj['templateId'] = $templateId;
+        $obj['templateID'] = $templateID;
         $obj['updatedAt'] = $updatedAt;
 
         null !== $threadEmailToStepOrder && $obj['threadEmailToStepOrder'] = $threadEmailToStepOrder;
@@ -106,7 +106,7 @@ final class PublicEmailPatternResponse implements BaseModel
     public function withTemplateID(string $templateID): self
     {
         $obj = clone $this;
-        $obj['templateId'] = $templateID;
+        $obj['templateID'] = $templateID;
 
         return $obj;
     }

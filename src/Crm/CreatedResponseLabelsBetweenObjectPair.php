@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type CreatedResponseLabelsBetweenObjectPairShape = array{
- *   createdResourceId: string,
+ *   createdResourceID: string,
  *   entity: LabelsBetweenObjectPair,
  *   location?: string|null,
  * }
@@ -24,8 +24,8 @@ final class CreatedResponseLabelsBetweenObjectPair implements BaseModel
     /**
      * The unique identifier of the newly created resource.
      */
-    #[Required]
-    public string $createdResourceId;
+    #[Required('createdResourceId')]
+    public string $createdResourceID;
 
     #[Required]
     public LabelsBetweenObjectPair $entity;
@@ -42,7 +42,7 @@ final class CreatedResponseLabelsBetweenObjectPair implements BaseModel
      * To enforce required parameters use
      * ```
      * CreatedResponseLabelsBetweenObjectPair::with(
-     *   createdResourceId: ..., entity: ...
+     *   createdResourceID: ..., entity: ...
      * )
      * ```
      *
@@ -65,21 +65,21 @@ final class CreatedResponseLabelsBetweenObjectPair implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param LabelsBetweenObjectPair|array{
-     *   fromObjectId: string,
-     *   fromObjectTypeId: string,
+     *   fromObjectID: string,
+     *   fromObjectTypeID: string,
      *   labels: list<string>,
-     *   toObjectId: string,
-     *   toObjectTypeId: string,
+     *   toObjectID: string,
+     *   toObjectTypeID: string,
      * } $entity
      */
     public static function with(
-        string $createdResourceId,
+        string $createdResourceID,
         LabelsBetweenObjectPair|array $entity,
         ?string $location = null,
     ): self {
         $obj = new self;
 
-        $obj['createdResourceId'] = $createdResourceId;
+        $obj['createdResourceID'] = $createdResourceID;
         $obj['entity'] = $entity;
 
         null !== $location && $obj['location'] = $location;
@@ -93,18 +93,18 @@ final class CreatedResponseLabelsBetweenObjectPair implements BaseModel
     public function withCreatedResourceID(string $createdResourceID): self
     {
         $obj = clone $this;
-        $obj['createdResourceId'] = $createdResourceID;
+        $obj['createdResourceID'] = $createdResourceID;
 
         return $obj;
     }
 
     /**
      * @param LabelsBetweenObjectPair|array{
-     *   fromObjectId: string,
-     *   fromObjectTypeId: string,
+     *   fromObjectID: string,
+     *   fromObjectTypeID: string,
      *   labels: list<string>,
-     *   toObjectId: string,
-     *   toObjectTypeId: string,
+     *   toObjectID: string,
+     *   toObjectTypeID: string,
      * } $entity
      */
     public function withEntity(LabelsBetweenObjectPair|array $entity): self

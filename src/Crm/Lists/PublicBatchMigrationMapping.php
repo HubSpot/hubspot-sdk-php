@@ -10,8 +10,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type PublicBatchMigrationMappingShape = array{
- *   legacyListIdsToIdsMapping: list<PublicMigrationMapping>,
- *   missingLegacyListIds: list<string>,
+ *   legacyListIDsToIDsMapping: list<PublicMigrationMapping>,
+ *   missingLegacyListIDs: list<string>,
  * }
  */
 final class PublicBatchMigrationMapping implements BaseModel
@@ -19,17 +19,17 @@ final class PublicBatchMigrationMapping implements BaseModel
     /** @use SdkModel<PublicBatchMigrationMappingShape> */
     use SdkModel;
 
-    /** @var list<PublicMigrationMapping> $legacyListIdsToIdsMapping */
-    #[Required(list: PublicMigrationMapping::class)]
-    public array $legacyListIdsToIdsMapping;
+    /** @var list<PublicMigrationMapping> $legacyListIDsToIDsMapping */
+    #[Required('legacyListIdsToIdsMapping', list: PublicMigrationMapping::class)]
+    public array $legacyListIDsToIDsMapping;
 
     /**
      * A list of legacy list ids that were passed in but not found. It will be empty if no id's are missing.
      *
-     * @var list<string> $missingLegacyListIds
+     * @var list<string> $missingLegacyListIDs
      */
-    #[Required(list: 'string')]
-    public array $missingLegacyListIds;
+    #[Required('missingLegacyListIds', list: 'string')]
+    public array $missingLegacyListIDs;
 
     /**
      * `new PublicBatchMigrationMapping()` is missing required properties by the API.
@@ -37,7 +37,7 @@ final class PublicBatchMigrationMapping implements BaseModel
      * To enforce required parameters use
      * ```
      * PublicBatchMigrationMapping::with(
-     *   legacyListIdsToIdsMapping: ..., missingLegacyListIds: ...
+     *   legacyListIDsToIDsMapping: ..., missingLegacyListIDs: ...
      * )
      * ```
      *
@@ -60,32 +60,32 @@ final class PublicBatchMigrationMapping implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<PublicMigrationMapping|array{
-     *   legacyListId: string, listId: string
-     * }> $legacyListIdsToIdsMapping
-     * @param list<string> $missingLegacyListIds
+     *   legacyListID: string, listID: string
+     * }> $legacyListIDsToIDsMapping
+     * @param list<string> $missingLegacyListIDs
      */
     public static function with(
-        array $legacyListIdsToIdsMapping,
-        array $missingLegacyListIds
+        array $legacyListIDsToIDsMapping,
+        array $missingLegacyListIDs
     ): self {
         $obj = new self;
 
-        $obj['legacyListIdsToIdsMapping'] = $legacyListIdsToIdsMapping;
-        $obj['missingLegacyListIds'] = $missingLegacyListIds;
+        $obj['legacyListIDsToIDsMapping'] = $legacyListIDsToIDsMapping;
+        $obj['missingLegacyListIDs'] = $missingLegacyListIDs;
 
         return $obj;
     }
 
     /**
      * @param list<PublicMigrationMapping|array{
-     *   legacyListId: string, listId: string
+     *   legacyListID: string, listID: string
      * }> $legacyListIDsToIDsMapping
      */
     public function withLegacyListIDsToIDsMapping(
         array $legacyListIDsToIDsMapping
     ): self {
         $obj = clone $this;
-        $obj['legacyListIdsToIdsMapping'] = $legacyListIDsToIDsMapping;
+        $obj['legacyListIDsToIDsMapping'] = $legacyListIDsToIDsMapping;
 
         return $obj;
     }
@@ -98,7 +98,7 @@ final class PublicBatchMigrationMapping implements BaseModel
     public function withMissingLegacyListIDs(array $missingLegacyListIDs): self
     {
         $obj = clone $this;
-        $obj['missingLegacyListIds'] = $missingLegacyListIDs;
+        $obj['missingLegacyListIDs'] = $missingLegacyListIDs;
 
         return $obj;
     }

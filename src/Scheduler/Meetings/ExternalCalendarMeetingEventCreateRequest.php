@@ -73,19 +73,19 @@ final class ExternalCalendarMeetingEventCreateRequest implements BaseModel
      *   reminders: list<ExternalReminder>, shouldIncludeInviteDescription: bool
      * } $emailReminderSchedule
      * @param ExternalCalendarMeetingEventCreateProperties|array{
-     *   hs_meeting_end_time: \DateTimeInterface,
-     *   hs_meeting_outcome: string,
-     *   hs_meeting_start_time: \DateTimeInterface,
-     *   hs_meeting_title: string,
-     *   hs_timestamp: \DateTimeInterface,
-     *   hubspot_owner_id: string,
-     *   hs_activity_type?: string|null,
-     *   hs_attachment_ids?: list<string>|null,
-     *   hs_attendee_owner_ids?: list<string>|null,
-     *   hs_internal_meeting_notes?: string|null,
-     *   hs_meeting_body?: string|null,
-     *   hs_meeting_location?: string|null,
-     *   hs_meeting_location_type?: string|null,
+     *   hsMeetingEndTime: \DateTimeInterface,
+     *   hsMeetingOutcome: string,
+     *   hsMeetingStartTime: \DateTimeInterface,
+     *   hsMeetingTitle: string,
+     *   hsTimestamp: \DateTimeInterface,
+     *   hubspotOwnerID: string,
+     *   hsActivityType?: string|null,
+     *   hsAttachmentIDs?: list<string>|null,
+     *   hsAttendeeOwnerIDs?: list<string>|null,
+     *   hsInternalMeetingNotes?: string|null,
+     *   hsMeetingBody?: string|null,
+     *   hsMeetingLocation?: string|null,
+     *   hsMeetingLocationType?: string|null,
      * } $properties
      */
     public static function with(
@@ -133,19 +133,19 @@ final class ExternalCalendarMeetingEventCreateRequest implements BaseModel
 
     /**
      * @param ExternalCalendarMeetingEventCreateProperties|array{
-     *   hs_meeting_end_time: \DateTimeInterface,
-     *   hs_meeting_outcome: string,
-     *   hs_meeting_start_time: \DateTimeInterface,
-     *   hs_meeting_title: string,
-     *   hs_timestamp: \DateTimeInterface,
-     *   hubspot_owner_id: string,
-     *   hs_activity_type?: string|null,
-     *   hs_attachment_ids?: list<string>|null,
-     *   hs_attendee_owner_ids?: list<string>|null,
-     *   hs_internal_meeting_notes?: string|null,
-     *   hs_meeting_body?: string|null,
-     *   hs_meeting_location?: string|null,
-     *   hs_meeting_location_type?: string|null,
+     *   hsMeetingEndTime: \DateTimeInterface,
+     *   hsMeetingOutcome: string,
+     *   hsMeetingStartTime: \DateTimeInterface,
+     *   hsMeetingTitle: string,
+     *   hsTimestamp: \DateTimeInterface,
+     *   hubspotOwnerID: string,
+     *   hsActivityType?: string|null,
+     *   hsAttachmentIDs?: list<string>|null,
+     *   hsAttendeeOwnerIDs?: list<string>|null,
+     *   hsInternalMeetingNotes?: string|null,
+     *   hsMeetingBody?: string|null,
+     *   hsMeetingLocation?: string|null,
+     *   hsMeetingLocationType?: string|null,
      * } $properties
      */
     public function withProperties(

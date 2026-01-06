@@ -19,7 +19,7 @@ use HubspotSDK\Marketing\Forms\PhoneField\FieldType;
  *   hidden: bool,
  *   label: string,
  *   name: string,
- *   objectTypeId: string,
+ *   objectTypeID: string,
  *   required: bool,
  *   useCountryCodeSelect: bool,
  *   validation: PhoneFieldValidation,
@@ -70,8 +70,8 @@ final class PhoneField implements BaseModel
     /**
      * A unique ID for this field's CRM object type. For example a CONTACT field will have the object type ID 0-1.
      */
-    #[Required]
-    public string $objectTypeId;
+    #[Required('objectTypeId')]
+    public string $objectTypeID;
 
     /**
      * Whether a value for this field is required when submitting the form.
@@ -120,7 +120,7 @@ final class PhoneField implements BaseModel
      *   hidden: ...,
      *   label: ...,
      *   name: ...,
-     *   objectTypeId: ...,
+     *   objectTypeID: ...,
      *   required: ...,
      *   useCountryCodeSelect: ...,
      *   validation: ...,
@@ -163,7 +163,7 @@ final class PhoneField implements BaseModel
         bool $hidden,
         string $label,
         string $name,
-        string $objectTypeId,
+        string $objectTypeID,
         bool $required,
         bool $useCountryCodeSelect,
         PhoneFieldValidation|array $validation,
@@ -179,7 +179,7 @@ final class PhoneField implements BaseModel
         $obj['hidden'] = $hidden;
         $obj['label'] = $label;
         $obj['name'] = $name;
-        $obj['objectTypeId'] = $objectTypeId;
+        $obj['objectTypeID'] = $objectTypeID;
         $obj['required'] = $required;
         $obj['useCountryCodeSelect'] = $useCountryCodeSelect;
         $obj['validation'] = $validation;
@@ -256,7 +256,7 @@ final class PhoneField implements BaseModel
     public function withObjectTypeID(string $objectTypeID): self
     {
         $obj = clone $this;
-        $obj['objectTypeId'] = $objectTypeID;
+        $obj['objectTypeID'] = $objectTypeID;
 
         return $obj;
     }

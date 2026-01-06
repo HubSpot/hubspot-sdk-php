@@ -106,7 +106,7 @@ final class ExternalLegalConsentOptions implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<ExternalCommunicationConsentCheckbox|array{
-     *   communicationTypeId: string, label: string, required: bool
+     *   communicationTypeID: string, label: string, required: bool
      * }> $communicationConsentCheckboxes
      * @param list<int> $legitimateInterestSubscriptionTypes
      * @param LegitimateInterestLegalBasis|value-of<LegitimateInterestLegalBasis> $legitimateInterestLegalBasis
@@ -142,7 +142,7 @@ final class ExternalLegalConsentOptions implements BaseModel
 
     /**
      * @param list<ExternalCommunicationConsentCheckbox|array{
-     *   communicationTypeId: string, label: string, required: bool
+     *   communicationTypeID: string, label: string, required: bool
      * }> $communicationConsentCheckboxes
      */
     public function withCommunicationConsentCheckboxes(

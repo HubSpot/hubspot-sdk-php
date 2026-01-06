@@ -15,7 +15,7 @@ use HubspotSDK\Crm\Associations\Schema\V4\PublicAssociationSpec;
  *
  * @phpstan-type ConfigurationBatchDeleteParamsShape = array{
  *   fromObjectType: string,
- *   inputs: list<PublicAssociationSpec|array{category: string, typeId: int}>,
+ *   inputs: list<PublicAssociationSpec|array{category: string, typeID: int}>,
  * }
  */
 final class ConfigurationBatchDeleteParams implements BaseModel
@@ -55,7 +55,7 @@ final class ConfigurationBatchDeleteParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicAssociationSpec|array{category: string, typeId: int}> $inputs
+     * @param list<PublicAssociationSpec|array{category: string, typeID: int}> $inputs
      */
     public static function with(string $fromObjectType, array $inputs): self
     {
@@ -76,7 +76,7 @@ final class ConfigurationBatchDeleteParams implements BaseModel
     }
 
     /**
-     * @param list<PublicAssociationSpec|array{category: string, typeId: int}> $inputs
+     * @param list<PublicAssociationSpec|array{category: string, typeID: int}> $inputs
      */
     public function withInputs(array $inputs): self
     {

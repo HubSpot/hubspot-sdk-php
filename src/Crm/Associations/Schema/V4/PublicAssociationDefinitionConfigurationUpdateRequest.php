@@ -11,7 +11,7 @@ use HubspotSDK\Crm\Associations\Schema\V4\PublicAssociationDefinitionConfigurati
 
 /**
  * @phpstan-type PublicAssociationDefinitionConfigurationUpdateRequestShape = array{
- *   category: value-of<Category>, maxToObjectIds: int, typeId: int
+ *   category: value-of<Category>, maxToObjectIDs: int, typeID: int
  * }
  */
 final class PublicAssociationDefinitionConfigurationUpdateRequest implements BaseModel
@@ -23,11 +23,11 @@ final class PublicAssociationDefinitionConfigurationUpdateRequest implements Bas
     #[Required(enum: Category::class)]
     public string $category;
 
-    #[Required]
-    public int $maxToObjectIds;
+    #[Required('maxToObjectIds')]
+    public int $maxToObjectIDs;
 
-    #[Required]
-    public int $typeId;
+    #[Required('typeId')]
+    public int $typeID;
 
     /**
      * `new PublicAssociationDefinitionConfigurationUpdateRequest()` is missing required properties by the API.
@@ -35,7 +35,7 @@ final class PublicAssociationDefinitionConfigurationUpdateRequest implements Bas
      * To enforce required parameters use
      * ```
      * PublicAssociationDefinitionConfigurationUpdateRequest::with(
-     *   category: ..., maxToObjectIds: ..., typeId: ...
+     *   category: ..., maxToObjectIDs: ..., typeID: ...
      * )
      * ```
      *
@@ -62,14 +62,14 @@ final class PublicAssociationDefinitionConfigurationUpdateRequest implements Bas
      */
     public static function with(
         Category|string $category,
-        int $maxToObjectIds,
-        int $typeId
+        int $maxToObjectIDs,
+        int $typeID
     ): self {
         $obj = new self;
 
         $obj['category'] = $category;
-        $obj['maxToObjectIds'] = $maxToObjectIds;
-        $obj['typeId'] = $typeId;
+        $obj['maxToObjectIDs'] = $maxToObjectIDs;
+        $obj['typeID'] = $typeID;
 
         return $obj;
     }
@@ -88,7 +88,7 @@ final class PublicAssociationDefinitionConfigurationUpdateRequest implements Bas
     public function withMaxToObjectIDs(int $maxToObjectIDs): self
     {
         $obj = clone $this;
-        $obj['maxToObjectIds'] = $maxToObjectIDs;
+        $obj['maxToObjectIDs'] = $maxToObjectIDs;
 
         return $obj;
     }
@@ -96,7 +96,7 @@ final class PublicAssociationDefinitionConfigurationUpdateRequest implements Bas
     public function withTypeID(int $typeID): self
     {
         $obj = clone $this;
-        $obj['typeId'] = $typeID;
+        $obj['typeID'] = $typeID;
 
         return $obj;
     }

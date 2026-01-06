@@ -59,7 +59,7 @@ final class CollectionResponsePublicAPIUserActionEventForwardPaging implements B
      *   category: string,
      *   occurredAt: \DateTimeInterface,
      *   subCategory?: string|null,
-     *   targetObjectId?: string|null,
+     *   targetObjectID?: string|null,
      * }> $results
      * @param ForwardPaging|array{next?: NextPage|null} $paging
      */
@@ -84,7 +84,7 @@ final class CollectionResponsePublicAPIUserActionEventForwardPaging implements B
      *   category: string,
      *   occurredAt: \DateTimeInterface,
      *   subCategory?: string|null,
-     *   targetObjectId?: string|null,
+     *   targetObjectID?: string|null,
      * }> $results
      */
     public function withResults(array $results): self

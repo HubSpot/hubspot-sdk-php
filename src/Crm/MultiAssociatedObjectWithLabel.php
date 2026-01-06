@@ -11,7 +11,7 @@ use HubspotSDK\Crm\AssociationSpecWithLabel\Category;
 
 /**
  * @phpstan-type MultiAssociatedObjectWithLabelShape = array{
- *   associationTypes: list<AssociationSpecWithLabel>, toObjectId: string
+ *   associationTypes: list<AssociationSpecWithLabel>, toObjectID: string
  * }
  */
 final class MultiAssociatedObjectWithLabel implements BaseModel
@@ -26,15 +26,15 @@ final class MultiAssociatedObjectWithLabel implements BaseModel
     /**
      * The unique identifier for the target object in the association.
      */
-    #[Required]
-    public string $toObjectId;
+    #[Required('toObjectId')]
+    public string $toObjectID;
 
     /**
      * `new MultiAssociatedObjectWithLabel()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * MultiAssociatedObjectWithLabel::with(associationTypes: ..., toObjectId: ...)
+     * MultiAssociatedObjectWithLabel::with(associationTypes: ..., toObjectID: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -56,24 +56,24 @@ final class MultiAssociatedObjectWithLabel implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<AssociationSpecWithLabel|array{
-     *   category: value-of<Category>, typeId: int, label?: string|null
+     *   category: value-of<Category>, typeID: int, label?: string|null
      * }> $associationTypes
      */
     public static function with(
         array $associationTypes,
-        string $toObjectId
+        string $toObjectID
     ): self {
         $obj = new self;
 
         $obj['associationTypes'] = $associationTypes;
-        $obj['toObjectId'] = $toObjectId;
+        $obj['toObjectID'] = $toObjectID;
 
         return $obj;
     }
 
     /**
      * @param list<AssociationSpecWithLabel|array{
-     *   category: value-of<Category>, typeId: int, label?: string|null
+     *   category: value-of<Category>, typeID: int, label?: string|null
      * }> $associationTypes
      */
     public function withAssociationTypes(array $associationTypes): self
@@ -90,7 +90,7 @@ final class MultiAssociatedObjectWithLabel implements BaseModel
     public function withToObjectID(string $toObjectID): self
     {
         $obj = clone $this;
-        $obj['toObjectId'] = $toObjectID;
+        $obj['toObjectID'] = $toObjectID;
 
         return $obj;
     }

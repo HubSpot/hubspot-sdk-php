@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Cms\MediaBridge\IntegratorSettingsService::deleteOembedDomain()
  *
  * @phpstan-type IntegratorSettingDeleteOembedDomainParamsShape = array{
- *   id?: int, domainPortalId?: int
+ *   id?: int, domainPortalID?: int
  * }
  */
 final class IntegratorSettingDeleteOembedDomainParams implements BaseModel
@@ -34,7 +34,7 @@ final class IntegratorSettingDeleteOembedDomainParams implements BaseModel
      * Filter response by Hub ID.
      */
     #[Optional]
-    public ?int $domainPortalId;
+    public ?int $domainPortalID;
 
     public function __construct()
     {
@@ -48,12 +48,12 @@ final class IntegratorSettingDeleteOembedDomainParams implements BaseModel
      */
     public static function with(
         ?int $id = null,
-        ?int $domainPortalId = null
+        ?int $domainPortalID = null
     ): self {
         $obj = new self;
 
         null !== $id && $obj['id'] = $id;
-        null !== $domainPortalId && $obj['domainPortalId'] = $domainPortalId;
+        null !== $domainPortalID && $obj['domainPortalID'] = $domainPortalID;
 
         return $obj;
     }
@@ -75,7 +75,7 @@ final class IntegratorSettingDeleteOembedDomainParams implements BaseModel
     public function withDomainPortalID(int $domainPortalID): self
     {
         $obj = clone $this;
-        $obj['domainPortalId'] = $domainPortalID;
+        $obj['domainPortalID'] = $domainPortalID;
 
         return $obj;
     }

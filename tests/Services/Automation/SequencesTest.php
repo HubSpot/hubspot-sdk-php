@@ -39,7 +39,7 @@ final class SequencesTest extends TestCase
         }
 
         $result = $this->client->automation->sequences->list([
-            'userId' => 'userId',
+            'userID' => 'userId',
         ]);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -54,7 +54,7 @@ final class SequencesTest extends TestCase
         }
 
         $result = $this->client->automation->sequences->list([
-            'userId' => 'userId', 'after' => 'after', 'limit' => 0, 'name' => 'name',
+            'userID' => 'userId', 'after' => 'after', 'limit' => 0, 'name' => 'name',
         ]);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -70,7 +70,7 @@ final class SequencesTest extends TestCase
 
         $result = $this->client->automation->sequences->get(
             'sequenceId',
-            ['userId' => 'userId']
+            ['userID' => 'userId']
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -86,7 +86,7 @@ final class SequencesTest extends TestCase
 
         $result = $this->client->automation->sequences->get(
             'sequenceId',
-            ['userId' => 'userId']
+            ['userID' => 'userId']
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

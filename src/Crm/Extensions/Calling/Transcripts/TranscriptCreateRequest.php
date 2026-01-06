@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type TranscriptCreateRequestShape = array{
- *   engagementId: int, transcriptCreateUtterances: list<TranscriptCreateUtterance>
+ *   engagementID: int, transcriptCreateUtterances: list<TranscriptCreateUtterance>
  * }
  */
 final class TranscriptCreateRequest implements BaseModel
@@ -18,8 +18,8 @@ final class TranscriptCreateRequest implements BaseModel
     /** @use SdkModel<TranscriptCreateRequestShape> */
     use SdkModel;
 
-    #[Required]
-    public int $engagementId;
+    #[Required('engagementId')]
+    public int $engagementID;
 
     /** @var list<TranscriptCreateUtterance> $transcriptCreateUtterances */
     #[Required(list: TranscriptCreateUtterance::class)]
@@ -31,7 +31,7 @@ final class TranscriptCreateRequest implements BaseModel
      * To enforce required parameters use
      * ```
      * TranscriptCreateRequest::with(
-     *   engagementId: ..., transcriptCreateUtterances: ...
+     *   engagementID: ..., transcriptCreateUtterances: ...
      * )
      * ```
      *
@@ -62,12 +62,12 @@ final class TranscriptCreateRequest implements BaseModel
      * }> $transcriptCreateUtterances
      */
     public static function with(
-        int $engagementId,
+        int $engagementID,
         array $transcriptCreateUtterances
     ): self {
         $obj = new self;
 
-        $obj['engagementId'] = $engagementId;
+        $obj['engagementID'] = $engagementID;
         $obj['transcriptCreateUtterances'] = $transcriptCreateUtterances;
 
         return $obj;
@@ -76,7 +76,7 @@ final class TranscriptCreateRequest implements BaseModel
     public function withEngagementID(int $engagementID): self
     {
         $obj = clone $this;
-        $obj['engagementId'] = $engagementID;
+        $obj['engagementID'] = $engagementID;
 
         return $obj;
     }

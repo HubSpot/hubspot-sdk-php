@@ -54,7 +54,7 @@ final class AuthorsService implements AuthorsContract
      *   linkedin: string,
      *   name: string,
      *   slug: string,
-     *   translatedFromId: int,
+     *   translatedFromID: int,
      *   twitter: string,
      *   updated: string|\DateTimeInterface,
      *   website: string,
@@ -103,7 +103,7 @@ final class AuthorsService implements AuthorsContract
      *   linkedin: string,
      *   name: string,
      *   slug: string,
-     *   translatedFromId: int,
+     *   translatedFromID: int,
      *   twitter: string,
      *   updated: string|\DateTimeInterface,
      *   website: string,
@@ -218,7 +218,7 @@ final class AuthorsService implements AuthorsContract
      * Attach a Blog Author to a multi-language group.
      *
      * @param array{
-     *   id: string, language: string, primaryId: string, primaryLanguage?: string
+     *   id: string, language: string, primaryID: string, primaryLanguage?: string
      * }|AuthorAttachToLangGroupParams $params
      *
      * @throws APIException
@@ -264,7 +264,7 @@ final class AuthorsService implements AuthorsContract
      *     linkedin: string,
      *     name: string,
      *     slug: string,
-     *     translatedFromId: int,
+     *     translatedFromID: int,
      *     twitter: string,
      *     updated: string|\DateTimeInterface,
      *     website: string,
@@ -315,7 +315,7 @@ final class AuthorsService implements AuthorsContract
      *     linkedin: string,
      *     name: string,
      *     slug: string,
-     *     translatedFromId: int,
+     *     translatedFromID: int,
      *     twitter: string,
      *     updated: string|\DateTimeInterface,
      *     website: string,
@@ -540,7 +540,7 @@ final class AuthorsService implements AuthorsContract
      * Explicitly set new languages for each Blog Author in a multi-language group.
      *
      * @param array{
-     *   languages: array<string,string>, primaryId: string
+     *   languages: array<string,string>, primaryID: string
      * }|AuthorUpdateLanguagesParams $params
      *
      * @throws APIException

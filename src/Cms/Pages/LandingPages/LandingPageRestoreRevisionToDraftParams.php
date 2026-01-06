@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Cms\Pages\LandingPagesService::restoreRevisionToDraft()
  *
  * @phpstan-type LandingPageRestoreRevisionToDraftParamsShape = array{
- *   objectId: string
+ *   objectID: string
  * }
  */
 final class LandingPageRestoreRevisionToDraftParams implements BaseModel
@@ -25,14 +25,14 @@ final class LandingPageRestoreRevisionToDraftParams implements BaseModel
     use SdkParams;
 
     #[Required]
-    public string $objectId;
+    public string $objectID;
 
     /**
      * `new LandingPageRestoreRevisionToDraftParams()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * LandingPageRestoreRevisionToDraftParams::with(objectId: ...)
+     * LandingPageRestoreRevisionToDraftParams::with(objectID: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -51,11 +51,11 @@ final class LandingPageRestoreRevisionToDraftParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(string $objectId): self
+    public static function with(string $objectID): self
     {
         $obj = new self;
 
-        $obj['objectId'] = $objectId;
+        $obj['objectID'] = $objectID;
 
         return $obj;
     }
@@ -63,7 +63,7 @@ final class LandingPageRestoreRevisionToDraftParams implements BaseModel
     public function withObjectID(string $objectID): self
     {
         $obj = clone $this;
-        $obj['objectId'] = $objectID;
+        $obj['objectID'] = $objectID;
 
         return $obj;
     }

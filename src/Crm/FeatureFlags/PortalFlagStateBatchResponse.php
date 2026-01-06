@@ -48,7 +48,7 @@ final class PortalFlagStateBatchResponse implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<PortalFlagStateResponse|array{
-     *   appId: int, flagName: string, flagState: value-of<FlagState>, portalId: int
+     *   appID: int, flagName: string, flagState: value-of<FlagState>, portalID: int
      * }> $portalFlagStates
      */
     public static function with(array $portalFlagStates): self
@@ -62,7 +62,7 @@ final class PortalFlagStateBatchResponse implements BaseModel
 
     /**
      * @param list<PortalFlagStateResponse|array{
-     *   appId: int, flagName: string, flagState: value-of<FlagState>, portalId: int
+     *   appID: int, flagName: string, flagState: value-of<FlagState>, portalID: int
      * }> $portalFlagStates
      */
     public function withPortalFlagStates(array $portalFlagStates): self

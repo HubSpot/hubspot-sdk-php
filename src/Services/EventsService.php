@@ -7,6 +7,7 @@ namespace HubspotSDK\Services;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Events\EventListParams;
 use HubspotSDK\Events\ExternalUnifiedEvent;
 use HubspotSDK\Events\VisibleExternalEventTypeNames;
@@ -48,12 +49,12 @@ final class EventsService implements EventsContract
      *   before?: string,
      *   eventType?: string,
      *   limit?: int,
-     *   objectId?: int,
-     *   objectProperty?: array{'{propname}'?: mixed},
+     *   objectID?: int,
+     *   objectProperty?: array{propname?: mixed},
      *   objectType?: string,
      *   occurredAfter?: string|\DateTimeInterface,
      *   occurredBefore?: string|\DateTimeInterface,
-     *   property?: array{'{propname}'?: mixed},
+     *   property?: array{propname?: mixed},
      *   sort?: list<string>,
      * }|EventListParams $params
      *
@@ -74,7 +75,7 @@ final class EventsService implements EventsContract
         $response = $this->client->request(
             method: 'get',
             path: 'events/v3/events/',
-            query: $parsed,
+            query: Util::array_transform_keys($parsed, ['objectID' => 'objectId']),
             options: $options,
             convert: ExternalUnifiedEvent::class,
             page: Page::class,

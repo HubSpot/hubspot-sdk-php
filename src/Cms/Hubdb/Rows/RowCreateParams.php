@@ -17,7 +17,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Cms\Hubdb\RowsService::create()
  *
  * @phpstan-type RowCreateParamsShape = array{
- *   childTableId: int,
+ *   childTableID: int,
  *   displayIndex: int,
  *   values: array<string,Variant|array<string,mixed>>,
  *   name?: string,
@@ -33,8 +33,8 @@ final class RowCreateParams implements BaseModel
     /**
      * Specifies the value for the column child table id.
      */
-    #[Required]
-    public int $childTableId;
+    #[Required('childTableId')]
+    public int $childTableID;
 
     #[Required]
     public int $displayIndex;
@@ -64,7 +64,7 @@ final class RowCreateParams implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * RowCreateParams::with(childTableId: ..., displayIndex: ..., values: ...)
+     * RowCreateParams::with(childTableID: ..., displayIndex: ..., values: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -89,7 +89,7 @@ final class RowCreateParams implements BaseModel
      * @param array<string,Variant|array<string,mixed>> $values
      */
     public static function with(
-        int $childTableId,
+        int $childTableID,
         int $displayIndex,
         array $values,
         ?string $name = null,
@@ -97,7 +97,7 @@ final class RowCreateParams implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj['childTableId'] = $childTableId;
+        $obj['childTableID'] = $childTableID;
         $obj['displayIndex'] = $displayIndex;
         $obj['values'] = $values;
 
@@ -113,7 +113,7 @@ final class RowCreateParams implements BaseModel
     public function withChildTableID(int $childTableID): self
     {
         $obj = clone $this;
-        $obj['childTableId'] = $childTableID;
+        $obj['childTableID'] = $childTableID;
 
         return $obj;
     }

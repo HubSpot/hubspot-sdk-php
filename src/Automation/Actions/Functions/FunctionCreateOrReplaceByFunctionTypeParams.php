@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Automation\Actions\FunctionsService::createOrReplaceByFunctionType()
  *
  * @phpstan-type FunctionCreateOrReplaceByFunctionTypeParamsShape = array{
- *   appId: int, definitionId: string, body: string
+ *   appID: int, definitionID: string, body: string
  * }
  */
 final class FunctionCreateOrReplaceByFunctionTypeParams implements BaseModel
@@ -25,10 +25,10 @@ final class FunctionCreateOrReplaceByFunctionTypeParams implements BaseModel
     use SdkParams;
 
     #[Required]
-    public int $appId;
+    public int $appID;
 
     #[Required]
-    public string $definitionId;
+    public string $definitionID;
 
     #[Required]
     public string $body;
@@ -39,7 +39,7 @@ final class FunctionCreateOrReplaceByFunctionTypeParams implements BaseModel
      * To enforce required parameters use
      * ```
      * FunctionCreateOrReplaceByFunctionTypeParams::with(
-     *   appId: ..., definitionId: ..., body: ...
+     *   appID: ..., definitionID: ..., body: ...
      * )
      * ```
      *
@@ -63,14 +63,14 @@ final class FunctionCreateOrReplaceByFunctionTypeParams implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      */
     public static function with(
-        int $appId,
-        string $definitionId,
+        int $appID,
+        string $definitionID,
         string $body
     ): self {
         $obj = new self;
 
-        $obj['appId'] = $appId;
-        $obj['definitionId'] = $definitionId;
+        $obj['appID'] = $appID;
+        $obj['definitionID'] = $definitionID;
         $obj['body'] = $body;
 
         return $obj;
@@ -79,7 +79,7 @@ final class FunctionCreateOrReplaceByFunctionTypeParams implements BaseModel
     public function withAppID(int $appID): self
     {
         $obj = clone $this;
-        $obj['appId'] = $appID;
+        $obj['appID'] = $appID;
 
         return $obj;
     }
@@ -87,7 +87,7 @@ final class FunctionCreateOrReplaceByFunctionTypeParams implements BaseModel
     public function withDefinitionID(string $definitionID): self
     {
         $obj = clone $this;
-        $obj['definitionId'] = $definitionID;
+        $obj['definitionID'] = $definitionID;
 
         return $obj;
     }

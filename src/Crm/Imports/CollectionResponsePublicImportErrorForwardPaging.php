@@ -67,7 +67,7 @@ final class CollectionResponsePublicImportErrorForwardPaging implements BaseMode
      *   invalidValueToDisplay?: string|null,
      *   knownColumnNumber?: int|null,
      *   objectType?: value-of<ObjectType>|null,
-     *   objectTypeId?: string|null,
+     *   objectTypeID?: string|null,
      * }> $results
      * @param ForwardPaging|array{next?: NextPage|null} $paging
      */
@@ -97,7 +97,7 @@ final class CollectionResponsePublicImportErrorForwardPaging implements BaseMode
      *   invalidValueToDisplay?: string|null,
      *   knownColumnNumber?: int|null,
      *   objectType?: value-of<ObjectType>|null,
-     *   objectTypeId?: string|null,
+     *   objectTypeID?: string|null,
      * }> $results
      */
     public function withResults(array $results): self

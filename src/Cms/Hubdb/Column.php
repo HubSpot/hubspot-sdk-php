@@ -21,17 +21,17 @@ use HubspotSDK\Option;
  *   type: value-of<Type>,
  *   createdAt?: \DateTimeInterface|null,
  *   createdBy?: SimpleUser|null,
- *   createdByUserId?: int|null,
- *   foreignColumnId?: int|null,
- *   foreignIds?: list<ForeignID>|null,
- *   foreignIdsById?: array<string,ForeignID>|null,
- *   foreignIdsByName?: array<string,ForeignID>|null,
- *   foreignTableId?: int|null,
+ *   createdByUserID?: int|null,
+ *   foreignColumnID?: int|null,
+ *   foreignIDs?: list<ForeignID>|null,
+ *   foreignIDsByID?: array<string,ForeignID>|null,
+ *   foreignIDsByName?: array<string,ForeignID>|null,
+ *   foreignTableID?: int|null,
  *   optionCount?: int|null,
  *   options?: list<\HubspotSDK\Option>|null,
  *   updatedAt?: \DateTimeInterface|null,
  *   updatedBy?: SimpleUser|null,
- *   updatedByUserId?: int|null,
+ *   updatedByUserID?: int|null,
  *   width?: int|null,
  * }
  */
@@ -78,44 +78,44 @@ final class Column implements BaseModel
     #[Optional]
     public ?SimpleUser $createdBy;
 
-    #[Optional]
-    public ?int $createdByUserId;
+    #[Optional('createdByUserId')]
+    public ?int $createdByUserID;
 
     /**
      * Foreign Column id.
      */
-    #[Optional]
-    public ?int $foreignColumnId;
+    #[Optional('foreignColumnId')]
+    public ?int $foreignColumnID;
 
     /**
      * Foreign Ids.
      *
-     * @var list<ForeignID>|null $foreignIds
+     * @var list<ForeignID>|null $foreignIDs
      */
-    #[Optional(list: ForeignID::class)]
-    public ?array $foreignIds;
+    #[Optional('foreignIds', list: ForeignID::class)]
+    public ?array $foreignIDs;
 
     /**
      * Foreign ids.
      *
-     * @var array<string,ForeignID>|null $foreignIdsById
+     * @var array<string,ForeignID>|null $foreignIDsByID
      */
-    #[Optional(map: ForeignID::class)]
-    public ?array $foreignIdsById;
+    #[Optional('foreignIdsById', map: ForeignID::class)]
+    public ?array $foreignIDsByID;
 
     /**
      * Foreign ids by name.
      *
-     * @var array<string,ForeignID>|null $foreignIdsByName
+     * @var array<string,ForeignID>|null $foreignIDsByName
      */
-    #[Optional(map: ForeignID::class)]
-    public ?array $foreignIdsByName;
+    #[Optional('foreignIdsByName', map: ForeignID::class)]
+    public ?array $foreignIDsByName;
 
     /**
      * Foreign table id referenced.
      */
-    #[Optional]
-    public ?int $foreignTableId;
+    #[Optional('foreignTableId')]
+    public ?int $foreignTableID;
 
     /**
      * Number of options available.
@@ -137,8 +137,8 @@ final class Column implements BaseModel
     #[Optional]
     public ?SimpleUser $updatedBy;
 
-    #[Optional]
-    public ?int $updatedByUserId;
+    #[Optional('updatedByUserId')]
+    public ?int $updatedByUserID;
 
     /**
      * Column width for HubDB UI.
@@ -182,13 +182,13 @@ final class Column implements BaseModel
      * @param SimpleUser|array{
      *   id: string, email: string, firstName: string, lastName: string
      * } $createdBy
-     * @param list<ForeignID|array{id: string, name: string, type: string}> $foreignIds
+     * @param list<ForeignID|array{id: string, name: string, type: string}> $foreignIDs
      * @param array<string,ForeignID|array{
      *   id: string, name: string, type: string
-     * }> $foreignIdsById
+     * }> $foreignIDsByID
      * @param array<string,ForeignID|array{
      *   id: string, name: string, type: string
-     * }> $foreignIdsByName
+     * }> $foreignIDsByName
      * @param list<Option|array{
      *   hidden: bool,
      *   label: string,
@@ -209,17 +209,17 @@ final class Column implements BaseModel
         Type|string $type,
         ?\DateTimeInterface $createdAt = null,
         SimpleUser|array|null $createdBy = null,
-        ?int $createdByUserId = null,
-        ?int $foreignColumnId = null,
-        ?array $foreignIds = null,
-        ?array $foreignIdsById = null,
-        ?array $foreignIdsByName = null,
-        ?int $foreignTableId = null,
+        ?int $createdByUserID = null,
+        ?int $foreignColumnID = null,
+        ?array $foreignIDs = null,
+        ?array $foreignIDsByID = null,
+        ?array $foreignIDsByName = null,
+        ?int $foreignTableID = null,
         ?int $optionCount = null,
         ?array $options = null,
         ?\DateTimeInterface $updatedAt = null,
         SimpleUser|array|null $updatedBy = null,
-        ?int $updatedByUserId = null,
+        ?int $updatedByUserID = null,
         ?int $width = null,
     ): self {
         $obj = new self;
@@ -233,17 +233,17 @@ final class Column implements BaseModel
 
         null !== $createdAt && $obj['createdAt'] = $createdAt;
         null !== $createdBy && $obj['createdBy'] = $createdBy;
-        null !== $createdByUserId && $obj['createdByUserId'] = $createdByUserId;
-        null !== $foreignColumnId && $obj['foreignColumnId'] = $foreignColumnId;
-        null !== $foreignIds && $obj['foreignIds'] = $foreignIds;
-        null !== $foreignIdsById && $obj['foreignIdsById'] = $foreignIdsById;
-        null !== $foreignIdsByName && $obj['foreignIdsByName'] = $foreignIdsByName;
-        null !== $foreignTableId && $obj['foreignTableId'] = $foreignTableId;
+        null !== $createdByUserID && $obj['createdByUserID'] = $createdByUserID;
+        null !== $foreignColumnID && $obj['foreignColumnID'] = $foreignColumnID;
+        null !== $foreignIDs && $obj['foreignIDs'] = $foreignIDs;
+        null !== $foreignIDsByID && $obj['foreignIDsByID'] = $foreignIDsByID;
+        null !== $foreignIDsByName && $obj['foreignIDsByName'] = $foreignIDsByName;
+        null !== $foreignTableID && $obj['foreignTableID'] = $foreignTableID;
         null !== $optionCount && $obj['optionCount'] = $optionCount;
         null !== $options && $obj['options'] = $options;
         null !== $updatedAt && $obj['updatedAt'] = $updatedAt;
         null !== $updatedBy && $obj['updatedBy'] = $updatedBy;
-        null !== $updatedByUserId && $obj['updatedByUserId'] = $updatedByUserId;
+        null !== $updatedByUserID && $obj['updatedByUserID'] = $updatedByUserID;
         null !== $width && $obj['width'] = $width;
 
         return $obj;
@@ -335,7 +335,7 @@ final class Column implements BaseModel
     public function withCreatedByUserID(int $createdByUserID): self
     {
         $obj = clone $this;
-        $obj['createdByUserId'] = $createdByUserID;
+        $obj['createdByUserID'] = $createdByUserID;
 
         return $obj;
     }
@@ -346,7 +346,7 @@ final class Column implements BaseModel
     public function withForeignColumnID(int $foreignColumnID): self
     {
         $obj = clone $this;
-        $obj['foreignColumnId'] = $foreignColumnID;
+        $obj['foreignColumnID'] = $foreignColumnID;
 
         return $obj;
     }
@@ -359,7 +359,7 @@ final class Column implements BaseModel
     public function withForeignIDs(array $foreignIDs): self
     {
         $obj = clone $this;
-        $obj['foreignIds'] = $foreignIDs;
+        $obj['foreignIDs'] = $foreignIDs;
 
         return $obj;
     }
@@ -374,7 +374,7 @@ final class Column implements BaseModel
     public function withForeignIDsByID(array $foreignIDsByID): self
     {
         $obj = clone $this;
-        $obj['foreignIdsById'] = $foreignIDsByID;
+        $obj['foreignIDsByID'] = $foreignIDsByID;
 
         return $obj;
     }
@@ -389,7 +389,7 @@ final class Column implements BaseModel
     public function withForeignIDsByName(array $foreignIDsByName): self
     {
         $obj = clone $this;
-        $obj['foreignIdsByName'] = $foreignIDsByName;
+        $obj['foreignIDsByName'] = $foreignIDsByName;
 
         return $obj;
     }
@@ -400,7 +400,7 @@ final class Column implements BaseModel
     public function withForeignTableID(int $foreignTableID): self
     {
         $obj = clone $this;
-        $obj['foreignTableId'] = $foreignTableID;
+        $obj['foreignTableID'] = $foreignTableID;
 
         return $obj;
     }
@@ -459,7 +459,7 @@ final class Column implements BaseModel
     public function withUpdatedByUserID(int $updatedByUserID): self
     {
         $obj = clone $this;
-        $obj['updatedByUserId'] = $updatedByUserID;
+        $obj['updatedByUserID'] = $updatedByUserID;
 
         return $obj;
     }

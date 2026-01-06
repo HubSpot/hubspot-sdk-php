@@ -24,22 +24,22 @@ use HubspotSDK\Marketing\Emails\PublicEmailTestingDetails\AbSuccessMetric;
  *   isAb: bool,
  *   id?: string|null,
  *   activeDomain?: string|null,
- *   allEmailCampaignIds?: list<string>|null,
+ *   allEmailCampaignIDs?: list<string>|null,
  *   archived?: bool|null,
- *   businessUnitId?: string|null,
+ *   businessUnitID?: string|null,
  *   campaign?: string|null,
  *   campaignName?: string|null,
  *   campaignUtm?: string|null,
  *   clonedFrom?: string|null,
  *   content?: PublicEmailContent|null,
  *   createdAt?: \DateTimeInterface|null,
- *   createdById?: string|null,
+ *   createdByID?: string|null,
  *   deletedAt?: \DateTimeInterface|null,
- *   emailCampaignGroupId?: string|null,
+ *   emailCampaignGroupID?: string|null,
  *   emailTemplateMode?: value-of<EmailTemplateMode>|null,
- *   feedbackSurveyId?: string|null,
- *   folderId?: int|null,
- *   folderIdV2?: int|null,
+ *   feedbackSurveyID?: string|null,
+ *   folderID?: int|null,
+ *   folderIDV2?: int|null,
  *   from?: PublicEmailFromDetails|null,
  *   isPublished?: bool|null,
  *   isTransactional?: bool|null,
@@ -47,11 +47,11 @@ use HubspotSDK\Marketing\Emails\PublicEmailTestingDetails\AbSuccessMetric;
  *   language?: value-of<Language>|null,
  *   name?: string|null,
  *   previewKey?: string|null,
- *   primaryEmailCampaignId?: string|null,
+ *   primaryEmailCampaignID?: string|null,
  *   publishDate?: \DateTimeInterface|null,
  *   publishedAt?: \DateTimeInterface|null,
  *   publishedByEmail?: string|null,
- *   publishedById?: string|null,
+ *   publishedByID?: string|null,
  *   publishedByName?: string|null,
  *   rssData?: PublicRssEmailDetails|null,
  *   sendOnPublish?: bool|null,
@@ -66,7 +66,7 @@ use HubspotSDK\Marketing\Emails\PublicEmailTestingDetails\AbSuccessMetric;
  *   type?: value-of<Type>|null,
  *   unpublishedAt?: \DateTimeInterface|null,
  *   updatedAt?: \DateTimeInterface|null,
- *   updatedById?: string|null,
+ *   updatedByID?: string|null,
  *   usersWithAccess?: list<string>|null,
  *   webversion?: PublicWebversionDetails|null,
  *   workflowNames?: list<string>|null,
@@ -95,10 +95,10 @@ final class PublicEmail implements BaseModel
     /**
      * List of emailCampaignIds.
      *
-     * @var list<string>|null $allEmailCampaignIds
+     * @var list<string>|null $allEmailCampaignIDs
      */
-    #[Optional(list: 'string')]
-    public ?array $allEmailCampaignIds;
+    #[Optional('allEmailCampaignIds', list: 'string')]
+    public ?array $allEmailCampaignIDs;
 
     /**
      * Determines if the email is archived or not.
@@ -106,8 +106,8 @@ final class PublicEmail implements BaseModel
     #[Optional]
     public ?bool $archived;
 
-    #[Optional]
-    public ?string $businessUnitId;
+    #[Optional('businessUnitId')]
+    public ?string $businessUnitID;
 
     /**
      * The campaign GUID on the email.
@@ -145,8 +145,8 @@ final class PublicEmail implements BaseModel
     /**
      * The id of the user who created the email.
      */
-    #[Optional]
-    public ?string $createdById;
+    #[Optional('createdById')]
+    public ?string $createdByID;
 
     /**
      * The date and time the email was deleted at, in ISO8601 representation.
@@ -154,8 +154,8 @@ final class PublicEmail implements BaseModel
     #[Optional]
     public ?\DateTimeInterface $deletedAt;
 
-    #[Optional]
-    public ?string $emailCampaignGroupId;
+    #[Optional('emailCampaignGroupId')]
+    public ?string $emailCampaignGroupID;
 
     /** @var value-of<EmailTemplateMode>|null $emailTemplateMode */
     #[Optional(enum: EmailTemplateMode::class)]
@@ -164,14 +164,14 @@ final class PublicEmail implements BaseModel
     /**
      * The ID of the feedback survey linked to the email.
      */
-    #[Optional]
-    public ?string $feedbackSurveyId;
+    #[Optional('feedbackSurveyId')]
+    public ?string $feedbackSurveyID;
 
-    #[Optional]
-    public ?int $folderId;
+    #[Optional('folderId')]
+    public ?int $folderID;
 
-    #[Optional]
-    public ?int $folderIdV2;
+    #[Optional('folderIdV2')]
+    public ?int $folderIDV2;
 
     /**
      * Data structure representing the from fields on the email.
@@ -207,8 +207,8 @@ final class PublicEmail implements BaseModel
     #[Optional]
     public ?string $previewKey;
 
-    #[Optional]
-    public ?string $primaryEmailCampaignId;
+    #[Optional('primaryEmailCampaignId')]
+    public ?string $primaryEmailCampaignID;
 
     /**
      * The date and time the email is scheduled for, in ISO8601 representation. This is only used in local time or scheduled emails.
@@ -231,8 +231,8 @@ final class PublicEmail implements BaseModel
     /**
      * The ID of the user who published the email.
      */
-    #[Optional]
-    public ?string $publishedById;
+    #[Optional('publishedById')]
+    public ?string $publishedByID;
 
     /**
      * Name of the user who published the email.
@@ -317,8 +317,8 @@ final class PublicEmail implements BaseModel
     /**
      * The ID of the user who last updated the email.
      */
-    #[Optional]
-    public ?string $updatedById;
+    #[Optional('updatedById')]
+    public ?string $updatedByID;
 
     /** @var list<string>|null $usersWithAccess */
     #[Optional(list: 'string')]
@@ -359,7 +359,7 @@ final class PublicEmail implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<string> $allEmailCampaignIds
+     * @param list<string> $allEmailCampaignIDs
      * @param PublicEmailContent|array{
      *   flexAreas?: array<string,mixed>|null,
      *   plainTextVersion?: string|null,
@@ -379,7 +379,7 @@ final class PublicEmail implements BaseModel
      *   blogEmailType?: string|null,
      *   blogImageMaxWidth?: int|null,
      *   blogLayout?: string|null,
-     *   hubspotBlogId?: string|null,
+     *   hubspotBlogID?: string|null,
      *   maxEntries?: int|null,
      *   rssEntryTemplate?: string|null,
      *   timing?: array<string,mixed>|null,
@@ -394,9 +394,9 @@ final class PublicEmail implements BaseModel
      *   ratios: array<string,float>,
      * } $stats
      * @param PublicEmailSubscriptionDetails|array{
-     *   officeLocationId?: string|null,
-     *   preferencesGroupId?: string|null,
-     *   subscriptionId?: string|null,
+     *   officeLocationID?: string|null,
+     *   preferencesGroupID?: string|null,
+     *   subscriptionID?: string|null,
      *   subscriptionName?: string|null,
      * } $subscriptionDetails
      * @param list<string> $teamsWithAccess
@@ -408,10 +408,10 @@ final class PublicEmail implements BaseModel
      *   abTestPercentage?: int|null,
      *   hoursToWait?: int|null,
      *   isAbVariation?: bool|null,
-     *   testId?: string|null,
+     *   testID?: string|null,
      * } $testing
      * @param PublicEmailToDetails|array{
-     *   contactIds?: PublicEmailRecipients|null,
+     *   contactIDs?: PublicEmailRecipients|null,
      *   contactIlsLists?: PublicEmailRecipients|null,
      *   contactLists?: PublicEmailRecipients|null,
      *   limitSendFrequency?: bool|null,
@@ -426,8 +426,8 @@ final class PublicEmail implements BaseModel
      *   isPageRedirected?: bool|null,
      *   metaDescription?: string|null,
      *   pageExpiryEnabled?: bool|null,
-     *   redirectToPageId?: string|null,
-     *   redirectToUrl?: string|null,
+     *   redirectToPageID?: string|null,
+     *   redirectToURL?: string|null,
      *   slug?: string|null,
      *   title?: string|null,
      *   url?: string|null,
@@ -438,22 +438,22 @@ final class PublicEmail implements BaseModel
         bool $isAb,
         ?string $id = null,
         ?string $activeDomain = null,
-        ?array $allEmailCampaignIds = null,
+        ?array $allEmailCampaignIDs = null,
         ?bool $archived = null,
-        ?string $businessUnitId = null,
+        ?string $businessUnitID = null,
         ?string $campaign = null,
         ?string $campaignName = null,
         ?string $campaignUtm = null,
         ?string $clonedFrom = null,
         PublicEmailContent|array|null $content = null,
         ?\DateTimeInterface $createdAt = null,
-        ?string $createdById = null,
+        ?string $createdByID = null,
         ?\DateTimeInterface $deletedAt = null,
-        ?string $emailCampaignGroupId = null,
+        ?string $emailCampaignGroupID = null,
         EmailTemplateMode|string|null $emailTemplateMode = null,
-        ?string $feedbackSurveyId = null,
-        ?int $folderId = null,
-        ?int $folderIdV2 = null,
+        ?string $feedbackSurveyID = null,
+        ?int $folderID = null,
+        ?int $folderIDV2 = null,
         PublicEmailFromDetails|array|null $from = null,
         ?bool $isPublished = null,
         ?bool $isTransactional = null,
@@ -461,11 +461,11 @@ final class PublicEmail implements BaseModel
         Language|string|null $language = null,
         ?string $name = null,
         ?string $previewKey = null,
-        ?string $primaryEmailCampaignId = null,
+        ?string $primaryEmailCampaignID = null,
         ?\DateTimeInterface $publishDate = null,
         ?\DateTimeInterface $publishedAt = null,
         ?string $publishedByEmail = null,
-        ?string $publishedById = null,
+        ?string $publishedByID = null,
         ?string $publishedByName = null,
         PublicRssEmailDetails|array|null $rssData = null,
         ?bool $sendOnPublish = null,
@@ -480,7 +480,7 @@ final class PublicEmail implements BaseModel
         Type|string|null $type = null,
         ?\DateTimeInterface $unpublishedAt = null,
         ?\DateTimeInterface $updatedAt = null,
-        ?string $updatedById = null,
+        ?string $updatedByID = null,
         ?array $usersWithAccess = null,
         PublicWebversionDetails|array|null $webversion = null,
         ?array $workflowNames = null,
@@ -491,22 +491,22 @@ final class PublicEmail implements BaseModel
 
         null !== $id && $obj['id'] = $id;
         null !== $activeDomain && $obj['activeDomain'] = $activeDomain;
-        null !== $allEmailCampaignIds && $obj['allEmailCampaignIds'] = $allEmailCampaignIds;
+        null !== $allEmailCampaignIDs && $obj['allEmailCampaignIDs'] = $allEmailCampaignIDs;
         null !== $archived && $obj['archived'] = $archived;
-        null !== $businessUnitId && $obj['businessUnitId'] = $businessUnitId;
+        null !== $businessUnitID && $obj['businessUnitID'] = $businessUnitID;
         null !== $campaign && $obj['campaign'] = $campaign;
         null !== $campaignName && $obj['campaignName'] = $campaignName;
         null !== $campaignUtm && $obj['campaignUtm'] = $campaignUtm;
         null !== $clonedFrom && $obj['clonedFrom'] = $clonedFrom;
         null !== $content && $obj['content'] = $content;
         null !== $createdAt && $obj['createdAt'] = $createdAt;
-        null !== $createdById && $obj['createdById'] = $createdById;
+        null !== $createdByID && $obj['createdByID'] = $createdByID;
         null !== $deletedAt && $obj['deletedAt'] = $deletedAt;
-        null !== $emailCampaignGroupId && $obj['emailCampaignGroupId'] = $emailCampaignGroupId;
+        null !== $emailCampaignGroupID && $obj['emailCampaignGroupID'] = $emailCampaignGroupID;
         null !== $emailTemplateMode && $obj['emailTemplateMode'] = $emailTemplateMode;
-        null !== $feedbackSurveyId && $obj['feedbackSurveyId'] = $feedbackSurveyId;
-        null !== $folderId && $obj['folderId'] = $folderId;
-        null !== $folderIdV2 && $obj['folderIdV2'] = $folderIdV2;
+        null !== $feedbackSurveyID && $obj['feedbackSurveyID'] = $feedbackSurveyID;
+        null !== $folderID && $obj['folderID'] = $folderID;
+        null !== $folderIDV2 && $obj['folderIDV2'] = $folderIDV2;
         null !== $from && $obj['from'] = $from;
         null !== $isPublished && $obj['isPublished'] = $isPublished;
         null !== $isTransactional && $obj['isTransactional'] = $isTransactional;
@@ -514,11 +514,11 @@ final class PublicEmail implements BaseModel
         null !== $language && $obj['language'] = $language;
         null !== $name && $obj['name'] = $name;
         null !== $previewKey && $obj['previewKey'] = $previewKey;
-        null !== $primaryEmailCampaignId && $obj['primaryEmailCampaignId'] = $primaryEmailCampaignId;
+        null !== $primaryEmailCampaignID && $obj['primaryEmailCampaignID'] = $primaryEmailCampaignID;
         null !== $publishDate && $obj['publishDate'] = $publishDate;
         null !== $publishedAt && $obj['publishedAt'] = $publishedAt;
         null !== $publishedByEmail && $obj['publishedByEmail'] = $publishedByEmail;
-        null !== $publishedById && $obj['publishedById'] = $publishedById;
+        null !== $publishedByID && $obj['publishedByID'] = $publishedByID;
         null !== $publishedByName && $obj['publishedByName'] = $publishedByName;
         null !== $rssData && $obj['rssData'] = $rssData;
         null !== $sendOnPublish && $obj['sendOnPublish'] = $sendOnPublish;
@@ -533,7 +533,7 @@ final class PublicEmail implements BaseModel
         null !== $type && $obj['type'] = $type;
         null !== $unpublishedAt && $obj['unpublishedAt'] = $unpublishedAt;
         null !== $updatedAt && $obj['updatedAt'] = $updatedAt;
-        null !== $updatedById && $obj['updatedById'] = $updatedById;
+        null !== $updatedByID && $obj['updatedByID'] = $updatedByID;
         null !== $usersWithAccess && $obj['usersWithAccess'] = $usersWithAccess;
         null !== $webversion && $obj['webversion'] = $webversion;
         null !== $workflowNames && $obj['workflowNames'] = $workflowNames;
@@ -579,7 +579,7 @@ final class PublicEmail implements BaseModel
     public function withAllEmailCampaignIDs(array $allEmailCampaignIDs): self
     {
         $obj = clone $this;
-        $obj['allEmailCampaignIds'] = $allEmailCampaignIDs;
+        $obj['allEmailCampaignIDs'] = $allEmailCampaignIDs;
 
         return $obj;
     }
@@ -598,7 +598,7 @@ final class PublicEmail implements BaseModel
     public function withBusinessUnitID(string $businessUnitID): self
     {
         $obj = clone $this;
-        $obj['businessUnitId'] = $businessUnitID;
+        $obj['businessUnitID'] = $businessUnitID;
 
         return $obj;
     }
@@ -683,7 +683,7 @@ final class PublicEmail implements BaseModel
     public function withCreatedByID(string $createdByID): self
     {
         $obj = clone $this;
-        $obj['createdById'] = $createdByID;
+        $obj['createdByID'] = $createdByID;
 
         return $obj;
     }
@@ -702,7 +702,7 @@ final class PublicEmail implements BaseModel
     public function withEmailCampaignGroupID(string $emailCampaignGroupID): self
     {
         $obj = clone $this;
-        $obj['emailCampaignGroupId'] = $emailCampaignGroupID;
+        $obj['emailCampaignGroupID'] = $emailCampaignGroupID;
 
         return $obj;
     }
@@ -725,7 +725,7 @@ final class PublicEmail implements BaseModel
     public function withFeedbackSurveyID(string $feedbackSurveyID): self
     {
         $obj = clone $this;
-        $obj['feedbackSurveyId'] = $feedbackSurveyID;
+        $obj['feedbackSurveyID'] = $feedbackSurveyID;
 
         return $obj;
     }
@@ -733,15 +733,15 @@ final class PublicEmail implements BaseModel
     public function withFolderID(int $folderID): self
     {
         $obj = clone $this;
-        $obj['folderId'] = $folderID;
+        $obj['folderID'] = $folderID;
 
         return $obj;
     }
 
-    public function withFolderIDV2(int $folderIDV2): self
+    public function withFolderIdv2(int $folderIDV2): self
     {
         $obj = clone $this;
-        $obj['folderIdV2'] = $folderIDV2;
+        $obj['folderIDV2'] = $folderIDV2;
 
         return $obj;
     }
@@ -825,7 +825,7 @@ final class PublicEmail implements BaseModel
         string $primaryEmailCampaignID
     ): self {
         $obj = clone $this;
-        $obj['primaryEmailCampaignId'] = $primaryEmailCampaignID;
+        $obj['primaryEmailCampaignID'] = $primaryEmailCampaignID;
 
         return $obj;
     }
@@ -869,7 +869,7 @@ final class PublicEmail implements BaseModel
     public function withPublishedByID(string $publishedByID): self
     {
         $obj = clone $this;
-        $obj['publishedById'] = $publishedByID;
+        $obj['publishedByID'] = $publishedByID;
 
         return $obj;
     }
@@ -892,7 +892,7 @@ final class PublicEmail implements BaseModel
      *   blogEmailType?: string|null,
      *   blogImageMaxWidth?: int|null,
      *   blogLayout?: string|null,
-     *   hubspotBlogId?: string|null,
+     *   hubspotBlogID?: string|null,
      *   maxEntries?: int|null,
      *   rssEntryTemplate?: string|null,
      *   timing?: array<string,mixed>|null,
@@ -974,9 +974,9 @@ final class PublicEmail implements BaseModel
      * Data structure representing the subscription fields of the email.
      *
      * @param PublicEmailSubscriptionDetails|array{
-     *   officeLocationId?: string|null,
-     *   preferencesGroupId?: string|null,
-     *   subscriptionId?: string|null,
+     *   officeLocationID?: string|null,
+     *   preferencesGroupID?: string|null,
+     *   subscriptionID?: string|null,
      *   subscriptionName?: string|null,
      * } $subscriptionDetails
      */
@@ -1011,7 +1011,7 @@ final class PublicEmail implements BaseModel
      *   abTestPercentage?: int|null,
      *   hoursToWait?: int|null,
      *   isAbVariation?: bool|null,
-     *   testId?: string|null,
+     *   testID?: string|null,
      * } $testing
      */
     public function withTesting(PublicEmailTestingDetails|array $testing): self
@@ -1026,7 +1026,7 @@ final class PublicEmail implements BaseModel
      * Data structure representing the to fields of the email.
      *
      * @param PublicEmailToDetails|array{
-     *   contactIds?: PublicEmailRecipients|null,
+     *   contactIDs?: PublicEmailRecipients|null,
      *   contactIlsLists?: PublicEmailRecipients|null,
      *   contactLists?: PublicEmailRecipients|null,
      *   limitSendFrequency?: bool|null,
@@ -1079,7 +1079,7 @@ final class PublicEmail implements BaseModel
     public function withUpdatedByID(string $updatedByID): self
     {
         $obj = clone $this;
-        $obj['updatedById'] = $updatedByID;
+        $obj['updatedByID'] = $updatedByID;
 
         return $obj;
     }
@@ -1103,8 +1103,8 @@ final class PublicEmail implements BaseModel
      *   isPageRedirected?: bool|null,
      *   metaDescription?: string|null,
      *   pageExpiryEnabled?: bool|null,
-     *   redirectToPageId?: string|null,
-     *   redirectToUrl?: string|null,
+     *   redirectToPageID?: string|null,
+     *   redirectToURL?: string|null,
      *   slug?: string|null,
      *   title?: string|null,
      *   url?: string|null,

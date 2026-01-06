@@ -7,6 +7,7 @@ namespace HubspotSDK\Services\Crm;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Crm\Limits\AssociationRecordLimitResponse;
 use HubspotSDK\Crm\Limits\CalculatedPropertyLimitResponse;
 use HubspotSDK\Crm\Limits\CollectionResponseAssociationLabelLimitResponseNoPaging;
@@ -33,7 +34,7 @@ final class LimitsService implements LimitsContract
      * Returns limits and usage for custom association labels
      *
      * @param array{
-     *   fromObjectTypeId?: string, toObjectTypeId?: string
+     *   fromObjectTypeID?: string, toObjectTypeID?: string
      * }|LimitGetAssociationLabelLimitsParams $params
      *
      * @throws APIException
@@ -51,7 +52,13 @@ final class LimitsService implements LimitsContract
         $response = $this->client->request(
             method: 'get',
             path: 'crm/v3/limits/associations/labels',
-            query: $parsed,
+            query: Util::array_transform_keys(
+                $parsed,
+                [
+                    'fromObjectTypeID' => 'fromObjectTypeId',
+                    'toObjectTypeID' => 'toObjectTypeId',
+                ],
+            ),
             options: $options,
             convert: CollectionResponseAssociationLabelLimitResponseNoPaging::class,
         );
@@ -65,7 +72,7 @@ final class LimitsService implements LimitsContract
      * Returns records approaching or at association limits between two objects
      *
      * @param array{
-     *   fromObjectTypeId: string
+     *   fromObjectTypeID: string
      * }|LimitGetAssociationRecordsLimitsByObjectTypeParams $params
      *
      * @throws APIException
@@ -79,8 +86,8 @@ final class LimitsService implements LimitsContract
             $params,
             $requestOptions,
         );
-        $fromObjectTypeID = $parsed['fromObjectTypeId'];
-        unset($parsed['fromObjectTypeId']);
+        $fromObjectTypeID = $parsed['fromObjectTypeID'];
+        unset($parsed['fromObjectTypeID']);
 
         /** @var BaseResponse<AssociationRecordLimitResponse> */
         $response = $this->client->request(

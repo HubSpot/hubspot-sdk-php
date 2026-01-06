@@ -19,7 +19,7 @@ use HubspotSDK\Crm\Extensions\Cards\ObjectToken\DataType;
  *   actions: list<ActionHookActionBody|IFrameActionBody>,
  *   title: string,
  *   tokens: list<ObjectToken>,
- *   linkUrl?: string|null,
+ *   linkURL?: string|null,
  * }
  */
 final class IntegratorObjectResult implements BaseModel
@@ -41,8 +41,8 @@ final class IntegratorObjectResult implements BaseModel
     #[Required(list: ObjectToken::class)]
     public array $tokens;
 
-    #[Optional]
-    public ?string $linkUrl;
+    #[Optional('linkUrl')]
+    public ?string $linkURL;
 
     /**
      * `new IntegratorObjectResult()` is missing required properties by the API.
@@ -99,7 +99,7 @@ final class IntegratorObjectResult implements BaseModel
         array $actions,
         string $title,
         array $tokens,
-        ?string $linkUrl = null,
+        ?string $linkURL = null,
     ): self {
         $obj = new self;
 
@@ -108,7 +108,7 @@ final class IntegratorObjectResult implements BaseModel
         $obj['title'] = $title;
         $obj['tokens'] = $tokens;
 
-        null !== $linkUrl && $obj['linkUrl'] = $linkUrl;
+        null !== $linkURL && $obj['linkURL'] = $linkURL;
 
         return $obj;
     }
@@ -173,7 +173,7 @@ final class IntegratorObjectResult implements BaseModel
     public function withLinkURL(string $linkURL): self
     {
         $obj = clone $this;
-        $obj['linkUrl'] = $linkURL;
+        $obj['linkURL'] = $linkURL;
 
         return $obj;
     }

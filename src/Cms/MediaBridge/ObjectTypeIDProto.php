@@ -9,25 +9,25 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-type ObjectTypeIDProtoShape = array{innerId: int, metaTypeId: int}
+ * @phpstan-type ObjectTypeIDProtoShape = array{innerID: int, metaTypeID: int}
  */
 final class ObjectTypeIDProto implements BaseModel
 {
     /** @use SdkModel<ObjectTypeIDProtoShape> */
     use SdkModel;
 
-    #[Required]
-    public int $innerId;
+    #[Required('innerId')]
+    public int $innerID;
 
-    #[Required]
-    public int $metaTypeId;
+    #[Required('metaTypeId')]
+    public int $metaTypeID;
 
     /**
      * `new ObjectTypeIDProto()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * ObjectTypeIDProto::with(innerId: ..., metaTypeId: ...)
+     * ObjectTypeIDProto::with(innerID: ..., metaTypeID: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -46,12 +46,12 @@ final class ObjectTypeIDProto implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(int $innerId, int $metaTypeId): self
+    public static function with(int $innerID, int $metaTypeID): self
     {
         $obj = new self;
 
-        $obj['innerId'] = $innerId;
-        $obj['metaTypeId'] = $metaTypeId;
+        $obj['innerID'] = $innerID;
+        $obj['metaTypeID'] = $metaTypeID;
 
         return $obj;
     }
@@ -59,7 +59,7 @@ final class ObjectTypeIDProto implements BaseModel
     public function withInnerID(int $innerID): self
     {
         $obj = clone $this;
-        $obj['innerId'] = $innerID;
+        $obj['innerID'] = $innerID;
 
         return $obj;
     }
@@ -67,7 +67,7 @@ final class ObjectTypeIDProto implements BaseModel
     public function withMetaTypeID(int $metaTypeID): self
     {
         $obj = clone $this;
-        $obj['metaTypeId'] = $metaTypeID;
+        $obj['metaTypeID'] = $metaTypeID;
 
         return $obj;
     }

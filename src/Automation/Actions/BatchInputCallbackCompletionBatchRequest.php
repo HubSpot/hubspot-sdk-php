@@ -47,7 +47,7 @@ final class BatchInputCallbackCompletionBatchRequest implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<CallbackCompletionBatchRequest|array{
-     *   callbackId: string, outputFields: array<string,string>
+     *   callbackID: string, outputFields: array<string,string>
      * }> $inputs
      */
     public static function with(array $inputs): self
@@ -61,7 +61,7 @@ final class BatchInputCallbackCompletionBatchRequest implements BaseModel
 
     /**
      * @param list<CallbackCompletionBatchRequest|array{
-     *   callbackId: string, outputFields: array<string,string>
+     *   callbackID: string, outputFields: array<string,string>
      * }> $inputs
      */
     public function withInputs(array $inputs): self

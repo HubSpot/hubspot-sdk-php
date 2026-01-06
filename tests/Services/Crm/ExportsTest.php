@@ -39,7 +39,6 @@ final class ExportsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        // Note: createAsync() currently doesn't accept body params due to codegen issue (SDK-3797)
         $result = $this->client->crm->exports->createAsync();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

@@ -130,7 +130,7 @@ final class TemplatesTest extends TestCase
         $result = $this->client->crm->timeline->templates->update(
             'eventTemplateId',
             [
-                'appId' => 0,
+                'appID' => 0,
                 'id' => '1001298',
                 'name' => 'PetSpot Registration',
                 'tokens' => [
@@ -159,7 +159,7 @@ final class TemplatesTest extends TestCase
         $result = $this->client->crm->timeline->templates->update(
             'eventTemplateId',
             [
-                'appId' => 0,
+                'appID' => 0,
                 'id' => '1001298',
                 'name' => 'PetSpot Registration',
                 'tokens' => [
@@ -237,7 +237,7 @@ final class TemplatesTest extends TestCase
 
         $result = $this->client->crm->timeline->templates->delete(
             'eventTemplateId',
-            ['appId' => 0]
+            ['appID' => 0]
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -253,7 +253,7 @@ final class TemplatesTest extends TestCase
 
         $result = $this->client->crm->timeline->templates->delete(
             'eventTemplateId',
-            ['appId' => 0]
+            ['appID' => 0]
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -269,7 +269,7 @@ final class TemplatesTest extends TestCase
 
         $result = $this->client->crm->timeline->templates->get(
             'eventTemplateId',
-            ['appId' => 0]
+            ['appID' => 0]
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -285,7 +285,7 @@ final class TemplatesTest extends TestCase
 
         $result = $this->client->crm->timeline->templates->get(
             'eventTemplateId',
-            ['appId' => 0]
+            ['appID' => 0]
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

@@ -81,7 +81,7 @@ final class ImportResult implements BaseModel
      *
      * @param list<APIError|array{
      *   category: string,
-     *   correlationId: string,
+     *   correlationID: string,
      *   message: string,
      *   context?: array<string,list<string>>|null,
      *   errors?: list<ErrorDetail>|null,
@@ -121,7 +121,7 @@ final class ImportResult implements BaseModel
      *
      * @param list<APIError|array{
      *   category: string,
-     *   correlationId: string,
+     *   correlationID: string,
      *   message: string,
      *   context?: array<string,list<string>>|null,
      *   errors?: list<ErrorDetail>|null,

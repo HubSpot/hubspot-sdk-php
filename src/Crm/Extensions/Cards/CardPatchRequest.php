@@ -58,13 +58,13 @@ final class CardPatchRequest implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param CardActions|array{baseUrls: list<string>} $actions
+     * @param CardActions|array{baseURLs: list<string>} $actions
      * @param CardDisplayBody|array{properties: list<CardDisplayProperty>} $display
      * @param CardFetchBodyPatch|array{
      *   objectTypes: list<CardObjectTypeBody>,
      *   cardType?: value-of<CardType>|null,
      *   serverlessFunction?: string|null,
-     *   targetUrl?: string|null,
+     *   targetURL?: string|null,
      * } $fetch
      */
     public static function with(
@@ -86,7 +86,7 @@ final class CardPatchRequest implements BaseModel
     /**
      * Configuration for custom user actions on cards.
      *
-     * @param CardActions|array{baseUrls: list<string>} $actions
+     * @param CardActions|array{baseURLs: list<string>} $actions
      */
     public function withActions(CardActions|array $actions): self
     {
@@ -116,7 +116,7 @@ final class CardPatchRequest implements BaseModel
      *   objectTypes: list<CardObjectTypeBody>,
      *   cardType?: value-of<CardType>|null,
      *   serverlessFunction?: string|null,
-     *   targetUrl?: string|null,
+     *   targetURL?: string|null,
      * } $fetch
      */
     public function withFetch(CardFetchBodyPatch|array $fetch): self

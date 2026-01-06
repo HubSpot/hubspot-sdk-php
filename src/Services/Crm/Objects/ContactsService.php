@@ -178,7 +178,7 @@ final class ContactsService implements ContactsContract
      * Permanently delete a contact and all associated content to follow GDPR. Use optional property `idProperty` set to `email` to identify contact by email address. If email address is not found, the email address will be added to a blocklist and prevent it from being used in the future. Learn more about [permanently deleting contacts](https://knowledge.hubspot.com/privacy-and-consent/how-do-i-perform-a-gdpr-delete-in-hubspot).
      *
      * @param array{
-     *   objectId: string, idProperty?: string
+     *   objectID: string, idProperty?: string
      * }|ContactGdprDeleteParams $params
      *
      * @throws APIException
@@ -247,7 +247,7 @@ final class ContactsService implements ContactsContract
      * Merge two contact records. Learn more about [merging records](https://knowledge.hubspot.com/records/merge-records).
      *
      * @param array{
-     *   objectIdToMerge: string, primaryObjectId: string
+     *   objectIDToMerge: string, primaryObjectID: string
      * }|ContactMergeParams $params
      *
      * @throws APIException

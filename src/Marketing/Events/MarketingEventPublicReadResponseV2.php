@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   createdAt: \DateTimeInterface,
  *   customProperties: list<CrmPropertyWrapper>,
  *   eventName: string,
- *   objectId: string,
+ *   objectID: string,
  *   updatedAt: \DateTimeInterface,
  *   appInfo?: AppInfo|null,
  *   attendees?: int|null,
@@ -26,8 +26,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   eventOrganizer?: string|null,
  *   eventStatus?: string|null,
  *   eventType?: string|null,
- *   eventUrl?: string|null,
- *   externalEventId?: string|null,
+ *   eventURL?: string|null,
+ *   externalEventID?: string|null,
  *   noShows?: int|null,
  *   registrants?: int|null,
  *   startDateTime?: \DateTimeInterface|null,
@@ -48,8 +48,8 @@ final class MarketingEventPublicReadResponseV2 implements BaseModel
     #[Required]
     public string $eventName;
 
-    #[Required]
-    public string $objectId;
+    #[Required('objectId')]
+    public string $objectID;
 
     #[Required]
     public \DateTimeInterface $updatedAt;
@@ -84,11 +84,11 @@ final class MarketingEventPublicReadResponseV2 implements BaseModel
     #[Optional]
     public ?string $eventType;
 
-    #[Optional]
-    public ?string $eventUrl;
+    #[Optional('eventUrl')]
+    public ?string $eventURL;
 
-    #[Optional]
-    public ?string $externalEventId;
+    #[Optional('externalEventId')]
+    public ?string $externalEventID;
 
     #[Optional]
     public ?int $noShows;
@@ -108,7 +108,7 @@ final class MarketingEventPublicReadResponseV2 implements BaseModel
      *   createdAt: ...,
      *   customProperties: ...,
      *   eventName: ...,
-     *   objectId: ...,
+     *   objectID: ...,
      *   updatedAt: ...,
      * )
      * ```
@@ -143,7 +143,7 @@ final class MarketingEventPublicReadResponseV2 implements BaseModel
         \DateTimeInterface $createdAt,
         array $customProperties,
         string $eventName,
-        string $objectId,
+        string $objectID,
         \DateTimeInterface $updatedAt,
         AppInfo|array|null $appInfo = null,
         ?int $attendees = null,
@@ -155,8 +155,8 @@ final class MarketingEventPublicReadResponseV2 implements BaseModel
         ?string $eventOrganizer = null,
         ?string $eventStatus = null,
         ?string $eventType = null,
-        ?string $eventUrl = null,
-        ?string $externalEventId = null,
+        ?string $eventURL = null,
+        ?string $externalEventID = null,
         ?int $noShows = null,
         ?int $registrants = null,
         ?\DateTimeInterface $startDateTime = null,
@@ -166,7 +166,7 @@ final class MarketingEventPublicReadResponseV2 implements BaseModel
         $obj['createdAt'] = $createdAt;
         $obj['customProperties'] = $customProperties;
         $obj['eventName'] = $eventName;
-        $obj['objectId'] = $objectId;
+        $obj['objectID'] = $objectID;
         $obj['updatedAt'] = $updatedAt;
 
         null !== $appInfo && $obj['appInfo'] = $appInfo;
@@ -179,8 +179,8 @@ final class MarketingEventPublicReadResponseV2 implements BaseModel
         null !== $eventOrganizer && $obj['eventOrganizer'] = $eventOrganizer;
         null !== $eventStatus && $obj['eventStatus'] = $eventStatus;
         null !== $eventType && $obj['eventType'] = $eventType;
-        null !== $eventUrl && $obj['eventUrl'] = $eventUrl;
-        null !== $externalEventId && $obj['externalEventId'] = $externalEventId;
+        null !== $eventURL && $obj['eventURL'] = $eventURL;
+        null !== $externalEventID && $obj['externalEventID'] = $externalEventID;
         null !== $noShows && $obj['noShows'] = $noShows;
         null !== $registrants && $obj['registrants'] = $registrants;
         null !== $startDateTime && $obj['startDateTime'] = $startDateTime;
@@ -220,7 +220,7 @@ final class MarketingEventPublicReadResponseV2 implements BaseModel
     public function withObjectID(string $objectID): self
     {
         $obj = clone $this;
-        $obj['objectId'] = $objectID;
+        $obj['objectID'] = $objectID;
 
         return $obj;
     }
@@ -319,7 +319,7 @@ final class MarketingEventPublicReadResponseV2 implements BaseModel
     public function withEventURL(string $eventURL): self
     {
         $obj = clone $this;
-        $obj['eventUrl'] = $eventURL;
+        $obj['eventURL'] = $eventURL;
 
         return $obj;
     }
@@ -327,7 +327,7 @@ final class MarketingEventPublicReadResponseV2 implements BaseModel
     public function withExternalEventID(string $externalEventID): self
     {
         $obj = clone $this;
-        $obj['externalEventId'] = $externalEventID;
+        $obj['externalEventID'] = $externalEventID;
 
         return $obj;
     }

@@ -125,7 +125,7 @@ final class ActionResponseWithResultsSubscriptionDefinition implements BaseModel
      *   isInternal: bool,
      *   name: string,
      *   updatedAt: \DateTimeInterface,
-     *   businessUnitId?: int|null,
+     *   businessUnitID?: int|null,
      *   communicationMethod?: string|null,
      *   purpose?: string|null,
      * }> $results
@@ -190,7 +190,7 @@ final class ActionResponseWithResultsSubscriptionDefinition implements BaseModel
      *   isInternal: bool,
      *   name: string,
      *   updatedAt: \DateTimeInterface,
-     *   businessUnitId?: int|null,
+     *   businessUnitID?: int|null,
      *   communicationMethod?: string|null,
      *   purpose?: string|null,
      * }> $results

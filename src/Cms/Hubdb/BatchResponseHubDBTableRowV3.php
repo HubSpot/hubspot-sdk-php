@@ -95,7 +95,7 @@ final class BatchResponseHubDBTableRowV3 implements BaseModel
      *
      * @param list<HubDBTableRowV3|array{
      *   id: string,
-     *   childTableId: string,
+     *   childTableID: string,
      *   createdAt: \DateTimeInterface,
      *   name: string,
      *   path: string,
@@ -141,7 +141,7 @@ final class BatchResponseHubDBTableRowV3 implements BaseModel
     /**
      * @param list<HubDBTableRowV3|array{
      *   id: string,
-     *   childTableId: string,
+     *   childTableID: string,
      *   createdAt: \DateTimeInterface,
      *   name: string,
      *   path: string,

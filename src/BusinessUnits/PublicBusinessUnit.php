@@ -64,7 +64,7 @@ final class PublicBusinessUnit implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param PublicBusinessUnitLogoMetadata|array{
-     *   logoAltText?: string|null, logoUrl?: string|null, resizedUrl?: string|null
+     *   logoAltText?: string|null, logoURL?: string|null, resizedURL?: string|null
      * } $logoMetadata
      */
     public static function with(
@@ -108,7 +108,7 @@ final class PublicBusinessUnit implements BaseModel
      * A Business Unit's logo metadata.
      *
      * @param PublicBusinessUnitLogoMetadata|array{
-     *   logoAltText?: string|null, logoUrl?: string|null, resizedUrl?: string|null
+     *   logoAltText?: string|null, logoURL?: string|null, resizedURL?: string|null
      * } $logoMetadata
      */
     public function withLogoMetadata(

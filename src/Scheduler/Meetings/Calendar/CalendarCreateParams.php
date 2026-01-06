@@ -19,7 +19,7 @@ use HubspotSDK\Scheduler\Meetings\ExternalReminder;
  * @see HubspotSDK\Services\Scheduler\Meetings\CalendarService::create()
  *
  * @phpstan-type CalendarCreateParamsShape = array{
- *   organizerUserId: string,
+ *   organizerUserID: string,
  *   associations: list<ExternalAssociationCreateRequest|array{
  *     to: PublicObjectID, types: list<AssociationSpec>
  *   }>,
@@ -27,19 +27,19 @@ use HubspotSDK\Scheduler\Meetings\ExternalReminder;
  *     reminders: list<ExternalReminder>, shouldIncludeInviteDescription: bool
  *   },
  *   properties: ExternalCalendarMeetingEventCreateProperties|array{
- *     hs_meeting_end_time: \DateTimeInterface,
- *     hs_meeting_outcome: string,
- *     hs_meeting_start_time: \DateTimeInterface,
- *     hs_meeting_title: string,
- *     hs_timestamp: \DateTimeInterface,
- *     hubspot_owner_id: string,
- *     hs_activity_type?: string|null,
- *     hs_attachment_ids?: list<string>|null,
- *     hs_attendee_owner_ids?: list<string>|null,
- *     hs_internal_meeting_notes?: string|null,
- *     hs_meeting_body?: string|null,
- *     hs_meeting_location?: string|null,
- *     hs_meeting_location_type?: string|null,
+ *     hsMeetingEndTime: \DateTimeInterface,
+ *     hsMeetingOutcome: string,
+ *     hsMeetingStartTime: \DateTimeInterface,
+ *     hsMeetingTitle: string,
+ *     hsTimestamp: \DateTimeInterface,
+ *     hubspotOwnerID: string,
+ *     hsActivityType?: string|null,
+ *     hsAttachmentIDs?: list<string>|null,
+ *     hsAttendeeOwnerIDs?: list<string>|null,
+ *     hsInternalMeetingNotes?: string|null,
+ *     hsMeetingBody?: string|null,
+ *     hsMeetingLocation?: string|null,
+ *     hsMeetingLocationType?: string|null,
  *   },
  *   timezone: string,
  * }
@@ -51,7 +51,7 @@ final class CalendarCreateParams implements BaseModel
     use SdkParams;
 
     #[Required]
-    public string $organizerUserId;
+    public string $organizerUserID;
 
     /** @var list<ExternalAssociationCreateRequest> $associations */
     #[Required(list: ExternalAssociationCreateRequest::class)]
@@ -72,7 +72,7 @@ final class CalendarCreateParams implements BaseModel
      * To enforce required parameters use
      * ```
      * CalendarCreateParams::with(
-     *   organizerUserId: ...,
+     *   organizerUserID: ...,
      *   associations: ...,
      *   emailReminderSchedule: ...,
      *   properties: ...,
@@ -108,23 +108,23 @@ final class CalendarCreateParams implements BaseModel
      *   reminders: list<ExternalReminder>, shouldIncludeInviteDescription: bool
      * } $emailReminderSchedule
      * @param ExternalCalendarMeetingEventCreateProperties|array{
-     *   hs_meeting_end_time: \DateTimeInterface,
-     *   hs_meeting_outcome: string,
-     *   hs_meeting_start_time: \DateTimeInterface,
-     *   hs_meeting_title: string,
-     *   hs_timestamp: \DateTimeInterface,
-     *   hubspot_owner_id: string,
-     *   hs_activity_type?: string|null,
-     *   hs_attachment_ids?: list<string>|null,
-     *   hs_attendee_owner_ids?: list<string>|null,
-     *   hs_internal_meeting_notes?: string|null,
-     *   hs_meeting_body?: string|null,
-     *   hs_meeting_location?: string|null,
-     *   hs_meeting_location_type?: string|null,
+     *   hsMeetingEndTime: \DateTimeInterface,
+     *   hsMeetingOutcome: string,
+     *   hsMeetingStartTime: \DateTimeInterface,
+     *   hsMeetingTitle: string,
+     *   hsTimestamp: \DateTimeInterface,
+     *   hubspotOwnerID: string,
+     *   hsActivityType?: string|null,
+     *   hsAttachmentIDs?: list<string>|null,
+     *   hsAttendeeOwnerIDs?: list<string>|null,
+     *   hsInternalMeetingNotes?: string|null,
+     *   hsMeetingBody?: string|null,
+     *   hsMeetingLocation?: string|null,
+     *   hsMeetingLocationType?: string|null,
      * } $properties
      */
     public static function with(
-        string $organizerUserId,
+        string $organizerUserID,
         array $associations,
         ExternalEmailReminderSchedule|array $emailReminderSchedule,
         ExternalCalendarMeetingEventCreateProperties|array $properties,
@@ -132,7 +132,7 @@ final class CalendarCreateParams implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj['organizerUserId'] = $organizerUserId;
+        $obj['organizerUserID'] = $organizerUserID;
         $obj['associations'] = $associations;
         $obj['emailReminderSchedule'] = $emailReminderSchedule;
         $obj['properties'] = $properties;
@@ -144,7 +144,7 @@ final class CalendarCreateParams implements BaseModel
     public function withOrganizerUserID(string $organizerUserID): self
     {
         $obj = clone $this;
-        $obj['organizerUserId'] = $organizerUserID;
+        $obj['organizerUserID'] = $organizerUserID;
 
         return $obj;
     }
@@ -178,19 +178,19 @@ final class CalendarCreateParams implements BaseModel
 
     /**
      * @param ExternalCalendarMeetingEventCreateProperties|array{
-     *   hs_meeting_end_time: \DateTimeInterface,
-     *   hs_meeting_outcome: string,
-     *   hs_meeting_start_time: \DateTimeInterface,
-     *   hs_meeting_title: string,
-     *   hs_timestamp: \DateTimeInterface,
-     *   hubspot_owner_id: string,
-     *   hs_activity_type?: string|null,
-     *   hs_attachment_ids?: list<string>|null,
-     *   hs_attendee_owner_ids?: list<string>|null,
-     *   hs_internal_meeting_notes?: string|null,
-     *   hs_meeting_body?: string|null,
-     *   hs_meeting_location?: string|null,
-     *   hs_meeting_location_type?: string|null,
+     *   hsMeetingEndTime: \DateTimeInterface,
+     *   hsMeetingOutcome: string,
+     *   hsMeetingStartTime: \DateTimeInterface,
+     *   hsMeetingTitle: string,
+     *   hsTimestamp: \DateTimeInterface,
+     *   hubspotOwnerID: string,
+     *   hsActivityType?: string|null,
+     *   hsAttachmentIDs?: list<string>|null,
+     *   hsAttendeeOwnerIDs?: list<string>|null,
+     *   hsInternalMeetingNotes?: string|null,
+     *   hsMeetingBody?: string|null,
+     *   hsMeetingLocation?: string|null,
+     *   hsMeetingLocationType?: string|null,
      * } $properties
      */
     public function withProperties(

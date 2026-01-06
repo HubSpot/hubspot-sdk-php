@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type PublicActionDefinitionEggShape = array{
- *   actionUrl: string,
+ *   actionURL: string,
  *   functions: list<PublicActionFunction>,
  *   inputFields: list<InputFieldDefinition>,
  *   labels: array<string,PublicActionLabels>,
@@ -33,8 +33,8 @@ final class PublicActionDefinitionEgg implements BaseModel
     /** @use SdkModel<PublicActionDefinitionEggShape> */
     use SdkModel;
 
-    #[Required]
-    public string $actionUrl;
+    #[Required('actionUrl')]
+    public string $actionURL;
 
     /** @var list<PublicActionFunction> $functions */
     #[Required(list: PublicActionFunction::class)]
@@ -81,7 +81,7 @@ final class PublicActionDefinitionEgg implements BaseModel
      * To enforce required parameters use
      * ```
      * PublicActionDefinitionEgg::with(
-     *   actionUrl: ...,
+     *   actionURL: ...,
      *   functions: ...,
      *   inputFields: ...,
      *   labels: ...,
@@ -154,7 +154,7 @@ final class PublicActionDefinitionEgg implements BaseModel
      * }> $outputFields
      */
     public static function with(
-        string $actionUrl,
+        string $actionURL,
         array $functions,
         array $inputFields,
         array $labels,
@@ -168,7 +168,7 @@ final class PublicActionDefinitionEgg implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj['actionUrl'] = $actionUrl;
+        $obj['actionURL'] = $actionURL;
         $obj['functions'] = $functions;
         $obj['inputFields'] = $inputFields;
         $obj['labels'] = $labels;
@@ -187,7 +187,7 @@ final class PublicActionDefinitionEgg implements BaseModel
     public function withActionURL(string $actionURL): self
     {
         $obj = clone $this;
-        $obj['actionUrl'] = $actionURL;
+        $obj['actionURL'] = $actionURL;
 
         return $obj;
     }

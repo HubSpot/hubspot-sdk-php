@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type CallbackCompletionBatchRequestShape = array{
- *   callbackId: string, outputFields: array<string,string>
+ *   callbackID: string, outputFields: array<string,string>
  * }
  */
 final class CallbackCompletionBatchRequest implements BaseModel
@@ -18,8 +18,8 @@ final class CallbackCompletionBatchRequest implements BaseModel
     /** @use SdkModel<CallbackCompletionBatchRequestShape> */
     use SdkModel;
 
-    #[Required]
-    public string $callbackId;
+    #[Required('callbackId')]
+    public string $callbackID;
 
     /** @var array<string,string> $outputFields */
     #[Required(map: 'string')]
@@ -30,7 +30,7 @@ final class CallbackCompletionBatchRequest implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * CallbackCompletionBatchRequest::with(callbackId: ..., outputFields: ...)
+     * CallbackCompletionBatchRequest::with(callbackID: ..., outputFields: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -51,11 +51,11 @@ final class CallbackCompletionBatchRequest implements BaseModel
      *
      * @param array<string,string> $outputFields
      */
-    public static function with(string $callbackId, array $outputFields): self
+    public static function with(string $callbackID, array $outputFields): self
     {
         $obj = new self;
 
-        $obj['callbackId'] = $callbackId;
+        $obj['callbackID'] = $callbackID;
         $obj['outputFields'] = $outputFields;
 
         return $obj;
@@ -64,7 +64,7 @@ final class CallbackCompletionBatchRequest implements BaseModel
     public function withCallbackID(string $callbackID): self
     {
         $obj = clone $this;
-        $obj['callbackId'] = $callbackID;
+        $obj['callbackID'] = $callbackID;
 
         return $obj;
     }

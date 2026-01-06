@@ -15,8 +15,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Marketing\EventsService::upsertSubscriberStateByEmail()
  *
  * @phpstan-type EventUpsertSubscriberStateByEmailParamsShape = array{
- *   externalEventId: string,
- *   externalAccountId: string,
+ *   externalEventID: string,
+ *   externalAccountID: string,
  *   inputs: list<MarketingEventEmailSubscriber|array{
  *     contactProperties: array<string,string>,
  *     email: string,
@@ -32,13 +32,13 @@ final class EventUpsertSubscriberStateByEmailParams implements BaseModel
     use SdkParams;
 
     #[Required]
-    public string $externalEventId;
+    public string $externalEventID;
 
     /**
      * The accountId that is associated with this marketing event in the external event application.
      */
     #[Required]
-    public string $externalAccountId;
+    public string $externalAccountID;
 
     /**
      * List of marketing event details to create or update.
@@ -54,7 +54,7 @@ final class EventUpsertSubscriberStateByEmailParams implements BaseModel
      * To enforce required parameters use
      * ```
      * EventUpsertSubscriberStateByEmailParams::with(
-     *   externalEventId: ..., externalAccountId: ..., inputs: ...
+     *   externalEventID: ..., externalAccountID: ..., inputs: ...
      * )
      * ```
      *
@@ -85,14 +85,14 @@ final class EventUpsertSubscriberStateByEmailParams implements BaseModel
      * }> $inputs
      */
     public static function with(
-        string $externalEventId,
-        string $externalAccountId,
+        string $externalEventID,
+        string $externalAccountID,
         array $inputs
     ): self {
         $obj = new self;
 
-        $obj['externalEventId'] = $externalEventId;
-        $obj['externalAccountId'] = $externalAccountId;
+        $obj['externalEventID'] = $externalEventID;
+        $obj['externalAccountID'] = $externalAccountID;
         $obj['inputs'] = $inputs;
 
         return $obj;
@@ -101,7 +101,7 @@ final class EventUpsertSubscriberStateByEmailParams implements BaseModel
     public function withExternalEventID(string $externalEventID): self
     {
         $obj = clone $this;
-        $obj['externalEventId'] = $externalEventID;
+        $obj['externalEventID'] = $externalEventID;
 
         return $obj;
     }
@@ -112,7 +112,7 @@ final class EventUpsertSubscriberStateByEmailParams implements BaseModel
     public function withExternalAccountID(string $externalAccountID): self
     {
         $obj = clone $this;
-        $obj['externalAccountId'] = $externalAccountID;
+        $obj['externalAccountID'] = $externalAccountID;
 
         return $obj;
     }

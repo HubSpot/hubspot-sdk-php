@@ -27,7 +27,7 @@ use HubspotSDK\Marketing\Events\PropertyValue\Source;
  *   invalidValueToDisplay?: string|null,
  *   knownColumnNumber?: int|null,
  *   objectType?: value-of<ObjectType>|null,
- *   objectTypeId?: string|null,
+ *   objectTypeID?: string|null,
  * }
  */
 final class PublicImportError implements BaseModel
@@ -73,8 +73,8 @@ final class PublicImportError implements BaseModel
     #[Optional(enum: ObjectType::class)]
     public ?string $objectType;
 
-    #[Optional]
-    public ?string $objectTypeId;
+    #[Optional('objectTypeId')]
+    public ?string $objectTypeID;
 
     /**
      * `new PublicImportError()` is missing required properties by the API.
@@ -109,7 +109,7 @@ final class PublicImportError implements BaseModel
      * @param ErrorType|value-of<ErrorType> $errorType
      * @param ImportRowCore|array{
      *   containsEncryptedProperties: bool,
-     *   fileId: int,
+     *   fileID: int,
      *   lineNumber: int,
      *   rowData: list<string>,
      *   pageName?: string|null,
@@ -120,18 +120,18 @@ final class PublicImportError implements BaseModel
      *   isLargeValue: bool,
      *   name: string,
      *   persistenceTimestamp: int,
-     *   requestId: string,
+     *   requestID: string,
      *   selectedByUser: bool,
      *   selectedByUserTimestamp: int,
      *   source: value-of<Source>,
-     *   sourceId: string,
+     *   sourceID: string,
      *   sourceLabel: string,
      *   sourceMetadata: string,
      *   sourceUpstreamDeployable: string,
      *   sourceVid: list<int>,
      *   timestamp: int,
      *   unit: string,
-     *   updatedByUserId: int,
+     *   updatedByUserID: int,
      *   useTimestampAsPersistenceTimestamp: bool,
      *   value: string,
      * } $invalidPropertyValue
@@ -149,7 +149,7 @@ final class PublicImportError implements BaseModel
         ?string $invalidValueToDisplay = null,
         ?int $knownColumnNumber = null,
         ObjectType|string|null $objectType = null,
-        ?string $objectTypeId = null,
+        ?string $objectTypeID = null,
     ): self {
         $obj = new self;
 
@@ -165,7 +165,7 @@ final class PublicImportError implements BaseModel
         null !== $invalidValueToDisplay && $obj['invalidValueToDisplay'] = $invalidValueToDisplay;
         null !== $knownColumnNumber && $obj['knownColumnNumber'] = $knownColumnNumber;
         null !== $objectType && $obj['objectType'] = $objectType;
-        null !== $objectTypeId && $obj['objectTypeId'] = $objectTypeId;
+        null !== $objectTypeID && $obj['objectTypeID'] = $objectTypeID;
 
         return $obj;
     }
@@ -200,7 +200,7 @@ final class PublicImportError implements BaseModel
     /**
      * @param ImportRowCore|array{
      *   containsEncryptedProperties: bool,
-     *   fileId: int,
+     *   fileID: int,
      *   lineNumber: int,
      *   rowData: list<string>,
      *   pageName?: string|null,
@@ -239,18 +239,18 @@ final class PublicImportError implements BaseModel
      *   isLargeValue: bool,
      *   name: string,
      *   persistenceTimestamp: int,
-     *   requestId: string,
+     *   requestID: string,
      *   selectedByUser: bool,
      *   selectedByUserTimestamp: int,
      *   source: value-of<Source>,
-     *   sourceId: string,
+     *   sourceID: string,
      *   sourceLabel: string,
      *   sourceMetadata: string,
      *   sourceUpstreamDeployable: string,
      *   sourceVid: list<int>,
      *   timestamp: int,
      *   unit: string,
-     *   updatedByUserId: int,
+     *   updatedByUserID: int,
      *   useTimestampAsPersistenceTimestamp: bool,
      *   value: string,
      * } $invalidPropertyValue
@@ -303,7 +303,7 @@ final class PublicImportError implements BaseModel
     public function withObjectTypeID(string $objectTypeID): self
     {
         $obj = clone $this;
-        $obj['objectTypeId'] = $objectTypeID;
+        $obj['objectTypeID'] = $objectTypeID;
 
         return $obj;
     }

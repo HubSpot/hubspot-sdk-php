@@ -27,8 +27,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Automation\Actions\DefinitionsService::update()
  *
  * @phpstan-type DefinitionUpdateParamsShape = array{
- *   appId: int,
- *   actionUrl?: string,
+ *   appID: int,
+ *   actionURL?: string,
  *   executionRules?: list<PublicExecutionTranslationRule|array{
  *     conditions: array<string,mixed>, labelName: string
  *   }>,
@@ -76,10 +76,10 @@ final class DefinitionUpdateParams implements BaseModel
     use SdkParams;
 
     #[Required]
-    public int $appId;
+    public int $appID;
 
-    #[Optional]
-    public ?string $actionUrl;
+    #[Optional('actionUrl')]
+    public ?string $actionURL;
 
     /** @var list<PublicExecutionTranslationRule>|null $executionRules */
     #[Optional(list: PublicExecutionTranslationRule::class)]
@@ -118,7 +118,7 @@ final class DefinitionUpdateParams implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * DefinitionUpdateParams::with(appId: ...)
+     * DefinitionUpdateParams::with(appID: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -176,8 +176,8 @@ final class DefinitionUpdateParams implements BaseModel
      * }> $outputFields
      */
     public static function with(
-        int $appId,
-        ?string $actionUrl = null,
+        int $appID,
+        ?string $actionURL = null,
         ?array $executionRules = null,
         ?array $inputFieldDependencies = null,
         ?array $inputFields = null,
@@ -189,9 +189,9 @@ final class DefinitionUpdateParams implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj['appId'] = $appId;
+        $obj['appID'] = $appID;
 
-        null !== $actionUrl && $obj['actionUrl'] = $actionUrl;
+        null !== $actionURL && $obj['actionURL'] = $actionURL;
         null !== $executionRules && $obj['executionRules'] = $executionRules;
         null !== $inputFieldDependencies && $obj['inputFieldDependencies'] = $inputFieldDependencies;
         null !== $inputFields && $obj['inputFields'] = $inputFields;
@@ -207,7 +207,7 @@ final class DefinitionUpdateParams implements BaseModel
     public function withAppID(int $appID): self
     {
         $obj = clone $this;
-        $obj['appId'] = $appID;
+        $obj['appID'] = $appID;
 
         return $obj;
     }
@@ -215,7 +215,7 @@ final class DefinitionUpdateParams implements BaseModel
     public function withActionURL(string $actionURL): self
     {
         $obj = clone $this;
-        $obj['actionUrl'] = $actionURL;
+        $obj['actionURL'] = $actionURL;
 
         return $obj;
     }

@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Cms\Pages\LandingPagesService::restoreFolderRevision()
  *
  * @phpstan-type LandingPageRestoreFolderRevisionParamsShape = array{
- *   objectId: string
+ *   objectID: string
  * }
  */
 final class LandingPageRestoreFolderRevisionParams implements BaseModel
@@ -25,14 +25,14 @@ final class LandingPageRestoreFolderRevisionParams implements BaseModel
     use SdkParams;
 
     #[Required]
-    public string $objectId;
+    public string $objectID;
 
     /**
      * `new LandingPageRestoreFolderRevisionParams()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * LandingPageRestoreFolderRevisionParams::with(objectId: ...)
+     * LandingPageRestoreFolderRevisionParams::with(objectID: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -51,11 +51,11 @@ final class LandingPageRestoreFolderRevisionParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(string $objectId): self
+    public static function with(string $objectID): self
     {
         $obj = new self;
 
-        $obj['objectId'] = $objectId;
+        $obj['objectID'] = $objectID;
 
         return $obj;
     }
@@ -63,7 +63,7 @@ final class LandingPageRestoreFolderRevisionParams implements BaseModel
     public function withObjectID(string $objectID): self
     {
         $obj = clone $this;
-        $obj['objectId'] = $objectID;
+        $obj['objectID'] = $objectID;
 
         return $obj;
     }

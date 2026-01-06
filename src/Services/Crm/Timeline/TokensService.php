@@ -29,7 +29,7 @@ final class TokensService implements TokensContract
      * Update an existing event type template with new tokens.
      *
      * @param array{
-     *   appId: int,
+     *   appID: int,
      *   label: string,
      *   name: string,
      *   type: 'date'|'enumeration'|'number'|'string'|Type,
@@ -52,8 +52,8 @@ final class TokensService implements TokensContract
             $params,
             $requestOptions,
         );
-        $appID = $parsed['appId'];
-        unset($parsed['appId']);
+        $appID = $parsed['appID'];
+        unset($parsed['appID']);
 
         /** @var BaseResponse<TimelineEventTemplateToken> */
         $response = $this->client->request(
@@ -63,7 +63,7 @@ final class TokensService implements TokensContract
                 $appID,
                 $eventTemplateID,
             ],
-            body: (object) array_diff_key($parsed, ['appId']),
+            body: (object) array_diff_key($parsed, ['appID']),
             options: $options,
             convert: TimelineEventTemplateToken::class,
         );
@@ -77,8 +77,8 @@ final class TokensService implements TokensContract
      * Update an event type template token, specified by token name.
      *
      * @param array{
-     *   appId: int,
-     *   eventTemplateId: string,
+     *   appID: int,
+     *   eventTemplateID: string,
      *   label: string,
      *   objectPropertyName?: string,
      *   options?: list<array{
@@ -97,10 +97,10 @@ final class TokensService implements TokensContract
             $params,
             $requestOptions,
         );
-        $appID = $parsed['appId'];
-        unset($parsed['appId']);
-        $eventTemplateID = $parsed['eventTemplateId'];
-        unset($parsed['eventTemplateId']);
+        $appID = $parsed['appID'];
+        unset($parsed['appID']);
+        $eventTemplateID = $parsed['eventTemplateID'];
+        unset($parsed['eventTemplateID']);
 
         /** @var BaseResponse<TimelineEventTemplateToken> */
         $response = $this->client->request(
@@ -113,7 +113,7 @@ final class TokensService implements TokensContract
             ],
             body: (object) array_diff_key(
                 $parsed,
-                array_flip(['appId', 'eventTemplateId'])
+                array_flip(['appID', 'eventTemplateID'])
             ),
             options: $options,
             convert: TimelineEventTemplateToken::class,
@@ -127,7 +127,7 @@ final class TokensService implements TokensContract
      *
      * Delete an existing token from a specific event type template.
      *
-     * @param array{appId: int, eventTemplateId: string}|TokenDeleteParams $params
+     * @param array{appID: int, eventTemplateID: string}|TokenDeleteParams $params
      *
      * @throws APIException
      */
@@ -140,10 +140,10 @@ final class TokensService implements TokensContract
             $params,
             $requestOptions,
         );
-        $appID = $parsed['appId'];
-        unset($parsed['appId']);
-        $eventTemplateID = $parsed['eventTemplateId'];
-        unset($parsed['eventTemplateId']);
+        $appID = $parsed['appID'];
+        unset($parsed['appID']);
+        $eventTemplateID = $parsed['eventTemplateID'];
+        unset($parsed['eventTemplateID']);
 
         /** @var BaseResponse<mixed> */
         $response = $this->client->request(

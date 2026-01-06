@@ -18,7 +18,7 @@ use HubspotSDK\StandardError;
  *   completedAt: \DateTimeInterface,
  *   startedAt: \DateTimeInterface,
  *   status: value-of<Status>,
- *   taskId: string,
+ *   taskID: string,
  *   errors?: list<StandardError>|null,
  *   links?: array<string,string>|null,
  *   numErrors?: int|null,
@@ -54,8 +54,8 @@ final class FileActionResponse implements BaseModel
     /**
      * ID of the requested task.
      */
-    #[Required]
-    public string $taskId;
+    #[Required('taskId')]
+    public string $taskID;
 
     /**
      * Descriptive error messages.
@@ -97,7 +97,7 @@ final class FileActionResponse implements BaseModel
      * To enforce required parameters use
      * ```
      * FileActionResponse::with(
-     *   completedAt: ..., startedAt: ..., status: ..., taskId: ...
+     *   completedAt: ..., startedAt: ..., status: ..., taskID: ...
      * )
      * ```
      *
@@ -140,7 +140,7 @@ final class FileActionResponse implements BaseModel
      *   createdAt: \DateTimeInterface,
      *   updatedAt: \DateTimeInterface,
      *   archivedAt?: \DateTimeInterface|null,
-     *   defaultHostingUrl?: string|null,
+     *   defaultHostingURL?: string|null,
      *   encoding?: string|null,
      *   expiresAt?: int|null,
      *   extension?: string|null,
@@ -148,7 +148,7 @@ final class FileActionResponse implements BaseModel
      *   height?: int|null,
      *   isUsableInContent?: bool|null,
      *   name?: string|null,
-     *   parentFolderId?: string|null,
+     *   parentFolderID?: string|null,
      *   path?: string|null,
      *   size?: int|null,
      *   sourceGroup?: string|null,
@@ -161,7 +161,7 @@ final class FileActionResponse implements BaseModel
         \DateTimeInterface $completedAt,
         \DateTimeInterface $startedAt,
         Status|string $status,
-        string $taskId,
+        string $taskID,
         ?array $errors = null,
         ?array $links = null,
         ?int $numErrors = null,
@@ -173,7 +173,7 @@ final class FileActionResponse implements BaseModel
         $obj['completedAt'] = $completedAt;
         $obj['startedAt'] = $startedAt;
         $obj['status'] = $status;
-        $obj['taskId'] = $taskId;
+        $obj['taskID'] = $taskID;
 
         null !== $errors && $obj['errors'] = $errors;
         null !== $links && $obj['links'] = $links;
@@ -225,7 +225,7 @@ final class FileActionResponse implements BaseModel
     public function withTaskID(string $taskID): self
     {
         $obj = clone $this;
-        $obj['taskId'] = $taskID;
+        $obj['taskID'] = $taskID;
 
         return $obj;
     }
@@ -297,7 +297,7 @@ final class FileActionResponse implements BaseModel
      *   createdAt: \DateTimeInterface,
      *   updatedAt: \DateTimeInterface,
      *   archivedAt?: \DateTimeInterface|null,
-     *   defaultHostingUrl?: string|null,
+     *   defaultHostingURL?: string|null,
      *   encoding?: string|null,
      *   expiresAt?: int|null,
      *   extension?: string|null,
@@ -305,7 +305,7 @@ final class FileActionResponse implements BaseModel
      *   height?: int|null,
      *   isUsableInContent?: bool|null,
      *   name?: string|null,
-     *   parentFolderId?: string|null,
+     *   parentFolderID?: string|null,
      *   path?: string|null,
      *   size?: int|null,
      *   sourceGroup?: string|null,

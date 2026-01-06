@@ -49,8 +49,8 @@ final class CollectionResponsePublicTeamNoPaging implements BaseModel
      * @param list<PublicTeam|array{
      *   id: string,
      *   name: string,
-     *   secondaryUserIds: list<string>,
-     *   userIds: list<string>,
+     *   secondaryUserIDs: list<string>,
+     *   userIDs: list<string>,
      * }> $results
      */
     public static function with(array $results): self
@@ -66,8 +66,8 @@ final class CollectionResponsePublicTeamNoPaging implements BaseModel
      * @param list<PublicTeam|array{
      *   id: string,
      *   name: string,
-     *   secondaryUserIds: list<string>,
-     *   userIds: list<string>,
+     *   secondaryUserIDs: list<string>,
+     *   userIDs: list<string>,
      * }> $results
      */
     public function withResults(array $results): self

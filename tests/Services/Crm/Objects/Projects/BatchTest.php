@@ -47,7 +47,7 @@ final class BatchTest extends TestCase
                             'types' => [
                                 [
                                     'associationCategory' => 'HUBSPOT_DEFINED',
-                                    'associationTypeId' => 0,
+                                    'associationTypeID' => 0,
                                 ],
                             ],
                         ],
@@ -77,13 +77,13 @@ final class BatchTest extends TestCase
                             'types' => [
                                 [
                                     'associationCategory' => 'HUBSPOT_DEFINED',
-                                    'associationTypeId' => 0,
+                                    'associationTypeID' => 0,
                                 ],
                             ],
                         ],
                     ],
                     'properties' => ['foo' => 'string'],
-                    'objectWriteTraceId' => 'objectWriteTraceId',
+                    'objectWriteTraceID' => 'objectWriteTraceId',
                 ],
             ],
         ]);
@@ -120,7 +120,7 @@ final class BatchTest extends TestCase
                     'id' => 'id',
                     'properties' => ['foo' => 'string'],
                     'idProperty' => 'my_unique_property_name',
-                    'objectWriteTraceId' => 'objectWriteTraceId',
+                    'objectWriteTraceID' => 'objectWriteTraceId',
                 ],
             ],
         ]);
@@ -226,7 +226,7 @@ final class BatchTest extends TestCase
                     'id' => 'id',
                     'properties' => ['foo' => 'string'],
                     'idProperty' => 'idProperty',
-                    'objectWriteTraceId' => 'objectWriteTraceId',
+                    'objectWriteTraceID' => 'objectWriteTraceId',
                 ],
             ],
         ]);

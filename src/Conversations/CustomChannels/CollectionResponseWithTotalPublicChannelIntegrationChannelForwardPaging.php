@@ -68,10 +68,10 @@ final class CollectionResponseWithTotalPublicChannelIntegrationChannelForwardPag
      *   capabilities: array<string,mixed>,
      *   createdAt: \DateTimeInterface,
      *   name: string,
-     *   channelAccountConnectionRedirectUrl?: string|null,
+     *   channelAccountConnectionRedirectURL?: string|null,
      *   channelDescription?: string|null,
-     *   channelLogoUrl?: string|null,
-     *   webhookUrl?: string|null,
+     *   channelLogoURL?: string|null,
+     *   webhookURL?: string|null,
      * }> $results
      * @param ForwardPaging|array{next?: NextPage|null} $paging
      */
@@ -96,10 +96,10 @@ final class CollectionResponseWithTotalPublicChannelIntegrationChannelForwardPag
      *   capabilities: array<string,mixed>,
      *   createdAt: \DateTimeInterface,
      *   name: string,
-     *   channelAccountConnectionRedirectUrl?: string|null,
+     *   channelAccountConnectionRedirectURL?: string|null,
      *   channelDescription?: string|null,
-     *   channelLogoUrl?: string|null,
-     *   webhookUrl?: string|null,
+     *   channelLogoURL?: string|null,
+     *   webhookURL?: string|null,
      * }> $results
      */
     public function withResults(array $results): self

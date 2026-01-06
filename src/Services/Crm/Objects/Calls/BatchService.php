@@ -33,7 +33,7 @@ final class BatchService implements BatchContract
      *   inputs: list<array{
      *     associations: list<array<mixed>>,
      *     properties: array<string,string>,
-     *     objectWriteTraceId?: string,
+     *     objectWriteTraceID?: string,
      *   }>,
      * }|BatchCreateParams $params
      *
@@ -70,7 +70,7 @@ final class BatchService implements BatchContract
      *     id: string,
      *     properties: array<string,string>,
      *     idProperty?: string,
-     *     objectWriteTraceId?: string,
+     *     objectWriteTraceID?: string,
      *   }>,
      * }|BatchUpdateParams $params
      *
@@ -175,7 +175,7 @@ final class BatchService implements BatchContract
      *     id: string,
      *     properties: array<string,string>,
      *     idProperty?: string,
-     *     objectWriteTraceId?: string,
+     *     objectWriteTraceID?: string,
      *   }>,
      * }|BatchUpsertParams $params
      *

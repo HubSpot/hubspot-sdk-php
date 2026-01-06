@@ -40,7 +40,7 @@ final class AppsTest extends TestCase
 
         $result = $this->client->crm->featureFlags->apps->update(
             'flagName',
-            ['appId' => 0, 'defaultState' => 'ABSENT']
+            ['appID' => 0, 'defaultState' => 'ABSENT']
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -56,7 +56,7 @@ final class AppsTest extends TestCase
 
         $result = $this->client->crm->featureFlags->apps->update(
             'flagName',
-            ['appId' => 0, 'defaultState' => 'ABSENT', 'overrideState' => 'ABSENT'],
+            ['appID' => 0, 'defaultState' => 'ABSENT', 'overrideState' => 'ABSENT'],
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -72,7 +72,7 @@ final class AppsTest extends TestCase
 
         $result = $this->client->crm->featureFlags->apps->delete(
             'flagName',
-            ['appId' => 0]
+            ['appID' => 0]
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -88,7 +88,7 @@ final class AppsTest extends TestCase
 
         $result = $this->client->crm->featureFlags->apps->delete(
             'flagName',
-            ['appId' => 0]
+            ['appID' => 0]
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -104,7 +104,7 @@ final class AppsTest extends TestCase
 
         $result = $this->client->crm->featureFlags->apps->get(
             'flagName',
-            ['appId' => 0]
+            ['appID' => 0]
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -120,7 +120,7 @@ final class AppsTest extends TestCase
 
         $result = $this->client->crm->featureFlags->apps->get(
             'flagName',
-            ['appId' => 0]
+            ['appID' => 0]
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -136,7 +136,7 @@ final class AppsTest extends TestCase
 
         $result = $this->client->crm->featureFlags->apps->listPortals(
             'flagName',
-            ['appId' => 0]
+            ['appID' => 0]
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -152,7 +152,7 @@ final class AppsTest extends TestCase
 
         $result = $this->client->crm->featureFlags->apps->listPortals(
             'flagName',
-            ['appId' => 0, 'limit' => 0, 'startPortalId' => 0]
+            ['appID' => 0, 'limit' => 0, 'startPortalID' => 0]
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

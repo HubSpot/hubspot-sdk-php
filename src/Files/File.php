@@ -20,7 +20,7 @@ use HubspotSDK\Files\File\Access;
  *   createdAt: \DateTimeInterface,
  *   updatedAt: \DateTimeInterface,
  *   archivedAt?: \DateTimeInterface|null,
- *   defaultHostingUrl?: string|null,
+ *   defaultHostingURL?: string|null,
  *   encoding?: string|null,
  *   expiresAt?: int|null,
  *   extension?: string|null,
@@ -28,7 +28,7 @@ use HubspotSDK\Files\File\Access;
  *   height?: int|null,
  *   isUsableInContent?: bool|null,
  *   name?: string|null,
- *   parentFolderId?: string|null,
+ *   parentFolderID?: string|null,
  *   path?: string|null,
  *   size?: int|null,
  *   sourceGroup?: string|null,
@@ -83,8 +83,8 @@ final class File implements BaseModel
     /**
      * Default hosting URL of the file. This will use one of HubSpot's provided URLs to serve the file.
      */
-    #[Optional]
-    public ?string $defaultHostingUrl;
+    #[Optional('defaultHostingUrl')]
+    public ?string $defaultHostingURL;
 
     /**
      * Encoding of the file.
@@ -128,8 +128,8 @@ final class File implements BaseModel
     /**
      * ID of the folder the file is in.
      */
-    #[Optional]
-    public ?string $parentFolderId;
+    #[Optional('parentFolderId')]
+    public ?string $parentFolderID;
 
     /**
      * Path of the file in the file manager.
@@ -202,7 +202,7 @@ final class File implements BaseModel
         \DateTimeInterface $createdAt,
         \DateTimeInterface $updatedAt,
         ?\DateTimeInterface $archivedAt = null,
-        ?string $defaultHostingUrl = null,
+        ?string $defaultHostingURL = null,
         ?string $encoding = null,
         ?int $expiresAt = null,
         ?string $extension = null,
@@ -210,7 +210,7 @@ final class File implements BaseModel
         ?int $height = null,
         ?bool $isUsableInContent = null,
         ?string $name = null,
-        ?string $parentFolderId = null,
+        ?string $parentFolderID = null,
         ?string $path = null,
         ?int $size = null,
         ?string $sourceGroup = null,
@@ -227,7 +227,7 @@ final class File implements BaseModel
         $obj['updatedAt'] = $updatedAt;
 
         null !== $archivedAt && $obj['archivedAt'] = $archivedAt;
-        null !== $defaultHostingUrl && $obj['defaultHostingUrl'] = $defaultHostingUrl;
+        null !== $defaultHostingURL && $obj['defaultHostingURL'] = $defaultHostingURL;
         null !== $encoding && $obj['encoding'] = $encoding;
         null !== $expiresAt && $obj['expiresAt'] = $expiresAt;
         null !== $extension && $obj['extension'] = $extension;
@@ -235,7 +235,7 @@ final class File implements BaseModel
         null !== $height && $obj['height'] = $height;
         null !== $isUsableInContent && $obj['isUsableInContent'] = $isUsableInContent;
         null !== $name && $obj['name'] = $name;
-        null !== $parentFolderId && $obj['parentFolderId'] = $parentFolderId;
+        null !== $parentFolderID && $obj['parentFolderID'] = $parentFolderID;
         null !== $path && $obj['path'] = $path;
         null !== $size && $obj['size'] = $size;
         null !== $sourceGroup && $obj['sourceGroup'] = $sourceGroup;
@@ -320,7 +320,7 @@ final class File implements BaseModel
     public function withDefaultHostingURL(string $defaultHostingURL): self
     {
         $obj = clone $this;
-        $obj['defaultHostingUrl'] = $defaultHostingURL;
+        $obj['defaultHostingURL'] = $defaultHostingURL;
 
         return $obj;
     }
@@ -405,7 +405,7 @@ final class File implements BaseModel
     public function withParentFolderID(string $parentFolderID): self
     {
         $obj = clone $this;
-        $obj['parentFolderId'] = $parentFolderID;
+        $obj['parentFolderID'] = $parentFolderID;
 
         return $obj;
     }

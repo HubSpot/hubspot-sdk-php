@@ -15,18 +15,18 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   mediaType: value-of<MediaType>,
  *   occurredTimestamp: int,
  *   rawDataMap: array<string,int>,
- *   sessionId: string,
+ *   sessionID: string,
  *   _hsenc?: string|null,
- *   contactId?: int|null,
+ *   contactID?: int|null,
  *   contactUtk?: string|null,
  *   derivedValues?: AttentionSpanCalculatedValues|null,
- *   externalId?: string|null,
- *   mediaBridgeId?: int|null,
+ *   externalID?: string|null,
+ *   mediaBridgeID?: int|null,
  *   mediaName?: string|null,
- *   mediaUrl?: string|null,
- *   pageId?: int|null,
+ *   mediaURL?: string|null,
+ *   pageID?: int|null,
  *   pageName?: string|null,
- *   pageUrl?: string|null,
+ *   pageURL?: string|null,
  *   rawDataString?: string|null,
  * }
  */
@@ -46,14 +46,14 @@ final class AttentionSpanEventRequest implements BaseModel
     #[Required(map: 'int')]
     public array $rawDataMap;
 
-    #[Required]
-    public string $sessionId;
+    #[Required('sessionId')]
+    public string $sessionID;
 
     #[Optional]
     public ?string $_hsenc;
 
-    #[Optional]
-    public ?int $contactId;
+    #[Optional('contactId')]
+    public ?int $contactID;
 
     #[Optional]
     public ?string $contactUtk;
@@ -61,26 +61,26 @@ final class AttentionSpanEventRequest implements BaseModel
     #[Optional]
     public ?AttentionSpanCalculatedValues $derivedValues;
 
-    #[Optional]
-    public ?string $externalId;
+    #[Optional('externalId')]
+    public ?string $externalID;
 
-    #[Optional]
-    public ?int $mediaBridgeId;
+    #[Optional('mediaBridgeId')]
+    public ?int $mediaBridgeID;
 
     #[Optional]
     public ?string $mediaName;
 
-    #[Optional]
-    public ?string $mediaUrl;
+    #[Optional('mediaUrl')]
+    public ?string $mediaURL;
 
-    #[Optional]
-    public ?int $pageId;
+    #[Optional('pageId')]
+    public ?int $pageID;
 
     #[Optional]
     public ?string $pageName;
 
-    #[Optional]
-    public ?string $pageUrl;
+    #[Optional('pageUrl')]
+    public ?string $pageURL;
 
     #[Optional]
     public ?string $rawDataString;
@@ -91,7 +91,7 @@ final class AttentionSpanEventRequest implements BaseModel
      * To enforce required parameters use
      * ```
      * AttentionSpanEventRequest::with(
-     *   mediaType: ..., occurredTimestamp: ..., rawDataMap: ..., sessionId: ...
+     *   mediaType: ..., occurredTimestamp: ..., rawDataMap: ..., sessionID: ...
      * )
      * ```
      *
@@ -125,18 +125,18 @@ final class AttentionSpanEventRequest implements BaseModel
         MediaType|string $mediaType,
         int $occurredTimestamp,
         array $rawDataMap,
-        string $sessionId,
+        string $sessionID,
         ?string $_hsenc = null,
-        ?int $contactId = null,
+        ?int $contactID = null,
         ?string $contactUtk = null,
         AttentionSpanCalculatedValues|array|null $derivedValues = null,
-        ?string $externalId = null,
-        ?int $mediaBridgeId = null,
+        ?string $externalID = null,
+        ?int $mediaBridgeID = null,
         ?string $mediaName = null,
-        ?string $mediaUrl = null,
-        ?int $pageId = null,
+        ?string $mediaURL = null,
+        ?int $pageID = null,
         ?string $pageName = null,
-        ?string $pageUrl = null,
+        ?string $pageURL = null,
         ?string $rawDataString = null,
     ): self {
         $obj = new self;
@@ -144,19 +144,19 @@ final class AttentionSpanEventRequest implements BaseModel
         $obj['mediaType'] = $mediaType;
         $obj['occurredTimestamp'] = $occurredTimestamp;
         $obj['rawDataMap'] = $rawDataMap;
-        $obj['sessionId'] = $sessionId;
+        $obj['sessionID'] = $sessionID;
 
         null !== $_hsenc && $obj['_hsenc'] = $_hsenc;
-        null !== $contactId && $obj['contactId'] = $contactId;
+        null !== $contactID && $obj['contactID'] = $contactID;
         null !== $contactUtk && $obj['contactUtk'] = $contactUtk;
         null !== $derivedValues && $obj['derivedValues'] = $derivedValues;
-        null !== $externalId && $obj['externalId'] = $externalId;
-        null !== $mediaBridgeId && $obj['mediaBridgeId'] = $mediaBridgeId;
+        null !== $externalID && $obj['externalID'] = $externalID;
+        null !== $mediaBridgeID && $obj['mediaBridgeID'] = $mediaBridgeID;
         null !== $mediaName && $obj['mediaName'] = $mediaName;
-        null !== $mediaUrl && $obj['mediaUrl'] = $mediaUrl;
-        null !== $pageId && $obj['pageId'] = $pageId;
+        null !== $mediaURL && $obj['mediaURL'] = $mediaURL;
+        null !== $pageID && $obj['pageID'] = $pageID;
         null !== $pageName && $obj['pageName'] = $pageName;
-        null !== $pageUrl && $obj['pageUrl'] = $pageUrl;
+        null !== $pageURL && $obj['pageURL'] = $pageURL;
         null !== $rawDataString && $obj['rawDataString'] = $rawDataString;
 
         return $obj;
@@ -195,7 +195,7 @@ final class AttentionSpanEventRequest implements BaseModel
     public function withSessionID(string $sessionID): self
     {
         $obj = clone $this;
-        $obj['sessionId'] = $sessionID;
+        $obj['sessionID'] = $sessionID;
 
         return $obj;
     }
@@ -211,7 +211,7 @@ final class AttentionSpanEventRequest implements BaseModel
     public function withContactID(int $contactID): self
     {
         $obj = clone $this;
-        $obj['contactId'] = $contactID;
+        $obj['contactID'] = $contactID;
 
         return $obj;
     }
@@ -241,7 +241,7 @@ final class AttentionSpanEventRequest implements BaseModel
     public function withExternalID(string $externalID): self
     {
         $obj = clone $this;
-        $obj['externalId'] = $externalID;
+        $obj['externalID'] = $externalID;
 
         return $obj;
     }
@@ -249,7 +249,7 @@ final class AttentionSpanEventRequest implements BaseModel
     public function withMediaBridgeID(int $mediaBridgeID): self
     {
         $obj = clone $this;
-        $obj['mediaBridgeId'] = $mediaBridgeID;
+        $obj['mediaBridgeID'] = $mediaBridgeID;
 
         return $obj;
     }
@@ -265,7 +265,7 @@ final class AttentionSpanEventRequest implements BaseModel
     public function withMediaURL(string $mediaURL): self
     {
         $obj = clone $this;
-        $obj['mediaUrl'] = $mediaURL;
+        $obj['mediaURL'] = $mediaURL;
 
         return $obj;
     }
@@ -273,7 +273,7 @@ final class AttentionSpanEventRequest implements BaseModel
     public function withPageID(int $pageID): self
     {
         $obj = clone $this;
-        $obj['pageId'] = $pageID;
+        $obj['pageID'] = $pageID;
 
         return $obj;
     }
@@ -289,7 +289,7 @@ final class AttentionSpanEventRequest implements BaseModel
     public function withPageURL(string $pageURL): self
     {
         $obj = clone $this;
-        $obj['pageUrl'] = $pageURL;
+        $obj['pageURL'] = $pageURL;
 
         return $obj;
     }

@@ -13,7 +13,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-type URLMappingShape = array{
  *   id: string,
  *   destination: string,
- *   isMatchFullUrl: bool,
+ *   isMatchFullURL: bool,
  *   isMatchQueryString: bool,
  *   isOnlyAfterNotFound: bool,
  *   isPattern: bool,
@@ -46,8 +46,8 @@ final class URLMapping implements BaseModel
     /**
      * Whether the `routePrefix` should match on the entire URL, including the domain.
      */
-    #[Required]
-    public bool $isMatchFullUrl;
+    #[Required('isMatchFullUrl')]
+    public bool $isMatchFullURL;
 
     /**
      * Whether the `routePrefix` should match on the entire URL path, including the query string.
@@ -111,7 +111,7 @@ final class URLMapping implements BaseModel
      * URLMapping::with(
      *   id: ...,
      *   destination: ...,
-     *   isMatchFullUrl: ...,
+     *   isMatchFullURL: ...,
      *   isMatchQueryString: ...,
      *   isOnlyAfterNotFound: ...,
      *   isPattern: ...,
@@ -153,7 +153,7 @@ final class URLMapping implements BaseModel
     public static function with(
         string $id,
         string $destination,
-        bool $isMatchFullUrl,
+        bool $isMatchFullURL,
         bool $isMatchQueryString,
         bool $isOnlyAfterNotFound,
         bool $isPattern,
@@ -169,7 +169,7 @@ final class URLMapping implements BaseModel
 
         $obj['id'] = $id;
         $obj['destination'] = $destination;
-        $obj['isMatchFullUrl'] = $isMatchFullUrl;
+        $obj['isMatchFullURL'] = $isMatchFullURL;
         $obj['isMatchQueryString'] = $isMatchQueryString;
         $obj['isOnlyAfterNotFound'] = $isOnlyAfterNotFound;
         $obj['isPattern'] = $isPattern;
@@ -213,7 +213,7 @@ final class URLMapping implements BaseModel
     public function withIsMatchFullURL(bool $isMatchFullURL): self
     {
         $obj = clone $this;
-        $obj['isMatchFullUrl'] = $isMatchFullURL;
+        $obj['isMatchFullURL'] = $isMatchFullURL;
 
         return $obj;
     }

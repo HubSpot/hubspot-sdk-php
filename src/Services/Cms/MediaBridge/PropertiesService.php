@@ -37,7 +37,7 @@ final class PropertiesService implements PropertiesContract
      * Create a new property for the specified media type
      *
      * @param array{
-     *   appId: int,
+     *   appID: int,
      *   fieldType: value-of<FieldType>,
      *   groupName: string,
      *   label: string,
@@ -72,14 +72,14 @@ final class PropertiesService implements PropertiesContract
             $params,
             $requestOptions,
         );
-        $appID = $parsed['appId'];
-        unset($parsed['appId']);
+        $appID = $parsed['appID'];
+        unset($parsed['appID']);
 
         /** @var BaseResponse<Property> */
         $response = $this->client->request(
             method: 'post',
             path: ['media-bridge/v1/%1$s/properties/%2$s', $appID, $objectType],
-            body: (object) array_diff_key($parsed, ['appId']),
+            body: (object) array_diff_key($parsed, ['appID']),
             options: $options,
             convert: Property::class,
         );
@@ -93,7 +93,7 @@ final class PropertiesService implements PropertiesContract
      * Update an existing property for an object type.
      *
      * @param array{
-     *   appId: int,
+     *   appID: int,
      *   objectType: string,
      *   calculationFormula?: string,
      *   description?: string,
@@ -125,8 +125,8 @@ final class PropertiesService implements PropertiesContract
             $params,
             $requestOptions,
         );
-        $appID = $parsed['appId'];
-        unset($parsed['appId']);
+        $appID = $parsed['appID'];
+        unset($parsed['appID']);
         $objectType = $parsed['objectType'];
         unset($parsed['objectType']);
 
@@ -141,7 +141,7 @@ final class PropertiesService implements PropertiesContract
             ],
             body: (object) array_diff_key(
                 $parsed,
-                array_flip(['appId', 'objectType'])
+                array_flip(['appID', 'objectType'])
             ),
             options: $options,
             convert: Property::class,
@@ -156,7 +156,7 @@ final class PropertiesService implements PropertiesContract
      * Get the existing properties defined for a media object type.
      *
      * @param array{
-     *   appId: int, archived?: bool, properties?: string
+     *   appID: int, archived?: bool, properties?: string
      * }|PropertyListParams $params
      *
      * @throws APIException
@@ -170,8 +170,8 @@ final class PropertiesService implements PropertiesContract
             $params,
             $requestOptions,
         );
-        $appID = $parsed['appId'];
-        unset($parsed['appId']);
+        $appID = $parsed['appID'];
+        unset($parsed['appID']);
 
         /** @var BaseResponse<CollectionResponsePropertyNoPaging> */
         $response = $this->client->request(
@@ -190,7 +190,7 @@ final class PropertiesService implements PropertiesContract
      *
      * Delete an existing property for an object type.
      *
-     * @param array{appId: int, objectType: string}|PropertyDeleteParams $params
+     * @param array{appID: int, objectType: string}|PropertyDeleteParams $params
      *
      * @throws APIException
      */
@@ -203,8 +203,8 @@ final class PropertiesService implements PropertiesContract
             $params,
             $requestOptions,
         );
-        $appID = $parsed['appId'];
-        unset($parsed['appId']);
+        $appID = $parsed['appID'];
+        unset($parsed['appID']);
         $objectType = $parsed['objectType'];
         unset($parsed['objectType']);
 
@@ -230,7 +230,7 @@ final class PropertiesService implements PropertiesContract
      * Create a batch of properties of the specified object type.
      *
      * @param array{
-     *   appId: int,
+     *   appID: int,
      *   inputs: list<array{
      *     fieldType: 'booleancheckbox'|'calculation_equation'|'checkbox'|'date'|'file'|'html'|'number'|'phonenumber'|'radio'|'select'|'text'|'textarea'|\HubspotSDK\PropertyCreate\FieldType,
      *     groupName: string,
@@ -261,8 +261,8 @@ final class PropertiesService implements PropertiesContract
             $params,
             $requestOptions,
         );
-        $appID = $parsed['appId'];
-        unset($parsed['appId']);
+        $appID = $parsed['appID'];
+        unset($parsed['appID']);
 
         /** @var BaseResponse<BatchResponseProperty> */
         $response = $this->client->request(
@@ -270,7 +270,7 @@ final class PropertiesService implements PropertiesContract
             path: [
                 'media-bridge/v1/%1$s/properties/%2$s/batch/create', $appID, $objectType,
             ],
-            body: (object) array_diff_key($parsed, ['appId']),
+            body: (object) array_diff_key($parsed, ['appID']),
             options: $options,
             convert: BatchResponseProperty::class,
         );
@@ -284,7 +284,7 @@ final class PropertiesService implements PropertiesContract
      * Archive a batch of existing properties for the specified types.
      *
      * @param array{
-     *   appId: int, inputs: list<array{name: string}>
+     *   appID: int, inputs: list<array{name: string}>
      * }|PropertyDeleteBatchParams $params
      *
      * @throws APIException
@@ -298,8 +298,8 @@ final class PropertiesService implements PropertiesContract
             $params,
             $requestOptions,
         );
-        $appID = $parsed['appId'];
-        unset($parsed['appId']);
+        $appID = $parsed['appID'];
+        unset($parsed['appID']);
 
         /** @var BaseResponse<mixed> */
         $response = $this->client->request(
@@ -309,7 +309,7 @@ final class PropertiesService implements PropertiesContract
                 $appID,
                 $objectType,
             ],
-            body: (object) array_diff_key($parsed, ['appId']),
+            body: (object) array_diff_key($parsed, ['appID']),
             options: $options,
             convert: null,
         );
@@ -323,7 +323,7 @@ final class PropertiesService implements PropertiesContract
      * Get the details for an existing property by name.
      *
      * @param array{
-     *   appId: int, objectType: string, archived?: bool, properties?: string
+     *   appID: int, objectType: string, archived?: bool, properties?: string
      * }|PropertyGetParams $params
      *
      * @throws APIException
@@ -337,8 +337,8 @@ final class PropertiesService implements PropertiesContract
             $params,
             $requestOptions,
         );
-        $appID = $parsed['appId'];
-        unset($parsed['appId']);
+        $appID = $parsed['appID'];
+        unset($parsed['appID']);
         $objectType = $parsed['objectType'];
         unset($parsed['objectType']);
 
@@ -365,7 +365,7 @@ final class PropertiesService implements PropertiesContract
      * Get the details for a batch of properties for a specified object type.
      *
      * @param array{
-     *   appId: int,
+     *   appID: int,
      *   archived: bool,
      *   dataSensitivity: 'highly_sensitive'|'non_sensitive'|'sensitive'|PropertyGetBatchParams\DataSensitivity,
      *   inputs: list<array{name: string}>,
@@ -382,8 +382,8 @@ final class PropertiesService implements PropertiesContract
             $params,
             $requestOptions,
         );
-        $appID = $parsed['appId'];
-        unset($parsed['appId']);
+        $appID = $parsed['appID'];
+        unset($parsed['appID']);
 
         /** @var BaseResponse<BatchResponseProperty> */
         $response = $this->client->request(
@@ -391,7 +391,7 @@ final class PropertiesService implements PropertiesContract
             path: [
                 'media-bridge/v1/%1$s/properties/%2$s/batch/read', $appID, $objectType,
             ],
-            body: (object) array_diff_key($parsed, ['appId']),
+            body: (object) array_diff_key($parsed, ['appID']),
             options: $options,
             convert: BatchResponseProperty::class,
         );

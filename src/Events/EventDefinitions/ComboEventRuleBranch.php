@@ -64,7 +64,7 @@ final class ComboEventRuleBranch implements BaseModel
      *
      * @param list<ComboEventRule|array{
      *   count: int,
-     *   eventTypeId: string,
+     *   eventTypeID: string,
      *   propertyFilters: list<PropertyFilter>,
      *   lookbackWindowDays?: int|null,
      * }> $composingRules
@@ -88,7 +88,7 @@ final class ComboEventRuleBranch implements BaseModel
     /**
      * @param list<ComboEventRule|array{
      *   count: int,
-     *   eventTypeId: string,
+     *   eventTypeID: string,
      *   propertyFilters: list<PropertyFilter>,
      *   lookbackWindowDays?: int|null,
      * }> $composingRules

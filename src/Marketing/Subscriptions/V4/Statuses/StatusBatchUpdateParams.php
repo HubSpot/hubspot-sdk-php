@@ -22,8 +22,8 @@ use HubspotSDK\Marketing\Subscriptions\V4\PublicStatusRequest\StatusState;
  *   inputs: list<PublicStatusRequest|array{
  *     channel: value-of<Channel>,
  *     statusState: value-of<StatusState>,
- *     subscriberIdString: string,
- *     subscriptionId: int,
+ *     subscriberIDString: string,
+ *     subscriptionID: int,
  *     legalBasis?: value-of<LegalBasis>|null,
  *     legalBasisExplanation?: string|null,
  *   }>,
@@ -66,8 +66,8 @@ final class StatusBatchUpdateParams implements BaseModel
      * @param list<PublicStatusRequest|array{
      *   channel: value-of<Channel>,
      *   statusState: value-of<StatusState>,
-     *   subscriberIdString: string,
-     *   subscriptionId: int,
+     *   subscriberIDString: string,
+     *   subscriptionID: int,
      *   legalBasis?: value-of<LegalBasis>|null,
      *   legalBasisExplanation?: string|null,
      * }> $inputs
@@ -85,8 +85,8 @@ final class StatusBatchUpdateParams implements BaseModel
      * @param list<PublicStatusRequest|array{
      *   channel: value-of<Channel>,
      *   statusState: value-of<StatusState>,
-     *   subscriberIdString: string,
-     *   subscriptionId: int,
+     *   subscriberIDString: string,
+     *   subscriptionID: int,
      *   legalBasis?: value-of<LegalBasis>|null,
      *   legalBasisExplanation?: string|null,
      * }> $inputs

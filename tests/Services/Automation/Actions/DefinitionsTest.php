@@ -41,7 +41,7 @@ final class DefinitionsTest extends TestCase
         $result = $this->client->automation->actions->definitions->create(
             0,
             [
-                'actionUrl' => 'actionUrl',
+                'actionURL' => 'actionUrl',
                 'functions' => [
                     [
                         'functionSource' => 'functionSource',
@@ -81,7 +81,7 @@ final class DefinitionsTest extends TestCase
         $result = $this->client->automation->actions->definitions->create(
             0,
             [
-                'actionUrl' => 'actionUrl',
+                'actionURL' => 'actionUrl',
                 'functions' => [
                     [
                         'functionSource' => 'functionSource',
@@ -110,7 +110,7 @@ final class DefinitionsTest extends TestCase
                             'fieldType' => 'booleancheckbox',
                             'helpText' => 'helpText',
                             'label' => 'label',
-                            'optionsUrl' => 'optionsUrl',
+                            'optionsURL' => 'optionsUrl',
                             'referencedObjectType' => 'ABANDONED_CART',
                         ],
                         'automationFieldType' => 'automationFieldType',
@@ -164,7 +164,7 @@ final class DefinitionsTest extends TestCase
                             'fieldType' => 'booleancheckbox',
                             'helpText' => 'helpText',
                             'label' => 'label',
-                            'optionsUrl' => 'optionsUrl',
+                            'optionsURL' => 'optionsUrl',
                             'referencedObjectType' => 'ABANDONED_CART',
                         ],
                     ],
@@ -185,7 +185,7 @@ final class DefinitionsTest extends TestCase
 
         $result = $this->client->automation->actions->definitions->update(
             'definitionId',
-            ['appId' => 0]
+            ['appID' => 0]
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -202,8 +202,8 @@ final class DefinitionsTest extends TestCase
         $result = $this->client->automation->actions->definitions->update(
             'definitionId',
             [
-                'appId' => 0,
-                'actionUrl' => 'actionUrl',
+                'appID' => 0,
+                'actionURL' => 'actionUrl',
                 'executionRules' => [
                     ['conditions' => ['foo' => []], 'labelName' => 'labelName'],
                 ],
@@ -235,7 +235,7 @@ final class DefinitionsTest extends TestCase
                             'fieldType' => 'booleancheckbox',
                             'helpText' => 'helpText',
                             'label' => 'label',
-                            'optionsUrl' => 'optionsUrl',
+                            'optionsURL' => 'optionsUrl',
                             'referencedObjectType' => 'ABANDONED_CART',
                         ],
                         'automationFieldType' => 'automationFieldType',
@@ -277,7 +277,7 @@ final class DefinitionsTest extends TestCase
                             'fieldType' => 'booleancheckbox',
                             'helpText' => 'helpText',
                             'label' => 'label',
-                            'optionsUrl' => 'optionsUrl',
+                            'optionsURL' => 'optionsUrl',
                             'referencedObjectType' => 'ABANDONED_CART',
                         ],
                     ],
@@ -312,7 +312,7 @@ final class DefinitionsTest extends TestCase
 
         $result = $this->client->automation->actions->definitions->delete(
             'definitionId',
-            ['appId' => 0]
+            ['appID' => 0]
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -328,7 +328,7 @@ final class DefinitionsTest extends TestCase
 
         $result = $this->client->automation->actions->definitions->delete(
             'definitionId',
-            ['appId' => 0]
+            ['appID' => 0]
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -344,7 +344,7 @@ final class DefinitionsTest extends TestCase
 
         $result = $this->client->automation->actions->definitions->get(
             'definitionId',
-            ['appId' => 0]
+            ['appID' => 0]
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -360,7 +360,7 @@ final class DefinitionsTest extends TestCase
 
         $result = $this->client->automation->actions->definitions->get(
             'definitionId',
-            ['appId' => 0, 'archived' => true]
+            ['appID' => 0, 'archived' => true]
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

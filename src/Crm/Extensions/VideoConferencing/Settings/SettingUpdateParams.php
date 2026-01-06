@@ -14,11 +14,11 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Crm\Extensions\VideoConferencing\SettingsService::update()
  *
  * @phpstan-type SettingUpdateParamsShape = array{
- *   createMeetingUrl: string,
- *   deleteMeetingUrl?: string,
+ *   createMeetingURL: string,
+ *   deleteMeetingURL?: string,
  *   fetchAccountsUri?: string,
- *   updateMeetingUrl?: string,
- *   userVerifyUrl?: string,
+ *   updateMeetingURL?: string,
+ *   userVerifyURL?: string,
  * }
  */
 final class SettingUpdateParams implements BaseModel
@@ -30,14 +30,14 @@ final class SettingUpdateParams implements BaseModel
     /**
      * The URL that HubSpot will send requests to create a new video conference.
      */
-    #[Required]
-    public string $createMeetingUrl;
+    #[Required('createMeetingUrl')]
+    public string $createMeetingURL;
 
     /**
      * The URL that HubSpot will send notifications of meetings that have been deleted in HubSpot.
      */
-    #[Optional]
-    public ?string $deleteMeetingUrl;
+    #[Optional('deleteMeetingUrl')]
+    public ?string $deleteMeetingURL;
 
     #[Optional]
     public ?string $fetchAccountsUri;
@@ -45,21 +45,21 @@ final class SettingUpdateParams implements BaseModel
     /**
      * The URL that HubSpot will send updates to existing meetings. Typically called when the user changes the topic or times of a meeting.
      */
-    #[Optional]
-    public ?string $updateMeetingUrl;
+    #[Optional('updateMeetingUrl')]
+    public ?string $updateMeetingURL;
 
     /**
      * The URL that HubSpot will use to verify that a user exists in the video conference application.
      */
-    #[Optional]
-    public ?string $userVerifyUrl;
+    #[Optional('userVerifyUrl')]
+    public ?string $userVerifyURL;
 
     /**
      * `new SettingUpdateParams()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * SettingUpdateParams::with(createMeetingUrl: ...)
+     * SettingUpdateParams::with(createMeetingURL: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -79,20 +79,20 @@ final class SettingUpdateParams implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      */
     public static function with(
-        string $createMeetingUrl,
-        ?string $deleteMeetingUrl = null,
+        string $createMeetingURL,
+        ?string $deleteMeetingURL = null,
         ?string $fetchAccountsUri = null,
-        ?string $updateMeetingUrl = null,
-        ?string $userVerifyUrl = null,
+        ?string $updateMeetingURL = null,
+        ?string $userVerifyURL = null,
     ): self {
         $obj = new self;
 
-        $obj['createMeetingUrl'] = $createMeetingUrl;
+        $obj['createMeetingURL'] = $createMeetingURL;
 
-        null !== $deleteMeetingUrl && $obj['deleteMeetingUrl'] = $deleteMeetingUrl;
+        null !== $deleteMeetingURL && $obj['deleteMeetingURL'] = $deleteMeetingURL;
         null !== $fetchAccountsUri && $obj['fetchAccountsUri'] = $fetchAccountsUri;
-        null !== $updateMeetingUrl && $obj['updateMeetingUrl'] = $updateMeetingUrl;
-        null !== $userVerifyUrl && $obj['userVerifyUrl'] = $userVerifyUrl;
+        null !== $updateMeetingURL && $obj['updateMeetingURL'] = $updateMeetingURL;
+        null !== $userVerifyURL && $obj['userVerifyURL'] = $userVerifyURL;
 
         return $obj;
     }
@@ -103,7 +103,7 @@ final class SettingUpdateParams implements BaseModel
     public function withCreateMeetingURL(string $createMeetingURL): self
     {
         $obj = clone $this;
-        $obj['createMeetingUrl'] = $createMeetingURL;
+        $obj['createMeetingURL'] = $createMeetingURL;
 
         return $obj;
     }
@@ -114,7 +114,7 @@ final class SettingUpdateParams implements BaseModel
     public function withDeleteMeetingURL(string $deleteMeetingURL): self
     {
         $obj = clone $this;
-        $obj['deleteMeetingUrl'] = $deleteMeetingURL;
+        $obj['deleteMeetingURL'] = $deleteMeetingURL;
 
         return $obj;
     }
@@ -133,7 +133,7 @@ final class SettingUpdateParams implements BaseModel
     public function withUpdateMeetingURL(string $updateMeetingURL): self
     {
         $obj = clone $this;
-        $obj['updateMeetingUrl'] = $updateMeetingURL;
+        $obj['updateMeetingURL'] = $updateMeetingURL;
 
         return $obj;
     }
@@ -144,7 +144,7 @@ final class SettingUpdateParams implements BaseModel
     public function withUserVerifyURL(string $userVerifyURL): self
     {
         $obj = clone $this;
-        $obj['userVerifyUrl'] = $userVerifyURL;
+        $obj['userVerifyURL'] = $userVerifyURL;
 
         return $obj;
     }

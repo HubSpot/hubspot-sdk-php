@@ -22,12 +22,12 @@ use HubspotSDK\Events\EventListParams\Property;
  *   before?: string,
  *   eventType?: string,
  *   limit?: int,
- *   objectId?: int,
- *   objectProperty?: ObjectProperty|array{_propname_?: mixed},
+ *   objectID?: int,
+ *   objectProperty?: ObjectProperty|array{propname?: mixed},
  *   objectType?: string,
  *   occurredAfter?: \DateTimeInterface,
  *   occurredBefore?: \DateTimeInterface,
- *   property?: Property|array{_propname_?: mixed},
+ *   property?: Property|array{propname?: mixed},
  *   sort?: list<string>,
  * }
  */
@@ -70,7 +70,7 @@ final class EventListParams implements BaseModel
      * The ID of the CRM Object to filter event instances on. When including this parameter, you must also include the `objectType` parameter.
      */
     #[Optional]
-    public ?int $objectId;
+    public ?int $objectID;
 
     #[Optional]
     public ?ObjectProperty $objectProperty;
@@ -115,8 +115,8 @@ final class EventListParams implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<string> $id
-     * @param ObjectProperty|array{_propname_?: mixed} $objectProperty
-     * @param Property|array{_propname_?: mixed} $property
+     * @param ObjectProperty|array{propname?: mixed} $objectProperty
+     * @param Property|array{propname?: mixed} $property
      * @param list<string> $sort
      */
     public static function with(
@@ -125,7 +125,7 @@ final class EventListParams implements BaseModel
         ?string $before = null,
         ?string $eventType = null,
         ?int $limit = null,
-        ?int $objectId = null,
+        ?int $objectID = null,
         ObjectProperty|array|null $objectProperty = null,
         ?string $objectType = null,
         ?\DateTimeInterface $occurredAfter = null,
@@ -140,7 +140,7 @@ final class EventListParams implements BaseModel
         null !== $before && $obj['before'] = $before;
         null !== $eventType && $obj['eventType'] = $eventType;
         null !== $limit && $obj['limit'] = $limit;
-        null !== $objectId && $obj['objectId'] = $objectId;
+        null !== $objectID && $obj['objectID'] = $objectID;
         null !== $objectProperty && $obj['objectProperty'] = $objectProperty;
         null !== $objectType && $obj['objectType'] = $objectType;
         null !== $occurredAfter && $obj['occurredAfter'] = $occurredAfter;
@@ -211,13 +211,13 @@ final class EventListParams implements BaseModel
     public function withObjectID(int $objectID): self
     {
         $obj = clone $this;
-        $obj['objectId'] = $objectID;
+        $obj['objectID'] = $objectID;
 
         return $obj;
     }
 
     /**
-     * @param ObjectProperty|array{_propname_?: mixed} $objectProperty
+     * @param ObjectProperty|array{propname?: mixed} $objectProperty
      */
     public function withObjectProperty(
         ObjectProperty|array $objectProperty
@@ -262,7 +262,7 @@ final class EventListParams implements BaseModel
     }
 
     /**
-     * @param Property|array{_propname_?: mixed} $property
+     * @param Property|array{propname?: mixed} $property
      */
     public function withProperty(Property|array $property): self
     {

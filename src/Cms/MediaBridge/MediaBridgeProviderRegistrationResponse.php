@@ -10,7 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type MediaBridgeProviderRegistrationResponseShape = array{
- *   appId: int, name: string
+ *   appID: int, name: string
  * }
  */
 final class MediaBridgeProviderRegistrationResponse implements BaseModel
@@ -18,8 +18,8 @@ final class MediaBridgeProviderRegistrationResponse implements BaseModel
     /** @use SdkModel<MediaBridgeProviderRegistrationResponseShape> */
     use SdkModel;
 
-    #[Required]
-    public int $appId;
+    #[Required('appId')]
+    public int $appID;
 
     #[Required]
     public string $name;
@@ -29,7 +29,7 @@ final class MediaBridgeProviderRegistrationResponse implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * MediaBridgeProviderRegistrationResponse::with(appId: ..., name: ...)
+     * MediaBridgeProviderRegistrationResponse::with(appID: ..., name: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -48,11 +48,11 @@ final class MediaBridgeProviderRegistrationResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(int $appId, string $name): self
+    public static function with(int $appID, string $name): self
     {
         $obj = new self;
 
-        $obj['appId'] = $appId;
+        $obj['appID'] = $appID;
         $obj['name'] = $name;
 
         return $obj;
@@ -61,7 +61,7 @@ final class MediaBridgeProviderRegistrationResponse implements BaseModel
     public function withAppID(int $appID): self
     {
         $obj = clone $this;
-        $obj['appId'] = $appID;
+        $obj['appID'] = $appID;
 
         return $obj;
     }

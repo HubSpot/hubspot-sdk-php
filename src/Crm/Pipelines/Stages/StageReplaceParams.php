@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @phpstan-type StageReplaceParamsShape = array{
  *   objectType: string,
- *   pipelineId: string,
+ *   pipelineID: string,
  *   displayOrder: int,
  *   label: string,
  *   metadata: array<string,string>,
@@ -32,7 +32,7 @@ final class StageReplaceParams implements BaseModel
     public string $objectType;
 
     #[Required]
-    public string $pipelineId;
+    public string $pipelineID;
 
     /**
      * The order for displaying this pipeline stage. If two pipeline stages have a matching `displayOrder`, they will be sorted alphabetically by label.
@@ -64,7 +64,7 @@ final class StageReplaceParams implements BaseModel
      * To enforce required parameters use
      * ```
      * StageReplaceParams::with(
-     *   objectType: ..., pipelineId: ..., displayOrder: ..., label: ..., metadata: ...
+     *   objectType: ..., pipelineID: ..., displayOrder: ..., label: ..., metadata: ...
      * )
      * ```
      *
@@ -93,7 +93,7 @@ final class StageReplaceParams implements BaseModel
      */
     public static function with(
         string $objectType,
-        string $pipelineId,
+        string $pipelineID,
         int $displayOrder,
         string $label,
         array $metadata,
@@ -101,7 +101,7 @@ final class StageReplaceParams implements BaseModel
         $obj = new self;
 
         $obj['objectType'] = $objectType;
-        $obj['pipelineId'] = $pipelineId;
+        $obj['pipelineID'] = $pipelineID;
         $obj['displayOrder'] = $displayOrder;
         $obj['label'] = $label;
         $obj['metadata'] = $metadata;
@@ -120,7 +120,7 @@ final class StageReplaceParams implements BaseModel
     public function withPipelineID(string $pipelineID): self
     {
         $obj = clone $this;
-        $obj['pipelineId'] = $pipelineID;
+        $obj['pipelineID'] = $pipelineID;
 
         return $obj;
     }

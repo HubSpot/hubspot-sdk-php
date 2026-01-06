@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type APICustomCodeActionShape = array{
- *   actionId: string,
+ *   actionID: string,
  *   inputFields: list<APIInputVariable>,
  *   outputFields: list<APIEnumerationOutputField>,
  *   runtime: string,
@@ -27,8 +27,8 @@ final class APICustomCodeAction implements BaseModel
     /** @use SdkModel<APICustomCodeActionShape> */
     use SdkModel;
 
-    #[Required]
-    public string $actionId;
+    #[Required('actionId')]
+    public string $actionID;
 
     /** @var list<APIInputVariable> $inputFields */
     #[Required(list: APIInputVariable::class)]
@@ -61,7 +61,7 @@ final class APICustomCodeAction implements BaseModel
      * To enforce required parameters use
      * ```
      * APICustomCodeAction::with(
-     *   actionId: ...,
+     *   actionID: ...,
      *   inputFields: ...,
      *   outputFields: ...,
      *   runtime: ...,
@@ -105,10 +105,10 @@ final class APICustomCodeAction implements BaseModel
      * }> $outputFields
      * @param list<string> $secretNames
      * @param Type|value-of<Type> $type
-     * @param APIConnection|array{edgeType: string, nextActionId: string} $connection
+     * @param APIConnection|array{edgeType: string, nextActionID: string} $connection
      */
     public static function with(
-        string $actionId,
+        string $actionID,
         array $inputFields,
         array $outputFields,
         string $runtime,
@@ -119,7 +119,7 @@ final class APICustomCodeAction implements BaseModel
     ): self {
         $obj = new self;
 
-        $obj['actionId'] = $actionId;
+        $obj['actionID'] = $actionID;
         $obj['inputFields'] = $inputFields;
         $obj['outputFields'] = $outputFields;
         $obj['runtime'] = $runtime;
@@ -135,7 +135,7 @@ final class APICustomCodeAction implements BaseModel
     public function withActionID(string $actionID): self
     {
         $obj = clone $this;
-        $obj['actionId'] = $actionID;
+        $obj['actionID'] = $actionID;
 
         return $obj;
     }
@@ -208,7 +208,7 @@ final class APICustomCodeAction implements BaseModel
     }
 
     /**
-     * @param APIConnection|array{edgeType: string, nextActionId: string} $connection
+     * @param APIConnection|array{edgeType: string, nextActionID: string} $connection
      */
     public function withConnection(APIConnection|array $connection): self
     {

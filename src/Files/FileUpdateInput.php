@@ -18,7 +18,7 @@ use HubspotSDK\Files\FileUpdateInput\Access;
  *   expiresAt?: \DateTimeInterface|null,
  *   isUsableInContent?: bool|null,
  *   name?: string|null,
- *   parentFolderId?: string|null,
+ *   parentFolderID?: string|null,
  *   parentFolderPath?: string|null,
  * }
  */
@@ -56,8 +56,8 @@ final class FileUpdateInput implements BaseModel
     /**
      * FolderId where the file should be moved to. folderId and folderPath parameters cannot be set at the same time.
      */
-    #[Optional]
-    public ?string $parentFolderId;
+    #[Optional('parentFolderId')]
+    public ?string $parentFolderID;
 
     /**
      * Folder path where the file should be moved to. folderId and folderPath parameters cannot be set at the same time.
@@ -83,7 +83,7 @@ final class FileUpdateInput implements BaseModel
         ?\DateTimeInterface $expiresAt = null,
         ?bool $isUsableInContent = null,
         ?string $name = null,
-        ?string $parentFolderId = null,
+        ?string $parentFolderID = null,
         ?string $parentFolderPath = null,
     ): self {
         $obj = new self;
@@ -93,7 +93,7 @@ final class FileUpdateInput implements BaseModel
         null !== $expiresAt && $obj['expiresAt'] = $expiresAt;
         null !== $isUsableInContent && $obj['isUsableInContent'] = $isUsableInContent;
         null !== $name && $obj['name'] = $name;
-        null !== $parentFolderId && $obj['parentFolderId'] = $parentFolderId;
+        null !== $parentFolderID && $obj['parentFolderID'] = $parentFolderID;
         null !== $parentFolderPath && $obj['parentFolderPath'] = $parentFolderPath;
 
         return $obj;
@@ -156,7 +156,7 @@ final class FileUpdateInput implements BaseModel
     public function withParentFolderID(string $parentFolderID): self
     {
         $obj = clone $this;
-        $obj['parentFolderId'] = $parentFolderID;
+        $obj['parentFolderID'] = $parentFolderID;
 
         return $obj;
     }

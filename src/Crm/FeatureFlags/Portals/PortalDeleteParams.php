@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Services\Crm\FeatureFlags\PortalsService::delete()
  *
- * @phpstan-type PortalDeleteParamsShape = array{appId: int, flagName: string}
+ * @phpstan-type PortalDeleteParamsShape = array{appID: int, flagName: string}
  */
 final class PortalDeleteParams implements BaseModel
 {
@@ -23,7 +23,7 @@ final class PortalDeleteParams implements BaseModel
     use SdkParams;
 
     #[Required]
-    public int $appId;
+    public int $appID;
 
     #[Required]
     public string $flagName;
@@ -33,7 +33,7 @@ final class PortalDeleteParams implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * PortalDeleteParams::with(appId: ..., flagName: ...)
+     * PortalDeleteParams::with(appID: ..., flagName: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -52,11 +52,11 @@ final class PortalDeleteParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(int $appId, string $flagName): self
+    public static function with(int $appID, string $flagName): self
     {
         $obj = new self;
 
-        $obj['appId'] = $appId;
+        $obj['appID'] = $appID;
         $obj['flagName'] = $flagName;
 
         return $obj;
@@ -65,7 +65,7 @@ final class PortalDeleteParams implements BaseModel
     public function withAppID(int $appID): self
     {
         $obj = clone $this;
-        $obj['appId'] = $appID;
+        $obj['appID'] = $appID;
 
         return $obj;
     }

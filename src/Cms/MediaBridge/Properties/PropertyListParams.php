@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Cms\MediaBridge\PropertiesService::list()
  *
  * @phpstan-type PropertyListParamsShape = array{
- *   appId: int, archived?: bool, properties?: string
+ *   appID: int, archived?: bool, properties?: string
  * }
  */
 final class PropertyListParams implements BaseModel
@@ -26,7 +26,7 @@ final class PropertyListParams implements BaseModel
     use SdkParams;
 
     #[Required]
-    public int $appId;
+    public int $appID;
 
     /**
      * Whether to return only results that have been archived.
@@ -45,7 +45,7 @@ final class PropertyListParams implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * PropertyListParams::with(appId: ...)
+     * PropertyListParams::with(appID: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -65,13 +65,13 @@ final class PropertyListParams implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      */
     public static function with(
-        int $appId,
+        int $appID,
         ?bool $archived = null,
         ?string $properties = null
     ): self {
         $obj = new self;
 
-        $obj['appId'] = $appId;
+        $obj['appID'] = $appID;
 
         null !== $archived && $obj['archived'] = $archived;
         null !== $properties && $obj['properties'] = $properties;
@@ -82,7 +82,7 @@ final class PropertyListParams implements BaseModel
     public function withAppID(int $appID): self
     {
         $obj = clone $this;
-        $obj['appId'] = $appID;
+        $obj['appID'] = $appID;
 
         return $obj;
     }

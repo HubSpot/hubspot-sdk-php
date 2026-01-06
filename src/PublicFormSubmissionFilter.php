@@ -18,7 +18,7 @@ use HubspotSDK\PublicTimePointOperation\OperationType;
  *   filterType: value-of<FilterType>,
  *   operator: value-of<Operator>,
  *   coalescingRefineBy?: null|PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation,
- *   formId?: string|null,
+ *   formID?: string|null,
  *   pruningRefineBy?: null|PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation,
  * }
  */
@@ -38,8 +38,8 @@ final class PublicFormSubmissionFilter implements BaseModel
     #[Optional]
     public PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation|null $coalescingRefineBy;
 
-    #[Optional]
-    public ?string $formId;
+    #[Optional('formId')]
+    public ?string $formID;
 
     #[Optional]
     public PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation|null $pruningRefineBy;
@@ -161,7 +161,7 @@ final class PublicFormSubmissionFilter implements BaseModel
         Operator|string $operator,
         FilterType|string $filterType = 'FORM_SUBMISSION',
         PublicNumOccurrencesRefineBy|array|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation|null $coalescingRefineBy = null,
-        ?string $formId = null,
+        ?string $formID = null,
         PublicNumOccurrencesRefineBy|array|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation|null $pruningRefineBy = null,
     ): self {
         $obj = new self;
@@ -170,7 +170,7 @@ final class PublicFormSubmissionFilter implements BaseModel
         $obj['operator'] = $operator;
 
         null !== $coalescingRefineBy && $obj['coalescingRefineBy'] = $coalescingRefineBy;
-        null !== $formId && $obj['formId'] = $formId;
+        null !== $formID && $obj['formID'] = $formID;
         null !== $pruningRefineBy && $obj['pruningRefineBy'] = $pruningRefineBy;
 
         return $obj;
@@ -255,7 +255,7 @@ final class PublicFormSubmissionFilter implements BaseModel
     public function withFormID(string $formID): self
     {
         $obj = clone $this;
-        $obj['formId'] = $formID;
+        $obj['formID'] = $formID;
 
         return $obj;
     }

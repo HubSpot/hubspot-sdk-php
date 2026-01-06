@@ -17,10 +17,10 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   email: string,
  *   firstName?: string|null,
  *   lastName?: string|null,
- *   primaryTeamId?: string|null,
- *   roleId?: string|null,
- *   roleIds?: list<string>|null,
- *   secondaryTeamIds?: list<string>|null,
+ *   primaryTeamID?: string|null,
+ *   roleID?: string|null,
+ *   roleIDs?: list<string>|null,
+ *   secondaryTeamIDs?: list<string>|null,
  *   sendWelcomeEmail?: bool|null,
  *   superAdmin?: bool|null,
  * }
@@ -57,30 +57,30 @@ final class PublicUser implements BaseModel
     /**
      * The user's primary team.
      */
-    #[Optional]
-    public ?string $primaryTeamId;
+    #[Optional('primaryTeamId')]
+    public ?string $primaryTeamID;
 
     /**
      * The user's role.
      */
-    #[Optional]
-    public ?string $roleId;
+    #[Optional('roleId')]
+    public ?string $roleID;
 
     /**
      * A list of role IDs assigned to the user.
      *
-     * @var list<string>|null $roleIds
+     * @var list<string>|null $roleIDs
      */
-    #[Optional(list: 'string')]
-    public ?array $roleIds;
+    #[Optional('roleIds', list: 'string')]
+    public ?array $roleIDs;
 
     /**
      * The user's additional teams.
      *
-     * @var list<string>|null $secondaryTeamIds
+     * @var list<string>|null $secondaryTeamIDs
      */
-    #[Optional(list: 'string')]
-    public ?array $secondaryTeamIds;
+    #[Optional('secondaryTeamIds', list: 'string')]
+    public ?array $secondaryTeamIDs;
 
     /**
      * Whether a welcome email was sent to the user. This value will only be populated in response to a provisioning request. Subsequent queries will be false.
@@ -118,18 +118,18 @@ final class PublicUser implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<string> $roleIds
-     * @param list<string> $secondaryTeamIds
+     * @param list<string> $roleIDs
+     * @param list<string> $secondaryTeamIDs
      */
     public static function with(
         string $id,
         string $email,
         ?string $firstName = null,
         ?string $lastName = null,
-        ?string $primaryTeamId = null,
-        ?string $roleId = null,
-        ?array $roleIds = null,
-        ?array $secondaryTeamIds = null,
+        ?string $primaryTeamID = null,
+        ?string $roleID = null,
+        ?array $roleIDs = null,
+        ?array $secondaryTeamIDs = null,
         ?bool $sendWelcomeEmail = null,
         ?bool $superAdmin = null,
     ): self {
@@ -140,10 +140,10 @@ final class PublicUser implements BaseModel
 
         null !== $firstName && $obj['firstName'] = $firstName;
         null !== $lastName && $obj['lastName'] = $lastName;
-        null !== $primaryTeamId && $obj['primaryTeamId'] = $primaryTeamId;
-        null !== $roleId && $obj['roleId'] = $roleId;
-        null !== $roleIds && $obj['roleIds'] = $roleIds;
-        null !== $secondaryTeamIds && $obj['secondaryTeamIds'] = $secondaryTeamIds;
+        null !== $primaryTeamID && $obj['primaryTeamID'] = $primaryTeamID;
+        null !== $roleID && $obj['roleID'] = $roleID;
+        null !== $roleIDs && $obj['roleIDs'] = $roleIDs;
+        null !== $secondaryTeamIDs && $obj['secondaryTeamIDs'] = $secondaryTeamIDs;
         null !== $sendWelcomeEmail && $obj['sendWelcomeEmail'] = $sendWelcomeEmail;
         null !== $superAdmin && $obj['superAdmin'] = $superAdmin;
 
@@ -200,7 +200,7 @@ final class PublicUser implements BaseModel
     public function withPrimaryTeamID(string $primaryTeamID): self
     {
         $obj = clone $this;
-        $obj['primaryTeamId'] = $primaryTeamID;
+        $obj['primaryTeamID'] = $primaryTeamID;
 
         return $obj;
     }
@@ -211,7 +211,7 @@ final class PublicUser implements BaseModel
     public function withRoleID(string $roleID): self
     {
         $obj = clone $this;
-        $obj['roleId'] = $roleID;
+        $obj['roleID'] = $roleID;
 
         return $obj;
     }
@@ -224,7 +224,7 @@ final class PublicUser implements BaseModel
     public function withRoleIDs(array $roleIDs): self
     {
         $obj = clone $this;
-        $obj['roleIds'] = $roleIDs;
+        $obj['roleIDs'] = $roleIDs;
 
         return $obj;
     }
@@ -237,7 +237,7 @@ final class PublicUser implements BaseModel
     public function withSecondaryTeamIDs(array $secondaryTeamIDs): self
     {
         $obj = clone $this;
-        $obj['secondaryTeamIds'] = $secondaryTeamIDs;
+        $obj['secondaryTeamIDs'] = $secondaryTeamIDs;
 
         return $obj;
     }

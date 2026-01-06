@@ -31,7 +31,7 @@ final class PortalsService implements PortalsContract
      * Specify an account-level flag state for a specific HubSpot account.
      *
      * @param array{
-     *   appId: int, flagName: string, flagState: 'ABSENT'|'OFF'|'ON'|FlagState
+     *   appID: int, flagName: string, flagState: 'ABSENT'|'OFF'|'ON'|FlagState
      * }|PortalUpdateParams $params
      *
      * @throws APIException
@@ -45,8 +45,8 @@ final class PortalsService implements PortalsContract
             $params,
             $requestOptions,
         );
-        $appID = $parsed['appId'];
-        unset($parsed['appId']);
+        $appID = $parsed['appID'];
+        unset($parsed['appID']);
         $flagName = $parsed['flagName'];
         unset($parsed['flagName']);
 
@@ -59,7 +59,7 @@ final class PortalsService implements PortalsContract
                 $flagName,
                 $portalID,
             ],
-            body: (object) array_diff_key($parsed, array_flip(['appId', 'flagName'])),
+            body: (object) array_diff_key($parsed, array_flip(['appID', 'flagName'])),
             options: $options,
             convert: PortalFlagStateResponse::class,
         );
@@ -72,7 +72,7 @@ final class PortalsService implements PortalsContract
      *
      * Delete an account-level flag state for a specific HubSpot account. No request body is included.
      *
-     * @param array{appId: int, flagName: string}|PortalDeleteParams $params
+     * @param array{appID: int, flagName: string}|PortalDeleteParams $params
      *
      * @throws APIException
      */
@@ -85,8 +85,8 @@ final class PortalsService implements PortalsContract
             $params,
             $requestOptions,
         );
-        $appID = $parsed['appId'];
-        unset($parsed['appId']);
+        $appID = $parsed['appID'];
+        unset($parsed['appID']);
         $flagName = $parsed['flagName'];
         unset($parsed['flagName']);
 
@@ -111,7 +111,7 @@ final class PortalsService implements PortalsContract
      *
      * Delete an account-level flag state for multiple HubSpot accounts at once. Use this endpoint to manage flag exposure for groups of HubSpot accounts.
      *
-     * @param array{appId: int, portalIds: list<int>}|PortalBatchDeleteParams $params
+     * @param array{appID: int, portalIDs: list<int>}|PortalBatchDeleteParams $params
      *
      * @throws APIException
      */
@@ -124,8 +124,8 @@ final class PortalsService implements PortalsContract
             $params,
             $requestOptions,
         );
-        $appID = $parsed['appId'];
-        unset($parsed['appId']);
+        $appID = $parsed['appID'];
+        unset($parsed['appID']);
 
         /** @var BaseResponse<PortalFlagStateBatchResponse> */
         $response = $this->client->request(
@@ -135,7 +135,7 @@ final class PortalsService implements PortalsContract
                 $appID,
                 $flagName,
             ],
-            body: (object) array_diff_key($parsed, ['appId']),
+            body: (object) array_diff_key($parsed, ['appID']),
             options: $options,
             convert: PortalFlagStateBatchResponse::class,
         );
@@ -149,10 +149,10 @@ final class PortalsService implements PortalsContract
      * Set the portal flag state for multiple HubSpot accounts at once. Use this endpoint to manage flag exposure for groups of HubSpot accounts.
      *
      * @param array{
-     *   appId: int,
+     *   appID: int,
      *   portalStates: list<array{
      *     flagState: 'ABSENT'|'OFF'|'ON'|\HubspotSDK\Crm\FeatureFlags\BatchPortalEntry\FlagState,
-     *     portalId: int,
+     *     portalID: int,
      *   }>,
      * }|PortalBatchUpsertParams $params
      *
@@ -167,8 +167,8 @@ final class PortalsService implements PortalsContract
             $params,
             $requestOptions,
         );
-        $appID = $parsed['appId'];
-        unset($parsed['appId']);
+        $appID = $parsed['appID'];
+        unset($parsed['appID']);
 
         /** @var BaseResponse<PortalFlagStateBatchResponse> */
         $response = $this->client->request(
@@ -178,7 +178,7 @@ final class PortalsService implements PortalsContract
                 $appID,
                 $flagName,
             ],
-            body: (object) array_diff_key($parsed, ['appId']),
+            body: (object) array_diff_key($parsed, ['appID']),
             options: $options,
             convert: PortalFlagStateBatchResponse::class,
         );
@@ -191,7 +191,7 @@ final class PortalsService implements PortalsContract
      *
      * Retrieve the account-level flag state of a specific HubSpot account.
      *
-     * @param array{appId: int, flagName: string}|PortalGetParams $params
+     * @param array{appID: int, flagName: string}|PortalGetParams $params
      *
      * @throws APIException
      */
@@ -204,8 +204,8 @@ final class PortalsService implements PortalsContract
             $params,
             $requestOptions,
         );
-        $appID = $parsed['appId'];
-        unset($parsed['appId']);
+        $appID = $parsed['appID'];
+        unset($parsed['appID']);
         $flagName = $parsed['flagName'];
         unset($parsed['flagName']);
 

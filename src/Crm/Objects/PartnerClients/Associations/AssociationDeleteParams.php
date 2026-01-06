@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Crm\Objects\PartnerClients\AssociationsService::delete()
  *
  * @phpstan-type AssociationDeleteParamsShape = array{
- *   partnerClientId: string, toObjectType: string, toObjectId: string
+ *   partnerClientID: string, toObjectType: string, toObjectID: string
  * }
  */
 final class AssociationDeleteParams implements BaseModel
@@ -25,13 +25,13 @@ final class AssociationDeleteParams implements BaseModel
     use SdkParams;
 
     #[Required]
-    public string $partnerClientId;
+    public string $partnerClientID;
 
     #[Required]
     public string $toObjectType;
 
     #[Required]
-    public string $toObjectId;
+    public string $toObjectID;
 
     /**
      * `new AssociationDeleteParams()` is missing required properties by the API.
@@ -39,7 +39,7 @@ final class AssociationDeleteParams implements BaseModel
      * To enforce required parameters use
      * ```
      * AssociationDeleteParams::with(
-     *   partnerClientId: ..., toObjectType: ..., toObjectId: ...
+     *   partnerClientID: ..., toObjectType: ..., toObjectID: ...
      * )
      * ```
      *
@@ -63,15 +63,15 @@ final class AssociationDeleteParams implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      */
     public static function with(
-        string $partnerClientId,
+        string $partnerClientID,
         string $toObjectType,
-        string $toObjectId
+        string $toObjectID
     ): self {
         $obj = new self;
 
-        $obj['partnerClientId'] = $partnerClientId;
+        $obj['partnerClientID'] = $partnerClientID;
         $obj['toObjectType'] = $toObjectType;
-        $obj['toObjectId'] = $toObjectId;
+        $obj['toObjectID'] = $toObjectID;
 
         return $obj;
     }
@@ -79,7 +79,7 @@ final class AssociationDeleteParams implements BaseModel
     public function withPartnerClientID(string $partnerClientID): self
     {
         $obj = clone $this;
-        $obj['partnerClientId'] = $partnerClientID;
+        $obj['partnerClientID'] = $partnerClientID;
 
         return $obj;
     }
@@ -95,7 +95,7 @@ final class AssociationDeleteParams implements BaseModel
     public function withToObjectID(string $toObjectID): self
     {
         $obj = clone $this;
-        $obj['toObjectId'] = $toObjectID;
+        $obj['toObjectID'] = $toObjectID;
 
         return $obj;
     }

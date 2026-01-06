@@ -13,9 +13,9 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * membership update request.
  *
  * @phpstan-type MembershipsUpdateResponseShape = array{
- *   recordIdsMissing: list<string>,
- *   recordIdsRemoved: list<string>,
- *   recordsIdsAdded: list<string>,
+ *   recordIDsMissing: list<string>,
+ *   recordIDsRemoved: list<string>,
+ *   recordsIDsAdded: list<string>,
  * }
  */
 final class MembershipsUpdateResponse implements BaseModel
@@ -26,22 +26,22 @@ final class MembershipsUpdateResponse implements BaseModel
     /**
      * The IDs of the records that were `missing` (e.g. did not exist in the portal) and so were not `added` or `removed`.
      *
-     * @var list<string> $recordIdsMissing
+     * @var list<string> $recordIDsMissing
      */
-    #[Required(list: 'string')]
-    public array $recordIdsMissing;
+    #[Required('recordIdsMissing', list: 'string')]
+    public array $recordIDsMissing;
 
     /**
      * The IDs of the records that were `removed` from the list.
      *
-     * @var list<string> $recordIdsRemoved
+     * @var list<string> $recordIDsRemoved
      */
-    #[Required(list: 'string')]
-    public array $recordIdsRemoved;
+    #[Required('recordIdsRemoved', list: 'string')]
+    public array $recordIDsRemoved;
 
-    /** @var list<string> $recordsIdsAdded */
-    #[Required(list: 'string')]
-    public array $recordsIdsAdded;
+    /** @var list<string> $recordsIDsAdded */
+    #[Required('recordsIdsAdded', list: 'string')]
+    public array $recordsIDsAdded;
 
     /**
      * `new MembershipsUpdateResponse()` is missing required properties by the API.
@@ -49,7 +49,7 @@ final class MembershipsUpdateResponse implements BaseModel
      * To enforce required parameters use
      * ```
      * MembershipsUpdateResponse::with(
-     *   recordIdsMissing: ..., recordIdsRemoved: ..., recordsIdsAdded: ...
+     *   recordIDsMissing: ..., recordIDsRemoved: ..., recordsIDsAdded: ...
      * )
      * ```
      *
@@ -72,20 +72,20 @@ final class MembershipsUpdateResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<string> $recordIdsMissing
-     * @param list<string> $recordIdsRemoved
-     * @param list<string> $recordsIdsAdded
+     * @param list<string> $recordIDsMissing
+     * @param list<string> $recordIDsRemoved
+     * @param list<string> $recordsIDsAdded
      */
     public static function with(
-        array $recordIdsMissing,
-        array $recordIdsRemoved,
-        array $recordsIdsAdded
+        array $recordIDsMissing,
+        array $recordIDsRemoved,
+        array $recordsIDsAdded
     ): self {
         $obj = new self;
 
-        $obj['recordIdsMissing'] = $recordIdsMissing;
-        $obj['recordIdsRemoved'] = $recordIdsRemoved;
-        $obj['recordsIdsAdded'] = $recordsIdsAdded;
+        $obj['recordIDsMissing'] = $recordIDsMissing;
+        $obj['recordIDsRemoved'] = $recordIDsRemoved;
+        $obj['recordsIDsAdded'] = $recordsIDsAdded;
 
         return $obj;
     }
@@ -98,7 +98,7 @@ final class MembershipsUpdateResponse implements BaseModel
     public function withRecordIDsMissing(array $recordIDsMissing): self
     {
         $obj = clone $this;
-        $obj['recordIdsMissing'] = $recordIDsMissing;
+        $obj['recordIDsMissing'] = $recordIDsMissing;
 
         return $obj;
     }
@@ -111,7 +111,7 @@ final class MembershipsUpdateResponse implements BaseModel
     public function withRecordIDsRemoved(array $recordIDsRemoved): self
     {
         $obj = clone $this;
-        $obj['recordIdsRemoved'] = $recordIDsRemoved;
+        $obj['recordIDsRemoved'] = $recordIDsRemoved;
 
         return $obj;
     }
@@ -122,7 +122,7 @@ final class MembershipsUpdateResponse implements BaseModel
     public function withRecordsIDsAdded(array $recordsIDsAdded): self
     {
         $obj = clone $this;
-        $obj['recordsIdsAdded'] = $recordsIDsAdded;
+        $obj['recordsIDsAdded'] = $recordsIDsAdded;
 
         return $obj;
     }

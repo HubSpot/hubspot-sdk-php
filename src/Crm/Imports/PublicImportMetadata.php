@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * @phpstan-type PublicImportMetadataShape = array{
  *   counters: array<string,int>,
- *   fileIds: list<string>,
+ *   fileIDs: list<string>,
  *   objectLists: list<PublicObjectListRecord>,
  * }
  */
@@ -31,10 +31,10 @@ final class PublicImportMetadata implements BaseModel
     /**
      * The IDs of files uploaded in the File Manager API.
      *
-     * @var list<string> $fileIds
+     * @var list<string> $fileIDs
      */
-    #[Required(list: 'string')]
-    public array $fileIds;
+    #[Required('fileIds', list: 'string')]
+    public array $fileIDs;
 
     /**
      * The lists containing the imported objects.
@@ -49,7 +49,7 @@ final class PublicImportMetadata implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * PublicImportMetadata::with(counters: ..., fileIds: ..., objectLists: ...)
+     * PublicImportMetadata::with(counters: ..., fileIDs: ..., objectLists: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
@@ -72,20 +72,20 @@ final class PublicImportMetadata implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param array<string,int> $counters
-     * @param list<string> $fileIds
+     * @param list<string> $fileIDs
      * @param list<PublicObjectListRecord|array{
-     *   listId: string, objectType: string
+     *   listID: string, objectType: string
      * }> $objectLists
      */
     public static function with(
         array $counters,
-        array $fileIds,
+        array $fileIDs,
         array $objectLists
     ): self {
         $obj = new self;
 
         $obj['counters'] = $counters;
-        $obj['fileIds'] = $fileIds;
+        $obj['fileIDs'] = $fileIDs;
         $obj['objectLists'] = $objectLists;
 
         return $obj;
@@ -112,7 +112,7 @@ final class PublicImportMetadata implements BaseModel
     public function withFileIDs(array $fileIDs): self
     {
         $obj = clone $this;
-        $obj['fileIds'] = $fileIDs;
+        $obj['fileIDs'] = $fileIDs;
 
         return $obj;
     }
@@ -121,7 +121,7 @@ final class PublicImportMetadata implements BaseModel
      * The lists containing the imported objects.
      *
      * @param list<PublicObjectListRecord|array{
-     *   listId: string, objectType: string
+     *   listID: string, objectType: string
      * }> $objectLists
      */
     public function withObjectLists(array $objectLists): self
