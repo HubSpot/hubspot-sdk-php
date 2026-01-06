@@ -5,12 +5,8 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Marketing\Transactional;
 
 use HubspotSDK\Client;
-use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Core\Util;
 use HubspotSDK\Marketing\Transactional\SmtpAPITokenView;
-use HubspotSDK\Marketing\Transactional\SmtpTokens\SmtpTokenCreateParams;
-use HubspotSDK\Marketing\Transactional\SmtpTokens\SmtpTokenListParams;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Marketing\Transactional\SmtpTokensContract;
@@ -18,38 +14,39 @@ use HubspotSDK\ServiceContracts\Marketing\Transactional\SmtpTokensContract;
 final class SmtpTokensService implements SmtpTokensContract
 {
     /**
+     * @api
+     */
+    public SmtpTokensRawService $raw;
+
+    /**
      * @internal
      */
-    public function __construct(private Client $client) {}
+    public function __construct(private Client $client)
+    {
+        $this->raw = new SmtpTokensRawService($client);
+    }
 
     /**
      * @api
      *
      * Create a SMTP API token.
      *
-     * @param array{
-     *   campaignName: string, createContact: bool
-     * }|SmtpTokenCreateParams $params
+     * @param string $campaignName a name for the campaign tied to the SMTP API token
+     * @param bool $createContact indicates whether a contact should be created for email recipients
      *
      * @throws APIException
      */
     public function create(
-        array|SmtpTokenCreateParams $params,
-        ?RequestOptions $requestOptions = null
+        string $campaignName,
+        bool $createContact,
+        ?RequestOptions $requestOptions = null,
     ): SmtpAPITokenView {
-        [$parsed, $options] = SmtpTokenCreateParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = [
+            'campaignName' => $campaignName, 'createContact' => $createContact,
+        ];
 
-        /** @var BaseResponse<SmtpAPITokenView> */
-        $response = $this->client->request(
-            method: 'post',
-            path: 'marketing/v3/transactional/smtp-tokens',
-            body: (object) $parsed,
-            options: $options,
-            convert: SmtpAPITokenView::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->create(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -59,35 +56,33 @@ final class SmtpTokensService implements SmtpTokensContract
      *
      * Query multiple SMTP API tokens by campaign name or a single token by emailCampaignId.
      *
-     * @param array{
-     *   after?: string, campaignName?: string, emailCampaignID?: string, limit?: int
-     * }|SmtpTokenListParams $params
+     * @param string $after starting point to get the next set of results
+     * @param string $campaignName a name for the campaign tied to the SMTP API token
+     * @param string $emailCampaignID identifier assigned to the campaign provided during the token creation
+     * @param int $limit maximum number of tokens to return
      *
      * @return Page<SmtpAPITokenView>
      *
      * @throws APIException
      */
     public function list(
-        array|SmtpTokenListParams $params,
-        ?RequestOptions $requestOptions = null
+        ?string $after = null,
+        ?string $campaignName = null,
+        ?string $emailCampaignID = null,
+        ?int $limit = null,
+        ?RequestOptions $requestOptions = null,
     ): Page {
-        [$parsed, $options] = SmtpTokenListParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = [
+            'after' => $after,
+            'campaignName' => $campaignName,
+            'emailCampaignID' => $emailCampaignID,
+            'limit' => $limit,
+        ];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<Page<SmtpAPITokenView>> */
-        $response = $this->client->request(
-            method: 'get',
-            path: 'marketing/v3/transactional/smtp-tokens',
-            query: Util::array_transform_keys(
-                $parsed,
-                ['emailCampaignID' => 'emailCampaignId']
-            ),
-            options: $options,
-            convert: SmtpAPITokenView::class,
-            page: Page::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->list(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -97,19 +92,16 @@ final class SmtpTokensService implements SmtpTokensContract
      *
      * Delete a single token by ID.
      *
+     * @param string $tokenID identifier generated when a token is created
+     *
      * @throws APIException
      */
     public function delete(
         string $tokenID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        /** @var BaseResponse<mixed> */
-        $response = $this->client->request(
-            method: 'delete',
-            path: ['marketing/v3/transactional/smtp-tokens/%1$s', $tokenID],
-            options: $requestOptions,
-            convert: null,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->delete($tokenID, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -119,19 +111,16 @@ final class SmtpTokensService implements SmtpTokensContract
      *
      * Query a single token by ID.
      *
+     * @param string $tokenID identifier generated when a token is created
+     *
      * @throws APIException
      */
     public function get(
         string $tokenID,
         ?RequestOptions $requestOptions = null
     ): SmtpAPITokenView {
-        /** @var BaseResponse<SmtpAPITokenView> */
-        $response = $this->client->request(
-            method: 'get',
-            path: ['marketing/v3/transactional/smtp-tokens/%1$s', $tokenID],
-            options: $requestOptions,
-            convert: SmtpAPITokenView::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->get($tokenID, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -141,21 +130,16 @@ final class SmtpTokensService implements SmtpTokensContract
      *
      * Allows the creation of a replacement password for a given token. Once the password is successfully reset, the old password for the token will be invalid.
      *
+     * @param string $tokenID identifier generated when a token is created
+     *
      * @throws APIException
      */
     public function resetPassword(
         string $tokenID,
         ?RequestOptions $requestOptions = null
     ): SmtpAPITokenView {
-        /** @var BaseResponse<SmtpAPITokenView> */
-        $response = $this->client->request(
-            method: 'post',
-            path: [
-                'marketing/v3/transactional/smtp-tokens/%1$s/password-reset', $tokenID,
-            ],
-            options: $requestOptions,
-            convert: SmtpAPITokenView::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->resetPassword($tokenID, requestOptions: $requestOptions);
 
         return $response->parse();
     }

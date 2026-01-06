@@ -39,7 +39,8 @@ final class AssetsTest extends TestCase
 
         $result = $this->client->marketing->campaigns->assets->update(
             'assetId',
-            ['campaignGuid' => 'campaignGuid', 'assetType' => 'assetType']
+            campaignGuid: 'campaignGuid',
+            assetType: 'assetType'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -55,7 +56,8 @@ final class AssetsTest extends TestCase
 
         $result = $this->client->marketing->campaigns->assets->update(
             'assetId',
-            ['campaignGuid' => 'campaignGuid', 'assetType' => 'assetType']
+            campaignGuid: 'campaignGuid',
+            assetType: 'assetType'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -71,7 +73,7 @@ final class AssetsTest extends TestCase
 
         $result = $this->client->marketing->campaigns->assets->list(
             'assetType',
-            ['campaignGuid' => 'campaignGuid']
+            campaignGuid: 'campaignGuid'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -90,13 +92,11 @@ final class AssetsTest extends TestCase
 
         $result = $this->client->marketing->campaigns->assets->list(
             'assetType',
-            [
-                'campaignGuid' => 'campaignGuid',
-                'after' => 'after',
-                'endDate' => 'endDate',
-                'limit' => 'limit',
-                'startDate' => 'startDate',
-            ],
+            campaignGuid: 'campaignGuid',
+            after: 'after',
+            endDate: 'endDate',
+            limit: 'limit',
+            startDate: 'startDate',
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -115,7 +115,8 @@ final class AssetsTest extends TestCase
 
         $result = $this->client->marketing->campaigns->assets->delete(
             'assetId',
-            ['campaignGuid' => 'campaignGuid', 'assetType' => 'assetType']
+            campaignGuid: 'campaignGuid',
+            assetType: 'assetType'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -131,7 +132,8 @@ final class AssetsTest extends TestCase
 
         $result = $this->client->marketing->campaigns->assets->delete(
             'assetId',
-            ['campaignGuid' => 'campaignGuid', 'assetType' => 'assetType']
+            campaignGuid: 'campaignGuid',
+            assetType: 'assetType'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

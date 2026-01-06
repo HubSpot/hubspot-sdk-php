@@ -5,51 +5,57 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Crm\Extensions\VideoConferencing;
 
 use HubspotSDK\Client;
-use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\Extensions\VideoConferencing\ExternalSettings;
-use HubspotSDK\Crm\Extensions\VideoConferencing\Settings\SettingUpdateParams;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Extensions\VideoConferencing\SettingsContract;
 
 final class SettingsService implements SettingsContract
 {
     /**
+     * @api
+     */
+    public SettingsRawService $raw;
+
+    /**
      * @internal
      */
-    public function __construct(private Client $client) {}
+    public function __construct(private Client $client)
+    {
+        $this->raw = new SettingsRawService($client);
+    }
 
     /**
      * @api
      *
-     * @param array{
-     *   createMeetingURL: string,
-     *   deleteMeetingURL?: string,
-     *   fetchAccountsUri?: string,
-     *   updateMeetingURL?: string,
-     *   userVerifyURL?: string,
-     * }|SettingUpdateParams $params
+     * @param string $createMeetingURL the URL that HubSpot will send requests to create a new video conference
+     * @param string $deleteMeetingURL the URL that HubSpot will send notifications of meetings that have been deleted in HubSpot
+     * @param string $updateMeetingURL The URL that HubSpot will send updates to existing meetings. Typically called when the user changes the topic or times of a meeting.
+     * @param string $userVerifyURL the URL that HubSpot will use to verify that a user exists in the video conference application
      *
      * @throws APIException
      */
     public function update(
         int $appID,
-        array|SettingUpdateParams $params,
+        string $createMeetingURL,
+        ?string $deleteMeetingURL = null,
+        ?string $fetchAccountsUri = null,
+        ?string $updateMeetingURL = null,
+        ?string $userVerifyURL = null,
         ?RequestOptions $requestOptions = null,
     ): ExternalSettings {
-        [$parsed, $options] = SettingUpdateParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = [
+            'createMeetingURL' => $createMeetingURL,
+            'deleteMeetingURL' => $deleteMeetingURL,
+            'fetchAccountsUri' => $fetchAccountsUri,
+            'updateMeetingURL' => $updateMeetingURL,
+            'userVerifyURL' => $userVerifyURL,
+        ];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<ExternalSettings> */
-        $response = $this->client->request(
-            method: 'put',
-            path: ['crm/v3/extensions/videoconferencing/settings/%1$s', $appID],
-            body: (object) $parsed,
-            options: $options,
-            convert: ExternalSettings::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->update($appID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -63,13 +69,8 @@ final class SettingsService implements SettingsContract
         int $appID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        /** @var BaseResponse<mixed> */
-        $response = $this->client->request(
-            method: 'delete',
-            path: ['crm/v3/extensions/videoconferencing/settings/%1$s', $appID],
-            options: $requestOptions,
-            convert: null,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->delete($appID, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -83,13 +84,8 @@ final class SettingsService implements SettingsContract
         int $appID,
         ?RequestOptions $requestOptions = null
     ): ExternalSettings {
-        /** @var BaseResponse<ExternalSettings> */
-        $response = $this->client->request(
-            method: 'get',
-            path: ['crm/v3/extensions/videoconferencing/settings/%1$s', $appID],
-            options: $requestOptions,
-            convert: ExternalSettings::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->get($appID, requestOptions: $requestOptions);
 
         return $response->parse();
     }

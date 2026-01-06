@@ -7,11 +7,6 @@ namespace HubspotSDK\ServiceContracts\Crm\Properties;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\Properties\CollectionResponsePropertyGroup;
 use HubspotSDK\Crm\Properties\CreatedResponsePropertyGroup;
-use HubspotSDK\Crm\Properties\Groups\GroupCreateParams;
-use HubspotSDK\Crm\Properties\Groups\GroupDeleteParams;
-use HubspotSDK\Crm\Properties\Groups\GroupGetParams;
-use HubspotSDK\Crm\Properties\Groups\GroupListParams;
-use HubspotSDK\Crm\Properties\Groups\GroupUpdateParams;
 use HubspotSDK\Crm\Properties\PropertyGroup;
 use HubspotSDK\RequestOptions;
 
@@ -20,65 +15,69 @@ interface GroupsContract
     /**
      * @api
      *
-     * @param array<mixed>|GroupCreateParams $params
-     *
      * @throws APIException
      */
     public function create(
         string $objectType,
-        array|GroupCreateParams $params,
+        string $label,
+        string $name,
+        ?int $displayOrder = null,
         ?RequestOptions $requestOptions = null,
     ): CreatedResponsePropertyGroup;
 
     /**
      * @api
      *
-     * @param array<mixed>|GroupUpdateParams $params
+     * @param string $groupName Path param:
+     * @param string $objectType Path param:
+     * @param int $displayOrder Body param:
+     * @param string $label Body param:
      *
      * @throws APIException
      */
     public function update(
         string $groupName,
-        array|GroupUpdateParams $params,
+        string $objectType,
+        ?int $displayOrder = null,
+        ?string $label = null,
         ?RequestOptions $requestOptions = null,
     ): PropertyGroup;
 
     /**
      * @api
      *
-     * @param array<mixed>|GroupListParams $params
-     *
      * @throws APIException
      */
     public function list(
         string $objectType,
-        array|GroupListParams $params,
+        ?string $locale = null,
         ?RequestOptions $requestOptions = null,
     ): CollectionResponsePropertyGroup;
 
     /**
      * @api
      *
-     * @param array<mixed>|GroupDeleteParams $params
-     *
      * @throws APIException
      */
     public function delete(
         string $groupName,
-        array|GroupDeleteParams $params,
+        string $objectType,
         ?RequestOptions $requestOptions = null,
     ): mixed;
 
     /**
      * @api
      *
-     * @param array<mixed>|GroupGetParams $params
+     * @param string $groupName Path param:
+     * @param string $objectType Path param:
+     * @param string $locale Query param:
      *
      * @throws APIException
      */
     public function get(
         string $groupName,
-        array|GroupGetParams $params,
+        string $objectType,
+        ?string $locale = null,
         ?RequestOptions $requestOptions = null,
     ): PropertyGroup;
 }

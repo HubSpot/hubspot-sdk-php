@@ -39,10 +39,10 @@ final class TablesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->hubdb->tables->create([
-            'allowChildTables' => true,
-            'allowPublicAPIAccess' => true,
-            'columns' => [
+        $result = $this->client->cms->hubdb->tables->create(
+            allowChildTables: true,
+            allowPublicAPIAccess: true,
+            columns: [
                 [
                     'id' => 0,
                     'label' => 'label',
@@ -53,12 +53,12 @@ final class TablesTest extends TestCase
                     'type' => 'BOOLEAN',
                 ],
             ],
-            'dynamicMetaTags' => ['foo' => 0],
-            'enableChildTablePages' => true,
-            'label' => 'label',
-            'name' => 'name',
-            'useForPages' => true,
-        ]);
+            dynamicMetaTags: ['foo' => 0],
+            enableChildTablePages: true,
+            label: 'label',
+            name: 'name',
+            useForPages: true,
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(HubDBTableV3::class, $result);
@@ -71,10 +71,10 @@ final class TablesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->hubdb->tables->create([
-            'allowChildTables' => true,
-            'allowPublicAPIAccess' => true,
-            'columns' => [
+        $result = $this->client->cms->hubdb->tables->create(
+            allowChildTables: true,
+            allowPublicAPIAccess: true,
+            columns: [
                 [
                     'id' => 0,
                     'label' => 'label',
@@ -95,12 +95,12 @@ final class TablesTest extends TestCase
                     'maxNumberOfOptions' => 0,
                 ],
             ],
-            'dynamicMetaTags' => ['foo' => 0],
-            'enableChildTablePages' => true,
-            'label' => 'label',
-            'name' => 'name',
-            'useForPages' => true,
-        ]);
+            dynamicMetaTags: ['foo' => 0],
+            enableChildTablePages: true,
+            label: 'label',
+            name: 'name',
+            useForPages: true,
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(HubDBTableV3::class, $result);
@@ -113,7 +113,7 @@ final class TablesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->hubdb->tables->list([]);
+        $result = $this->client->cms->hubdb->tables->list();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(Page::class, $result);
@@ -141,7 +141,8 @@ final class TablesTest extends TestCase
 
         $result = $this->client->cms->hubdb->tables->cloneDraft(
             'tableIdOrName',
-            ['copyRows' => true, 'isHubspotDefined' => true]
+            copyRows: true,
+            isHubspotDefined: true
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -157,12 +158,10 @@ final class TablesTest extends TestCase
 
         $result = $this->client->cms->hubdb->tables->cloneDraft(
             'tableIdOrName',
-            [
-                'copyRows' => true,
-                'isHubspotDefined' => true,
-                'newLabel' => 'newLabel',
-                'newName' => 'newName',
-            ],
+            copyRows: true,
+            isHubspotDefined: true,
+            newLabel: 'newLabel',
+            newName: 'newName',
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -178,7 +177,7 @@ final class TablesTest extends TestCase
 
         $result = $this->client->cms->hubdb->tables->deleteVersion(
             0,
-            ['tableIDOrName' => 'tableIdOrName']
+            tableIDOrName: 'tableIdOrName'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -194,7 +193,7 @@ final class TablesTest extends TestCase
 
         $result = $this->client->cms->hubdb->tables->deleteVersion(
             0,
-            ['tableIDOrName' => 'tableIdOrName']
+            tableIDOrName: 'tableIdOrName'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -208,7 +207,7 @@ final class TablesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->hubdb->tables->export('tableIdOrName', []);
+        $result = $this->client->cms->hubdb->tables->export('tableIdOrName');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertIsString($result);
@@ -221,10 +220,7 @@ final class TablesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->hubdb->tables->exportDraft(
-            'tableIdOrName',
-            []
-        );
+        $result = $this->client->cms->hubdb->tables->exportDraft('tableIdOrName');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertIsString($result);
@@ -237,7 +233,7 @@ final class TablesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->hubdb->tables->get('tableIdOrName', []);
+        $result = $this->client->cms->hubdb->tables->get('tableIdOrName');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(HubDBTableV3::class, $result);
@@ -250,7 +246,7 @@ final class TablesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->hubdb->tables->getDraft('tableIdOrName', []);
+        $result = $this->client->cms->hubdb->tables->getDraft('tableIdOrName');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(HubDBTableV3::class, $result);
@@ -263,10 +259,7 @@ final class TablesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->hubdb->tables->importDraft(
-            'tableIdOrName',
-            []
-        );
+        $result = $this->client->cms->hubdb->tables->importDraft('tableIdOrName');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(ImportResult::class, $result);
@@ -279,7 +272,7 @@ final class TablesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->hubdb->tables->listDraft([]);
+        $result = $this->client->cms->hubdb->tables->listDraft();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(Page::class, $result);
@@ -292,10 +285,7 @@ final class TablesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->hubdb->tables->publishDraft(
-            'tableIdOrName',
-            []
-        );
+        $result = $this->client->cms->hubdb->tables->publishDraft('tableIdOrName');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(HubDBTableV3::class, $result);
@@ -308,10 +298,7 @@ final class TablesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->hubdb->tables->resetDraft(
-            'tableIdOrName',
-            []
-        );
+        $result = $this->client->cms->hubdb->tables->resetDraft('tableIdOrName');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(HubDBTableV3::class, $result);
@@ -324,7 +311,7 @@ final class TablesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->hubdb->tables->unpublish('tableIdOrName', []);
+        $result = $this->client->cms->hubdb->tables->unpublish('tableIdOrName');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(HubDBTableV3::class, $result);
@@ -339,26 +326,24 @@ final class TablesTest extends TestCase
 
         $result = $this->client->cms->hubdb->tables->updateDraft(
             'tableIdOrName',
-            [
-                'allowChildTables' => true,
-                'allowPublicAPIAccess' => true,
-                'columns' => [
-                    [
-                        'id' => 0,
-                        'label' => 'label',
-                        'name' => 'name',
-                        'options' => [
-                            ['hidden' => false, 'label' => 'Option A', 'value' => 'A'],
-                        ],
-                        'type' => 'BOOLEAN',
+            allowChildTables: true,
+            allowPublicAPIAccess: true,
+            columns: [
+                [
+                    'id' => 0,
+                    'label' => 'label',
+                    'name' => 'name',
+                    'options' => [
+                        ['hidden' => false, 'label' => 'Option A', 'value' => 'A'],
                     ],
+                    'type' => 'BOOLEAN',
                 ],
-                'dynamicMetaTags' => ['foo' => 0],
-                'enableChildTablePages' => true,
-                'label' => 'label',
-                'name' => 'name',
-                'useForPages' => true,
             ],
+            dynamicMetaTags: ['foo' => 0],
+            enableChildTablePages: true,
+            label: 'label',
+            name: 'name',
+            useForPages: true,
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -374,39 +359,37 @@ final class TablesTest extends TestCase
 
         $result = $this->client->cms->hubdb->tables->updateDraft(
             'tableIdOrName',
-            [
-                'allowChildTables' => true,
-                'allowPublicAPIAccess' => true,
-                'columns' => [
-                    [
-                        'id' => 0,
-                        'label' => 'label',
-                        'name' => 'name',
-                        'options' => [
-                            [
-                                'hidden' => false,
-                                'label' => 'Option A',
-                                'value' => 'A',
-                                'description' => 'Choice number one',
-                                'displayOrder' => 1,
-                            ],
+            allowChildTables: true,
+            allowPublicAPIAccess: true,
+            columns: [
+                [
+                    'id' => 0,
+                    'label' => 'label',
+                    'name' => 'name',
+                    'options' => [
+                        [
+                            'hidden' => false,
+                            'label' => 'Option A',
+                            'value' => 'A',
+                            'description' => 'Choice number one',
+                            'displayOrder' => 1,
                         ],
-                        'type' => 'BOOLEAN',
-                        'foreignColumnID' => 0,
-                        'foreignTableID' => 0,
-                        'maxNumberOfCharacters' => 0,
-                        'maxNumberOfOptions' => 0,
                     ],
+                    'type' => 'BOOLEAN',
+                    'foreignColumnID' => 0,
+                    'foreignTableID' => 0,
+                    'maxNumberOfCharacters' => 0,
+                    'maxNumberOfOptions' => 0,
                 ],
-                'dynamicMetaTags' => ['foo' => 0],
-                'enableChildTablePages' => true,
-                'label' => 'label',
-                'name' => 'name',
-                'useForPages' => true,
-                'archived' => true,
-                'includeForeignIDs' => true,
-                'isGetLocalizedSchema' => true,
             ],
+            dynamicMetaTags: ['foo' => 0],
+            enableChildTablePages: true,
+            label: 'label',
+            name: 'name',
+            useForPages: true,
+            archived: true,
+            includeForeignIDs: true,
+            isGetLocalizedSchema: true,
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

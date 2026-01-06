@@ -5,10 +5,8 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Crm\Extensions\Calling;
 
 use HubspotSDK\Client;
-use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\Extensions\Calling\Transcripts\Speaker;
-use HubspotSDK\Crm\Extensions\Calling\Transcripts\TranscriptCreateParams;
 use HubspotSDK\Crm\Extensions\Calling\Transcripts\TranscriptCreateResponse;
 use HubspotSDK\Crm\Extensions\Calling\Transcripts\TranscriptResponse;
 use HubspotSDK\RequestOptions;
@@ -17,43 +15,43 @@ use HubspotSDK\ServiceContracts\Crm\Extensions\Calling\TranscriptsContract;
 final class TranscriptsService implements TranscriptsContract
 {
     /**
+     * @api
+     */
+    public TranscriptsRawService $raw;
+
+    /**
      * @internal
      */
-    public function __construct(private Client $client) {}
+    public function __construct(private Client $client)
+    {
+        $this->raw = new TranscriptsRawService($client);
+    }
 
     /**
      * @api
      *
-     * @param array{
-     *   engagementID: int,
-     *   transcriptCreateUtterances: list<array{
-     *     endTimeMillis: int,
-     *     speaker: array<mixed>|Speaker,
-     *     startTimeMillis: int,
-     *     text: string,
-     *     languageCode?: string,
-     *   }>,
-     * }|TranscriptCreateParams $params
+     * @param list<array{
+     *   endTimeMillis: int,
+     *   speaker: array{id: string, name: string, email?: string}|Speaker,
+     *   startTimeMillis: int,
+     *   text: string,
+     *   languageCode?: string,
+     * }> $transcriptCreateUtterances
      *
      * @throws APIException
      */
     public function create(
-        array|TranscriptCreateParams $params,
-        ?RequestOptions $requestOptions = null
+        int $engagementID,
+        array $transcriptCreateUtterances,
+        ?RequestOptions $requestOptions = null,
     ): TranscriptCreateResponse {
-        [$parsed, $options] = TranscriptCreateParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = [
+            'engagementID' => $engagementID,
+            'transcriptCreateUtterances' => $transcriptCreateUtterances,
+        ];
 
-        /** @var BaseResponse<TranscriptCreateResponse> */
-        $response = $this->client->request(
-            method: 'post',
-            path: 'crm/v3/extensions/calling/transcripts',
-            body: (object) $parsed,
-            options: $options,
-            convert: TranscriptCreateResponse::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->create(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -67,13 +65,8 @@ final class TranscriptsService implements TranscriptsContract
         string $transcriptID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        /** @var BaseResponse<mixed> */
-        $response = $this->client->request(
-            method: 'delete',
-            path: ['crm/v3/extensions/calling/transcripts/%1$s', $transcriptID],
-            options: $requestOptions,
-            convert: null,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->delete($transcriptID, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -87,13 +80,8 @@ final class TranscriptsService implements TranscriptsContract
         string $transcriptID,
         ?RequestOptions $requestOptions = null
     ): TranscriptResponse {
-        /** @var BaseResponse<TranscriptResponse> */
-        $response = $this->client->request(
-            method: 'get',
-            path: ['crm/v3/extensions/calling/transcripts/%1$s', $transcriptID],
-            options: $requestOptions,
-            convert: TranscriptResponse::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->get($transcriptID, requestOptions: $requestOptions);
 
         return $response->parse();
     }

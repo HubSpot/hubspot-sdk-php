@@ -39,7 +39,7 @@ final class SchemaTest extends TestCase
 
         $result = $this->client->crm->associations->schema->list(
             'toObjectType',
-            ['fromObjectType' => 'fromObjectType']
+            fromObjectType: 'fromObjectType'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -58,7 +58,7 @@ final class SchemaTest extends TestCase
 
         $result = $this->client->crm->associations->schema->list(
             'toObjectType',
-            ['fromObjectType' => 'fromObjectType']
+            fromObjectType: 'fromObjectType'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

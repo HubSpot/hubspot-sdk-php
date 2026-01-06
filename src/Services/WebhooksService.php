@@ -14,6 +14,11 @@ final class WebhooksService implements WebhooksContract
     /**
      * @api
      */
+    public WebhooksRawService $raw;
+
+    /**
+     * @api
+     */
     public SettingsService $settings;
 
     /**
@@ -26,6 +31,7 @@ final class WebhooksService implements WebhooksContract
      */
     public function __construct(private Client $client)
     {
+        $this->raw = new WebhooksRawService($client);
         $this->settings = new SettingsService($client);
         $this->subscriptions = new SubscriptionsService($client);
     }

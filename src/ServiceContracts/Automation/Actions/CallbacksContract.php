@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace HubspotSDK\ServiceContracts\Automation\Actions;
 
-use HubspotSDK\Automation\Actions\Callbacks\CallbackCompleteBatchParams;
-use HubspotSDK\Automation\Actions\Callbacks\CallbackCompleteParams;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 
@@ -14,25 +12,28 @@ interface CallbacksContract
     /**
      * @api
      *
-     * @param array<mixed>|CallbackCompleteParams $params
+     * @param string $callbackID the ID of the action execution
+     * @param array<string,string> $outputFields
      *
      * @throws APIException
      */
     public function complete(
         string $callbackID,
-        array|CallbackCompleteParams $params,
+        array $outputFields,
         ?RequestOptions $requestOptions = null,
     ): mixed;
 
     /**
      * @api
      *
-     * @param array<mixed>|CallbackCompleteBatchParams $params
+     * @param list<array{
+     *   callbackID: string, outputFields: array<string,string>
+     * }> $inputs
      *
      * @throws APIException
      */
     public function completeBatch(
-        array|CallbackCompleteBatchParams $params,
-        ?RequestOptions $requestOptions = null,
+        array $inputs,
+        ?RequestOptions $requestOptions = null
     ): mixed;
 }

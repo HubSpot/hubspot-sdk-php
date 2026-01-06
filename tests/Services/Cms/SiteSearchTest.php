@@ -38,7 +38,7 @@ final class SiteSearchTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->siteSearch->getIndexedData('contentId', []);
+        $result = $this->client->cms->siteSearch->getIndexedData('contentId');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(IndexedData::class, $result);
@@ -51,7 +51,7 @@ final class SiteSearchTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->siteSearch->search([]);
+        $result = $this->client->cms->siteSearch->search();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(PublicSearchResults::class, $result);

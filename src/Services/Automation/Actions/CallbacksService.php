@@ -4,10 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Services\Automation\Actions;
 
-use HubspotSDK\Automation\Actions\Callbacks\CallbackCompleteBatchParams;
-use HubspotSDK\Automation\Actions\Callbacks\CallbackCompleteParams;
 use HubspotSDK\Client;
-use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Automation\Actions\CallbacksContract;
@@ -15,37 +12,37 @@ use HubspotSDK\ServiceContracts\Automation\Actions\CallbacksContract;
 final class CallbacksService implements CallbacksContract
 {
     /**
+     * @api
+     */
+    public CallbacksRawService $raw;
+
+    /**
      * @internal
      */
-    public function __construct(private Client $client) {}
+    public function __construct(private Client $client)
+    {
+        $this->raw = new CallbacksRawService($client);
+    }
 
     /**
      * @api
      *
      * Complete a specific blocked action execution by ID.
      *
-     * @param array{outputFields: array<string,string>}|CallbackCompleteParams $params
+     * @param string $callbackID the ID of the action execution
+     * @param array<string,string> $outputFields
      *
      * @throws APIException
      */
     public function complete(
         string $callbackID,
-        array|CallbackCompleteParams $params,
+        array $outputFields,
         ?RequestOptions $requestOptions = null,
     ): mixed {
-        [$parsed, $options] = CallbackCompleteParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = ['outputFields' => $outputFields];
 
-        /** @var BaseResponse<mixed> */
-        $response = $this->client->request(
-            method: 'post',
-            path: ['automation/v4/actions/callbacks/%1$s/complete', $callbackID],
-            body: (object) $parsed,
-            options: $options,
-            convert: null,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->complete($callbackID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -55,29 +52,20 @@ final class CallbacksService implements CallbacksContract
      *
      * Complete a batch of blocked action executions.
      *
-     * @param array{
-     *   inputs: list<array{callbackID: string, outputFields: array<string,string>}>
-     * }|CallbackCompleteBatchParams $params
+     * @param list<array{
+     *   callbackID: string, outputFields: array<string,string>
+     * }> $inputs
      *
      * @throws APIException
      */
     public function completeBatch(
-        array|CallbackCompleteBatchParams $params,
-        ?RequestOptions $requestOptions = null,
+        array $inputs,
+        ?RequestOptions $requestOptions = null
     ): mixed {
-        [$parsed, $options] = CallbackCompleteBatchParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = ['inputs' => $inputs];
 
-        /** @var BaseResponse<mixed> */
-        $response = $this->client->request(
-            method: 'post',
-            path: 'automation/v4/actions/callbacks/complete',
-            body: (object) $parsed,
-            options: $options,
-            convert: null,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->completeBatch(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }

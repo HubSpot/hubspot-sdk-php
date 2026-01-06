@@ -5,11 +5,8 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Crm;
 
 use HubspotSDK\Client;
-use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Crm\Owners\OwnerGetParams;
 use HubspotSDK\Crm\Owners\OwnerGetParams\IDProperty;
-use HubspotSDK\Crm\Owners\OwnerListParams;
 use HubspotSDK\Crm\Owners\PublicOwner;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
@@ -18,41 +15,45 @@ use HubspotSDK\ServiceContracts\Crm\OwnersContract;
 final class OwnersService implements OwnersContract
 {
     /**
+     * @api
+     */
+    public OwnersRawService $raw;
+
+    /**
      * @internal
      */
-    public function __construct(private Client $client) {}
+    public function __construct(private Client $client)
+    {
+        $this->raw = new OwnersRawService($client);
+    }
 
     /**
      * @api
      *
      * Retrieve a paginated list of owners available in the account.
      *
-     * @param array{
-     *   after?: string, archived?: bool, email?: string, limit?: int
-     * }|OwnerListParams $params
-     *
      * @return Page<PublicOwner>
      *
      * @throws APIException
      */
     public function list(
-        array|OwnerListParams $params,
-        ?RequestOptions $requestOptions = null
+        ?string $after = null,
+        bool $archived = false,
+        ?string $email = null,
+        int $limit = 100,
+        ?RequestOptions $requestOptions = null,
     ): Page {
-        [$parsed, $options] = OwnerListParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = [
+            'after' => $after,
+            'archived' => $archived,
+            'email' => $email,
+            'limit' => $limit,
+        ];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<Page<PublicOwner>> */
-        $response = $this->client->request(
-            method: 'get',
-            path: 'crm/v3/owners/',
-            query: $parsed,
-            options: $options,
-            convert: PublicOwner::class,
-            page: Page::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->list(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -62,30 +63,22 @@ final class OwnersService implements OwnersContract
      *
      * Retrieve details of a specific owner using either their 'id' or 'userId'.
      *
-     * @param array{
-     *   archived?: bool, idProperty?: 'id'|'userId'|IDProperty
-     * }|OwnerGetParams $params
+     * @param 'id'|'userId'|IDProperty $idProperty
      *
      * @throws APIException
      */
     public function get(
         int $ownerID,
-        array|OwnerGetParams $params,
+        bool $archived = false,
+        string|IDProperty $idProperty = 'id',
         ?RequestOptions $requestOptions = null,
     ): PublicOwner {
-        [$parsed, $options] = OwnerGetParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = ['archived' => $archived, 'idProperty' => $idProperty];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<PublicOwner> */
-        $response = $this->client->request(
-            method: 'get',
-            path: ['crm/v3/owners/%1$s', $ownerID],
-            query: $parsed,
-            options: $options,
-            convert: PublicOwner::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->get($ownerID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }

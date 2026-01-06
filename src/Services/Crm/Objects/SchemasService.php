@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Crm\Objects;
 
 use HubspotSDK\Client;
-use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\Objects\Schemas\ObjectSchema;
 use HubspotSDK\Crm\Objects\Schemas\ObjectsSchemasObjectTypeDefinition;
@@ -13,13 +12,7 @@ use HubspotSDK\Crm\Objects\Schemas\ObjectTypePropertyCreate\NumberDisplayHint;
 use HubspotSDK\Crm\Objects\Schemas\ObjectTypePropertyCreate\OptionSortStrategy;
 use HubspotSDK\Crm\Objects\Schemas\ObjectTypePropertyCreate\TextDisplayHint;
 use HubspotSDK\Crm\Objects\Schemas\ObjectTypePropertyCreate\Type;
-use HubspotSDK\Crm\Objects\Schemas\SchemaCreateAssociationParams;
-use HubspotSDK\Crm\Objects\Schemas\SchemaCreateParams;
-use HubspotSDK\Crm\Objects\Schemas\SchemaDeleteAssociationParams;
-use HubspotSDK\Crm\Objects\Schemas\SchemaDeleteParams;
-use HubspotSDK\Crm\Objects\Schemas\SchemaListParams;
 use HubspotSDK\Crm\Objects\Schemas\SchemaListResponse;
-use HubspotSDK\Crm\Objects\Schemas\SchemaUpdateParams;
 use HubspotSDK\Events\EventDefinitions\AssociationDefinition;
 use HubspotSDK\ObjectTypeDefinitionLabels;
 use HubspotSDK\RequestOptions;
@@ -28,62 +21,86 @@ use HubspotSDK\ServiceContracts\Crm\Objects\SchemasContract;
 final class SchemasService implements SchemasContract
 {
     /**
+     * @api
+     */
+    public SchemasRawService $raw;
+
+    /**
      * @internal
      */
-    public function __construct(private Client $client) {}
+    public function __construct(private Client $client)
+    {
+        $this->raw = new SchemasRawService($client);
+    }
 
     /**
      * @api
      *
+     * @param list<string> $associatedObjects associations defined for this object type
      * @param array{
-     *   associatedObjects: list<string>,
-     *   labels: array{plural?: string, singular?: string}|ObjectTypeDefinitionLabels,
+     *   plural?: string, singular?: string
+     * }|ObjectTypeDefinitionLabels $labels
+     * @param string $name A unique name for this object. For internal use only.
+     * @param list<array{
+     *   fieldType: string,
+     *   label: string,
      *   name: string,
-     *   properties: list<array{
-     *     fieldType: string,
-     *     label: string,
-     *     name: string,
-     *     type: 'bool'|'date'|'datetime'|'enumeration'|'number'|'string'|Type,
-     *     description?: string,
-     *     displayOrder?: int,
-     *     formField?: bool,
-     *     groupName?: string,
-     *     hasUniqueValue?: bool,
-     *     hidden?: bool,
-     *     numberDisplayHint?: 'currency'|'duration'|'formatted'|'percentage'|'probability'|'unformatted'|NumberDisplayHint,
-     *     options?: list<array<mixed>>,
-     *     optionSortStrategy?: 'ALPHABETICAL'|'DISPLAY_ORDER'|OptionSortStrategy,
-     *     referencedObjectType?: string,
-     *     searchableInGlobalSearch?: bool,
-     *     showCurrencySymbol?: bool,
-     *     textDisplayHint?: 'domain_name'|'email'|'ip_address'|'multi_line'|'phone_number'|'physical_address'|'postal_code'|'unformatted_single_line'|TextDisplayHint,
-     *   }>,
-     *   requiredProperties: list<string>,
+     *   type: 'bool'|'date'|'datetime'|'enumeration'|'number'|'string'|Type,
      *   description?: string,
-     *   primaryDisplayProperty?: string,
-     *   searchableProperties?: list<string>,
-     *   secondaryDisplayProperties?: list<string>,
-     * }|SchemaCreateParams $params
+     *   displayOrder?: int,
+     *   formField?: bool,
+     *   groupName?: string,
+     *   hasUniqueValue?: bool,
+     *   hidden?: bool,
+     *   numberDisplayHint?: 'currency'|'duration'|'formatted'|'percentage'|'probability'|'unformatted'|NumberDisplayHint,
+     *   options?: list<array{
+     *     displayOrder: int,
+     *     hidden: bool,
+     *     label: string,
+     *     value: string,
+     *     description?: string,
+     *   }>,
+     *   optionSortStrategy?: 'ALPHABETICAL'|'DISPLAY_ORDER'|OptionSortStrategy,
+     *   referencedObjectType?: string,
+     *   searchableInGlobalSearch?: bool,
+     *   showCurrencySymbol?: bool,
+     *   textDisplayHint?: 'domain_name'|'email'|'ip_address'|'multi_line'|'phone_number'|'physical_address'|'postal_code'|'unformatted_single_line'|TextDisplayHint,
+     * }> $properties Properties defined for this object type
+     * @param list<string> $requiredProperties the names of properties that should be **required** when creating an object of this type
+     * @param string $primaryDisplayProperty The name of the primary property for this object. This will be displayed as primary on the HubSpot record page for this object type.
+     * @param list<string> $searchableProperties names of properties that will be indexed for this object type in by HubSpot's product search
+     * @param list<string> $secondaryDisplayProperties The names of secondary properties for this object. These will be displayed as secondary on the HubSpot record page for this object type.
      *
      * @throws APIException
      */
     public function create(
-        array|SchemaCreateParams $params,
-        ?RequestOptions $requestOptions = null
+        array $associatedObjects,
+        array|ObjectTypeDefinitionLabels $labels,
+        string $name,
+        array $properties,
+        array $requiredProperties,
+        ?string $description = null,
+        ?string $primaryDisplayProperty = null,
+        ?array $searchableProperties = null,
+        ?array $secondaryDisplayProperties = null,
+        ?RequestOptions $requestOptions = null,
     ): ObjectSchema {
-        [$parsed, $options] = SchemaCreateParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = [
+            'associatedObjects' => $associatedObjects,
+            'labels' => $labels,
+            'name' => $name,
+            'properties' => $properties,
+            'requiredProperties' => $requiredProperties,
+            'description' => $description,
+            'primaryDisplayProperty' => $primaryDisplayProperty,
+            'searchableProperties' => $searchableProperties,
+            'secondaryDisplayProperties' => $secondaryDisplayProperties,
+        ];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<ObjectSchema> */
-        $response = $this->client->request(
-            method: 'post',
-            path: 'crm-object-schemas/v3/schemas',
-            body: (object) $parsed,
-            options: $options,
-            convert: ObjectSchema::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->create(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -91,37 +108,44 @@ final class SchemasService implements SchemasContract
     /**
      * @api
      *
+     * @param string $objectType fully qualified name or object type ID of your schema
      * @param array{
-     *   clearDescription?: bool,
-     *   description?: string,
-     *   labels?: array{plural?: string, singular?: string}|ObjectTypeDefinitionLabels,
-     *   primaryDisplayProperty?: string,
-     *   requiredProperties?: list<string>,
-     *   restorable?: bool,
-     *   searchableProperties?: list<string>,
-     *   secondaryDisplayProperties?: list<string>,
-     * }|SchemaUpdateParams $params
+     *   plural?: string, singular?: string
+     * }|ObjectTypeDefinitionLabels $labels
+     * @param string $primaryDisplayProperty The name of the primary property for this object. This will be displayed as primary on the HubSpot record page for this object type.
+     * @param list<string> $requiredProperties the names of properties that should be **required** when creating an object of this type
+     * @param list<string> $searchableProperties names of properties that will be indexed for this object type in by HubSpot's product search
+     * @param list<string> $secondaryDisplayProperties The names of secondary properties for this object. These will be displayed as secondary on the HubSpot record page for this object type.
      *
      * @throws APIException
      */
     public function update(
         string $objectType,
-        array|SchemaUpdateParams $params,
+        ?bool $clearDescription = null,
+        ?string $description = null,
+        array|ObjectTypeDefinitionLabels|null $labels = null,
+        ?string $primaryDisplayProperty = null,
+        ?array $requiredProperties = null,
+        ?bool $restorable = null,
+        ?array $searchableProperties = null,
+        ?array $secondaryDisplayProperties = null,
         ?RequestOptions $requestOptions = null,
     ): ObjectsSchemasObjectTypeDefinition {
-        [$parsed, $options] = SchemaUpdateParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = [
+            'clearDescription' => $clearDescription,
+            'description' => $description,
+            'labels' => $labels,
+            'primaryDisplayProperty' => $primaryDisplayProperty,
+            'requiredProperties' => $requiredProperties,
+            'restorable' => $restorable,
+            'searchableProperties' => $searchableProperties,
+            'secondaryDisplayProperties' => $secondaryDisplayProperties,
+        ];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<ObjectsSchemasObjectTypeDefinition> */
-        $response = $this->client->request(
-            method: 'patch',
-            path: ['crm-object-schemas/v3/schemas/%1$s', $objectType],
-            body: (object) $parsed,
-            options: $options,
-            convert: ObjectsSchemasObjectTypeDefinition::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->update($objectType, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -129,27 +153,20 @@ final class SchemasService implements SchemasContract
     /**
      * @api
      *
-     * @param array{archived?: bool}|SchemaListParams $params
+     * @param bool $archived whether to return only results that have been archived
      *
      * @throws APIException
      */
     public function list(
-        array|SchemaListParams $params,
+        bool $archived = false,
         ?RequestOptions $requestOptions = null
     ): SchemaListResponse {
-        [$parsed, $options] = SchemaListParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = ['archived' => $archived];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<SchemaListResponse> */
-        $response = $this->client->request(
-            method: 'get',
-            path: 'crm-object-schemas/v3/schemas',
-            query: $parsed,
-            options: $options,
-            convert: SchemaListResponse::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->list(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -157,28 +174,22 @@ final class SchemasService implements SchemasContract
     /**
      * @api
      *
-     * @param array{archived?: bool}|SchemaDeleteParams $params
+     * @param string $objectType fully qualified name or object type ID of your schema
+     * @param bool $archived whether to return only results that have been archived
      *
      * @throws APIException
      */
     public function delete(
         string $objectType,
-        array|SchemaDeleteParams $params,
+        bool $archived = false,
         ?RequestOptions $requestOptions = null,
     ): mixed {
-        [$parsed, $options] = SchemaDeleteParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = ['archived' => $archived];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<mixed> */
-        $response = $this->client->request(
-            method: 'delete',
-            path: ['crm-object-schemas/v3/schemas/%1$s', $objectType],
-            query: $parsed,
-            options: $options,
-            convert: null,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->delete($objectType, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -186,30 +197,27 @@ final class SchemasService implements SchemasContract
     /**
      * @api
      *
-     * @param array{
-     *   fromObjectTypeID: string, toObjectTypeID: string, name?: string
-     * }|SchemaCreateAssociationParams $params
+     * @param string $objectType fully qualified name or object type ID of your schema
      *
      * @throws APIException
      */
     public function createAssociation(
         string $objectType,
-        array|SchemaCreateAssociationParams $params,
+        string $fromObjectTypeID,
+        string $toObjectTypeID,
+        ?string $name = null,
         ?RequestOptions $requestOptions = null,
     ): AssociationDefinition {
-        [$parsed, $options] = SchemaCreateAssociationParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = [
+            'fromObjectTypeID' => $fromObjectTypeID,
+            'toObjectTypeID' => $toObjectTypeID,
+            'name' => $name,
+        ];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<AssociationDefinition> */
-        $response = $this->client->request(
-            method: 'post',
-            path: ['crm-object-schemas/v3/schemas/%1$s/associations', $objectType],
-            body: (object) $parsed,
-            options: $options,
-            convert: AssociationDefinition::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->createAssociation($objectType, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -217,39 +225,28 @@ final class SchemasService implements SchemasContract
     /**
      * @api
      *
-     * @param array{objectType: string}|SchemaDeleteAssociationParams $params
+     * @param string $associationIdentifier unique ID of the association to remove
+     * @param string $objectType fully qualified name or object type ID of your schema
      *
      * @throws APIException
      */
     public function deleteAssociation(
         string $associationIdentifier,
-        array|SchemaDeleteAssociationParams $params,
+        string $objectType,
         ?RequestOptions $requestOptions = null,
     ): mixed {
-        [$parsed, $options] = SchemaDeleteAssociationParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $objectType = $parsed['objectType'];
-        unset($parsed['objectType']);
+        $params = ['objectType' => $objectType];
 
-        /** @var BaseResponse<mixed> */
-        $response = $this->client->request(
-            method: 'delete',
-            path: [
-                'crm-object-schemas/v3/schemas/%1$s/associations/%2$s',
-                $objectType,
-                $associationIdentifier,
-            ],
-            options: $options,
-            convert: null,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->deleteAssociation($associationIdentifier, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
 
     /**
      * @api
+     *
+     * @param string $objectType fully qualified name or object type ID of your schema
      *
      * @throws APIException
      */
@@ -257,13 +254,8 @@ final class SchemasService implements SchemasContract
         string $objectType,
         ?RequestOptions $requestOptions = null
     ): ObjectSchema {
-        /** @var BaseResponse<ObjectSchema> */
-        $response = $this->client->request(
-            method: 'get',
-            path: ['crm-object-schemas/v3/schemas/%1$s', $objectType],
-            options: $requestOptions,
-            convert: ObjectSchema::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->get($objectType, requestOptions: $requestOptions);
 
         return $response->parse();
     }

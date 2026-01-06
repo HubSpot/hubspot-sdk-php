@@ -40,18 +40,12 @@ final class TemplatesTest extends TestCase
 
         $result = $this->client->crm->timeline->templates->create(
             0,
-            [
-                'name' => 'PetSpot Registration',
-                'objectType' => 'contacts',
-                'tokens' => [
-                    ['label' => 'Pet Name', 'name' => 'petName', 'type' => 'string'],
-                    ['label' => 'Pet Age', 'name' => 'petAge', 'type' => 'number'],
-                    [
-                        'label' => 'Pet Color',
-                        'name' => 'petColor',
-                        'type' => 'enumeration',
-                    ],
-                ],
+            name: 'PetSpot Registration',
+            objectType: 'contacts',
+            tokens: [
+                ['label' => 'Pet Name', 'name' => 'petName', 'type' => 'string'],
+                ['label' => 'Pet Age', 'name' => 'petAge', 'type' => 'number'],
+                ['label' => 'Pet Color', 'name' => 'petColor', 'type' => 'enumeration'],
             ],
         );
 
@@ -68,52 +62,50 @@ final class TemplatesTest extends TestCase
 
         $result = $this->client->crm->timeline->templates->create(
             0,
-            [
-                'name' => 'PetSpot Registration',
-                'objectType' => 'contacts',
-                'tokens' => [
-                    [
-                        'label' => 'Pet Name',
-                        'name' => 'petName',
-                        'type' => 'string',
-                        'createdAt' => new \DateTimeImmutable('2020-02-12T20:58:26Z'),
-                        'objectPropertyName' => 'customPropertyPetType',
-                        'options' => [
-                            ['label' => 'Dog', 'value' => 'dog'],
-                            ['label' => 'Cat', 'value' => 'cat'],
-                        ],
-                        'updatedAt' => new \DateTimeImmutable('2020-02-12T20:58:26Z'),
+            name: 'PetSpot Registration',
+            objectType: 'contacts',
+            tokens: [
+                [
+                    'label' => 'Pet Name',
+                    'name' => 'petName',
+                    'type' => 'string',
+                    'createdAt' => new \DateTimeImmutable('2020-02-12T20:58:26Z'),
+                    'objectPropertyName' => 'customPropertyPetType',
+                    'options' => [
+                        ['label' => 'Dog', 'value' => 'dog'],
+                        ['label' => 'Cat', 'value' => 'cat'],
                     ],
-                    [
-                        'label' => 'Pet Age',
-                        'name' => 'petAge',
-                        'type' => 'number',
-                        'createdAt' => new \DateTimeImmutable('2020-02-12T20:58:26Z'),
-                        'objectPropertyName' => 'customPropertyPetType',
-                        'options' => [
-                            ['label' => 'Dog', 'value' => 'dog'],
-                            ['label' => 'Cat', 'value' => 'cat'],
-                        ],
-                        'updatedAt' => new \DateTimeImmutable('2020-02-12T20:58:26Z'),
-                    ],
-                    [
-                        'label' => 'Pet Color',
-                        'name' => 'petColor',
-                        'type' => 'enumeration',
-                        'createdAt' => new \DateTimeImmutable('2020-02-12T20:58:26Z'),
-                        'objectPropertyName' => 'customPropertyPetType',
-                        'options' => [
-                            ['label' => 'White', 'value' => 'white'],
-                            ['label' => 'Black', 'value' => 'black'],
-                            ['label' => 'Brown', 'value' => 'brown'],
-                            ['label' => 'Other', 'value' => 'other'],
-                        ],
-                        'updatedAt' => new \DateTimeImmutable('2020-02-12T20:58:26Z'),
-                    ],
+                    'updatedAt' => new \DateTimeImmutable('2020-02-12T20:58:26Z'),
                 ],
-                'detailTemplate' => 'Registration occurred at {{#formatDate timestamp}}{{/formatDate}}\n\n#### Questions\n{{#each extraData.questions}}\n  **{{question}}**: {{answer}}\n{{/each}}',
-                'headerTemplate' => 'Registered for [{{petName}}](https://my.petspot.com/pets/{{petName}})',
+                [
+                    'label' => 'Pet Age',
+                    'name' => 'petAge',
+                    'type' => 'number',
+                    'createdAt' => new \DateTimeImmutable('2020-02-12T20:58:26Z'),
+                    'objectPropertyName' => 'customPropertyPetType',
+                    'options' => [
+                        ['label' => 'Dog', 'value' => 'dog'],
+                        ['label' => 'Cat', 'value' => 'cat'],
+                    ],
+                    'updatedAt' => new \DateTimeImmutable('2020-02-12T20:58:26Z'),
+                ],
+                [
+                    'label' => 'Pet Color',
+                    'name' => 'petColor',
+                    'type' => 'enumeration',
+                    'createdAt' => new \DateTimeImmutable('2020-02-12T20:58:26Z'),
+                    'objectPropertyName' => 'customPropertyPetType',
+                    'options' => [
+                        ['label' => 'White', 'value' => 'white'],
+                        ['label' => 'Black', 'value' => 'black'],
+                        ['label' => 'Brown', 'value' => 'brown'],
+                        ['label' => 'Other', 'value' => 'other'],
+                    ],
+                    'updatedAt' => new \DateTimeImmutable('2020-02-12T20:58:26Z'),
+                ],
             ],
+            detailTemplate: 'Registration occurred at {{#formatDate timestamp}}{{/formatDate}}\n\n#### Questions\n{{#each extraData.questions}}\n  **{{question}}**: {{answer}}\n{{/each}}',
+            headerTemplate: 'Registered for [{{petName}}](https://my.petspot.com/pets/{{petName}})',
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -129,19 +121,13 @@ final class TemplatesTest extends TestCase
 
         $result = $this->client->crm->timeline->templates->update(
             'eventTemplateId',
-            [
-                'appID' => 0,
-                'id' => '1001298',
-                'name' => 'PetSpot Registration',
-                'tokens' => [
-                    ['label' => 'Pet Name', 'name' => 'petName', 'type' => 'string'],
-                    ['label' => 'Pet Age', 'name' => 'petAge', 'type' => 'number'],
-                    [
-                        'label' => 'Pet Color',
-                        'name' => 'petColor',
-                        'type' => 'enumeration',
-                    ],
-                ],
+            appID: 0,
+            id: '1001298',
+            name: 'PetSpot Registration',
+            tokens: [
+                ['label' => 'Pet Name', 'name' => 'petName', 'type' => 'string'],
+                ['label' => 'Pet Age', 'name' => 'petAge', 'type' => 'number'],
+                ['label' => 'Pet Color', 'name' => 'petColor', 'type' => 'enumeration'],
             ],
         );
 
@@ -158,54 +144,52 @@ final class TemplatesTest extends TestCase
 
         $result = $this->client->crm->timeline->templates->update(
             'eventTemplateId',
-            [
-                'appID' => 0,
-                'id' => '1001298',
-                'name' => 'PetSpot Registration',
-                'tokens' => [
-                    [
-                        'label' => 'Pet Name',
-                        'name' => 'petName',
-                        'type' => 'string',
-                        'createdAt' => new \DateTimeImmutable('2020-02-12T20:58:26Z'),
-                        'objectPropertyName' => 'firstname',
-                        'options' => [
-                            ['label' => 'Dog', 'value' => 'dog'],
-                            ['label' => 'Cat', 'value' => 'cat'],
-                        ],
-                        'updatedAt' => new \DateTimeImmutable('2020-02-12T20:58:26Z'),
+            appID: 0,
+            id: '1001298',
+            name: 'PetSpot Registration',
+            tokens: [
+                [
+                    'label' => 'Pet Name',
+                    'name' => 'petName',
+                    'type' => 'string',
+                    'createdAt' => new \DateTimeImmutable('2020-02-12T20:58:26Z'),
+                    'objectPropertyName' => 'firstname',
+                    'options' => [
+                        ['label' => 'Dog', 'value' => 'dog'],
+                        ['label' => 'Cat', 'value' => 'cat'],
                     ],
-                    [
-                        'label' => 'Pet Age',
-                        'name' => 'petAge',
-                        'type' => 'number',
-                        'createdAt' => new \DateTimeImmutable('2020-02-12T20:58:26Z'),
-                        'objectPropertyName' => 'customPropertyPetType',
-                        'options' => [
-                            ['label' => 'Dog', 'value' => 'dog'],
-                            ['label' => 'Cat', 'value' => 'cat'],
-                        ],
-                        'updatedAt' => new \DateTimeImmutable('2020-02-12T20:58:26Z'),
-                    ],
-                    [
-                        'label' => 'Pet Color',
-                        'name' => 'petColor',
-                        'type' => 'enumeration',
-                        'createdAt' => new \DateTimeImmutable('2020-02-12T20:58:26Z'),
-                        'objectPropertyName' => 'customPropertyPetType',
-                        'options' => [
-                            ['label' => 'White', 'value' => 'white'],
-                            ['label' => 'Black', 'value' => 'black'],
-                            ['label' => 'Brown', 'value' => 'brown'],
-                            ['label' => 'Yellow', 'value' => 'yellow'],
-                            ['label' => 'Other', 'value' => 'other'],
-                        ],
-                        'updatedAt' => new \DateTimeImmutable('2020-02-12T20:58:26Z'),
-                    ],
+                    'updatedAt' => new \DateTimeImmutable('2020-02-12T20:58:26Z'),
                 ],
-                'detailTemplate' => 'Registration occurred at {{#formatDate timestamp}}{{/formatDate}}\n\n#### Questions\n{{#each extraData.questions}}\n  **{{question}}**: {{answer}}\n{{/each}}\n\nEDIT',
-                'headerTemplate' => 'Registered for [{{petName}}](https://my.petspot.com/pets/{{petName}})',
+                [
+                    'label' => 'Pet Age',
+                    'name' => 'petAge',
+                    'type' => 'number',
+                    'createdAt' => new \DateTimeImmutable('2020-02-12T20:58:26Z'),
+                    'objectPropertyName' => 'customPropertyPetType',
+                    'options' => [
+                        ['label' => 'Dog', 'value' => 'dog'],
+                        ['label' => 'Cat', 'value' => 'cat'],
+                    ],
+                    'updatedAt' => new \DateTimeImmutable('2020-02-12T20:58:26Z'),
+                ],
+                [
+                    'label' => 'Pet Color',
+                    'name' => 'petColor',
+                    'type' => 'enumeration',
+                    'createdAt' => new \DateTimeImmutable('2020-02-12T20:58:26Z'),
+                    'objectPropertyName' => 'customPropertyPetType',
+                    'options' => [
+                        ['label' => 'White', 'value' => 'white'],
+                        ['label' => 'Black', 'value' => 'black'],
+                        ['label' => 'Brown', 'value' => 'brown'],
+                        ['label' => 'Yellow', 'value' => 'yellow'],
+                        ['label' => 'Other', 'value' => 'other'],
+                    ],
+                    'updatedAt' => new \DateTimeImmutable('2020-02-12T20:58:26Z'),
+                ],
             ],
+            detailTemplate: 'Registration occurred at {{#formatDate timestamp}}{{/formatDate}}\n\n#### Questions\n{{#each extraData.questions}}\n  **{{question}}**: {{answer}}\n{{/each}}\n\nEDIT',
+            headerTemplate: 'Registered for [{{petName}}](https://my.petspot.com/pets/{{petName}})',
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -237,7 +221,7 @@ final class TemplatesTest extends TestCase
 
         $result = $this->client->crm->timeline->templates->delete(
             'eventTemplateId',
-            ['appID' => 0]
+            appID: 0
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -253,7 +237,7 @@ final class TemplatesTest extends TestCase
 
         $result = $this->client->crm->timeline->templates->delete(
             'eventTemplateId',
-            ['appID' => 0]
+            appID: 0
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -269,7 +253,7 @@ final class TemplatesTest extends TestCase
 
         $result = $this->client->crm->timeline->templates->get(
             'eventTemplateId',
-            ['appID' => 0]
+            appID: 0
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -285,7 +269,7 @@ final class TemplatesTest extends TestCase
 
         $result = $this->client->crm->timeline->templates->get(
             'eventTemplateId',
-            ['appID' => 0]
+            appID: 0
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

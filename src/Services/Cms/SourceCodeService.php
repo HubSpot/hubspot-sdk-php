@@ -7,14 +7,6 @@ namespace HubspotSDK\Services\Cms;
 use HubspotSDK\ActionResponse;
 use HubspotSDK\Client;
 use HubspotSDK\Cms\SourceCode\AssetFileMetadata;
-use HubspotSDK\Cms\SourceCode\SourceCodeCreateParams;
-use HubspotSDK\Cms\SourceCode\SourceCodeDeleteParams;
-use HubspotSDK\Cms\SourceCode\SourceCodeExtractAsyncParams;
-use HubspotSDK\Cms\SourceCode\SourceCodeGetMetadataParams;
-use HubspotSDK\Cms\SourceCode\SourceCodeGetParams;
-use HubspotSDK\Cms\SourceCode\SourceCodeUpsertParams;
-use HubspotSDK\Cms\SourceCode\SourceCodeValidateParams;
-use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Cms\SourceCodeContract;
@@ -23,9 +15,17 @@ use HubspotSDK\TaskLocator;
 final class SourceCodeService implements SourceCodeContract
 {
     /**
+     * @api
+     */
+    public SourceCodeRawService $raw;
+
+    /**
      * @internal
      */
-    public function __construct(private Client $client) {}
+    public function __construct(private Client $client)
+    {
+        $this->raw = new SourceCodeRawService($client);
+    }
 
     /**
      * @deprecated
@@ -34,31 +34,24 @@ final class SourceCodeService implements SourceCodeContract
      *
      * Creates a file at the specified path in the specified environment. Accepts multipart/form-data content type. Throws an error if a file already exists at the specified path.
      *
-     * @param array{environment: string, file?: string}|SourceCodeCreateParams $params
+     * @param string $filePath path param: The file system location of the file
+     * @param string $environment path param: The environment of the file ("draft" or "published")
+     * @param string $file Body param:
      *
      * @throws APIException
      */
     public function create(
         string $filePath,
-        array|SourceCodeCreateParams $params,
+        string $environment,
+        ?string $file = null,
         ?RequestOptions $requestOptions = null,
     ): AssetFileMetadata {
-        [$parsed, $options] = SourceCodeCreateParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $environment = $parsed['environment'];
-        unset($parsed['environment']);
+        $params = ['environment' => $environment, 'file' => $file];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<AssetFileMetadata> */
-        $response = $this->client->request(
-            method: 'post',
-            path: ['cms/v3/source-code/%1$s/content/%2$s', $environment, $filePath],
-            headers: ['Content-Type' => 'multipart/form-data'],
-            body: (object) array_diff_key($parsed, ['environment']),
-            options: $options,
-            convert: AssetFileMetadata::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->create($filePath, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -68,29 +61,20 @@ final class SourceCodeService implements SourceCodeContract
      *
      * Deletes the file at the specified path in the specified environment.
      *
-     * @param array{environment: string}|SourceCodeDeleteParams $params
+     * @param string $filePath the file system location of the file
+     * @param string $environment the environment of the file ("draft" or "published")
      *
      * @throws APIException
      */
     public function delete(
         string $filePath,
-        array|SourceCodeDeleteParams $params,
+        string $environment,
         ?RequestOptions $requestOptions = null,
     ): mixed {
-        [$parsed, $options] = SourceCodeDeleteParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $environment = $parsed['environment'];
-        unset($parsed['environment']);
+        $params = ['environment' => $environment];
 
-        /** @var BaseResponse<mixed> */
-        $response = $this->client->request(
-            method: 'delete',
-            path: ['cms/v3/source-code/%1$s/content/%2$s', $environment, $filePath],
-            options: $options,
-            convert: null,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->delete($filePath, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -100,27 +84,16 @@ final class SourceCodeService implements SourceCodeContract
      *
      * Extract a zip file in the developer file system. Extraction status can be checked with the `/extract/async/tasks/taskId/status` endpoint below.
      *
-     * @param array{path: string}|SourceCodeExtractAsyncParams $params
-     *
      * @throws APIException
      */
     public function extractAsync(
-        array|SourceCodeExtractAsyncParams $params,
-        ?RequestOptions $requestOptions = null,
+        string $path,
+        ?RequestOptions $requestOptions = null
     ): TaskLocator {
-        [$parsed, $options] = SourceCodeExtractAsyncParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = ['path' => $path];
 
-        /** @var BaseResponse<TaskLocator> */
-        $response = $this->client->request(
-            method: 'post',
-            path: 'cms/v3/source-code/extract/async',
-            body: (object) $parsed,
-            options: $options,
-            convert: TaskLocator::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->extractAsync(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -130,30 +103,20 @@ final class SourceCodeService implements SourceCodeContract
      *
      * Downloads the byte contents of the file at the specified path in the specified environment.
      *
-     * @param array{environment: string}|SourceCodeGetParams $params
+     * @param string $filePath the file system location of the file
+     * @param string $environment the environment of the file ("draft" or "published")
      *
      * @throws APIException
      */
     public function get(
         string $filePath,
-        array|SourceCodeGetParams $params,
+        string $environment,
         ?RequestOptions $requestOptions = null,
     ): string {
-        [$parsed, $options] = SourceCodeGetParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $environment = $parsed['environment'];
-        unset($parsed['environment']);
+        $params = ['environment' => $environment];
 
-        /** @var BaseResponse<string> */
-        $response = $this->client->request(
-            method: 'get',
-            path: ['cms/v3/source-code/%1$s/content/%2$s', $environment, $filePath],
-            headers: ['Accept' => 'application/octet-stream'],
-            options: $options,
-            convert: 'string',
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->get($filePath, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -163,19 +126,16 @@ final class SourceCodeService implements SourceCodeContract
      *
      * Get the status of an extraction by the `taskId` returned from the initial `extract/async` request.
      *
+     * @param int $taskID the extraction task ID returned by the initial `extract/async` request
+     *
      * @throws APIException
      */
     public function getExtractionStatus(
         int $taskID,
         ?RequestOptions $requestOptions = null
     ): ActionResponse {
-        /** @var BaseResponse<ActionResponse> */
-        $response = $this->client->request(
-            method: 'get',
-            path: ['cms/v3/source-code/extract/async/tasks/%1$s/status', $taskID],
-            options: $requestOptions,
-            convert: ActionResponse::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->getExtractionStatus($taskID, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -185,32 +145,24 @@ final class SourceCodeService implements SourceCodeContract
      *
      * Gets the metadata object for the file at the specified path in the specified environment.
      *
-     * @param array{
-     *   environment: string, properties?: string
-     * }|SourceCodeGetMetadataParams $params
+     * @param string $filePath path param: The file system location of the file
+     * @param string $environment path param: The environment of the file ("draft" or "published")
+     * @param string $properties Query param:
      *
      * @throws APIException
      */
     public function getMetadata(
         string $filePath,
-        array|SourceCodeGetMetadataParams $params,
+        string $environment,
+        ?string $properties = null,
         ?RequestOptions $requestOptions = null,
     ): AssetFileMetadata {
-        [$parsed, $options] = SourceCodeGetMetadataParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $environment = $parsed['environment'];
-        unset($parsed['environment']);
+        $params = ['environment' => $environment, 'properties' => $properties];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<AssetFileMetadata> */
-        $response = $this->client->request(
-            method: 'get',
-            path: ['cms/v3/source-code/%1$s/metadata/%2$s', $environment, $filePath],
-            query: $parsed,
-            options: $options,
-            convert: AssetFileMetadata::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->getMetadata($filePath, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -220,31 +172,24 @@ final class SourceCodeService implements SourceCodeContract
      *
      * Upserts a file at the specified path in the specified environment. Accepts multipart/form-data content type.
      *
-     * @param array{environment: string, file?: string}|SourceCodeUpsertParams $params
+     * @param string $filePath path param: The file system location of the file
+     * @param string $environment path param: The environment of the file ("draft" or "published")
+     * @param string $file Body param:
      *
      * @throws APIException
      */
     public function upsert(
         string $filePath,
-        array|SourceCodeUpsertParams $params,
+        string $environment,
+        ?string $file = null,
         ?RequestOptions $requestOptions = null,
     ): AssetFileMetadata {
-        [$parsed, $options] = SourceCodeUpsertParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $environment = $parsed['environment'];
-        unset($parsed['environment']);
+        $params = ['environment' => $environment, 'file' => $file];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<AssetFileMetadata> */
-        $response = $this->client->request(
-            method: 'put',
-            path: ['cms/v3/source-code/%1$s/content/%2$s', $environment, $filePath],
-            headers: ['Content-Type' => 'multipart/form-data'],
-            body: (object) array_diff_key($parsed, ['environment']),
-            options: $options,
-            convert: AssetFileMetadata::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->upsert($filePath, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -254,33 +199,24 @@ final class SourceCodeService implements SourceCodeContract
      *
      * Validates the file contents passed to the endpoint given a specified path and environment. Accepts multipart/form-data content type.
      *
-     * @param array{
-     *   environment: string, file?: string
-     * }|SourceCodeValidateParams $params
+     * @param string $filePath path param: The file system location of the file
+     * @param string $environment Path param:
+     * @param string $file Body param:
      *
      * @throws APIException
      */
     public function validate(
         string $filePath,
-        array|SourceCodeValidateParams $params,
+        string $environment,
+        ?string $file = null,
         ?RequestOptions $requestOptions = null,
     ): string {
-        [$parsed, $options] = SourceCodeValidateParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $environment = $parsed['environment'];
-        unset($parsed['environment']);
+        $params = ['environment' => $environment, 'file' => $file];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<string> */
-        $response = $this->client->request(
-            method: 'post',
-            path: ['cms/v3/source-code/%1$s/validate/%2$s', $environment, $filePath],
-            headers: ['Content-Type' => 'multipart/form-data', 'Accept' => '*/*'],
-            body: (object) array_diff_key($parsed, ['environment']),
-            options: $options,
-            convert: 'string',
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->validate($filePath, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }

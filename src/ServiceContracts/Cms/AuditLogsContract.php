@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace HubspotSDK\ServiceContracts\Cms;
 
-use HubspotSDK\Cms\AuditLogs\AuditLogListParams;
 use HubspotSDK\Cms\AuditLogs\PublicAuditLog;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Page;
@@ -15,14 +14,28 @@ interface AuditLogsContract
     /**
      * @api
      *
-     * @param array<mixed>|AuditLogListParams $params
+     * @param string $after Timestamp after which audit logs will be returned
+     * @param string $before Timestamp before which audit logs will be returned
+     * @param list<string> $eventType comma separated list of event types to filter by (CREATED, UPDATED, PUBLISHED, DELETED, UNPUBLISHED)
+     * @param int $limit the number of logs to return
+     * @param list<string> $objectID comma separated list of object ids to filter by
+     * @param list<string> $objectType Comma separated list of object types to filter by (BLOG, LANDING_PAGE, DOMAIN, HUBDB_TABLE etc.)
+     * @param list<string> $sort The sort direction for the audit logs. (Can only sort by timestamp).
+     * @param list<string> $userID comma separated list of user ids to filter by
      *
      * @return Page<PublicAuditLog>
      *
      * @throws APIException
      */
     public function list(
-        array|AuditLogListParams $params,
-        ?RequestOptions $requestOptions = null
+        ?string $after = null,
+        ?string $before = null,
+        ?array $eventType = null,
+        ?int $limit = null,
+        ?array $objectID = null,
+        ?array $objectType = null,
+        ?array $sort = null,
+        ?array $userID = null,
+        ?RequestOptions $requestOptions = null,
     ): Page;
 }

@@ -5,64 +5,53 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Crm\FeatureFlags;
 
 use HubspotSDK\Client;
-use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Crm\FeatureFlags\BatchPortalEntry\FlagState;
 use HubspotSDK\Crm\FeatureFlags\PortalFlagStateBatchResponse;
 use HubspotSDK\Crm\FeatureFlags\PortalFlagStateResponse;
-use HubspotSDK\Crm\FeatureFlags\Portals\PortalBatchDeleteParams;
-use HubspotSDK\Crm\FeatureFlags\Portals\PortalBatchUpsertParams;
-use HubspotSDK\Crm\FeatureFlags\Portals\PortalDeleteParams;
-use HubspotSDK\Crm\FeatureFlags\Portals\PortalGetParams;
-use HubspotSDK\Crm\FeatureFlags\Portals\PortalUpdateParams;
-use HubspotSDK\Crm\FeatureFlags\Portals\PortalUpdateParams\FlagState;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\FeatureFlags\PortalsContract;
 
 final class PortalsService implements PortalsContract
 {
     /**
+     * @api
+     */
+    public PortalsRawService $raw;
+
+    /**
      * @internal
      */
-    public function __construct(private Client $client) {}
+    public function __construct(private Client $client)
+    {
+        $this->raw = new PortalsRawService($client);
+    }
 
     /**
      * @api
      *
      * Specify an account-level flag state for a specific HubSpot account.
      *
-     * @param array{
-     *   appID: int, flagName: string, flagState: 'ABSENT'|'OFF'|'ON'|FlagState
-     * }|PortalUpdateParams $params
+     * @param int $portalID path param: The ID of the account that installed the app
+     * @param int $appID path param: The ID of the app
+     * @param string $flagName path param: The name of the flag, either `hs-release-app-cards` or `hs-hide-crm-cards`
+     * @param 'ABSENT'|'OFF'|'ON'|\HubspotSDK\Crm\FeatureFlags\Portals\PortalUpdateParams\FlagState $flagState Body param:
      *
      * @throws APIException
      */
     public function update(
         int $portalID,
-        array|PortalUpdateParams $params,
+        int $appID,
+        string $flagName,
+        string|\HubspotSDK\Crm\FeatureFlags\Portals\PortalUpdateParams\FlagState $flagState,
         ?RequestOptions $requestOptions = null,
     ): PortalFlagStateResponse {
-        [$parsed, $options] = PortalUpdateParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $appID = $parsed['appID'];
-        unset($parsed['appID']);
-        $flagName = $parsed['flagName'];
-        unset($parsed['flagName']);
+        $params = [
+            'appID' => $appID, 'flagName' => $flagName, 'flagState' => $flagState,
+        ];
 
-        /** @var BaseResponse<PortalFlagStateResponse> */
-        $response = $this->client->request(
-            method: 'put',
-            path: [
-                'feature-flags/v3/%1$s/flags/%2$s/portals/%3$s',
-                $appID,
-                $flagName,
-                $portalID,
-            ],
-            body: (object) array_diff_key($parsed, array_flip(['appID', 'flagName'])),
-            options: $options,
-            convert: PortalFlagStateResponse::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->update($portalID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -72,36 +61,22 @@ final class PortalsService implements PortalsContract
      *
      * Delete an account-level flag state for a specific HubSpot account. No request body is included.
      *
-     * @param array{appID: int, flagName: string}|PortalDeleteParams $params
+     * @param int $portalID the ID of the account that installed the app
+     * @param int $appID the ID of the app
+     * @param string $flagName the name of the flag, either `hs-release-app-cards` or `hs-hide-crm-cards`
      *
      * @throws APIException
      */
     public function delete(
         int $portalID,
-        array|PortalDeleteParams $params,
+        int $appID,
+        string $flagName,
         ?RequestOptions $requestOptions = null,
     ): PortalFlagStateResponse {
-        [$parsed, $options] = PortalDeleteParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $appID = $parsed['appID'];
-        unset($parsed['appID']);
-        $flagName = $parsed['flagName'];
-        unset($parsed['flagName']);
+        $params = ['appID' => $appID, 'flagName' => $flagName];
 
-        /** @var BaseResponse<PortalFlagStateResponse> */
-        $response = $this->client->request(
-            method: 'delete',
-            path: [
-                'feature-flags/v3/%1$s/flags/%2$s/portals/%3$s',
-                $appID,
-                $flagName,
-                $portalID,
-            ],
-            options: $options,
-            convert: PortalFlagStateResponse::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->delete($portalID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -111,34 +86,22 @@ final class PortalsService implements PortalsContract
      *
      * Delete an account-level flag state for multiple HubSpot accounts at once. Use this endpoint to manage flag exposure for groups of HubSpot accounts.
      *
-     * @param array{appID: int, portalIDs: list<int>}|PortalBatchDeleteParams $params
+     * @param string $flagName path param: The name of the flag, either `hs-release-app-cards` or `hs-hide-crm-cards`
+     * @param int $appID path param: The ID of the app
+     * @param list<int> $portalIDs Body param:
      *
      * @throws APIException
      */
     public function batchDelete(
         string $flagName,
-        array|PortalBatchDeleteParams $params,
+        int $appID,
+        array $portalIDs,
         ?RequestOptions $requestOptions = null,
     ): PortalFlagStateBatchResponse {
-        [$parsed, $options] = PortalBatchDeleteParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $appID = $parsed['appID'];
-        unset($parsed['appID']);
+        $params = ['appID' => $appID, 'portalIDs' => $portalIDs];
 
-        /** @var BaseResponse<PortalFlagStateBatchResponse> */
-        $response = $this->client->request(
-            method: 'post',
-            path: [
-                'feature-flags/v3/%1$s/flags/%2$s/portals/batch/delete',
-                $appID,
-                $flagName,
-            ],
-            body: (object) array_diff_key($parsed, ['appID']),
-            options: $options,
-            convert: PortalFlagStateBatchResponse::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->batchDelete($flagName, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -148,40 +111,24 @@ final class PortalsService implements PortalsContract
      *
      * Set the portal flag state for multiple HubSpot accounts at once. Use this endpoint to manage flag exposure for groups of HubSpot accounts.
      *
-     * @param array{
-     *   appID: int,
-     *   portalStates: list<array{
-     *     flagState: 'ABSENT'|'OFF'|'ON'|\HubspotSDK\Crm\FeatureFlags\BatchPortalEntry\FlagState,
-     *     portalID: int,
-     *   }>,
-     * }|PortalBatchUpsertParams $params
+     * @param string $flagName path param: The name of the flag, either `hs-release-app-cards` or `hs-hide-crm-cards`
+     * @param int $appID path param: The ID of the app
+     * @param list<array{
+     *   flagState: 'ABSENT'|'OFF'|'ON'|FlagState, portalID: int
+     * }> $portalStates Body param:
      *
      * @throws APIException
      */
     public function batchUpsert(
         string $flagName,
-        array|PortalBatchUpsertParams $params,
+        int $appID,
+        array $portalStates,
         ?RequestOptions $requestOptions = null,
     ): PortalFlagStateBatchResponse {
-        [$parsed, $options] = PortalBatchUpsertParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $appID = $parsed['appID'];
-        unset($parsed['appID']);
+        $params = ['appID' => $appID, 'portalStates' => $portalStates];
 
-        /** @var BaseResponse<PortalFlagStateBatchResponse> */
-        $response = $this->client->request(
-            method: 'post',
-            path: [
-                'feature-flags/v3/%1$s/flags/%2$s/portals/batch/upsert',
-                $appID,
-                $flagName,
-            ],
-            body: (object) array_diff_key($parsed, ['appID']),
-            options: $options,
-            convert: PortalFlagStateBatchResponse::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->batchUpsert($flagName, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -191,36 +138,22 @@ final class PortalsService implements PortalsContract
      *
      * Retrieve the account-level flag state of a specific HubSpot account.
      *
-     * @param array{appID: int, flagName: string}|PortalGetParams $params
+     * @param int $portalID the ID of the account that installed the app
+     * @param int $appID the ID of the app
+     * @param string $flagName the name of the flag, either `hs-release-app-cards` or `hs-hide-crm-cards`
      *
      * @throws APIException
      */
     public function get(
         int $portalID,
-        array|PortalGetParams $params,
+        int $appID,
+        string $flagName,
         ?RequestOptions $requestOptions = null,
     ): PortalFlagStateResponse {
-        [$parsed, $options] = PortalGetParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $appID = $parsed['appID'];
-        unset($parsed['appID']);
-        $flagName = $parsed['flagName'];
-        unset($parsed['flagName']);
+        $params = ['appID' => $appID, 'flagName' => $flagName];
 
-        /** @var BaseResponse<PortalFlagStateResponse> */
-        $response = $this->client->request(
-            method: 'get',
-            path: [
-                'feature-flags/v3/%1$s/flags/%2$s/portals/%3$s',
-                $appID,
-                $flagName,
-                $portalID,
-            ],
-            options: $options,
-            convert: PortalFlagStateResponse::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->get($portalID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }

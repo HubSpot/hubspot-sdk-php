@@ -42,17 +42,15 @@ final class BatchTest extends TestCase
 
         $result = $this->client->crm->associations->v4->batch->create(
             'toObjectType',
-            [
-                'fromObjectType' => 'fromObjectType',
-                'inputs' => [
-                    [
-                        'from' => ['id' => '37295'],
-                        'to' => ['id' => '37295'],
-                        'types' => [
-                            [
-                                'associationCategory' => 'HUBSPOT_DEFINED',
-                                'associationTypeID' => 0,
-                            ],
+            fromObjectType: 'fromObjectType',
+            inputs: [
+                [
+                    'from' => ['id' => '37295'],
+                    'to' => ['id' => '37295'],
+                    'types' => [
+                        [
+                            'associationCategory' => 'HUBSPOT_DEFINED',
+                            'associationTypeID' => 0,
                         ],
                     ],
                 ],
@@ -75,17 +73,15 @@ final class BatchTest extends TestCase
 
         $result = $this->client->crm->associations->v4->batch->create(
             'toObjectType',
-            [
-                'fromObjectType' => 'fromObjectType',
-                'inputs' => [
-                    [
-                        'from' => ['id' => '37295'],
-                        'to' => ['id' => '37295'],
-                        'types' => [
-                            [
-                                'associationCategory' => 'HUBSPOT_DEFINED',
-                                'associationTypeID' => 0,
-                            ],
+            fromObjectType: 'fromObjectType',
+            inputs: [
+                [
+                    'from' => ['id' => '37295'],
+                    'to' => ['id' => '37295'],
+                    'types' => [
+                        [
+                            'associationCategory' => 'HUBSPOT_DEFINED',
+                            'associationTypeID' => 0,
                         ],
                     ],
                 ],
@@ -108,12 +104,8 @@ final class BatchTest extends TestCase
 
         $result = $this->client->crm->associations->v4->batch->delete(
             'toObjectType',
-            [
-                'fromObjectType' => 'fromObjectType',
-                'inputs' => [
-                    ['from' => ['id' => '37295'], 'to' => [['id' => '37295']]],
-                ],
-            ],
+            fromObjectType: 'fromObjectType',
+            inputs: [['from' => ['id' => '37295'], 'to' => [['id' => '37295']]]],
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -129,12 +121,8 @@ final class BatchTest extends TestCase
 
         $result = $this->client->crm->associations->v4->batch->delete(
             'toObjectType',
-            [
-                'fromObjectType' => 'fromObjectType',
-                'inputs' => [
-                    ['from' => ['id' => '37295'], 'to' => [['id' => '37295']]],
-                ],
-            ],
+            fromObjectType: 'fromObjectType',
+            inputs: [['from' => ['id' => '37295'], 'to' => [['id' => '37295']]]],
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -150,10 +138,8 @@ final class BatchTest extends TestCase
 
         $result = $this->client->crm->associations->v4->batch->createDefault(
             'toObjectType',
-            [
-                'fromObjectType' => 'fromObjectType',
-                'inputs' => [['from' => ['id' => '37295'], 'to' => ['id' => '37295']]],
-            ],
+            fromObjectType: 'fromObjectType',
+            inputs: [['from' => ['id' => '37295'], 'to' => ['id' => '37295']]],
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -172,10 +158,8 @@ final class BatchTest extends TestCase
 
         $result = $this->client->crm->associations->v4->batch->createDefault(
             'toObjectType',
-            [
-                'fromObjectType' => 'fromObjectType',
-                'inputs' => [['from' => ['id' => '37295'], 'to' => ['id' => '37295']]],
-            ],
+            fromObjectType: 'fromObjectType',
+            inputs: [['from' => ['id' => '37295'], 'to' => ['id' => '37295']]],
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -194,17 +178,15 @@ final class BatchTest extends TestCase
 
         $result = $this->client->crm->associations->v4->batch->deleteLabels(
             'toObjectType',
-            [
-                'fromObjectType' => 'fromObjectType',
-                'inputs' => [
-                    [
-                        'from' => ['id' => '37295'],
-                        'to' => ['id' => '37295'],
-                        'types' => [
-                            [
-                                'associationCategory' => 'HUBSPOT_DEFINED',
-                                'associationTypeID' => 0,
-                            ],
+            fromObjectType: 'fromObjectType',
+            inputs: [
+                [
+                    'from' => ['id' => '37295'],
+                    'to' => ['id' => '37295'],
+                    'types' => [
+                        [
+                            'associationCategory' => 'HUBSPOT_DEFINED',
+                            'associationTypeID' => 0,
                         ],
                     ],
                 ],
@@ -224,17 +206,15 @@ final class BatchTest extends TestCase
 
         $result = $this->client->crm->associations->v4->batch->deleteLabels(
             'toObjectType',
-            [
-                'fromObjectType' => 'fromObjectType',
-                'inputs' => [
-                    [
-                        'from' => ['id' => '37295'],
-                        'to' => ['id' => '37295'],
-                        'types' => [
-                            [
-                                'associationCategory' => 'HUBSPOT_DEFINED',
-                                'associationTypeID' => 0,
-                            ],
+            fromObjectType: 'fromObjectType',
+            inputs: [
+                [
+                    'from' => ['id' => '37295'],
+                    'to' => ['id' => '37295'],
+                    'types' => [
+                        [
+                            'associationCategory' => 'HUBSPOT_DEFINED',
+                            'associationTypeID' => 0,
                         ],
                     ],
                 ],
@@ -254,7 +234,8 @@ final class BatchTest extends TestCase
 
         $result = $this->client->crm->associations->v4->batch->get(
             'toObjectType',
-            ['fromObjectType' => 'fromObjectType', 'inputs' => [['id' => 'id']]],
+            fromObjectType: 'fromObjectType',
+            inputs: [['id' => 'id']]
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -273,10 +254,8 @@ final class BatchTest extends TestCase
 
         $result = $this->client->crm->associations->v4->batch->get(
             'toObjectType',
-            [
-                'fromObjectType' => 'fromObjectType',
-                'inputs' => [['id' => 'id', 'after' => 'after']],
-            ],
+            fromObjectType: 'fromObjectType',
+            inputs: [['id' => 'id', 'after' => 'after']],
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

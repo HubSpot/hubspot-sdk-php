@@ -49,7 +49,7 @@ final class SubscriptionsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->subscriptions->pause(0, []);
+        $result = $this->client->crm->subscriptions->pause(0);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertIsString($result);
@@ -64,7 +64,7 @@ final class SubscriptionsTest extends TestCase
 
         $result = $this->client->crm->subscriptions->unpause(
             0,
-            ['proposedNextBillingDate' => 0]
+            proposedNextBillingDate: 0
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -80,7 +80,7 @@ final class SubscriptionsTest extends TestCase
 
         $result = $this->client->crm->subscriptions->unpause(
             0,
-            ['proposedNextBillingDate' => 0]
+            proposedNextBillingDate: 0
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

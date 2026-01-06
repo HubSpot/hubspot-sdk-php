@@ -15,6 +15,11 @@ final class AutomationService implements AutomationContract
     /**
      * @api
      */
+    public AutomationRawService $raw;
+
+    /**
+     * @api
+     */
     public ActionsService $actions;
 
     /**
@@ -32,6 +37,7 @@ final class AutomationService implements AutomationContract
      */
     public function __construct(private Client $client)
     {
+        $this->raw = new AutomationRawService($client);
         $this->actions = new ActionsService($client);
         $this->sequences = new SequencesService($client);
         $this->workflows = new WorkflowsService($client);

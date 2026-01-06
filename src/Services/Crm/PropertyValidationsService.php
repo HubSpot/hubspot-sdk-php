@@ -5,27 +5,34 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Crm;
 
 use HubspotSDK\Client;
-use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\PropertyValidations\CollectionResponsePublicPropertyValidationRuleMapNoPaging;
 use HubspotSDK\Crm\PropertyValidations\CollectionResponsePublicPropertyValidationRuleNoPaging;
-use HubspotSDK\Crm\PropertyValidations\PropertyValidationCrmV3PropertyValidationsObjectTypeIDPropertyNameRuleTypeRuleTypeParams;
 use HubspotSDK\Crm\PropertyValidations\PropertyValidationCrmV3PropertyValidationsObjectTypeIDPropertyNameRuleTypeRuleTypeParams\RuleType;
-use HubspotSDK\Crm\PropertyValidations\PropertyValidationGetParams;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\PropertyValidationsContract;
 
 final class PropertyValidationsService implements PropertyValidationsContract
 {
     /**
+     * @api
+     */
+    public PropertyValidationsRawService $raw;
+
+    /**
      * @internal
      */
-    public function __construct(private Client $client) {}
+    public function __construct(private Client $client)
+    {
+        $this->raw = new PropertyValidationsRawService($client);
+    }
 
     /**
      * @api
      *
      * Read all properties with validation rules for a given object.
+     *
+     * @param string $objectTypeID the ID of the object type for which all property validation rules are being retrieved
      *
      * @throws APIException
      */
@@ -33,13 +40,8 @@ final class PropertyValidationsService implements PropertyValidationsContract
         string $objectTypeID,
         ?RequestOptions $requestOptions = null
     ): CollectionResponsePublicPropertyValidationRuleMapNoPaging {
-        /** @var BaseResponse<CollectionResponsePublicPropertyValidationRuleMapNoPaging,> */
-        $response = $this->client->request(
-            method: 'get',
-            path: ['crm/v3/property-validations/%1$s', $objectTypeID],
-            options: $requestOptions,
-            convert: CollectionResponsePublicPropertyValidationRuleMapNoPaging::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->list($objectTypeID, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -49,43 +51,28 @@ final class PropertyValidationsService implements PropertyValidationsContract
      *
      * Update a specific validation rule for a property identified by its name and rule type.
      *
-     * @param RuleType|value-of<RuleType> $ruleType
-     * @param array{
-     *   objectTypeID: string, propertyName: string, ruleArguments: list<string>
-     * }|PropertyValidationCrmV3PropertyValidationsObjectTypeIDPropertyNameRuleTypeRuleTypeParams $params
+     * @param RuleType|value-of<RuleType> $ruleType path param: The type of validation rule being updated, such as FORMAT, ALPHANUMERIC, or MAX_LENGTH
+     * @param string $objectTypeID path param: The ID of the object type to which the property belongs
+     * @param string $propertyName path param: The name of the property for which the validation rule is being updated
+     * @param list<string> $ruleArguments body param: A list of arguments that define the constraints for the validation rule
      *
      * @throws APIException
      */
     public function crmV3PropertyValidationsObjectTypeIDPropertyNameRuleTypeRuleType(
         RuleType|string $ruleType,
-        array|PropertyValidationCrmV3PropertyValidationsObjectTypeIDPropertyNameRuleTypeRuleTypeParams $params,
+        string $objectTypeID,
+        string $propertyName,
+        array $ruleArguments,
         ?RequestOptions $requestOptions = null,
     ): mixed {
-        [$parsed, $options] = PropertyValidationCrmV3PropertyValidationsObjectTypeIDPropertyNameRuleTypeRuleTypeParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $objectTypeID = $parsed['objectTypeID'];
-        unset($parsed['objectTypeID']);
-        $propertyName = $parsed['propertyName'];
-        unset($parsed['propertyName']);
+        $params = [
+            'objectTypeID' => $objectTypeID,
+            'propertyName' => $propertyName,
+            'ruleArguments' => $ruleArguments,
+        ];
 
-        /** @var BaseResponse<mixed> */
-        $response = $this->client->request(
-            method: 'put',
-            path: [
-                'crm/v3/property-validations/%1$s/%2$s/rule-type/%3$s',
-                $objectTypeID,
-                $propertyName,
-                $ruleType,
-            ],
-            body: (object) array_diff_key(
-                $parsed,
-                array_flip(['objectTypeID', 'propertyName'])
-            ),
-            options: $options,
-            convert: null,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->crmV3PropertyValidationsObjectTypeIDPropertyNameRuleTypeRuleType($ruleType, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -95,31 +82,20 @@ final class PropertyValidationsService implements PropertyValidationsContract
      *
      * Read a property's validation rules identified by {propertyName}.
      *
-     * @param array{objectTypeID: string}|PropertyValidationGetParams $params
+     * @param string $propertyName the name of the property whose validation rules are being retrieved
+     * @param string $objectTypeID the ID of the object type to which the property belongs
      *
      * @throws APIException
      */
     public function get(
         string $propertyName,
-        array|PropertyValidationGetParams $params,
+        string $objectTypeID,
         ?RequestOptions $requestOptions = null,
     ): CollectionResponsePublicPropertyValidationRuleNoPaging {
-        [$parsed, $options] = PropertyValidationGetParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $objectTypeID = $parsed['objectTypeID'];
-        unset($parsed['objectTypeID']);
+        $params = ['objectTypeID' => $objectTypeID];
 
-        /** @var BaseResponse<CollectionResponsePublicPropertyValidationRuleNoPaging,> */
-        $response = $this->client->request(
-            method: 'get',
-            path: [
-                'crm/v3/property-validations/%1$s/%2$s', $objectTypeID, $propertyName,
-            ],
-            options: $options,
-            convert: CollectionResponsePublicPropertyValidationRuleNoPaging::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->get($propertyName, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }

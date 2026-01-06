@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Crm;
 
 use HubspotSDK\Client;
-use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\AppUninstallsContract;
@@ -13,9 +12,17 @@ use HubspotSDK\ServiceContracts\Crm\AppUninstallsContract;
 final class AppUninstallsService implements AppUninstallsContract
 {
     /**
+     * @api
+     */
+    public AppUninstallsRawService $raw;
+
+    /**
      * @internal
      */
-    public function __construct(private Client $client) {}
+    public function __construct(private Client $client)
+    {
+        $this->raw = new AppUninstallsRawService($client);
+    }
 
     /**
      * @api
@@ -26,13 +33,8 @@ final class AppUninstallsService implements AppUninstallsContract
      */
     public function uninstall(?RequestOptions $requestOptions = null): mixed
     {
-        /** @var BaseResponse<mixed> */
-        $response = $this->client->request(
-            method: 'delete',
-            path: 'appinstalls/v3/external-install',
-            options: $requestOptions,
-            convert: null,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->uninstall(requestOptions: $requestOptions);
 
         return $response->parse();
     }

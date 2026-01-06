@@ -40,7 +40,7 @@ final class MeetingsLinksTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->scheduler->meetings->meetingsLinks->list([]);
+        $result = $this->client->scheduler->meetings->meetingsLinks->list();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(Page::class, $result);
@@ -53,19 +53,19 @@ final class MeetingsLinksTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->scheduler->meetings->meetingsLinks->book([
-            'duration' => 0,
-            'email' => 'email',
-            'firstName' => 'firstName',
-            'formFields' => [['name' => 'name', 'value' => 'value']],
-            'lastName' => 'lastName',
-            'legalConsentResponses' => [
+        $result = $this->client->scheduler->meetings->meetingsLinks->book(
+            duration: 0,
+            email: 'email',
+            firstName: 'firstName',
+            formFields: [['name' => 'name', 'value' => 'value']],
+            lastName: 'lastName',
+            legalConsentResponses: [
                 ['communicationTypeID' => 'communicationTypeId', 'consented' => true],
             ],
-            'likelyAvailableUserIDs' => ['string'],
-            'slug' => 'slug',
-            'startTime' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-        ]);
+            likelyAvailableUserIDs: ['string'],
+            slug: 'slug',
+            startTime: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(ExternalMeetingBookingResponse::class, $result);
@@ -78,21 +78,21 @@ final class MeetingsLinksTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->scheduler->meetings->meetingsLinks->book([
-            'duration' => 0,
-            'email' => 'email',
-            'firstName' => 'firstName',
-            'formFields' => [['name' => 'name', 'value' => 'value']],
-            'lastName' => 'lastName',
-            'legalConsentResponses' => [
+        $result = $this->client->scheduler->meetings->meetingsLinks->book(
+            duration: 0,
+            email: 'email',
+            firstName: 'firstName',
+            formFields: [['name' => 'name', 'value' => 'value']],
+            lastName: 'lastName',
+            legalConsentResponses: [
                 ['communicationTypeID' => 'communicationTypeId', 'consented' => true],
             ],
-            'likelyAvailableUserIDs' => ['string'],
-            'slug' => 'slug',
-            'startTime' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-            'locale' => 'locale',
-            'timezone' => 'timezone',
-        ]);
+            likelyAvailableUserIDs: ['string'],
+            slug: 'slug',
+            startTime: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
+            locale: 'locale',
+            timezone: 'timezone',
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(ExternalMeetingBookingResponse::class, $result);
@@ -110,7 +110,7 @@ final class MeetingsLinksTest extends TestCase
             ->scheduler
             ->meetings
             ->meetingsLinks
-            ->getAvailabilityBySlug('slug', ['timezone' => 'timezone'])
+            ->getAvailabilityBySlug('slug', timezone: 'timezone')
         ;
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -132,10 +132,7 @@ final class MeetingsLinksTest extends TestCase
             ->scheduler
             ->meetings
             ->meetingsLinks
-            ->getAvailabilityBySlug(
-                'slug',
-                ['timezone' => 'timezone', 'monthOffset' => 0]
-            )
+            ->getAvailabilityBySlug('slug', timezone: 'timezone', monthOffset: 0)
         ;
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -157,7 +154,7 @@ final class MeetingsLinksTest extends TestCase
             ->scheduler
             ->meetings
             ->meetingsLinks
-            ->getBookingInfoBySlug('slug', ['timezone' => 'timezone'])
+            ->getBookingInfoBySlug('slug', timezone: 'timezone')
         ;
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -176,7 +173,7 @@ final class MeetingsLinksTest extends TestCase
             ->scheduler
             ->meetings
             ->meetingsLinks
-            ->getBookingInfoBySlug('slug', ['timezone' => 'timezone'])
+            ->getBookingInfoBySlug('slug', timezone: 'timezone')
         ;
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

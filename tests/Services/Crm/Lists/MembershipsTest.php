@@ -39,7 +39,7 @@ final class MembershipsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->lists->memberships->list('listId', []);
+        $result = $this->client->crm->lists->memberships->list('listId');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(Page::class, $result);
@@ -54,7 +54,7 @@ final class MembershipsTest extends TestCase
 
         $result = $this->client->crm->lists->memberships->add(
             'listId',
-            ['body' => ['string']]
+            body: ['string']
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -70,7 +70,7 @@ final class MembershipsTest extends TestCase
 
         $result = $this->client->crm->lists->memberships->add(
             'listId',
-            ['body' => ['string']]
+            body: ['string']
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -86,7 +86,7 @@ final class MembershipsTest extends TestCase
 
         $result = $this->client->crm->lists->memberships->addAllFromList(
             'sourceListId',
-            ['listID' => 'listId']
+            listID: 'listId'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -102,7 +102,7 @@ final class MembershipsTest extends TestCase
 
         $result = $this->client->crm->lists->memberships->addAllFromList(
             'sourceListId',
-            ['listID' => 'listId']
+            listID: 'listId'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -118,10 +118,8 @@ final class MembershipsTest extends TestCase
 
         $result = $this->client->crm->lists->memberships->addAndRemove(
             'listId',
-            [
-                'recordIDsToAdd' => ['123', '456', '789'],
-                'recordIDsToRemove' => ['654'],
-            ],
+            recordIDsToAdd: ['123', '456', '789'],
+            recordIDsToRemove: ['654'],
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -137,10 +135,8 @@ final class MembershipsTest extends TestCase
 
         $result = $this->client->crm->lists->memberships->addAndRemove(
             'listId',
-            [
-                'recordIDsToAdd' => ['123', '456', '789'],
-                'recordIDsToRemove' => ['654'],
-            ],
+            recordIDsToAdd: ['123', '456', '789'],
+            recordIDsToRemove: ['654'],
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -156,7 +152,7 @@ final class MembershipsTest extends TestCase
 
         $result = $this->client->crm->lists->memberships->getLists(
             'recordId',
-            ['objectTypeID' => 'objectTypeId']
+            objectTypeID: 'objectTypeId'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -175,7 +171,7 @@ final class MembershipsTest extends TestCase
 
         $result = $this->client->crm->lists->memberships->getLists(
             'recordId',
-            ['objectTypeID' => 'objectTypeId']
+            objectTypeID: 'objectTypeId'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -197,7 +193,7 @@ final class MembershipsTest extends TestCase
             ->crm
             ->lists
             ->memberships
-            ->getPageOrderedByAddedToListDate('listId', [])
+            ->getPageOrderedByAddedToListDate('listId')
         ;
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -213,7 +209,7 @@ final class MembershipsTest extends TestCase
 
         $result = $this->client->crm->lists->memberships->remove(
             'listId',
-            ['body' => ['string']]
+            body: ['string']
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -229,7 +225,7 @@ final class MembershipsTest extends TestCase
 
         $result = $this->client->crm->lists->memberships->remove(
             'listId',
-            ['body' => ['string']]
+            body: ['string']
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

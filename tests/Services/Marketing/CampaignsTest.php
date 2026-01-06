@@ -39,9 +39,9 @@ final class CampaignsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->campaigns->create([
-            'properties' => ['foo' => 'string'],
-        ]);
+        $result = $this->client->marketing->campaigns->create(
+            properties: ['foo' => 'string']
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(PublicCampaign::class, $result);
@@ -54,9 +54,9 @@ final class CampaignsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->campaigns->create([
-            'properties' => ['foo' => 'string'],
-        ]);
+        $result = $this->client->marketing->campaigns->create(
+            properties: ['foo' => 'string']
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(PublicCampaign::class, $result);
@@ -71,7 +71,7 @@ final class CampaignsTest extends TestCase
 
         $result = $this->client->marketing->campaigns->update(
             'campaignGuid',
-            ['properties' => ['foo' => 'string']]
+            properties: ['foo' => 'string']
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -87,7 +87,7 @@ final class CampaignsTest extends TestCase
 
         $result = $this->client->marketing->campaigns->update(
             'campaignGuid',
-            ['properties' => ['foo' => 'string']]
+            properties: ['foo' => 'string']
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -101,7 +101,7 @@ final class CampaignsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->campaigns->list([]);
+        $result = $this->client->marketing->campaigns->list();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(Page::class, $result);
@@ -127,7 +127,7 @@ final class CampaignsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->campaigns->get('campaignGuid', []);
+        $result = $this->client->marketing->campaigns->get('campaignGuid');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(PublicCampaignWithAssets::class, $result);

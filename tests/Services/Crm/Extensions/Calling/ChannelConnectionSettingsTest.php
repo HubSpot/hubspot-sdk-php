@@ -43,7 +43,7 @@ final class ChannelConnectionSettingsTest extends TestCase
             ->extensions
             ->calling
             ->channelConnectionSettings
-            ->create(0, ['isReady' => true, 'url' => 'url'])
+            ->create(0, isReady: true, url: 'url')
         ;
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -63,7 +63,7 @@ final class ChannelConnectionSettingsTest extends TestCase
             ->extensions
             ->calling
             ->channelConnectionSettings
-            ->create(0, ['isReady' => true, 'url' => 'url'])
+            ->create(0, isReady: true, url: 'url')
         ;
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -83,7 +83,7 @@ final class ChannelConnectionSettingsTest extends TestCase
             ->extensions
             ->calling
             ->channelConnectionSettings
-            ->update(0, [])
+            ->update(0)
         ;
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

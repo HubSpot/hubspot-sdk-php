@@ -40,7 +40,8 @@ final class AppsTest extends TestCase
 
         $result = $this->client->crm->featureFlags->apps->update(
             'flagName',
-            ['appID' => 0, 'defaultState' => 'ABSENT']
+            appID: 0,
+            defaultState: 'ABSENT'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -56,7 +57,9 @@ final class AppsTest extends TestCase
 
         $result = $this->client->crm->featureFlags->apps->update(
             'flagName',
-            ['appID' => 0, 'defaultState' => 'ABSENT', 'overrideState' => 'ABSENT'],
+            appID: 0,
+            defaultState: 'ABSENT',
+            overrideState: 'ABSENT'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -72,7 +75,7 @@ final class AppsTest extends TestCase
 
         $result = $this->client->crm->featureFlags->apps->delete(
             'flagName',
-            ['appID' => 0]
+            appID: 0
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -88,7 +91,7 @@ final class AppsTest extends TestCase
 
         $result = $this->client->crm->featureFlags->apps->delete(
             'flagName',
-            ['appID' => 0]
+            appID: 0
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -102,10 +105,7 @@ final class AppsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->featureFlags->apps->get(
-            'flagName',
-            ['appID' => 0]
-        );
+        $result = $this->client->crm->featureFlags->apps->get('flagName', appID: 0);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(FlagResponse::class, $result);
@@ -118,10 +118,7 @@ final class AppsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->featureFlags->apps->get(
-            'flagName',
-            ['appID' => 0]
-        );
+        $result = $this->client->crm->featureFlags->apps->get('flagName', appID: 0);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(FlagResponse::class, $result);
@@ -136,7 +133,7 @@ final class AppsTest extends TestCase
 
         $result = $this->client->crm->featureFlags->apps->listPortals(
             'flagName',
-            ['appID' => 0]
+            appID: 0
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -152,7 +149,9 @@ final class AppsTest extends TestCase
 
         $result = $this->client->crm->featureFlags->apps->listPortals(
             'flagName',
-            ['appID' => 0, 'limit' => 0, 'startPortalID' => 0]
+            appID: 0,
+            limit: 0,
+            startPortalID: 0
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

@@ -41,7 +41,7 @@ final class SubscriptionsTest extends TestCase
 
         $result = $this->client->webhooks->subscriptions->create(
             0,
-            ['eventType' => 'contact.propertyChange']
+            eventType: 'contact.propertyChange'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -57,12 +57,10 @@ final class SubscriptionsTest extends TestCase
 
         $result = $this->client->webhooks->subscriptions->create(
             0,
-            [
-                'eventType' => 'contact.propertyChange',
-                'active' => true,
-                'objectTypeID' => 'objectTypeId',
-                'propertyName' => 'email',
-            ],
+            eventType: 'contact.propertyChange',
+            active: true,
+            objectTypeID: 'objectTypeId',
+            propertyName: 'email',
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -76,7 +74,7 @@ final class SubscriptionsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->webhooks->subscriptions->update(0, ['appID' => 0]);
+        $result = $this->client->webhooks->subscriptions->update(0, appID: 0);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(SubscriptionResponse::class, $result);
@@ -91,7 +89,8 @@ final class SubscriptionsTest extends TestCase
 
         $result = $this->client->webhooks->subscriptions->update(
             0,
-            ['appID' => 0, 'active' => true]
+            appID: 0,
+            active: true
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -118,7 +117,7 @@ final class SubscriptionsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->webhooks->subscriptions->delete(0, ['appID' => 0]);
+        $result = $this->client->webhooks->subscriptions->delete(0, appID: 0);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);
@@ -131,7 +130,7 @@ final class SubscriptionsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->webhooks->subscriptions->delete(0, ['appID' => 0]);
+        $result = $this->client->webhooks->subscriptions->delete(0, appID: 0);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);
@@ -144,7 +143,7 @@ final class SubscriptionsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->webhooks->subscriptions->get(0, ['appID' => 0]);
+        $result = $this->client->webhooks->subscriptions->get(0, appID: 0);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(SubscriptionResponse::class, $result);
@@ -157,7 +156,7 @@ final class SubscriptionsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->webhooks->subscriptions->get(0, ['appID' => 0]);
+        $result = $this->client->webhooks->subscriptions->get(0, appID: 0);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(SubscriptionResponse::class, $result);
@@ -172,7 +171,7 @@ final class SubscriptionsTest extends TestCase
 
         $result = $this->client->webhooks->subscriptions->updateBatch(
             0,
-            ['inputs' => [['id' => 0, 'active' => true]]]
+            inputs: [['id' => 0, 'active' => true]]
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -188,7 +187,7 @@ final class SubscriptionsTest extends TestCase
 
         $result = $this->client->webhooks->subscriptions->updateBatch(
             0,
-            ['inputs' => [['id' => 0, 'active' => true]]]
+            inputs: [['id' => 0, 'active' => true]]
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

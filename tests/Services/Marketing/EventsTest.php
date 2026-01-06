@@ -46,8 +46,8 @@ final class EventsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->events->create([
-            'customProperties' => [
+        $result = $this->client->marketing->events->create(
+            customProperties: [
                 [
                     'dataSensitivity' => 'high',
                     'isEncrypted' => true,
@@ -70,11 +70,11 @@ final class EventsTest extends TestCase
                     'value' => 'value',
                 ],
             ],
-            'eventName' => 'eventName',
-            'eventOrganizer' => 'eventOrganizer',
-            'externalAccountID' => 'externalAccountId',
-            'externalEventID' => 'externalEventId',
-        ]);
+            eventName: 'eventName',
+            eventOrganizer: 'eventOrganizer',
+            externalAccountID: 'externalAccountId',
+            externalEventID: 'externalEventId',
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(MarketingEventDefaultResponse::class, $result);
@@ -87,8 +87,8 @@ final class EventsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->events->create([
-            'customProperties' => [
+        $result = $this->client->marketing->events->create(
+            customProperties: [
                 [
                     'dataSensitivity' => 'high',
                     'isEncrypted' => true,
@@ -111,18 +111,18 @@ final class EventsTest extends TestCase
                     'value' => 'value',
                 ],
             ],
-            'eventName' => 'eventName',
-            'eventOrganizer' => 'eventOrganizer',
-            'externalAccountID' => 'externalAccountId',
-            'externalEventID' => 'externalEventId',
-            'endDateTime' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-            'eventCancelled' => true,
-            'eventCompleted' => true,
-            'eventDescription' => 'eventDescription',
-            'eventType' => 'eventType',
-            'eventURL' => 'eventUrl',
-            'startDateTime' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-        ]);
+            eventName: 'eventName',
+            eventOrganizer: 'eventOrganizer',
+            externalAccountID: 'externalAccountId',
+            externalEventID: 'externalEventId',
+            endDateTime: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
+            eventCancelled: true,
+            eventCompleted: true,
+            eventDescription: 'eventDescription',
+            eventType: 'eventType',
+            eventURL: 'eventUrl',
+            startDateTime: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(MarketingEventDefaultResponse::class, $result);
@@ -137,29 +137,27 @@ final class EventsTest extends TestCase
 
         $result = $this->client->marketing->events->update(
             'objectId',
-            [
-                'customProperties' => [
-                    [
-                        'dataSensitivity' => 'high',
-                        'isEncrypted' => true,
-                        'isLargeValue' => true,
-                        'name' => 'name',
-                        'persistenceTimestamp' => 0,
-                        'requestID' => 'requestId',
-                        'selectedByUser' => true,
-                        'selectedByUserTimestamp' => 0,
-                        'source' => 'ACADEMY',
-                        'sourceID' => 'sourceId',
-                        'sourceLabel' => 'sourceLabel',
-                        'sourceMetadata' => 'sourceMetadata',
-                        'sourceUpstreamDeployable' => 'sourceUpstreamDeployable',
-                        'sourceVid' => [0],
-                        'timestamp' => 0,
-                        'unit' => 'unit',
-                        'updatedByUserID' => 0,
-                        'useTimestampAsPersistenceTimestamp' => true,
-                        'value' => 'value',
-                    ],
+            customProperties: [
+                [
+                    'dataSensitivity' => 'high',
+                    'isEncrypted' => true,
+                    'isLargeValue' => true,
+                    'name' => 'name',
+                    'persistenceTimestamp' => 0,
+                    'requestID' => 'requestId',
+                    'selectedByUser' => true,
+                    'selectedByUserTimestamp' => 0,
+                    'source' => 'ACADEMY',
+                    'sourceID' => 'sourceId',
+                    'sourceLabel' => 'sourceLabel',
+                    'sourceMetadata' => 'sourceMetadata',
+                    'sourceUpstreamDeployable' => 'sourceUpstreamDeployable',
+                    'sourceVid' => [0],
+                    'timestamp' => 0,
+                    'unit' => 'unit',
+                    'updatedByUserID' => 0,
+                    'useTimestampAsPersistenceTimestamp' => true,
+                    'value' => 'value',
                 ],
             ],
         );
@@ -180,39 +178,37 @@ final class EventsTest extends TestCase
 
         $result = $this->client->marketing->events->update(
             'objectId',
-            [
-                'customProperties' => [
-                    [
-                        'dataSensitivity' => 'high',
-                        'isEncrypted' => true,
-                        'isLargeValue' => true,
-                        'name' => 'name',
-                        'persistenceTimestamp' => 0,
-                        'requestID' => 'requestId',
-                        'selectedByUser' => true,
-                        'selectedByUserTimestamp' => 0,
-                        'source' => 'ACADEMY',
-                        'sourceID' => 'sourceId',
-                        'sourceLabel' => 'sourceLabel',
-                        'sourceMetadata' => 'sourceMetadata',
-                        'sourceUpstreamDeployable' => 'sourceUpstreamDeployable',
-                        'sourceVid' => [0],
-                        'timestamp' => 0,
-                        'unit' => 'unit',
-                        'updatedByUserID' => 0,
-                        'useTimestampAsPersistenceTimestamp' => true,
-                        'value' => 'value',
-                    ],
+            customProperties: [
+                [
+                    'dataSensitivity' => 'high',
+                    'isEncrypted' => true,
+                    'isLargeValue' => true,
+                    'name' => 'name',
+                    'persistenceTimestamp' => 0,
+                    'requestID' => 'requestId',
+                    'selectedByUser' => true,
+                    'selectedByUserTimestamp' => 0,
+                    'source' => 'ACADEMY',
+                    'sourceID' => 'sourceId',
+                    'sourceLabel' => 'sourceLabel',
+                    'sourceMetadata' => 'sourceMetadata',
+                    'sourceUpstreamDeployable' => 'sourceUpstreamDeployable',
+                    'sourceVid' => [0],
+                    'timestamp' => 0,
+                    'unit' => 'unit',
+                    'updatedByUserID' => 0,
+                    'useTimestampAsPersistenceTimestamp' => true,
+                    'value' => 'value',
                 ],
-                'endDateTime' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-                'eventCancelled' => true,
-                'eventDescription' => 'eventDescription',
-                'eventName' => 'eventName',
-                'eventOrganizer' => 'eventOrganizer',
-                'eventType' => 'eventType',
-                'eventURL' => 'eventUrl',
-                'startDateTime' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
             ],
+            endDateTime: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
+            eventCancelled: true,
+            eventDescription: 'eventDescription',
+            eventName: 'eventName',
+            eventOrganizer: 'eventOrganizer',
+            eventType: 'eventType',
+            eventURL: 'eventUrl',
+            startDateTime: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -229,7 +225,7 @@ final class EventsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->events->list([]);
+        $result = $this->client->marketing->events->list();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(Page::class, $result);
@@ -257,7 +253,7 @@ final class EventsTest extends TestCase
 
         $result = $this->client->marketing->events->cancelByExternalEventID(
             'externalEventId',
-            ['externalAccountID' => 'externalAccountId']
+            externalAccountID: 'externalAccountId'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -273,7 +269,7 @@ final class EventsTest extends TestCase
 
         $result = $this->client->marketing->events->cancelByExternalEventID(
             'externalEventId',
-            ['externalAccountID' => 'externalAccountId']
+            externalAccountID: 'externalAccountId'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -289,11 +285,9 @@ final class EventsTest extends TestCase
 
         $result = $this->client->marketing->events->completeByExternalEventID(
             'externalEventId',
-            [
-                'externalAccountID' => 'externalAccountId',
-                'endDateTime' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-                'startDateTime' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-            ],
+            externalAccountID: 'externalAccountId',
+            endDateTime: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
+            startDateTime: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -309,11 +303,9 @@ final class EventsTest extends TestCase
 
         $result = $this->client->marketing->events->completeByExternalEventID(
             'externalEventId',
-            [
-                'externalAccountID' => 'externalAccountId',
-                'endDateTime' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-                'startDateTime' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-            ],
+            externalAccountID: 'externalAccountId',
+            endDateTime: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
+            startDateTime: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -327,9 +319,9 @@ final class EventsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->events->deleteBatch([
-            'inputs' => [['objectID' => 'objectId']],
-        ]);
+        $result = $this->client->marketing->events->deleteBatch(
+            inputs: [['objectID' => 'objectId']]
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);
@@ -342,9 +334,9 @@ final class EventsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->events->deleteBatch([
-            'inputs' => [['objectID' => 'objectId']],
-        ]);
+        $result = $this->client->marketing->events->deleteBatch(
+            inputs: [['objectID' => 'objectId']]
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);
@@ -357,15 +349,15 @@ final class EventsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->events->deleteBatchByExternalEventID([
-            'inputs' => [
+        $result = $this->client->marketing->events->deleteBatchByExternalEventID(
+            inputs: [
                 [
                     'appID' => 0,
                     'externalAccountID' => 'externalAccountId',
                     'externalEventID' => 'externalEventId',
                 ],
             ],
-        ]);
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertIsString($result);
@@ -378,15 +370,15 @@ final class EventsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->events->deleteBatchByExternalEventID([
-            'inputs' => [
+        $result = $this->client->marketing->events->deleteBatchByExternalEventID(
+            inputs: [
                 [
                     'appID' => 0,
                     'externalAccountID' => 'externalAccountId',
                     'externalEventID' => 'externalEventId',
                 ],
             ],
-        ]);
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertIsString($result);
@@ -401,7 +393,7 @@ final class EventsTest extends TestCase
 
         $result = $this->client->marketing->events->deleteByExternalEventID(
             'externalEventId',
-            ['externalAccountID' => 'externalAccountId']
+            externalAccountID: 'externalAccountId'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -417,7 +409,7 @@ final class EventsTest extends TestCase
 
         $result = $this->client->marketing->events->deleteByExternalEventID(
             'externalEventId',
-            ['externalAccountID' => 'externalAccountId']
+            externalAccountID: 'externalAccountId'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -446,7 +438,7 @@ final class EventsTest extends TestCase
 
         $result = $this->client->marketing->events->getByExternalEventID(
             'externalEventId',
-            ['externalAccountID' => 'externalAccountId']
+            externalAccountID: 'externalAccountId'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -462,7 +454,7 @@ final class EventsTest extends TestCase
 
         $result = $this->client->marketing->events->getByExternalEventID(
             'externalEventId',
-            ['externalAccountID' => 'externalAccountId']
+            externalAccountID: 'externalAccountId'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -476,9 +468,7 @@ final class EventsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->events->searchByExternalEventID([
-            'q' => 'q',
-        ]);
+        $result = $this->client->marketing->events->searchByExternalEventID(q: 'q');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(
@@ -494,9 +484,7 @@ final class EventsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->events->searchByExternalEventID([
-            'q' => 'q',
-        ]);
+        $result = $this->client->marketing->events->searchByExternalEventID(q: 'q');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(
@@ -533,8 +521,8 @@ final class EventsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->events->updateBatch([
-            'inputs' => [
+        $result = $this->client->marketing->events->updateBatch(
+            inputs: [
                 [
                     'customProperties' => [
                         [
@@ -562,7 +550,7 @@ final class EventsTest extends TestCase
                     'objectID' => 'objectId',
                 ],
             ],
-        ]);
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(
@@ -578,8 +566,8 @@ final class EventsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->events->updateBatch([
-            'inputs' => [
+        $result = $this->client->marketing->events->updateBatch(
+            inputs: [
                 [
                     'customProperties' => [
                         [
@@ -615,7 +603,7 @@ final class EventsTest extends TestCase
                     'startDateTime' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
                 ],
             ],
-        ]);
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(
@@ -633,30 +621,28 @@ final class EventsTest extends TestCase
 
         $result = $this->client->marketing->events->updateByExternalEventID(
             'externalEventId',
-            [
-                'externalAccountID' => 'externalAccountId',
-                'customProperties' => [
-                    [
-                        'dataSensitivity' => 'high',
-                        'isEncrypted' => true,
-                        'isLargeValue' => true,
-                        'name' => 'name',
-                        'persistenceTimestamp' => 0,
-                        'requestID' => 'requestId',
-                        'selectedByUser' => true,
-                        'selectedByUserTimestamp' => 0,
-                        'source' => 'ACADEMY',
-                        'sourceID' => 'sourceId',
-                        'sourceLabel' => 'sourceLabel',
-                        'sourceMetadata' => 'sourceMetadata',
-                        'sourceUpstreamDeployable' => 'sourceUpstreamDeployable',
-                        'sourceVid' => [0],
-                        'timestamp' => 0,
-                        'unit' => 'unit',
-                        'updatedByUserID' => 0,
-                        'useTimestampAsPersistenceTimestamp' => true,
-                        'value' => 'value',
-                    ],
+            externalAccountID: 'externalAccountId',
+            customProperties: [
+                [
+                    'dataSensitivity' => 'high',
+                    'isEncrypted' => true,
+                    'isLargeValue' => true,
+                    'name' => 'name',
+                    'persistenceTimestamp' => 0,
+                    'requestID' => 'requestId',
+                    'selectedByUser' => true,
+                    'selectedByUserTimestamp' => 0,
+                    'source' => 'ACADEMY',
+                    'sourceID' => 'sourceId',
+                    'sourceLabel' => 'sourceLabel',
+                    'sourceMetadata' => 'sourceMetadata',
+                    'sourceUpstreamDeployable' => 'sourceUpstreamDeployable',
+                    'sourceVid' => [0],
+                    'timestamp' => 0,
+                    'unit' => 'unit',
+                    'updatedByUserID' => 0,
+                    'useTimestampAsPersistenceTimestamp' => true,
+                    'value' => 'value',
                 ],
             ],
         );
@@ -677,41 +663,39 @@ final class EventsTest extends TestCase
 
         $result = $this->client->marketing->events->updateByExternalEventID(
             'externalEventId',
-            [
-                'externalAccountID' => 'externalAccountId',
-                'customProperties' => [
-                    [
-                        'dataSensitivity' => 'high',
-                        'isEncrypted' => true,
-                        'isLargeValue' => true,
-                        'name' => 'name',
-                        'persistenceTimestamp' => 0,
-                        'requestID' => 'requestId',
-                        'selectedByUser' => true,
-                        'selectedByUserTimestamp' => 0,
-                        'source' => 'ACADEMY',
-                        'sourceID' => 'sourceId',
-                        'sourceLabel' => 'sourceLabel',
-                        'sourceMetadata' => 'sourceMetadata',
-                        'sourceUpstreamDeployable' => 'sourceUpstreamDeployable',
-                        'sourceVid' => [0],
-                        'timestamp' => 0,
-                        'unit' => 'unit',
-                        'updatedByUserID' => 0,
-                        'useTimestampAsPersistenceTimestamp' => true,
-                        'value' => 'value',
-                    ],
+            externalAccountID: 'externalAccountId',
+            customProperties: [
+                [
+                    'dataSensitivity' => 'high',
+                    'isEncrypted' => true,
+                    'isLargeValue' => true,
+                    'name' => 'name',
+                    'persistenceTimestamp' => 0,
+                    'requestID' => 'requestId',
+                    'selectedByUser' => true,
+                    'selectedByUserTimestamp' => 0,
+                    'source' => 'ACADEMY',
+                    'sourceID' => 'sourceId',
+                    'sourceLabel' => 'sourceLabel',
+                    'sourceMetadata' => 'sourceMetadata',
+                    'sourceUpstreamDeployable' => 'sourceUpstreamDeployable',
+                    'sourceVid' => [0],
+                    'timestamp' => 0,
+                    'unit' => 'unit',
+                    'updatedByUserID' => 0,
+                    'useTimestampAsPersistenceTimestamp' => true,
+                    'value' => 'value',
                 ],
-                'endDateTime' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-                'eventCancelled' => true,
-                'eventCompleted' => true,
-                'eventDescription' => 'eventDescription',
-                'eventName' => 'eventName',
-                'eventOrganizer' => 'eventOrganizer',
-                'eventType' => 'eventType',
-                'eventURL' => 'eventUrl',
-                'startDateTime' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
             ],
+            endDateTime: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
+            eventCancelled: true,
+            eventCompleted: true,
+            eventDescription: 'eventDescription',
+            eventName: 'eventName',
+            eventOrganizer: 'eventOrganizer',
+            eventType: 'eventType',
+            eventURL: 'eventUrl',
+            startDateTime: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -728,8 +712,8 @@ final class EventsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->events->upsertBatch([
-            'inputs' => [
+        $result = $this->client->marketing->events->upsertBatch(
+            inputs: [
                 [
                     'customProperties' => [
                         [
@@ -760,7 +744,7 @@ final class EventsTest extends TestCase
                     'externalEventID' => 'externalEventId',
                 ],
             ],
-        ]);
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(
@@ -776,8 +760,8 @@ final class EventsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->events->upsertBatch([
-            'inputs' => [
+        $result = $this->client->marketing->events->upsertBatch(
+            inputs: [
                 [
                     'customProperties' => [
                         [
@@ -815,7 +799,7 @@ final class EventsTest extends TestCase
                     'startDateTime' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
                 ],
             ],
-        ]);
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(
@@ -833,35 +817,33 @@ final class EventsTest extends TestCase
 
         $result = $this->client->marketing->events->upsertByExternalEventID(
             'externalEventId',
-            [
-                'customProperties' => [
-                    [
-                        'dataSensitivity' => 'high',
-                        'isEncrypted' => true,
-                        'isLargeValue' => true,
-                        'name' => 'name',
-                        'persistenceTimestamp' => 0,
-                        'requestID' => 'requestId',
-                        'selectedByUser' => true,
-                        'selectedByUserTimestamp' => 0,
-                        'source' => 'ACADEMY',
-                        'sourceID' => 'sourceId',
-                        'sourceLabel' => 'sourceLabel',
-                        'sourceMetadata' => 'sourceMetadata',
-                        'sourceUpstreamDeployable' => 'sourceUpstreamDeployable',
-                        'sourceVid' => [0],
-                        'timestamp' => 0,
-                        'unit' => 'unit',
-                        'updatedByUserID' => 0,
-                        'useTimestampAsPersistenceTimestamp' => true,
-                        'value' => 'value',
-                    ],
+            customProperties: [
+                [
+                    'dataSensitivity' => 'high',
+                    'isEncrypted' => true,
+                    'isLargeValue' => true,
+                    'name' => 'name',
+                    'persistenceTimestamp' => 0,
+                    'requestID' => 'requestId',
+                    'selectedByUser' => true,
+                    'selectedByUserTimestamp' => 0,
+                    'source' => 'ACADEMY',
+                    'sourceID' => 'sourceId',
+                    'sourceLabel' => 'sourceLabel',
+                    'sourceMetadata' => 'sourceMetadata',
+                    'sourceUpstreamDeployable' => 'sourceUpstreamDeployable',
+                    'sourceVid' => [0],
+                    'timestamp' => 0,
+                    'unit' => 'unit',
+                    'updatedByUserID' => 0,
+                    'useTimestampAsPersistenceTimestamp' => true,
+                    'value' => 'value',
                 ],
-                'eventName' => 'eventName',
-                'eventOrganizer' => 'eventOrganizer',
-                'externalAccountID' => 'externalAccountId',
-                'externalEventID' => 'externalEventId',
             ],
+            eventName: 'eventName',
+            eventOrganizer: 'eventOrganizer',
+            externalAccountID: 'externalAccountId',
+            externalEventID: 'externalEventId',
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -880,42 +862,40 @@ final class EventsTest extends TestCase
 
         $result = $this->client->marketing->events->upsertByExternalEventID(
             'externalEventId',
-            [
-                'customProperties' => [
-                    [
-                        'dataSensitivity' => 'high',
-                        'isEncrypted' => true,
-                        'isLargeValue' => true,
-                        'name' => 'name',
-                        'persistenceTimestamp' => 0,
-                        'requestID' => 'requestId',
-                        'selectedByUser' => true,
-                        'selectedByUserTimestamp' => 0,
-                        'source' => 'ACADEMY',
-                        'sourceID' => 'sourceId',
-                        'sourceLabel' => 'sourceLabel',
-                        'sourceMetadata' => 'sourceMetadata',
-                        'sourceUpstreamDeployable' => 'sourceUpstreamDeployable',
-                        'sourceVid' => [0],
-                        'timestamp' => 0,
-                        'unit' => 'unit',
-                        'updatedByUserID' => 0,
-                        'useTimestampAsPersistenceTimestamp' => true,
-                        'value' => 'value',
-                    ],
+            customProperties: [
+                [
+                    'dataSensitivity' => 'high',
+                    'isEncrypted' => true,
+                    'isLargeValue' => true,
+                    'name' => 'name',
+                    'persistenceTimestamp' => 0,
+                    'requestID' => 'requestId',
+                    'selectedByUser' => true,
+                    'selectedByUserTimestamp' => 0,
+                    'source' => 'ACADEMY',
+                    'sourceID' => 'sourceId',
+                    'sourceLabel' => 'sourceLabel',
+                    'sourceMetadata' => 'sourceMetadata',
+                    'sourceUpstreamDeployable' => 'sourceUpstreamDeployable',
+                    'sourceVid' => [0],
+                    'timestamp' => 0,
+                    'unit' => 'unit',
+                    'updatedByUserID' => 0,
+                    'useTimestampAsPersistenceTimestamp' => true,
+                    'value' => 'value',
                 ],
-                'eventName' => 'eventName',
-                'eventOrganizer' => 'eventOrganizer',
-                'externalAccountID' => 'externalAccountId',
-                'externalEventID' => 'externalEventId',
-                'endDateTime' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-                'eventCancelled' => true,
-                'eventCompleted' => true,
-                'eventDescription' => 'eventDescription',
-                'eventType' => 'eventType',
-                'eventURL' => 'eventUrl',
-                'startDateTime' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
             ],
+            eventName: 'eventName',
+            eventOrganizer: 'eventOrganizer',
+            externalAccountID: 'externalAccountId',
+            externalEventID: 'externalEventId',
+            endDateTime: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
+            eventCancelled: true,
+            eventCompleted: true,
+            eventDescription: 'eventDescription',
+            eventType: 'eventType',
+            eventURL: 'eventUrl',
+            startDateTime: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -934,16 +914,14 @@ final class EventsTest extends TestCase
 
         $result = $this->client->marketing->events->upsertSubscriberStateByEmail(
             'subscriberState',
-            [
-                'externalEventID' => 'externalEventId',
-                'externalAccountID' => 'externalAccountId',
-                'inputs' => [
-                    [
-                        'contactProperties' => ['foo' => 'string'],
-                        'email' => 'email',
-                        'interactionDateTime' => 0,
-                        'properties' => ['foo' => 'string'],
-                    ],
+            externalEventID: 'externalEventId',
+            externalAccountID: 'externalAccountId',
+            inputs: [
+                [
+                    'contactProperties' => ['foo' => 'string'],
+                    'email' => 'email',
+                    'interactionDateTime' => 0,
+                    'properties' => ['foo' => 'string'],
                 ],
             ],
         );
@@ -961,16 +939,14 @@ final class EventsTest extends TestCase
 
         $result = $this->client->marketing->events->upsertSubscriberStateByEmail(
             'subscriberState',
-            [
-                'externalEventID' => 'externalEventId',
-                'externalAccountID' => 'externalAccountId',
-                'inputs' => [
-                    [
-                        'contactProperties' => ['foo' => 'string'],
-                        'email' => 'email',
-                        'interactionDateTime' => 0,
-                        'properties' => ['foo' => 'string'],
-                    ],
+            externalEventID: 'externalEventId',
+            externalAccountID: 'externalAccountId',
+            inputs: [
+                [
+                    'contactProperties' => ['foo' => 'string'],
+                    'email' => 'email',
+                    'interactionDateTime' => 0,
+                    'properties' => ['foo' => 'string'],
                 ],
             ],
         );
@@ -988,15 +964,13 @@ final class EventsTest extends TestCase
 
         $result = $this->client->marketing->events->upsertSubscriberStateByID(
             'subscriberState',
-            [
-                'externalEventID' => 'externalEventId',
-                'externalAccountID' => 'externalAccountId',
-                'inputs' => [
-                    [
-                        'interactionDateTime' => 0,
-                        'properties' => ['foo' => 'string'],
-                        'vid' => 0,
-                    ],
+            externalEventID: 'externalEventId',
+            externalAccountID: 'externalAccountId',
+            inputs: [
+                [
+                    'interactionDateTime' => 0,
+                    'properties' => ['foo' => 'string'],
+                    'vid' => 0,
                 ],
             ],
         );
@@ -1014,15 +988,13 @@ final class EventsTest extends TestCase
 
         $result = $this->client->marketing->events->upsertSubscriberStateByID(
             'subscriberState',
-            [
-                'externalEventID' => 'externalEventId',
-                'externalAccountID' => 'externalAccountId',
-                'inputs' => [
-                    [
-                        'interactionDateTime' => 0,
-                        'properties' => ['foo' => 'string'],
-                        'vid' => 0,
-                    ],
+            externalEventID: 'externalEventId',
+            externalAccountID: 'externalAccountId',
+            inputs: [
+                [
+                    'interactionDateTime' => 0,
+                    'properties' => ['foo' => 'string'],
+                    'vid' => 0,
                 ],
             ],
         );

@@ -5,15 +5,12 @@ declare(strict_types=1);
 namespace HubspotSDK\ServiceContracts\Automation;
 
 use HubspotSDK\Automation\Workflows\APIContactFlow;
+use HubspotSDK\Automation\Workflows\APIFlowBatchFetchFlowIDCoordinate\Type;
 use HubspotSDK\Automation\Workflows\APIFlowEmailCampaign;
 use HubspotSDK\Automation\Workflows\APIFlowListing;
 use HubspotSDK\Automation\Workflows\APIPlatformFlow;
 use HubspotSDK\Automation\Workflows\BatchResponseAPIFlow;
 use HubspotSDK\Automation\Workflows\BatchResponseFlowIDWorkflowIDMappingResponse;
-use HubspotSDK\Automation\Workflows\WorkflowBatchGetIDMappingsParams;
-use HubspotSDK\Automation\Workflows\WorkflowBatchGetParams;
-use HubspotSDK\Automation\Workflows\WorkflowListEmailCampaignsParams;
-use HubspotSDK\Automation\Workflows\WorkflowListParams;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
@@ -42,15 +39,14 @@ interface WorkflowsContract
     /**
      * @api
      *
-     * @param array<mixed>|WorkflowListParams $params
-     *
      * @return Page<APIFlowListing>
      *
      * @throws APIException
      */
     public function list(
-        array|WorkflowListParams $params,
-        ?RequestOptions $requestOptions = null
+        ?string $after = null,
+        int $limit = 100,
+        ?RequestOptions $requestOptions = null,
     ): Page;
 
     /**
@@ -66,25 +62,25 @@ interface WorkflowsContract
     /**
      * @api
      *
-     * @param array<mixed>|WorkflowBatchGetParams $params
+     * @param list<array{flowID: string, type: 'FLOW_ID'|Type}> $inputs
      *
      * @throws APIException
      */
     public function batchGet(
-        array|WorkflowBatchGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        array $inputs,
+        ?RequestOptions $requestOptions = null
     ): BatchResponseAPIFlow;
 
     /**
      * @api
      *
-     * @param array<mixed>|WorkflowBatchGetIDMappingsParams $params
+     * @param list<array<string,mixed>> $inputs
      *
      * @throws APIException
      */
     public function batchGetIDMappings(
-        array|WorkflowBatchGetIDMappingsParams $params,
-        ?RequestOptions $requestOptions = null,
+        array $inputs,
+        ?RequestOptions $requestOptions = null
     ): BatchResponseFlowIDWorkflowIDMappingResponse;
 
     /**
@@ -100,14 +96,17 @@ interface WorkflowsContract
     /**
      * @api
      *
-     * @param array<mixed>|WorkflowListEmailCampaignsParams $params
+     * @param list<string> $flowID
      *
      * @return Page<APIFlowEmailCampaign>
      *
      * @throws APIException
      */
     public function listEmailCampaigns(
-        array|WorkflowListEmailCampaignsParams $params,
+        ?string $after = null,
+        ?string $before = null,
+        ?array $flowID = null,
+        ?int $limit = null,
         ?RequestOptions $requestOptions = null,
     ): Page;
 }

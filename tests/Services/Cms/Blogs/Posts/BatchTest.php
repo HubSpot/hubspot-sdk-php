@@ -37,8 +37,8 @@ final class BatchTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->blogs->posts->batch->create([
-            'inputs' => [
+        $result = $this->client->cms->blogs->posts->batch->create(
+            inputs: [
                 [
                     'id' => 'id',
                     'abStatus' => 'automated_loser_variant',
@@ -186,7 +186,7 @@ final class BatchTest extends TestCase
                     'widgets' => ['foo' => []],
                 ],
             ],
-        ]);
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(BatchResponseBlogPost::class, $result);
@@ -199,8 +199,8 @@ final class BatchTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->blogs->posts->batch->create([
-            'inputs' => [
+        $result = $this->client->cms->blogs->posts->batch->create(
+            inputs: [
                 [
                     'id' => 'id',
                     'abStatus' => 'automated_loser_variant',
@@ -357,7 +357,7 @@ final class BatchTest extends TestCase
                     'widgets' => ['foo' => []],
                 ],
             ],
-        ]);
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(BatchResponseBlogPost::class, $result);
@@ -370,9 +370,7 @@ final class BatchTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->blogs->posts->batch->update([
-            'inputs' => [[]],
-        ]);
+        $result = $this->client->cms->blogs->posts->batch->update(inputs: [[]]);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(BatchResponseBlogPost::class, $result);
@@ -385,9 +383,10 @@ final class BatchTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->blogs->posts->batch->update([
-            'inputs' => [[]], 'archived' => true,
-        ]);
+        $result = $this->client->cms->blogs->posts->batch->update(
+            inputs: [[]],
+            archived: true
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(BatchResponseBlogPost::class, $result);
@@ -400,9 +399,9 @@ final class BatchTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->blogs->posts->batch->delete([
-            'inputs' => ['string'],
-        ]);
+        $result = $this->client->cms->blogs->posts->batch->delete(
+            inputs: ['string']
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);
@@ -415,9 +414,9 @@ final class BatchTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->blogs->posts->batch->delete([
-            'inputs' => ['string'],
-        ]);
+        $result = $this->client->cms->blogs->posts->batch->delete(
+            inputs: ['string']
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);
@@ -430,9 +429,7 @@ final class BatchTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->blogs->posts->batch->get([
-            'inputs' => ['string'],
-        ]);
+        $result = $this->client->cms->blogs->posts->batch->get(inputs: ['string']);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(BatchResponseBlogPost::class, $result);
@@ -445,9 +442,10 @@ final class BatchTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->cms->blogs->posts->batch->get([
-            'inputs' => ['string'], 'archived' => true,
-        ]);
+        $result = $this->client->cms->blogs->posts->batch->get(
+            inputs: ['string'],
+            archived: true
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(BatchResponseBlogPost::class, $result);

@@ -38,7 +38,7 @@ final class StatisticsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->emails->statistics->get([]);
+        $result = $this->client->marketing->emails->statistics->get();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(AggregateEmailStatistics::class, $result);
@@ -51,7 +51,7 @@ final class StatisticsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->emails->statistics->getHistogram([]);
+        $result = $this->client->marketing->emails->statistics->getHistogram();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(

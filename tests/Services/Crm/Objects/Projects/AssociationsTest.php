@@ -40,11 +40,9 @@ final class AssociationsTest extends TestCase
 
         $result = $this->client->crm->objects->projects->associations->update(
             'associationType',
-            [
-                'projectID' => 'projectId',
-                'toObjectType' => 'toObjectType',
-                'toObjectID' => 'toObjectId',
-            ],
+            projectID: 'projectId',
+            toObjectType: 'toObjectType',
+            toObjectID: 'toObjectId',
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -60,11 +58,9 @@ final class AssociationsTest extends TestCase
 
         $result = $this->client->crm->objects->projects->associations->update(
             'associationType',
-            [
-                'projectID' => 'projectId',
-                'toObjectType' => 'toObjectType',
-                'toObjectID' => 'toObjectId',
-            ],
+            projectID: 'projectId',
+            toObjectType: 'toObjectType',
+            toObjectID: 'toObjectId',
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -80,7 +76,7 @@ final class AssociationsTest extends TestCase
 
         $result = $this->client->crm->objects->projects->associations->list(
             'toObjectType',
-            ['projectID' => 'projectId']
+            projectID: 'projectId'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -96,12 +92,10 @@ final class AssociationsTest extends TestCase
 
         $result = $this->client->crm->objects->projects->associations->list(
             'toObjectType',
-            [
-                'projectID' => 'projectId',
-                'after' => 'after',
-                'includeFa' => true,
-                'limit' => 0,
-            ],
+            projectID: 'projectId',
+            after: 'after',
+            includeFa: true,
+            limit: 0,
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -117,11 +111,9 @@ final class AssociationsTest extends TestCase
 
         $result = $this->client->crm->objects->projects->associations->delete(
             'associationType',
-            [
-                'projectID' => 'projectId',
-                'toObjectType' => 'toObjectType',
-                'toObjectID' => 'toObjectId',
-            ],
+            projectID: 'projectId',
+            toObjectType: 'toObjectType',
+            toObjectID: 'toObjectId',
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -137,11 +129,9 @@ final class AssociationsTest extends TestCase
 
         $result = $this->client->crm->objects->projects->associations->delete(
             'associationType',
-            [
-                'projectID' => 'projectId',
-                'toObjectType' => 'toObjectType',
-                'toObjectID' => 'toObjectId',
-            ],
+            projectID: 'projectId',
+            toObjectType: 'toObjectType',
+            toObjectID: 'toObjectId',
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

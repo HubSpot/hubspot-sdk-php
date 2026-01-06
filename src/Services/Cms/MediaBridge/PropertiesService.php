@@ -7,38 +7,241 @@ namespace HubspotSDK\Services\Cms\MediaBridge;
 use HubspotSDK\BatchResponseProperty;
 use HubspotSDK\Client;
 use HubspotSDK\Cms\MediaBridge\CollectionResponsePropertyNoPaging;
-use HubspotSDK\Cms\MediaBridge\Properties\PropertyCreateBatchParams;
-use HubspotSDK\Cms\MediaBridge\Properties\PropertyCreateParams;
-use HubspotSDK\Cms\MediaBridge\Properties\PropertyCreateParams\DataSensitivity;
-use HubspotSDK\Cms\MediaBridge\Properties\PropertyCreateParams\FieldType;
-use HubspotSDK\Cms\MediaBridge\Properties\PropertyCreateParams\Type;
-use HubspotSDK\Cms\MediaBridge\Properties\PropertyDeleteBatchParams;
-use HubspotSDK\Cms\MediaBridge\Properties\PropertyDeleteParams;
-use HubspotSDK\Cms\MediaBridge\Properties\PropertyGetBatchParams;
-use HubspotSDK\Cms\MediaBridge\Properties\PropertyGetParams;
-use HubspotSDK\Cms\MediaBridge\Properties\PropertyListParams;
-use HubspotSDK\Cms\MediaBridge\Properties\PropertyUpdateParams;
-use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Property;
+use HubspotSDK\PropertyCreate\DataSensitivity;
+use HubspotSDK\PropertyCreate\FieldType;
+use HubspotSDK\PropertyCreate\Type;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Cms\MediaBridge\PropertiesContract;
 
 final class PropertiesService implements PropertiesContract
 {
     /**
+     * @api
+     */
+    public PropertiesRawService $raw;
+
+    /**
      * @internal
      */
-    public function __construct(private Client $client) {}
+    public function __construct(private Client $client)
+    {
+        $this->raw = new PropertiesRawService($client);
+    }
 
     /**
      * @api
      *
      * Create a new property for the specified media type
      *
-     * @param array{
-     *   appID: int,
-     *   fieldType: value-of<FieldType>,
+     * @param string $objectType path param: The object type to create the new property for
+     * @param int $appID Path param: The appId for the media bridge app. It is possible to have multiple apps in your developer account that use the media bridge.
+     * @param 'booleancheckbox'|'calculation_equation'|'checkbox'|'date'|'file'|'html'|'number'|'phonenumber'|'radio'|'select'|'text'|'textarea'|\HubspotSDK\Cms\MediaBridge\Properties\PropertyCreateParams\FieldType $fieldType Body param:
+     * @param string $groupName Body param:
+     * @param string $label Body param:
+     * @param string $name Body param:
+     * @param 'bool'|'date'|'datetime'|'enumeration'|'number'|'phone_number'|'string'|\HubspotSDK\Cms\MediaBridge\Properties\PropertyCreateParams\Type $type Body param:
+     * @param string $calculationFormula Body param:
+     * @param 'highly_sensitive'|'non_sensitive'|'sensitive'|\HubspotSDK\Cms\MediaBridge\Properties\PropertyCreateParams\DataSensitivity $dataSensitivity Body param:
+     * @param string $description Body param:
+     * @param int $displayOrder Body param:
+     * @param bool $externalOptions Body param:
+     * @param bool $formField Body param:
+     * @param bool $hasUniqueValue Body param:
+     * @param bool $hidden Body param:
+     * @param list<array{
+     *   displayOrder: int,
+     *   hidden: bool,
+     *   label: string,
+     *   value: string,
+     *   description?: string,
+     * }> $options Body param:
+     * @param string $referencedObjectType Body param:
+     *
+     * @throws APIException
+     */
+    public function create(
+        string $objectType,
+        int $appID,
+        string|\HubspotSDK\Cms\MediaBridge\Properties\PropertyCreateParams\FieldType $fieldType,
+        string $groupName,
+        string $label,
+        string $name,
+        string|\HubspotSDK\Cms\MediaBridge\Properties\PropertyCreateParams\Type $type,
+        ?string $calculationFormula = null,
+        string|\HubspotSDK\Cms\MediaBridge\Properties\PropertyCreateParams\DataSensitivity|null $dataSensitivity = null,
+        ?string $description = null,
+        ?int $displayOrder = null,
+        ?bool $externalOptions = null,
+        ?bool $formField = null,
+        ?bool $hasUniqueValue = null,
+        ?bool $hidden = null,
+        ?array $options = null,
+        ?string $referencedObjectType = null,
+        ?RequestOptions $requestOptions = null,
+    ): Property {
+        $params = [
+            'appID' => $appID,
+            'fieldType' => $fieldType,
+            'groupName' => $groupName,
+            'label' => $label,
+            'name' => $name,
+            'type' => $type,
+            'calculationFormula' => $calculationFormula,
+            'dataSensitivity' => $dataSensitivity,
+            'description' => $description,
+            'displayOrder' => $displayOrder,
+            'externalOptions' => $externalOptions,
+            'formField' => $formField,
+            'hasUniqueValue' => $hasUniqueValue,
+            'hidden' => $hidden,
+            'options' => $options,
+            'referencedObjectType' => $referencedObjectType,
+        ];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->create($objectType, params: $params, requestOptions: $requestOptions);
+
+        return $response->parse();
+    }
+
+    /**
+     * @api
+     *
+     * Update an existing property for an object type.
+     *
+     * @param string $propertyName path param: The name of the property to update
+     * @param int $appID Path param: The appId for the media bridge app. It is possible to have multiple apps in your developer account that use the media bridge.
+     * @param string $objectType path param: The object type for the property to be updated
+     * @param string $calculationFormula Body param:
+     * @param string $description Body param:
+     * @param int $displayOrder Body param:
+     * @param 'booleancheckbox'|'calculation_equation'|'checkbox'|'date'|'file'|'html'|'number'|'phonenumber'|'radio'|'select'|'text'|'textarea'|\HubspotSDK\Cms\MediaBridge\Properties\PropertyUpdateParams\FieldType $fieldType Body param:
+     * @param bool $formField Body param:
+     * @param string $groupName Body param:
+     * @param bool $hasUniqueValue Body param:
+     * @param bool $hidden Body param:
+     * @param string $label Body param:
+     * @param list<array{
+     *   displayOrder: int,
+     *   hidden: bool,
+     *   label: string,
+     *   value: string,
+     *   description?: string,
+     * }> $options Body param:
+     * @param 'bool'|'date'|'datetime'|'enumeration'|'number'|'phone_number'|'string'|\HubspotSDK\Cms\MediaBridge\Properties\PropertyUpdateParams\Type $type Body param:
+     *
+     * @throws APIException
+     */
+    public function update(
+        string $propertyName,
+        int $appID,
+        string $objectType,
+        ?string $calculationFormula = null,
+        ?string $description = null,
+        ?int $displayOrder = null,
+        string|\HubspotSDK\Cms\MediaBridge\Properties\PropertyUpdateParams\FieldType|null $fieldType = null,
+        ?bool $formField = null,
+        ?string $groupName = null,
+        ?bool $hasUniqueValue = null,
+        ?bool $hidden = null,
+        ?string $label = null,
+        ?array $options = null,
+        string|\HubspotSDK\Cms\MediaBridge\Properties\PropertyUpdateParams\Type|null $type = null,
+        ?RequestOptions $requestOptions = null,
+    ): Property {
+        $params = [
+            'appID' => $appID,
+            'objectType' => $objectType,
+            'calculationFormula' => $calculationFormula,
+            'description' => $description,
+            'displayOrder' => $displayOrder,
+            'fieldType' => $fieldType,
+            'formField' => $formField,
+            'groupName' => $groupName,
+            'hasUniqueValue' => $hasUniqueValue,
+            'hidden' => $hidden,
+            'label' => $label,
+            'options' => $options,
+            'type' => $type,
+        ];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->update($propertyName, params: $params, requestOptions: $requestOptions);
+
+        return $response->parse();
+    }
+
+    /**
+     * @api
+     *
+     * Get the existing properties defined for a media object type.
+     *
+     * @param string $objectType path param: The specific object type to get the details for
+     * @param int $appID Path param: The appId for the media bridge app. It is possible to have multiple apps in your developer account that use the media bridge.
+     * @param bool $archived query param: Whether to return only results that have been archived
+     * @param string $properties query param: Filter the response to the specified properties
+     *
+     * @throws APIException
+     */
+    public function list(
+        string $objectType,
+        int $appID,
+        bool $archived = false,
+        ?string $properties = null,
+        ?RequestOptions $requestOptions = null,
+    ): CollectionResponsePropertyNoPaging {
+        $params = [
+            'appID' => $appID, 'archived' => $archived, 'properties' => $properties,
+        ];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
+
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->list($objectType, params: $params, requestOptions: $requestOptions);
+
+        return $response->parse();
+    }
+
+    /**
+     * @api
+     *
+     * Delete an existing property for an object type.
+     *
+     * @param string $propertyName the name of the property to delete
+     * @param int $appID The appId for the media bridge app. It is possible to have multiple apps in your developer account that use the media bridge.
+     * @param string $objectType the object type for the property to delete
+     *
+     * @throws APIException
+     */
+    public function delete(
+        string $propertyName,
+        int $appID,
+        string $objectType,
+        ?RequestOptions $requestOptions = null,
+    ): mixed {
+        $params = ['appID' => $appID, 'objectType' => $objectType];
+
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->delete($propertyName, params: $params, requestOptions: $requestOptions);
+
+        return $response->parse();
+    }
+
+    /**
+     * @api
+     *
+     * Create a batch of properties of the specified object type.
+     *
+     * @param string $objectType path param: The type of object to create the properties for
+     * @param int $appID Path param: The appId for the media bridge app. It is possible to have multiple apps in your developer account that use the media bridge.
+     * @param list<array{
+     *   fieldType: 'booleancheckbox'|'calculation_equation'|'checkbox'|'date'|'file'|'html'|'number'|'phonenumber'|'radio'|'select'|'text'|'textarea'|FieldType,
      *   groupName: string,
      *   label: string,
      *   name: string,
@@ -59,221 +262,20 @@ final class PropertiesService implements PropertiesContract
      *     description?: string,
      *   }>,
      *   referencedObjectType?: string,
-     * }|PropertyCreateParams $params
-     *
-     * @throws APIException
-     */
-    public function create(
-        string $objectType,
-        array|PropertyCreateParams $params,
-        ?RequestOptions $requestOptions = null,
-    ): Property {
-        [$parsed, $options] = PropertyCreateParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $appID = $parsed['appID'];
-        unset($parsed['appID']);
-
-        /** @var BaseResponse<Property> */
-        $response = $this->client->request(
-            method: 'post',
-            path: ['media-bridge/v1/%1$s/properties/%2$s', $appID, $objectType],
-            body: (object) array_diff_key($parsed, ['appID']),
-            options: $options,
-            convert: Property::class,
-        );
-
-        return $response->parse();
-    }
-
-    /**
-     * @api
-     *
-     * Update an existing property for an object type.
-     *
-     * @param array{
-     *   appID: int,
-     *   objectType: string,
-     *   calculationFormula?: string,
-     *   description?: string,
-     *   displayOrder?: int,
-     *   fieldType?: value-of<PropertyUpdateParams\FieldType>,
-     *   formField?: bool,
-     *   groupName?: string,
-     *   hasUniqueValue?: bool,
-     *   hidden?: bool,
-     *   label?: string,
-     *   options?: list<array{
-     *     displayOrder: int,
-     *     hidden: bool,
-     *     label: string,
-     *     value: string,
-     *     description?: string,
-     *   }>,
-     *   type?: 'bool'|'date'|'datetime'|'enumeration'|'number'|'phone_number'|'string'|PropertyUpdateParams\Type,
-     * }|PropertyUpdateParams $params
-     *
-     * @throws APIException
-     */
-    public function update(
-        string $propertyName,
-        array|PropertyUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
-    ): Property {
-        [$parsed, $options] = PropertyUpdateParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $appID = $parsed['appID'];
-        unset($parsed['appID']);
-        $objectType = $parsed['objectType'];
-        unset($parsed['objectType']);
-
-        /** @var BaseResponse<Property> */
-        $response = $this->client->request(
-            method: 'patch',
-            path: [
-                'media-bridge/v1/%1$s/properties/%2$s/%3$s',
-                $appID,
-                $objectType,
-                $propertyName,
-            ],
-            body: (object) array_diff_key(
-                $parsed,
-                array_flip(['appID', 'objectType'])
-            ),
-            options: $options,
-            convert: Property::class,
-        );
-
-        return $response->parse();
-    }
-
-    /**
-     * @api
-     *
-     * Get the existing properties defined for a media object type.
-     *
-     * @param array{
-     *   appID: int, archived?: bool, properties?: string
-     * }|PropertyListParams $params
-     *
-     * @throws APIException
-     */
-    public function list(
-        string $objectType,
-        array|PropertyListParams $params,
-        ?RequestOptions $requestOptions = null,
-    ): CollectionResponsePropertyNoPaging {
-        [$parsed, $options] = PropertyListParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $appID = $parsed['appID'];
-        unset($parsed['appID']);
-
-        /** @var BaseResponse<CollectionResponsePropertyNoPaging> */
-        $response = $this->client->request(
-            method: 'get',
-            path: ['media-bridge/v1/%1$s/properties/%2$s', $appID, $objectType],
-            query: $parsed,
-            options: $options,
-            convert: CollectionResponsePropertyNoPaging::class,
-        );
-
-        return $response->parse();
-    }
-
-    /**
-     * @api
-     *
-     * Delete an existing property for an object type.
-     *
-     * @param array{appID: int, objectType: string}|PropertyDeleteParams $params
-     *
-     * @throws APIException
-     */
-    public function delete(
-        string $propertyName,
-        array|PropertyDeleteParams $params,
-        ?RequestOptions $requestOptions = null,
-    ): mixed {
-        [$parsed, $options] = PropertyDeleteParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $appID = $parsed['appID'];
-        unset($parsed['appID']);
-        $objectType = $parsed['objectType'];
-        unset($parsed['objectType']);
-
-        /** @var BaseResponse<mixed> */
-        $response = $this->client->request(
-            method: 'delete',
-            path: [
-                'media-bridge/v1/%1$s/properties/%2$s/%3$s',
-                $appID,
-                $objectType,
-                $propertyName,
-            ],
-            options: $options,
-            convert: null,
-        );
-
-        return $response->parse();
-    }
-
-    /**
-     * @api
-     *
-     * Create a batch of properties of the specified object type.
-     *
-     * @param array{
-     *   appID: int,
-     *   inputs: list<array{
-     *     fieldType: 'booleancheckbox'|'calculation_equation'|'checkbox'|'date'|'file'|'html'|'number'|'phonenumber'|'radio'|'select'|'text'|'textarea'|\HubspotSDK\PropertyCreate\FieldType,
-     *     groupName: string,
-     *     label: string,
-     *     name: string,
-     *     type: 'bool'|'date'|'datetime'|'enumeration'|'number'|'phone_number'|'string'|\HubspotSDK\PropertyCreate\Type,
-     *     calculationFormula?: string,
-     *     dataSensitivity?: 'highly_sensitive'|'non_sensitive'|'sensitive'|\HubspotSDK\PropertyCreate\DataSensitivity,
-     *     description?: string,
-     *     displayOrder?: int,
-     *     externalOptions?: bool,
-     *     formField?: bool,
-     *     hasUniqueValue?: bool,
-     *     hidden?: bool,
-     *     options?: list<array<mixed>>,
-     *     referencedObjectType?: string,
-     *   }>,
-     * }|PropertyCreateBatchParams $params
+     * }> $inputs Body param:
      *
      * @throws APIException
      */
     public function createBatch(
         string $objectType,
-        array|PropertyCreateBatchParams $params,
+        int $appID,
+        array $inputs,
         ?RequestOptions $requestOptions = null,
     ): BatchResponseProperty {
-        [$parsed, $options] = PropertyCreateBatchParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $appID = $parsed['appID'];
-        unset($parsed['appID']);
+        $params = ['appID' => $appID, 'inputs' => $inputs];
 
-        /** @var BaseResponse<BatchResponseProperty> */
-        $response = $this->client->request(
-            method: 'post',
-            path: [
-                'media-bridge/v1/%1$s/properties/%2$s/batch/create', $appID, $objectType,
-            ],
-            body: (object) array_diff_key($parsed, ['appID']),
-            options: $options,
-            convert: BatchResponseProperty::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->createBatch($objectType, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -283,36 +285,22 @@ final class PropertiesService implements PropertiesContract
      *
      * Archive a batch of existing properties for the specified types.
      *
-     * @param array{
-     *   appID: int, inputs: list<array{name: string}>
-     * }|PropertyDeleteBatchParams $params
+     * @param string $objectType path param: The object type for the specified properties to be archived
+     * @param int $appID Path param: The appId for the media bridge app. It is possible to have multiple apps in your developer account that use the media bridge.
+     * @param list<array{name: string}> $inputs Body param:
      *
      * @throws APIException
      */
     public function deleteBatch(
         string $objectType,
-        array|PropertyDeleteBatchParams $params,
+        int $appID,
+        array $inputs,
         ?RequestOptions $requestOptions = null,
     ): mixed {
-        [$parsed, $options] = PropertyDeleteBatchParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $appID = $parsed['appID'];
-        unset($parsed['appID']);
+        $params = ['appID' => $appID, 'inputs' => $inputs];
 
-        /** @var BaseResponse<mixed> */
-        $response = $this->client->request(
-            method: 'post',
-            path: [
-                'media-bridge/v1/%1$s/properties/%2$s/batch/archive',
-                $appID,
-                $objectType,
-            ],
-            body: (object) array_diff_key($parsed, ['appID']),
-            options: $options,
-            convert: null,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->deleteBatch($objectType, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -322,39 +310,33 @@ final class PropertiesService implements PropertiesContract
      *
      * Get the details for an existing property by name.
      *
-     * @param array{
-     *   appID: int, objectType: string, archived?: bool, properties?: string
-     * }|PropertyGetParams $params
+     * @param string $propertyName path param: The name of the property to get the details for
+     * @param int $appID Path param: The appId for the media bridge app. It is possible to have multiple apps in your developer account that use the media bridge.
+     * @param string $objectType path param: The object type for the property
+     * @param bool $archived query param: Whether to return only results that have been archived
+     * @param string $properties query param: Limit the response to only include the specified properties
      *
      * @throws APIException
      */
     public function get(
         string $propertyName,
-        array|PropertyGetParams $params,
+        int $appID,
+        string $objectType,
+        bool $archived = false,
+        ?string $properties = null,
         ?RequestOptions $requestOptions = null,
     ): Property {
-        [$parsed, $options] = PropertyGetParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $appID = $parsed['appID'];
-        unset($parsed['appID']);
-        $objectType = $parsed['objectType'];
-        unset($parsed['objectType']);
+        $params = [
+            'appID' => $appID,
+            'objectType' => $objectType,
+            'archived' => $archived,
+            'properties' => $properties,
+        ];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<Property> */
-        $response = $this->client->request(
-            method: 'get',
-            path: [
-                'media-bridge/v1/%1$s/properties/%2$s/%3$s',
-                $appID,
-                $objectType,
-                $propertyName,
-            ],
-            query: $parsed,
-            options: $options,
-            convert: Property::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->get($propertyName, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -364,37 +346,31 @@ final class PropertiesService implements PropertiesContract
      *
      * Get the details for a batch of properties for a specified object type.
      *
-     * @param array{
-     *   appID: int,
-     *   archived: bool,
-     *   dataSensitivity: 'highly_sensitive'|'non_sensitive'|'sensitive'|PropertyGetBatchParams\DataSensitivity,
-     *   inputs: list<array{name: string}>,
-     * }|PropertyGetBatchParams $params
+     * @param string $objectType path param: The object type to get the properties for
+     * @param int $appID Path param: The appId for the media bridge app. It is possible to have multiple apps in your developer account that use the media bridge.
+     * @param bool $archived Body param:
+     * @param 'highly_sensitive'|'non_sensitive'|'sensitive'|\HubspotSDK\Cms\MediaBridge\Properties\PropertyGetBatchParams\DataSensitivity $dataSensitivity Body param:
+     * @param list<array{name: string}> $inputs Body param:
      *
      * @throws APIException
      */
     public function getBatch(
         string $objectType,
-        array|PropertyGetBatchParams $params,
+        int $appID,
+        bool $archived,
+        string|\HubspotSDK\Cms\MediaBridge\Properties\PropertyGetBatchParams\DataSensitivity $dataSensitivity,
+        array $inputs,
         ?RequestOptions $requestOptions = null,
     ): BatchResponseProperty {
-        [$parsed, $options] = PropertyGetBatchParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $appID = $parsed['appID'];
-        unset($parsed['appID']);
+        $params = [
+            'appID' => $appID,
+            'archived' => $archived,
+            'dataSensitivity' => $dataSensitivity,
+            'inputs' => $inputs,
+        ];
 
-        /** @var BaseResponse<BatchResponseProperty> */
-        $response = $this->client->request(
-            method: 'post',
-            path: [
-                'media-bridge/v1/%1$s/properties/%2$s/batch/read', $appID, $objectType,
-            ],
-            body: (object) array_diff_key($parsed, ['appID']),
-            options: $options,
-            convert: BatchResponseProperty::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->getBatch($objectType, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }

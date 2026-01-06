@@ -19,6 +19,11 @@ final class MarketingService implements MarketingContract
     /**
      * @api
      */
+    public MarketingRawService $raw;
+
+    /**
+     * @api
+     */
     public CampaignsService $campaigns;
 
     /**
@@ -56,6 +61,7 @@ final class MarketingService implements MarketingContract
      */
     public function __construct(private Client $client)
     {
+        $this->raw = new MarketingRawService($client);
         $this->campaigns = new CampaignsService($client);
         $this->emails = new EmailsService($client);
         $this->events = new EventsService($client);

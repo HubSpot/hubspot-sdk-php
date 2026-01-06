@@ -5,11 +5,8 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Marketing\Subscriptions\V4;
 
 use HubspotSDK\Client;
-use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Core\Util;
 use HubspotSDK\Marketing\Subscriptions\V4\LinkGenerationResponse;
-use HubspotSDK\Marketing\Subscriptions\V4\Links\LinkCreateParams;
 use HubspotSDK\Marketing\Subscriptions\V4\Links\LinkCreateParams\Channel;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Marketing\Subscriptions\V4\LinksContract;
@@ -17,45 +14,49 @@ use HubspotSDK\ServiceContracts\Marketing\Subscriptions\V4\LinksContract;
 final class LinksService implements LinksContract
 {
     /**
+     * @api
+     */
+    public LinksRawService $raw;
+
+    /**
      * @internal
      */
-    public function __construct(private Client $client) {}
+    public function __construct(private Client $client)
+    {
+        $this->raw = new LinksRawService($client);
+    }
 
     /**
      * @api
      *
-     * @param array{
-     *   channel: 'EMAIL'|Channel,
-     *   subscriberIDString: string,
-     *   businessUnitID?: int,
-     *   language?: string,
-     *   subscriptionID?: int,
-     * }|LinkCreateParams $params
+     * @param 'EMAIL'|Channel $channel Query param:
+     * @param string $subscriberIDString Body param:
+     * @param int $businessUnitID Query param:
+     * @param string $language Body param:
+     * @param int $subscriptionID Body param:
      *
      * @throws APIException
      */
     public function create(
-        array|LinkCreateParams $params,
-        ?RequestOptions $requestOptions = null
+        string|Channel $channel,
+        string $subscriberIDString,
+        int $businessUnitID = 0,
+        ?string $language = null,
+        ?int $subscriptionID = null,
+        ?RequestOptions $requestOptions = null,
     ): LinkGenerationResponse {
-        [$parsed, $options] = LinkCreateParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $query_params = array_flip(['channel', 'businessUnitId']);
+        $params = [
+            'channel' => $channel,
+            'subscriberIDString' => $subscriberIDString,
+            'businessUnitID' => $businessUnitID,
+            'language' => $language,
+            'subscriptionID' => $subscriptionID,
+        ];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<LinkGenerationResponse> */
-        $response = $this->client->request(
-            method: 'post',
-            path: 'communication-preferences/v4/links/generate',
-            query: Util::array_transform_keys(
-                array_diff_key($parsed, $query_params),
-                ['businessUnitID' => 'businessUnitId'],
-            ),
-            body: (object) array_diff_key($parsed, $query_params),
-            options: $options,
-            convert: LinkGenerationResponse::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->create(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }

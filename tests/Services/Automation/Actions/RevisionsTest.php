@@ -40,7 +40,7 @@ final class RevisionsTest extends TestCase
 
         $result = $this->client->automation->actions->revisions->list(
             'definitionId',
-            ['appID' => 0]
+            appID: 0
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -56,7 +56,9 @@ final class RevisionsTest extends TestCase
 
         $result = $this->client->automation->actions->revisions->list(
             'definitionId',
-            ['appID' => 0, 'after' => 'after', 'limit' => 0]
+            appID: 0,
+            after: 'after',
+            limit: 0
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -72,7 +74,8 @@ final class RevisionsTest extends TestCase
 
         $result = $this->client->automation->actions->revisions->get(
             'revisionId',
-            ['appID' => 0, 'definitionID' => 'definitionId']
+            appID: 0,
+            definitionID: 'definitionId'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -88,7 +91,8 @@ final class RevisionsTest extends TestCase
 
         $result = $this->client->automation->actions->revisions->get(
             'revisionId',
-            ['appID' => 0, 'definitionID' => 'definitionId']
+            appID: 0,
+            definitionID: 'definitionId'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

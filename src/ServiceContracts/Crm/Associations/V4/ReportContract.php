@@ -13,6 +13,8 @@ interface ReportContract
     /**
      * @api
      *
+     * @param int $userID The user for the report
+     *
      * @throws APIException
      */
     public function requestHighUsageReport(

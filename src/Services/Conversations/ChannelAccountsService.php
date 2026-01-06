@@ -5,12 +5,8 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Conversations;
 
 use HubspotSDK\Client;
-use HubspotSDK\Conversations\ChannelAccounts\ChannelAccountGetParams;
-use HubspotSDK\Conversations\ChannelAccounts\ChannelAccountListParams;
 use HubspotSDK\Conversations\PublicChannelAccount;
-use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Core\Util;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Conversations\ChannelAccountsContract;
@@ -18,48 +14,53 @@ use HubspotSDK\ServiceContracts\Conversations\ChannelAccountsContract;
 final class ChannelAccountsService implements ChannelAccountsContract
 {
     /**
+     * @api
+     */
+    public ChannelAccountsRawService $raw;
+
+    /**
      * @internal
      */
-    public function __construct(private Client $client) {}
+    public function __construct(private Client $client)
+    {
+        $this->raw = new ChannelAccountsRawService($client);
+    }
 
     /**
      * @api
      *
-     * @param array{
-     *   after?: string,
-     *   archived?: bool,
-     *   channelID?: list<int>,
-     *   defaultPageLength?: int,
-     *   inboxID?: list<int>,
-     *   limit?: int,
-     *   sort?: list<string>,
-     * }|ChannelAccountListParams $params
+     * @param list<int> $channelID
+     * @param list<int> $inboxID
+     * @param list<string> $sort
      *
      * @return Page<PublicChannelAccount>
      *
      * @throws APIException
      */
     public function list(
-        array|ChannelAccountListParams $params,
+        ?string $after = null,
+        ?bool $archived = null,
+        ?array $channelID = null,
+        ?int $defaultPageLength = null,
+        ?array $inboxID = null,
+        ?int $limit = null,
+        ?array $sort = null,
         ?RequestOptions $requestOptions = null,
     ): Page {
-        [$parsed, $options] = ChannelAccountListParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = [
+            'after' => $after,
+            'archived' => $archived,
+            'channelID' => $channelID,
+            'defaultPageLength' => $defaultPageLength,
+            'inboxID' => $inboxID,
+            'limit' => $limit,
+            'sort' => $sort,
+        ];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<Page<PublicChannelAccount>> */
-        $response = $this->client->request(
-            method: 'get',
-            path: 'conversations/v3/conversations/channel-accounts',
-            query: Util::array_transform_keys(
-                $parsed,
-                ['channelID' => 'channelId', 'inboxID' => 'inboxId']
-            ),
-            options: $options,
-            convert: PublicChannelAccount::class,
-            page: Page::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->list(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -67,31 +68,19 @@ final class ChannelAccountsService implements ChannelAccountsContract
     /**
      * @api
      *
-     * @param array{archived?: bool}|ChannelAccountGetParams $params
-     *
      * @throws APIException
      */
     public function get(
         int $channelAccountID,
-        array|ChannelAccountGetParams $params,
+        bool $archived = false,
         ?RequestOptions $requestOptions = null,
     ): PublicChannelAccount {
-        [$parsed, $options] = ChannelAccountGetParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = ['archived' => $archived];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<PublicChannelAccount> */
-        $response = $this->client->request(
-            method: 'get',
-            path: [
-                'conversations/v3/conversations/channel-accounts/%1$s',
-                $channelAccountID,
-            ],
-            query: $parsed,
-            options: $options,
-            convert: PublicChannelAccount::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->get($channelAccountID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }

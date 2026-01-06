@@ -6,7 +6,6 @@ namespace HubspotSDK\Services\Account;
 
 use HubspotSDK\Account\PortalInformationResponse;
 use HubspotSDK\Client;
-use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Account\DetailsContract;
@@ -14,9 +13,17 @@ use HubspotSDK\ServiceContracts\Account\DetailsContract;
 final class DetailsService implements DetailsContract
 {
     /**
+     * @api
+     */
+    public DetailsRawService $raw;
+
+    /**
      * @internal
      */
-    public function __construct(private Client $client) {}
+    public function __construct(private Client $client)
+    {
+        $this->raw = new DetailsRawService($client);
+    }
 
     /**
      * @api
@@ -28,13 +35,8 @@ final class DetailsService implements DetailsContract
     public function get(
         ?RequestOptions $requestOptions = null
     ): PortalInformationResponse {
-        /** @var BaseResponse<PortalInformationResponse> */
-        $response = $this->client->request(
-            method: 'get',
-            path: 'account-info/v3/details',
-            options: $requestOptions,
-            convert: PortalInformationResponse::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->get(requestOptions: $requestOptions);
 
         return $response->parse();
     }

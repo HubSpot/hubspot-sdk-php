@@ -39,15 +39,13 @@ final class BatchTest extends TestCase
 
         $result = $this->client->crm->properties->batch->create(
             'objectType',
-            [
-                'inputs' => [
-                    [
-                        'fieldType' => 'booleancheckbox',
-                        'groupName' => 'groupName',
-                        'label' => 'label',
-                        'name' => 'name',
-                        'type' => 'bool',
-                    ],
+            inputs: [
+                [
+                    'fieldType' => 'booleancheckbox',
+                    'groupName' => 'groupName',
+                    'label' => 'label',
+                    'name' => 'name',
+                    'type' => 'bool',
                 ],
             ],
         );
@@ -65,33 +63,31 @@ final class BatchTest extends TestCase
 
         $result = $this->client->crm->properties->batch->create(
             'objectType',
-            [
-                'inputs' => [
-                    [
-                        'fieldType' => 'booleancheckbox',
-                        'groupName' => 'groupName',
-                        'label' => 'label',
-                        'name' => 'name',
-                        'type' => 'bool',
-                        'calculationFormula' => 'calculationFormula',
-                        'dataSensitivity' => 'highly_sensitive',
-                        'description' => 'description',
-                        'displayOrder' => 0,
-                        'externalOptions' => true,
-                        'formField' => true,
-                        'hasUniqueValue' => true,
-                        'hidden' => true,
-                        'options' => [
-                            [
-                                'displayOrder' => 0,
-                                'hidden' => true,
-                                'label' => 'label',
-                                'value' => 'value',
-                                'description' => 'description',
-                            ],
+            inputs: [
+                [
+                    'fieldType' => 'booleancheckbox',
+                    'groupName' => 'groupName',
+                    'label' => 'label',
+                    'name' => 'name',
+                    'type' => 'bool',
+                    'calculationFormula' => 'calculationFormula',
+                    'dataSensitivity' => 'highly_sensitive',
+                    'description' => 'description',
+                    'displayOrder' => 0,
+                    'externalOptions' => true,
+                    'formField' => true,
+                    'hasUniqueValue' => true,
+                    'hidden' => true,
+                    'options' => [
+                        [
+                            'displayOrder' => 0,
+                            'hidden' => true,
+                            'label' => 'label',
+                            'value' => 'value',
+                            'description' => 'description',
                         ],
-                        'referencedObjectType' => 'referencedObjectType',
                     ],
+                    'referencedObjectType' => 'referencedObjectType',
                 ],
             ],
         );
@@ -109,7 +105,7 @@ final class BatchTest extends TestCase
 
         $result = $this->client->crm->properties->batch->delete(
             'objectType',
-            ['inputs' => [['name' => 'name']]]
+            inputs: [['name' => 'name']]
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -125,7 +121,7 @@ final class BatchTest extends TestCase
 
         $result = $this->client->crm->properties->batch->delete(
             'objectType',
-            ['inputs' => [['name' => 'name']]]
+            inputs: [['name' => 'name']]
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -141,11 +137,9 @@ final class BatchTest extends TestCase
 
         $result = $this->client->crm->properties->batch->get(
             'objectType',
-            [
-                'archived' => true,
-                'dataSensitivity' => 'highly_sensitive',
-                'inputs' => [['name' => 'name']],
-            ],
+            archived: true,
+            dataSensitivity: 'highly_sensitive',
+            inputs: [['name' => 'name']],
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -161,12 +155,10 @@ final class BatchTest extends TestCase
 
         $result = $this->client->crm->properties->batch->get(
             'objectType',
-            [
-                'archived' => true,
-                'dataSensitivity' => 'highly_sensitive',
-                'inputs' => [['name' => 'name']],
-                'locale' => 'locale',
-            ],
+            archived: true,
+            dataSensitivity: 'highly_sensitive',
+            inputs: [['name' => 'name']],
+            locale: 'locale',
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

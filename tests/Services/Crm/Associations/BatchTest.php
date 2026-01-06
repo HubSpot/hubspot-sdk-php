@@ -40,14 +40,12 @@ final class BatchTest extends TestCase
 
         $result = $this->client->crm->associations->batch->create(
             'toObjectType',
-            [
-                'fromObjectType' => 'fromObjectType',
-                'inputs' => [
-                    [
-                        'from' => ['id' => '53628'],
-                        'to' => ['id' => '12726'],
-                        'type' => 'contact_to_company',
-                    ],
+            fromObjectType: 'fromObjectType',
+            inputs: [
+                [
+                    'from' => ['id' => '53628'],
+                    'to' => ['id' => '12726'],
+                    'type' => 'contact_to_company',
                 ],
             ],
         );
@@ -65,14 +63,12 @@ final class BatchTest extends TestCase
 
         $result = $this->client->crm->associations->batch->create(
             'toObjectType',
-            [
-                'fromObjectType' => 'fromObjectType',
-                'inputs' => [
-                    [
-                        'from' => ['id' => '53628'],
-                        'to' => ['id' => '12726'],
-                        'type' => 'contact_to_company',
-                    ],
+            fromObjectType: 'fromObjectType',
+            inputs: [
+                [
+                    'from' => ['id' => '53628'],
+                    'to' => ['id' => '12726'],
+                    'type' => 'contact_to_company',
                 ],
             ],
         );
@@ -90,14 +86,12 @@ final class BatchTest extends TestCase
 
         $result = $this->client->crm->associations->batch->delete(
             'toObjectType',
-            [
-                'fromObjectType' => 'fromObjectType',
-                'inputs' => [
-                    [
-                        'from' => ['id' => '53628'],
-                        'to' => ['id' => '12726'],
-                        'type' => 'contact_to_company',
-                    ],
+            fromObjectType: 'fromObjectType',
+            inputs: [
+                [
+                    'from' => ['id' => '53628'],
+                    'to' => ['id' => '12726'],
+                    'type' => 'contact_to_company',
                 ],
             ],
         );
@@ -115,14 +109,12 @@ final class BatchTest extends TestCase
 
         $result = $this->client->crm->associations->batch->delete(
             'toObjectType',
-            [
-                'fromObjectType' => 'fromObjectType',
-                'inputs' => [
-                    [
-                        'from' => ['id' => '53628'],
-                        'to' => ['id' => '12726'],
-                        'type' => 'contact_to_company',
-                    ],
+            fromObjectType: 'fromObjectType',
+            inputs: [
+                [
+                    'from' => ['id' => '53628'],
+                    'to' => ['id' => '12726'],
+                    'type' => 'contact_to_company',
                 ],
             ],
         );
@@ -140,7 +132,8 @@ final class BatchTest extends TestCase
 
         $result = $this->client->crm->associations->batch->get(
             'toObjectType',
-            ['fromObjectType' => 'fromObjectType', 'inputs' => [['id' => '37295']]],
+            fromObjectType: 'fromObjectType',
+            inputs: [['id' => '37295']],
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -159,7 +152,8 @@ final class BatchTest extends TestCase
 
         $result = $this->client->crm->associations->batch->get(
             'toObjectType',
-            ['fromObjectType' => 'fromObjectType', 'inputs' => [['id' => '37295']]],
+            fromObjectType: 'fromObjectType',
+            inputs: [['id' => '37295']],
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

@@ -13,6 +13,11 @@ final class AuthService implements AuthContract
     /**
      * @api
      */
+    public AuthRawService $raw;
+
+    /**
+     * @api
+     */
     public OAuthService $oauth;
 
     /**
@@ -20,6 +25,7 @@ final class AuthService implements AuthContract
      */
     public function __construct(private Client $client)
     {
+        $this->raw = new AuthRawService($client);
         $this->oauth = new OAuthService($client);
     }
 }

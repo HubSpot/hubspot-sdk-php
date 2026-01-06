@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Crm\ObjectLibrary;
 
 use HubspotSDK\Client;
-use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\ObjectLibrary\ObjectTypeEnablementPublicResponse;
 use HubspotSDK\Crm\ObjectLibrary\PortalObjectTypeEnablementPublicResponse;
@@ -15,9 +14,17 @@ use HubspotSDK\ServiceContracts\Crm\ObjectLibrary\EnablementContract;
 final class EnablementService implements EnablementContract
 {
     /**
+     * @api
+     */
+    public EnablementRawService $raw;
+
+    /**
      * @internal
      */
-    public function __construct(private Client $client) {}
+    public function __construct(private Client $client)
+    {
+        $this->raw = new EnablementRawService($client);
+    }
 
     /**
      * @api
@@ -29,13 +36,8 @@ final class EnablementService implements EnablementContract
     public function list(
         ?RequestOptions $requestOptions = null
     ): PortalObjectTypeEnablementPublicResponse {
-        /** @var BaseResponse<PortalObjectTypeEnablementPublicResponse> */
-        $response = $this->client->request(
-            method: 'get',
-            path: 'crm/v3/object-library/enablement',
-            options: $requestOptions,
-            convert: PortalObjectTypeEnablementPublicResponse::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->list(requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -45,19 +47,16 @@ final class EnablementService implements EnablementContract
      *
      * Fetch whether object type is enabled
      *
+     * @param string $objectTypeID objectTypeId for the object type in question
+     *
      * @throws APIException
      */
     public function get(
         string $objectTypeID,
         ?RequestOptions $requestOptions = null
     ): ObjectTypeEnablementPublicResponse {
-        /** @var BaseResponse<ObjectTypeEnablementPublicResponse> */
-        $response = $this->client->request(
-            method: 'get',
-            path: ['crm/v3/object-library/enablement/%1$s', $objectTypeID],
-            options: $requestOptions,
-            convert: ObjectTypeEnablementPublicResponse::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->get($objectTypeID, requestOptions: $requestOptions);
 
         return $response->parse();
     }

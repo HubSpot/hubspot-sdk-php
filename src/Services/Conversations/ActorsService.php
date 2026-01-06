@@ -5,18 +5,14 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Conversations;
 
 use HubspotSDK\Client;
-use HubspotSDK\Conversations\Actors\ActorBatchReadParams;
-use HubspotSDK\Conversations\Actors\ActorGetParams;
 use HubspotSDK\Conversations\AgentActor;
 use HubspotSDK\Conversations\BatchResponsePublicActor;
 use HubspotSDK\Conversations\BotActor;
 use HubspotSDK\Conversations\EmailActor;
 use HubspotSDK\Conversations\IntegratorActor;
 use HubspotSDK\Conversations\LlmActor;
-use HubspotSDK\Conversations\PublicActor;
 use HubspotSDK\Conversations\SystemActor;
 use HubspotSDK\Conversations\VisitorActor;
-use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Conversations\ActorsContract;
@@ -24,38 +20,37 @@ use HubspotSDK\ServiceContracts\Conversations\ActorsContract;
 final class ActorsService implements ActorsContract
 {
     /**
+     * @api
+     */
+    public ActorsRawService $raw;
+
+    /**
      * @internal
      */
-    public function __construct(private Client $client) {}
+    public function __construct(private Client $client)
+    {
+        $this->raw = new ActorsRawService($client);
+    }
 
     /**
      * @api
      *
-     * @param array{
-     *   inputs: list<string>, property?: string
-     * }|ActorBatchReadParams $params
+     * @param list<string> $inputs body param: Strings to input
+     * @param string $property Query param:
      *
      * @throws APIException
      */
     public function batchRead(
-        array|ActorBatchReadParams $params,
-        ?RequestOptions $requestOptions = null
+        array $inputs,
+        ?string $property = null,
+        ?RequestOptions $requestOptions = null,
     ): BatchResponsePublicActor {
-        [$parsed, $options] = ActorBatchReadParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $query_params = ['property'];
+        $params = ['inputs' => $inputs, 'property' => $property];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<BatchResponsePublicActor> */
-        $response = $this->client->request(
-            method: 'post',
-            path: 'conversations/v3/conversations/actors/batch/read',
-            query: array_diff_key($parsed, $query_params),
-            body: (object) array_diff_key($parsed, $query_params),
-            options: $options,
-            convert: BatchResponsePublicActor::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->batchRead(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -63,28 +58,19 @@ final class ActorsService implements ActorsContract
     /**
      * @api
      *
-     * @param array{property?: string}|ActorGetParams $params
-     *
      * @throws APIException
      */
     public function get(
         string $actorID,
-        array|ActorGetParams $params,
+        ?string $property = null,
         ?RequestOptions $requestOptions = null,
     ): AgentActor|BotActor|IntegratorActor|SystemActor|VisitorActor|EmailActor|LlmActor {
-        [$parsed, $options] = ActorGetParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = ['property' => $property];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<AgentActor|BotActor|IntegratorActor|SystemActor|VisitorActor|EmailActor|LlmActor,> */
-        $response = $this->client->request(
-            method: 'get',
-            path: ['conversations/v3/conversations/actors/%1$s', $actorID],
-            query: $parsed,
-            options: $options,
-            convert: PublicActor::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->get($actorID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }

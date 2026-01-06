@@ -5,23 +5,13 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Crm;
 
 use HubspotSDK\Client;
-use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Core\Util;
-use HubspotSDK\Crm\Lists\ListCreateParams;
 use HubspotSDK\Crm\Lists\ListCreateResponse;
 use HubspotSDK\Crm\Lists\ListFetchResponse;
-use HubspotSDK\Crm\Lists\ListGetByObjectTypeIDAndNameParams;
-use HubspotSDK\Crm\Lists\ListGetParams;
-use HubspotSDK\Crm\Lists\ListListParams;
 use HubspotSDK\Crm\Lists\ListsByIDResponse;
-use HubspotSDK\Crm\Lists\ListScheduleConversionParams;
 use HubspotSDK\Crm\Lists\ListScheduleConversionParams\ConversionType;
 use HubspotSDK\Crm\Lists\ListScheduleConversionParams\TimeUnit;
-use HubspotSDK\Crm\Lists\ListSearchParams;
 use HubspotSDK\Crm\Lists\ListSearchResponse;
-use HubspotSDK\Crm\Lists\ListUpdateFiltersParams;
-use HubspotSDK\Crm\Lists\ListUpdateNameParams;
 use HubspotSDK\Crm\Lists\ListUpdateResponse;
 use HubspotSDK\Crm\Lists\PublicListConversionResponse;
 use HubspotSDK\Crm\Lists\PublicListPermissions;
@@ -34,6 +24,11 @@ use HubspotSDK\Services\Crm\Lists\MembershipsService;
 
 final class ListsService implements ListsContract
 {
+    /**
+     * @api
+     */
+    public ListsRawService $raw;
+
     /**
      * @api
      */
@@ -54,6 +49,7 @@ final class ListsService implements ListsContract
      */
     public function __construct(private Client $client)
     {
+        $this->raw = new ListsRawService($client);
         $this->folders = new FoldersService($client);
         $this->mapping = new MappingService($client);
         $this->memberships = new MembershipsService($client);
@@ -64,40 +60,47 @@ final class ListsService implements ListsContract
      *
      * Create a new list with the provided object list definition.
      *
+     * @param string $name the name of the list, which must be globally unique across all public lists in the portal
+     * @param string $objectTypeID the object type ID of the type of objects that the list will store
+     * @param string $processingType The processing type of the list. One of: `SNAPSHOT`, `MANUAL`, or `DYNAMIC`.
+     * @param array<string,string> $customProperties The list of custom properties to tie to the list. Custom property name is the key, the value is the value.
+     * @param array<string,mixed> $filterBranch
+     * @param int $listFolderID The ID of the folder that the list should be created in. If left blank, then the list will be created in the root of the list folder structure.
      * @param array{
-     *   name: string,
-     *   objectTypeID: string,
-     *   processingType: string,
-     *   customProperties?: array<string,string>,
-     *   filterBranch?: array<string,mixed>,
-     *   listFolderID?: int,
-     *   listPermissions?: array{
-     *     teamsWithEditAccess: list<int>, usersWithEditAccess: list<int>
-     *   }|PublicListPermissions,
-     *   membershipSettings?: array{
-     *     includeUnassigned?: bool, membershipTeamID?: int
-     *   }|PublicMembershipSettings,
-     * }|ListCreateParams $params
+     *   teamsWithEditAccess: list<int>, usersWithEditAccess: list<int>
+     * }|PublicListPermissions $listPermissions
+     * @param array{
+     *   includeUnassigned?: bool, membershipTeamID?: int
+     * }|PublicMembershipSettings $membershipSettings
      *
      * @throws APIException
      */
     public function create(
-        array|ListCreateParams $params,
-        ?RequestOptions $requestOptions = null
+        string $name,
+        string $objectTypeID,
+        string $processingType,
+        ?array $customProperties = null,
+        ?array $filterBranch = null,
+        ?int $listFolderID = null,
+        array|PublicListPermissions|null $listPermissions = null,
+        array|PublicMembershipSettings|null $membershipSettings = null,
+        ?RequestOptions $requestOptions = null,
     ): ListCreateResponse {
-        [$parsed, $options] = ListCreateParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = [
+            'name' => $name,
+            'objectTypeID' => $objectTypeID,
+            'processingType' => $processingType,
+            'customProperties' => $customProperties,
+            'filterBranch' => $filterBranch,
+            'listFolderID' => $listFolderID,
+            'listPermissions' => $listPermissions,
+            'membershipSettings' => $membershipSettings,
+        ];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<ListCreateResponse> */
-        $response = $this->client->request(
-            method: 'post',
-            path: 'crm/v3/lists/',
-            body: (object) $parsed,
-            options: $options,
-            convert: ListCreateResponse::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->create(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -107,29 +110,22 @@ final class ListsService implements ListsContract
      *
      * Fetch multiple lists in a single request by **ILS list ID**. The response will include the definitions of all lists that exist for the `listIds` provided.
      *
-     * @param array{
-     *   includeFilters?: bool, listIDs?: list<string>
-     * }|ListListParams $params
+     * @param bool $includeFilters A flag indicating whether or not the response object list definitions should include a filter branch definition. By default, object list definitions will not have their filter branch definitions included in the response.
+     * @param list<string> $listIDs the **ILS IDs** of the lists to fetch
      *
      * @throws APIException
      */
     public function list(
-        array|ListListParams $params,
-        ?RequestOptions $requestOptions = null
+        bool $includeFilters = false,
+        ?array $listIDs = null,
+        ?RequestOptions $requestOptions = null,
     ): ListsByIDResponse {
-        [$parsed, $options] = ListListParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = ['includeFilters' => $includeFilters, 'listIDs' => $listIDs];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<ListsByIDResponse> */
-        $response = $this->client->request(
-            method: 'get',
-            path: 'crm/v3/lists/',
-            query: Util::array_transform_keys($parsed, ['listIDs' => 'listIds']),
-            options: $options,
-            convert: ListsByIDResponse::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->list(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -139,19 +135,16 @@ final class ListsService implements ListsContract
      *
      * Delete a list by **ILS list ID**. Lists deleted through this endpoint can be restored up to 90-days following the delete. After 90-days, the list is purged and can no longer be restored.
      *
+     * @param string $listID the **ILS ID** of the list to delete
+     *
      * @throws APIException
      */
     public function delete(
         string $listID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        /** @var BaseResponse<mixed> */
-        $response = $this->client->request(
-            method: 'delete',
-            path: ['crm/v3/lists/%1$s', $listID],
-            options: $requestOptions,
-            convert: null,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->delete($listID, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -161,19 +154,16 @@ final class ListsService implements ListsContract
      *
      * Delete an existing scheduled conversion for a list.
      *
+     * @param string $listID the ID of the list that you want to cancel the conversion for
+     *
      * @throws APIException
      */
     public function deleteScheduleConversion(
         string $listID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        /** @var BaseResponse<mixed> */
-        $response = $this->client->request(
-            method: 'delete',
-            path: ['crm/v3/lists/%1$s/schedule-conversion', $listID],
-            options: $requestOptions,
-            convert: null,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->deleteScheduleConversion($listID, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -183,28 +173,22 @@ final class ListsService implements ListsContract
      *
      * Fetch a single list by **ILS list ID**.
      *
-     * @param array{includeFilters?: bool}|ListGetParams $params
+     * @param string $listID the **ILS ID** of the list to fetch
+     * @param bool $includeFilters A flag indicating whether or not the response object list definition should include a filter branch definition. By default, object list definitions will not have their filter branch definitions included in the response.
      *
      * @throws APIException
      */
     public function get(
         string $listID,
-        array|ListGetParams $params,
+        bool $includeFilters = false,
         ?RequestOptions $requestOptions = null,
     ): ListFetchResponse {
-        [$parsed, $options] = ListGetParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = ['includeFilters' => $includeFilters];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<ListFetchResponse> */
-        $response = $this->client->request(
-            method: 'get',
-            path: ['crm/v3/lists/%1$s', $listID],
-            query: $parsed,
-            options: $options,
-            convert: ListFetchResponse::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->get($listID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -214,34 +198,26 @@ final class ListsService implements ListsContract
      *
      * Fetch a single list by list name and object type.
      *
-     * @param array{
-     *   objectTypeID: string, includeFilters?: bool
-     * }|ListGetByObjectTypeIDAndNameParams $params
+     * @param string $listName Path param: The name of the list to fetch. This is **not** case sensitive.
+     * @param string $objectTypeID Path param: The object type ID of the object types stored by the list to fetch. For example, `0-1` for a `CONTACT` list.
+     * @param bool $includeFilters Query param: A flag indicating whether or not the response object list definition should include a filter branch definition. By default, object list definitions will not have their filter branch definitions included in the response.
      *
      * @throws APIException
      */
     public function getByObjectTypeIDAndName(
         string $listName,
-        array|ListGetByObjectTypeIDAndNameParams $params,
+        string $objectTypeID,
+        bool $includeFilters = false,
         ?RequestOptions $requestOptions = null,
     ): ListFetchResponse {
-        [$parsed, $options] = ListGetByObjectTypeIDAndNameParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $objectTypeID = $parsed['objectTypeID'];
-        unset($parsed['objectTypeID']);
+        $params = [
+            'objectTypeID' => $objectTypeID, 'includeFilters' => $includeFilters,
+        ];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<ListFetchResponse> */
-        $response = $this->client->request(
-            method: 'get',
-            path: [
-                'crm/v3/lists/object-type-id/%1$s/name/%2$s', $objectTypeID, $listName,
-            ],
-            query: $parsed,
-            options: $options,
-            convert: ListFetchResponse::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->getByObjectTypeIDAndName($listName, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -251,19 +227,16 @@ final class ListsService implements ListsContract
      *
      * Retrieve the conversion details for a list. This can be used to check for an upcoming conversion, or to get the details of when a list was already converted.
      *
+     * @param string $listID the ID of the list to schedule the conversion for
+     *
      * @throws APIException
      */
     public function getScheduleConversion(
         string $listID,
         ?RequestOptions $requestOptions = null
     ): PublicListConversionResponse {
-        /** @var BaseResponse<PublicListConversionResponse> */
-        $response = $this->client->request(
-            method: 'get',
-            path: ['crm/v3/lists/%1$s/schedule-conversion', $listID],
-            options: $requestOptions,
-            convert: PublicListConversionResponse::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->getScheduleConversion($listID, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -273,19 +246,16 @@ final class ListsService implements ListsContract
      *
      * Restore a previously deleted list by **ILS list ID**. Deleted lists are eligible to be restored up-to 90-days after the list has been deleted.
      *
+     * @param string $listID the **ILS ID** of the list to restore
+     *
      * @throws APIException
      */
     public function restore(
         string $listID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        /** @var BaseResponse<mixed> */
-        $response = $this->client->request(
-            method: 'put',
-            path: ['crm/v3/lists/%1$s/restore', $listID],
-            options: $requestOptions,
-            convert: null,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->restore($listID, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -295,35 +265,35 @@ final class ListsService implements ListsContract
      *
      * Schedule the conversion of an active list into a static list, or update the already scheduled conversion. This can be scheduled for a specific date or based on activity.
      *
-     * @param array{
-     *   conversionType: 'INACTIVITY'|ConversionType,
-     *   day: int,
-     *   month: int,
-     *   year: int,
-     *   offset: int,
-     *   timeUnit: 'DAY'|'MONTH'|'WEEK'|TimeUnit,
-     * }|ListScheduleConversionParams $params
+     * @param string $listID the ID of the list to schedule the conversion for
+     * @param 'DAY'|'MONTH'|'WEEK'|TimeUnit $timeUnit
+     * @param 'INACTIVITY'|ConversionType $conversionType
      *
      * @throws APIException
      */
     public function scheduleConversion(
         string $listID,
-        array|ListScheduleConversionParams $params,
+        int $day,
+        int $month,
+        int $year,
+        int $offset,
+        string|TimeUnit $timeUnit,
+        string|ConversionType $conversionType = 'INACTIVITY',
         ?RequestOptions $requestOptions = null,
     ): PublicListConversionResponse {
-        [$parsed, $options] = ListScheduleConversionParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = [
+            'conversionType' => $conversionType,
+            'day' => $day,
+            'month' => $month,
+            'year' => $year,
+            'offset' => $offset,
+            'timeUnit' => $timeUnit,
+        ];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<PublicListConversionResponse> */
-        $response = $this->client->request(
-            method: 'put',
-            path: ['crm/v3/lists/%1$s/schedule-conversion', $listID],
-            body: (object) $parsed,
-            options: $options,
-            convert: PublicListConversionResponse::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->scheduleConversion($listID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -333,35 +303,47 @@ final class ListsService implements ListsContract
      *
      * Search lists by list name or page through all lists by providing an empty `query` value.
      *
-     * @param array{
-     *   additionalProperties: list<string>,
-     *   offset: int,
-     *   count?: int,
-     *   listIDs?: list<string>,
-     *   processingTypes?: list<string>,
-     *   query?: string,
-     *   sort?: string,
-     * }|ListSearchParams $params
+     * @param list<string> $additionalProperties The property names of any additional list properties to include in the response. Properties that do not exist or that are empty for a particular list are not included in the response.
+     *
+     * By default, all requests will fetch the following properties for each list: `hs_list_size`, `hs_last_record_added_at`, `hs_last_record_removed_at`, `hs_folder_name`, and `hs_list_reference_count`.
+     * @param int $offset Value used to paginate through lists. The `offset` provided in the response can be used in the next request to fetch the next page of results. Defaults to `0` if no offset is provided.
+     * @param int $count The number of lists to include in the response. Defaults to `20` if no value is provided. The max `count` is `500`.
+     * @param list<string> $listIDs The `listIds` that will be used to filter results by `listId`. If values are provided, then the response will only include results that have a `listId` in this array.
+     *
+     * If no value is provided, or if an empty list is provided, then the results will not be filtered by `listId`.
+     * @param list<string> $processingTypes The `processingTypes` that will be used to filter results by `processingType`. If values are provided, then the response will only include results that have a `processingType` in this array.
+     *
+     * If no value is provided, or if an empty list is provided, then results will not be filtered by `processingType`.
+     *
+     * Valid `processingTypes` are: `MANUAL`, `SNAPSHOT`, or `DYNAMIC`.
+     * @param string $query The `query` that will be used to search for lists by list name. If no `query` is provided, then the results will include all lists.
      *
      * @throws APIException
      */
     public function search(
-        array|ListSearchParams $params,
-        ?RequestOptions $requestOptions = null
+        array $additionalProperties,
+        int $offset,
+        ?int $count = null,
+        ?array $listIDs = null,
+        ?array $processingTypes = null,
+        ?string $query = null,
+        ?string $sort = null,
+        ?RequestOptions $requestOptions = null,
     ): ListSearchResponse {
-        [$parsed, $options] = ListSearchParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = [
+            'additionalProperties' => $additionalProperties,
+            'offset' => $offset,
+            'count' => $count,
+            'listIDs' => $listIDs,
+            'processingTypes' => $processingTypes,
+            'query' => $query,
+            'sort' => $sort,
+        ];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<ListSearchResponse> */
-        $response = $this->client->request(
-            method: 'post',
-            path: 'crm/v3/lists/search',
-            body: (object) $parsed,
-            options: $options,
-            convert: ListSearchResponse::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->search(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -371,32 +353,27 @@ final class ListsService implements ListsContract
      *
      * Update the filter branch definition of a `DYNAMIC` list. Once updated, the list memberships will be re-evaluated and updated to match the new definition.
      *
-     * @param array{
-     *   filterBranch: array<string,mixed>, enrollObjectsInWorkflows?: bool
-     * }|ListUpdateFiltersParams $params
+     * @param string $listID path param: The **ILS ID** of the list to update
+     * @param array<string,mixed> $filterBranch Body param:
+     * @param bool $enrollObjectsInWorkflows query param: A flag indicating whether or not the memberships added to the list as a result of the filter change should be enrolled in workflows that are relevant to this list
      *
      * @throws APIException
      */
     public function updateFilters(
         string $listID,
-        array|ListUpdateFiltersParams $params,
+        array $filterBranch,
+        bool $enrollObjectsInWorkflows = false,
         ?RequestOptions $requestOptions = null,
     ): ListUpdateResponse {
-        [$parsed, $options] = ListUpdateFiltersParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $query_params = ['enrollObjectsInWorkflows'];
+        $params = [
+            'filterBranch' => $filterBranch,
+            'enrollObjectsInWorkflows' => $enrollObjectsInWorkflows,
+        ];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<ListUpdateResponse> */
-        $response = $this->client->request(
-            method: 'put',
-            path: ['crm/v3/lists/%1$s/update-list-filters', $listID],
-            query: array_diff_key($parsed, $query_params),
-            body: (object) array_diff_key($parsed, $query_params),
-            options: $options,
-            convert: ListUpdateResponse::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->updateFilters($listID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -406,30 +383,24 @@ final class ListsService implements ListsContract
      *
      * Update the name of a list. The name must be globally unique relative to all other public lists in the portal.
      *
-     * @param array{
-     *   includeFilters?: bool, listName?: string
-     * }|ListUpdateNameParams $params
+     * @param string $listID the **ILS ID** of the list to update
+     * @param bool $includeFilters A flag indicating whether or not the response object list definition should include a filter branch definition. By default, object list definitions will not have their filter branch definitions included in the response.
+     * @param string $listName the name to update the list to
      *
      * @throws APIException
      */
     public function updateName(
         string $listID,
-        array|ListUpdateNameParams $params,
+        bool $includeFilters = false,
+        ?string $listName = null,
         ?RequestOptions $requestOptions = null,
     ): ListUpdateResponse {
-        [$parsed, $options] = ListUpdateNameParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = ['includeFilters' => $includeFilters, 'listName' => $listName];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<ListUpdateResponse> */
-        $response = $this->client->request(
-            method: 'put',
-            path: ['crm/v3/lists/%1$s/update-list-name', $listID],
-            query: $parsed,
-            options: $options,
-            convert: ListUpdateResponse::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->updateName($listID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }

@@ -42,7 +42,7 @@ final class FileOperationsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->files->fileOperations->update('321669910225', []);
+        $result = $this->client->files->fileOperations->update('321669910225');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(File::class, $result);
@@ -81,7 +81,7 @@ final class FileOperationsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->files->fileOperations->get('321669910225', []);
+        $result = $this->client->files->fileOperations->get('321669910225');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(File::class, $result);
@@ -94,7 +94,7 @@ final class FileOperationsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->files->fileOperations->getByPath('file_path', []);
+        $result = $this->client->files->fileOperations->getByPath('file_path');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(FileStat::class, $result);
@@ -123,8 +123,7 @@ final class FileOperationsTest extends TestCase
         }
 
         $result = $this->client->files->fileOperations->getSignedURL(
-            '321669910225',
-            []
+            '321669910225'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -138,9 +137,10 @@ final class FileOperationsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->files->fileOperations->importFromURLAsync([
-            'access' => 'HIDDEN_INDEXABLE', 'url' => 'url',
-        ]);
+        $result = $this->client->files->fileOperations->importFromURLAsync(
+            access: 'HIDDEN_INDEXABLE',
+            url: 'url'
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(ImportFromURLTaskLocator::class, $result);
@@ -153,18 +153,18 @@ final class FileOperationsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->files->fileOperations->importFromURLAsync([
-            'access' => 'HIDDEN_INDEXABLE',
-            'url' => 'url',
-            'duplicateValidationScope' => 'ENTIRE_PORTAL',
-            'duplicateValidationStrategy' => 'NONE',
-            'expiresAt' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-            'folderID' => 'folderId',
-            'folderPath' => 'folderPath',
-            'name' => 'name',
-            'overwrite' => true,
-            'ttl' => 'ttl',
-        ]);
+        $result = $this->client->files->fileOperations->importFromURLAsync(
+            access: 'HIDDEN_INDEXABLE',
+            url: 'url',
+            duplicateValidationScope: 'ENTIRE_PORTAL',
+            duplicateValidationStrategy: 'NONE',
+            expiresAt: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
+            folderID: 'folderId',
+            folderPath: 'folderPath',
+            name: 'name',
+            overwrite: true,
+            ttl: 'ttl',
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(ImportFromURLTaskLocator::class, $result);
@@ -177,7 +177,7 @@ final class FileOperationsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->files->fileOperations->replace('321669910225', []);
+        $result = $this->client->files->fileOperations->replace('321669910225');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(File::class, $result);
@@ -190,7 +190,7 @@ final class FileOperationsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->files->fileOperations->search([]);
+        $result = $this->client->files->fileOperations->search();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(Page::class, $result);
@@ -203,7 +203,7 @@ final class FileOperationsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->files->fileOperations->upload([]);
+        $result = $this->client->files->fileOperations->upload();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(File::class, $result);

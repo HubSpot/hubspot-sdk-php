@@ -5,10 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Conversations;
 
 use HubspotSDK\Client;
-use HubspotSDK\Conversations\Inboxes\InboxGetParams;
-use HubspotSDK\Conversations\Inboxes\InboxListParams;
 use HubspotSDK\Conversations\PublicInbox;
-use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
@@ -17,43 +14,47 @@ use HubspotSDK\ServiceContracts\Conversations\InboxesContract;
 final class InboxesService implements InboxesContract
 {
     /**
+     * @api
+     */
+    public InboxesRawService $raw;
+
+    /**
      * @internal
      */
-    public function __construct(private Client $client) {}
+    public function __construct(private Client $client)
+    {
+        $this->raw = new InboxesRawService($client);
+    }
 
     /**
      * @api
      *
-     * @param array{
-     *   after?: string,
-     *   archived?: bool,
-     *   defaultPageLength?: int,
-     *   limit?: int,
-     *   sort?: list<string>,
-     * }|InboxListParams $params
+     * @param list<string> $sort
      *
      * @return Page<PublicInbox>
      *
      * @throws APIException
      */
     public function list(
-        array|InboxListParams $params,
-        ?RequestOptions $requestOptions = null
+        ?string $after = null,
+        ?bool $archived = null,
+        ?int $defaultPageLength = null,
+        ?int $limit = null,
+        ?array $sort = null,
+        ?RequestOptions $requestOptions = null,
     ): Page {
-        [$parsed, $options] = InboxListParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = [
+            'after' => $after,
+            'archived' => $archived,
+            'defaultPageLength' => $defaultPageLength,
+            'limit' => $limit,
+            'sort' => $sort,
+        ];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<Page<PublicInbox>> */
-        $response = $this->client->request(
-            method: 'get',
-            path: 'conversations/v3/conversations/inboxes',
-            query: $parsed,
-            options: $options,
-            convert: PublicInbox::class,
-            page: Page::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->list(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -61,28 +62,19 @@ final class InboxesService implements InboxesContract
     /**
      * @api
      *
-     * @param array{archived?: bool}|InboxGetParams $params
-     *
      * @throws APIException
      */
     public function get(
         int $inboxID,
-        array|InboxGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        bool $archived = false,
+        ?RequestOptions $requestOptions = null
     ): PublicInbox {
-        [$parsed, $options] = InboxGetParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = ['archived' => $archived];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<PublicInbox> */
-        $response = $this->client->request(
-            method: 'get',
-            path: ['conversations/v3/conversations/inboxes/%1$s', $inboxID],
-            query: $parsed,
-            options: $options,
-            convert: PublicInbox::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->get($inboxID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }

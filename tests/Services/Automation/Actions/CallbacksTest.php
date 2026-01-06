@@ -38,7 +38,7 @@ final class CallbacksTest extends TestCase
 
         $result = $this->client->automation->actions->callbacks->complete(
             'callbackId',
-            ['outputFields' => ['foo' => 'string']]
+            outputFields: ['foo' => 'string']
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -54,7 +54,7 @@ final class CallbacksTest extends TestCase
 
         $result = $this->client->automation->actions->callbacks->complete(
             'callbackId',
-            ['outputFields' => ['foo' => 'string']]
+            outputFields: ['foo' => 'string']
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -68,11 +68,11 @@ final class CallbacksTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->automation->actions->callbacks->completeBatch([
-            'inputs' => [
+        $result = $this->client->automation->actions->callbacks->completeBatch(
+            inputs: [
                 ['callbackID' => 'callbackId', 'outputFields' => ['foo' => 'string']],
             ],
-        ]);
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);
@@ -85,11 +85,11 @@ final class CallbacksTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->automation->actions->callbacks->completeBatch([
-            'inputs' => [
+        $result = $this->client->automation->actions->callbacks->completeBatch(
+            inputs: [
                 ['callbackID' => 'callbackId', 'outputFields' => ['foo' => 'string']],
             ],
-        ]);
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);

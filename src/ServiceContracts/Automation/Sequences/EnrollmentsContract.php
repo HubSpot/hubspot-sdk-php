@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace HubspotSDK\ServiceContracts\Automation\Sequences;
 
-use HubspotSDK\Automation\Sequences\Enrollments\EnrollmentEnrollParams;
 use HubspotSDK\Automation\Sequences\PublicSequenceEnrollmentLiteResponse;
 use HubspotSDK\Automation\Sequences\PublicSequenceEnrollmentResponse;
 use HubspotSDK\Core\Exceptions\APIException;
@@ -15,12 +14,20 @@ interface EnrollmentsContract
     /**
      * @api
      *
-     * @param array<mixed>|EnrollmentEnrollParams $params
+     * @param string $userID Query param:
+     * @param string $contactID Body param:
+     * @param string $senderEmail Body param:
+     * @param string $sequenceID Body param:
+     * @param string $senderAliasAddress Body param:
      *
      * @throws APIException
      */
     public function enroll(
-        array|EnrollmentEnrollParams $params,
+        string $userID,
+        string $contactID,
+        string $senderEmail,
+        string $sequenceID,
+        ?string $senderAliasAddress = null,
         ?RequestOptions $requestOptions = null,
     ): PublicSequenceEnrollmentLiteResponse;
 

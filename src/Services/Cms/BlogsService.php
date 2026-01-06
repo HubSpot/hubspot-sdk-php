@@ -16,6 +16,11 @@ final class BlogsService implements BlogsContract
     /**
      * @api
      */
+    public BlogsRawService $raw;
+
+    /**
+     * @api
+     */
     public AuthorsService $authors;
 
     /**
@@ -38,6 +43,7 @@ final class BlogsService implements BlogsContract
      */
     public function __construct(private Client $client)
     {
+        $this->raw = new BlogsRawService($client);
         $this->authors = new AuthorsService($client);
         $this->posts = new PostsService($client);
         $this->settings = new SettingsService($client);

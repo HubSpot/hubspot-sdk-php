@@ -37,9 +37,10 @@ final class LinksTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->subscriptions->v4->links->create([
-            'channel' => 'EMAIL', 'subscriberIDString' => 'subscriberIdString',
-        ]);
+        $result = $this->client->marketing->subscriptions->v4->links->create(
+            channel: 'EMAIL',
+            subscriberIDString: 'subscriberIdString'
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(LinkGenerationResponse::class, $result);
@@ -52,13 +53,13 @@ final class LinksTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->subscriptions->v4->links->create([
-            'channel' => 'EMAIL',
-            'subscriberIDString' => 'subscriberIdString',
-            'businessUnitID' => 0,
-            'language' => 'language',
-            'subscriptionID' => 0,
-        ]);
+        $result = $this->client->marketing->subscriptions->v4->links->create(
+            channel: 'EMAIL',
+            subscriberIDString: 'subscriberIdString',
+            businessUnitID: 0,
+            language: 'language',
+            subscriptionID: 0,
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(LinkGenerationResponse::class, $result);

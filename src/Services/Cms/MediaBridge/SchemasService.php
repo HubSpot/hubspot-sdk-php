@@ -5,13 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Cms\MediaBridge;
 
 use HubspotSDK\Client;
-use HubspotSDK\Cms\MediaBridge\Schemas\SchemaCreateAssociationParams;
-use HubspotSDK\Cms\MediaBridge\Schemas\SchemaDeleteAssociationParams;
-use HubspotSDK\Cms\MediaBridge\Schemas\SchemaGetParams;
-use HubspotSDK\Cms\MediaBridge\Schemas\SchemaListParams;
 use HubspotSDK\Cms\MediaBridge\Schemas\SchemaListResponse;
-use HubspotSDK\Cms\MediaBridge\Schemas\SchemaUpdateParams;
-use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\Objects\Schemas\ObjectSchema;
 use HubspotSDK\Crm\Objects\Schemas\ObjectsSchemasObjectTypeDefinition;
@@ -23,49 +17,67 @@ use HubspotSDK\ServiceContracts\Cms\MediaBridge\SchemasContract;
 final class SchemasService implements SchemasContract
 {
     /**
+     * @api
+     */
+    public SchemasRawService $raw;
+
+    /**
      * @internal
      */
-    public function __construct(private Client $client) {}
+    public function __construct(private Client $client)
+    {
+        $this->raw = new SchemasRawService($client);
+    }
 
     /**
      * @api
      *
      * Update the schema for an existing object type
      *
+     * @param string $objectType path param: The object type that you want to update the schema for
+     * @param int $appID Path param: The appId for the media bridge app. It is possible to have multiple apps in your developer account that use the media bridge.
+     * @param bool $clearDescription Body param:
+     * @param string $description Body param:
      * @param array{
-     *   appID: int,
-     *   clearDescription?: bool,
-     *   description?: string,
-     *   labels?: array{plural?: string, singular?: string}|ObjectTypeDefinitionLabels,
-     *   primaryDisplayProperty?: string,
-     *   requiredProperties?: list<string>,
-     *   restorable?: bool,
-     *   searchableProperties?: list<string>,
-     *   secondaryDisplayProperties?: list<string>,
-     * }|SchemaUpdateParams $params
+     *   plural?: string, singular?: string
+     * }|ObjectTypeDefinitionLabels $labels Body param:
+     * @param string $primaryDisplayProperty Body param: The name of the primary property for this object. This will be displayed as primary on the HubSpot record page for this object type.
+     * @param list<string> $requiredProperties body param: The names of properties that should be **required** when creating an object of this type
+     * @param bool $restorable Body param:
+     * @param list<string> $searchableProperties body param: Names of properties that will be indexed for this object type in by HubSpot's product search
+     * @param list<string> $secondaryDisplayProperties Body param: The names of secondary properties for this object. These will be displayed as secondary on the HubSpot record page for this object type.
      *
      * @throws APIException
      */
     public function update(
         string $objectType,
-        array|SchemaUpdateParams $params,
+        int $appID,
+        ?bool $clearDescription = null,
+        ?string $description = null,
+        array|ObjectTypeDefinitionLabels|null $labels = null,
+        ?string $primaryDisplayProperty = null,
+        ?array $requiredProperties = null,
+        ?bool $restorable = null,
+        ?array $searchableProperties = null,
+        ?array $secondaryDisplayProperties = null,
         ?RequestOptions $requestOptions = null,
     ): ObjectsSchemasObjectTypeDefinition {
-        [$parsed, $options] = SchemaUpdateParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $appID = $parsed['appID'];
-        unset($parsed['appID']);
+        $params = [
+            'appID' => $appID,
+            'clearDescription' => $clearDescription,
+            'description' => $description,
+            'labels' => $labels,
+            'primaryDisplayProperty' => $primaryDisplayProperty,
+            'requiredProperties' => $requiredProperties,
+            'restorable' => $restorable,
+            'searchableProperties' => $searchableProperties,
+            'secondaryDisplayProperties' => $secondaryDisplayProperties,
+        ];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<ObjectsSchemasObjectTypeDefinition> */
-        $response = $this->client->request(
-            method: 'patch',
-            path: ['media-bridge/v1/%1$s/schemas/%2$s', $appID, $objectType],
-            body: (object) array_diff_key($parsed, ['appID']),
-            options: $options,
-            convert: ObjectsSchemasObjectTypeDefinition::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->update($objectType, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -75,28 +87,22 @@ final class SchemasService implements SchemasContract
      *
      * Get the schemas for all object types.
      *
-     * @param array{archived?: bool}|SchemaListParams $params
+     * @param int $appID The appId for the media bridge app. It is possible to have multiple apps in your developer account that use the media bridge.
+     * @param bool $archived whether to return only results that have been archived
      *
      * @throws APIException
      */
     public function list(
         int $appID,
-        array|SchemaListParams $params,
-        ?RequestOptions $requestOptions = null,
+        bool $archived = false,
+        ?RequestOptions $requestOptions = null
     ): SchemaListResponse {
-        [$parsed, $options] = SchemaListParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = ['archived' => $archived];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<SchemaListResponse> */
-        $response = $this->client->request(
-            method: 'get',
-            path: ['media-bridge/v1/%1$s/schemas', $appID],
-            query: $parsed,
-            options: $options,
-            convert: SchemaListResponse::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->list($appID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -106,34 +112,33 @@ final class SchemasService implements SchemasContract
      *
      * Create a new association definition for the specified object type.
      *
-     * @param array{
-     *   appID: int, fromObjectTypeID: string, toObjectTypeID: string, name?: string
-     * }|SchemaCreateAssociationParams $params
+     * @param string $objectType Path param: The object type to create the definition for
+     * @param int $appID Path param: The appId for the media bridge app. It is possible to have multiple apps in your developer account that use the media bridge.
+     * @param string $fromObjectTypeID Body param:
+     * @param string $toObjectTypeID Body param:
+     * @param string $name Body param:
      *
      * @throws APIException
      */
     public function createAssociation(
         string $objectType,
-        array|SchemaCreateAssociationParams $params,
+        int $appID,
+        string $fromObjectTypeID,
+        string $toObjectTypeID,
+        ?string $name = null,
         ?RequestOptions $requestOptions = null,
     ): AssociationDefinition {
-        [$parsed, $options] = SchemaCreateAssociationParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $appID = $parsed['appID'];
-        unset($parsed['appID']);
+        $params = [
+            'appID' => $appID,
+            'fromObjectTypeID' => $fromObjectTypeID,
+            'toObjectTypeID' => $toObjectTypeID,
+            'name' => $name,
+        ];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<AssociationDefinition> */
-        $response = $this->client->request(
-            method: 'post',
-            path: [
-                'media-bridge/v1/%1$s/schemas/%2$s/associations', $appID, $objectType,
-            ],
-            body: (object) array_diff_key($parsed, ['appID']),
-            options: $options,
-            convert: AssociationDefinition::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->createAssociation($objectType, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -143,38 +148,22 @@ final class SchemasService implements SchemasContract
      *
      * Delete an existing association definition for an object type.
      *
-     * @param array{
-     *   appID: int, objectType: string
-     * }|SchemaDeleteAssociationParams $params
+     * @param string $associationID the ID of the association definition to be deleted
+     * @param int $appID The appId for the media bridge app. It is possible to have multiple apps in your developer account that use the media bridge.
+     * @param string $objectType the object type for the definition that you want to delete
      *
      * @throws APIException
      */
     public function deleteAssociation(
         string $associationID,
-        array|SchemaDeleteAssociationParams $params,
+        int $appID,
+        string $objectType,
         ?RequestOptions $requestOptions = null,
     ): mixed {
-        [$parsed, $options] = SchemaDeleteAssociationParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $appID = $parsed['appID'];
-        unset($parsed['appID']);
-        $objectType = $parsed['objectType'];
-        unset($parsed['objectType']);
+        $params = ['appID' => $appID, 'objectType' => $objectType];
 
-        /** @var BaseResponse<mixed> */
-        $response = $this->client->request(
-            method: 'delete',
-            path: [
-                'media-bridge/v1/%1$s/schemas/%2$s/associations/%3$s',
-                $appID,
-                $objectType,
-                $associationID,
-            ],
-            options: $options,
-            convert: null,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->deleteAssociation($associationID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -184,29 +173,20 @@ final class SchemasService implements SchemasContract
      *
      * Get the schema for a specified object type.
      *
-     * @param array{appID: int}|SchemaGetParams $params
+     * @param string $objectType the object type to get the schema for
+     * @param int $appID The appId for the media bridge app. It is possible to have multiple apps in your developer account that use the media bridge.
      *
      * @throws APIException
      */
     public function get(
         string $objectType,
-        array|SchemaGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        int $appID,
+        ?RequestOptions $requestOptions = null
     ): ObjectSchema {
-        [$parsed, $options] = SchemaGetParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $appID = $parsed['appID'];
-        unset($parsed['appID']);
+        $params = ['appID' => $appID];
 
-        /** @var BaseResponse<ObjectSchema> */
-        $response = $this->client->request(
-            method: 'get',
-            path: ['media-bridge/v1/%1$s/schemas/%2$s', $appID, $objectType],
-            options: $options,
-            convert: ObjectSchema::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->get($objectType, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }

@@ -40,22 +40,20 @@ final class BatchTest extends TestCase
 
         $result = $this->client->crm->objects->objects->batch->create(
             'objectType',
-            [
-                'inputs' => [
-                    [
-                        'associations' => [
-                            [
-                                'to' => ['id' => '37295'],
-                                'types' => [
-                                    [
-                                        'associationCategory' => 'HUBSPOT_DEFINED',
-                                        'associationTypeID' => 0,
-                                    ],
+            inputs: [
+                [
+                    'associations' => [
+                        [
+                            'to' => ['id' => '37295'],
+                            'types' => [
+                                [
+                                    'associationCategory' => 'HUBSPOT_DEFINED',
+                                    'associationTypeID' => 0,
                                 ],
                             ],
                         ],
-                        'properties' => ['foo' => 'string'],
                     ],
+                    'properties' => ['foo' => 'string'],
                 ],
             ],
         );
@@ -73,23 +71,21 @@ final class BatchTest extends TestCase
 
         $result = $this->client->crm->objects->objects->batch->create(
             'objectType',
-            [
-                'inputs' => [
-                    [
-                        'associations' => [
-                            [
-                                'to' => ['id' => '37295'],
-                                'types' => [
-                                    [
-                                        'associationCategory' => 'HUBSPOT_DEFINED',
-                                        'associationTypeID' => 0,
-                                    ],
+            inputs: [
+                [
+                    'associations' => [
+                        [
+                            'to' => ['id' => '37295'],
+                            'types' => [
+                                [
+                                    'associationCategory' => 'HUBSPOT_DEFINED',
+                                    'associationTypeID' => 0,
                                 ],
                             ],
                         ],
-                        'properties' => ['foo' => 'string'],
-                        'objectWriteTraceID' => 'objectWriteTraceId',
                     ],
+                    'properties' => ['foo' => 'string'],
+                    'objectWriteTraceID' => 'objectWriteTraceId',
                 ],
             ],
         );
@@ -107,7 +103,7 @@ final class BatchTest extends TestCase
 
         $result = $this->client->crm->objects->objects->batch->update(
             'objectType',
-            ['inputs' => [['id' => 'id', 'properties' => ['foo' => 'string']]]],
+            inputs: [['id' => 'id', 'properties' => ['foo' => 'string']]],
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -123,14 +119,12 @@ final class BatchTest extends TestCase
 
         $result = $this->client->crm->objects->objects->batch->update(
             'objectType',
-            [
-                'inputs' => [
-                    [
-                        'id' => 'id',
-                        'properties' => ['foo' => 'string'],
-                        'idProperty' => 'my_unique_property_name',
-                        'objectWriteTraceID' => 'objectWriteTraceId',
-                    ],
+            inputs: [
+                [
+                    'id' => 'id',
+                    'properties' => ['foo' => 'string'],
+                    'idProperty' => 'my_unique_property_name',
+                    'objectWriteTraceID' => 'objectWriteTraceId',
                 ],
             ],
         );
@@ -148,7 +142,7 @@ final class BatchTest extends TestCase
 
         $result = $this->client->crm->objects->objects->batch->delete(
             'objectType',
-            ['inputs' => [['id' => 'id']]]
+            inputs: [['id' => 'id']]
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -164,7 +158,7 @@ final class BatchTest extends TestCase
 
         $result = $this->client->crm->objects->objects->batch->delete(
             'objectType',
-            ['inputs' => [['id' => 'id']]]
+            inputs: [['id' => 'id']]
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -180,11 +174,9 @@ final class BatchTest extends TestCase
 
         $result = $this->client->crm->objects->objects->batch->get(
             'objectType',
-            [
-                'inputs' => [['id' => 'id']],
-                'properties' => ['string'],
-                'propertiesWithHistory' => ['string'],
-            ],
+            inputs: [['id' => 'id']],
+            properties: ['string'],
+            propertiesWithHistory: ['string'],
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -200,13 +192,11 @@ final class BatchTest extends TestCase
 
         $result = $this->client->crm->objects->objects->batch->get(
             'objectType',
-            [
-                'inputs' => [['id' => 'id']],
-                'properties' => ['string'],
-                'propertiesWithHistory' => ['string'],
-                'archived' => true,
-                'idProperty' => 'idProperty',
-            ],
+            inputs: [['id' => 'id']],
+            properties: ['string'],
+            propertiesWithHistory: ['string'],
+            archived: true,
+            idProperty: 'idProperty',
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -222,7 +212,7 @@ final class BatchTest extends TestCase
 
         $result = $this->client->crm->objects->objects->batch->upsert(
             'objectType',
-            ['inputs' => [['id' => 'id', 'properties' => ['foo' => 'string']]]],
+            inputs: [['id' => 'id', 'properties' => ['foo' => 'string']]],
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -241,14 +231,12 @@ final class BatchTest extends TestCase
 
         $result = $this->client->crm->objects->objects->batch->upsert(
             'objectType',
-            [
-                'inputs' => [
-                    [
-                        'id' => 'id',
-                        'properties' => ['foo' => 'string'],
-                        'idProperty' => 'idProperty',
-                        'objectWriteTraceID' => 'objectWriteTraceId',
-                    ],
+            inputs: [
+                [
+                    'id' => 'id',
+                    'properties' => ['foo' => 'string'],
+                    'idProperty' => 'idProperty',
+                    'objectWriteTraceID' => 'objectWriteTraceId',
                 ],
             ],
         );

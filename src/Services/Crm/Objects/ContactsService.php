@@ -5,18 +5,12 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Crm\Objects;
 
 use HubspotSDK\AssociationSpec;
+use HubspotSDK\AssociationSpec\AssociationCategory;
 use HubspotSDK\Client;
-use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\Crm\CreatedResponseSimplePublicObject;
-use HubspotSDK\Crm\Objects\Contacts\ContactCreateParams;
-use HubspotSDK\Crm\Objects\Contacts\ContactGdprDeleteParams;
-use HubspotSDK\Crm\Objects\Contacts\ContactGetParams;
-use HubspotSDK\Crm\Objects\Contacts\ContactListParams;
-use HubspotSDK\Crm\Objects\Contacts\ContactMergeParams;
-use HubspotSDK\Crm\Objects\Contacts\ContactSearchParams;
-use HubspotSDK\Crm\Objects\Contacts\ContactUpdateParams;
+use HubspotSDK\Crm\Filter\Operator;
 use HubspotSDK\Crm\SimplePublicObject;
 use HubspotSDK\Crm\SimplePublicObjectWithAssociations;
 use HubspotSDK\Page;
@@ -30,6 +24,11 @@ final class ContactsService implements ContactsContract
     /**
      * @api
      */
+    public ContactsRawService $raw;
+
+    /**
+     * @api
+     */
     public BatchService $batch;
 
     /**
@@ -37,6 +36,7 @@ final class ContactsService implements ContactsContract
      */
     public function __construct(private Client $client)
     {
+        $this->raw = new ContactsRawService($client);
         $this->batch = new BatchService($client);
     }
 
@@ -45,32 +45,26 @@ final class ContactsService implements ContactsContract
      *
      * Create a single contact. Include a `properties` object to define [property values](https://developers.hubspot.com/docs/guides/api/crm/properties) for the contact, along with an `associations` array to define [associations](https://developers.hubspot.com/docs/guides/api/crm/associations/associations-v4) with other CRM records.
      *
-     * @param array{
-     *   associations: list<array{
-     *     to: array<mixed>|PublicObjectID, types: list<array<mixed>|AssociationSpec>
-     *   }>,
-     *   properties: array<string,string>,
-     * }|ContactCreateParams $params
+     * @param list<array{
+     *   to: array{id: string}|PublicObjectID,
+     *   types: list<array{
+     *     associationCategory: 'HUBSPOT_DEFINED'|'INTEGRATOR_DEFINED'|'USER_DEFINED'|AssociationCategory,
+     *     associationTypeID: int,
+     *   }|AssociationSpec>,
+     * }> $associations
+     * @param array<string,string> $properties key-value pairs for setting properties for the new object
      *
      * @throws APIException
      */
     public function create(
-        array|ContactCreateParams $params,
-        ?RequestOptions $requestOptions = null
+        array $associations,
+        array $properties,
+        ?RequestOptions $requestOptions = null,
     ): CreatedResponseSimplePublicObject {
-        [$parsed, $options] = ContactCreateParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = ['associations' => $associations, 'properties' => $properties];
 
-        /** @var BaseResponse<CreatedResponseSimplePublicObject> */
-        $response = $this->client->request(
-            method: 'post',
-            path: 'crm/v3/objects/contacts',
-            body: (object) $parsed,
-            options: $options,
-            convert: CreatedResponseSimplePublicObject::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->create(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -80,32 +74,24 @@ final class ContactsService implements ContactsContract
      *
      * Update an existing contact, identified by ID or email/unique property value. To identify a contact by ID, include the ID in the request URL path. To identify a contact by their email or other unique property, include the email/property value in the request URL path, and add the `idProperty` query parameter (`/crm/v3/objects/contacts/jon@website.com?idProperty=email`). Provided property values will be overwritten. Read-only and non-existent properties will result in an error. Properties values can be cleared by passing an empty string.
      *
-     * @param array{
-     *   properties: array<string,string>, idProperty?: string
-     * }|ContactUpdateParams $params
+     * @param string $contactID Path param:
+     * @param array<string,string> $properties body param: Key value pairs representing the properties of the object
+     * @param string $idProperty query param: The name of a property whose values are unique for this object
      *
      * @throws APIException
      */
     public function update(
         string $contactID,
-        array|ContactUpdateParams $params,
+        array $properties,
+        ?string $idProperty = null,
         ?RequestOptions $requestOptions = null,
     ): SimplePublicObject {
-        [$parsed, $options] = ContactUpdateParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $query_params = ['idProperty'];
+        $params = ['properties' => $properties, 'idProperty' => $idProperty];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<SimplePublicObject> */
-        $response = $this->client->request(
-            method: 'patch',
-            path: ['crm/v3/objects/contacts/%1$s', $contactID],
-            query: array_diff_key($parsed, $query_params),
-            body: (object) array_diff_key($parsed, $query_params),
-            options: $options,
-            convert: SimplePublicObject::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->update($contactID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -115,37 +101,39 @@ final class ContactsService implements ContactsContract
      *
      * Retrieve all contacts, using query parameters to specify the information that gets returned.
      *
-     * @param array{
-     *   after?: string,
-     *   archived?: bool,
-     *   associations?: list<string>,
-     *   limit?: int,
-     *   properties?: list<string>,
-     *   propertiesWithHistory?: list<string>,
-     * }|ContactListParams $params
+     * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+     * @param bool $archived whether to return only results that have been archived
+     * @param list<string> $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored.
+     * @param int $limit the maximum number of results to display per page
+     * @param list<string> $properties A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored.
+     * @param list<string> $propertiesWithHistory A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored. Usage of this parameter will reduce the maximum number of contacts that can be read by a single request.
      *
      * @return Page<SimplePublicObjectWithAssociations>
      *
      * @throws APIException
      */
     public function list(
-        array|ContactListParams $params,
-        ?RequestOptions $requestOptions = null
+        ?string $after = null,
+        bool $archived = false,
+        ?array $associations = null,
+        int $limit = 10,
+        ?array $properties = null,
+        ?array $propertiesWithHistory = null,
+        ?RequestOptions $requestOptions = null,
     ): Page {
-        [$parsed, $options] = ContactListParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = [
+            'after' => $after,
+            'archived' => $archived,
+            'associations' => $associations,
+            'limit' => $limit,
+            'properties' => $properties,
+            'propertiesWithHistory' => $propertiesWithHistory,
+        ];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<Page<SimplePublicObjectWithAssociations>> */
-        $response = $this->client->request(
-            method: 'get',
-            path: 'crm/v3/objects/contacts',
-            query: $parsed,
-            options: $options,
-            convert: SimplePublicObjectWithAssociations::class,
-            page: Page::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->list(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -161,13 +149,8 @@ final class ContactsService implements ContactsContract
         string $contactID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        /** @var BaseResponse<mixed> */
-        $response = $this->client->request(
-            method: 'delete',
-            path: ['crm/v3/objects/contacts/%1$s', $contactID],
-            options: $requestOptions,
-            convert: null,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->delete($contactID, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -177,29 +160,22 @@ final class ContactsService implements ContactsContract
      *
      * Permanently delete a contact and all associated content to follow GDPR. Use optional property `idProperty` set to `email` to identify contact by email address. If email address is not found, the email address will be added to a blocklist and prevent it from being used in the future. Learn more about [permanently deleting contacts](https://knowledge.hubspot.com/privacy-and-consent/how-do-i-perform-a-gdpr-delete-in-hubspot).
      *
-     * @param array{
-     *   objectID: string, idProperty?: string
-     * }|ContactGdprDeleteParams $params
+     * @param string $objectID ID of the object
+     * @param string $idProperty ID property
      *
      * @throws APIException
      */
     public function gdprDelete(
-        array|ContactGdprDeleteParams $params,
+        string $objectID,
+        ?string $idProperty = null,
         ?RequestOptions $requestOptions = null,
     ): mixed {
-        [$parsed, $options] = ContactGdprDeleteParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = ['objectID' => $objectID, 'idProperty' => $idProperty];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<mixed> */
-        $response = $this->client->request(
-            method: 'post',
-            path: 'crm/v3/objects/contacts/gdpr-delete',
-            body: (object) $parsed,
-            options: $options,
-            convert: null,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->gdprDelete(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -209,34 +185,35 @@ final class ContactsService implements ContactsContract
      *
      * Retrieve a contact by its ID (`contactId`) or by a unique property (`idProperty`). You can specify what is returned using the `properties` query parameter.
      *
-     * @param array{
-     *   archived?: bool,
-     *   associations?: list<string>,
-     *   idProperty?: string,
-     *   properties?: list<string>,
-     *   propertiesWithHistory?: list<string>,
-     * }|ContactGetParams $params
+     * @param bool $archived whether to return only results that have been archived
+     * @param list<string> $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored.
+     * @param string $idProperty The name of a property whose values are unique for this object
+     * @param list<string> $properties A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored.
+     * @param list<string> $propertiesWithHistory A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored.
      *
      * @throws APIException
      */
     public function get(
         string $contactID,
-        array|ContactGetParams $params,
+        bool $archived = false,
+        ?array $associations = null,
+        ?string $idProperty = null,
+        ?array $properties = null,
+        ?array $propertiesWithHistory = null,
         ?RequestOptions $requestOptions = null,
     ): SimplePublicObjectWithAssociations {
-        [$parsed, $options] = ContactGetParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = [
+            'archived' => $archived,
+            'associations' => $associations,
+            'idProperty' => $idProperty,
+            'properties' => $properties,
+            'propertiesWithHistory' => $propertiesWithHistory,
+        ];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<SimplePublicObjectWithAssociations> */
-        $response = $this->client->request(
-            method: 'get',
-            path: ['crm/v3/objects/contacts/%1$s', $contactID],
-            query: $parsed,
-            options: $options,
-            convert: SimplePublicObjectWithAssociations::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->get($contactID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -246,29 +223,23 @@ final class ContactsService implements ContactsContract
      *
      * Merge two contact records. Learn more about [merging records](https://knowledge.hubspot.com/records/merge-records).
      *
-     * @param array{
-     *   objectIDToMerge: string, primaryObjectID: string
-     * }|ContactMergeParams $params
+     * @param string $objectIDToMerge the unique identifier of the CRM object that will be merged into the primary object
+     * @param string $primaryObjectID the unique identifier of the CRM object that will remain after the merge
      *
      * @throws APIException
      */
     public function merge(
-        array|ContactMergeParams $params,
-        ?RequestOptions $requestOptions = null
+        string $objectIDToMerge,
+        string $primaryObjectID,
+        ?RequestOptions $requestOptions = null,
     ): SimplePublicObject {
-        [$parsed, $options] = ContactMergeParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = [
+            'objectIDToMerge' => $objectIDToMerge,
+            'primaryObjectID' => $primaryObjectID,
+        ];
 
-        /** @var BaseResponse<SimplePublicObject> */
-        $response = $this->client->request(
-            method: 'post',
-            path: 'crm/v3/objects/contacts/merge',
-            body: (object) $parsed,
-            options: $options,
-            convert: SimplePublicObject::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->merge(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -278,34 +249,45 @@ final class ContactsService implements ContactsContract
      *
      * Search for contacts by filtering on properties, searching through associations, and sorting results. Learn more about [CRM search](https://developers.hubspot.com/docs/guides/api/crm/search#make-a-search-request).
      *
-     * @param array{
-     *   after: string,
-     *   filterGroups: list<array{filters: list<array<mixed>>}>,
-     *   limit: int,
-     *   properties: list<string>,
-     *   sorts: list<string>,
-     *   query?: string,
-     * }|ContactSearchParams $params
+     * @param string $after a paging cursor token for retrieving subsequent pages
+     * @param list<array{
+     *   filters: list<array{
+     *     operator: 'BETWEEN'|'CONTAINS_TOKEN'|'EQ'|'GT'|'GTE'|'HAS_PROPERTY'|'IN'|'LT'|'LTE'|'NEQ'|'NOT_CONTAINS_TOKEN'|'NOT_HAS_PROPERTY'|'NOT_IN'|Operator,
+     *     propertyName: string,
+     *     highValue?: string,
+     *     value?: string,
+     *     values?: list<string>,
+     *   }>,
+     * }> $filterGroups Up to 6 groups of filters defining additional query criteria
+     * @param int $limit the maximum results to return, up to 200 objects
+     * @param list<string> $properties a list of property names to include in the response
+     * @param list<string> $sorts specifies sorting order based on object properties
+     * @param string $query the search query string, up to 3000 characters
      *
      * @throws APIException
      */
     public function search(
-        array|ContactSearchParams $params,
-        ?RequestOptions $requestOptions = null
+        string $after,
+        array $filterGroups,
+        int $limit,
+        array $properties,
+        array $sorts,
+        ?string $query = null,
+        ?RequestOptions $requestOptions = null,
     ): CollectionResponseWithTotalSimplePublicObject {
-        [$parsed, $options] = ContactSearchParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = [
+            'after' => $after,
+            'filterGroups' => $filterGroups,
+            'limit' => $limit,
+            'properties' => $properties,
+            'sorts' => $sorts,
+            'query' => $query,
+        ];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<CollectionResponseWithTotalSimplePublicObject> */
-        $response = $this->client->request(
-            method: 'post',
-            path: 'crm/v3/objects/contacts/search',
-            body: (object) $parsed,
-            options: $options,
-            convert: CollectionResponseWithTotalSimplePublicObject::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->search(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }

@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace HubspotSDK\ServiceContracts\Conversations;
 
-use HubspotSDK\Conversations\ChannelAccounts\ChannelAccountGetParams;
-use HubspotSDK\Conversations\ChannelAccounts\ChannelAccountListParams;
 use HubspotSDK\Conversations\PublicChannelAccount;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Page;
@@ -16,27 +14,33 @@ interface ChannelAccountsContract
     /**
      * @api
      *
-     * @param array<mixed>|ChannelAccountListParams $params
+     * @param list<int> $channelID
+     * @param list<int> $inboxID
+     * @param list<string> $sort
      *
      * @return Page<PublicChannelAccount>
      *
      * @throws APIException
      */
     public function list(
-        array|ChannelAccountListParams $params,
+        ?string $after = null,
+        ?bool $archived = null,
+        ?array $channelID = null,
+        ?int $defaultPageLength = null,
+        ?array $inboxID = null,
+        ?int $limit = null,
+        ?array $sort = null,
         ?RequestOptions $requestOptions = null,
     ): Page;
 
     /**
      * @api
      *
-     * @param array<mixed>|ChannelAccountGetParams $params
-     *
      * @throws APIException
      */
     public function get(
         int $channelAccountID,
-        array|ChannelAccountGetParams $params,
+        bool $archived = false,
         ?RequestOptions $requestOptions = null,
     ): PublicChannelAccount;
 }

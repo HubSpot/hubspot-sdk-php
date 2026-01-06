@@ -5,9 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Conversations;
 
 use HubspotSDK\Client;
-use HubspotSDK\Conversations\Channels\ChannelListParams;
 use HubspotSDK\Conversations\PublicChannel;
-use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
@@ -16,39 +14,45 @@ use HubspotSDK\ServiceContracts\Conversations\ChannelsContract;
 final class ChannelsService implements ChannelsContract
 {
     /**
+     * @api
+     */
+    public ChannelsRawService $raw;
+
+    /**
      * @internal
      */
-    public function __construct(private Client $client) {}
+    public function __construct(private Client $client)
+    {
+        $this->raw = new ChannelsRawService($client);
+    }
 
     /**
      * @api
      *
-     * @param array{
-     *   after?: string, defaultPageLength?: int, limit?: int, sort?: list<string>
-     * }|ChannelListParams $params
+     * @param list<string> $sort
      *
      * @return Page<PublicChannel>
      *
      * @throws APIException
      */
     public function list(
-        array|ChannelListParams $params,
-        ?RequestOptions $requestOptions = null
+        ?string $after = null,
+        ?int $defaultPageLength = null,
+        ?int $limit = null,
+        ?array $sort = null,
+        ?RequestOptions $requestOptions = null,
     ): Page {
-        [$parsed, $options] = ChannelListParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = [
+            'after' => $after,
+            'defaultPageLength' => $defaultPageLength,
+            'limit' => $limit,
+            'sort' => $sort,
+        ];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<Page<PublicChannel>> */
-        $response = $this->client->request(
-            method: 'get',
-            path: 'conversations/v3/conversations/channels',
-            query: $parsed,
-            options: $options,
-            convert: PublicChannel::class,
-            page: Page::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->list(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -62,13 +66,8 @@ final class ChannelsService implements ChannelsContract
         int $channelID,
         ?RequestOptions $requestOptions = null
     ): PublicChannel {
-        /** @var BaseResponse<PublicChannel> */
-        $response = $this->client->request(
-            method: 'get',
-            path: ['conversations/v3/conversations/channels/%1$s', $channelID],
-            options: $requestOptions,
-            convert: PublicChannel::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->get($channelID, requestOptions: $requestOptions);
 
         return $response->parse();
     }

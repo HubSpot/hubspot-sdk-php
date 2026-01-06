@@ -37,9 +37,9 @@ final class ActorsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->conversations->actors->batchRead([
-            'inputs' => ['string'],
-        ]);
+        $result = $this->client->conversations->actors->batchRead(
+            inputs: ['string']
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(BatchResponsePublicActor::class, $result);
@@ -52,9 +52,10 @@ final class ActorsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->conversations->actors->batchRead([
-            'inputs' => ['string'], 'property' => 'property',
-        ]);
+        $result = $this->client->conversations->actors->batchRead(
+            inputs: ['string'],
+            property: 'property'
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(BatchResponsePublicActor::class, $result);
@@ -67,7 +68,7 @@ final class ActorsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->conversations->actors->get('actorId', []);
+        $result = $this->client->conversations->actors->get('actorId');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNotNull($result);

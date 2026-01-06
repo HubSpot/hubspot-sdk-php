@@ -5,13 +5,6 @@ declare(strict_types=1);
 namespace HubspotSDK\ServiceContracts\Cms\Hubdb\Rows;
 
 use HubspotSDK\Cms\Hubdb\BatchResponseHubDBTableRowV3;
-use HubspotSDK\Cms\Hubdb\Rows\Batch\BatchCloneBatchParams;
-use HubspotSDK\Cms\Hubdb\Rows\Batch\BatchCreateBatchParams;
-use HubspotSDK\Cms\Hubdb\Rows\Batch\BatchGetBatchParams;
-use HubspotSDK\Cms\Hubdb\Rows\Batch\BatchGetDraftBatchParams;
-use HubspotSDK\Cms\Hubdb\Rows\Batch\BatchPurgeBatchParams;
-use HubspotSDK\Cms\Hubdb\Rows\Batch\BatchReplaceBatchParams;
-use HubspotSDK\Cms\Hubdb\Rows\Batch\BatchUpdateBatchParams;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 
@@ -20,91 +13,118 @@ interface BatchContract
     /**
      * @api
      *
-     * @param array<mixed>|BatchCloneBatchParams $params
+     * @param string $tableIDOrName The ID or name of the table
+     * @param list<array{id: string, name?: string}> $inputs
      *
      * @throws APIException
      */
     public function cloneBatch(
         string $tableIDOrName,
-        array|BatchCloneBatchParams $params,
+        array $inputs,
         ?RequestOptions $requestOptions = null,
     ): BatchResponseHubDBTableRowV3;
 
     /**
      * @api
      *
-     * @param array<mixed>|BatchCreateBatchParams $params
+     * @param string $tableIDOrName The ID or name of the table
+     * @param list<array{
+     *   childTableID: int,
+     *   displayIndex: int,
+     *   values: array<string,array<string,mixed>>,
+     *   name?: string,
+     *   path?: string,
+     * }> $inputs
      *
      * @throws APIException
      */
     public function createBatch(
         string $tableIDOrName,
-        array|BatchCreateBatchParams $params,
+        array $inputs,
         ?RequestOptions $requestOptions = null,
     ): BatchResponseHubDBTableRowV3;
 
     /**
      * @api
      *
-     * @param array<mixed>|BatchGetBatchParams $params
+     * @param string $tableIDOrName the ID or name of the table to query
+     * @param list<string> $inputs strings to input
      *
      * @throws APIException
      */
     public function getBatch(
         string $tableIDOrName,
-        array|BatchGetBatchParams $params,
+        array $inputs,
         ?RequestOptions $requestOptions = null,
     ): BatchResponseHubDBTableRowV3;
 
     /**
      * @api
      *
-     * @param array<mixed>|BatchGetDraftBatchParams $params
+     * @param string $tableIDOrName The ID or name of the table
+     * @param list<string> $inputs strings to input
      *
      * @throws APIException
      */
     public function getDraftBatch(
         string $tableIDOrName,
-        array|BatchGetDraftBatchParams $params,
+        array $inputs,
         ?RequestOptions $requestOptions = null,
     ): BatchResponseHubDBTableRowV3;
 
     /**
      * @api
      *
-     * @param array<mixed>|BatchPurgeBatchParams $params
+     * @param string $tableIDOrName The ID or name of the table
+     * @param list<string> $inputs strings to input
      *
      * @throws APIException
      */
     public function purgeBatch(
         string $tableIDOrName,
-        array|BatchPurgeBatchParams $params,
+        array $inputs,
         ?RequestOptions $requestOptions = null,
     ): mixed;
 
     /**
      * @api
      *
-     * @param array<mixed>|BatchReplaceBatchParams $params
+     * @param string $tableIDOrName The ID or name of the table
+     * @param list<array{
+     *   childTableID: int,
+     *   displayIndex: int,
+     *   values: array<string,array<string,mixed>>,
+     *   id?: string,
+     *   name?: string,
+     *   path?: string,
+     * }> $inputs
      *
      * @throws APIException
      */
     public function replaceBatch(
         string $tableIDOrName,
-        array|BatchReplaceBatchParams $params,
+        array $inputs,
         ?RequestOptions $requestOptions = null,
     ): BatchResponseHubDBTableRowV3;
 
     /**
      * @api
      *
-     * @param array<mixed>|BatchUpdateBatchParams $params
+     * @param string $tableIDOrName The ID or name of the table
+     * @param list<array{
+     *   childTableID: int,
+     *   displayIndex: int,
+     *   values: array<string,array<string,mixed>>,
+     *   id?: string,
+     *   name?: string,
+     *   path?: string,
+     * }> $inputs
      *
      * @throws APIException
      */
     public function updateBatch(
         string $tableIDOrName,
-        array|BatchUpdateBatchParams $params,
+        array $inputs,
         ?RequestOptions $requestOptions = null,
     ): BatchResponseHubDBTableRowV3;
 }

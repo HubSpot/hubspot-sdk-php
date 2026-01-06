@@ -38,9 +38,9 @@ final class TranscriptsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->extensions->calling->transcripts->create([
-            'engagementID' => 0,
-            'transcriptCreateUtterances' => [
+        $result = $this->client->crm->extensions->calling->transcripts->create(
+            engagementID: 0,
+            transcriptCreateUtterances: [
                 [
                     'endTimeMillis' => 0,
                     'speaker' => ['id' => 'id', 'name' => 'name'],
@@ -48,7 +48,7 @@ final class TranscriptsTest extends TestCase
                     'text' => 'text',
                 ],
             ],
-        ]);
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(TranscriptCreateResponse::class, $result);
@@ -61,9 +61,9 @@ final class TranscriptsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->extensions->calling->transcripts->create([
-            'engagementID' => 0,
-            'transcriptCreateUtterances' => [
+        $result = $this->client->crm->extensions->calling->transcripts->create(
+            engagementID: 0,
+            transcriptCreateUtterances: [
                 [
                     'endTimeMillis' => 0,
                     'speaker' => ['id' => 'id', 'name' => 'name', 'email' => 'email'],
@@ -72,7 +72,7 @@ final class TranscriptsTest extends TestCase
                     'languageCode' => 'languageCode',
                 ],
             ],
-        ]);
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(TranscriptCreateResponse::class, $result);

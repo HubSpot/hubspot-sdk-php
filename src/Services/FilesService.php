@@ -14,6 +14,11 @@ final class FilesService implements FilesContract
     /**
      * @api
      */
+    public FilesRawService $raw;
+
+    /**
+     * @api
+     */
     public FileOperationsService $fileOperations;
 
     /**
@@ -26,6 +31,7 @@ final class FilesService implements FilesContract
      */
     public function __construct(private Client $client)
     {
+        $this->raw = new FilesRawService($client);
         $this->fileOperations = new FileOperationsService($client);
         $this->folders = new FoldersService($client);
     }

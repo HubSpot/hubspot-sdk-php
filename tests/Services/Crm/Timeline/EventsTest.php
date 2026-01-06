@@ -38,12 +38,12 @@ final class EventsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->timeline->events->create([
-            'eventTemplateID' => '1001298',
-            'tokens' => [
+        $result = $this->client->crm->timeline->events->create(
+            eventTemplateID: '1001298',
+            tokens: [
                 'petAge' => 'string', 'petColor' => 'black', 'petName' => 'Art3mis',
             ],
-        ]);
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(TimelineEventResponse::class, $result);
@@ -56,31 +56,31 @@ final class EventsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->timeline->events->create([
-            'eventTemplateID' => '1001298',
-            'tokens' => [
+        $result = $this->client->crm->timeline->events->create(
+            eventTemplateID: '1001298',
+            tokens: [
                 'petAge' => 'string', 'petColor' => 'black', 'petName' => 'Art3mis',
             ],
-            'id' => 'id',
-            'domain' => 'domain',
-            'email' => 'art3mis-pup@petspot.com',
-            'extraData' => [
+            id: 'id',
+            domain: 'domain',
+            email: 'art3mis-pup@petspot.com',
+            extraData: [
                 'questions' => [
                     ['answer' => 'Bark!', 'question' => 'Who\'s a good girl?'],
                     ['answer' => 'Woof!', 'question' => 'Do you wanna go on a walk?'],
                 ],
             ],
-            'objectID' => 'objectId',
-            'timelineIFrame' => [
+            objectID: 'objectId',
+            timelineIFrame: [
                 'headerLabel' => 'Art3mis dog',
                 'height' => 400,
                 'linkLabel' => 'View Art3mis',
                 'url' => 'https://my.petspot.com/pets/Art3mis',
                 'width' => 600,
             ],
-            'timestamp' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-            'utk' => 'utk',
-        ]);
+            timestamp: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
+            utk: 'utk',
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(TimelineEventResponse::class, $result);
@@ -93,8 +93,8 @@ final class EventsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->timeline->events->batchCreate([
-            'inputs' => [
+        $result = $this->client->crm->timeline->events->batchCreate(
+            inputs: [
                 [
                     'eventTemplateID' => '1001298',
                     'tokens' => [
@@ -108,7 +108,7 @@ final class EventsTest extends TestCase
                     ],
                 ],
             ],
-        ]);
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);
@@ -121,8 +121,8 @@ final class EventsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->timeline->events->batchCreate([
-            'inputs' => [
+        $result = $this->client->crm->timeline->events->batchCreate(
+            inputs: [
                 [
                     'eventTemplateID' => '1001298',
                     'tokens' => [
@@ -177,7 +177,7 @@ final class EventsTest extends TestCase
                     'utk' => 'utk',
                 ],
             ],
-        ]);
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);
@@ -192,7 +192,7 @@ final class EventsTest extends TestCase
 
         $result = $this->client->crm->timeline->events->get(
             'eventId',
-            ['eventTemplateID' => 'eventTemplateId']
+            eventTemplateID: 'eventTemplateId'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -208,7 +208,7 @@ final class EventsTest extends TestCase
 
         $result = $this->client->crm->timeline->events->get(
             'eventId',
-            ['eventTemplateID' => 'eventTemplateId']
+            eventTemplateID: 'eventTemplateId'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -224,7 +224,7 @@ final class EventsTest extends TestCase
 
         $result = $this->client->crm->timeline->events->getDetail(
             'eventId',
-            ['eventTemplateID' => 'eventTemplateId']
+            eventTemplateID: 'eventTemplateId'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -240,7 +240,7 @@ final class EventsTest extends TestCase
 
         $result = $this->client->crm->timeline->events->getDetail(
             'eventId',
-            ['eventTemplateID' => 'eventTemplateId']
+            eventTemplateID: 'eventTemplateId'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

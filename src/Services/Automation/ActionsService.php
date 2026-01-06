@@ -16,6 +16,11 @@ final class ActionsService implements ActionsContract
     /**
      * @api
      */
+    public ActionsRawService $raw;
+
+    /**
+     * @api
+     */
     public CallbacksService $callbacks;
 
     /**
@@ -38,6 +43,7 @@ final class ActionsService implements ActionsContract
      */
     public function __construct(private Client $client)
     {
+        $this->raw = new ActionsRawService($client);
         $this->callbacks = new CallbacksService($client);
         $this->definitions = new DefinitionsService($client);
         $this->functions = new FunctionsService($client);

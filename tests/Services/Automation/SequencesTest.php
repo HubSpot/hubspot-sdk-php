@@ -38,9 +38,7 @@ final class SequencesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->automation->sequences->list([
-            'userID' => 'userId',
-        ]);
+        $result = $this->client->automation->sequences->list(userID: 'userId');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(Page::class, $result);
@@ -53,9 +51,12 @@ final class SequencesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->automation->sequences->list([
-            'userID' => 'userId', 'after' => 'after', 'limit' => 0, 'name' => 'name',
-        ]);
+        $result = $this->client->automation->sequences->list(
+            userID: 'userId',
+            after: 'after',
+            limit: 0,
+            name: 'name'
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(Page::class, $result);
@@ -70,7 +71,7 @@ final class SequencesTest extends TestCase
 
         $result = $this->client->automation->sequences->get(
             'sequenceId',
-            ['userID' => 'userId']
+            userID: 'userId'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -86,7 +87,7 @@ final class SequencesTest extends TestCase
 
         $result = $this->client->automation->sequences->get(
             'sequenceId',
-            ['userID' => 'userId']
+            userID: 'userId'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

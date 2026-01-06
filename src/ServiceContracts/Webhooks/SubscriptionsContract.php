@@ -9,42 +9,49 @@ use HubspotSDK\RequestOptions;
 use HubspotSDK\Webhooks\BatchResponseSubscriptionResponse;
 use HubspotSDK\Webhooks\SubscriptionListResponse;
 use HubspotSDK\Webhooks\SubscriptionResponse;
-use HubspotSDK\Webhooks\Subscriptions\SubscriptionCreateParams;
-use HubspotSDK\Webhooks\Subscriptions\SubscriptionDeleteParams;
-use HubspotSDK\Webhooks\Subscriptions\SubscriptionGetParams;
-use HubspotSDK\Webhooks\Subscriptions\SubscriptionUpdateBatchParams;
-use HubspotSDK\Webhooks\Subscriptions\SubscriptionUpdateParams;
+use HubspotSDK\Webhooks\Subscriptions\SubscriptionCreateParams\EventType;
 
 interface SubscriptionsContract
 {
     /**
      * @api
      *
-     * @param array<mixed>|SubscriptionCreateParams $params
+     * @param int $appID the ID of the app
+     * @param 'company.associationChange'|'company.creation'|'company.deletion'|'company.merge'|'company.propertyChange'|'company.restore'|'contact.associationChange'|'contact.creation'|'contact.deletion'|'contact.merge'|'contact.privacyDeletion'|'contact.propertyChange'|'contact.restore'|'conversation.creation'|'conversation.deletion'|'conversation.newMessage'|'conversation.privacyDeletion'|'conversation.propertyChange'|'deal.associationChange'|'deal.creation'|'deal.deletion'|'deal.merge'|'deal.propertyChange'|'deal.restore'|'line_item.associationChange'|'line_item.creation'|'line_item.deletion'|'line_item.merge'|'line_item.propertyChange'|'line_item.restore'|'object.associationChange'|'object.creation'|'object.deletion'|'object.merge'|'object.propertyChange'|'object.restore'|'product.creation'|'product.deletion'|'product.merge'|'product.propertyChange'|'product.restore'|'ticket.associationChange'|'ticket.creation'|'ticket.deletion'|'ticket.merge'|'ticket.propertyChange'|'ticket.restore'|EventType $eventType Type of event to listen for. Can be one of `create`, `delete`, `deletedForPrivacy`, or `propertyChange`.
+     * @param bool $active Determines if the subscription is active or paused. Defaults to false.
+     * @param string $propertyName The internal name of the property to monitor for changes. Only applies when `eventType` is `propertyChange`.
      *
      * @throws APIException
      */
     public function create(
         int $appID,
-        array|SubscriptionCreateParams $params,
+        string|EventType $eventType,
+        ?bool $active = null,
+        ?string $objectTypeID = null,
+        ?string $propertyName = null,
         ?RequestOptions $requestOptions = null,
     ): SubscriptionResponse;
 
     /**
      * @api
      *
-     * @param array<mixed>|SubscriptionUpdateParams $params
+     * @param int $subscriptionID path param: The ID of the event subscription
+     * @param int $appID path param: The ID of the app
+     * @param bool $active body param: Determines if the subscription is active or paused
      *
      * @throws APIException
      */
     public function update(
         int $subscriptionID,
-        array|SubscriptionUpdateParams $params,
+        int $appID,
+        ?bool $active = null,
         ?RequestOptions $requestOptions = null,
     ): SubscriptionResponse;
 
     /**
      * @api
+     *
+     * @param int $appID the ID of the app
      *
      * @throws APIException
      */
@@ -56,39 +63,42 @@ interface SubscriptionsContract
     /**
      * @api
      *
-     * @param array<mixed>|SubscriptionDeleteParams $params
+     * @param int $subscriptionID the ID of the event subscription
+     * @param int $appID the ID of the app
      *
      * @throws APIException
      */
     public function delete(
         int $subscriptionID,
-        array|SubscriptionDeleteParams $params,
-        ?RequestOptions $requestOptions = null,
+        int $appID,
+        ?RequestOptions $requestOptions = null
     ): mixed;
 
     /**
      * @api
      *
-     * @param array<mixed>|SubscriptionGetParams $params
+     * @param int $subscriptionID the ID of the event subscription
+     * @param int $appID the ID of the app
      *
      * @throws APIException
      */
     public function get(
         int $subscriptionID,
-        array|SubscriptionGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        int $appID,
+        ?RequestOptions $requestOptions = null
     ): SubscriptionResponse;
 
     /**
      * @api
      *
-     * @param array<mixed>|SubscriptionUpdateBatchParams $params
+     * @param int $appID the ID of the app
+     * @param list<array{id: int, active: bool}> $inputs
      *
      * @throws APIException
      */
     public function updateBatch(
         int $appID,
-        array|SubscriptionUpdateBatchParams $params,
-        ?RequestOptions $requestOptions = null,
+        array $inputs,
+        ?RequestOptions $requestOptions = null
     ): BatchResponseSubscriptionResponse;
 }

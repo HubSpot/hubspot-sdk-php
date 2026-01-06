@@ -51,7 +51,7 @@ final class FormsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->forms->update('formId', []);
+        $result = $this->client->marketing->forms->update('formId');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(FormDefinitionBase::class, $result);
@@ -64,7 +64,7 @@ final class FormsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->forms->list([]);
+        $result = $this->client->marketing->forms->list();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(Page::class, $result);
@@ -90,7 +90,7 @@ final class FormsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->marketing->forms->get('formId', []);
+        $result = $this->client->marketing->forms->get('formId');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(FormDefinitionBase::class, $result);

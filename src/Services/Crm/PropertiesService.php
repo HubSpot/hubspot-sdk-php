@@ -5,18 +5,12 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Crm;
 
 use HubspotSDK\Client;
-use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\Properties\CollectionResponseProperty;
 use HubspotSDK\Crm\Properties\CreatedResponseProperty;
-use HubspotSDK\Crm\Properties\PropertyCreateParams;
 use HubspotSDK\Crm\Properties\PropertyCreateParams\DataSensitivity;
 use HubspotSDK\Crm\Properties\PropertyCreateParams\FieldType;
 use HubspotSDK\Crm\Properties\PropertyCreateParams\Type;
-use HubspotSDK\Crm\Properties\PropertyDeleteParams;
-use HubspotSDK\Crm\Properties\PropertyGetParams;
-use HubspotSDK\Crm\Properties\PropertyListParams;
-use HubspotSDK\Crm\Properties\PropertyUpdateParams;
 use HubspotSDK\Property;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\PropertiesContract;
@@ -25,6 +19,11 @@ use HubspotSDK\Services\Crm\Properties\GroupsService;
 
 final class PropertiesService implements PropertiesContract
 {
+    /**
+     * @api
+     */
+    public PropertiesRawService $raw;
+
     /**
      * @api
      */
@@ -40,6 +39,7 @@ final class PropertiesService implements PropertiesContract
      */
     public function __construct(private Client $client)
     {
+        $this->raw = new PropertiesRawService($client);
         $this->batch = new BatchService($client);
         $this->groups = new GroupsService($client);
     }
@@ -49,50 +49,60 @@ final class PropertiesService implements PropertiesContract
      *
      * Create and return a copy of a new property for the specified object type.
      *
-     * @param array{
-     *   fieldType: value-of<FieldType>,
-     *   groupName: string,
+     * @param 'booleancheckbox'|'calculation_equation'|'checkbox'|'date'|'file'|'html'|'number'|'phonenumber'|'radio'|'select'|'text'|'textarea'|FieldType $fieldType
+     * @param 'bool'|'date'|'datetime'|'enumeration'|'number'|'phone_number'|'string'|Type $type
+     * @param 'highly_sensitive'|'non_sensitive'|'sensitive'|DataSensitivity $dataSensitivity
+     * @param list<array{
+     *   displayOrder: int,
+     *   hidden: bool,
      *   label: string,
-     *   name: string,
-     *   type: 'bool'|'date'|'datetime'|'enumeration'|'number'|'phone_number'|'string'|Type,
-     *   calculationFormula?: string,
-     *   dataSensitivity?: 'highly_sensitive'|'non_sensitive'|'sensitive'|DataSensitivity,
+     *   value: string,
      *   description?: string,
-     *   displayOrder?: int,
-     *   externalOptions?: bool,
-     *   formField?: bool,
-     *   hasUniqueValue?: bool,
-     *   hidden?: bool,
-     *   options?: list<array{
-     *     displayOrder: int,
-     *     hidden: bool,
-     *     label: string,
-     *     value: string,
-     *     description?: string,
-     *   }>,
-     *   referencedObjectType?: string,
-     * }|PropertyCreateParams $params
+     * }> $options
      *
      * @throws APIException
      */
     public function create(
         string $objectType,
-        array|PropertyCreateParams $params,
+        string|FieldType $fieldType,
+        string $groupName,
+        string $label,
+        string $name,
+        string|Type $type,
+        ?string $calculationFormula = null,
+        string|DataSensitivity|null $dataSensitivity = null,
+        ?string $description = null,
+        ?int $displayOrder = null,
+        ?bool $externalOptions = null,
+        ?bool $formField = null,
+        ?bool $hasUniqueValue = null,
+        ?bool $hidden = null,
+        ?array $options = null,
+        ?string $referencedObjectType = null,
         ?RequestOptions $requestOptions = null,
     ): CreatedResponseProperty {
-        [$parsed, $options] = PropertyCreateParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = [
+            'fieldType' => $fieldType,
+            'groupName' => $groupName,
+            'label' => $label,
+            'name' => $name,
+            'type' => $type,
+            'calculationFormula' => $calculationFormula,
+            'dataSensitivity' => $dataSensitivity,
+            'description' => $description,
+            'displayOrder' => $displayOrder,
+            'externalOptions' => $externalOptions,
+            'formField' => $formField,
+            'hasUniqueValue' => $hasUniqueValue,
+            'hidden' => $hidden,
+            'options' => $options,
+            'referencedObjectType' => $referencedObjectType,
+        ];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<CreatedResponseProperty> */
-        $response = $this->client->request(
-            method: 'post',
-            path: ['crm/v3/properties/%1$s', $objectType],
-            body: (object) $parsed,
-            options: $options,
-            convert: CreatedResponseProperty::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->create($objectType, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -102,48 +112,60 @@ final class PropertiesService implements PropertiesContract
      *
      * Perform a partial update of a property identified by { propertyName }. Provided fields will be overwritten.
      *
-     * @param array{
-     *   objectType: string,
-     *   calculationFormula?: string,
+     * @param string $propertyName Path param:
+     * @param string $objectType Path param:
+     * @param string $calculationFormula body param: Represents a formula that is used to compute a calculated property
+     * @param string $description body param: A description of the property that will be shown as help text in HubSpot
+     * @param int $displayOrder Body param: Properties are displayed in order starting with the lowest positive integer value. Values of -1 will cause the Property to be displayed after any positive values.
+     * @param 'booleancheckbox'|'calculation_equation'|'checkbox'|'date'|'file'|'html'|'number'|'phonenumber'|'radio'|'select'|'text'|'textarea'|\HubspotSDK\Crm\Properties\PropertyUpdateParams\FieldType $fieldType body param: Controls how the property appears in HubSpot
+     * @param bool $formField body param: Whether or not the property can be used in a HubSpot form
+     * @param string $groupName body param: The name of the property group the property belongs to
+     * @param bool $hidden body param: If true, the property won't be visible and can't be used in HubSpot
+     * @param string $label body param: A human-readable property label that will be shown in HubSpot
+     * @param list<array{
+     *   displayOrder: int,
+     *   hidden: bool,
+     *   label: string,
+     *   value: string,
      *   description?: string,
-     *   displayOrder?: int,
-     *   fieldType?: value-of<PropertyUpdateParams\FieldType>,
-     *   formField?: bool,
-     *   groupName?: string,
-     *   hidden?: bool,
-     *   label?: string,
-     *   options?: list<array{
-     *     displayOrder: int,
-     *     hidden: bool,
-     *     label: string,
-     *     value: string,
-     *     description?: string,
-     *   }>,
-     *   type?: 'bool'|'date'|'datetime'|'enumeration'|'number'|'phone_number'|'string'|PropertyUpdateParams\Type,
-     * }|PropertyUpdateParams $params
+     * }> $options Body param: A list of valid options for the property
+     * @param 'bool'|'date'|'datetime'|'enumeration'|'number'|'phone_number'|'string'|\HubspotSDK\Crm\Properties\PropertyUpdateParams\Type $type body param: The data type of the property
      *
      * @throws APIException
      */
     public function update(
         string $propertyName,
-        array|PropertyUpdateParams $params,
+        string $objectType,
+        ?string $calculationFormula = null,
+        ?string $description = null,
+        ?int $displayOrder = null,
+        string|\HubspotSDK\Crm\Properties\PropertyUpdateParams\FieldType|null $fieldType = null,
+        ?bool $formField = null,
+        ?string $groupName = null,
+        ?bool $hidden = null,
+        ?string $label = null,
+        ?array $options = null,
+        string|\HubspotSDK\Crm\Properties\PropertyUpdateParams\Type|null $type = null,
         ?RequestOptions $requestOptions = null,
     ): Property {
-        [$parsed, $options] = PropertyUpdateParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $objectType = $parsed['objectType'];
-        unset($parsed['objectType']);
+        $params = [
+            'objectType' => $objectType,
+            'calculationFormula' => $calculationFormula,
+            'description' => $description,
+            'displayOrder' => $displayOrder,
+            'fieldType' => $fieldType,
+            'formField' => $formField,
+            'groupName' => $groupName,
+            'hidden' => $hidden,
+            'label' => $label,
+            'options' => $options,
+            'type' => $type,
+        ];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<Property> */
-        $response = $this->client->request(
-            method: 'patch',
-            path: ['crm/v3/properties/%1$s/%2$s', $objectType, $propertyName],
-            body: (object) array_diff_key($parsed, ['objectType']),
-            options: $options,
-            convert: Property::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->update($propertyName, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -153,33 +175,30 @@ final class PropertiesService implements PropertiesContract
      *
      * Read all existing properties for the specified object type and HubSpot account.
      *
-     * @param array{
-     *   archived?: bool,
-     *   dataSensitivity?: 'highly_sensitive'|'non_sensitive'|'sensitive'|PropertyListParams\DataSensitivity,
-     *   locale?: string,
-     *   properties?: string,
-     * }|PropertyListParams $params
+     * @param bool $archived whether to return only results that have been archived
+     * @param 'highly_sensitive'|'non_sensitive'|'sensitive'|\HubspotSDK\Crm\Properties\PropertyListParams\DataSensitivity $dataSensitivity
      *
      * @throws APIException
      */
     public function list(
         string $objectType,
-        array|PropertyListParams $params,
+        bool $archived = false,
+        string|\HubspotSDK\Crm\Properties\PropertyListParams\DataSensitivity $dataSensitivity = 'non_sensitive',
+        ?string $locale = null,
+        ?string $properties = null,
         ?RequestOptions $requestOptions = null,
     ): CollectionResponseProperty {
-        [$parsed, $options] = PropertyListParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = [
+            'archived' => $archived,
+            'dataSensitivity' => $dataSensitivity,
+            'locale' => $locale,
+            'properties' => $properties,
+        ];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<CollectionResponseProperty> */
-        $response = $this->client->request(
-            method: 'get',
-            path: ['crm/v3/properties/%1$s', $objectType],
-            query: $parsed,
-            options: $options,
-            convert: CollectionResponseProperty::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->list($objectType, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -189,29 +208,17 @@ final class PropertiesService implements PropertiesContract
      *
      * Move a property identified by {propertyName} to the recycling bin.
      *
-     * @param array{objectType: string}|PropertyDeleteParams $params
-     *
      * @throws APIException
      */
     public function delete(
         string $propertyName,
-        array|PropertyDeleteParams $params,
+        string $objectType,
         ?RequestOptions $requestOptions = null,
     ): mixed {
-        [$parsed, $options] = PropertyDeleteParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $objectType = $parsed['objectType'];
-        unset($parsed['objectType']);
+        $params = ['objectType' => $objectType];
 
-        /** @var BaseResponse<mixed> */
-        $response = $this->client->request(
-            method: 'delete',
-            path: ['crm/v3/properties/%1$s/%2$s', $objectType, $propertyName],
-            options: $options,
-            convert: null,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->delete($propertyName, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -221,36 +228,36 @@ final class PropertiesService implements PropertiesContract
      *
      * Read a property identified by {propertyName}.
      *
-     * @param array{
-     *   objectType: string,
-     *   archived?: bool,
-     *   dataSensitivity?: 'highly_sensitive'|'non_sensitive'|'sensitive'|PropertyGetParams\DataSensitivity,
-     *   locale?: string,
-     *   properties?: string,
-     * }|PropertyGetParams $params
+     * @param string $propertyName Path param:
+     * @param string $objectType Path param:
+     * @param bool $archived query param: Whether to return only results that have been archived
+     * @param 'highly_sensitive'|'non_sensitive'|'sensitive'|\HubspotSDK\Crm\Properties\PropertyGetParams\DataSensitivity $dataSensitivity Query param:
+     * @param string $locale Query param:
+     * @param string $properties Query param:
      *
      * @throws APIException
      */
     public function get(
         string $propertyName,
-        array|PropertyGetParams $params,
+        string $objectType,
+        bool $archived = false,
+        string|\HubspotSDK\Crm\Properties\PropertyGetParams\DataSensitivity $dataSensitivity = 'non_sensitive',
+        ?string $locale = null,
+        ?string $properties = null,
         ?RequestOptions $requestOptions = null,
     ): Property {
-        [$parsed, $options] = PropertyGetParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $objectType = $parsed['objectType'];
-        unset($parsed['objectType']);
+        $params = [
+            'objectType' => $objectType,
+            'archived' => $archived,
+            'dataSensitivity' => $dataSensitivity,
+            'locale' => $locale,
+            'properties' => $properties,
+        ];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<Property> */
-        $response = $this->client->request(
-            method: 'get',
-            path: ['crm/v3/properties/%1$s/%2$s', $objectType, $propertyName],
-            query: $parsed,
-            options: $options,
-            convert: Property::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->get($propertyName, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }

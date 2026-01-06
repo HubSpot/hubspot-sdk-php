@@ -41,28 +41,26 @@ final class CardsTest extends TestCase
 
         $result = $this->client->crm->extensions->cards->create(
             0,
-            [
-                'actions' => ['baseURLs' => ['https://www.example.com/hubspot']],
-                'display' => [
-                    'properties' => [
-                        [
-                            'dataType' => 'STRING',
-                            'label' => 'Pets Name',
-                            'name' => 'pet_name',
-                            'options' => [
-                                ['label' => 'label', 'name' => 'name', 'type' => 'DANGER'],
-                            ],
+            actions: ['baseURLs' => ['https://www.example.com/hubspot']],
+            display: [
+                'properties' => [
+                    [
+                        'dataType' => 'STRING',
+                        'label' => 'Pets Name',
+                        'name' => 'pet_name',
+                        'options' => [
+                            ['label' => 'label', 'name' => 'name', 'type' => 'DANGER'],
                         ],
                     ],
                 ],
-                'fetch' => [
-                    'objectTypes' => [
-                        ['name' => 'contacts', 'propertiesToSend' => ['email', 'firstname']],
-                    ],
-                    'targetURL' => 'https://www.example.com/hubspot/target',
-                ],
-                'title' => 'PetSpot',
             ],
+            fetch: [
+                'objectTypes' => [
+                    ['name' => 'contacts', 'propertiesToSend' => ['email', 'firstname']],
+                ],
+                'targetURL' => 'https://www.example.com/hubspot/target',
+            ],
+            title: 'PetSpot',
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -78,30 +76,28 @@ final class CardsTest extends TestCase
 
         $result = $this->client->crm->extensions->cards->create(
             0,
-            [
-                'actions' => ['baseURLs' => ['https://www.example.com/hubspot']],
-                'display' => [
-                    'properties' => [
-                        [
-                            'dataType' => 'STRING',
-                            'label' => 'Pets Name',
-                            'name' => 'pet_name',
-                            'options' => [
-                                ['label' => 'label', 'name' => 'name', 'type' => 'DANGER'],
-                            ],
+            actions: ['baseURLs' => ['https://www.example.com/hubspot']],
+            display: [
+                'properties' => [
+                    [
+                        'dataType' => 'STRING',
+                        'label' => 'Pets Name',
+                        'name' => 'pet_name',
+                        'options' => [
+                            ['label' => 'label', 'name' => 'name', 'type' => 'DANGER'],
                         ],
                     ],
                 ],
-                'fetch' => [
-                    'objectTypes' => [
-                        ['name' => 'contacts', 'propertiesToSend' => ['email', 'firstname']],
-                    ],
-                    'targetURL' => 'https://www.example.com/hubspot/target',
-                    'cardType' => 'EXTERNAL',
-                    'serverlessFunction' => 'serverlessFunction',
-                ],
-                'title' => 'PetSpot',
             ],
+            fetch: [
+                'objectTypes' => [
+                    ['name' => 'contacts', 'propertiesToSend' => ['email', 'firstname']],
+                ],
+                'targetURL' => 'https://www.example.com/hubspot/target',
+                'cardType' => 'EXTERNAL',
+                'serverlessFunction' => 'serverlessFunction',
+            ],
+            title: 'PetSpot',
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -115,10 +111,7 @@ final class CardsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->extensions->cards->update(
-            'cardId',
-            ['appID' => 0]
-        );
+        $result = $this->client->crm->extensions->cards->update('cardId', appID: 0);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(PublicCardResponse::class, $result);
@@ -133,31 +126,29 @@ final class CardsTest extends TestCase
 
         $result = $this->client->crm->extensions->cards->update(
             'cardId',
-            [
-                'appID' => 0,
-                'actions' => ['baseURLs' => ['https://www.example.com/hubspot']],
-                'display' => [
-                    'properties' => [
-                        [
-                            'dataType' => 'STRING',
-                            'label' => 'Pets Name',
-                            'name' => 'pet_name',
-                            'options' => [
-                                ['label' => 'label', 'name' => 'name', 'type' => 'DANGER'],
-                            ],
+            appID: 0,
+            actions: ['baseURLs' => ['https://www.example.com/hubspot']],
+            display: [
+                'properties' => [
+                    [
+                        'dataType' => 'STRING',
+                        'label' => 'Pets Name',
+                        'name' => 'pet_name',
+                        'options' => [
+                            ['label' => 'label', 'name' => 'name', 'type' => 'DANGER'],
                         ],
                     ],
                 ],
-                'fetch' => [
-                    'objectTypes' => [
-                        ['name' => 'contacts', 'propertiesToSend' => ['email', 'firstname']],
-                    ],
-                    'cardType' => 'EXTERNAL',
-                    'serverlessFunction' => 'serverlessFunction',
-                    'targetURL' => 'https://www.example.com/hubspot/target',
-                ],
-                'title' => 'PetSpot',
             ],
+            fetch: [
+                'objectTypes' => [
+                    ['name' => 'contacts', 'propertiesToSend' => ['email', 'firstname']],
+                ],
+                'cardType' => 'EXTERNAL',
+                'serverlessFunction' => 'serverlessFunction',
+                'targetURL' => 'https://www.example.com/hubspot/target',
+            ],
+            title: 'PetSpot',
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -184,10 +175,7 @@ final class CardsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->extensions->cards->delete(
-            'cardId',
-            ['appID' => 0]
-        );
+        $result = $this->client->crm->extensions->cards->delete('cardId', appID: 0);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);
@@ -200,10 +188,7 @@ final class CardsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->extensions->cards->delete(
-            'cardId',
-            ['appID' => 0]
-        );
+        $result = $this->client->crm->extensions->cards->delete('cardId', appID: 0);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);
@@ -216,10 +201,7 @@ final class CardsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->extensions->cards->get(
-            'cardId',
-            ['appID' => 0]
-        );
+        $result = $this->client->crm->extensions->cards->get('cardId', appID: 0);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(PublicCardResponse::class, $result);
@@ -232,10 +214,7 @@ final class CardsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->extensions->cards->get(
-            'cardId',
-            ['appID' => 0]
-        );
+        $result = $this->client->crm->extensions->cards->get('cardId', appID: 0);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(PublicCardResponse::class, $result);

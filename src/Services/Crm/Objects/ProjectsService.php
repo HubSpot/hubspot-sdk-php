@@ -5,17 +5,12 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Crm\Objects;
 
 use HubspotSDK\AssociationSpec;
+use HubspotSDK\AssociationSpec\AssociationCategory;
 use HubspotSDK\Client;
-use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\Crm\CreatedResponseSimplePublicObject;
-use HubspotSDK\Crm\Objects\Projects\ProjectCreateParams;
-use HubspotSDK\Crm\Objects\Projects\ProjectGetParams;
-use HubspotSDK\Crm\Objects\Projects\ProjectListParams;
-use HubspotSDK\Crm\Objects\Projects\ProjectMergeParams;
-use HubspotSDK\Crm\Objects\Projects\ProjectSearchParams;
-use HubspotSDK\Crm\Objects\Projects\ProjectUpdateParams;
+use HubspotSDK\Crm\Filter\Operator;
 use HubspotSDK\Crm\SimplePublicObject;
 use HubspotSDK\Crm\SimplePublicObjectWithAssociations;
 use HubspotSDK\Page;
@@ -27,6 +22,11 @@ use HubspotSDK\Services\Crm\Objects\Projects\BatchService;
 
 final class ProjectsService implements ProjectsContract
 {
+    /**
+     * @api
+     */
+    public ProjectsRawService $raw;
+
     /**
      * @api
      */
@@ -42,6 +42,7 @@ final class ProjectsService implements ProjectsContract
      */
     public function __construct(private Client $client)
     {
+        $this->raw = new ProjectsRawService($client);
         $this->associations = new AssociationsService($client);
         $this->batch = new BatchService($client);
     }
@@ -51,32 +52,26 @@ final class ProjectsService implements ProjectsContract
      *
      * Create a project with the given properties and return a copy of the object, including the ID.
      *
-     * @param array{
-     *   associations: list<array{
-     *     to: array<mixed>|PublicObjectID, types: list<array<mixed>|AssociationSpec>
-     *   }>,
-     *   properties: array<string,string>,
-     * }|ProjectCreateParams $params
+     * @param list<array{
+     *   to: array{id: string}|PublicObjectID,
+     *   types: list<array{
+     *     associationCategory: 'HUBSPOT_DEFINED'|'INTEGRATOR_DEFINED'|'USER_DEFINED'|AssociationCategory,
+     *     associationTypeID: int,
+     *   }|AssociationSpec>,
+     * }> $associations
+     * @param array<string,string> $properties key-value pairs for setting properties for the new object
      *
      * @throws APIException
      */
     public function create(
-        array|ProjectCreateParams $params,
-        ?RequestOptions $requestOptions = null
+        array $associations,
+        array $properties,
+        ?RequestOptions $requestOptions = null,
     ): CreatedResponseSimplePublicObject {
-        [$parsed, $options] = ProjectCreateParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = ['associations' => $associations, 'properties' => $properties];
 
-        /** @var BaseResponse<CreatedResponseSimplePublicObject> */
-        $response = $this->client->request(
-            method: 'post',
-            path: 'crm/objects/v3/projects',
-            body: (object) $parsed,
-            options: $options,
-            convert: CreatedResponseSimplePublicObject::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->create(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -86,32 +81,24 @@ final class ProjectsService implements ProjectsContract
      *
      * Perform a partial update of an Object identified by `{projectId}`or optionally a unique property value as specified by the `idProperty` query param. `{projectId}` refers to the internal object ID by default, and the `idProperty` query param refers to a property whose values are unique for the object. Provided property values will be overwritten. Read-only and non-existent properties will result in an error. Properties values can be cleared by passing an empty string.
      *
-     * @param array{
-     *   properties: array<string,string>, idProperty?: string
-     * }|ProjectUpdateParams $params
+     * @param string $projectID Path param:
+     * @param array<string,string> $properties body param: Key value pairs representing the properties of the object
+     * @param string $idProperty Query param: The name of a property whose values are unique for this object
      *
      * @throws APIException
      */
     public function update(
         string $projectID,
-        array|ProjectUpdateParams $params,
+        array $properties,
+        ?string $idProperty = null,
         ?RequestOptions $requestOptions = null,
     ): SimplePublicObject {
-        [$parsed, $options] = ProjectUpdateParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $query_params = ['idProperty'];
+        $params = ['properties' => $properties, 'idProperty' => $idProperty];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<SimplePublicObject> */
-        $response = $this->client->request(
-            method: 'patch',
-            path: ['crm/objects/v3/projects/%1$s', $projectID],
-            query: array_diff_key($parsed, $query_params),
-            body: (object) array_diff_key($parsed, $query_params),
-            options: $options,
-            convert: SimplePublicObject::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->update($projectID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -121,37 +108,39 @@ final class ProjectsService implements ProjectsContract
      *
      * Read a page of projects. Control what is returned via the `properties` query param.
      *
-     * @param array{
-     *   after?: string,
-     *   archived?: bool,
-     *   associations?: list<string>,
-     *   limit?: int,
-     *   properties?: list<string>,
-     *   propertiesWithHistory?: list<string>,
-     * }|ProjectListParams $params
+     * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+     * @param bool $archived whether to return only results that have been archived
+     * @param list<string> $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored.
+     * @param int $limit The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+     * @param list<string> $properties A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored.
+     * @param list<string> $propertiesWithHistory A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored. Usage of this parameter will reduce the maximum number of projects that can be read by a single request.
      *
      * @return Page<SimplePublicObjectWithAssociations>
      *
      * @throws APIException
      */
     public function list(
-        array|ProjectListParams $params,
-        ?RequestOptions $requestOptions = null
+        ?string $after = null,
+        bool $archived = false,
+        ?array $associations = null,
+        int $limit = 10,
+        ?array $properties = null,
+        ?array $propertiesWithHistory = null,
+        ?RequestOptions $requestOptions = null,
     ): Page {
-        [$parsed, $options] = ProjectListParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = [
+            'after' => $after,
+            'archived' => $archived,
+            'associations' => $associations,
+            'limit' => $limit,
+            'properties' => $properties,
+            'propertiesWithHistory' => $propertiesWithHistory,
+        ];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<Page<SimplePublicObjectWithAssociations>> */
-        $response = $this->client->request(
-            method: 'get',
-            path: 'crm/objects/v3/projects',
-            query: $parsed,
-            options: $options,
-            convert: SimplePublicObjectWithAssociations::class,
-            page: Page::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->list(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -167,13 +156,8 @@ final class ProjectsService implements ProjectsContract
         string $projectID,
         ?RequestOptions $requestOptions = null
     ): mixed {
-        /** @var BaseResponse<mixed> */
-        $response = $this->client->request(
-            method: 'delete',
-            path: ['crm/objects/v3/projects/%1$s', $projectID],
-            options: $requestOptions,
-            convert: null,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->delete($projectID, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -183,34 +167,35 @@ final class ProjectsService implements ProjectsContract
      *
      * Read an Object identified by `{projectId}`. `{projectId}` refers to the internal object ID by default, or optionally any unique property value as specified by the `idProperty` query param.  Control what is returned via the `properties` query param.
      *
-     * @param array{
-     *   archived?: bool,
-     *   associations?: list<string>,
-     *   idProperty?: string,
-     *   properties?: list<string>,
-     *   propertiesWithHistory?: list<string>,
-     * }|ProjectGetParams $params
+     * @param bool $archived Whether to include archived projects
+     * @param list<string> $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored.
+     * @param string $idProperty The name of a property whose values are unique for this object
+     * @param list<string> $properties A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored.
+     * @param list<string> $propertiesWithHistory A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored.
      *
      * @throws APIException
      */
     public function get(
         string $projectID,
-        array|ProjectGetParams $params,
+        bool $archived = false,
+        ?array $associations = null,
+        ?string $idProperty = null,
+        ?array $properties = null,
+        ?array $propertiesWithHistory = null,
         ?RequestOptions $requestOptions = null,
     ): SimplePublicObjectWithAssociations {
-        [$parsed, $options] = ProjectGetParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = [
+            'archived' => $archived,
+            'associations' => $associations,
+            'idProperty' => $idProperty,
+            'properties' => $properties,
+            'propertiesWithHistory' => $propertiesWithHistory,
+        ];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<SimplePublicObjectWithAssociations> */
-        $response = $this->client->request(
-            method: 'get',
-            path: ['crm/objects/v3/projects/%1$s', $projectID],
-            query: $parsed,
-            options: $options,
-            convert: SimplePublicObjectWithAssociations::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->get($projectID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -220,29 +205,23 @@ final class ProjectsService implements ProjectsContract
      *
      * Merge two project records. Learn more about [merging records](https://knowledge.hubspot.com/records/merge-records).
      *
-     * @param array{
-     *   objectIDToMerge: string, primaryObjectID: string
-     * }|ProjectMergeParams $params
+     * @param string $objectIDToMerge the unique identifier of the CRM object that will be merged into the primary object
+     * @param string $primaryObjectID the unique identifier of the CRM object that will remain after the merge
      *
      * @throws APIException
      */
     public function merge(
-        array|ProjectMergeParams $params,
-        ?RequestOptions $requestOptions = null
+        string $objectIDToMerge,
+        string $primaryObjectID,
+        ?RequestOptions $requestOptions = null,
     ): SimplePublicObject {
-        [$parsed, $options] = ProjectMergeParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = [
+            'objectIDToMerge' => $objectIDToMerge,
+            'primaryObjectID' => $primaryObjectID,
+        ];
 
-        /** @var BaseResponse<SimplePublicObject> */
-        $response = $this->client->request(
-            method: 'post',
-            path: 'crm/objects/v3/projects/merge',
-            body: (object) $parsed,
-            options: $options,
-            convert: SimplePublicObject::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->merge(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -252,34 +231,45 @@ final class ProjectsService implements ProjectsContract
      *
      * Search for projects by filtering on properties, searching through associations, and sorting results. Learn more about [CRM search](https://developers.hubspot.com/docs/guides/api/crm/search#make-a-search-request).
      *
-     * @param array{
-     *   after: string,
-     *   filterGroups: list<array{filters: list<array<mixed>>}>,
-     *   limit: int,
-     *   properties: list<string>,
-     *   sorts: list<string>,
-     *   query?: string,
-     * }|ProjectSearchParams $params
+     * @param string $after a paging cursor token for retrieving subsequent pages
+     * @param list<array{
+     *   filters: list<array{
+     *     operator: 'BETWEEN'|'CONTAINS_TOKEN'|'EQ'|'GT'|'GTE'|'HAS_PROPERTY'|'IN'|'LT'|'LTE'|'NEQ'|'NOT_CONTAINS_TOKEN'|'NOT_HAS_PROPERTY'|'NOT_IN'|Operator,
+     *     propertyName: string,
+     *     highValue?: string,
+     *     value?: string,
+     *     values?: list<string>,
+     *   }>,
+     * }> $filterGroups Up to 6 groups of filters defining additional query criteria
+     * @param int $limit the maximum results to return, up to 200 objects
+     * @param list<string> $properties a list of property names to include in the response
+     * @param list<string> $sorts specifies sorting order based on object properties
+     * @param string $query the search query string, up to 3000 characters
      *
      * @throws APIException
      */
     public function search(
-        array|ProjectSearchParams $params,
-        ?RequestOptions $requestOptions = null
+        string $after,
+        array $filterGroups,
+        int $limit,
+        array $properties,
+        array $sorts,
+        ?string $query = null,
+        ?RequestOptions $requestOptions = null,
     ): CollectionResponseWithTotalSimplePublicObject {
-        [$parsed, $options] = ProjectSearchParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = [
+            'after' => $after,
+            'filterGroups' => $filterGroups,
+            'limit' => $limit,
+            'properties' => $properties,
+            'sorts' => $sorts,
+            'query' => $query,
+        ];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<CollectionResponseWithTotalSimplePublicObject> */
-        $response = $this->client->request(
-            method: 'post',
-            path: 'crm/objects/v3/projects/search',
-            body: (object) $parsed,
-            options: $options,
-            convert: CollectionResponseWithTotalSimplePublicObject::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->search(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }

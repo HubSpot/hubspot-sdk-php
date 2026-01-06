@@ -39,7 +39,7 @@ final class SettingsTest extends TestCase
 
         $result = $this->client->marketing->events->settings->createOrUpdate(
             0,
-            ['eventDetailsURL' => 'eventDetailsUrl']
+            eventDetailsURL: 'eventDetailsUrl'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -55,7 +55,7 @@ final class SettingsTest extends TestCase
 
         $result = $this->client->marketing->events->settings->createOrUpdate(
             0,
-            ['eventDetailsURL' => 'eventDetailsUrl']
+            eventDetailsURL: 'eventDetailsUrl'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

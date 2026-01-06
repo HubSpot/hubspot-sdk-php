@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Settings;
 
 use HubspotSDK\Client;
-use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
@@ -13,54 +12,62 @@ use HubspotSDK\ServiceContracts\Settings\UsersContract;
 use HubspotSDK\Settings\Users\CollectionResponsePublicPermissionSetNoPaging;
 use HubspotSDK\Settings\Users\CollectionResponsePublicTeamNoPaging;
 use HubspotSDK\Settings\Users\PublicUser;
-use HubspotSDK\Settings\Users\UserCreateParams;
-use HubspotSDK\Settings\Users\UserDeleteParams;
-use HubspotSDK\Settings\Users\UserGetParams;
-use HubspotSDK\Settings\Users\UserListParams;
-use HubspotSDK\Settings\Users\UserUpdateParams;
 use HubspotSDK\Settings\Users\UserUpdateParams\IDProperty;
 
 final class UsersService implements UsersContract
 {
     /**
+     * @api
+     */
+    public UsersRawService $raw;
+
+    /**
      * @internal
      */
-    public function __construct(private Client $client) {}
+    public function __construct(private Client $client)
+    {
+        $this->raw = new UsersRawService($client);
+    }
 
     /**
      * @api
      *
      * New users will only have minimal permissions, which is contacts-base. A welcome email will prompt them to set a password and log in to HubSpot.
      *
-     * @param array{
-     *   email: string,
-     *   firstName?: string,
-     *   lastName?: string,
-     *   primaryTeamID?: string,
-     *   roleID?: string,
-     *   secondaryTeamIDs?: list<string>,
-     *   sendWelcomeEmail?: bool,
-     * }|UserCreateParams $params
+     * @param string $email the user's email
+     * @param string $firstName the user's first name
+     * @param string $lastName the user's last name
+     * @param string $primaryTeamID the user's primary team
+     * @param string $roleID the user's role
+     * @param list<string> $secondaryTeamIDs the user's additional teams
+     * @param bool $sendWelcomeEmail whether to send a welcome email
      *
      * @throws APIException
      */
     public function create(
-        array|UserCreateParams $params,
-        ?RequestOptions $requestOptions = null
+        string $email,
+        ?string $firstName = null,
+        ?string $lastName = null,
+        ?string $primaryTeamID = null,
+        ?string $roleID = null,
+        ?array $secondaryTeamIDs = null,
+        ?bool $sendWelcomeEmail = null,
+        ?RequestOptions $requestOptions = null,
     ): PublicUser {
-        [$parsed, $options] = UserCreateParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = [
+            'email' => $email,
+            'firstName' => $firstName,
+            'lastName' => $lastName,
+            'primaryTeamID' => $primaryTeamID,
+            'roleID' => $roleID,
+            'secondaryTeamIDs' => $secondaryTeamIDs,
+            'sendWelcomeEmail' => $sendWelcomeEmail,
+        ];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<PublicUser> */
-        $response = $this->client->request(
-            method: 'post',
-            path: 'settings/v3/users/',
-            body: (object) $parsed,
-            options: $options,
-            convert: PublicUser::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->create(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -70,37 +77,39 @@ final class UsersService implements UsersContract
      *
      * Modifies a user identified by `userId`. `userId` refers to the user's ID by default, or optionally email as specified by the `IdProperty` query param.
      *
-     * @param array{
-     *   idProperty?: 'EMAIL'|'USER_ID'|IDProperty,
-     *   firstName?: string,
-     *   lastName?: string,
-     *   primaryTeamID?: string,
-     *   roleID?: string,
-     *   secondaryTeamIDs?: list<string>,
-     * }|UserUpdateParams $params
+     * @param string $userID Path param: Identifier of user to retrieve
+     * @param 'EMAIL'|'USER_ID'|IDProperty $idProperty Query param: The name of a property with unique user values. Valid values are `USER_ID`(default) or `EMAIL`
+     * @param string $firstName body param: The first name of the user
+     * @param string $lastName body param: The last name of the user
+     * @param string $primaryTeamID body param: The user's primary team
+     * @param string $roleID body param: The user's role
+     * @param list<string> $secondaryTeamIDs body param: The user's additional teams
      *
      * @throws APIException
      */
     public function update(
         string $userID,
-        array|UserUpdateParams $params,
+        string|IDProperty|null $idProperty = null,
+        ?string $firstName = null,
+        ?string $lastName = null,
+        ?string $primaryTeamID = null,
+        ?string $roleID = null,
+        ?array $secondaryTeamIDs = null,
         ?RequestOptions $requestOptions = null,
     ): PublicUser {
-        [$parsed, $options] = UserUpdateParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $query_params = ['idProperty'];
+        $params = [
+            'idProperty' => $idProperty,
+            'firstName' => $firstName,
+            'lastName' => $lastName,
+            'primaryTeamID' => $primaryTeamID,
+            'roleID' => $roleID,
+            'secondaryTeamIDs' => $secondaryTeamIDs,
+        ];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<PublicUser> */
-        $response = $this->client->request(
-            method: 'put',
-            path: ['settings/v3/users/%1$s', $userID],
-            query: array_diff_key($parsed, $query_params),
-            body: (object) array_diff_key($parsed, $query_params),
-            options: $options,
-            convert: PublicUser::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->update($userID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -110,30 +119,24 @@ final class UsersService implements UsersContract
      *
      * Retrieves a list of users from an account
      *
-     * @param array{after?: string, limit?: int}|UserListParams $params
+     * @param string $after Results will display maximum 100 users per page. Additional results will be on the next page.
+     * @param int $limit The number of users to retrieve
      *
      * @return Page<PublicUser>
      *
      * @throws APIException
      */
     public function list(
-        array|UserListParams $params,
-        ?RequestOptions $requestOptions = null
+        ?string $after = null,
+        ?int $limit = null,
+        ?RequestOptions $requestOptions = null,
     ): Page {
-        [$parsed, $options] = UserListParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = ['after' => $after, 'limit' => $limit];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<Page<PublicUser>> */
-        $response = $this->client->request(
-            method: 'get',
-            path: 'settings/v3/users/',
-            query: $parsed,
-            options: $options,
-            convert: PublicUser::class,
-            page: Page::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->list(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -143,30 +146,22 @@ final class UsersService implements UsersContract
      *
      * Removes a user identified by `userId`. `userId` refers to the user's ID by default, or optionally email as specified by the `IdProperty` query param.
      *
-     * @param array{
-     *   idProperty?: 'EMAIL'|'USER_ID'|UserDeleteParams\IDProperty,
-     * }|UserDeleteParams $params
+     * @param string $userID Identifier of user to delete
+     * @param 'EMAIL'|'USER_ID'|\HubspotSDK\Settings\Users\UserDeleteParams\IDProperty $idProperty The name of a property with unique user values. Valid values are `USER_ID`(default) or `EMAIL`
      *
      * @throws APIException
      */
     public function delete(
         string $userID,
-        array|UserDeleteParams $params,
+        string|\HubspotSDK\Settings\Users\UserDeleteParams\IDProperty|null $idProperty = null,
         ?RequestOptions $requestOptions = null,
     ): mixed {
-        [$parsed, $options] = UserDeleteParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = ['idProperty' => $idProperty];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<mixed> */
-        $response = $this->client->request(
-            method: 'delete',
-            path: ['settings/v3/users/%1$s', $userID],
-            query: $parsed,
-            options: $options,
-            convert: null,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->delete($userID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -176,30 +171,22 @@ final class UsersService implements UsersContract
      *
      * Retrieves a user identified by `userId`. `userId` refers to the user's ID by default, or optionally email as specified by the `IdProperty` query param.
      *
-     * @param array{
-     *   idProperty?: 'EMAIL'|'USER_ID'|UserGetParams\IDProperty,
-     * }|UserGetParams $params
+     * @param string $userID Identifier of user to retrieve
+     * @param 'EMAIL'|'USER_ID'|\HubspotSDK\Settings\Users\UserGetParams\IDProperty $idProperty The name of a property with unique user values. Valid values are `USER_ID`(default) or `EMAIL`
      *
      * @throws APIException
      */
     public function get(
         string $userID,
-        array|UserGetParams $params,
+        string|\HubspotSDK\Settings\Users\UserGetParams\IDProperty|null $idProperty = null,
         ?RequestOptions $requestOptions = null,
     ): PublicUser {
-        [$parsed, $options] = UserGetParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = ['idProperty' => $idProperty];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<PublicUser> */
-        $response = $this->client->request(
-            method: 'get',
-            path: ['settings/v3/users/%1$s', $userID],
-            query: $parsed,
-            options: $options,
-            convert: PublicUser::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->get($userID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -214,13 +201,8 @@ final class UsersService implements UsersContract
     public function listRoles(
         ?RequestOptions $requestOptions = null
     ): CollectionResponsePublicPermissionSetNoPaging {
-        /** @var BaseResponse<CollectionResponsePublicPermissionSetNoPaging> */
-        $response = $this->client->request(
-            method: 'get',
-            path: 'settings/v3/users/roles',
-            options: $requestOptions,
-            convert: CollectionResponsePublicPermissionSetNoPaging::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->listRoles(requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -235,13 +217,8 @@ final class UsersService implements UsersContract
     public function listTeams(
         ?RequestOptions $requestOptions = null
     ): CollectionResponsePublicTeamNoPaging {
-        /** @var BaseResponse<CollectionResponsePublicTeamNoPaging> */
-        $response = $this->client->request(
-            method: 'get',
-            path: 'settings/v3/users/teams',
-            options: $requestOptions,
-            convert: CollectionResponsePublicTeamNoPaging::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->listTeams(requestOptions: $requestOptions);
 
         return $response->parse();
     }

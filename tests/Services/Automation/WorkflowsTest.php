@@ -65,7 +65,7 @@ final class WorkflowsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->automation->workflows->list([]);
+        $result = $this->client->automation->workflows->list();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(Page::class, $result);
@@ -91,9 +91,9 @@ final class WorkflowsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->automation->workflows->batchGet([
-            'inputs' => [['flowID' => 'flowId', 'type' => 'FLOW_ID']],
-        ]);
+        $result = $this->client->automation->workflows->batchGet(
+            inputs: [['flowID' => 'flowId', 'type' => 'FLOW_ID']]
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(BatchResponseAPIFlow::class, $result);
@@ -106,9 +106,9 @@ final class WorkflowsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->automation->workflows->batchGet([
-            'inputs' => [['flowID' => 'flowId', 'type' => 'FLOW_ID']],
-        ]);
+        $result = $this->client->automation->workflows->batchGet(
+            inputs: [['flowID' => 'flowId', 'type' => 'FLOW_ID']]
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(BatchResponseAPIFlow::class, $result);
@@ -121,14 +121,14 @@ final class WorkflowsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->automation->workflows->batchGetIDMappings([
-            'inputs' => [
+        $result = $this->client->automation->workflows->batchGetIDMappings(
+            inputs: [
                 [
                     'flowMigrationStatuses' => 'flowMigrationStatuses',
                     'type' => 'FLOW_ID',
                 ],
             ],
-        ]);
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(
@@ -144,14 +144,14 @@ final class WorkflowsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->automation->workflows->batchGetIDMappings([
-            'inputs' => [
+        $result = $this->client->automation->workflows->batchGetIDMappings(
+            inputs: [
                 [
                     'flowMigrationStatuses' => 'flowMigrationStatuses',
                     'type' => 'FLOW_ID',
                 ],
             ],
-        ]);
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(
@@ -180,7 +180,7 @@ final class WorkflowsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->automation->workflows->listEmailCampaigns([]);
+        $result = $this->client->automation->workflows->listEmailCampaigns();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(Page::class, $result);

@@ -44,7 +44,7 @@ final class CentralFxRatesTest extends TestCase
             ->settings
             ->currencies
             ->centralFxRates
-            ->createCurrency(['currencyCode' => 'AED'])
+            ->createCurrency(currencyCode: 'AED')
         ;
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -63,7 +63,7 @@ final class CentralFxRatesTest extends TestCase
             ->settings
             ->currencies
             ->centralFxRates
-            ->createCurrency(['currencyCode' => 'AED'])
+            ->createCurrency(currencyCode: 'AED')
         ;
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

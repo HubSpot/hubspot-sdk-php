@@ -5,8 +5,6 @@ declare(strict_types=1);
 namespace HubspotSDK\ServiceContracts\Crm\Extensions\Calling;
 
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Crm\Extensions\Calling\Settings\SettingCreateParams;
-use HubspotSDK\Crm\Extensions\Calling\Settings\SettingUpdateParams;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\Webhooks\SettingsResponse;
 
@@ -15,26 +13,38 @@ interface SettingsContract
     /**
      * @api
      *
-     * @param array<mixed>|SettingCreateParams $params
-     *
      * @throws APIException
      */
     public function create(
         int $appID,
-        array|SettingCreateParams $params,
+        int $height,
+        bool $isReady,
+        string $name,
+        bool $supportsCustomObjects,
+        bool $supportsInboundCalling,
+        string $url,
+        bool $usesCallingWindow,
+        bool $usesRemote,
+        int $width,
         ?RequestOptions $requestOptions = null,
     ): SettingsResponse;
 
     /**
      * @api
      *
-     * @param array<mixed>|SettingUpdateParams $params
-     *
      * @throws APIException
      */
     public function update(
         int $appID,
-        array|SettingUpdateParams $params,
+        ?int $height = null,
+        ?bool $isReady = null,
+        ?string $name = null,
+        ?bool $supportsCustomObjects = null,
+        ?bool $supportsInboundCalling = null,
+        ?string $url = null,
+        ?bool $usesCallingWindow = null,
+        ?bool $usesRemote = null,
+        ?int $width = null,
         ?RequestOptions $requestOptions = null,
     ): SettingsResponse;
 

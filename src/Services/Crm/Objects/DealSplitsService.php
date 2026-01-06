@@ -5,11 +5,8 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Crm\Objects;
 
 use HubspotSDK\Client;
-use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\Objects\DealSplits\BatchResponseDealToDealSplits;
-use HubspotSDK\Crm\Objects\DealSplits\DealSplitBatchReadParams;
-use HubspotSDK\Crm\Objects\DealSplits\DealSplitBatchUpsertParams;
 use HubspotSDK\PublicObjectID;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Objects\DealSplitsContract;
@@ -17,38 +14,35 @@ use HubspotSDK\ServiceContracts\Crm\Objects\DealSplitsContract;
 final class DealSplitsService implements DealSplitsContract
 {
     /**
+     * @api
+     */
+    public DealSplitsRawService $raw;
+
+    /**
      * @internal
      */
-    public function __construct(private Client $client) {}
+    public function __construct(private Client $client)
+    {
+        $this->raw = new DealSplitsRawService($client);
+    }
 
     /**
      * @api
      *
      * Read a batch of deal split objects by their associated deal object internal ID
      *
-     * @param array{
-     *   inputs: list<array{id: string}|PublicObjectID>
-     * }|DealSplitBatchReadParams $params
+     * @param list<array{id: string}|PublicObjectID> $inputs
      *
      * @throws APIException
      */
     public function batchRead(
-        array|DealSplitBatchReadParams $params,
-        ?RequestOptions $requestOptions = null,
+        array $inputs,
+        ?RequestOptions $requestOptions = null
     ): BatchResponseDealToDealSplits {
-        [$parsed, $options] = DealSplitBatchReadParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = ['inputs' => $inputs];
 
-        /** @var BaseResponse<BatchResponseDealToDealSplits> */
-        $response = $this->client->request(
-            method: 'post',
-            path: 'crm/v3/objects/deals/splits/batch/read',
-            body: (object) $parsed,
-            options: $options,
-            convert: BatchResponseDealToDealSplits::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->batchRead(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -58,29 +52,20 @@ final class DealSplitsService implements DealSplitsContract
      *
      * Create or replace deal splits for deals with the provided IDs. Deal split percentages for each deal must sum up to 1.0 (100%) and may have up to 8 decimal places
      *
-     * @param array{
-     *   inputs: list<array{id: int, splits: list<array<mixed>>}>
-     * }|DealSplitBatchUpsertParams $params
+     * @param list<array{
+     *   id: int, splits: list<array{ownerID: int, percentage: float}>
+     * }> $inputs
      *
      * @throws APIException
      */
     public function batchUpsert(
-        array|DealSplitBatchUpsertParams $params,
-        ?RequestOptions $requestOptions = null,
+        array $inputs,
+        ?RequestOptions $requestOptions = null
     ): BatchResponseDealToDealSplits {
-        [$parsed, $options] = DealSplitBatchUpsertParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = ['inputs' => $inputs];
 
-        /** @var BaseResponse<BatchResponseDealToDealSplits> */
-        $response = $this->client->request(
-            method: 'post',
-            path: 'crm/v3/objects/deals/splits/batch/upsert',
-            body: (object) $parsed,
-            options: $options,
-            convert: BatchResponseDealToDealSplits::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->batchUpsert(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }

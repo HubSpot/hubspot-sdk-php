@@ -24,6 +24,8 @@ interface ExportsContract
     /**
      * @api
      *
+     * @param int $exportID the unique ID of the export to retrieve
+     *
      * @throws APIException
      */
     public function get(
@@ -33,6 +35,8 @@ interface ExportsContract
 
     /**
      * @api
+     *
+     * @param int $taskID the unique ID of the export
      *
      * @throws APIException
      */

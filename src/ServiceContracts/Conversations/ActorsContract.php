@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace HubspotSDK\ServiceContracts\Conversations;
 
-use HubspotSDK\Conversations\Actors\ActorBatchReadParams;
-use HubspotSDK\Conversations\Actors\ActorGetParams;
 use HubspotSDK\Conversations\AgentActor;
 use HubspotSDK\Conversations\BatchResponsePublicActor;
 use HubspotSDK\Conversations\BotActor;
@@ -22,25 +20,25 @@ interface ActorsContract
     /**
      * @api
      *
-     * @param array<mixed>|ActorBatchReadParams $params
+     * @param list<string> $inputs body param: Strings to input
+     * @param string $property Query param:
      *
      * @throws APIException
      */
     public function batchRead(
-        array|ActorBatchReadParams $params,
-        ?RequestOptions $requestOptions = null
+        array $inputs,
+        ?string $property = null,
+        ?RequestOptions $requestOptions = null,
     ): BatchResponsePublicActor;
 
     /**
      * @api
      *
-     * @param array<mixed>|ActorGetParams $params
-     *
      * @throws APIException
      */
     public function get(
         string $actorID,
-        array|ActorGetParams $params,
+        ?string $property = null,
         ?RequestOptions $requestOptions = null,
     ): AgentActor|BotActor|IntegratorActor|SystemActor|VisitorActor|EmailActor|LlmActor;
 }

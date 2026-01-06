@@ -41,13 +41,11 @@ final class PropertiesTest extends TestCase
 
         $result = $this->client->crm->properties->create(
             'objectType',
-            [
-                'fieldType' => 'booleancheckbox',
-                'groupName' => 'groupName',
-                'label' => 'label',
-                'name' => 'name',
-                'type' => 'bool',
-            ],
+            fieldType: 'booleancheckbox',
+            groupName: 'groupName',
+            label: 'label',
+            name: 'name',
+            type: 'bool',
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -63,31 +61,29 @@ final class PropertiesTest extends TestCase
 
         $result = $this->client->crm->properties->create(
             'objectType',
-            [
-                'fieldType' => 'booleancheckbox',
-                'groupName' => 'groupName',
-                'label' => 'label',
-                'name' => 'name',
-                'type' => 'bool',
-                'calculationFormula' => 'calculationFormula',
-                'dataSensitivity' => 'highly_sensitive',
-                'description' => 'description',
-                'displayOrder' => 0,
-                'externalOptions' => true,
-                'formField' => true,
-                'hasUniqueValue' => true,
-                'hidden' => true,
-                'options' => [
-                    [
-                        'displayOrder' => 0,
-                        'hidden' => true,
-                        'label' => 'label',
-                        'value' => 'value',
-                        'description' => 'description',
-                    ],
+            fieldType: 'booleancheckbox',
+            groupName: 'groupName',
+            label: 'label',
+            name: 'name',
+            type: 'bool',
+            calculationFormula: 'calculationFormula',
+            dataSensitivity: 'highly_sensitive',
+            description: 'description',
+            displayOrder: 0,
+            externalOptions: true,
+            formField: true,
+            hasUniqueValue: true,
+            hidden: true,
+            options: [
+                [
+                    'displayOrder' => 0,
+                    'hidden' => true,
+                    'label' => 'label',
+                    'value' => 'value',
+                    'description' => 'description',
                 ],
-                'referencedObjectType' => 'referencedObjectType',
             ],
+            referencedObjectType: 'referencedObjectType',
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -103,7 +99,7 @@ final class PropertiesTest extends TestCase
 
         $result = $this->client->crm->properties->update(
             'propertyName',
-            ['objectType' => 'objectType']
+            objectType: 'objectType'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -119,34 +115,32 @@ final class PropertiesTest extends TestCase
 
         $result = $this->client->crm->properties->update(
             'propertyName',
-            [
-                'objectType' => 'objectType',
-                'calculationFormula' => 'calculationFormula',
-                'description' => 'description',
-                'displayOrder' => 2,
-                'fieldType' => 'select',
-                'formField' => true,
-                'groupName' => 'contactinformation',
-                'hidden' => false,
-                'label' => 'My Contact Property',
-                'options' => [
-                    [
-                        'displayOrder' => 1,
-                        'hidden' => false,
-                        'label' => 'Option A',
-                        'value' => 'A',
-                        'description' => 'Choice number one',
-                    ],
-                    [
-                        'displayOrder' => 2,
-                        'hidden' => false,
-                        'label' => 'Option B',
-                        'value' => 'B',
-                        'description' => 'Choice number two',
-                    ],
+            objectType: 'objectType',
+            calculationFormula: 'calculationFormula',
+            description: 'description',
+            displayOrder: 2,
+            fieldType: 'select',
+            formField: true,
+            groupName: 'contactinformation',
+            hidden: false,
+            label: 'My Contact Property',
+            options: [
+                [
+                    'displayOrder' => 1,
+                    'hidden' => false,
+                    'label' => 'Option A',
+                    'value' => 'A',
+                    'description' => 'Choice number one',
                 ],
-                'type' => 'enumeration',
+                [
+                    'displayOrder' => 2,
+                    'hidden' => false,
+                    'label' => 'Option B',
+                    'value' => 'B',
+                    'description' => 'Choice number two',
+                ],
             ],
+            type: 'enumeration',
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -160,7 +154,7 @@ final class PropertiesTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->properties->list('objectType', []);
+        $result = $this->client->crm->properties->list('objectType');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(CollectionResponseProperty::class, $result);
@@ -175,7 +169,7 @@ final class PropertiesTest extends TestCase
 
         $result = $this->client->crm->properties->delete(
             'propertyName',
-            ['objectType' => 'objectType']
+            objectType: 'objectType'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -191,7 +185,7 @@ final class PropertiesTest extends TestCase
 
         $result = $this->client->crm->properties->delete(
             'propertyName',
-            ['objectType' => 'objectType']
+            objectType: 'objectType'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -207,7 +201,7 @@ final class PropertiesTest extends TestCase
 
         $result = $this->client->crm->properties->get(
             'propertyName',
-            ['objectType' => 'objectType']
+            objectType: 'objectType'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -223,13 +217,11 @@ final class PropertiesTest extends TestCase
 
         $result = $this->client->crm->properties->get(
             'propertyName',
-            [
-                'objectType' => 'objectType',
-                'archived' => true,
-                'dataSensitivity' => 'highly_sensitive',
-                'locale' => 'locale',
-                'properties' => 'properties',
-            ],
+            objectType: 'objectType',
+            archived: true,
+            dataSensitivity: 'highly_sensitive',
+            locale: 'locale',
+            properties: 'properties',
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

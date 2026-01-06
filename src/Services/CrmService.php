@@ -29,6 +29,11 @@ final class CrmService implements CrmContract
     /**
      * @api
      */
+    public CrmRawService $raw;
+
+    /**
+     * @api
+     */
     public AppUninstallsService $appUninstalls;
 
     /**
@@ -116,6 +121,7 @@ final class CrmService implements CrmContract
      */
     public function __construct(private Client $client)
     {
+        $this->raw = new CrmRawService($client);
         $this->appUninstalls = new AppUninstallsService($client);
         $this->associations = new AssociationsService($client);
         $this->exports = new ExportsService($client);

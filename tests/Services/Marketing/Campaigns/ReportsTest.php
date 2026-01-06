@@ -44,7 +44,7 @@ final class ReportsTest extends TestCase
             ->marketing
             ->campaigns
             ->reports
-            ->getAttributionMetrics('campaignGuid', [])
+            ->getAttributionMetrics('campaignGuid')
         ;
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -63,7 +63,7 @@ final class ReportsTest extends TestCase
             ->marketing
             ->campaigns
             ->reports
-            ->getRevenueAttribution('campaignGuid', [])
+            ->getRevenueAttribution('campaignGuid')
         ;
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -82,7 +82,7 @@ final class ReportsTest extends TestCase
             ->marketing
             ->campaigns
             ->reports
-            ->listContactIDsByType('contactType', ['campaignGuid' => 'campaignGuid'])
+            ->listContactIDsByType('contactType', campaignGuid: 'campaignGuid')
         ;
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -103,13 +103,11 @@ final class ReportsTest extends TestCase
             ->reports
             ->listContactIDsByType(
                 'contactType',
-                [
-                    'campaignGuid' => 'campaignGuid',
-                    'after' => 'after',
-                    'endDate' => 'endDate',
-                    'limit' => 0,
-                    'startDate' => 'startDate',
-                ],
+                campaignGuid: 'campaignGuid',
+                after: 'after',
+                endDate: 'endDate',
+                limit: 0,
+                startDate: 'startDate',
             )
         ;
 

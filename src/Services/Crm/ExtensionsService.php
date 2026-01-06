@@ -15,6 +15,11 @@ final class ExtensionsService implements ExtensionsContract
     /**
      * @api
      */
+    public ExtensionsRawService $raw;
+
+    /**
+     * @api
+     */
     public CallingService $calling;
 
     /**
@@ -32,6 +37,7 @@ final class ExtensionsService implements ExtensionsContract
      */
     public function __construct(private Client $client)
     {
+        $this->raw = new ExtensionsRawService($client);
         $this->calling = new CallingService($client);
         $this->cards = new CardsService($client);
         $this->videoConferencing = new VideoConferencingService($client);

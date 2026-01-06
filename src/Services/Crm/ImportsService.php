@@ -6,11 +6,7 @@ namespace HubspotSDK\Services\Crm;
 
 use HubspotSDK\ActionResponse;
 use HubspotSDK\Client;
-use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Crm\Imports\ImportCreateParams;
-use HubspotSDK\Crm\Imports\ImportListErrorsParams;
-use HubspotSDK\Crm\Imports\ImportListParams;
 use HubspotSDK\Crm\Imports\PublicImportError;
 use HubspotSDK\Crm\Imports\PublicImportResponse;
 use HubspotSDK\Page;
@@ -20,37 +16,36 @@ use HubspotSDK\ServiceContracts\Crm\ImportsContract;
 final class ImportsService implements ImportsContract
 {
     /**
+     * @api
+     */
+    public ImportsRawService $raw;
+
+    /**
      * @internal
      */
-    public function __construct(private Client $client) {}
+    public function __construct(private Client $client)
+    {
+        $this->raw = new ImportsRawService($client);
+    }
 
     /**
      * @api
      *
      * Begins importing data from the specified file resources. This uploads the corresponding file and uses the import request object to convert rows in the files to objects.
      *
-     * @param array{files?: string, importRequest?: string}|ImportCreateParams $params
-     *
      * @throws APIException
      */
     public function create(
-        array|ImportCreateParams $params,
-        ?RequestOptions $requestOptions = null
+        ?string $files = null,
+        ?string $importRequest = null,
+        ?RequestOptions $requestOptions = null,
     ): PublicImportResponse {
-        [$parsed, $options] = ImportCreateParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = ['files' => $files, 'importRequest' => $importRequest];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<PublicImportResponse> */
-        $response = $this->client->request(
-            method: 'post',
-            path: 'crm/v3/imports/',
-            headers: ['Content-Type' => 'multipart/form-data'],
-            body: (object) $parsed,
-            options: $options,
-            convert: PublicImportResponse::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->create(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -60,32 +55,25 @@ final class ImportsService implements ImportsContract
      *
      * Returns a paged list of active imports for this account.
      *
-     * @param array{
-     *   after?: string, before?: string, limit?: int
-     * }|ImportListParams $params
+     * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+     * @param int $limit the maximum number of results to display per page
      *
      * @return Page<PublicImportResponse>
      *
      * @throws APIException
      */
     public function list(
-        array|ImportListParams $params,
-        ?RequestOptions $requestOptions = null
+        ?string $after = null,
+        ?string $before = null,
+        ?int $limit = null,
+        ?RequestOptions $requestOptions = null,
     ): Page {
-        [$parsed, $options] = ImportListParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = ['after' => $after, 'before' => $before, 'limit' => $limit];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<Page<PublicImportResponse>> */
-        $response = $this->client->request(
-            method: 'get',
-            path: 'crm/v3/imports/',
-            query: $parsed,
-            options: $options,
-            convert: PublicImportResponse::class,
-            page: Page::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->list(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -101,13 +89,8 @@ final class ImportsService implements ImportsContract
         int $importID,
         ?RequestOptions $requestOptions = null
     ): ActionResponse {
-        /** @var BaseResponse<ActionResponse> */
-        $response = $this->client->request(
-            method: 'post',
-            path: ['crm/v3/imports/%1$s/cancel', $importID],
-            options: $requestOptions,
-            convert: ActionResponse::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->cancel($importID, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -123,13 +106,8 @@ final class ImportsService implements ImportsContract
         int $importID,
         ?RequestOptions $requestOptions = null
     ): PublicImportResponse {
-        /** @var BaseResponse<PublicImportResponse> */
-        $response = $this->client->request(
-            method: 'get',
-            path: ['crm/v3/imports/%1$s', $importID],
-            options: $requestOptions,
-            convert: PublicImportResponse::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->get($importID, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -137,9 +115,10 @@ final class ImportsService implements ImportsContract
     /**
      * @api
      *
-     * @param array{
-     *   after?: string, includeErrorMessage?: bool, includeRowData?: bool, limit?: int
-     * }|ImportListErrorsParams $params
+     * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+     * @param bool $includeErrorMessage set to True to receive a message explaining the error
+     * @param bool $includeRowData set to True to receive the data values for the errored row
+     * @param int $limit the maximum number of results to display per page
      *
      * @return Page<PublicImportError>
      *
@@ -147,23 +126,23 @@ final class ImportsService implements ImportsContract
      */
     public function listErrors(
         int $importID,
-        array|ImportListErrorsParams $params,
+        ?string $after = null,
+        ?bool $includeErrorMessage = null,
+        ?bool $includeRowData = null,
+        ?int $limit = null,
         ?RequestOptions $requestOptions = null,
     ): Page {
-        [$parsed, $options] = ImportListErrorsParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
+        $params = [
+            'after' => $after,
+            'includeErrorMessage' => $includeErrorMessage,
+            'includeRowData' => $includeRowData,
+            'limit' => $limit,
+        ];
+        // @phpstan-ignore-next-line function.impossibleType
+        $params = array_filter($params, callback: static fn ($v) => !is_null($v));
 
-        /** @var BaseResponse<Page<PublicImportError>> */
-        $response = $this->client->request(
-            method: 'get',
-            path: ['crm/v3/imports/%1$s/errors', $importID],
-            query: $parsed,
-            options: $options,
-            convert: PublicImportError::class,
-            page: Page::class,
-        );
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->listErrors($importID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }

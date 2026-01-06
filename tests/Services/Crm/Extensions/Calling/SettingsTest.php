@@ -39,17 +39,15 @@ final class SettingsTest extends TestCase
 
         $result = $this->client->crm->extensions->calling->settings->create(
             0,
-            [
-                'height' => 0,
-                'isReady' => true,
-                'name' => 'name',
-                'supportsCustomObjects' => true,
-                'supportsInboundCalling' => true,
-                'url' => 'url',
-                'usesCallingWindow' => true,
-                'usesRemote' => true,
-                'width' => 0,
-            ],
+            height: 0,
+            isReady: true,
+            name: 'name',
+            supportsCustomObjects: true,
+            supportsInboundCalling: true,
+            url: 'url',
+            usesCallingWindow: true,
+            usesRemote: true,
+            width: 0,
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -65,17 +63,15 @@ final class SettingsTest extends TestCase
 
         $result = $this->client->crm->extensions->calling->settings->create(
             0,
-            [
-                'height' => 0,
-                'isReady' => true,
-                'name' => 'name',
-                'supportsCustomObjects' => true,
-                'supportsInboundCalling' => true,
-                'url' => 'url',
-                'usesCallingWindow' => true,
-                'usesRemote' => true,
-                'width' => 0,
-            ],
+            height: 0,
+            isReady: true,
+            name: 'name',
+            supportsCustomObjects: true,
+            supportsInboundCalling: true,
+            url: 'url',
+            usesCallingWindow: true,
+            usesRemote: true,
+            width: 0,
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -89,7 +85,7 @@ final class SettingsTest extends TestCase
             $this->markTestSkipped('Prism tests are disabled');
         }
 
-        $result = $this->client->crm->extensions->calling->settings->update(0, []);
+        $result = $this->client->crm->extensions->calling->settings->update(0);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(SettingsResponse::class, $result);

@@ -5,15 +5,6 @@ declare(strict_types=1);
 namespace HubspotSDK\ServiceContracts\Cms\Hubdb;
 
 use HubspotSDK\Cms\Hubdb\HubDBTableRowV3;
-use HubspotSDK\Cms\Hubdb\Rows\RowCloneDraftParams;
-use HubspotSDK\Cms\Hubdb\Rows\RowCreateParams;
-use HubspotSDK\Cms\Hubdb\Rows\RowDeleteDraftParams;
-use HubspotSDK\Cms\Hubdb\Rows\RowGetDraftParams;
-use HubspotSDK\Cms\Hubdb\Rows\RowGetParams;
-use HubspotSDK\Cms\Hubdb\Rows\RowListDraftParams;
-use HubspotSDK\Cms\Hubdb\Rows\RowListParams;
-use HubspotSDK\Cms\Hubdb\Rows\RowReplaceDraftParams;
-use HubspotSDK\Cms\Hubdb\Rows\RowUpdateDraftParams;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
@@ -23,20 +14,34 @@ interface RowsContract
     /**
      * @api
      *
-     * @param array<mixed>|RowCreateParams $params
+     * @param string $tableIDOrName the ID or name of the target table
+     * @param int $childTableID Specifies the value for the column child table id
+     * @param array<string,array<string,mixed>> $values List of key value pairs with the column name and column value
+     * @param string $name Specifies the value for `hs_name` column, which will be used as title in the dynamic pages
+     * @param string $path Specifies the value for `hs_path` column, which will be used as slug in the dynamic pages
      *
      * @throws APIException
      */
     public function create(
         string $tableIDOrName,
-        array|RowCreateParams $params,
+        int $childTableID,
+        int $displayIndex,
+        array $values,
+        ?string $name = null,
+        ?string $path = null,
         ?RequestOptions $requestOptions = null,
     ): HubDBTableRowV3;
 
     /**
      * @api
      *
-     * @param array<mixed>|RowListParams $params
+     * @param string $tableIDOrName the ID or name of the table to query
+     * @param string $after The cursor token value to get the next set of results. You can get this from the `paging.next.after` JSON property of a paged response containing more results.
+     * @param bool $archived specifies whether to include archived rows in the response
+     * @param int $limit The maximum number of results to return. Default is `1000`.
+     * @param int $offset the number of rows to skip before starting to return results
+     * @param list<string> $properties specify the column names to get results containing only the required columns instead of all column details
+     * @param list<string> $sort Specifies the column names to sort the results by. See the above description for more details.
      *
      * @return Page<mixed>
      *
@@ -44,66 +49,87 @@ interface RowsContract
      */
     public function list(
         string $tableIDOrName,
-        array|RowListParams $params,
+        ?string $after = null,
+        ?bool $archived = null,
+        ?int $limit = null,
+        ?int $offset = null,
+        ?array $properties = null,
+        ?array $sort = null,
         ?RequestOptions $requestOptions = null,
     ): Page;
 
     /**
      * @api
      *
-     * @param array<mixed>|RowCloneDraftParams $params
+     * @param string $rowID Path param: The ID of the row
+     * @param string $tableIDOrName Path param: The ID or name of the table
+     * @param string $name query param: The name for the cloned row
      *
      * @throws APIException
      */
     public function cloneDraft(
         string $rowID,
-        array|RowCloneDraftParams $params,
+        string $tableIDOrName,
+        ?string $name = null,
         ?RequestOptions $requestOptions = null,
     ): HubDBTableRowV3;
 
     /**
      * @api
      *
-     * @param array<mixed>|RowDeleteDraftParams $params
+     * @param string $rowID The ID of the row
+     * @param string $tableIDOrName The ID or name of the table
      *
      * @throws APIException
      */
     public function deleteDraft(
         string $rowID,
-        array|RowDeleteDraftParams $params,
+        string $tableIDOrName,
         ?RequestOptions $requestOptions = null,
     ): mixed;
 
     /**
      * @api
      *
-     * @param array<mixed>|RowGetParams $params
+     * @param string $rowID Path param: The ID of the row
+     * @param string $tableIDOrName Path param: The ID or name of the table
+     * @param bool $archived Query param: Specifies whether to return an archived row. Defaults to `false`.
      *
      * @throws APIException
      */
     public function get(
         string $rowID,
-        array|RowGetParams $params,
+        string $tableIDOrName,
+        ?bool $archived = null,
         ?RequestOptions $requestOptions = null,
     ): HubDBTableRowV3;
 
     /**
      * @api
      *
-     * @param array<mixed>|RowGetDraftParams $params
+     * @param string $rowID Path param: The ID of the row
+     * @param string $tableIDOrName Path param: The ID or name of the table
+     * @param bool $archived Query param: Set this to `true` to return an archived row. Defaults to `false`.
      *
      * @throws APIException
      */
     public function getDraft(
         string $rowID,
-        array|RowGetDraftParams $params,
+        string $tableIDOrName,
+        ?bool $archived = null,
         ?RequestOptions $requestOptions = null,
     ): HubDBTableRowV3;
 
     /**
      * @api
      *
-     * @param array<mixed>|RowListDraftParams $params
+     * @param string $tableIDOrName the ID or name of the table to query
+     * @param string $after The cursor token value to get the next set of results. You can get this from the `paging.next.after` JSON property of a paged response containing more results.
+     * @param bool $archived Specifies whether to return archived rows. Defaults to `false`.
+     * @param int $limit The maximum number of results to return. Default is `1000`.
+     * @param int $offset the number of rows to skip before starting to return results
+     * @param list<string> $properties Specify the column names to get results containing only the required columns instead of all column details. If you want to include multiple columns in the result, use this query param as many times.
+     * @param list<string> $sort specifies the column names to sort the results by
      *
      * @return Page<mixed>
      *
@@ -111,33 +137,60 @@ interface RowsContract
      */
     public function listDraft(
         string $tableIDOrName,
-        array|RowListDraftParams $params,
+        ?string $after = null,
+        ?bool $archived = null,
+        ?int $limit = null,
+        ?int $offset = null,
+        ?array $properties = null,
+        ?array $sort = null,
         ?RequestOptions $requestOptions = null,
     ): Page;
 
     /**
      * @api
      *
-     * @param array<mixed>|RowReplaceDraftParams $params
+     * @param string $rowID Path param: The ID of the row
+     * @param string $tableIDOrName Path param: The ID or name of the table
+     * @param int $childTableID Body param: Specifies the value for the column child table id
+     * @param int $displayIndex Body param:
+     * @param array<string,array<string,mixed>> $values Body param: List of key value pairs with the column name and column value
+     * @param string $name Body param: Specifies the value for `hs_name` column, which will be used as title in the dynamic pages
+     * @param string $path Body param: Specifies the value for `hs_path` column, which will be used as slug in the dynamic pages
      *
      * @throws APIException
      */
     public function replaceDraft(
         string $rowID,
-        array|RowReplaceDraftParams $params,
+        string $tableIDOrName,
+        int $childTableID,
+        int $displayIndex,
+        array $values,
+        ?string $name = null,
+        ?string $path = null,
         ?RequestOptions $requestOptions = null,
     ): HubDBTableRowV3;
 
     /**
      * @api
      *
-     * @param array<mixed>|RowUpdateDraftParams $params
+     * @param string $rowID Path param: The ID of the row
+     * @param string $tableIDOrName Path param: The ID or name of the table
+     * @param int $childTableID Body param: Specifies the value for the column child table id
+     * @param int $displayIndex Body param:
+     * @param array<string,array<string,mixed>> $values Body param: List of key value pairs with the column name and column value
+     * @param string $name Body param: Specifies the value for `hs_name` column, which will be used as title in the dynamic pages
+     * @param string $path Body param: Specifies the value for `hs_path` column, which will be used as slug in the dynamic pages
      *
      * @throws APIException
      */
     public function updateDraft(
         string $rowID,
-        array|RowUpdateDraftParams $params,
+        string $tableIDOrName,
+        int $childTableID,
+        int $displayIndex,
+        array $values,
+        ?string $name = null,
+        ?string $path = null,
         ?RequestOptions $requestOptions = null,
     ): HubDBTableRowV3;
 }

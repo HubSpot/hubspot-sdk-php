@@ -39,19 +39,17 @@ final class MessagesTest extends TestCase
 
         $result = $this->client->conversations->customChannels->messages->create(
             0,
-            [
-                'attachments' => [['fileID' => 'fileId', 'type' => 'FILE']],
-                'channelAccountID' => 'channelAccountId',
-                'messageDirection' => 'INCOMING',
-                'recipients' => [
-                    ['deliveryIdentifier' => ['type' => 'type', 'value' => 'value']],
-                ],
-                'senders' => [
-                    ['deliveryIdentifier' => ['type' => 'type', 'value' => 'value']],
-                ],
-                'text' => 'text',
-                'timestamp' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
+            attachments: [['fileID' => 'fileId', 'type' => 'FILE']],
+            channelAccountID: 'channelAccountId',
+            messageDirection: 'INCOMING',
+            recipients: [
+                ['deliveryIdentifier' => ['type' => 'type', 'value' => 'value']],
             ],
+            senders: [
+                ['deliveryIdentifier' => ['type' => 'type', 'value' => 'value']],
+            ],
+            text: 'text',
+            timestamp: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -70,40 +68,38 @@ final class MessagesTest extends TestCase
 
         $result = $this->client->conversations->customChannels->messages->create(
             0,
-            [
-                'attachments' => [
-                    [
-                        'fileID' => 'fileId',
-                        'type' => 'FILE',
-                        'fileUsageType' => 'fileUsageType',
-                    ],
+            attachments: [
+                [
+                    'fileID' => 'fileId',
+                    'type' => 'FILE',
+                    'fileUsageType' => 'fileUsageType',
                 ],
-                'channelAccountID' => 'channelAccountId',
-                'messageDirection' => 'INCOMING',
-                'recipients' => [
-                    [
-                        'deliveryIdentifier' => ['type' => 'type', 'value' => 'value'],
-                        'name' => 'name',
-                    ],
-                ],
-                'senders' => [
-                    [
-                        'deliveryIdentifier' => ['type' => 'type', 'value' => 'value'],
-                        'name' => 'name',
-                    ],
-                ],
-                'text' => 'text',
-                'timestamp' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-                'inReplyToID' => 'inReplyToId',
-                'integrationIdempotencyID' => 'integrationIdempotencyId',
-                'integrationThreadID' => 'integrationThreadId',
-                'preResolvedContacts' => [
-                    'contacts' => [
-                        ['contactPropertiesLeadingToMatch' => ['string'], 'contactVid' => 0],
-                    ],
-                ],
-                'richText' => 'richText',
             ],
+            channelAccountID: 'channelAccountId',
+            messageDirection: 'INCOMING',
+            recipients: [
+                [
+                    'deliveryIdentifier' => ['type' => 'type', 'value' => 'value'],
+                    'name' => 'name',
+                ],
+            ],
+            senders: [
+                [
+                    'deliveryIdentifier' => ['type' => 'type', 'value' => 'value'],
+                    'name' => 'name',
+                ],
+            ],
+            text: 'text',
+            timestamp: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
+            inReplyToID: 'inReplyToId',
+            integrationIdempotencyID: 'integrationIdempotencyId',
+            integrationThreadID: 'integrationThreadId',
+            preResolvedContacts: [
+                'contacts' => [
+                    ['contactPropertiesLeadingToMatch' => ['string'], 'contactVid' => 0],
+                ],
+            ],
+            richText: 'richText',
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -122,7 +118,8 @@ final class MessagesTest extends TestCase
 
         $result = $this->client->conversations->customChannels->messages->update(
             'messageId',
-            ['channelID' => 0, 'statusType' => 'FAILED']
+            channelID: 0,
+            statusType: 'FAILED'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -141,11 +138,9 @@ final class MessagesTest extends TestCase
 
         $result = $this->client->conversations->customChannels->messages->update(
             'messageId',
-            [
-                'channelID' => 0,
-                'statusType' => 'FAILED',
-                'errorMessage' => 'errorMessage',
-            ],
+            channelID: 0,
+            statusType: 'FAILED',
+            errorMessage: 'errorMessage',
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -164,7 +159,7 @@ final class MessagesTest extends TestCase
 
         $result = $this->client->conversations->customChannels->messages->get(
             'messageId',
-            ['channelID' => 0]
+            channelID: 0
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -183,7 +178,7 @@ final class MessagesTest extends TestCase
 
         $result = $this->client->conversations->customChannels->messages->get(
             'messageId',
-            ['channelID' => 0]
+            channelID: 0
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
