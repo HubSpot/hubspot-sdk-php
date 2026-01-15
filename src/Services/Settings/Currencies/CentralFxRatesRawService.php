@@ -15,6 +15,9 @@ use HubspotSDK\Settings\Currencies\CentralFxRates\CentralFxRateCreateCurrencyPar
 use HubspotSDK\Settings\Currencies\CollectionResponseCurrencyCodeInfoNoPaging;
 use HubspotSDK\Settings\Currencies\ExchangeRate;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class CentralFxRatesRawService implements CentralFxRatesRawContract
 {
     // @phpstan-ignore-next-line
@@ -31,6 +34,7 @@ final class CentralFxRatesRawService implements CentralFxRatesRawContract
      * @param array{
      *   currencyCode: value-of<CurrencyCode>
      * }|CentralFxRateCreateCurrencyParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ExchangeRate>
      *
@@ -38,7 +42,7 @@ final class CentralFxRatesRawService implements CentralFxRatesRawContract
      */
     public function createCurrency(
         array|CentralFxRateCreateCurrencyParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = CentralFxRateCreateCurrencyParams::parseRequest(
             $params,
@@ -60,12 +64,14 @@ final class CentralFxRatesRawService implements CentralFxRatesRawContract
      *
      * Retrieve details on whether the central exchange rates feature is enabled for the portal.
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @return BaseResponse<CentralExchangeRatesInformation>
      *
      * @throws APIException
      */
     public function getInformation(
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -81,12 +87,14 @@ final class CentralFxRatesRawService implements CentralFxRatesRawContract
      *
      * Retrieve a list of currency codes that are not supported by the central exchange rates. Unsupported currencies will need to be manually updated.
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @return BaseResponse<CollectionResponseCurrencyCodeInfoNoPaging>
      *
      * @throws APIException
      */
     public function getUnsupportedCurrencies(
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(

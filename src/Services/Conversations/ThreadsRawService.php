@@ -18,6 +18,9 @@ use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Conversations\ThreadsRawContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class ThreadsRawService implements ThreadsRawContract
 {
     // @phpstan-ignore-next-line
@@ -29,10 +32,11 @@ final class ThreadsRawService implements ThreadsRawContract
     /**
      * @api
      *
-     * @param int $threadID Path param:
+     * @param int $threadID Path param
      * @param array{
-     *   archived?: bool, status?: 'CLOSED'|'OPEN'|Status
+     *   archived?: bool, status?: Status|value-of<Status>
      * }|ThreadUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicThread>
      *
@@ -41,7 +45,7 @@ final class ThreadsRawService implements ThreadsRawContract
     public function update(
         int $threadID,
         array|ThreadUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = ThreadUpdateParams::parseRequest(
             $params,
@@ -67,14 +71,15 @@ final class ThreadsRawService implements ThreadsRawContract
      *   after?: string,
      *   archived?: bool,
      *   associatedContactID?: int,
-     *   association?: list<'TICKET'|Association>,
+     *   association?: list<Association|value-of<Association>>,
      *   inboxID?: list<int>,
-     *   latestMessageTimestampAfter?: string|\DateTimeInterface,
+     *   latestMessageTimestampAfter?: \DateTimeInterface,
      *   limit?: int,
      *   property?: string,
      *   sort?: list<string>,
      *   threadStatus?: string,
      * }|ThreadListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<PublicThread>>
      *
@@ -82,7 +87,7 @@ final class ThreadsRawService implements ThreadsRawContract
      */
     public function list(
         array|ThreadListParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = ThreadListParams::parseRequest(
             $params,
@@ -108,13 +113,15 @@ final class ThreadsRawService implements ThreadsRawContract
     /**
      * @api
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @return BaseResponse<mixed>
      *
      * @throws APIException
      */
     public function delete(
         int $threadID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -130,9 +137,10 @@ final class ThreadsRawService implements ThreadsRawContract
      *
      * @param array{
      *   archived?: bool,
-     *   association?: list<'TICKET'|ThreadGetParams\Association>,
+     *   association?: list<ThreadGetParams\Association|value-of<ThreadGetParams\Association>>,
      *   property?: string,
      * }|ThreadGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicThread>
      *
@@ -141,7 +149,7 @@ final class ThreadsRawService implements ThreadsRawContract
     public function get(
         int $threadID,
         array|ThreadGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = ThreadGetParams::parseRequest(
             $params,

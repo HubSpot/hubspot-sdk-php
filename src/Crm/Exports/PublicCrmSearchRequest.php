@@ -16,8 +16,8 @@ use HubspotSDK\Crm\FilterGroup;
  * @phpstan-import-type FilterShape from \HubspotSDK\Crm\Filter
  *
  * @phpstan-type PublicCrmSearchRequestShape = array{
- *   filterGroups: list<FilterGroupShape>,
- *   filters: list<FilterShape>,
+ *   filterGroups: list<FilterGroup|FilterGroupShape>,
+ *   filters: list<Filter|FilterShape>,
  *   sorts: list<string>,
  *   query?: string|null,
  * }
@@ -76,8 +76,8 @@ final class PublicCrmSearchRequest implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<FilterGroupShape> $filterGroups
-     * @param list<FilterShape> $filters
+     * @param list<FilterGroup|FilterGroupShape> $filterGroups
+     * @param list<Filter|FilterShape> $filters
      * @param list<string> $sorts
      */
     public static function with(
@@ -98,7 +98,7 @@ final class PublicCrmSearchRequest implements BaseModel
     }
 
     /**
-     * @param list<FilterGroupShape> $filterGroups
+     * @param list<FilterGroup|FilterGroupShape> $filterGroups
      */
     public function withFilterGroups(array $filterGroups): self
     {
@@ -109,7 +109,7 @@ final class PublicCrmSearchRequest implements BaseModel
     }
 
     /**
-     * @param list<FilterShape> $filters
+     * @param list<Filter|FilterShape> $filters
      */
     public function withFilters(array $filters): self
     {

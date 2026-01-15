@@ -20,12 +20,16 @@ use HubspotSDK\Crm\SimplePublicObjectWithAssociations;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface ContactsRawContract
 {
     /**
      * @api
      *
      * @param array<string,mixed>|ContactCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CreatedResponseSimplePublicObject>
      *
@@ -33,14 +37,15 @@ interface ContactsRawContract
      */
     public function create(
         array|ContactCreateParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
-     * @param string $contactID Path param:
+     * @param string $contactID Path param
      * @param array<string,mixed>|ContactUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SimplePublicObject>
      *
@@ -49,13 +54,14 @@ interface ContactsRawContract
     public function update(
         string $contactID,
         array|ContactUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|ContactListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<SimplePublicObjectWithAssociations>>
      *
@@ -63,11 +69,13 @@ interface ContactsRawContract
      */
     public function list(
         array|ContactListParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
+     *
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -75,13 +83,14 @@ interface ContactsRawContract
      */
     public function delete(
         string $contactID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|ContactGdprDeleteParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -89,13 +98,14 @@ interface ContactsRawContract
      */
     public function gdprDelete(
         array|ContactGdprDeleteParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|ContactGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SimplePublicObjectWithAssociations>
      *
@@ -104,13 +114,14 @@ interface ContactsRawContract
     public function get(
         string $contactID,
         array|ContactGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|ContactMergeParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SimplePublicObject>
      *
@@ -118,13 +129,14 @@ interface ContactsRawContract
      */
     public function merge(
         array|ContactMergeParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|ContactSearchParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CollectionResponseWithTotalSimplePublicObject>
      *
@@ -132,6 +144,6 @@ interface ContactsRawContract
      */
     public function search(
         array|ContactSearchParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

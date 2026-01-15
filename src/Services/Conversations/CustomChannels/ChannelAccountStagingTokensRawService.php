@@ -13,6 +13,10 @@ use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Conversations\CustomChannels\ChannelAccountStagingTokensRawContract;
 
+/**
+ * @phpstan-import-type PublicDeliveryIdentifierShape from \HubspotSDK\Conversations\PublicDeliveryIdentifier
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class ChannelAccountStagingTokensRawService implements ChannelAccountStagingTokensRawContract
 {
     // @phpstan-ignore-next-line
@@ -30,10 +34,9 @@ final class ChannelAccountStagingTokensRawService implements ChannelAccountStagi
      * @param array{
      *   channelID: int,
      *   accountName: string,
-     *   deliveryIdentifier: array{
-     *     type: string, value: string
-     *   }|PublicDeliveryIdentifier,
+     *   deliveryIdentifier: PublicDeliveryIdentifier|PublicDeliveryIdentifierShape,
      * }|ChannelAccountStagingTokenUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicChannelAccountStagingToken>
      *
@@ -42,7 +45,7 @@ final class ChannelAccountStagingTokensRawService implements ChannelAccountStagi
     public function update(
         string $accountToken,
         array|ChannelAccountStagingTokenUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = ChannelAccountStagingTokenUpdateParams::parseRequest(
             $params,

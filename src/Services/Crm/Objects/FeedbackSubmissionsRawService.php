@@ -8,6 +8,7 @@ use HubspotSDK\Client;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
+use HubspotSDK\Crm\FilterGroup;
 use HubspotSDK\Crm\Objects\FeedbackSubmissions\FeedbackSubmissionGetParams;
 use HubspotSDK\Crm\Objects\FeedbackSubmissions\FeedbackSubmissionListParams;
 use HubspotSDK\Crm\Objects\FeedbackSubmissions\FeedbackSubmissionSearchParams;
@@ -16,6 +17,10 @@ use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Objects\FeedbackSubmissionsRawContract;
 
+/**
+ * @phpstan-import-type FilterGroupShape from \HubspotSDK\Crm\FilterGroup
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class FeedbackSubmissionsRawService implements FeedbackSubmissionsRawContract
 {
     // @phpstan-ignore-next-line
@@ -37,6 +42,7 @@ final class FeedbackSubmissionsRawService implements FeedbackSubmissionsRawContr
      *   properties?: list<string>,
      *   propertiesWithHistory?: list<string>,
      * }|FeedbackSubmissionListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<SimplePublicObjectWithAssociations>>
      *
@@ -44,7 +50,7 @@ final class FeedbackSubmissionsRawService implements FeedbackSubmissionsRawContr
      */
     public function list(
         array|FeedbackSubmissionListParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = FeedbackSubmissionListParams::parseRequest(
             $params,
@@ -74,6 +80,7 @@ final class FeedbackSubmissionsRawService implements FeedbackSubmissionsRawContr
      *   properties?: list<string>,
      *   propertiesWithHistory?: list<string>,
      * }|FeedbackSubmissionGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SimplePublicObjectWithAssociations>
      *
@@ -82,7 +89,7 @@ final class FeedbackSubmissionsRawService implements FeedbackSubmissionsRawContr
     public function get(
         string $feedbackSubmissionID,
         array|FeedbackSubmissionGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = FeedbackSubmissionGetParams::parseRequest(
             $params,
@@ -106,12 +113,13 @@ final class FeedbackSubmissionsRawService implements FeedbackSubmissionsRawContr
      *
      * @param array{
      *   after: string,
-     *   filterGroups: list<array{filters: list<array<string,mixed>>}>,
+     *   filterGroups: list<FilterGroup|FilterGroupShape>,
      *   limit: int,
      *   properties: list<string>,
      *   sorts: list<string>,
      *   query?: string,
      * }|FeedbackSubmissionSearchParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CollectionResponseWithTotalSimplePublicObject>
      *
@@ -119,7 +127,7 @@ final class FeedbackSubmissionsRawService implements FeedbackSubmissionsRawContr
      */
     public function search(
         array|FeedbackSubmissionSearchParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = FeedbackSubmissionSearchParams::parseRequest(
             $params,

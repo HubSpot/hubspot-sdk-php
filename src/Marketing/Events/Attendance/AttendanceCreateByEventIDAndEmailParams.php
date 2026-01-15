@@ -28,7 +28,8 @@ use HubspotSDK\Marketing\Events\MarketingEventEmailSubscriber;
  * @phpstan-import-type MarketingEventEmailSubscriberShape from \HubspotSDK\Marketing\Events\MarketingEventEmailSubscriber
  *
  * @phpstan-type AttendanceCreateByEventIDAndEmailParamsShape = array{
- *   objectID: string, inputs: list<MarketingEventEmailSubscriberShape>
+ *   objectID: string,
+ *   inputs: list<MarketingEventEmailSubscriber|MarketingEventEmailSubscriberShape>,
  * }
  */
 final class AttendanceCreateByEventIDAndEmailParams implements BaseModel
@@ -74,7 +75,7 @@ final class AttendanceCreateByEventIDAndEmailParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<MarketingEventEmailSubscriberShape> $inputs
+     * @param list<MarketingEventEmailSubscriber|MarketingEventEmailSubscriberShape> $inputs
      */
     public static function with(string $objectID, array $inputs): self
     {
@@ -97,7 +98,7 @@ final class AttendanceCreateByEventIDAndEmailParams implements BaseModel
     /**
      * List of marketing event details to create or update.
      *
-     * @param list<MarketingEventEmailSubscriberShape> $inputs
+     * @param list<MarketingEventEmailSubscriber|MarketingEventEmailSubscriberShape> $inputs
      */
     public function withInputs(array $inputs): self
     {

@@ -12,6 +12,9 @@ use HubspotSDK\Crm\Lists\ListFolderFetchResponse;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Lists\FoldersContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class FoldersService implements FoldersContract
 {
     /**
@@ -34,13 +37,14 @@ final class FoldersService implements FoldersContract
      *
      * @param string $name the name of the folder to be created
      * @param string $parentFolderID the folder this should be created in, if not specified will be created in the root folder 0
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function create(
         string $name,
         ?string $parentFolderID = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): ListFolderCreateResponse {
         $params = Util::removeNulls(
             ['name' => $name, 'parentFolderID' => $parentFolderID]
@@ -58,12 +62,13 @@ final class FoldersService implements FoldersContract
      * Deletes the folder with the given Id.
      *
      * @param string $folderID The ID of the folder to delete
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function delete(
         string $folderID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): mixed {
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->delete($folderID, requestOptions: $requestOptions);
@@ -77,12 +82,13 @@ final class FoldersService implements FoldersContract
      * Retrieves a folder and recursively includes all folders via the childNodes attribute.  The child lists field will be empty in all child nodes. Only the folder retrieved will include the child lists in that folder.
      *
      * @param string $folderID the Id of the folder to retrieve
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function get(
         string $folderID = '0',
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): ListFolderFetchResponse {
         $params = Util::removeNulls(['folderID' => $folderID]);
 
@@ -99,13 +105,14 @@ final class FoldersService implements FoldersContract
      *
      * @param string $newParentFolderID the ID for the target parent folder
      * @param string $folderID The ID of the folder to move
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function move(
         string $newParentFolderID,
         string $folderID,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): ListFolderFetchResponse {
         $params = Util::removeNulls(['folderID' => $folderID]);
 
@@ -122,13 +129,14 @@ final class FoldersService implements FoldersContract
      *
      * @param string $listID the Id of the list to move
      * @param string $newFolderID the Id of folder to move the list to, the root folder is Id 0
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function moveList(
         string $listID,
         string $newFolderID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): mixed {
         $params = Util::removeNulls(
             ['listID' => $listID, 'newFolderID' => $newFolderID]
@@ -147,13 +155,14 @@ final class FoldersService implements FoldersContract
      *
      * @param string $folderID The ID of the folder to rename
      * @param string $newFolderName the new name of the folder
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function rename(
         string $folderID,
         ?string $newFolderName = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): ListFolderFetchResponse {
         $params = Util::removeNulls(['newFolderName' => $newFolderName]);
 

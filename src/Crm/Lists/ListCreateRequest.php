@@ -20,6 +20,7 @@ use HubspotSDK\PublicUnifiedEventsFilterBranch;
 /**
  * The request object used when creating a new object list.
  *
+ * @phpstan-import-type FilterBranchVariants from \HubspotSDK\Crm\Lists\ListCreateRequest\FilterBranch
  * @phpstan-import-type FilterBranchShape from \HubspotSDK\Crm\Lists\ListCreateRequest\FilterBranch
  * @phpstan-import-type PublicListPermissionsShape from \HubspotSDK\Crm\Lists\PublicListPermissions
  * @phpstan-import-type PublicMembershipSettingsShape from \HubspotSDK\Crm\Lists\PublicMembershipSettings
@@ -66,6 +67,7 @@ final class ListCreateRequest implements BaseModel
     #[Optional(map: 'string')]
     public ?array $customProperties;
 
+    /** @var FilterBranchVariants|null $filterBranch */
     #[Optional]
     public PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch|null $filterBranch;
 

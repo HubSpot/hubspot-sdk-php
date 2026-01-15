@@ -4,22 +4,25 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Services\Crm\Objects;
 
-use HubspotSDK\AssociationSpec;
-use HubspotSDK\AssociationSpec\AssociationCategory;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Core\Util;
 use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\Crm\CreatedResponseSimplePublicObject;
-use HubspotSDK\Crm\Filter\Operator;
+use HubspotSDK\Crm\FilterGroup;
+use HubspotSDK\Crm\PublicAssociationsForObject;
 use HubspotSDK\Crm\SimplePublicObject;
 use HubspotSDK\Crm\SimplePublicObjectWithAssociations;
 use HubspotSDK\Page;
-use HubspotSDK\PublicObjectID;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Objects\ContactsContract;
 use HubspotSDK\Services\Crm\Objects\Contacts\BatchService;
 
+/**
+ * @phpstan-import-type PublicAssociationsForObjectShape from \HubspotSDK\Crm\PublicAssociationsForObject
+ * @phpstan-import-type FilterGroupShape from \HubspotSDK\Crm\FilterGroup
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class ContactsService implements ContactsContract
 {
     /**
@@ -46,21 +49,16 @@ final class ContactsService implements ContactsContract
      *
      * Create a single contact. Include a `properties` object to define [property values](https://developers.hubspot.com/docs/guides/api/crm/properties) for the contact, along with an `associations` array to define [associations](https://developers.hubspot.com/docs/guides/api/crm/associations/associations-v4) with other CRM records.
      *
-     * @param list<array{
-     *   to: array{id: string}|PublicObjectID,
-     *   types: list<array{
-     *     associationCategory: 'HUBSPOT_DEFINED'|'INTEGRATOR_DEFINED'|'USER_DEFINED'|AssociationCategory,
-     *     associationTypeID: int,
-     *   }|AssociationSpec>,
-     * }> $associations
+     * @param list<PublicAssociationsForObject|PublicAssociationsForObjectShape> $associations
      * @param array<string,string> $properties key-value pairs for setting properties for the new object
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function create(
         array $associations,
         array $properties,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): CreatedResponseSimplePublicObject {
         $params = Util::removeNulls(
             ['associations' => $associations, 'properties' => $properties]
@@ -77,9 +75,10 @@ final class ContactsService implements ContactsContract
      *
      * Update an existing contact, identified by ID or email/unique property value. To identify a contact by ID, include the ID in the request URL path. To identify a contact by their email or other unique property, include the email/property value in the request URL path, and add the `idProperty` query parameter (`/crm/v3/objects/contacts/jon@website.com?idProperty=email`). Provided property values will be overwritten. Read-only and non-existent properties will result in an error. Properties values can be cleared by passing an empty string.
      *
-     * @param string $contactID Path param:
+     * @param string $contactID Path param
      * @param array<string,string> $properties body param: Key value pairs representing the properties of the object
      * @param string $idProperty query param: The name of a property whose values are unique for this object
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -87,7 +86,7 @@ final class ContactsService implements ContactsContract
         string $contactID,
         array $properties,
         ?string $idProperty = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): SimplePublicObject {
         $params = Util::removeNulls(
             ['properties' => $properties, 'idProperty' => $idProperty]
@@ -110,6 +109,7 @@ final class ContactsService implements ContactsContract
      * @param int $limit the maximum number of results to display per page
      * @param list<string> $properties A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored.
      * @param list<string> $propertiesWithHistory A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored. Usage of this parameter will reduce the maximum number of contacts that can be read by a single request.
+     * @param RequestOpts|null $requestOptions
      *
      * @return Page<SimplePublicObjectWithAssociations>
      *
@@ -122,7 +122,7 @@ final class ContactsService implements ContactsContract
         int $limit = 10,
         ?array $properties = null,
         ?array $propertiesWithHistory = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): Page {
         $params = Util::removeNulls(
             [
@@ -146,11 +146,13 @@ final class ContactsService implements ContactsContract
      *
      * Delete a contact by ID. Deleted contacts can be restored within 90 days of deletion. Learn more about the [data impacted by contact deletions](https://knowledge.hubspot.com/privacy-and-consent/understand-restorable-and-permanent-contact-deletions) and how to [restore archived records](https://knowledge.hubspot.com/records/restore-deleted-records).
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @throws APIException
      */
     public function delete(
         string $contactID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): mixed {
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->delete($contactID, requestOptions: $requestOptions);
@@ -165,13 +167,14 @@ final class ContactsService implements ContactsContract
      *
      * @param string $objectID ID of the object
      * @param string $idProperty ID property
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function gdprDelete(
         string $objectID,
         ?string $idProperty = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): mixed {
         $params = Util::removeNulls(
             ['objectID' => $objectID, 'idProperty' => $idProperty]
@@ -193,6 +196,7 @@ final class ContactsService implements ContactsContract
      * @param string $idProperty The name of a property whose values are unique for this object
      * @param list<string> $properties A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored.
      * @param list<string> $propertiesWithHistory A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored.
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -203,7 +207,7 @@ final class ContactsService implements ContactsContract
         ?string $idProperty = null,
         ?array $properties = null,
         ?array $propertiesWithHistory = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): SimplePublicObjectWithAssociations {
         $params = Util::removeNulls(
             [
@@ -228,13 +232,14 @@ final class ContactsService implements ContactsContract
      *
      * @param string $objectIDToMerge the unique identifier of the CRM object that will be merged into the primary object
      * @param string $primaryObjectID the unique identifier of the CRM object that will remain after the merge
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function merge(
         string $objectIDToMerge,
         string $primaryObjectID,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): SimplePublicObject {
         $params = Util::removeNulls(
             [
@@ -255,19 +260,12 @@ final class ContactsService implements ContactsContract
      * Search for contacts by filtering on properties, searching through associations, and sorting results. Learn more about [CRM search](https://developers.hubspot.com/docs/guides/api/crm/search#make-a-search-request).
      *
      * @param string $after a paging cursor token for retrieving subsequent pages
-     * @param list<array{
-     *   filters: list<array{
-     *     operator: 'BETWEEN'|'CONTAINS_TOKEN'|'EQ'|'GT'|'GTE'|'HAS_PROPERTY'|'IN'|'LT'|'LTE'|'NEQ'|'NOT_CONTAINS_TOKEN'|'NOT_HAS_PROPERTY'|'NOT_IN'|Operator,
-     *     propertyName: string,
-     *     highValue?: string,
-     *     value?: string,
-     *     values?: list<string>,
-     *   }>,
-     * }> $filterGroups Up to 6 groups of filters defining additional query criteria
+     * @param list<FilterGroup|FilterGroupShape> $filterGroups up to 6 groups of filters defining additional query criteria
      * @param int $limit the maximum results to return, up to 200 objects
      * @param list<string> $properties a list of property names to include in the response
      * @param list<string> $sorts specifies sorting order based on object properties
      * @param string $query the search query string, up to 3000 characters
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -278,7 +276,7 @@ final class ContactsService implements ContactsContract
         array $properties,
         array $sorts,
         ?string $query = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): CollectionResponseWithTotalSimplePublicObject {
         $params = Util::removeNulls(
             [

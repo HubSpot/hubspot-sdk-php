@@ -17,10 +17,10 @@ use HubspotSDK\StandardError;
  *
  * @phpstan-type BatchResponsePublicAssociationDefinitionUserConfigurationShape = array{
  *   completedAt: \DateTimeInterface,
- *   results: list<PublicAssociationDefinitionUserConfigurationShape>,
+ *   results: list<PublicAssociationDefinitionUserConfiguration|PublicAssociationDefinitionUserConfigurationShape>,
  *   startedAt: \DateTimeInterface,
  *   status: Status|value-of<Status>,
- *   errors?: list<StandardErrorShape>|null,
+ *   errors?: list<StandardError|StandardErrorShape>|null,
  *   links?: array<string,string>|null,
  *   numErrors?: int|null,
  *   requestedAt?: \DateTimeInterface|null,
@@ -89,9 +89,9 @@ final class BatchResponsePublicAssociationDefinitionUserConfiguration implements
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicAssociationDefinitionUserConfigurationShape> $results
+     * @param list<PublicAssociationDefinitionUserConfiguration|PublicAssociationDefinitionUserConfigurationShape> $results
      * @param Status|value-of<Status> $status
-     * @param list<StandardErrorShape>|null $errors
+     * @param list<StandardError|StandardErrorShape>|null $errors
      * @param array<string,string>|null $links
      */
     public static function with(
@@ -128,7 +128,7 @@ final class BatchResponsePublicAssociationDefinitionUserConfiguration implements
     }
 
     /**
-     * @param list<PublicAssociationDefinitionUserConfigurationShape> $results
+     * @param list<PublicAssociationDefinitionUserConfiguration|PublicAssociationDefinitionUserConfigurationShape> $results
      */
     public function withResults(array $results): self
     {
@@ -158,7 +158,7 @@ final class BatchResponsePublicAssociationDefinitionUserConfiguration implements
     }
 
     /**
-     * @param list<StandardErrorShape> $errors
+     * @param list<StandardError|StandardErrorShape> $errors
      */
     public function withErrors(array $errors): self
     {

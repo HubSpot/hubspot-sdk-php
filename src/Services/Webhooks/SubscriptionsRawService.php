@@ -10,6 +10,7 @@ use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Webhooks\SubscriptionsRawContract;
 use HubspotSDK\Webhooks\BatchResponseSubscriptionResponse;
+use HubspotSDK\Webhooks\SubscriptionBatchUpdateRequest;
 use HubspotSDK\Webhooks\SubscriptionListResponse;
 use HubspotSDK\Webhooks\SubscriptionResponse;
 use HubspotSDK\Webhooks\Subscriptions\SubscriptionCreateParams;
@@ -19,6 +20,10 @@ use HubspotSDK\Webhooks\Subscriptions\SubscriptionGetParams;
 use HubspotSDK\Webhooks\Subscriptions\SubscriptionUpdateBatchParams;
 use HubspotSDK\Webhooks\Subscriptions\SubscriptionUpdateParams;
 
+/**
+ * @phpstan-import-type SubscriptionBatchUpdateRequestShape from \HubspotSDK\Webhooks\SubscriptionBatchUpdateRequest
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class SubscriptionsRawService implements SubscriptionsRawContract
 {
     // @phpstan-ignore-next-line
@@ -39,6 +44,7 @@ final class SubscriptionsRawService implements SubscriptionsRawContract
      *   objectTypeID?: string,
      *   propertyName?: string,
      * }|SubscriptionCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SubscriptionResponse>
      *
@@ -47,7 +53,7 @@ final class SubscriptionsRawService implements SubscriptionsRawContract
     public function create(
         int $appID,
         array|SubscriptionCreateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = SubscriptionCreateParams::parseRequest(
             $params,
@@ -71,6 +77,7 @@ final class SubscriptionsRawService implements SubscriptionsRawContract
      *
      * @param int $subscriptionID path param: The ID of the event subscription
      * @param array{appID: int, active?: bool}|SubscriptionUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SubscriptionResponse>
      *
@@ -79,7 +86,7 @@ final class SubscriptionsRawService implements SubscriptionsRawContract
     public function update(
         int $subscriptionID,
         array|SubscriptionUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = SubscriptionUpdateParams::parseRequest(
             $params,
@@ -104,6 +111,7 @@ final class SubscriptionsRawService implements SubscriptionsRawContract
      * Retrieve event subscriptions for the specified app.
      *
      * @param int $appID the ID of the app
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SubscriptionListResponse>
      *
@@ -111,7 +119,7 @@ final class SubscriptionsRawService implements SubscriptionsRawContract
      */
     public function list(
         int $appID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -129,6 +137,7 @@ final class SubscriptionsRawService implements SubscriptionsRawContract
      *
      * @param int $subscriptionID the ID of the event subscription
      * @param array{appID: int}|SubscriptionDeleteParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -137,7 +146,7 @@ final class SubscriptionsRawService implements SubscriptionsRawContract
     public function delete(
         int $subscriptionID,
         array|SubscriptionDeleteParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = SubscriptionDeleteParams::parseRequest(
             $params,
@@ -162,6 +171,7 @@ final class SubscriptionsRawService implements SubscriptionsRawContract
      *
      * @param int $subscriptionID the ID of the event subscription
      * @param array{appID: int}|SubscriptionGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SubscriptionResponse>
      *
@@ -170,7 +180,7 @@ final class SubscriptionsRawService implements SubscriptionsRawContract
     public function get(
         int $subscriptionID,
         array|SubscriptionGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = SubscriptionGetParams::parseRequest(
             $params,
@@ -195,8 +205,9 @@ final class SubscriptionsRawService implements SubscriptionsRawContract
      *
      * @param int $appID the ID of the app
      * @param array{
-     *   inputs: list<array{id: int, active: bool}>
+     *   inputs: list<SubscriptionBatchUpdateRequest|SubscriptionBatchUpdateRequestShape>,
      * }|SubscriptionUpdateBatchParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BatchResponseSubscriptionResponse>
      *
@@ -205,7 +216,7 @@ final class SubscriptionsRawService implements SubscriptionsRawContract
     public function updateBatch(
         int $appID,
         array|SubscriptionUpdateBatchParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = SubscriptionUpdateBatchParams::parseRequest(
             $params,

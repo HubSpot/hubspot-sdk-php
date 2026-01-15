@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-type BatchReadInputPropertyNameShape = array{
  *   archived: bool,
  *   dataSensitivity: DataSensitivity|value-of<DataSensitivity>,
- *   inputs: list<PropertyNameShape>,
+ *   inputs: list<PropertyName|PropertyNameShape>,
  * }
  */
 final class BatchReadInputPropertyName implements BaseModel
@@ -64,7 +64,7 @@ final class BatchReadInputPropertyName implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param DataSensitivity|value-of<DataSensitivity> $dataSensitivity
-     * @param list<PropertyNameShape> $inputs
+     * @param list<PropertyName|PropertyNameShape> $inputs
      */
     public static function with(
         bool $archived,
@@ -101,7 +101,7 @@ final class BatchReadInputPropertyName implements BaseModel
     }
 
     /**
-     * @param list<PropertyNameShape> $inputs
+     * @param list<PropertyName|PropertyNameShape> $inputs
      */
     public function withInputs(array $inputs): self
     {

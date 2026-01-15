@@ -10,6 +10,7 @@ use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Core\Util;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
+use HubspotSDK\Scheduler\Meetings\ExternalBookingFormField;
 use HubspotSDK\Scheduler\Meetings\ExternalBookingInfo;
 use HubspotSDK\Scheduler\Meetings\ExternalLegalConsentResponse;
 use HubspotSDK\Scheduler\Meetings\ExternalLinkAvailabilityAndBusyTimes;
@@ -21,6 +22,11 @@ use HubspotSDK\Scheduler\Meetings\MeetingsLinks\MeetingsLinkGetBookingInfoBySlug
 use HubspotSDK\Scheduler\Meetings\MeetingsLinks\MeetingsLinkListParams;
 use HubspotSDK\ServiceContracts\Scheduler\Meetings\MeetingsLinksRawContract;
 
+/**
+ * @phpstan-import-type ExternalBookingFormFieldShape from \HubspotSDK\Scheduler\Meetings\ExternalBookingFormField
+ * @phpstan-import-type ExternalLegalConsentResponseShape from \HubspotSDK\Scheduler\Meetings\ExternalLegalConsentResponse
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class MeetingsLinksRawService implements MeetingsLinksRawContract
 {
     // @phpstan-ignore-next-line
@@ -41,6 +47,7 @@ final class MeetingsLinksRawService implements MeetingsLinksRawContract
      *   organizerUserID?: string,
      *   type?: string,
      * }|MeetingsLinkListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<ExternalLinkMetadata>>
      *
@@ -48,7 +55,7 @@ final class MeetingsLinksRawService implements MeetingsLinksRawContract
      */
     public function list(
         array|MeetingsLinkListParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = MeetingsLinkListParams::parseRequest(
             $params,
@@ -78,17 +85,16 @@ final class MeetingsLinksRawService implements MeetingsLinksRawContract
      *   duration: int,
      *   email: string,
      *   firstName: string,
-     *   formFields: list<array{name: string, value: string}>,
+     *   formFields: list<ExternalBookingFormField|ExternalBookingFormFieldShape>,
      *   lastName: string,
-     *   legalConsentResponses: list<array{
-     *     communicationTypeID: string, consented: bool
-     *   }|ExternalLegalConsentResponse>,
+     *   legalConsentResponses: list<ExternalLegalConsentResponse|ExternalLegalConsentResponseShape>,
      *   likelyAvailableUserIDs: list<string>,
      *   slug: string,
-     *   startTime: string|\DateTimeInterface,
+     *   startTime: \DateTimeInterface,
      *   locale?: string,
      *   timezone?: string,
      * }|MeetingsLinkBookParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ExternalMeetingBookingResponse>
      *
@@ -96,7 +102,7 @@ final class MeetingsLinksRawService implements MeetingsLinksRawContract
      */
     public function book(
         array|MeetingsLinkBookParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = MeetingsLinkBookParams::parseRequest(
             $params,
@@ -122,6 +128,7 @@ final class MeetingsLinksRawService implements MeetingsLinksRawContract
      * @param array{
      *   timezone: string, monthOffset?: int
      * }|MeetingsLinkGetAvailabilityBySlugParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ExternalLinkAvailabilityAndBusyTimes>
      *
@@ -130,7 +137,7 @@ final class MeetingsLinksRawService implements MeetingsLinksRawContract
     public function getAvailabilityBySlug(
         string $slug,
         array|MeetingsLinkGetAvailabilityBySlugParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = MeetingsLinkGetAvailabilityBySlugParams::parseRequest(
             $params,
@@ -156,6 +163,7 @@ final class MeetingsLinksRawService implements MeetingsLinksRawContract
      *
      * @param string $slug the path to the scheduling page that you want the information for
      * @param array{timezone: string}|MeetingsLinkGetBookingInfoBySlugParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ExternalBookingInfo>
      *
@@ -164,7 +172,7 @@ final class MeetingsLinksRawService implements MeetingsLinksRawContract
     public function getBookingInfoBySlug(
         string $slug,
         array|MeetingsLinkGetBookingInfoBySlugParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = MeetingsLinkGetBookingInfoBySlugParams::parseRequest(
             $params,

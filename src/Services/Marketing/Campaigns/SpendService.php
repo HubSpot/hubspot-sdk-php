@@ -11,6 +11,9 @@ use HubspotSDK\Marketing\Campaigns\PublicSpendItem;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Marketing\Campaigns\SpendContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class SpendService implements SpendContract
 {
     /**
@@ -32,6 +35,7 @@ final class SpendService implements SpendContract
      * Create a new campaign spend item
      *
      * @param string $campaignGuid unique identifier for the campaign
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -41,7 +45,7 @@ final class SpendService implements SpendContract
         string $name,
         int $order,
         ?string $description = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): PublicSpendItem {
         $params = Util::removeNulls(
             [
@@ -65,10 +69,11 @@ final class SpendService implements SpendContract
      *
      * @param int $spendID path param: Unique identifier for the spend item
      * @param string $campaignGuid path param: Unique identifier for the campaign
-     * @param float $amount Body param:
-     * @param string $name Body param:
-     * @param int $order Body param:
-     * @param string $description Body param:
+     * @param float $amount Body param
+     * @param string $name Body param
+     * @param int $order Body param
+     * @param string $description Body param
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -79,7 +84,7 @@ final class SpendService implements SpendContract
         string $name,
         int $order,
         ?string $description = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): PublicSpendItem {
         $params = Util::removeNulls(
             [
@@ -104,13 +109,14 @@ final class SpendService implements SpendContract
      *
      * @param int $spendID unique identifier for the spend item
      * @param string $campaignGuid unique identifier for the campaign
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function delete(
         int $spendID,
         string $campaignGuid,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): mixed {
         $params = Util::removeNulls(['campaignGuid' => $campaignGuid]);
 
@@ -127,13 +133,14 @@ final class SpendService implements SpendContract
      *
      * @param int $spendID unique identifier for the spend item
      * @param string $campaignGuid unique identifier for the campaign
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function get(
         int $spendID,
         string $campaignGuid,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): PublicSpendItem {
         $params = Util::removeNulls(['campaignGuid' => $campaignGuid]);
 

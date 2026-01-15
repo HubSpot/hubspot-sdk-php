@@ -16,13 +16,17 @@ use HubspotSDK\Crm\SimplePublicObjectWithAssociations;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface PartnerServicesRawContract
 {
     /**
      * @api
      *
-     * @param string $partnerServiceID Path param:
+     * @param string $partnerServiceID Path param
      * @param array<string,mixed>|PartnerServiceUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SimplePublicObject>
      *
@@ -31,13 +35,14 @@ interface PartnerServicesRawContract
     public function update(
         string $partnerServiceID,
         array|PartnerServiceUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|PartnerServiceListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<SimplePublicObjectWithAssociations>>
      *
@@ -45,13 +50,14 @@ interface PartnerServicesRawContract
      */
     public function list(
         array|PartnerServiceListParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|PartnerServiceGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SimplePublicObjectWithAssociations>
      *
@@ -60,13 +66,14 @@ interface PartnerServicesRawContract
     public function get(
         string $partnerServiceID,
         array|PartnerServiceGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|PartnerServiceSearchParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CollectionResponseWithTotalSimplePublicObject>
      *
@@ -74,6 +81,6 @@ interface PartnerServicesRawContract
      */
     public function search(
         array|PartnerServiceSearchParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

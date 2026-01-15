@@ -17,8 +17,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-type ObjectDefinitionResponseShape = array{
  *   objectTypeID: string,
  *   objectTypeName: string,
- *   properties: list<PropertyDefinitionShape>,
- *   propertyGroups: list<GroupViewShape>,
+ *   properties: list<PropertyDefinition|PropertyDefinitionShape>,
+ *   propertyGroups: list<GroupView|GroupViewShape>,
  *   schema?: null|InboundDBObjectType|InboundDBObjectTypeShape,
  * }
  */
@@ -74,8 +74,8 @@ final class ObjectDefinitionResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PropertyDefinitionShape> $properties
-     * @param list<GroupViewShape> $propertyGroups
+     * @param list<PropertyDefinition|PropertyDefinitionShape> $properties
+     * @param list<GroupView|GroupViewShape> $propertyGroups
      * @param InboundDBObjectType|InboundDBObjectTypeShape|null $schema
      */
     public static function with(
@@ -114,7 +114,7 @@ final class ObjectDefinitionResponse implements BaseModel
     }
 
     /**
-     * @param list<PropertyDefinitionShape> $properties
+     * @param list<PropertyDefinition|PropertyDefinitionShape> $properties
      */
     public function withProperties(array $properties): self
     {
@@ -125,7 +125,7 @@ final class ObjectDefinitionResponse implements BaseModel
     }
 
     /**
-     * @param list<GroupViewShape> $propertyGroups
+     * @param list<GroupView|GroupViewShape> $propertyGroups
      */
     public function withPropertyGroups(array $propertyGroups): self
     {

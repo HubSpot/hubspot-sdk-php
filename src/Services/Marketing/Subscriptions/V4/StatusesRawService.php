@@ -14,6 +14,7 @@ use HubspotSDK\Marketing\Subscriptions\V4\BatchResponsePublicBulkOptOutFromAllRe
 use HubspotSDK\Marketing\Subscriptions\V4\BatchResponsePublicStatus;
 use HubspotSDK\Marketing\Subscriptions\V4\BatchResponsePublicStatusBulkResponse;
 use HubspotSDK\Marketing\Subscriptions\V4\BatchResponsePublicWideStatusBulkResponse;
+use HubspotSDK\Marketing\Subscriptions\V4\PublicStatusRequest;
 use HubspotSDK\Marketing\Subscriptions\V4\Statuses\StatusBatchGetParams;
 use HubspotSDK\Marketing\Subscriptions\V4\Statuses\StatusBatchGetUnsubscribeAllStatusParams;
 use HubspotSDK\Marketing\Subscriptions\V4\Statuses\StatusBatchUnsubscribeAllParams;
@@ -28,6 +29,10 @@ use HubspotSDK\Marketing\Subscriptions\V4\Statuses\StatusUpdateParams\StatusStat
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Marketing\Subscriptions\V4\StatusesRawContract;
 
+/**
+ * @phpstan-import-type PublicStatusRequestShape from \HubspotSDK\Marketing\Subscriptions\V4\PublicStatusRequest
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class StatusesRawService implements StatusesRawContract
 {
     // @phpstan-ignore-next-line
@@ -43,12 +48,13 @@ final class StatusesRawService implements StatusesRawContract
      *
      * @param string $subscriberIDString the contact's email address
      * @param array{
-     *   channel: 'EMAIL'|Channel,
-     *   statusState: 'NOT_SPECIFIED'|'SUBSCRIBED'|'UNSUBSCRIBED'|StatusState,
+     *   channel: Channel|value-of<Channel>,
+     *   statusState: StatusState|value-of<StatusState>,
      *   subscriptionID: int,
      *   legalBasis?: value-of<LegalBasis>,
      *   legalBasisExplanation?: string,
      * }|StatusUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ActionResponseWithResultsPublicStatus>
      *
@@ -57,7 +63,7 @@ final class StatusesRawService implements StatusesRawContract
     public function update(
         string $subscriberIDString,
         array|StatusUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = StatusUpdateParams::parseRequest(
             $params,
@@ -80,10 +86,11 @@ final class StatusesRawService implements StatusesRawContract
      * Batch retrieve subscription statuses for a set of contacts.
      *
      * @param array{
-     *   channel: 'EMAIL'|StatusBatchGetParams\Channel,
+     *   channel: StatusBatchGetParams\Channel|value-of<StatusBatchGetParams\Channel>,
      *   inputs: list<string>,
      *   businessUnitID?: int,
      * }|StatusBatchGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BatchResponsePublicStatusBulkResponse>
      *
@@ -91,7 +98,7 @@ final class StatusesRawService implements StatusesRawContract
      */
     public function batchGet(
         array|StatusBatchGetParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = StatusBatchGetParams::parseRequest(
             $params,
@@ -119,10 +126,11 @@ final class StatusesRawService implements StatusesRawContract
      * Checks whether a set of contacts have opted out of all communications.
      *
      * @param array{
-     *   channel: 'EMAIL'|StatusBatchGetUnsubscribeAllStatusParams\Channel,
+     *   channel: StatusBatchGetUnsubscribeAllStatusParams\Channel|value-of<StatusBatchGetUnsubscribeAllStatusParams\Channel>,
      *   inputs: list<string>,
      *   businessUnitID?: int,
      * }|StatusBatchGetUnsubscribeAllStatusParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BatchResponsePublicWideStatusBulkResponse>
      *
@@ -130,7 +138,7 @@ final class StatusesRawService implements StatusesRawContract
      */
     public function batchGetUnsubscribeAllStatus(
         array|StatusBatchGetUnsubscribeAllStatusParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = StatusBatchGetUnsubscribeAllStatusParams::parseRequest(
             $params,
@@ -158,11 +166,12 @@ final class StatusesRawService implements StatusesRawContract
      * Unsubscribe a set of contacts from all email subscriptions.
      *
      * @param array{
-     *   channel: 'EMAIL'|StatusBatchUnsubscribeAllParams\Channel,
+     *   channel: StatusBatchUnsubscribeAllParams\Channel|value-of<StatusBatchUnsubscribeAllParams\Channel>,
      *   inputs: list<string>,
      *   businessUnitID?: int,
      *   verbose?: bool,
      * }|StatusBatchUnsubscribeAllParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BatchResponsePublicBulkOptOutFromAllResponse>
      *
@@ -170,7 +179,7 @@ final class StatusesRawService implements StatusesRawContract
      */
     public function batchUnsubscribeAll(
         array|StatusBatchUnsubscribeAllParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = StatusBatchUnsubscribeAllParams::parseRequest(
             $params,
@@ -198,15 +207,9 @@ final class StatusesRawService implements StatusesRawContract
      * Update the subscription status for a set of contacts.
      *
      * @param array{
-     *   inputs: list<array{
-     *     channel: 'EMAIL'|\HubspotSDK\Marketing\Subscriptions\V4\PublicStatusRequest\Channel,
-     *     statusState: 'NOT_SPECIFIED'|'SUBSCRIBED'|'UNSUBSCRIBED'|\HubspotSDK\Marketing\Subscriptions\V4\PublicStatusRequest\StatusState,
-     *     subscriberIDString: string,
-     *     subscriptionID: int,
-     *     legalBasis?: 'CONSENT_WITH_NOTICE'|'LEGITIMATE_INTEREST_CLIENT'|'LEGITIMATE_INTEREST_OTHER'|'LEGITIMATE_INTEREST_PQL'|'NON_GDPR'|'PERFORMANCE_OF_CONTRACT'|'PROCESS_AND_STORE'|\HubspotSDK\Marketing\Subscriptions\V4\PublicStatusRequest\LegalBasis,
-     *     legalBasisExplanation?: string,
-     *   }>,
+     *   inputs: list<PublicStatusRequest|PublicStatusRequestShape>
      * }|StatusBatchUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BatchResponsePublicStatus>
      *
@@ -214,7 +217,7 @@ final class StatusesRawService implements StatusesRawContract
      */
     public function batchUpdate(
         array|StatusBatchUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = StatusBatchUpdateParams::parseRequest(
             $params,
@@ -238,9 +241,10 @@ final class StatusesRawService implements StatusesRawContract
      *
      * @param string $subscriberIDString the contact's email address
      * @param array{
-     *   channel: 'EMAIL'|StatusGetParams\Channel,
+     *   channel: StatusGetParams\Channel|value-of<StatusGetParams\Channel>,
      *   businessUnitID?: int,
      * }|StatusGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ActionResponseWithResultsPublicStatus>
      *
@@ -249,7 +253,7 @@ final class StatusesRawService implements StatusesRawContract
     public function get(
         string $subscriberIDString,
         array|StatusGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = StatusGetParams::parseRequest(
             $params,
@@ -276,10 +280,11 @@ final class StatusesRawService implements StatusesRawContract
      *
      * @param string $subscriberIDString the contact's email address
      * @param array{
-     *   channel: 'EMAIL'|StatusGetUnsubscribeAllStatusParams\Channel,
+     *   channel: StatusGetUnsubscribeAllStatusParams\Channel|value-of<StatusGetUnsubscribeAllStatusParams\Channel>,
      *   businessUnitID?: int,
      *   verbose?: bool,
      * }|StatusGetUnsubscribeAllStatusParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ActionResponseWithResultsPublicWideStatus>
      *
@@ -288,7 +293,7 @@ final class StatusesRawService implements StatusesRawContract
     public function getUnsubscribeAllStatus(
         string $subscriberIDString,
         array|StatusGetUnsubscribeAllStatusParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = StatusGetUnsubscribeAllStatusParams::parseRequest(
             $params,
@@ -318,10 +323,11 @@ final class StatusesRawService implements StatusesRawContract
      *
      * @param string $subscriberIDString the contact's email address
      * @param array{
-     *   channel: 'EMAIL'|StatusUnsubscribeAllParams\Channel,
+     *   channel: StatusUnsubscribeAllParams\Channel|value-of<StatusUnsubscribeAllParams\Channel>,
      *   businessUnitID?: int,
      *   verbose?: bool,
      * }|StatusUnsubscribeAllParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ActionResponseWithResultsPublicStatus>
      *
@@ -330,7 +336,7 @@ final class StatusesRawService implements StatusesRawContract
     public function unsubscribeAll(
         string $subscriberIDString,
         array|StatusUnsubscribeAllParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = StatusUnsubscribeAllParams::parseRequest(
             $params,

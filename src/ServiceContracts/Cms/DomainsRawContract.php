@@ -11,12 +11,16 @@ use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface DomainsRawContract
 {
     /**
      * @api
      *
      * @param array<string,mixed>|DomainListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<Domain>>
      *
@@ -24,13 +28,14 @@ interface DomainsRawContract
      */
     public function list(
         array|DomainListParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param string $domainID the unique ID of the domain
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Domain>
      *
@@ -38,6 +43,6 @@ interface DomainsRawContract
      */
     public function get(
         string $domainID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 }

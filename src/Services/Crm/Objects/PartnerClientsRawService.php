@@ -8,6 +8,7 @@ use HubspotSDK\Client;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
+use HubspotSDK\Crm\FilterGroup;
 use HubspotSDK\Crm\Objects\PartnerClients\PartnerClientGetParams;
 use HubspotSDK\Crm\Objects\PartnerClients\PartnerClientListParams;
 use HubspotSDK\Crm\Objects\PartnerClients\PartnerClientSearchParams;
@@ -18,6 +19,10 @@ use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Objects\PartnerClientsRawContract;
 
+/**
+ * @phpstan-import-type FilterGroupShape from \HubspotSDK\Crm\FilterGroup
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class PartnerClientsRawService implements PartnerClientsRawContract
 {
     // @phpstan-ignore-next-line
@@ -29,10 +34,11 @@ final class PartnerClientsRawService implements PartnerClientsRawContract
     /**
      * @api
      *
-     * @param string $partnerClientID Path param:
+     * @param string $partnerClientID Path param
      * @param array{
      *   properties: array<string,string>, idProperty?: string
      * }|PartnerClientUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SimplePublicObject>
      *
@@ -41,7 +47,7 @@ final class PartnerClientsRawService implements PartnerClientsRawContract
     public function update(
         string $partnerClientID,
         array|PartnerClientUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = PartnerClientUpdateParams::parseRequest(
             $params,
@@ -71,6 +77,7 @@ final class PartnerClientsRawService implements PartnerClientsRawContract
      *   properties?: list<string>,
      *   propertiesWithHistory?: list<string>,
      * }|PartnerClientListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<SimplePublicObjectWithAssociations>>
      *
@@ -78,7 +85,7 @@ final class PartnerClientsRawService implements PartnerClientsRawContract
      */
     public function list(
         array|PartnerClientListParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = PartnerClientListParams::parseRequest(
             $params,
@@ -106,6 +113,7 @@ final class PartnerClientsRawService implements PartnerClientsRawContract
      *   properties?: list<string>,
      *   propertiesWithHistory?: list<string>,
      * }|PartnerClientGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SimplePublicObjectWithAssociations>
      *
@@ -114,7 +122,7 @@ final class PartnerClientsRawService implements PartnerClientsRawContract
     public function get(
         string $partnerClientID,
         array|PartnerClientGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = PartnerClientGetParams::parseRequest(
             $params,
@@ -136,12 +144,13 @@ final class PartnerClientsRawService implements PartnerClientsRawContract
      *
      * @param array{
      *   after: string,
-     *   filterGroups: list<array{filters: list<array<string,mixed>>}>,
+     *   filterGroups: list<FilterGroup|FilterGroupShape>,
      *   limit: int,
      *   properties: list<string>,
      *   sorts: list<string>,
      *   query?: string,
      * }|PartnerClientSearchParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CollectionResponseWithTotalSimplePublicObject>
      *
@@ -149,7 +158,7 @@ final class PartnerClientsRawService implements PartnerClientsRawContract
      */
     public function search(
         array|PartnerClientSearchParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = PartnerClientSearchParams::parseRequest(
             $params,

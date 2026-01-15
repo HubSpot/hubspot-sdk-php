@@ -16,6 +16,9 @@ use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface BatchRawContract
 {
     /**
@@ -23,6 +26,7 @@ interface BatchRawContract
      *
      * @param string $tableIDOrName The ID or name of the table
      * @param array<string,mixed>|BatchCloneBatchParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BatchResponseHubDBTableRowV3>
      *
@@ -31,7 +35,7 @@ interface BatchRawContract
     public function cloneBatch(
         string $tableIDOrName,
         array|BatchCloneBatchParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -39,6 +43,7 @@ interface BatchRawContract
      *
      * @param string $tableIDOrName The ID or name of the table
      * @param array<string,mixed>|BatchCreateBatchParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BatchResponseHubDBTableRowV3>
      *
@@ -47,7 +52,7 @@ interface BatchRawContract
     public function createBatch(
         string $tableIDOrName,
         array|BatchCreateBatchParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -55,6 +60,7 @@ interface BatchRawContract
      *
      * @param string $tableIDOrName the ID or name of the table to query
      * @param array<string,mixed>|BatchGetBatchParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BatchResponseHubDBTableRowV3>
      *
@@ -63,7 +69,7 @@ interface BatchRawContract
     public function getBatch(
         string $tableIDOrName,
         array|BatchGetBatchParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -71,6 +77,7 @@ interface BatchRawContract
      *
      * @param string $tableIDOrName The ID or name of the table
      * @param array<string,mixed>|BatchGetDraftBatchParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BatchResponseHubDBTableRowV3>
      *
@@ -79,7 +86,7 @@ interface BatchRawContract
     public function getDraftBatch(
         string $tableIDOrName,
         array|BatchGetDraftBatchParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -87,6 +94,7 @@ interface BatchRawContract
      *
      * @param string $tableIDOrName The ID or name of the table
      * @param array<string,mixed>|BatchPurgeBatchParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -95,7 +103,7 @@ interface BatchRawContract
     public function purgeBatch(
         string $tableIDOrName,
         array|BatchPurgeBatchParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -103,6 +111,7 @@ interface BatchRawContract
      *
      * @param string $tableIDOrName The ID or name of the table
      * @param array<string,mixed>|BatchReplaceBatchParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BatchResponseHubDBTableRowV3>
      *
@@ -111,7 +120,7 @@ interface BatchRawContract
     public function replaceBatch(
         string $tableIDOrName,
         array|BatchReplaceBatchParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -119,6 +128,7 @@ interface BatchRawContract
      *
      * @param string $tableIDOrName The ID or name of the table
      * @param array<string,mixed>|BatchUpdateBatchParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BatchResponseHubDBTableRowV3>
      *
@@ -127,6 +137,6 @@ interface BatchRawContract
     public function updateBatch(
         string $tableIDOrName,
         array|BatchUpdateBatchParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

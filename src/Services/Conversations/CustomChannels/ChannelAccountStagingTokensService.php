@@ -12,6 +12,10 @@ use HubspotSDK\Core\Util;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Conversations\CustomChannels\ChannelAccountStagingTokensContract;
 
+/**
+ * @phpstan-import-type PublicDeliveryIdentifierShape from \HubspotSDK\Conversations\PublicDeliveryIdentifier
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class ChannelAccountStagingTokensService implements ChannelAccountStagingTokensContract
 {
     /**
@@ -34,10 +38,9 @@ final class ChannelAccountStagingTokensService implements ChannelAccountStagingT
      *
      * @param string $accountToken path param: The unique token identifying the channel account staging token to update
      * @param int $channelID path param: The ID of the channel associated with the staging token being updated
-     * @param string $accountName Body param:
-     * @param array{
-     *   type: string, value: string
-     * }|PublicDeliveryIdentifier $deliveryIdentifier Body param:
+     * @param string $accountName Body param
+     * @param PublicDeliveryIdentifier|PublicDeliveryIdentifierShape $deliveryIdentifier Body param
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -45,8 +48,8 @@ final class ChannelAccountStagingTokensService implements ChannelAccountStagingT
         string $accountToken,
         int $channelID,
         string $accountName,
-        array|PublicDeliveryIdentifier $deliveryIdentifier,
-        ?RequestOptions $requestOptions = null,
+        PublicDeliveryIdentifier|array $deliveryIdentifier,
+        RequestOptions|array|null $requestOptions = null,
     ): PublicChannelAccountStagingToken {
         $params = Util::removeNulls(
             [

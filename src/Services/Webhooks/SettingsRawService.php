@@ -13,6 +13,10 @@ use HubspotSDK\Webhooks\Settings\SettingUpdateParams;
 use HubspotSDK\Webhooks\SettingsResponse;
 use HubspotSDK\Webhooks\ThrottlingSettings;
 
+/**
+ * @phpstan-import-type ThrottlingSettingsShape from \HubspotSDK\Webhooks\ThrottlingSettings
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class SettingsRawService implements SettingsRawContract
 {
     // @phpstan-ignore-next-line
@@ -28,9 +32,9 @@ final class SettingsRawService implements SettingsRawContract
      *
      * @param int $appID the ID of the app
      * @param array{
-     *   targetURL: string,
-     *   throttling: array{maxConcurrentRequests: int}|ThrottlingSettings,
+     *   targetURL: string, throttling: ThrottlingSettings|ThrottlingSettingsShape
      * }|SettingUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SettingsResponse>
      *
@@ -39,7 +43,7 @@ final class SettingsRawService implements SettingsRawContract
     public function update(
         int $appID,
         array|SettingUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = SettingUpdateParams::parseRequest(
             $params,
@@ -62,6 +66,7 @@ final class SettingsRawService implements SettingsRawContract
      * Retrieve the webhook settings for the specified app, including the webhook’s target URL, throttle configuration, and create/update date.
      *
      * @param int $appID the ID of the app
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SettingsResponse>
      *
@@ -69,7 +74,7 @@ final class SettingsRawService implements SettingsRawContract
      */
     public function list(
         int $appID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -86,6 +91,7 @@ final class SettingsRawService implements SettingsRawContract
      * Delete the webhook settings for the specified app. Event subscriptions will not be deleted, but will be paused until another webhook is created.
      *
      * @param int $appID the ID of the app
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -93,7 +99,7 @@ final class SettingsRawService implements SettingsRawContract
      */
     public function delete(
         int $appID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(

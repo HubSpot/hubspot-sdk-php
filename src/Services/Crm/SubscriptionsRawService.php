@@ -12,6 +12,9 @@ use HubspotSDK\Crm\Subscriptions\SubscriptionUnpauseParams;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\SubscriptionsRawContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class SubscriptionsRawService implements SubscriptionsRawContract
 {
     // @phpstan-ignore-next-line
@@ -26,6 +29,7 @@ final class SubscriptionsRawService implements SubscriptionsRawContract
      * Cancel an active commerce subscription using the subscription ID.
      *
      * @param int $objectID subscription CRM id
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<string>
      *
@@ -33,7 +37,7 @@ final class SubscriptionsRawService implements SubscriptionsRawContract
      */
     public function cancel(
         int $objectID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -54,6 +58,7 @@ final class SubscriptionsRawService implements SubscriptionsRawContract
      *
      * @param int $objectID subscription CRM id
      * @param array{pauseReason?: string}|SubscriptionPauseParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<string>
      *
@@ -62,7 +67,7 @@ final class SubscriptionsRawService implements SubscriptionsRawContract
     public function pause(
         int $objectID,
         array|SubscriptionPauseParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = SubscriptionPauseParams::parseRequest(
             $params,
@@ -89,6 +94,7 @@ final class SubscriptionsRawService implements SubscriptionsRawContract
      *
      * @param int $objectID subscription CRM id
      * @param array{proposedNextBillingDate: int}|SubscriptionUnpauseParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<string>
      *
@@ -97,7 +103,7 @@ final class SubscriptionsRawService implements SubscriptionsRawContract
     public function unpause(
         int $objectID,
         array|SubscriptionUnpauseParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = SubscriptionUnpauseParams::parseRequest(
             $params,

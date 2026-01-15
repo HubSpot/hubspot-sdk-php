@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-import-type AssociationLabelLimitResponseShape from \HubspotSDK\Crm\Limits\AssociationLabelLimitResponse
  *
  * @phpstan-type CollectionResponseAssociationLabelLimitResponseNoPagingShape = array{
- *   results: list<AssociationLabelLimitResponseShape>
+ *   results: list<AssociationLabelLimitResponse|AssociationLabelLimitResponseShape>,
  * }
  */
 final class CollectionResponseAssociationLabelLimitResponseNoPaging implements BaseModel
@@ -48,7 +48,7 @@ final class CollectionResponseAssociationLabelLimitResponseNoPaging implements B
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<AssociationLabelLimitResponseShape> $results
+     * @param list<AssociationLabelLimitResponse|AssociationLabelLimitResponseShape> $results
      */
     public static function with(array $results): self
     {
@@ -60,7 +60,7 @@ final class CollectionResponseAssociationLabelLimitResponseNoPaging implements B
     }
 
     /**
-     * @param list<AssociationLabelLimitResponseShape> $results
+     * @param list<AssociationLabelLimitResponse|AssociationLabelLimitResponseShape> $results
      */
     public function withResults(array $results): self
     {

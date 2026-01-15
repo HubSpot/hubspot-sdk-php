@@ -7,6 +7,7 @@ namespace HubspotSDK\Services\Crm\FeatureFlags;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Crm\FeatureFlags\BatchPortalEntry;
 use HubspotSDK\Crm\FeatureFlags\PortalFlagStateBatchResponse;
 use HubspotSDK\Crm\FeatureFlags\PortalFlagStateResponse;
 use HubspotSDK\Crm\FeatureFlags\Portals\PortalBatchDeleteParams;
@@ -18,6 +19,10 @@ use HubspotSDK\Crm\FeatureFlags\Portals\PortalUpdateParams\FlagState;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\FeatureFlags\PortalsRawContract;
 
+/**
+ * @phpstan-import-type BatchPortalEntryShape from \HubspotSDK\Crm\FeatureFlags\BatchPortalEntry
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class PortalsRawService implements PortalsRawContract
 {
     // @phpstan-ignore-next-line
@@ -33,8 +38,9 @@ final class PortalsRawService implements PortalsRawContract
      *
      * @param int $portalID path param: The ID of the account that installed the app
      * @param array{
-     *   appID: int, flagName: string, flagState: 'ABSENT'|'OFF'|'ON'|FlagState
+     *   appID: int, flagName: string, flagState: FlagState|value-of<FlagState>
      * }|PortalUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PortalFlagStateResponse>
      *
@@ -43,7 +49,7 @@ final class PortalsRawService implements PortalsRawContract
     public function update(
         int $portalID,
         array|PortalUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = PortalUpdateParams::parseRequest(
             $params,
@@ -76,6 +82,7 @@ final class PortalsRawService implements PortalsRawContract
      *
      * @param int $portalID the ID of the account that installed the app
      * @param array{appID: int, flagName: string}|PortalDeleteParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PortalFlagStateResponse>
      *
@@ -84,7 +91,7 @@ final class PortalsRawService implements PortalsRawContract
     public function delete(
         int $portalID,
         array|PortalDeleteParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = PortalDeleteParams::parseRequest(
             $params,
@@ -116,6 +123,7 @@ final class PortalsRawService implements PortalsRawContract
      *
      * @param string $flagName path param: The name of the flag, either `hs-release-app-cards` or `hs-hide-crm-cards`
      * @param array{appID: int, portalIDs: list<int>}|PortalBatchDeleteParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PortalFlagStateBatchResponse>
      *
@@ -124,7 +132,7 @@ final class PortalsRawService implements PortalsRawContract
     public function batchDelete(
         string $flagName,
         array|PortalBatchDeleteParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = PortalBatchDeleteParams::parseRequest(
             $params,
@@ -154,12 +162,9 @@ final class PortalsRawService implements PortalsRawContract
      *
      * @param string $flagName path param: The name of the flag, either `hs-release-app-cards` or `hs-hide-crm-cards`
      * @param array{
-     *   appID: int,
-     *   portalStates: list<array{
-     *     flagState: 'ABSENT'|'OFF'|'ON'|\HubspotSDK\Crm\FeatureFlags\BatchPortalEntry\FlagState,
-     *     portalID: int,
-     *   }>,
+     *   appID: int, portalStates: list<BatchPortalEntry|BatchPortalEntryShape>
      * }|PortalBatchUpsertParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PortalFlagStateBatchResponse>
      *
@@ -168,7 +173,7 @@ final class PortalsRawService implements PortalsRawContract
     public function batchUpsert(
         string $flagName,
         array|PortalBatchUpsertParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = PortalBatchUpsertParams::parseRequest(
             $params,
@@ -198,6 +203,7 @@ final class PortalsRawService implements PortalsRawContract
      *
      * @param int $portalID the ID of the account that installed the app
      * @param array{appID: int, flagName: string}|PortalGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PortalFlagStateResponse>
      *
@@ -206,7 +212,7 @@ final class PortalsRawService implements PortalsRawContract
     public function get(
         int $portalID,
         array|PortalGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = PortalGetParams::parseRequest(
             $params,

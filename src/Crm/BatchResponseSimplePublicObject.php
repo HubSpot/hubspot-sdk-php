@@ -19,10 +19,10 @@ use HubspotSDK\StandardError;
  *
  * @phpstan-type BatchResponseSimplePublicObjectShape = array{
  *   completedAt: \DateTimeInterface,
- *   results: list<SimplePublicObjectShape>,
+ *   results: list<SimplePublicObject|SimplePublicObjectShape>,
  *   startedAt: \DateTimeInterface,
  *   status: Status|value-of<Status>,
- *   errors?: list<StandardErrorShape>|null,
+ *   errors?: list<StandardError|StandardErrorShape>|null,
  *   links?: array<string,string>|null,
  *   numErrors?: int|null,
  *   requestedAt?: \DateTimeInterface|null,
@@ -111,9 +111,9 @@ final class BatchResponseSimplePublicObject implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<SimplePublicObjectShape> $results
+     * @param list<SimplePublicObject|SimplePublicObjectShape> $results
      * @param Status|value-of<Status> $status
-     * @param list<StandardErrorShape>|null $errors
+     * @param list<StandardError|StandardErrorShape>|null $errors
      * @param array<string,string>|null $links
      */
     public static function with(
@@ -153,7 +153,7 @@ final class BatchResponseSimplePublicObject implements BaseModel
     }
 
     /**
-     * @param list<SimplePublicObjectShape> $results
+     * @param list<SimplePublicObject|SimplePublicObjectShape> $results
      */
     public function withResults(array $results): self
     {
@@ -188,7 +188,7 @@ final class BatchResponseSimplePublicObject implements BaseModel
     }
 
     /**
-     * @param list<StandardErrorShape> $errors
+     * @param list<StandardError|StandardErrorShape> $errors
      */
     public function withErrors(array $errors): self
     {

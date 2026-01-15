@@ -15,7 +15,7 @@ use HubspotSDK\ForwardPaging;
  * @phpstan-import-type ForwardPagingShape from \HubspotSDK\ForwardPaging
  *
  * @phpstan-type CollectionResponsePublicOwnerForwardPagingShape = array{
- *   results: list<PublicOwnerShape>,
+ *   results: list<PublicOwner|PublicOwnerShape>,
  *   paging?: null|ForwardPaging|ForwardPagingShape,
  * }
  */
@@ -55,7 +55,7 @@ final class CollectionResponsePublicOwnerForwardPaging implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicOwnerShape> $results
+     * @param list<PublicOwner|PublicOwnerShape> $results
      * @param ForwardPaging|ForwardPagingShape|null $paging
      */
     public static function with(
@@ -72,7 +72,7 @@ final class CollectionResponsePublicOwnerForwardPaging implements BaseModel
     }
 
     /**
-     * @param list<PublicOwnerShape> $results
+     * @param list<PublicOwner|PublicOwnerShape> $results
      */
     public function withResults(array $results): self
     {

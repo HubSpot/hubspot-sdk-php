@@ -14,8 +14,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @phpstan-type PublicCampaignWithAssetsShape = array{
  *   id: string,
- *   assets: array<string,CollectionResponsePublicCampaignAssetShape>,
- *   businessUnits: list<PublicBusinessUnitShape>,
+ *   assets: array<string,CollectionResponsePublicCampaignAsset|CollectionResponsePublicCampaignAssetShape>,
+ *   businessUnits: list<PublicBusinessUnit|PublicBusinessUnitShape>,
  *   createdAt: \DateTimeInterface,
  *   properties: array<string,string>,
  *   updatedAt: \DateTimeInterface,
@@ -84,8 +84,8 @@ final class PublicCampaignWithAssets implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string,CollectionResponsePublicCampaignAssetShape> $assets
-     * @param list<PublicBusinessUnitShape> $businessUnits
+     * @param array<string,CollectionResponsePublicCampaignAsset|CollectionResponsePublicCampaignAssetShape> $assets
+     * @param list<PublicBusinessUnit|PublicBusinessUnitShape> $businessUnits
      * @param array<string,string> $properties
      */
     public static function with(
@@ -117,7 +117,7 @@ final class PublicCampaignWithAssets implements BaseModel
     }
 
     /**
-     * @param array<string,CollectionResponsePublicCampaignAssetShape> $assets
+     * @param array<string,CollectionResponsePublicCampaignAsset|CollectionResponsePublicCampaignAssetShape> $assets
      */
     public function withAssets(array $assets): self
     {
@@ -128,7 +128,7 @@ final class PublicCampaignWithAssets implements BaseModel
     }
 
     /**
-     * @param list<PublicBusinessUnitShape> $businessUnits
+     * @param list<PublicBusinessUnit|PublicBusinessUnitShape> $businessUnits
      */
     public function withBusinessUnits(array $businessUnits): self
     {

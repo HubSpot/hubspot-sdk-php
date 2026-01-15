@@ -15,8 +15,23 @@ use HubspotSDK\Crm\Lists\ListUpdateResponse;
 use HubspotSDK\Crm\Lists\PublicListConversionResponse;
 use HubspotSDK\Crm\Lists\PublicListPermissions;
 use HubspotSDK\Crm\Lists\PublicMembershipSettings;
+use HubspotSDK\PublicAndFilterBranch;
+use HubspotSDK\PublicAssociationFilterBranch;
+use HubspotSDK\PublicNotAllFilterBranch;
+use HubspotSDK\PublicNotAnyFilterBranch;
+use HubspotSDK\PublicOrFilterBranch;
+use HubspotSDK\PublicPropertyAssociationFilterBranch;
+use HubspotSDK\PublicRestrictedFilterBranch;
+use HubspotSDK\PublicUnifiedEventsFilterBranch;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type FilterBranchShape from \HubspotSDK\Crm\Lists\ListCreateParams\FilterBranch
+ * @phpstan-import-type PublicListPermissionsShape from \HubspotSDK\Crm\Lists\PublicListPermissions
+ * @phpstan-import-type PublicMembershipSettingsShape from \HubspotSDK\Crm\Lists\PublicMembershipSettings
+ * @phpstan-import-type FilterBranchShape from \HubspotSDK\Crm\Lists\ListUpdateFiltersParams\FilterBranch as FilterBranchShape1
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface ListsContract
 {
     /**
@@ -26,14 +41,11 @@ interface ListsContract
      * @param string $objectTypeID the object type ID of the type of objects that the list will store
      * @param string $processingType The processing type of the list. One of: `SNAPSHOT`, `MANUAL`, or `DYNAMIC`.
      * @param array<string,string> $customProperties The list of custom properties to tie to the list. Custom property name is the key, the value is the value.
-     * @param array<string,mixed> $filterBranch
+     * @param FilterBranchShape $filterBranch
      * @param int $listFolderID The ID of the folder that the list should be created in. If left blank, then the list will be created in the root of the list folder structure.
-     * @param array{
-     *   teamsWithEditAccess: list<int>, usersWithEditAccess: list<int>
-     * }|PublicListPermissions $listPermissions
-     * @param array{
-     *   includeUnassigned?: bool, membershipTeamID?: int
-     * }|PublicMembershipSettings $membershipSettings
+     * @param PublicListPermissions|PublicListPermissionsShape $listPermissions
+     * @param PublicMembershipSettings|PublicMembershipSettingsShape $membershipSettings
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -42,11 +54,11 @@ interface ListsContract
         string $objectTypeID,
         string $processingType,
         ?array $customProperties = null,
-        ?array $filterBranch = null,
+        PublicOrFilterBranch|array|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch|null $filterBranch = null,
         ?int $listFolderID = null,
-        array|PublicListPermissions|null $listPermissions = null,
-        array|PublicMembershipSettings|null $membershipSettings = null,
-        ?RequestOptions $requestOptions = null,
+        PublicListPermissions|array|null $listPermissions = null,
+        PublicMembershipSettings|array|null $membershipSettings = null,
+        RequestOptions|array|null $requestOptions = null,
     ): ListCreateResponse;
 
     /**
@@ -54,37 +66,40 @@ interface ListsContract
      *
      * @param bool $includeFilters A flag indicating whether or not the response object list definitions should include a filter branch definition. By default, object list definitions will not have their filter branch definitions included in the response.
      * @param list<string> $listIDs the **ILS IDs** of the lists to fetch
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function list(
         bool $includeFilters = false,
         ?array $listIDs = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): ListsByIDResponse;
 
     /**
      * @api
      *
      * @param string $listID the **ILS ID** of the list to delete
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function delete(
         string $listID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): mixed;
 
     /**
      * @api
      *
      * @param string $listID the ID of the list that you want to cancel the conversion for
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function deleteScheduleConversion(
         string $listID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): mixed;
 
     /**
@@ -92,13 +107,14 @@ interface ListsContract
      *
      * @param string $listID the **ILS ID** of the list to fetch
      * @param bool $includeFilters A flag indicating whether or not the response object list definition should include a filter branch definition. By default, object list definitions will not have their filter branch definitions included in the response.
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function get(
         string $listID,
         bool $includeFilters = false,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): ListFetchResponse;
 
     /**
@@ -107,6 +123,7 @@ interface ListsContract
      * @param string $listName Path param: The name of the list to fetch. This is **not** case sensitive.
      * @param string $objectTypeID Path param: The object type ID of the object types stored by the list to fetch. For example, `0-1` for a `CONTACT` list.
      * @param bool $includeFilters Query param: A flag indicating whether or not the response object list definition should include a filter branch definition. By default, object list definitions will not have their filter branch definitions included in the response.
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -114,39 +131,42 @@ interface ListsContract
         string $listName,
         string $objectTypeID,
         bool $includeFilters = false,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): ListFetchResponse;
 
     /**
      * @api
      *
      * @param string $listID the ID of the list to schedule the conversion for
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function getScheduleConversion(
         string $listID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): PublicListConversionResponse;
 
     /**
      * @api
      *
      * @param string $listID the **ILS ID** of the list to restore
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function restore(
         string $listID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): mixed;
 
     /**
      * @api
      *
      * @param string $listID the ID of the list to schedule the conversion for
-     * @param 'DAY'|'MONTH'|'WEEK'|TimeUnit $timeUnit
-     * @param 'INACTIVITY'|ConversionType $conversionType
+     * @param TimeUnit|value-of<TimeUnit> $timeUnit
+     * @param ConversionType|value-of<ConversionType> $conversionType
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -156,9 +176,9 @@ interface ListsContract
         int $month,
         int $year,
         int $offset,
-        string|TimeUnit $timeUnit,
-        string|ConversionType $conversionType = 'INACTIVITY',
-        ?RequestOptions $requestOptions = null,
+        TimeUnit|string $timeUnit,
+        ConversionType|string $conversionType = 'INACTIVITY',
+        RequestOptions|array|null $requestOptions = null,
     ): PublicListConversionResponse;
 
     /**
@@ -178,6 +198,7 @@ interface ListsContract
      *
      * Valid `processingTypes` are: `MANUAL`, `SNAPSHOT`, or `DYNAMIC`.
      * @param string $query The `query` that will be used to search for lists by list name. If no `query` is provided, then the results will include all lists.
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -189,23 +210,24 @@ interface ListsContract
         ?array $processingTypes = null,
         ?string $query = null,
         ?string $sort = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): ListSearchResponse;
 
     /**
      * @api
      *
      * @param string $listID path param: The **ILS ID** of the list to update
-     * @param array<string,mixed> $filterBranch Body param:
+     * @param FilterBranchShape1 $filterBranch Body param
      * @param bool $enrollObjectsInWorkflows query param: A flag indicating whether or not the memberships added to the list as a result of the filter change should be enrolled in workflows that are relevant to this list
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function updateFilters(
         string $listID,
-        array $filterBranch,
+        PublicOrFilterBranch|array|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch $filterBranch,
         bool $enrollObjectsInWorkflows = false,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): ListUpdateResponse;
 
     /**
@@ -214,6 +236,7 @@ interface ListsContract
      * @param string $listID the **ILS ID** of the list to update
      * @param bool $includeFilters A flag indicating whether or not the response object list definition should include a filter branch definition. By default, object list definitions will not have their filter branch definitions included in the response.
      * @param string $listName the name to update the list to
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -221,6 +244,6 @@ interface ListsContract
         string $listID,
         bool $includeFilters = false,
         ?string $listName = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): ListUpdateResponse;
 }

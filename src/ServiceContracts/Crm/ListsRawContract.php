@@ -22,12 +22,16 @@ use HubspotSDK\Crm\Lists\ListUpdateResponse;
 use HubspotSDK\Crm\Lists\PublicListConversionResponse;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface ListsRawContract
 {
     /**
      * @api
      *
      * @param array<string,mixed>|ListCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ListCreateResponse>
      *
@@ -35,13 +39,14 @@ interface ListsRawContract
      */
     public function create(
         array|ListCreateParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|ListListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ListsByIDResponse>
      *
@@ -49,13 +54,14 @@ interface ListsRawContract
      */
     public function list(
         array|ListListParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param string $listID the **ILS ID** of the list to delete
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -63,13 +69,14 @@ interface ListsRawContract
      */
     public function delete(
         string $listID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param string $listID the ID of the list that you want to cancel the conversion for
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -77,7 +84,7 @@ interface ListsRawContract
      */
     public function deleteScheduleConversion(
         string $listID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 
     /**
@@ -85,6 +92,7 @@ interface ListsRawContract
      *
      * @param string $listID the **ILS ID** of the list to fetch
      * @param array<string,mixed>|ListGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ListFetchResponse>
      *
@@ -93,7 +101,7 @@ interface ListsRawContract
     public function get(
         string $listID,
         array|ListGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -101,6 +109,7 @@ interface ListsRawContract
      *
      * @param string $listName Path param: The name of the list to fetch. This is **not** case sensitive.
      * @param array<string,mixed>|ListGetByObjectTypeIDAndNameParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ListFetchResponse>
      *
@@ -109,13 +118,14 @@ interface ListsRawContract
     public function getByObjectTypeIDAndName(
         string $listName,
         array|ListGetByObjectTypeIDAndNameParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param string $listID the ID of the list to schedule the conversion for
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicListConversionResponse>
      *
@@ -123,13 +133,14 @@ interface ListsRawContract
      */
     public function getScheduleConversion(
         string $listID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param string $listID the **ILS ID** of the list to restore
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -137,7 +148,7 @@ interface ListsRawContract
      */
     public function restore(
         string $listID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 
     /**
@@ -145,6 +156,7 @@ interface ListsRawContract
      *
      * @param string $listID the ID of the list to schedule the conversion for
      * @param array<string,mixed>|ListScheduleConversionParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicListConversionResponse>
      *
@@ -153,13 +165,14 @@ interface ListsRawContract
     public function scheduleConversion(
         string $listID,
         array|ListScheduleConversionParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|ListSearchParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ListSearchResponse>
      *
@@ -167,7 +180,7 @@ interface ListsRawContract
      */
     public function search(
         array|ListSearchParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -175,6 +188,7 @@ interface ListsRawContract
      *
      * @param string $listID path param: The **ILS ID** of the list to update
      * @param array<string,mixed>|ListUpdateFiltersParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ListUpdateResponse>
      *
@@ -183,7 +197,7 @@ interface ListsRawContract
     public function updateFilters(
         string $listID,
         array|ListUpdateFiltersParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -191,6 +205,7 @@ interface ListsRawContract
      *
      * @param string $listID the **ILS ID** of the list to update
      * @param array<string,mixed>|ListUpdateNameParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ListUpdateResponse>
      *
@@ -199,6 +214,6 @@ interface ListsRawContract
     public function updateName(
         string $listID,
         array|ListUpdateNameParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

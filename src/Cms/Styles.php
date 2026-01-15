@@ -23,7 +23,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   forceFullWidthSection: bool,
  *   maxWidthSectionCentering: int,
  *   verticalAlignment: string,
- *   breakpointStyles?: array<string,BreakpointStylesShape>|null,
+ *   breakpointStyles?: array<string,BreakpointStyles|BreakpointStylesShape>|null,
  * }
  */
 final class Styles implements BaseModel
@@ -101,7 +101,7 @@ final class Styles implements BaseModel
      * @param RgbaColor|RgbaColorShape $backgroundColor
      * @param Gradient|GradientShape $backgroundGradient
      * @param BackgroundImage|BackgroundImageShape $backgroundImage
-     * @param array<string,BreakpointStylesShape>|null $breakpointStyles
+     * @param array<string,BreakpointStyles|BreakpointStylesShape>|null $breakpointStyles
      */
     public static function with(
         RgbaColor|array $backgroundColor,
@@ -199,7 +199,7 @@ final class Styles implements BaseModel
     }
 
     /**
-     * @param array<string,BreakpointStylesShape> $breakpointStyles
+     * @param array<string,BreakpointStyles|BreakpointStylesShape> $breakpointStyles
      */
     public function withBreakpointStyles(array $breakpointStyles): self
     {

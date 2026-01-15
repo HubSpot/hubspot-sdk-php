@@ -12,6 +12,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type AttachmentVariants from \HubspotSDK\Conversations\PublicComment\Attachment
  * @phpstan-import-type AttachmentShape from \HubspotSDK\Conversations\PublicComment\Attachment
  * @phpstan-import-type PublicClientShape from \HubspotSDK\Conversations\PublicClient
  * @phpstan-import-type PublicRecipientShape from \HubspotSDK\Conversations\PublicRecipient
@@ -25,9 +26,9 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   conversationsThreadID: string,
  *   createdAt: \DateTimeInterface,
  *   createdBy: string,
- *   recipients: list<PublicRecipientShape>,
+ *   recipients: list<PublicRecipient|PublicRecipientShape>,
  *   richText: string,
- *   senders: list<PublicSenderShape>,
+ *   senders: list<PublicSender|PublicSenderShape>,
  *   text: string,
  *   type: Type|value-of<Type>,
  *   updatedAt?: \DateTimeInterface|null,
@@ -44,9 +45,7 @@ final class PublicComment implements BaseModel
     #[Required]
     public bool $archived;
 
-    /**
-     * @var list<PublicFile|PublicLocation|PublicContact|PublicUnsupportedContent|PublicMessageHeader|PublicQuickReplies|PublicWhatsAppTemplateMetadata|PublicSocialMetadataAttachment> $attachments
-     */
+    /** @var list<AttachmentVariants> $attachments */
     #[Required(list: Attachment::class)]
     public array $attachments;
 
@@ -134,8 +133,8 @@ final class PublicComment implements BaseModel
      *
      * @param list<AttachmentShape> $attachments
      * @param PublicClient|PublicClientShape $client
-     * @param list<PublicRecipientShape> $recipients
-     * @param list<PublicSenderShape> $senders
+     * @param list<PublicRecipient|PublicRecipientShape> $recipients
+     * @param list<PublicSender|PublicSenderShape> $senders
      * @param Type|value-of<Type> $type
      */
     public static function with(
@@ -237,7 +236,7 @@ final class PublicComment implements BaseModel
     }
 
     /**
-     * @param list<PublicRecipientShape> $recipients
+     * @param list<PublicRecipient|PublicRecipientShape> $recipients
      */
     public function withRecipients(array $recipients): self
     {
@@ -256,7 +255,7 @@ final class PublicComment implements BaseModel
     }
 
     /**
-     * @param list<PublicSenderShape> $senders
+     * @param list<PublicSender|PublicSenderShape> $senders
      */
     public function withSenders(array $senders): self
     {

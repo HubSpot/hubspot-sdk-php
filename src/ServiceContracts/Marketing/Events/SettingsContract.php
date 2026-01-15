@@ -8,6 +8,9 @@ use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Marketing\Events\EventDetailSettings;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface SettingsContract
 {
     /**
@@ -15,24 +18,26 @@ interface SettingsContract
      *
      * @param int $appID the id of the application to update the settings for
      * @param string $eventDetailsURL The url that will be used to fetch marketing event details by id. Must contain a `%s` character sequence that will be substituted with the event id. For example: `https://my.event.app/events/%s`
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function createOrUpdate(
         int $appID,
         string $eventDetailsURL,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): EventDetailSettings;
 
     /**
      * @api
      *
      * @param int $appID the id of the application to retrieve the settings for
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function get(
         int $appID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): EventDetailSettings;
 }

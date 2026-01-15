@@ -14,6 +14,9 @@ use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\ImportsContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class ImportsService implements ImportsContract
 {
     /**
@@ -34,12 +37,14 @@ final class ImportsService implements ImportsContract
      *
      * Begins importing data from the specified file resources. This uploads the corresponding file and uses the import request object to convert rows in the files to objects.
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @throws APIException
      */
     public function create(
         ?string $files = null,
         ?string $importRequest = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): PublicImportResponse {
         $params = Util::removeNulls(
             ['files' => $files, 'importRequest' => $importRequest]
@@ -58,6 +63,7 @@ final class ImportsService implements ImportsContract
      *
      * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
      * @param int $limit the maximum number of results to display per page
+     * @param RequestOpts|null $requestOptions
      *
      * @return Page<PublicImportResponse>
      *
@@ -67,7 +73,7 @@ final class ImportsService implements ImportsContract
         ?string $after = null,
         ?string $before = null,
         ?int $limit = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): Page {
         $params = Util::removeNulls(
             ['after' => $after, 'before' => $before, 'limit' => $limit]
@@ -84,11 +90,13 @@ final class ImportsService implements ImportsContract
      *
      * This allows a developer to cancel an active import.
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @throws APIException
      */
     public function cancel(
         int $importID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): ActionResponse {
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->cancel($importID, requestOptions: $requestOptions);
@@ -101,11 +109,13 @@ final class ImportsService implements ImportsContract
      *
      * A complete summary of an import record, including any updates.
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @throws APIException
      */
     public function get(
         int $importID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): PublicImportResponse {
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->get($importID, requestOptions: $requestOptions);
@@ -120,6 +130,7 @@ final class ImportsService implements ImportsContract
      * @param bool $includeErrorMessage set to True to receive a message explaining the error
      * @param bool $includeRowData set to True to receive the data values for the errored row
      * @param int $limit the maximum number of results to display per page
+     * @param RequestOpts|null $requestOptions
      *
      * @return Page<PublicImportError>
      *
@@ -131,7 +142,7 @@ final class ImportsService implements ImportsContract
         ?bool $includeErrorMessage = null,
         ?bool $includeRowData = null,
         ?int $limit = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): Page {
         $params = Util::removeNulls(
             [

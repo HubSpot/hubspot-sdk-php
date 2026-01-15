@@ -12,7 +12,8 @@ use HubspotSDK\Core\Conversion\Contracts\ConverterSource;
  * @phpstan-import-type PublicConversationsMessageEggShape from \HubspotSDK\Conversations\PublicConversationsMessageEgg
  * @phpstan-import-type PublicCommentEggShape from \HubspotSDK\Conversations\PublicCommentEgg
  *
- * @phpstan-type PublicMessageEggShape = PublicConversationsMessageEggShape|PublicCommentEggShape
+ * @phpstan-type PublicMessageEggVariants = PublicConversationsMessageEgg|PublicCommentEgg
+ * @phpstan-type PublicMessageEggShape = PublicMessageEggVariants|PublicConversationsMessageEggShape|PublicCommentEggShape
  */
 final class PublicMessageEgg implements ConverterSource
 {

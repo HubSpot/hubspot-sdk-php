@@ -15,7 +15,7 @@ use HubspotSDK\Marketing\Campaigns\BatchResponsePublicCampaign\Status;
  *
  * @phpstan-type BatchResponsePublicCampaignShape = array{
  *   completedAt: \DateTimeInterface,
- *   results: list<PublicCampaignShape>,
+ *   results: list<PublicCampaign|PublicCampaignShape>,
  *   startedAt: \DateTimeInterface,
  *   status: Status|value-of<Status>,
  *   links?: array<string,string>|null,
@@ -78,7 +78,7 @@ final class BatchResponsePublicCampaign implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicCampaignShape> $results
+     * @param list<PublicCampaign|PublicCampaignShape> $results
      * @param Status|value-of<Status> $status
      * @param array<string,string>|null $links
      */
@@ -112,7 +112,7 @@ final class BatchResponsePublicCampaign implements BaseModel
     }
 
     /**
-     * @param list<PublicCampaignShape> $results
+     * @param list<PublicCampaign|PublicCampaignShape> $results
      */
     public function withResults(array $results): self
     {

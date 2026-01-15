@@ -9,9 +9,14 @@ use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\BatchResponseSimplePublicObject;
 use HubspotSDK\Crm\Objects\FeedbackSubmissions\Batch\BatchGetParams;
+use HubspotSDK\Crm\SimplePublicObjectID;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Objects\FeedbackSubmissions\BatchRawContract;
 
+/**
+ * @phpstan-import-type SimplePublicObjectIDShape from \HubspotSDK\Crm\SimplePublicObjectID
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class BatchRawService implements BatchRawContract
 {
     // @phpstan-ignore-next-line
@@ -26,12 +31,13 @@ final class BatchRawService implements BatchRawContract
      * Retrieve records by record ID or include the `idProperty` parameter to retrieve records by a custom unique value property.
      *
      * @param array{
-     *   inputs: list<array{id: string}>,
+     *   inputs: list<SimplePublicObjectID|SimplePublicObjectIDShape>,
      *   properties: list<string>,
      *   propertiesWithHistory: list<string>,
      *   archived?: bool,
      *   idProperty?: string,
      * }|BatchGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BatchResponseSimplePublicObject>
      *
@@ -39,7 +45,7 @@ final class BatchRawService implements BatchRawContract
      */
     public function get(
         array|BatchGetParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = BatchGetParams::parseRequest(
             $params,

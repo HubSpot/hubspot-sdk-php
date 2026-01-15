@@ -17,10 +17,15 @@ use HubspotSDK\Crm\Properties\PropertyDeleteParams;
 use HubspotSDK\Crm\Properties\PropertyGetParams;
 use HubspotSDK\Crm\Properties\PropertyListParams;
 use HubspotSDK\Crm\Properties\PropertyUpdateParams;
+use HubspotSDK\OptionInput;
 use HubspotSDK\Property;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\PropertiesRawContract;
 
+/**
+ * @phpstan-import-type OptionInputShape from \HubspotSDK\OptionInput
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class PropertiesRawService implements PropertiesRawContract
 {
     // @phpstan-ignore-next-line
@@ -39,24 +44,19 @@ final class PropertiesRawService implements PropertiesRawContract
      *   groupName: string,
      *   label: string,
      *   name: string,
-     *   type: 'bool'|'date'|'datetime'|'enumeration'|'number'|'phone_number'|'string'|Type,
+     *   type: Type|value-of<Type>,
      *   calculationFormula?: string,
-     *   dataSensitivity?: 'highly_sensitive'|'non_sensitive'|'sensitive'|DataSensitivity,
+     *   dataSensitivity?: DataSensitivity|value-of<DataSensitivity>,
      *   description?: string,
      *   displayOrder?: int,
      *   externalOptions?: bool,
      *   formField?: bool,
      *   hasUniqueValue?: bool,
      *   hidden?: bool,
-     *   options?: list<array{
-     *     displayOrder: int,
-     *     hidden: bool,
-     *     label: string,
-     *     value: string,
-     *     description?: string,
-     *   }>,
+     *   options?: list<OptionInput|OptionInputShape>,
      *   referencedObjectType?: string,
      * }|PropertyCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CreatedResponseProperty>
      *
@@ -65,7 +65,7 @@ final class PropertiesRawService implements PropertiesRawContract
     public function create(
         string $objectType,
         array|PropertyCreateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = PropertyCreateParams::parseRequest(
             $params,
@@ -87,7 +87,7 @@ final class PropertiesRawService implements PropertiesRawContract
      *
      * Perform a partial update of a property identified by { propertyName }. Provided fields will be overwritten.
      *
-     * @param string $propertyName Path param:
+     * @param string $propertyName Path param
      * @param array{
      *   objectType: string,
      *   calculationFormula?: string,
@@ -98,15 +98,10 @@ final class PropertiesRawService implements PropertiesRawContract
      *   groupName?: string,
      *   hidden?: bool,
      *   label?: string,
-     *   options?: list<array{
-     *     displayOrder: int,
-     *     hidden: bool,
-     *     label: string,
-     *     value: string,
-     *     description?: string,
-     *   }>,
-     *   type?: 'bool'|'date'|'datetime'|'enumeration'|'number'|'phone_number'|'string'|PropertyUpdateParams\Type,
+     *   options?: list<OptionInput|OptionInputShape>,
+     *   type?: PropertyUpdateParams\Type|value-of<PropertyUpdateParams\Type>,
      * }|PropertyUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Property>
      *
@@ -115,7 +110,7 @@ final class PropertiesRawService implements PropertiesRawContract
     public function update(
         string $propertyName,
         array|PropertyUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = PropertyUpdateParams::parseRequest(
             $params,
@@ -141,10 +136,11 @@ final class PropertiesRawService implements PropertiesRawContract
      *
      * @param array{
      *   archived?: bool,
-     *   dataSensitivity?: 'highly_sensitive'|'non_sensitive'|'sensitive'|PropertyListParams\DataSensitivity,
+     *   dataSensitivity?: PropertyListParams\DataSensitivity|value-of<PropertyListParams\DataSensitivity>,
      *   locale?: string,
      *   properties?: string,
      * }|PropertyListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CollectionResponseProperty>
      *
@@ -153,7 +149,7 @@ final class PropertiesRawService implements PropertiesRawContract
     public function list(
         string $objectType,
         array|PropertyListParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = PropertyListParams::parseRequest(
             $params,
@@ -176,6 +172,7 @@ final class PropertiesRawService implements PropertiesRawContract
      * Move a property identified by {propertyName} to the recycling bin.
      *
      * @param array{objectType: string}|PropertyDeleteParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -184,7 +181,7 @@ final class PropertiesRawService implements PropertiesRawContract
     public function delete(
         string $propertyName,
         array|PropertyDeleteParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = PropertyDeleteParams::parseRequest(
             $params,
@@ -207,14 +204,15 @@ final class PropertiesRawService implements PropertiesRawContract
      *
      * Read a property identified by {propertyName}.
      *
-     * @param string $propertyName Path param:
+     * @param string $propertyName Path param
      * @param array{
      *   objectType: string,
      *   archived?: bool,
-     *   dataSensitivity?: 'highly_sensitive'|'non_sensitive'|'sensitive'|PropertyGetParams\DataSensitivity,
+     *   dataSensitivity?: PropertyGetParams\DataSensitivity|value-of<PropertyGetParams\DataSensitivity>,
      *   locale?: string,
      *   properties?: string,
      * }|PropertyGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Property>
      *
@@ -223,7 +221,7 @@ final class PropertiesRawService implements PropertiesRawContract
     public function get(
         string $propertyName,
         array|PropertyGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = PropertyGetParams::parseRequest(
             $params,

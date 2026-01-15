@@ -20,7 +20,7 @@ use HubspotSDK\StandardError;
  *   startedAt: \DateTimeInterface,
  *   status: Status|value-of<Status>,
  *   taskID: string,
- *   errors?: list<StandardErrorShape>|null,
+ *   errors?: list<StandardError|StandardErrorShape>|null,
  *   links?: array<string,string>|null,
  *   numErrors?: int|null,
  *   requestedAt?: \DateTimeInterface|null,
@@ -120,7 +120,7 @@ final class FolderActionResponse implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param Status|value-of<Status> $status
-     * @param list<StandardErrorShape>|null $errors
+     * @param list<StandardError|StandardErrorShape>|null $errors
      * @param array<string,string>|null $links
      * @param Folder|FolderShape|null $result
      */
@@ -200,7 +200,7 @@ final class FolderActionResponse implements BaseModel
     /**
      * Detailed errors resulting from the task.
      *
-     * @param list<StandardErrorShape> $errors
+     * @param list<StandardError|StandardErrorShape> $errors
      */
     public function withErrors(array $errors): self
     {

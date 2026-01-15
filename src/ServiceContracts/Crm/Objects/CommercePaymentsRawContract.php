@@ -18,12 +18,16 @@ use HubspotSDK\Crm\SimplePublicObjectWithAssociations;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface CommercePaymentsRawContract
 {
     /**
      * @api
      *
      * @param array<string,mixed>|CommercePaymentCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CreatedResponseSimplePublicObject>
      *
@@ -31,14 +35,15 @@ interface CommercePaymentsRawContract
      */
     public function create(
         array|CommercePaymentCreateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
-     * @param string $commercePaymentID Path param:
+     * @param string $commercePaymentID Path param
      * @param array<string,mixed>|CommercePaymentUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SimplePublicObject>
      *
@@ -47,13 +52,14 @@ interface CommercePaymentsRawContract
     public function update(
         string $commercePaymentID,
         array|CommercePaymentUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|CommercePaymentListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<SimplePublicObjectWithAssociations>>
      *
@@ -61,11 +67,13 @@ interface CommercePaymentsRawContract
      */
     public function list(
         array|CommercePaymentListParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
+     *
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -73,13 +81,14 @@ interface CommercePaymentsRawContract
      */
     public function delete(
         string $commercePaymentID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|CommercePaymentGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SimplePublicObjectWithAssociations>
      *
@@ -88,13 +97,14 @@ interface CommercePaymentsRawContract
     public function get(
         string $commercePaymentID,
         array|CommercePaymentGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|CommercePaymentSearchParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CollectionResponseWithTotalSimplePublicObject>
      *
@@ -102,6 +112,6 @@ interface CommercePaymentsRawContract
      */
     public function search(
         array|CommercePaymentSearchParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

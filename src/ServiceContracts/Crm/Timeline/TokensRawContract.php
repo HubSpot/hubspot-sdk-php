@@ -12,6 +12,9 @@ use HubspotSDK\Crm\Timeline\Tokens\TokenDeleteParams;
 use HubspotSDK\Crm\Timeline\Tokens\TokenUpdateParams;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface TokensRawContract
 {
     /**
@@ -19,6 +22,7 @@ interface TokensRawContract
      *
      * @param string $eventTemplateID path param: The event template ID
      * @param array<string,mixed>|TokenCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<TimelineEventTemplateToken>
      *
@@ -27,7 +31,7 @@ interface TokensRawContract
     public function create(
         string $eventTemplateID,
         array|TokenCreateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -35,6 +39,7 @@ interface TokensRawContract
      *
      * @param string $tokenName path param: The token name
      * @param array<string,mixed>|TokenUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<TimelineEventTemplateToken>
      *
@@ -43,7 +48,7 @@ interface TokensRawContract
     public function update(
         string $tokenName,
         array|TokenUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -51,6 +56,7 @@ interface TokensRawContract
      *
      * @param string $tokenName the token name
      * @param array<string,mixed>|TokenDeleteParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -59,6 +65,6 @@ interface TokensRawContract
     public function delete(
         string $tokenName,
         array|TokenDeleteParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

@@ -13,6 +13,9 @@ use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Cms\SourceCodeContract;
 use HubspotSDK\TaskLocator;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class SourceCodeService implements SourceCodeContract
 {
     /**
@@ -37,7 +40,8 @@ final class SourceCodeService implements SourceCodeContract
      *
      * @param string $filePath path param: The file system location of the file
      * @param string $environment path param: The environment of the file ("draft" or "published")
-     * @param string $file Body param:
+     * @param string $file Body param
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -45,7 +49,7 @@ final class SourceCodeService implements SourceCodeContract
         string $filePath,
         string $environment,
         ?string $file = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): AssetFileMetadata {
         $params = Util::removeNulls(
             ['environment' => $environment, 'file' => $file]
@@ -64,13 +68,14 @@ final class SourceCodeService implements SourceCodeContract
      *
      * @param string $filePath the file system location of the file
      * @param string $environment the environment of the file ("draft" or "published")
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function delete(
         string $filePath,
         string $environment,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): mixed {
         $params = Util::removeNulls(['environment' => $environment]);
 
@@ -85,11 +90,13 @@ final class SourceCodeService implements SourceCodeContract
      *
      * Extract a zip file in the developer file system. Extraction status can be checked with the `/extract/async/tasks/taskId/status` endpoint below.
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @throws APIException
      */
     public function extractAsync(
         string $path,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): TaskLocator {
         $params = Util::removeNulls(['path' => $path]);
 
@@ -106,13 +113,14 @@ final class SourceCodeService implements SourceCodeContract
      *
      * @param string $filePath the file system location of the file
      * @param string $environment the environment of the file ("draft" or "published")
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function get(
         string $filePath,
         string $environment,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): string {
         $params = Util::removeNulls(['environment' => $environment]);
 
@@ -128,12 +136,13 @@ final class SourceCodeService implements SourceCodeContract
      * Get the status of an extraction by the `taskId` returned from the initial `extract/async` request.
      *
      * @param int $taskID the extraction task ID returned by the initial `extract/async` request
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function getExtractionStatus(
         int $taskID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): ActionResponse {
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->getExtractionStatus($taskID, requestOptions: $requestOptions);
@@ -148,7 +157,8 @@ final class SourceCodeService implements SourceCodeContract
      *
      * @param string $filePath path param: The file system location of the file
      * @param string $environment path param: The environment of the file ("draft" or "published")
-     * @param string $properties Query param:
+     * @param string $properties Query param
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -156,7 +166,7 @@ final class SourceCodeService implements SourceCodeContract
         string $filePath,
         string $environment,
         ?string $properties = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): AssetFileMetadata {
         $params = Util::removeNulls(
             ['environment' => $environment, 'properties' => $properties]
@@ -175,7 +185,8 @@ final class SourceCodeService implements SourceCodeContract
      *
      * @param string $filePath path param: The file system location of the file
      * @param string $environment path param: The environment of the file ("draft" or "published")
-     * @param string $file Body param:
+     * @param string $file Body param
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -183,7 +194,7 @@ final class SourceCodeService implements SourceCodeContract
         string $filePath,
         string $environment,
         ?string $file = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): AssetFileMetadata {
         $params = Util::removeNulls(
             ['environment' => $environment, 'file' => $file]
@@ -201,8 +212,9 @@ final class SourceCodeService implements SourceCodeContract
      * Validates the file contents passed to the endpoint given a specified path and environment. Accepts multipart/form-data content type.
      *
      * @param string $filePath path param: The file system location of the file
-     * @param string $environment Path param:
-     * @param string $file Body param:
+     * @param string $environment Path param
+     * @param string $file Body param
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -210,7 +222,7 @@ final class SourceCodeService implements SourceCodeContract
         string $filePath,
         string $environment,
         ?string $file = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): string {
         $params = Util::removeNulls(
             ['environment' => $environment, 'file' => $file]

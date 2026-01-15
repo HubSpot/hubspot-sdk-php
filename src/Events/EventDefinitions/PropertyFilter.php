@@ -11,6 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Events\EventDefinitions\PropertyFilter\FilterType;
 
 /**
+ * @phpstan-import-type OperationVariants from \HubspotSDK\Events\EventDefinitions\PropertyFilter\Operation
  * @phpstan-import-type OperationShape from \HubspotSDK\Events\EventDefinitions\PropertyFilter\Operation
  *
  * @phpstan-type PropertyFilterShape = array{
@@ -29,6 +30,7 @@ final class PropertyFilter implements BaseModel
     #[Required(enum: FilterType::class)]
     public string $filterType;
 
+    /** @var OperationVariants $operation */
     #[Required]
     public BoolPropertyOperation|NumberPropertyOperation|StringPropertyOperation|DateTimePropertyOperation|RangedDatePropertyOperation|ComparativeDatePropertyOperation|ComparativePropertyUpdatedOperation|RollingDateRangePropertyOperation|RollingPropertyUpdatedOperation|EnumerationPropertyOperation|AllPropertyTypesOperation|RangedNumberPropertyOperation|MultiStringPropertyOperation|DatePropertyOperation|CalendarDatePropertyOperation|TimePointOperation|RangedTimeOperation $operation;
 

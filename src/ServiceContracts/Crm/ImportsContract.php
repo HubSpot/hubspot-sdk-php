@@ -11,17 +11,22 @@ use HubspotSDK\Crm\Imports\PublicImportResponse;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface ImportsContract
 {
     /**
      * @api
+     *
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function create(
         ?string $files = null,
         ?string $importRequest = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): PublicImportResponse;
 
     /**
@@ -29,6 +34,7 @@ interface ImportsContract
      *
      * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
      * @param int $limit the maximum number of results to display per page
+     * @param RequestOpts|null $requestOptions
      *
      * @return Page<PublicImportResponse>
      *
@@ -38,27 +44,31 @@ interface ImportsContract
         ?string $after = null,
         ?string $before = null,
         ?int $limit = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): Page;
 
     /**
      * @api
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @throws APIException
      */
     public function cancel(
         int $importID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): ActionResponse;
 
     /**
      * @api
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @throws APIException
      */
     public function get(
         int $importID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): PublicImportResponse;
 
     /**
@@ -68,6 +78,7 @@ interface ImportsContract
      * @param bool $includeErrorMessage set to True to receive a message explaining the error
      * @param bool $includeRowData set to True to receive the data values for the errored row
      * @param int $limit the maximum number of results to display per page
+     * @param RequestOpts|null $requestOptions
      *
      * @return Page<PublicImportError>
      *
@@ -79,6 +90,6 @@ interface ImportsContract
         ?bool $includeErrorMessage = null,
         ?bool $includeRowData = null,
         ?int $limit = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): Page;
 }

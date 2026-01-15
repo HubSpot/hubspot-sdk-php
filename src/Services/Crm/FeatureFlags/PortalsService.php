@@ -7,12 +7,17 @@ namespace HubspotSDK\Services\Crm\FeatureFlags;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Core\Util;
-use HubspotSDK\Crm\FeatureFlags\BatchPortalEntry\FlagState;
+use HubspotSDK\Crm\FeatureFlags\BatchPortalEntry;
 use HubspotSDK\Crm\FeatureFlags\PortalFlagStateBatchResponse;
 use HubspotSDK\Crm\FeatureFlags\PortalFlagStateResponse;
+use HubspotSDK\Crm\FeatureFlags\Portals\PortalUpdateParams\FlagState;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\FeatureFlags\PortalsContract;
 
+/**
+ * @phpstan-import-type BatchPortalEntryShape from \HubspotSDK\Crm\FeatureFlags\BatchPortalEntry
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class PortalsService implements PortalsContract
 {
     /**
@@ -36,7 +41,8 @@ final class PortalsService implements PortalsContract
      * @param int $portalID path param: The ID of the account that installed the app
      * @param int $appID path param: The ID of the app
      * @param string $flagName path param: The name of the flag, either `hs-release-app-cards` or `hs-hide-crm-cards`
-     * @param 'ABSENT'|'OFF'|'ON'|\HubspotSDK\Crm\FeatureFlags\Portals\PortalUpdateParams\FlagState $flagState Body param:
+     * @param FlagState|value-of<FlagState> $flagState Body param
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -44,8 +50,8 @@ final class PortalsService implements PortalsContract
         int $portalID,
         int $appID,
         string $flagName,
-        string|\HubspotSDK\Crm\FeatureFlags\Portals\PortalUpdateParams\FlagState $flagState,
-        ?RequestOptions $requestOptions = null,
+        FlagState|string $flagState,
+        RequestOptions|array|null $requestOptions = null,
     ): PortalFlagStateResponse {
         $params = Util::removeNulls(
             ['appID' => $appID, 'flagName' => $flagName, 'flagState' => $flagState]
@@ -65,6 +71,7 @@ final class PortalsService implements PortalsContract
      * @param int $portalID the ID of the account that installed the app
      * @param int $appID the ID of the app
      * @param string $flagName the name of the flag, either `hs-release-app-cards` or `hs-hide-crm-cards`
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -72,7 +79,7 @@ final class PortalsService implements PortalsContract
         int $portalID,
         int $appID,
         string $flagName,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): PortalFlagStateResponse {
         $params = Util::removeNulls(['appID' => $appID, 'flagName' => $flagName]);
 
@@ -89,7 +96,8 @@ final class PortalsService implements PortalsContract
      *
      * @param string $flagName path param: The name of the flag, either `hs-release-app-cards` or `hs-hide-crm-cards`
      * @param int $appID path param: The ID of the app
-     * @param list<int> $portalIDs Body param:
+     * @param list<int> $portalIDs Body param
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -97,7 +105,7 @@ final class PortalsService implements PortalsContract
         string $flagName,
         int $appID,
         array $portalIDs,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): PortalFlagStateBatchResponse {
         $params = Util::removeNulls(['appID' => $appID, 'portalIDs' => $portalIDs]);
 
@@ -114,9 +122,8 @@ final class PortalsService implements PortalsContract
      *
      * @param string $flagName path param: The name of the flag, either `hs-release-app-cards` or `hs-hide-crm-cards`
      * @param int $appID path param: The ID of the app
-     * @param list<array{
-     *   flagState: 'ABSENT'|'OFF'|'ON'|FlagState, portalID: int
-     * }> $portalStates Body param:
+     * @param list<BatchPortalEntry|BatchPortalEntryShape> $portalStates Body param
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -124,7 +131,7 @@ final class PortalsService implements PortalsContract
         string $flagName,
         int $appID,
         array $portalStates,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): PortalFlagStateBatchResponse {
         $params = Util::removeNulls(
             ['appID' => $appID, 'portalStates' => $portalStates]
@@ -144,6 +151,7 @@ final class PortalsService implements PortalsContract
      * @param int $portalID the ID of the account that installed the app
      * @param int $appID the ID of the app
      * @param string $flagName the name of the flag, either `hs-release-app-cards` or `hs-hide-crm-cards`
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -151,7 +159,7 @@ final class PortalsService implements PortalsContract
         int $portalID,
         int $appID,
         string $flagName,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): PortalFlagStateResponse {
         $params = Util::removeNulls(['appID' => $appID, 'flagName' => $flagName]);
 

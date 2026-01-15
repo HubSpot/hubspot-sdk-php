@@ -11,6 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Marketing\Forms\HubSpotFormDefinitionCreateRequest\FormType;
 
 /**
+ * @phpstan-import-type LegalConsentOptionsVariants from \HubspotSDK\Marketing\Forms\HubSpotFormDefinitionCreateRequest\LegalConsentOptions
  * @phpstan-import-type HubSpotFormConfigurationShape from \HubspotSDK\Marketing\Forms\HubSpotFormConfiguration
  * @phpstan-import-type FormDisplayOptionsShape from \HubspotSDK\Marketing\Forms\FormDisplayOptions
  * @phpstan-import-type LegalConsentOptionsShape from \HubspotSDK\Marketing\Forms\HubSpotFormDefinitionCreateRequest\LegalConsentOptions
@@ -56,6 +57,7 @@ final class HubSpotFormDefinitionCreateRequest implements BaseModel
     #[Required(enum: FormType::class)]
     public string $formType;
 
+    /** @var LegalConsentOptionsVariants $legalConsentOptions */
     #[Required]
     public LegalConsentOptionsNone|LegalConsentOptionsLegitimateInterest|LegalConsentOptionsExplicitConsentToProcess|LegalConsentOptionsImplicitConsentToProcess $legalConsentOptions;
 

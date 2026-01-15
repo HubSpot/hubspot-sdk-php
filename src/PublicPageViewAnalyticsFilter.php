@@ -11,6 +11,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicPageViewAnalyticsFilter\FilterType;
 
 /**
+ * @phpstan-import-type CoalescingRefineByVariants from \HubspotSDK\PublicPageViewAnalyticsFilter\CoalescingRefineBy
+ * @phpstan-import-type PruningRefineByVariants from \HubspotSDK\PublicPageViewAnalyticsFilter\PruningRefineBy
  * @phpstan-import-type CoalescingRefineByShape from \HubspotSDK\PublicPageViewAnalyticsFilter\CoalescingRefineBy
  * @phpstan-import-type PruningRefineByShape from \HubspotSDK\PublicPageViewAnalyticsFilter\PruningRefineBy
  *
@@ -38,12 +40,14 @@ final class PublicPageViewAnalyticsFilter implements BaseModel
     #[Required('pageUrl')]
     public string $pageURL;
 
+    /** @var CoalescingRefineByVariants|null $coalescingRefineBy */
     #[Optional]
     public PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation|null $coalescingRefineBy;
 
     #[Optional]
     public ?bool $enableTracking;
 
+    /** @var PruningRefineByVariants|null $pruningRefineBy */
     #[Optional]
     public PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation|null $pruningRefineBy;
 

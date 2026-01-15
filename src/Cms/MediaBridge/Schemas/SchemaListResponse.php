@@ -12,7 +12,9 @@ use HubspotSDK\Crm\Objects\Schemas\ObjectSchema;
 /**
  * @phpstan-import-type ObjectSchemaShape from \HubspotSDK\Crm\Objects\Schemas\ObjectSchema
  *
- * @phpstan-type SchemaListResponseShape = array{results: list<ObjectSchemaShape>}
+ * @phpstan-type SchemaListResponseShape = array{
+ *   results: list<ObjectSchema|ObjectSchemaShape>
+ * }
  */
 final class SchemaListResponse implements BaseModel
 {
@@ -47,7 +49,7 @@ final class SchemaListResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<ObjectSchemaShape> $results
+     * @param list<ObjectSchema|ObjectSchemaShape> $results
      */
     public static function with(array $results): self
     {
@@ -59,7 +61,7 @@ final class SchemaListResponse implements BaseModel
     }
 
     /**
-     * @param list<ObjectSchemaShape> $results
+     * @param list<ObjectSchema|ObjectSchemaShape> $results
      */
     public function withResults(array $results): self
     {

@@ -11,6 +11,9 @@ use HubspotSDK\Crm\Extensions\VideoConferencing\ExternalSettings;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Extensions\VideoConferencing\SettingsContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class SettingsService implements SettingsContract
 {
     /**
@@ -33,6 +36,7 @@ final class SettingsService implements SettingsContract
      * @param string $deleteMeetingURL the URL that HubSpot will send notifications of meetings that have been deleted in HubSpot
      * @param string $updateMeetingURL The URL that HubSpot will send updates to existing meetings. Typically called when the user changes the topic or times of a meeting.
      * @param string $userVerifyURL the URL that HubSpot will use to verify that a user exists in the video conference application
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -43,7 +47,7 @@ final class SettingsService implements SettingsContract
         ?string $fetchAccountsUri = null,
         ?string $updateMeetingURL = null,
         ?string $userVerifyURL = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): ExternalSettings {
         $params = Util::removeNulls(
             [
@@ -64,11 +68,13 @@ final class SettingsService implements SettingsContract
     /**
      * @api
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @throws APIException
      */
     public function delete(
         int $appID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): mixed {
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->delete($appID, requestOptions: $requestOptions);
@@ -79,11 +85,13 @@ final class SettingsService implements SettingsContract
     /**
      * @api
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @throws APIException
      */
     public function get(
         int $appID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): ExternalSettings {
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->get($appID, requestOptions: $requestOptions);

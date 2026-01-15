@@ -15,7 +15,7 @@ use HubspotSDK\ForwardPaging;
  * @phpstan-import-type ForwardPagingShape from \HubspotSDK\ForwardPaging
  *
  * @phpstan-type CollectionResponseWithTotalParticipationBreakdownForwardPagingShape = array{
- *   results: list<ParticipationBreakdownShape>,
+ *   results: list<ParticipationBreakdown|ParticipationBreakdownShape>,
  *   total: int,
  *   paging?: null|ForwardPaging|ForwardPagingShape,
  * }
@@ -65,7 +65,7 @@ final class CollectionResponseWithTotalParticipationBreakdownForwardPaging imple
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<ParticipationBreakdownShape> $results
+     * @param list<ParticipationBreakdown|ParticipationBreakdownShape> $results
      * @param ForwardPaging|ForwardPagingShape|null $paging
      */
     public static function with(
@@ -84,7 +84,7 @@ final class CollectionResponseWithTotalParticipationBreakdownForwardPaging imple
     }
 
     /**
-     * @param list<ParticipationBreakdownShape> $results
+     * @param list<ParticipationBreakdown|ParticipationBreakdownShape> $results
      */
     public function withResults(array $results): self
     {

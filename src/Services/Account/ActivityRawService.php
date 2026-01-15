@@ -18,6 +18,9 @@ use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Account\ActivityRawContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class ActivityRawService implements ActivityRawContract
 {
     // @phpstan-ignore-next-line
@@ -35,10 +38,11 @@ final class ActivityRawService implements ActivityRawContract
      *   actingUserID?: list<int>,
      *   after?: string,
      *   limit?: int,
-     *   occurredAfter?: string|\DateTimeInterface,
-     *   occurredBefore?: string|\DateTimeInterface,
+     *   occurredAfter?: \DateTimeInterface,
+     *   occurredBefore?: \DateTimeInterface,
      *   sort?: list<string>,
      * }|ActivityListAuditLogsParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<PublicAPIUserActionEvent>>
      *
@@ -46,7 +50,7 @@ final class ActivityRawService implements ActivityRawContract
      */
     public function listAuditLogs(
         array|ActivityListAuditLogsParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = ActivityListAuditLogsParams::parseRequest(
             $params,
@@ -75,6 +79,7 @@ final class ActivityRawService implements ActivityRawContract
      * @param array{
      *   after?: string, limit?: int, userID?: int
      * }|ActivityListLoginActivitiesParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<PublicLoginAudit>>
      *
@@ -82,7 +87,7 @@ final class ActivityRawService implements ActivityRawContract
      */
     public function listLoginActivities(
         array|ActivityListLoginActivitiesParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = ActivityListLoginActivitiesParams::parseRequest(
             $params,
@@ -112,6 +117,7 @@ final class ActivityRawService implements ActivityRawContract
      *   toTimestamp?: int,
      *   userID?: int,
      * }|ActivityListSecurityActivitiesParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<HydratedCriticalAction>>
      *
@@ -119,7 +125,7 @@ final class ActivityRawService implements ActivityRawContract
      */
     public function listSecurityActivities(
         array|ActivityListSecurityActivitiesParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = ActivityListSecurityActivitiesParams::parseRequest(
             $params,

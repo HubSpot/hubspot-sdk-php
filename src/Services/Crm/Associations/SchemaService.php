@@ -12,6 +12,9 @@ use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Associations\SchemaContract;
 use HubspotSDK\Services\Crm\Associations\Schema\V4Service;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class SchemaService implements SchemaContract
 {
     /**
@@ -36,12 +39,14 @@ final class SchemaService implements SchemaContract
     /**
      * @api
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @throws APIException
      */
     public function list(
         string $toObjectType,
         string $fromObjectType,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): CollectionResponsePublicAssociationDefinitionNoPaging {
         $params = Util::removeNulls(['fromObjectType' => $fromObjectType]);
 

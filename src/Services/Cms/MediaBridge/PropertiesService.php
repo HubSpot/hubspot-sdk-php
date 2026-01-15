@@ -7,15 +7,24 @@ namespace HubspotSDK\Services\Cms\MediaBridge;
 use HubspotSDK\BatchResponseProperty;
 use HubspotSDK\Client;
 use HubspotSDK\Cms\MediaBridge\CollectionResponsePropertyNoPaging;
+use HubspotSDK\Cms\MediaBridge\Properties\PropertyCreateParams\DataSensitivity;
+use HubspotSDK\Cms\MediaBridge\Properties\PropertyCreateParams\FieldType;
+use HubspotSDK\Cms\MediaBridge\Properties\PropertyCreateParams\Type;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Core\Util;
+use HubspotSDK\OptionInput;
 use HubspotSDK\Property;
-use HubspotSDK\PropertyCreate\DataSensitivity;
-use HubspotSDK\PropertyCreate\FieldType;
-use HubspotSDK\PropertyCreate\Type;
+use HubspotSDK\PropertyCreate;
+use HubspotSDK\PropertyName;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Cms\MediaBridge\PropertiesContract;
 
+/**
+ * @phpstan-import-type PropertyCreateShape from \HubspotSDK\PropertyCreate
+ * @phpstan-import-type OptionInputShape from \HubspotSDK\OptionInput
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type PropertyNameShape from \HubspotSDK\PropertyName
+ */
 final class PropertiesService implements PropertiesContract
 {
     /**
@@ -38,40 +47,35 @@ final class PropertiesService implements PropertiesContract
      *
      * @param string $objectType path param: The object type to create the new property for
      * @param int $appID Path param: The appId for the media bridge app. It is possible to have multiple apps in your developer account that use the media bridge.
-     * @param 'booleancheckbox'|'calculation_equation'|'checkbox'|'date'|'file'|'html'|'number'|'phonenumber'|'radio'|'select'|'text'|'textarea'|\HubspotSDK\Cms\MediaBridge\Properties\PropertyCreateParams\FieldType $fieldType Body param:
-     * @param string $groupName Body param:
-     * @param string $label Body param:
-     * @param string $name Body param:
-     * @param 'bool'|'date'|'datetime'|'enumeration'|'number'|'phone_number'|'string'|\HubspotSDK\Cms\MediaBridge\Properties\PropertyCreateParams\Type $type Body param:
-     * @param string $calculationFormula Body param:
-     * @param 'highly_sensitive'|'non_sensitive'|'sensitive'|\HubspotSDK\Cms\MediaBridge\Properties\PropertyCreateParams\DataSensitivity $dataSensitivity Body param:
-     * @param string $description Body param:
-     * @param int $displayOrder Body param:
-     * @param bool $externalOptions Body param:
-     * @param bool $formField Body param:
-     * @param bool $hasUniqueValue Body param:
-     * @param bool $hidden Body param:
-     * @param list<array{
-     *   displayOrder: int,
-     *   hidden: bool,
-     *   label: string,
-     *   value: string,
-     *   description?: string,
-     * }> $options Body param:
-     * @param string $referencedObjectType Body param:
+     * @param FieldType|value-of<FieldType> $fieldType Body param
+     * @param string $groupName Body param
+     * @param string $label Body param
+     * @param string $name Body param
+     * @param Type|value-of<Type> $type Body param
+     * @param string $calculationFormula Body param
+     * @param DataSensitivity|value-of<DataSensitivity> $dataSensitivity Body param
+     * @param string $description Body param
+     * @param int $displayOrder Body param
+     * @param bool $externalOptions Body param
+     * @param bool $formField Body param
+     * @param bool $hasUniqueValue Body param
+     * @param bool $hidden Body param
+     * @param list<OptionInput|OptionInputShape> $options Body param
+     * @param string $referencedObjectType Body param
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function create(
         string $objectType,
         int $appID,
-        string|\HubspotSDK\Cms\MediaBridge\Properties\PropertyCreateParams\FieldType $fieldType,
+        FieldType|string $fieldType,
         string $groupName,
         string $label,
         string $name,
-        string|\HubspotSDK\Cms\MediaBridge\Properties\PropertyCreateParams\Type $type,
+        Type|string $type,
         ?string $calculationFormula = null,
-        string|\HubspotSDK\Cms\MediaBridge\Properties\PropertyCreateParams\DataSensitivity|null $dataSensitivity = null,
+        DataSensitivity|string|null $dataSensitivity = null,
         ?string $description = null,
         ?int $displayOrder = null,
         ?bool $externalOptions = null,
@@ -80,7 +84,7 @@ final class PropertiesService implements PropertiesContract
         ?bool $hidden = null,
         ?array $options = null,
         ?string $referencedObjectType = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): Property {
         $params = Util::removeNulls(
             [
@@ -117,23 +121,18 @@ final class PropertiesService implements PropertiesContract
      * @param string $propertyName path param: The name of the property to update
      * @param int $appID Path param: The appId for the media bridge app. It is possible to have multiple apps in your developer account that use the media bridge.
      * @param string $objectType path param: The object type for the property to be updated
-     * @param string $calculationFormula Body param:
-     * @param string $description Body param:
-     * @param int $displayOrder Body param:
-     * @param 'booleancheckbox'|'calculation_equation'|'checkbox'|'date'|'file'|'html'|'number'|'phonenumber'|'radio'|'select'|'text'|'textarea'|\HubspotSDK\Cms\MediaBridge\Properties\PropertyUpdateParams\FieldType $fieldType Body param:
-     * @param bool $formField Body param:
-     * @param string $groupName Body param:
-     * @param bool $hasUniqueValue Body param:
-     * @param bool $hidden Body param:
-     * @param string $label Body param:
-     * @param list<array{
-     *   displayOrder: int,
-     *   hidden: bool,
-     *   label: string,
-     *   value: string,
-     *   description?: string,
-     * }> $options Body param:
-     * @param 'bool'|'date'|'datetime'|'enumeration'|'number'|'phone_number'|'string'|\HubspotSDK\Cms\MediaBridge\Properties\PropertyUpdateParams\Type $type Body param:
+     * @param string $calculationFormula Body param
+     * @param string $description Body param
+     * @param int $displayOrder Body param
+     * @param \HubspotSDK\Cms\MediaBridge\Properties\PropertyUpdateParams\FieldType|value-of<\HubspotSDK\Cms\MediaBridge\Properties\PropertyUpdateParams\FieldType> $fieldType Body param
+     * @param bool $formField Body param
+     * @param string $groupName Body param
+     * @param bool $hasUniqueValue Body param
+     * @param bool $hidden Body param
+     * @param string $label Body param
+     * @param list<OptionInput|OptionInputShape> $options Body param
+     * @param \HubspotSDK\Cms\MediaBridge\Properties\PropertyUpdateParams\Type|value-of<\HubspotSDK\Cms\MediaBridge\Properties\PropertyUpdateParams\Type> $type Body param
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -144,15 +143,15 @@ final class PropertiesService implements PropertiesContract
         ?string $calculationFormula = null,
         ?string $description = null,
         ?int $displayOrder = null,
-        string|\HubspotSDK\Cms\MediaBridge\Properties\PropertyUpdateParams\FieldType|null $fieldType = null,
+        \HubspotSDK\Cms\MediaBridge\Properties\PropertyUpdateParams\FieldType|string|null $fieldType = null,
         ?bool $formField = null,
         ?string $groupName = null,
         ?bool $hasUniqueValue = null,
         ?bool $hidden = null,
         ?string $label = null,
         ?array $options = null,
-        string|\HubspotSDK\Cms\MediaBridge\Properties\PropertyUpdateParams\Type|null $type = null,
-        ?RequestOptions $requestOptions = null,
+        \HubspotSDK\Cms\MediaBridge\Properties\PropertyUpdateParams\Type|string|null $type = null,
+        RequestOptions|array|null $requestOptions = null,
     ): Property {
         $params = Util::removeNulls(
             [
@@ -187,6 +186,7 @@ final class PropertiesService implements PropertiesContract
      * @param int $appID Path param: The appId for the media bridge app. It is possible to have multiple apps in your developer account that use the media bridge.
      * @param bool $archived query param: Whether to return only results that have been archived
      * @param string $properties query param: Filter the response to the specified properties
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -195,7 +195,7 @@ final class PropertiesService implements PropertiesContract
         int $appID,
         bool $archived = false,
         ?string $properties = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): CollectionResponsePropertyNoPaging {
         $params = Util::removeNulls(
             ['appID' => $appID, 'archived' => $archived, 'properties' => $properties]
@@ -215,6 +215,7 @@ final class PropertiesService implements PropertiesContract
      * @param string $propertyName the name of the property to delete
      * @param int $appID The appId for the media bridge app. It is possible to have multiple apps in your developer account that use the media bridge.
      * @param string $objectType the object type for the property to delete
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -222,7 +223,7 @@ final class PropertiesService implements PropertiesContract
         string $propertyName,
         int $appID,
         string $objectType,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): mixed {
         $params = Util::removeNulls(
             ['appID' => $appID, 'objectType' => $objectType]
@@ -241,29 +242,8 @@ final class PropertiesService implements PropertiesContract
      *
      * @param string $objectType path param: The type of object to create the properties for
      * @param int $appID Path param: The appId for the media bridge app. It is possible to have multiple apps in your developer account that use the media bridge.
-     * @param list<array{
-     *   fieldType: 'booleancheckbox'|'calculation_equation'|'checkbox'|'date'|'file'|'html'|'number'|'phonenumber'|'radio'|'select'|'text'|'textarea'|FieldType,
-     *   groupName: string,
-     *   label: string,
-     *   name: string,
-     *   type: 'bool'|'date'|'datetime'|'enumeration'|'number'|'phone_number'|'string'|Type,
-     *   calculationFormula?: string,
-     *   dataSensitivity?: 'highly_sensitive'|'non_sensitive'|'sensitive'|DataSensitivity,
-     *   description?: string,
-     *   displayOrder?: int,
-     *   externalOptions?: bool,
-     *   formField?: bool,
-     *   hasUniqueValue?: bool,
-     *   hidden?: bool,
-     *   options?: list<array{
-     *     displayOrder: int,
-     *     hidden: bool,
-     *     label: string,
-     *     value: string,
-     *     description?: string,
-     *   }>,
-     *   referencedObjectType?: string,
-     * }> $inputs Body param:
+     * @param list<PropertyCreate|PropertyCreateShape> $inputs Body param
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -271,7 +251,7 @@ final class PropertiesService implements PropertiesContract
         string $objectType,
         int $appID,
         array $inputs,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BatchResponseProperty {
         $params = Util::removeNulls(['appID' => $appID, 'inputs' => $inputs]);
 
@@ -288,7 +268,8 @@ final class PropertiesService implements PropertiesContract
      *
      * @param string $objectType path param: The object type for the specified properties to be archived
      * @param int $appID Path param: The appId for the media bridge app. It is possible to have multiple apps in your developer account that use the media bridge.
-     * @param list<array{name: string}> $inputs Body param:
+     * @param list<PropertyName|PropertyNameShape> $inputs Body param
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -296,7 +277,7 @@ final class PropertiesService implements PropertiesContract
         string $objectType,
         int $appID,
         array $inputs,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): mixed {
         $params = Util::removeNulls(['appID' => $appID, 'inputs' => $inputs]);
 
@@ -316,6 +297,7 @@ final class PropertiesService implements PropertiesContract
      * @param string $objectType path param: The object type for the property
      * @param bool $archived query param: Whether to return only results that have been archived
      * @param string $properties query param: Limit the response to only include the specified properties
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -325,7 +307,7 @@ final class PropertiesService implements PropertiesContract
         string $objectType,
         bool $archived = false,
         ?string $properties = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): Property {
         $params = Util::removeNulls(
             [
@@ -349,9 +331,10 @@ final class PropertiesService implements PropertiesContract
      *
      * @param string $objectType path param: The object type to get the properties for
      * @param int $appID Path param: The appId for the media bridge app. It is possible to have multiple apps in your developer account that use the media bridge.
-     * @param bool $archived Body param:
-     * @param 'highly_sensitive'|'non_sensitive'|'sensitive'|\HubspotSDK\Cms\MediaBridge\Properties\PropertyGetBatchParams\DataSensitivity $dataSensitivity Body param:
-     * @param list<array{name: string}> $inputs Body param:
+     * @param bool $archived Body param
+     * @param \HubspotSDK\Cms\MediaBridge\Properties\PropertyGetBatchParams\DataSensitivity|value-of<\HubspotSDK\Cms\MediaBridge\Properties\PropertyGetBatchParams\DataSensitivity> $dataSensitivity Body param
+     * @param list<PropertyName|PropertyNameShape> $inputs Body param
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -359,9 +342,9 @@ final class PropertiesService implements PropertiesContract
         string $objectType,
         int $appID,
         bool $archived,
-        string|\HubspotSDK\Cms\MediaBridge\Properties\PropertyGetBatchParams\DataSensitivity $dataSensitivity,
+        \HubspotSDK\Cms\MediaBridge\Properties\PropertyGetBatchParams\DataSensitivity|string $dataSensitivity,
         array $inputs,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BatchResponseProperty {
         $params = Util::removeNulls(
             [

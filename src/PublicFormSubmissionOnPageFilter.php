@@ -12,6 +12,8 @@ use HubspotSDK\PublicFormSubmissionOnPageFilter\FilterType;
 use HubspotSDK\PublicFormSubmissionOnPageFilter\Operator;
 
 /**
+ * @phpstan-import-type CoalescingRefineByVariants from \HubspotSDK\PublicFormSubmissionOnPageFilter\CoalescingRefineBy
+ * @phpstan-import-type PruningRefineByVariants from \HubspotSDK\PublicFormSubmissionOnPageFilter\PruningRefineBy
  * @phpstan-import-type CoalescingRefineByShape from \HubspotSDK\PublicFormSubmissionOnPageFilter\CoalescingRefineBy
  * @phpstan-import-type PruningRefineByShape from \HubspotSDK\PublicFormSubmissionOnPageFilter\PruningRefineBy
  *
@@ -40,12 +42,14 @@ final class PublicFormSubmissionOnPageFilter implements BaseModel
     #[Required('pageId')]
     public string $pageID;
 
+    /** @var CoalescingRefineByVariants|null $coalescingRefineBy */
     #[Optional]
     public PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation|null $coalescingRefineBy;
 
     #[Optional('formId')]
     public ?string $formID;
 
+    /** @var PruningRefineByVariants|null $pruningRefineBy */
     #[Optional]
     public PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation|null $pruningRefineBy;
 

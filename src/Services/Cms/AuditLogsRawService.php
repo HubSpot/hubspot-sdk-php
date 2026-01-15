@@ -14,6 +14,9 @@ use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Cms\AuditLogsRawContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class AuditLogsRawService implements AuditLogsRawContract
 {
     // @phpstan-ignore-next-line
@@ -37,6 +40,7 @@ final class AuditLogsRawService implements AuditLogsRawContract
      *   sort?: list<string>,
      *   userID?: list<string>,
      * }|AuditLogListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<PublicAuditLog>>
      *
@@ -44,7 +48,7 @@ final class AuditLogsRawService implements AuditLogsRawContract
      */
     public function list(
         array|AuditLogListParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = AuditLogListParams::parseRequest(
             $params,

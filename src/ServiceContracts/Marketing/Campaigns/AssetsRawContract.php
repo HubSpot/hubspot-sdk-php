@@ -12,6 +12,9 @@ use HubspotSDK\Marketing\Campaigns\Assets\AssetUpdateParams;
 use HubspotSDK\Marketing\Campaigns\CollectionResponsePublicCampaignAssetForwardPaging;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface AssetsRawContract
 {
     /**
@@ -19,6 +22,7 @@ interface AssetsRawContract
      *
      * @param string $assetID Id of the asset
      * @param array<string,mixed>|AssetUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -27,7 +31,7 @@ interface AssetsRawContract
     public function update(
         string $assetID,
         array|AssetUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -35,6 +39,7 @@ interface AssetsRawContract
      *
      * @param string $assetType path param: The type of asset to fetch
      * @param array<string,mixed>|AssetListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CollectionResponsePublicCampaignAssetForwardPaging>
      *
@@ -43,7 +48,7 @@ interface AssetsRawContract
     public function list(
         string $assetType,
         array|AssetListParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -51,6 +56,7 @@ interface AssetsRawContract
      *
      * @param string $assetID Id of the asset
      * @param array<string,mixed>|AssetDeleteParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -59,6 +65,6 @@ interface AssetsRawContract
     public function delete(
         string $assetID,
         array|AssetDeleteParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

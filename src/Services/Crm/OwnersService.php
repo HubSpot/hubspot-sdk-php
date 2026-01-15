@@ -13,6 +13,9 @@ use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\OwnersContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class OwnersService implements OwnersContract
 {
     /**
@@ -33,6 +36,8 @@ final class OwnersService implements OwnersContract
      *
      * Retrieve a paginated list of owners available in the account.
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @return Page<PublicOwner>
      *
      * @throws APIException
@@ -42,7 +47,7 @@ final class OwnersService implements OwnersContract
         bool $archived = false,
         ?string $email = null,
         int $limit = 100,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): Page {
         $params = Util::removeNulls(
             [
@@ -64,15 +69,16 @@ final class OwnersService implements OwnersContract
      *
      * Retrieve details of a specific owner using either their 'id' or 'userId'.
      *
-     * @param 'id'|'userId'|IDProperty $idProperty
+     * @param IDProperty|value-of<IDProperty> $idProperty
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function get(
         int $ownerID,
         bool $archived = false,
-        string|IDProperty $idProperty = 'id',
-        ?RequestOptions $requestOptions = null,
+        IDProperty|string $idProperty = 'id',
+        RequestOptions|array|null $requestOptions = null,
     ): PublicOwner {
         $params = Util::removeNulls(
             ['archived' => $archived, 'idProperty' => $idProperty]

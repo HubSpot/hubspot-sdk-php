@@ -17,6 +17,9 @@ use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Marketing\Events\ParticipationsRawContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class ParticipationsRawService implements ParticipationsRawContract
 {
     // @phpstan-ignore-next-line
@@ -34,6 +37,7 @@ final class ParticipationsRawService implements ParticipationsRawContract
      * @param array{
      *   externalAccountID: string
      * }|ParticipationGetByExternalAccountAndEventIDParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<AttendanceCounters>
      *
@@ -42,7 +46,7 @@ final class ParticipationsRawService implements ParticipationsRawContract
     public function getByExternalAccountAndEventID(
         string $externalEventID,
         array|ParticipationGetByExternalAccountAndEventIDParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = ParticipationGetByExternalAccountAndEventIDParams::parseRequest(
             $params,
@@ -70,6 +74,7 @@ final class ParticipationsRawService implements ParticipationsRawContract
      * Read Marketing event's participations counters by internal identifier marketingEventId.
      *
      * @param int $marketingEventID the internal id of the marketing event in HubSpot
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<AttendanceCounters>
      *
@@ -77,7 +82,7 @@ final class ParticipationsRawService implements ParticipationsRawContract
      */
     public function getByID(
         int $marketingEventID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -99,6 +104,7 @@ final class ParticipationsRawService implements ParticipationsRawContract
      * @param array{
      *   after?: string, limit?: int, state?: string
      * }|ParticipationListBreakdownByContactParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<ParticipationBreakdown>>
      *
@@ -107,7 +113,7 @@ final class ParticipationsRawService implements ParticipationsRawContract
     public function listBreakdownByContact(
         string $contactIdentifier,
         array|ParticipationListBreakdownByContactParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = ParticipationListBreakdownByContactParams::parseRequest(
             $params,
@@ -141,6 +147,7 @@ final class ParticipationsRawService implements ParticipationsRawContract
      *   limit?: int,
      *   state?: string,
      * }|ParticipationListBreakdownByExternalAccountAndEventIDParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<ParticipationBreakdown>>
      *
@@ -149,7 +156,7 @@ final class ParticipationsRawService implements ParticipationsRawContract
     public function listBreakdownByExternalAccountAndEventID(
         string $externalEventID,
         array|ParticipationListBreakdownByExternalAccountAndEventIDParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = ParticipationListBreakdownByExternalAccountAndEventIDParams::parseRequest(
             $params,
@@ -182,6 +189,7 @@ final class ParticipationsRawService implements ParticipationsRawContract
      * @param array{
      *   after?: string, contactIdentifier?: string, limit?: int, state?: string
      * }|ParticipationListBreakdownByIDParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<ParticipationBreakdown>>
      *
@@ -190,7 +198,7 @@ final class ParticipationsRawService implements ParticipationsRawContract
     public function listBreakdownByID(
         int $marketingEventID,
         array|ParticipationListBreakdownByIDParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = ParticipationListBreakdownByIDParams::parseRequest(
             $params,

@@ -11,6 +11,9 @@ use HubspotSDK\Crm\Associations\Schema\V4\CollectionResponseAssociationSpecWithL
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Associations\Schema\V4\DefinitionsContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class DefinitionsService implements DefinitionsContract
 {
     /**
@@ -29,11 +32,12 @@ final class DefinitionsService implements DefinitionsContract
     /**
      * @api
      *
-     * @param string $toObjectType Path param:
-     * @param string $fromObjectType Path param:
-     * @param string $label Body param:
-     * @param string $name Body param:
-     * @param string $inverseLabel Body param:
+     * @param string $toObjectType Path param
+     * @param string $fromObjectType Path param
+     * @param string $label Body param
+     * @param string $name Body param
+     * @param string $inverseLabel Body param
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -43,7 +47,7 @@ final class DefinitionsService implements DefinitionsContract
         string $label,
         string $name,
         ?string $inverseLabel = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): CollectionResponseAssociationSpecWithLabel {
         $params = Util::removeNulls(
             [
@@ -63,13 +67,15 @@ final class DefinitionsService implements DefinitionsContract
     /**
      * @api
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @throws APIException
      */
     public function deleteLabel(
         int $associationTypeID,
         string $fromObjectType,
         string $toObjectType,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): mixed {
         $params = Util::removeNulls(
             ['fromObjectType' => $fromObjectType, 'toObjectType' => $toObjectType]
@@ -84,12 +90,14 @@ final class DefinitionsService implements DefinitionsContract
     /**
      * @api
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @throws APIException
      */
     public function listLabels(
         string $toObjectType,
         string $fromObjectType,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): CollectionResponseAssociationSpecWithLabel {
         $params = Util::removeNulls(['fromObjectType' => $fromObjectType]);
 
@@ -102,11 +110,12 @@ final class DefinitionsService implements DefinitionsContract
     /**
      * @api
      *
-     * @param string $toObjectType Path param:
-     * @param string $fromObjectType Path param:
-     * @param int $associationTypeID Body param:
-     * @param string $label Body param:
-     * @param string $inverseLabel Body param:
+     * @param string $toObjectType Path param
+     * @param string $fromObjectType Path param
+     * @param int $associationTypeID Body param
+     * @param string $label Body param
+     * @param string $inverseLabel Body param
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -116,7 +125,7 @@ final class DefinitionsService implements DefinitionsContract
         int $associationTypeID,
         string $label,
         ?string $inverseLabel = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): mixed {
         $params = Util::removeNulls(
             [

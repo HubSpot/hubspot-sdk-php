@@ -11,12 +11,16 @@ use HubspotSDK\Crm\Objects\DealSplits\DealSplitBatchReadParams;
 use HubspotSDK\Crm\Objects\DealSplits\DealSplitBatchUpsertParams;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface DealSplitsRawContract
 {
     /**
      * @api
      *
      * @param array<string,mixed>|DealSplitBatchReadParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BatchResponseDealToDealSplits>
      *
@@ -24,13 +28,14 @@ interface DealSplitsRawContract
      */
     public function batchRead(
         array|DealSplitBatchReadParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|DealSplitBatchUpsertParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BatchResponseDealToDealSplits>
      *
@@ -38,6 +43,6 @@ interface DealSplitsRawContract
      */
     public function batchUpsert(
         array|DealSplitBatchUpsertParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

@@ -26,7 +26,8 @@ use HubspotSDK\PublicYearReference;
  * @phpstan-import-type PublicQuarterReferenceShape from \HubspotSDK\PublicQuarterReference
  * @phpstan-import-type PublicMonthReferenceShape from \HubspotSDK\PublicMonthReference
  *
- * @phpstan-type IndexReferenceShape = PublicNowReferenceShape|PublicTodayReferenceShape|PublicWeekReferenceShape|PublicFiscalQuarterReferenceShape|PublicFiscalYearReferenceShape|PublicYearReferenceShape|PublicQuarterReferenceShape|PublicMonthReferenceShape
+ * @phpstan-type IndexReferenceVariants = PublicNowReference|PublicTodayReference|PublicWeekReference|PublicFiscalQuarterReference|PublicFiscalYearReference|PublicYearReference|PublicQuarterReference|PublicMonthReference
+ * @phpstan-type IndexReferenceShape = IndexReferenceVariants|PublicNowReferenceShape|PublicTodayReferenceShape|PublicWeekReferenceShape|PublicFiscalQuarterReferenceShape|PublicFiscalYearReferenceShape|PublicYearReferenceShape|PublicQuarterReferenceShape|PublicMonthReferenceShape
  */
 final class IndexReference implements ConverterSource
 {

@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @phpstan-type BatchResponsePropertyShape = array{
  *   completedAt: \DateTimeInterface,
- *   results: list<PropertyShape>,
+ *   results: list<Property|PropertyShape>,
  *   startedAt: \DateTimeInterface,
  *   status: Status|value-of<Status>,
  *   links?: array<string,string>|null,
@@ -78,7 +78,7 @@ final class BatchResponseProperty implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PropertyShape> $results
+     * @param list<Property|PropertyShape> $results
      * @param Status|value-of<Status> $status
      * @param array<string,string>|null $links
      */
@@ -112,7 +112,7 @@ final class BatchResponseProperty implements BaseModel
     }
 
     /**
-     * @param list<PropertyShape> $results
+     * @param list<Property|PropertyShape> $results
      */
     public function withResults(array $results): self
     {

@@ -12,6 +12,9 @@ use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Conversations\VisitorIdentificationRawContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class VisitorIdentificationRawService implements VisitorIdentificationRawContract
 {
     // @phpstan-ignore-next-line
@@ -26,6 +29,7 @@ final class VisitorIdentificationRawService implements VisitorIdentificationRawC
      * @param array{
      *   email: string, firstName?: string, lastName?: string
      * }|VisitorIdentificationGenerateTokenParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<IdentificationTokenResponse>
      *
@@ -33,7 +37,7 @@ final class VisitorIdentificationRawService implements VisitorIdentificationRawC
      */
     public function generateToken(
         array|VisitorIdentificationGenerateTokenParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = VisitorIdentificationGenerateTokenParams::parseRequest(
             $params,

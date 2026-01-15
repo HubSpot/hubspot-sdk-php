@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-import-type AssociationSpecShape from \HubspotSDK\AssociationSpec
  *
  * @phpstan-type RollupExpressionShape = array{
- *   associationTypes: list<AssociationSpecShape>,
+ *   associationTypes: list<AssociationSpec|AssociationSpecShape>,
  *   rollupOperator: string,
  *   sourceObjectTypeID: string,
  *   sourcePropertyName: string,
@@ -88,7 +88,7 @@ final class RollupExpression implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<AssociationSpecShape> $associationTypes
+     * @param list<AssociationSpec|AssociationSpecShape> $associationTypes
      * @param array<string,mixed>|null $conditionalExpression
      */
     public static function with(
@@ -117,7 +117,7 @@ final class RollupExpression implements BaseModel
     }
 
     /**
-     * @param list<AssociationSpecShape> $associationTypes
+     * @param list<AssociationSpec|AssociationSpecShape> $associationTypes
      */
     public function withAssociationTypes(array $associationTypes): self
     {

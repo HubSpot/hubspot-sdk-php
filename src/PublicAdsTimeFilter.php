@@ -10,6 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicAdsTimeFilter\FilterType;
 
 /**
+ * @phpstan-import-type PruningRefineByVariants from \HubspotSDK\PublicAdsTimeFilter\PruningRefineBy
  * @phpstan-import-type PruningRefineByShape from \HubspotSDK\PublicAdsTimeFilter\PruningRefineBy
  *
  * @phpstan-type PublicAdsTimeFilterShape = array{
@@ -26,6 +27,7 @@ final class PublicAdsTimeFilter implements BaseModel
     #[Required(enum: FilterType::class)]
     public string $filterType;
 
+    /** @var PruningRefineByVariants $pruningRefineBy */
     #[Required]
     public PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation $pruningRefineBy;
 

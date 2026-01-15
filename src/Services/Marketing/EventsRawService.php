@@ -28,18 +28,32 @@ use HubspotSDK\Marketing\Events\EventUpsertBatchParams;
 use HubspotSDK\Marketing\Events\EventUpsertByExternalEventIDParams;
 use HubspotSDK\Marketing\Events\EventUpsertSubscriberStateByEmailParams;
 use HubspotSDK\Marketing\Events\EventUpsertSubscriberStateByIDParams;
+use HubspotSDK\Marketing\Events\MarketingEventCreateRequestParams;
 use HubspotSDK\Marketing\Events\MarketingEventDefaultResponse;
+use HubspotSDK\Marketing\Events\MarketingEventEmailSubscriber;
+use HubspotSDK\Marketing\Events\MarketingEventExternalUniqueIdentifier;
 use HubspotSDK\Marketing\Events\MarketingEventPublicDefaultResponse;
 use HubspotSDK\Marketing\Events\MarketingEventPublicDefaultResponseV2;
+use HubspotSDK\Marketing\Events\MarketingEventPublicObjectIDDeleteRequest;
 use HubspotSDK\Marketing\Events\MarketingEventPublicReadResponse;
 use HubspotSDK\Marketing\Events\MarketingEventPublicReadResponseV2;
+use HubspotSDK\Marketing\Events\MarketingEventPublicUpdateRequestFullV2;
+use HubspotSDK\Marketing\Events\MarketingEventSubscriber;
 use HubspotSDK\Marketing\Events\PropertyValue;
-use HubspotSDK\Marketing\Events\PropertyValue\DataSensitivity;
-use HubspotSDK\Marketing\Events\PropertyValue\Source;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Marketing\EventsRawContract;
 
+/**
+ * @phpstan-import-type MarketingEventPublicObjectIDDeleteRequestShape from \HubspotSDK\Marketing\Events\MarketingEventPublicObjectIDDeleteRequest
+ * @phpstan-import-type MarketingEventExternalUniqueIdentifierShape from \HubspotSDK\Marketing\Events\MarketingEventExternalUniqueIdentifier
+ * @phpstan-import-type MarketingEventPublicUpdateRequestFullV2Shape from \HubspotSDK\Marketing\Events\MarketingEventPublicUpdateRequestFullV2
+ * @phpstan-import-type MarketingEventCreateRequestParamsShape from \HubspotSDK\Marketing\Events\MarketingEventCreateRequestParams
+ * @phpstan-import-type MarketingEventEmailSubscriberShape from \HubspotSDK\Marketing\Events\MarketingEventEmailSubscriber
+ * @phpstan-import-type MarketingEventSubscriberShape from \HubspotSDK\Marketing\Events\MarketingEventSubscriber
+ * @phpstan-import-type PropertyValueShape from \HubspotSDK\Marketing\Events\PropertyValue
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class EventsRawService implements EventsRawContract
 {
     // @phpstan-ignore-next-line
@@ -54,39 +68,20 @@ final class EventsRawService implements EventsRawContract
      * Creates a new marketing event in HubSpot
      *
      * @param array{
-     *   customProperties: list<array{
-     *     dataSensitivity: 'high'|'none'|'standard'|DataSensitivity,
-     *     isEncrypted: bool,
-     *     isLargeValue: bool,
-     *     name: string,
-     *     persistenceTimestamp: int,
-     *     requestID: string,
-     *     selectedByUser: bool,
-     *     selectedByUserTimestamp: int,
-     *     source: 'ACADEMY'|'ACCEPTANCE_TEST'|'ADS'|'AI_GROUP'|'ANALYTICS'|'API'|'APPROVALS'|'ASSISTS'|'ASSOCIATIONS'|'AUTOMATION_JOURNEY'|'AUTOMATION_PLATFORM'|'AVATARS_SERVICE'|'BATCH_UPDATE'|'BCC_TO_CRM'|'BEHAVIORAL_EVENTS'|'BET_ASSIGNMENT'|'BET_CRM_CONNECTOR'|'BIDEN'|'BILLING'|'BOT'|'CALCULATED'|'CENTRAL_EXCHANGE_RATES'|'CHATSPOT'|'CLONE_OBJECTS'|'COMMUNICATOR'|'COMPANIES'|'COMPANY_FAMILIES'|'COMPANY_INSIGHTS'|'CONTACTS'|'CONTACTS_WEB'|'CONTENT_MEMBERSHIP'|'CONVERSATIONAL_ENRICHMENT'|'CONVERSATIONS'|'CRM_PROCESSES_PLATFORM'|'CRM_UI'|'CRM_UI_BULK_ACTION'|'DATA_ENRICHMENT'|'DATASET'|'DEALS'|'DEFAULT'|'EMAIL'|'EMAIL_INTEGRATION'|'ENGAGEMENTS'|'EXTENSION'|'FILE_MANAGER'|'FLYWHEEL_PRODUCT_DATA_SYNC'|'FORECASTING'|'FORM'|'FORWARD_TO_CRM'|'GMAIL_INTEGRATION'|'GOALS'|'HEISENBERG'|'HELP_DESK'|'HELP_DESK_AI'|'IMPORT'|'INTEGRATION'|'INTEGRATIONS_PLATFORM'|'INTEGRATIONS_SYNC'|'INTENT'|'INTERNAL_PROCESSING'|'LEADIN'|'MARKET_SOURCING'|'MARKETPLACE'|'MEETINGS'|'MERGE_COMPANIES'|'MERGE_CONTACTS'|'MERGE_OBJECTS'|'MICROAPPS'|'MIGRATION'|'MOBILE_ANDROID'|'MOBILE_IOS'|'PAYMENTS'|'PIPELINE_SETTINGS'|'PLAYBOOKS'|'PORTAL_OBJECT_SYNC'|'PORTAL_USER_ASSOCIATOR'|'PRESENTATIONS'|'PROPERTY_RESTORE'|'PROPERTY_SETTINGS'|'PROSPECTING_AGENT'|'QUOTAS'|'QUOTES'|'RECYCLING_BIN'|'SALES'|'SALES_MESSAGES'|'SALESFORCE'|'SEQUENCES'|'SETTINGS'|'SIDEKICK'|'SIGNALS'|'SLACK_INTEGRATION'|'SOCIAL'|'SUCCESS'|'TALLY'|'TASK'|'UNKNOWN'|'WAL_INCREMENTAL'|'WORKFLOW_CONTACT_DELETE_ACTION'|'WORKFLOWS'|Source,
-     *     sourceID: string,
-     *     sourceLabel: string,
-     *     sourceMetadata: string,
-     *     sourceUpstreamDeployable: string,
-     *     sourceVid: list<int>,
-     *     timestamp: int,
-     *     unit: string,
-     *     updatedByUserID: int,
-     *     useTimestampAsPersistenceTimestamp: bool,
-     *     value: string,
-     *   }|PropertyValue>,
+     *   customProperties: list<PropertyValue|PropertyValueShape>,
      *   eventName: string,
      *   eventOrganizer: string,
      *   externalAccountID: string,
      *   externalEventID: string,
-     *   endDateTime?: string|\DateTimeInterface,
+     *   endDateTime?: \DateTimeInterface,
      *   eventCancelled?: bool,
      *   eventCompleted?: bool,
      *   eventDescription?: string,
      *   eventType?: string,
      *   eventURL?: string,
-     *   startDateTime?: string|\DateTimeInterface,
+     *   startDateTime?: \DateTimeInterface,
      * }|EventCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<MarketingEventDefaultResponse>
      *
@@ -94,7 +89,7 @@ final class EventsRawService implements EventsRawContract
      */
     public function create(
         array|EventCreateParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = EventCreateParams::parseRequest(
             $params,
@@ -118,36 +113,17 @@ final class EventsRawService implements EventsRawContract
      *
      * @param string $objectID The internal ID of the marketing event in HubSpot
      * @param array{
-     *   customProperties: list<array{
-     *     dataSensitivity: 'high'|'none'|'standard'|DataSensitivity,
-     *     isEncrypted: bool,
-     *     isLargeValue: bool,
-     *     name: string,
-     *     persistenceTimestamp: int,
-     *     requestID: string,
-     *     selectedByUser: bool,
-     *     selectedByUserTimestamp: int,
-     *     source: 'ACADEMY'|'ACCEPTANCE_TEST'|'ADS'|'AI_GROUP'|'ANALYTICS'|'API'|'APPROVALS'|'ASSISTS'|'ASSOCIATIONS'|'AUTOMATION_JOURNEY'|'AUTOMATION_PLATFORM'|'AVATARS_SERVICE'|'BATCH_UPDATE'|'BCC_TO_CRM'|'BEHAVIORAL_EVENTS'|'BET_ASSIGNMENT'|'BET_CRM_CONNECTOR'|'BIDEN'|'BILLING'|'BOT'|'CALCULATED'|'CENTRAL_EXCHANGE_RATES'|'CHATSPOT'|'CLONE_OBJECTS'|'COMMUNICATOR'|'COMPANIES'|'COMPANY_FAMILIES'|'COMPANY_INSIGHTS'|'CONTACTS'|'CONTACTS_WEB'|'CONTENT_MEMBERSHIP'|'CONVERSATIONAL_ENRICHMENT'|'CONVERSATIONS'|'CRM_PROCESSES_PLATFORM'|'CRM_UI'|'CRM_UI_BULK_ACTION'|'DATA_ENRICHMENT'|'DATASET'|'DEALS'|'DEFAULT'|'EMAIL'|'EMAIL_INTEGRATION'|'ENGAGEMENTS'|'EXTENSION'|'FILE_MANAGER'|'FLYWHEEL_PRODUCT_DATA_SYNC'|'FORECASTING'|'FORM'|'FORWARD_TO_CRM'|'GMAIL_INTEGRATION'|'GOALS'|'HEISENBERG'|'HELP_DESK'|'HELP_DESK_AI'|'IMPORT'|'INTEGRATION'|'INTEGRATIONS_PLATFORM'|'INTEGRATIONS_SYNC'|'INTENT'|'INTERNAL_PROCESSING'|'LEADIN'|'MARKET_SOURCING'|'MARKETPLACE'|'MEETINGS'|'MERGE_COMPANIES'|'MERGE_CONTACTS'|'MERGE_OBJECTS'|'MICROAPPS'|'MIGRATION'|'MOBILE_ANDROID'|'MOBILE_IOS'|'PAYMENTS'|'PIPELINE_SETTINGS'|'PLAYBOOKS'|'PORTAL_OBJECT_SYNC'|'PORTAL_USER_ASSOCIATOR'|'PRESENTATIONS'|'PROPERTY_RESTORE'|'PROPERTY_SETTINGS'|'PROSPECTING_AGENT'|'QUOTAS'|'QUOTES'|'RECYCLING_BIN'|'SALES'|'SALES_MESSAGES'|'SALESFORCE'|'SEQUENCES'|'SETTINGS'|'SIDEKICK'|'SIGNALS'|'SLACK_INTEGRATION'|'SOCIAL'|'SUCCESS'|'TALLY'|'TASK'|'UNKNOWN'|'WAL_INCREMENTAL'|'WORKFLOW_CONTACT_DELETE_ACTION'|'WORKFLOWS'|Source,
-     *     sourceID: string,
-     *     sourceLabel: string,
-     *     sourceMetadata: string,
-     *     sourceUpstreamDeployable: string,
-     *     sourceVid: list<int>,
-     *     timestamp: int,
-     *     unit: string,
-     *     updatedByUserID: int,
-     *     useTimestampAsPersistenceTimestamp: bool,
-     *     value: string,
-     *   }|PropertyValue>,
-     *   endDateTime?: string|\DateTimeInterface,
+     *   customProperties: list<PropertyValue|PropertyValueShape>,
+     *   endDateTime?: \DateTimeInterface,
      *   eventCancelled?: bool,
      *   eventDescription?: string,
      *   eventName?: string,
      *   eventOrganizer?: string,
      *   eventType?: string,
      *   eventURL?: string,
-     *   startDateTime?: string|\DateTimeInterface,
+     *   startDateTime?: \DateTimeInterface,
      * }|EventUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<MarketingEventPublicDefaultResponseV2>
      *
@@ -156,7 +132,7 @@ final class EventsRawService implements EventsRawContract
     public function update(
         string $objectID,
         array|EventUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = EventUpdateParams::parseRequest(
             $params,
@@ -181,6 +157,7 @@ final class EventsRawService implements EventsRawContract
      * The marketing events returned by this endpoint are sorted by objectId.
      *
      * @param array{after?: string, limit?: int}|EventListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<MarketingEventPublicReadResponseV2>>
      *
@@ -188,7 +165,7 @@ final class EventsRawService implements EventsRawContract
      */
     public function list(
         array|EventListParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = EventListParams::parseRequest(
             $params,
@@ -212,6 +189,7 @@ final class EventsRawService implements EventsRawContract
      * Deletes the existing Marketing Event with the specified objectId, if it exists.
      *
      * @param string $objectID The internal ID of the marketing event in HubSpot
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -219,7 +197,7 @@ final class EventsRawService implements EventsRawContract
      */
     public function delete(
         string $objectID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -239,6 +217,7 @@ final class EventsRawService implements EventsRawContract
      * @param array{
      *   externalAccountID: string
      * }|EventCancelByExternalEventIDParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<MarketingEventDefaultResponse>
      *
@@ -247,7 +226,7 @@ final class EventsRawService implements EventsRawContract
     public function cancelByExternalEventID(
         string $externalEventID,
         array|EventCancelByExternalEventIDParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = EventCancelByExternalEventIDParams::parseRequest(
             $params,
@@ -277,9 +256,10 @@ final class EventsRawService implements EventsRawContract
      * @param string $externalEventID path param: The id of the marketing event in the external event application
      * @param array{
      *   externalAccountID: string,
-     *   endDateTime: string|\DateTimeInterface,
-     *   startDateTime: string|\DateTimeInterface,
+     *   endDateTime: \DateTimeInterface,
+     *   startDateTime: \DateTimeInterface,
      * }|EventCompleteByExternalEventIDParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<MarketingEventDefaultResponse>
      *
@@ -288,7 +268,7 @@ final class EventsRawService implements EventsRawContract
     public function completeByExternalEventID(
         string $externalEventID,
         array|EventCompleteByExternalEventIDParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = EventCompleteByExternalEventIDParams::parseRequest(
             $params,
@@ -322,8 +302,9 @@ final class EventsRawService implements EventsRawContract
      * 207: Returned if some objectIds did not correspond to any existing Marketing Events.
      *
      * @param array{
-     *   inputs: list<array{objectID: string}>
+     *   inputs: list<MarketingEventPublicObjectIDDeleteRequest|MarketingEventPublicObjectIDDeleteRequestShape>,
      * }|EventDeleteBatchParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -331,7 +312,7 @@ final class EventsRawService implements EventsRawContract
      */
     public function deleteBatch(
         array|EventDeleteBatchParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = EventDeleteBatchParams::parseRequest(
             $params,
@@ -356,10 +337,9 @@ final class EventsRawService implements EventsRawContract
      * Only Marketing Events created by the same apps will be deleted; events from other apps cannot be removed by this endpoint.
      *
      * @param array{
-     *   inputs: list<array{
-     *     appID: int, externalAccountID: string, externalEventID: string
-     *   }>,
+     *   inputs: list<MarketingEventExternalUniqueIdentifier|MarketingEventExternalUniqueIdentifierShape>,
      * }|EventDeleteBatchByExternalEventIDParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<string>
      *
@@ -367,7 +347,7 @@ final class EventsRawService implements EventsRawContract
      */
     public function deleteBatchByExternalEventID(
         array|EventDeleteBatchByExternalEventIDParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = EventDeleteBatchByExternalEventIDParams::parseRequest(
             $params,
@@ -396,6 +376,7 @@ final class EventsRawService implements EventsRawContract
      * @param array{
      *   externalAccountID: string
      * }|EventDeleteByExternalEventIDParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -404,7 +385,7 @@ final class EventsRawService implements EventsRawContract
     public function deleteByExternalEventID(
         string $externalEventID,
         array|EventDeleteByExternalEventIDParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = EventDeleteByExternalEventIDParams::parseRequest(
             $params,
@@ -430,6 +411,7 @@ final class EventsRawService implements EventsRawContract
      * Returns the details of a Marketing Event with the specified objectId, if it exists.
      *
      * @param string $objectID The internal ID of the marketing event in HubSpot
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<MarketingEventPublicReadResponseV2>
      *
@@ -437,7 +419,7 @@ final class EventsRawService implements EventsRawContract
      */
     public function get(
         string $objectID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -457,6 +439,7 @@ final class EventsRawService implements EventsRawContract
      *
      * @param string $externalEventID The id of the marketing event in the external event application
      * @param array{externalAccountID: string}|EventGetByExternalEventIDParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<MarketingEventPublicReadResponse>
      *
@@ -465,7 +448,7 @@ final class EventsRawService implements EventsRawContract
     public function getByExternalEventID(
         string $externalEventID,
         array|EventGetByExternalEventIDParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = EventGetByExternalEventIDParams::parseRequest(
             $params,
@@ -493,6 +476,7 @@ final class EventsRawService implements EventsRawContract
      * Marketing Events created by other apps will not be included in the results.
      *
      * @param array{q: string}|EventSearchByExternalEventIDParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CollectionResponseSearchPublicResponseWrapperNoPaging>
      *
@@ -500,7 +484,7 @@ final class EventsRawService implements EventsRawContract
      */
     public function searchByExternalEventID(
         array|EventSearchByExternalEventIDParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = EventSearchByExternalEventIDParams::parseRequest(
             $params,
@@ -529,6 +513,7 @@ final class EventsRawService implements EventsRawContract
      * Note: Marketing Events become searchable by externalEventId a few minutes after creation.
      *
      * @param string $externalEventID the id of the marketing event in the external event application
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CollectionResponseWithTotalMarketingEventIdentifiersResponseNoPaging,>
      *
@@ -536,7 +521,7 @@ final class EventsRawService implements EventsRawContract
      */
     public function searchIdentifiersByExternalEventID(
         string $externalEventID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -555,19 +540,9 @@ final class EventsRawService implements EventsRawContract
      * Updates multiple Marketing Events on the portal based on their objectId, if they exist.
      *
      * @param array{
-     *   inputs: list<array{
-     *     customProperties: list<array<string,mixed>|PropertyValue>,
-     *     objectID: string,
-     *     endDateTime?: string|\DateTimeInterface,
-     *     eventCancelled?: bool,
-     *     eventDescription?: string,
-     *     eventName?: string,
-     *     eventOrganizer?: string,
-     *     eventType?: string,
-     *     eventURL?: string,
-     *     startDateTime?: string|\DateTimeInterface,
-     *   }>,
+     *   inputs: list<MarketingEventPublicUpdateRequestFullV2|MarketingEventPublicUpdateRequestFullV2Shape>,
      * }|EventUpdateBatchParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BatchResponseMarketingEventPublicDefaultResponseV2>
      *
@@ -575,7 +550,7 @@ final class EventsRawService implements EventsRawContract
      */
     public function updateBatch(
         array|EventUpdateBatchParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = EventUpdateBatchParams::parseRequest(
             $params,
@@ -602,28 +577,8 @@ final class EventsRawService implements EventsRawContract
      * @param string $externalEventID Path param: The id of the marketing event in the external event application
      * @param array{
      *   externalAccountID: string,
-     *   customProperties: list<array{
-     *     dataSensitivity: 'high'|'none'|'standard'|DataSensitivity,
-     *     isEncrypted: bool,
-     *     isLargeValue: bool,
-     *     name: string,
-     *     persistenceTimestamp: int,
-     *     requestID: string,
-     *     selectedByUser: bool,
-     *     selectedByUserTimestamp: int,
-     *     source: 'ACADEMY'|'ACCEPTANCE_TEST'|'ADS'|'AI_GROUP'|'ANALYTICS'|'API'|'APPROVALS'|'ASSISTS'|'ASSOCIATIONS'|'AUTOMATION_JOURNEY'|'AUTOMATION_PLATFORM'|'AVATARS_SERVICE'|'BATCH_UPDATE'|'BCC_TO_CRM'|'BEHAVIORAL_EVENTS'|'BET_ASSIGNMENT'|'BET_CRM_CONNECTOR'|'BIDEN'|'BILLING'|'BOT'|'CALCULATED'|'CENTRAL_EXCHANGE_RATES'|'CHATSPOT'|'CLONE_OBJECTS'|'COMMUNICATOR'|'COMPANIES'|'COMPANY_FAMILIES'|'COMPANY_INSIGHTS'|'CONTACTS'|'CONTACTS_WEB'|'CONTENT_MEMBERSHIP'|'CONVERSATIONAL_ENRICHMENT'|'CONVERSATIONS'|'CRM_PROCESSES_PLATFORM'|'CRM_UI'|'CRM_UI_BULK_ACTION'|'DATA_ENRICHMENT'|'DATASET'|'DEALS'|'DEFAULT'|'EMAIL'|'EMAIL_INTEGRATION'|'ENGAGEMENTS'|'EXTENSION'|'FILE_MANAGER'|'FLYWHEEL_PRODUCT_DATA_SYNC'|'FORECASTING'|'FORM'|'FORWARD_TO_CRM'|'GMAIL_INTEGRATION'|'GOALS'|'HEISENBERG'|'HELP_DESK'|'HELP_DESK_AI'|'IMPORT'|'INTEGRATION'|'INTEGRATIONS_PLATFORM'|'INTEGRATIONS_SYNC'|'INTENT'|'INTERNAL_PROCESSING'|'LEADIN'|'MARKET_SOURCING'|'MARKETPLACE'|'MEETINGS'|'MERGE_COMPANIES'|'MERGE_CONTACTS'|'MERGE_OBJECTS'|'MICROAPPS'|'MIGRATION'|'MOBILE_ANDROID'|'MOBILE_IOS'|'PAYMENTS'|'PIPELINE_SETTINGS'|'PLAYBOOKS'|'PORTAL_OBJECT_SYNC'|'PORTAL_USER_ASSOCIATOR'|'PRESENTATIONS'|'PROPERTY_RESTORE'|'PROPERTY_SETTINGS'|'PROSPECTING_AGENT'|'QUOTAS'|'QUOTES'|'RECYCLING_BIN'|'SALES'|'SALES_MESSAGES'|'SALESFORCE'|'SEQUENCES'|'SETTINGS'|'SIDEKICK'|'SIGNALS'|'SLACK_INTEGRATION'|'SOCIAL'|'SUCCESS'|'TALLY'|'TASK'|'UNKNOWN'|'WAL_INCREMENTAL'|'WORKFLOW_CONTACT_DELETE_ACTION'|'WORKFLOWS'|Source,
-     *     sourceID: string,
-     *     sourceLabel: string,
-     *     sourceMetadata: string,
-     *     sourceUpstreamDeployable: string,
-     *     sourceVid: list<int>,
-     *     timestamp: int,
-     *     unit: string,
-     *     updatedByUserID: int,
-     *     useTimestampAsPersistenceTimestamp: bool,
-     *     value: string,
-     *   }|PropertyValue>,
-     *   endDateTime?: string|\DateTimeInterface,
+     *   customProperties: list<PropertyValue|PropertyValueShape>,
+     *   endDateTime?: \DateTimeInterface,
      *   eventCancelled?: bool,
      *   eventCompleted?: bool,
      *   eventDescription?: string,
@@ -631,8 +586,9 @@ final class EventsRawService implements EventsRawContract
      *   eventOrganizer?: string,
      *   eventType?: string,
      *   eventURL?: string,
-     *   startDateTime?: string|\DateTimeInterface,
+     *   startDateTime?: \DateTimeInterface,
      * }|EventUpdateByExternalEventIDParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<MarketingEventPublicDefaultResponse>
      *
@@ -641,7 +597,7 @@ final class EventsRawService implements EventsRawContract
     public function updateByExternalEventID(
         string $externalEventID,
         array|EventUpdateByExternalEventIDParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = EventUpdateByExternalEventIDParams::parseRequest(
             $params,
@@ -671,21 +627,9 @@ final class EventsRawService implements EventsRawContract
      * Only Marketing Events originally created by the same app can be updated.
      *
      * @param array{
-     *   inputs: list<array{
-     *     customProperties: list<array<string,mixed>|PropertyValue>,
-     *     eventName: string,
-     *     eventOrganizer: string,
-     *     externalAccountID: string,
-     *     externalEventID: string,
-     *     endDateTime?: string|\DateTimeInterface,
-     *     eventCancelled?: bool,
-     *     eventCompleted?: bool,
-     *     eventDescription?: string,
-     *     eventType?: string,
-     *     eventURL?: string,
-     *     startDateTime?: string|\DateTimeInterface,
-     *   }>,
+     *   inputs: list<MarketingEventCreateRequestParams|MarketingEventCreateRequestParamsShape>,
      * }|EventUpsertBatchParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BatchResponseMarketingEventPublicDefaultResponse>
      *
@@ -693,7 +637,7 @@ final class EventsRawService implements EventsRawContract
      */
     public function upsertBatch(
         array|EventUpsertBatchParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = EventUpsertBatchParams::parseRequest(
             $params,
@@ -717,39 +661,20 @@ final class EventsRawService implements EventsRawContract
      *
      * @param string $externalEventID_ The id of the marketing event in the external event application
      * @param array{
-     *   customProperties: list<array{
-     *     dataSensitivity: 'high'|'none'|'standard'|DataSensitivity,
-     *     isEncrypted: bool,
-     *     isLargeValue: bool,
-     *     name: string,
-     *     persistenceTimestamp: int,
-     *     requestID: string,
-     *     selectedByUser: bool,
-     *     selectedByUserTimestamp: int,
-     *     source: 'ACADEMY'|'ACCEPTANCE_TEST'|'ADS'|'AI_GROUP'|'ANALYTICS'|'API'|'APPROVALS'|'ASSISTS'|'ASSOCIATIONS'|'AUTOMATION_JOURNEY'|'AUTOMATION_PLATFORM'|'AVATARS_SERVICE'|'BATCH_UPDATE'|'BCC_TO_CRM'|'BEHAVIORAL_EVENTS'|'BET_ASSIGNMENT'|'BET_CRM_CONNECTOR'|'BIDEN'|'BILLING'|'BOT'|'CALCULATED'|'CENTRAL_EXCHANGE_RATES'|'CHATSPOT'|'CLONE_OBJECTS'|'COMMUNICATOR'|'COMPANIES'|'COMPANY_FAMILIES'|'COMPANY_INSIGHTS'|'CONTACTS'|'CONTACTS_WEB'|'CONTENT_MEMBERSHIP'|'CONVERSATIONAL_ENRICHMENT'|'CONVERSATIONS'|'CRM_PROCESSES_PLATFORM'|'CRM_UI'|'CRM_UI_BULK_ACTION'|'DATA_ENRICHMENT'|'DATASET'|'DEALS'|'DEFAULT'|'EMAIL'|'EMAIL_INTEGRATION'|'ENGAGEMENTS'|'EXTENSION'|'FILE_MANAGER'|'FLYWHEEL_PRODUCT_DATA_SYNC'|'FORECASTING'|'FORM'|'FORWARD_TO_CRM'|'GMAIL_INTEGRATION'|'GOALS'|'HEISENBERG'|'HELP_DESK'|'HELP_DESK_AI'|'IMPORT'|'INTEGRATION'|'INTEGRATIONS_PLATFORM'|'INTEGRATIONS_SYNC'|'INTENT'|'INTERNAL_PROCESSING'|'LEADIN'|'MARKET_SOURCING'|'MARKETPLACE'|'MEETINGS'|'MERGE_COMPANIES'|'MERGE_CONTACTS'|'MERGE_OBJECTS'|'MICROAPPS'|'MIGRATION'|'MOBILE_ANDROID'|'MOBILE_IOS'|'PAYMENTS'|'PIPELINE_SETTINGS'|'PLAYBOOKS'|'PORTAL_OBJECT_SYNC'|'PORTAL_USER_ASSOCIATOR'|'PRESENTATIONS'|'PROPERTY_RESTORE'|'PROPERTY_SETTINGS'|'PROSPECTING_AGENT'|'QUOTAS'|'QUOTES'|'RECYCLING_BIN'|'SALES'|'SALES_MESSAGES'|'SALESFORCE'|'SEQUENCES'|'SETTINGS'|'SIDEKICK'|'SIGNALS'|'SLACK_INTEGRATION'|'SOCIAL'|'SUCCESS'|'TALLY'|'TASK'|'UNKNOWN'|'WAL_INCREMENTAL'|'WORKFLOW_CONTACT_DELETE_ACTION'|'WORKFLOWS'|Source,
-     *     sourceID: string,
-     *     sourceLabel: string,
-     *     sourceMetadata: string,
-     *     sourceUpstreamDeployable: string,
-     *     sourceVid: list<int>,
-     *     timestamp: int,
-     *     unit: string,
-     *     updatedByUserID: int,
-     *     useTimestampAsPersistenceTimestamp: bool,
-     *     value: string,
-     *   }|PropertyValue>,
+     *   customProperties: list<PropertyValue|PropertyValueShape>,
      *   eventName: string,
      *   eventOrganizer: string,
      *   externalAccountID: string,
      *   externalEventID: string,
-     *   endDateTime?: string|\DateTimeInterface,
+     *   endDateTime?: \DateTimeInterface,
      *   eventCancelled?: bool,
      *   eventCompleted?: bool,
      *   eventDescription?: string,
      *   eventType?: string,
      *   eventURL?: string,
-     *   startDateTime?: string|\DateTimeInterface,
+     *   startDateTime?: \DateTimeInterface,
      * }|EventUpsertByExternalEventIDParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<MarketingEventPublicDefaultResponse>
      *
@@ -758,7 +683,7 @@ final class EventsRawService implements EventsRawContract
     public function upsertByExternalEventID(
         string $externalEventID_,
         array|EventUpsertByExternalEventIDParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = EventUpsertByExternalEventIDParams::parseRequest(
             $params,
@@ -784,13 +709,9 @@ final class EventsRawService implements EventsRawContract
      * @param array{
      *   externalEventID: string,
      *   externalAccountID: string,
-     *   inputs: list<array{
-     *     contactProperties: array<string,string>,
-     *     email: string,
-     *     interactionDateTime: int,
-     *     properties: array<string,string>,
-     *   }>,
+     *   inputs: list<MarketingEventEmailSubscriber|MarketingEventEmailSubscriberShape>,
      * }|EventUpsertSubscriberStateByEmailParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<string>
      *
@@ -799,7 +720,7 @@ final class EventsRawService implements EventsRawContract
     public function upsertSubscriberStateByEmail(
         string $subscriberState,
         array|EventUpsertSubscriberStateByEmailParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = EventUpsertSubscriberStateByEmailParams::parseRequest(
             $params,
@@ -840,10 +761,9 @@ final class EventsRawService implements EventsRawContract
      * @param array{
      *   externalEventID: string,
      *   externalAccountID: string,
-     *   inputs: list<array{
-     *     interactionDateTime: int, properties: array<string,string>, vid: int
-     *   }>,
+     *   inputs: list<MarketingEventSubscriber|MarketingEventSubscriberShape>,
      * }|EventUpsertSubscriberStateByIDParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<string>
      *
@@ -852,7 +772,7 @@ final class EventsRawService implements EventsRawContract
     public function upsertSubscriberStateByID(
         string $subscriberState,
         array|EventUpsertSubscriberStateByIDParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = EventUpsertSubscriberStateByIDParams::parseRequest(
             $params,

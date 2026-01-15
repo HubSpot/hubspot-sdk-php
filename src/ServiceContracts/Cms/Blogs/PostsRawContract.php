@@ -28,12 +28,16 @@ use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface PostsRawContract
 {
     /**
      * @api
      *
      * @param array<string,mixed>|PostCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BlogPost>
      *
@@ -41,7 +45,7 @@ interface PostsRawContract
      */
     public function create(
         array|PostCreateParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -49,6 +53,7 @@ interface PostsRawContract
      *
      * @param string $objectID path param: The ID of the blog post to update
      * @param array<string,mixed>|PostUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BlogPost>
      *
@@ -57,13 +62,14 @@ interface PostsRawContract
     public function update(
         string $objectID,
         array|PostUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|PostListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<BlogPost>>
      *
@@ -71,7 +77,7 @@ interface PostsRawContract
      */
     public function list(
         array|PostListParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -79,6 +85,7 @@ interface PostsRawContract
      *
      * @param string $objectID the ID of the blog post to delete
      * @param array<string,mixed>|PostDeleteParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -87,13 +94,14 @@ interface PostsRawContract
     public function delete(
         string $objectID,
         array|PostDeleteParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|PostAttachToLangGroupParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -101,13 +109,14 @@ interface PostsRawContract
      */
     public function attachToLangGroup(
         array|PostAttachToLangGroupParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|PostCloneParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BlogPost>
      *
@@ -115,13 +124,14 @@ interface PostsRawContract
      */
     public function clone(
         array|PostCloneParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|PostCreateLangVariationParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BlogPost>
      *
@@ -129,13 +139,14 @@ interface PostsRawContract
      */
     public function createLangVariation(
         array|PostCreateLangVariationParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|PostDetachFromLangGroupParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -143,7 +154,7 @@ interface PostsRawContract
      */
     public function detachFromLangGroup(
         array|PostDetachFromLangGroupParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -151,6 +162,7 @@ interface PostsRawContract
      *
      * @param string $objectID the ID of the blog post to retrieve
      * @param array<string,mixed>|PostGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BlogPost>
      *
@@ -159,13 +171,14 @@ interface PostsRawContract
     public function get(
         string $objectID,
         array|PostGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param string $objectID the ID of the blog post to retrieve the draft of
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BlogPost>
      *
@@ -173,7 +186,7 @@ interface PostsRawContract
      */
     public function getDraftByID(
         string $objectID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 
     /**
@@ -181,6 +194,7 @@ interface PostsRawContract
      *
      * @param string $revisionID the ID of the version to retrieve
      * @param array<string,mixed>|PostGetPreviousVersionParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<VersionBlogPost>
      *
@@ -189,7 +203,7 @@ interface PostsRawContract
     public function getPreviousVersion(
         string $revisionID,
         array|PostGetPreviousVersionParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -197,6 +211,7 @@ interface PostsRawContract
      *
      * @param string $objectID the ID of the blog post to retrieve previous versions of
      * @param array<string,mixed>|PostGetPreviousVersionsParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<VersionBlogPost>>
      *
@@ -205,13 +220,14 @@ interface PostsRawContract
     public function getPreviousVersions(
         string $objectID,
         array|PostGetPreviousVersionsParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param string $objectID the ID of the post to publish
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -219,13 +235,14 @@ interface PostsRawContract
      */
     public function pushLive(
         string $objectID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param string $objectID the ID of the blog post to reset
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -233,7 +250,7 @@ interface PostsRawContract
      */
     public function resetDraft(
         string $objectID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 
     /**
@@ -241,6 +258,7 @@ interface PostsRawContract
      *
      * @param string $revisionID the ID of the version to restore the blog post to
      * @param array<string,mixed>|PostRestorePreviousVersionParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BlogPost>
      *
@@ -249,7 +267,7 @@ interface PostsRawContract
     public function restorePreviousVersion(
         string $revisionID,
         array|PostRestorePreviousVersionParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -257,6 +275,7 @@ interface PostsRawContract
      *
      * @param int $revisionID the ID of the version to restore the blog post to
      * @param array<string,mixed>|PostRestorePreviousVersionToDraftParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BlogPost>
      *
@@ -265,13 +284,14 @@ interface PostsRawContract
     public function restorePreviousVersionToDraft(
         int $revisionID,
         array|PostRestorePreviousVersionToDraftParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|PostScheduleParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -279,13 +299,14 @@ interface PostsRawContract
      */
     public function schedule(
         array|PostScheduleParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|PostSetLangPrimaryParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -293,7 +314,7 @@ interface PostsRawContract
      */
     public function setLangPrimary(
         array|PostSetLangPrimaryParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -301,6 +322,7 @@ interface PostsRawContract
      *
      * @param string $objectID the ID of the blog post to update the draft of
      * @param array<string,mixed>|PostUpdateDraftParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BlogPost>
      *
@@ -309,13 +331,14 @@ interface PostsRawContract
     public function updateDraft(
         string $objectID,
         array|PostUpdateDraftParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|PostUpdateLangsParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -323,6 +346,6 @@ interface PostsRawContract
      */
     public function updateLangs(
         array|PostUpdateLangsParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

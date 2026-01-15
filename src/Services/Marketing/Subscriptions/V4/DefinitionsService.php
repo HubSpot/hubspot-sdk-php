@@ -11,6 +11,9 @@ use HubspotSDK\Marketing\Subscriptions\V4\ActionResponseWithResultsSubscriptionD
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Marketing\Subscriptions\V4\DefinitionsContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class DefinitionsService implements DefinitionsContract
 {
     /**
@@ -33,13 +36,14 @@ final class DefinitionsService implements DefinitionsContract
      *
      * @param int $businessUnitID If you have the [business unit add-on](https://developers.hubspot.com/beta-docs/guides/api/settings/business-units-api), include this parameter to filter results by business unit ID. The default Account business unit will always use `0`.
      * @param bool $includeTranslations set to `true` to return subscription translations associated with each definition
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function list(
         ?int $businessUnitID = null,
         ?bool $includeTranslations = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): ActionResponseWithResultsSubscriptionDefinition {
         $params = Util::removeNulls(
             [

@@ -17,7 +17,7 @@ use HubspotSDK\Paging;
  * @phpstan-import-type PagingShape from \HubspotSDK\Paging
  *
  * @phpstan-type CollectionResponseWithTotalVersionPublicEmailShape = array{
- *   results: list<VersionPublicEmailShape>,
+ *   results: list<VersionPublicEmail|VersionPublicEmailShape>,
  *   total: int,
  *   paging?: null|Paging|PagingShape,
  * }
@@ -70,7 +70,7 @@ final class CollectionResponseWithTotalVersionPublicEmail implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<VersionPublicEmailShape> $results
+     * @param list<VersionPublicEmail|VersionPublicEmailShape> $results
      * @param Paging|PagingShape|null $paging
      */
     public static function with(
@@ -91,7 +91,7 @@ final class CollectionResponseWithTotalVersionPublicEmail implements BaseModel
     /**
      * Collection of emails.
      *
-     * @param list<VersionPublicEmailShape> $results
+     * @param list<VersionPublicEmail|VersionPublicEmailShape> $results
      */
     public function withResults(array $results): self
     {

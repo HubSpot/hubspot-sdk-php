@@ -11,6 +11,9 @@ use HubspotSDK\Crm\Extensions\Calling\RecordingSettingsResponse;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Extensions\Calling\RecordingSettingsContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class RecordingSettingsService implements RecordingSettingsContract
 {
     /**
@@ -29,12 +32,14 @@ final class RecordingSettingsService implements RecordingSettingsContract
     /**
      * @api
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @throws APIException
      */
     public function create(
         int $appID,
         string $urlToRetrieveAuthedRecording,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): RecordingSettingsResponse {
         $params = Util::removeNulls(
             ['urlToRetrieveAuthedRecording' => $urlToRetrieveAuthedRecording]
@@ -49,12 +54,14 @@ final class RecordingSettingsService implements RecordingSettingsContract
     /**
      * @api
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @throws APIException
      */
     public function update(
         int $appID,
         ?string $urlToRetrieveAuthedRecording = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): RecordingSettingsResponse {
         $params = Util::removeNulls(
             ['urlToRetrieveAuthedRecording' => $urlToRetrieveAuthedRecording]
@@ -69,11 +76,13 @@ final class RecordingSettingsService implements RecordingSettingsContract
     /**
      * @api
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @throws APIException
      */
     public function get(
         int $appID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): RecordingSettingsResponse {
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->get($appID, requestOptions: $requestOptions);
@@ -84,11 +93,13 @@ final class RecordingSettingsService implements RecordingSettingsContract
     /**
      * @api
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @throws APIException
      */
     public function markReady(
         int $engagementID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): mixed {
         $params = Util::removeNulls(['engagementID' => $engagementID]);
 

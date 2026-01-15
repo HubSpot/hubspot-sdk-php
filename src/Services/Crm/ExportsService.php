@@ -12,6 +12,9 @@ use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\ExportsContract;
 use HubspotSDK\TaskLocator;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class ExportsService implements ExportsContract
 {
     /**
@@ -32,10 +35,12 @@ final class ExportsService implements ExportsContract
      *
      * Begins exporting CRM data for the portal as specified in the request body
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @throws APIException
      */
     public function createAsync(
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): TaskLocator {
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->createAsync(requestOptions: $requestOptions);
@@ -49,12 +54,13 @@ final class ExportsService implements ExportsContract
      * Retrieve detailed information about a specific CRM export, including its current state and properties.
      *
      * @param int $exportID the unique ID of the export to retrieve
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function get(
         int $exportID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): PublicExportResponse {
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->get($exportID, requestOptions: $requestOptions);
@@ -68,12 +74,13 @@ final class ExportsService implements ExportsContract
      * Returns the status of the export with taskId, including the URL of the resulting file if the export status is COMPLETE
      *
      * @param int $taskID the unique ID of the export
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function getStatus(
         int $taskID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): ActionResponseWithSingleResultUri {
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->getStatus($taskID, requestOptions: $requestOptions);

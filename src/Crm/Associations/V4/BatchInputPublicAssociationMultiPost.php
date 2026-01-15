@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-import-type PublicAssociationMultiPostShape from \HubspotSDK\Crm\Associations\V4\PublicAssociationMultiPost
  *
  * @phpstan-type BatchInputPublicAssociationMultiPostShape = array{
- *   inputs: list<PublicAssociationMultiPostShape>
+ *   inputs: list<PublicAssociationMultiPost|PublicAssociationMultiPostShape>
  * }
  */
 final class BatchInputPublicAssociationMultiPost implements BaseModel
@@ -48,7 +48,7 @@ final class BatchInputPublicAssociationMultiPost implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicAssociationMultiPostShape> $inputs
+     * @param list<PublicAssociationMultiPost|PublicAssociationMultiPostShape> $inputs
      */
     public static function with(array $inputs): self
     {
@@ -60,7 +60,7 @@ final class BatchInputPublicAssociationMultiPost implements BaseModel
     }
 
     /**
-     * @param list<PublicAssociationMultiPostShape> $inputs
+     * @param list<PublicAssociationMultiPost|PublicAssociationMultiPostShape> $inputs
      */
     public function withInputs(array $inputs): self
     {

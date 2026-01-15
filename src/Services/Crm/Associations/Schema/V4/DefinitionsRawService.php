@@ -15,6 +15,9 @@ use HubspotSDK\Crm\Associations\Schema\V4\Definitions\DefinitionUpdateLabelParam
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Associations\Schema\V4\DefinitionsRawContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class DefinitionsRawService implements DefinitionsRawContract
 {
     // @phpstan-ignore-next-line
@@ -26,10 +29,11 @@ final class DefinitionsRawService implements DefinitionsRawContract
     /**
      * @api
      *
-     * @param string $toObjectType Path param:
+     * @param string $toObjectType Path param
      * @param array{
      *   fromObjectType: string, label: string, name: string, inverseLabel?: string
      * }|DefinitionCreateLabelParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CollectionResponseAssociationSpecWithLabel>
      *
@@ -38,7 +42,7 @@ final class DefinitionsRawService implements DefinitionsRawContract
     public function createLabel(
         string $toObjectType,
         array|DefinitionCreateLabelParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = DefinitionCreateLabelParams::parseRequest(
             $params,
@@ -65,6 +69,7 @@ final class DefinitionsRawService implements DefinitionsRawContract
      * @param array{
      *   fromObjectType: string, toObjectType: string
      * }|DefinitionDeleteLabelParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -73,7 +78,7 @@ final class DefinitionsRawService implements DefinitionsRawContract
     public function deleteLabel(
         int $associationTypeID,
         array|DefinitionDeleteLabelParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = DefinitionDeleteLabelParams::parseRequest(
             $params,
@@ -102,6 +107,7 @@ final class DefinitionsRawService implements DefinitionsRawContract
      * @api
      *
      * @param array{fromObjectType: string}|DefinitionListLabelsParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CollectionResponseAssociationSpecWithLabel>
      *
@@ -110,7 +116,7 @@ final class DefinitionsRawService implements DefinitionsRawContract
     public function listLabels(
         string $toObjectType,
         array|DefinitionListLabelsParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = DefinitionListLabelsParams::parseRequest(
             $params,
@@ -133,13 +139,14 @@ final class DefinitionsRawService implements DefinitionsRawContract
     /**
      * @api
      *
-     * @param string $toObjectType Path param:
+     * @param string $toObjectType Path param
      * @param array{
      *   fromObjectType: string,
      *   associationTypeID: int,
      *   label: string,
      *   inverseLabel?: string,
      * }|DefinitionUpdateLabelParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -148,7 +155,7 @@ final class DefinitionsRawService implements DefinitionsRawContract
     public function updateLabel(
         string $toObjectType,
         array|DefinitionUpdateLabelParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = DefinitionUpdateLabelParams::parseRequest(
             $params,

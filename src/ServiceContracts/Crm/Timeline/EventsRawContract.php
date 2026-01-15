@@ -14,12 +14,16 @@ use HubspotSDK\Crm\Timeline\Events\EventGetParams;
 use HubspotSDK\Crm\Timeline\TimelineEventResponse;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface EventsRawContract
 {
     /**
      * @api
      *
      * @param array<string,mixed>|EventCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<TimelineEventResponse>
      *
@@ -27,13 +31,14 @@ interface EventsRawContract
      */
     public function create(
         array|EventCreateParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|EventBatchCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -41,7 +46,7 @@ interface EventsRawContract
      */
     public function batchCreate(
         array|EventBatchCreateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -49,6 +54,7 @@ interface EventsRawContract
      *
      * @param string $eventID the event ID
      * @param array<string,mixed>|EventGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<TimelineEventResponse>
      *
@@ -57,7 +63,7 @@ interface EventsRawContract
     public function get(
         string $eventID,
         array|EventGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -65,6 +71,7 @@ interface EventsRawContract
      *
      * @param string $eventID the event ID
      * @param array<string,mixed>|EventGetDetailParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<EventDetail>
      *
@@ -73,6 +80,6 @@ interface EventsRawContract
     public function getDetail(
         string $eventID,
         array|EventGetDetailParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Services\Crm\Objects;
 
-use HubspotSDK\AssociationSpec;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\Crm\CreatedResponseSimplePublicObject;
+use HubspotSDK\Crm\FilterGroup;
 use HubspotSDK\Crm\Objects\Custom\CustomCreateParams;
 use HubspotSDK\Crm\Objects\Custom\CustomDeleteParams;
 use HubspotSDK\Crm\Objects\Custom\CustomGetParams;
@@ -17,13 +17,18 @@ use HubspotSDK\Crm\Objects\Custom\CustomListParams;
 use HubspotSDK\Crm\Objects\Custom\CustomMergeParams;
 use HubspotSDK\Crm\Objects\Custom\CustomSearchParams;
 use HubspotSDK\Crm\Objects\Custom\CustomUpdateParams;
+use HubspotSDK\Crm\PublicAssociationsForObject;
 use HubspotSDK\Crm\SimplePublicObject;
 use HubspotSDK\Crm\SimplePublicObjectWithAssociations;
 use HubspotSDK\Page;
-use HubspotSDK\PublicObjectID;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Objects\CustomRawContract;
 
+/**
+ * @phpstan-import-type PublicAssociationsForObjectShape from \HubspotSDK\Crm\PublicAssociationsForObject
+ * @phpstan-import-type FilterGroupShape from \HubspotSDK\Crm\FilterGroup
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class CustomRawService implements CustomRawContract
 {
     // @phpstan-ignore-next-line
@@ -38,12 +43,10 @@ final class CustomRawService implements CustomRawContract
      * Create a CRM object with the given properties and return a copy of the object, including the ID. Documentation and examples for creating standard objects is provided.
      *
      * @param array{
-     *   associations: list<array{
-     *     to: array<string,mixed>|PublicObjectID,
-     *     types: list<array<string,mixed>|AssociationSpec>,
-     *   }>,
+     *   associations: list<PublicAssociationsForObject|PublicAssociationsForObjectShape>,
      *   properties: array<string,string>,
      * }|CustomCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CreatedResponseSimplePublicObject>
      *
@@ -52,7 +55,7 @@ final class CustomRawService implements CustomRawContract
     public function create(
         string $objectType,
         array|CustomCreateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = CustomCreateParams::parseRequest(
             $params,
@@ -74,10 +77,11 @@ final class CustomRawService implements CustomRawContract
      *
      * Perform a partial update of an Object identified by `{objectId}`or optionally a unique property value as specified by the `idProperty` query param. `{objectId}` refers to the internal object ID by default, and the `idProperty` query param refers to a property whose values are unique for the object. Provided property values will be overwritten. Read-only and non-existent properties will result in an error. Properties values can be cleared by passing an empty string.
      *
-     * @param string $objectID Path param:
+     * @param string $objectID Path param
      * @param array{
      *   objectType: string, properties: array<string,string>, idProperty?: string
      * }|CustomUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SimplePublicObject>
      *
@@ -86,7 +90,7 @@ final class CustomRawService implements CustomRawContract
     public function update(
         string $objectID,
         array|CustomUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = CustomUpdateParams::parseRequest(
             $params,
@@ -123,6 +127,7 @@ final class CustomRawService implements CustomRawContract
      *   properties?: list<string>,
      *   propertiesWithHistory?: list<string>,
      * }|CustomListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<SimplePublicObjectWithAssociations>>
      *
@@ -131,7 +136,7 @@ final class CustomRawService implements CustomRawContract
     public function list(
         string $objectType,
         array|CustomListParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = CustomListParams::parseRequest(
             $params,
@@ -155,6 +160,7 @@ final class CustomRawService implements CustomRawContract
      * Move an Object identified by `{objectId}` to the recycling bin.
      *
      * @param array{objectType: string}|CustomDeleteParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -163,7 +169,7 @@ final class CustomRawService implements CustomRawContract
     public function delete(
         string $objectID,
         array|CustomDeleteParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = CustomDeleteParams::parseRequest(
             $params,
@@ -186,7 +192,7 @@ final class CustomRawService implements CustomRawContract
      *
      * Read an Object identified by `{objectId}`. `{objectId}` refers to the internal object ID by default, or optionally any unique property value as specified by the `idProperty` query param.  Control what is returned via the `properties` query param.
      *
-     * @param string $objectID Path param:
+     * @param string $objectID Path param
      * @param array{
      *   objectType: string,
      *   archived?: bool,
@@ -195,6 +201,7 @@ final class CustomRawService implements CustomRawContract
      *   properties?: list<string>,
      *   propertiesWithHistory?: list<string>,
      * }|CustomGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SimplePublicObjectWithAssociations>
      *
@@ -203,7 +210,7 @@ final class CustomRawService implements CustomRawContract
     public function get(
         string $objectID,
         array|CustomGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = CustomGetParams::parseRequest(
             $params,
@@ -230,6 +237,7 @@ final class CustomRawService implements CustomRawContract
      * @param array{
      *   objectIDToMerge: string, primaryObjectID: string
      * }|CustomMergeParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SimplePublicObject>
      *
@@ -238,7 +246,7 @@ final class CustomRawService implements CustomRawContract
     public function merge(
         string $objectType,
         array|CustomMergeParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = CustomMergeParams::parseRequest(
             $params,
@@ -260,12 +268,13 @@ final class CustomRawService implements CustomRawContract
      *
      * @param array{
      *   after: string,
-     *   filterGroups: list<array{filters: list<array<string,mixed>>}>,
+     *   filterGroups: list<FilterGroup|FilterGroupShape>,
      *   limit: int,
      *   properties: list<string>,
      *   sorts: list<string>,
      *   query?: string,
      * }|CustomSearchParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CollectionResponseWithTotalSimplePublicObject>
      *
@@ -274,7 +283,7 @@ final class CustomRawService implements CustomRawContract
     public function search(
         string $objectType,
         array|CustomSearchParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = CustomSearchParams::parseRequest(
             $params,

@@ -29,6 +29,13 @@ use HubspotSDK\Crm\Lists\PublicMembershipSettings;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\ListsRawContract;
 
+/**
+ * @phpstan-import-type FilterBranchShape from \HubspotSDK\Crm\Lists\ListCreateParams\FilterBranch
+ * @phpstan-import-type PublicListPermissionsShape from \HubspotSDK\Crm\Lists\PublicListPermissions
+ * @phpstan-import-type PublicMembershipSettingsShape from \HubspotSDK\Crm\Lists\PublicMembershipSettings
+ * @phpstan-import-type FilterBranchShape from \HubspotSDK\Crm\Lists\ListUpdateFiltersParams\FilterBranch as FilterBranchShape1
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class ListsRawService implements ListsRawContract
 {
     // @phpstan-ignore-next-line
@@ -47,15 +54,12 @@ final class ListsRawService implements ListsRawContract
      *   objectTypeID: string,
      *   processingType: string,
      *   customProperties?: array<string,string>,
-     *   filterBranch?: array<string,mixed>,
+     *   filterBranch?: FilterBranchShape,
      *   listFolderID?: int,
-     *   listPermissions?: array{
-     *     teamsWithEditAccess: list<int>, usersWithEditAccess: list<int>
-     *   }|PublicListPermissions,
-     *   membershipSettings?: array{
-     *     includeUnassigned?: bool, membershipTeamID?: int
-     *   }|PublicMembershipSettings,
+     *   listPermissions?: PublicListPermissions|PublicListPermissionsShape,
+     *   membershipSettings?: PublicMembershipSettings|PublicMembershipSettingsShape,
      * }|ListCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ListCreateResponse>
      *
@@ -63,7 +67,7 @@ final class ListsRawService implements ListsRawContract
      */
     public function create(
         array|ListCreateParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = ListCreateParams::parseRequest(
             $params,
@@ -88,6 +92,7 @@ final class ListsRawService implements ListsRawContract
      * @param array{
      *   includeFilters?: bool, listIDs?: list<string>
      * }|ListListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ListsByIDResponse>
      *
@@ -95,7 +100,7 @@ final class ListsRawService implements ListsRawContract
      */
     public function list(
         array|ListListParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = ListListParams::parseRequest(
             $params,
@@ -118,6 +123,7 @@ final class ListsRawService implements ListsRawContract
      * Delete a list by **ILS list ID**. Lists deleted through this endpoint can be restored up to 90-days following the delete. After 90-days, the list is purged and can no longer be restored.
      *
      * @param string $listID the **ILS ID** of the list to delete
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -125,7 +131,7 @@ final class ListsRawService implements ListsRawContract
      */
     public function delete(
         string $listID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -142,6 +148,7 @@ final class ListsRawService implements ListsRawContract
      * Delete an existing scheduled conversion for a list.
      *
      * @param string $listID the ID of the list that you want to cancel the conversion for
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -149,7 +156,7 @@ final class ListsRawService implements ListsRawContract
      */
     public function deleteScheduleConversion(
         string $listID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -167,6 +174,7 @@ final class ListsRawService implements ListsRawContract
      *
      * @param string $listID the **ILS ID** of the list to fetch
      * @param array{includeFilters?: bool}|ListGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ListFetchResponse>
      *
@@ -175,7 +183,7 @@ final class ListsRawService implements ListsRawContract
     public function get(
         string $listID,
         array|ListGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = ListGetParams::parseRequest(
             $params,
@@ -201,6 +209,7 @@ final class ListsRawService implements ListsRawContract
      * @param array{
      *   objectTypeID: string, includeFilters?: bool
      * }|ListGetByObjectTypeIDAndNameParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ListFetchResponse>
      *
@@ -209,7 +218,7 @@ final class ListsRawService implements ListsRawContract
     public function getByObjectTypeIDAndName(
         string $listName,
         array|ListGetByObjectTypeIDAndNameParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = ListGetByObjectTypeIDAndNameParams::parseRequest(
             $params,
@@ -236,6 +245,7 @@ final class ListsRawService implements ListsRawContract
      * Retrieve the conversion details for a list. This can be used to check for an upcoming conversion, or to get the details of when a list was already converted.
      *
      * @param string $listID the ID of the list to schedule the conversion for
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicListConversionResponse>
      *
@@ -243,7 +253,7 @@ final class ListsRawService implements ListsRawContract
      */
     public function getScheduleConversion(
         string $listID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -260,6 +270,7 @@ final class ListsRawService implements ListsRawContract
      * Restore a previously deleted list by **ILS list ID**. Deleted lists are eligible to be restored up-to 90-days after the list has been deleted.
      *
      * @param string $listID the **ILS ID** of the list to restore
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -267,7 +278,7 @@ final class ListsRawService implements ListsRawContract
      */
     public function restore(
         string $listID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -285,13 +296,14 @@ final class ListsRawService implements ListsRawContract
      *
      * @param string $listID the ID of the list to schedule the conversion for
      * @param array{
-     *   conversionType: 'INACTIVITY'|ConversionType,
+     *   conversionType: ConversionType|value-of<ConversionType>,
      *   day: int,
      *   month: int,
      *   year: int,
      *   offset: int,
-     *   timeUnit: 'DAY'|'MONTH'|'WEEK'|TimeUnit,
+     *   timeUnit: TimeUnit|value-of<TimeUnit>,
      * }|ListScheduleConversionParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicListConversionResponse>
      *
@@ -300,7 +312,7 @@ final class ListsRawService implements ListsRawContract
     public function scheduleConversion(
         string $listID,
         array|ListScheduleConversionParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = ListScheduleConversionParams::parseRequest(
             $params,
@@ -331,6 +343,7 @@ final class ListsRawService implements ListsRawContract
      *   query?: string,
      *   sort?: string,
      * }|ListSearchParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ListSearchResponse>
      *
@@ -338,7 +351,7 @@ final class ListsRawService implements ListsRawContract
      */
     public function search(
         array|ListSearchParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = ListSearchParams::parseRequest(
             $params,
@@ -362,8 +375,9 @@ final class ListsRawService implements ListsRawContract
      *
      * @param string $listID path param: The **ILS ID** of the list to update
      * @param array{
-     *   filterBranch: array<string,mixed>, enrollObjectsInWorkflows?: bool
+     *   filterBranch: FilterBranchShape1, enrollObjectsInWorkflows?: bool
      * }|ListUpdateFiltersParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ListUpdateResponse>
      *
@@ -372,7 +386,7 @@ final class ListsRawService implements ListsRawContract
     public function updateFilters(
         string $listID,
         array|ListUpdateFiltersParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = ListUpdateFiltersParams::parseRequest(
             $params,
@@ -400,6 +414,7 @@ final class ListsRawService implements ListsRawContract
      * @param array{
      *   includeFilters?: bool, listName?: string
      * }|ListUpdateNameParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ListUpdateResponse>
      *
@@ -408,7 +423,7 @@ final class ListsRawService implements ListsRawContract
     public function updateName(
         string $listID,
         array|ListUpdateNameParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = ListUpdateNameParams::parseRequest(
             $params,

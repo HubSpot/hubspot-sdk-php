@@ -13,7 +13,7 @@ use HubspotSDK\Crm\SimplePublicObject;
  * @phpstan-import-type SimplePublicObjectShape from \HubspotSDK\Crm\SimplePublicObject
  *
  * @phpstan-type DealToDealSplitsShape = array{
- *   id: string, splits: list<SimplePublicObjectShape>
+ *   id: string, splits: list<SimplePublicObject|SimplePublicObjectShape>
  * }
  */
 final class DealToDealSplits implements BaseModel
@@ -52,7 +52,7 @@ final class DealToDealSplits implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<SimplePublicObjectShape> $splits
+     * @param list<SimplePublicObject|SimplePublicObjectShape> $splits
      */
     public static function with(string $id, array $splits): self
     {
@@ -73,7 +73,7 @@ final class DealToDealSplits implements BaseModel
     }
 
     /**
-     * @param list<SimplePublicObjectShape> $splits
+     * @param list<SimplePublicObject|SimplePublicObjectShape> $splits
      */
     public function withSplits(array $splits): self
     {

@@ -14,9 +14,16 @@ use HubspotSDK\Marketing\Events\Attendance\AttendanceCreateByExternalEventIDAndC
 use HubspotSDK\Marketing\Events\Attendance\AttendanceCreateByExternalEventIDAndEmailParams;
 use HubspotSDK\Marketing\Events\BatchResponseSubscriberEmailResponse;
 use HubspotSDK\Marketing\Events\BatchResponseSubscriberVidResponse;
+use HubspotSDK\Marketing\Events\MarketingEventEmailSubscriber;
+use HubspotSDK\Marketing\Events\MarketingEventSubscriber;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Marketing\Events\AttendanceRawContract;
 
+/**
+ * @phpstan-import-type MarketingEventSubscriberShape from \HubspotSDK\Marketing\Events\MarketingEventSubscriber
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type MarketingEventEmailSubscriberShape from \HubspotSDK\Marketing\Events\MarketingEventEmailSubscriber
+ */
 final class AttendanceRawService implements AttendanceRawContract
 {
     // @phpstan-ignore-next-line
@@ -41,10 +48,9 @@ final class AttendanceRawService implements AttendanceRawContract
      * @param string $subscriberState Path param: The attendance state value. It may be 'register', 'attend' or 'cancel'
      * @param array{
      *   objectID: string,
-     *   inputs: list<array{
-     *     interactionDateTime: int, properties: array<string,string>, vid: int
-     *   }>,
+     *   inputs: list<MarketingEventSubscriber|MarketingEventSubscriberShape>,
      * }|AttendanceCreateByEventIDAndContactIDParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BatchResponseSubscriberVidResponse>
      *
@@ -53,7 +59,7 @@ final class AttendanceRawService implements AttendanceRawContract
     public function createByEventIDAndContactID(
         string $subscriberState,
         array|AttendanceCreateByEventIDAndContactIDParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = AttendanceCreateByEventIDAndContactIDParams::parseRequest(
             $params,
@@ -94,13 +100,9 @@ final class AttendanceRawService implements AttendanceRawContract
      * @param string $subscriberState Path param: The attendance state value. It may be 'register', 'attend' or 'cancel'
      * @param array{
      *   objectID: string,
-     *   inputs: list<array{
-     *     contactProperties: array<string,string>,
-     *     email: string,
-     *     interactionDateTime: int,
-     *     properties: array<string,string>,
-     *   }>,
+     *   inputs: list<MarketingEventEmailSubscriber|MarketingEventEmailSubscriberShape>,
      * }|AttendanceCreateByEventIDAndEmailParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BatchResponseSubscriberEmailResponse>
      *
@@ -109,7 +111,7 @@ final class AttendanceRawService implements AttendanceRawContract
     public function createByEventIDAndEmail(
         string $subscriberState,
         array|AttendanceCreateByEventIDAndEmailParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = AttendanceCreateByEventIDAndEmailParams::parseRequest(
             $params,
@@ -148,11 +150,10 @@ final class AttendanceRawService implements AttendanceRawContract
      * @param string $subscriberState Path param: The new subscriber state for the HubSpot contacts and the specified marketing event. For example: 'register', 'attend' or 'cancel'.
      * @param array{
      *   externalEventID: string,
-     *   inputs: list<array{
-     *     interactionDateTime: int, properties: array<string,string>, vid: int
-     *   }>,
+     *   inputs: list<MarketingEventSubscriber|MarketingEventSubscriberShape>,
      *   externalAccountID?: string,
      * }|AttendanceCreateByExternalEventIDAndContactIDParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BatchResponseSubscriberVidResponse>
      *
@@ -161,7 +162,7 @@ final class AttendanceRawService implements AttendanceRawContract
     public function createByExternalEventIDAndContactID(
         string $subscriberState,
         array|AttendanceCreateByExternalEventIDAndContactIDParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = AttendanceCreateByExternalEventIDAndContactIDParams::parseRequest(
             $params,
@@ -210,14 +211,10 @@ final class AttendanceRawService implements AttendanceRawContract
      * @param string $subscriberState Path param: The new subscriber state for the HubSpot contacts and the specified marketing event. For example: 'register', 'attend' or 'cancel'.
      * @param array{
      *   externalEventID: string,
-     *   inputs: list<array{
-     *     contactProperties: array<string,string>,
-     *     email: string,
-     *     interactionDateTime: int,
-     *     properties: array<string,string>,
-     *   }>,
+     *   inputs: list<MarketingEventEmailSubscriber|MarketingEventEmailSubscriberShape>,
      *   externalAccountID?: string,
      * }|AttendanceCreateByExternalEventIDAndEmailParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BatchResponseSubscriberEmailResponse>
      *
@@ -226,7 +223,7 @@ final class AttendanceRawService implements AttendanceRawContract
     public function createByExternalEventIDAndEmail(
         string $subscriberState,
         array|AttendanceCreateByExternalEventIDAndEmailParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = AttendanceCreateByExternalEventIDAndEmailParams::parseRequest(
             $params,

@@ -21,7 +21,7 @@ use HubspotSDK\Scheduler\Meetings\ExternalEmailReminderSchedule;
  *
  * @phpstan-type CalendarCreateParamsShape = array{
  *   organizerUserID: string,
- *   associations: list<ExternalAssociationCreateRequestShape>,
+ *   associations: list<ExternalAssociationCreateRequest|ExternalAssociationCreateRequestShape>,
  *   emailReminderSchedule: ExternalEmailReminderSchedule|ExternalEmailReminderScheduleShape,
  *   properties: ExternalCalendarMeetingEventCreateProperties|ExternalCalendarMeetingEventCreatePropertiesShape,
  *   timezone: string,
@@ -84,7 +84,7 @@ final class CalendarCreateParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<ExternalAssociationCreateRequestShape> $associations
+     * @param list<ExternalAssociationCreateRequest|ExternalAssociationCreateRequestShape> $associations
      * @param ExternalEmailReminderSchedule|ExternalEmailReminderScheduleShape $emailReminderSchedule
      * @param ExternalCalendarMeetingEventCreateProperties|ExternalCalendarMeetingEventCreatePropertiesShape $properties
      */
@@ -115,7 +115,7 @@ final class CalendarCreateParams implements BaseModel
     }
 
     /**
-     * @param list<ExternalAssociationCreateRequestShape> $associations
+     * @param list<ExternalAssociationCreateRequest|ExternalAssociationCreateRequestShape> $associations
      */
     public function withAssociations(array $associations): self
     {

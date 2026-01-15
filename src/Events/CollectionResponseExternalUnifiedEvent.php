@@ -15,7 +15,8 @@ use HubspotSDK\Paging;
  * @phpstan-import-type PagingShape from \HubspotSDK\Paging
  *
  * @phpstan-type CollectionResponseExternalUnifiedEventShape = array{
- *   results: list<ExternalUnifiedEventShape>, paging?: null|Paging|PagingShape
+ *   results: list<ExternalUnifiedEvent|ExternalUnifiedEventShape>,
+ *   paging?: null|Paging|PagingShape,
  * }
  */
 final class CollectionResponseExternalUnifiedEvent implements BaseModel
@@ -54,7 +55,7 @@ final class CollectionResponseExternalUnifiedEvent implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<ExternalUnifiedEventShape> $results
+     * @param list<ExternalUnifiedEvent|ExternalUnifiedEventShape> $results
      * @param Paging|PagingShape|null $paging
      */
     public static function with(
@@ -71,7 +72,7 @@ final class CollectionResponseExternalUnifiedEvent implements BaseModel
     }
 
     /**
-     * @param list<ExternalUnifiedEventShape> $results
+     * @param list<ExternalUnifiedEvent|ExternalUnifiedEventShape> $results
      */
     public function withResults(array $results): self
     {

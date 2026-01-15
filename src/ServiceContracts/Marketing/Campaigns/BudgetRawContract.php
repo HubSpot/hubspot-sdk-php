@@ -14,6 +14,9 @@ use HubspotSDK\Marketing\Campaigns\PublicBudgetItem;
 use HubspotSDK\Marketing\Campaigns\PublicBudgetTotals;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface BudgetRawContract
 {
     /**
@@ -21,6 +24,7 @@ interface BudgetRawContract
      *
      * @param string $campaignGuid unique identifier for the campaign
      * @param array<string,mixed>|BudgetCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicBudgetItem>
      *
@@ -29,7 +33,7 @@ interface BudgetRawContract
     public function create(
         string $campaignGuid,
         array|BudgetCreateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -37,6 +41,7 @@ interface BudgetRawContract
      *
      * @param int $budgetID path param: Unique identifier for the budget item
      * @param array<string,mixed>|BudgetUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicBudgetItem>
      *
@@ -45,7 +50,7 @@ interface BudgetRawContract
     public function update(
         int $budgetID,
         array|BudgetUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -53,6 +58,7 @@ interface BudgetRawContract
      *
      * @param int $budgetID unique identifier for the budget item
      * @param array<string,mixed>|BudgetDeleteParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -61,7 +67,7 @@ interface BudgetRawContract
     public function delete(
         int $budgetID,
         array|BudgetDeleteParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -69,6 +75,7 @@ interface BudgetRawContract
      *
      * @param int $budgetID unique identifier for the budget item
      * @param array<string,mixed>|BudgetGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicBudgetItem>
      *
@@ -77,13 +84,14 @@ interface BudgetRawContract
     public function get(
         int $budgetID,
         array|BudgetGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param string $campaignGuid unique identifier for the campaign, formatted as a UUID
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicBudgetTotals>
      *
@@ -91,6 +99,6 @@ interface BudgetRawContract
      */
     public function getTotals(
         string $campaignGuid,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 }

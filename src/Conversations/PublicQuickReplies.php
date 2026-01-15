@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-type PublicQuickRepliesShape = array{
  *   allowMultiSelect: bool,
  *   allowUserInput: bool,
- *   quickReplies: list<QuickReplyShape>,
+ *   quickReplies: list<QuickReply|QuickReplyShape>,
  *   type: Type|value-of<Type>,
  * }
  */
@@ -68,7 +68,7 @@ final class PublicQuickReplies implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<QuickReplyShape> $quickReplies
+     * @param list<QuickReply|QuickReplyShape> $quickReplies
      * @param Type|value-of<Type> $type
      */
     public static function with(
@@ -104,7 +104,7 @@ final class PublicQuickReplies implements BaseModel
     }
 
     /**
-     * @param list<QuickReplyShape> $quickReplies
+     * @param list<QuickReply|QuickReplyShape> $quickReplies
      */
     public function withQuickReplies(array $quickReplies): self
     {

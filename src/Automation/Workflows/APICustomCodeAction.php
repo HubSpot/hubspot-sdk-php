@@ -17,8 +17,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @phpstan-type APICustomCodeActionShape = array{
  *   actionID: string,
- *   inputFields: list<APIInputVariableShape>,
- *   outputFields: list<APIEnumerationOutputFieldShape>,
+ *   inputFields: list<APIInputVariable|APIInputVariableShape>,
+ *   outputFields: list<APIEnumerationOutputField|APIEnumerationOutputFieldShape>,
  *   runtime: string,
  *   secretNames: list<string>,
  *   sourceCode: string,
@@ -98,8 +98,8 @@ final class APICustomCodeAction implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<APIInputVariableShape> $inputFields
-     * @param list<APIEnumerationOutputFieldShape> $outputFields
+     * @param list<APIInputVariable|APIInputVariableShape> $inputFields
+     * @param list<APIEnumerationOutputField|APIEnumerationOutputFieldShape> $outputFields
      * @param list<string> $secretNames
      * @param Type|value-of<Type> $type
      * @param APIConnection|APIConnectionShape|null $connection
@@ -138,7 +138,7 @@ final class APICustomCodeAction implements BaseModel
     }
 
     /**
-     * @param list<APIInputVariableShape> $inputFields
+     * @param list<APIInputVariable|APIInputVariableShape> $inputFields
      */
     public function withInputFields(array $inputFields): self
     {
@@ -149,7 +149,7 @@ final class APICustomCodeAction implements BaseModel
     }
 
     /**
-     * @param list<APIEnumerationOutputFieldShape> $outputFields
+     * @param list<APIEnumerationOutputField|APIEnumerationOutputFieldShape> $outputFields
      */
     public function withOutputFields(array $outputFields): self
     {

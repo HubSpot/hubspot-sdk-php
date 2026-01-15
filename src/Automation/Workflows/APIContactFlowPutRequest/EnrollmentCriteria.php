@@ -16,7 +16,8 @@ use HubspotSDK\Core\Conversion\Contracts\ConverterSource;
  * @phpstan-import-type APIEventBasedEnrollmentCriteriaShape from \HubspotSDK\Automation\Workflows\APIEventBasedEnrollmentCriteria
  * @phpstan-import-type APIManualEnrollmentCriteriaShape from \HubspotSDK\Automation\Workflows\APIManualEnrollmentCriteria
  *
- * @phpstan-type EnrollmentCriteriaShape = APIListBasedEnrollmentCriteriaShape|APIEventBasedEnrollmentCriteriaShape|APIManualEnrollmentCriteriaShape
+ * @phpstan-type EnrollmentCriteriaVariants = APIListBasedEnrollmentCriteria|APIEventBasedEnrollmentCriteria|APIManualEnrollmentCriteria
+ * @phpstan-type EnrollmentCriteriaShape = EnrollmentCriteriaVariants|APIListBasedEnrollmentCriteriaShape|APIEventBasedEnrollmentCriteriaShape|APIManualEnrollmentCriteriaShape
  */
 final class EnrollmentCriteria implements ConverterSource
 {

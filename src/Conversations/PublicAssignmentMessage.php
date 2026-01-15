@@ -22,8 +22,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   conversationsThreadID: string,
  *   createdAt: \DateTimeInterface,
  *   createdBy: string,
- *   recipients: list<PublicRecipientShape>,
- *   senders: list<PublicSenderShape>,
+ *   recipients: list<PublicRecipient|PublicRecipientShape>,
+ *   senders: list<PublicSender|PublicSenderShape>,
  *   type: Type|value-of<Type>,
  *   assignedFrom?: string|null,
  *   assignedTo?: string|null,
@@ -118,8 +118,8 @@ final class PublicAssignmentMessage implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param PublicClient|PublicClientShape $client
-     * @param list<PublicRecipientShape> $recipients
-     * @param list<PublicSenderShape> $senders
+     * @param list<PublicRecipient|PublicRecipientShape> $recipients
+     * @param list<PublicSender|PublicSenderShape> $senders
      * @param Type|value-of<Type> $type
      */
     public static function with(
@@ -208,7 +208,7 @@ final class PublicAssignmentMessage implements BaseModel
     }
 
     /**
-     * @param list<PublicRecipientShape> $recipients
+     * @param list<PublicRecipient|PublicRecipientShape> $recipients
      */
     public function withRecipients(array $recipients): self
     {
@@ -219,7 +219,7 @@ final class PublicAssignmentMessage implements BaseModel
     }
 
     /**
-     * @param list<PublicSenderShape> $senders
+     * @param list<PublicSender|PublicSenderShape> $senders
      */
     public function withSenders(array $senders): self
     {

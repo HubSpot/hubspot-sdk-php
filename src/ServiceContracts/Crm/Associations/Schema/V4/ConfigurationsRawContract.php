@@ -16,22 +16,30 @@ use HubspotSDK\Crm\Associations\Schema\V4\Configurations\ConfigurationBatchUpdat
 use HubspotSDK\Crm\Associations\Schema\V4\Configurations\ConfigurationGetByObjectTypesParams;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface ConfigurationsRawContract
 {
     /**
      * @api
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @return BaseResponse<CollectionResponsePublicAssociationDefinitionUserConfiguration,>
      *
      * @throws APIException
      */
-    public function list(?RequestOptions $requestOptions = null): BaseResponse;
+    public function list(
+        RequestOptions|array|null $requestOptions = null
+    ): BaseResponse;
 
     /**
      * @api
      *
-     * @param string $toObjectType Path param:
+     * @param string $toObjectType Path param
      * @param array<string,mixed>|ConfigurationBatchCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BatchResponsePublicAssociationDefinitionUserConfiguration>
      *
@@ -40,14 +48,15 @@ interface ConfigurationsRawContract
     public function batchCreate(
         string $toObjectType,
         array|ConfigurationBatchCreateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
-     * @param string $toObjectType Path param:
+     * @param string $toObjectType Path param
      * @param array<string,mixed>|ConfigurationBatchDeleteParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BatchResponseVoid>
      *
@@ -56,14 +65,15 @@ interface ConfigurationsRawContract
     public function batchDelete(
         string $toObjectType,
         array|ConfigurationBatchDeleteParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
-     * @param string $toObjectType Path param:
+     * @param string $toObjectType Path param
      * @param array<string,mixed>|ConfigurationBatchUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BatchResponsePublicAssociationDefinitionConfigurationUpdateResult,>
      *
@@ -72,13 +82,14 @@ interface ConfigurationsRawContract
     public function batchUpdate(
         string $toObjectType,
         array|ConfigurationBatchUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|ConfigurationGetByObjectTypesParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CollectionResponsePublicAssociationDefinitionUserConfiguration,>
      *
@@ -87,6 +98,6 @@ interface ConfigurationsRawContract
     public function getByObjectTypes(
         string $toObjectType,
         array|ConfigurationGetByObjectTypesParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

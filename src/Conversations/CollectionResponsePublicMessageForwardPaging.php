@@ -11,6 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\ForwardPaging;
 
 /**
+ * @phpstan-import-type PublicMessageVariants from \HubspotSDK\Conversations\PublicMessage
  * @phpstan-import-type PublicMessageShape from \HubspotSDK\Conversations\PublicMessage
  * @phpstan-import-type ForwardPagingShape from \HubspotSDK\ForwardPaging
  *
@@ -24,9 +25,7 @@ final class CollectionResponsePublicMessageForwardPaging implements BaseModel
     /** @use SdkModel<CollectionResponsePublicMessageForwardPagingShape> */
     use SdkModel;
 
-    /**
-     * @var list<ConversationsPublicConversationsMessage|PublicComment|PublicWelcomeMessage|PublicAssignmentMessage|PublicThreadStatusChange|PublicThreadInboxChange> $results
-     */
+    /** @var list<PublicMessageVariants> $results */
     #[Required(list: PublicMessage::class)]
     public array $results;
 

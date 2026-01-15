@@ -9,6 +9,9 @@ use HubspotSDK\Marketing\Transactional\SmtpAPITokenView;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface SmtpTokensContract
 {
     /**
@@ -16,13 +19,14 @@ interface SmtpTokensContract
      *
      * @param string $campaignName a name for the campaign tied to the SMTP API token
      * @param bool $createContact indicates whether a contact should be created for email recipients
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function create(
         string $campaignName,
         bool $createContact,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): SmtpAPITokenView;
 
     /**
@@ -32,6 +36,7 @@ interface SmtpTokensContract
      * @param string $campaignName a name for the campaign tied to the SMTP API token
      * @param string $emailCampaignID identifier assigned to the campaign provided during the token creation
      * @param int $limit maximum number of tokens to return
+     * @param RequestOpts|null $requestOptions
      *
      * @return Page<SmtpAPITokenView>
      *
@@ -42,42 +47,45 @@ interface SmtpTokensContract
         ?string $campaignName = null,
         ?string $emailCampaignID = null,
         ?int $limit = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): Page;
 
     /**
      * @api
      *
      * @param string $tokenID identifier generated when a token is created
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function delete(
         string $tokenID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): mixed;
 
     /**
      * @api
      *
      * @param string $tokenID identifier generated when a token is created
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function get(
         string $tokenID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): SmtpAPITokenView;
 
     /**
      * @api
      *
      * @param string $tokenID identifier generated when a token is created
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function resetPassword(
         string $tokenID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): SmtpAPITokenView;
 }

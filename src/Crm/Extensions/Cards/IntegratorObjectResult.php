@@ -11,6 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Extensions\Cards\IntegratorObjectResult\Action;
 
 /**
+ * @phpstan-import-type ActionVariants from \HubspotSDK\Crm\Extensions\Cards\IntegratorObjectResult\Action
  * @phpstan-import-type ActionShape from \HubspotSDK\Crm\Extensions\Cards\IntegratorObjectResult\Action
  * @phpstan-import-type ObjectTokenShape from \HubspotSDK\Crm\Extensions\Cards\ObjectToken
  *
@@ -18,7 +19,7 @@ use HubspotSDK\Crm\Extensions\Cards\IntegratorObjectResult\Action;
  *   id: string,
  *   actions: list<ActionShape>,
  *   title: string,
- *   tokens: list<ObjectTokenShape>,
+ *   tokens: list<ObjectToken|ObjectTokenShape>,
  *   linkURL?: string|null,
  * }
  */
@@ -30,7 +31,7 @@ final class IntegratorObjectResult implements BaseModel
     #[Required]
     public string $id;
 
-    /** @var list<ActionHookActionBody|IFrameActionBody> $actions */
+    /** @var list<ActionVariants> $actions */
     #[Required(list: Action::class)]
     public array $actions;
 
@@ -73,7 +74,7 @@ final class IntegratorObjectResult implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<ActionShape> $actions
-     * @param list<ObjectTokenShape> $tokens
+     * @param list<ObjectToken|ObjectTokenShape> $tokens
      */
     public static function with(
         string $id,
@@ -122,7 +123,7 @@ final class IntegratorObjectResult implements BaseModel
     }
 
     /**
-     * @param list<ObjectTokenShape> $tokens
+     * @param list<ObjectToken|ObjectTokenShape> $tokens
      */
     public function withTokens(array $tokens): self
     {

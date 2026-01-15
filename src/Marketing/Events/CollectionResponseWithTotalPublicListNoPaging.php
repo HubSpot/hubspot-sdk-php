@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-import-type PublicListShape from \HubspotSDK\Marketing\Events\PublicList
  *
  * @phpstan-type CollectionResponseWithTotalPublicListNoPagingShape = array{
- *   results: list<PublicListShape>, total: int
+ *   results: list<PublicList|PublicListShape>, total: int
  * }
  */
 final class CollectionResponseWithTotalPublicListNoPaging implements BaseModel
@@ -53,7 +53,7 @@ final class CollectionResponseWithTotalPublicListNoPaging implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicListShape> $results
+     * @param list<PublicList|PublicListShape> $results
      */
     public static function with(array $results, int $total): self
     {
@@ -66,7 +66,7 @@ final class CollectionResponseWithTotalPublicListNoPaging implements BaseModel
     }
 
     /**
-     * @param list<PublicListShape> $results
+     * @param list<PublicList|PublicListShape> $results
      */
     public function withResults(array $results): self
     {

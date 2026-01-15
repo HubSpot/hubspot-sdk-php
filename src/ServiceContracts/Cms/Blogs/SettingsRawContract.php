@@ -19,12 +19,16 @@ use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface SettingsRawContract
 {
     /**
      * @api
      *
      * @param array<string,mixed>|SettingListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<Blog>>
      *
@@ -32,13 +36,14 @@ interface SettingsRawContract
      */
     public function list(
         array|SettingListParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|SettingAttachToLangGroupParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -46,13 +51,14 @@ interface SettingsRawContract
      */
     public function attachToLangGroup(
         array|SettingAttachToLangGroupParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|SettingCreateLanguageVariationParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Blog>
      *
@@ -60,13 +66,14 @@ interface SettingsRawContract
      */
     public function createLanguageVariation(
         array|SettingCreateLanguageVariationParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|SettingDetachFromLangGroupParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -74,11 +81,13 @@ interface SettingsRawContract
      */
     public function detachFromLangGroup(
         array|SettingDetachFromLangGroupParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
+     *
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Blog>
      *
@@ -86,13 +95,14 @@ interface SettingsRawContract
      */
     public function get(
         string $blogID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|SettingGetRevisionParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<VersionBlog>
      *
@@ -101,13 +111,14 @@ interface SettingsRawContract
     public function getRevision(
         string $revisionID,
         array|SettingGetRevisionParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|SettingListRevisionsParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<VersionBlog>>
      *
@@ -116,13 +127,14 @@ interface SettingsRawContract
     public function listRevisions(
         string $blogID,
         array|SettingListRevisionsParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|SettingSetNewLangPrimaryParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -130,13 +142,14 @@ interface SettingsRawContract
      */
     public function setNewLangPrimary(
         array|SettingSetNewLangPrimaryParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|SettingUpdateLanguagesParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -144,6 +157,6 @@ interface SettingsRawContract
      */
     public function updateLanguages(
         array|SettingUpdateLanguagesParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

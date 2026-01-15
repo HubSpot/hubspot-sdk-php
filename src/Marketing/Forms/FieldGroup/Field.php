@@ -38,7 +38,8 @@ use HubspotSDK\Marketing\Forms\SingleLineTextField;
  * @phpstan-import-type FileFieldShape from \HubspotSDK\Marketing\Forms\FileField
  * @phpstan-import-type PaymentLinkRadioFieldShape from \HubspotSDK\Marketing\Forms\PaymentLinkRadioField
  *
- * @phpstan-type FieldShape = EmailFieldShape|PhoneFieldShape|MobilePhoneFieldShape|SingleLineTextFieldShape|MultiLineTextFieldShape|NumberFieldShape|SingleCheckboxFieldShape|MultipleCheckboxesFieldShape|DropdownFieldShape|RadioFieldShape|DatepickerFieldShape|FileFieldShape|PaymentLinkRadioFieldShape
+ * @phpstan-type FieldVariants = EmailField|PhoneField|MobilePhoneField|SingleLineTextField|MultiLineTextField|NumberField|SingleCheckboxField|MultipleCheckboxesField|DropdownField|RadioField|DatepickerField|FileField|PaymentLinkRadioField
+ * @phpstan-type FieldShape = FieldVariants|EmailFieldShape|PhoneFieldShape|MobilePhoneFieldShape|SingleLineTextFieldShape|MultiLineTextFieldShape|NumberFieldShape|SingleCheckboxFieldShape|MultipleCheckboxesFieldShape|DropdownFieldShape|RadioFieldShape|DatepickerFieldShape|FileFieldShape|PaymentLinkRadioFieldShape
  */
 final class Field implements ConverterSource
 {

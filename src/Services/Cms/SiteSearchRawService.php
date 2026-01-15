@@ -18,6 +18,9 @@ use HubspotSDK\Core\Util;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Cms\SiteSearchRawContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class SiteSearchRawService implements SiteSearchRawContract
 {
     // @phpstan-ignore-next-line
@@ -32,9 +35,8 @@ final class SiteSearchRawService implements SiteSearchRawContract
      * For a given account and document ID (page ID, blog post ID, HubDB row ID, etc.), return all indexed data for that document. This is useful when debugging why a particular document is not returned from a custom search.
      *
      * @param string $contentID ID of the target document when searching for indexed properties
-     * @param array{
-     *   type?: 'BLOG_POST'|'KNOWLEDGE_ARTICLE'|'LANDING_PAGE'|'LISTING_PAGE'|'SITE_PAGE'|Type,
-     * }|SiteSearchGetIndexedDataParams $params
+     * @param array{type?: Type|value-of<Type>}|SiteSearchGetIndexedDataParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<IndexedData>
      *
@@ -43,7 +45,7 @@ final class SiteSearchRawService implements SiteSearchRawContract
     public function getIndexedData(
         string $contentID,
         array|SiteSearchGetIndexedDataParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = SiteSearchGetIndexedDataParams::parseRequest(
             $params,
@@ -73,7 +75,7 @@ final class SiteSearchRawService implements SiteSearchRawContract
      *   groupID?: list<int>,
      *   hubdbQuery?: string,
      *   language?: value-of<Language>,
-     *   length?: 'LONG'|'SHORT'|Length,
+     *   length?: Length|value-of<Length>,
      *   limit?: int,
      *   matchPrefix?: bool,
      *   offset?: int,
@@ -82,8 +84,9 @@ final class SiteSearchRawService implements SiteSearchRawContract
      *   property?: list<string>,
      *   q?: string,
      *   tableID?: int,
-     *   type?: list<'LANDING_PAGE'|'BLOG_POST'|'SITE_PAGE'|'KNOWLEDGE_ARTICLE'|'LISTING_PAGE'|SiteSearchSearchParams\Type>,
+     *   type?: list<SiteSearchSearchParams\Type|value-of<SiteSearchSearchParams\Type>>,
      * }|SiteSearchSearchParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicSearchResults>
      *
@@ -91,7 +94,7 @@ final class SiteSearchRawService implements SiteSearchRawContract
      */
     public function search(
         array|SiteSearchSearchParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = SiteSearchSearchParams::parseRequest(
             $params,

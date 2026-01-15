@@ -9,6 +9,9 @@ use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\Settings\TaxRates\PublicTaxRateGroup;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface TaxRatesContract
 {
     /**
@@ -17,6 +20,7 @@ interface TaxRatesContract
      * @param bool $active include inactive rates
      * @param string $after The paging cursor token of the last successfully read resource will be returned as the paging.next.after JSON property of a paged response containing more results.
      * @param int $limit the maximum number of results to display per page
+     * @param RequestOpts|null $requestOptions
      *
      * @return Page<PublicTaxRateGroup>
      *
@@ -26,18 +30,19 @@ interface TaxRatesContract
         ?bool $active = null,
         ?string $after = null,
         ?int $limit = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): Page;
 
     /**
      * @api
      *
      * @param string $taxRateGroupID the ID of the tax rate to retrieve
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function get(
         string $taxRateGroupID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): PublicTaxRateGroup;
 }

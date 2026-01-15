@@ -19,7 +19,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-import-type MarketingEventExternalUniqueIdentifierShape from \HubspotSDK\Marketing\Events\MarketingEventExternalUniqueIdentifier
  *
  * @phpstan-type EventDeleteBatchByExternalEventIDParamsShape = array{
- *   inputs: list<MarketingEventExternalUniqueIdentifierShape>
+ *   inputs: list<MarketingEventExternalUniqueIdentifier|MarketingEventExternalUniqueIdentifierShape>,
  * }
  */
 final class EventDeleteBatchByExternalEventIDParams implements BaseModel
@@ -56,7 +56,7 @@ final class EventDeleteBatchByExternalEventIDParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<MarketingEventExternalUniqueIdentifierShape> $inputs
+     * @param list<MarketingEventExternalUniqueIdentifier|MarketingEventExternalUniqueIdentifierShape> $inputs
      */
     public static function with(array $inputs): self
     {
@@ -68,7 +68,7 @@ final class EventDeleteBatchByExternalEventIDParams implements BaseModel
     }
 
     /**
-     * @param list<MarketingEventExternalUniqueIdentifierShape> $inputs
+     * @param list<MarketingEventExternalUniqueIdentifier|MarketingEventExternalUniqueIdentifierShape> $inputs
      */
     public function withInputs(array $inputs): self
     {

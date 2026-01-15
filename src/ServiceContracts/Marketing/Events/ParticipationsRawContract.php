@@ -15,6 +15,9 @@ use HubspotSDK\Marketing\Events\Participations\ParticipationListBreakdownByIDPar
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface ParticipationsRawContract
 {
     /**
@@ -22,6 +25,7 @@ interface ParticipationsRawContract
      *
      * @param string $externalEventID the id of the marketing event in the external event application
      * @param array<string,mixed>|ParticipationGetByExternalAccountAndEventIDParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<AttendanceCounters>
      *
@@ -30,13 +34,14 @@ interface ParticipationsRawContract
     public function getByExternalAccountAndEventID(
         string $externalEventID,
         array|ParticipationGetByExternalAccountAndEventIDParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param int $marketingEventID the internal id of the marketing event in HubSpot
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<AttendanceCounters>
      *
@@ -44,7 +49,7 @@ interface ParticipationsRawContract
      */
     public function getByID(
         int $marketingEventID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 
     /**
@@ -52,6 +57,7 @@ interface ParticipationsRawContract
      *
      * @param string $contactIdentifier The identifier of the Contact. It may be email or internal id.
      * @param array<string,mixed>|ParticipationListBreakdownByContactParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<ParticipationBreakdown>>
      *
@@ -60,7 +66,7 @@ interface ParticipationsRawContract
     public function listBreakdownByContact(
         string $contactIdentifier,
         array|ParticipationListBreakdownByContactParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -68,6 +74,7 @@ interface ParticipationsRawContract
      *
      * @param string $externalEventID path param: The id of the marketing event in the external event application
      * @param array<string,mixed>|ParticipationListBreakdownByExternalAccountAndEventIDParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<ParticipationBreakdown>>
      *
@@ -76,7 +83,7 @@ interface ParticipationsRawContract
     public function listBreakdownByExternalAccountAndEventID(
         string $externalEventID,
         array|ParticipationListBreakdownByExternalAccountAndEventIDParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -84,6 +91,7 @@ interface ParticipationsRawContract
      *
      * @param int $marketingEventID the internal id of the marketing event in HubSpot
      * @param array<string,mixed>|ParticipationListBreakdownByIDParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<ParticipationBreakdown>>
      *
@@ -92,6 +100,6 @@ interface ParticipationsRawContract
     public function listBreakdownByID(
         int $marketingEventID,
         array|ParticipationListBreakdownByIDParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

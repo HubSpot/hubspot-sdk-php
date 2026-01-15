@@ -13,9 +13,9 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-import-type NearLimitRecordSampleShape from \HubspotSDK\Crm\Limits\NearLimitRecordSample
  *
  * @phpstan-type AssociationRecordLimitResponseShape = array{
- *   atLimitFromRecordSamples: list<AtLimitRecordSampleShape>,
+ *   atLimitFromRecordSamples: list<AtLimitRecordSample|AtLimitRecordSampleShape>,
  *   limit: int,
- *   nearLimitFromRecordSamples: list<NearLimitRecordSampleShape>,
+ *   nearLimitFromRecordSamples: list<NearLimitRecordSample|NearLimitRecordSampleShape>,
  *   totalRecordsAtLimit: int,
  *   totalRecordsNearLimit: int,
  * }
@@ -86,8 +86,8 @@ final class AssociationRecordLimitResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<AtLimitRecordSampleShape> $atLimitFromRecordSamples
-     * @param list<NearLimitRecordSampleShape> $nearLimitFromRecordSamples
+     * @param list<AtLimitRecordSample|AtLimitRecordSampleShape> $atLimitFromRecordSamples
+     * @param list<NearLimitRecordSample|NearLimitRecordSampleShape> $nearLimitFromRecordSamples
      */
     public static function with(
         array $atLimitFromRecordSamples,
@@ -108,7 +108,7 @@ final class AssociationRecordLimitResponse implements BaseModel
     }
 
     /**
-     * @param list<AtLimitRecordSampleShape> $atLimitFromRecordSamples
+     * @param list<AtLimitRecordSample|AtLimitRecordSampleShape> $atLimitFromRecordSamples
      */
     public function withAtLimitFromRecordSamples(
         array $atLimitFromRecordSamples
@@ -131,7 +131,7 @@ final class AssociationRecordLimitResponse implements BaseModel
     }
 
     /**
-     * @param list<NearLimitRecordSampleShape> $nearLimitFromRecordSamples
+     * @param list<NearLimitRecordSample|NearLimitRecordSampleShape> $nearLimitFromRecordSamples
      */
     public function withNearLimitFromRecordSamples(
         array $nearLimitFromRecordSamples

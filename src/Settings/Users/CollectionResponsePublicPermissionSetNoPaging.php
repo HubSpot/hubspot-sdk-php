@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-import-type PublicPermissionSetShape from \HubspotSDK\Settings\Users\PublicPermissionSet
  *
  * @phpstan-type CollectionResponsePublicPermissionSetNoPagingShape = array{
- *   results: list<PublicPermissionSetShape>
+ *   results: list<PublicPermissionSet|PublicPermissionSetShape>
  * }
  */
 final class CollectionResponsePublicPermissionSetNoPaging implements BaseModel
@@ -48,7 +48,7 @@ final class CollectionResponsePublicPermissionSetNoPaging implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicPermissionSetShape> $results
+     * @param list<PublicPermissionSet|PublicPermissionSetShape> $results
      */
     public static function with(array $results): self
     {
@@ -60,7 +60,7 @@ final class CollectionResponsePublicPermissionSetNoPaging implements BaseModel
     }
 
     /**
-     * @param list<PublicPermissionSetShape> $results
+     * @param list<PublicPermissionSet|PublicPermissionSetShape> $results
      */
     public function withResults(array $results): self
     {

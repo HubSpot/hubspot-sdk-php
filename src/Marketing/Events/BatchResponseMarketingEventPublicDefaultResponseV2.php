@@ -15,7 +15,7 @@ use HubspotSDK\Marketing\Events\BatchResponseMarketingEventPublicDefaultResponse
  *
  * @phpstan-type BatchResponseMarketingEventPublicDefaultResponseV2Shape = array{
  *   completedAt: \DateTimeInterface,
- *   results: list<MarketingEventPublicDefaultResponseV2Shape>,
+ *   results: list<MarketingEventPublicDefaultResponseV2|MarketingEventPublicDefaultResponseV2Shape>,
  *   startedAt: \DateTimeInterface,
  *   status: Status|value-of<Status>,
  *   links?: array<string,string>|null,
@@ -78,7 +78,7 @@ final class BatchResponseMarketingEventPublicDefaultResponseV2 implements BaseMo
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<MarketingEventPublicDefaultResponseV2Shape> $results
+     * @param list<MarketingEventPublicDefaultResponseV2|MarketingEventPublicDefaultResponseV2Shape> $results
      * @param Status|value-of<Status> $status
      * @param array<string,string>|null $links
      */
@@ -112,7 +112,7 @@ final class BatchResponseMarketingEventPublicDefaultResponseV2 implements BaseMo
     }
 
     /**
-     * @param list<MarketingEventPublicDefaultResponseV2Shape> $results
+     * @param list<MarketingEventPublicDefaultResponseV2|MarketingEventPublicDefaultResponseV2Shape> $results
      */
     public function withResults(array $results): self
     {

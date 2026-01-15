@@ -15,7 +15,7 @@ use HubspotSDK\Crm\Objects\DealSplits\BatchResponseDealToDealSplits\Status;
  *
  * @phpstan-type BatchResponseDealToDealSplitsShape = array{
  *   completedAt: \DateTimeInterface,
- *   results: list<DealToDealSplitsShape>,
+ *   results: list<DealToDealSplits|DealToDealSplitsShape>,
  *   startedAt: \DateTimeInterface,
  *   status: Status|value-of<Status>,
  *   links?: array<string,string>|null,
@@ -78,7 +78,7 @@ final class BatchResponseDealToDealSplits implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<DealToDealSplitsShape> $results
+     * @param list<DealToDealSplits|DealToDealSplitsShape> $results
      * @param Status|value-of<Status> $status
      * @param array<string,string>|null $links
      */
@@ -112,7 +112,7 @@ final class BatchResponseDealToDealSplits implements BaseModel
     }
 
     /**
-     * @param list<DealToDealSplitsShape> $results
+     * @param list<DealToDealSplits|DealToDealSplitsShape> $results
      */
     public function withResults(array $results): self
     {

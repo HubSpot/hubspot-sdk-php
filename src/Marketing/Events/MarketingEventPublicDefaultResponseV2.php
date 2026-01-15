@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @phpstan-type MarketingEventPublicDefaultResponseV2Shape = array{
  *   createdAt: \DateTimeInterface,
- *   customProperties: list<CrmPropertyWrapperShape>,
+ *   customProperties: list<CrmPropertyWrapper|CrmPropertyWrapperShape>,
  *   eventName: string,
  *   objectID: string,
  *   updatedAt: \DateTimeInterface,
@@ -113,7 +113,7 @@ final class MarketingEventPublicDefaultResponseV2 implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<CrmPropertyWrapperShape> $customProperties
+     * @param list<CrmPropertyWrapper|CrmPropertyWrapperShape> $customProperties
      * @param AppInfo|AppInfoShape|null $appInfo
      */
     public static function with(
@@ -162,7 +162,7 @@ final class MarketingEventPublicDefaultResponseV2 implements BaseModel
     }
 
     /**
-     * @param list<CrmPropertyWrapperShape> $customProperties
+     * @param list<CrmPropertyWrapper|CrmPropertyWrapperShape> $customProperties
      */
     public function withCustomProperties(array $customProperties): self
     {

@@ -9,6 +9,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type OperationVariants from \HubspotSDK\PublicEventFilterMetadata\Operation
  * @phpstan-import-type OperationShape from \HubspotSDK\PublicEventFilterMetadata\Operation
  *
  * @phpstan-type PublicEventFilterMetadataShape = array{
@@ -20,6 +21,7 @@ final class PublicEventFilterMetadata implements BaseModel
     /** @use SdkModel<PublicEventFilterMetadataShape> */
     use SdkModel;
 
+    /** @var OperationVariants $operation */
     #[Required]
     public PublicBoolPropertyOperation|PublicNumberPropertyOperation|PublicStringPropertyOperation|PublicDateTimePropertyOperation|PublicRangedDatePropertyOperation|PublicComparativePropertyUpdatedOperation|PublicComparativeDatePropertyOperation|PublicRollingDateRangePropertyOperation|PublicRollingPropertyUpdatedOperation|PublicEnumerationPropertyOperation|PublicAllPropertyTypesOperation|PublicRangedNumberPropertyOperation|PublicMultiStringPropertyOperation|PublicDatePropertyOperation|PublicCalendarDatePropertyOperation|PublicTimePointOperation|PublicRangedTimeOperation $operation;
 

@@ -14,7 +14,7 @@ use HubspotSDK\PublicIntegrationEventFilter\FilterType;
  *
  * @phpstan-type PublicIntegrationEventFilterShape = array{
  *   eventTypeID: int,
- *   filterLines: list<PublicEventFilterMetadataShape>,
+ *   filterLines: list<PublicEventFilterMetadata|PublicEventFilterMetadataShape>,
  *   filterType: FilterType|value-of<FilterType>,
  * }
  */
@@ -63,7 +63,7 @@ final class PublicIntegrationEventFilter implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicEventFilterMetadataShape> $filterLines
+     * @param list<PublicEventFilterMetadata|PublicEventFilterMetadataShape> $filterLines
      * @param FilterType|value-of<FilterType> $filterType
      */
     public static function with(
@@ -89,7 +89,7 @@ final class PublicIntegrationEventFilter implements BaseModel
     }
 
     /**
-     * @param list<PublicEventFilterMetadataShape> $filterLines
+     * @param list<PublicEventFilterMetadata|PublicEventFilterMetadataShape> $filterLines
      */
     public function withFilterLines(array $filterLines): self
     {

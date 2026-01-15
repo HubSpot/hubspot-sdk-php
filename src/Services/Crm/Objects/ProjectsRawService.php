@@ -4,25 +4,30 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Services\Crm\Objects;
 
-use HubspotSDK\AssociationSpec;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\Crm\CreatedResponseSimplePublicObject;
+use HubspotSDK\Crm\FilterGroup;
 use HubspotSDK\Crm\Objects\Projects\ProjectCreateParams;
 use HubspotSDK\Crm\Objects\Projects\ProjectGetParams;
 use HubspotSDK\Crm\Objects\Projects\ProjectListParams;
 use HubspotSDK\Crm\Objects\Projects\ProjectMergeParams;
 use HubspotSDK\Crm\Objects\Projects\ProjectSearchParams;
 use HubspotSDK\Crm\Objects\Projects\ProjectUpdateParams;
+use HubspotSDK\Crm\PublicAssociationsForObject;
 use HubspotSDK\Crm\SimplePublicObject;
 use HubspotSDK\Crm\SimplePublicObjectWithAssociations;
 use HubspotSDK\Page;
-use HubspotSDK\PublicObjectID;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Objects\ProjectsRawContract;
 
+/**
+ * @phpstan-import-type PublicAssociationsForObjectShape from \HubspotSDK\Crm\PublicAssociationsForObject
+ * @phpstan-import-type FilterGroupShape from \HubspotSDK\Crm\FilterGroup
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class ProjectsRawService implements ProjectsRawContract
 {
     // @phpstan-ignore-next-line
@@ -37,12 +42,10 @@ final class ProjectsRawService implements ProjectsRawContract
      * Create a project with the given properties and return a copy of the object, including the ID.
      *
      * @param array{
-     *   associations: list<array{
-     *     to: array<string,mixed>|PublicObjectID,
-     *     types: list<array<string,mixed>|AssociationSpec>,
-     *   }>,
+     *   associations: list<PublicAssociationsForObject|PublicAssociationsForObjectShape>,
      *   properties: array<string,string>,
      * }|ProjectCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CreatedResponseSimplePublicObject>
      *
@@ -50,7 +53,7 @@ final class ProjectsRawService implements ProjectsRawContract
      */
     public function create(
         array|ProjectCreateParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = ProjectCreateParams::parseRequest(
             $params,
@@ -72,10 +75,11 @@ final class ProjectsRawService implements ProjectsRawContract
      *
      * Perform a partial update of an Object identified by `{projectId}`or optionally a unique property value as specified by the `idProperty` query param. `{projectId}` refers to the internal object ID by default, and the `idProperty` query param refers to a property whose values are unique for the object. Provided property values will be overwritten. Read-only and non-existent properties will result in an error. Properties values can be cleared by passing an empty string.
      *
-     * @param string $projectID Path param:
+     * @param string $projectID Path param
      * @param array{
      *   properties: array<string,string>, idProperty?: string
      * }|ProjectUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SimplePublicObject>
      *
@@ -84,7 +88,7 @@ final class ProjectsRawService implements ProjectsRawContract
     public function update(
         string $projectID,
         array|ProjectUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = ProjectUpdateParams::parseRequest(
             $params,
@@ -116,6 +120,7 @@ final class ProjectsRawService implements ProjectsRawContract
      *   properties?: list<string>,
      *   propertiesWithHistory?: list<string>,
      * }|ProjectListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<SimplePublicObjectWithAssociations>>
      *
@@ -123,7 +128,7 @@ final class ProjectsRawService implements ProjectsRawContract
      */
     public function list(
         array|ProjectListParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = ProjectListParams::parseRequest(
             $params,
@@ -146,13 +151,15 @@ final class ProjectsRawService implements ProjectsRawContract
      *
      * Move an Object identified by `{projectId}` to the recycling bin.
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @return BaseResponse<mixed>
      *
      * @throws APIException
      */
     public function delete(
         string $projectID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -175,6 +182,7 @@ final class ProjectsRawService implements ProjectsRawContract
      *   properties?: list<string>,
      *   propertiesWithHistory?: list<string>,
      * }|ProjectGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SimplePublicObjectWithAssociations>
      *
@@ -183,7 +191,7 @@ final class ProjectsRawService implements ProjectsRawContract
     public function get(
         string $projectID,
         array|ProjectGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = ProjectGetParams::parseRequest(
             $params,
@@ -208,6 +216,7 @@ final class ProjectsRawService implements ProjectsRawContract
      * @param array{
      *   objectIDToMerge: string, primaryObjectID: string
      * }|ProjectMergeParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SimplePublicObject>
      *
@@ -215,7 +224,7 @@ final class ProjectsRawService implements ProjectsRawContract
      */
     public function merge(
         array|ProjectMergeParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = ProjectMergeParams::parseRequest(
             $params,
@@ -239,12 +248,13 @@ final class ProjectsRawService implements ProjectsRawContract
      *
      * @param array{
      *   after: string,
-     *   filterGroups: list<array{filters: list<array<string,mixed>>}>,
+     *   filterGroups: list<FilterGroup|FilterGroupShape>,
      *   limit: int,
      *   properties: list<string>,
      *   sorts: list<string>,
      *   query?: string,
      * }|ProjectSearchParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CollectionResponseWithTotalSimplePublicObject>
      *
@@ -252,7 +262,7 @@ final class ProjectsRawService implements ProjectsRawContract
      */
     public function search(
         array|ProjectSearchParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = ProjectSearchParams::parseRequest(
             $params,

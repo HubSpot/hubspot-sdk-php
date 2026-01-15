@@ -18,12 +18,16 @@ use HubspotSDK\Files\FolderUpdateTaskLocator;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface FoldersRawContract
 {
     /**
      * @api
      *
      * @param array<string,mixed>|FolderCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Folder>
      *
@@ -31,13 +35,14 @@ interface FoldersRawContract
      */
     public function create(
         array|FolderCreateParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param string $folderID ID of folder to delete
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -45,13 +50,14 @@ interface FoldersRawContract
      */
     public function deleteByID(
         string $folderID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param string $folderPath Path of folder to delete
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -59,7 +65,7 @@ interface FoldersRawContract
      */
     public function deleteByPath(
         string $folderPath,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 
     /**
@@ -67,6 +73,7 @@ interface FoldersRawContract
      *
      * @param string $folderID ID of desired folder
      * @param array<string,mixed>|FolderGetByIDParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Folder>
      *
@@ -75,7 +82,7 @@ interface FoldersRawContract
     public function getByID(
         string $folderID,
         array|FolderGetByIDParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -83,6 +90,7 @@ interface FoldersRawContract
      *
      * @param string $folderPath path of desired folder
      * @param array<string,mixed>|FolderGetByPathParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Folder>
      *
@@ -91,13 +99,14 @@ interface FoldersRawContract
     public function getByPath(
         string $folderPath,
         array|FolderGetByPathParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param string $taskID the ID of the folder update task
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<FolderActionResponse>
      *
@@ -105,13 +114,14 @@ interface FoldersRawContract
      */
     public function getUpdateAsyncStatus(
         string $taskID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|FolderSearchParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<Folder>>
      *
@@ -119,13 +129,14 @@ interface FoldersRawContract
      */
     public function search(
         array|FolderSearchParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|FolderUpdateAsyncByIDParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<FolderUpdateTaskLocator>
      *
@@ -133,13 +144,14 @@ interface FoldersRawContract
      */
     public function updateAsyncByID(
         array|FolderUpdateAsyncByIDParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|FolderUpdateByIDParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Folder>
      *
@@ -148,6 +160,6 @@ interface FoldersRawContract
     public function updateByID(
         string $folderID,
         array|FolderUpdateByIDParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

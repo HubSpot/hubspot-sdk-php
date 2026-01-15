@@ -23,6 +23,7 @@ use HubspotSDK\PublicUnifiedEventsFilterBranch;
  *
  * @see HubspotSDK\Services\Crm\ListsService::updateFilters()
  *
+ * @phpstan-import-type FilterBranchVariants from \HubspotSDK\Crm\Lists\ListUpdateFiltersParams\FilterBranch
  * @phpstan-import-type FilterBranchShape from \HubspotSDK\Crm\Lists\ListUpdateFiltersParams\FilterBranch
  *
  * @phpstan-type ListUpdateFiltersParamsShape = array{
@@ -35,6 +36,7 @@ final class ListUpdateFiltersParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
+    /** @var FilterBranchVariants $filterBranch */
     #[Required]
     public PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch $filterBranch;
 

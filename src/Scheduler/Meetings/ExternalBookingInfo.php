@@ -17,7 +17,7 @@ use HubspotSDK\Scheduler\Meetings\ExternalBookingInfo\LinkType;
  * @phpstan-import-type ExternalLinkAvailabilityShape from \HubspotSDK\Scheduler\Meetings\ExternalLinkAvailability
  *
  * @phpstan-type ExternalBookingInfoShape = array{
- *   allUsersBusyTimes: list<ExternalUserBusyTimesShape>,
+ *   allUsersBusyTimes: list<ExternalUserBusyTimes|ExternalUserBusyTimesShape>,
  *   customParams: ExternalMeetingsLinkSettings|ExternalMeetingsLinkSettingsShape,
  *   isOffline: bool,
  *   linkID: string,
@@ -89,7 +89,7 @@ final class ExternalBookingInfo implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<ExternalUserBusyTimesShape> $allUsersBusyTimes
+     * @param list<ExternalUserBusyTimes|ExternalUserBusyTimesShape> $allUsersBusyTimes
      * @param ExternalMeetingsLinkSettings|ExternalMeetingsLinkSettingsShape $customParams
      * @param LinkType|value-of<LinkType> $linkType
      * @param ExternalBrandingMetadata|ExternalBrandingMetadataShape|null $brandingMetadata
@@ -119,7 +119,7 @@ final class ExternalBookingInfo implements BaseModel
     }
 
     /**
-     * @param list<ExternalUserBusyTimesShape> $allUsersBusyTimes
+     * @param list<ExternalUserBusyTimes|ExternalUserBusyTimesShape> $allUsersBusyTimes
      */
     public function withAllUsersBusyTimes(array $allUsersBusyTimes): self
     {

@@ -11,6 +11,9 @@ use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Account\UsageRawContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class UsageRawService implements UsageRawContract
 {
     // @phpstan-ignore-next-line
@@ -24,12 +27,14 @@ final class UsageRawService implements UsageRawContract
      *
      * Retrieve the daily API usage for private apps in the account, along with information about usage limits.
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @return BaseResponse<CollectionResponseAPIUsage>
      *
      * @throws APIException
      */
     public function getDailyPrivateAppsUsage(
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(

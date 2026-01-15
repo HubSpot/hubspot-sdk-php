@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-import-type SubscriptionDefinitionShape from \HubspotSDK\Marketing\Subscriptions\SubscriptionDefinition
  *
  * @phpstan-type SubscriptionDefinitionsResponseShape = array{
- *   subscriptionDefinitions: list<SubscriptionDefinitionShape>
+ *   subscriptionDefinitions: list<SubscriptionDefinition|SubscriptionDefinitionShape>,
  * }
  */
 final class SubscriptionDefinitionsResponse implements BaseModel
@@ -52,7 +52,7 @@ final class SubscriptionDefinitionsResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<SubscriptionDefinitionShape> $subscriptionDefinitions
+     * @param list<SubscriptionDefinition|SubscriptionDefinitionShape> $subscriptionDefinitions
      */
     public static function with(array $subscriptionDefinitions): self
     {
@@ -66,7 +66,7 @@ final class SubscriptionDefinitionsResponse implements BaseModel
     /**
      * A list of all subscription definitions.
      *
-     * @param list<SubscriptionDefinitionShape> $subscriptionDefinitions
+     * @param list<SubscriptionDefinition|SubscriptionDefinitionShape> $subscriptionDefinitions
      */
     public function withSubscriptionDefinitions(
         array $subscriptionDefinitions

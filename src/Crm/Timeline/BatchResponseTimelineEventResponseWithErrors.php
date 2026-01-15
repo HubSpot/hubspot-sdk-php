@@ -17,10 +17,10 @@ use HubspotSDK\StandardError;
  *
  * @phpstan-type BatchResponseTimelineEventResponseWithErrorsShape = array{
  *   completedAt: \DateTimeInterface,
- *   results: list<TimelineEventResponseShape>,
+ *   results: list<TimelineEventResponse|TimelineEventResponseShape>,
  *   startedAt: \DateTimeInterface,
  *   status: Status|value-of<Status>,
- *   errors?: list<StandardErrorShape>|null,
+ *   errors?: list<StandardError|StandardErrorShape>|null,
  *   links?: array<string,string>|null,
  *   numErrors?: int|null,
  *   requestedAt?: \DateTimeInterface|null,
@@ -89,9 +89,9 @@ final class BatchResponseTimelineEventResponseWithErrors implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<TimelineEventResponseShape> $results
+     * @param list<TimelineEventResponse|TimelineEventResponseShape> $results
      * @param Status|value-of<Status> $status
-     * @param list<StandardErrorShape>|null $errors
+     * @param list<StandardError|StandardErrorShape>|null $errors
      * @param array<string,string>|null $links
      */
     public static function with(
@@ -128,7 +128,7 @@ final class BatchResponseTimelineEventResponseWithErrors implements BaseModel
     }
 
     /**
-     * @param list<TimelineEventResponseShape> $results
+     * @param list<TimelineEventResponse|TimelineEventResponseShape> $results
      */
     public function withResults(array $results): self
     {
@@ -158,7 +158,7 @@ final class BatchResponseTimelineEventResponseWithErrors implements BaseModel
     }
 
     /**
-     * @param list<StandardErrorShape> $errors
+     * @param list<StandardError|StandardErrorShape> $errors
      */
     public function withErrors(array $errors): self
     {

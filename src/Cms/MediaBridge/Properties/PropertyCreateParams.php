@@ -36,7 +36,7 @@ use HubspotSDK\OptionInput;
  *   formField?: bool|null,
  *   hasUniqueValue?: bool|null,
  *   hidden?: bool|null,
- *   options?: list<OptionInputShape>|null,
+ *   options?: list<OptionInput|OptionInputShape>|null,
  *   referencedObjectType?: string|null,
  * }
  */
@@ -133,7 +133,7 @@ final class PropertyCreateParams implements BaseModel
      * @param FieldType|value-of<FieldType> $fieldType
      * @param Type|value-of<Type> $type
      * @param DataSensitivity|value-of<DataSensitivity>|null $dataSensitivity
-     * @param list<OptionInputShape>|null $options
+     * @param list<OptionInput|OptionInputShape>|null $options
      */
     public static function with(
         int $appID,
@@ -299,7 +299,7 @@ final class PropertyCreateParams implements BaseModel
     }
 
     /**
-     * @param list<OptionInputShape> $options
+     * @param list<OptionInput|OptionInputShape> $options
      */
     public function withOptions(array $options): self
     {

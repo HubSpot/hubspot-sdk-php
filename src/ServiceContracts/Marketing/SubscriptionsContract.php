@@ -11,25 +11,32 @@ use HubspotSDK\Marketing\Subscriptions\SubscriptionDefinitionsResponse;
 use HubspotSDK\Marketing\Subscriptions\SubscriptionSubscribeParams\LegalBasis;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface SubscriptionsContract
 {
     /**
      * @api
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @throws APIException
      */
     public function list(
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): SubscriptionDefinitionsResponse;
 
     /**
      * @api
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @throws APIException
      */
     public function getEmailStatus(
         string $emailAddress,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): PublicSubscriptionStatusesResponse;
 
     /**
@@ -37,17 +44,18 @@ interface SubscriptionsContract
      *
      * @param string $emailAddress contact's email address
      * @param string $subscriptionID ID of the subscription being updated for the contact
-     * @param 'CONSENT_WITH_NOTICE'|'LEGITIMATE_INTEREST_CLIENT'|'LEGITIMATE_INTEREST_OTHER'|'LEGITIMATE_INTEREST_PQL'|'NON_GDPR'|'PERFORMANCE_OF_CONTRACT'|'PROCESS_AND_STORE'|LegalBasis $legalBasis legal basis for updating the contact's status (required for GDPR enabled portals)
+     * @param LegalBasis|value-of<LegalBasis> $legalBasis legal basis for updating the contact's status (required for GDPR enabled portals)
      * @param string $legalBasisExplanation a more detailed explanation to go with the legal basis (required for GDPR enabled portals)
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function subscribe(
         string $emailAddress,
         string $subscriptionID,
-        string|LegalBasis|null $legalBasis = null,
+        LegalBasis|string|null $legalBasis = null,
         ?string $legalBasisExplanation = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): PublicSubscriptionStatus;
 
     /**
@@ -55,16 +63,17 @@ interface SubscriptionsContract
      *
      * @param string $emailAddress contact's email address
      * @param string $subscriptionID ID of the subscription being updated for the contact
-     * @param 'CONSENT_WITH_NOTICE'|'LEGITIMATE_INTEREST_CLIENT'|'LEGITIMATE_INTEREST_OTHER'|'LEGITIMATE_INTEREST_PQL'|'NON_GDPR'|'PERFORMANCE_OF_CONTRACT'|'PROCESS_AND_STORE'|\HubspotSDK\Marketing\Subscriptions\SubscriptionUnsubscribeParams\LegalBasis $legalBasis legal basis for updating the contact's status (required for GDPR enabled portals)
+     * @param \HubspotSDK\Marketing\Subscriptions\SubscriptionUnsubscribeParams\LegalBasis|value-of<\HubspotSDK\Marketing\Subscriptions\SubscriptionUnsubscribeParams\LegalBasis> $legalBasis legal basis for updating the contact's status (required for GDPR enabled portals)
      * @param string $legalBasisExplanation a more detailed explanation to go with the legal basis (required for GDPR enabled portals)
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function unsubscribe(
         string $emailAddress,
         string $subscriptionID,
-        string|\HubspotSDK\Marketing\Subscriptions\SubscriptionUnsubscribeParams\LegalBasis|null $legalBasis = null,
+        \HubspotSDK\Marketing\Subscriptions\SubscriptionUnsubscribeParams\LegalBasis|string|null $legalBasis = null,
         ?string $legalBasisExplanation = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): PublicSubscriptionStatus;
 }

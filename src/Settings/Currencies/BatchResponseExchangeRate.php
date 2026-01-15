@@ -15,7 +15,7 @@ use HubspotSDK\Settings\Currencies\BatchResponseExchangeRate\Status;
  *
  * @phpstan-type BatchResponseExchangeRateShape = array{
  *   completedAt: \DateTimeInterface,
- *   results: list<ExchangeRateShape>,
+ *   results: list<ExchangeRate|ExchangeRateShape>,
  *   startedAt: \DateTimeInterface,
  *   status: Status|value-of<Status>,
  *   links?: array<string,string>|null,
@@ -78,7 +78,7 @@ final class BatchResponseExchangeRate implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<ExchangeRateShape> $results
+     * @param list<ExchangeRate|ExchangeRateShape> $results
      * @param Status|value-of<Status> $status
      * @param array<string,string>|null $links
      */
@@ -112,7 +112,7 @@ final class BatchResponseExchangeRate implements BaseModel
     }
 
     /**
-     * @param list<ExchangeRateShape> $results
+     * @param list<ExchangeRate|ExchangeRateShape> $results
      */
     public function withResults(array $results): self
     {

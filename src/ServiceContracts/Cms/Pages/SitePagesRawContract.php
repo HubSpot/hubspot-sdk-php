@@ -35,12 +35,16 @@ use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface SitePagesRawContract
 {
     /**
      * @api
      *
      * @param array<string,mixed>|SitePageCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -48,7 +52,7 @@ interface SitePagesRawContract
      */
     public function create(
         array|SitePageCreateParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -56,6 +60,7 @@ interface SitePagesRawContract
      *
      * @param string $objectID path param: The Site Page id
      * @param array<string,mixed>|SitePageUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page>
      *
@@ -64,13 +69,14 @@ interface SitePagesRawContract
     public function update(
         string $objectID,
         array|SitePageUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|SitePageListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<\HubspotSDK\Page<Page>>
      *
@@ -78,7 +84,7 @@ interface SitePagesRawContract
      */
     public function list(
         array|SitePageListParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -86,6 +92,7 @@ interface SitePagesRawContract
      *
      * @param string $objectID the Site Page id
      * @param array<string,mixed>|SitePageDeleteParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -94,13 +101,14 @@ interface SitePagesRawContract
     public function delete(
         string $objectID,
         array|SitePageDeleteParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|SitePageAttachToLangGroupParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -108,13 +116,14 @@ interface SitePagesRawContract
      */
     public function attachToLangGroup(
         array|SitePageAttachToLangGroupParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|SitePageCloneParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page>
      *
@@ -122,13 +131,14 @@ interface SitePagesRawContract
      */
     public function clone(
         array|SitePageCloneParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|SitePageCreateAbTestVariationParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page>
      *
@@ -136,13 +146,14 @@ interface SitePagesRawContract
      */
     public function createAbTestVariation(
         array|SitePageCreateAbTestVariationParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|SitePageCreateBatchParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BatchResponsePage>
      *
@@ -150,13 +161,14 @@ interface SitePagesRawContract
      */
     public function createBatch(
         array|SitePageCreateBatchParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|SitePageCreateLanguageVariationParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page>
      *
@@ -164,13 +176,14 @@ interface SitePagesRawContract
      */
     public function createLanguageVariation(
         array|SitePageCreateLanguageVariationParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|SitePageDeleteBatchParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -178,13 +191,14 @@ interface SitePagesRawContract
      */
     public function deleteBatch(
         array|SitePageDeleteBatchParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|SitePageDetachFromLangGroupParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -192,13 +206,14 @@ interface SitePagesRawContract
      */
     public function detachFromLangGroup(
         array|SitePageDetachFromLangGroupParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|SitePageEndAbTestParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -206,7 +221,7 @@ interface SitePagesRawContract
      */
     public function endAbTest(
         array|SitePageEndAbTestParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -214,6 +229,7 @@ interface SitePagesRawContract
      *
      * @param string $objectID the Site Page id
      * @param array<string,mixed>|SitePageGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page>
      *
@@ -222,13 +238,14 @@ interface SitePagesRawContract
     public function get(
         string $objectID,
         array|SitePageGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|SitePageGetBatchParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BatchResponsePage>
      *
@@ -236,13 +253,14 @@ interface SitePagesRawContract
      */
     public function getBatch(
         array|SitePageGetBatchParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param string $objectID the Site Page id
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page>
      *
@@ -250,7 +268,7 @@ interface SitePagesRawContract
      */
     public function getDraft(
         string $objectID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 
     /**
@@ -258,6 +276,7 @@ interface SitePagesRawContract
      *
      * @param string $revisionID the Site Page version id
      * @param array<string,mixed>|SitePageGetRevisionParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<VersionPage>
      *
@@ -266,7 +285,7 @@ interface SitePagesRawContract
     public function getRevision(
         string $revisionID,
         array|SitePageGetRevisionParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -274,6 +293,7 @@ interface SitePagesRawContract
      *
      * @param string $objectID the Site Page id
      * @param array<string,mixed>|SitePageListRevisionsParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<\HubspotSDK\Page<VersionPage>>
      *
@@ -282,13 +302,14 @@ interface SitePagesRawContract
     public function listRevisions(
         string $objectID,
         array|SitePageListRevisionsParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param string $objectID the id of the Site Page for which it's draft will be pushed live
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -296,13 +317,14 @@ interface SitePagesRawContract
      */
     public function publishDraft(
         string $objectID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|SitePageRerunAbTestParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -310,13 +332,14 @@ interface SitePagesRawContract
      */
     public function rerunAbTest(
         array|SitePageRerunAbTestParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param string $objectID the id of the Site Page for which it's draft will be reset
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -324,7 +347,7 @@ interface SitePagesRawContract
      */
     public function resetDraft(
         string $objectID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 
     /**
@@ -332,6 +355,7 @@ interface SitePagesRawContract
      *
      * @param string $revisionID the Site Page version id to restore
      * @param array<string,mixed>|SitePageRestoreRevisionParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page>
      *
@@ -340,7 +364,7 @@ interface SitePagesRawContract
     public function restoreRevision(
         string $revisionID,
         array|SitePageRestoreRevisionParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -348,6 +372,7 @@ interface SitePagesRawContract
      *
      * @param int $revisionID the Site Page version id to restore
      * @param array<string,mixed>|SitePageRestoreRevisionToDraftParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page>
      *
@@ -356,13 +381,14 @@ interface SitePagesRawContract
     public function restoreRevisionToDraft(
         int $revisionID,
         array|SitePageRestoreRevisionToDraftParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|SitePageScheduleParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -370,13 +396,14 @@ interface SitePagesRawContract
      */
     public function schedule(
         array|SitePageScheduleParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|SitePageSetNewLangPrimaryParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -384,13 +411,14 @@ interface SitePagesRawContract
      */
     public function setNewLangPrimary(
         array|SitePageSetNewLangPrimaryParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|SitePageUpdateBatchParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BatchResponsePage>
      *
@@ -398,7 +426,7 @@ interface SitePagesRawContract
      */
     public function updateBatch(
         array|SitePageUpdateBatchParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -406,6 +434,7 @@ interface SitePagesRawContract
      *
      * @param string $objectID the Site Page id
      * @param array<string,mixed>|SitePageUpdateDraftParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page>
      *
@@ -414,13 +443,14 @@ interface SitePagesRawContract
     public function updateDraft(
         string $objectID,
         array|SitePageUpdateDraftParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|SitePageUpdateLanguagesParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -428,6 +458,6 @@ interface SitePagesRawContract
      */
     public function updateLanguages(
         array|SitePageUpdateLanguagesParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

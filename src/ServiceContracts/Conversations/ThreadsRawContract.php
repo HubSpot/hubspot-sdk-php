@@ -13,13 +13,17 @@ use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface ThreadsRawContract
 {
     /**
      * @api
      *
-     * @param int $threadID Path param:
+     * @param int $threadID Path param
      * @param array<string,mixed>|ThreadUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicThread>
      *
@@ -28,13 +32,14 @@ interface ThreadsRawContract
     public function update(
         int $threadID,
         array|ThreadUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|ThreadListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<PublicThread>>
      *
@@ -42,11 +47,13 @@ interface ThreadsRawContract
      */
     public function list(
         array|ThreadListParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
+     *
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -54,13 +61,14 @@ interface ThreadsRawContract
      */
     public function delete(
         int $threadID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|ThreadGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicThread>
      *
@@ -69,6 +77,6 @@ interface ThreadsRawContract
     public function get(
         int $threadID,
         array|ThreadGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

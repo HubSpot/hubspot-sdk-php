@@ -19,21 +19,28 @@ use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface WorkflowsRawContract
 {
     /**
      * @api
+     *
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<APIContactFlow|APIPlatformFlow>
      *
      * @throws APIException
      */
     public function create(
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 
     /**
      * @api
+     *
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<APIContactFlow|APIPlatformFlow>
      *
@@ -41,13 +48,14 @@ interface WorkflowsRawContract
      */
     public function update(
         string $flowID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|WorkflowListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<APIFlowListing>>
      *
@@ -55,11 +63,13 @@ interface WorkflowsRawContract
      */
     public function list(
         array|WorkflowListParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
+     *
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -67,13 +77,14 @@ interface WorkflowsRawContract
      */
     public function delete(
         int $flowID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|WorkflowBatchGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BatchResponseAPIFlow>
      *
@@ -81,13 +92,14 @@ interface WorkflowsRawContract
      */
     public function batchGet(
         array|WorkflowBatchGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|WorkflowBatchGetIDMappingsParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BatchResponseFlowIDWorkflowIDMappingResponse>
      *
@@ -95,11 +107,13 @@ interface WorkflowsRawContract
      */
     public function batchGetIDMappings(
         array|WorkflowBatchGetIDMappingsParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
+     *
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<APIContactFlow|APIPlatformFlow>
      *
@@ -107,13 +121,14 @@ interface WorkflowsRawContract
      */
     public function get(
         string $flowID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|WorkflowListEmailCampaignsParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<APIFlowEmailCampaign>>
      *
@@ -121,6 +136,6 @@ interface WorkflowsRawContract
      */
     public function listEmailCampaigns(
         array|WorkflowListEmailCampaignsParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

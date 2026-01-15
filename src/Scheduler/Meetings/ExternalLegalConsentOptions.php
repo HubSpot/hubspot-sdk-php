@@ -14,7 +14,7 @@ use HubspotSDK\Scheduler\Meetings\ExternalLegalConsentOptions\LegitimateInterest
  * @phpstan-import-type ExternalCommunicationConsentCheckboxShape from \HubspotSDK\Scheduler\Meetings\ExternalCommunicationConsentCheckbox
  *
  * @phpstan-type ExternalLegalConsentOptionsShape = array{
- *   communicationConsentCheckboxes: list<ExternalCommunicationConsentCheckboxShape>,
+ *   communicationConsentCheckboxes: list<ExternalCommunicationConsentCheckbox|ExternalCommunicationConsentCheckboxShape>,
  *   communicationConsentText: string,
  *   isLegitimateInterest: bool,
  *   legitimateInterestSubscriptionTypes: list<int>,
@@ -107,7 +107,7 @@ final class ExternalLegalConsentOptions implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<ExternalCommunicationConsentCheckboxShape> $communicationConsentCheckboxes
+     * @param list<ExternalCommunicationConsentCheckbox|ExternalCommunicationConsentCheckboxShape> $communicationConsentCheckboxes
      * @param list<int> $legitimateInterestSubscriptionTypes
      * @param LegitimateInterestLegalBasis|value-of<LegitimateInterestLegalBasis>|null $legitimateInterestLegalBasis
      */
@@ -141,7 +141,7 @@ final class ExternalLegalConsentOptions implements BaseModel
     }
 
     /**
-     * @param list<ExternalCommunicationConsentCheckboxShape> $communicationConsentCheckboxes
+     * @param list<ExternalCommunicationConsentCheckbox|ExternalCommunicationConsentCheckboxShape> $communicationConsentCheckboxes
      */
     public function withCommunicationConsentCheckboxes(
         array $communicationConsentCheckboxes

@@ -12,6 +12,10 @@ use HubspotSDK\Events\EventDefinitions\AssociationDefinition;
 use HubspotSDK\ObjectTypeDefinitionLabels;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type ObjectTypeDefinitionLabelsShape from \HubspotSDK\ObjectTypeDefinitionLabels
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface SchemasContract
 {
     /**
@@ -19,16 +23,15 @@ interface SchemasContract
      *
      * @param string $objectType path param: The object type that you want to update the schema for
      * @param int $appID Path param: The appId for the media bridge app. It is possible to have multiple apps in your developer account that use the media bridge.
-     * @param bool $clearDescription Body param:
-     * @param string $description Body param:
-     * @param array{
-     *   plural?: string, singular?: string
-     * }|ObjectTypeDefinitionLabels $labels Body param:
+     * @param bool $clearDescription Body param
+     * @param string $description Body param
+     * @param ObjectTypeDefinitionLabels|ObjectTypeDefinitionLabelsShape $labels Body param
      * @param string $primaryDisplayProperty Body param: The name of the primary property for this object. This will be displayed as primary on the HubSpot record page for this object type.
      * @param list<string> $requiredProperties body param: The names of properties that should be **required** when creating an object of this type
-     * @param bool $restorable Body param:
+     * @param bool $restorable Body param
      * @param list<string> $searchableProperties body param: Names of properties that will be indexed for this object type in by HubSpot's product search
      * @param list<string> $secondaryDisplayProperties Body param: The names of secondary properties for this object. These will be displayed as secondary on the HubSpot record page for this object type.
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -37,13 +40,13 @@ interface SchemasContract
         int $appID,
         ?bool $clearDescription = null,
         ?string $description = null,
-        array|ObjectTypeDefinitionLabels|null $labels = null,
+        ObjectTypeDefinitionLabels|array|null $labels = null,
         ?string $primaryDisplayProperty = null,
         ?array $requiredProperties = null,
         ?bool $restorable = null,
         ?array $searchableProperties = null,
         ?array $secondaryDisplayProperties = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): ObjectsSchemasObjectTypeDefinition;
 
     /**
@@ -51,13 +54,14 @@ interface SchemasContract
      *
      * @param int $appID The appId for the media bridge app. It is possible to have multiple apps in your developer account that use the media bridge.
      * @param bool $archived whether to return only results that have been archived
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function list(
         int $appID,
         bool $archived = false,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): SchemaListResponse;
 
     /**
@@ -65,9 +69,10 @@ interface SchemasContract
      *
      * @param string $objectType Path param: The object type to create the definition for
      * @param int $appID Path param: The appId for the media bridge app. It is possible to have multiple apps in your developer account that use the media bridge.
-     * @param string $fromObjectTypeID Body param:
-     * @param string $toObjectTypeID Body param:
-     * @param string $name Body param:
+     * @param string $fromObjectTypeID Body param
+     * @param string $toObjectTypeID Body param
+     * @param string $name Body param
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -77,7 +82,7 @@ interface SchemasContract
         string $fromObjectTypeID,
         string $toObjectTypeID,
         ?string $name = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): AssociationDefinition;
 
     /**
@@ -86,6 +91,7 @@ interface SchemasContract
      * @param string $associationID the ID of the association definition to be deleted
      * @param int $appID The appId for the media bridge app. It is possible to have multiple apps in your developer account that use the media bridge.
      * @param string $objectType the object type for the definition that you want to delete
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -93,7 +99,7 @@ interface SchemasContract
         string $associationID,
         int $appID,
         string $objectType,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): mixed;
 
     /**
@@ -101,12 +107,13 @@ interface SchemasContract
      *
      * @param string $objectType the object type to get the schema for
      * @param int $appID The appId for the media bridge app. It is possible to have multiple apps in your developer account that use the media bridge.
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function get(
         string $objectType,
         int $appID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): ObjectSchema;
 }

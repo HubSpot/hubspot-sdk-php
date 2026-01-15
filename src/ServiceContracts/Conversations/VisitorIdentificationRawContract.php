@@ -10,12 +10,16 @@ use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface VisitorIdentificationRawContract
 {
     /**
      * @api
      *
      * @param array<string,mixed>|VisitorIdentificationGenerateTokenParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<IdentificationTokenResponse>
      *
@@ -23,6 +27,6 @@ interface VisitorIdentificationRawContract
      */
     public function generateToken(
         array|VisitorIdentificationGenerateTokenParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

@@ -4,22 +4,25 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Services\Crm\Objects;
 
-use HubspotSDK\AssociationSpec;
-use HubspotSDK\AssociationSpec\AssociationCategory;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Core\Util;
 use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\Crm\CreatedResponseSimplePublicObject;
-use HubspotSDK\Crm\Filter\Operator;
+use HubspotSDK\Crm\FilterGroup;
+use HubspotSDK\Crm\PublicAssociationsForObject;
 use HubspotSDK\Crm\SimplePublicObject;
 use HubspotSDK\Crm\SimplePublicObjectWithAssociations;
 use HubspotSDK\Page;
-use HubspotSDK\PublicObjectID;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Objects\PostalMailContract;
 use HubspotSDK\Services\Crm\Objects\PostalMail\BatchService;
 
+/**
+ * @phpstan-import-type PublicAssociationsForObjectShape from \HubspotSDK\Crm\PublicAssociationsForObject
+ * @phpstan-import-type FilterGroupShape from \HubspotSDK\Crm\FilterGroup
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class PostalMailService implements PostalMailContract
 {
     /**
@@ -46,21 +49,16 @@ final class PostalMailService implements PostalMailContract
      *
      * Create a postal mail object with the given properties and return a copy of the object, including the ID.
      *
-     * @param list<array{
-     *   to: array{id: string}|PublicObjectID,
-     *   types: list<array{
-     *     associationCategory: 'HUBSPOT_DEFINED'|'INTEGRATOR_DEFINED'|'USER_DEFINED'|AssociationCategory,
-     *     associationTypeID: int,
-     *   }|AssociationSpec>,
-     * }> $associations
+     * @param list<PublicAssociationsForObject|PublicAssociationsForObjectShape> $associations
      * @param array<string,string> $properties key-value pairs for setting properties for the new object
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function create(
         array $associations,
         array $properties,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): CreatedResponseSimplePublicObject {
         $params = Util::removeNulls(
             ['associations' => $associations, 'properties' => $properties]
@@ -75,9 +73,10 @@ final class PostalMailService implements PostalMailContract
     /**
      * @api
      *
-     * @param string $postalMailID Path param:
+     * @param string $postalMailID Path param
      * @param array<string,string> $properties body param: Key value pairs representing the properties of the object
-     * @param string $idProperty Query param:
+     * @param string $idProperty Query param
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -85,7 +84,7 @@ final class PostalMailService implements PostalMailContract
         string $postalMailID,
         array $properties,
         ?string $idProperty = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): SimplePublicObject {
         $params = Util::removeNulls(
             ['properties' => $properties, 'idProperty' => $idProperty]
@@ -103,6 +102,7 @@ final class PostalMailService implements PostalMailContract
      * @param list<string> $associations
      * @param list<string> $properties
      * @param list<string> $propertiesWithHistory
+     * @param RequestOpts|null $requestOptions
      *
      * @return Page<SimplePublicObjectWithAssociations>
      *
@@ -115,7 +115,7 @@ final class PostalMailService implements PostalMailContract
         int $limit = 10,
         ?array $properties = null,
         ?array $propertiesWithHistory = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): Page {
         $params = Util::removeNulls(
             [
@@ -139,11 +139,13 @@ final class PostalMailService implements PostalMailContract
      *
      * Move the postal mail object with the ID `{postalMailId}` to the recycling bin.
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @throws APIException
      */
     public function delete(
         string $postalMailID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): mixed {
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->delete($postalMailID, requestOptions: $requestOptions);
@@ -157,6 +159,7 @@ final class PostalMailService implements PostalMailContract
      * @param list<string> $associations
      * @param list<string> $properties
      * @param list<string> $propertiesWithHistory
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -167,7 +170,7 @@ final class PostalMailService implements PostalMailContract
         ?string $idProperty = null,
         ?array $properties = null,
         ?array $propertiesWithHistory = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): SimplePublicObjectWithAssociations {
         $params = Util::removeNulls(
             [
@@ -191,19 +194,12 @@ final class PostalMailService implements PostalMailContract
      * Search for postal mail objects using specific criteria in the request.
      *
      * @param string $after a paging cursor token for retrieving subsequent pages
-     * @param list<array{
-     *   filters: list<array{
-     *     operator: 'BETWEEN'|'CONTAINS_TOKEN'|'EQ'|'GT'|'GTE'|'HAS_PROPERTY'|'IN'|'LT'|'LTE'|'NEQ'|'NOT_CONTAINS_TOKEN'|'NOT_HAS_PROPERTY'|'NOT_IN'|Operator,
-     *     propertyName: string,
-     *     highValue?: string,
-     *     value?: string,
-     *     values?: list<string>,
-     *   }>,
-     * }> $filterGroups Up to 6 groups of filters defining additional query criteria
+     * @param list<FilterGroup|FilterGroupShape> $filterGroups up to 6 groups of filters defining additional query criteria
      * @param int $limit the maximum results to return, up to 200 objects
      * @param list<string> $properties a list of property names to include in the response
      * @param list<string> $sorts specifies sorting order based on object properties
      * @param string $query the search query string, up to 3000 characters
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -214,7 +210,7 @@ final class PostalMailService implements PostalMailContract
         array $properties,
         array $sorts,
         ?string $query = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): CollectionResponseWithTotalSimplePublicObject {
         $params = Util::removeNulls(
             [

@@ -12,12 +12,16 @@ use HubspotSDK\Crm\Properties\Batch\BatchDeleteParams;
 use HubspotSDK\Crm\Properties\Batch\BatchGetParams;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface BatchRawContract
 {
     /**
      * @api
      *
      * @param array<string,mixed>|BatchCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BatchResponseProperty>
      *
@@ -26,13 +30,14 @@ interface BatchRawContract
     public function create(
         string $objectType,
         array|BatchCreateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|BatchDeleteParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -41,14 +46,15 @@ interface BatchRawContract
     public function delete(
         string $objectType,
         array|BatchDeleteParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
-     * @param string $objectType Path param:
+     * @param string $objectType Path param
      * @param array<string,mixed>|BatchGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BatchResponseProperty>
      *
@@ -57,6 +63,6 @@ interface BatchRawContract
     public function get(
         string $objectType,
         array|BatchGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

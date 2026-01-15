@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-import-type ObjectTypeNearOrAtAssociationLimitShape from \HubspotSDK\Crm\Limits\ObjectTypeNearOrAtAssociationLimit
  *
  * @phpstan-type CollectionResponseObjectTypeNearOrAtAssociationLimitNoPagingShape = array{
- *   results: list<ObjectTypeNearOrAtAssociationLimitShape>
+ *   results: list<ObjectTypeNearOrAtAssociationLimit|ObjectTypeNearOrAtAssociationLimitShape>,
  * }
  */
 final class CollectionResponseObjectTypeNearOrAtAssociationLimitNoPaging implements BaseModel
@@ -51,7 +51,7 @@ final class CollectionResponseObjectTypeNearOrAtAssociationLimitNoPaging impleme
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<ObjectTypeNearOrAtAssociationLimitShape> $results
+     * @param list<ObjectTypeNearOrAtAssociationLimit|ObjectTypeNearOrAtAssociationLimitShape> $results
      */
     public static function with(array $results): self
     {
@@ -63,7 +63,7 @@ final class CollectionResponseObjectTypeNearOrAtAssociationLimitNoPaging impleme
     }
 
     /**
-     * @param list<ObjectTypeNearOrAtAssociationLimitShape> $results
+     * @param list<ObjectTypeNearOrAtAssociationLimit|ObjectTypeNearOrAtAssociationLimitShape> $results
      */
     public function withResults(array $results): self
     {

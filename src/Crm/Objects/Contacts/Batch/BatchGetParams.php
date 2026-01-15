@@ -19,7 +19,7 @@ use HubspotSDK\Crm\SimplePublicObjectID;
  * @phpstan-import-type SimplePublicObjectIDShape from \HubspotSDK\Crm\SimplePublicObjectID
  *
  * @phpstan-type BatchGetParamsShape = array{
- *   inputs: list<SimplePublicObjectIDShape>,
+ *   inputs: list<SimplePublicObjectID|SimplePublicObjectIDShape>,
  *   properties: list<string>,
  *   propertiesWithHistory: list<string>,
  *   archived?: bool|null,
@@ -91,7 +91,7 @@ final class BatchGetParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<SimplePublicObjectIDShape> $inputs
+     * @param list<SimplePublicObjectID|SimplePublicObjectIDShape> $inputs
      * @param list<string> $properties
      * @param list<string> $propertiesWithHistory
      */
@@ -115,7 +115,7 @@ final class BatchGetParams implements BaseModel
     }
 
     /**
-     * @param list<SimplePublicObjectIDShape> $inputs
+     * @param list<SimplePublicObjectID|SimplePublicObjectIDShape> $inputs
      */
     public function withInputs(array $inputs): self
     {

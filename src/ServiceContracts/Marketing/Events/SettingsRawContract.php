@@ -10,6 +10,9 @@ use HubspotSDK\Marketing\Events\EventDetailSettings;
 use HubspotSDK\Marketing\Events\Settings\SettingCreateOrUpdateParams;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface SettingsRawContract
 {
     /**
@@ -17,6 +20,7 @@ interface SettingsRawContract
      *
      * @param int $appID the id of the application to update the settings for
      * @param array<string,mixed>|SettingCreateOrUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<EventDetailSettings>
      *
@@ -25,13 +29,14 @@ interface SettingsRawContract
     public function createOrUpdate(
         int $appID,
         array|SettingCreateOrUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param int $appID the id of the application to retrieve the settings for
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<EventDetailSettings>
      *
@@ -39,6 +44,6 @@ interface SettingsRawContract
      */
     public function get(
         int $appID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 }

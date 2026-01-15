@@ -11,12 +11,14 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicUnifiedEventsFilter\FilterType;
 
 /**
+ * @phpstan-import-type CoalescingRefineByVariants from \HubspotSDK\PublicUnifiedEventsFilter\CoalescingRefineBy
+ * @phpstan-import-type PruningRefineByVariants from \HubspotSDK\PublicUnifiedEventsFilter\PruningRefineBy
  * @phpstan-import-type PublicEventFilterMetadataShape from \HubspotSDK\PublicEventFilterMetadata
  * @phpstan-import-type CoalescingRefineByShape from \HubspotSDK\PublicUnifiedEventsFilter\CoalescingRefineBy
  * @phpstan-import-type PruningRefineByShape from \HubspotSDK\PublicUnifiedEventsFilter\PruningRefineBy
  *
  * @phpstan-type PublicUnifiedEventsFilterShape = array{
- *   filterLines: list<PublicEventFilterMetadataShape>,
+ *   filterLines: list<PublicEventFilterMetadata|PublicEventFilterMetadataShape>,
  *   filterType: FilterType|value-of<FilterType>,
  *   coalescingRefineBy?: CoalescingRefineByShape|null,
  *   eventTypeID?: string|null,
@@ -36,12 +38,14 @@ final class PublicUnifiedEventsFilter implements BaseModel
     #[Required(enum: FilterType::class)]
     public string $filterType;
 
+    /** @var CoalescingRefineByVariants|null $coalescingRefineBy */
     #[Optional]
     public PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation|null $coalescingRefineBy;
 
     #[Optional('eventTypeId')]
     public ?string $eventTypeID;
 
+    /** @var PruningRefineByVariants|null $pruningRefineBy */
     #[Optional]
     public PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation|null $pruningRefineBy;
 
@@ -69,7 +73,7 @@ final class PublicUnifiedEventsFilter implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicEventFilterMetadataShape> $filterLines
+     * @param list<PublicEventFilterMetadata|PublicEventFilterMetadataShape> $filterLines
      * @param FilterType|value-of<FilterType> $filterType
      * @param CoalescingRefineByShape|null $coalescingRefineBy
      * @param PruningRefineByShape|null $pruningRefineBy
@@ -94,7 +98,7 @@ final class PublicUnifiedEventsFilter implements BaseModel
     }
 
     /**
-     * @param list<PublicEventFilterMetadataShape> $filterLines
+     * @param list<PublicEventFilterMetadata|PublicEventFilterMetadataShape> $filterLines
      */
     public function withFilterLines(array $filterLines): self
     {

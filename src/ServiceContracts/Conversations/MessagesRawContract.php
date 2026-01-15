@@ -19,10 +19,15 @@ use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface MessagesRawContract
 {
     /**
      * @api
+     *
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ConversationsPublicConversationsMessage|PublicComment|PublicWelcomeMessage|PublicAssignmentMessage|PublicThreadStatusChange|PublicThreadInboxChange,>
      *
@@ -30,13 +35,14 @@ interface MessagesRawContract
      */
     public function create(
         int $threadID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|MessageListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<ConversationsPublicConversationsMessage|PublicComment|PublicWelcomeMessage|PublicAssignmentMessage|PublicThreadStatusChange|PublicThreadInboxChange,>,>
      *
@@ -45,14 +51,15 @@ interface MessagesRawContract
     public function list(
         int $threadID,
         array|MessageListParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
-     * @param string $messageID Path param:
+     * @param string $messageID Path param
      * @param array<string,mixed>|MessageGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ConversationsPublicConversationsMessage|PublicComment|PublicWelcomeMessage|PublicAssignmentMessage|PublicThreadStatusChange|PublicThreadInboxChange,>
      *
@@ -61,14 +68,15 @@ interface MessagesRawContract
     public function get(
         string $messageID,
         array|MessageGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
-     * @param string $messageID Path param:
+     * @param string $messageID Path param
      * @param array<string,mixed>|MessageGetOriginalContentParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicMessageContent>
      *
@@ -77,6 +85,6 @@ interface MessagesRawContract
     public function getOriginalContent(
         string $messageID,
         array|MessageGetOriginalContentParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

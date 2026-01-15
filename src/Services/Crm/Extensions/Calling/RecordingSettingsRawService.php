@@ -14,6 +14,9 @@ use HubspotSDK\Crm\Extensions\Calling\RecordingSettingsResponse;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Extensions\Calling\RecordingSettingsRawContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class RecordingSettingsRawService implements RecordingSettingsRawContract
 {
     // @phpstan-ignore-next-line
@@ -28,6 +31,7 @@ final class RecordingSettingsRawService implements RecordingSettingsRawContract
      * @param array{
      *   urlToRetrieveAuthedRecording: string
      * }|RecordingSettingCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<RecordingSettingsResponse>
      *
@@ -36,7 +40,7 @@ final class RecordingSettingsRawService implements RecordingSettingsRawContract
     public function create(
         int $appID,
         array|RecordingSettingCreateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = RecordingSettingCreateParams::parseRequest(
             $params,
@@ -59,6 +63,7 @@ final class RecordingSettingsRawService implements RecordingSettingsRawContract
      * @param array{
      *   urlToRetrieveAuthedRecording?: string
      * }|RecordingSettingUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<RecordingSettingsResponse>
      *
@@ -67,7 +72,7 @@ final class RecordingSettingsRawService implements RecordingSettingsRawContract
     public function update(
         int $appID,
         array|RecordingSettingUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = RecordingSettingUpdateParams::parseRequest(
             $params,
@@ -87,13 +92,15 @@ final class RecordingSettingsRawService implements RecordingSettingsRawContract
     /**
      * @api
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @return BaseResponse<RecordingSettingsResponse>
      *
      * @throws APIException
      */
     public function get(
         int $appID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -108,6 +115,7 @@ final class RecordingSettingsRawService implements RecordingSettingsRawContract
      * @api
      *
      * @param array{engagementID: int}|RecordingSettingMarkReadyParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -115,7 +123,7 @@ final class RecordingSettingsRawService implements RecordingSettingsRawContract
      */
     public function markReady(
         array|RecordingSettingMarkReadyParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = RecordingSettingMarkReadyParams::parseRequest(
             $params,

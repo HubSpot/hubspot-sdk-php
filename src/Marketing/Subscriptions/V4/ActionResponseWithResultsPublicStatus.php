@@ -17,10 +17,10 @@ use HubspotSDK\StandardError;
  *
  * @phpstan-type ActionResponseWithResultsPublicStatusShape = array{
  *   completedAt: \DateTimeInterface,
- *   results: list<PublicStatusShape>,
+ *   results: list<PublicStatus|PublicStatusShape>,
  *   startedAt: \DateTimeInterface,
  *   status: Status|value-of<Status>,
- *   errors?: list<StandardErrorShape>|null,
+ *   errors?: list<StandardError|StandardErrorShape>|null,
  *   links?: array<string,string>|null,
  *   numErrors?: int|null,
  *   requestedAt?: \DateTimeInterface|null,
@@ -117,9 +117,9 @@ final class ActionResponseWithResultsPublicStatus implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicStatusShape> $results
+     * @param list<PublicStatus|PublicStatusShape> $results
      * @param Status|value-of<Status> $status
-     * @param list<StandardErrorShape>|null $errors
+     * @param list<StandardError|StandardErrorShape>|null $errors
      * @param array<string,string>|null $links
      */
     public static function with(
@@ -161,7 +161,7 @@ final class ActionResponseWithResultsPublicStatus implements BaseModel
     /**
      * An array of results from the operation.
      *
-     * @param list<PublicStatusShape> $results
+     * @param list<PublicStatus|PublicStatusShape> $results
      */
     public function withResults(array $results): self
     {
@@ -198,7 +198,7 @@ final class ActionResponseWithResultsPublicStatus implements BaseModel
     /**
      * A list of errors that occurred during the operation.
      *
-     * @param list<StandardErrorShape> $errors
+     * @param list<StandardError|StandardErrorShape> $errors
      */
     public function withErrors(array $errors): self
     {

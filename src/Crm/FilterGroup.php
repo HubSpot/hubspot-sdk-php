@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * @phpstan-import-type FilterShape from \HubspotSDK\Crm\Filter
  *
- * @phpstan-type FilterGroupShape = array{filters: list<FilterShape>}
+ * @phpstan-type FilterGroupShape = array{filters: list<Filter|FilterShape>}
  */
 final class FilterGroup implements BaseModel
 {
@@ -46,7 +46,7 @@ final class FilterGroup implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<FilterShape> $filters
+     * @param list<Filter|FilterShape> $filters
      */
     public static function with(array $filters): self
     {
@@ -58,7 +58,7 @@ final class FilterGroup implements BaseModel
     }
 
     /**
-     * @param list<FilterShape> $filters
+     * @param list<Filter|FilterShape> $filters
      */
     public function withFilters(array $filters): self
     {

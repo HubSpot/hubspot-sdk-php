@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Cms\MediaBridge;
 
 use HubspotSDK\Client;
+use HubspotSDK\Cms\MediaBridge\AttentionSpanCalculatedValues;
 use HubspotSDK\Cms\MediaBridge\AttentionSpanEvent;
 use HubspotSDK\Cms\MediaBridge\Events\EventCreateAttentionSpanEventParams\MediaType;
 use HubspotSDK\Cms\MediaBridge\Events\EventCreateMediaPlayedEventParams\State;
@@ -15,6 +16,10 @@ use HubspotSDK\Core\Util;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Cms\MediaBridge\EventsContract;
 
+/**
+ * @phpstan-import-type AttentionSpanCalculatedValuesShape from \HubspotSDK\Cms\MediaBridge\AttentionSpanCalculatedValues
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class EventsService implements EventsContract
 {
     /**
@@ -35,21 +40,22 @@ final class EventsService implements EventsContract
      *
      * Create an event containing the viewers attention span details for the media.
      *
-     * @param 'AUDIO'|'DOCUMENT'|'IMAGE'|'OTHER'|'VIDEO'|MediaType $mediaType
+     * @param MediaType|value-of<MediaType> $mediaType
      * @param array<string,int> $rawDataMap
-     * @param array{totalPercentPlayed: float, totalSecondsPlayed: int} $derivedValues
+     * @param AttentionSpanCalculatedValues|AttentionSpanCalculatedValuesShape $derivedValues
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function createAttentionSpanEvent(
-        string|MediaType $mediaType,
+        MediaType|string $mediaType,
         int $occurredTimestamp,
         array $rawDataMap,
         string $sessionID,
         ?string $_hsenc = null,
         ?int $contactID = null,
         ?string $contactUtk = null,
-        ?array $derivedValues = null,
+        AttentionSpanCalculatedValues|array|null $derivedValues = null,
         ?string $externalID = null,
         ?int $mediaBridgeID = null,
         ?string $mediaName = null,
@@ -58,7 +64,7 @@ final class EventsService implements EventsContract
         ?string $pageName = null,
         ?string $pageURL = null,
         ?string $rawDataString = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): AttentionSpanEvent {
         $params = Util::removeNulls(
             [
@@ -92,16 +98,17 @@ final class EventsService implements EventsContract
      *
      * Create an event for when a user begins playing a piece of media.
      *
-     * @param 'AUDIO'|'DOCUMENT'|'IMAGE'|'OTHER'|'VIDEO'|\HubspotSDK\Cms\MediaBridge\Events\EventCreateMediaPlayedEventParams\MediaType $mediaType
-     * @param 'STARTED'|'VIEWED'|State $state
+     * @param \HubspotSDK\Cms\MediaBridge\Events\EventCreateMediaPlayedEventParams\MediaType|value-of<\HubspotSDK\Cms\MediaBridge\Events\EventCreateMediaPlayedEventParams\MediaType> $mediaType
+     * @param State|value-of<State> $state
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function createMediaPlayedEvent(
-        string|\HubspotSDK\Cms\MediaBridge\Events\EventCreateMediaPlayedEventParams\MediaType $mediaType,
+        \HubspotSDK\Cms\MediaBridge\Events\EventCreateMediaPlayedEventParams\MediaType|string $mediaType,
         int $occurredTimestamp,
         string $sessionID,
-        string|State $state,
+        State|string $state,
         ?string $_hsenc = null,
         ?int $contactID = null,
         ?string $contactUtk = null,
@@ -113,7 +120,7 @@ final class EventsService implements EventsContract
         ?int $pageID = null,
         ?string $pageName = null,
         ?string $pageURL = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): MediaPlayedEvent {
         $params = Util::removeNulls(
             [
@@ -146,12 +153,13 @@ final class EventsService implements EventsContract
      *
      * Create an event representing a user reaching quarterly milestones in a piece of media they're viewing.
      *
-     * @param 'AUDIO'|'DOCUMENT'|'IMAGE'|'OTHER'|'VIDEO'|\HubspotSDK\Cms\MediaBridge\Events\EventCreateMediaPlayedPercentEventParams\MediaType $mediaType
+     * @param \HubspotSDK\Cms\MediaBridge\Events\EventCreateMediaPlayedPercentEventParams\MediaType|value-of<\HubspotSDK\Cms\MediaBridge\Events\EventCreateMediaPlayedPercentEventParams\MediaType> $mediaType
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function createMediaPlayedPercentEvent(
-        string|\HubspotSDK\Cms\MediaBridge\Events\EventCreateMediaPlayedPercentEventParams\MediaType $mediaType,
+        \HubspotSDK\Cms\MediaBridge\Events\EventCreateMediaPlayedPercentEventParams\MediaType|string $mediaType,
         int $occurredTimestamp,
         int $playedPercent,
         string $sessionID,
@@ -165,7 +173,7 @@ final class EventsService implements EventsContract
         ?int $pageID = null,
         ?string $pageName = null,
         ?string $pageURL = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): MediaPlayedPercentageEvent {
         $params = Util::removeNulls(
             [

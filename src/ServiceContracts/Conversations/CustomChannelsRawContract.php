@@ -13,12 +13,16 @@ use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface CustomChannelsRawContract
 {
     /**
      * @api
      *
      * @param array<string,mixed>|CustomChannelCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicChannelIntegrationChannel>
      *
@@ -26,7 +30,7 @@ interface CustomChannelsRawContract
      */
     public function create(
         array|CustomChannelCreateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -34,6 +38,7 @@ interface CustomChannelsRawContract
      *
      * @param int $channelID the ID of the channel to update
      * @param array<string,mixed>|CustomChannelUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicChannelIntegrationChannel>
      *
@@ -42,13 +47,14 @@ interface CustomChannelsRawContract
     public function update(
         int $channelID,
         array|CustomChannelUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|CustomChannelListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<PublicChannelIntegrationChannel>>
      *
@@ -56,11 +62,13 @@ interface CustomChannelsRawContract
      */
     public function list(
         array|CustomChannelListParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
+     *
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -68,11 +76,13 @@ interface CustomChannelsRawContract
      */
     public function delete(
         int $channelID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 
     /**
      * @api
+     *
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicChannelIntegrationChannel>
      *
@@ -80,6 +90,6 @@ interface CustomChannelsRawContract
      */
     public function get(
         int $channelID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 }

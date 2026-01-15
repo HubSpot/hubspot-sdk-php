@@ -14,7 +14,8 @@ use HubspotSDK\Core\Conversion\Contracts\ConverterSource;
  * @phpstan-import-type APIFlowBatchFetchMigrationFlowIDCoordinateShape from \HubspotSDK\Automation\Workflows\APIFlowBatchFetchMigrationFlowIDCoordinate
  * @phpstan-import-type APIFlowBatchFetchMigrationWorkflowIDCoordinateShape from \HubspotSDK\Automation\Workflows\APIFlowBatchFetchMigrationWorkflowIDCoordinate
  *
- * @phpstan-type InputShape = APIFlowBatchFetchMigrationFlowIDCoordinateShape|APIFlowBatchFetchMigrationWorkflowIDCoordinateShape
+ * @phpstan-type InputVariants = APIFlowBatchFetchMigrationFlowIDCoordinate|APIFlowBatchFetchMigrationWorkflowIDCoordinate
+ * @phpstan-type InputShape = InputVariants|APIFlowBatchFetchMigrationFlowIDCoordinateShape|APIFlowBatchFetchMigrationWorkflowIDCoordinateShape
  */
 final class Input implements ConverterSource
 {

@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @phpstan-type AggregateEmailStatisticsShape = array{
  *   aggregate?: null|EmailStatisticsData|EmailStatisticsDataShape,
- *   campaignAggregations?: array<string,EmailStatisticsDataShape>|null,
+ *   campaignAggregations?: array<string,EmailStatisticsData|EmailStatisticsDataShape>|null,
  *   emails?: list<int>|null,
  * }
  */
@@ -54,7 +54,7 @@ final class AggregateEmailStatistics implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param EmailStatisticsData|EmailStatisticsDataShape|null $aggregate
-     * @param array<string,EmailStatisticsDataShape>|null $campaignAggregations
+     * @param array<string,EmailStatisticsData|EmailStatisticsDataShape>|null $campaignAggregations
      * @param list<int>|null $emails
      */
     public static function with(
@@ -85,7 +85,7 @@ final class AggregateEmailStatistics implements BaseModel
     /**
      * The aggregated statistics per campaign.
      *
-     * @param array<string,EmailStatisticsDataShape> $campaignAggregations
+     * @param array<string,EmailStatisticsData|EmailStatisticsDataShape> $campaignAggregations
      */
     public function withCampaignAggregations(array $campaignAggregations): self
     {

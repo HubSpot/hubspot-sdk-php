@@ -12,6 +12,9 @@ use HubspotSDK\Crm\Associations\Schema\SchemaListParams;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Associations\SchemaRawContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class SchemaRawService implements SchemaRawContract
 {
     // @phpstan-ignore-next-line
@@ -24,6 +27,7 @@ final class SchemaRawService implements SchemaRawContract
      * @api
      *
      * @param array{fromObjectType: string}|SchemaListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CollectionResponsePublicAssociationDefinitionNoPaging>
      *
@@ -32,7 +36,7 @@ final class SchemaRawService implements SchemaRawContract
     public function list(
         string $toObjectType,
         array|SchemaListParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = SchemaListParams::parseRequest(
             $params,

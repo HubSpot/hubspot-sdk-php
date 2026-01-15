@@ -6,6 +6,9 @@ namespace HubspotSDK\Services\Cms\Hubdb\Rows;
 
 use HubspotSDK\Client;
 use HubspotSDK\Cms\Hubdb\BatchResponseHubDBTableRowV3;
+use HubspotSDK\Cms\Hubdb\HubDBTableRowBatchCloneRequest;
+use HubspotSDK\Cms\Hubdb\HubDBTableRowV3BatchUpdateRequest;
+use HubspotSDK\Cms\Hubdb\HubDBTableRowV3Request;
 use HubspotSDK\Cms\Hubdb\Rows\Batch\BatchCloneBatchParams;
 use HubspotSDK\Cms\Hubdb\Rows\Batch\BatchCreateBatchParams;
 use HubspotSDK\Cms\Hubdb\Rows\Batch\BatchGetBatchParams;
@@ -18,6 +21,12 @@ use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Cms\Hubdb\Rows\BatchRawContract;
 
+/**
+ * @phpstan-import-type HubDBTableRowBatchCloneRequestShape from \HubspotSDK\Cms\Hubdb\HubDBTableRowBatchCloneRequest
+ * @phpstan-import-type HubDBTableRowV3RequestShape from \HubspotSDK\Cms\Hubdb\HubDBTableRowV3Request
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type HubDBTableRowV3BatchUpdateRequestShape from \HubspotSDK\Cms\Hubdb\HubDBTableRowV3BatchUpdateRequest
+ */
 final class BatchRawService implements BatchRawContract
 {
     // @phpstan-ignore-next-line
@@ -33,8 +42,9 @@ final class BatchRawService implements BatchRawContract
      *
      * @param string $tableIDOrName The ID or name of the table
      * @param array{
-     *   inputs: list<array{id: string, name?: string}>
+     *   inputs: list<HubDBTableRowBatchCloneRequest|HubDBTableRowBatchCloneRequestShape>,
      * }|BatchCloneBatchParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BatchResponseHubDBTableRowV3>
      *
@@ -43,7 +53,7 @@ final class BatchRawService implements BatchRawContract
     public function cloneBatch(
         string $tableIDOrName,
         array|BatchCloneBatchParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = BatchCloneBatchParams::parseRequest(
             $params,
@@ -67,14 +77,9 @@ final class BatchRawService implements BatchRawContract
      *
      * @param string $tableIDOrName The ID or name of the table
      * @param array{
-     *   inputs: list<array{
-     *     childTableID: int,
-     *     displayIndex: int,
-     *     values: array<string,array<string,mixed>>,
-     *     name?: string,
-     *     path?: string,
-     *   }>,
+     *   inputs: list<HubDBTableRowV3Request|HubDBTableRowV3RequestShape>
      * }|BatchCreateBatchParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BatchResponseHubDBTableRowV3>
      *
@@ -83,7 +88,7 @@ final class BatchRawService implements BatchRawContract
     public function createBatch(
         string $tableIDOrName,
         array|BatchCreateBatchParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = BatchCreateBatchParams::parseRequest(
             $params,
@@ -110,6 +115,7 @@ final class BatchRawService implements BatchRawContract
      *
      * @param string $tableIDOrName the ID or name of the table to query
      * @param array{inputs: list<string>}|BatchGetBatchParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BatchResponseHubDBTableRowV3>
      *
@@ -118,7 +124,7 @@ final class BatchRawService implements BatchRawContract
     public function getBatch(
         string $tableIDOrName,
         array|BatchGetBatchParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = BatchGetBatchParams::parseRequest(
             $params,
@@ -142,6 +148,7 @@ final class BatchRawService implements BatchRawContract
      *
      * @param string $tableIDOrName The ID or name of the table
      * @param array{inputs: list<string>}|BatchGetDraftBatchParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BatchResponseHubDBTableRowV3>
      *
@@ -150,7 +157,7 @@ final class BatchRawService implements BatchRawContract
     public function getDraftBatch(
         string $tableIDOrName,
         array|BatchGetDraftBatchParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = BatchGetDraftBatchParams::parseRequest(
             $params,
@@ -174,6 +181,7 @@ final class BatchRawService implements BatchRawContract
      *
      * @param string $tableIDOrName The ID or name of the table
      * @param array{inputs: list<string>}|BatchPurgeBatchParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -182,7 +190,7 @@ final class BatchRawService implements BatchRawContract
     public function purgeBatch(
         string $tableIDOrName,
         array|BatchPurgeBatchParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = BatchPurgeBatchParams::parseRequest(
             $params,
@@ -206,15 +214,9 @@ final class BatchRawService implements BatchRawContract
      *
      * @param string $tableIDOrName The ID or name of the table
      * @param array{
-     *   inputs: list<array{
-     *     childTableID: int,
-     *     displayIndex: int,
-     *     values: array<string,array<string,mixed>>,
-     *     id?: string,
-     *     name?: string,
-     *     path?: string,
-     *   }>,
+     *   inputs: list<HubDBTableRowV3BatchUpdateRequest|HubDBTableRowV3BatchUpdateRequestShape>,
      * }|BatchReplaceBatchParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BatchResponseHubDBTableRowV3>
      *
@@ -223,7 +225,7 @@ final class BatchRawService implements BatchRawContract
     public function replaceBatch(
         string $tableIDOrName,
         array|BatchReplaceBatchParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = BatchReplaceBatchParams::parseRequest(
             $params,
@@ -249,15 +251,9 @@ final class BatchRawService implements BatchRawContract
      *
      * @param string $tableIDOrName The ID or name of the table
      * @param array{
-     *   inputs: list<array{
-     *     childTableID: int,
-     *     displayIndex: int,
-     *     values: array<string,array<string,mixed>>,
-     *     id?: string,
-     *     name?: string,
-     *     path?: string,
-     *   }>,
+     *   inputs: list<HubDBTableRowV3BatchUpdateRequest|HubDBTableRowV3BatchUpdateRequestShape>,
      * }|BatchUpdateBatchParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BatchResponseHubDBTableRowV3>
      *
@@ -266,7 +262,7 @@ final class BatchRawService implements BatchRawContract
     public function updateBatch(
         string $tableIDOrName,
         array|BatchUpdateBatchParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = BatchUpdateBatchParams::parseRequest(
             $params,

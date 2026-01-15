@@ -12,6 +12,9 @@ use HubspotSDK\Crm\Extensions\VideoConferencing\Settings\SettingUpdateParams;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Extensions\VideoConferencing\SettingsRawContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class SettingsRawService implements SettingsRawContract
 {
     // @phpstan-ignore-next-line
@@ -30,6 +33,7 @@ final class SettingsRawService implements SettingsRawContract
      *   updateMeetingURL?: string,
      *   userVerifyURL?: string,
      * }|SettingUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ExternalSettings>
      *
@@ -38,7 +42,7 @@ final class SettingsRawService implements SettingsRawContract
     public function update(
         int $appID,
         array|SettingUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = SettingUpdateParams::parseRequest(
             $params,
@@ -58,13 +62,15 @@ final class SettingsRawService implements SettingsRawContract
     /**
      * @api
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @return BaseResponse<mixed>
      *
      * @throws APIException
      */
     public function delete(
         int $appID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -78,13 +84,15 @@ final class SettingsRawService implements SettingsRawContract
     /**
      * @api
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @return BaseResponse<ExternalSettings>
      *
      * @throws APIException
      */
     public function get(
         int $appID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(

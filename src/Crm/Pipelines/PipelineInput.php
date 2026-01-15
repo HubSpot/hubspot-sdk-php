@@ -14,7 +14,9 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-import-type PipelineStageInputShape from \HubspotSDK\Crm\Pipelines\PipelineStageInput
  *
  * @phpstan-type PipelineInputShape = array{
- *   displayOrder: int, label: string, stages: list<PipelineStageInputShape>
+ *   displayOrder: int,
+ *   label: string,
+ *   stages: list<PipelineStageInput|PipelineStageInputShape>,
  * }
  */
 final class PipelineInput implements BaseModel
@@ -66,7 +68,7 @@ final class PipelineInput implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PipelineStageInputShape> $stages
+     * @param list<PipelineStageInput|PipelineStageInputShape> $stages
      */
     public static function with(
         int $displayOrder,
@@ -107,7 +109,7 @@ final class PipelineInput implements BaseModel
     /**
      * Pipeline stage inputs used to create the new or replacement pipeline.
      *
-     * @param list<PipelineStageInputShape> $stages
+     * @param list<PipelineStageInput|PipelineStageInputShape> $stages
      */
     public function withStages(array $stages): self
     {

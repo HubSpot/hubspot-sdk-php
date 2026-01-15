@@ -15,12 +15,16 @@ use HubspotSDK\Crm\Imports\PublicImportResponse;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface ImportsRawContract
 {
     /**
      * @api
      *
      * @param array<string,mixed>|ImportCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicImportResponse>
      *
@@ -28,13 +32,14 @@ interface ImportsRawContract
      */
     public function create(
         array|ImportCreateParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|ImportListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<PublicImportResponse>>
      *
@@ -42,11 +47,13 @@ interface ImportsRawContract
      */
     public function list(
         array|ImportListParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
+     *
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ActionResponse>
      *
@@ -54,11 +61,13 @@ interface ImportsRawContract
      */
     public function cancel(
         int $importID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 
     /**
      * @api
+     *
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicImportResponse>
      *
@@ -66,13 +75,14 @@ interface ImportsRawContract
      */
     public function get(
         int $importID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|ImportListErrorsParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<PublicImportError>>
      *
@@ -81,6 +91,6 @@ interface ImportsRawContract
     public function listErrors(
         int $importID,
         array|ImportListErrorsParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

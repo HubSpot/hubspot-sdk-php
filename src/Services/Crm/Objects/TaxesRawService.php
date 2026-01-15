@@ -4,24 +4,29 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Services\Crm\Objects;
 
-use HubspotSDK\AssociationSpec;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\Crm\CreatedResponseSimplePublicObject;
+use HubspotSDK\Crm\FilterGroup;
 use HubspotSDK\Crm\Objects\Taxes\TaxCreateParams;
 use HubspotSDK\Crm\Objects\Taxes\TaxGetParams;
 use HubspotSDK\Crm\Objects\Taxes\TaxListParams;
 use HubspotSDK\Crm\Objects\Taxes\TaxSearchParams;
 use HubspotSDK\Crm\Objects\Taxes\TaxUpdateParams;
+use HubspotSDK\Crm\PublicAssociationsForObject;
 use HubspotSDK\Crm\SimplePublicObject;
 use HubspotSDK\Crm\SimplePublicObjectWithAssociations;
 use HubspotSDK\Page;
-use HubspotSDK\PublicObjectID;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Objects\TaxesRawContract;
 
+/**
+ * @phpstan-import-type PublicAssociationsForObjectShape from \HubspotSDK\Crm\PublicAssociationsForObject
+ * @phpstan-import-type FilterGroupShape from \HubspotSDK\Crm\FilterGroup
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class TaxesRawService implements TaxesRawContract
 {
     // @phpstan-ignore-next-line
@@ -36,12 +41,10 @@ final class TaxesRawService implements TaxesRawContract
      * Create a tax with the given properties and return a copy of the object, including the ID. Documentation and examples for creating standard taxes is provided.
      *
      * @param array{
-     *   associations: list<array{
-     *     to: array<string,mixed>|PublicObjectID,
-     *     types: list<array<string,mixed>|AssociationSpec>,
-     *   }>,
+     *   associations: list<PublicAssociationsForObject|PublicAssociationsForObjectShape>,
      *   properties: array<string,string>,
      * }|TaxCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CreatedResponseSimplePublicObject>
      *
@@ -49,7 +52,7 @@ final class TaxesRawService implements TaxesRawContract
      */
     public function create(
         array|TaxCreateParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = TaxCreateParams::parseRequest(
             $params,
@@ -71,10 +74,11 @@ final class TaxesRawService implements TaxesRawContract
      *
      * Perform a partial update of an Object identified by `{taxId}`or optionally a unique property value as specified by the `idProperty` query param. `{taxId}` refers to the internal object ID by default, and the `idProperty` query param refers to a property whose values are unique for the object. Provided property values will be overwritten. Read-only and non-existent properties will result in an error. Properties values can be cleared by passing an empty string.
      *
-     * @param string $taxID Path param:
+     * @param string $taxID Path param
      * @param array{
      *   properties: array<string,string>, idProperty?: string
      * }|TaxUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SimplePublicObject>
      *
@@ -83,7 +87,7 @@ final class TaxesRawService implements TaxesRawContract
     public function update(
         string $taxID,
         array|TaxUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = TaxUpdateParams::parseRequest(
             $params,
@@ -115,6 +119,7 @@ final class TaxesRawService implements TaxesRawContract
      *   properties?: list<string>,
      *   propertiesWithHistory?: list<string>,
      * }|TaxListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<SimplePublicObjectWithAssociations>>
      *
@@ -122,7 +127,7 @@ final class TaxesRawService implements TaxesRawContract
      */
     public function list(
         array|TaxListParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = TaxListParams::parseRequest(
             $params,
@@ -145,13 +150,15 @@ final class TaxesRawService implements TaxesRawContract
      *
      * Move an Object identified by `{taxId}` to the recycling bin.
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @return BaseResponse<mixed>
      *
      * @throws APIException
      */
     public function delete(
         string $taxID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -174,6 +181,7 @@ final class TaxesRawService implements TaxesRawContract
      *   properties?: list<string>,
      *   propertiesWithHistory?: list<string>,
      * }|TaxGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SimplePublicObjectWithAssociations>
      *
@@ -182,7 +190,7 @@ final class TaxesRawService implements TaxesRawContract
     public function get(
         string $taxID,
         array|TaxGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = TaxGetParams::parseRequest(
             $params,
@@ -204,12 +212,13 @@ final class TaxesRawService implements TaxesRawContract
      *
      * @param array{
      *   after: string,
-     *   filterGroups: list<array{filters: list<array<string,mixed>>}>,
+     *   filterGroups: list<FilterGroup|FilterGroupShape>,
      *   limit: int,
      *   properties: list<string>,
      *   sorts: list<string>,
      *   query?: string,
      * }|TaxSearchParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CollectionResponseWithTotalSimplePublicObject>
      *
@@ -217,7 +226,7 @@ final class TaxesRawService implements TaxesRawContract
      */
     public function search(
         array|TaxSearchParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = TaxSearchParams::parseRequest(
             $params,

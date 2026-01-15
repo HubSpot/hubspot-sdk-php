@@ -17,6 +17,9 @@ use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Objects\Projects\AssociationsRawContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class AssociationsRawService implements AssociationsRawContract
 {
     // @phpstan-ignore-next-line
@@ -31,6 +34,7 @@ final class AssociationsRawService implements AssociationsRawContract
      * @param array{
      *   projectID: string, toObjectType: string, toObjectID: string
      * }|AssociationUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SimplePublicObjectWithAssociations>
      *
@@ -39,7 +43,7 @@ final class AssociationsRawService implements AssociationsRawContract
     public function update(
         string $associationType,
         array|AssociationUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = AssociationUpdateParams::parseRequest(
             $params,
@@ -70,10 +74,11 @@ final class AssociationsRawService implements AssociationsRawContract
     /**
      * @api
      *
-     * @param string $toObjectType Path param:
+     * @param string $toObjectType Path param
      * @param array{
      *   projectID: string, after?: string, includeFa?: bool, limit?: int
      * }|AssociationListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<AssociatedID>>
      *
@@ -82,7 +87,7 @@ final class AssociationsRawService implements AssociationsRawContract
     public function list(
         string $toObjectType,
         array|AssociationListParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = AssociationListParams::parseRequest(
             $params,
@@ -112,6 +117,7 @@ final class AssociationsRawService implements AssociationsRawContract
      * @param array{
      *   projectID: string, toObjectType: string, toObjectID: string
      * }|AssociationDeleteParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -120,7 +126,7 @@ final class AssociationsRawService implements AssociationsRawContract
     public function delete(
         string $associationType,
         array|AssociationDeleteParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = AssociationDeleteParams::parseRequest(
             $params,

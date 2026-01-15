@@ -15,6 +15,9 @@ use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Conversations\ChannelAccountsRawContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class ChannelAccountsRawService implements ChannelAccountsRawContract
 {
     // @phpstan-ignore-next-line
@@ -35,6 +38,7 @@ final class ChannelAccountsRawService implements ChannelAccountsRawContract
      *   limit?: int,
      *   sort?: list<string>,
      * }|ChannelAccountListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<PublicChannelAccount>>
      *
@@ -42,7 +46,7 @@ final class ChannelAccountsRawService implements ChannelAccountsRawContract
      */
     public function list(
         array|ChannelAccountListParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = ChannelAccountListParams::parseRequest(
             $params,
@@ -67,6 +71,7 @@ final class ChannelAccountsRawService implements ChannelAccountsRawContract
      * @api
      *
      * @param array{archived?: bool}|ChannelAccountGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicChannelAccount>
      *
@@ -75,7 +80,7 @@ final class ChannelAccountsRawService implements ChannelAccountsRawContract
     public function get(
         int $channelAccountID,
         array|ChannelAccountGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = ChannelAccountGetParams::parseRequest(
             $params,

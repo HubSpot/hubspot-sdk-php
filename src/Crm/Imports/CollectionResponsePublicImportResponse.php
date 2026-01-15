@@ -15,7 +15,8 @@ use HubspotSDK\Paging;
  * @phpstan-import-type PagingShape from \HubspotSDK\Paging
  *
  * @phpstan-type CollectionResponsePublicImportResponseShape = array{
- *   results: list<PublicImportResponseShape>, paging?: null|Paging|PagingShape
+ *   results: list<PublicImportResponse|PublicImportResponseShape>,
+ *   paging?: null|Paging|PagingShape,
  * }
  */
 final class CollectionResponsePublicImportResponse implements BaseModel
@@ -54,7 +55,7 @@ final class CollectionResponsePublicImportResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicImportResponseShape> $results
+     * @param list<PublicImportResponse|PublicImportResponseShape> $results
      * @param Paging|PagingShape|null $paging
      */
     public static function with(
@@ -71,7 +72,7 @@ final class CollectionResponsePublicImportResponse implements BaseModel
     }
 
     /**
-     * @param list<PublicImportResponseShape> $results
+     * @param list<PublicImportResponse|PublicImportResponseShape> $results
      */
     public function withResults(array $results): self
     {

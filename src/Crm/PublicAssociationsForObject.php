@@ -15,7 +15,8 @@ use HubspotSDK\PublicObjectID;
  * @phpstan-import-type AssociationSpecShape from \HubspotSDK\AssociationSpec
  *
  * @phpstan-type PublicAssociationsForObjectShape = array{
- *   to: PublicObjectID|PublicObjectIDShape, types: list<AssociationSpecShape>
+ *   to: PublicObjectID|PublicObjectIDShape,
+ *   types: list<AssociationSpec|AssociationSpecShape>,
  * }
  */
 final class PublicAssociationsForObject implements BaseModel
@@ -55,7 +56,7 @@ final class PublicAssociationsForObject implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param PublicObjectID|PublicObjectIDShape $to
-     * @param list<AssociationSpecShape> $types
+     * @param list<AssociationSpec|AssociationSpecShape> $types
      */
     public static function with(PublicObjectID|array $to, array $types): self
     {
@@ -79,7 +80,7 @@ final class PublicAssociationsForObject implements BaseModel
     }
 
     /**
-     * @param list<AssociationSpecShape> $types
+     * @param list<AssociationSpec|AssociationSpecShape> $types
      */
     public function withTypes(array $types): self
     {

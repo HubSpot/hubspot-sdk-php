@@ -12,6 +12,9 @@ use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Conversations\ChannelAccountsContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class ChannelAccountsService implements ChannelAccountsContract
 {
     /**
@@ -33,6 +36,7 @@ final class ChannelAccountsService implements ChannelAccountsContract
      * @param list<int> $channelID
      * @param list<int> $inboxID
      * @param list<string> $sort
+     * @param RequestOpts|null $requestOptions
      *
      * @return Page<PublicChannelAccount>
      *
@@ -46,7 +50,7 @@ final class ChannelAccountsService implements ChannelAccountsContract
         ?array $inboxID = null,
         ?int $limit = null,
         ?array $sort = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): Page {
         $params = Util::removeNulls(
             [
@@ -69,12 +73,14 @@ final class ChannelAccountsService implements ChannelAccountsContract
     /**
      * @api
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @throws APIException
      */
     public function get(
         int $channelAccountID,
         bool $archived = false,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): PublicChannelAccount {
         $params = Util::removeNulls(['archived' => $archived]);
 

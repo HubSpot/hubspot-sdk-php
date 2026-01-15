@@ -13,7 +13,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-import-type PublicDeliveryIdentifierShape from \HubspotSDK\Conversations\PublicDeliveryIdentifier
  *
  * @phpstan-type PublicRecipientEggShape = array{
- *   deliveryIdentifiers: list<PublicDeliveryIdentifierShape>,
+ *   deliveryIdentifiers: list<PublicDeliveryIdentifier|PublicDeliveryIdentifierShape>,
  *   actorID?: string|null,
  *   deliveryIdentifier?: null|PublicDeliveryIdentifier|PublicDeliveryIdentifierShape,
  *   name?: string|null,
@@ -65,7 +65,7 @@ final class PublicRecipientEgg implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicDeliveryIdentifierShape> $deliveryIdentifiers
+     * @param list<PublicDeliveryIdentifier|PublicDeliveryIdentifierShape> $deliveryIdentifiers
      * @param PublicDeliveryIdentifier|PublicDeliveryIdentifierShape|null $deliveryIdentifier
      */
     public static function with(
@@ -88,7 +88,7 @@ final class PublicRecipientEgg implements BaseModel
     }
 
     /**
-     * @param list<PublicDeliveryIdentifierShape> $deliveryIdentifiers
+     * @param list<PublicDeliveryIdentifier|PublicDeliveryIdentifierShape> $deliveryIdentifiers
      */
     public function withDeliveryIdentifiers(array $deliveryIdentifiers): self
     {

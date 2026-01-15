@@ -18,6 +18,9 @@ use HubspotSDK\Services\Marketing\Campaigns\BudgetService;
 use HubspotSDK\Services\Marketing\Campaigns\ReportsService;
 use HubspotSDK\Services\Marketing\Campaigns\SpendService;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class CampaignsService implements CampaignsContract
 {
     /**
@@ -69,12 +72,13 @@ final class CampaignsService implements CampaignsContract
      * Create a campaign with the given properties and return the campaign object, including the campaignGuid and created properties.
      *
      * @param array<string,string> $properties
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function create(
         array $properties,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): PublicCampaign {
         $params = Util::removeNulls(['properties' => $properties]);
 
@@ -92,13 +96,14 @@ final class CampaignsService implements CampaignsContract
      *
      * @param string $campaignGuid unique identifier for the campaign, formatted as a UUID
      * @param array<string,string> $properties
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function update(
         string $campaignGuid,
         array $properties,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): PublicCampaign {
         $params = Util::removeNulls(['properties' => $properties]);
 
@@ -121,6 +126,7 @@ final class CampaignsService implements CampaignsContract
      * @param list<string> $properties A comma-separated list of the properties to be returned in the response. If any of the specified properties has empty value on the requested object(s), they will be ignored and not returned in response. If this parameter is empty, the response will include an empty properties map
      * @param string $sort The field by which to sort the results. Allowed values are hs_name, createdAt, updatedAt. An optional '-' before the property name can denote descending order
      * Default: hs_name
+     * @param RequestOpts|null $requestOptions
      *
      * @return Page<PublicCampaign>
      *
@@ -132,7 +138,7 @@ final class CampaignsService implements CampaignsContract
         ?string $name = null,
         ?array $properties = null,
         ?string $sort = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): Page {
         $params = Util::removeNulls(
             [
@@ -157,12 +163,13 @@ final class CampaignsService implements CampaignsContract
      * This call will return a 204 No Content response regardless of whether the campaignGuid provided corresponds to an existing campaign or not.
      *
      * @param string $campaignGuid unique identifier for the campaign, formatted as a UUID
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function delete(
         string $campaignGuid,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): mixed {
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->delete($campaignGuid, requestOptions: $requestOptions);
@@ -181,6 +188,7 @@ final class CampaignsService implements CampaignsContract
      * @param list<string> $properties A comma-separated list of the properties to be returned in the response. If any of the specified properties has empty value on the requested object, they will be ignored and not returned in response. If this parameter is empty, the response will include an empty properties map.
      * @param string $startDate Start date to fetch asset metrics, formatted as YYYY-MM-DD. This date is used to fetch the metrics associated with the assets for a specified period.
      * If not provided, no asset metrics will be fetched.
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -189,7 +197,7 @@ final class CampaignsService implements CampaignsContract
         ?string $endDate = null,
         ?array $properties = null,
         ?string $startDate = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): PublicCampaignWithAssets {
         $params = Util::removeNulls(
             [

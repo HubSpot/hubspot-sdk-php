@@ -12,7 +12,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-import-type MarketingEventIdentifiersResponseShape from \HubspotSDK\Marketing\Events\MarketingEventIdentifiersResponse
  *
  * @phpstan-type CollectionResponseWithTotalMarketingEventIdentifiersResponseNoPagingShape = array{
- *   results: list<MarketingEventIdentifiersResponseShape>, total: int
+ *   results: list<MarketingEventIdentifiersResponse|MarketingEventIdentifiersResponseShape>,
+ *   total: int,
  * }
  */
 final class CollectionResponseWithTotalMarketingEventIdentifiersResponseNoPaging implements BaseModel
@@ -57,7 +58,7 @@ final class CollectionResponseWithTotalMarketingEventIdentifiersResponseNoPaging
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<MarketingEventIdentifiersResponseShape> $results
+     * @param list<MarketingEventIdentifiersResponse|MarketingEventIdentifiersResponseShape> $results
      */
     public static function with(array $results, int $total): self
     {
@@ -70,7 +71,7 @@ final class CollectionResponseWithTotalMarketingEventIdentifiersResponseNoPaging
     }
 
     /**
-     * @param list<MarketingEventIdentifiersResponseShape> $results
+     * @param list<MarketingEventIdentifiersResponse|MarketingEventIdentifiersResponseShape> $results
      */
     public function withResults(array $results): self
     {

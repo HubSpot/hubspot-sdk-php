@@ -10,6 +10,9 @@ use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\TaskLocator;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface SourceCodeContract
 {
     /**
@@ -19,7 +22,8 @@ interface SourceCodeContract
      *
      * @param string $filePath path param: The file system location of the file
      * @param string $environment path param: The environment of the file ("draft" or "published")
-     * @param string $file Body param:
+     * @param string $file Body param
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -27,7 +31,7 @@ interface SourceCodeContract
         string $filePath,
         string $environment,
         ?string $file = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): AssetFileMetadata;
 
     /**
@@ -35,23 +39,26 @@ interface SourceCodeContract
      *
      * @param string $filePath the file system location of the file
      * @param string $environment the environment of the file ("draft" or "published")
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function delete(
         string $filePath,
         string $environment,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): mixed;
 
     /**
      * @api
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @throws APIException
      */
     public function extractAsync(
         string $path,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): TaskLocator;
 
     /**
@@ -59,25 +66,27 @@ interface SourceCodeContract
      *
      * @param string $filePath the file system location of the file
      * @param string $environment the environment of the file ("draft" or "published")
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function get(
         string $filePath,
         string $environment,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): string;
 
     /**
      * @api
      *
      * @param int $taskID the extraction task ID returned by the initial `extract/async` request
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function getExtractionStatus(
         int $taskID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): ActionResponse;
 
     /**
@@ -85,7 +94,8 @@ interface SourceCodeContract
      *
      * @param string $filePath path param: The file system location of the file
      * @param string $environment path param: The environment of the file ("draft" or "published")
-     * @param string $properties Query param:
+     * @param string $properties Query param
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -93,7 +103,7 @@ interface SourceCodeContract
         string $filePath,
         string $environment,
         ?string $properties = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): AssetFileMetadata;
 
     /**
@@ -101,7 +111,8 @@ interface SourceCodeContract
      *
      * @param string $filePath path param: The file system location of the file
      * @param string $environment path param: The environment of the file ("draft" or "published")
-     * @param string $file Body param:
+     * @param string $file Body param
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -109,15 +120,16 @@ interface SourceCodeContract
         string $filePath,
         string $environment,
         ?string $file = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): AssetFileMetadata;
 
     /**
      * @api
      *
      * @param string $filePath path param: The file system location of the file
-     * @param string $environment Path param:
-     * @param string $file Body param:
+     * @param string $environment Path param
+     * @param string $file Body param
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -125,6 +137,6 @@ interface SourceCodeContract
         string $filePath,
         string $environment,
         ?string $file = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): string;
 }

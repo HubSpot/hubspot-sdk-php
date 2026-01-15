@@ -14,6 +14,9 @@ use HubspotSDK\Core\Util;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Automation\Sequences\EnrollmentsRawContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class EnrollmentsRawService implements EnrollmentsRawContract
 {
     // @phpstan-ignore-next-line
@@ -34,6 +37,7 @@ final class EnrollmentsRawService implements EnrollmentsRawContract
      *   sequenceID: string,
      *   senderAliasAddress?: string,
      * }|EnrollmentEnrollParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicSequenceEnrollmentLiteResponse>
      *
@@ -41,7 +45,7 @@ final class EnrollmentsRawService implements EnrollmentsRawContract
      */
     public function enroll(
         array|EnrollmentEnrollParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = EnrollmentEnrollParams::parseRequest(
             $params,
@@ -68,13 +72,15 @@ final class EnrollmentsRawService implements EnrollmentsRawContract
      *
      * Get the enrollment status of a contact in sequences by their contact ID.
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @return BaseResponse<PublicSequenceEnrollmentResponse>
      *
      * @throws APIException
      */
     public function getByContactID(
         string $contactID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(

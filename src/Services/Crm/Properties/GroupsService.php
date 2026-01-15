@@ -13,6 +13,9 @@ use HubspotSDK\Crm\Properties\PropertyGroup;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Properties\GroupsContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class GroupsService implements GroupsContract
 {
     /**
@@ -33,6 +36,8 @@ final class GroupsService implements GroupsContract
      *
      * Create and return a copy of a new property group.
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @throws APIException
      */
     public function create(
@@ -40,7 +45,7 @@ final class GroupsService implements GroupsContract
         string $label,
         string $name,
         ?int $displayOrder = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): CreatedResponsePropertyGroup {
         $params = Util::removeNulls(
             ['label' => $label, 'name' => $name, 'displayOrder' => $displayOrder]
@@ -57,10 +62,11 @@ final class GroupsService implements GroupsContract
      *
      * Perform a partial update of a property group identified by {groupName}. Provided fields will be overwritten.
      *
-     * @param string $groupName Path param:
-     * @param string $objectType Path param:
-     * @param int $displayOrder Body param:
-     * @param string $label Body param:
+     * @param string $groupName Path param
+     * @param string $objectType Path param
+     * @param int $displayOrder Body param
+     * @param string $label Body param
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -69,7 +75,7 @@ final class GroupsService implements GroupsContract
         string $objectType,
         ?int $displayOrder = null,
         ?string $label = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): PropertyGroup {
         $params = Util::removeNulls(
             [
@@ -90,12 +96,14 @@ final class GroupsService implements GroupsContract
      *
      * Read all existing property groups for the specified object type and HubSpot account.
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @throws APIException
      */
     public function list(
         string $objectType,
         ?string $locale = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): CollectionResponsePropertyGroup {
         $params = Util::removeNulls(['locale' => $locale]);
 
@@ -110,12 +118,14 @@ final class GroupsService implements GroupsContract
      *
      * Move a property group identified by {groupName} to the recycling bin.
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @throws APIException
      */
     public function delete(
         string $groupName,
         string $objectType,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): mixed {
         $params = Util::removeNulls(['objectType' => $objectType]);
 
@@ -130,9 +140,10 @@ final class GroupsService implements GroupsContract
      *
      * Read a property group identified by {groupName}.
      *
-     * @param string $groupName Path param:
-     * @param string $objectType Path param:
-     * @param string $locale Query param:
+     * @param string $groupName Path param
+     * @param string $objectType Path param
+     * @param string $locale Query param
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -140,7 +151,7 @@ final class GroupsService implements GroupsContract
         string $groupName,
         string $objectType,
         ?string $locale = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): PropertyGroup {
         $params = Util::removeNulls(
             ['objectType' => $objectType, 'locale' => $locale]

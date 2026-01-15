@@ -13,19 +13,28 @@ use HubspotSDK\Marketing\Subscriptions\SubscriptionSubscribeParams;
 use HubspotSDK\Marketing\Subscriptions\SubscriptionUnsubscribeParams;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface SubscriptionsRawContract
 {
     /**
      * @api
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @return BaseResponse<SubscriptionDefinitionsResponse>
      *
      * @throws APIException
      */
-    public function list(?RequestOptions $requestOptions = null): BaseResponse;
+    public function list(
+        RequestOptions|array|null $requestOptions = null
+    ): BaseResponse;
 
     /**
      * @api
+     *
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicSubscriptionStatusesResponse>
      *
@@ -33,13 +42,14 @@ interface SubscriptionsRawContract
      */
     public function getEmailStatus(
         string $emailAddress,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|SubscriptionSubscribeParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicSubscriptionStatus>
      *
@@ -47,13 +57,14 @@ interface SubscriptionsRawContract
      */
     public function subscribe(
         array|SubscriptionSubscribeParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|SubscriptionUnsubscribeParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicSubscriptionStatus>
      *
@@ -61,6 +72,6 @@ interface SubscriptionsRawContract
      */
     public function unsubscribe(
         array|SubscriptionUnsubscribeParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

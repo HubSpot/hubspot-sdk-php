@@ -15,7 +15,8 @@ use HubspotSDK\ForwardPaging;
  * @phpstan-import-type ForwardPagingShape from \HubspotSDK\ForwardPaging
  *
  * @phpstan-type CollectionResponsePublicUserForwardPagingShape = array{
- *   results: list<PublicUserShape>, paging?: null|ForwardPaging|ForwardPagingShape
+ *   results: list<PublicUser|PublicUserShape>,
+ *   paging?: null|ForwardPaging|ForwardPagingShape,
  * }
  */
 final class CollectionResponsePublicUserForwardPaging implements BaseModel
@@ -54,7 +55,7 @@ final class CollectionResponsePublicUserForwardPaging implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicUserShape> $results
+     * @param list<PublicUser|PublicUserShape> $results
      * @param ForwardPaging|ForwardPagingShape|null $paging
      */
     public static function with(
@@ -71,7 +72,7 @@ final class CollectionResponsePublicUserForwardPaging implements BaseModel
     }
 
     /**
-     * @param list<PublicUserShape> $results
+     * @param list<PublicUser|PublicUserShape> $results
      */
     public function withResults(array $results): self
     {

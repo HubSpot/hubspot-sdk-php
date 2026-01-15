@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-import-type PublicAssociationsForObjectShape from \HubspotSDK\Crm\PublicAssociationsForObject
  *
  * @phpstan-type SimplePublicObjectInputForCreateShape = array{
- *   associations: list<PublicAssociationsForObjectShape>,
+ *   associations: list<PublicAssociationsForObject|PublicAssociationsForObjectShape>,
  *   properties: array<string,string>,
  * }
  */
@@ -61,7 +61,7 @@ final class SimplePublicObjectInputForCreate implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicAssociationsForObjectShape> $associations
+     * @param list<PublicAssociationsForObject|PublicAssociationsForObjectShape> $associations
      * @param array<string,string> $properties
      */
     public static function with(array $associations, array $properties): self
@@ -75,7 +75,7 @@ final class SimplePublicObjectInputForCreate implements BaseModel
     }
 
     /**
-     * @param list<PublicAssociationsForObjectShape> $associations
+     * @param list<PublicAssociationsForObject|PublicAssociationsForObjectShape> $associations
      */
     public function withAssociations(array $associations): self
     {

@@ -14,6 +14,9 @@ use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Conversations\ThreadsContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class ThreadsService implements ThreadsContract
 {
     /**
@@ -32,17 +35,18 @@ final class ThreadsService implements ThreadsContract
     /**
      * @api
      *
-     * @param int $threadID Path param:
-     * @param bool $archived Body param:
-     * @param 'CLOSED'|'OPEN'|Status $status Body param:
+     * @param int $threadID Path param
+     * @param bool $archived Body param
+     * @param Status|value-of<Status> $status Body param
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function update(
         int $threadID,
         ?bool $archived = null,
-        string|Status|null $status = null,
-        ?RequestOptions $requestOptions = null,
+        Status|string|null $status = null,
+        RequestOptions|array|null $requestOptions = null,
     ): PublicThread {
         $params = Util::removeNulls(['archived' => $archived, 'status' => $status]);
 
@@ -55,9 +59,10 @@ final class ThreadsService implements ThreadsContract
     /**
      * @api
      *
-     * @param list<'TICKET'|Association> $association
+     * @param list<Association|value-of<Association>> $association
      * @param list<int> $inboxID
      * @param list<string> $sort
+     * @param RequestOpts|null $requestOptions
      *
      * @return Page<PublicThread>
      *
@@ -69,12 +74,12 @@ final class ThreadsService implements ThreadsContract
         ?int $associatedContactID = null,
         ?array $association = null,
         ?array $inboxID = null,
-        string|\DateTimeInterface|null $latestMessageTimestampAfter = null,
+        ?\DateTimeInterface $latestMessageTimestampAfter = null,
         ?int $limit = null,
         ?string $property = null,
         ?array $sort = null,
         ?string $threadStatus = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): Page {
         $params = Util::removeNulls(
             [
@@ -100,11 +105,13 @@ final class ThreadsService implements ThreadsContract
     /**
      * @api
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @throws APIException
      */
     public function delete(
         int $threadID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): mixed {
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->delete($threadID, requestOptions: $requestOptions);
@@ -115,7 +122,8 @@ final class ThreadsService implements ThreadsContract
     /**
      * @api
      *
-     * @param list<'TICKET'|\HubspotSDK\Conversations\Threads\ThreadGetParams\Association> $association
+     * @param list<\HubspotSDK\Conversations\Threads\ThreadGetParams\Association|value-of<\HubspotSDK\Conversations\Threads\ThreadGetParams\Association>> $association
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -124,7 +132,7 @@ final class ThreadsService implements ThreadsContract
         ?bool $archived = null,
         ?array $association = null,
         ?string $property = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): PublicThread {
         $params = Util::removeNulls(
             [

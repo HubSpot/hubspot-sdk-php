@@ -14,6 +14,7 @@ use HubspotSDK\Events\EventDefinitions\TimePointOperation\PropertyParser;
 use HubspotSDK\Events\EventDefinitions\TimePointOperation\PropertyType;
 
 /**
+ * @phpstan-import-type TimePointVariants from \HubspotSDK\Events\EventDefinitions\TimePointOperation\TimePoint
  * @phpstan-import-type TimePointShape from \HubspotSDK\Events\EventDefinitions\TimePointOperation\TimePoint
  *
  * @phpstan-type TimePointOperationShape = array{
@@ -59,6 +60,7 @@ final class TimePointOperation implements BaseModel
     #[Required(enum: PropertyType::class)]
     public string $propertyType;
 
+    /** @var TimePointVariants $timePoint */
     #[Required]
     public DatePoint|IndexedTimePoint|PropertyReferencedTime $timePoint;
 

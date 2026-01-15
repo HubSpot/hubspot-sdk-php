@@ -11,6 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicTimePointOperation\OperationType;
 
 /**
+ * @phpstan-import-type TimePointVariants from \HubspotSDK\PublicTimePointOperation\TimePoint
  * @phpstan-import-type TimePointShape from \HubspotSDK\PublicTimePointOperation\TimePoint
  *
  * @phpstan-type PublicTimePointOperationShape = array{
@@ -38,6 +39,7 @@ final class PublicTimePointOperation implements BaseModel
     #[Required]
     public string $operator;
 
+    /** @var TimePointVariants $timePoint */
     #[Required]
     public PublicDatePoint|PublicIndexedTimePoint|PublicPropertyReferencedTime $timePoint;
 

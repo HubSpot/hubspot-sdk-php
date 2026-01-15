@@ -11,12 +11,16 @@ use HubspotSDK\RequestOptions;
 use HubspotSDK\Settings\TaxRates\PublicTaxRateGroup;
 use HubspotSDK\Settings\TaxRates\TaxRateListParams;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface TaxRatesRawContract
 {
     /**
      * @api
      *
      * @param array<string,mixed>|TaxRateListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<PublicTaxRateGroup>>
      *
@@ -24,13 +28,14 @@ interface TaxRatesRawContract
      */
     public function list(
         array|TaxRateListParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param string $taxRateGroupID the ID of the tax rate to retrieve
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicTaxRateGroup>
      *
@@ -38,6 +43,6 @@ interface TaxRatesRawContract
      */
     public function get(
         string $taxRateGroupID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 }

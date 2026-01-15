@@ -18,12 +18,16 @@ use HubspotSDK\Crm\Objects\Schemas\SchemaUpdateParams;
 use HubspotSDK\Events\EventDefinitions\AssociationDefinition;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface SchemasRawContract
 {
     /**
      * @api
      *
      * @param array<string,mixed>|SchemaCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ObjectSchema>
      *
@@ -31,7 +35,7 @@ interface SchemasRawContract
      */
     public function create(
         array|SchemaCreateParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -39,6 +43,7 @@ interface SchemasRawContract
      *
      * @param string $objectType fully qualified name or object type ID of your schema
      * @param array<string,mixed>|SchemaUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ObjectsSchemasObjectTypeDefinition>
      *
@@ -47,13 +52,14 @@ interface SchemasRawContract
     public function update(
         string $objectType,
         array|SchemaUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|SchemaListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SchemaListResponse>
      *
@@ -61,7 +67,7 @@ interface SchemasRawContract
      */
     public function list(
         array|SchemaListParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -69,6 +75,7 @@ interface SchemasRawContract
      *
      * @param string $objectType fully qualified name or object type ID of your schema
      * @param array<string,mixed>|SchemaDeleteParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -77,7 +84,7 @@ interface SchemasRawContract
     public function delete(
         string $objectType,
         array|SchemaDeleteParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -85,6 +92,7 @@ interface SchemasRawContract
      *
      * @param string $objectType fully qualified name or object type ID of your schema
      * @param array<string,mixed>|SchemaCreateAssociationParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<AssociationDefinition>
      *
@@ -93,7 +101,7 @@ interface SchemasRawContract
     public function createAssociation(
         string $objectType,
         array|SchemaCreateAssociationParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -101,6 +109,7 @@ interface SchemasRawContract
      *
      * @param string $associationIdentifier unique ID of the association to remove
      * @param array<string,mixed>|SchemaDeleteAssociationParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -109,13 +118,14 @@ interface SchemasRawContract
     public function deleteAssociation(
         string $associationIdentifier,
         array|SchemaDeleteAssociationParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param string $objectType fully qualified name or object type ID of your schema
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ObjectSchema>
      *
@@ -123,6 +133,6 @@ interface SchemasRawContract
      */
     public function get(
         string $objectType,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 }

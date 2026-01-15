@@ -19,7 +19,7 @@ use HubspotSDK\PublicObjectID;
  *
  * @phpstan-type PublicAssociationMultiWithLabelShape = array{
  *   from: PublicObjectID|PublicObjectIDShape,
- *   to: list<MultiAssociatedObjectWithLabelShape>,
+ *   to: list<MultiAssociatedObjectWithLabel|MultiAssociatedObjectWithLabelShape>,
  *   paging?: null|Paging|PagingShape,
  * }
  */
@@ -63,7 +63,7 @@ final class PublicAssociationMultiWithLabel implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param PublicObjectID|PublicObjectIDShape $from
-     * @param list<MultiAssociatedObjectWithLabelShape> $to
+     * @param list<MultiAssociatedObjectWithLabel|MultiAssociatedObjectWithLabelShape> $to
      * @param Paging|PagingShape|null $paging
      */
     public static function with(
@@ -93,7 +93,7 @@ final class PublicAssociationMultiWithLabel implements BaseModel
     }
 
     /**
-     * @param list<MultiAssociatedObjectWithLabelShape> $to
+     * @param list<MultiAssociatedObjectWithLabel|MultiAssociatedObjectWithLabelShape> $to
      */
     public function withTo(array $to): self
     {

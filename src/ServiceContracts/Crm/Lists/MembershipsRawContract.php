@@ -19,6 +19,9 @@ use HubspotSDK\Crm\Lists\MembershipsUpdateResponse;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface MembershipsRawContract
 {
     /**
@@ -26,6 +29,7 @@ interface MembershipsRawContract
      *
      * @param string $listID the **ILS ID** of the list
      * @param array<string,mixed>|MembershipListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<JoinTimeAndRecordID>>
      *
@@ -34,7 +38,7 @@ interface MembershipsRawContract
     public function list(
         string $listID,
         array|MembershipListParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -42,6 +46,7 @@ interface MembershipsRawContract
      *
      * @param string $listID the **ILS ID** of the `MANUAL` or `SNAPSHOT` list
      * @param array<string,mixed>|MembershipAddParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<MembershipsUpdateResponse>
      *
@@ -50,7 +55,7 @@ interface MembershipsRawContract
     public function add(
         string $listID,
         array|MembershipAddParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -58,6 +63,7 @@ interface MembershipsRawContract
      *
      * @param string $sourceListID the **ILS ID** of the *source list* to grab the records from, which are then added to the *destination list*
      * @param array<string,mixed>|MembershipAddAllFromListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -66,7 +72,7 @@ interface MembershipsRawContract
     public function addAllFromList(
         string $sourceListID,
         array|MembershipAddAllFromListParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -74,6 +80,7 @@ interface MembershipsRawContract
      *
      * @param string $listID the **ILS ID** of the `MANUAL` or `SNAPSHOT` list
      * @param array<string,mixed>|MembershipAddAndRemoveParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<MembershipsUpdateResponse>
      *
@@ -82,7 +89,7 @@ interface MembershipsRawContract
     public function addAndRemove(
         string $listID,
         array|MembershipAddAndRemoveParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -90,6 +97,7 @@ interface MembershipsRawContract
      *
      * @param string $recordID Id of the record
      * @param array<string,mixed>|MembershipGetListsParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<APICollectionResponseRecordListMembershipNoPaging>
      *
@@ -98,7 +106,7 @@ interface MembershipsRawContract
     public function getLists(
         string $recordID,
         array|MembershipGetListsParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -106,6 +114,7 @@ interface MembershipsRawContract
      *
      * @param string $listID the **ILS ID** of the list
      * @param array<string,mixed>|MembershipGetPageOrderedByAddedToListDateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<JoinTimeAndRecordID>>
      *
@@ -114,7 +123,7 @@ interface MembershipsRawContract
     public function getPageOrderedByAddedToListDate(
         string $listID,
         array|MembershipGetPageOrderedByAddedToListDateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -122,6 +131,7 @@ interface MembershipsRawContract
      *
      * @param string $listID the **ILS ID** of the `MANUAL` or `SNAPSHOT` list
      * @param array<string,mixed>|MembershipRemoveParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<MembershipsUpdateResponse>
      *
@@ -130,13 +140,14 @@ interface MembershipsRawContract
     public function remove(
         string $listID,
         array|MembershipRemoveParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param string $listID the **ILS ID** of the `MANUAL` or `SNAPSHOT` list
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -144,6 +155,6 @@ interface MembershipsRawContract
      */
     public function removeAll(
         string $listID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 }

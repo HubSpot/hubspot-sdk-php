@@ -4,24 +4,29 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Services\Crm\Objects;
 
-use HubspotSDK\AssociationSpec;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\Crm\CreatedResponseSimplePublicObject;
+use HubspotSDK\Crm\FilterGroup;
 use HubspotSDK\Crm\Objects\Contracts\ContractCreateParams;
 use HubspotSDK\Crm\Objects\Contracts\ContractGetParams;
 use HubspotSDK\Crm\Objects\Contracts\ContractListParams;
 use HubspotSDK\Crm\Objects\Contracts\ContractSearchParams;
 use HubspotSDK\Crm\Objects\Contracts\ContractUpdateParams;
+use HubspotSDK\Crm\PublicAssociationsForObject;
 use HubspotSDK\Crm\SimplePublicObject;
 use HubspotSDK\Crm\SimplePublicObjectWithAssociations;
 use HubspotSDK\Page;
-use HubspotSDK\PublicObjectID;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Objects\ContractsRawContract;
 
+/**
+ * @phpstan-import-type PublicAssociationsForObjectShape from \HubspotSDK\Crm\PublicAssociationsForObject
+ * @phpstan-import-type FilterGroupShape from \HubspotSDK\Crm\FilterGroup
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class ContractsRawService implements ContractsRawContract
 {
     // @phpstan-ignore-next-line
@@ -36,12 +41,10 @@ final class ContractsRawService implements ContractsRawContract
      * Create a contract with the given properties and return a copy of the object, including the ID. Documentation and examples for creating standard contracts is provided.
      *
      * @param array{
-     *   associations: list<array{
-     *     to: array<string,mixed>|PublicObjectID,
-     *     types: list<array<string,mixed>|AssociationSpec>,
-     *   }>,
+     *   associations: list<PublicAssociationsForObject|PublicAssociationsForObjectShape>,
      *   properties: array<string,string>,
      * }|ContractCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CreatedResponseSimplePublicObject>
      *
@@ -49,7 +52,7 @@ final class ContractsRawService implements ContractsRawContract
      */
     public function create(
         array|ContractCreateParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = ContractCreateParams::parseRequest(
             $params,
@@ -71,10 +74,11 @@ final class ContractsRawService implements ContractsRawContract
      *
      * Perform a partial update of an Object identified by `{contractId}`or optionally a unique property value as specified by the `idProperty` query param. `{contractId}` refers to the internal object ID by default, and the `idProperty` query param refers to a property whose values are unique for the object. Provided property values will be overwritten. Read-only and non-existent properties will result in an error. Properties values can be cleared by passing an empty string.
      *
-     * @param string $contractID Path param:
+     * @param string $contractID Path param
      * @param array{
      *   properties: array<string,string>, idProperty?: string
      * }|ContractUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SimplePublicObject>
      *
@@ -83,7 +87,7 @@ final class ContractsRawService implements ContractsRawContract
     public function update(
         string $contractID,
         array|ContractUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = ContractUpdateParams::parseRequest(
             $params,
@@ -115,6 +119,7 @@ final class ContractsRawService implements ContractsRawContract
      *   properties?: list<string>,
      *   propertiesWithHistory?: list<string>,
      * }|ContractListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<SimplePublicObjectWithAssociations>>
      *
@@ -122,7 +127,7 @@ final class ContractsRawService implements ContractsRawContract
      */
     public function list(
         array|ContractListParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = ContractListParams::parseRequest(
             $params,
@@ -145,13 +150,15 @@ final class ContractsRawService implements ContractsRawContract
      *
      * Move an Object identified by `{contractId}` to the recycling bin.
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @return BaseResponse<mixed>
      *
      * @throws APIException
      */
     public function delete(
         string $contractID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -174,6 +181,7 @@ final class ContractsRawService implements ContractsRawContract
      *   properties?: list<string>,
      *   propertiesWithHistory?: list<string>,
      * }|ContractGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SimplePublicObjectWithAssociations>
      *
@@ -182,7 +190,7 @@ final class ContractsRawService implements ContractsRawContract
     public function get(
         string $contractID,
         array|ContractGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = ContractGetParams::parseRequest(
             $params,
@@ -204,12 +212,13 @@ final class ContractsRawService implements ContractsRawContract
      *
      * @param array{
      *   after: string,
-     *   filterGroups: list<array{filters: list<array<string,mixed>>}>,
+     *   filterGroups: list<FilterGroup|FilterGroupShape>,
      *   limit: int,
      *   properties: list<string>,
      *   sorts: list<string>,
      *   query?: string,
      * }|ContractSearchParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CollectionResponseWithTotalSimplePublicObject>
      *
@@ -217,7 +226,7 @@ final class ContractsRawService implements ContractsRawContract
      */
     public function search(
         array|ContractSearchParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = ContractSearchParams::parseRequest(
             $params,

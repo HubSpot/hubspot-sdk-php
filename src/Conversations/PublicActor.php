@@ -17,7 +17,8 @@ use HubspotSDK\Core\Conversion\Contracts\ConverterSource;
  * @phpstan-import-type EmailActorShape from \HubspotSDK\Conversations\EmailActor
  * @phpstan-import-type LlmActorShape from \HubspotSDK\Conversations\LlmActor
  *
- * @phpstan-type PublicActorShape = AgentActorShape|BotActorShape|IntegratorActorShape|SystemActorShape|VisitorActorShape|EmailActorShape|LlmActorShape
+ * @phpstan-type PublicActorVariants = AgentActor|BotActor|IntegratorActor|SystemActor|VisitorActor|EmailActor|LlmActor
+ * @phpstan-type PublicActorShape = PublicActorVariants|AgentActorShape|BotActorShape|IntegratorActorShape|SystemActorShape|VisitorActorShape|EmailActorShape|LlmActorShape
  */
 final class PublicActor implements ConverterSource
 {

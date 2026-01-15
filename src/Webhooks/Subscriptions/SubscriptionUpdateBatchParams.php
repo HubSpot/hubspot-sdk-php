@@ -18,7 +18,7 @@ use HubspotSDK\Webhooks\SubscriptionBatchUpdateRequest;
  * @phpstan-import-type SubscriptionBatchUpdateRequestShape from \HubspotSDK\Webhooks\SubscriptionBatchUpdateRequest
  *
  * @phpstan-type SubscriptionUpdateBatchParamsShape = array{
- *   inputs: list<SubscriptionBatchUpdateRequestShape>
+ *   inputs: list<SubscriptionBatchUpdateRequest|SubscriptionBatchUpdateRequestShape>,
  * }
  */
 final class SubscriptionUpdateBatchParams implements BaseModel
@@ -55,7 +55,7 @@ final class SubscriptionUpdateBatchParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<SubscriptionBatchUpdateRequestShape> $inputs
+     * @param list<SubscriptionBatchUpdateRequest|SubscriptionBatchUpdateRequestShape> $inputs
      */
     public static function with(array $inputs): self
     {
@@ -67,7 +67,7 @@ final class SubscriptionUpdateBatchParams implements BaseModel
     }
 
     /**
-     * @param list<SubscriptionBatchUpdateRequestShape> $inputs
+     * @param list<SubscriptionBatchUpdateRequest|SubscriptionBatchUpdateRequestShape> $inputs
      */
     public function withInputs(array $inputs): self
     {

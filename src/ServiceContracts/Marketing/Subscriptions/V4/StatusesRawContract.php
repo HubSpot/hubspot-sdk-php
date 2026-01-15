@@ -22,6 +22,9 @@ use HubspotSDK\Marketing\Subscriptions\V4\Statuses\StatusUnsubscribeAllParams;
 use HubspotSDK\Marketing\Subscriptions\V4\Statuses\StatusUpdateParams;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface StatusesRawContract
 {
     /**
@@ -29,6 +32,7 @@ interface StatusesRawContract
      *
      * @param string $subscriberIDString the contact's email address
      * @param array<string,mixed>|StatusUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ActionResponseWithResultsPublicStatus>
      *
@@ -37,13 +41,14 @@ interface StatusesRawContract
     public function update(
         string $subscriberIDString,
         array|StatusUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|StatusBatchGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BatchResponsePublicStatusBulkResponse>
      *
@@ -51,13 +56,14 @@ interface StatusesRawContract
      */
     public function batchGet(
         array|StatusBatchGetParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|StatusBatchGetUnsubscribeAllStatusParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BatchResponsePublicWideStatusBulkResponse>
      *
@@ -65,13 +71,14 @@ interface StatusesRawContract
      */
     public function batchGetUnsubscribeAllStatus(
         array|StatusBatchGetUnsubscribeAllStatusParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|StatusBatchUnsubscribeAllParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BatchResponsePublicBulkOptOutFromAllResponse>
      *
@@ -79,13 +86,14 @@ interface StatusesRawContract
      */
     public function batchUnsubscribeAll(
         array|StatusBatchUnsubscribeAllParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|StatusBatchUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BatchResponsePublicStatus>
      *
@@ -93,7 +101,7 @@ interface StatusesRawContract
      */
     public function batchUpdate(
         array|StatusBatchUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -101,6 +109,7 @@ interface StatusesRawContract
      *
      * @param string $subscriberIDString the contact's email address
      * @param array<string,mixed>|StatusGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ActionResponseWithResultsPublicStatus>
      *
@@ -109,7 +118,7 @@ interface StatusesRawContract
     public function get(
         string $subscriberIDString,
         array|StatusGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -117,6 +126,7 @@ interface StatusesRawContract
      *
      * @param string $subscriberIDString the contact's email address
      * @param array<string,mixed>|StatusGetUnsubscribeAllStatusParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ActionResponseWithResultsPublicWideStatus>
      *
@@ -125,7 +135,7 @@ interface StatusesRawContract
     public function getUnsubscribeAllStatus(
         string $subscriberIDString,
         array|StatusGetUnsubscribeAllStatusParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -133,6 +143,7 @@ interface StatusesRawContract
      *
      * @param string $subscriberIDString the contact's email address
      * @param array<string,mixed>|StatusUnsubscribeAllParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ActionResponseWithResultsPublicStatus>
      *
@@ -141,6 +152,6 @@ interface StatusesRawContract
     public function unsubscribeAll(
         string $subscriberIDString,
         array|StatusUnsubscribeAllParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

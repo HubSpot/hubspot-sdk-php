@@ -4,24 +4,29 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Services\Crm\Objects;
 
-use HubspotSDK\AssociationSpec;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\Crm\CreatedResponseSimplePublicObject;
+use HubspotSDK\Crm\FilterGroup;
 use HubspotSDK\Crm\Objects\Tasks\TaskCreateParams;
 use HubspotSDK\Crm\Objects\Tasks\TaskGetParams;
 use HubspotSDK\Crm\Objects\Tasks\TaskListParams;
 use HubspotSDK\Crm\Objects\Tasks\TaskSearchParams;
 use HubspotSDK\Crm\Objects\Tasks\TaskUpdateParams;
+use HubspotSDK\Crm\PublicAssociationsForObject;
 use HubspotSDK\Crm\SimplePublicObject;
 use HubspotSDK\Crm\SimplePublicObjectWithAssociations;
 use HubspotSDK\Page;
-use HubspotSDK\PublicObjectID;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Objects\TasksRawContract;
 
+/**
+ * @phpstan-import-type PublicAssociationsForObjectShape from \HubspotSDK\Crm\PublicAssociationsForObject
+ * @phpstan-import-type FilterGroupShape from \HubspotSDK\Crm\FilterGroup
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class TasksRawService implements TasksRawContract
 {
     // @phpstan-ignore-next-line
@@ -36,12 +41,10 @@ final class TasksRawService implements TasksRawContract
      * Create a task with the given properties and return a copy of the object, including the ID. Documentation and examples for creating standard tasks is provided.
      *
      * @param array{
-     *   associations: list<array{
-     *     to: array<string,mixed>|PublicObjectID,
-     *     types: list<array<string,mixed>|AssociationSpec>,
-     *   }>,
+     *   associations: list<PublicAssociationsForObject|PublicAssociationsForObjectShape>,
      *   properties: array<string,string>,
      * }|TaskCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CreatedResponseSimplePublicObject>
      *
@@ -49,7 +52,7 @@ final class TasksRawService implements TasksRawContract
      */
     public function create(
         array|TaskCreateParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = TaskCreateParams::parseRequest(
             $params,
@@ -71,10 +74,11 @@ final class TasksRawService implements TasksRawContract
      *
      * Perform a partial update of an Object identified by `{taskId}`or optionally a unique property value as specified by the `idProperty` query param. `{taskId}` refers to the internal object ID by default, and the `idProperty` query param refers to a property whose values are unique for the object. Provided property values will be overwritten. Read-only and non-existent properties will result in an error. Properties values can be cleared by passing an empty string.
      *
-     * @param string $taskID Path param:
+     * @param string $taskID Path param
      * @param array{
      *   properties: array<string,string>, idProperty?: string
      * }|TaskUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SimplePublicObject>
      *
@@ -83,7 +87,7 @@ final class TasksRawService implements TasksRawContract
     public function update(
         string $taskID,
         array|TaskUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = TaskUpdateParams::parseRequest(
             $params,
@@ -115,6 +119,7 @@ final class TasksRawService implements TasksRawContract
      *   properties?: list<string>,
      *   propertiesWithHistory?: list<string>,
      * }|TaskListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<SimplePublicObjectWithAssociations>>
      *
@@ -122,7 +127,7 @@ final class TasksRawService implements TasksRawContract
      */
     public function list(
         array|TaskListParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = TaskListParams::parseRequest(
             $params,
@@ -145,13 +150,15 @@ final class TasksRawService implements TasksRawContract
      *
      * Move an Object identified by `{taskId}` to the recycling bin.
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @return BaseResponse<mixed>
      *
      * @throws APIException
      */
     public function delete(
         string $taskID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -174,6 +181,7 @@ final class TasksRawService implements TasksRawContract
      *   properties?: list<string>,
      *   propertiesWithHistory?: list<string>,
      * }|TaskGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SimplePublicObjectWithAssociations>
      *
@@ -182,7 +190,7 @@ final class TasksRawService implements TasksRawContract
     public function get(
         string $taskID,
         array|TaskGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = TaskGetParams::parseRequest(
             $params,
@@ -204,12 +212,13 @@ final class TasksRawService implements TasksRawContract
      *
      * @param array{
      *   after: string,
-     *   filterGroups: list<array{filters: list<array<string,mixed>>}>,
+     *   filterGroups: list<FilterGroup|FilterGroupShape>,
      *   limit: int,
      *   properties: list<string>,
      *   sorts: list<string>,
      *   query?: string,
      * }|TaskSearchParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CollectionResponseWithTotalSimplePublicObject>
      *
@@ -217,7 +226,7 @@ final class TasksRawService implements TasksRawContract
      */
     public function search(
         array|TaskSearchParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = TaskSearchParams::parseRequest(
             $params,

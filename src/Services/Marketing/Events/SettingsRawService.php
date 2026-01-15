@@ -12,6 +12,9 @@ use HubspotSDK\Marketing\Events\Settings\SettingCreateOrUpdateParams;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Marketing\Events\SettingsRawContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class SettingsRawService implements SettingsRawContract
 {
     // @phpstan-ignore-next-line
@@ -27,6 +30,7 @@ final class SettingsRawService implements SettingsRawContract
      *
      * @param int $appID the id of the application to update the settings for
      * @param array{eventDetailsURL: string}|SettingCreateOrUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<EventDetailSettings>
      *
@@ -35,7 +39,7 @@ final class SettingsRawService implements SettingsRawContract
     public function createOrUpdate(
         int $appID,
         array|SettingCreateOrUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = SettingCreateOrUpdateParams::parseRequest(
             $params,
@@ -58,6 +62,7 @@ final class SettingsRawService implements SettingsRawContract
      * Retrieve the current settings for the application.
      *
      * @param int $appID the id of the application to retrieve the settings for
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<EventDetailSettings>
      *
@@ -65,7 +70,7 @@ final class SettingsRawService implements SettingsRawContract
      */
     public function get(
         int $appID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(

@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-import-type MarketingEventExternalUniqueIdentifierShape from \HubspotSDK\Marketing\Events\MarketingEventExternalUniqueIdentifier
  *
  * @phpstan-type BatchInputMarketingEventExternalUniqueIdentifierShape = array{
- *   inputs: list<MarketingEventExternalUniqueIdentifierShape>
+ *   inputs: list<MarketingEventExternalUniqueIdentifier|MarketingEventExternalUniqueIdentifierShape>,
  * }
  */
 final class BatchInputMarketingEventExternalUniqueIdentifier implements BaseModel
@@ -48,7 +48,7 @@ final class BatchInputMarketingEventExternalUniqueIdentifier implements BaseMode
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<MarketingEventExternalUniqueIdentifierShape> $inputs
+     * @param list<MarketingEventExternalUniqueIdentifier|MarketingEventExternalUniqueIdentifierShape> $inputs
      */
     public static function with(array $inputs): self
     {
@@ -60,7 +60,7 @@ final class BatchInputMarketingEventExternalUniqueIdentifier implements BaseMode
     }
 
     /**
-     * @param list<MarketingEventExternalUniqueIdentifierShape> $inputs
+     * @param list<MarketingEventExternalUniqueIdentifier|MarketingEventExternalUniqueIdentifierShape> $inputs
      */
     public function withInputs(array $inputs): self
     {

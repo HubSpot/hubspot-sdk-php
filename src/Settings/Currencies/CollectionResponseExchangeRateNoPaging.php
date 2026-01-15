@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-import-type ExchangeRateShape from \HubspotSDK\Settings\Currencies\ExchangeRate
  *
  * @phpstan-type CollectionResponseExchangeRateNoPagingShape = array{
- *   results: list<ExchangeRateShape>
+ *   results: list<ExchangeRate|ExchangeRateShape>
  * }
  */
 final class CollectionResponseExchangeRateNoPaging implements BaseModel
@@ -48,7 +48,7 @@ final class CollectionResponseExchangeRateNoPaging implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<ExchangeRateShape> $results
+     * @param list<ExchangeRate|ExchangeRateShape> $results
      */
     public static function with(array $results): self
     {
@@ -60,7 +60,7 @@ final class CollectionResponseExchangeRateNoPaging implements BaseModel
     }
 
     /**
-     * @param list<ExchangeRateShape> $results
+     * @param list<ExchangeRate|ExchangeRateShape> $results
      */
     public function withResults(array $results): self
     {

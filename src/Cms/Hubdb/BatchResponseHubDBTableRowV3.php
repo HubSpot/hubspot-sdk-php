@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @phpstan-type BatchResponseHubDBTableRowV3Shape = array{
  *   completedAt: \DateTimeInterface,
- *   results: list<HubDBTableRowV3Shape>,
+ *   results: list<HubDBTableRowV3|HubDBTableRowV3Shape>,
  *   startedAt: \DateTimeInterface,
  *   status: Status|value-of<Status>,
  *   links?: array<string,string>|null,
@@ -95,7 +95,7 @@ final class BatchResponseHubDBTableRowV3 implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<HubDBTableRowV3Shape> $results
+     * @param list<HubDBTableRowV3|HubDBTableRowV3Shape> $results
      * @param Status|value-of<Status> $status
      * @param array<string,string>|null $links
      */
@@ -132,7 +132,7 @@ final class BatchResponseHubDBTableRowV3 implements BaseModel
     }
 
     /**
-     * @param list<HubDBTableRowV3Shape> $results
+     * @param list<HubDBTableRowV3|HubDBTableRowV3Shape> $results
      */
     public function withResults(array $results): self
     {

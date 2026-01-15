@@ -13,12 +13,16 @@ use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface URLRedirectsRawContract
 {
     /**
      * @api
      *
      * @param array<string,mixed>|URLRedirectCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<URLMapping>
      *
@@ -26,7 +30,7 @@ interface URLRedirectsRawContract
      */
     public function create(
         array|URLRedirectCreateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -34,6 +38,7 @@ interface URLRedirectsRawContract
      *
      * @param string $urlRedirectID the ID of the target url redirect to update
      * @param array<string,mixed>|URLRedirectUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<URLMapping>
      *
@@ -42,13 +47,14 @@ interface URLRedirectsRawContract
     public function update(
         string $urlRedirectID,
         array|URLRedirectUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|URLRedirectListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<URLMapping>>
      *
@@ -56,13 +62,14 @@ interface URLRedirectsRawContract
      */
     public function list(
         array|URLRedirectListParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param string $urlRedirectID the ID of the target redirect
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -70,13 +77,14 @@ interface URLRedirectsRawContract
      */
     public function delete(
         string $urlRedirectID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param string $urlRedirectID the ID of the target redirect
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<URLMapping>
      *
@@ -84,6 +92,6 @@ interface URLRedirectsRawContract
      */
     public function get(
         string $urlRedirectID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 }

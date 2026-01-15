@@ -16,6 +16,9 @@ use HubspotSDK\Marketing\Campaigns\PublicBudgetTotals;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Marketing\Campaigns\BudgetRawContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class BudgetRawService implements BudgetRawContract
 {
     // @phpstan-ignore-next-line
@@ -33,6 +36,7 @@ final class BudgetRawService implements BudgetRawContract
      * @param array{
      *   amount: float, name: string, order: int, description?: string
      * }|BudgetCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicBudgetItem>
      *
@@ -41,7 +45,7 @@ final class BudgetRawService implements BudgetRawContract
     public function create(
         string $campaignGuid,
         array|BudgetCreateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = BudgetCreateParams::parseRequest(
             $params,
@@ -71,6 +75,7 @@ final class BudgetRawService implements BudgetRawContract
      *   order: int,
      *   description?: string,
      * }|BudgetUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicBudgetItem>
      *
@@ -79,7 +84,7 @@ final class BudgetRawService implements BudgetRawContract
     public function update(
         int $budgetID,
         array|BudgetUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = BudgetUpdateParams::parseRequest(
             $params,
@@ -107,6 +112,7 @@ final class BudgetRawService implements BudgetRawContract
      *
      * @param int $budgetID unique identifier for the budget item
      * @param array{campaignGuid: string}|BudgetDeleteParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -115,7 +121,7 @@ final class BudgetRawService implements BudgetRawContract
     public function delete(
         int $budgetID,
         array|BudgetDeleteParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = BudgetDeleteParams::parseRequest(
             $params,
@@ -142,6 +148,7 @@ final class BudgetRawService implements BudgetRawContract
      *
      * @param int $budgetID unique identifier for the budget item
      * @param array{campaignGuid: string}|BudgetGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicBudgetItem>
      *
@@ -150,7 +157,7 @@ final class BudgetRawService implements BudgetRawContract
     public function get(
         int $budgetID,
         array|BudgetGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = BudgetGetParams::parseRequest(
             $params,
@@ -177,6 +184,7 @@ final class BudgetRawService implements BudgetRawContract
      * Budget and Spend items may be returned in any order, but the order field specifies their sequence based on the creation date. The item with order 0 is the oldest, and items with higher order values are newer
      *
      * @param string $campaignGuid unique identifier for the campaign, formatted as a UUID
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicBudgetTotals>
      *
@@ -184,7 +192,7 @@ final class BudgetRawService implements BudgetRawContract
      */
     public function getTotals(
         string $campaignGuid,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(

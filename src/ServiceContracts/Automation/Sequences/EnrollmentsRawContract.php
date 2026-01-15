@@ -11,12 +11,16 @@ use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface EnrollmentsRawContract
 {
     /**
      * @api
      *
      * @param array<string,mixed>|EnrollmentEnrollParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicSequenceEnrollmentLiteResponse>
      *
@@ -24,11 +28,13 @@ interface EnrollmentsRawContract
      */
     public function enroll(
         array|EnrollmentEnrollParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
+     *
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicSequenceEnrollmentResponse>
      *
@@ -36,6 +42,6 @@ interface EnrollmentsRawContract
      */
     public function getByContactID(
         string $contactID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 }

@@ -12,12 +12,16 @@ use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface InboxesRawContract
 {
     /**
      * @api
      *
      * @param array<string,mixed>|InboxListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<PublicInbox>>
      *
@@ -25,13 +29,14 @@ interface InboxesRawContract
      */
     public function list(
         array|InboxListParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|InboxGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicInbox>
      *
@@ -40,6 +45,6 @@ interface InboxesRawContract
     public function get(
         int $inboxID,
         array|InboxGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

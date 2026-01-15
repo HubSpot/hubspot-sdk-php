@@ -22,12 +22,16 @@ use HubspotSDK\Settings\Currencies\CurrencyUpdateExchangeRateParams;
 use HubspotSDK\Settings\Currencies\CurrencyUpdateVisibilityParams;
 use HubspotSDK\Settings\Currencies\ExchangeRate;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface CurrenciesRawContract
 {
     /**
      * @api
      *
      * @param array<string,mixed>|CurrencyBatchCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BatchResponseExchangeRate>
      *
@@ -35,13 +39,14 @@ interface CurrenciesRawContract
      */
     public function batchCreate(
         array|CurrencyBatchCreateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|CurrencyBatchGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BatchResponseExchangeRate>
      *
@@ -49,13 +54,14 @@ interface CurrenciesRawContract
      */
     public function batchGet(
         array|CurrencyBatchGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|CurrencyBatchUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BatchResponseExchangeRate>
      *
@@ -63,13 +69,14 @@ interface CurrenciesRawContract
      */
     public function batchUpdate(
         array|CurrencyBatchUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|CurrencyCreateExchangeRateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ExchangeRate>
      *
@@ -77,24 +84,27 @@ interface CurrenciesRawContract
      */
     public function createExchangeRate(
         array|CurrencyCreateExchangeRateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
+     *
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CompanyCurrency>
      *
      * @throws APIException
      */
     public function getCompanyCurrency(
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param string $exchangeRateID the ID of the exchange rate to retrieve
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ExchangeRate>
      *
@@ -102,35 +112,40 @@ interface CurrenciesRawContract
      */
     public function getExchangeRateByID(
         string $exchangeRateID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 
     /**
      * @api
+     *
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CollectionResponseCurrencyCodeInfoNoPaging>
      *
      * @throws APIException
      */
     public function listCodes(
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 
     /**
      * @api
+     *
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CollectionResponseExchangeRateNoPaging>
      *
      * @throws APIException
      */
     public function listCurrentExchangeRates(
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|CurrencyListExchangeRatesParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<ExchangeRate>>
      *
@@ -138,13 +153,14 @@ interface CurrenciesRawContract
      */
     public function listExchangeRates(
         array|CurrencyListExchangeRatesParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|CurrencyUpdateCompanyCurrencyParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CompanyCurrency>
      *
@@ -152,7 +168,7 @@ interface CurrenciesRawContract
      */
     public function updateCompanyCurrency(
         array|CurrencyUpdateCompanyCurrencyParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -160,6 +176,7 @@ interface CurrenciesRawContract
      *
      * @param string $exchangeRateID the unique identifier of the exchange rate to be updated
      * @param array<string,mixed>|CurrencyUpdateExchangeRateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ExchangeRate>
      *
@@ -168,13 +185,14 @@ interface CurrenciesRawContract
     public function updateExchangeRate(
         string $exchangeRateID,
         array|CurrencyUpdateExchangeRateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|CurrencyUpdateVisibilityParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -182,6 +200,6 @@ interface CurrenciesRawContract
      */
     public function updateVisibility(
         array|CurrencyUpdateVisibilityParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

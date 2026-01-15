@@ -9,10 +9,7 @@ use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\Objects\Schemas\ObjectSchema;
 use HubspotSDK\Crm\Objects\Schemas\ObjectsSchemasObjectTypeDefinition;
-use HubspotSDK\Crm\Objects\Schemas\ObjectTypePropertyCreate\NumberDisplayHint;
-use HubspotSDK\Crm\Objects\Schemas\ObjectTypePropertyCreate\OptionSortStrategy;
-use HubspotSDK\Crm\Objects\Schemas\ObjectTypePropertyCreate\TextDisplayHint;
-use HubspotSDK\Crm\Objects\Schemas\ObjectTypePropertyCreate\Type;
+use HubspotSDK\Crm\Objects\Schemas\ObjectTypePropertyCreate;
 use HubspotSDK\Crm\Objects\Schemas\SchemaCreateAssociationParams;
 use HubspotSDK\Crm\Objects\Schemas\SchemaCreateParams;
 use HubspotSDK\Crm\Objects\Schemas\SchemaDeleteAssociationParams;
@@ -25,6 +22,11 @@ use HubspotSDK\ObjectTypeDefinitionLabels;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Objects\SchemasRawContract;
 
+/**
+ * @phpstan-import-type ObjectTypePropertyCreateShape from \HubspotSDK\Crm\Objects\Schemas\ObjectTypePropertyCreate
+ * @phpstan-import-type ObjectTypeDefinitionLabelsShape from \HubspotSDK\ObjectTypeDefinitionLabels
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class SchemasRawService implements SchemasRawContract
 {
     // @phpstan-ignore-next-line
@@ -38,33 +40,16 @@ final class SchemasRawService implements SchemasRawContract
      *
      * @param array{
      *   associatedObjects: list<string>,
-     *   labels: array{plural?: string, singular?: string}|ObjectTypeDefinitionLabels,
+     *   labels: ObjectTypeDefinitionLabels|ObjectTypeDefinitionLabelsShape,
      *   name: string,
-     *   properties: list<array{
-     *     fieldType: string,
-     *     label: string,
-     *     name: string,
-     *     type: 'bool'|'date'|'datetime'|'enumeration'|'number'|'string'|Type,
-     *     description?: string,
-     *     displayOrder?: int,
-     *     formField?: bool,
-     *     groupName?: string,
-     *     hasUniqueValue?: bool,
-     *     hidden?: bool,
-     *     numberDisplayHint?: 'currency'|'duration'|'formatted'|'percentage'|'probability'|'unformatted'|NumberDisplayHint,
-     *     options?: list<array<string,mixed>>,
-     *     optionSortStrategy?: 'ALPHABETICAL'|'DISPLAY_ORDER'|OptionSortStrategy,
-     *     referencedObjectType?: string,
-     *     searchableInGlobalSearch?: bool,
-     *     showCurrencySymbol?: bool,
-     *     textDisplayHint?: 'domain_name'|'email'|'ip_address'|'multi_line'|'phone_number'|'physical_address'|'postal_code'|'unformatted_single_line'|TextDisplayHint,
-     *   }>,
+     *   properties: list<ObjectTypePropertyCreate|ObjectTypePropertyCreateShape>,
      *   requiredProperties: list<string>,
      *   description?: string,
      *   primaryDisplayProperty?: string,
      *   searchableProperties?: list<string>,
      *   secondaryDisplayProperties?: list<string>,
      * }|SchemaCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ObjectSchema>
      *
@@ -72,7 +57,7 @@ final class SchemasRawService implements SchemasRawContract
      */
     public function create(
         array|SchemaCreateParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = SchemaCreateParams::parseRequest(
             $params,
@@ -96,13 +81,14 @@ final class SchemasRawService implements SchemasRawContract
      * @param array{
      *   clearDescription?: bool,
      *   description?: string,
-     *   labels?: array{plural?: string, singular?: string}|ObjectTypeDefinitionLabels,
+     *   labels?: ObjectTypeDefinitionLabels|ObjectTypeDefinitionLabelsShape,
      *   primaryDisplayProperty?: string,
      *   requiredProperties?: list<string>,
      *   restorable?: bool,
      *   searchableProperties?: list<string>,
      *   secondaryDisplayProperties?: list<string>,
      * }|SchemaUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ObjectsSchemasObjectTypeDefinition>
      *
@@ -111,7 +97,7 @@ final class SchemasRawService implements SchemasRawContract
     public function update(
         string $objectType,
         array|SchemaUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = SchemaUpdateParams::parseRequest(
             $params,
@@ -132,6 +118,7 @@ final class SchemasRawService implements SchemasRawContract
      * @api
      *
      * @param array{archived?: bool}|SchemaListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SchemaListResponse>
      *
@@ -139,7 +126,7 @@ final class SchemasRawService implements SchemasRawContract
      */
     public function list(
         array|SchemaListParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = SchemaListParams::parseRequest(
             $params,
@@ -161,6 +148,7 @@ final class SchemasRawService implements SchemasRawContract
      *
      * @param string $objectType fully qualified name or object type ID of your schema
      * @param array{archived?: bool}|SchemaDeleteParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -169,7 +157,7 @@ final class SchemasRawService implements SchemasRawContract
     public function delete(
         string $objectType,
         array|SchemaDeleteParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = SchemaDeleteParams::parseRequest(
             $params,
@@ -193,6 +181,7 @@ final class SchemasRawService implements SchemasRawContract
      * @param array{
      *   fromObjectTypeID: string, toObjectTypeID: string, name?: string
      * }|SchemaCreateAssociationParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<AssociationDefinition>
      *
@@ -201,7 +190,7 @@ final class SchemasRawService implements SchemasRawContract
     public function createAssociation(
         string $objectType,
         array|SchemaCreateAssociationParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = SchemaCreateAssociationParams::parseRequest(
             $params,
@@ -223,6 +212,7 @@ final class SchemasRawService implements SchemasRawContract
      *
      * @param string $associationIdentifier unique ID of the association to remove
      * @param array{objectType: string}|SchemaDeleteAssociationParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -231,7 +221,7 @@ final class SchemasRawService implements SchemasRawContract
     public function deleteAssociation(
         string $associationIdentifier,
         array|SchemaDeleteAssociationParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = SchemaDeleteAssociationParams::parseRequest(
             $params,
@@ -257,6 +247,7 @@ final class SchemasRawService implements SchemasRawContract
      * @api
      *
      * @param string $objectType fully qualified name or object type ID of your schema
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ObjectSchema>
      *
@@ -264,7 +255,7 @@ final class SchemasRawService implements SchemasRawContract
      */
     public function get(
         string $objectType,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(

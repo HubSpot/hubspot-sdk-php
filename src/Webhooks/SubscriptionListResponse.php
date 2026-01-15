@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-import-type SubscriptionResponseShape from \HubspotSDK\Webhooks\SubscriptionResponse
  *
  * @phpstan-type SubscriptionListResponseShape = array{
- *   results: list<SubscriptionResponseShape>
+ *   results: list<SubscriptionResponse|SubscriptionResponseShape>
  * }
  */
 final class SubscriptionListResponse implements BaseModel
@@ -54,7 +54,7 @@ final class SubscriptionListResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<SubscriptionResponseShape> $results
+     * @param list<SubscriptionResponse|SubscriptionResponseShape> $results
      */
     public static function with(array $results): self
     {
@@ -68,7 +68,7 @@ final class SubscriptionListResponse implements BaseModel
     /**
      * List of event subscriptions for your app.
      *
-     * @param list<SubscriptionResponseShape> $results
+     * @param list<SubscriptionResponse|SubscriptionResponseShape> $results
      */
     public function withResults(array $results): self
     {

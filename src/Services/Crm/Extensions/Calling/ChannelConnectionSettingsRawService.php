@@ -13,6 +13,9 @@ use HubspotSDK\Crm\Extensions\Calling\ChannelConnectionSettingsResponse;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Extensions\Calling\ChannelConnectionSettingsRawContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class ChannelConnectionSettingsRawService implements ChannelConnectionSettingsRawContract
 {
     // @phpstan-ignore-next-line
@@ -27,6 +30,7 @@ final class ChannelConnectionSettingsRawService implements ChannelConnectionSett
      * @param array{
      *   isReady: bool, url: string
      * }|ChannelConnectionSettingCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ChannelConnectionSettingsResponse>
      *
@@ -35,7 +39,7 @@ final class ChannelConnectionSettingsRawService implements ChannelConnectionSett
     public function create(
         int $appID,
         array|ChannelConnectionSettingCreateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = ChannelConnectionSettingCreateParams::parseRequest(
             $params,
@@ -60,6 +64,7 @@ final class ChannelConnectionSettingsRawService implements ChannelConnectionSett
      * @param array{
      *   isReady?: bool, url?: string
      * }|ChannelConnectionSettingUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ChannelConnectionSettingsResponse>
      *
@@ -68,7 +73,7 @@ final class ChannelConnectionSettingsRawService implements ChannelConnectionSett
     public function update(
         int $appID,
         array|ChannelConnectionSettingUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = ChannelConnectionSettingUpdateParams::parseRequest(
             $params,
@@ -90,13 +95,15 @@ final class ChannelConnectionSettingsRawService implements ChannelConnectionSett
     /**
      * @api
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @return BaseResponse<mixed>
      *
      * @throws APIException
      */
     public function delete(
         int $appID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -112,13 +119,15 @@ final class ChannelConnectionSettingsRawService implements ChannelConnectionSett
     /**
      * @api
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @return BaseResponse<ChannelConnectionSettingsResponse>
      *
      * @throws APIException
      */
     public function get(
         int $appID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(

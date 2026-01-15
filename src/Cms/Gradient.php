@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @phpstan-type GradientShape = array{
  *   angle: Angle|AngleShape,
- *   colors: list<ColorStopShape>,
+ *   colors: list<ColorStop|ColorStopShape>,
  *   sideOrCorner: SideOrCorner|SideOrCornerShape,
  * }
  */
@@ -59,7 +59,7 @@ final class Gradient implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param Angle|AngleShape $angle
-     * @param list<ColorStopShape> $colors
+     * @param list<ColorStop|ColorStopShape> $colors
      * @param SideOrCorner|SideOrCornerShape $sideOrCorner
      */
     public static function with(
@@ -88,7 +88,7 @@ final class Gradient implements BaseModel
     }
 
     /**
-     * @param list<ColorStopShape> $colors
+     * @param list<ColorStop|ColorStopShape> $colors
      */
     public function withColors(array $colors): self
     {

@@ -13,6 +13,9 @@ use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Marketing\Events\ParticipationsContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class ParticipationsService implements ParticipationsContract
 {
     /**
@@ -35,13 +38,14 @@ final class ParticipationsService implements ParticipationsContract
      *
      * @param string $externalEventID the id of the marketing event in the external event application
      * @param string $externalAccountID the accountId that is associated with this marketing event in the external event application
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function getByExternalAccountAndEventID(
         string $externalEventID,
         string $externalAccountID,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): AttendanceCounters {
         $params = Util::removeNulls(['externalAccountID' => $externalAccountID]);
 
@@ -57,12 +61,13 @@ final class ParticipationsService implements ParticipationsContract
      * Read Marketing event's participations counters by internal identifier marketingEventId.
      *
      * @param int $marketingEventID the internal id of the marketing event in HubSpot
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function getByID(
         int $marketingEventID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): AttendanceCounters {
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->getByID($marketingEventID, requestOptions: $requestOptions);
@@ -79,6 +84,7 @@ final class ParticipationsService implements ParticipationsContract
      * @param string $after the cursor indicating the position of the last retrieved item
      * @param int $limit The limit for response size. The default value is 10, the max number is 100
      * @param string $state The participation state value. It may be REGISTERED, CANCELLED, ATTENDED, NO_SHOW
+     * @param RequestOpts|null $requestOptions
      *
      * @return Page<ParticipationBreakdown>
      *
@@ -89,7 +95,7 @@ final class ParticipationsService implements ParticipationsContract
         ?string $after = null,
         int $limit = 10,
         ?string $state = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): Page {
         $params = Util::removeNulls(
             ['after' => $after, 'limit' => $limit, 'state' => $state]
@@ -112,6 +118,7 @@ final class ParticipationsService implements ParticipationsContract
      * @param string $contactIdentifier Query param: The identifier of the Contact. It may be email or internal id.
      * @param int $limit Query param: The limit for response size. The default value is 10, the max number is 100
      * @param string $state Query param: The participation state value. It may be REGISTERED, CANCELLED, ATTENDED, NO_SHOW
+     * @param RequestOpts|null $requestOptions
      *
      * @return Page<ParticipationBreakdown>
      *
@@ -124,7 +131,7 @@ final class ParticipationsService implements ParticipationsContract
         ?string $contactIdentifier = null,
         int $limit = 10,
         ?string $state = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): Page {
         $params = Util::removeNulls(
             [
@@ -152,6 +159,7 @@ final class ParticipationsService implements ParticipationsContract
      * @param string $contactIdentifier The identifier of the Contact. It may be email or internal id.
      * @param int $limit The limit for response size. The default value is 10, the max number is 100
      * @param string $state The participation state value. It may be REGISTERED, CANCELLED, ATTENDED, NO_SHOW
+     * @param RequestOpts|null $requestOptions
      *
      * @return Page<ParticipationBreakdown>
      *
@@ -163,7 +171,7 @@ final class ParticipationsService implements ParticipationsContract
         ?string $contactIdentifier = null,
         int $limit = 10,
         ?string $state = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): Page {
         $params = Util::removeNulls(
             [

@@ -9,23 +9,16 @@ use HubspotSDK\Conversations\CustomChannels\PublicConversationsMessage\Direction
 use HubspotSDK\Conversations\CustomChannels\PublicConversationsMessage\TruncationStatus;
 use HubspotSDK\Conversations\CustomChannels\PublicConversationsMessage\Type;
 use HubspotSDK\Conversations\PublicClient;
-use HubspotSDK\Conversations\PublicContact;
-use HubspotSDK\Conversations\PublicFile;
-use HubspotSDK\Conversations\PublicLocation;
-use HubspotSDK\Conversations\PublicMessageHeader;
 use HubspotSDK\Conversations\PublicMessageStatus;
-use HubspotSDK\Conversations\PublicQuickReplies;
 use HubspotSDK\Conversations\PublicRecipient;
 use HubspotSDK\Conversations\PublicSender;
-use HubspotSDK\Conversations\PublicSocialMetadataAttachment;
-use HubspotSDK\Conversations\PublicUnsupportedContent;
-use HubspotSDK\Conversations\PublicWhatsAppTemplateMetadata;
 use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type AttachmentVariants from \HubspotSDK\Conversations\CustomChannels\PublicConversationsMessage\Attachment
  * @phpstan-import-type AttachmentShape from \HubspotSDK\Conversations\CustomChannels\PublicConversationsMessage\Attachment
  * @phpstan-import-type PublicClientShape from \HubspotSDK\Conversations\PublicClient
  * @phpstan-import-type PublicRecipientShape from \HubspotSDK\Conversations\PublicRecipient
@@ -43,8 +36,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   createdAt: \DateTimeInterface,
  *   createdBy: string,
  *   direction: Direction|value-of<Direction>,
- *   recipients: list<PublicRecipientShape>,
- *   senders: list<PublicSenderShape>,
+ *   recipients: list<PublicRecipient|PublicRecipientShape>,
+ *   senders: list<PublicSender|PublicSenderShape>,
  *   text: string,
  *   truncationStatus: TruncationStatus|value-of<TruncationStatus>,
  *   type: Type|value-of<Type>,
@@ -66,9 +59,7 @@ final class PublicConversationsMessage implements BaseModel
     #[Required]
     public bool $archived;
 
-    /**
-     * @var list<PublicFile|PublicLocation|PublicContact|PublicUnsupportedContent|PublicMessageHeader|PublicQuickReplies|PublicWhatsAppTemplateMetadata|PublicSocialMetadataAttachment> $attachments
-     */
+    /** @var list<AttachmentVariants> $attachments */
     #[Required(list: Attachment::class)]
     public array $attachments;
 
@@ -186,8 +177,8 @@ final class PublicConversationsMessage implements BaseModel
      * @param list<AttachmentShape> $attachments
      * @param PublicClient|PublicClientShape $client
      * @param Direction|value-of<Direction> $direction
-     * @param list<PublicRecipientShape> $recipients
-     * @param list<PublicSenderShape> $senders
+     * @param list<PublicRecipient|PublicRecipientShape> $recipients
+     * @param list<PublicSender|PublicSenderShape> $senders
      * @param TruncationStatus|value-of<TruncationStatus> $truncationStatus
      * @param Type|value-of<Type> $type
      * @param PublicMessageStatus|PublicMessageStatusShape|null $status
@@ -332,7 +323,7 @@ final class PublicConversationsMessage implements BaseModel
     }
 
     /**
-     * @param list<PublicRecipientShape> $recipients
+     * @param list<PublicRecipient|PublicRecipientShape> $recipients
      */
     public function withRecipients(array $recipients): self
     {
@@ -343,7 +334,7 @@ final class PublicConversationsMessage implements BaseModel
     }
 
     /**
-     * @param list<PublicSenderShape> $senders
+     * @param list<PublicSender|PublicSenderShape> $senders
      */
     public function withSenders(array $senders): self
     {

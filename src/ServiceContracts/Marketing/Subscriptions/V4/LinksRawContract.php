@@ -10,12 +10,16 @@ use HubspotSDK\Marketing\Subscriptions\V4\LinkGenerationResponse;
 use HubspotSDK\Marketing\Subscriptions\V4\Links\LinkCreateParams;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface LinksRawContract
 {
     /**
      * @api
      *
      * @param array<string,mixed>|LinkCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<LinkGenerationResponse>
      *
@@ -23,6 +27,6 @@ interface LinksRawContract
      */
     public function create(
         array|LinkCreateParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

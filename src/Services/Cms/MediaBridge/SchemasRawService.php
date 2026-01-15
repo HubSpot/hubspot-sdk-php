@@ -20,6 +20,10 @@ use HubspotSDK\ObjectTypeDefinitionLabels;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Cms\MediaBridge\SchemasRawContract;
 
+/**
+ * @phpstan-import-type ObjectTypeDefinitionLabelsShape from \HubspotSDK\ObjectTypeDefinitionLabels
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class SchemasRawService implements SchemasRawContract
 {
     // @phpstan-ignore-next-line
@@ -38,13 +42,14 @@ final class SchemasRawService implements SchemasRawContract
      *   appID: int,
      *   clearDescription?: bool,
      *   description?: string,
-     *   labels?: array{plural?: string, singular?: string}|ObjectTypeDefinitionLabels,
+     *   labels?: ObjectTypeDefinitionLabels|ObjectTypeDefinitionLabelsShape,
      *   primaryDisplayProperty?: string,
      *   requiredProperties?: list<string>,
      *   restorable?: bool,
      *   searchableProperties?: list<string>,
      *   secondaryDisplayProperties?: list<string>,
      * }|SchemaUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ObjectsSchemasObjectTypeDefinition>
      *
@@ -53,7 +58,7 @@ final class SchemasRawService implements SchemasRawContract
     public function update(
         string $objectType,
         array|SchemaUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = SchemaUpdateParams::parseRequest(
             $params,
@@ -79,6 +84,7 @@ final class SchemasRawService implements SchemasRawContract
      *
      * @param int $appID The appId for the media bridge app. It is possible to have multiple apps in your developer account that use the media bridge.
      * @param array{archived?: bool}|SchemaListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SchemaListResponse>
      *
@@ -87,7 +93,7 @@ final class SchemasRawService implements SchemasRawContract
     public function list(
         int $appID,
         array|SchemaListParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = SchemaListParams::parseRequest(
             $params,
@@ -113,6 +119,7 @@ final class SchemasRawService implements SchemasRawContract
      * @param array{
      *   appID: int, fromObjectTypeID: string, toObjectTypeID: string, name?: string
      * }|SchemaCreateAssociationParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<AssociationDefinition>
      *
@@ -121,7 +128,7 @@ final class SchemasRawService implements SchemasRawContract
     public function createAssociation(
         string $objectType,
         array|SchemaCreateAssociationParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = SchemaCreateAssociationParams::parseRequest(
             $params,
@@ -151,6 +158,7 @@ final class SchemasRawService implements SchemasRawContract
      * @param array{
      *   appID: int, objectType: string
      * }|SchemaDeleteAssociationParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -159,7 +167,7 @@ final class SchemasRawService implements SchemasRawContract
     public function deleteAssociation(
         string $associationID,
         array|SchemaDeleteAssociationParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = SchemaDeleteAssociationParams::parseRequest(
             $params,
@@ -191,6 +199,7 @@ final class SchemasRawService implements SchemasRawContract
      *
      * @param string $objectType the object type to get the schema for
      * @param array{appID: int}|SchemaGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ObjectSchema>
      *
@@ -199,7 +208,7 @@ final class SchemasRawService implements SchemasRawContract
     public function get(
         string $objectType,
         array|SchemaGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = SchemaGetParams::parseRequest(
             $params,

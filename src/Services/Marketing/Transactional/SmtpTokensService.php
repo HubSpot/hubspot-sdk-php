@@ -12,6 +12,9 @@ use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Marketing\Transactional\SmtpTokensContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class SmtpTokensService implements SmtpTokensContract
 {
     /**
@@ -34,13 +37,14 @@ final class SmtpTokensService implements SmtpTokensContract
      *
      * @param string $campaignName a name for the campaign tied to the SMTP API token
      * @param bool $createContact indicates whether a contact should be created for email recipients
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function create(
         string $campaignName,
         bool $createContact,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): SmtpAPITokenView {
         $params = Util::removeNulls(
             ['campaignName' => $campaignName, 'createContact' => $createContact]
@@ -61,6 +65,7 @@ final class SmtpTokensService implements SmtpTokensContract
      * @param string $campaignName a name for the campaign tied to the SMTP API token
      * @param string $emailCampaignID identifier assigned to the campaign provided during the token creation
      * @param int $limit maximum number of tokens to return
+     * @param RequestOpts|null $requestOptions
      *
      * @return Page<SmtpAPITokenView>
      *
@@ -71,7 +76,7 @@ final class SmtpTokensService implements SmtpTokensContract
         ?string $campaignName = null,
         ?string $emailCampaignID = null,
         ?int $limit = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): Page {
         $params = Util::removeNulls(
             [
@@ -94,12 +99,13 @@ final class SmtpTokensService implements SmtpTokensContract
      * Delete a single token by ID.
      *
      * @param string $tokenID identifier generated when a token is created
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function delete(
         string $tokenID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): mixed {
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->delete($tokenID, requestOptions: $requestOptions);
@@ -113,12 +119,13 @@ final class SmtpTokensService implements SmtpTokensContract
      * Query a single token by ID.
      *
      * @param string $tokenID identifier generated when a token is created
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function get(
         string $tokenID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): SmtpAPITokenView {
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->get($tokenID, requestOptions: $requestOptions);
@@ -132,12 +139,13 @@ final class SmtpTokensService implements SmtpTokensContract
      * Allows the creation of a replacement password for a given token. Once the password is successfully reset, the old password for the token will be invalid.
      *
      * @param string $tokenID identifier generated when a token is created
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function resetPassword(
         string $tokenID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): SmtpAPITokenView {
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->resetPassword($tokenID, requestOptions: $requestOptions);

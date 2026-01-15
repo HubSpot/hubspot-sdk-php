@@ -12,12 +12,16 @@ use HubspotSDK\Settings\Currencies\CentralFxRates\CentralFxRateCreateCurrencyPar
 use HubspotSDK\Settings\Currencies\CollectionResponseCurrencyCodeInfoNoPaging;
 use HubspotSDK\Settings\Currencies\ExchangeRate;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface CentralFxRatesRawContract
 {
     /**
      * @api
      *
      * @param array<string,mixed>|CentralFxRateCreateCurrencyParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ExchangeRate>
      *
@@ -25,28 +29,32 @@ interface CentralFxRatesRawContract
      */
     public function createCurrency(
         array|CentralFxRateCreateCurrencyParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
+     *
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CentralExchangeRatesInformation>
      *
      * @throws APIException
      */
     public function getInformation(
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 
     /**
      * @api
+     *
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CollectionResponseCurrencyCodeInfoNoPaging>
      *
      * @throws APIException
      */
     public function getUnsupportedCurrencies(
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 }

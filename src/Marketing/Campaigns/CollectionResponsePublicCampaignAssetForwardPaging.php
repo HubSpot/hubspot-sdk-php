@@ -15,7 +15,7 @@ use HubspotSDK\ForwardPaging;
  * @phpstan-import-type ForwardPagingShape from \HubspotSDK\ForwardPaging
  *
  * @phpstan-type CollectionResponsePublicCampaignAssetForwardPagingShape = array{
- *   results: list<PublicCampaignAssetShape>,
+ *   results: list<PublicCampaignAsset|PublicCampaignAssetShape>,
  *   paging?: null|ForwardPaging|ForwardPagingShape,
  * }
  */
@@ -55,7 +55,7 @@ final class CollectionResponsePublicCampaignAssetForwardPaging implements BaseMo
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicCampaignAssetShape> $results
+     * @param list<PublicCampaignAsset|PublicCampaignAssetShape> $results
      * @param ForwardPaging|ForwardPagingShape|null $paging
      */
     public static function with(
@@ -72,7 +72,7 @@ final class CollectionResponsePublicCampaignAssetForwardPaging implements BaseMo
     }
 
     /**
-     * @param list<PublicCampaignAssetShape> $results
+     * @param list<PublicCampaignAsset|PublicCampaignAssetShape> $results
      */
     public function withResults(array $results): self
     {

@@ -6,7 +6,7 @@ namespace HubspotSDK\Services\Automation;
 
 use HubspotSDK\Automation\Workflows\APIContactFlow;
 use HubspotSDK\Automation\Workflows\APIFlow;
-use HubspotSDK\Automation\Workflows\APIFlowBatchFetchFlowIDCoordinate\Type;
+use HubspotSDK\Automation\Workflows\APIFlowBatchFetchFlowIDCoordinate;
 use HubspotSDK\Automation\Workflows\APIFlowEmailCampaign;
 use HubspotSDK\Automation\Workflows\APIFlowListing;
 use HubspotSDK\Automation\Workflows\APIPlatformFlow;
@@ -24,6 +24,11 @@ use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Automation\WorkflowsRawContract;
 
+/**
+ * @phpstan-import-type APIFlowBatchFetchFlowIDCoordinateShape from \HubspotSDK\Automation\Workflows\APIFlowBatchFetchFlowIDCoordinate
+ * @phpstan-import-type InputShape from \HubspotSDK\Automation\Workflows\WorkflowBatchGetIDMappingsParams\Input
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class WorkflowsRawService implements WorkflowsRawContract
 {
     // @phpstan-ignore-next-line
@@ -35,12 +40,15 @@ final class WorkflowsRawService implements WorkflowsRawContract
     /**
      * @api
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @return BaseResponse<APIContactFlow|APIPlatformFlow>
      *
      * @throws APIException
      */
-    public function create(?RequestOptions $requestOptions = null): BaseResponse
-    {
+    public function create(
+        RequestOptions|array|null $requestOptions = null
+    ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
@@ -53,13 +61,15 @@ final class WorkflowsRawService implements WorkflowsRawContract
     /**
      * @api
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @return BaseResponse<APIContactFlow|APIPlatformFlow>
      *
      * @throws APIException
      */
     public function update(
         string $flowID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -74,6 +84,7 @@ final class WorkflowsRawService implements WorkflowsRawContract
      * @api
      *
      * @param array{after?: string, limit?: int}|WorkflowListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<APIFlowListing>>
      *
@@ -81,7 +92,7 @@ final class WorkflowsRawService implements WorkflowsRawContract
      */
     public function list(
         array|WorkflowListParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = WorkflowListParams::parseRequest(
             $params,
@@ -102,13 +113,15 @@ final class WorkflowsRawService implements WorkflowsRawContract
     /**
      * @api
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @return BaseResponse<mixed>
      *
      * @throws APIException
      */
     public function delete(
         int $flowID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -123,8 +136,9 @@ final class WorkflowsRawService implements WorkflowsRawContract
      * @api
      *
      * @param array{
-     *   inputs: list<array{flowID: string, type: 'FLOW_ID'|Type}>
+     *   inputs: list<APIFlowBatchFetchFlowIDCoordinate|APIFlowBatchFetchFlowIDCoordinateShape>,
      * }|WorkflowBatchGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BatchResponseAPIFlow>
      *
@@ -132,7 +146,7 @@ final class WorkflowsRawService implements WorkflowsRawContract
      */
     public function batchGet(
         array|WorkflowBatchGetParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = WorkflowBatchGetParams::parseRequest(
             $params,
@@ -152,9 +166,8 @@ final class WorkflowsRawService implements WorkflowsRawContract
     /**
      * @api
      *
-     * @param array{
-     *   inputs: list<array<string,mixed>>
-     * }|WorkflowBatchGetIDMappingsParams $params
+     * @param array{inputs: list<InputShape>}|WorkflowBatchGetIDMappingsParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BatchResponseFlowIDWorkflowIDMappingResponse>
      *
@@ -162,7 +175,7 @@ final class WorkflowsRawService implements WorkflowsRawContract
      */
     public function batchGetIDMappings(
         array|WorkflowBatchGetIDMappingsParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = WorkflowBatchGetIDMappingsParams::parseRequest(
             $params,
@@ -182,13 +195,15 @@ final class WorkflowsRawService implements WorkflowsRawContract
     /**
      * @api
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @return BaseResponse<APIContactFlow|APIPlatformFlow>
      *
      * @throws APIException
      */
     public function get(
         string $flowID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -205,6 +220,7 @@ final class WorkflowsRawService implements WorkflowsRawContract
      * @param array{
      *   after?: string, before?: string, flowID?: list<string>, limit?: int
      * }|WorkflowListEmailCampaignsParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<APIFlowEmailCampaign>>
      *
@@ -212,7 +228,7 @@ final class WorkflowsRawService implements WorkflowsRawContract
      */
     public function listEmailCampaigns(
         array|WorkflowListEmailCampaignsParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = WorkflowListEmailCampaignsParams::parseRequest(
             $params,

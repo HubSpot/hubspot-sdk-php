@@ -22,7 +22,8 @@ use HubspotSDK\Core\Conversion\Contracts\ConverterSource;
  * @phpstan-import-type APIWebhookActionShape from \HubspotSDK\Automation\Workflows\APIWebhookAction
  * @phpstan-import-type APISingleConnectionActionShape from \HubspotSDK\Automation\Workflows\APISingleConnectionAction
  *
- * @phpstan-type ActionShape = APIStaticBranchActionShape|APIListBranchActionShape|APIAbTestBranchActionShape|APICustomCodeActionShape|APIWebhookActionShape|APISingleConnectionActionShape
+ * @phpstan-type ActionVariants = APIStaticBranchAction|APIListBranchAction|APIAbTestBranchAction|APICustomCodeAction|APIWebhookAction|APISingleConnectionAction
+ * @phpstan-type ActionShape = ActionVariants|APIStaticBranchActionShape|APIListBranchActionShape|APIAbTestBranchActionShape|APICustomCodeActionShape|APIWebhookActionShape|APISingleConnectionActionShape
  */
 final class Action implements ConverterSource
 {

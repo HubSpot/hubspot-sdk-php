@@ -15,6 +15,9 @@ use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Marketing\Transactional\SmtpTokensRawContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class SmtpTokensRawService implements SmtpTokensRawContract
 {
     // @phpstan-ignore-next-line
@@ -31,6 +34,7 @@ final class SmtpTokensRawService implements SmtpTokensRawContract
      * @param array{
      *   campaignName: string, createContact: bool
      * }|SmtpTokenCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SmtpAPITokenView>
      *
@@ -38,7 +42,7 @@ final class SmtpTokensRawService implements SmtpTokensRawContract
      */
     public function create(
         array|SmtpTokenCreateParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = SmtpTokenCreateParams::parseRequest(
             $params,
@@ -63,6 +67,7 @@ final class SmtpTokensRawService implements SmtpTokensRawContract
      * @param array{
      *   after?: string, campaignName?: string, emailCampaignID?: string, limit?: int
      * }|SmtpTokenListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<SmtpAPITokenView>>
      *
@@ -70,7 +75,7 @@ final class SmtpTokensRawService implements SmtpTokensRawContract
      */
     public function list(
         array|SmtpTokenListParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = SmtpTokenListParams::parseRequest(
             $params,
@@ -97,6 +102,7 @@ final class SmtpTokensRawService implements SmtpTokensRawContract
      * Delete a single token by ID.
      *
      * @param string $tokenID identifier generated when a token is created
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -104,7 +110,7 @@ final class SmtpTokensRawService implements SmtpTokensRawContract
      */
     public function delete(
         string $tokenID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -121,6 +127,7 @@ final class SmtpTokensRawService implements SmtpTokensRawContract
      * Query a single token by ID.
      *
      * @param string $tokenID identifier generated when a token is created
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SmtpAPITokenView>
      *
@@ -128,7 +135,7 @@ final class SmtpTokensRawService implements SmtpTokensRawContract
      */
     public function get(
         string $tokenID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -145,6 +152,7 @@ final class SmtpTokensRawService implements SmtpTokensRawContract
      * Allows the creation of a replacement password for a given token. Once the password is successfully reset, the old password for the token will be invalid.
      *
      * @param string $tokenID identifier generated when a token is created
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SmtpAPITokenView>
      *
@@ -152,7 +160,7 @@ final class SmtpTokensRawService implements SmtpTokensRawContract
      */
     public function resetPassword(
         string $tokenID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(

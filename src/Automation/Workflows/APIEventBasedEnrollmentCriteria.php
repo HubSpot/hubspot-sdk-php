@@ -20,6 +20,7 @@ use HubspotSDK\PublicRestrictedFilterBranch;
 use HubspotSDK\PublicUnifiedEventsFilterBranch;
 
 /**
+ * @phpstan-import-type RefinementCriteriaVariants from \HubspotSDK\Automation\Workflows\APIEventBasedEnrollmentCriteria\RefinementCriteria
  * @phpstan-import-type RefinementCriteriaShape from \HubspotSDK\Automation\Workflows\APIEventBasedEnrollmentCriteria\RefinementCriteria
  *
  * @phpstan-type APIEventBasedEnrollmentCriteriaShape = array{
@@ -50,6 +51,7 @@ final class APIEventBasedEnrollmentCriteria implements BaseModel
     #[Required(enum: Type::class)]
     public string $type;
 
+    /** @var RefinementCriteriaVariants|null $refinementCriteria */
     #[Optional]
     public PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch|null $refinementCriteria;
 

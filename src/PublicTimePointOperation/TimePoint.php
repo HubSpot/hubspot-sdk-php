@@ -16,7 +16,8 @@ use HubspotSDK\PublicPropertyReferencedTime;
  * @phpstan-import-type PublicIndexedTimePointShape from \HubspotSDK\PublicIndexedTimePoint
  * @phpstan-import-type PublicPropertyReferencedTimeShape from \HubspotSDK\PublicPropertyReferencedTime
  *
- * @phpstan-type TimePointShape = PublicDatePointShape|PublicIndexedTimePointShape|PublicPropertyReferencedTimeShape
+ * @phpstan-type TimePointVariants = PublicDatePoint|PublicIndexedTimePoint|PublicPropertyReferencedTime
+ * @phpstan-type TimePointShape = TimePointVariants|PublicDatePointShape|PublicIndexedTimePointShape|PublicPropertyReferencedTimeShape
  */
 final class TimePoint implements ConverterSource
 {

@@ -4,24 +4,29 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Services\Crm\Objects;
 
-use HubspotSDK\AssociationSpec;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\Crm\CreatedResponseSimplePublicObject;
+use HubspotSDK\Crm\FilterGroup;
 use HubspotSDK\Crm\Objects\PostalMail\PostalMailCreateParams;
 use HubspotSDK\Crm\Objects\PostalMail\PostalMailGetParams;
 use HubspotSDK\Crm\Objects\PostalMail\PostalMailListParams;
 use HubspotSDK\Crm\Objects\PostalMail\PostalMailSearchParams;
 use HubspotSDK\Crm\Objects\PostalMail\PostalMailUpdateParams;
+use HubspotSDK\Crm\PublicAssociationsForObject;
 use HubspotSDK\Crm\SimplePublicObject;
 use HubspotSDK\Crm\SimplePublicObjectWithAssociations;
 use HubspotSDK\Page;
-use HubspotSDK\PublicObjectID;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Objects\PostalMailRawContract;
 
+/**
+ * @phpstan-import-type PublicAssociationsForObjectShape from \HubspotSDK\Crm\PublicAssociationsForObject
+ * @phpstan-import-type FilterGroupShape from \HubspotSDK\Crm\FilterGroup
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class PostalMailRawService implements PostalMailRawContract
 {
     // @phpstan-ignore-next-line
@@ -36,12 +41,10 @@ final class PostalMailRawService implements PostalMailRawContract
      * Create a postal mail object with the given properties and return a copy of the object, including the ID.
      *
      * @param array{
-     *   associations: list<array{
-     *     to: array<string,mixed>|PublicObjectID,
-     *     types: list<array<string,mixed>|AssociationSpec>,
-     *   }>,
+     *   associations: list<PublicAssociationsForObject|PublicAssociationsForObjectShape>,
      *   properties: array<string,string>,
      * }|PostalMailCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CreatedResponseSimplePublicObject>
      *
@@ -49,7 +52,7 @@ final class PostalMailRawService implements PostalMailRawContract
      */
     public function create(
         array|PostalMailCreateParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = PostalMailCreateParams::parseRequest(
             $params,
@@ -69,10 +72,11 @@ final class PostalMailRawService implements PostalMailRawContract
     /**
      * @api
      *
-     * @param string $postalMailID Path param:
+     * @param string $postalMailID Path param
      * @param array{
      *   properties: array<string,string>, idProperty?: string
      * }|PostalMailUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SimplePublicObject>
      *
@@ -81,7 +85,7 @@ final class PostalMailRawService implements PostalMailRawContract
     public function update(
         string $postalMailID,
         array|PostalMailUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = PostalMailUpdateParams::parseRequest(
             $params,
@@ -111,6 +115,7 @@ final class PostalMailRawService implements PostalMailRawContract
      *   properties?: list<string>,
      *   propertiesWithHistory?: list<string>,
      * }|PostalMailListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<SimplePublicObjectWithAssociations>>
      *
@@ -118,7 +123,7 @@ final class PostalMailRawService implements PostalMailRawContract
      */
     public function list(
         array|PostalMailListParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = PostalMailListParams::parseRequest(
             $params,
@@ -141,13 +146,15 @@ final class PostalMailRawService implements PostalMailRawContract
      *
      * Move the postal mail object with the ID `{postalMailId}` to the recycling bin.
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @return BaseResponse<mixed>
      *
      * @throws APIException
      */
     public function delete(
         string $postalMailID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -168,6 +175,7 @@ final class PostalMailRawService implements PostalMailRawContract
      *   properties?: list<string>,
      *   propertiesWithHistory?: list<string>,
      * }|PostalMailGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SimplePublicObjectWithAssociations>
      *
@@ -176,7 +184,7 @@ final class PostalMailRawService implements PostalMailRawContract
     public function get(
         string $postalMailID,
         array|PostalMailGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = PostalMailGetParams::parseRequest(
             $params,
@@ -200,12 +208,13 @@ final class PostalMailRawService implements PostalMailRawContract
      *
      * @param array{
      *   after: string,
-     *   filterGroups: list<array{filters: list<array<string,mixed>>}>,
+     *   filterGroups: list<FilterGroup|FilterGroupShape>,
      *   limit: int,
      *   properties: list<string>,
      *   sorts: list<string>,
      *   query?: string,
      * }|PostalMailSearchParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CollectionResponseWithTotalSimplePublicObject>
      *
@@ -213,7 +222,7 @@ final class PostalMailRawService implements PostalMailRawContract
      */
     public function search(
         array|PostalMailSearchParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = PostalMailSearchParams::parseRequest(
             $params,

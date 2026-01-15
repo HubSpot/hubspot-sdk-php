@@ -4,24 +4,29 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Services\Crm\Objects;
 
-use HubspotSDK\AssociationSpec;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\Crm\CreatedResponseSimplePublicObject;
+use HubspotSDK\Crm\FilterGroup;
 use HubspotSDK\Crm\Objects\Meetings\MeetingCreateParams;
 use HubspotSDK\Crm\Objects\Meetings\MeetingGetParams;
 use HubspotSDK\Crm\Objects\Meetings\MeetingListParams;
 use HubspotSDK\Crm\Objects\Meetings\MeetingSearchParams;
 use HubspotSDK\Crm\Objects\Meetings\MeetingUpdateParams;
+use HubspotSDK\Crm\PublicAssociationsForObject;
 use HubspotSDK\Crm\SimplePublicObject;
 use HubspotSDK\Crm\SimplePublicObjectWithAssociations;
 use HubspotSDK\Page;
-use HubspotSDK\PublicObjectID;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Objects\MeetingsRawContract;
 
+/**
+ * @phpstan-import-type PublicAssociationsForObjectShape from \HubspotSDK\Crm\PublicAssociationsForObject
+ * @phpstan-import-type FilterGroupShape from \HubspotSDK\Crm\FilterGroup
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class MeetingsRawService implements MeetingsRawContract
 {
     // @phpstan-ignore-next-line
@@ -36,12 +41,10 @@ final class MeetingsRawService implements MeetingsRawContract
      * Create a meeting with the given properties and return a copy of the object, including the ID. Documentation and examples for creating standard meetings is provided.
      *
      * @param array{
-     *   associations: list<array{
-     *     to: array<string,mixed>|PublicObjectID,
-     *     types: list<array<string,mixed>|AssociationSpec>,
-     *   }>,
+     *   associations: list<PublicAssociationsForObject|PublicAssociationsForObjectShape>,
      *   properties: array<string,string>,
      * }|MeetingCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CreatedResponseSimplePublicObject>
      *
@@ -49,7 +52,7 @@ final class MeetingsRawService implements MeetingsRawContract
      */
     public function create(
         array|MeetingCreateParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = MeetingCreateParams::parseRequest(
             $params,
@@ -71,10 +74,11 @@ final class MeetingsRawService implements MeetingsRawContract
      *
      * Perform a partial update of an Object identified by `{meetingId}`or optionally a unique property value as specified by the `idProperty` query param. `{meetingId}` refers to the internal object ID by default, and the `idProperty` query param refers to a property whose values are unique for the object. Provided property values will be overwritten. Read-only and non-existent properties will result in an error. Properties values can be cleared by passing an empty string.
      *
-     * @param string $meetingID Path param:
+     * @param string $meetingID Path param
      * @param array{
      *   properties: array<string,string>, idProperty?: string
      * }|MeetingUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SimplePublicObject>
      *
@@ -83,7 +87,7 @@ final class MeetingsRawService implements MeetingsRawContract
     public function update(
         string $meetingID,
         array|MeetingUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = MeetingUpdateParams::parseRequest(
             $params,
@@ -115,6 +119,7 @@ final class MeetingsRawService implements MeetingsRawContract
      *   properties?: list<string>,
      *   propertiesWithHistory?: list<string>,
      * }|MeetingListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<SimplePublicObjectWithAssociations>>
      *
@@ -122,7 +127,7 @@ final class MeetingsRawService implements MeetingsRawContract
      */
     public function list(
         array|MeetingListParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = MeetingListParams::parseRequest(
             $params,
@@ -145,13 +150,15 @@ final class MeetingsRawService implements MeetingsRawContract
      *
      * Move an Object identified by `{meetingId}` to the recycling bin.
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @return BaseResponse<mixed>
      *
      * @throws APIException
      */
     public function delete(
         string $meetingID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -174,6 +181,7 @@ final class MeetingsRawService implements MeetingsRawContract
      *   properties?: list<string>,
      *   propertiesWithHistory?: list<string>,
      * }|MeetingGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SimplePublicObjectWithAssociations>
      *
@@ -182,7 +190,7 @@ final class MeetingsRawService implements MeetingsRawContract
     public function get(
         string $meetingID,
         array|MeetingGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = MeetingGetParams::parseRequest(
             $params,
@@ -204,12 +212,13 @@ final class MeetingsRawService implements MeetingsRawContract
      *
      * @param array{
      *   after: string,
-     *   filterGroups: list<array{filters: list<array<string,mixed>>}>,
+     *   filterGroups: list<FilterGroup|FilterGroupShape>,
      *   limit: int,
      *   properties: list<string>,
      *   sorts: list<string>,
      *   query?: string,
      * }|MeetingSearchParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CollectionResponseWithTotalSimplePublicObject>
      *
@@ -217,7 +226,7 @@ final class MeetingsRawService implements MeetingsRawContract
      */
     public function search(
         array|MeetingSearchParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = MeetingSearchParams::parseRequest(
             $params,

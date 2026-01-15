@@ -4,22 +4,25 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Services\Crm\Objects;
 
-use HubspotSDK\AssociationSpec;
-use HubspotSDK\AssociationSpec\AssociationCategory;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Core\Util;
 use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\Crm\CreatedResponseSimplePublicObject;
-use HubspotSDK\Crm\Filter\Operator;
+use HubspotSDK\Crm\FilterGroup;
+use HubspotSDK\Crm\PublicAssociationsForObject;
 use HubspotSDK\Crm\SimplePublicObject;
 use HubspotSDK\Crm\SimplePublicObjectWithAssociations;
 use HubspotSDK\Page;
-use HubspotSDK\PublicObjectID;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Objects\LineItemsContract;
 use HubspotSDK\Services\Crm\Objects\LineItems\BatchService;
 
+/**
+ * @phpstan-import-type PublicAssociationsForObjectShape from \HubspotSDK\Crm\PublicAssociationsForObject
+ * @phpstan-import-type FilterGroupShape from \HubspotSDK\Crm\FilterGroup
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class LineItemsService implements LineItemsContract
 {
     /**
@@ -46,21 +49,16 @@ final class LineItemsService implements LineItemsContract
      *
      * Create a line item with the given properties and return a copy of the object, including the ID. Documentation and examples for creating standard line items is provided.
      *
-     * @param list<array{
-     *   to: array{id: string}|PublicObjectID,
-     *   types: list<array{
-     *     associationCategory: 'HUBSPOT_DEFINED'|'INTEGRATOR_DEFINED'|'USER_DEFINED'|AssociationCategory,
-     *     associationTypeID: int,
-     *   }|AssociationSpec>,
-     * }> $associations
+     * @param list<PublicAssociationsForObject|PublicAssociationsForObjectShape> $associations
      * @param array<string,string> $properties key-value pairs for setting properties for the new object
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function create(
         array $associations,
         array $properties,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): CreatedResponseSimplePublicObject {
         $params = Util::removeNulls(
             ['associations' => $associations, 'properties' => $properties]
@@ -77,9 +75,10 @@ final class LineItemsService implements LineItemsContract
      *
      * Perform a partial update of an Object identified by `{lineItemId}`or optionally a unique property value as specified by the `idProperty` query param. `{lineItemId}` refers to the internal object ID by default, and the `idProperty` query param refers to a property whose values are unique for the object. Provided property values will be overwritten. Read-only and non-existent properties will result in an error. Properties values can be cleared by passing an empty string.
      *
-     * @param string $lineItemID Path param:
+     * @param string $lineItemID Path param
      * @param array<string,string> $properties body param: Key value pairs representing the properties of the object
      * @param string $idProperty Query param: The name of a property whose values are unique for this object
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -87,7 +86,7 @@ final class LineItemsService implements LineItemsContract
         string $lineItemID,
         array $properties,
         ?string $idProperty = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): SimplePublicObject {
         $params = Util::removeNulls(
             ['properties' => $properties, 'idProperty' => $idProperty]
@@ -110,6 +109,7 @@ final class LineItemsService implements LineItemsContract
      * @param int $limit the maximum number of results to display per page
      * @param list<string> $properties A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored.
      * @param list<string> $propertiesWithHistory A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored. Usage of this parameter will reduce the maximum number of line items that can be read by a single request.
+     * @param RequestOpts|null $requestOptions
      *
      * @return Page<SimplePublicObjectWithAssociations>
      *
@@ -122,7 +122,7 @@ final class LineItemsService implements LineItemsContract
         int $limit = 10,
         ?array $properties = null,
         ?array $propertiesWithHistory = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): Page {
         $params = Util::removeNulls(
             [
@@ -146,11 +146,13 @@ final class LineItemsService implements LineItemsContract
      *
      * Move an Object identified by `{lineItemId}` to the recycling bin.
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @throws APIException
      */
     public function delete(
         string $lineItemID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): mixed {
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->delete($lineItemID, requestOptions: $requestOptions);
@@ -168,6 +170,7 @@ final class LineItemsService implements LineItemsContract
      * @param string $idProperty The name of a property whose values are unique for this object
      * @param list<string> $properties A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored.
      * @param list<string> $propertiesWithHistory A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored.
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -178,7 +181,7 @@ final class LineItemsService implements LineItemsContract
         ?string $idProperty = null,
         ?array $properties = null,
         ?array $propertiesWithHistory = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): SimplePublicObjectWithAssociations {
         $params = Util::removeNulls(
             [
@@ -200,19 +203,12 @@ final class LineItemsService implements LineItemsContract
      * @api
      *
      * @param string $after a paging cursor token for retrieving subsequent pages
-     * @param list<array{
-     *   filters: list<array{
-     *     operator: 'BETWEEN'|'CONTAINS_TOKEN'|'EQ'|'GT'|'GTE'|'HAS_PROPERTY'|'IN'|'LT'|'LTE'|'NEQ'|'NOT_CONTAINS_TOKEN'|'NOT_HAS_PROPERTY'|'NOT_IN'|Operator,
-     *     propertyName: string,
-     *     highValue?: string,
-     *     value?: string,
-     *     values?: list<string>,
-     *   }>,
-     * }> $filterGroups Up to 6 groups of filters defining additional query criteria
+     * @param list<FilterGroup|FilterGroupShape> $filterGroups up to 6 groups of filters defining additional query criteria
      * @param int $limit the maximum results to return, up to 200 objects
      * @param list<string> $properties a list of property names to include in the response
      * @param list<string> $sorts specifies sorting order based on object properties
      * @param string $query the search query string, up to 3000 characters
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -223,7 +219,7 @@ final class LineItemsService implements LineItemsContract
         array $properties,
         array $sorts,
         ?string $query = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): CollectionResponseWithTotalSimplePublicObject {
         $params = Util::removeNulls(
             [

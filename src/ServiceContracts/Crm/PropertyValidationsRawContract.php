@@ -13,12 +13,16 @@ use HubspotSDK\Crm\PropertyValidations\PropertyValidationCrmV3PropertyValidation
 use HubspotSDK\Crm\PropertyValidations\PropertyValidationGetParams;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface PropertyValidationsRawContract
 {
     /**
      * @api
      *
      * @param string $objectTypeID the ID of the object type for which all property validation rules are being retrieved
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CollectionResponsePublicPropertyValidationRuleMapNoPaging>
      *
@@ -26,14 +30,15 @@ interface PropertyValidationsRawContract
      */
     public function list(
         string $objectTypeID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 
     /**
      * @api
      *
-     * @param RuleType|value-of<RuleType> $ruleType path param: The type of validation rule being updated, such as FORMAT, ALPHANUMERIC, or MAX_LENGTH
+     * @param RuleType|string $ruleType path param: The type of validation rule being updated, such as FORMAT, ALPHANUMERIC, or MAX_LENGTH
      * @param array<string,mixed>|PropertyValidationCrmV3PropertyValidationsObjectTypeIDPropertyNameRuleTypeRuleTypeParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -42,7 +47,7 @@ interface PropertyValidationsRawContract
     public function _crmV3PropertyValidationsObjectTypeIDPropertyNameRuleTypeRuleType(
         RuleType|string $ruleType,
         array|PropertyValidationCrmV3PropertyValidationsObjectTypeIDPropertyNameRuleTypeRuleTypeParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -50,6 +55,7 @@ interface PropertyValidationsRawContract
      *
      * @param string $propertyName the name of the property whose validation rules are being retrieved
      * @param array<string,mixed>|PropertyValidationGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CollectionResponsePublicPropertyValidationRuleNoPaging>
      *
@@ -58,6 +64,6 @@ interface PropertyValidationsRawContract
     public function get(
         string $propertyName,
         array|PropertyValidationGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

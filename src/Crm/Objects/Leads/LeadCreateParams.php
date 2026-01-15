@@ -18,7 +18,7 @@ use HubspotSDK\Crm\PublicAssociationsForObject;
  * @phpstan-import-type PublicAssociationsForObjectShape from \HubspotSDK\Crm\PublicAssociationsForObject
  *
  * @phpstan-type LeadCreateParamsShape = array{
- *   associations: list<PublicAssociationsForObjectShape>,
+ *   associations: list<PublicAssociationsForObject|PublicAssociationsForObjectShape>,
  *   properties: array<string,string>,
  * }
  */
@@ -64,7 +64,7 @@ final class LeadCreateParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicAssociationsForObjectShape> $associations
+     * @param list<PublicAssociationsForObject|PublicAssociationsForObjectShape> $associations
      * @param array<string,string> $properties
      */
     public static function with(array $associations, array $properties): self
@@ -78,7 +78,7 @@ final class LeadCreateParams implements BaseModel
     }
 
     /**
-     * @param list<PublicAssociationsForObjectShape> $associations
+     * @param list<PublicAssociationsForObject|PublicAssociationsForObjectShape> $associations
      */
     public function withAssociations(array $associations): self
     {

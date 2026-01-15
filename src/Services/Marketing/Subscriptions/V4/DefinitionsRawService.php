@@ -13,6 +13,9 @@ use HubspotSDK\Marketing\Subscriptions\V4\Definitions\DefinitionListParams;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Marketing\Subscriptions\V4\DefinitionsRawContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class DefinitionsRawService implements DefinitionsRawContract
 {
     // @phpstan-ignore-next-line
@@ -29,6 +32,7 @@ final class DefinitionsRawService implements DefinitionsRawContract
      * @param array{
      *   businessUnitID?: int, includeTranslations?: bool
      * }|DefinitionListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ActionResponseWithResultsSubscriptionDefinition>
      *
@@ -36,7 +40,7 @@ final class DefinitionsRawService implements DefinitionsRawContract
      */
     public function list(
         array|DefinitionListParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = DefinitionListParams::parseRequest(
             $params,

@@ -18,6 +18,9 @@ use HubspotSDK\Core\Util;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Conversations\ActorsContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class ActorsService implements ActorsContract
 {
     /**
@@ -37,14 +40,15 @@ final class ActorsService implements ActorsContract
      * @api
      *
      * @param list<string> $inputs body param: Strings to input
-     * @param string $property Query param:
+     * @param string $property Query param
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function batchRead(
         array $inputs,
         ?string $property = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BatchResponsePublicActor {
         $params = Util::removeNulls(['inputs' => $inputs, 'property' => $property]);
 
@@ -57,12 +61,14 @@ final class ActorsService implements ActorsContract
     /**
      * @api
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @throws APIException
      */
     public function get(
         string $actorID,
         ?string $property = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): AgentActor|BotActor|IntegratorActor|SystemActor|VisitorActor|EmailActor|LlmActor {
         $params = Util::removeNulls(['property' => $property]);
 

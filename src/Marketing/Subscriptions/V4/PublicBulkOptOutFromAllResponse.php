@@ -13,7 +13,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-import-type PublicStatusShape from \HubspotSDK\Marketing\Subscriptions\V4\PublicStatus
  *
  * @phpstan-type PublicBulkOptOutFromAllResponseShape = array{
- *   subscriberIDString: string, statuses?: list<PublicStatusShape>|null
+ *   subscriberIDString: string,
+ *   statuses?: list<PublicStatus|PublicStatusShape>|null,
  * }
  */
 final class PublicBulkOptOutFromAllResponse implements BaseModel
@@ -59,7 +60,7 @@ final class PublicBulkOptOutFromAllResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicStatusShape>|null $statuses
+     * @param list<PublicStatus|PublicStatusShape>|null $statuses
      */
     public static function with(
         string $subscriberIDString,
@@ -88,7 +89,7 @@ final class PublicBulkOptOutFromAllResponse implements BaseModel
     /**
      * An array of subscription status objects for the contact.
      *
-     * @param list<PublicStatusShape> $statuses
+     * @param list<PublicStatus|PublicStatusShape> $statuses
      */
     public function withStatuses(array $statuses): self
     {

@@ -18,7 +18,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   allowChildTables: bool,
  *   allowPublicAPIAccess: bool,
  *   columnCount: int,
- *   columns: list<ColumnShape>,
+ *   columns: list<Column|ColumnShape>,
  *   createdAt: \DateTimeInterface,
  *   deleted: bool,
  *   deletedAt: \DateTimeInterface,
@@ -206,7 +206,7 @@ final class HubDBTableV3 implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<ColumnShape> $columns
+     * @param list<Column|ColumnShape> $columns
      * @param array<string,int> $dynamicMetaTags
      * @param SimpleUser|SimpleUserShape|null $createdBy
      * @param SimpleUser|SimpleUserShape|null $updatedBy
@@ -307,7 +307,7 @@ final class HubDBTableV3 implements BaseModel
     /**
      * List of columns in the table.
      *
-     * @param list<ColumnShape> $columns
+     * @param list<Column|ColumnShape> $columns
      */
     public function withColumns(array $columns): self
     {

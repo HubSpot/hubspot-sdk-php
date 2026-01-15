@@ -12,12 +12,16 @@ use HubspotSDK\Marketing\Transactional\SmtpTokens\SmtpTokenListParams;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface SmtpTokensRawContract
 {
     /**
      * @api
      *
      * @param array<string,mixed>|SmtpTokenCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SmtpAPITokenView>
      *
@@ -25,13 +29,14 @@ interface SmtpTokensRawContract
      */
     public function create(
         array|SmtpTokenCreateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|SmtpTokenListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<SmtpAPITokenView>>
      *
@@ -39,13 +44,14 @@ interface SmtpTokensRawContract
      */
     public function list(
         array|SmtpTokenListParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param string $tokenID identifier generated when a token is created
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -53,13 +59,14 @@ interface SmtpTokensRawContract
      */
     public function delete(
         string $tokenID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param string $tokenID identifier generated when a token is created
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SmtpAPITokenView>
      *
@@ -67,13 +74,14 @@ interface SmtpTokensRawContract
      */
     public function get(
         string $tokenID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param string $tokenID identifier generated when a token is created
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SmtpAPITokenView>
      *
@@ -81,6 +89,6 @@ interface SmtpTokensRawContract
      */
     public function resetPassword(
         string $tokenID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 }

@@ -19,6 +19,9 @@ use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface FunctionsRawContract
 {
     /**
@@ -26,6 +29,7 @@ interface FunctionsRawContract
      *
      * @param string $definitionID the ID of the definition
      * @param array<string,mixed>|FunctionListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CollectionResponsePublicActionFunctionIdentifierNoPaging>
      *
@@ -34,13 +38,14 @@ interface FunctionsRawContract
     public function list(
         string $definitionID,
         array|FunctionListParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|FunctionDeleteParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -49,7 +54,7 @@ interface FunctionsRawContract
     public function delete(
         string $functionID,
         array|FunctionDeleteParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -57,6 +62,7 @@ interface FunctionsRawContract
      *
      * @param string $functionID path param: The ID of the function
      * @param array<string,mixed>|FunctionCreateOrReplaceParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicActionFunctionIdentifier>
      *
@@ -65,14 +71,15 @@ interface FunctionsRawContract
     public function createOrReplace(
         string $functionID,
         array|FunctionCreateOrReplaceParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
-     * @param FunctionType|value-of<FunctionType> $functionType Path param: The type of function. Can be `PRE_ACTION_EXECUTION`, `PRE_FETCH_OPTIONS`, `POST_FETCH_OPTIONS`, `POST_ACTION_EXECUTION`.
+     * @param FunctionType|string $functionType Path param: The type of function. Can be `PRE_ACTION_EXECUTION`, `PRE_FETCH_OPTIONS`, `POST_FETCH_OPTIONS`, `POST_ACTION_EXECUTION`.
      * @param array<string,mixed>|FunctionCreateOrReplaceByFunctionTypeParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicActionFunctionIdentifier>
      *
@@ -81,14 +88,15 @@ interface FunctionsRawContract
     public function createOrReplaceByFunctionType(
         FunctionType|string $functionType,
         array|FunctionCreateOrReplaceByFunctionTypeParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
-     * @param FunctionDeleteByFunctionTypeParams\FunctionType|value-of<FunctionDeleteByFunctionTypeParams\FunctionType> $functionType The type of function. Can be `PRE_ACTION_EXECUTION`, `PRE_FETCH_OPTIONS`, `POST_FETCH_OPTIONS`, `POST_ACTION_EXECUTION`.
+     * @param FunctionDeleteByFunctionTypeParams\FunctionType|string $functionType The type of function. Can be `PRE_ACTION_EXECUTION`, `PRE_FETCH_OPTIONS`, `POST_FETCH_OPTIONS`, `POST_ACTION_EXECUTION`.
      * @param array<string,mixed>|FunctionDeleteByFunctionTypeParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -97,7 +105,7 @@ interface FunctionsRawContract
     public function deleteByFunctionType(
         FunctionDeleteByFunctionTypeParams\FunctionType|string $functionType,
         array|FunctionDeleteByFunctionTypeParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -105,6 +113,7 @@ interface FunctionsRawContract
      *
      * @param string $functionID the ID of the function
      * @param array<string,mixed>|FunctionGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicActionFunction>
      *
@@ -113,14 +122,15 @@ interface FunctionsRawContract
     public function get(
         string $functionID,
         array|FunctionGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
-     * @param FunctionGetByFunctionTypeParams\FunctionType|value-of<FunctionGetByFunctionTypeParams\FunctionType> $functionType The type of function. Can be `PRE_ACTION_EXECUTION`, `PRE_FETCH_OPTIONS`, `POST_FETCH_OPTIONS`, `POST_ACTION_EXECUTION`.
+     * @param FunctionGetByFunctionTypeParams\FunctionType|string $functionType The type of function. Can be `PRE_ACTION_EXECUTION`, `PRE_FETCH_OPTIONS`, `POST_FETCH_OPTIONS`, `POST_ACTION_EXECUTION`.
      * @param array<string,mixed>|FunctionGetByFunctionTypeParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicActionFunction>
      *
@@ -129,6 +139,6 @@ interface FunctionsRawContract
     public function getByFunctionType(
         FunctionGetByFunctionTypeParams\FunctionType|string $functionType,
         array|FunctionGetByFunctionTypeParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

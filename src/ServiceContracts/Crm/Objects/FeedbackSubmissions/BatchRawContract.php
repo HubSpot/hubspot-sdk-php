@@ -10,12 +10,16 @@ use HubspotSDK\Crm\BatchResponseSimplePublicObject;
 use HubspotSDK\Crm\Objects\FeedbackSubmissions\Batch\BatchGetParams;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface BatchRawContract
 {
     /**
      * @api
      *
      * @param array<string,mixed>|BatchGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BatchResponseSimplePublicObject>
      *
@@ -23,6 +27,6 @@ interface BatchRawContract
      */
     public function get(
         array|BatchGetParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

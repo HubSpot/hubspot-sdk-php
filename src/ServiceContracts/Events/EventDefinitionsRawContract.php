@@ -17,12 +17,16 @@ use HubspotSDK\Page;
 use HubspotSDK\Property;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface EventDefinitionsRawContract
 {
     /**
      * @api
      *
      * @param array<string,mixed>|EventDefinitionCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ExternalBehavioralEventTypeDefinition>
      *
@@ -30,7 +34,7 @@ interface EventDefinitionsRawContract
      */
     public function create(
         array|EventDefinitionCreateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -38,6 +42,7 @@ interface EventDefinitionsRawContract
      *
      * @param string $eventName the internal name of the custom event
      * @param array<string,mixed>|EventDefinitionUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ExternalBehavioralEventTypeDefinition>
      *
@@ -46,13 +51,14 @@ interface EventDefinitionsRawContract
     public function update(
         string $eventName,
         array|EventDefinitionUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|EventDefinitionListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<ExternalBehavioralEventTypeDefinition>>
      *
@@ -60,13 +66,14 @@ interface EventDefinitionsRawContract
      */
     public function list(
         array|EventDefinitionListParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param string $eventName the name of the event definition
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -74,7 +81,7 @@ interface EventDefinitionsRawContract
      */
     public function delete(
         string $eventName,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 
     /**
@@ -82,6 +89,7 @@ interface EventDefinitionsRawContract
      *
      * @param string $eventName the internal name of the custom event
      * @param array<string,mixed>|EventDefinitionCreatePropertyParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Property>
      *
@@ -90,7 +98,7 @@ interface EventDefinitionsRawContract
     public function createProperty(
         string $eventName,
         array|EventDefinitionCreatePropertyParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -98,6 +106,7 @@ interface EventDefinitionsRawContract
      *
      * @param string $propertyName the internal name of the property to delete
      * @param array<string,mixed>|EventDefinitionDeletePropertyParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -106,13 +115,14 @@ interface EventDefinitionsRawContract
     public function deleteProperty(
         string $propertyName,
         array|EventDefinitionDeletePropertyParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param string $eventName the internal name of the custom event
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ExternalBehavioralEventTypeDefinition>
      *
@@ -120,7 +130,7 @@ interface EventDefinitionsRawContract
      */
     public function get(
         string $eventName,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 
     /**
@@ -128,6 +138,7 @@ interface EventDefinitionsRawContract
      *
      * @param string $propertyName path param: The internal name of the property to update
      * @param array<string,mixed>|EventDefinitionUpdatePropertyParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Property>
      *
@@ -136,6 +147,6 @@ interface EventDefinitionsRawContract
     public function updateProperty(
         string $propertyName,
         array|EventDefinitionUpdatePropertyParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

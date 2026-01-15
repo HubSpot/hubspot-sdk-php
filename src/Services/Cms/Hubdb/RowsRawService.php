@@ -15,12 +15,17 @@ use HubspotSDK\Cms\Hubdb\Rows\RowListDraftParams;
 use HubspotSDK\Cms\Hubdb\Rows\RowListParams;
 use HubspotSDK\Cms\Hubdb\Rows\RowReplaceDraftParams;
 use HubspotSDK\Cms\Hubdb\Rows\RowUpdateDraftParams;
+use HubspotSDK\Cms\Hubdb\Variant;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Cms\Hubdb\RowsRawContract;
 
+/**
+ * @phpstan-import-type VariantShape from \HubspotSDK\Cms\Hubdb\Variant
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class RowsRawService implements RowsRawContract
 {
     // @phpstan-ignore-next-line
@@ -38,10 +43,11 @@ final class RowsRawService implements RowsRawContract
      * @param array{
      *   childTableID: int,
      *   displayIndex: int,
-     *   values: array<string,array<string,mixed>>,
+     *   values: array<string,Variant|VariantShape>,
      *   name?: string,
      *   path?: string,
      * }|RowCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<HubDBTableRowV3>
      *
@@ -50,7 +56,7 @@ final class RowsRawService implements RowsRawContract
     public function create(
         string $tableIDOrName,
         array|RowCreateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = RowCreateParams::parseRequest(
             $params,
@@ -82,6 +88,7 @@ final class RowsRawService implements RowsRawContract
      *   properties?: list<string>,
      *   sort?: list<string>,
      * }|RowListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<mixed>>
      *
@@ -90,7 +97,7 @@ final class RowsRawService implements RowsRawContract
     public function list(
         string $tableIDOrName,
         array|RowListParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = RowListParams::parseRequest(
             $params,
@@ -115,6 +122,7 @@ final class RowsRawService implements RowsRawContract
      *
      * @param string $rowID Path param: The ID of the row
      * @param array{tableIDOrName: string, name?: string}|RowCloneDraftParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<HubDBTableRowV3>
      *
@@ -123,7 +131,7 @@ final class RowsRawService implements RowsRawContract
     public function cloneDraft(
         string $rowID,
         array|RowCloneDraftParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = RowCloneDraftParams::parseRequest(
             $params,
@@ -151,6 +159,7 @@ final class RowsRawService implements RowsRawContract
      *
      * @param string $rowID The ID of the row
      * @param array{tableIDOrName: string}|RowDeleteDraftParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -159,7 +168,7 @@ final class RowsRawService implements RowsRawContract
     public function deleteDraft(
         string $rowID,
         array|RowDeleteDraftParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = RowDeleteDraftParams::parseRequest(
             $params,
@@ -187,6 +196,7 @@ final class RowsRawService implements RowsRawContract
      *
      * @param string $rowID Path param: The ID of the row
      * @param array{tableIDOrName: string, archived?: bool}|RowGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<HubDBTableRowV3>
      *
@@ -195,7 +205,7 @@ final class RowsRawService implements RowsRawContract
     public function get(
         string $rowID,
         array|RowGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = RowGetParams::parseRequest(
             $params,
@@ -221,6 +231,7 @@ final class RowsRawService implements RowsRawContract
      *
      * @param string $rowID Path param: The ID of the row
      * @param array{tableIDOrName: string, archived?: bool}|RowGetDraftParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<HubDBTableRowV3>
      *
@@ -229,7 +240,7 @@ final class RowsRawService implements RowsRawContract
     public function getDraft(
         string $rowID,
         array|RowGetDraftParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = RowGetDraftParams::parseRequest(
             $params,
@@ -264,6 +275,7 @@ final class RowsRawService implements RowsRawContract
      *   properties?: list<string>,
      *   sort?: list<string>,
      * }|RowListDraftParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<mixed>>
      *
@@ -272,7 +284,7 @@ final class RowsRawService implements RowsRawContract
     public function listDraft(
         string $tableIDOrName,
         array|RowListDraftParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = RowListDraftParams::parseRequest(
             $params,
@@ -301,10 +313,11 @@ final class RowsRawService implements RowsRawContract
      *   tableIDOrName: string,
      *   childTableID: int,
      *   displayIndex: int,
-     *   values: array<string,array<string,mixed>>,
+     *   values: array<string,Variant|VariantShape>,
      *   name?: string,
      *   path?: string,
      * }|RowReplaceDraftParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<HubDBTableRowV3>
      *
@@ -313,7 +326,7 @@ final class RowsRawService implements RowsRawContract
     public function replaceDraft(
         string $rowID,
         array|RowReplaceDraftParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = RowReplaceDraftParams::parseRequest(
             $params,
@@ -346,10 +359,11 @@ final class RowsRawService implements RowsRawContract
      *   tableIDOrName: string,
      *   childTableID: int,
      *   displayIndex: int,
-     *   values: array<string,array<string,mixed>>,
+     *   values: array<string,Variant|VariantShape>,
      *   name?: string,
      *   path?: string,
      * }|RowUpdateDraftParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<HubDBTableRowV3>
      *
@@ -358,7 +372,7 @@ final class RowsRawService implements RowsRawContract
     public function updateDraft(
         string $rowID,
         array|RowUpdateDraftParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = RowUpdateDraftParams::parseRequest(
             $params,

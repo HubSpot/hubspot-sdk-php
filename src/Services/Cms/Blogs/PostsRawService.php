@@ -28,15 +28,17 @@ use HubspotSDK\Cms\Blogs\Posts\PostUpdateDraftParams;
 use HubspotSDK\Cms\Blogs\Posts\PostUpdateLangsParams;
 use HubspotSDK\Cms\Blogs\Posts\PostUpdateParams;
 use HubspotSDK\Cms\Blogs\Posts\VersionBlogPost;
-use HubspotSDK\Cms\LayoutSection;
 use HubspotSDK\Cms\Pages\PagesContentLanguageVariation;
-use HubspotSDK\Cms\Styles;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Cms\Blogs\PostsRawContract;
 
+/**
+ * @phpstan-import-type PagesContentLanguageVariationShape from \HubspotSDK\Cms\Pages\PagesContentLanguageVariation
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class PostsRawService implements PostsRawContract
 {
     // @phpstan-ignore-next-line
@@ -62,8 +64,8 @@ final class PostsRawService implements PostsRawContract
      *   campaign: string,
      *   categoryID: int,
      *   contentGroupID: string,
-     *   contentTypeCategory: '0'|'1'|'10'|'11'|'12'|'13'|'14'|'15'|'2'|'3'|'4'|'5'|'6'|'7'|'8'|'9'|ContentTypeCategory,
-     *   created: string|\DateTimeInterface,
+     *   contentTypeCategory: ContentTypeCategory|value-of<ContentTypeCategory>,
+     *   created: \DateTimeInterface,
      *   createdByID: string,
      *   currentlyPublished: bool,
      *   currentState: value-of<CurrentState>,
@@ -82,21 +84,7 @@ final class PostsRawService implements PostsRawContract
      *   htmlTitle: string,
      *   includeDefaultCustomCss: bool,
      *   language: value-of<Language>,
-     *   layoutSections: array<string,array{
-     *     cells: list<LayoutSection>,
-     *     cssClass: string,
-     *     cssID: string,
-     *     cssStyle: string,
-     *     label: string,
-     *     name: string,
-     *     params: array<string,mixed>,
-     *     rowMetaData: list<mixed>,
-     *     rows: list<array<string,LayoutSection>>,
-     *     styles: array<string,mixed>|Styles,
-     *     type: string,
-     *     w: int,
-     *     x: int,
-     *   }|LayoutSection>,
+     *   layoutSections: array<string,mixed>,
      *   linkRelCanonicalURL: string,
      *   mabExperimentID: string,
      *   metaDescription: string,
@@ -110,7 +98,7 @@ final class PostsRawService implements PostsRawContract
      *   postSummary: string,
      *   publicAccessRules: list<mixed>,
      *   publicAccessRulesEnabled: bool,
-     *   publishDate: string|\DateTimeInterface,
+     *   publishDate: \DateTimeInterface,
      *   publishImmediately: bool,
      *   rssBody: string,
      *   rssSummary: string,
@@ -119,29 +107,15 @@ final class PostsRawService implements PostsRawContract
      *   tagIDs: list<int>,
      *   themeSettingsValues: array<string,mixed>,
      *   translatedFromID: string,
-     *   translations: array<string,array{
-     *     id: int,
-     *     archivedInDashboard: bool,
-     *     authorName: string,
-     *     campaign: string,
-     *     created: string|\DateTimeInterface,
-     *     name: string,
-     *     password: string,
-     *     publicAccessRules: list<mixed>,
-     *     publicAccessRulesEnabled: bool,
-     *     publishDate: string|\DateTimeInterface,
-     *     slug: string,
-     *     state: string,
-     *     updated: string|\DateTimeInterface,
-     *     tagIDs?: list<int>,
-     *   }|PagesContentLanguageVariation>,
-     *   updated: string|\DateTimeInterface,
+     *   translations: array<string,PagesContentLanguageVariation|PagesContentLanguageVariationShape>,
+     *   updated: \DateTimeInterface,
      *   updatedByID: string,
      *   url: string,
      *   useFeaturedImage: bool,
      *   widgetContainers: array<string,mixed>,
      *   widgets: array<string,mixed>,
      * }|PostCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BlogPost>
      *
@@ -149,7 +123,7 @@ final class PostsRawService implements PostsRawContract
      */
     public function create(
         array|PostCreateParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = PostCreateParams::parseRequest(
             $params,
@@ -184,8 +158,8 @@ final class PostsRawService implements PostsRawContract
      *   campaign: string,
      *   categoryID: int,
      *   contentGroupID: string,
-     *   contentTypeCategory: '0'|'1'|'10'|'11'|'12'|'13'|'14'|'15'|'2'|'3'|'4'|'5'|'6'|'7'|'8'|'9'|PostUpdateParams\ContentTypeCategory,
-     *   created: string|\DateTimeInterface,
+     *   contentTypeCategory: PostUpdateParams\ContentTypeCategory|value-of<PostUpdateParams\ContentTypeCategory>,
+     *   created: \DateTimeInterface,
      *   createdByID: string,
      *   currentlyPublished: bool,
      *   currentState: value-of<PostUpdateParams\CurrentState>,
@@ -204,21 +178,7 @@ final class PostsRawService implements PostsRawContract
      *   htmlTitle: string,
      *   includeDefaultCustomCss: bool,
      *   language: value-of<PostUpdateParams\Language>,
-     *   layoutSections: array<string,array{
-     *     cells: list<LayoutSection>,
-     *     cssClass: string,
-     *     cssID: string,
-     *     cssStyle: string,
-     *     label: string,
-     *     name: string,
-     *     params: array<string,mixed>,
-     *     rowMetaData: list<mixed>,
-     *     rows: list<array<string,LayoutSection>>,
-     *     styles: array<string,mixed>|Styles,
-     *     type: string,
-     *     w: int,
-     *     x: int,
-     *   }|LayoutSection>,
+     *   layoutSections: array<string,mixed>,
      *   linkRelCanonicalURL: string,
      *   mabExperimentID: string,
      *   metaDescription: string,
@@ -232,7 +192,7 @@ final class PostsRawService implements PostsRawContract
      *   postSummary: string,
      *   publicAccessRules: list<mixed>,
      *   publicAccessRulesEnabled: bool,
-     *   publishDate: string|\DateTimeInterface,
+     *   publishDate: \DateTimeInterface,
      *   publishImmediately: bool,
      *   rssBody: string,
      *   rssSummary: string,
@@ -241,23 +201,8 @@ final class PostsRawService implements PostsRawContract
      *   tagIDs: list<int>,
      *   themeSettingsValues: array<string,mixed>,
      *   translatedFromID: string,
-     *   translations: array<string,array{
-     *     id: int,
-     *     archivedInDashboard: bool,
-     *     authorName: string,
-     *     campaign: string,
-     *     created: string|\DateTimeInterface,
-     *     name: string,
-     *     password: string,
-     *     publicAccessRules: list<mixed>,
-     *     publicAccessRulesEnabled: bool,
-     *     publishDate: string|\DateTimeInterface,
-     *     slug: string,
-     *     state: string,
-     *     updated: string|\DateTimeInterface,
-     *     tagIDs?: list<int>,
-     *   }|PagesContentLanguageVariation>,
-     *   updated: string|\DateTimeInterface,
+     *   translations: array<string,PagesContentLanguageVariation|PagesContentLanguageVariationShape>,
+     *   updated: \DateTimeInterface,
      *   updatedByID: string,
      *   url: string,
      *   useFeaturedImage: bool,
@@ -265,6 +210,7 @@ final class PostsRawService implements PostsRawContract
      *   widgets: array<string,mixed>,
      *   archived?: bool,
      * }|PostUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BlogPost>
      *
@@ -273,7 +219,7 @@ final class PostsRawService implements PostsRawContract
     public function update(
         string $objectID,
         array|PostUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = PostUpdateParams::parseRequest(
             $params,
@@ -300,16 +246,17 @@ final class PostsRawService implements PostsRawContract
      * @param array{
      *   after?: string,
      *   archived?: bool,
-     *   createdAfter?: string|\DateTimeInterface,
-     *   createdAt?: string|\DateTimeInterface,
-     *   createdBefore?: string|\DateTimeInterface,
+     *   createdAfter?: \DateTimeInterface,
+     *   createdAt?: \DateTimeInterface,
+     *   createdBefore?: \DateTimeInterface,
      *   limit?: int,
      *   property?: string,
      *   sort?: list<string>,
-     *   updatedAfter?: string|\DateTimeInterface,
-     *   updatedAt?: string|\DateTimeInterface,
-     *   updatedBefore?: string|\DateTimeInterface,
+     *   updatedAfter?: \DateTimeInterface,
+     *   updatedAt?: \DateTimeInterface,
+     *   updatedBefore?: \DateTimeInterface,
      * }|PostListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<BlogPost>>
      *
@@ -317,7 +264,7 @@ final class PostsRawService implements PostsRawContract
      */
     public function list(
         array|PostListParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = PostListParams::parseRequest(
             $params,
@@ -342,6 +289,7 @@ final class PostsRawService implements PostsRawContract
      *
      * @param string $objectID the ID of the blog post to delete
      * @param array{archived?: bool}|PostDeleteParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -350,7 +298,7 @@ final class PostsRawService implements PostsRawContract
     public function delete(
         string $objectID,
         array|PostDeleteParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = PostDeleteParams::parseRequest(
             $params,
@@ -375,6 +323,7 @@ final class PostsRawService implements PostsRawContract
      * @param array{
      *   id: string, language: string, primaryID: string, primaryLanguage?: string
      * }|PostAttachToLangGroupParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -382,7 +331,7 @@ final class PostsRawService implements PostsRawContract
      */
     public function attachToLangGroup(
         array|PostAttachToLangGroupParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = PostAttachToLangGroupParams::parseRequest(
             $params,
@@ -405,6 +354,7 @@ final class PostsRawService implements PostsRawContract
      * Clone a blog post, making a copy of it in a new blog post.
      *
      * @param array{id: string, cloneName?: string}|PostCloneParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BlogPost>
      *
@@ -412,7 +362,7 @@ final class PostsRawService implements PostsRawContract
      */
     public function clone(
         array|PostCloneParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = PostCloneParams::parseRequest(
             $params,
@@ -437,6 +387,7 @@ final class PostsRawService implements PostsRawContract
      * @param array{
      *   id: string, language?: string
      * }|PostCreateLangVariationParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BlogPost>
      *
@@ -444,7 +395,7 @@ final class PostsRawService implements PostsRawContract
      */
     public function createLangVariation(
         array|PostCreateLangVariationParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = PostCreateLangVariationParams::parseRequest(
             $params,
@@ -467,6 +418,7 @@ final class PostsRawService implements PostsRawContract
      * Detach a blog post from a [multi-language group](https://developers.hubspot.com/docs/guides/cms/content/multi-language-content).
      *
      * @param array{id: string}|PostDetachFromLangGroupParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -474,7 +426,7 @@ final class PostsRawService implements PostsRawContract
      */
     public function detachFromLangGroup(
         array|PostDetachFromLangGroupParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = PostDetachFromLangGroupParams::parseRequest(
             $params,
@@ -498,6 +450,7 @@ final class PostsRawService implements PostsRawContract
      *
      * @param string $objectID the ID of the blog post to retrieve
      * @param array{archived?: bool, property?: string}|PostGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BlogPost>
      *
@@ -506,7 +459,7 @@ final class PostsRawService implements PostsRawContract
     public function get(
         string $objectID,
         array|PostGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = PostGetParams::parseRequest(
             $params,
@@ -529,6 +482,7 @@ final class PostsRawService implements PostsRawContract
      * Retrieve the full draft version of a blog post.
      *
      * @param string $objectID the ID of the blog post to retrieve the draft of
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BlogPost>
      *
@@ -536,7 +490,7 @@ final class PostsRawService implements PostsRawContract
      */
     public function getDraftByID(
         string $objectID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -554,6 +508,7 @@ final class PostsRawService implements PostsRawContract
      *
      * @param string $revisionID the ID of the version to retrieve
      * @param array{objectID: string}|PostGetPreviousVersionParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<VersionBlogPost>
      *
@@ -562,7 +517,7 @@ final class PostsRawService implements PostsRawContract
     public function getPreviousVersion(
         string $revisionID,
         array|PostGetPreviousVersionParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = PostGetPreviousVersionParams::parseRequest(
             $params,
@@ -589,6 +544,7 @@ final class PostsRawService implements PostsRawContract
      * @param array{
      *   after?: string, before?: string, limit?: int
      * }|PostGetPreviousVersionsParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<VersionBlogPost>>
      *
@@ -597,7 +553,7 @@ final class PostsRawService implements PostsRawContract
     public function getPreviousVersions(
         string $objectID,
         array|PostGetPreviousVersionsParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = PostGetPreviousVersionsParams::parseRequest(
             $params,
@@ -621,6 +577,7 @@ final class PostsRawService implements PostsRawContract
      * Publish the draft version of the blog post, sending its content to the live page.
      *
      * @param string $objectID the ID of the post to publish
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -628,7 +585,7 @@ final class PostsRawService implements PostsRawContract
      */
     public function pushLive(
         string $objectID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -645,6 +602,7 @@ final class PostsRawService implements PostsRawContract
      * Discard all drafted content, resetting the draft to contain the content in the currently published version.
      *
      * @param string $objectID the ID of the blog post to reset
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -652,7 +610,7 @@ final class PostsRawService implements PostsRawContract
      */
     public function resetDraft(
         string $objectID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -670,6 +628,7 @@ final class PostsRawService implements PostsRawContract
      *
      * @param string $revisionID the ID of the version to restore the blog post to
      * @param array{objectID: string}|PostRestorePreviousVersionParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BlogPost>
      *
@@ -678,7 +637,7 @@ final class PostsRawService implements PostsRawContract
     public function restorePreviousVersion(
         string $revisionID,
         array|PostRestorePreviousVersionParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = PostRestorePreviousVersionParams::parseRequest(
             $params,
@@ -705,6 +664,7 @@ final class PostsRawService implements PostsRawContract
      *
      * @param int $revisionID the ID of the version to restore the blog post to
      * @param array{objectID: string}|PostRestorePreviousVersionToDraftParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BlogPost>
      *
@@ -713,7 +673,7 @@ final class PostsRawService implements PostsRawContract
     public function restorePreviousVersionToDraft(
         int $revisionID,
         array|PostRestorePreviousVersionToDraftParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = PostRestorePreviousVersionToDraftParams::parseRequest(
             $params,
@@ -741,8 +701,9 @@ final class PostsRawService implements PostsRawContract
      * Schedule a blog post to be published at a specified time.
      *
      * @param array{
-     *   id: string, publishDate: string|\DateTimeInterface
+     *   id: string, publishDate: \DateTimeInterface
      * }|PostScheduleParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -750,7 +711,7 @@ final class PostsRawService implements PostsRawContract
      */
     public function schedule(
         array|PostScheduleParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = PostScheduleParams::parseRequest(
             $params,
@@ -773,6 +734,7 @@ final class PostsRawService implements PostsRawContract
      * Set the primary language of a [multi-language group](https://developers.hubspot.com/docs/guides/cms/content/multi-language-content) to the language of the provided post (specified as an ID in the request body)
      *
      * @param array{id: string}|PostSetLangPrimaryParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -780,7 +742,7 @@ final class PostsRawService implements PostsRawContract
      */
     public function setLangPrimary(
         array|PostSetLangPrimaryParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = PostSetLangPrimaryParams::parseRequest(
             $params,
@@ -815,8 +777,8 @@ final class PostsRawService implements PostsRawContract
      *   campaign: string,
      *   categoryID: int,
      *   contentGroupID: string,
-     *   contentTypeCategory: '0'|'1'|'10'|'11'|'12'|'13'|'14'|'15'|'2'|'3'|'4'|'5'|'6'|'7'|'8'|'9'|PostUpdateDraftParams\ContentTypeCategory,
-     *   created: string|\DateTimeInterface,
+     *   contentTypeCategory: PostUpdateDraftParams\ContentTypeCategory|value-of<PostUpdateDraftParams\ContentTypeCategory>,
+     *   created: \DateTimeInterface,
      *   createdByID: string,
      *   currentlyPublished: bool,
      *   currentState: value-of<PostUpdateDraftParams\CurrentState>,
@@ -835,21 +797,7 @@ final class PostsRawService implements PostsRawContract
      *   htmlTitle: string,
      *   includeDefaultCustomCss: bool,
      *   language: value-of<PostUpdateDraftParams\Language>,
-     *   layoutSections: array<string,array{
-     *     cells: list<LayoutSection>,
-     *     cssClass: string,
-     *     cssID: string,
-     *     cssStyle: string,
-     *     label: string,
-     *     name: string,
-     *     params: array<string,mixed>,
-     *     rowMetaData: list<mixed>,
-     *     rows: list<array<string,LayoutSection>>,
-     *     styles: array<string,mixed>|Styles,
-     *     type: string,
-     *     w: int,
-     *     x: int,
-     *   }|LayoutSection>,
+     *   layoutSections: array<string,mixed>,
      *   linkRelCanonicalURL: string,
      *   mabExperimentID: string,
      *   metaDescription: string,
@@ -863,7 +811,7 @@ final class PostsRawService implements PostsRawContract
      *   postSummary: string,
      *   publicAccessRules: list<mixed>,
      *   publicAccessRulesEnabled: bool,
-     *   publishDate: string|\DateTimeInterface,
+     *   publishDate: \DateTimeInterface,
      *   publishImmediately: bool,
      *   rssBody: string,
      *   rssSummary: string,
@@ -872,29 +820,15 @@ final class PostsRawService implements PostsRawContract
      *   tagIDs: list<int>,
      *   themeSettingsValues: array<string,mixed>,
      *   translatedFromID: string,
-     *   translations: array<string,array{
-     *     id: int,
-     *     archivedInDashboard: bool,
-     *     authorName: string,
-     *     campaign: string,
-     *     created: string|\DateTimeInterface,
-     *     name: string,
-     *     password: string,
-     *     publicAccessRules: list<mixed>,
-     *     publicAccessRulesEnabled: bool,
-     *     publishDate: string|\DateTimeInterface,
-     *     slug: string,
-     *     state: string,
-     *     updated: string|\DateTimeInterface,
-     *     tagIDs?: list<int>,
-     *   }|PagesContentLanguageVariation>,
-     *   updated: string|\DateTimeInterface,
+     *   translations: array<string,PagesContentLanguageVariation|PagesContentLanguageVariationShape>,
+     *   updated: \DateTimeInterface,
      *   updatedByID: string,
      *   url: string,
      *   useFeaturedImage: bool,
      *   widgetContainers: array<string,mixed>,
      *   widgets: array<string,mixed>,
      * }|PostUpdateDraftParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BlogPost>
      *
@@ -903,7 +837,7 @@ final class PostsRawService implements PostsRawContract
     public function updateDraft(
         string $objectID,
         array|PostUpdateDraftParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = PostUpdateDraftParams::parseRequest(
             $params,
@@ -928,6 +862,7 @@ final class PostsRawService implements PostsRawContract
      * @param array{
      *   languages: array<string,string>, primaryID: string
      * }|PostUpdateLangsParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -935,7 +870,7 @@ final class PostsRawService implements PostsRawContract
      */
     public function updateLangs(
         array|PostUpdateLangsParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = PostUpdateLangsParams::parseRequest(
             $params,

@@ -10,6 +10,9 @@ use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface ChannelAccountStagingTokensRawContract
 {
     /**
@@ -17,6 +20,7 @@ interface ChannelAccountStagingTokensRawContract
      *
      * @param string $accountToken path param: The unique token identifying the channel account staging token to update
      * @param array<string,mixed>|ChannelAccountStagingTokenUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicChannelAccountStagingToken>
      *
@@ -25,6 +29,6 @@ interface ChannelAccountStagingTokensRawContract
     public function update(
         string $accountToken,
         array|ChannelAccountStagingTokenUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

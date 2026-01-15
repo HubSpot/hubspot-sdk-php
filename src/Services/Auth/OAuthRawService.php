@@ -16,6 +16,9 @@ use HubspotSDK\Core\Util;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Auth\OAuthRawContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class OAuthRawService implements OAuthRawContract
 {
     // @phpstan-ignore-next-line
@@ -39,10 +42,11 @@ final class OAuthRawService implements OAuthRawContract
      *   clientID?: string,
      *   code?: string,
      *   codeVerifier?: string,
-     *   grantType?: 'authorization_code'|'client_credentials'|'refresh_token'|GrantType,
+     *   grantType?: GrantType|value-of<GrantType>,
      *   redirectUri?: string,
      *   scope?: string,
      * }|OAuthCreateAccessTokenParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<TokenResponseIf>
      *
@@ -50,7 +54,7 @@ final class OAuthRawService implements OAuthRawContract
      */
     public function createAccessToken(
         array|OAuthCreateAccessTokenParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = OAuthCreateAccessTokenParams::parseRequest(
             $params,
@@ -83,6 +87,7 @@ final class OAuthRawService implements OAuthRawContract
      * This will not uninstall the application from HubSpot or inhibit data syncing between an account and the app.
      *
      * @param string $token the refresh token to delete
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -90,7 +95,7 @@ final class OAuthRawService implements OAuthRawContract
      */
     public function deleteRefreshToken(
         string $token,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -111,6 +116,7 @@ final class OAuthRawService implements OAuthRawContract
      * Note: HubSpot access tokens will fluctuate in size as the information that's encoded in them changes over time. It's recommended to allow for tokens to be up to 300 characters to account for any potential changes.
      *
      * @param string $token the access token that you want to retrieve information about
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<AccessTokenInfoResponse>
      *
@@ -118,7 +124,7 @@ final class OAuthRawService implements OAuthRawContract
      */
     public function getAccessToken(
         string $token,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -137,6 +143,7 @@ final class OAuthRawService implements OAuthRawContract
      * Retrieve a refresh token's metadata, including the email address of the user that the token was created for and the ID of the account it's associated with. Learn more about [refresh tokens](https://developers.hubspot.com/docs/guides/api/app-management/oauth-tokens#generate-initial-access-and-refresh-tokens).
      *
      * @param string $token the refresh token to retrieve information about
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<RefreshTokenInfoResponse>
      *
@@ -144,7 +151,7 @@ final class OAuthRawService implements OAuthRawContract
      */
     public function getRefreshToken(
         string $token,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(

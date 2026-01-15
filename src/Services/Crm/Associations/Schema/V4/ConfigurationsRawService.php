@@ -15,10 +15,18 @@ use HubspotSDK\Crm\Associations\Schema\V4\Configurations\ConfigurationBatchCreat
 use HubspotSDK\Crm\Associations\Schema\V4\Configurations\ConfigurationBatchDeleteParams;
 use HubspotSDK\Crm\Associations\Schema\V4\Configurations\ConfigurationBatchUpdateParams;
 use HubspotSDK\Crm\Associations\Schema\V4\Configurations\ConfigurationGetByObjectTypesParams;
-use HubspotSDK\Crm\Associations\Schema\V4\PublicAssociationDefinitionConfigurationCreateRequest\Category;
+use HubspotSDK\Crm\Associations\Schema\V4\PublicAssociationDefinitionConfigurationCreateRequest;
+use HubspotSDK\Crm\Associations\Schema\V4\PublicAssociationDefinitionConfigurationUpdateRequest;
+use HubspotSDK\Crm\Associations\Schema\V4\PublicAssociationSpec;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Associations\Schema\V4\ConfigurationsRawContract;
 
+/**
+ * @phpstan-import-type PublicAssociationDefinitionConfigurationCreateRequestShape from \HubspotSDK\Crm\Associations\Schema\V4\PublicAssociationDefinitionConfigurationCreateRequest
+ * @phpstan-import-type PublicAssociationSpecShape from \HubspotSDK\Crm\Associations\Schema\V4\PublicAssociationSpec
+ * @phpstan-import-type PublicAssociationDefinitionConfigurationUpdateRequestShape from \HubspotSDK\Crm\Associations\Schema\V4\PublicAssociationDefinitionConfigurationUpdateRequest
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class ConfigurationsRawService implements ConfigurationsRawContract
 {
     // @phpstan-ignore-next-line
@@ -30,12 +38,15 @@ final class ConfigurationsRawService implements ConfigurationsRawContract
     /**
      * @api
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @return BaseResponse<CollectionResponsePublicAssociationDefinitionUserConfiguration,>
      *
      * @throws APIException
      */
-    public function list(?RequestOptions $requestOptions = null): BaseResponse
-    {
+    public function list(
+        RequestOptions|array|null $requestOptions = null
+    ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
@@ -48,15 +59,12 @@ final class ConfigurationsRawService implements ConfigurationsRawContract
     /**
      * @api
      *
-     * @param string $toObjectType Path param:
+     * @param string $toObjectType Path param
      * @param array{
      *   fromObjectType: string,
-     *   inputs: list<array{
-     *     category: 'HUBSPOT_DEFINED'|'INTEGRATOR_DEFINED'|'USER_DEFINED'|Category,
-     *     maxToObjectIDs: int,
-     *     typeID: int,
-     *   }>,
+     *   inputs: list<PublicAssociationDefinitionConfigurationCreateRequest|PublicAssociationDefinitionConfigurationCreateRequestShape>,
      * }|ConfigurationBatchCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BatchResponsePublicAssociationDefinitionUserConfiguration>
      *
@@ -65,7 +73,7 @@ final class ConfigurationsRawService implements ConfigurationsRawContract
     public function batchCreate(
         string $toObjectType,
         array|ConfigurationBatchCreateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = ConfigurationBatchCreateParams::parseRequest(
             $params,
@@ -91,10 +99,12 @@ final class ConfigurationsRawService implements ConfigurationsRawContract
     /**
      * @api
      *
-     * @param string $toObjectType Path param:
+     * @param string $toObjectType Path param
      * @param array{
-     *   fromObjectType: string, inputs: list<array{category: string, typeID: int}>
+     *   fromObjectType: string,
+     *   inputs: list<PublicAssociationSpec|PublicAssociationSpecShape>,
      * }|ConfigurationBatchDeleteParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BatchResponseVoid>
      *
@@ -103,7 +113,7 @@ final class ConfigurationsRawService implements ConfigurationsRawContract
     public function batchDelete(
         string $toObjectType,
         array|ConfigurationBatchDeleteParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = ConfigurationBatchDeleteParams::parseRequest(
             $params,
@@ -129,15 +139,12 @@ final class ConfigurationsRawService implements ConfigurationsRawContract
     /**
      * @api
      *
-     * @param string $toObjectType Path param:
+     * @param string $toObjectType Path param
      * @param array{
      *   fromObjectType: string,
-     *   inputs: list<array{
-     *     category: 'HUBSPOT_DEFINED'|'INTEGRATOR_DEFINED'|'USER_DEFINED'|\HubspotSDK\Crm\Associations\Schema\V4\PublicAssociationDefinitionConfigurationUpdateRequest\Category,
-     *     maxToObjectIDs: int,
-     *     typeID: int,
-     *   }>,
+     *   inputs: list<PublicAssociationDefinitionConfigurationUpdateRequest|PublicAssociationDefinitionConfigurationUpdateRequestShape>,
      * }|ConfigurationBatchUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BatchResponsePublicAssociationDefinitionConfigurationUpdateResult,>
      *
@@ -146,7 +153,7 @@ final class ConfigurationsRawService implements ConfigurationsRawContract
     public function batchUpdate(
         string $toObjectType,
         array|ConfigurationBatchUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = ConfigurationBatchUpdateParams::parseRequest(
             $params,
@@ -173,6 +180,7 @@ final class ConfigurationsRawService implements ConfigurationsRawContract
      * @api
      *
      * @param array{fromObjectType: string}|ConfigurationGetByObjectTypesParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CollectionResponsePublicAssociationDefinitionUserConfiguration,>
      *
@@ -181,7 +189,7 @@ final class ConfigurationsRawService implements ConfigurationsRawContract
     public function getByObjectTypes(
         string $toObjectType,
         array|ConfigurationGetByObjectTypesParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = ConfigurationGetByObjectTypesParams::parseRequest(
             $params,

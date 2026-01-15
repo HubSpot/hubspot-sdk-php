@@ -24,7 +24,8 @@ use HubspotSDK\Events\EventDefinitions\TimePointOperation;
  * @phpstan-import-type TimePointOperationShape from \HubspotSDK\Events\EventDefinitions\TimePointOperation
  * @phpstan-import-type RangedTimeOperationShape from \HubspotSDK\Events\EventDefinitions\RangedTimeOperation
  *
- * @phpstan-type PruningRefineByShape = RelativeComparativeTimestampRefineByShape|RelativeRangedTimestampRefineByShape|AbsoluteComparativeTimestampRefineByShape|AbsoluteRangedTimestampRefineByShape|AllHistoryRefineByShape|TimePointOperationShape|RangedTimeOperationShape
+ * @phpstan-type PruningRefineByVariants = RelativeComparativeTimestampRefineBy|RelativeRangedTimestampRefineBy|AbsoluteComparativeTimestampRefineBy|AbsoluteRangedTimestampRefineBy|AllHistoryRefineBy|TimePointOperation|RangedTimeOperation
+ * @phpstan-type PruningRefineByShape = PruningRefineByVariants|RelativeComparativeTimestampRefineByShape|RelativeRangedTimestampRefineByShape|AbsoluteComparativeTimestampRefineByShape|AbsoluteRangedTimestampRefineByShape|AllHistoryRefineByShape|TimePointOperationShape|RangedTimeOperationShape
  */
 final class PruningRefineBy implements ConverterSource
 {

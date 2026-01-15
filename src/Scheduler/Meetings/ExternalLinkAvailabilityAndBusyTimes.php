@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-import-type ExternalLinkAvailabilityShape from \HubspotSDK\Scheduler\Meetings\ExternalLinkAvailability
  *
  * @phpstan-type ExternalLinkAvailabilityAndBusyTimesShape = array{
- *   allUsersBusyTimes: list<ExternalUserBusyTimesShape>,
+ *   allUsersBusyTimes: list<ExternalUserBusyTimes|ExternalUserBusyTimesShape>,
  *   linkAvailability?: null|ExternalLinkAvailability|ExternalLinkAvailabilityShape,
  * }
  */
@@ -54,7 +54,7 @@ final class ExternalLinkAvailabilityAndBusyTimes implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<ExternalUserBusyTimesShape> $allUsersBusyTimes
+     * @param list<ExternalUserBusyTimes|ExternalUserBusyTimesShape> $allUsersBusyTimes
      * @param ExternalLinkAvailability|ExternalLinkAvailabilityShape|null $linkAvailability
      */
     public static function with(
@@ -71,7 +71,7 @@ final class ExternalLinkAvailabilityAndBusyTimes implements BaseModel
     }
 
     /**
-     * @param list<ExternalUserBusyTimesShape> $allUsersBusyTimes
+     * @param list<ExternalUserBusyTimes|ExternalUserBusyTimesShape> $allUsersBusyTimes
      */
     public function withAllUsersBusyTimes(array $allUsersBusyTimes): self
     {

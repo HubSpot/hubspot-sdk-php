@@ -19,7 +19,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-import-type MarketingEventCreateRequestParamsShape from \HubspotSDK\Marketing\Events\MarketingEventCreateRequestParams
  *
  * @phpstan-type EventUpsertBatchParamsShape = array{
- *   inputs: list<MarketingEventCreateRequestParamsShape>
+ *   inputs: list<MarketingEventCreateRequestParams|MarketingEventCreateRequestParamsShape>,
  * }
  */
 final class EventUpsertBatchParams implements BaseModel
@@ -56,7 +56,7 @@ final class EventUpsertBatchParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<MarketingEventCreateRequestParamsShape> $inputs
+     * @param list<MarketingEventCreateRequestParams|MarketingEventCreateRequestParamsShape> $inputs
      */
     public static function with(array $inputs): self
     {
@@ -68,7 +68,7 @@ final class EventUpsertBatchParams implements BaseModel
     }
 
     /**
-     * @param list<MarketingEventCreateRequestParamsShape> $inputs
+     * @param list<MarketingEventCreateRequestParams|MarketingEventCreateRequestParamsShape> $inputs
      */
     public function withInputs(array $inputs): self
     {

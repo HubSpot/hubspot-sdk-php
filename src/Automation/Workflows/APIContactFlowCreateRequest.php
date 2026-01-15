@@ -22,6 +22,11 @@ use HubspotSDK\PublicRestrictedFilterBranch;
 use HubspotSDK\PublicUnifiedEventsFilterBranch;
 
 /**
+ * @phpstan-import-type DataSourceVariants from \HubspotSDK\Automation\Workflows\APIContactFlowCreateRequest\DataSource
+ * @phpstan-import-type EnrollmentCriteriaVariants from \HubspotSDK\Automation\Workflows\APIContactFlowCreateRequest\EnrollmentCriteria
+ * @phpstan-import-type EnrollmentScheduleVariants from \HubspotSDK\Automation\Workflows\APIContactFlowCreateRequest\EnrollmentSchedule
+ * @phpstan-import-type EventAnchorVariants from \HubspotSDK\Automation\Workflows\APIContactFlowCreateRequest\EventAnchor
+ * @phpstan-import-type GoalFilterBranchVariants from \HubspotSDK\Automation\Workflows\APIContactFlowCreateRequest\GoalFilterBranch
  * @phpstan-import-type APIBlockedDateShape from \HubspotSDK\Automation\Workflows\APIBlockedDate
  * @phpstan-import-type DataSourceShape from \HubspotSDK\Automation\Workflows\APIContactFlowCreateRequest\DataSource
  * @phpstan-import-type APITimeWindowShape from \HubspotSDK\Automation\Workflows\APITimeWindow
@@ -33,7 +38,7 @@ use HubspotSDK\PublicUnifiedEventsFilterBranch;
  *
  * @phpstan-type APIContactFlowCreateRequestShape = array{
  *   actions: list<mixed>,
- *   blockedDates: list<APIBlockedDateShape>,
+ *   blockedDates: list<APIBlockedDate|APIBlockedDateShape>,
  *   canEnrollFromSalesforce: bool,
  *   customProperties: array<string,string>,
  *   dataSources: list<DataSourceShape>,
@@ -41,7 +46,7 @@ use HubspotSDK\PublicUnifiedEventsFilterBranch;
  *   isEnabled: bool,
  *   objectTypeID: string,
  *   suppressionListIDs: list<int>,
- *   timeWindows: list<APITimeWindowShape>,
+ *   timeWindows: list<APITimeWindow|APITimeWindowShape>,
  *   type: Type|value-of<Type>,
  *   description?: string|null,
  *   enrollmentCriteria?: EnrollmentCriteriaShape|null,
@@ -74,9 +79,7 @@ final class APIContactFlowCreateRequest implements BaseModel
     #[Required(map: 'string')]
     public array $customProperties;
 
-    /**
-     * @var list<APIAssociationDataSource|APIAssociationTimestampDataSource|APIStaticPropertyFilterDataSource|APIEnrolledRecordPropertyFilterDataSource|APIDatasetFieldPropertyFilterDataSource|APIEnrolledArgumentPropertyFilterDataSource> $dataSources
-     */
+    /** @var list<DataSourceVariants> $dataSources */
     #[Required(list: DataSource::class)]
     public array $dataSources;
 
@@ -105,15 +108,19 @@ final class APIContactFlowCreateRequest implements BaseModel
     #[Optional]
     public ?string $description;
 
+    /** @var EnrollmentCriteriaVariants|null $enrollmentCriteria */
     #[Optional]
     public APIListBasedEnrollmentCriteria|APIEventBasedEnrollmentCriteria|APIManualEnrollmentCriteria|null $enrollmentCriteria;
 
+    /** @var EnrollmentScheduleVariants|null $enrollmentSchedule */
     #[Optional]
     public APIDailyEnrollmentSchedule|APIWeeklyEnrollmentSchedule|APIMonthlySpecificDaysEnrollmentSchedule|APIMonthlyRelativeDaysEnrollmentSchedule|APIYearlyEnrollmentSchedule|APIPropertyBasedEnrollmentSchedule|null $enrollmentSchedule;
 
+    /** @var EventAnchorVariants|null $eventAnchor */
     #[Optional]
     public APIContactPropertyAnchor|APIStaticDateAnchor|null $eventAnchor;
 
+    /** @var GoalFilterBranchVariants|null $goalFilterBranch */
     #[Optional]
     public PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch|null $goalFilterBranch;
 
@@ -177,12 +184,12 @@ final class APIContactFlowCreateRequest implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<mixed> $actions
-     * @param list<APIBlockedDateShape> $blockedDates
+     * @param list<APIBlockedDate|APIBlockedDateShape> $blockedDates
      * @param array<string,string> $customProperties
      * @param list<DataSourceShape> $dataSources
      * @param FlowType|value-of<FlowType> $flowType
      * @param list<int> $suppressionListIDs
-     * @param list<APITimeWindowShape> $timeWindows
+     * @param list<APITimeWindow|APITimeWindowShape> $timeWindows
      * @param Type|value-of<Type> $type
      * @param EnrollmentCriteriaShape|null $enrollmentCriteria
      * @param EnrollmentScheduleShape|null $enrollmentSchedule
@@ -251,7 +258,7 @@ final class APIContactFlowCreateRequest implements BaseModel
     }
 
     /**
-     * @param list<APIBlockedDateShape> $blockedDates
+     * @param list<APIBlockedDate|APIBlockedDateShape> $blockedDates
      */
     public function withBlockedDates(array $blockedDates): self
     {
@@ -331,7 +338,7 @@ final class APIContactFlowCreateRequest implements BaseModel
     }
 
     /**
-     * @param list<APITimeWindowShape> $timeWindows
+     * @param list<APITimeWindow|APITimeWindowShape> $timeWindows
      */
     public function withTimeWindows(array $timeWindows): self
     {

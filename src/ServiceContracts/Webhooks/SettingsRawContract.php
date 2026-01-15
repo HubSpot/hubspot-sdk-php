@@ -10,6 +10,9 @@ use HubspotSDK\RequestOptions;
 use HubspotSDK\Webhooks\Settings\SettingUpdateParams;
 use HubspotSDK\Webhooks\SettingsResponse;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface SettingsRawContract
 {
     /**
@@ -17,6 +20,7 @@ interface SettingsRawContract
      *
      * @param int $appID the ID of the app
      * @param array<string,mixed>|SettingUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SettingsResponse>
      *
@@ -25,13 +29,14 @@ interface SettingsRawContract
     public function update(
         int $appID,
         array|SettingUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param int $appID the ID of the app
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SettingsResponse>
      *
@@ -39,13 +44,14 @@ interface SettingsRawContract
      */
     public function list(
         int $appID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param int $appID the ID of the app
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -53,6 +59,6 @@ interface SettingsRawContract
      */
     public function delete(
         int $appID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 }

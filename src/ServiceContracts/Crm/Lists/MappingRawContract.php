@@ -12,12 +12,16 @@ use HubspotSDK\Crm\Lists\PublicBatchMigrationMapping;
 use HubspotSDK\Crm\Lists\PublicMigrationMapping;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface MappingRawContract
 {
     /**
      * @api
      *
      * @param array<string,mixed>|MappingBatchCreateIDMappingParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicBatchMigrationMapping>
      *
@@ -25,13 +29,14 @@ interface MappingRawContract
      */
     public function batchCreateIDMapping(
         array|MappingBatchCreateIDMappingParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|MappingGetIDMappingParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicMigrationMapping>
      *
@@ -39,6 +44,6 @@ interface MappingRawContract
      */
     public function getIDMapping(
         array|MappingGetIDMappingParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

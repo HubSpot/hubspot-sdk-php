@@ -16,6 +16,9 @@ use HubspotSDK\Webhooks\Subscriptions\SubscriptionGetParams;
 use HubspotSDK\Webhooks\Subscriptions\SubscriptionUpdateBatchParams;
 use HubspotSDK\Webhooks\Subscriptions\SubscriptionUpdateParams;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface SubscriptionsRawContract
 {
     /**
@@ -23,6 +26,7 @@ interface SubscriptionsRawContract
      *
      * @param int $appID the ID of the app
      * @param array<string,mixed>|SubscriptionCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SubscriptionResponse>
      *
@@ -31,7 +35,7 @@ interface SubscriptionsRawContract
     public function create(
         int $appID,
         array|SubscriptionCreateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -39,6 +43,7 @@ interface SubscriptionsRawContract
      *
      * @param int $subscriptionID path param: The ID of the event subscription
      * @param array<string,mixed>|SubscriptionUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SubscriptionResponse>
      *
@@ -47,13 +52,14 @@ interface SubscriptionsRawContract
     public function update(
         int $subscriptionID,
         array|SubscriptionUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param int $appID the ID of the app
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SubscriptionListResponse>
      *
@@ -61,7 +67,7 @@ interface SubscriptionsRawContract
      */
     public function list(
         int $appID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 
     /**
@@ -69,6 +75,7 @@ interface SubscriptionsRawContract
      *
      * @param int $subscriptionID the ID of the event subscription
      * @param array<string,mixed>|SubscriptionDeleteParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -77,7 +84,7 @@ interface SubscriptionsRawContract
     public function delete(
         int $subscriptionID,
         array|SubscriptionDeleteParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -85,6 +92,7 @@ interface SubscriptionsRawContract
      *
      * @param int $subscriptionID the ID of the event subscription
      * @param array<string,mixed>|SubscriptionGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SubscriptionResponse>
      *
@@ -93,7 +101,7 @@ interface SubscriptionsRawContract
     public function get(
         int $subscriptionID,
         array|SubscriptionGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -101,6 +109,7 @@ interface SubscriptionsRawContract
      *
      * @param int $appID the ID of the app
      * @param array<string,mixed>|SubscriptionUpdateBatchParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BatchResponseSubscriptionResponse>
      *
@@ -109,6 +118,6 @@ interface SubscriptionsRawContract
     public function updateBatch(
         int $appID,
         array|SubscriptionUpdateBatchParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-type PublicImportMetadataShape = array{
  *   counters: array<string,int>,
  *   fileIDs: list<string>,
- *   objectLists: list<PublicObjectListRecordShape>,
+ *   objectLists: list<PublicObjectListRecord|PublicObjectListRecordShape>,
  * }
  */
 final class PublicImportMetadata implements BaseModel
@@ -75,7 +75,7 @@ final class PublicImportMetadata implements BaseModel
      *
      * @param array<string,int> $counters
      * @param list<string> $fileIDs
-     * @param list<PublicObjectListRecordShape> $objectLists
+     * @param list<PublicObjectListRecord|PublicObjectListRecordShape> $objectLists
      */
     public static function with(
         array $counters,
@@ -120,7 +120,7 @@ final class PublicImportMetadata implements BaseModel
     /**
      * The lists containing the imported objects.
      *
-     * @param list<PublicObjectListRecordShape> $objectLists
+     * @param list<PublicObjectListRecord|PublicObjectListRecordShape> $objectLists
      */
     public function withObjectLists(array $objectLists): self
     {

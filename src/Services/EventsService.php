@@ -7,6 +7,8 @@ namespace HubspotSDK\Services;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Core\Util;
+use HubspotSDK\Events\EventListParams\ObjectProperty;
+use HubspotSDK\Events\EventListParams\Property;
 use HubspotSDK\Events\ExternalUnifiedEvent;
 use HubspotSDK\Events\VisibleExternalEventTypeNames;
 use HubspotSDK\Page;
@@ -15,6 +17,11 @@ use HubspotSDK\ServiceContracts\EventsContract;
 use HubspotSDK\Services\Events\EventDefinitionsService;
 use HubspotSDK\Services\Events\SendService;
 
+/**
+ * @phpstan-import-type ObjectPropertyShape from \HubspotSDK\Events\EventListParams\ObjectProperty
+ * @phpstan-import-type PropertyShape from \HubspotSDK\Events\EventListParams\Property
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class EventsService implements EventsContract
 {
     /**
@@ -52,12 +59,13 @@ final class EventsService implements EventsContract
      * @param string $eventType The event type name. You can retrieve available event types using the [event types endpoint](#get-%2Fevents%2Fv3%2Fevents%2Fevent-types).
      * @param int $limit the maximum number of results to display per page
      * @param int $objectID The ID of the CRM Object to filter event instances on. When including this parameter, you must also include the `objectType` parameter.
-     * @param array{_propname?: mixed} $objectProperty
+     * @param ObjectProperty|ObjectPropertyShape $objectProperty
      * @param string $objectType The type of CRM object to filter event instances on (e.g., `contact`). To retrieve event data for a specific CRM record, include the additional `objectId` query parameter (below).
-     * @param string|\DateTimeInterface $occurredAfter filter for event data that occurred after a specific datetime
-     * @param string|\DateTimeInterface $occurredBefore filter for event data that occurred before a specific datetime
-     * @param array{_propname?: mixed} $property
+     * @param \DateTimeInterface $occurredAfter filter for event data that occurred after a specific datetime
+     * @param \DateTimeInterface $occurredBefore filter for event data that occurred before a specific datetime
+     * @param Property|PropertyShape $property
      * @param list<string> $sort sort direction based on the timestamp of the event instance, `ASCENDING` or `DESCENDING`
+     * @param RequestOpts|null $requestOptions
      *
      * @return Page<ExternalUnifiedEvent>
      *
@@ -70,13 +78,13 @@ final class EventsService implements EventsContract
         ?string $eventType = null,
         ?int $limit = null,
         ?int $objectID = null,
-        ?array $objectProperty = null,
+        ObjectProperty|array|null $objectProperty = null,
         ?string $objectType = null,
-        string|\DateTimeInterface|null $occurredAfter = null,
-        string|\DateTimeInterface|null $occurredBefore = null,
-        ?array $property = null,
+        ?\DateTimeInterface $occurredAfter = null,
+        ?\DateTimeInterface $occurredBefore = null,
+        Property|array|null $property = null,
         ?array $sort = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): Page {
         $params = Util::removeNulls(
             [
@@ -108,10 +116,12 @@ final class EventsService implements EventsContract
      *
      * Note: the `get_types` method is only supported in the Python SDK version `12.0.0-beta.1` or later.
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @throws APIException
      */
     public function listEventTypes(
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): VisibleExternalEventTypeNames {
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->listEventTypes(requestOptions: $requestOptions);

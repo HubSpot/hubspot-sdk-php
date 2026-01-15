@@ -21,6 +21,9 @@ use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Automation\Actions\FunctionsRawContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class FunctionsRawService implements FunctionsRawContract
 {
     // @phpstan-ignore-next-line
@@ -36,6 +39,7 @@ final class FunctionsRawService implements FunctionsRawContract
      *
      * @param string $definitionID the ID of the definition
      * @param array{appID: int}|FunctionListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CollectionResponsePublicActionFunctionIdentifierNoPaging>
      *
@@ -44,7 +48,7 @@ final class FunctionsRawService implements FunctionsRawContract
     public function list(
         string $definitionID,
         array|FunctionListParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = FunctionListParams::parseRequest(
             $params,
@@ -72,6 +76,7 @@ final class FunctionsRawService implements FunctionsRawContract
      * @param array{
      *   appID: int, definitionID: string, functionType: value-of<FunctionType>
      * }|FunctionDeleteParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -80,7 +85,7 @@ final class FunctionsRawService implements FunctionsRawContract
     public function delete(
         string $functionID,
         array|FunctionDeleteParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = FunctionDeleteParams::parseRequest(
             $params,
@@ -120,6 +125,7 @@ final class FunctionsRawService implements FunctionsRawContract
      *   functionType: value-of<FunctionCreateOrReplaceParams\FunctionType>,
      *   body: string,
      * }|FunctionCreateOrReplaceParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicActionFunctionIdentifier>
      *
@@ -128,7 +134,7 @@ final class FunctionsRawService implements FunctionsRawContract
     public function createOrReplace(
         string $functionID,
         array|FunctionCreateOrReplaceParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = FunctionCreateOrReplaceParams::parseRequest(
             $params,
@@ -173,6 +179,7 @@ final class FunctionsRawService implements FunctionsRawContract
      * @param array{
      *   appID: int, definitionID: string, body: string
      * }|FunctionCreateOrReplaceByFunctionTypeParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicActionFunctionIdentifier>
      *
@@ -181,7 +188,7 @@ final class FunctionsRawService implements FunctionsRawContract
     public function createOrReplaceByFunctionType(
         FunctionCreateOrReplaceByFunctionTypeParams\FunctionType|string $functionType,
         array|FunctionCreateOrReplaceByFunctionTypeParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = FunctionCreateOrReplaceByFunctionTypeParams::parseRequest(
             $params,
@@ -220,6 +227,7 @@ final class FunctionsRawService implements FunctionsRawContract
      * @param array{
      *   appID: int, definitionID: string
      * }|FunctionDeleteByFunctionTypeParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -228,7 +236,7 @@ final class FunctionsRawService implements FunctionsRawContract
     public function deleteByFunctionType(
         FunctionDeleteByFunctionTypeParams\FunctionType|string $functionType,
         array|FunctionDeleteByFunctionTypeParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = FunctionDeleteByFunctionTypeParams::parseRequest(
             $params,
@@ -264,6 +272,7 @@ final class FunctionsRawService implements FunctionsRawContract
      *   definitionID: string,
      *   functionType: value-of<FunctionGetParams\FunctionType>,
      * }|FunctionGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicActionFunction>
      *
@@ -272,7 +281,7 @@ final class FunctionsRawService implements FunctionsRawContract
     public function get(
         string $functionID,
         array|FunctionGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = FunctionGetParams::parseRequest(
             $params,
@@ -309,6 +318,7 @@ final class FunctionsRawService implements FunctionsRawContract
      * @param array{
      *   appID: int, definitionID: string
      * }|FunctionGetByFunctionTypeParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicActionFunction>
      *
@@ -317,7 +327,7 @@ final class FunctionsRawService implements FunctionsRawContract
     public function getByFunctionType(
         FunctionGetByFunctionTypeParams\FunctionType|string $functionType,
         array|FunctionGetByFunctionTypeParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = FunctionGetByFunctionTypeParams::parseRequest(
             $params,

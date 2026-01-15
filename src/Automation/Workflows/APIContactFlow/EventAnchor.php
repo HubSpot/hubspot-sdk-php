@@ -14,7 +14,8 @@ use HubspotSDK\Core\Conversion\Contracts\ConverterSource;
  * @phpstan-import-type APIContactPropertyAnchorShape from \HubspotSDK\Automation\Workflows\APIContactPropertyAnchor
  * @phpstan-import-type APIStaticDateAnchorShape from \HubspotSDK\Automation\Workflows\APIStaticDateAnchor
  *
- * @phpstan-type EventAnchorShape = APIContactPropertyAnchorShape|APIStaticDateAnchorShape
+ * @phpstan-type EventAnchorVariants = APIContactPropertyAnchor|APIStaticDateAnchor
+ * @phpstan-type EventAnchorShape = EventAnchorVariants|APIContactPropertyAnchorShape|APIStaticDateAnchorShape
  */
 final class EventAnchor implements ConverterSource
 {

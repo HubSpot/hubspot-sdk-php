@@ -17,6 +17,9 @@ use HubspotSDK\Crm\Associations\V4\BatchResponsePublicAssociationMultiWithLabel;
 use HubspotSDK\Crm\BatchResponsePublicDefaultAssociation;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface BatchRawContract
 {
     /**
@@ -24,6 +27,7 @@ interface BatchRawContract
      *
      * @param string $toObjectType Path param: The type of the to Object
      * @param array<string,mixed>|BatchCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BatchResponseLabelsBetweenObjectPair>
      *
@@ -32,7 +36,7 @@ interface BatchRawContract
     public function create(
         string $toObjectType,
         array|BatchCreateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -40,6 +44,7 @@ interface BatchRawContract
      *
      * @param string $toObjectType path param: Specifies the type of the target object in the batch association deletion
      * @param array<string,mixed>|BatchDeleteParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BatchResponseVoid>
      *
@@ -48,7 +53,7 @@ interface BatchRawContract
     public function delete(
         string $toObjectType,
         array|BatchDeleteParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -56,6 +61,7 @@ interface BatchRawContract
      *
      * @param string $toObjectType path param: Specifies the type of the target object in the association
      * @param array<string,mixed>|BatchCreateDefaultParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BatchResponsePublicDefaultAssociation>
      *
@@ -64,7 +70,7 @@ interface BatchRawContract
     public function createDefault(
         string $toObjectType,
         array|BatchCreateDefaultParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -72,6 +78,7 @@ interface BatchRawContract
      *
      * @param string $toObjectType Path param: The type of the to Object
      * @param array<string,mixed>|BatchDeleteLabelsParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BatchResponseVoid>
      *
@@ -80,7 +87,7 @@ interface BatchRawContract
     public function deleteLabels(
         string $toObjectType,
         array|BatchDeleteLabelsParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -88,6 +95,7 @@ interface BatchRawContract
      *
      * @param string $toObjectType Path param: The type of the to Object
      * @param array<string,mixed>|BatchGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BatchResponsePublicAssociationMultiWithLabel>
      *
@@ -96,6 +104,6 @@ interface BatchRawContract
     public function get(
         string $toObjectType,
         array|BatchGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

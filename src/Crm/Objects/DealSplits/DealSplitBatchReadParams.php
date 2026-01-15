@@ -18,7 +18,7 @@ use HubspotSDK\PublicObjectID;
  * @phpstan-import-type PublicObjectIDShape from \HubspotSDK\PublicObjectID
  *
  * @phpstan-type DealSplitBatchReadParamsShape = array{
- *   inputs: list<PublicObjectIDShape>
+ *   inputs: list<PublicObjectID|PublicObjectIDShape>
  * }
  */
 final class DealSplitBatchReadParams implements BaseModel
@@ -55,7 +55,7 @@ final class DealSplitBatchReadParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicObjectIDShape> $inputs
+     * @param list<PublicObjectID|PublicObjectIDShape> $inputs
      */
     public static function with(array $inputs): self
     {
@@ -67,7 +67,7 @@ final class DealSplitBatchReadParams implements BaseModel
     }
 
     /**
-     * @param list<PublicObjectIDShape> $inputs
+     * @param list<PublicObjectID|PublicObjectIDShape> $inputs
      */
     public function withInputs(array $inputs): self
     {

@@ -21,6 +21,9 @@ use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Cms\Blogs\SettingsRawContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class SettingsRawService implements SettingsRawContract
 {
     // @phpstan-ignore-next-line
@@ -35,15 +38,16 @@ final class SettingsRawService implements SettingsRawContract
      * @param array{
      *   after?: string,
      *   archived?: bool,
-     *   createdAfter?: string|\DateTimeInterface,
-     *   createdAt?: string|\DateTimeInterface,
-     *   createdBefore?: string|\DateTimeInterface,
+     *   createdAfter?: \DateTimeInterface,
+     *   createdAt?: \DateTimeInterface,
+     *   createdBefore?: \DateTimeInterface,
      *   limit?: int,
      *   sort?: list<string>,
-     *   updatedAfter?: string|\DateTimeInterface,
-     *   updatedAt?: string|\DateTimeInterface,
-     *   updatedBefore?: string|\DateTimeInterface,
+     *   updatedAfter?: \DateTimeInterface,
+     *   updatedAt?: \DateTimeInterface,
+     *   updatedBefore?: \DateTimeInterface,
      * }|SettingListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<Blog>>
      *
@@ -51,7 +55,7 @@ final class SettingsRawService implements SettingsRawContract
      */
     public function list(
         array|SettingListParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = SettingListParams::parseRequest(
             $params,
@@ -75,6 +79,7 @@ final class SettingsRawService implements SettingsRawContract
      * @param array{
      *   id: string, language: string, primaryID: string, primaryLanguage?: string
      * }|SettingAttachToLangGroupParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -82,7 +87,7 @@ final class SettingsRawService implements SettingsRawContract
      */
     public function attachToLangGroup(
         array|SettingAttachToLangGroupParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = SettingAttachToLangGroupParams::parseRequest(
             $params,
@@ -105,6 +110,7 @@ final class SettingsRawService implements SettingsRawContract
      * @param array{
      *   id: string, language?: string, primaryLanguage?: string, slug?: string
      * }|SettingCreateLanguageVariationParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Blog>
      *
@@ -112,7 +118,7 @@ final class SettingsRawService implements SettingsRawContract
      */
     public function createLanguageVariation(
         array|SettingCreateLanguageVariationParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = SettingCreateLanguageVariationParams::parseRequest(
             $params,
@@ -133,6 +139,7 @@ final class SettingsRawService implements SettingsRawContract
      * @api
      *
      * @param array{id: string}|SettingDetachFromLangGroupParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -140,7 +147,7 @@ final class SettingsRawService implements SettingsRawContract
      */
     public function detachFromLangGroup(
         array|SettingDetachFromLangGroupParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = SettingDetachFromLangGroupParams::parseRequest(
             $params,
@@ -160,13 +167,15 @@ final class SettingsRawService implements SettingsRawContract
     /**
      * @api
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @return BaseResponse<Blog>
      *
      * @throws APIException
      */
     public function get(
         string $blogID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -181,6 +190,7 @@ final class SettingsRawService implements SettingsRawContract
      * @api
      *
      * @param array{blogID: string}|SettingGetRevisionParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<VersionBlog>
      *
@@ -189,7 +199,7 @@ final class SettingsRawService implements SettingsRawContract
     public function getRevision(
         string $revisionID,
         array|SettingGetRevisionParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = SettingGetRevisionParams::parseRequest(
             $params,
@@ -217,6 +227,7 @@ final class SettingsRawService implements SettingsRawContract
      * @param array{
      *   after?: string, before?: string, limit?: int
      * }|SettingListRevisionsParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<VersionBlog>>
      *
@@ -225,7 +236,7 @@ final class SettingsRawService implements SettingsRawContract
     public function listRevisions(
         string $blogID,
         array|SettingListRevisionsParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = SettingListRevisionsParams::parseRequest(
             $params,
@@ -247,6 +258,7 @@ final class SettingsRawService implements SettingsRawContract
      * @api
      *
      * @param array{id: string}|SettingSetNewLangPrimaryParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -254,7 +266,7 @@ final class SettingsRawService implements SettingsRawContract
      */
     public function setNewLangPrimary(
         array|SettingSetNewLangPrimaryParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = SettingSetNewLangPrimaryParams::parseRequest(
             $params,
@@ -277,6 +289,7 @@ final class SettingsRawService implements SettingsRawContract
      * @param array{
      *   languages: array<string,string>, primaryID: string
      * }|SettingUpdateLanguagesParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -284,7 +297,7 @@ final class SettingsRawService implements SettingsRawContract
      */
     public function updateLanguages(
         array|SettingUpdateLanguagesParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = SettingUpdateLanguagesParams::parseRequest(
             $params,

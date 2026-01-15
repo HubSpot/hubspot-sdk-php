@@ -10,6 +10,9 @@ use HubspotSDK\Core\Util;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\SubscriptionsContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class SubscriptionsService implements SubscriptionsContract
 {
     /**
@@ -31,12 +34,13 @@ final class SubscriptionsService implements SubscriptionsContract
      * Cancel an active commerce subscription using the subscription ID.
      *
      * @param int $objectID subscription CRM id
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function cancel(
         int $objectID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): string {
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->cancel($objectID, requestOptions: $requestOptions);
@@ -50,13 +54,14 @@ final class SubscriptionsService implements SubscriptionsContract
      * Pause an active subscription using the subscription ID.
      *
      * @param int $objectID subscription CRM id
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function pause(
         int $objectID,
         ?string $pauseReason = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): string {
         $params = Util::removeNulls(['pauseReason' => $pauseReason]);
 
@@ -72,13 +77,14 @@ final class SubscriptionsService implements SubscriptionsContract
      * Resume a previously paused subscription using the subscription ID.
      *
      * @param int $objectID subscription CRM id
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function unpause(
         int $objectID,
         int $proposedNextBillingDate,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): string {
         $params = Util::removeNulls(
             ['proposedNextBillingDate' => $proposedNextBillingDate]

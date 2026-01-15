@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Cms\MediaBridge;
 
 use HubspotSDK\Client;
+use HubspotSDK\Cms\MediaBridge\AttentionSpanCalculatedValues;
 use HubspotSDK\Cms\MediaBridge\AttentionSpanEvent;
 use HubspotSDK\Cms\MediaBridge\Events\EventCreateAttentionSpanEventParams;
 use HubspotSDK\Cms\MediaBridge\Events\EventCreateAttentionSpanEventParams\MediaType;
@@ -18,6 +19,10 @@ use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Cms\MediaBridge\EventsRawContract;
 
+/**
+ * @phpstan-import-type AttentionSpanCalculatedValuesShape from \HubspotSDK\Cms\MediaBridge\AttentionSpanCalculatedValues
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class EventsRawService implements EventsRawContract
 {
     // @phpstan-ignore-next-line
@@ -32,14 +37,14 @@ final class EventsRawService implements EventsRawContract
      * Create an event containing the viewers attention span details for the media.
      *
      * @param array{
-     *   mediaType: 'AUDIO'|'DOCUMENT'|'IMAGE'|'OTHER'|'VIDEO'|MediaType,
+     *   mediaType: MediaType|value-of<MediaType>,
      *   occurredTimestamp: int,
      *   rawDataMap: array<string,int>,
      *   sessionID: string,
      *   _hsenc?: string,
      *   contactID?: int,
      *   contactUtk?: string,
-     *   derivedValues?: array{totalPercentPlayed: float, totalSecondsPlayed: int},
+     *   derivedValues?: AttentionSpanCalculatedValues|AttentionSpanCalculatedValuesShape,
      *   externalID?: string,
      *   mediaBridgeID?: int,
      *   mediaName?: string,
@@ -49,6 +54,7 @@ final class EventsRawService implements EventsRawContract
      *   pageURL?: string,
      *   rawDataString?: string,
      * }|EventCreateAttentionSpanEventParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<AttentionSpanEvent>
      *
@@ -56,7 +62,7 @@ final class EventsRawService implements EventsRawContract
      */
     public function createAttentionSpanEvent(
         array|EventCreateAttentionSpanEventParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = EventCreateAttentionSpanEventParams::parseRequest(
             $params,
@@ -79,10 +85,10 @@ final class EventsRawService implements EventsRawContract
      * Create an event for when a user begins playing a piece of media.
      *
      * @param array{
-     *   mediaType: 'AUDIO'|'DOCUMENT'|'IMAGE'|'OTHER'|'VIDEO'|EventCreateMediaPlayedEventParams\MediaType,
+     *   mediaType: EventCreateMediaPlayedEventParams\MediaType|value-of<EventCreateMediaPlayedEventParams\MediaType>,
      *   occurredTimestamp: int,
      *   sessionID: string,
-     *   state: 'STARTED'|'VIEWED'|State,
+     *   state: State|value-of<State>,
      *   _hsenc?: string,
      *   contactID?: int,
      *   contactUtk?: string,
@@ -95,6 +101,7 @@ final class EventsRawService implements EventsRawContract
      *   pageName?: string,
      *   pageURL?: string,
      * }|EventCreateMediaPlayedEventParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<MediaPlayedEvent>
      *
@@ -102,7 +109,7 @@ final class EventsRawService implements EventsRawContract
      */
     public function createMediaPlayedEvent(
         array|EventCreateMediaPlayedEventParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = EventCreateMediaPlayedEventParams::parseRequest(
             $params,
@@ -125,7 +132,7 @@ final class EventsRawService implements EventsRawContract
      * Create an event representing a user reaching quarterly milestones in a piece of media they're viewing.
      *
      * @param array{
-     *   mediaType: 'AUDIO'|'DOCUMENT'|'IMAGE'|'OTHER'|'VIDEO'|EventCreateMediaPlayedPercentEventParams\MediaType,
+     *   mediaType: EventCreateMediaPlayedPercentEventParams\MediaType|value-of<EventCreateMediaPlayedPercentEventParams\MediaType>,
      *   occurredTimestamp: int,
      *   playedPercent: int,
      *   sessionID: string,
@@ -140,6 +147,7 @@ final class EventsRawService implements EventsRawContract
      *   pageName?: string,
      *   pageURL?: string,
      * }|EventCreateMediaPlayedPercentEventParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<MediaPlayedPercentageEvent>
      *
@@ -147,7 +155,7 @@ final class EventsRawService implements EventsRawContract
      */
     public function createMediaPlayedPercentEvent(
         array|EventCreateMediaPlayedPercentEventParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = EventCreateMediaPlayedPercentEventParams::parseRequest(
             $params,

@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-import-type MarketingEventPublicUpdateRequestFullV2Shape from \HubspotSDK\Marketing\Events\MarketingEventPublicUpdateRequestFullV2
  *
  * @phpstan-type BatchInputMarketingEventPublicUpdateRequestFullV2Shape = array{
- *   inputs: list<MarketingEventPublicUpdateRequestFullV2Shape>
+ *   inputs: list<MarketingEventPublicUpdateRequestFullV2|MarketingEventPublicUpdateRequestFullV2Shape>,
  * }
  */
 final class BatchInputMarketingEventPublicUpdateRequestFullV2 implements BaseModel
@@ -48,7 +48,7 @@ final class BatchInputMarketingEventPublicUpdateRequestFullV2 implements BaseMod
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<MarketingEventPublicUpdateRequestFullV2Shape> $inputs
+     * @param list<MarketingEventPublicUpdateRequestFullV2|MarketingEventPublicUpdateRequestFullV2Shape> $inputs
      */
     public static function with(array $inputs): self
     {
@@ -60,7 +60,7 @@ final class BatchInputMarketingEventPublicUpdateRequestFullV2 implements BaseMod
     }
 
     /**
-     * @param list<MarketingEventPublicUpdateRequestFullV2Shape> $inputs
+     * @param list<MarketingEventPublicUpdateRequestFullV2|MarketingEventPublicUpdateRequestFullV2Shape> $inputs
      */
     public function withInputs(array $inputs): self
     {

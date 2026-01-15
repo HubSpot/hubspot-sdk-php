@@ -11,6 +11,9 @@ use HubspotSDK\Automation\Actions\PublicActionFunctionIdentifier;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface FunctionsContract
 {
     /**
@@ -18,19 +21,21 @@ interface FunctionsContract
      *
      * @param string $definitionID the ID of the definition
      * @param int $appID the ID of the app
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function list(
         string $definitionID,
         int $appID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): CollectionResponsePublicActionFunctionIdentifierNoPaging;
 
     /**
      * @api
      *
-     * @param 'POST_ACTION_EXECUTION'|'POST_FETCH_OPTIONS'|'PRE_ACTION_EXECUTION'|'PRE_FETCH_OPTIONS'|FunctionType $functionType
+     * @param FunctionType|value-of<FunctionType> $functionType
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -38,8 +43,8 @@ interface FunctionsContract
         string $functionID,
         int $appID,
         string $definitionID,
-        string|FunctionType $functionType,
-        ?RequestOptions $requestOptions = null,
+        FunctionType|string $functionType,
+        RequestOptions|array|null $requestOptions = null,
     ): mixed;
 
     /**
@@ -48,8 +53,9 @@ interface FunctionsContract
      * @param string $functionID path param: The ID of the function
      * @param int $appID path param: The ID of the app
      * @param string $definitionID path param: The ID of the definition
-     * @param 'POST_ACTION_EXECUTION'|'POST_FETCH_OPTIONS'|'PRE_ACTION_EXECUTION'|'PRE_FETCH_OPTIONS'|\HubspotSDK\Automation\Actions\Functions\FunctionCreateOrReplaceParams\FunctionType $functionType Path param: The type of function. Can be `PRE_ACTION_EXECUTION`, `PRE_FETCH_OPTIONS`, `POST_FETCH_OPTIONS`, `POST_ACTION_EXECUTION`.
-     * @param string $body Body param:
+     * @param \HubspotSDK\Automation\Actions\Functions\FunctionCreateOrReplaceParams\FunctionType|value-of<\HubspotSDK\Automation\Actions\Functions\FunctionCreateOrReplaceParams\FunctionType> $functionType Path param: The type of function. Can be `PRE_ACTION_EXECUTION`, `PRE_FETCH_OPTIONS`, `POST_FETCH_OPTIONS`, `POST_ACTION_EXECUTION`.
+     * @param string $body Body param
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -57,18 +63,19 @@ interface FunctionsContract
         string $functionID,
         int $appID,
         string $definitionID,
-        string|\HubspotSDK\Automation\Actions\Functions\FunctionCreateOrReplaceParams\FunctionType $functionType,
+        \HubspotSDK\Automation\Actions\Functions\FunctionCreateOrReplaceParams\FunctionType|string $functionType,
         string $body,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): PublicActionFunctionIdentifier;
 
     /**
      * @api
      *
-     * @param \HubspotSDK\Automation\Actions\Functions\FunctionCreateOrReplaceByFunctionTypeParams\FunctionType|value-of<\HubspotSDK\Automation\Actions\Functions\FunctionCreateOrReplaceByFunctionTypeParams\FunctionType> $functionType Path param: The type of function. Can be `PRE_ACTION_EXECUTION`, `PRE_FETCH_OPTIONS`, `POST_FETCH_OPTIONS`, `POST_ACTION_EXECUTION`.
+     * @param \HubspotSDK\Automation\Actions\Functions\FunctionCreateOrReplaceByFunctionTypeParams\FunctionType|string $functionType Path param: The type of function. Can be `PRE_ACTION_EXECUTION`, `PRE_FETCH_OPTIONS`, `POST_FETCH_OPTIONS`, `POST_ACTION_EXECUTION`.
      * @param int $appID path param: The ID of the app
      * @param string $definitionID path param: The ID of the definition
-     * @param string $body Body param:
+     * @param string $body Body param
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -77,15 +84,16 @@ interface FunctionsContract
         int $appID,
         string $definitionID,
         string $body,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): PublicActionFunctionIdentifier;
 
     /**
      * @api
      *
-     * @param \HubspotSDK\Automation\Actions\Functions\FunctionDeleteByFunctionTypeParams\FunctionType|value-of<\HubspotSDK\Automation\Actions\Functions\FunctionDeleteByFunctionTypeParams\FunctionType> $functionType The type of function. Can be `PRE_ACTION_EXECUTION`, `PRE_FETCH_OPTIONS`, `POST_FETCH_OPTIONS`, `POST_ACTION_EXECUTION`.
+     * @param \HubspotSDK\Automation\Actions\Functions\FunctionDeleteByFunctionTypeParams\FunctionType|string $functionType The type of function. Can be `PRE_ACTION_EXECUTION`, `PRE_FETCH_OPTIONS`, `POST_FETCH_OPTIONS`, `POST_ACTION_EXECUTION`.
      * @param int $appID the ID of the app
      * @param string $definitionID the ID of the definition
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -93,7 +101,7 @@ interface FunctionsContract
         \HubspotSDK\Automation\Actions\Functions\FunctionDeleteByFunctionTypeParams\FunctionType|string $functionType,
         int $appID,
         string $definitionID,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): mixed;
 
     /**
@@ -102,7 +110,8 @@ interface FunctionsContract
      * @param string $functionID the ID of the function
      * @param int $appID the ID of the app
      * @param string $definitionID the ID of the definition
-     * @param 'POST_ACTION_EXECUTION'|'POST_FETCH_OPTIONS'|'PRE_ACTION_EXECUTION'|'PRE_FETCH_OPTIONS'|\HubspotSDK\Automation\Actions\Functions\FunctionGetParams\FunctionType $functionType The type of function. Can be `PRE_ACTION_EXECUTION`, `PRE_FETCH_OPTIONS`, `POST_FETCH_OPTIONS`, `POST_ACTION_EXECUTION`.
+     * @param \HubspotSDK\Automation\Actions\Functions\FunctionGetParams\FunctionType|value-of<\HubspotSDK\Automation\Actions\Functions\FunctionGetParams\FunctionType> $functionType The type of function. Can be `PRE_ACTION_EXECUTION`, `PRE_FETCH_OPTIONS`, `POST_FETCH_OPTIONS`, `POST_ACTION_EXECUTION`.
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -110,16 +119,17 @@ interface FunctionsContract
         string $functionID,
         int $appID,
         string $definitionID,
-        string|\HubspotSDK\Automation\Actions\Functions\FunctionGetParams\FunctionType $functionType,
-        ?RequestOptions $requestOptions = null,
+        \HubspotSDK\Automation\Actions\Functions\FunctionGetParams\FunctionType|string $functionType,
+        RequestOptions|array|null $requestOptions = null,
     ): PublicActionFunction;
 
     /**
      * @api
      *
-     * @param \HubspotSDK\Automation\Actions\Functions\FunctionGetByFunctionTypeParams\FunctionType|value-of<\HubspotSDK\Automation\Actions\Functions\FunctionGetByFunctionTypeParams\FunctionType> $functionType The type of function. Can be `PRE_ACTION_EXECUTION`, `PRE_FETCH_OPTIONS`, `POST_FETCH_OPTIONS`, `POST_ACTION_EXECUTION`.
+     * @param \HubspotSDK\Automation\Actions\Functions\FunctionGetByFunctionTypeParams\FunctionType|string $functionType The type of function. Can be `PRE_ACTION_EXECUTION`, `PRE_FETCH_OPTIONS`, `POST_FETCH_OPTIONS`, `POST_ACTION_EXECUTION`.
      * @param int $appID the ID of the app
      * @param string $definitionID the ID of the definition
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -127,6 +137,6 @@ interface FunctionsContract
         \HubspotSDK\Automation\Actions\Functions\FunctionGetByFunctionTypeParams\FunctionType|string $functionType,
         int $appID,
         string $definitionID,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): PublicActionFunction;
 }

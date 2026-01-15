@@ -15,6 +15,9 @@ use HubspotSDK\Services\Conversations\CustomChannels\ChannelAccountsService;
 use HubspotSDK\Services\Conversations\CustomChannels\ChannelAccountStagingTokensService;
 use HubspotSDK\Services\Conversations\CustomChannels\MessagesService;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class CustomChannelsService implements CustomChannelsContract
 {
     /**
@@ -54,6 +57,7 @@ final class CustomChannelsService implements CustomChannelsContract
      * Register a new channel along with its capabilities and the webhook url that will be used to receive messages published over the channel
      *
      * @param array<string,mixed> $capabilities
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -64,7 +68,7 @@ final class CustomChannelsService implements CustomChannelsContract
         ?string $channelDescription = null,
         ?string $channelLogoURL = null,
         ?string $webhookURL = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): PublicChannelIntegrationChannel {
         $params = Util::removeNulls(
             [
@@ -90,6 +94,7 @@ final class CustomChannelsService implements CustomChannelsContract
      *
      * @param int $channelID the ID of the channel to update
      * @param array<string,mixed> $capabilities
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -101,7 +106,7 @@ final class CustomChannelsService implements CustomChannelsContract
         mixed $channelLogoURL,
         mixed $name,
         mixed $webhookURL,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): PublicChannelIntegrationChannel {
         $params = Util::removeNulls(
             [
@@ -129,6 +134,7 @@ final class CustomChannelsService implements CustomChannelsContract
      * @param int $defaultPageLength specify the default number of results to return per page
      * @param int $limit the maximum number of results to display per page
      * @param list<string> $sort specify the sorting order for the results
+     * @param RequestOpts|null $requestOptions
      *
      * @return Page<PublicChannelIntegrationChannel>
      *
@@ -139,7 +145,7 @@ final class CustomChannelsService implements CustomChannelsContract
         ?int $defaultPageLength = null,
         ?int $limit = null,
         ?array $sort = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): Page {
         $params = Util::removeNulls(
             [
@@ -161,11 +167,13 @@ final class CustomChannelsService implements CustomChannelsContract
      *
      * Archive an existing registered custom channel
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @throws APIException
      */
     public function delete(
         int $channelID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): mixed {
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->delete($channelID, requestOptions: $requestOptions);
@@ -178,11 +186,13 @@ final class CustomChannelsService implements CustomChannelsContract
      *
      * Retrieve the details about a custom channel. This API allows you to see a custom channel's current capabilties and other configuration metadata
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @throws APIException
      */
     public function get(
         int $channelID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): PublicChannelIntegrationChannel {
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->get($channelID, requestOptions: $requestOptions);

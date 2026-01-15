@@ -10,9 +10,16 @@ use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\BatchResponseSimplePublicObject;
 use HubspotSDK\Crm\Objects\PartnerServices\Batch\BatchGetParams;
 use HubspotSDK\Crm\Objects\PartnerServices\Batch\BatchUpdateParams;
+use HubspotSDK\Crm\SimplePublicObjectBatchInput;
+use HubspotSDK\Crm\SimplePublicObjectID;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Objects\PartnerServices\BatchRawContract;
 
+/**
+ * @phpstan-import-type SimplePublicObjectBatchInputShape from \HubspotSDK\Crm\SimplePublicObjectBatchInput
+ * @phpstan-import-type SimplePublicObjectIDShape from \HubspotSDK\Crm\SimplePublicObjectID
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class BatchRawService implements BatchRawContract
 {
     // @phpstan-ignore-next-line
@@ -27,13 +34,9 @@ final class BatchRawService implements BatchRawContract
      * Update a batch of partner services by internal ID, or unique property values
      *
      * @param array{
-     *   inputs: list<array{
-     *     id: string,
-     *     properties: array<string,string>,
-     *     idProperty?: string,
-     *     objectWriteTraceID?: string,
-     *   }>,
+     *   inputs: list<SimplePublicObjectBatchInput|SimplePublicObjectBatchInputShape>
      * }|BatchUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BatchResponseSimplePublicObject>
      *
@@ -41,7 +44,7 @@ final class BatchRawService implements BatchRawContract
      */
     public function update(
         array|BatchUpdateParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = BatchUpdateParams::parseRequest(
             $params,
@@ -64,12 +67,13 @@ final class BatchRawService implements BatchRawContract
      * Retrieve records by record ID or include the `idProperty` parameter to retrieve records by a custom unique value property.
      *
      * @param array{
-     *   inputs: list<array{id: string}>,
+     *   inputs: list<SimplePublicObjectID|SimplePublicObjectIDShape>,
      *   properties: list<string>,
      *   propertiesWithHistory: list<string>,
      *   archived?: bool,
      *   idProperty?: string,
      * }|BatchGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BatchResponseSimplePublicObject>
      *
@@ -77,7 +81,7 @@ final class BatchRawService implements BatchRawContract
      */
     public function get(
         array|BatchGetParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = BatchGetParams::parseRequest(
             $params,

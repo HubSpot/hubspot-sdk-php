@@ -17,7 +17,7 @@ use HubspotSDK\Crm\Extensions\Calling\Transcripts\TranscriptResponse\TranscriptS
  *   createdAt: \DateTimeInterface,
  *   engagementID: int,
  *   transcriptSource: TranscriptSource|value-of<TranscriptSource>,
- *   transcriptUtterances: list<TranscriptUtteranceShape>,
+ *   transcriptUtterances: list<TranscriptUtterance|TranscriptUtteranceShape>,
  *   updatedAt: \DateTimeInterface,
  * }
  */
@@ -84,7 +84,7 @@ final class TranscriptResponse implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param TranscriptSource|value-of<TranscriptSource> $transcriptSource
-     * @param list<TranscriptUtteranceShape> $transcriptUtterances
+     * @param list<TranscriptUtterance|TranscriptUtteranceShape> $transcriptUtterances
      */
     public static function with(
         string $id,
@@ -143,7 +143,7 @@ final class TranscriptResponse implements BaseModel
     }
 
     /**
-     * @param list<TranscriptUtteranceShape> $transcriptUtterances
+     * @param list<TranscriptUtterance|TranscriptUtteranceShape> $transcriptUtterances
      */
     public function withTranscriptUtterances(array $transcriptUtterances): self
     {

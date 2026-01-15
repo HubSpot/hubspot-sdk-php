@@ -15,6 +15,9 @@ use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\Properties\PropertyGroup;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface GroupsRawContract
 {
     /**
@@ -22,6 +25,7 @@ interface GroupsRawContract
      *
      * @param string $objectType path param: The object type to create the new property group for
      * @param array<string,mixed>|GroupCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PropertyGroup>
      *
@@ -30,7 +34,7 @@ interface GroupsRawContract
     public function create(
         string $objectType,
         array|GroupCreateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -38,6 +42,7 @@ interface GroupsRawContract
      *
      * @param string $objectType the type of object to get the property groups for
      * @param array<string,mixed>|GroupListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CollectionResponsePropertyGroupNoPaging>
      *
@@ -46,7 +51,7 @@ interface GroupsRawContract
     public function list(
         string $objectType,
         array|GroupListParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -54,6 +59,7 @@ interface GroupsRawContract
      *
      * @param string $groupName the name of the property group to be deleted
      * @param array<string,mixed>|GroupDeleteByNameParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -62,7 +68,7 @@ interface GroupsRawContract
     public function deleteByName(
         string $groupName,
         array|GroupDeleteByNameParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -70,6 +76,7 @@ interface GroupsRawContract
      *
      * @param string $groupName the name for the property group you want to get the details for
      * @param array<string,mixed>|GroupGetByNameParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PropertyGroup>
      *
@@ -78,7 +85,7 @@ interface GroupsRawContract
     public function getByName(
         string $groupName,
         array|GroupGetByNameParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -86,6 +93,7 @@ interface GroupsRawContract
      *
      * @param string $groupName path param: The name of the property group to update
      * @param array<string,mixed>|GroupUpdateByNameParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PropertyGroup>
      *
@@ -94,6 +102,6 @@ interface GroupsRawContract
     public function updateByName(
         string $groupName,
         array|GroupUpdateByNameParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

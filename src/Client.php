@@ -22,6 +22,10 @@ use HubspotSDK\Services\SchedulerService;
 use HubspotSDK\Services\SettingsService;
 use HubspotSDK\Services\WebhooksService;
 
+/**
+ * @phpstan-import-type NormalizedRequest from \HubspotSDK\Core\BaseClient
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 class Client extends BaseClient
 {
     /**
@@ -89,18 +93,25 @@ class Client extends BaseClient
      */
     public WebhooksService $webhooks;
 
+    /**
+     * @param RequestOpts|null $requestOptions
+     */
     public function __construct(
         public ?string $accessToken = null,
         public ?string $developerAPIKey = null,
         ?string $baseUrl = null,
+        RequestOptions|array|null $requestOptions = null,
     ) {
         $baseUrl ??= getenv('HUBSPOT_BASE_URL') ?: 'https://api.hubapi.com';
 
-        $options = RequestOptions::with(
-            uriFactory: Psr17FactoryDiscovery::findUriFactory(),
-            streamFactory: Psr17FactoryDiscovery::findStreamFactory(),
-            requestFactory: Psr17FactoryDiscovery::findRequestFactory(),
-            transporter: Psr18ClientDiscovery::find(),
+        $options = RequestOptions::parse(
+            RequestOptions::with(
+                uriFactory: Psr17FactoryDiscovery::findUriFactory(),
+                streamFactory: Psr17FactoryDiscovery::findStreamFactory(),
+                requestFactory: Psr17FactoryDiscovery::findRequestFactory(),
+                transporter: Psr18ClientDiscovery::find(),
+            ),
+            $requestOptions,
         );
 
         parent::__construct(
@@ -146,5 +157,33 @@ class Client extends BaseClient
     protected function authQuery(): array
     {
         return $this->developerAPIKey ? ['hapikey' => $this->developerAPIKey] : [];
+    }
+
+    /**
+     * @internal
+     *
+     * @param string|list<string> $path
+     * @param array<string,mixed> $query
+     * @param array<string,string|int|list<string|int>|null> $headers
+     * @param RequestOpts|null $opts
+     *
+     * @return array{NormalizedRequest, RequestOptions}
+     */
+    protected function buildRequest(
+        string $method,
+        string|array $path,
+        array $query,
+        array $headers,
+        mixed $body,
+        RequestOptions|array|null $opts,
+    ): array {
+        return parent::buildRequest(
+            method: $method,
+            path: $path,
+            query: [...$this->authQuery(), ...$query],
+            headers: [...$this->authHeaders(), ...$headers],
+            body: $body,
+            opts: $opts,
+        );
     }
 }

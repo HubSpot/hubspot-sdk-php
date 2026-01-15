@@ -12,6 +12,9 @@ use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface SiteSearchRawContract
 {
     /**
@@ -19,6 +22,7 @@ interface SiteSearchRawContract
      *
      * @param string $contentID ID of the target document when searching for indexed properties
      * @param array<string,mixed>|SiteSearchGetIndexedDataParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<IndexedData>
      *
@@ -27,13 +31,14 @@ interface SiteSearchRawContract
     public function getIndexedData(
         string $contentID,
         array|SiteSearchGetIndexedDataParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|SiteSearchSearchParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicSearchResults>
      *
@@ -41,6 +46,6 @@ interface SiteSearchRawContract
      */
     public function search(
         array|SiteSearchSearchParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

@@ -17,6 +17,9 @@ use HubspotSDK\Crm\Pipelines\PipelineReplaceParams;
 use HubspotSDK\Crm\Pipelines\PipelineUpdateParams;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface PipelinesRawContract
 {
     /**
@@ -24,6 +27,7 @@ interface PipelinesRawContract
      *
      * @param string $objectType The object type of the pipeline being created (ex. deals or tickets)
      * @param array<string,mixed>|PipelineCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Pipeline>
      *
@@ -32,7 +36,7 @@ interface PipelinesRawContract
     public function create(
         string $objectType,
         array|PipelineCreateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -40,6 +44,7 @@ interface PipelinesRawContract
      *
      * @param string $pipelineID path param: The unique identifier of the pipeline to be updated
      * @param array<string,mixed>|PipelineUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Pipeline>
      *
@@ -48,13 +53,14 @@ interface PipelinesRawContract
     public function update(
         string $pipelineID,
         array|PipelineUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param string $objectType The object type of the pipelines being retrieved (ex. deals or tickets)
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CollectionResponsePipelineNoPaging>
      *
@@ -62,7 +68,7 @@ interface PipelinesRawContract
      */
     public function list(
         string $objectType,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 
     /**
@@ -70,6 +76,7 @@ interface PipelinesRawContract
      *
      * @param string $pipelineID path param: The unique identifier of the pipeline to be deleted
      * @param array<string,mixed>|PipelineDeleteParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -78,7 +85,7 @@ interface PipelinesRawContract
     public function delete(
         string $pipelineID,
         array|PipelineDeleteParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -86,6 +93,7 @@ interface PipelinesRawContract
      *
      * @param string $pipelineID the unique identifier of the pipeline to be retrieved
      * @param array<string,mixed>|PipelineGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Pipeline>
      *
@@ -94,7 +102,7 @@ interface PipelinesRawContract
     public function get(
         string $pipelineID,
         array|PipelineGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -102,6 +110,7 @@ interface PipelinesRawContract
      *
      * @param string $pipelineID the unique identifier for the pipeline whose audit history is being retrieved
      * @param array<string,mixed>|PipelineGetAuditParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CollectionResponsePublicAuditInfoNoPaging>
      *
@@ -110,7 +119,7 @@ interface PipelinesRawContract
     public function getAudit(
         string $pipelineID,
         array|PipelineGetAuditParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -118,6 +127,7 @@ interface PipelinesRawContract
      *
      * @param string $pipelineID path param: The unique identifier of the pipeline to be replaced
      * @param array<string,mixed>|PipelineReplaceParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Pipeline>
      *
@@ -126,6 +136,6 @@ interface PipelinesRawContract
     public function replace(
         string $pipelineID,
         array|PipelineReplaceParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

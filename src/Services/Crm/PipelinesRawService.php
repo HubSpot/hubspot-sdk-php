@@ -15,10 +15,15 @@ use HubspotSDK\Crm\Pipelines\PipelineDeleteParams;
 use HubspotSDK\Crm\Pipelines\PipelineGetAuditParams;
 use HubspotSDK\Crm\Pipelines\PipelineGetParams;
 use HubspotSDK\Crm\Pipelines\PipelineReplaceParams;
+use HubspotSDK\Crm\Pipelines\PipelineStageInput;
 use HubspotSDK\Crm\Pipelines\PipelineUpdateParams;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\PipelinesRawContract;
 
+/**
+ * @phpstan-import-type PipelineStageInputShape from \HubspotSDK\Crm\Pipelines\PipelineStageInput
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class PipelinesRawService implements PipelinesRawContract
 {
     // @phpstan-ignore-next-line
@@ -36,10 +41,9 @@ final class PipelinesRawService implements PipelinesRawContract
      * @param array{
      *   displayOrder: int,
      *   label: string,
-     *   stages: list<array{
-     *     displayOrder: int, label: string, metadata: array<string,string>
-     *   }>,
+     *   stages: list<PipelineStageInput|PipelineStageInputShape>,
      * }|PipelineCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Pipeline>
      *
@@ -48,7 +52,7 @@ final class PipelinesRawService implements PipelinesRawContract
     public function create(
         string $objectType,
         array|PipelineCreateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = PipelineCreateParams::parseRequest(
             $params,
@@ -79,6 +83,7 @@ final class PipelinesRawService implements PipelinesRawContract
      *   displayOrder?: int,
      *   label?: string,
      * }|PipelineUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Pipeline>
      *
@@ -87,7 +92,7 @@ final class PipelinesRawService implements PipelinesRawContract
     public function update(
         string $pipelineID,
         array|PipelineUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = PipelineUpdateParams::parseRequest(
             $params,
@@ -119,6 +124,7 @@ final class PipelinesRawService implements PipelinesRawContract
      * Return all pipelines for the object type specified by `{objectType}`.
      *
      * @param string $objectType The object type of the pipelines being retrieved (ex. deals or tickets)
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CollectionResponsePipelineNoPaging>
      *
@@ -126,7 +132,7 @@ final class PipelinesRawService implements PipelinesRawContract
      */
     public function list(
         string $objectType,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -148,6 +154,7 @@ final class PipelinesRawService implements PipelinesRawContract
      *   validateDealStageUsagesBeforeDelete?: bool,
      *   validateReferencesBeforeDelete?: bool,
      * }|PipelineDeleteParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -156,7 +163,7 @@ final class PipelinesRawService implements PipelinesRawContract
     public function delete(
         string $pipelineID,
         array|PipelineDeleteParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = PipelineDeleteParams::parseRequest(
             $params,
@@ -182,6 +189,7 @@ final class PipelinesRawService implements PipelinesRawContract
      *
      * @param string $pipelineID the unique identifier of the pipeline to be retrieved
      * @param array{objectType: string}|PipelineGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Pipeline>
      *
@@ -190,7 +198,7 @@ final class PipelinesRawService implements PipelinesRawContract
     public function get(
         string $pipelineID,
         array|PipelineGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = PipelineGetParams::parseRequest(
             $params,
@@ -215,6 +223,7 @@ final class PipelinesRawService implements PipelinesRawContract
      *
      * @param string $pipelineID the unique identifier for the pipeline whose audit history is being retrieved
      * @param array{objectType: string}|PipelineGetAuditParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CollectionResponsePublicAuditInfoNoPaging>
      *
@@ -223,7 +232,7 @@ final class PipelinesRawService implements PipelinesRawContract
     public function getAudit(
         string $pipelineID,
         array|PipelineGetAuditParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = PipelineGetAuditParams::parseRequest(
             $params,
@@ -251,12 +260,11 @@ final class PipelinesRawService implements PipelinesRawContract
      *   objectType: string,
      *   displayOrder: int,
      *   label: string,
-     *   stages: list<array{
-     *     displayOrder: int, label: string, metadata: array<string,string>
-     *   }>,
+     *   stages: list<PipelineStageInput|PipelineStageInputShape>,
      *   validateDealStageUsagesBeforeDelete?: bool,
      *   validateReferencesBeforeDelete?: bool,
      * }|PipelineReplaceParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Pipeline>
      *
@@ -265,7 +273,7 @@ final class PipelinesRawService implements PipelinesRawContract
     public function replace(
         string $pipelineID,
         array|PipelineReplaceParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = PipelineReplaceParams::parseRequest(
             $params,

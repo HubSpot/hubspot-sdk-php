@@ -11,6 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicSurveyMonkeyValueFilter\FilterType;
 
 /**
+ * @phpstan-import-type ValueComparisonVariants from \HubspotSDK\PublicSurveyMonkeyValueFilter\ValueComparison
  * @phpstan-import-type ValueComparisonShape from \HubspotSDK\PublicSurveyMonkeyValueFilter\ValueComparison
  *
  * @phpstan-type PublicSurveyMonkeyValueFilterShape = array{
@@ -41,6 +42,7 @@ final class PublicSurveyMonkeyValueFilter implements BaseModel
     #[Required]
     public string $surveyQuestion;
 
+    /** @var ValueComparisonVariants $valueComparison */
     #[Required]
     public PublicBoolPropertyOperation|PublicNumberPropertyOperation|PublicStringPropertyOperation|PublicDateTimePropertyOperation|PublicRangedDatePropertyOperation|PublicComparativePropertyUpdatedOperation|PublicComparativeDatePropertyOperation|PublicRollingDateRangePropertyOperation|PublicRollingPropertyUpdatedOperation|PublicEnumerationPropertyOperation|PublicAllPropertyTypesOperation|PublicRangedNumberPropertyOperation|PublicMultiStringPropertyOperation|PublicDatePropertyOperation|PublicCalendarDatePropertyOperation|PublicTimePointOperation|PublicRangedTimeOperation $valueComparison;
 

@@ -15,7 +15,7 @@ use HubspotSDK\Webhooks\BatchResponseSubscriptionResponse\Status;
  *
  * @phpstan-type BatchResponseSubscriptionResponseShape = array{
  *   completedAt: \DateTimeInterface,
- *   results: list<SubscriptionResponseShape>,
+ *   results: list<SubscriptionResponse|SubscriptionResponseShape>,
  *   startedAt: \DateTimeInterface,
  *   status: Status|value-of<Status>,
  *   links?: array<string,string>|null,
@@ -99,7 +99,7 @@ final class BatchResponseSubscriptionResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<SubscriptionResponseShape> $results
+     * @param list<SubscriptionResponse|SubscriptionResponseShape> $results
      * @param Status|value-of<Status> $status
      * @param array<string,string>|null $links
      */
@@ -138,7 +138,7 @@ final class BatchResponseSubscriptionResponse implements BaseModel
     /**
      * The list of results from the batch operation.
      *
-     * @param list<SubscriptionResponseShape> $results
+     * @param list<SubscriptionResponse|SubscriptionResponseShape> $results
      */
     public function withResults(array $results): self
     {

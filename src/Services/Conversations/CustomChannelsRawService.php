@@ -15,6 +15,9 @@ use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Conversations\CustomChannelsRawContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class CustomChannelsRawService implements CustomChannelsRawContract
 {
     // @phpstan-ignore-next-line
@@ -36,6 +39,7 @@ final class CustomChannelsRawService implements CustomChannelsRawContract
      *   channelLogoURL?: string,
      *   webhookURL?: string,
      * }|CustomChannelCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicChannelIntegrationChannel>
      *
@@ -43,7 +47,7 @@ final class CustomChannelsRawService implements CustomChannelsRawContract
      */
     public function create(
         array|CustomChannelCreateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = CustomChannelCreateParams::parseRequest(
             $params,
@@ -74,6 +78,7 @@ final class CustomChannelsRawService implements CustomChannelsRawContract
      *   name: mixed,
      *   webhookURL: mixed,
      * }|CustomChannelUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicChannelIntegrationChannel>
      *
@@ -82,7 +87,7 @@ final class CustomChannelsRawService implements CustomChannelsRawContract
     public function update(
         int $channelID,
         array|CustomChannelUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = CustomChannelUpdateParams::parseRequest(
             $params,
@@ -107,6 +112,7 @@ final class CustomChannelsRawService implements CustomChannelsRawContract
      * @param array{
      *   after?: string, defaultPageLength?: int, limit?: int, sort?: list<string>
      * }|CustomChannelListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<PublicChannelIntegrationChannel>>
      *
@@ -114,7 +120,7 @@ final class CustomChannelsRawService implements CustomChannelsRawContract
      */
     public function list(
         array|CustomChannelListParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = CustomChannelListParams::parseRequest(
             $params,
@@ -137,13 +143,15 @@ final class CustomChannelsRawService implements CustomChannelsRawContract
      *
      * Archive an existing registered custom channel
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @return BaseResponse<mixed>
      *
      * @throws APIException
      */
     public function delete(
         int $channelID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -159,13 +167,15 @@ final class CustomChannelsRawService implements CustomChannelsRawContract
      *
      * Retrieve the details about a custom channel. This API allows you to see a custom channel's current capabilties and other configuration metadata
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @return BaseResponse<PublicChannelIntegrationChannel>
      *
      * @throws APIException
      */
     public function get(
         int $channelID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(

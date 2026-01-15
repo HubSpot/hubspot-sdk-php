@@ -14,6 +14,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type AttachmentVariants from \HubspotSDK\Conversations\ConversationsPublicConversationsMessage\Attachment
  * @phpstan-import-type AttachmentShape from \HubspotSDK\Conversations\ConversationsPublicConversationsMessage\Attachment
  * @phpstan-import-type PublicClientShape from \HubspotSDK\Conversations\PublicClient
  * @phpstan-import-type PublicRecipientShape from \HubspotSDK\Conversations\PublicRecipient
@@ -31,8 +32,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   createdAt: \DateTimeInterface,
  *   createdBy: string,
  *   direction: Direction|value-of<Direction>,
- *   recipients: list<PublicRecipientShape>,
- *   senders: list<PublicSenderShape>,
+ *   recipients: list<PublicRecipient|PublicRecipientShape>,
+ *   senders: list<PublicSender|PublicSenderShape>,
  *   text: string,
  *   truncationStatus: TruncationStatus|value-of<TruncationStatus>,
  *   type: Type|value-of<Type>,
@@ -54,9 +55,7 @@ final class ConversationsPublicConversationsMessage implements BaseModel
     #[Required]
     public bool $archived;
 
-    /**
-     * @var list<PublicFile|PublicLocation|PublicContact|PublicUnsupportedContent|PublicMessageHeader|PublicQuickReplies|PublicWhatsAppTemplateMetadata|PublicSocialMetadataAttachment> $attachments
-     */
+    /** @var list<AttachmentVariants> $attachments */
     #[Required(list: Attachment::class)]
     public array $attachments;
 
@@ -174,8 +173,8 @@ final class ConversationsPublicConversationsMessage implements BaseModel
      * @param list<AttachmentShape> $attachments
      * @param PublicClient|PublicClientShape $client
      * @param Direction|value-of<Direction> $direction
-     * @param list<PublicRecipientShape> $recipients
-     * @param list<PublicSenderShape> $senders
+     * @param list<PublicRecipient|PublicRecipientShape> $recipients
+     * @param list<PublicSender|PublicSenderShape> $senders
      * @param TruncationStatus|value-of<TruncationStatus> $truncationStatus
      * @param Type|value-of<Type> $type
      * @param PublicMessageStatus|PublicMessageStatusShape|null $status
@@ -320,7 +319,7 @@ final class ConversationsPublicConversationsMessage implements BaseModel
     }
 
     /**
-     * @param list<PublicRecipientShape> $recipients
+     * @param list<PublicRecipient|PublicRecipientShape> $recipients
      */
     public function withRecipients(array $recipients): self
     {
@@ -331,7 +330,7 @@ final class ConversationsPublicConversationsMessage implements BaseModel
     }
 
     /**
-     * @param list<PublicSenderShape> $senders
+     * @param list<PublicSender|PublicSenderShape> $senders
      */
     public function withSenders(array $senders): self
     {

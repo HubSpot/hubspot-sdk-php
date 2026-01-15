@@ -19,7 +19,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-type EventUpsertSubscriberStateByIDParamsShape = array{
  *   externalEventID: string,
  *   externalAccountID: string,
- *   inputs: list<MarketingEventSubscriberShape>,
+ *   inputs: list<MarketingEventSubscriber|MarketingEventSubscriberShape>,
  * }
  */
 final class EventUpsertSubscriberStateByIDParams implements BaseModel
@@ -74,7 +74,7 @@ final class EventUpsertSubscriberStateByIDParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<MarketingEventSubscriberShape> $inputs
+     * @param list<MarketingEventSubscriber|MarketingEventSubscriberShape> $inputs
      */
     public static function with(
         string $externalEventID,
@@ -112,7 +112,7 @@ final class EventUpsertSubscriberStateByIDParams implements BaseModel
     /**
      * List of HubSpot contacts to subscribe to the marketing event.
      *
-     * @param list<MarketingEventSubscriberShape> $inputs
+     * @param list<MarketingEventSubscriber|MarketingEventSubscriberShape> $inputs
      */
     public function withInputs(array $inputs): self
     {

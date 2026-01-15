@@ -14,12 +14,16 @@ use HubspotSDK\Crm\SimplePublicObjectWithAssociations;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface AssociationsRawContract
 {
     /**
      * @api
      *
      * @param array<string,mixed>|AssociationUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SimplePublicObjectWithAssociations>
      *
@@ -28,14 +32,15 @@ interface AssociationsRawContract
     public function update(
         string $associationType,
         array|AssociationUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
-     * @param string $toObjectType Path param:
+     * @param string $toObjectType Path param
      * @param array<string,mixed>|AssociationListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<AssociatedID>>
      *
@@ -44,13 +49,14 @@ interface AssociationsRawContract
     public function list(
         string $toObjectType,
         array|AssociationListParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|AssociationDeleteParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -59,6 +65,6 @@ interface AssociationsRawContract
     public function delete(
         string $associationType,
         array|AssociationDeleteParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

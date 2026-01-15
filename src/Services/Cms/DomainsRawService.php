@@ -13,6 +13,9 @@ use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Cms\DomainsRawContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class DomainsRawService implements DomainsRawContract
 {
     // @phpstan-ignore-next-line
@@ -29,15 +32,16 @@ final class DomainsRawService implements DomainsRawContract
      * @param array{
      *   after?: string,
      *   archived?: bool,
-     *   createdAfter?: string|\DateTimeInterface,
-     *   createdAt?: string|\DateTimeInterface,
-     *   createdBefore?: string|\DateTimeInterface,
+     *   createdAfter?: \DateTimeInterface,
+     *   createdAt?: \DateTimeInterface,
+     *   createdBefore?: \DateTimeInterface,
      *   limit?: int,
      *   sort?: list<string>,
-     *   updatedAfter?: string|\DateTimeInterface,
-     *   updatedAt?: string|\DateTimeInterface,
-     *   updatedBefore?: string|\DateTimeInterface,
+     *   updatedAfter?: \DateTimeInterface,
+     *   updatedAt?: \DateTimeInterface,
+     *   updatedBefore?: \DateTimeInterface,
      * }|DomainListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<Domain>>
      *
@@ -45,7 +49,7 @@ final class DomainsRawService implements DomainsRawContract
      */
     public function list(
         array|DomainListParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = DomainListParams::parseRequest(
             $params,
@@ -69,6 +73,7 @@ final class DomainsRawService implements DomainsRawContract
      * Returns a single domains with the id specified.
      *
      * @param string $domainID the unique ID of the domain
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Domain>
      *
@@ -76,7 +81,7 @@ final class DomainsRawService implements DomainsRawContract
      */
     public function get(
         string $domainID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(

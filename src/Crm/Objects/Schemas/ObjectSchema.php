@@ -21,10 +21,10 @@ use HubspotSDK\Property;
  *
  * @phpstan-type ObjectSchemaShape = array{
  *   id: string,
- *   associations: list<AssociationDefinitionShape>,
+ *   associations: list<AssociationDefinition|AssociationDefinitionShape>,
  *   labels: ObjectTypeDefinitionLabels|ObjectTypeDefinitionLabelsShape,
  *   name: string,
- *   properties: list<PropertyShape>,
+ *   properties: list<Property|PropertyShape>,
  *   requiredProperties: list<string>,
  *   archived?: bool|null,
  *   createdAt?: \DateTimeInterface|null,
@@ -175,9 +175,9 @@ final class ObjectSchema implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<AssociationDefinitionShape> $associations
+     * @param list<AssociationDefinition|AssociationDefinitionShape> $associations
      * @param ObjectTypeDefinitionLabels|ObjectTypeDefinitionLabelsShape $labels
-     * @param list<PropertyShape> $properties
+     * @param list<Property|PropertyShape> $properties
      * @param list<string> $requiredProperties
      * @param list<string>|null $searchableProperties
      * @param list<string>|null $secondaryDisplayProperties
@@ -239,7 +239,7 @@ final class ObjectSchema implements BaseModel
     /**
      * Associations defined for a given object type.
      *
-     * @param list<AssociationDefinitionShape> $associations
+     * @param list<AssociationDefinition|AssociationDefinitionShape> $associations
      */
     public function withAssociations(array $associations): self
     {
@@ -274,7 +274,7 @@ final class ObjectSchema implements BaseModel
     /**
      * Properties defined for this object type.
      *
-     * @param list<PropertyShape> $properties
+     * @param list<Property|PropertyShape> $properties
      */
     public function withProperties(array $properties): self
     {

@@ -18,7 +18,7 @@ use HubspotSDK\Core\Conversion\ListOf;
  * @phpstan-type StandardErrorShape = array{
  *   category: string,
  *   context: array<string,list<string>>,
- *   errors: list<ErrorDetailShape>,
+ *   errors: list<ErrorDetail|ErrorDetailShape>,
  *   links: array<string,string>,
  *   message: string,
  *   status: string,
@@ -123,7 +123,7 @@ final class StandardError implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param array<string,list<string>> $context
-     * @param list<ErrorDetailShape> $errors
+     * @param list<ErrorDetail|ErrorDetailShape> $errors
      * @param array<string,string> $links
      */
     public static function with(
@@ -178,7 +178,7 @@ final class StandardError implements BaseModel
     /**
      * The detailed error objects.
      *
-     * @param list<ErrorDetailShape> $errors
+     * @param list<ErrorDetail|ErrorDetailShape> $errors
      */
     public function withErrors(array $errors): self
     {

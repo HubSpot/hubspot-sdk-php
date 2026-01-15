@@ -7,12 +7,19 @@ namespace HubspotSDK\Services\Events;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Core\Util;
+use HubspotSDK\Events\EventDefinitions\ExternalBehavioralEventPropertyCreate;
 use HubspotSDK\Events\EventDefinitions\ExternalBehavioralEventTypeDefinition;
+use HubspotSDK\OptionInput;
 use HubspotSDK\Page;
 use HubspotSDK\Property;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Events\EventDefinitionsContract;
 
+/**
+ * @phpstan-import-type ExternalBehavioralEventPropertyCreateShape from \HubspotSDK\Events\EventDefinitions\ExternalBehavioralEventPropertyCreate
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type OptionInputShape from \HubspotSDK\OptionInput
+ */
 final class EventDefinitionsService implements EventDefinitionsContract
 {
     /**
@@ -34,22 +41,11 @@ final class EventDefinitionsService implements EventDefinitionsContract
      * Create a custom event definition.
      *
      * @param string $label Human readable label for the event. Used in HubSpot UI
-     * @param list<array{
-     *   label: string,
-     *   type: string,
-     *   description?: string,
-     *   name?: string,
-     *   options?: list<array{
-     *     displayOrder: int,
-     *     hidden: bool,
-     *     label: string,
-     *     value: string,
-     *     description?: string,
-     *   }>,
-     * }> $propertyDefinitions List of custom properties on event
+     * @param list<ExternalBehavioralEventPropertyCreate|ExternalBehavioralEventPropertyCreateShape> $propertyDefinitions List of custom properties on event
      * @param string $description a description of the event that will be shown as help text in HubSpot
      * @param string $name Internal event name, which must be used when referencing the event from this event definitions API. If a name is not supplied, one will be generated based on the label. The `name` value will also be used to automatically generate a `fullyQualifiedName` for the event definition, which you'll use when sending event completions to this event.
      * @param string $primaryObject The object type to associate this event to. Can be one of CONTACT, COMPANY, DEAL, TICKET. If no primaryObject is supplied, we will default to associating the event to CONTACT objects.
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -59,7 +55,7 @@ final class EventDefinitionsService implements EventDefinitionsContract
         ?string $description = null,
         ?string $name = null,
         ?string $primaryObject = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): ExternalBehavioralEventTypeDefinition {
         $params = Util::removeNulls(
             [
@@ -85,6 +81,7 @@ final class EventDefinitionsService implements EventDefinitionsContract
      * @param string $eventName the internal name of the custom event
      * @param string $description a description of the event that will be shown as help text in HubSpot
      * @param string $label Human readable label for the event. Used in HubSpot UI
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -92,7 +89,7 @@ final class EventDefinitionsService implements EventDefinitionsContract
         string $eventName,
         ?string $description = null,
         ?string $label = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): ExternalBehavioralEventTypeDefinition {
         $params = Util::removeNulls(
             ['description' => $description, 'label' => $label]
@@ -112,6 +109,7 @@ final class EventDefinitionsService implements EventDefinitionsContract
      * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
      * @param int $limit the maximum number of results to display per page
      * @param string $searchString Characters in the event name that the user is searching for. This search is a naive “contains” search, no fuzzy matching is done.
+     * @param RequestOpts|null $requestOptions
      *
      * @return Page<ExternalBehavioralEventTypeDefinition>
      *
@@ -123,7 +121,7 @@ final class EventDefinitionsService implements EventDefinitionsContract
         ?int $limit = null,
         ?string $searchString = null,
         ?string $sortOrder = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): Page {
         $params = Util::removeNulls(
             [
@@ -147,12 +145,13 @@ final class EventDefinitionsService implements EventDefinitionsContract
      * Delete a custom event definition by name.
      *
      * @param string $eventName the name of the event definition
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function delete(
         string $eventName,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): mixed {
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->delete($eventName, requestOptions: $requestOptions);
@@ -170,13 +169,8 @@ final class EventDefinitionsService implements EventDefinitionsContract
      * @param string $type The data type of the property. Can be one of the following: [string, number, enumeration, datetime]
      * @param string $description a description of the property that will be shown as help text in HubSpot
      * @param string $name Internal property name, which must be used when referencing the property from the API
-     * @param list<array{
-     *   displayOrder: int,
-     *   hidden: bool,
-     *   label: string,
-     *   value: string,
-     *   description?: string,
-     * }> $options A list of available options for the property if it is an enumeration. NOTE: This field is only applicable for enumerated properties.
+     * @param list<OptionInput|OptionInputShape> $options A list of available options for the property if it is an enumeration. NOTE: This field is only applicable for enumerated properties.
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -187,7 +181,7 @@ final class EventDefinitionsService implements EventDefinitionsContract
         ?string $description = null,
         ?string $name = null,
         ?array $options = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): Property {
         $params = Util::removeNulls(
             [
@@ -212,13 +206,14 @@ final class EventDefinitionsService implements EventDefinitionsContract
      *
      * @param string $propertyName the internal name of the property to delete
      * @param string $eventName the internal name of the custom event
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function deleteProperty(
         string $propertyName,
         string $eventName,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): mixed {
         $params = Util::removeNulls(['eventName' => $eventName]);
 
@@ -234,12 +229,13 @@ final class EventDefinitionsService implements EventDefinitionsContract
      * Fetch a single custom event definition by name.
      *
      * @param string $eventName the internal name of the custom event
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function get(
         string $eventName,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): ExternalBehavioralEventTypeDefinition {
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->get($eventName, requestOptions: $requestOptions);
@@ -256,13 +252,8 @@ final class EventDefinitionsService implements EventDefinitionsContract
      * @param string $eventName path param: The internal name of the custom event
      * @param string $description body param: A description of the property that will be shown as help text in HubSpot
      * @param string $label Body param: Human readable label for the property. Used in HubSpot UI
-     * @param list<array{
-     *   displayOrder: int,
-     *   hidden: bool,
-     *   label: string,
-     *   value: string,
-     *   description?: string,
-     * }> $options Body param: A list of available options for the property if it is an enumeration. NOTE: This field is only applicable for enumerated properties.
+     * @param list<OptionInput|OptionInputShape> $options Body param: A list of available options for the property if it is an enumeration. NOTE: This field is only applicable for enumerated properties.
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -272,7 +263,7 @@ final class EventDefinitionsService implements EventDefinitionsContract
         ?string $description = null,
         ?string $label = null,
         ?array $options = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): Property {
         $params = Util::removeNulls(
             [

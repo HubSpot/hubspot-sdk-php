@@ -13,6 +13,9 @@ use HubspotSDK\Crm\Associations\BatchResponsePublicAssociation;
 use HubspotSDK\Crm\Associations\BatchResponsePublicAssociationMulti;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface BatchRawContract
 {
     /**
@@ -20,6 +23,7 @@ interface BatchRawContract
      *
      * @param string $toObjectType path param: The type of the target object in the association
      * @param array<string,mixed>|BatchCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BatchResponsePublicAssociation>
      *
@@ -28,7 +32,7 @@ interface BatchRawContract
     public function create(
         string $toObjectType,
         array|BatchCreateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -36,6 +40,7 @@ interface BatchRawContract
      *
      * @param string $toObjectType path param: The type of the target object in the association
      * @param array<string,mixed>|BatchDeleteParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -44,7 +49,7 @@ interface BatchRawContract
     public function delete(
         string $toObjectType,
         array|BatchDeleteParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -52,6 +57,7 @@ interface BatchRawContract
      *
      * @param string $toObjectType path param: The type of the target object in the association
      * @param array<string,mixed>|BatchGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BatchResponsePublicAssociationMulti>
      *
@@ -60,6 +66,6 @@ interface BatchRawContract
     public function get(
         string $toObjectType,
         array|BatchGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

@@ -12,6 +12,9 @@ use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\BusinessUnitsRawContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class BusinessUnitsRawService implements BusinessUnitsRawContract
 {
     // @phpstan-ignore-next-line
@@ -29,6 +32,7 @@ final class BusinessUnitsRawService implements BusinessUnitsRawContract
      * @param array{
      *   name?: list<string>, properties?: list<string>
      * }|BusinessUnitGetByUserIDParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CollectionResponsePublicBusinessUnitNoPaging>
      *
@@ -37,7 +41,7 @@ final class BusinessUnitsRawService implements BusinessUnitsRawContract
     public function getByUserID(
         string $userID,
         array|BusinessUnitGetByUserIDParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = BusinessUnitGetByUserIDParams::parseRequest(
             $params,

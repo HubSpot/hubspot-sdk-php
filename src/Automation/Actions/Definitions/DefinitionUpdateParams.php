@@ -8,10 +8,8 @@ use HubspotSDK\Automation\Actions\Definitions\DefinitionUpdateParams\InputFieldD
 use HubspotSDK\Automation\Actions\InputFieldDefinition;
 use HubspotSDK\Automation\Actions\OutputFieldDefinition;
 use HubspotSDK\Automation\Actions\PublicActionLabels;
-use HubspotSDK\Automation\Actions\PublicConditionalSingleFieldDependency;
 use HubspotSDK\Automation\Actions\PublicExecutionTranslationRule;
 use HubspotSDK\Automation\Actions\PublicObjectRequestOptions;
-use HubspotSDK\Automation\Actions\PublicSingleFieldDependency;
 use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
@@ -23,6 +21,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Services\Automation\Actions\DefinitionsService::update()
  *
+ * @phpstan-import-type InputFieldDependencyVariants from \HubspotSDK\Automation\Actions\Definitions\DefinitionUpdateParams\InputFieldDependency
  * @phpstan-import-type PublicExecutionTranslationRuleShape from \HubspotSDK\Automation\Actions\PublicExecutionTranslationRule
  * @phpstan-import-type InputFieldDependencyShape from \HubspotSDK\Automation\Actions\Definitions\DefinitionUpdateParams\InputFieldDependency
  * @phpstan-import-type InputFieldDefinitionShape from \HubspotSDK\Automation\Actions\InputFieldDefinition
@@ -33,13 +32,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-type DefinitionUpdateParamsShape = array{
  *   appID: int,
  *   actionURL?: string|null,
- *   executionRules?: list<PublicExecutionTranslationRuleShape>|null,
+ *   executionRules?: list<PublicExecutionTranslationRule|PublicExecutionTranslationRuleShape>|null,
  *   inputFieldDependencies?: list<InputFieldDependencyShape>|null,
- *   inputFields?: list<InputFieldDefinitionShape>|null,
- *   labels?: array<string,PublicActionLabelsShape>|null,
+ *   inputFields?: list<InputFieldDefinition|InputFieldDefinitionShape>|null,
+ *   labels?: array<string,PublicActionLabels|PublicActionLabelsShape>|null,
  *   objectRequestOptions?: null|PublicObjectRequestOptions|PublicObjectRequestOptionsShape,
  *   objectTypes?: list<string>|null,
- *   outputFields?: list<OutputFieldDefinitionShape>|null,
+ *   outputFields?: list<OutputFieldDefinition|OutputFieldDefinitionShape>|null,
  *   published?: bool|null,
  * }
  */
@@ -59,9 +58,7 @@ final class DefinitionUpdateParams implements BaseModel
     #[Optional(list: PublicExecutionTranslationRule::class)]
     public ?array $executionRules;
 
-    /**
-     * @var list<PublicSingleFieldDependency|PublicConditionalSingleFieldDependency>|null $inputFieldDependencies
-     */
+    /** @var list<InputFieldDependencyVariants>|null $inputFieldDependencies */
     #[Optional(list: InputFieldDependency::class)]
     public ?array $inputFieldDependencies;
 
@@ -111,13 +108,13 @@ final class DefinitionUpdateParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicExecutionTranslationRuleShape>|null $executionRules
+     * @param list<PublicExecutionTranslationRule|PublicExecutionTranslationRuleShape>|null $executionRules
      * @param list<InputFieldDependencyShape>|null $inputFieldDependencies
-     * @param list<InputFieldDefinitionShape>|null $inputFields
-     * @param array<string,PublicActionLabelsShape>|null $labels
+     * @param list<InputFieldDefinition|InputFieldDefinitionShape>|null $inputFields
+     * @param array<string,PublicActionLabels|PublicActionLabelsShape>|null $labels
      * @param PublicObjectRequestOptions|PublicObjectRequestOptionsShape|null $objectRequestOptions
      * @param list<string>|null $objectTypes
-     * @param list<OutputFieldDefinitionShape>|null $outputFields
+     * @param list<OutputFieldDefinition|OutputFieldDefinitionShape>|null $outputFields
      */
     public static function with(
         int $appID,
@@ -165,7 +162,7 @@ final class DefinitionUpdateParams implements BaseModel
     }
 
     /**
-     * @param list<PublicExecutionTranslationRuleShape> $executionRules
+     * @param list<PublicExecutionTranslationRule|PublicExecutionTranslationRuleShape> $executionRules
      */
     public function withExecutionRules(array $executionRules): self
     {
@@ -188,7 +185,7 @@ final class DefinitionUpdateParams implements BaseModel
     }
 
     /**
-     * @param list<InputFieldDefinitionShape> $inputFields
+     * @param list<InputFieldDefinition|InputFieldDefinitionShape> $inputFields
      */
     public function withInputFields(array $inputFields): self
     {
@@ -199,7 +196,7 @@ final class DefinitionUpdateParams implements BaseModel
     }
 
     /**
-     * @param array<string,PublicActionLabelsShape> $labels
+     * @param array<string,PublicActionLabels|PublicActionLabelsShape> $labels
      */
     public function withLabels(array $labels): self
     {
@@ -233,7 +230,7 @@ final class DefinitionUpdateParams implements BaseModel
     }
 
     /**
-     * @param list<OutputFieldDefinitionShape> $outputFields
+     * @param list<OutputFieldDefinition|OutputFieldDefinitionShape> $outputFields
      */
     public function withOutputFields(array $outputFields): self
     {

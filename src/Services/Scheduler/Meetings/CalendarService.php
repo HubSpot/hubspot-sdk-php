@@ -4,16 +4,22 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Services\Scheduler\Meetings;
 
-use HubspotSDK\AssociationSpec;
-use HubspotSDK\AssociationSpec\AssociationCategory;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Core\Util;
-use HubspotSDK\PublicObjectID;
 use HubspotSDK\RequestOptions;
+use HubspotSDK\Scheduler\Meetings\ExternalAssociationCreateRequest;
+use HubspotSDK\Scheduler\Meetings\ExternalCalendarMeetingEventCreateProperties;
 use HubspotSDK\Scheduler\Meetings\ExternalCalenderMeetingEventResponse;
+use HubspotSDK\Scheduler\Meetings\ExternalEmailReminderSchedule;
 use HubspotSDK\ServiceContracts\Scheduler\Meetings\CalendarContract;
 
+/**
+ * @phpstan-import-type ExternalAssociationCreateRequestShape from \HubspotSDK\Scheduler\Meetings\ExternalAssociationCreateRequest
+ * @phpstan-import-type ExternalEmailReminderScheduleShape from \HubspotSDK\Scheduler\Meetings\ExternalEmailReminderSchedule
+ * @phpstan-import-type ExternalCalendarMeetingEventCreatePropertiesShape from \HubspotSDK\Scheduler\Meetings\ExternalCalendarMeetingEventCreateProperties
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class CalendarService implements CalendarContract
 {
     /**
@@ -32,44 +38,22 @@ final class CalendarService implements CalendarContract
     /**
      * @api
      *
-     * @param string $organizerUserID Query param:
-     * @param list<array{
-     *   to: array{id: string}|PublicObjectID,
-     *   types: list<array{
-     *     associationCategory: 'HUBSPOT_DEFINED'|'INTEGRATOR_DEFINED'|'USER_DEFINED'|AssociationCategory,
-     *     associationTypeID: int,
-     *   }|AssociationSpec>,
-     * }> $associations Body param:
-     * @param array{
-     *   reminders: list<array{numberOfTimeUnits: int, timeUnit: string}>,
-     *   shouldIncludeInviteDescription: bool,
-     * } $emailReminderSchedule Body param:
-     * @param array{
-     *   hsMeetingEndTime: string|\DateTimeInterface,
-     *   hsMeetingOutcome: string,
-     *   hsMeetingStartTime: string|\DateTimeInterface,
-     *   hsMeetingTitle: string,
-     *   hsTimestamp: string|\DateTimeInterface,
-     *   hubspotOwnerID: string,
-     *   hsActivityType?: string,
-     *   hsAttachmentIDs?: list<string>,
-     *   hsAttendeeOwnerIDs?: list<string>,
-     *   hsInternalMeetingNotes?: string,
-     *   hsMeetingBody?: string,
-     *   hsMeetingLocation?: string,
-     *   hsMeetingLocationType?: string,
-     * } $properties Body param:
-     * @param string $timezone Body param:
+     * @param string $organizerUserID Query param
+     * @param list<ExternalAssociationCreateRequest|ExternalAssociationCreateRequestShape> $associations Body param
+     * @param ExternalEmailReminderSchedule|ExternalEmailReminderScheduleShape $emailReminderSchedule Body param
+     * @param ExternalCalendarMeetingEventCreateProperties|ExternalCalendarMeetingEventCreatePropertiesShape $properties Body param
+     * @param string $timezone Body param
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function create(
         string $organizerUserID,
         array $associations,
-        array $emailReminderSchedule,
-        array $properties,
+        ExternalEmailReminderSchedule|array $emailReminderSchedule,
+        ExternalCalendarMeetingEventCreateProperties|array $properties,
         string $timezone,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): ExternalCalenderMeetingEventResponse {
         $params = Util::removeNulls(
             [

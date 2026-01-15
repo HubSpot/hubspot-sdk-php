@@ -18,6 +18,9 @@ use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Conversations\MessagesContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class MessagesService implements MessagesContract
 {
     /**
@@ -36,11 +39,13 @@ final class MessagesService implements MessagesContract
     /**
      * @api
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @throws APIException
      */
     public function create(
         int $threadID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): ConversationsPublicConversationsMessage|PublicComment|PublicWelcomeMessage|PublicAssignmentMessage|PublicThreadStatusChange|PublicThreadInboxChange {
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->create($threadID, requestOptions: $requestOptions);
@@ -52,6 +57,7 @@ final class MessagesService implements MessagesContract
      * @api
      *
      * @param list<string> $sort
+     * @param RequestOpts|null $requestOptions
      *
      * @return Page<ConversationsPublicConversationsMessage|PublicComment|PublicWelcomeMessage|PublicAssignmentMessage|PublicThreadStatusChange|PublicThreadInboxChange,>
      *
@@ -64,7 +70,7 @@ final class MessagesService implements MessagesContract
         ?int $limit = null,
         ?string $property = null,
         ?array $sort = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): Page {
         $params = Util::removeNulls(
             [
@@ -85,9 +91,10 @@ final class MessagesService implements MessagesContract
     /**
      * @api
      *
-     * @param string $messageID Path param:
-     * @param int $threadID Path param:
-     * @param string $property Query param:
+     * @param string $messageID Path param
+     * @param int $threadID Path param
+     * @param string $property Query param
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -95,7 +102,7 @@ final class MessagesService implements MessagesContract
         string $messageID,
         int $threadID,
         ?string $property = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): ConversationsPublicConversationsMessage|PublicComment|PublicWelcomeMessage|PublicAssignmentMessage|PublicThreadStatusChange|PublicThreadInboxChange {
         $params = Util::removeNulls(
             ['threadID' => $threadID, 'property' => $property]
@@ -110,9 +117,10 @@ final class MessagesService implements MessagesContract
     /**
      * @api
      *
-     * @param string $messageID Path param:
-     * @param int $threadID Path param:
-     * @param string $property Query param:
+     * @param string $messageID Path param
+     * @param int $threadID Path param
+     * @param string $property Query param
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -120,7 +128,7 @@ final class MessagesService implements MessagesContract
         string $messageID,
         int $threadID,
         ?string $property = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): PublicMessageContent {
         $params = Util::removeNulls(
             ['threadID' => $threadID, 'property' => $property]

@@ -9,14 +9,21 @@ use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface DetailsRawContract
 {
     /**
      * @api
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @return BaseResponse<PortalInformationResponse>
      *
      * @throws APIException
      */
-    public function get(?RequestOptions $requestOptions = null): BaseResponse;
+    public function get(
+        RequestOptions|array|null $requestOptions = null
+    ): BaseResponse;
 }

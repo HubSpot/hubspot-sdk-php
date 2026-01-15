@@ -18,7 +18,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-import-type CallbackCompletionBatchRequestShape from \HubspotSDK\Automation\Actions\CallbackCompletionBatchRequest
  *
  * @phpstan-type CallbackCompleteBatchParamsShape = array{
- *   inputs: list<CallbackCompletionBatchRequestShape>
+ *   inputs: list<CallbackCompletionBatchRequest|CallbackCompletionBatchRequestShape>,
  * }
  */
 final class CallbackCompleteBatchParams implements BaseModel
@@ -55,7 +55,7 @@ final class CallbackCompleteBatchParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<CallbackCompletionBatchRequestShape> $inputs
+     * @param list<CallbackCompletionBatchRequest|CallbackCompletionBatchRequestShape> $inputs
      */
     public static function with(array $inputs): self
     {
@@ -67,7 +67,7 @@ final class CallbackCompleteBatchParams implements BaseModel
     }
 
     /**
-     * @param list<CallbackCompletionBatchRequestShape> $inputs
+     * @param list<CallbackCompletionBatchRequest|CallbackCompletionBatchRequestShape> $inputs
      */
     public function withInputs(array $inputs): self
     {

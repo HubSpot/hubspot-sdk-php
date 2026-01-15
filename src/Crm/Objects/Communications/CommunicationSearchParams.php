@@ -20,7 +20,7 @@ use HubspotSDK\Crm\FilterGroup;
  *
  * @phpstan-type CommunicationSearchParamsShape = array{
  *   after: string,
- *   filterGroups: list<FilterGroupShape>,
+ *   filterGroups: list<FilterGroup|FilterGroupShape>,
  *   limit: int,
  *   properties: list<string>,
  *   sorts: list<string>,
@@ -106,7 +106,7 @@ final class CommunicationSearchParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<FilterGroupShape> $filterGroups
+     * @param list<FilterGroup|FilterGroupShape> $filterGroups
      * @param list<string> $properties
      * @param list<string> $sorts
      */
@@ -145,7 +145,7 @@ final class CommunicationSearchParams implements BaseModel
     /**
      * Up to 6 groups of filters defining additional query criteria.
      *
-     * @param list<FilterGroupShape> $filterGroups
+     * @param list<FilterGroup|FilterGroupShape> $filterGroups
      */
     public function withFilterGroups(array $filterGroups): self
     {

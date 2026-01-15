@@ -23,7 +23,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   tableIDOrName: string,
  *   childTableID: int,
  *   displayIndex: int,
- *   values: array<string,VariantShape>,
+ *   values: array<string,Variant|VariantShape>,
  *   name?: string|null,
  *   path?: string|null,
  * }
@@ -96,7 +96,7 @@ final class RowReplaceDraftParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string,VariantShape> $values
+     * @param array<string,Variant|VariantShape> $values
      */
     public static function with(
         string $tableIDOrName,
@@ -149,7 +149,7 @@ final class RowReplaceDraftParams implements BaseModel
     /**
      * List of key value pairs with the column name and column value.
      *
-     * @param array<string,VariantShape> $values
+     * @param array<string,Variant|VariantShape> $values
      */
     public function withValues(array $values): self
     {

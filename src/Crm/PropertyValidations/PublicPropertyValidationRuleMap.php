@@ -13,7 +13,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @phpstan-type PublicPropertyValidationRuleMapShape = array{
  *   propertyName: string,
- *   propertyValidationRules: list<PublicPropertyValidationRuleShape>,
+ *   propertyValidationRules: list<PublicPropertyValidationRule|PublicPropertyValidationRuleShape>,
  * }
  */
 final class PublicPropertyValidationRuleMap implements BaseModel
@@ -63,7 +63,7 @@ final class PublicPropertyValidationRuleMap implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicPropertyValidationRuleShape> $propertyValidationRules
+     * @param list<PublicPropertyValidationRule|PublicPropertyValidationRuleShape> $propertyValidationRules
      */
     public static function with(
         string $propertyName,
@@ -91,7 +91,7 @@ final class PublicPropertyValidationRuleMap implements BaseModel
     /**
      * A list of validation rules applicable to the property.
      *
-     * @param list<PublicPropertyValidationRuleShape> $propertyValidationRules
+     * @param list<PublicPropertyValidationRule|PublicPropertyValidationRuleShape> $propertyValidationRules
      */
     public function withPropertyValidationRules(
         array $propertyValidationRules

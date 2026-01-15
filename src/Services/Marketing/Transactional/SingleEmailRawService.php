@@ -8,10 +8,15 @@ use HubspotSDK\Client;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Marketing\EmailSendStatusView;
+use HubspotSDK\Marketing\PublicSingleSendEmail;
 use HubspotSDK\Marketing\Transactional\SingleEmail\SingleEmailSendParams;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Marketing\Transactional\SingleEmailRawContract;
 
+/**
+ * @phpstan-import-type PublicSingleSendEmailShape from \HubspotSDK\Marketing\PublicSingleSendEmail
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class SingleEmailRawService implements SingleEmailRawContract
 {
     // @phpstan-ignore-next-line
@@ -27,17 +32,11 @@ final class SingleEmailRawService implements SingleEmailRawContract
      *
      * @param array{
      *   emailID: int,
-     *   message: array{
-     *     to: string,
-     *     bcc?: list<string>,
-     *     cc?: list<string>,
-     *     from?: string,
-     *     replyTo?: list<string>,
-     *     sendID?: string,
-     *   },
+     *   message: PublicSingleSendEmail|PublicSingleSendEmailShape,
      *   contactProperties?: array<string,string>,
      *   customProperties?: array<string,mixed>,
      * }|SingleEmailSendParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<EmailSendStatusView>
      *
@@ -45,7 +44,7 @@ final class SingleEmailRawService implements SingleEmailRawContract
      */
     public function send(
         array|SingleEmailSendParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = SingleEmailSendParams::parseRequest(
             $params,

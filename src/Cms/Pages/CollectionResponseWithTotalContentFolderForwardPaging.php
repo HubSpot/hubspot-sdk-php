@@ -17,7 +17,7 @@ use HubspotSDK\ForwardPaging;
  * @phpstan-import-type ForwardPagingShape from \HubspotSDK\ForwardPaging
  *
  * @phpstan-type CollectionResponseWithTotalContentFolderForwardPagingShape = array{
- *   results: list<ContentFolderShape>,
+ *   results: list<ContentFolder|ContentFolderShape>,
  *   total: int,
  *   paging?: null|ForwardPaging|ForwardPagingShape,
  * }
@@ -72,7 +72,7 @@ final class CollectionResponseWithTotalContentFolderForwardPaging implements Bas
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<ContentFolderShape> $results
+     * @param list<ContentFolder|ContentFolderShape> $results
      * @param ForwardPaging|ForwardPagingShape|null $paging
      */
     public static function with(
@@ -93,7 +93,7 @@ final class CollectionResponseWithTotalContentFolderForwardPaging implements Bas
     /**
      * Collection of content folders.
      *
-     * @param list<ContentFolderShape> $results
+     * @param list<ContentFolder|ContentFolderShape> $results
      */
     public function withResults(array $results): self
     {

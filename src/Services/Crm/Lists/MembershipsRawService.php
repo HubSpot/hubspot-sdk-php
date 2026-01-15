@@ -21,6 +21,9 @@ use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Lists\MembershipsRawContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class MembershipsRawService implements MembershipsRawContract
 {
     // @phpstan-ignore-next-line
@@ -42,6 +45,7 @@ final class MembershipsRawService implements MembershipsRawContract
      * @param array{
      *   after?: string, before?: string, limit?: int
      * }|MembershipListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<JoinTimeAndRecordID>>
      *
@@ -50,7 +54,7 @@ final class MembershipsRawService implements MembershipsRawContract
     public function list(
         string $listID,
         array|MembershipListParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = MembershipListParams::parseRequest(
             $params,
@@ -77,6 +81,7 @@ final class MembershipsRawService implements MembershipsRawContract
      *
      * @param string $listID the **ILS ID** of the `MANUAL` or `SNAPSHOT` list
      * @param array{body: list<string>}|MembershipAddParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<MembershipsUpdateResponse>
      *
@@ -85,7 +90,7 @@ final class MembershipsRawService implements MembershipsRawContract
     public function add(
         string $listID,
         array|MembershipAddParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = MembershipAddParams::parseRequest(
             $params,
@@ -113,6 +118,7 @@ final class MembershipsRawService implements MembershipsRawContract
      *
      * @param string $sourceListID the **ILS ID** of the *source list* to grab the records from, which are then added to the *destination list*
      * @param array{listID: string}|MembershipAddAllFromListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -121,7 +127,7 @@ final class MembershipsRawService implements MembershipsRawContract
     public function addAllFromList(
         string $sourceListID,
         array|MembershipAddAllFromListParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = MembershipAddAllFromListParams::parseRequest(
             $params,
@@ -152,6 +158,7 @@ final class MembershipsRawService implements MembershipsRawContract
      * @param array{
      *   recordIDsToAdd: list<string>, recordIDsToRemove: list<string>
      * }|MembershipAddAndRemoveParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<MembershipsUpdateResponse>
      *
@@ -160,7 +167,7 @@ final class MembershipsRawService implements MembershipsRawContract
     public function addAndRemove(
         string $listID,
         array|MembershipAddAndRemoveParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = MembershipAddAndRemoveParams::parseRequest(
             $params,
@@ -184,6 +191,7 @@ final class MembershipsRawService implements MembershipsRawContract
      *
      * @param string $recordID Id of the record
      * @param array{objectTypeID: string}|MembershipGetListsParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<APICollectionResponseRecordListMembershipNoPaging>
      *
@@ -192,7 +200,7 @@ final class MembershipsRawService implements MembershipsRawContract
     public function getLists(
         string $recordID,
         array|MembershipGetListsParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = MembershipGetListsParams::parseRequest(
             $params,
@@ -225,6 +233,7 @@ final class MembershipsRawService implements MembershipsRawContract
      * @param array{
      *   after?: string, before?: string, limit?: int
      * }|MembershipGetPageOrderedByAddedToListDateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<JoinTimeAndRecordID>>
      *
@@ -233,7 +242,7 @@ final class MembershipsRawService implements MembershipsRawContract
     public function getPageOrderedByAddedToListDate(
         string $listID,
         array|MembershipGetPageOrderedByAddedToListDateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = MembershipGetPageOrderedByAddedToListDateParams::parseRequest(
             $params,
@@ -260,6 +269,7 @@ final class MembershipsRawService implements MembershipsRawContract
      *
      * @param string $listID the **ILS ID** of the `MANUAL` or `SNAPSHOT` list
      * @param array{body: list<string>}|MembershipRemoveParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<MembershipsUpdateResponse>
      *
@@ -268,7 +278,7 @@ final class MembershipsRawService implements MembershipsRawContract
     public function remove(
         string $listID,
         array|MembershipRemoveParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = MembershipRemoveParams::parseRequest(
             $params,
@@ -295,6 +305,7 @@ final class MembershipsRawService implements MembershipsRawContract
      * This endpoint only supports lists that have less than 100,000 memberships.
      *
      * @param string $listID the **ILS ID** of the `MANUAL` or `SNAPSHOT` list
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -302,7 +313,7 @@ final class MembershipsRawService implements MembershipsRawContract
      */
     public function removeAll(
         string $listID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(

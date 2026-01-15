@@ -18,10 +18,10 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-import-type ContactOrgShape from \HubspotSDK\Conversations\ContactOrg
  *
  * @phpstan-type ContactProfileShape = array{
- *   addresses: list<ContactAddressShape>,
- *   emails: list<ContactEmailShape>,
- *   phones: list<ContactPhoneShape>,
- *   urls: list<ContactURLShape>,
+ *   addresses: list<ContactAddress|ContactAddressShape>,
+ *   emails: list<ContactEmail|ContactEmailShape>,
+ *   phones: list<ContactPhone|ContactPhoneShape>,
+ *   urls: list<ContactURL|ContactURLShape>,
  *   name?: null|ContactName|ContactNameShape,
  *   org?: null|ContactOrg|ContactOrgShape,
  * }
@@ -81,10 +81,10 @@ final class ContactProfile implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<ContactAddressShape> $addresses
-     * @param list<ContactEmailShape> $emails
-     * @param list<ContactPhoneShape> $phones
-     * @param list<ContactURLShape> $urls
+     * @param list<ContactAddress|ContactAddressShape> $addresses
+     * @param list<ContactEmail|ContactEmailShape> $emails
+     * @param list<ContactPhone|ContactPhoneShape> $phones
+     * @param list<ContactURL|ContactURLShape> $urls
      * @param ContactName|ContactNameShape|null $name
      * @param ContactOrg|ContactOrgShape|null $org
      */
@@ -110,7 +110,7 @@ final class ContactProfile implements BaseModel
     }
 
     /**
-     * @param list<ContactAddressShape> $addresses
+     * @param list<ContactAddress|ContactAddressShape> $addresses
      */
     public function withAddresses(array $addresses): self
     {
@@ -121,7 +121,7 @@ final class ContactProfile implements BaseModel
     }
 
     /**
-     * @param list<ContactEmailShape> $emails
+     * @param list<ContactEmail|ContactEmailShape> $emails
      */
     public function withEmails(array $emails): self
     {
@@ -132,7 +132,7 @@ final class ContactProfile implements BaseModel
     }
 
     /**
-     * @param list<ContactPhoneShape> $phones
+     * @param list<ContactPhone|ContactPhoneShape> $phones
      */
     public function withPhones(array $phones): self
     {
@@ -143,7 +143,7 @@ final class ContactProfile implements BaseModel
     }
 
     /**
-     * @param list<ContactURLShape> $urls
+     * @param list<ContactURL|ContactURLShape> $urls
      */
     public function withURLs(array $urls): self
     {

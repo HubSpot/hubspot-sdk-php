@@ -15,12 +15,16 @@ use HubspotSDK\Crm\Lists\ListFolderCreateResponse;
 use HubspotSDK\Crm\Lists\ListFolderFetchResponse;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface FoldersRawContract
 {
     /**
      * @api
      *
      * @param array<string,mixed>|FolderCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ListFolderCreateResponse>
      *
@@ -28,13 +32,14 @@ interface FoldersRawContract
      */
     public function create(
         array|FolderCreateParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param string $folderID The ID of the folder to delete
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -42,13 +47,14 @@ interface FoldersRawContract
      */
     public function delete(
         string $folderID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|FolderGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ListFolderFetchResponse>
      *
@@ -56,7 +62,7 @@ interface FoldersRawContract
      */
     public function get(
         array|FolderGetParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -64,6 +70,7 @@ interface FoldersRawContract
      *
      * @param string $newParentFolderID the ID for the target parent folder
      * @param array<string,mixed>|FolderMoveParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ListFolderFetchResponse>
      *
@@ -72,13 +79,14 @@ interface FoldersRawContract
     public function move(
         string $newParentFolderID,
         array|FolderMoveParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|FolderMoveListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -86,7 +94,7 @@ interface FoldersRawContract
      */
     public function moveList(
         array|FolderMoveListParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -94,6 +102,7 @@ interface FoldersRawContract
      *
      * @param string $folderID The ID of the folder to rename
      * @param array<string,mixed>|FolderRenameParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ListFolderFetchResponse>
      *
@@ -102,6 +111,6 @@ interface FoldersRawContract
     public function rename(
         string $folderID,
         array|FolderRenameParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

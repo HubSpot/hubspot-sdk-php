@@ -14,6 +14,9 @@ use HubspotSDK\Marketing\Subscriptions\V4\Links\LinkCreateParams\Channel;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Marketing\Subscriptions\V4\LinksRawContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class LinksRawService implements LinksRawContract
 {
     // @phpstan-ignore-next-line
@@ -26,12 +29,13 @@ final class LinksRawService implements LinksRawContract
      * @api
      *
      * @param array{
-     *   channel: 'EMAIL'|Channel,
+     *   channel: Channel|value-of<Channel>,
      *   subscriberIDString: string,
      *   businessUnitID?: int,
      *   language?: string,
      *   subscriptionID?: int,
      * }|LinkCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<LinkGenerationResponse>
      *
@@ -39,7 +43,7 @@ final class LinksRawService implements LinksRawContract
      */
     public function create(
         array|LinkCreateParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = LinkCreateParams::parseRequest(
             $params,

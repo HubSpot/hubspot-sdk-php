@@ -13,7 +13,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @phpstan-type ExternalLinkAvailabilityShape = array{
  *   hasMore: bool,
- *   linkAvailabilityByDuration: array<string,ExternalLinkAvailabilityForDurationShape>,
+ *   linkAvailabilityByDuration: array<string,ExternalLinkAvailabilityForDuration|ExternalLinkAvailabilityForDurationShape>,
  * }
  */
 final class ExternalLinkAvailability implements BaseModel
@@ -56,7 +56,7 @@ final class ExternalLinkAvailability implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string,ExternalLinkAvailabilityForDurationShape> $linkAvailabilityByDuration
+     * @param array<string,ExternalLinkAvailabilityForDuration|ExternalLinkAvailabilityForDurationShape> $linkAvailabilityByDuration
      */
     public static function with(
         bool $hasMore,
@@ -79,7 +79,7 @@ final class ExternalLinkAvailability implements BaseModel
     }
 
     /**
-     * @param array<string,ExternalLinkAvailabilityForDurationShape> $linkAvailabilityByDuration
+     * @param array<string,ExternalLinkAvailabilityForDuration|ExternalLinkAvailabilityForDurationShape> $linkAvailabilityByDuration
      */
     public function withLinkAvailabilityByDuration(
         array $linkAvailabilityByDuration

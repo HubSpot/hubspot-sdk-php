@@ -14,7 +14,8 @@ use HubspotSDK\Crm\Extensions\Cards\IFrameActionBody;
  * @phpstan-import-type ActionHookActionBodyShape from \HubspotSDK\Crm\Extensions\Cards\ActionHookActionBody
  * @phpstan-import-type IFrameActionBodyShape from \HubspotSDK\Crm\Extensions\Cards\IFrameActionBody
  *
- * @phpstan-type ActionShape = ActionHookActionBodyShape|IFrameActionBodyShape
+ * @phpstan-type ActionVariants = ActionHookActionBody|IFrameActionBody
+ * @phpstan-type ActionShape = ActionVariants|ActionHookActionBodyShape|IFrameActionBodyShape
  */
 final class Action implements ConverterSource
 {

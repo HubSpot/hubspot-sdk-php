@@ -13,6 +13,9 @@ use HubspotSDK\ServiceContracts\Settings\TaxRatesRawContract;
 use HubspotSDK\Settings\TaxRates\PublicTaxRateGroup;
 use HubspotSDK\Settings\TaxRates\TaxRateListParams;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class TaxRatesRawService implements TaxRatesRawContract
 {
     // @phpstan-ignore-next-line
@@ -29,6 +32,7 @@ final class TaxRatesRawService implements TaxRatesRawContract
      * @param array{
      *   active?: bool, after?: string, limit?: int
      * }|TaxRateListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<PublicTaxRateGroup>>
      *
@@ -36,7 +40,7 @@ final class TaxRatesRawService implements TaxRatesRawContract
      */
     public function list(
         array|TaxRateListParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = TaxRateListParams::parseRequest(
             $params,
@@ -60,6 +64,7 @@ final class TaxRatesRawService implements TaxRatesRawContract
      * Retrieve a specific tax rate by its `taxRateGroupId`.
      *
      * @param string $taxRateGroupID the ID of the tax rate to retrieve
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicTaxRateGroup>
      *
@@ -67,7 +72,7 @@ final class TaxRatesRawService implements TaxRatesRawContract
      */
     public function get(
         string $taxRateGroupID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(

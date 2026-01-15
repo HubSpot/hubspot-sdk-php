@@ -14,12 +14,16 @@ use HubspotSDK\Crm\SimplePublicObjectWithAssociations;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface FeedbackSubmissionsRawContract
 {
     /**
      * @api
      *
      * @param array<string,mixed>|FeedbackSubmissionListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<SimplePublicObjectWithAssociations>>
      *
@@ -27,13 +31,14 @@ interface FeedbackSubmissionsRawContract
      */
     public function list(
         array|FeedbackSubmissionListParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|FeedbackSubmissionGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SimplePublicObjectWithAssociations>
      *
@@ -42,13 +47,14 @@ interface FeedbackSubmissionsRawContract
     public function get(
         string $feedbackSubmissionID,
         array|FeedbackSubmissionGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|FeedbackSubmissionSearchParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CollectionResponseWithTotalSimplePublicObject>
      *
@@ -56,6 +62,6 @@ interface FeedbackSubmissionsRawContract
      */
     public function search(
         array|FeedbackSubmissionSearchParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

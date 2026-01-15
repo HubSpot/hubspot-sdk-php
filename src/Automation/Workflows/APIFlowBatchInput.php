@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-import-type APIFlowBatchFetchFlowIDCoordinateShape from \HubspotSDK\Automation\Workflows\APIFlowBatchFetchFlowIDCoordinate
  *
  * @phpstan-type APIFlowBatchInputShape = array{
- *   inputs: list<APIFlowBatchFetchFlowIDCoordinateShape>
+ *   inputs: list<APIFlowBatchFetchFlowIDCoordinate|APIFlowBatchFetchFlowIDCoordinateShape>,
  * }
  */
 final class APIFlowBatchInput implements BaseModel
@@ -48,7 +48,7 @@ final class APIFlowBatchInput implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<APIFlowBatchFetchFlowIDCoordinateShape> $inputs
+     * @param list<APIFlowBatchFetchFlowIDCoordinate|APIFlowBatchFetchFlowIDCoordinateShape> $inputs
      */
     public static function with(array $inputs): self
     {
@@ -60,7 +60,7 @@ final class APIFlowBatchInput implements BaseModel
     }
 
     /**
-     * @param list<APIFlowBatchFetchFlowIDCoordinateShape> $inputs
+     * @param list<APIFlowBatchFetchFlowIDCoordinate|APIFlowBatchFetchFlowIDCoordinateShape> $inputs
      */
     public function withInputs(array $inputs): self
     {

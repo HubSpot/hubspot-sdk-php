@@ -18,9 +18,9 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-import-type ExternalMeetingsWelcomeScreenInfoShape from \HubspotSDK\Scheduler\Meetings\ExternalMeetingsWelcomeScreenInfo
  *
  * @phpstan-type ExternalMeetingsLinkSettingsShape = array{
- *   availability: array<string,ExternalClosedRangeShape>,
+ *   availability: array<string,ExternalClosedRange|ExternalClosedRangeShape>,
  *   durations: list<int>,
- *   formFields: list<ExternalLinkFormFieldShape>,
+ *   formFields: list<ExternalLinkFormField|ExternalLinkFormFieldShape>,
  *   legalConsentEnabled: bool,
  *   meetingBufferTime: int,
  *   ownerPrioritized: bool,
@@ -141,9 +141,9 @@ final class ExternalMeetingsLinkSettings implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string,ExternalClosedRangeShape> $availability
+     * @param array<string,ExternalClosedRange|ExternalClosedRangeShape> $availability
      * @param list<int> $durations
-     * @param list<ExternalLinkFormFieldShape> $formFields
+     * @param list<ExternalLinkFormField|ExternalLinkFormFieldShape> $formFields
      * @param ExternalLinkDisplayInfo|ExternalLinkDisplayInfoShape|null $displayInfo
      * @param ExternalGuestSettings|ExternalGuestSettingsShape|null $guestSettings
      * @param ExternalLegalConsentOptions|ExternalLegalConsentOptionsShape|null $legalConsentOptions
@@ -195,7 +195,7 @@ final class ExternalMeetingsLinkSettings implements BaseModel
     }
 
     /**
-     * @param array<string,ExternalClosedRangeShape> $availability
+     * @param array<string,ExternalClosedRange|ExternalClosedRangeShape> $availability
      */
     public function withAvailability(array $availability): self
     {
@@ -217,7 +217,7 @@ final class ExternalMeetingsLinkSettings implements BaseModel
     }
 
     /**
-     * @param list<ExternalLinkFormFieldShape> $formFields
+     * @param list<ExternalLinkFormField|ExternalLinkFormFieldShape> $formFields
      */
     public function withFormFields(array $formFields): self
     {

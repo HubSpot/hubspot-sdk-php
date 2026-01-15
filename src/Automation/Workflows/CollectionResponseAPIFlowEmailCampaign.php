@@ -15,7 +15,8 @@ use HubspotSDK\Paging;
  * @phpstan-import-type PagingShape from \HubspotSDK\Paging
  *
  * @phpstan-type CollectionResponseAPIFlowEmailCampaignShape = array{
- *   results: list<APIFlowEmailCampaignShape>, paging?: null|Paging|PagingShape
+ *   results: list<APIFlowEmailCampaign|APIFlowEmailCampaignShape>,
+ *   paging?: null|Paging|PagingShape,
  * }
  */
 final class CollectionResponseAPIFlowEmailCampaign implements BaseModel
@@ -54,7 +55,7 @@ final class CollectionResponseAPIFlowEmailCampaign implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<APIFlowEmailCampaignShape> $results
+     * @param list<APIFlowEmailCampaign|APIFlowEmailCampaignShape> $results
      * @param Paging|PagingShape|null $paging
      */
     public static function with(
@@ -71,7 +72,7 @@ final class CollectionResponseAPIFlowEmailCampaign implements BaseModel
     }
 
     /**
-     * @param list<APIFlowEmailCampaignShape> $results
+     * @param list<APIFlowEmailCampaign|APIFlowEmailCampaignShape> $results
      */
     public function withResults(array $results): self
     {

@@ -17,9 +17,9 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-type PublicSequenceResponseShape = array{
  *   id: string,
  *   createdAt: \DateTimeInterface,
- *   dependencies: list<PublicSequenceStepDependencyResponseShape>,
+ *   dependencies: list<PublicSequenceStepDependencyResponse|PublicSequenceStepDependencyResponseShape>,
  *   name: string,
- *   steps: list<PublicSequenceStepResponseShape>,
+ *   steps: list<PublicSequenceStepResponse|PublicSequenceStepResponseShape>,
  *   updatedAt: \DateTimeInterface,
  *   userID: string,
  *   folderID?: string|null,
@@ -99,8 +99,8 @@ final class PublicSequenceResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicSequenceStepDependencyResponseShape> $dependencies
-     * @param list<PublicSequenceStepResponseShape> $steps
+     * @param list<PublicSequenceStepDependencyResponse|PublicSequenceStepDependencyResponseShape> $dependencies
+     * @param list<PublicSequenceStepResponse|PublicSequenceStepResponseShape> $steps
      * @param PublicSequenceSettingsResponse|PublicSequenceSettingsResponseShape|null $settings
      */
     public static function with(
@@ -147,7 +147,7 @@ final class PublicSequenceResponse implements BaseModel
     }
 
     /**
-     * @param list<PublicSequenceStepDependencyResponseShape> $dependencies
+     * @param list<PublicSequenceStepDependencyResponse|PublicSequenceStepDependencyResponseShape> $dependencies
      */
     public function withDependencies(array $dependencies): self
     {
@@ -166,7 +166,7 @@ final class PublicSequenceResponse implements BaseModel
     }
 
     /**
-     * @param list<PublicSequenceStepResponseShape> $steps
+     * @param list<PublicSequenceStepResponse|PublicSequenceStepResponseShape> $steps
      */
     public function withSteps(array $steps): self
     {

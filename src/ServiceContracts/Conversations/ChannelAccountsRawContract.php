@@ -12,12 +12,16 @@ use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface ChannelAccountsRawContract
 {
     /**
      * @api
      *
      * @param array<string,mixed>|ChannelAccountListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<PublicChannelAccount>>
      *
@@ -25,13 +29,14 @@ interface ChannelAccountsRawContract
      */
     public function list(
         array|ChannelAccountListParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|ChannelAccountGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicChannelAccount>
      *
@@ -40,6 +45,6 @@ interface ChannelAccountsRawContract
     public function get(
         int $channelAccountID,
         array|ChannelAccountGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

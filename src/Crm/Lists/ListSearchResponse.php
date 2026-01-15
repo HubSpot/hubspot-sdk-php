@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @phpstan-type ListSearchResponseShape = array{
  *   hasMore: bool,
- *   lists: list<PublicObjectListSearchResultShape>,
+ *   lists: list<PublicObjectListSearchResult|PublicObjectListSearchResultShape>,
  *   offset: int,
  *   total: int,
  * }
@@ -79,7 +79,7 @@ final class ListSearchResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicObjectListSearchResultShape> $lists
+     * @param list<PublicObjectListSearchResult|PublicObjectListSearchResultShape> $lists
      */
     public static function with(
         bool $hasMore,
@@ -111,7 +111,7 @@ final class ListSearchResponse implements BaseModel
     /**
      * The lists that matched the search criteria.
      *
-     * @param list<PublicObjectListSearchResultShape> $lists
+     * @param list<PublicObjectListSearchResult|PublicObjectListSearchResultShape> $lists
      */
     public function withLists(array $lists): self
     {

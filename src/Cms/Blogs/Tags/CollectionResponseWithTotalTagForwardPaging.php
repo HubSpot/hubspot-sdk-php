@@ -17,7 +17,7 @@ use HubspotSDK\ForwardPaging;
  * @phpstan-import-type ForwardPagingShape from \HubspotSDK\ForwardPaging
  *
  * @phpstan-type CollectionResponseWithTotalTagForwardPagingShape = array{
- *   results: list<TagShape>,
+ *   results: list<Tag|TagShape>,
  *   total: int,
  *   paging?: null|ForwardPaging|ForwardPagingShape,
  * }
@@ -70,7 +70,7 @@ final class CollectionResponseWithTotalTagForwardPaging implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<TagShape> $results
+     * @param list<Tag|TagShape> $results
      * @param ForwardPaging|ForwardPagingShape|null $paging
      */
     public static function with(
@@ -91,7 +91,7 @@ final class CollectionResponseWithTotalTagForwardPaging implements BaseModel
     /**
      * Collection of blog tags.
      *
-     * @param list<TagShape> $results
+     * @param list<Tag|TagShape> $results
      */
     public function withResults(array $results): self
     {

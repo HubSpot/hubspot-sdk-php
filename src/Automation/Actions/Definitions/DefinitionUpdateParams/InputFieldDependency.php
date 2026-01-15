@@ -14,7 +14,8 @@ use HubspotSDK\Core\Conversion\Contracts\ConverterSource;
  * @phpstan-import-type PublicSingleFieldDependencyShape from \HubspotSDK\Automation\Actions\PublicSingleFieldDependency
  * @phpstan-import-type PublicConditionalSingleFieldDependencyShape from \HubspotSDK\Automation\Actions\PublicConditionalSingleFieldDependency
  *
- * @phpstan-type InputFieldDependencyShape = PublicSingleFieldDependencyShape|PublicConditionalSingleFieldDependencyShape
+ * @phpstan-type InputFieldDependencyVariants = PublicSingleFieldDependency|PublicConditionalSingleFieldDependency
+ * @phpstan-type InputFieldDependencyShape = InputFieldDependencyVariants|PublicSingleFieldDependencyShape|PublicConditionalSingleFieldDependencyShape
  */
 final class InputFieldDependency implements ConverterSource
 {

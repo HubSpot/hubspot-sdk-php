@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-import-type BatchPortalEntryShape from \HubspotSDK\Crm\FeatureFlags\BatchPortalEntry
  *
  * @phpstan-type PortalFlagStateBatchPutRequestShape = array{
- *   portalStates: list<BatchPortalEntryShape>
+ *   portalStates: list<BatchPortalEntry|BatchPortalEntryShape>
  * }
  */
 final class PortalFlagStateBatchPutRequest implements BaseModel
@@ -48,7 +48,7 @@ final class PortalFlagStateBatchPutRequest implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<BatchPortalEntryShape> $portalStates
+     * @param list<BatchPortalEntry|BatchPortalEntryShape> $portalStates
      */
     public static function with(array $portalStates): self
     {
@@ -60,7 +60,7 @@ final class PortalFlagStateBatchPutRequest implements BaseModel
     }
 
     /**
-     * @param list<BatchPortalEntryShape> $portalStates
+     * @param list<BatchPortalEntry|BatchPortalEntryShape> $portalStates
      */
     public function withPortalStates(array $portalStates): self
     {

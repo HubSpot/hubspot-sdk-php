@@ -24,9 +24,9 @@ use HubspotSDK\Core\Conversion\MapOf;
  *   properties: array<string,string|null>,
  *   updatedAt: \DateTimeInterface,
  *   archivedAt?: \DateTimeInterface|null,
- *   associations?: array<string,CollectionResponseAssociatedIDShape>|null,
+ *   associations?: array<string,CollectionResponseAssociatedID|CollectionResponseAssociatedIDShape>|null,
  *   objectWriteTraceID?: string|null,
- *   propertiesWithHistory?: array<string,list<ValueWithTimestampShape>>|null,
+ *   propertiesWithHistory?: array<string,list<ValueWithTimestamp|ValueWithTimestampShape>>|null,
  *   url?: string|null,
  * }
  */
@@ -130,8 +130,8 @@ final class SimplePublicObjectWithAssociations implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param array<string,string|null> $properties
-     * @param array<string,CollectionResponseAssociatedIDShape>|null $associations
-     * @param array<string,list<ValueWithTimestampShape>>|null $propertiesWithHistory
+     * @param array<string,CollectionResponseAssociatedID|CollectionResponseAssociatedIDShape>|null $associations
+     * @param array<string,list<ValueWithTimestamp|ValueWithTimestampShape>>|null $propertiesWithHistory
      */
     public static function with(
         string $id,
@@ -233,7 +233,7 @@ final class SimplePublicObjectWithAssociations implements BaseModel
     /**
      * A list defining relationships with other objects.
      *
-     * @param array<string,CollectionResponseAssociatedIDShape> $associations
+     * @param array<string,CollectionResponseAssociatedID|CollectionResponseAssociatedIDShape> $associations
      */
     public function withAssociations(array $associations): self
     {
@@ -257,7 +257,7 @@ final class SimplePublicObjectWithAssociations implements BaseModel
     /**
      * Key-value pairs representing the properties of the object along with their history.
      *
-     * @param array<string,list<ValueWithTimestampShape>> $propertiesWithHistory
+     * @param array<string,list<ValueWithTimestamp|ValueWithTimestampShape>> $propertiesWithHistory
      */
     public function withPropertiesWithHistory(
         array $propertiesWithHistory

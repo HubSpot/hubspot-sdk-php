@@ -4,24 +4,29 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Services\Crm\Objects;
 
-use HubspotSDK\AssociationSpec;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\Crm\CreatedResponseSimplePublicObject;
+use HubspotSDK\Crm\FilterGroup;
 use HubspotSDK\Crm\Objects\Products\ProductCreateParams;
 use HubspotSDK\Crm\Objects\Products\ProductGetParams;
 use HubspotSDK\Crm\Objects\Products\ProductListParams;
 use HubspotSDK\Crm\Objects\Products\ProductSearchParams;
 use HubspotSDK\Crm\Objects\Products\ProductUpdateParams;
+use HubspotSDK\Crm\PublicAssociationsForObject;
 use HubspotSDK\Crm\SimplePublicObject;
 use HubspotSDK\Crm\SimplePublicObjectWithAssociations;
 use HubspotSDK\Page;
-use HubspotSDK\PublicObjectID;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Objects\ProductsRawContract;
 
+/**
+ * @phpstan-import-type PublicAssociationsForObjectShape from \HubspotSDK\Crm\PublicAssociationsForObject
+ * @phpstan-import-type FilterGroupShape from \HubspotSDK\Crm\FilterGroup
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class ProductsRawService implements ProductsRawContract
 {
     // @phpstan-ignore-next-line
@@ -36,12 +41,10 @@ final class ProductsRawService implements ProductsRawContract
      * Create a product with the given properties and return a copy of the object, including the ID. Documentation and examples for creating standard products is provided.
      *
      * @param array{
-     *   associations: list<array{
-     *     to: array<string,mixed>|PublicObjectID,
-     *     types: list<array<string,mixed>|AssociationSpec>,
-     *   }>,
+     *   associations: list<PublicAssociationsForObject|PublicAssociationsForObjectShape>,
      *   properties: array<string,string>,
      * }|ProductCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CreatedResponseSimplePublicObject>
      *
@@ -49,7 +52,7 @@ final class ProductsRawService implements ProductsRawContract
      */
     public function create(
         array|ProductCreateParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = ProductCreateParams::parseRequest(
             $params,
@@ -71,10 +74,11 @@ final class ProductsRawService implements ProductsRawContract
      *
      * Perform a partial update of an Object identified by `{productId}`or optionally a unique property value as specified by the `idProperty` query param. `{productId}` refers to the internal object ID by default, and the `idProperty` query param refers to a property whose values are unique for the object. Provided property values will be overwritten. Read-only and non-existent properties will result in an error. Properties values can be cleared by passing an empty string.
      *
-     * @param string $productID Path param:
+     * @param string $productID Path param
      * @param array{
      *   properties: array<string,string>, idProperty?: string
      * }|ProductUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SimplePublicObject>
      *
@@ -83,7 +87,7 @@ final class ProductsRawService implements ProductsRawContract
     public function update(
         string $productID,
         array|ProductUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = ProductUpdateParams::parseRequest(
             $params,
@@ -115,6 +119,7 @@ final class ProductsRawService implements ProductsRawContract
      *   properties?: list<string>,
      *   propertiesWithHistory?: list<string>,
      * }|ProductListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<SimplePublicObjectWithAssociations>>
      *
@@ -122,7 +127,7 @@ final class ProductsRawService implements ProductsRawContract
      */
     public function list(
         array|ProductListParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = ProductListParams::parseRequest(
             $params,
@@ -145,13 +150,15 @@ final class ProductsRawService implements ProductsRawContract
      *
      * Move an Object identified by `{productId}` to the recycling bin.
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @return BaseResponse<mixed>
      *
      * @throws APIException
      */
     public function delete(
         string $productID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -174,6 +181,7 @@ final class ProductsRawService implements ProductsRawContract
      *   properties?: list<string>,
      *   propertiesWithHistory?: list<string>,
      * }|ProductGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SimplePublicObjectWithAssociations>
      *
@@ -182,7 +190,7 @@ final class ProductsRawService implements ProductsRawContract
     public function get(
         string $productID,
         array|ProductGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = ProductGetParams::parseRequest(
             $params,
@@ -204,12 +212,13 @@ final class ProductsRawService implements ProductsRawContract
      *
      * @param array{
      *   after: string,
-     *   filterGroups: list<array{filters: list<array<string,mixed>>}>,
+     *   filterGroups: list<FilterGroup|FilterGroupShape>,
      *   limit: int,
      *   properties: list<string>,
      *   sorts: list<string>,
      *   query?: string,
      * }|ProductSearchParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CollectionResponseWithTotalSimplePublicObject>
      *
@@ -217,7 +226,7 @@ final class ProductsRawService implements ProductsRawContract
      */
     public function search(
         array|ProductSearchParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = ProductSearchParams::parseRequest(
             $params,

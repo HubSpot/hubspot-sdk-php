@@ -14,6 +14,9 @@ use HubspotSDK\Marketing\Campaigns\CollectionResponsePublicCampaignAssetForwardP
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Marketing\Campaigns\AssetsRawContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class AssetsRawService implements AssetsRawContract
 {
     // @phpstan-ignore-next-line
@@ -31,6 +34,7 @@ final class AssetsRawService implements AssetsRawContract
      *
      * @param string $assetID Id of the asset
      * @param array{campaignGuid: string, assetType: string}|AssetUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -39,7 +43,7 @@ final class AssetsRawService implements AssetsRawContract
     public function update(
         string $assetID,
         array|AssetUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = AssetUpdateParams::parseRequest(
             $params,
@@ -78,6 +82,7 @@ final class AssetsRawService implements AssetsRawContract
      *   limit?: string,
      *   startDate?: string,
      * }|AssetListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CollectionResponsePublicCampaignAssetForwardPaging>
      *
@@ -86,7 +91,7 @@ final class AssetsRawService implements AssetsRawContract
     public function list(
         string $assetType,
         array|AssetListParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = AssetListParams::parseRequest(
             $params,
@@ -115,6 +120,7 @@ final class AssetsRawService implements AssetsRawContract
      *
      * @param string $assetID Id of the asset
      * @param array{campaignGuid: string, assetType: string}|AssetDeleteParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -123,7 +129,7 @@ final class AssetsRawService implements AssetsRawContract
     public function delete(
         string $assetID,
         array|AssetDeleteParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = AssetDeleteParams::parseRequest(
             $params,

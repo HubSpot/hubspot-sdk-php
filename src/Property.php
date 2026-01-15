@@ -22,7 +22,7 @@ use HubspotSDK\Property\DataSensitivity;
  *   groupName: string,
  *   label: string,
  *   name: string,
- *   options: list<OptionShape>,
+ *   options: list<Option|OptionShape>,
  *   type: string,
  *   archived?: bool|null,
  *   archivedAt?: \DateTimeInterface|null,
@@ -248,7 +248,7 @@ final class Property implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<OptionShape> $options
+     * @param list<Option|OptionShape> $options
      * @param DataSensitivity|value-of<DataSensitivity>|null $dataSensitivity
      * @param PropertyModificationMetadata|PropertyModificationMetadataShape|null $modificationMetadata
      * @param list<string>|null $sensitiveDataCategories
@@ -372,7 +372,7 @@ final class Property implements BaseModel
     /**
      * A list of valid options for the property. This field is required for enumerated properties, but will be empty for other property types.
      *
-     * @param list<OptionShape> $options
+     * @param list<Option|OptionShape> $options
      */
     public function withOptions(array $options): self
     {

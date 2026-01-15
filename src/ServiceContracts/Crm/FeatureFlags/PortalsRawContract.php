@@ -15,6 +15,9 @@ use HubspotSDK\Crm\FeatureFlags\Portals\PortalGetParams;
 use HubspotSDK\Crm\FeatureFlags\Portals\PortalUpdateParams;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface PortalsRawContract
 {
     /**
@@ -22,6 +25,7 @@ interface PortalsRawContract
      *
      * @param int $portalID path param: The ID of the account that installed the app
      * @param array<string,mixed>|PortalUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PortalFlagStateResponse>
      *
@@ -30,7 +34,7 @@ interface PortalsRawContract
     public function update(
         int $portalID,
         array|PortalUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -38,6 +42,7 @@ interface PortalsRawContract
      *
      * @param int $portalID the ID of the account that installed the app
      * @param array<string,mixed>|PortalDeleteParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PortalFlagStateResponse>
      *
@@ -46,7 +51,7 @@ interface PortalsRawContract
     public function delete(
         int $portalID,
         array|PortalDeleteParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -54,6 +59,7 @@ interface PortalsRawContract
      *
      * @param string $flagName path param: The name of the flag, either `hs-release-app-cards` or `hs-hide-crm-cards`
      * @param array<string,mixed>|PortalBatchDeleteParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PortalFlagStateBatchResponse>
      *
@@ -62,7 +68,7 @@ interface PortalsRawContract
     public function batchDelete(
         string $flagName,
         array|PortalBatchDeleteParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -70,6 +76,7 @@ interface PortalsRawContract
      *
      * @param string $flagName path param: The name of the flag, either `hs-release-app-cards` or `hs-hide-crm-cards`
      * @param array<string,mixed>|PortalBatchUpsertParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PortalFlagStateBatchResponse>
      *
@@ -78,7 +85,7 @@ interface PortalsRawContract
     public function batchUpsert(
         string $flagName,
         array|PortalBatchUpsertParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -86,6 +93,7 @@ interface PortalsRawContract
      *
      * @param int $portalID the ID of the account that installed the app
      * @param array<string,mixed>|PortalGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PortalFlagStateResponse>
      *
@@ -94,6 +102,6 @@ interface PortalsRawContract
     public function get(
         int $portalID,
         array|PortalGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

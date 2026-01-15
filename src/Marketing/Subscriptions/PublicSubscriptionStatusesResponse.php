@@ -12,7 +12,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-import-type PublicSubscriptionStatusShape from \HubspotSDK\Marketing\Subscriptions\PublicSubscriptionStatus
  *
  * @phpstan-type PublicSubscriptionStatusesResponseShape = array{
- *   recipient: string, subscriptionStatuses: list<PublicSubscriptionStatusShape>
+ *   recipient: string,
+ *   subscriptionStatuses: list<PublicSubscriptionStatus|PublicSubscriptionStatusShape>,
  * }
  */
 final class PublicSubscriptionStatusesResponse implements BaseModel
@@ -62,7 +63,7 @@ final class PublicSubscriptionStatusesResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicSubscriptionStatusShape> $subscriptionStatuses
+     * @param list<PublicSubscriptionStatus|PublicSubscriptionStatusShape> $subscriptionStatuses
      */
     public static function with(
         string $recipient,
@@ -90,7 +91,7 @@ final class PublicSubscriptionStatusesResponse implements BaseModel
     /**
      * A list of all of the contact's subscriptions statuses.
      *
-     * @param list<PublicSubscriptionStatusShape> $subscriptionStatuses
+     * @param list<PublicSubscriptionStatus|PublicSubscriptionStatusShape> $subscriptionStatuses
      */
     public function withSubscriptionStatuses(array $subscriptionStatuses): self
     {

@@ -24,7 +24,22 @@ use HubspotSDK\Marketing\Forms\SingleLineTextField;
 /**
  * A form field used for collecting an email address.
  *
- * @phpstan-type DependentFieldShape = EmailField|PhoneField|MobilePhoneField|SingleLineTextField|MultiLineTextField|NumberField|SingleCheckboxField|MultipleCheckboxesField|DropdownField|RadioField|DatepickerField|FileField|PaymentLinkRadioField
+ * @phpstan-import-type EmailFieldShape from \HubspotSDK\Marketing\Forms\EmailField
+ * @phpstan-import-type PhoneFieldShape from \HubspotSDK\Marketing\Forms\PhoneField
+ * @phpstan-import-type MobilePhoneFieldShape from \HubspotSDK\Marketing\Forms\MobilePhoneField
+ * @phpstan-import-type SingleLineTextFieldShape from \HubspotSDK\Marketing\Forms\SingleLineTextField
+ * @phpstan-import-type MultiLineTextFieldShape from \HubspotSDK\Marketing\Forms\MultiLineTextField
+ * @phpstan-import-type NumberFieldShape from \HubspotSDK\Marketing\Forms\NumberField
+ * @phpstan-import-type SingleCheckboxFieldShape from \HubspotSDK\Marketing\Forms\SingleCheckboxField
+ * @phpstan-import-type MultipleCheckboxesFieldShape from \HubspotSDK\Marketing\Forms\MultipleCheckboxesField
+ * @phpstan-import-type DropdownFieldShape from \HubspotSDK\Marketing\Forms\DropdownField
+ * @phpstan-import-type RadioFieldShape from \HubspotSDK\Marketing\Forms\RadioField
+ * @phpstan-import-type DatepickerFieldShape from \HubspotSDK\Marketing\Forms\DatepickerField
+ * @phpstan-import-type FileFieldShape from \HubspotSDK\Marketing\Forms\FileField
+ * @phpstan-import-type PaymentLinkRadioFieldShape from \HubspotSDK\Marketing\Forms\PaymentLinkRadioField
+ *
+ * @phpstan-type DependentFieldVariants = mixed
+ * @phpstan-type DependentFieldShape = DependentFieldVariants|EmailFieldShape|PhoneFieldShape|MobilePhoneFieldShape|SingleLineTextFieldShape|MultiLineTextFieldShape|NumberFieldShape|SingleCheckboxFieldShape|MultipleCheckboxesFieldShape|DropdownFieldShape|RadioFieldShape|DatepickerFieldShape|FileFieldShape|PaymentLinkRadioFieldShape
  */
 final class DependentField implements ConverterSource
 {

@@ -13,6 +13,10 @@ use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Conversations\CustomChannels\ChannelAccountsContract;
 
+/**
+ * @phpstan-import-type PublicDeliveryIdentifierShape from \HubspotSDK\Conversations\PublicDeliveryIdentifier
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class ChannelAccountsService implements ChannelAccountsContract
 {
     /**
@@ -34,9 +38,8 @@ final class ChannelAccountsService implements ChannelAccountsContract
      * Create a new account for a channel. Multiple accounts can communicate over a single channel using different delivery identifiers.
      *
      * @param int $channelID the ID of the channel for which the account is being created
-     * @param array{
-     *   type: string, value: string
-     * }|PublicDeliveryIdentifier $deliveryIdentifier
+     * @param PublicDeliveryIdentifier|PublicDeliveryIdentifierShape $deliveryIdentifier
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -45,8 +48,8 @@ final class ChannelAccountsService implements ChannelAccountsContract
         bool $authorized,
         string $inboxID,
         string $name,
-        array|PublicDeliveryIdentifier|null $deliveryIdentifier = null,
-        ?RequestOptions $requestOptions = null,
+        PublicDeliveryIdentifier|array|null $deliveryIdentifier = null,
+        RequestOptions|array|null $requestOptions = null,
     ): PublicChannelAccount {
         $params = Util::removeNulls(
             [
@@ -70,8 +73,9 @@ final class ChannelAccountsService implements ChannelAccountsContract
      *
      * @param int $channelAccountID Path param: The channel account to update
      * @param int $channelID Path param: The channel to update
-     * @param bool $authorized Body param:
-     * @param string $name Body param:
+     * @param bool $authorized Body param
+     * @param string $name Body param
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -80,7 +84,7 @@ final class ChannelAccountsService implements ChannelAccountsContract
         int $channelID,
         ?bool $authorized = null,
         ?string $name = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): PublicChannelAccount {
         $params = Util::removeNulls(
             ['channelID' => $channelID, 'authorized' => $authorized, 'name' => $name]
@@ -100,6 +104,7 @@ final class ChannelAccountsService implements ChannelAccountsContract
      * @param list<string> $deliveryIdentifierType
      * @param list<string> $deliveryIdentifierValue
      * @param list<string> $sort
+     * @param RequestOpts|null $requestOptions
      *
      * @return Page<PublicChannelAccount>
      *
@@ -114,7 +119,7 @@ final class ChannelAccountsService implements ChannelAccountsContract
         ?array $deliveryIdentifierValue = null,
         ?int $limit = null,
         ?array $sort = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): Page {
         $params = Util::removeNulls(
             [
@@ -142,6 +147,7 @@ final class ChannelAccountsService implements ChannelAccountsContract
      * @param int $channelAccountID path param: The ID of the channel account to retrieve
      * @param int $channelID path param: The ID of the channel associated with the account being retrieved
      * @param bool $archived query param: Filter results to include only archived or non-archived channel accounts
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -149,7 +155,7 @@ final class ChannelAccountsService implements ChannelAccountsContract
         int $channelAccountID,
         int $channelID,
         bool $archived = false,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): PublicChannelAccount {
         $params = Util::removeNulls(
             ['channelID' => $channelID, 'archived' => $archived]

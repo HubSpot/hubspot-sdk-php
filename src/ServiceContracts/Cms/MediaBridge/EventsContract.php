@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\ServiceContracts\Cms\MediaBridge;
 
+use HubspotSDK\Cms\MediaBridge\AttentionSpanCalculatedValues;
 use HubspotSDK\Cms\MediaBridge\AttentionSpanEvent;
 use HubspotSDK\Cms\MediaBridge\Events\EventCreateAttentionSpanEventParams\MediaType;
 use HubspotSDK\Cms\MediaBridge\Events\EventCreateMediaPlayedEventParams\State;
@@ -12,26 +13,31 @@ use HubspotSDK\Cms\MediaBridge\MediaPlayedPercentageEvent;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type AttentionSpanCalculatedValuesShape from \HubspotSDK\Cms\MediaBridge\AttentionSpanCalculatedValues
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface EventsContract
 {
     /**
      * @api
      *
-     * @param 'AUDIO'|'DOCUMENT'|'IMAGE'|'OTHER'|'VIDEO'|MediaType $mediaType
+     * @param MediaType|value-of<MediaType> $mediaType
      * @param array<string,int> $rawDataMap
-     * @param array{totalPercentPlayed: float, totalSecondsPlayed: int} $derivedValues
+     * @param AttentionSpanCalculatedValues|AttentionSpanCalculatedValuesShape $derivedValues
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function createAttentionSpanEvent(
-        string|MediaType $mediaType,
+        MediaType|string $mediaType,
         int $occurredTimestamp,
         array $rawDataMap,
         string $sessionID,
         ?string $_hsenc = null,
         ?int $contactID = null,
         ?string $contactUtk = null,
-        ?array $derivedValues = null,
+        AttentionSpanCalculatedValues|array|null $derivedValues = null,
         ?string $externalID = null,
         ?int $mediaBridgeID = null,
         ?string $mediaName = null,
@@ -40,22 +46,23 @@ interface EventsContract
         ?string $pageName = null,
         ?string $pageURL = null,
         ?string $rawDataString = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): AttentionSpanEvent;
 
     /**
      * @api
      *
-     * @param 'AUDIO'|'DOCUMENT'|'IMAGE'|'OTHER'|'VIDEO'|\HubspotSDK\Cms\MediaBridge\Events\EventCreateMediaPlayedEventParams\MediaType $mediaType
-     * @param 'STARTED'|'VIEWED'|State $state
+     * @param \HubspotSDK\Cms\MediaBridge\Events\EventCreateMediaPlayedEventParams\MediaType|value-of<\HubspotSDK\Cms\MediaBridge\Events\EventCreateMediaPlayedEventParams\MediaType> $mediaType
+     * @param State|value-of<State> $state
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function createMediaPlayedEvent(
-        string|\HubspotSDK\Cms\MediaBridge\Events\EventCreateMediaPlayedEventParams\MediaType $mediaType,
+        \HubspotSDK\Cms\MediaBridge\Events\EventCreateMediaPlayedEventParams\MediaType|string $mediaType,
         int $occurredTimestamp,
         string $sessionID,
-        string|State $state,
+        State|string $state,
         ?string $_hsenc = null,
         ?int $contactID = null,
         ?string $contactUtk = null,
@@ -67,18 +74,19 @@ interface EventsContract
         ?int $pageID = null,
         ?string $pageName = null,
         ?string $pageURL = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): MediaPlayedEvent;
 
     /**
      * @api
      *
-     * @param 'AUDIO'|'DOCUMENT'|'IMAGE'|'OTHER'|'VIDEO'|\HubspotSDK\Cms\MediaBridge\Events\EventCreateMediaPlayedPercentEventParams\MediaType $mediaType
+     * @param \HubspotSDK\Cms\MediaBridge\Events\EventCreateMediaPlayedPercentEventParams\MediaType|value-of<\HubspotSDK\Cms\MediaBridge\Events\EventCreateMediaPlayedPercentEventParams\MediaType> $mediaType
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function createMediaPlayedPercentEvent(
-        string|\HubspotSDK\Cms\MediaBridge\Events\EventCreateMediaPlayedPercentEventParams\MediaType $mediaType,
+        \HubspotSDK\Cms\MediaBridge\Events\EventCreateMediaPlayedPercentEventParams\MediaType|string $mediaType,
         int $occurredTimestamp,
         int $playedPercent,
         string $sessionID,
@@ -92,6 +100,6 @@ interface EventsContract
         ?int $pageID = null,
         ?string $pageName = null,
         ?string $pageURL = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): MediaPlayedPercentageEvent;
 }

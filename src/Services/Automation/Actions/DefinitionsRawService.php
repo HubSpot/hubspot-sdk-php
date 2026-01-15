@@ -9,12 +9,10 @@ use HubspotSDK\Automation\Actions\Definitions\DefinitionDeleteParams;
 use HubspotSDK\Automation\Actions\Definitions\DefinitionGetParams;
 use HubspotSDK\Automation\Actions\Definitions\DefinitionListParams;
 use HubspotSDK\Automation\Actions\Definitions\DefinitionUpdateParams;
-use HubspotSDK\Automation\Actions\FieldTypeDefinition;
 use HubspotSDK\Automation\Actions\InputFieldDefinition;
 use HubspotSDK\Automation\Actions\OutputFieldDefinition;
 use HubspotSDK\Automation\Actions\PublicActionDefinition;
 use HubspotSDK\Automation\Actions\PublicActionFunction;
-use HubspotSDK\Automation\Actions\PublicActionFunction\FunctionType;
 use HubspotSDK\Automation\Actions\PublicActionLabels;
 use HubspotSDK\Automation\Actions\PublicExecutionTranslationRule;
 use HubspotSDK\Automation\Actions\PublicObjectRequestOptions;
@@ -25,6 +23,17 @@ use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Automation\Actions\DefinitionsRawContract;
 
+/**
+ * @phpstan-import-type PublicActionFunctionShape from \HubspotSDK\Automation\Actions\PublicActionFunction
+ * @phpstan-import-type InputFieldDependencyShape from \HubspotSDK\Automation\Actions\Definitions\DefinitionCreateParams\InputFieldDependency
+ * @phpstan-import-type InputFieldDependencyShape from \HubspotSDK\Automation\Actions\Definitions\DefinitionUpdateParams\InputFieldDependency as InputFieldDependencyShape1
+ * @phpstan-import-type InputFieldDefinitionShape from \HubspotSDK\Automation\Actions\InputFieldDefinition
+ * @phpstan-import-type PublicActionLabelsShape from \HubspotSDK\Automation\Actions\PublicActionLabels
+ * @phpstan-import-type PublicExecutionTranslationRuleShape from \HubspotSDK\Automation\Actions\PublicExecutionTranslationRule
+ * @phpstan-import-type PublicObjectRequestOptionsShape from \HubspotSDK\Automation\Actions\PublicObjectRequestOptions
+ * @phpstan-import-type OutputFieldDefinitionShape from \HubspotSDK\Automation\Actions\OutputFieldDefinition
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class DefinitionsRawService implements DefinitionsRawContract
 {
     // @phpstan-ignore-next-line
@@ -41,42 +50,18 @@ final class DefinitionsRawService implements DefinitionsRawContract
      * @param int $appID the ID of the app
      * @param array{
      *   actionURL: string,
-     *   functions: list<array{
-     *     functionSource: string,
-     *     functionType: 'POST_ACTION_EXECUTION'|'POST_FETCH_OPTIONS'|'PRE_ACTION_EXECUTION'|'PRE_FETCH_OPTIONS'|FunctionType,
-     *     id?: string,
-     *   }|PublicActionFunction>,
-     *   inputFields: list<array{
-     *     isRequired: bool,
-     *     typeDefinition: array<string,mixed>|FieldTypeDefinition,
-     *     automationFieldType?: string,
-     *     supportedValueTypes?: list<mixed>,
-     *   }|InputFieldDefinition>,
-     *   labels: array<string,array{
-     *     actionName: string,
-     *     actionCardContent?: string,
-     *     actionDescription?: string,
-     *     appDisplayName?: string,
-     *     executionRules?: array<string,string>,
-     *     inputFieldDescriptions?: array<string,string>,
-     *     inputFieldLabels?: array<string,string>,
-     *     inputFieldOptionLabels?: array<string,array<string,string>>,
-     *     outputFieldLabels?: array<string,string>,
-     *   }|PublicActionLabels>,
+     *   functions: list<PublicActionFunction|PublicActionFunctionShape>,
+     *   inputFields: list<InputFieldDefinition|InputFieldDefinitionShape>,
+     *   labels: array<string,PublicActionLabels|PublicActionLabelsShape>,
      *   objectTypes: list<string>,
      *   published: bool,
      *   archivedAt?: int,
-     *   executionRules?: list<array{
-     *     conditions: array<string,mixed>, labelName: string
-     *   }|PublicExecutionTranslationRule>,
-     *   inputFieldDependencies?: list<array<string,mixed>>,
-     *   objectRequestOptions?: array{
-     *     properties: list<string>
-     *   }|PublicObjectRequestOptions,
-     *   outputFields?: list<array{
-     *     typeDefinition: array<string,mixed>|FieldTypeDefinition
-     *   }|OutputFieldDefinition>,
+     *   executionRules?: list<PublicExecutionTranslationRule|PublicExecutionTranslationRuleShape>,
+     *   inputFieldDependencies?: list<InputFieldDependencyShape>,
+     *   objectRequestOptions?: PublicObjectRequestOptions|PublicObjectRequestOptionsShape,
+     *   outputFields?: list<OutputFieldDefinition|OutputFieldDefinitionShape>,
      * }|DefinitionCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicActionDefinition>
      *
@@ -85,7 +70,7 @@ final class DefinitionsRawService implements DefinitionsRawContract
     public function create(
         int $appID,
         array|DefinitionCreateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = DefinitionCreateParams::parseRequest(
             $params,
@@ -111,36 +96,16 @@ final class DefinitionsRawService implements DefinitionsRawContract
      * @param array{
      *   appID: int,
      *   actionURL?: string,
-     *   executionRules?: list<array{
-     *     conditions: array<string,mixed>, labelName: string
-     *   }|PublicExecutionTranslationRule>,
-     *   inputFieldDependencies?: list<array<string,mixed>>,
-     *   inputFields?: list<array{
-     *     isRequired: bool,
-     *     typeDefinition: array<string,mixed>|FieldTypeDefinition,
-     *     automationFieldType?: string,
-     *     supportedValueTypes?: list<mixed>,
-     *   }|InputFieldDefinition>,
-     *   labels?: array<string,array{
-     *     actionName: string,
-     *     actionCardContent?: string,
-     *     actionDescription?: string,
-     *     appDisplayName?: string,
-     *     executionRules?: array<string,string>,
-     *     inputFieldDescriptions?: array<string,string>,
-     *     inputFieldLabels?: array<string,string>,
-     *     inputFieldOptionLabels?: array<string,array<string,string>>,
-     *     outputFieldLabels?: array<string,string>,
-     *   }|PublicActionLabels>,
-     *   objectRequestOptions?: array{
-     *     properties: list<string>
-     *   }|PublicObjectRequestOptions,
+     *   executionRules?: list<PublicExecutionTranslationRule|PublicExecutionTranslationRuleShape>,
+     *   inputFieldDependencies?: list<InputFieldDependencyShape1>,
+     *   inputFields?: list<InputFieldDefinition|InputFieldDefinitionShape>,
+     *   labels?: array<string,PublicActionLabels|PublicActionLabelsShape>,
+     *   objectRequestOptions?: PublicObjectRequestOptions|PublicObjectRequestOptionsShape,
      *   objectTypes?: list<string>,
-     *   outputFields?: list<array{
-     *     typeDefinition: array<string,mixed>|FieldTypeDefinition
-     *   }|OutputFieldDefinition>,
+     *   outputFields?: list<OutputFieldDefinition|OutputFieldDefinitionShape>,
      *   published?: bool,
      * }|DefinitionUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicActionDefinition>
      *
@@ -149,7 +114,7 @@ final class DefinitionsRawService implements DefinitionsRawContract
     public function update(
         string $definitionID,
         array|DefinitionUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = DefinitionUpdateParams::parseRequest(
             $params,
@@ -177,6 +142,7 @@ final class DefinitionsRawService implements DefinitionsRawContract
      * @param array{
      *   after?: string, archived?: bool, limit?: int
      * }|DefinitionListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<PublicActionDefinition>>
      *
@@ -185,7 +151,7 @@ final class DefinitionsRawService implements DefinitionsRawContract
     public function list(
         int $appID,
         array|DefinitionListParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = DefinitionListParams::parseRequest(
             $params,
@@ -210,6 +176,7 @@ final class DefinitionsRawService implements DefinitionsRawContract
      *
      * @param string $definitionID the ID of the custom action definition
      * @param array{appID: int}|DefinitionDeleteParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -218,7 +185,7 @@ final class DefinitionsRawService implements DefinitionsRawContract
     public function delete(
         string $definitionID,
         array|DefinitionDeleteParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = DefinitionDeleteParams::parseRequest(
             $params,
@@ -243,6 +210,7 @@ final class DefinitionsRawService implements DefinitionsRawContract
      *
      * @param string $definitionID path param: The ID of the custom action
      * @param array{appID: int, archived?: bool}|DefinitionGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicActionDefinition>
      *
@@ -251,7 +219,7 @@ final class DefinitionsRawService implements DefinitionsRawContract
     public function get(
         string $definitionID,
         array|DefinitionGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = DefinitionGetParams::parseRequest(
             $params,

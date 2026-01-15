@@ -17,6 +17,9 @@ use HubspotSDK\Crm\Properties\PropertyGroup;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Cms\MediaBridge\GroupsRawContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class GroupsRawService implements GroupsRawContract
 {
     // @phpstan-ignore-next-line
@@ -34,6 +37,7 @@ final class GroupsRawService implements GroupsRawContract
      * @param array{
      *   appID: int, label: string, name: string, displayOrder?: int
      * }|GroupCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PropertyGroup>
      *
@@ -42,7 +46,7 @@ final class GroupsRawService implements GroupsRawContract
     public function create(
         string $objectType,
         array|GroupCreateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = GroupCreateParams::parseRequest(
             $params,
@@ -70,6 +74,7 @@ final class GroupsRawService implements GroupsRawContract
      *
      * @param string $objectType the type of object to get the property groups for
      * @param array{appID: int}|GroupListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CollectionResponsePropertyGroupNoPaging>
      *
@@ -78,7 +83,7 @@ final class GroupsRawService implements GroupsRawContract
     public function list(
         string $objectType,
         array|GroupListParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = GroupListParams::parseRequest(
             $params,
@@ -105,6 +110,7 @@ final class GroupsRawService implements GroupsRawContract
      *
      * @param string $groupName the name of the property group to be deleted
      * @param array{appID: int, objectType: string}|GroupDeleteByNameParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -113,7 +119,7 @@ final class GroupsRawService implements GroupsRawContract
     public function deleteByName(
         string $groupName,
         array|GroupDeleteByNameParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = GroupDeleteByNameParams::parseRequest(
             $params,
@@ -145,6 +151,7 @@ final class GroupsRawService implements GroupsRawContract
      *
      * @param string $groupName the name for the property group you want to get the details for
      * @param array{appID: int, objectType: string}|GroupGetByNameParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PropertyGroup>
      *
@@ -153,7 +160,7 @@ final class GroupsRawService implements GroupsRawContract
     public function getByName(
         string $groupName,
         array|GroupGetByNameParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = GroupGetByNameParams::parseRequest(
             $params,
@@ -187,6 +194,7 @@ final class GroupsRawService implements GroupsRawContract
      * @param array{
      *   appID: int, objectType: string, displayOrder?: int, label?: string
      * }|GroupUpdateByNameParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PropertyGroup>
      *
@@ -195,7 +203,7 @@ final class GroupsRawService implements GroupsRawContract
     public function updateByName(
         string $groupName,
         array|GroupUpdateByNameParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = GroupUpdateByNameParams::parseRequest(
             $params,

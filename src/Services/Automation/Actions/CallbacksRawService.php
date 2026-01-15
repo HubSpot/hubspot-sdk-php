@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Services\Automation\Actions;
 
+use HubspotSDK\Automation\Actions\CallbackCompletionBatchRequest;
 use HubspotSDK\Automation\Actions\Callbacks\CallbackCompleteBatchParams;
 use HubspotSDK\Automation\Actions\Callbacks\CallbackCompleteParams;
 use HubspotSDK\Client;
@@ -12,6 +13,10 @@ use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Automation\Actions\CallbacksRawContract;
 
+/**
+ * @phpstan-import-type CallbackCompletionBatchRequestShape from \HubspotSDK\Automation\Actions\CallbackCompletionBatchRequest
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class CallbacksRawService implements CallbacksRawContract
 {
     // @phpstan-ignore-next-line
@@ -27,6 +32,7 @@ final class CallbacksRawService implements CallbacksRawContract
      *
      * @param string $callbackID the ID of the action execution
      * @param array{outputFields: array<string,string>}|CallbackCompleteParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -35,7 +41,7 @@ final class CallbacksRawService implements CallbacksRawContract
     public function complete(
         string $callbackID,
         array|CallbackCompleteParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = CallbackCompleteParams::parseRequest(
             $params,
@@ -58,8 +64,9 @@ final class CallbacksRawService implements CallbacksRawContract
      * Complete a batch of blocked action executions.
      *
      * @param array{
-     *   inputs: list<array{callbackID: string, outputFields: array<string,string>}>
+     *   inputs: list<CallbackCompletionBatchRequest|CallbackCompletionBatchRequestShape>,
      * }|CallbackCompleteBatchParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -67,7 +74,7 @@ final class CallbacksRawService implements CallbacksRawContract
      */
     public function completeBatch(
         array|CallbackCompleteBatchParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = CallbackCompleteBatchParams::parseRequest(
             $params,
