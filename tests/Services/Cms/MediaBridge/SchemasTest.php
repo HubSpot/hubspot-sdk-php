@@ -4,6 +4,7 @@ namespace Tests\Services\Cms\MediaBridge;
 
 use HubspotSDK\Client;
 use HubspotSDK\Cms\MediaBridge\Schemas\SchemaListResponse;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Crm\Objects\Schemas\ObjectSchema;
 use HubspotSDK\Crm\Objects\Schemas\ObjectsSchemasObjectTypeDefinition;
 use HubspotSDK\Events\EventDefinitions\AssociationDefinition;
@@ -24,7 +25,7 @@ final class SchemasTest extends TestCase
     {
         parent::setUp();
 
-        $testUrl = getenv('TEST_API_BASE_URL') ?: 'http://127.0.0.1:4010';
+        $testUrl = Util::getenv('TEST_API_BASE_URL') ?: 'http://127.0.0.1:4010';
         $client = new Client(
             accessToken: 'pat-na1-xxxxxxxx-xxxx',
             baseUrl: $testUrl,

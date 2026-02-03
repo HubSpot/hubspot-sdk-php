@@ -3,6 +3,7 @@
 namespace Tests\Services\Crm\FeatureFlags;
 
 use HubspotSDK\Client;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Crm\FeatureFlags\FlagResponse;
 use HubspotSDK\Crm\FeatureFlags\PortalFlagStateBatchResponse;
 use PHPUnit\Framework\Attributes\CoversNothing;
@@ -22,7 +23,7 @@ final class AppsTest extends TestCase
     {
         parent::setUp();
 
-        $testUrl = getenv('TEST_API_BASE_URL') ?: 'http://127.0.0.1:4010';
+        $testUrl = Util::getenv('TEST_API_BASE_URL') ?: 'http://127.0.0.1:4010';
         $client = new Client(
             accessToken: 'pat-na1-xxxxxxxx-xxxx',
             baseUrl: $testUrl,

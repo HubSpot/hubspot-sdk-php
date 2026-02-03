@@ -102,7 +102,7 @@ class Client extends BaseClient
         ?string $baseUrl = null,
         RequestOptions|array|null $requestOptions = null,
     ) {
-        $baseUrl ??= getenv('HUBSPOT_BASE_URL') ?: 'https://api.hubapi.com';
+        $baseUrl ??= Util::getenv('HUBSPOT_BASE_URL') ?: 'https://api.hubapi.com';
 
         $options = RequestOptions::parse(
             RequestOptions::with(
