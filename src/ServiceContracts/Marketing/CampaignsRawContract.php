@@ -15,12 +15,16 @@ use HubspotSDK\Marketing\Campaigns\PublicCampaignWithAssets;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface CampaignsRawContract
 {
     /**
      * @api
      *
      * @param array<string,mixed>|CampaignCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicCampaign>
      *
@@ -28,7 +32,7 @@ interface CampaignsRawContract
      */
     public function create(
         array|CampaignCreateParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -36,6 +40,7 @@ interface CampaignsRawContract
      *
      * @param string $campaignGuid unique identifier for the campaign, formatted as a UUID
      * @param array<string,mixed>|CampaignUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicCampaign>
      *
@@ -44,13 +49,14 @@ interface CampaignsRawContract
     public function update(
         string $campaignGuid,
         array|CampaignUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|CampaignListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<PublicCampaign>>
      *
@@ -58,13 +64,14 @@ interface CampaignsRawContract
      */
     public function list(
         array|CampaignListParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param string $campaignGuid unique identifier for the campaign, formatted as a UUID
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -72,7 +79,7 @@ interface CampaignsRawContract
      */
     public function delete(
         string $campaignGuid,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 
     /**
@@ -80,6 +87,7 @@ interface CampaignsRawContract
      *
      * @param string $campaignGuid unique identifier for the campaign, formatted as a UUID
      * @param array<string,mixed>|CampaignGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicCampaignWithAssets>
      *
@@ -88,6 +96,6 @@ interface CampaignsRawContract
     public function get(
         string $campaignGuid,
         array|CampaignGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

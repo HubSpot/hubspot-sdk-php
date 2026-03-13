@@ -16,12 +16,16 @@ use HubspotSDK\Crm\Properties\PropertyUpdateParams;
 use HubspotSDK\Property;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface PropertiesRawContract
 {
     /**
      * @api
      *
      * @param array<string,mixed>|PropertyCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CreatedResponseProperty>
      *
@@ -30,14 +34,15 @@ interface PropertiesRawContract
     public function create(
         string $objectType,
         array|PropertyCreateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
-     * @param string $propertyName Path param:
+     * @param string $propertyName Path param
      * @param array<string,mixed>|PropertyUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Property>
      *
@@ -46,13 +51,14 @@ interface PropertiesRawContract
     public function update(
         string $propertyName,
         array|PropertyUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|PropertyListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CollectionResponseProperty>
      *
@@ -61,13 +67,14 @@ interface PropertiesRawContract
     public function list(
         string $objectType,
         array|PropertyListParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|PropertyDeleteParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -76,14 +83,15 @@ interface PropertiesRawContract
     public function delete(
         string $propertyName,
         array|PropertyDeleteParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
-     * @param string $propertyName Path param:
+     * @param string $propertyName Path param
      * @param array<string,mixed>|PropertyGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Property>
      *
@@ -92,6 +100,6 @@ interface PropertiesRawContract
     public function get(
         string $propertyName,
         array|PropertyGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

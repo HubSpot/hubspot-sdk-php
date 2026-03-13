@@ -16,6 +16,9 @@ use HubspotSDK\Marketing\Events\CollectionResponseWithTotalPublicListNoPaging;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Marketing\Events\AssociationsRawContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class AssociationsRawService implements AssociationsRawContract
 {
     // @phpstan-ignore-next-line
@@ -30,6 +33,7 @@ final class AssociationsRawService implements AssociationsRawContract
      * Gets lists associated with a marketing event by marketing event id
      *
      * @param string $marketingEventID the internal id of the marketing event in HubSpot
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CollectionResponseWithTotalPublicListNoPaging>
      *
@@ -37,7 +41,7 @@ final class AssociationsRawService implements AssociationsRawContract
      */
     public function list(
         string $marketingEventID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -58,6 +62,7 @@ final class AssociationsRawService implements AssociationsRawContract
      *
      * @param string $listID the ILS ID of the list
      * @param array{marketingEventID: string}|AssociationDeleteParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -66,7 +71,7 @@ final class AssociationsRawService implements AssociationsRawContract
     public function delete(
         string $listID,
         array|AssociationDeleteParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = AssociationDeleteParams::parseRequest(
             $params,
@@ -95,6 +100,7 @@ final class AssociationsRawService implements AssociationsRawContract
      *
      * @param string $listID the ILS ID of the list
      * @param array{marketingEventID: string}|AssociationAssociateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -103,7 +109,7 @@ final class AssociationsRawService implements AssociationsRawContract
     public function associate(
         string $listID,
         array|AssociationAssociateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = AssociationAssociateParams::parseRequest(
             $params,
@@ -134,6 +140,7 @@ final class AssociationsRawService implements AssociationsRawContract
      * @param array{
      *   externalAccountID: string, externalEventID: string
      * }|AssociationAssociateByExternalAccountParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -142,7 +149,7 @@ final class AssociationsRawService implements AssociationsRawContract
     public function associateByExternalAccount(
         string $listID,
         array|AssociationAssociateByExternalAccountParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = AssociationAssociateByExternalAccountParams::parseRequest(
             $params,
@@ -176,6 +183,7 @@ final class AssociationsRawService implements AssociationsRawContract
      * @param array{
      *   externalAccountID: string, externalEventID: string
      * }|AssociationDeleteByExternalAccountParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -184,7 +192,7 @@ final class AssociationsRawService implements AssociationsRawContract
     public function deleteByExternalAccount(
         string $listID,
         array|AssociationDeleteByExternalAccountParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = AssociationDeleteByExternalAccountParams::parseRequest(
             $params,
@@ -218,6 +226,7 @@ final class AssociationsRawService implements AssociationsRawContract
      * @param array{
      *   externalAccountID: string
      * }|AssociationListByExternalAccountParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CollectionResponseWithTotalPublicListNoPaging>
      *
@@ -226,7 +235,7 @@ final class AssociationsRawService implements AssociationsRawContract
     public function listByExternalAccount(
         string $externalEventID,
         array|AssociationListByExternalAccountParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = AssociationListByExternalAccountParams::parseRequest(
             $params,

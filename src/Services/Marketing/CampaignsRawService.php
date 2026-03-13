@@ -17,6 +17,9 @@ use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Marketing\CampaignsRawContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class CampaignsRawService implements CampaignsRawContract
 {
     // @phpstan-ignore-next-line
@@ -31,6 +34,7 @@ final class CampaignsRawService implements CampaignsRawContract
      * Create a campaign with the given properties and return the campaign object, including the campaignGuid and created properties.
      *
      * @param array{properties: array<string,string>}|CampaignCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicCampaign>
      *
@@ -38,7 +42,7 @@ final class CampaignsRawService implements CampaignsRawContract
      */
     public function create(
         array|CampaignCreateParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = CampaignCreateParams::parseRequest(
             $params,
@@ -63,6 +67,7 @@ final class CampaignsRawService implements CampaignsRawContract
      *
      * @param string $campaignGuid unique identifier for the campaign, formatted as a UUID
      * @param array{properties: array<string,string>}|CampaignUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicCampaign>
      *
@@ -71,7 +76,7 @@ final class CampaignsRawService implements CampaignsRawContract
     public function update(
         string $campaignGuid,
         array|CampaignUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = CampaignUpdateParams::parseRequest(
             $params,
@@ -100,6 +105,7 @@ final class CampaignsRawService implements CampaignsRawContract
      *   properties?: list<string>,
      *   sort?: string,
      * }|CampaignListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<PublicCampaign>>
      *
@@ -107,7 +113,7 @@ final class CampaignsRawService implements CampaignsRawContract
      */
     public function list(
         array|CampaignListParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = CampaignListParams::parseRequest(
             $params,
@@ -132,6 +138,7 @@ final class CampaignsRawService implements CampaignsRawContract
      * This call will return a 204 No Content response regardless of whether the campaignGuid provided corresponds to an existing campaign or not.
      *
      * @param string $campaignGuid unique identifier for the campaign, formatted as a UUID
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -139,7 +146,7 @@ final class CampaignsRawService implements CampaignsRawContract
      */
     public function delete(
         string $campaignGuid,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -159,6 +166,7 @@ final class CampaignsRawService implements CampaignsRawContract
      * @param array{
      *   endDate?: string, properties?: list<string>, startDate?: string
      * }|CampaignGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicCampaignWithAssets>
      *
@@ -167,7 +175,7 @@ final class CampaignsRawService implements CampaignsRawContract
     public function get(
         string $campaignGuid,
         array|CampaignGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = CampaignGetParams::parseRequest(
             $params,

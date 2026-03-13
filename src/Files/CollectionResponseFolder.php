@@ -15,7 +15,7 @@ use HubspotSDK\Paging;
  * @phpstan-import-type PagingShape from \HubspotSDK\Paging
  *
  * @phpstan-type CollectionResponseFolderShape = array{
- *   results: list<FolderShape>, paging?: null|Paging|PagingShape
+ *   results: list<Folder|FolderShape>, paging?: null|Paging|PagingShape
  * }
  */
 final class CollectionResponseFolder implements BaseModel
@@ -54,7 +54,7 @@ final class CollectionResponseFolder implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<FolderShape> $results
+     * @param list<Folder|FolderShape> $results
      * @param Paging|PagingShape|null $paging
      */
     public static function with(
@@ -71,7 +71,7 @@ final class CollectionResponseFolder implements BaseModel
     }
 
     /**
-     * @param list<FolderShape> $results
+     * @param list<Folder|FolderShape> $results
      */
     public function withResults(array $results): self
     {

@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Cms\Hubdb;
 
 use HubspotSDK\Client;
-use HubspotSDK\Cms\Hubdb\ColumnRequest\Type;
+use HubspotSDK\Cms\Hubdb\ColumnRequest;
 use HubspotSDK\Cms\Hubdb\HubDBTableV3;
 use HubspotSDK\Cms\Hubdb\ImportResult;
 use HubspotSDK\Cms\Hubdb\Tables\TableCloneDraftParams;
@@ -25,11 +25,14 @@ use HubspotSDK\Cms\Hubdb\Tables\TableUpdateDraftParams;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Core\Util;
-use HubspotSDK\Option;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Cms\Hubdb\TablesRawContract;
 
+/**
+ * @phpstan-import-type ColumnRequestShape from \HubspotSDK\Cms\Hubdb\ColumnRequest
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class TablesRawService implements TablesRawContract
 {
     // @phpstan-ignore-next-line
@@ -46,23 +49,14 @@ final class TablesRawService implements TablesRawContract
      * @param array{
      *   allowChildTables: bool,
      *   allowPublicAPIAccess: bool,
-     *   columns: list<array{
-     *     id: int,
-     *     label: string,
-     *     name: string,
-     *     options: list<array<string,mixed>|Option>,
-     *     type: 'BOOLEAN'|'CODE'|'COMPOSITE'|'CTA'|'CURRENCY'|'DATE'|'DATETIME'|'EMBED'|'FILE'|'FOREIGN_ID'|'HUBSPOT_VIDEO'|'IMAGE'|'JSON'|'LOCATION'|'MULTISELECT'|'NULL'|'NUMBER'|'RICHTEXT'|'SELECT'|'TEXT'|'URL'|'VIDEO'|Type,
-     *     foreignColumnID?: int,
-     *     foreignTableID?: int,
-     *     maxNumberOfCharacters?: int,
-     *     maxNumberOfOptions?: int,
-     *   }>,
+     *   columns: list<ColumnRequest|ColumnRequestShape>,
      *   dynamicMetaTags: array<string,int>,
      *   enableChildTablePages: bool,
      *   label: string,
      *   name: string,
      *   useForPages: bool,
      * }|TableCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<HubDBTableV3>
      *
@@ -70,7 +64,7 @@ final class TablesRawService implements TablesRawContract
      */
     public function create(
         array|TableCreateParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = TableCreateParams::parseRequest(
             $params,
@@ -96,16 +90,17 @@ final class TablesRawService implements TablesRawContract
      *   after?: string,
      *   archived?: bool,
      *   contentType?: string,
-     *   createdAfter?: string|\DateTimeInterface,
-     *   createdAt?: string|\DateTimeInterface,
-     *   createdBefore?: string|\DateTimeInterface,
+     *   createdAfter?: \DateTimeInterface,
+     *   createdAt?: \DateTimeInterface,
+     *   createdBefore?: \DateTimeInterface,
      *   isGetLocalizedSchema?: bool,
      *   limit?: int,
      *   sort?: list<string>,
-     *   updatedAfter?: string|\DateTimeInterface,
-     *   updatedAt?: string|\DateTimeInterface,
-     *   updatedBefore?: string|\DateTimeInterface,
+     *   updatedAfter?: \DateTimeInterface,
+     *   updatedAt?: \DateTimeInterface,
+     *   updatedBefore?: \DateTimeInterface,
      * }|TableListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<HubDBTableV3>>
      *
@@ -113,7 +108,7 @@ final class TablesRawService implements TablesRawContract
      */
     public function list(
         array|TableListParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = TableListParams::parseRequest(
             $params,
@@ -137,6 +132,7 @@ final class TablesRawService implements TablesRawContract
      * Archive (soft delete) an existing HubDB table. This archives both the published and draft versions.
      *
      * @param string $tableIDOrName the ID or name of the table to archive
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -144,7 +140,7 @@ final class TablesRawService implements TablesRawContract
      */
     public function delete(
         string $tableIDOrName,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -164,6 +160,7 @@ final class TablesRawService implements TablesRawContract
      * @param array{
      *   copyRows: bool, isHubspotDefined: bool, newLabel?: string, newName?: string
      * }|TableCloneDraftParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<HubDBTableV3>
      *
@@ -172,7 +169,7 @@ final class TablesRawService implements TablesRawContract
     public function cloneDraft(
         string $tableIDOrName,
         array|TableCloneDraftParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = TableCloneDraftParams::parseRequest(
             $params,
@@ -196,6 +193,7 @@ final class TablesRawService implements TablesRawContract
      *
      * @param int $versionID the ID of the specific version of the table to delete
      * @param array{tableIDOrName: string}|TableDeleteVersionParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -204,7 +202,7 @@ final class TablesRawService implements TablesRawContract
     public function deleteVersion(
         int $versionID,
         array|TableDeleteVersionParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = TableDeleteVersionParams::parseRequest(
             $params,
@@ -231,6 +229,7 @@ final class TablesRawService implements TablesRawContract
      *
      * @param string $tableIDOrName the ID or name of the table to export
      * @param array{format?: string}|TableExportParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<string>
      *
@@ -239,7 +238,7 @@ final class TablesRawService implements TablesRawContract
     public function export(
         string $tableIDOrName,
         array|TableExportParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = TableExportParams::parseRequest(
             $params,
@@ -264,6 +263,7 @@ final class TablesRawService implements TablesRawContract
      *
      * @param string $tableIDOrName the ID or name of the table to export
      * @param array{format?: string}|TableExportDraftParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<string>
      *
@@ -272,7 +272,7 @@ final class TablesRawService implements TablesRawContract
     public function exportDraft(
         string $tableIDOrName,
         array|TableExportDraftParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = TableExportDraftParams::parseRequest(
             $params,
@@ -301,6 +301,7 @@ final class TablesRawService implements TablesRawContract
      * @param array{
      *   archived?: bool, includeForeignIDs?: bool, isGetLocalizedSchema?: bool
      * }|TableGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<HubDBTableV3>
      *
@@ -309,7 +310,7 @@ final class TablesRawService implements TablesRawContract
     public function get(
         string $tableIDOrName,
         array|TableGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = TableGetParams::parseRequest(
             $params,
@@ -338,6 +339,7 @@ final class TablesRawService implements TablesRawContract
      * @param array{
      *   archived?: bool, includeForeignIDs?: bool, isGetLocalizedSchema?: bool
      * }|TableGetDraftParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<HubDBTableV3>
      *
@@ -346,7 +348,7 @@ final class TablesRawService implements TablesRawContract
     public function getDraft(
         string $tableIDOrName,
         array|TableGetDraftParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = TableGetDraftParams::parseRequest(
             $params,
@@ -374,6 +376,7 @@ final class TablesRawService implements TablesRawContract
      *
      * @param string $tableIDOrName the ID of the destination table where data will be imported
      * @param array{config?: string, file?: string}|TableImportDraftParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ImportResult>
      *
@@ -382,7 +385,7 @@ final class TablesRawService implements TablesRawContract
     public function importDraft(
         string $tableIDOrName,
         array|TableImportDraftParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = TableImportDraftParams::parseRequest(
             $params,
@@ -409,16 +412,17 @@ final class TablesRawService implements TablesRawContract
      *   after?: string,
      *   archived?: bool,
      *   contentType?: string,
-     *   createdAfter?: string|\DateTimeInterface,
-     *   createdAt?: string|\DateTimeInterface,
-     *   createdBefore?: string|\DateTimeInterface,
+     *   createdAfter?: \DateTimeInterface,
+     *   createdAt?: \DateTimeInterface,
+     *   createdBefore?: \DateTimeInterface,
      *   isGetLocalizedSchema?: bool,
      *   limit?: int,
      *   sort?: list<string>,
-     *   updatedAfter?: string|\DateTimeInterface,
-     *   updatedAt?: string|\DateTimeInterface,
-     *   updatedBefore?: string|\DateTimeInterface,
+     *   updatedAfter?: \DateTimeInterface,
+     *   updatedAt?: \DateTimeInterface,
+     *   updatedBefore?: \DateTimeInterface,
      * }|TableListDraftParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<HubDBTableV3>>
      *
@@ -426,7 +430,7 @@ final class TablesRawService implements TablesRawContract
      */
     public function listDraft(
         array|TableListDraftParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = TableListDraftParams::parseRequest(
             $params,
@@ -451,6 +455,7 @@ final class TablesRawService implements TablesRawContract
      *
      * @param string $tableIDOrName the ID or name of the table to publish
      * @param array{includeForeignIDs?: bool}|TablePublishDraftParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<HubDBTableV3>
      *
@@ -459,7 +464,7 @@ final class TablesRawService implements TablesRawContract
     public function publishDraft(
         string $tableIDOrName,
         array|TablePublishDraftParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = TablePublishDraftParams::parseRequest(
             $params,
@@ -486,6 +491,7 @@ final class TablesRawService implements TablesRawContract
      *
      * @param string $tableIDOrName the ID or name of the table to reset
      * @param array{includeForeignIDs?: bool}|TableResetDraftParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<HubDBTableV3>
      *
@@ -494,7 +500,7 @@ final class TablesRawService implements TablesRawContract
     public function resetDraft(
         string $tableIDOrName,
         array|TableResetDraftParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = TableResetDraftParams::parseRequest(
             $params,
@@ -521,6 +527,7 @@ final class TablesRawService implements TablesRawContract
      *
      * @param string $tableIDOrName the ID or name of the table to publish
      * @param array{includeForeignIDs?: bool}|TableUnpublishParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<HubDBTableV3>
      *
@@ -529,7 +536,7 @@ final class TablesRawService implements TablesRawContract
     public function unpublish(
         string $tableIDOrName,
         array|TableUnpublishParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = TableUnpublishParams::parseRequest(
             $params,
@@ -559,17 +566,7 @@ final class TablesRawService implements TablesRawContract
      * @param array{
      *   allowChildTables: bool,
      *   allowPublicAPIAccess: bool,
-     *   columns: list<array{
-     *     id: int,
-     *     label: string,
-     *     name: string,
-     *     options: list<array<string,mixed>|Option>,
-     *     type: 'BOOLEAN'|'CODE'|'COMPOSITE'|'CTA'|'CURRENCY'|'DATE'|'DATETIME'|'EMBED'|'FILE'|'FOREIGN_ID'|'HUBSPOT_VIDEO'|'IMAGE'|'JSON'|'LOCATION'|'MULTISELECT'|'NULL'|'NUMBER'|'RICHTEXT'|'SELECT'|'TEXT'|'URL'|'VIDEO'|Type,
-     *     foreignColumnID?: int,
-     *     foreignTableID?: int,
-     *     maxNumberOfCharacters?: int,
-     *     maxNumberOfOptions?: int,
-     *   }>,
+     *   columns: list<ColumnRequest|ColumnRequestShape>,
      *   dynamicMetaTags: array<string,int>,
      *   enableChildTablePages: bool,
      *   label: string,
@@ -579,6 +576,7 @@ final class TablesRawService implements TablesRawContract
      *   includeForeignIDs?: bool,
      *   isGetLocalizedSchema?: bool,
      * }|TableUpdateDraftParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<HubDBTableV3>
      *
@@ -587,7 +585,7 @@ final class TablesRawService implements TablesRawContract
     public function updateDraft(
         string $tableIDOrName,
         array|TableUpdateDraftParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = TableUpdateDraftParams::parseRequest(
             $params,

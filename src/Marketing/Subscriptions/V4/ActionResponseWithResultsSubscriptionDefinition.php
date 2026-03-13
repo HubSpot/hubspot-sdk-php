@@ -18,10 +18,10 @@ use HubspotSDK\StandardError;
  *
  * @phpstan-type ActionResponseWithResultsSubscriptionDefinitionShape = array{
  *   completedAt: \DateTimeInterface,
- *   results: list<SubscriptionDefinitionShape>,
+ *   results: list<SubscriptionDefinition|SubscriptionDefinitionShape>,
  *   startedAt: \DateTimeInterface,
  *   status: Status|value-of<Status>,
- *   errors?: list<StandardErrorShape>|null,
+ *   errors?: list<StandardError|StandardErrorShape>|null,
  *   links?: array<string,string>|null,
  *   numErrors?: int|null,
  *   requestedAt?: \DateTimeInterface|null,
@@ -118,9 +118,9 @@ final class ActionResponseWithResultsSubscriptionDefinition implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<SubscriptionDefinitionShape> $results
+     * @param list<SubscriptionDefinition|SubscriptionDefinitionShape> $results
      * @param Status|value-of<Status> $status
-     * @param list<StandardErrorShape>|null $errors
+     * @param list<StandardError|StandardErrorShape>|null $errors
      * @param array<string,string>|null $links
      */
     public static function with(
@@ -162,7 +162,7 @@ final class ActionResponseWithResultsSubscriptionDefinition implements BaseModel
     /**
      * An array containing the results of the operation.
      *
-     * @param list<SubscriptionDefinitionShape> $results
+     * @param list<SubscriptionDefinition|SubscriptionDefinitionShape> $results
      */
     public function withResults(array $results): self
     {
@@ -199,7 +199,7 @@ final class ActionResponseWithResultsSubscriptionDefinition implements BaseModel
     /**
      * An array of errors that occurred during the operation.
      *
-     * @param list<StandardErrorShape> $errors
+     * @param list<StandardError|StandardErrorShape> $errors
      */
     public function withErrors(array $errors): self
     {

@@ -3,6 +3,7 @@
 namespace Tests\Services\Crm;
 
 use HubspotSDK\Client;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Crm\Lists\ListCreateResponse;
 use HubspotSDK\Crm\Lists\ListFetchResponse;
 use HubspotSDK\Crm\Lists\ListsByIDResponse;
@@ -26,7 +27,7 @@ final class ListsTest extends TestCase
     {
         parent::setUp();
 
-        $testUrl = getenv('TEST_API_BASE_URL') ?: 'http://127.0.0.1:4010';
+        $testUrl = Util::getenv('TEST_API_BASE_URL') ?: 'http://127.0.0.1:4010';
         $client = new Client(
             accessToken: 'pat-na1-xxxxxxxx-xxxx',
             baseUrl: $testUrl,

@@ -12,6 +12,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type AuthSettingsVariants from \HubspotSDK\Automation\Workflows\APIWebhookAction\AuthSettings
  * @phpstan-import-type APIInputVariableShape from \HubspotSDK\Automation\Workflows\APIInputVariable
  * @phpstan-import-type AuthSettingsShape from \HubspotSDK\Automation\Workflows\APIWebhookAction\AuthSettings
  * @phpstan-import-type APIConnectionShape from \HubspotSDK\Automation\Workflows\APIConnection
@@ -19,7 +20,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-type APIWebhookActionShape = array{
  *   actionID: string,
  *   method: Method|value-of<Method>,
- *   queryParams: list<APIInputVariableShape>,
+ *   queryParams: list<APIInputVariable|APIInputVariableShape>,
  *   type: Type|value-of<Type>,
  *   webhookURL: string,
  *   authSettings?: AuthSettingsShape|null,
@@ -49,6 +50,7 @@ final class APIWebhookAction implements BaseModel
     #[Required('webhookUrl')]
     public string $webhookURL;
 
+    /** @var AuthSettingsVariants|null $authSettings */
     #[Optional]
     public APIAuthKeyWebhookAuthSettings|APISignatureWebhookAuthSettings|null $authSettings;
 
@@ -87,7 +89,7 @@ final class APIWebhookAction implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param Method|value-of<Method> $method
-     * @param list<APIInputVariableShape> $queryParams
+     * @param list<APIInputVariable|APIInputVariableShape> $queryParams
      * @param Type|value-of<Type> $type
      * @param AuthSettingsShape|null $authSettings
      * @param APIConnection|APIConnectionShape|null $connection
@@ -135,7 +137,7 @@ final class APIWebhookAction implements BaseModel
     }
 
     /**
-     * @param list<APIInputVariableShape> $queryParams
+     * @param list<APIInputVariable|APIInputVariableShape> $queryParams
      */
     public function withQueryParams(array $queryParams): self
     {

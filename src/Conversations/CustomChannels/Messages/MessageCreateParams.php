@@ -5,16 +5,9 @@ declare(strict_types=1);
 namespace HubspotSDK\Conversations\CustomChannels\Messages;
 
 use HubspotSDK\Conversations\CustomChannels\ChannelIntegrationParticipant;
-use HubspotSDK\Conversations\CustomChannels\ContactAttachment;
-use HubspotSDK\Conversations\CustomChannels\FileAttachment;
-use HubspotSDK\Conversations\CustomChannels\LocationAttachment;
-use HubspotSDK\Conversations\CustomChannels\MessageHeaderAttachment;
 use HubspotSDK\Conversations\CustomChannels\Messages\MessageCreateParams\Attachment;
 use HubspotSDK\Conversations\CustomChannels\Messages\MessageCreateParams\MessageDirection;
 use HubspotSDK\Conversations\CustomChannels\PreResolvedContacts;
-use HubspotSDK\Conversations\CustomChannels\QuickRepliesAttachment;
-use HubspotSDK\Conversations\CustomChannels\SocialMetadataIntegrationAttachment;
-use HubspotSDK\Conversations\CustomChannels\UnsupportedContentAttachment;
 use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
@@ -26,6 +19,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Services\Conversations\CustomChannels\MessagesService::create()
  *
+ * @phpstan-import-type AttachmentVariants from \HubspotSDK\Conversations\CustomChannels\Messages\MessageCreateParams\Attachment
  * @phpstan-import-type AttachmentShape from \HubspotSDK\Conversations\CustomChannels\Messages\MessageCreateParams\Attachment
  * @phpstan-import-type ChannelIntegrationParticipantShape from \HubspotSDK\Conversations\CustomChannels\ChannelIntegrationParticipant
  * @phpstan-import-type PreResolvedContactsShape from \HubspotSDK\Conversations\CustomChannels\PreResolvedContacts
@@ -34,8 +28,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   attachments: list<AttachmentShape>,
  *   channelAccountID: string,
  *   messageDirection: MessageDirection|value-of<MessageDirection>,
- *   recipients: list<ChannelIntegrationParticipantShape>,
- *   senders: list<ChannelIntegrationParticipantShape>,
+ *   recipients: list<ChannelIntegrationParticipant|ChannelIntegrationParticipantShape>,
+ *   senders: list<ChannelIntegrationParticipant|ChannelIntegrationParticipantShape>,
  *   text: string,
  *   timestamp: \DateTimeInterface,
  *   inReplyToID?: string|null,
@@ -51,9 +45,7 @@ final class MessageCreateParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    /**
-     * @var list<FileAttachment|LocationAttachment|ContactAttachment|UnsupportedContentAttachment|MessageHeaderAttachment|QuickRepliesAttachment|SocialMetadataIntegrationAttachment> $attachments
-     */
+    /** @var list<AttachmentVariants> $attachments */
     #[Required(list: Attachment::class)]
     public array $attachments;
 
@@ -134,8 +126,8 @@ final class MessageCreateParams implements BaseModel
      *
      * @param list<AttachmentShape> $attachments
      * @param MessageDirection|value-of<MessageDirection> $messageDirection
-     * @param list<ChannelIntegrationParticipantShape> $recipients
-     * @param list<ChannelIntegrationParticipantShape> $senders
+     * @param list<ChannelIntegrationParticipant|ChannelIntegrationParticipantShape> $recipients
+     * @param list<ChannelIntegrationParticipant|ChannelIntegrationParticipantShape> $senders
      * @param PreResolvedContacts|PreResolvedContactsShape|null $preResolvedContacts
      */
     public static function with(
@@ -203,7 +195,7 @@ final class MessageCreateParams implements BaseModel
     }
 
     /**
-     * @param list<ChannelIntegrationParticipantShape> $recipients
+     * @param list<ChannelIntegrationParticipant|ChannelIntegrationParticipantShape> $recipients
      */
     public function withRecipients(array $recipients): self
     {
@@ -214,7 +206,7 @@ final class MessageCreateParams implements BaseModel
     }
 
     /**
-     * @param list<ChannelIntegrationParticipantShape> $senders
+     * @param list<ChannelIntegrationParticipant|ChannelIntegrationParticipantShape> $senders
      */
     public function withSenders(array $senders): self
     {

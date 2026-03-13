@@ -15,7 +15,7 @@ use HubspotSDK\ForwardPaging;
  * @phpstan-import-type ForwardPagingShape from \HubspotSDK\ForwardPaging
  *
  * @phpstan-type CollectionResponseMarketingEventPublicReadResponseV2ForwardPagingShape = array{
- *   results: list<MarketingEventPublicReadResponseV2Shape>,
+ *   results: list<MarketingEventPublicReadResponseV2|MarketingEventPublicReadResponseV2Shape>,
  *   paging?: null|ForwardPaging|ForwardPagingShape,
  * }
  */
@@ -60,7 +60,7 @@ final class CollectionResponseMarketingEventPublicReadResponseV2ForwardPaging im
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<MarketingEventPublicReadResponseV2Shape> $results
+     * @param list<MarketingEventPublicReadResponseV2|MarketingEventPublicReadResponseV2Shape> $results
      * @param ForwardPaging|ForwardPagingShape|null $paging
      */
     public static function with(
@@ -77,7 +77,7 @@ final class CollectionResponseMarketingEventPublicReadResponseV2ForwardPaging im
     }
 
     /**
-     * @param list<MarketingEventPublicReadResponseV2Shape> $results
+     * @param list<MarketingEventPublicReadResponseV2|MarketingEventPublicReadResponseV2Shape> $results
      */
     public function withResults(array $results): self
     {

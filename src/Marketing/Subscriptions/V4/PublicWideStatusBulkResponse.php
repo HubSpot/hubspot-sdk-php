@@ -12,7 +12,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-import-type PublicWideStatusShape from \HubspotSDK\Marketing\Subscriptions\V4\PublicWideStatus
  *
  * @phpstan-type PublicWideStatusBulkResponseShape = array{
- *   subscriberIDString: string, wideStatuses: list<PublicWideStatusShape>
+ *   subscriberIDString: string,
+ *   wideStatuses: list<PublicWideStatus|PublicWideStatusShape>,
  * }
  */
 final class PublicWideStatusBulkResponse implements BaseModel
@@ -60,7 +61,7 @@ final class PublicWideStatusBulkResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicWideStatusShape> $wideStatuses
+     * @param list<PublicWideStatus|PublicWideStatusShape> $wideStatuses
      */
     public static function with(
         string $subscriberIDString,
@@ -88,7 +89,7 @@ final class PublicWideStatusBulkResponse implements BaseModel
     /**
      * An array containing the wide status results for the operation.
      *
-     * @param list<PublicWideStatusShape> $wideStatuses
+     * @param list<PublicWideStatus|PublicWideStatusShape> $wideStatuses
      */
     public function withWideStatuses(array $wideStatuses): self
     {

@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-import-type PublicPropertyValidationRuleShape from \HubspotSDK\Crm\PropertyValidations\PublicPropertyValidationRule
  *
  * @phpstan-type CollectionResponsePublicPropertyValidationRuleNoPagingShape = array{
- *   results: list<PublicPropertyValidationRuleShape>
+ *   results: list<PublicPropertyValidationRule|PublicPropertyValidationRuleShape>
  * }
  */
 final class CollectionResponsePublicPropertyValidationRuleNoPaging implements BaseModel
@@ -52,7 +52,7 @@ final class CollectionResponsePublicPropertyValidationRuleNoPaging implements Ba
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicPropertyValidationRuleShape> $results
+     * @param list<PublicPropertyValidationRule|PublicPropertyValidationRuleShape> $results
      */
     public static function with(array $results): self
     {
@@ -66,7 +66,7 @@ final class CollectionResponsePublicPropertyValidationRuleNoPaging implements Ba
     /**
      * Collection of validation rules configured for the specified property. Each rule defines a constraint that property values must satisfy (e.g., format requirements, length limits, allowed values).
      *
-     * @param list<PublicPropertyValidationRuleShape> $results
+     * @param list<PublicPropertyValidationRule|PublicPropertyValidationRuleShape> $results
      */
     public function withResults(array $results): self
     {

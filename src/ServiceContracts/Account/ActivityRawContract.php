@@ -15,12 +15,16 @@ use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface ActivityRawContract
 {
     /**
      * @api
      *
      * @param array<string,mixed>|ActivityListAuditLogsParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<PublicAPIUserActionEvent>>
      *
@@ -28,13 +32,14 @@ interface ActivityRawContract
      */
     public function listAuditLogs(
         array|ActivityListAuditLogsParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|ActivityListLoginActivitiesParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<PublicLoginAudit>>
      *
@@ -42,13 +47,14 @@ interface ActivityRawContract
      */
     public function listLoginActivities(
         array|ActivityListLoginActivitiesParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|ActivityListSecurityActivitiesParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<HydratedCriticalAction>>
      *
@@ -56,6 +62,6 @@ interface ActivityRawContract
      */
     public function listSecurityActivities(
         array|ActivityListSecurityActivitiesParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

@@ -9,10 +9,8 @@ use HubspotSDK\Automation\Actions\InputFieldDefinition;
 use HubspotSDK\Automation\Actions\OutputFieldDefinition;
 use HubspotSDK\Automation\Actions\PublicActionFunction;
 use HubspotSDK\Automation\Actions\PublicActionLabels;
-use HubspotSDK\Automation\Actions\PublicConditionalSingleFieldDependency;
 use HubspotSDK\Automation\Actions\PublicExecutionTranslationRule;
 use HubspotSDK\Automation\Actions\PublicObjectRequestOptions;
-use HubspotSDK\Automation\Actions\PublicSingleFieldDependency;
 use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
@@ -24,6 +22,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Services\Automation\Actions\DefinitionsService::create()
  *
+ * @phpstan-import-type InputFieldDependencyVariants from \HubspotSDK\Automation\Actions\Definitions\DefinitionCreateParams\InputFieldDependency
  * @phpstan-import-type PublicActionFunctionShape from \HubspotSDK\Automation\Actions\PublicActionFunction
  * @phpstan-import-type InputFieldDefinitionShape from \HubspotSDK\Automation\Actions\InputFieldDefinition
  * @phpstan-import-type PublicActionLabelsShape from \HubspotSDK\Automation\Actions\PublicActionLabels
@@ -34,16 +33,16 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @phpstan-type DefinitionCreateParamsShape = array{
  *   actionURL: string,
- *   functions: list<PublicActionFunctionShape>,
- *   inputFields: list<InputFieldDefinitionShape>,
- *   labels: array<string,PublicActionLabelsShape>,
+ *   functions: list<PublicActionFunction|PublicActionFunctionShape>,
+ *   inputFields: list<InputFieldDefinition|InputFieldDefinitionShape>,
+ *   labels: array<string,PublicActionLabels|PublicActionLabelsShape>,
  *   objectTypes: list<string>,
  *   published: bool,
  *   archivedAt?: int|null,
- *   executionRules?: list<PublicExecutionTranslationRuleShape>|null,
+ *   executionRules?: list<PublicExecutionTranslationRule|PublicExecutionTranslationRuleShape>|null,
  *   inputFieldDependencies?: list<InputFieldDependencyShape>|null,
  *   objectRequestOptions?: null|PublicObjectRequestOptions|PublicObjectRequestOptionsShape,
- *   outputFields?: list<OutputFieldDefinitionShape>|null,
+ *   outputFields?: list<OutputFieldDefinition|OutputFieldDefinitionShape>|null,
  * }
  */
 final class DefinitionCreateParams implements BaseModel
@@ -81,9 +80,7 @@ final class DefinitionCreateParams implements BaseModel
     #[Optional(list: PublicExecutionTranslationRule::class)]
     public ?array $executionRules;
 
-    /**
-     * @var list<PublicSingleFieldDependency|PublicConditionalSingleFieldDependency>|null $inputFieldDependencies
-     */
+    /** @var list<InputFieldDependencyVariants>|null $inputFieldDependencies */
     #[Optional(list: InputFieldDependency::class)]
     public ?array $inputFieldDependencies;
 
@@ -131,14 +128,14 @@ final class DefinitionCreateParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicActionFunctionShape> $functions
-     * @param list<InputFieldDefinitionShape> $inputFields
-     * @param array<string,PublicActionLabelsShape> $labels
+     * @param list<PublicActionFunction|PublicActionFunctionShape> $functions
+     * @param list<InputFieldDefinition|InputFieldDefinitionShape> $inputFields
+     * @param array<string,PublicActionLabels|PublicActionLabelsShape> $labels
      * @param list<string> $objectTypes
-     * @param list<PublicExecutionTranslationRuleShape>|null $executionRules
+     * @param list<PublicExecutionTranslationRule|PublicExecutionTranslationRuleShape>|null $executionRules
      * @param list<InputFieldDependencyShape>|null $inputFieldDependencies
      * @param PublicObjectRequestOptions|PublicObjectRequestOptionsShape|null $objectRequestOptions
-     * @param list<OutputFieldDefinitionShape>|null $outputFields
+     * @param list<OutputFieldDefinition|OutputFieldDefinitionShape>|null $outputFields
      */
     public static function with(
         string $actionURL,
@@ -180,7 +177,7 @@ final class DefinitionCreateParams implements BaseModel
     }
 
     /**
-     * @param list<PublicActionFunctionShape> $functions
+     * @param list<PublicActionFunction|PublicActionFunctionShape> $functions
      */
     public function withFunctions(array $functions): self
     {
@@ -191,7 +188,7 @@ final class DefinitionCreateParams implements BaseModel
     }
 
     /**
-     * @param list<InputFieldDefinitionShape> $inputFields
+     * @param list<InputFieldDefinition|InputFieldDefinitionShape> $inputFields
      */
     public function withInputFields(array $inputFields): self
     {
@@ -202,7 +199,7 @@ final class DefinitionCreateParams implements BaseModel
     }
 
     /**
-     * @param array<string,PublicActionLabelsShape> $labels
+     * @param array<string,PublicActionLabels|PublicActionLabelsShape> $labels
      */
     public function withLabels(array $labels): self
     {
@@ -240,7 +237,7 @@ final class DefinitionCreateParams implements BaseModel
     }
 
     /**
-     * @param list<PublicExecutionTranslationRuleShape> $executionRules
+     * @param list<PublicExecutionTranslationRule|PublicExecutionTranslationRuleShape> $executionRules
      */
     public function withExecutionRules(array $executionRules): self
     {
@@ -275,7 +272,7 @@ final class DefinitionCreateParams implements BaseModel
     }
 
     /**
-     * @param list<OutputFieldDefinitionShape> $outputFields
+     * @param list<OutputFieldDefinition|OutputFieldDefinitionShape> $outputFields
      */
     public function withOutputFields(array $outputFields): self
     {

@@ -21,7 +21,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   objectType: string,
  *   displayOrder: int,
  *   label: string,
- *   stages: list<PipelineStageInputShape>,
+ *   stages: list<PipelineStageInput|PipelineStageInputShape>,
  *   validateDealStageUsagesBeforeDelete?: bool|null,
  *   validateReferencesBeforeDelete?: bool|null,
  * }
@@ -97,7 +97,7 @@ final class PipelineReplaceParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PipelineStageInputShape> $stages
+     * @param list<PipelineStageInput|PipelineStageInputShape> $stages
      */
     public static function with(
         string $objectType,
@@ -153,7 +153,7 @@ final class PipelineReplaceParams implements BaseModel
     /**
      * Pipeline stage inputs used to create the new or replacement pipeline.
      *
-     * @param list<PipelineStageInputShape> $stages
+     * @param list<PipelineStageInput|PipelineStageInputShape> $stages
      */
     public function withStages(array $stages): self
     {

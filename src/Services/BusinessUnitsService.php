@@ -11,6 +11,9 @@ use HubspotSDK\Core\Util;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\BusinessUnitsContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class BusinessUnitsService implements BusinessUnitsContract
 {
     /**
@@ -34,6 +37,7 @@ final class BusinessUnitsService implements BusinessUnitsContract
      * @param string $userID identifier of user to retrieve
      * @param list<string> $name The names of Business Units to retrieve. If empty or not provided, then all associated Business Units will be returned.
      * @param list<string> $properties The names of properties to optionally include in the response body. The only valid value is `logoMetadata`.
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -41,7 +45,7 @@ final class BusinessUnitsService implements BusinessUnitsContract
         string $userID,
         ?array $name = null,
         ?array $properties = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): CollectionResponsePublicBusinessUnitNoPaging {
         $params = Util::removeNulls(['name' => $name, 'properties' => $properties]);
 

@@ -29,6 +29,9 @@ use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Files\FileOperationsRawContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class FileOperationsRawService implements FileOperationsRawContract
 {
     // @phpstan-ignore-next-line
@@ -46,12 +49,13 @@ final class FileOperationsRawService implements FileOperationsRawContract
      * @param array{
      *   access?: value-of<Access>,
      *   clearExpires?: bool,
-     *   expiresAt?: string|\DateTimeInterface,
+     *   expiresAt?: \DateTimeInterface,
      *   isUsableInContent?: bool,
      *   name?: string,
      *   parentFolderID?: string,
      *   parentFolderPath?: string,
      * }|FileOperationUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<File>
      *
@@ -60,7 +64,7 @@ final class FileOperationsRawService implements FileOperationsRawContract
     public function update(
         string $fileID,
         array|FileOperationUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = FileOperationUpdateParams::parseRequest(
             $params,
@@ -83,6 +87,7 @@ final class FileOperationsRawService implements FileOperationsRawContract
      * Delete a file by ID
      *
      * @param string $fileID FileId to delete
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -90,7 +95,7 @@ final class FileOperationsRawService implements FileOperationsRawContract
      */
     public function delete(
         string $fileID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -107,6 +112,7 @@ final class FileOperationsRawService implements FileOperationsRawContract
      * Delete a file in accordance with GDPR regulations.
      *
      * @param string $fileID ID of file to GDPR delete
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -114,7 +120,7 @@ final class FileOperationsRawService implements FileOperationsRawContract
      */
     public function gdprDelete(
         string $fileID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -132,6 +138,7 @@ final class FileOperationsRawService implements FileOperationsRawContract
      *
      * @param string $fileID ID of the desired file
      * @param array{properties?: list<string>}|FileOperationGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<File>
      *
@@ -140,7 +147,7 @@ final class FileOperationsRawService implements FileOperationsRawContract
     public function get(
         string $fileID,
         array|FileOperationGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = FileOperationGetParams::parseRequest(
             $params,
@@ -164,6 +171,7 @@ final class FileOperationsRawService implements FileOperationsRawContract
      *
      * @param string $filePath the path of the file
      * @param array{properties?: list<string>}|FileOperationGetByPathParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<FileStat>
      *
@@ -172,7 +180,7 @@ final class FileOperationsRawService implements FileOperationsRawContract
     public function getByPath(
         string $filePath,
         array|FileOperationGetByPathParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = FileOperationGetByPathParams::parseRequest(
             $params,
@@ -195,6 +203,7 @@ final class FileOperationsRawService implements FileOperationsRawContract
      * Check the status of requested import.
      *
      * @param string $taskID Import by URL task ID
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<FileActionResponse>
      *
@@ -202,7 +211,7 @@ final class FileOperationsRawService implements FileOperationsRawContract
      */
     public function getImportTaskStatus(
         string $taskID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -220,10 +229,9 @@ final class FileOperationsRawService implements FileOperationsRawContract
      *
      * @param string $fileID ID of file
      * @param array{
-     *   expirationSeconds?: int,
-     *   size?: 'icon'|'medium'|'preview'|'thumb'|Size,
-     *   upscale?: bool,
+     *   expirationSeconds?: int, size?: Size|value-of<Size>, upscale?: bool
      * }|FileOperationGetSignedURLParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SignedURL>
      *
@@ -232,7 +240,7 @@ final class FileOperationsRawService implements FileOperationsRawContract
     public function getSignedURL(
         string $fileID,
         array|FileOperationGetSignedURLParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = FileOperationGetSignedURLParams::parseRequest(
             $params,
@@ -257,15 +265,16 @@ final class FileOperationsRawService implements FileOperationsRawContract
      * @param array{
      *   access: value-of<FileOperationImportFromURLAsyncParams\Access>,
      *   url: string,
-     *   duplicateValidationScope?: 'ENTIRE_PORTAL'|'EXACT_FOLDER'|DuplicateValidationScope,
-     *   duplicateValidationStrategy?: 'NONE'|'REJECT'|'RETURN_EXISTING'|DuplicateValidationStrategy,
-     *   expiresAt?: string|\DateTimeInterface,
+     *   duplicateValidationScope?: DuplicateValidationScope|value-of<DuplicateValidationScope>,
+     *   duplicateValidationStrategy?: DuplicateValidationStrategy|value-of<DuplicateValidationStrategy>,
+     *   expiresAt?: \DateTimeInterface,
      *   folderID?: string,
      *   folderPath?: string,
      *   name?: string,
      *   overwrite?: bool,
      *   ttl?: string,
      * }|FileOperationImportFromURLAsyncParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ImportFromURLTaskLocator>
      *
@@ -273,7 +282,7 @@ final class FileOperationsRawService implements FileOperationsRawContract
      */
     public function importFromURLAsync(
         array|FileOperationImportFromURLAsyncParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = FileOperationImportFromURLAsyncParams::parseRequest(
             $params,
@@ -299,6 +308,7 @@ final class FileOperationsRawService implements FileOperationsRawContract
      * @param array{
      *   charsetHunch?: string, file?: string, options?: string
      * }|FileOperationReplaceParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<File>
      *
@@ -307,7 +317,7 @@ final class FileOperationsRawService implements FileOperationsRawContract
     public function replace(
         string $fileID,
         array|FileOperationReplaceParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = FileOperationReplaceParams::parseRequest(
             $params,
@@ -334,13 +344,13 @@ final class FileOperationsRawService implements FileOperationsRawContract
      *   after?: string,
      *   allowsAnonymousAccess?: bool,
      *   before?: string,
-     *   createdAt?: string|\DateTimeInterface,
-     *   createdAtGte?: string|\DateTimeInterface,
-     *   createdAtLte?: string|\DateTimeInterface,
+     *   createdAt?: \DateTimeInterface,
+     *   createdAtGte?: \DateTimeInterface,
+     *   createdAtLte?: \DateTimeInterface,
      *   encoding?: string,
-     *   expiresAt?: string|\DateTimeInterface,
-     *   expiresAtGte?: string|\DateTimeInterface,
-     *   expiresAtLte?: string|\DateTimeInterface,
+     *   expiresAt?: \DateTimeInterface,
+     *   expiresAtGte?: \DateTimeInterface,
+     *   expiresAtLte?: \DateTimeInterface,
      *   extension?: string,
      *   fileMd5?: string,
      *   height?: int,
@@ -360,14 +370,15 @@ final class FileOperationsRawService implements FileOperationsRawContract
      *   sizeLte?: int,
      *   sort?: list<string>,
      *   type?: string,
-     *   updatedAt?: string|\DateTimeInterface,
-     *   updatedAtGte?: string|\DateTimeInterface,
-     *   updatedAtLte?: string|\DateTimeInterface,
+     *   updatedAt?: \DateTimeInterface,
+     *   updatedAtGte?: \DateTimeInterface,
+     *   updatedAtLte?: \DateTimeInterface,
      *   url?: string,
      *   width?: int,
      *   widthGte?: int,
      *   widthLte?: int,
      * }|FileOperationSearchParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<File>>
      *
@@ -375,7 +386,7 @@ final class FileOperationsRawService implements FileOperationsRawContract
      */
     public function search(
         array|FileOperationSearchParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = FileOperationSearchParams::parseRequest(
             $params,
@@ -409,6 +420,7 @@ final class FileOperationsRawService implements FileOperationsRawContract
      *   folderPath?: string,
      *   options?: string,
      * }|FileOperationUploadParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<File>
      *
@@ -416,7 +428,7 @@ final class FileOperationsRawService implements FileOperationsRawContract
      */
     public function upload(
         array|FileOperationUploadParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = FileOperationUploadParams::parseRequest(
             $params,

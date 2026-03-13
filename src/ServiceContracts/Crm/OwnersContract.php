@@ -10,10 +10,15 @@ use HubspotSDK\Crm\Owners\PublicOwner;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface OwnersContract
 {
     /**
      * @api
+     *
+     * @param RequestOpts|null $requestOptions
      *
      * @return Page<PublicOwner>
      *
@@ -24,20 +29,21 @@ interface OwnersContract
         bool $archived = false,
         ?string $email = null,
         int $limit = 100,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): Page;
 
     /**
      * @api
      *
-     * @param 'id'|'userId'|IDProperty $idProperty
+     * @param IDProperty|value-of<IDProperty> $idProperty
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function get(
         int $ownerID,
         bool $archived = false,
-        string|IDProperty $idProperty = 'id',
-        ?RequestOptions $requestOptions = null,
+        IDProperty|string $idProperty = 'id',
+        RequestOptions|array|null $requestOptions = null,
     ): PublicOwner;
 }

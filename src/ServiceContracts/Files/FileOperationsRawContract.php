@@ -22,6 +22,9 @@ use HubspotSDK\Files\SignedURL;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface FileOperationsRawContract
 {
     /**
@@ -29,6 +32,7 @@ interface FileOperationsRawContract
      *
      * @param string $fileID ID of file to update
      * @param array<string,mixed>|FileOperationUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<File>
      *
@@ -37,13 +41,14 @@ interface FileOperationsRawContract
     public function update(
         string $fileID,
         array|FileOperationUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param string $fileID FileId to delete
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -51,13 +56,14 @@ interface FileOperationsRawContract
      */
     public function delete(
         string $fileID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param string $fileID ID of file to GDPR delete
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -65,7 +71,7 @@ interface FileOperationsRawContract
      */
     public function gdprDelete(
         string $fileID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 
     /**
@@ -73,6 +79,7 @@ interface FileOperationsRawContract
      *
      * @param string $fileID ID of the desired file
      * @param array<string,mixed>|FileOperationGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<File>
      *
@@ -81,7 +88,7 @@ interface FileOperationsRawContract
     public function get(
         string $fileID,
         array|FileOperationGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -89,6 +96,7 @@ interface FileOperationsRawContract
      *
      * @param string $filePath the path of the file
      * @param array<string,mixed>|FileOperationGetByPathParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<FileStat>
      *
@@ -97,13 +105,14 @@ interface FileOperationsRawContract
     public function getByPath(
         string $filePath,
         array|FileOperationGetByPathParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param string $taskID Import by URL task ID
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<FileActionResponse>
      *
@@ -111,7 +120,7 @@ interface FileOperationsRawContract
      */
     public function getImportTaskStatus(
         string $taskID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 
     /**
@@ -119,6 +128,7 @@ interface FileOperationsRawContract
      *
      * @param string $fileID ID of file
      * @param array<string,mixed>|FileOperationGetSignedURLParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SignedURL>
      *
@@ -127,13 +137,14 @@ interface FileOperationsRawContract
     public function getSignedURL(
         string $fileID,
         array|FileOperationGetSignedURLParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|FileOperationImportFromURLAsyncParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ImportFromURLTaskLocator>
      *
@@ -141,7 +152,7 @@ interface FileOperationsRawContract
      */
     public function importFromURLAsync(
         array|FileOperationImportFromURLAsyncParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -149,6 +160,7 @@ interface FileOperationsRawContract
      *
      * @param string $fileID ID of the desired file
      * @param array<string,mixed>|FileOperationReplaceParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<File>
      *
@@ -157,13 +169,14 @@ interface FileOperationsRawContract
     public function replace(
         string $fileID,
         array|FileOperationReplaceParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|FileOperationSearchParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<File>>
      *
@@ -171,13 +184,14 @@ interface FileOperationsRawContract
      */
     public function search(
         array|FileOperationSearchParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|FileOperationUploadParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<File>
      *
@@ -185,6 +199,6 @@ interface FileOperationsRawContract
      */
     public function upload(
         array|FileOperationUploadParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

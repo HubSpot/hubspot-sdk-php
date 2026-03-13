@@ -15,6 +15,9 @@ use HubspotSDK\Crm\Extensions\Cards\PublicCardListResponse;
 use HubspotSDK\Crm\Extensions\Cards\PublicCardResponse;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface CardsRawContract
 {
     /**
@@ -22,6 +25,7 @@ interface CardsRawContract
      *
      * @param int $appID the ID of the target app
      * @param array<string,mixed>|CardCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicCardResponse>
      *
@@ -30,7 +34,7 @@ interface CardsRawContract
     public function create(
         int $appID,
         array|CardCreateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -38,6 +42,7 @@ interface CardsRawContract
      *
      * @param string $cardID path param: The ID of the card to update
      * @param array<string,mixed>|CardUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicCardResponse>
      *
@@ -46,13 +51,14 @@ interface CardsRawContract
     public function update(
         string $cardID,
         array|CardUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param int $appID the ID of the target app
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicCardListResponse>
      *
@@ -60,7 +66,7 @@ interface CardsRawContract
      */
     public function list(
         int $appID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 
     /**
@@ -68,6 +74,7 @@ interface CardsRawContract
      *
      * @param string $cardID the ID of the card to delete
      * @param array<string,mixed>|CardDeleteParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -76,7 +83,7 @@ interface CardsRawContract
     public function delete(
         string $cardID,
         array|CardDeleteParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -84,6 +91,7 @@ interface CardsRawContract
      *
      * @param string $cardID the ID of the target card
      * @param array<string,mixed>|CardGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicCardResponse>
      *
@@ -92,17 +100,19 @@ interface CardsRawContract
     public function get(
         string $cardID,
         array|CardGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
+     *
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<IntegratorCardPayloadResponse>
      *
      * @throws APIException
      */
     public function getSampleResponse(
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 }

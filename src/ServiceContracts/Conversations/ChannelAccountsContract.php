@@ -9,6 +9,9 @@ use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface ChannelAccountsContract
 {
     /**
@@ -17,6 +20,7 @@ interface ChannelAccountsContract
      * @param list<int> $channelID
      * @param list<int> $inboxID
      * @param list<string> $sort
+     * @param RequestOpts|null $requestOptions
      *
      * @return Page<PublicChannelAccount>
      *
@@ -30,17 +34,19 @@ interface ChannelAccountsContract
         ?array $inboxID = null,
         ?int $limit = null,
         ?array $sort = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): Page;
 
     /**
      * @api
+     *
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function get(
         int $channelAccountID,
         bool $archived = false,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): PublicChannelAccount;
 }

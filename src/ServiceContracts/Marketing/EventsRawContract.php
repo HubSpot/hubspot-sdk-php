@@ -34,12 +34,16 @@ use HubspotSDK\Marketing\Events\MarketingEventPublicReadResponseV2;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface EventsRawContract
 {
     /**
      * @api
      *
      * @param array<string,mixed>|EventCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<MarketingEventDefaultResponse>
      *
@@ -47,7 +51,7 @@ interface EventsRawContract
      */
     public function create(
         array|EventCreateParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -55,6 +59,7 @@ interface EventsRawContract
      *
      * @param string $objectID The internal ID of the marketing event in HubSpot
      * @param array<string,mixed>|EventUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<MarketingEventPublicDefaultResponseV2>
      *
@@ -63,13 +68,14 @@ interface EventsRawContract
     public function update(
         string $objectID,
         array|EventUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|EventListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<MarketingEventPublicReadResponseV2>>
      *
@@ -77,13 +83,14 @@ interface EventsRawContract
      */
     public function list(
         array|EventListParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param string $objectID The internal ID of the marketing event in HubSpot
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -91,7 +98,7 @@ interface EventsRawContract
      */
     public function delete(
         string $objectID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 
     /**
@@ -99,6 +106,7 @@ interface EventsRawContract
      *
      * @param string $externalEventID The id of the marketing event in the external event application
      * @param array<string,mixed>|EventCancelByExternalEventIDParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<MarketingEventDefaultResponse>
      *
@@ -107,7 +115,7 @@ interface EventsRawContract
     public function cancelByExternalEventID(
         string $externalEventID,
         array|EventCancelByExternalEventIDParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -115,6 +123,7 @@ interface EventsRawContract
      *
      * @param string $externalEventID path param: The id of the marketing event in the external event application
      * @param array<string,mixed>|EventCompleteByExternalEventIDParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<MarketingEventDefaultResponse>
      *
@@ -123,13 +132,14 @@ interface EventsRawContract
     public function completeByExternalEventID(
         string $externalEventID,
         array|EventCompleteByExternalEventIDParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|EventDeleteBatchParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -137,13 +147,14 @@ interface EventsRawContract
      */
     public function deleteBatch(
         array|EventDeleteBatchParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|EventDeleteBatchByExternalEventIDParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<string>
      *
@@ -151,7 +162,7 @@ interface EventsRawContract
      */
     public function deleteBatchByExternalEventID(
         array|EventDeleteBatchByExternalEventIDParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -159,6 +170,7 @@ interface EventsRawContract
      *
      * @param string $externalEventID The id of the marketing event in the external event application
      * @param array<string,mixed>|EventDeleteByExternalEventIDParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -167,13 +179,14 @@ interface EventsRawContract
     public function deleteByExternalEventID(
         string $externalEventID,
         array|EventDeleteByExternalEventIDParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param string $objectID The internal ID of the marketing event in HubSpot
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<MarketingEventPublicReadResponseV2>
      *
@@ -181,7 +194,7 @@ interface EventsRawContract
      */
     public function get(
         string $objectID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 
     /**
@@ -189,6 +202,7 @@ interface EventsRawContract
      *
      * @param string $externalEventID The id of the marketing event in the external event application
      * @param array<string,mixed>|EventGetByExternalEventIDParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<MarketingEventPublicReadResponse>
      *
@@ -197,13 +211,14 @@ interface EventsRawContract
     public function getByExternalEventID(
         string $externalEventID,
         array|EventGetByExternalEventIDParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|EventSearchByExternalEventIDParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CollectionResponseSearchPublicResponseWrapperNoPaging>
      *
@@ -211,13 +226,14 @@ interface EventsRawContract
      */
     public function searchByExternalEventID(
         array|EventSearchByExternalEventIDParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param string $externalEventID the id of the marketing event in the external event application
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CollectionResponseWithTotalMarketingEventIdentifiersResponseNoPaging,>
      *
@@ -225,13 +241,14 @@ interface EventsRawContract
      */
     public function searchIdentifiersByExternalEventID(
         string $externalEventID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|EventUpdateBatchParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BatchResponseMarketingEventPublicDefaultResponseV2>
      *
@@ -239,7 +256,7 @@ interface EventsRawContract
      */
     public function updateBatch(
         array|EventUpdateBatchParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -247,6 +264,7 @@ interface EventsRawContract
      *
      * @param string $externalEventID Path param: The id of the marketing event in the external event application
      * @param array<string,mixed>|EventUpdateByExternalEventIDParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<MarketingEventPublicDefaultResponse>
      *
@@ -255,13 +273,14 @@ interface EventsRawContract
     public function updateByExternalEventID(
         string $externalEventID,
         array|EventUpdateByExternalEventIDParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|EventUpsertBatchParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BatchResponseMarketingEventPublicDefaultResponse>
      *
@@ -269,7 +288,7 @@ interface EventsRawContract
      */
     public function upsertBatch(
         array|EventUpsertBatchParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -277,6 +296,7 @@ interface EventsRawContract
      *
      * @param string $externalEventID_ The id of the marketing event in the external event application
      * @param array<string,mixed>|EventUpsertByExternalEventIDParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<MarketingEventPublicDefaultResponse>
      *
@@ -285,7 +305,7 @@ interface EventsRawContract
     public function upsertByExternalEventID(
         string $externalEventID_,
         array|EventUpsertByExternalEventIDParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -293,6 +313,7 @@ interface EventsRawContract
      *
      * @param string $subscriberState Path param: The new subscriber state for the HubSpot contacts and the specified marketing event. For example: 'register', 'attend' or 'cancel'.
      * @param array<string,mixed>|EventUpsertSubscriberStateByEmailParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<string>
      *
@@ -301,7 +322,7 @@ interface EventsRawContract
     public function upsertSubscriberStateByEmail(
         string $subscriberState,
         array|EventUpsertSubscriberStateByEmailParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -309,6 +330,7 @@ interface EventsRawContract
      *
      * @param string $subscriberState Path param: The new subscriber state for the HubSpot contacts and the specified marketing event. For example: 'register', 'attend' or 'cancel'.
      * @param array<string,mixed>|EventUpsertSubscriberStateByIDParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<string>
      *
@@ -317,6 +339,6 @@ interface EventsRawContract
     public function upsertSubscriberStateByID(
         string $subscriberState,
         array|EventUpsertSubscriberStateByIDParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

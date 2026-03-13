@@ -17,12 +17,16 @@ use HubspotSDK\Scheduler\Meetings\MeetingsLinks\MeetingsLinkGetAvailabilityBySlu
 use HubspotSDK\Scheduler\Meetings\MeetingsLinks\MeetingsLinkGetBookingInfoBySlugParams;
 use HubspotSDK\Scheduler\Meetings\MeetingsLinks\MeetingsLinkListParams;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface MeetingsLinksRawContract
 {
     /**
      * @api
      *
      * @param array<string,mixed>|MeetingsLinkListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<ExternalLinkMetadata>>
      *
@@ -30,13 +34,14 @@ interface MeetingsLinksRawContract
      */
     public function list(
         array|MeetingsLinkListParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|MeetingsLinkBookParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ExternalMeetingBookingResponse>
      *
@@ -44,7 +49,7 @@ interface MeetingsLinksRawContract
      */
     public function book(
         array|MeetingsLinkBookParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -52,6 +57,7 @@ interface MeetingsLinksRawContract
      *
      * @param string $slug the path for the meeting page that you want the available times for
      * @param array<string,mixed>|MeetingsLinkGetAvailabilityBySlugParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ExternalLinkAvailabilityAndBusyTimes>
      *
@@ -60,7 +66,7 @@ interface MeetingsLinksRawContract
     public function getAvailabilityBySlug(
         string $slug,
         array|MeetingsLinkGetAvailabilityBySlugParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -68,6 +74,7 @@ interface MeetingsLinksRawContract
      *
      * @param string $slug the path to the scheduling page that you want the information for
      * @param array<string,mixed>|MeetingsLinkGetBookingInfoBySlugParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ExternalBookingInfo>
      *
@@ -76,6 +83,6 @@ interface MeetingsLinksRawContract
     public function getBookingInfoBySlug(
         string $slug,
         array|MeetingsLinkGetBookingInfoBySlugParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

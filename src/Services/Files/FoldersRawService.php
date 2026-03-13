@@ -21,6 +21,9 @@ use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Files\FoldersRawContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class FoldersRawService implements FoldersRawContract
 {
     // @phpstan-ignore-next-line
@@ -37,6 +40,7 @@ final class FoldersRawService implements FoldersRawContract
      * @param array{
      *   name: string, parentFolderID?: string, parentPath?: string
      * }|FolderCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Folder>
      *
@@ -44,7 +48,7 @@ final class FoldersRawService implements FoldersRawContract
      */
     public function create(
         array|FolderCreateParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = FolderCreateParams::parseRequest(
             $params,
@@ -67,6 +71,7 @@ final class FoldersRawService implements FoldersRawContract
      * Delete folder by ID.
      *
      * @param string $folderID ID of folder to delete
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -74,7 +79,7 @@ final class FoldersRawService implements FoldersRawContract
      */
     public function deleteByID(
         string $folderID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -91,6 +96,7 @@ final class FoldersRawService implements FoldersRawContract
      * Delete a folder, identified by its path.
      *
      * @param string $folderPath Path of folder to delete
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -98,7 +104,7 @@ final class FoldersRawService implements FoldersRawContract
      */
     public function deleteByPath(
         string $folderPath,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -116,6 +122,7 @@ final class FoldersRawService implements FoldersRawContract
      *
      * @param string $folderID ID of desired folder
      * @param array{properties?: list<string>}|FolderGetByIDParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Folder>
      *
@@ -124,7 +131,7 @@ final class FoldersRawService implements FoldersRawContract
     public function getByID(
         string $folderID,
         array|FolderGetByIDParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = FolderGetByIDParams::parseRequest(
             $params,
@@ -148,6 +155,7 @@ final class FoldersRawService implements FoldersRawContract
      *
      * @param string $folderPath path of desired folder
      * @param array{properties?: list<string>}|FolderGetByPathParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Folder>
      *
@@ -156,7 +164,7 @@ final class FoldersRawService implements FoldersRawContract
     public function getByPath(
         string $folderPath,
         array|FolderGetByPathParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = FolderGetByPathParams::parseRequest(
             $params,
@@ -179,6 +187,7 @@ final class FoldersRawService implements FoldersRawContract
      * Check status of folder update. Folder updates happen asynchronously.
      *
      * @param string $taskID the ID of the folder update task
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<FolderActionResponse>
      *
@@ -186,7 +195,7 @@ final class FoldersRawService implements FoldersRawContract
      */
     public function getUpdateAsyncStatus(
         string $taskID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -205,9 +214,9 @@ final class FoldersRawService implements FoldersRawContract
      * @param array{
      *   after?: string,
      *   before?: string,
-     *   createdAt?: string|\DateTimeInterface,
-     *   createdAtGte?: string|\DateTimeInterface,
-     *   createdAtLte?: string|\DateTimeInterface,
+     *   createdAt?: \DateTimeInterface,
+     *   createdAtGte?: \DateTimeInterface,
+     *   createdAtLte?: \DateTimeInterface,
      *   idGte?: int,
      *   idLte?: int,
      *   ids?: list<int>,
@@ -217,10 +226,11 @@ final class FoldersRawService implements FoldersRawContract
      *   path?: string,
      *   properties?: list<string>,
      *   sort?: list<string>,
-     *   updatedAt?: string|\DateTimeInterface,
-     *   updatedAtGte?: string|\DateTimeInterface,
-     *   updatedAtLte?: string|\DateTimeInterface,
+     *   updatedAt?: \DateTimeInterface,
+     *   updatedAtGte?: \DateTimeInterface,
+     *   updatedAtLte?: \DateTimeInterface,
      * }|FolderSearchParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<Folder>>
      *
@@ -228,7 +238,7 @@ final class FoldersRawService implements FoldersRawContract
      */
     public function search(
         array|FolderSearchParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = FolderSearchParams::parseRequest(
             $params,
@@ -257,6 +267,7 @@ final class FoldersRawService implements FoldersRawContract
      * @param array{
      *   id: string, name?: string, parentFolderID?: int
      * }|FolderUpdateAsyncByIDParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<FolderUpdateTaskLocator>
      *
@@ -264,7 +275,7 @@ final class FoldersRawService implements FoldersRawContract
      */
     public function updateAsyncByID(
         array|FolderUpdateAsyncByIDParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = FolderUpdateAsyncByIDParams::parseRequest(
             $params,
@@ -287,6 +298,7 @@ final class FoldersRawService implements FoldersRawContract
      * Update a folder's properties, identified by folder ID.
      *
      * @param array{name?: string, parentFolderID?: int}|FolderUpdateByIDParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Folder>
      *
@@ -295,7 +307,7 @@ final class FoldersRawService implements FoldersRawContract
     public function updateByID(
         string $folderID,
         array|FolderUpdateByIDParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = FolderUpdateByIDParams::parseRequest(
             $params,

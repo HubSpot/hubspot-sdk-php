@@ -17,7 +17,7 @@ use HubspotSDK\PublicObjectID;
  * @phpstan-type PublicAssociationMultiPostShape = array{
  *   from: PublicObjectID|PublicObjectIDShape,
  *   to: PublicObjectID|PublicObjectIDShape,
- *   types: list<AssociationSpecShape>,
+ *   types: list<AssociationSpec|AssociationSpecShape>,
  * }
  */
 final class PublicAssociationMultiPost implements BaseModel
@@ -61,7 +61,7 @@ final class PublicAssociationMultiPost implements BaseModel
      *
      * @param PublicObjectID|PublicObjectIDShape $from
      * @param PublicObjectID|PublicObjectIDShape $to
-     * @param list<AssociationSpecShape> $types
+     * @param list<AssociationSpec|AssociationSpecShape> $types
      */
     public static function with(
         PublicObjectID|array $from,
@@ -100,7 +100,7 @@ final class PublicAssociationMultiPost implements BaseModel
     }
 
     /**
-     * @param list<AssociationSpecShape> $types
+     * @param list<AssociationSpec|AssociationSpecShape> $types
      */
     public function withTypes(array $types): self
     {

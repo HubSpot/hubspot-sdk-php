@@ -27,14 +27,8 @@ use HubspotSDK\Marketing\Emails\EmailUpdateParams;
 use HubspotSDK\Marketing\Emails\PublicEmail;
 use HubspotSDK\Marketing\Emails\PublicEmailContent;
 use HubspotSDK\Marketing\Emails\PublicEmailFromDetails;
-use HubspotSDK\Marketing\Emails\PublicEmailRecipients;
-use HubspotSDK\Marketing\Emails\PublicEmailStyleSettings;
 use HubspotSDK\Marketing\Emails\PublicEmailSubscriptionDetails;
 use HubspotSDK\Marketing\Emails\PublicEmailTestingDetails;
-use HubspotSDK\Marketing\Emails\PublicEmailTestingDetails\AbSampleSizeDefault;
-use HubspotSDK\Marketing\Emails\PublicEmailTestingDetails\AbSamplingDefault;
-use HubspotSDK\Marketing\Emails\PublicEmailTestingDetails\AbStatus;
-use HubspotSDK\Marketing\Emails\PublicEmailTestingDetails\AbSuccessMetric;
 use HubspotSDK\Marketing\Emails\PublicEmailToDetails;
 use HubspotSDK\Marketing\Emails\PublicRssEmailDetails;
 use HubspotSDK\Marketing\Emails\PublicWebversionDetails;
@@ -43,6 +37,16 @@ use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Marketing\EmailsRawContract;
 
+/**
+ * @phpstan-import-type PublicEmailContentShape from \HubspotSDK\Marketing\Emails\PublicEmailContent
+ * @phpstan-import-type PublicEmailFromDetailsShape from \HubspotSDK\Marketing\Emails\PublicEmailFromDetails
+ * @phpstan-import-type PublicRssEmailDetailsShape from \HubspotSDK\Marketing\Emails\PublicRssEmailDetails
+ * @phpstan-import-type PublicEmailSubscriptionDetailsShape from \HubspotSDK\Marketing\Emails\PublicEmailSubscriptionDetails
+ * @phpstan-import-type PublicEmailTestingDetailsShape from \HubspotSDK\Marketing\Emails\PublicEmailTestingDetails
+ * @phpstan-import-type PublicEmailToDetailsShape from \HubspotSDK\Marketing\Emails\PublicEmailToDetails
+ * @phpstan-import-type PublicWebversionDetailsShape from \HubspotSDK\Marketing\Emails\PublicWebversionDetails
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class EmailsRawService implements EmailsRawContract
 {
     // @phpstan-ignore-next-line
@@ -62,76 +66,24 @@ final class EmailsRawService implements EmailsRawContract
      *   archived?: bool,
      *   businessUnitID?: int,
      *   campaign?: string,
-     *   content?: array{
-     *     flexAreas?: array<string,mixed>,
-     *     plainTextVersion?: string,
-     *     smartFields?: array<string,mixed>,
-     *     styleSettings?: array<string,mixed>|PublicEmailStyleSettings,
-     *     templatePath?: string,
-     *     themeSettingsValues?: array<string,mixed>,
-     *     widgetContainers?: array<string,mixed>,
-     *     widgets?: array<string,mixed>,
-     *   }|PublicEmailContent,
+     *   content?: PublicEmailContent|PublicEmailContentShape,
      *   feedbackSurveyID?: string,
      *   folderIDV2?: int,
-     *   from?: array{
-     *     customReplyTo?: string, fromName?: string, replyTo?: string
-     *   }|PublicEmailFromDetails,
+     *   from?: PublicEmailFromDetails|PublicEmailFromDetailsShape,
      *   jitterSendTime?: bool,
      *   language?: value-of<Language>,
-     *   publishDate?: string|\DateTimeInterface,
-     *   rssData?: array{
-     *     blogEmailType?: string,
-     *     blogImageMaxWidth?: int,
-     *     blogLayout?: string,
-     *     hubspotBlogID?: string,
-     *     maxEntries?: int,
-     *     rssEntryTemplate?: string,
-     *     timing?: array<string,mixed>,
-     *     url?: string,
-     *     useHeadlineAsSubject?: bool,
-     *   }|PublicRssEmailDetails,
+     *   publishDate?: \DateTimeInterface,
+     *   rssData?: PublicRssEmailDetails|PublicRssEmailDetailsShape,
      *   sendOnPublish?: bool,
      *   state?: value-of<State>,
      *   subcategory?: value-of<Subcategory>,
      *   subject?: string,
-     *   subscriptionDetails?: array{
-     *     officeLocationID?: string,
-     *     preferencesGroupID?: string,
-     *     subscriptionID?: string,
-     *     subscriptionName?: string,
-     *   }|PublicEmailSubscriptionDetails,
-     *   testing?: array{
-     *     abSampleSizeDefault?: 'automated_loser_variant'|'automated_master'|'automated_variant'|'loser_variant'|'mab_master'|'mab_variant'|'master'|'variant'|AbSampleSizeDefault,
-     *     abSamplingDefault?: 'automated_loser_variant'|'automated_master'|'automated_variant'|'loser_variant'|'mab_master'|'mab_variant'|'master'|'variant'|AbSamplingDefault,
-     *     abStatus?: 'automated_loser_variant'|'automated_master'|'automated_variant'|'loser_variant'|'mab_master'|'mab_variant'|'master'|'variant'|AbStatus,
-     *     abSuccessMetric?: 'CLICKS_BY_DELIVERED'|'CLICKS_BY_OPENS'|'OPENS_BY_DELIVERED'|AbSuccessMetric,
-     *     abTestPercentage?: int,
-     *     hoursToWait?: int,
-     *     isAbVariation?: bool,
-     *     testID?: string,
-     *   }|PublicEmailTestingDetails,
-     *   to?: array{
-     *     contactIDs?: array<string,mixed>|PublicEmailRecipients,
-     *     contactIlsLists?: array<string,mixed>|PublicEmailRecipients,
-     *     contactLists?: array<string,mixed>|PublicEmailRecipients,
-     *     limitSendFrequency?: bool,
-     *     suppressGraymail?: bool,
-     *   }|PublicEmailToDetails,
-     *   webversion?: array{
-     *     domain?: string,
-     *     enabled?: bool,
-     *     expiresAt?: string|\DateTimeInterface,
-     *     isPageRedirected?: bool,
-     *     metaDescription?: string,
-     *     pageExpiryEnabled?: bool,
-     *     redirectToPageID?: string,
-     *     redirectToURL?: string,
-     *     slug?: string,
-     *     title?: string,
-     *     url?: string,
-     *   }|PublicWebversionDetails,
+     *   subscriptionDetails?: PublicEmailSubscriptionDetails|PublicEmailSubscriptionDetailsShape,
+     *   testing?: PublicEmailTestingDetails|PublicEmailTestingDetailsShape,
+     *   to?: PublicEmailToDetails|PublicEmailToDetailsShape,
+     *   webversion?: PublicWebversionDetails|PublicWebversionDetailsShape,
      * }|EmailCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicEmail>
      *
@@ -139,7 +91,7 @@ final class EmailsRawService implements EmailsRawContract
      */
     public function create(
         array|EmailCreateParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = EmailCreateParams::parseRequest(
             $params,
@@ -167,76 +119,24 @@ final class EmailsRawService implements EmailsRawContract
      *   activeDomain?: string,
      *   businessUnitID?: int,
      *   campaign?: string,
-     *   content?: array{
-     *     flexAreas?: array<string,mixed>,
-     *     plainTextVersion?: string,
-     *     smartFields?: array<string,mixed>,
-     *     styleSettings?: array<string,mixed>|PublicEmailStyleSettings,
-     *     templatePath?: string,
-     *     themeSettingsValues?: array<string,mixed>,
-     *     widgetContainers?: array<string,mixed>,
-     *     widgets?: array<string,mixed>,
-     *   }|PublicEmailContent,
+     *   content?: PublicEmailContent|PublicEmailContentShape,
      *   folderIDV2?: int,
-     *   from?: array{
-     *     customReplyTo?: string, fromName?: string, replyTo?: string
-     *   }|PublicEmailFromDetails,
+     *   from?: PublicEmailFromDetails|PublicEmailFromDetailsShape,
      *   jitterSendTime?: bool,
      *   language?: value-of<EmailUpdateParams\Language>,
      *   name?: string,
-     *   publishDate?: string|\DateTimeInterface,
-     *   rssData?: array{
-     *     blogEmailType?: string,
-     *     blogImageMaxWidth?: int,
-     *     blogLayout?: string,
-     *     hubspotBlogID?: string,
-     *     maxEntries?: int,
-     *     rssEntryTemplate?: string,
-     *     timing?: array<string,mixed>,
-     *     url?: string,
-     *     useHeadlineAsSubject?: bool,
-     *   }|PublicRssEmailDetails,
+     *   publishDate?: \DateTimeInterface,
+     *   rssData?: PublicRssEmailDetails|PublicRssEmailDetailsShape,
      *   sendOnPublish?: bool,
      *   state?: value-of<EmailUpdateParams\State>,
      *   subcategory?: value-of<EmailUpdateParams\Subcategory>,
      *   subject?: string,
-     *   subscriptionDetails?: array{
-     *     officeLocationID?: string,
-     *     preferencesGroupID?: string,
-     *     subscriptionID?: string,
-     *     subscriptionName?: string,
-     *   }|PublicEmailSubscriptionDetails,
-     *   testing?: array{
-     *     abSampleSizeDefault?: 'automated_loser_variant'|'automated_master'|'automated_variant'|'loser_variant'|'mab_master'|'mab_variant'|'master'|'variant'|AbSampleSizeDefault,
-     *     abSamplingDefault?: 'automated_loser_variant'|'automated_master'|'automated_variant'|'loser_variant'|'mab_master'|'mab_variant'|'master'|'variant'|AbSamplingDefault,
-     *     abStatus?: 'automated_loser_variant'|'automated_master'|'automated_variant'|'loser_variant'|'mab_master'|'mab_variant'|'master'|'variant'|AbStatus,
-     *     abSuccessMetric?: 'CLICKS_BY_DELIVERED'|'CLICKS_BY_OPENS'|'OPENS_BY_DELIVERED'|AbSuccessMetric,
-     *     abTestPercentage?: int,
-     *     hoursToWait?: int,
-     *     isAbVariation?: bool,
-     *     testID?: string,
-     *   }|PublicEmailTestingDetails,
-     *   to?: array{
-     *     contactIDs?: array<string,mixed>|PublicEmailRecipients,
-     *     contactIlsLists?: array<string,mixed>|PublicEmailRecipients,
-     *     contactLists?: array<string,mixed>|PublicEmailRecipients,
-     *     limitSendFrequency?: bool,
-     *     suppressGraymail?: bool,
-     *   }|PublicEmailToDetails,
-     *   webversion?: array{
-     *     domain?: string,
-     *     enabled?: bool,
-     *     expiresAt?: string|\DateTimeInterface,
-     *     isPageRedirected?: bool,
-     *     metaDescription?: string,
-     *     pageExpiryEnabled?: bool,
-     *     redirectToPageID?: string,
-     *     redirectToURL?: string,
-     *     slug?: string,
-     *     title?: string,
-     *     url?: string,
-     *   }|PublicWebversionDetails,
+     *   subscriptionDetails?: PublicEmailSubscriptionDetails|PublicEmailSubscriptionDetailsShape,
+     *   testing?: PublicEmailTestingDetails|PublicEmailTestingDetailsShape,
+     *   to?: PublicEmailToDetails|PublicEmailToDetailsShape,
+     *   webversion?: PublicWebversionDetails|PublicWebversionDetailsShape,
      * }|EmailUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicEmail>
      *
@@ -245,7 +145,7 @@ final class EmailsRawService implements EmailsRawContract
     public function update(
         string $emailID,
         array|EmailUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = EmailUpdateParams::parseRequest(
             $params,
@@ -273,24 +173,25 @@ final class EmailsRawService implements EmailsRawContract
      *   after?: string,
      *   archived?: bool,
      *   campaign?: string,
-     *   createdAfter?: string|\DateTimeInterface,
-     *   createdAt?: string|\DateTimeInterface,
-     *   createdBefore?: string|\DateTimeInterface,
+     *   createdAfter?: \DateTimeInterface,
+     *   createdAt?: \DateTimeInterface,
+     *   createdBefore?: \DateTimeInterface,
      *   includedProperties?: list<string>,
      *   includeStats?: bool,
      *   isPublished?: bool,
      *   limit?: int,
      *   marketingCampaignNames?: bool,
-     *   publishedAfter?: string|\DateTimeInterface,
-     *   publishedAt?: string|\DateTimeInterface,
-     *   publishedBefore?: string|\DateTimeInterface,
+     *   publishedAfter?: \DateTimeInterface,
+     *   publishedAt?: \DateTimeInterface,
+     *   publishedBefore?: \DateTimeInterface,
      *   sort?: list<string>,
      *   type?: value-of<Type>,
-     *   updatedAfter?: string|\DateTimeInterface,
-     *   updatedAt?: string|\DateTimeInterface,
-     *   updatedBefore?: string|\DateTimeInterface,
+     *   updatedAfter?: \DateTimeInterface,
+     *   updatedAt?: \DateTimeInterface,
+     *   updatedBefore?: \DateTimeInterface,
      *   workflowNames?: bool,
      * }|EmailListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<PublicEmail>>
      *
@@ -298,7 +199,7 @@ final class EmailsRawService implements EmailsRawContract
      */
     public function list(
         array|EmailListParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = EmailListParams::parseRequest(
             $params,
@@ -323,6 +224,7 @@ final class EmailsRawService implements EmailsRawContract
      *
      * @param string $emailID the ID of the marketing email to delete
      * @param array{archived?: bool}|EmailDeleteParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -331,7 +233,7 @@ final class EmailsRawService implements EmailsRawContract
     public function delete(
         string $emailID,
         array|EmailDeleteParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = EmailDeleteParams::parseRequest(
             $params,
@@ -356,6 +258,7 @@ final class EmailsRawService implements EmailsRawContract
      * @param array{
      *   id: string, cloneName?: string, language?: string
      * }|EmailCloneParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicEmail>
      *
@@ -363,7 +266,7 @@ final class EmailsRawService implements EmailsRawContract
      */
     public function clone(
         array|EmailCloneParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = EmailCloneParams::parseRequest(
             $params,
@@ -388,6 +291,7 @@ final class EmailsRawService implements EmailsRawContract
      * @param array{
      *   contentID: string, variationName: string
      * }|EmailCreateAbTestVariationParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicEmail>
      *
@@ -395,7 +299,7 @@ final class EmailsRawService implements EmailsRawContract
      */
     public function createAbTestVariation(
         array|EmailCreateAbTestVariationParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = EmailCreateAbTestVariationParams::parseRequest(
             $params,
@@ -425,6 +329,7 @@ final class EmailsRawService implements EmailsRawContract
      *   marketingCampaignNames?: bool,
      *   workflowNames?: bool,
      * }|EmailGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicEmail>
      *
@@ -433,7 +338,7 @@ final class EmailsRawService implements EmailsRawContract
     public function get(
         string $emailID,
         array|EmailGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = EmailGetParams::parseRequest(
             $params,
@@ -463,6 +368,7 @@ final class EmailsRawService implements EmailsRawContract
      *   marketingCampaignNames?: bool,
      *   workflowNames?: bool,
      * }|EmailGetAbTestVariationParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicEmail>
      *
@@ -471,7 +377,7 @@ final class EmailsRawService implements EmailsRawContract
     public function getAbTestVariation(
         string $emailID,
         array|EmailGetAbTestVariationParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = EmailGetAbTestVariationParams::parseRequest(
             $params,
@@ -494,6 +400,7 @@ final class EmailsRawService implements EmailsRawContract
      * Get the draft version of an email (if it exists). If no draft version exists, the published email is returned.
      *
      * @param string $emailID the marketing email ID
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicEmail>
      *
@@ -501,7 +408,7 @@ final class EmailsRawService implements EmailsRawContract
      */
     public function getDraft(
         string $emailID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -519,6 +426,7 @@ final class EmailsRawService implements EmailsRawContract
      *
      * @param string $revisionID the ID of a revision
      * @param array{emailID: string}|EmailGetRevisionParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<VersionPublicEmail>
      *
@@ -527,7 +435,7 @@ final class EmailsRawService implements EmailsRawContract
     public function getRevision(
         string $revisionID,
         array|EmailGetRevisionParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = EmailGetRevisionParams::parseRequest(
             $params,
@@ -554,6 +462,7 @@ final class EmailsRawService implements EmailsRawContract
      * @param array{
      *   after?: string, before?: string, limit?: int
      * }|EmailListRevisionsParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<VersionPublicEmail>>
      *
@@ -562,7 +471,7 @@ final class EmailsRawService implements EmailsRawContract
     public function listRevisions(
         string $emailID,
         array|EmailListRevisionsParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = EmailListRevisionsParams::parseRequest(
             $params,
@@ -586,6 +495,7 @@ final class EmailsRawService implements EmailsRawContract
      * If you have a Marketing Hub Enterprise account or the transactional email add-on, you can use this endpoint to publish an automated email or send/schedule a regular email.
      *
      * @param string $emailID the marketing email ID
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -593,7 +503,7 @@ final class EmailsRawService implements EmailsRawContract
      */
     public function publish(
         string $emailID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -610,6 +520,7 @@ final class EmailsRawService implements EmailsRawContract
      * Resets the draft back to a copy of the live object.
      *
      * @param string $emailID the marketing email ID
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -617,7 +528,7 @@ final class EmailsRawService implements EmailsRawContract
      */
     public function resetDraft(
         string $emailID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -635,6 +546,7 @@ final class EmailsRawService implements EmailsRawContract
      *
      * @param string $revisionID the ID of a revision
      * @param array{emailID: string}|EmailRestoreRevisionParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -643,7 +555,7 @@ final class EmailsRawService implements EmailsRawContract
     public function restoreRevision(
         string $revisionID,
         array|EmailRestoreRevisionParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = EmailRestoreRevisionParams::parseRequest(
             $params,
@@ -670,6 +582,7 @@ final class EmailsRawService implements EmailsRawContract
      *
      * @param int $revisionID the ID of a revision
      * @param array{emailID: string}|EmailRestoreRevisionToDraftParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicEmail>
      *
@@ -678,7 +591,7 @@ final class EmailsRawService implements EmailsRawContract
     public function restoreRevisionToDraft(
         int $revisionID,
         array|EmailRestoreRevisionToDraftParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = EmailRestoreRevisionToDraftParams::parseRequest(
             $params,
@@ -706,6 +619,7 @@ final class EmailsRawService implements EmailsRawContract
      * If you have a Marketing Hub Enterprise account or the transactional email add-on, you can use this endpoint to unpublish an automated email or cancel a regular email. If the email is already in the process of being sent, canceling might not be possible.
      *
      * @param string $emailID the ID of the email to unpublish
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -713,7 +627,7 @@ final class EmailsRawService implements EmailsRawContract
      */
     public function unpublish(
         string $emailID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -735,76 +649,24 @@ final class EmailsRawService implements EmailsRawContract
      *   archived?: bool,
      *   businessUnitID?: int,
      *   campaign?: string,
-     *   content?: array{
-     *     flexAreas?: array<string,mixed>,
-     *     plainTextVersion?: string,
-     *     smartFields?: array<string,mixed>,
-     *     styleSettings?: array<string,mixed>|PublicEmailStyleSettings,
-     *     templatePath?: string,
-     *     themeSettingsValues?: array<string,mixed>,
-     *     widgetContainers?: array<string,mixed>,
-     *     widgets?: array<string,mixed>,
-     *   }|PublicEmailContent,
+     *   content?: PublicEmailContent|PublicEmailContentShape,
      *   folderIDV2?: int,
-     *   from?: array{
-     *     customReplyTo?: string, fromName?: string, replyTo?: string
-     *   }|PublicEmailFromDetails,
+     *   from?: PublicEmailFromDetails|PublicEmailFromDetailsShape,
      *   jitterSendTime?: bool,
      *   language?: value-of<EmailUpdateDraftParams\Language>,
      *   name?: string,
-     *   publishDate?: string|\DateTimeInterface,
-     *   rssData?: array{
-     *     blogEmailType?: string,
-     *     blogImageMaxWidth?: int,
-     *     blogLayout?: string,
-     *     hubspotBlogID?: string,
-     *     maxEntries?: int,
-     *     rssEntryTemplate?: string,
-     *     timing?: array<string,mixed>,
-     *     url?: string,
-     *     useHeadlineAsSubject?: bool,
-     *   }|PublicRssEmailDetails,
+     *   publishDate?: \DateTimeInterface,
+     *   rssData?: PublicRssEmailDetails|PublicRssEmailDetailsShape,
      *   sendOnPublish?: bool,
      *   state?: value-of<EmailUpdateDraftParams\State>,
      *   subcategory?: value-of<EmailUpdateDraftParams\Subcategory>,
      *   subject?: string,
-     *   subscriptionDetails?: array{
-     *     officeLocationID?: string,
-     *     preferencesGroupID?: string,
-     *     subscriptionID?: string,
-     *     subscriptionName?: string,
-     *   }|PublicEmailSubscriptionDetails,
-     *   testing?: array{
-     *     abSampleSizeDefault?: 'automated_loser_variant'|'automated_master'|'automated_variant'|'loser_variant'|'mab_master'|'mab_variant'|'master'|'variant'|AbSampleSizeDefault,
-     *     abSamplingDefault?: 'automated_loser_variant'|'automated_master'|'automated_variant'|'loser_variant'|'mab_master'|'mab_variant'|'master'|'variant'|AbSamplingDefault,
-     *     abStatus?: 'automated_loser_variant'|'automated_master'|'automated_variant'|'loser_variant'|'mab_master'|'mab_variant'|'master'|'variant'|AbStatus,
-     *     abSuccessMetric?: 'CLICKS_BY_DELIVERED'|'CLICKS_BY_OPENS'|'OPENS_BY_DELIVERED'|AbSuccessMetric,
-     *     abTestPercentage?: int,
-     *     hoursToWait?: int,
-     *     isAbVariation?: bool,
-     *     testID?: string,
-     *   }|PublicEmailTestingDetails,
-     *   to?: array{
-     *     contactIDs?: array<string,mixed>|PublicEmailRecipients,
-     *     contactIlsLists?: array<string,mixed>|PublicEmailRecipients,
-     *     contactLists?: array<string,mixed>|PublicEmailRecipients,
-     *     limitSendFrequency?: bool,
-     *     suppressGraymail?: bool,
-     *   }|PublicEmailToDetails,
-     *   webversion?: array{
-     *     domain?: string,
-     *     enabled?: bool,
-     *     expiresAt?: string|\DateTimeInterface,
-     *     isPageRedirected?: bool,
-     *     metaDescription?: string,
-     *     pageExpiryEnabled?: bool,
-     *     redirectToPageID?: string,
-     *     redirectToURL?: string,
-     *     slug?: string,
-     *     title?: string,
-     *     url?: string,
-     *   }|PublicWebversionDetails,
+     *   subscriptionDetails?: PublicEmailSubscriptionDetails|PublicEmailSubscriptionDetailsShape,
+     *   testing?: PublicEmailTestingDetails|PublicEmailTestingDetailsShape,
+     *   to?: PublicEmailToDetails|PublicEmailToDetailsShape,
+     *   webversion?: PublicWebversionDetails|PublicWebversionDetailsShape,
      * }|EmailUpdateDraftParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicEmail>
      *
@@ -813,7 +675,7 @@ final class EmailsRawService implements EmailsRawContract
     public function updateDraft(
         string $emailID,
         array|EmailUpdateDraftParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = EmailUpdateDraftParams::parseRequest(
             $params,

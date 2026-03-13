@@ -13,6 +13,9 @@ use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\ExportsRawContract;
 use HubspotSDK\TaskLocator;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class ExportsRawService implements ExportsRawContract
 {
     // @phpstan-ignore-next-line
@@ -26,12 +29,14 @@ final class ExportsRawService implements ExportsRawContract
      *
      * Begins exporting CRM data for the portal as specified in the request body
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @return BaseResponse<TaskLocator>
      *
      * @throws APIException
      */
     public function createAsync(
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -48,6 +53,7 @@ final class ExportsRawService implements ExportsRawContract
      * Retrieve detailed information about a specific CRM export, including its current state and properties.
      *
      * @param int $exportID the unique ID of the export to retrieve
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicExportResponse>
      *
@@ -55,7 +61,7 @@ final class ExportsRawService implements ExportsRawContract
      */
     public function get(
         int $exportID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -72,6 +78,7 @@ final class ExportsRawService implements ExportsRawContract
      * Returns the status of the export with taskId, including the URL of the resulting file if the export status is COMPLETE
      *
      * @param int $taskID the unique ID of the export
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ActionResponseWithSingleResultUri>
      *
@@ -79,7 +86,7 @@ final class ExportsRawService implements ExportsRawContract
      */
     public function getStatus(
         int $taskID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(

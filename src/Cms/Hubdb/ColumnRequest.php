@@ -18,7 +18,7 @@ use HubspotSDK\Option;
  *   id: int,
  *   label: string,
  *   name: string,
- *   options: list<OptionShape>,
+ *   options: list<\HubspotSDK\Option|OptionShape>,
  *   type: Type|value-of<Type>,
  *   foreignColumnID?: int|null,
  *   foreignTableID?: int|null,
@@ -112,7 +112,7 @@ final class ColumnRequest implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<OptionShape> $options
+     * @param list<Option|OptionShape> $options
      * @param Type|value-of<Type> $type
      */
     public static function with(
@@ -178,7 +178,7 @@ final class ColumnRequest implements BaseModel
     /**
      * Options to choose for select and multi-select columns.
      *
-     * @param list<OptionShape> $options
+     * @param list<Option|OptionShape> $options
      */
     public function withOptions(array $options): self
     {

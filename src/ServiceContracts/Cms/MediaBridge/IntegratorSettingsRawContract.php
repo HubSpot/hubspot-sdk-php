@@ -26,6 +26,9 @@ use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface IntegratorSettingsRawContract
 {
     /**
@@ -33,6 +36,7 @@ interface IntegratorSettingsRawContract
      *
      * @param int $appID The appId for the media bridge app. It is possible to have multiple apps in your developer account that use the media bridge.
      * @param array<string,mixed>|IntegratorSettingCreateObjectDefinitionParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BulkIntegratorObjectCreationResponse>
      *
@@ -41,7 +45,7 @@ interface IntegratorSettingsRawContract
     public function createObjectDefinition(
         int $appID,
         array|IntegratorSettingCreateObjectDefinitionParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -49,6 +53,7 @@ interface IntegratorSettingsRawContract
      *
      * @param int $appID The appId for the media bridge app. It is possible to have multiple apps in your developer account that use the media bridge.
      * @param array<string,mixed>|IntegratorSettingCreateOembedDomainParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<IntegratorOEmbedDomainModel>
      *
@@ -57,7 +62,7 @@ interface IntegratorSettingsRawContract
     public function createOembedDomain(
         int $appID,
         array|IntegratorSettingCreateOembedDomainParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -65,6 +70,7 @@ interface IntegratorSettingsRawContract
      *
      * @param int $appID The appId for the media bridge app. It is possible to have multiple apps in your developer account that use the media bridge.
      * @param array<string,mixed>|IntegratorSettingDeleteOembedDomainParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -73,13 +79,14 @@ interface IntegratorSettingsRawContract
     public function deleteOembedDomain(
         int $appID,
         array|IntegratorSettingDeleteOembedDomainParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param int $appID The appId for the media bridge app. It is possible to have multiple apps in your developer account that use the media bridge.
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<EventVisibilityResponse>
      *
@@ -87,14 +94,15 @@ interface IntegratorSettingsRawContract
      */
     public function getEventVisibilitySettings(
         int $appID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 
     /**
      * @api
      *
-     * @param MediaType|value-of<MediaType> $mediaType path param: The type of media that you want to get the object types for
+     * @param MediaType|string $mediaType path param: The type of media that you want to get the object types for
      * @param array<string,mixed>|IntegratorSettingGetObjectDefinitionsByMediaTypeParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ObjectDefinitionResponse>
      *
@@ -103,7 +111,7 @@ interface IntegratorSettingsRawContract
     public function getObjectDefinitionsByMediaType(
         MediaType|string $mediaType,
         array|IntegratorSettingGetObjectDefinitionsByMediaTypeParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -111,6 +119,7 @@ interface IntegratorSettingsRawContract
      *
      * @param string $oEmbedDomainID the ID for the oEmbed domain
      * @param array<string,mixed>|IntegratorSettingGetOembedDomainParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<IntegratorOEmbedDomainModel>
      *
@@ -119,7 +128,7 @@ interface IntegratorSettingsRawContract
     public function getOembedDomain(
         string $oEmbedDomainID,
         array|IntegratorSettingGetOembedDomainParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -127,6 +136,7 @@ interface IntegratorSettingsRawContract
      *
      * @param int $appID The appId for the media bridge app. It is possible to have multiple apps in your developer account that use the media bridge.
      * @param array<string,mixed>|IntegratorSettingListOembedDomainsParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<OEmbedDomainsCollectionResponse>
      *
@@ -135,7 +145,7 @@ interface IntegratorSettingsRawContract
     public function listOembedDomains(
         int $appID,
         array|IntegratorSettingListOembedDomainsParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -145,6 +155,7 @@ interface IntegratorSettingsRawContract
      *
      * @param int $appID The appId for the media bridge app. It is possible to have multiple apps in your developer account that use the media bridge.
      * @param array<string,mixed>|IntegratorSettingRegisterAppNameParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<MediaBridgeProviderRegistrationResponse>
      *
@@ -153,7 +164,7 @@ interface IntegratorSettingsRawContract
     public function registerAppName(
         int $appID,
         array|IntegratorSettingRegisterAppNameParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -161,6 +172,7 @@ interface IntegratorSettingsRawContract
      *
      * @param int $appID The appId for the media bridge app. It is possible to have multiple apps in your developer account that use the media bridge.
      * @param array<string,mixed>|IntegratorSettingUpdateAppNameParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<MediaBridgeProviderRegistrationResponse>
      *
@@ -169,7 +181,7 @@ interface IntegratorSettingsRawContract
     public function updateAppName(
         int $appID,
         array|IntegratorSettingUpdateAppNameParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -177,6 +189,7 @@ interface IntegratorSettingsRawContract
      *
      * @param int $appID The appId for the media bridge app. It is possible to have multiple apps in your developer account that use the media bridge.
      * @param array<string,mixed>|IntegratorSettingUpdateEventVisibilitySettingsParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<EventVisibilityChange>
      *
@@ -185,7 +198,7 @@ interface IntegratorSettingsRawContract
     public function updateEventVisibilitySettings(
         int $appID,
         array|IntegratorSettingUpdateEventVisibilitySettingsParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -193,6 +206,7 @@ interface IntegratorSettingsRawContract
      *
      * @param string $oEmbedDomainID path param: The ID of the domain to update
      * @param array<string,mixed>|IntegratorSettingUpdateOembedDomainParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<IntegratorOEmbedDomainModel>
      *
@@ -201,6 +215,6 @@ interface IntegratorSettingsRawContract
     public function updateOembedDomain(
         string $oEmbedDomainID,
         array|IntegratorSettingUpdateOembedDomainParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

@@ -4,6 +4,7 @@ namespace Tests\Services\Automation\Actions;
 
 use HubspotSDK\Automation\Actions\PublicActionDefinition;
 use HubspotSDK\Client;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Page;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
@@ -22,7 +23,7 @@ final class DefinitionsTest extends TestCase
     {
         parent::setUp();
 
-        $testUrl = getenv('TEST_API_BASE_URL') ?: 'http://127.0.0.1:4010';
+        $testUrl = Util::getenv('TEST_API_BASE_URL') ?: 'http://127.0.0.1:4010';
         $client = new Client(
             accessToken: 'pat-na1-xxxxxxxx-xxxx',
             baseUrl: $testUrl,

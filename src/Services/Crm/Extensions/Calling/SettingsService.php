@@ -11,6 +11,9 @@ use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Extensions\Calling\SettingsContract;
 use HubspotSDK\Webhooks\SettingsResponse;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class SettingsService implements SettingsContract
 {
     /**
@@ -29,6 +32,8 @@ final class SettingsService implements SettingsContract
     /**
      * @api
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @throws APIException
      */
     public function create(
@@ -42,7 +47,7 @@ final class SettingsService implements SettingsContract
         bool $usesCallingWindow,
         bool $usesRemote,
         int $width,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): SettingsResponse {
         $params = Util::removeNulls(
             [
@@ -67,6 +72,8 @@ final class SettingsService implements SettingsContract
     /**
      * @api
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @throws APIException
      */
     public function update(
@@ -80,7 +87,7 @@ final class SettingsService implements SettingsContract
         ?bool $usesCallingWindow = null,
         ?bool $usesRemote = null,
         ?int $width = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): SettingsResponse {
         $params = Util::removeNulls(
             [
@@ -105,11 +112,13 @@ final class SettingsService implements SettingsContract
     /**
      * @api
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @throws APIException
      */
     public function delete(
         int $appID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): mixed {
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->delete($appID, requestOptions: $requestOptions);
@@ -120,11 +129,13 @@ final class SettingsService implements SettingsContract
     /**
      * @api
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @throws APIException
      */
     public function get(
         int $appID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): SettingsResponse {
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->get($appID, requestOptions: $requestOptions);

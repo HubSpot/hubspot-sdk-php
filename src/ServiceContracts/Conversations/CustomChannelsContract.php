@@ -9,12 +9,16 @@ use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface CustomChannelsContract
 {
     /**
      * @api
      *
      * @param array<string,mixed> $capabilities
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -25,7 +29,7 @@ interface CustomChannelsContract
         ?string $channelDescription = null,
         ?string $channelLogoURL = null,
         ?string $webhookURL = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): PublicChannelIntegrationChannel;
 
     /**
@@ -33,6 +37,7 @@ interface CustomChannelsContract
      *
      * @param int $channelID the ID of the channel to update
      * @param array<string,mixed> $capabilities
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -44,7 +49,7 @@ interface CustomChannelsContract
         mixed $channelLogoURL,
         mixed $name,
         mixed $webhookURL,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): PublicChannelIntegrationChannel;
 
     /**
@@ -54,6 +59,7 @@ interface CustomChannelsContract
      * @param int $defaultPageLength specify the default number of results to return per page
      * @param int $limit the maximum number of results to display per page
      * @param list<string> $sort specify the sorting order for the results
+     * @param RequestOpts|null $requestOptions
      *
      * @return Page<PublicChannelIntegrationChannel>
      *
@@ -64,26 +70,30 @@ interface CustomChannelsContract
         ?int $defaultPageLength = null,
         ?int $limit = null,
         ?array $sort = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): Page;
 
     /**
      * @api
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @throws APIException
      */
     public function delete(
         int $channelID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): mixed;
 
     /**
      * @api
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @throws APIException
      */
     public function get(
         int $channelID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): PublicChannelIntegrationChannel;
 }

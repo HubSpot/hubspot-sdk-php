@@ -18,7 +18,7 @@ use HubspotSDK\Marketing\Subscriptions\V4\PublicStatusRequest;
  * @phpstan-import-type PublicStatusRequestShape from \HubspotSDK\Marketing\Subscriptions\V4\PublicStatusRequest
  *
  * @phpstan-type StatusBatchUpdateParamsShape = array{
- *   inputs: list<PublicStatusRequestShape>
+ *   inputs: list<PublicStatusRequest|PublicStatusRequestShape>
  * }
  */
 final class StatusBatchUpdateParams implements BaseModel
@@ -55,7 +55,7 @@ final class StatusBatchUpdateParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicStatusRequestShape> $inputs
+     * @param list<PublicStatusRequest|PublicStatusRequestShape> $inputs
      */
     public static function with(array $inputs): self
     {
@@ -67,7 +67,7 @@ final class StatusBatchUpdateParams implements BaseModel
     }
 
     /**
-     * @param list<PublicStatusRequestShape> $inputs
+     * @param list<PublicStatusRequest|PublicStatusRequestShape> $inputs
      */
     public function withInputs(array $inputs): self
     {

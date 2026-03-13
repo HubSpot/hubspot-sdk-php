@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @phpstan-type ImportResultShape = array{
  *   duplicateRows: int,
- *   errors: list<APIErrorShape>,
+ *   errors: list<APIError|APIErrorShape>,
  *   rowLimitExceeded: bool,
  *   rowsImported: int,
  * }
@@ -80,7 +80,7 @@ final class ImportResult implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<APIErrorShape> $errors
+     * @param list<APIError|APIErrorShape> $errors
      */
     public static function with(
         int $duplicateRows,
@@ -112,7 +112,7 @@ final class ImportResult implements BaseModel
     /**
      * List of errors during import.
      *
-     * @param list<APIErrorShape> $errors
+     * @param list<APIError|APIErrorShape> $errors
      */
     public function withErrors(array $errors): self
     {

@@ -12,11 +12,17 @@ use HubspotSDK\Crm\Timeline\Events\EventBatchCreateParams;
 use HubspotSDK\Crm\Timeline\Events\EventCreateParams;
 use HubspotSDK\Crm\Timeline\Events\EventGetDetailParams;
 use HubspotSDK\Crm\Timeline\Events\EventGetParams;
+use HubspotSDK\Crm\Timeline\TimelineEvent;
 use HubspotSDK\Crm\Timeline\TimelineEventIFrame;
 use HubspotSDK\Crm\Timeline\TimelineEventResponse;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Timeline\EventsRawContract;
 
+/**
+ * @phpstan-import-type TimelineEventIFrameShape from \HubspotSDK\Crm\Timeline\TimelineEventIFrame
+ * @phpstan-import-type TimelineEventShape from \HubspotSDK\Crm\Timeline\TimelineEvent
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class EventsRawService implements EventsRawContract
 {
     // @phpstan-ignore-next-line
@@ -38,12 +44,11 @@ final class EventsRawService implements EventsRawContract
      *   email?: string,
      *   extraData?: mixed,
      *   objectID?: string,
-     *   timelineIFrame?: array{
-     *     headerLabel: string, height: int, linkLabel: string, url: string, width: int
-     *   }|TimelineEventIFrame,
-     *   timestamp?: string|\DateTimeInterface,
+     *   timelineIFrame?: TimelineEventIFrame|TimelineEventIFrameShape,
+     *   timestamp?: \DateTimeInterface,
      *   utk?: string,
      * }|EventCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<TimelineEventResponse>
      *
@@ -51,7 +56,7 @@ final class EventsRawService implements EventsRawContract
      */
     public function create(
         array|EventCreateParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = EventCreateParams::parseRequest(
             $params,
@@ -74,19 +79,9 @@ final class EventsRawService implements EventsRawContract
      * Batch create multiple instances of timeline events based on an event template. Once created, these event are immutable on the object timeline and cannot be modified. If the event template was configured to update object properties via `objectPropertyName`, this call will also attempt to updates those properties, or add them if they don't exist.
      *
      * @param array{
-     *   inputs: list<array{
-     *     eventTemplateID: string,
-     *     tokens: array<string,string>,
-     *     id?: string,
-     *     domain?: string,
-     *     email?: string,
-     *     extraData?: mixed,
-     *     objectID?: string,
-     *     timelineIFrame?: array<string,mixed>|TimelineEventIFrame,
-     *     timestamp?: string|\DateTimeInterface,
-     *     utk?: string,
-     *   }>,
+     *   inputs: list<TimelineEvent|TimelineEventShape>
      * }|EventBatchCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -94,7 +89,7 @@ final class EventsRawService implements EventsRawContract
      */
     public function batchCreate(
         array|EventBatchCreateParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = EventBatchCreateParams::parseRequest(
             $params,
@@ -118,6 +113,7 @@ final class EventsRawService implements EventsRawContract
      *
      * @param string $eventID the event ID
      * @param array{eventTemplateID: string}|EventGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<TimelineEventResponse>
      *
@@ -126,7 +122,7 @@ final class EventsRawService implements EventsRawContract
     public function get(
         string $eventID,
         array|EventGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = EventGetParams::parseRequest(
             $params,
@@ -153,6 +149,7 @@ final class EventsRawService implements EventsRawContract
      *
      * @param string $eventID the event ID
      * @param array{eventTemplateID: string}|EventGetDetailParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<EventDetail>
      *
@@ -161,7 +158,7 @@ final class EventsRawService implements EventsRawContract
     public function getDetail(
         string $eventID,
         array|EventGetDetailParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = EventGetDetailParams::parseRequest(
             $params,

@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   limit: int,
  *   offset: int,
  *   page: int,
- *   results: list<ContentSearchResultShape>,
+ *   results: list<ContentSearchResult|ContentSearchResultShape>,
  *   total: int,
  *   searchTerm?: string|null,
  * }
@@ -76,7 +76,7 @@ final class PublicSearchResults implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<ContentSearchResultShape> $results
+     * @param list<ContentSearchResult|ContentSearchResultShape> $results
      */
     public static function with(
         int $limit,
@@ -124,7 +124,7 @@ final class PublicSearchResults implements BaseModel
     }
 
     /**
-     * @param list<ContentSearchResultShape> $results
+     * @param list<ContentSearchResult|ContentSearchResultShape> $results
      */
     public function withResults(array $results): self
     {

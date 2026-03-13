@@ -25,12 +25,16 @@ use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface AuthorsRawContract
 {
     /**
      * @api
      *
      * @param array<string,mixed>|AuthorCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BlogAuthor>
      *
@@ -38,7 +42,7 @@ interface AuthorsRawContract
      */
     public function create(
         array|AuthorCreateParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -46,6 +50,7 @@ interface AuthorsRawContract
      *
      * @param string $objectID path param: The Blog Author id
      * @param array<string,mixed>|AuthorUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BlogAuthor>
      *
@@ -54,13 +59,14 @@ interface AuthorsRawContract
     public function update(
         string $objectID,
         array|AuthorUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|AuthorListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<BlogAuthor>>
      *
@@ -68,7 +74,7 @@ interface AuthorsRawContract
      */
     public function list(
         array|AuthorListParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -76,6 +82,7 @@ interface AuthorsRawContract
      *
      * @param string $objectID the Blog Author id
      * @param array<string,mixed>|AuthorDeleteParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -84,13 +91,14 @@ interface AuthorsRawContract
     public function delete(
         string $objectID,
         array|AuthorDeleteParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|AuthorAttachToLangGroupParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -98,13 +106,14 @@ interface AuthorsRawContract
      */
     public function attachToLangGroup(
         array|AuthorAttachToLangGroupParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|AuthorCreateBatchParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BatchResponseBlogAuthor>
      *
@@ -112,13 +121,14 @@ interface AuthorsRawContract
      */
     public function createBatch(
         array|AuthorCreateBatchParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|AuthorCreateLanguageVariationParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BlogAuthor>
      *
@@ -126,13 +136,14 @@ interface AuthorsRawContract
      */
     public function createLanguageVariation(
         array|AuthorCreateLanguageVariationParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|AuthorDeleteBatchParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -140,13 +151,14 @@ interface AuthorsRawContract
      */
     public function deleteBatch(
         array|AuthorDeleteBatchParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|AuthorDetachFromLangGroupParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -154,7 +166,7 @@ interface AuthorsRawContract
      */
     public function detachFromLangGroup(
         array|AuthorDetachFromLangGroupParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -162,6 +174,7 @@ interface AuthorsRawContract
      *
      * @param string $objectID the Blog Author id
      * @param array<string,mixed>|AuthorGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BlogAuthor>
      *
@@ -170,13 +183,14 @@ interface AuthorsRawContract
     public function get(
         string $objectID,
         array|AuthorGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|AuthorGetBatchParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BatchResponseBlogAuthor>
      *
@@ -184,13 +198,14 @@ interface AuthorsRawContract
      */
     public function getBatch(
         array|AuthorGetBatchParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|AuthorSetNewLangPrimaryParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -198,13 +213,14 @@ interface AuthorsRawContract
      */
     public function setNewLangPrimary(
         array|AuthorSetNewLangPrimaryParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|AuthorUpdateBatchParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BatchResponseBlogAuthor>
      *
@@ -212,13 +228,14 @@ interface AuthorsRawContract
      */
     public function updateBatch(
         array|AuthorUpdateBatchParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|AuthorUpdateLanguagesParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -226,6 +243,6 @@ interface AuthorsRawContract
      */
     public function updateLanguages(
         array|AuthorUpdateLanguagesParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

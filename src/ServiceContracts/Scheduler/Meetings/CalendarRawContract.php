@@ -10,12 +10,16 @@ use HubspotSDK\RequestOptions;
 use HubspotSDK\Scheduler\Meetings\Calendar\CalendarCreateParams;
 use HubspotSDK\Scheduler\Meetings\ExternalCalenderMeetingEventResponse;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface CalendarRawContract
 {
     /**
      * @api
      *
      * @param array<string,mixed>|CalendarCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ExternalCalenderMeetingEventResponse>
      *
@@ -23,6 +27,6 @@ interface CalendarRawContract
      */
     public function create(
         array|CalendarCreateParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

@@ -27,12 +27,12 @@ use HubspotSDK\Option;
  *   createdBy?: null|SimpleUser|SimpleUserShape,
  *   createdByUserID?: int|null,
  *   foreignColumnID?: int|null,
- *   foreignIDs?: list<ForeignIDShape>|null,
- *   foreignIDsByID?: array<string,ForeignIDShape>|null,
- *   foreignIDsByName?: array<string,ForeignIDShape>|null,
+ *   foreignIDs?: list<ForeignID|ForeignIDShape>|null,
+ *   foreignIDsByID?: array<string,ForeignID|ForeignIDShape>|null,
+ *   foreignIDsByName?: array<string,ForeignID|ForeignIDShape>|null,
  *   foreignTableID?: int|null,
  *   optionCount?: int|null,
- *   options?: list<OptionShape>|null,
+ *   options?: list<\HubspotSDK\Option|OptionShape>|null,
  *   updatedAt?: \DateTimeInterface|null,
  *   updatedBy?: null|SimpleUser|SimpleUserShape,
  *   updatedByUserID?: int|null,
@@ -184,10 +184,10 @@ final class Column implements BaseModel
      *
      * @param Type|value-of<Type> $type
      * @param SimpleUser|SimpleUserShape|null $createdBy
-     * @param list<ForeignIDShape>|null $foreignIDs
-     * @param array<string,ForeignIDShape>|null $foreignIDsByID
-     * @param array<string,ForeignIDShape>|null $foreignIDsByName
-     * @param list<OptionShape>|null $options
+     * @param list<ForeignID|ForeignIDShape>|null $foreignIDs
+     * @param array<string,ForeignID|ForeignIDShape>|null $foreignIDsByID
+     * @param array<string,ForeignID|ForeignIDShape>|null $foreignIDsByName
+     * @param list<Option|OptionShape>|null $options
      * @param SimpleUser|SimpleUserShape|null $updatedBy
      */
     public static function with(
@@ -342,7 +342,7 @@ final class Column implements BaseModel
     /**
      * Foreign Ids.
      *
-     * @param list<ForeignIDShape> $foreignIDs
+     * @param list<ForeignID|ForeignIDShape> $foreignIDs
      */
     public function withForeignIDs(array $foreignIDs): self
     {
@@ -355,7 +355,7 @@ final class Column implements BaseModel
     /**
      * Foreign ids.
      *
-     * @param array<string,ForeignIDShape> $foreignIDsByID
+     * @param array<string,ForeignID|ForeignIDShape> $foreignIDsByID
      */
     public function withForeignIDsByID(array $foreignIDsByID): self
     {
@@ -368,7 +368,7 @@ final class Column implements BaseModel
     /**
      * Foreign ids by name.
      *
-     * @param array<string,ForeignIDShape> $foreignIDsByName
+     * @param array<string,ForeignID|ForeignIDShape> $foreignIDsByName
      */
     public function withForeignIDsByName(array $foreignIDsByName): self
     {
@@ -403,7 +403,7 @@ final class Column implements BaseModel
     /**
      * Options to choose for select and multi-select columns.
      *
-     * @param list<OptionShape> $options
+     * @param list<Option|OptionShape> $options
      */
     public function withOptions(array $options): self
     {

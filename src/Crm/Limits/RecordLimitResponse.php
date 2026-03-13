@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @phpstan-type RecordLimitResponseShape = array{
  *   customObjectTypes: CustomObjectRecordLimitResponse|CustomObjectRecordLimitResponseShape,
- *   hubspotDefinedObjectTypes: list<LimitAndUsageForObjectTypeShape>,
+ *   hubspotDefinedObjectTypes: list<LimitAndUsageForObjectType|LimitAndUsageForObjectTypeShape>,
  * }
  */
 final class RecordLimitResponse implements BaseModel
@@ -58,7 +58,7 @@ final class RecordLimitResponse implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param CustomObjectRecordLimitResponse|CustomObjectRecordLimitResponseShape $customObjectTypes
-     * @param list<LimitAndUsageForObjectTypeShape> $hubspotDefinedObjectTypes
+     * @param list<LimitAndUsageForObjectType|LimitAndUsageForObjectTypeShape> $hubspotDefinedObjectTypes
      */
     public static function with(
         CustomObjectRecordLimitResponse|array $customObjectTypes,
@@ -85,7 +85,7 @@ final class RecordLimitResponse implements BaseModel
     }
 
     /**
-     * @param list<LimitAndUsageForObjectTypeShape> $hubspotDefinedObjectTypes
+     * @param list<LimitAndUsageForObjectType|LimitAndUsageForObjectTypeShape> $hubspotDefinedObjectTypes
      */
     public function withHubspotDefinedObjectTypes(
         array $hubspotDefinedObjectTypes

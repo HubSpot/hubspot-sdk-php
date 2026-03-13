@@ -18,6 +18,9 @@ use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\TaskLocator;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface SourceCodeRawContract
 {
     /**
@@ -27,6 +30,7 @@ interface SourceCodeRawContract
      *
      * @param string $filePath path param: The file system location of the file
      * @param array<string,mixed>|SourceCodeCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<AssetFileMetadata>
      *
@@ -35,7 +39,7 @@ interface SourceCodeRawContract
     public function create(
         string $filePath,
         array|SourceCodeCreateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -43,6 +47,7 @@ interface SourceCodeRawContract
      *
      * @param string $filePath the file system location of the file
      * @param array<string,mixed>|SourceCodeDeleteParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -51,13 +56,14 @@ interface SourceCodeRawContract
     public function delete(
         string $filePath,
         array|SourceCodeDeleteParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|SourceCodeExtractAsyncParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<TaskLocator>
      *
@@ -65,7 +71,7 @@ interface SourceCodeRawContract
      */
     public function extractAsync(
         array|SourceCodeExtractAsyncParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -73,6 +79,7 @@ interface SourceCodeRawContract
      *
      * @param string $filePath the file system location of the file
      * @param array<string,mixed>|SourceCodeGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<string>
      *
@@ -81,13 +88,14 @@ interface SourceCodeRawContract
     public function get(
         string $filePath,
         array|SourceCodeGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param int $taskID the extraction task ID returned by the initial `extract/async` request
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ActionResponse>
      *
@@ -95,7 +103,7 @@ interface SourceCodeRawContract
      */
     public function getExtractionStatus(
         int $taskID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 
     /**
@@ -103,6 +111,7 @@ interface SourceCodeRawContract
      *
      * @param string $filePath path param: The file system location of the file
      * @param array<string,mixed>|SourceCodeGetMetadataParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<AssetFileMetadata>
      *
@@ -111,7 +120,7 @@ interface SourceCodeRawContract
     public function getMetadata(
         string $filePath,
         array|SourceCodeGetMetadataParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -119,6 +128,7 @@ interface SourceCodeRawContract
      *
      * @param string $filePath path param: The file system location of the file
      * @param array<string,mixed>|SourceCodeUpsertParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<AssetFileMetadata>
      *
@@ -127,7 +137,7 @@ interface SourceCodeRawContract
     public function upsert(
         string $filePath,
         array|SourceCodeUpsertParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -135,6 +145,7 @@ interface SourceCodeRawContract
      *
      * @param string $filePath path param: The file system location of the file
      * @param array<string,mixed>|SourceCodeValidateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<string>
      *
@@ -143,6 +154,6 @@ interface SourceCodeRawContract
     public function validate(
         string $filePath,
         array|SourceCodeValidateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

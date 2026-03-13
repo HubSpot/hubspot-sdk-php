@@ -22,7 +22,7 @@ use HubspotSDK\PropertyName;
  * @phpstan-type BatchGetParamsShape = array{
  *   archived: bool,
  *   dataSensitivity: DataSensitivity|value-of<DataSensitivity>,
- *   inputs: list<PropertyNameShape>,
+ *   inputs: list<PropertyName|PropertyNameShape>,
  *   locale?: string|null,
  * }
  */
@@ -74,7 +74,7 @@ final class BatchGetParams implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param DataSensitivity|value-of<DataSensitivity> $dataSensitivity
-     * @param list<PropertyNameShape> $inputs
+     * @param list<PropertyName|PropertyNameShape> $inputs
      */
     public static function with(
         bool $archived,
@@ -114,7 +114,7 @@ final class BatchGetParams implements BaseModel
     }
 
     /**
-     * @param list<PropertyNameShape> $inputs
+     * @param list<PropertyName|PropertyNameShape> $inputs
      */
     public function withInputs(array $inputs): self
     {

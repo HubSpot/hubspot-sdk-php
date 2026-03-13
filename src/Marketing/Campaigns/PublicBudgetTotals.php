@@ -15,9 +15,9 @@ use HubspotSDK\Marketing\Campaigns\PublicBudgetTotals\CurrencyCode;
  * @phpstan-import-type PublicSpendItemShape from \HubspotSDK\Marketing\Campaigns\PublicSpendItem
  *
  * @phpstan-type PublicBudgetTotalsShape = array{
- *   budgetItems: list<PublicBudgetItemShape>,
+ *   budgetItems: list<PublicBudgetItem|PublicBudgetItemShape>,
  *   currencyCode: CurrencyCode|value-of<CurrencyCode>,
- *   spendItems: list<PublicSpendItemShape>,
+ *   spendItems: list<PublicSpendItem|PublicSpendItemShape>,
  *   budgetTotal?: float|null,
  *   remainingBudget?: float|null,
  *   spendTotal?: float|null,
@@ -76,9 +76,9 @@ final class PublicBudgetTotals implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicBudgetItemShape> $budgetItems
+     * @param list<PublicBudgetItem|PublicBudgetItemShape> $budgetItems
      * @param CurrencyCode|value-of<CurrencyCode> $currencyCode
-     * @param list<PublicSpendItemShape> $spendItems
+     * @param list<PublicSpendItem|PublicSpendItemShape> $spendItems
      */
     public static function with(
         array $budgetItems,
@@ -102,7 +102,7 @@ final class PublicBudgetTotals implements BaseModel
     }
 
     /**
-     * @param list<PublicBudgetItemShape> $budgetItems
+     * @param list<PublicBudgetItem|PublicBudgetItemShape> $budgetItems
      */
     public function withBudgetItems(array $budgetItems): self
     {
@@ -124,7 +124,7 @@ final class PublicBudgetTotals implements BaseModel
     }
 
     /**
-     * @param list<PublicSpendItemShape> $spendItems
+     * @param list<PublicSpendItem|PublicSpendItemShape> $spendItems
      */
     public function withSpendItems(array $spendItems): self
     {

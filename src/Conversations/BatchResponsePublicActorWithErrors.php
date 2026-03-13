@@ -12,6 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\StandardError;
 
 /**
+ * @phpstan-import-type PublicActorVariants from \HubspotSDK\Conversations\PublicActor
  * @phpstan-import-type PublicActorShape from \HubspotSDK\Conversations\PublicActor
  * @phpstan-import-type StandardErrorShape from \HubspotSDK\StandardError
  *
@@ -20,7 +21,7 @@ use HubspotSDK\StandardError;
  *   results: list<PublicActorShape>,
  *   startedAt: \DateTimeInterface,
  *   status: Status|value-of<Status>,
- *   errors?: list<StandardErrorShape>|null,
+ *   errors?: list<StandardError|StandardErrorShape>|null,
  *   links?: array<string,string>|null,
  *   numErrors?: int|null,
  *   requestedAt?: \DateTimeInterface|null,
@@ -34,9 +35,7 @@ final class BatchResponsePublicActorWithErrors implements BaseModel
     #[Required]
     public \DateTimeInterface $completedAt;
 
-    /**
-     * @var list<AgentActor|BotActor|IntegratorActor|SystemActor|VisitorActor|EmailActor|LlmActor> $results
-     */
+    /** @var list<PublicActorVariants> $results */
     #[Required(list: PublicActor::class)]
     public array $results;
 
@@ -93,7 +92,7 @@ final class BatchResponsePublicActorWithErrors implements BaseModel
      *
      * @param list<PublicActorShape> $results
      * @param Status|value-of<Status> $status
-     * @param list<StandardErrorShape>|null $errors
+     * @param list<StandardError|StandardErrorShape>|null $errors
      * @param array<string,string>|null $links
      */
     public static function with(
@@ -160,7 +159,7 @@ final class BatchResponsePublicActorWithErrors implements BaseModel
     }
 
     /**
-     * @param list<StandardErrorShape> $errors
+     * @param list<StandardError|StandardErrorShape> $errors
      */
     public function withErrors(array $errors): self
     {

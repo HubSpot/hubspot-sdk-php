@@ -18,6 +18,9 @@ use HubspotSDK\Crm\Properties\PropertyGroup;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Properties\GroupsRawContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class GroupsRawService implements GroupsRawContract
 {
     // @phpstan-ignore-next-line
@@ -34,6 +37,7 @@ final class GroupsRawService implements GroupsRawContract
      * @param array{
      *   label: string, name: string, displayOrder?: int
      * }|GroupCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CreatedResponsePropertyGroup>
      *
@@ -42,7 +46,7 @@ final class GroupsRawService implements GroupsRawContract
     public function create(
         string $objectType,
         array|GroupCreateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = GroupCreateParams::parseRequest(
             $params,
@@ -64,10 +68,11 @@ final class GroupsRawService implements GroupsRawContract
      *
      * Perform a partial update of a property group identified by {groupName}. Provided fields will be overwritten.
      *
-     * @param string $groupName Path param:
+     * @param string $groupName Path param
      * @param array{
      *   objectType: string, displayOrder?: int, label?: string
      * }|GroupUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PropertyGroup>
      *
@@ -76,7 +81,7 @@ final class GroupsRawService implements GroupsRawContract
     public function update(
         string $groupName,
         array|GroupUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = GroupUpdateParams::parseRequest(
             $params,
@@ -101,6 +106,7 @@ final class GroupsRawService implements GroupsRawContract
      * Read all existing property groups for the specified object type and HubSpot account.
      *
      * @param array{locale?: string}|GroupListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CollectionResponsePropertyGroup>
      *
@@ -109,7 +115,7 @@ final class GroupsRawService implements GroupsRawContract
     public function list(
         string $objectType,
         array|GroupListParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = GroupListParams::parseRequest(
             $params,
@@ -132,6 +138,7 @@ final class GroupsRawService implements GroupsRawContract
      * Move a property group identified by {groupName} to the recycling bin.
      *
      * @param array{objectType: string}|GroupDeleteParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -140,7 +147,7 @@ final class GroupsRawService implements GroupsRawContract
     public function delete(
         string $groupName,
         array|GroupDeleteParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = GroupDeleteParams::parseRequest(
             $params,
@@ -163,8 +170,9 @@ final class GroupsRawService implements GroupsRawContract
      *
      * Read a property group identified by {groupName}.
      *
-     * @param string $groupName Path param:
+     * @param string $groupName Path param
      * @param array{objectType: string, locale?: string}|GroupGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PropertyGroup>
      *
@@ -173,7 +181,7 @@ final class GroupsRawService implements GroupsRawContract
     public function get(
         string $groupName,
         array|GroupGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = GroupGetParams::parseRequest(
             $params,

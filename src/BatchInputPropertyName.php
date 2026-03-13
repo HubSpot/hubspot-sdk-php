@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-import-type PropertyNameShape from \HubspotSDK\PropertyName
  *
  * @phpstan-type BatchInputPropertyNameShape = array{
- *   inputs: list<PropertyNameShape>
+ *   inputs: list<PropertyName|PropertyNameShape>
  * }
  */
 final class BatchInputPropertyName implements BaseModel
@@ -48,7 +48,7 @@ final class BatchInputPropertyName implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PropertyNameShape> $inputs
+     * @param list<PropertyName|PropertyNameShape> $inputs
      */
     public static function with(array $inputs): self
     {
@@ -60,7 +60,7 @@ final class BatchInputPropertyName implements BaseModel
     }
 
     /**
-     * @param list<PropertyNameShape> $inputs
+     * @param list<PropertyName|PropertyNameShape> $inputs
      */
     public function withInputs(array $inputs): self
     {

@@ -20,6 +20,7 @@ use HubspotSDK\PublicUnifiedEventsFilterBranch;
 /**
  * An object list definition.
  *
+ * @phpstan-import-type FilterBranchVariants from \HubspotSDK\Crm\Lists\PublicObjectList\FilterBranch
  * @phpstan-import-type FilterBranchShape from \HubspotSDK\Crm\Lists\PublicObjectList\FilterBranch
  * @phpstan-import-type PublicListPermissionsShape from \HubspotSDK\Crm\Lists\PublicListPermissions
  * @phpstan-import-type PublicMembershipSettingsShape from \HubspotSDK\Crm\Lists\PublicMembershipSettings
@@ -102,6 +103,7 @@ final class PublicObjectList implements BaseModel
     #[Optional]
     public ?\DateTimeInterface $deletedAt;
 
+    /** @var FilterBranchVariants|null $filterBranch */
     #[Optional]
     public PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch|null $filterBranch;
 

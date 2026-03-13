@@ -8,10 +8,16 @@ use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Core\Util;
 use HubspotSDK\Crm\Objects\DealSplits\BatchResponseDealToDealSplits;
+use HubspotSDK\Crm\Objects\DealSplits\PublicDealSplitsCreateRequest;
 use HubspotSDK\PublicObjectID;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Objects\DealSplitsContract;
 
+/**
+ * @phpstan-import-type PublicObjectIDShape from \HubspotSDK\PublicObjectID
+ * @phpstan-import-type PublicDealSplitsCreateRequestShape from \HubspotSDK\Crm\Objects\DealSplits\PublicDealSplitsCreateRequest
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class DealSplitsService implements DealSplitsContract
 {
     /**
@@ -32,13 +38,14 @@ final class DealSplitsService implements DealSplitsContract
      *
      * Read a batch of deal split objects by their associated deal object internal ID
      *
-     * @param list<array{id: string}|PublicObjectID> $inputs
+     * @param list<PublicObjectID|PublicObjectIDShape> $inputs
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function batchRead(
         array $inputs,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BatchResponseDealToDealSplits {
         $params = Util::removeNulls(['inputs' => $inputs]);
 
@@ -53,15 +60,14 @@ final class DealSplitsService implements DealSplitsContract
      *
      * Create or replace deal splits for deals with the provided IDs. Deal split percentages for each deal must sum up to 1.0 (100%) and may have up to 8 decimal places
      *
-     * @param list<array{
-     *   id: int, splits: list<array{ownerID: int, percentage: float}>
-     * }> $inputs
+     * @param list<PublicDealSplitsCreateRequest|PublicDealSplitsCreateRequestShape> $inputs
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function batchUpsert(
         array $inputs,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BatchResponseDealToDealSplits {
         $params = Util::removeNulls(['inputs' => $inputs]);
 

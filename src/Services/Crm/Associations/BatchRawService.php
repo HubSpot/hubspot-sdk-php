@@ -17,6 +17,11 @@ use HubspotSDK\PublicObjectID;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Associations\BatchRawContract;
 
+/**
+ * @phpstan-import-type PublicObjectIDShape from \HubspotSDK\PublicObjectID
+ * @phpstan-import-type PublicAssociationShape from \HubspotSDK\Crm\Associations\PublicAssociation
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class BatchRawService implements BatchRawContract
 {
     // @phpstan-ignore-next-line
@@ -32,13 +37,9 @@ final class BatchRawService implements BatchRawContract
      *
      * @param string $toObjectType path param: The type of the target object in the association
      * @param array{
-     *   fromObjectType: string,
-     *   inputs: list<array{
-     *     from: array<string,mixed>|PublicObjectID,
-     *     to: array<string,mixed>|PublicObjectID,
-     *     type: string,
-     *   }|PublicAssociation>,
+     *   fromObjectType: string, inputs: list<PublicAssociation|PublicAssociationShape>
      * }|BatchCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BatchResponsePublicAssociation>
      *
@@ -47,7 +48,7 @@ final class BatchRawService implements BatchRawContract
     public function create(
         string $toObjectType,
         array|BatchCreateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = BatchCreateParams::parseRequest(
             $params,
@@ -77,13 +78,9 @@ final class BatchRawService implements BatchRawContract
      *
      * @param string $toObjectType path param: The type of the target object in the association
      * @param array{
-     *   fromObjectType: string,
-     *   inputs: list<array{
-     *     from: array<string,mixed>|PublicObjectID,
-     *     to: array<string,mixed>|PublicObjectID,
-     *     type: string,
-     *   }|PublicAssociation>,
+     *   fromObjectType: string, inputs: list<PublicAssociation|PublicAssociationShape>
      * }|BatchDeleteParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -92,7 +89,7 @@ final class BatchRawService implements BatchRawContract
     public function delete(
         string $toObjectType,
         array|BatchDeleteParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = BatchDeleteParams::parseRequest(
             $params,
@@ -122,8 +119,9 @@ final class BatchRawService implements BatchRawContract
      *
      * @param string $toObjectType path param: The type of the target object in the association
      * @param array{
-     *   fromObjectType: string, inputs: list<array{id: string}|PublicObjectID>
+     *   fromObjectType: string, inputs: list<PublicObjectID|PublicObjectIDShape>
      * }|BatchGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BatchResponsePublicAssociationMulti>
      *
@@ -132,7 +130,7 @@ final class BatchRawService implements BatchRawContract
     public function get(
         string $toObjectType,
         array|BatchGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = BatchGetParams::parseRequest(
             $params,

@@ -6,6 +6,7 @@ use HubspotSDK\Automation\Actions\CollectionResponsePublicActionFunctionIdentifi
 use HubspotSDK\Automation\Actions\PublicActionFunction;
 use HubspotSDK\Automation\Actions\PublicActionFunctionIdentifier;
 use HubspotSDK\Client;
+use HubspotSDK\Core\Util;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -23,7 +24,7 @@ final class FunctionsTest extends TestCase
     {
         parent::setUp();
 
-        $testUrl = getenv('TEST_API_BASE_URL') ?: 'http://127.0.0.1:4010';
+        $testUrl = Util::getenv('TEST_API_BASE_URL') ?: 'http://127.0.0.1:4010';
         $client = new Client(
             accessToken: 'pat-na1-xxxxxxxx-xxxx',
             baseUrl: $testUrl,

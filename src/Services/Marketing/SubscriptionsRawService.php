@@ -16,6 +16,9 @@ use HubspotSDK\Marketing\Subscriptions\SubscriptionUnsubscribeParams;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Marketing\SubscriptionsRawContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class SubscriptionsRawService implements SubscriptionsRawContract
 {
     // @phpstan-ignore-next-line
@@ -29,12 +32,15 @@ final class SubscriptionsRawService implements SubscriptionsRawContract
      *
      * Get a list of all subscription definitions for the portal
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @return BaseResponse<SubscriptionDefinitionsResponse>
      *
      * @throws APIException
      */
-    public function list(?RequestOptions $requestOptions = null): BaseResponse
-    {
+    public function list(
+        RequestOptions|array|null $requestOptions = null
+    ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
@@ -49,13 +55,15 @@ final class SubscriptionsRawService implements SubscriptionsRawContract
      *
      * Returns a list of subscriptions and their status for a given contact.
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @return BaseResponse<PublicSubscriptionStatusesResponse>
      *
      * @throws APIException
      */
     public function getEmailStatus(
         string $emailAddress,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -77,6 +85,7 @@ final class SubscriptionsRawService implements SubscriptionsRawContract
      *   legalBasis?: value-of<LegalBasis>,
      *   legalBasisExplanation?: string,
      * }|SubscriptionSubscribeParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicSubscriptionStatus>
      *
@@ -84,7 +93,7 @@ final class SubscriptionsRawService implements SubscriptionsRawContract
      */
     public function subscribe(
         array|SubscriptionSubscribeParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = SubscriptionSubscribeParams::parseRequest(
             $params,
@@ -112,6 +121,7 @@ final class SubscriptionsRawService implements SubscriptionsRawContract
      *   legalBasis?: value-of<SubscriptionUnsubscribeParams\LegalBasis>,
      *   legalBasisExplanation?: string,
      * }|SubscriptionUnsubscribeParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicSubscriptionStatus>
      *
@@ -119,7 +129,7 @@ final class SubscriptionsRawService implements SubscriptionsRawContract
      */
     public function unsubscribe(
         array|SubscriptionUnsubscribeParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = SubscriptionUnsubscribeParams::parseRequest(
             $params,

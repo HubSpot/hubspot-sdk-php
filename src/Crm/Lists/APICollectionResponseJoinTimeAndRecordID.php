@@ -15,7 +15,7 @@ use HubspotSDK\Paging;
  * @phpstan-import-type PagingShape from \HubspotSDK\Paging
  *
  * @phpstan-type APICollectionResponseJoinTimeAndRecordIDShape = array{
- *   results: list<JoinTimeAndRecordIDShape>,
+ *   results: list<JoinTimeAndRecordID|JoinTimeAndRecordIDShape>,
  *   paging?: null|Paging|PagingShape,
  *   total?: int|null,
  * }
@@ -59,7 +59,7 @@ final class APICollectionResponseJoinTimeAndRecordID implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<JoinTimeAndRecordIDShape> $results
+     * @param list<JoinTimeAndRecordID|JoinTimeAndRecordIDShape> $results
      * @param Paging|PagingShape|null $paging
      */
     public static function with(
@@ -78,7 +78,7 @@ final class APICollectionResponseJoinTimeAndRecordID implements BaseModel
     }
 
     /**
-     * @param list<JoinTimeAndRecordIDShape> $results
+     * @param list<JoinTimeAndRecordID|JoinTimeAndRecordIDShape> $results
      */
     public function withResults(array $results): self
     {

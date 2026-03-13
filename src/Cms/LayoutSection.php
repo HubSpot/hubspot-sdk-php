@@ -21,7 +21,7 @@ use HubspotSDK\Core\Conversion\MapOf;
  *   label: string,
  *   name: string,
  *   params: array<string,mixed>,
- *   rowMetaData: list<RowMetaDataShape>,
+ *   rowMetaData: list<RowMetaData|RowMetaDataShape>,
  *   rows: list<mixed>,
  *   styles: Styles|StylesShape,
  *   type: string,
@@ -134,7 +134,7 @@ final class LayoutSection implements BaseModel
      *
      * @param list<mixed> $cells
      * @param array<string,mixed> $params
-     * @param list<RowMetaDataShape> $rowMetaData
+     * @param list<RowMetaData|RowMetaDataShape> $rowMetaData
      * @param list<mixed> $rows
      * @param Styles|StylesShape $styles
      */
@@ -237,7 +237,7 @@ final class LayoutSection implements BaseModel
     }
 
     /**
-     * @param list<RowMetaDataShape> $rowMetaData
+     * @param list<RowMetaData|RowMetaDataShape> $rowMetaData
      */
     public function withRowMetaData(array $rowMetaData): self
     {

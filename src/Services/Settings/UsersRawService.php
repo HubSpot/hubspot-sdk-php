@@ -20,6 +20,9 @@ use HubspotSDK\Settings\Users\UserListParams;
 use HubspotSDK\Settings\Users\UserUpdateParams;
 use HubspotSDK\Settings\Users\UserUpdateParams\IDProperty;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class UsersRawService implements UsersRawContract
 {
     // @phpstan-ignore-next-line
@@ -42,6 +45,7 @@ final class UsersRawService implements UsersRawContract
      *   secondaryTeamIDs?: list<string>,
      *   sendWelcomeEmail?: bool,
      * }|UserCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicUser>
      *
@@ -49,7 +53,7 @@ final class UsersRawService implements UsersRawContract
      */
     public function create(
         array|UserCreateParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = UserCreateParams::parseRequest(
             $params,
@@ -73,13 +77,14 @@ final class UsersRawService implements UsersRawContract
      *
      * @param string $userID Path param: Identifier of user to retrieve
      * @param array{
-     *   idProperty?: 'EMAIL'|'USER_ID'|IDProperty,
+     *   idProperty?: IDProperty|value-of<IDProperty>,
      *   firstName?: string,
      *   lastName?: string,
      *   primaryTeamID?: string,
      *   roleID?: string,
      *   secondaryTeamIDs?: list<string>,
      * }|UserUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicUser>
      *
@@ -88,7 +93,7 @@ final class UsersRawService implements UsersRawContract
     public function update(
         string $userID,
         array|UserUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = UserUpdateParams::parseRequest(
             $params,
@@ -113,6 +118,7 @@ final class UsersRawService implements UsersRawContract
      * Retrieves a list of users from an account
      *
      * @param array{after?: string, limit?: int}|UserListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<PublicUser>>
      *
@@ -120,7 +126,7 @@ final class UsersRawService implements UsersRawContract
      */
     public function list(
         array|UserListParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = UserListParams::parseRequest(
             $params,
@@ -145,8 +151,9 @@ final class UsersRawService implements UsersRawContract
      *
      * @param string $userID Identifier of user to delete
      * @param array{
-     *   idProperty?: 'EMAIL'|'USER_ID'|UserDeleteParams\IDProperty,
+     *   idProperty?: UserDeleteParams\IDProperty|value-of<UserDeleteParams\IDProperty>,
      * }|UserDeleteParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -155,7 +162,7 @@ final class UsersRawService implements UsersRawContract
     public function delete(
         string $userID,
         array|UserDeleteParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = UserDeleteParams::parseRequest(
             $params,
@@ -179,8 +186,9 @@ final class UsersRawService implements UsersRawContract
      *
      * @param string $userID Identifier of user to retrieve
      * @param array{
-     *   idProperty?: 'EMAIL'|'USER_ID'|UserGetParams\IDProperty,
+     *   idProperty?: UserGetParams\IDProperty|value-of<UserGetParams\IDProperty>,
      * }|UserGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicUser>
      *
@@ -189,7 +197,7 @@ final class UsersRawService implements UsersRawContract
     public function get(
         string $userID,
         array|UserGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = UserGetParams::parseRequest(
             $params,
@@ -211,12 +219,14 @@ final class UsersRawService implements UsersRawContract
      *
      * Retrieves the roles on an account
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @return BaseResponse<CollectionResponsePublicPermissionSetNoPaging>
      *
      * @throws APIException
      */
     public function listRoles(
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -232,12 +242,14 @@ final class UsersRawService implements UsersRawContract
      *
      * View teams for this account
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @return BaseResponse<CollectionResponsePublicTeamNoPaging>
      *
      * @throws APIException
      */
     public function listTeams(
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(

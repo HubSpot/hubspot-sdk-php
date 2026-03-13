@@ -11,12 +11,16 @@ use HubspotSDK\Crm\Objects\PartnerClients\Batch\BatchBatchGetParams;
 use HubspotSDK\Crm\Objects\PartnerClients\Batch\BatchBatchUpdateParams;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface BatchRawContract
 {
     /**
      * @api
      *
      * @param array<string,mixed>|BatchBatchGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BatchResponseSimplePublicObject>
      *
@@ -24,13 +28,14 @@ interface BatchRawContract
      */
     public function batchGet(
         array|BatchBatchGetParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|BatchBatchUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BatchResponseSimplePublicObject>
      *
@@ -38,6 +43,6 @@ interface BatchRawContract
      */
     public function batchUpdate(
         array|BatchBatchUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

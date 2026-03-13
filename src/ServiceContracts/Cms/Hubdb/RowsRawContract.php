@@ -19,6 +19,9 @@ use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface RowsRawContract
 {
     /**
@@ -26,6 +29,7 @@ interface RowsRawContract
      *
      * @param string $tableIDOrName the ID or name of the target table
      * @param array<string,mixed>|RowCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<HubDBTableRowV3>
      *
@@ -34,7 +38,7 @@ interface RowsRawContract
     public function create(
         string $tableIDOrName,
         array|RowCreateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -42,6 +46,7 @@ interface RowsRawContract
      *
      * @param string $tableIDOrName the ID or name of the table to query
      * @param array<string,mixed>|RowListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<mixed>>
      *
@@ -50,7 +55,7 @@ interface RowsRawContract
     public function list(
         string $tableIDOrName,
         array|RowListParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -58,6 +63,7 @@ interface RowsRawContract
      *
      * @param string $rowID Path param: The ID of the row
      * @param array<string,mixed>|RowCloneDraftParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<HubDBTableRowV3>
      *
@@ -66,7 +72,7 @@ interface RowsRawContract
     public function cloneDraft(
         string $rowID,
         array|RowCloneDraftParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -74,6 +80,7 @@ interface RowsRawContract
      *
      * @param string $rowID The ID of the row
      * @param array<string,mixed>|RowDeleteDraftParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -82,7 +89,7 @@ interface RowsRawContract
     public function deleteDraft(
         string $rowID,
         array|RowDeleteDraftParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -90,6 +97,7 @@ interface RowsRawContract
      *
      * @param string $rowID Path param: The ID of the row
      * @param array<string,mixed>|RowGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<HubDBTableRowV3>
      *
@@ -98,7 +106,7 @@ interface RowsRawContract
     public function get(
         string $rowID,
         array|RowGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -106,6 +114,7 @@ interface RowsRawContract
      *
      * @param string $rowID Path param: The ID of the row
      * @param array<string,mixed>|RowGetDraftParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<HubDBTableRowV3>
      *
@@ -114,7 +123,7 @@ interface RowsRawContract
     public function getDraft(
         string $rowID,
         array|RowGetDraftParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -122,6 +131,7 @@ interface RowsRawContract
      *
      * @param string $tableIDOrName the ID or name of the table to query
      * @param array<string,mixed>|RowListDraftParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<mixed>>
      *
@@ -130,7 +140,7 @@ interface RowsRawContract
     public function listDraft(
         string $tableIDOrName,
         array|RowListDraftParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -138,6 +148,7 @@ interface RowsRawContract
      *
      * @param string $rowID Path param: The ID of the row
      * @param array<string,mixed>|RowReplaceDraftParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<HubDBTableRowV3>
      *
@@ -146,7 +157,7 @@ interface RowsRawContract
     public function replaceDraft(
         string $rowID,
         array|RowReplaceDraftParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -154,6 +165,7 @@ interface RowsRawContract
      *
      * @param string $rowID Path param: The ID of the row
      * @param array<string,mixed>|RowUpdateDraftParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<HubDBTableRowV3>
      *
@@ -162,6 +174,6 @@ interface RowsRawContract
     public function updateDraft(
         string $rowID,
         array|RowUpdateDraftParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

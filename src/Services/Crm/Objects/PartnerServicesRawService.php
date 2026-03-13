@@ -8,6 +8,7 @@ use HubspotSDK\Client;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
+use HubspotSDK\Crm\FilterGroup;
 use HubspotSDK\Crm\Objects\PartnerServices\PartnerServiceGetParams;
 use HubspotSDK\Crm\Objects\PartnerServices\PartnerServiceListParams;
 use HubspotSDK\Crm\Objects\PartnerServices\PartnerServiceSearchParams;
@@ -18,6 +19,10 @@ use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Objects\PartnerServicesRawContract;
 
+/**
+ * @phpstan-import-type FilterGroupShape from \HubspotSDK\Crm\FilterGroup
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class PartnerServicesRawService implements PartnerServicesRawContract
 {
     // @phpstan-ignore-next-line
@@ -31,10 +36,11 @@ final class PartnerServicesRawService implements PartnerServicesRawContract
      *
      * Perform a partial update of an Object identified by `{partnerServiceId}`or optionally a unique property value as specified by the `idProperty` query param. `{partnerServiceId}` refers to the internal object ID by default, and the `idProperty` query param refers to a property whose values are unique for the object. Provided property values will be overwritten. Read-only and non-existent properties will result in an error. Properties values can be cleared by passing an empty string.
      *
-     * @param string $partnerServiceID Path param:
+     * @param string $partnerServiceID Path param
      * @param array{
      *   properties: array<string,string>, idProperty?: string
      * }|PartnerServiceUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SimplePublicObject>
      *
@@ -43,7 +49,7 @@ final class PartnerServicesRawService implements PartnerServicesRawContract
     public function update(
         string $partnerServiceID,
         array|PartnerServiceUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = PartnerServiceUpdateParams::parseRequest(
             $params,
@@ -75,6 +81,7 @@ final class PartnerServicesRawService implements PartnerServicesRawContract
      *   properties?: list<string>,
      *   propertiesWithHistory?: list<string>,
      * }|PartnerServiceListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<SimplePublicObjectWithAssociations>>
      *
@@ -82,7 +89,7 @@ final class PartnerServicesRawService implements PartnerServicesRawContract
      */
     public function list(
         array|PartnerServiceListParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = PartnerServiceListParams::parseRequest(
             $params,
@@ -112,6 +119,7 @@ final class PartnerServicesRawService implements PartnerServicesRawContract
      *   properties?: list<string>,
      *   propertiesWithHistory?: list<string>,
      * }|PartnerServiceGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SimplePublicObjectWithAssociations>
      *
@@ -120,7 +128,7 @@ final class PartnerServicesRawService implements PartnerServicesRawContract
     public function get(
         string $partnerServiceID,
         array|PartnerServiceGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = PartnerServiceGetParams::parseRequest(
             $params,
@@ -142,12 +150,13 @@ final class PartnerServicesRawService implements PartnerServicesRawContract
      *
      * @param array{
      *   after: string,
-     *   filterGroups: list<array{filters: list<array<string,mixed>>}>,
+     *   filterGroups: list<FilterGroup|FilterGroupShape>,
      *   limit: int,
      *   properties: list<string>,
      *   sorts: list<string>,
      *   query?: string,
      * }|PartnerServiceSearchParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CollectionResponseWithTotalSimplePublicObject>
      *
@@ -155,7 +164,7 @@ final class PartnerServicesRawService implements PartnerServicesRawContract
      */
     public function search(
         array|PartnerServiceSearchParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = PartnerServiceSearchParams::parseRequest(
             $params,

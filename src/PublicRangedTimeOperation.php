@@ -11,6 +11,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicRangedTimeOperation\Type;
 
 /**
+ * @phpstan-import-type LowerBoundTimePointVariants from \HubspotSDK\PublicRangedTimeOperation\LowerBoundTimePoint
+ * @phpstan-import-type UpperBoundTimePointVariants from \HubspotSDK\PublicRangedTimeOperation\UpperBoundTimePoint
  * @phpstan-import-type LowerBoundTimePointShape from \HubspotSDK\PublicRangedTimeOperation\LowerBoundTimePoint
  * @phpstan-import-type UpperBoundTimePointShape from \HubspotSDK\PublicRangedTimeOperation\UpperBoundTimePoint
  *
@@ -34,6 +36,7 @@ final class PublicRangedTimeOperation implements BaseModel
     #[Required]
     public bool $includeObjectsWithNoValueSet;
 
+    /** @var LowerBoundTimePointVariants $lowerBoundTimePoint */
     #[Required]
     public PublicDatePoint|PublicIndexedTimePoint|PublicPropertyReferencedTime $lowerBoundTimePoint;
 
@@ -47,6 +50,7 @@ final class PublicRangedTimeOperation implements BaseModel
     #[Required(enum: Type::class)]
     public string $type;
 
+    /** @var UpperBoundTimePointVariants $upperBoundTimePoint */
     #[Required]
     public PublicDatePoint|PublicIndexedTimePoint|PublicPropertyReferencedTime $upperBoundTimePoint;
 

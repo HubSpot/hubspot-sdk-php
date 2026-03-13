@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-import-type EmailStatisticIntervalShape from \HubspotSDK\Marketing\Emails\EmailStatisticInterval
  *
  * @phpstan-type CollectionResponseWithTotalEmailStatisticIntervalNoPagingShape = array{
- *   results: list<EmailStatisticIntervalShape>, total: int
+ *   results: list<EmailStatisticInterval|EmailStatisticIntervalShape>, total: int
  * }
  */
 final class CollectionResponseWithTotalEmailStatisticIntervalNoPaging implements BaseModel
@@ -64,7 +64,7 @@ final class CollectionResponseWithTotalEmailStatisticIntervalNoPaging implements
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<EmailStatisticIntervalShape> $results
+     * @param list<EmailStatisticInterval|EmailStatisticIntervalShape> $results
      */
     public static function with(array $results, int $total): self
     {
@@ -79,7 +79,7 @@ final class CollectionResponseWithTotalEmailStatisticIntervalNoPaging implements
     /**
      * Collection of objects.
      *
-     * @param list<EmailStatisticIntervalShape> $results
+     * @param list<EmailStatisticInterval|EmailStatisticIntervalShape> $results
      */
     public function withResults(array $results): self
     {

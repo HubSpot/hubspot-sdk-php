@@ -5,6 +5,7 @@ namespace Tests\Services\Cms;
 use HubspotSDK\ActionResponse;
 use HubspotSDK\Client;
 use HubspotSDK\Cms\SourceCode\AssetFileMetadata;
+use HubspotSDK\Core\Util;
 use HubspotSDK\TaskLocator;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
@@ -23,7 +24,7 @@ final class SourceCodeTest extends TestCase
     {
         parent::setUp();
 
-        $testUrl = getenv('TEST_API_BASE_URL') ?: 'http://127.0.0.1:4010';
+        $testUrl = Util::getenv('TEST_API_BASE_URL') ?: 'http://127.0.0.1:4010';
         $client = new Client(
             accessToken: 'pat-na1-xxxxxxxx-xxxx',
             baseUrl: $testUrl,

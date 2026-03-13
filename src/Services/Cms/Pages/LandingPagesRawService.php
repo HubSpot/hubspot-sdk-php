@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Cms\Pages;
 
 use HubspotSDK\Client;
-use HubspotSDK\Cms\LayoutSection;
 use HubspotSDK\Cms\Pages\BatchResponseContentFolder;
 use HubspotSDK\Cms\Pages\BatchResponsePage;
 use HubspotSDK\Cms\Pages\ContentFolder;
@@ -53,12 +52,16 @@ use HubspotSDK\Cms\Pages\Page;
 use HubspotSDK\Cms\Pages\PagesContentLanguageVariation;
 use HubspotSDK\Cms\Pages\VersionContentFolder;
 use HubspotSDK\Cms\Pages\VersionPage;
-use HubspotSDK\Cms\Styles;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Cms\Pages\LandingPagesRawContract;
 
+/**
+ * @phpstan-import-type ContentFolderShape from \HubspotSDK\Cms\Pages\ContentFolder
+ * @phpstan-import-type PagesContentLanguageVariationShape from \HubspotSDK\Cms\Pages\PagesContentLanguageVariation
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class LandingPagesRawService implements LandingPagesRawContract
 {
     // @phpstan-ignore-next-line
@@ -76,15 +79,15 @@ final class LandingPagesRawService implements LandingPagesRawContract
      *   id: string,
      *   abStatus: value-of<AbStatus>,
      *   abTestID: string,
-     *   archivedAt: string|\DateTimeInterface,
+     *   archivedAt: \DateTimeInterface,
      *   archivedInDashboard: bool,
      *   attachedStylesheets: list<array<string,mixed>>,
      *   authorName: string,
      *   campaign: string,
      *   categoryID: int,
      *   contentGroupID: string,
-     *   contentTypeCategory: '0'|'1'|'10'|'11'|'12'|'2'|'3'|'4'|'5'|'6'|'7'|'8'|'9'|ContentTypeCategory,
-     *   created: string|\DateTimeInterface,
+     *   contentTypeCategory: ContentTypeCategory|value-of<ContentTypeCategory>,
+     *   created: \DateTimeInterface,
      *   createdByID: string,
      *   currentlyPublished: bool,
      *   currentState: value-of<CurrentState>,
@@ -102,21 +105,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
      *   htmlTitle: string,
      *   includeDefaultCustomCss: bool,
      *   language: value-of<Language>,
-     *   layoutSections: array<string,array{
-     *     cells: list<LayoutSection>,
-     *     cssClass: string,
-     *     cssID: string,
-     *     cssStyle: string,
-     *     label: string,
-     *     name: string,
-     *     params: array<string,mixed>,
-     *     rowMetaData: list<mixed>,
-     *     rows: list<array<string,LayoutSection>>,
-     *     styles: array<string,mixed>|Styles,
-     *     type: string,
-     *     w: int,
-     *     x: int,
-     *   }|LayoutSection>,
+     *   layoutSections: array<string,mixed>,
      *   linkRelCanonicalURL: string,
      *   mabExperimentID: string,
      *   metaDescription: string,
@@ -129,7 +118,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
      *   password: string,
      *   publicAccessRules: list<mixed>,
      *   publicAccessRulesEnabled: bool,
-     *   publishDate: string|\DateTimeInterface,
+     *   publishDate: \DateTimeInterface,
      *   publishImmediately: bool,
      *   slug: string,
      *   state: string,
@@ -137,29 +126,15 @@ final class LandingPagesRawService implements LandingPagesRawContract
      *   templatePath: string,
      *   themeSettingsValues: array<string,mixed>,
      *   translatedFromID: string,
-     *   translations: array<string,array{
-     *     id: int,
-     *     archivedInDashboard: bool,
-     *     authorName: string,
-     *     campaign: string,
-     *     created: string|\DateTimeInterface,
-     *     name: string,
-     *     password: string,
-     *     publicAccessRules: list<mixed>,
-     *     publicAccessRulesEnabled: bool,
-     *     publishDate: string|\DateTimeInterface,
-     *     slug: string,
-     *     state: string,
-     *     updated: string|\DateTimeInterface,
-     *     tagIDs?: list<int>,
-     *   }|PagesContentLanguageVariation>,
-     *   updated: string|\DateTimeInterface,
+     *   translations: array<string,PagesContentLanguageVariation|PagesContentLanguageVariationShape>,
+     *   updated: \DateTimeInterface,
      *   updatedByID: string,
      *   url: string,
      *   useFeaturedImage: bool,
      *   widgetContainers: array<string,mixed>,
      *   widgets: array<string,mixed>,
      * }|LandingPageCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -167,7 +142,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
      */
     public function create(
         array|LandingPageCreateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = LandingPageCreateParams::parseRequest(
             $params,
@@ -195,15 +170,15 @@ final class LandingPagesRawService implements LandingPagesRawContract
      *   id: string,
      *   abStatus: value-of<LandingPageUpdateParams\AbStatus>,
      *   abTestID: string,
-     *   archivedAt: string|\DateTimeInterface,
+     *   archivedAt: \DateTimeInterface,
      *   archivedInDashboard: bool,
      *   attachedStylesheets: list<array<string,mixed>>,
      *   authorName: string,
      *   campaign: string,
      *   categoryID: int,
      *   contentGroupID: string,
-     *   contentTypeCategory: '0'|'1'|'10'|'11'|'12'|'2'|'3'|'4'|'5'|'6'|'7'|'8'|'9'|LandingPageUpdateParams\ContentTypeCategory,
-     *   created: string|\DateTimeInterface,
+     *   contentTypeCategory: LandingPageUpdateParams\ContentTypeCategory|value-of<LandingPageUpdateParams\ContentTypeCategory>,
+     *   created: \DateTimeInterface,
      *   createdByID: string,
      *   currentlyPublished: bool,
      *   currentState: value-of<LandingPageUpdateParams\CurrentState>,
@@ -221,21 +196,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
      *   htmlTitle: string,
      *   includeDefaultCustomCss: bool,
      *   language: value-of<LandingPageUpdateParams\Language>,
-     *   layoutSections: array<string,array{
-     *     cells: list<LayoutSection>,
-     *     cssClass: string,
-     *     cssID: string,
-     *     cssStyle: string,
-     *     label: string,
-     *     name: string,
-     *     params: array<string,mixed>,
-     *     rowMetaData: list<mixed>,
-     *     rows: list<array<string,LayoutSection>>,
-     *     styles: array<string,mixed>|Styles,
-     *     type: string,
-     *     w: int,
-     *     x: int,
-     *   }|LayoutSection>,
+     *   layoutSections: array<string,mixed>,
      *   linkRelCanonicalURL: string,
      *   mabExperimentID: string,
      *   metaDescription: string,
@@ -248,7 +209,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
      *   password: string,
      *   publicAccessRules: list<mixed>,
      *   publicAccessRulesEnabled: bool,
-     *   publishDate: string|\DateTimeInterface,
+     *   publishDate: \DateTimeInterface,
      *   publishImmediately: bool,
      *   slug: string,
      *   state: string,
@@ -256,23 +217,8 @@ final class LandingPagesRawService implements LandingPagesRawContract
      *   templatePath: string,
      *   themeSettingsValues: array<string,mixed>,
      *   translatedFromID: string,
-     *   translations: array<string,array{
-     *     id: int,
-     *     archivedInDashboard: bool,
-     *     authorName: string,
-     *     campaign: string,
-     *     created: string|\DateTimeInterface,
-     *     name: string,
-     *     password: string,
-     *     publicAccessRules: list<mixed>,
-     *     publicAccessRulesEnabled: bool,
-     *     publishDate: string|\DateTimeInterface,
-     *     slug: string,
-     *     state: string,
-     *     updated: string|\DateTimeInterface,
-     *     tagIDs?: list<int>,
-     *   }|PagesContentLanguageVariation>,
-     *   updated: string|\DateTimeInterface,
+     *   translations: array<string,PagesContentLanguageVariation|PagesContentLanguageVariationShape>,
+     *   updated: \DateTimeInterface,
      *   updatedByID: string,
      *   url: string,
      *   useFeaturedImage: bool,
@@ -280,6 +226,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
      *   widgets: array<string,mixed>,
      *   archived?: bool,
      * }|LandingPageUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page>
      *
@@ -288,7 +235,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
     public function update(
         string $objectID,
         array|LandingPageUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = LandingPageUpdateParams::parseRequest(
             $params,
@@ -315,16 +262,17 @@ final class LandingPagesRawService implements LandingPagesRawContract
      * @param array{
      *   after?: string,
      *   archived?: bool,
-     *   createdAfter?: string|\DateTimeInterface,
-     *   createdAt?: string|\DateTimeInterface,
-     *   createdBefore?: string|\DateTimeInterface,
+     *   createdAfter?: \DateTimeInterface,
+     *   createdAt?: \DateTimeInterface,
+     *   createdBefore?: \DateTimeInterface,
      *   limit?: int,
      *   property?: string,
      *   sort?: list<string>,
-     *   updatedAfter?: string|\DateTimeInterface,
-     *   updatedAt?: string|\DateTimeInterface,
-     *   updatedBefore?: string|\DateTimeInterface,
+     *   updatedAfter?: \DateTimeInterface,
+     *   updatedAt?: \DateTimeInterface,
+     *   updatedBefore?: \DateTimeInterface,
      * }|LandingPageListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<\HubspotSDK\Page<Page>>
      *
@@ -332,7 +280,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
      */
     public function list(
         array|LandingPageListParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = LandingPageListParams::parseRequest(
             $params,
@@ -357,6 +305,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
      *
      * @param string $objectID the Landing Page id
      * @param array{archived?: bool}|LandingPageDeleteParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -365,7 +314,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
     public function delete(
         string $objectID,
         array|LandingPageDeleteParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = LandingPageDeleteParams::parseRequest(
             $params,
@@ -390,6 +339,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
      * @param array{
      *   id: string, language: string, primaryID: string, primaryLanguage?: string
      * }|LandingPageAttachToLangGroupParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -397,7 +347,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
      */
     public function attachToLangGroup(
         array|LandingPageAttachToLangGroupParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = LandingPageAttachToLangGroupParams::parseRequest(
             $params,
@@ -420,6 +370,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
      * Clone a Landing Page
      *
      * @param array{id: string, cloneName?: string}|LandingPageCloneParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page>
      *
@@ -427,7 +378,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
      */
     public function clone(
         array|LandingPageCloneParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = LandingPageCloneParams::parseRequest(
             $params,
@@ -452,6 +403,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
      * @param array{
      *   contentID: string, variationName: string
      * }|LandingPageCreateAbTestVariationParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page>
      *
@@ -459,7 +411,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
      */
     public function createAbTestVariation(
         array|LandingPageCreateAbTestVariationParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = LandingPageCreateAbTestVariationParams::parseRequest(
             $params,
@@ -481,67 +433,8 @@ final class LandingPagesRawService implements LandingPagesRawContract
      *
      * Create the Landing Page objects detailed in the request body.
      *
-     * @param array{
-     *   inputs: list<array{
-     *     id: string,
-     *     abStatus: 'automated_loser_variant'|'automated_master'|'automated_variant'|'loser_variant'|'mab_master'|'mab_variant'|'master'|'variant'|Page\AbStatus,
-     *     abTestID: string,
-     *     archivedAt: string|\DateTimeInterface,
-     *     archivedInDashboard: bool,
-     *     attachedStylesheets: list<array<string,mixed>>,
-     *     authorName: string,
-     *     campaign: string,
-     *     categoryID: int,
-     *     contentGroupID: string,
-     *     contentTypeCategory: '0'|'1'|'10'|'11'|'12'|'2'|'3'|'4'|'5'|'6'|'7'|'8'|'9'|Page\ContentTypeCategory,
-     *     created: string|\DateTimeInterface,
-     *     createdByID: string,
-     *     currentlyPublished: bool,
-     *     currentState: 'AUTOMATED'|'AUTOMATED_AB'|'AUTOMATED_AB_VARIANT'|'AUTOMATED_DRAFT'|'AUTOMATED_DRAFT_AB'|'AUTOMATED_DRAFT_ABVARIANT'|'AUTOMATED_FOR_FORM'|'AUTOMATED_FOR_FORM_BUFFER'|'AUTOMATED_FOR_FORM_DRAFT'|'AUTOMATED_FOR_FORM_LEGACY'|'AUTOMATED_LOSER_ABVARIANT'|'AUTOMATED_SENDING'|'BLOG_EMAIL_DRAFT'|'BLOG_EMAIL_PUBLISHED'|'DRAFT'|'DRAFT_AB'|'DRAFT_AB_VARIANT'|'ERROR'|'LOSER_AB_VARIANT'|'PAGE_STUB'|'PRE_PROCESSING'|'PROCESSING'|'PUBLISHED'|'PUBLISHED_AB'|'PUBLISHED_AB_VARIANT'|'PUBLISHED_OR_SCHEDULED'|'RSS_TO_EMAIL_DRAFT'|'RSS_TO_EMAIL_PUBLISHED'|'SCHEDULED'|'SCHEDULED_AB'|'SCHEDULED_OR_PUBLISHED'|Page\CurrentState,
-     *     domain: string,
-     *     dynamicPageDataSourceID: string,
-     *     dynamicPageDataSourceType: int,
-     *     dynamicPageHubDBTableID: string,
-     *     enableDomainStylesheets: bool,
-     *     enableLayoutStylesheets: bool,
-     *     featuredImage: string,
-     *     featuredImageAltText: string,
-     *     folderID: string,
-     *     footerHTML: string,
-     *     headHTML: string,
-     *     htmlTitle: string,
-     *     includeDefaultCustomCss: bool,
-     *     language: 'af'|'af-na'|'af-za'|'agq'|'agq-cm'|'ak'|'ak-gh'|'am'|'am-et'|'ar'|'ar-001'|'ar-ae'|'ar-bh'|'ar-dj'|'ar-dz'|'ar-eg'|'ar-eh'|'ar-er'|'ar-il'|'ar-iq'|'ar-jo'|'ar-km'|'ar-kw'|'ar-lb'|'ar-ly'|'ar-ma'|'ar-mr'|'ar-om'|'ar-ps'|'ar-qa'|'ar-sa'|'ar-sd'|'ar-so'|'ar-ss'|'ar-sy'|'ar-td'|'ar-tn'|'ar-ye'|'as'|'as-in'|'asa'|'asa-tz'|'ast'|'ast-es'|'az'|'az-az'|'bas'|'bas-cm'|'be'|'be-by'|'bem'|'bem-zm'|'bez'|'bez-tz'|'bg'|'bg-bg'|'bm'|'bm-ml'|'bn'|'bn-bd'|'bn-in'|'bo'|'bo-cn'|'bo-in'|'br'|'br-fr'|'brx'|'brx-in'|'bs'|'bs-ba'|'ca'|'ca-ad'|'ca-es'|'ca-fr'|'ca-it'|'ccp'|'ccp-bd'|'ccp-in'|'ce'|'ce-ru'|'ceb'|'ceb-ph'|'cgg'|'cgg-ug'|'chr'|'chr-us'|'ckb'|'ckb-iq'|'ckb-ir'|'cs'|'cs-cz'|'cu'|'cu-ru'|'cy'|'cy-gb'|'da'|'da-dk'|'da-gl'|'dav'|'dav-ke'|'de'|'de-at'|'de-be'|'de-ch'|'de-de'|'de-gr'|'de-it'|'de-li'|'de-lu'|'dje'|'dje-ne'|'doi'|'doi-in'|'dsb'|'dsb-de'|'dua'|'dua-cm'|'dyo'|'dyo-sn'|'dz'|'dz-bt'|'ebu'|'ebu-ke'|'ee'|'ee-gh'|'ee-tg'|'el'|'el-cy'|'el-gr'|'en'|'en-001'|'en-150'|'en-ae'|'en-ag'|'en-ai'|'en-as'|'en-at'|'en-au'|'en-bb'|'en-be'|'en-bi'|'en-bm'|'en-bs'|'en-bw'|'en-bz'|'en-ca'|'en-cc'|'en-ch'|'en-ck'|'en-cm'|'en-cn'|'en-cx'|'en-cy'|'en-de'|'en-dg'|'en-dk'|'en-dm'|'en-er'|'en-fi'|'en-fj'|'en-fk'|'en-fm'|'en-gb'|'en-gd'|'en-gg'|'en-gh'|'en-gi'|'en-gm'|'en-gu'|'en-gy'|'en-hk'|'en-ie'|'en-il'|'en-im'|'en-in'|'en-io'|'en-je'|'en-jm'|'en-ke'|'en-ki'|'en-kn'|'en-ky'|'en-lc'|'en-lr'|'en-ls'|'en-lu'|'en-mg'|'en-mh'|'en-mo'|'en-mp'|'en-ms'|'en-mt'|'en-mu'|'en-mw'|'en-mx'|'en-my'|'en-na'|'en-nf'|'en-ng'|'en-nl'|'en-nr'|'en-nu'|'en-nz'|'en-pg'|'en-ph'|'en-pk'|'en-pn'|'en-pr'|'en-pw'|'en-rw'|'en-sb'|'en-sc'|'en-sd'|'en-se'|'en-sg'|'en-sh'|'en-si'|'en-sl'|'en-ss'|'en-sx'|'en-sz'|'en-tc'|'en-tk'|'en-to'|'en-tt'|'en-tv'|'en-tz'|'en-ug'|'en-um'|'en-us'|'en-vc'|'en-vg'|'en-vi'|'en-vu'|'en-ws'|'en-za'|'en-zm'|'en-zw'|'eo'|'eo-001'|'es'|'es-419'|'es-ar'|'es-bo'|'es-br'|'es-bz'|'es-cl'|'es-co'|'es-cr'|'es-cu'|'es-do'|'es-ea'|'es-ec'|'es-es'|'es-gq'|'es-gt'|'es-hn'|'es-ic'|'es-mx'|'es-ni'|'es-pa'|'es-pe'|'es-ph'|'es-pr'|'es-py'|'es-sv'|'es-us'|'es-uy'|'es-ve'|'et'|'et-ee'|'eu'|'eu-es'|'ewo'|'ewo-cm'|'fa'|'fa-af'|'fa-ir'|'ff'|'ff-bf'|'ff-cm'|'ff-gh'|'ff-gm'|'ff-gn'|'ff-gw'|'ff-lr'|'ff-mr'|'ff-ne'|'ff-ng'|'ff-sl'|'ff-sn'|'fi'|'fi-fi'|'fil'|'fil-ph'|'fo'|'fo-dk'|'fo-fo'|'fr'|'fr-be'|'fr-bf'|'fr-bi'|'fr-bj'|'fr-bl'|'fr-ca'|'fr-cd'|'fr-cf'|'fr-cg'|'fr-ch'|'fr-ci'|'fr-cm'|'fr-dj'|'fr-dz'|'fr-fr'|'fr-ga'|'fr-gf'|'fr-gn'|'fr-gp'|'fr-gq'|'fr-ht'|'fr-km'|'fr-lu'|'fr-ma'|'fr-mc'|'fr-mf'|'fr-mg'|'fr-ml'|'fr-mq'|'fr-mr'|'fr-mu'|'fr-nc'|'fr-ne'|'fr-pf'|'fr-pm'|'fr-re'|'fr-rw'|'fr-sc'|'fr-sn'|'fr-sy'|'fr-td'|'fr-tg'|'fr-tn'|'fr-vu'|'fr-wf'|'fr-yt'|'fur'|'fur-it'|'fy'|'fy-nl'|'ga'|'ga-gb'|'ga-ie'|'gd'|'gd-gb'|'gl'|'gl-es'|'gsw'|'gsw-ch'|'gsw-fr'|'gsw-li'|'gu'|'gu-in'|'guz'|'guz-ke'|'gv'|'gv-im'|'ha'|'ha-gh'|'ha-ne'|'ha-ng'|'haw'|'haw-us'|'he'|'he-il'|'hi'|'hi-in'|'hr'|'hr-ba'|'hr-hr'|'hsb'|'hsb-de'|'hu'|'hu-hu'|'hy'|'hy-am'|'ia'|'ia-001'|'id'|'id-id'|'ig'|'ig-ng'|'ii'|'ii-cn'|'is'|'is-is'|'it'|'it-ch'|'it-it'|'it-sm'|'it-va'|'ja'|'ja-jp'|'jgo'|'jgo-cm'|'jmc'|'jmc-tz'|'jv'|'jv-id'|'ka'|'ka-ge'|'kab'|'kab-dz'|'kam'|'kam-ke'|'kde'|'kde-tz'|'kea'|'kea-cv'|'khq'|'khq-ml'|'ki'|'ki-ke'|'kk'|'kk-kz'|'kkj'|'kkj-cm'|'kl'|'kl-gl'|'kln'|'kln-ke'|'km'|'km-kh'|'kn'|'kn-in'|'ko'|'ko-kp'|'ko-kr'|'kok'|'kok-in'|'ks'|'ks-in'|'ksb'|'ksb-tz'|'ksf'|'ksf-cm'|'ksh'|'ksh-de'|'ku'|'ku-tr'|'kw'|'kw-gb'|'ky'|'ky-kg'|'lag'|'lag-tz'|'lb'|'lb-lu'|'lg'|'lg-ug'|'lkt'|'lkt-us'|'ln'|'ln-ao'|'ln-cd'|'ln-cf'|'ln-cg'|'lo'|'lo-la'|'lrc'|'lrc-iq'|'lrc-ir'|'lt'|'lt-lt'|'lu'|'lu-cd'|'luo'|'luo-ke'|'luy'|'luy-ke'|'lv'|'lv-lv'|'mai'|'mai-in'|'mas'|'mas-ke'|'mas-tz'|'mer'|'mer-ke'|'mfe'|'mfe-mu'|'mg'|'mg-mg'|'mgh'|'mgh-mz'|'mgo'|'mgo-cm'|'mi'|'mi-nz'|'mk'|'mk-mk'|'ml'|'ml-in'|'mn'|'mn-mn'|'mni'|'mni-in'|'mr'|'mr-in'|'ms'|'ms-bn'|'ms-id'|'ms-my'|'ms-sg'|'mt'|'mt-mt'|'mua'|'mua-cm'|'my'|'my-mm'|'mzn'|'mzn-ir'|'naq'|'naq-na'|'nb'|'nb-no'|'nb-sj'|'nd'|'nd-zw'|'nds'|'nds-de'|'nds-nl'|'ne'|'ne-in'|'ne-np'|'nl'|'nl-aw'|'nl-be'|'nl-bq'|'nl-ch'|'nl-cw'|'nl-lu'|'nl-nl'|'nl-sr'|'nl-sx'|'nmg'|'nmg-cm'|'nn'|'nn-no'|'nnh'|'nnh-cm'|'no'|'no-no'|'nus'|'nus-ss'|'nyn'|'nyn-ug'|'om'|'om-et'|'om-ke'|'or'|'or-in'|'os'|'os-ge'|'os-ru'|'pa'|'pa-in'|'pa-pk'|'pcm'|'pcm-ng'|'pl'|'pl-pl'|'prg'|'prg-001'|'ps'|'ps-af'|'ps-pk'|'pt'|'pt-ao'|'pt-br'|'pt-ch'|'pt-cv'|'pt-gq'|'pt-gw'|'pt-lu'|'pt-mo'|'pt-mz'|'pt-pt'|'pt-st'|'pt-tl'|'qu'|'qu-bo'|'qu-ec'|'qu-pe'|'rm'|'rm-ch'|'rn'|'rn-bi'|'ro'|'ro-md'|'ro-ro'|'rof'|'rof-tz'|'ru'|'ru-by'|'ru-kg'|'ru-kz'|'ru-md'|'ru-ru'|'ru-ua'|'rw'|'rw-rw'|'rwk'|'rwk-tz'|'sa'|'sa-in'|'sah'|'sah-ru'|'saq'|'saq-ke'|'sat'|'sat-in'|'sbp'|'sbp-tz'|'sd'|'sd-in'|'sd-pk'|'se'|'se-fi'|'se-no'|'se-se'|'seh'|'seh-mz'|'ses'|'ses-ml'|'sg'|'sg-cf'|'shi'|'shi-ma'|'si'|'si-lk'|'sk'|'sk-sk'|'sl'|'sl-si'|'smn'|'smn-fi'|'sn'|'sn-zw'|'so'|'so-dj'|'so-et'|'so-ke'|'so-so'|'sq'|'sq-al'|'sq-mk'|'sq-xk'|'sr'|'sr-ba'|'sr-cs'|'sr-me'|'sr-rs'|'sr-xk'|'su'|'su-id'|'sv'|'sv-ax'|'sv-fi'|'sv-se'|'sw'|'sw-cd'|'sw-ke'|'sw-tz'|'sw-ug'|'sy'|'ta'|'ta-in'|'ta-lk'|'ta-my'|'ta-sg'|'te'|'te-in'|'teo'|'teo-ke'|'teo-ug'|'tg'|'tg-tj'|'th'|'th-th'|'ti'|'ti-er'|'ti-et'|'tk'|'tk-tm'|'tl'|'to'|'to-to'|'tr'|'tr-cy'|'tr-tr'|'tt'|'tt-ru'|'twq'|'twq-ne'|'tzm'|'tzm-ma'|'ug'|'ug-cn'|'uk'|'uk-ua'|'ur'|'ur-in'|'ur-pk'|'uz'|'uz-af'|'uz-uz'|'vai'|'vai-lr'|'vi'|'vi-vn'|'vo'|'vo-001'|'vun'|'vun-tz'|'wae'|'wae-ch'|'wo'|'wo-sn'|'xh'|'xh-za'|'xog'|'xog-ug'|'yav'|'yav-cm'|'yi'|'yi-001'|'yo'|'yo-bj'|'yo-ng'|'yue'|'yue-cn'|'yue-hk'|'zgh'|'zgh-ma'|'zh'|'zh-cn'|'zh-hans'|'zh-hant'|'zh-hk'|'zh-mo'|'zh-sg'|'zh-tw'|'zu'|'zu-za'|Page\Language,
-     *     layoutSections: array<string,mixed>,
-     *     linkRelCanonicalURL: string,
-     *     mabExperimentID: string,
-     *     metaDescription: string,
-     *     name: string,
-     *     pageExpiryDate: int,
-     *     pageExpiryEnabled: bool,
-     *     pageExpiryRedirectID: int,
-     *     pageExpiryRedirectURL: string,
-     *     pageRedirected: bool,
-     *     password: string,
-     *     publicAccessRules: list<mixed>,
-     *     publicAccessRulesEnabled: bool,
-     *     publishDate: string|\DateTimeInterface,
-     *     publishImmediately: bool,
-     *     slug: string,
-     *     state: string,
-     *     subcategory: string,
-     *     templatePath: string,
-     *     themeSettingsValues: array<string,mixed>,
-     *     translatedFromID: string,
-     *     translations: array<string,mixed>,
-     *     updated: string|\DateTimeInterface,
-     *     updatedByID: string,
-     *     url: string,
-     *     useFeaturedImage: bool,
-     *     widgetContainers: array<string,mixed>,
-     *     widgets: array<string,mixed>,
-     *   }|Page>,
-     * }|LandingPageCreateBatchParams $params
+     * @param array{inputs: list<mixed>}|LandingPageCreateBatchParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BatchResponsePage>
      *
@@ -549,7 +442,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
      */
     public function createBatch(
         array|LandingPageCreateBatchParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = LandingPageCreateBatchParams::parseRequest(
             $params,
@@ -574,12 +467,13 @@ final class LandingPagesRawService implements LandingPagesRawContract
      * @param array{
      *   id: string,
      *   category: int,
-     *   created: string|\DateTimeInterface,
-     *   deletedAt: string|\DateTimeInterface,
+     *   created: \DateTimeInterface,
+     *   deletedAt: \DateTimeInterface,
      *   name: string,
      *   parentFolderID: int,
-     *   updated: string|\DateTimeInterface,
+     *   updated: \DateTimeInterface,
      * }|LandingPageCreateFolderParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ContentFolder>
      *
@@ -587,7 +481,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
      */
     public function createFolder(
         array|LandingPageCreateFolderParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = LandingPageCreateFolderParams::parseRequest(
             $params,
@@ -610,16 +504,9 @@ final class LandingPagesRawService implements LandingPagesRawContract
      * Create the Folder objects detailed in the request body.
      *
      * @param array{
-     *   inputs: list<array{
-     *     id: string,
-     *     category: int,
-     *     created: string|\DateTimeInterface,
-     *     deletedAt: string|\DateTimeInterface,
-     *     name: string,
-     *     parentFolderID: int,
-     *     updated: string|\DateTimeInterface,
-     *   }|ContentFolder>,
+     *   inputs: list<ContentFolder|ContentFolderShape>
      * }|LandingPageCreateFoldersBatchParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BatchResponseContentFolder>
      *
@@ -627,7 +514,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
      */
     public function createFoldersBatch(
         array|LandingPageCreateFoldersBatchParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = LandingPageCreateFoldersBatchParams::parseRequest(
             $params,
@@ -652,6 +539,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
      * @param array{
      *   id: string, language?: string, primaryLanguage?: string
      * }|LandingPageCreateLanguageVariationParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page>
      *
@@ -659,7 +547,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
      */
     public function createLanguageVariation(
         array|LandingPageCreateLanguageVariationParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = LandingPageCreateLanguageVariationParams::parseRequest(
             $params,
@@ -683,6 +571,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
      * Note: This is not the same as the dashboard `archive` function. To perform a dashboard `archive` send an normal update with the `archivedInDashboard` field set to true.
      *
      * @param array{inputs: list<string>}|LandingPageDeleteBatchParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -690,7 +579,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
      */
     public function deleteBatch(
         array|LandingPageDeleteBatchParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = LandingPageDeleteBatchParams::parseRequest(
             $params,
@@ -714,6 +603,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
      *
      * @param string $objectID the Folder id
      * @param array{archived?: bool}|LandingPageDeleteFolderParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -722,7 +612,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
     public function deleteFolder(
         string $objectID,
         array|LandingPageDeleteFolderParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = LandingPageDeleteFolderParams::parseRequest(
             $params,
@@ -745,6 +635,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
      * Delete the Folder objects identified in the request body.
      *
      * @param array{inputs: list<string>}|LandingPageDeleteFoldersBatchParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -752,7 +643,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
      */
     public function deleteFoldersBatch(
         array|LandingPageDeleteFoldersBatchParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = LandingPageDeleteFoldersBatchParams::parseRequest(
             $params,
@@ -775,6 +666,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
      * Detach a landing page from a multi-language group.
      *
      * @param array{id: string}|LandingPageDetachFromLangGroupParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -782,7 +674,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
      */
     public function detachFromLangGroup(
         array|LandingPageDetachFromLangGroupParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = LandingPageDetachFromLangGroupParams::parseRequest(
             $params,
@@ -807,6 +699,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
      * @param array{
      *   abTestID: string, winnerID: string
      * }|LandingPageEndAbTestParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -814,7 +707,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
      */
     public function endAbTest(
         array|LandingPageEndAbTestParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = LandingPageEndAbTestParams::parseRequest(
             $params,
@@ -838,6 +731,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
      *
      * @param string $objectID the Landing Page id
      * @param array{archived?: bool, property?: string}|LandingPageGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page>
      *
@@ -846,7 +740,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
     public function get(
         string $objectID,
         array|LandingPageGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = LandingPageGetParams::parseRequest(
             $params,
@@ -871,6 +765,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
      * @param array{
      *   inputs: list<string>, archived?: bool
      * }|LandingPageGetBatchParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BatchResponsePage>
      *
@@ -878,7 +773,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
      */
     public function getBatch(
         array|LandingPageGetBatchParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = LandingPageGetBatchParams::parseRequest(
             $params,
@@ -903,6 +798,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
      * Retrieve the full draft version of the Landing Page.
      *
      * @param string $objectID the Landing Page id
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page>
      *
@@ -910,7 +806,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
      */
     public function getDraft(
         string $objectID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -930,6 +826,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
      * @param array{
      *   archived?: bool, property?: string
      * }|LandingPageGetFolderParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ContentFolder>
      *
@@ -938,7 +835,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
     public function getFolder(
         string $objectID,
         array|LandingPageGetFolderParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = LandingPageGetFolderParams::parseRequest(
             $params,
@@ -962,6 +859,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
      *
      * @param string $revisionID the Folder version id
      * @param array{objectID: string}|LandingPageGetFolderRevisionParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<VersionContentFolder>
      *
@@ -970,7 +868,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
     public function getFolderRevision(
         string $revisionID,
         array|LandingPageGetFolderRevisionParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = LandingPageGetFolderRevisionParams::parseRequest(
             $params,
@@ -1000,6 +898,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
      * @param array{
      *   inputs: list<string>, archived?: bool
      * }|LandingPageGetFoldersBatchParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BatchResponseContentFolder>
      *
@@ -1007,7 +906,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
      */
     public function getFoldersBatch(
         array|LandingPageGetFoldersBatchParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = LandingPageGetFoldersBatchParams::parseRequest(
             $params,
@@ -1033,6 +932,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
      *
      * @param string $revisionID the Landing Page version id
      * @param array{objectID: string}|LandingPageGetRevisionParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<VersionPage>
      *
@@ -1041,7 +941,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
     public function getRevision(
         string $revisionID,
         array|LandingPageGetRevisionParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = LandingPageGetRevisionParams::parseRequest(
             $params,
@@ -1070,6 +970,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
      * @param array{
      *   after?: string, before?: string, limit?: int
      * }|LandingPageListFolderRevisionsParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<\HubspotSDK\Page<VersionContentFolder>>
      *
@@ -1078,7 +979,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
     public function listFolderRevisions(
         string $objectID,
         array|LandingPageListFolderRevisionsParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = LandingPageListFolderRevisionsParams::parseRequest(
             $params,
@@ -1104,16 +1005,17 @@ final class LandingPagesRawService implements LandingPagesRawContract
      * @param array{
      *   after?: string,
      *   archived?: bool,
-     *   createdAfter?: string|\DateTimeInterface,
-     *   createdAt?: string|\DateTimeInterface,
-     *   createdBefore?: string|\DateTimeInterface,
+     *   createdAfter?: \DateTimeInterface,
+     *   createdAt?: \DateTimeInterface,
+     *   createdBefore?: \DateTimeInterface,
      *   limit?: int,
      *   property?: string,
      *   sort?: list<string>,
-     *   updatedAfter?: string|\DateTimeInterface,
-     *   updatedAt?: string|\DateTimeInterface,
-     *   updatedBefore?: string|\DateTimeInterface,
+     *   updatedAfter?: \DateTimeInterface,
+     *   updatedAt?: \DateTimeInterface,
+     *   updatedBefore?: \DateTimeInterface,
      * }|LandingPageListFoldersParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<\HubspotSDK\Page<ContentFolder>>
      *
@@ -1121,7 +1023,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
      */
     public function listFolders(
         array|LandingPageListFoldersParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = LandingPageListFoldersParams::parseRequest(
             $params,
@@ -1148,6 +1050,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
      * @param array{
      *   after?: string, before?: string, limit?: int
      * }|LandingPageListRevisionsParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<\HubspotSDK\Page<VersionPage>>
      *
@@ -1156,7 +1059,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
     public function listRevisions(
         string $objectID,
         array|LandingPageListRevisionsParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = LandingPageListRevisionsParams::parseRequest(
             $params,
@@ -1180,6 +1083,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
      * Take any changes from the draft version of the Landing Page and apply them to the live version.
      *
      * @param string $objectID the id of the Landing Page for which it's draft will be pushed live
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -1187,7 +1091,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
      */
     public function publishDraft(
         string $objectID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -1206,6 +1110,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
      * @param array{
      *   abTestID: string, variationID: string
      * }|LandingPageRerunAbTestParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -1213,7 +1118,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
      */
     public function rerunAbTest(
         array|LandingPageRerunAbTestParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = LandingPageRerunAbTestParams::parseRequest(
             $params,
@@ -1236,6 +1141,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
      * Discards any edits and resets the draft to the live version.
      *
      * @param string $objectID the id of the Landing Page for which it's draft will be reset
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -1243,7 +1149,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
      */
     public function resetDraft(
         string $objectID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -1261,6 +1167,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
      *
      * @param string $revisionID the Folder version id to restore
      * @param array{objectID: string}|LandingPageRestoreFolderRevisionParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ContentFolder>
      *
@@ -1269,7 +1176,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
     public function restoreFolderRevision(
         string $revisionID,
         array|LandingPageRestoreFolderRevisionParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = LandingPageRestoreFolderRevisionParams::parseRequest(
             $params,
@@ -1298,6 +1205,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
      *
      * @param string $revisionID the Landing Page version id to restore
      * @param array{objectID: string}|LandingPageRestoreRevisionParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page>
      *
@@ -1306,7 +1214,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
     public function restoreRevision(
         string $revisionID,
         array|LandingPageRestoreRevisionParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = LandingPageRestoreRevisionParams::parseRequest(
             $params,
@@ -1335,6 +1243,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
      *
      * @param int $revisionID the Landing Page version id to restore
      * @param array{objectID: string}|LandingPageRestoreRevisionToDraftParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page>
      *
@@ -1343,7 +1252,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
     public function restoreRevisionToDraft(
         int $revisionID,
         array|LandingPageRestoreRevisionToDraftParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = LandingPageRestoreRevisionToDraftParams::parseRequest(
             $params,
@@ -1371,8 +1280,9 @@ final class LandingPagesRawService implements LandingPagesRawContract
      * Schedule a Landing Page to be Published
      *
      * @param array{
-     *   id: string, publishDate: string|\DateTimeInterface
+     *   id: string, publishDate: \DateTimeInterface
      * }|LandingPageScheduleParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -1380,7 +1290,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
      */
     public function schedule(
         array|LandingPageScheduleParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = LandingPageScheduleParams::parseRequest(
             $params,
@@ -1403,6 +1313,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
      * Set a landing page as the primary language of a multi-language group.
      *
      * @param array{id: string}|LandingPageSetNewLangPrimaryParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -1410,7 +1321,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
      */
     public function setNewLangPrimary(
         array|LandingPageSetNewLangPrimaryParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = LandingPageSetNewLangPrimaryParams::parseRequest(
             $params,
@@ -1435,6 +1346,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
      * @param array{
      *   inputs: list<mixed>, archived?: bool
      * }|LandingPageUpdateBatchParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BatchResponsePage>
      *
@@ -1442,7 +1354,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
      */
     public function updateBatch(
         array|LandingPageUpdateBatchParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = LandingPageUpdateBatchParams::parseRequest(
             $params,
@@ -1472,15 +1384,15 @@ final class LandingPagesRawService implements LandingPagesRawContract
      *   id: string,
      *   abStatus: value-of<LandingPageUpdateDraftParams\AbStatus>,
      *   abTestID: string,
-     *   archivedAt: string|\DateTimeInterface,
+     *   archivedAt: \DateTimeInterface,
      *   archivedInDashboard: bool,
      *   attachedStylesheets: list<array<string,mixed>>,
      *   authorName: string,
      *   campaign: string,
      *   categoryID: int,
      *   contentGroupID: string,
-     *   contentTypeCategory: '0'|'1'|'10'|'11'|'12'|'2'|'3'|'4'|'5'|'6'|'7'|'8'|'9'|LandingPageUpdateDraftParams\ContentTypeCategory,
-     *   created: string|\DateTimeInterface,
+     *   contentTypeCategory: LandingPageUpdateDraftParams\ContentTypeCategory|value-of<LandingPageUpdateDraftParams\ContentTypeCategory>,
+     *   created: \DateTimeInterface,
      *   createdByID: string,
      *   currentlyPublished: bool,
      *   currentState: value-of<LandingPageUpdateDraftParams\CurrentState>,
@@ -1498,21 +1410,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
      *   htmlTitle: string,
      *   includeDefaultCustomCss: bool,
      *   language: value-of<LandingPageUpdateDraftParams\Language>,
-     *   layoutSections: array<string,array{
-     *     cells: list<LayoutSection>,
-     *     cssClass: string,
-     *     cssID: string,
-     *     cssStyle: string,
-     *     label: string,
-     *     name: string,
-     *     params: array<string,mixed>,
-     *     rowMetaData: list<mixed>,
-     *     rows: list<array<string,LayoutSection>>,
-     *     styles: array<string,mixed>|Styles,
-     *     type: string,
-     *     w: int,
-     *     x: int,
-     *   }|LayoutSection>,
+     *   layoutSections: array<string,mixed>,
      *   linkRelCanonicalURL: string,
      *   mabExperimentID: string,
      *   metaDescription: string,
@@ -1525,7 +1423,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
      *   password: string,
      *   publicAccessRules: list<mixed>,
      *   publicAccessRulesEnabled: bool,
-     *   publishDate: string|\DateTimeInterface,
+     *   publishDate: \DateTimeInterface,
      *   publishImmediately: bool,
      *   slug: string,
      *   state: string,
@@ -1533,29 +1431,15 @@ final class LandingPagesRawService implements LandingPagesRawContract
      *   templatePath: string,
      *   themeSettingsValues: array<string,mixed>,
      *   translatedFromID: string,
-     *   translations: array<string,array{
-     *     id: int,
-     *     archivedInDashboard: bool,
-     *     authorName: string,
-     *     campaign: string,
-     *     created: string|\DateTimeInterface,
-     *     name: string,
-     *     password: string,
-     *     publicAccessRules: list<mixed>,
-     *     publicAccessRulesEnabled: bool,
-     *     publishDate: string|\DateTimeInterface,
-     *     slug: string,
-     *     state: string,
-     *     updated: string|\DateTimeInterface,
-     *     tagIDs?: list<int>,
-     *   }|PagesContentLanguageVariation>,
-     *   updated: string|\DateTimeInterface,
+     *   translations: array<string,PagesContentLanguageVariation|PagesContentLanguageVariationShape>,
+     *   updated: \DateTimeInterface,
      *   updatedByID: string,
      *   url: string,
      *   useFeaturedImage: bool,
      *   widgetContainers: array<string,mixed>,
      *   widgets: array<string,mixed>,
      * }|LandingPageUpdateDraftParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page>
      *
@@ -1564,7 +1448,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
     public function updateDraft(
         string $objectID,
         array|LandingPageUpdateDraftParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = LandingPageUpdateDraftParams::parseRequest(
             $params,
@@ -1591,13 +1475,14 @@ final class LandingPagesRawService implements LandingPagesRawContract
      * @param array{
      *   id: string,
      *   category: int,
-     *   created: string|\DateTimeInterface,
-     *   deletedAt: string|\DateTimeInterface,
+     *   created: \DateTimeInterface,
+     *   deletedAt: \DateTimeInterface,
      *   name: string,
      *   parentFolderID: int,
-     *   updated: string|\DateTimeInterface,
+     *   updated: \DateTimeInterface,
      *   archived?: bool,
      * }|LandingPageUpdateFolderParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ContentFolder>
      *
@@ -1606,7 +1491,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
     public function updateFolder(
         string $objectID,
         array|LandingPageUpdateFolderParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = LandingPageUpdateFolderParams::parseRequest(
             $params,
@@ -1633,6 +1518,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
      * @param array{
      *   inputs: list<mixed>, archived?: bool
      * }|LandingPageUpdateFoldersBatchParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BatchResponseContentFolder>
      *
@@ -1640,7 +1526,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
      */
     public function updateFoldersBatch(
         array|LandingPageUpdateFoldersBatchParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = LandingPageUpdateFoldersBatchParams::parseRequest(
             $params,
@@ -1667,6 +1553,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
      * @param array{
      *   languages: array<string,string>, primaryID: string
      * }|LandingPageUpdateLanguagesParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -1674,7 +1561,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
      */
     public function updateLanguages(
         array|LandingPageUpdateLanguagesParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = LandingPageUpdateLanguagesParams::parseRequest(
             $params,

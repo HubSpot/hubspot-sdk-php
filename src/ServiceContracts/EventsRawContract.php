@@ -12,12 +12,16 @@ use HubspotSDK\Events\VisibleExternalEventTypeNames;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface EventsRawContract
 {
     /**
      * @api
      *
      * @param array<string,mixed>|EventListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<ExternalUnifiedEvent>>
      *
@@ -25,17 +29,19 @@ interface EventsRawContract
      */
     public function list(
         array|EventListParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
+     *
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<VisibleExternalEventTypeNames>
      *
      * @throws APIException
      */
     public function listEventTypes(
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 }

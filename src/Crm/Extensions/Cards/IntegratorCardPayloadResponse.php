@@ -21,7 +21,7 @@ use HubspotSDK\Crm\Extensions\Cards\IntegratorCardPayloadResponse\ResponseVersio
  *   allItemsLinkURL?: string|null,
  *   cardLabel?: string|null,
  *   responseVersion?: null|ResponseVersion|value-of<ResponseVersion>,
- *   sections?: list<IntegratorObjectResultShape>|null,
+ *   sections?: list<IntegratorObjectResult|IntegratorObjectResultShape>|null,
  *   topLevelActions?: null|TopLevelActions|TopLevelActionsShape,
  * }
  */
@@ -88,7 +88,7 @@ final class IntegratorCardPayloadResponse implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param ResponseVersion|value-of<ResponseVersion>|null $responseVersion
-     * @param list<IntegratorObjectResultShape>|null $sections
+     * @param list<IntegratorObjectResult|IntegratorObjectResultShape>|null $sections
      * @param TopLevelActions|TopLevelActionsShape|null $topLevelActions
      */
     public static function with(
@@ -160,7 +160,7 @@ final class IntegratorCardPayloadResponse implements BaseModel
     /**
      * A list of up to five valid card sub categories.
      *
-     * @param list<IntegratorObjectResultShape> $sections
+     * @param list<IntegratorObjectResult|IntegratorObjectResultShape> $sections
      */
     public function withSections(array $sections): self
     {

@@ -15,6 +15,8 @@ use HubspotSDK\Events\EventDefinitions\RangedTimeOperation\PropertyType;
 use HubspotSDK\Events\EventDefinitions\RangedTimeOperation\UpperBoundEndpointBehavior;
 
 /**
+ * @phpstan-import-type LowerBoundTimePointVariants from \HubspotSDK\Events\EventDefinitions\RangedTimeOperation\LowerBoundTimePoint
+ * @phpstan-import-type UpperBoundTimePointVariants from \HubspotSDK\Events\EventDefinitions\RangedTimeOperation\UpperBoundTimePoint
  * @phpstan-import-type LowerBoundTimePointShape from \HubspotSDK\Events\EventDefinitions\RangedTimeOperation\LowerBoundTimePoint
  * @phpstan-import-type UpperBoundTimePointShape from \HubspotSDK\Events\EventDefinitions\RangedTimeOperation\UpperBoundTimePoint
  *
@@ -45,6 +47,7 @@ final class RangedTimeOperation implements BaseModel
     #[Required(enum: LowerBoundEndpointBehavior::class)]
     public string $lowerBoundEndpointBehavior;
 
+    /** @var LowerBoundTimePointVariants $lowerBoundTimePoint */
     #[Required]
     public DatePoint|IndexedTimePoint|PropertyReferencedTime $lowerBoundTimePoint;
 
@@ -73,6 +76,7 @@ final class RangedTimeOperation implements BaseModel
     #[Required(enum: UpperBoundEndpointBehavior::class)]
     public string $upperBoundEndpointBehavior;
 
+    /** @var UpperBoundTimePointVariants $upperBoundTimePoint */
     #[Required]
     public DatePoint|IndexedTimePoint|PropertyReferencedTime $upperBoundTimePoint;
 

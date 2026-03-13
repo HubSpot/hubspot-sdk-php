@@ -6,17 +6,24 @@ namespace HubspotSDK\Services\Conversations\CustomChannels;
 
 use HubspotSDK\Client;
 use HubspotSDK\Conversations\ConversationsPublicConversationsMessage;
+use HubspotSDK\Conversations\CustomChannels\ChannelIntegrationParticipant;
 use HubspotSDK\Conversations\CustomChannels\Messages\MessageCreateParams;
 use HubspotSDK\Conversations\CustomChannels\Messages\MessageCreateParams\MessageDirection;
 use HubspotSDK\Conversations\CustomChannels\Messages\MessageGetParams;
 use HubspotSDK\Conversations\CustomChannels\Messages\MessageUpdateParams;
 use HubspotSDK\Conversations\CustomChannels\Messages\MessageUpdateParams\StatusType;
-use HubspotSDK\Conversations\PublicDeliveryIdentifier;
+use HubspotSDK\Conversations\CustomChannels\PreResolvedContacts;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Conversations\CustomChannels\MessagesRawContract;
 
+/**
+ * @phpstan-import-type AttachmentShape from \HubspotSDK\Conversations\CustomChannels\Messages\MessageCreateParams\Attachment
+ * @phpstan-import-type PreResolvedContactsShape from \HubspotSDK\Conversations\CustomChannels\PreResolvedContacts
+ * @phpstan-import-type ChannelIntegrationParticipantShape from \HubspotSDK\Conversations\CustomChannels\ChannelIntegrationParticipant
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class MessagesRawService implements MessagesRawContract
 {
     // @phpstan-ignore-next-line
@@ -32,29 +39,20 @@ final class MessagesRawService implements MessagesRawContract
      *
      * @param int $channelID The channel the message will be sent over
      * @param array{
-     *   attachments: list<array<string,mixed>>,
+     *   attachments: list<AttachmentShape>,
      *   channelAccountID: string,
-     *   messageDirection: 'INCOMING'|'OUTGOING'|MessageDirection,
-     *   recipients: list<array{
-     *     deliveryIdentifier: array<string,mixed>|PublicDeliveryIdentifier,
-     *     name?: string,
-     *   }>,
-     *   senders: list<array{
-     *     deliveryIdentifier: array<string,mixed>|PublicDeliveryIdentifier,
-     *     name?: string,
-     *   }>,
+     *   messageDirection: MessageDirection|value-of<MessageDirection>,
+     *   recipients: list<ChannelIntegrationParticipant|ChannelIntegrationParticipantShape>,
+     *   senders: list<ChannelIntegrationParticipant|ChannelIntegrationParticipantShape>,
      *   text: string,
-     *   timestamp: string|\DateTimeInterface,
+     *   timestamp: \DateTimeInterface,
      *   inReplyToID?: string,
      *   integrationIdempotencyID?: string,
      *   integrationThreadID?: string,
-     *   preResolvedContacts?: array{
-     *     contacts: list<array{
-     *       contactPropertiesLeadingToMatch: list<string>, contactVid: int
-     *     }>,
-     *   },
+     *   preResolvedContacts?: PreResolvedContacts|PreResolvedContactsShape,
      *   richText?: string,
      * }|MessageCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ConversationsPublicConversationsMessage>
      *
@@ -63,7 +61,7 @@ final class MessagesRawService implements MessagesRawContract
     public function create(
         int $channelID,
         array|MessageCreateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = MessageCreateParams::parseRequest(
             $params,
@@ -88,9 +86,10 @@ final class MessagesRawService implements MessagesRawContract
      * @param string $messageID Path param: The id of the message
      * @param array{
      *   channelID: int,
-     *   statusType: 'FAILED'|'READ'|'SENT'|StatusType,
+     *   statusType: StatusType|value-of<StatusType>,
      *   errorMessage?: string,
      * }|MessageUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ConversationsPublicConversationsMessage>
      *
@@ -99,7 +98,7 @@ final class MessagesRawService implements MessagesRawContract
     public function update(
         string $messageID,
         array|MessageUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = MessageUpdateParams::parseRequest(
             $params,
@@ -129,6 +128,7 @@ final class MessagesRawService implements MessagesRawContract
      *
      * @param string $messageID The id of the message
      * @param array{channelID: int}|MessageGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ConversationsPublicConversationsMessage>
      *
@@ -137,7 +137,7 @@ final class MessagesRawService implements MessagesRawContract
     public function get(
         string $messageID,
         array|MessageGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = MessageGetParams::parseRequest(
             $params,

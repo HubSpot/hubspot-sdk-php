@@ -22,26 +22,10 @@ use HubspotSDK\Services\SchedulerService;
 use HubspotSDK\Services\SettingsService;
 use HubspotSDK\Services\WebhooksService;
 
-function validateSingleAuth(?string $accessToken, ?string $developerAPIKey): void
-{
-    $provided = [];
-    if (null !== $accessToken && '' !== $accessToken) {
-        $provided[] = 'accessToken';
-    }
-    if (null !== $developerAPIKey && '' !== $developerAPIKey) {
-        $provided[] = 'developerAPIKey';
-    }
-
-    if (count($provided) > 1) {
-        throw new \InvalidArgumentException(
-            sprintf(
-                'You provided multiple authentication methods (%s), but only one can be used at a time. Please use only one of: accessToken or developerAPIKey.',
-                implode(', ', $provided)
-            )
-        );
-    }
-}
-
+/**
+ * @phpstan-import-type NormalizedRequest from \HubspotSDK\Core\BaseClient
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 class Client extends BaseClient
 {
     /**
@@ -109,20 +93,25 @@ class Client extends BaseClient
      */
     public WebhooksService $webhooks;
 
+    /**
+     * @param RequestOpts|null $requestOptions
+     */
     public function __construct(
         public ?string $accessToken = null,
         public ?string $developerAPIKey = null,
         ?string $baseUrl = null,
+        RequestOptions|array|null $requestOptions = null,
     ) {
-        validateSingleAuth($this->accessToken, $this->developerAPIKey);
+        $baseUrl ??= Util::getenv('HUBSPOT_BASE_URL') ?: 'https://api.hubapi.com';
 
-        $baseUrl ??= getenv('HUBSPOT_BASE_URL') ?: 'https://api.hubapi.com';
-
-        $options = RequestOptions::with(
-            uriFactory: Psr17FactoryDiscovery::findUriFactory(),
-            streamFactory: Psr17FactoryDiscovery::findStreamFactory(),
-            requestFactory: Psr17FactoryDiscovery::findRequestFactory(),
-            transporter: Psr18ClientDiscovery::find(),
+        $options = RequestOptions::parse(
+            RequestOptions::with(
+                uriFactory: Psr17FactoryDiscovery::findUriFactory(),
+                streamFactory: Psr17FactoryDiscovery::findStreamFactory(),
+                requestFactory: Psr17FactoryDiscovery::findRequestFactory(),
+                transporter: Psr18ClientDiscovery::find(),
+            ),
+            $requestOptions,
         );
 
         parent::__construct(
@@ -168,5 +157,33 @@ class Client extends BaseClient
     protected function authQuery(): array
     {
         return $this->developerAPIKey ? ['hapikey' => $this->developerAPIKey] : [];
+    }
+
+    /**
+     * @internal
+     *
+     * @param string|list<string> $path
+     * @param array<string,mixed> $query
+     * @param array<string,string|int|list<string|int>|null> $headers
+     * @param RequestOpts|null $opts
+     *
+     * @return array{NormalizedRequest, RequestOptions}
+     */
+    protected function buildRequest(
+        string $method,
+        string|array $path,
+        array $query,
+        array $headers,
+        mixed $body,
+        RequestOptions|array|null $opts,
+    ): array {
+        return parent::buildRequest(
+            method: $method,
+            path: $path,
+            query: [...$this->authQuery(), ...$query],
+            headers: [...$this->authHeaders(), ...$headers],
+            body: $body,
+            opts: $opts,
+        );
     }
 }

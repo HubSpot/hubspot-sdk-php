@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-import-type BehavioralEventHTTPCompletionRequestShape from \HubspotSDK\Events\Send\BehavioralEventHTTPCompletionRequest
  *
  * @phpstan-type BatchedBehavioralEventHTTPCompletionRequestShape = array{
- *   inputs: list<BehavioralEventHTTPCompletionRequestShape>
+ *   inputs: list<BehavioralEventHTTPCompletionRequest|BehavioralEventHTTPCompletionRequestShape>,
  * }
  */
 final class BatchedBehavioralEventHTTPCompletionRequest implements BaseModel
@@ -48,7 +48,7 @@ final class BatchedBehavioralEventHTTPCompletionRequest implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<BehavioralEventHTTPCompletionRequestShape> $inputs
+     * @param list<BehavioralEventHTTPCompletionRequest|BehavioralEventHTTPCompletionRequestShape> $inputs
      */
     public static function with(array $inputs): self
     {
@@ -60,7 +60,7 @@ final class BatchedBehavioralEventHTTPCompletionRequest implements BaseModel
     }
 
     /**
-     * @param list<BehavioralEventHTTPCompletionRequestShape> $inputs
+     * @param list<BehavioralEventHTTPCompletionRequest|BehavioralEventHTTPCompletionRequestShape> $inputs
      */
     public function withInputs(array $inputs): self
     {

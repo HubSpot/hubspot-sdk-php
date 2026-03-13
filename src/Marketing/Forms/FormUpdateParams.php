@@ -14,6 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Services\Marketing\FormsService::update()
  *
+ * @phpstan-import-type LegalConsentOptionsVariants from \HubspotSDK\Marketing\Forms\FormUpdateParams\LegalConsentOptions
  * @phpstan-import-type HubSpotFormConfigurationShape from \HubspotSDK\Marketing\Forms\HubSpotFormConfiguration
  * @phpstan-import-type FormDisplayOptionsShape from \HubspotSDK\Marketing\Forms\FormDisplayOptions
  * @phpstan-import-type LegalConsentOptionsShape from \HubspotSDK\Marketing\Forms\FormUpdateParams\LegalConsentOptions
@@ -56,6 +57,7 @@ final class FormUpdateParams implements BaseModel
     #[Optional(list: FieldGroup::class)]
     public ?array $fieldGroups;
 
+    /** @var LegalConsentOptionsVariants|null $legalConsentOptions */
     #[Optional]
     public LegalConsentOptionsNone|LegalConsentOptionsLegitimateInterest|LegalConsentOptionsExplicitConsentToProcess|LegalConsentOptionsImplicitConsentToProcess|null $legalConsentOptions;
 

@@ -19,10 +19,10 @@ use HubspotSDK\StandardError;
  *
  * @phpstan-type BatchResponseTagWithErrorsShape = array{
  *   completedAt: \DateTimeInterface,
- *   results: list<TagShape>,
+ *   results: list<Tag|TagShape>,
  *   startedAt: \DateTimeInterface,
  *   status: Status|value-of<Status>,
- *   errors?: list<StandardErrorShape>|null,
+ *   errors?: list<StandardError|StandardErrorShape>|null,
  *   links?: array<string,string>|null,
  *   numErrors?: int|null,
  *   requestedAt?: \DateTimeInterface|null,
@@ -119,9 +119,9 @@ final class BatchResponseTagWithErrors implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<TagShape> $results
+     * @param list<Tag|TagShape> $results
      * @param Status|value-of<Status> $status
-     * @param list<StandardErrorShape>|null $errors
+     * @param list<StandardError|StandardErrorShape>|null $errors
      * @param array<string,string>|null $links
      */
     public static function with(
@@ -163,7 +163,7 @@ final class BatchResponseTagWithErrors implements BaseModel
     /**
      * Results of batch operation.
      *
-     * @param list<TagShape> $results
+     * @param list<Tag|TagShape> $results
      */
     public function withResults(array $results): self
     {
@@ -200,7 +200,7 @@ final class BatchResponseTagWithErrors implements BaseModel
     /**
      * Errors in batch operation.
      *
-     * @param list<StandardErrorShape> $errors
+     * @param list<StandardError|StandardErrorShape> $errors
      */
     public function withErrors(array $errors): self
     {

@@ -16,7 +16,8 @@ use HubspotSDK\Events\EventDefinitions\PropertyReferencedTime;
  * @phpstan-import-type IndexedTimePointShape from \HubspotSDK\Events\EventDefinitions\IndexedTimePoint
  * @phpstan-import-type PropertyReferencedTimeShape from \HubspotSDK\Events\EventDefinitions\PropertyReferencedTime
  *
- * @phpstan-type UpperBoundTimePointShape = DatePointShape|IndexedTimePointShape|PropertyReferencedTimeShape
+ * @phpstan-type UpperBoundTimePointVariants = DatePoint|IndexedTimePoint|PropertyReferencedTime
+ * @phpstan-type UpperBoundTimePointShape = UpperBoundTimePointVariants|DatePointShape|IndexedTimePointShape|PropertyReferencedTimeShape
  */
 final class UpperBoundTimePoint implements ConverterSource
 {

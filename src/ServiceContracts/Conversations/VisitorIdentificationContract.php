@@ -8,6 +8,9 @@ use HubspotSDK\Conversations\VisitorIdentification\IdentificationTokenResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface VisitorIdentificationContract
 {
     /**
@@ -16,6 +19,7 @@ interface VisitorIdentificationContract
      * @param string $email The email of the visitor that you wish to identify
      * @param string $firstName The first name of the visitor that you wish to identify. This value will only be set in HubSpot for new contacts and existing contacts where first name is unknown. Optional.
      * @param string $lastName The last name of the visitor that you wish to identify. This value will only be set in HubSpot for new contacts and existing contacts where last name is unknown. Optional.
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -23,6 +27,6 @@ interface VisitorIdentificationContract
         string $email,
         ?string $firstName = null,
         ?string $lastName = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): IdentificationTokenResponse;
 }

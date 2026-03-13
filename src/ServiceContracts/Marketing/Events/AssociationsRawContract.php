@@ -14,12 +14,16 @@ use HubspotSDK\Marketing\Events\Associations\AssociationListByExternalAccountPar
 use HubspotSDK\Marketing\Events\CollectionResponseWithTotalPublicListNoPaging;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface AssociationsRawContract
 {
     /**
      * @api
      *
      * @param string $marketingEventID the internal id of the marketing event in HubSpot
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CollectionResponseWithTotalPublicListNoPaging>
      *
@@ -27,7 +31,7 @@ interface AssociationsRawContract
      */
     public function list(
         string $marketingEventID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 
     /**
@@ -35,6 +39,7 @@ interface AssociationsRawContract
      *
      * @param string $listID the ILS ID of the list
      * @param array<string,mixed>|AssociationDeleteParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -43,7 +48,7 @@ interface AssociationsRawContract
     public function delete(
         string $listID,
         array|AssociationDeleteParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -51,6 +56,7 @@ interface AssociationsRawContract
      *
      * @param string $listID the ILS ID of the list
      * @param array<string,mixed>|AssociationAssociateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -59,7 +65,7 @@ interface AssociationsRawContract
     public function associate(
         string $listID,
         array|AssociationAssociateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -67,6 +73,7 @@ interface AssociationsRawContract
      *
      * @param string $listID the ILS ID of the list
      * @param array<string,mixed>|AssociationAssociateByExternalAccountParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -75,7 +82,7 @@ interface AssociationsRawContract
     public function associateByExternalAccount(
         string $listID,
         array|AssociationAssociateByExternalAccountParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -83,6 +90,7 @@ interface AssociationsRawContract
      *
      * @param string $listID the ILS ID of the list
      * @param array<string,mixed>|AssociationDeleteByExternalAccountParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -91,7 +99,7 @@ interface AssociationsRawContract
     public function deleteByExternalAccount(
         string $listID,
         array|AssociationDeleteByExternalAccountParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -99,6 +107,7 @@ interface AssociationsRawContract
      *
      * @param string $externalEventID the id of the marketing event in the external event application
      * @param array<string,mixed>|AssociationListByExternalAccountParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CollectionResponseWithTotalPublicListNoPaging>
      *
@@ -107,6 +116,6 @@ interface AssociationsRawContract
     public function listByExternalAccount(
         string $externalEventID,
         array|AssociationListByExternalAccountParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

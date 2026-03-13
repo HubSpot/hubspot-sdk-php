@@ -10,12 +10,16 @@ use HubspotSDK\Marketing\EmailSendStatusView;
 use HubspotSDK\Marketing\Transactional\SingleEmail\SingleEmailSendParams;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface SingleEmailRawContract
 {
     /**
      * @api
      *
      * @param array<string,mixed>|SingleEmailSendParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<EmailSendStatusView>
      *
@@ -23,6 +27,6 @@ interface SingleEmailRawContract
      */
     public function send(
         array|SingleEmailSendParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

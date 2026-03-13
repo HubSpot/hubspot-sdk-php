@@ -17,7 +17,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   isRequired: bool,
  *   label: string,
  *   name: string,
- *   options: list<ExternalOptionShape>,
+ *   options: list<ExternalOption|ExternalOptionShape>,
  *   type: string,
  * }
  */
@@ -87,7 +87,7 @@ final class ExternalLinkFormField implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<ExternalOptionShape> $options
+     * @param list<ExternalOption|ExternalOptionShape> $options
      */
     public static function with(
         string $fieldType,
@@ -152,7 +152,7 @@ final class ExternalLinkFormField implements BaseModel
     }
 
     /**
-     * @param list<ExternalOptionShape> $options
+     * @param list<ExternalOption|ExternalOptionShape> $options
      */
     public function withOptions(array $options): self
     {

@@ -13,6 +13,9 @@ use HubspotSDK\Crm\PropertyValidations\PropertyValidationCrmV3PropertyValidation
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\PropertyValidationsContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class PropertyValidationsService implements PropertyValidationsContract
 {
     /**
@@ -34,12 +37,13 @@ final class PropertyValidationsService implements PropertyValidationsContract
      * Read all properties with validation rules for a given object.
      *
      * @param string $objectTypeID the ID of the object type for which all property validation rules are being retrieved
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function list(
         string $objectTypeID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): CollectionResponsePublicPropertyValidationRuleMapNoPaging {
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->list($objectTypeID, requestOptions: $requestOptions);
@@ -56,6 +60,7 @@ final class PropertyValidationsService implements PropertyValidationsContract
      * @param string $objectTypeID path param: The ID of the object type to which the property belongs
      * @param string $propertyName path param: The name of the property for which the validation rule is being updated
      * @param list<string> $ruleArguments body param: A list of arguments that define the constraints for the validation rule
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -64,7 +69,7 @@ final class PropertyValidationsService implements PropertyValidationsContract
         string $objectTypeID,
         string $propertyName,
         array $ruleArguments,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): mixed {
         $params = Util::removeNulls(
             [
@@ -87,13 +92,14 @@ final class PropertyValidationsService implements PropertyValidationsContract
      *
      * @param string $propertyName the name of the property whose validation rules are being retrieved
      * @param string $objectTypeID the ID of the object type to which the property belongs
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function get(
         string $propertyName,
         string $objectTypeID,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): CollectionResponsePublicPropertyValidationRuleNoPaging {
         $params = Util::removeNulls(['objectTypeID' => $objectTypeID]);
 

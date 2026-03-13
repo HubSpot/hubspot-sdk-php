@@ -20,6 +20,9 @@ use HubspotSDK\Crm\Pipelines\Stages\StageUpdateParams;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Pipelines\StagesRawContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class StagesRawService implements StagesRawContract
 {
     // @phpstan-ignore-next-line
@@ -40,6 +43,7 @@ final class StagesRawService implements StagesRawContract
      *   label: string,
      *   metadata: array<string,string>,
      * }|StageCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PipelineStage>
      *
@@ -48,7 +52,7 @@ final class StagesRawService implements StagesRawContract
     public function create(
         string $pipelineID,
         array|StageCreateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = StageCreateParams::parseRequest(
             $params,
@@ -81,6 +85,7 @@ final class StagesRawService implements StagesRawContract
      *   displayOrder?: int,
      *   label?: string,
      * }|StageUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PipelineStage>
      *
@@ -89,7 +94,7 @@ final class StagesRawService implements StagesRawContract
     public function update(
         string $stageID,
         array|StageUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = StageUpdateParams::parseRequest(
             $params,
@@ -125,6 +130,7 @@ final class StagesRawService implements StagesRawContract
      *
      * @param string $pipelineID the unique identifier of the pipeline whose stages are being retrieved
      * @param array{objectType: string}|StageListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CollectionResponsePipelineStageNoPaging>
      *
@@ -133,7 +139,7 @@ final class StagesRawService implements StagesRawContract
     public function list(
         string $pipelineID,
         array|StageListParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = StageListParams::parseRequest(
             $params,
@@ -158,6 +164,7 @@ final class StagesRawService implements StagesRawContract
      *
      * @param string $stageID the unique identifier of the stage to be deleted from the pipeline
      * @param array{objectType: string, pipelineID: string}|StageDeleteParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -166,7 +173,7 @@ final class StagesRawService implements StagesRawContract
     public function delete(
         string $stageID,
         array|StageDeleteParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = StageDeleteParams::parseRequest(
             $params,
@@ -198,6 +205,7 @@ final class StagesRawService implements StagesRawContract
      *
      * @param string $stageID the unique identifier of the stage to be retrieved from the pipeline
      * @param array{objectType: string, pipelineID: string}|StageGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PipelineStage>
      *
@@ -206,7 +214,7 @@ final class StagesRawService implements StagesRawContract
     public function get(
         string $stageID,
         array|StageGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = StageGetParams::parseRequest(
             $params,
@@ -238,6 +246,7 @@ final class StagesRawService implements StagesRawContract
      *
      * @param string $stageID the unique identifier for the pipeline stage being audited
      * @param array{objectType: string, pipelineID: string}|StageGetAuditParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CollectionResponsePublicAuditInfoNoPaging>
      *
@@ -246,7 +255,7 @@ final class StagesRawService implements StagesRawContract
     public function getAudit(
         string $stageID,
         array|StageGetAuditParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = StageGetAuditParams::parseRequest(
             $params,
@@ -284,6 +293,7 @@ final class StagesRawService implements StagesRawContract
      *   label: string,
      *   metadata: array<string,string>,
      * }|StageReplaceParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PipelineStage>
      *
@@ -292,7 +302,7 @@ final class StagesRawService implements StagesRawContract
     public function replace(
         string $stageID,
         array|StageReplaceParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = StageReplaceParams::parseRequest(
             $params,

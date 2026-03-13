@@ -12,6 +12,9 @@ use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Conversations\InboxesContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class InboxesService implements InboxesContract
 {
     /**
@@ -31,6 +34,7 @@ final class InboxesService implements InboxesContract
      * @api
      *
      * @param list<string> $sort
+     * @param RequestOpts|null $requestOptions
      *
      * @return Page<PublicInbox>
      *
@@ -42,7 +46,7 @@ final class InboxesService implements InboxesContract
         ?int $defaultPageLength = null,
         ?int $limit = null,
         ?array $sort = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): Page {
         $params = Util::removeNulls(
             [
@@ -63,12 +67,14 @@ final class InboxesService implements InboxesContract
     /**
      * @api
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @throws APIException
      */
     public function get(
         int $inboxID,
         bool $archived = false,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): PublicInbox {
         $params = Util::removeNulls(['archived' => $archived]);
 

@@ -11,6 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicIndexedTimePoint\TimeType;
 
 /**
+ * @phpstan-import-type IndexReferenceVariants from \HubspotSDK\PublicIndexedTimePoint\IndexReference
  * @phpstan-import-type IndexReferenceShape from \HubspotSDK\PublicIndexedTimePoint\IndexReference
  * @phpstan-import-type PublicIndexOffsetShape from \HubspotSDK\PublicIndexOffset
  *
@@ -27,6 +28,7 @@ final class PublicIndexedTimePoint implements BaseModel
     /** @use SdkModel<PublicIndexedTimePointShape> */
     use SdkModel;
 
+    /** @var IndexReferenceVariants $indexReference */
     #[Required]
     public PublicNowReference|PublicTodayReference|PublicWeekReference|PublicFiscalQuarterReference|PublicFiscalYearReference|PublicYearReference|PublicQuarterReference|PublicMonthReference $indexReference;
 

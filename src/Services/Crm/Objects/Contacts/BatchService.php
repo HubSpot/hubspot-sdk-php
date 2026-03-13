@@ -4,17 +4,25 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Services\Crm\Objects\Contacts;
 
-use HubspotSDK\AssociationSpec;
-use HubspotSDK\AssociationSpec\AssociationCategory;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Core\Util;
 use HubspotSDK\Crm\BatchResponseSimplePublicObject;
 use HubspotSDK\Crm\BatchResponseSimplePublicUpsertObject;
-use HubspotSDK\PublicObjectID;
+use HubspotSDK\Crm\SimplePublicObjectBatchInput;
+use HubspotSDK\Crm\SimplePublicObjectBatchInputForCreate;
+use HubspotSDK\Crm\SimplePublicObjectBatchInputUpsert;
+use HubspotSDK\Crm\SimplePublicObjectID;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Objects\Contacts\BatchContract;
 
+/**
+ * @phpstan-import-type SimplePublicObjectBatchInputForCreateShape from \HubspotSDK\Crm\SimplePublicObjectBatchInputForCreate
+ * @phpstan-import-type SimplePublicObjectBatchInputShape from \HubspotSDK\Crm\SimplePublicObjectBatchInput
+ * @phpstan-import-type SimplePublicObjectBatchInputUpsertShape from \HubspotSDK\Crm\SimplePublicObjectBatchInputUpsert
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type SimplePublicObjectIDShape from \HubspotSDK\Crm\SimplePublicObjectID
+ */
 final class BatchService implements BatchContract
 {
     /**
@@ -35,23 +43,14 @@ final class BatchService implements BatchContract
      *
      * Create a batch of contacts. The `inputs` array can contain a `properties` object to define property values for each record, along with an `associations` array to define [associations](https://developers.hubspot.com/docs/guides/api/crm/associations/associations-v4) with other CRM records.
      *
-     * @param list<array{
-     *   associations: list<array{
-     *     to: array{id: string}|PublicObjectID,
-     *     types: list<array{
-     *       associationCategory: 'HUBSPOT_DEFINED'|'INTEGRATOR_DEFINED'|'USER_DEFINED'|AssociationCategory,
-     *       associationTypeID: int,
-     *     }|AssociationSpec>,
-     *   }>,
-     *   properties: array<string,string>,
-     *   objectWriteTraceID?: string,
-     * }> $inputs
+     * @param list<SimplePublicObjectBatchInputForCreate|SimplePublicObjectBatchInputForCreateShape> $inputs
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function create(
         array $inputs,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BatchResponseSimplePublicObject {
         $params = Util::removeNulls(['inputs' => $inputs]);
 
@@ -66,18 +65,14 @@ final class BatchService implements BatchContract
      *
      * Update a batch of contacts by ID (`contactId`) or unique property value (`idProperty`). Provided property values will be overwritten. Read-only and non-existent properties will result in an error. Properties values can be cleared by passing an empty string.
      *
-     * @param list<array{
-     *   id: string,
-     *   properties: array<string,string>,
-     *   idProperty?: string,
-     *   objectWriteTraceID?: string,
-     * }> $inputs
+     * @param list<SimplePublicObjectBatchInput|SimplePublicObjectBatchInputShape> $inputs
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function update(
         array $inputs,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BatchResponseSimplePublicObject {
         $params = Util::removeNulls(['inputs' => $inputs]);
 
@@ -92,13 +87,14 @@ final class BatchService implements BatchContract
      *
      * Archive a batch of contacts by ID. Archived contacts can be restored within 90 days of deletion. Learn more about the [data impacted by contact deletions](https://knowledge.hubspot.com/privacy-and-consent/understand-restorable-and-permanent-contact-deletions) and how to [restore archived records](https://knowledge.hubspot.com/records/restore-deleted-records).
      *
-     * @param list<array{id: string}> $inputs
+     * @param list<SimplePublicObjectID|SimplePublicObjectIDShape> $inputs
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function delete(
         array $inputs,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): mixed {
         $params = Util::removeNulls(['inputs' => $inputs]);
 
@@ -113,11 +109,12 @@ final class BatchService implements BatchContract
      *
      * Retrieve a batch of contacts by ID (`contactId`) or unique property value (`idProperty`).
      *
-     * @param list<array{id: string}> $inputs Body param:
+     * @param list<SimplePublicObjectID|SimplePublicObjectIDShape> $inputs Body param
      * @param list<string> $properties body param: Key-value pairs for setting properties for the new object
      * @param list<string> $propertiesWithHistory body param: Key-value pairs for setting properties for the new object and their histories
      * @param bool $archived query param: Whether to return only results that have been archived
      * @param string $idProperty body param: A unique property used to identify objects instead of the default ID
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -127,7 +124,7 @@ final class BatchService implements BatchContract
         array $propertiesWithHistory,
         bool $archived = false,
         ?string $idProperty = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BatchResponseSimplePublicObject {
         $params = Util::removeNulls(
             [
@@ -150,18 +147,14 @@ final class BatchService implements BatchContract
      *
      * Upsert a batch of contacts. The `inputs` array can contain a `properties` object to define property values for each record.
      *
-     * @param list<array{
-     *   id: string,
-     *   properties: array<string,string>,
-     *   idProperty?: string,
-     *   objectWriteTraceID?: string,
-     * }> $inputs
+     * @param list<SimplePublicObjectBatchInputUpsert|SimplePublicObjectBatchInputUpsertShape> $inputs
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function upsert(
         array $inputs,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BatchResponseSimplePublicUpsertObject {
         $params = Util::removeNulls(['inputs' => $inputs]);
 

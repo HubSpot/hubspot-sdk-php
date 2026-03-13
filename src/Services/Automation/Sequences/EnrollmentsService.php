@@ -12,6 +12,9 @@ use HubspotSDK\Core\Util;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Automation\Sequences\EnrollmentsContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class EnrollmentsService implements EnrollmentsContract
 {
     /**
@@ -32,11 +35,12 @@ final class EnrollmentsService implements EnrollmentsContract
      *
      * Enroll a contact into a sequence using the specified user ID and sequence details.
      *
-     * @param string $userID Query param:
-     * @param string $contactID Body param:
-     * @param string $senderEmail Body param:
-     * @param string $sequenceID Body param:
-     * @param string $senderAliasAddress Body param:
+     * @param string $userID Query param
+     * @param string $contactID Body param
+     * @param string $senderEmail Body param
+     * @param string $sequenceID Body param
+     * @param string $senderAliasAddress Body param
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -46,7 +50,7 @@ final class EnrollmentsService implements EnrollmentsContract
         string $senderEmail,
         string $sequenceID,
         ?string $senderAliasAddress = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): PublicSequenceEnrollmentLiteResponse {
         $params = Util::removeNulls(
             [
@@ -69,11 +73,13 @@ final class EnrollmentsService implements EnrollmentsContract
      *
      * Get the enrollment status of a contact in sequences by their contact ID.
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @throws APIException
      */
     public function getByContactID(
         string $contactID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): PublicSequenceEnrollmentResponse {
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->getByContactID($contactID, requestOptions: $requestOptions);

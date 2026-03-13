@@ -10,12 +10,16 @@ use HubspotSDK\Crm\Associations\Schema\CollectionResponsePublicAssociationDefini
 use HubspotSDK\Crm\Associations\Schema\SchemaListParams;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface SchemaRawContract
 {
     /**
      * @api
      *
      * @param array<string,mixed>|SchemaListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CollectionResponsePublicAssociationDefinitionNoPaging>
      *
@@ -24,6 +28,6 @@ interface SchemaRawContract
     public function list(
         string $toObjectType,
         array|SchemaListParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

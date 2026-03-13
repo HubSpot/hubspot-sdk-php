@@ -50,12 +50,16 @@ use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface LandingPagesRawContract
 {
     /**
      * @api
      *
      * @param array<string,mixed>|LandingPageCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -63,7 +67,7 @@ interface LandingPagesRawContract
      */
     public function create(
         array|LandingPageCreateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -71,6 +75,7 @@ interface LandingPagesRawContract
      *
      * @param string $objectID path param: The Landing Page id
      * @param array<string,mixed>|LandingPageUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page>
      *
@@ -79,13 +84,14 @@ interface LandingPagesRawContract
     public function update(
         string $objectID,
         array|LandingPageUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|LandingPageListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<\HubspotSDK\Page<Page>>
      *
@@ -93,7 +99,7 @@ interface LandingPagesRawContract
      */
     public function list(
         array|LandingPageListParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -101,6 +107,7 @@ interface LandingPagesRawContract
      *
      * @param string $objectID the Landing Page id
      * @param array<string,mixed>|LandingPageDeleteParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -109,13 +116,14 @@ interface LandingPagesRawContract
     public function delete(
         string $objectID,
         array|LandingPageDeleteParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|LandingPageAttachToLangGroupParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -123,13 +131,14 @@ interface LandingPagesRawContract
      */
     public function attachToLangGroup(
         array|LandingPageAttachToLangGroupParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|LandingPageCloneParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page>
      *
@@ -137,13 +146,14 @@ interface LandingPagesRawContract
      */
     public function clone(
         array|LandingPageCloneParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|LandingPageCreateAbTestVariationParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page>
      *
@@ -151,13 +161,14 @@ interface LandingPagesRawContract
      */
     public function createAbTestVariation(
         array|LandingPageCreateAbTestVariationParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|LandingPageCreateBatchParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BatchResponsePage>
      *
@@ -165,13 +176,14 @@ interface LandingPagesRawContract
      */
     public function createBatch(
         array|LandingPageCreateBatchParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|LandingPageCreateFolderParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ContentFolder>
      *
@@ -179,13 +191,14 @@ interface LandingPagesRawContract
      */
     public function createFolder(
         array|LandingPageCreateFolderParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|LandingPageCreateFoldersBatchParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BatchResponseContentFolder>
      *
@@ -193,13 +206,14 @@ interface LandingPagesRawContract
      */
     public function createFoldersBatch(
         array|LandingPageCreateFoldersBatchParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|LandingPageCreateLanguageVariationParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page>
      *
@@ -207,13 +221,14 @@ interface LandingPagesRawContract
      */
     public function createLanguageVariation(
         array|LandingPageCreateLanguageVariationParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|LandingPageDeleteBatchParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -221,7 +236,7 @@ interface LandingPagesRawContract
      */
     public function deleteBatch(
         array|LandingPageDeleteBatchParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -229,6 +244,7 @@ interface LandingPagesRawContract
      *
      * @param string $objectID the Folder id
      * @param array<string,mixed>|LandingPageDeleteFolderParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -237,13 +253,14 @@ interface LandingPagesRawContract
     public function deleteFolder(
         string $objectID,
         array|LandingPageDeleteFolderParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|LandingPageDeleteFoldersBatchParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -251,13 +268,14 @@ interface LandingPagesRawContract
      */
     public function deleteFoldersBatch(
         array|LandingPageDeleteFoldersBatchParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|LandingPageDetachFromLangGroupParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -265,13 +283,14 @@ interface LandingPagesRawContract
      */
     public function detachFromLangGroup(
         array|LandingPageDetachFromLangGroupParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|LandingPageEndAbTestParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -279,7 +298,7 @@ interface LandingPagesRawContract
      */
     public function endAbTest(
         array|LandingPageEndAbTestParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -287,6 +306,7 @@ interface LandingPagesRawContract
      *
      * @param string $objectID the Landing Page id
      * @param array<string,mixed>|LandingPageGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page>
      *
@@ -295,13 +315,14 @@ interface LandingPagesRawContract
     public function get(
         string $objectID,
         array|LandingPageGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|LandingPageGetBatchParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BatchResponsePage>
      *
@@ -309,13 +330,14 @@ interface LandingPagesRawContract
      */
     public function getBatch(
         array|LandingPageGetBatchParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param string $objectID the Landing Page id
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page>
      *
@@ -323,7 +345,7 @@ interface LandingPagesRawContract
      */
     public function getDraft(
         string $objectID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 
     /**
@@ -331,6 +353,7 @@ interface LandingPagesRawContract
      *
      * @param string $objectID the Folder id
      * @param array<string,mixed>|LandingPageGetFolderParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ContentFolder>
      *
@@ -339,7 +362,7 @@ interface LandingPagesRawContract
     public function getFolder(
         string $objectID,
         array|LandingPageGetFolderParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -347,6 +370,7 @@ interface LandingPagesRawContract
      *
      * @param string $revisionID the Folder version id
      * @param array<string,mixed>|LandingPageGetFolderRevisionParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<VersionContentFolder>
      *
@@ -355,13 +379,14 @@ interface LandingPagesRawContract
     public function getFolderRevision(
         string $revisionID,
         array|LandingPageGetFolderRevisionParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|LandingPageGetFoldersBatchParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BatchResponseContentFolder>
      *
@@ -369,7 +394,7 @@ interface LandingPagesRawContract
      */
     public function getFoldersBatch(
         array|LandingPageGetFoldersBatchParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -377,6 +402,7 @@ interface LandingPagesRawContract
      *
      * @param string $revisionID the Landing Page version id
      * @param array<string,mixed>|LandingPageGetRevisionParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<VersionPage>
      *
@@ -385,7 +411,7 @@ interface LandingPagesRawContract
     public function getRevision(
         string $revisionID,
         array|LandingPageGetRevisionParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -393,6 +419,7 @@ interface LandingPagesRawContract
      *
      * @param string $objectID the Folder id
      * @param array<string,mixed>|LandingPageListFolderRevisionsParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<\HubspotSDK\Page<VersionContentFolder>>
      *
@@ -401,13 +428,14 @@ interface LandingPagesRawContract
     public function listFolderRevisions(
         string $objectID,
         array|LandingPageListFolderRevisionsParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|LandingPageListFoldersParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<\HubspotSDK\Page<ContentFolder>>
      *
@@ -415,7 +443,7 @@ interface LandingPagesRawContract
      */
     public function listFolders(
         array|LandingPageListFoldersParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -423,6 +451,7 @@ interface LandingPagesRawContract
      *
      * @param string $objectID the Landing Page id
      * @param array<string,mixed>|LandingPageListRevisionsParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<\HubspotSDK\Page<VersionPage>>
      *
@@ -431,13 +460,14 @@ interface LandingPagesRawContract
     public function listRevisions(
         string $objectID,
         array|LandingPageListRevisionsParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param string $objectID the id of the Landing Page for which it's draft will be pushed live
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -445,13 +475,14 @@ interface LandingPagesRawContract
      */
     public function publishDraft(
         string $objectID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|LandingPageRerunAbTestParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -459,13 +490,14 @@ interface LandingPagesRawContract
      */
     public function rerunAbTest(
         array|LandingPageRerunAbTestParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param string $objectID the id of the Landing Page for which it's draft will be reset
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -473,7 +505,7 @@ interface LandingPagesRawContract
      */
     public function resetDraft(
         string $objectID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 
     /**
@@ -481,6 +513,7 @@ interface LandingPagesRawContract
      *
      * @param string $revisionID the Folder version id to restore
      * @param array<string,mixed>|LandingPageRestoreFolderRevisionParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ContentFolder>
      *
@@ -489,7 +522,7 @@ interface LandingPagesRawContract
     public function restoreFolderRevision(
         string $revisionID,
         array|LandingPageRestoreFolderRevisionParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -497,6 +530,7 @@ interface LandingPagesRawContract
      *
      * @param string $revisionID the Landing Page version id to restore
      * @param array<string,mixed>|LandingPageRestoreRevisionParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page>
      *
@@ -505,7 +539,7 @@ interface LandingPagesRawContract
     public function restoreRevision(
         string $revisionID,
         array|LandingPageRestoreRevisionParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -513,6 +547,7 @@ interface LandingPagesRawContract
      *
      * @param int $revisionID the Landing Page version id to restore
      * @param array<string,mixed>|LandingPageRestoreRevisionToDraftParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page>
      *
@@ -521,13 +556,14 @@ interface LandingPagesRawContract
     public function restoreRevisionToDraft(
         int $revisionID,
         array|LandingPageRestoreRevisionToDraftParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|LandingPageScheduleParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -535,13 +571,14 @@ interface LandingPagesRawContract
      */
     public function schedule(
         array|LandingPageScheduleParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|LandingPageSetNewLangPrimaryParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -549,13 +586,14 @@ interface LandingPagesRawContract
      */
     public function setNewLangPrimary(
         array|LandingPageSetNewLangPrimaryParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|LandingPageUpdateBatchParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BatchResponsePage>
      *
@@ -563,7 +601,7 @@ interface LandingPagesRawContract
      */
     public function updateBatch(
         array|LandingPageUpdateBatchParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -571,6 +609,7 @@ interface LandingPagesRawContract
      *
      * @param string $objectID the Landing Page id
      * @param array<string,mixed>|LandingPageUpdateDraftParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page>
      *
@@ -579,7 +618,7 @@ interface LandingPagesRawContract
     public function updateDraft(
         string $objectID,
         array|LandingPageUpdateDraftParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -587,6 +626,7 @@ interface LandingPagesRawContract
      *
      * @param string $objectID path param: The Folder id
      * @param array<string,mixed>|LandingPageUpdateFolderParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ContentFolder>
      *
@@ -595,13 +635,14 @@ interface LandingPagesRawContract
     public function updateFolder(
         string $objectID,
         array|LandingPageUpdateFolderParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|LandingPageUpdateFoldersBatchParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BatchResponseContentFolder>
      *
@@ -609,13 +650,14 @@ interface LandingPagesRawContract
      */
     public function updateFoldersBatch(
         array|LandingPageUpdateFoldersBatchParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|LandingPageUpdateLanguagesParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -623,6 +665,6 @@ interface LandingPagesRawContract
      */
     public function updateLanguages(
         array|LandingPageUpdateLanguagesParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

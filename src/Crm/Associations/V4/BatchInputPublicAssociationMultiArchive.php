@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-import-type PublicAssociationMultiArchiveShape from \HubspotSDK\Crm\Associations\V4\PublicAssociationMultiArchive
  *
  * @phpstan-type BatchInputPublicAssociationMultiArchiveShape = array{
- *   inputs: list<PublicAssociationMultiArchiveShape>
+ *   inputs: list<PublicAssociationMultiArchive|PublicAssociationMultiArchiveShape>
  * }
  */
 final class BatchInputPublicAssociationMultiArchive implements BaseModel
@@ -48,7 +48,7 @@ final class BatchInputPublicAssociationMultiArchive implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicAssociationMultiArchiveShape> $inputs
+     * @param list<PublicAssociationMultiArchive|PublicAssociationMultiArchiveShape> $inputs
      */
     public static function with(array $inputs): self
     {
@@ -60,7 +60,7 @@ final class BatchInputPublicAssociationMultiArchive implements BaseModel
     }
 
     /**
-     * @param list<PublicAssociationMultiArchiveShape> $inputs
+     * @param list<PublicAssociationMultiArchive|PublicAssociationMultiArchiveShape> $inputs
      */
     public function withInputs(array $inputs): self
     {

@@ -21,7 +21,7 @@ use HubspotSDK\Marketing\Forms\PaymentLinkRadioField\FieldType;
  *   label: string,
  *   name: string,
  *   objectTypeID: string,
- *   options: list<EnumeratedFieldOptionShape>,
+ *   options: list<EnumeratedFieldOption|EnumeratedFieldOptionShape>,
  *   required: bool,
  *   description?: string|null,
  * }
@@ -110,7 +110,7 @@ final class PaymentLinkRadioField implements BaseModel
      *
      * @param list<string> $defaultValues
      * @param list<mixed> $dependentFields
-     * @param list<EnumeratedFieldOptionShape> $options
+     * @param list<EnumeratedFieldOption|EnumeratedFieldOptionShape> $options
      * @param FieldType|value-of<FieldType> $fieldType
      */
     public static function with(
@@ -208,7 +208,7 @@ final class PaymentLinkRadioField implements BaseModel
     }
 
     /**
-     * @param list<EnumeratedFieldOptionShape> $options
+     * @param list<EnumeratedFieldOption|EnumeratedFieldOptionShape> $options
      */
     public function withOptions(array $options): self
     {

@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-import-type PublicAssociationDefinitionConfigurationUpdateRequestShape from \HubspotSDK\Crm\Associations\Schema\V4\PublicAssociationDefinitionConfigurationUpdateRequest
  *
  * @phpstan-type BatchInputPublicAssociationDefinitionConfigurationUpdateRequestShape = array{
- *   inputs: list<PublicAssociationDefinitionConfigurationUpdateRequestShape>
+ *   inputs: list<PublicAssociationDefinitionConfigurationUpdateRequest|PublicAssociationDefinitionConfigurationUpdateRequestShape>,
  * }
  */
 final class BatchInputPublicAssociationDefinitionConfigurationUpdateRequest implements BaseModel
@@ -55,7 +55,7 @@ final class BatchInputPublicAssociationDefinitionConfigurationUpdateRequest impl
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicAssociationDefinitionConfigurationUpdateRequestShape> $inputs
+     * @param list<PublicAssociationDefinitionConfigurationUpdateRequest|PublicAssociationDefinitionConfigurationUpdateRequestShape> $inputs
      */
     public static function with(array $inputs): self
     {
@@ -67,7 +67,7 @@ final class BatchInputPublicAssociationDefinitionConfigurationUpdateRequest impl
     }
 
     /**
-     * @param list<PublicAssociationDefinitionConfigurationUpdateRequestShape> $inputs
+     * @param list<PublicAssociationDefinitionConfigurationUpdateRequest|PublicAssociationDefinitionConfigurationUpdateRequestShape> $inputs
      */
     public function withInputs(array $inputs): self
     {

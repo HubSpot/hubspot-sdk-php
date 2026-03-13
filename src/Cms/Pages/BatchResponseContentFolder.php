@@ -17,7 +17,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @phpstan-type BatchResponseContentFolderShape = array{
  *   completedAt: \DateTimeInterface,
- *   results: list<ContentFolderShape>,
+ *   results: list<ContentFolder|ContentFolderShape>,
  *   startedAt: \DateTimeInterface,
  *   status: Status|value-of<Status>,
  *   links?: array<string,string>|null,
@@ -80,7 +80,7 @@ final class BatchResponseContentFolder implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<ContentFolderShape> $results
+     * @param list<ContentFolder|ContentFolderShape> $results
      * @param Status|value-of<Status> $status
      * @param array<string,string>|null $links
      */
@@ -114,7 +114,7 @@ final class BatchResponseContentFolder implements BaseModel
     }
 
     /**
-     * @param list<ContentFolderShape> $results
+     * @param list<ContentFolder|ContentFolderShape> $results
      */
     public function withResults(array $results): self
     {

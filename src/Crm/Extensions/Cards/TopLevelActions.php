@@ -11,6 +11,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Extensions\Cards\TopLevelActions\Secondary;
 
 /**
+ * @phpstan-import-type SecondaryVariants from \HubspotSDK\Crm\Extensions\Cards\TopLevelActions\Secondary
+ * @phpstan-import-type PrimaryVariants from \HubspotSDK\Crm\Extensions\Cards\TopLevelActions\Primary
  * @phpstan-import-type SecondaryShape from \HubspotSDK\Crm\Extensions\Cards\TopLevelActions\Secondary
  * @phpstan-import-type PrimaryShape from \HubspotSDK\Crm\Extensions\Cards\TopLevelActions\Primary
  * @phpstan-import-type IFrameActionBodyShape from \HubspotSDK\Crm\Extensions\Cards\IFrameActionBody
@@ -26,10 +28,11 @@ final class TopLevelActions implements BaseModel
     /** @use SdkModel<TopLevelActionsShape> */
     use SdkModel;
 
-    /** @var list<ActionHookActionBody|IFrameActionBody> $secondary */
+    /** @var list<SecondaryVariants> $secondary */
     #[Required(list: Secondary::class)]
     public array $secondary;
 
+    /** @var PrimaryVariants|null $primary */
     #[Optional]
     public ActionHookActionBody|IFrameActionBody|null $primary;
 

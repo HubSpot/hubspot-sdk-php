@@ -19,6 +19,7 @@ use HubspotSDK\PublicRestrictedFilterBranch;
 use HubspotSDK\PublicUnifiedEventsFilterBranch;
 
 /**
+ * @phpstan-import-type ListFilterBranchVariants from \HubspotSDK\Automation\Workflows\APIListBasedEnrollmentCriteria\ListFilterBranch
  * @phpstan-import-type ListFilterBranchShape from \HubspotSDK\Automation\Workflows\APIListBasedEnrollmentCriteria\ListFilterBranch
  *
  * @phpstan-type APIListBasedEnrollmentCriteriaShape = array{
@@ -34,6 +35,7 @@ final class APIListBasedEnrollmentCriteria implements BaseModel
     /** @use SdkModel<APIListBasedEnrollmentCriteriaShape> */
     use SdkModel;
 
+    /** @var ListFilterBranchVariants $listFilterBranch */
     #[Required]
     public PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch $listFilterBranch;
 

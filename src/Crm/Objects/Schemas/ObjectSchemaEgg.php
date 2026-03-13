@@ -20,7 +20,7 @@ use HubspotSDK\ObjectTypeDefinitionLabels;
  *   associatedObjects: list<string>,
  *   labels: ObjectTypeDefinitionLabels|ObjectTypeDefinitionLabelsShape,
  *   name: string,
- *   properties: list<ObjectTypePropertyCreateShape>,
+ *   properties: list<ObjectTypePropertyCreate|ObjectTypePropertyCreateShape>,
  *   requiredProperties: list<string>,
  *   description?: string|null,
  *   primaryDisplayProperty?: string|null,
@@ -128,7 +128,7 @@ final class ObjectSchemaEgg implements BaseModel
      *
      * @param list<string> $associatedObjects
      * @param ObjectTypeDefinitionLabels|ObjectTypeDefinitionLabelsShape $labels
-     * @param list<ObjectTypePropertyCreateShape> $properties
+     * @param list<ObjectTypePropertyCreate|ObjectTypePropertyCreateShape> $properties
      * @param list<string> $requiredProperties
      * @param list<string>|null $searchableProperties
      * @param list<string>|null $secondaryDisplayProperties
@@ -198,7 +198,7 @@ final class ObjectSchemaEgg implements BaseModel
     /**
      * Properties defined for this object type.
      *
-     * @param list<ObjectTypePropertyCreateShape> $properties
+     * @param list<ObjectTypePropertyCreate|ObjectTypePropertyCreateShape> $properties
      */
     public function withProperties(array $properties): self
     {

@@ -3,6 +3,7 @@
 namespace Tests\Services\Crm\Objects\Emails;
 
 use HubspotSDK\Client;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Crm\BatchResponseSimplePublicObject;
 use HubspotSDK\Crm\BatchResponseSimplePublicUpsertObject;
 use PHPUnit\Framework\Attributes\CoversNothing;
@@ -22,7 +23,7 @@ final class BatchTest extends TestCase
     {
         parent::setUp();
 
-        $testUrl = getenv('TEST_API_BASE_URL') ?: 'http://127.0.0.1:4010';
+        $testUrl = Util::getenv('TEST_API_BASE_URL') ?: 'http://127.0.0.1:4010';
         $client = new Client(
             accessToken: 'pat-na1-xxxxxxxx-xxxx',
             baseUrl: $testUrl,

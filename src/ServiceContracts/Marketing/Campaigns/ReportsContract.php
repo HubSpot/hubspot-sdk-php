@@ -11,6 +11,9 @@ use HubspotSDK\Marketing\Campaigns\RevenueAttributionAggregate;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface ReportsContract
 {
     /**
@@ -21,6 +24,7 @@ interface ReportsContract
      * Default value: Current date
      * @param string $startDate The start date for the report data, formatted as YYYY-MM-DD.
      * Default value: 2006-01-01
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -28,7 +32,7 @@ interface ReportsContract
         string $campaignGuid,
         ?string $endDate = null,
         ?string $startDate = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): MetricsCounters;
 
     /**
@@ -41,6 +45,7 @@ interface ReportsContract
      * Default value: Current date
      * @param string $startDate The start date for the report data, formatted as YYYY-MM-DD.
      * Default value: 2006-01-01
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -49,7 +54,7 @@ interface ReportsContract
         ?string $attributionModel = null,
         ?string $endDate = null,
         ?string $startDate = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): RevenueAttributionAggregate;
 
     /**
@@ -65,6 +70,7 @@ interface ReportsContract
      * Default: 100
      * @param string $startDate Query param: The start date for the report data, formatted as YYYY-MM-DD.
      * Default value: 2006-01-01
+     * @param RequestOpts|null $requestOptions
      *
      * @return Page<ContactReference>
      *
@@ -77,6 +83,6 @@ interface ReportsContract
         ?string $endDate = null,
         ?int $limit = null,
         ?string $startDate = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): Page;
 }

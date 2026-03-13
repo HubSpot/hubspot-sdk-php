@@ -13,6 +13,9 @@ use HubspotSDK\Marketing\Campaigns\Spend\SpendGetParams;
 use HubspotSDK\Marketing\Campaigns\Spend\SpendUpdateParams;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface SpendRawContract
 {
     /**
@@ -20,6 +23,7 @@ interface SpendRawContract
      *
      * @param string $campaignGuid unique identifier for the campaign
      * @param array<string,mixed>|SpendCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicSpendItem>
      *
@@ -28,7 +32,7 @@ interface SpendRawContract
     public function create(
         string $campaignGuid,
         array|SpendCreateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -36,6 +40,7 @@ interface SpendRawContract
      *
      * @param int $spendID path param: Unique identifier for the spend item
      * @param array<string,mixed>|SpendUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicSpendItem>
      *
@@ -44,7 +49,7 @@ interface SpendRawContract
     public function update(
         int $spendID,
         array|SpendUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -52,6 +57,7 @@ interface SpendRawContract
      *
      * @param int $spendID unique identifier for the spend item
      * @param array<string,mixed>|SpendDeleteParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -60,7 +66,7 @@ interface SpendRawContract
     public function delete(
         int $spendID,
         array|SpendDeleteParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -68,6 +74,7 @@ interface SpendRawContract
      *
      * @param int $spendID unique identifier for the spend item
      * @param array<string,mixed>|SpendGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicSpendItem>
      *
@@ -76,6 +83,6 @@ interface SpendRawContract
     public function get(
         int $spendID,
         array|SpendGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

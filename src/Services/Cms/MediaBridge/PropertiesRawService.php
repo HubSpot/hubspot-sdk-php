@@ -20,10 +20,19 @@ use HubspotSDK\Cms\MediaBridge\Properties\PropertyListParams;
 use HubspotSDK\Cms\MediaBridge\Properties\PropertyUpdateParams;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\OptionInput;
 use HubspotSDK\Property;
+use HubspotSDK\PropertyCreate;
+use HubspotSDK\PropertyName;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Cms\MediaBridge\PropertiesRawContract;
 
+/**
+ * @phpstan-import-type PropertyCreateShape from \HubspotSDK\PropertyCreate
+ * @phpstan-import-type OptionInputShape from \HubspotSDK\OptionInput
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type PropertyNameShape from \HubspotSDK\PropertyName
+ */
 final class PropertiesRawService implements PropertiesRawContract
 {
     // @phpstan-ignore-next-line
@@ -44,24 +53,19 @@ final class PropertiesRawService implements PropertiesRawContract
      *   groupName: string,
      *   label: string,
      *   name: string,
-     *   type: 'bool'|'date'|'datetime'|'enumeration'|'number'|'phone_number'|'string'|Type,
+     *   type: Type|value-of<Type>,
      *   calculationFormula?: string,
-     *   dataSensitivity?: 'highly_sensitive'|'non_sensitive'|'sensitive'|DataSensitivity,
+     *   dataSensitivity?: DataSensitivity|value-of<DataSensitivity>,
      *   description?: string,
      *   displayOrder?: int,
      *   externalOptions?: bool,
      *   formField?: bool,
      *   hasUniqueValue?: bool,
      *   hidden?: bool,
-     *   options?: list<array{
-     *     displayOrder: int,
-     *     hidden: bool,
-     *     label: string,
-     *     value: string,
-     *     description?: string,
-     *   }>,
+     *   options?: list<OptionInput|OptionInputShape>,
      *   referencedObjectType?: string,
      * }|PropertyCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Property>
      *
@@ -70,7 +74,7 @@ final class PropertiesRawService implements PropertiesRawContract
     public function create(
         string $objectType,
         array|PropertyCreateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = PropertyCreateParams::parseRequest(
             $params,
@@ -107,15 +111,10 @@ final class PropertiesRawService implements PropertiesRawContract
      *   hasUniqueValue?: bool,
      *   hidden?: bool,
      *   label?: string,
-     *   options?: list<array{
-     *     displayOrder: int,
-     *     hidden: bool,
-     *     label: string,
-     *     value: string,
-     *     description?: string,
-     *   }>,
-     *   type?: 'bool'|'date'|'datetime'|'enumeration'|'number'|'phone_number'|'string'|PropertyUpdateParams\Type,
+     *   options?: list<OptionInput|OptionInputShape>,
+     *   type?: PropertyUpdateParams\Type|value-of<PropertyUpdateParams\Type>,
      * }|PropertyUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Property>
      *
@@ -124,7 +123,7 @@ final class PropertiesRawService implements PropertiesRawContract
     public function update(
         string $propertyName,
         array|PropertyUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = PropertyUpdateParams::parseRequest(
             $params,
@@ -162,6 +161,7 @@ final class PropertiesRawService implements PropertiesRawContract
      * @param array{
      *   appID: int, archived?: bool, properties?: string
      * }|PropertyListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CollectionResponsePropertyNoPaging>
      *
@@ -170,7 +170,7 @@ final class PropertiesRawService implements PropertiesRawContract
     public function list(
         string $objectType,
         array|PropertyListParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = PropertyListParams::parseRequest(
             $params,
@@ -196,6 +196,7 @@ final class PropertiesRawService implements PropertiesRawContract
      *
      * @param string $propertyName the name of the property to delete
      * @param array{appID: int, objectType: string}|PropertyDeleteParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -204,7 +205,7 @@ final class PropertiesRawService implements PropertiesRawContract
     public function delete(
         string $propertyName,
         array|PropertyDeleteParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = PropertyDeleteParams::parseRequest(
             $params,
@@ -236,25 +237,9 @@ final class PropertiesRawService implements PropertiesRawContract
      *
      * @param string $objectType path param: The type of object to create the properties for
      * @param array{
-     *   appID: int,
-     *   inputs: list<array{
-     *     fieldType: 'booleancheckbox'|'calculation_equation'|'checkbox'|'date'|'file'|'html'|'number'|'phonenumber'|'radio'|'select'|'text'|'textarea'|\HubspotSDK\PropertyCreate\FieldType,
-     *     groupName: string,
-     *     label: string,
-     *     name: string,
-     *     type: 'bool'|'date'|'datetime'|'enumeration'|'number'|'phone_number'|'string'|\HubspotSDK\PropertyCreate\Type,
-     *     calculationFormula?: string,
-     *     dataSensitivity?: 'highly_sensitive'|'non_sensitive'|'sensitive'|\HubspotSDK\PropertyCreate\DataSensitivity,
-     *     description?: string,
-     *     displayOrder?: int,
-     *     externalOptions?: bool,
-     *     formField?: bool,
-     *     hasUniqueValue?: bool,
-     *     hidden?: bool,
-     *     options?: list<array<string,mixed>>,
-     *     referencedObjectType?: string,
-     *   }>,
+     *   appID: int, inputs: list<PropertyCreate|PropertyCreateShape>
      * }|PropertyCreateBatchParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BatchResponseProperty>
      *
@@ -263,7 +248,7 @@ final class PropertiesRawService implements PropertiesRawContract
     public function createBatch(
         string $objectType,
         array|PropertyCreateBatchParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = PropertyCreateBatchParams::parseRequest(
             $params,
@@ -291,8 +276,9 @@ final class PropertiesRawService implements PropertiesRawContract
      *
      * @param string $objectType path param: The object type for the specified properties to be archived
      * @param array{
-     *   appID: int, inputs: list<array{name: string}>
+     *   appID: int, inputs: list<PropertyName|PropertyNameShape>
      * }|PropertyDeleteBatchParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -301,7 +287,7 @@ final class PropertiesRawService implements PropertiesRawContract
     public function deleteBatch(
         string $objectType,
         array|PropertyDeleteBatchParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = PropertyDeleteBatchParams::parseRequest(
             $params,
@@ -333,6 +319,7 @@ final class PropertiesRawService implements PropertiesRawContract
      * @param array{
      *   appID: int, objectType: string, archived?: bool, properties?: string
      * }|PropertyGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Property>
      *
@@ -341,7 +328,7 @@ final class PropertiesRawService implements PropertiesRawContract
     public function get(
         string $propertyName,
         array|PropertyGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = PropertyGetParams::parseRequest(
             $params,
@@ -376,9 +363,10 @@ final class PropertiesRawService implements PropertiesRawContract
      * @param array{
      *   appID: int,
      *   archived: bool,
-     *   dataSensitivity: 'highly_sensitive'|'non_sensitive'|'sensitive'|PropertyGetBatchParams\DataSensitivity,
-     *   inputs: list<array{name: string}>,
+     *   dataSensitivity: PropertyGetBatchParams\DataSensitivity|value-of<PropertyGetBatchParams\DataSensitivity>,
+     *   inputs: list<PropertyName|PropertyNameShape>,
      * }|PropertyGetBatchParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BatchResponseProperty>
      *
@@ -387,7 +375,7 @@ final class PropertiesRawService implements PropertiesRawContract
     public function getBatch(
         string $objectType,
         array|PropertyGetBatchParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = PropertyGetBatchParams::parseRequest(
             $params,

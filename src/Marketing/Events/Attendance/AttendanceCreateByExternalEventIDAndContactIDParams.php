@@ -28,7 +28,7 @@ use HubspotSDK\Marketing\Events\MarketingEventSubscriber;
  *
  * @phpstan-type AttendanceCreateByExternalEventIDAndContactIDParamsShape = array{
  *   externalEventID: string,
- *   inputs: list<MarketingEventSubscriberShape>,
+ *   inputs: list<MarketingEventSubscriber|MarketingEventSubscriberShape>,
  *   externalAccountID?: string|null,
  * }
  */
@@ -83,7 +83,7 @@ final class AttendanceCreateByExternalEventIDAndContactIDParams implements BaseM
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<MarketingEventSubscriberShape> $inputs
+     * @param list<MarketingEventSubscriber|MarketingEventSubscriberShape> $inputs
      */
     public static function with(
         string $externalEventID,
@@ -111,7 +111,7 @@ final class AttendanceCreateByExternalEventIDAndContactIDParams implements BaseM
     /**
      * List of HubSpot contacts to subscribe to the marketing event.
      *
-     * @param list<MarketingEventSubscriberShape> $inputs
+     * @param list<MarketingEventSubscriber|MarketingEventSubscriberShape> $inputs
      */
     public function withInputs(array $inputs): self
     {

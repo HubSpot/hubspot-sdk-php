@@ -25,12 +25,16 @@ use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface TablesRawContract
 {
     /**
      * @api
      *
      * @param array<string,mixed>|TableCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<HubDBTableV3>
      *
@@ -38,13 +42,14 @@ interface TablesRawContract
      */
     public function create(
         array|TableCreateParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|TableListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<HubDBTableV3>>
      *
@@ -52,13 +57,14 @@ interface TablesRawContract
      */
     public function list(
         array|TableListParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param string $tableIDOrName the ID or name of the table to archive
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -66,7 +72,7 @@ interface TablesRawContract
      */
     public function delete(
         string $tableIDOrName,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 
     /**
@@ -74,6 +80,7 @@ interface TablesRawContract
      *
      * @param string $tableIDOrName the ID or name of the table to clone
      * @param array<string,mixed>|TableCloneDraftParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<HubDBTableV3>
      *
@@ -82,7 +89,7 @@ interface TablesRawContract
     public function cloneDraft(
         string $tableIDOrName,
         array|TableCloneDraftParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -90,6 +97,7 @@ interface TablesRawContract
      *
      * @param int $versionID the ID of the specific version of the table to delete
      * @param array<string,mixed>|TableDeleteVersionParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -98,7 +106,7 @@ interface TablesRawContract
     public function deleteVersion(
         int $versionID,
         array|TableDeleteVersionParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -106,6 +114,7 @@ interface TablesRawContract
      *
      * @param string $tableIDOrName the ID or name of the table to export
      * @param array<string,mixed>|TableExportParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<string>
      *
@@ -114,7 +123,7 @@ interface TablesRawContract
     public function export(
         string $tableIDOrName,
         array|TableExportParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -122,6 +131,7 @@ interface TablesRawContract
      *
      * @param string $tableIDOrName the ID or name of the table to export
      * @param array<string,mixed>|TableExportDraftParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<string>
      *
@@ -130,7 +140,7 @@ interface TablesRawContract
     public function exportDraft(
         string $tableIDOrName,
         array|TableExportDraftParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -138,6 +148,7 @@ interface TablesRawContract
      *
      * @param string $tableIDOrName the ID or name of the table to return
      * @param array<string,mixed>|TableGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<HubDBTableV3>
      *
@@ -146,7 +157,7 @@ interface TablesRawContract
     public function get(
         string $tableIDOrName,
         array|TableGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -154,6 +165,7 @@ interface TablesRawContract
      *
      * @param string $tableIDOrName the ID or name of the table to return
      * @param array<string,mixed>|TableGetDraftParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<HubDBTableV3>
      *
@@ -162,7 +174,7 @@ interface TablesRawContract
     public function getDraft(
         string $tableIDOrName,
         array|TableGetDraftParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -170,6 +182,7 @@ interface TablesRawContract
      *
      * @param string $tableIDOrName the ID of the destination table where data will be imported
      * @param array<string,mixed>|TableImportDraftParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ImportResult>
      *
@@ -178,13 +191,14 @@ interface TablesRawContract
     public function importDraft(
         string $tableIDOrName,
         array|TableImportDraftParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|TableListDraftParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<HubDBTableV3>>
      *
@@ -192,7 +206,7 @@ interface TablesRawContract
      */
     public function listDraft(
         array|TableListDraftParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -200,6 +214,7 @@ interface TablesRawContract
      *
      * @param string $tableIDOrName the ID or name of the table to publish
      * @param array<string,mixed>|TablePublishDraftParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<HubDBTableV3>
      *
@@ -208,7 +223,7 @@ interface TablesRawContract
     public function publishDraft(
         string $tableIDOrName,
         array|TablePublishDraftParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -216,6 +231,7 @@ interface TablesRawContract
      *
      * @param string $tableIDOrName the ID or name of the table to reset
      * @param array<string,mixed>|TableResetDraftParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<HubDBTableV3>
      *
@@ -224,7 +240,7 @@ interface TablesRawContract
     public function resetDraft(
         string $tableIDOrName,
         array|TableResetDraftParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -232,6 +248,7 @@ interface TablesRawContract
      *
      * @param string $tableIDOrName the ID or name of the table to publish
      * @param array<string,mixed>|TableUnpublishParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<HubDBTableV3>
      *
@@ -240,7 +257,7 @@ interface TablesRawContract
     public function unpublish(
         string $tableIDOrName,
         array|TableUnpublishParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -248,6 +265,7 @@ interface TablesRawContract
      *
      * @param string $tableIDOrName path param: The ID or name of the table to update
      * @param array<string,mixed>|TableUpdateDraftParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<HubDBTableV3>
      *
@@ -256,6 +274,6 @@ interface TablesRawContract
     public function updateDraft(
         string $tableIDOrName,
         array|TableUpdateDraftParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

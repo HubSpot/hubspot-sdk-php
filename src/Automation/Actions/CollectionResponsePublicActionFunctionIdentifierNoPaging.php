@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-import-type PublicActionFunctionIdentifierShape from \HubspotSDK\Automation\Actions\PublicActionFunctionIdentifier
  *
  * @phpstan-type CollectionResponsePublicActionFunctionIdentifierNoPagingShape = array{
- *   results: list<PublicActionFunctionIdentifierShape>
+ *   results: list<PublicActionFunctionIdentifier|PublicActionFunctionIdentifierShape>,
  * }
  */
 final class CollectionResponsePublicActionFunctionIdentifierNoPaging implements BaseModel
@@ -48,7 +48,7 @@ final class CollectionResponsePublicActionFunctionIdentifierNoPaging implements 
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicActionFunctionIdentifierShape> $results
+     * @param list<PublicActionFunctionIdentifier|PublicActionFunctionIdentifierShape> $results
      */
     public static function with(array $results): self
     {
@@ -60,7 +60,7 @@ final class CollectionResponsePublicActionFunctionIdentifierNoPaging implements 
     }
 
     /**
-     * @param list<PublicActionFunctionIdentifierShape> $results
+     * @param list<PublicActionFunctionIdentifier|PublicActionFunctionIdentifierShape> $results
      */
     public function withResults(array $results): self
     {

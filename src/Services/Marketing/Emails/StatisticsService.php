@@ -13,6 +13,9 @@ use HubspotSDK\Marketing\Emails\Statistics\StatisticGetHistogramParams\Interval;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Marketing\Emails\StatisticsContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class StatisticsService implements StatisticsContract
 {
     /**
@@ -37,6 +40,7 @@ final class StatisticsService implements StatisticsContract
      * @param string $endTimestamp the end timestamp of the time span, in ISO8601 representation
      * @param string $property Specifies which email properties should be returned. All properties will be returned by default.
      * @param string $startTimestamp the start timestamp of the time span, in ISO8601 representation
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -45,7 +49,7 @@ final class StatisticsService implements StatisticsContract
         ?string $endTimestamp = null,
         ?string $property = null,
         ?string $startTimestamp = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): AggregateEmailStatistics {
         $params = Util::removeNulls(
             [
@@ -69,17 +73,18 @@ final class StatisticsService implements StatisticsContract
      *
      * @param list<int> $emailIDs Filter by email IDs. Only include statistics of emails with these IDs.
      * @param string $endTimestamp the end timestamp of the time span, in ISO8601 representation
-     * @param 'DAY'|'HOUR'|'MINUTE'|'MONTH'|'QUARTER'|'QUARTER_HOUR'|'SECOND'|'WEEK'|'YEAR'|Interval $interval the interval to aggregate statistics for
+     * @param Interval|value-of<Interval> $interval the interval to aggregate statistics for
      * @param string $startTimestamp the start timestamp of the time span, in ISO8601 representation
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function getHistogram(
         ?array $emailIDs = null,
         ?string $endTimestamp = null,
-        string|Interval|null $interval = null,
+        Interval|string|null $interval = null,
         ?string $startTimestamp = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): CollectionResponseWithTotalEmailStatisticIntervalNoPaging {
         $params = Util::removeNulls(
             [

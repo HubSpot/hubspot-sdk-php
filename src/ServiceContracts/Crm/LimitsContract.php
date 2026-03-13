@@ -15,6 +15,9 @@ use HubspotSDK\Crm\Limits\PipelineLimitResponse;
 use HubspotSDK\Crm\Limits\RecordLimitResponse;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface LimitsContract
 {
     /**
@@ -22,13 +25,14 @@ interface LimitsContract
      *
      * @param string $fromObjectTypeID objectTypeId of the object type on the "from" side of the association
      * @param string $toObjectTypeID objectTypeId of the object type on the "to" side of the association
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function getAssociationLabelLimits(
         ?string $fromObjectTypeID = null,
         ?string $toObjectTypeID = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): CollectionResponseAssociationLabelLimitResponseNoPaging;
 
     /**
@@ -36,78 +40,92 @@ interface LimitsContract
      *
      * @param string $toObjectTypeID objectTypeId of the object type on the "to" side of the association
      * @param string $fromObjectTypeID objectTypeId of the object type on the "from" side of the association
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function getAssociationRecordsLimitsByObjectType(
         string $toObjectTypeID,
         string $fromObjectTypeID,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): AssociationRecordLimitResponse;
 
     /**
      * @api
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @throws APIException
      */
     public function getAssociationRecordsLimitsFromObjects(
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): CollectionResponseObjectTypeNearOrAtAssociationLimitNoPaging;
 
     /**
      * @api
      *
      * @param string $fromObjectTypeID objectTypeId of the object type on the "from" side of the association
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function getAssociationRecordsLimitsToObjects(
         string $fromObjectTypeID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): CollectionResponseObjectTypeNearOrAtAssociationLimitNoPaging;
 
     /**
      * @api
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @throws APIException
      */
     public function getCalculatedPropertyLimits(
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): CalculatedPropertyLimitResponse;
 
     /**
      * @api
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @throws APIException
      */
     public function getCustomObjectTypeLimits(
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): CustomObjectLimitResponse;
 
     /**
      * @api
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @throws APIException
      */
     public function getCustomPropertyLimits(
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): CustomPropertyLimitResponse;
 
     /**
      * @api
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @throws APIException
      */
     public function getPipelineLimits(
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): PipelineLimitResponse;
 
     /**
      * @api
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @throws APIException
      */
     public function getRecordLimits(
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): RecordLimitResponse;
 }

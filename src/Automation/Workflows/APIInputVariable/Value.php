@@ -30,7 +30,8 @@ use HubspotSDK\Core\Conversion\Contracts\ConverterSource;
  * @phpstan-import-type APIStaticAppendValueShape from \HubspotSDK\Automation\Workflows\APIStaticAppendValue
  * @phpstan-import-type APIEnrollmentEventPropertyValueShape from \HubspotSDK\Automation\Workflows\APIEnrollmentEventPropertyValue
  *
- * @phpstan-type ValueShape = APIActionDataValueShape|APIObjectPropertyValueShape|APIStaticValueShape|APIRelativeDateTimeValueShape|APITimestampValueShape|APIIncrementValueShape|APIFetchedObjectPropertyValueShape|APIAppendObjectPropertyValueShape|APIStaticAppendValueShape|APIEnrollmentEventPropertyValueShape
+ * @phpstan-type ValueVariants = APIActionDataValue|APIObjectPropertyValue|APIStaticValue|APIRelativeDateTimeValue|APITimestampValue|APIIncrementValue|APIFetchedObjectPropertyValue|APIAppendObjectPropertyValue|APIStaticAppendValue|APIEnrollmentEventPropertyValue
+ * @phpstan-type ValueShape = ValueVariants|APIActionDataValueShape|APIObjectPropertyValueShape|APIStaticValueShape|APIRelativeDateTimeValueShape|APITimestampValueShape|APIIncrementValueShape|APIFetchedObjectPropertyValueShape|APIAppendObjectPropertyValueShape|APIStaticAppendValueShape|APIEnrollmentEventPropertyValueShape
  */
 final class Value implements ConverterSource
 {

@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-import-type UsageForObjectTypeShape from \HubspotSDK\Crm\Limits\UsageForObjectType
  *
  * @phpstan-type CalculatedPropertyLimitResponseShape = array{
- *   byObjectType: list<UsageForObjectTypeShape>,
+ *   byObjectType: list<UsageForObjectType|UsageForObjectTypeShape>,
  *   overallLimit: int,
  *   overallPercentage: float,
  *   overallUsage: int,
@@ -78,7 +78,7 @@ final class CalculatedPropertyLimitResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<UsageForObjectTypeShape> $byObjectType
+     * @param list<UsageForObjectType|UsageForObjectTypeShape> $byObjectType
      */
     public static function with(
         array $byObjectType,
@@ -97,7 +97,7 @@ final class CalculatedPropertyLimitResponse implements BaseModel
     }
 
     /**
-     * @param list<UsageForObjectTypeShape> $byObjectType
+     * @param list<UsageForObjectType|UsageForObjectTypeShape> $byObjectType
      */
     public function withByObjectType(array $byObjectType): self
     {

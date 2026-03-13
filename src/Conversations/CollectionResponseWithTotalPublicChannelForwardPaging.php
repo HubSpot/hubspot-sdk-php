@@ -15,7 +15,7 @@ use HubspotSDK\ForwardPaging;
  * @phpstan-import-type ForwardPagingShape from \HubspotSDK\ForwardPaging
  *
  * @phpstan-type CollectionResponseWithTotalPublicChannelForwardPagingShape = array{
- *   results: list<PublicChannelShape>,
+ *   results: list<PublicChannel|PublicChannelShape>,
  *   total: int,
  *   paging?: null|ForwardPaging|ForwardPagingShape,
  * }
@@ -63,7 +63,7 @@ final class CollectionResponseWithTotalPublicChannelForwardPaging implements Bas
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicChannelShape> $results
+     * @param list<PublicChannel|PublicChannelShape> $results
      * @param ForwardPaging|ForwardPagingShape|null $paging
      */
     public static function with(
@@ -82,7 +82,7 @@ final class CollectionResponseWithTotalPublicChannelForwardPaging implements Bas
     }
 
     /**
-     * @param list<PublicChannelShape> $results
+     * @param list<PublicChannel|PublicChannelShape> $results
      */
     public function withResults(array $results): self
     {

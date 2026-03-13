@@ -25,6 +25,23 @@ final class Util
 
     public const JSONL_CONTENT_TYPE = '/^application\/(:?x-(?:n|l)djson)|(:?(?:x-)?jsonl)/';
 
+    public static function getenv(string $key): ?string
+    {
+        if (array_key_exists($key, array: $_ENV)) {
+            if (!is_string($value = $_ENV[$key])) {
+                throw new \InvalidArgumentException;
+            }
+
+            return $value;
+        }
+
+        if (is_string($value = getenv($key))) {
+            return $value;
+        }
+
+        return null;
+    }
+
     /**
      * @return array<string,mixed>
      */
@@ -75,16 +92,6 @@ final class Util
         }
 
         return $acc;
-    }
-
-    /**
-     * @param array<mixed,mixed> $arr
-     *
-     * @return array<mixed,mixed>
-     */
-    public static function array_filter_omit(array $arr): array
-    {
-        return array_filter($arr, fn ($v, $_) => OMIT !== $v, mode: ARRAY_FILTER_USE_BOTH);
     }
 
     public static function strVal(mixed $value): string
@@ -259,7 +266,7 @@ final class Util
         mixed $body
     ): RequestInterface {
         if ($body instanceof StreamInterface) {
-            // @var RequestInterface
+            /** @var RequestInterface */
             return $req->withBody($body);
         }
 
@@ -269,7 +276,7 @@ final class Util
                 $encoded = json_encode($body, flags: self::JSON_ENCODE_FLAGS);
                 $stream = $factory->createStream($encoded);
 
-                // @var RequestInterface
+                /** @var RequestInterface */
                 return $req->withBody($stream);
             }
         }
@@ -279,14 +286,14 @@ final class Util
             $encoded = implode('', iterator_to_array($gen));
             $stream = $factory->createStream($encoded);
 
-            // @var RequestInterface
+            /** @var RequestInterface */
             return $req->withHeader('Content-Type', "{$contentType}; boundary={$boundary}")->withBody($stream);
         }
 
         if (is_resource($body)) {
             $stream = $factory->createStreamFromResource($body);
 
-            // @var RequestInterface
+            /** @var RequestInterface */
             return $req->withBody($stream);
         }
 

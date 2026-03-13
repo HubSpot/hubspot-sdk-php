@@ -11,6 +11,9 @@ use HubspotSDK\Crm\Extensions\Calling\ChannelConnectionSettingsResponse;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Extensions\Calling\ChannelConnectionSettingsContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class ChannelConnectionSettingsService implements ChannelConnectionSettingsContract
 {
     /**
@@ -29,13 +32,15 @@ final class ChannelConnectionSettingsService implements ChannelConnectionSetting
     /**
      * @api
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @throws APIException
      */
     public function create(
         int $appID,
         bool $isReady,
         string $url,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): ChannelConnectionSettingsResponse {
         $params = Util::removeNulls(['isReady' => $isReady, 'url' => $url]);
 
@@ -48,13 +53,15 @@ final class ChannelConnectionSettingsService implements ChannelConnectionSetting
     /**
      * @api
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @throws APIException
      */
     public function update(
         int $appID,
         ?bool $isReady = null,
         ?string $url = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): ChannelConnectionSettingsResponse {
         $params = Util::removeNulls(['isReady' => $isReady, 'url' => $url]);
 
@@ -67,11 +74,13 @@ final class ChannelConnectionSettingsService implements ChannelConnectionSetting
     /**
      * @api
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @throws APIException
      */
     public function delete(
         int $appID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): mixed {
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->delete($appID, requestOptions: $requestOptions);
@@ -82,11 +91,13 @@ final class ChannelConnectionSettingsService implements ChannelConnectionSetting
     /**
      * @api
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @throws APIException
      */
     public function get(
         int $appID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): ChannelConnectionSettingsResponse {
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->get($appID, requestOptions: $requestOptions);

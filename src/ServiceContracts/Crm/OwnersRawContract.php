@@ -12,12 +12,16 @@ use HubspotSDK\Crm\Owners\PublicOwner;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface OwnersRawContract
 {
     /**
      * @api
      *
      * @param array<string,mixed>|OwnerListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<PublicOwner>>
      *
@@ -25,13 +29,14 @@ interface OwnersRawContract
      */
     public function list(
         array|OwnerListParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|OwnerGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicOwner>
      *
@@ -40,6 +45,6 @@ interface OwnersRawContract
     public function get(
         int $ownerID,
         array|OwnerGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

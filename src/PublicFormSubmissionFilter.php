@@ -12,6 +12,8 @@ use HubspotSDK\PublicFormSubmissionFilter\FilterType;
 use HubspotSDK\PublicFormSubmissionFilter\Operator;
 
 /**
+ * @phpstan-import-type CoalescingRefineByVariants from \HubspotSDK\PublicFormSubmissionFilter\CoalescingRefineBy
+ * @phpstan-import-type PruningRefineByVariants from \HubspotSDK\PublicFormSubmissionFilter\PruningRefineBy
  * @phpstan-import-type CoalescingRefineByShape from \HubspotSDK\PublicFormSubmissionFilter\CoalescingRefineBy
  * @phpstan-import-type PruningRefineByShape from \HubspotSDK\PublicFormSubmissionFilter\PruningRefineBy
  *
@@ -36,12 +38,14 @@ final class PublicFormSubmissionFilter implements BaseModel
     #[Required(enum: Operator::class)]
     public string $operator;
 
+    /** @var CoalescingRefineByVariants|null $coalescingRefineBy */
     #[Optional]
     public PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation|null $coalescingRefineBy;
 
     #[Optional('formId')]
     public ?string $formID;
 
+    /** @var PruningRefineByVariants|null $pruningRefineBy */
     #[Optional]
     public PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation|null $pruningRefineBy;
 

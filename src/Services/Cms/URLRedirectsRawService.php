@@ -15,6 +15,9 @@ use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Cms\URLRedirectsRawContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class URLRedirectsRawService implements URLRedirectsRawContract
 {
     // @phpstan-ignore-next-line
@@ -40,6 +43,7 @@ final class URLRedirectsRawService implements URLRedirectsRawContract
      *   isTrailingSlashOptional?: bool,
      *   precedence?: int,
      * }|URLRedirectCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<URLMapping>
      *
@@ -47,7 +51,7 @@ final class URLRedirectsRawService implements URLRedirectsRawContract
      */
     public function create(
         array|URLRedirectCreateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = URLRedirectCreateParams::parseRequest(
             $params,
@@ -82,9 +86,10 @@ final class URLRedirectsRawService implements URLRedirectsRawContract
      *   precedence: int,
      *   redirectStyle: int,
      *   routePrefix: string,
-     *   created?: string|\DateTimeInterface,
-     *   updated?: string|\DateTimeInterface,
+     *   created?: \DateTimeInterface,
+     *   updated?: \DateTimeInterface,
      * }|URLRedirectUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<URLMapping>
      *
@@ -93,7 +98,7 @@ final class URLRedirectsRawService implements URLRedirectsRawContract
     public function update(
         string $urlRedirectID,
         array|URLRedirectUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = URLRedirectUpdateParams::parseRequest(
             $params,
@@ -118,15 +123,16 @@ final class URLRedirectsRawService implements URLRedirectsRawContract
      * @param array{
      *   after?: string,
      *   archived?: bool,
-     *   createdAfter?: string|\DateTimeInterface,
-     *   createdAt?: string|\DateTimeInterface,
-     *   createdBefore?: string|\DateTimeInterface,
+     *   createdAfter?: \DateTimeInterface,
+     *   createdAt?: \DateTimeInterface,
+     *   createdBefore?: \DateTimeInterface,
      *   limit?: int,
      *   sort?: list<string>,
-     *   updatedAfter?: string|\DateTimeInterface,
-     *   updatedAt?: string|\DateTimeInterface,
-     *   updatedBefore?: string|\DateTimeInterface,
+     *   updatedAfter?: \DateTimeInterface,
+     *   updatedAt?: \DateTimeInterface,
+     *   updatedBefore?: \DateTimeInterface,
      * }|URLRedirectListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<URLMapping>>
      *
@@ -134,7 +140,7 @@ final class URLRedirectsRawService implements URLRedirectsRawContract
      */
     public function list(
         array|URLRedirectListParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = URLRedirectListParams::parseRequest(
             $params,
@@ -158,6 +164,7 @@ final class URLRedirectsRawService implements URLRedirectsRawContract
      * Delete one existing redirect, so it is no longer mapped.
      *
      * @param string $urlRedirectID the ID of the target redirect
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -165,7 +172,7 @@ final class URLRedirectsRawService implements URLRedirectsRawContract
      */
     public function delete(
         string $urlRedirectID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -182,6 +189,7 @@ final class URLRedirectsRawService implements URLRedirectsRawContract
      * Returns the details for a single existing URL redirect by ID.
      *
      * @param string $urlRedirectID the ID of the target redirect
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<URLMapping>
      *
@@ -189,7 +197,7 @@ final class URLRedirectsRawService implements URLRedirectsRawContract
      */
     public function get(
         string $urlRedirectID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(

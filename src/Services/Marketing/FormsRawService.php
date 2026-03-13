@@ -7,26 +7,24 @@ namespace HubspotSDK\Services\Marketing;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Marketing\Forms\FieldGroup;
-use HubspotSDK\Marketing\Forms\FieldGroup\GroupType;
-use HubspotSDK\Marketing\Forms\FieldGroup\RichTextType;
 use HubspotSDK\Marketing\Forms\FormDefinitionBase;
 use HubspotSDK\Marketing\Forms\FormDisplayOptions;
-use HubspotSDK\Marketing\Forms\FormDisplayOptions\Theme;
 use HubspotSDK\Marketing\Forms\FormGetParams;
 use HubspotSDK\Marketing\Forms\FormListParams;
 use HubspotSDK\Marketing\Forms\FormListParams\FormType;
-use HubspotSDK\Marketing\Forms\FormPostSubmitAction;
-use HubspotSDK\Marketing\Forms\FormStyle;
 use HubspotSDK\Marketing\Forms\FormUpdateParams;
 use HubspotSDK\Marketing\Forms\HubSpotFormConfiguration;
-use HubspotSDK\Marketing\Forms\HubSpotFormConfiguration\Language;
 use HubspotSDK\Marketing\Forms\HubSpotFormDefinition;
-use HubspotSDK\Marketing\Forms\LifecycleStage;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Marketing\FormsRawContract;
 
+/**
+ * @phpstan-import-type HubSpotFormConfigurationShape from \HubspotSDK\Marketing\Forms\HubSpotFormConfiguration
+ * @phpstan-import-type FormDisplayOptionsShape from \HubspotSDK\Marketing\Forms\FormDisplayOptions
+ * @phpstan-import-type LegalConsentOptionsShape from \HubspotSDK\Marketing\Forms\FormUpdateParams\LegalConsentOptions
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class FormsRawService implements FormsRawContract
 {
     // @phpstan-ignore-next-line
@@ -40,12 +38,15 @@ final class FormsRawService implements FormsRawContract
      *
      * Add a new `hubspot` form
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @return BaseResponse<FormDefinitionBase>
      *
      * @throws APIException
      */
-    public function create(?RequestOptions $requestOptions = null): BaseResponse
-    {
+    public function create(
+        RequestOptions|array|null $requestOptions = null
+    ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
@@ -63,36 +64,13 @@ final class FormsRawService implements FormsRawContract
      * @param string $formID the ID of the form to update
      * @param array{
      *   archived?: bool,
-     *   configuration?: array{
-     *     allowLinkToResetKnownValues: bool,
-     *     archivable: bool,
-     *     cloneable: bool,
-     *     createNewContactForNewEmail: bool,
-     *     editable: bool,
-     *     language: 'af'|'ar-eg'|'bg'|'bn'|'ca-es'|'cs'|'da'|'de'|'el'|'en'|'es'|'es-mx'|'fi'|'fr'|'fr-ca'|'he-il'|'hr'|'hu'|'id'|'it'|'ja'|'ko'|'lt'|'ms'|'nl'|'no-no'|'pl'|'pt'|'pt-br'|'ro'|'ru'|'sk'|'sl'|'sv'|'th'|'tl'|'tr'|'uk'|'vi'|'zh-cn'|'zh-hk'|'zh-tw'|Language,
-     *     notifyContactOwner: bool,
-     *     notifyRecipients: list<string>,
-     *     postSubmitAction: array<string,mixed>|FormPostSubmitAction,
-     *     prePopulateKnownValues: bool,
-     *     recaptchaEnabled: bool,
-     *     lifecycleStages?: list<array<string,mixed>|LifecycleStage>,
-     *   }|HubSpotFormConfiguration,
-     *   displayOptions?: array{
-     *     renderRawHTML: bool,
-     *     style: array<string,mixed>|FormStyle,
-     *     submitButtonText: string,
-     *     theme: 'canvas'|'default_style'|'legacy'|'linear'|'round'|'sharp'|Theme,
-     *     cssClass?: string,
-     *   }|FormDisplayOptions,
-     *   fieldGroups?: list<array{
-     *     fields: list<array<string,mixed>>,
-     *     groupType: 'default_group'|'progressive'|'queued'|GroupType,
-     *     richTextType: 'image'|'text'|RichTextType,
-     *     richText?: string,
-     *   }|FieldGroup>,
-     *   legalConsentOptions?: array<string,mixed>,
+     *   configuration?: HubSpotFormConfiguration|HubSpotFormConfigurationShape,
+     *   displayOptions?: FormDisplayOptions|FormDisplayOptionsShape,
+     *   fieldGroups?: list<mixed>,
+     *   legalConsentOptions?: LegalConsentOptionsShape,
      *   name?: string,
      * }|FormUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<FormDefinitionBase>
      *
@@ -101,7 +79,7 @@ final class FormsRawService implements FormsRawContract
     public function update(
         string $formID,
         array|FormUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = FormUpdateParams::parseRequest(
             $params,
@@ -126,9 +104,10 @@ final class FormsRawService implements FormsRawContract
      * @param array{
      *   after?: string,
      *   archived?: bool,
-     *   formTypes?: list<'hubspot'|'captured'|'flow'|'blog_comment'|'all'|FormType>,
+     *   formTypes?: list<FormType|value-of<FormType>>,
      *   limit?: int,
      * }|FormListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<HubSpotFormDefinition>>
      *
@@ -136,7 +115,7 @@ final class FormsRawService implements FormsRawContract
      */
     public function list(
         array|FormListParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = FormListParams::parseRequest(
             $params,
@@ -160,6 +139,7 @@ final class FormsRawService implements FormsRawContract
      * Archive a form definition. New submissions will not be accepted and the form definition will be permanently deleted after 3 months.
      *
      * @param string $formID the ID of the form to archive
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -167,7 +147,7 @@ final class FormsRawService implements FormsRawContract
      */
     public function delete(
         string $formID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -185,6 +165,7 @@ final class FormsRawService implements FormsRawContract
      *
      * @param string $formID The unique identifier of the form
      * @param array{archived?: bool}|FormGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<FormDefinitionBase>
      *
@@ -193,7 +174,7 @@ final class FormsRawService implements FormsRawContract
     public function get(
         string $formID,
         array|FormGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = FormGetParams::parseRequest(
             $params,
@@ -215,13 +196,15 @@ final class FormsRawService implements FormsRawContract
      *
      * Update all fields of a hubspot form definition.
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @return BaseResponse<FormDefinitionBase>
      *
      * @throws APIException
      */
     public function replace(
         string $formID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(

@@ -11,6 +11,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicCtaAnalyticsFilter\FilterType;
 
 /**
+ * @phpstan-import-type CoalescingRefineByVariants from \HubspotSDK\PublicCtaAnalyticsFilter\CoalescingRefineBy
+ * @phpstan-import-type PruningRefineByVariants from \HubspotSDK\PublicCtaAnalyticsFilter\PruningRefineBy
  * @phpstan-import-type CoalescingRefineByShape from \HubspotSDK\PublicCtaAnalyticsFilter\CoalescingRefineBy
  * @phpstan-import-type PruningRefineByShape from \HubspotSDK\PublicCtaAnalyticsFilter\PruningRefineBy
  *
@@ -37,9 +39,11 @@ final class PublicCtaAnalyticsFilter implements BaseModel
     #[Required]
     public string $operator;
 
+    /** @var CoalescingRefineByVariants|null $coalescingRefineBy */
     #[Optional]
     public PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation|null $coalescingRefineBy;
 
+    /** @var PruningRefineByVariants|null $pruningRefineBy */
     #[Optional]
     public PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation|null $pruningRefineBy;
 

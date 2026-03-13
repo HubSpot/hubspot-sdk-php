@@ -18,7 +18,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-import-type HubDBTableRowV3RequestShape from \HubspotSDK\Cms\Hubdb\HubDBTableRowV3Request
  *
  * @phpstan-type BatchCreateBatchParamsShape = array{
- *   inputs: list<HubDBTableRowV3RequestShape>
+ *   inputs: list<HubDBTableRowV3Request|HubDBTableRowV3RequestShape>
  * }
  */
 final class BatchCreateBatchParams implements BaseModel
@@ -55,7 +55,7 @@ final class BatchCreateBatchParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<HubDBTableRowV3RequestShape> $inputs
+     * @param list<HubDBTableRowV3Request|HubDBTableRowV3RequestShape> $inputs
      */
     public static function with(array $inputs): self
     {
@@ -67,7 +67,7 @@ final class BatchCreateBatchParams implements BaseModel
     }
 
     /**
-     * @param list<HubDBTableRowV3RequestShape> $inputs
+     * @param list<HubDBTableRowV3Request|HubDBTableRowV3RequestShape> $inputs
      */
     public function withInputs(array $inputs): self
     {

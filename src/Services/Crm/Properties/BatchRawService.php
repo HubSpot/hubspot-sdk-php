@@ -11,12 +11,17 @@ use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\Properties\Batch\BatchCreateParams;
 use HubspotSDK\Crm\Properties\Batch\BatchDeleteParams;
 use HubspotSDK\Crm\Properties\Batch\BatchGetParams;
-use HubspotSDK\PropertyCreate\DataSensitivity;
-use HubspotSDK\PropertyCreate\FieldType;
-use HubspotSDK\PropertyCreate\Type;
+use HubspotSDK\Crm\Properties\Batch\BatchGetParams\DataSensitivity;
+use HubspotSDK\PropertyCreate;
+use HubspotSDK\PropertyName;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Properties\BatchRawContract;
 
+/**
+ * @phpstan-import-type PropertyCreateShape from \HubspotSDK\PropertyCreate
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type PropertyNameShape from \HubspotSDK\PropertyName
+ */
 final class BatchRawService implements BatchRawContract
 {
     // @phpstan-ignore-next-line
@@ -31,24 +36,9 @@ final class BatchRawService implements BatchRawContract
      * Create a batch of properties using the same rules as when creating an individual property.
      *
      * @param array{
-     *   inputs: list<array{
-     *     fieldType: 'booleancheckbox'|'calculation_equation'|'checkbox'|'date'|'file'|'html'|'number'|'phonenumber'|'radio'|'select'|'text'|'textarea'|FieldType,
-     *     groupName: string,
-     *     label: string,
-     *     name: string,
-     *     type: 'bool'|'date'|'datetime'|'enumeration'|'number'|'phone_number'|'string'|Type,
-     *     calculationFormula?: string,
-     *     dataSensitivity?: 'highly_sensitive'|'non_sensitive'|'sensitive'|DataSensitivity,
-     *     description?: string,
-     *     displayOrder?: int,
-     *     externalOptions?: bool,
-     *     formField?: bool,
-     *     hasUniqueValue?: bool,
-     *     hidden?: bool,
-     *     options?: list<array<string,mixed>>,
-     *     referencedObjectType?: string,
-     *   }>,
+     *   inputs: list<PropertyCreate|PropertyCreateShape>
      * }|BatchCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BatchResponseProperty>
      *
@@ -57,7 +47,7 @@ final class BatchRawService implements BatchRawContract
     public function create(
         string $objectType,
         array|BatchCreateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = BatchCreateParams::parseRequest(
             $params,
@@ -79,7 +69,10 @@ final class BatchRawService implements BatchRawContract
      *
      * Archive a provided list of properties. This method will return a 204 No Content response on success regardless of the initial state of the property (e.g. active, already archived, non-existent).
      *
-     * @param array{inputs: list<array{name: string}>}|BatchDeleteParams $params
+     * @param array{
+     *   inputs: list<PropertyName|PropertyNameShape>
+     * }|BatchDeleteParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -88,7 +81,7 @@ final class BatchRawService implements BatchRawContract
     public function delete(
         string $objectType,
         array|BatchDeleteParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = BatchDeleteParams::parseRequest(
             $params,
@@ -110,13 +103,14 @@ final class BatchRawService implements BatchRawContract
      *
      * Read a provided list of properties.
      *
-     * @param string $objectType Path param:
+     * @param string $objectType Path param
      * @param array{
      *   archived: bool,
-     *   dataSensitivity: 'highly_sensitive'|'non_sensitive'|'sensitive'|BatchGetParams\DataSensitivity,
-     *   inputs: list<array{name: string}>,
+     *   dataSensitivity: DataSensitivity|value-of<DataSensitivity>,
+     *   inputs: list<PropertyName|PropertyNameShape>,
      *   locale?: string,
      * }|BatchGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BatchResponseProperty>
      *
@@ -125,7 +119,7 @@ final class BatchRawService implements BatchRawContract
     public function get(
         string $objectType,
         array|BatchGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = BatchGetParams::parseRequest(
             $params,

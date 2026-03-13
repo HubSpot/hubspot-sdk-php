@@ -18,7 +18,7 @@ use HubspotSDK\PropertyName;
  * @phpstan-import-type PropertyNameShape from \HubspotSDK\PropertyName
  *
  * @phpstan-type PropertyDeleteBatchParamsShape = array{
- *   appID: int, inputs: list<PropertyNameShape>
+ *   appID: int, inputs: list<PropertyName|PropertyNameShape>
  * }
  */
 final class PropertyDeleteBatchParams implements BaseModel
@@ -58,7 +58,7 @@ final class PropertyDeleteBatchParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PropertyNameShape> $inputs
+     * @param list<PropertyName|PropertyNameShape> $inputs
      */
     public static function with(int $appID, array $inputs): self
     {
@@ -79,7 +79,7 @@ final class PropertyDeleteBatchParams implements BaseModel
     }
 
     /**
-     * @param list<PropertyNameShape> $inputs
+     * @param list<PropertyName|PropertyNameShape> $inputs
      */
     public function withInputs(array $inputs): self
     {

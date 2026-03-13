@@ -16,6 +16,10 @@ use HubspotSDK\Crm\Timeline\Tokens\TokenUpdateParams;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Timeline\TokensRawContract;
 
+/**
+ * @phpstan-import-type TimelineEventTemplateTokenOptionShape from \HubspotSDK\Crm\Timeline\TimelineEventTemplateTokenOption
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class TokensRawService implements TokensRawContract
 {
     // @phpstan-ignore-next-line
@@ -34,14 +38,13 @@ final class TokensRawService implements TokensRawContract
      *   appID: int,
      *   label: string,
      *   name: string,
-     *   type: 'date'|'enumeration'|'number'|'string'|Type,
-     *   createdAt?: string|\DateTimeInterface,
+     *   type: Type|value-of<Type>,
+     *   createdAt?: \DateTimeInterface,
      *   objectPropertyName?: string,
-     *   options?: list<array{
-     *     label: string, value: string
-     *   }|TimelineEventTemplateTokenOption>,
-     *   updatedAt?: string|\DateTimeInterface,
+     *   options?: list<TimelineEventTemplateTokenOption|TimelineEventTemplateTokenOptionShape>,
+     *   updatedAt?: \DateTimeInterface,
      * }|TokenCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<TimelineEventTemplateToken>
      *
@@ -50,7 +53,7 @@ final class TokensRawService implements TokensRawContract
     public function create(
         string $eventTemplateID,
         array|TokenCreateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = TokenCreateParams::parseRequest(
             $params,
@@ -84,10 +87,9 @@ final class TokensRawService implements TokensRawContract
      *   eventTemplateID: string,
      *   label: string,
      *   objectPropertyName?: string,
-     *   options?: list<array{
-     *     label: string, value: string
-     *   }|TimelineEventTemplateTokenOption>,
+     *   options?: list<TimelineEventTemplateTokenOption|TimelineEventTemplateTokenOptionShape>,
      * }|TokenUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<TimelineEventTemplateToken>
      *
@@ -96,7 +98,7 @@ final class TokensRawService implements TokensRawContract
     public function update(
         string $tokenName,
         array|TokenUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = TokenUpdateParams::parseRequest(
             $params,
@@ -132,6 +134,7 @@ final class TokensRawService implements TokensRawContract
      *
      * @param string $tokenName the token name
      * @param array{appID: int, eventTemplateID: string}|TokenDeleteParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -140,7 +143,7 @@ final class TokensRawService implements TokensRawContract
     public function delete(
         string $tokenName,
         array|TokenDeleteParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = TokenDeleteParams::parseRequest(
             $params,

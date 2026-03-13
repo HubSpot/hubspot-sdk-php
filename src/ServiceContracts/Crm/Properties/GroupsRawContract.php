@@ -16,12 +16,16 @@ use HubspotSDK\Crm\Properties\Groups\GroupUpdateParams;
 use HubspotSDK\Crm\Properties\PropertyGroup;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface GroupsRawContract
 {
     /**
      * @api
      *
      * @param array<string,mixed>|GroupCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CreatedResponsePropertyGroup>
      *
@@ -30,14 +34,15 @@ interface GroupsRawContract
     public function create(
         string $objectType,
         array|GroupCreateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
-     * @param string $groupName Path param:
+     * @param string $groupName Path param
      * @param array<string,mixed>|GroupUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PropertyGroup>
      *
@@ -46,13 +51,14 @@ interface GroupsRawContract
     public function update(
         string $groupName,
         array|GroupUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|GroupListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CollectionResponsePropertyGroup>
      *
@@ -61,13 +67,14 @@ interface GroupsRawContract
     public function list(
         string $objectType,
         array|GroupListParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|GroupDeleteParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -76,14 +83,15 @@ interface GroupsRawContract
     public function delete(
         string $groupName,
         array|GroupDeleteParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
-     * @param string $groupName Path param:
+     * @param string $groupName Path param
      * @param array<string,mixed>|GroupGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PropertyGroup>
      *
@@ -92,6 +100,6 @@ interface GroupsRawContract
     public function get(
         string $groupName,
         array|GroupGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

@@ -17,6 +17,9 @@ use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\ImportsRawContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class ImportsRawService implements ImportsRawContract
 {
     // @phpstan-ignore-next-line
@@ -31,6 +34,7 @@ final class ImportsRawService implements ImportsRawContract
      * Begins importing data from the specified file resources. This uploads the corresponding file and uses the import request object to convert rows in the files to objects.
      *
      * @param array{files?: string, importRequest?: string}|ImportCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicImportResponse>
      *
@@ -38,7 +42,7 @@ final class ImportsRawService implements ImportsRawContract
      */
     public function create(
         array|ImportCreateParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = ImportCreateParams::parseRequest(
             $params,
@@ -64,6 +68,7 @@ final class ImportsRawService implements ImportsRawContract
      * @param array{
      *   after?: string, before?: string, limit?: int
      * }|ImportListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<PublicImportResponse>>
      *
@@ -71,7 +76,7 @@ final class ImportsRawService implements ImportsRawContract
      */
     public function list(
         array|ImportListParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = ImportListParams::parseRequest(
             $params,
@@ -94,13 +99,15 @@ final class ImportsRawService implements ImportsRawContract
      *
      * This allows a developer to cancel an active import.
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @return BaseResponse<ActionResponse>
      *
      * @throws APIException
      */
     public function cancel(
         int $importID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -116,13 +123,15 @@ final class ImportsRawService implements ImportsRawContract
      *
      * A complete summary of an import record, including any updates.
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @return BaseResponse<PublicImportResponse>
      *
      * @throws APIException
      */
     public function get(
         int $importID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -139,6 +148,7 @@ final class ImportsRawService implements ImportsRawContract
      * @param array{
      *   after?: string, includeErrorMessage?: bool, includeRowData?: bool, limit?: int
      * }|ImportListErrorsParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<PublicImportError>>
      *
@@ -147,7 +157,7 @@ final class ImportsRawService implements ImportsRawContract
     public function listErrors(
         int $importID,
         array|ImportListErrorsParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = ImportListErrorsParams::parseRequest(
             $params,

@@ -14,6 +14,9 @@ use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Automation\SequencesContract;
 use HubspotSDK\Services\Automation\Sequences\EnrollmentsService;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class SequencesService implements SequencesContract
 {
     /**
@@ -40,6 +43,8 @@ final class SequencesService implements SequencesContract
      *
      * Retrieve a list of sequences that belong to a specific user.
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @return Page<PublicSequenceLiteResponse>
      *
      * @throws APIException
@@ -49,7 +54,7 @@ final class SequencesService implements SequencesContract
         ?string $after = null,
         ?int $limit = null,
         ?string $name = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): Page {
         $params = Util::removeNulls(
             [
@@ -71,12 +76,14 @@ final class SequencesService implements SequencesContract
      *
      * Retrieve details of a specific sequence by its ID.
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @throws APIException
      */
     public function get(
         string $sequenceID,
         string $userID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): PublicSequenceResponse {
         $params = Util::removeNulls(['userID' => $userID]);
 

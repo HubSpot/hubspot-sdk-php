@@ -15,7 +15,7 @@ use HubspotSDK\ForwardPaging;
  * @phpstan-import-type ForwardPagingShape from \HubspotSDK\ForwardPaging
  *
  * @phpstan-type CollectionResponseWithTotalURLMappingForwardPagingShape = array{
- *   results: list<URLMappingShape>,
+ *   results: list<URLMapping|URLMappingShape>,
  *   total: int,
  *   paging?: null|ForwardPaging|ForwardPagingShape,
  * }
@@ -63,7 +63,7 @@ final class CollectionResponseWithTotalURLMappingForwardPaging implements BaseMo
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<URLMappingShape> $results
+     * @param list<URLMapping|URLMappingShape> $results
      * @param ForwardPaging|ForwardPagingShape|null $paging
      */
     public static function with(
@@ -82,7 +82,7 @@ final class CollectionResponseWithTotalURLMappingForwardPaging implements BaseMo
     }
 
     /**
-     * @param list<URLMappingShape> $results
+     * @param list<URLMapping|URLMappingShape> $results
      */
     public function withResults(array $results): self
     {

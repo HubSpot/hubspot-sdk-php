@@ -15,7 +15,7 @@ use HubspotSDK\ForwardPaging;
  * @phpstan-import-type ForwardPagingShape from \HubspotSDK\ForwardPaging
  *
  * @phpstan-type CollectionResponseHydratedCriticalActionForwardPagingShape = array{
- *   results: list<HydratedCriticalActionShape>,
+ *   results: list<HydratedCriticalAction|HydratedCriticalActionShape>,
  *   paging?: null|ForwardPaging|ForwardPagingShape,
  * }
  */
@@ -55,7 +55,7 @@ final class CollectionResponseHydratedCriticalActionForwardPaging implements Bas
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<HydratedCriticalActionShape> $results
+     * @param list<HydratedCriticalAction|HydratedCriticalActionShape> $results
      * @param ForwardPaging|ForwardPagingShape|null $paging
      */
     public static function with(
@@ -72,7 +72,7 @@ final class CollectionResponseHydratedCriticalActionForwardPaging implements Bas
     }
 
     /**
-     * @param list<HydratedCriticalActionShape> $results
+     * @param list<HydratedCriticalAction|HydratedCriticalActionShape> $results
      */
     public function withResults(array $results): self
     {

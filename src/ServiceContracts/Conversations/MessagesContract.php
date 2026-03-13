@@ -15,22 +15,28 @@ use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface MessagesContract
 {
     /**
      * @api
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @throws APIException
      */
     public function create(
         int $threadID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): ConversationsPublicConversationsMessage|PublicComment|PublicWelcomeMessage|PublicAssignmentMessage|PublicThreadStatusChange|PublicThreadInboxChange;
 
     /**
      * @api
      *
      * @param list<string> $sort
+     * @param RequestOpts|null $requestOptions
      *
      * @return Page<ConversationsPublicConversationsMessage|PublicComment|PublicWelcomeMessage|PublicAssignmentMessage|PublicThreadStatusChange|PublicThreadInboxChange,>
      *
@@ -43,15 +49,16 @@ interface MessagesContract
         ?int $limit = null,
         ?string $property = null,
         ?array $sort = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): Page;
 
     /**
      * @api
      *
-     * @param string $messageID Path param:
-     * @param int $threadID Path param:
-     * @param string $property Query param:
+     * @param string $messageID Path param
+     * @param int $threadID Path param
+     * @param string $property Query param
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -59,15 +66,16 @@ interface MessagesContract
         string $messageID,
         int $threadID,
         ?string $property = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): ConversationsPublicConversationsMessage|PublicComment|PublicWelcomeMessage|PublicAssignmentMessage|PublicThreadStatusChange|PublicThreadInboxChange;
 
     /**
      * @api
      *
-     * @param string $messageID Path param:
-     * @param int $threadID Path param:
-     * @param string $property Query param:
+     * @param string $messageID Path param
+     * @param int $threadID Path param
+     * @param string $property Query param
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -75,6 +83,6 @@ interface MessagesContract
         string $messageID,
         int $threadID,
         ?string $property = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): PublicMessageContent;
 }

@@ -10,18 +10,22 @@ use HubspotSDK\Marketing\Campaigns\PublicCampaignWithAssets;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface CampaignsContract
 {
     /**
      * @api
      *
      * @param array<string,string> $properties
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function create(
         array $properties,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): PublicCampaign;
 
     /**
@@ -29,13 +33,14 @@ interface CampaignsContract
      *
      * @param string $campaignGuid unique identifier for the campaign, formatted as a UUID
      * @param array<string,string> $properties
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function update(
         string $campaignGuid,
         array $properties,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): PublicCampaign;
 
     /**
@@ -49,6 +54,7 @@ interface CampaignsContract
      * @param list<string> $properties A comma-separated list of the properties to be returned in the response. If any of the specified properties has empty value on the requested object(s), they will be ignored and not returned in response. If this parameter is empty, the response will include an empty properties map
      * @param string $sort The field by which to sort the results. Allowed values are hs_name, createdAt, updatedAt. An optional '-' before the property name can denote descending order
      * Default: hs_name
+     * @param RequestOpts|null $requestOptions
      *
      * @return Page<PublicCampaign>
      *
@@ -60,19 +66,20 @@ interface CampaignsContract
         ?string $name = null,
         ?array $properties = null,
         ?string $sort = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): Page;
 
     /**
      * @api
      *
      * @param string $campaignGuid unique identifier for the campaign, formatted as a UUID
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function delete(
         string $campaignGuid,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): mixed;
 
     /**
@@ -84,6 +91,7 @@ interface CampaignsContract
      * @param list<string> $properties A comma-separated list of the properties to be returned in the response. If any of the specified properties has empty value on the requested object, they will be ignored and not returned in response. If this parameter is empty, the response will include an empty properties map.
      * @param string $startDate Start date to fetch asset metrics, formatted as YYYY-MM-DD. This date is used to fetch the metrics associated with the assets for a specified period.
      * If not provided, no asset metrics will be fetched.
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -92,6 +100,6 @@ interface CampaignsContract
         ?string $endDate = null,
         ?array $properties = null,
         ?string $startDate = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): PublicCampaignWithAssets;
 }

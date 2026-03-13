@@ -19,10 +19,10 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   contactID: string,
  *   duration: int,
  *   end: \DateTimeInterface,
- *   formFields: list<ExternalValidatedFormFieldShape>,
+ *   formFields: list<ExternalValidatedFormField|ExternalValidatedFormFieldShape>,
  *   guestEmails: list<string>,
  *   isOffline: bool,
- *   legalConsentResponses: list<ExternalLegalConsentResponseShape>,
+ *   legalConsentResponses: list<ExternalLegalConsentResponse|ExternalLegalConsentResponseShape>,
  *   start: \DateTimeInterface,
  *   subject: string,
  *   locale?: string|null,
@@ -131,9 +131,9 @@ final class ExternalMeetingBookingResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<ExternalValidatedFormFieldShape> $formFields
+     * @param list<ExternalValidatedFormField|ExternalValidatedFormFieldShape> $formFields
      * @param list<string> $guestEmails
-     * @param list<ExternalLegalConsentResponseShape> $legalConsentResponses
+     * @param list<ExternalLegalConsentResponse|ExternalLegalConsentResponseShape> $legalConsentResponses
      */
     public static function with(
         string $bookingTimezone,
@@ -215,7 +215,7 @@ final class ExternalMeetingBookingResponse implements BaseModel
     }
 
     /**
-     * @param list<ExternalValidatedFormFieldShape> $formFields
+     * @param list<ExternalValidatedFormField|ExternalValidatedFormFieldShape> $formFields
      */
     public function withFormFields(array $formFields): self
     {
@@ -245,7 +245,7 @@ final class ExternalMeetingBookingResponse implements BaseModel
     }
 
     /**
-     * @param list<ExternalLegalConsentResponseShape> $legalConsentResponses
+     * @param list<ExternalLegalConsentResponse|ExternalLegalConsentResponseShape> $legalConsentResponses
      */
     public function withLegalConsentResponses(
         array $legalConsentResponses

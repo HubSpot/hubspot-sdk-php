@@ -8,18 +8,22 @@ use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Marketing\Events\CollectionResponseWithTotalPublicListNoPaging;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface AssociationsContract
 {
     /**
      * @api
      *
      * @param string $marketingEventID the internal id of the marketing event in HubSpot
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function list(
         string $marketingEventID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): CollectionResponseWithTotalPublicListNoPaging;
 
     /**
@@ -27,13 +31,14 @@ interface AssociationsContract
      *
      * @param string $listID the ILS ID of the list
      * @param string $marketingEventID the internal id of the marketing event in HubSpot
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function delete(
         string $listID,
         string $marketingEventID,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): mixed;
 
     /**
@@ -41,13 +46,14 @@ interface AssociationsContract
      *
      * @param string $listID the ILS ID of the list
      * @param string $marketingEventID the internal id of the marketing event in HubSpot
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function associate(
         string $listID,
         string $marketingEventID,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): mixed;
 
     /**
@@ -56,6 +62,7 @@ interface AssociationsContract
      * @param string $listID the ILS ID of the list
      * @param string $externalAccountID the accountId that is associated with this marketing event in the external event application
      * @param string $externalEventID the id of the marketing event in the external event application
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -63,7 +70,7 @@ interface AssociationsContract
         string $listID,
         string $externalAccountID,
         string $externalEventID,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): mixed;
 
     /**
@@ -72,6 +79,7 @@ interface AssociationsContract
      * @param string $listID the ILS ID of the list
      * @param string $externalAccountID the accountId that is associated with this marketing event in the external event application
      * @param string $externalEventID the id of the marketing event in the external event application
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -79,7 +87,7 @@ interface AssociationsContract
         string $listID,
         string $externalAccountID,
         string $externalEventID,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): mixed;
 
     /**
@@ -87,12 +95,13 @@ interface AssociationsContract
      *
      * @param string $externalEventID the id of the marketing event in the external event application
      * @param string $externalAccountID The accountId that is associated with this marketing event in the external event application
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function listByExternalAccount(
         string $externalEventID,
         string $externalAccountID,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): CollectionResponseWithTotalPublicListNoPaging;
 }

@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-type ComboEventRuleShape = array{
  *   count: int,
  *   eventTypeID: string,
- *   propertyFilters: list<PropertyFilterShape>,
+ *   propertyFilters: list<PropertyFilter|PropertyFilterShape>,
  *   lookbackWindowDays?: int|null,
  * }
  */
@@ -64,7 +64,7 @@ final class ComboEventRule implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PropertyFilterShape> $propertyFilters
+     * @param list<PropertyFilter|PropertyFilterShape> $propertyFilters
      */
     public static function with(
         int $count,
@@ -100,7 +100,7 @@ final class ComboEventRule implements BaseModel
     }
 
     /**
-     * @param list<PropertyFilterShape> $propertyFilters
+     * @param list<PropertyFilter|PropertyFilterShape> $propertyFilters
      */
     public function withPropertyFilters(array $propertyFilters): self
     {

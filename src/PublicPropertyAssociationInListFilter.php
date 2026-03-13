@@ -11,6 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicPropertyAssociationInListFilter\FilterType;
 
 /**
+ * @phpstan-import-type CoalescingRefineByVariants from \HubspotSDK\PublicPropertyAssociationInListFilter\CoalescingRefineBy
  * @phpstan-import-type CoalescingRefineByShape from \HubspotSDK\PublicPropertyAssociationInListFilter\CoalescingRefineBy
  *
  * @phpstan-type PublicPropertyAssociationInListFilterShape = array{
@@ -27,6 +28,7 @@ final class PublicPropertyAssociationInListFilter implements BaseModel
     /** @use SdkModel<PublicPropertyAssociationInListFilterShape> */
     use SdkModel;
 
+    /** @var CoalescingRefineByVariants $coalescingRefineBy */
     #[Required]
     public PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation $coalescingRefineBy;
 

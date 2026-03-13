@@ -11,6 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * A form field that will be displayed based on what the customer entered in another field.
  *
+ * @phpstan-import-type DependentFieldVariants from \HubspotSDK\Marketing\Forms\DependentField\DependentField
  * @phpstan-import-type DependentFieldFilterShape from \HubspotSDK\Marketing\Forms\DependentFieldFilter
  * @phpstan-import-type DependentFieldShape from \HubspotSDK\Marketing\Forms\DependentField\DependentField as DependentFieldShape1
  *
@@ -32,6 +33,8 @@ final class DependentField implements BaseModel
 
     /**
      * A form field used for collecting an email address.
+     *
+     * @var DependentFieldVariants $dependentField
      */
     #[Required]
     public EmailField|PhoneField|MobilePhoneField|SingleLineTextField|MultiLineTextField|NumberField|SingleCheckboxField|MultipleCheckboxesField|DropdownField|RadioField|DatepickerField|FileField|PaymentLinkRadioField $dependentField;

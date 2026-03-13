@@ -15,6 +15,9 @@ use HubspotSDK\Marketing\Campaigns\Spend\SpendUpdateParams;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Marketing\Campaigns\SpendRawContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class SpendRawService implements SpendRawContract
 {
     // @phpstan-ignore-next-line
@@ -32,6 +35,7 @@ final class SpendRawService implements SpendRawContract
      * @param array{
      *   amount: float, name: string, order: int, description?: string
      * }|SpendCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicSpendItem>
      *
@@ -40,7 +44,7 @@ final class SpendRawService implements SpendRawContract
     public function create(
         string $campaignGuid,
         array|SpendCreateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = SpendCreateParams::parseRequest(
             $params,
@@ -70,6 +74,7 @@ final class SpendRawService implements SpendRawContract
      *   order: int,
      *   description?: string,
      * }|SpendUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicSpendItem>
      *
@@ -78,7 +83,7 @@ final class SpendRawService implements SpendRawContract
     public function update(
         int $spendID,
         array|SpendUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = SpendUpdateParams::parseRequest(
             $params,
@@ -104,6 +109,7 @@ final class SpendRawService implements SpendRawContract
      *
      * @param int $spendID unique identifier for the spend item
      * @param array{campaignGuid: string}|SpendDeleteParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -112,7 +118,7 @@ final class SpendRawService implements SpendRawContract
     public function delete(
         int $spendID,
         array|SpendDeleteParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = SpendDeleteParams::parseRequest(
             $params,
@@ -137,6 +143,7 @@ final class SpendRawService implements SpendRawContract
      *
      * @param int $spendID unique identifier for the spend item
      * @param array{campaignGuid: string}|SpendGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicSpendItem>
      *
@@ -145,7 +152,7 @@ final class SpendRawService implements SpendRawContract
     public function get(
         int $spendID,
         array|SpendGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = SpendGetParams::parseRequest(
             $params,

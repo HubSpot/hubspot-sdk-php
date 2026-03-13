@@ -31,6 +31,10 @@ use HubspotSDK\Core\Util;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Cms\MediaBridge\IntegratorSettingsRawContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type EndpointsShape from \HubspotSDK\Cms\MediaBridge\Endpoints
+ */
 final class IntegratorSettingsRawService implements IntegratorSettingsRawContract
 {
     // @phpstan-ignore-next-line
@@ -46,8 +50,9 @@ final class IntegratorSettingsRawService implements IntegratorSettingsRawContrac
      *
      * @param int $appID The appId for the media bridge app. It is possible to have multiple apps in your developer account that use the media bridge.
      * @param array{
-     *   mediaTypes: list<'VIDEO'|'AUDIO'|'DOCUMENT'|'OTHER'|'IMAGE'|IntegratorSettingCreateObjectDefinitionParams\MediaType>,
+     *   mediaTypes: list<IntegratorSettingCreateObjectDefinitionParams\MediaType|value-of<IntegratorSettingCreateObjectDefinitionParams\MediaType>>,
      * }|IntegratorSettingCreateObjectDefinitionParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BulkIntegratorObjectCreationResponse>
      *
@@ -56,7 +61,7 @@ final class IntegratorSettingsRawService implements IntegratorSettingsRawContrac
     public function createObjectDefinition(
         int $appID,
         array|IntegratorSettingCreateObjectDefinitionParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = IntegratorSettingCreateObjectDefinitionParams::parseRequest(
             $params,
@@ -80,11 +85,9 @@ final class IntegratorSettingsRawService implements IntegratorSettingsRawContrac
      *
      * @param int $appID The appId for the media bridge app. It is possible to have multiple apps in your developer account that use the media bridge.
      * @param array{
-     *   endpoints: array{
-     *     discovery: bool, schemes: list<string>, url: string
-     *   }|Endpoints,
-     *   portalID?: int,
+     *   endpoints: Endpoints|EndpointsShape, portalID?: int
      * }|IntegratorSettingCreateOembedDomainParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<IntegratorOEmbedDomainModel>
      *
@@ -93,7 +96,7 @@ final class IntegratorSettingsRawService implements IntegratorSettingsRawContrac
     public function createOembedDomain(
         int $appID,
         array|IntegratorSettingCreateOembedDomainParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = IntegratorSettingCreateOembedDomainParams::parseRequest(
             $params,
@@ -119,6 +122,7 @@ final class IntegratorSettingsRawService implements IntegratorSettingsRawContrac
      * @param array{
      *   id?: int, domainPortalID?: int
      * }|IntegratorSettingDeleteOembedDomainParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -127,7 +131,7 @@ final class IntegratorSettingsRawService implements IntegratorSettingsRawContrac
     public function deleteOembedDomain(
         int $appID,
         array|IntegratorSettingDeleteOembedDomainParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = IntegratorSettingDeleteOembedDomainParams::parseRequest(
             $params,
@@ -153,6 +157,7 @@ final class IntegratorSettingsRawService implements IntegratorSettingsRawContrac
      * Get the visibility settings for media bridge events for your apps.
      *
      * @param int $appID The appId for the media bridge app. It is possible to have multiple apps in your developer account that use the media bridge.
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<EventVisibilityResponse>
      *
@@ -160,7 +165,7 @@ final class IntegratorSettingsRawService implements IntegratorSettingsRawContrac
      */
     public function getEventVisibilitySettings(
         int $appID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -180,6 +185,7 @@ final class IntegratorSettingsRawService implements IntegratorSettingsRawContrac
      * @param array{
      *   appID: int, includeFullDefinition?: bool
      * }|IntegratorSettingGetObjectDefinitionsByMediaTypeParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ObjectDefinitionResponse>
      *
@@ -188,7 +194,7 @@ final class IntegratorSettingsRawService implements IntegratorSettingsRawContrac
     public function getObjectDefinitionsByMediaType(
         MediaType|string $mediaType,
         array|IntegratorSettingGetObjectDefinitionsByMediaTypeParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = IntegratorSettingGetObjectDefinitionsByMediaTypeParams::parseRequest(
             $params,
@@ -218,6 +224,7 @@ final class IntegratorSettingsRawService implements IntegratorSettingsRawContrac
      *
      * @param string $oEmbedDomainID the ID for the oEmbed domain
      * @param array{appID: int}|IntegratorSettingGetOembedDomainParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<IntegratorOEmbedDomainModel>
      *
@@ -226,7 +233,7 @@ final class IntegratorSettingsRawService implements IntegratorSettingsRawContrac
     public function getOembedDomain(
         string $oEmbedDomainID,
         array|IntegratorSettingGetOembedDomainParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = IntegratorSettingGetOembedDomainParams::parseRequest(
             $params,
@@ -257,6 +264,7 @@ final class IntegratorSettingsRawService implements IntegratorSettingsRawContrac
      * @param array{
      *   domainPortalID?: int
      * }|IntegratorSettingListOembedDomainsParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<OEmbedDomainsCollectionResponse>
      *
@@ -265,7 +273,7 @@ final class IntegratorSettingsRawService implements IntegratorSettingsRawContrac
     public function listOembedDomains(
         int $appID,
         array|IntegratorSettingListOembedDomainsParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = IntegratorSettingListOembedDomainsParams::parseRequest(
             $params,
@@ -296,6 +304,7 @@ final class IntegratorSettingsRawService implements IntegratorSettingsRawContrac
      * @param array{
      *   updatedAt: int, name?: string
      * }|IntegratorSettingRegisterAppNameParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<MediaBridgeProviderRegistrationResponse>
      *
@@ -304,7 +313,7 @@ final class IntegratorSettingsRawService implements IntegratorSettingsRawContrac
     public function registerAppName(
         int $appID,
         array|IntegratorSettingRegisterAppNameParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = IntegratorSettingRegisterAppNameParams::parseRequest(
             $params,
@@ -330,6 +339,7 @@ final class IntegratorSettingsRawService implements IntegratorSettingsRawContrac
      * @param array{
      *   updatedAt: int, name?: string
      * }|IntegratorSettingUpdateAppNameParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<MediaBridgeProviderRegistrationResponse>
      *
@@ -338,7 +348,7 @@ final class IntegratorSettingsRawService implements IntegratorSettingsRawContrac
     public function updateAppName(
         int $appID,
         array|IntegratorSettingUpdateAppNameParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = IntegratorSettingUpdateAppNameParams::parseRequest(
             $params,
@@ -362,12 +372,13 @@ final class IntegratorSettingsRawService implements IntegratorSettingsRawContrac
      *
      * @param int $appID The appId for the media bridge app. It is possible to have multiple apps in your developer account that use the media bridge.
      * @param array{
-     *   eventType: 'ALL'|'ATTENTION_SPAN'|'MEDIA_PLAYS'|'MEDIA_PLAYS_PERCENT'|EventType,
+     *   eventType: EventType|value-of<EventType>,
      *   updatedAt: int,
      *   showInReporting?: bool,
      *   showInTimeline?: bool,
      *   showInWorkflows?: bool,
      * }|IntegratorSettingUpdateEventVisibilitySettingsParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<EventVisibilityChange>
      *
@@ -376,7 +387,7 @@ final class IntegratorSettingsRawService implements IntegratorSettingsRawContrac
     public function updateEventVisibilitySettings(
         int $appID,
         array|IntegratorSettingUpdateEventVisibilitySettingsParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = IntegratorSettingUpdateEventVisibilitySettingsParams::parseRequest(
             $params,
@@ -400,12 +411,9 @@ final class IntegratorSettingsRawService implements IntegratorSettingsRawContrac
      *
      * @param string $oEmbedDomainID path param: The ID of the domain to update
      * @param array{
-     *   appID: int,
-     *   endpoints: array{
-     *     discovery: bool, schemes: list<string>, url: string
-     *   }|Endpoints,
-     *   portalID?: int,
+     *   appID: int, endpoints: Endpoints|EndpointsShape, portalID?: int
      * }|IntegratorSettingUpdateOembedDomainParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<IntegratorOEmbedDomainModel>
      *
@@ -414,7 +422,7 @@ final class IntegratorSettingsRawService implements IntegratorSettingsRawContrac
     public function updateOembedDomain(
         string $oEmbedDomainID,
         array|IntegratorSettingUpdateOembedDomainParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = IntegratorSettingUpdateOembedDomainParams::parseRequest(
             $params,

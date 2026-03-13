@@ -18,7 +18,7 @@ use HubspotSDK\Crm\SimplePublicObjectID;
  * @phpstan-import-type SimplePublicObjectIDShape from \HubspotSDK\Crm\SimplePublicObjectID
  *
  * @phpstan-type BatchDeleteParamsShape = array{
- *   inputs: list<SimplePublicObjectIDShape>
+ *   inputs: list<SimplePublicObjectID|SimplePublicObjectIDShape>
  * }
  */
 final class BatchDeleteParams implements BaseModel
@@ -55,7 +55,7 @@ final class BatchDeleteParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<SimplePublicObjectIDShape> $inputs
+     * @param list<SimplePublicObjectID|SimplePublicObjectIDShape> $inputs
      */
     public static function with(array $inputs): self
     {
@@ -67,7 +67,7 @@ final class BatchDeleteParams implements BaseModel
     }
 
     /**
-     * @param list<SimplePublicObjectIDShape> $inputs
+     * @param list<SimplePublicObjectID|SimplePublicObjectIDShape> $inputs
      */
     public function withInputs(array $inputs): self
     {

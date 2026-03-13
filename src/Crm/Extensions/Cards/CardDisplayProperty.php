@@ -18,7 +18,7 @@ use HubspotSDK\Crm\Extensions\Cards\CardDisplayProperty\DataType;
  *   dataType: DataType|value-of<DataType>,
  *   label: string,
  *   name: string,
- *   options: list<DisplayOptionShape>,
+ *   options: list<DisplayOption|DisplayOptionShape>,
  * }
  */
 final class CardDisplayProperty implements BaseModel
@@ -83,7 +83,7 @@ final class CardDisplayProperty implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param DataType|value-of<DataType> $dataType
-     * @param list<DisplayOptionShape> $options
+     * @param list<DisplayOption|DisplayOptionShape> $options
      */
     public static function with(
         DataType|string $dataType,
@@ -139,7 +139,7 @@ final class CardDisplayProperty implements BaseModel
     /**
      * An array of available options that can be displayed. Only used in when `dataType` is `STATUS`.
      *
-     * @param list<DisplayOptionShape> $options
+     * @param list<DisplayOption|DisplayOptionShape> $options
      */
     public function withOptions(array $options): self
     {

@@ -10,10 +10,15 @@ use HubspotSDK\Crm\SimplePublicObjectWithAssociations;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface AssociationsContract
 {
     /**
      * @api
+     *
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -22,17 +27,18 @@ interface AssociationsContract
         string $projectID,
         string $toObjectType,
         string $toObjectID,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): SimplePublicObjectWithAssociations;
 
     /**
      * @api
      *
-     * @param string $toObjectType Path param:
-     * @param string $projectID Path param:
-     * @param string $after Query param:
-     * @param bool $includeFa Query param:
-     * @param int $limit Query param:
+     * @param string $toObjectType Path param
+     * @param string $projectID Path param
+     * @param string $after Query param
+     * @param bool $includeFa Query param
+     * @param int $limit Query param
+     * @param RequestOpts|null $requestOptions
      *
      * @return Page<AssociatedID>
      *
@@ -44,11 +50,13 @@ interface AssociationsContract
         ?string $after = null,
         bool $includeFa = false,
         int $limit = 500,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): Page;
 
     /**
      * @api
+     *
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -57,6 +65,6 @@ interface AssociationsContract
         string $projectID,
         string $toObjectType,
         string $toObjectID,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): mixed;
 }

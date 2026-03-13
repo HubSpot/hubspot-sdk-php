@@ -16,7 +16,7 @@ use HubspotSDK\Crm\Extensions\Cards\CardFetchBodyPatch\CardType;
  * @phpstan-import-type CardObjectTypeBodyShape from \HubspotSDK\Crm\Extensions\Cards\CardObjectTypeBody
  *
  * @phpstan-type CardFetchBodyPatchShape = array{
- *   objectTypes: list<CardObjectTypeBodyShape>,
+ *   objectTypes: list<CardObjectTypeBody|CardObjectTypeBodyShape>,
  *   cardType?: null|CardType|value-of<CardType>,
  *   serverlessFunction?: string|null,
  *   targetURL?: string|null,
@@ -72,7 +72,7 @@ final class CardFetchBodyPatch implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<CardObjectTypeBodyShape> $objectTypes
+     * @param list<CardObjectTypeBody|CardObjectTypeBodyShape> $objectTypes
      * @param CardType|value-of<CardType>|null $cardType
      */
     public static function with(
@@ -95,7 +95,7 @@ final class CardFetchBodyPatch implements BaseModel
     /**
      * An array of CRM object types where this card should be displayed. HubSpot will call your target URL whenever a user visits a record page of the types defined here.
      *
-     * @param list<CardObjectTypeBodyShape> $objectTypes
+     * @param list<CardObjectTypeBody|CardObjectTypeBodyShape> $objectTypes
      */
     public function withObjectTypes(array $objectTypes): self
     {

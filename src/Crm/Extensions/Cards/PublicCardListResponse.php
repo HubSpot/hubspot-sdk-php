@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-import-type PublicCardResponseShape from \HubspotSDK\Crm\Extensions\Cards\PublicCardResponse
  *
  * @phpstan-type PublicCardListResponseShape = array{
- *   results: list<PublicCardResponseShape>
+ *   results: list<PublicCardResponse|PublicCardResponseShape>
  * }
  */
 final class PublicCardListResponse implements BaseModel
@@ -48,7 +48,7 @@ final class PublicCardListResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicCardResponseShape> $results
+     * @param list<PublicCardResponse|PublicCardResponseShape> $results
      */
     public static function with(array $results): self
     {
@@ -60,7 +60,7 @@ final class PublicCardListResponse implements BaseModel
     }
 
     /**
-     * @param list<PublicCardResponseShape> $results
+     * @param list<PublicCardResponse|PublicCardResponseShape> $results
      */
     public function withResults(array $results): self
     {

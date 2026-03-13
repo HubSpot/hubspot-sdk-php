@@ -17,6 +17,9 @@ use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Marketing\Campaigns\ReportsRawContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class ReportsRawService implements ReportsRawContract
 {
     // @phpstan-ignore-next-line
@@ -34,6 +37,7 @@ final class ReportsRawService implements ReportsRawContract
      * @param array{
      *   endDate?: string, startDate?: string
      * }|ReportGetAttributionMetricsParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<MetricsCounters>
      *
@@ -42,7 +46,7 @@ final class ReportsRawService implements ReportsRawContract
     public function getAttributionMetrics(
         string $campaignGuid,
         array|ReportGetAttributionMetricsParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = ReportGetAttributionMetricsParams::parseRequest(
             $params,
@@ -68,6 +72,7 @@ final class ReportsRawService implements ReportsRawContract
      * @param array{
      *   attributionModel?: string, endDate?: string, startDate?: string
      * }|ReportGetRevenueAttributionParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<RevenueAttributionAggregate>
      *
@@ -76,7 +81,7 @@ final class ReportsRawService implements ReportsRawContract
     public function getRevenueAttribution(
         string $campaignGuid,
         array|ReportGetRevenueAttributionParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = ReportGetRevenueAttributionParams::parseRequest(
             $params,
@@ -106,6 +111,7 @@ final class ReportsRawService implements ReportsRawContract
      *   limit?: int,
      *   startDate?: string,
      * }|ReportListContactIDsByTypeParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<ContactReference>>
      *
@@ -114,7 +120,7 @@ final class ReportsRawService implements ReportsRawContract
     public function listContactIDsByType(
         string $contactType,
         array|ReportListContactIDsByTypeParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = ReportListContactIDsByTypeParams::parseRequest(
             $params,

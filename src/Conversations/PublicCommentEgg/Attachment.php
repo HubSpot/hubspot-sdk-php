@@ -16,7 +16,8 @@ use HubspotSDK\Core\Conversion\Contracts\ConverterSource;
  * @phpstan-import-type PublicQuickRepliesEggShape from \HubspotSDK\Conversations\PublicQuickRepliesEgg
  * @phpstan-import-type PublicSocialMediaEggShape from \HubspotSDK\Conversations\PublicSocialMediaEgg
  *
- * @phpstan-type AttachmentShape = PublicFileEggShape|PublicQuickRepliesEggShape|PublicSocialMediaEggShape
+ * @phpstan-type AttachmentVariants = PublicFileEgg|PublicQuickRepliesEgg|PublicSocialMediaEgg
+ * @phpstan-type AttachmentShape = AttachmentVariants|PublicFileEggShape|PublicQuickRepliesEggShape|PublicSocialMediaEggShape
  */
 final class Attachment implements ConverterSource
 {

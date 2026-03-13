@@ -15,7 +15,7 @@ use HubspotSDK\Marketing\Subscriptions\V4\BatchResponsePublicStatusBulkResponse\
  *
  * @phpstan-type BatchResponsePublicStatusBulkResponseShape = array{
  *   completedAt: \DateTimeInterface,
- *   results: list<PublicStatusBulkResponseShape>,
+ *   results: list<PublicStatusBulkResponse|PublicStatusBulkResponseShape>,
  *   startedAt: \DateTimeInterface,
  *   status: Status|value-of<Status>,
  *   links?: array<string,string>|null,
@@ -99,7 +99,7 @@ final class BatchResponsePublicStatusBulkResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicStatusBulkResponseShape> $results
+     * @param list<PublicStatusBulkResponse|PublicStatusBulkResponseShape> $results
      * @param Status|value-of<Status> $status
      * @param array<string,string>|null $links
      */
@@ -138,7 +138,7 @@ final class BatchResponsePublicStatusBulkResponse implements BaseModel
     /**
      * The array of results from the batch process, each containing subscription status information.
      *
-     * @param list<PublicStatusBulkResponseShape> $results
+     * @param list<PublicStatusBulkResponse|PublicStatusBulkResponseShape> $results
      */
     public function withResults(array $results): self
     {

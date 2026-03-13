@@ -12,6 +12,7 @@ use HubspotSDK\PublicOrFilterBranch\FilterBranch;
 use HubspotSDK\PublicOrFilterBranch\FilterBranchType;
 
 /**
+ * @phpstan-import-type FilterVariants from \HubspotSDK\PublicOrFilterBranch\Filter
  * @phpstan-import-type FilterShape from \HubspotSDK\PublicOrFilterBranch\Filter
  *
  * @phpstan-type PublicOrFilterBranchShape = array{
@@ -37,9 +38,7 @@ final class PublicOrFilterBranch implements BaseModel
     #[Required(enum: FilterBranchType::class)]
     public string $filterBranchType;
 
-    /**
-     * @var list<PublicPropertyFilter|PublicAssociationInListFilter|PublicPageViewAnalyticsFilter|PublicCtaAnalyticsFilter|PublicEventAnalyticsFilter|PublicFormSubmissionFilter|PublicFormSubmissionOnPageFilter|PublicIntegrationEventFilter|PublicEmailSubscriptionFilter|PublicCommunicationSubscriptionFilter|PublicCampaignInfluencedFilter|PublicSurveyMonkeyFilter|PublicSurveyMonkeyValueFilter|PublicWebinarFilter|PublicEmailEventFilter|PublicPrivacyAnalyticsFilter|PublicAdsSearchFilter|PublicAdsTimeFilter|PublicInListFilter|PublicNumAssociationsFilter|PublicUnifiedEventsFilter|PublicPropertyAssociationInListFilter|PublicConstantFilter> $filters
-     */
+    /** @var list<FilterVariants> $filters */
     #[Required(list: Filter::class)]
     public array $filters;
 

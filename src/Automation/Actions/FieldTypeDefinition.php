@@ -19,7 +19,7 @@ use HubspotSDK\Option;
  * @phpstan-type FieldTypeDefinitionShape = array{
  *   externalOptions: bool,
  *   name: string,
- *   options: list<OptionShape>,
+ *   options: list<Option|OptionShape>,
  *   type: Type|value-of<Type>,
  *   description?: string|null,
  *   externalOptionsReferenceType?: string|null,
@@ -102,7 +102,7 @@ final class FieldTypeDefinition implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<OptionShape> $options
+     * @param list<Option|OptionShape> $options
      * @param Type|value-of<Type> $type
      * @param FieldType|value-of<FieldType>|null $fieldType
      * @param ReferencedObjectType|value-of<ReferencedObjectType>|null $referencedObjectType
@@ -155,7 +155,7 @@ final class FieldTypeDefinition implements BaseModel
     }
 
     /**
-     * @param list<OptionShape> $options
+     * @param list<Option|OptionShape> $options
      */
     public function withOptions(array $options): self
     {

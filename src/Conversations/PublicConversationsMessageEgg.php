@@ -12,6 +12,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type AttachmentVariants from \HubspotSDK\Conversations\PublicConversationsMessageEgg\Attachment
  * @phpstan-import-type AttachmentShape from \HubspotSDK\Conversations\PublicConversationsMessageEgg\Attachment
  * @phpstan-import-type PublicRecipientEggShape from \HubspotSDK\Conversations\PublicRecipientEgg
  *
@@ -19,7 +20,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   attachments: list<AttachmentShape>,
  *   channelAccountID: string,
  *   channelID: string,
- *   recipients: list<PublicRecipientEggShape>,
+ *   recipients: list<PublicRecipientEgg|PublicRecipientEggShape>,
  *   senderActorID: string,
  *   text: string,
  *   type: Type|value-of<Type>,
@@ -32,9 +33,7 @@ final class PublicConversationsMessageEgg implements BaseModel
     /** @use SdkModel<PublicConversationsMessageEggShape> */
     use SdkModel;
 
-    /**
-     * @var list<PublicFileEgg|PublicQuickRepliesEgg|PublicSocialMediaEgg> $attachments
-     */
+    /** @var list<AttachmentVariants> $attachments */
     #[Required(list: Attachment::class)]
     public array $attachments;
 
@@ -104,7 +103,7 @@ final class PublicConversationsMessageEgg implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<AttachmentShape> $attachments
-     * @param list<PublicRecipientEggShape> $recipients
+     * @param list<PublicRecipientEgg|PublicRecipientEggShape> $recipients
      * @param Type|value-of<Type> $type
      */
     public static function with(
@@ -162,7 +161,7 @@ final class PublicConversationsMessageEgg implements BaseModel
     }
 
     /**
-     * @param list<PublicRecipientEggShape> $recipients
+     * @param list<PublicRecipientEgg|PublicRecipientEggShape> $recipients
      */
     public function withRecipients(array $recipients): self
     {

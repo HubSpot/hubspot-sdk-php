@@ -18,7 +18,8 @@ use HubspotSDK\Crm\Associations\V4\PublicAssociationMultiPost;
  * @phpstan-import-type PublicAssociationMultiPostShape from \HubspotSDK\Crm\Associations\V4\PublicAssociationMultiPost
  *
  * @phpstan-type BatchCreateParamsShape = array{
- *   fromObjectType: string, inputs: list<PublicAssociationMultiPostShape>
+ *   fromObjectType: string,
+ *   inputs: list<PublicAssociationMultiPost|PublicAssociationMultiPostShape>,
  * }
  */
 final class BatchCreateParams implements BaseModel
@@ -58,7 +59,7 @@ final class BatchCreateParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicAssociationMultiPostShape> $inputs
+     * @param list<PublicAssociationMultiPost|PublicAssociationMultiPostShape> $inputs
      */
     public static function with(string $fromObjectType, array $inputs): self
     {
@@ -79,7 +80,7 @@ final class BatchCreateParams implements BaseModel
     }
 
     /**
-     * @param list<PublicAssociationMultiPostShape> $inputs
+     * @param list<PublicAssociationMultiPost|PublicAssociationMultiPostShape> $inputs
      */
     public function withInputs(array $inputs): self
     {

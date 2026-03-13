@@ -10,12 +10,16 @@ use HubspotSDK\Marketing\Subscriptions\V4\ActionResponseWithResultsSubscriptionD
 use HubspotSDK\Marketing\Subscriptions\V4\Definitions\DefinitionListParams;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface DefinitionsRawContract
 {
     /**
      * @api
      *
      * @param array<string,mixed>|DefinitionListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ActionResponseWithResultsSubscriptionDefinition>
      *
@@ -23,6 +27,6 @@ interface DefinitionsRawContract
      */
     public function list(
         array|DefinitionListParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

@@ -7,13 +7,17 @@ namespace HubspotSDK\Services\Crm\Extensions\Calling;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Crm\Extensions\Calling\Transcripts\Speaker;
 use HubspotSDK\Crm\Extensions\Calling\Transcripts\TranscriptCreateParams;
 use HubspotSDK\Crm\Extensions\Calling\Transcripts\TranscriptCreateResponse;
+use HubspotSDK\Crm\Extensions\Calling\Transcripts\TranscriptCreateUtterance;
 use HubspotSDK\Crm\Extensions\Calling\Transcripts\TranscriptResponse;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Extensions\Calling\TranscriptsRawContract;
 
+/**
+ * @phpstan-import-type TranscriptCreateUtteranceShape from \HubspotSDK\Crm\Extensions\Calling\Transcripts\TranscriptCreateUtterance
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class TranscriptsRawService implements TranscriptsRawContract
 {
     // @phpstan-ignore-next-line
@@ -27,14 +31,9 @@ final class TranscriptsRawService implements TranscriptsRawContract
      *
      * @param array{
      *   engagementID: int,
-     *   transcriptCreateUtterances: list<array{
-     *     endTimeMillis: int,
-     *     speaker: array<string,mixed>|Speaker,
-     *     startTimeMillis: int,
-     *     text: string,
-     *     languageCode?: string,
-     *   }>,
+     *   transcriptCreateUtterances: list<TranscriptCreateUtterance|TranscriptCreateUtteranceShape>,
      * }|TranscriptCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<TranscriptCreateResponse>
      *
@@ -42,7 +41,7 @@ final class TranscriptsRawService implements TranscriptsRawContract
      */
     public function create(
         array|TranscriptCreateParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = TranscriptCreateParams::parseRequest(
             $params,
@@ -62,13 +61,15 @@ final class TranscriptsRawService implements TranscriptsRawContract
     /**
      * @api
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @return BaseResponse<mixed>
      *
      * @throws APIException
      */
     public function delete(
         string $transcriptID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -82,13 +83,15 @@ final class TranscriptsRawService implements TranscriptsRawContract
     /**
      * @api
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @return BaseResponse<TranscriptResponse>
      *
      * @throws APIException
      */
     public function get(
         string $transcriptID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(

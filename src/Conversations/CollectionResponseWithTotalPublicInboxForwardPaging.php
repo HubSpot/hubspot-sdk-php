@@ -15,7 +15,7 @@ use HubspotSDK\ForwardPaging;
  * @phpstan-import-type ForwardPagingShape from \HubspotSDK\ForwardPaging
  *
  * @phpstan-type CollectionResponseWithTotalPublicInboxForwardPagingShape = array{
- *   results: list<PublicInboxShape>,
+ *   results: list<PublicInbox|PublicInboxShape>,
  *   total: int,
  *   paging?: null|ForwardPaging|ForwardPagingShape,
  * }
@@ -63,7 +63,7 @@ final class CollectionResponseWithTotalPublicInboxForwardPaging implements BaseM
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicInboxShape> $results
+     * @param list<PublicInbox|PublicInboxShape> $results
      * @param ForwardPaging|ForwardPagingShape|null $paging
      */
     public static function with(
@@ -82,7 +82,7 @@ final class CollectionResponseWithTotalPublicInboxForwardPaging implements BaseM
     }
 
     /**
-     * @param list<PublicInboxShape> $results
+     * @param list<PublicInbox|PublicInboxShape> $results
      */
     public function withResults(array $results): self
     {

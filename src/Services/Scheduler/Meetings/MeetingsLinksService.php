@@ -9,6 +9,7 @@ use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Core\Util;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
+use HubspotSDK\Scheduler\Meetings\ExternalBookingFormField;
 use HubspotSDK\Scheduler\Meetings\ExternalBookingInfo;
 use HubspotSDK\Scheduler\Meetings\ExternalLegalConsentResponse;
 use HubspotSDK\Scheduler\Meetings\ExternalLinkAvailabilityAndBusyTimes;
@@ -16,6 +17,11 @@ use HubspotSDK\Scheduler\Meetings\ExternalLinkMetadata;
 use HubspotSDK\Scheduler\Meetings\ExternalMeetingBookingResponse;
 use HubspotSDK\ServiceContracts\Scheduler\Meetings\MeetingsLinksContract;
 
+/**
+ * @phpstan-import-type ExternalBookingFormFieldShape from \HubspotSDK\Scheduler\Meetings\ExternalBookingFormField
+ * @phpstan-import-type ExternalLegalConsentResponseShape from \HubspotSDK\Scheduler\Meetings\ExternalLegalConsentResponse
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class MeetingsLinksService implements MeetingsLinksContract
 {
     /**
@@ -41,6 +47,7 @@ final class MeetingsLinksService implements MeetingsLinksContract
      * @param string $name retrieve scheduling pages with a specified name
      * @param string $organizerUserID filter the response to scheduling pages created by the specified user
      * @param string $type filter the response to the specific type of meeting
+     * @param RequestOpts|null $requestOptions
      *
      * @return Page<ExternalLinkMetadata>
      *
@@ -52,7 +59,7 @@ final class MeetingsLinksService implements MeetingsLinksContract
         ?string $name = null,
         ?string $organizerUserID = null,
         ?string $type = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): Page {
         $params = Util::removeNulls(
             [
@@ -75,11 +82,10 @@ final class MeetingsLinksService implements MeetingsLinksContract
      *
      * Book a meeting for a specified meeting page.
      *
-     * @param list<array{name: string, value: string}> $formFields
-     * @param list<array{
-     *   communicationTypeID: string, consented: bool
-     * }|ExternalLegalConsentResponse> $legalConsentResponses
+     * @param list<ExternalBookingFormField|ExternalBookingFormFieldShape> $formFields
+     * @param list<ExternalLegalConsentResponse|ExternalLegalConsentResponseShape> $legalConsentResponses
      * @param list<string> $likelyAvailableUserIDs
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -92,10 +98,10 @@ final class MeetingsLinksService implements MeetingsLinksContract
         array $legalConsentResponses,
         array $likelyAvailableUserIDs,
         string $slug,
-        string|\DateTimeInterface $startTime,
+        \DateTimeInterface $startTime,
         ?string $locale = null,
         ?string $timezone = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): ExternalMeetingBookingResponse {
         $params = Util::removeNulls(
             [
@@ -127,6 +133,7 @@ final class MeetingsLinksService implements MeetingsLinksContract
      * @param string $slug the path for the meeting page that you want the available times for
      * @param string $timezone return times in response based on specified time zone
      * @param int $monthOffset get times for a different month
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -134,7 +141,7 @@ final class MeetingsLinksService implements MeetingsLinksContract
         string $slug,
         string $timezone,
         ?int $monthOffset = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): ExternalLinkAvailabilityAndBusyTimes {
         $params = Util::removeNulls(
             ['timezone' => $timezone, 'monthOffset' => $monthOffset]
@@ -153,13 +160,14 @@ final class MeetingsLinksService implements MeetingsLinksContract
      *
      * @param string $slug the path to the scheduling page that you want the information for
      * @param string $timezone return times in response based on specified time zone
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function getBookingInfoBySlug(
         string $slug,
         string $timezone,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): ExternalBookingInfo {
         $params = Util::removeNulls(['timezone' => $timezone]);
 

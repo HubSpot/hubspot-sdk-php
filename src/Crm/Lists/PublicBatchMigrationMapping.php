@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-import-type PublicMigrationMappingShape from \HubspotSDK\Crm\Lists\PublicMigrationMapping
  *
  * @phpstan-type PublicBatchMigrationMappingShape = array{
- *   legacyListIDsToIDsMapping: list<PublicMigrationMappingShape>,
+ *   legacyListIDsToIDsMapping: list<PublicMigrationMapping|PublicMigrationMappingShape>,
  *   missingLegacyListIDs: list<string>,
  * }
  */
@@ -61,7 +61,7 @@ final class PublicBatchMigrationMapping implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicMigrationMappingShape> $legacyListIDsToIDsMapping
+     * @param list<PublicMigrationMapping|PublicMigrationMappingShape> $legacyListIDsToIDsMapping
      * @param list<string> $missingLegacyListIDs
      */
     public static function with(
@@ -77,7 +77,7 @@ final class PublicBatchMigrationMapping implements BaseModel
     }
 
     /**
-     * @param list<PublicMigrationMappingShape> $legacyListIDsToIDsMapping
+     * @param list<PublicMigrationMapping|PublicMigrationMappingShape> $legacyListIDsToIDsMapping
      */
     public function withLegacyListIDsToIDsMapping(
         array $legacyListIDsToIDsMapping

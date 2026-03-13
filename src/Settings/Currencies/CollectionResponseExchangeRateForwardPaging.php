@@ -15,7 +15,7 @@ use HubspotSDK\ForwardPaging;
  * @phpstan-import-type ForwardPagingShape from \HubspotSDK\ForwardPaging
  *
  * @phpstan-type CollectionResponseExchangeRateForwardPagingShape = array{
- *   results: list<ExchangeRateShape>,
+ *   results: list<ExchangeRate|ExchangeRateShape>,
  *   paging?: null|ForwardPaging|ForwardPagingShape,
  * }
  */
@@ -55,7 +55,7 @@ final class CollectionResponseExchangeRateForwardPaging implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<ExchangeRateShape> $results
+     * @param list<ExchangeRate|ExchangeRateShape> $results
      * @param ForwardPaging|ForwardPagingShape|null $paging
      */
     public static function with(
@@ -72,7 +72,7 @@ final class CollectionResponseExchangeRateForwardPaging implements BaseModel
     }
 
     /**
-     * @param list<ExchangeRateShape> $results
+     * @param list<ExchangeRate|ExchangeRateShape> $results
      */
     public function withResults(array $results): self
     {

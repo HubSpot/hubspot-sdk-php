@@ -12,6 +12,9 @@ use HubspotSDK\Marketing\Campaigns\PublicBudgetTotals;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Marketing\Campaigns\BudgetContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class BudgetService implements BudgetContract
 {
     /**
@@ -33,6 +36,7 @@ final class BudgetService implements BudgetContract
      * Add a new budget item to the campaign
      *
      * @param string $campaignGuid unique identifier for the campaign
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -42,7 +46,7 @@ final class BudgetService implements BudgetContract
         string $name,
         int $order,
         ?string $description = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): PublicBudgetItem {
         $params = Util::removeNulls(
             [
@@ -66,10 +70,11 @@ final class BudgetService implements BudgetContract
      *
      * @param int $budgetID path param: Unique identifier for the budget item
      * @param string $campaignGuid path param: Unique identifier for the campaign
-     * @param float $amount Body param:
-     * @param string $name Body param:
-     * @param int $order Body param:
-     * @param string $description Body param:
+     * @param float $amount Body param
+     * @param string $name Body param
+     * @param int $order Body param
+     * @param string $description Body param
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -80,7 +85,7 @@ final class BudgetService implements BudgetContract
         string $name,
         int $order,
         ?string $description = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): PublicBudgetItem {
         $params = Util::removeNulls(
             [
@@ -105,13 +110,14 @@ final class BudgetService implements BudgetContract
      *
      * @param int $budgetID unique identifier for the budget item
      * @param string $campaignGuid unique identifier for the campaign
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function delete(
         int $budgetID,
         string $campaignGuid,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): mixed {
         $params = Util::removeNulls(['campaignGuid' => $campaignGuid]);
 
@@ -128,13 +134,14 @@ final class BudgetService implements BudgetContract
      *
      * @param int $budgetID unique identifier for the budget item
      * @param string $campaignGuid unique identifier for the campaign
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function get(
         int $budgetID,
         string $campaignGuid,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): PublicBudgetItem {
         $params = Util::removeNulls(['campaignGuid' => $campaignGuid]);
 
@@ -151,12 +158,13 @@ final class BudgetService implements BudgetContract
      * Budget and Spend items may be returned in any order, but the order field specifies their sequence based on the creation date. The item with order 0 is the oldest, and items with higher order values are newer
      *
      * @param string $campaignGuid unique identifier for the campaign, formatted as a UUID
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function getTotals(
         string $campaignGuid,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): PublicBudgetTotals {
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->getTotals($campaignGuid, requestOptions: $requestOptions);

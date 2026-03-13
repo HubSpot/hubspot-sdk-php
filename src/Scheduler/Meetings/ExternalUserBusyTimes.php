@@ -13,7 +13,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-import-type ExternalMeetingsUserShape from \HubspotSDK\Scheduler\Meetings\ExternalMeetingsUser
  *
  * @phpstan-type ExternalUserBusyTimesShape = array{
- *   busyTimes: list<ExternalTimeRangeShape>,
+ *   busyTimes: list<ExternalTimeRange|ExternalTimeRangeShape>,
  *   isOffline: bool,
  *   meetingsUser: ExternalMeetingsUser|ExternalMeetingsUserShape,
  * }
@@ -60,7 +60,7 @@ final class ExternalUserBusyTimes implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<ExternalTimeRangeShape> $busyTimes
+     * @param list<ExternalTimeRange|ExternalTimeRangeShape> $busyTimes
      * @param ExternalMeetingsUser|ExternalMeetingsUserShape $meetingsUser
      */
     public static function with(
@@ -78,7 +78,7 @@ final class ExternalUserBusyTimes implements BaseModel
     }
 
     /**
-     * @param list<ExternalTimeRangeShape> $busyTimes
+     * @param list<ExternalTimeRange|ExternalTimeRangeShape> $busyTimes
      */
     public function withBusyTimes(array $busyTimes): self
     {

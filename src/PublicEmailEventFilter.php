@@ -12,6 +12,7 @@ use HubspotSDK\PublicEmailEventFilter\FilterType;
 use HubspotSDK\PublicEmailEventFilter\Operator;
 
 /**
+ * @phpstan-import-type PruningRefineByVariants from \HubspotSDK\PublicEmailEventFilter\PruningRefineBy
  * @phpstan-import-type PruningRefineByShape from \HubspotSDK\PublicEmailEventFilter\PruningRefineBy
  *
  * @phpstan-type PublicEmailEventFilterShape = array{
@@ -49,6 +50,7 @@ final class PublicEmailEventFilter implements BaseModel
     #[Optional('clickUrl')]
     public ?string $clickURL;
 
+    /** @var PruningRefineByVariants|null $pruningRefineBy */
     #[Optional]
     public PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation|null $pruningRefineBy;
 

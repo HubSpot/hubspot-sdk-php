@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-import-type CardDisplayPropertyShape from \HubspotSDK\Crm\Extensions\Cards\CardDisplayProperty
  *
  * @phpstan-type CardDisplayBodyShape = array{
- *   properties: list<CardDisplayPropertyShape>
+ *   properties: list<CardDisplayProperty|CardDisplayPropertyShape>
  * }
  */
 final class CardDisplayBody implements BaseModel
@@ -54,7 +54,7 @@ final class CardDisplayBody implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<CardDisplayPropertyShape> $properties
+     * @param list<CardDisplayProperty|CardDisplayPropertyShape> $properties
      */
     public static function with(array $properties): self
     {
@@ -68,7 +68,7 @@ final class CardDisplayBody implements BaseModel
     /**
      * Card display properties. These will will be rendered as "label : value" pairs in the card UI. See the [example card](#) in the overview docs for more details.
      *
-     * @param list<CardDisplayPropertyShape> $properties
+     * @param list<CardDisplayProperty|CardDisplayPropertyShape> $properties
      */
     public function withProperties(array $properties): self
     {

@@ -18,7 +18,7 @@ use HubspotSDK\Core\Conversion\ListOf;
  *   correlationID: string,
  *   message: string,
  *   context?: array<string,list<string>>|null,
- *   errors?: list<ErrorDetailShape>|null,
+ *   errors?: list<ErrorDetail|ErrorDetailShape>|null,
  *   links?: array<string,string>|null,
  *   subCategory?: string|null,
  * }
@@ -101,7 +101,7 @@ final class APIError implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param array<string,list<string>>|null $context
-     * @param list<ErrorDetailShape>|null $errors
+     * @param list<ErrorDetail|ErrorDetailShape>|null $errors
      * @param array<string,string>|null $links
      */
     public static function with(
@@ -176,7 +176,7 @@ final class APIError implements BaseModel
     /**
      * further information about the error.
      *
-     * @param list<ErrorDetailShape> $errors
+     * @param list<ErrorDetail|ErrorDetailShape> $errors
      */
     public function withErrors(array $errors): self
     {

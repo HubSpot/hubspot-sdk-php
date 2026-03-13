@@ -4,24 +4,29 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Services\Crm\Objects;
 
-use HubspotSDK\AssociationSpec;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\Crm\CreatedResponseSimplePublicObject;
+use HubspotSDK\Crm\FilterGroup;
 use HubspotSDK\Crm\Objects\Communications\CommunicationCreateParams;
 use HubspotSDK\Crm\Objects\Communications\CommunicationGetParams;
 use HubspotSDK\Crm\Objects\Communications\CommunicationListParams;
 use HubspotSDK\Crm\Objects\Communications\CommunicationSearchParams;
 use HubspotSDK\Crm\Objects\Communications\CommunicationUpdateParams;
+use HubspotSDK\Crm\PublicAssociationsForObject;
 use HubspotSDK\Crm\SimplePublicObject;
 use HubspotSDK\Crm\SimplePublicObjectWithAssociations;
 use HubspotSDK\Page;
-use HubspotSDK\PublicObjectID;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Objects\CommunicationsRawContract;
 
+/**
+ * @phpstan-import-type PublicAssociationsForObjectShape from \HubspotSDK\Crm\PublicAssociationsForObject
+ * @phpstan-import-type FilterGroupShape from \HubspotSDK\Crm\FilterGroup
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class CommunicationsRawService implements CommunicationsRawContract
 {
     // @phpstan-ignore-next-line
@@ -36,12 +41,10 @@ final class CommunicationsRawService implements CommunicationsRawContract
      * Create a communication with the given properties and return a copy of the object, including the ID. Documentation and examples for creating standard communications is provided.
      *
      * @param array{
-     *   associations: list<array{
-     *     to: array<string,mixed>|PublicObjectID,
-     *     types: list<array<string,mixed>|AssociationSpec>,
-     *   }>,
+     *   associations: list<PublicAssociationsForObject|PublicAssociationsForObjectShape>,
      *   properties: array<string,string>,
      * }|CommunicationCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CreatedResponseSimplePublicObject>
      *
@@ -49,7 +52,7 @@ final class CommunicationsRawService implements CommunicationsRawContract
      */
     public function create(
         array|CommunicationCreateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = CommunicationCreateParams::parseRequest(
             $params,
@@ -71,10 +74,11 @@ final class CommunicationsRawService implements CommunicationsRawContract
      *
      * Perform a partial update of an Object identified by `{communicationId}`or optionally a unique property value as specified by the `idProperty` query param. `{communicationId}` refers to the internal object ID by default, and the `idProperty` query param refers to a property whose values are unique for the object. Provided property values will be overwritten. Read-only and non-existent properties will result in an error. Properties values can be cleared by passing an empty string.
      *
-     * @param string $communicationID Path param:
+     * @param string $communicationID Path param
      * @param array{
      *   properties: array<string,string>, idProperty?: string
      * }|CommunicationUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SimplePublicObject>
      *
@@ -83,7 +87,7 @@ final class CommunicationsRawService implements CommunicationsRawContract
     public function update(
         string $communicationID,
         array|CommunicationUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = CommunicationUpdateParams::parseRequest(
             $params,
@@ -115,6 +119,7 @@ final class CommunicationsRawService implements CommunicationsRawContract
      *   properties?: list<string>,
      *   propertiesWithHistory?: list<string>,
      * }|CommunicationListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<SimplePublicObjectWithAssociations>>
      *
@@ -122,7 +127,7 @@ final class CommunicationsRawService implements CommunicationsRawContract
      */
     public function list(
         array|CommunicationListParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = CommunicationListParams::parseRequest(
             $params,
@@ -145,13 +150,15 @@ final class CommunicationsRawService implements CommunicationsRawContract
      *
      * Move an Object identified by `{communicationId}` to the recycling bin.
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @return BaseResponse<mixed>
      *
      * @throws APIException
      */
     public function delete(
         string $communicationID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -174,6 +181,7 @@ final class CommunicationsRawService implements CommunicationsRawContract
      *   properties?: list<string>,
      *   propertiesWithHistory?: list<string>,
      * }|CommunicationGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SimplePublicObjectWithAssociations>
      *
@@ -182,7 +190,7 @@ final class CommunicationsRawService implements CommunicationsRawContract
     public function get(
         string $communicationID,
         array|CommunicationGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = CommunicationGetParams::parseRequest(
             $params,
@@ -206,12 +214,13 @@ final class CommunicationsRawService implements CommunicationsRawContract
      *
      * @param array{
      *   after: string,
-     *   filterGroups: list<array{filters: list<array<string,mixed>>}>,
+     *   filterGroups: list<FilterGroup|FilterGroupShape>,
      *   limit: int,
      *   properties: list<string>,
      *   sorts: list<string>,
      *   query?: string,
      * }|CommunicationSearchParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CollectionResponseWithTotalSimplePublicObject>
      *
@@ -219,7 +228,7 @@ final class CommunicationsRawService implements CommunicationsRawContract
      */
     public function search(
         array|CommunicationSearchParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = CommunicationSearchParams::parseRequest(
             $params,

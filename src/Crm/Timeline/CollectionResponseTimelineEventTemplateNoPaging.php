@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-import-type TimelineEventTemplateShape from \HubspotSDK\Crm\Timeline\TimelineEventTemplate
  *
  * @phpstan-type CollectionResponseTimelineEventTemplateNoPagingShape = array{
- *   results: list<TimelineEventTemplateShape>
+ *   results: list<TimelineEventTemplate|TimelineEventTemplateShape>
  * }
  */
 final class CollectionResponseTimelineEventTemplateNoPaging implements BaseModel
@@ -48,7 +48,7 @@ final class CollectionResponseTimelineEventTemplateNoPaging implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<TimelineEventTemplateShape> $results
+     * @param list<TimelineEventTemplate|TimelineEventTemplateShape> $results
      */
     public static function with(array $results): self
     {
@@ -60,7 +60,7 @@ final class CollectionResponseTimelineEventTemplateNoPaging implements BaseModel
     }
 
     /**
-     * @param list<TimelineEventTemplateShape> $results
+     * @param list<TimelineEventTemplate|TimelineEventTemplateShape> $results
      */
     public function withResults(array $results): self
     {

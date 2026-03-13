@@ -11,6 +11,9 @@ use HubspotSDK\Marketing\Campaigns\CollectionResponsePublicCampaignAssetForwardP
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Marketing\Campaigns\AssetsContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class AssetsService implements AssetsContract
 {
     /**
@@ -37,6 +40,7 @@ final class AssetsService implements AssetsContract
      * @param string $campaignGuid Unique identifier for the campaign, formatted as a UUID
      * @param string $assetType The type of asset
      * Important: Currently, only the following asset types are available for association via the API: FORM, OBJECT_LIST, EXTERNAL_WEB_URL
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -44,7 +48,7 @@ final class AssetsService implements AssetsContract
         string $assetID,
         string $campaignGuid,
         string $assetType,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): mixed {
         $params = Util::removeNulls(
             ['campaignGuid' => $campaignGuid, 'assetType' => $assetType]
@@ -72,6 +76,7 @@ final class AssetsService implements AssetsContract
      * Default: 10
      * @param string $startDate Query param: Start date to fetch asset metrics, formatted as YYYY-MM-DD. This date is used to fetch the metrics associated with the assets for a specified period.
      * If not provided, no asset metrics will be fetched.
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -82,7 +87,7 @@ final class AssetsService implements AssetsContract
         ?string $endDate = null,
         ?string $limit = null,
         ?string $startDate = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): CollectionResponsePublicCampaignAssetForwardPaging {
         $params = Util::removeNulls(
             [
@@ -110,6 +115,7 @@ final class AssetsService implements AssetsContract
      * @param string $campaignGuid unique identifier for the campaign, formatted as a UUID
      * @param string $assetType The type of asset
      * Important: Currently, only the following asset types are available for disassociation via the API: FORM, OBJECT_LIST, EXTERNAL_WEB_URL
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -117,7 +123,7 @@ final class AssetsService implements AssetsContract
         string $assetID,
         string $campaignGuid,
         string $assetType,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): mixed {
         $params = Util::removeNulls(
             ['campaignGuid' => $campaignGuid, 'assetType' => $assetType]

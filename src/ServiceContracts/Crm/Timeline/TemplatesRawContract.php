@@ -14,6 +14,9 @@ use HubspotSDK\Crm\Timeline\Templates\TemplateUpdateParams;
 use HubspotSDK\Crm\Timeline\TimelineEventTemplate;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface TemplatesRawContract
 {
     /**
@@ -21,6 +24,7 @@ interface TemplatesRawContract
      *
      * @param int $appID the ID of the target app
      * @param array<string,mixed>|TemplateCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<TimelineEventTemplate>
      *
@@ -29,7 +33,7 @@ interface TemplatesRawContract
     public function create(
         int $appID,
         array|TemplateCreateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -37,6 +41,7 @@ interface TemplatesRawContract
      *
      * @param string $eventTemplateID path param: The event template ID
      * @param array<string,mixed>|TemplateUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<TimelineEventTemplate>
      *
@@ -45,13 +50,14 @@ interface TemplatesRawContract
     public function update(
         string $eventTemplateID,
         array|TemplateUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param int $appID the ID of the target app
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CollectionResponseTimelineEventTemplateNoPaging>
      *
@@ -59,7 +65,7 @@ interface TemplatesRawContract
      */
     public function list(
         int $appID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 
     /**
@@ -67,6 +73,7 @@ interface TemplatesRawContract
      *
      * @param string $eventTemplateID the event template ID
      * @param array<string,mixed>|TemplateDeleteParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -75,7 +82,7 @@ interface TemplatesRawContract
     public function delete(
         string $eventTemplateID,
         array|TemplateDeleteParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -83,6 +90,7 @@ interface TemplatesRawContract
      *
      * @param string $eventTemplateID the event template ID
      * @param array<string,mixed>|TemplateGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<TimelineEventTemplate>
      *
@@ -91,6 +99,6 @@ interface TemplatesRawContract
     public function get(
         string $eventTemplateID,
         array|TemplateGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

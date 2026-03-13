@@ -13,7 +13,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-import-type IntegratorOEmbedDomainModelShape from \HubspotSDK\Cms\MediaBridge\IntegratorOEmbedDomainModel
  *
  * @phpstan-type OEmbedDomainsCollectionResponseShape = array{
- *   results: list<IntegratorOEmbedDomainModelShape>, totalCount?: int|null
+ *   results: list<IntegratorOEmbedDomainModel|IntegratorOEmbedDomainModelShape>,
+ *   totalCount?: int|null,
  * }
  */
 final class OEmbedDomainsCollectionResponse implements BaseModel
@@ -52,7 +53,7 @@ final class OEmbedDomainsCollectionResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<IntegratorOEmbedDomainModelShape> $results
+     * @param list<IntegratorOEmbedDomainModel|IntegratorOEmbedDomainModelShape> $results
      */
     public static function with(array $results, ?int $totalCount = null): self
     {
@@ -66,7 +67,7 @@ final class OEmbedDomainsCollectionResponse implements BaseModel
     }
 
     /**
-     * @param list<IntegratorOEmbedDomainModelShape> $results
+     * @param list<IntegratorOEmbedDomainModel|IntegratorOEmbedDomainModelShape> $results
      */
     public function withResults(array $results): self
     {

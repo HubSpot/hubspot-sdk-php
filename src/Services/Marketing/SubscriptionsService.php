@@ -15,6 +15,9 @@ use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Marketing\SubscriptionsContract;
 use HubspotSDK\Services\Marketing\Subscriptions\V4Service;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class SubscriptionsService implements SubscriptionsContract
 {
     /**
@@ -41,10 +44,12 @@ final class SubscriptionsService implements SubscriptionsContract
      *
      * Get a list of all subscription definitions for the portal
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @throws APIException
      */
     public function list(
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): SubscriptionDefinitionsResponse {
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->list(requestOptions: $requestOptions);
@@ -57,11 +62,13 @@ final class SubscriptionsService implements SubscriptionsContract
      *
      * Returns a list of subscriptions and their status for a given contact.
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @throws APIException
      */
     public function getEmailStatus(
         string $emailAddress,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): PublicSubscriptionStatusesResponse {
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->getEmailStatus($emailAddress, requestOptions: $requestOptions);
@@ -76,17 +83,18 @@ final class SubscriptionsService implements SubscriptionsContract
      *
      * @param string $emailAddress contact's email address
      * @param string $subscriptionID ID of the subscription being updated for the contact
-     * @param 'CONSENT_WITH_NOTICE'|'LEGITIMATE_INTEREST_CLIENT'|'LEGITIMATE_INTEREST_OTHER'|'LEGITIMATE_INTEREST_PQL'|'NON_GDPR'|'PERFORMANCE_OF_CONTRACT'|'PROCESS_AND_STORE'|LegalBasis $legalBasis legal basis for updating the contact's status (required for GDPR enabled portals)
+     * @param LegalBasis|value-of<LegalBasis> $legalBasis legal basis for updating the contact's status (required for GDPR enabled portals)
      * @param string $legalBasisExplanation a more detailed explanation to go with the legal basis (required for GDPR enabled portals)
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function subscribe(
         string $emailAddress,
         string $subscriptionID,
-        string|LegalBasis|null $legalBasis = null,
+        LegalBasis|string|null $legalBasis = null,
         ?string $legalBasisExplanation = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): PublicSubscriptionStatus {
         $params = Util::removeNulls(
             [
@@ -110,17 +118,18 @@ final class SubscriptionsService implements SubscriptionsContract
      *
      * @param string $emailAddress contact's email address
      * @param string $subscriptionID ID of the subscription being updated for the contact
-     * @param 'CONSENT_WITH_NOTICE'|'LEGITIMATE_INTEREST_CLIENT'|'LEGITIMATE_INTEREST_OTHER'|'LEGITIMATE_INTEREST_PQL'|'NON_GDPR'|'PERFORMANCE_OF_CONTRACT'|'PROCESS_AND_STORE'|\HubspotSDK\Marketing\Subscriptions\SubscriptionUnsubscribeParams\LegalBasis $legalBasis legal basis for updating the contact's status (required for GDPR enabled portals)
+     * @param \HubspotSDK\Marketing\Subscriptions\SubscriptionUnsubscribeParams\LegalBasis|value-of<\HubspotSDK\Marketing\Subscriptions\SubscriptionUnsubscribeParams\LegalBasis> $legalBasis legal basis for updating the contact's status (required for GDPR enabled portals)
      * @param string $legalBasisExplanation a more detailed explanation to go with the legal basis (required for GDPR enabled portals)
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function unsubscribe(
         string $emailAddress,
         string $subscriptionID,
-        string|\HubspotSDK\Marketing\Subscriptions\SubscriptionUnsubscribeParams\LegalBasis|null $legalBasis = null,
+        \HubspotSDK\Marketing\Subscriptions\SubscriptionUnsubscribeParams\LegalBasis|string|null $legalBasis = null,
         ?string $legalBasisExplanation = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): PublicSubscriptionStatus {
         $params = Util::removeNulls(
             [

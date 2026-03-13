@@ -17,7 +17,7 @@ use HubspotSDK\Crm\Timeline\BatchResponseTimelineEventResponse\Status;
  *
  * @phpstan-type BatchResponseTimelineEventResponseShape = array{
  *   completedAt: \DateTimeInterface,
- *   results: list<TimelineEventResponseShape>,
+ *   results: list<TimelineEventResponse|TimelineEventResponseShape>,
  *   startedAt: \DateTimeInterface,
  *   status: Status|value-of<Status>,
  *   links?: array<string,string>|null,
@@ -97,7 +97,7 @@ final class BatchResponseTimelineEventResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<TimelineEventResponseShape> $results
+     * @param list<TimelineEventResponse|TimelineEventResponseShape> $results
      * @param Status|value-of<Status> $status
      * @param array<string,string>|null $links
      */
@@ -136,7 +136,7 @@ final class BatchResponseTimelineEventResponse implements BaseModel
     /**
      * Successfully created events.
      *
-     * @param list<TimelineEventResponseShape> $results
+     * @param list<TimelineEventResponse|TimelineEventResponseShape> $results
      */
     public function withResults(array $results): self
     {

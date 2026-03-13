@@ -17,7 +17,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-import-type BehavioralEventHTTPCompletionRequestShape from \HubspotSDK\Events\Send\BehavioralEventHTTPCompletionRequest
  *
  * @phpstan-type SendSendBatchParamsShape = array{
- *   inputs: list<BehavioralEventHTTPCompletionRequestShape>
+ *   inputs: list<BehavioralEventHTTPCompletionRequest|BehavioralEventHTTPCompletionRequestShape>,
  * }
  */
 final class SendSendBatchParams implements BaseModel
@@ -54,7 +54,7 @@ final class SendSendBatchParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<BehavioralEventHTTPCompletionRequestShape> $inputs
+     * @param list<BehavioralEventHTTPCompletionRequest|BehavioralEventHTTPCompletionRequestShape> $inputs
      */
     public static function with(array $inputs): self
     {
@@ -66,7 +66,7 @@ final class SendSendBatchParams implements BaseModel
     }
 
     /**
-     * @param list<BehavioralEventHTTPCompletionRequestShape> $inputs
+     * @param list<BehavioralEventHTTPCompletionRequest|BehavioralEventHTTPCompletionRequestShape> $inputs
      */
     public function withInputs(array $inputs): self
     {

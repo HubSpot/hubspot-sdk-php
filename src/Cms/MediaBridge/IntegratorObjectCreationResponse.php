@@ -15,8 +15,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @phpstan-type IntegratorObjectCreationResponseShape = array{
  *   objectType: InboundDBObjectType|InboundDBObjectTypeShape,
- *   properties: list<PropertyDefinitionShape>,
- *   propertyGroups: list<GroupShape>,
+ *   properties: list<PropertyDefinition|PropertyDefinitionShape>,
+ *   propertyGroups: list<Group|GroupShape>,
  * }
  */
 final class IntegratorObjectCreationResponse implements BaseModel
@@ -65,8 +65,8 @@ final class IntegratorObjectCreationResponse implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param InboundDBObjectType|InboundDBObjectTypeShape $objectType
-     * @param list<PropertyDefinitionShape> $properties
-     * @param list<GroupShape> $propertyGroups
+     * @param list<PropertyDefinition|PropertyDefinitionShape> $properties
+     * @param list<Group|GroupShape> $propertyGroups
      */
     public static function with(
         InboundDBObjectType|array $objectType,
@@ -94,7 +94,7 @@ final class IntegratorObjectCreationResponse implements BaseModel
     }
 
     /**
-     * @param list<PropertyDefinitionShape> $properties
+     * @param list<PropertyDefinition|PropertyDefinitionShape> $properties
      */
     public function withProperties(array $properties): self
     {
@@ -105,7 +105,7 @@ final class IntegratorObjectCreationResponse implements BaseModel
     }
 
     /**
-     * @param list<GroupShape> $propertyGroups
+     * @param list<Group|GroupShape> $propertyGroups
      */
     public function withPropertyGroups(array $propertyGroups): self
     {

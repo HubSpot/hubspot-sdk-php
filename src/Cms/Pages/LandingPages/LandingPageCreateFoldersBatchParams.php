@@ -18,7 +18,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-import-type ContentFolderShape from \HubspotSDK\Cms\Pages\ContentFolder
  *
  * @phpstan-type LandingPageCreateFoldersBatchParamsShape = array{
- *   inputs: list<ContentFolderShape>
+ *   inputs: list<ContentFolder|ContentFolderShape>
  * }
  */
 final class LandingPageCreateFoldersBatchParams implements BaseModel
@@ -59,7 +59,7 @@ final class LandingPageCreateFoldersBatchParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<ContentFolderShape> $inputs
+     * @param list<ContentFolder|ContentFolderShape> $inputs
      */
     public static function with(array $inputs): self
     {
@@ -73,7 +73,7 @@ final class LandingPageCreateFoldersBatchParams implements BaseModel
     /**
      * Content folders to input.
      *
-     * @param list<ContentFolderShape> $inputs
+     * @param list<ContentFolder|ContentFolderShape> $inputs
      */
     public function withInputs(array $inputs): self
     {

@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-import-type SimplePublicObjectBatchInputForCreateShape from \HubspotSDK\Crm\SimplePublicObjectBatchInputForCreate
  *
  * @phpstan-type BatchInputSimplePublicObjectBatchInputForCreateShape = array{
- *   inputs: list<SimplePublicObjectBatchInputForCreateShape>
+ *   inputs: list<SimplePublicObjectBatchInputForCreate|SimplePublicObjectBatchInputForCreateShape>,
  * }
  */
 final class BatchInputSimplePublicObjectBatchInputForCreate implements BaseModel
@@ -48,7 +48,7 @@ final class BatchInputSimplePublicObjectBatchInputForCreate implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<SimplePublicObjectBatchInputForCreateShape> $inputs
+     * @param list<SimplePublicObjectBatchInputForCreate|SimplePublicObjectBatchInputForCreateShape> $inputs
      */
     public static function with(array $inputs): self
     {
@@ -60,7 +60,7 @@ final class BatchInputSimplePublicObjectBatchInputForCreate implements BaseModel
     }
 
     /**
-     * @param list<SimplePublicObjectBatchInputForCreateShape> $inputs
+     * @param list<SimplePublicObjectBatchInputForCreate|SimplePublicObjectBatchInputForCreateShape> $inputs
      */
     public function withInputs(array $inputs): self
     {

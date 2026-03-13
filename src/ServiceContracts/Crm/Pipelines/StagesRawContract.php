@@ -18,6 +18,9 @@ use HubspotSDK\Crm\Pipelines\Stages\StageReplaceParams;
 use HubspotSDK\Crm\Pipelines\Stages\StageUpdateParams;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface StagesRawContract
 {
     /**
@@ -25,6 +28,7 @@ interface StagesRawContract
      *
      * @param string $pipelineID path param: The unique identifier of the pipeline to which the stage will be added
      * @param array<string,mixed>|StageCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PipelineStage>
      *
@@ -33,7 +37,7 @@ interface StagesRawContract
     public function create(
         string $pipelineID,
         array|StageCreateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -41,6 +45,7 @@ interface StagesRawContract
      *
      * @param string $stageID path param: The unique identifier of the stage to be updated in the pipeline
      * @param array<string,mixed>|StageUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PipelineStage>
      *
@@ -49,7 +54,7 @@ interface StagesRawContract
     public function update(
         string $stageID,
         array|StageUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -57,6 +62,7 @@ interface StagesRawContract
      *
      * @param string $pipelineID the unique identifier of the pipeline whose stages are being retrieved
      * @param array<string,mixed>|StageListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CollectionResponsePipelineStageNoPaging>
      *
@@ -65,7 +71,7 @@ interface StagesRawContract
     public function list(
         string $pipelineID,
         array|StageListParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -73,6 +79,7 @@ interface StagesRawContract
      *
      * @param string $stageID the unique identifier of the stage to be deleted from the pipeline
      * @param array<string,mixed>|StageDeleteParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -81,7 +88,7 @@ interface StagesRawContract
     public function delete(
         string $stageID,
         array|StageDeleteParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -89,6 +96,7 @@ interface StagesRawContract
      *
      * @param string $stageID the unique identifier of the stage to be retrieved from the pipeline
      * @param array<string,mixed>|StageGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PipelineStage>
      *
@@ -97,7 +105,7 @@ interface StagesRawContract
     public function get(
         string $stageID,
         array|StageGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -105,6 +113,7 @@ interface StagesRawContract
      *
      * @param string $stageID the unique identifier for the pipeline stage being audited
      * @param array<string,mixed>|StageGetAuditParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CollectionResponsePublicAuditInfoNoPaging>
      *
@@ -113,7 +122,7 @@ interface StagesRawContract
     public function getAudit(
         string $stageID,
         array|StageGetAuditParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -121,6 +130,7 @@ interface StagesRawContract
      *
      * @param string $stageID path param: The unique identifier of the stage to be replaced in the pipeline
      * @param array<string,mixed>|StageReplaceParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PipelineStage>
      *
@@ -129,6 +139,6 @@ interface StagesRawContract
     public function replace(
         string $stageID,
         array|StageReplaceParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

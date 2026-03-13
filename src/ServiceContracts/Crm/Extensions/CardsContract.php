@@ -7,59 +7,41 @@ namespace HubspotSDK\ServiceContracts\Crm\Extensions;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\Extensions\Cards\CardActions;
 use HubspotSDK\Crm\Extensions\Cards\CardDisplayBody;
-use HubspotSDK\Crm\Extensions\Cards\CardDisplayProperty;
-use HubspotSDK\Crm\Extensions\Cards\CardDisplayProperty\DataType;
-use HubspotSDK\Crm\Extensions\Cards\CardFetchBody\CardType;
-use HubspotSDK\Crm\Extensions\Cards\CardObjectTypeBody;
-use HubspotSDK\Crm\Extensions\Cards\CardObjectTypeBody\Name;
-use HubspotSDK\Crm\Extensions\Cards\DisplayOption;
-use HubspotSDK\Crm\Extensions\Cards\DisplayOption\Type;
+use HubspotSDK\Crm\Extensions\Cards\CardFetchBody;
+use HubspotSDK\Crm\Extensions\Cards\CardFetchBodyPatch;
 use HubspotSDK\Crm\Extensions\Cards\IntegratorCardPayloadResponse;
 use HubspotSDK\Crm\Extensions\Cards\PublicCardListResponse;
 use HubspotSDK\Crm\Extensions\Cards\PublicCardResponse;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type CardFetchBodyShape from \HubspotSDK\Crm\Extensions\Cards\CardFetchBody
+ * @phpstan-import-type CardFetchBodyPatchShape from \HubspotSDK\Crm\Extensions\Cards\CardFetchBodyPatch
+ * @phpstan-import-type CardActionsShape from \HubspotSDK\Crm\Extensions\Cards\CardActions
+ * @phpstan-import-type CardDisplayBodyShape from \HubspotSDK\Crm\Extensions\Cards\CardDisplayBody
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface CardsContract
 {
     /**
      * @api
      *
      * @param int $appID the ID of the target app
-     * @param array{
-     *   baseURLs: list<string>
-     * }|CardActions $actions Configuration for custom user actions on cards
-     * @param array{
-     *   properties: list<array{
-     *     dataType: 'BOOLEAN'|'CURRENCY'|'DATE'|'DATETIME'|'EMAIL'|'LINK'|'NUMERIC'|'STATUS'|'STRING'|DataType,
-     *     label: string,
-     *     name: string,
-     *     options: list<array{
-     *       label: string,
-     *       name: string,
-     *       type: 'DANGER'|'DEFAULT'|'INFO'|'SUCCESS'|'WARNING'|Type,
-     *     }|DisplayOption>,
-     *   }|CardDisplayProperty>,
-     * }|CardDisplayBody $display Configuration for displayed info on a card
-     * @param array{
-     *   objectTypes: list<array{
-     *     name: 'companies'|'contacts'|'deals'|'marketing_events'|'tickets'|Name,
-     *     propertiesToSend: list<string>,
-     *   }|CardObjectTypeBody>,
-     *   targetURL: string,
-     *   cardType?: 'EXTERNAL'|'SERVERLESS'|CardType,
-     *   serverlessFunction?: string,
-     * } $fetch Configuration for this card's data fetch request
+     * @param CardActions|CardActionsShape $actions configuration for custom user actions on cards
+     * @param CardDisplayBody|CardDisplayBodyShape $display Configuration for displayed info on a card
+     * @param CardFetchBody|CardFetchBodyShape $fetch configuration for this card's data fetch request
      * @param string $title The top-level title for this card. Displayed to users in the CRM UI.
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function create(
         int $appID,
-        array|CardActions $actions,
-        array|CardDisplayBody $display,
-        array $fetch,
+        CardActions|array $actions,
+        CardDisplayBody|array $display,
+        CardFetchBody|array $fetch,
         string $title,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): PublicCardResponse;
 
     /**
@@ -67,54 +49,35 @@ interface CardsContract
      *
      * @param string $cardID path param: The ID of the card to update
      * @param int $appID path param: The ID of the target app
-     * @param array{
-     *   baseURLs: list<string>
-     * }|CardActions $actions Body param: Configuration for custom user actions on cards
-     * @param array{
-     *   properties: list<array{
-     *     dataType: 'BOOLEAN'|'CURRENCY'|'DATE'|'DATETIME'|'EMAIL'|'LINK'|'NUMERIC'|'STATUS'|'STRING'|DataType,
-     *     label: string,
-     *     name: string,
-     *     options: list<array{
-     *       label: string,
-     *       name: string,
-     *       type: 'DANGER'|'DEFAULT'|'INFO'|'SUCCESS'|'WARNING'|Type,
-     *     }|DisplayOption>,
-     *   }|CardDisplayProperty>,
-     * }|CardDisplayBody $display Body param: Configuration for displayed info on a card
-     * @param array{
-     *   objectTypes: list<array{
-     *     name: 'companies'|'contacts'|'deals'|'marketing_events'|'tickets'|Name,
-     *     propertiesToSend: list<string>,
-     *   }|CardObjectTypeBody>,
-     *   cardType?: 'EXTERNAL'|'SERVERLESS'|\HubspotSDK\Crm\Extensions\Cards\CardFetchBodyPatch\CardType,
-     *   serverlessFunction?: string,
-     *   targetURL?: string,
-     * } $fetch Body param: Variant of CardFetchBody with fields as optional for patches
+     * @param CardActions|CardActionsShape $actions body param: Configuration for custom user actions on cards
+     * @param CardDisplayBody|CardDisplayBodyShape $display Body param: Configuration for displayed info on a card
+     * @param CardFetchBodyPatch|CardFetchBodyPatchShape $fetch Body param: Variant of CardFetchBody with fields as optional for patches
      * @param string $title Body param: The top-level title for this card. Displayed to users in the CRM UI.
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function update(
         string $cardID,
         int $appID,
-        array|CardActions|null $actions = null,
-        array|CardDisplayBody|null $display = null,
-        ?array $fetch = null,
+        CardActions|array|null $actions = null,
+        CardDisplayBody|array|null $display = null,
+        CardFetchBodyPatch|array|null $fetch = null,
         ?string $title = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): PublicCardResponse;
 
     /**
      * @api
      *
      * @param int $appID the ID of the target app
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function list(
         int $appID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): PublicCardListResponse;
 
     /**
@@ -122,13 +85,14 @@ interface CardsContract
      *
      * @param string $cardID the ID of the card to delete
      * @param int $appID the ID of the target app
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function delete(
         string $cardID,
         int $appID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): mixed;
 
     /**
@@ -136,21 +100,24 @@ interface CardsContract
      *
      * @param string $cardID the ID of the target card
      * @param int $appID the ID of the target app
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function get(
         string $cardID,
         int $appID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): PublicCardResponse;
 
     /**
      * @api
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @throws APIException
      */
     public function getSampleResponse(
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): IntegratorCardPayloadResponse;
 }

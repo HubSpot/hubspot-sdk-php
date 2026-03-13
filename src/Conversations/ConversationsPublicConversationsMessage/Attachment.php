@@ -26,7 +26,8 @@ use HubspotSDK\Core\Conversion\Contracts\ConverterSource;
  * @phpstan-import-type PublicWhatsAppTemplateMetadataShape from \HubspotSDK\Conversations\PublicWhatsAppTemplateMetadata
  * @phpstan-import-type PublicSocialMetadataAttachmentShape from \HubspotSDK\Conversations\PublicSocialMetadataAttachment
  *
- * @phpstan-type AttachmentShape = PublicFileShape|PublicLocationShape|PublicContactShape|PublicUnsupportedContentShape|PublicMessageHeaderShape|PublicQuickRepliesShape|PublicWhatsAppTemplateMetadataShape|PublicSocialMetadataAttachmentShape
+ * @phpstan-type AttachmentVariants = PublicFile|PublicLocation|PublicContact|PublicUnsupportedContent|PublicMessageHeader|PublicQuickReplies|PublicWhatsAppTemplateMetadata|PublicSocialMetadataAttachment
+ * @phpstan-type AttachmentShape = AttachmentVariants|PublicFileShape|PublicLocationShape|PublicContactShape|PublicUnsupportedContentShape|PublicMessageHeaderShape|PublicQuickRepliesShape|PublicWhatsAppTemplateMetadataShape|PublicSocialMetadataAttachmentShape
  */
 final class Attachment implements ConverterSource
 {

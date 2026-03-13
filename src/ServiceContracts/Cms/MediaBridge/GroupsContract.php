@@ -9,6 +9,9 @@ use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\Properties\PropertyGroup;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface GroupsContract
 {
     /**
@@ -16,9 +19,10 @@ interface GroupsContract
      *
      * @param string $objectType path param: The object type to create the new property group for
      * @param int $appID Path param: The appId for the media bridge app. It is possible to have multiple apps in your developer account that use the media bridge.
-     * @param string $label Body param:
-     * @param string $name Body param:
-     * @param int $displayOrder Body param:
+     * @param string $label Body param
+     * @param string $name Body param
+     * @param int $displayOrder Body param
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -28,7 +32,7 @@ interface GroupsContract
         string $label,
         string $name,
         ?int $displayOrder = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): PropertyGroup;
 
     /**
@@ -36,13 +40,14 @@ interface GroupsContract
      *
      * @param string $objectType the type of object to get the property groups for
      * @param int $appID The appId for the media bridge app. It is possible to have multiple apps in your developer account that use the media bridge.
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function list(
         string $objectType,
         int $appID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): CollectionResponsePropertyGroupNoPaging;
 
     /**
@@ -51,6 +56,7 @@ interface GroupsContract
      * @param string $groupName the name of the property group to be deleted
      * @param int $appID The appId for the media bridge app. It is possible to have multiple apps in your developer account that use the media bridge.
      * @param string $objectType The object type for the property group
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -58,7 +64,7 @@ interface GroupsContract
         string $groupName,
         int $appID,
         string $objectType,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): mixed;
 
     /**
@@ -67,6 +73,7 @@ interface GroupsContract
      * @param string $groupName the name for the property group you want to get the details for
      * @param int $appID The appId for the media bridge app. It is possible to have multiple apps in your developer account that use the media bridge.
      * @param string $objectType the object type for the property group
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -74,7 +81,7 @@ interface GroupsContract
         string $groupName,
         int $appID,
         string $objectType,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): PropertyGroup;
 
     /**
@@ -83,8 +90,9 @@ interface GroupsContract
      * @param string $groupName path param: The name of the property group to update
      * @param int $appID Path param: The appId for the media bridge app. It is possible to have multiple apps in your developer account that use the media bridge.
      * @param string $objectType path param: The object type for the property group
-     * @param int $displayOrder Body param:
-     * @param string $label Body param:
+     * @param int $displayOrder Body param
+     * @param string $label Body param
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -94,6 +102,6 @@ interface GroupsContract
         string $objectType,
         ?int $displayOrder = null,
         ?string $label = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): PropertyGroup;
 }

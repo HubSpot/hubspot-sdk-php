@@ -11,6 +11,9 @@ use HubspotSDK\Crm\Lists\MembershipsUpdateResponse;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface MembershipsContract
 {
     /**
@@ -24,6 +27,7 @@ interface MembershipsContract
      *
      * If provided, then the records in the response will be the records preceding the offset, sorted in *descending* order.
      * @param int $limit The number of records to return in the response. The maximum `limit` is 250.
+     * @param RequestOpts|null $requestOptions
      *
      * @return Page<JoinTimeAndRecordID>
      *
@@ -34,7 +38,7 @@ interface MembershipsContract
         ?string $after = null,
         ?string $before = null,
         int $limit = 100,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): Page;
 
     /**
@@ -42,13 +46,14 @@ interface MembershipsContract
      *
      * @param string $listID the **ILS ID** of the `MANUAL` or `SNAPSHOT` list
      * @param list<string> $body
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function add(
         string $listID,
         array $body,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): MembershipsUpdateResponse;
 
     /**
@@ -56,13 +61,14 @@ interface MembershipsContract
      *
      * @param string $sourceListID the **ILS ID** of the *source list* to grab the records from, which are then added to the *destination list*
      * @param string $listID the **ILS ID** of the `MANUAL` or `SNAPSHOT` *destination list*, which the *source list* records are added to
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function addAllFromList(
         string $sourceListID,
         string $listID,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): mixed;
 
     /**
@@ -71,6 +77,7 @@ interface MembershipsContract
      * @param string $listID the **ILS ID** of the `MANUAL` or `SNAPSHOT` list
      * @param list<string> $recordIDsToAdd
      * @param list<string> $recordIDsToRemove
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -78,7 +85,7 @@ interface MembershipsContract
         string $listID,
         array $recordIDsToAdd,
         array $recordIDsToRemove,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): MembershipsUpdateResponse;
 
     /**
@@ -86,13 +93,14 @@ interface MembershipsContract
      *
      * @param string $recordID Id of the record
      * @param string $objectTypeID Object type id of the record
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function getLists(
         string $recordID,
         string $objectTypeID,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): APICollectionResponseRecordListMembershipNoPaging;
 
     /**
@@ -106,6 +114,7 @@ interface MembershipsContract
      *
      * If provided, then the records in the response will be the records preceding the offset, sorted in *descending* order.
      * @param int $limit The number of records to return in the response. The maximum `limit` is 250.
+     * @param RequestOpts|null $requestOptions
      *
      * @return Page<JoinTimeAndRecordID>
      *
@@ -116,7 +125,7 @@ interface MembershipsContract
         ?string $after = null,
         ?string $before = null,
         int $limit = 100,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): Page;
 
     /**
@@ -124,24 +133,26 @@ interface MembershipsContract
      *
      * @param string $listID the **ILS ID** of the `MANUAL` or `SNAPSHOT` list
      * @param list<string> $body
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function remove(
         string $listID,
         array $body,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): MembershipsUpdateResponse;
 
     /**
      * @api
      *
      * @param string $listID the **ILS ID** of the `MANUAL` or `SNAPSHOT` list
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function removeAll(
         string $listID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): mixed;
 }

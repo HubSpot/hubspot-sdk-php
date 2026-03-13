@@ -12,12 +12,17 @@ use HubspotSDK\Crm\Properties\CreatedResponseProperty;
 use HubspotSDK\Crm\Properties\PropertyCreateParams\DataSensitivity;
 use HubspotSDK\Crm\Properties\PropertyCreateParams\FieldType;
 use HubspotSDK\Crm\Properties\PropertyCreateParams\Type;
+use HubspotSDK\OptionInput;
 use HubspotSDK\Property;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\PropertiesContract;
 use HubspotSDK\Services\Crm\Properties\BatchService;
 use HubspotSDK\Services\Crm\Properties\GroupsService;
 
+/**
+ * @phpstan-import-type OptionInputShape from \HubspotSDK\OptionInput
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class PropertiesService implements PropertiesContract
 {
     /**
@@ -50,28 +55,23 @@ final class PropertiesService implements PropertiesContract
      *
      * Create and return a copy of a new property for the specified object type.
      *
-     * @param 'booleancheckbox'|'calculation_equation'|'checkbox'|'date'|'file'|'html'|'number'|'phonenumber'|'radio'|'select'|'text'|'textarea'|FieldType $fieldType
-     * @param 'bool'|'date'|'datetime'|'enumeration'|'number'|'phone_number'|'string'|Type $type
-     * @param 'highly_sensitive'|'non_sensitive'|'sensitive'|DataSensitivity $dataSensitivity
-     * @param list<array{
-     *   displayOrder: int,
-     *   hidden: bool,
-     *   label: string,
-     *   value: string,
-     *   description?: string,
-     * }> $options
+     * @param FieldType|value-of<FieldType> $fieldType
+     * @param Type|value-of<Type> $type
+     * @param DataSensitivity|value-of<DataSensitivity> $dataSensitivity
+     * @param list<OptionInput|OptionInputShape> $options
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function create(
         string $objectType,
-        string|FieldType $fieldType,
+        FieldType|string $fieldType,
         string $groupName,
         string $label,
         string $name,
-        string|Type $type,
+        Type|string $type,
         ?string $calculationFormula = null,
-        string|DataSensitivity|null $dataSensitivity = null,
+        DataSensitivity|string|null $dataSensitivity = null,
         ?string $description = null,
         ?int $displayOrder = null,
         ?bool $externalOptions = null,
@@ -80,7 +80,7 @@ final class PropertiesService implements PropertiesContract
         ?bool $hidden = null,
         ?array $options = null,
         ?string $referencedObjectType = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): CreatedResponseProperty {
         $params = Util::removeNulls(
             [
@@ -113,24 +113,19 @@ final class PropertiesService implements PropertiesContract
      *
      * Perform a partial update of a property identified by { propertyName }. Provided fields will be overwritten.
      *
-     * @param string $propertyName Path param:
-     * @param string $objectType Path param:
+     * @param string $propertyName Path param
+     * @param string $objectType Path param
      * @param string $calculationFormula body param: Represents a formula that is used to compute a calculated property
      * @param string $description body param: A description of the property that will be shown as help text in HubSpot
      * @param int $displayOrder Body param: Properties are displayed in order starting with the lowest positive integer value. Values of -1 will cause the Property to be displayed after any positive values.
-     * @param 'booleancheckbox'|'calculation_equation'|'checkbox'|'date'|'file'|'html'|'number'|'phonenumber'|'radio'|'select'|'text'|'textarea'|\HubspotSDK\Crm\Properties\PropertyUpdateParams\FieldType $fieldType body param: Controls how the property appears in HubSpot
+     * @param \HubspotSDK\Crm\Properties\PropertyUpdateParams\FieldType|value-of<\HubspotSDK\Crm\Properties\PropertyUpdateParams\FieldType> $fieldType body param: Controls how the property appears in HubSpot
      * @param bool $formField body param: Whether or not the property can be used in a HubSpot form
      * @param string $groupName body param: The name of the property group the property belongs to
      * @param bool $hidden body param: If true, the property won't be visible and can't be used in HubSpot
      * @param string $label body param: A human-readable property label that will be shown in HubSpot
-     * @param list<array{
-     *   displayOrder: int,
-     *   hidden: bool,
-     *   label: string,
-     *   value: string,
-     *   description?: string,
-     * }> $options Body param: A list of valid options for the property
-     * @param 'bool'|'date'|'datetime'|'enumeration'|'number'|'phone_number'|'string'|\HubspotSDK\Crm\Properties\PropertyUpdateParams\Type $type body param: The data type of the property
+     * @param list<OptionInput|OptionInputShape> $options body param: A list of valid options for the property
+     * @param \HubspotSDK\Crm\Properties\PropertyUpdateParams\Type|value-of<\HubspotSDK\Crm\Properties\PropertyUpdateParams\Type> $type body param: The data type of the property
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -140,14 +135,14 @@ final class PropertiesService implements PropertiesContract
         ?string $calculationFormula = null,
         ?string $description = null,
         ?int $displayOrder = null,
-        string|\HubspotSDK\Crm\Properties\PropertyUpdateParams\FieldType|null $fieldType = null,
+        \HubspotSDK\Crm\Properties\PropertyUpdateParams\FieldType|string|null $fieldType = null,
         ?bool $formField = null,
         ?string $groupName = null,
         ?bool $hidden = null,
         ?string $label = null,
         ?array $options = null,
-        string|\HubspotSDK\Crm\Properties\PropertyUpdateParams\Type|null $type = null,
-        ?RequestOptions $requestOptions = null,
+        \HubspotSDK\Crm\Properties\PropertyUpdateParams\Type|string|null $type = null,
+        RequestOptions|array|null $requestOptions = null,
     ): Property {
         $params = Util::removeNulls(
             [
@@ -177,17 +172,18 @@ final class PropertiesService implements PropertiesContract
      * Read all existing properties for the specified object type and HubSpot account.
      *
      * @param bool $archived whether to return only results that have been archived
-     * @param 'highly_sensitive'|'non_sensitive'|'sensitive'|\HubspotSDK\Crm\Properties\PropertyListParams\DataSensitivity $dataSensitivity
+     * @param \HubspotSDK\Crm\Properties\PropertyListParams\DataSensitivity|value-of<\HubspotSDK\Crm\Properties\PropertyListParams\DataSensitivity> $dataSensitivity
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function list(
         string $objectType,
         bool $archived = false,
-        string|\HubspotSDK\Crm\Properties\PropertyListParams\DataSensitivity $dataSensitivity = 'non_sensitive',
+        \HubspotSDK\Crm\Properties\PropertyListParams\DataSensitivity|string $dataSensitivity = 'non_sensitive',
         ?string $locale = null,
         ?string $properties = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): CollectionResponseProperty {
         $params = Util::removeNulls(
             [
@@ -209,12 +205,14 @@ final class PropertiesService implements PropertiesContract
      *
      * Move a property identified by {propertyName} to the recycling bin.
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @throws APIException
      */
     public function delete(
         string $propertyName,
         string $objectType,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): mixed {
         $params = Util::removeNulls(['objectType' => $objectType]);
 
@@ -229,12 +227,13 @@ final class PropertiesService implements PropertiesContract
      *
      * Read a property identified by {propertyName}.
      *
-     * @param string $propertyName Path param:
-     * @param string $objectType Path param:
+     * @param string $propertyName Path param
+     * @param string $objectType Path param
      * @param bool $archived query param: Whether to return only results that have been archived
-     * @param 'highly_sensitive'|'non_sensitive'|'sensitive'|\HubspotSDK\Crm\Properties\PropertyGetParams\DataSensitivity $dataSensitivity Query param:
-     * @param string $locale Query param:
-     * @param string $properties Query param:
+     * @param \HubspotSDK\Crm\Properties\PropertyGetParams\DataSensitivity|value-of<\HubspotSDK\Crm\Properties\PropertyGetParams\DataSensitivity> $dataSensitivity Query param
+     * @param string $locale Query param
+     * @param string $properties Query param
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -242,10 +241,10 @@ final class PropertiesService implements PropertiesContract
         string $propertyName,
         string $objectType,
         bool $archived = false,
-        string|\HubspotSDK\Crm\Properties\PropertyGetParams\DataSensitivity $dataSensitivity = 'non_sensitive',
+        \HubspotSDK\Crm\Properties\PropertyGetParams\DataSensitivity|string $dataSensitivity = 'non_sensitive',
         ?string $locale = null,
         ?string $properties = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): Property {
         $params = Util::removeNulls(
             [

@@ -4,24 +4,29 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Services\Crm\Objects;
 
-use HubspotSDK\AssociationSpec;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\Crm\CreatedResponseSimplePublicObject;
+use HubspotSDK\Crm\FilterGroup;
 use HubspotSDK\Crm\Objects\Fees\FeeCreateParams;
 use HubspotSDK\Crm\Objects\Fees\FeeGetParams;
 use HubspotSDK\Crm\Objects\Fees\FeeListParams;
 use HubspotSDK\Crm\Objects\Fees\FeeSearchParams;
 use HubspotSDK\Crm\Objects\Fees\FeeUpdateParams;
+use HubspotSDK\Crm\PublicAssociationsForObject;
 use HubspotSDK\Crm\SimplePublicObject;
 use HubspotSDK\Crm\SimplePublicObjectWithAssociations;
 use HubspotSDK\Page;
-use HubspotSDK\PublicObjectID;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Objects\FeesRawContract;
 
+/**
+ * @phpstan-import-type PublicAssociationsForObjectShape from \HubspotSDK\Crm\PublicAssociationsForObject
+ * @phpstan-import-type FilterGroupShape from \HubspotSDK\Crm\FilterGroup
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class FeesRawService implements FeesRawContract
 {
     // @phpstan-ignore-next-line
@@ -36,12 +41,10 @@ final class FeesRawService implements FeesRawContract
      * Create a fee with the given properties and return a copy of the object, including the ID. Documentation and examples for creating standard fees is provided.
      *
      * @param array{
-     *   associations: list<array{
-     *     to: array<string,mixed>|PublicObjectID,
-     *     types: list<array<string,mixed>|AssociationSpec>,
-     *   }>,
+     *   associations: list<PublicAssociationsForObject|PublicAssociationsForObjectShape>,
      *   properties: array<string,string>,
      * }|FeeCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CreatedResponseSimplePublicObject>
      *
@@ -49,7 +52,7 @@ final class FeesRawService implements FeesRawContract
      */
     public function create(
         array|FeeCreateParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = FeeCreateParams::parseRequest(
             $params,
@@ -71,10 +74,11 @@ final class FeesRawService implements FeesRawContract
      *
      * Perform a partial update of an Object identified by `{feeId}`or optionally a unique property value as specified by the `idProperty` query param. `{feeId}` refers to the internal object ID by default, and the `idProperty` query param refers to a property whose values are unique for the object. Provided property values will be overwritten. Read-only and non-existent properties will result in an error. Properties values can be cleared by passing an empty string.
      *
-     * @param string $feeID Path param:
+     * @param string $feeID Path param
      * @param array{
      *   properties: array<string,string>, idProperty?: string
      * }|FeeUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SimplePublicObject>
      *
@@ -83,7 +87,7 @@ final class FeesRawService implements FeesRawContract
     public function update(
         string $feeID,
         array|FeeUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = FeeUpdateParams::parseRequest(
             $params,
@@ -115,6 +119,7 @@ final class FeesRawService implements FeesRawContract
      *   properties?: list<string>,
      *   propertiesWithHistory?: list<string>,
      * }|FeeListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<SimplePublicObjectWithAssociations>>
      *
@@ -122,7 +127,7 @@ final class FeesRawService implements FeesRawContract
      */
     public function list(
         array|FeeListParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = FeeListParams::parseRequest(
             $params,
@@ -145,13 +150,15 @@ final class FeesRawService implements FeesRawContract
      *
      * Move an Object identified by `{feeId}` to the recycling bin.
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @return BaseResponse<mixed>
      *
      * @throws APIException
      */
     public function delete(
         string $feeID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -174,6 +181,7 @@ final class FeesRawService implements FeesRawContract
      *   properties?: list<string>,
      *   propertiesWithHistory?: list<string>,
      * }|FeeGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SimplePublicObjectWithAssociations>
      *
@@ -182,7 +190,7 @@ final class FeesRawService implements FeesRawContract
     public function get(
         string $feeID,
         array|FeeGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = FeeGetParams::parseRequest(
             $params,
@@ -204,12 +212,13 @@ final class FeesRawService implements FeesRawContract
      *
      * @param array{
      *   after: string,
-     *   filterGroups: list<array{filters: list<array<string,mixed>>}>,
+     *   filterGroups: list<FilterGroup|FilterGroupShape>,
      *   limit: int,
      *   properties: list<string>,
      *   sorts: list<string>,
      *   query?: string,
      * }|FeeSearchParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CollectionResponseWithTotalSimplePublicObject>
      *
@@ -217,7 +226,7 @@ final class FeesRawService implements FeesRawContract
      */
     public function search(
         array|FeeSearchParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = FeeSearchParams::parseRequest(
             $params,

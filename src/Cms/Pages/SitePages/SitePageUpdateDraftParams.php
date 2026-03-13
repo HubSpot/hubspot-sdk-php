@@ -75,7 +75,7 @@ use HubspotSDK\Core\Conversion\MapOf;
  *   templatePath: string,
  *   themeSettingsValues: array<string,mixed>,
  *   translatedFromID: string,
- *   translations: array<string,PagesContentLanguageVariationShape>,
+ *   translations: array<string,PagesContentLanguageVariation|PagesContentLanguageVariationShape>,
  *   updated: \DateTimeInterface,
  *   updatedByID: string,
  *   url: string,
@@ -571,7 +571,7 @@ final class SitePageUpdateDraftParams implements BaseModel
      * @param array<string,mixed> $layoutSections
      * @param list<mixed> $publicAccessRules
      * @param array<string,mixed> $themeSettingsValues
-     * @param array<string,PagesContentLanguageVariationShape> $translations
+     * @param array<string,PagesContentLanguageVariation|PagesContentLanguageVariationShape> $translations
      * @param array<string,mixed> $widgetContainers
      * @param array<string,mixed> $widgets
      */
@@ -1254,7 +1254,7 @@ final class SitePageUpdateDraftParams implements BaseModel
     }
 
     /**
-     * @param array<string,PagesContentLanguageVariationShape> $translations
+     * @param array<string,PagesContentLanguageVariation|PagesContentLanguageVariationShape> $translations
      */
     public function withTranslations(array $translations): self
     {

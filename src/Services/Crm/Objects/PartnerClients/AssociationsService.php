@@ -13,6 +13,9 @@ use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Objects\PartnerClients\AssociationsContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class AssociationsService implements AssociationsContract
 {
     /**
@@ -33,6 +36,8 @@ final class AssociationsService implements AssociationsContract
      *
      * Associate a partner client with another object
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @throws APIException
      */
     public function update(
@@ -40,7 +45,7 @@ final class AssociationsService implements AssociationsContract
         string $partnerClientID,
         string $toObjectType,
         string $toObjectID,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): SimplePublicObjectWithAssociations {
         $params = Util::removeNulls(
             [
@@ -61,11 +66,12 @@ final class AssociationsService implements AssociationsContract
      *
      * List associations of a partner client by type
      *
-     * @param string $toObjectType Path param:
-     * @param string $partnerClientID Path param:
+     * @param string $toObjectType Path param
+     * @param string $partnerClientID Path param
      * @param string $after Query param: The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
-     * @param bool $includeFa Query param:
+     * @param bool $includeFa Query param
      * @param int $limit query param: The maximum number of results to display per page
+     * @param RequestOpts|null $requestOptions
      *
      * @return Page<AssociatedID>
      *
@@ -77,7 +83,7 @@ final class AssociationsService implements AssociationsContract
         ?string $after = null,
         bool $includeFa = false,
         int $limit = 500,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): Page {
         $params = Util::removeNulls(
             [
@@ -99,6 +105,8 @@ final class AssociationsService implements AssociationsContract
      *
      * Remove an association between two partner clients
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @throws APIException
      */
     public function delete(
@@ -106,7 +114,7 @@ final class AssociationsService implements AssociationsContract
         string $partnerClientID,
         string $toObjectType,
         string $toObjectID,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): mixed {
         $params = Util::removeNulls(
             [

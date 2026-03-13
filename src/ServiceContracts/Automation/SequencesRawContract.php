@@ -13,12 +13,16 @@ use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface SequencesRawContract
 {
     /**
      * @api
      *
      * @param array<string,mixed>|SequenceListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<PublicSequenceLiteResponse>>
      *
@@ -26,13 +30,14 @@ interface SequencesRawContract
      */
     public function list(
         array|SequenceListParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|SequenceGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicSequenceResponse>
      *
@@ -41,6 +46,6 @@ interface SequencesRawContract
     public function get(
         string $sequenceID,
         array|SequenceGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

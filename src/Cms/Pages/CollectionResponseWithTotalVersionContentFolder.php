@@ -17,7 +17,7 @@ use HubspotSDK\Paging;
  * @phpstan-import-type PagingShape from \HubspotSDK\Paging
  *
  * @phpstan-type CollectionResponseWithTotalVersionContentFolderShape = array{
- *   results: list<VersionContentFolderShape>,
+ *   results: list<VersionContentFolder|VersionContentFolderShape>,
  *   total: int,
  *   paging?: null|Paging|PagingShape,
  * }
@@ -70,7 +70,7 @@ final class CollectionResponseWithTotalVersionContentFolder implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<VersionContentFolderShape> $results
+     * @param list<VersionContentFolder|VersionContentFolderShape> $results
      * @param Paging|PagingShape|null $paging
      */
     public static function with(
@@ -91,7 +91,7 @@ final class CollectionResponseWithTotalVersionContentFolder implements BaseModel
     /**
      * Collection of content folder versions.
      *
-     * @param list<VersionContentFolderShape> $results
+     * @param list<VersionContentFolder|VersionContentFolderShape> $results
      */
     public function withResults(array $results): self
     {

@@ -16,7 +16,8 @@ use HubspotSDK\Core\Conversion\Contracts\ConverterSource;
  * @phpstan-import-type PublicThreadStatusChangeShape from \HubspotSDK\Conversations\PublicThreadStatusChange
  * @phpstan-import-type PublicThreadInboxChangeShape from \HubspotSDK\Conversations\PublicThreadInboxChange
  *
- * @phpstan-type PublicMessageShape = ConversationsPublicConversationsMessageShape|PublicCommentShape|PublicWelcomeMessageShape|PublicAssignmentMessageShape|PublicThreadStatusChangeShape|PublicThreadInboxChangeShape
+ * @phpstan-type PublicMessageVariants = ConversationsPublicConversationsMessage|PublicComment|PublicWelcomeMessage|PublicAssignmentMessage|PublicThreadStatusChange|PublicThreadInboxChange
+ * @phpstan-type PublicMessageShape = PublicMessageVariants|ConversationsPublicConversationsMessageShape|PublicCommentShape|PublicWelcomeMessageShape|PublicAssignmentMessageShape|PublicThreadStatusChangeShape|PublicThreadInboxChangeShape
  */
 final class PublicMessage implements ConverterSource
 {

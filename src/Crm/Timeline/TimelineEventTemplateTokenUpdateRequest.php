@@ -17,7 +17,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-type TimelineEventTemplateTokenUpdateRequestShape = array{
  *   label: string,
  *   objectPropertyName?: string|null,
- *   options?: list<TimelineEventTemplateTokenOptionShape>|null,
+ *   options?: list<TimelineEventTemplateTokenOption|TimelineEventTemplateTokenOptionShape>|null,
  * }
  */
 final class TimelineEventTemplateTokenUpdateRequest implements BaseModel
@@ -69,7 +69,7 @@ final class TimelineEventTemplateTokenUpdateRequest implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<TimelineEventTemplateTokenOptionShape>|null $options
+     * @param list<TimelineEventTemplateTokenOption|TimelineEventTemplateTokenOptionShape>|null $options
      */
     public static function with(
         string $label,
@@ -111,7 +111,7 @@ final class TimelineEventTemplateTokenUpdateRequest implements BaseModel
     /**
      * If type is `enumeration`, we should have a list of options to choose from.
      *
-     * @param list<TimelineEventTemplateTokenOptionShape> $options
+     * @param list<TimelineEventTemplateTokenOption|TimelineEventTemplateTokenOptionShape> $options
      */
     public function withOptions(array $options): self
     {

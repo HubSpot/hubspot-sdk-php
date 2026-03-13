@@ -13,9 +13,20 @@ use HubspotSDK\Marketing\Campaigns\Batch\BatchGetParams;
 use HubspotSDK\Marketing\Campaigns\Batch\BatchUpdateParams;
 use HubspotSDK\Marketing\Campaigns\BatchResponsePublicCampaign;
 use HubspotSDK\Marketing\Campaigns\BatchResponsePublicCampaignWithAssets;
+use HubspotSDK\Marketing\Campaigns\PublicCampaignBatchUpdateItem;
+use HubspotSDK\Marketing\Campaigns\PublicCampaignDeleteInput;
+use HubspotSDK\Marketing\Campaigns\PublicCampaignInput;
+use HubspotSDK\Marketing\Campaigns\PublicCampaignReadInput;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Marketing\Campaigns\BatchRawContract;
 
+/**
+ * @phpstan-import-type PublicCampaignInputShape from \HubspotSDK\Marketing\Campaigns\PublicCampaignInput
+ * @phpstan-import-type PublicCampaignBatchUpdateItemShape from \HubspotSDK\Marketing\Campaigns\PublicCampaignBatchUpdateItem
+ * @phpstan-import-type PublicCampaignDeleteInputShape from \HubspotSDK\Marketing\Campaigns\PublicCampaignDeleteInput
+ * @phpstan-import-type PublicCampaignReadInputShape from \HubspotSDK\Marketing\Campaigns\PublicCampaignReadInput
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class BatchRawService implements BatchRawContract
 {
     // @phpstan-ignore-next-line
@@ -31,8 +42,9 @@ final class BatchRawService implements BatchRawContract
      * The campaigns in the response are not guaranteed to be in the same order as they were provided in the request.
      *
      * @param array{
-     *   inputs: list<array{properties: array<string,string>}>
+     *   inputs: list<PublicCampaignInput|PublicCampaignInputShape>
      * }|BatchCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BatchResponsePublicCampaign>
      *
@@ -40,7 +52,7 @@ final class BatchRawService implements BatchRawContract
      */
     public function create(
         array|BatchCreateParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = BatchCreateParams::parseRequest(
             $params,
@@ -65,8 +77,9 @@ final class BatchRawService implements BatchRawContract
      * If an empty string ("") is passed for any property in the Batch Update, it will reset that property's value.
      *
      * @param array{
-     *   inputs: list<array{id: string, properties: array<string,string>}>
+     *   inputs: list<PublicCampaignBatchUpdateItem|PublicCampaignBatchUpdateItemShape>
      * }|BatchUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BatchResponsePublicCampaign>
      *
@@ -74,7 +87,7 @@ final class BatchRawService implements BatchRawContract
      */
     public function update(
         array|BatchUpdateParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = BatchUpdateParams::parseRequest(
             $params,
@@ -98,7 +111,10 @@ final class BatchRawService implements BatchRawContract
      * The maximum number of items in a batch request is 50.
      * The response will always be 204 No Content, regardless of whether the campaigns exist or not, whether they were successfully deleted or not, or if only some of the campaigns in the batch were deleted.
      *
-     * @param array{inputs: list<array{id: string}>}|BatchDeleteParams $params
+     * @param array{
+     *   inputs: list<PublicCampaignDeleteInput|PublicCampaignDeleteInputShape>
+     * }|BatchDeleteParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -106,7 +122,7 @@ final class BatchRawService implements BatchRawContract
      */
     public function delete(
         array|BatchDeleteParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = BatchDeleteParams::parseRequest(
             $params,
@@ -132,11 +148,12 @@ final class BatchRawService implements BatchRawContract
      * If duplicate campaign IDs are provided in the request, duplicates will be ignored. The response will include only unique IDs and will be returned without duplicates.
      *
      * @param array{
-     *   inputs: list<array{id: string}>,
+     *   inputs: list<PublicCampaignReadInput|PublicCampaignReadInputShape>,
      *   endDate?: string,
      *   properties?: list<string>,
      *   startDate?: string,
      * }|BatchGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BatchResponsePublicCampaignWithAssets>
      *
@@ -144,7 +161,7 @@ final class BatchRawService implements BatchRawContract
      */
     public function get(
         array|BatchGetParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = BatchGetParams::parseRequest(
             $params,

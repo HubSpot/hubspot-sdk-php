@@ -13,7 +13,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @phpstan-type EventVisibilityResponseShape = array{
  *   createdAt: \DateTimeInterface,
- *   visibilitySettings: list<EventVisibilityChangeShape>,
+ *   visibilitySettings: list<EventVisibilityChange|EventVisibilityChangeShape>,
  * }
  */
 final class EventVisibilityResponse implements BaseModel
@@ -52,7 +52,7 @@ final class EventVisibilityResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<EventVisibilityChangeShape> $visibilitySettings
+     * @param list<EventVisibilityChange|EventVisibilityChangeShape> $visibilitySettings
      */
     public static function with(
         \DateTimeInterface $createdAt,
@@ -75,7 +75,7 @@ final class EventVisibilityResponse implements BaseModel
     }
 
     /**
-     * @param list<EventVisibilityChangeShape> $visibilitySettings
+     * @param list<EventVisibilityChange|EventVisibilityChangeShape> $visibilitySettings
      */
     public function withVisibilitySettings(array $visibilitySettings): self
     {

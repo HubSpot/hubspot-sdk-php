@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @phpstan-import-type TagShape from \HubspotSDK\Cms\Blogs\Tags\Tag
  *
- * @phpstan-type TagCreateBatchParamsShape = array{inputs: list<TagShape>}
+ * @phpstan-type TagCreateBatchParamsShape = array{inputs: list<Tag|TagShape>}
  */
 final class TagCreateBatchParams implements BaseModel
 {
@@ -56,7 +56,7 @@ final class TagCreateBatchParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<TagShape> $inputs
+     * @param list<Tag|TagShape> $inputs
      */
     public static function with(array $inputs): self
     {
@@ -70,7 +70,7 @@ final class TagCreateBatchParams implements BaseModel
     /**
      * Blog tags to input.
      *
-     * @param list<TagShape> $inputs
+     * @param list<Tag|TagShape> $inputs
      */
     public function withInputs(array $inputs): self
     {

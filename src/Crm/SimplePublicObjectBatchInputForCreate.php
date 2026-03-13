@@ -13,7 +13,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-import-type PublicAssociationsForObjectShape from \HubspotSDK\Crm\PublicAssociationsForObject
  *
  * @phpstan-type SimplePublicObjectBatchInputForCreateShape = array{
- *   associations: list<PublicAssociationsForObjectShape>,
+ *   associations: list<PublicAssociationsForObject|PublicAssociationsForObjectShape>,
  *   properties: array<string,string>,
  *   objectWriteTraceID?: string|null,
  * }
@@ -67,7 +67,7 @@ final class SimplePublicObjectBatchInputForCreate implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicAssociationsForObjectShape> $associations
+     * @param list<PublicAssociationsForObject|PublicAssociationsForObjectShape> $associations
      * @param array<string,string> $properties
      */
     public static function with(
@@ -86,7 +86,7 @@ final class SimplePublicObjectBatchInputForCreate implements BaseModel
     }
 
     /**
-     * @param list<PublicAssociationsForObjectShape> $associations
+     * @param list<PublicAssociationsForObject|PublicAssociationsForObjectShape> $associations
      */
     public function withAssociations(array $associations): self
     {

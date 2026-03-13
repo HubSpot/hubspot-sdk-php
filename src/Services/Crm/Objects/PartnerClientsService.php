@@ -8,7 +8,7 @@ use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Core\Util;
 use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
-use HubspotSDK\Crm\Filter\Operator;
+use HubspotSDK\Crm\FilterGroup;
 use HubspotSDK\Crm\SimplePublicObject;
 use HubspotSDK\Crm\SimplePublicObjectWithAssociations;
 use HubspotSDK\Page;
@@ -17,6 +17,10 @@ use HubspotSDK\ServiceContracts\Crm\Objects\PartnerClientsContract;
 use HubspotSDK\Services\Crm\Objects\PartnerClients\AssociationsService;
 use HubspotSDK\Services\Crm\Objects\PartnerClients\BatchService;
 
+/**
+ * @phpstan-import-type FilterGroupShape from \HubspotSDK\Crm\FilterGroup
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class PartnerClientsService implements PartnerClientsContract
 {
     /**
@@ -47,9 +51,10 @@ final class PartnerClientsService implements PartnerClientsContract
     /**
      * @api
      *
-     * @param string $partnerClientID Path param:
+     * @param string $partnerClientID Path param
      * @param array<string,string> $properties body param: Key value pairs representing the properties of the object
-     * @param string $idProperty Query param:
+     * @param string $idProperty Query param
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -57,7 +62,7 @@ final class PartnerClientsService implements PartnerClientsContract
         string $partnerClientID,
         array $properties,
         ?string $idProperty = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): SimplePublicObject {
         $params = Util::removeNulls(
             ['properties' => $properties, 'idProperty' => $idProperty]
@@ -75,6 +80,7 @@ final class PartnerClientsService implements PartnerClientsContract
      * @param list<string> $associations
      * @param list<string> $properties
      * @param list<string> $propertiesWithHistory
+     * @param RequestOpts|null $requestOptions
      *
      * @return Page<SimplePublicObjectWithAssociations>
      *
@@ -87,7 +93,7 @@ final class PartnerClientsService implements PartnerClientsContract
         int $limit = 10,
         ?array $properties = null,
         ?array $propertiesWithHistory = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): Page {
         $params = Util::removeNulls(
             [
@@ -112,6 +118,7 @@ final class PartnerClientsService implements PartnerClientsContract
      * @param list<string> $associations
      * @param list<string> $properties
      * @param list<string> $propertiesWithHistory
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -122,7 +129,7 @@ final class PartnerClientsService implements PartnerClientsContract
         ?string $idProperty = null,
         ?array $properties = null,
         ?array $propertiesWithHistory = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): SimplePublicObjectWithAssociations {
         $params = Util::removeNulls(
             [
@@ -144,19 +151,12 @@ final class PartnerClientsService implements PartnerClientsContract
      * @api
      *
      * @param string $after a paging cursor token for retrieving subsequent pages
-     * @param list<array{
-     *   filters: list<array{
-     *     operator: 'BETWEEN'|'CONTAINS_TOKEN'|'EQ'|'GT'|'GTE'|'HAS_PROPERTY'|'IN'|'LT'|'LTE'|'NEQ'|'NOT_CONTAINS_TOKEN'|'NOT_HAS_PROPERTY'|'NOT_IN'|Operator,
-     *     propertyName: string,
-     *     highValue?: string,
-     *     value?: string,
-     *     values?: list<string>,
-     *   }>,
-     * }> $filterGroups Up to 6 groups of filters defining additional query criteria
+     * @param list<FilterGroup|FilterGroupShape> $filterGroups up to 6 groups of filters defining additional query criteria
      * @param int $limit the maximum results to return, up to 200 objects
      * @param list<string> $properties a list of property names to include in the response
      * @param list<string> $sorts specifies sorting order based on object properties
      * @param string $query the search query string, up to 3000 characters
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -167,7 +167,7 @@ final class PartnerClientsService implements PartnerClientsContract
         array $properties,
         array $sorts,
         ?string $query = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): CollectionResponseWithTotalSimplePublicObject {
         $params = Util::removeNulls(
             [

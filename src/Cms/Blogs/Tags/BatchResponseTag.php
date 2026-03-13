@@ -17,7 +17,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @phpstan-type BatchResponseTagShape = array{
  *   completedAt: \DateTimeInterface,
- *   results: list<TagShape>,
+ *   results: list<Tag|TagShape>,
  *   startedAt: \DateTimeInterface,
  *   status: Status|value-of<Status>,
  *   links?: array<string,string>|null,
@@ -101,7 +101,7 @@ final class BatchResponseTag implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<TagShape> $results
+     * @param list<Tag|TagShape> $results
      * @param Status|value-of<Status> $status
      * @param array<string,string>|null $links
      */
@@ -140,7 +140,7 @@ final class BatchResponseTag implements BaseModel
     /**
      * Results of batch operation.
      *
-     * @param list<TagShape> $results
+     * @param list<Tag|TagShape> $results
      */
     public function withResults(array $results): self
     {

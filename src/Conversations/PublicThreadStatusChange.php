@@ -24,8 +24,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   createdAt: \DateTimeInterface,
  *   createdBy: string,
  *   newStatus: NewStatus|value-of<NewStatus>,
- *   recipients: list<PublicRecipientShape>,
- *   senders: list<PublicSenderShape>,
+ *   recipients: list<PublicRecipient|PublicRecipientShape>,
+ *   senders: list<PublicSender|PublicSenderShape>,
  *   type: Type|value-of<Type>,
  *   updatedAt?: \DateTimeInterface|null,
  * }
@@ -119,8 +119,8 @@ final class PublicThreadStatusChange implements BaseModel
      *
      * @param PublicClient|PublicClientShape $client
      * @param NewStatus|value-of<NewStatus> $newStatus
-     * @param list<PublicRecipientShape> $recipients
-     * @param list<PublicSenderShape> $senders
+     * @param list<PublicRecipient|PublicRecipientShape> $recipients
+     * @param list<PublicSender|PublicSenderShape> $senders
      * @param Type|value-of<Type> $type
      */
     public static function with(
@@ -218,7 +218,7 @@ final class PublicThreadStatusChange implements BaseModel
     }
 
     /**
-     * @param list<PublicRecipientShape> $recipients
+     * @param list<PublicRecipient|PublicRecipientShape> $recipients
      */
     public function withRecipients(array $recipients): self
     {
@@ -229,7 +229,7 @@ final class PublicThreadStatusChange implements BaseModel
     }
 
     /**
-     * @param list<PublicSenderShape> $senders
+     * @param list<PublicSender|PublicSenderShape> $senders
      */
     public function withSenders(array $senders): self
     {

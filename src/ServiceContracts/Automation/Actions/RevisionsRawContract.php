@@ -12,6 +12,9 @@ use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface RevisionsRawContract
 {
     /**
@@ -19,6 +22,7 @@ interface RevisionsRawContract
      *
      * @param string $definitionID path param: The ID of the definition
      * @param array<string,mixed>|RevisionListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<PublicActionRevision>>
      *
@@ -27,7 +31,7 @@ interface RevisionsRawContract
     public function list(
         string $definitionID,
         array|RevisionListParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -35,6 +39,7 @@ interface RevisionsRawContract
      *
      * @param string $revisionID the ID of the revision
      * @param array<string,mixed>|RevisionGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicActionRevision>
      *
@@ -43,6 +48,6 @@ interface RevisionsRawContract
     public function get(
         string $revisionID,
         array|RevisionGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

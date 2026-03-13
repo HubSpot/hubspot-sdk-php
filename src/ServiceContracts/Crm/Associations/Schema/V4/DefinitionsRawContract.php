@@ -13,13 +13,17 @@ use HubspotSDK\Crm\Associations\Schema\V4\Definitions\DefinitionListLabelsParams
 use HubspotSDK\Crm\Associations\Schema\V4\Definitions\DefinitionUpdateLabelParams;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface DefinitionsRawContract
 {
     /**
      * @api
      *
-     * @param string $toObjectType Path param:
+     * @param string $toObjectType Path param
      * @param array<string,mixed>|DefinitionCreateLabelParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CollectionResponseAssociationSpecWithLabel>
      *
@@ -28,13 +32,14 @@ interface DefinitionsRawContract
     public function createLabel(
         string $toObjectType,
         array|DefinitionCreateLabelParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|DefinitionDeleteLabelParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -43,13 +48,14 @@ interface DefinitionsRawContract
     public function deleteLabel(
         int $associationTypeID,
         array|DefinitionDeleteLabelParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|DefinitionListLabelsParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CollectionResponseAssociationSpecWithLabel>
      *
@@ -58,14 +64,15 @@ interface DefinitionsRawContract
     public function listLabels(
         string $toObjectType,
         array|DefinitionListLabelsParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
-     * @param string $toObjectType Path param:
+     * @param string $toObjectType Path param
      * @param array<string,mixed>|DefinitionUpdateLabelParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -74,6 +81,6 @@ interface DefinitionsRawContract
     public function updateLabel(
         string $toObjectType,
         array|DefinitionUpdateLabelParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

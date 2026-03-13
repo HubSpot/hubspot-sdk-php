@@ -14,6 +14,9 @@ use HubspotSDK\Settings\Currencies\CentralFxRates\CentralFxRateCreateCurrencyPar
 use HubspotSDK\Settings\Currencies\CollectionResponseCurrencyCodeInfoNoPaging;
 use HubspotSDK\Settings\Currencies\ExchangeRate;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class CentralFxRatesService implements CentralFxRatesContract
 {
     /**
@@ -34,13 +37,14 @@ final class CentralFxRatesService implements CentralFxRatesContract
      *
      * Create a new currency with central exchange rates in the portal. Unsupported currencies cannot be added here.
      *
-     * @param 'AED'|'AFN'|'ALL'|'AMD'|'ANG'|'AOA'|'ARS'|'AUD'|'AWG'|'AZN'|'BAM'|'BBD'|'BDT'|'BGN'|'BHD'|'BIF'|'BMD'|'BND'|'BOB'|'BOV'|'BRL'|'BSD'|'BTN'|'BWP'|'BYN'|'BZD'|'CAD'|'CDF'|'CHE'|'CHF'|'CHW'|'CLF'|'CLP'|'CNY'|'COP'|'COU'|'CRC'|'CUC'|'CUP'|'CVE'|'CZK'|'DJF'|'DKK'|'DOP'|'DZD'|'EGP'|'ERN'|'ETB'|'EUR'|'FJD'|'FKP'|'GBP'|'GEL'|'GHS'|'GIP'|'GMD'|'GNF'|'GTQ'|'GYD'|'HKD'|'HNL'|'HRK'|'HTG'|'HUF'|'IDR'|'ILS'|'INR'|'IQD'|'IRR'|'ISK'|'JMD'|'JOD'|'JPY'|'KES'|'KGS'|'KHR'|'KMF'|'KPW'|'KRW'|'KWD'|'KYD'|'KZT'|'LAK'|'LBP'|'LKR'|'LRD'|'LSL'|'LYD'|'MAD'|'MDL'|'MGA'|'MKD'|'MMK'|'MNT'|'MOP'|'MRU'|'MUR'|'MVR'|'MWK'|'MXN'|'MXV'|'MYR'|'MZN'|'NAD'|'NGN'|'NIO'|'NOK'|'NPR'|'NZD'|'OMR'|'PAB'|'PEN'|'PGK'|'PHP'|'PKR'|'PLN'|'PYG'|'QAR'|'RON'|'RSD'|'RUB'|'RWF'|'SAR'|'SBD'|'SCR'|'SDG'|'SEK'|'SGD'|'SHP'|'SLL'|'SOS'|'SRD'|'SSP'|'STN'|'SVC'|'SYP'|'SZL'|'THB'|'TJS'|'TMT'|'TND'|'TOP'|'TRY'|'TTD'|'TWD'|'TZS'|'UAH'|'UGX'|'USD'|'USN'|'UYI'|'UYU'|'UZS'|'VEF'|'VND'|'VUV'|'WST'|'XAF'|'XAG'|'XAU'|'XBA'|'XBB'|'XBC'|'XBD'|'XCD'|'XDR'|'XOF'|'XPD'|'XPF'|'XPT'|'XSU'|'XUA'|'YER'|'ZAR'|'ZMW'|'ZWL'|CurrencyCode $currencyCode the currency code being added to the HubSpot portal for use with central exchange rates
+     * @param CurrencyCode|value-of<CurrencyCode> $currencyCode the currency code being added to the HubSpot portal for use with central exchange rates
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function createCurrency(
-        string|CurrencyCode $currencyCode,
-        ?RequestOptions $requestOptions = null
+        CurrencyCode|string $currencyCode,
+        RequestOptions|array|null $requestOptions = null,
     ): ExchangeRate {
         $params = Util::removeNulls(['currencyCode' => $currencyCode]);
 
@@ -55,10 +59,12 @@ final class CentralFxRatesService implements CentralFxRatesContract
      *
      * Retrieve details on whether the central exchange rates feature is enabled for the portal.
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @throws APIException
      */
     public function getInformation(
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): CentralExchangeRatesInformation {
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->getInformation(requestOptions: $requestOptions);
@@ -71,10 +77,12 @@ final class CentralFxRatesService implements CentralFxRatesContract
      *
      * Retrieve a list of currency codes that are not supported by the central exchange rates. Unsupported currencies will need to be manually updated.
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @throws APIException
      */
     public function getUnsupportedCurrencies(
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): CollectionResponseCurrencyCodeInfoNoPaging {
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->getUnsupportedCurrencies(requestOptions: $requestOptions);

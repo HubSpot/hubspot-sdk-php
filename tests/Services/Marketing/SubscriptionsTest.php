@@ -3,6 +3,7 @@
 namespace Tests\Services\Marketing;
 
 use HubspotSDK\Client;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Marketing\Subscriptions\PublicSubscriptionStatus;
 use HubspotSDK\Marketing\Subscriptions\PublicSubscriptionStatusesResponse;
 use HubspotSDK\Marketing\Subscriptions\SubscriptionDefinitionsResponse;
@@ -23,7 +24,7 @@ final class SubscriptionsTest extends TestCase
     {
         parent::setUp();
 
-        $testUrl = getenv('TEST_API_BASE_URL') ?: 'http://127.0.0.1:4010';
+        $testUrl = Util::getenv('TEST_API_BASE_URL') ?: 'http://127.0.0.1:4010';
         $client = new Client(
             accessToken: 'pat-na1-xxxxxxxx-xxxx',
             baseUrl: $testUrl,

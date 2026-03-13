@@ -6,11 +6,20 @@ namespace HubspotSDK\Services\Cms\Hubdb\Rows;
 
 use HubspotSDK\Client;
 use HubspotSDK\Cms\Hubdb\BatchResponseHubDBTableRowV3;
+use HubspotSDK\Cms\Hubdb\HubDBTableRowBatchCloneRequest;
+use HubspotSDK\Cms\Hubdb\HubDBTableRowV3BatchUpdateRequest;
+use HubspotSDK\Cms\Hubdb\HubDBTableRowV3Request;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Core\Util;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Cms\Hubdb\Rows\BatchContract;
 
+/**
+ * @phpstan-import-type HubDBTableRowBatchCloneRequestShape from \HubspotSDK\Cms\Hubdb\HubDBTableRowBatchCloneRequest
+ * @phpstan-import-type HubDBTableRowV3RequestShape from \HubspotSDK\Cms\Hubdb\HubDBTableRowV3Request
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type HubDBTableRowV3BatchUpdateRequestShape from \HubspotSDK\Cms\Hubdb\HubDBTableRowV3BatchUpdateRequest
+ */
 final class BatchService implements BatchContract
 {
     /**
@@ -32,14 +41,15 @@ final class BatchService implements BatchContract
      * Clones rows in the draft version of the specified table, given a set of row ids. Maximum of 100 row ids per call.
      *
      * @param string $tableIDOrName The ID or name of the table
-     * @param list<array{id: string, name?: string}> $inputs
+     * @param list<HubDBTableRowBatchCloneRequest|HubDBTableRowBatchCloneRequestShape> $inputs
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function cloneBatch(
         string $tableIDOrName,
         array $inputs,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BatchResponseHubDBTableRowV3 {
         $params = Util::removeNulls(['inputs' => $inputs]);
 
@@ -55,20 +65,15 @@ final class BatchService implements BatchContract
      * Creates rows in the draft version of the specified table, given an array of row objects. Maximum of 100 row object per call. See the overview section for more details with an example.
      *
      * @param string $tableIDOrName The ID or name of the table
-     * @param list<array{
-     *   childTableID: int,
-     *   displayIndex: int,
-     *   values: array<string,array<string,mixed>>,
-     *   name?: string,
-     *   path?: string,
-     * }> $inputs
+     * @param list<HubDBTableRowV3Request|HubDBTableRowV3RequestShape> $inputs
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function createBatch(
         string $tableIDOrName,
         array $inputs,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BatchResponseHubDBTableRowV3 {
         $params = Util::removeNulls(['inputs' => $inputs]);
 
@@ -86,13 +91,14 @@ final class BatchService implements BatchContract
      *
      * @param string $tableIDOrName the ID or name of the table to query
      * @param list<string> $inputs strings to input
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function getBatch(
         string $tableIDOrName,
         array $inputs,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BatchResponseHubDBTableRowV3 {
         $params = Util::removeNulls(['inputs' => $inputs]);
 
@@ -109,13 +115,14 @@ final class BatchService implements BatchContract
      *
      * @param string $tableIDOrName The ID or name of the table
      * @param list<string> $inputs strings to input
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function getDraftBatch(
         string $tableIDOrName,
         array $inputs,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BatchResponseHubDBTableRowV3 {
         $params = Util::removeNulls(['inputs' => $inputs]);
 
@@ -132,13 +139,14 @@ final class BatchService implements BatchContract
      *
      * @param string $tableIDOrName The ID or name of the table
      * @param list<string> $inputs strings to input
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function purgeBatch(
         string $tableIDOrName,
         array $inputs,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): mixed {
         $params = Util::removeNulls(['inputs' => $inputs]);
 
@@ -154,21 +162,15 @@ final class BatchService implements BatchContract
      * Replaces multiple rows as a batch in the draft version of the table, with a maximum of 100 rows per call. See the endpoint `PUT /tables/{tableIdOrName}/rows/{rowId}/draft` for details on updating a single row.
      *
      * @param string $tableIDOrName The ID or name of the table
-     * @param list<array{
-     *   childTableID: int,
-     *   displayIndex: int,
-     *   values: array<string,array<string,mixed>>,
-     *   id?: string,
-     *   name?: string,
-     *   path?: string,
-     * }> $inputs
+     * @param list<HubDBTableRowV3BatchUpdateRequest|HubDBTableRowV3BatchUpdateRequestShape> $inputs
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function replaceBatch(
         string $tableIDOrName,
         array $inputs,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BatchResponseHubDBTableRowV3 {
         $params = Util::removeNulls(['inputs' => $inputs]);
 
@@ -184,21 +186,15 @@ final class BatchService implements BatchContract
      * Updates multiple rows as a batch in the draft version of the table, with a maximum of 100 rows per call. See the endpoint `PATCH /tables/{tableIdOrName}/rows/{rowId}/draft` for details on updating a single row.
      *
      * @param string $tableIDOrName The ID or name of the table
-     * @param list<array{
-     *   childTableID: int,
-     *   displayIndex: int,
-     *   values: array<string,array<string,mixed>>,
-     *   id?: string,
-     *   name?: string,
-     *   path?: string,
-     * }> $inputs
+     * @param list<HubDBTableRowV3BatchUpdateRequest|HubDBTableRowV3BatchUpdateRequestShape> $inputs
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function updateBatch(
         string $tableIDOrName,
         array $inputs,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BatchResponseHubDBTableRowV3 {
         $params = Util::removeNulls(['inputs' => $inputs]);
 

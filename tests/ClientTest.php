@@ -2,23 +2,56 @@
 
 namespace Tests;
 
-use HubspotSDK\Client;
-use PHPUnit\Framework\Attributes\CoversNothing;
-use PHPUnit\Framework\Attributes\Test;
+use Http\Discovery\Psr17FactoryDiscovery;
+use Http\Mock\Client;
+use HubspotSDK\Core\Util;
 use PHPUnit\Framework\TestCase;
 
 /**
  * @internal
+ *
+ * @coversNothing
  */
-#[CoversNothing]
-final class ClientTest extends TestCase
+class ClientTest extends TestCase
 {
-    #[Test]
-    public function testMultipleAuthSchemesError(): void
+    public function testDefaultHeaders(): void
     {
-        $this->expectException(\InvalidArgumentException::class);
-        $this->expectExceptionMessage('You provided multiple authentication methods (accessToken, developerAPIKey)');
+        $transporter = new Client;
+        $mockRsp = Psr17FactoryDiscovery::findResponseFactory()
+            ->createResponse()
+            ->withStatus(200)
+            ->withHeader('Content-Type', 'application/json')
+            ->withBody(Psr17FactoryDiscovery::findStreamFactory()->createStream(json_encode([], flags: Util::JSON_ENCODE_FLAGS) ?: ''))
+        ;
 
-        new Client(accessToken: 'token', developerAPIKey: 'key');
+        $transporter->setDefaultResponse($mockRsp);
+
+        $client = new \HubspotSDK\Client(
+            baseUrl: 'http://localhost',
+            accessToken: 'pat-na1-xxxxxxxx-xxxx',
+            requestOptions: ['transporter' => $transporter],
+        );
+
+        $client->crm->objects->contacts->create(
+            associations: [
+                [
+                    'to' => ['id' => '37295'],
+                    'types' => [
+                        [
+                            'associationCategory' => 'HUBSPOT_DEFINED',
+                            'associationTypeID' => 0,
+                        ],
+                    ],
+                ],
+            ],
+            properties: ['foo' => 'string'],
+        );
+
+        $this->assertNotFalse($requested = $transporter->getRequests()[0] ?? false);
+
+        foreach (['accept', 'content-type'] as $header) {
+            $sent = $requested->getHeaderLine($header);
+            $this->assertNotEmpty($sent);
+        }
     }
 }

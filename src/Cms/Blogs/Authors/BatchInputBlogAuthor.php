@@ -13,7 +13,9 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @phpstan-import-type BlogAuthorShape from \HubspotSDK\Cms\Blogs\Authors\BlogAuthor
  *
- * @phpstan-type BatchInputBlogAuthorShape = array{inputs: list<BlogAuthorShape>}
+ * @phpstan-type BatchInputBlogAuthorShape = array{
+ *   inputs: list<BlogAuthor|BlogAuthorShape>
+ * }
  */
 final class BatchInputBlogAuthor implements BaseModel
 {
@@ -52,7 +54,7 @@ final class BatchInputBlogAuthor implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<BlogAuthorShape> $inputs
+     * @param list<BlogAuthor|BlogAuthorShape> $inputs
      */
     public static function with(array $inputs): self
     {
@@ -66,7 +68,7 @@ final class BatchInputBlogAuthor implements BaseModel
     /**
      * Blog authors to input.
      *
-     * @param list<BlogAuthorShape> $inputs
+     * @param list<BlogAuthor|BlogAuthorShape> $inputs
      */
     public function withInputs(array $inputs): self
     {

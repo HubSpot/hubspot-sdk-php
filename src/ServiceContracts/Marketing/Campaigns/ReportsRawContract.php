@@ -15,6 +15,9 @@ use HubspotSDK\Marketing\Campaigns\RevenueAttributionAggregate;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface ReportsRawContract
 {
     /**
@@ -22,6 +25,7 @@ interface ReportsRawContract
      *
      * @param string $campaignGuid unique identifier for the campaign, formatted as a UUID
      * @param array<string,mixed>|ReportGetAttributionMetricsParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<MetricsCounters>
      *
@@ -30,7 +34,7 @@ interface ReportsRawContract
     public function getAttributionMetrics(
         string $campaignGuid,
         array|ReportGetAttributionMetricsParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -38,6 +42,7 @@ interface ReportsRawContract
      *
      * @param string $campaignGuid unique identifier for the campaign, formatted as a UUID
      * @param array<string,mixed>|ReportGetRevenueAttributionParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<RevenueAttributionAggregate>
      *
@@ -46,7 +51,7 @@ interface ReportsRawContract
     public function getRevenueAttribution(
         string $campaignGuid,
         array|ReportGetRevenueAttributionParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -54,6 +59,7 @@ interface ReportsRawContract
      *
      * @param string $contactType Path param: The type of metric to filter the influenced contacts. Allowed values: contactFirstTouch, contactLastTouch, influencedContacts
      * @param array<string,mixed>|ReportListContactIDsByTypeParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<ContactReference>>
      *
@@ -62,6 +68,6 @@ interface ReportsRawContract
     public function listContactIDsByType(
         string $contactType,
         array|ReportListContactIDsByTypeParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

@@ -12,6 +12,9 @@ use HubspotSDK\Crm\ObjectLibrary\PortalObjectTypeEnablementPublicResponse;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\ObjectLibrary\EnablementRawContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class EnablementRawService implements EnablementRawContract
 {
     // @phpstan-ignore-next-line
@@ -25,12 +28,15 @@ final class EnablementRawService implements EnablementRawContract
      *
      * For all object types supporting enablement, returns whether they're enabled or disabled
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @return BaseResponse<PortalObjectTypeEnablementPublicResponse>
      *
      * @throws APIException
      */
-    public function list(?RequestOptions $requestOptions = null): BaseResponse
-    {
+    public function list(
+        RequestOptions|array|null $requestOptions = null
+    ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
@@ -46,6 +52,7 @@ final class EnablementRawService implements EnablementRawContract
      * Fetch whether object type is enabled
      *
      * @param string $objectTypeID objectTypeId for the object type in question
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ObjectTypeEnablementPublicResponse>
      *
@@ -53,7 +60,7 @@ final class EnablementRawService implements EnablementRawContract
      */
     public function get(
         string $objectTypeID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(

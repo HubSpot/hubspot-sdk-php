@@ -6,6 +6,7 @@ namespace HubspotSDK\Services\Cms\Hubdb;
 
 use HubspotSDK\Client;
 use HubspotSDK\Cms\Hubdb\HubDBTableRowV3;
+use HubspotSDK\Cms\Hubdb\Variant;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Core\Util;
 use HubspotSDK\Page;
@@ -13,6 +14,10 @@ use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Cms\Hubdb\RowsContract;
 use HubspotSDK\Services\Cms\Hubdb\Rows\BatchService;
 
+/**
+ * @phpstan-import-type VariantShape from \HubspotSDK\Cms\Hubdb\Variant
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class RowsService implements RowsContract
 {
     /**
@@ -41,9 +46,10 @@ final class RowsService implements RowsContract
      *
      * @param string $tableIDOrName the ID or name of the target table
      * @param int $childTableID Specifies the value for the column child table id
-     * @param array<string,array<string,mixed>> $values List of key value pairs with the column name and column value
+     * @param array<string,Variant|VariantShape> $values List of key value pairs with the column name and column value
      * @param string $name Specifies the value for `hs_name` column, which will be used as title in the dynamic pages
      * @param string $path Specifies the value for `hs_path` column, which will be used as slug in the dynamic pages
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -54,7 +60,7 @@ final class RowsService implements RowsContract
         array $values,
         ?string $name = null,
         ?string $path = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): HubDBTableRowV3 {
         $params = Util::removeNulls(
             [
@@ -85,6 +91,7 @@ final class RowsService implements RowsContract
      * @param int $offset the number of rows to skip before starting to return results
      * @param list<string> $properties specify the column names to get results containing only the required columns instead of all column details
      * @param list<string> $sort Specifies the column names to sort the results by. See the above description for more details.
+     * @param RequestOpts|null $requestOptions
      *
      * @return Page<mixed>
      *
@@ -98,7 +105,7 @@ final class RowsService implements RowsContract
         ?int $offset = null,
         ?array $properties = null,
         ?array $sort = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): Page {
         $params = Util::removeNulls(
             [
@@ -125,6 +132,7 @@ final class RowsService implements RowsContract
      * @param string $rowID Path param: The ID of the row
      * @param string $tableIDOrName Path param: The ID or name of the table
      * @param string $name query param: The name for the cloned row
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -132,7 +140,7 @@ final class RowsService implements RowsContract
         string $rowID,
         string $tableIDOrName,
         ?string $name = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): HubDBTableRowV3 {
         $params = Util::removeNulls(
             ['tableIDOrName' => $tableIDOrName, 'name' => $name]
@@ -151,13 +159,14 @@ final class RowsService implements RowsContract
      *
      * @param string $rowID The ID of the row
      * @param string $tableIDOrName The ID or name of the table
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function deleteDraft(
         string $rowID,
         string $tableIDOrName,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): mixed {
         $params = Util::removeNulls(['tableIDOrName' => $tableIDOrName]);
 
@@ -176,6 +185,7 @@ final class RowsService implements RowsContract
      * @param string $rowID Path param: The ID of the row
      * @param string $tableIDOrName Path param: The ID or name of the table
      * @param bool $archived Query param: Specifies whether to return an archived row. Defaults to `false`.
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -183,7 +193,7 @@ final class RowsService implements RowsContract
         string $rowID,
         string $tableIDOrName,
         ?bool $archived = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): HubDBTableRowV3 {
         $params = Util::removeNulls(
             ['tableIDOrName' => $tableIDOrName, 'archived' => $archived]
@@ -203,6 +213,7 @@ final class RowsService implements RowsContract
      * @param string $rowID Path param: The ID of the row
      * @param string $tableIDOrName Path param: The ID or name of the table
      * @param bool $archived Query param: Set this to `true` to return an archived row. Defaults to `false`.
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -210,7 +221,7 @@ final class RowsService implements RowsContract
         string $rowID,
         string $tableIDOrName,
         ?bool $archived = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): HubDBTableRowV3 {
         $params = Util::removeNulls(
             ['tableIDOrName' => $tableIDOrName, 'archived' => $archived]
@@ -234,6 +245,7 @@ final class RowsService implements RowsContract
      * @param int $offset the number of rows to skip before starting to return results
      * @param list<string> $properties Specify the column names to get results containing only the required columns instead of all column details. If you want to include multiple columns in the result, use this query param as many times.
      * @param list<string> $sort specifies the column names to sort the results by
+     * @param RequestOpts|null $requestOptions
      *
      * @return Page<mixed>
      *
@@ -247,7 +259,7 @@ final class RowsService implements RowsContract
         ?int $offset = null,
         ?array $properties = null,
         ?array $sort = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): Page {
         $params = Util::removeNulls(
             [
@@ -275,10 +287,11 @@ final class RowsService implements RowsContract
      * @param string $rowID Path param: The ID of the row
      * @param string $tableIDOrName Path param: The ID or name of the table
      * @param int $childTableID Body param: Specifies the value for the column child table id
-     * @param int $displayIndex Body param:
-     * @param array<string,array<string,mixed>> $values Body param: List of key value pairs with the column name and column value
+     * @param int $displayIndex Body param
+     * @param array<string,Variant|VariantShape> $values Body param: List of key value pairs with the column name and column value
      * @param string $name Body param: Specifies the value for `hs_name` column, which will be used as title in the dynamic pages
      * @param string $path Body param: Specifies the value for `hs_path` column, which will be used as slug in the dynamic pages
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -290,7 +303,7 @@ final class RowsService implements RowsContract
         array $values,
         ?string $name = null,
         ?string $path = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): HubDBTableRowV3 {
         $params = Util::removeNulls(
             [
@@ -319,10 +332,11 @@ final class RowsService implements RowsContract
      * @param string $rowID Path param: The ID of the row
      * @param string $tableIDOrName Path param: The ID or name of the table
      * @param int $childTableID Body param: Specifies the value for the column child table id
-     * @param int $displayIndex Body param:
-     * @param array<string,array<string,mixed>> $values Body param: List of key value pairs with the column name and column value
+     * @param int $displayIndex Body param
+     * @param array<string,Variant|VariantShape> $values Body param: List of key value pairs with the column name and column value
      * @param string $name Body param: Specifies the value for `hs_name` column, which will be used as title in the dynamic pages
      * @param string $path Body param: Specifies the value for `hs_path` column, which will be used as slug in the dynamic pages
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -334,7 +348,7 @@ final class RowsService implements RowsContract
         array $values,
         ?string $name = null,
         ?string $path = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): HubDBTableRowV3 {
         $params = Util::removeNulls(
             [

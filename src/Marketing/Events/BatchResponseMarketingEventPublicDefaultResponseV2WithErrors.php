@@ -17,10 +17,10 @@ use HubspotSDK\StandardError;
  *
  * @phpstan-type BatchResponseMarketingEventPublicDefaultResponseV2WithErrorsShape = array{
  *   completedAt: \DateTimeInterface,
- *   results: list<MarketingEventPublicDefaultResponseV2Shape>,
+ *   results: list<MarketingEventPublicDefaultResponseV2|MarketingEventPublicDefaultResponseV2Shape>,
  *   startedAt: \DateTimeInterface,
  *   status: Status|value-of<Status>,
- *   errors?: list<StandardErrorShape>|null,
+ *   errors?: list<StandardError|StandardErrorShape>|null,
  *   links?: array<string,string>|null,
  *   numErrors?: int|null,
  *   requestedAt?: \DateTimeInterface|null,
@@ -91,9 +91,9 @@ final class BatchResponseMarketingEventPublicDefaultResponseV2WithErrors impleme
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<MarketingEventPublicDefaultResponseV2Shape> $results
+     * @param list<MarketingEventPublicDefaultResponseV2|MarketingEventPublicDefaultResponseV2Shape> $results
      * @param Status|value-of<Status> $status
-     * @param list<StandardErrorShape>|null $errors
+     * @param list<StandardError|StandardErrorShape>|null $errors
      * @param array<string,string>|null $links
      */
     public static function with(
@@ -130,7 +130,7 @@ final class BatchResponseMarketingEventPublicDefaultResponseV2WithErrors impleme
     }
 
     /**
-     * @param list<MarketingEventPublicDefaultResponseV2Shape> $results
+     * @param list<MarketingEventPublicDefaultResponseV2|MarketingEventPublicDefaultResponseV2Shape> $results
      */
     public function withResults(array $results): self
     {
@@ -160,7 +160,7 @@ final class BatchResponseMarketingEventPublicDefaultResponseV2WithErrors impleme
     }
 
     /**
-     * @param list<StandardErrorShape> $errors
+     * @param list<StandardError|StandardErrorShape> $errors
      */
     public function withErrors(array $errors): self
     {

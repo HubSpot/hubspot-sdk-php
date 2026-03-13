@@ -36,7 +36,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   pipelineStagePropertyName: string,
  *   requiredProperties: list<string>,
  *   restorable: bool,
- *   scopeMappings: list<ScopeMappingShape>,
+ *   scopeMappings: list<ScopeMapping|ScopeMappingShape>,
  *   secondaryDisplayLabelPropertyNames: list<string>,
  *   accessScopeName?: string|null,
  *   createdAt?: int|null,
@@ -258,7 +258,7 @@ final class InboundDBObjectType implements BaseModel
      * @param list<string> $defaultSearchPropertyNames
      * @param MetaType|value-of<MetaType> $metaType
      * @param list<string> $requiredProperties
-     * @param list<ScopeMappingShape> $scopeMappings
+     * @param list<ScopeMapping|ScopeMappingShape> $scopeMappings
      * @param list<string> $secondaryDisplayLabelPropertyNames
      */
     public static function with(
@@ -540,7 +540,7 @@ final class InboundDBObjectType implements BaseModel
     }
 
     /**
-     * @param list<ScopeMappingShape> $scopeMappings
+     * @param list<ScopeMapping|ScopeMappingShape> $scopeMappings
      */
     public function withScopeMappings(array $scopeMappings): self
     {

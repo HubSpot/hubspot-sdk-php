@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-import-type PublicAssociationDefinitionShape from \HubspotSDK\Crm\Associations\Schema\PublicAssociationDefinition
  *
  * @phpstan-type CollectionResponsePublicAssociationDefinitionNoPagingShape = array{
- *   results: list<PublicAssociationDefinitionShape>
+ *   results: list<PublicAssociationDefinition|PublicAssociationDefinitionShape>
  * }
  */
 final class CollectionResponsePublicAssociationDefinitionNoPaging implements BaseModel
@@ -48,7 +48,7 @@ final class CollectionResponsePublicAssociationDefinitionNoPaging implements Bas
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicAssociationDefinitionShape> $results
+     * @param list<PublicAssociationDefinition|PublicAssociationDefinitionShape> $results
      */
     public static function with(array $results): self
     {
@@ -60,7 +60,7 @@ final class CollectionResponsePublicAssociationDefinitionNoPaging implements Bas
     }
 
     /**
-     * @param list<PublicAssociationDefinitionShape> $results
+     * @param list<PublicAssociationDefinition|PublicAssociationDefinitionShape> $results
      */
     public function withResults(array $results): self
     {

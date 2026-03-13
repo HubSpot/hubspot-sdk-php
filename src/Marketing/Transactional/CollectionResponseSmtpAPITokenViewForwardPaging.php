@@ -15,7 +15,7 @@ use HubspotSDK\ForwardPaging;
  * @phpstan-import-type ForwardPagingShape from \HubspotSDK\ForwardPaging
  *
  * @phpstan-type CollectionResponseSmtpAPITokenViewForwardPagingShape = array{
- *   results: list<SmtpAPITokenViewShape>,
+ *   results: list<SmtpAPITokenView|SmtpAPITokenViewShape>,
  *   paging?: null|ForwardPaging|ForwardPagingShape,
  * }
  */
@@ -55,7 +55,7 @@ final class CollectionResponseSmtpAPITokenViewForwardPaging implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<SmtpAPITokenViewShape> $results
+     * @param list<SmtpAPITokenView|SmtpAPITokenViewShape> $results
      * @param ForwardPaging|ForwardPagingShape|null $paging
      */
     public static function with(
@@ -72,7 +72,7 @@ final class CollectionResponseSmtpAPITokenViewForwardPaging implements BaseModel
     }
 
     /**
-     * @param list<SmtpAPITokenViewShape> $results
+     * @param list<SmtpAPITokenView|SmtpAPITokenViewShape> $results
      */
     public function withResults(array $results): self
     {

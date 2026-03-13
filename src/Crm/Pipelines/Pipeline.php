@@ -20,7 +20,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   createdAt: \DateTimeInterface,
  *   displayOrder: int,
  *   label: string,
- *   stages: list<PipelineStageShape>,
+ *   stages: list<PipelineStage|PipelineStageShape>,
  *   updatedAt: \DateTimeInterface,
  *   archivedAt?: \DateTimeInterface|null,
  * }
@@ -119,7 +119,7 @@ final class Pipeline implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PipelineStageShape> $stages
+     * @param list<PipelineStage|PipelineStageShape> $stages
      */
     public static function with(
         string $id,
@@ -204,7 +204,7 @@ final class Pipeline implements BaseModel
     /**
      * The stages associated with the pipeline. They can be retrieved and updated via the pipeline stages endpoints.
      *
-     * @param list<PipelineStageShape> $stages
+     * @param list<PipelineStage|PipelineStageShape> $stages
      */
     public function withStages(array $stages): self
     {

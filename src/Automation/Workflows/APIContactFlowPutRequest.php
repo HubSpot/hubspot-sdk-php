@@ -20,6 +20,10 @@ use HubspotSDK\PublicRestrictedFilterBranch;
 use HubspotSDK\PublicUnifiedEventsFilterBranch;
 
 /**
+ * @phpstan-import-type EnrollmentCriteriaVariants from \HubspotSDK\Automation\Workflows\APIContactFlowPutRequest\EnrollmentCriteria
+ * @phpstan-import-type EnrollmentScheduleVariants from \HubspotSDK\Automation\Workflows\APIContactFlowPutRequest\EnrollmentSchedule
+ * @phpstan-import-type EventAnchorVariants from \HubspotSDK\Automation\Workflows\APIContactFlowPutRequest\EventAnchor
+ * @phpstan-import-type GoalFilterBranchVariants from \HubspotSDK\Automation\Workflows\APIContactFlowPutRequest\GoalFilterBranch
  * @phpstan-import-type APIBlockedDateShape from \HubspotSDK\Automation\Workflows\APIBlockedDate
  * @phpstan-import-type APITimeWindowShape from \HubspotSDK\Automation\Workflows\APITimeWindow
  * @phpstan-import-type EnrollmentCriteriaShape from \HubspotSDK\Automation\Workflows\APIContactFlowPutRequest\EnrollmentCriteria
@@ -30,13 +34,13 @@ use HubspotSDK\PublicUnifiedEventsFilterBranch;
  *
  * @phpstan-type APIContactFlowPutRequestShape = array{
  *   actions: list<mixed>,
- *   blockedDates: list<APIBlockedDateShape>,
+ *   blockedDates: list<APIBlockedDate|APIBlockedDateShape>,
  *   canEnrollFromSalesforce: bool,
  *   customProperties: array<string,string>,
  *   isEnabled: bool,
  *   revisionID: string,
  *   suppressionListIDs: list<int>,
- *   timeWindows: list<APITimeWindowShape>,
+ *   timeWindows: list<APITimeWindow|APITimeWindowShape>,
  *   type: Type|value-of<Type>,
  *   description?: string|null,
  *   enrollmentCriteria?: EnrollmentCriteriaShape|null,
@@ -90,15 +94,19 @@ final class APIContactFlowPutRequest implements BaseModel
     #[Optional]
     public ?string $description;
 
+    /** @var EnrollmentCriteriaVariants|null $enrollmentCriteria */
     #[Optional]
     public APIListBasedEnrollmentCriteria|APIEventBasedEnrollmentCriteria|APIManualEnrollmentCriteria|null $enrollmentCriteria;
 
+    /** @var EnrollmentScheduleVariants|null $enrollmentSchedule */
     #[Optional]
     public APIDailyEnrollmentSchedule|APIWeeklyEnrollmentSchedule|APIMonthlySpecificDaysEnrollmentSchedule|APIMonthlyRelativeDaysEnrollmentSchedule|APIYearlyEnrollmentSchedule|APIPropertyBasedEnrollmentSchedule|null $enrollmentSchedule;
 
+    /** @var EventAnchorVariants|null $eventAnchor */
     #[Optional]
     public APIContactPropertyAnchor|APIStaticDateAnchor|null $eventAnchor;
 
+    /** @var GoalFilterBranchVariants|null $goalFilterBranch */
     #[Optional]
     public PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch|null $goalFilterBranch;
 
@@ -158,10 +166,10 @@ final class APIContactFlowPutRequest implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<mixed> $actions
-     * @param list<APIBlockedDateShape> $blockedDates
+     * @param list<APIBlockedDate|APIBlockedDateShape> $blockedDates
      * @param array<string,string> $customProperties
      * @param list<int> $suppressionListIDs
-     * @param list<APITimeWindowShape> $timeWindows
+     * @param list<APITimeWindow|APITimeWindowShape> $timeWindows
      * @param Type|value-of<Type> $type
      * @param EnrollmentCriteriaShape|null $enrollmentCriteria
      * @param EnrollmentScheduleShape|null $enrollmentSchedule
@@ -226,7 +234,7 @@ final class APIContactFlowPutRequest implements BaseModel
     }
 
     /**
-     * @param list<APIBlockedDateShape> $blockedDates
+     * @param list<APIBlockedDate|APIBlockedDateShape> $blockedDates
      */
     public function withBlockedDates(array $blockedDates): self
     {
@@ -284,7 +292,7 @@ final class APIContactFlowPutRequest implements BaseModel
     }
 
     /**
-     * @param list<APITimeWindowShape> $timeWindows
+     * @param list<APITimeWindow|APITimeWindowShape> $timeWindows
      */
     public function withTimeWindows(array $timeWindows): self
     {

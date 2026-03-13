@@ -3,6 +3,7 @@
 namespace Tests\Services\Webhooks;
 
 use HubspotSDK\Client;
+use HubspotSDK\Core\Util;
 use HubspotSDK\Webhooks\BatchResponseSubscriptionResponse;
 use HubspotSDK\Webhooks\SubscriptionListResponse;
 use HubspotSDK\Webhooks\SubscriptionResponse;
@@ -23,7 +24,7 @@ final class SubscriptionsTest extends TestCase
     {
         parent::setUp();
 
-        $testUrl = getenv('TEST_API_BASE_URL') ?: 'http://127.0.0.1:4010';
+        $testUrl = Util::getenv('TEST_API_BASE_URL') ?: 'http://127.0.0.1:4010';
         $client = new Client(
             accessToken: 'pat-na1-xxxxxxxx-xxxx',
             baseUrl: $testUrl,

@@ -23,7 +23,7 @@ use HubspotSDK\Marketing\Forms\DropdownField\FieldType;
  *   label: string,
  *   name: string,
  *   objectTypeID: string,
- *   options: list<EnumeratedFieldOptionShape>,
+ *   options: list<EnumeratedFieldOption|EnumeratedFieldOptionShape>,
  *   required: bool,
  *   description?: string|null,
  *   placeholder?: string|null,
@@ -153,7 +153,7 @@ final class DropdownField implements BaseModel
      *
      * @param list<string> $defaultValues
      * @param list<mixed> $dependentFields
-     * @param list<EnumeratedFieldOptionShape> $options
+     * @param list<EnumeratedFieldOption|EnumeratedFieldOptionShape> $options
      * @param FieldType|value-of<FieldType> $fieldType
      */
     public static function with(
@@ -273,7 +273,7 @@ final class DropdownField implements BaseModel
     /**
      * The list of available choices for this field.
      *
-     * @param list<EnumeratedFieldOptionShape> $options
+     * @param list<EnumeratedFieldOption|EnumeratedFieldOptionShape> $options
      */
     public function withOptions(array $options): self
     {

@@ -14,6 +14,9 @@ use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Conversations\InboxesRawContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class InboxesRawService implements InboxesRawContract
 {
     // @phpstan-ignore-next-line
@@ -32,6 +35,7 @@ final class InboxesRawService implements InboxesRawContract
      *   limit?: int,
      *   sort?: list<string>,
      * }|InboxListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<PublicInbox>>
      *
@@ -39,7 +43,7 @@ final class InboxesRawService implements InboxesRawContract
      */
     public function list(
         array|InboxListParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = InboxListParams::parseRequest(
             $params,
@@ -61,6 +65,7 @@ final class InboxesRawService implements InboxesRawContract
      * @api
      *
      * @param array{archived?: bool}|InboxGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicInbox>
      *
@@ -69,7 +74,7 @@ final class InboxesRawService implements InboxesRawContract
     public function get(
         int $inboxID,
         array|InboxGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = InboxGetParams::parseRequest(
             $params,

@@ -11,10 +11,9 @@ use HubspotSDK\Crm\Extensions\Cards\CardActions;
 use HubspotSDK\Crm\Extensions\Cards\CardCreateParams;
 use HubspotSDK\Crm\Extensions\Cards\CardDeleteParams;
 use HubspotSDK\Crm\Extensions\Cards\CardDisplayBody;
-use HubspotSDK\Crm\Extensions\Cards\CardDisplayProperty;
-use HubspotSDK\Crm\Extensions\Cards\CardFetchBody\CardType;
+use HubspotSDK\Crm\Extensions\Cards\CardFetchBody;
+use HubspotSDK\Crm\Extensions\Cards\CardFetchBodyPatch;
 use HubspotSDK\Crm\Extensions\Cards\CardGetParams;
-use HubspotSDK\Crm\Extensions\Cards\CardObjectTypeBody;
 use HubspotSDK\Crm\Extensions\Cards\CardUpdateParams;
 use HubspotSDK\Crm\Extensions\Cards\IntegratorCardPayloadResponse;
 use HubspotSDK\Crm\Extensions\Cards\PublicCardListResponse;
@@ -22,6 +21,13 @@ use HubspotSDK\Crm\Extensions\Cards\PublicCardResponse;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Extensions\CardsRawContract;
 
+/**
+ * @phpstan-import-type CardFetchBodyShape from \HubspotSDK\Crm\Extensions\Cards\CardFetchBody
+ * @phpstan-import-type CardFetchBodyPatchShape from \HubspotSDK\Crm\Extensions\Cards\CardFetchBodyPatch
+ * @phpstan-import-type CardActionsShape from \HubspotSDK\Crm\Extensions\Cards\CardActions
+ * @phpstan-import-type CardDisplayBodyShape from \HubspotSDK\Crm\Extensions\Cards\CardDisplayBody
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class CardsRawService implements CardsRawContract
 {
     // @phpstan-ignore-next-line
@@ -37,18 +43,12 @@ final class CardsRawService implements CardsRawContract
      *
      * @param int $appID the ID of the target app
      * @param array{
-     *   actions: array{baseURLs: list<string>}|CardActions,
-     *   display: array{
-     *     properties: list<array<string,mixed>|CardDisplayProperty>
-     *   }|CardDisplayBody,
-     *   fetch: array{
-     *     objectTypes: list<array<string,mixed>|CardObjectTypeBody>,
-     *     targetURL: string,
-     *     cardType?: 'EXTERNAL'|'SERVERLESS'|CardType,
-     *     serverlessFunction?: string,
-     *   },
+     *   actions: CardActions|CardActionsShape,
+     *   display: CardDisplayBody|CardDisplayBodyShape,
+     *   fetch: CardFetchBody|CardFetchBodyShape,
      *   title: string,
      * }|CardCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicCardResponse>
      *
@@ -57,7 +57,7 @@ final class CardsRawService implements CardsRawContract
     public function create(
         int $appID,
         array|CardCreateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = CardCreateParams::parseRequest(
             $params,
@@ -82,18 +82,12 @@ final class CardsRawService implements CardsRawContract
      * @param string $cardID path param: The ID of the card to update
      * @param array{
      *   appID: int,
-     *   actions?: array{baseURLs: list<string>}|CardActions,
-     *   display?: array{
-     *     properties: list<array<string,mixed>|CardDisplayProperty>
-     *   }|CardDisplayBody,
-     *   fetch?: array{
-     *     objectTypes: list<array<string,mixed>|CardObjectTypeBody>,
-     *     cardType?: 'EXTERNAL'|'SERVERLESS'|\HubspotSDK\Crm\Extensions\Cards\CardFetchBodyPatch\CardType,
-     *     serverlessFunction?: string,
-     *     targetURL?: string,
-     *   },
+     *   actions?: CardActions|CardActionsShape,
+     *   display?: CardDisplayBody|CardDisplayBodyShape,
+     *   fetch?: CardFetchBodyPatch|CardFetchBodyPatchShape,
      *   title?: string,
      * }|CardUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicCardResponse>
      *
@@ -102,7 +96,7 @@ final class CardsRawService implements CardsRawContract
     public function update(
         string $cardID,
         array|CardUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = CardUpdateParams::parseRequest(
             $params,
@@ -127,6 +121,7 @@ final class CardsRawService implements CardsRawContract
      * Returns a list of cards for a given app.
      *
      * @param int $appID the ID of the target app
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicCardListResponse>
      *
@@ -134,7 +129,7 @@ final class CardsRawService implements CardsRawContract
      */
     public function list(
         int $appID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -152,6 +147,7 @@ final class CardsRawService implements CardsRawContract
      *
      * @param string $cardID the ID of the card to delete
      * @param array{appID: int}|CardDeleteParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -160,7 +156,7 @@ final class CardsRawService implements CardsRawContract
     public function delete(
         string $cardID,
         array|CardDeleteParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = CardDeleteParams::parseRequest(
             $params,
@@ -185,6 +181,7 @@ final class CardsRawService implements CardsRawContract
      *
      * @param string $cardID the ID of the target card
      * @param array{appID: int}|CardGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicCardResponse>
      *
@@ -193,7 +190,7 @@ final class CardsRawService implements CardsRawContract
     public function get(
         string $cardID,
         array|CardGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = CardGetParams::parseRequest(
             $params,
@@ -216,12 +213,14 @@ final class CardsRawService implements CardsRawContract
      *
      * Returns an example card detail response. This is the payload with displayed details for a card that will be shown to a user. An app should send this in response to the data fetch request.
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @return BaseResponse<IntegratorCardPayloadResponse>
      *
      * @throws APIException
      */
     public function getSampleResponse(
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(

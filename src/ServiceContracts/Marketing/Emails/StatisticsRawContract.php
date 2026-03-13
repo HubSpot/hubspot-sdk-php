@@ -12,12 +12,16 @@ use HubspotSDK\Marketing\Emails\Statistics\StatisticGetHistogramParams;
 use HubspotSDK\Marketing\Emails\Statistics\StatisticGetParams;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface StatisticsRawContract
 {
     /**
      * @api
      *
      * @param array<string,mixed>|StatisticGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<AggregateEmailStatistics>
      *
@@ -25,13 +29,14 @@ interface StatisticsRawContract
      */
     public function get(
         array|StatisticGetParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|StatisticGetHistogramParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CollectionResponseWithTotalEmailStatisticIntervalNoPaging>
      *
@@ -39,6 +44,6 @@ interface StatisticsRawContract
      */
     public function getHistogram(
         array|StatisticGetHistogramParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

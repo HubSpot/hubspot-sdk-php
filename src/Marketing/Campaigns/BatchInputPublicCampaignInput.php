@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-import-type PublicCampaignInputShape from \HubspotSDK\Marketing\Campaigns\PublicCampaignInput
  *
  * @phpstan-type BatchInputPublicCampaignInputShape = array{
- *   inputs: list<PublicCampaignInputShape>
+ *   inputs: list<PublicCampaignInput|PublicCampaignInputShape>
  * }
  */
 final class BatchInputPublicCampaignInput implements BaseModel
@@ -48,7 +48,7 @@ final class BatchInputPublicCampaignInput implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicCampaignInputShape> $inputs
+     * @param list<PublicCampaignInput|PublicCampaignInputShape> $inputs
      */
     public static function with(array $inputs): self
     {
@@ -60,7 +60,7 @@ final class BatchInputPublicCampaignInput implements BaseModel
     }
 
     /**
-     * @param list<PublicCampaignInputShape> $inputs
+     * @param list<PublicCampaignInput|PublicCampaignInputShape> $inputs
      */
     public function withInputs(array $inputs): self
     {

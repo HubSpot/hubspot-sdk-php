@@ -11,12 +11,16 @@ use HubspotSDK\Crm\Extensions\Calling\Transcripts\TranscriptCreateResponse;
 use HubspotSDK\Crm\Extensions\Calling\Transcripts\TranscriptResponse;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface TranscriptsRawContract
 {
     /**
      * @api
      *
      * @param array<string,mixed>|TranscriptCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<TranscriptCreateResponse>
      *
@@ -24,11 +28,13 @@ interface TranscriptsRawContract
      */
     public function create(
         array|TranscriptCreateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
+     *
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -36,11 +42,13 @@ interface TranscriptsRawContract
      */
     public function delete(
         string $transcriptID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 
     /**
      * @api
+     *
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<TranscriptResponse>
      *
@@ -48,6 +56,6 @@ interface TranscriptsRawContract
      */
     public function get(
         string $transcriptID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 }

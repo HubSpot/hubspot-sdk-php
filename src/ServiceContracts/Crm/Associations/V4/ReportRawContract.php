@@ -9,12 +9,16 @@ use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\Associations\V4\ReportCreationResponse;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface ReportRawContract
 {
     /**
      * @api
      *
      * @param int $userID The user for the report
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ReportCreationResponse>
      *
@@ -22,6 +26,6 @@ interface ReportRawContract
      */
     public function requestHighUsageReport(
         int $userID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 }

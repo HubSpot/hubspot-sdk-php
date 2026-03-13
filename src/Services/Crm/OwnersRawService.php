@@ -15,6 +15,9 @@ use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\OwnersRawContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class OwnersRawService implements OwnersRawContract
 {
     // @phpstan-ignore-next-line
@@ -31,6 +34,7 @@ final class OwnersRawService implements OwnersRawContract
      * @param array{
      *   after?: string, archived?: bool, email?: string, limit?: int
      * }|OwnerListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<PublicOwner>>
      *
@@ -38,7 +42,7 @@ final class OwnersRawService implements OwnersRawContract
      */
     public function list(
         array|OwnerListParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = OwnerListParams::parseRequest(
             $params,
@@ -62,8 +66,9 @@ final class OwnersRawService implements OwnersRawContract
      * Retrieve details of a specific owner using either their 'id' or 'userId'.
      *
      * @param array{
-     *   archived?: bool, idProperty?: 'id'|'userId'|IDProperty
+     *   archived?: bool, idProperty?: IDProperty|value-of<IDProperty>
      * }|OwnerGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicOwner>
      *
@@ -72,7 +77,7 @@ final class OwnersRawService implements OwnersRawContract
     public function get(
         int $ownerID,
         array|OwnerGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = OwnerGetParams::parseRequest(
             $params,

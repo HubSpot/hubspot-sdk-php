@@ -18,12 +18,16 @@ use HubspotSDK\Crm\Limits\PipelineLimitResponse;
 use HubspotSDK\Crm\Limits\RecordLimitResponse;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface LimitsRawContract
 {
     /**
      * @api
      *
      * @param array<string,mixed>|LimitGetAssociationLabelLimitsParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CollectionResponseAssociationLabelLimitResponseNoPaging>
      *
@@ -31,7 +35,7 @@ interface LimitsRawContract
      */
     public function getAssociationLabelLimits(
         array|LimitGetAssociationLabelLimitsParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -39,6 +43,7 @@ interface LimitsRawContract
      *
      * @param string $toObjectTypeID objectTypeId of the object type on the "to" side of the association
      * @param array<string,mixed>|LimitGetAssociationRecordsLimitsByObjectTypeParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<AssociationRecordLimitResponse>
      *
@@ -47,24 +52,27 @@ interface LimitsRawContract
     public function getAssociationRecordsLimitsByObjectType(
         string $toObjectTypeID,
         array|LimitGetAssociationRecordsLimitsByObjectTypeParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
+     *
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CollectionResponseObjectTypeNearOrAtAssociationLimitNoPaging,>
      *
      * @throws APIException
      */
     public function getAssociationRecordsLimitsFromObjects(
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param string $fromObjectTypeID objectTypeId of the object type on the "from" side of the association
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CollectionResponseObjectTypeNearOrAtAssociationLimitNoPaging,>
      *
@@ -72,61 +80,71 @@ interface LimitsRawContract
      */
     public function getAssociationRecordsLimitsToObjects(
         string $fromObjectTypeID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 
     /**
      * @api
+     *
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CalculatedPropertyLimitResponse>
      *
      * @throws APIException
      */
     public function getCalculatedPropertyLimits(
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 
     /**
      * @api
+     *
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CustomObjectLimitResponse>
      *
      * @throws APIException
      */
     public function getCustomObjectTypeLimits(
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 
     /**
      * @api
+     *
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CustomPropertyLimitResponse>
      *
      * @throws APIException
      */
     public function getCustomPropertyLimits(
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 
     /**
      * @api
+     *
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PipelineLimitResponse>
      *
      * @throws APIException
      */
     public function getPipelineLimits(
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 
     /**
      * @api
+     *
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<RecordLimitResponse>
      *
      * @throws APIException
      */
     public function getRecordLimits(
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 }

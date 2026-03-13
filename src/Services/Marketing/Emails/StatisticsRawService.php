@@ -16,6 +16,9 @@ use HubspotSDK\Marketing\Emails\Statistics\StatisticGetParams;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Marketing\Emails\StatisticsRawContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class StatisticsRawService implements StatisticsRawContract
 {
     // @phpstan-ignore-next-line
@@ -35,6 +38,7 @@ final class StatisticsRawService implements StatisticsRawContract
      *   property?: string,
      *   startTimestamp?: string,
      * }|StatisticGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<AggregateEmailStatistics>
      *
@@ -42,7 +46,7 @@ final class StatisticsRawService implements StatisticsRawContract
      */
     public function get(
         array|StatisticGetParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = StatisticGetParams::parseRequest(
             $params,
@@ -67,9 +71,10 @@ final class StatisticsRawService implements StatisticsRawContract
      * @param array{
      *   emailIDs?: list<int>,
      *   endTimestamp?: string,
-     *   interval?: 'DAY'|'HOUR'|'MINUTE'|'MONTH'|'QUARTER'|'QUARTER_HOUR'|'SECOND'|'WEEK'|'YEAR'|Interval,
+     *   interval?: Interval|value-of<Interval>,
      *   startTimestamp?: string,
      * }|StatisticGetHistogramParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CollectionResponseWithTotalEmailStatisticIntervalNoPaging>
      *
@@ -77,7 +82,7 @@ final class StatisticsRawService implements StatisticsRawContract
      */
     public function getHistogram(
         array|StatisticGetHistogramParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = StatisticGetHistogramParams::parseRequest(
             $params,

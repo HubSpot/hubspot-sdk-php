@@ -12,7 +12,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-import-type AssociationSpecWithLabelShape from \HubspotSDK\Crm\AssociationSpecWithLabel
  *
  * @phpstan-type MultiAssociatedObjectWithLabelShape = array{
- *   associationTypes: list<AssociationSpecWithLabelShape>, toObjectID: string
+ *   associationTypes: list<AssociationSpecWithLabel|AssociationSpecWithLabelShape>,
+ *   toObjectID: string,
  * }
  */
 final class MultiAssociatedObjectWithLabel implements BaseModel
@@ -56,7 +57,7 @@ final class MultiAssociatedObjectWithLabel implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<AssociationSpecWithLabelShape> $associationTypes
+     * @param list<AssociationSpecWithLabel|AssociationSpecWithLabelShape> $associationTypes
      */
     public static function with(
         array $associationTypes,
@@ -71,7 +72,7 @@ final class MultiAssociatedObjectWithLabel implements BaseModel
     }
 
     /**
-     * @param list<AssociationSpecWithLabelShape> $associationTypes
+     * @param list<AssociationSpecWithLabel|AssociationSpecWithLabelShape> $associationTypes
      */
     public function withAssociationTypes(array $associationTypes): self
     {

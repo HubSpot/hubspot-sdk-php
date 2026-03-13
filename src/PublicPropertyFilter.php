@@ -10,6 +10,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicPropertyFilter\FilterType;
 
 /**
+ * @phpstan-import-type OperationVariants from \HubspotSDK\PublicPropertyFilter\Operation
  * @phpstan-import-type OperationShape from \HubspotSDK\PublicPropertyFilter\Operation
  *
  * @phpstan-type PublicPropertyFilterShape = array{
@@ -27,6 +28,7 @@ final class PublicPropertyFilter implements BaseModel
     #[Required(enum: FilterType::class)]
     public string $filterType;
 
+    /** @var OperationVariants $operation */
     #[Required]
     public PublicBoolPropertyOperation|PublicNumberPropertyOperation|PublicStringPropertyOperation|PublicDateTimePropertyOperation|PublicRangedDatePropertyOperation|PublicComparativePropertyUpdatedOperation|PublicComparativeDatePropertyOperation|PublicRollingDateRangePropertyOperation|PublicRollingPropertyUpdatedOperation|PublicEnumerationPropertyOperation|PublicAllPropertyTypesOperation|PublicRangedNumberPropertyOperation|PublicMultiStringPropertyOperation|PublicDatePropertyOperation|PublicCalendarDatePropertyOperation|PublicTimePointOperation|PublicRangedTimeOperation $operation;
 

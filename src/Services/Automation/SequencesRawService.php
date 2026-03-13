@@ -16,6 +16,9 @@ use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Automation\SequencesRawContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class SequencesRawService implements SequencesRawContract
 {
     // @phpstan-ignore-next-line
@@ -32,6 +35,7 @@ final class SequencesRawService implements SequencesRawContract
      * @param array{
      *   userID: string, after?: string, limit?: int, name?: string
      * }|SequenceListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<PublicSequenceLiteResponse>>
      *
@@ -39,7 +43,7 @@ final class SequencesRawService implements SequencesRawContract
      */
     public function list(
         array|SequenceListParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = SequenceListParams::parseRequest(
             $params,
@@ -63,6 +67,7 @@ final class SequencesRawService implements SequencesRawContract
      * Retrieve details of a specific sequence by its ID.
      *
      * @param array{userID: string}|SequenceGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicSequenceResponse>
      *
@@ -71,7 +76,7 @@ final class SequencesRawService implements SequencesRawContract
     public function get(
         string $sequenceID,
         array|SequenceGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = SequenceGetParams::parseRequest(
             $params,

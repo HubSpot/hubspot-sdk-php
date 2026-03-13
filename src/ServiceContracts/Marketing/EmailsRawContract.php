@@ -24,12 +24,16 @@ use HubspotSDK\Marketing\Emails\VersionPublicEmail;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface EmailsRawContract
 {
     /**
      * @api
      *
      * @param array<string,mixed>|EmailCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicEmail>
      *
@@ -37,7 +41,7 @@ interface EmailsRawContract
      */
     public function create(
         array|EmailCreateParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -45,6 +49,7 @@ interface EmailsRawContract
      *
      * @param string $emailID Path param: The ID of the marketing email that should get updated
      * @param array<string,mixed>|EmailUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicEmail>
      *
@@ -53,13 +58,14 @@ interface EmailsRawContract
     public function update(
         string $emailID,
         array|EmailUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|EmailListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<PublicEmail>>
      *
@@ -67,7 +73,7 @@ interface EmailsRawContract
      */
     public function list(
         array|EmailListParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -75,6 +81,7 @@ interface EmailsRawContract
      *
      * @param string $emailID the ID of the marketing email to delete
      * @param array<string,mixed>|EmailDeleteParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -83,13 +90,14 @@ interface EmailsRawContract
     public function delete(
         string $emailID,
         array|EmailDeleteParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|EmailCloneParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicEmail>
      *
@@ -97,13 +105,14 @@ interface EmailsRawContract
      */
     public function clone(
         array|EmailCloneParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|EmailCreateAbTestVariationParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicEmail>
      *
@@ -111,7 +120,7 @@ interface EmailsRawContract
      */
     public function createAbTestVariation(
         array|EmailCreateAbTestVariationParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -119,6 +128,7 @@ interface EmailsRawContract
      *
      * @param string $emailID the marketing email ID
      * @param array<string,mixed>|EmailGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicEmail>
      *
@@ -127,7 +137,7 @@ interface EmailsRawContract
     public function get(
         string $emailID,
         array|EmailGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -135,6 +145,7 @@ interface EmailsRawContract
      *
      * @param string $emailID the ID of an A/B marketing email
      * @param array<string,mixed>|EmailGetAbTestVariationParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicEmail>
      *
@@ -143,13 +154,14 @@ interface EmailsRawContract
     public function getAbTestVariation(
         string $emailID,
         array|EmailGetAbTestVariationParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param string $emailID the marketing email ID
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicEmail>
      *
@@ -157,7 +169,7 @@ interface EmailsRawContract
      */
     public function getDraft(
         string $emailID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 
     /**
@@ -165,6 +177,7 @@ interface EmailsRawContract
      *
      * @param string $revisionID the ID of a revision
      * @param array<string,mixed>|EmailGetRevisionParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<VersionPublicEmail>
      *
@@ -173,7 +186,7 @@ interface EmailsRawContract
     public function getRevision(
         string $revisionID,
         array|EmailGetRevisionParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -181,6 +194,7 @@ interface EmailsRawContract
      *
      * @param string $emailID the marketing email ID
      * @param array<string,mixed>|EmailListRevisionsParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<VersionPublicEmail>>
      *
@@ -189,13 +203,14 @@ interface EmailsRawContract
     public function listRevisions(
         string $emailID,
         array|EmailListRevisionsParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param string $emailID the marketing email ID
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -203,13 +218,14 @@ interface EmailsRawContract
      */
     public function publish(
         string $emailID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param string $emailID the marketing email ID
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -217,7 +233,7 @@ interface EmailsRawContract
      */
     public function resetDraft(
         string $emailID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 
     /**
@@ -225,6 +241,7 @@ interface EmailsRawContract
      *
      * @param string $revisionID the ID of a revision
      * @param array<string,mixed>|EmailRestoreRevisionParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -233,7 +250,7 @@ interface EmailsRawContract
     public function restoreRevision(
         string $revisionID,
         array|EmailRestoreRevisionParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -241,6 +258,7 @@ interface EmailsRawContract
      *
      * @param int $revisionID the ID of a revision
      * @param array<string,mixed>|EmailRestoreRevisionToDraftParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicEmail>
      *
@@ -249,13 +267,14 @@ interface EmailsRawContract
     public function restoreRevisionToDraft(
         int $revisionID,
         array|EmailRestoreRevisionToDraftParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param string $emailID the ID of the email to unpublish
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -263,7 +282,7 @@ interface EmailsRawContract
      */
     public function unpublish(
         string $emailID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 
     /**
@@ -271,6 +290,7 @@ interface EmailsRawContract
      *
      * @param string $emailID the marketing email ID
      * @param array<string,mixed>|EmailUpdateDraftParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicEmail>
      *
@@ -279,6 +299,6 @@ interface EmailsRawContract
     public function updateDraft(
         string $emailID,
         array|EmailUpdateDraftParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

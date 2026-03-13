@@ -23,8 +23,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   createdAt: \DateTimeInterface,
  *   createdBy: string,
  *   fromInboxID: string,
- *   recipients: list<PublicRecipientShape>,
- *   senders: list<PublicSenderShape>,
+ *   recipients: list<PublicRecipient|PublicRecipientShape>,
+ *   senders: list<PublicSender|PublicSenderShape>,
  *   toInboxID: string,
  *   type: Type|value-of<Type>,
  *   updatedAt?: \DateTimeInterface|null,
@@ -122,8 +122,8 @@ final class PublicThreadInboxChange implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param PublicClient|PublicClientShape $client
-     * @param list<PublicRecipientShape> $recipients
-     * @param list<PublicSenderShape> $senders
+     * @param list<PublicRecipient|PublicRecipientShape> $recipients
+     * @param list<PublicSender|PublicSenderShape> $senders
      * @param Type|value-of<Type> $type
      */
     public static function with(
@@ -220,7 +220,7 @@ final class PublicThreadInboxChange implements BaseModel
     }
 
     /**
-     * @param list<PublicRecipientShape> $recipients
+     * @param list<PublicRecipient|PublicRecipientShape> $recipients
      */
     public function withRecipients(array $recipients): self
     {
@@ -231,7 +231,7 @@ final class PublicThreadInboxChange implements BaseModel
     }
 
     /**
-     * @param list<PublicSenderShape> $senders
+     * @param list<PublicSender|PublicSenderShape> $senders
      */
     public function withSenders(array $senders): self
     {

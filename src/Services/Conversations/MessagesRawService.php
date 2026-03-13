@@ -22,6 +22,9 @@ use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Conversations\MessagesRawContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class MessagesRawService implements MessagesRawContract
 {
     // @phpstan-ignore-next-line
@@ -33,13 +36,15 @@ final class MessagesRawService implements MessagesRawContract
     /**
      * @api
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @return BaseResponse<ConversationsPublicConversationsMessage|PublicComment|PublicWelcomeMessage|PublicAssignmentMessage|PublicThreadStatusChange|PublicThreadInboxChange,>
      *
      * @throws APIException
      */
     public function create(
         int $threadID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -60,6 +65,7 @@ final class MessagesRawService implements MessagesRawContract
      *   property?: string,
      *   sort?: list<string>,
      * }|MessageListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<ConversationsPublicConversationsMessage|PublicComment|PublicWelcomeMessage|PublicAssignmentMessage|PublicThreadStatusChange|PublicThreadInboxChange,>,>
      *
@@ -68,7 +74,7 @@ final class MessagesRawService implements MessagesRawContract
     public function list(
         int $threadID,
         array|MessageListParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = MessageListParams::parseRequest(
             $params,
@@ -89,8 +95,9 @@ final class MessagesRawService implements MessagesRawContract
     /**
      * @api
      *
-     * @param string $messageID Path param:
+     * @param string $messageID Path param
      * @param array{threadID: int, property?: string}|MessageGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ConversationsPublicConversationsMessage|PublicComment|PublicWelcomeMessage|PublicAssignmentMessage|PublicThreadStatusChange|PublicThreadInboxChange,>
      *
@@ -99,7 +106,7 @@ final class MessagesRawService implements MessagesRawContract
     public function get(
         string $messageID,
         array|MessageGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = MessageGetParams::parseRequest(
             $params,
@@ -125,10 +132,11 @@ final class MessagesRawService implements MessagesRawContract
     /**
      * @api
      *
-     * @param string $messageID Path param:
+     * @param string $messageID Path param
      * @param array{
      *   threadID: int, property?: string
      * }|MessageGetOriginalContentParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicMessageContent>
      *
@@ -137,7 +145,7 @@ final class MessagesRawService implements MessagesRawContract
     public function getOriginalContent(
         string $messageID,
         array|MessageGetOriginalContentParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = MessageGetOriginalContentParams::parseRequest(
             $params,

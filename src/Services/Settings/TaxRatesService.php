@@ -12,6 +12,9 @@ use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Settings\TaxRatesContract;
 use HubspotSDK\Settings\TaxRates\PublicTaxRateGroup;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class TaxRatesService implements TaxRatesContract
 {
     /**
@@ -35,6 +38,7 @@ final class TaxRatesService implements TaxRatesContract
      * @param bool $active include inactive rates
      * @param string $after The paging cursor token of the last successfully read resource will be returned as the paging.next.after JSON property of a paged response containing more results.
      * @param int $limit the maximum number of results to display per page
+     * @param RequestOpts|null $requestOptions
      *
      * @return Page<PublicTaxRateGroup>
      *
@@ -44,7 +48,7 @@ final class TaxRatesService implements TaxRatesContract
         ?bool $active = null,
         ?string $after = null,
         ?int $limit = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): Page {
         $params = Util::removeNulls(
             ['active' => $active, 'after' => $after, 'limit' => $limit]
@@ -62,12 +66,13 @@ final class TaxRatesService implements TaxRatesContract
      * Retrieve a specific tax rate by its `taxRateGroupId`.
      *
      * @param string $taxRateGroupID the ID of the tax rate to retrieve
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function get(
         string $taxRateGroupID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): PublicTaxRateGroup {
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->get($taxRateGroupID, requestOptions: $requestOptions);

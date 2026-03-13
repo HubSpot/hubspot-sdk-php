@@ -20,7 +20,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-type TableCreateParamsShape = array{
  *   allowChildTables: bool,
  *   allowPublicAPIAccess: bool,
- *   columns: list<ColumnRequestShape>,
+ *   columns: list<ColumnRequest|ColumnRequestShape>,
  *   dynamicMetaTags: array<string,int>,
  *   enableChildTablePages: bool,
  *   label: string,
@@ -127,7 +127,7 @@ final class TableCreateParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<ColumnRequestShape> $columns
+     * @param list<ColumnRequest|ColumnRequestShape> $columns
      * @param array<string,int> $dynamicMetaTags
      */
     public static function with(
@@ -179,7 +179,7 @@ final class TableCreateParams implements BaseModel
     /**
      * List of columns in the table.
      *
-     * @param list<ColumnRequestShape> $columns
+     * @param list<ColumnRequest|ColumnRequestShape> $columns
      */
     public function withColumns(array $columns): self
     {

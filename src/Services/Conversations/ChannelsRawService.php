@@ -13,6 +13,9 @@ use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Conversations\ChannelsRawContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class ChannelsRawService implements ChannelsRawContract
 {
     // @phpstan-ignore-next-line
@@ -27,6 +30,7 @@ final class ChannelsRawService implements ChannelsRawContract
      * @param array{
      *   after?: string, defaultPageLength?: int, limit?: int, sort?: list<string>
      * }|ChannelListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<PublicChannel>>
      *
@@ -34,7 +38,7 @@ final class ChannelsRawService implements ChannelsRawContract
      */
     public function list(
         array|ChannelListParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = ChannelListParams::parseRequest(
             $params,
@@ -55,13 +59,15 @@ final class ChannelsRawService implements ChannelsRawContract
     /**
      * @api
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @return BaseResponse<PublicChannel>
      *
      * @throws APIException
      */
     public function get(
         int $channelID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(

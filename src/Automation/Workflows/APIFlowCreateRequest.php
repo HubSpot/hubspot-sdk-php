@@ -12,7 +12,8 @@ use HubspotSDK\Core\Conversion\Contracts\ConverterSource;
  * @phpstan-import-type APIContactFlowCreateRequestShape from \HubspotSDK\Automation\Workflows\APIContactFlowCreateRequest
  * @phpstan-import-type APIPlatformFlowCreateRequestShape from \HubspotSDK\Automation\Workflows\APIPlatformFlowCreateRequest
  *
- * @phpstan-type APIFlowCreateRequestShape = APIContactFlowCreateRequestShape|APIPlatformFlowCreateRequestShape
+ * @phpstan-type APIFlowCreateRequestVariants = APIContactFlowCreateRequest|APIPlatformFlowCreateRequest
+ * @phpstan-type APIFlowCreateRequestShape = APIFlowCreateRequestVariants|APIContactFlowCreateRequestShape|APIPlatformFlowCreateRequestShape
  */
 final class APIFlowCreateRequest implements ConverterSource
 {

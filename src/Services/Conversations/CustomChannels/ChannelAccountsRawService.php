@@ -17,6 +17,10 @@ use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Conversations\CustomChannels\ChannelAccountsRawContract;
 
+/**
+ * @phpstan-import-type PublicDeliveryIdentifierShape from \HubspotSDK\Conversations\PublicDeliveryIdentifier
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class ChannelAccountsRawService implements ChannelAccountsRawContract
 {
     // @phpstan-ignore-next-line
@@ -35,10 +39,9 @@ final class ChannelAccountsRawService implements ChannelAccountsRawContract
      *   authorized: bool,
      *   inboxID: string,
      *   name: string,
-     *   deliveryIdentifier?: array{
-     *     type: string, value: string
-     *   }|PublicDeliveryIdentifier,
+     *   deliveryIdentifier?: PublicDeliveryIdentifier|PublicDeliveryIdentifierShape,
      * }|ChannelAccountCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicChannelAccount>
      *
@@ -47,7 +50,7 @@ final class ChannelAccountsRawService implements ChannelAccountsRawContract
     public function create(
         int $channelID,
         array|ChannelAccountCreateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = ChannelAccountCreateParams::parseRequest(
             $params,
@@ -75,6 +78,7 @@ final class ChannelAccountsRawService implements ChannelAccountsRawContract
      * @param array{
      *   channelID: int, authorized?: bool, name?: string
      * }|ChannelAccountUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicChannelAccount>
      *
@@ -83,7 +87,7 @@ final class ChannelAccountsRawService implements ChannelAccountsRawContract
     public function update(
         int $channelAccountID,
         array|ChannelAccountUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = ChannelAccountUpdateParams::parseRequest(
             $params,
@@ -120,6 +124,7 @@ final class ChannelAccountsRawService implements ChannelAccountsRawContract
      *   limit?: int,
      *   sort?: list<string>,
      * }|ChannelAccountListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<PublicChannelAccount>>
      *
@@ -128,7 +133,7 @@ final class ChannelAccountsRawService implements ChannelAccountsRawContract
     public function list(
         int $channelID,
         array|ChannelAccountListParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = ChannelAccountListParams::parseRequest(
             $params,
@@ -155,6 +160,7 @@ final class ChannelAccountsRawService implements ChannelAccountsRawContract
      *
      * @param int $channelAccountID path param: The ID of the channel account to retrieve
      * @param array{channelID: int, archived?: bool}|ChannelAccountGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicChannelAccount>
      *
@@ -163,7 +169,7 @@ final class ChannelAccountsRawService implements ChannelAccountsRawContract
     public function get(
         int $channelAccountID,
         array|ChannelAccountGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = ChannelAccountGetParams::parseRequest(
             $params,

@@ -15,7 +15,7 @@ use HubspotSDK\ForwardPaging;
  * @phpstan-import-type ForwardPagingShape from \HubspotSDK\ForwardPaging
  *
  * @phpstan-type CollectionResponseWithTotalExternalLinkMetadataForwardPagingShape = array{
- *   results: list<ExternalLinkMetadataShape>,
+ *   results: list<ExternalLinkMetadata|ExternalLinkMetadataShape>,
  *   total: int,
  *   paging?: null|ForwardPaging|ForwardPagingShape,
  * }
@@ -65,7 +65,7 @@ final class CollectionResponseWithTotalExternalLinkMetadataForwardPaging impleme
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<ExternalLinkMetadataShape> $results
+     * @param list<ExternalLinkMetadata|ExternalLinkMetadataShape> $results
      * @param ForwardPaging|ForwardPagingShape|null $paging
      */
     public static function with(
@@ -84,7 +84,7 @@ final class CollectionResponseWithTotalExternalLinkMetadataForwardPaging impleme
     }
 
     /**
-     * @param list<ExternalLinkMetadataShape> $results
+     * @param list<ExternalLinkMetadata|ExternalLinkMetadataShape> $results
      */
     public function withResults(array $results): self
     {

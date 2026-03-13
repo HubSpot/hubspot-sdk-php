@@ -10,38 +10,45 @@ use HubspotSDK\Crm\Exports\PublicExportResponse;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\TaskLocator;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface ExportsContract
 {
     /**
      * @api
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @throws APIException
      */
     public function createAsync(
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): TaskLocator;
 
     /**
      * @api
      *
      * @param int $exportID the unique ID of the export to retrieve
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function get(
         int $exportID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): PublicExportResponse;
 
     /**
      * @api
      *
      * @param int $taskID the unique ID of the export
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function getStatus(
         int $taskID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): ActionResponseWithSingleResultUri;
 }

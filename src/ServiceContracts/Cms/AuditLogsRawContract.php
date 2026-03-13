@@ -11,12 +11,16 @@ use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface AuditLogsRawContract
 {
     /**
      * @api
      *
      * @param array<string,mixed>|AuditLogListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<PublicAuditLog>>
      *
@@ -24,6 +28,6 @@ interface AuditLogsRawContract
      */
     public function list(
         array|AuditLogListParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

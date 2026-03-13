@@ -4,25 +4,30 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Services\Crm\Objects;
 
-use HubspotSDK\AssociationSpec;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\Crm\CreatedResponseSimplePublicObject;
+use HubspotSDK\Crm\FilterGroup;
 use HubspotSDK\Crm\Objects\Tickets\TicketCreateParams;
 use HubspotSDK\Crm\Objects\Tickets\TicketGetParams;
 use HubspotSDK\Crm\Objects\Tickets\TicketListParams;
 use HubspotSDK\Crm\Objects\Tickets\TicketMergeParams;
 use HubspotSDK\Crm\Objects\Tickets\TicketSearchParams;
 use HubspotSDK\Crm\Objects\Tickets\TicketUpdateParams;
+use HubspotSDK\Crm\PublicAssociationsForObject;
 use HubspotSDK\Crm\SimplePublicObject;
 use HubspotSDK\Crm\SimplePublicObjectWithAssociations;
 use HubspotSDK\Page;
-use HubspotSDK\PublicObjectID;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Objects\TicketsRawContract;
 
+/**
+ * @phpstan-import-type PublicAssociationsForObjectShape from \HubspotSDK\Crm\PublicAssociationsForObject
+ * @phpstan-import-type FilterGroupShape from \HubspotSDK\Crm\FilterGroup
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class TicketsRawService implements TicketsRawContract
 {
     // @phpstan-ignore-next-line
@@ -37,12 +42,10 @@ final class TicketsRawService implements TicketsRawContract
      * Create a ticket with the given properties and return a copy of the object, including the ID. Documentation and examples for creating standard tickets is provided.
      *
      * @param array{
-     *   associations: list<array{
-     *     to: array<string,mixed>|PublicObjectID,
-     *     types: list<array<string,mixed>|AssociationSpec>,
-     *   }>,
+     *   associations: list<PublicAssociationsForObject|PublicAssociationsForObjectShape>,
      *   properties: array<string,string>,
      * }|TicketCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CreatedResponseSimplePublicObject>
      *
@@ -50,7 +53,7 @@ final class TicketsRawService implements TicketsRawContract
      */
     public function create(
         array|TicketCreateParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = TicketCreateParams::parseRequest(
             $params,
@@ -72,10 +75,11 @@ final class TicketsRawService implements TicketsRawContract
      *
      * Perform a partial update of an Object identified by `{ticketId}`or optionally a unique property value as specified by the `idProperty` query param. `{ticketId}` refers to the internal object ID by default, and the `idProperty` query param refers to a property whose values are unique for the object. Provided property values will be overwritten. Read-only and non-existent properties will result in an error. Properties values can be cleared by passing an empty string.
      *
-     * @param string $ticketID Path param:
+     * @param string $ticketID Path param
      * @param array{
      *   properties: array<string,string>, idProperty?: string
      * }|TicketUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SimplePublicObject>
      *
@@ -84,7 +88,7 @@ final class TicketsRawService implements TicketsRawContract
     public function update(
         string $ticketID,
         array|TicketUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = TicketUpdateParams::parseRequest(
             $params,
@@ -116,6 +120,7 @@ final class TicketsRawService implements TicketsRawContract
      *   properties?: list<string>,
      *   propertiesWithHistory?: list<string>,
      * }|TicketListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<SimplePublicObjectWithAssociations>>
      *
@@ -123,7 +128,7 @@ final class TicketsRawService implements TicketsRawContract
      */
     public function list(
         array|TicketListParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = TicketListParams::parseRequest(
             $params,
@@ -146,13 +151,15 @@ final class TicketsRawService implements TicketsRawContract
      *
      * Move an Object identified by `{ticketId}` to the recycling bin.
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @return BaseResponse<mixed>
      *
      * @throws APIException
      */
     public function delete(
         string $ticketID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -175,6 +182,7 @@ final class TicketsRawService implements TicketsRawContract
      *   properties?: list<string>,
      *   propertiesWithHistory?: list<string>,
      * }|TicketGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SimplePublicObjectWithAssociations>
      *
@@ -183,7 +191,7 @@ final class TicketsRawService implements TicketsRawContract
     public function get(
         string $ticketID,
         array|TicketGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = TicketGetParams::parseRequest(
             $params,
@@ -208,6 +216,7 @@ final class TicketsRawService implements TicketsRawContract
      * @param array{
      *   objectIDToMerge: string, primaryObjectID: string
      * }|TicketMergeParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SimplePublicObject>
      *
@@ -215,7 +224,7 @@ final class TicketsRawService implements TicketsRawContract
      */
     public function merge(
         array|TicketMergeParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = TicketMergeParams::parseRequest(
             $params,
@@ -239,12 +248,13 @@ final class TicketsRawService implements TicketsRawContract
      *
      * @param array{
      *   after: string,
-     *   filterGroups: list<array{filters: list<array<string,mixed>>}>,
+     *   filterGroups: list<FilterGroup|FilterGroupShape>,
      *   limit: int,
      *   properties: list<string>,
      *   sorts: list<string>,
      *   query?: string,
      * }|TicketSearchParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CollectionResponseWithTotalSimplePublicObject>
      *
@@ -252,7 +262,7 @@ final class TicketsRawService implements TicketsRawContract
      */
     public function search(
         array|TicketSearchParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = TicketSearchParams::parseRequest(
             $params,

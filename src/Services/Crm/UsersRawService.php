@@ -4,12 +4,13 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Services\Crm;
 
-use HubspotSDK\AssociationSpec;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\Crm\CreatedResponseSimplePublicObject;
+use HubspotSDK\Crm\FilterGroup;
+use HubspotSDK\Crm\PublicAssociationsForObject;
 use HubspotSDK\Crm\SimplePublicObject;
 use HubspotSDK\Crm\SimplePublicObjectWithAssociations;
 use HubspotSDK\Crm\Users\UserCreateParams;
@@ -18,10 +19,14 @@ use HubspotSDK\Crm\Users\UserListParams;
 use HubspotSDK\Crm\Users\UserSearchParams;
 use HubspotSDK\Crm\Users\UserUpdateParams;
 use HubspotSDK\Page;
-use HubspotSDK\PublicObjectID;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\UsersRawContract;
 
+/**
+ * @phpstan-import-type PublicAssociationsForObjectShape from \HubspotSDK\Crm\PublicAssociationsForObject
+ * @phpstan-import-type FilterGroupShape from \HubspotSDK\Crm\FilterGroup
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class UsersRawService implements UsersRawContract
 {
     // @phpstan-ignore-next-line
@@ -36,12 +41,10 @@ final class UsersRawService implements UsersRawContract
      * Create a user with the given properties and return a copy of the object, including the ID. Documentation and examples for creating standard users is provided.
      *
      * @param array{
-     *   associations: list<array{
-     *     to: array<string,mixed>|PublicObjectID,
-     *     types: list<array<string,mixed>|AssociationSpec>,
-     *   }>,
+     *   associations: list<PublicAssociationsForObject|PublicAssociationsForObjectShape>,
      *   properties: array<string,string>,
      * }|UserCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CreatedResponseSimplePublicObject>
      *
@@ -49,7 +52,7 @@ final class UsersRawService implements UsersRawContract
      */
     public function create(
         array|UserCreateParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = UserCreateParams::parseRequest(
             $params,
@@ -71,10 +74,11 @@ final class UsersRawService implements UsersRawContract
      *
      * Perform a partial update of an Object identified by `{userId}`or optionally a unique property value as specified by the `idProperty` query param. `{userId}` refers to the internal object ID by default, and the `idProperty` query param refers to a property whose values are unique for the object. Provided property values will be overwritten. Read-only and non-existent properties will result in an error. Properties values can be cleared by passing an empty string.
      *
-     * @param string $userID Path param:
+     * @param string $userID Path param
      * @param array{
      *   properties: array<string,string>, idProperty?: string
      * }|UserUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SimplePublicObject>
      *
@@ -83,7 +87,7 @@ final class UsersRawService implements UsersRawContract
     public function update(
         string $userID,
         array|UserUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = UserUpdateParams::parseRequest(
             $params,
@@ -115,6 +119,7 @@ final class UsersRawService implements UsersRawContract
      *   properties?: list<string>,
      *   propertiesWithHistory?: list<string>,
      * }|UserListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<SimplePublicObjectWithAssociations>>
      *
@@ -122,7 +127,7 @@ final class UsersRawService implements UsersRawContract
      */
     public function list(
         array|UserListParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = UserListParams::parseRequest(
             $params,
@@ -145,13 +150,15 @@ final class UsersRawService implements UsersRawContract
      *
      * Move an Object identified by `{userId}` to the recycling bin.
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @return BaseResponse<mixed>
      *
      * @throws APIException
      */
     public function delete(
         string $userID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -174,6 +181,7 @@ final class UsersRawService implements UsersRawContract
      *   properties?: list<string>,
      *   propertiesWithHistory?: list<string>,
      * }|UserGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SimplePublicObjectWithAssociations>
      *
@@ -182,7 +190,7 @@ final class UsersRawService implements UsersRawContract
     public function get(
         string $userID,
         array|UserGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = UserGetParams::parseRequest(
             $params,
@@ -204,12 +212,13 @@ final class UsersRawService implements UsersRawContract
      *
      * @param array{
      *   after: string,
-     *   filterGroups: list<array{filters: list<array<string,mixed>>}>,
+     *   filterGroups: list<FilterGroup|FilterGroupShape>,
      *   limit: int,
      *   properties: list<string>,
      *   sorts: list<string>,
      *   query?: string,
      * }|UserSearchParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CollectionResponseWithTotalSimplePublicObject>
      *
@@ -217,7 +226,7 @@ final class UsersRawService implements UsersRawContract
      */
     public function search(
         array|UserSearchParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = UserSearchParams::parseRequest(
             $params,

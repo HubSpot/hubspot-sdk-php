@@ -14,6 +14,11 @@ use HubspotSDK\PublicObjectID;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Associations\BatchContract;
 
+/**
+ * @phpstan-import-type PublicObjectIDShape from \HubspotSDK\PublicObjectID
+ * @phpstan-import-type PublicAssociationShape from \HubspotSDK\Crm\Associations\PublicAssociation
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class BatchService implements BatchContract
 {
     /**
@@ -36,11 +41,8 @@ final class BatchService implements BatchContract
      *
      * @param string $toObjectType path param: The type of the target object in the association
      * @param string $fromObjectType path param: The type of the source object in the association
-     * @param list<array{
-     *   from: array{id: string}|PublicObjectID,
-     *   to: array{id: string}|PublicObjectID,
-     *   type: string,
-     * }|PublicAssociation> $inputs Body param:
+     * @param list<PublicAssociation|PublicAssociationShape> $inputs Body param
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -48,7 +50,7 @@ final class BatchService implements BatchContract
         string $toObjectType,
         string $fromObjectType,
         array $inputs,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BatchResponsePublicAssociation {
         $params = Util::removeNulls(
             ['fromObjectType' => $fromObjectType, 'inputs' => $inputs]
@@ -67,11 +69,8 @@ final class BatchService implements BatchContract
      *
      * @param string $toObjectType path param: The type of the target object in the association
      * @param string $fromObjectType path param: The type of the source object in the association
-     * @param list<array{
-     *   from: array{id: string}|PublicObjectID,
-     *   to: array{id: string}|PublicObjectID,
-     *   type: string,
-     * }|PublicAssociation> $inputs Body param:
+     * @param list<PublicAssociation|PublicAssociationShape> $inputs Body param
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -79,7 +78,7 @@ final class BatchService implements BatchContract
         string $toObjectType,
         string $fromObjectType,
         array $inputs,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): mixed {
         $params = Util::removeNulls(
             ['fromObjectType' => $fromObjectType, 'inputs' => $inputs]
@@ -98,7 +97,8 @@ final class BatchService implements BatchContract
      *
      * @param string $toObjectType path param: The type of the target object in the association
      * @param string $fromObjectType path param: The type of the source object in the association
-     * @param list<array{id: string}|PublicObjectID> $inputs Body param:
+     * @param list<PublicObjectID|PublicObjectIDShape> $inputs Body param
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -106,7 +106,7 @@ final class BatchService implements BatchContract
         string $toObjectType,
         string $fromObjectType,
         array $inputs,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BatchResponsePublicAssociationMulti {
         $params = Util::removeNulls(
             ['fromObjectType' => $fromObjectType, 'inputs' => $inputs]

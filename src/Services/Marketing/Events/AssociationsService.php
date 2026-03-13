@@ -11,6 +11,9 @@ use HubspotSDK\Marketing\Events\CollectionResponseWithTotalPublicListNoPaging;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Marketing\Events\AssociationsContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class AssociationsService implements AssociationsContract
 {
     /**
@@ -32,12 +35,13 @@ final class AssociationsService implements AssociationsContract
      * Gets lists associated with a marketing event by marketing event id
      *
      * @param string $marketingEventID the internal id of the marketing event in HubSpot
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function list(
         string $marketingEventID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): CollectionResponseWithTotalPublicListNoPaging {
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->list($marketingEventID, requestOptions: $requestOptions);
@@ -52,13 +56,14 @@ final class AssociationsService implements AssociationsContract
      *
      * @param string $listID the ILS ID of the list
      * @param string $marketingEventID the internal id of the marketing event in HubSpot
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function delete(
         string $listID,
         string $marketingEventID,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): mixed {
         $params = Util::removeNulls(['marketingEventID' => $marketingEventID]);
 
@@ -75,13 +80,14 @@ final class AssociationsService implements AssociationsContract
      *
      * @param string $listID the ILS ID of the list
      * @param string $marketingEventID the internal id of the marketing event in HubSpot
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function associate(
         string $listID,
         string $marketingEventID,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): mixed {
         $params = Util::removeNulls(['marketingEventID' => $marketingEventID]);
 
@@ -99,6 +105,7 @@ final class AssociationsService implements AssociationsContract
      * @param string $listID the ILS ID of the list
      * @param string $externalAccountID the accountId that is associated with this marketing event in the external event application
      * @param string $externalEventID the id of the marketing event in the external event application
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -106,7 +113,7 @@ final class AssociationsService implements AssociationsContract
         string $listID,
         string $externalAccountID,
         string $externalEventID,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): mixed {
         $params = Util::removeNulls(
             [
@@ -129,6 +136,7 @@ final class AssociationsService implements AssociationsContract
      * @param string $listID the ILS ID of the list
      * @param string $externalAccountID the accountId that is associated with this marketing event in the external event application
      * @param string $externalEventID the id of the marketing event in the external event application
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -136,7 +144,7 @@ final class AssociationsService implements AssociationsContract
         string $listID,
         string $externalAccountID,
         string $externalEventID,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): mixed {
         $params = Util::removeNulls(
             [
@@ -158,13 +166,14 @@ final class AssociationsService implements AssociationsContract
      *
      * @param string $externalEventID the id of the marketing event in the external event application
      * @param string $externalAccountID The accountId that is associated with this marketing event in the external event application
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function listByExternalAccount(
         string $externalEventID,
         string $externalAccountID,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): CollectionResponseWithTotalPublicListNoPaging {
         $params = Util::removeNulls(['externalAccountID' => $externalAccountID]);
 

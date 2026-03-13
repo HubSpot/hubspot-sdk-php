@@ -14,6 +14,9 @@ use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Marketing\Campaigns\ReportsContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class ReportsService implements ReportsContract
 {
     /**
@@ -39,6 +42,7 @@ final class ReportsService implements ReportsContract
      * Default value: Current date
      * @param string $startDate The start date for the report data, formatted as YYYY-MM-DD.
      * Default value: 2006-01-01
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -46,7 +50,7 @@ final class ReportsService implements ReportsContract
         string $campaignGuid,
         ?string $endDate = null,
         ?string $startDate = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): MetricsCounters {
         $params = Util::removeNulls(
             ['endDate' => $endDate, 'startDate' => $startDate]
@@ -70,6 +74,7 @@ final class ReportsService implements ReportsContract
      * Default value: Current date
      * @param string $startDate The start date for the report data, formatted as YYYY-MM-DD.
      * Default value: 2006-01-01
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -78,7 +83,7 @@ final class ReportsService implements ReportsContract
         ?string $attributionModel = null,
         ?string $endDate = null,
         ?string $startDate = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): RevenueAttributionAggregate {
         $params = Util::removeNulls(
             [
@@ -109,6 +114,7 @@ final class ReportsService implements ReportsContract
      * Default: 100
      * @param string $startDate Query param: The start date for the report data, formatted as YYYY-MM-DD.
      * Default value: 2006-01-01
+     * @param RequestOpts|null $requestOptions
      *
      * @return Page<ContactReference>
      *
@@ -121,7 +127,7 @@ final class ReportsService implements ReportsContract
         ?string $endDate = null,
         ?int $limit = null,
         ?string $startDate = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): Page {
         $params = Util::removeNulls(
             [

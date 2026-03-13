@@ -26,7 +26,7 @@ use HubspotSDK\Marketing\Forms\HubSpotFormConfiguration\Language;
  *   postSubmitAction: FormPostSubmitAction|FormPostSubmitActionShape,
  *   prePopulateKnownValues: bool,
  *   recaptchaEnabled: bool,
- *   lifecycleStages?: list<LifecycleStageShape>|null,
+ *   lifecycleStages?: list<LifecycleStage|LifecycleStageShape>|null,
  * }
  */
 final class HubSpotFormConfiguration implements BaseModel
@@ -158,7 +158,7 @@ final class HubSpotFormConfiguration implements BaseModel
      * @param Language|value-of<Language> $language
      * @param list<string> $notifyRecipients
      * @param FormPostSubmitAction|FormPostSubmitActionShape $postSubmitAction
-     * @param list<LifecycleStageShape>|null $lifecycleStages
+     * @param list<LifecycleStage|LifecycleStageShape>|null $lifecycleStages
      */
     public static function with(
         bool $allowLinkToResetKnownValues,
@@ -325,7 +325,7 @@ final class HubSpotFormConfiguration implements BaseModel
     }
 
     /**
-     * @param list<LifecycleStageShape> $lifecycleStages
+     * @param list<LifecycleStage|LifecycleStageShape> $lifecycleStages
      */
     public function withLifecycleStages(array $lifecycleStages): self
     {

@@ -4,25 +4,30 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Services\Crm\Objects;
 
-use HubspotSDK\AssociationSpec;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\Crm\CreatedResponseSimplePublicObject;
+use HubspotSDK\Crm\FilterGroup;
 use HubspotSDK\Crm\Objects\Companies\CompanyCreateParams;
 use HubspotSDK\Crm\Objects\Companies\CompanyGetParams;
 use HubspotSDK\Crm\Objects\Companies\CompanyListParams;
 use HubspotSDK\Crm\Objects\Companies\CompanyMergeParams;
 use HubspotSDK\Crm\Objects\Companies\CompanySearchParams;
 use HubspotSDK\Crm\Objects\Companies\CompanyUpdateParams;
+use HubspotSDK\Crm\PublicAssociationsForObject;
 use HubspotSDK\Crm\SimplePublicObject;
 use HubspotSDK\Crm\SimplePublicObjectWithAssociations;
 use HubspotSDK\Page;
-use HubspotSDK\PublicObjectID;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Objects\CompaniesRawContract;
 
+/**
+ * @phpstan-import-type PublicAssociationsForObjectShape from \HubspotSDK\Crm\PublicAssociationsForObject
+ * @phpstan-import-type FilterGroupShape from \HubspotSDK\Crm\FilterGroup
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class CompaniesRawService implements CompaniesRawContract
 {
     // @phpstan-ignore-next-line
@@ -37,12 +42,10 @@ final class CompaniesRawService implements CompaniesRawContract
      * Create a single company. Include a `properties` object to define [property values](https://developers.hubspot.com/docs/guides/api/crm/properties) for the company, along with an `associations` array to define [associations](https://developers.hubspot.com/docs/guides/api/crm/associations/associations-v4) with other CRM records.
      *
      * @param array{
-     *   associations: list<array{
-     *     to: array<string,mixed>|PublicObjectID,
-     *     types: list<array<string,mixed>|AssociationSpec>,
-     *   }>,
+     *   associations: list<PublicAssociationsForObject|PublicAssociationsForObjectShape>,
      *   properties: array<string,string>,
      * }|CompanyCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CreatedResponseSimplePublicObject>
      *
@@ -50,7 +53,7 @@ final class CompaniesRawService implements CompaniesRawContract
      */
     public function create(
         array|CompanyCreateParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = CompanyCreateParams::parseRequest(
             $params,
@@ -72,10 +75,11 @@ final class CompaniesRawService implements CompaniesRawContract
      *
      * Update a company by ID (`companyId`) or unique property value (`idProperty`). Provided property values will be overwritten. Read-only and non-existent properties will result in an error. Properties values can be cleared by passing an empty string.
      *
-     * @param string $companyID Path param:
+     * @param string $companyID Path param
      * @param array{
      *   properties: array<string,string>, idProperty?: string
      * }|CompanyUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SimplePublicObject>
      *
@@ -84,7 +88,7 @@ final class CompaniesRawService implements CompaniesRawContract
     public function update(
         string $companyID,
         array|CompanyUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = CompanyUpdateParams::parseRequest(
             $params,
@@ -116,6 +120,7 @@ final class CompaniesRawService implements CompaniesRawContract
      *   properties?: list<string>,
      *   propertiesWithHistory?: list<string>,
      * }|CompanyListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<SimplePublicObjectWithAssociations>>
      *
@@ -123,7 +128,7 @@ final class CompaniesRawService implements CompaniesRawContract
      */
     public function list(
         array|CompanyListParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = CompanyListParams::parseRequest(
             $params,
@@ -146,13 +151,15 @@ final class CompaniesRawService implements CompaniesRawContract
      *
      * Delete a company by ID. Deleted companies can be restored within 90 days of deletion. Learn more about [restoring records](https://knowledge.hubspot.com/records/restore-deleted-records).
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @return BaseResponse<mixed>
      *
      * @throws APIException
      */
     public function delete(
         string $companyID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -175,6 +182,7 @@ final class CompaniesRawService implements CompaniesRawContract
      *   properties?: list<string>,
      *   propertiesWithHistory?: list<string>,
      * }|CompanyGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SimplePublicObjectWithAssociations>
      *
@@ -183,7 +191,7 @@ final class CompaniesRawService implements CompaniesRawContract
     public function get(
         string $companyID,
         array|CompanyGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = CompanyGetParams::parseRequest(
             $params,
@@ -208,6 +216,7 @@ final class CompaniesRawService implements CompaniesRawContract
      * @param array{
      *   objectIDToMerge: string, primaryObjectID: string
      * }|CompanyMergeParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SimplePublicObject>
      *
@@ -215,7 +224,7 @@ final class CompaniesRawService implements CompaniesRawContract
      */
     public function merge(
         array|CompanyMergeParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = CompanyMergeParams::parseRequest(
             $params,
@@ -239,12 +248,13 @@ final class CompaniesRawService implements CompaniesRawContract
      *
      * @param array{
      *   after: string,
-     *   filterGroups: list<array{filters: list<array<string,mixed>>}>,
+     *   filterGroups: list<FilterGroup|FilterGroupShape>,
      *   limit: int,
      *   properties: list<string>,
      *   sorts: list<string>,
      *   query?: string,
      * }|CompanySearchParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CollectionResponseWithTotalSimplePublicObject>
      *
@@ -252,7 +262,7 @@ final class CompaniesRawService implements CompaniesRawContract
      */
     public function search(
         array|CompanySearchParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = CompanySearchParams::parseRequest(
             $params,

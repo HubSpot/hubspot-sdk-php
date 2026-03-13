@@ -13,6 +13,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * @see HubspotSDK\Services\Automation\WorkflowsService::batchGetIDMappings()
  *
+ * @phpstan-import-type InputVariants from \HubspotSDK\Automation\Workflows\WorkflowBatchGetIDMappingsParams\Input
  * @phpstan-import-type InputShape from \HubspotSDK\Automation\Workflows\WorkflowBatchGetIDMappingsParams\Input
  *
  * @phpstan-type WorkflowBatchGetIDMappingsParamsShape = array{
@@ -25,9 +26,7 @@ final class WorkflowBatchGetIDMappingsParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    /**
-     * @var list<APIFlowBatchFetchMigrationFlowIDCoordinate|APIFlowBatchFetchMigrationWorkflowIDCoordinate> $inputs
-     */
+    /** @var list<InputVariants> $inputs */
     #[Required(list: Input::class)]
     public array $inputs;
 

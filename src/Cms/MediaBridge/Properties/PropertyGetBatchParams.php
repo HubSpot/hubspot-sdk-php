@@ -22,7 +22,7 @@ use HubspotSDK\PropertyName;
  *   appID: int,
  *   archived: bool,
  *   dataSensitivity: DataSensitivity|value-of<DataSensitivity>,
- *   inputs: list<PropertyNameShape>,
+ *   inputs: list<PropertyName|PropertyNameShape>,
  * }
  */
 final class PropertyGetBatchParams implements BaseModel
@@ -76,7 +76,7 @@ final class PropertyGetBatchParams implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param DataSensitivity|value-of<DataSensitivity> $dataSensitivity
-     * @param list<PropertyNameShape> $inputs
+     * @param list<PropertyName|PropertyNameShape> $inputs
      */
     public static function with(
         int $appID,
@@ -123,7 +123,7 @@ final class PropertyGetBatchParams implements BaseModel
     }
 
     /**
-     * @param list<PropertyNameShape> $inputs
+     * @param list<PropertyName|PropertyNameShape> $inputs
      */
     public function withInputs(array $inputs): self
     {

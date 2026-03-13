@@ -13,6 +13,9 @@ use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Extensions\Calling\SettingsRawContract;
 use HubspotSDK\Webhooks\SettingsResponse;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class SettingsRawService implements SettingsRawContract
 {
     // @phpstan-ignore-next-line
@@ -35,6 +38,7 @@ final class SettingsRawService implements SettingsRawContract
      *   usesRemote: bool,
      *   width: int,
      * }|SettingCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SettingsResponse>
      *
@@ -43,7 +47,7 @@ final class SettingsRawService implements SettingsRawContract
     public function create(
         int $appID,
         array|SettingCreateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = SettingCreateParams::parseRequest(
             $params,
@@ -74,6 +78,7 @@ final class SettingsRawService implements SettingsRawContract
      *   usesRemote?: bool,
      *   width?: int,
      * }|SettingUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SettingsResponse>
      *
@@ -82,7 +87,7 @@ final class SettingsRawService implements SettingsRawContract
     public function update(
         int $appID,
         array|SettingUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = SettingUpdateParams::parseRequest(
             $params,
@@ -102,13 +107,15 @@ final class SettingsRawService implements SettingsRawContract
     /**
      * @api
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @return BaseResponse<mixed>
      *
      * @throws APIException
      */
     public function delete(
         int $appID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -122,13 +129,15 @@ final class SettingsRawService implements SettingsRawContract
     /**
      * @api
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @return BaseResponse<SettingsResponse>
      *
      * @throws APIException
      */
     public function get(
         int $appID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(

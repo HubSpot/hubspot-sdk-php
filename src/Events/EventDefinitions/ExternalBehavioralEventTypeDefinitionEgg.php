@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @phpstan-type ExternalBehavioralEventTypeDefinitionEggShape = array{
  *   label: string,
- *   propertyDefinitions: list<ExternalBehavioralEventPropertyCreateShape>,
+ *   propertyDefinitions: list<ExternalBehavioralEventPropertyCreate|ExternalBehavioralEventPropertyCreateShape>,
  *   description?: string|null,
  *   name?: string|null,
  *   primaryObject?: string|null,
@@ -85,7 +85,7 @@ final class ExternalBehavioralEventTypeDefinitionEgg implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<ExternalBehavioralEventPropertyCreateShape> $propertyDefinitions
+     * @param list<ExternalBehavioralEventPropertyCreate|ExternalBehavioralEventPropertyCreateShape> $propertyDefinitions
      */
     public static function with(
         string $label,
@@ -120,7 +120,7 @@ final class ExternalBehavioralEventTypeDefinitionEgg implements BaseModel
     /**
      * List of custom properties on event.
      *
-     * @param list<ExternalBehavioralEventPropertyCreateShape> $propertyDefinitions
+     * @param list<ExternalBehavioralEventPropertyCreate|ExternalBehavioralEventPropertyCreateShape> $propertyDefinitions
      */
     public function withPropertyDefinitions(array $propertyDefinitions): self
     {

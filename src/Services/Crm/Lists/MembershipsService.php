@@ -14,6 +14,9 @@ use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Lists\MembershipsContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class MembershipsService implements MembershipsContract
 {
     /**
@@ -46,6 +49,7 @@ final class MembershipsService implements MembershipsContract
      *
      * If provided, then the records in the response will be the records preceding the offset, sorted in *descending* order.
      * @param int $limit The number of records to return in the response. The maximum `limit` is 250.
+     * @param RequestOpts|null $requestOptions
      *
      * @return Page<JoinTimeAndRecordID>
      *
@@ -56,7 +60,7 @@ final class MembershipsService implements MembershipsContract
         ?string $after = null,
         ?string $before = null,
         int $limit = 100,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): Page {
         $params = Util::removeNulls(
             ['after' => $after, 'before' => $before, 'limit' => $limit]
@@ -77,13 +81,14 @@ final class MembershipsService implements MembershipsContract
      *
      * @param string $listID the **ILS ID** of the `MANUAL` or `SNAPSHOT` list
      * @param list<string> $body
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function add(
         string $listID,
         array $body,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): MembershipsUpdateResponse {
         $params = Util::removeNulls(['body' => $body]);
 
@@ -104,13 +109,14 @@ final class MembershipsService implements MembershipsContract
      *
      * @param string $sourceListID the **ILS ID** of the *source list* to grab the records from, which are then added to the *destination list*
      * @param string $listID the **ILS ID** of the `MANUAL` or `SNAPSHOT` *destination list*, which the *source list* records are added to
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function addAllFromList(
         string $sourceListID,
         string $listID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): mixed {
         $params = Util::removeNulls(['listID' => $listID]);
 
@@ -130,6 +136,7 @@ final class MembershipsService implements MembershipsContract
      * @param string $listID the **ILS ID** of the `MANUAL` or `SNAPSHOT` list
      * @param list<string> $recordIDsToAdd
      * @param list<string> $recordIDsToRemove
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -137,7 +144,7 @@ final class MembershipsService implements MembershipsContract
         string $listID,
         array $recordIDsToAdd,
         array $recordIDsToRemove,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): MembershipsUpdateResponse {
         $params = Util::removeNulls(
             [
@@ -159,13 +166,14 @@ final class MembershipsService implements MembershipsContract
      *
      * @param string $recordID Id of the record
      * @param string $objectTypeID Object type id of the record
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function getLists(
         string $recordID,
         string $objectTypeID,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): APICollectionResponseRecordListMembershipNoPaging {
         $params = Util::removeNulls(['objectTypeID' => $objectTypeID]);
 
@@ -192,6 +200,7 @@ final class MembershipsService implements MembershipsContract
      *
      * If provided, then the records in the response will be the records preceding the offset, sorted in *descending* order.
      * @param int $limit The number of records to return in the response. The maximum `limit` is 250.
+     * @param RequestOpts|null $requestOptions
      *
      * @return Page<JoinTimeAndRecordID>
      *
@@ -202,7 +211,7 @@ final class MembershipsService implements MembershipsContract
         ?string $after = null,
         ?string $before = null,
         int $limit = 100,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): Page {
         $params = Util::removeNulls(
             ['after' => $after, 'before' => $before, 'limit' => $limit]
@@ -223,13 +232,14 @@ final class MembershipsService implements MembershipsContract
      *
      * @param string $listID the **ILS ID** of the `MANUAL` or `SNAPSHOT` list
      * @param list<string> $body
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function remove(
         string $listID,
         array $body,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): MembershipsUpdateResponse {
         $params = Util::removeNulls(['body' => $body]);
 
@@ -249,12 +259,13 @@ final class MembershipsService implements MembershipsContract
      * This endpoint only supports lists that have less than 100,000 memberships.
      *
      * @param string $listID the **ILS ID** of the `MANUAL` or `SNAPSHOT` list
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function removeAll(
         string $listID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): mixed {
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->removeAll($listID, requestOptions: $requestOptions);

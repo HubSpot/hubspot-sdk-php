@@ -12,7 +12,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-import-type ExternalReminderShape from \HubspotSDK\Scheduler\Meetings\ExternalReminder
  *
  * @phpstan-type ExternalEmailReminderScheduleShape = array{
- *   reminders: list<ExternalReminderShape>, shouldIncludeInviteDescription: bool
+ *   reminders: list<ExternalReminder|ExternalReminderShape>,
+ *   shouldIncludeInviteDescription: bool,
  * }
  */
 final class ExternalEmailReminderSchedule implements BaseModel
@@ -55,7 +56,7 @@ final class ExternalEmailReminderSchedule implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<ExternalReminderShape> $reminders
+     * @param list<ExternalReminder|ExternalReminderShape> $reminders
      */
     public static function with(
         array $reminders,
@@ -70,7 +71,7 @@ final class ExternalEmailReminderSchedule implements BaseModel
     }
 
     /**
-     * @param list<ExternalReminderShape> $reminders
+     * @param list<ExternalReminder|ExternalReminderShape> $reminders
      */
     public function withReminders(array $reminders): self
     {

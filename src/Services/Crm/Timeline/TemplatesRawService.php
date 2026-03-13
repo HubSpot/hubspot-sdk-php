@@ -14,10 +14,13 @@ use HubspotSDK\Crm\Timeline\Templates\TemplateGetParams;
 use HubspotSDK\Crm\Timeline\Templates\TemplateUpdateParams;
 use HubspotSDK\Crm\Timeline\TimelineEventTemplate;
 use HubspotSDK\Crm\Timeline\TimelineEventTemplateToken;
-use HubspotSDK\Crm\Timeline\TimelineEventTemplateToken\Type;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Timeline\TemplatesRawContract;
 
+/**
+ * @phpstan-import-type TimelineEventTemplateTokenShape from \HubspotSDK\Crm\Timeline\TimelineEventTemplateToken
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class TemplatesRawService implements TemplatesRawContract
 {
     // @phpstan-ignore-next-line
@@ -35,18 +38,11 @@ final class TemplatesRawService implements TemplatesRawContract
      * @param array{
      *   name: string,
      *   objectType: string,
-     *   tokens: list<array{
-     *     label: string,
-     *     name: string,
-     *     type: 'date'|'enumeration'|'number'|'string'|Type,
-     *     createdAt?: string|\DateTimeInterface,
-     *     objectPropertyName?: string,
-     *     options?: list<mixed>,
-     *     updatedAt?: string|\DateTimeInterface,
-     *   }|TimelineEventTemplateToken>,
+     *   tokens: list<TimelineEventTemplateToken|TimelineEventTemplateTokenShape>,
      *   detailTemplate?: string,
      *   headerTemplate?: string,
      * }|TemplateCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<TimelineEventTemplate>
      *
@@ -55,7 +51,7 @@ final class TemplatesRawService implements TemplatesRawContract
     public function create(
         int $appID,
         array|TemplateCreateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = TemplateCreateParams::parseRequest(
             $params,
@@ -82,18 +78,11 @@ final class TemplatesRawService implements TemplatesRawContract
      *   appID: int,
      *   id: string,
      *   name: string,
-     *   tokens: list<array{
-     *     label: string,
-     *     name: string,
-     *     type: 'date'|'enumeration'|'number'|'string'|Type,
-     *     createdAt?: string|\DateTimeInterface,
-     *     objectPropertyName?: string,
-     *     options?: list<mixed>,
-     *     updatedAt?: string|\DateTimeInterface,
-     *   }|TimelineEventTemplateToken>,
+     *   tokens: list<TimelineEventTemplateToken|TimelineEventTemplateTokenShape>,
      *   detailTemplate?: string,
      *   headerTemplate?: string,
      * }|TemplateUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<TimelineEventTemplate>
      *
@@ -102,7 +91,7 @@ final class TemplatesRawService implements TemplatesRawContract
     public function update(
         string $eventTemplateID,
         array|TemplateUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = TemplateUpdateParams::parseRequest(
             $params,
@@ -131,6 +120,7 @@ final class TemplatesRawService implements TemplatesRawContract
      * Retrieve all templates defined for an app.
      *
      * @param int $appID the ID of the target app
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CollectionResponseTimelineEventTemplateNoPaging>
      *
@@ -138,7 +128,7 @@ final class TemplatesRawService implements TemplatesRawContract
      */
     public function list(
         int $appID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -156,6 +146,7 @@ final class TemplatesRawService implements TemplatesRawContract
      *
      * @param string $eventTemplateID the event template ID
      * @param array{appID: int}|TemplateDeleteParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -164,7 +155,7 @@ final class TemplatesRawService implements TemplatesRawContract
     public function delete(
         string $eventTemplateID,
         array|TemplateDeleteParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = TemplateDeleteParams::parseRequest(
             $params,
@@ -193,6 +184,7 @@ final class TemplatesRawService implements TemplatesRawContract
      *
      * @param string $eventTemplateID the event template ID
      * @param array{appID: int}|TemplateGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<TimelineEventTemplate>
      *
@@ -201,7 +193,7 @@ final class TemplatesRawService implements TemplatesRawContract
     public function get(
         string $eventTemplateID,
         array|TemplateGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = TemplateGetParams::parseRequest(
             $params,

@@ -17,7 +17,7 @@ use HubspotSDK\Crm\Associations\Schema\V4\PublicAssociationDefinitionConfigurati
  *
  * @phpstan-type ConfigurationBatchCreateParamsShape = array{
  *   fromObjectType: string,
- *   inputs: list<PublicAssociationDefinitionConfigurationCreateRequestShape>,
+ *   inputs: list<PublicAssociationDefinitionConfigurationCreateRequest|PublicAssociationDefinitionConfigurationCreateRequestShape>,
  * }
  */
 final class ConfigurationBatchCreateParams implements BaseModel
@@ -59,7 +59,7 @@ final class ConfigurationBatchCreateParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicAssociationDefinitionConfigurationCreateRequestShape> $inputs
+     * @param list<PublicAssociationDefinitionConfigurationCreateRequest|PublicAssociationDefinitionConfigurationCreateRequestShape> $inputs
      */
     public static function with(string $fromObjectType, array $inputs): self
     {
@@ -80,7 +80,7 @@ final class ConfigurationBatchCreateParams implements BaseModel
     }
 
     /**
-     * @param list<PublicAssociationDefinitionConfigurationCreateRequestShape> $inputs
+     * @param list<PublicAssociationDefinitionConfigurationCreateRequest|PublicAssociationDefinitionConfigurationCreateRequestShape> $inputs
      */
     public function withInputs(array $inputs): self
     {

@@ -15,6 +15,9 @@ use HubspotSDK\Crm\Lists\PublicMigrationMapping;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Lists\MappingRawContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class MappingRawService implements MappingRawContract
 {
     // @phpstan-ignore-next-line
@@ -29,6 +32,7 @@ final class MappingRawService implements MappingRawContract
      * This API allows translation of a batch of legacy list id's to list id's. This allows for a maximum of 10,000 id's. This is a temporary API allowed for mapping old id's to new id's and will expire on May 30th, 2025.
      *
      * @param array{body: list<string>}|MappingBatchCreateIDMappingParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicBatchMigrationMapping>
      *
@@ -36,7 +40,7 @@ final class MappingRawService implements MappingRawContract
      */
     public function batchCreateIDMapping(
         array|MappingBatchCreateIDMappingParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = MappingBatchCreateIDMappingParams::parseRequest(
             $params,
@@ -59,6 +63,7 @@ final class MappingRawService implements MappingRawContract
      * This API allows translation of legacy list id to list id. This is a temporary API allowed for mapping old id's to new id's and will expire on May 30th, 2025.
      *
      * @param array{legacyListID?: string}|MappingGetIDMappingParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicMigrationMapping>
      *
@@ -66,7 +71,7 @@ final class MappingRawService implements MappingRawContract
      */
     public function getIDMapping(
         array|MappingGetIDMappingParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = MappingGetIDMappingParams::parseRequest(
             $params,

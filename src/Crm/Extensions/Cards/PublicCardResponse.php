@@ -18,7 +18,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-type PublicCardResponseShape = array{
  *   id: string,
  *   actions: CardActions|CardActionsShape,
- *   auditHistory: list<CardAuditResponseShape>,
+ *   auditHistory: list<CardAuditResponse|CardAuditResponseShape>,
  *   display: CardDisplayBody|CardDisplayBodyShape,
  *   fetch: PublicCardFetchBody|PublicCardFetchBodyShape,
  *   title: string,
@@ -95,7 +95,7 @@ final class PublicCardResponse implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param CardActions|CardActionsShape $actions
-     * @param list<CardAuditResponseShape> $auditHistory
+     * @param list<CardAuditResponse|CardAuditResponseShape> $auditHistory
      * @param CardDisplayBody|CardDisplayBodyShape $display
      * @param PublicCardFetchBody|PublicCardFetchBodyShape $fetch
      */
@@ -146,7 +146,7 @@ final class PublicCardResponse implements BaseModel
     }
 
     /**
-     * @param list<CardAuditResponseShape> $auditHistory
+     * @param list<CardAuditResponse|CardAuditResponseShape> $auditHistory
      */
     public function withAuditHistory(array $auditHistory): self
     {

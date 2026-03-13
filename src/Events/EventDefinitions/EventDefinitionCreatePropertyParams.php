@@ -23,7 +23,7 @@ use HubspotSDK\OptionInput;
  *   type: string,
  *   description?: string|null,
  *   name?: string|null,
- *   options?: list<OptionInputShape>|null,
+ *   options?: list<OptionInput|OptionInputShape>|null,
  * }
  */
 final class EventDefinitionCreatePropertyParams implements BaseModel
@@ -88,7 +88,7 @@ final class EventDefinitionCreatePropertyParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<OptionInputShape>|null $options
+     * @param list<OptionInput|OptionInputShape>|null $options
      */
     public static function with(
         string $label,
@@ -156,7 +156,7 @@ final class EventDefinitionCreatePropertyParams implements BaseModel
     /**
      * A list of available options for the property if it is an enumeration. NOTE: This field is only applicable for enumerated properties.
      *
-     * @param list<OptionInputShape> $options
+     * @param list<OptionInput|OptionInputShape> $options
      */
     public function withOptions(array $options): self
     {

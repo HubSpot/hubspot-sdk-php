@@ -30,7 +30,7 @@ use HubspotSDK\OptionInput;
  *   groupName?: string|null,
  *   hidden?: bool|null,
  *   label?: string|null,
- *   options?: list<OptionInputShape>|null,
+ *   options?: list<OptionInput|OptionInputShape>|null,
  *   type?: null|Type|value-of<Type>,
  * }
  */
@@ -134,7 +134,7 @@ final class PropertyUpdateParams implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param FieldType|value-of<FieldType>|null $fieldType
-     * @param list<OptionInputShape>|null $options
+     * @param list<OptionInput|OptionInputShape>|null $options
      * @param Type|value-of<Type>|null $type
      */
     public static function with(
@@ -269,7 +269,7 @@ final class PropertyUpdateParams implements BaseModel
     /**
      * A list of valid options for the property.
      *
-     * @param list<OptionInputShape> $options
+     * @param list<OptionInput|OptionInputShape> $options
      */
     public function withOptions(array $options): self
     {

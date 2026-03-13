@@ -15,7 +15,7 @@ use HubspotSDK\ForwardPaging;
  * @phpstan-import-type ForwardPagingShape from \HubspotSDK\ForwardPaging
  *
  * @phpstan-type CollectionResponsePublicThreadForwardPagingShape = array{
- *   results: list<PublicThreadShape>,
+ *   results: list<PublicThread|PublicThreadShape>,
  *   paging?: null|ForwardPaging|ForwardPagingShape,
  * }
  */
@@ -55,7 +55,7 @@ final class CollectionResponsePublicThreadForwardPaging implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicThreadShape> $results
+     * @param list<PublicThread|PublicThreadShape> $results
      * @param ForwardPaging|ForwardPagingShape|null $paging
      */
     public static function with(
@@ -72,7 +72,7 @@ final class CollectionResponsePublicThreadForwardPaging implements BaseModel
     }
 
     /**
-     * @param list<PublicThreadShape> $results
+     * @param list<PublicThread|PublicThreadShape> $results
      */
     public function withResults(array $results): self
     {

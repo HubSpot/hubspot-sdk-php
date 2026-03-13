@@ -21,6 +21,9 @@ use HubspotSDK\Crm\Limits\RecordLimitResponse;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\LimitsRawContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class LimitsRawService implements LimitsRawContract
 {
     // @phpstan-ignore-next-line
@@ -37,6 +40,7 @@ final class LimitsRawService implements LimitsRawContract
      * @param array{
      *   fromObjectTypeID?: string, toObjectTypeID?: string
      * }|LimitGetAssociationLabelLimitsParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CollectionResponseAssociationLabelLimitResponseNoPaging>
      *
@@ -44,7 +48,7 @@ final class LimitsRawService implements LimitsRawContract
      */
     public function getAssociationLabelLimits(
         array|LimitGetAssociationLabelLimitsParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = LimitGetAssociationLabelLimitsParams::parseRequest(
             $params,
@@ -76,6 +80,7 @@ final class LimitsRawService implements LimitsRawContract
      * @param array{
      *   fromObjectTypeID: string
      * }|LimitGetAssociationRecordsLimitsByObjectTypeParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<AssociationRecordLimitResponse>
      *
@@ -84,7 +89,7 @@ final class LimitsRawService implements LimitsRawContract
     public function getAssociationRecordsLimitsByObjectType(
         string $toObjectTypeID,
         array|LimitGetAssociationRecordsLimitsByObjectTypeParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = LimitGetAssociationRecordsLimitsByObjectTypeParams::parseRequest(
             $params,
@@ -111,12 +116,14 @@ final class LimitsRawService implements LimitsRawContract
      *
      * Returns objects with records approaching or at association limits
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @return BaseResponse<CollectionResponseObjectTypeNearOrAtAssociationLimitNoPaging,>
      *
      * @throws APIException
      */
     public function getAssociationRecordsLimitsFromObjects(
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -133,6 +140,7 @@ final class LimitsRawService implements LimitsRawContract
      * Returns objects for which the from object has records approaching or at association limits
      *
      * @param string $fromObjectTypeID objectTypeId of the object type on the "from" side of the association
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CollectionResponseObjectTypeNearOrAtAssociationLimitNoPaging,>
      *
@@ -140,7 +148,7 @@ final class LimitsRawService implements LimitsRawContract
      */
     public function getAssociationRecordsLimitsToObjects(
         string $fromObjectTypeID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -156,12 +164,14 @@ final class LimitsRawService implements LimitsRawContract
      *
      * Returns overall limit and per object usage for calculated properties
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @return BaseResponse<CalculatedPropertyLimitResponse>
      *
      * @throws APIException
      */
     public function getCalculatedPropertyLimits(
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -177,12 +187,14 @@ final class LimitsRawService implements LimitsRawContract
      *
      * Returns limits and usage for custom object schemas
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @return BaseResponse<CustomObjectLimitResponse>
      *
      * @throws APIException
      */
     public function getCustomObjectTypeLimits(
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -198,12 +210,14 @@ final class LimitsRawService implements LimitsRawContract
      *
      * Returns limits and usage per object for custom properties
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @return BaseResponse<CustomPropertyLimitResponse>
      *
      * @throws APIException
      */
     public function getCustomPropertyLimits(
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -219,12 +233,14 @@ final class LimitsRawService implements LimitsRawContract
      *
      * Returns limits and usage per object for pipelines
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @return BaseResponse<PipelineLimitResponse>
      *
      * @throws APIException
      */
     public function getPipelineLimits(
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -240,12 +256,14 @@ final class LimitsRawService implements LimitsRawContract
      *
      * Returns limits and usage per object for records
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @return BaseResponse<RecordLimitResponse>
      *
      * @throws APIException
      */
     public function getRecordLimits(
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(

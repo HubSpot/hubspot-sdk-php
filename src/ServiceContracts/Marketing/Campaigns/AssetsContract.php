@@ -8,6 +8,9 @@ use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Marketing\Campaigns\CollectionResponsePublicCampaignAssetForwardPaging;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface AssetsContract
 {
     /**
@@ -17,6 +20,7 @@ interface AssetsContract
      * @param string $campaignGuid Unique identifier for the campaign, formatted as a UUID
      * @param string $assetType The type of asset
      * Important: Currently, only the following asset types are available for association via the API: FORM, OBJECT_LIST, EXTERNAL_WEB_URL
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -24,7 +28,7 @@ interface AssetsContract
         string $assetID,
         string $campaignGuid,
         string $assetType,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): mixed;
 
     /**
@@ -40,6 +44,7 @@ interface AssetsContract
      * Default: 10
      * @param string $startDate Query param: Start date to fetch asset metrics, formatted as YYYY-MM-DD. This date is used to fetch the metrics associated with the assets for a specified period.
      * If not provided, no asset metrics will be fetched.
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -50,7 +55,7 @@ interface AssetsContract
         ?string $endDate = null,
         ?string $limit = null,
         ?string $startDate = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): CollectionResponsePublicCampaignAssetForwardPaging;
 
     /**
@@ -60,6 +65,7 @@ interface AssetsContract
      * @param string $campaignGuid unique identifier for the campaign, formatted as a UUID
      * @param string $assetType The type of asset
      * Important: Currently, only the following asset types are available for disassociation via the API: FORM, OBJECT_LIST, EXTERNAL_WEB_URL
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -67,6 +73,6 @@ interface AssetsContract
         string $assetID,
         string $campaignGuid,
         string $assetType,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): mixed;
 }

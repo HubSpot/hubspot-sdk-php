@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-import-type Property1Shape from \HubspotSDK\Cms\MediaBridge\Property1
  *
  * @phpstan-type CollectionResponsePropertyNoPagingShape = array{
- *   results: list<Property1Shape>
+ *   results: list<Property1|Property1Shape>
  * }
  */
 final class CollectionResponsePropertyNoPaging implements BaseModel
@@ -48,7 +48,7 @@ final class CollectionResponsePropertyNoPaging implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<Property1Shape> $results
+     * @param list<Property1|Property1Shape> $results
      */
     public static function with(array $results): self
     {
@@ -60,7 +60,7 @@ final class CollectionResponsePropertyNoPaging implements BaseModel
     }
 
     /**
-     * @param list<Property1Shape> $results
+     * @param list<Property1|Property1Shape> $results
      */
     public function withResults(array $results): self
     {

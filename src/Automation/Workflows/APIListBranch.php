@@ -17,6 +17,7 @@ use HubspotSDK\PublicRestrictedFilterBranch;
 use HubspotSDK\PublicUnifiedEventsFilterBranch;
 
 /**
+ * @phpstan-import-type FilterBranchVariants from \HubspotSDK\Automation\Workflows\APIListBranch\FilterBranch
  * @phpstan-import-type APIConnectionShape from \HubspotSDK\Automation\Workflows\APIConnection
  * @phpstan-import-type FilterBranchShape from \HubspotSDK\Automation\Workflows\APIListBranch\FilterBranch
  *
@@ -37,6 +38,7 @@ final class APIListBranch implements BaseModel
     #[Optional]
     public ?APIConnection $connection;
 
+    /** @var FilterBranchVariants|null $filterBranch */
     #[Optional]
     public PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch|null $filterBranch;
 

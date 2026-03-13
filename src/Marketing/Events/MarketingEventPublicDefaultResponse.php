@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-type MarketingEventPublicDefaultResponseShape = array{
  *   id: string,
  *   createdAt: \DateTimeInterface,
- *   customProperties: list<PropertyValueShape>,
+ *   customProperties: list<PropertyValue|PropertyValueShape>,
  *   eventName: string,
  *   eventOrganizer: string,
  *   updatedAt: \DateTimeInterface,
@@ -143,7 +143,7 @@ final class MarketingEventPublicDefaultResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PropertyValueShape> $customProperties
+     * @param list<PropertyValue|PropertyValueShape> $customProperties
      */
     public static function with(
         string $id,
@@ -202,7 +202,7 @@ final class MarketingEventPublicDefaultResponse implements BaseModel
      * A list of PropertyValues. These can be whatever kind of property names and values you want. However, they must already exist on the HubSpot account's definition of the MarketingEvent Object. If they don't they will be filtered out and not set.
      * In order to do this you'll need to create a new PropertyGroup on the HubSpot account's MarketingEvent object for your specific app and create the Custom Property you want to track on that HubSpot account. Do not create any new default properties on the MarketingEvent object as that will apply to all HubSpot accounts.
      *
-     * @param list<PropertyValueShape> $customProperties
+     * @param list<PropertyValue|PropertyValueShape> $customProperties
      */
     public function withCustomProperties(array $customProperties): self
     {

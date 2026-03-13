@@ -23,7 +23,7 @@ use HubspotSDK\Settings\Users\PublicTeam;
  *   email?: string|null,
  *   firstName?: string|null,
  *   lastName?: string|null,
- *   teams?: list<PublicTeamShape>|null,
+ *   teams?: list<\HubspotSDK\Settings\Users\PublicTeam|PublicTeamShape>|null,
  *   userID?: int|null,
  *   userIDIncludingInactive?: int|null,
  * }
@@ -131,7 +131,7 @@ final class PublicOwner implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param Type|value-of<Type> $type
-     * @param list<PublicTeamShape>|null $teams
+     * @param list<PublicTeam|PublicTeamShape>|null $teams
      */
     public static function with(
         string $id,
@@ -255,7 +255,7 @@ final class PublicOwner implements BaseModel
     }
 
     /**
-     * @param list<PublicTeamShape> $teams
+     * @param list<PublicTeam|PublicTeamShape> $teams
      */
     public function withTeams(array $teams): self
     {

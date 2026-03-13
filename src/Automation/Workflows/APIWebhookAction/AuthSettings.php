@@ -14,7 +14,8 @@ use HubspotSDK\Core\Conversion\Contracts\ConverterSource;
  * @phpstan-import-type APIAuthKeyWebhookAuthSettingsShape from \HubspotSDK\Automation\Workflows\APIAuthKeyWebhookAuthSettings
  * @phpstan-import-type APISignatureWebhookAuthSettingsShape from \HubspotSDK\Automation\Workflows\APISignatureWebhookAuthSettings
  *
- * @phpstan-type AuthSettingsShape = APIAuthKeyWebhookAuthSettingsShape|APISignatureWebhookAuthSettingsShape
+ * @phpstan-type AuthSettingsVariants = APIAuthKeyWebhookAuthSettings|APISignatureWebhookAuthSettings
+ * @phpstan-type AuthSettingsShape = AuthSettingsVariants|APIAuthKeyWebhookAuthSettingsShape|APISignatureWebhookAuthSettingsShape
  */
 final class AuthSettings implements ConverterSource
 {

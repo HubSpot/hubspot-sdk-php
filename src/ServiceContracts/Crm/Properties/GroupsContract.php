@@ -10,10 +10,15 @@ use HubspotSDK\Crm\Properties\CreatedResponsePropertyGroup;
 use HubspotSDK\Crm\Properties\PropertyGroup;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface GroupsContract
 {
     /**
      * @api
+     *
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -22,16 +27,17 @@ interface GroupsContract
         string $label,
         string $name,
         ?int $displayOrder = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): CreatedResponsePropertyGroup;
 
     /**
      * @api
      *
-     * @param string $groupName Path param:
-     * @param string $objectType Path param:
-     * @param int $displayOrder Body param:
-     * @param string $label Body param:
+     * @param string $groupName Path param
+     * @param string $objectType Path param
+     * @param int $displayOrder Body param
+     * @param string $label Body param
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -40,37 +46,42 @@ interface GroupsContract
         string $objectType,
         ?int $displayOrder = null,
         ?string $label = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): PropertyGroup;
 
     /**
      * @api
+     *
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function list(
         string $objectType,
         ?string $locale = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): CollectionResponsePropertyGroup;
 
     /**
      * @api
+     *
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function delete(
         string $groupName,
         string $objectType,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): mixed;
 
     /**
      * @api
      *
-     * @param string $groupName Path param:
-     * @param string $objectType Path param:
-     * @param string $locale Query param:
+     * @param string $groupName Path param
+     * @param string $objectType Path param
+     * @param string $locale Query param
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -78,6 +89,6 @@ interface GroupsContract
         string $groupName,
         string $objectType,
         ?string $locale = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): PropertyGroup;
 }

@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-import-type PortalFlagStateResponseShape from \HubspotSDK\Crm\FeatureFlags\PortalFlagStateResponse
  *
  * @phpstan-type PortalFlagStateBatchResponseShape = array{
- *   portalFlagStates: list<PortalFlagStateResponseShape>
+ *   portalFlagStates: list<PortalFlagStateResponse|PortalFlagStateResponseShape>
  * }
  */
 final class PortalFlagStateBatchResponse implements BaseModel
@@ -48,7 +48,7 @@ final class PortalFlagStateBatchResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PortalFlagStateResponseShape> $portalFlagStates
+     * @param list<PortalFlagStateResponse|PortalFlagStateResponseShape> $portalFlagStates
      */
     public static function with(array $portalFlagStates): self
     {
@@ -60,7 +60,7 @@ final class PortalFlagStateBatchResponse implements BaseModel
     }
 
     /**
-     * @param list<PortalFlagStateResponseShape> $portalFlagStates
+     * @param list<PortalFlagStateResponse|PortalFlagStateResponseShape> $portalFlagStates
      */
     public function withPortalFlagStates(array $portalFlagStates): self
     {

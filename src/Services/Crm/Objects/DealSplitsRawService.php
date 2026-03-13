@@ -10,10 +10,16 @@ use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\Objects\DealSplits\BatchResponseDealToDealSplits;
 use HubspotSDK\Crm\Objects\DealSplits\DealSplitBatchReadParams;
 use HubspotSDK\Crm\Objects\DealSplits\DealSplitBatchUpsertParams;
+use HubspotSDK\Crm\Objects\DealSplits\PublicDealSplitsCreateRequest;
 use HubspotSDK\PublicObjectID;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Objects\DealSplitsRawContract;
 
+/**
+ * @phpstan-import-type PublicObjectIDShape from \HubspotSDK\PublicObjectID
+ * @phpstan-import-type PublicDealSplitsCreateRequestShape from \HubspotSDK\Crm\Objects\DealSplits\PublicDealSplitsCreateRequest
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class DealSplitsRawService implements DealSplitsRawContract
 {
     // @phpstan-ignore-next-line
@@ -28,8 +34,9 @@ final class DealSplitsRawService implements DealSplitsRawContract
      * Read a batch of deal split objects by their associated deal object internal ID
      *
      * @param array{
-     *   inputs: list<array{id: string}|PublicObjectID>
+     *   inputs: list<PublicObjectID|PublicObjectIDShape>
      * }|DealSplitBatchReadParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BatchResponseDealToDealSplits>
      *
@@ -37,7 +44,7 @@ final class DealSplitsRawService implements DealSplitsRawContract
      */
     public function batchRead(
         array|DealSplitBatchReadParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = DealSplitBatchReadParams::parseRequest(
             $params,
@@ -60,8 +67,9 @@ final class DealSplitsRawService implements DealSplitsRawContract
      * Create or replace deal splits for deals with the provided IDs. Deal split percentages for each deal must sum up to 1.0 (100%) and may have up to 8 decimal places
      *
      * @param array{
-     *   inputs: list<array{id: int, splits: list<array<string,mixed>>}>
+     *   inputs: list<PublicDealSplitsCreateRequest|PublicDealSplitsCreateRequestShape>
      * }|DealSplitBatchUpsertParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BatchResponseDealToDealSplits>
      *
@@ -69,7 +77,7 @@ final class DealSplitsRawService implements DealSplitsRawContract
      */
     public function batchUpsert(
         array|DealSplitBatchUpsertParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = DealSplitBatchUpsertParams::parseRequest(
             $params,

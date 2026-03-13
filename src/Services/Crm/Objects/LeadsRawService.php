@@ -4,24 +4,29 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Services\Crm\Objects;
 
-use HubspotSDK\AssociationSpec;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\Crm\CreatedResponseSimplePublicObject;
+use HubspotSDK\Crm\FilterGroup;
 use HubspotSDK\Crm\Objects\Leads\LeadCreateParams;
 use HubspotSDK\Crm\Objects\Leads\LeadGetParams;
 use HubspotSDK\Crm\Objects\Leads\LeadListParams;
 use HubspotSDK\Crm\Objects\Leads\LeadSearchParams;
 use HubspotSDK\Crm\Objects\Leads\LeadUpdateParams;
+use HubspotSDK\Crm\PublicAssociationsForObject;
 use HubspotSDK\Crm\SimplePublicObject;
 use HubspotSDK\Crm\SimplePublicObjectWithAssociations;
 use HubspotSDK\Page;
-use HubspotSDK\PublicObjectID;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Objects\LeadsRawContract;
 
+/**
+ * @phpstan-import-type PublicAssociationsForObjectShape from \HubspotSDK\Crm\PublicAssociationsForObject
+ * @phpstan-import-type FilterGroupShape from \HubspotSDK\Crm\FilterGroup
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class LeadsRawService implements LeadsRawContract
 {
     // @phpstan-ignore-next-line
@@ -36,12 +41,10 @@ final class LeadsRawService implements LeadsRawContract
      * Create a lead with the given properties and return a copy of the object, including the ID. Documentation and examples for creating standard leads is provided.
      *
      * @param array{
-     *   associations: list<array{
-     *     to: array<string,mixed>|PublicObjectID,
-     *     types: list<array<string,mixed>|AssociationSpec>,
-     *   }>,
+     *   associations: list<PublicAssociationsForObject|PublicAssociationsForObjectShape>,
      *   properties: array<string,string>,
      * }|LeadCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CreatedResponseSimplePublicObject>
      *
@@ -49,7 +52,7 @@ final class LeadsRawService implements LeadsRawContract
      */
     public function create(
         array|LeadCreateParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = LeadCreateParams::parseRequest(
             $params,
@@ -71,10 +74,11 @@ final class LeadsRawService implements LeadsRawContract
      *
      * Perform a partial update of an Object identified by `{leadsId}`or optionally a unique property value as specified by the `idProperty` query param. `{leadsId}` refers to the internal object ID by default, and the `idProperty` query param refers to a property whose values are unique for the object. Provided property values will be overwritten. Read-only and non-existent properties will result in an error. Properties values can be cleared by passing an empty string.
      *
-     * @param string $leadsID Path param:
+     * @param string $leadsID Path param
      * @param array{
      *   properties: array<string,string>, idProperty?: string
      * }|LeadUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SimplePublicObject>
      *
@@ -83,7 +87,7 @@ final class LeadsRawService implements LeadsRawContract
     public function update(
         string $leadsID,
         array|LeadUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = LeadUpdateParams::parseRequest(
             $params,
@@ -115,6 +119,7 @@ final class LeadsRawService implements LeadsRawContract
      *   properties?: list<string>,
      *   propertiesWithHistory?: list<string>,
      * }|LeadListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<SimplePublicObjectWithAssociations>>
      *
@@ -122,7 +127,7 @@ final class LeadsRawService implements LeadsRawContract
      */
     public function list(
         array|LeadListParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = LeadListParams::parseRequest(
             $params,
@@ -145,13 +150,15 @@ final class LeadsRawService implements LeadsRawContract
      *
      * Move an Object identified by `{leadsId}` to the recycling bin.
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @return BaseResponse<mixed>
      *
      * @throws APIException
      */
     public function delete(
         string $leadsID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -174,6 +181,7 @@ final class LeadsRawService implements LeadsRawContract
      *   properties?: list<string>,
      *   propertiesWithHistory?: list<string>,
      * }|LeadGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SimplePublicObjectWithAssociations>
      *
@@ -182,7 +190,7 @@ final class LeadsRawService implements LeadsRawContract
     public function get(
         string $leadsID,
         array|LeadGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = LeadGetParams::parseRequest(
             $params,
@@ -204,12 +212,13 @@ final class LeadsRawService implements LeadsRawContract
      *
      * @param array{
      *   after: string,
-     *   filterGroups: list<array{filters: list<array<string,mixed>>}>,
+     *   filterGroups: list<FilterGroup|FilterGroupShape>,
      *   limit: int,
      *   properties: list<string>,
      *   sorts: list<string>,
      *   query?: string,
      * }|LeadSearchParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CollectionResponseWithTotalSimplePublicObject>
      *
@@ -217,7 +226,7 @@ final class LeadsRawService implements LeadsRawContract
      */
     public function search(
         array|LeadSearchParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = LeadSearchParams::parseRequest(
             $params,

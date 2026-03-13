@@ -10,6 +10,9 @@ use HubspotSDK\Crm\Associations\V4\ReportCreationResponse;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Associations\V4\ReportContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class ReportService implements ReportContract
 {
     /**
@@ -31,12 +34,13 @@ final class ReportService implements ReportContract
      * Requests a report of all objects in the portal which have a high usage of associations
      *
      * @param int $userID The user for the report
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function requestHighUsageReport(
         int $userID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): ReportCreationResponse {
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->requestHighUsageReport($userID, requestOptions: $requestOptions);

@@ -4,24 +4,29 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Services\Crm\Objects;
 
-use HubspotSDK\AssociationSpec;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\Crm\CreatedResponseSimplePublicObject;
+use HubspotSDK\Crm\FilterGroup;
 use HubspotSDK\Crm\Objects\Discounts\DiscountCreateParams;
 use HubspotSDK\Crm\Objects\Discounts\DiscountGetParams;
 use HubspotSDK\Crm\Objects\Discounts\DiscountListParams;
 use HubspotSDK\Crm\Objects\Discounts\DiscountSearchParams;
 use HubspotSDK\Crm\Objects\Discounts\DiscountUpdateParams;
+use HubspotSDK\Crm\PublicAssociationsForObject;
 use HubspotSDK\Crm\SimplePublicObject;
 use HubspotSDK\Crm\SimplePublicObjectWithAssociations;
 use HubspotSDK\Page;
-use HubspotSDK\PublicObjectID;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Objects\DiscountsRawContract;
 
+/**
+ * @phpstan-import-type PublicAssociationsForObjectShape from \HubspotSDK\Crm\PublicAssociationsForObject
+ * @phpstan-import-type FilterGroupShape from \HubspotSDK\Crm\FilterGroup
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class DiscountsRawService implements DiscountsRawContract
 {
     // @phpstan-ignore-next-line
@@ -36,12 +41,10 @@ final class DiscountsRawService implements DiscountsRawContract
      * Create a discount with the given properties and return a copy of the object, including the ID. Documentation and examples for creating standard discounts is provided.
      *
      * @param array{
-     *   associations: list<array{
-     *     to: array<string,mixed>|PublicObjectID,
-     *     types: list<array<string,mixed>|AssociationSpec>,
-     *   }>,
+     *   associations: list<PublicAssociationsForObject|PublicAssociationsForObjectShape>,
      *   properties: array<string,string>,
      * }|DiscountCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CreatedResponseSimplePublicObject>
      *
@@ -49,7 +52,7 @@ final class DiscountsRawService implements DiscountsRawContract
      */
     public function create(
         array|DiscountCreateParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = DiscountCreateParams::parseRequest(
             $params,
@@ -71,10 +74,11 @@ final class DiscountsRawService implements DiscountsRawContract
      *
      * Perform a partial update of an Object identified by `{discountId}`or optionally a unique property value as specified by the `idProperty` query param. `{discountId}` refers to the internal object ID by default, and the `idProperty` query param refers to a property whose values are unique for the object. Provided property values will be overwritten. Read-only and non-existent properties will result in an error. Properties values can be cleared by passing an empty string.
      *
-     * @param string $discountID Path param:
+     * @param string $discountID Path param
      * @param array{
      *   properties: array<string,string>, idProperty?: string
      * }|DiscountUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SimplePublicObject>
      *
@@ -83,7 +87,7 @@ final class DiscountsRawService implements DiscountsRawContract
     public function update(
         string $discountID,
         array|DiscountUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = DiscountUpdateParams::parseRequest(
             $params,
@@ -115,6 +119,7 @@ final class DiscountsRawService implements DiscountsRawContract
      *   properties?: list<string>,
      *   propertiesWithHistory?: list<string>,
      * }|DiscountListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<SimplePublicObjectWithAssociations>>
      *
@@ -122,7 +127,7 @@ final class DiscountsRawService implements DiscountsRawContract
      */
     public function list(
         array|DiscountListParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = DiscountListParams::parseRequest(
             $params,
@@ -145,13 +150,15 @@ final class DiscountsRawService implements DiscountsRawContract
      *
      * Move an Object identified by `{discountId}` to the recycling bin.
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @return BaseResponse<mixed>
      *
      * @throws APIException
      */
     public function delete(
         string $discountID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -174,6 +181,7 @@ final class DiscountsRawService implements DiscountsRawContract
      *   properties?: list<string>,
      *   propertiesWithHistory?: list<string>,
      * }|DiscountGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SimplePublicObjectWithAssociations>
      *
@@ -182,7 +190,7 @@ final class DiscountsRawService implements DiscountsRawContract
     public function get(
         string $discountID,
         array|DiscountGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = DiscountGetParams::parseRequest(
             $params,
@@ -204,12 +212,13 @@ final class DiscountsRawService implements DiscountsRawContract
      *
      * @param array{
      *   after: string,
-     *   filterGroups: list<array{filters: list<array<string,mixed>>}>,
+     *   filterGroups: list<FilterGroup|FilterGroupShape>,
      *   limit: int,
      *   properties: list<string>,
      *   sorts: list<string>,
      *   query?: string,
      * }|DiscountSearchParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CollectionResponseWithTotalSimplePublicObject>
      *
@@ -217,7 +226,7 @@ final class DiscountsRawService implements DiscountsRawContract
      */
     public function search(
         array|DiscountSearchParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = DiscountSearchParams::parseRequest(
             $params,

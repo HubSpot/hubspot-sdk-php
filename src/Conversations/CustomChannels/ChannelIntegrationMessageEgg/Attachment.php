@@ -24,7 +24,8 @@ use HubspotSDK\Core\Conversion\Contracts\ConverterSource;
  * @phpstan-import-type QuickRepliesAttachmentShape from \HubspotSDK\Conversations\CustomChannels\QuickRepliesAttachment
  * @phpstan-import-type SocialMetadataIntegrationAttachmentShape from \HubspotSDK\Conversations\CustomChannels\SocialMetadataIntegrationAttachment
  *
- * @phpstan-type AttachmentShape = FileAttachmentShape|LocationAttachmentShape|ContactAttachmentShape|UnsupportedContentAttachmentShape|MessageHeaderAttachmentShape|QuickRepliesAttachmentShape|SocialMetadataIntegrationAttachmentShape
+ * @phpstan-type AttachmentVariants = FileAttachment|LocationAttachment|ContactAttachment|UnsupportedContentAttachment|MessageHeaderAttachment|QuickRepliesAttachment|SocialMetadataIntegrationAttachment
+ * @phpstan-type AttachmentShape = AttachmentVariants|FileAttachmentShape|LocationAttachmentShape|ContactAttachmentShape|UnsupportedContentAttachmentShape|MessageHeaderAttachmentShape|QuickRepliesAttachmentShape|SocialMetadataIntegrationAttachmentShape
  */
 final class Attachment implements ConverterSource
 {

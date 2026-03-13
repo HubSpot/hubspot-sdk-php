@@ -14,12 +14,16 @@ use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface EventsRawContract
 {
     /**
      * @api
      *
      * @param array<string,mixed>|EventCreateAttentionSpanEventParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<AttentionSpanEvent>
      *
@@ -27,13 +31,14 @@ interface EventsRawContract
      */
     public function createAttentionSpanEvent(
         array|EventCreateAttentionSpanEventParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|EventCreateMediaPlayedEventParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<MediaPlayedEvent>
      *
@@ -41,13 +46,14 @@ interface EventsRawContract
      */
     public function createMediaPlayedEvent(
         array|EventCreateMediaPlayedEventParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|EventCreateMediaPlayedPercentEventParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<MediaPlayedPercentageEvent>
      *
@@ -55,6 +61,6 @@ interface EventsRawContract
      */
     public function createMediaPlayedPercentEvent(
         array|EventCreateMediaPlayedPercentEventParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

@@ -12,6 +12,9 @@ use HubspotSDK\Crm\Lists\PublicMigrationMapping;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Lists\MappingContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class MappingService implements MappingContract
 {
     /**
@@ -33,12 +36,13 @@ final class MappingService implements MappingContract
      * This API allows translation of a batch of legacy list id's to list id's. This allows for a maximum of 10,000 id's. This is a temporary API allowed for mapping old id's to new id's and will expire on May 30th, 2025.
      *
      * @param list<string> $body
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function batchCreateIDMapping(
         array $body,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): PublicBatchMigrationMapping {
         $params = Util::removeNulls(['body' => $body]);
 
@@ -54,12 +58,13 @@ final class MappingService implements MappingContract
      * This API allows translation of legacy list id to list id. This is a temporary API allowed for mapping old id's to new id's and will expire on May 30th, 2025.
      *
      * @param string $legacyListID the legacy list id from lists v1 API
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function getIDMapping(
         ?string $legacyListID = null,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): PublicMigrationMapping {
         $params = Util::removeNulls(['legacyListID' => $legacyListID]);
 

@@ -18,7 +18,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   id: string,
  *   name: string,
  *   objectType: string,
- *   tokens: list<TimelineEventTemplateTokenShape>,
+ *   tokens: list<TimelineEventTemplateToken|TimelineEventTemplateTokenShape>,
  *   createdAt?: \DateTimeInterface|null,
  *   detailTemplate?: string|null,
  *   headerTemplate?: string|null,
@@ -108,7 +108,7 @@ final class TimelineEventTemplate implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<TimelineEventTemplateTokenShape> $tokens
+     * @param list<TimelineEventTemplateToken|TimelineEventTemplateTokenShape> $tokens
      */
     public static function with(
         string $id,
@@ -171,7 +171,7 @@ final class TimelineEventTemplate implements BaseModel
     /**
      * A collection of tokens that can be used as custom properties on the event and to create fully fledged CRM objects.
      *
-     * @param list<TimelineEventTemplateTokenShape> $tokens
+     * @param list<TimelineEventTemplateToken|TimelineEventTemplateTokenShape> $tokens
      */
     public function withTokens(array $tokens): self
     {

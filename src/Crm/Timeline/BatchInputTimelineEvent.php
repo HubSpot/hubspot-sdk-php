@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-import-type TimelineEventShape from \HubspotSDK\Crm\Timeline\TimelineEvent
  *
  * @phpstan-type BatchInputTimelineEventShape = array{
- *   inputs: list<TimelineEventShape>
+ *   inputs: list<TimelineEvent|TimelineEventShape>
  * }
  */
 final class BatchInputTimelineEvent implements BaseModel
@@ -54,7 +54,7 @@ final class BatchInputTimelineEvent implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<TimelineEventShape> $inputs
+     * @param list<TimelineEvent|TimelineEventShape> $inputs
      */
     public static function with(array $inputs): self
     {
@@ -68,7 +68,7 @@ final class BatchInputTimelineEvent implements BaseModel
     /**
      * A collection of timeline events we want to create.
      *
-     * @param list<TimelineEventShape> $inputs
+     * @param list<TimelineEvent|TimelineEventShape> $inputs
      */
     public function withInputs(array $inputs): self
     {

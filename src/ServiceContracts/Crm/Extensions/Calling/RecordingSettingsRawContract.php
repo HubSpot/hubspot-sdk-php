@@ -12,12 +12,16 @@ use HubspotSDK\Crm\Extensions\Calling\RecordingSettings\RecordingSettingUpdatePa
 use HubspotSDK\Crm\Extensions\Calling\RecordingSettingsResponse;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface RecordingSettingsRawContract
 {
     /**
      * @api
      *
      * @param array<string,mixed>|RecordingSettingCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<RecordingSettingsResponse>
      *
@@ -26,13 +30,14 @@ interface RecordingSettingsRawContract
     public function create(
         int $appID,
         array|RecordingSettingCreateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|RecordingSettingUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<RecordingSettingsResponse>
      *
@@ -41,11 +46,13 @@ interface RecordingSettingsRawContract
     public function update(
         int $appID,
         array|RecordingSettingUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
+     *
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<RecordingSettingsResponse>
      *
@@ -53,13 +60,14 @@ interface RecordingSettingsRawContract
      */
     public function get(
         int $appID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|RecordingSettingMarkReadyParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -67,6 +75,6 @@ interface RecordingSettingsRawContract
      */
     public function markReady(
         array|RecordingSettingMarkReadyParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

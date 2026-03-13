@@ -13,7 +13,8 @@ use HubspotSDK\PublicObjectID;
  * @phpstan-import-type PublicObjectIDShape from \HubspotSDK\PublicObjectID
  *
  * @phpstan-type PublicAssociationMultiArchiveShape = array{
- *   from: PublicObjectID|PublicObjectIDShape, to: list<PublicObjectIDShape>
+ *   from: PublicObjectID|PublicObjectIDShape,
+ *   to: list<PublicObjectID|PublicObjectIDShape>,
  * }
  */
 final class PublicAssociationMultiArchive implements BaseModel
@@ -53,7 +54,7 @@ final class PublicAssociationMultiArchive implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param PublicObjectID|PublicObjectIDShape $from
-     * @param list<PublicObjectIDShape> $to
+     * @param list<PublicObjectID|PublicObjectIDShape> $to
      */
     public static function with(PublicObjectID|array $from, array $to): self
     {
@@ -77,7 +78,7 @@ final class PublicAssociationMultiArchive implements BaseModel
     }
 
     /**
-     * @param list<PublicObjectIDShape> $to
+     * @param list<PublicObjectID|PublicObjectIDShape> $to
      */
     public function withTo(array $to): self
     {

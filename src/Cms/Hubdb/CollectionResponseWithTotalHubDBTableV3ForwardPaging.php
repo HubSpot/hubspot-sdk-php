@@ -15,7 +15,7 @@ use HubspotSDK\ForwardPaging;
  * @phpstan-import-type ForwardPagingShape from \HubspotSDK\ForwardPaging
  *
  * @phpstan-type CollectionResponseWithTotalHubDBTableV3ForwardPagingShape = array{
- *   results: list<HubDBTableV3Shape>,
+ *   results: list<HubDBTableV3|HubDBTableV3Shape>,
  *   total: int,
  *   paging?: null|ForwardPaging|ForwardPagingShape,
  * }
@@ -63,7 +63,7 @@ final class CollectionResponseWithTotalHubDBTableV3ForwardPaging implements Base
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<HubDBTableV3Shape> $results
+     * @param list<HubDBTableV3|HubDBTableV3Shape> $results
      * @param ForwardPaging|ForwardPagingShape|null $paging
      */
     public static function with(
@@ -82,7 +82,7 @@ final class CollectionResponseWithTotalHubDBTableV3ForwardPaging implements Base
     }
 
     /**
-     * @param list<HubDBTableV3Shape> $results
+     * @param list<HubDBTableV3|HubDBTableV3Shape> $results
      */
     public function withResults(array $results): self
     {

@@ -13,12 +13,19 @@ use HubspotSDK\Events\EventDefinitions\EventDefinitionDeletePropertyParams;
 use HubspotSDK\Events\EventDefinitions\EventDefinitionListParams;
 use HubspotSDK\Events\EventDefinitions\EventDefinitionUpdateParams;
 use HubspotSDK\Events\EventDefinitions\EventDefinitionUpdatePropertyParams;
+use HubspotSDK\Events\EventDefinitions\ExternalBehavioralEventPropertyCreate;
 use HubspotSDK\Events\EventDefinitions\ExternalBehavioralEventTypeDefinition;
+use HubspotSDK\OptionInput;
 use HubspotSDK\Page;
 use HubspotSDK\Property;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Events\EventDefinitionsRawContract;
 
+/**
+ * @phpstan-import-type ExternalBehavioralEventPropertyCreateShape from \HubspotSDK\Events\EventDefinitions\ExternalBehavioralEventPropertyCreate
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type OptionInputShape from \HubspotSDK\OptionInput
+ */
 final class EventDefinitionsRawService implements EventDefinitionsRawContract
 {
     // @phpstan-ignore-next-line
@@ -34,17 +41,12 @@ final class EventDefinitionsRawService implements EventDefinitionsRawContract
      *
      * @param array{
      *   label: string,
-     *   propertyDefinitions: list<array{
-     *     label: string,
-     *     type: string,
-     *     description?: string,
-     *     name?: string,
-     *     options?: list<array<string,mixed>>,
-     *   }>,
+     *   propertyDefinitions: list<ExternalBehavioralEventPropertyCreate|ExternalBehavioralEventPropertyCreateShape>,
      *   description?: string,
      *   name?: string,
      *   primaryObject?: string,
      * }|EventDefinitionCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ExternalBehavioralEventTypeDefinition>
      *
@@ -52,7 +54,7 @@ final class EventDefinitionsRawService implements EventDefinitionsRawContract
      */
     public function create(
         array|EventDefinitionCreateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = EventDefinitionCreateParams::parseRequest(
             $params,
@@ -78,6 +80,7 @@ final class EventDefinitionsRawService implements EventDefinitionsRawContract
      * @param array{
      *   description?: string, label?: string
      * }|EventDefinitionUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ExternalBehavioralEventTypeDefinition>
      *
@@ -86,7 +89,7 @@ final class EventDefinitionsRawService implements EventDefinitionsRawContract
     public function update(
         string $eventName,
         array|EventDefinitionUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = EventDefinitionUpdateParams::parseRequest(
             $params,
@@ -115,6 +118,7 @@ final class EventDefinitionsRawService implements EventDefinitionsRawContract
      *   searchString?: string,
      *   sortOrder?: string,
      * }|EventDefinitionListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<ExternalBehavioralEventTypeDefinition>>
      *
@@ -122,7 +126,7 @@ final class EventDefinitionsRawService implements EventDefinitionsRawContract
      */
     public function list(
         array|EventDefinitionListParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = EventDefinitionListParams::parseRequest(
             $params,
@@ -146,6 +150,7 @@ final class EventDefinitionsRawService implements EventDefinitionsRawContract
      * Delete a custom event definition by name.
      *
      * @param string $eventName the name of the event definition
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -153,7 +158,7 @@ final class EventDefinitionsRawService implements EventDefinitionsRawContract
      */
     public function delete(
         string $eventName,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -175,14 +180,9 @@ final class EventDefinitionsRawService implements EventDefinitionsRawContract
      *   type: string,
      *   description?: string,
      *   name?: string,
-     *   options?: list<array{
-     *     displayOrder: int,
-     *     hidden: bool,
-     *     label: string,
-     *     value: string,
-     *     description?: string,
-     *   }>,
+     *   options?: list<OptionInput|OptionInputShape>,
      * }|EventDefinitionCreatePropertyParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Property>
      *
@@ -191,7 +191,7 @@ final class EventDefinitionsRawService implements EventDefinitionsRawContract
     public function createProperty(
         string $eventName,
         array|EventDefinitionCreatePropertyParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = EventDefinitionCreatePropertyParams::parseRequest(
             $params,
@@ -215,6 +215,7 @@ final class EventDefinitionsRawService implements EventDefinitionsRawContract
      *
      * @param string $propertyName the internal name of the property to delete
      * @param array{eventName: string}|EventDefinitionDeletePropertyParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -223,7 +224,7 @@ final class EventDefinitionsRawService implements EventDefinitionsRawContract
     public function deleteProperty(
         string $propertyName,
         array|EventDefinitionDeletePropertyParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = EventDefinitionDeletePropertyParams::parseRequest(
             $params,
@@ -251,6 +252,7 @@ final class EventDefinitionsRawService implements EventDefinitionsRawContract
      * Fetch a single custom event definition by name.
      *
      * @param string $eventName the internal name of the custom event
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ExternalBehavioralEventTypeDefinition>
      *
@@ -258,7 +260,7 @@ final class EventDefinitionsRawService implements EventDefinitionsRawContract
      */
     public function get(
         string $eventName,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -279,14 +281,9 @@ final class EventDefinitionsRawService implements EventDefinitionsRawContract
      *   eventName: string,
      *   description?: string,
      *   label?: string,
-     *   options?: list<array{
-     *     displayOrder: int,
-     *     hidden: bool,
-     *     label: string,
-     *     value: string,
-     *     description?: string,
-     *   }>,
+     *   options?: list<OptionInput|OptionInputShape>,
      * }|EventDefinitionUpdatePropertyParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Property>
      *
@@ -295,7 +292,7 @@ final class EventDefinitionsRawService implements EventDefinitionsRawContract
     public function updateProperty(
         string $propertyName,
         array|EventDefinitionUpdatePropertyParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = EventDefinitionUpdatePropertyParams::parseRequest(
             $params,

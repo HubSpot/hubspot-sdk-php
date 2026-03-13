@@ -11,6 +11,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type InputValueVariants from \HubspotSDK\Automation\Workflows\APIStaticBranchAction\InputValue
  * @phpstan-import-type InputValueShape from \HubspotSDK\Automation\Workflows\APIStaticBranchAction\InputValue
  * @phpstan-import-type APIStaticBranchShape from \HubspotSDK\Automation\Workflows\APIStaticBranch
  * @phpstan-import-type APIConnectionShape from \HubspotSDK\Automation\Workflows\APIConnection
@@ -18,7 +19,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-type APIStaticBranchActionShape = array{
  *   actionID: string,
  *   inputValue: InputValueShape,
- *   staticBranches: list<APIStaticBranchShape>,
+ *   staticBranches: list<APIStaticBranch|APIStaticBranchShape>,
  *   type: Type|value-of<Type>,
  *   defaultBranch?: null|APIConnection|APIConnectionShape,
  *   defaultBranchName?: string|null,
@@ -32,6 +33,7 @@ final class APIStaticBranchAction implements BaseModel
     #[Required('actionId')]
     public string $actionID;
 
+    /** @var InputValueVariants $inputValue */
     #[Required]
     public APIActionDataValue|APIObjectPropertyValue|APIStaticValue|APIRelativeDateTimeValue|APITimestampValue|APIIncrementValue|APIFetchedObjectPropertyValue|APIAppendObjectPropertyValue|APIStaticAppendValue|APIEnrollmentEventPropertyValue $inputValue;
 
@@ -80,7 +82,7 @@ final class APIStaticBranchAction implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param InputValueShape $inputValue
-     * @param list<APIStaticBranchShape> $staticBranches
+     * @param list<APIStaticBranch|APIStaticBranchShape> $staticBranches
      * @param Type|value-of<Type> $type
      * @param APIConnection|APIConnectionShape|null $defaultBranch
      */
@@ -126,7 +128,7 @@ final class APIStaticBranchAction implements BaseModel
     }
 
     /**
-     * @param list<APIStaticBranchShape> $staticBranches
+     * @param list<APIStaticBranch|APIStaticBranchShape> $staticBranches
      */
     public function withStaticBranches(array $staticBranches): self
     {

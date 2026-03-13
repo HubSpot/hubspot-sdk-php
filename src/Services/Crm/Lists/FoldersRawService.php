@@ -18,6 +18,9 @@ use HubspotSDK\Crm\Lists\ListFolderFetchResponse;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Lists\FoldersRawContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class FoldersRawService implements FoldersRawContract
 {
     // @phpstan-ignore-next-line
@@ -32,6 +35,7 @@ final class FoldersRawService implements FoldersRawContract
      * Creates a folder with the given information.
      *
      * @param array{name: string, parentFolderID?: string}|FolderCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ListFolderCreateResponse>
      *
@@ -39,7 +43,7 @@ final class FoldersRawService implements FoldersRawContract
      */
     public function create(
         array|FolderCreateParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = FolderCreateParams::parseRequest(
             $params,
@@ -62,6 +66,7 @@ final class FoldersRawService implements FoldersRawContract
      * Deletes the folder with the given Id.
      *
      * @param string $folderID The ID of the folder to delete
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -69,7 +74,7 @@ final class FoldersRawService implements FoldersRawContract
      */
     public function delete(
         string $folderID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -86,6 +91,7 @@ final class FoldersRawService implements FoldersRawContract
      * Retrieves a folder and recursively includes all folders via the childNodes attribute.  The child lists field will be empty in all child nodes. Only the folder retrieved will include the child lists in that folder.
      *
      * @param array{folderID?: string}|FolderGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ListFolderFetchResponse>
      *
@@ -93,7 +99,7 @@ final class FoldersRawService implements FoldersRawContract
      */
     public function get(
         array|FolderGetParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = FolderGetParams::parseRequest(
             $params,
@@ -117,6 +123,7 @@ final class FoldersRawService implements FoldersRawContract
      *
      * @param string $newParentFolderID the ID for the target parent folder
      * @param array{folderID: string}|FolderMoveParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ListFolderFetchResponse>
      *
@@ -125,7 +132,7 @@ final class FoldersRawService implements FoldersRawContract
     public function move(
         string $newParentFolderID,
         array|FolderMoveParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = FolderMoveParams::parseRequest(
             $params,
@@ -151,6 +158,7 @@ final class FoldersRawService implements FoldersRawContract
      * Given a list and a folder, the list will be moved to that folder.
      *
      * @param array{listID: string, newFolderID: string}|FolderMoveListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -158,7 +166,7 @@ final class FoldersRawService implements FoldersRawContract
      */
     public function moveList(
         array|FolderMoveListParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = FolderMoveListParams::parseRequest(
             $params,
@@ -182,6 +190,7 @@ final class FoldersRawService implements FoldersRawContract
      *
      * @param string $folderID The ID of the folder to rename
      * @param array{newFolderName?: string}|FolderRenameParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ListFolderFetchResponse>
      *
@@ -190,7 +199,7 @@ final class FoldersRawService implements FoldersRawContract
     public function rename(
         string $folderID,
         array|FolderRenameParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = FolderRenameParams::parseRequest(
             $params,

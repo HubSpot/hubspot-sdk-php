@@ -17,6 +17,9 @@ use HubspotSDK\Crm\Objects\Schemas\ObjectsSchemasObjectTypeDefinition;
 use HubspotSDK\Events\EventDefinitions\AssociationDefinition;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface SchemasRawContract
 {
     /**
@@ -24,6 +27,7 @@ interface SchemasRawContract
      *
      * @param string $objectType path param: The object type that you want to update the schema for
      * @param array<string,mixed>|SchemaUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ObjectsSchemasObjectTypeDefinition>
      *
@@ -32,7 +36,7 @@ interface SchemasRawContract
     public function update(
         string $objectType,
         array|SchemaUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -40,6 +44,7 @@ interface SchemasRawContract
      *
      * @param int $appID The appId for the media bridge app. It is possible to have multiple apps in your developer account that use the media bridge.
      * @param array<string,mixed>|SchemaListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SchemaListResponse>
      *
@@ -48,7 +53,7 @@ interface SchemasRawContract
     public function list(
         int $appID,
         array|SchemaListParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -56,6 +61,7 @@ interface SchemasRawContract
      *
      * @param string $objectType Path param: The object type to create the definition for
      * @param array<string,mixed>|SchemaCreateAssociationParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<AssociationDefinition>
      *
@@ -64,7 +70,7 @@ interface SchemasRawContract
     public function createAssociation(
         string $objectType,
         array|SchemaCreateAssociationParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -72,6 +78,7 @@ interface SchemasRawContract
      *
      * @param string $associationID the ID of the association definition to be deleted
      * @param array<string,mixed>|SchemaDeleteAssociationParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -80,7 +87,7 @@ interface SchemasRawContract
     public function deleteAssociation(
         string $associationID,
         array|SchemaDeleteAssociationParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -88,6 +95,7 @@ interface SchemasRawContract
      *
      * @param string $objectType the object type to get the schema for
      * @param array<string,mixed>|SchemaGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ObjectSchema>
      *
@@ -96,6 +104,6 @@ interface SchemasRawContract
     public function get(
         string $objectType,
         array|SchemaGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

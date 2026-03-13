@@ -20,7 +20,7 @@ use HubspotSDK\Marketing\Campaigns\PublicCampaignBatchUpdateItem;
  * @phpstan-import-type PublicCampaignBatchUpdateItemShape from \HubspotSDK\Marketing\Campaigns\PublicCampaignBatchUpdateItem
  *
  * @phpstan-type BatchUpdateParamsShape = array{
- *   inputs: list<PublicCampaignBatchUpdateItemShape>
+ *   inputs: list<PublicCampaignBatchUpdateItem|PublicCampaignBatchUpdateItemShape>
  * }
  */
 final class BatchUpdateParams implements BaseModel
@@ -57,7 +57,7 @@ final class BatchUpdateParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicCampaignBatchUpdateItemShape> $inputs
+     * @param list<PublicCampaignBatchUpdateItem|PublicCampaignBatchUpdateItemShape> $inputs
      */
     public static function with(array $inputs): self
     {
@@ -69,7 +69,7 @@ final class BatchUpdateParams implements BaseModel
     }
 
     /**
-     * @param list<PublicCampaignBatchUpdateItemShape> $inputs
+     * @param list<PublicCampaignBatchUpdateItem|PublicCampaignBatchUpdateItemShape> $inputs
      */
     public function withInputs(array $inputs): self
     {

@@ -10,6 +10,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type RequestedConversionTimeVariants from \HubspotSDK\Crm\Lists\PublicListConversionResponse\RequestedConversionTime
  * @phpstan-import-type RequestedConversionTimeShape from \HubspotSDK\Crm\Lists\PublicListConversionResponse\RequestedConversionTime
  *
  * @phpstan-type PublicListConversionResponseShape = array{
@@ -29,6 +30,7 @@ final class PublicListConversionResponse implements BaseModel
     #[Optional]
     public ?\DateTimeInterface $convertedAt;
 
+    /** @var RequestedConversionTimeVariants|null $requestedConversionTime */
     #[Optional]
     public PublicListConversionDate|PublicListConversionInactivity|null $requestedConversionTime;
 

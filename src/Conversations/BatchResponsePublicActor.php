@@ -11,6 +11,7 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type PublicActorVariants from \HubspotSDK\Conversations\PublicActor
  * @phpstan-import-type PublicActorShape from \HubspotSDK\Conversations\PublicActor
  *
  * @phpstan-type BatchResponsePublicActorShape = array{
@@ -30,9 +31,7 @@ final class BatchResponsePublicActor implements BaseModel
     #[Required]
     public \DateTimeInterface $completedAt;
 
-    /**
-     * @var list<AgentActor|BotActor|IntegratorActor|SystemActor|VisitorActor|EmailActor|LlmActor> $results
-     */
+    /** @var list<PublicActorVariants> $results */
     #[Required(list: PublicActor::class)]
     public array $results;
 

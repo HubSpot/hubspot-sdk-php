@@ -20,12 +20,12 @@ use HubspotSDK\Property;
  * @phpstan-type ExternalBehavioralEventTypeDefinitionShape = array{
  *   id: string,
  *   archived: bool,
- *   associations: list<AssociationDefinitionShape>,
+ *   associations: list<AssociationDefinition|AssociationDefinitionShape>,
  *   fullyQualifiedName: string,
  *   labels: BehavioralEventTypeDefinitionLabels|BehavioralEventTypeDefinitionLabelsShape,
  *   name: string,
  *   objectTypeID: string,
- *   properties: list<PropertyShape>,
+ *   properties: list<Property|PropertyShape>,
  *   comboEventRules?: null|ComboEventRuleBranch|ComboEventRuleBranchShape,
  *   createdAt?: \DateTimeInterface|null,
  *   createdUserID?: int|null,
@@ -129,9 +129,9 @@ final class ExternalBehavioralEventTypeDefinition implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<AssociationDefinitionShape> $associations
+     * @param list<AssociationDefinition|AssociationDefinitionShape> $associations
      * @param BehavioralEventTypeDefinitionLabels|BehavioralEventTypeDefinitionLabelsShape $labels
-     * @param list<PropertyShape> $properties
+     * @param list<Property|PropertyShape> $properties
      * @param ComboEventRuleBranch|ComboEventRuleBranchShape|null $comboEventRules
      * @param TrackingType|value-of<TrackingType>|null $trackingType
      */
@@ -191,7 +191,7 @@ final class ExternalBehavioralEventTypeDefinition implements BaseModel
     }
 
     /**
-     * @param list<AssociationDefinitionShape> $associations
+     * @param list<AssociationDefinition|AssociationDefinitionShape> $associations
      */
     public function withAssociations(array $associations): self
     {
@@ -238,7 +238,7 @@ final class ExternalBehavioralEventTypeDefinition implements BaseModel
     }
 
     /**
-     * @param list<PropertyShape> $properties
+     * @param list<Property|PropertyShape> $properties
      */
     public function withProperties(array $properties): self
     {

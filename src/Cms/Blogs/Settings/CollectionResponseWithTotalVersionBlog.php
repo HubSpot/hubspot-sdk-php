@@ -17,7 +17,9 @@ use HubspotSDK\Paging;
  * @phpstan-import-type PagingShape from \HubspotSDK\Paging
  *
  * @phpstan-type CollectionResponseWithTotalVersionBlogShape = array{
- *   results: list<VersionBlogShape>, total: int, paging?: null|Paging|PagingShape
+ *   results: list<VersionBlog|VersionBlogShape>,
+ *   total: int,
+ *   paging?: null|Paging|PagingShape,
  * }
  */
 final class CollectionResponseWithTotalVersionBlog implements BaseModel
@@ -66,7 +68,7 @@ final class CollectionResponseWithTotalVersionBlog implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<VersionBlogShape> $results
+     * @param list<VersionBlog|VersionBlogShape> $results
      * @param Paging|PagingShape|null $paging
      */
     public static function with(
@@ -87,7 +89,7 @@ final class CollectionResponseWithTotalVersionBlog implements BaseModel
     /**
      * Collection of blog versions.
      *
-     * @param list<VersionBlogShape> $results
+     * @param list<VersionBlog|VersionBlogShape> $results
      */
     public function withResults(array $results): self
     {

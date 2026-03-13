@@ -15,7 +15,7 @@ use HubspotSDK\ForwardPaging;
  * @phpstan-import-type ForwardPagingShape from \HubspotSDK\ForwardPaging
  *
  * @phpstan-type CollectionResponsePublicTaxRateGroupForwardPagingShape = array{
- *   results: list<PublicTaxRateGroupShape>,
+ *   results: list<PublicTaxRateGroup|PublicTaxRateGroupShape>,
  *   paging?: null|ForwardPaging|ForwardPagingShape,
  * }
  */
@@ -55,7 +55,7 @@ final class CollectionResponsePublicTaxRateGroupForwardPaging implements BaseMod
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicTaxRateGroupShape> $results
+     * @param list<PublicTaxRateGroup|PublicTaxRateGroupShape> $results
      * @param ForwardPaging|ForwardPagingShape|null $paging
      */
     public static function with(
@@ -72,7 +72,7 @@ final class CollectionResponsePublicTaxRateGroupForwardPaging implements BaseMod
     }
 
     /**
-     * @param list<PublicTaxRateGroupShape> $results
+     * @param list<PublicTaxRateGroup|PublicTaxRateGroupShape> $results
      */
     public function withResults(array $results): self
     {

@@ -4,12 +4,17 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Services\Automation\Actions;
 
+use HubspotSDK\Automation\Actions\CallbackCompletionBatchRequest;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Core\Util;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Automation\Actions\CallbacksContract;
 
+/**
+ * @phpstan-import-type CallbackCompletionBatchRequestShape from \HubspotSDK\Automation\Actions\CallbackCompletionBatchRequest
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class CallbacksService implements CallbacksContract
 {
     /**
@@ -32,13 +37,14 @@ final class CallbacksService implements CallbacksContract
      *
      * @param string $callbackID the ID of the action execution
      * @param array<string,string> $outputFields
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function complete(
         string $callbackID,
         array $outputFields,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): mixed {
         $params = Util::removeNulls(['outputFields' => $outputFields]);
 
@@ -53,15 +59,14 @@ final class CallbacksService implements CallbacksContract
      *
      * Complete a batch of blocked action executions.
      *
-     * @param list<array{
-     *   callbackID: string, outputFields: array<string,string>
-     * }> $inputs
+     * @param list<CallbackCompletionBatchRequest|CallbackCompletionBatchRequestShape> $inputs
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function completeBatch(
         array $inputs,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): mixed {
         $params = Util::removeNulls(['inputs' => $inputs]);
 

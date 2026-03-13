@@ -19,6 +19,9 @@ use HubspotSDK\Crm\FeatureFlags\PortalFlagStateBatchResponse;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\FeatureFlags\AppsRawContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class AppsRawService implements AppsRawContract
 {
     // @phpstan-ignore-next-line
@@ -35,9 +38,10 @@ final class AppsRawService implements AppsRawContract
      * @param string $flagName path param: The name of the flag, either `hs-release-app-cards` or `hs-hide-crm-cards`
      * @param array{
      *   appID: int,
-     *   defaultState: 'ABSENT'|'OFF'|'ON'|DefaultState,
-     *   overrideState?: 'ABSENT'|'OFF'|'ON'|OverrideState,
+     *   defaultState: DefaultState|value-of<DefaultState>,
+     *   overrideState?: OverrideState|value-of<OverrideState>,
      * }|AppUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<FlagResponse>
      *
@@ -46,7 +50,7 @@ final class AppsRawService implements AppsRawContract
     public function update(
         string $flagName,
         array|AppUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = AppUpdateParams::parseRequest(
             $params,
@@ -72,6 +76,7 @@ final class AppsRawService implements AppsRawContract
      *
      * @param string $flagName the name of the flag, either `hs-release-app-cards` or `hs-hide-crm-cards`
      * @param array{appID: int}|AppDeleteParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<FlagResponse>
      *
@@ -80,7 +85,7 @@ final class AppsRawService implements AppsRawContract
     public function delete(
         string $flagName,
         array|AppDeleteParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = AppDeleteParams::parseRequest(
             $params,
@@ -105,6 +110,7 @@ final class AppsRawService implements AppsRawContract
      *
      * @param string $flagName the name of the flag, either `hs-release-app-cards` or `hs-hide-crm-cards`
      * @param array{appID: int}|AppGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<FlagResponse>
      *
@@ -113,7 +119,7 @@ final class AppsRawService implements AppsRawContract
     public function get(
         string $flagName,
         array|AppGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = AppGetParams::parseRequest(
             $params,
@@ -140,6 +146,7 @@ final class AppsRawService implements AppsRawContract
      * @param array{
      *   appID: int, limit?: int, startPortalID?: int
      * }|AppListPortalsParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PortalFlagStateBatchResponse>
      *
@@ -148,7 +155,7 @@ final class AppsRawService implements AppsRawContract
     public function listPortals(
         string $flagName,
         array|AppListPortalsParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = AppListPortalsParams::parseRequest(
             $params,

@@ -21,6 +21,9 @@ use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Conversations\ActorsRawContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class ActorsRawService implements ActorsRawContract
 {
     // @phpstan-ignore-next-line
@@ -35,6 +38,7 @@ final class ActorsRawService implements ActorsRawContract
      * @param array{
      *   inputs: list<string>, property?: string
      * }|ActorBatchReadParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BatchResponsePublicActor>
      *
@@ -42,7 +46,7 @@ final class ActorsRawService implements ActorsRawContract
      */
     public function batchRead(
         array|ActorBatchReadParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = ActorBatchReadParams::parseRequest(
             $params,
@@ -65,6 +69,7 @@ final class ActorsRawService implements ActorsRawContract
      * @api
      *
      * @param array{property?: string}|ActorGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<AgentActor|BotActor|IntegratorActor|SystemActor|VisitorActor|EmailActor|LlmActor,>
      *
@@ -73,7 +78,7 @@ final class ActorsRawService implements ActorsRawContract
     public function get(
         string $actorID,
         array|ActorGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = ActorGetParams::parseRequest(
             $params,

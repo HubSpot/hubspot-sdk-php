@@ -22,7 +22,7 @@ use HubspotSDK\Marketing\Campaigns\PublicCampaignReadInput;
  * @phpstan-import-type PublicCampaignReadInputShape from \HubspotSDK\Marketing\Campaigns\PublicCampaignReadInput
  *
  * @phpstan-type BatchGetParamsShape = array{
- *   inputs: list<PublicCampaignReadInputShape>,
+ *   inputs: list<PublicCampaignReadInput|PublicCampaignReadInputShape>,
  *   endDate?: string|null,
  *   properties?: list<string>|null,
  *   startDate?: string|null,
@@ -82,7 +82,7 @@ final class BatchGetParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicCampaignReadInputShape> $inputs
+     * @param list<PublicCampaignReadInput|PublicCampaignReadInputShape> $inputs
      * @param list<string>|null $properties
      */
     public static function with(
@@ -103,7 +103,7 @@ final class BatchGetParams implements BaseModel
     }
 
     /**
-     * @param list<PublicCampaignReadInputShape> $inputs
+     * @param list<PublicCampaignReadInput|PublicCampaignReadInputShape> $inputs
      */
     public function withInputs(array $inputs): self
     {

@@ -17,12 +17,16 @@ use HubspotSDK\Settings\Users\UserGetParams;
 use HubspotSDK\Settings\Users\UserListParams;
 use HubspotSDK\Settings\Users\UserUpdateParams;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface UsersRawContract
 {
     /**
      * @api
      *
      * @param array<string,mixed>|UserCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicUser>
      *
@@ -30,7 +34,7 @@ interface UsersRawContract
      */
     public function create(
         array|UserCreateParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -38,6 +42,7 @@ interface UsersRawContract
      *
      * @param string $userID Path param: Identifier of user to retrieve
      * @param array<string,mixed>|UserUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicUser>
      *
@@ -46,13 +51,14 @@ interface UsersRawContract
     public function update(
         string $userID,
         array|UserUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|UserListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<PublicUser>>
      *
@@ -60,7 +66,7 @@ interface UsersRawContract
      */
     public function list(
         array|UserListParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -68,6 +74,7 @@ interface UsersRawContract
      *
      * @param string $userID Identifier of user to delete
      * @param array<string,mixed>|UserDeleteParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -76,7 +83,7 @@ interface UsersRawContract
     public function delete(
         string $userID,
         array|UserDeleteParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -84,6 +91,7 @@ interface UsersRawContract
      *
      * @param string $userID Identifier of user to retrieve
      * @param array<string,mixed>|UserGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicUser>
      *
@@ -92,28 +100,32 @@ interface UsersRawContract
     public function get(
         string $userID,
         array|UserGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
+     *
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CollectionResponsePublicPermissionSetNoPaging>
      *
      * @throws APIException
      */
     public function listRoles(
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 
     /**
      * @api
+     *
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CollectionResponsePublicTeamNoPaging>
      *
      * @throws APIException
      */
     public function listTeams(
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 }

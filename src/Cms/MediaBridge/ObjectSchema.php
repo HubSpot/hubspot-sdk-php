@@ -20,12 +20,12 @@ use HubspotSDK\ObjectTypeDefinitionLabels;
  *   id: string,
  *   allowsSensitiveProperties: bool,
  *   archived: bool,
- *   associations: list<AssociationDefinitionShape>,
+ *   associations: list<AssociationDefinition|AssociationDefinitionShape>,
  *   fullyQualifiedName: string,
  *   labels: ObjectTypeDefinitionLabels|ObjectTypeDefinitionLabelsShape,
  *   name: string,
  *   objectTypeID: string,
- *   properties: list<Property1Shape>,
+ *   properties: list<Property1|Property1Shape>,
  *   requiredProperties: list<string>,
  *   searchableProperties: list<string>,
  *   secondaryDisplayProperties: list<string>,
@@ -150,9 +150,9 @@ final class ObjectSchema implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<AssociationDefinitionShape> $associations
+     * @param list<AssociationDefinition|AssociationDefinitionShape> $associations
      * @param ObjectTypeDefinitionLabels|ObjectTypeDefinitionLabelsShape $labels
-     * @param list<Property1Shape> $properties
+     * @param list<Property1|Property1Shape> $properties
      * @param list<string> $requiredProperties
      * @param list<string> $searchableProperties
      * @param list<string> $secondaryDisplayProperties
@@ -228,7 +228,7 @@ final class ObjectSchema implements BaseModel
     }
 
     /**
-     * @param list<AssociationDefinitionShape> $associations
+     * @param list<AssociationDefinition|AssociationDefinitionShape> $associations
      */
     public function withAssociations(array $associations): self
     {
@@ -274,7 +274,7 @@ final class ObjectSchema implements BaseModel
     }
 
     /**
-     * @param list<Property1Shape> $properties
+     * @param list<Property1|Property1Shape> $properties
      */
     public function withProperties(array $properties): self
     {

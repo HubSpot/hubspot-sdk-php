@@ -12,6 +12,9 @@ use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Conversations\ChannelsContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class ChannelsService implements ChannelsContract
 {
     /**
@@ -31,6 +34,7 @@ final class ChannelsService implements ChannelsContract
      * @api
      *
      * @param list<string> $sort
+     * @param RequestOpts|null $requestOptions
      *
      * @return Page<PublicChannel>
      *
@@ -41,7 +45,7 @@ final class ChannelsService implements ChannelsContract
         ?int $defaultPageLength = null,
         ?int $limit = null,
         ?array $sort = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): Page {
         $params = Util::removeNulls(
             [
@@ -61,11 +65,13 @@ final class ChannelsService implements ChannelsContract
     /**
      * @api
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @throws APIException
      */
     public function get(
         int $channelID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): PublicChannel {
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->get($channelID, requestOptions: $requestOptions);

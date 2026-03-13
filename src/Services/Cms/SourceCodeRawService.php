@@ -20,6 +20,9 @@ use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Cms\SourceCodeRawContract;
 use HubspotSDK\TaskLocator;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class SourceCodeRawService implements SourceCodeRawContract
 {
     // @phpstan-ignore-next-line
@@ -37,6 +40,7 @@ final class SourceCodeRawService implements SourceCodeRawContract
      *
      * @param string $filePath path param: The file system location of the file
      * @param array{environment: string, file?: string}|SourceCodeCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<AssetFileMetadata>
      *
@@ -45,7 +49,7 @@ final class SourceCodeRawService implements SourceCodeRawContract
     public function create(
         string $filePath,
         array|SourceCodeCreateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = SourceCodeCreateParams::parseRequest(
             $params,
@@ -72,6 +76,7 @@ final class SourceCodeRawService implements SourceCodeRawContract
      *
      * @param string $filePath the file system location of the file
      * @param array{environment: string}|SourceCodeDeleteParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -80,7 +85,7 @@ final class SourceCodeRawService implements SourceCodeRawContract
     public function delete(
         string $filePath,
         array|SourceCodeDeleteParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = SourceCodeDeleteParams::parseRequest(
             $params,
@@ -104,6 +109,7 @@ final class SourceCodeRawService implements SourceCodeRawContract
      * Extract a zip file in the developer file system. Extraction status can be checked with the `/extract/async/tasks/taskId/status` endpoint below.
      *
      * @param array{path: string}|SourceCodeExtractAsyncParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<TaskLocator>
      *
@@ -111,7 +117,7 @@ final class SourceCodeRawService implements SourceCodeRawContract
      */
     public function extractAsync(
         array|SourceCodeExtractAsyncParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = SourceCodeExtractAsyncParams::parseRequest(
             $params,
@@ -135,6 +141,7 @@ final class SourceCodeRawService implements SourceCodeRawContract
      *
      * @param string $filePath the file system location of the file
      * @param array{environment: string}|SourceCodeGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<string>
      *
@@ -143,7 +150,7 @@ final class SourceCodeRawService implements SourceCodeRawContract
     public function get(
         string $filePath,
         array|SourceCodeGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = SourceCodeGetParams::parseRequest(
             $params,
@@ -168,6 +175,7 @@ final class SourceCodeRawService implements SourceCodeRawContract
      * Get the status of an extraction by the `taskId` returned from the initial `extract/async` request.
      *
      * @param int $taskID the extraction task ID returned by the initial `extract/async` request
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ActionResponse>
      *
@@ -175,7 +183,7 @@ final class SourceCodeRawService implements SourceCodeRawContract
      */
     public function getExtractionStatus(
         int $taskID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -195,6 +203,7 @@ final class SourceCodeRawService implements SourceCodeRawContract
      * @param array{
      *   environment: string, properties?: string
      * }|SourceCodeGetMetadataParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<AssetFileMetadata>
      *
@@ -203,7 +212,7 @@ final class SourceCodeRawService implements SourceCodeRawContract
     public function getMetadata(
         string $filePath,
         array|SourceCodeGetMetadataParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = SourceCodeGetMetadataParams::parseRequest(
             $params,
@@ -229,6 +238,7 @@ final class SourceCodeRawService implements SourceCodeRawContract
      *
      * @param string $filePath path param: The file system location of the file
      * @param array{environment: string, file?: string}|SourceCodeUpsertParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<AssetFileMetadata>
      *
@@ -237,7 +247,7 @@ final class SourceCodeRawService implements SourceCodeRawContract
     public function upsert(
         string $filePath,
         array|SourceCodeUpsertParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = SourceCodeUpsertParams::parseRequest(
             $params,
@@ -266,6 +276,7 @@ final class SourceCodeRawService implements SourceCodeRawContract
      * @param array{
      *   environment: string, file?: string
      * }|SourceCodeValidateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<string>
      *
@@ -274,7 +285,7 @@ final class SourceCodeRawService implements SourceCodeRawContract
     public function validate(
         string $filePath,
         array|SourceCodeValidateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = SourceCodeValidateParams::parseRequest(
             $params,

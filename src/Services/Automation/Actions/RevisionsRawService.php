@@ -14,6 +14,9 @@ use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Automation\Actions\RevisionsRawContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class RevisionsRawService implements RevisionsRawContract
 {
     // @phpstan-ignore-next-line
@@ -29,6 +32,7 @@ final class RevisionsRawService implements RevisionsRawContract
      *
      * @param string $definitionID path param: The ID of the definition
      * @param array{appID: int, after?: string, limit?: int}|RevisionListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<PublicActionRevision>>
      *
@@ -37,7 +41,7 @@ final class RevisionsRawService implements RevisionsRawContract
     public function list(
         string $definitionID,
         array|RevisionListParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = RevisionListParams::parseRequest(
             $params,
@@ -66,6 +70,7 @@ final class RevisionsRawService implements RevisionsRawContract
      *
      * @param string $revisionID the ID of the revision
      * @param array{appID: int, definitionID: string}|RevisionGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicActionRevision>
      *
@@ -74,7 +79,7 @@ final class RevisionsRawService implements RevisionsRawContract
     public function get(
         string $revisionID,
         array|RevisionGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = RevisionGetParams::parseRequest(
             $params,

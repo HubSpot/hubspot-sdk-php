@@ -22,7 +22,7 @@ use HubspotSDK\PropertyModificationMetadata;
  *   groupName: string,
  *   label: string,
  *   name: string,
- *   options: list<Option1Shape>,
+ *   options: list<Option1|Option1Shape>,
  *   type: string,
  *   archived?: bool|null,
  *   archivedAt?: \DateTimeInterface|null,
@@ -175,7 +175,7 @@ final class Property1 implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<Option1Shape> $options
+     * @param list<Option1|Option1Shape> $options
      * @param DataSensitivity|value-of<DataSensitivity>|null $dataSensitivity
      * @param DateDisplayHint|value-of<DateDisplayHint>|null $dateDisplayHint
      * @param PropertyModificationMetadata|PropertyModificationMetadataShape|null $modificationMetadata
@@ -285,7 +285,7 @@ final class Property1 implements BaseModel
     }
 
     /**
-     * @param list<Option1Shape> $options
+     * @param list<Option1|Option1Shape> $options
      */
     public function withOptions(array $options): self
     {

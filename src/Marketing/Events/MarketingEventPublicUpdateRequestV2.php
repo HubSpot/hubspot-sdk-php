@@ -13,7 +13,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-import-type PropertyValueShape from \HubspotSDK\Marketing\Events\PropertyValue
  *
  * @phpstan-type MarketingEventPublicUpdateRequestV2Shape = array{
- *   customProperties: list<PropertyValueShape>,
+ *   customProperties: list<PropertyValue|PropertyValueShape>,
  *   endDateTime?: \DateTimeInterface|null,
  *   eventCancelled?: bool|null,
  *   eventDescription?: string|null,
@@ -81,7 +81,7 @@ final class MarketingEventPublicUpdateRequestV2 implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PropertyValueShape> $customProperties
+     * @param list<PropertyValue|PropertyValueShape> $customProperties
      */
     public static function with(
         array $customProperties,
@@ -111,7 +111,7 @@ final class MarketingEventPublicUpdateRequestV2 implements BaseModel
     }
 
     /**
-     * @param list<PropertyValueShape> $customProperties
+     * @param list<PropertyValue|PropertyValueShape> $customProperties
      */
     public function withCustomProperties(array $customProperties): self
     {

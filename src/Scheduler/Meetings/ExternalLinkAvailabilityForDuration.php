@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-import-type ExternalMeetingAvailabilityShape from \HubspotSDK\Scheduler\Meetings\ExternalMeetingAvailability
  *
  * @phpstan-type ExternalLinkAvailabilityForDurationShape = array{
- *   availabilities: list<ExternalMeetingAvailabilityShape>,
+ *   availabilities: list<ExternalMeetingAvailability|ExternalMeetingAvailabilityShape>,
  *   meetingDurationMillis: int,
  * }
  */
@@ -56,7 +56,7 @@ final class ExternalLinkAvailabilityForDuration implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<ExternalMeetingAvailabilityShape> $availabilities
+     * @param list<ExternalMeetingAvailability|ExternalMeetingAvailabilityShape> $availabilities
      */
     public static function with(
         array $availabilities,
@@ -71,7 +71,7 @@ final class ExternalLinkAvailabilityForDuration implements BaseModel
     }
 
     /**
-     * @param list<ExternalMeetingAvailabilityShape> $availabilities
+     * @param list<ExternalMeetingAvailability|ExternalMeetingAvailabilityShape> $availabilities
      */
     public function withAvailabilities(array $availabilities): self
     {

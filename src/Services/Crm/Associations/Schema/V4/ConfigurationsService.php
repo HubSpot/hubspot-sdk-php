@@ -11,10 +11,18 @@ use HubspotSDK\Crm\Associations\BatchResponseVoid;
 use HubspotSDK\Crm\Associations\Schema\V4\BatchResponsePublicAssociationDefinitionConfigurationUpdateResult;
 use HubspotSDK\Crm\Associations\Schema\V4\BatchResponsePublicAssociationDefinitionUserConfiguration;
 use HubspotSDK\Crm\Associations\Schema\V4\CollectionResponsePublicAssociationDefinitionUserConfiguration;
-use HubspotSDK\Crm\Associations\Schema\V4\PublicAssociationDefinitionConfigurationCreateRequest\Category;
+use HubspotSDK\Crm\Associations\Schema\V4\PublicAssociationDefinitionConfigurationCreateRequest;
+use HubspotSDK\Crm\Associations\Schema\V4\PublicAssociationDefinitionConfigurationUpdateRequest;
+use HubspotSDK\Crm\Associations\Schema\V4\PublicAssociationSpec;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Associations\Schema\V4\ConfigurationsContract;
 
+/**
+ * @phpstan-import-type PublicAssociationDefinitionConfigurationCreateRequestShape from \HubspotSDK\Crm\Associations\Schema\V4\PublicAssociationDefinitionConfigurationCreateRequest
+ * @phpstan-import-type PublicAssociationSpecShape from \HubspotSDK\Crm\Associations\Schema\V4\PublicAssociationSpec
+ * @phpstan-import-type PublicAssociationDefinitionConfigurationUpdateRequestShape from \HubspotSDK\Crm\Associations\Schema\V4\PublicAssociationDefinitionConfigurationUpdateRequest
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class ConfigurationsService implements ConfigurationsContract
 {
     /**
@@ -33,10 +41,12 @@ final class ConfigurationsService implements ConfigurationsContract
     /**
      * @api
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @throws APIException
      */
     public function list(
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): CollectionResponsePublicAssociationDefinitionUserConfiguration {
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->list(requestOptions: $requestOptions);
@@ -47,13 +57,10 @@ final class ConfigurationsService implements ConfigurationsContract
     /**
      * @api
      *
-     * @param string $toObjectType Path param:
-     * @param string $fromObjectType Path param:
-     * @param list<array{
-     *   category: 'HUBSPOT_DEFINED'|'INTEGRATOR_DEFINED'|'USER_DEFINED'|Category,
-     *   maxToObjectIDs: int,
-     *   typeID: int,
-     * }> $inputs Body param:
+     * @param string $toObjectType Path param
+     * @param string $fromObjectType Path param
+     * @param list<PublicAssociationDefinitionConfigurationCreateRequest|PublicAssociationDefinitionConfigurationCreateRequestShape> $inputs Body param
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -61,7 +68,7 @@ final class ConfigurationsService implements ConfigurationsContract
         string $toObjectType,
         string $fromObjectType,
         array $inputs,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BatchResponsePublicAssociationDefinitionUserConfiguration {
         $params = Util::removeNulls(
             ['fromObjectType' => $fromObjectType, 'inputs' => $inputs]
@@ -76,9 +83,10 @@ final class ConfigurationsService implements ConfigurationsContract
     /**
      * @api
      *
-     * @param string $toObjectType Path param:
-     * @param string $fromObjectType Path param:
-     * @param list<array{category: string, typeID: int}> $inputs Body param:
+     * @param string $toObjectType Path param
+     * @param string $fromObjectType Path param
+     * @param list<PublicAssociationSpec|PublicAssociationSpecShape> $inputs Body param
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -86,7 +94,7 @@ final class ConfigurationsService implements ConfigurationsContract
         string $toObjectType,
         string $fromObjectType,
         array $inputs,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BatchResponseVoid {
         $params = Util::removeNulls(
             ['fromObjectType' => $fromObjectType, 'inputs' => $inputs]
@@ -101,13 +109,10 @@ final class ConfigurationsService implements ConfigurationsContract
     /**
      * @api
      *
-     * @param string $toObjectType Path param:
-     * @param string $fromObjectType Path param:
-     * @param list<array{
-     *   category: 'HUBSPOT_DEFINED'|'INTEGRATOR_DEFINED'|'USER_DEFINED'|\HubspotSDK\Crm\Associations\Schema\V4\PublicAssociationDefinitionConfigurationUpdateRequest\Category,
-     *   maxToObjectIDs: int,
-     *   typeID: int,
-     * }> $inputs Body param:
+     * @param string $toObjectType Path param
+     * @param string $fromObjectType Path param
+     * @param list<PublicAssociationDefinitionConfigurationUpdateRequest|PublicAssociationDefinitionConfigurationUpdateRequestShape> $inputs Body param
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -115,7 +120,7 @@ final class ConfigurationsService implements ConfigurationsContract
         string $toObjectType,
         string $fromObjectType,
         array $inputs,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BatchResponsePublicAssociationDefinitionConfigurationUpdateResult {
         $params = Util::removeNulls(
             ['fromObjectType' => $fromObjectType, 'inputs' => $inputs]
@@ -130,12 +135,14 @@ final class ConfigurationsService implements ConfigurationsContract
     /**
      * @api
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @throws APIException
      */
     public function getByObjectTypes(
         string $toObjectType,
         string $fromObjectType,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): CollectionResponsePublicAssociationDefinitionUserConfiguration {
         $params = Util::removeNulls(['fromObjectType' => $fromObjectType]);
 

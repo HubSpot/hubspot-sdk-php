@@ -14,7 +14,8 @@ use HubspotSDK\Crm\Lists\PublicListConversionInactivity;
  * @phpstan-import-type PublicListConversionDateShape from \HubspotSDK\Crm\Lists\PublicListConversionDate
  * @phpstan-import-type PublicListConversionInactivityShape from \HubspotSDK\Crm\Lists\PublicListConversionInactivity
  *
- * @phpstan-type RequestedConversionTimeShape = PublicListConversionDateShape|PublicListConversionInactivityShape
+ * @phpstan-type RequestedConversionTimeVariants = PublicListConversionDate|PublicListConversionInactivity
+ * @phpstan-type RequestedConversionTimeShape = RequestedConversionTimeVariants|PublicListConversionDateShape|PublicListConversionInactivityShape
  */
 final class RequestedConversionTime implements ConverterSource
 {

@@ -12,7 +12,8 @@ use HubspotSDK\Core\Conversion\Contracts\ConverterSource;
  * @phpstan-import-type PublicExportViewRequestShape from \HubspotSDK\Crm\Exports\PublicExportViewRequest
  * @phpstan-import-type PublicExportListRequestShape from \HubspotSDK\Crm\Exports\PublicExportListRequest
  *
- * @phpstan-type PublicExportRequestShape = PublicExportViewRequestShape|PublicExportListRequestShape
+ * @phpstan-type PublicExportRequestVariants = PublicExportViewRequest|PublicExportListRequest
+ * @phpstan-type PublicExportRequestShape = PublicExportRequestVariants|PublicExportViewRequestShape|PublicExportListRequestShape
  */
 final class PublicExportRequest implements ConverterSource
 {

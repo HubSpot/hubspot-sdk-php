@@ -18,7 +18,7 @@ use HubspotSDK\Crm\SimplePublicObjectBatchInputUpsert;
  * @phpstan-import-type SimplePublicObjectBatchInputUpsertShape from \HubspotSDK\Crm\SimplePublicObjectBatchInputUpsert
  *
  * @phpstan-type BatchUpsertParamsShape = array{
- *   inputs: list<SimplePublicObjectBatchInputUpsertShape>
+ *   inputs: list<SimplePublicObjectBatchInputUpsert|SimplePublicObjectBatchInputUpsertShape>,
  * }
  */
 final class BatchUpsertParams implements BaseModel
@@ -55,7 +55,7 @@ final class BatchUpsertParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<SimplePublicObjectBatchInputUpsertShape> $inputs
+     * @param list<SimplePublicObjectBatchInputUpsert|SimplePublicObjectBatchInputUpsertShape> $inputs
      */
     public static function with(array $inputs): self
     {
@@ -67,7 +67,7 @@ final class BatchUpsertParams implements BaseModel
     }
 
     /**
-     * @param list<SimplePublicObjectBatchInputUpsertShape> $inputs
+     * @param list<SimplePublicObjectBatchInputUpsert|SimplePublicObjectBatchInputUpsertShape> $inputs
      */
     public function withInputs(array $inputs): self
     {

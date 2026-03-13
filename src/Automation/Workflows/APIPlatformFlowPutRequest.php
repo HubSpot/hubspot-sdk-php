@@ -20,6 +20,9 @@ use HubspotSDK\PublicRestrictedFilterBranch;
 use HubspotSDK\PublicUnifiedEventsFilterBranch;
 
 /**
+ * @phpstan-import-type EnrollmentCriteriaVariants from \HubspotSDK\Automation\Workflows\APIPlatformFlowPutRequest\EnrollmentCriteria
+ * @phpstan-import-type EnrollmentScheduleVariants from \HubspotSDK\Automation\Workflows\APIPlatformFlowPutRequest\EnrollmentSchedule
+ * @phpstan-import-type SuppressionFilterBranchVariants from \HubspotSDK\Automation\Workflows\APIPlatformFlowPutRequest\SuppressionFilterBranch
  * @phpstan-import-type APIBlockedDateShape from \HubspotSDK\Automation\Workflows\APIBlockedDate
  * @phpstan-import-type APITimeWindowShape from \HubspotSDK\Automation\Workflows\APITimeWindow
  * @phpstan-import-type EnrollmentCriteriaShape from \HubspotSDK\Automation\Workflows\APIPlatformFlowPutRequest\EnrollmentCriteria
@@ -28,11 +31,11 @@ use HubspotSDK\PublicUnifiedEventsFilterBranch;
  *
  * @phpstan-type APIPlatformFlowPutRequestShape = array{
  *   actions: list<mixed>,
- *   blockedDates: list<APIBlockedDateShape>,
+ *   blockedDates: list<APIBlockedDate|APIBlockedDateShape>,
  *   customProperties: array<string,string>,
  *   isEnabled: bool,
  *   revisionID: string,
- *   timeWindows: list<APITimeWindowShape>,
+ *   timeWindows: list<APITimeWindow|APITimeWindowShape>,
  *   type: Type|value-of<Type>,
  *   description?: string|null,
  *   enrollmentCriteria?: EnrollmentCriteriaShape|null,
@@ -77,9 +80,11 @@ final class APIPlatformFlowPutRequest implements BaseModel
     #[Optional]
     public ?string $description;
 
+    /** @var EnrollmentCriteriaVariants|null $enrollmentCriteria */
     #[Optional]
     public APIListBasedEnrollmentCriteria|APIEventBasedEnrollmentCriteria|APIManualEnrollmentCriteria|null $enrollmentCriteria;
 
+    /** @var EnrollmentScheduleVariants|null $enrollmentSchedule */
     #[Optional]
     public APIDailyEnrollmentSchedule|APIWeeklyEnrollmentSchedule|APIMonthlySpecificDaysEnrollmentSchedule|APIMonthlyRelativeDaysEnrollmentSchedule|APIYearlyEnrollmentSchedule|APIPropertyBasedEnrollmentSchedule|null $enrollmentSchedule;
 
@@ -89,6 +94,7 @@ final class APIPlatformFlowPutRequest implements BaseModel
     #[Optional('startActionId')]
     public ?string $startActionID;
 
+    /** @var SuppressionFilterBranchVariants|null $suppressionFilterBranch */
     #[Optional]
     public PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch|null $suppressionFilterBranch;
 
@@ -135,9 +141,9 @@ final class APIPlatformFlowPutRequest implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<mixed> $actions
-     * @param list<APIBlockedDateShape> $blockedDates
+     * @param list<APIBlockedDate|APIBlockedDateShape> $blockedDates
      * @param array<string,string> $customProperties
-     * @param list<APITimeWindowShape> $timeWindows
+     * @param list<APITimeWindow|APITimeWindowShape> $timeWindows
      * @param Type|value-of<Type> $type
      * @param EnrollmentCriteriaShape|null $enrollmentCriteria
      * @param EnrollmentScheduleShape|null $enrollmentSchedule
@@ -192,7 +198,7 @@ final class APIPlatformFlowPutRequest implements BaseModel
     }
 
     /**
-     * @param list<APIBlockedDateShape> $blockedDates
+     * @param list<APIBlockedDate|APIBlockedDateShape> $blockedDates
      */
     public function withBlockedDates(array $blockedDates): self
     {
@@ -230,7 +236,7 @@ final class APIPlatformFlowPutRequest implements BaseModel
     }
 
     /**
-     * @param list<APITimeWindowShape> $timeWindows
+     * @param list<APITimeWindow|APITimeWindowShape> $timeWindows
      */
     public function withTimeWindows(array $timeWindows): self
     {

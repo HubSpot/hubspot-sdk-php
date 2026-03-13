@@ -14,7 +14,8 @@ use HubspotSDK\Events\EventDefinitions\SetOccurrencesRefineBy;
  * @phpstan-import-type NumOccurrencesRefineByShape from \HubspotSDK\Events\EventDefinitions\NumOccurrencesRefineBy
  * @phpstan-import-type SetOccurrencesRefineByShape from \HubspotSDK\Events\EventDefinitions\SetOccurrencesRefineBy
  *
- * @phpstan-type CoalescingRefineByShape = NumOccurrencesRefineByShape|SetOccurrencesRefineByShape
+ * @phpstan-type CoalescingRefineByVariants = NumOccurrencesRefineBy|SetOccurrencesRefineBy
+ * @phpstan-type CoalescingRefineByShape = CoalescingRefineByVariants|NumOccurrencesRefineByShape|SetOccurrencesRefineByShape
  */
 final class CoalescingRefineBy implements ConverterSource
 {

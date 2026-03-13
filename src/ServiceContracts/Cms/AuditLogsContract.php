@@ -9,6 +9,9 @@ use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface AuditLogsContract
 {
     /**
@@ -22,6 +25,7 @@ interface AuditLogsContract
      * @param list<string> $objectType Comma separated list of object types to filter by (BLOG, LANDING_PAGE, DOMAIN, HUBDB_TABLE etc.)
      * @param list<string> $sort The sort direction for the audit logs. (Can only sort by timestamp).
      * @param list<string> $userID comma separated list of user ids to filter by
+     * @param RequestOpts|null $requestOptions
      *
      * @return Page<PublicAuditLog>
      *
@@ -36,6 +40,6 @@ interface AuditLogsContract
         ?array $objectType = null,
         ?array $sort = null,
         ?array $userID = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): Page;
 }

@@ -14,6 +14,9 @@ use HubspotSDK\Crm\FeatureFlags\PortalFlagStateBatchResponse;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\FeatureFlags\AppsContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class AppsService implements AppsContract
 {
     /**
@@ -36,17 +39,18 @@ final class AppsService implements AppsContract
      *
      * @param string $flagName path param: The name of the flag, either `hs-release-app-cards` or `hs-hide-crm-cards`
      * @param int $appID path param: The ID of the app
-     * @param 'ABSENT'|'OFF'|'ON'|DefaultState $defaultState Body param:
-     * @param 'ABSENT'|'OFF'|'ON'|OverrideState $overrideState Body param:
+     * @param DefaultState|value-of<DefaultState> $defaultState Body param
+     * @param OverrideState|value-of<OverrideState> $overrideState Body param
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function update(
         string $flagName,
         int $appID,
-        string|DefaultState $defaultState,
-        string|OverrideState|null $overrideState = null,
-        ?RequestOptions $requestOptions = null,
+        DefaultState|string $defaultState,
+        OverrideState|string|null $overrideState = null,
+        RequestOptions|array|null $requestOptions = null,
     ): FlagResponse {
         $params = Util::removeNulls(
             [
@@ -69,13 +73,14 @@ final class AppsService implements AppsContract
      *
      * @param string $flagName the name of the flag, either `hs-release-app-cards` or `hs-hide-crm-cards`
      * @param int $appID the ID of the app
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function delete(
         string $flagName,
         int $appID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): FlagResponse {
         $params = Util::removeNulls(['appID' => $appID]);
 
@@ -92,13 +97,14 @@ final class AppsService implements AppsContract
      *
      * @param string $flagName the name of the flag, either `hs-release-app-cards` or `hs-hide-crm-cards`
      * @param int $appID the ID of the app
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function get(
         string $flagName,
         int $appID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): FlagResponse {
         $params = Util::removeNulls(['appID' => $appID]);
 
@@ -117,6 +123,7 @@ final class AppsService implements AppsContract
      * @param int $appID path param: The ID of the app
      * @param int $limit query param: The maximum number of results to return in a single request
      * @param int $startPortalID query param: The initial account ID for listing, enabling pagination
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -125,7 +132,7 @@ final class AppsService implements AppsContract
         int $appID,
         ?int $limit = null,
         ?int $startPortalID = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): PortalFlagStateBatchResponse {
         $params = Util::removeNulls(
             ['appID' => $appID, 'limit' => $limit, 'startPortalID' => $startPortalID]

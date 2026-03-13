@@ -31,7 +31,7 @@ use HubspotSDK\OptionInput;
  *   hasUniqueValue?: bool|null,
  *   hidden?: bool|null,
  *   numberDisplayHint?: null|NumberDisplayHint|value-of<NumberDisplayHint>,
- *   options?: list<OptionInputShape>|null,
+ *   options?: list<OptionInput|OptionInputShape>|null,
  *   optionSortStrategy?: null|OptionSortStrategy|value-of<OptionSortStrategy>,
  *   referencedObjectType?: string|null,
  *   searchableInGlobalSearch?: bool|null,
@@ -183,7 +183,7 @@ final class ObjectTypePropertyCreate implements BaseModel
      *
      * @param Type|value-of<Type> $type
      * @param NumberDisplayHint|value-of<NumberDisplayHint>|null $numberDisplayHint
-     * @param list<OptionInputShape>|null $options
+     * @param list<OptionInput|OptionInputShape>|null $options
      * @param OptionSortStrategy|value-of<OptionSortStrategy>|null $optionSortStrategy
      * @param TextDisplayHint|value-of<TextDisplayHint>|null $textDisplayHint
      */
@@ -356,7 +356,7 @@ final class ObjectTypePropertyCreate implements BaseModel
     /**
      * A list of available options for the property. This field is only required for enumerated properties.
      *
-     * @param list<OptionInputShape> $options
+     * @param list<OptionInput|OptionInputShape> $options
      */
     public function withOptions(array $options): self
     {

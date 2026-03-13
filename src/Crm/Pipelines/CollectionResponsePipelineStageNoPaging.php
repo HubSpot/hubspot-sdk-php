@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-import-type PipelineStageShape from \HubspotSDK\Crm\Pipelines\PipelineStage
  *
  * @phpstan-type CollectionResponsePipelineStageNoPagingShape = array{
- *   results: list<PipelineStageShape>
+ *   results: list<PipelineStage|PipelineStageShape>
  * }
  */
 final class CollectionResponsePipelineStageNoPaging implements BaseModel
@@ -48,7 +48,7 @@ final class CollectionResponsePipelineStageNoPaging implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PipelineStageShape> $results
+     * @param list<PipelineStage|PipelineStageShape> $results
      */
     public static function with(array $results): self
     {
@@ -60,7 +60,7 @@ final class CollectionResponsePipelineStageNoPaging implements BaseModel
     }
 
     /**
-     * @param list<PipelineStageShape> $results
+     * @param list<PipelineStage|PipelineStageShape> $results
      */
     public function withResults(array $results): self
     {

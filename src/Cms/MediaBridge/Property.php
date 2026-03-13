@@ -25,7 +25,7 @@ use HubspotSDK\Option;
  * @phpstan-import-type OptionShape from \HubspotSDK\Option
  *
  * @phpstan-type PropertyShape = array{
- *   allowedObjectTypes: list<ObjectTypeIDProtoShape>,
+ *   allowedObjectTypes: list<ObjectTypeIDProto|ObjectTypeIDProtoShape>,
  *   calculated: bool,
  *   canArchive: bool,
  *   canRestore: bool,
@@ -57,7 +57,7 @@ use HubspotSDK\Option;
  *   mutableDefinitionNotDeletable: bool,
  *   name: string,
  *   numberDisplayHint: NumberDisplayHint|value-of<NumberDisplayHint>,
- *   options: list<OptionShape>,
+ *   options: list<Option|OptionShape>,
  *   optionsAreMutable: bool,
  *   optionSortStrategy: OptionSortStrategy|value-of<OptionSortStrategy>,
  *   owningAppID: int,
@@ -484,12 +484,12 @@ final class Property implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<ObjectTypeIDProtoShape> $allowedObjectTypes
+     * @param list<ObjectTypeIDProto|ObjectTypeIDProtoShape> $allowedObjectTypes
      * @param DataSensitivity|value-of<DataSensitivity> $dataSensitivity
      * @param DateDisplayHint|value-of<DateDisplayHint> $dateDisplayHint
      * @param DisplayMode|value-of<DisplayMode> $displayMode
      * @param NumberDisplayHint|value-of<NumberDisplayHint> $numberDisplayHint
-     * @param list<OptionShape> $options
+     * @param list<Option|OptionShape> $options
      * @param OptionSortStrategy|value-of<OptionSortStrategy> $optionSortStrategy
      * @param ReferencedObjectType|value-of<ReferencedObjectType> $referencedObjectType
      * @param SearchTextAnalysisMode|value-of<SearchTextAnalysisMode> $searchTextAnalysisMode
@@ -602,7 +602,7 @@ final class Property implements BaseModel
     /**
      * Object types permitted to use this property.
      *
-     * @param list<ObjectTypeIDProtoShape> $allowedObjectTypes
+     * @param list<ObjectTypeIDProto|ObjectTypeIDProtoShape> $allowedObjectTypes
      */
     public function withAllowedObjectTypes(array $allowedObjectTypes): self
     {
@@ -959,7 +959,7 @@ final class Property implements BaseModel
     /**
      * A list of valid options for the property. This field is required for enumerated properties.
      *
-     * @param list<OptionShape> $options
+     * @param list<Option|OptionShape> $options
      */
     public function withOptions(array $options): self
     {

@@ -13,7 +13,7 @@ use HubspotSDK\Crm\Properties\PropertyGroup;
  * @phpstan-import-type PropertyGroupShape from \HubspotSDK\Crm\Properties\PropertyGroup
  *
  * @phpstan-type CollectionResponsePropertyGroupNoPagingShape = array{
- *   results: list<PropertyGroupShape>
+ *   results: list<\HubspotSDK\Crm\Properties\PropertyGroup|PropertyGroupShape>
  * }
  */
 final class CollectionResponsePropertyGroupNoPaging implements BaseModel
@@ -49,7 +49,7 @@ final class CollectionResponsePropertyGroupNoPaging implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PropertyGroupShape> $results
+     * @param list<PropertyGroup|PropertyGroupShape> $results
      */
     public static function with(array $results): self
     {
@@ -61,7 +61,7 @@ final class CollectionResponsePropertyGroupNoPaging implements BaseModel
     }
 
     /**
-     * @param list<PropertyGroupShape> $results
+     * @param list<PropertyGroup|PropertyGroupShape> $results
      */
     public function withResults(array $results): self
     {

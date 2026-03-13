@@ -10,12 +10,16 @@ use HubspotSDK\Crm\Subscriptions\SubscriptionPauseParams;
 use HubspotSDK\Crm\Subscriptions\SubscriptionUnpauseParams;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface SubscriptionsRawContract
 {
     /**
      * @api
      *
      * @param int $objectID subscription CRM id
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<string>
      *
@@ -23,7 +27,7 @@ interface SubscriptionsRawContract
      */
     public function cancel(
         int $objectID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 
     /**
@@ -31,6 +35,7 @@ interface SubscriptionsRawContract
      *
      * @param int $objectID subscription CRM id
      * @param array<string,mixed>|SubscriptionPauseParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<string>
      *
@@ -39,7 +44,7 @@ interface SubscriptionsRawContract
     public function pause(
         int $objectID,
         array|SubscriptionPauseParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -47,6 +52,7 @@ interface SubscriptionsRawContract
      *
      * @param int $objectID subscription CRM id
      * @param array<string,mixed>|SubscriptionUnpauseParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<string>
      *
@@ -55,6 +61,6 @@ interface SubscriptionsRawContract
     public function unpause(
         int $objectID,
         array|SubscriptionUnpauseParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

@@ -4,25 +4,30 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Services\Crm\Objects;
 
-use HubspotSDK\AssociationSpec;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\Crm\CreatedResponseSimplePublicObject;
+use HubspotSDK\Crm\FilterGroup;
 use HubspotSDK\Crm\Objects\Deals\DealCreateParams;
 use HubspotSDK\Crm\Objects\Deals\DealGetParams;
 use HubspotSDK\Crm\Objects\Deals\DealListParams;
 use HubspotSDK\Crm\Objects\Deals\DealMergeParams;
 use HubspotSDK\Crm\Objects\Deals\DealSearchParams;
 use HubspotSDK\Crm\Objects\Deals\DealUpdateParams;
+use HubspotSDK\Crm\PublicAssociationsForObject;
 use HubspotSDK\Crm\SimplePublicObject;
 use HubspotSDK\Crm\SimplePublicObjectWithAssociations;
 use HubspotSDK\Page;
-use HubspotSDK\PublicObjectID;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Objects\DealsRawContract;
 
+/**
+ * @phpstan-import-type PublicAssociationsForObjectShape from \HubspotSDK\Crm\PublicAssociationsForObject
+ * @phpstan-import-type FilterGroupShape from \HubspotSDK\Crm\FilterGroup
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class DealsRawService implements DealsRawContract
 {
     // @phpstan-ignore-next-line
@@ -37,12 +42,10 @@ final class DealsRawService implements DealsRawContract
      * Create a deal with the given properties and return a copy of the object, including the ID. Documentation and examples for creating standard deals is provided.
      *
      * @param array{
-     *   associations: list<array{
-     *     to: array<string,mixed>|PublicObjectID,
-     *     types: list<array<string,mixed>|AssociationSpec>,
-     *   }>,
+     *   associations: list<PublicAssociationsForObject|PublicAssociationsForObjectShape>,
      *   properties: array<string,string>,
      * }|DealCreateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CreatedResponseSimplePublicObject>
      *
@@ -50,7 +53,7 @@ final class DealsRawService implements DealsRawContract
      */
     public function create(
         array|DealCreateParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = DealCreateParams::parseRequest(
             $params,
@@ -72,10 +75,11 @@ final class DealsRawService implements DealsRawContract
      *
      * Perform a partial update of an Object identified by `{dealId}`or optionally a unique property value as specified by the `idProperty` query param. `{dealId}` refers to the internal object ID by default, and the `idProperty` query param refers to a property whose values are unique for the object. Provided property values will be overwritten. Read-only and non-existent properties will result in an error. Properties values can be cleared by passing an empty string.
      *
-     * @param string $dealID Path param:
+     * @param string $dealID Path param
      * @param array{
      *   properties: array<string,string>, idProperty?: string
      * }|DealUpdateParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SimplePublicObject>
      *
@@ -84,7 +88,7 @@ final class DealsRawService implements DealsRawContract
     public function update(
         string $dealID,
         array|DealUpdateParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = DealUpdateParams::parseRequest(
             $params,
@@ -116,6 +120,7 @@ final class DealsRawService implements DealsRawContract
      *   properties?: list<string>,
      *   propertiesWithHistory?: list<string>,
      * }|DealListParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<SimplePublicObjectWithAssociations>>
      *
@@ -123,7 +128,7 @@ final class DealsRawService implements DealsRawContract
      */
     public function list(
         array|DealListParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = DealListParams::parseRequest(
             $params,
@@ -146,13 +151,15 @@ final class DealsRawService implements DealsRawContract
      *
      * Move an Object identified by `{dealId}` to the recycling bin.
      *
+     * @param RequestOpts|null $requestOptions
+     *
      * @return BaseResponse<mixed>
      *
      * @throws APIException
      */
     public function delete(
         string $dealID,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
@@ -175,6 +182,7 @@ final class DealsRawService implements DealsRawContract
      *   properties?: list<string>,
      *   propertiesWithHistory?: list<string>,
      * }|DealGetParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SimplePublicObjectWithAssociations>
      *
@@ -183,7 +191,7 @@ final class DealsRawService implements DealsRawContract
     public function get(
         string $dealID,
         array|DealGetParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = DealGetParams::parseRequest(
             $params,
@@ -208,6 +216,7 @@ final class DealsRawService implements DealsRawContract
      * @param array{
      *   objectIDToMerge: string, primaryObjectID: string
      * }|DealMergeParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SimplePublicObject>
      *
@@ -215,7 +224,7 @@ final class DealsRawService implements DealsRawContract
      */
     public function merge(
         array|DealMergeParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = DealMergeParams::parseRequest(
             $params,
@@ -239,12 +248,13 @@ final class DealsRawService implements DealsRawContract
      *
      * @param array{
      *   after: string,
-     *   filterGroups: list<array{filters: list<array<string,mixed>>}>,
+     *   filterGroups: list<FilterGroup|FilterGroupShape>,
      *   limit: int,
      *   properties: list<string>,
      *   sorts: list<string>,
      *   query?: string,
      * }|DealSearchParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CollectionResponseWithTotalSimplePublicObject>
      *
@@ -252,7 +262,7 @@ final class DealsRawService implements DealsRawContract
      */
     public function search(
         array|DealSearchParams $params,
-        ?RequestOptions $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = DealSearchParams::parseRequest(
             $params,

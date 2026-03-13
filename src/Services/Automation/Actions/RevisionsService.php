@@ -12,6 +12,9 @@ use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Automation\Actions\RevisionsContract;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 final class RevisionsService implements RevisionsContract
 {
     /**
@@ -36,6 +39,7 @@ final class RevisionsService implements RevisionsContract
      * @param int $appID path param: The ID of the app
      * @param string $after Query param: The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
      * @param int $limit query param: The maximum number of results to display per page
+     * @param RequestOpts|null $requestOptions
      *
      * @return Page<PublicActionRevision>
      *
@@ -46,7 +50,7 @@ final class RevisionsService implements RevisionsContract
         int $appID,
         ?string $after = null,
         ?int $limit = null,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): Page {
         $params = Util::removeNulls(
             ['appID' => $appID, 'after' => $after, 'limit' => $limit]
@@ -66,6 +70,7 @@ final class RevisionsService implements RevisionsContract
      * @param string $revisionID the ID of the revision
      * @param int $appID the ID of the app
      * @param string $definitionID the ID of the definition
+     * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
@@ -73,7 +78,7 @@ final class RevisionsService implements RevisionsContract
         string $revisionID,
         int $appID,
         string $definitionID,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): PublicActionRevision {
         $params = Util::removeNulls(
             ['appID' => $appID, 'definitionID' => $definitionID]

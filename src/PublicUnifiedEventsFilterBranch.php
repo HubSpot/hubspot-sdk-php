@@ -14,6 +14,8 @@ use HubspotSDK\PublicUnifiedEventsFilterBranch\FilterBranchType;
 use HubspotSDK\PublicUnifiedEventsFilterBranch\Operator;
 
 /**
+ * @phpstan-import-type FilterVariants from \HubspotSDK\PublicUnifiedEventsFilterBranch\Filter
+ * @phpstan-import-type CoalescingRefineByVariants from \HubspotSDK\PublicUnifiedEventsFilterBranch\CoalescingRefineBy
  * @phpstan-import-type FilterShape from \HubspotSDK\PublicUnifiedEventsFilterBranch\Filter
  * @phpstan-import-type CoalescingRefineByShape from \HubspotSDK\PublicUnifiedEventsFilterBranch\CoalescingRefineBy
  *
@@ -46,9 +48,7 @@ final class PublicUnifiedEventsFilterBranch implements BaseModel
     #[Required(enum: FilterBranchType::class)]
     public string $filterBranchType;
 
-    /**
-     * @var list<PublicPropertyFilter|PublicAssociationInListFilter|PublicPageViewAnalyticsFilter|PublicCtaAnalyticsFilter|PublicEventAnalyticsFilter|PublicFormSubmissionFilter|PublicFormSubmissionOnPageFilter|PublicIntegrationEventFilter|PublicEmailSubscriptionFilter|PublicCommunicationSubscriptionFilter|PublicCampaignInfluencedFilter|PublicSurveyMonkeyFilter|PublicSurveyMonkeyValueFilter|PublicWebinarFilter|PublicEmailEventFilter|PublicPrivacyAnalyticsFilter|PublicAdsSearchFilter|PublicAdsTimeFilter|PublicInListFilter|PublicNumAssociationsFilter|PublicUnifiedEventsFilter|PublicPropertyAssociationInListFilter|PublicConstantFilter> $filters
-     */
+    /** @var list<FilterVariants> $filters */
     #[Required(list: Filter::class)]
     public array $filters;
 
@@ -56,6 +56,7 @@ final class PublicUnifiedEventsFilterBranch implements BaseModel
     #[Required(enum: Operator::class)]
     public string $operator;
 
+    /** @var CoalescingRefineByVariants|null $coalescingRefineBy */
     #[Optional]
     public PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation|null $coalescingRefineBy;
 

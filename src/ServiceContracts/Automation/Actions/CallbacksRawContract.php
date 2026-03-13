@@ -10,6 +10,9 @@ use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
 interface CallbacksRawContract
 {
     /**
@@ -17,6 +20,7 @@ interface CallbacksRawContract
      *
      * @param string $callbackID the ID of the action execution
      * @param array<string,mixed>|CallbackCompleteParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -25,13 +29,14 @@ interface CallbacksRawContract
     public function complete(
         string $callbackID,
         array|CallbackCompleteParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
      * @param array<string,mixed>|CallbackCompleteBatchParams $params
+     * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
@@ -39,6 +44,6 @@ interface CallbacksRawContract
      */
     public function completeBatch(
         array|CallbackCompleteBatchParams $params,
-        ?RequestOptions $requestOptions = null,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

@@ -12,6 +12,7 @@ use HubspotSDK\Events\EventDefinitions\IndexedTimePoint\TimeType;
 use HubspotSDK\Events\EventDefinitions\IndexedTimePoint\TimezoneSource;
 
 /**
+ * @phpstan-import-type IndexReferenceVariants from \HubspotSDK\Events\EventDefinitions\IndexedTimePoint\IndexReference
  * @phpstan-import-type IndexReferenceShape from \HubspotSDK\Events\EventDefinitions\IndexedTimePoint\IndexReference
  * @phpstan-import-type IndexOffsetShape from \HubspotSDK\Events\EventDefinitions\IndexOffset
  *
@@ -28,6 +29,7 @@ final class IndexedTimePoint implements BaseModel
     /** @use SdkModel<IndexedTimePointShape> */
     use SdkModel;
 
+    /** @var IndexReferenceVariants $indexReference */
     #[Required]
     public NowReference|TodayReference|WeekReference|MonthReference|QuarterReference|FiscalQuarter|YearReference|FiscalYear $indexReference;
 
