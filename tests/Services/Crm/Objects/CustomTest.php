@@ -4,10 +4,11 @@ namespace Tests\Services\Crm\Objects;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Util;
-use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
-use HubspotSDK\Crm\CreatedResponseSimplePublicObject;
-use HubspotSDK\Crm\SimplePublicObject;
-use HubspotSDK\Crm\SimplePublicObjectWithAssociations;
+use HubspotSDK\Crm\Objects\BatchResponseSimplePublicObject;
+use HubspotSDK\Crm\Objects\BatchResponseSimplePublicUpsertObject;
+use HubspotSDK\Crm\Objects\CollectionResponseWithTotalSimplePublicObject;
+use HubspotSDK\Crm\Objects\SimplePublicObject;
+use HubspotSDK\Crm\Objects\SimplePublicObjectWithAssociations;
 use HubspotSDK\Page;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
@@ -39,96 +40,109 @@ final class CustomTest extends TestCase
     public function testCreate(): void
     {
         if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
+            $this->markTestSkipped('Mock server tests are disabled');
         }
 
         $result = $this->client->crm->objects->custom->create(
             'objectType',
-            associations: [
+            inputs: [
                 [
-                    'to' => ['id' => '37295'],
-                    'types' => [
+                    'associations' => [
                         [
-                            'associationCategory' => 'HUBSPOT_DEFINED',
-                            'associationTypeID' => 0,
+                            'to' => ['id' => 'id'],
+                            'types' => [
+                                [
+                                    'associationCategory' => 'HUBSPOT_DEFINED',
+                                    'associationTypeID' => 0,
+                                ],
+                            ],
                         ],
                     ],
+                    'properties' => ['foo' => 'string'],
                 ],
             ],
-            properties: ['foo' => 'string'],
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(CreatedResponseSimplePublicObject::class, $result);
+        $this->assertInstanceOf(BatchResponseSimplePublicObject::class, $result);
     }
 
     #[Test]
     public function testCreateWithOptionalParams(): void
     {
         if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
+            $this->markTestSkipped('Mock server tests are disabled');
         }
 
         $result = $this->client->crm->objects->custom->create(
             'objectType',
-            associations: [
+            inputs: [
                 [
-                    'to' => ['id' => '37295'],
-                    'types' => [
+                    'associations' => [
                         [
-                            'associationCategory' => 'HUBSPOT_DEFINED',
-                            'associationTypeID' => 0,
+                            'to' => ['id' => 'id'],
+                            'types' => [
+                                [
+                                    'associationCategory' => 'HUBSPOT_DEFINED',
+                                    'associationTypeID' => 0,
+                                ],
+                            ],
                         ],
                     ],
+                    'properties' => ['foo' => 'string'],
+                    'objectWriteTraceID' => 'objectWriteTraceId',
                 ],
             ],
-            properties: ['foo' => 'string'],
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(CreatedResponseSimplePublicObject::class, $result);
+        $this->assertInstanceOf(BatchResponseSimplePublicObject::class, $result);
     }
 
     #[Test]
     public function testUpdate(): void
     {
         if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
+            $this->markTestSkipped('Mock server tests are disabled');
         }
 
         $result = $this->client->crm->objects->custom->update(
-            'objectId',
-            objectType: 'objectType',
-            properties: ['foo' => 'string']
+            'objectType',
+            inputs: [['id' => 'id', 'properties' => ['foo' => 'string']]],
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(SimplePublicObject::class, $result);
+        $this->assertInstanceOf(BatchResponseSimplePublicObject::class, $result);
     }
 
     #[Test]
     public function testUpdateWithOptionalParams(): void
     {
         if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
+            $this->markTestSkipped('Mock server tests are disabled');
         }
 
         $result = $this->client->crm->objects->custom->update(
-            'objectId',
-            objectType: 'objectType',
-            properties: ['foo' => 'string'],
-            idProperty: 'idProperty',
+            'objectType',
+            inputs: [
+                [
+                    'id' => 'id',
+                    'properties' => ['foo' => 'string'],
+                    'idProperty' => 'my_unique_property_name',
+                    'objectWriteTraceID' => 'objectWriteTraceId',
+                ],
+            ],
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(SimplePublicObject::class, $result);
+        $this->assertInstanceOf(BatchResponseSimplePublicObject::class, $result);
     }
 
     #[Test]
     public function testList(): void
     {
         if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
+            $this->markTestSkipped('Mock server tests are disabled');
         }
 
         $page = $this->client->crm->objects->custom->list('objectType');
@@ -146,12 +160,12 @@ final class CustomTest extends TestCase
     public function testDelete(): void
     {
         if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
+            $this->markTestSkipped('Mock server tests are disabled');
         }
 
         $result = $this->client->crm->objects->custom->delete(
-            'objectId',
-            objectType: 'objectType'
+            'objectType',
+            inputs: [['id' => '430001']]
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -162,12 +176,12 @@ final class CustomTest extends TestCase
     public function testDeleteWithOptionalParams(): void
     {
         if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
+            $this->markTestSkipped('Mock server tests are disabled');
         }
 
         $result = $this->client->crm->objects->custom->delete(
-            'objectId',
-            objectType: 'objectType'
+            'objectType',
+            inputs: [['id' => '430001']]
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -178,44 +192,45 @@ final class CustomTest extends TestCase
     public function testGet(): void
     {
         if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
+            $this->markTestSkipped('Mock server tests are disabled');
         }
 
         $result = $this->client->crm->objects->custom->get(
-            'objectId',
-            objectType: 'objectType'
+            'objectType',
+            inputs: [['id' => '430001']],
+            properties: ['string'],
+            propertiesWithHistory: ['string'],
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(SimplePublicObjectWithAssociations::class, $result);
+        $this->assertInstanceOf(BatchResponseSimplePublicObject::class, $result);
     }
 
     #[Test]
     public function testGetWithOptionalParams(): void
     {
         if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
+            $this->markTestSkipped('Mock server tests are disabled');
         }
 
         $result = $this->client->crm->objects->custom->get(
-            'objectId',
-            objectType: 'objectType',
-            archived: true,
-            associations: ['string'],
-            idProperty: 'idProperty',
+            'objectType',
+            inputs: [['id' => '430001']],
             properties: ['string'],
             propertiesWithHistory: ['string'],
+            archived: true,
+            idProperty: 'idProperty',
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(SimplePublicObjectWithAssociations::class, $result);
+        $this->assertInstanceOf(BatchResponseSimplePublicObject::class, $result);
     }
 
     #[Test]
     public function testMerge(): void
     {
         if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
+            $this->markTestSkipped('Mock server tests are disabled');
         }
 
         $result = $this->client->crm->objects->custom->merge(
@@ -232,7 +247,7 @@ final class CustomTest extends TestCase
     public function testMergeWithOptionalParams(): void
     {
         if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
+            $this->markTestSkipped('Mock server tests are disabled');
         }
 
         $result = $this->client->crm->objects->custom->merge(
@@ -249,7 +264,7 @@ final class CustomTest extends TestCase
     public function testSearch(): void
     {
         if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
+            $this->markTestSkipped('Mock server tests are disabled');
         }
 
         $result = $this->client->crm->objects->custom->search(
@@ -278,7 +293,7 @@ final class CustomTest extends TestCase
     public function testSearchWithOptionalParams(): void
     {
         if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
+            $this->markTestSkipped('Mock server tests are disabled');
         }
 
         $result = $this->client->crm->objects->custom->search(
@@ -306,6 +321,51 @@ final class CustomTest extends TestCase
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(
             CollectionResponseWithTotalSimplePublicObject::class,
+            $result
+        );
+    }
+
+    #[Test]
+    public function testUpsert(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->crm->objects->custom->upsert(
+            'objectType',
+            inputs: [['id' => 'id', 'properties' => ['foo' => 'string']]],
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            BatchResponseSimplePublicUpsertObject::class,
+            $result
+        );
+    }
+
+    #[Test]
+    public function testUpsertWithOptionalParams(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->crm->objects->custom->upsert(
+            'objectType',
+            inputs: [
+                [
+                    'id' => 'id',
+                    'properties' => ['foo' => 'string'],
+                    'idProperty' => 'idProperty',
+                    'objectWriteTraceID' => 'objectWriteTraceId',
+                ],
+            ],
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            BatchResponseSimplePublicUpsertObject::class,
             $result
         );
     }

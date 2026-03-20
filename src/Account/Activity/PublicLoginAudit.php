@@ -10,8 +10,6 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * Details about the a particular login activity for a HubSpot account.
- *
  * @phpstan-type PublicLoginAuditShape = array{
  *   id: string,
  *   loginAt: \DateTimeInterface,
@@ -66,6 +64,9 @@ final class PublicLoginAudit implements BaseModel
     #[Optional]
     public ?string $ipAddress;
 
+    /**
+     * The approximate location where the login activity originated.
+     */
     #[Optional]
     public ?string $location;
 
@@ -206,6 +207,9 @@ final class PublicLoginAudit implements BaseModel
         return $self;
     }
 
+    /**
+     * The approximate location where the login activity originated.
+     */
     public function withLocation(string $location): self
     {
         $self = clone $this;

@@ -8,18 +8,17 @@ use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\PublicAssociationsForObject;
+use HubspotSDK\Crm\Objects\SimplePublicObjectBatchInputForCreate;
 
 /**
- * Create a CRM object with the given properties and return a copy of the object, including the ID. Documentation and examples for creating standard objects is provided.
+ * Create multiple tasks in a single request by providing a batch of task properties and associations. This endpoint allows for efficient task creation by processing multiple tasks together.
  *
  * @see HubspotSDK\Services\Crm\Objects\CustomService::create()
  *
- * @phpstan-import-type PublicAssociationsForObjectShape from \HubspotSDK\Crm\PublicAssociationsForObject
+ * @phpstan-import-type SimplePublicObjectBatchInputForCreateShape from \HubspotSDK\Crm\Objects\SimplePublicObjectBatchInputForCreate
  *
  * @phpstan-type CustomCreateParamsShape = array{
- *   associations: list<PublicAssociationsForObject|PublicAssociationsForObjectShape>,
- *   properties: array<string,string>,
+ *   inputs: list<SimplePublicObjectBatchInputForCreate|SimplePublicObjectBatchInputForCreateShape>,
  * }
  */
 final class CustomCreateParams implements BaseModel
@@ -28,30 +27,22 @@ final class CustomCreateParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    /** @var list<PublicAssociationsForObject> $associations */
-    #[Required(list: PublicAssociationsForObject::class)]
-    public array $associations;
-
-    /**
-     * Key-value pairs for setting properties for the new object.
-     *
-     * @var array<string,string> $properties
-     */
-    #[Required(map: 'string')]
-    public array $properties;
+    /** @var list<SimplePublicObjectBatchInputForCreate> $inputs */
+    #[Required(list: SimplePublicObjectBatchInputForCreate::class)]
+    public array $inputs;
 
     /**
      * `new CustomCreateParams()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * CustomCreateParams::with(associations: ..., properties: ...)
+     * CustomCreateParams::with(inputs: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
      *
      * ```
-     * (new CustomCreateParams)->withAssociations(...)->withProperties(...)
+     * (new CustomCreateParams)->withInputs(...)
      * ```
      */
     public function __construct()
@@ -64,39 +55,24 @@ final class CustomCreateParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<PublicAssociationsForObject|PublicAssociationsForObjectShape> $associations
-     * @param array<string,string> $properties
+     * @param list<SimplePublicObjectBatchInputForCreate|SimplePublicObjectBatchInputForCreateShape> $inputs
      */
-    public static function with(array $associations, array $properties): self
+    public static function with(array $inputs): self
     {
         $self = new self;
 
-        $self['associations'] = $associations;
-        $self['properties'] = $properties;
+        $self['inputs'] = $inputs;
 
         return $self;
     }
 
     /**
-     * @param list<PublicAssociationsForObject|PublicAssociationsForObjectShape> $associations
+     * @param list<SimplePublicObjectBatchInputForCreate|SimplePublicObjectBatchInputForCreateShape> $inputs
      */
-    public function withAssociations(array $associations): self
+    public function withInputs(array $inputs): self
     {
         $self = clone $this;
-        $self['associations'] = $associations;
-
-        return $self;
-    }
-
-    /**
-     * Key-value pairs for setting properties for the new object.
-     *
-     * @param array<string,string> $properties
-     */
-    public function withProperties(array $properties): self
-    {
-        $self = clone $this;
-        $self['properties'] = $properties;
+        $self['inputs'] = $inputs;
 
         return $self;
     }

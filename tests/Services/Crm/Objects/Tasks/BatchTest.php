@@ -4,8 +4,8 @@ namespace Tests\Services\Crm\Objects\Tasks;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Util;
-use HubspotSDK\Crm\BatchResponseSimplePublicObject;
-use HubspotSDK\Crm\BatchResponseSimplePublicUpsertObject;
+use HubspotSDK\Crm\Objects\BatchResponseSimplePublicObject;
+use HubspotSDK\Crm\Objects\BatchResponseSimplePublicUpsertObject;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -36,15 +36,16 @@ final class BatchTest extends TestCase
     public function testCreate(): void
     {
         if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
+            $this->markTestSkipped('Mock server tests are disabled');
         }
 
         $result = $this->client->crm->objects->tasks->batch->create(
+            'objectType',
             inputs: [
                 [
                     'associations' => [
                         [
-                            'to' => ['id' => '37295'],
+                            'to' => ['id' => 'id'],
                             'types' => [
                                 [
                                     'associationCategory' => 'HUBSPOT_DEFINED',
@@ -66,15 +67,16 @@ final class BatchTest extends TestCase
     public function testCreateWithOptionalParams(): void
     {
         if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
+            $this->markTestSkipped('Mock server tests are disabled');
         }
 
         $result = $this->client->crm->objects->tasks->batch->create(
+            'objectType',
             inputs: [
                 [
                     'associations' => [
                         [
-                            'to' => ['id' => '37295'],
+                            'to' => ['id' => 'id'],
                             'types' => [
                                 [
                                     'associationCategory' => 'HUBSPOT_DEFINED',
@@ -97,11 +99,12 @@ final class BatchTest extends TestCase
     public function testUpdate(): void
     {
         if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
+            $this->markTestSkipped('Mock server tests are disabled');
         }
 
         $result = $this->client->crm->objects->tasks->batch->update(
-            inputs: [['id' => 'id', 'properties' => ['foo' => 'string']]]
+            'objectType',
+            inputs: [['id' => 'id', 'properties' => ['foo' => 'string']]],
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -112,10 +115,11 @@ final class BatchTest extends TestCase
     public function testUpdateWithOptionalParams(): void
     {
         if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
+            $this->markTestSkipped('Mock server tests are disabled');
         }
 
         $result = $this->client->crm->objects->tasks->batch->update(
+            'objectType',
             inputs: [
                 [
                     'id' => 'id',
@@ -134,11 +138,12 @@ final class BatchTest extends TestCase
     public function testDelete(): void
     {
         if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
+            $this->markTestSkipped('Mock server tests are disabled');
         }
 
         $result = $this->client->crm->objects->tasks->batch->delete(
-            inputs: [['id' => 'id']]
+            'objectType',
+            inputs: [['id' => '430001']]
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -149,11 +154,12 @@ final class BatchTest extends TestCase
     public function testDeleteWithOptionalParams(): void
     {
         if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
+            $this->markTestSkipped('Mock server tests are disabled');
         }
 
         $result = $this->client->crm->objects->tasks->batch->delete(
-            inputs: [['id' => 'id']]
+            'objectType',
+            inputs: [['id' => '430001']]
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -164,11 +170,12 @@ final class BatchTest extends TestCase
     public function testGet(): void
     {
         if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
+            $this->markTestSkipped('Mock server tests are disabled');
         }
 
         $result = $this->client->crm->objects->tasks->batch->get(
-            inputs: [['id' => 'id']],
+            'objectType',
+            inputs: [['id' => '430001']],
             properties: ['string'],
             propertiesWithHistory: ['string'],
         );
@@ -181,11 +188,12 @@ final class BatchTest extends TestCase
     public function testGetWithOptionalParams(): void
     {
         if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
+            $this->markTestSkipped('Mock server tests are disabled');
         }
 
         $result = $this->client->crm->objects->tasks->batch->get(
-            inputs: [['id' => 'id']],
+            'objectType',
+            inputs: [['id' => '430001']],
             properties: ['string'],
             propertiesWithHistory: ['string'],
             archived: true,
@@ -200,11 +208,12 @@ final class BatchTest extends TestCase
     public function testUpsert(): void
     {
         if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
+            $this->markTestSkipped('Mock server tests are disabled');
         }
 
         $result = $this->client->crm->objects->tasks->batch->upsert(
-            inputs: [['id' => 'id', 'properties' => ['foo' => 'string']]]
+            'objectType',
+            inputs: [['id' => 'id', 'properties' => ['foo' => 'string']]],
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -218,10 +227,11 @@ final class BatchTest extends TestCase
     public function testUpsertWithOptionalParams(): void
     {
         if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
+            $this->markTestSkipped('Mock server tests are disabled');
         }
 
         $result = $this->client->crm->objects->tasks->batch->upsert(
+            'objectType',
             inputs: [
                 [
                     'id' => 'id',

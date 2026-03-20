@@ -8,14 +8,14 @@ use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\SimplePublicObjectBatchInputForCreate;
+use HubspotSDK\Crm\Objects\SimplePublicObjectBatchInputForCreate;
 
 /**
- * Create a batch of tasks.
+ * Create multiple tasks in a single request by providing a batch of task properties and associations. This endpoint allows for efficient task creation by processing multiple tasks together.
  *
  * @see HubspotSDK\Services\Crm\Objects\Tasks\BatchService::create()
  *
- * @phpstan-import-type SimplePublicObjectBatchInputForCreateShape from \HubspotSDK\Crm\SimplePublicObjectBatchInputForCreate
+ * @phpstan-import-type SimplePublicObjectBatchInputForCreateShape from \HubspotSDK\Crm\Objects\SimplePublicObjectBatchInputForCreate
  *
  * @phpstan-type BatchCreateParamsShape = array{
  *   inputs: list<SimplePublicObjectBatchInputForCreate|SimplePublicObjectBatchInputForCreateShape>,

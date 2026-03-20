@@ -37,6 +37,7 @@ final class ActivityRawService implements ActivityRawContract
      * @param array{
      *   actingUserID?: list<int>,
      *   after?: string,
+     *   fillFinalTimestamp?: bool,
      *   limit?: int,
      *   occurredAfter?: \DateTimeInterface,
      *   occurredBefore?: \DateTimeInterface,
@@ -60,7 +61,7 @@ final class ActivityRawService implements ActivityRawContract
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
-            path: 'account-info/v3/activity/audit-logs',
+            path: 'account-info/2026-03/activity/audit-logs',
             query: Util::array_transform_keys(
                 $parsed,
                 ['actingUserID' => 'actingUserId']
@@ -97,7 +98,7 @@ final class ActivityRawService implements ActivityRawContract
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
-            path: 'account-info/v3/activity/login',
+            path: 'account-info/2026-03/activity/login',
             query: Util::array_transform_keys($parsed, ['userID' => 'userId']),
             options: $options,
             convert: PublicLoginAudit::class,
@@ -135,7 +136,7 @@ final class ActivityRawService implements ActivityRawContract
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
-            path: 'account-info/v3/activity/security',
+            path: 'account-info/2026-03/activity/security',
             query: Util::array_transform_keys($parsed, ['userID' => 'userId']),
             options: $options,
             convert: HydratedCriticalAction::class,

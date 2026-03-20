@@ -38,19 +38,9 @@ use HubspotSDK\Client;
 
 $client = new Client(accessToken: 'pat-na1-xxxxxxxx-xxxx');
 
-$createdResponseSimplePublicObject = $client->crm->objects->contacts->create(
-  associations: [
-    [
-      'to' => ['id' => '37295'],
-      'types' => [
-        ['associationCategory' => 'HUBSPOT_DEFINED', 'associationTypeID' => 0]
-      ],
-    ],
-  ],
-  properties: ['email' => 'mark.s@lumon.industries'],
-);
+$page = $client->account->activity->listAuditLogs();
 
-var_dump($createdResponseSimplePublicObject->createdResourceId);
+var_dump($page->id);
 ```
 
 ### Value Objects
@@ -73,7 +63,7 @@ use HubspotSDK\Client;
 
 $client = new Client(accessToken: 'pat-na1-xxxxxxxx-xxxx');
 
-$page = $client->crm->objects->contacts->list(limit: 100);
+$page = $client->account->activity->listAuditLogs();
 
 var_dump($page);
 
@@ -99,17 +89,7 @@ use HubspotSDK\Core\Exceptions\RateLimitException;
 use HubspotSDK\Core\Exceptions\APIStatusException;
 
 try {
-  $createdResponseSimplePublicObject = $client->crm->objects->contacts->create(
-    associations: [
-      [
-        'to' => ['id' => '37295'],
-        'types' => [
-          ['associationCategory' => 'HUBSPOT_DEFINED', 'associationTypeID' => 0]
-        ],
-      ],
-    ],
-    properties: ['email' => 'mark.s@lumon.industries'],
-  );
+  $page = $client->account->activity->listAuditLogs();
 } catch (APIConnectionException $e) {
   echo "The server could not be reached", PHP_EOL;
   var_dump($e->getPrevious());
@@ -154,17 +134,8 @@ use HubspotSDK\Client;
 $client = new Client(requestOptions: ['maxRetries' => 0]);
 
 // Or, configure per-request:
-$result = $client->crm->objects->contacts->create(
-  associations: [
-    [
-      'to' => ['id' => '37295'],
-      'types' => [
-        ['associationCategory' => 'HUBSPOT_DEFINED', 'associationTypeID' => 0]
-      ],
-    ],
-  ],
-  properties: ['email' => 'mark.s@lumon.industries'],
-  requestOptions: ['maxRetries' => 5],
+$result = $client->account->activity->listAuditLogs(
+  requestOptions: ['maxRetries' => 5]
 );
 ```
 
@@ -181,16 +152,7 @@ Note: the `extra*` parameters of the same name overrides the documented paramete
 ```php
 <?php
 
-$createdResponseSimplePublicObject = $client->crm->objects->contacts->create(
-  associations: [
-    [
-      'to' => ['id' => '37295'],
-      'types' => [
-        ['associationCategory' => 'HUBSPOT_DEFINED', 'associationTypeID' => 0]
-      ],
-    ],
-  ],
-  properties: ['email' => 'mark.s@lumon.industries'],
+$page = $client->account->activity->listAuditLogs(
   requestOptions: [
     'extraQueryParams' => ['my_query_parameter' => 'value'],
     'extraBodyParams' => ['my_body_parameter' => 'value'],

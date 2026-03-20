@@ -32,20 +32,7 @@ class ClientTest extends TestCase
             requestOptions: ['transporter' => $transporter],
         );
 
-        $client->crm->objects->contacts->create(
-            associations: [
-                [
-                    'to' => ['id' => '37295'],
-                    'types' => [
-                        [
-                            'associationCategory' => 'HUBSPOT_DEFINED',
-                            'associationTypeID' => 0,
-                        ],
-                    ],
-                ],
-            ],
-            properties: ['foo' => 'string'],
-        );
+        $client->account->activity->listAuditLogs();
 
         $this->assertNotFalse($requested = $transporter->getRequests()[0] ?? false);
 

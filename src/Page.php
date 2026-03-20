@@ -16,7 +16,7 @@ use Psr\Http\Message\ResponseInterface;
 
 /**
  * @phpstan-type PageShape = array{
- *   results?: list<mixed>|null, paging?: \HubspotSDK\Page\Paging|null
+ *   results?: list<mixed>|null, paging?: Paging|null
  * }
  *
  * @template TItem

@@ -7,26 +7,26 @@ namespace HubspotSDK\Services\Crm\Objects\Tasks;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Crm\BatchResponseSimplePublicObject;
-use HubspotSDK\Crm\BatchResponseSimplePublicUpsertObject;
+use HubspotSDK\Crm\Objects\BatchResponseSimplePublicObject;
+use HubspotSDK\Crm\Objects\BatchResponseSimplePublicUpsertObject;
+use HubspotSDK\Crm\Objects\SimplePublicObjectBatchInput;
+use HubspotSDK\Crm\Objects\SimplePublicObjectBatchInputForCreate;
+use HubspotSDK\Crm\Objects\SimplePublicObjectBatchInputUpsert;
+use HubspotSDK\Crm\Objects\SimplePublicObjectID;
 use HubspotSDK\Crm\Objects\Tasks\Batch\BatchCreateParams;
 use HubspotSDK\Crm\Objects\Tasks\Batch\BatchDeleteParams;
 use HubspotSDK\Crm\Objects\Tasks\Batch\BatchGetParams;
 use HubspotSDK\Crm\Objects\Tasks\Batch\BatchUpdateParams;
 use HubspotSDK\Crm\Objects\Tasks\Batch\BatchUpsertParams;
-use HubspotSDK\Crm\SimplePublicObjectBatchInput;
-use HubspotSDK\Crm\SimplePublicObjectBatchInputForCreate;
-use HubspotSDK\Crm\SimplePublicObjectBatchInputUpsert;
-use HubspotSDK\Crm\SimplePublicObjectID;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Objects\Tasks\BatchRawContract;
 
 /**
- * @phpstan-import-type SimplePublicObjectBatchInputForCreateShape from \HubspotSDK\Crm\SimplePublicObjectBatchInputForCreate
- * @phpstan-import-type SimplePublicObjectBatchInputShape from \HubspotSDK\Crm\SimplePublicObjectBatchInput
- * @phpstan-import-type SimplePublicObjectBatchInputUpsertShape from \HubspotSDK\Crm\SimplePublicObjectBatchInputUpsert
+ * @phpstan-import-type SimplePublicObjectBatchInputForCreateShape from \HubspotSDK\Crm\Objects\SimplePublicObjectBatchInputForCreate
+ * @phpstan-import-type SimplePublicObjectBatchInputShape from \HubspotSDK\Crm\Objects\SimplePublicObjectBatchInput
+ * @phpstan-import-type SimplePublicObjectBatchInputUpsertShape from \HubspotSDK\Crm\Objects\SimplePublicObjectBatchInputUpsert
  * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
- * @phpstan-import-type SimplePublicObjectIDShape from \HubspotSDK\Crm\SimplePublicObjectID
+ * @phpstan-import-type SimplePublicObjectIDShape from \HubspotSDK\Crm\Objects\SimplePublicObjectID
  */
 final class BatchRawService implements BatchRawContract
 {
@@ -39,8 +39,9 @@ final class BatchRawService implements BatchRawContract
     /**
      * @api
      *
-     * Create a batch of tasks
+     * Create multiple tasks in a single request by providing a batch of task properties and associations. This endpoint allows for efficient task creation by processing multiple tasks together.
      *
+     * @param string $objectType object type
      * @param array{
      *   inputs: list<SimplePublicObjectBatchInputForCreate|SimplePublicObjectBatchInputForCreateShape>,
      * }|BatchCreateParams $params
@@ -51,6 +52,7 @@ final class BatchRawService implements BatchRawContract
      * @throws APIException
      */
     public function create(
+        string $objectType,
         array|BatchCreateParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
@@ -62,7 +64,7 @@ final class BatchRawService implements BatchRawContract
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
-            path: 'crm/v3/objects/tasks/batch/create',
+            path: ['crm/objects/2026-03/%1$s/batch/create', $objectType],
             body: (object) $parsed,
             options: $options,
             convert: BatchResponseSimplePublicObject::class,
@@ -72,8 +74,9 @@ final class BatchRawService implements BatchRawContract
     /**
      * @api
      *
-     * Update a batch of tasks by internal ID, or unique property values
+     * Update multiple tasks in a single request using their internal IDs or unique property values. This operation allows you to modify the properties of each task in the batch, ensuring efficient management of task data.
      *
+     * @param string $objectType object type
      * @param array{
      *   inputs: list<SimplePublicObjectBatchInput|SimplePublicObjectBatchInputShape>
      * }|BatchUpdateParams $params
@@ -84,6 +87,7 @@ final class BatchRawService implements BatchRawContract
      * @throws APIException
      */
     public function update(
+        string $objectType,
         array|BatchUpdateParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
@@ -95,7 +99,7 @@ final class BatchRawService implements BatchRawContract
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
-            path: 'crm/v3/objects/tasks/batch/update',
+            path: ['crm/objects/2026-03/%1$s/batch/update', $objectType],
             body: (object) $parsed,
             options: $options,
             convert: BatchResponseSimplePublicObject::class,
@@ -105,8 +109,9 @@ final class BatchRawService implements BatchRawContract
     /**
      * @api
      *
-     * Archive a batch of tasks by ID
+     * Archive a batch of tasks by their IDs, moving them to the recycling bin. This operation requires a list of task IDs to be provided in the request body.
      *
+     * @param string $objectType object type
      * @param array{
      *   inputs: list<SimplePublicObjectID|SimplePublicObjectIDShape>
      * }|BatchDeleteParams $params
@@ -117,6 +122,7 @@ final class BatchRawService implements BatchRawContract
      * @throws APIException
      */
     public function delete(
+        string $objectType,
         array|BatchDeleteParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
@@ -128,7 +134,7 @@ final class BatchRawService implements BatchRawContract
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
-            path: 'crm/v3/objects/tasks/batch/archive',
+            path: ['crm/objects/2026-03/%1$s/batch/archive', $objectType],
             body: (object) $parsed,
             options: $options,
             convert: null,
@@ -140,6 +146,7 @@ final class BatchRawService implements BatchRawContract
      *
      * Retrieve records by record ID or include the `idProperty` parameter to retrieve records by a custom unique value property.
      *
+     * @param string $objectType path param: Object type
      * @param array{
      *   inputs: list<SimplePublicObjectID|SimplePublicObjectIDShape>,
      *   properties: list<string>,
@@ -154,6 +161,7 @@ final class BatchRawService implements BatchRawContract
      * @throws APIException
      */
     public function get(
+        string $objectType,
         array|BatchGetParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
@@ -166,7 +174,7 @@ final class BatchRawService implements BatchRawContract
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
-            path: 'crm/v3/objects/tasks/batch/read',
+            path: ['crm/objects/2026-03/%1$s/batch/read', $objectType],
             query: array_intersect_key($parsed, $query_params),
             body: (object) array_diff_key($parsed, $query_params),
             options: $options,
@@ -179,6 +187,7 @@ final class BatchRawService implements BatchRawContract
      *
      * Create or update records identified by a unique property value as specified by the `idProperty` query param. `idProperty` query param refers to a property whose values are unique for the object.
      *
+     * @param string $objectType object type
      * @param array{
      *   inputs: list<SimplePublicObjectBatchInputUpsert|SimplePublicObjectBatchInputUpsertShape>,
      * }|BatchUpsertParams $params
@@ -189,6 +198,7 @@ final class BatchRawService implements BatchRawContract
      * @throws APIException
      */
     public function upsert(
+        string $objectType,
         array|BatchUpsertParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
@@ -200,7 +210,7 @@ final class BatchRawService implements BatchRawContract
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
-            path: 'crm/v3/objects/tasks/batch/upsert',
+            path: ['crm/objects/2026-03/%1$s/batch/upsert', $objectType],
             body: (object) $parsed,
             options: $options,
             convert: BatchResponseSimplePublicUpsertObject::class,

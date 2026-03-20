@@ -10,7 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * Retrieve all contacts, using query parameters to specify the information that gets returned.
+ * Read a page of tasks. Control what is returned via the `properties` query param.
  *
  * @see HubspotSDK\Services\Crm\Objects\ContactsService::list()
  *
@@ -64,7 +64,7 @@ final class ContactListParams implements BaseModel
     public ?array $properties;
 
     /**
-     * A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored. Usage of this parameter will reduce the maximum number of contacts that can be read by a single request.
+     * A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored. Usage of this parameter will reduce the maximum number of tasks that can be read by a single request.
      *
      * @var list<string>|null $propertiesWithHistory
      */
@@ -165,7 +165,7 @@ final class ContactListParams implements BaseModel
     }
 
     /**
-     * A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored. Usage of this parameter will reduce the maximum number of contacts that can be read by a single request.
+     * A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored. Usage of this parameter will reduce the maximum number of tasks that can be read by a single request.
      *
      * @param list<string> $propertiesWithHistory
      */

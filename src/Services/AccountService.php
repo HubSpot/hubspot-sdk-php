@@ -7,8 +7,6 @@ namespace HubspotSDK\Services;
 use HubspotSDK\Client;
 use HubspotSDK\ServiceContracts\AccountContract;
 use HubspotSDK\Services\Account\ActivityService;
-use HubspotSDK\Services\Account\DetailsService;
-use HubspotSDK\Services\Account\UsageService;
 
 final class AccountService implements AccountContract
 {
@@ -23,23 +21,11 @@ final class AccountService implements AccountContract
     public ActivityService $activity;
 
     /**
-     * @api
-     */
-    public DetailsService $details;
-
-    /**
-     * @api
-     */
-    public UsageService $usage;
-
-    /**
      * @internal
      */
     public function __construct(private Client $client)
     {
         $this->raw = new AccountRawService($client);
         $this->activity = new ActivityService($client);
-        $this->details = new DetailsService($client);
-        $this->usage = new UsageService($client);
     }
 }

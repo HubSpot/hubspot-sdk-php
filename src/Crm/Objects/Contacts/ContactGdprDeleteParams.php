@@ -11,8 +11,6 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * Permanently delete a contact and all associated content to follow GDPR. Use optional property `idProperty` set to `email` to identify contact by email address. If email address is not found, the email address will be added to a blocklist and prevent it from being used in the future. Learn more about [permanently deleting contacts](https://knowledge.hubspot.com/privacy-and-consent/how-do-i-perform-a-gdpr-delete-in-hubspot).
- *
  * @see HubspotSDK\Services\Crm\Objects\ContactsService::gdprDelete()
  *
  * @phpstan-type ContactGdprDeleteParamsShape = array{
@@ -26,13 +24,13 @@ final class ContactGdprDeleteParams implements BaseModel
     use SdkParams;
 
     /**
-     * ID of the object.
+     * The ID of the contact to permanently delete.
      */
     #[Required('objectId')]
     public string $objectID;
 
     /**
-     * ID property.
+     * The name of a property whose values are unique for this object. An alternative to identifying a contact by ID.
      */
     #[Optional]
     public ?string $idProperty;
@@ -75,7 +73,7 @@ final class ContactGdprDeleteParams implements BaseModel
     }
 
     /**
-     * ID of the object.
+     * The ID of the contact to permanently delete.
      */
     public function withObjectID(string $objectID): self
     {
@@ -86,7 +84,7 @@ final class ContactGdprDeleteParams implements BaseModel
     }
 
     /**
-     * ID property.
+     * The name of a property whose values are unique for this object. An alternative to identifying a contact by ID.
      */
     public function withIDProperty(string $idProperty): self
     {

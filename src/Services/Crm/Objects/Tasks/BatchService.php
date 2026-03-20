@@ -7,21 +7,21 @@ namespace HubspotSDK\Services\Crm\Objects\Tasks;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Core\Util;
-use HubspotSDK\Crm\BatchResponseSimplePublicObject;
-use HubspotSDK\Crm\BatchResponseSimplePublicUpsertObject;
-use HubspotSDK\Crm\SimplePublicObjectBatchInput;
-use HubspotSDK\Crm\SimplePublicObjectBatchInputForCreate;
-use HubspotSDK\Crm\SimplePublicObjectBatchInputUpsert;
-use HubspotSDK\Crm\SimplePublicObjectID;
+use HubspotSDK\Crm\Objects\BatchResponseSimplePublicObject;
+use HubspotSDK\Crm\Objects\BatchResponseSimplePublicUpsertObject;
+use HubspotSDK\Crm\Objects\SimplePublicObjectBatchInput;
+use HubspotSDK\Crm\Objects\SimplePublicObjectBatchInputForCreate;
+use HubspotSDK\Crm\Objects\SimplePublicObjectBatchInputUpsert;
+use HubspotSDK\Crm\Objects\SimplePublicObjectID;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Objects\Tasks\BatchContract;
 
 /**
- * @phpstan-import-type SimplePublicObjectBatchInputForCreateShape from \HubspotSDK\Crm\SimplePublicObjectBatchInputForCreate
- * @phpstan-import-type SimplePublicObjectBatchInputShape from \HubspotSDK\Crm\SimplePublicObjectBatchInput
- * @phpstan-import-type SimplePublicObjectBatchInputUpsertShape from \HubspotSDK\Crm\SimplePublicObjectBatchInputUpsert
+ * @phpstan-import-type SimplePublicObjectBatchInputForCreateShape from \HubspotSDK\Crm\Objects\SimplePublicObjectBatchInputForCreate
+ * @phpstan-import-type SimplePublicObjectBatchInputShape from \HubspotSDK\Crm\Objects\SimplePublicObjectBatchInput
+ * @phpstan-import-type SimplePublicObjectBatchInputUpsertShape from \HubspotSDK\Crm\Objects\SimplePublicObjectBatchInputUpsert
  * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
- * @phpstan-import-type SimplePublicObjectIDShape from \HubspotSDK\Crm\SimplePublicObjectID
+ * @phpstan-import-type SimplePublicObjectIDShape from \HubspotSDK\Crm\Objects\SimplePublicObjectID
  */
 final class BatchService implements BatchContract
 {
@@ -41,21 +41,23 @@ final class BatchService implements BatchContract
     /**
      * @api
      *
-     * Create a batch of tasks
+     * Create multiple tasks in a single request by providing a batch of task properties and associations. This endpoint allows for efficient task creation by processing multiple tasks together.
      *
+     * @param string $objectType object type
      * @param list<SimplePublicObjectBatchInputForCreate|SimplePublicObjectBatchInputForCreateShape> $inputs
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function create(
+        string $objectType,
         array $inputs,
-        RequestOptions|array|null $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BatchResponseSimplePublicObject {
         $params = Util::removeNulls(['inputs' => $inputs]);
 
         // @phpstan-ignore-next-line argument.type
-        $response = $this->raw->create(params: $params, requestOptions: $requestOptions);
+        $response = $this->raw->create($objectType, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -63,21 +65,23 @@ final class BatchService implements BatchContract
     /**
      * @api
      *
-     * Update a batch of tasks by internal ID, or unique property values
+     * Update multiple tasks in a single request using their internal IDs or unique property values. This operation allows you to modify the properties of each task in the batch, ensuring efficient management of task data.
      *
+     * @param string $objectType object type
      * @param list<SimplePublicObjectBatchInput|SimplePublicObjectBatchInputShape> $inputs
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function update(
+        string $objectType,
         array $inputs,
-        RequestOptions|array|null $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BatchResponseSimplePublicObject {
         $params = Util::removeNulls(['inputs' => $inputs]);
 
         // @phpstan-ignore-next-line argument.type
-        $response = $this->raw->update(params: $params, requestOptions: $requestOptions);
+        $response = $this->raw->update($objectType, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -85,21 +89,23 @@ final class BatchService implements BatchContract
     /**
      * @api
      *
-     * Archive a batch of tasks by ID
+     * Archive a batch of tasks by their IDs, moving them to the recycling bin. This operation requires a list of task IDs to be provided in the request body.
      *
+     * @param string $objectType object type
      * @param list<SimplePublicObjectID|SimplePublicObjectIDShape> $inputs
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function delete(
+        string $objectType,
         array $inputs,
-        RequestOptions|array|null $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): mixed {
         $params = Util::removeNulls(['inputs' => $inputs]);
 
         // @phpstan-ignore-next-line argument.type
-        $response = $this->raw->delete(params: $params, requestOptions: $requestOptions);
+        $response = $this->raw->delete($objectType, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -109,16 +115,18 @@ final class BatchService implements BatchContract
      *
      * Retrieve records by record ID or include the `idProperty` parameter to retrieve records by a custom unique value property.
      *
+     * @param string $objectType path param: Object type
      * @param list<SimplePublicObjectID|SimplePublicObjectIDShape> $inputs Body param
      * @param list<string> $properties body param: Key-value pairs for setting properties for the new object
      * @param list<string> $propertiesWithHistory body param: Key-value pairs for setting properties for the new object and their histories
      * @param bool $archived query param: Whether to return only results that have been archived
-     * @param string $idProperty body param: A unique property used to identify objects instead of the default ID
+     * @param string $idProperty Body param: When using a custom unique value property to retrieve records, the name of the property. Do not include this parameter if retrieving by record ID.
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function get(
+        string $objectType,
         array $inputs,
         array $properties,
         array $propertiesWithHistory,
@@ -137,7 +145,7 @@ final class BatchService implements BatchContract
         );
 
         // @phpstan-ignore-next-line argument.type
-        $response = $this->raw->get(params: $params, requestOptions: $requestOptions);
+        $response = $this->raw->get($objectType, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -147,19 +155,21 @@ final class BatchService implements BatchContract
      *
      * Create or update records identified by a unique property value as specified by the `idProperty` query param. `idProperty` query param refers to a property whose values are unique for the object.
      *
+     * @param string $objectType object type
      * @param list<SimplePublicObjectBatchInputUpsert|SimplePublicObjectBatchInputUpsertShape> $inputs
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function upsert(
+        string $objectType,
         array $inputs,
-        RequestOptions|array|null $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BatchResponseSimplePublicUpsertObject {
         $params = Util::removeNulls(['inputs' => $inputs]);
 
         // @phpstan-ignore-next-line argument.type
-        $response = $this->raw->upsert(params: $params, requestOptions: $requestOptions);
+        $response = $this->raw->upsert($objectType, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }

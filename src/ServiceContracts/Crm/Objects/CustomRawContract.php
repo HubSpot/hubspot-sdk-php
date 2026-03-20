@@ -6,8 +6,9 @@ namespace HubspotSDK\ServiceContracts\Crm\Objects;
 
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
-use HubspotSDK\Crm\CreatedResponseSimplePublicObject;
+use HubspotSDK\Crm\Objects\BatchResponseSimplePublicObject;
+use HubspotSDK\Crm\Objects\BatchResponseSimplePublicUpsertObject;
+use HubspotSDK\Crm\Objects\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\Crm\Objects\Custom\CustomCreateParams;
 use HubspotSDK\Crm\Objects\Custom\CustomDeleteParams;
 use HubspotSDK\Crm\Objects\Custom\CustomGetParams;
@@ -15,8 +16,9 @@ use HubspotSDK\Crm\Objects\Custom\CustomListParams;
 use HubspotSDK\Crm\Objects\Custom\CustomMergeParams;
 use HubspotSDK\Crm\Objects\Custom\CustomSearchParams;
 use HubspotSDK\Crm\Objects\Custom\CustomUpdateParams;
-use HubspotSDK\Crm\SimplePublicObject;
-use HubspotSDK\Crm\SimplePublicObjectWithAssociations;
+use HubspotSDK\Crm\Objects\Custom\CustomUpsertParams;
+use HubspotSDK\Crm\Objects\SimplePublicObject;
+use HubspotSDK\Crm\Objects\SimplePublicObjectWithAssociations;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 
@@ -28,10 +30,11 @@ interface CustomRawContract
     /**
      * @api
      *
+     * @param string $objectType object type
      * @param array<string,mixed>|CustomCreateParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<CreatedResponseSimplePublicObject>
+     * @return BaseResponse<BatchResponseSimplePublicObject>
      *
      * @throws APIException
      */
@@ -44,16 +47,16 @@ interface CustomRawContract
     /**
      * @api
      *
-     * @param string $objectID Path param
+     * @param string $objectType object type
      * @param array<string,mixed>|CustomUpdateParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<SimplePublicObject>
+     * @return BaseResponse<BatchResponseSimplePublicObject>
      *
      * @throws APIException
      */
     public function update(
-        string $objectID,
+        string $objectType,
         array|CustomUpdateParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
@@ -61,6 +64,7 @@ interface CustomRawContract
     /**
      * @api
      *
+     * @param string $objectType object type
      * @param array<string,mixed>|CustomListParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -77,6 +81,7 @@ interface CustomRawContract
     /**
      * @api
      *
+     * @param string $objectType object type
      * @param array<string,mixed>|CustomDeleteParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -85,7 +90,7 @@ interface CustomRawContract
      * @throws APIException
      */
     public function delete(
-        string $objectID,
+        string $objectType,
         array|CustomDeleteParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
@@ -93,16 +98,16 @@ interface CustomRawContract
     /**
      * @api
      *
-     * @param string $objectID Path param
+     * @param string $objectType path param: Object type
      * @param array<string,mixed>|CustomGetParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<SimplePublicObjectWithAssociations>
+     * @return BaseResponse<BatchResponseSimplePublicObject>
      *
      * @throws APIException
      */
     public function get(
-        string $objectID,
+        string $objectType,
         array|CustomGetParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
@@ -110,6 +115,7 @@ interface CustomRawContract
     /**
      * @api
      *
+     * @param string $objectType object type
      * @param array<string,mixed>|CustomMergeParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -126,6 +132,7 @@ interface CustomRawContract
     /**
      * @api
      *
+     * @param string $objectType object type
      * @param array<string,mixed>|CustomSearchParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -136,6 +143,23 @@ interface CustomRawContract
     public function search(
         string $objectType,
         array|CustomSearchParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse;
+
+    /**
+     * @api
+     *
+     * @param string $objectType object type
+     * @param array<string,mixed>|CustomUpsertParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<BatchResponseSimplePublicUpsertObject>
+     *
+     * @throws APIException
+     */
+    public function upsert(
+        string $objectType,
+        array|CustomUpsertParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

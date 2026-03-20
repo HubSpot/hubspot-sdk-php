@@ -9,14 +9,14 @@ use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\SimplePublicObjectID;
+use HubspotSDK\Crm\Objects\SimplePublicObjectID;
 
 /**
  * Retrieve records by record ID or include the `idProperty` parameter to retrieve records by a custom unique value property.
  *
  * @see HubspotSDK\Services\Crm\Objects\Tasks\BatchService::get()
  *
- * @phpstan-import-type SimplePublicObjectIDShape from \HubspotSDK\Crm\SimplePublicObjectID
+ * @phpstan-import-type SimplePublicObjectIDShape from \HubspotSDK\Crm\Objects\SimplePublicObjectID
  *
  * @phpstan-type BatchGetParamsShape = array{
  *   inputs: list<SimplePublicObjectID|SimplePublicObjectIDShape>,
@@ -59,7 +59,7 @@ final class BatchGetParams implements BaseModel
     public ?bool $archived;
 
     /**
-     * A unique property used to identify objects instead of the default ID.
+     * When using a custom unique value property to retrieve records, the name of the property. Do not include this parameter if retrieving by record ID.
      */
     #[Optional]
     public ?string $idProperty;
@@ -164,7 +164,7 @@ final class BatchGetParams implements BaseModel
     }
 
     /**
-     * A unique property used to identify objects instead of the default ID.
+     * When using a custom unique value property to retrieve records, the name of the property. Do not include this parameter if retrieving by record ID.
      */
     public function withIDProperty(string $idProperty): self
     {

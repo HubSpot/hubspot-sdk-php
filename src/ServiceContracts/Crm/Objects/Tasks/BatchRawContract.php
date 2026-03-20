@@ -6,8 +6,8 @@ namespace HubspotSDK\ServiceContracts\Crm\Objects\Tasks;
 
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Crm\BatchResponseSimplePublicObject;
-use HubspotSDK\Crm\BatchResponseSimplePublicUpsertObject;
+use HubspotSDK\Crm\Objects\BatchResponseSimplePublicObject;
+use HubspotSDK\Crm\Objects\BatchResponseSimplePublicUpsertObject;
 use HubspotSDK\Crm\Objects\Tasks\Batch\BatchCreateParams;
 use HubspotSDK\Crm\Objects\Tasks\Batch\BatchDeleteParams;
 use HubspotSDK\Crm\Objects\Tasks\Batch\BatchGetParams;
@@ -23,6 +23,7 @@ interface BatchRawContract
     /**
      * @api
      *
+     * @param string $objectType object type
      * @param array<string,mixed>|BatchCreateParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -31,6 +32,7 @@ interface BatchRawContract
      * @throws APIException
      */
     public function create(
+        string $objectType,
         array|BatchCreateParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
@@ -38,6 +40,7 @@ interface BatchRawContract
     /**
      * @api
      *
+     * @param string $objectType object type
      * @param array<string,mixed>|BatchUpdateParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -46,6 +49,7 @@ interface BatchRawContract
      * @throws APIException
      */
     public function update(
+        string $objectType,
         array|BatchUpdateParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
@@ -53,6 +57,7 @@ interface BatchRawContract
     /**
      * @api
      *
+     * @param string $objectType object type
      * @param array<string,mixed>|BatchDeleteParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -61,6 +66,7 @@ interface BatchRawContract
      * @throws APIException
      */
     public function delete(
+        string $objectType,
         array|BatchDeleteParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
@@ -68,6 +74,7 @@ interface BatchRawContract
     /**
      * @api
      *
+     * @param string $objectType path param: Object type
      * @param array<string,mixed>|BatchGetParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -76,6 +83,7 @@ interface BatchRawContract
      * @throws APIException
      */
     public function get(
+        string $objectType,
         array|BatchGetParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
@@ -83,6 +91,7 @@ interface BatchRawContract
     /**
      * @api
      *
+     * @param string $objectType object type
      * @param array<string,mixed>|BatchUpsertParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -91,6 +100,7 @@ interface BatchRawContract
      * @throws APIException
      */
     public function upsert(
+        string $objectType,
         array|BatchUpsertParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;

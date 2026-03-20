@@ -37,12 +37,10 @@ final class ActivityService implements ActivityContract
      *
      * Retrieve activity history for user actions related to approvals, content updates, CRM object updates, security activity, and more (Enterprise only). Learn more about [activities included in audit log exports](https://knowledge.hubspot.com/account-management/view-and-export-account-activity-history-in-a-centralized-audit-log?hubs_content=knowledge.hubspot.com/account-management/view-and-export-account-activity-history&hubs_content-cta=centralized%20audit%20log#data-included-in-the-centralized-audit-log).
      *
-     * @param list<int> $actingUserID the ID of a user, for retrieving user-specific logs
+     * @param list<int> $actingUserID
      * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
      * @param int $limit the maximum number of results to display per page
-     * @param \DateTimeInterface $occurredAfter a timestamp, as a starting point for retrieving activity logs
-     * @param \DateTimeInterface $occurredBefore a timestamp, as an end point for retrieving activity logs
-     * @param list<string> $sort Set to `occurredAt` to order results by the time of the event. By default, events are ordered from oldest to newest.
+     * @param list<string> $sort
      * @param RequestOpts|null $requestOptions
      *
      * @return Page<PublicAPIUserActionEvent>
@@ -52,6 +50,7 @@ final class ActivityService implements ActivityContract
     public function listAuditLogs(
         ?array $actingUserID = null,
         ?string $after = null,
+        ?bool $fillFinalTimestamp = null,
         ?int $limit = null,
         ?\DateTimeInterface $occurredAfter = null,
         ?\DateTimeInterface $occurredBefore = null,
@@ -62,6 +61,7 @@ final class ActivityService implements ActivityContract
             [
                 'actingUserID' => $actingUserID,
                 'after' => $after,
+                'fillFinalTimestamp' => $fillFinalTimestamp,
                 'limit' => $limit,
                 'occurredAfter' => $occurredAfter,
                 'occurredBefore' => $occurredBefore,
@@ -80,9 +80,8 @@ final class ActivityService implements ActivityContract
      *
      * Retrieve logs of user actions related to [login activity](https://knowledge.hubspot.com/account-management/view-and-export-account-activity-history#account-login-history).
      *
-     * @param string $after The cursor token value to get the next set of results. You can get this from the `paging.next.after` JSON property of a paged response containing more results.
-     * @param int $limit The maximum number of results to display per page. Max value of limit is 200.
-     * @param int $userID the ID of a user, for retrieving user-specific logs
+     * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+     * @param int $limit the maximum number of results to display per page
      * @param RequestOpts|null $requestOptions
      *
      * @return Page<PublicLoginAudit>
@@ -110,11 +109,8 @@ final class ActivityService implements ActivityContract
      *
      * Retrieve logs of user actions related to [security activity](https://knowledge.hubspot.com/account-management/view-and-export-account-activity-history#security-activity-history).
      *
-     * @param string $after The cursor token value to get the next set of results. You can get this from the `paging.next.after` JSON property of a paged response containing more results.
-     * @param int $fromTimestamp the start time, for retrieving logs within a specific timeframe
-     * @param int $limit The maximum number of results to display per page. Max value of limit is 200.
-     * @param int $toTimestamp the end time, for retrieving logs within a specific timeframe
-     * @param int $userID the ID of a user, for retrieving user-specific logs
+     * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+     * @param int $limit the maximum number of results to display per page
      * @param RequestOpts|null $requestOptions
      *
      * @return Page<HydratedCriticalAction>

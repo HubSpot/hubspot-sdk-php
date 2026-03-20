@@ -7,21 +7,27 @@ namespace HubspotSDK\Services\Crm\Objects;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Core\Util;
-use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
-use HubspotSDK\Crm\CreatedResponseSimplePublicObject;
-use HubspotSDK\Crm\FilterGroup;
-use HubspotSDK\Crm\PublicAssociationsForObject;
-use HubspotSDK\Crm\SimplePublicObject;
-use HubspotSDK\Crm\SimplePublicObjectWithAssociations;
+use HubspotSDK\Crm\Objects\BatchResponseSimplePublicObject;
+use HubspotSDK\Crm\Objects\BatchResponseSimplePublicUpsertObject;
+use HubspotSDK\Crm\Objects\CollectionResponseWithTotalSimplePublicObject;
+use HubspotSDK\Crm\Objects\FilterGroup;
+use HubspotSDK\Crm\Objects\SimplePublicObject;
+use HubspotSDK\Crm\Objects\SimplePublicObjectBatchInput;
+use HubspotSDK\Crm\Objects\SimplePublicObjectBatchInputForCreate;
+use HubspotSDK\Crm\Objects\SimplePublicObjectBatchInputUpsert;
+use HubspotSDK\Crm\Objects\SimplePublicObjectID;
+use HubspotSDK\Crm\Objects\SimplePublicObjectWithAssociations;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Objects\CustomContract;
-use HubspotSDK\Services\Crm\Objects\Custom\BatchService;
 
 /**
- * @phpstan-import-type PublicAssociationsForObjectShape from \HubspotSDK\Crm\PublicAssociationsForObject
- * @phpstan-import-type FilterGroupShape from \HubspotSDK\Crm\FilterGroup
+ * @phpstan-import-type SimplePublicObjectBatchInputForCreateShape from \HubspotSDK\Crm\Objects\SimplePublicObjectBatchInputForCreate
+ * @phpstan-import-type SimplePublicObjectBatchInputShape from \HubspotSDK\Crm\Objects\SimplePublicObjectBatchInput
+ * @phpstan-import-type FilterGroupShape from \HubspotSDK\Crm\Objects\FilterGroup
+ * @phpstan-import-type SimplePublicObjectBatchInputUpsertShape from \HubspotSDK\Crm\Objects\SimplePublicObjectBatchInputUpsert
  * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type SimplePublicObjectIDShape from \HubspotSDK\Crm\Objects\SimplePublicObjectID
  */
 final class CustomService implements CustomContract
 {
@@ -31,39 +37,30 @@ final class CustomService implements CustomContract
     public CustomRawService $raw;
 
     /**
-     * @api
-     */
-    public BatchService $batch;
-
-    /**
      * @internal
      */
     public function __construct(private Client $client)
     {
         $this->raw = new CustomRawService($client);
-        $this->batch = new BatchService($client);
     }
 
     /**
      * @api
      *
-     * Create a CRM object with the given properties and return a copy of the object, including the ID. Documentation and examples for creating standard objects is provided.
+     * Create multiple tasks in a single request by providing a batch of task properties and associations. This endpoint allows for efficient task creation by processing multiple tasks together.
      *
-     * @param list<PublicAssociationsForObject|PublicAssociationsForObjectShape> $associations
-     * @param array<string,string> $properties key-value pairs for setting properties for the new object
+     * @param string $objectType object type
+     * @param list<SimplePublicObjectBatchInputForCreate|SimplePublicObjectBatchInputForCreateShape> $inputs
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function create(
         string $objectType,
-        array $associations,
-        array $properties,
+        array $inputs,
         RequestOptions|array|null $requestOptions = null,
-    ): CreatedResponseSimplePublicObject {
-        $params = Util::removeNulls(
-            ['associations' => $associations, 'properties' => $properties]
-        );
+    ): BatchResponseSimplePublicObject {
+        $params = Util::removeNulls(['inputs' => $inputs]);
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->create($objectType, params: $params, requestOptions: $requestOptions);
@@ -74,33 +71,23 @@ final class CustomService implements CustomContract
     /**
      * @api
      *
-     * Perform a partial update of an Object identified by `{objectId}`or optionally a unique property value as specified by the `idProperty` query param. `{objectId}` refers to the internal object ID by default, and the `idProperty` query param refers to a property whose values are unique for the object. Provided property values will be overwritten. Read-only and non-existent properties will result in an error. Properties values can be cleared by passing an empty string.
+     * Update multiple tasks in a single request using their internal IDs or unique property values. This operation allows you to modify the properties of each task in the batch, ensuring efficient management of task data.
      *
-     * @param string $objectID Path param
-     * @param string $objectType Path param
-     * @param array<string,string> $properties body param: Key value pairs representing the properties of the object
-     * @param string $idProperty Query param: The name of a property whose values are unique for this object
+     * @param string $objectType object type
+     * @param list<SimplePublicObjectBatchInput|SimplePublicObjectBatchInputShape> $inputs
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function update(
-        string $objectID,
         string $objectType,
-        array $properties,
-        ?string $idProperty = null,
+        array $inputs,
         RequestOptions|array|null $requestOptions = null,
-    ): SimplePublicObject {
-        $params = Util::removeNulls(
-            [
-                'objectType' => $objectType,
-                'properties' => $properties,
-                'idProperty' => $idProperty,
-            ],
-        );
+    ): BatchResponseSimplePublicObject {
+        $params = Util::removeNulls(['inputs' => $inputs]);
 
         // @phpstan-ignore-next-line argument.type
-        $response = $this->raw->update($objectID, params: $params, requestOptions: $requestOptions);
+        $response = $this->raw->update($objectType, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -108,14 +95,15 @@ final class CustomService implements CustomContract
     /**
      * @api
      *
-     * Read a page of objects. Control what is returned via the `properties` query param.
+     * Read a page of tasks. Control what is returned via the `properties` query param.
      *
+     * @param string $objectType object type
      * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
      * @param bool $archived whether to return only results that have been archived
      * @param list<string> $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored.
      * @param int $limit the maximum number of results to display per page
      * @param list<string> $properties A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored.
-     * @param list<string> $propertiesWithHistory A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored. Usage of this parameter will reduce the maximum number of objects that can be read by a single request.
+     * @param list<string> $propertiesWithHistory A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored. Usage of this parameter will reduce the maximum number of tasks that can be read by a single request.
      * @param RequestOpts|null $requestOptions
      *
      * @return Page<SimplePublicObjectWithAssociations>
@@ -152,21 +140,23 @@ final class CustomService implements CustomContract
     /**
      * @api
      *
-     * Move an Object identified by `{objectId}` to the recycling bin.
+     * Archive a batch of tasks by their IDs, moving them to the recycling bin. This operation requires a list of task IDs to be provided in the request body.
      *
+     * @param string $objectType object type
+     * @param list<SimplePublicObjectID|SimplePublicObjectIDShape> $inputs
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function delete(
-        string $objectID,
         string $objectType,
+        array $inputs,
         RequestOptions|array|null $requestOptions = null,
     ): mixed {
-        $params = Util::removeNulls(['objectType' => $objectType]);
+        $params = Util::removeNulls(['inputs' => $inputs]);
 
         // @phpstan-ignore-next-line argument.type
-        $response = $this->raw->delete($objectID, params: $params, requestOptions: $requestOptions);
+        $response = $this->raw->delete($objectType, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -174,42 +164,39 @@ final class CustomService implements CustomContract
     /**
      * @api
      *
-     * Read an Object identified by `{objectId}`. `{objectId}` refers to the internal object ID by default, or optionally any unique property value as specified by the `idProperty` query param.  Control what is returned via the `properties` query param.
+     * Retrieve records by record ID or include the `idProperty` parameter to retrieve records by a custom unique value property.
      *
-     * @param string $objectID Path param
-     * @param string $objectType Path param
+     * @param string $objectType path param: Object type
+     * @param list<SimplePublicObjectID|SimplePublicObjectIDShape> $inputs Body param
+     * @param list<string> $properties body param: Key-value pairs for setting properties for the new object
+     * @param list<string> $propertiesWithHistory body param: Key-value pairs for setting properties for the new object and their histories
      * @param bool $archived query param: Whether to return only results that have been archived
-     * @param list<string> $associations Query param: A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored.
-     * @param string $idProperty Query param: The name of a property whose values are unique for this object
-     * @param list<string> $properties Query param: A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored.
-     * @param list<string> $propertiesWithHistory Query param: A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored.
+     * @param string $idProperty Body param: When using a custom unique value property to retrieve records, the name of the property. Do not include this parameter if retrieving by record ID.
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function get(
-        string $objectID,
         string $objectType,
+        array $inputs,
+        array $properties,
+        array $propertiesWithHistory,
         bool $archived = false,
-        ?array $associations = null,
         ?string $idProperty = null,
-        ?array $properties = null,
-        ?array $propertiesWithHistory = null,
         RequestOptions|array|null $requestOptions = null,
-    ): SimplePublicObjectWithAssociations {
+    ): BatchResponseSimplePublicObject {
         $params = Util::removeNulls(
             [
-                'objectType' => $objectType,
-                'archived' => $archived,
-                'associations' => $associations,
-                'idProperty' => $idProperty,
+                'inputs' => $inputs,
                 'properties' => $properties,
                 'propertiesWithHistory' => $propertiesWithHistory,
+                'archived' => $archived,
+                'idProperty' => $idProperty,
             ],
         );
 
         // @phpstan-ignore-next-line argument.type
-        $response = $this->raw->get($objectID, params: $params, requestOptions: $requestOptions);
+        $response = $this->raw->get($objectType, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -217,10 +204,9 @@ final class CustomService implements CustomContract
     /**
      * @api
      *
-     * Merge two objects with same type
-     *
-     * @param string $objectIDToMerge the unique identifier of the CRM object that will be merged into the primary object
-     * @param string $primaryObjectID the unique identifier of the CRM object that will remain after the merge
+     * @param string $objectType object type
+     * @param string $objectIDToMerge the object ID of the record that the merge will not set as the current value after the merge
+     * @param string $primaryObjectID the object ID of the record that the merge will generally set as the current value after the merge
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -247,6 +233,9 @@ final class CustomService implements CustomContract
     /**
      * @api
      *
+     * Execute a search for tasks based on the provided criteria, including filters, properties, and sorting options. This allows for retrieving tasks that match specific conditions or property values.
+     *
+     * @param string $objectType object type
      * @param string $after a paging cursor token for retrieving subsequent pages
      * @param list<FilterGroup|FilterGroupShape> $filterGroups up to 6 groups of filters defining additional query criteria
      * @param int $limit the maximum results to return, up to 200 objects
@@ -280,6 +269,30 @@ final class CustomService implements CustomContract
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->search($objectType, params: $params, requestOptions: $requestOptions);
+
+        return $response->parse();
+    }
+
+    /**
+     * @api
+     *
+     * Create or update records identified by a unique property value as specified by the `idProperty` query param. `idProperty` query param refers to a property whose values are unique for the object.
+     *
+     * @param string $objectType object type
+     * @param list<SimplePublicObjectBatchInputUpsert|SimplePublicObjectBatchInputUpsertShape> $inputs
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function upsert(
+        string $objectType,
+        array $inputs,
+        RequestOptions|array|null $requestOptions = null,
+    ): BatchResponseSimplePublicUpsertObject {
+        $params = Util::removeNulls(['inputs' => $inputs]);
+
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->upsert($objectType, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
