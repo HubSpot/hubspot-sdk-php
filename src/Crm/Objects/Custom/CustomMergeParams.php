@@ -10,8 +10,6 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * Merge two objects with same type.
- *
  * @see HubspotSDK\Services\Crm\Objects\CustomService::merge()
  *
  * @phpstan-type CustomMergeParamsShape = array{
@@ -25,13 +23,13 @@ final class CustomMergeParams implements BaseModel
     use SdkParams;
 
     /**
-     * The unique identifier of the CRM object that will be merged into the primary object.
+     * The object ID of the record that the merge will not set as the current value after the merge.
      */
     #[Required('objectIdToMerge')]
     public string $objectIDToMerge;
 
     /**
-     * The unique identifier of the CRM object that will remain after the merge.
+     * The object ID of the record that the merge will generally set as the current value after the merge.
      */
     #[Required('primaryObjectId')]
     public string $primaryObjectID;
@@ -73,7 +71,7 @@ final class CustomMergeParams implements BaseModel
     }
 
     /**
-     * The unique identifier of the CRM object that will be merged into the primary object.
+     * The object ID of the record that the merge will not set as the current value after the merge.
      */
     public function withObjectIDToMerge(string $objectIDToMerge): self
     {
@@ -84,7 +82,7 @@ final class CustomMergeParams implements BaseModel
     }
 
     /**
-     * The unique identifier of the CRM object that will remain after the merge.
+     * The object ID of the record that the merge will generally set as the current value after the merge.
      */
     public function withPrimaryObjectID(string $primaryObjectID): self
     {

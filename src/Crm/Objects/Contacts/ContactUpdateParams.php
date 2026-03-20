@@ -11,12 +11,12 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * Update an existing contact, identified by ID or email/unique property value. To identify a contact by ID, include the ID in the request URL path. To identify a contact by their email or other unique property, include the email/property value in the request URL path, and add the `idProperty` query parameter (`/crm/v3/objects/contacts/jon@website.com?idProperty=email`). Provided property values will be overwritten. Read-only and non-existent properties will result in an error. Properties values can be cleared by passing an empty string.
+ * Perform a partial update of an Object identified by `{taskId}`or optionally a unique property value as specified by the `idProperty` query param. `{taskId}` refers to the internal object ID by default, and the `idProperty` query param refers to a property whose values are unique for the object. Provided property values will be overwritten. Read-only and non-existent properties will result in an error. Properties values can be cleared by passing an empty string.
  *
  * @see HubspotSDK\Services\Crm\Objects\ContactsService::update()
  *
  * @phpstan-type ContactUpdateParamsShape = array{
- *   properties: array<string,string>, idProperty?: string|null
+ *   objectType: string, properties: array<string,string>, idProperty?: string|null
  * }
  */
 final class ContactUpdateParams implements BaseModel
@@ -24,6 +24,9 @@ final class ContactUpdateParams implements BaseModel
     /** @use SdkModel<ContactUpdateParamsShape> */
     use SdkModel;
     use SdkParams;
+
+    #[Required]
+    public string $objectType;
 
     /**
      * Key value pairs representing the properties of the object.
@@ -44,13 +47,13 @@ final class ContactUpdateParams implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * ContactUpdateParams::with(properties: ...)
+     * ContactUpdateParams::with(objectType: ..., properties: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
      *
      * ```
-     * (new ContactUpdateParams)->withProperties(...)
+     * (new ContactUpdateParams)->withObjectType(...)->withProperties(...)
      * ```
      */
     public function __construct()
@@ -66,14 +69,24 @@ final class ContactUpdateParams implements BaseModel
      * @param array<string,string> $properties
      */
     public static function with(
+        string $objectType,
         array $properties,
         ?string $idProperty = null
     ): self {
         $self = new self;
 
+        $self['objectType'] = $objectType;
         $self['properties'] = $properties;
 
         null !== $idProperty && $self['idProperty'] = $idProperty;
+
+        return $self;
+    }
+
+    public function withObjectType(string $objectType): self
+    {
+        $self = clone $this;
+        $self['objectType'] = $objectType;
 
         return $self;
     }

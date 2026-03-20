@@ -5,66 +5,69 @@ declare(strict_types=1);
 namespace HubspotSDK\ServiceContracts\Crm\Objects;
 
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
-use HubspotSDK\Crm\CreatedResponseSimplePublicObject;
-use HubspotSDK\Crm\FilterGroup;
-use HubspotSDK\Crm\PublicAssociationsForObject;
-use HubspotSDK\Crm\SimplePublicObject;
-use HubspotSDK\Crm\SimplePublicObjectWithAssociations;
+use HubspotSDK\Crm\Objects\BatchResponseSimplePublicObject;
+use HubspotSDK\Crm\Objects\BatchResponseSimplePublicUpsertObject;
+use HubspotSDK\Crm\Objects\CollectionResponseWithTotalSimplePublicObject;
+use HubspotSDK\Crm\Objects\FilterGroup;
+use HubspotSDK\Crm\Objects\SimplePublicObject;
+use HubspotSDK\Crm\Objects\SimplePublicObjectBatchInput;
+use HubspotSDK\Crm\Objects\SimplePublicObjectBatchInputForCreate;
+use HubspotSDK\Crm\Objects\SimplePublicObjectBatchInputUpsert;
+use HubspotSDK\Crm\Objects\SimplePublicObjectID;
+use HubspotSDK\Crm\Objects\SimplePublicObjectWithAssociations;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type PublicAssociationsForObjectShape from \HubspotSDK\Crm\PublicAssociationsForObject
- * @phpstan-import-type FilterGroupShape from \HubspotSDK\Crm\FilterGroup
+ * @phpstan-import-type SimplePublicObjectBatchInputForCreateShape from \HubspotSDK\Crm\Objects\SimplePublicObjectBatchInputForCreate
+ * @phpstan-import-type SimplePublicObjectBatchInputShape from \HubspotSDK\Crm\Objects\SimplePublicObjectBatchInput
+ * @phpstan-import-type FilterGroupShape from \HubspotSDK\Crm\Objects\FilterGroup
+ * @phpstan-import-type SimplePublicObjectBatchInputUpsertShape from \HubspotSDK\Crm\Objects\SimplePublicObjectBatchInputUpsert
  * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type SimplePublicObjectIDShape from \HubspotSDK\Crm\Objects\SimplePublicObjectID
  */
 interface CustomContract
 {
     /**
      * @api
      *
-     * @param list<PublicAssociationsForObject|PublicAssociationsForObjectShape> $associations
-     * @param array<string,string> $properties key-value pairs for setting properties for the new object
+     * @param string $objectType object type
+     * @param list<SimplePublicObjectBatchInputForCreate|SimplePublicObjectBatchInputForCreateShape> $inputs
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function create(
         string $objectType,
-        array $associations,
-        array $properties,
+        array $inputs,
         RequestOptions|array|null $requestOptions = null,
-    ): CreatedResponseSimplePublicObject;
+    ): BatchResponseSimplePublicObject;
 
     /**
      * @api
      *
-     * @param string $objectID Path param
-     * @param string $objectType Path param
-     * @param array<string,string> $properties body param: Key value pairs representing the properties of the object
-     * @param string $idProperty Query param: The name of a property whose values are unique for this object
+     * @param string $objectType object type
+     * @param list<SimplePublicObjectBatchInput|SimplePublicObjectBatchInputShape> $inputs
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function update(
-        string $objectID,
         string $objectType,
-        array $properties,
-        ?string $idProperty = null,
+        array $inputs,
         RequestOptions|array|null $requestOptions = null,
-    ): SimplePublicObject;
+    ): BatchResponseSimplePublicObject;
 
     /**
      * @api
      *
+     * @param string $objectType object type
      * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
      * @param bool $archived whether to return only results that have been archived
      * @param list<string> $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored.
      * @param int $limit the maximum number of results to display per page
      * @param list<string> $properties A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored.
-     * @param list<string> $propertiesWithHistory A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored. Usage of this parameter will reduce the maximum number of objects that can be read by a single request.
+     * @param list<string> $propertiesWithHistory A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored. Usage of this parameter will reduce the maximum number of tasks that can be read by a single request.
      * @param RequestOpts|null $requestOptions
      *
      * @return Page<SimplePublicObjectWithAssociations>
@@ -85,46 +88,47 @@ interface CustomContract
     /**
      * @api
      *
+     * @param string $objectType object type
+     * @param list<SimplePublicObjectID|SimplePublicObjectIDShape> $inputs
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function delete(
-        string $objectID,
         string $objectType,
+        array $inputs,
         RequestOptions|array|null $requestOptions = null,
     ): mixed;
 
     /**
      * @api
      *
-     * @param string $objectID Path param
-     * @param string $objectType Path param
+     * @param string $objectType path param: Object type
+     * @param list<SimplePublicObjectID|SimplePublicObjectIDShape> $inputs Body param
+     * @param list<string> $properties body param: Key-value pairs for setting properties for the new object
+     * @param list<string> $propertiesWithHistory body param: Key-value pairs for setting properties for the new object and their histories
      * @param bool $archived query param: Whether to return only results that have been archived
-     * @param list<string> $associations Query param: A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored.
-     * @param string $idProperty Query param: The name of a property whose values are unique for this object
-     * @param list<string> $properties Query param: A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored.
-     * @param list<string> $propertiesWithHistory Query param: A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored.
+     * @param string $idProperty Body param: When using a custom unique value property to retrieve records, the name of the property. Do not include this parameter if retrieving by record ID.
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function get(
-        string $objectID,
         string $objectType,
+        array $inputs,
+        array $properties,
+        array $propertiesWithHistory,
         bool $archived = false,
-        ?array $associations = null,
         ?string $idProperty = null,
-        ?array $properties = null,
-        ?array $propertiesWithHistory = null,
         RequestOptions|array|null $requestOptions = null,
-    ): SimplePublicObjectWithAssociations;
+    ): BatchResponseSimplePublicObject;
 
     /**
      * @api
      *
-     * @param string $objectIDToMerge the unique identifier of the CRM object that will be merged into the primary object
-     * @param string $primaryObjectID the unique identifier of the CRM object that will remain after the merge
+     * @param string $objectType object type
+     * @param string $objectIDToMerge the object ID of the record that the merge will not set as the current value after the merge
+     * @param string $primaryObjectID the object ID of the record that the merge will generally set as the current value after the merge
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -139,6 +143,7 @@ interface CustomContract
     /**
      * @api
      *
+     * @param string $objectType object type
      * @param string $after a paging cursor token for retrieving subsequent pages
      * @param list<FilterGroup|FilterGroupShape> $filterGroups up to 6 groups of filters defining additional query criteria
      * @param int $limit the maximum results to return, up to 200 objects
@@ -159,4 +164,19 @@ interface CustomContract
         ?string $query = null,
         RequestOptions|array|null $requestOptions = null,
     ): CollectionResponseWithTotalSimplePublicObject;
+
+    /**
+     * @api
+     *
+     * @param string $objectType object type
+     * @param list<SimplePublicObjectBatchInputUpsert|SimplePublicObjectBatchInputUpsertShape> $inputs
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function upsert(
+        string $objectType,
+        array $inputs,
+        RequestOptions|array|null $requestOptions = null,
+    ): BatchResponseSimplePublicUpsertObject;
 }

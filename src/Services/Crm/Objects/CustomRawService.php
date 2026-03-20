@@ -7,9 +7,9 @@ namespace HubspotSDK\Services\Crm\Objects;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
-use HubspotSDK\Crm\CreatedResponseSimplePublicObject;
-use HubspotSDK\Crm\FilterGroup;
+use HubspotSDK\Crm\Objects\BatchResponseSimplePublicObject;
+use HubspotSDK\Crm\Objects\BatchResponseSimplePublicUpsertObject;
+use HubspotSDK\Crm\Objects\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\Crm\Objects\Custom\CustomCreateParams;
 use HubspotSDK\Crm\Objects\Custom\CustomDeleteParams;
 use HubspotSDK\Crm\Objects\Custom\CustomGetParams;
@@ -17,17 +17,25 @@ use HubspotSDK\Crm\Objects\Custom\CustomListParams;
 use HubspotSDK\Crm\Objects\Custom\CustomMergeParams;
 use HubspotSDK\Crm\Objects\Custom\CustomSearchParams;
 use HubspotSDK\Crm\Objects\Custom\CustomUpdateParams;
-use HubspotSDK\Crm\PublicAssociationsForObject;
-use HubspotSDK\Crm\SimplePublicObject;
-use HubspotSDK\Crm\SimplePublicObjectWithAssociations;
+use HubspotSDK\Crm\Objects\Custom\CustomUpsertParams;
+use HubspotSDK\Crm\Objects\FilterGroup;
+use HubspotSDK\Crm\Objects\SimplePublicObject;
+use HubspotSDK\Crm\Objects\SimplePublicObjectBatchInput;
+use HubspotSDK\Crm\Objects\SimplePublicObjectBatchInputForCreate;
+use HubspotSDK\Crm\Objects\SimplePublicObjectBatchInputUpsert;
+use HubspotSDK\Crm\Objects\SimplePublicObjectID;
+use HubspotSDK\Crm\Objects\SimplePublicObjectWithAssociations;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Objects\CustomRawContract;
 
 /**
- * @phpstan-import-type PublicAssociationsForObjectShape from \HubspotSDK\Crm\PublicAssociationsForObject
- * @phpstan-import-type FilterGroupShape from \HubspotSDK\Crm\FilterGroup
+ * @phpstan-import-type SimplePublicObjectBatchInputForCreateShape from \HubspotSDK\Crm\Objects\SimplePublicObjectBatchInputForCreate
+ * @phpstan-import-type SimplePublicObjectBatchInputShape from \HubspotSDK\Crm\Objects\SimplePublicObjectBatchInput
+ * @phpstan-import-type FilterGroupShape from \HubspotSDK\Crm\Objects\FilterGroup
+ * @phpstan-import-type SimplePublicObjectBatchInputUpsertShape from \HubspotSDK\Crm\Objects\SimplePublicObjectBatchInputUpsert
  * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type SimplePublicObjectIDShape from \HubspotSDK\Crm\Objects\SimplePublicObjectID
  */
 final class CustomRawService implements CustomRawContract
 {
@@ -40,15 +48,15 @@ final class CustomRawService implements CustomRawContract
     /**
      * @api
      *
-     * Create a CRM object with the given properties and return a copy of the object, including the ID. Documentation and examples for creating standard objects is provided.
+     * Create multiple tasks in a single request by providing a batch of task properties and associations. This endpoint allows for efficient task creation by processing multiple tasks together.
      *
+     * @param string $objectType object type
      * @param array{
-     *   associations: list<PublicAssociationsForObject|PublicAssociationsForObjectShape>,
-     *   properties: array<string,string>,
+     *   inputs: list<SimplePublicObjectBatchInputForCreate|SimplePublicObjectBatchInputForCreateShape>,
      * }|CustomCreateParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<CreatedResponseSimplePublicObject>
+     * @return BaseResponse<BatchResponseSimplePublicObject>
      *
      * @throws APIException
      */
@@ -65,30 +73,30 @@ final class CustomRawService implements CustomRawContract
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
-            path: ['crm/v3/objects/%1$s', $objectType],
+            path: ['crm/objects/2026-03/%1$s/batch/create', $objectType],
             body: (object) $parsed,
             options: $options,
-            convert: CreatedResponseSimplePublicObject::class,
+            convert: BatchResponseSimplePublicObject::class,
         );
     }
 
     /**
      * @api
      *
-     * Perform a partial update of an Object identified by `{objectId}`or optionally a unique property value as specified by the `idProperty` query param. `{objectId}` refers to the internal object ID by default, and the `idProperty` query param refers to a property whose values are unique for the object. Provided property values will be overwritten. Read-only and non-existent properties will result in an error. Properties values can be cleared by passing an empty string.
+     * Update multiple tasks in a single request using their internal IDs or unique property values. This operation allows you to modify the properties of each task in the batch, ensuring efficient management of task data.
      *
-     * @param string $objectID Path param
+     * @param string $objectType object type
      * @param array{
-     *   objectType: string, properties: array<string,string>, idProperty?: string
+     *   inputs: list<SimplePublicObjectBatchInput|SimplePublicObjectBatchInputShape>
      * }|CustomUpdateParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<SimplePublicObject>
+     * @return BaseResponse<BatchResponseSimplePublicObject>
      *
      * @throws APIException
      */
     public function update(
-        string $objectID,
+        string $objectType,
         array|CustomUpdateParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
@@ -96,29 +104,23 @@ final class CustomRawService implements CustomRawContract
             $params,
             $requestOptions,
         );
-        $objectType = $parsed['objectType'];
-        unset($parsed['objectType']);
-        $query_params = array_flip(['idProperty']);
 
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
-            method: 'patch',
-            path: ['crm/v3/objects/%1$s/%2$s', $objectType, $objectID],
-            query: array_intersect_key($parsed, $query_params),
-            body: (object) array_diff_key(
-                array_diff_key($parsed, $query_params),
-                array_flip(['objectType'])
-            ),
+            method: 'post',
+            path: ['crm/objects/2026-03/%1$s/batch/update', $objectType],
+            body: (object) $parsed,
             options: $options,
-            convert: SimplePublicObject::class,
+            convert: BatchResponseSimplePublicObject::class,
         );
     }
 
     /**
      * @api
      *
-     * Read a page of objects. Control what is returned via the `properties` query param.
+     * Read a page of tasks. Control what is returned via the `properties` query param.
      *
+     * @param string $objectType object type
      * @param array{
      *   after?: string,
      *   archived?: bool,
@@ -146,7 +148,7 @@ final class CustomRawService implements CustomRawContract
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
-            path: ['crm/v3/objects/%1$s', $objectType],
+            path: ['crm/objects/2026-03/%1$s', $objectType],
             query: $parsed,
             options: $options,
             convert: SimplePublicObjectWithAssociations::class,
@@ -157,9 +159,12 @@ final class CustomRawService implements CustomRawContract
     /**
      * @api
      *
-     * Move an Object identified by `{objectId}` to the recycling bin.
+     * Archive a batch of tasks by their IDs, moving them to the recycling bin. This operation requires a list of task IDs to be provided in the request body.
      *
-     * @param array{objectType: string}|CustomDeleteParams $params
+     * @param string $objectType object type
+     * @param array{
+     *   inputs: list<SimplePublicObjectID|SimplePublicObjectIDShape>
+     * }|CustomDeleteParams $params
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
@@ -167,7 +172,7 @@ final class CustomRawService implements CustomRawContract
      * @throws APIException
      */
     public function delete(
-        string $objectID,
+        string $objectType,
         array|CustomDeleteParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
@@ -175,13 +180,12 @@ final class CustomRawService implements CustomRawContract
             $params,
             $requestOptions,
         );
-        $objectType = $parsed['objectType'];
-        unset($parsed['objectType']);
 
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
-            method: 'delete',
-            path: ['crm/v3/objects/%1$s/%2$s', $objectType, $objectID],
+            method: 'post',
+            path: ['crm/objects/2026-03/%1$s/batch/archive', $objectType],
+            body: (object) $parsed,
             options: $options,
             convert: null,
         );
@@ -190,25 +194,24 @@ final class CustomRawService implements CustomRawContract
     /**
      * @api
      *
-     * Read an Object identified by `{objectId}`. `{objectId}` refers to the internal object ID by default, or optionally any unique property value as specified by the `idProperty` query param.  Control what is returned via the `properties` query param.
+     * Retrieve records by record ID or include the `idProperty` parameter to retrieve records by a custom unique value property.
      *
-     * @param string $objectID Path param
+     * @param string $objectType path param: Object type
      * @param array{
-     *   objectType: string,
+     *   inputs: list<SimplePublicObjectID|SimplePublicObjectIDShape>,
+     *   properties: list<string>,
+     *   propertiesWithHistory: list<string>,
      *   archived?: bool,
-     *   associations?: list<string>,
      *   idProperty?: string,
-     *   properties?: list<string>,
-     *   propertiesWithHistory?: list<string>,
      * }|CustomGetParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<SimplePublicObjectWithAssociations>
+     * @return BaseResponse<BatchResponseSimplePublicObject>
      *
      * @throws APIException
      */
     public function get(
-        string $objectID,
+        string $objectType,
         array|CustomGetParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
@@ -216,24 +219,23 @@ final class CustomRawService implements CustomRawContract
             $params,
             $requestOptions,
         );
-        $objectType = $parsed['objectType'];
-        unset($parsed['objectType']);
+        $query_params = array_flip(['archived']);
 
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
-            method: 'get',
-            path: ['crm/v3/objects/%1$s/%2$s', $objectType, $objectID],
-            query: $parsed,
+            method: 'post',
+            path: ['crm/objects/2026-03/%1$s/batch/read', $objectType],
+            query: array_intersect_key($parsed, $query_params),
+            body: (object) array_diff_key($parsed, $query_params),
             options: $options,
-            convert: SimplePublicObjectWithAssociations::class,
+            convert: BatchResponseSimplePublicObject::class,
         );
     }
 
     /**
      * @api
      *
-     * Merge two objects with same type
-     *
+     * @param string $objectType object type
      * @param array{
      *   objectIDToMerge: string, primaryObjectID: string
      * }|CustomMergeParams $params
@@ -256,7 +258,7 @@ final class CustomRawService implements CustomRawContract
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
-            path: ['crm/v3/objects/%1$s/merge', $objectType],
+            path: ['crm/objects/2026-03/%1$s/merge', $objectType],
             body: (object) $parsed,
             options: $options,
             convert: SimplePublicObject::class,
@@ -266,6 +268,9 @@ final class CustomRawService implements CustomRawContract
     /**
      * @api
      *
+     * Execute a search for tasks based on the provided criteria, including filters, properties, and sorting options. This allows for retrieving tasks that match specific conditions or property values.
+     *
+     * @param string $objectType object type
      * @param array{
      *   after: string,
      *   filterGroups: list<FilterGroup|FilterGroupShape>,
@@ -293,10 +298,45 @@ final class CustomRawService implements CustomRawContract
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
-            path: ['crm/v3/objects/%1$s/search', $objectType],
+            path: ['crm/objects/2026-03/%1$s/search', $objectType],
             body: (object) $parsed,
             options: $options,
             convert: CollectionResponseWithTotalSimplePublicObject::class,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * Create or update records identified by a unique property value as specified by the `idProperty` query param. `idProperty` query param refers to a property whose values are unique for the object.
+     *
+     * @param string $objectType object type
+     * @param array{
+     *   inputs: list<SimplePublicObjectBatchInputUpsert|SimplePublicObjectBatchInputUpsertShape>,
+     * }|CustomUpsertParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<BatchResponseSimplePublicUpsertObject>
+     *
+     * @throws APIException
+     */
+    public function upsert(
+        string $objectType,
+        array|CustomUpsertParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = CustomUpsertParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'post',
+            path: ['crm/objects/2026-03/%1$s/batch/upsert', $objectType],
+            body: (object) $parsed,
+            options: $options,
+            convert: BatchResponseSimplePublicUpsertObject::class,
         );
     }
 }

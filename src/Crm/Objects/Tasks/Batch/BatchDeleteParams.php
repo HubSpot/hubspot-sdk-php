@@ -8,14 +8,14 @@ use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\SimplePublicObjectID;
+use HubspotSDK\Crm\Objects\SimplePublicObjectID;
 
 /**
- * Archive a batch of tasks by ID.
+ * Archive a batch of tasks by their IDs, moving them to the recycling bin. This operation requires a list of task IDs to be provided in the request body.
  *
  * @see HubspotSDK\Services\Crm\Objects\Tasks\BatchService::delete()
  *
- * @phpstan-import-type SimplePublicObjectIDShape from \HubspotSDK\Crm\SimplePublicObjectID
+ * @phpstan-import-type SimplePublicObjectIDShape from \HubspotSDK\Crm\Objects\SimplePublicObjectID
  *
  * @phpstan-type BatchDeleteParamsShape = array{
  *   inputs: list<SimplePublicObjectID|SimplePublicObjectIDShape>

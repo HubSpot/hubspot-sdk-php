@@ -9,18 +9,7 @@ use Http\Discovery\Psr18ClientDiscovery;
 use HubspotSDK\Core\BaseClient;
 use HubspotSDK\Core\Util;
 use HubspotSDK\Services\AccountService;
-use HubspotSDK\Services\AuthService;
-use HubspotSDK\Services\AutomationService;
-use HubspotSDK\Services\BusinessUnitsService;
-use HubspotSDK\Services\CmsService;
-use HubspotSDK\Services\ConversationsService;
 use HubspotSDK\Services\CrmService;
-use HubspotSDK\Services\EventsService;
-use HubspotSDK\Services\FilesService;
-use HubspotSDK\Services\MarketingService;
-use HubspotSDK\Services\SchedulerService;
-use HubspotSDK\Services\SettingsService;
-use HubspotSDK\Services\WebhooksService;
 
 /**
  * @phpstan-import-type NormalizedRequest from \HubspotSDK\Core\BaseClient
@@ -36,62 +25,7 @@ class Client extends BaseClient
     /**
      * @api
      */
-    public AuthService $auth;
-
-    /**
-     * @api
-     */
-    public AutomationService $automation;
-
-    /**
-     * @api
-     */
-    public BusinessUnitsService $businessUnits;
-
-    /**
-     * @api
-     */
-    public CmsService $cms;
-
-    /**
-     * @api
-     */
-    public ConversationsService $conversations;
-
-    /**
-     * @api
-     */
     public CrmService $crm;
-
-    /**
-     * @api
-     */
-    public EventsService $events;
-
-    /**
-     * @api
-     */
-    public FilesService $files;
-
-    /**
-     * @api
-     */
-    public MarketingService $marketing;
-
-    /**
-     * @api
-     */
-    public SchedulerService $scheduler;
-
-    /**
-     * @api
-     */
-    public SettingsService $settings;
-
-    /**
-     * @api
-     */
-    public WebhooksService $webhooks;
 
     /**
      * @param RequestOpts|null $requestOptions
@@ -131,18 +65,7 @@ class Client extends BaseClient
         );
 
         $this->account = new AccountService($this);
-        $this->auth = new AuthService($this);
-        $this->automation = new AutomationService($this);
-        $this->businessUnits = new BusinessUnitsService($this);
-        $this->cms = new CmsService($this);
-        $this->conversations = new ConversationsService($this);
         $this->crm = new CrmService($this);
-        $this->events = new EventsService($this);
-        $this->files = new FilesService($this);
-        $this->marketing = new MarketingService($this);
-        $this->scheduler = new SchedulerService($this);
-        $this->settings = new SettingsService($this);
-        $this->webhooks = new WebhooksService($this);
     }
 
     /** @return array<string,string> */

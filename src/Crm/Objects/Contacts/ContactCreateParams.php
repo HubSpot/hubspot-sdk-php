@@ -8,14 +8,14 @@ use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\PublicAssociationsForObject;
+use HubspotSDK\Crm\Objects\PublicAssociationsForObject;
 
 /**
- * Create a single contact. Include a `properties` object to define [property values](https://developers.hubspot.com/docs/guides/api/crm/properties) for the contact, along with an `associations` array to define [associations](https://developers.hubspot.com/docs/guides/api/crm/associations/associations-v4) with other CRM records.
+ * Create a task with the given properties and return a copy of the object, including the ID. Documentation and examples for creating standard tasks is provided.
  *
  * @see HubspotSDK\Services\Crm\Objects\ContactsService::create()
  *
- * @phpstan-import-type PublicAssociationsForObjectShape from \HubspotSDK\Crm\PublicAssociationsForObject
+ * @phpstan-import-type PublicAssociationsForObjectShape from \HubspotSDK\Crm\Objects\PublicAssociationsForObject
  *
  * @phpstan-type ContactCreateParamsShape = array{
  *   associations: list<PublicAssociationsForObject|PublicAssociationsForObjectShape>,

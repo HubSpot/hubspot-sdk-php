@@ -38,7 +38,7 @@ final class ActivityTest extends TestCase
     public function testListAuditLogs(): void
     {
         if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
+            $this->markTestSkipped('Mock server tests are disabled');
         }
 
         $page = $this->client->account->activity->listAuditLogs();
@@ -56,7 +56,7 @@ final class ActivityTest extends TestCase
     public function testListLoginActivities(): void
     {
         if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
+            $this->markTestSkipped('Mock server tests are disabled');
         }
 
         $page = $this->client->account->activity->listLoginActivities();
@@ -74,7 +74,7 @@ final class ActivityTest extends TestCase
     public function testListSecurityActivities(): void
     {
         if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Prism tests are disabled');
+            $this->markTestSkipped('Mock server tests are disabled');
         }
 
         $page = $this->client->account->activity->listSecurityActivities();

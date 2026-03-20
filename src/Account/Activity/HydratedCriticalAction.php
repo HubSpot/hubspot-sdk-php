@@ -4,18 +4,17 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Account\Activity;
 
+use HubspotSDK\Account\Activity\HydratedCriticalAction\Type;
 use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * Details about the a particular security activity for a HubSpot account.
- *
  * @phpstan-type HydratedCriticalActionShape = array{
  *   id: string,
  *   createdAt: \DateTimeInterface,
- *   type: string,
+ *   type: Type|value-of<Type>,
  *   userID: int,
  *   actingUser?: string|null,
  *   countryCode?: string|null,
@@ -45,8 +44,10 @@ final class HydratedCriticalAction implements BaseModel
 
     /**
      * The type of activity.
+     *
+     * @var value-of<Type> $type
      */
-    #[Required]
+    #[Required(enum: Type::class)]
     public string $type;
 
     /**
@@ -79,6 +80,9 @@ final class HydratedCriticalAction implements BaseModel
     #[Optional]
     public ?string $ipAddress;
 
+    /**
+     * The approximate location where the activity took place.
+     */
     #[Optional]
     public ?string $location;
 
@@ -121,11 +125,13 @@ final class HydratedCriticalAction implements BaseModel
      * Construct an instance from the required parameters.
      *
      * You must use named parameters to construct any parameters with a default value.
+     *
+     * @param Type|value-of<Type> $type
      */
     public static function with(
         string $id,
         \DateTimeInterface $createdAt,
-        string $type,
+        Type|string $type,
         int $userID,
         ?string $actingUser = null,
         ?string $countryCode = null,
@@ -177,8 +183,10 @@ final class HydratedCriticalAction implements BaseModel
 
     /**
      * The type of activity.
+     *
+     * @param Type|value-of<Type> $type
      */
-    public function withType(string $type): self
+    public function withType(Type|string $type): self
     {
         $self = clone $this;
         $self['type'] = $type;
@@ -241,6 +249,9 @@ final class HydratedCriticalAction implements BaseModel
         return $self;
     }
 
+    /**
+     * The approximate location where the activity took place.
+     */
     public function withLocation(string $location): self
     {
         $self = clone $this;

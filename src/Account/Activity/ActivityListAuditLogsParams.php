@@ -17,6 +17,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-type ActivityListAuditLogsParamsShape = array{
  *   actingUserID?: list<int>|null,
  *   after?: string|null,
+ *   fillFinalTimestamp?: bool|null,
  *   limit?: int|null,
  *   occurredAfter?: \DateTimeInterface|null,
  *   occurredBefore?: \DateTimeInterface|null,
@@ -29,11 +30,7 @@ final class ActivityListAuditLogsParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    /**
-     * The ID of a user, for retrieving user-specific logs.
-     *
-     * @var list<int>|null $actingUserID
-     */
+    /** @var list<int>|null $actingUserID */
     #[Optional(list: 'int')]
     public ?array $actingUserID;
 
@@ -43,29 +40,22 @@ final class ActivityListAuditLogsParams implements BaseModel
     #[Optional]
     public ?string $after;
 
+    #[Optional]
+    public ?bool $fillFinalTimestamp;
+
     /**
      * The maximum number of results to display per page.
      */
     #[Optional]
     public ?int $limit;
 
-    /**
-     * A timestamp, as a starting point for retrieving activity logs.
-     */
     #[Optional]
     public ?\DateTimeInterface $occurredAfter;
 
-    /**
-     * A timestamp, as an end point for retrieving activity logs.
-     */
     #[Optional]
     public ?\DateTimeInterface $occurredBefore;
 
-    /**
-     * Set to `occurredAt` to order results by the time of the event. By default, events are ordered from oldest to newest.
-     *
-     * @var list<string>|null $sort
-     */
+    /** @var list<string>|null $sort */
     #[Optional(list: 'string')]
     public ?array $sort;
 
@@ -85,6 +75,7 @@ final class ActivityListAuditLogsParams implements BaseModel
     public static function with(
         ?array $actingUserID = null,
         ?string $after = null,
+        ?bool $fillFinalTimestamp = null,
         ?int $limit = null,
         ?\DateTimeInterface $occurredAfter = null,
         ?\DateTimeInterface $occurredBefore = null,
@@ -94,6 +85,7 @@ final class ActivityListAuditLogsParams implements BaseModel
 
         null !== $actingUserID && $self['actingUserID'] = $actingUserID;
         null !== $after && $self['after'] = $after;
+        null !== $fillFinalTimestamp && $self['fillFinalTimestamp'] = $fillFinalTimestamp;
         null !== $limit && $self['limit'] = $limit;
         null !== $occurredAfter && $self['occurredAfter'] = $occurredAfter;
         null !== $occurredBefore && $self['occurredBefore'] = $occurredBefore;
@@ -103,8 +95,6 @@ final class ActivityListAuditLogsParams implements BaseModel
     }
 
     /**
-     * The ID of a user, for retrieving user-specific logs.
-     *
      * @param list<int> $actingUserID
      */
     public function withActingUserID(array $actingUserID): self
@@ -126,6 +116,14 @@ final class ActivityListAuditLogsParams implements BaseModel
         return $self;
     }
 
+    public function withFillFinalTimestamp(bool $fillFinalTimestamp): self
+    {
+        $self = clone $this;
+        $self['fillFinalTimestamp'] = $fillFinalTimestamp;
+
+        return $self;
+    }
+
     /**
      * The maximum number of results to display per page.
      */
@@ -137,9 +135,6 @@ final class ActivityListAuditLogsParams implements BaseModel
         return $self;
     }
 
-    /**
-     * A timestamp, as a starting point for retrieving activity logs.
-     */
     public function withOccurredAfter(\DateTimeInterface $occurredAfter): self
     {
         $self = clone $this;
@@ -148,9 +143,6 @@ final class ActivityListAuditLogsParams implements BaseModel
         return $self;
     }
 
-    /**
-     * A timestamp, as an end point for retrieving activity logs.
-     */
     public function withOccurredBefore(\DateTimeInterface $occurredBefore): self
     {
         $self = clone $this;
@@ -160,8 +152,6 @@ final class ActivityListAuditLogsParams implements BaseModel
     }
 
     /**
-     * Set to `occurredAt` to order results by the time of the event. By default, events are ordered from oldest to newest.
-     *
      * @param list<string> $sort
      */
     public function withSort(array $sort): self
