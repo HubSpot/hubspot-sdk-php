@@ -11,7 +11,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * Read an Object identified by `{taskId}`. `{taskId}` refers to the internal object ID by default, or optionally any unique property value as specified by the `idProperty` query param.  Control what is returned via the `properties` query param.
+ * Read an Object identified by `{objectId}`. `{objectId}` refers to the internal object ID by default, or optionally any unique property value as specified by the `idProperty` query param.  Control what is returned via the `properties` query param.
  *
  * @see HubspotSDK\Services\Crm\Objects\ContactsService::get()
  *
@@ -48,7 +48,7 @@ final class ContactGetParams implements BaseModel
     public ?array $associations;
 
     /**
-     * The name of a property whose values are unique for this object.
+     * The name of a property whose values are unique for this object type.
      */
     #[Optional]
     public ?string $idProperty;
@@ -151,7 +151,7 @@ final class ContactGetParams implements BaseModel
     }
 
     /**
-     * The name of a property whose values are unique for this object.
+     * The name of a property whose values are unique for this object type.
      */
     public function withIDProperty(string $idProperty): self
     {

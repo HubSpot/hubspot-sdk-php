@@ -9,7 +9,16 @@ use Http\Discovery\Psr18ClientDiscovery;
 use HubspotSDK\Core\BaseClient;
 use HubspotSDK\Core\Util;
 use HubspotSDK\Services\AccountService;
+use HubspotSDK\Services\AutomationService;
+use HubspotSDK\Services\CmsService;
 use HubspotSDK\Services\CrmService;
+use HubspotSDK\Services\DataStudioService;
+use HubspotSDK\Services\EventsService;
+use HubspotSDK\Services\FilesService;
+use HubspotSDK\Services\MarketingService;
+use HubspotSDK\Services\MetaService;
+use HubspotSDK\Services\SchedulerService;
+use HubspotSDK\Services\SettingsService;
 
 /**
  * @phpstan-import-type NormalizedRequest from \HubspotSDK\Core\BaseClient
@@ -25,7 +34,52 @@ class Client extends BaseClient
     /**
      * @api
      */
+    public AutomationService $automation;
+
+    /**
+     * @api
+     */
+    public CmsService $cms;
+
+    /**
+     * @api
+     */
     public CrmService $crm;
+
+    /**
+     * @api
+     */
+    public DataStudioService $dataStudio;
+
+    /**
+     * @api
+     */
+    public EventsService $events;
+
+    /**
+     * @api
+     */
+    public FilesService $files;
+
+    /**
+     * @api
+     */
+    public MarketingService $marketing;
+
+    /**
+     * @api
+     */
+    public MetaService $meta;
+
+    /**
+     * @api
+     */
+    public SchedulerService $scheduler;
+
+    /**
+     * @api
+     */
+    public SettingsService $settings;
 
     /**
      * @param RequestOpts|null $requestOptions
@@ -65,7 +119,16 @@ class Client extends BaseClient
         );
 
         $this->account = new AccountService($this);
+        $this->automation = new AutomationService($this);
+        $this->cms = new CmsService($this);
         $this->crm = new CrmService($this);
+        $this->dataStudio = new DataStudioService($this);
+        $this->events = new EventsService($this);
+        $this->files = new FilesService($this);
+        $this->marketing = new MarketingService($this);
+        $this->meta = new MetaService($this);
+        $this->scheduler = new SchedulerService($this);
+        $this->settings = new SettingsService($this);
     }
 
     /** @return array<string,string> */

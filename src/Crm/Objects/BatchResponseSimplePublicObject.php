@@ -9,12 +9,13 @@ use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Objects\BatchResponseSimplePublicObject\Status;
+use HubspotSDK\StandardError;
 
 /**
  * A public object batch response object.
  *
  * @phpstan-import-type SimplePublicObjectShape from \HubspotSDK\Crm\Objects\SimplePublicObject
- * @phpstan-import-type StandardErrorShape from \HubspotSDK\Crm\Objects\StandardError
+ * @phpstan-import-type StandardErrorShape from \HubspotSDK\StandardError
  *
  * @phpstan-type BatchResponseSimplePublicObjectShape = array{
  *   completedAt: \DateTimeInterface,

@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Objects\SimplePublicObjectBatchInputForCreate;
 
 /**
- * Create multiple tasks in a single request by providing a batch of task properties and associations. This endpoint allows for efficient task creation by processing multiple tasks together.
+ * Create multiple CRM objects in a single request by specifying the object type and providing the necessary properties and associations for each object.
  *
  * @see HubspotSDK\Services\Crm\Objects\CustomService::create()
  *

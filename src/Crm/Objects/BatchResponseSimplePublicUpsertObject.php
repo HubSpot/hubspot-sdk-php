@@ -9,12 +9,13 @@ use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Objects\BatchResponseSimplePublicUpsertObject\Status;
+use HubspotSDK\StandardError;
 
 /**
  * Represents the result of a batch upsert operation, including the operation’s status, timestamps, and a list of successfully created or updated objects.
  *
  * @phpstan-import-type SimplePublicUpsertObjectShape from \HubspotSDK\Crm\Objects\SimplePublicUpsertObject
- * @phpstan-import-type StandardErrorShape from \HubspotSDK\Crm\Objects\StandardError
+ * @phpstan-import-type StandardErrorShape from \HubspotSDK\StandardError
  *
  * @phpstan-type BatchResponseSimplePublicUpsertObjectShape = array{
  *   completedAt: \DateTimeInterface,

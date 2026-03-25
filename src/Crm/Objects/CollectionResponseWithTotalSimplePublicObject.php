@@ -8,12 +8,13 @@ use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Paging;
 
 /**
  * Represents a list of simple objects returned from an API request, along with the total count of objects available.
  *
  * @phpstan-import-type SimplePublicObjectShape from \HubspotSDK\Crm\Objects\SimplePublicObject
- * @phpstan-import-type PagingShape from \HubspotSDK\Crm\Objects\Paging
+ * @phpstan-import-type PagingShape from \HubspotSDK\Paging
  *
  * @phpstan-type CollectionResponseWithTotalSimplePublicObjectShape = array{
  *   results: list<SimplePublicObject|SimplePublicObjectShape>,

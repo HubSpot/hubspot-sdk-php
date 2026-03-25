@@ -40,9 +40,8 @@ final class ContactsRawService implements ContactsRawContract
     /**
      * @api
      *
-     * Create a task with the given properties and return a copy of the object, including the ID. Documentation and examples for creating standard tasks is provided.
+     * Create a CRM object with the given properties and return a copy of the object, including the ID. Documentation and examples for creating standard objects is provided.
      *
-     * @param string $objectType object type
      * @param array{
      *   associations: list<PublicAssociationsForObject|PublicAssociationsForObjectShape>,
      *   properties: array<string,string>,
@@ -76,9 +75,9 @@ final class ContactsRawService implements ContactsRawContract
     /**
      * @api
      *
-     * Perform a partial update of an Object identified by `{taskId}`or optionally a unique property value as specified by the `idProperty` query param. `{taskId}` refers to the internal object ID by default, and the `idProperty` query param refers to a property whose values are unique for the object. Provided property values will be overwritten. Read-only and non-existent properties will result in an error. Properties values can be cleared by passing an empty string.
+     * Perform a partial update of an Object identified by `{objectId}`or optionally a unique property value as specified by the `idProperty` query param. `{objectId}` refers to the internal object ID by default, and the `idProperty` query param refers to a property whose values are unique for the object. Provided property values will be overwritten. Read-only and non-existent properties will result in an error. Properties values can be cleared by passing an empty string.
      *
-     * @param string $objectID Path param: Unique Task Id
+     * @param string $objectID Path param
      * @param array{
      *   objectType: string, properties: array<string,string>, idProperty?: string
      * }|ContactUpdateParams $params
@@ -118,9 +117,8 @@ final class ContactsRawService implements ContactsRawContract
     /**
      * @api
      *
-     * Read a page of tasks. Control what is returned via the `properties` query param.
+     * Read a page of objects. Control what is returned via the `properties` query param.
      *
-     * @param string $objectType object type
      * @param array{
      *   after?: string,
      *   archived?: bool,
@@ -159,9 +157,8 @@ final class ContactsRawService implements ContactsRawContract
     /**
      * @api
      *
-     * Move an Object identified by `{taskId}` to the recycling bin.
+     * Move an Object identified by `{objectId}` to the recycling bin.
      *
-     * @param string $objectID Unique Task Id
      * @param array{objectType: string}|ContactDeleteParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -193,7 +190,8 @@ final class ContactsRawService implements ContactsRawContract
     /**
      * @api
      *
-     * @param string $objectType object type
+     * Permanently delete a contact and all associated content to follow GDPR. Use optional property `idProperty` set to `email` to identify contact by email address. If email address is not found, the email address will be added to a blocklist and prevent it from being used in the future. Learn more about [permanently deleting contacts](https://knowledge.hubspot.com/privacy-and-consent/how-do-i-perform-a-gdpr-delete-in-hubspot).
+     *
      * @param array{
      *   objectID: string, idProperty?: string
      * }|ContactGdprDeleteParams $params
@@ -226,9 +224,9 @@ final class ContactsRawService implements ContactsRawContract
     /**
      * @api
      *
-     * Read an Object identified by `{taskId}`. `{taskId}` refers to the internal object ID by default, or optionally any unique property value as specified by the `idProperty` query param.  Control what is returned via the `properties` query param.
+     * Read an Object identified by `{objectId}`. `{objectId}` refers to the internal object ID by default, or optionally any unique property value as specified by the `idProperty` query param.  Control what is returned via the `properties` query param.
      *
-     * @param string $objectID Path param: Unique Task Id
+     * @param string $objectID Path param
      * @param array{
      *   objectType: string,
      *   archived?: bool,
@@ -268,7 +266,8 @@ final class ContactsRawService implements ContactsRawContract
     /**
      * @api
      *
-     * @param string $objectType object type
+     * Merge two CRM objects of the same type by specifying one as the primary object and the other as the object to be merged into it.
+     *
      * @param array{
      *   objectIDToMerge: string, primaryObjectID: string
      * }|ContactMergeParams $params
@@ -301,9 +300,8 @@ final class ContactsRawService implements ContactsRawContract
     /**
      * @api
      *
-     * Execute a search for tasks based on the provided criteria, including filters, properties, and sorting options. This allows for retrieving tasks that match specific conditions or property values.
+     * Execute a search query to find CRM objects of a given type, using specified filters and properties. The search can be customized with filters, sorting, and pagination options.
      *
-     * @param string $objectType object type
      * @param array{
      *   after: string,
      *   filterGroups: list<FilterGroup|FilterGroupShape>,

@@ -1,0 +1,113 @@
+<?php
+
+declare(strict_types=1);
+
+namespace HubspotSDK\ServiceContracts\Settings\Currencies;
+
+use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Page;
+use HubspotSDK\RequestOptions;
+use HubspotSDK\Settings\Currencies\CollectionResponseExchangeRateNoPaging;
+use HubspotSDK\Settings\Currencies\ExchangeRate;
+use HubspotSDK\Settings\Currencies\ExchangeRates\ExchangeRateCreateExchangeRateParams\FromCurrencyCode;
+use HubspotSDK\Settings\Currencies\ExchangeRates\ExchangeRateListExchangeRatesParams\ToCurrencyCode;
+
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
+interface ExchangeRatesContract
+{
+    /**
+     * @api
+     *
+     * @param float $conversionRate the conversion rate between the to and from currency code of this exchange rate
+     * @param FromCurrencyCode|value-of<FromCurrencyCode> $fromCurrencyCode this represents the three-letter currency code (such as USD for US Dollar) of the currency you want to convert from
+     * @param \DateTimeInterface $effectiveAt the date the exchange rate is in effect
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function createExchangeRate(
+        float $conversionRate,
+        FromCurrencyCode|string $fromCurrencyCode,
+        ?\DateTimeInterface $effectiveAt = null,
+        RequestOptions|array|null $requestOptions = null,
+    ): ExchangeRate;
+
+    /**
+     * @api
+     *
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function getExchangeRateByID(
+        string $exchangeRateID,
+        RequestOptions|array|null $requestOptions = null
+    ): ExchangeRate;
+
+    /**
+     * @api
+     *
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function listCurrentExchangeRates(
+        RequestOptions|array|null $requestOptions = null
+    ): CollectionResponseExchangeRateNoPaging;
+
+    /**
+     * @api
+     *
+     * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+     * @param \HubspotSDK\Settings\Currencies\ExchangeRates\ExchangeRateListExchangeRatesParams\FromCurrencyCode|value-of<\HubspotSDK\Settings\Currencies\ExchangeRates\ExchangeRateListExchangeRatesParams\FromCurrencyCode> $fromCurrencyCode
+     * @param int $limit the maximum number of results to display per page
+     * @param ToCurrencyCode|value-of<ToCurrencyCode> $toCurrencyCode
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return Page<ExchangeRate>
+     *
+     * @throws APIException
+     */
+    public function listExchangeRates(
+        ?string $after = null,
+        \HubspotSDK\Settings\Currencies\ExchangeRates\ExchangeRateListExchangeRatesParams\FromCurrencyCode|string|null $fromCurrencyCode = null,
+        int $limit = 100,
+        ToCurrencyCode|string|null $toCurrencyCode = null,
+        RequestOptions|array|null $requestOptions = null,
+    ): Page;
+
+    /**
+     * @api
+     *
+     * @param float $conversionRate the updated conversion rate between the to and from currency code of this exchange rate
+     * @param \DateTimeInterface $effectiveAt the date the exchange rate is in effect
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function updateExchangeRate(
+        string $exchangeRateID,
+        float $conversionRate,
+        ?\DateTimeInterface $effectiveAt = null,
+        RequestOptions|array|null $requestOptions = null,
+    ): ExchangeRate;
+
+    /**
+     * @api
+     *
+     * @param \HubspotSDK\Settings\Currencies\ExchangeRates\ExchangeRateUpdateVisibilityParams\FromCurrencyCode|value-of<\HubspotSDK\Settings\Currencies\ExchangeRates\ExchangeRateUpdateVisibilityParams\FromCurrencyCode> $fromCurrencyCode this represents the three-letter currency code (such as USD for US Dollar) of the currency you want to convert from
+     * @param \HubspotSDK\Settings\Currencies\ExchangeRates\ExchangeRateUpdateVisibilityParams\ToCurrencyCode|value-of<\HubspotSDK\Settings\Currencies\ExchangeRates\ExchangeRateUpdateVisibilityParams\ToCurrencyCode> $toCurrencyCode this represents the three-letter currency code (such as USD for US Dollar) of the currency you want to convert to
+     * @param bool $visibleInUi This indicates if the currency pair is shown in the MultiCurrency settings page. Setting this to false will remove the currency pair from the settings page.
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function updateVisibility(
+        \HubspotSDK\Settings\Currencies\ExchangeRates\ExchangeRateUpdateVisibilityParams\FromCurrencyCode|string $fromCurrencyCode,
+        \HubspotSDK\Settings\Currencies\ExchangeRates\ExchangeRateUpdateVisibilityParams\ToCurrencyCode|string $toCurrencyCode,
+        bool $visibleInUi,
+        RequestOptions|array|null $requestOptions = null,
+    ): mixed;
+}

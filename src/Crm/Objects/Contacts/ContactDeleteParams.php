@@ -10,7 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * Move an Object identified by `{taskId}` to the recycling bin.
+ * Move an Object identified by `{objectId}` to the recycling bin.
  *
  * @see HubspotSDK\Services\Crm\Objects\ContactsService::delete()
  *

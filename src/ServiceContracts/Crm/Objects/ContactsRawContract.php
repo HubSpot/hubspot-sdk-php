@@ -28,7 +28,6 @@ interface ContactsRawContract
     /**
      * @api
      *
-     * @param string $objectType object type
      * @param array<string,mixed>|ContactCreateParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -45,7 +44,7 @@ interface ContactsRawContract
     /**
      * @api
      *
-     * @param string $objectID Path param: Unique Task Id
+     * @param string $objectID Path param
      * @param array<string,mixed>|ContactUpdateParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -62,7 +61,6 @@ interface ContactsRawContract
     /**
      * @api
      *
-     * @param string $objectType object type
      * @param array<string,mixed>|ContactListParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -79,7 +77,6 @@ interface ContactsRawContract
     /**
      * @api
      *
-     * @param string $objectID Unique Task Id
      * @param array<string,mixed>|ContactDeleteParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -96,7 +93,6 @@ interface ContactsRawContract
     /**
      * @api
      *
-     * @param string $objectType object type
      * @param array<string,mixed>|ContactGdprDeleteParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -113,7 +109,7 @@ interface ContactsRawContract
     /**
      * @api
      *
-     * @param string $objectID Path param: Unique Task Id
+     * @param string $objectID Path param
      * @param array<string,mixed>|ContactGetParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -130,7 +126,6 @@ interface ContactsRawContract
     /**
      * @api
      *
-     * @param string $objectType object type
      * @param array<string,mixed>|ContactMergeParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -147,7 +142,6 @@ interface ContactsRawContract
     /**
      * @api
      *
-     * @param string $objectType object type
      * @param array<string,mixed>|ContactSearchParams $params
      * @param RequestOpts|null $requestOptions
      *
