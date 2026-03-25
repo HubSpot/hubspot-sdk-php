@@ -48,7 +48,7 @@ interface BatchContract
     /**
      * @api
      *
-     * @param list<PublicObjectID|PublicObjectIDShape> $inputs
+     * @param list<PublicObjectID|PublicObjectIDShape> $inputs An array of deal split inputs
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException

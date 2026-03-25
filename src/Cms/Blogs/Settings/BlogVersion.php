@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\Blogs\Settings;
 
-use HubspotSDK\Cms\Blogs\VersionUser;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\VersionUser;
 
 /**
  * @phpstan-import-type BlogShape from \HubspotSDK\Cms\Blogs\Settings\Blog
- * @phpstan-import-type VersionUserShape from \HubspotSDK\Cms\Blogs\VersionUser
+ * @phpstan-import-type VersionUserShape from \HubspotSDK\VersionUser
  *
  * @phpstan-type BlogVersionShape = array{
  *   id: string,

@@ -21,13 +21,13 @@ final class PublicMergeInput implements BaseModel
     use SdkModel;
 
     /**
-     * The object ID of the record that the merge will not set as the current value after the merge.
+     * The ID of the company to merge into the primary.
      */
     #[Required('objectIdToMerge')]
     public string $objectIDToMerge;
 
     /**
-     * The object ID of the record that the merge will generally set as the current value after the merge.
+     * The ID of the primary company, which the other will merge into.
      */
     #[Required('primaryObjectId')]
     public string $primaryObjectID;
@@ -69,7 +69,7 @@ final class PublicMergeInput implements BaseModel
     }
 
     /**
-     * The object ID of the record that the merge will not set as the current value after the merge.
+     * The ID of the company to merge into the primary.
      */
     public function withObjectIDToMerge(string $objectIDToMerge): self
     {
@@ -80,7 +80,7 @@ final class PublicMergeInput implements BaseModel
     }
 
     /**
-     * The object ID of the record that the merge will generally set as the current value after the merge.
+     * The ID of the primary company, which the other will merge into.
      */
     public function withPrimaryObjectID(string $primaryObjectID): self
     {

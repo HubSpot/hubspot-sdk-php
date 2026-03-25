@@ -1,0 +1,258 @@
+<?php
+
+declare(strict_types=1);
+
+namespace HubspotSDK\Services\Crm;
+
+use HubspotSDK\Client;
+use HubspotSDK\Core\Contracts\BaseResponse;
+use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
+use HubspotSDK\Crm\Limits\AssociationRecordLimitResponse;
+use HubspotSDK\Crm\Limits\CalculatedPropertyLimitResponse;
+use HubspotSDK\Crm\Limits\CollectionResponseAssociationLabelLimitResponseNoPaging;
+use HubspotSDK\Crm\Limits\CollectionResponseObjectTypeNearOrAtAssociationLimitNoPaging;
+use HubspotSDK\Crm\Limits\CustomObjectLimitResponse;
+use HubspotSDK\Crm\Limits\CustomPropertyLimitResponse;
+use HubspotSDK\Crm\Limits\LimitGetAssociationLabelLimitsParams;
+use HubspotSDK\Crm\Limits\LimitGetAssociationRecordsLimitsByObjectTypeParams;
+use HubspotSDK\Crm\Limits\PipelineLimitResponse;
+use HubspotSDK\Crm\Limits\RecordLimitResponse;
+use HubspotSDK\RequestOptions;
+use HubspotSDK\ServiceContracts\Crm\LimitsRawContract;
+
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
+final class LimitsRawService implements LimitsRawContract
+{
+    // @phpstan-ignore-next-line
+    /**
+     * @internal
+     */
+    public function __construct(private Client $client) {}
+
+    /**
+     * @api
+     *
+     * @param array{
+     *   fromObjectTypeID?: string, toObjectTypeID?: string
+     * }|LimitGetAssociationLabelLimitsParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<CollectionResponseAssociationLabelLimitResponseNoPaging>
+     *
+     * @throws APIException
+     */
+    public function getAssociationLabelLimits(
+        array|LimitGetAssociationLabelLimitsParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = LimitGetAssociationLabelLimitsParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'get',
+            path: 'crm/limits/2026-03/associations/labels',
+            query: Util::array_transform_keys(
+                $parsed,
+                [
+                    'fromObjectTypeID' => 'fromObjectTypeId',
+                    'toObjectTypeID' => 'toObjectTypeId',
+                ],
+            ),
+            options: $options,
+            convert: CollectionResponseAssociationLabelLimitResponseNoPaging::class,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * @param array{
+     *   fromObjectTypeID: string
+     * }|LimitGetAssociationRecordsLimitsByObjectTypeParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<AssociationRecordLimitResponse>
+     *
+     * @throws APIException
+     */
+    public function getAssociationRecordsLimitsByObjectType(
+        string $toObjectTypeID,
+        array|LimitGetAssociationRecordsLimitsByObjectTypeParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = LimitGetAssociationRecordsLimitsByObjectTypeParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+        $fromObjectTypeID = $parsed['fromObjectTypeID'];
+        unset($parsed['fromObjectTypeID']);
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'get',
+            path: [
+                'crm/limits/2026-03/associations/records/%1$s/%2$s',
+                $fromObjectTypeID,
+                $toObjectTypeID,
+            ],
+            options: $options,
+            convert: AssociationRecordLimitResponse::class,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<CollectionResponseObjectTypeNearOrAtAssociationLimitNoPaging,>
+     *
+     * @throws APIException
+     */
+    public function getAssociationRecordsLimitsFromObjects(
+        RequestOptions|array|null $requestOptions = null
+    ): BaseResponse {
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'get',
+            path: 'crm/limits/2026-03/associations/records/from',
+            options: $requestOptions,
+            convert: CollectionResponseObjectTypeNearOrAtAssociationLimitNoPaging::class,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<CollectionResponseObjectTypeNearOrAtAssociationLimitNoPaging,>
+     *
+     * @throws APIException
+     */
+    public function getAssociationRecordsLimitsToObjects(
+        string $fromObjectTypeID,
+        RequestOptions|array|null $requestOptions = null
+    ): BaseResponse {
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'get',
+            path: [
+                'crm/limits/2026-03/associations/records/%1$s/to', $fromObjectTypeID,
+            ],
+            options: $requestOptions,
+            convert: CollectionResponseObjectTypeNearOrAtAssociationLimitNoPaging::class,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<CalculatedPropertyLimitResponse>
+     *
+     * @throws APIException
+     */
+    public function getCalculatedPropertyLimits(
+        RequestOptions|array|null $requestOptions = null
+    ): BaseResponse {
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'get',
+            path: 'crm/limits/2026-03/calculated-properties',
+            options: $requestOptions,
+            convert: CalculatedPropertyLimitResponse::class,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<CustomObjectLimitResponse>
+     *
+     * @throws APIException
+     */
+    public function getCustomObjectTypeLimits(
+        RequestOptions|array|null $requestOptions = null
+    ): BaseResponse {
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'get',
+            path: 'crm/limits/2026-03/custom-object-types',
+            options: $requestOptions,
+            convert: CustomObjectLimitResponse::class,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<CustomPropertyLimitResponse>
+     *
+     * @throws APIException
+     */
+    public function getCustomPropertyLimits(
+        RequestOptions|array|null $requestOptions = null
+    ): BaseResponse {
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'get',
+            path: 'crm/limits/2026-03/custom-properties',
+            options: $requestOptions,
+            convert: CustomPropertyLimitResponse::class,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<PipelineLimitResponse>
+     *
+     * @throws APIException
+     */
+    public function getPipelineLimits(
+        RequestOptions|array|null $requestOptions = null
+    ): BaseResponse {
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'get',
+            path: 'crm/limits/2026-03/pipelines',
+            options: $requestOptions,
+            convert: PipelineLimitResponse::class,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<RecordLimitResponse>
+     *
+     * @throws APIException
+     */
+    public function getRecordLimits(
+        RequestOptions|array|null $requestOptions = null
+    ): BaseResponse {
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'get',
+            path: 'crm/limits/2026-03/records',
+            options: $requestOptions,
+            convert: RecordLimitResponse::class,
+        );
+    }
+}

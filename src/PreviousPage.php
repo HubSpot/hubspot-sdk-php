@@ -20,13 +20,13 @@ final class PreviousPage implements BaseModel
     use SdkModel;
 
     /**
-     * A paging cursor token for retrieving previous pages.
+     * A string token used to identify the position before the current page in the pagination sequence.
      */
     #[Required]
     public string $before;
 
     /**
-     * A URL that can be used to retrieve the previous pages' results.
+     * A URL string that provides a direct link to the previous page of results.
      */
     #[Optional]
     public ?string $link;
@@ -67,7 +67,7 @@ final class PreviousPage implements BaseModel
     }
 
     /**
-     * A paging cursor token for retrieving previous pages.
+     * A string token used to identify the position before the current page in the pagination sequence.
      */
     public function withBefore(string $before): self
     {
@@ -78,7 +78,7 @@ final class PreviousPage implements BaseModel
     }
 
     /**
-     * A URL that can be used to retrieve the previous pages' results.
+     * A URL string that provides a direct link to the previous page of results.
      */
     public function withLink(string $link): self
     {

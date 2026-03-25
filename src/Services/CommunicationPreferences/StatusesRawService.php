@@ -1,0 +1,17 @@
+<?php
+
+declare(strict_types=1);
+
+namespace HubspotSDK\Services\CommunicationPreferences;
+
+use HubspotSDK\Client;
+use HubspotSDK\ServiceContracts\CommunicationPreferences\StatusesRawContract;
+
+final class StatusesRawService implements StatusesRawContract
+{
+    // @phpstan-ignore-next-line
+    /**
+     * @internal
+     */
+    public function __construct(private Client $client) {}
+}

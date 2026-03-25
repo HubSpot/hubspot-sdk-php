@@ -9,14 +9,14 @@ use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\Objects\FilterGroup;
+use HubspotSDK\Crm\FilterGroup;
 
 /**
- * Execute a search query to find CRM objects of a given type, using specified filters and properties. The search can be customized with filters, sorting, and pagination options.
+ * Search for contacts by filtering on properties, searching through associations, and sorting results. Learn more about [CRM search](https://developers.hubspot.com/docs/guides/api/crm/search#make-a-search-request).
  *
  * @see HubspotSDK\Services\Crm\Objects\ContactsService::search()
  *
- * @phpstan-import-type FilterGroupShape from \HubspotSDK\Crm\Objects\FilterGroup
+ * @phpstan-import-type FilterGroupShape from \HubspotSDK\Crm\FilterGroup
  *
  * @phpstan-type ContactSearchParamsShape = array{
  *   after: string,

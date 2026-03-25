@@ -10,12 +10,13 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\ListOf;
 use HubspotSDK\Core\Conversion\MapOf;
+use HubspotSDK\Crm\ValueWithTimestamp;
 
 /**
  * Represents a CRM object along with its properties, timestamps, and a set of associated object IDs grouped by association type.
  *
  * @phpstan-import-type CollectionResponseAssociatedIDShape from \HubspotSDK\Crm\Objects\CollectionResponseAssociatedID
- * @phpstan-import-type ValueWithTimestampShape from \HubspotSDK\Crm\Objects\ValueWithTimestamp
+ * @phpstan-import-type ValueWithTimestampShape from \HubspotSDK\Crm\ValueWithTimestamp
  *
  * @phpstan-type SimplePublicObjectWithAssociationsShape = array{
  *   id: string,

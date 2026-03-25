@@ -9,8 +9,13 @@ use Http\Discovery\Psr18ClientDiscovery;
 use HubspotSDK\Core\BaseClient;
 use HubspotSDK\Core\Util;
 use HubspotSDK\Services\AccountService;
+use HubspotSDK\Services\AppWebhooksService;
+use HubspotSDK\Services\AuthService;
 use HubspotSDK\Services\AutomationService;
+use HubspotSDK\Services\BusinessUnitsService;
 use HubspotSDK\Services\CmsService;
+use HubspotSDK\Services\CommunicationPreferencesService;
+use HubspotSDK\Services\ConversationsService;
 use HubspotSDK\Services\CrmService;
 use HubspotSDK\Services\DataStudioService;
 use HubspotSDK\Services\EventsService;
@@ -34,12 +39,37 @@ class Client extends BaseClient
     /**
      * @api
      */
+    public AppWebhooksService $appWebhooks;
+
+    /**
+     * @api
+     */
+    public AuthService $auth;
+
+    /**
+     * @api
+     */
     public AutomationService $automation;
 
     /**
      * @api
      */
+    public BusinessUnitsService $businessUnits;
+
+    /**
+     * @api
+     */
     public CmsService $cms;
+
+    /**
+     * @api
+     */
+    public CommunicationPreferencesService $communicationPreferences;
+
+    /**
+     * @api
+     */
+    public ConversationsService $conversations;
 
     /**
      * @api
@@ -119,8 +149,13 @@ class Client extends BaseClient
         );
 
         $this->account = new AccountService($this);
+        $this->appWebhooks = new AppWebhooksService($this);
+        $this->auth = new AuthService($this);
         $this->automation = new AutomationService($this);
+        $this->businessUnits = new BusinessUnitsService($this);
         $this->cms = new CmsService($this);
+        $this->communicationPreferences = new CommunicationPreferencesService($this);
+        $this->conversations = new ConversationsService($this);
         $this->crm = new CrmService($this);
         $this->dataStudio = new DataStudioService($this);
         $this->events = new EventsService($this);

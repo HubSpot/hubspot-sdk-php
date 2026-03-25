@@ -1,0 +1,958 @@
+<?php
+
+declare(strict_types=1);
+
+namespace HubspotSDK\Services\Crm;
+
+use HubspotSDK\Client;
+use HubspotSDK\Core\Contracts\BaseResponse;
+use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
+use HubspotSDK\Crm\Lists\APICollectionResponseRecordListMembership;
+use HubspotSDK\Crm\Lists\BatchResponseRecordIDWithMemberships;
+use HubspotSDK\Crm\Lists\JoinTimeAndRecordID;
+use HubspotSDK\Crm\Lists\ListAddAndRemoveMembershipsParams;
+use HubspotSDK\Crm\Lists\ListAddMembershipsFromParams;
+use HubspotSDK\Crm\Lists\ListAddMembershipsParams;
+use HubspotSDK\Crm\Lists\ListBatchReadMembershipsParams;
+use HubspotSDK\Crm\Lists\ListCreateFolderParams;
+use HubspotSDK\Crm\Lists\ListCreateIDMappingParams;
+use HubspotSDK\Crm\Lists\ListCreateParams;
+use HubspotSDK\Crm\Lists\ListCreateResponse;
+use HubspotSDK\Crm\Lists\ListFetchResponse;
+use HubspotSDK\Crm\Lists\ListFolderCreateResponse;
+use HubspotSDK\Crm\Lists\ListFolderFetchResponse;
+use HubspotSDK\Crm\Lists\ListGetByObjectTypeIDAndNameParams;
+use HubspotSDK\Crm\Lists\ListGetIDMappingParams;
+use HubspotSDK\Crm\Lists\ListGetParams;
+use HubspotSDK\Crm\Lists\ListGetRecordMembershipsParams;
+use HubspotSDK\Crm\Lists\ListListFoldersParams;
+use HubspotSDK\Crm\Lists\ListListMembershipsJoinOrderParams;
+use HubspotSDK\Crm\Lists\ListListMembershipsParams;
+use HubspotSDK\Crm\Lists\ListListParams;
+use HubspotSDK\Crm\Lists\ListMoveFolderParams;
+use HubspotSDK\Crm\Lists\ListMoveListParams;
+use HubspotSDK\Crm\Lists\ListRemoveMembershipsParams;
+use HubspotSDK\Crm\Lists\ListRenameFolderParams;
+use HubspotSDK\Crm\Lists\ListsByIDResponse;
+use HubspotSDK\Crm\Lists\ListSearchParams;
+use HubspotSDK\Crm\Lists\ListSearchResponse;
+use HubspotSDK\Crm\Lists\ListUpdateListFiltersParams;
+use HubspotSDK\Crm\Lists\ListUpdateListNameParams;
+use HubspotSDK\Crm\Lists\ListUpdateResponse;
+use HubspotSDK\Crm\Lists\ListUpdateScheduleConversionParams;
+use HubspotSDK\Crm\Lists\ListUpdateScheduleConversionParams\ConversionType;
+use HubspotSDK\Crm\Lists\ListUpdateScheduleConversionParams\TimeUnit;
+use HubspotSDK\Crm\Lists\MembershipsUpdateResponse;
+use HubspotSDK\Crm\Lists\PublicBatchMigrationMapping;
+use HubspotSDK\Crm\Lists\PublicListConversionResponse;
+use HubspotSDK\Crm\Lists\PublicListPermissions;
+use HubspotSDK\Crm\Lists\PublicMembershipSettings;
+use HubspotSDK\Crm\Lists\PublicMigrationMapping;
+use HubspotSDK\Crm\Lists\RecordIDInput;
+use HubspotSDK\Page;
+use HubspotSDK\RequestOptions;
+use HubspotSDK\ServiceContracts\Crm\ListsRawContract;
+
+/**
+ * @phpstan-import-type FilterBranchShape from \HubspotSDK\Crm\Lists\ListCreateParams\FilterBranch
+ * @phpstan-import-type PublicListPermissionsShape from \HubspotSDK\Crm\Lists\PublicListPermissions
+ * @phpstan-import-type PublicMembershipSettingsShape from \HubspotSDK\Crm\Lists\PublicMembershipSettings
+ * @phpstan-import-type RecordIDInputShape from \HubspotSDK\Crm\Lists\RecordIDInput
+ * @phpstan-import-type FilterBranchShape from \HubspotSDK\Crm\Lists\ListUpdateListFiltersParams\FilterBranch as FilterBranchShape1
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
+final class ListsRawService implements ListsRawContract
+{
+    // @phpstan-ignore-next-line
+    /**
+     * @internal
+     */
+    public function __construct(private Client $client) {}
+
+    /**
+     * @api
+     *
+     * @param array{
+     *   name: string,
+     *   objectTypeID: string,
+     *   processingType: string,
+     *   customProperties?: array<string,string>,
+     *   filterBranch?: FilterBranchShape,
+     *   listFolderID?: int,
+     *   listPermissions?: PublicListPermissions|PublicListPermissionsShape,
+     *   membershipSettings?: PublicMembershipSettings|PublicMembershipSettingsShape,
+     * }|ListCreateParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<ListCreateResponse>
+     *
+     * @throws APIException
+     */
+    public function create(
+        array|ListCreateParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = ListCreateParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'post',
+            path: 'crm/lists/2026-03',
+            body: (object) $parsed,
+            options: $options,
+            convert: ListCreateResponse::class,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * @param array{
+     *   includeFilters?: bool, listIDs?: list<string>
+     * }|ListListParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<ListsByIDResponse>
+     *
+     * @throws APIException
+     */
+    public function list(
+        array|ListListParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = ListListParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'get',
+            path: 'crm/lists/2026-03',
+            query: Util::array_transform_keys($parsed, ['listIDs' => 'listIds']),
+            options: $options,
+            convert: ListsByIDResponse::class,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<mixed>
+     *
+     * @throws APIException
+     */
+    public function delete(
+        string $listID,
+        RequestOptions|array|null $requestOptions = null
+    ): BaseResponse {
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'delete',
+            path: ['crm/lists/2026-03/%1$s', $listID],
+            options: $requestOptions,
+            convert: null,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * @param array{
+     *   recordIDsToAdd: list<string>, recordIDsToRemove: list<string>
+     * }|ListAddAndRemoveMembershipsParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<MembershipsUpdateResponse>
+     *
+     * @throws APIException
+     */
+    public function addAndRemoveMemberships(
+        string $listID,
+        array|ListAddAndRemoveMembershipsParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = ListAddAndRemoveMembershipsParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'put',
+            path: ['crm/lists/2026-03/%1$s/memberships/add-and-remove', $listID],
+            body: (object) $parsed,
+            options: $options,
+            convert: MembershipsUpdateResponse::class,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * @param array{body: list<string>}|ListAddMembershipsParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<MembershipsUpdateResponse>
+     *
+     * @throws APIException
+     */
+    public function addMemberships(
+        string $listID,
+        array|ListAddMembershipsParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = ListAddMembershipsParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'put',
+            path: ['crm/lists/2026-03/%1$s/memberships/add', $listID],
+            body: $parsed['body'],
+            options: $options,
+            convert: MembershipsUpdateResponse::class,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * @param array{listID: string}|ListAddMembershipsFromParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<mixed>
+     *
+     * @throws APIException
+     */
+    public function addMembershipsFrom(
+        string $sourceListID,
+        array|ListAddMembershipsFromParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = ListAddMembershipsFromParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+        $listID = $parsed['listID'];
+        unset($parsed['listID']);
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'put',
+            path: [
+                'crm/lists/2026-03/%1$s/memberships/add-from/%2$s',
+                $listID,
+                $sourceListID,
+            ],
+            options: $options,
+            convert: null,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * @param array{
+     *   inputs: list<RecordIDInput|RecordIDInputShape>
+     * }|ListBatchReadMembershipsParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<BatchResponseRecordIDWithMemberships>
+     *
+     * @throws APIException
+     */
+    public function batchReadMemberships(
+        array|ListBatchReadMembershipsParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = ListBatchReadMembershipsParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'post',
+            path: 'crm/lists/2026-03/records/memberships/batch/read',
+            body: (object) $parsed,
+            options: $options,
+            convert: BatchResponseRecordIDWithMemberships::class,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * @param array{
+     *   name: string, parentFolderID?: string
+     * }|ListCreateFolderParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<ListFolderCreateResponse>
+     *
+     * @throws APIException
+     */
+    public function createFolder(
+        array|ListCreateFolderParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = ListCreateFolderParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'post',
+            path: 'crm/lists/2026-03/folders',
+            body: (object) $parsed,
+            options: $options,
+            convert: ListFolderCreateResponse::class,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * @param array{body: list<string>}|ListCreateIDMappingParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<PublicBatchMigrationMapping>
+     *
+     * @throws APIException
+     */
+    public function createIDMapping(
+        array|ListCreateIDMappingParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = ListCreateIDMappingParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'post',
+            path: 'crm/lists/2026-03/idmapping',
+            body: $parsed['body'],
+            options: $options,
+            convert: PublicBatchMigrationMapping::class,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<mixed>
+     *
+     * @throws APIException
+     */
+    public function deleteFolder(
+        string $folderID,
+        RequestOptions|array|null $requestOptions = null
+    ): BaseResponse {
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'delete',
+            path: ['crm/lists/2026-03/folders/%1$s', $folderID],
+            options: $requestOptions,
+            convert: null,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<mixed>
+     *
+     * @throws APIException
+     */
+    public function deleteMemberships(
+        string $listID,
+        RequestOptions|array|null $requestOptions = null
+    ): BaseResponse {
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'delete',
+            path: ['crm/lists/2026-03/%1$s/memberships', $listID],
+            options: $requestOptions,
+            convert: null,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<mixed>
+     *
+     * @throws APIException
+     */
+    public function deleteScheduleConversion(
+        string $listID,
+        RequestOptions|array|null $requestOptions = null
+    ): BaseResponse {
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'delete',
+            path: ['crm/lists/2026-03/%1$s/schedule-conversion', $listID],
+            options: $requestOptions,
+            convert: null,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * @param array{includeFilters?: bool}|ListGetParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<ListFetchResponse>
+     *
+     * @throws APIException
+     */
+    public function get(
+        string $listID,
+        array|ListGetParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = ListGetParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'get',
+            path: ['crm/lists/2026-03/%1$s', $listID],
+            query: $parsed,
+            options: $options,
+            convert: ListFetchResponse::class,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * @param string $listName Path param
+     * @param array{
+     *   objectTypeID: string, includeFilters?: bool
+     * }|ListGetByObjectTypeIDAndNameParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<ListFetchResponse>
+     *
+     * @throws APIException
+     */
+    public function getByObjectTypeIDAndName(
+        string $listName,
+        array|ListGetByObjectTypeIDAndNameParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = ListGetByObjectTypeIDAndNameParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+        $objectTypeID = $parsed['objectTypeID'];
+        unset($parsed['objectTypeID']);
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'get',
+            path: [
+                'crm/lists/2026-03/object-type-id/%1$s/name/%2$s',
+                $objectTypeID,
+                $listName,
+            ],
+            query: $parsed,
+            options: $options,
+            convert: ListFetchResponse::class,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * @param array{legacyListID?: string}|ListGetIDMappingParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<PublicMigrationMapping>
+     *
+     * @throws APIException
+     */
+    public function getIDMapping(
+        array|ListGetIDMappingParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = ListGetIDMappingParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'get',
+            path: 'crm/lists/2026-03/idmapping',
+            query: Util::array_transform_keys(
+                $parsed,
+                ['legacyListID' => 'legacyListId']
+            ),
+            options: $options,
+            convert: PublicMigrationMapping::class,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * @param array{objectTypeID: string}|ListGetRecordMembershipsParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<APICollectionResponseRecordListMembership>
+     *
+     * @throws APIException
+     */
+    public function getRecordMemberships(
+        string $recordID,
+        array|ListGetRecordMembershipsParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = ListGetRecordMembershipsParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+        $objectTypeID = $parsed['objectTypeID'];
+        unset($parsed['objectTypeID']);
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'get',
+            path: [
+                'crm/lists/2026-03/records/%1$s/%2$s/memberships',
+                $objectTypeID,
+                $recordID,
+            ],
+            options: $options,
+            convert: APICollectionResponseRecordListMembership::class,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<PublicListConversionResponse>
+     *
+     * @throws APIException
+     */
+    public function getScheduleConversion(
+        string $listID,
+        RequestOptions|array|null $requestOptions = null
+    ): BaseResponse {
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'get',
+            path: ['crm/lists/2026-03/%1$s/schedule-conversion', $listID],
+            options: $requestOptions,
+            convert: PublicListConversionResponse::class,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * @param array{folderID?: string}|ListListFoldersParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<ListFolderFetchResponse>
+     *
+     * @throws APIException
+     */
+    public function listFolders(
+        array|ListListFoldersParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = ListListFoldersParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'get',
+            path: 'crm/lists/2026-03/folders',
+            query: Util::array_transform_keys($parsed, ['folderID' => 'folderId']),
+            options: $options,
+            convert: ListFolderFetchResponse::class,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * @param array{
+     *   after?: string, before?: string, limit?: int
+     * }|ListListMembershipsParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<Page<JoinTimeAndRecordID>>
+     *
+     * @throws APIException
+     */
+    public function listMemberships(
+        string $listID,
+        array|ListListMembershipsParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = ListListMembershipsParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'get',
+            path: ['crm/lists/2026-03/%1$s/memberships', $listID],
+            query: $parsed,
+            options: $options,
+            convert: JoinTimeAndRecordID::class,
+            page: Page::class,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * @param array{
+     *   after?: string, before?: string, limit?: int
+     * }|ListListMembershipsJoinOrderParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<Page<JoinTimeAndRecordID>>
+     *
+     * @throws APIException
+     */
+    public function listMembershipsJoinOrder(
+        string $listID,
+        array|ListListMembershipsJoinOrderParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = ListListMembershipsJoinOrderParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'get',
+            path: ['crm/lists/2026-03/%1$s/memberships/join-order', $listID],
+            query: $parsed,
+            options: $options,
+            convert: JoinTimeAndRecordID::class,
+            page: Page::class,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * @param array{folderID: string}|ListMoveFolderParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<ListFolderFetchResponse>
+     *
+     * @throws APIException
+     */
+    public function moveFolder(
+        string $newParentFolderID,
+        array|ListMoveFolderParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = ListMoveFolderParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+        $folderID = $parsed['folderID'];
+        unset($parsed['folderID']);
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'put',
+            path: [
+                'crm/lists/2026-03/folders/%1$s/move/%2$s',
+                $folderID,
+                $newParentFolderID,
+            ],
+            options: $options,
+            convert: ListFolderFetchResponse::class,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * @param array{listID: string, newFolderID: string}|ListMoveListParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<mixed>
+     *
+     * @throws APIException
+     */
+    public function moveList(
+        array|ListMoveListParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = ListMoveListParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'put',
+            path: 'crm/lists/2026-03/folders/move-list',
+            body: (object) $parsed,
+            options: $options,
+            convert: null,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * @param array{body: list<string>}|ListRemoveMembershipsParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<MembershipsUpdateResponse>
+     *
+     * @throws APIException
+     */
+    public function removeMemberships(
+        string $listID,
+        array|ListRemoveMembershipsParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = ListRemoveMembershipsParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'put',
+            path: ['crm/lists/2026-03/%1$s/memberships/remove', $listID],
+            body: $parsed['body'],
+            options: $options,
+            convert: MembershipsUpdateResponse::class,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * @param array{newFolderName?: string}|ListRenameFolderParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<ListFolderFetchResponse>
+     *
+     * @throws APIException
+     */
+    public function renameFolder(
+        string $folderID,
+        array|ListRenameFolderParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = ListRenameFolderParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'put',
+            path: ['crm/lists/2026-03/folders/%1$s/rename', $folderID],
+            query: $parsed,
+            options: $options,
+            convert: ListFolderFetchResponse::class,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<mixed>
+     *
+     * @throws APIException
+     */
+    public function restore(
+        string $listID,
+        RequestOptions|array|null $requestOptions = null
+    ): BaseResponse {
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'put',
+            path: ['crm/lists/2026-03/%1$s/restore', $listID],
+            options: $requestOptions,
+            convert: null,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * @param array{
+     *   additionalProperties: list<string>,
+     *   listIDs: list<string>,
+     *   offset: int,
+     *   processingTypes: list<string>,
+     *   count?: int,
+     *   objectTypeID?: string,
+     *   query?: string,
+     *   sort?: string,
+     * }|ListSearchParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<ListSearchResponse>
+     *
+     * @throws APIException
+     */
+    public function search(
+        array|ListSearchParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = ListSearchParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'post',
+            path: 'crm/lists/2026-03/search',
+            body: (object) $parsed,
+            options: $options,
+            convert: ListSearchResponse::class,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * @param string $listID Path param
+     * @param array{
+     *   filterBranch: FilterBranchShape1, enrollObjectsInWorkflows?: bool
+     * }|ListUpdateListFiltersParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<ListUpdateResponse>
+     *
+     * @throws APIException
+     */
+    public function updateListFilters(
+        string $listID,
+        array|ListUpdateListFiltersParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = ListUpdateListFiltersParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+        $query_params = array_flip(['enrollObjectsInWorkflows']);
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'put',
+            path: ['crm/lists/2026-03/%1$s/update-list-filters', $listID],
+            query: array_intersect_key($parsed, $query_params),
+            body: (object) array_diff_key($parsed, $query_params),
+            options: $options,
+            convert: ListUpdateResponse::class,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * @param array{
+     *   includeFilters?: bool, listName?: string
+     * }|ListUpdateListNameParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<ListUpdateResponse>
+     *
+     * @throws APIException
+     */
+    public function updateListName(
+        string $listID,
+        array|ListUpdateListNameParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = ListUpdateListNameParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'put',
+            path: ['crm/lists/2026-03/%1$s/update-list-name', $listID],
+            query: $parsed,
+            options: $options,
+            convert: ListUpdateResponse::class,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * @param array{
+     *   conversionType: ConversionType|value-of<ConversionType>,
+     *   day: int,
+     *   month: int,
+     *   year: int,
+     *   offset: int,
+     *   timeUnit: TimeUnit|value-of<TimeUnit>,
+     * }|ListUpdateScheduleConversionParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<PublicListConversionResponse>
+     *
+     * @throws APIException
+     */
+    public function updateScheduleConversion(
+        string $listID,
+        array|ListUpdateScheduleConversionParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = ListUpdateScheduleConversionParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'put',
+            path: ['crm/lists/2026-03/%1$s/schedule-conversion', $listID],
+            body: (object) $parsed,
+            options: $options,
+            convert: PublicListConversionResponse::class,
+        );
+    }
+}

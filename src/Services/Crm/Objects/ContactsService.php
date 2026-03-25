@@ -7,18 +7,19 @@ namespace HubspotSDK\Services\Crm\Objects;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Core\Util;
+use HubspotSDK\Crm\FilterGroup;
 use HubspotSDK\Crm\Objects\CollectionResponseWithTotalSimplePublicObject;
-use HubspotSDK\Crm\Objects\FilterGroup;
 use HubspotSDK\Crm\Objects\PublicAssociationsForObject;
-use HubspotSDK\Crm\Objects\SimplePublicObject;
 use HubspotSDK\Crm\Objects\SimplePublicObjectWithAssociations;
+use HubspotSDK\Crm\SimplePublicObject;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Objects\ContactsContract;
+use HubspotSDK\Services\Crm\Objects\Contacts\BatchService;
 
 /**
  * @phpstan-import-type PublicAssociationsForObjectShape from \HubspotSDK\Crm\Objects\PublicAssociationsForObject
- * @phpstan-import-type FilterGroupShape from \HubspotSDK\Crm\Objects\FilterGroup
+ * @phpstan-import-type FilterGroupShape from \HubspotSDK\Crm\FilterGroup
  * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
  */
 final class ContactsService implements ContactsContract
@@ -29,17 +30,23 @@ final class ContactsService implements ContactsContract
     public ContactsRawService $raw;
 
     /**
+     * @api
+     */
+    public BatchService $batch;
+
+    /**
      * @internal
      */
     public function __construct(private Client $client)
     {
         $this->raw = new ContactsRawService($client);
+        $this->batch = new BatchService($client);
     }
 
     /**
      * @api
      *
-     * Create a CRM object with the given properties and return a copy of the object, including the ID. Documentation and examples for creating standard objects is provided.
+     * Create a single contact. Include a `properties` object to define [property values](https://developers.hubspot.com/docs/guides/api/crm/properties) for the contact, along with an `associations` array to define [associations](https://developers.hubspot.com/docs/guides/api/crm/associations/associations-v4) with other CRM records.
      *
      * @param list<PublicAssociationsForObject|PublicAssociationsForObjectShape> $associations
      * @param array<string,string> $properties key-value pairs for setting properties for the new object
@@ -48,7 +55,6 @@ final class ContactsService implements ContactsContract
      * @throws APIException
      */
     public function create(
-        string $objectType,
         array $associations,
         array $properties,
         RequestOptions|array|null $requestOptions = null,
@@ -58,7 +64,7 @@ final class ContactsService implements ContactsContract
         );
 
         // @phpstan-ignore-next-line argument.type
-        $response = $this->raw->create($objectType, params: $params, requestOptions: $requestOptions);
+        $response = $this->raw->create(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -66,10 +72,9 @@ final class ContactsService implements ContactsContract
     /**
      * @api
      *
-     * Perform a partial update of an Object identified by `{objectId}`or optionally a unique property value as specified by the `idProperty` query param. `{objectId}` refers to the internal object ID by default, and the `idProperty` query param refers to a property whose values are unique for the object. Provided property values will be overwritten. Read-only and non-existent properties will result in an error. Properties values can be cleared by passing an empty string.
+     * Update an existing contact, identified by ID or email/unique property value. To identify a contact by ID, include the ID in the request URL path. To identify a contact by their email or other unique property, include the email/property value in the request URL path, and add the `idProperty` query parameter (`/crm/v3/objects/contacts/jon@website.com?idProperty=email`). Provided property values will be overwritten. Read-only and non-existent properties will result in an error. Properties values can be cleared by passing an empty string.
      *
-     * @param string $objectID Path param
-     * @param string $objectType Path param
+     * @param string $contactID Path param
      * @param array<string,string> $properties body param: Key value pairs representing the properties of the object
      * @param string $idProperty Query param: The name of a property whose values are unique for this object type
      * @param RequestOpts|null $requestOptions
@@ -77,22 +82,17 @@ final class ContactsService implements ContactsContract
      * @throws APIException
      */
     public function update(
-        string $objectID,
-        string $objectType,
+        string $contactID,
         array $properties,
         ?string $idProperty = null,
         RequestOptions|array|null $requestOptions = null,
     ): SimplePublicObject {
         $params = Util::removeNulls(
-            [
-                'objectType' => $objectType,
-                'properties' => $properties,
-                'idProperty' => $idProperty,
-            ],
+            ['properties' => $properties, 'idProperty' => $idProperty]
         );
 
         // @phpstan-ignore-next-line argument.type
-        $response = $this->raw->update($objectID, params: $params, requestOptions: $requestOptions);
+        $response = $this->raw->update($contactID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -100,7 +100,7 @@ final class ContactsService implements ContactsContract
     /**
      * @api
      *
-     * Read a page of objects. Control what is returned via the `properties` query param.
+     * Retrieve all contacts, using query parameters to specify the information that gets returned.
      *
      * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
      * @param bool $archived whether to return only results that have been archived
@@ -115,7 +115,6 @@ final class ContactsService implements ContactsContract
      * @throws APIException
      */
     public function list(
-        string $objectType,
         ?string $after = null,
         bool $archived = false,
         ?array $associations = null,
@@ -136,7 +135,7 @@ final class ContactsService implements ContactsContract
         );
 
         // @phpstan-ignore-next-line argument.type
-        $response = $this->raw->list($objectType, params: $params, requestOptions: $requestOptions);
+        $response = $this->raw->list(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -144,21 +143,18 @@ final class ContactsService implements ContactsContract
     /**
      * @api
      *
-     * Move an Object identified by `{objectId}` to the recycling bin.
+     * Delete a contact by ID. Deleted contacts can be restored within 90 days of deletion. Learn more about the [data impacted by contact deletions](https://knowledge.hubspot.com/privacy-and-consent/understand-restorable-and-permanent-contact-deletions) and how to [restore archived records](https://knowledge.hubspot.com/records/restore-deleted-records).
      *
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function delete(
-        string $objectID,
-        string $objectType,
-        RequestOptions|array|null $requestOptions = null,
+        string $contactID,
+        RequestOptions|array|null $requestOptions = null
     ): mixed {
-        $params = Util::removeNulls(['objectType' => $objectType]);
-
         // @phpstan-ignore-next-line argument.type
-        $response = $this->raw->delete($objectID, params: $params, requestOptions: $requestOptions);
+        $response = $this->raw->delete($contactID, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -175,7 +171,6 @@ final class ContactsService implements ContactsContract
      * @throws APIException
      */
     public function gdprDelete(
-        string $objectType,
         string $objectID,
         ?string $idProperty = null,
         RequestOptions|array|null $requestOptions = null,
@@ -185,7 +180,7 @@ final class ContactsService implements ContactsContract
         );
 
         // @phpstan-ignore-next-line argument.type
-        $response = $this->raw->gdprDelete($objectType, params: $params, requestOptions: $requestOptions);
+        $response = $this->raw->gdprDelete(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -193,22 +188,19 @@ final class ContactsService implements ContactsContract
     /**
      * @api
      *
-     * Read an Object identified by `{objectId}`. `{objectId}` refers to the internal object ID by default, or optionally any unique property value as specified by the `idProperty` query param.  Control what is returned via the `properties` query param.
+     * Retrieve a contact by its ID (`contactId`) or by a unique property (`idProperty`). You can specify what is returned using the `properties` query parameter.
      *
-     * @param string $objectID Path param
-     * @param string $objectType Path param
-     * @param bool $archived query param: Whether to return only results that have been archived
-     * @param list<string> $associations Query param: A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored.
-     * @param string $idProperty Query param: The name of a property whose values are unique for this object type
-     * @param list<string> $properties Query param: A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored.
-     * @param list<string> $propertiesWithHistory Query param: A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored.
+     * @param bool $archived whether to return only results that have been archived
+     * @param list<string> $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored.
+     * @param string $idProperty The name of a property whose values are unique for this object type
+     * @param list<string> $properties A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored.
+     * @param list<string> $propertiesWithHistory A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored.
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function get(
-        string $objectID,
-        string $objectType,
+        string $contactID,
         bool $archived = false,
         ?array $associations = null,
         ?string $idProperty = null,
@@ -218,7 +210,6 @@ final class ContactsService implements ContactsContract
     ): SimplePublicObjectWithAssociations {
         $params = Util::removeNulls(
             [
-                'objectType' => $objectType,
                 'archived' => $archived,
                 'associations' => $associations,
                 'idProperty' => $idProperty,
@@ -228,7 +219,7 @@ final class ContactsService implements ContactsContract
         );
 
         // @phpstan-ignore-next-line argument.type
-        $response = $this->raw->get($objectID, params: $params, requestOptions: $requestOptions);
+        $response = $this->raw->get($contactID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -236,16 +227,15 @@ final class ContactsService implements ContactsContract
     /**
      * @api
      *
-     * Merge two CRM objects of the same type by specifying one as the primary object and the other as the object to be merged into it.
+     * Merge two contact records. Learn more about [merging records](https://knowledge.hubspot.com/records/merge-records).
      *
-     * @param string $objectIDToMerge the object ID of the record that the merge will not set as the current value after the merge
-     * @param string $primaryObjectID the object ID of the record that the merge will generally set as the current value after the merge
+     * @param string $objectIDToMerge the ID of the company to merge into the primary
+     * @param string $primaryObjectID the ID of the primary company, which the other will merge into
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function merge(
-        string $objectType,
         string $objectIDToMerge,
         string $primaryObjectID,
         RequestOptions|array|null $requestOptions = null,
@@ -258,7 +248,7 @@ final class ContactsService implements ContactsContract
         );
 
         // @phpstan-ignore-next-line argument.type
-        $response = $this->raw->merge($objectType, params: $params, requestOptions: $requestOptions);
+        $response = $this->raw->merge(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -266,7 +256,7 @@ final class ContactsService implements ContactsContract
     /**
      * @api
      *
-     * Execute a search query to find CRM objects of a given type, using specified filters and properties. The search can be customized with filters, sorting, and pagination options.
+     * Search for contacts by filtering on properties, searching through associations, and sorting results. Learn more about [CRM search](https://developers.hubspot.com/docs/guides/api/crm/search#make-a-search-request).
      *
      * @param string $after a paging cursor token for retrieving subsequent pages
      * @param list<FilterGroup|FilterGroupShape> $filterGroups up to 6 groups of filters defining additional query criteria
@@ -279,7 +269,6 @@ final class ContactsService implements ContactsContract
      * @throws APIException
      */
     public function search(
-        string $objectType,
         string $after,
         array $filterGroups,
         int $limit,
@@ -300,7 +289,7 @@ final class ContactsService implements ContactsContract
         );
 
         // @phpstan-ignore-next-line argument.type
-        $response = $this->raw->search($objectType, params: $params, requestOptions: $requestOptions);
+        $response = $this->raw->search(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }

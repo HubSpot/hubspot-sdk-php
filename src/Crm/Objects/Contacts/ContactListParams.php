@@ -10,7 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * Read a page of objects. Control what is returned via the `properties` query param.
+ * Retrieve all contacts, using query parameters to specify the information that gets returned.
  *
  * @see HubspotSDK\Services\Crm\Objects\ContactsService::list()
  *

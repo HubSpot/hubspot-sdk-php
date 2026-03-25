@@ -9,12 +9,13 @@ use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Objects\BatchResponseSimplePublicObject\Status;
+use HubspotSDK\Crm\SimplePublicObject;
 use HubspotSDK\StandardError;
 
 /**
  * A public object batch response object.
  *
- * @phpstan-import-type SimplePublicObjectShape from \HubspotSDK\Crm\Objects\SimplePublicObject
+ * @phpstan-import-type SimplePublicObjectShape from \HubspotSDK\Crm\SimplePublicObject
  * @phpstan-import-type StandardErrorShape from \HubspotSDK\StandardError
  *
  * @phpstan-type BatchResponseSimplePublicObjectShape = array{
@@ -50,7 +51,7 @@ final class BatchResponseSimplePublicObject implements BaseModel
     public \DateTimeInterface $startedAt;
 
     /**
-     * The status of the batch processing request. The expected value is "COMPLETE".
+     * The status of the batch processing request: "PENDING", "PROCESSING", "CANCELLED", or "COMPLETE".
      *
      * @var value-of<Status> $status
      */
@@ -175,7 +176,7 @@ final class BatchResponseSimplePublicObject implements BaseModel
     }
 
     /**
-     * The status of the batch processing request. The expected value is "COMPLETE".
+     * The status of the batch processing request: "PENDING", "PROCESSING", "CANCELLED", or "COMPLETE".
      *
      * @param Status|value-of<Status> $status
      */

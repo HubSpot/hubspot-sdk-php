@@ -7,6 +7,7 @@ namespace HubspotSDK\Services;
 use HubspotSDK\Client;
 use HubspotSDK\ServiceContracts\AutomationContract;
 use HubspotSDK\Services\Automation\ActionsService;
+use HubspotSDK\Services\Automation\SequencesService;
 
 final class AutomationService implements AutomationContract
 {
@@ -21,11 +22,17 @@ final class AutomationService implements AutomationContract
     public ActionsService $actions;
 
     /**
+     * @api
+     */
+    public SequencesService $sequences;
+
+    /**
      * @internal
      */
     public function __construct(private Client $client)
     {
         $this->raw = new AutomationRawService($client);
         $this->actions = new ActionsService($client);
+        $this->sequences = new SequencesService($client);
     }
 }

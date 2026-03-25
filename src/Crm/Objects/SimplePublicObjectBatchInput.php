@@ -25,7 +25,7 @@ final class SimplePublicObjectBatchInput implements BaseModel
     use SdkModel;
 
     /**
-     * The ID of the contact to update. This can be the object ID, or the unique property value of the `idProperty` property.
+     * The id to be updated. This can be the object id, or the unique property value of the idProperty property.
      */
     #[Required]
     public string $id;
@@ -39,7 +39,7 @@ final class SimplePublicObjectBatchInput implements BaseModel
     public array $properties;
 
     /**
-     * The name of a unique property, when identifying records by property.
+     * The name of a property whose values are unique for this object.
      */
     #[Optional]
     public ?string $idProperty;
@@ -94,7 +94,7 @@ final class SimplePublicObjectBatchInput implements BaseModel
     }
 
     /**
-     * The ID of the contact to update. This can be the object ID, or the unique property value of the `idProperty` property.
+     * The id to be updated. This can be the object id, or the unique property value of the idProperty property.
      */
     public function withID(string $id): self
     {
@@ -118,7 +118,7 @@ final class SimplePublicObjectBatchInput implements BaseModel
     }
 
     /**
-     * The name of a unique property, when identifying records by property.
+     * The name of a property whose values are unique for this object.
      */
     public function withIDProperty(string $idProperty): self
     {

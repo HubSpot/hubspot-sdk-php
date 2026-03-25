@@ -19,7 +19,7 @@ final class PublicObjectID implements BaseModel
     use SdkModel;
 
     /**
-     * The unique ID of the object.
+     * ID of the object.
      */
     #[Required]
     public string $id;
@@ -58,7 +58,7 @@ final class PublicObjectID implements BaseModel
     }
 
     /**
-     * The unique ID of the object.
+     * ID of the object.
      */
     public function withID(string $id): self
     {

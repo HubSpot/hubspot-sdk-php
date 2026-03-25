@@ -9,12 +9,14 @@ use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Events\ExternalBehavioralEventPropertyCreate;
+use HubspotSDK\Events\ExternalObjectResolutionMappingRequest;
 
 /**
  * @see HubspotSDK\Services\Events\SendService::createEventDefinition()
  *
- * @phpstan-import-type ExternalBehavioralEventPropertyCreateShape from \HubspotSDK\Events\Send\ExternalBehavioralEventPropertyCreate
- * @phpstan-import-type ExternalObjectResolutionMappingRequestShape from \HubspotSDK\Events\Send\ExternalObjectResolutionMappingRequest
+ * @phpstan-import-type ExternalBehavioralEventPropertyCreateShape from \HubspotSDK\Events\ExternalBehavioralEventPropertyCreate
+ * @phpstan-import-type ExternalObjectResolutionMappingRequestShape from \HubspotSDK\Events\ExternalObjectResolutionMappingRequest
  *
  * @phpstan-type SendCreateEventDefinitionParamsShape = array{
  *   includeDefaultProperties: bool,
@@ -36,7 +38,7 @@ final class SendCreateEventDefinitionParams implements BaseModel
     public bool $includeDefaultProperties;
 
     /**
-     * Human readable label for the event for display in HubSpot's UI.
+     * Human readable label for the event. Used in HubSpot UI.
      */
     #[Required]
     public string $label;
@@ -59,13 +61,13 @@ final class SendCreateEventDefinitionParams implements BaseModel
     public ?string $description;
 
     /**
-     * Internal event name, which must be used when referencing the event from the API. If a name is not supplied, one will be generated based on the label. The name does not include the `pe<PORTAL_ID>_` prefix used when sending event completions.
+     * Internal event name, which must be used when referencing the event from this event definitions API. If a name is not supplied, one will be generated based on the label. The `name` value will also be used to automatically generate a `fullyQualifiedName` for the event definition, which you'll use when sending event completions to this event.
      */
     #[Optional]
     public ?string $name;
 
     /**
-     * The object type to associate this event to. Can be one of `CONTACT`, `COMPANY`, `DEAL`, `TICKET`. If no value is supplied, will default to `CONTACT`.
+     * The object type to associate this event to. Can be one of CONTACT, COMPANY, DEAL, TICKET. If no primaryObject is supplied, we will default to associating the event to CONTACT objects.
      */
     #[Optional]
     public ?string $primaryObject;
@@ -135,7 +137,7 @@ final class SendCreateEventDefinitionParams implements BaseModel
     }
 
     /**
-     * Human readable label for the event for display in HubSpot's UI.
+     * Human readable label for the event. Used in HubSpot UI.
      */
     public function withLabel(string $label): self
     {
@@ -182,7 +184,7 @@ final class SendCreateEventDefinitionParams implements BaseModel
     }
 
     /**
-     * Internal event name, which must be used when referencing the event from the API. If a name is not supplied, one will be generated based on the label. The name does not include the `pe<PORTAL_ID>_` prefix used when sending event completions.
+     * Internal event name, which must be used when referencing the event from this event definitions API. If a name is not supplied, one will be generated based on the label. The `name` value will also be used to automatically generate a `fullyQualifiedName` for the event definition, which you'll use when sending event completions to this event.
      */
     public function withName(string $name): self
     {
@@ -193,7 +195,7 @@ final class SendCreateEventDefinitionParams implements BaseModel
     }
 
     /**
-     * The object type to associate this event to. Can be one of `CONTACT`, `COMPANY`, `DEAL`, `TICKET`. If no value is supplied, will default to `CONTACT`.
+     * The object type to associate this event to. Can be one of CONTACT, COMPANY, DEAL, TICKET. If no primaryObject is supplied, we will default to associating the event to CONTACT objects.
      */
     public function withPrimaryObject(string $primaryObject): self
     {

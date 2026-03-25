@@ -1,0 +1,194 @@
+<?php
+
+declare(strict_types=1);
+
+namespace HubspotSDK\Services\Conversations;
+
+use HubspotSDK\Client;
+use HubspotSDK\Conversations\CustomChannels\CustomChannelCreateParams;
+use HubspotSDK\Conversations\CustomChannels\CustomChannelGetParams;
+use HubspotSDK\Conversations\CustomChannels\CustomChannelListParams;
+use HubspotSDK\Conversations\CustomChannels\CustomChannelUpdateParams;
+use HubspotSDK\Conversations\CustomChannels\PublicChannelAccount;
+use HubspotSDK\Conversations\CustomChannels\PublicChannelIntegrationChannel;
+use HubspotSDK\Core\Contracts\BaseResponse;
+use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Page;
+use HubspotSDK\RequestOptions;
+use HubspotSDK\ServiceContracts\Conversations\CustomChannelsRawContract;
+
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
+final class CustomChannelsRawService implements CustomChannelsRawContract
+{
+    // @phpstan-ignore-next-line
+    /**
+     * @internal
+     */
+    public function __construct(private Client $client) {}
+
+    /**
+     * @api
+     *
+     * @param array{
+     *   capabilities: array<string,mixed>,
+     *   name: string,
+     *   channelAccountConnectionRedirectURL?: string,
+     *   channelDescription?: string,
+     *   channelLogoURL?: string,
+     *   webhookURL?: string,
+     * }|CustomChannelCreateParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<PublicChannelIntegrationChannel>
+     *
+     * @throws APIException
+     */
+    public function create(
+        array|CustomChannelCreateParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = CustomChannelCreateParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'post',
+            path: 'conversations/custom-channels/2026-03',
+            body: (object) $parsed,
+            options: $options,
+            convert: PublicChannelIntegrationChannel::class,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * @param array{
+     *   capabilities: array<string,mixed>,
+     *   channelAccountConnectionRedirectURL: mixed,
+     *   channelDescription: mixed,
+     *   channelLogoURL: mixed,
+     *   name: mixed,
+     *   webhookURL: mixed,
+     * }|CustomChannelUpdateParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<PublicChannelIntegrationChannel>
+     *
+     * @throws APIException
+     */
+    public function update(
+        int $channelID,
+        array|CustomChannelUpdateParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = CustomChannelUpdateParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'patch',
+            path: ['conversations/custom-channels/2026-03/%1$s', $channelID],
+            body: (object) $parsed,
+            options: $options,
+            convert: PublicChannelIntegrationChannel::class,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * @param array{
+     *   after?: string, defaultPageLength?: int, limit?: int, sort?: list<string>
+     * }|CustomChannelListParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<Page<PublicChannelIntegrationChannel>>
+     *
+     * @throws APIException
+     */
+    public function list(
+        array|CustomChannelListParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = CustomChannelListParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'get',
+            path: 'conversations/custom-channels/2026-03',
+            query: $parsed,
+            options: $options,
+            convert: PublicChannelIntegrationChannel::class,
+            page: Page::class,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<mixed>
+     *
+     * @throws APIException
+     */
+    public function delete(
+        int $channelID,
+        RequestOptions|array|null $requestOptions = null
+    ): BaseResponse {
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'delete',
+            path: ['conversations/custom-channels/2026-03/%1$s', $channelID],
+            options: $requestOptions,
+            convert: null,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * @param int $channelAccountID Path param
+     * @param array{channelID: int, archived?: bool}|CustomChannelGetParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<PublicChannelAccount>
+     *
+     * @throws APIException
+     */
+    public function get(
+        int $channelAccountID,
+        array|CustomChannelGetParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = CustomChannelGetParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+        $channelID = $parsed['channelID'];
+        unset($parsed['channelID']);
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'get',
+            path: [
+                'conversations/custom-channels/2026-03/%1$s/channel-accounts/%2$s',
+                $channelID,
+                $channelAccountID,
+            ],
+            query: $parsed,
+            options: $options,
+            convert: PublicChannelAccount::class,
+        );
+    }
+}

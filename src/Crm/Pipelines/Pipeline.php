@@ -1,0 +1,212 @@
+<?php
+
+declare(strict_types=1);
+
+namespace HubspotSDK\Crm\Pipelines;
+
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
+use HubspotSDK\Core\Concerns\SdkModel;
+use HubspotSDK\Core\Contracts\BaseModel;
+
+/**
+ * @phpstan-import-type PipelineStageShape from \HubspotSDK\Crm\Pipelines\PipelineStage
+ *
+ * @phpstan-type PipelineShape = array{
+ *   id: string,
+ *   archived: bool,
+ *   createdAt: \DateTimeInterface,
+ *   displayOrder: int,
+ *   label: string,
+ *   stages: list<PipelineStage|PipelineStageShape>,
+ *   updatedAt: \DateTimeInterface,
+ *   archivedAt?: \DateTimeInterface|null,
+ * }
+ */
+final class Pipeline implements BaseModel
+{
+    /** @use SdkModel<PipelineShape> */
+    use SdkModel;
+
+    #[Required]
+    public string $id;
+
+    /**
+     * Whether the pipeline is archived.
+     */
+    #[Required]
+    public bool $archived;
+
+    #[Required]
+    public \DateTimeInterface $createdAt;
+
+    #[Required]
+    public int $displayOrder;
+
+    #[Required]
+    public string $label;
+
+    /**
+     * The stages associated with the pipeline. They can be retrieved and updated via the pipeline stages endpoints.
+     *
+     * @var list<PipelineStage> $stages
+     */
+    #[Required(list: PipelineStage::class)]
+    public array $stages;
+
+    /**
+     * The date the pipeline was last updated.
+     */
+    #[Required]
+    public \DateTimeInterface $updatedAt;
+
+    /**
+     * The date the pipeline was archived. `archivedAt` will only be present if the pipeline is archived.
+     */
+    #[Optional]
+    public ?\DateTimeInterface $archivedAt;
+
+    /**
+     * `new Pipeline()` is missing required properties by the API.
+     *
+     * To enforce required parameters use
+     * ```
+     * Pipeline::with(
+     *   id: ...,
+     *   archived: ...,
+     *   createdAt: ...,
+     *   displayOrder: ...,
+     *   label: ...,
+     *   stages: ...,
+     *   updatedAt: ...,
+     * )
+     * ```
+     *
+     * Otherwise ensure the following setters are called
+     *
+     * ```
+     * (new Pipeline)
+     *   ->withID(...)
+     *   ->withArchived(...)
+     *   ->withCreatedAt(...)
+     *   ->withDisplayOrder(...)
+     *   ->withLabel(...)
+     *   ->withStages(...)
+     *   ->withUpdatedAt(...)
+     * ```
+     */
+    public function __construct()
+    {
+        $this->initialize();
+    }
+
+    /**
+     * Construct an instance from the required parameters.
+     *
+     * You must use named parameters to construct any parameters with a default value.
+     *
+     * @param list<PipelineStage|PipelineStageShape> $stages
+     */
+    public static function with(
+        string $id,
+        bool $archived,
+        \DateTimeInterface $createdAt,
+        int $displayOrder,
+        string $label,
+        array $stages,
+        \DateTimeInterface $updatedAt,
+        ?\DateTimeInterface $archivedAt = null,
+    ): self {
+        $self = new self;
+
+        $self['id'] = $id;
+        $self['archived'] = $archived;
+        $self['createdAt'] = $createdAt;
+        $self['displayOrder'] = $displayOrder;
+        $self['label'] = $label;
+        $self['stages'] = $stages;
+        $self['updatedAt'] = $updatedAt;
+
+        null !== $archivedAt && $self['archivedAt'] = $archivedAt;
+
+        return $self;
+    }
+
+    public function withID(string $id): self
+    {
+        $self = clone $this;
+        $self['id'] = $id;
+
+        return $self;
+    }
+
+    /**
+     * Whether the pipeline is archived.
+     */
+    public function withArchived(bool $archived): self
+    {
+        $self = clone $this;
+        $self['archived'] = $archived;
+
+        return $self;
+    }
+
+    public function withCreatedAt(\DateTimeInterface $createdAt): self
+    {
+        $self = clone $this;
+        $self['createdAt'] = $createdAt;
+
+        return $self;
+    }
+
+    public function withDisplayOrder(int $displayOrder): self
+    {
+        $self = clone $this;
+        $self['displayOrder'] = $displayOrder;
+
+        return $self;
+    }
+
+    public function withLabel(string $label): self
+    {
+        $self = clone $this;
+        $self['label'] = $label;
+
+        return $self;
+    }
+
+    /**
+     * The stages associated with the pipeline. They can be retrieved and updated via the pipeline stages endpoints.
+     *
+     * @param list<PipelineStage|PipelineStageShape> $stages
+     */
+    public function withStages(array $stages): self
+    {
+        $self = clone $this;
+        $self['stages'] = $stages;
+
+        return $self;
+    }
+
+    /**
+     * The date the pipeline was last updated.
+     */
+    public function withUpdatedAt(\DateTimeInterface $updatedAt): self
+    {
+        $self = clone $this;
+        $self['updatedAt'] = $updatedAt;
+
+        return $self;
+    }
+
+    /**
+     * The date the pipeline was archived. `archivedAt` will only be present if the pipeline is archived.
+     */
+    public function withArchivedAt(\DateTimeInterface $archivedAt): self
+    {
+        $self = clone $this;
+        $self['archivedAt'] = $archivedAt;
+
+        return $self;
+    }
+}

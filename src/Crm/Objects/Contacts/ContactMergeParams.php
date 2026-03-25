@@ -10,7 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * Merge two CRM objects of the same type by specifying one as the primary object and the other as the object to be merged into it.
+ * Merge two contact records. Learn more about [merging records](https://knowledge.hubspot.com/records/merge-records).
  *
  * @see HubspotSDK\Services\Crm\Objects\ContactsService::merge()
  *
@@ -25,13 +25,13 @@ final class ContactMergeParams implements BaseModel
     use SdkParams;
 
     /**
-     * The object ID of the record that the merge will not set as the current value after the merge.
+     * The ID of the company to merge into the primary.
      */
     #[Required('objectIdToMerge')]
     public string $objectIDToMerge;
 
     /**
-     * The object ID of the record that the merge will generally set as the current value after the merge.
+     * The ID of the primary company, which the other will merge into.
      */
     #[Required('primaryObjectId')]
     public string $primaryObjectID;
@@ -73,7 +73,7 @@ final class ContactMergeParams implements BaseModel
     }
 
     /**
-     * The object ID of the record that the merge will not set as the current value after the merge.
+     * The ID of the company to merge into the primary.
      */
     public function withObjectIDToMerge(string $objectIDToMerge): self
     {
@@ -84,7 +84,7 @@ final class ContactMergeParams implements BaseModel
     }
 
     /**
-     * The object ID of the record that the merge will generally set as the current value after the merge.
+     * The ID of the primary company, which the other will merge into.
      */
     public function withPrimaryObjectID(string $primaryObjectID): self
     {

@@ -1,0 +1,37 @@
+<?php
+
+declare(strict_types=1);
+
+namespace HubspotSDK\Crm\Lists\PublicEmailEventFilter;
+
+/**
+ * Defines the operation to be applied within the filter (BOUNCED, LINK_CLICKED, MARKED_SPAM, OPENED, OPENED_BUT_LINK_NOT_CLICKED, OPENED_BUT_NOT_REPLIED, RECEIVED, RECEIVED_BUT_NOT_OPENED, REPLIED, SENT, SENT_BUT_LINK_NOT_CLICKED, SENT_BUT_NOT_RECEIVED, UNSUBSCRIBED).
+ */
+enum Operator: string
+{
+    case BOUNCED = 'BOUNCED';
+
+    case LINK_CLICKED = 'LINK_CLICKED';
+
+    case MARKED_SPAM = 'MARKED_SPAM';
+
+    case OPENED = 'OPENED';
+
+    case OPENED_BUT_LINK_NOT_CLICKED = 'OPENED_BUT_LINK_NOT_CLICKED';
+
+    case OPENED_BUT_NOT_REPLIED = 'OPENED_BUT_NOT_REPLIED';
+
+    case RECEIVED = 'RECEIVED';
+
+    case RECEIVED_BUT_NOT_OPENED = 'RECEIVED_BUT_NOT_OPENED';
+
+    case REPLIED = 'REPLIED';
+
+    case SENT = 'SENT';
+
+    case SENT_BUT_LINK_NOT_CLICKED = 'SENT_BUT_LINK_NOT_CLICKED';
+
+    case SENT_BUT_NOT_RECEIVED = 'SENT_BUT_NOT_RECEIVED';
+
+    case UNSUBSCRIBED = 'UNSUBSCRIBED';
+}

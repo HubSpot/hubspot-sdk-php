@@ -1,0 +1,187 @@
+<?php
+
+declare(strict_types=1);
+
+namespace HubspotSDK\Services\CommunicationPreferences\Statuses;
+
+use HubspotSDK\Client;
+use HubspotSDK\CommunicationPreferences\BatchResponsePublicBulkOptOutFromAllResponse;
+use HubspotSDK\CommunicationPreferences\BatchResponsePublicStatus;
+use HubspotSDK\CommunicationPreferences\BatchResponsePublicStatusBulkResponse;
+use HubspotSDK\CommunicationPreferences\BatchResponsePublicWideStatusBulkResponse;
+use HubspotSDK\CommunicationPreferences\PublicStatusRequest;
+use HubspotSDK\CommunicationPreferences\Statuses\Batch\BatchGetUnsubscribeAllStatusesParams;
+use HubspotSDK\CommunicationPreferences\Statuses\Batch\BatchGetUnsubscribeAllStatusesParams\Channel;
+use HubspotSDK\CommunicationPreferences\Statuses\Batch\BatchReadParams;
+use HubspotSDK\CommunicationPreferences\Statuses\Batch\BatchUnsubscribeAllParams;
+use HubspotSDK\CommunicationPreferences\Statuses\Batch\BatchUpdateStatusesParams;
+use HubspotSDK\Core\Contracts\BaseResponse;
+use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
+use HubspotSDK\RequestOptions;
+use HubspotSDK\ServiceContracts\CommunicationPreferences\Statuses\BatchRawContract;
+
+/**
+ * @phpstan-import-type PublicStatusRequestShape from \HubspotSDK\CommunicationPreferences\PublicStatusRequest
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
+final class BatchRawService implements BatchRawContract
+{
+    // @phpstan-ignore-next-line
+    /**
+     * @internal
+     */
+    public function __construct(private Client $client) {}
+
+    /**
+     * @api
+     *
+     * Retrieve the unsubscribe-all status for a batch of subscribers in a specified channel. This endpoint is useful for checking the current unsubscribe-all status of multiple subscribers at once, helping to manage and audit communication preferences efficiently.
+     *
+     * @param array{
+     *   channel: Channel|value-of<Channel>, inputs: list<string>, businessUnitID?: int
+     * }|BatchGetUnsubscribeAllStatusesParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<BatchResponsePublicWideStatusBulkResponse>
+     *
+     * @throws APIException
+     */
+    public function getUnsubscribeAllStatuses(
+        array|BatchGetUnsubscribeAllStatusesParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = BatchGetUnsubscribeAllStatusesParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+        $query_params = array_flip(['channel', 'businessUnitID']);
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'post',
+            path: 'communication-preferences/2026-03/statuses/batch/unsubscribe-all/read',
+            query: Util::array_transform_keys(
+                array_intersect_key($parsed, $query_params),
+                ['businessUnitID' => 'businessUnitId'],
+            ),
+            body: (object) array_diff_key($parsed, $query_params),
+            options: $options,
+            convert: BatchResponsePublicWideStatusBulkResponse::class,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * Retrieve the subscription statuses for multiple subscribers in a batch operation. This endpoint allows you to check the communication preferences of several subscribers at once, which is useful for managing large lists of contacts efficiently.
+     *
+     * @param array{
+     *   channel: BatchReadParams\Channel|value-of<BatchReadParams\Channel>,
+     *   inputs: list<string>,
+     *   businessUnitID?: int,
+     * }|BatchReadParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<BatchResponsePublicStatusBulkResponse>
+     *
+     * @throws APIException
+     */
+    public function read(
+        array|BatchReadParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = BatchReadParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+        $query_params = array_flip(['channel', 'businessUnitID']);
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'post',
+            path: 'communication-preferences/2026-03/statuses/batch/read',
+            query: Util::array_transform_keys(
+                array_intersect_key($parsed, $query_params),
+                ['businessUnitID' => 'businessUnitId'],
+            ),
+            body: (object) array_diff_key($parsed, $query_params),
+            options: $options,
+            convert: BatchResponsePublicStatusBulkResponse::class,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * Unsubscribe a set of contacts from all email subscriptions.
+     *
+     * @param array{
+     *   channel: BatchUnsubscribeAllParams\Channel|value-of<BatchUnsubscribeAllParams\Channel>,
+     *   inputs: list<string>,
+     *   businessUnitID?: int,
+     *   verbose?: bool,
+     * }|BatchUnsubscribeAllParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<BatchResponsePublicBulkOptOutFromAllResponse>
+     *
+     * @throws APIException
+     */
+    public function unsubscribeAll(
+        array|BatchUnsubscribeAllParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = BatchUnsubscribeAllParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+        $query_params = array_flip(['channel', 'businessUnitID', 'verbose']);
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'post',
+            path: 'communication-preferences/2026-03/statuses/batch/unsubscribe-all',
+            query: Util::array_transform_keys(
+                array_intersect_key($parsed, $query_params),
+                ['businessUnitID' => 'businessUnitId'],
+            ),
+            body: (object) array_diff_key($parsed, $query_params),
+            options: $options,
+            convert: BatchResponsePublicBulkOptOutFromAllResponse::class,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * Update the subscription status for a set of contacts.
+     *
+     * @param array{
+     *   inputs: list<PublicStatusRequest|PublicStatusRequestShape>
+     * }|BatchUpdateStatusesParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<BatchResponsePublicStatus>
+     *
+     * @throws APIException
+     */
+    public function updateStatuses(
+        array|BatchUpdateStatusesParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = BatchUpdateStatusesParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'post',
+            path: 'communication-preferences/2026-03/statuses/batch/write',
+            body: (object) $parsed,
+            options: $options,
+            convert: BatchResponsePublicStatus::class,
+        );
+    }
+}

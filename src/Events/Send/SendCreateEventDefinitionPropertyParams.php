@@ -9,11 +9,12 @@ use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\OptionInput;
 
 /**
  * @see HubspotSDK\Services\Events\SendService::createEventDefinitionProperty()
  *
- * @phpstan-import-type OptionInputShape from \HubspotSDK\Events\Send\OptionInput
+ * @phpstan-import-type OptionInputShape from \HubspotSDK\OptionInput
  *
  * @phpstan-type SendCreateEventDefinitionPropertyParamsShape = array{
  *   label: string,

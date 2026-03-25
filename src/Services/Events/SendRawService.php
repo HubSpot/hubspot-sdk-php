@@ -7,12 +7,10 @@ namespace HubspotSDK\Services\Events;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Events\Send\BehavioralEventHTTPCompletionRequest;
-use HubspotSDK\Events\Send\ExternalBehavioralEventPropertyCreate;
-use HubspotSDK\Events\Send\ExternalBehavioralEventTypeDefinition;
-use HubspotSDK\Events\Send\ExternalObjectResolutionMappingRequest;
-use HubspotSDK\Events\Send\OptionInput;
-use HubspotSDK\Events\Send\Property;
+use HubspotSDK\Events\BehavioralEventHTTPCompletionRequest;
+use HubspotSDK\Events\ExternalBehavioralEventPropertyCreate;
+use HubspotSDK\Events\ExternalBehavioralEventTypeDefinition;
+use HubspotSDK\Events\ExternalObjectResolutionMappingRequest;
 use HubspotSDK\Events\Send\SendCreateEventDefinitionParams;
 use HubspotSDK\Events\Send\SendCreateEventDefinitionPropertyParams;
 use HubspotSDK\Events\Send\SendDeleteEventDefinitionPropertyParams;
@@ -21,16 +19,18 @@ use HubspotSDK\Events\Send\SendSendEventBatchParams;
 use HubspotSDK\Events\Send\SendSendEventParams;
 use HubspotSDK\Events\Send\SendUpdateEventDefinitionParams;
 use HubspotSDK\Events\Send\SendUpdateEventDefinitionPropertyParams;
+use HubspotSDK\OptionInput;
 use HubspotSDK\Page;
+use HubspotSDK\Property;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Events\SendRawContract;
 
 /**
- * @phpstan-import-type ExternalBehavioralEventPropertyCreateShape from \HubspotSDK\Events\Send\ExternalBehavioralEventPropertyCreate
- * @phpstan-import-type ExternalObjectResolutionMappingRequestShape from \HubspotSDK\Events\Send\ExternalObjectResolutionMappingRequest
- * @phpstan-import-type BehavioralEventHTTPCompletionRequestShape from \HubspotSDK\Events\Send\BehavioralEventHTTPCompletionRequest
+ * @phpstan-import-type ExternalBehavioralEventPropertyCreateShape from \HubspotSDK\Events\ExternalBehavioralEventPropertyCreate
+ * @phpstan-import-type ExternalObjectResolutionMappingRequestShape from \HubspotSDK\Events\ExternalObjectResolutionMappingRequest
+ * @phpstan-import-type BehavioralEventHTTPCompletionRequestShape from \HubspotSDK\Events\BehavioralEventHTTPCompletionRequest
  * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
- * @phpstan-import-type OptionInputShape from \HubspotSDK\Events\Send\OptionInput
+ * @phpstan-import-type OptionInputShape from \HubspotSDK\OptionInput
  */
 final class SendRawService implements SendRawContract
 {

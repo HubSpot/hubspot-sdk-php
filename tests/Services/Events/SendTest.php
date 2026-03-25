@@ -4,9 +4,9 @@ namespace Tests\Services\Events;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Util;
-use HubspotSDK\Events\Send\ExternalBehavioralEventTypeDefinition;
-use HubspotSDK\Events\Send\Property;
+use HubspotSDK\Events\ExternalBehavioralEventTypeDefinition;
 use HubspotSDK\Page;
+use HubspotSDK\Property;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -253,7 +253,7 @@ final class SendTest extends TestCase
             properties: ['foo' => 'string'],
             email: 'email',
             objectID: 'objectId',
-            occurredAt: new \DateTimeImmutable('2026-01-20T21:14:16.512Z'),
+            occurredAt: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
             utk: 'utk',
             uuid: 'uuid',
         );
@@ -293,7 +293,7 @@ final class SendTest extends TestCase
                     'properties' => ['foo' => 'string'],
                     'email' => 'email',
                     'objectID' => 'objectId',
-                    'occurredAt' => new \DateTimeImmutable('2026-01-20T21:14:16.512Z'),
+                    'occurredAt' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
                     'utk' => 'utk',
                     'uuid' => 'uuid',
                 ],

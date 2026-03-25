@@ -7,22 +7,22 @@ namespace HubspotSDK\Services\Events;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Core\Util;
-use HubspotSDK\Events\Send\BehavioralEventHTTPCompletionRequest;
-use HubspotSDK\Events\Send\ExternalBehavioralEventPropertyCreate;
-use HubspotSDK\Events\Send\ExternalBehavioralEventTypeDefinition;
-use HubspotSDK\Events\Send\ExternalObjectResolutionMappingRequest;
-use HubspotSDK\Events\Send\OptionInput;
-use HubspotSDK\Events\Send\Property;
+use HubspotSDK\Events\BehavioralEventHTTPCompletionRequest;
+use HubspotSDK\Events\ExternalBehavioralEventPropertyCreate;
+use HubspotSDK\Events\ExternalBehavioralEventTypeDefinition;
+use HubspotSDK\Events\ExternalObjectResolutionMappingRequest;
+use HubspotSDK\OptionInput;
 use HubspotSDK\Page;
+use HubspotSDK\Property;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Events\SendContract;
 
 /**
- * @phpstan-import-type ExternalBehavioralEventPropertyCreateShape from \HubspotSDK\Events\Send\ExternalBehavioralEventPropertyCreate
- * @phpstan-import-type ExternalObjectResolutionMappingRequestShape from \HubspotSDK\Events\Send\ExternalObjectResolutionMappingRequest
- * @phpstan-import-type BehavioralEventHTTPCompletionRequestShape from \HubspotSDK\Events\Send\BehavioralEventHTTPCompletionRequest
+ * @phpstan-import-type ExternalBehavioralEventPropertyCreateShape from \HubspotSDK\Events\ExternalBehavioralEventPropertyCreate
+ * @phpstan-import-type ExternalObjectResolutionMappingRequestShape from \HubspotSDK\Events\ExternalObjectResolutionMappingRequest
+ * @phpstan-import-type BehavioralEventHTTPCompletionRequestShape from \HubspotSDK\Events\BehavioralEventHTTPCompletionRequest
  * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
- * @phpstan-import-type OptionInputShape from \HubspotSDK\Events\Send\OptionInput
+ * @phpstan-import-type OptionInputShape from \HubspotSDK\OptionInput
  */
 final class SendService implements SendContract
 {
@@ -42,12 +42,12 @@ final class SendService implements SendContract
     /**
      * @api
      *
-     * @param string $label human readable label for the event for display in HubSpot's UI
+     * @param string $label Human readable label for the event. Used in HubSpot UI
      * @param list<ExternalBehavioralEventPropertyCreate|ExternalBehavioralEventPropertyCreateShape> $propertyDefinitions List of custom properties on event
      * @param ExternalObjectResolutionMappingRequest|ExternalObjectResolutionMappingRequestShape $customMatchingID
      * @param string $description a description of the event that will be shown as help text in HubSpot
-     * @param string $name Internal event name, which must be used when referencing the event from the API. If a name is not supplied, one will be generated based on the label. The name does not include the `pe<PORTAL_ID>_` prefix used when sending event completions.
-     * @param string $primaryObject The object type to associate this event to. Can be one of `CONTACT`, `COMPANY`, `DEAL`, `TICKET`. If no value is supplied, will default to `CONTACT`.
+     * @param string $name Internal event name, which must be used when referencing the event from this event definitions API. If a name is not supplied, one will be generated based on the label. The `name` value will also be used to automatically generate a `fullyQualifiedName` for the event definition, which you'll use when sending event completions to this event.
+     * @param string $primaryObject The object type to associate this event to. Can be one of CONTACT, COMPANY, DEAL, TICKET. If no primaryObject is supplied, we will default to associating the event to CONTACT objects.
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -209,13 +209,12 @@ final class SendService implements SendContract
     /**
      * @api
      *
-     * @param string $eventName The event's fully qualified name. This value (formatted as `pe{HubID}_{name}`) can be retrieved through the [event definitions API](https://developers.hubspot.com/docs/reference/api/analytics-and-events/custom-events/custom-event-definitions#get-%2Fevents%2Fv3%2Fevent-definitions) or in [HubSpot's UI](https://knowledge.hubspot.com/reports/create-custom-behavioral-events-with-the-code-wizard#find-internal-name).
-     * @param array<string,string> $properties The event properties to update. Takes the format of key-value pairs (property internal name and property value). Learn more about [HubSpot's default event properties](https://developers.hubspot.com/docs/guides/api/analytics-and-events/custom-events/custom-event-definitions#hubspot-s-default-event-properties).
-     * @param string $email The visitor's email address. Used for associating the event data with a CRM record.
-     * @param string $objectID The ID of the record for which the event occurred (e.g., contact ID or visitor ID).
-     * @param \DateTimeInterface $occurredAt The time when this event occurred. If this isn't set, the current time will be used.
-     * @param string $utk The visitor's usertoken. Used for associating the event data with a CRM record.
-     * @param string $uuid Include a universally unique identifier to assign a unique ID to the event occurrence. Can be useful for matching data between HubSpot and other external systems.
+     * @param string $eventName Internal name of the event-type to trigger
+     * @param array<string,string> $properties Map of properties for the event in the format property internal name - property value
+     * @param string $email Email of visitor
+     * @param string $objectID The object id that this event occurred on. Could be a contact id or a visitor id.
+     * @param \DateTimeInterface $occurredAt The time when this event occurred (if any). If this isn't set, the current time will be used
+     * @param string $utk User token
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException

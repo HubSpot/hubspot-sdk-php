@@ -5,18 +5,16 @@ declare(strict_types=1);
 namespace HubspotSDK\Crm\Objects\Contacts;
 
 use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * Read an Object identified by `{objectId}`. `{objectId}` refers to the internal object ID by default, or optionally any unique property value as specified by the `idProperty` query param.  Control what is returned via the `properties` query param.
+ * Retrieve a contact by its ID (`contactId`) or by a unique property (`idProperty`). You can specify what is returned using the `properties` query parameter.
  *
  * @see HubspotSDK\Services\Crm\Objects\ContactsService::get()
  *
  * @phpstan-type ContactGetParamsShape = array{
- *   objectType: string,
  *   archived?: bool|null,
  *   associations?: list<string>|null,
  *   idProperty?: string|null,
@@ -29,9 +27,6 @@ final class ContactGetParams implements BaseModel
     /** @use SdkModel<ContactGetParamsShape> */
     use SdkModel;
     use SdkParams;
-
-    #[Required]
-    public string $objectType;
 
     /**
      * Whether to return only results that have been archived.
@@ -69,20 +64,6 @@ final class ContactGetParams implements BaseModel
     #[Optional(list: 'string')]
     public ?array $propertiesWithHistory;
 
-    /**
-     * `new ContactGetParams()` is missing required properties by the API.
-     *
-     * To enforce required parameters use
-     * ```
-     * ContactGetParams::with(objectType: ...)
-     * ```
-     *
-     * Otherwise ensure the following setters are called
-     *
-     * ```
-     * (new ContactGetParams)->withObjectType(...)
-     * ```
-     */
     public function __construct()
     {
         $this->initialize();
@@ -98,7 +79,6 @@ final class ContactGetParams implements BaseModel
      * @param list<string>|null $propertiesWithHistory
      */
     public static function with(
-        string $objectType,
         ?bool $archived = null,
         ?array $associations = null,
         ?string $idProperty = null,
@@ -107,21 +87,11 @@ final class ContactGetParams implements BaseModel
     ): self {
         $self = new self;
 
-        $self['objectType'] = $objectType;
-
         null !== $archived && $self['archived'] = $archived;
         null !== $associations && $self['associations'] = $associations;
         null !== $idProperty && $self['idProperty'] = $idProperty;
         null !== $properties && $self['properties'] = $properties;
         null !== $propertiesWithHistory && $self['propertiesWithHistory'] = $propertiesWithHistory;
-
-        return $self;
-    }
-
-    public function withObjectType(string $objectType): self
-    {
-        $self = clone $this;
-        $self['objectType'] = $objectType;
 
         return $self;
     }

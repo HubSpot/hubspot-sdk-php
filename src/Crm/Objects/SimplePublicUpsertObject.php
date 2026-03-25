@@ -9,11 +9,12 @@ use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\ListOf;
+use HubspotSDK\Crm\ValueWithTimestamp;
 
 /**
  * Represents a CRM object that has either been created or updated (upserted).
  *
- * @phpstan-import-type ValueWithTimestampShape from \HubspotSDK\Crm\Objects\ValueWithTimestamp
+ * @phpstan-import-type ValueWithTimestampShape from \HubspotSDK\Crm\ValueWithTimestamp
  *
  * @phpstan-type SimplePublicUpsertObjectShape = array{
  *   id: string,
@@ -78,7 +79,7 @@ final class SimplePublicUpsertObject implements BaseModel
     public ?\DateTimeInterface $archivedAt;
 
     /**
-     * An identifier for tracing the creation request.
+     * An identifier used for tracing the write request for the object.
      */
     #[Optional('objectWriteTraceId')]
     public ?string $objectWriteTraceID;
@@ -246,7 +247,7 @@ final class SimplePublicUpsertObject implements BaseModel
     }
 
     /**
-     * An identifier for tracing the creation request.
+     * An identifier used for tracing the write request for the object.
      */
     public function withObjectWriteTraceID(string $objectWriteTraceID): self
     {
