@@ -1,0 +1,246 @@
+<?php
+
+declare(strict_types=1);
+
+namespace HubspotSDK\Services\Crm\Objects;
+
+use HubspotSDK\Client;
+use HubspotSDK\Core\Contracts\BaseResponse;
+use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Crm\FilterGroup;
+use HubspotSDK\Crm\Objects\CollectionResponseWithTotalSimplePublicObject;
+use HubspotSDK\Crm\Objects\Leads\LeadCreateParams;
+use HubspotSDK\Crm\Objects\Leads\LeadGetParams;
+use HubspotSDK\Crm\Objects\Leads\LeadListParams;
+use HubspotSDK\Crm\Objects\Leads\LeadSearchParams;
+use HubspotSDK\Crm\Objects\Leads\LeadUpdateParams;
+use HubspotSDK\Crm\Objects\PublicAssociationsForObject;
+use HubspotSDK\Crm\Objects\SimplePublicObjectWithAssociations;
+use HubspotSDK\Crm\SimplePublicObject;
+use HubspotSDK\Page;
+use HubspotSDK\RequestOptions;
+use HubspotSDK\ServiceContracts\Crm\Objects\LeadsRawContract;
+
+/**
+ * @phpstan-import-type PublicAssociationsForObjectShape from \HubspotSDK\Crm\Objects\PublicAssociationsForObject
+ * @phpstan-import-type FilterGroupShape from \HubspotSDK\Crm\FilterGroup
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
+final class LeadsRawService implements LeadsRawContract
+{
+    // @phpstan-ignore-next-line
+    /**
+     * @internal
+     */
+    public function __construct(private Client $client) {}
+
+    /**
+     * @api
+     *
+     * Create a lead with the given properties and return a copy of the object, including the ID. Documentation and examples for creating standard leads is provided.
+     *
+     * @param array{
+     *   associations: list<PublicAssociationsForObject|PublicAssociationsForObjectShape>,
+     *   properties: array<string,string>,
+     * }|LeadCreateParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<SimplePublicObject>
+     *
+     * @throws APIException
+     */
+    public function create(
+        array|LeadCreateParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = LeadCreateParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'post',
+            path: 'crm/objects/2026-03/leads',
+            body: (object) $parsed,
+            options: $options,
+            convert: SimplePublicObject::class,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * Perform a partial update of an Object identified by `{leadsId}`or optionally a unique property value as specified by the `idProperty` query param. `{leadsId}` refers to the internal object ID by default, and the `idProperty` query param refers to a property whose values are unique for the object. Provided property values will be overwritten. Read-only and non-existent properties will result in an error. Properties values can be cleared by passing an empty string.
+     *
+     * @param string $leadsID Path param
+     * @param array{
+     *   properties: array<string,string>, idProperty?: string
+     * }|LeadUpdateParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<SimplePublicObject>
+     *
+     * @throws APIException
+     */
+    public function update(
+        string $leadsID,
+        array|LeadUpdateParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = LeadUpdateParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+        $query_params = array_flip(['idProperty']);
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'patch',
+            path: ['crm/objects/2026-03/leads/%1$s', $leadsID],
+            query: array_intersect_key($parsed, $query_params),
+            body: (object) array_diff_key($parsed, $query_params),
+            options: $options,
+            convert: SimplePublicObject::class,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * Read a page of leads. Control what is returned via the `properties` query param.
+     *
+     * @param array{
+     *   after?: string,
+     *   archived?: bool,
+     *   associations?: list<string>,
+     *   limit?: int,
+     *   properties?: list<string>,
+     *   propertiesWithHistory?: list<string>,
+     * }|LeadListParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<Page<SimplePublicObjectWithAssociations>>
+     *
+     * @throws APIException
+     */
+    public function list(
+        array|LeadListParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = LeadListParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'get',
+            path: 'crm/objects/2026-03/leads',
+            query: $parsed,
+            options: $options,
+            convert: SimplePublicObjectWithAssociations::class,
+            page: Page::class,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * Move an Object identified by `{leadsId}` to the recycling bin.
+     *
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<mixed>
+     *
+     * @throws APIException
+     */
+    public function delete(
+        string $leadsID,
+        RequestOptions|array|null $requestOptions = null
+    ): BaseResponse {
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'delete',
+            path: ['crm/objects/2026-03/leads/%1$s', $leadsID],
+            options: $requestOptions,
+            convert: null,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * Read an Object identified by `{leadsId}`. `{leadsId}` refers to the internal object ID by default, or optionally any unique property value as specified by the `idProperty` query param.  Control what is returned via the `properties` query param.
+     *
+     * @param array{
+     *   archived?: bool,
+     *   associations?: list<string>,
+     *   idProperty?: string,
+     *   properties?: list<string>,
+     *   propertiesWithHistory?: list<string>,
+     * }|LeadGetParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<SimplePublicObjectWithAssociations>
+     *
+     * @throws APIException
+     */
+    public function get(
+        string $leadsID,
+        array|LeadGetParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = LeadGetParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'get',
+            path: ['crm/objects/2026-03/leads/%1$s', $leadsID],
+            query: $parsed,
+            options: $options,
+            convert: SimplePublicObjectWithAssociations::class,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * Perform a search for leads based on the provided filter groups, properties, and sorting options. The request allows for pagination and can return up to 200 results per page.
+     *
+     * @param array{
+     *   after: string,
+     *   filterGroups: list<FilterGroup|FilterGroupShape>,
+     *   limit: int,
+     *   properties: list<string>,
+     *   sorts: list<string>,
+     *   query?: string,
+     * }|LeadSearchParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<CollectionResponseWithTotalSimplePublicObject>
+     *
+     * @throws APIException
+     */
+    public function search(
+        array|LeadSearchParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = LeadSearchParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'post',
+            path: 'crm/objects/2026-03/leads/search',
+            body: (object) $parsed,
+            options: $options,
+            convert: CollectionResponseWithTotalSimplePublicObject::class,
+        );
+    }
+}

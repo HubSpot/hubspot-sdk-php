@@ -1,0 +1,68 @@
+<?php
+
+declare(strict_types=1);
+
+namespace HubspotSDK\Cms\SourceCode;
+
+use HubspotSDK\Core\Attributes\Required;
+use HubspotSDK\Core\Concerns\SdkModel;
+use HubspotSDK\Core\Concerns\SdkParams;
+use HubspotSDK\Core\Contracts\BaseModel;
+
+/**
+ * Delete a specific content file from the specified environment in your HubSpot CMS. This operation is useful for removing outdated or unnecessary files from your source code repository. Ensure you have the necessary permissions to perform this action.
+ *
+ * @see HubspotSDK\Services\Cms\SourceCodeService::delete()
+ *
+ * @phpstan-type SourceCodeDeleteParamsShape = array{environment: string}
+ */
+final class SourceCodeDeleteParams implements BaseModel
+{
+    /** @use SdkModel<SourceCodeDeleteParamsShape> */
+    use SdkModel;
+    use SdkParams;
+
+    #[Required]
+    public string $environment;
+
+    /**
+     * `new SourceCodeDeleteParams()` is missing required properties by the API.
+     *
+     * To enforce required parameters use
+     * ```
+     * SourceCodeDeleteParams::with(environment: ...)
+     * ```
+     *
+     * Otherwise ensure the following setters are called
+     *
+     * ```
+     * (new SourceCodeDeleteParams)->withEnvironment(...)
+     * ```
+     */
+    public function __construct()
+    {
+        $this->initialize();
+    }
+
+    /**
+     * Construct an instance from the required parameters.
+     *
+     * You must use named parameters to construct any parameters with a default value.
+     */
+    public static function with(string $environment): self
+    {
+        $self = new self;
+
+        $self['environment'] = $environment;
+
+        return $self;
+    }
+
+    public function withEnvironment(string $environment): self
+    {
+        $self = clone $this;
+        $self['environment'] = $environment;
+
+        return $self;
+    }
+}

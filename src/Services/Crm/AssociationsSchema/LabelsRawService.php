@@ -1,0 +1,240 @@
+<?php
+
+declare(strict_types=1);
+
+namespace HubspotSDK\Services\Crm\AssociationsSchema;
+
+use HubspotSDK\Client;
+use HubspotSDK\Core\Contracts\BaseResponse;
+use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Crm\AssociationsSchema\BatchResponsePublicAssociationDefinitionUserConfiguration;
+use HubspotSDK\Crm\AssociationsSchema\CollectionResponseAssociationSpecWithLabelNoPaging;
+use HubspotSDK\Crm\AssociationsSchema\Labels\LabelBatchCreateParams;
+use HubspotSDK\Crm\AssociationsSchema\Labels\LabelCreateLabelParams;
+use HubspotSDK\Crm\AssociationsSchema\Labels\LabelDeleteLabelParams;
+use HubspotSDK\Crm\AssociationsSchema\Labels\LabelListLabelsParams;
+use HubspotSDK\Crm\AssociationsSchema\Labels\LabelUpdateLabelParams;
+use HubspotSDK\Crm\AssociationsSchema\PublicAssociationDefinitionConfigurationCreateRequest;
+use HubspotSDK\RequestOptions;
+use HubspotSDK\ServiceContracts\Crm\AssociationsSchema\LabelsRawContract;
+
+/**
+ * @phpstan-import-type PublicAssociationDefinitionConfigurationCreateRequestShape from \HubspotSDK\Crm\AssociationsSchema\PublicAssociationDefinitionConfigurationCreateRequest
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
+final class LabelsRawService implements LabelsRawContract
+{
+    // @phpstan-ignore-next-line
+    /**
+     * @internal
+     */
+    public function __construct(private Client $client) {}
+
+    /**
+     * @api
+     *
+     * Create multiple association definitions between two specified CRM object types in a single request.
+     *
+     * @param string $toObjectType path param: The type of the target object in the association
+     * @param array{
+     *   fromObjectType: string,
+     *   inputs: list<PublicAssociationDefinitionConfigurationCreateRequest|PublicAssociationDefinitionConfigurationCreateRequestShape>,
+     * }|LabelBatchCreateParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<BatchResponsePublicAssociationDefinitionUserConfiguration>
+     *
+     * @throws APIException
+     */
+    public function batchCreate(
+        string $toObjectType,
+        array|LabelBatchCreateParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = LabelBatchCreateParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+        $fromObjectType = $parsed['fromObjectType'];
+        unset($parsed['fromObjectType']);
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'post',
+            path: [
+                'crm/associations/2026-03/definitions/configurations/%1$s/%2$s/batch/create',
+                $fromObjectType,
+                $toObjectType,
+            ],
+            body: (object) array_diff_key($parsed, array_flip(['fromObjectType'])),
+            options: $options,
+            convert: BatchResponsePublicAssociationDefinitionUserConfiguration::class,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * Create a new label that describes the relationship between two specified CRM object types. This can help in categorizing and managing associations more effectively.
+     *
+     * @param string $toObjectType path param: The type of the target object in the association
+     * @param array{
+     *   fromObjectType: string, label: string, name: string, inverseLabel?: string
+     * }|LabelCreateLabelParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<CollectionResponseAssociationSpecWithLabelNoPaging>
+     *
+     * @throws APIException
+     */
+    public function createLabel(
+        string $toObjectType,
+        array|LabelCreateLabelParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = LabelCreateLabelParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+        $fromObjectType = $parsed['fromObjectType'];
+        unset($parsed['fromObjectType']);
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'post',
+            path: [
+                'crm/associations/2026-03/%1$s/%2$s/labels',
+                $fromObjectType,
+                $toObjectType,
+            ],
+            body: (object) array_diff_key($parsed, array_flip(['fromObjectType'])),
+            options: $options,
+            convert: CollectionResponseAssociationSpecWithLabelNoPaging::class,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * Remove a specific label from the association between two CRM object types.
+     *
+     * @param int $associationTypeID the unique identifier for the association type
+     * @param array{
+     *   fromObjectType: string, toObjectType: string
+     * }|LabelDeleteLabelParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<mixed>
+     *
+     * @throws APIException
+     */
+    public function deleteLabel(
+        int $associationTypeID,
+        array|LabelDeleteLabelParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = LabelDeleteLabelParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+        $fromObjectType = $parsed['fromObjectType'];
+        unset($parsed['fromObjectType']);
+        $toObjectType = $parsed['toObjectType'];
+        unset($parsed['toObjectType']);
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'delete',
+            path: [
+                'crm/associations/2026-03/%1$s/%2$s/labels/%3$s',
+                $fromObjectType,
+                $toObjectType,
+                $associationTypeID,
+            ],
+            options: $options,
+            convert: null,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * Retrieve all labels that describe the relationships between two specified CRM object types. These labels provide context about the nature of the associations.
+     *
+     * @param string $toObjectType the type of the target object in the association
+     * @param array{fromObjectType: string}|LabelListLabelsParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<CollectionResponseAssociationSpecWithLabelNoPaging>
+     *
+     * @throws APIException
+     */
+    public function listLabels(
+        string $toObjectType,
+        array|LabelListLabelsParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = LabelListLabelsParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+        $fromObjectType = $parsed['fromObjectType'];
+        unset($parsed['fromObjectType']);
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'get',
+            path: [
+                'crm/associations/2026-03/%1$s/%2$s/labels',
+                $fromObjectType,
+                $toObjectType,
+            ],
+            options: $options,
+            convert: CollectionResponseAssociationSpecWithLabelNoPaging::class,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * Update an existing label that describes the relationship between two specified CRM object types. This allows for modifications to existing association labels to better reflect the nature of the relationship.
+     *
+     * @param string $toObjectType path param: The type of the target object in the association
+     * @param array{
+     *   fromObjectType: string,
+     *   associationTypeID: int,
+     *   label: string,
+     *   inverseLabel?: string,
+     * }|LabelUpdateLabelParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<mixed>
+     *
+     * @throws APIException
+     */
+    public function updateLabel(
+        string $toObjectType,
+        array|LabelUpdateLabelParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = LabelUpdateLabelParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+        $fromObjectType = $parsed['fromObjectType'];
+        unset($parsed['fromObjectType']);
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'put',
+            path: [
+                'crm/associations/2026-03/%1$s/%2$s/labels',
+                $fromObjectType,
+                $toObjectType,
+            ],
+            body: (object) array_diff_key($parsed, array_flip(['fromObjectType'])),
+            options: $options,
+            convert: null,
+        );
+    }
+}

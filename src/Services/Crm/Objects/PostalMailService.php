@@ -1,0 +1,253 @@
+<?php
+
+declare(strict_types=1);
+
+namespace HubspotSDK\Services\Crm\Objects;
+
+use HubspotSDK\Client;
+use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Core\Util;
+use HubspotSDK\Crm\FilterGroup;
+use HubspotSDK\Crm\Objects\BatchResponseSimplePublicObject;
+use HubspotSDK\Crm\Objects\BatchResponseSimplePublicUpsertObject;
+use HubspotSDK\Crm\Objects\CollectionResponseWithTotalSimplePublicObject;
+use HubspotSDK\Crm\Objects\SimplePublicObjectBatchInput;
+use HubspotSDK\Crm\Objects\SimplePublicObjectBatchInputForCreate;
+use HubspotSDK\Crm\Objects\SimplePublicObjectBatchInputUpsert;
+use HubspotSDK\Crm\Objects\SimplePublicObjectID;
+use HubspotSDK\Crm\Objects\SimplePublicObjectWithAssociations;
+use HubspotSDK\Page;
+use HubspotSDK\RequestOptions;
+use HubspotSDK\ServiceContracts\Crm\Objects\PostalMailContract;
+
+/**
+ * @phpstan-import-type SimplePublicObjectBatchInputForCreateShape from \HubspotSDK\Crm\Objects\SimplePublicObjectBatchInputForCreate
+ * @phpstan-import-type SimplePublicObjectBatchInputShape from \HubspotSDK\Crm\Objects\SimplePublicObjectBatchInput
+ * @phpstan-import-type FilterGroupShape from \HubspotSDK\Crm\FilterGroup
+ * @phpstan-import-type SimplePublicObjectBatchInputUpsertShape from \HubspotSDK\Crm\Objects\SimplePublicObjectBatchInputUpsert
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type SimplePublicObjectIDShape from \HubspotSDK\Crm\Objects\SimplePublicObjectID
+ */
+final class PostalMailService implements PostalMailContract
+{
+    /**
+     * @api
+     */
+    public PostalMailRawService $raw;
+
+    /**
+     * @internal
+     */
+    public function __construct(private Client $client)
+    {
+        $this->raw = new PostalMailRawService($client);
+    }
+
+    /**
+     * @api
+     *
+     * Create a batch of postal mail objects.
+     *
+     * @param list<SimplePublicObjectBatchInputForCreate|SimplePublicObjectBatchInputForCreateShape> $inputs
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function create(
+        array $inputs,
+        RequestOptions|array|null $requestOptions = null
+    ): BatchResponseSimplePublicObject {
+        $params = Util::removeNulls(['inputs' => $inputs]);
+
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->create(params: $params, requestOptions: $requestOptions);
+
+        return $response->parse();
+    }
+
+    /**
+     * @api
+     *
+     * Update multiple postal mail objects in a single request.
+     *
+     * @param list<SimplePublicObjectBatchInput|SimplePublicObjectBatchInputShape> $inputs
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function update(
+        array $inputs,
+        RequestOptions|array|null $requestOptions = null
+    ): BatchResponseSimplePublicObject {
+        $params = Util::removeNulls(['inputs' => $inputs]);
+
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->update(params: $params, requestOptions: $requestOptions);
+
+        return $response->parse();
+    }
+
+    /**
+     * @api
+     *
+     * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+     * @param bool $archived whether to return only results that have been archived
+     * @param list<string> $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored.
+     * @param int $limit the maximum number of results to display per page
+     * @param list<string> $properties A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored.
+     * @param list<string> $propertiesWithHistory A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored. Usage of this parameter will reduce the maximum number of objects that can be read by a single request.
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return Page<SimplePublicObjectWithAssociations>
+     *
+     * @throws APIException
+     */
+    public function list(
+        ?string $after = null,
+        bool $archived = false,
+        ?array $associations = null,
+        int $limit = 10,
+        ?array $properties = null,
+        ?array $propertiesWithHistory = null,
+        RequestOptions|array|null $requestOptions = null,
+    ): Page {
+        $params = Util::removeNulls(
+            [
+                'after' => $after,
+                'archived' => $archived,
+                'associations' => $associations,
+                'limit' => $limit,
+                'properties' => $properties,
+                'propertiesWithHistory' => $propertiesWithHistory,
+            ],
+        );
+
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->list(params: $params, requestOptions: $requestOptions);
+
+        return $response->parse();
+    }
+
+    /**
+     * @api
+     *
+     * Archive a batch of postal mail objects using their IDs.
+     *
+     * @param list<SimplePublicObjectID|SimplePublicObjectIDShape> $inputs
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function delete(
+        array $inputs,
+        RequestOptions|array|null $requestOptions = null
+    ): mixed {
+        $params = Util::removeNulls(['inputs' => $inputs]);
+
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->delete(params: $params, requestOptions: $requestOptions);
+
+        return $response->parse();
+    }
+
+    /**
+     * @api
+     *
+     * Retrieve multiple postal mail objects using their internal IDs or unique property values.
+     *
+     * @param list<SimplePublicObjectID|SimplePublicObjectIDShape> $inputs Body param
+     * @param list<string> $properties body param: Key-value pairs for setting properties for the new object
+     * @param list<string> $propertiesWithHistory body param: Key-value pairs for setting properties for the new object and their histories
+     * @param bool $archived query param: Whether to return only results that have been archived
+     * @param string $idProperty Body param: When using a custom unique value property to retrieve records, the name of the property. Do not include this parameter if retrieving by record ID.
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function get(
+        array $inputs,
+        array $properties,
+        array $propertiesWithHistory,
+        bool $archived = false,
+        ?string $idProperty = null,
+        RequestOptions|array|null $requestOptions = null,
+    ): BatchResponseSimplePublicObject {
+        $params = Util::removeNulls(
+            [
+                'inputs' => $inputs,
+                'properties' => $properties,
+                'propertiesWithHistory' => $propertiesWithHistory,
+                'archived' => $archived,
+                'idProperty' => $idProperty,
+            ],
+        );
+
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->get(params: $params, requestOptions: $requestOptions);
+
+        return $response->parse();
+    }
+
+    /**
+     * @api
+     *
+     * Search for postal mail objects using specific criteria in the request.
+     *
+     * @param string $after a paging cursor token for retrieving subsequent pages
+     * @param list<FilterGroup|FilterGroupShape> $filterGroups up to 6 groups of filters defining additional query criteria
+     * @param int $limit the maximum results to return, up to 200 objects
+     * @param list<string> $properties a list of property names to include in the response
+     * @param list<string> $sorts specifies sorting order based on object properties
+     * @param string $query the search query string, up to 3000 characters
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function search(
+        string $after,
+        array $filterGroups,
+        int $limit,
+        array $properties,
+        array $sorts,
+        ?string $query = null,
+        RequestOptions|array|null $requestOptions = null,
+    ): CollectionResponseWithTotalSimplePublicObject {
+        $params = Util::removeNulls(
+            [
+                'after' => $after,
+                'filterGroups' => $filterGroups,
+                'limit' => $limit,
+                'properties' => $properties,
+                'sorts' => $sorts,
+                'query' => $query,
+            ],
+        );
+
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->search(params: $params, requestOptions: $requestOptions);
+
+        return $response->parse();
+    }
+
+    /**
+     * @api
+     *
+     * Create or update postal mails identified by a unique property value as specified by the `idProperty` query param. `idProperty` query param refers to a property whose values are unique for the object.
+     *
+     * @param list<SimplePublicObjectBatchInputUpsert|SimplePublicObjectBatchInputUpsertShape> $inputs
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function upsert(
+        array $inputs,
+        RequestOptions|array|null $requestOptions = null
+    ): BatchResponseSimplePublicUpsertObject {
+        $params = Util::removeNulls(['inputs' => $inputs]);
+
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->upsert(params: $params, requestOptions: $requestOptions);
+
+        return $response->parse();
+    }
+}

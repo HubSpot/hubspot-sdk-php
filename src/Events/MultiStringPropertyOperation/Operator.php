@@ -1,0 +1,24 @@
+<?php
+
+declare(strict_types=1);
+
+namespace HubspotSDK\Events\MultiStringPropertyOperation;
+
+enum Operator: string
+{
+    case CONTAINS = 'CONTAINS';
+
+    case CONTAINS_EXACTLY = 'CONTAINS_EXACTLY';
+
+    case DOES_NOT_CONTAIN = 'DOES_NOT_CONTAIN';
+
+    case DOES_NOT_CONTAIN_EXACTLY = 'DOES_NOT_CONTAIN_EXACTLY';
+
+    case ENDS_WITH = 'ENDS_WITH';
+
+    case IS_EQUAL_TO = 'IS_EQUAL_TO';
+
+    case IS_NOT_EQUAL_TO = 'IS_NOT_EQUAL_TO';
+
+    case STARTS_WITH = 'STARTS_WITH';
+}

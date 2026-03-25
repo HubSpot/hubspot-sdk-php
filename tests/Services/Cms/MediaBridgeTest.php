@@ -1,0 +1,1192 @@
+<?php
+
+namespace Tests\Services\Cms;
+
+use HubspotSDK\Client;
+use HubspotSDK\Cms\MediaBridge\BulkIntegratorObjectCreationResponse;
+use HubspotSDK\Cms\MediaBridge\EventVisibilityChange;
+use HubspotSDK\Cms\MediaBridge\EventVisibilityResponse;
+use HubspotSDK\Cms\MediaBridge\IntegratorOEmbedDomainModel;
+use HubspotSDK\Cms\MediaBridge\MediaBridgeObject;
+use HubspotSDK\Cms\MediaBridge\MediaBridgeProviderRegistrationResponse;
+use HubspotSDK\Cms\MediaBridge\ObjectDefinitionResponse;
+use HubspotSDK\Cms\MediaBridge\OEmbedDomainsCollectionResponse;
+use HubspotSDK\CollectionResponseObjectSchemaNoPaging;
+use HubspotSDK\CollectionResponsePropertyGroupNoPaging;
+use HubspotSDK\CollectionResponsePropertyNoPaging;
+use HubspotSDK\Core\Util;
+use HubspotSDK\Events\AssociationDefinition;
+use HubspotSDK\ObjectSchema;
+use HubspotSDK\ObjectTypeDefinition;
+use HubspotSDK\Page;
+use HubspotSDK\Property;
+use HubspotSDK\PropertyGroup;
+use PHPUnit\Framework\Attributes\CoversNothing;
+use PHPUnit\Framework\Attributes\Test;
+use PHPUnit\Framework\TestCase;
+use Tests\UnsupportedMockTests;
+
+/**
+ * @internal
+ */
+#[CoversNothing]
+final class MediaBridgeTest extends TestCase
+{
+    protected Client $client;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $testUrl = Util::getenv('TEST_API_BASE_URL') ?: 'http://127.0.0.1:4010';
+        $client = new Client(
+            accessToken: 'pat-na1-xxxxxxxx-xxxx',
+            baseUrl: $testUrl,
+        );
+
+        $this->client = $client;
+    }
+
+    #[Test]
+    public function testCreate(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->mediaBridge->create();
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(MediaBridgeObject::class, $result);
+    }
+
+    #[Test]
+    public function testUpdate(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->mediaBridge->update(0);
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(MediaBridgeObject::class, $result);
+    }
+
+    #[Test]
+    public function testList(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $page = $this->client->cms->mediaBridge->list('AUDIO');
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Page::class, $page);
+
+        if ($item = $page->getItems()[0] ?? null) {
+            // @phpstan-ignore-next-line method.alreadyNarrowedType
+            $this->assertInstanceOf(MediaBridgeObject::class, $item);
+        }
+    }
+
+    #[Test]
+    public function testDelete(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->mediaBridge->delete(0, mediaType: 'AUDIO');
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
+    }
+
+    #[Test]
+    public function testDeleteWithOptionalParams(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->mediaBridge->delete(0, mediaType: 'AUDIO');
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
+    }
+
+    #[Test]
+    public function testCreateAssociation(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->mediaBridge->createAssociation(
+            'objectType',
+            appID: 'appId',
+            fromObjectTypeID: 'fromObjectTypeId',
+            toObjectTypeID: 'toObjectTypeId',
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(AssociationDefinition::class, $result);
+    }
+
+    #[Test]
+    public function testCreateAssociationWithOptionalParams(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->mediaBridge->createAssociation(
+            'objectType',
+            appID: 'appId',
+            fromObjectTypeID: 'fromObjectTypeId',
+            toObjectTypeID: 'toObjectTypeId',
+            name: 'name',
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(AssociationDefinition::class, $result);
+    }
+
+    #[Test]
+    public function testCreateAttentionSpanEvent(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->mediaBridge->createAttentionSpanEvent(
+            mediaType: 'AUDIO',
+            occurredTimestamp: 0,
+            rawDataMap: ['foo' => 0],
+            sessionID: 'sessionId',
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertIsString($result);
+    }
+
+    #[Test]
+    public function testCreateAttentionSpanEventWithOptionalParams(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->mediaBridge->createAttentionSpanEvent(
+            mediaType: 'AUDIO',
+            occurredTimestamp: 0,
+            rawDataMap: ['foo' => 0],
+            sessionID: 'sessionId',
+            _hsenc: '_hsenc',
+            contactID: 0,
+            contactUtk: 'contactUtk',
+            derivedValues: ['totalPercentPlayed' => 0, 'totalSecondsPlayed' => 0],
+            externalID: 'externalId',
+            externalPlayContext: 'EMAIL',
+            mediaBridgeID: 0,
+            mediaName: 'mediaName',
+            mediaURL: 'mediaUrl',
+            pageID: 0,
+            pageName: 'pageName',
+            pageURL: 'pageUrl',
+            rawDataString: 'rawDataString',
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertIsString($result);
+    }
+
+    #[Test]
+    public function testCreateMediaPlayedEvent(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->mediaBridge->createMediaPlayedEvent(
+            mediaType: 'AUDIO',
+            occurredTimestamp: 0,
+            sessionID: 'sessionId',
+            state: 'STARTED',
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertIsString($result);
+    }
+
+    #[Test]
+    public function testCreateMediaPlayedEventWithOptionalParams(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->mediaBridge->createMediaPlayedEvent(
+            mediaType: 'AUDIO',
+            occurredTimestamp: 0,
+            sessionID: 'sessionId',
+            state: 'STARTED',
+            _hsenc: '_hsenc',
+            contactID: 0,
+            contactUtk: 'contactUtk',
+            externalID: 'externalId',
+            externalPlayContext: 'EMAIL',
+            iframeURL: 'iframeUrl',
+            mediaBridgeID: 0,
+            mediaName: 'mediaName',
+            mediaURL: 'mediaUrl',
+            pageID: 0,
+            pageName: 'pageName',
+            pageURL: 'pageUrl',
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertIsString($result);
+    }
+
+    #[Test]
+    public function testCreateMediaPlayedPercentEvent(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->mediaBridge->createMediaPlayedPercentEvent(
+            mediaType: 'AUDIO',
+            occurredTimestamp: 0,
+            playedPercent: 0,
+            sessionID: 'sessionId',
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertIsString($result);
+    }
+
+    #[Test]
+    public function testCreateMediaPlayedPercentEventWithOptionalParams(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->mediaBridge->createMediaPlayedPercentEvent(
+            mediaType: 'AUDIO',
+            occurredTimestamp: 0,
+            playedPercent: 0,
+            sessionID: 'sessionId',
+            _hsenc: '_hsenc',
+            contactID: 0,
+            contactUtk: 'contactUtk',
+            externalID: 'externalId',
+            externalPlayContext: 'EMAIL',
+            mediaBridgeID: 0,
+            mediaName: 'mediaName',
+            mediaURL: 'mediaUrl',
+            pageID: 0,
+            pageName: 'pageName',
+            pageURL: 'pageUrl',
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertIsString($result);
+    }
+
+    #[Test]
+    public function testCreateObjectType(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->mediaBridge->createObjectType(
+            'appId',
+            mediaTypes: ['VIDEO']
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            BulkIntegratorObjectCreationResponse::class,
+            $result
+        );
+    }
+
+    #[Test]
+    public function testCreateObjectTypeWithOptionalParams(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->mediaBridge->createObjectType(
+            'appId',
+            mediaTypes: ['VIDEO']
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            BulkIntegratorObjectCreationResponse::class,
+            $result
+        );
+    }
+
+    #[Test]
+    public function testCreateOembedDomain(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->mediaBridge->createOembedDomain(
+            'appId',
+            endpoints: ['discovery' => true, 'schemes' => ['string'], 'url' => 'url'],
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(IntegratorOEmbedDomainModel::class, $result);
+    }
+
+    #[Test]
+    public function testCreateOembedDomainWithOptionalParams(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->mediaBridge->createOembedDomain(
+            'appId',
+            endpoints: ['discovery' => true, 'schemes' => ['string'], 'url' => 'url'],
+            portalID: 0,
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(IntegratorOEmbedDomainModel::class, $result);
+    }
+
+    #[Test]
+    public function testCreateProperty(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->mediaBridge->createProperty(
+            'objectType',
+            appID: 'appId',
+            fieldType: 'booleancheckbox',
+            groupName: 'groupName',
+            label: 'label',
+            name: 'name',
+            type: 'bool',
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Property::class, $result);
+    }
+
+    #[Test]
+    public function testCreatePropertyWithOptionalParams(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->mediaBridge->createProperty(
+            'objectType',
+            appID: 'appId',
+            fieldType: 'booleancheckbox',
+            groupName: 'groupName',
+            label: 'label',
+            name: 'name',
+            type: 'bool',
+            calculationFormula: 'calculationFormula',
+            dataSensitivity: 'highly_sensitive',
+            description: 'description',
+            displayOrder: 0,
+            externalOptions: true,
+            formField: true,
+            hasUniqueValue: true,
+            hidden: true,
+            options: [
+                [
+                    'displayOrder' => 0,
+                    'hidden' => true,
+                    'label' => 'label',
+                    'value' => 'value',
+                    'description' => 'description',
+                ],
+            ],
+            referencedObjectType: 'referencedObjectType',
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Property::class, $result);
+    }
+
+    #[Test]
+    public function testCreatePropertyGroup(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->mediaBridge->createPropertyGroup(
+            'objectType',
+            appID: 'appId',
+            label: 'label',
+            name: 'name'
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PropertyGroup::class, $result);
+    }
+
+    #[Test]
+    public function testCreatePropertyGroupWithOptionalParams(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->mediaBridge->createPropertyGroup(
+            'objectType',
+            appID: 'appId',
+            label: 'label',
+            name: 'name',
+            displayOrder: 0,
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PropertyGroup::class, $result);
+    }
+
+    #[Test]
+    public function testCreateVideoAssociationDefinition(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->mediaBridge->createVideoAssociationDefinition(
+            'appId'
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(AssociationDefinition::class, $result);
+    }
+
+    #[Test]
+    public function testDeleteAssociation(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->mediaBridge->deleteAssociation(
+            'associationId',
+            appID: 'appId',
+            objectType: 'objectType'
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
+    }
+
+    #[Test]
+    public function testDeleteAssociationWithOptionalParams(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->mediaBridge->deleteAssociation(
+            'associationId',
+            appID: 'appId',
+            objectType: 'objectType'
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
+    }
+
+    #[Test]
+    public function testDeleteOembedDomain(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->mediaBridge->deleteOembedDomain('appId');
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
+    }
+
+    #[Test]
+    public function testDeleteProperty(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->mediaBridge->deleteProperty(
+            'propertyName',
+            appID: 'appId',
+            objectType: 'objectType'
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
+    }
+
+    #[Test]
+    public function testDeletePropertyWithOptionalParams(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->mediaBridge->deleteProperty(
+            'propertyName',
+            appID: 'appId',
+            objectType: 'objectType'
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
+    }
+
+    #[Test]
+    public function testDeletePropertyGroup(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->mediaBridge->deletePropertyGroup(
+            'groupName',
+            appID: 'appId',
+            objectType: 'objectType'
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
+    }
+
+    #[Test]
+    public function testDeletePropertyGroupWithOptionalParams(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->mediaBridge->deletePropertyGroup(
+            'groupName',
+            appID: 'appId',
+            objectType: 'objectType'
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
+    }
+
+    #[Test]
+    public function testGet(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->mediaBridge->get(0, mediaType: 'AUDIO');
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(MediaBridgeObject::class, $result);
+    }
+
+    #[Test]
+    public function testGetWithOptionalParams(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->mediaBridge->get(0, mediaType: 'AUDIO');
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(MediaBridgeObject::class, $result);
+    }
+
+    #[Test]
+    public function testGetEventVisibilitySettings(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->mediaBridge->getEventVisibilitySettings(
+            'appId'
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(EventVisibilityResponse::class, $result);
+    }
+
+    #[Test]
+    public function testGetOembedDomain(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->mediaBridge->getOembedDomain(
+            'oEmbedDomainId',
+            appID: 'appId'
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(IntegratorOEmbedDomainModel::class, $result);
+    }
+
+    #[Test]
+    public function testGetOembedDomainWithOptionalParams(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->mediaBridge->getOembedDomain(
+            'oEmbedDomainId',
+            appID: 'appId'
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(IntegratorOEmbedDomainModel::class, $result);
+    }
+
+    #[Test]
+    public function testGetProperty(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->mediaBridge->getProperty(
+            'propertyName',
+            appID: 'appId',
+            objectType: 'objectType'
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Property::class, $result);
+    }
+
+    #[Test]
+    public function testGetPropertyWithOptionalParams(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->mediaBridge->getProperty(
+            'propertyName',
+            appID: 'appId',
+            objectType: 'objectType',
+            archived: true,
+            properties: 'properties',
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Property::class, $result);
+    }
+
+    #[Test]
+    public function testGetPropertyGroup(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->mediaBridge->getPropertyGroup(
+            'groupName',
+            appID: 'appId',
+            objectType: 'objectType'
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PropertyGroup::class, $result);
+    }
+
+    #[Test]
+    public function testGetPropertyGroupWithOptionalParams(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->mediaBridge->getPropertyGroup(
+            'groupName',
+            appID: 'appId',
+            objectType: 'objectType'
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PropertyGroup::class, $result);
+    }
+
+    #[Test]
+    public function testGetSchema(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->mediaBridge->getSchema(
+            'objectType',
+            appID: 'appId'
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(ObjectSchema::class, $result);
+    }
+
+    #[Test]
+    public function testGetSchemaWithOptionalParams(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->mediaBridge->getSchema(
+            'objectType',
+            appID: 'appId'
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(ObjectSchema::class, $result);
+    }
+
+    #[Test]
+    public function testListObjectTypesByMediaType(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->mediaBridge->listObjectTypesByMediaType(
+            'AUDIO',
+            appID: 'appId'
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(ObjectDefinitionResponse::class, $result);
+    }
+
+    #[Test]
+    public function testListObjectTypesByMediaTypeWithOptionalParams(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->mediaBridge->listObjectTypesByMediaType(
+            'AUDIO',
+            appID: 'appId',
+            includeFullDefinition: true
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(ObjectDefinitionResponse::class, $result);
+    }
+
+    #[Test]
+    public function testListOembedDomains(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->mediaBridge->listOembedDomains('appId');
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(OEmbedDomainsCollectionResponse::class, $result);
+    }
+
+    #[Test]
+    public function testListProperties(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->mediaBridge->listProperties(
+            'objectType',
+            appID: 'appId'
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(CollectionResponsePropertyNoPaging::class, $result);
+    }
+
+    #[Test]
+    public function testListPropertiesWithOptionalParams(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->mediaBridge->listProperties(
+            'objectType',
+            appID: 'appId',
+            archived: true,
+            properties: 'properties'
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(CollectionResponsePropertyNoPaging::class, $result);
+    }
+
+    #[Test]
+    public function testListPropertyGroups(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->mediaBridge->listPropertyGroups(
+            'objectType',
+            appID: 'appId'
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            CollectionResponsePropertyGroupNoPaging::class,
+            $result
+        );
+    }
+
+    #[Test]
+    public function testListPropertyGroupsWithOptionalParams(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->mediaBridge->listPropertyGroups(
+            'objectType',
+            appID: 'appId'
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            CollectionResponsePropertyGroupNoPaging::class,
+            $result
+        );
+    }
+
+    #[Test]
+    public function testListSchemas(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->mediaBridge->listSchemas('appId');
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            CollectionResponseObjectSchemaNoPaging::class,
+            $result
+        );
+    }
+
+    #[Test]
+    public function testRegisterAppName(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->mediaBridge->registerAppName(
+            'appId',
+            updatedAt: 0
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            MediaBridgeProviderRegistrationResponse::class,
+            $result
+        );
+    }
+
+    #[Test]
+    public function testRegisterAppNameWithOptionalParams(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->mediaBridge->registerAppName(
+            'appId',
+            updatedAt: 0,
+            allowImportOnDisconnect: true,
+            moduleName: 'moduleName',
+            name: 'name',
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            MediaBridgeProviderRegistrationResponse::class,
+            $result
+        );
+    }
+
+    #[Test]
+    public function testUpdateEventVisibilitySettings(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->mediaBridge->updateEventVisibilitySettings(
+            'appId',
+            eventType: 'ALL',
+            updatedAt: 0
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(EventVisibilityChange::class, $result);
+    }
+
+    #[Test]
+    public function testUpdateEventVisibilitySettingsWithOptionalParams(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->mediaBridge->updateEventVisibilitySettings(
+            'appId',
+            eventType: 'ALL',
+            updatedAt: 0,
+            showInReporting: true,
+            showInTimeline: true,
+            showInWorkflows: true,
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(EventVisibilityChange::class, $result);
+    }
+
+    #[Test]
+    public function testUpdateOembedDomain(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->mediaBridge->updateOembedDomain(
+            'oEmbedDomainId',
+            appID: 'appId',
+            endpoints: ['discovery' => true, 'schemes' => ['string'], 'url' => 'url'],
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(IntegratorOEmbedDomainModel::class, $result);
+    }
+
+    #[Test]
+    public function testUpdateOembedDomainWithOptionalParams(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->mediaBridge->updateOembedDomain(
+            'oEmbedDomainId',
+            appID: 'appId',
+            endpoints: ['discovery' => true, 'schemes' => ['string'], 'url' => 'url'],
+            portalID: 0,
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(IntegratorOEmbedDomainModel::class, $result);
+    }
+
+    #[Test]
+    public function testUpdateProperty(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->mediaBridge->updateProperty(
+            'propertyName',
+            appID: 'appId',
+            objectType: 'objectType'
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Property::class, $result);
+    }
+
+    #[Test]
+    public function testUpdatePropertyWithOptionalParams(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->mediaBridge->updateProperty(
+            'propertyName',
+            appID: 'appId',
+            objectType: 'objectType',
+            calculationFormula: 'calculationFormula',
+            description: 'description',
+            displayOrder: 0,
+            fieldType: 'booleancheckbox',
+            formField: true,
+            groupName: 'groupName',
+            hasUniqueValue: true,
+            hidden: true,
+            label: 'label',
+            options: [
+                [
+                    'displayOrder' => 0,
+                    'hidden' => true,
+                    'label' => 'label',
+                    'value' => 'value',
+                    'description' => 'description',
+                ],
+            ],
+            type: 'bool',
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Property::class, $result);
+    }
+
+    #[Test]
+    public function testUpdatePropertyGroup(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->mediaBridge->updatePropertyGroup(
+            'groupName',
+            appID: 'appId',
+            objectType: 'objectType'
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PropertyGroup::class, $result);
+    }
+
+    #[Test]
+    public function testUpdatePropertyGroupWithOptionalParams(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->mediaBridge->updatePropertyGroup(
+            'groupName',
+            appID: 'appId',
+            objectType: 'objectType',
+            displayOrder: 0,
+            label: 'label',
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PropertyGroup::class, $result);
+    }
+
+    #[Test]
+    public function testUpdateSchema(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->mediaBridge->updateSchema(
+            'objectType',
+            appID: 'appId',
+            clearDescription: true
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(ObjectTypeDefinition::class, $result);
+    }
+
+    #[Test]
+    public function testUpdateSchemaWithOptionalParams(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->mediaBridge->updateSchema(
+            'objectType',
+            appID: 'appId',
+            clearDescription: true,
+            allowsSensitiveProperties: true,
+            description: 'description',
+            labels: ['plural' => 'plural', 'singular' => 'singular'],
+            primaryDisplayProperty: 'primaryDisplayProperty',
+            requiredProperties: ['string'],
+            restorable: true,
+            searchableProperties: ['string'],
+            secondaryDisplayProperties: ['string'],
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(ObjectTypeDefinition::class, $result);
+    }
+
+    #[Test]
+    public function testUpdateSettings(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->mediaBridge->updateSettings(
+            'appId',
+            updatedAt: 0
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            MediaBridgeProviderRegistrationResponse::class,
+            $result
+        );
+    }
+
+    #[Test]
+    public function testUpdateSettingsWithOptionalParams(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->mediaBridge->updateSettings(
+            'appId',
+            updatedAt: 0,
+            allowImportOnDisconnect: true,
+            moduleName: 'moduleName',
+            name: 'name',
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            MediaBridgeProviderRegistrationResponse::class,
+            $result
+        );
+    }
+}

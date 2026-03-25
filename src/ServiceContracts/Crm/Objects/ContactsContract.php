@@ -5,17 +5,17 @@ declare(strict_types=1);
 namespace HubspotSDK\ServiceContracts\Crm\Objects;
 
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Crm\FilterGroup;
 use HubspotSDK\Crm\Objects\CollectionResponseWithTotalSimplePublicObject;
-use HubspotSDK\Crm\Objects\FilterGroup;
 use HubspotSDK\Crm\Objects\PublicAssociationsForObject;
-use HubspotSDK\Crm\Objects\SimplePublicObject;
 use HubspotSDK\Crm\Objects\SimplePublicObjectWithAssociations;
+use HubspotSDK\Crm\SimplePublicObject;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 
 /**
  * @phpstan-import-type PublicAssociationsForObjectShape from \HubspotSDK\Crm\Objects\PublicAssociationsForObject
- * @phpstan-import-type FilterGroupShape from \HubspotSDK\Crm\Objects\FilterGroup
+ * @phpstan-import-type FilterGroupShape from \HubspotSDK\Crm\FilterGroup
  * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
  */
 interface ContactsContract
@@ -30,7 +30,6 @@ interface ContactsContract
      * @throws APIException
      */
     public function create(
-        string $objectType,
         array $associations,
         array $properties,
         RequestOptions|array|null $requestOptions = null,
@@ -39,8 +38,7 @@ interface ContactsContract
     /**
      * @api
      *
-     * @param string $objectID Path param
-     * @param string $objectType Path param
+     * @param string $contactID Path param
      * @param array<string,string> $properties body param: Key value pairs representing the properties of the object
      * @param string $idProperty Query param: The name of a property whose values are unique for this object type
      * @param RequestOpts|null $requestOptions
@@ -48,8 +46,7 @@ interface ContactsContract
      * @throws APIException
      */
     public function update(
-        string $objectID,
-        string $objectType,
+        string $contactID,
         array $properties,
         ?string $idProperty = null,
         RequestOptions|array|null $requestOptions = null,
@@ -71,7 +68,6 @@ interface ContactsContract
      * @throws APIException
      */
     public function list(
-        string $objectType,
         ?string $after = null,
         bool $archived = false,
         ?array $associations = null,
@@ -89,9 +85,8 @@ interface ContactsContract
      * @throws APIException
      */
     public function delete(
-        string $objectID,
-        string $objectType,
-        RequestOptions|array|null $requestOptions = null,
+        string $contactID,
+        RequestOptions|array|null $requestOptions = null
     ): mixed;
 
     /**
@@ -104,7 +99,6 @@ interface ContactsContract
      * @throws APIException
      */
     public function gdprDelete(
-        string $objectType,
         string $objectID,
         ?string $idProperty = null,
         RequestOptions|array|null $requestOptions = null,
@@ -113,20 +107,17 @@ interface ContactsContract
     /**
      * @api
      *
-     * @param string $objectID Path param
-     * @param string $objectType Path param
-     * @param bool $archived query param: Whether to return only results that have been archived
-     * @param list<string> $associations Query param: A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored.
-     * @param string $idProperty Query param: The name of a property whose values are unique for this object type
-     * @param list<string> $properties Query param: A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored.
-     * @param list<string> $propertiesWithHistory Query param: A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored.
+     * @param bool $archived whether to return only results that have been archived
+     * @param list<string> $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored.
+     * @param string $idProperty The name of a property whose values are unique for this object type
+     * @param list<string> $properties A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored.
+     * @param list<string> $propertiesWithHistory A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored.
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function get(
-        string $objectID,
-        string $objectType,
+        string $contactID,
         bool $archived = false,
         ?array $associations = null,
         ?string $idProperty = null,
@@ -138,14 +129,13 @@ interface ContactsContract
     /**
      * @api
      *
-     * @param string $objectIDToMerge the object ID of the record that the merge will not set as the current value after the merge
-     * @param string $primaryObjectID the object ID of the record that the merge will generally set as the current value after the merge
+     * @param string $objectIDToMerge the ID of the company to merge into the primary
+     * @param string $primaryObjectID the ID of the primary company, which the other will merge into
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function merge(
-        string $objectType,
         string $objectIDToMerge,
         string $primaryObjectID,
         RequestOptions|array|null $requestOptions = null,
@@ -165,7 +155,6 @@ interface ContactsContract
      * @throws APIException
      */
     public function search(
-        string $objectType,
         string $after,
         array $filterGroups,
         int $limit,

@@ -1,0 +1,261 @@
+<?php
+
+declare(strict_types=1);
+
+namespace HubspotSDK\CommunicationPreferences;
+
+use HubspotSDK\CommunicationPreferences\PublicSubscriptionStatus\LegalBasis;
+use HubspotSDK\CommunicationPreferences\PublicSubscriptionStatus\SourceOfStatus;
+use HubspotSDK\CommunicationPreferences\PublicSubscriptionStatus\Status;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
+use HubspotSDK\Core\Concerns\SdkModel;
+use HubspotSDK\Core\Contracts\BaseModel;
+
+/**
+ * @phpstan-type PublicSubscriptionStatusShape = array{
+ *   id: string,
+ *   description: string,
+ *   name: string,
+ *   sourceOfStatus: SourceOfStatus|value-of<SourceOfStatus>,
+ *   status: Status|value-of<Status>,
+ *   brandID?: int|null,
+ *   legalBasis?: null|LegalBasis|value-of<LegalBasis>,
+ *   legalBasisExplanation?: string|null,
+ *   preferenceGroupName?: string|null,
+ * }
+ */
+final class PublicSubscriptionStatus implements BaseModel
+{
+    /** @use SdkModel<PublicSubscriptionStatusShape> */
+    use SdkModel;
+
+    /**
+     * The unique identifier for the subscription status.
+     */
+    #[Required]
+    public string $id;
+
+    /**
+     * A description of the subscription status.
+     */
+    #[Required]
+    public string $description;
+
+    /**
+     * The name of the subscription status.
+     */
+    #[Required]
+    public string $name;
+
+    /**
+     * Indicates the origin of the subscription status, with possible values being 'PORTAL_WIDE_STATUS', 'BRAND_WIDE_STATUS', or 'SUBSCRIPTION_STATUS'.
+     *
+     * @var value-of<SourceOfStatus> $sourceOfStatus
+     */
+    #[Required(enum: SourceOfStatus::class)]
+    public string $sourceOfStatus;
+
+    /**
+     * The current status of the subscription, which can be 'SUBSCRIBED' or 'NOT_SUBSCRIBED'.
+     *
+     * @var value-of<Status> $status
+     */
+    #[Required(enum: Status::class)]
+    public string $status;
+
+    /**
+     * The unique identifier for the brand associated with the subscription status, represented as an integer.
+     */
+    #[Optional('brandId')]
+    public ?int $brandID;
+
+    /**
+     * The legal basis for processing the subscription, which can include values such as 'LEGITIMATE_INTEREST_PQL', 'LEGITIMATE_INTEREST_CLIENT', 'PERFORMANCE_OF_CONTRACT', 'CONSENT_WITH_NOTICE', 'NON_GDPR', 'PROCESS_AND_STORE', or 'LEGITIMATE_INTEREST_OTHER'.
+     *
+     * @var value-of<LegalBasis>|null $legalBasis
+     */
+    #[Optional(enum: LegalBasis::class)]
+    public ?string $legalBasis;
+
+    /**
+     * An explanation of the legal basis for the subscription status.
+     */
+    #[Optional]
+    public ?string $legalBasisExplanation;
+
+    /**
+     * The name of the preference group associated with the subscription status.
+     */
+    #[Optional]
+    public ?string $preferenceGroupName;
+
+    /**
+     * `new PublicSubscriptionStatus()` is missing required properties by the API.
+     *
+     * To enforce required parameters use
+     * ```
+     * PublicSubscriptionStatus::with(
+     *   id: ..., description: ..., name: ..., sourceOfStatus: ..., status: ...
+     * )
+     * ```
+     *
+     * Otherwise ensure the following setters are called
+     *
+     * ```
+     * (new PublicSubscriptionStatus)
+     *   ->withID(...)
+     *   ->withDescription(...)
+     *   ->withName(...)
+     *   ->withSourceOfStatus(...)
+     *   ->withStatus(...)
+     * ```
+     */
+    public function __construct()
+    {
+        $this->initialize();
+    }
+
+    /**
+     * Construct an instance from the required parameters.
+     *
+     * You must use named parameters to construct any parameters with a default value.
+     *
+     * @param SourceOfStatus|value-of<SourceOfStatus> $sourceOfStatus
+     * @param Status|value-of<Status> $status
+     * @param LegalBasis|value-of<LegalBasis>|null $legalBasis
+     */
+    public static function with(
+        string $id,
+        string $description,
+        string $name,
+        SourceOfStatus|string $sourceOfStatus,
+        Status|string $status,
+        ?int $brandID = null,
+        LegalBasis|string|null $legalBasis = null,
+        ?string $legalBasisExplanation = null,
+        ?string $preferenceGroupName = null,
+    ): self {
+        $self = new self;
+
+        $self['id'] = $id;
+        $self['description'] = $description;
+        $self['name'] = $name;
+        $self['sourceOfStatus'] = $sourceOfStatus;
+        $self['status'] = $status;
+
+        null !== $brandID && $self['brandID'] = $brandID;
+        null !== $legalBasis && $self['legalBasis'] = $legalBasis;
+        null !== $legalBasisExplanation && $self['legalBasisExplanation'] = $legalBasisExplanation;
+        null !== $preferenceGroupName && $self['preferenceGroupName'] = $preferenceGroupName;
+
+        return $self;
+    }
+
+    /**
+     * The unique identifier for the subscription status.
+     */
+    public function withID(string $id): self
+    {
+        $self = clone $this;
+        $self['id'] = $id;
+
+        return $self;
+    }
+
+    /**
+     * A description of the subscription status.
+     */
+    public function withDescription(string $description): self
+    {
+        $self = clone $this;
+        $self['description'] = $description;
+
+        return $self;
+    }
+
+    /**
+     * The name of the subscription status.
+     */
+    public function withName(string $name): self
+    {
+        $self = clone $this;
+        $self['name'] = $name;
+
+        return $self;
+    }
+
+    /**
+     * Indicates the origin of the subscription status, with possible values being 'PORTAL_WIDE_STATUS', 'BRAND_WIDE_STATUS', or 'SUBSCRIPTION_STATUS'.
+     *
+     * @param SourceOfStatus|value-of<SourceOfStatus> $sourceOfStatus
+     */
+    public function withSourceOfStatus(
+        SourceOfStatus|string $sourceOfStatus
+    ): self {
+        $self = clone $this;
+        $self['sourceOfStatus'] = $sourceOfStatus;
+
+        return $self;
+    }
+
+    /**
+     * The current status of the subscription, which can be 'SUBSCRIBED' or 'NOT_SUBSCRIBED'.
+     *
+     * @param Status|value-of<Status> $status
+     */
+    public function withStatus(Status|string $status): self
+    {
+        $self = clone $this;
+        $self['status'] = $status;
+
+        return $self;
+    }
+
+    /**
+     * The unique identifier for the brand associated with the subscription status, represented as an integer.
+     */
+    public function withBrandID(int $brandID): self
+    {
+        $self = clone $this;
+        $self['brandID'] = $brandID;
+
+        return $self;
+    }
+
+    /**
+     * The legal basis for processing the subscription, which can include values such as 'LEGITIMATE_INTEREST_PQL', 'LEGITIMATE_INTEREST_CLIENT', 'PERFORMANCE_OF_CONTRACT', 'CONSENT_WITH_NOTICE', 'NON_GDPR', 'PROCESS_AND_STORE', or 'LEGITIMATE_INTEREST_OTHER'.
+     *
+     * @param LegalBasis|value-of<LegalBasis> $legalBasis
+     */
+    public function withLegalBasis(LegalBasis|string $legalBasis): self
+    {
+        $self = clone $this;
+        $self['legalBasis'] = $legalBasis;
+
+        return $self;
+    }
+
+    /**
+     * An explanation of the legal basis for the subscription status.
+     */
+    public function withLegalBasisExplanation(
+        string $legalBasisExplanation
+    ): self {
+        $self = clone $this;
+        $self['legalBasisExplanation'] = $legalBasisExplanation;
+
+        return $self;
+    }
+
+    /**
+     * The name of the preference group associated with the subscription status.
+     */
+    public function withPreferenceGroupName(string $preferenceGroupName): self
+    {
+        $self = clone $this;
+        $self['preferenceGroupName'] = $preferenceGroupName;
+
+        return $self;
+    }
+}

@@ -30,13 +30,13 @@ final class SendSendEventParams implements BaseModel
     use SdkParams;
 
     /**
-     * The event's fully qualified name. This value (formatted as `pe{HubID}_{name}`) can be retrieved through the [event definitions API](https://developers.hubspot.com/docs/reference/api/analytics-and-events/custom-events/custom-event-definitions#get-%2Fevents%2Fv3%2Fevent-definitions) or in [HubSpot's UI](https://knowledge.hubspot.com/reports/create-custom-behavioral-events-with-the-code-wizard#find-internal-name).
+     * Internal name of the event-type to trigger.
      */
     #[Required]
     public string $eventName;
 
     /**
-     * The event properties to update. Takes the format of key-value pairs (property internal name and property value). Learn more about [HubSpot's default event properties](https://developers.hubspot.com/docs/guides/api/analytics-and-events/custom-events/custom-event-definitions#hubspot-s-default-event-properties).
+     * Map of properties for the event in the format property internal name - property value.
      *
      * @var array<string,string> $properties
      */
@@ -44,32 +44,29 @@ final class SendSendEventParams implements BaseModel
     public array $properties;
 
     /**
-     * The visitor's email address. Used for associating the event data with a CRM record.
+     * Email of visitor.
      */
     #[Optional]
     public ?string $email;
 
     /**
-     * The ID of the record for which the event occurred (e.g., contact ID or visitor ID).
+     * The object id that this event occurred on. Could be a contact id or a visitor id.
      */
     #[Optional('objectId')]
     public ?string $objectID;
 
     /**
-     * The time when this event occurred. If this isn't set, the current time will be used.
+     * The time when this event occurred (if any). If this isn't set, the current time will be used.
      */
     #[Optional]
     public ?\DateTimeInterface $occurredAt;
 
     /**
-     * The visitor's usertoken. Used for associating the event data with a CRM record.
+     * User token.
      */
     #[Optional]
     public ?string $utk;
 
-    /**
-     * Include a universally unique identifier to assign a unique ID to the event occurrence. Can be useful for matching data between HubSpot and other external systems.
-     */
     #[Optional]
     public ?string $uuid;
 
@@ -123,7 +120,7 @@ final class SendSendEventParams implements BaseModel
     }
 
     /**
-     * The event's fully qualified name. This value (formatted as `pe{HubID}_{name}`) can be retrieved through the [event definitions API](https://developers.hubspot.com/docs/reference/api/analytics-and-events/custom-events/custom-event-definitions#get-%2Fevents%2Fv3%2Fevent-definitions) or in [HubSpot's UI](https://knowledge.hubspot.com/reports/create-custom-behavioral-events-with-the-code-wizard#find-internal-name).
+     * Internal name of the event-type to trigger.
      */
     public function withEventName(string $eventName): self
     {
@@ -134,7 +131,7 @@ final class SendSendEventParams implements BaseModel
     }
 
     /**
-     * The event properties to update. Takes the format of key-value pairs (property internal name and property value). Learn more about [HubSpot's default event properties](https://developers.hubspot.com/docs/guides/api/analytics-and-events/custom-events/custom-event-definitions#hubspot-s-default-event-properties).
+     * Map of properties for the event in the format property internal name - property value.
      *
      * @param array<string,string> $properties
      */
@@ -147,7 +144,7 @@ final class SendSendEventParams implements BaseModel
     }
 
     /**
-     * The visitor's email address. Used for associating the event data with a CRM record.
+     * Email of visitor.
      */
     public function withEmail(string $email): self
     {
@@ -158,7 +155,7 @@ final class SendSendEventParams implements BaseModel
     }
 
     /**
-     * The ID of the record for which the event occurred (e.g., contact ID or visitor ID).
+     * The object id that this event occurred on. Could be a contact id or a visitor id.
      */
     public function withObjectID(string $objectID): self
     {
@@ -169,7 +166,7 @@ final class SendSendEventParams implements BaseModel
     }
 
     /**
-     * The time when this event occurred. If this isn't set, the current time will be used.
+     * The time when this event occurred (if any). If this isn't set, the current time will be used.
      */
     public function withOccurredAt(\DateTimeInterface $occurredAt): self
     {
@@ -180,7 +177,7 @@ final class SendSendEventParams implements BaseModel
     }
 
     /**
-     * The visitor's usertoken. Used for associating the event data with a CRM record.
+     * User token.
      */
     public function withUtk(string $utk): self
     {
@@ -190,9 +187,6 @@ final class SendSendEventParams implements BaseModel
         return $self;
     }
 
-    /**
-     * Include a universally unique identifier to assign a unique ID to the event occurrence. Can be useful for matching data between HubSpot and other external systems.
-     */
     public function withUuid(string $uuid): self
     {
         $self = clone $this;

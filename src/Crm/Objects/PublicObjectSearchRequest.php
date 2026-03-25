@@ -8,11 +8,12 @@ use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Crm\FilterGroup;
 
 /**
  * Describes a search request.
  *
- * @phpstan-import-type FilterGroupShape from \HubspotSDK\Crm\Objects\FilterGroup
+ * @phpstan-import-type FilterGroupShape from \HubspotSDK\Crm\FilterGroup
  *
  * @phpstan-type PublicObjectSearchRequestShape = array{
  *   after: string,

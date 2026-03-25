@@ -11,17 +11,17 @@ use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Events\Send\Option;
+use HubspotSDK\Option;
 
 /**
  * @phpstan-import-type SchemaVariants from \HubspotSDK\Automation\Actions\FieldTypeDefinition\Schema
- * @phpstan-import-type OptionShape from \HubspotSDK\Events\Send\Option
+ * @phpstan-import-type OptionShape from \HubspotSDK\Option
  * @phpstan-import-type SchemaShape from \HubspotSDK\Automation\Actions\FieldTypeDefinition\Schema
  *
  * @phpstan-type FieldTypeDefinitionShape = array{
  *   externalOptions: bool,
  *   name: string,
- *   options: list<\HubspotSDK\Events\Send\Option|OptionShape>,
+ *   options: list<Option|OptionShape>,
  *   schema: SchemaShape,
  *   type: Type|value-of<Type>,
  *   useChirp: bool,

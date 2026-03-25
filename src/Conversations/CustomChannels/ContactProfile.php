@@ -1,0 +1,177 @@
+<?php
+
+declare(strict_types=1);
+
+namespace HubspotSDK\Conversations\CustomChannels;
+
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
+use HubspotSDK\Core\Concerns\SdkModel;
+use HubspotSDK\Core\Contracts\BaseModel;
+
+/**
+ * @phpstan-import-type ContactAddressShape from \HubspotSDK\Conversations\CustomChannels\ContactAddress
+ * @phpstan-import-type ContactEmailShape from \HubspotSDK\Conversations\CustomChannels\ContactEmail
+ * @phpstan-import-type ContactPhoneShape from \HubspotSDK\Conversations\CustomChannels\ContactPhone
+ * @phpstan-import-type ContactURLShape from \HubspotSDK\Conversations\CustomChannels\ContactURL
+ * @phpstan-import-type ContactNameShape from \HubspotSDK\Conversations\CustomChannels\ContactName
+ * @phpstan-import-type ContactOrgShape from \HubspotSDK\Conversations\CustomChannels\ContactOrg
+ *
+ * @phpstan-type ContactProfileShape = array{
+ *   addresses: list<ContactAddress|ContactAddressShape>,
+ *   emails: list<ContactEmail|ContactEmailShape>,
+ *   phones: list<ContactPhone|ContactPhoneShape>,
+ *   urls: list<ContactURL|ContactURLShape>,
+ *   name?: null|ContactName|ContactNameShape,
+ *   org?: null|ContactOrg|ContactOrgShape,
+ * }
+ */
+final class ContactProfile implements BaseModel
+{
+    /** @use SdkModel<ContactProfileShape> */
+    use SdkModel;
+
+    /** @var list<ContactAddress> $addresses */
+    #[Required(list: ContactAddress::class)]
+    public array $addresses;
+
+    /** @var list<ContactEmail> $emails */
+    #[Required(list: ContactEmail::class)]
+    public array $emails;
+
+    /** @var list<ContactPhone> $phones */
+    #[Required(list: ContactPhone::class)]
+    public array $phones;
+
+    /** @var list<ContactURL> $urls */
+    #[Required(list: ContactURL::class)]
+    public array $urls;
+
+    #[Optional]
+    public ?ContactName $name;
+
+    #[Optional]
+    public ?ContactOrg $org;
+
+    /**
+     * `new ContactProfile()` is missing required properties by the API.
+     *
+     * To enforce required parameters use
+     * ```
+     * ContactProfile::with(addresses: ..., emails: ..., phones: ..., urls: ...)
+     * ```
+     *
+     * Otherwise ensure the following setters are called
+     *
+     * ```
+     * (new ContactProfile)
+     *   ->withAddresses(...)
+     *   ->withEmails(...)
+     *   ->withPhones(...)
+     *   ->withURLs(...)
+     * ```
+     */
+    public function __construct()
+    {
+        $this->initialize();
+    }
+
+    /**
+     * Construct an instance from the required parameters.
+     *
+     * You must use named parameters to construct any parameters with a default value.
+     *
+     * @param list<ContactAddress|ContactAddressShape> $addresses
+     * @param list<ContactEmail|ContactEmailShape> $emails
+     * @param list<ContactPhone|ContactPhoneShape> $phones
+     * @param list<ContactURL|ContactURLShape> $urls
+     * @param ContactName|ContactNameShape|null $name
+     * @param ContactOrg|ContactOrgShape|null $org
+     */
+    public static function with(
+        array $addresses,
+        array $emails,
+        array $phones,
+        array $urls,
+        ContactName|array|null $name = null,
+        ContactOrg|array|null $org = null,
+    ): self {
+        $self = new self;
+
+        $self['addresses'] = $addresses;
+        $self['emails'] = $emails;
+        $self['phones'] = $phones;
+        $self['urls'] = $urls;
+
+        null !== $name && $self['name'] = $name;
+        null !== $org && $self['org'] = $org;
+
+        return $self;
+    }
+
+    /**
+     * @param list<ContactAddress|ContactAddressShape> $addresses
+     */
+    public function withAddresses(array $addresses): self
+    {
+        $self = clone $this;
+        $self['addresses'] = $addresses;
+
+        return $self;
+    }
+
+    /**
+     * @param list<ContactEmail|ContactEmailShape> $emails
+     */
+    public function withEmails(array $emails): self
+    {
+        $self = clone $this;
+        $self['emails'] = $emails;
+
+        return $self;
+    }
+
+    /**
+     * @param list<ContactPhone|ContactPhoneShape> $phones
+     */
+    public function withPhones(array $phones): self
+    {
+        $self = clone $this;
+        $self['phones'] = $phones;
+
+        return $self;
+    }
+
+    /**
+     * @param list<ContactURL|ContactURLShape> $urls
+     */
+    public function withURLs(array $urls): self
+    {
+        $self = clone $this;
+        $self['urls'] = $urls;
+
+        return $self;
+    }
+
+    /**
+     * @param ContactName|ContactNameShape $name
+     */
+    public function withName(ContactName|array $name): self
+    {
+        $self = clone $this;
+        $self['name'] = $name;
+
+        return $self;
+    }
+
+    /**
+     * @param ContactOrg|ContactOrgShape $org
+     */
+    public function withOrg(ContactOrg|array $org): self
+    {
+        $self = clone $this;
+        $self['org'] = $org;
+
+        return $self;
+    }
+}

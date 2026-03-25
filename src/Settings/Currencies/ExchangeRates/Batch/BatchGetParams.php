@@ -25,7 +25,11 @@ final class BatchGetParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    /** @var list<PublicObjectID> $inputs */
+    /**
+     * An array of deal split inputs.
+     *
+     * @var list<PublicObjectID> $inputs
+     */
     #[Required(list: PublicObjectID::class)]
     public array $inputs;
 
@@ -65,6 +69,8 @@ final class BatchGetParams implements BaseModel
     }
 
     /**
+     * An array of deal split inputs.
+     *
      * @param list<PublicObjectID|PublicObjectIDShape> $inputs
      */
     public function withInputs(array $inputs): self

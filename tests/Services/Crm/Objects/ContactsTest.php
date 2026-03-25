@@ -5,8 +5,8 @@ namespace Tests\Services\Crm\Objects;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Util;
 use HubspotSDK\Crm\Objects\CollectionResponseWithTotalSimplePublicObject;
-use HubspotSDK\Crm\Objects\SimplePublicObject;
 use HubspotSDK\Crm\Objects\SimplePublicObjectWithAssociations;
+use HubspotSDK\Crm\SimplePublicObject;
 use HubspotSDK\Page;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
@@ -42,7 +42,6 @@ final class ContactsTest extends TestCase
         }
 
         $result = $this->client->crm->objects->contacts->create(
-            'objectType',
             associations: [
                 [
                     'to' => ['id' => 'id'],
@@ -69,7 +68,6 @@ final class ContactsTest extends TestCase
         }
 
         $result = $this->client->crm->objects->contacts->create(
-            'objectType',
             associations: [
                 [
                     'to' => ['id' => 'id'],
@@ -96,8 +94,7 @@ final class ContactsTest extends TestCase
         }
 
         $result = $this->client->crm->objects->contacts->update(
-            'objectId',
-            objectType: 'objectType',
+            'contactId',
             properties: ['foo' => 'string']
         );
 
@@ -113,10 +110,9 @@ final class ContactsTest extends TestCase
         }
 
         $result = $this->client->crm->objects->contacts->update(
-            'objectId',
-            objectType: 'objectType',
+            'contactId',
             properties: ['foo' => 'string'],
-            idProperty: 'idProperty',
+            idProperty: 'idProperty'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -130,7 +126,7 @@ final class ContactsTest extends TestCase
             $this->markTestSkipped('Mock server tests are disabled');
         }
 
-        $page = $this->client->crm->objects->contacts->list('objectType');
+        $page = $this->client->crm->objects->contacts->list();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(Page::class, $page);
@@ -148,26 +144,7 @@ final class ContactsTest extends TestCase
             $this->markTestSkipped('Mock server tests are disabled');
         }
 
-        $result = $this->client->crm->objects->contacts->delete(
-            'objectId',
-            objectType: 'objectType'
-        );
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertNull($result);
-    }
-
-    #[Test]
-    public function testDeleteWithOptionalParams(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->crm->objects->contacts->delete(
-            'objectId',
-            objectType: 'objectType'
-        );
+        $result = $this->client->crm->objects->contacts->delete('contactId');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);
@@ -181,7 +158,6 @@ final class ContactsTest extends TestCase
         }
 
         $result = $this->client->crm->objects->contacts->gdprDelete(
-            'objectType',
             objectID: 'objectId'
         );
 
@@ -197,7 +173,6 @@ final class ContactsTest extends TestCase
         }
 
         $result = $this->client->crm->objects->contacts->gdprDelete(
-            'objectType',
             objectID: 'objectId',
             idProperty: 'idProperty'
         );
@@ -213,31 +188,7 @@ final class ContactsTest extends TestCase
             $this->markTestSkipped('Mock server tests are disabled');
         }
 
-        $result = $this->client->crm->objects->contacts->get(
-            'objectId',
-            objectType: 'objectType'
-        );
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(SimplePublicObjectWithAssociations::class, $result);
-    }
-
-    #[Test]
-    public function testGetWithOptionalParams(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->crm->objects->contacts->get(
-            'objectId',
-            objectType: 'objectType',
-            archived: true,
-            associations: ['string'],
-            idProperty: 'idProperty',
-            properties: ['string'],
-            propertiesWithHistory: ['string'],
-        );
+        $result = $this->client->crm->objects->contacts->get('contactId');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(SimplePublicObjectWithAssociations::class, $result);
@@ -251,9 +202,8 @@ final class ContactsTest extends TestCase
         }
 
         $result = $this->client->crm->objects->contacts->merge(
-            'objectType',
             objectIDToMerge: 'objectIdToMerge',
-            primaryObjectID: 'primaryObjectId',
+            primaryObjectID: 'primaryObjectId'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -268,9 +218,8 @@ final class ContactsTest extends TestCase
         }
 
         $result = $this->client->crm->objects->contacts->merge(
-            'objectType',
             objectIDToMerge: 'objectIdToMerge',
-            primaryObjectID: 'primaryObjectId',
+            primaryObjectID: 'primaryObjectId'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -285,7 +234,6 @@ final class ContactsTest extends TestCase
         }
 
         $result = $this->client->crm->objects->contacts->search(
-            'objectType',
             after: 'after',
             filterGroups: [
                 [
@@ -314,7 +262,6 @@ final class ContactsTest extends TestCase
         }
 
         $result = $this->client->crm->objects->contacts->search(
-            'objectType',
             after: 'after',
             filterGroups: [
                 [

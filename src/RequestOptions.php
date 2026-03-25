@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK;
 
 use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required as Property;
+use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use Psr\Http\Client\ClientInterface;
@@ -34,16 +34,16 @@ final class RequestOptions implements BaseModel
     /** @use SdkModel<RequestOptionShape> */
     use SdkModel;
 
-    #[Property]
+    #[Required]
     public float $timeout = 60;
 
-    #[Property]
+    #[Required]
     public int $maxRetries = 2;
 
-    #[Property]
+    #[Required]
     public float $initialRetryDelay = 0.5;
 
-    #[Property]
+    #[Required]
     public float $maxRetryDelay = 8.0;
 
     /** @var array<string,string|int|list<string|int>|null>|null $extraHeaders */

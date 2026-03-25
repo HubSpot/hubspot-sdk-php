@@ -6,8 +6,7 @@ namespace HubspotSDK\ServiceContracts\Events;
 
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Events\Send\ExternalBehavioralEventTypeDefinition;
-use HubspotSDK\Events\Send\Property;
+use HubspotSDK\Events\ExternalBehavioralEventTypeDefinition;
 use HubspotSDK\Events\Send\SendCreateEventDefinitionParams;
 use HubspotSDK\Events\Send\SendCreateEventDefinitionPropertyParams;
 use HubspotSDK\Events\Send\SendDeleteEventDefinitionPropertyParams;
@@ -17,6 +16,7 @@ use HubspotSDK\Events\Send\SendSendEventParams;
 use HubspotSDK\Events\Send\SendUpdateEventDefinitionParams;
 use HubspotSDK\Events\Send\SendUpdateEventDefinitionPropertyParams;
 use HubspotSDK\Page;
+use HubspotSDK\Property;
 use HubspotSDK\RequestOptions;
 
 /**
