@@ -110,7 +110,9 @@ try {
         ],
       ],
     ],
-    properties: ['email' => 'mark.s@lumon.industries'],
+    properties: [
+      'associations' => 'string', 'email' => 'mark.s@lumon.industries'
+    ],
   );
 } catch (APIConnectionException $e) {
   echo "The server could not be reached", PHP_EOL;
@@ -165,7 +167,9 @@ $result = $client->crm->objects->contacts->create(
       ],
     ],
   ],
-  properties: ['email' => 'mark.s@lumon.industries'],
+  properties: [
+    'associations' => 'string', 'email' => 'mark.s@lumon.industries'
+  ],
   requestOptions: ['maxRetries' => 5],
 );
 ```
@@ -192,7 +196,9 @@ $simplePublicObject = $client->crm->objects->contacts->create(
       ],
     ],
   ],
-  properties: ['email' => 'mark.s@lumon.industries'],
+  properties: [
+    'associations' => 'string', 'email' => 'mark.s@lumon.industries'
+  ],
   requestOptions: [
     'extraQueryParams' => ['my_query_parameter' => 'value'],
     'extraBodyParams' => ['my_body_parameter' => 'value'],
