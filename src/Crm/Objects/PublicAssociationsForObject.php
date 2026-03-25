@@ -4,13 +4,15 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Objects;
 
+use HubspotSDK\AssociationSpec;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\PublicObjectID;
 
 /**
- * @phpstan-import-type PublicObjectIDShape from \HubspotSDK\Crm\Objects\PublicObjectID
- * @phpstan-import-type AssociationSpecShape from \HubspotSDK\Crm\Objects\AssociationSpec
+ * @phpstan-import-type PublicObjectIDShape from \HubspotSDK\PublicObjectID
+ * @phpstan-import-type AssociationSpecShape from \HubspotSDK\AssociationSpec
  *
  * @phpstan-type PublicAssociationsForObjectShape = array{
  *   to: PublicObjectID|PublicObjectIDShape,

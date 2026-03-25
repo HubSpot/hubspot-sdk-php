@@ -10,6 +10,8 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Merge two CRM objects of the same type by specifying one as the primary object and the other as the object to be merged into it.
+ *
  * @see HubspotSDK\Services\Crm\Objects\CustomService::merge()
  *
  * @phpstan-type CustomMergeParamsShape = array{

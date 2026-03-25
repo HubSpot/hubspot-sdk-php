@@ -1,0 +1,87 @@
+<?php
+
+declare(strict_types=1);
+
+namespace HubspotSDK\Automation\Actions;
+
+use HubspotSDK\Automation\Actions\CopilotRequestContext\Source;
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
+use HubspotSDK\Core\Concerns\SdkModel;
+use HubspotSDK\Core\Contracts\BaseModel;
+
+/**
+ * @phpstan-type CopilotRequestContextShape = array{
+ *   source: Source|value-of<Source>, trajectoryID?: string|null
+ * }
+ */
+final class CopilotRequestContext implements BaseModel
+{
+    /** @use SdkModel<CopilotRequestContextShape> */
+    use SdkModel;
+
+    /** @var value-of<Source> $source */
+    #[Required(enum: Source::class)]
+    public string $source;
+
+    #[Optional('trajectoryId')]
+    public ?string $trajectoryID;
+
+    /**
+     * `new CopilotRequestContext()` is missing required properties by the API.
+     *
+     * To enforce required parameters use
+     * ```
+     * CopilotRequestContext::with(source: ...)
+     * ```
+     *
+     * Otherwise ensure the following setters are called
+     *
+     * ```
+     * (new CopilotRequestContext)->withSource(...)
+     * ```
+     */
+    public function __construct()
+    {
+        $this->initialize();
+    }
+
+    /**
+     * Construct an instance from the required parameters.
+     *
+     * You must use named parameters to construct any parameters with a default value.
+     *
+     * @param Source|value-of<Source> $source
+     */
+    public static function with(
+        Source|string $source = 'COPILOT',
+        ?string $trajectoryID = null
+    ): self {
+        $self = new self;
+
+        $self['source'] = $source;
+
+        null !== $trajectoryID && $self['trajectoryID'] = $trajectoryID;
+
+        return $self;
+    }
+
+    /**
+     * @param Source|value-of<Source> $source
+     */
+    public function withSource(Source|string $source): self
+    {
+        $self = clone $this;
+        $self['source'] = $source;
+
+        return $self;
+    }
+
+    public function withTrajectoryID(string $trajectoryID): self
+    {
+        $self = clone $this;
+        $self['trajectoryID'] = $trajectoryID;
+
+        return $self;
+    }
+}

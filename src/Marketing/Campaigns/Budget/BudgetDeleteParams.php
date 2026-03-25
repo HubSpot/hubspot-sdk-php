@@ -1,0 +1,68 @@
+<?php
+
+declare(strict_types=1);
+
+namespace HubspotSDK\Marketing\Campaigns\Budget;
+
+use HubspotSDK\Core\Attributes\Required;
+use HubspotSDK\Core\Concerns\SdkModel;
+use HubspotSDK\Core\Concerns\SdkParams;
+use HubspotSDK\Core\Contracts\BaseModel;
+
+/**
+ * Delete a specific budget item from a campaign using its unique ID. This operation removes the budget item from the campaign's budget list, ensuring it is no longer considered in budget calculations.
+ *
+ * @see HubspotSDK\Services\Marketing\Campaigns\BudgetService::delete()
+ *
+ * @phpstan-type BudgetDeleteParamsShape = array{campaignGuid: string}
+ */
+final class BudgetDeleteParams implements BaseModel
+{
+    /** @use SdkModel<BudgetDeleteParamsShape> */
+    use SdkModel;
+    use SdkParams;
+
+    #[Required]
+    public string $campaignGuid;
+
+    /**
+     * `new BudgetDeleteParams()` is missing required properties by the API.
+     *
+     * To enforce required parameters use
+     * ```
+     * BudgetDeleteParams::with(campaignGuid: ...)
+     * ```
+     *
+     * Otherwise ensure the following setters are called
+     *
+     * ```
+     * (new BudgetDeleteParams)->withCampaignGuid(...)
+     * ```
+     */
+    public function __construct()
+    {
+        $this->initialize();
+    }
+
+    /**
+     * Construct an instance from the required parameters.
+     *
+     * You must use named parameters to construct any parameters with a default value.
+     */
+    public static function with(string $campaignGuid): self
+    {
+        $self = new self;
+
+        $self['campaignGuid'] = $campaignGuid;
+
+        return $self;
+    }
+
+    public function withCampaignGuid(string $campaignGuid): self
+    {
+        $self = clone $this;
+        $self['campaignGuid'] = $campaignGuid;
+
+        return $self;
+    }
+}

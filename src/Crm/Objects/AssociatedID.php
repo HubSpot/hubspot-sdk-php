@@ -25,7 +25,7 @@ final class AssociatedID implements BaseModel
     public string $id;
 
     /**
-     * The type of association.
+     * The type of associations.
      */
     #[Required]
     public string $type;
@@ -76,7 +76,7 @@ final class AssociatedID implements BaseModel
     }
 
     /**
-     * The type of association.
+     * The type of associations.
      */
     public function withType(string $type): self
     {

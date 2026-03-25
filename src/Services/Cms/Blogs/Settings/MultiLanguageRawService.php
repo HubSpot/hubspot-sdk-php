@@ -1,0 +1,189 @@
+<?php
+
+declare(strict_types=1);
+
+namespace HubspotSDK\Services\Cms\Blogs\Settings;
+
+use HubspotSDK\Client;
+use HubspotSDK\Cms\Blogs\Settings\Blog;
+use HubspotSDK\Cms\Blogs\Settings\MultiLanguage\MultiLanguageAttachToLangGroupParams;
+use HubspotSDK\Cms\Blogs\Settings\MultiLanguage\MultiLanguageAttachToLangGroupParams\Language;
+use HubspotSDK\Cms\Blogs\Settings\MultiLanguage\MultiLanguageAttachToLangGroupParams\PrimaryLanguage;
+use HubspotSDK\Cms\Blogs\Settings\MultiLanguage\MultiLanguageCreateLanguageVariationParams;
+use HubspotSDK\Cms\Blogs\Settings\MultiLanguage\MultiLanguageDetachFromLangGroupParams;
+use HubspotSDK\Cms\Blogs\Settings\MultiLanguage\MultiLanguageSetNewLangPrimaryParams;
+use HubspotSDK\Cms\Blogs\Settings\MultiLanguage\MultiLanguageUpdateLanguagesParams;
+use HubspotSDK\Core\Contracts\BaseResponse;
+use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\RequestOptions;
+use HubspotSDK\ServiceContracts\Cms\Blogs\Settings\MultiLanguageRawContract;
+
+/**
+ * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ */
+final class MultiLanguageRawService implements MultiLanguageRawContract
+{
+    // @phpstan-ignore-next-line
+    /**
+     * @internal
+     */
+    public function __construct(private Client $client) {}
+
+    /**
+     * @api
+     *
+     * @param array{
+     *   id: string,
+     *   language: value-of<Language>,
+     *   primaryID: string,
+     *   primaryLanguage?: value-of<PrimaryLanguage>,
+     * }|MultiLanguageAttachToLangGroupParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<string>
+     *
+     * @throws APIException
+     */
+    public function attachToLangGroup(
+        array|MultiLanguageAttachToLangGroupParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = MultiLanguageAttachToLangGroupParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'post',
+            path: 'cms/blog-settings/2026-03/settings/multi-language/attach-to-lang-group',
+            headers: ['Accept' => '*/*'],
+            body: (object) $parsed,
+            options: $options,
+            convert: 'string',
+        );
+    }
+
+    /**
+     * @api
+     *
+     * @param array{
+     *   id: string, language?: string, primaryLanguage?: string, slug?: string
+     * }|MultiLanguageCreateLanguageVariationParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<Blog>
+     *
+     * @throws APIException
+     */
+    public function createLanguageVariation(
+        array|MultiLanguageCreateLanguageVariationParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = MultiLanguageCreateLanguageVariationParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'post',
+            path: 'cms/blog-settings/2026-03/settings/multi-language/create-language-variation',
+            body: (object) $parsed,
+            options: $options,
+            convert: Blog::class,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * @param array{id: string}|MultiLanguageDetachFromLangGroupParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<string>
+     *
+     * @throws APIException
+     */
+    public function detachFromLangGroup(
+        array|MultiLanguageDetachFromLangGroupParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = MultiLanguageDetachFromLangGroupParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'post',
+            path: 'cms/blog-settings/2026-03/settings/multi-language/detach-from-lang-group',
+            headers: ['Accept' => '*/*'],
+            body: (object) $parsed,
+            options: $options,
+            convert: 'string',
+        );
+    }
+
+    /**
+     * @api
+     *
+     * @param array{id: string}|MultiLanguageSetNewLangPrimaryParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<mixed>
+     *
+     * @throws APIException
+     */
+    public function setNewLangPrimary(
+        array|MultiLanguageSetNewLangPrimaryParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = MultiLanguageSetNewLangPrimaryParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'put',
+            path: 'cms/blog-settings/2026-03/settings/multi-language/set-new-lang-primary',
+            body: (object) $parsed,
+            options: $options,
+            convert: null,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * @param array{
+     *   languages: array<string,MultiLanguageUpdateLanguagesParams\Language|value-of<MultiLanguageUpdateLanguagesParams\Language>>,
+     *   primaryID: string,
+     * }|MultiLanguageUpdateLanguagesParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<string>
+     *
+     * @throws APIException
+     */
+    public function updateLanguages(
+        array|MultiLanguageUpdateLanguagesParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = MultiLanguageUpdateLanguagesParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'post',
+            path: 'cms/blog-settings/2026-03/settings/multi-language/update-languages',
+            headers: ['Accept' => '*/*'],
+            body: (object) $parsed,
+            options: $options,
+            convert: 'string',
+        );
+    }
+}

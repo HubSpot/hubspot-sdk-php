@@ -48,9 +48,8 @@ final class CustomRawService implements CustomRawContract
     /**
      * @api
      *
-     * Create multiple tasks in a single request by providing a batch of task properties and associations. This endpoint allows for efficient task creation by processing multiple tasks together.
+     * Create multiple CRM objects in a single request by specifying the object type and providing the necessary properties and associations for each object.
      *
-     * @param string $objectType object type
      * @param array{
      *   inputs: list<SimplePublicObjectBatchInputForCreate|SimplePublicObjectBatchInputForCreateShape>,
      * }|CustomCreateParams $params
@@ -83,9 +82,8 @@ final class CustomRawService implements CustomRawContract
     /**
      * @api
      *
-     * Update multiple tasks in a single request using their internal IDs or unique property values. This operation allows you to modify the properties of each task in the batch, ensuring efficient management of task data.
+     * Update a batch of CRM objects by their internal IDs or unique property values, allowing for efficient modifications of multiple records in a single request.
      *
-     * @param string $objectType object type
      * @param array{
      *   inputs: list<SimplePublicObjectBatchInput|SimplePublicObjectBatchInputShape>
      * }|CustomUpdateParams $params
@@ -118,9 +116,8 @@ final class CustomRawService implements CustomRawContract
     /**
      * @api
      *
-     * Read a page of tasks. Control what is returned via the `properties` query param.
+     * Read a page of objects. Control what is returned via the `properties` query param.
      *
-     * @param string $objectType object type
      * @param array{
      *   after?: string,
      *   archived?: bool,
@@ -159,9 +156,8 @@ final class CustomRawService implements CustomRawContract
     /**
      * @api
      *
-     * Archive a batch of tasks by their IDs, moving them to the recycling bin. This operation requires a list of task IDs to be provided in the request body.
+     * Archive a batch of objects by their unique IDs. This operation moves the specified objects to the recycling bin, effectively marking them as archived.
      *
-     * @param string $objectType object type
      * @param array{
      *   inputs: list<SimplePublicObjectID|SimplePublicObjectIDShape>
      * }|CustomDeleteParams $params
@@ -196,7 +192,7 @@ final class CustomRawService implements CustomRawContract
      *
      * Retrieve records by record ID or include the `idProperty` parameter to retrieve records by a custom unique value property.
      *
-     * @param string $objectType path param: Object type
+     * @param string $objectType Path param
      * @param array{
      *   inputs: list<SimplePublicObjectID|SimplePublicObjectIDShape>,
      *   properties: list<string>,
@@ -235,7 +231,8 @@ final class CustomRawService implements CustomRawContract
     /**
      * @api
      *
-     * @param string $objectType object type
+     * Merge two CRM objects of the same type by specifying one as the primary object and the other as the object to be merged into it.
+     *
      * @param array{
      *   objectIDToMerge: string, primaryObjectID: string
      * }|CustomMergeParams $params
@@ -268,9 +265,8 @@ final class CustomRawService implements CustomRawContract
     /**
      * @api
      *
-     * Execute a search for tasks based on the provided criteria, including filters, properties, and sorting options. This allows for retrieving tasks that match specific conditions or property values.
+     * Execute a search query to find CRM objects of a given type, using specified filters and properties. The search can be customized with filters, sorting, and pagination options.
      *
-     * @param string $objectType object type
      * @param array{
      *   after: string,
      *   filterGroups: list<FilterGroup|FilterGroupShape>,
@@ -310,7 +306,6 @@ final class CustomRawService implements CustomRawContract
      *
      * Create or update records identified by a unique property value as specified by the `idProperty` query param. `idProperty` query param refers to a property whose values are unique for the object.
      *
-     * @param string $objectType object type
      * @param array{
      *   inputs: list<SimplePublicObjectBatchInputUpsert|SimplePublicObjectBatchInputUpsertShape>,
      * }|CustomUpsertParams $params

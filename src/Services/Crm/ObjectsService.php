@@ -8,7 +8,6 @@ use HubspotSDK\Client;
 use HubspotSDK\ServiceContracts\Crm\ObjectsContract;
 use HubspotSDK\Services\Crm\Objects\ContactsService;
 use HubspotSDK\Services\Crm\Objects\CustomService;
-use HubspotSDK\Services\Crm\Objects\TasksService;
 
 final class ObjectsService implements ObjectsContract
 {
@@ -28,11 +27,6 @@ final class ObjectsService implements ObjectsContract
     public CustomService $custom;
 
     /**
-     * @api
-     */
-    public TasksService $tasks;
-
-    /**
      * @internal
      */
     public function __construct(private Client $client)
@@ -40,6 +34,5 @@ final class ObjectsService implements ObjectsContract
         $this->raw = new ObjectsRawService($client);
         $this->contacts = new ContactsService($client);
         $this->custom = new CustomService($client);
-        $this->tasks = new TasksService($client);
     }
 }

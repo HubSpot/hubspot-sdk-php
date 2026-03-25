@@ -8,10 +8,11 @@ use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Paging;
 
 /**
  * @phpstan-import-type AssociatedIDShape from \HubspotSDK\Crm\Objects\AssociatedID
- * @phpstan-import-type PagingShape from \HubspotSDK\Crm\Objects\Paging
+ * @phpstan-import-type PagingShape from \HubspotSDK\Paging
  *
  * @phpstan-type CollectionResponseAssociatedIDShape = array{
  *   results: list<AssociatedID|AssociatedIDShape>,

@@ -38,9 +38,9 @@ use HubspotSDK\Client;
 
 $client = new Client(accessToken: 'pat-na1-xxxxxxxx-xxxx');
 
-$page = $client->account->activity->listAuditLogs();
+$portalInformationResponse = $client->account->get();
 
-var_dump($page->id);
+var_dump($portalInformationResponse->accountType);
 ```
 
 ### Value Objects
@@ -89,7 +89,7 @@ use HubspotSDK\Core\Exceptions\RateLimitException;
 use HubspotSDK\Core\Exceptions\APIStatusException;
 
 try {
-  $page = $client->account->activity->listAuditLogs();
+  $portalInformationResponse = $client->account->get();
 } catch (APIConnectionException $e) {
   echo "The server could not be reached", PHP_EOL;
   var_dump($e->getPrevious());
@@ -134,9 +134,7 @@ use HubspotSDK\Client;
 $client = new Client(requestOptions: ['maxRetries' => 0]);
 
 // Or, configure per-request:
-$result = $client->account->activity->listAuditLogs(
-  requestOptions: ['maxRetries' => 5]
-);
+$result = $client->account->get(requestOptions: ['maxRetries' => 5]);
 ```
 
 ## Advanced concepts
@@ -152,7 +150,7 @@ Note: the `extra*` parameters of the same name overrides the documented paramete
 ```php
 <?php
 
-$page = $client->account->activity->listAuditLogs(
+$portalInformationResponse = $client->account->get(
   requestOptions: [
     'extraQueryParams' => ['my_query_parameter' => 'value'],
     'extraBodyParams' => ['my_body_parameter' => 'value'],
